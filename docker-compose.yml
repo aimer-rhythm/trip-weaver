@@ -1,0 +1,39 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DATABASE_PATH=/app/apps/server/data/tripweaver.db
+    volumes:
+      - ./data:/app/apps/server/data
+    expose:
+      - "3001"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - SITE_DOMAIN=${SITE_DOMAIN:-:80}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+  # 可选：小红书 MCP 服务（需用专用小号扫码登录，详见 README）
+  # xiaohongshu-mcp:
+  #   image: xpzouying/xiaohongshu-mcp:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - "18060:18060"
+  #   volumes:
+  #     - ./xhs-session:/root/.xiaohongshu-mcp
+
+volumes:
+  caddy_data:
+  caddy_config:

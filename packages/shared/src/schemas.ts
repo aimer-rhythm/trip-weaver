@@ -1,0 +1,113 @@
+import { Type, type TLiteral, type TUnion } from '@sinclair/typebox';
+import {
+  ACTIVITY_CATEGORIES,
+  BUDGET_LEVELS,
+  COORD_SOURCES,
+  MAX_SOURCE_NOTES,
+  MAX_TRIP_DAYS,
+  PREFERENCE_OPTIONS,
+  TRIP_EXPORT_VERSION,
+} from './constants';
+
+// 字符串枚举辅助：字面量 Union（标准 TypeBox 构造，类型收窄为字面量联合）
+type LiteralTuple<T extends readonly string[]> = { -readonly [K in keyof T]: TLiteral<T[K] & string> };
+
+const StringEnum = <T extends readonly string[]>(values: T) =>
+  Type.Union(values.map((v) => Type.Literal(v))) as unknown as TUnion<LiteralTuple<T>>;
+
+// ---------- 行程领域 ----------
+
+export const SourceNoteSchema = Type.Object({
+  title: Type.String({ maxLength: 100 }),
+  url: Type.String({ maxLength: 300 }),
+});
+
+export const ActivitySchema = Type.Object({
+  id: Type.String(),
+  name: Type.String({ minLength: 1, maxLength: 100 }),
+  startTime: Type.String({ maxLength: 5 }),   // "09:00"，允许空串
+  endTime: Type.String({ maxLength: 5 }),
+  description: Type.String({ maxLength: 500 }),
+  lat: Type.Number({ minimum: -90, maximum: 90 }),
+  lng: Type.Number({ minimum: -180, maximum: 180 }),
+  coordSource: StringEnum(COORD_SOURCES),
+  cost: Type.Number({ minimum: 0 }),
+  category: StringEnum(ACTIVITY_CATEGORIES),
+  sourceNotes: Type.Array(SourceNoteSchema, { maxItems: MAX_SOURCE_NOTES }),
+});
+
+export const TripDaySchema = Type.Object({
+  id: Type.String(),
+  dayIndex: Type.Integer({ minimum: 1 }),
+  title: Type.String({ maxLength: 30 }),
+  activities: Type.Array(ActivitySchema),
+});
+
+export const TripMetaSchema = Type.Object({
+  usedXhs: Type.Boolean(),
+  reviewNotes: Type.Array(Type.String({ maxLength: 200 })),
+});
+
+export const TripSchema = Type.Object({
+  id: Type.String(),
+  title: Type.String({ minLength: 1, maxLength: 60 }),
+  destination: Type.String({ minLength: 1, maxLength: 40 }),
+  startDate: Type.String({ maxLength: 10 }),  // "2026-07-10" 或 ''
+  budgetLevel: StringEnum(BUDGET_LEVELS),
+  totalBudget: Type.Number({ minimum: 0 }),
+  preferences: Type.Array(Type.String({ maxLength: 10 }), { maxItems: 10 }),
+  partySize: Type.Integer({ minimum: 1, maximum: 50 }),
+  extraNotes: Type.String({ maxLength: 200 }),
+  days: Type.Array(TripDaySchema, { maxItems: MAX_TRIP_DAYS }),
+  meta: TripMetaSchema,
+  createdAt: Type.Number(),
+  updatedAt: Type.Number(),
+});
+
+// JSON 导出/导入格式
+export const TripExportSchema = Type.Object({
+  version: Type.Literal(TRIP_EXPORT_VERSION),
+  trip: TripSchema,
+});
+
+// ---------- 生成表单 ----------
+
+export const GenerateFormSchema = Type.Object({
+  destination: Type.String({ minLength: 1, maxLength: 40 }),
+  days: Type.Integer({ minimum: 1, maximum: MAX_TRIP_DAYS }),
+  startDate: Type.String({ maxLength: 10, default: '' }),
+  budgetLevel: StringEnum(BUDGET_LEVELS),
+  totalBudget: Type.Number({ minimum: 0, default: 0 }),
+  preferences: Type.Array(StringEnum(PREFERENCE_OPTIONS), { maxItems: 7, default: [] }),
+  partySize: Type.Integer({ minimum: 1, maximum: 20 }),
+  extraNotes: Type.String({ maxLength: 200, default: '' }),
+});
+
+// ---------- 认证与设置 ----------
+
+const EmailSchema = Type.String({
+  pattern: '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$',
+  maxLength: 100,
+});
+
+export const RegisterBodySchema = Type.Object({
+  email: EmailSchema,
+  password: Type.String({ minLength: 8, maxLength: 72 }),
+  inviteCode: Type.String({ minLength: 1, maxLength: 64 }),
+});
+
+export const LoginBodySchema = Type.Object({
+  email: EmailSchema,
+  password: Type.String({ minLength: 1, maxLength: 72 }),
+});
+
+export const SettingsPutSchema = Type.Object({
+  byokEnabled: Type.Boolean(),
+  baseUrl: Type.Optional(Type.String({ maxLength: 200 })),
+  apiKey: Type.Optional(Type.String({ maxLength: 200 })),   // 不传 = 保留原 Key
+  model: Type.Optional(Type.String({ maxLength: 100 })),
+});
+
+export const RenameTripSchema = Type.Object({
+  title: Type.String({ minLength: 1, maxLength: 60 }),
+});

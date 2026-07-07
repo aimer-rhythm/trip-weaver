@@ -1,0 +1,24 @@
+{
+  "name": "tripweaver",
+  "version": "0.1.0",
+  "private": true,
+  "description": "织程 TripWeaver — 多 Agent 协作的开源智能旅行助手",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"npm run dev -w apps/server\" \"npm run dev -w apps/web\"",
+    "dev:server": "npm run dev -w apps/server",
+    "dev:web": "npm run dev -w apps/web",
+    "typecheck": "tsc --noEmit -p packages/shared && tsc --noEmit -p apps/server && tsc --noEmit -p apps/web",
+    "build": "npm run build -w apps/web",
+    "start": "npm run start -w apps/server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "playwright": "^1.61.1",
+    "typescript": "^6.0.3"
+  }
+}

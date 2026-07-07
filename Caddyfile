@@ -1,0 +1,6 @@
+{$SITE_DOMAIN}
+
+# SSE 需要关闭响应缓冲，进度事件才能实时到达浏览器
+reverse_proxy app:3001 {
+	flush_interval -1
+}
