@@ -104,3 +104,36 @@ CI 分支修正、README 完善（截图/推荐模型/验证脚本）、干净�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 4: Open registration and GitHub login, invite code as fallback
+
+**Date**: 2026-07-07
+**Task**: Open registration and GitHub login, invite code as fallback
+**Branch**: `master`
+
+### Summary
+
+Implement three-mode registration system (open/invite/closed) with REGISTRATION_MODE env var, GitHub OAuth web application flow (authorize / exchange / fetch identity / auto-bind by verified email), and password-free OAuth-only accounts. Frontend: AuthConfig API, conditional GitHub button, OAuth error handling. Verification: verify-auth-modes.mjs covers 16 scenarios across all modes and GitHub routes. Docs updated: README, PRD, TECHNICAL_ARCHITECTURE, .env.example.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `62167df` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
