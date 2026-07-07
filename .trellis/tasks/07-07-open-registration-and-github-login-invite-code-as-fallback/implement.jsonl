@@ -1,0 +1,9 @@
+{"file": ".trellis/tasks/07-07-open-registration-and-github-login-invite-code-as-fallback/research/github-oauth.md", "reason": "GitHub OAuth web flow 精确端点/参数/错误形态、安全清单与本仓库落点，实施 auth/github.ts 的直接依据"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 包后端规范索引"}
+{"file": ".trellis/spec/server/backend/directory-structure.md", "reason": "新文件 auth/github.ts 的落位与模块边界"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "users 表加列（守卫式 ALTER）与索引需遵循数据库规范"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "OAuth 回调失败路径与统一错误文案需符合错误处理规范"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared schemas.ts 变更（inviteCode 可选）遵循 shared 包规范"}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "web 包前端规范索引"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "Login/Register 页条件渲染与 GitHub 按钮的组件规范"}
+{"file": ".trellis/spec/web/frontend/hook-guidelines.md", "reason": "新增 useAuthConfig 查询 hook 需符合 hook 规范"}

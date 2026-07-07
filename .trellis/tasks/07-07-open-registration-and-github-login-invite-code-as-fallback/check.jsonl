@@ -1,0 +1,6 @@
+{"file": ".trellis/tasks/07-07-open-registration-and-github-login-invite-code-as-fallback/research/github-oauth.md", "reason": "对照 §4 安全清单逐项核查：state CSRF、redirect_uri、verified 邮箱、token 不落库、会话固定、open redirect"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "server 侧变更质量核查"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "失败路径与错误文案一致性核查"}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "web 侧变更质量核查"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "shared schema → server 校验 → web 表单三层数据流一致性核查"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "复用 createSession/COOKIE_OPTS/checkInviteCode，避免平行实现"}

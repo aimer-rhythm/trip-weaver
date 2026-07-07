@@ -12,7 +12,7 @@
 - 💰 **预算计算**：按天/按类别聚合，超支实时预警
 - ✏️ **行程编辑**：增删改活动、日内排序、跨天移动，编辑自动保存
 - 📤 **导出**：长图（微信分享友好）/ JSON 备份导入 / 打印 PDF
-- 👥 **多用户**：邀请码注册、行程历史云端留存、每日生成配额、站点供 Key 或用户自带 Key（BYOK）
+- 👥 **多用户**：开放注册 / GitHub 登录，邀请码模式可随时切回（防滥用备选），行程历史云端留存、每日生成配额、站点供 Key 或用户自带 Key（BYOK）
 
 ## 架构
 
@@ -36,17 +36,17 @@ React SPA ──HTTP API + SSE──▶ Fastify 路由层 ──▶ 多 Agent �
 ```bash
 git clone https://github.com/<you>/tripweaver.git && cd tripweaver
 cp .env.example .env
-# 编辑 .env：至少填 MASTER_KEY（生成命令见文件内注释）、INVITE_CODE、站点 LLM Key
+# 编辑 .env：至少填 MASTER_KEY（生成命令见文件内注释）、站点 LLM Key
 docker compose up -d
 ```
 
-浏览器打开你的域名（或 `http://服务器IP`），用邀请码注册即可。
+浏览器打开你的域名（或 `http://服务器IP`），注册即可（默认开放注册；想收紧时设 `REGISTRATION_MODE=invite` + `INVITE_CODE`）。
 
 ### 本地开发
 
 ```bash
 npm install
-cp .env.example apps/server/.env   # 填 MASTER_KEY / INVITE_CODE 等
+cp .env.example apps/server/.env   # 填 MASTER_KEY 等
 npm run dev                        # server:3001 + web:5173
 ```
 
@@ -55,12 +55,23 @@ npm run dev                        # server:3001 + web:5173
 | 变量 | 必填 | 说明 |
 |---|---|---|
 | `MASTER_KEY` | ✅ | 32 字节 hex，用户 API Key 的加密主钥 |
-| `INVITE_CODE` | 建议 | 注册邀请码；留空 = 注册关闭 |
+| `REGISTRATION_MODE` | | 注册模式 `open` / `invite` / `closed`；**未设置时自动推断**：`INVITE_CODE` 非空 → `invite`，否则 `open`（存量部署升级后行为不变） |
+| `INVITE_CODE` | | 邀请码，仅 `invite` 模式使用（该模式下必填）；遇滥用时切 `REGISTRATION_MODE=invite` 即可收紧注册 |
+| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | | GitHub OAuth App 凭据；留空 = 不显示 GitHub 登录 |
+| `APP_BASE_URL` | | 站点对外地址（如 `https://trip.example.com`），启用 GitHub 登录时必填，用于构造回调 URL |
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 建议 | 站点供 Key（普通用户零配置使用）；留空 = 纯 BYOK 模式 |
 | `GEN_DAILY_LIMIT` | | 每用户每日生成次数（默认 3） |
 | `XHS_MCP_URL` | | 小红书 MCP 服务地址；留空 = 降级为模型知识调研。compose 内启用自带 MCP 服务时填 `http://xiaohongshu-mcp:18060/mcp` |
 | `XHS_DAILY_BUDGET` | | 全站小红书调用日额度（默认 500） |
 | `SSRF_ALLOWLIST` | | BYOK baseUrl 私网豁免（站长自有 Ollama 等） |
+
+### GitHub 登录（可选）
+
+1. 到 GitHub → Settings → Developer settings → **OAuth Apps** → New OAuth App（不是 GitHub App）；
+2. Authorization callback URL 填 `<APP_BASE_URL>/api/auth/github/callback`（OAuth App 只允许一个 callback，**本地开发请另注册一个 App**，callback 填 `http://localhost:5173/api/auth/github/callback`）；
+3. 把 Client ID / Client Secret 与 `APP_BASE_URL` 写入 `.env` 并重启。
+
+登录只申请 `user:email` 权限，access token 拉取一次身份后即丢弃、不落库；GitHub 已验证邮箱与站内账号相同时自动绑定。`invite`/`closed` 模式下 GitHub 仅允许既有用户登录，不允许创建新账号。
 
 ### 推荐模型量级
 
@@ -74,6 +85,7 @@ node scripts/smoke-pi.mjs         # 冒烟：LLM 端点连通（读 apps/server/
 node scripts/smoke-mcp.mjs        # 冒烟：小红书 MCP 握手与工具清单
 node scripts/verify-c2.mjs        # 端到端：生成流水线 + 配额 + BYOK（内置 mock LLM，离线可跑）
 node scripts/verify-security.mjs  # 安全走查：越权/限流/Key 泄露/SSRF 等 23 项
+node scripts/verify-auth-modes.mjs # 注册三态（open/invite/closed）+ 兼容推断 + GitHub OAuth 路由
 npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏览器级验收（需 Playwright）
 ```
 
@@ -91,7 +103,7 @@ MCP 服务不可用时生成流程不会失败——自动降级为模型知识�
 ## 成本说明（站长）
 
 - 地图 / 地理编码 / 小红书接入：**零费用**（感谢 OSM 与开源社区）
-- LLM：一次生成约 5–15 万 token；以 DeepSeek 计约每次几分到一两毛钱。成本三道闸：邀请码（挡陌生人）、每日配额（限次数）、用量落库（`generations` 表可审计）
+- LLM：一次生成约 5–15 万 token；以 DeepSeek 计约每次几分到一两毛钱。成本三道闸：注册管控（默认开放，可切 `invite` 模式挡陌生人）、每日配额（限次数）、用量落库（`generations` 表可审计）
 - 用户在高级设置里配置自己的 Key（BYOK）后，其生成不消耗站点 Key
 
 ## 安全设计

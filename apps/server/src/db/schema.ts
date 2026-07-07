@@ -3,7 +3,8 @@ import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 export const users = sqliteTable('users', {
   id: text('id').primaryKey(),
   email: text('email').notNull().unique(),
-  passwordHash: text('password_hash').notNull(),
+  passwordHash: text('password_hash').notNull(),   // OAuth-only 用户为 ''（空串=禁用密码登录）
+  githubId: text('github_id'),                     // GitHub 数字 id（唯一索引在 migrate 中建）
   createdAt: integer('created_at').notNull(),
 });
 

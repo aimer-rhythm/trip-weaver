@@ -110,6 +110,8 @@ a { color: var(--color-primary); text-decoration: none; }
 .auth-card .brand { font-size: 1.4rem; }
 .auth-sub { color: var(--color-muted); margin: 6px 0 20px; }
 .auth-switch { margin: 16px 0 0; font-size: 0.88rem; color: var(--color-muted); }
+.auth-divider { display: flex; align-items: center; gap: 10px; margin: 14px 0 10px; font-size: 0.82rem; color: var(--color-muted); }
+.auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
 
 /* ---- 行程列表 ---- */
 .empty-state {

@@ -93,7 +93,7 @@ const EmailSchema = Type.String({
 export const RegisterBodySchema = Type.Object({
   email: EmailSchema,
   password: Type.String({ minLength: 8, maxLength: 72 }),
-  inviteCode: Type.String({ minLength: 1, maxLength: 64 }),
+  inviteCode: Type.Optional(Type.String({ maxLength: 64 })),   // 仅 REGISTRATION_MODE=invite 时服务端校验
 });
 
 export const LoginBodySchema = Type.Object({

@@ -6,6 +6,7 @@ const STATEMENTS = [
     id TEXT PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
+    github_id TEXT,
     created_at INTEGER NOT NULL
   )`,
   `CREATE TABLE IF NOT EXISTS sessions (
@@ -54,11 +55,22 @@ const STATEMENTS = [
   `CREATE INDEX IF NOT EXISTS idx_generations_user_time ON generations(user_id, created_at DESC)`,
 ];
 
+// 存量库加列（CREATE IF NOT EXISTS 无法给旧表补列）
+function ensureColumn(sqlite: Database.Database, table: string, column: string, ddl: string): void {
+  const cols = sqlite.pragma(`table_info(${table})`) as Array<{ name: string }>;
+  if (!cols.some((c) => c.name === column)) {
+    sqlite.exec(`ALTER TABLE ${table} ADD COLUMN ${ddl}`);
+  }
+}
+
 export function runMigrations(sqlite: Database.Database): void {
   sqlite.pragma('journal_mode = WAL');
   sqlite.pragma('foreign_keys = ON');
   const run = sqlite.transaction(() => {
     for (const sql of STATEMENTS) sqlite.exec(sql);
+    ensureColumn(sqlite, 'users', 'github_id', 'github_id TEXT');
+    // SQLite 唯一索引下 NULL 互不冲突，未绑定 GitHub 的用户不受影响
+    sqlite.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_users_github ON users(github_id)');
   });
   run();
 }

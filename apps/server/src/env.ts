@@ -18,13 +18,40 @@ if (!/^[0-9a-fA-F]{64}$/.test(masterKey)) {
   );
 }
 
+const REGISTRATION_MODES = ['open', 'invite', 'closed'] as const;
+export type RegistrationMode = (typeof REGISTRATION_MODES)[number];
+
+const inviteCode = str('INVITE_CODE');
+const rawMode = str('REGISTRATION_MODE');
+// 未设置时兼容旧语义：INVITE_CODE 非空 → invite，否则 open（存量部署升级后行为不变）
+const registrationMode = (rawMode || (inviteCode ? 'invite' : 'open')) as RegistrationMode;
+if (!REGISTRATION_MODES.includes(registrationMode)) {
+  throw new Error(`[env] REGISTRATION_MODE 取值不正确："${rawMode}"，可选 open | invite | closed`);
+}
+if (registrationMode === 'invite' && !inviteCode) {
+  throw new Error('[env] REGISTRATION_MODE=invite 需要同时设置 INVITE_CODE');
+}
+
+const githubClientId = str('GITHUB_CLIENT_ID');
+const githubClientSecret = str('GITHUB_CLIENT_SECRET');
+const appBaseUrl = str('APP_BASE_URL').replace(/\/+$/, '');
+if (Boolean(githubClientId) !== Boolean(githubClientSecret)) {
+  throw new Error('[env] GITHUB_CLIENT_ID 与 GITHUB_CLIENT_SECRET 必须同时设置');
+}
+if (githubClientId && !appBaseUrl) {
+  throw new Error('[env] 启用 GitHub 登录需要设置 APP_BASE_URL（用于构造回调地址，例如 https://your.domain）');
+}
+
 export const env = {
   nodeEnv: str('NODE_ENV', 'development'),
   isProd: str('NODE_ENV') === 'production',
   port: int('PORT', 3001),
   databasePath: str('DATABASE_PATH', './data/tripweaver.db'),
   masterKey,
-  inviteCode: str('INVITE_CODE'),                       // 空 = 注册关闭
+  registrationMode,
+  inviteCode,                                           // 仅 invite 模式使用
+  appBaseUrl,
+  github: { clientId: githubClientId, clientSecret: githubClientSecret },
   siteLlm: {
     baseUrl: str('SITE_LLM_BASE_URL'),
     apiKey: str('SITE_LLM_API_KEY'),
@@ -41,4 +68,8 @@ export const env = {
 
 export function hasSiteLlm(): boolean {
   return Boolean(env.siteLlm.baseUrl && env.siteLlm.apiKey && env.siteLlm.model);
+}
+
+export function hasGithubOauth(): boolean {
+  return Boolean(env.github.clientId && env.github.clientSecret && env.appBaseUrl);
 }

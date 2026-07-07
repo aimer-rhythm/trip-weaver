@@ -17,6 +17,11 @@ export interface MeView {
   email: string;
 }
 
+export interface AuthConfigView {
+  registrationMode: 'open' | 'invite' | 'closed';
+  githubEnabled: boolean;
+}
+
 export interface SettingsView {
   byokEnabled: boolean;
   baseUrl: string;
@@ -27,11 +32,20 @@ export interface SettingsView {
 
 export const keys = {
   me: ['me'] as const,
+  authConfig: ['auth-config'] as const,
   settings: ['settings'] as const,
   usage: ['usage'] as const,
   trips: ['trips'] as const,
   trip: (id: string) => ['trips', id] as const,
 };
+
+export function useAuthConfig() {
+  return useQuery({
+    queryKey: keys.authConfig,
+    queryFn: () => api.get<AuthConfigView>('/api/auth/config'),
+    staleTime: 10 * 60_000,
+  });
+}
 
 export function useMe() {
   return useQuery({

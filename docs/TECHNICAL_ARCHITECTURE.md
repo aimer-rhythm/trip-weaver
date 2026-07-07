@@ -164,7 +164,9 @@ resolveLlmConfig(userId):
 
 | 方法 & 路径 | 说明 | 校验/限制 |
 |---|---|---|
-| `POST /api/auth/register` | 邮箱+密码+**邀请码**（比对 `INVITE_CODE` env） | 密码≥8；3 次/min/IP |
+| `POST /api/auth/register` | 邮箱+密码（`REGISTRATION_MODE=invite` 时另需邀请码，比对 `INVITE_CODE` env） | 密码≥8；3 次/min/IP |
+| `GET /api/auth/config` | 公开：注册模式 + GitHub 登录是否启用（前端据此渲染） | 无需会话 |
+| `GET /api/auth/github` · `GET /api/auth/github/callback` | GitHub OAuth 登录（state 防 CSRF；verified 邮箱自动绑定；token 用完即弃） | 5 次/min/IP；未配置时 404 |
 | `POST /api/auth/login` · `POST /api/auth/logout` · `GET /api/auth/me` | 会话签发/销毁/查询 | 登录 5 次/min/IP；失败不泄露账号存在性 |
 | `GET /api/settings` | 普通字段 + BYOK（key 仅 last4） | 需会话 |
 | `PUT /api/settings` | 写 BYOK（**保存时过 ssrfGuard**，Key 加密入库） | 需会话 |
@@ -193,7 +195,7 @@ resolveLlmConfig(userId):
 | 项 | 方案 |
 |---|---|
 | 密码 / 会话 | bcryptjs(cost 12)；256bit token 存 sha256；Cookie `httpOnly+SameSite=Lax+Secure(生产)`；TTL 30 天滑动 |
-| **注册管控** | 邀请码（env 配置，可更换；泄露即换）——站点 Key 成本与小红书账号的第一道闸 |
+| **注册管控** | 三态 `REGISTRATION_MODE`：open（默认开放）/ invite（邀请码，可随时切回的防滥用刹车）/ closed；未设置时按 `INVITE_CODE` 是否非空推断（向后兼容）。GitHub 登录仅信 verified 邮箱做账号绑定，invite/closed 下不创建新账号 |
 | **配额** | 用户日配额 + 全站小红书日额度（§6）——第二道闸；生成并发 1/用户 |
 | LLM Key | AES-256-GCM（`MASTER_KEY` env）；仅回 last4；日志禁 Key |
 | **SSRF（v0.3 升为强制）** | `ssrfGuard`：BYOK baseUrl 仅允 http(s)，**解析后 IP 落私网/环回/链路本地段一律拒绝**（保存与请求时双查，防 DNS 重绑定）；`SSRF_ALLOWLIST` env 供站长豁免自有内网端点 |
@@ -210,7 +212,8 @@ resolveLlmConfig(userId):
 |---|---|
 | `PORT` / `DATABASE_PATH` | 服务端口 / SQLite 路径 |
 | `MASTER_KEY` | 32 字节 hex，Key 加密主钥 |
-| `INVITE_CODE` | 注册邀请码 |
+| `REGISTRATION_MODE` / `INVITE_CODE` | 注册三态 open/invite/closed（未设置时按 INVITE_CODE 推断）/ 邀请码（invite 模式必填） |
+| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` / `APP_BASE_URL` | GitHub OAuth 登录（可留空=隐藏该入口）/ 站点对外地址（启用 GitHub 时必填） |
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 站点供 Key（可留空=纯 BYOK 模式） |
 | `GEN_DAILY_LIMIT` | 用户日生成配额（默认 3） |
 | `XHS_MCP_URL` / `XHS_DAILY_BUDGET` | 小红书 MCP 地址（可留空=降级模式）/ 全站日额度（默认 500） |
@@ -227,7 +230,7 @@ resolveLlmConfig(userId):
 | R3 | Nominatim 限流 | 中 | 服务端限流队列 + 缓存 + estimated 降级 |
 | R7 | 小红书 MCP 外部依赖不稳（含小号被踢/被限） | 中高 | 适配器隔离 + 自检 + Null 降级不断服务 + 专用小号不他处登录 + 全站日额度 |
 | R8 | 多 Agent token 成本 | 确定 | 摘要化返回/轮次上限/用量落库透明化 |
-| **R11** | **开源后站点被滥用（Key 盗刷/爬注册）** | 中 | 邀请码默认必填 + 双层配额 + 限流 + 用量表审计——三道闸缺一不可 |
+| **R11** | **开源后站点被滥用（Key 盗刷/爬注册）** | 中 | 三态注册开关（滥用时一键切回 invite）+ 双层配额 + 限流 + 用量表审计——三道闸缺一不可 |
 | **R12** | **微信内置浏览器兼容性怪癖**（下载/长按保存/SSE） | 中 | D2 真机实测；长图导出用「长按保存」引导而非 download 属性兜底 |
 | R9 | SSE 被反代缓冲 | 低 | 官方 Caddyfile 已配置；README 注明 nginx 等价配置 |
 | R10 | better-sqlite3 构建 | 低 | Node LTS 预编译；后备 `node:sqlite` |
