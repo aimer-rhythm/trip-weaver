@@ -38,3 +38,36 @@ C0 双冒烟（pi/MCP 离线核对+映射表）；C1 集成层（XhsMcpContentSo
 ### Next Steps
 
 - None - task complete
+
+
+## Session 2: Phase D1+D2 完成：导出三件套与安全走查（M3 达成）
+
+**Date**: 2026-07-07
+**Task**: Phase D1+D2 完成：导出三件套与安全走查（M3 达成）
+**Branch**: `master`
+
+### Summary
+
+D1 导出三件套（PrintView/print.css/toPng 2x/JSON v2/微信长按兜底/列表导出，verify-d1 6/6）；D2 安全走查 23 项全过 + 微信真机清单交付 + 全量回归（m1 18/18、c2 28/28、c3 14/14）。剩余 E1 开源工程化。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `924e036` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
