@@ -1,51 +1,31 @@
 # Quality Guidelines
 
-> Code quality standards for frontend development.
-
----
+> Web-specific quality standards for apps/web.
 
 ## Overview
 
-<!--
-Document your project's quality standards here.
+See shared spec for general quality rules. Web-specific additions:
 
-Questions to answer:
-- What patterns are forbidden?
-- What linting rules do you enforce?
-- What are your testing requirements?
-- What code review standards apply?
--->
+## Web-Only Forbidden Patterns
 
-(To be filled by the team)
+| Pattern | Why |
+|---------|-----|
+| Direct fetch() calls | Use api.client wrapper |
+| window.fetch for API calls | Use React Query hooks |
+| document.title manipulation | Use React Helmet if needed later |
+| Uncontrolled inputs without refs | Prefer controlled components |
+| Global CSS scoping conflicts | Use unique class names with component prefix |
 
----
+## Bundle Size Considerations
 
-## Forbidden Patterns
+- Leaflet is the largest dependency (used in MapView)
+- html-to-image used for PNG export (loaded only on demand)
+- No code splitting currently; revisit if bundle exceeds 500KB
 
-<!-- Patterns that should never be used and why -->
+## Accessibility
 
-(To be filled by the team)
+- Modal uses native <dialog> element (built-in focus trap + ESC)
+- Form inputs have labels and proper types
+- Loading/error states shown for all async operations
+- Buttons have descriptive text (not just icons)
 
----
-
-## Required Patterns
-
-<!-- Patterns that must always be used -->
-
-(To be filled by the team)
-
----
-
-## Testing Requirements
-
-<!-- What level of testing is expected -->
-
-(To be filled by the team)
-
----
-
-## Code Review Checklist
-
-<!-- What reviewers should check -->
-
-(To be filled by the team)

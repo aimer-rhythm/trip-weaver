@@ -2,53 +2,41 @@
 
 > How backend code is organized in this project.
 
----
-
 ## Overview
 
-<!--
-Document your project's backend directory structure here.
+The monorepo has two backend-relevant packages:
+- packages/shared/ - Domain types, TypeBox schemas, constants
+- apps/server/ - Fastify API server
 
-Questions to answer:
-- How are modules/packages organized?
-- Where does business logic live?
-- Where are API endpoints defined?
-- How are utilities and helpers organized?
--->
+## Directory Layout (Canonical)
 
-(To be filled by the team)
+apps/<package>/src/
+ index.ts              # App bootstrap
+ env.ts                # Env validation
+ db/
+   client.ts           # DB client (Drizzle + driver)
+   schema.ts           # Drizzle table definitions
+   migrate.ts          # Startup migrations
+ routes/               # Fastify route plugins
+ services/             # Business logic layer
+ lib/                  # Shared utilities
+ auth/                 # Auth & authorization
+ crypto/               # Encryption
+ integrations/         # Third-party adapters
+ <domain>/             # Domain subsystems
 
----
+## Module Rules
 
-## Directory Layout
+- Routes own request/response handling
+- Services contain business logic (no Fastify imports)
+- Lib has framework-agnostic utilities
+- Auth is cross-cutting (guard, session, password, OAuth)
+- Integrations are adapter pattern
 
-```
-<!-- Replace with your actual structure -->
-src/
-├── ...
-└── ...
-```
+## Naming
 
----
+- kebab-case for dirs and files
+- One concept per file
+- Route files: plural noun (trips.ts)
+- Service files: <domain>Service.ts (tripService.ts)
 
-## Module Organization
-
-<!-- How should new features/modules be organized? -->
-
-(To be filled by the team)
-
----
-
-## Naming Conventions
-
-<!-- File and folder naming rules -->
-
-(To be filled by the team)
-
----
-
-## Examples
-
-<!-- Link to well-organized modules as examples -->
-
-(To be filled by the team)

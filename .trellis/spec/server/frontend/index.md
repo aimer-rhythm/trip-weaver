@@ -1,39 +1,21 @@
-# Frontend Development Guidelines
+# Frontend Development Guidelines (Server)
 
-> Best practices for frontend development in this project.
-
----
+> Server-level frontend conventions for apps/server frontend.
 
 ## Overview
 
-This directory contains guidelines for frontend development. Fill in each file with your project's specific conventions.
-
----
+This directory is reserved for frontend guidelines specific to the server package. Currently, the server has no frontend bundle -- the web frontend is in apps/web.
 
 ## Guidelines Index
 
 | Guide | Description | Status |
 |-------|-------------|--------|
-| [Directory Structure](./directory-structure.md) | Module organization and file layout | To fill |
-| [Component Guidelines](./component-guidelines.md) | Component patterns, props, composition | To fill |
-| [Hook Guidelines](./hook-guidelines.md) | Custom hooks, data fetching patterns | To fill |
-| [State Management](./state-management.md) | Local state, global state, server state | To fill |
-| [Quality Guidelines](./quality-guidelines.md) | Code standards, forbidden patterns | To fill |
-| [Type Safety](./type-safety.md) | Type patterns, validation | To fill |
+| Directory Structure | Module organization and file layout | See shared/web |
+| Component Guidelines | Component patterns, props, composition | See shared/web |
+| Hook Guidelines | Custom hooks, data fetching patterns | See shared/web |
+| State Management | Local state, global state, server state | See shared/web |
+| Quality Guidelines | Code standards, forbidden patterns | See shared/web |
+| Type Safety | Type patterns, validation | See shared/web |
 
----
+Note: Review .trellis/spec/web/frontend/ and .trellis/spec/shared/frontend/ for canonical conventions.
 
-## How to Fill These Guidelines
-
-For each guideline file:
-
-1. Document your project's **actual conventions** (not ideals)
-2. Include **code examples** from your codebase
-3. List **forbidden patterns** and why
-4. Add **common mistakes** your team has made
-
-The goal is to help AI assistants and new team members understand how YOUR project works.
-
----
-
-**Language**: All documentation should be written in **English**.

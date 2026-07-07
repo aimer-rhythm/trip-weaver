@@ -2,50 +2,31 @@
 
 > Database patterns and conventions for this project.
 
----
-
 ## Overview
 
-<!--
-Document your project's database conventions here.
-
-Questions to answer:
-- What ORM/query library do you use?
-- How are migrations managed?
-- What are the naming conventions for tables/columns?
-- How do you handle transactions?
--->
-
-(To be filled by the team)
-
----
-
-## Query Patterns
-
-<!-- How should queries be written? Batch operations? -->
-
-(To be filled by the team)
-
----
-
-## Migrations
-
-<!-- How to create and run migrations -->
-
-(To be filled by the team)
-
----
+- ORM: Drizzle ORM with better-sqlite3 driver
+- Database: SQLite (WAL mode)
+- Migrations: Idempotent CREATE TABLE at startup via side-effect import
 
 ## Naming Conventions
 
-<!-- Table names, column names, index names -->
+| Element | Convention | Example |
+|---------|-----------|---------|
+| Table name | snake_case, plural | trips, user_settings |
+| Column name | snake_case | password_hash, created_at |
+| Primary key | text('id').primaryKey() | UUID strings |
+| Timestamps | integer, Unix ms | created_at, expires_at |
+| Booleans | integer 0/1 | byok_enabled, used_xhs |
 
-(To be filled by the team)
+## Query Patterns
 
----
+- .get() for single row, .all() for multiple, .run() for mutations
+- JSON blob in data TEXT column with redundant summary columns
+- Use nd(...) for compound WHERE clauses
 
 ## Common Mistakes
 
-<!-- Database-related mistakes your team has made -->
+- Forgetting .run() on inserts/updates
+- Using .all() when .get() is enough
+- Not using nd() for compound WHERE clauses
 
-(To be filled by the team)

@@ -1,54 +1,27 @@
 # Directory Structure
 
-> How frontend code is organized in this project.
-
----
+> Web-specific directory structure for apps/web.
 
 ## Overview
 
-<!--
-Document your project's frontend directory structure here.
+apps/web is a Vite + React SPA. See .trellis/spec/shared/frontend/directory-structure.md for the canonical layout.
 
-Questions to answer:
-- Where do components live?
-- How are features/modules organized?
-- Where are shared utilities?
-- How are assets organized?
--->
+## Key Tech Stack
 
-(To be filled by the team)
+- **Vite** (build tool)
+- **React 19** with hooks
+- **React Router 7** (createBrowserRouter)
+- **@tanstack/react-query** (server state)
+- **Zustand** (editor state)
 
----
+## Page Routing
 
-## Directory Layout
+`
+/ - Redirects to /trips
+/trips - TripListPage
+/trips/new - PlannerPage (generate new trip)
+/trips/:id - TripEditorPage (edit existing trip)
+/login - LoginPage
+/register - RegisterPage
+`
 
-```
-<!-- Replace with your actual structure -->
-src/
-├── ...
-└── ...
-```
-
----
-
-## Module Organization
-
-<!-- How should new features be organized? -->
-
-(To be filled by the team)
-
----
-
-## Naming Conventions
-
-<!-- File and folder naming rules -->
-
-(To be filled by the team)
-
----
-
-## Examples
-
-<!-- Link to well-organized modules as examples -->
-
-(To be filled by the team)

@@ -2,58 +2,57 @@
 
 > How components are built in this project.
 
----
+## Component Patterns
 
-## Overview
-
-<!--
-Document your project's component conventions here.
-
-Questions to answer:
-- What component patterns do you use?
-- How are props defined?
-- How do you handle composition?
-- What accessibility standards apply?
--->
-
-(To be filled by the team)
-
----
+- **Functional Components** with hooks (no class components)
+- Props typed with TypeScript interfaces (inline in file)
+- No prop-drilling beyond 2 levels -- use Zustand store
 
 ## Component Structure
 
-<!-- Standard structure of a component file -->
+`	sx
+// Standard structure: import, helper, component, export
 
-(To be filled by the team)
+import { useState } from 'react';
+import { useEditorStore } from '../../store/editorStore';
 
----
+interface Props {
+  trip: Trip;
+  onSave: () => void;
+}
+
+export function MyComponent({ trip, onSave }: Props) {
+  // State hooks at top
+  const [open, setOpen] = useState(false);
+  // Store selectors
+  const revision = useEditorStore((s) => s.revision);
+  // Effects
+  useEffect(() => { ... }, [deps]);
+  // Handlers
+  const handleClick = () => { ... };
+  // Render
+  return <div>...</div>;
+}
+`
 
 ## Props Conventions
 
-<!-- How props should be defined and typed -->
-
-(To be filled by the team)
-
----
+- Interface named Props defined above the component
+- Optional props with ? for non-required
+- No defaultProps -- use default parameter values
 
 ## Styling Patterns
 
-<!-- How styles are applied (CSS modules, styled-components, Tailwind, etc.) -->
+- **Plain CSS** in styles/global.css and styles/print.css
+- No CSS-in-JS, no Tailwind, no CSS modules
+- Component class names map to semantic CSS classes
+- Print styles in separate print.css
 
-(To be filled by the team)
+## Common Components
 
----
+- Modal -- wraps <dialog> element
+- AppLayout -- shell with topbar, outlet, settings
+- ExportMenu -- dropdown with PNG/JSON/Print
+- GenerationTimeline -- multi-phase progress display
+- Editor components under components/editor/
 
-## Accessibility
-
-<!-- A11y requirements and patterns -->
-
-(To be filled by the team)
-
----
-
-## Common Mistakes
-
-<!-- Component-related mistakes your team has made -->
-
-(To be filled by the team)

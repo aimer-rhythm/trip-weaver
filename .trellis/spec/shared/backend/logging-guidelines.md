@@ -2,50 +2,24 @@
 
 > How logging is done in this project.
 
----
+## Logger
 
-## Overview
-
-<!--
-Document your project's logging conventions here.
-
-Questions to answer:
-- What logging library do you use?
-- What are the log levels and when to use each?
-- What should be logged?
-- What should NOT be logged (PII, secrets)?
--->
-
-(To be filled by the team)
-
----
+Fastify/Pino via app.log and request.log.
 
 ## Log Levels
 
-<!-- When to use each level: debug, info, warn, error -->
-
-(To be filled by the team)
-
----
+| Level | When |
+|-------|------|
+| error | Unhandled exceptions, 5xx errors |
+| warn | Recoverable failures |
+| info | Server startup (automatic) |
+| debug | Development (automatic in dev mode) |
 
 ## Structured Logging
 
-<!-- Log format, required fields -->
-
-(To be filled by the team)
-
----
-
-## What to Log
-
-<!-- Important events to log -->
-
-(To be filled by the team)
-
----
+Use object-first signature: request.log.warn({ err }, 'message') - the { err } wrapper enables Pino error serialization.
 
 ## What NOT to Log
 
-<!-- Sensitive data, PII, secrets -->
+Passwords, password hashes, API keys, session tokens, full sensitive request bodies.
 
-(To be filled by the team)

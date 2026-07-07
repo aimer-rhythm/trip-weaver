@@ -1,59 +1,36 @@
 # Component Guidelines
 
-> How components are built in this project.
-
----
+> Web-specific component patterns for apps/web.
 
 ## Overview
 
-<!--
-Document your project's component conventions here.
+See .trellis/spec/shared/frontend/component-guidelines.md for shared conventions. This file documents web-specific patterns.
 
-Questions to answer:
-- What component patterns do you use?
-- How are props defined?
-- How do you handle composition?
-- What accessibility standards apply?
--->
+## Page Components
 
-(To be filled by the team)
+Each page has a corresponding file in pages/:
 
----
+- LoginPage - login form with optional GitHub OAuth
+- RegisterPage - registration form with optional invite code
+- TripListPage - trip card grid with import/export/rename/delete
+- PlannerPage - generation form + SSE progress timeline
+- TripEditorPage - full trip editor with map, budget, itinerary
 
-## Component Structure
+## Editor Sub-Components (components/editor/)
 
-<!-- Standard structure of a component file -->
+- DaySection - collapsible day with activity list
+- ActivityCard - single activity display with reorder/move
+- ActivityEditDialog - modal form for adding/editing activities
+- TripMetaDialog - modal for editing trip metadata
+- MapView - Leaflet map with activity markers
+- BudgetPanel - budget summary breakdown
 
-(To be filled by the team)
+## Shared Components (components/)
 
----
+- Modal - generic <dialog> wrapper
+- AppLayout - topbar shell with auth/usage/settings
+- ExportMenu - PNG/JSON/Print export dropdown
+- GenerationTimeline - multi-phase generation progress
+- SettingsDialog - BYOK settings form
+- PrintView - print-optimized trip display
 
-## Props Conventions
-
-<!-- How props should be defined and typed -->
-
-(To be filled by the team)
-
----
-
-## Styling Patterns
-
-<!-- How styles are applied (CSS modules, styled-components, Tailwind, etc.) -->
-
-(To be filled by the team)
-
----
-
-## Accessibility
-
-<!-- A11y requirements and patterns -->
-
-(To be filled by the team)
-
----
-
-## Common Mistakes
-
-<!-- Component-related mistakes your team has made -->
-
-(To be filled by the team)

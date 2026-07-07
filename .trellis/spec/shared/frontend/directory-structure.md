@@ -2,53 +2,43 @@
 
 > How frontend code is organized in this project.
 
----
-
 ## Overview
 
-<!--
-Document your project's frontend directory structure here.
+The frontend packages:
+- **apps/web/** - Vite + React SPA (the primary web frontend)
+- **packages/shared/** - Types, schemas, constants shared with backend
 
-Questions to answer:
-- Where do components live?
-- How are features/modules organized?
-- Where are shared utilities?
-- How are assets organized?
--->
+## Directory Layout (Canonical)
 
-(To be filled by the team)
+`
+apps/web/src/
+├── main.tsx                # React entry point
+├── App.tsx                 # App shell (QueryClient + Router)
+├── router.tsx              # React Router config
+├── api/
+│   ├── client.ts           # HTTP client wrapper
+│   └── hooks.ts            # React Query hooks
+├── store/                  # Zustand stores
+├── pages/                  # Route-level page components
+├── components/             # Reusable UI components
+│   ├── editor/             # Trip editor sub-components
+│   └── *.tsx               # Other shared components
+├── lib/                    # Utility modules
+└── styles/                 # Global CSS
+`
 
----
+## Module Rules
 
-## Directory Layout
-
-```
-<!-- Replace with your actual structure -->
-src/
-├── ...
-└── ...
-```
-
----
-
-## Module Organization
-
-<!-- How should new features be organized? -->
-
-(To be filled by the team)
-
----
+- **Pages** are route-level components, one file per route
+- **Components** are reusable, one file per component
+- **Editor** sub-components live in components/editor/
+- **API layer** is centralized: client + hooks
+- **Store** is minimal (only editor state)
+- **Lib** contains pure utilities
 
 ## Naming Conventions
 
-<!-- File and folder naming rules -->
+- PascalCase for component files: AppLayout.tsx, ExportMenu.tsx
+- camelCase for utility files: client.ts, hooks.ts, xport.ts
+- Test files: ComponentName.test.tsx
 
-(To be filled by the team)
-
----
-
-## Examples
-
-<!-- Link to well-organized modules as examples -->
-
-(To be filled by the team)

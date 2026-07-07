@@ -1,51 +1,53 @@
 # Hook Guidelines
 
-> How hooks are used in this project.
-
----
+> Web-specific hook patterns for apps/web.
 
 ## Overview
 
-<!--
-Document your project's hook conventions here.
+All data-fetching hooks live in pi/hooks.ts. See shared spec for conventions.
 
-Questions to answer:
-- What custom hooks do you have?
-- How do you handle data fetching?
-- What are the naming conventions?
-- How do you share stateful logic?
--->
+## Web-Specific Patterns
 
-(To be filled by the team)
+### API Client (api/client.ts)
 
----
+`	s
+// Centralized fetch wrapper with error handling
+export class ApiError extends Error {
+  constructor(public status: number, message: string, public data: Record<string, unknown> | null = null) {
+    super(message);
+  }
+}
 
-## Custom Hook Patterns
+export const api = {
+  get: <T>(path: string) => request<T>(path),
+  post: <T>(path: string, body?: unknown) => request<T>(path, { method: 'POST', body: JSON.stringify(body) }),
+  put: <T>(path: string, body: unknown) => request<T>(path, { method: 'PUT', body: JSON.stringify(body) }),
+  patch: <T>(path: string, body: unknown) => request<T>(path, { method: 'PATCH', body: JSON.stringify(body) }),
+  del: <T>(path: string) => request<T>(path, { method: 'DELETE' }),
+};
+`
 
-<!-- How to create and structure custom hooks -->
+### SSE Pattern (PlannerPage)
 
-(To be filled by the team)
+Generation progress uses EventSource with Last-Event-ID replay:
 
----
+`	s
+const es = new EventSource(/api/generations//events?lastEventId=0);
+es.onmessage = (msg) => {
+  const ev = JSON.parse(msg.data) as GenerationEvent;
+  setEvents((prev) => [...prev, ev]);
+};
+`
 
-## Data Fetching
+### Auto-Save Pattern (TripEditorPage)
 
-<!-- How data fetching is handled (React Query, SWR, etc.) -->
+`	s
+useEffect(() => {
+  if (revision === 0) return;
+  const timer = setTimeout(() => {
+    saveTrip.mutate(current);
+  }, 800);
+  return () => clearTimeout(timer);
+}, [revision]);
+`
 
-(To be filled by the team)
-
----
-
-## Naming Conventions
-
-<!-- Hook naming rules (use*, etc.) -->
-
-(To be filled by the team)
-
----
-
-## Common Mistakes
-
-<!-- Hook-related mistakes your team has made -->
-
-(To be filled by the team)

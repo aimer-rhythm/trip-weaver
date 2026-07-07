@@ -2,50 +2,25 @@
 
 > Code quality standards for backend development.
 
----
-
-## Overview
-
-<!--
-Document your project's quality standards here.
-
-Questions to answer:
-- What patterns are forbidden?
-- What linting rules do you enforce?
-- What are your testing requirements?
-- What code review standards apply?
--->
-
-(To be filled by the team)
-
----
-
 ## Forbidden Patterns
 
-<!-- Patterns that should never be used and why -->
-
-(To be filled by the team)
-
----
+| Pattern | Why |
+|---------|-----|
+| any type | Use unknown + type guard |
+| process.env direct access | Use validated env.ts |
+| console.log in production | Use Fastify logger |
+| fetch without AbortSignal.timeout | Risk of hanging |
+| require() calls | ESM only |
 
 ## Required Patterns
 
-<!-- Patterns that must always be used -->
+| Pattern | Where |
+|---------|-------|
+| TypeBox schema for request body | Routes |
+| requireAuth preHandler | Protected routes |
+| Service layer delegation | Route handlers |
+| env.ts for config | Every module |
+| structuredClone() for immutable updates | Domain objects |
+| AbortSignal.timeout() | External HTTP calls |
+| statusCode on error objects | Business logic |
 
-(To be filled by the team)
-
----
-
-## Testing Requirements
-
-<!-- What level of testing is expected -->
-
-(To be filled by the team)
-
----
-
-## Code Review Checklist
-
-<!-- What reviewers should check -->
-
-(To be filled by the team)

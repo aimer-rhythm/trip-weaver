@@ -1,51 +1,49 @@
 # State Management
 
-> How state is managed in this project.
-
----
+> Web-specific state management for apps/web.
 
 ## Overview
 
-<!--
-Document your project's state management conventions here.
+See shared spec for general patterns. Web-specific details:
 
-Questions to answer:
-- What state management solution do you use?
-- How is local vs global state decided?
-- How do you handle server state?
-- What are the patterns for derived state?
--->
+### Editor Store Pattern
 
-(To be filled by the team)
+The Zustand editor store uses a mutate helper that clones the draft before mutation:
 
----
+`	s
+const mutate = (fn: (draft: Trip) => void) => {
+  const cur = get().trip;
+  if (!cur) return;
+  const draft = structuredClone(cur);
+  fn(draft);
+  set({ trip: draft, revision: get().revision + 1 });
+};
+`
 
-## State Categories
+### Auto-Save Flow
 
-<!-- Local state, global state, server state, URL state -->
+`
+User edits -> revision++ -> debounce 800ms -> useSaveTrip mutation -> server update
+                                                                         |
+                                                                   invalidateQueries
+`
 
-(To be filled by the team)
+### Form State (PlannerPage)
 
----
+Generation form uses local useState (no global state needed):
 
-## When to Use Global State
+`	s
+const [destination, setDestination] = useState('');
+const [days, setDays] = useState(3);
+`
 
-<!-- Criteria for promoting state to global -->
+### Job State (PlannerPage)
 
-(To be filled by the team)
+Active generation job stored in sessionStorage for refresh recovery:
 
----
+`	s
+const JOB_KEY = 'tw.activeJobId';
+sessionStorage.setItem(JOB_KEY, jobId);
+// On refresh: check snapshot, reconnect SSE if running, navigate if done
+`
 
-## Server State
-
-<!-- How server data is cached and synchronized -->
-
-(To be filled by the team)
-
----
-
-## Common Mistakes
-
-<!-- State management mistakes your team has made -->
-
-(To be filled by the team)

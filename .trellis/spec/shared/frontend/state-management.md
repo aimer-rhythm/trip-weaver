@@ -2,50 +2,42 @@
 
 > How state is managed in this project.
 
----
-
-## Overview
-
-<!--
-Document your project's state management conventions here.
-
-Questions to answer:
-- What state management solution do you use?
-- How is local vs global state decided?
-- How do you handle server state?
-- What are the patterns for derived state?
--->
-
-(To be filled by the team)
-
----
-
 ## State Categories
 
-<!-- Local state, global state, server state, URL state -->
-
-(To be filled by the team)
-
----
-
-## When to Use Global State
-
-<!-- Criteria for promoting state to global -->
-
-(To be filled by the team)
-
----
+| Category | Tool | Scope |
+|----------|------|-------|
+| Server state | React Query | API data, caching |
+| Editor state | Zustand | Trip editing (draft) |
+| URL state | React Router | Routes, params |
+| Local state | useState | Modal open, form state, UI flags |
 
 ## Server State
 
-<!-- How server data is cached and synchronized -->
+- All API data managed by React Query
+- Server is the single source of truth for business data
+- Editor uses a local draft; auto-save writes back to server
 
-(To be filled by the team)
+## Local (Editor) State
 
----
+- **Zustand** store for trip editor (store/editorStore.ts)
+- Structured clone for immutable updates: structuredClone(cur)
+- Revision counter drives auto-save debounce
 
-## Common Mistakes
+`	s
+// Store pattern: single create() call per store
+export const useEditorStore = create<EditorState>((set, get) => ({
+  trip: null,
+  revision: 0,
+  load: (trip) => set({ trip: structuredClone(trip), revision: 0 }),
+  updateMeta: (patch) => mutate((draft) => Object.assign(draft, patch)),
+  addDay: () => mutate((draft) => { draft.days.push(...) }),
+  // ...
+}));
+`
 
-<!-- State management mistakes your team has made -->
+## When to Use Global State
 
-(To be filled by the team)
+- Only trip editor state is global (via Zustand)
+- Everything else is local state or React Query
+- Avoid adding new Zustand stores without strong justification
+

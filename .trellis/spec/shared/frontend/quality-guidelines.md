@@ -2,50 +2,34 @@
 
 > Code quality standards for frontend development.
 
----
-
-## Overview
-
-<!--
-Document your project's quality standards here.
-
-Questions to answer:
-- What patterns are forbidden?
-- What linting rules do you enforce?
-- What are your testing requirements?
-- What code review standards apply?
--->
-
-(To be filled by the team)
-
----
-
 ## Forbidden Patterns
 
-<!-- Patterns that should never be used and why -->
-
-(To be filled by the team)
-
----
+| Pattern | Why |
+|---------|-----|
+| Class components | Use functional + hooks |
+| CSS-in-JS | Project uses plain CSS |
+| any type | Prefer unknown + type guard |
+| Direct DOM manipulation | Use React refs |
+| Inline styles | Use CSS classes |
+| prop-drilling > 2 levels | Extract to store or context |
 
 ## Required Patterns
 
-<!-- Patterns that must always be used -->
-
-(To be filled by the team)
-
----
-
-## Testing Requirements
-
-<!-- What level of testing is expected -->
-
-(To be filled by the team)
-
----
+| Pattern | Where |
+|---------|-------|
+| TypeScript strict mode | All files |
+| React hooks at top of component | All components |
+| React Query for API data | Data fetching |
+| Zustand for editor state | Trip editing |
+| Semantic CSS class names | Styles |
+| ApiError class for error handling | API calls |
 
 ## Code Review Checklist
 
-<!-- What reviewers should check -->
+- [ ] No class components
+- [ ] Props typed with interface
+- [ ] Hooks follow rules (top-level, no conditionals)
+- [ ] Query keys consistent with keys pattern
+- [ ] No direct API calls in components
+- [ ] CSS changes use existing naming conventions
 
-(To be filled by the team)

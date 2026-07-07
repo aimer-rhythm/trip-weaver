@@ -2,50 +2,27 @@
 
 > How errors are handled in this project.
 
----
-
 ## Overview
 
-<!--
-Document your project's error handling conventions here.
+- Global handler: Fastify pp.setErrorHandler() - single entry point
+- Business errors: throw Error with statusCode property
 
-Questions to answer:
-- What error types do you define?
-- How are errors propagated?
-- How are errors logged?
-- How are errors returned to clients?
--->
+## API Error Response Format
 
-(To be filled by the team)
+{ error, detail?, code?, resetAt?, jobId? }
 
----
-
-## Error Types
-
-<!-- Custom error classes/types -->
-
-(To be filled by the team)
-
----
-
-## Error Handling Patterns
-
-<!-- Try-catch patterns, error propagation -->
-
-(To be filled by the team)
-
----
-
-## API Error Responses
-
-<!-- Standard error response format -->
-
-(To be filled by the team)
-
----
+| Status | Use Case |
+|--------|----------|
+| 400 | Validation, SSRF, business logic |
+| 401 | Not authenticated |
+| 403 | Forbidden (closed registration) |
+| 404 | Not found |
+| 409 | Conflict (duplicate, limit, job running) |
+| 429 | Rate limit / quota exhausted |
+| 500 | Internal server error |
 
 ## Common Mistakes
 
-<!-- Error handling mistakes your team has made -->
+- Throwing Error without statusCode - caught as 500
+- reply.send() after reply.hijack() in SSE endpoints
 
-(To be filled by the team)

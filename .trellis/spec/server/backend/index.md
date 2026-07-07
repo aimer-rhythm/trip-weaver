@@ -1,38 +1,20 @@
-# Backend Development Guidelines
+# Backend Development Guidelines (Server)
 
-> Best practices for backend development in this project.
-
----
+> Server-specific backend conventions for apps/server.
 
 ## Overview
 
-This directory contains guidelines for backend development. Fill in each file with your project's specific conventions.
-
----
+This directory contains server-specific guidelines that extend the shared backend spec.
 
 ## Guidelines Index
 
 | Guide | Description | Status |
 |-------|-------------|--------|
-| [Directory Structure](./directory-structure.md) | Module organization and file layout | To fill |
-| [Database Guidelines](./database-guidelines.md) | ORM patterns, queries, migrations | To fill |
-| [Error Handling](./error-handling.md) | Error types, handling strategies | To fill |
-| [Quality Guidelines](./quality-guidelines.md) | Code standards, forbidden patterns | To fill |
-| [Logging Guidelines](./logging-guidelines.md) | Structured logging, log levels | To fill |
+| Directory Structure | Module organization and file layout | See shared |
+| Database Guidelines | ORM patterns, queries, migrations | See shared |
+| Error Handling | Error types, handling strategies | See shared |
+| Quality Guidelines | Code standards, forbidden patterns | See shared |
+| Logging Guidelines | Structured logging, log levels | See shared |
 
----
+Note: Server reuses shared backend guidelines. Review .trellis/spec/shared/backend/ for canonical conventions.
 
-## How to Fill These Guidelines
-
-For each guideline file:
-
-1. Document your project's **actual conventions** (not ideals)
-2. Include **code examples** from your codebase
-3. List **forbidden patterns** and why
-4. Add **common mistakes** your team has made
-
-The goal is to help AI assistants and new team members understand how YOUR project works.
-
----
-
-**Language**: All documentation should be written in **English**.
