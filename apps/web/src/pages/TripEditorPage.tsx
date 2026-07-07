@@ -7,6 +7,7 @@ import { BudgetPanel } from '../components/editor/BudgetPanel';
 import { DaySection } from '../components/editor/DaySection';
 import { MapView } from '../components/editor/MapView';
 import { TripMetaDialog } from '../components/editor/TripMetaDialog';
+import { ExportMenu } from '../components/ExportMenu';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error';
 type PanelTab = 'itinerary' | 'budget';
@@ -110,6 +111,7 @@ export function TripEditorPage() {
         </div>
         <div className="editor-toolbar-right">
           <span className={`save-state ${saveState === 'error' ? 'text-danger' : ''}`}>{saveLabel[saveState]}</span>
+          <ExportMenu trip={trip} />
           <button type="button" className="btn btn-ghost" onClick={() => setMetaOpen(true)}>
             行程信息
           </button>

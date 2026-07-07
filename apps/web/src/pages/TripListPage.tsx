@@ -1,7 +1,9 @@
 import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { TRIP_EXPORT_VERSION, makeSampleTrip } from '@tripweaver/shared';
+import { TRIP_EXPORT_VERSION, makeSampleTrip, type Trip } from '@tripweaver/shared';
 import { useDeleteTrip, useImportTrip, useRenameTrip, useTrips } from '../api/hooks';
+import { api } from '../api/client';
+import { exportTripJson } from '../lib/export';
 
 function formatTime(ts: number): string {
   const d = new Date(ts);
@@ -42,6 +44,15 @@ export function TripListPage() {
 
   const onDelete = (id: string, title: string) => {
     if (window.confirm(`确定删除行程「${title}」？此操作不可恢复。`)) deleteTrip.mutate(id);
+  };
+
+  // 列表级导出：取全量数据后走统一导出函数（F7）
+  const onExport = async (id: string) => {
+    try {
+      exportTripJson(await api.get<Trip>(`/api/trips/${id}`));
+    } catch (err) {
+      alert(`导出失败：${err instanceof Error ? err.message : '未知错误'}`);
+    }
   };
 
   return (
@@ -98,6 +109,9 @@ export function TripListPage() {
               <span className="trip-card-time muted">更新于 {formatTime(t.updatedAt)}</span>
             </Link>
             <div className="trip-card-actions">
+              <button type="button" className="btn btn-ghost" onClick={() => void onExport(t.id)}>
+                导出
+              </button>
               <button type="button" className="btn btn-ghost" onClick={() => onRename(t.id, t.title)}>
                 重命名
               </button>

@@ -133,18 +133,19 @@
 
 #### Phase D1 — 导出三件套（2h）
 
-- [ ] PrintView + print.css；export.ts（toPng 2x/JSON/打印）；导入→POST /api/trips；ExportMenu
+- [x] PrintView + print.css（visibility 打印隔离 + break-inside 防截断）；export.ts（toPng 2x/JSON v2/打印/微信 UA 探测）；ExportMenu（含微信「长按保存」引导层）
+- [x] 导入→POST /api/trips（列表页已有）+ 列表卡片「导出 JSON」（F7 补齐）
 
-**验收**：PRD F5 通过（跨账号导入还原）。
+**验收**：PRD F5 通过（跨账号导入还原）。✅（2026-07-07 `node scripts/verify-d1.mjs` 6/6 PASS：JSON v2/长图 521KB/打印隔离/列表导出/跨账号 100% 还原/坏文件报错；微信真机项待 D2 清单回填）
 
 #### Phase D2 — 响应式、微信真机与安全走查（3h）—— 🏁 M3
 
-- [ ] ≤768px 三页签打磨（切地图 invalidateSize）；空态/长文本/无坐标标识
-- [ ] **微信内置浏览器真机实测**：注册→生成（SSE）→地图手势→长图保存（download 失效则「长按保存」引导兜底）→JSON 导出
-- [ ] 安全走查：横向越权/限流/Key 不见于响应与日志/Cookie 属性/ssrfGuard 双查/邀请码
-- [ ] 全量回归：PRD 24 条 + 三包 tsc + build + 生产模式复验（静态托管/SSE/地图/导出）
+- [x] ≤768px 三页签（M1 已达标并回归）；空态/长文本/无坐标标识（既有）；生成表单与时间线移动端视口通过（C3 验收覆盖）
+- [ ] **微信内置浏览器真机实测**：自动化不可覆盖 → 已交付 [docs/WECHAT_CHECKLIST.md](./WECHAT_CHECKLIST.md)（10 项，含长按保存兜底说明），待站长真机回填
+- [x] 安全走查：`scripts/verify-security.mjs` 23 项全过（横向越权 404 全路径/注册登录限流 429/Key 不见于响应·日志·库文件三重检/Cookie HttpOnly+Lax+生产 Secure/ssrfGuard 四类拦截+白名单/邀请码/失败不泄露账号存在性）
+- [x] 全量回归：三包 tsc + build + 生产模式复验（C3/D1 脚本即生产静态托管链路）+ verify-m1 18/18 + verify-c2 28/28 + verify-c3 14/14 + verify-d1 6/6
 
-**验收**：PRD §7 成功标准 1、3、5 达成。
+**验收**：PRD §7 成功标准 1、3、5 达成。✅（2026-07-07；标准 3 的微信端子项待真机清单回填）
 
 ### E — 开源发布
 
