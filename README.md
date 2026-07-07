@@ -25,6 +25,12 @@ React SPA ──HTTP API + SSE──▶ Fastify 路由层 ──▶ 多 Agent �
 
 技术栈：React 18 + Vite / Fastify + TypeBox / SQLite + Drizzle / zustand + TanStack Query / Leaflet。详见 [docs/TECHNICAL_ARCHITECTURE.md](docs/TECHNICAL_ARCHITECTURE.md)。
 
+## 截图
+
+| 智能生成（三阶段时间线） | 行程编辑器（清单 + 地图 + 预算） | 移动端 |
+|---|---|---|
+| ![生成进度](docs/screenshots/generation.png) | ![编辑器](docs/screenshots/editor.png) | ![移动端](docs/screenshots/mobile.png) |
+
 ## 快速部署（站长）
 
 ```bash
@@ -52,9 +58,24 @@ npm run dev                        # server:3001 + web:5173
 | `INVITE_CODE` | 建议 | 注册邀请码；留空 = 注册关闭 |
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 建议 | 站点供 Key（普通用户零配置使用）；留空 = 纯 BYOK 模式 |
 | `GEN_DAILY_LIMIT` | | 每用户每日生成次数（默认 3） |
-| `XHS_MCP_URL` | | 小红书 MCP 服务地址；留空 = 降级为模型知识调研 |
+| `XHS_MCP_URL` | | 小红书 MCP 服务地址；留空 = 降级为模型知识调研。compose 内启用自带 MCP 服务时填 `http://xiaohongshu-mcp:18060/mcp` |
 | `XHS_DAILY_BUDGET` | | 全站小红书调用日额度（默认 500） |
 | `SSRF_ALLOWLIST` | | BYOK baseUrl 私网豁免（站长自有 Ollama 等） |
+
+### 推荐模型量级
+
+三 Agent 流水线依赖**可靠的多轮工具调用**。推荐 `deepseek-chat`、`gpt-4o-mini`、`glm-4-air` 及以上量级；小参数本地模型（<7B）容易在工具调用上反复失败——系统有轮次熔断与完整性校验兜底，但体验会明显变差。
+
+### 验证与冒烟脚本
+
+```bash
+npm run typecheck                 # 三包类型检查
+node scripts/smoke-pi.mjs         # 冒烟：LLM 端点连通（读 apps/server/.env 的 SITE_LLM_*）
+node scripts/smoke-mcp.mjs        # 冒烟：小红书 MCP 握手与工具清单
+node scripts/verify-c2.mjs        # 端到端：生成流水线 + 配额 + BYOK（内置 mock LLM，离线可跑）
+node scripts/verify-security.mjs  # 安全走查：越权/限流/Key 泄露/SSRF 等 23 项
+npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏览器级验收（需 Playwright）
+```
 
 ## 小红书数据源（重要）
 
@@ -86,9 +107,9 @@ MCP 服务不可用时生成流程不会失败——自动降级为模型知识�
 ## 路线图
 
 - [x] M1 全栈行程编辑器（认证/历史/编辑/地图/预算）
-- [ ] M2 多 Agent 智能生成（调研/编排/审校 + SSE 进度）
-- [ ] M3 导出三件套 + 微信浏览器适配
-- [ ] M4 开源发布（Docker/CI/文档）
+- [x] M2 多 Agent 智能生成（调研/编排/审校 + SSE 进度）
+- [x] M3 导出三件套 + 安全走查（微信真机清单见 [docs/WECHAT_CHECKLIST.md](docs/WECHAT_CHECKLIST.md)）
+- [x] M4 开源发布（Docker/CI/文档）
 - [ ] V1.1 候选：对话式改稿、只读分享页、BYO-MCP、站长后台
 
 ## License

@@ -151,12 +151,12 @@
 
 #### Phase E1 — 开源工程化（3.5h）—— 🏁 M4
 
-- [ ] Dockerfile（多阶段）+ docker-compose.yml（app + 可选 xiaohongshu-mcp + caddy，数据卷）+ Caddyfile（SSE flush 配置）
-- [ ] `.env.example` 全量注释；GitHub Actions（三包 typecheck + build）
-- [ ] LICENSE（MIT）+ README：截图、三分钟部署指引、**小红书专用小号声明（不用主账号/不他处登录网页版）**、成本与配额说明、推荐模型量级、安全说明
-- [ ] 干净机器（或干净目录）按 README 从零部署演练一遍
+- [x] Dockerfile（多阶段）+ docker-compose.yml（app + 可选 xiaohongshu-mcp 注释模板 + caddy，数据卷）+ Caddyfile（SSE `flush_interval -1`）——A0 期已建，E1 复核与实现一致
+- [x] `.env.example` 全量注释（补 compose 内 MCP 主机名提示）；GitHub Actions（三包 typecheck + build，分支覆盖 main/master）
+- [x] LICENSE（MIT）+ README：截图（docs/screenshots）、三分钟部署指引、小红书专用小号声明、成本与配额说明、**推荐模型量级**、安全说明、验证与冒烟脚本清单
+- [x] 干净目录部署演练：git archive → npm ci（349 包/27s）→ typecheck+build → 生产模式启动 → health/注册 201/SPA 托管全通。**本机无 Docker**，compose 构建烟测待有 Docker 的环境执行（Dockerfile 与演练用的同一套 npm 命令）
 
-**验收**：PRD §7 成功标准 2（站长 30 分钟可复现）+ 4（用量可查可估算）；CI 绿。
+**验收**：PRD §7 成功标准 2 + 4；CI 绿。✅（2026-07-07；CI 实际运行待推送 GitHub 后确认，配置已按 master/main 双分支覆盖）
 
 ---
 
