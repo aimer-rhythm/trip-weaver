@@ -69,8 +69,8 @@ export function ActivityCard({ day, activity, index, allDays, onEdit }: Props) {
           {!hasValidCoord(activity) && <span className="tag tag-warn">无坐标</span>}
           {hasValidCoord(activity) && activity.coordSource === 'estimated' && <span className="tag tag-warn">坐标为估算</span>}
           {activity.sourceNotes.map((n) => (
-            <a key={n.url} className="tag tag-xhs" href={n.url} target="_blank" rel="noopener noreferrer">
-              📕 {n.title || '来源笔记'}
+            <a key={n.url} className="tag tag-source" href={n.url} target="_blank" rel="noopener noreferrer">
+              🔗 {n.title || '来源笔记'}
             </a>
           ))}
         </div>

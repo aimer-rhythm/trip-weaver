@@ -145,12 +145,17 @@ export function useDeleteTrip() {
 
 // ---------- 智能生成（C3） ----------
 
-export interface XhsStatusView {
+/** 单个调研数据源自检状态（服务端 integrations/sourceStatus 同形状） */
+export interface SourceStatusView {
   configured: boolean;
   checked: boolean;
-  ok: boolean | null;
-  loggedIn: boolean | null;
+  ok: boolean | null;   // null = 未配置（无从探测）
   message: string;
+}
+
+export interface SourcesStatusView {
+  amap: SourceStatusView;
+  websearch: SourceStatusView;
 }
 
 export function useStartGeneration() {
@@ -170,10 +175,10 @@ export function fetchJobSnapshot(jobId: string): Promise<GenerationJobView> {
   return api.get<GenerationJobView>(`/api/generations/${jobId}`);
 }
 
-export function useXhsStatus(enabled: boolean) {
+export function useSourcesStatus(enabled: boolean) {
   return useQuery({
-    queryKey: ['xhs-status'] as const,
-    queryFn: () => api.get<XhsStatusView>('/api/settings/xhs-status'),
+    queryKey: ['sources-status'] as const,
+    queryFn: () => api.get<SourcesStatusView>('/api/settings/sources-status'),
     enabled,
     staleTime: 30_000,
     retry: false,

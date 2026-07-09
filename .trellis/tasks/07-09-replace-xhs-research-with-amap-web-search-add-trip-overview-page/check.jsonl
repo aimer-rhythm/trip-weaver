@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "后端改动（数据源/流水线/XHS 移除）的质量门槛"}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "概览页前端改动的质量门槛"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "核查降级链完整性：任一源缺失/超额不断服"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "核查 shared→server→web 候选池数据流一致性与旧数据兼容"}
+{"file": ".trellis/tasks/07-09-replace-xhs-research-with-amap-web-search-add-trip-overview-page/research/data-sources.md", "reason": "核对合规红线：高德图片热链不落库、候选仅短摘要+来源、坐标走 Nominatim"}

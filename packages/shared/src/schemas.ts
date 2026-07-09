@@ -3,9 +3,13 @@ import {
   ACTIVITY_CATEGORIES,
   BUDGET_LEVELS,
   COORD_SOURCES,
+  DATA_SOURCE_KINDS,
+  MAX_OVERVIEW_POIS,
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
+  POI_CATEGORIES,
   PREFERENCE_OPTIONS,
+  RESERVATION_STATUSES,
   TRIP_EXPORT_VERSION,
 } from './constants';
 
@@ -43,9 +47,23 @@ export const TripDaySchema = Type.Object({
   activities: Type.Array(ActivitySchema),
 });
 
+// 调研候选（行程概览卡片）。高德协议 3.5：只落名称+短摘要+来源链接，图片仅存热链 URL 不转存文件
+export const ResearchPoiSchema = Type.Object({
+  id: Type.String(),
+  name: Type.String({ minLength: 1, maxLength: 100 }),
+  category: StringEnum(POI_CATEGORIES),
+  coverUrl: Type.Optional(Type.String({ maxLength: 300 })),        // 预览图热链，可能失效（前端 onerror 兜底）
+  intro: Type.String({ maxLength: 200 }),
+  reservation: StringEnum(RESERVATION_STATUSES),                    // 预约三态，「以官方为准」
+  reservationNote: Type.Optional(Type.String({ maxLength: 120 })),  // 预约渠道说明
+  sourceLinks: Type.Array(SourceNoteSchema, { maxItems: MAX_SOURCE_NOTES }),
+});
+
 export const TripMetaSchema = Type.Object({
-  usedXhs: Type.Boolean(),
+  usedXhs: Type.Boolean(),   // 历史兼容：小红书时代旧行程可为 true，新生成恒 false
   reviewNotes: Type.Array(Type.String({ maxLength: 200 })),
+  // 本次生成实际用到的外部数据源（可选：旧行程无此字段）
+  dataSources: Type.Optional(Type.Array(StringEnum(DATA_SOURCE_KINDS), { maxItems: 2 })),
 });
 
 export const TripSchema = Type.Object({
@@ -59,6 +77,8 @@ export const TripSchema = Type.Object({
   partySize: Type.Integer({ minimum: 1, maximum: 50 }),
   extraNotes: Type.String({ maxLength: 200 }),
   days: Type.Array(TripDaySchema, { maxItems: MAX_TRIP_DAYS }),
+  // 调研候选池（行程概览页数据；可选：旧行程无此字段）
+  overview: Type.Optional(Type.Array(ResearchPoiSchema, { maxItems: MAX_OVERVIEW_POIS })),
   meta: TripMetaSchema,
   createdAt: Type.Number(),
   updatedAt: Type.Number(),

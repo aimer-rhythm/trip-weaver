@@ -1,4 +1,4 @@
-// 串行执行队列：全局 1 并发 + 最小调用间隔（Nominatim / 小红书 MCP 共用）
+// 串行执行队列：全局 1 并发 + 最小调用间隔（Nominatim / 高德 / Web 搜索共用）
 export function createSerialQueue(minIntervalMs: number) {
   let tail: Promise<unknown> = Promise.resolve();
   let lastDoneAt = 0;

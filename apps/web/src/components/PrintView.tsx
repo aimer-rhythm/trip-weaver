@@ -1,6 +1,7 @@
-// 打印/长图共用的线性排版视图（全文 + 预算汇总，不含地图）——常驻离屏渲染
+// 打印/长图共用的线性排版视图（全文 + 预算汇总，不含地图与概览候选池）——常驻离屏渲染
 import { computeBudgetSummary, type Trip } from '@tripweaver/shared';
 import { dayColor } from '../lib/colors';
+import { DATA_SOURCE_LABEL } from '../lib/poi';
 
 function timeRange(start: string, end: string): string {
   if (!start && !end) return '';
@@ -9,6 +10,8 @@ function timeRange(start: string, end: string): string {
 
 export function PrintView({ trip }: { trip: Trip }) {
   const budget = computeBudgetSummary(trip);
+  // 数据来源标注（依 meta.dataSources；旧行程无该字段则不显示）
+  const sources = trip.meta.dataSources ?? [];
   return (
     <div className="pv">
       <header className="pv-head">
@@ -18,7 +21,7 @@ export function PrintView({ trip }: { trip: Trip }) {
           {trip.totalBudget > 0 ? `（¥${trip.totalBudget}/人）` : ''}
           {trip.startDate ? ` · ${trip.startDate} 出发` : ''}
         </p>
-        {trip.meta.usedXhs && <p className="pv-tag">📕 行程参考了小红书旅行笔记</p>}
+        {sources.length > 0 && <p className="pv-tag">🧭 行程参考了{sources.map((s) => DATA_SOURCE_LABEL[s]).join('与')}</p>}
       </header>
 
       {trip.days.map((day) => (
@@ -40,7 +43,7 @@ export function PrintView({ trip }: { trip: Trip }) {
                 <p className="pv-notes">
                   来源：
                   {a.sourceNotes.map((n) => (
-                    <span key={n.url}>📕 {n.title || n.url} </span>
+                    <span key={n.url}>🔗 {n.title || n.url} </span>
                   ))}
                 </p>
               )}

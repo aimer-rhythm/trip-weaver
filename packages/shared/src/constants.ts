@@ -11,3 +11,9 @@ export const TRIP_EXPORT_VERSION = 2;
 export const MAX_TRIP_DAYS = 15;
 export const MAX_TRIPS_PER_USER = 100;
 export const MAX_SOURCE_NOTES = 3;
+
+// 调研候选池（行程概览页）：类目 / 预约三态 / 数据源标注
+export const POI_CATEGORIES = ['attraction', 'food', 'hotel'] as const;
+export const RESERVATION_STATUSES = ['required', 'none', 'unknown'] as const;
+export const DATA_SOURCE_KINDS = ['amap', 'websearch'] as const;
+export const MAX_OVERVIEW_POIS = 40;

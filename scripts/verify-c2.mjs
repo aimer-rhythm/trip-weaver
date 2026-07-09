@@ -1,5 +1,6 @@
 // C2 端到端验收（离线可复跑）：mock OpenAI 兼容端点驱动三 Agent 流水线
-// 覆盖：SSE 三阶段与 job_done 落库 / Last-Event-ID 重放 / 配额 429 / 取消不计数不残留 / BYOK 走自有端点且计次
+// 覆盖：SSE 三阶段与 job_done 落库 / candidate 候选池事件 / 预约种子表覆盖 / Last-Event-ID 重放 /
+//       配额 429 / 取消不计数不残留 / BYOK 走自有端点且计次
 // 用法：node scripts/verify-c2.mjs
 import { startMockLlm } from './lib/mock-llm.mjs';
 import { spawn } from 'node:child_process';
@@ -101,7 +102,8 @@ try {
       SITE_LLM_API_KEY: 'site-mock-key',
       SITE_LLM_MODEL: 'mock-chat',
       GEN_DAILY_LIMIT: '1',
-      XHS_MCP_URL: '',
+      AMAP_KEY: '',
+      SEARCH_API_KEY: '',
       SSRF_ALLOWLIST: `127.0.0.1:${MOCK_PORT}`,
       NO_PROXY: 'localhost,127.0.0.1',
     },
@@ -148,11 +150,23 @@ try {
   const done = run.events.at(-1);
   check('job_done 收尾', done?.type === 'job_done', done?.type);
   check('降级标注 usedXhs=false', done?.usedXhs === false);
+  check('job_done 数据源为空（未配 Key）', Array.isArray(done?.dataSources) && done.dataSources.length === 0, JSON.stringify(done?.dataSources));
   check('审校建议传递', Array.isArray(done?.reviewNotes) && done.reviewNotes.length > 0, JSON.stringify(done?.reviewNotes));
+
+  // 候选池 SSE 事件：mock 调 4 次 add_candidate（1 次同名去重）→ 3 条 candidate
+  const candidates = run.events.filter((e) => e.type === 'candidate');
+  check('candidate 事件 3 条（同名去重）', candidates.length === 3, `count=${candidates.length}`);
+  const gugong = candidates.find((e) => e.poi?.name === '故宫博物院');
+  check('预约种子表强制覆盖 required', gugong?.poi?.reservation === 'required', gugong?.poi?.reservation);
+  check('种子来源链接注入', gugong?.poi?.sourceLinks?.[0]?.url?.includes('dpm.org.cn') === true, JSON.stringify(gugong?.poi?.sourceLinks));
+  check('candidate 三类齐全', ['attraction', 'food', 'hotel'].every((c) => candidates.some((e) => e.poi?.category === c)));
 
   const trip = await api('GET', `/api/trips/${done.tripId}`);
   check('行程已落库', trip.status === 200 && trip.json?.days?.length === 2, `days=${trip.json?.days?.length}`);
   check('活动已填充', trip.json?.days?.every((d) => d.activities.length === 3));
+  check('overview 随行程持久化', Array.isArray(trip.json?.overview) && trip.json.overview.length === 3, `overview=${trip.json?.overview?.length}`);
+  check('overview 预约徽章数据正确', trip.json?.overview?.find((p) => p.name === '故宫博物院')?.reservation === 'required');
+  check('meta.dataSources 未配 Key 时不写入', trip.json?.meta?.dataSources === undefined, JSON.stringify(trip.json?.meta));
 
   // Last-Event-ID 重放（终态任务在 TTL 内可全量重放）
   const replay = await readEvents(jobB.json.jobId, { lastEventId: 0 });
@@ -199,11 +213,12 @@ try {
   const require2 = createRequire(new URL('../apps/server/package.json', import.meta.url));
   const Database = require2('better-sqlite3');
   const db = new Database(`apps/server/${DB_FILE.replace('./', '')}`, { readonly: true });
-  const rows = db.prepare('select status, used_byok, tokens_in, tokens_out, xhs_calls, trip_id from generations order by created_at').all();
+  const rows = db.prepare('select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations order by created_at').all();
   db.close();
   check('三行记录（cancelled/done/done）', rows.length === 3, JSON.stringify(rows.map((r) => r.status)));
   check('cancelled 无 trip', rows[0]?.status === 'cancelled' && rows[0]?.trip_id === null);
   check('done 有 token 用量', rows[1]?.status === 'done' && rows[1].tokens_in > 0 && rows[1].tokens_out > 0, `in=${rows[1]?.tokens_in} out=${rows[1]?.tokens_out}`);
+  check('Null 源不烧数据源额度', rows[1]?.amap_calls === 0 && rows[1]?.search_calls === 0, `amap=${rows[1]?.amap_calls} search=${rows[1]?.search_calls}`);
   check('BYOK 行 used_byok=1', rows[2]?.used_byok === 1);
 
   console.log(failures.length ? `\nFAIL：${failures.length} 项未过` : '\nPASS —— C2 验收全过');

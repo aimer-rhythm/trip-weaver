@@ -34,9 +34,9 @@ const server = spawn(process.execPath, ['../../node_modules/tsx/dist/cli.mjs', '
     PORT: String(API_PORT),
     DATABASE_PATH: DB_FILE,
     MASTER_KEY: crypto.randomBytes(32).toString('hex'),
+    REGISTRATION_MODE: 'invite',   // 钉死邀请码模式：不受本机 apps/server/.env 影响
     INVITE_CODE: 'D1TEST',
     GEN_DAILY_LIMIT: '3',
-    XHS_MCP_URL: '',
     NO_PROXY: 'localhost,127.0.0.1',
   },
 });

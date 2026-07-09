@@ -1,0 +1,10 @@
+{"file": ".trellis/tasks/07-09-replace-xhs-research-with-amap-web-search-add-trip-overview-page/research/data-sources.md", "reason": "高德字段/配额/协议红线、LangSearch 接口、预约结论——实现数据源适配器时的事实依据"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "候选池贯穿 shared schema → server SSE → web 卡片，典型跨层数据流"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "新数据源必须复用 ContentSource 骨架（限速/缓存/上限/Null 降级）而非另起炉灶"}
+{"file": ".trellis/spec/shared/backend/directory-structure.md", "reason": "ResearchPoi/TripMeta 扩展的 TypeBox schema 放置规范"}
+{"file": ".trellis/spec/server/backend/directory-structure.md", "reason": "amap/websearch 集成模块与 generation 工具的目录规范"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "数据源不抛错、降级链（高德+搜索→仅高德→纯模型）的错误处理纪律"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "trips.data JSON 唯一事实源、generations 用量列泛化、旧数据兼容"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "概览页卡片栅格/预约徽章/占位图组件规范"}
+{"file": ".trellis/spec/web/frontend/state-management.md", "reason": "SSE candidate 事件流与编辑器概览区块的状态管理"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "前端消费 shared ResearchPoi 类型的类型安全规范"}

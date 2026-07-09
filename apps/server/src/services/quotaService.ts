@@ -30,25 +30,34 @@ export function hasQuota(userId: string): boolean {
   return usedToday(userId) < env.genDailyLimit;
 }
 
-// ---------- 全站小红书日额度（架构 §6） ----------
-// 以 generations.xhs_calls 聚合为准（含 error/cancelled——外呼已实际发生），60s 内存缓存。
-// 运行中任务的调用未入库，并发下有界超额（≤ 并发任务数 × 14 次/任务），KISS 取舍已记录于任务 PRD。
+// ---------- 全站外部数据源日额度（架构 §6） ----------
+// 以 generations 用量列聚合为准（含 error/cancelled——外呼已实际发生），60s 内存缓存。
+// 运行中任务的调用未入库，并发下有界超额（≤ 并发任务数 × 单任务上限），KISS 取舍已记录于任务 PRD。
 
-const xhsAgg = { at: 0, total: 0 };
+const dailyAgg: Record<'amap' | 'search', { at: number; total: number }> = {
+  amap: { at: 0, total: 0 },
+  search: { at: 0, total: 0 },
+};
 
-export function xhsCallsToday(): number {
-  if (Date.now() - xhsAgg.at > 60_000) {
+function callsToday(key: 'amap' | 'search'): number {
+  const agg = dailyAgg[key];
+  if (Date.now() - agg.at > 60_000) {
+    const column = key === 'amap' ? generations.amapCalls : generations.searchCalls;
     const row = db
-      .select({ n: sql<number>`coalesce(sum(${generations.xhsCalls}), 0)` })
+      .select({ n: sql<number>`coalesce(sum(${column}), 0)` })
       .from(generations)
       .where(gte(generations.createdAt, startOfToday()))
       .get();
-    xhsAgg.total = row?.n ?? 0;
-    xhsAgg.at = Date.now();
+    agg.total = row?.n ?? 0;
+    agg.at = Date.now();
   }
-  return xhsAgg.total;
+  return agg.total;
 }
 
-export function xhsBudgetRemaining(): number {
-  return Math.max(0, env.xhsDailyBudget - xhsCallsToday());
+export function amapBudgetRemaining(): number {
+  return Math.max(0, env.amapDailyBudget - callsToday('amap'));
+}
+
+export function searchBudgetRemaining(): number {
+  return Math.max(0, env.searchDailyBudget - callsToday('search'));
 }

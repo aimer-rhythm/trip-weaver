@@ -1,4 +1,5 @@
-// C3 浏览器自动化验收：生成表单 → SSE 时间线三阶段 → 完成跳编辑器 → 刷新恢复 → 取消 → 配额文案
+// C3 浏览器自动化验收：生成表单 → SSE 时间线三阶段（含候选卡片实时长出）→ 完成跳编辑器（含行程概览区块）
+//                     → 刷新恢复 → 取消 → 配额文案 → 旧行程（无 overview）兼容
 // 走生产模式静态托管（同源 SSE），mock LLM 驱动。运行：node scripts/verify-c3.mjs
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
@@ -35,12 +36,12 @@ const server = spawn(process.execPath, ['../../node_modules/tsx/dist/cli.mjs', '
     PORT: String(API_PORT),
     DATABASE_PATH: DB_FILE,
     MASTER_KEY: crypto.randomBytes(32).toString('hex'),
+    REGISTRATION_MODE: 'invite',   // 钉死邀请码模式：不受本机 apps/server/.env 影响
     INVITE_CODE: 'C3TEST',
     SITE_LLM_BASE_URL: `http://127.0.0.1:${MOCK_PORT}/v1`,
     SITE_LLM_API_KEY: 'site-mock-key',
     SITE_LLM_MODEL: 'mock-chat',
     GEN_DAILY_LIMIT: '3',
-    XHS_MCP_URL: '',
     SSRF_ALLOWLIST: `127.0.0.1:${MOCK_PORT}`,
     NO_PROXY: 'localhost,127.0.0.1',
   },
@@ -85,9 +86,17 @@ try {
 
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   check('时间线出现', true);
-  const sawBanner = await page.locator('.gen-banner').isVisible();
-  check('降级标注可见（未配置小红书）', sawBanner);
+  const bannerText = await page.locator('.gen-banner').innerText().catch(() => '');
+  check('降级标注可见（未配置外部数据源 → 模型知识调研）', bannerText.includes('模型知识'), bannerText.trim());
+
+  // 2.5 调研阶段候选卡片实时长出（生成尚未结束时即可见）
+  await page.waitForSelector('.gen-candidates .poi-card', { timeout: 20_000 });
+  const doneWhileCandidates = await page.locator('.gen-result-ok').count();
+  check('候选卡片在生成过程中实时出现', doneWhileCandidates === 0);
+
   await page.waitForSelector('.gen-phase-head:has-text("编排行程")', { timeout: 20_000 });
+  const candCount = await page.locator('.gen-candidates .poi-card').count();
+  check('候选去重（4 次写入 → 3 张卡片）', candCount === 3, `cards=${candCount}`);
   await page.screenshot({ path: `${SHOTS}/09-gen-running.png` });
   await page.waitForSelector('.gen-result-ok', { timeout: 30_000 });
   const phaseTitles = await page.locator('.gen-phase-title').allInnerTexts();
@@ -110,6 +119,50 @@ try {
   const dayCount = await page.locator('.day-section').count();
   check('自动跳转编辑器且天数正确', dayCount === 2, `days=${dayCount}`);
   await page.screenshot({ path: `${SHOTS}/11-generated-trip.png` });
+
+  // 3.5 编辑器「行程概览」区块：分组渲染 + 预约徽章三态 + 占位图 + 来源标注
+  // （OverviewPanel 桌面左栏与移动端容器各挂一份，断言均限定桌面可见实例 .editor-left）
+  await page.locator('.panel-tab', { hasText: '概览' }).click();
+  await page.waitForSelector('.editor-left .overview-panel', { timeout: 5_000 });
+  const groupHeads = await page.locator('.editor-left .overview-group h3').allInnerTexts();
+  check(
+    '概览按类目分组（景点/美食/住宿）',
+    ['景点', '美食', '住宿'].every((t) => groupHeads.some((x) => x.includes(t))),
+    groupHeads.join('，'),
+  );
+  const requiredBadge = await page.locator('.editor-left .overview-panel .rsv-required').first().innerText().catch(() => '');
+  check('预约种子表命中 → 需预约徽章', requiredBadge.includes('需预约'), requiredBadge);
+  const unknownBadges = await page.locator('.editor-left .overview-panel .rsv-unknown').count();
+  check('预约未知 → 中性徽章（建议核实）', unknownBadges === 2, `unknown=${unknownBadges}`);
+  const poiCards = await page.locator('.editor-left .overview-panel .poi-card').count();
+  const fallbackCovers = await page.locator('.editor-left .overview-panel .poi-cover-fallback').count();
+  check('无 coverUrl 时占位图兜底', poiCards === 3 && fallbackCovers === 3, `cards=${poiCards}, fallback=${fallbackCovers}`);
+  const overviewNote = await page.locator('.editor-left .overview-note').innerText();
+  check('来源标注 +「以官方为准」提示', overviewNote.includes('以官方为准') && overviewNote.includes('模型知识'), overviewNote.trim());
+  const sourceLinkRel = await page.locator('.editor-left .overview-panel .tag-source').first().getAttribute('rel').catch(() => null);
+  check('来源外链带 noopener noreferrer', sourceLinkRel === 'noopener noreferrer', String(sourceLinkRel));
+  await page.screenshot({ path: `${SHOTS}/11b-trip-overview.png` });
+
+  // 3.9 旧行程兼容：无 overview 字段 → 概览入口不渲染，编辑器正常
+  const ctxOld = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const pOld = await ctxOld.newPage();
+  await pOld.goto(`${BASE}/register`, { waitUntil: 'networkidle' });
+  await pOld.getByLabel('邮箱').fill(`c3old-${Date.now()}@test.dev`);
+  await pOld.getByLabel('密码（至少 8 位）').fill('password123');
+  await pOld.getByLabel('确认密码').fill('password123');
+  await pOld.getByLabel('邀请码').fill('C3TEST');
+  await pOld.getByRole('button', { name: '注册并登录' }).click();
+  await pOld.waitForURL('**/trips', { timeout: 10_000 });
+  await pOld.getByRole('button', { name: '加载示例行程' }).click();
+  await pOld.waitForSelector('.day-section', { timeout: 10_000 });
+  const oldDayCount = await pOld.locator('.day-section').count();
+  const oldOverviewTab = await pOld.locator('.panel-tab', { hasText: '概览' }).count();
+  check(
+    '旧行程（无 overview）不渲染概览入口且编辑器正常',
+    oldDayCount === 3 && oldOverviewTab === 0,
+    `days=${oldDayCount}, overviewTab=${oldOverviewTab}`,
+  );
+  await ctxOld.close();
 
   // 4. 刷新恢复：开第二次生成，中途 reload
   await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
@@ -171,12 +224,12 @@ try {
       PORT: String(API_PORT + 1),
       DATABASE_PATH: `${DB_FILE}.nokey.db`,
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
+      REGISTRATION_MODE: 'invite',   // 钉死邀请码模式：不受本机 apps/server/.env 影响
       INVITE_CODE: 'C3TEST',
       SITE_LLM_BASE_URL: '',
       SITE_LLM_API_KEY: '',
       SITE_LLM_MODEL: '',
       GEN_DAILY_LIMIT: '3',
-      XHS_MCP_URL: '',
       NO_PROXY: 'localhost,127.0.0.1',
     },
   });

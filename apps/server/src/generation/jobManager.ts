@@ -1,6 +1,6 @@
 // 生成任务管理：内存任务表 + 512 条事件环形缓冲 + Last-Event-ID 重放 + 取消
 // 单实例边界（架构 §7）：重启即丢任务 —— 路由层在启动时不做恢复，进行中任务由前端超时兜底
-import { uid, type GenerationEvent, type GenerationJobStatus, type GenerationJobView } from '@tripweaver/shared';
+import { uid, type DataSourceKind, type GenerationEvent, type GenerationJobStatus, type GenerationJobView } from '@tripweaver/shared';
 
 const RING_SIZE = 512;
 const FINISHED_TTL_MS = 30 * 60 * 1000; // 终态任务保留 30 分钟供刷新恢复
@@ -76,10 +76,11 @@ function finish(job: Job, status: GenerationJobStatus): void {
   setTimeout(() => jobs.delete(job.id), FINISHED_TTL_MS).unref?.();
 }
 
-export function completeJob(job: Job, tripId: string, usedXhs: boolean, reviewNotes: string[]): void {
+export function completeJob(job: Job, tripId: string, dataSources: DataSourceKind[], reviewNotes: string[]): void {
   job.tripId = tripId;
   finish(job, 'done');
-  emit(job, { type: 'job_done', tripId, usedXhs, reviewNotes });
+  // usedXhs 为旧前端兼容字段（小红书已移除，恒 false）
+  emit(job, { type: 'job_done', tripId, usedXhs: false, dataSources, reviewNotes });
 }
 
 export function failJob(job: Job, message: string): void {

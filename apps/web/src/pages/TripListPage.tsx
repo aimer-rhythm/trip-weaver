@@ -104,7 +104,6 @@ export function TripListPage() {
               <span className="trip-card-title">{t.title}</span>
               <span className="trip-card-meta">
                 {t.destination} · {t.daysCount} 天 · {t.activityCount} 个活动 · ¥{t.totalCost}
-                {t.usedXhs && <span className="tag tag-xhs">小红书数据</span>}
               </span>
               <span className="trip-card-time muted">更新于 {formatTime(t.updatedAt)}</span>
             </Link>

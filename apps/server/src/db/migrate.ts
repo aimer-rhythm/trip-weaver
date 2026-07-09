@@ -50,6 +50,8 @@ const STATEMENTS = [
     tokens_in INTEGER NOT NULL DEFAULT 0,
     tokens_out INTEGER NOT NULL DEFAULT 0,
     xhs_calls INTEGER NOT NULL DEFAULT 0,
+    amap_calls INTEGER NOT NULL DEFAULT 0,
+    search_calls INTEGER NOT NULL DEFAULT 0,
     created_at INTEGER NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS idx_generations_user_time ON generations(user_id, created_at DESC)`,
@@ -71,6 +73,9 @@ export function runMigrations(sqlite: Database.Database): void {
     ensureColumn(sqlite, 'users', 'github_id', 'github_id TEXT');
     // SQLite 唯一索引下 NULL 互不冲突，未绑定 GitHub 的用户不受影响
     sqlite.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_users_github ON users(github_id)');
+    // 2026-07：调研数据源从小红书切换为高德 + Web 搜索，用量列泛化（xhs_calls 保留旧数据）
+    ensureColumn(sqlite, 'generations', 'amap_calls', 'amap_calls INTEGER NOT NULL DEFAULT 0');
+    ensureColumn(sqlite, 'generations', 'search_calls', 'search_calls INTEGER NOT NULL DEFAULT 0');
   });
   run();
 }

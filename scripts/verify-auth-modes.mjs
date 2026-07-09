@@ -30,7 +30,6 @@ function baseEnv(port, dbDir) {
     APP_BASE_URL: '',
     SITE_LLM_BASE_URL: '',
     SITE_LLM_API_KEY: '',
-    XHS_MCP_URL: '',
     // 本地 fetch 不走系统代理
     NO_PROXY: 'localhost,127.0.0.1',
     no_proxy: 'localhost,127.0.0.1',

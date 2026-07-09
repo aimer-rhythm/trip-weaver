@@ -25,15 +25,6 @@ services:
     depends_on:
       - app
 
-  # 可选：小红书 MCP 服务（需用专用小号扫码登录，详见 README）
-  # xiaohongshu-mcp:
-  #   image: xpzouying/xiaohongshu-mcp:latest
-  #   restart: unless-stopped
-  #   ports:
-  #     - "18060:18060"
-  #   volumes:
-  #     - ./xhs-session:/root/.xiaohongshu-mcp
-
 volumes:
   caddy_data:
   caddy_config:

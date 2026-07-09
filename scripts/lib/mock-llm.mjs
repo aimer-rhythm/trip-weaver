@@ -24,6 +24,21 @@ function respondWithToolCalls(res, model, calls) {
   res.end();
 }
 
+function researchCalls(turnHasToolResults) {
+  if (turnHasToolResults) {
+    return [{ name: 'submit_research', args: { summary: '（来自模型知识）候选已入池：故宫博物院、测试食堂、测试酒店。建议第 1 天集中在市中心。' } }];
+  }
+  // 覆盖新工具面：地点搜索 + 攻略搜索 + 候选写入（含预约种子表命中与同名去重）
+  return [
+    { name: 'search_pois', args: { category: 'attraction', keyword: '必去景点' } },
+    { name: 'search_web', args: { query: '攻略 预约' } },
+    { name: 'add_candidate', args: { name: '故宫博物院', category: 'attraction', intro: '明清两代皇宫，世界文化遗产。', reservation: 'none' } },
+    { name: 'add_candidate', args: { name: '测试食堂', category: 'food', intro: '本地人气小馆，招牌菜实惠。', reservation: 'unknown' } },
+    { name: 'add_candidate', args: { name: '测试酒店', category: 'hotel', intro: '交通便利的舒适型酒店。' } },
+    { name: 'add_candidate', args: { name: '故宫博物院', category: 'attraction', intro: '重复添加应被去重。' } },
+  ];
+}
+
 function plannerCalls(days, turnHasToolResults) {
   if (turnHasToolResults) return [{ name: 'submit_plan', args: {} }];
   const calls = [
@@ -75,9 +90,7 @@ export async function startMockLlm(port, { delayMs = 300 } = {}) {
       const days = Number(/天数：(\d+) 天/.exec(userText)?.[1] ?? 2);
 
       if (system.includes('旅行调研员')) {
-        respondWithToolCalls(res, payload.model, [
-          { name: 'submit_research', args: { summary: '（来自模型知识，未使用小红书数据）推荐：测试景点 A、B。' } },
-        ]);
+        respondWithToolCalls(res, payload.model, researchCalls(toolResults > 0));
       } else if (system.includes('行程规划师')) {
         respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0));
       } else if (system.includes('行程审校员')) {

@@ -30,12 +30,12 @@ function spawnServer(port, nodeEnv, dbFile) {
       PORT: String(port),
       DATABASE_PATH: dbFile,
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
+      REGISTRATION_MODE: 'invite',   // 显式钉死邀请码模式：不受本机 apps/server/.env 的 REGISTRATION_MODE 影响
       INVITE_CODE: 'SECTEST',
       SITE_LLM_BASE_URL: `http://127.0.0.1:${MOCK_PORT}/v1`,
       SITE_LLM_API_KEY: 'site-mock-key',
       SITE_LLM_MODEL: 'mock-chat',
       GEN_DAILY_LIMIT: '5',
-      XHS_MCP_URL: '',
       SSRF_ALLOWLIST: `127.0.0.1:${MOCK_PORT}`,
       NO_PROXY: 'localhost,127.0.0.1',
     },

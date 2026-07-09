@@ -1,24 +1,24 @@
 // Orchestrator：代码级三阶段流水线（调研 → 编排 → 审校，≤2 轮修订）
 // 唯一入口 runGeneration —— 路由只见任务号与 SSE，Agent 细节全部封装在此（架构 §2 单入口隔离）
-import { type GenerateForm, type GenerationPhase } from '@tripweaver/shared';
+import { type DataSourceKind, type GenerateForm, type GenerationPhase } from '@tripweaver/shared';
 import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
-import { xhsBudgetRemaining } from '../services/quotaService';
+import { amapBudgetRemaining, searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
+import { AMAP_MAX_PER_TASK, createTaskPoiSource, getNullPoiSource, getPoiSource } from '../integrations/amap/poiSource';
 import {
-  createTaskContentSource,
-  getContentSource,
-  getNullContentSource,
-  XHS_MAX_DETAIL_PER_TASK,
-  XHS_MAX_SEARCH_PER_TASK,
-} from '../integrations/xhs/contentSource';
+  SEARCH_MAX_PER_TASK,
+  createTaskSearchSource,
+  getNullSearchSource,
+  getSearchSource,
+} from '../integrations/websearch/searchSource';
 import { DraftTrip } from './draft';
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
-import { buildXhsTools, type ResearchOutcome } from './tools/xhsTools';
+import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { buildGeoTools } from './tools/geoTools';
 import { buildDraftTools, buildSubmitPlanTool } from './tools/draftTools';
 import { buildReviewTools, type ReviewOutcome } from './tools/reviewTools';
@@ -34,10 +34,16 @@ import {
 const JOB_TIMEOUT_MS = 10 * 60 * 1000;   // 整任务兜底超时
 const MAX_REVIEW_ROUNDS = 2;             // 审校 ≤2 轮（含修订回炉）
 
-/** 每任务预留的小红书调用额度；全站余额不足一个任务时直接降级 */
-const XHS_TASK_RESERVE = XHS_MAX_SEARCH_PER_TASK + XHS_MAX_DETAIL_PER_TASK;
-
 class GenerationFailure extends Error {}
+
+/** 调研阶段降级说明：数据源缺失/超额不阻断生成，仅在时间线上明示 */
+function researchNote(sources: DataSourceKind[]): string | undefined {
+  if (sources.length === 2) return undefined;
+  if (sources.length === 0) return '高德与全网搜索数据源均不可用，本次基于模型知识调研';
+  return sources[0] === 'amap'
+    ? '全网搜索不可用，本次基于高德地点数据 + 模型知识调研'
+    : '高德地点数据不可用，本次基于全网搜索 + 模型知识调研';
+}
 
 export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig): Promise<void> {
   const signal = job.abort.signal;
@@ -45,11 +51,15 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
   const timeout = setTimeout(() => job.abort.abort(), JOB_TIMEOUT_MS);
   timeout.unref?.();
 
-  // 全站日额度闸门：余额不足则整任务注入 Null 源（不断服，架构 §6）
-  const budgetLeft = xhsBudgetRemaining();
-  const baseSource = budgetLeft >= XHS_TASK_RESERVE ? getContentSource() : getNullContentSource();
-  const { source, stats } = createTaskContentSource(baseSource);
-  const xhsEnabled = source.kind === 'xhs';
+  // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
+  const poiBase = amapBudgetRemaining() >= AMAP_MAX_PER_TASK ? getPoiSource() : getNullPoiSource();
+  const searchBase = searchBudgetRemaining() >= SEARCH_MAX_PER_TASK ? getSearchSource() : getNullSearchSource();
+  const poi = createTaskPoiSource(poiBase);
+  const search = createTaskSearchSource(searchBase);
+  const enabledSources: DataSourceKind[] = [
+    ...(poi.source.kind === 'amap' ? (['amap'] as const) : []),
+    ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
+  ];
 
   const sinkFor = (phase: GenerationPhase): PhaseEventSink => ({
     onThought: (text) => emit(job, { type: 'thought', phase, text }),
@@ -62,7 +72,9 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         type: 'usage',
         tokensIn: usage.tokensIn + tokensIn,
         tokensOut: usage.tokensOut + tokensOut,
-        xhsCalls: stats.searchCalls + stats.detailCalls,
+        xhsCalls: 0,   // 旧前端兼容字段（小红书已移除）
+        amapCalls: poi.stats.calls,
+        searchCalls: search.stats.calls,
       }),
   });
 
@@ -73,42 +85,50 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         userId: job.userId,
         tripId,
         status,
-        usedXhs: stats.gotResults ? 1 : 0,
+        usedXhs: 0,   // 列保留供旧数据读取；新生成恒 0
         usedByok: cfg.byok ? 1 : 0,
         tokensIn: usage.tokensIn,
         tokensOut: usage.tokensOut,
-        xhsCalls: stats.searchCalls + stats.detailCalls,
+        amapCalls: poi.stats.calls,
+        searchCalls: search.stats.calls,
         createdAt: Date.now(),
       })
       .run();
   };
 
   try {
-    emit(job, { type: 'job_start', destination: form.destination, xhsEnabled });
+    // xhsEnabled 为旧前端兼容字段，现语义 =「有任一外部调研数据源可用」
+    emit(job, { type: 'job_start', destination: form.destination, xhsEnabled: enabledSources.length > 0, dataSources: enabledSources });
     const model = await buildModel(cfg);   // BYOK：使用时二次 ssrfGuard，失败即 job_error
 
     // ---------- 阶段 1：调研 ----------
-    emit(job, {
-      type: 'phase_start',
-      phase: 'research',
-      round: 1,
-      note: xhsEnabled ? undefined : '小红书数据源不可用，本次基于模型知识调研',
-    });
-    const research: ResearchOutcome = { summary: '' };
+    emit(job, { type: 'phase_start', phase: 'research', round: 1, note: researchNote(enabledSources) });
+    const research: ResearchOutcome = { summary: '', pool: [] };
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
       systemPrompt: RESEARCH_SYSTEM_PROMPT,
-      tools: buildXhsTools(source, research),
+      tools: buildResearchTools({
+        poiSource: poi.source,
+        searchSource: search.source,
+        destination: form.destination,
+        outcome: research,
+        onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
+      }),
       userPrompt: `${formBrief(form)}\n\n请开始调研。`,
       signal,
       sink: sinkFor('research'),
-      maxTurns: 12,
+      maxTurns: 16,
     });
     usage.tokensIn += researchRun.tokensIn;
     usage.tokensOut += researchRun.tokensOut;
     assertAlive(signal, researchRun.errorMessage);
-    emit(job, { type: 'phase_end', phase: 'research', round: 1, summary: research.summary.slice(0, 200) });
+    emit(job, {
+      type: 'phase_end',
+      phase: 'research',
+      round: 1,
+      summary: `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`,
+    });
 
     // ---------- 阶段 2/3：编排 ⇆ 审校（≤2 轮） ----------
     const draft = new DraftTrip(form);
@@ -123,7 +143,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         apiKey: cfg.apiKey,
         systemPrompt: PLANNER_SYSTEM_PROMPT,
         tools: [...buildDraftTools(draft), ...buildGeoTools(form.destination), buildSubmitPlanTool(draft, () => (planPassed = true))],
-        userPrompt: plannerUserPrompt(form, research.summary, revisionRequests),
+        userPrompt: plannerUserPrompt(form, research, revisionRequests),
         signal,
         sink: sinkFor('plan'),
         maxTurns: 30,
@@ -169,10 +189,14 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     }
 
     // ---------- 落库 ----------
-    const usedXhs = xhsEnabled && stats.gotResults;
-    const trip = createTrip(job.userId, draft.toTrip(usedXhs, reviewNotes));
+    // 实际用到的数据源（该源真拿到过结果才标注）；候选池随 Trip JSON 持久化
+    const dataSources: DataSourceKind[] = [
+      ...(poi.stats.gotResults ? (['amap'] as const) : []),
+      ...(search.stats.gotResults ? (['websearch'] as const) : []),
+    ];
+    const trip = createTrip(job.userId, draft.toTrip(reviewNotes, { overview: research.pool, dataSources }));
     record('done', trip.id);
-    completeJob(job, trip.id, usedXhs, reviewNotes);
+    completeJob(job, trip.id, dataSources, reviewNotes);
   } catch (err) {
     if (signal.aborted) {
       record('cancelled', null);           // 取消不计配额（配额只数 done）

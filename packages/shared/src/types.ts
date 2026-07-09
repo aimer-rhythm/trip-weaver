@@ -4,6 +4,7 @@ import type {
   GenerateFormSchema,
   LoginBodySchema,
   RegisterBodySchema,
+  ResearchPoiSchema,
   SettingsPutSchema,
   SourceNoteSchema,
   TripDaySchema,
@@ -11,13 +12,21 @@ import type {
   TripMetaSchema,
   TripSchema,
 } from './schemas';
-import type { ACTIVITY_CATEGORIES, BUDGET_LEVELS, COORD_SOURCES } from './constants';
+import type {
+  ACTIVITY_CATEGORIES,
+  BUDGET_LEVELS,
+  COORD_SOURCES,
+  DATA_SOURCE_KINDS,
+  POI_CATEGORIES,
+  RESERVATION_STATUSES,
+} from './constants';
 
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
 export type SourceNote = Static<typeof SourceNoteSchema>;
 export type Activity = Static<typeof ActivitySchema>;
 export type TripDay = Static<typeof TripDaySchema>;
 export type TripMeta = Static<typeof TripMetaSchema>;
+export type ResearchPoi = Static<typeof ResearchPoiSchema>;
 export type Trip = Static<typeof TripSchema>;
 export type TripExport = Static<typeof TripExportSchema>;
 export type GenerateForm = Static<typeof GenerateFormSchema>;
@@ -28,6 +37,9 @@ export type SettingsPut = Static<typeof SettingsPutSchema>;
 export type ActivityCategory = (typeof ACTIVITY_CATEGORIES)[number];
 export type BudgetLevel = (typeof BUDGET_LEVELS)[number];
 export type CoordSource = (typeof COORD_SOURCES)[number];
+export type PoiCategory = (typeof POI_CATEGORIES)[number];
+export type ReservationStatus = (typeof RESERVATION_STATUSES)[number];
+export type DataSourceKind = (typeof DATA_SOURCE_KINDS)[number];
 
 // 派生数据（useMemo/服务端即时计算，不持久化）
 export interface BudgetSummary {
@@ -45,7 +57,7 @@ export interface TripListItem {
   daysCount: number;
   activityCount: number;
   totalCost: number;
-  usedXhs: boolean;
+  usedXhs: boolean;   // 历史兼容：小红书时代旧行程可为 true，新生成恒 false（前端已不再展示）
   createdAt: number;
   updatedAt: number;
 }
@@ -63,16 +75,19 @@ export interface UsageView {
 export type GenerationPhase = 'research' | 'plan' | 'review';
 export type GenerationJobStatus = 'running' | 'done' | 'error' | 'cancelled';
 
-/** SSE 载荷；事件 id 由 jobManager 递增分配，供 Last-Event-ID 重放 */
+/** SSE 载荷；事件 id 由 jobManager 递增分配，供 Last-Event-ID 重放
+ *  兼容说明：xhsEnabled / xhsCalls / usedXhs 为小红书时代的旧前端兼容字段——
+ *  xhsEnabled 现语义为「有任一外部调研数据源可用」，xhsCalls 恒 0，usedXhs 恒 false */
 export type GenerationEvent =
-  | { type: 'job_start'; destination: string; xhsEnabled: boolean }
+  | { type: 'job_start'; destination: string; xhsEnabled: boolean; dataSources: DataSourceKind[] }
   | { type: 'phase_start'; phase: GenerationPhase; round: number; note?: string }
   | { type: 'phase_end'; phase: GenerationPhase; round: number; summary?: string }
   | { type: 'thought'; phase: GenerationPhase; text: string }
   | { type: 'tool_start'; phase: GenerationPhase; toolCallId: string; tool: string; label: string; args: string }
   | { type: 'tool_end'; phase: GenerationPhase; toolCallId: string; tool: string; label: string; summary: string; isError: boolean }
-  | { type: 'usage'; tokensIn: number; tokensOut: number; xhsCalls: number }
-  | { type: 'job_done'; tripId: string; usedXhs: boolean; reviewNotes: string[] }
+  | { type: 'candidate'; poi: ResearchPoi }   // 调研 Agent 每写入一条候选即推送（概览卡片实时长出）
+  | { type: 'usage'; tokensIn: number; tokensOut: number; xhsCalls: number; amapCalls: number; searchCalls: number }
+  | { type: 'job_done'; tripId: string; usedXhs: boolean; dataSources: DataSourceKind[]; reviewNotes: string[] }
   | { type: 'job_error'; message: string }
   | { type: 'job_cancelled' };
 

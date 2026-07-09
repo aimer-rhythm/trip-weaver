@@ -58,8 +58,12 @@ export const env = {
     model: str('SITE_LLM_MODEL'),
   },
   genDailyLimit: int('GEN_DAILY_LIMIT', 3),
-  xhsMcpUrl: str('XHS_MCP_URL'),                        // 空 = 小红书降级模式
-  xhsDailyBudget: int('XHS_DAILY_BUDGET', 500),
+  // 调研数据源（均可选；缺失时对应源 Null 降级，两者皆缺 = 纯模型知识调研）
+  amapKey: str('AMAP_KEY'),                             // 高德 Web 服务 Key
+  amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度
+  searchApiKey: str('SEARCH_API_KEY'),                  // Web 搜索 Key（默认 LangSearch）
+  searchApiBaseUrl: str('SEARCH_API_BASE_URL', 'https://api.langsearch.com').replace(/\/+$/, ''),
+  searchDailyBudget: int('SEARCH_DAILY_BUDGET', 500),   // 全站搜索调用日额度
   ssrfAllowlist: str('SSRF_ALLOWLIST')
     .split(',')
     .map((s) => s.trim().toLowerCase())

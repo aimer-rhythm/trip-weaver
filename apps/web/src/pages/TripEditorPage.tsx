@@ -6,12 +6,13 @@ import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
 import { BudgetPanel } from '../components/editor/BudgetPanel';
 import { DaySection } from '../components/editor/DaySection';
 import { MapView } from '../components/editor/MapView';
+import { OverviewPanel } from '../components/editor/OverviewPanel';
 import { TripMetaDialog } from '../components/editor/TripMetaDialog';
 import { ExportMenu } from '../components/ExportMenu';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error';
-type PanelTab = 'itinerary' | 'budget';
-type MobileTab = 'list' | 'map' | 'budget';
+type PanelTab = 'itinerary' | 'overview' | 'budget';
+type MobileTab = 'list' | 'overview' | 'map' | 'budget';
 
 export function TripEditorPage() {
   const { id = '' } = useParams();
@@ -68,6 +69,23 @@ export function TripEditorPage() {
     ? trip.days.find((d) => d.id === editing.dayId)?.activities.find((a) => a.id === editing.activityId) ?? null
     : null;
 
+  // 概览入口仅在候选池非空时出现（旧行程无 overview 字段 → 完全不渲染，向后兼容）
+  const hasOverview = Boolean(trip.overview?.length);
+  const effectivePanelTab: PanelTab = panelTab === 'overview' && !hasOverview ? 'itinerary' : panelTab;
+  const effectiveMobileTab: MobileTab = mobileTab === 'overview' && !hasOverview ? 'list' : mobileTab;
+
+  const panelTabs: [PanelTab, string][] = [
+    ['itinerary', '行程'],
+    ...(hasOverview ? ([['overview', '概览']] as [PanelTab, string][]) : []),
+    ['budget', '预算'],
+  ];
+  const mobileTabs: [MobileTab, string][] = [
+    ['list', '行程'],
+    ...(hasOverview ? ([['overview', '概览']] as [MobileTab, string][]) : []),
+    ['map', '地图'],
+    ['budget', '预算'],
+  ];
+
   const saveLabel: Record<SaveState, string> = {
     idle: '',
     saving: '保存中…',
@@ -119,17 +137,11 @@ export function TripEditorPage() {
       </div>
 
       <div className="editor-mobile-tabs">
-        {(
-          [
-            ['list', '行程'],
-            ['map', '地图'],
-            ['budget', '预算'],
-          ] as [MobileTab, string][]
-        ).map(([tab, label]) => (
+        {mobileTabs.map(([tab, label]) => (
           <button
             key={tab}
             type="button"
-            className={`mobile-tab ${mobileTab === tab ? 'active' : ''}`}
+            className={`mobile-tab ${effectiveMobileTab === tab ? 'active' : ''}`}
             onClick={() => setMobileTab(tab)}
           >
             {label}
@@ -137,32 +149,35 @@ export function TripEditorPage() {
         ))}
       </div>
 
-      <div className={`editor-body mobile-${mobileTab}`}>
+      <div className={`editor-body mobile-${effectiveMobileTab}`}>
         <aside className="editor-left">
           <div className="panel-tabs">
-            <button
-              type="button"
-              className={`panel-tab ${panelTab === 'itinerary' ? 'active' : ''}`}
-              onClick={() => setPanelTab('itinerary')}
-            >
-              行程
-            </button>
-            <button
-              type="button"
-              className={`panel-tab ${panelTab === 'budget' ? 'active' : ''}`}
-              onClick={() => setPanelTab('budget')}
-            >
-              预算
-            </button>
+            {panelTabs.map(([tab, label]) => (
+              <button
+                key={tab}
+                type="button"
+                className={`panel-tab ${effectivePanelTab === tab ? 'active' : ''}`}
+                onClick={() => setPanelTab(tab)}
+              >
+                {label}
+              </button>
+            ))}
           </div>
-          <div className="editor-left-scroll">{panelTab === 'itinerary' ? itineraryPanel : <BudgetPanel />}</div>
+          <div className="editor-left-scroll">
+            {effectivePanelTab === 'itinerary' ? itineraryPanel : effectivePanelTab === 'overview' ? <OverviewPanel /> : <BudgetPanel />}
+          </div>
         </aside>
         <div className="editor-map">
           <MapView
-            visible={mobileTab === 'map'}
+            visible={effectiveMobileTab === 'map'}
             onEditActivity={(dayId, activityId) => setEditing({ dayId, activityId })}
           />
         </div>
+        {hasOverview && (
+          <div className="editor-mobile-overview">
+            <OverviewPanel />
+          </div>
+        )}
         <div className="editor-mobile-budget">
           <BudgetPanel />
         </div>

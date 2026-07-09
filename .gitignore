@@ -1,6 +1,8 @@
 node_modules/
 dist/
 data/
+# 例外：预约种子表是随仓库维护的源码资产（勿被运行时 data/ 规则误伤）
+!apps/server/src/data/
 *.db
 *.db-journal
 .env

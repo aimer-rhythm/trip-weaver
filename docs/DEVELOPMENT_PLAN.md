@@ -95,8 +95,8 @@
 #### Phase C0 — 双冒烟实验（1h，风险闸门）
 
 - [x] **pi 冒烟**：核对架构 §12 前三项（v0.73.0 类型层离线核对全过；在线脚本 `scripts/smoke-pi.mjs` 留待站长填 `SITE_LLM_*` 后复验）
-- [x] **MCP 冒烟**：SDK 握手方式核对 + 上游 13 工具映射表（§12.1）；在线脚本 `scripts/smoke-mcp.mjs` 留待部署 xiaohongshu-mcp 后复验
-- [x] 后备处置：API 形状吻合，**不启用**手写工具循环；小红书按 `NullContentSource` 先行（本机未配 `XHS_MCP_URL`），已回记架构文档 §12
+- [x] **MCP 冒烟**：SDK 握手方式核对 + 上游 13 工具映射表（原 §12.1）；在线复验脚本随小红书 MCP 集成一并保留至 v0.3（**该集成已于 2026-07-09 v0.4 移除**，数据源冒烟改为 `scripts/smoke-sources.mjs`）
+- [x] 后备处置：API 形状吻合，**不启用**手写工具循环；小红书按 `NullContentSource` 先行（本机未配 MCP 地址），已回记架构文档 §12
 
 **验收**：冒烟脚本出预期结果；§12 清单逐项处置。✅（2026-07-06，在线复验项已在 §12 标注）
 
@@ -151,7 +151,7 @@
 
 #### Phase E1 — 开源工程化（3.5h）—— 🏁 M4
 
-- [x] Dockerfile（多阶段）+ docker-compose.yml（app + 可选 xiaohongshu-mcp 注释模板 + caddy，数据卷）+ Caddyfile（SSE `flush_interval -1`）——A0 期已建，E1 复核与实现一致
+- [x] Dockerfile（多阶段）+ docker-compose.yml（app + 可选小红书 MCP 注释模板 + caddy，数据卷；该 MCP 模板已随 2026-07-09 v0.4 数据源替换移除）+ Caddyfile（SSE `flush_interval -1`）——A0 期已建，E1 复核与实现一致
 - [x] `.env.example` 全量注释（补 compose 内 MCP 主机名提示）；GitHub Actions（三包 typecheck + build，分支覆盖 main/master）
 - [x] LICENSE（MIT）+ README：截图（docs/screenshots）、三分钟部署指引、小红书专用小号声明、成本与配额说明、**推荐模型量级**、安全说明、验证与冒烟脚本清单
 - [x] 干净目录部署演练：git archive → npm ci（349 包/27s）→ typecheck+build → 生产模式启动 → health/注册 201/SPA 托管全通。**本机无 Docker**，compose 构建烟测待有 Docker 的环境执行（Dockerfile 与演练用的同一套 npm 命令）

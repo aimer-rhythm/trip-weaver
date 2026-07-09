@@ -46,10 +46,12 @@ export const generations = sqliteTable('generations', {
   userId: text('user_id').notNull(),
   tripId: text('trip_id'),
   status: text('status').notNull(),             // done | error | cancelled
-  usedXhs: integer('used_xhs').notNull().default(0),
+  usedXhs: integer('used_xhs').notNull().default(0),     // 小红书时代旧数据；新生成恒 0
   usedByok: integer('used_byok').notNull().default(0),
   tokensIn: integer('tokens_in').notNull().default(0),
   tokensOut: integer('tokens_out').notNull().default(0),
-  xhsCalls: integer('xhs_calls').notNull().default(0),
+  xhsCalls: integer('xhs_calls').notNull().default(0),   // 小红书时代旧数据；新生成恒 0
+  amapCalls: integer('amap_calls').notNull().default(0),
+  searchCalls: integer('search_calls').notNull().default(0),
   createdAt: integer('created_at').notNull(),
 });

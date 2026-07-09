@@ -1,6 +1,7 @@
-// 生成进度时间线：三阶段分组 + 工具时间线 + 思考折叠 + 用量/取消（PRD F1）
+// 生成进度时间线：三阶段分组 + 工具时间线 + 候选卡片实时长出 + 思考折叠 + 用量/取消（PRD F1）
 import { useMemo } from 'react';
-import type { GenerationEvent, GenerationPhase } from '@tripweaver/shared';
+import type { DataSourceKind, GenerationEvent, GenerationPhase, ResearchPoi } from '@tripweaver/shared';
+import { PoiCard } from './PoiCard';
 
 const PHASE_LABEL: Record<GenerationPhase, string> = {
   research: '调研灵感',
@@ -34,21 +35,22 @@ interface PhaseBlock {
 }
 
 export interface TimelineModel {
-  xhsEnabled: boolean | null;
+  dataSources: DataSourceKind[] | null;   // null = job_start 未到；[] = 纯模型知识调研
+  candidates: ResearchPoi[];
   phases: PhaseBlock[];
-  usage: { tokensIn: number; tokensOut: number; xhsCalls: number } | null;
+  usage: { tokensIn: number; tokensOut: number; amapCalls: number; searchCalls: number } | null;
   terminal: Extract<GenerationEvent, { type: 'job_done' | 'job_error' | 'job_cancelled' }> | null;
 }
 
 /** 从事件流重建时间线（全量重放友好——刷新恢复直接复用） */
 export function buildTimeline(events: GenerationEvent[]): TimelineModel {
-  const model: TimelineModel = { xhsEnabled: null, phases: [], usage: null, terminal: null };
+  const model: TimelineModel = { dataSources: null, candidates: [], phases: [], usage: null, terminal: null };
   let seq = 0;
   for (const ev of events) {
     seq += 1;
     switch (ev.type) {
       case 'job_start':
-        model.xhsEnabled = ev.xhsEnabled;
+        model.dataSources = ev.dataSources;
         break;
       case 'phase_start':
         model.phases.push({ key: `${ev.phase}-${ev.round}`, phase: ev.phase, round: ev.round, note: ev.note, done: false, items: [] });
@@ -80,8 +82,11 @@ export function buildTimeline(events: GenerationEvent[]): TimelineModel {
         }
         break;
       }
+      case 'candidate':
+        model.candidates.push(ev.poi);
+        break;
       case 'usage':
-        model.usage = { tokensIn: ev.tokensIn, tokensOut: ev.tokensOut, xhsCalls: ev.xhsCalls };
+        model.usage = { tokensIn: ev.tokensIn, tokensOut: ev.tokensOut, amapCalls: ev.amapCalls, searchCalls: ev.searchCalls };
         break;
       case 'job_done':
       case 'job_error':
@@ -93,15 +98,31 @@ export function buildTimeline(events: GenerationEvent[]): TimelineModel {
   return model;
 }
 
+/** 数据源降级提示：双源齐全不提示；部分/全无时注明本次实际所用 */
+function sourceBanner(sources: DataSourceKind[] | null): string | null {
+  if (sources === null || sources.length >= 2) return null;
+  if (sources.length === 0) return '未配置外部数据源，本次基于模型知识调研。';
+  return sources[0] === 'amap'
+    ? '全网搜索不可用，本次基于高德地点数据 + 模型知识调研。'
+    : '高德地点数据不可用，本次基于全网搜索 + 模型知识调研。';
+}
+
+function usageText(usage: TimelineModel['usage']): string {
+  if (!usage) return ' ';
+  const calls = [usage.amapCalls ? `高德 ${usage.amapCalls} 次` : '', usage.searchCalls ? `搜索 ${usage.searchCalls} 次` : '']
+    .filter(Boolean)
+    .join('｜');
+  return `Token ${usage.tokensIn + usage.tokensOut}（入 ${usage.tokensIn} / 出 ${usage.tokensOut}）${calls ? `｜${calls}` : ''}`;
+}
+
 export function GenerationTimeline({ events, onCancel, cancelling }: { events: GenerationEvent[]; onCancel: () => void; cancelling: boolean }) {
   const model = useMemo(() => buildTimeline(events), [events]);
   const running = model.terminal === null;
+  const banner = sourceBanner(model.dataSources);
 
   return (
     <div className="gen-timeline">
-      {model.xhsEnabled === false && (
-        <p className="gen-banner">本次未使用小红书数据（数据源未配置或额度用尽），将基于模型知识生成。</p>
-      )}
+      {banner && <p className="gen-banner">{banner}</p>}
 
       {model.phases.map((block) => (
         <section key={block.key} className={`gen-phase ${block.done ? 'is-done' : 'is-running'}`}>
@@ -134,16 +155,20 @@ export function GenerationTimeline({ events, onCancel, cancelling }: { events: G
             )}
             {!block.items.length && !block.done && <li className="gen-tool muted">准备中…</li>}
           </ul>
+          {/* 候选卡片随 candidate 事件实时长出（仅调研阶段产生） */}
+          {block.phase === 'research' && model.candidates.length > 0 && (
+            <div className="gen-candidates">
+              {model.candidates.map((p) => (
+                <PoiCard key={p.id} poi={p} compact />
+              ))}
+            </div>
+          )}
         </section>
       ))}
       {!model.phases.length && <p className="gen-note">任务排队中…</p>}
 
       <footer className="gen-foot">
-        <span className="muted">
-          {model.usage
-            ? `Token ${model.usage.tokensIn + model.usage.tokensOut}（入 ${model.usage.tokensIn} / 出 ${model.usage.tokensOut}）${model.usage.xhsCalls ? `｜小红书调用 ${model.usage.xhsCalls} 次` : ''}`
-            : ' '}
-        </span>
+        <span className="muted">{usageText(model.usage)}</span>
         {running && (
           <button type="button" className="btn btn-ghost" onClick={onCancel} disabled={cancelling}>
             {cancelling ? '取消中…' : '取消生成'}

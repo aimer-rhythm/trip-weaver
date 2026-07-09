@@ -2,6 +2,7 @@
 // 完整性校验是 R2（小参数模型工具调用弱）的兜底 —— 校验失败信息回给 Agent 自愈。
 import {
   ACTIVITY_CATEGORIES,
+  MAX_OVERVIEW_POIS,
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
   computeBudgetSummary,
@@ -9,7 +10,9 @@ import {
   type Activity,
   type ActivityCategory,
   type BudgetSummary,
+  type DataSourceKind,
   type GenerateForm,
+  type ResearchPoi,
   type SourceNote,
   type Trip,
 } from '@tripweaver/shared';
@@ -115,7 +118,7 @@ export class DraftTrip {
   }
 
   budget(): BudgetSummary {
-    return computeBudgetSummary(this.toTrip(false, []));
+    return computeBudgetSummary(this.toTrip());
   }
 
   /** 完整性校验：返回问题清单（空数组 = 通过） */
@@ -137,7 +140,7 @@ export class DraftTrip {
     return problems;
   }
 
-  toTrip(usedXhs: boolean, reviewNotes: string[]): Trip {
+  toTrip(reviewNotes: string[] = [], research?: { overview: ResearchPoi[]; dataSources: DataSourceKind[] }): Trip {
     const now = Date.now();
     return {
       id: uid(),
@@ -155,7 +158,13 @@ export class DraftTrip {
         title: day.title,
         activities: day.activities,
       })),
-      meta: { usedXhs, reviewNotes: reviewNotes.map((n) => n.slice(0, 200)) },
+      // 调研候选池（行程概览页数据源）；为空时不写字段，与旧行程 JSON 形状一致
+      ...(research?.overview.length ? { overview: research.overview.slice(0, MAX_OVERVIEW_POIS) } : {}),
+      meta: {
+        usedXhs: false,   // 小红书集成已移除；字段保留做旧行程只读兼容
+        reviewNotes: reviewNotes.map((n) => n.slice(0, 200)),
+        ...(research?.dataSources.length ? { dataSources: research.dataSources } : {}),
+      },
       createdAt: now,
       updatedAt: now,
     };

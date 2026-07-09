@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { useSaveSettings, useSettings, useUsage, useXhsStatus } from '../api/hooks';
+import { useSaveSettings, useSettings, useSourcesStatus, useUsage, type SourceStatusView } from '../api/hooks';
 import { Modal } from './Modal';
 
 // 常见厂商预设：直接给完整 /v1 地址，绕开 baseUrl 填写坑
@@ -10,13 +10,32 @@ const PRESETS = [
   { label: 'OpenAI', baseUrl: 'https://api.openai.com/v1', model: 'gpt-4o-mini' },
 ];
 
+// 数据源状态行：● 正常 / ● 异常 / ○ 未配置
+function SourceStatusRow({ label, status, loading }: { label: string; status?: SourceStatusView; loading: boolean }) {
+  return (
+    <p className="source-status">
+      <span className="muted">{label}</span>
+      {loading ? (
+        <span className="muted">检测中…</span>
+      ) : status ? (
+        <span className={status.ok ? 'status-ok' : status.ok === false ? 'status-err' : 'muted'}>
+          {status.ok ? '● ' : status.ok === false ? '● ' : '○ '}
+          {status.message}
+        </span>
+      ) : (
+        <span className="muted">—</span>
+      )}
+    </p>
+  );
+}
+
 export function SettingsDialog({ email, onClose }: { email: string; onClose: () => void }) {
   const settings = useSettings();
   const usage = useUsage();
   const save = useSaveSettings();
 
   const [advancedOpen, setAdvancedOpen] = useState(false);
-  const xhs = useXhsStatus(advancedOpen);   // 折叠区展开才探测，避免无谓外呼
+  const sources = useSourcesStatus(advancedOpen);   // 折叠区展开才探测，避免无谓外呼
 
   const [byokEnabled, setByokEnabled] = useState<boolean | null>(null);
   const [baseUrl, setBaseUrl] = useState<string | null>(null);
@@ -76,19 +95,8 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
 
       <details className="settings-advanced" open={advancedOpen} onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}>
         <summary>高级选项（使用自己的 API Key）</summary>
-        <p className="xhs-status">
-          <span className="muted">小红书数据源</span>
-          {xhs.isFetching ? (
-            <span className="muted">检测中…</span>
-          ) : xhs.data ? (
-            <span className={xhs.data.ok && xhs.data.loggedIn ? 'status-ok' : xhs.data.ok === false ? 'status-err' : 'muted'}>
-              {xhs.data.ok && xhs.data.loggedIn ? '● ' : xhs.data.ok === false ? '● ' : '○ '}
-              {xhs.data.message}
-            </span>
-          ) : (
-            <span className="muted">—</span>
-          )}
-        </p>
+        <SourceStatusRow label="高德地点数据" status={sources.data?.amap} loading={sources.isFetching} />
+        <SourceStatusRow label="全网搜索" status={sources.data?.websearch} loading={sources.isFetching} />
         <form onSubmit={submit} className="form">
           <label className="check-row">
             <input type="checkbox" checked={curByok} onChange={(e) => setByokEnabled(e.target.checked)} />
