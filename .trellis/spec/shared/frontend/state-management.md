@@ -1,43 +1,29 @@
 # State Management
 
-> How state is managed in this project.
+## Applicability
 
-## State Categories
+Application state containers are N/A inside `@tripweaver/shared`. Zustand stores, React state, query caches, persistence scheduling, and UI revisions belong to `apps/web`. Shared code defines the domain shapes and pure operations those state layers use.
 
-| Category | Tool | Scope |
-|----------|------|-------|
-| Server state | React Query | API data, caching |
-| Editor state | Zustand | Trip editing (draft) |
-| URL state | React Router | Routes, params |
-| Local state | useState | Modal open, form state, UI flags |
+Examples of the boundary are `packages/shared/src/types.ts`, `packages/shared/src/budget.ts`, and the consuming store `apps/web/src/store/editorStore.ts`.
 
-## Server State
+## Shared State Contracts
 
-- All API data managed by React Query
-- Server is the single source of truth for business data
-- Editor uses a local draft; auto-save writes back to server
+- Use TypeBox schemas for state shapes that cross runtime or persistence boundaries, then derive types with `Static<typeof Schema>`.
+- Use readonly `as const` values for closed domain options, with unions derived in `packages/shared/src/types.ts`.
+- Keep derived state as a pure calculation when both runtimes need it. `BudgetSummary` and `computeBudgetSummary` are defined in `packages/shared/src/types.ts` and `packages/shared/src/budget.ts`, then consumed by `apps/web/src/components/editor/BudgetPanel.tsx` and `apps/server/src/services/tripService.ts`.
+- Do not put store instances, subscriptions, persistence adapters, or UI actions in shared.
 
-## Local (Editor) State
+## Mutation and Ownership
 
-- **Zustand** store for trip editor (store/editorStore.ts)
-- Structured clone for immutable updates: structuredClone(cur)
-- Revision counter drives auto-save debounce
+Shared functions should not mutate caller-owned domain objects unless mutation is the explicit, documented API. Prefer returning new values or summaries. State ownership and update strategy remain with the consumer; for example, editor mutations belong in `apps/web/src/store/editorStore.ts`, while server persistence belongs in `apps/server/src/services/tripService.ts`.
 
-`	s
-// Store pattern: single create() call per store
-export const useEditorStore = create<EditorState>((set, get) => ({
-  trip: null,
-  revision: 0,
-  load: (trip) => set({ trip: structuredClone(trip), revision: 0 }),
-  updateMeta: (patch) => mutate((draft) => Object.assign(draft, patch)),
-  addDay: () => mutate((draft) => { draft.days.push(...) }),
-  // ...
-}));
-`
+## Runtime Validation
 
-## When to Use Global State
+Hydrated local state, imported JSON, SSE events, and API responses are runtime data. A TypeScript annotation or assertion does not validate them. Validate at the ingestion boundary when malformed values would violate store invariants. See `apps/web/src/lib/export.ts`, `apps/web/src/pages/PlannerPage.tsx`, and `packages/shared/src/schemas.ts`.
 
-- Only trip editor state is global (via Zustand)
-- Everything else is local state or React Query
-- Avoid adding new Zustand stores without strong justification
+## Anti-Patterns
 
+- Adding Zustand or React state to shared.
+- Mutating `Trip` inside a utility that appears to be a pure calculation.
+- Persisting derived summaries as a second source of truth without a domain requirement.
+- Casting hydrated JSON to a shared type and treating it as validated.

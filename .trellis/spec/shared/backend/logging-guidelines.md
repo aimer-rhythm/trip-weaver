@@ -1,25 +1,23 @@
 # Logging Guidelines
 
-> How logging is done in this project.
+## Applicability
 
-## Logger
+Logging infrastructure is N/A inside `@tripweaver/shared`. The package has no request context, logger dependency, or ownership of operational policy. Fastify/Pino rules belong to `apps/server`, and UI telemetry rules belong to `apps/web`.
 
-Fastify/Pino via app.log and request.log.
+This boundary is consistent with the side-effect-light modules `packages/shared/src/budget.ts`, `packages/shared/src/constants.ts`, and `packages/shared/src/utils.ts`.
 
-## Log Levels
+## Shared Package Rule
 
-| Level | When |
-|-------|------|
-| error | Unhandled exceptions, 5xx errors |
-| warn | Recoverable failures |
-| info | Server startup (automatic) |
-| debug | Development (automatic in dev mode) |
+- Do not import Fastify loggers, Pino, browser analytics, or application configuration.
+- Do not call `console.log`, `console.warn`, or `console.error` from shared domain utilities.
+- Return values or throw framework-neutral errors and let the consumer add operational context.
+- Never place secrets, request bodies, API keys, session data, or user-specific diagnostics in shared constants or sample data.
 
-## Structured Logging
+Server consumers can log around shared calls where request and job context exists, for example in `apps/server/src/services/tripService.ts`, `apps/server/src/generation/orchestrator.ts`, or `apps/server/src/integrations/websearch/searchSource.ts`.
 
-Use object-first signature: request.log.warn({ err }, 'message') - the { err } wrapper enables Pino error serialization.
+## Anti-Patterns
 
-## What NOT to Log
-
-Passwords, password hashes, API keys, session tokens, full sensitive request bodies.
-
+- Passing a Fastify logger into every shared utility.
+- Logging from `computeBudgetSummary` or `uid`.
+- Making a shared result depend on whether logging is configured.
+- Swallowing an exception after logging it in the package.

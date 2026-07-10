@@ -1,70 +1,73 @@
-# Directory Structure
+# Directory Structure and Module Boundaries
 
-> How backend code is organized in this project.
+## Runtime Layout
 
----
+`apps/server/src/index.ts` is the composition root. It creates Fastify, installs plugins,
+registers route modules, installs the global error handler, serves the production web
+bundle, and starts the listener.
 
-## Overview
-
-<!--
-Document your project's backend directory structure here.
-
-Questions to answer:
-- How are modules/packages organized?
-- Where does business logic live?
-- Where are API endpoints defined?
-- How are utilities and helpers organized?
--->
-
-(To be filled by the team)
-
----
-
-## Directory Layout
-
-```
-<!-- Replace with your actual structure -->
-src/
-├── ...
-└── ...
+```text
+apps/server/src/
+  auth/          password, invite, session, guard, and GitHub OAuth primitives
+  crypto/        encrypted secret storage helpers
+  data/          source-controlled static data imported by server code
+  db/            SQLite client, Drizzle schema, and idempotent startup migration
+  generation/    background job state, orchestrator, agents, prompts, and tools
+  integrations/  outbound providers, source status, geocoding, and SSRF checks
+  lib/           narrow runtime helpers such as proxy setup, serial queues, and TTL cache
+  routes/        Fastify HTTP plugins and transport concerns
+  services/      reusable database-backed application operations
+  env.ts         centralized environment parsing and startup validation
+  index.ts       process bootstrap and route registration
 ```
 
----
+Representative paths: `apps/server/src/index.ts`, `apps/server/src/routes/trips.ts`,
+`apps/server/src/generation/orchestrator.ts`.
 
-## Module Organization
+## Naming
 
-<!-- How should new features/modules be organized? -->
+- TypeScript module files use camelCase: `tripService.ts`, `jobManager.ts`,
+  `searchSource.ts`, and `serialQueue.ts`.
+- Directories use lowercase domain names: `routes`, `services`, `generation`, and
+  `integrations/websearch`.
+- Route plugins are plural domain names and exported as `<domain>Routes`.
+- Service functions are verb phrases such as `createTrip`, `resolveLlmConfig`, and
+  `amapBudgetRemaining`.
 
-### Convention: 源码级静态资产放 `apps/server/src/data/`
+Representative paths: `apps/server/src/services/tripService.ts`,
+`apps/server/src/generation/jobManager.ts`, `apps/server/src/integrations/websearch/searchSource.ts`.
 
-**What**：随代码走、被 `import` 的静态数据（如 `reservationSeeds.json` 预约种子表）放 `apps/server/src/data/`；运行时产物（SQLite 等）放 `apps/server/data/`（gitignore）。
+## Route and Service Boundary
 
-**Why / Gotcha**：根 `.gitignore` 的 `data/` 规则**匹配任意层级目录**，会连 `src/data/` 一起吞掉——源码资产对 git 不可见，新 clone/CI 直接 typecheck 失败（2026-07-09 trellis-check 发现的发布阻断级问题）。
+Route modules own HTTP concerns: TypeBox request schemas, authentication hooks, status
+codes, cookies, redirects, SSE framing, and mapping missing resources to responses.
+Services own reusable queries and application behavior. Pass explicit scalar context,
+especially `userId`, rather than passing Fastify request objects into services.
 
-**Example**：
-```gitignore
-# Wrong：只写宽规则，src/data 被误伤
-data/
+The current authentication route is the intentional exception. `apps/server/src/routes/auth.ts`
+contains registration, login, OAuth account linking, and direct Drizzle writes because those
+flows are tightly coupled to cookies, rate limits, redirects, and authentication primitives.
+Do not copy that exception into ordinary resource routes; use the pattern in
+`apps/server/src/routes/trips.ts` plus `apps/server/src/services/tripService.ts`, or
+`apps/server/src/routes/settings.ts` plus `apps/server/src/services/settingsService.ts`.
 
-# Correct：宽规则 + 源码资产例外，并用 git check-ignore -v 验证
-data/
-!apps/server/src/data/
-```
+## Fastify and Shared Contracts
 
-**Prevention**：新增任何 `src/**/data` 类源码资产目录后，必须跑 `git check-ignore -v <新文件>` 确认未被忽略。
+- Declare route plugins as `FastifyPluginAsyncTypebox`.
+- Attach TypeBox schemas to every request input surface: `body`, `params`, and
+  `querystring` (Fastify's schema key for query parameters).
+- Reuse public payload schemas from `packages/shared/src/schemas.ts`; derive shared
+  TypeScript types from those schemas in `packages/shared/src/types.ts`.
+- Keep route-local schemas for transport-only shapes that are not shared with the web.
+- Existing casts in `apps/server/src/routes/generations.ts` are migration debt, not a
+  pattern for new code. Prefer `apps/server/src/routes/trips.ts` and
+  `apps/server/src/routes/auth.ts`.
 
----
+## Source Assets and Runtime Data
 
-## Naming Conventions
+Imported static assets belong under `apps/server/src/data`; runtime SQLite files belong
+under `apps/server/data`. Because broad `data/` ignore rules can also hide source assets,
+check new source data with `git check-ignore -v <path>`.
 
-<!-- File and folder naming rules -->
-
-(To be filled by the team)
-
----
-
-## Examples
-
-<!-- Link to well-organized modules as examples -->
-
-(To be filled by the team)
+Representative paths: `apps/server/src/data/reservationSeeds.ts`,
+`apps/server/src/generation/tools/researchTools.ts`, `apps/server/src/db/client.ts`.

@@ -21,10 +21,10 @@ the rest conversationally.
 
 ## Status (update the checkboxes as you complete each item)
 
-- [ ] Fill guidelines for @tripweaver/shared
-- [ ] Fill guidelines for @tripweaver/server
-- [ ] Fill guidelines for @tripweaver/web
-- [ ] Add code examples
+- [x] Fill guidelines for @tripweaver/shared
+- [x] Fill guidelines for @tripweaver/server
+- [x] Fill guidelines for @tripweaver/web
+- [x] Add code examples
 
 ---
 

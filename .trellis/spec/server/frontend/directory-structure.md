@@ -1,54 +1,9 @@
-# Directory Structure
+# Server Frontend Directory Guidance
 
-> How frontend code is organized in this project.
+N/A: `apps/server` has no frontend source directory. Put browser modules and assets under
+`apps/web`; the server only serves `apps/web/dist` in production.
 
----
+See [server frontend scope](./index.md) and the
+[web frontend directory guidance](../../web/frontend/directory-structure.md).
 
-## Overview
-
-<!--
-Document your project's frontend directory structure here.
-
-Questions to answer:
-- Where do components live?
-- How are features/modules organized?
-- Where are shared utilities?
-- How are assets organized?
--->
-
-(To be filled by the team)
-
----
-
-## Directory Layout
-
-```
-<!-- Replace with your actual structure -->
-src/
-├── ...
-└── ...
-```
-
----
-
-## Module Organization
-
-<!-- How should new features be organized? -->
-
-(To be filled by the team)
-
----
-
-## Naming Conventions
-
-<!-- File and folder naming rules -->
-
-(To be filled by the team)
-
----
-
-## Examples
-
-<!-- Link to well-organized modules as examples -->
-
-(To be filled by the team)
+Representative path: `apps/server/src/index.ts`.

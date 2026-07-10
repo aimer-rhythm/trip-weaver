@@ -1,28 +1,32 @@
-# Error Handling
+# Error Handling and Validation Boundaries
 
-> How errors are handled in this project.
+## Applicability
 
-## Overview
+Fastify error handlers, HTTP status codes, and reply formats are N/A inside `@tripweaver/shared`. They belong to the server application. Shared code should expose contracts and pure operations without importing Fastify request, reply, or application error types.
 
-- Global handler: Fastify pp.setErrorHandler() - single entry point
-- Business errors: throw Error with statusCode property
+The separation can be seen in `packages/shared/src/schemas.ts`, `apps/server/src/routes/trips.ts`, and `apps/server/src/index.ts`.
 
-## API Error Response Format
+## Contract Boundaries
 
-{ error, detail?, code?, resetAt?, jobId? }
+- Define reusable runtime shapes with TypeBox in `packages/shared/src/schemas.ts`.
+- Derive compile-time types with `Static<typeof Schema>` in `packages/shared/src/types.ts`; do not maintain a duplicate interface for the same shape.
+- Let the consuming boundary decide how validation failures become HTTP errors, UI errors, or rejected imports.
 
-| Status | Use Case |
-|--------|----------|
-| 400 | Validation, SSRF, business logic |
-| 401 | Not authenticated |
-| 403 | Forbidden (closed registration) |
-| 404 | Not found |
-| 409 | Conflict (duplicate, limit, job running) |
-| 429 | Rate limit / quota exhausted |
-| 500 | Internal server error |
+Fastify route schemas such as those used by `apps/server/src/routes/auth.ts`, `apps/server/src/routes/settings.ts`, and `apps/server/src/routes/trips.ts` can cause Fastify to validate matching request data. Merely importing a schema elsewhere does not run validation.
 
-## Common Mistakes
+## JSON and Event Caveats
 
-- Throwing Error without statusCode - caught as 500
-- reply.send() after reply.hijack() in SSE endpoints
+TypeScript annotations disappear at runtime. `JSON.parse(message) as GenerationEvent` and `response.json() as SomeType` are assertions, not checks. Browser and server consumers must explicitly validate data when it is untrusted or when accepting malformed data would be unsafe. Representative boundaries include `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/lib/export.ts`, and `apps/server/src/integrations/websearch/searchSource.ts`.
 
+## Shared Utility Failures
+
+Prefer total, deterministic functions for domain calculations. If a shared utility can fail, use a framework-neutral result, standard error, or documented precondition. Do not encode HTTP status codes, Fastify replies, React notifications, or logging side effects in shared utilities.
+
+`computeBudgetSummary` demonstrates a pure calculation over an already typed `Trip` in `packages/shared/src/budget.ts`; it does not claim to validate the trip first.
+
+## Anti-Patterns
+
+- Exporting Fastify-specific error classes from shared.
+- Catching errors only to log or translate them into HTTP responses inside shared.
+- Assuming a TypeBox object validates every value typed with its `Static` type.
+- Replacing boundary validation with `as Trip`, `as GenerationEvent`, or `as unknown as`.

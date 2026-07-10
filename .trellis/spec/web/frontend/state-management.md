@@ -1,49 +1,55 @@
 # State Management
 
-> Web-specific state management for apps/web.
+## Choose the Smallest State Owner
 
-## Overview
+Use state according to its lifetime and authority:
 
-See shared spec for general patterns. Web-specific details:
+| State kind | Owner |
+| --- | --- |
+| Input drafts, open/closed flags, active visual tabs, transient errors | Component `useState` |
+| Route identity, login callback errors, redirect destination | React Router URL params, search params, location state |
+| Server resources and mutation status | React Query |
+| Shared editor draft plus editor-only filter | Zustand editor store |
+| Refresh recovery for an in-progress generation job | `sessionStorage` |
+| Live generation timeline | Local state derived from replayable SSE events |
 
-### Editor Store Pattern
+Evidence: `apps/web/src/pages/LoginPage.tsx`, `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/pages/TripEditorPage.tsx`.
 
-The Zustand editor store uses a mutate helper that clones the draft before mutation:
+There is currently no `localStorage` usage in `apps/web`. Add it only for intentionally durable, non-sensitive browser preferences that should survive browser restarts. Do not use it for auth, authoritative trips, API keys, or server cache. Version and guard any persisted value because storage contents are untrusted and may outlive code changes.
 
-`	s
-const mutate = (fn: (draft: Trip) => void) => {
-  const cur = get().trip;
-  if (!cur) return;
-  const draft = structuredClone(cur);
-  fn(draft);
-  set({ trip: draft, revision: get().revision + 1 });
-};
-`
+## React Query Is Server State
 
-### Auto-Save Flow
+React Query owns authenticated user data, settings, usage, trip collections, and trip details. Components should consume hooks rather than copying fetched server data into another global store by default. Mutation cache effects belong beside the mutation in `api/hooks.ts`. Generation restoration is a narrow exception: its snapshot is fetched as a one-shot command and used immediately to decide whether to reconnect, navigate, or clear recovery state.
 
-`
-User edits -> revision++ -> debounce 800ms -> useSaveTrip mutation -> server update
-                                                                         |
-                                                                   invalidateQueries
-`
+Evidence: `apps/web/src/api/hooks.ts`, `apps/web/src/components/AppLayout.tsx`, `apps/web/src/pages/TripListPage.tsx`.
 
-### Form State (PlannerPage)
+The editor is a deliberate exception because it needs a mutable cross-component working draft. The server remains the durable source of truth; the Zustand store is an editing copy, not a second persistence layer.
 
-Generation form uses local useState (no global state needed):
+## Editor Draft, Revision, and Autosave
 
-`	s
-const [destination, setDestination] = useState('');
-const [days, setDays] = useState(3);
-`
+`useEditorStore` clones a fetched `Trip` on load. Every domain edit runs through the store's `mutate` helper, clones the current draft with `structuredClone`, applies a focused change, and increments `revision`. UI-only `dayFilter` changes do not increment revision.
 
-### Job State (PlannerPage)
+`TripEditorPage` loads only when the fetched trip id changes so a React Query cache write after save does not overwrite newer local edits. It clears the store on unmount. A revision change sets the save state to saving, waits 800 ms, reads the latest draft from `useEditorStore.getState()`, and calls `useSaveTrip`. The mutation writes the saved trip to the detail cache and invalidates the list summary.
 
-Active generation job stored in sessionStorage for refresh recovery:
+Evidence: `apps/web/src/store/editorStore.ts`, `apps/web/src/pages/TripEditorPage.tsx`, `apps/web/src/api/hooks.ts`.
 
-`	s
-const JOB_KEY = 'tw.activeJobId';
-sessionStorage.setItem(JOB_KEY, jobId);
-// On refresh: check snapshot, reconnect SSE if running, navigate if done
-`
+Preserve these invariants:
 
+- Loading or clearing a trip resets `revision` to zero.
+- Every persisted draft mutation increments revision exactly once.
+- Pure view state must not trigger autosave.
+- Debounce timers are cleared on revision change and unmount.
+- Autosave reads the latest store snapshot, not a stale closure.
+- A successful save must not reload and replace in-progress local edits.
+
+The current save error label says a later edit will retry; there is no independent retry queue. Do not describe autosave as durable offline persistence or guaranteed retry.
+
+## URL, Session, and SSE State
+
+Use URL state for navigation-relevant values: route ids, OAuth error codes, and the post-login return path. Treat route and search values as untrusted strings and narrow them before use.
+
+Use `sessionStorage` only for the active generation job id because it should survive refresh in the current tab but not become permanent application data. On restoration, query the snapshot before reconnecting or navigating. Clear the key on terminal status, missing/expired jobs, cancellation recovery, and explicit reset.
+
+SSE events rebuild the local timeline. They are append-only inputs until a terminal event, after which the stream closes and React Query collections are invalidated as needed. The derived timeline model is calculated with `useMemo` and should remain replay-safe.
+
+Evidence: `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/components/GenerationTimeline.tsx`, `packages/shared/src/types.ts`.

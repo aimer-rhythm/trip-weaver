@@ -1,58 +1,25 @@
 # Component Guidelines
 
-> How components are built in this project.
+## Applicability
 
-## Component Patterns
+React components are N/A inside `@tripweaver/shared`. The package supplies domain contracts, constants, and pure utilities that components consume; it must not export JSX, component props tied to a screen, React contexts, CSS, or rendering helpers.
 
-- **Functional Components** with hooks (no class components)
-- Props typed with TypeScript interfaces (inline in file)
-- No prop-drilling beyond 2 levels -- use Zustand store
+This separation is visible between `packages/shared/src/types.ts` and component consumers such as `apps/web/src/components/editor/ActivityCard.tsx`, `apps/web/src/components/editor/BudgetPanel.tsx`, and `apps/web/src/components/PoiCard.tsx`.
 
-## Component Structure
+## Component-Facing Contract Rules
 
-`	sx
-// Standard structure: import, helper, component, export
+- Share a type only when it represents a domain or cross-boundary protocol, not merely a local component prop shape.
+- Share closed option values through readonly constants, then derive their union types. `ACTIVITY_CATEGORIES` and `BudgetLevel` support components in `apps/web/src/components/editor/ActivityEditDialog.tsx` and `apps/web/src/components/editor/TripMetaDialog.tsx`.
+- Keep formatting, labels, dialogs, event handlers, accessibility behavior, and fallback UI in the web application.
+- Prefer pure shared calculations when server and UI genuinely need identical results. `computeBudgetSummary` is defined in `packages/shared/src/budget.ts` and consumed by `apps/web/src/components/editor/BudgetPanel.tsx` and `apps/server/src/services/tripService.ts`.
 
-import { useState } from 'react';
-import { useEditorStore } from '../../store/editorStore';
+## Boundary Caveat
 
-interface Props {
-  trip: Trip;
-  onSave: () => void;
-}
+A component receiving a value typed as `Trip` has compile-time assistance, not proof that network, import, or persisted data matched `TripSchema`. Validate at the data boundary rather than scattering casts through render code. Relevant boundaries include `apps/web/src/api/client.ts`, `apps/web/src/lib/export.ts`, and `apps/web/src/pages/PlannerPage.tsx`.
 
-export function MyComponent({ trip, onSave }: Props) {
-  // State hooks at top
-  const [open, setOpen] = useState(false);
-  // Store selectors
-  const revision = useEditorStore((s) => s.revision);
-  // Effects
-  useEffect(() => { ... }, [deps]);
-  // Handlers
-  const handleClick = () => { ... };
-  // Render
-  return <div>...</div>;
-}
-`
+## Anti-Patterns
 
-## Props Conventions
-
-- Interface named Props defined above the component
-- Optional props with ? for non-required
-- No defaultProps -- use default parameter values
-
-## Styling Patterns
-
-- **Plain CSS** in styles/global.css and styles/print.css
-- No CSS-in-JS, no Tailwind, no CSS modules
-- Component class names map to semantic CSS classes
-- Print styles in separate print.css
-
-## Common Components
-
-- Modal -- wraps <dialog> element
-- AppLayout -- shell with topbar, outlet, settings
-- ExportMenu -- dropdown with PNG/JSON/Print
-- GenerationTimeline -- multi-phase progress display
-- Editor components under components/editor/
-
+- Adding React or JSX to `packages/shared`.
+- Moving a one-screen `Props` interface into shared.
+- Exporting UI labels or CSS class names as domain constants.
+- Casting select or network values to a shared union without checking membership when the value is untrusted.

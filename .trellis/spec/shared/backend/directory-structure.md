@@ -1,42 +1,41 @@
 # Directory Structure
 
-> How backend code is organized in this project.
+## Scope
 
-## Overview
+The retained `backend` layer describes how backend consumers use `@tripweaver/shared`; it is not a home for `apps/server` rules. Fastify routes, services, database modules, authentication, and integrations remain outside this package.
 
-The monorepo has two backend-relevant packages:
-- packages/shared/ - Domain types, TypeBox schemas, constants
-- apps/server/ - Fastify API server
+## Canonical Package Layout
 
-## Directory Layout (Canonical)
+```text
+packages/shared/
+  package.json       # Exposes only the package root
+  tsconfig.json      # Package TypeScript configuration
+  src/
+    index.ts         # Complete public barrel
+    constants.ts     # Shared readonly domain values and limits
+    schemas.ts       # TypeBox runtime contracts
+    types.ts         # Schema-derived and shared protocol types
+    budget.ts        # Pure domain calculation
+    sample.ts        # Cross-runtime sample-domain factory
+    utils.ts         # Small cross-runtime utilities
+```
 
-apps/<package>/src/
- index.ts              # App bootstrap
- env.ts                # Env validation
- db/
-   client.ts           # DB client (Drizzle + driver)
-   schema.ts           # Drizzle table definitions
-   migrate.ts          # Startup migrations
- routes/               # Fastify route plugins
- services/             # Business logic layer
- lib/                  # Shared utilities
- auth/                 # Auth & authorization
- crypto/               # Encryption
- integrations/         # Third-party adapters
- <domain>/             # Domain subsystems
+Evidence: `packages/shared/package.json`, `packages/shared/src/index.ts`, and `packages/shared/src/schemas.ts`.
 
-## Module Rules
+## Public Boundary
 
-- Routes own request/response handling
-- Services contain business logic (no Fastify imports)
-- Lib has framework-agnostic utilities
-- Auth is cross-cutting (guard, session, password, OAuth)
-- Integrations are adapter pattern
+- `package.json` exposes only `.` and points it at `src/index.ts`; therefore every supported public symbol must be re-exported by the root barrel.
+- Consumers import from `@tripweaver/shared`. Do not use deep imports such as `@tripweaver/shared/src/types` or relative paths into `packages/shared`.
+- Internal shared files may use relative imports because they are within the package implementation.
 
-## Naming
+Examples of the intended root import are `apps/server/src/routes/auth.ts`, `apps/server/src/services/tripService.ts`, and `apps/web/src/components/editor/BudgetPanel.tsx`.
 
-- kebab-case for dirs and files
-- One concept per file
-- Route files: plural noun (trips.ts)
-- Service files: <domain>Service.ts (tripService.ts)
+## Dependency Direction
 
+`packages/shared` may depend on cross-runtime libraries such as TypeBox, but it must not depend on either application. Application code points inward to shared contracts; shared code never imports Fastify, React, Zustand, browser UI modules, database drivers, or server environment modules.
+
+The current framework-independent shape is visible in `packages/shared/src/budget.ts`, `packages/shared/src/sample.ts`, and `packages/shared/src/utils.ts`.
+
+## Adding Files
+
+Add a file only when it groups a coherent public domain concern. Export its supported API from `src/index.ts`, keep implementation details unexported, and search both `apps/server/src` and `apps/web/src` before moving or renaming existing exports.
