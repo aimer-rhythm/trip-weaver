@@ -126,6 +126,11 @@ export const SettingsPutSchema = Type.Object({
   baseUrl: Type.Optional(Type.String({ maxLength: 200 })),
   apiKey: Type.Optional(Type.String({ maxLength: 200 })),   // 不传 = 保留原 Key
   model: Type.Optional(Type.String({ maxLength: 100 })),
+  amapApiKey: Type.Optional(Type.String({ maxLength: 200 })), // 不传或空串 = 保留个人高德 Key
+  clearAmapApiKey: Type.Optional(Type.Boolean()),             // 显式清除，避免空输入语义歧义
+  searchApiKey: Type.Optional(Type.String({ maxLength: 200 })), // 不传或空串 = 保留个人搜索 Key
+  searchApiBaseUrl: Type.Optional(Type.String({ maxLength: 200 })),
+  clearSearchConfig: Type.Optional(Type.Boolean()),             // 显式同时清除个人搜索 Key 与 Base URL
 });
 
 export const RenameTripSchema = Type.Object({

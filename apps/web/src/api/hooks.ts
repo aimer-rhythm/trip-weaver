@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type {
   GenerateForm,
   GenerationJobView,
+  GenerationJobStatus,
   LoginBody,
   RegisterBody,
   SettingsPut,
@@ -28,12 +29,20 @@ export interface SettingsView {
   model: string;
   apiKeyLast4: string;
   hasSiteKey: boolean;
+  hasPersonalAmapKey: boolean;
+  amapApiKeyLast4: string;
+  hasSiteAmapKey: boolean;
+  hasPersonalSearchKey: boolean;
+  searchApiKeyLast4: string;
+  searchApiBaseUrl: string;
+  hasSiteSearchKey: boolean;
 }
 
 export const keys = {
   me: ['me'] as const,
   authConfig: ['auth-config'] as const,
   settings: ['settings'] as const,
+  sourcesStatus: ['sources-status'] as const,
   usage: ['usage'] as const,
   trips: ['trips'] as const,
   trip: (id: string) => ['trips', id] as const,
@@ -88,7 +97,10 @@ export function useSaveSettings() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (body: SettingsPut) => api.put<SettingsView>('/api/settings', body),
-    onSuccess: (view) => qc.setQueryData(keys.settings, view),
+    onSuccess: (view) => {
+      qc.setQueryData(keys.settings, view);
+      qc.invalidateQueries({ queryKey: keys.sourcesStatus });
+    },
   });
 }
 
@@ -164,9 +176,38 @@ export function useStartGeneration() {
   });
 }
 
+const CANCEL_STATUS_POLL_INTERVAL_MS = 250;
+const CANCEL_STATUS_POLL_ATTEMPTS = 40;
+
+interface CancelGenerationResponse {
+  ok: boolean;
+  status?: GenerationJobStatus;
+}
+
+function cancellationStatusError(status: GenerationJobStatus): Error {
+  const statusLabel = status === 'done' ? '已完成' : status === 'error' ? '已失败' : status;
+  return new Error(`任务${statusLabel}，无法取消`);
+}
+
+async function cancelGenerationAndWait(jobId: string): Promise<GenerationJobView> {
+  const response = await api.post<CancelGenerationResponse>(`/api/generations/${jobId}/cancel`);
+  if (!response.ok && response.status && response.status !== 'cancelled') {
+    throw cancellationStatusError(response.status);
+  }
+
+  for (let attempt = 0; attempt < CANCEL_STATUS_POLL_ATTEMPTS; attempt += 1) {
+    const snapshot = await fetchJobSnapshot(jobId);
+    if (snapshot.status === 'cancelled') return snapshot;
+    if (snapshot.status !== 'running') throw cancellationStatusError(snapshot.status);
+    await new Promise<void>((resolve) => setTimeout(resolve, CANCEL_STATUS_POLL_INTERVAL_MS));
+  }
+
+  throw new Error('取消请求已接受，但状态确认超时，请重试');
+}
+
 export function useCancelGeneration() {
   return useMutation({
-    mutationFn: (jobId: string) => api.post<{ ok: boolean }>(`/api/generations/${jobId}/cancel`),
+    mutationFn: cancelGenerationAndWait,
   });
 }
 
@@ -177,7 +218,7 @@ export function fetchJobSnapshot(jobId: string): Promise<GenerationJobView> {
 
 export function useSourcesStatus(enabled: boolean) {
   return useQuery({
-    queryKey: ['sources-status'] as const,
+    queryKey: keys.sourcesStatus,
     queryFn: () => api.get<SourcesStatusView>('/api/settings/sources-status'),
     enabled,
     staleTime: 30_000,

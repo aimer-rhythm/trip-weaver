@@ -7,12 +7,17 @@ import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
 import { amapBudgetRemaining, searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
-import { AMAP_MAX_PER_TASK, createTaskPoiSource, getNullPoiSource, getPoiSource } from '../integrations/amap/poiSource';
+import {
+  AMAP_MAX_PER_TASK,
+  createTaskPoiSource,
+  getNullPoiSource,
+  resolvePoiSourceForUser,
+} from '../integrations/amap/poiSource';
 import {
   SEARCH_MAX_PER_TASK,
   createTaskSearchSource,
   getNullSearchSource,
-  getSearchSource,
+  resolveSearchSourceForUser,
 } from '../integrations/websearch/searchSource';
 import { DraftTrip } from './draft';
 import { buildModel } from './model';
@@ -52,8 +57,14 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
   timeout.unref?.();
 
   // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
-  const poiBase = amapBudgetRemaining() >= AMAP_MAX_PER_TASK ? getPoiSource() : getNullPoiSource();
-  const searchBase = searchBudgetRemaining() >= SEARCH_MAX_PER_TASK ? getSearchSource() : getNullSearchSource();
+  const poiBase =
+    amapBudgetRemaining() >= AMAP_MAX_PER_TASK
+      ? resolvePoiSourceForUser(job.userId).source
+      : getNullPoiSource();
+  const searchBase =
+    searchBudgetRemaining() >= SEARCH_MAX_PER_TASK
+      ? (await resolveSearchSourceForUser(job.userId)).source
+      : getNullSearchSource();
   const poi = createTaskPoiSource(poiBase);
   const search = createTaskSearchSource(searchBase);
   const enabledSources: DataSourceKind[] = [
@@ -199,8 +210,9 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     completeJob(job, trip.id, dataSources, reviewNotes);
   } catch (err) {
     if (signal.aborted) {
-      record('cancelled', null);           // 取消不计配额（配额只数 done）
       cancelJob(job);
+      // 先发布权威终态，避免审计表写入异常让已接受的取消永久停在 running。
+      record('cancelled', null);           // 取消不计配额（配额只数 done）
       return;
     }
     record('error', null);

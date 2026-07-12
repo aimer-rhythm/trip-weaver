@@ -13,6 +13,9 @@ const MOCK_PORT = 18788;
 const API_PORT = 18791;
 const API = `http://127.0.0.1:${API_PORT}`;
 const DB_FILE = `./data/verify-c2-${Date.now()}.db`;
+const DATABASE_PATH = `apps/server/${DB_FILE.replace('./', '')}`;
+const requireFromServer = createRequire(new URL('../apps/server/package.json', import.meta.url));
+const Database = requireFromServer('better-sqlite3');
 
 const failures = [];
 function check(name, cond, extra = '') {
@@ -84,6 +87,29 @@ async function readEvents(jobId, { lastEventId = 0, timeoutMs = 30000 } = {}) {
 // ---------- 主流程 ----------
 
 let server;
+// 模拟存量库：旧 trips / generations 表缺少当前列，启动迁移必须自动补齐。
+const legacyDatabase = new Database(DATABASE_PATH);
+legacyDatabase.exec(`CREATE TABLE trips (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  title TEXT NOT NULL,
+  destination TEXT NOT NULL,
+  days_count INTEGER NOT NULL,
+  activity_count INTEGER NOT NULL,
+  total_cost INTEGER NOT NULL,
+  data TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  updated_at INTEGER NOT NULL
+);
+CREATE TABLE generations (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  trip_id TEXT,
+  status TEXT NOT NULL,
+  created_at INTEGER NOT NULL
+)`);
+legacyDatabase.close();
+
 const mock = await startMockLlm(MOCK_PORT, { delayMs: 300 });
 const seenAuthHeaders = mock.seenAuthHeaders;
 console.log(`[mock] OpenAI 兼容端点就绪 :${MOCK_PORT}`);
@@ -134,6 +160,8 @@ try {
   check('取消 202', cancelRes.status === 202);
   const cancelled = await readEvents(jobA.json.jobId);
   check('收到 job_cancelled', cancelled.events.at(-1)?.type === 'job_cancelled', cancelled.events.at(-1)?.type);
+  const cancelledSnapshot = await api('GET', `/api/generations/${jobA.json.jobId}`);
+  check('取消快照收敛到 cancelled', cancelledSnapshot.json?.status === 'cancelled', cancelledSnapshot.json?.status);
   const usageAfterCancel = await api('GET', '/api/usage');
   check('取消不计配额', usageAfterCancel.json?.usedToday === 0, `usedToday=${usageAfterCancel.json?.usedToday}`);
 
@@ -210,9 +238,19 @@ try {
 
   // ⑤ generations 表落库核对（直接读 SQLite）
   console.log('\n— generations 表 —');
-  const require2 = createRequire(new URL('../apps/server/package.json', import.meta.url));
-  const Database = require2('better-sqlite3');
-  const db = new Database(`apps/server/${DB_FILE.replace('./', '')}`, { readonly: true });
+  const db = new Database(DATABASE_PATH, { readonly: true });
+  const tripColumns = db.pragma('table_info(trips)').map((column) => column.name);
+  check('存量 trips 表迁移补齐 used_xhs', tripColumns.includes('used_xhs'), tripColumns.join(','));
+  const persistedTrip = db.prepare('select used_xhs from trips where id = ?').get(done.tripId);
+  check('迁移后行程写入 used_xhs 成功', persistedTrip?.used_xhs === 0, `used_xhs=${persistedTrip?.used_xhs}`);
+  const generationColumns = db.pragma('table_info(generations)').map((column) => column.name);
+  check(
+    '存量 generations 表迁移补齐审计列',
+    ['used_xhs', 'used_byok', 'tokens_in', 'tokens_out', 'xhs_calls', 'amap_calls', 'search_calls'].every((column) =>
+      generationColumns.includes(column),
+    ),
+    generationColumns.join(','),
+  );
   const rows = db.prepare('select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations order by created_at').all();
   db.close();
   check('三行记录（cancelled/done/done）', rows.length === 3, JSON.stringify(rows.map((r) => r.status)));
@@ -230,9 +268,9 @@ try {
   server?.kill();
   await sleep(300);
   try {
-    rmSync(`apps/server/${DB_FILE.replace('./', '')}`, { force: true });
-    rmSync(`apps/server/${DB_FILE.replace('./', '')}-shm`, { force: true });
-    rmSync(`apps/server/${DB_FILE.replace('./', '')}-wal`, { force: true });
+    rmSync(DATABASE_PATH, { force: true });
+    rmSync(`${DATABASE_PATH}-shm`, { force: true });
+    rmSync(`${DATABASE_PATH}-wal`, { force: true });
   } catch {}
 }
 process.exit(failures.length ? 1 : 0);

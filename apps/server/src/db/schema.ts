@@ -23,6 +23,13 @@ export const userSettings = sqliteTable('user_settings', {
   apiKeyCiphertext: text('api_key_ciphertext').notNull().default(''),
   apiKeyLast4: text('api_key_last4').notNull().default(''),
   model: text('model').notNull().default(''),
+  amapApiKeyCiphertext: text('amap_api_key_ciphertext').notNull().default(''),
+  amapApiKeyLast4: text('amap_api_key_last4').notNull().default(''),
+  amapKeyRevision: integer('amap_key_revision').notNull().default(0),
+  searchApiKeyCiphertext: text('search_api_key_ciphertext').notNull().default(''),
+  searchApiKeyLast4: text('search_api_key_last4').notNull().default(''),
+  searchApiBaseUrl: text('search_api_base_url').notNull().default(''),
+  searchCredentialRevision: integer('search_credential_revision').notNull().default(0),
   updatedAt: integer('updated_at').notNull(),
 });
 

@@ -187,17 +187,61 @@ try {
   const quotaBefore = await page.locator('.quota-inline').innerText();
   await page.getByLabel('目的地 *').fill('北京');
   await page.getByRole('button', { name: /开始生成/ }).click();
+  let rejectNextCancellation = true;
+  const cancellationRoutePattern = '**/api/generations/*/cancel';
+  const cancellationSnapshotRoutePattern = /\/api\/generations\/[^/]+$/;
+  await page.route(cancellationRoutePattern, async (route) => {
+    await sleep(300);
+    if (rejectNextCancellation) {
+      rejectNextCancellation = false;
+      await route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: '模拟取消失败' }) });
+      return;
+    }
+    await route.continue();
+  });
+  let delayNextCancellationSnapshot = true;
+  await page.route(cancellationSnapshotRoutePattern, async (route) => {
+    if (delayNextCancellationSnapshot && route.request().method() === 'GET') {
+      delayNextCancellationSnapshot = false;
+      await sleep(1_500);
+    }
+    await route.continue();
+  });
+
   await page.getByRole('button', { name: '取消生成' }).click({ timeout: 10_000 });
+  const firstPendingButton = page.getByRole('button', { name: '取消中…' });
+  await firstPendingButton.waitFor({ timeout: 5_000 });
+  check('取消点击立即显示 pending 且禁用', await firstPendingButton.isDisabled());
+  const cancellationError = await page.locator('.form-error').innerText({ timeout: 5_000 });
+  const retryCancellationButton = page.getByRole('button', { name: '取消生成' });
+  check(
+    '取消失败可见且按钮可重试',
+    cancellationError.includes('模拟取消失败') && !(await retryCancellationButton.isDisabled()),
+    cancellationError.trim(),
+  );
+
+  await retryCancellationButton.click();
+  const retryPendingButton = page.getByRole('button', { name: '取消中…' });
+  await retryPendingButton.waitFor({ timeout: 5_000 });
+  check('重试取消再次显示 pending 且禁用', await retryPendingButton.isDisabled());
   await page.waitForSelector('.gen-result:has-text("已取消")', { timeout: 15_000 });
+  await page.unroute(cancellationRoutePattern);
   check('取消后展示已取消', true);
   await page.getByRole('button', { name: '返回表单' }).click();
   await page.waitForSelector('.planner-form', { timeout: 5_000 });
   const quotaAfterCancel = await page.locator('.quota-inline').innerText();
   check('取消不消耗次数', quotaAfterCancel.trim() === quotaBefore.trim(), `${quotaBefore.trim()} → ${quotaAfterCancel.trim()}`);
 
-  // 6. 用完配额 → 表单禁用 + 文案
+  // 6. 旧取消轮询迟到时不得污染随后启动的新任务；随后用完配额
   await page.getByLabel('目的地 *').fill('上海');
   await page.getByRole('button', { name: /开始生成/ }).click();
+  await page.waitForSelector('.gen-phase', { timeout: 15_000 });
+  await sleep(1_800);
+  check(
+    '旧取消轮询迟到不关闭新任务 SSE 或注入取消终态',
+    (await page.locator('.gen-result:has-text("已取消")').count()) === 0 && (await page.getByRole('button', { name: /取消生成|取消中…/ }).count()) === 1,
+  );
+  await page.unroute(cancellationSnapshotRoutePattern);
   await page.waitForSelector('.gen-result-ok', { timeout: 30_000 });
   await page.waitForURL('**/trips/*', { timeout: 10_000 });
   await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });

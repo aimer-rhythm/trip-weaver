@@ -62,10 +62,10 @@ npm run dev                        # server:3001 + web:5173
 | `APP_BASE_URL` | | 站点对外地址（如 `https://trip.example.com`），启用 GitHub 登录时必填，用于构造回调 URL |
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 建议 | 站点供 Key（普通用户零配置使用）；留空 = 纯 BYOK 模式 |
 | `GEN_DAILY_LIMIT` | | 每用户每日生成次数（默认 3） |
-| `AMAP_KEY` | 建议 | 高德 Web 服务 Key（调研候选：地点/评分/人均/营业时间/图片）；留空 = 该源降级。[申请入口](https://console.amap.com/dev/key/app)，个人认证约 5000 次搜索/月 |
+| `AMAP_KEY` | 建议 | 站点默认高德 Web 服务 Key；用户可在设置页保存仅自己可用的个人 Key，优先级为“个人 Key → `AMAP_KEY` → Null 降级”。[申请入口](https://console.amap.com/dev/key/app)，个人认证约 5000 次搜索/月 |
 | `AMAP_DAILY_BUDGET` | | 全站高德调用日额度（默认 150，超出自动降级） |
-| `SEARCH_API_KEY` | 建议 | Web 搜索 Key（攻略/避雷/预约政策）；留空 = 该源降级。默认 [LangSearch](https://langsearch.com/) 免费申请 |
-| `SEARCH_API_BASE_URL` | | 搜索端点，默认 `https://api.langsearch.com`；博查同族接口改 URL+Key 即切换 |
+| `SEARCH_API_KEY` | 建议 | 站点默认 Web 搜索 Key；用户可在设置页保存仅自己可用的个人 Key + Base URL，优先级为“个人配置 → 站点 `SEARCH_API_*` → Null 降级”。默认 [LangSearch](https://langsearch.com/) 免费申请 |
+| `SEARCH_API_BASE_URL` | | 站点搜索端点，默认 `https://api.langsearch.com`；个人新配置留空时也使用该默认值，博查同族接口可改 URL+Key 切换 |
 | `SEARCH_DAILY_BUDGET` | | 全站搜索调用日额度（默认 500，超出自动降级） |
 | `SSRF_ALLOWLIST` | | BYOK baseUrl 私网豁免（站长自有 Ollama 等） |
 
@@ -87,6 +87,8 @@ npm run dev                        # server:3001 + web:5173
 npm run typecheck                 # 三包类型检查
 node scripts/smoke-pi.mjs         # 冒烟：LLM 端点连通（读 apps/server/.env 的 SITE_LLM_*）
 node scripts/smoke-sources.mjs    # 冒烟：高德 + Web 搜索数据源连通（未配 Key 时提示并跳过）
+node node_modules/tsx/dist/cli.mjs scripts/verify-amap-settings.mjs # 用户高德 Key：迁移/加密/隔离/优先级/清除/动态生效
+node node_modules/tsx/dist/cli.mjs scripts/verify-websearch-settings.mjs # 用户搜索配置：迁移/加密/SSRF/隔离/优先级/清除/动态生效
 node scripts/verify-c2.mjs        # 端到端：生成流水线 + 候选池 + 配额 + BYOK（内置 mock LLM，离线可跑）
 node scripts/verify-security.mjs  # 安全走查：越权/限流/Key 泄露/SSRF 等 23 项
 node scripts/verify-auth-modes.mjs # 注册三态（open/invite/closed）+ 兼容推断 + GitHub OAuth 路由
@@ -97,8 +99,8 @@ npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏
 
 调研 Agent 采用「结构化底座 + 攻略语义层」双层数据源，模型知识兜底：
 
-1. **高德搜索POI 2.0**（`AMAP_KEY`）：真实地点的名称/地址/评分/人均/营业时间/官方图片。到[高德开放平台](https://console.amap.com/dev/key/app)创建应用并申请 **Web 服务** 类型 Key，个人实名认证即有约 5000 次/月免费搜索额度（以[官方定价](https://lbs.amap.com/upgrade)为准）
-2. **Web 搜索 API**（`SEARCH_API_KEY`）：玩法、避雷与「是否需要预约」等攻略信息，带来源链接。默认 [LangSearch](https://langsearch.com/)（免费）；[博查](https://open.bochaai.com)为同族接口（约 ¥0.036/次），改 `SEARCH_API_BASE_URL` + Key 即可切换
+1. **高德搜索POI 2.0**：真实地点的名称/地址/评分/人均/营业时间/官方图片。用户可在设置页保存个人 **Web 服务** Key（AES-256-GCM 加密，仅显示尾号），只用于自己的自检和新生成任务；未配置或清除后回退站点 `AMAP_KEY`，两者都没有时自动降级。到[高德开放平台](https://console.amap.com/dev/key/app)创建应用并申请 Key，个人实名认证即有约 5000 次/月免费搜索额度（以[官方定价](https://lbs.amap.com/upgrade)为准）
+2. **Web 搜索 API**：玩法、避雷与「是否需要预约」等攻略信息，带来源链接。用户可保存个人 API Key 与 Base URL（Key 以 AES-256-GCM 加密、仅显示尾号），只用于自己的自检与新生成任务；个人配置优先，清除后回退站点 `SEARCH_API_KEY` + `SEARCH_API_BASE_URL`，两者都不可用时 Null 降级。默认 [LangSearch](https://langsearch.com/)（免费）；[博查](https://open.bochaai.com)为同族接口（约 ¥0.036/次）
 3. **预约种子表**：仓库内置约 50 条全国热门「需预约」景点（故宫/国博/莫高窟/陕历博等），命中即直接标注预约方式与官方链接，离线可用（`apps/server/src/data/reservationSeeds.json`，随仓库维护）
 
 内置纪律与合规边界：
@@ -116,7 +118,7 @@ npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏
 
 ## 安全设计
 
-密码 bcrypt 哈希；API Key AES-256-GCM 加密存储、任何接口不回显明文；httpOnly Cookie 会话；登录/注册限流；BYOK baseUrl 私网黑名单（SSRF 防护）；用户数据严格隔离。详见架构文档 §9。
+密码 bcrypt 哈希；LLM、高德与个人搜索 API Key 均以 AES-256-GCM 加密存储、任何接口不回显明文；httpOnly Cookie 会话；登录/注册限流；用户提供的 LLM 与搜索 Base URL 保存和使用时双重 SSRF 校验；用户数据严格隔离。详见架构文档 §9。
 
 ## 文档
 

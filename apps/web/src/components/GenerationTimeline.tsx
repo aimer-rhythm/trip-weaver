@@ -115,7 +115,17 @@ function usageText(usage: TimelineModel['usage']): string {
   return `Token ${usage.tokensIn + usage.tokensOut}（入 ${usage.tokensIn} / 出 ${usage.tokensOut}）${calls ? `｜${calls}` : ''}`;
 }
 
-export function GenerationTimeline({ events, onCancel, cancelling }: { events: GenerationEvent[]; onCancel: () => void; cancelling: boolean }) {
+export function GenerationTimeline({
+  events,
+  onCancel,
+  cancelling,
+  cancellationError,
+}: {
+  events: GenerationEvent[];
+  onCancel: () => void;
+  cancelling: boolean;
+  cancellationError: string | null;
+}) {
   const model = useMemo(() => buildTimeline(events), [events]);
   const running = model.terminal === null;
   const banner = sourceBanner(model.dataSources);
@@ -166,6 +176,12 @@ export function GenerationTimeline({ events, onCancel, cancelling }: { events: G
         </section>
       ))}
       {!model.phases.length && <p className="gen-note">任务排队中…</p>}
+
+      {running && cancellationError && (
+        <p className="form-error" role="alert">
+          {cancellationError}
+        </p>
+      )}
 
       <footer className="gen-foot">
         <span className="muted">{usageText(model.usage)}</span>

@@ -12,6 +12,7 @@ const PROD_PORT = 18792;
 const DEV = `http://127.0.0.1:${DEV_PORT}`;
 const DB_FILE = `./data/verify-sec-${Date.now()}.db`;
 const SECRET_KEY = `sk-SECRET-${crypto.randomBytes(8).toString('hex')}`;
+const SEARCH_SECRET_KEY = `search-SECRET-${crypto.randomBytes(8).toString('hex')}`;
 
 const failures = [];
 function check(name, cond, extra = '') {
@@ -163,6 +164,12 @@ try {
   for (const bad of ['http://192.168.1.1/v1', 'http://localhost:9999/v1', 'ftp://example.com/v1', 'http://127.0.0.1:1/v1']) {
     const res = await A.call('PUT', '/api/settings', { byokEnabled: false, baseUrl: bad, model: 'm' });
     check(`SSRF 拦截：${bad}`, res.status === 400, `status=${res.status}`);
+    const searchRes = await A.call('PUT', '/api/settings', {
+      byokEnabled: false,
+      searchApiKey: SEARCH_SECRET_KEY,
+      searchApiBaseUrl: bad,
+    });
+    check(`个人搜索 SSRF 拦截：${bad}`, searchRes.status === 400, `status=${searchRes.status}`);
   }
   const allowRes = await A.call('PUT', '/api/settings', {
     byokEnabled: true,
@@ -171,9 +178,22 @@ try {
     model: 'mock-chat',
   });
   check('SSRF 白名单放行 BYOK 保存', allowRes.status === 200, JSON.stringify(allowRes.json));
+  const searchAllowRes = await A.call('PUT', '/api/settings', {
+    byokEnabled: true,
+    searchApiKey: SEARCH_SECRET_KEY,
+    searchApiBaseUrl: `http://127.0.0.1:${MOCK_PORT}`,
+  });
+  check('SSRF 白名单放行个人搜索配置保存', searchAllowRes.status === 200, JSON.stringify(searchAllowRes.json));
   const settingsView = await A.call('GET', '/api/settings');
   const viewStr = JSON.stringify(settingsView.json);
-  check('设置响应仅回显 last4', viewStr.includes(SECRET_KEY.slice(-4)) && !viewStr.includes(SECRET_KEY), viewStr.slice(0, 120));
+  check(
+    '设置响应仅回显 LLM 与搜索 Key 的 last4',
+    viewStr.includes(SECRET_KEY.slice(-4)) &&
+      viewStr.includes(SEARCH_SECRET_KEY.slice(-4)) &&
+      !viewStr.includes(SECRET_KEY) &&
+      !viewStr.includes(SEARCH_SECRET_KEY),
+    viewStr.slice(0, 180),
+  );
 
   // BYOK 生成一次，让 Key 流经模型调用路径，再验证日志
   const byokJob = await A.call('POST', '/api/generations', { destination: '东京', days: 1, budgetLevel: '经济', partySize: 1 });
@@ -182,9 +202,16 @@ try {
     await A.call('POST', `/api/generations/${byokJob.json.jobId}/cancel`);
   }
   await sleep(500);
-  check('Key 不见于服务端日志', !serverLog.includes(SECRET_KEY), `日志 ${serverLog.length} 字节`);
+  check(
+    'LLM 与搜索 Key 不见于服务端日志',
+    !serverLog.includes(SECRET_KEY) && !serverLog.includes(SEARCH_SECRET_KEY),
+    `日志 ${serverLog.length} 字节`,
+  );
   const dbRaw = readFileSync(`apps/server/${DB_FILE.replace('./', '')}`, 'latin1');
-  check('Key 不以明文落库（AES-256-GCM）', !dbRaw.includes(SECRET_KEY));
+  check(
+    'LLM 与搜索 Key 不以明文落库（AES-256-GCM）',
+    !dbRaw.includes(SECRET_KEY) && !dbRaw.includes(SEARCH_SECRET_KEY),
+  );
   check('mock 收到过 BYOK Key（证明确实流经了调用路径）', mock.seenAuthHeaders.some((h) => h.includes(SECRET_KEY)) || byokJob.status !== 202, `calls=${mock.seenAuthHeaders.length}`);
 
   console.log('— 生产实例 Cookie Secure —');

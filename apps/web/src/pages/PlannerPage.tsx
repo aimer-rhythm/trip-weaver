@@ -22,12 +22,18 @@ function formatResetTime(resetAt: number): string {
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
+function cancellationErrorMessage(error: unknown): string {
+  if (error instanceof ApiError || error instanceof Error) return error.message;
+  return '取消请求失败，请重试';
+}
+
 export function PlannerPage() {
   const navigate = useNavigate();
   const qc = useQueryClient();
   const usage = useUsage();
   const start = useStartGeneration();
   const cancel = useCancelGeneration();
+  const resetCancel = cancel.reset;
 
   // 表单态
   const [destination, setDestination] = useState('');
@@ -45,12 +51,18 @@ export function PlannerPage() {
   const [events, setEvents] = useState<GenerationEvent[]>([]);
   const [restoring, setRestoring] = useState(() => Boolean(sessionStorage.getItem(JOB_KEY)));
   const doneTripRef = useRef<string | null>(null);
+  const activeJobIdRef = useRef<string | null>(null);
+  const eventSourceRef = useRef<EventSource | null>(null);
 
   const clearJob = useCallback(() => {
+    eventSourceRef.current?.close();
+    eventSourceRef.current = null;
     sessionStorage.removeItem(JOB_KEY);
+    activeJobIdRef.current = null;
     setJobId(null);
     setEvents([]);
-  }, []);
+    resetCancel();
+  }, [resetCancel]);
 
   // 刷新恢复：先查快照
   useEffect(() => {
@@ -61,6 +73,7 @@ export function PlannerPage() {
       .then((snap) => {
         if (!alive) return;
         if (snap.status === 'running') {
+          activeJobIdRef.current = saved;
           setJobId(saved);            // 重连 SSE，全量重放重建时间线
         } else if (snap.status === 'done' && snap.tripId) {
           sessionStorage.removeItem(JOB_KEY);
@@ -80,6 +93,7 @@ export function PlannerPage() {
   useEffect(() => {
     if (!jobId) return;
     const es = new EventSource(`/api/generations/${jobId}/events?lastEventId=0`);
+    eventSourceRef.current = es;
     let gotTerminal = false;
 
     es.onopen = () => setEvents([]);   // 每次（重）连都全量重放，清空重建防重复
@@ -89,6 +103,7 @@ export function PlannerPage() {
       if (ev.type === 'job_done' || ev.type === 'job_error' || ev.type === 'job_cancelled') {
         gotTerminal = true;
         es.close();
+        if (eventSourceRef.current === es) eventSourceRef.current = null;
         sessionStorage.removeItem(JOB_KEY);
         void qc.invalidateQueries({ queryKey: keys.usage });
         if (ev.type === 'job_done') {
@@ -104,12 +119,16 @@ export function PlannerPage() {
       fetchJobSnapshot(jobId).catch((err) => {
         if (err instanceof ApiError && err.status === 404) {
           es.close();
+          if (eventSourceRef.current === es) eventSourceRef.current = null;
           setEvents((prev) => [...prev, { type: 'job_error', message: '任务已丢失（服务可能重启过），本次不计入配额，请重新生成' }]);
           sessionStorage.removeItem(JOB_KEY);
         }
       });
     };
-    return () => es.close();
+    return () => {
+      es.close();
+      if (eventSourceRef.current === es) eventSourceRef.current = null;
+    };
   }, [jobId, navigate, qc]);
 
   const togglePreference = (p: string) =>
@@ -134,8 +153,10 @@ export function PlannerPage() {
     }
     start.mutate(form, {
       onSuccess: ({ jobId: id }) => {
+        resetCancel();
         sessionStorage.setItem(JOB_KEY, id);
         setEvents([]);
+        activeJobIdRef.current = id;
         setJobId(id);
       },
       onError: (err) => {
@@ -155,8 +176,10 @@ export function PlannerPage() {
         } else if (err.status === 409 && typeof err.data?.jobId === 'string') {
           // 已有任务进行中 → 直接接管进度
           const id = err.data.jobId;
+          resetCancel();
           sessionStorage.setItem(JOB_KEY, id);
           setEvents([]);
+          activeJobIdRef.current = id;
           setJobId(id);
         } else if (err.status === 401) {
           setFormError('登录已过期，请刷新页面重新登录。');
@@ -168,7 +191,24 @@ export function PlannerPage() {
   };
 
   const onCancel = () => {
-    if (jobId) cancel.mutate(jobId);
+    if (!jobId || cancel.isPending) return;
+    const cancelledJobId = jobId;
+    cancel.mutate(cancelledJobId, {
+      onSuccess: (snapshot) => {
+        // mutation.reset() 只重置展示状态，不会中止已经发出的轮询；忽略旧任务的迟到回调。
+        if (snapshot.status !== 'cancelled' || activeJobIdRef.current !== cancelledJobId) return;
+        eventSourceRef.current?.close();
+        eventSourceRef.current = null;
+        setEvents((previousEvents) => {
+          const alreadyTerminal = previousEvents.some(
+            (event) => event.type === 'job_done' || event.type === 'job_error' || event.type === 'job_cancelled',
+          );
+          return alreadyTerminal ? previousEvents : [...previousEvents, { type: 'job_cancelled' }];
+        });
+        sessionStorage.removeItem(JOB_KEY);
+        void qc.invalidateQueries({ queryKey: keys.usage });
+      },
+    });
   };
 
   if (restoring) {
@@ -191,7 +231,12 @@ export function PlannerPage() {
           <h1>智能生成中</h1>
         </div>
 
-        <GenerationTimeline events={events} onCancel={onCancel} cancelling={cancel.isPending} />
+        <GenerationTimeline
+          events={events}
+          onCancel={onCancel}
+          cancelling={cancel.isPending}
+          cancellationError={cancel.error ? cancellationErrorMessage(cancel.error) : null}
+        />
 
         {terminal?.type === 'job_done' && (
           <div className="gen-result gen-result-ok">

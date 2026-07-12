@@ -126,7 +126,7 @@ travel-planner/
 |---|---|
 | `users` | id · email(unique) · password_hash · created_at |
 | `sessions` | id · user_id(FK) · token_hash(unique) · expires_at |
-| `user_settings` | user_id(PK/FK) · **byok_enabled(bool)** · base_url · api_key_ciphertext · api_key_last4 · model · updated_at |
+| `user_settings` | user_id(PK/FK) · **byok_enabled(bool)** · base_url · api_key_ciphertext · api_key_last4 · model · **amap_api_key_ciphertext · amap_api_key_last4 · amap_key_revision** · **search_api_key_ciphertext · search_api_key_last4 · search_api_base_url · search_credential_revision** · updated_at |
 | `trips` | id · user_id(FK+索引) · title · destination · days_count · activity_count · total_cost · used_xhs · data(JSON) · created_at · updated_at |
 | `generations` | id · user_id(FK+索引) · trip_id(可空 FK) · status(done/error/cancelled) · used_xhs(旧数据) · used_byok · tokens_in · tokens_out · xhs_calls(旧数据) · **amap_calls · search_calls（v0.4）** · created_at —— **配额计数与用量核算的事实来源** |
 
@@ -157,8 +157,8 @@ resolveLlmConfig(userId):
 
 小红书抓取因风控与账号纪律包袱于 v0.4 移除（ADR 见任务 `07-09-replace-xhs-research-with-amap-web-search-add-trip-overview-page`）。现行方案为「结构化底座 + 攻略语义层」双层数据源，模型知识兜底：
 
-- **高德搜索POI 2.0**（`integrations/amap/poiSource.ts`，`AMAP_KEY`）：`GET /v5/place/text`，`show_fields=business,photos`，按类目码搜索（景点 110000 / 餐饮 050000 / 住宿 100000）。返回名称/类型/地址/评分/人均/营业时间/图片热链；**适配器刻意不返回坐标**——高德是 GCJ-02，行程活动坐标一律走 Nominatim（WGS-84），同时规避协议 3.5 的存储限制与坐标转换。
-- **Web 搜索**（`integrations/websearch/searchSource.ts`，`SEARCH_API_KEY`）：`POST {SEARCH_API_BASE_URL}/v1/web-search`（Bearer 认证，`{query, summary, count, freshness}`）。默认 LangSearch（免费）；博查同族 schema，改 env 即切换。承担玩法/避雷/**预约政策**的语义检索，带来源链接。
+- **高德搜索POI 2.0**（`integrations/amap/poiSource.ts`）：`GET /v5/place/text`，`show_fields=business,photos`，按类目码搜索（景点 110000 / 餐饮 050000 / 住宿 100000）。每次自检或新生成任务按当前用户动态解析“个人加密 Key → 站点 `AMAP_KEY` → Null 源”，不把个人凭据放入全局单例；用户更新或清除后无需重启。返回名称/类型/地址/评分/人均/营业时间/图片热链；**适配器刻意不返回坐标**——高德是 GCJ-02，行程活动坐标一律走 Nominatim（WGS-84），同时规避协议 3.5 的存储限制与坐标转换。
+- **Web 搜索**（`integrations/websearch/searchSource.ts`）：`POST {baseUrl}/v1/web-search`（Bearer 认证，`{query, summary, count, freshness}`）。每次自检或新生成任务动态解析“个人加密 Key + Base URL → 站点 `SEARCH_API_KEY` + `SEARCH_API_BASE_URL` → Null 源”；个人 Base URL 保存与使用时均执行 SSRF 校验，用户更新或清除后无需重启。默认 LangSearch（免费）；博查同族 schema 可直接切换。承担玩法/避雷/**预约政策**的语义检索，带来源链接。
 - **预约种子表**（`data/reservationSeeds.json`，~50 条）：全国热门「需预约」景点（故宫/国博/莫高窟/陕历博等），`add_candidate` 命中即强制 `reservation=required` 并附官方渠道链接；离线可用、随仓库维护（数据截至 2026-07）。
 - **调研产物**：结构化候选池 `ResearchPoi[]`（挂 `Trip.overview` 持久化）+ 文本摘要；候选写入时经 SSE `candidate` 事件实时推送前端概览卡片。
 - **纪律四道闸**（沿用原 ContentSource 骨架）：串行限速（高德 350ms / 搜索 1s）+ 24h TTL 缓存 + 任务级上限（高德 ≤8 / 搜索 ≤10 次）+ 全站日额度（`AMAP_DAILY_BUDGET` 默认 150 / `SEARCH_DAILY_BUDGET` 默认 500，从 `generations` 用量列聚合 + 60s 内存缓存）。
@@ -175,9 +175,9 @@ resolveLlmConfig(userId):
 | `GET /api/auth/config` | 公开：注册模式 + GitHub 登录是否启用（前端据此渲染） | 无需会话 |
 | `GET /api/auth/github` · `GET /api/auth/github/callback` | GitHub OAuth 登录（state 防 CSRF；verified 邮箱自动绑定；token 用完即弃） | 5 次/min/IP；未配置时 404 |
 | `POST /api/auth/login` · `POST /api/auth/logout` · `GET /api/auth/me` | 会话签发/销毁/查询 | 登录 5 次/min/IP；失败不泄露账号存在性 |
-| `GET /api/settings` | 普通字段 + BYOK（key 仅 last4） | 需会话 |
-| `PUT /api/settings` | 写 BYOK（**保存时过 ssrfGuard**，Key 加密入库） | 需会话 |
-| `GET /api/settings/sources-status` | 调研数据源自检 `{amap, websearch}`（真实探测，服务端 60s 记忆化防刷额度） | 需会话 |
+| `GET /api/settings` | 普通字段 + LLM BYOK + 个人高德/搜索配置状态（仅 Key 存在性、尾号、个人搜索 Base URL 与站点回退存在性） | 需会话 |
+| `PUT /api/settings` | 写 LLM BYOK、个人高德 Key 与个人搜索 Key + Base URL；搜索配置用显式 `clearSearchConfig` 同时清除 Key 与 URL（Key 均加密入库） | 需会话 |
+| `GET /api/settings/sources-status` | 调研数据源自检 `{amap, websearch}`（真实探测；结果按 userId + Amap/search credential revision 隔离记忆化） | 需会话 |
 | `GET /api/usage` | 今日剩余配额 / 已用次数 / 重置时间 | 需会话 |
 | `GET /api/trips` · `POST /api/trips`(导入) · `GET/PUT/DELETE /api/trips/:id` | 历史/导入/详情/自动保存/删除 | TripSchema；user_id 归属校验 |
 | `POST /api/generations` | **先查配额**（quotaService）→ 创建任务 `202 {jobId}` | GenerateFormSchema；并发 1/用户；配额尽 → 429 + 重置时间 |
@@ -194,7 +194,7 @@ resolveLlmConfig(userId):
 - 路由：`/login` `/register` `/trips` `/trips/new` `/trips/:id`；未登录守卫。
 - react-query 管 `me/settings/usage/trips/trip(id)`；zustand 管编辑器态；防抖 800ms PUT 自动保存 + 指示器。
 - 生成进度页 EventSource 断线重连 + Last-Event-ID 重放 + 刷新恢复。
-- **SettingsDialog 分级**：普通视图（账号 + 今日配额）默认；「高级选项」折叠区收纳 BYOK 全部字段——非 IT 用户全程不见技术概念（PRD F6）。
+- **SettingsDialog 分级**：普通视图（账号 + 今日配额）默认；「高级选项」折叠区收纳 LLM BYOK、个人高德 Key，以及个人 Web 搜索 API Key + Base URL。两类个人数据源凭据均支持保存、更新、空 Key 保留和显式清除；搜索清除会同时删除个人 Key 与 URL。
 - **移动端基准**：核心流程按 <768px 设计再放大到桌面；微信内置浏览器实测入 D2 验收（长图保存/分享、SSE、地图手势）。
 
 ## 9. 安全设计
@@ -204,8 +204,8 @@ resolveLlmConfig(userId):
 | 密码 / 会话 | bcryptjs(cost 12)；256bit token 存 sha256；Cookie `httpOnly+SameSite=Lax+Secure(生产)`；TTL 30 天滑动 |
 | **注册管控** | 三态 `REGISTRATION_MODE`：open（默认开放）/ invite（邀请码，可随时切回的防滥用刹车）/ closed；未设置时按 `INVITE_CODE` 是否非空推断（向后兼容）。GitHub 登录仅信 verified 邮箱做账号绑定，invite/closed 下不创建新账号 |
 | **配额** | 用户日配额 + 全站数据源日额度（§6）——第二道闸；生成并发 1/用户 |
-| LLM Key | AES-256-GCM（`MASTER_KEY` env）；仅回 last4；日志禁 Key |
-| **SSRF（v0.3 升为强制）** | `ssrfGuard`：BYOK baseUrl 仅允 http(s)，**解析后 IP 落私网/环回/链路本地段一律拒绝**（保存与请求时双查，防 DNS 重绑定）；`SSRF_ALLOWLIST` env 供站长豁免自有内网端点 |
+| 用户凭据 | LLM、个人高德与个人搜索 Key 均用 AES-256-GCM（`MASTER_KEY` env）；API 仅回存在性与 last4；日志禁 Key；个人数据源凭据和源实例不进入全局单例或跨用户缓存 |
+| **SSRF（v0.3 升为强制）** | `ssrfGuard`：用户提供的 LLM/搜索 baseUrl 仅允 http(s)，**解析后 IP 落私网/环回/链路本地段一律拒绝**（保存与使用时双查，防 DNS 重绑定）；`SSRF_ALLOWLIST` env 供站长豁免自有内网端点 |
 | 越权 | trips/generations 全量 user_id 过滤；jobId uuid + 归属校验 |
 | 输入 | 全路由 TypeBox；React 转义；外链 `rel="noopener noreferrer"` |
 | 限流 | 注册 3/min/IP · 登录 5/min/IP · 生成配额制 |
@@ -223,7 +223,7 @@ resolveLlmConfig(userId):
 | `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` / `APP_BASE_URL` | GitHub OAuth 登录（可留空=隐藏该入口）/ 站点对外地址（启用 GitHub 时必填） |
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 站点供 Key（可留空=纯 BYOK 模式） |
 | `GEN_DAILY_LIMIT` | 用户日生成配额（默认 3） |
-| `AMAP_KEY` / `AMAP_DAILY_BUDGET` | 高德 Web 服务 Key（可留空=该源降级）/ 全站日额度（默认 150） |
+| `AMAP_KEY` / `AMAP_DAILY_BUDGET` | 站点默认高德 Web 服务 Key（用户个人 Key 优先；均为空=该源降级）/ 全站日额度（默认 150） |
 | `SEARCH_API_KEY` / `SEARCH_API_BASE_URL` / `SEARCH_DAILY_BUDGET` | Web 搜索 Key（可留空=该源降级）/ 端点（默认 LangSearch，博查同族可切）/ 全站日额度（默认 500） |
 | `SSRF_ALLOWLIST` | 逗号分隔的内网豁免地址 |
 

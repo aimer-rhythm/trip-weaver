@@ -1,5 +1,7 @@
 import 'dotenv/config';
 
+export const DEFAULT_SEARCH_API_BASE_URL = 'https://api.langsearch.com';
+
 function str(name: string, fallback = ''): string {
   const v = process.env[name];
   return v === undefined || v === '' ? fallback : v;
@@ -62,7 +64,7 @@ export const env = {
   amapKey: str('AMAP_KEY'),                             // 高德 Web 服务 Key
   amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度
   searchApiKey: str('SEARCH_API_KEY'),                  // Web 搜索 Key（默认 LangSearch）
-  searchApiBaseUrl: str('SEARCH_API_BASE_URL', 'https://api.langsearch.com').replace(/\/+$/, ''),
+  searchApiBaseUrl: str('SEARCH_API_BASE_URL', DEFAULT_SEARCH_API_BASE_URL).replace(/\/+$/, ''),
   searchDailyBudget: int('SEARCH_DAILY_BUDGET', 500),   // 全站搜索调用日额度
   ssrfAllowlist: str('SSRF_ALLOWLIST')
     .split(',')

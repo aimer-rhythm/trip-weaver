@@ -3,9 +3,9 @@
 // 任何故障不抛错到上层 —— searchPois 回空数组、selfCheck 变红。
 // 协议红线（高德服务协议 3.5）：结果仅供展示，图片只取热链 URL 不转存；坐标为 GCJ-02，
 // 适配器刻意不返回经纬度，杜绝写入行程活动（行程坐标一律走 Nominatim geoTools）。
-import { env } from '../../env';
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
+import { resolveAmapCredential } from '../../services/settingsService';
 import type { PoiCategory } from '@tripweaver/shared';
 import type { SourceStatus } from '../sourceStatus';
 
@@ -168,14 +168,32 @@ export function createTaskPoiSource(inner: PoiSource): TaskPoiSource {
   return { source, stats };
 }
 
-// ---------- 单例 ----------
+// ---------- 按用户动态构造 ----------
 
 const nullSource = new NullPoiSource();
-const amapSource = env.amapKey ? new AmapPoiSource(env.amapKey) : null;
 
-/** 站点级高德源：未配置 AMAP_KEY 时为 Null 降级 */
-export function getPoiSource(): PoiSource {
-  return amapSource ?? nullSource;
+export interface ResolvedPoiSource {
+  source: PoiSource;
+  credentialRevision: string;
+  credentialOrigin: 'personal' | 'site' | 'none';
+}
+
+/** 每次按有效凭据构造实例，避免把个人 Key 放进全局单例或跨用户结果缓存。 */
+export function createPoiSource(apiKey: string | null | undefined): PoiSource {
+  return apiKey ? new AmapPoiSource(apiKey) : nullSource;
+}
+
+/** 用户个人 Key 优先，未配置或密文不可用时回退站点 Key，再回退 Null 源。 */
+export function resolvePoiSourceForUser(userId: string): ResolvedPoiSource {
+  const credential = resolveAmapCredential(userId);
+  if (!credential) {
+    return { source: nullSource, credentialRevision: 'none', credentialOrigin: 'none' };
+  }
+  return {
+    source: createPoiSource(credential.apiKey),
+    credentialRevision: credential.revision,
+    credentialOrigin: credential.origin,
+  };
 }
 
 /** 全站日额度用尽等场景下按需取用 Null 源 */

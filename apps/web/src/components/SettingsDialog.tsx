@@ -41,6 +41,11 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
   const [baseUrl, setBaseUrl] = useState<string | null>(null);
   const [model, setModel] = useState<string | null>(null);
   const [apiKey, setApiKey] = useState('');
+  const [amapApiKey, setAmapApiKey] = useState('');
+  const [clearAmapApiKey, setClearAmapApiKey] = useState(false);
+  const [searchApiKey, setSearchApiKey] = useState('');
+  const [searchApiBaseUrl, setSearchApiBaseUrl] = useState<string | null>(null);
+  const [clearSearchConfig, setClearSearchConfig] = useState(false);
   const [message, setMessage] = useState('');
 
   if (settings.isPending) {
@@ -55,6 +60,7 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
   const curByok = byokEnabled ?? view?.byokEnabled ?? false;
   const curBaseUrl = baseUrl ?? view?.baseUrl ?? '';
   const curModel = model ?? view?.model ?? '';
+  const curSearchApiBaseUrl = searchApiBaseUrl ?? view?.searchApiBaseUrl ?? '';
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -65,10 +71,23 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
         baseUrl: curBaseUrl,
         model: curModel,
         ...(apiKey ? { apiKey } : {}),
+        ...(amapApiKey ? { amapApiKey } : {}),
+        ...(clearAmapApiKey ? { clearAmapApiKey: true } : {}),
+        ...(clearSearchConfig
+          ? { clearSearchConfig: true }
+          : {
+              searchApiBaseUrl: curSearchApiBaseUrl,
+              ...(searchApiKey ? { searchApiKey } : {}),
+            }),
       },
       {
         onSuccess: () => {
           setApiKey('');
+          setAmapApiKey('');
+          setClearAmapApiKey(false);
+          setSearchApiKey('');
+          setSearchApiBaseUrl(null);
+          setClearSearchConfig(false);
           setMessage('已保存');
         },
         onError: (err) => setMessage(err.message),
@@ -94,7 +113,7 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
       </section>
 
       <details className="settings-advanced" open={advancedOpen} onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}>
-        <summary>高级选项（使用自己的 API Key）</summary>
+        <summary>高级选项（API Key 与数据源）</summary>
         <SourceStatusRow label="高德地点数据" status={sources.data?.amap} loading={sources.isFetching} />
         <SourceStatusRow label="全网搜索" status={sources.data?.websearch} loading={sources.isFetching} />
         <form onSubmit={submit} className="form">
@@ -134,6 +153,97 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
             模型名
             <input value={curModel} onChange={(e) => setModel(e.target.value)} placeholder="deepseek-chat" />
           </label>
+          <label>
+            高德 Web 服务 Key
+            <input
+              type="password"
+              value={amapApiKey}
+              onChange={(e) => {
+                setAmapApiKey(e.target.value);
+                if (e.target.value) setClearAmapApiKey(false);
+              }}
+              placeholder={
+                view?.hasPersonalAmapKey
+                  ? `已保存个人 Key（尾号 ${view.amapApiKeyLast4}），留空则不修改`
+                  : view?.hasSiteAmapKey
+                    ? '当前使用站点默认 Key；填写后仅你的任务优先使用个人 Key'
+                    : '填写高德 Web 服务 Key；留空保持未配置'
+              }
+            />
+          </label>
+          <p className="muted">
+            当前高德配置：
+            {view?.hasPersonalAmapKey
+              ? `个人 Key（尾号 ${view.amapApiKeyLast4}）`
+              : view?.hasSiteAmapKey
+                ? '站点默认 Key'
+                : '未配置，生成时自动降级'}
+          </p>
+          {view?.hasPersonalAmapKey && (
+            <label className="check-row">
+              <input
+                type="checkbox"
+                checked={clearAmapApiKey}
+                onChange={(e) => {
+                  setClearAmapApiKey(e.target.checked);
+                  if (e.target.checked) setAmapApiKey('');
+                }}
+              />
+              清除已保存的个人高德 Key（保存后恢复站点默认或未配置降级）
+            </label>
+          )}
+          <label>
+            Web 搜索 API Key
+            <input
+              type="password"
+              value={searchApiKey}
+              disabled={clearSearchConfig}
+              onChange={(e) => {
+                setSearchApiKey(e.target.value);
+                if (e.target.value) setClearSearchConfig(false);
+              }}
+              placeholder={
+                view?.hasPersonalSearchKey
+                  ? `已保存个人 Key（尾号 ${view.searchApiKeyLast4}），留空则不修改`
+                  : view?.hasSiteSearchKey
+                    ? '当前使用站点默认 Key；填写后仅你的任务优先使用个人配置'
+                    : '填写 LangSearch 或兼容服务 API Key'
+              }
+            />
+          </label>
+          <label>
+            Web 搜索 Base URL
+            <input
+              value={curSearchApiBaseUrl}
+              disabled={clearSearchConfig}
+              onChange={(e) => setSearchApiBaseUrl(e.target.value)}
+              placeholder="https://api.langsearch.com（新配置留空时使用此默认值）"
+            />
+          </label>
+          <p className="muted">
+            当前 Web 搜索配置：
+            {view?.hasPersonalSearchKey
+              ? `个人配置（Key 尾号 ${view.searchApiKeyLast4}，${view.searchApiBaseUrl}）`
+              : view?.hasSiteSearchKey
+                ? '站点默认配置'
+                : '未配置，生成时自动降级'}
+          </p>
+          {view?.hasPersonalSearchKey && (
+            <label className="check-row">
+              <input
+                type="checkbox"
+                checked={clearSearchConfig}
+                onChange={(e) => {
+                  setClearSearchConfig(e.target.checked);
+                  if (e.target.checked) {
+                    setSearchApiKey('');
+                    setSearchApiBaseUrl(null);
+                  }
+                }}
+              />
+              清除已保存的个人 Web 搜索 Key 与 Base URL（保存后恢复站点默认或未配置降级）
+            </label>
+          )}
           <div className="form-foot">
             {message && <span className="form-msg">{message}</span>}
             <button type="submit" className="btn btn-primary" disabled={save.isPending}>

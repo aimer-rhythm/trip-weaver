@@ -5,6 +5,8 @@
 import { env } from '../../env';
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
+import { resolveSearchCredential } from '../../services/settingsService';
+import { assertSafeBaseUrl } from '../ssrfGuard';
 import type { SourceStatus } from '../sourceStatus';
 
 const SEARCH_MIN_INTERVAL_MS = 1000;              // 免费档限流未明示，串行 1s 保守姿态
@@ -76,11 +78,13 @@ export class WebSearchSource implements SearchSource {
   constructor(
     private baseUrl: string,
     private apiKey: string,
+    private validateBaseUrlBeforeUse = false,
   ) {}
 
   /** 失败抛给调用方分支处理 */
   private async request(query: string, count: number): Promise<WebSearchHit[]> {
     return this.queue(async () => {
+      if (this.validateBaseUrlBeforeUse) await assertSafeBaseUrl(this.baseUrl);
       const res = await fetch(`${this.baseUrl}/v1/web-search`, {
         method: 'POST',
         headers: { authorization: `Bearer ${this.apiKey}`, 'content-type': 'application/json' },
@@ -149,10 +153,50 @@ export function createTaskSearchSource(inner: SearchSource): TaskSearchSource {
   return { source, stats };
 }
 
-// ---------- 单例 ----------
+// ---------- 按用户动态构造 ----------
 
 const nullSource = new NullSearchSource();
 const webSource = env.searchApiKey ? new WebSearchSource(env.searchApiBaseUrl, env.searchApiKey) : null;
+
+export interface ResolvedSearchSource {
+  source: SearchSource;
+  credentialRevision: string;
+  credentialOrigin: 'personal' | 'site' | 'none';
+}
+
+/** 构造请求级/任务级搜索源；个人 Base URL 会在每次真实请求前再次做 SSRF 校验。 */
+export function createSearchSource(
+  baseUrl: string | null | undefined,
+  apiKey: string | null | undefined,
+  validateBaseUrlBeforeUse = false,
+): SearchSource {
+  return baseUrl && apiKey ? new WebSearchSource(baseUrl, apiKey, validateBaseUrlBeforeUse) : nullSource;
+}
+
+/** 个人配置优先；个人 URL 在构造前复查，不安全时降级而不是中断生成。 */
+export async function resolveSearchSourceForUser(userId: string): Promise<ResolvedSearchSource> {
+  const credential = resolveSearchCredential(userId);
+  if (!credential) {
+    return { source: nullSource, credentialRevision: 'none', credentialOrigin: 'none' };
+  }
+  if (credential.origin === 'site') {
+    return { source: getSearchSource(), credentialRevision: credential.revision, credentialOrigin: 'site' };
+  }
+  try {
+    await assertSafeBaseUrl(credential.baseUrl);
+    return {
+      source: createSearchSource(credential.baseUrl, credential.apiKey, true),
+      credentialRevision: credential.revision,
+      credentialOrigin: 'personal',
+    };
+  } catch {
+    return {
+      source: new NullSearchSource('个人 Web 搜索 Base URL 安全校验未通过'),
+      credentialRevision: credential.revision,
+      credentialOrigin: 'personal',
+    };
+  }
+}
 
 /** 站点级搜索源：未配置 SEARCH_API_KEY 时为 Null 降级 */
 export function getSearchSource(): SearchSource {
