@@ -14,6 +14,7 @@ import {
   type GenerateForm,
   type ResearchPoi,
   type SourceNote,
+  type TransitLeg,
   type Trip,
 } from '@tripweaver/shared';
 
@@ -55,7 +56,7 @@ function toActivity(input: DraftActivityInput): Activity {
 
 export class DraftTrip {
   title = '';
-  private days: { title: string; activities: Activity[] }[] = [];
+  private days: { title: string; activities: Activity[]; legs?: TransitLeg[] }[] = [];
 
   constructor(private form: GenerateForm) {}
 
@@ -63,6 +64,11 @@ export class DraftTrip {
     this.title = title.slice(0, 60);
     this.days = dayTitles.slice(0, MAX_TRIP_DAYS).map((t) => ({ title: t.slice(0, 30), activities: [] }));
     return `骨架已建立：${this.title}，共 ${this.days.length} 天`;
+  }
+
+  /** 确定性后处理专用（orchestrator geoPipeline）：暴露可变天列表以写回坐标与通勤段 */
+  mutableDays(): { title: string; activities: Activity[]; legs?: TransitLeg[] }[] {
+    return this.days;
   }
 
   /** dayIndex 从 1 开始；越界返回错误文本供 Agent 自愈 */
@@ -132,11 +138,7 @@ export class DraftTrip {
       if (!day.activities.length) problems.push(`第 ${i + 1} 天没有任何活动`);
       if (day.activities.length > 8) problems.push(`第 ${i + 1} 天活动过多（${day.activities.length} 个，应 ≤8）`);
     });
-    const all = this.days.flatMap((d) => d.activities);
-    const noCoord = all.filter((a) => a.lat === 0 && a.lng === 0).length;
-    if (all.length && noCoord > all.length / 2) {
-      problems.push(`超过一半活动（${noCoord}/${all.length}）没有坐标，请用 geocode_place 补齐主要景点坐标`);
-    }
+    // v0.5：坐标覆盖不再作为完整性问题 —— 审校后由确定性 geoPipeline 统一解析全量坐标
     return problems;
   }
 
@@ -157,6 +159,8 @@ export class DraftTrip {
         dayIndex: i + 1,
         title: day.title,
         activities: day.activities,
+        // 通勤段（geoPipeline 后处理写入）；为空时不写字段，与旧行程 JSON 形状一致
+        ...(day.legs?.length ? { legs: day.legs } : {}),
       })),
       // 调研候选池（行程概览页数据源）；为空时不写字段，与旧行程 JSON 形状一致
       ...(research?.overview.length ? { overview: research.overview.slice(0, MAX_OVERVIEW_POIS) } : {}),

@@ -44,8 +44,27 @@ remaining budget is below that provider's per-task maximum.
 This is intentionally approximate under concurrency: running jobs are not persisted until a
 terminal state, so multiple simultaneous jobs can exceed the daily budget by a bounded amount.
 
+When one provider serves multiple metered call kinds in a single task (e.g. Amap POI search +
+geocoding + route planning), the daily-budget gate must reserve the SUM of all per-task caps
+before enabling the provider for that task (`GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK` = 70
+in `geoPipeline`), and all kinds share one serial queue and count into the same
+`generations.amap_calls` column.
+
 Representative paths: `apps/server/src/services/quotaService.ts`,
-`apps/server/src/generation/orchestrator.ts`, `apps/server/src/db/schema.ts`.
+`apps/server/src/generation/orchestrator.ts`, `apps/server/src/generation/geoPipeline.ts`,
+`apps/server/src/db/schema.ts`.
+
+## Tiered Estimators with Truthful Source Labeling
+
+When real provider data has a cheaper deterministic fallback (route duration → haversine
+heuristic; amap geocode → Nominatim+conversion), model the tiers explicitly and label every
+persisted value with its origin (`source: 'amap' | 'heuristic'`, `coordSource`,
+`coordSystem`). Consumers (feasibility checks, UI, evals) must be able to see the confidence
+level; never present heuristic values as provider data. Degrade silently tier-by-tier — the
+generation workflow must never fail because a tier is unavailable.
+
+Representative paths: `apps/server/src/generation/legEstimator.ts`,
+`apps/server/src/integrations/amap/route.ts`, `apps/server/src/integrations/amap/geocoder.ts`.
 
 ## Truthful Call-Attempt Accounting
 

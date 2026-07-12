@@ -3,7 +3,10 @@ import {
   ACTIVITY_CATEGORIES,
   BUDGET_LEVELS,
   COORD_SOURCES,
+  COORD_SYSTEMS,
   DATA_SOURCE_KINDS,
+  LEG_MODES,
+  LEG_SOURCES,
   MAX_OVERVIEW_POIS,
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
@@ -35,9 +38,21 @@ export const ActivitySchema = Type.Object({
   lat: Type.Number({ minimum: -90, maximum: 90 }),
   lng: Type.Number({ minimum: -180, maximum: 180 }),
   coordSource: StringEnum(COORD_SOURCES),
+  coordSystem: Type.Optional(StringEnum(COORD_SYSTEMS)),   // 缺省 = wgs84（旧数据兼容），新生成一律 gcj02
   cost: Type.Number({ minimum: 0 }),
   category: StringEnum(ACTIVITY_CATEGORIES),
   sourceNotes: Type.Array(SourceNoteSchema, { maxItems: MAX_SOURCE_NOTES }),
+});
+
+// 活动间通勤段（v0.5）：以 from/to activityId 关联，活动重排/删除后失配的 leg 视为过期，由消费方过滤
+export const TransitLegSchema = Type.Object({
+  fromActivityId: Type.String(),
+  toActivityId: Type.String(),
+  mode: StringEnum(LEG_MODES),
+  durationMin: Type.Number({ minimum: 0 }),
+  distanceM: Type.Number({ minimum: 0 }),
+  source: StringEnum(LEG_SOURCES),                              // amap 真实路径规划 / heuristic 启发式估算
+  polyline: Type.Optional(Type.String({ maxLength: 4000 })),    // 「lng,lat;lng,lat…」抽稀后串，超长丢弃
 });
 
 export const TripDaySchema = Type.Object({
@@ -45,6 +60,7 @@ export const TripDaySchema = Type.Object({
   dayIndex: Type.Integer({ minimum: 1 }),
   title: Type.String({ maxLength: 30 }),
   activities: Type.Array(ActivitySchema),
+  legs: Type.Optional(Type.Array(TransitLegSchema)),   // 可选：旧行程无此字段
 });
 
 // 调研候选（行程概览卡片）。高德协议 3.5：只落名称+短摘要+来源链接，图片仅存热链 URL 不转存文件

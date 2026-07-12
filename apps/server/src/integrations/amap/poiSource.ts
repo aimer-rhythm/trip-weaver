@@ -1,11 +1,13 @@
 // 高德搜索POI 2.0 适配层（架构 §6）：调研候选的结构化底座
 // 原则沿用 ContentSource 骨架：串行限速 + TTL 缓存 + 任务级上限 + Null 降级 + selfCheck，
 // 任何故障不抛错到上层 —— searchPois 回空数组、selfCheck 变红。
-// 协议红线（高德服务协议 3.5）：结果仅供展示，图片只取热链 URL 不转存；坐标为 GCJ-02，
-// 适配器刻意不返回经纬度，杜绝写入行程活动（行程坐标一律走 Nominatim geoTools）。
+// 协议红线（高德服务协议 3.5）：结果仅供展示，图片只取热链 URL 不转存；
+// v0.5 反转 v0.4「不返回坐标」决策：Nominatim 中国 POI 覆盖不可用，行程坐标全面切换 GCJ-02，
+// 适配器如实返回 pois[].location（GCJ-02）与 adcode，仅存活动坐标点值、不批量囤 POI（协议 3.5 缓解措施）。
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
 import { resolveAmapCredential } from '../../services/settingsService';
+import { parseAmapLocation } from './geocoder';
 import type { PoiCategory } from '@tripweaver/shared';
 import type { SourceStatus } from '../sourceStatus';
 
@@ -30,6 +32,8 @@ export interface AmapPoi {
   cost: string;         // 人均消费（同上）
   opentime: string;     // 营业时间描述（可能为空）
   photoUrls: string[];  // 官方图片热链 ≤3（仅展示，不转存）
+  location: { lat: number; lng: number } | null;   // GCJ-02（v0.5 起如实返回；解析失败为 null）
+  adcode: string;       // 行政区划码（transit 路径规划需要；可能为空）
 }
 
 export interface PoiSource {
@@ -74,6 +78,8 @@ function mapPoi(raw: Record<string, unknown>): AmapPoi | null {
       .map((p) => str(p.url))
       .filter((u) => /^https?:\/\//.test(u))
       .slice(0, MAX_PHOTOS),
+    location: parseAmapLocation(raw.location),
+    adcode: str(raw.adcode),
   };
 }
 

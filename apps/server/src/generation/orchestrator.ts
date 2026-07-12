@@ -20,6 +20,7 @@ import {
   resolveSearchSourceForUser,
 } from '../integrations/websearch/searchSource';
 import { DraftTrip } from './draft';
+import { createGeoSession } from './geoPipeline';
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
@@ -67,6 +68,8 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       : getNullSearchSource();
   const poi = createTaskPoiSource(poiBase);
   const search = createTaskSearchSource(searchBase);
+  // 地理会话（v0.5）：geocode/route 统一凭据解析、任务上限与日额度记账（计入 amap_calls）
+  const geo = createGeoSession(job.userId, form.destination);
   const enabledSources: DataSourceKind[] = [
     ...(poi.source.kind === 'amap' ? (['amap'] as const) : []),
     ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
@@ -84,7 +87,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         tokensIn: usage.tokensIn + tokensIn,
         tokensOut: usage.tokensOut + tokensOut,
         xhsCalls: 0,   // 旧前端兼容字段（小红书已移除）
-        amapCalls: poi.stats.calls,
+        amapCalls: poi.stats.calls + geo.stats.calls,
         searchCalls: search.stats.calls,
       }),
   });
@@ -100,7 +103,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         usedByok: cfg.byok ? 1 : 0,
         tokensIn: usage.tokensIn,
         tokensOut: usage.tokensOut,
-        amapCalls: poi.stats.calls,
+        amapCalls: poi.stats.calls + geo.stats.calls,
         searchCalls: search.stats.calls,
         createdAt: Date.now(),
       })
@@ -153,7 +156,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         model,
         apiKey: cfg.apiKey,
         systemPrompt: PLANNER_SYSTEM_PROMPT,
-        tools: [...buildDraftTools(draft), ...buildGeoTools(form.destination), buildSubmitPlanTool(draft, () => (planPassed = true))],
+        tools: [...buildDraftTools(draft), ...buildGeoTools(geo), buildSubmitPlanTool(draft, () => (planPassed = true))],
         userPrompt: plannerUserPrompt(form, research, revisionRequests),
         signal,
         sink: sinkFor('plan'),
@@ -197,6 +200,20 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       }
       revisionRequests = review.revisionRequests;
       emit(job, { type: 'phase_end', phase: 'review', round, summary: `需修订：${revisionRequests.length} 项` });
+    }
+
+    // ---------- 确定性地理后处理（v0.5，R4）：全量坐标解析 + 通勤段，机械工作移出 LLM 循环 ----------
+    // 进度经现有 thought 事件透出（不新增 SSE 事件类型，前端改造属 ST2）
+    const geoSink = sinkFor('review');
+    try {
+      geoSink.onThought('正在解析坐标与通勤…');
+      await geo.geocodeAll(draft, geoSink.onThought, signal);
+      assertAlive(signal);
+      await geo.computeLegs(draft, geoSink.onThought, signal);
+      assertAlive(signal);
+    } catch (err) {
+      if (signal.aborted) throw err;
+      // 后处理属增强路径：意外异常只损失坐标补全/通勤段，不失败整个任务
     }
 
     // ---------- 落库 ----------

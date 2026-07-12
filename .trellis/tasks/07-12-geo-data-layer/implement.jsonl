@@ -1,0 +1,9 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务端开发前检查清单入口，指向各 guideline"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "新增 amap geocoder/route 适配器须遵循适配器隔离、串行限速、TTL 缓存、Null 降级既有约定"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "orchestrator 后处理 pass 与 geoTools 改造须符合生成层约定（工具定义、事件 sink、prompt 规范）"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "外部 API 失败降级而非抛错的错误处理口径"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "高德 Key 动态解析不入全局单例、日志禁 Key 等安全红线"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "单测与代码质量要求"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared 的 schema/常量演进约定（可选字段增量兼容）"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "schema 变更横跨 shared/server/web 三层，须按跨层思维检查数据流"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "serialQueue/ttlCache/现有 amap 适配器骨架复用优先"}

@@ -1,14 +1,15 @@
 # 织程 TripWeaver · 技术架构文档
 
 - 项目名称：**织程 TripWeaver**（仓库名 `tripweaver`）
-- 文档版本：v0.4
-- 日期：2026-07-09
+- 文档版本：v0.5
+- 日期：2026-07-12
 - 关联文档：[PRD](./PRD.md) · [开发计划](./DEVELOPMENT_PLAN.md)
 
 > **修订记录**
 > - v0.2：纯前端 → 前后端分离（Fastify API + SQLite + 会话认证）；单 Agent → 三 Agent 流水线；新增小红书 MCP 接入层。
 > - v0.3：面向「开源 + 站长运营 + 非 IT 用户」——① LLM Key 双轨解析（站点 Key / BYOK）；② 邀请码 + 配额体系（新增 `generations` 用量表）；③ SSRF 私网黑名单升为强制；④ 小红书定为站长专用小号单账号模式；⑤ 新增开源工程与部署章节（Docker Compose / CI）。
-> - **v0.4（本版）**：小红书抓取风控不可持续，**彻底移除该集成**——调研数据源替换为「高德搜索POI 2.0（结构化底座）+ Web 搜索 API（攻略语义层，默认 LangSearch）」双层方案 + 预约种子表；调研产物升级为结构化候选池（`Trip.overview`），SSE 新增 `candidate` 事件；`generations` 用量列泛化（`amap_calls`/`search_calls`）。
+> - v0.4：小红书抓取风控不可持续，**彻底移除该集成**——调研数据源替换为「高德搜索POI 2.0（结构化底座）+ Web 搜索 API（攻略语义层，默认 LangSearch）」双层方案 + 预约种子表；调研产物升级为结构化候选池（`Trip.overview`），SSE 新增 `candidate` 事件；`generations` 用量列泛化（`amap_calls`/`search_calls`）。
+> - **v0.5（本版）**：**坐标决策反转**——Nominatim 在中国的 POI 级覆盖实测不可用，且 WGS-84 与高德 GCJ-02 混用不可行；行程坐标全面切换高德 GCJ-02（活动新增可选 `coordSystem`，缺省 wgs84 兼容旧数据）。新增高德地理编码/路径规划适配器与活动间通勤段 `TripDay.legs`（walk/transit/drive，`source=amap|heuristic`）；坐标解析与通勤估算移出 LLM 循环，改为审校后确定性后处理 pass（解析链：高德 POI text → v3 geocode → Nominatim+wgs84ToGcj02 → estimated 降级）。协议 3.5 缓解措施：只存活动坐标点值与通勤时长/距离数值、polyline 抽稀且 ≤4000 字符、不批量囤 POI、24h TTL 缓存、图片热链不转存不变。
 
 ---
 
@@ -157,7 +158,8 @@ resolveLlmConfig(userId):
 
 小红书抓取因风控与账号纪律包袱于 v0.4 移除（ADR 见任务 `07-09-replace-xhs-research-with-amap-web-search-add-trip-overview-page`）。现行方案为「结构化底座 + 攻略语义层」双层数据源，模型知识兜底：
 
-- **高德搜索POI 2.0**（`integrations/amap/poiSource.ts`）：`GET /v5/place/text`，`show_fields=business,photos`，按类目码搜索（景点 110000 / 餐饮 050000 / 住宿 100000）。每次自检或新生成任务按当前用户动态解析“个人加密 Key → 站点 `AMAP_KEY` → Null 源”，不把个人凭据放入全局单例；用户更新或清除后无需重启。返回名称/类型/地址/评分/人均/营业时间/图片热链；**适配器刻意不返回坐标**——高德是 GCJ-02，行程活动坐标一律走 Nominatim（WGS-84），同时规避协议 3.5 的存储限制与坐标转换。
+- **高德搜索POI 2.0**（`integrations/amap/poiSource.ts`）：`GET /v5/place/text`，`show_fields=business,photos`，按类目码搜索（景点 110000 / 餐饮 050000 / 住宿 100000）。每次自检或新生成任务按当前用户动态解析“个人加密 Key → 站点 `AMAP_KEY` → Null 源”，不把个人凭据放入全局单例；用户更新或清除后无需重启。返回名称/类型/地址/评分/人均/营业时间/图片热链，**v0.5 起并返回 `location`（GCJ-02）与 `adcode`**——v0.4「不返回坐标」决策已反转（Nominatim 中国 POI 覆盖不可用、坐标系混用不可行），行程活动坐标统一 GCJ-02，Nominatim 仅作兜底并经 `wgs84ToGcj02` 转换。
+- **高德地理编码/路径规划**（`integrations/amap/geocoder.ts` · `route.ts`，v0.5）：v3 `geocode/geo` 地名编码 + v5 `direction/{walking,driving,transit/integrated}` 通勤估算（`show_fields=polyline,cost`，折线抽稀 ≤4000 字符否则丢弃）。与 POI 共用 350ms 串行队列 + 24h TTL 缓存；任务级上限 geocode ≤40 / route ≤30，全部计入 `amap_calls` 与 `AMAP_DAILY_BUDGET`；失败/超额/无 Key 静默降级（坐标走 Nominatim 转换、通勤走 `legEstimator` 启发式：haversine×1.4，walk 4.5km/h / transit 20km/h+10min / drive 30km/h+5min）。坐标解析与通勤段生成在审校完成后由 orchestrator 确定性后处理 pass 执行（机械工作移出 LLM 循环）。
 - **Web 搜索**（`integrations/websearch/searchSource.ts`）：`POST {baseUrl}/v1/web-search`（Bearer 认证，`{query, summary, count, freshness}`）。每次自检或新生成任务动态解析“个人加密 Key + Base URL → 站点 `SEARCH_API_KEY` + `SEARCH_API_BASE_URL` → Null 源”；个人 Base URL 保存与使用时均执行 SSRF 校验，用户更新或清除后无需重启。默认 LangSearch（免费）；博查同族 schema 可直接切换。承担玩法/避雷/**预约政策**的语义检索，带来源链接。
 - **预约种子表**（`data/reservationSeeds.json`，~50 条）：全国热门「需预约」景点（故宫/国博/莫高窟/陕历博等），`add_candidate` 命中即强制 `reservation=required` 并附官方渠道链接；离线可用、随仓库维护（数据截至 2026-07）。
 - **调研产物**：结构化候选池 `ResearchPoi[]`（挂 `Trip.overview` 持久化）+ 文本摘要；候选写入时经 SSE `candidate` 事件实时推送前端概览卡片。
@@ -261,11 +263,13 @@ resolveLlmConfig(userId):
 - [x] better-sqlite3 本机安装（A0 已过）
 - [ ] 微信内置浏览器：长图保存路径、EventSource 行为（D2 真机）
 
-### 12.1 调研数据源适配器速查（v0.4）
+### 12.1 调研数据源适配器速查（v0.5）
 
 | 适配器方法 | 端点 | 关键入参 | 返回要点 |
 |---|---|---|---|
-| `PoiSource.searchPois(category, keyword, region)` | `GET https://restapi.amap.com/v5/place/text` | `key` · `keywords`(≤80字) · `types`(110000/050000/100000) · `region`+`city_limit=true` · `show_fields=business,photos` · `page_size` | `pois[]`：name/type/address + business.rating/cost/opentime_today/opentime_week + photos[].url；**不取 location（GCJ-02 不入行程）** |
+| `PoiSource.searchPois(category, keyword, region)` | `GET https://restapi.amap.com/v5/place/text` | `key` · `keywords`(≤80字) · `types`(110000/050000/100000) · `region`+`city_limit=true` · `show_fields=business,photos` · `page_size` | `pois[]`：name/type/address + business.rating/cost/opentime_today/opentime_week + photos[].url + **location（「lng,lat」串，GCJ-02）+ adcode（v0.5 反转）** |
+| `amapGeocode(key, name, city)`（v0.5） | `GET https://restapi.amap.com/v3/geocode/geo` | `key` · `address`(city+name) · `city` | `geocodes[0]`：location（GCJ-02）+ adcode；失败回 null |
+| `routeEstimate(key, origin, dest, mode, opts)`（v0.5） | `GET /v5/direction/walking` · `/v5/direction/driving` · `/v5/direction/transit/integrated` | `origin`/`destination`（「lng,lat」）· `show_fields=polyline,cost` · transit 另需 `city1`/`city2`（adcode） | `paths[0]`/`transits[0]`：cost.duration（秒）+ distance（米）+ steps[].polyline（抽稀 ≤4000 字符，超长丢弃）；失败回 null → 启发式降级 |
 | `SearchSource.search(query)` | `POST {SEARCH_API_BASE_URL}/v1/web-search` | Bearer `SEARCH_API_KEY`；body `{query, summary: true, count, freshness}` | `data.webPages.value[]`：name/url/snippet/summary/siteName/datePublished（LangSearch 与博查同族） |
 | `selfCheck()`（两源各一） | 同上（最小探测请求） | — | `SourceStatus{configured, checked, ok, message}`；`GET /api/settings/sources-status` 数据源 |
 

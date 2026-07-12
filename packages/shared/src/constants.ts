@@ -14,6 +14,11 @@ export const MAX_SOURCE_NOTES = 3;
 
 // 调研候选池（行程概览页）：类目 / 预约三态 / 数据源标注
 export const POI_CATEGORIES = ['attraction', 'food', 'hotel'] as const;
+
+// 地理数据层（v0.5）：坐标系标注 / 活动间通勤段
+export const COORD_SYSTEMS = ['wgs84', 'gcj02'] as const;   // 活动缺省 = wgs84（旧数据），新生成一律 gcj02
+export const LEG_MODES = ['walk', 'transit', 'drive'] as const;
+export const LEG_SOURCES = ['amap', 'heuristic'] as const;
 export const RESERVATION_STATUSES = ['required', 'none', 'unknown'] as const;
 export const DATA_SOURCE_KINDS = ['amap', 'websearch'] as const;
 export const MAX_OVERVIEW_POIS = 40;

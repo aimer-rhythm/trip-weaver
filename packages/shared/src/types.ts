@@ -11,12 +11,16 @@ import type {
   TripExportSchema,
   TripMetaSchema,
   TripSchema,
+  TransitLegSchema,
 } from './schemas';
 import type {
   ACTIVITY_CATEGORIES,
   BUDGET_LEVELS,
   COORD_SOURCES,
+  COORD_SYSTEMS,
   DATA_SOURCE_KINDS,
+  LEG_MODES,
+  LEG_SOURCES,
   POI_CATEGORIES,
   RESERVATION_STATUSES,
 } from './constants';
@@ -24,6 +28,7 @@ import type {
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
 export type SourceNote = Static<typeof SourceNoteSchema>;
 export type Activity = Static<typeof ActivitySchema>;
+export type TransitLeg = Static<typeof TransitLegSchema>;
 export type TripDay = Static<typeof TripDaySchema>;
 export type TripMeta = Static<typeof TripMetaSchema>;
 export type ResearchPoi = Static<typeof ResearchPoiSchema>;
@@ -37,6 +42,9 @@ export type SettingsPut = Static<typeof SettingsPutSchema>;
 export type ActivityCategory = (typeof ACTIVITY_CATEGORIES)[number];
 export type BudgetLevel = (typeof BUDGET_LEVELS)[number];
 export type CoordSource = (typeof COORD_SOURCES)[number];
+export type CoordSystem = (typeof COORD_SYSTEMS)[number];
+export type LegMode = (typeof LEG_MODES)[number];
+export type LegSource = (typeof LEG_SOURCES)[number];
 export type PoiCategory = (typeof POI_CATEGORIES)[number];
 export type ReservationStatus = (typeof RESERVATION_STATUSES)[number];
 export type DataSourceKind = (typeof DATA_SOURCE_KINDS)[number];

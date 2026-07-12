@@ -62,6 +62,35 @@ are historical fields with documented compatibility meanings.
 Representative paths: `apps/server/src/routes/generations.ts`,
 `apps/server/src/generation/jobManager.ts`, `packages/shared/src/types.ts`.
 
+## Deterministic Post-Pass (Mechanical Work Out of the LLM Loop)
+
+Bulk mechanical work with deterministic rules — batch geocoding, transit-leg computation —
+must NOT be delegated to agent tool loops (burns turns, unreliable on weak models). Run it as
+a code-level post-pass in the orchestrator after the review loop and before `createTrip`.
+
+- Progress goes through the existing `thought` sink events (e.g. `正在解析坐标与通勤 (12/18)`);
+  do not invent new SSE event types for internal passes.
+- Degradation inside the pass must never fail the job; skip items truthfully instead of
+  fabricating data.
+- Agent tools remain available for judgment calls only (e.g. `geocode_place` for ambiguous
+  key places); the post-pass skips items the agent already resolved (`coordSource==='geocoded'`).
+
+Representative paths: `apps/server/src/generation/geoPipeline.ts`,
+`apps/server/src/generation/orchestrator.ts`.
+
+### Common Mistake: AbortSignal only checked at phase boundaries
+
+**Symptom**: after cancellation the job stays "running" for tens of seconds while a post-pass
+loop drains serial external calls (350ms–1.1s each).
+
+**Cause**: `assertAlive(signal)` was only called between phases; loops with metered serial
+calls did not observe the signal per iteration.
+
+**Fix / Prevention**: any loop performing serial external calls (post-pass, batch jobs) must
+accept `signal?: AbortSignal` and check it at the top of every iteration, then let the
+orchestrator's catch converge to the authoritative `cancelled` terminal state. Found as a
+High issue in task `07-12-geo-data-layer`.
+
 ## Time and Resource Limits
 
 The orchestrator applies a 10-minute whole-job timeout through the job abort controller and
