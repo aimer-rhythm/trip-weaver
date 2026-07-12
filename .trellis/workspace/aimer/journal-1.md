@@ -203,3 +203,36 @@ Overview merged into activity cards + CandidateDrawer, transit LegChips with heu
 ### Next Steps
 
 - None - task complete
+
+
+## Session 7: ST3 OTA demotion + parent geo-stack task complete (3/3)
+
+**Date**: 2026-07-12
+**Task**: ST3 OTA demotion + parent geo-stack task complete (3/3)
+**Branch**: `master`
+
+### Summary
+
+transportMode form preference feeding computeLegs, lodging anchor with 'lodging' sentinel legs (generation-time area suggestion + geocode, editor rename invalidation), budget demoted to per-person/day range with disclaimer, cost made optional with full consumer audit. All gates green (33 unit tests, verify-c2, verify-c3 31/31). Parent task 07-12-switch-geo-stack archived 3/3. Next: feasibility engine (M0-A remainder).
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `e9e4e73` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

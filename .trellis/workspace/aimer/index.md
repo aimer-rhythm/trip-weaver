@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 6
+- **Total Sessions**: 7
 - **Last Active**: 2026-07-12
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~205 | Active |
+| `journal-1.md` | ~238 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 7 | 2026-07-12 | ST3 OTA demotion + parent geo-stack task complete (3/3) | `e9e4e73` | `master` |
 | 6 | 2026-07-12 | ST2 frontend: itinerary/overview merge + leg chips + Amap map | `c3e5522` | `master` |
 | 5 | 2026-07-12 | ST1 geo data layer: Amap GCJ-02 stack + transit legs | `6d8b4b4` | `master` |
 | 4 | 2026-07-07 | Open registration and GitHub login, invite code as fallback | `62167df` | `master` |
