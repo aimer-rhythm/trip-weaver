@@ -170,3 +170,36 @@ Competitive-analysis-driven pivot executed: geo stack switched to Amap GCJ-02 (g
 ### Next Steps
 
 - None - task complete
+
+
+## Session 6: ST2 frontend: itinerary/overview merge + leg chips + Amap map
+
+**Date**: 2026-07-12
+**Task**: ST2 frontend: itinerary/overview merge + leg chips + Amap map
+**Branch**: `master`
+
+### Summary
+
+Overview merged into activity cards + CandidateDrawer, transit LegChips with heuristic badge, MapView on Amap tiles with day-colored real-route polylines and legacy wgs84 conversion. 2 High fixed in check (containment-match guard, stale verify-c3 assertions); C3 browser gate 27/27. ST3 (ota demotion) next.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `c3e5522` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
