@@ -1,0 +1,5 @@
+{"file":".trellis/spec/shared/frontend/state-management.md","reason":"Defines ownership and lifecycle expectations for React state, query mutations, API responses, and SSE events."}
+{"file":".trellis/spec/shared/frontend/hook-guidelines.md","reason":"Guides loading, cancellation, retry, and error behavior in web hooks without leaking React concerns into shared code."}
+{"file":".trellis/spec/shared/frontend/quality-guidelines.md","reason":"Provides cross-runtime type-safety and boundary-validation requirements for frontend changes."}
+{"file":".trellis/spec/shared/backend/error-handling.md","reason":"Defines HTTP and runtime validation boundaries if the server cancellation route requires adjustment."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"The bug crosses button, mutation, HTTP cancellation, AbortController, and SSE terminal-event boundaries."}
