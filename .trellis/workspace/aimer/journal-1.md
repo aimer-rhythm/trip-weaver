@@ -137,3 +137,36 @@ Implement three-mode registration system (open/invite/closed) with REGISTRATION_
 ### Next Steps
 
 - None - task complete
+
+
+## Session 5: ST1 geo data layer: Amap GCJ-02 stack + transit legs
+
+**Date**: 2026-07-12
+**Task**: ST1 geo data layer: Amap GCJ-02 stack + transit legs
+**Branch**: `master`
+
+### Summary
+
+Competitive-analysis-driven pivot executed: geo stack switched to Amap GCJ-02 (geocoder+route adapters under four-gate discipline), TransitLeg schema added, deterministic geocodeAll+computeLegs post-pass in orchestrator (abort-aware after High fix), 24 unit tests, spec updated with 4 new conventions. ST2 (frontend merge+map) next.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `6d8b4b4` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
