@@ -19,7 +19,7 @@ export function ActivityEditDialog({ dayId, activity, onClose }: Props) {
   const [description, setDescription] = useState(activity?.description ?? '');
   const [lat, setLat] = useState(activity ? String(activity.lat) : '');
   const [lng, setLng] = useState(activity ? String(activity.lng) : '');
-  const [cost, setCost] = useState(activity ? String(activity.cost) : '0');
+  const [cost, setCost] = useState(activity ? String(activity.cost ?? 0) : '0');
   const [category, setCategory] = useState<ActivityCategory>(activity?.category ?? '其他');
   const [error, setError] = useState('');
 

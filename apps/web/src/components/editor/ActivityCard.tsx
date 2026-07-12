@@ -25,7 +25,7 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, onEdit
   const commitCost = () => {
     setEditingCost(false);
     const n = Number(costDraft);
-    if (!Number.isNaN(n) && n >= 0 && n !== activity.cost) {
+    if (!Number.isNaN(n) && n >= 0 && n !== (activity.cost ?? 0)) {
       updateActivity(day.id, activity.id, { cost: n });
     }
   };
@@ -59,11 +59,11 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, onEdit
               className="cost-chip"
               title="点击修改费用"
               onClick={() => {
-                setCostDraft(String(activity.cost));
+                setCostDraft(String(activity.cost ?? 0));
                 setEditingCost(true);
               }}
             >
-              ¥{activity.cost}
+              ¥{activity.cost ?? 0}
             </button>
           )}
         </div>

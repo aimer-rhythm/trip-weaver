@@ -103,7 +103,7 @@ export function TripListPage() {
             <Link to={`/trips/${t.id}`} className="trip-card-main">
               <span className="trip-card-title">{t.title}</span>
               <span className="trip-card-meta">
-                {t.destination} · {t.daysCount} 天 · {t.activityCount} 个活动 · ¥{t.totalCost}
+                {t.destination} · {t.daysCount} 天 · {t.activityCount} 个活动 · 约 ¥{t.totalCost}
               </span>
               <span className="trip-card-time muted">更新于 {formatTime(t.updatedAt)}</span>
             </Link>

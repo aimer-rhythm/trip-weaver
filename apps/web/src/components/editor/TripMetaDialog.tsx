@@ -6,6 +6,8 @@ import { Modal } from '../Modal';
 export function TripMetaDialog({ onClose }: { onClose: () => void }) {
   const trip = useEditorStore((s) => s.trip);
   const updateMeta = useEditorStore((s) => s.updateMeta);
+  const updateLodging = useEditorStore((s) => s.updateLodging);
+  const updateDayLodging = useEditorStore((s) => s.updateDayLodging);
 
   const [title, setTitle] = useState(trip?.title ?? '');
   const [destination, setDestination] = useState(trip?.destination ?? '');
@@ -13,6 +15,11 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
   const [budgetLevel, setBudgetLevel] = useState<BudgetLevel>(trip?.budgetLevel ?? '舒适');
   const [totalBudget, setTotalBudget] = useState(String(trip?.totalBudget ?? 0));
   const [partySize, setPartySize] = useState(String(trip?.partySize ?? 2));
+  // 住宿锚点（ST3）：改名即清空坐标并丢弃相关住宿 leg（保存时经 store 处理，无客户端重编码）
+  const [lodgingName, setLodgingName] = useState(trip?.lodging?.name ?? '');
+  const [dayLodgings, setDayLodgings] = useState<Record<string, string>>(() =>
+    Object.fromEntries((trip?.days ?? []).filter((d) => d.lodging).map((d) => [d.id, d.lodging!.name])),
+  );
   const [error, setError] = useState('');
 
   if (!trip) return null;
@@ -31,6 +38,10 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
       totalBudget: budgetNum,
       partySize: partyNum,
     });
+    updateLodging(lodgingName);
+    for (const day of trip.days) {
+      updateDayLodging(day.id, dayLodgings[day.id] ?? '');
+    }
     onClose();
   };
 
@@ -71,6 +82,32 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
           出行人数
           <input inputMode="numeric" value={partySize} onChange={(e) => setPartySize(e.target.value)} />
         </label>
+        <label>
+          住宿位置（通勤锚点，可选）
+          <input
+            value={lodgingName}
+            onChange={(e) => setLodgingName(e.target.value)}
+            maxLength={60}
+            placeholder="酒店名或大致区域，如「西湖景区周边」"
+          />
+        </label>
+        {lodgingName.trim() !== (trip.lodging?.name ?? '') && (
+          <p className="muted">修改住宿位置后将清除原坐标与住宿通勤段（重新生成行程可恢复）。</p>
+        )}
+        <details className="form-day-lodging">
+          <summary className="muted">按天覆盖住宿（多城市场景，可选）</summary>
+          {trip.days.map((d) => (
+            <label key={d.id}>
+              Day {d.dayIndex} 住宿
+              <input
+                value={dayLodgings[d.id] ?? ''}
+                onChange={(e) => setDayLodgings((prev) => ({ ...prev, [d.id]: e.target.value }))}
+                maxLength={60}
+                placeholder="留空则用整程住宿"
+              />
+            </label>
+          ))}
+        </details>
         {error && <p className="form-error">{error}</p>}
         <div className="form-foot">
           <button type="button" className="btn btn-ghost" onClick={onClose}>

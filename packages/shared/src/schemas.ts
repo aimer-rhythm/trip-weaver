@@ -13,6 +13,7 @@ import {
   POI_CATEGORIES,
   PREFERENCE_OPTIONS,
   RESERVATION_STATUSES,
+  TRANSPORT_MODES,
   TRIP_EXPORT_VERSION,
 } from './constants';
 
@@ -39,12 +40,23 @@ export const ActivitySchema = Type.Object({
   lng: Type.Number({ minimum: -180, maximum: 180 }),
   coordSource: StringEnum(COORD_SOURCES),
   coordSystem: Type.Optional(StringEnum(COORD_SYSTEMS)),   // 缺省 = wgs84（旧数据兼容），新生成一律 gcj02
-  cost: Type.Number({ minimum: 0 }),
+  cost: Type.Optional(Type.Number({ minimum: 0 })),   // 人均粗估档位值（ST3 预算区间化）：免费=0，不确定缺省；旧数据带值照读，读取方 ?? 0 兜底
   category: StringEnum(ACTIVITY_CATEGORIES),
   sourceNotes: Type.Array(SourceNoteSchema, { maxItems: MAX_SOURCE_NOTES }),
 });
 
+// 住宿锚点（ST3）：仅作通勤锚点（非酒店推荐）。名称修改后坐标视为失效，需清空并丢弃相关住宿 leg
+export const LodgingSchema = Type.Object({
+  name: Type.String({ minLength: 1, maxLength: 60 }),
+  area: Type.Optional(Type.String({ maxLength: 40 })),
+  lat: Type.Optional(Type.Number({ minimum: -90, maximum: 90 })),
+  lng: Type.Optional(Type.Number({ minimum: -180, maximum: 180 })),
+  coordSystem: Type.Optional(StringEnum(COORD_SYSTEMS)),
+});
+
 // 活动间通勤段（v0.5）：以 from/to activityId 关联，活动重排/删除后失配的 leg 视为过期，由消费方过滤
+// 哨兵约定（ST3）：fromActivityId/toActivityId 允许哨兵值 'lodging'（leg 挂在 day 上，作用域限当天）——
+// {from:'lodging', to:<首活动id>} 表示「从住宿出发」，{from:<末活动id>, to:'lodging'} 表示「返回住宿」
 export const TransitLegSchema = Type.Object({
   fromActivityId: Type.String(),
   toActivityId: Type.String(),
@@ -61,6 +73,7 @@ export const TripDaySchema = Type.Object({
   title: Type.String({ maxLength: 30 }),
   activities: Type.Array(ActivitySchema),
   legs: Type.Optional(Type.Array(TransitLegSchema)),   // 可选：旧行程无此字段
+  lodging: Type.Optional(LodgingSchema),               // day 级住宿覆盖（多城市场景）；缺省用 Trip 级
 });
 
 // 调研候选（行程概览卡片）。高德协议 3.5：只落名称+短摘要+来源链接，图片仅存热链 URL 不转存文件
@@ -92,6 +105,8 @@ export const TripSchema = Type.Object({
   preferences: Type.Array(Type.String({ maxLength: 10 }), { maxItems: 10 }),
   partySize: Type.Integer({ minimum: 1, maximum: 50 }),
   extraNotes: Type.String({ maxLength: 200 }),
+  transportMode: Type.Optional(StringEnum(TRANSPORT_MODES)),   // 出行方式基调（缺省 transit；持久化供未来重排复用）
+  lodging: Type.Optional(LodgingSchema),                       // Trip 级住宿锚点（day 级可覆盖）
   days: Type.Array(TripDaySchema, { maxItems: MAX_TRIP_DAYS }),
   // 调研候选池（行程概览页数据；可选：旧行程无此字段）
   overview: Type.Optional(Type.Array(ResearchPoiSchema, { maxItems: MAX_OVERVIEW_POIS })),
@@ -117,6 +132,8 @@ export const GenerateFormSchema = Type.Object({
   preferences: Type.Array(StringEnum(PREFERENCE_OPTIONS), { maxItems: 7, default: [] }),
   partySize: Type.Integer({ minimum: 1, maximum: 20 }),
   extraNotes: Type.String({ maxLength: 200, default: '' }),
+  transportMode: Type.Optional(StringEnum(TRANSPORT_MODES)),         // 出行方式基调（缺省 transit）
+  lodging: Type.Optional(Type.String({ maxLength: 60 })),            // 住宿位置（可选，酒店名或大致区域）；留空时由规划 Agent 建议一个区域
 });
 
 // ---------- 认证与设置 ----------

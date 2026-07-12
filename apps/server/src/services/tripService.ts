@@ -1,16 +1,17 @@
 import { and, desc, eq, sql } from 'drizzle-orm';
-import { MAX_TRIPS_PER_USER, computeBudgetSummary, uid, type Trip, type TripListItem } from '@tripweaver/shared';
+import { MAX_TRIPS_PER_USER, uid, type Trip, type TripListItem } from '@tripweaver/shared';
 import { db } from '../db/client';
 import { trips } from '../db/schema';
 
 function summarize(trip: Trip) {
-  const budget = computeBudgetSummary(trip);
+  // 冗余列 total_cost：粗估合计（cost 可选化后缺省按 0 计，仅供列表页「约 ¥」展示）
+  const totalCost = trip.days.reduce((n, d) => n + d.activities.reduce((m, a) => m + (a.cost ?? 0), 0), 0);
   return {
     title: trip.title,
     destination: trip.destination,
     daysCount: trip.days.length,
     activityCount: trip.days.reduce((n, d) => n + d.activities.length, 0),
-    totalCost: Math.round(budget.total),
+    totalCost: Math.round(totalCost),
     usedXhs: trip.meta.usedXhs ? 1 : 0,
   };
 }

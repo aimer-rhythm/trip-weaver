@@ -186,7 +186,7 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
                 <p className="muted">
                   Day {day.dayIndex} · {activity.startTime || '--:--'}
                   {activity.endTime ? ` – ${activity.endTime}` : ''} · {activity.category}
-                  {activity.cost > 0 ? ` · ¥${activity.cost}` : ''}
+                  {typeof activity.cost === 'number' && activity.cost > 0 ? ` · ¥${activity.cost}` : ''}
                 </p>
                 {activity.description && <p>{activity.description}</p>}
                 {activity.coordSource === 'estimated' && <p className="tag tag-warn">坐标为估算</p>}

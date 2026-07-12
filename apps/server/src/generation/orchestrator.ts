@@ -68,8 +68,8 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       : getNullSearchSource();
   const poi = createTaskPoiSource(poiBase);
   const search = createTaskSearchSource(searchBase);
-  // 地理会话（v0.5）：geocode/route 统一凭据解析、任务上限与日额度记账（计入 amap_calls）
-  const geo = createGeoSession(job.userId, form.destination);
+  // 地理会话（v0.5）：geocode/route 统一凭据解析、任务上限与日额度记账（计入 amap_calls）；出行方式基调来自表单（ST3）
+  const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
   const enabledSources: DataSourceKind[] = [
     ...(poi.source.kind === 'amap' ? (['amap'] as const) : []),
     ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
@@ -179,7 +179,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         model,
         apiKey: cfg.apiKey,
         systemPrompt: REVIEWER_SYSTEM_PROMPT,
-        tools: [...buildDraftTools(draft).filter((t) => t.name !== 'set_trip_skeleton' && t.name !== 'add_activity'), ...buildReviewTools(draft, form, review)],
+        tools: [...buildDraftTools(draft).filter((t) => t.name !== 'set_trip_skeleton' && t.name !== 'add_activity' && t.name !== 'set_lodging'), ...buildReviewTools(draft, form, review)],
         userPrompt: reviewerUserPrompt(form, round),
         signal,
         sink: sinkFor('review'),

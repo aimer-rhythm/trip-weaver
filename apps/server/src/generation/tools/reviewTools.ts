@@ -18,17 +18,19 @@ export interface ReviewOutcome {
 export function buildReviewTools(draft: DraftTrip, form: { budgetLevel: string; totalBudget?: number }, outcome: ReviewOutcome): AgentTool[] {
   const budgetTool = defineTool({
     name: 'get_budget_status',
-    label: '查看预算聚合',
-    description: '查看当前草稿的费用汇总（总额/逐天/分类）与预算对比。',
+    label: '查看预算区间',
+    description: '查看当前草稿的人均每日费用粗估区间，用于判断与预算档位是否明显失配（费用为粗估档位值，无需核对精确总价）。',
     parameters: Type.Object({}),
     execute: async () => {
       const b = draft.budget();
-      const perDay = b.perDay.map((d) => `第${d.dayIndex}天 ¥${Math.round(d.amount)}`).join('，');
-      const perCat = b.perCategory.map((c) => `${c.category} ¥${Math.round(c.amount)}`).join('，');
-      const target = form.totalBudget ? `目标总预算 ¥${form.totalBudget}${b.overBudget ? '（已超支！）' : ''}` : `未设总预算（档位：${form.budgetLevel}）`;
+      const range =
+        b.coveredDays > 0
+          ? `人均约 ¥${b.perPersonPerDayMin}–${b.perPersonPerDayMax}/天（门票餐饮等粗估，不含大交通与住宿；有费用数据 ${b.coveredDays} 天）`
+          : '暂无费用数据（各活动均未填 cost）';
+      const target = form.totalBudget ? `用户预算：档位 ${form.budgetLevel}，总预算 ¥${form.totalBudget}` : `用户预算：档位 ${form.budgetLevel}（未设总预算）`;
       return {
-        content: text(`人均总费用 ¥${Math.round(b.total)}｜${target}\n逐天：${perDay || '无'}\n分类：${perCat || '无'}`),
-        details: { total: b.total, overBudget: b.overBudget },
+        content: text(`${range}\n${target}\n判断标准：仅当区间与档位明显失配（如经济档人均每天数千元）才需要调整。`),
+        details: { perPersonPerDayMin: b.perPersonPerDayMin, perPersonPerDayMax: b.perPersonPerDayMax, coveredDays: b.coveredDays },
       };
     },
   });

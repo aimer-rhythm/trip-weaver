@@ -72,10 +72,14 @@ try {
   await page.getByRole('button', { name: '注册并登录' }).click();
   await page.waitForURL('**/trips', { timeout: 10_000 });
 
-  // 1. 表单：今日剩余次数
+  // 1. 表单：今日剩余次数 + ST3 新字段（出行方式三选一默认公共交通 / 住宿位置输入）
   await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
   const quotaText = await page.locator('.quota-inline').innerText();
   check('表单显示今日剩余次数', quotaText.includes('3 / 3'), quotaText.trim());
+  const transitChip = page.locator('.btn-chip', { hasText: '公共交通' }).first();
+  const transitActive = await transitChip.getAttribute('class');
+  check('出行方式三选一，默认公共交通', (transitActive ?? '').includes('is-active'), String(transitActive));
+  check('住宿位置输入框存在', (await page.getByLabel(/住宿位置/).count()) === 1);
   await page.screenshot({ path: `${SHOTS}/08-planner-form.png` });
 
   // 2. 第一次生成：完整流水线
@@ -118,6 +122,10 @@ try {
   await page.waitForSelector('.day-section', { timeout: 10_000 });
   const dayCount = await page.locator('.day-section').count();
   check('自动跳转编辑器且天数正确', dayCount === 2, `days=${dayCount}`);
+  // ST3：mock 规划师已 set_lodging → 有住宿锚点，不显示「未设住宿」弱提示；
+  // 无高德 Key → lodging 无坐标 → 不生成住宿 leg（🏨 chip 为 0），静默降级不报错
+  const lodgingHints = await page.locator('.day-lodging-hint').count();
+  check('有住宿锚点时不显示未设住宿提示', lodgingHints === 0, `hints=${lodgingHints}`);
   await page.screenshot({ path: `${SHOTS}/11-generated-trip.png` });
 
   // 3.5 编辑器「备选」抽屉（概览并入行程后未命中活动的候选）：分组渲染 + 预约徽章三态 + 占位图 + 来源标注
@@ -162,6 +170,9 @@ try {
     oldDayCount === 3 && oldDrawer === 0,
     `days=${oldDayCount}, drawer=${oldDrawer}`,
   );
+  // ST3 旧行程兼容：无 lodging → 每个有活动的天显示「未设住宿」弱提示
+  const oldHints = await pOld.locator('.day-lodging-hint').count();
+  check('旧行程（无 lodging）显示未设住宿弱提示', oldHints === oldDayCount, `hints=${oldHints}`);
   await ctxOld.close();
 
   // 4. 刷新恢复：开第二次生成，中途 reload

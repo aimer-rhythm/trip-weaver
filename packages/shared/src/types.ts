@@ -2,6 +2,7 @@ import type { Static } from '@sinclair/typebox';
 import type {
   ActivitySchema,
   GenerateFormSchema,
+  LodgingSchema,
   LoginBodySchema,
   RegisterBodySchema,
   ResearchPoiSchema,
@@ -23,12 +24,14 @@ import type {
   LEG_SOURCES,
   POI_CATEGORIES,
   RESERVATION_STATUSES,
+  TRANSPORT_MODES,
 } from './constants';
 
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
 export type SourceNote = Static<typeof SourceNoteSchema>;
 export type Activity = Static<typeof ActivitySchema>;
 export type TransitLeg = Static<typeof TransitLegSchema>;
+export type Lodging = Static<typeof LodgingSchema>;
 export type TripDay = Static<typeof TripDaySchema>;
 export type TripMeta = Static<typeof TripMetaSchema>;
 export type ResearchPoi = Static<typeof ResearchPoiSchema>;
@@ -48,13 +51,15 @@ export type LegSource = (typeof LEG_SOURCES)[number];
 export type PoiCategory = (typeof POI_CATEGORIES)[number];
 export type ReservationStatus = (typeof RESERVATION_STATUSES)[number];
 export type DataSourceKind = (typeof DATA_SOURCE_KINDS)[number];
+export type TransportMode = (typeof TRANSPORT_MODES)[number];
 
 // 派生数据（useMemo/服务端即时计算，不持久化）
+// ST3 预算区间化：cost 为粗估档位值 → 只给「人均约 ¥min–max/天」区间（门票餐饮等，不含大交通与住宿），不再有精确总额与超支判定
 export interface BudgetSummary {
-  total: number;
-  perDay: { dayId: string; dayIndex: number; amount: number }[];
-  perCategory: { category: ActivityCategory; amount: number }[];
-  overBudget: boolean;
+  perPersonPerDayMin: number;
+  perPersonPerDayMax: number;
+  /** 有费用数据（任一活动带 cost）的天数；0 = 无任何费用数据 */
+  coveredDays: number;
 }
 
 // 行程列表条目（服务端冗余列）

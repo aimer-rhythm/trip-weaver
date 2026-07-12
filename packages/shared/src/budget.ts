@@ -1,30 +1,33 @@
-import { ACTIVITY_CATEGORIES } from './constants';
-import type { ActivityCategory, BudgetSummary, Trip } from './types';
+import type { BudgetSummary, Trip } from './types';
 
-// 预算聚合 —— 前端面板与审校 Agent 的 get_budget_status 工具共用同一份逻辑
+/** 十位取整（预算区间展示口径） */
+function roundToTens(n: number): number {
+  return Math.round(n / 10) * 10;
+}
+
+// 预算区间聚合（ST3 预算区间化）—— 前端面板与审校 Agent 的 get_budget_status 工具共用同一份逻辑
+// 口径：日成本 = 当天各活动 cost（缺省跳过）求和 ÷ partySize；区间 = 有数据天均值 × [0.8, 1.3]，十位取整
 export function computeBudgetSummary(trip: Trip): BudgetSummary {
+  const partySize = Math.max(1, trip.partySize);
   let total = 0;
-  const perDay: BudgetSummary['perDay'] = [];
-  const categoryMap = new Map<ActivityCategory, number>();
+  let coveredDays = 0;
 
   for (const day of trip.days) {
-    let dayAmount = 0;
+    let hasData = false;
     for (const activity of day.activities) {
-      dayAmount += activity.cost;
-      categoryMap.set(activity.category, (categoryMap.get(activity.category) ?? 0) + activity.cost);
+      if (typeof activity.cost === 'number') {
+        total += activity.cost;
+        hasData = true;
+      }
     }
-    total += dayAmount;
-    perDay.push({ dayId: day.id, dayIndex: day.dayIndex, amount: dayAmount });
+    if (hasData) coveredDays += 1;
   }
 
-  const perCategory = ACTIVITY_CATEGORIES
-    .map((category) => ({ category, amount: categoryMap.get(category) ?? 0 }))
-    .filter((entry) => entry.amount > 0);
-
+  if (coveredDays === 0) return { perPersonPerDayMin: 0, perPersonPerDayMax: 0, coveredDays: 0 };
+  const perPersonPerDay = total / partySize / coveredDays;
   return {
-    total,
-    perDay,
-    perCategory,
-    overBudget: trip.totalBudget > 0 && total > trip.totalBudget,
+    perPersonPerDayMin: roundToTens(perPersonPerDay * 0.8),
+    perPersonPerDayMax: roundToTens(perPersonPerDay * 1.3),
+    coveredDays,
   };
 }

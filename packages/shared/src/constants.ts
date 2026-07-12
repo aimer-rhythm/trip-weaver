@@ -18,6 +18,8 @@ export const POI_CATEGORIES = ['attraction', 'food', 'hotel'] as const;
 // 地理数据层（v0.5）：坐标系标注 / 活动间通勤段
 export const COORD_SYSTEMS = ['wgs84', 'gcj02'] as const;   // 活动缺省 = wgs84（旧数据），新生成一律 gcj02
 export const LEG_MODES = ['walk', 'transit', 'drive'] as const;
+// 出行方式基调（ST3）：生成输入与 Trip 持久化共用；缺省 transit。>1.5km 的通勤段按此基调估算
+export const TRANSPORT_MODES = ['transit', 'drive', 'walk'] as const;
 export const LEG_SOURCES = ['amap', 'heuristic'] as const;
 export const RESERVATION_STATUSES = ['required', 'none', 'unknown'] as const;
 export const DATA_SOURCE_KINDS = ['amap', 'websearch'] as const;

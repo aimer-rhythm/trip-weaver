@@ -92,7 +92,21 @@ export function buildDraftTools(draft: DraftTrip): AgentTool[] {
     execute: async () => ({ content: text(draft.render()), details: {} }),
   });
 
-  return [skeletonTool, addTool, updateTool, removeTool, getTool];
+  // 住宿锚点（ST3）：用户未填住宿时由规划 Agent 建议一个区域（禁止具体酒店/价格，见 planner prompt）
+  const lodgingTool = defineTool({
+    name: 'set_lodging',
+    label: '建议住宿区域',
+    description: '记录建议的住宿区域（如「西湖景区周边」）。仅在用户未指定住宿位置时需要调用；禁止推荐具体酒店或价格。',
+    parameters: Type.Object({
+      name: Type.String({ description: '住宿区域名称，≤60 字，如「西湖景区周边」' }),
+    }),
+    execute: async (_id, params) => {
+      const msg = draft.setLodging(params.name);
+      return { content: text(msg), details: { name: params.name, isError: msg.startsWith('错误') } };
+    },
+  });
+
+  return [skeletonTool, addTool, updateTool, removeTool, getTool, lodgingTool];
 }
 
 /** submit_plan：完整性校验闸门 —— 未通过时把问题清单回给模型自愈 */

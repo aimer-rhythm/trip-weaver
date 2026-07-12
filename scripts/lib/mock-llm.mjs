@@ -43,6 +43,8 @@ function plannerCalls(days, turnHasToolResults) {
   if (turnHasToolResults) return [{ name: 'submit_plan', args: {} }];
   const calls = [
     { name: 'set_trip_skeleton', args: { title: '测试之旅', dayTitles: Array.from({ length: days }, (_, i) => `第${i + 1}天主题`) } },
+    // ST3 住宿锚点：用户未指定时建议一个区域（用户已指定时工具幂等返回提示，不报错）
+    { name: 'set_lodging', args: { name: '市中心站前区域' } },
   ];
   for (let d = 1; d <= days; d++) {
     for (let j = 0; j < 3; j++) {

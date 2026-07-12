@@ -195,6 +195,22 @@ try {
   check('overview 随行程持久化', Array.isArray(trip.json?.overview) && trip.json.overview.length === 3, `overview=${trip.json?.overview?.length}`);
   check('overview 预约徽章数据正确', trip.json?.overview?.find((p) => p.name === '故宫博物院')?.reservation === 'required');
   check('meta.dataSources 未配 Key 时不写入', trip.json?.meta?.dataSources === undefined, JSON.stringify(trip.json?.meta));
+  // ST3：transportMode 缺省 transit 持久化；set_lodging 建议区域落 Trip.lodging。
+  // 坐标解析走高德→Nominatim 降级链：本脚本无高德 Key，Nominatim 视网络可用性可能成功——
+  // 两种结果都合法，按「有坐标 ⇔ 有住宿哨兵 leg」的一致性断言（哨兵契约见 TransitLegSchema）。
+  check('transportMode 缺省 transit 持久化', trip.json?.transportMode === 'transit', trip.json?.transportMode);
+  check('lodging 建议区域持久化', trip.json?.lodging?.name === '市中心站前区域', JSON.stringify(trip.json?.lodging));
+  const lodgingHasCoord = typeof trip.json?.lodging?.lat === 'number' && typeof trip.json?.lodging?.lng === 'number';
+  const sentinelConsistent = trip.json?.days?.every((d) => {
+    const legs = d.legs ?? [];
+    const dep = legs.some((l) => l.fromActivityId === 'lodging' && l.toActivityId === d.activities[0]?.id);
+    const ret = legs.some((l) => l.toActivityId === 'lodging' && l.fromActivityId === d.activities.at(-1)?.id);
+    return lodgingHasCoord ? dep && ret : !legs.some((l) => l.fromActivityId === 'lodging' || l.toActivityId === 'lodging');
+  });
+  check(
+    `住宿哨兵 leg 与坐标解析结果一致（本次${lodgingHasCoord ? '解析成功→首尾住宿 leg' : '解析失败→无住宿 leg，不报错'}）`,
+    sentinelConsistent === true,
+  );
 
   // Last-Event-ID 重放（终态任务在 TTL 内可全量重放）
   const replay = await readEvents(jobB.json.jobId, { lastEventId: 0 });

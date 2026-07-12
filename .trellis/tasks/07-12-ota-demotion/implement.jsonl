@@ -1,1 +1,10 @@
-{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务端检查清单入口"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "geoPipeline 后处理扩展（lodging 编码/住宿 leg）与 prompts/reviewTools 改动的生成层约定，含后处理 AbortSignal 教训"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "lodging 编码计入 GEOCODE_MAX_PER_TASK 与额度预留求和约定"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "服务端质量与验收脚本要求"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared schema 演进约定（cost 必填转可选是非纯增量变更，需全消费点核查）"}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "web 前端检查清单入口（注意：真身在 spec/web/frontend，非 spec/server/frontend 转发页）"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "表单控件/BudgetPanel/DaySection 改造约定，含派生匹配护栏教训"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "cost 可选化后消费点空安全口径"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "transportMode/lodging/cost 三处 schema 变更贯穿三层，须逐层核对数据流与旧数据路径"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "复用 geoPipeline 解析链与 tripDerive 派生层，不重造"}

@@ -121,6 +121,13 @@ travel-planner/
 
 同 v0.2 基础上（Activity 含 `coordSource`/`sourceNotes`，Trip 含 `title`/`meta{usedXhs, reviewNotes}`），v0.4 新增：`ResearchPoi{id, name, category(attraction|food|hotel), coverUrl?, intro, reservation(required|none|unknown), reservationNote?, sourceLinks}`；`Trip.overview?: ResearchPoi[]`（≤40，调研候选池）；`TripMeta.dataSources?: ('amap'|'websearch')[]`（实际用到的数据源）。全部为可选字段，旧行程 JSON 原样可读；`usedXhs` 仅作旧数据只读兼容，新生成恒 `false`。JSON 导出 `{ version: 2, trip }`。
 
+**v0.5 ST3（OTA 场景降级）增量**（均为可选字段，旧行程/导入导出 v2 完全兼容）：
+
+- `Trip.transportMode?: 'transit'|'drive'|'walk'`（出行方式基调，缺省 transit；`GenerateForm.transportMode?` 同构。geoPipeline 通勤段 >1.5km 按基调选 mode，<1.5km 恒 walk）。
+- `Lodging{name(≤60), area?, lat?, lng?, coordSystem?}`：`Trip.lodging?`（整程默认）+ `TripDay.lodging?`（day 级覆盖，多城市场景）。住宿仅是**通勤锚点**，不做酒店推荐/比价/预订；用户留空时规划 Agent 经 `set_lodging` 建议一个区域（禁止具体酒店与价格）。坐标由 geoPipeline 同一解析链补全（计入 GEOCODE_MAX_PER_TASK），成功才生成住宿 leg；编辑器改名即清空坐标并丢弃相关住宿 leg。
+- **TransitLeg 哨兵契约**：`fromActivityId`/`toActivityId` 允许哨兵值 `'lodging'`（leg 挂在 day 上，作用域限当天）——`{from:'lodging', to:首活动id}` 与 `{from:末活动id, to:'lodging'}`；前端经 `lodgingLegsForDay(day)` 严格 id 匹配，失配（重排/删改）静默丢弃。
+- `Activity.cost` 必填 → **可选**（粗估档位值：免费=0，不确定缺省；旧数据带值照读，读取方 `?? 0` 兜底）。派生 `BudgetSummary` 改区间 `{perPersonPerDayMin, perPersonPerDayMax, coveredDays}`（日成本=当天 cost 求和÷partySize，区间=[0.8×,1.3×] 十位取整），删除精确总额与 `overBudget` 超支判定；`trips.total_cost` 冗余列保留（列表页「约 ¥」展示）。
+
 ### 4.2 数据库表（Drizzle / SQLite）
 
 | 表 | 字段要点 |

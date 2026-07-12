@@ -12,6 +12,7 @@ import {
   type BudgetSummary,
   type DataSourceKind,
   type GenerateForm,
+  type Lodging,
   type ResearchPoi,
   type SourceNote,
   type TransitLeg,
@@ -48,7 +49,8 @@ function toActivity(input: DraftActivityInput): Activity {
     lat: hasCoord ? input.lat! : 0,
     lng: hasCoord ? input.lng! : 0,
     coordSource: hasCoord ? (input.coordSource ?? 'estimated') : 'estimated',
-    cost: Math.max(0, input.cost ?? 0),
+    // cost 可选化（ST3 预算区间化）：不确定就缺省，不再强行填 0
+    ...(typeof input.cost === 'number' ? { cost: Math.max(0, input.cost) } : {}),
     category: normalizeCategory(input.category),
     sourceNotes: (input.sourceNotes ?? []).slice(0, MAX_SOURCE_NOTES),
   };
@@ -56,9 +58,28 @@ function toActivity(input: DraftActivityInput): Activity {
 
 export class DraftTrip {
   title = '';
+  /** 住宿锚点（ST3）：用户表单指定或规划 Agent 建议的区域；坐标由 geoPipeline 后处理解析 */
+  lodging?: Lodging;
+  /** lodging 是否来自用户表单（Agent 不得覆盖） */
+  lodgingFromUser = false;
   private days: { title: string; activities: Activity[]; legs?: TransitLeg[] }[] = [];
 
-  constructor(private form: GenerateForm) {}
+  constructor(private form: GenerateForm) {
+    const userLodging = form.lodging?.trim();
+    if (userLodging) {
+      this.lodging = { name: userLodging.slice(0, 60) };
+      this.lodgingFromUser = true;
+    }
+  }
+
+  /** 规划 Agent set_lodging 工具入口：仅在用户未指定时生效 */
+  setLodging(name: string): string {
+    if (this.lodgingFromUser) return `用户已指定住宿位置「${this.lodging!.name}」，无需建议`;
+    const trimmed = name.trim();
+    if (!trimmed) return '错误：住宿区域不能为空';
+    this.lodging = { name: trimmed.slice(0, 60) };
+    return `住宿区域建议已记录：${this.lodging.name}`;
+  }
 
   setSkeleton(title: string, dayTitles: string[]): string {
     this.title = title.slice(0, 60);
@@ -116,7 +137,8 @@ export class DraftTrip {
       day.activities.forEach((a, j) => {
         const coord = a.lat === 0 && a.lng === 0 ? '无坐标' : `${a.lat.toFixed(4)},${a.lng.toFixed(4)}(${a.coordSource})`;
         const time = a.startTime ? `${a.startTime}-${a.endTime || '?'}` : '时间未定';
-        lines.push(`  ${j + 1}. ${a.name}｜${time}｜${a.category}｜¥${a.cost}｜${coord}${a.sourceNotes.length ? '｜有来源笔记' : ''}`);
+        const cost = typeof a.cost === 'number' ? `¥${a.cost}` : '费用未定';
+        lines.push(`  ${j + 1}. ${a.name}｜${time}｜${a.category}｜${cost}｜${coord}${a.sourceNotes.length ? '｜有来源笔记' : ''}`);
       });
       if (!day.activities.length) lines.push('  （空）');
     });
@@ -154,6 +176,10 @@ export class DraftTrip {
       preferences: this.form.preferences ?? [],
       partySize: this.form.partySize,
       extraNotes: this.form.extraNotes ?? '',
+      // 出行方式基调（ST3）：缺省 transit，持久化供未来重排复用
+      transportMode: this.form.transportMode ?? 'transit',
+      // 住宿锚点（ST3）：坐标解析成功与否均如实持久化名称；坐标由 geoPipeline 写入
+      ...(this.lodging ? { lodging: this.lodging } : {}),
       days: this.days.map((day, i) => ({
         id: uid(),
         dayIndex: i + 1,

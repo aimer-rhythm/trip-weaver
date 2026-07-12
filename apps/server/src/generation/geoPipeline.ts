@@ -1,7 +1,7 @@
 // 地理后处理流水线（v0.5，架构铁律：机械工作移出 LLM 循环）
 // orchestrator 在审校完成后、落库前调用：geocodeAll 补全全量坐标（GCJ-02），computeLegs 生成相邻活动通勤段。
 // 高德失败/超额/无 Key 均静默降级（Nominatim 转换 / 启发式估算），生成流程永不因此失败。
-import { haversineMeters, type LegMode, type TransitLeg } from '@tripweaver/shared';
+import { LODGING_SENTINEL, haversineMeters, type LegMode, type TransitLeg } from '@tripweaver/shared';
 import { resolveAmapCredential } from '../services/settingsService';
 import { amapBudgetRemaining } from '../services/quotaService';
 import { geocodeActivity, type GeocodedPlace } from '../integrations/amap/geocoder';
@@ -9,9 +9,8 @@ import { ROUTE_MAX_PER_TASK, routeEstimate } from '../integrations/amap/route';
 import { estimateLeg } from './legEstimator';
 import type { DraftTrip } from './draft';
 
-export const GEOCODE_MAX_PER_TASK = 40;   // 单次生成 ≤40 次高德定位调用（POI text + v3 geocode 合计）
-const WALK_THRESHOLD_M = 1500;            // 相邻活动 <1.5km 步行，否则用 baseMode
-const BASE_MODE: LegMode = 'transit';     // MVP 表单暂无出行方式字段（ST3），常量 transit
+export const GEOCODE_MAX_PER_TASK = 40;   // 单次生成 ≤40 次高德定位调用（POI text + v3 geocode 合计；含 lodging 解析）
+const WALK_THRESHOLD_M = 1500;            // 相邻活动 <1.5km 步行，否则用 baseMode（表单出行方式，缺省 transit）
 
 export interface GeoSession {
   /** 高德调用尝试次数（geocode + route 合计）：计入 usage 事件与 generations.amap_calls */
@@ -24,7 +23,7 @@ export interface GeoSession {
   computeLegs(draft: DraftTrip, onProgress: (text: string) => void, signal?: AbortSignal): Promise<void>;
 }
 
-export function createGeoSession(userId: string, destination: string): GeoSession {
+export function createGeoSession(userId: string, destination: string, baseMode: LegMode = 'transit'): GeoSession {
   // 日额度闸门：余额不足整任务预留量则本任务不用高德（Nominatim + 启发式降级，不断服）
   const credential = resolveAmapCredential(userId);
   const apiKey =
@@ -90,12 +89,64 @@ export function createGeoSession(userId: string, destination: string): GeoSessio
           onProgress(`正在解析活动坐标 (${done}/${pending.length})`);
         }
       }
+
+      // 住宿锚点解析（ST3）：同一解析链与记账（计入 GEOCODE_MAX_PER_TASK）；失败静默 —— 无坐标即不生成住宿 leg
+      const lodging = draft.lodging;
+      if (lodging && !(typeof lodging.lat === 'number' && typeof lodging.lng === 'number')) {
+        if (signal?.aborted) throw new Error('已取消');
+        onProgress('正在解析住宿位置…');
+        const place = await geocodeActivity(apiKey, lodging.name, destination, tryGeocode);
+        if (place) {
+          lodging.lat = place.lat;
+          lodging.lng = place.lng;
+          lodging.coordSystem = 'gcj02';
+          if (place.adcode) adcodes.set(LODGING_SENTINEL, place.adcode);
+        }
+      }
     },
 
     async computeLegs(draft, onProgress, signal) {
       const days = draft.mutableDays();
       const pairs = days.reduce((n, d) => n + Math.max(0, d.activities.length - 1), 0);
       let done = 0;
+
+      // 单段估算：先高德路径规划（transit 需 adcode），失败/超额降级启发式 —— 相邻活动对与住宿 leg 共用
+      const estimatePair = async (
+        from: { id: string; lat: number; lng: number },
+        to: { id: string; lat: number; lng: number },
+      ): Promise<TransitLeg> => {
+        const straightM = haversineMeters(from, to);
+        const mode: LegMode = straightM < WALK_THRESHOLD_M ? 'walk' : baseMode;
+        if (apiKey) {
+          // transit 需要起终点 adcode；活动级缺失时用目的地级兜底，仍缺则直接启发式
+          const city1 = mode === 'transit' ? adcodes.get(from.id) || (await resolveCityAdcode()) : '';
+          const city2 = mode === 'transit' ? adcodes.get(to.id) || city1 : '';
+          if ((mode !== 'transit' || (city1 && city2)) && tryRoute()) {
+            const route = await routeEstimate(apiKey, from, to, mode, { city1, city2 });
+            if (route) {
+              return {
+                fromActivityId: from.id,
+                toActivityId: to.id,
+                mode,
+                durationMin: route.durationMin,
+                distanceM: route.distanceM,
+                source: 'amap',
+                ...(route.polyline ? { polyline: route.polyline } : {}),
+              };
+            }
+          }
+        }
+        return { fromActivityId: from.id, toActivityId: to.id, mode, ...estimateLeg(from, to, mode) };
+      };
+
+      const hasCoord = (p: { lat: number; lng: number }) => !(p.lat === 0 && p.lng === 0);
+      // 住宿锚点（ST3）：坐标解析成功才生成住宿 leg（哨兵 id 'lodging'，挂在 day 上作用域限当天）
+      const lodging = draft.lodging;
+      const lodgingPoint =
+        lodging && typeof lodging.lat === 'number' && typeof lodging.lng === 'number' && (lodging.lat !== 0 || lodging.lng !== 0)
+          ? { id: LODGING_SENTINEL, lat: lodging.lat, lng: lodging.lng }
+          : null;
+
       for (const day of days) {
         const legs: TransitLeg[] = [];
         for (let i = 0; i + 1 < day.activities.length; i++) {
@@ -104,36 +155,17 @@ export function createGeoSession(userId: string, destination: string): GeoSessio
           const to = day.activities[i + 1]!;
           done += 1;
           // 任一端无有效坐标：无法估算，跳过该段（消费方按缺失处理）
-          if ((from.lat === 0 && from.lng === 0) || (to.lat === 0 && to.lng === 0)) continue;
-          const straightM = haversineMeters(from, to);
-          const mode: LegMode = straightM < WALK_THRESHOLD_M ? 'walk' : BASE_MODE;
-
-          let leg: TransitLeg | null = null;
-          if (apiKey) {
-            // transit 需要起终点 adcode；活动级缺失时用目的地级兜底，仍缺则直接启发式
-            const city1 = mode === 'transit' ? adcodes.get(from.id) || (await resolveCityAdcode()) : '';
-            const city2 = mode === 'transit' ? adcodes.get(to.id) || city1 : '';
-            if ((mode !== 'transit' || (city1 && city2)) && tryRoute()) {
-              const route = await routeEstimate(apiKey, from, to, mode, { city1, city2 });
-              if (route) {
-                leg = {
-                  fromActivityId: from.id,
-                  toActivityId: to.id,
-                  mode,
-                  durationMin: route.durationMin,
-                  distanceM: route.distanceM,
-                  source: 'amap',
-                  ...(route.polyline ? { polyline: route.polyline } : {}),
-                };
-              }
-            }
-          }
-          if (!leg) {
-            const est = estimateLeg(from, to, mode);
-            leg = { fromActivityId: from.id, toActivityId: to.id, mode, ...est };
-          }
-          legs.push(leg);
+          if (!hasCoord(from) || !hasCoord(to)) continue;
+          legs.push(await estimatePair(from, to));
           if (done % 4 === 0 || done === pairs) onProgress(`正在估算通勤时间 (${done}/${pairs})`);
+        }
+        // 住宿 leg：住宿 → 首活动 / 末活动 → 住宿（两端坐标齐备才生成，失败静默）
+        const first = day.activities[0];
+        const last = day.activities[day.activities.length - 1];
+        if (lodgingPoint && first && last) {
+          if (signal?.aborted) throw new Error('已取消');
+          if (hasCoord(first)) legs.unshift(await estimatePair(lodgingPoint, first));
+          if (hasCoord(last)) legs.push(await estimatePair(last, lodgingPoint));
         }
         day.legs = legs;
       }

@@ -3,5 +3,6 @@ export * from './schemas';
 export * from './types';
 export * from './budget';
 export * from './geo';
+export * from './legs';
 export * from './sample';
 export * from './utils';

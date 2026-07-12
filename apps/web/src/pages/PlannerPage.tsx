@@ -7,15 +7,20 @@ import {
   BUDGET_LEVELS,
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
+  TRANSPORT_MODES,
   type BudgetLevel,
   type GenerateForm,
   type GenerationEvent,
+  type TransportMode,
 } from '@tripweaver/shared';
 import { ApiError } from '../api/client';
 import { fetchJobSnapshot, keys, useCancelGeneration, useStartGeneration, useUsage } from '../api/hooks';
 import { GenerationTimeline } from '../components/GenerationTimeline';
 
 const JOB_KEY = 'tw.activeJobId';
+
+// 出行方式三选一（ST3）：作为生成输入决定通勤段基调（<1.5km 恒步行）
+const TRANSPORT_LABEL: Record<TransportMode, string> = { transit: '公共交通', drive: '自驾', walk: '步行优先' };
 
 function formatResetTime(resetAt: number): string {
   const d = new Date(resetAt);
@@ -43,6 +48,8 @@ export function PlannerPage() {
   const [totalBudget, setTotalBudget] = useState('');
   const [preferences, setPreferences] = useState<string[]>([]);
   const [partySize, setPartySize] = useState(2);
+  const [transportMode, setTransportMode] = useState<TransportMode>('transit');
+  const [lodging, setLodging] = useState('');
   const [extraNotes, setExtraNotes] = useState('');
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -146,6 +153,8 @@ export function PlannerPage() {
       preferences: preferences as GenerateForm['preferences'],
       partySize,
       extraNotes: extraNotes.trim(),
+      transportMode,
+      ...(lodging.trim() ? { lodging: lodging.trim() } : {}),
     };
     if (!form.destination) {
       setFormError('请填写目的地');
@@ -340,6 +349,22 @@ export function PlannerPage() {
             />
           </label>
         </div>
+
+        <label>
+          出行方式
+          <div className="preset-row">
+            {TRANSPORT_MODES.map((m) => (
+              <button key={m} type="button" className={`btn btn-chip ${transportMode === m ? 'is-active' : ''}`} onClick={() => setTransportMode(m)}>
+                {TRANSPORT_LABEL[m]}
+              </button>
+            ))}
+          </div>
+        </label>
+
+        <label>
+          住宿位置（可选，酒店名或大致区域）
+          <input value={lodging} onChange={(e) => setLodging(e.target.value)} maxLength={60} placeholder="如：西湖景区周边、新宿站附近；不填由 AI 建议区域" />
+        </label>
 
         <label>
           旅行偏好（可多选）

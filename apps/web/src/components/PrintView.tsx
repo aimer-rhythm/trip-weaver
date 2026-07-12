@@ -36,7 +36,7 @@ export function PrintView({ trip }: { trip: Trip }) {
                 <span className="pv-time">{timeRange(a.startTime, a.endTime)}</span>
                 <strong className="pv-name">{a.name}</strong>
                 <span className="pv-cat">{a.category}</span>
-                {a.cost > 0 && <span className="pv-cost">¥{a.cost}</span>}
+                {typeof a.cost === 'number' && a.cost > 0 && <span className="pv-cost">¥{a.cost}</span>}
               </div>
               {a.description && <p className="pv-desc">{a.description}</p>}
               {a.sourceNotes.length > 0 && (
@@ -53,25 +53,15 @@ export function PrintView({ trip }: { trip: Trip }) {
       ))}
 
       <section className="pv-budget">
-        <h2>预算汇总</h2>
-        <p className="pv-total">
-          人均合计 <strong>¥{Math.round(budget.total)}</strong>
-          {trip.totalBudget > 0 && (budget.overBudget ? `（超出预算 ¥${Math.round(budget.total - trip.totalBudget)}）` : `（预算内，剩余 ¥${Math.round(trip.totalBudget - budget.total)}）`)}
-        </p>
-        <div className="pv-budget-rows">
-          {budget.perDay.map((d) => (
-            <p key={d.dayId}>
-              第 {d.dayIndex} 天：¥{Math.round(d.amount)}
-            </p>
-          ))}
-        </div>
-        <div className="pv-budget-rows">
-          {budget.perCategory.map((c) => (
-            <p key={c.category}>
-              {c.category}：¥{Math.round(c.amount)}
-            </p>
-          ))}
-        </div>
+        <h2>费用估算</h2>
+        {budget.coveredDays > 0 ? (
+          <p className="pv-total">
+            人均约 <strong>¥{budget.perPersonPerDayMin}–{budget.perPersonPerDayMax}</strong>/天（门票餐饮等，不含大交通与住宿）
+          </p>
+        ) : (
+          <p className="pv-total">暂无费用数据</p>
+        )}
+        <p className="pv-empty">AI 估算，出行前请核实。</p>
       </section>
 
       {trip.meta.reviewNotes.length > 0 && (
