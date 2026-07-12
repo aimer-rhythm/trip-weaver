@@ -4,7 +4,8 @@ import { useState } from 'react';
 import type { ResearchPoi } from '@tripweaver/shared';
 import { POI_CATEGORY_ICON, POI_CATEGORY_LABEL, RESERVATION_LABEL } from '../lib/poi';
 
-function ReservationBadge({ poi }: { poi: ResearchPoi }) {
+// 预约徽章与封面图导出复用：活动卡片内嵌候选信息（概览并入行程）沿用同一渲染与兜底逻辑
+export function ReservationBadge({ poi }: { poi: ResearchPoi }) {
   return (
     <span
       className={`rsv-badge rsv-${poi.reservation}`}
@@ -15,7 +16,7 @@ function ReservationBadge({ poi }: { poi: ResearchPoi }) {
   );
 }
 
-function Cover({ poi }: { poi: ResearchPoi }) {
+export function PoiCover({ poi }: { poi: ResearchPoi }) {
   const [failed, setFailed] = useState(false);
   if (!poi.coverUrl || failed) {
     return (
@@ -41,7 +42,7 @@ export function PoiCard({ poi, compact = false }: { poi: ResearchPoi; compact?: 
     // 紧凑卡（生成时间线）：小图 / 名称 / 类目徽章 / 预约徽章
     return (
       <div className="poi-card poi-card-compact">
-        <Cover poi={poi} />
+        <PoiCover poi={poi} />
         <div className="poi-body">
           <span className="poi-name">{poi.name}</span>
           <span className="poi-badges">
@@ -54,7 +55,7 @@ export function PoiCard({ poi, compact = false }: { poi: ResearchPoi; compact?: 
   }
   return (
     <div className="poi-card">
-      <Cover poi={poi} />
+      <PoiCover poi={poi} />
       <div className="poi-body">
         <div className="poi-line1">
           <span className="poi-name">{poi.name}</span>

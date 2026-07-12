@@ -1,1 +1,5 @@
-{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/server/frontend/index.md", "reason": "Quality Check 清单入口"}
+{"file": ".trellis/spec/server/frontend/quality-guidelines.md", "reason": "组件复杂度/可读性检查基准"}
+{"file": ".trellis/spec/server/frontend/component-guidelines.md", "reason": "核对组件拆分与既有约定符合性"}
+{"file": ".trellis/spec/server/frontend/type-safety.md", "reason": "核对可选字段（legs/overview/coordSystem）的空安全处理"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "核对旧行程兼容路径（wgs84 转换、无 leg 渲染）"}

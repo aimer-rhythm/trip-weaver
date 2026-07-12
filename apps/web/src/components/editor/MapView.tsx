@@ -1,14 +1,60 @@
 import { useEffect, useMemo, useState } from 'react';
 import L from 'leaflet';
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
-import type { Activity, TripDay } from '@tripweaver/shared';
+import { wgs84ToGcj02, type Activity, type TripDay } from '@tripweaver/shared';
 import { dayColor, hasValidCoord } from '../../lib/colors';
+import { legForPair } from '../../lib/tripDerive';
 import { useEditorStore } from '../../store/editorStore';
 
 interface MapPoint {
   day: TripDay;
   activity: Activity;
   order: number;
+  /** 高德底图展示坐标（GCJ-02，[lat, lng]） */
+  pos: [number, number];
+}
+
+// 展示坐标统一到 GCJ-02：新数据（gcj02）直用，缺省/wgs84（旧行程）正向偏移 —— 高德底图上新旧行程都无偏移
+function displayPos(activity: Activity): [number, number] {
+  if (activity.coordSystem === 'gcj02') return [activity.lat, activity.lng];
+  const c = wgs84ToGcj02(activity.lat, activity.lng);
+  return [c.lat, c.lng];
+}
+
+// leg.polyline「lng,lat;lng,lat…」（GCJ-02）→ Leaflet [lat, lng]；坏点静默跳过
+function parsePolyline(polyline: string): [number, number][] {
+  const points: [number, number][] = [];
+  for (const pair of polyline.split(';')) {
+    const [lng, lat] = pair.split(',').map(Number);
+    if (Number.isFinite(lat) && Number.isFinite(lng)) points.push([lat!, lng!]);
+  }
+  return points;
+}
+
+interface LegSegment {
+  key: string;
+  positions: [number, number][];
+  /** 无 polyline（heuristic/transit 估算段）→ 两点虚线直连 */
+  dashed: boolean;
+}
+
+// 一天内的路线段：仅画与当前相邻活动对匹配的 leg；无 leg / 失配的间隙不画线（旧行程整段无线）
+function collectLegSegments(day: TripDay): LegSegment[] {
+  const segments: LegSegment[] = [];
+  for (let i = 1; i < day.activities.length; i += 1) {
+    const from = day.activities[i - 1]!;
+    const to = day.activities[i]!;
+    if (!hasValidCoord(from) || !hasValidCoord(to)) continue;
+    const leg = legForPair(day, from.id, to.id);
+    if (!leg) continue;
+    const path = leg.polyline ? parsePolyline(leg.polyline) : [];
+    segments.push(
+      path.length >= 2
+        ? { key: `${from.id}:${to.id}`, positions: path, dashed: false }
+        : { key: `${from.id}:${to.id}`, positions: [displayPos(from), displayPos(to)], dashed: true },
+    );
+  }
+  return segments;
 }
 
 function collectPoints(days: TripDay[]): MapPoint[] {
@@ -17,7 +63,7 @@ function collectPoints(days: TripDay[]): MapPoint[] {
     let order = 0;
     for (const activity of day.activities) {
       order += 1;
-      if (hasValidCoord(activity)) points.push({ day, activity, order });
+      if (hasValidCoord(activity)) points.push({ day, activity, order, pos: displayPos(activity) });
     }
   }
   return points;
@@ -37,13 +83,13 @@ function numberIcon(color: string, order: number, estimated: boolean): L.DivIcon
 // 先 invalidateSize 再无动画 fitBounds —— 避免「隐藏容器初始化导致零尺寸定位」的经典坑
 function MapController({ points, visible }: { points: MapPoint[]; visible: boolean }) {
   const map = useMap();
-  const key = points.map((p) => `${p.activity.id}:${p.activity.lat},${p.activity.lng}`).join('|');
+  const key = points.map((p) => `${p.activity.id}:${p.pos[0]},${p.pos[1]}`).join('|');
   useEffect(() => {
     if (!visible) return;
     const timer = setTimeout(() => {
       map.invalidateSize();
       if (points.length > 0) {
-        const bounds = L.latLngBounds(points.map((p) => [p.activity.lat, p.activity.lng] as [number, number]));
+        const bounds = L.latLngBounds(points.map((p) => p.pos));
         map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15, animate: false });
       }
     }, 60);
@@ -110,19 +156,28 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
     <div className="map-pane">
       <MapContainer center={[35.0, 105.0]} zoom={4} className="leaflet-host" scrollWheelZoom>
         <TileLayer
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}"
+          subdomains={['1', '2', '3', '4']}
+          attribution="&copy; 高德地图"
         />
-        {visibleDays.map((day) => {
-          const path = day.activities.filter(hasValidCoord).map((a) => [a.lat, a.lng] as [number, number]);
-          return path.length >= 2 ? (
-            <Polyline key={day.id} positions={path} pathOptions={{ color: dayColor(day.dayIndex), weight: 3, opacity: 0.75 }} />
-          ) : null;
-        })}
-        {points.map(({ day, activity, order }) => (
+        {visibleDays.map((day) =>
+          collectLegSegments(day).map((seg) => (
+            <Polyline
+              key={`${day.id}:${seg.key}`}
+              positions={seg.positions}
+              pathOptions={{
+                color: dayColor(day.dayIndex),
+                weight: 3,
+                opacity: 0.75,
+                dashArray: seg.dashed ? '6 6' : undefined,
+              }}
+            />
+          )),
+        )}
+        {points.map(({ day, activity, order, pos }) => (
           <Marker
             key={activity.id}
-            position={[activity.lat, activity.lng]}
+            position={pos}
             icon={numberIcon(dayColor(day.dayIndex), order, activity.coordSource === 'estimated')}
           >
             <Popup>

@@ -4,15 +4,16 @@ import { useSaveTrip, useTrip } from '../api/hooks';
 import { useEditorStore } from '../store/editorStore';
 import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
 import { BudgetPanel } from '../components/editor/BudgetPanel';
+import { CandidateDrawer } from '../components/editor/CandidateDrawer';
 import { DaySection } from '../components/editor/DaySection';
 import { MapView } from '../components/editor/MapView';
-import { OverviewPanel } from '../components/editor/OverviewPanel';
 import { TripMetaDialog } from '../components/editor/TripMetaDialog';
 import { ExportMenu } from '../components/ExportMenu';
+import { matchOverview } from '../lib/tripDerive';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error';
-type PanelTab = 'itinerary' | 'overview' | 'budget';
-type MobileTab = 'list' | 'overview' | 'map' | 'budget';
+type PanelTab = 'itinerary' | 'budget';
+type MobileTab = 'list' | 'map' | 'budget';
 
 export function TripEditorPage() {
   const { id = '' } = useParams();
@@ -61,6 +62,9 @@ export function TripEditorPage() {
     return dayFilter === null ? days : days.filter((d) => d.dayIndex === dayFilter);
   }, [trip, dayFilter]);
 
+  // 概览并入行程：候选按名称匹配到活动（内嵌卡片），未命中的进「备选」抽屉；旧行程无 overview → 两者皆空
+  const overviewMatch = useMemo(() => matchOverview(trip?.days ?? [], trip?.overview), [trip]);
+
   if (tripQuery.isPending) return <div className="page-loading">加载中…</div>;
   if (tripQuery.isError) return <div className="page-loading">行程加载失败：{tripQuery.error.message}</div>;
   if (!trip) return <div className="page-loading">准备编辑器…</div>;
@@ -69,19 +73,12 @@ export function TripEditorPage() {
     ? trip.days.find((d) => d.id === editing.dayId)?.activities.find((a) => a.id === editing.activityId) ?? null
     : null;
 
-  // 概览入口仅在候选池非空时出现（旧行程无 overview 字段 → 完全不渲染，向后兼容）
-  const hasOverview = Boolean(trip.overview?.length);
-  const effectivePanelTab: PanelTab = panelTab === 'overview' && !hasOverview ? 'itinerary' : panelTab;
-  const effectiveMobileTab: MobileTab = mobileTab === 'overview' && !hasOverview ? 'list' : mobileTab;
-
   const panelTabs: [PanelTab, string][] = [
     ['itinerary', '行程'],
-    ...(hasOverview ? ([['overview', '概览']] as [PanelTab, string][]) : []),
     ['budget', '预算'],
   ];
   const mobileTabs: [MobileTab, string][] = [
     ['list', '行程'],
-    ...(hasOverview ? ([['overview', '概览']] as [MobileTab, string][]) : []),
     ['map', '地图'],
     ['budget', '预算'],
   ];
@@ -101,6 +98,7 @@ export function TripEditorPage() {
           key={day.id}
           day={day}
           allDays={trip.days}
+          poiByActivityId={overviewMatch.poiByActivityId}
           onEditActivity={(dayId, activityId) => setEditing({ dayId, activityId })}
         />
       ))}
@@ -109,6 +107,7 @@ export function TripEditorPage() {
           ＋ 添加一天
         </button>
       )}
+      <CandidateDrawer pois={overviewMatch.unmatched} />
     </div>
   );
 
@@ -141,7 +140,7 @@ export function TripEditorPage() {
           <button
             key={tab}
             type="button"
-            className={`mobile-tab ${effectiveMobileTab === tab ? 'active' : ''}`}
+            className={`mobile-tab ${mobileTab === tab ? 'active' : ''}`}
             onClick={() => setMobileTab(tab)}
           >
             {label}
@@ -149,35 +148,28 @@ export function TripEditorPage() {
         ))}
       </div>
 
-      <div className={`editor-body mobile-${effectiveMobileTab}`}>
+      <div className={`editor-body mobile-${mobileTab}`}>
         <aside className="editor-left">
           <div className="panel-tabs">
             {panelTabs.map(([tab, label]) => (
               <button
                 key={tab}
                 type="button"
-                className={`panel-tab ${effectivePanelTab === tab ? 'active' : ''}`}
+                className={`panel-tab ${panelTab === tab ? 'active' : ''}`}
                 onClick={() => setPanelTab(tab)}
               >
                 {label}
               </button>
             ))}
           </div>
-          <div className="editor-left-scroll">
-            {effectivePanelTab === 'itinerary' ? itineraryPanel : effectivePanelTab === 'overview' ? <OverviewPanel /> : <BudgetPanel />}
-          </div>
+          <div className="editor-left-scroll">{panelTab === 'itinerary' ? itineraryPanel : <BudgetPanel />}</div>
         </aside>
         <div className="editor-map">
           <MapView
-            visible={effectiveMobileTab === 'map'}
+            visible={mobileTab === 'map'}
             onEditActivity={(dayId, activityId) => setEditing({ dayId, activityId })}
           />
         </div>
-        {hasOverview && (
-          <div className="editor-mobile-overview">
-            <OverviewPanel />
-          </div>
-        )}
         <div className="editor-mobile-budget">
           <BudgetPanel />
         </div>

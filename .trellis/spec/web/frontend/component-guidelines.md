@@ -66,3 +66,22 @@ Do not convert optional secondary-query failure into a full-page failure unless 
 `Modal` already gives its close icon an `aria-label`, while several editor arrow/edit/delete icon buttons currently rely only on `title`. Treat those as existing accessibility debt, not a pattern to copy.
 
 Evidence: `apps/web/src/components/Modal.tsx`, `apps/web/src/components/editor/ActivityCard.tsx`, `apps/web/src/components/PoiCard.tsx`.
+
+## Derived Data Matching
+
+### Common Mistake: unguarded containment matching between domain lists
+
+**Symptom**: a short candidate name (e.g. "西湖") substring-matches an unrelated longer
+activity name (e.g. "西湖醋鱼餐厅") and the UI attaches wrong metadata to the card.
+
+**Cause**: name-based association (`a.includes(b) || b.includes(a)`) without length or
+ratio guards, used when two lists share no id linkage (Activity ↔ `Trip.overview`).
+
+**Fix / Prevention**: guard containment — contained side must be ≥2 chars and at least
+half the length of the longer side (see `matchOverview` in `apps/web/src/lib/tripDerive.ts`).
+Prefer precision over recall: unmatched items degrade into their fallback surface (备选
+drawer) instead of showing wrong data. When the association matters long-term, add a real
+id link at the producing side (generation) rather than strengthening string heuristics.
+
+**Related**: keep name-match derivations in pure functions under `src/lib/` so they are
+unit-testable and shared between panels and the map.

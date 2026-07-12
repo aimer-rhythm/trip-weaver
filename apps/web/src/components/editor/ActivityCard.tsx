@@ -1,17 +1,20 @@
 import { useState } from 'react';
-import type { Activity, TripDay } from '@tripweaver/shared';
+import type { Activity, ResearchPoi, TripDay } from '@tripweaver/shared';
 import { CATEGORY_COLORS, hasValidCoord } from '../../lib/colors';
 import { useEditorStore } from '../../store/editorStore';
+import { PoiCover, ReservationBadge } from '../PoiCard';
 
 interface Props {
   day: TripDay;
   activity: Activity;
   index: number;
   allDays: TripDay[];
+  /** 概览候选池中按名称命中的调研信息（旧行程无 overview → 恒为 undefined，不渲染） */
+  matchedPoi?: ResearchPoi;
   onEdit: () => void;
 }
 
-export function ActivityCard({ day, activity, index, allDays, onEdit }: Props) {
+export function ActivityCard({ day, activity, index, allDays, matchedPoi, onEdit }: Props) {
   const moveActivity = useEditorStore((s) => s.moveActivity);
   const moveActivityToDay = useEditorStore((s) => s.moveActivityToDay);
   const deleteActivity = useEditorStore((s) => s.deleteActivity);
@@ -65,6 +68,30 @@ export function ActivityCard({ day, activity, index, allDays, onEdit }: Props) {
           )}
         </div>
         {activity.description && <p className="activity-desc">{activity.description}</p>}
+        {matchedPoi && (
+          // 概览并入行程：内嵌命中的调研候选（封面热链 onerror 兜底 / 简介 / 预约徽章 / 来源链接）
+          <div className="activity-poi">
+            <PoiCover poi={matchedPoi} />
+            <div className="activity-poi-body">
+              <span className="poi-badges">
+                <ReservationBadge poi={matchedPoi} />
+                {matchedPoi.reservation === 'required' && matchedPoi.reservationNote && (
+                  <span className="poi-rsv-note">📌 {matchedPoi.reservationNote}</span>
+                )}
+              </span>
+              {matchedPoi.intro && <p className="poi-intro">{matchedPoi.intro}</p>}
+              {matchedPoi.sourceLinks.length > 0 && (
+                <p className="poi-links">
+                  {matchedPoi.sourceLinks.slice(0, 3).map((s) => (
+                    <a key={s.url} className="tag tag-source" href={s.url} target="_blank" rel="noopener noreferrer">
+                      🔗 {s.title || '来源'}
+                    </a>
+                  ))}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
         <div className="activity-flags">
           {!hasValidCoord(activity) && <span className="tag tag-warn">无坐标</span>}
           {hasValidCoord(activity) && activity.coordSource === 'estimated' && <span className="tag tag-warn">坐标为估算</span>}

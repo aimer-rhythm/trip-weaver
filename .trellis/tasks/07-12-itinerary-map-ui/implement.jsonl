@@ -1,1 +1,7 @@
-{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/server/frontend/index.md", "reason": "前端开发前检查清单入口"}
+{"file": ".trellis/spec/server/frontend/component-guidelines.md", "reason": "ActivityCard/DaySection/MapView 改造与备选抽屉新组件须遵循组件约定"}
+{"file": ".trellis/spec/server/frontend/state-management.md", "reason": "行程数据经 react-query、编辑器态经 zustand 的既有分治，leg 过滤属派生数据"}
+{"file": ".trellis/spec/server/frontend/type-safety.md", "reason": "消费 shared 新类型（TransitLeg/coordSystem）的类型安全口径"}
+{"file": ".trellis/spec/server/frontend/quality-guidelines.md", "reason": "前端质量要求"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "消费 ST1 新 schema 字段须检查旧数据缺省路径（无 legs/无 overview/wgs84）"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "PoiCard/现有 MapView 联动逻辑复用优先，不重造"}

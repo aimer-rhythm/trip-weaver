@@ -1,4 +1,4 @@
-// C3 浏览器自动化验收：生成表单 → SSE 时间线三阶段（含候选卡片实时长出）→ 完成跳编辑器（含行程概览区块）
+// C3 浏览器自动化验收：生成表单 → SSE 时间线三阶段（含候选卡片实时长出）→ 完成跳编辑器（含备选抽屉）
 //                     → 刷新恢复 → 取消 → 配额文案 → 旧行程（无 overview）兼容
 // 走生产模式静态托管（同源 SSE），mock LLM 驱动。运行：node scripts/verify-c3.mjs
 import { chromium } from 'playwright';
@@ -120,30 +120,30 @@ try {
   check('自动跳转编辑器且天数正确', dayCount === 2, `days=${dayCount}`);
   await page.screenshot({ path: `${SHOTS}/11-generated-trip.png` });
 
-  // 3.5 编辑器「行程概览」区块：分组渲染 + 预约徽章三态 + 占位图 + 来源标注
-  // （OverviewPanel 桌面左栏与移动端容器各挂一份，断言均限定桌面可见实例 .editor-left）
-  await page.locator('.panel-tab', { hasText: '概览' }).click();
-  await page.waitForSelector('.editor-left .overview-panel', { timeout: 5_000 });
-  const groupHeads = await page.locator('.editor-left .overview-group h3').allInnerTexts();
+  // 3.5 编辑器「备选」抽屉（概览并入行程后未命中活动的候选）：分组渲染 + 预约徽章三态 + 占位图 + 来源标注
+  // （mock 活动名为「活动d-j」，与候选名互不匹配 → 3 个候选全部进备选抽屉）
+  await page.waitForSelector('.editor-left .candidate-drawer', { timeout: 5_000 });
+  await page.locator('.editor-left .candidate-drawer summary').click();
+  const groupHeads = await page.locator('.editor-left .candidate-drawer .overview-group h3').allInnerTexts();
   check(
-    '概览按类目分组（景点/美食/住宿）',
+    '备选按类目分组（景点/美食/住宿）',
     ['景点', '美食', '住宿'].every((t) => groupHeads.some((x) => x.includes(t))),
     groupHeads.join('，'),
   );
-  const requiredBadge = await page.locator('.editor-left .overview-panel .rsv-required').first().innerText().catch(() => '');
+  const requiredBadge = await page.locator('.editor-left .candidate-drawer .rsv-required').first().innerText().catch(() => '');
   check('预约种子表命中 → 需预约徽章', requiredBadge.includes('需预约'), requiredBadge);
-  const unknownBadges = await page.locator('.editor-left .overview-panel .rsv-unknown').count();
+  const unknownBadges = await page.locator('.editor-left .candidate-drawer .rsv-unknown').count();
   check('预约未知 → 中性徽章（建议核实）', unknownBadges === 2, `unknown=${unknownBadges}`);
-  const poiCards = await page.locator('.editor-left .overview-panel .poi-card').count();
-  const fallbackCovers = await page.locator('.editor-left .overview-panel .poi-cover-fallback').count();
+  const poiCards = await page.locator('.editor-left .candidate-drawer .poi-card').count();
+  const fallbackCovers = await page.locator('.editor-left .candidate-drawer .poi-cover-fallback').count();
   check('无 coverUrl 时占位图兜底', poiCards === 3 && fallbackCovers === 3, `cards=${poiCards}, fallback=${fallbackCovers}`);
   const overviewNote = await page.locator('.editor-left .overview-note').innerText();
   check('来源标注 +「以官方为准」提示', overviewNote.includes('以官方为准') && overviewNote.includes('模型知识'), overviewNote.trim());
-  const sourceLinkRel = await page.locator('.editor-left .overview-panel .tag-source').first().getAttribute('rel').catch(() => null);
+  const sourceLinkRel = await page.locator('.editor-left .candidate-drawer .tag-source').first().getAttribute('rel').catch(() => null);
   check('来源外链带 noopener noreferrer', sourceLinkRel === 'noopener noreferrer', String(sourceLinkRel));
   await page.screenshot({ path: `${SHOTS}/11b-trip-overview.png` });
 
-  // 3.9 旧行程兼容：无 overview 字段 → 概览入口不渲染，编辑器正常
+  // 3.9 旧行程兼容：无 overview 字段 → 备选抽屉不渲染，编辑器正常
   const ctxOld = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const pOld = await ctxOld.newPage();
   await pOld.goto(`${BASE}/register`, { waitUntil: 'networkidle' });
@@ -156,11 +156,11 @@ try {
   await pOld.getByRole('button', { name: '加载示例行程' }).click();
   await pOld.waitForSelector('.day-section', { timeout: 10_000 });
   const oldDayCount = await pOld.locator('.day-section').count();
-  const oldOverviewTab = await pOld.locator('.panel-tab', { hasText: '概览' }).count();
+  const oldDrawer = await pOld.locator('.candidate-drawer').count();
   check(
-    '旧行程（无 overview）不渲染概览入口且编辑器正常',
-    oldDayCount === 3 && oldOverviewTab === 0,
-    `days=${oldDayCount}, overviewTab=${oldOverviewTab}`,
+    '旧行程（无 overview）不渲染备选抽屉且编辑器正常',
+    oldDayCount === 3 && oldDrawer === 0,
+    `days=${oldDayCount}, drawer=${oldDrawer}`,
   );
   await ctxOld.close();
 

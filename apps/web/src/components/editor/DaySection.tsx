@@ -1,16 +1,32 @@
-import { useMemo, useState } from 'react';
-import type { TripDay } from '@tripweaver/shared';
+import { Fragment, useMemo, useState } from 'react';
+import type { ResearchPoi, TransitLeg, TripDay } from '@tripweaver/shared';
 import { dayColor } from '../../lib/colors';
+import { LEG_MODE_ICON, LEG_MODE_LABEL, formatLegDistance, formatLegDuration, legForPair } from '../../lib/tripDerive';
 import { useEditorStore } from '../../store/editorStore';
 import { ActivityCard } from './ActivityCard';
 
 interface Props {
   day: TripDay;
   allDays: TripDay[];
+  /** activityId → 概览命中候选（由 TripEditorPage 统一匹配，旧行程为空 Map） */
+  poiByActivityId: Map<string, ResearchPoi>;
   onEditActivity: (dayId: string, activityId: string | null) => void;
 }
 
-export function DaySection({ day, allDays, onEditActivity }: Props) {
+// 相邻活动间通勤条：方式 + 时长 + 距离；heuristic 加「估算」徽章
+function LegChip({ leg }: { leg: TransitLeg }) {
+  return (
+    <div className="leg-chip">
+      <span aria-hidden="true">{LEG_MODE_ICON[leg.mode]}</span>
+      <span>
+        {LEG_MODE_LABEL[leg.mode]} {formatLegDuration(leg.durationMin)} · {formatLegDistance(leg.distanceM)}
+      </span>
+      {leg.source === 'heuristic' && <span className="tag tag-warn">估算</span>}
+    </div>
+  );
+}
+
+export function DaySection({ day, allDays, poiByActivityId, onEditActivity }: Props) {
   const updateDayTitle = useEditorStore((s) => s.updateDayTitle);
   const deleteDay = useEditorStore((s) => s.deleteDay);
   const [collapsed, setCollapsed] = useState(false);
@@ -49,16 +65,24 @@ export function DaySection({ day, allDays, onEditActivity }: Props) {
       {!collapsed && (
         <div className="day-body">
           {day.activities.length === 0 && <p className="muted day-empty">这一天还没有安排</p>}
-          {day.activities.map((a, i) => (
-            <ActivityCard
-              key={a.id}
-              day={day}
-              activity={a}
-              index={i}
-              allDays={allDays}
-              onEdit={() => onEditActivity(day.id, a.id)}
-            />
-          ))}
+          {day.activities.map((a, i) => {
+            // 仅当 leg 与当前相邻活动对精确匹配才显示；失配（重排/删改后）静默过滤，旧行程无 legs 不渲染
+            const prev = i > 0 ? day.activities[i - 1] : undefined;
+            const leg = prev ? legForPair(day, prev.id, a.id) : undefined;
+            return (
+              <Fragment key={a.id}>
+                {leg && <LegChip leg={leg} />}
+                <ActivityCard
+                  day={day}
+                  activity={a}
+                  index={i}
+                  allDays={allDays}
+                  matchedPoi={poiByActivityId.get(a.id)}
+                  onEdit={() => onEditActivity(day.id, a.id)}
+                />
+              </Fragment>
+            );
+          })}
           <button type="button" className="btn btn-ghost btn-add-activity" onClick={() => onEditActivity(day.id, null)}>
             ＋ 添加活动
           </button>
