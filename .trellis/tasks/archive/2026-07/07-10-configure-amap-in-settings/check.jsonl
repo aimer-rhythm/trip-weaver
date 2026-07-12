@@ -1,0 +1,6 @@
+{"file":".trellis/spec/shared/frontend/component-guidelines.md","reason":"Verify the settings UI is accessible, keeps credential values local, and clearly distinguishes save from clear."}
+{"file":".trellis/spec/shared/frontend/hook-guidelines.md","reason":"Verify save and clear mutations update cached settings and source status without stale credential state."}
+{"file":".trellis/spec/shared/frontend/type-safety.md","reason":"Check that request and response fields are derived from runtime schemas rather than duplicated unsafe types."}
+{"file":".trellis/spec/shared/backend/database-guidelines.md","reason":"Verify encrypted columns and migration behavior are idempotent and preserve existing settings rows."}
+{"file":".trellis/spec/shared/backend/error-handling.md","reason":"Check secret non-disclosure, validation errors, fallback behavior, and source probe failures."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"Review the complete credential round trip, user isolation, dynamic source resolution, and failure cases."}

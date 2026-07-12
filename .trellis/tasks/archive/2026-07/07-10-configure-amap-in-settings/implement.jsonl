@@ -1,0 +1,6 @@
+{"file":".trellis/spec/shared/frontend/component-guidelines.md","reason":"Guides settings form composition, local UI props, accessibility, and keeping display concerns in apps/web."}
+{"file":".trellis/spec/shared/frontend/hook-guidelines.md","reason":"Defines React Query mutation and settings cache responsibilities for save, clear, and status refresh behavior."}
+{"file":".trellis/spec/shared/frontend/type-safety.md","reason":"The settings request and response contracts cross the browser/server boundary and must remain schema-backed and type-safe."}
+{"file":".trellis/spec/shared/backend/database-guidelines.md","reason":"Adding encrypted per-user Amap credential columns requires an idempotent persistence migration and legacy database compatibility."}
+{"file":".trellis/spec/shared/backend/error-handling.md","reason":"Defines API validation boundaries and safe handling of credential, self-check, and fallback errors."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"The feature spans UI, shared schema, API, encrypted storage, source resolution, status probing, and generation runtime."}
