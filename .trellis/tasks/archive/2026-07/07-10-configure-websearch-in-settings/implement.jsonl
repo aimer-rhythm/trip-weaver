@@ -1,0 +1,6 @@
+{"file":".trellis/spec/shared/frontend/component-guidelines.md","reason":"Guides the settings form UI, password-field behavior, clear controls, accessibility, and local display state."}
+{"file":".trellis/spec/shared/frontend/hook-guidelines.md","reason":"Defines React Query settings cache updates and source-status invalidation after save, URL update, or clear."}
+{"file":".trellis/spec/shared/frontend/type-safety.md","reason":"The search settings request and response cross the browser/server boundary and must remain schema-backed."}
+{"file":".trellis/spec/server/backend/database-guidelines.md","reason":"Encrypted per-user search credential columns require matching Drizzle schema and idempotent legacy migration changes."}
+{"file":".trellis/spec/server/backend/error-handling.md","reason":"Contains the executable contract for per-user encrypted external-source credentials, non-disclosure, fallback, status caching, and errors."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"The feature spans UI, shared schema, encrypted persistence, SSRF validation, source resolution, status probing, and generation runtime."}

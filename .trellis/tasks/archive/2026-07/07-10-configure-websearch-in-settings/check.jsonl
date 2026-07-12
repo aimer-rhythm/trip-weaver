@@ -1,0 +1,6 @@
+{"file":".trellis/spec/shared/frontend/component-guidelines.md","reason":"Verify the search settings UI keeps secrets local and clearly distinguishes preserve, update, and explicit clear."}
+{"file":".trellis/spec/shared/frontend/hook-guidelines.md","reason":"Verify settings and source-status caches cannot retain stale credential or provider state."}
+{"file":".trellis/spec/shared/frontend/type-safety.md","reason":"Check request fields and response views remain aligned with runtime TypeBox validation."}
+{"file":".trellis/spec/server/backend/database-guidelines.md","reason":"Verify migration idempotence and preservation of existing LLM and Amap settings."}
+{"file":".trellis/spec/server/backend/error-handling.md","reason":"Check encryption, non-disclosure, SSRF handling, user isolation, provider fallback, and status memoization."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"Review the full search credential round trip and all boundary failure cases."}
