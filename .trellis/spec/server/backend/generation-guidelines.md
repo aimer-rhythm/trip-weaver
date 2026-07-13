@@ -66,17 +66,82 @@ Representative paths: `apps/server/src/routes/generations.ts`,
 
 Bulk mechanical work with deterministic rules — batch geocoding, transit-leg computation —
 must NOT be delegated to agent tool loops (burns turns, unreliable on weak models). Run it as
-a code-level post-pass in the orchestrator after the review loop and before `createTrip`.
+a code-level pass in the orchestrator.
+
+**Timing (M0-A shift)**: the geoPipeline pass runs INSIDE each plan⇆review round — after the
+planner phase and BEFORE the reviewer phase — not once after the whole loop. This is what lets
+the feasibility engine (below) simulate on real resolved coordinates/legs and hand the reviewer
+a code-computed violation report. Revision rounds therefore re-run resolution incrementally:
+`geocodeAll` skips already-`geocoded` activities, and `computeLegs` reuses a session-level
+`legMemo` (keyed by endpoint ids + rounded coords) so unchanged pairs do NOT spend the ROUTE
+cap twice. Verify `GEOCODE_MAX_PER_TASK` / `ROUTE_MAX_PER_TASK` still hold across rounds when
+changing this.
 
 - Progress goes through the existing `thought` sink events (e.g. `正在解析坐标与通勤 (12/18)`);
   do not invent new SSE event types for internal passes.
 - Degradation inside the pass must never fail the job; skip items truthfully instead of
   fabricating data.
 - Agent tools remain available for judgment calls only (e.g. `geocode_place` for ambiguous
-  key places); the post-pass skips items the agent already resolved (`coordSource==='geocoded'`).
+  key places); the pass skips items the agent already resolved (`coordSource==='geocoded'`).
 
 Representative paths: `apps/server/src/generation/geoPipeline.ts`,
 `apps/server/src/generation/orchestrator.ts`.
+
+### Feasibility Engine (M0-A: LLM proposes, solver disposes)
+
+Itinerary feasibility is computed by pure code, not judged by the LLM. `simulateDay` /
+`simulateTrip` in `packages/shared/src/feasibility.ts` are IO-free pure functions (no server,
+DOM, or network imports) so the same engine serves server generation, future eval harnesses,
+and the web client. They take a `Trip`/`TripDay` and return
+`FeasibilityReport { dayReports, violations }` where each `Violation` has
+`code`, `severity: 'hard'|'soft'`, `dayIndex`, optional `activityId`, `message`, and optional
+`detail`.
+
+Violation codes and severities (thresholds live in the named `FEASIBILITY_THRESHOLDS`
+constant, tuned to commonsense defaults, adjustable in one place):
+
+- `transit_infeasible` (hard): a leg's duration exceeds the time gap between two timed
+  adjacent activities — physically cannot fit.
+- `overpacked` (hard): day total (activity occupancy + transit) > 14h. Also (soft): > 8
+  activities, > 15km cumulative walking, or < 10% time-window buffer.
+- `backtrack` (soft): three adjacent coordinates turn back > 90° AND the back-jump > 2km.
+- `anchor_missing` (soft): lodging is named but its coordinates are unresolved. Suppressed
+  until resolution has been attempted (`simulateTrip` infers this from any `geocoded` activity
+  or any day having legs) so the pre-geoPipeline planner gate does not emit un-actionable noise.
+- `closed_on_arrival`: RESERVED. Activity has no open-hours field yet; the engine signature
+  carries an optional `openHours?` slot but never emits this code. Do not fabricate open hours.
+
+Degradation is truthful (never fail the job, never fabricate): an activity missing coordinates
+skips that segment's transit/backtrack checks; a missing leg is estimated with `estimateTransit`
+(the shared speed model, also backing `legEstimator`) and the violation `detail` is labeled
+low-confidence.
+
+Three reuse points, all via `@tripweaver/shared`:
+
+1. **Planner** — the `check_feasibility` tool returns `describeFeasibility(report)`; `submit_plan`
+   gates on HARD violations only (soft passes through). Because `submit_plan` fires BEFORE that
+   round's geoPipeline (draft has model-filled coords but no legs), the gate judges on best
+   available data with haversine fallback, then bounded self-heal: after `MAX_HARD_BLOCKS`
+   consecutive hard blocks it lets the plan through rather than looping into `maxTurns` failure.
+   The orchestrator's post-geoPipeline report on real legs is the authoritative judgment.
+2. **Reviewer** — `reviewerUserPrompt(form, round, describeFeasibility(report))` appends the
+   engine report so the reviewer judges structural issues against computed facts, not vibes.
+3. **Degrade-not-fail** — if revision rounds exhaust with hard violations still present,
+   `feasibilityReviewNotes(report)` folds them (and soft ones) into `reviewNotes` truthfully and
+   the job STILL converges to `done`. Feasibility problems are a gate/hint, never a thrown error
+   (generation-never-fails principle).
+
+**Common Mistake: persisting a pre-review feasibility snapshot.** The reviewer keeps
+`update_activity`/`remove_activity` and mutates the same draft in place (trimming an overpacked
+day is its designed case). Notes folded into the persisted trip must be recomputed from the
+FINAL draft (`draft.feasibility()` after the review phase), not the per-round snapshot handed to
+the reviewer prompt — otherwise the notes claim a violation the reviewer just fixed, or miss one
+it introduced, breaking the "truthful" contract. Found as a Medium/High issue in
+`07-13-feasibility-engine`.
+
+Representative paths: `packages/shared/src/feasibility.ts`,
+`apps/server/src/generation/tools/draftTools.ts`, `apps/server/src/generation/prompts.ts`,
+`apps/server/src/generation/orchestrator.ts`, `apps/server/src/__tests__/feasibility.test.ts`.
 
 ### TransitLeg Lodging Sentinel Contract (ST3)
 

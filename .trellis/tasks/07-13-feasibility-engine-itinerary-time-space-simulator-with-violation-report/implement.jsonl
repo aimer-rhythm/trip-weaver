@@ -1,0 +1,7 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务端开发前检查清单入口"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "orchestrator 时序前移（geoPipeline 移到审校前）、后处理 AbortSignal 教训、哨兵契约、planner/reviewer 工具约定——引擎接入三处的核心约束"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "时序前移导致修订轮增量解析，须核对任务级上限与日额度闸门仍成立"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "纯函数引擎单测覆盖与验收脚本要求"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared 新增 feasibility.ts 纯函数模块的组织与演进约定"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "引擎输出未来供 server 生成期+评测+web 复用，须按跨层复用检查纯度与依赖方向"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "复用 haversineMeters/lodgingLegsForDay/legs.ts，不重造几何与 leg 匹配"}

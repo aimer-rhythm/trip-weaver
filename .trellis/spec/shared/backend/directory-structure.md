@@ -16,6 +16,9 @@ packages/shared/
     schemas.ts       # TypeBox runtime contracts
     types.ts         # Schema-derived and shared protocol types
     budget.ts        # Pure domain calculation
+    feasibility.ts   # Pure itinerary time-space feasibility engine (M0-A)
+    geo.ts           # Pure coordinate conversion + haversine
+    legs.ts          # Pure transit-leg helpers (lodging sentinel, estimateTransit)
     sample.ts        # Cross-runtime sample-domain factory
     utils.ts         # Small cross-runtime utilities
 ```

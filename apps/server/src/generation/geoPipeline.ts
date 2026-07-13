@@ -1,7 +1,7 @@
 // 地理后处理流水线（v0.5，架构铁律：机械工作移出 LLM 循环）
-// orchestrator 在审校完成后、落库前调用：geocodeAll 补全全量坐标（GCJ-02），computeLegs 生成相邻活动通勤段。
+// orchestrator 在每轮编排后、审校前调用（M0-A 时序前移）：geocodeAll 补全全量坐标（GCJ-02），computeLegs 生成相邻活动通勤段。
 // 高德失败/超额/无 Key 均静默降级（Nominatim 转换 / 启发式估算），生成流程永不因此失败。
-import { LODGING_SENTINEL, haversineMeters, type LegMode, type TransitLeg } from '@tripweaver/shared';
+import { LODGING_SENTINEL, WALK_THRESHOLD_M, haversineMeters, type LegMode, type TransitLeg } from '@tripweaver/shared';
 import { resolveAmapCredential } from '../services/settingsService';
 import { amapBudgetRemaining } from '../services/quotaService';
 import { geocodeActivity, type GeocodedPlace } from '../integrations/amap/geocoder';
@@ -10,7 +10,6 @@ import { estimateLeg } from './legEstimator';
 import type { DraftTrip } from './draft';
 
 export const GEOCODE_MAX_PER_TASK = 40;   // 单次生成 ≤40 次高德定位调用（POI text + v3 geocode 合计；含 lodging 解析）
-const WALK_THRESHOLD_M = 1500;            // 相邻活动 <1.5km 步行，否则用 baseMode（表单出行方式，缺省 transit）
 
 export interface GeoSession {
   /** 高德调用尝试次数（geocode + route 合计）：计入 usage 事件与 generations.amap_calls */
@@ -56,6 +55,12 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
     }
     return cityAdcode ?? '';
   };
+
+  // 通勤段跨轮记忆（时序前移 M0-A）：computeLegs 每轮编排后都跑，同一对端点+坐标的 leg 已算过就复用，
+  // 不再第二次调用 tryRoute() —— 保证 ROUTE_MAX_PER_TASK 在修订轮不被未变动的段重复消耗（额度闸门仍成立）。
+  const legMemo = new Map<string, TransitLeg>();
+  const legMemoKey = (from: { id: string; lat: number; lng: number }, to: { id: string; lat: number; lng: number }) =>
+    `${from.id}:${to.id}:${from.lat.toFixed(5)},${from.lng.toFixed(5)}:${to.lat.toFixed(5)},${to.lng.toFixed(5)}`;
 
   return {
     stats,
@@ -111,7 +116,20 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
       let done = 0;
 
       // 单段估算：先高德路径规划（transit 需 adcode），失败/超额降级启发式 —— 相邻活动对与住宿 leg 共用
+      // 跨轮复用：同端点同坐标已算过直接返回 memo，不重复占 route 额度（时序前移后修订轮多次 computeLegs）
       const estimatePair = async (
+        from: { id: string; lat: number; lng: number },
+        to: { id: string; lat: number; lng: number },
+      ): Promise<TransitLeg> => {
+        const memoKey = legMemoKey(from, to);
+        const memoized = legMemo.get(memoKey);
+        if (memoized) return memoized;
+        const leg = await computePair(from, to);
+        legMemo.set(memoKey, leg);
+        return leg;
+      };
+
+      const computePair = async (
         from: { id: string; lat: number; lng: number },
         to: { id: string; lat: number; lng: number },
       ): Promise<TransitLeg> => {

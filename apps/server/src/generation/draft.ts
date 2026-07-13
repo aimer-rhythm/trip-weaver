@@ -6,11 +6,13 @@ import {
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
   computeBudgetSummary,
+  simulateTrip,
   uid,
   type Activity,
   type ActivityCategory,
   type BudgetSummary,
   type DataSourceKind,
+  type FeasibilityReport,
   type GenerateForm,
   type Lodging,
   type ResearchPoi,
@@ -147,6 +149,12 @@ export class DraftTrip {
 
   budget(): BudgetSummary {
     return computeBudgetSummary(this.toTrip());
+  }
+
+  /** 可行性模拟（M0-A）：以当前草稿（含 geoPipeline 已解析的坐标/leg）真算时空违规报告。
+   *  纯函数引擎在 @tripweaver/shared，本方法只做 DraftTrip → Trip 适配。 */
+  feasibility(): FeasibilityReport {
+    return simulateTrip(this.toTrip());
   }
 
   /** 完整性校验：返回问题清单（空数组 = 通过） */

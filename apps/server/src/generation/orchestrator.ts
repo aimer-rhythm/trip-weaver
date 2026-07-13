@@ -1,6 +1,13 @@
 // Orchestrator：代码级三阶段流水线（调研 → 编排 → 审校，≤2 轮修订）
 // 唯一入口 runGeneration —— 路由只见任务号与 SSE，Agent 细节全部封装在此（架构 §2 单入口隔离）
-import { type DataSourceKind, type GenerateForm, type GenerationPhase } from '@tripweaver/shared';
+import {
+  describeFeasibility,
+  feasibilityReviewNotes,
+  type DataSourceKind,
+  type FeasibilityReport,
+  type GenerateForm,
+  type GenerationPhase,
+} from '@tripweaver/shared';
 import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
@@ -144,10 +151,29 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       summary: `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`,
     });
 
-    // ---------- 阶段 2/3：编排 ⇆ 审校（≤2 轮） ----------
+    // ---------- 阶段 2/3：编排 → 地理解析 → 可行性 → 审校（≤2 轮） ----------
+    // 时序前移（M0-A）：geoPipeline 从「审校循环之后」移到「每轮编排之后、审校之前」，
+    // 让可行性引擎在真实坐标/leg 上运行，审校拿到代码算出的真违规报告（不再纯语感）。
+    // 修订轮为增量解析：geocodeAll 跳过已 geocoded 活动，computeLegs 复用 legMemo 不重复烧 route 额度。
     const draft = new DraftTrip(form);
     let reviewNotes: string[] = [];
     let revisionRequests: string[] = [];
+    let feasibility: FeasibilityReport = { dayReports: [], violations: [] };
+
+    // 地理解析 + 可行性模拟：后处理属增强路径，意外异常只损失坐标补全/通勤段，不失败整个任务（取消除外）。
+    // 每次串行外呼前 geoPipeline 内部已按 signal 逐项中止（07-12 教训：AbortSignal 须逐迭代检查）。
+    const resolveGeoAndSimulate = async (sink: PhaseEventSink): Promise<void> => {
+      try {
+        sink.onThought('正在解析坐标与通勤…');
+        await geo.geocodeAll(draft, sink.onThought, signal);
+        assertAlive(signal);
+        await geo.computeLegs(draft, sink.onThought, signal);
+        assertAlive(signal);
+      } catch (err) {
+        if (signal.aborted) throw err;
+      }
+      feasibility = draft.feasibility();
+    };
 
     for (let round = 1; round <= MAX_REVIEW_ROUNDS; round++) {
       emit(job, { type: 'phase_start', phase: 'plan', round, note: round > 1 ? '按审校意见修订' : undefined });
@@ -171,6 +197,9 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       if (!planPassed && problems.length) {
         throw new GenerationFailure(`行程草稿不完整：${problems.join('；')}。请重试，或换用工具调用能力更强的模型`);
       }
+
+      // 时序前移：编排后立刻解析全量坐标/leg 并跑可行性引擎，供审校用真实报告
+      await resolveGeoAndSimulate(sinkFor('plan'));
       emit(job, { type: 'phase_end', phase: 'plan', round });
 
       emit(job, { type: 'phase_start', phase: 'review', round });
@@ -180,7 +209,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         apiKey: cfg.apiKey,
         systemPrompt: REVIEWER_SYSTEM_PROMPT,
         tools: [...buildDraftTools(draft).filter((t) => t.name !== 'set_trip_skeleton' && t.name !== 'add_activity' && t.name !== 'set_lodging'), ...buildReviewTools(draft, form, review)],
-        userPrompt: reviewerUserPrompt(form, round),
+        userPrompt: reviewerUserPrompt(form, round, describeFeasibility(feasibility)),
         signal,
         sink: sinkFor('review'),
         maxTurns: 12,
@@ -202,18 +231,15 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       emit(job, { type: 'phase_end', phase: 'review', round, summary: `需修订：${revisionRequests.length} 项` });
     }
 
-    // ---------- 确定性地理后处理（v0.5，R4）：全量坐标解析 + 通勤段，机械工作移出 LLM 循环 ----------
-    // 进度经现有 thought 事件透出（不新增 SSE 事件类型，前端改造属 ST2）
-    const geoSink = sinkFor('review');
-    try {
-      geoSink.onThought('正在解析坐标与通勤…');
-      await geo.geocodeAll(draft, geoSink.onThought, signal);
-      assertAlive(signal);
-      await geo.computeLegs(draft, geoSink.onThought, signal);
-      assertAlive(signal);
-    } catch (err) {
-      if (signal.aborted) throw err;
-      // 后处理属增强路径：意外异常只损失坐标补全/通勤段，不失败整个任务
+    // 可行性降级（decision 2 守生成不失败）：修订轮用尽仍有 hard 违规 → 如实并入 reviewNotes，任务仍 done 不 throw；
+    // soft 违规同样汇入最终 reviewNotes（不阻断，仅提示）。geoPipeline 已在循环内解析，draft 无需再跑后处理。
+    // 用最终草稿重算：审校阶段可能已就地 update/remove 活动（时间微调、删点减负），落库前的降级说明须反映
+    // 真实持久化状态，否则会报「审校已修掉的」遗留问题或漏报审校新引入的问题（loop 内 feasibility 是审校前快照）。
+    // draft.feasibility() 是纯函数（无网络/geoPipeline）：未动的段仍用真实 leg，审校改动的段按 haversine 兜底如实降级。
+    const finalFeasibility = draft.feasibility();
+    const feasibilityNotes = feasibilityReviewNotes(finalFeasibility);
+    if (feasibilityNotes.length) {
+      reviewNotes = [...new Set([...reviewNotes, ...feasibilityNotes])].slice(0, 8);
     }
 
     // ---------- 落库 ----------

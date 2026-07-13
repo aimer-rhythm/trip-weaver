@@ -2,6 +2,7 @@ export * from './constants';
 export * from './schemas';
 export * from './types';
 export * from './budget';
+export * from './feasibility';
 export * from './geo';
 export * from './legs';
 export * from './sample';

@@ -181,6 +181,21 @@ try {
   check('job_done 数据源为空（未配 Key）', Array.isArray(done?.dataSources) && done.dataSources.length === 0, JSON.stringify(done?.dataSources));
   check('审校建议传递', Array.isArray(done?.reviewNotes) && done.reviewNotes.length > 0, JSON.stringify(done?.reviewNotes));
 
+  // 时序前移（M0-A）：geoPipeline 移到审校前 —— 坐标/通勤解析的 thought 必须出现在首个 review phase_start 之前，
+  // 保证审校（及可行性引擎）拿到的是已解析的真实坐标/leg，而非空坐标。
+  const firstReviewIdx = run.events.findIndex((e) => e.type === 'phase_start' && e.phase === 'review');
+  const geoResolveIdx = run.events.findIndex((e) => e.type === 'thought' && /解析坐标与通勤|解析活动坐标/.test(e.text ?? ''));
+  check(
+    '坐标/通勤在审校前已解析（时序前移）',
+    geoResolveIdx >= 0 && firstReviewIdx >= 0 && geoResolveIdx < firstReviewIdx,
+    `geoIdx=${geoResolveIdx} reviewIdx=${firstReviewIdx}`,
+  );
+  check(
+    '解析发生在编排阶段（thought 归属 plan）',
+    run.events[geoResolveIdx]?.phase === 'plan',
+    run.events[geoResolveIdx]?.phase,
+  );
+
   // 候选池 SSE 事件：mock 调 4 次 add_candidate（1 次同名去重）→ 3 条 candidate
   const candidates = run.events.filter((e) => e.type === 'candidate');
   check('candidate 事件 3 条（同名去重）', candidates.length === 3, `count=${candidates.length}`);
