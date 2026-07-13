@@ -236,3 +236,36 @@ transportMode form preference feeding computeLegs, lodging anchor with 'lodging'
 ### Next Steps
 
 - None - task complete
+
+
+## Session 8: Feasibility engine (M0-A): time-space simulator with violation report
+
+**Date**: 2026-07-14
+**Task**: Feasibility engine (M0-A): time-space simulator with violation report
+**Branch**: `master`
+
+### Summary
+
+Pure-code simulateDay/simulateTrip in shared feasibility.ts (transit_infeasible/overpacked hard, backtrack/anchor_missing soft, closed_on_arrival reserved). orchestrator timing shift: geoPipeline per-round so engine simulates on real legs before review. planner check_feasibility tool + hard-only submit_plan gate, exhausted-hard degrades to reviewNotes (job still done). High fix: final notes recomputed post-review. 55/55 tests, verify-c2 pass. LLM-proposes-solver-disposes now real. Next: public deploy or eval harness.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `d1894e2` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
