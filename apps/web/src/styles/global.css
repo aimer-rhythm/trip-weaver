@@ -358,7 +358,7 @@ a { color: var(--color-primary); text-decoration: none; }
 .status-err { color: var(--color-danger); }
 
 /* ---- 导出（D1） ---- */
-.export-menu { position: relative; }
+.export-menu { position: relative; z-index: 1100; }
 .export-menu summary { list-style: none; }
 .export-menu summary::-webkit-details-marker { display: none; }
 .export-menu-list {
