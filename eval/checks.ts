@@ -1,0 +1,195 @@
+// 确定性检查（M0-B eval）：输入 Trip + GenerateForm，输出结构化 CaseResult
+// 纯函数、无 IO —— 与可行性引擎同一铁律，离线快照重放与在线生成后检查共用同一份。
+// 四类指标：可行性违规（门槛）/ 结构完整性（门槛）/ 地理质量（可信度门槛）/ 预算一致性
+// geo 门槛动机（2026-07-16 空心通过事故）：AMAP_KEY 缺失 + Nominatim 不可达 ⇒ 全活动 0,0/estimated、
+// 0 leg，可行性模拟对着空气跑出 0 违规仍 PASS —— 坐标可信度不达标必须整体判 FAIL，不得静默放行。
+import { Value } from '@sinclair/typebox/value';
+import {
+  FEASIBILITY_THRESHOLDS,
+  TripSchema,
+  computeBudgetSummary,
+  simulateTrip,
+  type GenerateForm,
+  type Trip,
+  type Violation,
+} from '@tripweaver/shared';
+
+const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+export interface GeoQuality {
+  activityCount: number;
+  locatedRatio: number;      // 有效坐标覆盖率：(lat,lng) ≠ (0,0) 活动占全部活动比
+  geocodedRatio: number;     // coordSource === 'geocoded' 占比（有坐标活动中）
+  estimatedRatio: number;    // coordSource === 'estimated' 占比（有坐标活动中）：模型猜测，未经核实
+  amapLegRatio: number;      // leg source === 'amap' 占比；无 leg 时为 0
+  legCount: number;
+  expectedLegPairs: number;  // 相邻活动对总数（每日 max(0, n-1) 之和；不含住宿 leg）
+  outlierActivities: string[];   // 距活动坐标中位中心 > 100km 的活动名（疑似幻觉/geocode 错城）
+}
+
+export interface BudgetConsistency {
+  formTotalBudget: number;
+  perPersonPerDayMin: number;
+  perPersonPerDayMax: number;
+  coveredDays: number;
+  /** 表单人均日预算相对 summary 区间的偏离比：区间内 0；区间外 = 越界幅度/边界值。表单未给预算或无成本数据为 null */
+  deviationRatio: number | null;
+}
+
+export interface CaseResult {
+  caseId: string;
+  pass: boolean;                       // 门槛判定：hard violation = 0 且结构问题 = 0 且 geo 门槛 = 0
+  hardViolations: Violation[];
+  softViolations: Violation[];
+  hardByCode: Record<string, number>;
+  softByCode: Record<string, number>;
+  structural: string[];                // 结构问题清单（空 = 通过）
+  geoGate: string[];                   // 地理可信度门槛问题清单（空 = 通过）
+  geo: GeoQuality;
+  budget: BudgetConsistency;
+}
+
+function countByCode(violations: Violation[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const v of violations) out[v.code] = (out[v.code] ?? 0) + 1;
+  return out;
+}
+
+// ---------- 结构完整性 ----------
+
+function checkStructural(trip: Trip, form: GenerateForm): string[] {
+  const problems: string[] = [];
+  if (!Value.Check(TripSchema, trip)) {
+    const first = Value.Errors(TripSchema, trip).First();
+    problems.push(`TripSchema 校验失败：${first ? `${first.path} ${first.message}` : '未知错误'}`);
+  }
+  if (trip.days.length !== form.days) {
+    problems.push(`天数不匹配：表单 ${form.days} 天，产出 ${trip.days.length} 天`);
+  }
+  for (const day of trip.days) {
+    const d = `第 ${day.dayIndex} 天`;
+    if (day.activities.length === 0) problems.push(`${d}为空天`);
+    if (day.activities.length > FEASIBILITY_THRESHOLDS.softMaxActivities) {
+      problems.push(`${d}活动数 ${day.activities.length} 超上限 ${FEASIBILITY_THRESHOLDS.softMaxActivities}`);
+    }
+    for (const a of day.activities) {
+      for (const t of [a.startTime, a.endTime]) {
+        if (t !== '' && !TIME_RE.test(t)) problems.push(`${d}「${a.name}」时间格式非法：${t}`);
+      }
+      if (TIME_RE.test(a.startTime) && TIME_RE.test(a.endTime) && a.startTime >= a.endTime) {
+        problems.push(`${d}「${a.name}」结束时间不晚于开始时间（${a.startTime}–${a.endTime}）`);
+      }
+    }
+  }
+  return problems;
+}
+
+// ---------- 地理质量 ----------
+
+const DEG = Math.PI / 180;
+const EARTH_R = 6371000;
+const OUTLIER_METERS = 100_000;
+
+function haversine(aLat: number, aLng: number, bLat: number, bLng: number): number {
+  const dLat = (bLat - aLat) * DEG;
+  const dLng = (bLng - aLng) * DEG;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(aLat * DEG) * Math.cos(bLat * DEG) * Math.sin(dLng / 2) ** 2;
+  return 2 * EARTH_R * Math.asin(Math.sqrt(h));
+}
+
+function median(nums: number[]): number {
+  const s = [...nums].sort((a, b) => a - b);
+  return s[Math.floor(s.length / 2)]!;
+}
+
+function checkGeo(trip: Trip): GeoQuality {
+  const acts = trip.days.flatMap((d) => d.activities);
+  const located = acts.filter((a) => a.lat !== 0 || a.lng !== 0);
+  const legs = trip.days.flatMap((d) => d.legs ?? []);
+  // 离群判定：与坐标中位中心的距离 > 100km（同城行程不该出现；中位数抗单点离群）
+  const outliers: string[] = [];
+  if (located.length >= 3) {
+    const cLat = median(located.map((a) => a.lat));
+    const cLng = median(located.map((a) => a.lng));
+    for (const a of located) {
+      if (haversine(a.lat, a.lng, cLat, cLng) > OUTLIER_METERS) outliers.push(a.name);
+    }
+  }
+  return {
+    activityCount: acts.length,
+    locatedRatio: acts.length ? located.length / acts.length : 0,
+    geocodedRatio: located.length ? located.filter((a) => a.coordSource === 'geocoded').length / located.length : 0,
+    estimatedRatio: located.length ? located.filter((a) => a.coordSource === 'estimated').length / located.length : 0,
+    amapLegRatio: legs.length ? legs.filter((l) => l.source === 'amap').length / legs.length : 0,
+    legCount: legs.length,
+    expectedLegPairs: trip.days.reduce((n, d) => n + Math.max(0, d.activities.length - 1), 0),
+    outlierActivities: outliers,
+  };
+}
+
+// ---------- 地理可信度门槛 ----------
+// 只锚定坐标可信度，不锚定 leg 存在性：geoPipeline 对有坐标活动必产 leg（route 失败也降级出启发式段），
+// leg 缺失只是坐标缺失的影子；而手工金集样例（manual 坐标、无 leg）靠 simulate 的 haversine 兜底，属合法形态。
+
+export const EVAL_GEO_THRESHOLDS = {
+  minLocatedRatio: 0.8,     // 有效坐标覆盖率下限
+  maxEstimatedRatio: 0.4,   // 估算坐标（模型猜测）占比上限
+} as const;
+
+function checkGeoGate(geo: GeoQuality): string[] {
+  const problems: string[] = [];
+  if (geo.activityCount > 0 && geo.locatedRatio < EVAL_GEO_THRESHOLDS.minLocatedRatio) {
+    problems.push(
+      `有效坐标覆盖率 ${(geo.locatedRatio * 100).toFixed(0)}% 低于门槛 ${EVAL_GEO_THRESHOLDS.minLocatedRatio * 100}%（geocode 链路疑似未生效）`,
+    );
+  }
+  if (geo.locatedRatio > 0 && geo.estimatedRatio > EVAL_GEO_THRESHOLDS.maxEstimatedRatio) {
+    problems.push(
+      `估算坐标占比 ${(geo.estimatedRatio * 100).toFixed(0)}% 超上限 ${EVAL_GEO_THRESHOLDS.maxEstimatedRatio * 100}%（坐标未经地理编码核实）`,
+    );
+  }
+  return problems;
+}
+
+// ---------- 预算一致性 ----------
+
+function checkBudget(trip: Trip, form: GenerateForm): BudgetConsistency {
+  const summary = computeBudgetSummary(trip);
+  let deviationRatio: number | null = null;
+  if (form.totalBudget > 0 && summary.coveredDays > 0) {
+    const target = form.totalBudget / Math.max(1, form.partySize) / Math.max(1, form.days);
+    if (target < summary.perPersonPerDayMin) deviationRatio = (summary.perPersonPerDayMin - target) / summary.perPersonPerDayMin;
+    else if (target > summary.perPersonPerDayMax) deviationRatio = (target - summary.perPersonPerDayMax) / summary.perPersonPerDayMax;
+    else deviationRatio = 0;
+  }
+  return {
+    formTotalBudget: form.totalBudget,
+    perPersonPerDayMin: summary.perPersonPerDayMin,
+    perPersonPerDayMax: summary.perPersonPerDayMax,
+    coveredDays: summary.coveredDays,
+    deviationRatio,
+  };
+}
+
+// ---------- 汇总入口 ----------
+
+export function runChecks(caseId: string, trip: Trip, form: GenerateForm): CaseResult {
+  const report = simulateTrip(trip);
+  const hard = report.violations.filter((v) => v.severity === 'hard');
+  const soft = report.violations.filter((v) => v.severity === 'soft');
+  const structural = checkStructural(trip, form);
+  const geo = checkGeo(trip);
+  const geoGate = checkGeoGate(geo);
+  return {
+    caseId,
+    pass: hard.length === 0 && structural.length === 0 && geoGate.length === 0,
+    hardViolations: hard,
+    softViolations: soft,
+    hardByCode: countByCode(hard),
+    softByCode: countByCode(soft),
+    structural,
+    geoGate,
+    geo,
+    budget: checkBudget(trip, form),
+  };
+}

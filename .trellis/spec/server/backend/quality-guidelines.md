@@ -37,6 +37,8 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | Production generation browser flow | `node scripts/verify-c3.mjs` | Requires `npm run build` first. |
 | Core browser trip flow | `node scripts/verify-m1.mjs` | Expects a suitable app at `BASE`. |
 | Export/import production flow | `node scripts/verify-d1.mjs` | Requires `npm run build` first. |
+| Golden-set eval (offline snapshot replay) | `npm run eval` | Deterministic checks; gate = zero hard violations. |
+| Golden-set eval (live generation) | `npm run eval:live` | Real LLM via `SITE_LLM_*`; writes `eval/snapshots/`. |
 
 Run the smallest relevant script. Do not run credential-bearing real-provider checks without
 explicit approval. Verification scripts should inject environment values rather than depend
