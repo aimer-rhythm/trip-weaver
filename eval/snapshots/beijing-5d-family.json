@@ -1,0 +1,929 @@
+{
+  "caseId": "beijing-5d-family",
+  "generatedAt": 1784249512263,
+  "model": "deepseek-v4-flash",
+  "form": {
+    "startDate": "",
+    "totalBudget": 8000,
+    "extraNotes": "",
+    "destination": "北京",
+    "days": 5,
+    "budgetLevel": "舒适",
+    "preferences": [
+      "文化",
+      "亲子"
+    ],
+    "partySize": 3,
+    "transportMode": "transit"
+  },
+  "trip": {
+    "id": "ac317e19-4de8-4c30-a299-ecf8234cea37",
+    "title": "北京五日亲子文化之旅",
+    "destination": "北京",
+    "startDate": "",
+    "budgetLevel": "舒适",
+    "totalBudget": 8000,
+    "preferences": [
+      "文化",
+      "亲子"
+    ],
+    "partySize": 3,
+    "extraNotes": "",
+    "transportMode": "transit",
+    "lodging": {
+      "name": "前门-崇文门区域（地铁2号线、5号线交汇，步行可达天坛、故宫南端，家庭房选择多）",
+      "lat": 39.897083,
+      "lng": 116.398254,
+      "coordSystem": "gcj02"
+    },
+    "days": [
+      {
+        "id": "7a4ef812-10e2-4839-8653-786518296514",
+        "dayIndex": 1,
+        "title": "中轴线经典·故宫与皇城",
+        "activities": [
+          {
+            "id": "ee0a95f5-0e7b-46b7-8caa-e345713437de",
+            "name": "天安门广场",
+            "startTime": "08:00",
+            "endTime": "08:30",
+            "description": "世界最大城市广场，可远眺天安门城楼和人民英雄纪念碑，清晨人少适合拍照，开启北京之旅。",
+            "lat": 39.903182,
+            "lng": 116.397755,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "其他",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "2e9fc126-d608-4e3c-b780-270ede29e4ee",
+            "name": "故宫博物院",
+            "startTime": "09:30",
+            "endTime": "13:30",
+            "description": "世界最大宫殿建筑群，走中轴线看太和殿、乾清宫，带孩子亲眼见历史课本中的金銮殿。需提前7天预约！",
+            "lat": 39.917839,
+            "lng": 116.397029,
+            "coordSource": "geocoded",
+            "cost": 50,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "故宫博物院（官方渠道）",
+                "url": "https://www.dpm.org.cn/"
+              }
+            ]
+          },
+          {
+            "id": "1cfaaf4a-6096-4857-b6b4-aa7a8a20d720",
+            "name": "景山公园",
+            "startTime": "14:00",
+            "endTime": "15:00",
+            "description": "北京中轴线制高点，登万春亭俯瞰故宫全景与南北中轴线，是拍故宫全景照的最佳机位，孩子一眼看懂京城格局。",
+            "lat": 39.925875,
+            "lng": 116.396551,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "自然",
+            "sourceNotes": [
+              {
+                "title": "景山公园 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/10eb01af2fd301e54e50d42ea636ccef"
+              }
+            ]
+          },
+          {
+            "id": "5142507f-b5b3-4e18-8c11-388168159b7c",
+            "name": "王府井步行街",
+            "startTime": "15:45",
+            "endTime": "17:45",
+            "description": "北京最著名的商业街之一，逛逛百货商场和老字号店铺，感受京城繁华，适合亲子闲逛购物。",
+            "lat": 39.913479,
+            "lng": 116.412007,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "购物",
+            "sourceNotes": []
+          },
+          {
+            "id": "9281ac89-895f-40a4-b79b-4b67066c7fb6",
+            "name": "四季民福烤鸭店(东四十条店)",
+            "startTime": "18:30",
+            "endTime": "20:00",
+            "description": "北京烤鸭口碑名店，皮脆肉嫩现烤现片，人均¥146性价比高，带孩子体验正宗京味烤鸭，建议提前电话排号。",
+            "lat": 39.933909,
+            "lng": 116.430109,
+            "coordSource": "geocoded",
+            "cost": 146,
+            "category": "美食",
+            "sourceNotes": [
+              {
+                "title": "四季民福烤鸭店 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/fc552a09bb43218b69803bdb6fca840c"
+              }
+            ]
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "ee0a95f5-0e7b-46b7-8caa-e345713437de",
+            "mode": "walk",
+            "durationMin": 18,
+            "distanceM": 1370,
+            "source": "amap",
+            "polyline": "116.398411,39.897083;116.398407,39.897231;116.398407,39.897231;116.398368,39.897886;116.398333,39.897921;116.398073,39.897904;116.398003,39.89793;116.398003,39.89793;116.397613,39.89796;116.397613,39.89796;116.397604,39.898034;116.397604,39.898034;116.397582,39.89822;116.397543,39.898368;116.39753,39.898377;116.397526,39.898377;116.3974,39.898416;116.397396,39.898416;116.397352,39.898377;116.397287,39.898359;116.397014,39.898359;116.396823,39.898377;116.396823,39.898377;116.396602,39.89842;116.396602,39.89842;116.396558,39.898429;116.396558,39.898429;116.396385,39.898481;116.396385,39.898481;116.396033,39.898533;116.396033,39.898533;116.395395,39.898806;116.395395,39.898806;116.39533,39.898837;116.39533,39.898837;116.395386,39.898984;116.39559,39.899288;116.39559,39.899288;116.395625,39.899336;116.395629,39.899336;116.395616,39.899444;116.395703,39.899627;116.395703,39.899627;116.395755,39.899722;116.395755,39.899722;116.39579,39.899779;116.39579,39.899779;116.395799,39.899826;116.395799,39.899826;116.395825,39.899918;116.395829,39.899918;116.395716,39.899926;116.395716,39.899926;116.395564,39.899939;116.395564,39.899939;116.395586,39.900122;116.395608,39.900343;116.395608,39.900343;116.395621,39.900447;116.395621,39.900447;116.395777,39.900447;116.395777,39.900447;116.396081,39.900447;116.396076,39.900443;116.396037,39.900812;116.39602,39.90194;116.39602,39.90194;116.396003,39.902339;116.396003,39.902352;116.396003,39.902352;116.39599,39.902708;116.39599,39.902708;116.395977,39.902917;116.395977,39.902917;116.395964,39.903168;116.395964,39.903168;116.396172,39.903168;116.396172,39.903168;116.396146,39.903763;116.396141,39.903763;116.396988,39.903776;116.396988,39.903776;116.3977,39.903785;116.3977,39.903785;116.397721,39.903403;116.397721,39.903398;116.398524,39.90342;116.398542,39.903116;116.398542,39.903112;116.397765,39.903099"
+          },
+          {
+            "fromActivityId": "ee0a95f5-0e7b-46b7-8caa-e345713437de",
+            "toActivityId": "2e9fc126-d608-4e3c-b780-270ede29e4ee",
+            "mode": "transit",
+            "durationMin": 47,
+            "distanceM": 3431,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "2e9fc126-d608-4e3c-b780-270ede29e4ee",
+            "toActivityId": "1cfaaf4a-6096-4857-b6b4-aa7a8a20d720",
+            "mode": "walk",
+            "durationMin": 19,
+            "distanceM": 1445,
+            "source": "amap",
+            "polyline": "116.396862,39.91783;116.396866,39.917812;116.396866,39.917808;116.396515,39.917791;116.39651,39.917786;116.396133,39.917778;116.396128,39.917773;116.396128,39.917882;116.396128,39.917882;116.396128,39.918034;116.396128,39.918034;116.396128,39.91806;116.396128,39.91806;116.396128,39.918112;116.396124,39.918112;116.396124,39.918299;116.396124,39.918299;116.396102,39.918602;116.396098,39.918602;116.396085,39.918845;116.396081,39.918845;116.39625,39.918845;116.39625,39.918845;116.396215,39.91951;116.396215,39.91951;116.396181,39.919952;116.396181,39.919952;116.396159,39.920451;116.396159,39.920451;116.396155,39.920942;116.396155,39.920942;116.39615,39.920981;116.39615,39.920981;116.396146,39.921124;116.396155,39.921141;116.396233,39.921141;116.39625,39.921141;116.396259,39.921202;116.396259,39.921202;116.396241,39.921454;116.396241,39.921454;116.396241,39.921519;116.396241,39.921519;116.396237,39.921597;116.396237,39.921597;116.396237,39.921749;116.396237,39.921749;116.396233,39.921827;116.396237,39.92184;116.396263,39.921849;116.396398,39.921849;116.396398,39.921849;116.396628,39.921849;116.396628,39.921849;116.396866,39.921849;116.396866,39.921849;116.396862,39.921931;116.396862,39.921931;116.396858,39.922062;116.396858,39.922062;116.396858,39.922062;116.396905,39.922383;116.396905,39.922383;116.396914,39.922517;116.396914,39.922517;116.39691,39.923047;116.39691,39.923047;116.39691,39.923129;116.396905,39.923129;116.396758,39.923121;116.396758,39.923121;116.396432,39.923112;116.396428,39.923108;116.396428,39.923173;116.396428,39.923173;116.396254,39.923168;116.396254,39.923168;116.396246,39.923416;116.396246,39.923416;116.396402,39.923424;116.396402,39.923424;116.396406,39.92339;116.396406,39.923385;116.396753,39.923398;116.396753,39.923398;116.396771,39.92342;116.396771,39.923455;116.396771,39.923455;116.396771,39.923746;116.396766,39.923746;116.396957,39.92375;116.39714,39.923776;116.39714,39.923776;116.397687,39.92388;116.397687,39.92388;116.398299,39.924002;116.398299,39.924002;116.398737,39.924132;116.398737,39.924132;116.398872,39.924197;116.398872,39.924197;116.399006,39.924306;116.39901,39.924314;116.399076,39.924436;116.399076,39.924436;116.399136,39.924631;116.399136,39.924631;116.399162,39.924883;116.399158,39.924965;116.399136,39.925039;116.399006,39.925256;116.399002,39.925256;116.398854,39.92523;116.39862,39.925221;116.397956,39.925286;116.397956,39.925286;116.397396,39.925525;116.397396,39.925525;116.397365,39.925547;116.397326,39.925608;116.397309,39.925673;116.397296,39.925699;116.397127,39.925729;116.397049,39.92582;116.397005,39.925842;116.396966,39.925842;116.396845,39.925812;116.39674,39.925859;116.396684,39.925859;116.39668,39.925855;116.396567,39.925833"
+          },
+          {
+            "fromActivityId": "1cfaaf4a-6096-4857-b6b4-aa7a8a20d720",
+            "toActivityId": "5142507f-b5b3-4e18-8c11-388168159b7c",
+            "mode": "transit",
+            "durationMin": 34,
+            "distanceM": 3428,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "5142507f-b5b3-4e18-8c11-388168159b7c",
+            "toActivityId": "9281ac89-895f-40a4-b79b-4b67066c7fb6",
+            "mode": "transit",
+            "durationMin": 36,
+            "distanceM": 6105,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "9281ac89-895f-40a4-b79b-4b67066c7fb6",
+            "toActivityId": "lodging",
+            "mode": "transit",
+            "durationMin": 31,
+            "distanceM": 7642,
+            "source": "amap"
+          }
+        ]
+      },
+      {
+        "id": "371fd68e-8588-4723-aecd-f3bd07cc6099",
+        "dayIndex": 2,
+        "title": "古建与博物·天坛国博",
+        "activities": [
+          {
+            "id": "109b7c6e-f6e5-4aa5-866d-75369f14357a",
+            "name": "天坛公园",
+            "startTime": "08:00",
+            "endTime": "10:00",
+            "description": "明清皇帝祭天之所，看祈年殿壮丽外观，带孩子到回音壁体验声学奇观，寓教于乐。",
+            "lat": 39.881913,
+            "lng": 116.410829,
+            "coordSource": "geocoded",
+            "cost": 15,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "天坛公园 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/d7027a05ce598752d0bf69423d80ac94"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "d4e47afe-d6be-44ff-97cd-f6282aedde74",
+            "name": "中国国家博物馆",
+            "startTime": "11:00",
+            "endTime": "14:00",
+            "description": "中华文物收藏最丰富的博物馆，「古代中国」展厅从远古到明清，是给孩子上一堂生动历史课的绝佳场所。需提前预约！免费。",
+            "lat": 39.905374,
+            "lng": 116.401304,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "中国国家博物馆（官方渠道）",
+                "url": "https://www.chnmuseum.cn/"
+              }
+            ]
+          },
+          {
+            "id": "ae000133-63ba-406c-a20e-49674ac10040",
+            "name": "老北京炸酱面·烤鸭(前门店)",
+            "startTime": "14:30",
+            "endTime": "16:00",
+            "description": "前门大街上的老北京风味馆，炸酱面筋道菜码丰富，烤鸭也地道，人均¥63，带家人尝一顿地道京味午餐。",
+            "lat": 39.899767,
+            "lng": 116.392957,
+            "coordSource": "geocoded",
+            "cost": 63,
+            "category": "美食",
+            "sourceNotes": [
+              {
+                "title": "老北京炸酱面·烤鸭(前门店) - 高德地图",
+                "url": "https://store.is.autonavi.com/showpic/eb87c637fb9745fbe668bcdf06db7e17"
+              }
+            ]
+          },
+          {
+            "id": "e2b2ff21-c32d-4e23-af0a-a7917359875e",
+            "name": "前门大街",
+            "startTime": "16:30",
+            "endTime": "17:30",
+            "description": "北京最富盛名的古老商业街，北起正阳门箭楼，南至天坛路，老字号林立，带孩子感受百年商业街的烟火气。",
+            "lat": 39.896152,
+            "lng": 116.403895,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "其他",
+            "sourceNotes": []
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "109b7c6e-f6e5-4aa5-866d-75369f14357a",
+            "mode": "transit",
+            "durationMin": 18,
+            "distanceM": 2799,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "109b7c6e-f6e5-4aa5-866d-75369f14357a",
+            "toActivityId": "d4e47afe-d6be-44ff-97cd-f6282aedde74",
+            "mode": "transit",
+            "durationMin": 48,
+            "distanceM": 6900,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "d4e47afe-d6be-44ff-97cd-f6282aedde74",
+            "toActivityId": "ae000133-63ba-406c-a20e-49674ac10040",
+            "mode": "walk",
+            "durationMin": 18,
+            "distanceM": 1372,
+            "source": "amap",
+            "polyline": "116.401168,39.905417;116.401163,39.905508;116.401159,39.905521;116.401141,39.905534;116.400972,39.905547;116.400942,39.905543;116.40092,39.905521;116.40092,39.905343;116.400916,39.905321;116.400898,39.905299;116.400877,39.905291;116.400347,39.905252;116.400343,39.905247;116.400347,39.905087;116.400347,39.905082;116.399987,39.905069;116.399987,39.905069;116.399805,39.905061;116.399805,39.905061;116.399479,39.905048;116.399479,39.905048;116.399262,39.905043;116.399258,39.905039;116.399319,39.90385;116.399319,39.903845;116.398477,39.903806;116.398477,39.903806;116.397704,39.903789;116.397704,39.903789;116.396992,39.90378;116.396992,39.90378;116.396146,39.903767;116.396141,39.903763;116.396172,39.903173;116.396172,39.903168;116.395968,39.903168;116.395968,39.903168;116.395959,39.903168;116.395972,39.902921;116.395972,39.902921;116.395985,39.902708;116.395985,39.902708;116.395998,39.902357;116.395998,39.902357;116.395998,39.902344;116.396016,39.901944;116.396016,39.901944;116.396033,39.900816;116.396076,39.900447;116.396081,39.900443;116.395781,39.900443;116.395777,39.900443;116.395625,39.900447;116.395625,39.900447;116.395612,39.900347;116.395612,39.900347;116.39559,39.900126;116.395564,39.899944;116.395564,39.899944;116.395334,39.899961;116.395334,39.899961;116.395234,39.899974;116.39523,39.899974;116.395243,39.90013;116.395243,39.90013;116.395161,39.900139;116.395161,39.900139;116.394566,39.900056;116.394362,39.900074;116.394362,39.900074;116.393759,39.900126;116.393759,39.900126;116.393364,39.900152;116.392908,39.900165;116.392899,39.900165;116.392899,39.899913;116.392899,39.899913;116.392895,39.899913;116.392964,39.899913"
+          },
+          {
+            "fromActivityId": "ae000133-63ba-406c-a20e-49674ac10040",
+            "toActivityId": "e2b2ff21-c32d-4e23-af0a-a7917359875e",
+            "mode": "walk",
+            "durationMin": 19,
+            "distanceM": 1422,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "e2b2ff21-c32d-4e23-af0a-a7917359875e",
+            "toActivityId": "lodging",
+            "mode": "walk",
+            "durationMin": 9,
+            "distanceM": 689,
+            "source": "heuristic"
+          }
+        ]
+      },
+      {
+        "id": "a0969ac3-d0e7-4976-9980-9dfbcb86ea6e",
+        "dayIndex": 3,
+        "title": "长城豪情·八达岭全天",
+        "activities": [
+          {
+            "id": "6f132bcf-00bd-4c37-8b78-26c00c567cc0",
+            "name": "八达岭长城",
+            "startTime": "09:00",
+            "endTime": "15:00",
+            "description": "万里长城最著名段，登城远眺群山壮阔，让孩子感受\"不到长城非好汉\"的豪情。建议提前7天预约购票，缆车省体力，自带干粮或景区内午餐。",
+            "lat": 40.356188,
+            "lng": 116.016802,
+            "coordSource": "geocoded",
+            "cost": 40,
+            "category": "自然",
+            "sourceNotes": [
+              {
+                "title": "八达岭长城（官方渠道）",
+                "url": "https://www.badaling.cn/"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "4e2bba10-c937-4fe8-862a-d822332c9512",
+            "name": "南来顺饭庄",
+            "startTime": "18:00",
+            "endTime": "19:30",
+            "description": "老字号清真饭庄，豌豆黄、艾窝窝等北京小吃种类丰富，适合带孩子一站式尝遍京味点心，人均实惠。",
+            "lat": 39.870908,
+            "lng": 116.354337,
+            "coordSource": "geocoded",
+            "cost": 60,
+            "category": "美食",
+            "sourceNotes": [
+              {
+                "title": "南来顺饭庄 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/263f5cd7eaeaedc1014b446293a0b869"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "487ffeb7-3765-49ab-b069-9fc170edaaed",
+            "name": "鸟巢·水立方夜景",
+            "startTime": "20:00",
+            "endTime": "21:00",
+            "description": "奥林匹克公园核心建筑，夜晚灯光璀璨，带孩子感受奥运地标的现代魅力，外观免费，地铁直达。",
+            "lat": 39.992834,
+            "lng": 116.390397,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "其他",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "6f132bcf-00bd-4c37-8b78-26c00c567cc0",
+            "mode": "transit",
+            "durationMin": 264,
+            "distanceM": 84673,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "6f132bcf-00bd-4c37-8b78-26c00c567cc0",
+            "toActivityId": "4e2bba10-c937-4fe8-862a-d822332c9512",
+            "mode": "transit",
+            "durationMin": 267,
+            "distanceM": 85568,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "4e2bba10-c937-4fe8-862a-d822332c9512",
+            "toActivityId": "487ffeb7-3765-49ab-b069-9fc170edaaed",
+            "mode": "transit",
+            "durationMin": 68,
+            "distanceM": 19463,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "487ffeb7-3765-49ab-b069-9fc170edaaed",
+            "toActivityId": "lodging",
+            "mode": "transit",
+            "durationMin": 55,
+            "distanceM": 14935,
+            "source": "heuristic"
+          }
+        ]
+      },
+      {
+        "id": "b517c4f6-bc92-492e-8925-92ee08b7eac6",
+        "dayIndex": 4,
+        "title": "皇家园林·颐和圆明",
+        "activities": [
+          {
+            "id": "e8f60255-4dfc-4d95-9c51-05dd82831b90",
+            "name": "颐和园",
+            "startTime": "08:30",
+            "endTime": "12:00",
+            "description": "中国最大皇家园林，昆明湖游船赏景，长廊一步一景，带孩子了解清代皇家生活。建议从东宫门进，乘船到十七孔桥。",
+            "lat": 39.999617,
+            "lng": 116.275179,
+            "coordSource": "geocoded",
+            "cost": 30,
+            "category": "自然",
+            "sourceNotes": [
+              {
+                "title": "颐和园 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/a4b326f43a84d36b581d7f6e856fe858"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "9ee531a8-234a-45ab-88cb-3aeed7ee2a95",
+            "name": "圆明园遗址公园",
+            "startTime": "13:00",
+            "endTime": "16:00",
+            "description": "西洋楼残垣断壁是生动的历史教材，带孩子了解近代史，珍惜当下。建议从南门进，重点看西洋楼遗址和黄花阵迷宫。",
+            "lat": 40.006502,
+            "lng": 116.300875,
+            "coordSource": "geocoded",
+            "cost": 25,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "圆明园遗址公园 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/0c8257320e8c8a771ef6aef1cb358483"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "3669ff5a-a176-4ae5-a041-734b78ab36f3",
+            "name": "清真·鸦儿李记·涮肉(牛街店)",
+            "startTime": "18:00",
+            "endTime": "19:30",
+            "description": "牛街老牌清真涮肉，手切鲜羊肉嫩而不膻，麻酱小料地道，人均¥78，饭后还可逛牛街买清真小吃。",
+            "lat": 39.88493,
+            "lng": 116.363386,
+            "coordSource": "geocoded",
+            "cost": 78,
+            "category": "美食",
+            "sourceNotes": [
+              {
+                "title": "鸦儿李记涮肉 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/91d0757fcf95b69534fe9abc1c3c8c06"
+              }
+            ],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "e8f60255-4dfc-4d95-9c51-05dd82831b90",
+            "mode": "transit",
+            "durationMin": 75,
+            "distanceM": 21691,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "e8f60255-4dfc-4d95-9c51-05dd82831b90",
+            "toActivityId": "9ee531a8-234a-45ab-88cb-3aeed7ee2a95",
+            "mode": "transit",
+            "durationMin": 20,
+            "distanceM": 3246,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "9ee531a8-234a-45ab-88cb-3aeed7ee2a95",
+            "toActivityId": "3669ff5a-a176-4ae5-a041-734b78ab36f3",
+            "mode": "transit",
+            "durationMin": 71,
+            "distanceM": 20343,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "3669ff5a-a176-4ae5-a041-734b78ab36f3",
+            "toActivityId": "lodging",
+            "mode": "transit",
+            "durationMin": 24,
+            "distanceM": 4574,
+            "source": "heuristic"
+          }
+        ]
+      },
+      {
+        "id": "c50f296f-2fd9-497e-bb5f-5f89a3bc62bc",
+        "dayIndex": 5,
+        "title": "胡同烟火·恭王府与南锣",
+        "activities": [
+          {
+            "id": "2e27bd99-c693-4d62-a398-9afe14061d5f",
+            "name": "恭王府博物馆",
+            "startTime": "08:30",
+            "endTime": "10:30",
+            "description": "清代最大王府，曾是和珅宅邸，花园精美，带孩子了解清代王府文化。需提前预约，建议听讲解。",
+            "lat": 39.937222,
+            "lng": 116.386315,
+            "coordSource": "geocoded",
+            "cost": 40,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "恭王府博物馆（官方渠道）",
+                "url": "https://www.pgm.org.cn/"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "cfd09982-9138-4459-af48-5a31e5dbfe97",
+            "name": "什刹海",
+            "startTime": "10:45",
+            "endTime": "12:00",
+            "description": "北京最具老北京风情的开放式水域，前海后海沿岸胡同密布，可散步、坐三轮车，感受京城水岸慢生活。",
+            "lat": 39.941893,
+            "lng": 116.385121,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "自然",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "1c7e6c26-bcc6-46bc-b323-94dece5e3533",
+            "name": "紫光园·烤鸭·北京菜(北京总店)",
+            "startTime": "12:45",
+            "endTime": "14:15",
+            "description": "牛街人气北京菜馆，烤鸭、炒疙瘩、牛肉饼等经典菜品齐全，人均¥60性价比超高，带孩子品尝多样京味菜。",
+            "lat": 39.883533,
+            "lng": 116.364055,
+            "coordSource": "geocoded",
+            "cost": 60,
+            "category": "美食",
+            "sourceNotes": [
+              {
+                "title": "紫光园·北京总店 - 高德地图",
+                "url": "http://store.is.autonavi.com/query_pic?id=stc56029d4-8f36-4428-b61d-aded6ac2fe6d&user=search&operate=original"
+              }
+            ]
+          },
+          {
+            "id": "afed7d35-2264-4986-9add-56be3ed51c33",
+            "name": "南锣鼓巷",
+            "startTime": "15:00",
+            "endTime": "17:00",
+            "description": "北京最古老的胡同街区之一，特色小店、小吃和创意工坊林立，带孩子感受老北京胡同文化与现代创意的碰撞。",
+            "lat": 39.937182,
+            "lng": 116.402394,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "其他",
+            "sourceNotes": [
+              {
+                "title": "南锣鼓巷 - 高德地图",
+                "url": "http://store.is.autonavi.com/showpic/6aa94c24640267a56c22af0b9629030a"
+              }
+            ],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "2e27bd99-c693-4d62-a398-9afe14061d5f",
+            "mode": "transit",
+            "durationMin": 29,
+            "distanceM": 6409,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "2e27bd99-c693-4d62-a398-9afe14061d5f",
+            "toActivityId": "cfd09982-9138-4459-af48-5a31e5dbfe97",
+            "mode": "walk",
+            "durationMin": 10,
+            "distanceM": 741,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "cfd09982-9138-4459-af48-5a31e5dbfe97",
+            "toActivityId": "1c7e6c26-bcc6-46bc-b323-94dece5e3533",
+            "mode": "transit",
+            "durationMin": 38,
+            "distanceM": 9427,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "1c7e6c26-bcc6-46bc-b323-94dece5e3533",
+            "toActivityId": "afed7d35-2264-4986-9add-56be3ed51c33",
+            "mode": "transit",
+            "durationMin": 39,
+            "distanceM": 9524,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "afed7d35-2264-4986-9add-56be3ed51c33",
+            "toActivityId": "lodging",
+            "mode": "transit",
+            "durationMin": 29,
+            "distanceM": 6262,
+            "source": "heuristic"
+          }
+        ]
+      }
+    ],
+    "overview": [
+      {
+        "id": "247b0e1f-78a3-4bf2-a3f5-3fb0cf386747",
+        "name": "故宫博物院",
+        "category": "attraction",
+        "intro": "世界最大宫殿建筑群，明清两代皇家宫殿，孩子可亲眼看到历史课本中的金銮殿、御花园，感受中华文化的厚重。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "故宫博物院（官方渠道）",
+            "url": "https://www.dpm.org.cn/"
+          },
+          {
+            "title": "故宫博物院 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/2f968490d105bb2741e17f90b85c6b79"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/2f968490d105bb2741e17f90b85c6b79",
+        "reservationNote": "需在「故宫博物院」微信小程序或官网实名预约购票，提前 7 天 20:00 放票，旺季约满即止"
+      },
+      {
+        "id": "273362bc-75a3-4d5f-82ed-187cabd9a08d",
+        "name": "天坛公园",
+        "category": "attraction",
+        "intro": "明清皇帝祭天之所，拥有祈年殿、回音壁等著名建筑，孩子可在回音壁体验声学奇观，寓教于乐。",
+        "reservation": "none",
+        "sourceLinks": [
+          {
+            "title": "天坛公园 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/d7027a05ce598752d0bf69423d80ac94"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/d7027a05ce598752d0bf69423d80ac94",
+        "reservationNote": "可现场购票入园，建议提前在「畅游公园」公众号购买联票以免排队。"
+      },
+      {
+        "id": "345a346a-deaa-4780-acea-2c72593f49ca",
+        "name": "颐和园",
+        "category": "attraction",
+        "intro": "中国现存最大的皇家园林，昆明湖、万寿山、长廊一步一景，可乘船游湖，孩子能了解清代皇家生活。",
+        "reservation": "none",
+        "sourceLinks": [
+          {
+            "title": "颐和园 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/a4b326f43a84d36b581d7f6e856fe858"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/a4b326f43a84d36b581d7f6e856fe858",
+        "reservationNote": "可现场购票，旺季建议在「颐和园」官方公众号提前预约购票。"
+      },
+      {
+        "id": "9a1f4320-cced-4f29-88c2-988059f9f33d",
+        "name": "八达岭长城",
+        "category": "attraction",
+        "intro": "万里长城最著名段，登城远眺群山壮阔，让孩子亲身感受\"不到长城非好汉\"的豪情，是北京必打卡地标。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "八达岭长城（官方渠道）",
+            "url": "https://www.badaling.cn/"
+          },
+          {
+            "title": "八达岭长城 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/67fedede4e30d83372fe0f94533ad06b"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/67fedede4e30d83372fe0f94533ad06b",
+        "reservationNote": "需在「八达岭长城」官方小程序或官网实名分时预约购票，旺季当日票常售罄"
+      },
+      {
+        "id": "87683078-af05-4540-afe0-a78e86efd5d0",
+        "name": "恭王府博物馆",
+        "category": "attraction",
+        "intro": "清代规模最大的王府，曾是和珅宅邸，后为恭亲王奕訢府第，花园精美，可带孩子了解清代王府文化。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "恭王府博物馆（官方渠道）",
+            "url": "https://www.pgm.org.cn/"
+          },
+          {
+            "title": "恭王府博物馆 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/e242ed1956e6d775a8912cfd3934169b"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/e242ed1956e6d775a8912cfd3934169b",
+        "reservationNote": "需「恭王府博物馆」小程序或官网实名分时预约购票"
+      },
+      {
+        "id": "0252b0c0-ef85-4f8f-a81e-38ceab18b97f",
+        "name": "景山公园",
+        "category": "attraction",
+        "intro": "北京中轴线制高点，登万春亭可俯瞰故宫全景、南北中轴线，是拍故宫全景照的最佳机位。",
+        "reservation": "none",
+        "sourceLinks": [
+          {
+            "title": "景山公园 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/10eb01af2fd301e54e50d42ea636ccef"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/10eb01af2fd301e54e50d42ea636ccef",
+        "reservationNote": "现场购票或「畅游公园」公众号预约，票价仅2元。"
+      },
+      {
+        "id": "e8f4cbbf-2253-4e13-9bc6-13f70c9f2758",
+        "name": "圆明园遗址公园",
+        "category": "attraction",
+        "intro": "清代大型皇家园林遗址，西洋楼残垣断壁是生动的历史教材，带孩子了解近代史，珍惜当下。",
+        "reservation": "none",
+        "sourceLinks": [
+          {
+            "title": "圆明园遗址公园 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/0c8257320e8c8a771ef6aef1cb358483"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/0c8257320e8c8a771ef6aef1cb358483",
+        "reservationNote": "可现场购票或在「圆明园遗址公园」公众号预约购票。"
+      },
+      {
+        "id": "483f17de-1ef5-4a0b-a606-c94c8f42c280",
+        "name": "北海公园",
+        "category": "attraction",
+        "intro": "中国现存最古老的皇家园林之一，白塔矗立琼华岛，可划船赏景，孩子一定会喜欢《让我们荡起双桨》的实景。",
+        "reservation": "none",
+        "sourceLinks": [
+          {
+            "title": "北海公园 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/68a92863a790f69d2221f7c53906c8c2"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/68a92863a790f69d2221f7c53906c8c2",
+        "reservationNote": "可现场购票或在「畅游公园」公众号预约。"
+      },
+      {
+        "id": "9cec9037-1408-4202-af29-deb2917ec94e",
+        "name": "中国国家博物馆",
+        "category": "attraction",
+        "intro": "中华文物收藏最丰富的博物馆，古代中国展厅从远古到明清，是给孩子上一堂生动历史课的绝佳场所。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "中国国家博物馆（官方渠道）",
+            "url": "https://www.chnmuseum.cn/"
+          }
+        ],
+        "reservationNote": "免费不免票，需官网或「国家博物馆」小程序提前实名预约，节假日名额紧张"
+      },
+      {
+        "id": "d96d8279-3b55-4b67-b2b8-0fb0be9fec4a",
+        "name": "南锣鼓巷",
+        "category": "attraction",
+        "intro": "北京最古老的胡同街区之一，两遍遍布特色小店、小吃和创意工坊，可带孩子感受老北京胡同文化与现代创意碰撞。",
+        "reservation": "none",
+        "sourceLinks": [
+          {
+            "title": "南锣鼓巷 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/6aa94c24640267a56c22af0b9629030a"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/6aa94c24640267a56c22af0b9629030a",
+        "reservationNote": "免费开放街区，无需预约，全天可逛。"
+      },
+      {
+        "id": "01fe373a-029c-4a3c-b64b-b0527884d5b3",
+        "name": "四季民福烤鸭店(东四十条店)",
+        "category": "food",
+        "intro": "北京烤鸭口碑名店，皮脆肉嫩、现烤现片，人均¥146性价比高，带孩子体验正宗京味烤鸭首选。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "四季民福烤鸭店 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/fc552a09bb43218b69803bdb6fca840c"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/fc552a09bb43218b69803bdb6fca840c"
+      },
+      {
+        "id": "6d947137-cd1d-4c21-9057-837f9cadaa3c",
+        "name": "南门涮肉(马连道总店)",
+        "category": "food",
+        "intro": "老北京铜锅涮肉代表，手切鲜羊肉嫩而不膻，麻酱小料地道，冬天带孩子围炉涮肉暖身又美味。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "南门涮肉 - 高德地图",
+            "url": "https://aos-comment.amap.com/B0L0THATDV/comment/20260318-6f510c4b0ae89aca03b74a9b-1CyPw7yGj9O796EE5Etyls.jpg"
+          }
+        ],
+        "coverUrl": "https://aos-comment.amap.com/B0L0THATDV/comment/20260318-6f510c4b0ae89aca03b74a9b-1CyPw7yGj9O796EE5Etyls.jpg"
+      },
+      {
+        "id": "5a04f18c-5b01-4c21-ab14-8dca3b094d5a",
+        "name": "清真·鸦儿李记·涮肉(牛街店)",
+        "category": "food",
+        "intro": "牛街老牌清真涮肉，肉质上乘、人均仅¥78，附近还能买到各种清真小吃，适合带家人体验牛街美食文化。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "鸦儿李记涮肉 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/91d0757fcf95b69534fe9abc1c3c8c06"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/91d0757fcf95b69534fe9abc1c3c8c06"
+      },
+      {
+        "id": "db365e8a-9963-493c-9173-f86517ad863d",
+        "name": "便宜坊烤鸭店(朝阳公园店)",
+        "category": "food",
+        "intro": "600年历史的焖炉烤鸭老字号，皮酥肉嫩不油腻，与挂炉烤鸭风味不同，带孩子品尝两种烤鸭区别。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "便宜坊烤鸭店 - 高德地图",
+            "url": "http://store.is.autonavi.com/query_pic?id=st8260593b-c2a1-44b8-b8f9-bc59f4de7ee9&user=search&operate=original"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/query_pic?id=st8260593b-c2a1-44b8-b8f9-bc59f4de7ee9&user=search&operate=original"
+      },
+      {
+        "id": "cf43d3a5-f720-4758-ac34-0fe71b2a5fe1",
+        "name": "紫光园·烤鸭·北京菜(北京总店)",
+        "category": "food",
+        "intro": "牛街人气北京菜馆，烤鸭、炒疙瘩、牛肉饼等经典菜品齐全，人均仅¥60，超高性价比的亲子用餐选择。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "紫光园·北京总店 - 高德地图",
+            "url": "http://store.is.autonavi.com/query_pic?id=stc56029d4-8f36-4428-b61d-aded6ac2fe6d&user=search&operate=original"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/query_pic?id=stc56029d4-8f36-4428-b61d-aded6ac2fe6d&user=search&operate=original"
+      },
+      {
+        "id": "373cef01-90b2-4c40-84e0-e7802a478c6c",
+        "name": "老北京炸酱面·烤鸭(前门店)",
+        "category": "food",
+        "intro": "前门大街上的老北京风味馆，炸酱面筋道、菜码丰富，烤鸭也地道，人均¥63，位置便利适合游客。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "老北京炸酱面·烤鸭(前门店) - 高德地图",
+            "url": "https://store.is.autonavi.com/showpic/eb87c637fb9745fbe668bcdf06db7e17"
+          }
+        ],
+        "coverUrl": "https://store.is.autonavi.com/showpic/eb87c637fb9745fbe668bcdf06db7e17"
+      },
+      {
+        "id": "2fd167ab-8a92-4458-8ef9-985124b8791a",
+        "name": "南来顺饭庄",
+        "category": "food",
+        "intro": "老字号清真饭庄，以北京小吃和涮肉闻名，豌豆黄、艾窝窝等小吃种类丰富，带孩子一站式尝遍京味点心。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "南来顺饭庄 - 高德地图",
+            "url": "http://store.is.autonavi.com/showpic/263f5cd7eaeaedc1014b446293a0b869"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/263f5cd7eaeaedc1014b446293a0b869"
+      },
+      {
+        "id": "d5d567b5-38c7-48ca-ad28-d8dd6dda4d55",
+        "name": "桔子北京天安门广场王府井酒店",
+        "category": "hotel",
+        "intro": "华住旗下中端连锁，位于东交民巷，步行可达天安门、故宫，地铁便利，家庭房适合3人入住，性价比高。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "桔子北京天安门广场王府井酒店 - 高德地图",
+            "url": "https://store.is.autonavi.com/showpic/0b31b49869aae11fc9ddae0f4edd7a4b"
+          }
+        ],
+        "coverUrl": "https://store.is.autonavi.com/showpic/0b31b49869aae11fc9ddae0f4edd7a4b"
+      },
+      {
+        "id": "cbf7a765-a7df-4ce2-9dca-9e94cc791dc2",
+        "name": "和颐至尚酒店(北京天安门王府井地铁站店)",
+        "category": "hotel",
+        "intro": "首旅如家中高端品牌，紧邻王府井步行街和地铁站，家庭房配置齐全，周边餐饮购物极便利，性价比之选。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "和颐至尚酒店 - 高德地图",
+            "url": "https://store.is.autonavi.com/showpic/0f447047807161b7696461b61475d83b"
+          }
+        ],
+        "coverUrl": "https://store.is.autonavi.com/showpic/0f447047807161b7696461b61475d83b"
+      },
+      {
+        "id": "81c08213-827f-42dc-85e0-265717c7c877",
+        "name": "北京新侨饭店",
+        "category": "hotel",
+        "intro": "崇文门老牌三星酒店，位置极佳步行可达天坛公园，地铁2/5号线交汇，家庭房价格亲民，适合预算有限的亲子家庭。",
+        "reservation": "unknown",
+        "sourceLinks": [
+          {
+            "title": "北京新侨饭店 - 高德地图",
+            "url": "https://store.is.autonavi.com/showpic/b8366911246718471804a1b466ab8074"
+          }
+        ],
+        "coverUrl": "https://store.is.autonavi.com/showpic/b8366911246718471804a1b466ab8074"
+      }
+    ],
+    "meta": {
+      "usedXhs": false,
+      "reviewNotes": [
+        "第1天景山→王府井→四季民福路线略有回折（约2.7km），但时间已调整可行；第2天节奏偏满，可适当压缩天坛游览时间；第4天时间窗几乎排满，建议颐和园与圆明园之间预留更多通勤弹性",
+        "审校遗留：第3天八达岭长城→南来顺饭庄→鸟巢水立方夜景的路线通勤严重不足（八达岭→南来顺需267分钟但仅间隔180分钟；南来顺→鸟巢需68分钟但仅间隔30分钟），且当日总时长19.4小时远超14小时上限，请重新设计第3天行程，建议八达岭结束后在回程沿途（如清河/奥林匹克区域）安排晚餐，再前往鸟巢水立方，避免南北往返",
+        "可行性遗留：第3天「八达岭长城」→「南来顺饭庄」通勤约 267 分钟，但两活动仅间隔 180 分钟，排不下",
+        "可行性遗留：第3天「南来顺饭庄」→「鸟巢·水立方夜景」通勤约 68 分钟，但两活动仅间隔 30 分钟，排不下",
+        "可行性遗留：第3天当日总时长约 19.4 小时（活动 8.5h + 通勤 10.9h），超过 14 小时上限",
+        "建议优化：第1天当日时间窗缓冲仅约 -1%，低于 10%，几乎排满无弹性"
+      ],
+      "dataSources": [
+        "amap"
+      ]
+    },
+    "createdAt": 1784249512261,
+    "updatedAt": 1784249512261
+  }
+}

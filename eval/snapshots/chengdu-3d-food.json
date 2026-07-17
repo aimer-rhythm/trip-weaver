@@ -1,0 +1,588 @@
+{
+  "caseId": "chengdu-3d-food",
+  "generatedAt": 1784249803904,
+  "model": "deepseek-v4-flash",
+  "form": {
+    "startDate": "",
+    "totalBudget": 0,
+    "extraNotes": "",
+    "destination": "成都",
+    "days": 3,
+    "budgetLevel": "经济",
+    "preferences": [
+      "美食",
+      "小众"
+    ],
+    "partySize": 2,
+    "transportMode": "transit",
+    "lodging": "春熙路"
+  },
+  "trip": {
+    "id": "df5133c5-ee90-4aed-aa90-9984f44b8c2b",
+    "title": "成都三日·巴适漫游｜美食与小众秘境",
+    "destination": "成都",
+    "startDate": "",
+    "budgetLevel": "经济",
+    "totalBudget": 0,
+    "preferences": [
+      "美食",
+      "小众"
+    ],
+    "partySize": 2,
+    "extraNotes": "",
+    "transportMode": "transit",
+    "lodging": {
+      "name": "春熙路",
+      "lat": 30.655544,
+      "lng": 104.077774,
+      "coordSystem": "gcj02"
+    },
+    "days": [
+      {
+        "id": "d89a9b3d-b43e-4a76-b8f0-0e09005f0305",
+        "dayIndex": 1,
+        "title": "老城烟火·从盖碗茶到工业风",
+        "activities": [
+          {
+            "id": "c4b409c1-bb68-4dce-abda-d5129b58e22a",
+            "name": "沈堂甜水面",
+            "startTime": "08:00",
+            "endTime": "08:25",
+            "description": "成都老字号甜水面，麻辣回甘，早市来一碗开启一天",
+            "lat": 30.631992,
+            "lng": 104.054472,
+            "coordSource": "geocoded",
+            "cost": 16,
+            "category": "美食",
+            "sourceNotes": []
+          },
+          {
+            "id": "f8753eea-283e-4309-8965-53666e9ef076",
+            "name": "人民公园",
+            "startTime": "09:00",
+            "endTime": "10:30",
+            "description": "成都慢生活的灵魂所在，鹤鸣茶社点一杯盖碗茶、看当地人打麻将掏耳朵，最能感受\"巴适\"真谛。免费开放，24小时均可进入。",
+            "lat": 30.65699,
+            "lng": 104.057641,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "文化",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "3fcfd17e-9a09-4ef9-a24f-c2d89af4b74f",
+            "name": "宽窄巷子景区",
+            "startTime": "10:45",
+            "endTime": "12:00",
+            "description": "清代古街由宽巷子、窄巷子、井巷子组成，青砖黛瓦间藏着文创小店和文艺茶馆。注意：景区内小吃价格偏高，建议只逛不吃。",
+            "lat": 30.663869,
+            "lng": 104.053307,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "文化",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "7c65094e-c11e-45a5-b5fe-c498269d839f",
+            "name": "东郊记忆",
+            "startTime": "14:00",
+            "endTime": "16:30",
+            "description": "前苏联援建老厂房改建的创意园区，工业遗迹与潮流涂鸦交织，随处可拍大片。地铁直达、免费开放，是成都最出片的文艺地标。",
+            "lat": 30.668697,
+            "lng": 104.122906,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "文化",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "41123af3-410f-4e8d-82c2-e31c3741f01c",
+            "name": "陶德砂锅(太古里店)",
+            "startTime": "18:00",
+            "endTime": "19:30",
+            "description": "本地人排队也要吃的砂锅菜馆，蒜蓉虾仁、青豆肥肠是招牌，人均60+吃得丰盛暖和。春熙路步行可达，经济实惠的地道川味。",
+            "lat": 30.652052,
+            "lng": 104.079724,
+            "coordSource": "geocoded",
+            "cost": 60,
+            "category": "美食",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "c4b409c1-bb68-4dce-abda-d5129b58e22a",
+            "mode": "transit",
+            "durationMin": 25,
+            "distanceM": 5511,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "c4b409c1-bb68-4dce-abda-d5129b58e22a",
+            "toActivityId": "f8753eea-283e-4309-8965-53666e9ef076",
+            "mode": "transit",
+            "durationMin": 33,
+            "distanceM": 7901,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "f8753eea-283e-4309-8965-53666e9ef076",
+            "toActivityId": "3fcfd17e-9a09-4ef9-a24f-c2d89af4b74f",
+            "mode": "walk",
+            "durationMin": 14,
+            "distanceM": 1048,
+            "source": "amap",
+            "polyline": "104.057613,30.656988;104.057613,30.657005;104.057756,30.657344;104.057756,30.657348;104.057908,30.657422;104.057908,30.657422;104.058012,30.657539;104.058038,30.657591;104.058038,30.657591;104.058038,30.65776;104.058034,30.657791;104.057986,30.657895;104.057925,30.657938;104.057921,30.657934;104.058003,30.658073;104.058003,30.658073;104.058073,30.65816;104.058073,30.65816;104.058038,30.65819;104.057886,30.658281;104.057882,30.658281;104.057756,30.658338;104.057687,30.658403;104.057652,30.658459;104.057626,30.658516;104.057626,30.658516;104.057613,30.658576;104.057613,30.658641;104.057639,30.658802;104.057639,30.658802;104.057483,30.65895;104.057483,30.65895;104.0573,30.659123;104.0573,30.659123;104.057131,30.65928;104.057131,30.65928;104.056562,30.659818;104.056562,30.659818;104.056415,30.659957;104.056233,30.660195;104.056228,30.660195;104.056254,30.660326;104.056254,30.660326;104.056202,30.660356;104.056202,30.660356;104.056076,30.660543;104.055877,30.660638;104.055877,30.660638;104.055564,30.66079;104.055486,30.660851;104.055152,30.660933;104.055074,30.660929;104.054835,30.660955;104.054831,30.660955;104.054844,30.661189;104.054844,30.661189;104.054848,30.661337;104.054848,30.661337;104.054852,30.661497;104.054852,30.661497;104.054857,30.66197;104.054857,30.66197;104.055069,30.662648;104.055069,30.662648;104.05474,30.662808;104.05474,30.662808;104.054674,30.662839;104.054531,30.662908;104.054531,30.662908;104.054358,30.662995;104.054358,30.662995;104.053737,30.663303;104.053737,30.663303;104.053446,30.663433;104.053446,30.663433;104.053108,30.663594;104.053103,30.663594;104.053138,30.663646;104.053138,30.663646;104.053251,30.663815;104.053294,30.663819"
+          },
+          {
+            "fromActivityId": "3fcfd17e-9a09-4ef9-a24f-c2d89af4b74f",
+            "toActivityId": "7c65094e-c11e-45a5-b5fe-c498269d839f",
+            "mode": "transit",
+            "durationMin": 46,
+            "distanceM": 11424,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "7c65094e-c11e-45a5-b5fe-c498269d839f",
+            "toActivityId": "41123af3-410f-4e8d-82c2-e31c3741f01c",
+            "mode": "transit",
+            "durationMin": 43,
+            "distanceM": 10354,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "41123af3-410f-4e8d-82c2-e31c3741f01c",
+            "toActivityId": "lodging",
+            "mode": "walk",
+            "durationMin": 8,
+            "distanceM": 592,
+            "source": "amap",
+            "polyline": "104.079605,30.651866;104.079106,30.652101;104.079106,30.652101;104.07901,30.652144;104.07901,30.652144;104.078511,30.652374;104.078511,30.652374;104.078242,30.652509;104.078242,30.652509;104.077561,30.652826;104.077561,30.652826;104.076845,30.653173;104.07684,30.653173;104.07727,30.653828;104.07727,30.653828;104.077561,30.654258;104.077561,30.654258;104.077669,30.654414;104.077669,30.654414;104.07786,30.654692;104.07786,30.654692;104.078103,30.655056;104.078103,30.655056;104.077613,30.655317"
+          }
+        ]
+      },
+      {
+        "id": "dac30b90-7617-429b-b896-8705e5e68ba3",
+        "dayIndex": 2,
+        "title": "萌宠邂逅·熊猫与串串之夜",
+        "activities": [
+          {
+            "id": "4868654b-d8de-4ac9-b09f-d6720a00f968",
+            "name": "成都大熊猫繁育研究基地",
+            "startTime": "07:00",
+            "endTime": "11:00",
+            "description": "全球最大熊猫人工繁育机构，近距离看各年龄段熊猫卖萌。月亮产房和太阳产房必看，上午熊猫最活跃。务必提前预约！建议7:30前到避免排队。",
+            "lat": 30.740573,
+            "lng": 104.138176,
+            "coordSource": "geocoded",
+            "cost": 55,
+            "category": "自然",
+            "sourceNotes": [
+              {
+                "title": "成都大熊猫繁育研究基地（官方渠道）",
+                "url": "https://www.panda.org.cn/"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "6ba86048-6651-41ba-8c0d-ac113ce0197f",
+            "name": "老瓦房串串",
+            "startTime": "12:30",
+            "endTime": "14:00",
+            "description": "本地人爱去的串串店，牛油锅底浓郁，性价比高",
+            "lat": 30.671767,
+            "lng": 104.064166,
+            "coordSource": "geocoded",
+            "cost": 50,
+            "category": "美食",
+            "sourceNotes": []
+          },
+          {
+            "id": "96154cca-adba-4bc4-9a61-71790358b6ed",
+            "name": "文殊院",
+            "startTime": "14:30",
+            "endTime": "16:00",
+            "description": "川西古刹，红墙黄瓦静谧庄严，可以逛园林拜文殊",
+            "lat": 30.675418,
+            "lng": 104.072527,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "文化",
+            "sourceNotes": []
+          },
+          {
+            "id": "32ec8ad7-2cee-4675-9ea3-5cacea80cdd2",
+            "name": "龙抄手(总店)",
+            "startTime": "18:00",
+            "endTime": "19:00",
+            "description": "成都老字号小吃旗舰店，红油抄手皮薄馅嫩，搭配担担面、钟水饺等经典小吃。人均30出头尝遍成都风味，位置就在春熙路，回酒店顺路。",
+            "lat": 30.654531,
+            "lng": 104.077614,
+            "coordSource": "geocoded",
+            "cost": 30,
+            "category": "美食",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "4868654b-d8de-4ac9-b09f-d6720a00f968",
+            "mode": "transit",
+            "durationMin": 77,
+            "distanceM": 14903,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "4868654b-d8de-4ac9-b09f-d6720a00f968",
+            "toActivityId": "6ba86048-6651-41ba-8c0d-ac113ce0197f",
+            "mode": "transit",
+            "durationMin": 79,
+            "distanceM": 15291,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "6ba86048-6651-41ba-8c0d-ac113ce0197f",
+            "toActivityId": "96154cca-adba-4bc4-9a61-71790358b6ed",
+            "mode": "walk",
+            "durationMin": 16,
+            "distanceM": 1195,
+            "source": "amap",
+            "polyline": "104.06421,30.671671;104.064284,30.671641;104.064284,30.671641;104.064323,30.671693;104.064323,30.671693;104.06444,30.671858;104.06444,30.671858;104.064692,30.672201;104.064692,30.672201;104.064844,30.672431;104.064844,30.672431;104.065265,30.673025;104.065265,30.673025;104.06533,30.673129;104.06533,30.673129;104.065668,30.673607;104.065668,30.673607;104.065803,30.673546;104.065803,30.673546;104.066306,30.673312;104.066306,30.673312;104.06727,30.672847;104.06727,30.672847;104.067721,30.672635;104.067721,30.672635;104.067982,30.672509;104.067982,30.672509;104.068056,30.672474;104.068056,30.67247;104.068129,30.672561;104.068129,30.672561;104.068299,30.672778;104.068299,30.672778;104.068785,30.673451;104.068785,30.673451;104.069058,30.673824;104.069141,30.673932;104.069141,30.673932;104.069223,30.674049;104.069223,30.674049;104.069366,30.67411;104.069492,30.674288;104.069492,30.674288;104.069488,30.674392;104.069484,30.674392;104.0698,30.674813;104.0698,30.674813;104.069913,30.674852;104.070395,30.675482;104.070395,30.675482;104.070694,30.675326;104.070694,30.675326;104.07135,30.675;104.07135,30.675;104.071875,30.674692;104.071875,30.674688;104.071962,30.674787;104.071962,30.674787;104.07201,30.674839;104.07201,30.674839;104.071975,30.674874;104.07197,30.67487;104.072179,30.675082;104.072179,30.675082;104.072352,30.675304;104.072352,30.675304;104.072478,30.675451"
+          },
+          {
+            "fromActivityId": "96154cca-adba-4bc4-9a61-71790358b6ed",
+            "toActivityId": "32ec8ad7-2cee-4675-9ea3-5cacea80cdd2",
+            "mode": "transit",
+            "durationMin": 29,
+            "distanceM": 4420,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "32ec8ad7-2cee-4675-9ea3-5cacea80cdd2",
+            "toActivityId": "lodging",
+            "mode": "walk",
+            "durationMin": 2,
+            "distanceM": 147,
+            "source": "amap",
+            "polyline": "104.077565,30.654462;104.077669,30.654418;104.077669,30.654414;104.07786,30.654692;104.07786,30.654692;104.078103,30.655056;104.078103,30.655056;104.077613,30.655317"
+          }
+        ]
+      },
+      {
+        "id": "34dfd8e6-dde8-4f25-a846-815e79374763",
+        "dayIndex": 3,
+        "title": "古镇寻幽·小众秘境一日",
+        "activities": [
+          {
+            "id": "cb4914f5-346b-478b-9815-49c228021744",
+            "name": "罨画池",
+            "startTime": "09:00",
+            "endTime": "12:00",
+            "description": "崇州古园林，87版《红楼梦》取景地，人少景美，小众出片",
+            "lat": 30.627289,
+            "lng": 103.67445,
+            "coordSource": "geocoded",
+            "cost": 30,
+            "category": "文化",
+            "sourceNotes": []
+          },
+          {
+            "id": "67f45827-7002-43cc-98ac-c6f391766740",
+            "name": "春熙路·太古里商圈漫步",
+            "startTime": "16:00",
+            "endTime": "17:30",
+            "description": "回到春熙路，在IFS、太古里商圈自由散步，看爬楼熊猫打卡点，感受成都最繁华的商业氛围，或回酒店休整。",
+            "lat": 30.656609,
+            "lng": 104.078021,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "购物",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "04f4a5fe-dff5-41c1-a712-22c23deb60a1",
+            "name": "骆老妈蹄花总店·正宗川菜(香槟广场店)",
+            "startTime": "18:00",
+            "endTime": "19:00",
+            "description": "成都人从小吃到大的蹄花老店，雪豆炖蹄花汤白肉烂，蘸秘制红油碟堪称一绝。人均不到40元，就在春熙路附近，性价比超高。",
+            "lat": 30.652137,
+            "lng": 104.07935,
+            "coordSource": "geocoded",
+            "cost": 38,
+            "category": "美食",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "cb4914f5-346b-478b-9815-49c228021744",
+            "mode": "transit",
+            "durationMin": 126,
+            "distanceM": 48733,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "cb4914f5-346b-478b-9815-49c228021744",
+            "toActivityId": "67f45827-7002-43cc-98ac-c6f391766740",
+            "mode": "transit",
+            "durationMin": 126,
+            "distanceM": 47639,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "67f45827-7002-43cc-98ac-c6f391766740",
+            "toActivityId": "04f4a5fe-dff5-41c1-a712-22c23deb60a1",
+            "mode": "walk",
+            "durationMin": 10,
+            "distanceM": 760,
+            "source": "amap",
+            "polyline": "104.077799,30.656719;104.077582,30.656406;104.077582,30.656406;104.07704,30.655625;104.077036,30.655621;104.077214,30.655534;104.077214,30.655534;104.077326,30.655469;104.077326,30.655469;104.077422,30.655421;104.077422,30.655421;104.078103,30.655061;104.078103,30.655056;104.077865,30.654696;104.077865,30.654696;104.077674,30.654418;104.077674,30.654418;104.077565,30.654262;104.077565,30.654262;104.077274,30.653832;104.077274,30.653832;104.076845,30.653177;104.07684,30.653173;104.077556,30.65283;104.077556,30.65283;104.078238,30.652513;104.078238,30.652513;104.078507,30.652378;104.078507,30.652378;104.079006,30.652148;104.079006,30.652148;104.079102,30.652105;104.079102,30.652105;104.079275,30.652023"
+          },
+          {
+            "fromActivityId": "04f4a5fe-dff5-41c1-a712-22c23deb60a1",
+            "toActivityId": "lodging",
+            "mode": "walk",
+            "durationMin": 7,
+            "distanceM": 556,
+            "source": "amap",
+            "polyline": "104.079275,30.652018;104.079106,30.652101;104.079106,30.652101;104.07901,30.652144;104.07901,30.652144;104.078511,30.652374;104.078511,30.652374;104.078242,30.652509;104.078242,30.652509;104.077561,30.652826;104.077561,30.652826;104.076845,30.653173;104.07684,30.653173;104.07727,30.653828;104.07727,30.653828;104.077561,30.654258;104.077561,30.654258;104.077669,30.654414;104.077669,30.654414;104.07786,30.654692;104.07786,30.654692;104.078103,30.655056;104.078103,30.655056;104.077613,30.655317"
+          }
+        ]
+      }
+    ],
+    "overview": [
+      {
+        "id": "9b1221da-53eb-42ea-a2c5-a7215e46e2d2",
+        "name": "东郊记忆",
+        "category": "attraction",
+        "intro": "前苏联援建的老厂房改建的创意园区，随处可见工业遗迹与潮流涂鸦，是成都最出片的文艺地标，地铁直达，免费开放。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B001C8NUD2/comment/content_media_external_file_1000018078_ss__1766945941519_25102748.jpg"
+      },
+      {
+        "id": "27a833a2-5ba8-4eff-8b21-fc545bd3c3db",
+        "name": "人民公园",
+        "category": "attraction",
+        "intro": "成都慢生活的灵魂所在，鹤鸣茶社点一杯盖碗茶、看当地人打麻将掏耳朵，最能感受\"巴适\"的真谛，24小时开放且免费。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B001C7X8QA/comment/content_media_external_file_100003153_1767367568289_40288788.jpg"
+      },
+      {
+        "id": "bacc0ff3-6b4b-440a-9c31-87e1b5a9cfbb",
+        "name": "宽窄巷子景区",
+        "category": "attraction",
+        "intro": "由宽巷子、窄巷子、井巷子组成的清代古街，青砖黛瓦间藏着文创小店、地道小吃和文艺茶馆，是成都\"最烟火\"的城市名片。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/a053c92a40b8a3591e3c24fd3d9bc40a"
+      },
+      {
+        "id": "76e28fae-23d0-4778-a421-f4efcad54e7d",
+        "name": "成都大熊猫繁育研究基地",
+        "category": "attraction",
+        "intro": "全球最大的大熊猫人工繁育机构，近距离观看各年龄段熊猫卖萌打滚，月亮产房和太阳产房是必看区域，建议早上去看最活泼的熊猫崽。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "成都大熊猫繁育研究基地（官方渠道）",
+            "url": "https://www.panda.org.cn/"
+          }
+        ],
+        "coverUrl": "https://aos-comment.amap.com/B001C7WE5S/comment/content_media_external_file_100006799_1767191789906_56269281.jpg",
+        "reservationNote": "需官方小程序提前实名购票（预约制），旺季早场票紧俏"
+      },
+      {
+        "id": "7c85f493-0456-4e70-a700-b48c26e450d0",
+        "name": "罨画池",
+        "category": "attraction",
+        "intro": "崇州城内的唐代古典园林，也是87版《红楼梦》取景地之一，亭台楼阁、曲径通幽，人少景美，适合喜欢古风与安静的你。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/279ab707e47d6a5cc09a5c6e508ac81a"
+      },
+      {
+        "id": "86ed3b9c-b44e-47f2-9077-ec8ebaadc734",
+        "name": "黄龙溪古镇",
+        "category": "attraction",
+        "intro": "成都近郊最有名的水乡古镇，溪水穿镇而过，古榕树、吊脚楼、石桥相映成趣，夏日踩水嬉戏、平日吃一根面，悠闲半日。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/c7f52a244944ad3c980d93daf15663de"
+      },
+      {
+        "id": "b78480d3-d6b0-4017-9954-d61fac445332",
+        "name": "安仁古镇",
+        "category": "attraction",
+        "intro": "民国风情浓郁的博物馆小镇，有建川博物馆聚落和刘氏庄园，坐上复古电车穿越回百年之前，适合历史迷和建筑爱好者。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/85b4ab6cb35e4f2e225abea68265a62d"
+      },
+      {
+        "id": "e679a412-f0ce-425b-b0f9-89a255d5bdfd",
+        "name": "西来古镇",
+        "category": "attraction",
+        "intro": "几乎未被商业化的千年古镇，临溪而建，古街老巷中只有当地人的闲适生活，文峰塔与千年古榕是标志，适合想躲开人潮的你。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/27abf089764bf46c7ed4ccc0c9238624"
+      },
+      {
+        "id": "57af6df6-d92c-453e-84ea-db481af8674a",
+        "name": "鹿溪河生态区",
+        "category": "attraction",
+        "intro": "天府新区新晋的宝藏湿地公园，水系纵横、草坡起伏，露营野餐或骑行都很舒服，人少清静，24小时开放无门票。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/f274c1d02d704733058abb3881203ccd"
+      },
+      {
+        "id": "69db1b24-b5db-4a26-8df1-45bbe0a7352f",
+        "name": "街子古镇",
+        "category": "attraction",
+        "intro": "青城山脚下的山水古镇，味江穿镇而过，依山傍水，有千年古刹光严禅院，登山拜佛后下山吃碗特色\"街子汤麻饼\"。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/f6832aa4c85fe5286b81092d411f9e3a"
+      },
+      {
+        "id": "b5c1f5eb-6dfd-4646-8a59-c5251b43a3ec",
+        "name": "陶德砂锅(太古里店)",
+        "category": "food",
+        "intro": "成都本地人排队也要吃的砂锅菜馆，蒜蓉虾仁、青豆肥肠是招牌，人均仅60+就能吃得丰盛又暖和，春熙路步行可达。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B0JGJDXEYC/comment/22F12786_03E4_43C1_915E_E88E4014F2A7_L0_001_1500_200_1767025188473_82029493.jpg"
+      },
+      {
+        "id": "4681e6ed-85d7-4926-9d68-dd2b59cc3bf3",
+        "name": "饕林餐厅(春熙路店)",
+        "category": "food",
+        "intro": "本地人认证的经典川菜馆，非网红但口碑扎实，回锅肉、水煮鱼等传统菜做得地道，价格亲民，适合想正经吃一顿川菜的游客。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/8a7fa53f0e16ffa926804698dee14ccb"
+      },
+      {
+        "id": "92b87967-c152-469e-a82d-91482b0cbec5",
+        "name": "老瓦房串串",
+        "category": "food",
+        "intro": "藏在文殊院附近的市井串串店，牛肉、排骨等菜品新鲜实惠，锅底香辣浓郁，人均不到50就能实现串串自由，本地回头客超多。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B0FFG4KF4P/comment/%5B2025-12-31-15-07-15%5D2BD85E75-8439-448D-8FED-FB596B06381_1767165033045_43916883.jpg"
+      },
+      {
+        "id": "252fdc68-d34d-44d7-98b6-3eebbc196cc8",
+        "name": "龙户人家串串香火锅(春熙路店)",
+        "category": "food",
+        "intro": "春熙路商圈评分最高的串串之一，牛油锅底浓郁够味，自选菜品丰富，营业到凌晨2点，逛完街来一顿夜宵巴适得很。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/48adb931ee5c958f0000003123060871?type=pic"
+      },
+      {
+        "id": "d1cd3bd2-430b-46ca-afd6-4ab50d1d7133",
+        "name": "叶婆婆钵钵鸡(人民南路店)",
+        "category": "food",
+        "intro": "乐山风味的冷串串，红油和藤椒两种汤底各有千秋，菜品自取按签计价，人均40左右就能吃撑，清爽开胃适合夏天。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/4f4ada11898cb5e296a2deb3f54ae7d4"
+      },
+      {
+        "id": "3b158859-66cb-4c99-8907-0ebdcae28a61",
+        "name": "骆老妈蹄花总店·正宗川菜(香槟广场店)",
+        "category": "food",
+        "intro": "成都人从小吃到大的蹄花老店，雪豆炖蹄花汤白肉烂，蘸上秘制红油碟堪称一绝，人均不到40元，春熙路附近性价比之王。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B0K69DJVHG/comment/content_media_external_file_1000411302_ss__1762023003640_14877683.jpg"
+      },
+      {
+        "id": "bd3086d9-2802-48f0-bf2d-713e9096a51c",
+        "name": "龙抄手(总店)",
+        "category": "food",
+        "intro": "成都老字号小吃旗舰，一碗红油抄手皮薄馅嫩，搭配担担面、钟水饺等经典小吃，人均30出头就能尝遍成都风味，位置就在春熙路。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/a7381ed94677e707581afbf4fef4f663"
+      },
+      {
+        "id": "b6b44cf2-0851-45b5-b0b2-4b14373e6c19",
+        "name": "沈堂甜水面",
+        "category": "food",
+        "intro": "成都最任性的甜水面，只卖上午到下午3点，手工面条粗韧有嚼劲，复合酱汁甜辣交织，人均16元堪称全城最低价，建议当早餐/早午餐。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B0FFGHLWAO/comment/31d20814de66c94b57bb1bb4e5f075c5_2048_2048_80.jpg"
+      },
+      {
+        "id": "6bb83080-e609-4ab8-9eac-c761e01b2d34",
+        "name": "SFEEL设计师酒店(成都太古里春熙路步行街店)",
+        "category": "hotel",
+        "intro": "春熙路核心地段的设计师酒店，房间以极简工业风为主，干净有格调，下楼就是步行街和地铁站，性价比在商圈里非常能打。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/cef704581985e47ca90354ee469d55ec"
+      },
+      {
+        "id": "794e10c6-230d-42cc-a12d-89b26071d6bc",
+        "name": "朵兰达LAB酒店(成都春熙路步行街店)",
+        "category": "hotel",
+        "intro": "2024年新开的设计型酒店，智能客控+高品质床品，公共区域有网红打卡布置，春熙路正街上，价格在商圈中属于友好档。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/440b8287d80142ad1bd4c4519e4d6822"
+      },
+      {
+        "id": "3b7e041b-83ea-4529-b30a-5317c820526f",
+        "name": "鑫春酒店(成都春熙路太古里店)",
+        "category": "hotel",
+        "intro": "春熙路老牌口碑酒店，位置绝佳（龙抄手总店旁），房间简约实用，卫生和服务稳定，适合追求性价比和便利的旅客。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/80e0ccb324ddcd50892dc2aae07865dc"
+      },
+      {
+        "id": "21ca1e42-1590-48ae-8d1a-1a6c669a5eb6",
+        "name": "初恋青年旅舍(春熙路天府广场店)",
+        "category": "hotel",
+        "intro": "春熙路附近的优质青旅，床位干净、公共空间宽敞，适合预算有限的年轻旅行者，步行到IFS和太古里只要几分钟。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/34ad6392ec6946fbf2c1799290cfb28d"
+      }
+    ],
+    "meta": {
+      "usedXhs": false,
+      "reviewNotes": [
+        "第1天宽窄巷子→东郊记忆→太古里方向回折较明显，若体力允许可接受，否则建议将东郊记忆调换到第2天或第3天以顺路",
+        "第3天罨画池（崇州）距市区较远，当日时间窗已排满无弹性，建议预留充足通勤时间，或改为市区内小众点位",
+        "第2天节奏较满，现场可依体力灵活取舍文殊院或龙抄手",
+        "建议优化：第1天「人民公园」→「宽窄巷子景区」→「东郊记忆」方向明显回折（回跳约 6.7 km），顺路性差",
+        "建议优化：第1天「宽窄巷子景区」→「东郊记忆」→「陶德砂锅(太古里店)」方向明显回折（回跳约 4.5 km），顺路性差",
+        "建议优化：第2天当日时间窗缓冲仅约 5%，低于 10%，几乎排满无弹性",
+        "建议优化：第2天「老瓦房串串」→「文殊院」→「龙抄手(总店)」方向明显回折（回跳约 2.4 km），顺路性差"
+      ],
+      "dataSources": [
+        "amap"
+      ]
+    },
+    "createdAt": 1784249803903,
+    "updatedAt": 1784249803903
+  }
+}

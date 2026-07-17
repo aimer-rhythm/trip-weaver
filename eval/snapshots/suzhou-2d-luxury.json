@@ -1,0 +1,526 @@
+{
+  "caseId": "suzhou-2d-luxury",
+  "generatedAt": 1784251073594,
+  "model": "deepseek-v4-flash",
+  "form": {
+    "startDate": "",
+    "totalBudget": 10000,
+    "extraNotes": "",
+    "destination": "苏州",
+    "days": 2,
+    "budgetLevel": "豪华",
+    "preferences": [
+      "文化",
+      "购物"
+    ],
+    "partySize": 2,
+    "transportMode": "transit",
+    "lodging": "金鸡湖"
+  },
+  "trip": {
+    "id": "027bb29e-8d4f-4600-ba42-dcabf94b31ef",
+    "title": "苏州两日·园林雅韵与金鸡湖光",
+    "destination": "苏州",
+    "startDate": "",
+    "budgetLevel": "豪华",
+    "totalBudget": 10000,
+    "preferences": [
+      "文化",
+      "购物"
+    ],
+    "partySize": 2,
+    "extraNotes": "",
+    "transportMode": "transit",
+    "lodging": {
+      "name": "金鸡湖",
+      "lat": 31.310263,
+      "lng": 120.704824,
+      "coordSystem": "gcj02"
+    },
+    "days": [
+      {
+        "id": "bb04f658-b7f8-4983-be5b-1bdaa9e968ea",
+        "dayIndex": 1,
+        "title": "古城园林与市井漫步",
+        "activities": [
+          {
+            "id": "445fc3b0-a0d1-4fd2-9450-60e568e2510f",
+            "name": "拙政园",
+            "startTime": "09:00",
+            "endTime": "11:00",
+            "description": "苏州园林之冠，世界文化遗产。以水景见长，亭台楼阁错落有致。需提前预约，建议尽早预约入园时段。",
+            "lat": 31.324194,
+            "lng": 120.629211,
+            "coordSource": "geocoded",
+            "cost": 80,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "拙政园（官方渠道）",
+                "url": "https://www.szzzy.cn/"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "6ea752a6-5f7d-4ed1-a2b2-d6f6299d37d6",
+            "name": "苏州博物馆",
+            "startTime": "11:15",
+            "endTime": "12:30",
+            "description": "贝聿铭封山之作，建筑本身就是艺术品。馆藏吴地文物精华，光影设计绝妙。免费但需提前7天在官方公众号实名预约，务必抢票。",
+            "lat": 31.322948,
+            "lng": 120.627856,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "文化",
+            "sourceNotes": [
+              {
+                "title": "苏州博物馆（官方渠道）",
+                "url": "https://www.szmuseum.com/"
+              }
+            ],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "e3cd0435-0d9b-4dba-9ec8-1ac60d8f1ef5",
+            "name": "苏州太太精致苏帮菜(苏州总店)",
+            "startTime": "12:45",
+            "endTime": "13:45",
+            "description": "高性价比苏帮菜馆，离平江路仅几步之遥。招牌松鼠桂鱼、东坡肉口味地道，是游览平江路后的便利之选。",
+            "lat": 31.318196,
+            "lng": 120.629246,
+            "coordSource": "geocoded",
+            "cost": 150,
+            "category": "美食",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "82f95bc0-970a-4e9c-8b8b-0a44c42ad8a0",
+            "name": "平江路",
+            "startTime": "14:00",
+            "endTime": "17:00",
+            "description": "苏州古城缩影，小桥流水粉墙黛瓦。沿街密布文创店、茶馆、评弹馆和美食小店，适合漫步购物、感受市井文化。",
+            "lat": 31.313969,
+            "lng": 120.634556,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "购物",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "58131699-db24-4712-b588-8b1ed331ff80",
+            "name": "网师园",
+            "startTime": "18:00",
+            "endTime": "20:00",
+            "description": "苏州小型园林精品，夜花园活动可赏昆曲、评弹、古琴等传统表演，在古典园林中沉浸式体验江南文化。建议提前预约夜场。",
+            "lat": 31.298075,
+            "lng": 120.63377,
+            "coordSource": "geocoded",
+            "cost": 100,
+            "category": "文化",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "445fc3b0-a0d1-4fd2-9450-60e568e2510f",
+            "mode": "transit",
+            "durationMin": 41,
+            "distanceM": 10287,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "445fc3b0-a0d1-4fd2-9450-60e568e2510f",
+            "toActivityId": "6ea752a6-5f7d-4ed1-a2b2-d6f6299d37d6",
+            "mode": "walk",
+            "durationMin": 4,
+            "distanceM": 320,
+            "source": "amap",
+            "polyline": "120.629293,31.324193;120.629297,31.324115;120.629297,31.324115;120.629288,31.324049;120.629188,31.324002;120.629188,31.324002;120.629119,31.324002;120.629019,31.324054;120.629019,31.324054;120.629128,31.323646;120.629128,31.323646;120.62918,31.323433;120.62918,31.323433;120.629223,31.323273;120.629223,31.323273;120.629227,31.323268;120.629275,31.322982;120.629275,31.322982;120.629284,31.322891;120.629284,31.322886;120.629188,31.322856;120.629188,31.322856;120.628845,31.322778;120.628845,31.322778;120.628034,31.322609;120.628034,31.322609;120.627934,31.322587;120.62793,31.322582;120.627891,31.322717"
+          },
+          {
+            "fromActivityId": "6ea752a6-5f7d-4ed1-a2b2-d6f6299d37d6",
+            "toActivityId": "e3cd0435-0d9b-4dba-9ec8-1ac60d8f1ef5",
+            "mode": "walk",
+            "durationMin": 8,
+            "distanceM": 636,
+            "source": "amap",
+            "polyline": "120.627886,31.322717;120.62793,31.322587;120.627925,31.322582;120.627878,31.322491;120.627839,31.322448;120.627752,31.322418;120.627609,31.322361;120.627565,31.322326;120.62753,31.322248;120.627526,31.322244;120.627509,31.322244;120.627326,31.322205;120.627322,31.322201;120.627374,31.322023;120.627569,31.321341;120.627569,31.321341;120.627747,31.320608;120.627747,31.320608;120.627912,31.319874;120.627912,31.319874;120.62809,31.319063;120.62809,31.319063;120.628307,31.318147;120.628307,31.318142;120.628477,31.318112;120.62885,31.318177;120.62885,31.318177;120.629145,31.318238;120.629145,31.318238;120.629184,31.318247;120.629184,31.318247;120.629232,31.318255"
+          },
+          {
+            "fromActivityId": "e3cd0435-0d9b-4dba-9ec8-1ac60d8f1ef5",
+            "toActivityId": "82f95bc0-970a-4e9c-8b8b-0a44c42ad8a0",
+            "mode": "walk",
+            "durationMin": 13,
+            "distanceM": 963,
+            "source": "amap",
+            "polyline": "120.629232,31.318255;120.62967,31.318333;120.62967,31.318333;120.629878,31.318372;120.630456,31.318477;120.630456,31.318477;120.630786,31.318537;120.630786,31.318537;120.631345,31.318646;120.631345,31.318646;120.631615,31.318689;120.631615,31.318689;120.632079,31.318772;120.63217,31.31885;120.63217,31.31885;120.632578,31.318924;120.632578,31.318924;120.632643,31.318537;120.632643,31.318537;120.632726,31.318103;120.632726,31.318103;120.632808,31.317817;120.632808,31.317817;120.632947,31.317248;120.632947,31.317248;120.632964,31.317179;120.633021,31.317083;120.63309,31.316628;120.633151,31.31651;120.633164,31.316458;120.633164,31.316458;120.633194,31.316285;120.633194,31.316285;120.633312,31.315933;120.633312,31.315933;120.633333,31.315833;120.633333,31.315833;120.633377,31.315603;120.633377,31.315603;120.633503,31.315022;120.633503,31.315022;120.633707,31.314284;120.633707,31.31428;120.634418,31.314397;120.634418,31.314397;120.634514,31.31398"
+          },
+          {
+            "fromActivityId": "82f95bc0-970a-4e9c-8b8b-0a44c42ad8a0",
+            "toActivityId": "58131699-db24-4712-b588-8b1ed331ff80",
+            "mode": "transit",
+            "durationMin": 34,
+            "distanceM": 3496,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "58131699-db24-4712-b588-8b1ed331ff80",
+            "toActivityId": "lodging",
+            "mode": "transit",
+            "durationMin": 39,
+            "distanceM": 9639,
+            "source": "heuristic"
+          }
+        ]
+      },
+      {
+        "id": "4c89d779-12c9-40cf-88cc-cb3483495a57",
+        "dayIndex": 2,
+        "title": "经典名胜与现代湖光",
+        "activities": [
+          {
+            "id": "88e796cd-8dae-43d6-b8ee-a4a2dd8a9eb1",
+            "name": "虎丘山风景区",
+            "startTime": "09:00",
+            "endTime": "11:00",
+            "description": "\"吴中第一名胜\"，苏轼曾言\"到苏州不游虎丘，乃憾事也\"。虎丘塔、剑池、千人石等古迹荟萃，登高可俯瞰古城。",
+            "lat": 31.334584,
+            "lng": 120.580016,
+            "coordSource": "geocoded",
+            "cost": 70,
+            "category": "文化",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "1c27db35-a841-463e-bf6f-8ded9387faae",
+            "name": "寒山寺",
+            "startTime": "12:00",
+            "endTime": "13:30",
+            "description": "因《枫桥夜泊》诗篇名扬四海，千年古刹钟声悠远。可体验抄经、撞钟等活动，感受诗意禅境。附近可品尝素面。",
+            "lat": 31.310469,
+            "lng": 120.568391,
+            "coordSource": "geocoded",
+            "cost": 20,
+            "category": "文化",
+            "sourceNotes": []
+          },
+          {
+            "id": "bbad0e1e-2d5d-4f5b-be2f-9432bc0de56c",
+            "name": "七里山塘景区",
+            "startTime": "14:00",
+            "endTime": "16:00",
+            "description": "\"姑苏第一名街\"，河街并行水陆相邻。可乘游船、逛古街、品小吃，沿途文创店众多，感受江南水乡韵味。",
+            "lat": 31.317059,
+            "lng": 120.602105,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "购物",
+            "sourceNotes": []
+          },
+          {
+            "id": "14709e50-7280-4df8-abc6-d05a3e614216",
+            "name": "松鹤楼(观前店)",
+            "startTime": "17:00",
+            "endTime": "18:30",
+            "description": "苏州苏帮菜老字号之首，始创于乾隆年间。招牌松鼠桂鱼外酥里嫩、酸甜适口，品味地道苏州味道的经典之选。",
+            "lat": 31.310453,
+            "lng": 120.625938,
+            "coordSource": "geocoded",
+            "cost": 250,
+            "category": "美食",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          },
+          {
+            "id": "8980317e-2893-4f8e-a141-8f4f216f6f53",
+            "name": "金鸡湖景区",
+            "startTime": "19:30",
+            "endTime": "21:00",
+            "description": "苏州现代都市地标，李公堤、月光码头夜景璀璨。湖畔散步赏日落与城市灯火，感受古今交融的苏州魅力。",
+            "lat": 31.310263,
+            "lng": 120.704824,
+            "coordSource": "geocoded",
+            "cost": 0,
+            "category": "自然",
+            "sourceNotes": [],
+            "coordSystem": "gcj02"
+          }
+        ],
+        "legs": [
+          {
+            "fromActivityId": "lodging",
+            "toActivityId": "88e796cd-8dae-43d6-b8ee-a4a2dd8a9eb1",
+            "mode": "transit",
+            "durationMin": 61,
+            "distanceM": 17024,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "88e796cd-8dae-43d6-b8ee-a4a2dd8a9eb1",
+            "toActivityId": "1c27db35-a841-463e-bf6f-8ded9387faae",
+            "mode": "transit",
+            "durationMin": 50,
+            "distanceM": 9002,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "1c27db35-a841-463e-bf6f-8ded9387faae",
+            "toActivityId": "bbad0e1e-2d5d-4f5b-be2f-9432bc0de56c",
+            "mode": "transit",
+            "durationMin": 26,
+            "distanceM": 4639,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "bbad0e1e-2d5d-4f5b-be2f-9432bc0de56c",
+            "toActivityId": "14709e50-7280-4df8-abc6-d05a3e614216",
+            "mode": "transit",
+            "durationMin": 36,
+            "distanceM": 5505,
+            "source": "amap"
+          },
+          {
+            "fromActivityId": "14709e50-7280-4df8-abc6-d05a3e614216",
+            "toActivityId": "8980317e-2893-4f8e-a141-8f4f216f6f53",
+            "mode": "transit",
+            "durationMin": 41,
+            "distanceM": 10492,
+            "source": "heuristic"
+          },
+          {
+            "fromActivityId": "8980317e-2893-4f8e-a141-8f4f216f6f53",
+            "toActivityId": "lodging",
+            "mode": "walk",
+            "durationMin": 1,
+            "distanceM": 1,
+            "source": "amap",
+            "polyline": "120.704818,31.310256;120.704818,31.310256"
+          }
+        ]
+      }
+    ],
+    "overview": [
+      {
+        "id": "a8f79c8a-0c2d-4f87-8c5c-dc5a4808939e",
+        "name": "拙政园",
+        "category": "attraction",
+        "intro": "苏州园林之冠，世界文化遗产。以水景见长，亭台楼阁错落有致，四季皆有不同韵味，是体验苏州古典园林艺术的必访之地。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "拙政园（官方渠道）",
+            "url": "https://www.szzzy.cn/"
+          }
+        ],
+        "coverUrl": "http://store.is.autonavi.com/showpic/72263ebfa1dfbeefe0269400e6ba822f",
+        "reservationNote": "需官方渠道提前实名预约购票，每日限流，旺季建议提前数日"
+      },
+      {
+        "id": "25867e2a-c176-42a8-a361-6f0f0a4fa0a9",
+        "name": "狮子林",
+        "category": "attraction",
+        "intro": "以假山王国闻名，太湖石堆叠的迷宫式园林，穿梭其中趣味横生，兼具艺术性与娱乐性，是苏州最有趣的园林之一。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/392c0cfd704012a9e49c534b960d81a9",
+        "reservationNote": "建议通过\"苏州园林旅游\"公众号提前购票，可预约当日或次日门票。"
+      },
+      {
+        "id": "63eac617-343f-4afd-ae74-3ba3a644bf29",
+        "name": "留园",
+        "category": "attraction",
+        "intro": "世界文化遗产，以建筑布局精巧著称，四季景致各异，曲廊回廊移步换景，是苏州园林\"小中见大\"的典范之作。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/9a023735af5bae8759d1ad0ddeaf45d3",
+        "reservationNote": "建议通过\"苏州园林旅游\"公众号提前预约购票。"
+      },
+      {
+        "id": "02d2d34f-1fe2-4a07-bbe8-919cb51bf0a1",
+        "name": "虎丘山风景区",
+        "category": "attraction",
+        "intro": "\"吴中第一名胜\"，苏轼曾言\"到苏州不游虎丘，乃憾事也\"。虎丘塔、剑池、千人石等古迹荟萃，登高可俯瞰古城风貌。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/d814aa2aaf63b6199d4701ca3194ab6b",
+        "reservationNote": "建议通过官方渠道提前预约购票，旺季游客较多。"
+      },
+      {
+        "id": "b1c94a6b-b324-4620-aebc-18e873359efb",
+        "name": "平江路",
+        "category": "attraction",
+        "intro": "苏州古城的缩影，小桥流水、粉墙黛瓦，沿街密布特色文创店、茶馆、评弹馆和美食小店，是漫步购物、感受市井文化的绝佳去处。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/5b8d0cdca4174cc7a052a5e06035975f",
+        "reservationNote": "开放式历史街区，无需预约，24小时可逛。"
+      },
+      {
+        "id": "fac7916c-5f21-4d56-b0fe-239b5dbba318",
+        "name": "七里山塘景区",
+        "category": "attraction",
+        "intro": "\"姑苏第一名街\"，乾隆皇帝六次到访。河街并行，水陆相邻，夜景尤为迷人，可乘游船、逛古街、品小吃，感受江南水乡韵味。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/3ad4167680bb72c570faeb1df76c21bb",
+        "reservationNote": "开放式街区，免费进入，部分小景点需购票。"
+      },
+      {
+        "id": "b595411f-8415-45cd-ad72-70122befc7f7",
+        "name": "金鸡湖景区",
+        "category": "attraction",
+        "intro": "苏州现代都市地标，李公堤、月光码头、文化艺术中心等景点环湖分布。可骑行、漫步或乘船游览，尤其适合傍晚赏日落和夜景。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/7c0932d199ea2c0e3409a4c4f5a19bbb",
+        "reservationNote": "开放式景区，免费游览，部分娱乐项目需购票。"
+      },
+      {
+        "id": "edc42bc4-3348-41f2-9d07-21dee742fd29",
+        "name": "寒山寺",
+        "category": "attraction",
+        "intro": "因《枫桥夜泊》诗篇名扬四海，千年古刹钟声悠远。可体验抄经、撞钟等文化活动，感受\"姑苏城外寒山寺\"的诗意禅境。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/ab02d6e508f2e4e59213947d3d0034cd",
+        "reservationNote": "现场购票即可，建议尽早前往避人流。"
+      },
+      {
+        "id": "e801df84-5d4d-4672-ac00-5d15c43975f9",
+        "name": "网师园",
+        "category": "attraction",
+        "intro": "苏州小型园林之精品，以夜花园活动闻名。夜晚可赏昆曲、评弹、古琴等传统表演，在古典园林中沉浸式体验江南文化。",
+        "reservation": "unknown",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/b9bec5c0095bb4ca969d8e0236573c4e",
+        "reservationNote": "夜花园需单独购票，建议提前通过官方渠道预约。"
+      },
+      {
+        "id": "45519b12-3338-44e0-80e1-d2475afe5b78",
+        "name": "苏州博物馆",
+        "category": "attraction",
+        "intro": "贝聿铭大师的封山之作，建筑本身就是一件艺术品。馆藏吴地文物精华，光影设计绝妙，是了解苏州历史文化与建筑美学的最佳窗口。",
+        "reservation": "required",
+        "sourceLinks": [
+          {
+            "title": "苏州博物馆（官方渠道）",
+            "url": "https://www.szmuseum.com/"
+          }
+        ],
+        "reservationNote": "免费不免票，需官网或官方公众号提前实名预约，本馆与西馆分别约"
+      },
+      {
+        "id": "faabe972-53bf-4ac6-a0a2-abf3f011f3f6",
+        "name": "松鹤楼(观前店)",
+        "category": "food",
+        "intro": "苏州苏帮菜老字号之首，始创于乾隆年间。招牌松鼠桂鱼外酥里嫩、酸甜适口，是品味地道苏州味道的经典之选。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/query_pic?id=st4e59a81c-8dd5-4876-9cdf-1e3afe32ebe2&user=search&operate=original",
+        "reservationNote": "可电话预订或现场取号，建议饭点提前到。"
+      },
+      {
+        "id": "47ee9dc5-c912-4939-b87e-453a1f1b7970",
+        "name": "得月楼(观前店)",
+        "category": "food",
+        "intro": "与松鹤楼齐名的百年苏帮菜名店，环境古色古香。枣泥拉糕、清溜河虾仁等菜品精致考究，适合追求仪式感的用餐体验。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/d50ee80e2f2dc1f1e08a73acf5fc5624",
+        "reservationNote": "建议提前电话预订包间，尤其是晚餐时段。"
+      },
+      {
+        "id": "fadadd10-0afd-47d1-8ab9-45d423a0962d",
+        "name": "姑苏桥·文人苏式面馆(北寺塔店)",
+        "category": "food",
+        "intro": "文人主题的苏式面馆，招牌秃黄油面、三虾面用料讲究，汤清味鲜。古风装潢搭配精致面食，体验苏州人的晨间仪式感。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/2755a201a254481fcd16d471eca10c7f",
+        "reservationNote": "面馆翻台快，一般无需预约，高峰期需排队。"
+      },
+      {
+        "id": "46318312-6a8b-4948-93f9-106bcafa646b",
+        "name": "苏州太太精致苏帮菜(苏州总店)",
+        "category": "food",
+        "intro": "高性价比苏帮菜馆，离平江路仅几步之遥。松鼠桂鱼、东坡肉等经典菜式口味地道，人均适中，是游览平江路后的便利之选。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/ac23c6478dc3d3fbe6469e9fd6912fa4",
+        "reservationNote": "可现场取号，饭点可能需排队。"
+      },
+      {
+        "id": "1ded0245-d308-4b98-9264-e8c45abbf3bb",
+        "name": "珍珠饭店",
+        "category": "food",
+        "intro": "观前商圈本地人钟爱的老牌餐馆，苏帮菜分量足、价格亲民。招牌响油鳝糊、蟹粉豆腐等家常味道，充满市井烟火气。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "http://store.is.autonavi.com/showpic/f845b6bcdf1b6b9b11efea38237e4c36",
+        "reservationNote": "现场排队为主，建议错峰用餐。"
+      },
+      {
+        "id": "1b554cd6-0353-4a37-838e-a0f268245dd6",
+        "name": "吴记小园楼(白塔西路总店)",
+        "category": "food",
+        "intro": "苏州本地人的\"食堂\"，以家常苏帮菜出名。菜品量大实惠，红烧肉、响油鳝丝等味道正宗，体验地道苏州味的好去处。",
+        "reservation": "none",
+        "sourceLinks": [],
+        "coverUrl": "https://aos-comment.amap.com/B0FFIXDR4Q/comment/09AF2A08_EF49_4AFF_8B9F_759DCC915230_L0_001_2000_150_1761351211142_25006924.jpg",
+        "reservationNote": "现场排队，建议避开高峰时段。"
+      },
+      {
+        "id": "cb720ad3-a9c5-4398-bfa4-f76c94ea0b6e",
+        "name": "苏州四季酒店",
+        "category": "hotel",
+        "intro": "金鸡湖畔顶级奢华酒店，坐拥一线湖景与私密园林。客房设计融合苏式美学，配有室内外泳池、水疗等设施，是奢华度假的不二之选。",
+        "reservation": "required",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/cb3d5ef12400acd2d8473fdb1e93575f",
+        "reservationNote": "通过官方渠道或OTA平台提前预订，旺季建议提前两周以上。"
+      },
+      {
+        "id": "c5793822-4e9d-4c70-81fa-cbb911e1cff8",
+        "name": "苏州金鸡湖李公堤亚朵酒店",
+        "category": "hotel",
+        "intro": "位于李公堤商圈核心，设计融入苏式元素，兼具品质与性价比。步行可达金鸡湖畔，周边餐饮娱乐丰富，出行便利。",
+        "reservation": "required",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/72911b79f8488cd6fcf97ca2ca023e46",
+        "reservationNote": "建议通过官方APP或OTA提前预订，会员可享优惠。"
+      },
+      {
+        "id": "9764b43a-ae33-4e23-ac05-ce7a598bbef7",
+        "name": "美锦酒店(苏州金鸡湖李公堤店)",
+        "category": "hotel",
+        "intro": "李公堤南岸的精品酒店，现代轻奢风格，房间宽敞舒适。紧邻金鸡湖景区，步行即达商圈，适合追求品质与便利的旅客。",
+        "reservation": "required",
+        "sourceLinks": [],
+        "coverUrl": "https://store.is.autonavi.com/showpic/8917f527564425883a9424d079694508",
+        "reservationNote": "建议提前通过OTA平台预订。"
+      }
+    ],
+    "meta": {
+      "usedXhs": false,
+      "reviewNotes": [
+        "第1天古城园林行程几乎排满无弹性，建议适当提前出发或减少1个点位，保留喘气空间",
+        "第2天虎丘山→寒山寺→七里山塘路线存在回折（约3.3km），如在意顺路性可考虑改为虎丘山→七里山塘→寒山寺",
+        "两日整体节奏偏紧，建议预留弹性时间应对交通延误或临时停留",
+        "建议优化：第1天当日时间窗缓冲仅约 -5%，低于 10%，几乎排满无弹性",
+        "建议优化：第2天当日时间窗缓冲仅约 -1%，低于 10%，几乎排满无弹性",
+        "建议优化：第2天「虎丘山风景区」→「寒山寺」→「七里山塘景区」方向明显回折（回跳约 3.3 km），顺路性差"
+      ],
+      "dataSources": [
+        "amap"
+      ]
+    },
+    "createdAt": 1784251073593,
+    "updatedAt": 1784251073593
+  }
+}
