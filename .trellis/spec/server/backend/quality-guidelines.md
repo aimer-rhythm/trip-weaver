@@ -21,6 +21,8 @@
 - Throwing optional research-source failures into generation.
 - Calling source call-attempt counters confirmed network-call counters.
 - Assuming in-memory jobs, caches, or queues coordinate across replicas.
+- Seeding env for isolated scripts with `||=` after loading `.env` (dotenv wins and the
+  fallback silently never applies — assign unconditionally).
 
 ## Command Matrix
 
