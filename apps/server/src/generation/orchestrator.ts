@@ -28,6 +28,8 @@ import {
 } from '../integrations/websearch/searchSource';
 import { DraftTrip } from './draft';
 import { createGeoSession } from './geoPipeline';
+import { classifyLongHaulPois, type LongHaulPoi } from './longHaul';
+import { repairLongHaulMixedDays, verifiedFixNotes, type AppliedFixMove } from './longHaulFixer';
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
@@ -124,7 +126,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
 
     // ---------- 阶段 1：调研 ----------
     emit(job, { type: 'phase_start', phase: 'research', round: 1, note: researchNote(enabledSources) });
-    const research: ResearchOutcome = { summary: '', pool: [] };
+    const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
@@ -151,14 +153,29 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       summary: `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`,
     });
 
+    // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
+    // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
+    // 无坐标候选自动跳过（漏标由层3 修复器兜底）；无长途点时规划 user prompt 逐字不变。
+    // 纯函数按理不抛，仍按增强路径防御（生成不失败原则，同 resolveGeoAndSimulate）：意外异常只损失情报、按无标记降级。
+    let longHaulIntel: LongHaulPoi[] = [];
+    try {
+      longHaulIntel = classifyLongHaulPois(research.pool, research.locations, form.transportMode ?? 'transit');
+    } catch {
+      // 按无情报降级，生成继续
+    }
+
     // ---------- 阶段 2/3：编排 → 地理解析 → 可行性 → 审校（≤2 轮） ----------
     // 时序前移（M0-A）：geoPipeline 从「审校循环之后」移到「每轮编排之后、审校之前」，
     // 让可行性引擎在真实坐标/leg 上运行，审校拿到代码算出的真违规报告（不再纯语感）。
-    // 修订轮为增量解析：geocodeAll 跳过已 geocoded 活动，computeLegs 复用 legMemo 不重复烧 route 额度。
+    // 修订轮为增量解析：geocodeAll 跳过已 geocoded 活动，computeLegs 复用 amap leg memo 不重复烧 route 额度
+    // （降级成启发式的段不记忆，修订轮在剩余额度内重试高德）。
     const draft = new DraftTrip(form);
     let reviewNotes: string[] = [];
     let revisionRequests: string[] = [];
     let feasibility: FeasibilityReport = { dayReports: [], violations: [] };
+    // 层3 修复器采纳的挪动记录（跨轮累计）：落库前经 verifiedFixNotes 校验「活动确在注记声称的
+    // 目标天」才并入 reviewNotes——修订轮可能推翻挪动（live beijing 实证），失真注记宁弃不留
+    const autoFixMoves: AppliedFixMove[] = [];
 
     // 地理解析 + 可行性模拟：后处理属增强路径，意外异常只损失坐标补全/通勤段，不失败整个任务（取消除外）。
     // 每次串行外呼前 geoPipeline 内部已按 signal 逐项中止（07-12 教训：AbortSignal 须逐迭代检查）。
@@ -183,7 +200,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         apiKey: cfg.apiKey,
         systemPrompt: PLANNER_SYSTEM_PROMPT,
         tools: [...buildDraftTools(draft), ...buildGeoTools(geo), buildSubmitPlanTool(draft, () => (planPassed = true))],
-        userPrompt: plannerUserPrompt(form, research, revisionRequests),
+        userPrompt: plannerUserPrompt(form, research, revisionRequests, longHaulIntel),
         signal,
         sink: sinkFor('plan'),
         maxTurns: 30,
@@ -200,6 +217,26 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
 
       // 时序前移：编排后立刻解析全量坐标/leg 并跑可行性引擎，供审校用真实报告
       await resolveGeoAndSimulate(sinkFor('plan'));
+
+      // 层3 兜底：确定性修复器 —— 规划 LLM 无视长途点情报仍产出「远郊日混排」且 feasibility 报出
+      // hard 违规时，代码级把混排市区活动挪到别的天并重验证（hard 严格递减才采纳，否则回滚）。
+      // 修复器属增强路径：任何异常按「未修复」继续走审校（生成不失败原则，取消除外）；
+      // legs 重算复用 geoSession 定向重算（额度控制与 amap memo 内置）。
+      try {
+        const planSink = sinkFor('plan');
+        const fix = await repairLongHaulMixedDays(draft, {
+          mode: form.transportMode ?? 'transit',
+          recomputeLegs: (dayIndexes) => geo.computeLegs(draft, planSink.onThought, signal, dayIndexes),
+          onProgress: planSink.onThought,
+          signal,
+        });
+        if (fix.applied.length > 0) {
+          autoFixMoves.push(...fix.applied);
+          feasibility = draft.feasibility();   // 审校拿「修复器尽力后」的报告
+        }
+      } catch (err) {
+        if (signal.aborted) throw err;
+      }
       emit(job, { type: 'phase_end', phase: 'plan', round });
 
       emit(job, { type: 'phase_start', phase: 'review', round });
@@ -229,6 +266,14 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       }
       revisionRequests = review.revisionRequests;
       emit(job, { type: 'phase_end', phase: 'review', round, summary: `需修订：${revisionRequests.length} 项` });
+    }
+
+    // 层3 修复器的自动调整说明（可信透明）：系统替用户做过的换天动作必须可见，置于 reviewNotes 最前。
+    // 真话契约：只保留最终草稿里仍成立的挪动注记（修订轮重排可能已推翻——live beijing 实证
+    // 轮1 挪出的活动被轮2 放回原天，跨轮累计若不校验会对用户宣称一次并不存在的调整）。
+    const verifiedAutoNotes = verifiedFixNotes(draft, autoFixMoves);
+    if (verifiedAutoNotes.length) {
+      reviewNotes = [...new Set([...verifiedAutoNotes, ...reviewNotes])].slice(0, 8);
     }
 
     // 可行性降级（decision 2 守生成不失败）：修订轮用尽仍有 hard 违规 → 如实并入 reviewNotes，任务仍 done 不 throw；

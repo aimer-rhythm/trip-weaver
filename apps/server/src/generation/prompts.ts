@@ -1,5 +1,6 @@
 // 三份 system prompt（架构 §5）：针对小参数模型做强约束——步骤编号、工具纪律、token 节制（R2/R8）
-import type { GenerateForm, PoiCategory, ResearchPoi, TransportMode } from '@tripweaver/shared';
+import { LONG_HAUL_THRESHOLDS, type GenerateForm, type LegMode, type PoiCategory, type ResearchPoi, type TransportMode } from '@tripweaver/shared';
+import type { LongHaulPoi } from './longHaul';
 
 const TRANSPORT_LABEL: Record<TransportMode, string> = { transit: '公共交通', drive: '自驾', walk: '步行优先' };
 
@@ -56,7 +57,8 @@ export const PLANNER_SYSTEM_PROMPT = `你是行程规划师，根据用户需求
 - description ≤100 字，说明亮点与实用提示；候选标注「需预约」的活动，务必在 description 提醒提前预约
 - category 从：美食/文化/自然/购物/住宿/交通/娱乐/其他 中选
 - 来自候选池且候选带来源链接的活动，把该链接填入 sourceNotes（title + url）；禁止编造 url
-- 相邻活动地理上应顺路，减少折返；单日不要塞太满（活动占用 + 通勤 ≤14 小时，否则一定排不下）`;
+- 相邻活动地理上应顺路，减少折返；单日不要塞太满（活动占用 + 通勤 ≤14 小时，否则一定排不下）
+- 长途点纪律：用户需求若附带「长途点情报」（系统按坐标确定性算出，比语感可靠），必须遵守——【强独占级】地点独占一天，当天只排该点及同方向顺路的活动，往返通勤计入当天时间预算；【长途级】地点当天按同方向顺路组织，勿与反方向活动混排`;
 
 export const REVIEWER_SYSTEM_PROMPT = `你是行程审校员，负责把关行程草稿的质量，然后给出结论。
 
@@ -73,6 +75,8 @@ export const REVIEWER_SYSTEM_PROMPT = `你是行程审校员，负责把关行�
 
 const CATEGORY_LABEL: Record<PoiCategory, string> = { attraction: '景点', food: '美食', hotel: '住宿' };
 const RESERVATION_MARK = { required: '【需预约】', none: '', unknown: '【预约情况未知】' } as const;
+const LEG_MODE_LABEL: Record<LegMode, string> = { transit: '公交', drive: '驾车', walk: '步行' };
+const TIER_MARK = { exclusive: '【强独占级】', longHaul: '【长途级】' } as const;
 
 /** 候选池紧凑索引：给编排 Agent 的引用视图（含首条来源链接，供回填 sourceNotes） */
 export function renderPoolIndex(pool: ResearchPoi[]): string {
@@ -90,14 +94,30 @@ export function renderPoolIndex(pool: ResearchPoi[]): string {
   return lines.join('\n');
 }
 
+/** 长途点情报段落（层2 编排预防）：确定性预计算的标级结果 + 独占日硬规则。
+ *  无长途点时返回空串、规划 user prompt 逐字保持原样（金集 walk/drive 短途类 case 即此形态），压回归风险 */
+export function renderLongHaulIntel(intel: LongHaulPoi[], mode: LegMode): string {
+  if (!intel.length) return '';
+  const lines = intel.map((p) => `- ${p.name}：距市区 POI 主体估算${LEG_MODE_LABEL[mode]}单程约 ${p.durationMin} 分钟${TIER_MARK[p.tier]}`);
+  return [
+    '长途点情报（系统按坐标确定性计算，务必遵守）：',
+    ...lines,
+    `规则：安排【强独占级】地点的那天必须为其独占——当天只排该点及其同方向顺路的活动（多个同方向长途点可同日顺路组织），返程后至多在住宿附近加一个轻量活动，且须为往返通勤预留充足时间；【长途级】（单程约 ${LONG_HAUL_THRESHOLDS.longHaulMin}-${LONG_HAUL_THRESHOLDS.exclusiveMin} 分钟）地点当天的活动须按同方向顺路组织，不与反方向活动混排。`,
+  ].join('\n');
+}
+
 export function plannerUserPrompt(
   form: GenerateForm,
   research: { summary: string; pool: ResearchPoi[] },
   revisionRequests: string[] = [],
+  longHaulIntel: LongHaulPoi[] = [],
 ): string {
   const parts = [`用户需求：\n${formBrief(form)}`];
   const poolIndex = renderPoolIndex(research.pool);
   if (poolIndex) parts.push(`候选池（优先从中选点，名称保持一致）：\n${poolIndex}`);
+  // 长途点情报（层2）：修订轮与首轮共用本构造，情报在每一轮规划中都可见
+  const intel = renderLongHaulIntel(longHaulIntel, form.transportMode ?? 'transit');
+  if (intel) parts.push(intel);
   parts.push(`调研摘要：\n${research.summary || '（无调研数据，请基于你自己的知识规划）'}`);
   if (revisionRequests.length) {
     parts.push(`审校员的修订要求（在现有草稿基础上修改，勿推倒重来）：\n${revisionRequests.map((r, i) => `${i + 1}. ${r}`).join('\n')}`);

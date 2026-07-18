@@ -130,6 +130,21 @@ export class DraftTrip {
     return `已删除第 ${dayIndex} 天的「${removed!.name}」`;
   }
 
+  /** 跨天移动原子方法（层3 确定性修复器专用，代码级调用、非 Agent 工具）：把活动移到目标天末尾。
+   *  语义对齐前端 editorStore.moveActivityToDay（splice 源天 → push 目标天，只挪不删）；
+   *  时间槽由调用方另行写入。本方法不动 legs：两天旧 leg 随即失配（消费方按 ST3 契约静默按缺失降级），
+   *  调用方须随后定向重算。dayIndex 从 1 开始；天不存在/同天/活动不存在返回 false 且不做任何修改。 */
+  moveActivityToDay(fromDayIndex: number, activityId: string, toDayIndex: number): boolean {
+    const from = this.days[fromDayIndex - 1];
+    const to = this.days[toDayIndex - 1];
+    if (!from || !to || from === to) return false;
+    const idx = from.activities.findIndex((a) => a.id === activityId);
+    if (idx < 0) return false;
+    const [moved] = from.activities.splice(idx, 1);
+    to.activities.push(moved!);
+    return true;
+  }
+
   /** 紧凑文本视图（控 token）：审校/修订轮的 get_draft 工具输出 */
   render(): string {
     if (!this.days.length) return '（草稿为空，尚未建立骨架）';

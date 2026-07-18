@@ -143,6 +143,61 @@ Representative paths: `packages/shared/src/feasibility.ts`,
 `apps/server/src/generation/tools/draftTools.ts`, `apps/server/src/generation/prompts.ts`,
 `apps/server/src/generation/orchestrator.ts`, `apps/server/src/__tests__/feasibility.test.ts`.
 
+### Long-Haul Day Discipline (M0-B: prevent + deterministically repair)
+
+Far-suburb anchors (八达岭式) mixed with downtown activities on one day were the last hard
+blocker in the golden set. Two code layers bracket the LLM (planner prompts alone were
+insufficient — the planner assigns `dayIndex` before any coordinates exist):
+
+1. **Pre-planning intel (prevention)** — during research, `search_pois` coordinates are
+   captured into task-memory (`ResearchOutcome.locations`; NOT persisted, NOT on
+   `ResearchPoi` schema — Amap ToS + schema minimalism). Before the planner phase,
+   `classifyLongHaulPois` (`apps/server/src/generation/longHaul.ts`) computes each candidate's
+   `estimateTransit` duration to the candidate pool's median center and tiers it against
+   `LONG_HAUL_THRESHOLDS` (shared constants: ≥60min long-haul, ≥90min exclusive-day).
+   Tiered intel + day-discipline rules are injected into `plannerUserPrompt` (revision rounds
+   reuse the same builder). Cases with no long-haul POIs get a byte-identical prompt
+   (regression-locked by test).
+2. **Deterministic fixer (repair)** — `longHaulFixer.ts` runs INSIDE each plan⇆review round,
+   after geoPipeline+feasibility and before the reviewer. Trigger: hard
+   `transit_infeasible`/`overpacked` on a day that has an exclusive-tier long-haul activity
+   (re-identified from REAL resolved coordinates, not the name-keyed research intel) plus
+   mixed-in urban activities (>45min from the long-haul point AND closer to the trip median
+   center). Action: move urban activities out (`draft.moveActivityToDay`, a code-level
+   primitive — NOT an agent tool) to the lightest-load day with a derivable time slot.
+   Accept per-move only if no new hard violations and no newly-dirtied day; accept the day's
+   batch only if total hards STRICTLY decreased, else roll the whole day back
+   (three-level `structuredClone` snapshots). Bounded: ≤3 moves/day, ≤8 attempts/task;
+   multi-far-suburb days are handled per-day by the same rule, never specially. Fixer
+   exceptions degrade to "not fixed" and the reviewer proceeds (generation-never-fails).
+- Recomputation after each move uses `computeLegs(draft, session, { onlyDayIndexes })` —
+  the targeted-day variant; omitting the option preserves the legacy full recompute.
+
+Representative paths: `apps/server/src/generation/longHaul.ts`,
+`apps/server/src/generation/longHaulFixer.ts`, `apps/server/src/generation/draft.ts`,
+`apps/server/src/generation/prompts.ts`, `packages/shared/src/constants.ts`.
+
+### Common Mistake: auto-fix notes surviving rounds they did not survive
+
+**Symptom**: persisted `reviewNotes` said "系统自动调整：X 自第 3 天移至第 1 天" while the
+final trip had X back on day 3.
+
+**Cause**: round-1 fixer moves were recorded as prose and accumulated across rounds; the
+round-2 revision planner rebuilt the day and reversed the move, but the stale note was still
+folded into the final trip (found as High in the 07-18 closing check — the trip lied to the
+user, breaking the truthful contract the same way the pre-review feasibility snapshot did).
+
+**Fix / Prevention**: fixer returns structured `applied: AppliedFixMove[]`
+(`activityId`/`toDayIndex`/`note`), and `verifiedFixNotes(draft, applied)` re-validates each
+move against the FINAL draft right before persistence — a note is kept only if the activity
+is actually on its claimed day. Reversed/deleted/rebuilt-with-new-id moves are dropped:
+under-report before you ever mis-report. Any future "the system did X for you" note must
+follow the same persist-time re-verification pattern.
+
+Representative paths: `apps/server/src/generation/longHaulFixer.ts`,
+`apps/server/src/generation/orchestrator.ts`,
+`apps/server/src/__tests__/longHaulFixer.test.ts`.
+
 ### TransitLeg Lodging Sentinel Contract (ST3)
 
 `TransitLeg.fromActivityId` / `toActivityId` allow the sentinel value `'lodging'` — the day's

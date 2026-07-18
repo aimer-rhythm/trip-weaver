@@ -1,0 +1,8 @@
+{"file": ".trellis/tasks/07-18-beijing-hard-anchor/research/failure-analysis.md", "reason": "beijing hard 3 个违规的精确断言（期望vs实际）、复现命令、快照/报告路径——实现的靶子"}
+{"file": ".trellis/tasks/07-18-beijing-hard-anchor/research/orchestration-architecture.md", "reason": "生成流水线三阶段架构、draft/工具/prompt 文件地图、审校工具缺口——层2/层3 的改造地形图"}
+{"file": ".trellis/tasks/07-18-beijing-hard-anchor/research/transit-revision-chain.md", "reason": "transit_infeasible 全链路、速度模型失真验算、AMAP route 降级路径——层1 的改造依据"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "legs.ts/feasibility.ts 属 @tripweaver/shared，改前必读包契约与 Pre-Development Checklist"}
+{"file": ".trellis/spec/shared/backend/quality-guidelines.md", "reason": "shared 包 schemas/constants/纯函数的必守模式与反模式（速度模型/远郊阈值常量要进 constants）"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 生成侧改动入口，含模块边界与检查清单"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "生成流水线约定（后台任务/持久化/降级原则），层2 距离预计算与层3 修复器须遵守"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "外部源适配约定（超时/Null 降级/限额），AMAP route 城际未生效排查涉及"}
