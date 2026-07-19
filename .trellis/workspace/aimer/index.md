@@ -8,8 +8,8 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 8
-- **Last Active**: 2026-07-14
+- **Total Sessions**: 9
+- **Last Active**: 2026-07-19
 <!-- @@@/auto:current-status -->
 
 ---
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~271 | Active |
+| `journal-1.md` | ~304 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 9 | 2026-07-19 | Archive beijing hard anchor | `9e4f287` | `master` |
 | 8 | 2026-07-14 | Feasibility engine (M0-A): time-space simulator with violation report | `d1894e2` | `master` |
 | 7 | 2026-07-12 | ST3 OTA demotion + parent geo-stack task complete (3/3) | `e9e4e73` | `master` |
 | 6 | 2026-07-12 | ST2 frontend: itinerary/overview merge + leg chips + Amap map | `c3e5522` | `master` |
