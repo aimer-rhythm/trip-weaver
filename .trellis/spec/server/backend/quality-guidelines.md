@@ -41,6 +41,7 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | Export/import production flow | `node scripts/verify-d1.mjs` | Requires `npm run build` first. |
 | Golden-set eval (offline snapshot replay) | `npm run eval` | Deterministic checks; gate = zero hard violations. |
 | Golden-set eval (live generation) | `npm run eval:live` | Real LLM via `SITE_LLM_*`; writes `eval/snapshots/`. |
+| Docker release artifact | `cp .env.example .env && docker compose config && docker compose build app` | CI/build host only; validates configuration and image build without starting services or using real credentials. |
 
 Run the smallest relevant script. Do not run credential-bearing real-provider checks without
 explicit approval. Verification scripts should inject environment values rather than depend
@@ -55,3 +56,55 @@ on `apps/server/.env`.
 - Secrets do not appear in responses, logs, fixtures, or database plaintext.
 - Background work reaches one terminal status and cancellation remains authoritative.
 - Relevant validation completed, or blockers are recorded.
+
+## Scenario: Docker Compose Release Validation
+
+### 1. Scope / Trigger
+
+- Trigger when `Dockerfile`, `docker-compose.yml`, build scripts, workspace manifests, or production environment wiring changes.
+
+### 2. Signatures
+
+- Configuration check: `docker compose config`
+- Image build: `docker compose build app`
+
+### 3. Contracts
+
+- Copy `.env.example` to a temporary `.env` on the CI runner before Compose validation.
+- The validation must build the `app` service from the repository `Dockerfile`.
+- Validation must not require production secrets, start services, publish images, or mutate persistent data.
+
+### 4. Validation & Error Matrix
+
+- Invalid Compose interpolation or service configuration -> `docker compose config` exits non-zero.
+- Dockerfile, lockfile, workspace, type-check, or bundle failure -> `docker compose build app` exits non-zero.
+- Missing optional provider credentials -> configuration and image build still succeed; runtime provider calls are out of scope.
+
+### 5. Good/Base/Bad Cases
+
+- Good: CI runs type-check/build, validates Compose, and builds `app` from a clean checkout.
+- Base: `.env.example` contains empty optional credentials and the image still builds.
+- Bad: CI starts Caddy/app, uses a developer `.env`, or treats a locally cached image as proof of reproducibility.
+
+### 6. Tests Required
+
+- Assert the workflow retains `npm ci`, `npm run typecheck`, and `npm run build`.
+- Assert `docker compose config` passes from a clean checkout with `.env.example` copied to `.env`.
+- Assert `docker compose build app` completes on the GitHub Actions runner.
+
+### 7. Wrong vs Correct
+
+#### Wrong
+
+```yaml
+- run: docker compose up -d
+```
+
+This introduces runtime ports, certificates, state, and secret requirements into a build gate.
+
+#### Correct
+
+```yaml
+- run: cp .env.example .env && docker compose config
+- run: docker compose build app
+```
