@@ -4,7 +4,8 @@
 // 用法：node scripts/verify-c2.mjs
 import { startMockLlm } from './lib/mock-llm.mjs';
 import { spawn } from 'node:child_process';
-import { rmSync } from 'node:fs';
+import { mkdirSync, rmSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
@@ -88,6 +89,10 @@ async function readEvents(jobId, { lastEventId = 0, timeoutMs = 30000 } = {}) {
 
 let server;
 // 模拟存量库：旧 trips / generations 表缺少当前列，启动迁移必须自动补齐。
+// Clean checkouts (e.g. CI) do not have the data/ dir yet — better-sqlite3 requires
+// the parent directory to exist before opening a database file. Compute the parent
+// programmatically from DATABASE_PATH and create it recursively (idempotent on Windows local runs).
+mkdirSync(dirname(DATABASE_PATH), { recursive: true });
 const legacyDatabase = new Database(DATABASE_PATH);
 legacyDatabase.exec(`CREATE TABLE trips (
   id TEXT PRIMARY KEY,
