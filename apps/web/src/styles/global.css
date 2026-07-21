@@ -233,10 +233,6 @@ a { color: var(--color-primary); text-decoration: none; }
 /* 地图 */
 .map-pane { position: absolute; inset: 0; }
 .leaflet-host { width: 100%; height: 100%; }
-/* 规划展示页风格：弱化高德底图瓦片上的 POI 文字，使行程 marker / polyline 视觉凸显。
-   滤镜仅作用于 .leaflet-tile-pane，不影响 .leaflet-marker-pane / .leaflet-overlay-pane / .leaflet-popup-pane / zoom 控件。 */
-.leaflet-container { background: #f7f7f4; }
-.leaflet-tile-pane { filter: grayscale(0.65) saturate(0.6) brightness(1.05) opacity(0.78); }
 .marker-wrap { background: none; border: none; }
 .marker-pin {
   width: 28px; height: 28px; border-radius: 50%; color: #fff; font-size: 0.82rem; font-weight: 700;
@@ -437,3 +433,4 @@ a { color: var(--color-primary); text-decoration: none; }
 
   .editor-title .muted { display: none; }
 }
+
