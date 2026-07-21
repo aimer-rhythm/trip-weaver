@@ -131,6 +131,10 @@ try {
       AMAP_KEY: '',
       SEARCH_API_KEY: '',
       SSRF_ALLOWLIST: `127.0.0.1:${MOCK_PORT}`,
+      // Keep this verification offline and deterministic: localhost reaches the mock LLM,
+      // while optional public geocoding fails fast into its documented null fallback.
+      HTTP_PROXY: 'http://127.0.0.1:1',
+      HTTPS_PROXY: 'http://127.0.0.1:1',
       NO_PROXY: 'localhost,127.0.0.1',
     },
   });

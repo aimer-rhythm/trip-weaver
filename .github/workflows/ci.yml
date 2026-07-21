@@ -17,7 +17,45 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run build
+      - name: Verify generation pipeline
+        run: node scripts/verify-c2.mjs
       - name: Validate Docker Compose configuration
         run: cp .env.example .env && docker compose config
       - name: Build application container
         run: docker compose build app
+      - name: Smoke test deployed stack
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          master_key="$(openssl rand -hex 32)"
+          sed -i "s/^MASTER_KEY=.*/MASTER_KEY=${master_key}/" .env
+
+          cleanup() {
+            docker compose down -v || true
+            rm -f data/restart-marker
+          }
+          trap cleanup EXIT
+
+          wait_for_health() {
+            for _ in {1..30}; do
+              if curl --fail --silent http://127.0.0.1/api/health | grep -q '"ok":true'; then
+                return 0
+              fi
+              sleep 2
+            done
+
+            docker compose logs --no-color
+            return 1
+          }
+
+          docker compose up -d
+          wait_for_health
+
+          docker compose exec -T app sh -c \
+            "printf release-smoke > /app/apps/server/data/restart-marker"
+          docker compose restart app
+          wait_for_health
+
+          test "$(docker compose exec -T app cat /app/apps/server/data/restart-marker)" = \
+            "release-smoke"
