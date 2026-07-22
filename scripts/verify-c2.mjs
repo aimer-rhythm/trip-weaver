@@ -115,7 +115,8 @@ CREATE TABLE generations (
 )`);
 legacyDatabase.close();
 
-const mock = await startMockLlm(MOCK_PORT, { delayMs: 300 });
+// 首个完成任务让审校模型持续 get_draft 直到超过 12 轮，验证审校耗尽只降级、不拖垮整次生成。
+const mock = await startMockLlm(MOCK_PORT, { delayMs: 300, reviewerOverrunOnce: true });
 const seenAuthHeaders = mock.seenAuthHeaders;
 console.log(`[mock] OpenAI 兼容端点就绪 :${MOCK_PORT}`);
 try {
@@ -189,6 +190,11 @@ try {
   check('降级标注 usedXhs=false', done?.usedXhs === false);
   check('job_done 数据源为空（未配 Key）', Array.isArray(done?.dataSources) && done.dataSources.length === 0, JSON.stringify(done?.dataSources));
   check('审校建议传递', Array.isArray(done?.reviewNotes) && done.reviewNotes.length > 0, JSON.stringify(done?.reviewNotes));
+  check(
+    '审校轮次超限降级后仍完成生成',
+    done?.reviewNotes?.some((note) => note.includes('审校模型达到单阶段轮次上限')) === true,
+    JSON.stringify(done?.reviewNotes),
+  );
 
   // 时序前移（M0-A）：geoPipeline 移到审校前 —— 坐标/通勤解析的 thought 必须出现在首个 review phase_start 之前，
   // 保证审校（及可行性引擎）拿到的是已解析的真实坐标/leg，而非空坐标。

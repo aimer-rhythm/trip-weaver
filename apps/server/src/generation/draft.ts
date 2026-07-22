@@ -5,12 +5,10 @@ import {
   MAX_OVERVIEW_POIS,
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
-  computeBudgetSummary,
   simulateTrip,
   uid,
   type Activity,
   type ActivityCategory,
-  type BudgetSummary,
   type DataSourceKind,
   type FeasibilityReport,
   type GenerateForm,
@@ -20,6 +18,7 @@ import {
   type TransitLeg,
   type Trip,
 } from '@tripweaver/shared';
+import { mealCoverageProblems } from './mealPlanning';
 
 export interface DraftActivityInput {
   name: string;
@@ -51,7 +50,7 @@ function toActivity(input: DraftActivityInput): Activity {
     lat: hasCoord ? input.lat! : 0,
     lng: hasCoord ? input.lng! : 0,
     coordSource: hasCoord ? (input.coordSource ?? 'estimated') : 'estimated',
-    // cost 可选化（ST3 预算区间化）：不确定就缺省，不再强行填 0
+    // cost 仅供旧数据/内部兼容；新生成工具不再向模型暴露该字段。
     ...(typeof input.cost === 'number' ? { cost: Math.max(0, input.cost) } : {}),
     category: normalizeCategory(input.category),
     sourceNotes: (input.sourceNotes ?? []).slice(0, MAX_SOURCE_NOTES),
@@ -154,16 +153,11 @@ export class DraftTrip {
       day.activities.forEach((a, j) => {
         const coord = a.lat === 0 && a.lng === 0 ? '无坐标' : `${a.lat.toFixed(4)},${a.lng.toFixed(4)}(${a.coordSource})`;
         const time = a.startTime ? `${a.startTime}-${a.endTime || '?'}` : '时间未定';
-        const cost = typeof a.cost === 'number' ? `¥${a.cost}` : '费用未定';
-        lines.push(`  ${j + 1}. ${a.name}｜${time}｜${a.category}｜${cost}｜${coord}${a.sourceNotes.length ? '｜有来源笔记' : ''}`);
+        lines.push(`  ${j + 1}. ${a.name}｜${time}｜${a.category}｜${coord}${a.sourceNotes.length ? '｜有来源笔记' : ''}`);
       });
       if (!day.activities.length) lines.push('  （空）');
     });
     return lines.join('\n');
-  }
-
-  budget(): BudgetSummary {
-    return computeBudgetSummary(this.toTrip());
   }
 
   /** 可行性模拟（M0-A）：以当前草稿（含 geoPipeline 已解析的坐标/leg）真算时空违规报告。
@@ -183,6 +177,7 @@ export class DraftTrip {
       if (!day.activities.length) problems.push(`第 ${i + 1} 天没有任何活动`);
       if (day.activities.length > 8) problems.push(`第 ${i + 1} 天活动过多（${day.activities.length} 个，应 ≤8）`);
     });
+    problems.push(...mealCoverageProblems(this.days));
     // v0.5：坐标覆盖不再作为完整性问题 —— 审校后由确定性 geoPipeline 统一解析全量坐标
     return problems;
   }

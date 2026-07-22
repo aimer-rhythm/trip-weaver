@@ -30,6 +30,8 @@ import { DraftTrip } from './draft';
 import { createGeoSession } from './geoPipeline';
 import { classifyLongHaulPois, type LongHaulPoi } from './longHaul';
 import { repairLongHaulMixedDays, verifiedFixNotes, type AppliedFixMove } from './longHaulFixer';
+import { ensureMealCoverage } from './mealPlanning';
+import { optimizeCrossDayGrouping, repairTransitTiming } from './routeCoherence';
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
@@ -245,7 +247,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         model,
         apiKey: cfg.apiKey,
         systemPrompt: REVIEWER_SYSTEM_PROMPT,
-        tools: [...buildDraftTools(draft).filter((t) => t.name !== 'set_trip_skeleton' && t.name !== 'add_activity' && t.name !== 'set_lodging'), ...buildReviewTools(draft, form, review)],
+        tools: [...buildDraftTools(draft).filter((t) => t.name !== 'set_trip_skeleton' && t.name !== 'add_activity' && t.name !== 'set_lodging'), ...buildReviewTools(review)],
         userPrompt: reviewerUserPrompt(form, round, describeFeasibility(feasibility)),
         signal,
         sink: sinkFor('review'),
@@ -253,6 +255,15 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       });
       usage.tokensIn += reviewerRun.tokensIn;
       usage.tokensOut += reviewerRun.tokensOut;
+      if (reviewerRun.turnLimitExceeded) {
+        assertAlive(signal);
+        reviewNotes = [
+          ...review.notes,
+          '审校模型达到单阶段轮次上限，系统已保留已完成修订，并继续执行餐次完整性与可行性检查。',
+        ].slice(0, 5);
+        emit(job, { type: 'phase_end', phase: 'review', round, summary: '审校轮次已达上限，转为确定性检查' });
+        break;
+      }
       assertAlive(signal, reviewerRun.errorMessage);
 
       if (!review.submitted || review.approved || round === MAX_REVIEW_ROUNDS) {
@@ -266,6 +277,59 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       }
       revisionRequests = review.revisionRequests;
       emit(job, { type: 'phase_end', phase: 'review', round, summary: `需修订：${revisionRequests.length} 项` });
+    }
+
+    const finalSink = sinkFor('review');
+
+    // 审校可 update/remove 活动，旧 legs 会与最终活动序列失配。落库前全量重算一次；geoSession memo
+    // 会复用未变化的高德路径，只有新相邻对才消耗路由额度。异常时清空 legs，宁缺勿持久化假路线。
+    try {
+      await geo.computeLegs(draft, finalSink.onThought, signal);
+      assertAlive(signal);
+    } catch (err) {
+      if (signal.aborted) throw err;
+      for (const day of draft.mutableDays()) delete day.legs;
+    }
+
+    // 跨天地理聚类兜底：只尝试高收益的同类地点交换；真实 legs 重算后若通勤未明显下降或 hard 增加，
+    // 修复器会完整回滚。正常失败不影响生成，取消仍向外传播。
+    try {
+      const grouping = await optimizeCrossDayGrouping(draft, {
+        mode: form.transportMode ?? 'transit',
+        recomputeLegs: (dayIndexes) => geo.computeLegs(draft, finalSink.onThought, signal, dayIndexes),
+        onProgress: finalSink.onThought,
+        signal,
+      });
+      if (grouping.notes.length) reviewNotes = [...grouping.notes, ...reviewNotes].slice(0, 8);
+    } catch (err) {
+      if (signal.aborted) throw err;
+    }
+
+    // 最终餐次兜底：正常路径由 submit_plan 的完整性门槛要求模型补齐；这里防止审校阶段
+    // 删除/改写最后一个午餐或晚餐后仍把不完整行程持久化。补位使用顺路片区建议，不冒充具体门店。
+    const mealRepairs = ensureMealCoverage(draft.mutableDays(), form.destination);
+    if (mealRepairs.length) {
+      const changedDays = [...new Set(mealRepairs.filter((item) => item.action === 'inserted').map((item) => item.dayIndex))];
+      try {
+        if (changedDays.length) {
+          await geo.computeLegs(draft, finalSink.onThought, signal, changedDays);
+          assertAlive(signal);
+        }
+      } catch (err) {
+        if (signal.aborted) throw err;
+      }
+      const summary = mealRepairs.map((item) => `第${item.dayIndex}天${item.kind === 'lunch' ? '午餐' : '晚餐'}`).join('、');
+      reviewNotes = [`系统已补齐${summary}的顺路就餐时段；具体门店与实时信息请到大众点评或美团确认。`, ...reviewNotes].slice(0, 8);
+    }
+
+    // 以最终真实通勤段顺延贴边活动，修复「前一活动结束即开饭但仍需移动」等硬冲突；
+    // 单日无法在餐窗/23:00 边界内排下则该天整体不改，由最终可行性说明如实透出。
+    const timingDays = repairTransitTiming(draft.mutableDays());
+    if (timingDays.length) {
+      reviewNotes = [
+        `系统已顺延第 ${timingDays.join('、')} 天的部分活动时间，为实际通勤预留间隔。`,
+        ...reviewNotes,
+      ].slice(0, 8);
     }
 
     // 层3 修复器的自动调整说明（可信透明）：系统替用户做过的换天动作必须可见，置于 reviewNotes 最前。

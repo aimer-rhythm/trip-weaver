@@ -14,7 +14,6 @@ const OptionalActivityFields = {
   endTime: Type.Optional(Type.String({ description: '结束时间 HH:mm' })),
   description: Type.Optional(Type.String({ description: '亮点与实用提示，≤100 字' })),
   category: Type.Optional(Type.String({ description: '美食/文化/自然/购物/住宿/交通/娱乐/其他' })),
-  cost: Type.Optional(Type.Number({ description: '人均预估费用（人民币），免费填 0' })),
   lat: Type.Optional(Type.Number({ description: '纬度（geocode_place 的返回）' })),
   lng: Type.Optional(Type.Number({ description: '经度' })),
   sourceNotes: Type.Optional(

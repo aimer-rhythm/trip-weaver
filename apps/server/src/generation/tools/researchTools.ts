@@ -49,7 +49,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const poisTool = defineTool({
     name: 'search_pois',
     label: '搜索地点',
-    description: '按类目搜索目的地的真实地点（高德数据），返回名称/类型/地址/评分/人均/营业时间/图片链接。',
+    description: '按类目搜索目的地的真实地点（高德数据），返回名称、类型、地址与图片；餐饮动态价格、评分和营业信息不作为行程事实。',
     parameters: Type.Object({
       category: Type.String({ description: '类目：attraction（景点）/ food（美食）/ hotel（住宿）' }),
       keyword: Type.String({ description: '搜索关键词，如「必去景点」「本地菜」「市中心酒店」，不必带目的地名' }),
@@ -76,9 +76,8 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
           `${i + 1}. ${p.name}`,
           p.type,
           p.address,
-          p.rating ? `评分 ${p.rating}` : '',
-          p.cost ? `人均 ¥${p.cost}` : '',
-          p.opentime ? `营业 ${p.opentime}` : '',
+          category !== 'food' && p.rating ? `评分 ${p.rating}` : '',
+          category !== 'food' && p.opentime ? `营业 ${p.opentime}` : '',
           p.photoUrls[0] ? `图片=${p.photoUrls[0]}` : '',
         ];
         return bits.filter(Boolean).join('｜');

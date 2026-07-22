@@ -47,17 +47,20 @@ function plannerCalls(days, turnHasToolResults) {
     { name: 'set_lodging', args: { name: '市中心站前区域' } },
   ];
   for (let d = 1; d <= days; d++) {
-    for (let j = 0; j < 3; j++) {
+    const activities = [
+      { name: `活动${d}-1`, startTime: '09:00', endTime: '11:00', category: '文化' },
+      { name: `午餐｜活动${d}-1周边当地风味`, startTime: '12:00', endTime: '13:15', category: '美食' },
+      { name: `晚餐｜市中心片区当地风味`, startTime: '18:00', endTime: '19:15', category: '美食' },
+    ];
+    for (const [j, activity] of activities.entries()) {
       calls.push({
         name: 'add_activity',
         args: {
           dayIndex: d,
-          name: `活动${d}-${j + 1}`,
-          startTime: `${String(9 + j * 3).padStart(2, '0')}:00`,
-          endTime: `${String(11 + j * 3).padStart(2, '0')}:00`,
-          description: '测试活动描述',
-          category: '文化',
-          cost: 50,
+          ...activity,
+          description: activity.category === '美食'
+            ? '建议选择所在片区的当地菜系或代表菜，具体门店与实时信息到本地生活平台确认。'
+            : '测试活动描述',
           lat: 35.68 + d * 0.01 + j * 0.001,
           lng: 139.76 + d * 0.01 + j * 0.001,
         },
@@ -71,8 +74,10 @@ function plannerCalls(days, turnHasToolResults) {
  * 启动 mock 端点；返回 { server, seenAuthHeaders, close }
  * delayMs：每次补全前的延迟（留出取消窗口 / 模拟真实节奏）
  */
-export async function startMockLlm(port, { delayMs = 300 } = {}) {
+export async function startMockLlm(port, { delayMs = 300, reviewerOverrunOnce = false } = {}) {
   const seenAuthHeaders = [];
+  let reviewerOverrunAvailable = reviewerOverrunOnce;
+  let reviewerOverrunActive = false;
   const server = createServer((req, res) => {
     if (!req.url?.includes('/chat/completions')) {
       res.writeHead(404).end();
@@ -96,9 +101,17 @@ export async function startMockLlm(port, { delayMs = 300 } = {}) {
       } else if (system.includes('行程规划师')) {
         respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0));
       } else if (system.includes('行程审校员')) {
-        respondWithToolCalls(res, payload.model, [
-          { name: 'submit_review', args: { approved: true, notes: ['测试建议：留意闭馆时间'], revisionRequests: [] } },
-        ]);
+        if (toolResults === 0) {
+          reviewerOverrunActive = reviewerOverrunAvailable;
+          reviewerOverrunAvailable = false;
+        }
+        respondWithToolCalls(
+          res,
+          payload.model,
+          reviewerOverrunActive
+            ? [{ name: 'get_draft', args: {} }]
+            : [{ name: 'submit_review', args: { approved: true, notes: ['测试建议：留意闭馆时间'], revisionRequests: [] } }],
+        );
       } else {
         respondWithToolCalls(res, payload.model, [{ name: 'submit_research', args: { summary: '兜底' } }]);
       }

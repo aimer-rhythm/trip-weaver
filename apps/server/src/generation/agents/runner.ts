@@ -25,6 +25,7 @@ export interface RunAgentResult {
   tokensIn: number;
   tokensOut: number;
   aborted: boolean;
+  turnLimitExceeded: boolean;
   errorMessage?: string;
 }
 
@@ -39,7 +40,7 @@ function summarizeToolResult(result: unknown): string {
 
 export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResult> {
   const labelByTool = new Map(opts.tools.map((t) => [t.name, t.label]));
-  const result: RunAgentResult = { tokensIn: 0, tokensOut: 0, aborted: false };
+  const result: RunAgentResult = { tokensIn: 0, tokensOut: 0, aborted: false, turnLimitExceeded: false };
   let turns = 0;
 
   const agent = new Agent({
@@ -60,6 +61,7 @@ export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResu
       case 'turn_start':
         turns += 1;
         if (turns > (opts.maxTurns ?? DEFAULT_MAX_TURNS)) {
+          result.turnLimitExceeded = true;
           result.errorMessage = `轮次超限（>${opts.maxTurns ?? DEFAULT_MAX_TURNS}），已中止`;
           agent.abort();
         }

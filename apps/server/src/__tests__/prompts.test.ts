@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { GenerateForm, ResearchPoi } from '@tripweaver/shared';
 import type { LongHaulPoi } from '../generation/longHaul';
-import { PLANNER_SYSTEM_PROMPT, formBrief, plannerUserPrompt, renderLongHaulIntel } from '../generation/prompts';
+import { PLANNER_SYSTEM_PROMPT, RESEARCH_SYSTEM_PROMPT, REVIEWER_SYSTEM_PROMPT, formBrief, plannerUserPrompt, renderLongHaulIntel } from '../generation/prompts';
 
 const form: GenerateForm = {
   destination: '测试市',
@@ -82,4 +82,19 @@ test('PLANNER_SYSTEM_PROMPT 含长途点纪律（独占日约束 + 通勤时间�
   assert.ok(PLANNER_SYSTEM_PROMPT.includes('长途点纪律'));
   assert.ok(PLANNER_SYSTEM_PROMPT.includes('【强独占级】地点独占一天'));
   assert.ok(PLANNER_SYSTEM_PROMPT.includes('往返通勤计入当天时间预算'));
+});
+
+test('餐饮编排要求每天午晚餐，并把实时门店决策交给外部平台', () => {
+  assert.ok(PLANNER_SYSTEM_PROMPT.includes('必须同时包含午餐与晚餐'));
+  assert.ok(PLANNER_SYSTEM_PROMPT.includes('片区 · 菜系或代表菜'));
+  assert.ok(PLANNER_SYSTEM_PROMPT.includes('大众点评或美团确认'));
+  assert.ok(RESEARCH_SYSTEM_PROMPT.includes('评分、人均、营业与排队均是动态信息'));
+  assert.ok(REVIEWER_SYSTEM_PROMPT.includes('每天是否同时有午餐和晚餐'));
+});
+
+test('生成提示不再包含用户预算决策或费用估算工具', () => {
+  const brief = formBrief({ ...form, budgetLevel: '豪华', totalBudget: 99999 });
+  assert.equal(brief.includes('预算'), false);
+  assert.equal(PLANNER_SYSTEM_PROMPT.includes('cost 为'), false);
+  assert.equal(REVIEWER_SYSTEM_PROMPT.includes('get_budget_status'), false);
 });
