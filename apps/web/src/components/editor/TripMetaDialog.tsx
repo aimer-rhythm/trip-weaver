@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react';
-import { BUDGET_LEVELS, type BudgetLevel } from '@tripweaver/shared';
 import { useEditorStore } from '../../store/editorStore';
 import { Modal } from '../Modal';
 
@@ -12,8 +11,6 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
   const [title, setTitle] = useState(trip?.title ?? '');
   const [destination, setDestination] = useState(trip?.destination ?? '');
   const [startDate, setStartDate] = useState(trip?.startDate ?? '');
-  const [budgetLevel, setBudgetLevel] = useState<BudgetLevel>(trip?.budgetLevel ?? '舒适');
-  const [totalBudget, setTotalBudget] = useState(String(trip?.totalBudget ?? 0));
   const [partySize, setPartySize] = useState(String(trip?.partySize ?? 2));
   // 住宿锚点（ST3）：改名即清空坐标并丢弃相关住宿 leg（保存时经 store 处理，无客户端重编码）
   const [lodgingName, setLodgingName] = useState(trip?.lodging?.name ?? '');
@@ -28,14 +25,11 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
     e.preventDefault();
     if (!title.trim()) return setError('请填写行程名称');
     if (!destination.trim()) return setError('请填写目的地');
-    const budgetNum = Math.max(0, Number(totalBudget) || 0);
     const partyNum = Math.min(50, Math.max(1, Math.round(Number(partySize) || 1)));
     updateMeta({
       title: title.trim(),
       destination: destination.trim(),
       startDate,
-      budgetLevel,
-      totalBudget: budgetNum,
       partySize: partyNum,
     });
     updateLodging(lodgingName);
@@ -60,22 +54,6 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
           <label>
             出发日期
             <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-          </label>
-        </div>
-        <div className="form-grid-2">
-          <label>
-            预算档次
-            <select value={budgetLevel} onChange={(e) => setBudgetLevel(e.target.value as BudgetLevel)}>
-              {BUDGET_LEVELS.map((b) => (
-                <option key={b} value={b}>
-                  {b}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            总预算（¥，0 为不限）
-            <input inputMode="numeric" value={totalBudget} onChange={(e) => setTotalBudget(e.target.value)} />
           </label>
         </div>
         <label>

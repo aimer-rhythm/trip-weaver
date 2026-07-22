@@ -4,11 +4,9 @@ import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import {
-  BUDGET_LEVELS,
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
-  type BudgetLevel,
   type GenerateForm,
   type GenerationEvent,
   type TransportMode,
@@ -44,8 +42,6 @@ export function PlannerPage() {
   const [destination, setDestination] = useState('');
   const [days, setDays] = useState(3);
   const [startDate, setStartDate] = useState('');
-  const [budgetLevel, setBudgetLevel] = useState<BudgetLevel>('舒适');
-  const [totalBudget, setTotalBudget] = useState('');
   const [preferences, setPreferences] = useState<string[]>([]);
   const [partySize, setPartySize] = useState(2);
   const [transportMode, setTransportMode] = useState<TransportMode>('transit');
@@ -148,8 +144,9 @@ export function PlannerPage() {
       destination: destination.trim(),
       days,
       startDate,
-      budgetLevel,
-      totalBudget: Number(totalBudget) || 0,
+      // 预算字段保留在共享契约中供旧客户端/旧行程兼容，新界面不再让用户决策或展示。
+      budgetLevel: '舒适',
+      totalBudget: 0,
       preferences: preferences as GenerateForm['preferences'],
       partySize,
       extraNotes: extraNotes.trim(),
@@ -323,32 +320,15 @@ export function PlannerPage() {
         </div>
 
         <label>
-          预算档位
-          <div className="preset-row">
-            {BUDGET_LEVELS.map((b) => (
-              <button key={b} type="button" className={`btn btn-chip ${budgetLevel === b ? 'is-active' : ''}`} onClick={() => setBudgetLevel(b)}>
-                {b}
-              </button>
-            ))}
-          </div>
+          出行人数
+          <input
+            type="number"
+            min={1}
+            max={20}
+            value={partySize}
+            onChange={(e) => setPartySize(Math.min(20, Math.max(1, Number(e.target.value) || 1)))}
+          />
         </label>
-
-        <div className="form-grid-2">
-          <label>
-            总预算（元/人，可选）
-            <input type="number" min={0} value={totalBudget} onChange={(e) => setTotalBudget(e.target.value)} placeholder="不填则按档位估算" />
-          </label>
-          <label>
-            出行人数
-            <input
-              type="number"
-              min={1}
-              max={20}
-              value={partySize}
-              onChange={(e) => setPartySize(Math.min(20, Math.max(1, Number(e.target.value) || 1)))}
-            />
-          </label>
-        </div>
 
         <label>
           出行方式

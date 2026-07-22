@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Activity, ResearchPoi, TripDay } from '@tripweaver/shared';
 import { CATEGORY_COLORS, hasValidCoord } from '../../lib/colors';
 import { useEditorStore } from '../../store/editorStore';
@@ -18,17 +17,6 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, onEdit
   const moveActivity = useEditorStore((s) => s.moveActivity);
   const moveActivityToDay = useEditorStore((s) => s.moveActivityToDay);
   const deleteActivity = useEditorStore((s) => s.deleteActivity);
-  const updateActivity = useEditorStore((s) => s.updateActivity);
-  const [editingCost, setEditingCost] = useState(false);
-  const [costDraft, setCostDraft] = useState('');
-
-  const commitCost = () => {
-    setEditingCost(false);
-    const n = Number(costDraft);
-    if (!Number.isNaN(n) && n >= 0 && n !== (activity.cost ?? 0)) {
-      updateActivity(day.id, activity.id, { cost: n });
-    }
-  };
 
   return (
     <div className="activity-card">
@@ -43,29 +31,6 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, onEdit
             <i style={{ background: CATEGORY_COLORS[activity.category] }} />
             {activity.category}
           </span>
-          {editingCost ? (
-            <input
-              className="cost-input"
-              autoFocus
-              inputMode="numeric"
-              value={costDraft}
-              onChange={(e) => setCostDraft(e.target.value)}
-              onBlur={commitCost}
-              onKeyDown={(e) => e.key === 'Enter' && commitCost()}
-            />
-          ) : (
-            <button
-              type="button"
-              className="cost-chip"
-              title="点击修改费用"
-              onClick={() => {
-                setCostDraft(String(activity.cost ?? 0));
-                setEditingCost(true);
-              }}
-            >
-              ¥{activity.cost ?? 0}
-            </button>
-          )}
         </div>
         {activity.description && <p className="activity-desc">{activity.description}</p>}
         {matchedPoi && (

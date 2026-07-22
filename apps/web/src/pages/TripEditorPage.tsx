@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useSaveTrip, useTrip } from '../api/hooks';
 import { useEditorStore } from '../store/editorStore';
 import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
-import { BudgetPanel } from '../components/editor/BudgetPanel';
 import { CandidateDrawer } from '../components/editor/CandidateDrawer';
 import { DaySection } from '../components/editor/DaySection';
 import { MapView } from '../components/editor/MapView';
@@ -12,8 +11,7 @@ import { ExportMenu } from '../components/ExportMenu';
 import { matchOverview } from '../lib/tripDerive';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error';
-type PanelTab = 'itinerary' | 'budget';
-type MobileTab = 'list' | 'map' | 'budget';
+type MobileTab = 'list' | 'map';
 
 export function TripEditorPage() {
   const { id = '' } = useParams();
@@ -28,7 +26,6 @@ export function TripEditorPage() {
   const addDay = useEditorStore((s) => s.addDay);
 
   const [saveState, setSaveState] = useState<SaveState>('idle');
-  const [panelTab, setPanelTab] = useState<PanelTab>('itinerary');
   const [mobileTab, setMobileTab] = useState<MobileTab>('list');
   const [metaOpen, setMetaOpen] = useState(false);
   const [editing, setEditing] = useState<{ dayId: string; activityId: string | null } | null>(null);
@@ -73,14 +70,9 @@ export function TripEditorPage() {
     ? trip.days.find((d) => d.id === editing.dayId)?.activities.find((a) => a.id === editing.activityId) ?? null
     : null;
 
-  const panelTabs: [PanelTab, string][] = [
-    ['itinerary', '行程'],
-    ['budget', '预算'],
-  ];
   const mobileTabs: [MobileTab, string][] = [
     ['list', '行程'],
     ['map', '地图'],
-    ['budget', '预算'],
   ];
 
   const saveLabel: Record<SaveState, string> = {
@@ -121,8 +113,7 @@ export function TripEditorPage() {
           <div className="editor-title">
             <h1>{trip.title}</h1>
             <span className="muted">
-              {trip.destination} · {trip.days.length} 天 · {trip.partySize} 人 · 预算 {trip.budgetLevel}
-              {trip.totalBudget > 0 ? `（¥${trip.totalBudget}）` : ''}
+              {trip.destination} · {trip.days.length} 天 · {trip.partySize} 人
             </span>
           </div>
         </div>
@@ -150,28 +141,13 @@ export function TripEditorPage() {
 
       <div className={`editor-body mobile-${mobileTab}`}>
         <aside className="editor-left">
-          <div className="panel-tabs">
-            {panelTabs.map(([tab, label]) => (
-              <button
-                key={tab}
-                type="button"
-                className={`panel-tab ${panelTab === tab ? 'active' : ''}`}
-                onClick={() => setPanelTab(tab)}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <div className="editor-left-scroll">{panelTab === 'itinerary' ? itineraryPanel : <BudgetPanel />}</div>
+          <div className="editor-left-scroll">{itineraryPanel}</div>
         </aside>
         <div className="editor-map">
           <MapView
             visible={mobileTab === 'map'}
             onEditActivity={(dayId, activityId) => setEditing({ dayId, activityId })}
           />
-        </div>
-        <div className="editor-mobile-budget">
-          <BudgetPanel />
         </div>
       </div>
 

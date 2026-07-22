@@ -1,4 +1,4 @@
-// M1 浏览器自动化验收：注册 → 示例行程 → 编辑器（清单/地图/预算）→ 编辑 → 持久化 → 移动端
+// M1 浏览器自动化验收：注册 → 示例行程 → 编辑器（清单/地图）→ 编辑 → 持久化 → 移动端
 // 运行：node scripts/verify-m1.mjs
 import { chromium } from 'playwright';
 import fs from 'node:fs';
@@ -30,19 +30,26 @@ try {
   await page.getByLabel('邮箱').fill(email);
   await page.getByLabel('密码（至少 8 位）').fill('password123');
   await page.getByLabel('确认密码').fill('password123');
-  await page.getByLabel('邀请码').fill('weaver-dev-2026');
+  const inviteField = page.getByLabel('邀请码');
+  if (await inviteField.count()) await inviteField.fill('weaver-dev-2026');
   await page.getByRole('button', { name: '注册并登录' }).click();
   await page.waitForURL('**/trips', { timeout: 10_000 });
   check('注册并自动登录跳转行程列表', true);
 
-  // 3. 空状态 + 加载示例行程
+  // 3. 规划页不再让用户填写预算；兼容默认值由客户端提交逻辑内部补齐
+  await page.goto(`${BASE}/planner`, { waitUntil: 'networkidle' });
+  const plannerBudgetFields = await page.getByText(/预算档位|总预算（元\/人/).count();
+  check('规划页不再展示预算表单项', plannerBudgetFields === 0, `budgetFields=${plannerBudgetFields}`);
+  await page.goto(`${BASE}/trips`, { waitUntil: 'networkidle' });
+
+  // 4. 空状态 + 加载示例行程
   await page.getByRole('button', { name: '加载示例行程' }).click();
   await page.waitForURL('**/trips/*', { timeout: 10_000 });
   await page.waitForSelector('.day-section', { timeout: 10_000 });
   const dayCount = await page.locator('.day-section').count();
   check('示例行程进入编辑器且有 3 天', dayCount === 3, `days=${dayCount}`);
 
-  // 4. 地图标记与折线（等待瓦片与标记渲染）
+  // 5. 地图标记与折线（等待瓦片与标记渲染）
   await page.waitForSelector('.marker-pin', { timeout: 10_000 });
   await page.waitForSelector('.leaflet-tile-loaded', { timeout: 20_000 }).catch(() => {});
   await page.waitForTimeout(1500);
@@ -51,10 +58,10 @@ try {
   const markerInView = await page.locator('.marker-pin').first().isVisible();
   check('地图渲染活动序号标记', markers === 11, `markers=${markers}（示例共 11 个活动）`);
   check('地图标记位于视口内', markerInView);
-  check('地图渲染每日折线', polylines >= 3, `paths=${polylines}`);
+  check('示例无通勤 legs 时地图不臆造路线折线', polylines === 0, `paths=${polylines}`);
   await page.screenshot({ path: `${SHOTS}/01-editor-desktop.png` });
 
-  // 5. 天数过滤：切 D2 后地图只剩当天标记
+  // 6. 天数过滤：切 D2 后地图只剩当天标记
   await page.locator('.day-filter-btn', { hasText: 'D2' }).click();
   await page.waitForTimeout(800);
   const d2markers = await page.locator('.marker-pin').count();
@@ -63,24 +70,15 @@ try {
   await page.screenshot({ path: `${SHOTS}/02-day-filter-d2.png` });
   await page.locator('.day-filter-btn', { hasText: '全部' }).click();
 
-  // 6. 预算页签：总额与条形图
-  await page.locator('.panel-tab', { hasText: '预算' }).click();
-  const totalText = await page.locator('.editor-left .budget-total').innerText();
-  const barRows = await page.locator('.editor-left .bar-row').count();
-  check('预算面板显示总额与分项条形图', totalText.includes('¥1180') && barRows >= 3, `total="${totalText.trim()}", bars=${barRows}`);
-  await page.screenshot({ path: `${SHOTS}/03-budget-panel.png` });
-  await page.locator('.panel-tab', { hasText: '行程' }).click();
+  // 7. 预算与费用 UI 已移除，旧数据中的字段不再面向用户展示
+  const budgetTabs = await page.getByRole('button', { name: '预算' }).count();
+  const costControls = await page.locator('.cost-chip, .cost-input, .budget-panel').count();
+  check('编辑器不再展示预算页签或费用控件', budgetTabs === 0 && costControls === 0, `budgetTabs=${budgetTabs}, costControls=${costControls}`);
 
-  // 7. 内联改费用 → 预算联动 + 自动保存指示
-  await page.locator('.activity-card').first().locator('.cost-chip').click();
-  await page.locator('.cost-input').fill('500');
-  await page.locator('.cost-input').press('Enter');
-  await page.waitForSelector('.save-state:has-text("已保存")', { timeout: 10_000 });
-  check('内联修改费用并自动保存', true);
-  await page.locator('.panel-tab', { hasText: '预算' }).click();
-  const totalAfter = await page.locator('.editor-left .budget-total').innerText();
-  check('费用修改联动预算总额（1180→1600）', totalAfter.includes('¥1600'), `total="${totalAfter.trim()}"`);
-  await page.locator('.panel-tab', { hasText: '行程' }).click();
+  await page.getByRole('button', { name: '行程信息' }).click();
+  const metaBudgetFields = await page.getByText(/预算档次|总预算（¥/).count();
+  check('行程信息弹窗不再展示预算字段', metaBudgetFields === 0, `budgetFields=${metaBudgetFields}`);
+  await page.getByRole('button', { name: '取消' }).click();
 
   // 8. 活动下移排序
   const firstDay = page.locator('.day-section').first();
@@ -95,7 +93,6 @@ try {
   await page.getByLabel('名称').fill('自动化测试活动');
   await page.getByLabel('纬度 lat').fill('31.22');
   await page.getByLabel('经度 lng').fill('121.48');
-  await page.getByLabel('费用（全团 ¥）').fill('66');
   await page.getByRole('button', { name: '保存' }).click();
   await page.waitForSelector('.save-state:has-text("已保存")', { timeout: 10_000 });
   const added = await firstDay.locator('.activity-name', { hasText: '自动化测试活动' }).count();
@@ -105,10 +102,9 @@ try {
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForSelector('.day-section', { timeout: 10_000 });
   const persistedName = await page.locator('.activity-name', { hasText: '自动化测试活动' }).count();
-  const persistedCost = await page.locator('.cost-chip', { hasText: '¥500' }).count();
-  check('刷新后新增与改费用均持久化', persistedName === 1 && persistedCost >= 1, `added=${persistedName}, cost500=${persistedCost}`);
+  check('刷新后新增活动持久化', persistedName === 1, `added=${persistedName}`);
 
-  // 11. 移动端视口：三页签切换 + 地图 invalidateSize（复用同 context 保留登录态）
+  // 11. 移动端视口：行程/地图两页签切换 + 地图 invalidateSize（复用同 context 保留登录态）
   const mob = await page.context().newPage();
   await mob.setViewportSize({ width: 390, height: 844 });
   await mob.goto(page.url(), { waitUntil: 'networkidle' });
@@ -122,10 +118,8 @@ try {
   check('移动端地图页签渲染标记', mobMarkers >= 11, `markers=${mobMarkers}`);
   check('移动端切页签后标记位于视口内（invalidateSize+refit）', mobMarkerInView);
   await mob.screenshot({ path: `${SHOTS}/05-mobile-map.png` });
-  await mob.locator('.mobile-tab', { hasText: '预算' }).click();
-  const mobBudgetVisible = await mob.locator('.editor-mobile-budget .budget-total').isVisible();
-  check('移动端预算页签可见', mobBudgetVisible);
-  await mob.screenshot({ path: `${SHOTS}/06-mobile-budget.png` });
+  const mobileTabs = await mob.locator('.mobile-tab').allInnerTexts();
+  check('移动端仅保留行程与地图页签', mobileTabs.join(',') === '行程,地图', mobileTabs.join(','));
   await mob.close();
 
   // 12. 行程列表回访 + 设置弹窗分级

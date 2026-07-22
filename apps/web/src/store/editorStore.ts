@@ -10,7 +10,7 @@ interface EditorState {
   load: (trip: Trip) => void;
   clear: () => void;
   setDayFilter: (dayIndex: number | null) => void;
-  updateMeta: (patch: Partial<Pick<Trip, 'title' | 'destination' | 'startDate' | 'budgetLevel' | 'totalBudget' | 'partySize' | 'extraNotes'>>) => void;
+  updateMeta: (patch: Partial<Pick<Trip, 'title' | 'destination' | 'startDate' | 'partySize' | 'extraNotes'>>) => void;
   /** Trip 级住宿锚点：改名即清空坐标并丢弃使用该锚点各天的住宿 leg（无客户端重编码端点）；空串 = 移除 */
   updateLodging: (name: string) => void;
   /** day 级住宿覆盖：语义同上，仅影响该天；空串 = 清除覆盖（回落 Trip 级） */

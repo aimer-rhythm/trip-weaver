@@ -176,16 +176,9 @@ a { color: var(--color-primary); text-decoration: none; }
   width: 430px; flex-shrink: 0; display: flex; flex-direction: column;
   border-right: 1px solid var(--color-border); background: var(--color-bg); min-height: 0;
 }
-.panel-tabs { display: flex; gap: 4px; padding: 10px 14px 0; }
-.panel-tab {
-  border: none; background: none; cursor: pointer; font-size: 0.92rem; color: var(--color-muted);
-  padding: 6px 12px; border-radius: 8px 8px 0 0; border-bottom: 2px solid transparent;
-}
-.panel-tab.active { color: var(--color-primary); border-bottom-color: var(--color-primary); font-weight: 600; }
 .editor-left-scroll { flex: 1; overflow-y: auto; padding: 12px 14px 40px; min-height: 0; }
 .editor-map { flex: 1; min-width: 0; position: relative; }
 .editor-mobile-tabs { display: none; }
-.editor-mobile-budget { display: none; }
 
 /* 天区块 */
 .day-section { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
@@ -193,7 +186,6 @@ a { color: var(--color-primary); text-decoration: none; }
 .day-label { font-weight: 700; white-space: nowrap; }
 .day-title-input { flex: 1; min-width: 0; border: none; background: none; font-size: 0.92rem; color: var(--color-text); padding: 4px; }
 .day-title-input:focus { outline: 1px dashed var(--color-border); border-radius: 4px; }
-.day-total { white-space: nowrap; }
 .day-body { padding: 4px 10px 10px; display: flex; flex-direction: column; gap: 8px; }
 .day-empty { text-align: center; padding: 8px 0; }
 .btn-add-activity, .btn-add-day { justify-content: center; border-style: dashed; }
@@ -207,8 +199,6 @@ a { color: var(--color-primary); text-decoration: none; }
 .activity-name { font-weight: 600; font-size: 0.94rem; }
 .cat-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.76rem; color: var(--color-muted); }
 .cat-badge i, .cat-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.cost-chip { border: 1px solid var(--color-border); border-radius: 999px; background: #fff; padding: 1px 8px; font-size: 0.78rem; cursor: pointer; margin-left: auto; }
-.cost-input { width: 72px; border: 1px solid var(--color-primary); border-radius: 999px; padding: 1px 8px; font-size: 0.78rem; margin-left: auto; }
 .activity-desc { margin: 4px 0 0; font-size: 0.83rem; color: var(--color-muted); }
 .activity-flags { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
 .tag-warn { background: #fff3e0; color: #b26a00; }
@@ -217,18 +207,6 @@ a { color: var(--color-primary); text-decoration: none; }
 .btn-icon:hover { background: #eef2f5; color: var(--color-text); }
 .day-move-select { border: 1px solid transparent; border-radius: 6px; font-size: 0.78rem; padding: 2px 4px; background: none; color: var(--color-muted); cursor: pointer; }
 .day-move-select:hover { border-color: var(--color-border); }
-
-/* 预算面板 */
-.budget-panel { display: flex; flex-direction: column; gap: 16px; }
-.budget-block { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 12px 14px; }
-.budget-block h3 { margin: 0 0 8px; font-size: 0.92rem; }
-.budget-total { margin: 0 0 8px; font-size: 1.2rem; }
-.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.bar-label { width: 64px; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; }
-.bar-track { flex: 1; height: 10px; background: #edf1f4; border-radius: 999px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--color-primary); border-radius: 999px; transition: width 0.25s; }
-.bar-over { background: var(--color-danger); }
-.bar-value { width: 64px; text-align: right; font-size: 0.8rem; color: var(--color-muted); font-variant-numeric: tabular-nums; }
 
 /* 地图 */
 .map-pane { position: absolute; inset: 0; }
@@ -390,13 +368,8 @@ a { color: var(--color-primary); text-decoration: none; }
 .pv-activity-line { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .pv-time { color: #68777f; font-variant-numeric: tabular-nums; min-width: 96px; }
 .pv-cat { color: #68777f; font-size: 0.82rem; }
-.pv-cost { margin-left: auto; font-variant-numeric: tabular-nums; }
 .pv-desc { margin: 2px 0 0; color: #4a575f; font-size: 0.88rem; }
 .pv-notes { margin: 2px 0 0; color: #1d5578; font-size: 0.8rem; }
-.pv-budget { background: #f4f7f9; border-radius: 10px; padding: 12px 16px; margin-top: 8px; }
-.pv-total { margin: 0 0 8px; }
-.pv-budget-rows { display: flex; flex-wrap: wrap; gap: 4px 18px; }
-.pv-budget-rows p { margin: 0; font-size: 0.88rem; color: #4a575f; }
 .pv-review { margin-top: 14px; }
 .pv-review p { margin: 2px 0; color: #4a575f; }
 .pv-foot { margin-top: 20px; text-align: center; color: #9aa7ae; font-size: 0.8rem; }
@@ -425,11 +398,8 @@ a { color: var(--color-primary); text-decoration: none; }
   .editor-body { position: relative; }
   .editor-left { width: 100%; border-right: none; display: none; }
   .editor-map { display: none; }
-  .editor-mobile-budget { display: none; padding: 12px 14px 40px; overflow-y: auto; width: 100%; }
   .editor-body.mobile-list .editor-left { display: flex; }
-  .editor-body.mobile-list .panel-tabs { display: none; }
   .editor-body.mobile-map .editor-map { display: block; }
-  .editor-body.mobile-budget .editor-mobile-budget { display: block; }
 
   .editor-title .muted { display: none; }
 }

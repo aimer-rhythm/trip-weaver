@@ -33,10 +33,6 @@ export function DaySection({ day, allDays, poiByActivityId, onEditActivity }: Pr
   const tripLodging = useEditorStore((s) => s.trip?.lodging);
   const [collapsed, setCollapsed] = useState(false);
 
-  const dayTotal = useMemo(
-    () => day.activities.reduce((n, a) => n + (a.cost ?? 0), 0),
-    [day.activities],
-  );
   // 住宿锚点（ST3）：day 级覆盖优先；有锚点才尝试渲染住宿 leg（哨兵 id 严格匹配当天首尾活动）
   const lodging = day.lodging ?? tripLodging;
   const lodgingLegs = useMemo(() => (lodging ? lodgingLegsForDay(day) : {}), [lodging, day]);
@@ -57,7 +53,6 @@ export function DaySection({ day, allDays, poiByActivityId, onEditActivity }: Pr
           maxLength={30}
           onChange={(e) => updateDayTitle(day.id, e.target.value)}
         />
-        <span className="day-total muted">约 ¥{dayTotal}</span>
         <button
           type="button"
           className="btn btn-icon btn-danger"
