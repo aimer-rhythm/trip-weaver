@@ -170,8 +170,9 @@ insufficient — the planner assigns `dayIndex` before any coordinates exist):
    (three-level `structuredClone` snapshots). Bounded: ≤3 moves/day, ≤8 attempts/task;
    multi-far-suburb days are handled per-day by the same rule, never specially. Fixer
    exceptions degrade to "not fixed" and the reviewer proceeds (generation-never-fails).
-- Recomputation after each move uses `computeLegs(draft, session, { onlyDayIndexes })` —
-  the targeted-day variant; omitting the option preserves the legacy full recompute.
+- Recomputation after each move uses
+  `computeLegs(draft, onProgress, signal, onlyDayIndexes)` — the targeted-day variant;
+  omitting `onlyDayIndexes` preserves the full recompute.
 
 Representative paths: `apps/server/src/generation/longHaul.ts`,
 `apps/server/src/generation/longHaulFixer.ts`, `apps/server/src/generation/draft.ts`,
@@ -214,6 +215,154 @@ lodging name invalidates its coordinates: clear them and drop the affected days'
 Representative paths: `packages/shared/src/schemas.ts`, `packages/shared/src/legs.ts`,
 `apps/server/src/generation/geoPipeline.ts`, `apps/web/src/store/editorStore.ts`.
 
+## Scenario: Final Route Coherence After Model Review
+
+### 1. Scope / Trigger
+
+Apply this contract after the final reviewer turn. Reviewer tools can update, remove, or reorder
+activities, and model-authored day boundaries can separate nearby places while pairing each with
+a distant place. Both cases make pre-review legs or grouping unsafe to persist unchanged.
+
+### 2. Signatures
+
+- `computeLegs(draft, onProgress, signal?, onlyDayIndexes?): Promise<void>`
+- `optimizeCrossDayGrouping(draft, context): Promise<RouteCoherenceResult>`
+- `repairTransitTiming(days): number[]`
+
+### 3. Contracts
+
+- Recompute all legs immediately after review. If this optional recompute fails, delete every
+  day's legs; missing routes are truthful, stale routes are not.
+- Cross-day grouping swaps only same-category visit blocks and keeps following meal activities
+  attached to their attraction. A candidate needs a strong proximity signal in either direction:
+  at most 20km from a target-day peer, at least 40km from its current-day peers, and at least
+  30km closer to the target cluster.
+- Rank candidates heuristically, try at most three, then targeted-recompute both affected days.
+  Accept only when all required current-adjacency/lodging legs exist, total computed route time
+  drops by at least 30 minutes, and hard feasibility violations do not increase.
+- Snapshot the complete day array before attempts. Any rejected or failed attempt restores the
+  snapshot exactly. Non-cancellation failures degrade to the original itinerary; cancellation
+  propagates to the orchestrator.
+- Run final meal repair after grouping, recompute days receiving inserted meals, then push
+  activities forward using current legs. A shifted meal must remain fully inside its meal window.
+
+### 4. Validation & Error Matrix
+
+- Reviewer deletes/reorders an activity -> full recompute replaces stale endpoint ids.
+- Initial or post-swap required leg is missing -> skip/reject optimization; never count it as
+  zero-minute travel.
+- Real route gain is under 30 minutes or hard count rises -> restore the attempt snapshot.
+- Targeted recompute throws -> restore the entry snapshot and continue generation without a swap.
+- `AbortSignal` is aborted -> restore state and rethrow so the job converges to `cancelled`.
+
+### 5. Good / Base / Bad Cases
+
+- Good: 乌兰察布's 辉腾锡勒 and 黄花沟 are grouped on one day only after the real route total
+  improves by at least 30 minutes and hard violations do not increase.
+- Base: no candidate passes the conservative thresholds; persist the reviewed day grouping with
+  freshly recomputed legs.
+- Bad: accept a swap because a missing leg was summed as zero, or retain legs that reference an
+  activity removed by the reviewer.
+
+### 6. Tests Required
+
+- `routeCoherence.test.ts` covers the Ulanqab grouping regression, affinity in both day
+  directions, per-day-valid leg ids, minimum route gain, no new hard violations, exact rollback,
+  cancellation propagation, and transit-aware timing repair.
+- Orchestrator integration verification must still reach `job_done` when optional geo/grouping
+  work degrades, and persisted days must contain no stale leg endpoint ids.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: reviewer mutations leave stale routes, and missing post-swap legs look artificially fast.
+await runReviewer(draft);
+const gain = oldMinutes - sumPresentLegsOnly(draft);
+persist(draft);
+
+// Correct: rebuild final routes, then accept a bounded swap only after strict real-route checks.
+await geo.computeLegs(draft, onProgress, signal);
+await optimizeCrossDayGrouping(draft, { mode, recomputeLegs, signal });
+ensureMealCoverage(draft.mutableDays(), destination);
+repairTransitTiming(draft.mutableDays());
+persist(draft);
+```
+
+## Scenario: Meal Completeness and Legacy Budget Compatibility
+
+### 1. Scope / Trigger
+
+Apply this contract when changing planner/reviewer prompts, draft validation, final generation
+post-passes, or the legacy `GenerateForm` / `Trip` budget fields. TripWeaver owns meal timing,
+area, and cuisine planning; it does not claim live restaurant price, rating, opening-hours,
+queue, reservation, or transaction capability.
+
+### 2. Signatures
+
+- `missingMeals(days): Array<{ dayIndex: number; kind: 'lunch' | 'dinner' }>`
+- `mealCoverageProblems(days): string[]`
+- `ensureMealCoverage(days, destination): MealRepair[]`
+- `DraftTrip.validate(): string[]` includes `mealCoverageProblems`.
+- `GenerateForm.budgetLevel`, `GenerateForm.totalBudget`, `Trip.budgetLevel`,
+  `Trip.totalBudget`, and `Activity.cost?` remain compatibility fields.
+
+### 3. Contracts
+
+- Every newly generated day must contain both lunch and dinner. Explicit meal names count;
+  otherwise only `category === '美食'` starting in 11:00-14:30 or 17:00-21:30 counts.
+- `submit_plan` rejects a draft with a day-specific missing-meal problem before review.
+- After the final review, `ensureMealCoverage` runs again. It inserts a non-overlapping meal
+  slot with a 15-minute transfer buffer on both sides and invalidates that day's legs, or, when
+  no slot exists, integrates the meal into an activity spanning the meal window so it does not
+  create an overlap.
+- Deterministic repair creates no `cost`. Its copy recommends an area, local cuisine, or
+  representative dish and sends live price/review/hours/queue confirmation to Dianping or
+  Meituan.
+- New model tool schemas do not expose `cost`, and budget fields do not influence planner or
+  reviewer decisions. Existing stored budget/cost values still parse and round-trip unchanged.
+
+### 4. Validation & Error Matrix
+
+- Missing lunch/dinner at `submit_plan` -> return explicit day/meal problems; do not submit.
+- Reviewer removes the last meal and a slot is free -> insert the missing meal, recompute legs
+  for the changed day, continue generation.
+- Reviewer removes the last meal and no slot is free -> integrate into a spanning activity,
+  continue without adding an overlapping activity.
+- Restaurant live data is absent or stale -> keep advice generic and require external-platform
+  confirmation; never invent dynamic facts.
+- Legacy JSON contains budget or activity cost -> accept and preserve it; do not use it to steer
+  a new generation.
+
+### 5. Good / Base / Bad Cases
+
+- Good: a day has `午餐｜前门片区 · 京味小吃` at 12:00 and a replaceable dinner area at 18:30.
+- Base: review deletes dinner; the post-pass inserts a nearby 18:00-19:15 dinner suggestion.
+- Bad: treat one generic food stop at 15:00 as both meals, or claim a restaurant's current
+  rating/price/queue without a live authoritative integration.
+
+### 6. Tests Required
+
+- Unit-test explicit-name and time-window meal detection, per-day problem messages, insertion
+  ordering, leg invalidation, no-cost output, and the no-free-slot integration fallback.
+- Prompt tests assert both meals and external-platform boundaries, and assert budget/cost tools
+  are absent.
+- `scripts/verify-c2.mjs` must complete the full generation/SSE/persistence flow with mock days
+  that include both meals.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: prompt-only completeness can be undone by review.
+await runReviewer(draft);
+persist(draft);
+
+// Correct: validate before submit, then deterministically enforce after review.
+draft.validate();
+await runReviewer(draft);
+ensureMealCoverage(draft.mutableDays(), form.destination);
+persist(draft);
+```
+
 ### Common Mistake: AbortSignal only checked at phase boundaries
 
 **Symptom**: after cancellation the job stays "running" for tens of seconds while a post-pass
@@ -233,6 +382,13 @@ The orchestrator applies a 10-minute whole-job timeout through the job abort con
 limits review to two rounds. Individual agent turns and external provider calls have their own
 limits. Keep a whole-job limit even when adding narrower timeouts so a stalled phase cannot
 leave a user permanently marked as running.
+
+The review phase keeps its 12-turn per-agent bound. If that bound is exceeded, stop the reviewer,
+preserve any draft mutations it already completed, add an explicit degraded-review note, and
+continue through deterministic meal coverage, final feasibility notes, and persistence. Review
+turn exhaustion is a quality degradation, not a reason to discard an otherwise usable plan;
+after successful persistence it follows normal successful-generation quota accounting. Other
+model/provider errors remain visible failures.
 
 Validation paths: `scripts/verify-c2.mjs` covers API/SSE replay, cancellation, quota, BYOK,
 and migration behavior; `scripts/verify-c3.mjs` covers the production browser flow and
