@@ -12,6 +12,7 @@ import { rejectFarGeocodes } from './geoSanity';
 import type { DraftTrip } from './draft';
 
 export const GEOCODE_MAX_PER_TASK = 40;   // 单次生成 ≤40 次高德定位调用（POI text + v3 geocode 合计；含 lodging 解析）
+const GEOCODE_PIPELINE_CONCURRENCY = 2;   // 仅重叠高德与 Nominatim 独立队列；各提供方内部仍严格串行限速
 
 export interface GeoSession {
   /** 高德调用尝试次数（geocode + route 合计）：计入 usage 事件与 generations.amap_calls */
@@ -103,19 +104,29 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
       const cityCenter = pending.length || lodgingPending ? await resolveCityPlace() : null;
 
       // 解析结果先暂存不落坐标：出口统一过地理合理性校验后再采纳（校验只拒不改，宁缺毋错）
-      const staged: { activity: Activity; place: GeocodedPlace }[] = [];
+      const stagedByIndex: Array<{ activity: Activity; place: GeocodedPlace } | undefined> = new Array(pending.length);
+      let nextIndex = 0;
       let done = 0;
-      for (const activity of pending) {
-        // 取消响应：每次串行网络调用（350ms 限速 / Nominatim 1.1s）前检查，避免取消后长时间挂起
-        if (signal?.aborted) throw new Error('已取消');
-        const place = await geocodeActivity(apiKey, activity.name, destination, tryGeocode);
-        done += 1;
-        if (place) staged.push({ activity, place });
-        // 全链失败：保留模型给的估算坐标（或 0,0），coordSource 维持 estimated 如实标注
-        if (done % 4 === 0 || done === pending.length) {
-          onProgress(`正在解析活动坐标 (${done}/${pending.length})`);
+      const worker = async () => {
+        while (nextIndex < pending.length) {
+          const index = nextIndex++;
+          const activity = pending[index]!;
+          // 最多两个工作槽；每个槽取下一项前检查，取消后不继续铺开剩余外呼。
+          if (signal?.aborted) return;
+          const place = await geocodeActivity(apiKey, activity.name, destination, tryGeocode);
+          done += 1;
+          if (place) stagedByIndex[index] = { activity, place };
+          // 全链失败：保留模型给的估算坐标（或 0,0），coordSource 维持 estimated 如实标注
+          if (done % 4 === 0 || done === pending.length) {
+            onProgress(`正在解析活动坐标 (${done}/${pending.length})`);
+          }
         }
-      }
+      };
+      const workerCount = Math.min(GEOCODE_PIPELINE_CONCURRENCY, pending.length);
+      await Promise.all(Array.from({ length: workerCount }, worker));
+      if (signal?.aborted) throw new Error('已取消');
+      // 工作槽完成顺序可能不同；校验和采纳必须恢复活动原顺序，保证结果与串行版本一致。
+      const staged = stagedByIndex.filter((item): item is { activity: Activity; place: GeocodedPlace } => item !== undefined);
 
       // 住宿锚点解析（ST3）：同一解析链与记账（计入 GEOCODE_MAX_PER_TASK）；失败静默 —— 无坐标即不生成住宿 leg
       let lodgingPlace: GeocodedPlace | null = null;

@@ -87,22 +87,27 @@ export interface UsageView {
 
 export type GenerationPhase = 'research' | 'plan' | 'review';
 export type GenerationJobStatus = 'running' | 'done' | 'error' | 'cancelled';
+/** 取消来源：用户主动取消 vs 整任务超时被系统自动取消（reason 可选以兼容旧事件） */
+export type GenerationCancelReason = 'user' | 'timeout';
 
 /** SSE 载荷；事件 id 由 jobManager 递增分配，供 Last-Event-ID 重放
  *  兼容说明：xhsEnabled / xhsCalls / usedXhs 为小红书时代的旧前端兼容字段——
  *  xhsEnabled 现语义为「有任一外部调研数据源可用」，xhsCalls 恒 0，usedXhs 恒 false */
-export type GenerationEvent =
+type GenerationEventPayload =
   | { type: 'job_start'; destination: string; xhsEnabled: boolean; dataSources: DataSourceKind[] }
   | { type: 'phase_start'; phase: GenerationPhase; round: number; note?: string }
-  | { type: 'phase_end'; phase: GenerationPhase; round: number; summary?: string }
+  | { type: 'phase_end'; phase: GenerationPhase; round: number; summary?: string; durationMs?: number }
   | { type: 'thought'; phase: GenerationPhase; text: string }
   | { type: 'tool_start'; phase: GenerationPhase; toolCallId: string; tool: string; label: string; args: string }
-  | { type: 'tool_end'; phase: GenerationPhase; toolCallId: string; tool: string; label: string; summary: string; isError: boolean }
+  | { type: 'tool_end'; phase: GenerationPhase; toolCallId: string; tool: string; label: string; summary: string; isError: boolean; durationMs?: number }
   | { type: 'candidate'; poi: ResearchPoi }   // 调研 Agent 每写入一条候选即推送（概览卡片实时长出）
   | { type: 'usage'; tokensIn: number; tokensOut: number; xhsCalls: number; amapCalls: number; searchCalls: number }
-  | { type: 'job_done'; tripId: string; usedXhs: boolean; dataSources: DataSourceKind[]; reviewNotes: string[] }
-  | { type: 'job_error'; message: string }
-  | { type: 'job_cancelled' };
+  | { type: 'job_done'; tripId: string; usedXhs: boolean; dataSources: DataSourceKind[]; reviewNotes: string[]; durationMs?: number }
+  | { type: 'job_error'; message: string; durationMs?: number }
+  | { type: 'job_cancelled'; reason?: GenerationCancelReason; durationMs?: number };
+
+/** 服务端事件时间（Unix ms）用于稳定重放耗时；可选以兼容旧事件。 */
+export type GenerationEvent = GenerationEventPayload & { at?: number };
 
 /** GET /api/generations/:jobId 快照（刷新恢复用） */
 export interface GenerationJobView {

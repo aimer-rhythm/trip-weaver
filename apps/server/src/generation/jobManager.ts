@@ -1,6 +1,13 @@
 // 生成任务管理：内存任务表 + 512 条事件环形缓冲 + Last-Event-ID 重放 + 取消
 // 单实例边界（架构 §7）：重启即丢任务 —— 路由层在启动时不做恢复，进行中任务由前端超时兜底
-import { uid, type DataSourceKind, type GenerationEvent, type GenerationJobStatus, type GenerationJobView } from '@tripweaver/shared';
+import {
+  uid,
+  type DataSourceKind,
+  type GenerationCancelReason,
+  type GenerationEvent,
+  type GenerationJobStatus,
+  type GenerationJobView,
+} from '@tripweaver/shared';
 
 const RING_SIZE = 512;
 const FINISHED_TTL_MS = 30 * 60 * 1000; // 终态任务保留 30 分钟供刷新恢复
@@ -19,6 +26,8 @@ export interface Job {
   tripId: string | null;
   createdAt: number;
   abort: AbortController;
+  /** 取消来源：路由层用户取消置 'user'；orchestrator 超时置 'timeout'。默认 'user' */
+  cancelReason: GenerationCancelReason;
   events: StoredEvent[];
   nextEventId: number;
   listeners: Set<Listener>;
@@ -39,6 +48,7 @@ export function createJob(userId: string): Job {
     tripId: null,
     createdAt: Date.now(),
     abort: new AbortController(),
+    cancelReason: 'user',
     events: [],
     nextEventId: 1,
     listeners: new Set(),
@@ -58,7 +68,7 @@ export function jobView(job: Job): GenerationJobView {
 }
 
 export function emit(job: Job, event: GenerationEvent): void {
-  const stored: StoredEvent = { id: job.nextEventId++, event };
+  const stored: StoredEvent = { id: job.nextEventId++, event: { ...event, at: event.at ?? Date.now() } };
   job.events.push(stored);
   if (job.events.length > RING_SIZE) job.events.splice(0, job.events.length - RING_SIZE);
   for (const listener of job.listeners) {
@@ -77,20 +87,23 @@ function finish(job: Job, status: GenerationJobStatus): void {
 }
 
 export function completeJob(job: Job, tripId: string, dataSources: DataSourceKind[], reviewNotes: string[]): void {
+  const finishedAt = Date.now();
   job.tripId = tripId;
   finish(job, 'done');
   // usedXhs 为旧前端兼容字段（小红书已移除，恒 false）
-  emit(job, { type: 'job_done', tripId, usedXhs: false, dataSources, reviewNotes });
+  emit(job, { type: 'job_done', tripId, usedXhs: false, dataSources, reviewNotes, at: finishedAt, durationMs: finishedAt - job.createdAt });
 }
 
 export function failJob(job: Job, message: string): void {
+  const finishedAt = Date.now();
   finish(job, 'error');
-  emit(job, { type: 'job_error', message });
+  emit(job, { type: 'job_error', message, at: finishedAt, durationMs: finishedAt - job.createdAt });
 }
 
-export function cancelJob(job: Job): void {
+export function cancelJob(job: Job, reason: GenerationCancelReason = job.cancelReason): void {
+  const finishedAt = Date.now();
   finish(job, 'cancelled');
-  emit(job, { type: 'job_cancelled' });
+  emit(job, { type: 'job_cancelled', reason, at: finishedAt, durationMs: finishedAt - job.createdAt });
 }
 
 /** 重放 afterId 之后的事件，再挂实时监听；返回退订函数 */

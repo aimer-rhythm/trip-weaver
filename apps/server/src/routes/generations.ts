@@ -35,7 +35,7 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     }
 
     const job = createJob(userId);
-    runGeneration(job, request.body, cfg).catch((err) => app.log.error(err, 'runGeneration 未捕获异常'));
+    runGeneration(job, request.body, cfg, app.log).catch((err) => app.log.error(err, 'runGeneration 未捕获异常'));
     return reply.code(202).send({ jobId: job.id });
   });
 
@@ -100,6 +100,7 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     const job = getJob(jobId, request.user!.id);
     if (!job) return reply.code(404).send({ error: '任务不存在或已过期' });
     if (job.status !== 'running') return { ok: false, status: job.status };
+    job.cancelReason = 'user';             // 用户主动取消：事件携带 reason，前端区分展示
     job.abort.abort();                     // orchestrator 捕获后落 cancelled（不计配额）
     return reply.code(202).send({ ok: true });
   });

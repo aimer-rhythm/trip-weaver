@@ -6,8 +6,10 @@ import {
   type DataSourceKind,
   type FeasibilityReport,
   type GenerateForm,
+  type GenerationJobStatus,
   type GenerationPhase,
 } from '@tripweaver/shared';
+import type { FastifyBaseLogger } from 'fastify';
 import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
@@ -35,6 +37,7 @@ import { optimizeCrossDayGrouping, repairTransitTiming } from './routeCoherence'
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
+import { GenerationPerformance } from './performance';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { buildGeoTools } from './tools/geoTools';
 import { buildDraftTools, buildSubmitPlanTool } from './tools/draftTools';
@@ -62,12 +65,28 @@ function researchNote(sources: DataSourceKind[]): string | undefined {
     : '高德地点数据不可用，本次基于全网搜索 + 模型知识调研';
 }
 
-export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig): Promise<void> {
+export async function runGeneration(
+  job: Job,
+  form: GenerateForm,
+  cfg: LlmConfig,
+  logger?: Pick<FastifyBaseLogger, 'info'>,
+): Promise<void> {
   const signal = job.abort.signal;
   const usage = { tokensIn: 0, tokensOut: 0 };
-  const timeout = setTimeout(() => job.abort.abort(), JOB_TIMEOUT_MS);
+  const timing = new GenerationPerformance(job.createdAt);
+  let terminalStatus: GenerationJobStatus = 'error';
+  let systemTaskSeq = 0;
+  const timeout = setTimeout(() => {
+    job.cancelReason = 'timeout';   // 超时自动取消：事件携带 reason，前端区分展示
+    job.abort.abort();
+  }, JOB_TIMEOUT_MS);
   timeout.unref?.();
 
+  // 模型安全校验与搜索源安全校验互不依赖，尽早并行启动以缩短初始化等待。
+  const modelPromise = buildModel(cfg).then(
+    (model) => ({ ok: true as const, model }),
+    (error: unknown) => ({ ok: false as const, error }),
+  );
   // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
   const poiBase =
     amapBudgetRemaining() >= AMAP_MAX_PER_TASK
@@ -88,10 +107,14 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
 
   const sinkFor = (phase: GenerationPhase): PhaseEventSink => ({
     onThought: (text) => emit(job, { type: 'thought', phase, text }),
-    onToolStart: (toolCallId, tool, label, args) =>
-      emit(job, { type: 'tool_start', phase, toolCallId, tool, label, args: JSON.stringify(args ?? {}).slice(0, 200) }),
-    onToolEnd: (toolCallId, tool, label, summary, isError) =>
-      emit(job, { type: 'tool_end', phase, toolCallId, tool, label, summary, isError }),
+    onToolStart: (toolCallId, tool, label, args) => {
+      const at = timing.startTask(toolCallId, tool);
+      emit(job, { type: 'tool_start', phase, toolCallId, tool, label, args: JSON.stringify(args ?? {}).slice(0, 200), at });
+    },
+    onToolEnd: (toolCallId, tool, label, summary, isError) => {
+      const ended = timing.endTask(toolCallId);
+      emit(job, { type: 'tool_end', phase, toolCallId, tool, label, summary, isError, ...ended });
+    },
     onUsage: (tokensIn, tokensOut) =>
       emit(job, {
         type: 'usage',
@@ -102,6 +125,36 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         searchCalls: search.stats.calls,
       }),
   });
+
+  const startPhase = (phase: GenerationPhase, round: number, note?: string) => {
+    const at = timing.startPhase(phase, round);
+    emit(job, { type: 'phase_start', phase, round, note, at });
+  };
+  const endPhase = (phase: GenerationPhase, round: number, summary?: string) => {
+    const ended = timing.endPhase(phase, round);
+    emit(job, { type: 'phase_end', phase, round, summary, ...ended });
+  };
+  const runSystemTask = async <T>(
+    phase: GenerationPhase,
+    tool: string,
+    label: string,
+    action: () => Promise<T> | T,
+    summary = '完成',
+  ): Promise<T> => {
+    const toolCallId = `system:${++systemTaskSeq}:${tool}`;
+    const at = timing.startTask(toolCallId, tool);
+    emit(job, { type: 'tool_start', phase, toolCallId, tool, label, args: '{}', at });
+    try {
+      const result = await action();
+      const ended = timing.endTask(toolCallId);
+      emit(job, { type: 'tool_end', phase, toolCallId, tool, label, summary, isError: false, ...ended });
+      return result;
+    } catch (error) {
+      const ended = timing.endTask(toolCallId);
+      emit(job, { type: 'tool_end', phase, toolCallId, tool, label, summary: '已降级', isError: true, ...ended });
+      throw error;
+    }
+  };
 
   const record = (status: 'done' | 'error' | 'cancelled', tripId: string | null) => {
     db.insert(generations)
@@ -123,11 +176,19 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
 
   try {
     // xhsEnabled 为旧前端兼容字段，现语义 =「有任一外部调研数据源可用」
-    emit(job, { type: 'job_start', destination: form.destination, xhsEnabled: enabledSources.length > 0, dataSources: enabledSources });
-    const model = await buildModel(cfg);   // BYOK：使用时二次 ssrfGuard，失败即 job_error
+    emit(job, {
+      type: 'job_start',
+      destination: form.destination,
+      xhsEnabled: enabledSources.length > 0,
+      dataSources: enabledSources,
+      at: job.createdAt,
+    });
+    const modelResult = await modelPromise;
+    if (!modelResult.ok) throw modelResult.error;
+    const { model } = modelResult;   // BYOK：使用时二次 ssrfGuard，失败即 job_error
 
     // ---------- 阶段 1：调研 ----------
-    emit(job, { type: 'phase_start', phase: 'research', round: 1, note: researchNote(enabledSources) });
+    startPhase('research', 1, researchNote(enabledSources));
     const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
     const researchRun = await runPhaseAgent({
       model,
@@ -148,12 +209,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     usage.tokensIn += researchRun.tokensIn;
     usage.tokensOut += researchRun.tokensOut;
     assertAlive(signal, researchRun.errorMessage);
-    emit(job, {
-      type: 'phase_end',
-      phase: 'research',
-      round: 1,
-      summary: `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`,
-    });
+    endPhase('research', 1, `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`);
 
     // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
     // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
@@ -184,18 +240,18 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     const resolveGeoAndSimulate = async (sink: PhaseEventSink): Promise<void> => {
       try {
         sink.onThought('正在解析坐标与通勤…');
-        await geo.geocodeAll(draft, sink.onThought, signal);
+        await runSystemTask('plan', 'geo_geocode_all', '解析活动坐标', () => geo.geocodeAll(draft, sink.onThought, signal));
         assertAlive(signal);
-        await geo.computeLegs(draft, sink.onThought, signal);
+        await runSystemTask('plan', 'geo_compute_legs', '估算通勤路线', () => geo.computeLegs(draft, sink.onThought, signal));
         assertAlive(signal);
       } catch (err) {
         if (signal.aborted) throw err;
       }
-      feasibility = draft.feasibility();
+      feasibility = await runSystemTask('plan', 'simulate_feasibility', '检查时空可行性', () => draft.feasibility());
     };
 
     for (let round = 1; round <= MAX_REVIEW_ROUNDS; round++) {
-      emit(job, { type: 'phase_start', phase: 'plan', round, note: round > 1 ? '按审校意见修订' : undefined });
+      startPhase('plan', round, round > 1 ? '按审校意见修订' : undefined);
       let planPassed = false;
       const plannerRun = await runPhaseAgent({
         model,
@@ -226,12 +282,14 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       // legs 重算复用 geoSession 定向重算（额度控制与 amap memo 内置）。
       try {
         const planSink = sinkFor('plan');
-        const fix = await repairLongHaulMixedDays(draft, {
-          mode: form.transportMode ?? 'transit',
-          recomputeLegs: (dayIndexes) => geo.computeLegs(draft, planSink.onThought, signal, dayIndexes),
-          onProgress: planSink.onThought,
-          signal,
-        });
+        const fix = await runSystemTask('plan', 'repair_long_haul', '优化远郊行程', () =>
+          repairLongHaulMixedDays(draft, {
+            mode: form.transportMode ?? 'transit',
+            recomputeLegs: (dayIndexes) => geo.computeLegs(draft, planSink.onThought, signal, dayIndexes),
+            onProgress: planSink.onThought,
+            signal,
+          }),
+        );
         if (fix.applied.length > 0) {
           autoFixMoves.push(...fix.applied);
           feasibility = draft.feasibility();   // 审校拿「修复器尽力后」的报告
@@ -239,9 +297,9 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
       } catch (err) {
         if (signal.aborted) throw err;
       }
-      emit(job, { type: 'phase_end', phase: 'plan', round });
+      endPhase('plan', round);
 
-      emit(job, { type: 'phase_start', phase: 'review', round });
+      startPhase('review', round);
       const review: ReviewOutcome = { submitted: false, approved: false, notes: [], revisionRequests: [] };
       const reviewerRun = await runPhaseAgent({
         model,
@@ -261,7 +319,7 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
           ...review.notes,
           '审校模型达到单阶段轮次上限，系统已保留已完成修订，并继续执行餐次完整性与可行性检查。',
         ].slice(0, 5);
-        emit(job, { type: 'phase_end', phase: 'review', round, summary: '审校轮次已达上限，转为确定性检查' });
+        endPhase('review', round, '审校轮次已达上限，转为确定性检查');
         break;
       }
       assertAlive(signal, reviewerRun.errorMessage);
@@ -272,11 +330,11 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
           // 轮次用尽仍未通过：把修订要求转成「审校遗留」提示（PRD F1）
           reviewNotes = [...review.notes, ...review.revisionRequests.map((r) => `审校遗留：${r}`)].slice(0, 5);
         }
-        emit(job, { type: 'phase_end', phase: 'review', round, summary: review.approved ? '审校通过' : '审校有遗留项' });
+        endPhase('review', round, review.approved ? '审校通过' : '审校有遗留项');
         break;
       }
       revisionRequests = review.revisionRequests;
-      emit(job, { type: 'phase_end', phase: 'review', round, summary: `需修订：${revisionRequests.length} 项` });
+      endPhase('review', round, `需修订：${revisionRequests.length} 项`);
     }
 
     const finalSink = sinkFor('review');
@@ -284,7 +342,9 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     // 审校可 update/remove 活动，旧 legs 会与最终活动序列失配。落库前全量重算一次；geoSession memo
     // 会复用未变化的高德路径，只有新相邻对才消耗路由额度。异常时清空 legs，宁缺勿持久化假路线。
     try {
-      await geo.computeLegs(draft, finalSink.onThought, signal);
+      await runSystemTask('review', 'geo_recompute_final_legs', '复核最终通勤路线', () =>
+        geo.computeLegs(draft, finalSink.onThought, signal),
+      );
       assertAlive(signal);
     } catch (err) {
       if (signal.aborted) throw err;
@@ -294,12 +354,14 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     // 跨天地理聚类兜底：只尝试高收益的同类地点交换；真实 legs 重算后若通勤未明显下降或 hard 增加，
     // 修复器会完整回滚。正常失败不影响生成，取消仍向外传播。
     try {
-      const grouping = await optimizeCrossDayGrouping(draft, {
-        mode: form.transportMode ?? 'transit',
-        recomputeLegs: (dayIndexes) => geo.computeLegs(draft, finalSink.onThought, signal, dayIndexes),
-        onProgress: finalSink.onThought,
-        signal,
-      });
+      const grouping = await runSystemTask('review', 'optimize_cross_day_grouping', '优化跨天路线', () =>
+        optimizeCrossDayGrouping(draft, {
+          mode: form.transportMode ?? 'transit',
+          recomputeLegs: (dayIndexes) => geo.computeLegs(draft, finalSink.onThought, signal, dayIndexes),
+          onProgress: finalSink.onThought,
+          signal,
+        }),
+      );
       if (grouping.notes.length) reviewNotes = [...grouping.notes, ...reviewNotes].slice(0, 8);
     } catch (err) {
       if (signal.aborted) throw err;
@@ -307,12 +369,16 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
 
     // 最终餐次兜底：正常路径由 submit_plan 的完整性门槛要求模型补齐；这里防止审校阶段
     // 删除/改写最后一个午餐或晚餐后仍把不完整行程持久化。补位使用顺路片区建议，不冒充具体门店。
-    const mealRepairs = ensureMealCoverage(draft.mutableDays(), form.destination);
+    const mealRepairs = await runSystemTask('review', 'ensure_meal_coverage', '检查餐次完整性', () =>
+      ensureMealCoverage(draft.mutableDays(), form.destination),
+    );
     if (mealRepairs.length) {
       const changedDays = [...new Set(mealRepairs.filter((item) => item.action === 'inserted').map((item) => item.dayIndex))];
       try {
         if (changedDays.length) {
-          await geo.computeLegs(draft, finalSink.onThought, signal, changedDays);
+          await runSystemTask('review', 'geo_recompute_meal_legs', '更新餐次通勤路线', () =>
+            geo.computeLegs(draft, finalSink.onThought, signal, changedDays),
+          );
           assertAlive(signal);
         }
       } catch (err) {
@@ -324,7 +390,9 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
 
     // 以最终真实通勤段顺延贴边活动，修复「前一活动结束即开饭但仍需移动」等硬冲突；
     // 单日无法在餐窗/23:00 边界内排下则该天整体不改，由最终可行性说明如实透出。
-    const timingDays = repairTransitTiming(draft.mutableDays());
+    const timingDays = await runSystemTask('review', 'repair_transit_timing', '调整通勤时间', () =>
+      repairTransitTiming(draft.mutableDays()),
+    );
     if (timingDays.length) {
       reviewNotes = [
         `系统已顺延第 ${timingDays.join('、')} 天的部分活动时间，为实际通勤预留间隔。`,
@@ -360,9 +428,11 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
     const trip = createTrip(job.userId, draft.toTrip(reviewNotes, { overview: research.pool, dataSources }));
     record('done', trip.id);
     completeJob(job, trip.id, dataSources, reviewNotes);
+    terminalStatus = 'done';
   } catch (err) {
     if (signal.aborted) {
       cancelJob(job);
+      terminalStatus = 'cancelled';
       // 先发布权威终态，避免审计表写入异常让已接受的取消永久停在 running。
       record('cancelled', null);           // 取消不计配额（配额只数 done）
       return;
@@ -373,8 +443,22 @@ export async function runGeneration(job: Job, form: GenerateForm, cfg: LlmConfig
         ? err.message
         : `生成失败：${err instanceof Error ? err.message : '未知错误'}`;
     failJob(job, message);
+    terminalStatus = 'error';
   } finally {
     clearTimeout(timeout);
+    logger?.info(
+      {
+        jobId: job.id,
+        ...timing.summary(terminalStatus),
+        usage: {
+          tokensIn: usage.tokensIn,
+          tokensOut: usage.tokensOut,
+          amapCalls: poi.stats.calls + geo.stats.calls,
+          searchCalls: search.stats.calls,
+        },
+      },
+      'generation timing summary',
+    );
   }
 }
 

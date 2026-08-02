@@ -39,13 +39,13 @@ function researchCalls(turnHasToolResults) {
   ];
 }
 
-function plannerCalls(days, turnHasToolResults) {
+function plannerCalls(days, turnHasToolResults, { geocodedActivities, includeLodging }) {
   if (turnHasToolResults) return [{ name: 'submit_plan', args: {} }];
   const calls = [
     { name: 'set_trip_skeleton', args: { title: '测试之旅', dayTitles: Array.from({ length: days }, (_, i) => `第${i + 1}天主题`) } },
-    // ST3 住宿锚点：用户未指定时建议一个区域（用户已指定时工具幂等返回提示，不报错）
-    { name: 'set_lodging', args: { name: '市中心站前区域' } },
   ];
+  // ST3 住宿锚点：用户未指定时建议一个区域（用户已指定时工具幂等返回提示，不报错）
+  if (includeLodging) calls.push({ name: 'set_lodging', args: { name: '市中心站前区域' } });
   for (let d = 1; d <= days; d++) {
     const activities = [
       { name: `活动${d}-1`, startTime: '09:00', endTime: '11:00', category: '文化' },
@@ -63,6 +63,7 @@ function plannerCalls(days, turnHasToolResults) {
             : '测试活动描述',
           lat: 35.68 + d * 0.01 + j * 0.001,
           lng: 139.76 + d * 0.01 + j * 0.001,
+          ...(geocodedActivities ? { coordSource: 'geocoded' } : {}),
         },
       });
     }
@@ -74,7 +75,10 @@ function plannerCalls(days, turnHasToolResults) {
  * 启动 mock 端点；返回 { server, seenAuthHeaders, close }
  * delayMs：每次补全前的延迟（留出取消窗口 / 模拟真实节奏）
  */
-export async function startMockLlm(port, { delayMs = 300, reviewerOverrunOnce = false } = {}) {
+export async function startMockLlm(
+  port,
+  { delayMs = 300, reviewerOverrunOnce = false, geocodedActivities = false, includeLodging = true } = {},
+) {
   const seenAuthHeaders = [];
   let reviewerOverrunAvailable = reviewerOverrunOnce;
   let reviewerOverrunActive = false;
@@ -99,7 +103,7 @@ export async function startMockLlm(port, { delayMs = 300, reviewerOverrunOnce = 
       if (system.includes('旅行调研员')) {
         respondWithToolCalls(res, payload.model, researchCalls(toolResults > 0));
       } else if (system.includes('行程规划师')) {
-        respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0));
+        respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0, { geocodedActivities, includeLodging }));
       } else if (system.includes('行程审校员')) {
         if (toolResults === 0) {
           reviewerOverrunActive = reviewerOverrunAvailable;
