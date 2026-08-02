@@ -62,6 +62,76 @@ are historical fields with documented compatibility meanings.
 Representative paths: `apps/server/src/routes/generations.ts`,
 `apps/server/src/generation/jobManager.ts`, `packages/shared/src/types.ts`.
 
+## Scenario: Replay-Stable Generation Timing
+
+### 1. Scope / Trigger
+
+Apply this contract when adding generation performance diagnostics, changing SSE lifecycle
+events, or rendering elapsed time in the generation timeline. Timing is task-local operational
+data: it is visible during the in-memory job lifetime and in server logs, but is not persisted
+into `Trip` or a performance-history table.
+
+### 2. Signatures
+
+- Every `GenerationEvent` may carry `at?: number` (Unix milliseconds).
+- `phase_end`, `tool_end`, and terminal events may carry `durationMs?: number`.
+- `GenerationPerformance(job.createdAt)` records phase keys (`research:1`, `plan:1`, etc.)
+  and aggregates tool/task keys by count, total, and maximum duration.
+- `runGeneration(job, form, cfg, logger?)` accepts the Fastify/Pino logger from the route.
+
+### 3. Contracts
+
+- `jobManager.emit` fills a missing `at` on every emitted event. Producers may supply an
+  earlier authoritative time, such as `job_start.at = job.createdAt`.
+- The server computes completed durations once. The web client uses those fixed values after
+  completion and uses its local clock only to animate an item that is still running.
+- Deterministic post-passes reuse `tool_start` / `tool_end` with stable non-sensitive tool keys;
+  do not add a second progress event family.
+- Terminal logs contain only `jobId`, status, total/phase/task milliseconds, token counts, and
+  provider call-attempt counts. Never log destination, form data, prompts, tool args, provider
+  responses, credentials, or settings objects.
+- Timing fields stay optional so old buffered/manual recovery events remain readable.
+
+### 4. Validation & Error Matrix
+
+- Old event has no `at` / `durationMs` -> render the existing timeline without that duration.
+- End event has no explicit duration but both endpoint timestamps exist -> derive a non-negative
+  duration from the timestamps.
+- Task ends as `error` or `cancelled` with active work -> terminal log includes active phase/task
+  elapsed time; the SSE terminal event still carries fixed total duration.
+- Optional deterministic pass throws -> emit an errored timed tool item, then preserve the
+  pass's existing degrade-or-cancel behavior.
+- Browser refresh -> replayed completed durations must be identical to the pre-refresh values.
+
+### 5. Good / Base / Bad Cases
+
+- Good: a running route pass increments once per second, then freezes at the server-provided
+  duration; the terminal log identifies it as the slowest task without exposing inputs.
+- Base: a legacy event stream has no timing fields and looks exactly as it did before timing was
+  added.
+- Bad: the web client stamps receipt time and recomputes completed durations after replay, or the
+  server logs the full form/tool arguments to explain a slow task.
+
+### 6. Tests Required
+
+- Unit-test phase/task aggregation with an injected deterministic clock, including active work.
+- Unit-test `jobManager` timestamp filling and terminal duration for a non-success outcome.
+- Unit-test timeline reconstruction for explicit timing and legacy missing fields.
+- Run `npm run typecheck`, all server tests, `npm run build -w apps/web`, and
+  `node scripts/verify-c2.mjs` to cover the shared union, SSE replay, cancellation, and full flow.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: receipt time changes after reconnect and leaks arguments into diagnostics.
+const startedAt = Date.now();
+console.info({ form, args, durationMs: Date.now() - startedAt });
+
+// Correct: server lifecycle events are authoritative and logs use stable classifications only.
+emit(job, { type: 'tool_end', toolCallId, tool, durationMs, at, /* existing safe fields */ });
+logger.info({ jobId: job.id, status, phases, tasks, usage }, 'generation timing summary');
+```
+
 ## Deterministic Post-Pass (Mechanical Work Out of the LLM Loop)
 
 Bulk mechanical work with deterministic rules — batch geocoding, transit-leg computation —
