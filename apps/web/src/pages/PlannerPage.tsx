@@ -209,7 +209,7 @@ export function PlannerPage() {
           const alreadyTerminal = previousEvents.some(
             (event) => event.type === 'job_done' || event.type === 'job_error' || event.type === 'job_cancelled',
           );
-          return alreadyTerminal ? previousEvents : [...previousEvents, { type: 'job_cancelled' }];
+          return alreadyTerminal ? previousEvents : [...previousEvents, { type: 'job_cancelled', reason: 'user' }];
         });
         sessionStorage.removeItem(JOB_KEY);
         void qc.invalidateQueries({ queryKey: keys.usage });
@@ -271,7 +271,11 @@ export function PlannerPage() {
         {terminal?.type === 'job_cancelled' && (
           <div className="gen-result">
             <p className="gen-result-title">已取消</p>
-            <p className="muted">本次不计入今日配额。</p>
+            <p className="muted">
+              {terminal.reason === 'timeout'
+                ? '生成超过 10 分钟未完成，系统已自动取消。本次不计入今日配额，可稍后重新生成。'
+                : '你已取消本次生成。本次不计入今日配额。'}
+            </p>
             <button type="button" className="btn btn-primary" onClick={clearJob}>
               返回表单
             </button>

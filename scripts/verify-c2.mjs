@@ -170,6 +170,7 @@ try {
   check('取消 202', cancelRes.status === 202);
   const cancelled = await readEvents(jobA.json.jobId);
   check('收到 job_cancelled', cancelled.events.at(-1)?.type === 'job_cancelled', cancelled.events.at(-1)?.type);
+  check('取消事件携带 reason=user', cancelled.events.at(-1)?.reason === 'user', String(cancelled.events.at(-1)?.reason));
   const cancelledSnapshot = await api('GET', `/api/generations/${jobA.json.jobId}`);
   check('取消快照收敛到 cancelled', cancelledSnapshot.json?.status === 'cancelled', cancelledSnapshot.json?.status);
   const usageAfterCancel = await api('GET', '/api/usage');

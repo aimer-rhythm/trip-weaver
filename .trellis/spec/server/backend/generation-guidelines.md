@@ -41,6 +41,12 @@ publishes `job_cancelled`, records a `cancelled` generation row, and does not co
 successful-generation quota. Publish the authoritative in-memory terminal state before a
 later audit write can fail.
 
+The `job_cancelled` event carries `reason: 'user' | 'timeout'` so the client can tell a
+manual cancel from the whole-job timeout. The cancel route sets `job.cancelReason = 'user'`
+before aborting; the orchestrator's timeout timer sets `job.cancelReason = 'timeout'`. The
+field is optional in the shared type so legacy buffered events replay cleanly, and missing
+`reason` renders as a user cancel on the client.
+
 Representative paths: `apps/server/src/routes/generations.ts`,
 `apps/server/src/generation/jobManager.ts`, `apps/server/src/services/quotaService.ts`.
 

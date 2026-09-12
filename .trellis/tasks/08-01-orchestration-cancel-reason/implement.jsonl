@@ -1,0 +1,4 @@
+{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "取消/SSE 生命周期契约:取消路径、job_cancelled 发布、兼容字段、终态收敛"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "shared 契约变更规范:事件载荷类型、TypeBox schema、向后兼容"}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "web 前端规范:SSE 状态、组件渲染、错误/空态处理"}
