@@ -8,8 +8,8 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 10
-- **Last Active**: 2026-07-19
+- **Total Sessions**: 11
+- **Last Active**: 2026-09-14
 <!-- @@@/auto:current-status -->
 
 ---
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~337 | Active |
+| `journal-1.md` | ~442 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 11 | 2026-09-14 | 行程生成 P0：坐标复用、定位名与局部修订 | `fafce25` | `master` |
 | 10 | 2026-07-19 | Verify release CI and Docker Compose | `77add45` | `master` |
 | 9 | 2026-07-19 | Archive beijing hard anchor | `9e4f287` | `master` |
 | 8 | 2026-07-14 | Feasibility engine (M0-A): time-space simulator with violation report | `d1894e2` | `master` |
