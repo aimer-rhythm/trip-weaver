@@ -123,6 +123,11 @@ Chinese POI names is the dominant source of these mismatches when AMAP is degrad
 **Contract** (`apps/server/src/generation/geoSanity.ts`, wired at the single exit of
 `geocodeAll` in `geoPipeline.ts` — results are STAGED, validated, then adopted):
 
+- Task-local research POI coordinates follow this same exit, including their adcodes. A
+  rejected reused point gets the ordinary lookup chain and another validation; never bypass
+  the firewall because the data came from `search_pois`. Unchanged estimated points skipped
+  by incremental resolution do not enter the median reference pool. See the
+  [P0 generation contract](./generation-guidelines.md#scenario-research-place-reuse-and-local-planner-revisions-p0).
 - Reference point resolution: ① city-level geocode of `form.destination`
   (`resolveCityPlace`, memoized, one call shared with the transit adcode fallback);
   ② cross-check against the median center of already-resolved activity coordinates
@@ -158,6 +163,8 @@ network or parsing failure is handled. Therefore:
 - a Null-source call counts as zero;
 - a call rejected by the task limit counts as zero;
 - a cache hit still counts as one;
+- adopting an already-counted research coordinate in `geocodeAll` makes no new geocoding
+  attempt, so it adds zero to geo counters; the original research attempt remains counted;
 - a provider attempt that returns an empty result or degrades after failure counts as one;
 - the value is not a guaranteed count of successful HTTP requests.
 

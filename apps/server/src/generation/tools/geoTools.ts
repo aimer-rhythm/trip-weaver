@@ -9,7 +9,7 @@ export function buildGeoTools(geo: GeoSession): AgentTool[] {
     name: 'geocode_place',
     label: '查询地点坐标',
     description:
-      '查询一个地点的经纬度坐标（GCJ-02）。仅对无把握或易混淆的重点地点使用做消歧；其余地点坐标留空即可，系统会在审校后统一解析。',
+      '查询一个地点的经纬度坐标（GCJ-02）。仅对无把握或易混淆的重点地点使用做消歧；其余地点坐标留空即可，系统会在编排后、审校前统一解析。',
     parameters: Type.Object({
       name: Type.String({ description: '地点名称，如「浅草寺」' }),
     }),

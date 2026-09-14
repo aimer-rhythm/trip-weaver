@@ -2,6 +2,7 @@
 // 完整性校验是 R2（小参数模型工具调用弱）的兜底 —— 校验失败信息回给 Agent 自愈。
 import {
   ACTIVITY_CATEGORIES,
+  LODGING_SENTINEL,
   MAX_OVERVIEW_POIS,
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
@@ -19,8 +20,9 @@ import {
   type Trip,
 } from '@tripweaver/shared';
 import { mealCoverageProblems } from './mealPlanning';
+import { type DraftActivity, type PlaceHint } from './placeLookup';
 
-export interface DraftActivityInput {
+export interface DraftActivityInput extends PlaceHint {
   name: string;
   startTime?: string;
   endTime?: string;
@@ -30,6 +32,7 @@ export interface DraftActivityInput {
   lat?: number;
   lng?: number;
   coordSource?: 'geocoded' | 'estimated' | 'manual';
+  coordSystem?: Activity['coordSystem'];
   sourceNotes?: SourceNote[];
 }
 
@@ -39,7 +42,7 @@ function normalizeCategory(raw: string | undefined): ActivityCategory {
   return (ACTIVITY_CATEGORIES as readonly string[]).includes(raw ?? '') ? (raw as ActivityCategory) : '其他';
 }
 
-function toActivity(input: DraftActivityInput): Activity {
+function toActivity(input: DraftActivityInput): DraftActivity {
   const hasCoord = typeof input.lat === 'number' && typeof input.lng === 'number' && (input.lat !== 0 || input.lng !== 0);
   return {
     id: uid(),
@@ -50,6 +53,9 @@ function toActivity(input: DraftActivityInput): Activity {
     lat: hasCoord ? input.lat! : 0,
     lng: hasCoord ? input.lng! : 0,
     coordSource: hasCoord ? (input.coordSource ?? 'estimated') : 'estimated',
+    ...(hasCoord && input.coordSystem ? { coordSystem: input.coordSystem } : {}),
+    ...(input.placeName?.trim() ? { placeName: input.placeName.trim().slice(0, 100) } : {}),
+    ...(input.poiId?.trim() ? { poiId: input.poiId.trim().slice(0, 100) } : {}),
     // cost 仅供旧数据/内部兼容；新生成工具不再向模型暴露该字段。
     ...(typeof input.cost === 'number' ? { cost: Math.max(0, input.cost) } : {}),
     category: normalizeCategory(input.category),
@@ -63,7 +69,7 @@ export class DraftTrip {
   lodging?: Lodging;
   /** lodging 是否来自用户表单（Agent 不得覆盖） */
   lodgingFromUser = false;
-  private days: { title: string; activities: Activity[]; legs?: TransitLeg[] }[] = [];
+  private days: { title: string; activities: DraftActivity[]; legs?: TransitLeg[] }[] = [];
 
   constructor(private form: GenerateForm) {
     const userLodging = form.lodging?.trim();
@@ -78,7 +84,13 @@ export class DraftTrip {
     if (this.lodgingFromUser) return `用户已指定住宿位置「${this.lodging!.name}」，无需建议`;
     const trimmed = name.trim();
     if (!trimmed) return '错误：住宿区域不能为空';
-    this.lodging = { name: trimmed.slice(0, 60) };
+    const normalized = trimmed.slice(0, 60);
+    if (this.lodging?.name !== normalized) {
+      this.lodging = { name: normalized };
+      for (const day of this.days) {
+        if (day.legs) day.legs = day.legs.filter((leg) => leg.fromActivityId !== LODGING_SENTINEL && leg.toActivityId !== LODGING_SENTINEL);
+      }
+    }
     return `住宿区域建议已记录：${this.lodging.name}`;
   }
 
@@ -89,7 +101,7 @@ export class DraftTrip {
   }
 
   /** 确定性后处理专用（orchestrator geoPipeline）：暴露可变天列表以写回坐标与通勤段 */
-  mutableDays(): { title: string; activities: Activity[]; legs?: TransitLeg[] }[] {
+  mutableDays(): { title: string; activities: DraftActivity[]; legs?: TransitLeg[] }[] {
     return this.days;
   }
 
@@ -102,10 +114,19 @@ export class DraftTrip {
     return `已添加到第 ${dayIndex} 天：${input.name}（该天现有 ${day.activities.length} 个活动）`;
   }
 
-  updateActivity(dayIndex: number, position: number, patch: DraftActivityInput): string {
+  updateActivity(dayIndex: number, position: number, patch: Partial<DraftActivityInput>): string {
     const day = this.days[dayIndex - 1];
     const existing = day?.activities[position - 1];
     if (!day || !existing) return `错误：第 ${dayIndex} 天第 ${position} 个活动不存在`;
+    const renamed = patch.name !== undefined && patch.name !== existing.name;
+    const referenceChanged = (patch.placeName !== undefined && patch.placeName.trim() !== existing.placeName)
+      || (patch.poiId !== undefined && patch.poiId.trim() !== existing.poiId);
+    const placeName = patch.placeName ?? (renamed || referenceChanged ? undefined : existing.placeName);
+    const poiId = patch.poiId ?? (renamed || referenceChanged ? undefined : existing.poiId);
+    const placeChanged = renamed || placeName !== existing.placeName || poiId !== existing.poiId;
+    const coordinatesChanged = (patch.lat !== undefined && patch.lat !== existing.lat)
+      || (patch.lng !== undefined && patch.lng !== existing.lng);
+    const needsResolution = placeChanged || coordinatesChanged;
     const merged = toActivity({
       name: patch.name ?? existing.name,
       startTime: patch.startTime ?? existing.startTime,
@@ -113,12 +134,19 @@ export class DraftTrip {
       description: patch.description ?? existing.description,
       category: patch.category ?? existing.category,
       cost: patch.cost ?? existing.cost,
-      lat: patch.lat ?? existing.lat,
-      lng: patch.lng ?? existing.lng,
-      coordSource: patch.coordSource ?? existing.coordSource,
-      sourceNotes: patch.sourceNotes ?? existing.sourceNotes,
+      placeName,
+      poiId,
+      // Never let a replacement inherit the old place's verified coordinates or adcode.
+      lat: needsResolution ? 0 : existing.lat,
+      lng: needsResolution ? 0 : existing.lng,
+      coordSource: needsResolution ? 'estimated' : existing.coordSource,
+      coordSystem: needsResolution ? undefined : existing.coordSystem,
+      sourceNotes: patch.sourceNotes ?? (placeChanged ? [] : existing.sourceNotes),
     });
     day.activities[position - 1] = { ...merged, id: existing.id };
+    if (needsResolution && day.legs) {
+      day.legs = day.legs.filter((leg) => leg.fromActivityId !== existing.id && leg.toActivityId !== existing.id);
+    }
     return `已更新第 ${dayIndex} 天第 ${position} 个活动：${merged.name}`;
   }
 
@@ -129,7 +157,7 @@ export class DraftTrip {
     return `已删除第 ${dayIndex} 天的「${removed!.name}」`;
   }
 
-  /** 跨天移动原子方法（层3 确定性修复器专用，代码级调用、非 Agent 工具）：把活动移到目标天末尾。
+  /** 跨天移动原子方法（确定性修复器和修订工具共用）：把活动移到目标天末尾。
    *  语义对齐前端 editorStore.moveActivityToDay（splice 源天 → push 目标天，只挪不删）；
    *  时间槽由调用方另行写入。本方法不动 legs：两天旧 leg 随即失配（消费方按 ST3 契约静默按缺失降级），
    *  调用方须随后定向重算。dayIndex 从 1 开始；天不存在/同天/活动不存在返回 false 且不做任何修改。 */
@@ -148,12 +176,13 @@ export class DraftTrip {
   render(): string {
     if (!this.days.length) return '（草稿为空，尚未建立骨架）';
     const lines: string[] = [`行程：${this.title || '(未命名)'}｜目的地 ${this.form.destination}｜${this.days.length} 天`];
+    if (this.lodging) lines.push(`住宿位置：${this.lodging.name}${this.lodgingFromUser ? '（用户指定）' : '（已建议区域）'}`);
     this.days.forEach((day, i) => {
       lines.push(`第 ${i + 1} 天：${day.title}`);
       day.activities.forEach((a, j) => {
         const coord = a.lat === 0 && a.lng === 0 ? '无坐标' : `${a.lat.toFixed(4)},${a.lng.toFixed(4)}(${a.coordSource})`;
         const time = a.startTime ? `${a.startTime}-${a.endTime || '?'}` : '时间未定';
-        lines.push(`  ${j + 1}. ${a.name}｜${time}｜${a.category}｜${coord}${a.sourceNotes.length ? '｜有来源笔记' : ''}`);
+        lines.push(`  ${j + 1}. ${a.name}｜id=${a.id}｜${time}｜${a.category}｜${coord}${a.placeName ? `｜定位=${a.placeName}` : ''}${a.poiId ? `｜poiId=${a.poiId}` : ''}${a.sourceNotes.length ? '｜有来源笔记' : ''}`);
       });
       if (!day.activities.length) lines.push('  （空）');
     });
@@ -202,7 +231,7 @@ export class DraftTrip {
         id: uid(),
         dayIndex: i + 1,
         title: day.title,
-        activities: day.activities,
+        activities: day.activities.map(({ placeName: _placeName, poiId: _poiId, ...activity }) => activity),
         // 通勤段（geoPipeline 后处理写入）；为空时不写字段，与旧行程 JSON 形状一致
         ...(day.legs?.length ? { legs: day.legs } : {}),
       })),

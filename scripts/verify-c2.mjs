@@ -1,6 +1,6 @@
 // C2 端到端验收（离线可复跑）：mock OpenAI 兼容端点驱动三 Agent 流水线
 // 覆盖：SSE 三阶段与 job_done 落库 / candidate 候选池事件 / 预约种子表覆盖 / Last-Event-ID 重放 /
-//       配额 429 / 取消不计数不残留 / BYOK 走自有端点且计次
+//       配额 429 / 取消不计数不残留 / BYOK 走自有端点且计次 / 第二轮只局部修订并保留活动 ID
 // 用法：node scripts/verify-c2.mjs
 import { startMockLlm } from './lib/mock-llm.mjs';
 import { spawn } from 'node:child_process';
@@ -116,7 +116,7 @@ CREATE TABLE generations (
 legacyDatabase.close();
 
 // 首个完成任务让审校模型持续 get_draft 直到超过 12 轮，验证审校耗尽只降级、不拖垮整次生成。
-const mock = await startMockLlm(MOCK_PORT, { delayMs: 300, reviewerOverrunOnce: true });
+const mock = await startMockLlm(MOCK_PORT, { delayMs: 300, reviewerOverrunOnce: true, requestRevisionOnce: true });
 const seenAuthHeaders = mock.seenAuthHeaders;
 console.log(`[mock] OpenAI 兼容端点就绪 :${MOCK_PORT}`);
 try {
@@ -126,10 +126,15 @@ try {
     env: {
       ...process.env,
       NODE_ENV: 'development',
+      DOTENV_CONFIG_PATH: `${DB_FILE}.absent.env`,
       PORT: String(API_PORT),
       DATABASE_PATH: DB_FILE,
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
+      REGISTRATION_MODE: 'invite',
       INVITE_CODE: 'C2TEST',
+      GITHUB_CLIENT_ID: '',
+      GITHUB_CLIENT_SECRET: '',
+      APP_BASE_URL: '',
       SITE_LLM_BASE_URL: `http://127.0.0.1:${MOCK_PORT}/v1`,
       SITE_LLM_API_KEY: 'site-mock-key',
       SITE_LLM_MODEL: 'mock-chat',
@@ -278,6 +283,22 @@ try {
   check('BYOK 建任务 202', jobD.status === 202);
   const runD = await readEvents(jobD.json.jobId);
   check('BYOK job_done', runD.events.at(-1)?.type === 'job_done', runD.events.at(-1)?.type);
+  const planRounds = runD.events.filter((event) => event.type === 'phase_start' && event.phase === 'plan').map((event) => event.round);
+  check('审校意见实际触发第二轮规划', planRounds.join(',') === '1,2', planRounds.join(','));
+  const revision = mock.seenRevisions[0];
+  check('修订请求携带当前草稿和全部活动 ID', mock.seenRevisions.length === 1 && revision?.hasDraft && revision.activityIds.length === 6);
+  check('修订工具禁止清空骨架且支持跨天移动', revision?.tools.includes('move_activity') && !revision.tools.includes('set_trip_skeleton'));
+  check('两轮规划仅创建一次骨架', runD.events.filter((event) => event.type === 'tool_start' && event.tool === 'set_trip_skeleton').length === 1);
+  const revisedTrip = await api('GET', `/api/trips/${runD.events.at(-1)?.tripId}`);
+  const revisedActivities = revisedTrip.json?.days?.flatMap((day) => day.activities) ?? [];
+  check(
+    '局部修订保留原行程、全部活动 ID 和每日餐次',
+    revisedTrip.json?.title === '测试之旅'
+      && revisedTrip.json?.days?.every((day) => day.activities.length === 3 && day.activities.some((activity) => activity.name.startsWith('午餐')) && day.activities.some((activity) => activity.name.startsWith('晚餐')))
+      && JSON.stringify(revisedActivities.map((activity) => activity.id).sort()) === JSON.stringify([...(revision?.activityIds ?? [])].sort()),
+  );
+  check('指定时间和说明修改已落库', revisedActivities[0]?.startTime === '09:30' && revisedActivities[0]?.description.startsWith('局部修订'));
+  check('生成内部定位引用未泄漏到持久化 Trip', revisedActivities.length === 6 && revisedActivities.every((activity) => !('placeName' in activity) && !('poiId' in activity)));
   const byokAuths = seenAuthHeaders.slice(authCountBefore);
   check('BYOK 请求带自己的 Key', byokAuths.length > 0 && byokAuths.every((a) => a.includes('byok-secret-key')), byokAuths[0]);
   const usage2 = await api('GET', '/api/usage');

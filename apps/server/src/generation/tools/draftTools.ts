@@ -10,6 +10,8 @@ function text(t: string) {
 }
 
 const OptionalActivityFields = {
+  placeName: Type.Optional(Type.String({ minLength: 1, maxLength: 100, description: '实际定位地名。餐次只填片区/街道，如「春熙路」，不含午餐/晚餐标签或菜系。' })),
+  poiId: Type.Optional(Type.String({ minLength: 1, maxLength: 100, description: '候选池地点 id；引用已有候选时填写，系统复用其真实坐标。' })),
   startTime: Type.Optional(Type.String({ description: '开始时间 HH:mm，如 09:00' })),
   endTime: Type.Optional(Type.String({ description: '结束时间 HH:mm' })),
   description: Type.Optional(Type.String({ description: '亮点与实用提示，≤100 字' })),
@@ -23,7 +25,7 @@ const OptionalActivityFields = {
   ),
 };
 
-export function buildDraftTools(draft: DraftTrip): AgentTool[] {
+export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'plan'): AgentTool[] {
   const skeletonTool = defineTool({
     name: 'set_trip_skeleton',
     label: '建立行程骨架',
@@ -92,6 +94,24 @@ export function buildDraftTools(draft: DraftTrip): AgentTool[] {
     execute: async () => ({ content: text(draft.render()), details: {} }),
   });
 
+  const moveTool = defineTool({
+    name: 'move_activity',
+    label: '调整活动日期',
+    description: '把已有活动移到另一天下的末尾，保留活动 ID 与已解析地点。随后用 update_activity 调整时间，位置编号可用 get_draft 查看。',
+    parameters: Type.Object({
+      fromDayIndex: Type.Integer({ minimum: 1 }),
+      activityId: Type.String({ minLength: 1 }),
+      toDayIndex: Type.Integer({ minimum: 1 }),
+    }),
+    execute: async (_id, params) => {
+      const moved = draft.moveActivityToDay(params.fromDayIndex, params.activityId, params.toDayIndex);
+      return {
+        content: text(moved ? `活动已移至第 ${params.toDayIndex} 天，请调整时间并重新检查可行性。` : '错误：原活动或目标天不存在，或目标天与原天相同。'),
+        details: { moved },
+      };
+    },
+  });
+
   // 住宿锚点（ST3）：用户未填住宿时由规划 Agent 建议一个区域（禁止具体酒店/价格，见 planner prompt）
   const lodgingTool = defineTool({
     name: 'set_lodging',
@@ -125,7 +145,10 @@ export function buildDraftTools(draft: DraftTrip): AgentTool[] {
     },
   });
 
-  return [skeletonTool, addTool, updateTool, removeTool, getTool, lodgingTool, feasibilityTool];
+  return [
+    ...(mode === 'plan' ? [skeletonTool] : [moveTool]),
+    addTool, updateTool, removeTool, getTool, lodgingTool, feasibilityTool,
+  ];
 }
 
 // 可行性硬门槛的自愈重试上限：连续 N 次仍有 hard 则放行（守生成不失败——剩余 hard 交修订轮/降级处理，

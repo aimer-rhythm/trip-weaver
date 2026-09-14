@@ -44,6 +44,7 @@ import { buildDraftTools, buildSubmitPlanTool } from './tools/draftTools';
 import { buildReviewTools, type ReviewOutcome } from './tools/reviewTools';
 import {
   PLANNER_SYSTEM_PROMPT,
+  PLANNER_REVISION_SYSTEM_PROMPT,
   RESEARCH_SYSTEM_PROMPT,
   REVIEWER_SYSTEM_PROMPT,
   formBrief,
@@ -210,6 +211,7 @@ export async function runGeneration(
     usage.tokensOut += researchRun.tokensOut;
     assertAlive(signal, researchRun.errorMessage);
     endPhase('research', 1, `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`);
+    geo.useResearchPlaces(research.pool, research.locations);
 
     // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
     // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
@@ -256,9 +258,9 @@ export async function runGeneration(
       const plannerRun = await runPhaseAgent({
         model,
         apiKey: cfg.apiKey,
-        systemPrompt: PLANNER_SYSTEM_PROMPT,
-        tools: [...buildDraftTools(draft), ...buildGeoTools(geo), buildSubmitPlanTool(draft, () => (planPassed = true))],
-        userPrompt: plannerUserPrompt(form, research, revisionRequests, longHaulIntel),
+        systemPrompt: round === 1 ? PLANNER_SYSTEM_PROMPT : PLANNER_REVISION_SYSTEM_PROMPT,
+        tools: [...buildDraftTools(draft, round === 1 ? 'plan' : 'revision'), ...buildGeoTools(geo), buildSubmitPlanTool(draft, () => (planPassed = true))],
+        userPrompt: plannerUserPrompt(form, research, revisionRequests, longHaulIntel, round > 1 ? draft.render() : undefined),
         signal,
         sink: sinkFor('plan'),
         maxTurns: 30,
@@ -342,6 +344,12 @@ export async function runGeneration(
     // 审校可 update/remove 活动，旧 legs 会与最终活动序列失配。落库前全量重算一次；geoSession memo
     // 会复用未变化的高德路径，只有新相邻对才消耗路由额度。异常时清空 legs，宁缺勿持久化假路线。
     try {
+      // Reviewer may replace a place. Resolve only changed/new queries here; unchanged
+      // failed lookups do not gain another full retry pass just because review completed.
+      await runSystemTask('review', 'geo_geocode_review_changes', '解析修订地点坐标', () =>
+        geo.geocodeAll(draft, finalSink.onThought, signal, true),
+      );
+      assertAlive(signal);
       await runSystemTask('review', 'geo_recompute_final_legs', '复核最终通勤路线', () =>
         geo.computeLegs(draft, finalSink.onThought, signal),
       );

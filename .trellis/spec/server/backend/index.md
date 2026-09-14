@@ -12,7 +12,7 @@ has a more specific convention.
 - [Logging guidelines](./logging-guidelines.md): Fastify/Pino usage, levels, context, and secret redaction.
 - [Security guidelines](./security-guidelines.md): authentication, sessions, OAuth, encryption, SSRF, and environment bootstrap.
 - [Integration guidelines](./integration-guidelines.md): external source adapters, Null implementations, caches, queues, limits, and accounting.
-- [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, and single-instance limitations.
+- [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
 - [Quality guidelines](./quality-guidelines.md): validation rules and the real command matrix.
 
 ## Pre-Development Checklist

@@ -2,7 +2,7 @@
 // orchestrator 在每轮编排后、审校前调用（M0-A 时序前移）：geocodeAll 补全全量坐标（GCJ-02），computeLegs 生成相邻活动通勤段。
 // 高德失败/超额/无 Key 均静默降级（Nominatim 转换 / 启发式估算），生成流程永不因此失败。
 // geocodeAll 出口统一过地理合理性校验（07-18，见 geoSanity.ts）：异地错配坐标弃用，宁缺毋错。
-import { LODGING_SENTINEL, WALK_THRESHOLD_M, haversineMeters, type Activity, type LegMode, type TransitLeg } from '@tripweaver/shared';
+import { LODGING_SENTINEL, WALK_THRESHOLD_M, haversineMeters, type LegMode, type ResearchPoi, type TransitLeg } from '@tripweaver/shared';
 import { resolveAmapCredential } from '../services/settingsService';
 import { amapBudgetRemaining } from '../services/quotaService';
 import { geocodeActivity, type GeocodedPlace } from '../integrations/amap/geocoder';
@@ -10,6 +10,7 @@ import { ROUTE_MAX_PER_TASK, createRouteBreaker } from '../integrations/amap/rou
 import { estimateLeg } from './legEstimator';
 import { rejectFarGeocodes } from './geoSanity';
 import type { DraftTrip } from './draft';
+import { activityPlaceName, createResearchPlaceLookup, type DraftActivity, type PlaceLookupResult, type ResearchLocation } from './placeLookup';
 
 export const GEOCODE_MAX_PER_TASK = 40;   // 单次生成 ≤40 次高德定位调用（POI text + v3 geocode 合计；含 lodging 解析）
 const GEOCODE_PIPELINE_CONCURRENCY = 2;   // 仅重叠高德与 Nominatim 独立队列；各提供方内部仍严格串行限速
@@ -17,10 +18,12 @@ const GEOCODE_PIPELINE_CONCURRENCY = 2;   // 仅重叠高德与 Nominatim 独立
 export interface GeoSession {
   /** 高德调用尝试次数（geocode + route 合计）：计入 usage 事件与 generations.amap_calls */
   stats: { calls: number };
+  /** 调研结束后注入任务内真实地点；坐标仍由 geocodeAll 暂存、校验后采纳。 */
+  useResearchPlaces(pool: readonly ResearchPoi[], locations: ReadonlyMap<string, ResearchLocation>): void;
   /** 编排 Agent geocode_place 工具入口：走同一解析链与记账 */
   resolvePlace(name: string): Promise<GeocodedPlace | null>;
-  /** 后处理 pass 1：为无坐标/estimated 活动补全 GCJ-02 坐标；signal 中止时尽快抛出（任务取消） */
-  geocodeAll(draft: DraftTrip, onProgress: (text: string) => void, signal?: AbortSignal): Promise<void>;
+  /** 后处理 pass 1：补全 GCJ-02 坐标。changedOnly 仅重查上次解析后改变的地点/坐标状态，跳过未变化的失败项。 */
+  geocodeAll(draft: DraftTrip, onProgress: (text: string) => void, signal?: AbortSignal, changedOnly?: boolean): Promise<void>;
   /** 后处理 pass 2：为每天相邻活动对生成通勤段（高德路径规划，降级启发式）；signal 中止时尽快抛出。
    *  onlyDayIndexes（从 1 开始）：只重算指定天 —— 层3 修复器换天后的定向重验，省额度省时延；缺省全量 */
   computeLegs(
@@ -61,6 +64,13 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
 
   // 活动 id → adcode（transit 路径规划 city 入参）；目的地级 adcode 兜底
   const adcodes = new Map<string, string>();
+  let lookupPlace: (activity: DraftActivity) => PlaceLookupResult = (activity) => ({ name: activityPlaceName(activity) });
+  const rejectedResearchNames = new Set<string>();
+  const lastResolutionStates = new Map<string, string>();
+  let lastLodgingName: string | undefined;
+  const resolutionState = (activity: DraftActivity) => JSON.stringify([
+    activity.poiId ?? '', activityPlaceName(activity), activity.lat, activity.lng, activity.coordSource,
+  ]);
   // 目的地城市级解析 memo（一次解析两用，跨轮共享）：adcode 供 transit 路径规划兜底，
   // 坐标供 geocodeAll 出口地理合理性校验的参照点①。undefined=未解析，null=解析失败
   // （不重试——geocodeActivity 内部已有多级降级与 24h 缓存；计入 tryGeocode 额度记账）
@@ -83,20 +93,26 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
   return {
     stats,
 
+    useResearchPlaces(pool, locations) {
+      lookupPlace = createResearchPlaceLookup(pool, locations);
+    },
+
     resolvePlace(name) {
       return geocodeActivity(apiKey, name, destination, tryGeocode);
     },
 
-    async geocodeAll(draft, onProgress, signal) {
+    async geocodeAll(draft, onProgress, signal, changedOnly = false) {
       const all = draft.mutableDays().flatMap((d) => d.activities);
-      const pending = all.filter((a) => (a.lat === 0 && a.lng === 0) || a.coordSource !== 'geocoded');
+      const pending = all.filter((a) => ((a.lat === 0 && a.lng === 0) || a.coordSource !== 'geocoded')
+        && (!changedOnly || lastResolutionStates.get(a.id) !== resolutionState(a)));
       // 编排 Agent 经 geocode_place 已解析的坐标即 GCJ-02，补上坐标系标注
       for (const a of all) {
-        if (!pending.includes(a)) a.coordSystem = 'gcj02';
+        if (a.coordSource === 'geocoded') a.coordSystem = 'gcj02';
       }
       // 住宿锚点（ST3）是否待解析：与活动同链同记账，解析结果同过出口校验
       const lodging = draft.lodging;
-      const lodgingPending = Boolean(lodging && !(typeof lodging.lat === 'number' && typeof lodging.lng === 'number'));
+      const lodgingPending = Boolean(lodging && !(typeof lodging.lat === 'number' && typeof lodging.lng === 'number')
+        && (!changedOnly || lastLodgingName !== lodging.name));
 
       // 校验参照点①：目的地城市中心 —— 开始时先解析，城市名 AMAP 解析成功率最高、优先占用
       // geocode 额度；memo 跨轮共享且与 computeLegs 的 adcode 兜底同一次调用。无待解析项时不消耗。
@@ -104,7 +120,13 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
       const cityCenter = pending.length || lodgingPending ? await resolveCityPlace() : null;
 
       // 解析结果先暂存不落坐标：出口统一过地理合理性校验后再采纳（校验只拒不改，宁缺毋错）
-      const stagedByIndex: Array<{ activity: Activity; place: GeocodedPlace } | undefined> = new Array(pending.length);
+      interface StagedPlace {
+        activity: DraftActivity;
+        place: GeocodedPlace;
+        name: string;
+        reused: boolean;
+      }
+      const stagedByIndex: Array<StagedPlace | undefined> = new Array(pending.length);
       let nextIndex = 0;
       let done = 0;
       const worker = async () => {
@@ -113,9 +135,14 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
           const activity = pending[index]!;
           // 最多两个工作槽；每个槽取下一项前检查，取消后不继续铺开剩余外呼。
           if (signal?.aborted) return;
-          const place = await geocodeActivity(apiKey, activity.name, destination, tryGeocode);
+          const lookup = lookupPlace(activity);
+          adcodes.delete(activity.id);
+          const reused = Boolean(lookup.point && !rejectedResearchNames.has(lookup.name));
+          const place: GeocodedPlace | null = reused && lookup.point
+            ? { ...lookup.point, origin: 'amap-poi' }
+            : await geocodeActivity(apiKey, lookup.name, destination, tryGeocode);
           done += 1;
-          if (place) stagedByIndex[index] = { activity, place };
+          if (place) stagedByIndex[index] = { activity, place, name: lookup.name, reused };
           // 全链失败：保留模型给的估算坐标（或 0,0），coordSource 维持 estimated 如实标注
           if (done % 4 === 0 || done === pending.length) {
             onProgress(`正在解析活动坐标 (${done}/${pending.length})`);
@@ -126,37 +153,59 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
       await Promise.all(Array.from({ length: workerCount }, worker));
       if (signal?.aborted) throw new Error('已取消');
       // 工作槽完成顺序可能不同；校验和采纳必须恢复活动原顺序，保证结果与串行版本一致。
-      const staged = stagedByIndex.filter((item): item is { activity: Activity; place: GeocodedPlace } => item !== undefined);
+      let staged = stagedByIndex.filter((item): item is StagedPlace => item !== undefined);
 
       // 住宿锚点解析（ST3）：同一解析链与记账（计入 GEOCODE_MAX_PER_TASK）；失败静默 —— 无坐标即不生成住宿 leg
       let lodgingPlace: GeocodedPlace | null = null;
       if (lodging && lodgingPending) {
         if (signal?.aborted) throw new Error('已取消');
         onProgress('正在解析住宿位置…');
+        lastLodgingName = lodging.name;
+        adcodes.delete(LODGING_SENTINEL);
         lodgingPlace = await geocodeActivity(apiKey, lodging.name, destination, tryGeocode);
       }
+      if (signal?.aborted) throw new Error('已取消');
 
       // ---- 出口地理合理性校验（07-18）：AMAP/Nominatim 结果统一按距参照点校验，与来源无关 ----
       // 中位互检池（参照点②候选）= 前轮已校验采纳的 geocoded 活动坐标 + 本次暂存坐标
       // （修订轮新增点少时，靠前轮坐标保住参照可得性）；住宿只受检、不进池（池按「活动坐标中位中心」定义），
       // 且以 kind:'lodging' 标注走专项更严阈值（live shanghai 同名近距错配漏网教训，见 geoSanity.LODGING_SANITY_MAX_KM）
-      const medianPool = [
-        ...all.filter((a) => !pending.includes(a)).map((a) => ({ lat: a.lat, lng: a.lng })),
-        ...staged.map((s) => ({ lat: s.place.lat, lng: s.place.lng })),
-      ];
-      const checks = [
-        ...staged.map((s) => ({ name: s.activity.name, lat: s.place.lat, lng: s.place.lng })),
-        ...(lodging && lodgingPlace
-          ? // name 不自带引号：geoSanity 的 warn 会统一包「」，此处再包会产生双层引号（live chongqing 日志实证）
-            [{ name: `住宿 ${lodging.name}`, lat: lodgingPlace.lat, lng: lodgingPlace.lng, kind: 'lodging' as const }]
-          : []),
-      ];
-      let rejected = new Set<number>();
-      try {
-        rejected = rejectFarGeocodes(checks, cityCenter, medianPool);
-      } catch {
-        // 校验环节自身异常按未校验处理（防御：不因校验挂掉生成，坐标照常采纳）
+      const validateStaged = (): Set<number> => {
+        const medianPool = [
+          ...all.filter((a) => !pending.includes(a) && a.coordSource === 'geocoded' && (a.lat !== 0 || a.lng !== 0))
+            .map((a) => ({ lat: a.lat, lng: a.lng })),
+          ...staged.map((s) => ({ lat: s.place.lat, lng: s.place.lng })),
+        ];
+        const checks = [
+          ...staged.map((s) => ({ name: s.activity.name, lat: s.place.lat, lng: s.place.lng })),
+          ...(lodging && lodgingPlace
+            ? [{ name: `住宿 ${lodging.name}`, lat: lodgingPlace.lat, lng: lodgingPlace.lng, kind: 'lodging' as const }]
+            : []),
+        ];
+        try {
+          return rejectFarGeocodes(checks, cityCenter, medianPool);
+        } catch {
+          // 与既有可选校验的降级行为一致。
+          return new Set();
+        }
+      };
+      let rejected = validateStaged();
+      const rejectedReused = staged.filter((item, index) => item.reused && rejected.has(index));
+      if (rejectedReused.length) {
+        const failed = new Set<StagedPlace>();
+        for (const item of rejectedReused) {
+          if (signal?.aborted) throw new Error('已取消');
+          // A bad research match gets the original disambiguation chain, not automatic adoption.
+          rejectedResearchNames.add(item.name);
+          const place = await geocodeActivity(apiKey, item.name, destination, tryGeocode);
+          if (place) item.place = place;
+          else failed.add(item);
+          item.reused = false;
+        }
+        staged = staged.filter((item) => !failed.has(item));
+        rejected = validateStaged();
       }
+      if (signal?.aborted) throw new Error('已取消');
 
       // 采纳未被拒的解析结果；被拒条目不置坐标 —— 与解析失败同路径（活动保持 estimated/无坐标，
       // 走既有 located 缺口/兜底），绝不试图「纠正」坐标
@@ -168,6 +217,7 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
         activity.coordSystem = 'gcj02';
         if (place.adcode) adcodes.set(activity.id, place.adcode);
       });
+      for (const activity of pending) lastResolutionStates.set(activity.id, resolutionState(activity));
       // 住宿条目在 checks 中的下标 = staged.length；被拒则不置坐标 → 不生成住宿 leg（既有 ST3 降级）
       if (lodging && lodgingPlace && !rejected.has(staged.length)) {
         lodging.lat = lodgingPlace.lat;

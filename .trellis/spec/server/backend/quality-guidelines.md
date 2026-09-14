@@ -32,6 +32,7 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | Change area | Command | Notes |
 | --- | --- | --- |
 | Any TypeScript contract/server change | `npm run typecheck` | Checks shared, server, and web. |
+| Generation logic, prompts, geocoding, and feasibility | `node --import tsx --test apps/server/src/__tests__/*.test.ts` | Includes isolated mock-provider and draft-revision regressions. |
 | Web production bundle/static serving | `npm run build` | Builds `apps/web/dist`. |
 | Authentication modes/OAuth bootstrap | `node scripts/verify-auth-modes.mjs` | Isolated server scenarios. |
 | Ownership, cookies, SSRF, secrets | `node scripts/verify-security.mjs` | Dev and production instances. |

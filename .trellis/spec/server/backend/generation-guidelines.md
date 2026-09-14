@@ -232,15 +232,15 @@ insufficient — the planner assigns `dayIndex` before any coordinates exist):
    `estimateTransit` duration to the candidate pool's median center and tiers it against
    `LONG_HAUL_THRESHOLDS` (shared constants: ≥60min long-haul, ≥90min exclusive-day).
    Tiered intel + day-discipline rules are injected into `plannerUserPrompt` (revision rounds
-   reuse the same builder). Cases with no long-haul POIs get a byte-identical prompt
-   (regression-locked by test).
+   reuse the same builder). With no long-haul POIs, only the intel block is omitted;
+   both planner modes retain the shared activity and meal requirements.
 2. **Deterministic fixer (repair)** — `longHaulFixer.ts` runs INSIDE each plan⇆review round,
    after geoPipeline+feasibility and before the reviewer. Trigger: hard
    `transit_infeasible`/`overpacked` on a day that has an exclusive-tier long-haul activity
    (re-identified from REAL resolved coordinates, not the name-keyed research intel) plus
    mixed-in urban activities (>45min from the long-haul point AND closer to the trip median
-   center). Action: move urban activities out (`draft.moveActivityToDay`, a code-level
-   primitive — NOT an agent tool) to the lightest-load day with a derivable time slot.
+   center). Action: move urban activities out (`draft.moveActivityToDay`, also used by the
+   revision-only `move_activity` tool) to the lightest-load day with a derivable time slot.
    Accept per-move only if no new hard violations and no newly-dirtied day; accept the day's
    batch only if total hards STRICTLY decreased, else roll the whole day back
    (three-level `structuredClone` snapshots). Bounded: ≤3 moves/day, ≤8 attempts/task;
@@ -291,6 +291,115 @@ lodging name invalidates its coordinates: clear them and drop the affected days'
 Representative paths: `packages/shared/src/schemas.ts`, `packages/shared/src/legs.ts`,
 `apps/server/src/generation/geoPipeline.ts`, `apps/web/src/store/editorStore.ts`.
 
+## Scenario: Research Place Reuse and Local Planner Revisions (P0)
+
+### 1. Scope / Trigger
+
+Apply when changing research POI capture, draft activity edits, automatic geocoding, or the
+second planning round. Keep this within the existing research -> plan -> review runtime;
+public Trip schemas, persistence, provider queues, timeouts, and quotas are unchanged.
+
+### 2. Signatures
+
+- `PlaceHint { placeName?: string; poiId?: string }` and `DraftActivity = Activity & PlaceHint`.
+- `ResearchOutcome.locations: Map<string, ResearchLocation>`; a `ResearchLocation` is a
+  readonly `{ lat: number; lng: number; adcode: string }` from an Amap POI result.
+- `GeoSession.useResearchPlaces(pool, locations): void` binds the finished research to one
+  generation session.
+- `GeoSession.geocodeAll(draft, onProgress, signal?, changedOnly?: boolean): Promise<void>`.
+- `DraftTrip.updateActivity(dayIndex, position, patch: Partial<DraftActivityInput>): string`.
+- `buildDraftTools(draft, mode: 'plan' | 'revision' = 'plan'): AgentTool[]`.
+- Revision tool: `move_activity({ fromDayIndex, activityId, toDayIndex })`, with 1-based days.
+- `plannerUserPrompt(form, research, revisionRequests?, longHaulIntel?, currentDraft?): string`.
+
+### 3. Contracts
+
+- `search_pois` captures exact trimmed names, GCJ-02 coordinates, and adcodes privately.
+  Conflicting coordinates or nonempty adcodes for the same name permanently disqualify that
+  name from reuse for this research instance. Non-finite, out-of-range, and `(0, 0)` points
+  cannot enter the reusable index.
+- Candidate `poiId` resolves to its canonical name. An explicit conflicting `placeName`
+  wins over a stale ID. Otherwise lookup uses the exact place name, including legacy meal
+  extraction: `午餐｜春熙路 · 川菜` queries `春熙路` while its display name stays intact.
+  Do not fuzzy-match candidate names or use a restaurant ID to represent an entire meal area.
+- Reused points are staged and pass the same `rejectFarGeocodes` firewall as fresh lookups.
+  A rejected research point gets one normal lookup-chain attempt in that pass and another
+  validation; its research name is disabled for subsequent reuse in the session. Reference
+  unavailability and validation exceptions retain the existing firewall degradation behavior.
+- The median reference pool contains already-geocoded activities plus staged results. An
+  unchanged failed/estimated activity skipped by `changedOnly` must not become a reference.
+- Reuse makes no new provider attempt and spends no extra `geo.stats.calls`; the original
+  research attempt remains counted. Ordinary fallback calls keep existing accounting,
+  limits, source labels, and GCJ-02 conversion. Accepted adcodes populate route `city1/city2`.
+- Renaming a place, changing a reference, or changing coordinates invalidates old coordinates
+  and affected activity legs. Clear inherited conflicting hints; clear old source notes on a
+  place replacement unless replacements are supplied. Re-resolution deletes the old adcode.
+  A time/description-only patch preserves the ID, references, coordinates, coordinate system,
+  source notes, and routes. Coordinate patches are re-resolved, not treated as verified points.
+- Repeating the same normalized lodging suggestion preserves its resolved data. Changing
+  lodging clears its coordinates and all lodging-sentinel legs, preserving activity legs.
+- Round 1 uses creation tools and `PLANNER_SYSTEM_PROMPT`. Round 2 uses
+  `PLANNER_REVISION_SYSTEM_PROMPT`, receives `draft.render()` with IDs/places/lodging, and has
+  no `set_trip_skeleton`. `move_activity` appends the same activity to the target day; the
+  planner adjusts its time and the post-pass recomputes routes. Unaffected content stays put.
+- After the last review, `geocodeAll(..., true)` resolves new/invalidated states before final
+  route recomputation. It skips unchanged failed queries, including unchanged failed lodging.
+  The state key includes coordinates/source as well as the place reference, so invalidating
+  coordinates without changing the name still triggers resolution. Regular planning-round
+  passes retain the existing opportunity to retry unresolved items.
+- `DraftTrip.toTrip()` strips internal `placeName`/`poiId`; no public schema or DB migration.
+  Final meal coverage, route coherence, feasibility, SSE, and cancellation still run.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| Valid unambiguous research point | Validate, then adopt without repeated geocoding. |
+| No reusable exact match, ambiguous name, invalid point | Normal geocoding chain and truthful fallback. |
+| Reused point fails sanity | Normal lookup, revalidate; still invalid -> keep unresolved. |
+| Time or description edited | No new location query or route attempt for unchanged verified pairs. |
+| Place or coordinates changed | Old location data invalidated; final review pass resolves again. |
+| Move has missing activity/day or same source/target day | Error text, no draft mutation. |
+| Signal aborted | Stop starting new work items; throw before adopting in-flight results. |
+
+### 5. Good / Base / Bad Cases
+
+- Good: research located a museum and two meal areas; the post-pass only looks up the city
+  center, retains identical verified activity coordinates, and routes with each area's adcode.
+- Base: a model-only candidate has no research coordinates; the usual lookup chain resolves it.
+- Bad: a revision recreates the skeleton, a renamed activity keeps the old museum's coordinates,
+  or a skipped estimated point makes the sanity reference drift to the wrong city.
+
+### 6. Tests Required
+
+- `placeLookup.test.ts`: meal queries, reference priority, ambiguity, invalid coordinates, and
+  private research adcode capture without candidate-schema leakage.
+- `draftRevision.test.ts`: non-location edit preservation, location/route invalidation, lodging
+  idempotence, ID-preserving moves, invalid moves, and stripping internal hints on persistence.
+- `geoPipeline.test.ts`: mocked HTTP counts (unseeded 4 vs reuse 1 for city + 3 places), identical
+  coordinates, transit adcodes, safe fallback, failed-query skipping, reference-pool hygiene,
+  coordinate-only invalidation, and cancellation. Use isolated env/SQLite and intercept all
+  provider fetches, including Nominatim.
+- `scripts/verify-c2.mjs`: reviewer overrun fallback plus an actual second planning round;
+  assert one skeleton, all original activity IDs, both daily meals, local edits, and clean Trip JSON.
+- Keep typecheck, full server tests, and offline eval green. Mock counts and historical snapshot
+  replay do not establish online latency or newly generated itinerary quality.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: discard the researched location and rebuild the draft on every review round.
+await geocodeActivity(apiKey, activity.name, destination, tryGeocode);
+const tools = buildDraftTools(draft);
+
+// Correct: bind task-local evidence and restrict the revision to the existing draft.
+geo.useResearchPlaces(research.pool, research.locations);
+const tools = buildDraftTools(draft, 'revision');
+const prompt = plannerUserPrompt(form, research, requests, intel, draft.render());
+await geo.geocodeAll(draft, onProgress, signal, true);
+await geo.computeLegs(draft, onProgress, signal);
+```
+
 ## Scenario: Final Route Coherence After Model Review
 
 ### 1. Scope / Trigger
@@ -309,6 +418,8 @@ a distant place. Both cases make pre-review legs or grouping unsafe to persist u
 
 - Recompute all legs immediately after review. If this optional recompute fails, delete every
   day's legs; missing routes are truthful, stale routes are not.
+- Resolve reviewer-invalidated places with `geocodeAll(..., true)` before recomputing final
+  legs; otherwise a replacement activity could retain missing or stale location data.
 - Cross-day grouping swaps only same-category visit blocks and keeps following meal activities
   attached to their attraction. A candidate needs a strong proximity signal in either direction:
   at most 20km from a target-day peer, at least 40km from its current-day peers, and at least
@@ -356,7 +467,8 @@ await runReviewer(draft);
 const gain = oldMinutes - sumPresentLegsOnly(draft);
 persist(draft);
 
-// Correct: rebuild final routes, then accept a bounded swap only after strict real-route checks.
+// Correct: resolve changed places, then rebuild routes and validate bounded grouping changes.
+await geo.geocodeAll(draft, onProgress, signal, true);
 await geo.computeLegs(draft, onProgress, signal);
 await optimizeCrossDayGrouping(draft, { mode, recomputeLegs, signal });
 ensureMealCoverage(draft.mutableDays(), destination);

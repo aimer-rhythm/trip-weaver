@@ -15,6 +15,7 @@ import { defineTool } from './defineTool';
 import type { PoiSource } from '../../integrations/amap/poiSource';
 import type { SearchSource } from '../../integrations/websearch/searchSource';
 import { matchReservationSeed } from '../../data/reservationSeeds';
+import { rememberResearchLocation, type ResearchLocation } from '../placeLookup';
 
 function text(t: string) {
   return [{ type: 'text' as const, text: t }];
@@ -25,9 +26,9 @@ const CATEGORY_LABEL: Record<PoiCategory, string> = { attraction: '景点', food
 export interface ResearchOutcome {
   summary: string;
   pool: ResearchPoi[];
-  /** 坐标旁路（层2 距离预计算用）：search_pois 命中的 name → GCJ-02 坐标。
+  /** 坐标旁路（距离预计算与定位复用）：search_pois 命中的唯一 name → GCJ-02 坐标/adcode。
    *  仅任务内存短暂持有，不入候选池 schema、不随行程持久化（高德协议 3.5：仅存活动坐标点值） */
-  locations: Map<string, { lat: number; lng: number }>;
+  locations: Map<string, ResearchLocation>;
 }
 
 export interface ResearchToolDeps {
@@ -45,6 +46,7 @@ function isHttpUrl(u: string): boolean {
 
 export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const { poiSource, searchSource, destination, outcome, onCandidate } = deps;
+  const ambiguousNames = new Set<string>();
 
   const poisTool = defineTool({
     name: 'search_pois',
@@ -69,7 +71,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       // 坐标旁路捕获（层2 距离预计算用）：搜索结果已如实带回 GCJ-02 坐标，零额外调用；
       // 后续 add_candidate 的候选按同名关联（模型改写名称导致失配时仅漏标，由层3 兜底）
       for (const p of pois) {
-        if (p.location) outcome.locations.set(p.name, p.location);
+        if (p.location) rememberResearchLocation(outcome.locations, ambiguousNames, p.name, { ...p.location, adcode: p.adcode });
       }
       const lines = pois.map((p, i) => {
         const bits = [

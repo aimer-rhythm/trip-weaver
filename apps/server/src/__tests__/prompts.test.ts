@@ -1,12 +1,10 @@
 // 单测：规划 prompt 的长途点情报注入（远郊编排层2 预防，node:test 经 tsx 运行）
-// 关键回归约束：无长途点时 plannerUserPrompt 必须与旧版逐字一致——金集 walk/drive 短途类 case
-// （guangzhou/hangzhou/suzhou）无长途点，prompt 面零变化是其回归风险的直接闸门；其余 case
-// live 重生成时会携带情报段落（属预期行为变化），有长途点路径由下方注入测试锁定。
+// 无长途点时不额外注入长途规则；P0 地点引用在候选索引中显式携带 poiId。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { GenerateForm, ResearchPoi } from '@tripweaver/shared';
 import type { LongHaulPoi } from '../generation/longHaul';
-import { PLANNER_SYSTEM_PROMPT, RESEARCH_SYSTEM_PROMPT, REVIEWER_SYSTEM_PROMPT, formBrief, plannerUserPrompt, renderLongHaulIntel } from '../generation/prompts';
+import { PLANNER_SYSTEM_PROMPT, PLANNER_REVISION_SYSTEM_PROMPT, RESEARCH_SYSTEM_PROMPT, REVIEWER_SYSTEM_PROMPT, formBrief, plannerUserPrompt, renderLongHaulIntel } from '../generation/prompts';
 
 const form: GenerateForm = {
   destination: '测试市',
@@ -35,14 +33,14 @@ test('renderLongHaulIntel 空情报返回空串', () => {
   assert.equal(renderLongHaulIntel([], 'transit'), '');
 });
 
-test('plannerUserPrompt 无长途点时与旧版逐字一致（缺省参数与显式空数组同义）', () => {
-  const legacy = [
+test('plannerUserPrompt 候选引用明确，缺省长途情报与显式空数组同义', () => {
+  const expected = [
     `用户需求：\n${formBrief(form)}`,
-    `候选池（优先从中选点，名称保持一致）：\n- 甲景区｜景点【预约情况未知】｜简介`,
+    `候选池（优先从中选点，名称保持一致）：\n- 甲景区｜poiId=p1｜景点【预约情况未知】｜简介`,
     `调研摘要：\n摘要正文`,
   ].join('\n\n');
-  assert.equal(plannerUserPrompt(form, { summary: '摘要正文', pool }), legacy);
-  assert.equal(plannerUserPrompt(form, { summary: '摘要正文', pool }, [], []), legacy);
+  assert.equal(plannerUserPrompt(form, { summary: '摘要正文', pool }), expected);
+  assert.equal(plannerUserPrompt(form, { summary: '摘要正文', pool }, [], []), expected);
 });
 
 // ---------- 有长途点：情报段落 + 硬规则 ----------
@@ -85,11 +83,26 @@ test('PLANNER_SYSTEM_PROMPT 含长途点纪律（独占日约束 + 通勤时间�
 });
 
 test('餐饮编排要求每天午晚餐，并把实时门店决策交给外部平台', () => {
-  assert.ok(PLANNER_SYSTEM_PROMPT.includes('必须同时包含午餐与晚餐'));
-  assert.ok(PLANNER_SYSTEM_PROMPT.includes('片区 · 菜系或代表菜'));
-  assert.ok(PLANNER_SYSTEM_PROMPT.includes('大众点评或美团确认'));
+  for (const prompt of [PLANNER_SYSTEM_PROMPT, PLANNER_REVISION_SYSTEM_PROMPT]) {
+    assert.ok(prompt.includes('必须同时包含午餐与晚餐'));
+    assert.ok(prompt.includes('片区 · 菜系或代表菜'));
+    assert.ok(prompt.includes('大众点评或美团确认'));
+    assert.ok(prompt.includes('placeName="春熙路"'));
+    assert.ok(prompt.includes('长途点纪律'));
+  }
   assert.ok(RESEARCH_SYSTEM_PROMPT.includes('评分、人均、营业与排队均是动态信息'));
   assert.ok(REVIEWER_SYSTEM_PROMPT.includes('每天是否同时有午餐和晚餐'));
+});
+
+test('修订输入提供实际草稿与问题，指令要求保留已有活动 ID', () => {
+  const snapshot = '第 1 天：原主题\n  1. 原活动｜id=activity-original｜09:00-11:00';
+  const text = plannerUserPrompt(form, { summary: '摘要', pool }, ['将晚餐后移'], intel, snapshot);
+  assert.ok(text.includes(snapshot));
+  assert.ok(text.includes('将晚餐后移'));
+  assert.ok(text.includes('长途点情报'));
+  assert.ok(PLANNER_REVISION_SYSTEM_PROMPT.includes('move_activity'));
+  assert.ok(PLANNER_REVISION_SYSTEM_PROMPT.includes('禁止清空草稿'));
+  assert.equal(PLANNER_REVISION_SYSTEM_PROMPT.includes('调用 set_trip_skeleton'), false);
 });
 
 test('生成提示不再包含用户预算决策或费用估算工具', () => {

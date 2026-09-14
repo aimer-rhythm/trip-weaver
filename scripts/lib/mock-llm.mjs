@@ -48,7 +48,7 @@ function plannerCalls(days, turnHasToolResults, { geocodedActivities, includeLod
   if (includeLodging) calls.push({ name: 'set_lodging', args: { name: '市中心站前区域' } });
   for (let d = 1; d <= days; d++) {
     const activities = [
-      { name: `活动${d}-1`, startTime: '09:00', endTime: '11:00', category: '文化' },
+      { name: `活动${d}-1`, placeName: `活动${d}-1`, startTime: '09:00', endTime: '11:00', category: '文化' },
       { name: `午餐｜活动${d}-1周边当地风味`, startTime: '12:00', endTime: '13:15', category: '美食' },
       { name: `晚餐｜市中心片区当地风味`, startTime: '18:00', endTime: '19:15', category: '美食' },
     ];
@@ -72,16 +72,19 @@ function plannerCalls(days, turnHasToolResults, { geocodedActivities, includeLod
 }
 
 /**
- * 启动 mock 端点；返回 { server, seenAuthHeaders, close }
+ * 启动 mock 端点；返回 { server, seenAuthHeaders, seenRevisions, close }
  * delayMs：每次补全前的延迟（留出取消窗口 / 模拟真实节奏）
  */
 export async function startMockLlm(
   port,
-  { delayMs = 300, reviewerOverrunOnce = false, geocodedActivities = false, includeLodging = true } = {},
+  { delayMs = 300, reviewerOverrunOnce = false, requestRevisionOnce = false, geocodedActivities = false, includeLodging = true } = {},
 ) {
   const seenAuthHeaders = [];
+  const seenRevisions = [];
   let reviewerOverrunAvailable = reviewerOverrunOnce;
   let reviewerOverrunActive = false;
+  let reviewerRevisionAvailable = requestRevisionOnce;
+  let reviewerRevisionActive = false;
   const server = createServer((req, res) => {
     if (!req.url?.includes('/chat/completions')) {
       res.writeHead(404).end();
@@ -102,19 +105,36 @@ export async function startMockLlm(
 
       if (system.includes('旅行调研员')) {
         respondWithToolCalls(res, payload.model, researchCalls(toolResults > 0));
+      } else if (system.includes('行程规划师') && system.includes('局部修订')) {
+        if (toolResults === 0) {
+          seenRevisions.push({
+            tools: (payload.tools ?? []).map((tool) => tool.function?.name),
+            hasDraft: userText.includes('当前草稿'),
+            activityIds: [...userText.matchAll(/｜id=([^｜\s]+)｜/g)].map((match) => match[1]),
+          });
+        }
+        respondWithToolCalls(res, payload.model, toolResults > 0
+          ? [{ name: 'submit_plan', args: {} }]
+          : [{ name: 'update_activity', args: { dayIndex: 1, position: 1, startTime: '09:30', description: '局部修订：延后半小时参观，保留其他安排。' } }]);
       } else if (system.includes('行程规划师')) {
         respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0, { geocodedActivities, includeLodging }));
       } else if (system.includes('行程审校员')) {
         if (toolResults === 0) {
           reviewerOverrunActive = reviewerOverrunAvailable;
           reviewerOverrunAvailable = false;
+          reviewerRevisionActive = !reviewerOverrunActive && reviewerRevisionAvailable;
+          if (reviewerRevisionActive) reviewerRevisionAvailable = false;
         }
         respondWithToolCalls(
           res,
           payload.model,
           reviewerOverrunActive
             ? [{ name: 'get_draft', args: {} }]
-            : [{ name: 'submit_review', args: { approved: true, notes: ['测试建议：留意闭馆时间'], revisionRequests: [] } }],
+            : [{ name: 'submit_review', args: {
+              approved: !reviewerRevisionActive,
+              notes: ['测试建议：留意闭馆时间'],
+              revisionRequests: reviewerRevisionActive ? ['第 1 天第 1 项开始时间调至 09:30，并补充参观说明；保留其他安排。'] : [],
+            } }],
         );
       } else {
         respondWithToolCalls(res, payload.model, [{ name: 'submit_research', args: { summary: '兜底' } }]);
@@ -122,5 +142,5 @@ export async function startMockLlm(
     });
   });
   await new Promise((r) => server.listen(port, '127.0.0.1', r));
-  return { server, seenAuthHeaders, close: () => server.close() };
+  return { server, seenAuthHeaders, seenRevisions, close: () => server.close() };
 }
