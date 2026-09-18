@@ -87,7 +87,7 @@ async function generateLive(gc: GoldenCase): Promise<Snapshot | null> {
     console.error(`    [${gc.id}] 生成失败：${errorMessage || `终态 ${job.status}`}`);
     return null;
   }
-  const trip = getTrip('eval-user', job.tripId);
+  const trip = await getTrip('eval-user', job.tripId);
   if (!trip) {
     console.error(`    [${gc.id}] 落库后读回失败（tripId=${job.tripId}）`);
     return null;

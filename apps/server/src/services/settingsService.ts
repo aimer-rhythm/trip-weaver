@@ -41,14 +41,15 @@ export interface SearchCredential {
   revision: string;
 }
 
-function getRow(userId: string) {
-  return db.select().from(userSettings).where(eq(userSettings.userId, userId)).get();
+async function getRow(userId: string) {
+  const [row] = await db.select().from(userSettings).where(eq(userSettings.userId, userId));
+  return row;
 }
 
-export function getSettingsView(userId: string): SettingsView {
-  const row = getRow(userId);
+export async function getSettingsView(userId: string): Promise<SettingsView> {
+  const row = await getRow(userId);
   return {
-    byokEnabled: Boolean(row?.byokEnabled),
+    byokEnabled: row?.byokEnabled ?? false,
     baseUrl: row?.baseUrl ?? '',
     model: row?.model ?? '',
     apiKeyLast4: row?.apiKeyLast4 ?? '',
@@ -64,7 +65,7 @@ export function getSettingsView(userId: string): SettingsView {
 }
 
 export async function upsertSettings(userId: string, body: SettingsPut): Promise<SettingsView> {
-  const prev = getRow(userId);
+  const prev = await getRow(userId);
   const baseUrl = body.baseUrl?.trim() ?? prev?.baseUrl ?? '';
   const model = body.model?.trim() ?? prev?.model ?? '';
 
@@ -137,10 +138,10 @@ export async function upsertSettings(userId: string, body: SettingsPut): Promise
     }
   }
 
-  const now = Date.now();
+  const now = new Date();
   const values = {
     userId,
-    byokEnabled: body.byokEnabled ? 1 : 0,
+    byokEnabled: Boolean(body.byokEnabled),
     baseUrl,
     apiKeyCiphertext,
     apiKeyLast4,
@@ -154,16 +155,15 @@ export async function upsertSettings(userId: string, body: SettingsPut): Promise
     searchCredentialRevision,
     updatedAt: now,
   };
-  db.insert(userSettings)
+  await db.insert(userSettings)
     .values(values)
-    .onConflictDoUpdate({ target: userSettings.userId, set: values })
-    .run();
+    .onConflictDoUpdate({ target: userSettings.userId, set: values });
   return getSettingsView(userId);
 }
 
 /** Key 双轨解析：用户 BYOK → 站点 Key → null（调用方负责给出 PRD F1 的对应文案） */
-export function resolveLlmConfig(userId: string): LlmConfig | null {
-  const row = getRow(userId);
+export async function resolveLlmConfig(userId: string): Promise<LlmConfig | null> {
+  const row = await getRow(userId);
   if (row?.byokEnabled && row.baseUrl && row.model && row.apiKeyCiphertext) {
     return { baseUrl: row.baseUrl, apiKey: decryptSecret(row.apiKeyCiphertext), model: row.model, byok: true };
   }
@@ -174,8 +174,8 @@ export function resolveLlmConfig(userId: string): LlmConfig | null {
 }
 
 /** 高德 Key 双轨解析：当前用户个人 Key → 站点 AMAP_KEY → null。 */
-export function resolveAmapCredential(userId: string): AmapCredential | null {
-  const row = getRow(userId);
+export async function resolveAmapCredential(userId: string): Promise<AmapCredential | null> {
+  const row = await getRow(userId);
   if (row?.amapApiKeyCiphertext) {
     try {
       return {
@@ -194,8 +194,8 @@ export function resolveAmapCredential(userId: string): AmapCredential | null {
 }
 
 /** Web 搜索配置双轨解析：当前用户个人配置 → 站点 SEARCH_API_* → null。 */
-export function resolveSearchCredential(userId: string): SearchCredential | null {
-  const row = getRow(userId);
+export async function resolveSearchCredential(userId: string): Promise<SearchCredential | null> {
+  const row = await getRow(userId);
   if (row?.searchApiKeyCiphertext && row.searchApiBaseUrl) {
     try {
       return {

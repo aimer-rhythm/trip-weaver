@@ -18,7 +18,7 @@ interface SourceStatusMemo {
 const statusMemoByUser = new Map<string, SourceStatusMemo>();
 
 export async function probeSourcesForUser(userId: string): Promise<{ amap: SourceStatus; websearch: SourceStatus }> {
-  const resolvedPoiSource = resolvePoiSourceForUser(userId);
+  const resolvedPoiSource = await resolvePoiSourceForUser(userId);
   const resolvedSearchSource = await resolveSearchSourceForUser(userId);
   const memo = statusMemoByUser.get(userId);
   if (

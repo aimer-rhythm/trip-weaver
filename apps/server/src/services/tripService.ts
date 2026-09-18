@@ -12,7 +12,7 @@ function summarize(trip: Trip) {
     daysCount: trip.days.length,
     activityCount: trip.days.reduce((n, d) => n + d.activities.length, 0),
     totalCost: Math.round(totalCost),
-    usedXhs: trip.meta.usedXhs ? 1 : 0,
+    usedXhs: trip.meta.usedXhs,
   };
 }
 
@@ -24,55 +24,55 @@ function toListItem(row: typeof trips.$inferSelect): TripListItem {
     daysCount: row.daysCount,
     activityCount: row.activityCount,
     totalCost: row.totalCost,
-    usedXhs: Boolean(row.usedXhs),
-    createdAt: row.createdAt,
-    updatedAt: row.updatedAt,
+    usedXhs: row.usedXhs,
+    createdAt: row.createdAt.getTime(),
+    updatedAt: row.updatedAt.getTime(),
   };
 }
 
-export function listTrips(userId: string): TripListItem[] {
-  return db.select().from(trips).where(eq(trips.userId, userId)).orderBy(desc(trips.updatedAt)).all().map(toListItem);
+export async function listTrips(userId: string): Promise<TripListItem[]> {
+  const rows = await db.select().from(trips).where(eq(trips.userId, userId)).orderBy(desc(trips.updatedAt));
+  return rows.map(toListItem);
 }
 
-export function getTrip(userId: string, id: string): Trip | null {
-  const row = db.select().from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId))).get();
-  return row ? (JSON.parse(row.data) as Trip) : null;
+export async function getTrip(userId: string, id: string): Promise<Trip | null> {
+  const [row] = await db.select().from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId)));
+  return row ? (row.data as Trip) : null;
 }
 
 /** 新建（导入 / 生成落库共用）：分配新 id 与时间戳，归属当前用户 */
-export function createTrip(userId: string, source: Trip): Trip {
-  const count = db.select({ n: sql<number>`count(*)` }).from(trips).where(eq(trips.userId, userId)).get();
-  if ((count?.n ?? 0) >= MAX_TRIPS_PER_USER) {
+export async function createTrip(userId: string, source: Trip): Promise<Trip> {
+  const [count] = await db.select({ n: sql<number>`count(*)` }).from(trips).where(eq(trips.userId, userId));
+  if (Number(count?.n ?? 0) >= MAX_TRIPS_PER_USER) {
     throw Object.assign(new Error(`行程数量已达上限（${MAX_TRIPS_PER_USER} 条），请先清理历史行程`), { statusCode: 409 });
   }
-  const now = Date.now();
-  const trip: Trip = { ...source, id: uid(), createdAt: now, updatedAt: now };
-  db.insert(trips)
-    .values({ id: trip.id, userId, ...summarize(trip), data: JSON.stringify(trip), createdAt: now, updatedAt: now })
-    .run();
+  const nowMs = Date.now();
+  const now = new Date(nowMs);
+  const trip: Trip = { ...source, id: uid(), createdAt: nowMs, updatedAt: nowMs };
+  await db.insert(trips).values({ id: trip.id, userId, ...summarize(trip), data: trip, createdAt: now, updatedAt: now });
   return trip;
 }
 
-export function updateTrip(userId: string, id: string, incoming: Trip): Trip | null {
-  const existing = db.select().from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId))).get();
+export async function updateTrip(userId: string, id: string, incoming: Trip): Promise<Trip | null> {
+  const [existing] = await db.select().from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId)));
   if (!existing) return null;
-  const now = Date.now();
+  const nowMs = Date.now();
   // id 与 createdAt 以服务端为准，防止客户端篡改
-  const trip: Trip = { ...incoming, id, createdAt: existing.createdAt, updatedAt: now };
-  db.update(trips)
-    .set({ ...summarize(trip), data: JSON.stringify(trip), updatedAt: now })
-    .where(and(eq(trips.id, id), eq(trips.userId, userId)))
-    .run();
+  const trip: Trip = { ...incoming, id, createdAt: existing.createdAt.getTime(), updatedAt: nowMs };
+  await db
+    .update(trips)
+    .set({ ...summarize(trip), data: trip, updatedAt: new Date(nowMs) })
+    .where(and(eq(trips.id, id), eq(trips.userId, userId)));
   return trip;
 }
 
-export function renameTrip(userId: string, id: string, title: string): boolean {
-  const trip = getTrip(userId, id);
+export async function renameTrip(userId: string, id: string, title: string): Promise<boolean> {
+  const trip = await getTrip(userId, id);
   if (!trip) return false;
-  return updateTrip(userId, id, { ...trip, title }) !== null;
+  return (await updateTrip(userId, id, { ...trip, title })) !== null;
 }
 
-export function deleteTrip(userId: string, id: string): boolean {
-  const res = db.delete(trips).where(and(eq(trips.id, id), eq(trips.userId, userId))).run();
-  return res.changes > 0;
+export async function deleteTrip(userId: string, id: string): Promise<boolean> {
+  const rows = await db.delete(trips).where(and(eq(trips.id, id), eq(trips.userId, userId))).returning({ id: trips.id });
+  return rows.length > 0;
 }

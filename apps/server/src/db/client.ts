@@ -1,15 +1,12 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import Database from 'better-sqlite3';
-import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { Pool } from 'pg';
+import { drizzle } from 'drizzle-orm/node-postgres';
 import { env } from '../env';
 import { runMigrations } from './migrate';
 import * as schema from './schema';
 
-const dbFile = path.resolve(env.databasePath);
-fs.mkdirSync(path.dirname(dbFile), { recursive: true });
+export const pool = new Pool({ connectionString: env.databaseUrl });
 
-export const sqlite = new Database(dbFile);
-runMigrations(sqlite);
+// 顶层 await：模块导入即完成建库与迁移（ESM + tsx 支持，index.ts 依赖该副作用）
+await runMigrations(pool);
 
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(pool, { schema });

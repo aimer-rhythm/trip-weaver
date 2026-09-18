@@ -190,8 +190,8 @@ export function createPoiSource(apiKey: string | null | undefined): PoiSource {
 }
 
 /** 用户个人 Key 优先，未配置或密文不可用时回退站点 Key，再回退 Null 源。 */
-export function resolvePoiSourceForUser(userId: string): ResolvedPoiSource {
-  const credential = resolveAmapCredential(userId);
+export async function resolvePoiSourceForUser(userId: string): Promise<ResolvedPoiSource> {
+  const credential = await resolveAmapCredential(userId);
   if (!credential) {
     return { source: nullSource, credentialRevision: 'none', credentialOrigin: 'none' };
   }

@@ -18,6 +18,8 @@ const GEOCODE_PIPELINE_CONCURRENCY = 2;   // 仅重叠高德与 Nominatim 独立
 export interface GeoSession {
   /** 高德调用尝试次数（geocode + route 合计）：计入 usage 事件与 generations.amap_calls */
   stats: { calls: number };
+  /** 异步初始化（09-18 PG 化后凭据与额度解析为 async）：须在任何其他方法前 await 一次 */
+  init(): Promise<void>;
   /** 调研结束后注入任务内真实地点；坐标仍由 geocodeAll 暂存、校验后采纳。 */
   useResearchPlaces(pool: readonly ResearchPoi[], locations: ReadonlyMap<string, ResearchLocation>): void;
   /** 编排 Agent geocode_place 工具入口：走同一解析链与记账 */
@@ -35,10 +37,9 @@ export interface GeoSession {
 }
 
 export function createGeoSession(userId: string, destination: string, baseMode: LegMode = 'transit'): GeoSession {
+  // 凭据与日额度在 init() 中异步解析（09-18：DB 访问 PG 化后全链路 async）；
   // 日额度闸门：余额不足整任务预留量则本任务不用高德（Nominatim + 启发式降级，不断服）
-  const credential = resolveAmapCredential(userId);
-  const apiKey =
-    credential && amapBudgetRemaining() >= GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK ? credential.apiKey : null;
+  let apiKey: string | null = null;
 
   const stats = { calls: 0 };
   let geocodeCalls = 0;
@@ -92,6 +93,14 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
 
   return {
     stats,
+
+    async init() {
+      const credential = await resolveAmapCredential(userId);
+      apiKey =
+        credential && (await amapBudgetRemaining()) >= GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK
+          ? credential.apiKey
+          : null;
+    },
 
     useResearchPlaces(pool, locations) {
       lookupPlace = createResearchPlaceLookup(pool, locations);

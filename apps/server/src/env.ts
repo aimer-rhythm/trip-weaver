@@ -48,6 +48,9 @@ export const env = {
   nodeEnv: str('NODE_ENV', 'development'),
   isProd: str('NODE_ENV') === 'production',
   port: int('PORT', 3001),
+  // PostgreSQL 连接串（09-18 起为唯一运行态数据库）
+  databaseUrl: str('DATABASE_URL', 'postgres://postgres:postgres@127.0.0.1:5432/tripweaver'),
+  // 旧 SQLite 文件路径：仅一次性迁移脚本 scripts/migrate-sqlite-to-pg.ts 读取
   databasePath: str('DATABASE_PATH', './data/tripweaver.db'),
   masterKey,
   registrationMode,

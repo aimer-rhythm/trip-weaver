@@ -13,32 +13,35 @@ function hashToken(token: string): string {
   return createHash('sha256').update(token).digest('hex');
 }
 
-export function createSession(userId: string): { token: string; expiresAt: number } {
+export async function createSession(userId: string): Promise<{ token: string; expiresAt: number }> {
   const token = randomBytes(32).toString('hex');
   const now = Date.now();
-  db.insert(sessions)
-    .values({ id: uid(), userId, tokenHash: hashToken(token), expiresAt: now + SESSION_TTL_MS, createdAt: now })
-    .run();
+  await db.insert(sessions).values({
+    id: uid(),
+    userId,
+    tokenHash: hashToken(token),
+    expiresAt: new Date(now + SESSION_TTL_MS),
+    createdAt: new Date(now),
+  });
   // 顺手清理该用户的过期会话
-  db.delete(sessions).where(and(eq(sessions.userId, userId), lt(sessions.expiresAt, now))).run();
+  await db.delete(sessions).where(and(eq(sessions.userId, userId), lt(sessions.expiresAt, new Date(now))));
   return { token, expiresAt: now + SESSION_TTL_MS };
 }
 
-export function validateSession(token: string): { id: string; email: string } | null {
+export async function validateSession(token: string): Promise<{ id: string; email: string } | null> {
   const now = Date.now();
-  const row = db
+  const [row] = await db
     .select({ sessionId: sessions.id, expiresAt: sessions.expiresAt, userId: users.id, email: users.email })
     .from(sessions)
     .innerJoin(users, eq(users.id, sessions.userId))
-    .where(and(eq(sessions.tokenHash, hashToken(token)), gt(sessions.expiresAt, now)))
-    .get();
+    .where(and(eq(sessions.tokenHash, hashToken(token)), gt(sessions.expiresAt, new Date(now))));
   if (!row) return null;
-  if (row.expiresAt - now < RENEW_THRESHOLD_MS) {
-    db.update(sessions).set({ expiresAt: now + SESSION_TTL_MS }).where(eq(sessions.id, row.sessionId)).run();
+  if (row.expiresAt.getTime() - now < RENEW_THRESHOLD_MS) {
+    await db.update(sessions).set({ expiresAt: new Date(now + SESSION_TTL_MS) }).where(eq(sessions.id, row.sessionId));
   }
   return { id: row.userId, email: row.email };
 }
 
-export function destroySession(token: string): void {
-  db.delete(sessions).where(eq(sessions.tokenHash, hashToken(token))).run();
+export async function destroySession(token: string): Promise<void> {
+  await db.delete(sessions).where(eq(sessions.tokenHash, hashToken(token)));
 }

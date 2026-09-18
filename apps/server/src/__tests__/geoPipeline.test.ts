@@ -12,7 +12,7 @@ import { rememberResearchLocation, type ResearchLocation } from '../generation/p
 const ownedDir = mkdtempSync(join(tmpdir(), 'tripweaver-geo-p0-'));
 const testEnv = {
   DOTENV_CONFIG_PATH: join(ownedDir, 'absent.env'),
-  DATABASE_PATH: join(ownedDir, 'test.db'),
+  DATABASE_URL: process.env.DATABASE_URL || 'postgres://postgres:postgres@127.0.0.1:5432/tripweaver_test',
   MASTER_KEY: 'a'.repeat(64),
   AMAP_KEY: 'geo-p0-mock-key',
   AMAP_DAILY_BUDGET: '10000',
@@ -28,16 +28,15 @@ const originalFetch = globalThis.fetch;
 let unexpectedRequests: string[] = [];
 globalThis.fetch = async () => { throw new Error('Test provider mock must be installed'); };
 const { createGeoSession } = await import('../generation/geoPipeline');
-const { sqlite } = await import('../db/client');
+const { pool } = await import('../db/client');
 
 test.afterEach(() => {
   assert.deepEqual(unexpectedRequests, [], '所有外呼必须经过已知的模拟适配器');
   unexpectedRequests = [];
 });
-test.after(() => {
+test.after(async () => {
   globalThis.fetch = originalFetch;
-  sqlite.close();
-  for (const filename of ['test.db', 'test.db-shm', 'test.db-wal']) rmSync(join(ownedDir, filename), { force: true });
+  await pool.end();
   rmdirSync(ownedDir);
   for (const [key, value] of savedEnv) {
     if (value === undefined) delete process.env[key];
@@ -103,12 +102,14 @@ test('复用调研坐标后定位外呼从 4 次降到 1 次，坐标一致且 a
   ];
   const baseline = makeDraft('P0基线市', activities);
   const baselineGeo = createGeoSession('mock-user', 'P0基线市');
+  await baselineGeo.init();
   await baselineGeo.geocodeAll(baseline, quiet);
   assert.deepEqual(textQueries(requests), ['P0基线市', '城市博物馆', '春熙路', '文殊院片区']);
   assert.equal(baselineGeo.stats.calls, 4);
 
   const optimized = makeDraft('P0复用市', activities);
   const optimizedGeo = createGeoSession('mock-user', 'P0复用市');
+  await optimizedGeo.init();
   optimizedGeo.useResearchPlaces([candidate('museum', '城市博物馆')], locations);
   const start = requests.length;
   await optimizedGeo.geocodeAll(optimized, quiet);
@@ -139,6 +140,7 @@ test('缺失候选、同名歧义和非法坐标走原定位链，不采用错�
     { name: '非法地点', poiId: 'invalid' }, { name: '同名公园' }, { name: '新增公园', poiId: 'missing' },
   ]);
   const geo = createGeoSession('mock-user', city);
+  await geo.init();
   geo.useResearchPlaces([candidate('invalid', '非法地点')], locations);
   await geo.geocodeAll(draft, quiet);
   assert.deepEqual(textQueries(requests), [city, '非法地点', '同名公园', '新增公园']);
@@ -154,6 +156,7 @@ test('异地调研坐标被拒后尝试正常定位，仍为异地的结果不�
   const warns = t.mock.method(console, 'warn', () => {});
   const draft = makeDraft(city, [{ name: '可纠正匹配' }, { name: '仍然错配' }]);
   const geo = createGeoSession('mock-user', city);
+  await geo.init();
   geo.useResearchPlaces([], new Map([['可纠正匹配', foreign], ['仍然错配', foreign]]));
   await geo.geocodeAll(draft, quiet);
   assert.deepEqual(textQueries(requests), [city, '可纠正匹配', '仍然错配']);
@@ -171,6 +174,7 @@ test('局部编辑仅重查失效地点，时间编辑保留坐标和路线 memo
   const requests = mockProviders(new Map([[city, original], ['新公园', replacement]]));
   const draft = makeDraft(city, [{ name: '旧公园', poiId: 'old' }, { name: '另一地点' }]);
   const geo = createGeoSession('mock-user', city);
+  await geo.init();
   geo.useResearchPlaces([candidate('old', '旧公园')], new Map([['旧公园', original], ['另一地点', peer]]));
   await geo.geocodeAll(draft, quiet);
   await geo.computeLegs(draft, quiet);
@@ -213,6 +217,7 @@ test('增量解析不重试未变化的失败项，估算坐标不进入地理�
     { name: '解析失败乙', lat: foreign.lat, lng: foreign.lng },
   ]);
   const geo = createGeoSession('mock-user', city);
+  await geo.init();
   await geo.geocodeAll(draft, quiet);
   const before = { calls: geo.stats.calls, requests: requests.length };
   draft.updateActivity(1, 1, { description: '只改说明' });
@@ -238,6 +243,7 @@ test('取消阻止启动更多地点解析，也不采纳在途返回的坐标',
   });
   const draft = makeDraft(city, names.map((name) => ({ name })));
   const geo = createGeoSession('mock-user', city);
+  await geo.init();
   await assert.rejects(geo.geocodeAll(draft, quiet, AbortSignal.abort()), /已取消/);
   assert.equal(requests.length, 0);
   await assert.rejects(geo.geocodeAll(draft, quiet, controller.signal), /已取消/);

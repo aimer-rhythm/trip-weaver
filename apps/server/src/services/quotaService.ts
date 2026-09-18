@@ -5,19 +5,22 @@ import { generations } from '../db/schema';
 import { env } from '../env';
 
 /** 今日已成功生成次数（失败/取消不计，PRD F8） */
-export function usedToday(userId: string): number {
-  const row = db
+export async function usedToday(userId: string): Promise<number> {
+  const [row] = await db
     .select({ n: sql<number>`count(*)` })
     .from(generations)
     .where(
-      and(eq(generations.userId, userId), eq(generations.status, 'done'), gte(generations.createdAt, startOfToday())),
-    )
-    .get();
-  return row?.n ?? 0;
+      and(
+        eq(generations.userId, userId),
+        eq(generations.status, 'done'),
+        gte(generations.createdAt, new Date(startOfToday())),
+      ),
+    );
+  return Number(row?.n ?? 0);
 }
 
-export function usageView(userId: string): UsageView {
-  const used = usedToday(userId);
+export async function usageView(userId: string): Promise<UsageView> {
+  const used = await usedToday(userId);
   return {
     usedToday: used,
     dailyLimit: env.genDailyLimit,
@@ -26,8 +29,8 @@ export function usageView(userId: string): UsageView {
   };
 }
 
-export function hasQuota(userId: string): boolean {
-  return usedToday(userId) < env.genDailyLimit;
+export async function hasQuota(userId: string): Promise<boolean> {
+  return (await usedToday(userId)) < env.genDailyLimit;
 }
 
 // ---------- 全站外部数据源日额度（架构 §6） ----------
@@ -39,25 +42,24 @@ const dailyAgg: Record<'amap' | 'search', { at: number; total: number }> = {
   search: { at: 0, total: 0 },
 };
 
-function callsToday(key: 'amap' | 'search'): number {
+async function callsToday(key: 'amap' | 'search'): Promise<number> {
   const agg = dailyAgg[key];
   if (Date.now() - agg.at > 60_000) {
     const column = key === 'amap' ? generations.amapCalls : generations.searchCalls;
-    const row = db
+    const [row] = await db
       .select({ n: sql<number>`coalesce(sum(${column}), 0)` })
       .from(generations)
-      .where(gte(generations.createdAt, startOfToday()))
-      .get();
-    agg.total = row?.n ?? 0;
+      .where(gte(generations.createdAt, new Date(startOfToday())));
+    agg.total = Number(row?.n ?? 0);
     agg.at = Date.now();
   }
   return agg.total;
 }
 
-export function amapBudgetRemaining(): number {
-  return Math.max(0, env.amapDailyBudget - callsToday('amap'));
+export async function amapBudgetRemaining(): Promise<number> {
+  return Math.max(0, env.amapDailyBudget - (await callsToday('amap')));
 }
 
-export function searchBudgetRemaining(): number {
-  return Math.max(0, env.searchDailyBudget - callsToday('search'));
+export async function searchBudgetRemaining(): Promise<number> {
+  return Math.max(0, env.searchDailyBudget - (await callsToday('search')));
 }

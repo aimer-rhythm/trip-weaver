@@ -4,11 +4,24 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      - DATABASE_PATH=/app/apps/server/data/tripweaver.db
-    volumes:
-      - ./data:/app/apps/server/data
+      - DATABASE_URL=postgres://postgres:${POSTGRES_PASSWORD:-postgres}@db:5432/tripweaver
     expose:
       - "3001"
+    depends_on:
+      - db
+
+  db:
+    # pgvector 镜像：向量扩展随库可用（CREATE EXTENSION vector 在启动迁移中幂等执行）
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=tripweaver
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    expose:
+      - "5432"
 
   caddy:
     image: caddy:2
@@ -28,3 +41,4 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+  pg_data:

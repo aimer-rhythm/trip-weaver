@@ -55,13 +55,13 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
         return reply.code(403).send({ error: '邀请码不正确' });
       }
       const normalized = email.trim().toLowerCase();
-      const exists = db.select({ id: users.id }).from(users).where(eq(users.email, normalized)).get();
-      if (exists) {
+      const exists = await db.select({ id: users.id }).from(users).where(eq(users.email, normalized));
+      if (exists.length) {
         return reply.code(409).send({ error: '该邮箱已注册' });
       }
-      const user = { id: uid(), email: normalized, passwordHash: await hashPassword(password), createdAt: Date.now() };
-      db.insert(users).values(user).run();
-      const { token } = createSession(user.id);
+      const user = { id: uid(), email: normalized, passwordHash: await hashPassword(password), createdAt: new Date() };
+      await db.insert(users).values(user);
+      const { token } = await createSession(user.id);
       return reply.setCookie(SESSION_COOKIE, token, COOKIE_OPTS).code(201).send({ id: user.id, email: user.email });
     },
   );
@@ -74,12 +74,12 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
     },
     async (request, reply) => {
       const { email, password } = request.body;
-      const row = db.select().from(users).where(eq(users.email, email.trim().toLowerCase())).get();
+      const [row] = await db.select().from(users).where(eq(users.email, email.trim().toLowerCase()));
       // 统一失败文案，不泄露账号是否存在；passwordHash 为空 = OAuth-only 账号，禁用密码登录
       if (!row || !row.passwordHash || !(await verifyPassword(password, row.passwordHash))) {
         return reply.code(401).send({ error: '邮箱或密码不正确' });
       }
-      const { token } = createSession(row.id);
+      const { token } = await createSession(row.id);
       return reply.setCookie(SESSION_COOKIE, token, COOKIE_OPTS).send({ id: row.id, email: row.email });
     },
   );
@@ -119,12 +119,12 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
         const token = await exchangeCode(code);          // access token 用完即弃，不落库
         const identity = await fetchGithubIdentity(token);
 
-        let user = db.select().from(users).where(eq(users.githubId, identity.githubId)).get();
+        let user = (await db.select().from(users).where(eq(users.githubId, identity.githubId)))[0];
         if (!user) {
           // 仅信 verified 邮箱做关联：同邮箱既有账号 → 自动绑定
-          const byEmail = db.select().from(users).where(eq(users.email, identity.email)).get();
+          const byEmail = (await db.select().from(users).where(eq(users.email, identity.email)))[0];
           if (byEmail) {
-            db.update(users).set({ githubId: identity.githubId }).where(eq(users.id, byEmail.id)).run();
+            await db.update(users).set({ githubId: identity.githubId }).where(eq(users.id, byEmail.id));
             user = { ...byEmail, githubId: identity.githubId };
           } else {
             if (env.registrationMode !== 'open') return fail('signup_closed');
@@ -133,12 +133,12 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
               email: identity.email,
               passwordHash: '',                          // OAuth-only：空串 = 禁用密码登录
               githubId: identity.githubId,
-              createdAt: Date.now(),
+              createdAt: new Date(),
             };
-            db.insert(users).values(user).run();
+            await db.insert(users).values(user);
           }
         }
-        const { token: session } = createSession(user.id);
+        const { token: session } = await createSession(user.id);
         return reply.setCookie(SESSION_COOKIE, session, COOKIE_OPTS).redirect('/trips');
       } catch (err) {
         request.log.warn({ err }, 'github oauth failed');
@@ -149,7 +149,7 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
 
   app.post('/logout', { preHandler: requireAuth }, async (request, reply) => {
     const token = request.cookies[SESSION_COOKIE];
-    if (token) destroySession(token);
+    if (token) await destroySession(token);
     return reply.clearCookie(SESSION_COOKIE, { path: '/' }).send({ ok: true });
   });
 

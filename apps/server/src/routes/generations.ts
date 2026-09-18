@@ -20,13 +20,13 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.post('/', { schema: { body: GenerateFormSchema } }, async (request, reply) => {
     const userId = request.user!.id;
 
-    const cfg = resolveLlmConfig(userId);
+    const cfg = await resolveLlmConfig(userId);
     if (!cfg) {
       // PRD F1 异常文案分流：前端按 hasSiteKey 展示「联系站长」或「去高级设置填 Key」
       return reply.code(400).send({ error: '当前没有可用的 AI 配置', code: 'no_llm', hasSiteKey: hasSiteLlm() });
     }
-    if (!hasQuota(userId)) {
-      const usage = usageView(userId);
+    if (!(await hasQuota(userId))) {
+      const usage = await usageView(userId);
       return reply.code(429).send({ error: '今日生成次数已用完', code: 'quota_exhausted', resetAt: usage.resetAt });
     }
     const runningId = getRunningJobId(userId);

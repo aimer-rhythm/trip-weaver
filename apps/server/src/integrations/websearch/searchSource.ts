@@ -175,7 +175,7 @@ export function createSearchSource(
 
 /** 个人配置优先；个人 URL 在构造前复查，不安全时降级而不是中断生成。 */
 export async function resolveSearchSourceForUser(userId: string): Promise<ResolvedSearchSource> {
-  const credential = resolveSearchCredential(userId);
+  const credential = await resolveSearchCredential(userId);
   if (!credential) {
     return { source: nullSource, credentialRevision: 'none', credentialOrigin: 'none' };
   }

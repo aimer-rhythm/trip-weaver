@@ -38,6 +38,7 @@ import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
 import { GenerationPerformance } from './performance';
+import { retrieveContext } from './retrieveContext';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { buildGeoTools } from './tools/geoTools';
 import { buildDraftTools, buildSubmitPlanTool } from './tools/draftTools';
@@ -90,17 +91,18 @@ export async function runGeneration(
   );
   // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
   const poiBase =
-    amapBudgetRemaining() >= AMAP_MAX_PER_TASK
-      ? resolvePoiSourceForUser(job.userId).source
+    (await amapBudgetRemaining()) >= AMAP_MAX_PER_TASK
+      ? (await resolvePoiSourceForUser(job.userId)).source
       : getNullPoiSource();
   const searchBase =
-    searchBudgetRemaining() >= SEARCH_MAX_PER_TASK
+    (await searchBudgetRemaining()) >= SEARCH_MAX_PER_TASK
       ? (await resolveSearchSourceForUser(job.userId)).source
       : getNullSearchSource();
   const poi = createTaskPoiSource(poiBase);
   const search = createTaskSearchSource(searchBase);
   // 地理会话（v0.5）：geocode/route 统一凭据解析、任务上限与日额度记账（计入 amap_calls）；出行方式基调来自表单（ST3）
   const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
+  await geo.init();   // 09-18：凭据/额度解析 PG 化后为异步，须在任何 geo 调用前完成
   const enabledSources: DataSourceKind[] = [
     ...(poi.source.kind === 'amap' ? (['amap'] as const) : []),
     ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
@@ -157,22 +159,21 @@ export async function runGeneration(
     }
   };
 
-  const record = (status: 'done' | 'error' | 'cancelled', tripId: string | null) => {
-    db.insert(generations)
+  const record = async (status: 'done' | 'error' | 'cancelled', tripId: string | null) => {
+    await db.insert(generations)
       .values({
         id: uid(),
         userId: job.userId,
         tripId,
         status,
-        usedXhs: 0,   // 列保留供旧数据读取；新生成恒 0
-        usedByok: cfg.byok ? 1 : 0,
+        usedXhs: false,   // 列保留供旧数据读取；新生成恒 false
+        usedByok: cfg.byok,
         tokensIn: usage.tokensIn,
         tokensOut: usage.tokensOut,
         amapCalls: poi.stats.calls + geo.stats.calls,
         searchCalls: search.stats.calls,
-        createdAt: Date.now(),
-      })
-      .run();
+        createdAt: new Date(),
+      });
   };
 
   try {
@@ -212,6 +213,10 @@ export async function runGeneration(
     assertAlive(signal, researchRun.errorMessage);
     endPhase('research', 1, `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`);
     geo.useResearchPlaces(research.pool, research.locations);
+
+    // RAG 地基（09-18）：调研与编排之间的检索调用点。当前恒返回空数组（占位），
+    // 接入时挂 canonical_places / research_evidence 的查询（见 generation/retrieveContext.ts）。
+    await retrieveContext(research.pool.map((p) => p.name));
 
     // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
     // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
@@ -433,8 +438,8 @@ export async function runGeneration(
       ...(poi.stats.gotResults ? (['amap'] as const) : []),
       ...(search.stats.gotResults ? (['websearch'] as const) : []),
     ];
-    const trip = createTrip(job.userId, draft.toTrip(reviewNotes, { overview: research.pool, dataSources }));
-    record('done', trip.id);
+    const trip = await createTrip(job.userId, draft.toTrip(reviewNotes, { overview: research.pool, dataSources }));
+    await record('done', trip.id);
     completeJob(job, trip.id, dataSources, reviewNotes);
     terminalStatus = 'done';
   } catch (err) {
@@ -442,10 +447,10 @@ export async function runGeneration(
       cancelJob(job);
       terminalStatus = 'cancelled';
       // 先发布权威终态，避免审计表写入异常让已接受的取消永久停在 running。
-      record('cancelled', null);           // 取消不计配额（配额只数 done）
+      await record('cancelled', null);           // 取消不计配额（配额只数 done）
       return;
     }
-    record('error', null);
+    await record('error', null);
     const message =
       err instanceof GenerationFailure
         ? err.message
