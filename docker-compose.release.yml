@@ -1,0 +1,66 @@
+# 纯镜像发布版 —— 无需 clone 仓库，只需要这一个文件 + .env
+# 用法：
+#   curl -fsSL https://raw.githubusercontent.com/aimer-rhythm/trip-weaver/master/docker-compose.release.yml -o docker-compose.yml
+#   cp 环境变量模板后编辑（见 README 部署章节）
+#   docker compose up -d
+# 本地构建开发请改用仓库根的 docker-compose.yml。
+name: tripweaver
+
+services:
+  app:
+    image: ${TRIPWEAVER_IMAGE:-ghcr.io/aimer-rhythm/trip-weaver:latest}
+    pull_policy: always
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgres://postgres:${POSTGRES_PASSWORD:-postgres}@db:5432/tripweaver
+    expose:
+      - "3001"
+    depends_on:
+      - db
+
+  db:
+    # pgvector 镜像：向量扩展随库可用（CREATE EXTENSION vector 在启动迁移中幂等执行）
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=tripweaver
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - SITE_DOMAIN=${SITE_DOMAIN:-:80}
+    # Caddyfile 内联进 compose 配置（caddy 支持 CADDY_* 之外的 --config stdin 不适用，
+    # 这里用 configs 机制挂载，免去对仓库 Caddyfile 文件的依赖）
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+configs:
+  caddyfile:
+    content: |
+      {$SITE_DOMAIN}
+      # SSE 需要关闭响应缓冲，进度事件才能实时到达浏览器
+      reverse_proxy app:3001 {
+        flush_interval -1
+      }
+
+volumes:
+  caddy_data:
+  caddy_config:
+  pg_data:

@@ -2,6 +2,11 @@
 # 用法（在仓库根目录、已安装 Docker + compose v2 插件的 Linux 服务器上）：
 #   bash scripts/deploy.sh [选项]
 #
+# 纯镜像部署（无需 clone 仓库）时不需要本脚本，直接：
+#   curl -fsSL https://raw.githubusercontent.com/aimer-rhythm/trip-weaver/master/docker-compose.release.yml -o docker-compose.yml
+#   # 准备 .env（参考 .env.example），然后 docker compose up -d
+#   docker compose up -d
+#
 # 选项：
 #   --skip-pull    跳过 git pull（用当前工作区代码构建）
 #   --logs         部署完成后跟随 app 日志
