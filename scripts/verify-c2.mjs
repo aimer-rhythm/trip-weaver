@@ -2,10 +2,10 @@
 // 覆盖：SSE 三阶段与 job_done 落库 / candidate 候选池事件 / 预约种子表覆盖 / Last-Event-ID 重放 /
 //       配额 429 / 取消不计数不残留 / BYOK 走自有端点且计次 / 第二轮只局部修订并保留活动 ID
 // 用法：node scripts/verify-c2.mjs
+// 数据库：09-18 起运行态为 PostgreSQL。本脚本独占一个专用测试库（默认 tripweaver_verify_c2，
+// 可用 VERIFY_C2_DATABASE_URL 覆盖），每次运行先 drop/create 保证干净，结束时 drop 清理。
 import { startMockLlm } from './lib/mock-llm.mjs';
 import { spawn } from 'node:child_process';
-import { mkdirSync, rmSync } from 'node:fs';
-import { dirname } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
@@ -13,10 +13,10 @@ import crypto from 'node:crypto';
 const MOCK_PORT = 18788;
 const API_PORT = 18791;
 const API = `http://127.0.0.1:${API_PORT}`;
-const DB_FILE = `./data/verify-c2-${Date.now()}.db`;
-const DATABASE_PATH = `apps/server/${DB_FILE.replace('./', '')}`;
+const DATABASE_URL =
+  process.env.VERIFY_C2_DATABASE_URL ?? 'postgres://postgres:postgres@127.0.0.1:5432/tripweaver_verify_c2';
 const requireFromServer = createRequire(new URL('../apps/server/package.json', import.meta.url));
-const Database = requireFromServer('better-sqlite3');
+const { Client } = requireFromServer('pg');
 
 const failures = [];
 function check(name, cond, extra = '') {
@@ -24,6 +24,33 @@ function check(name, cond, extra = '') {
   if (!cond) failures.push(name);
 }
 
+// ---------- 测试库管理 ----------
+
+/** 解析出库名，并返回连到 postgres 维护库的连接串（drop/create 需在库外执行） */
+function adminUrlAndDbName(url) {
+  const u = new URL(url);
+  const dbName = u.pathname.replace(/^\//, '');
+  if (!dbName || dbName === 'postgres') throw new Error('VERIFY_C2_DATABASE_URL 必须指向专用测试库，禁止 postgres');
+  u.pathname = '/postgres';
+  return { adminUrl: u.toString(), dbName };
+}
+
+async function dropDatabase(adminClient, dbName) {
+  // PG 13+ 支持 WITH (FORCE)，自动断开存量连接
+  await adminClient.query(`DROP DATABASE IF EXISTS "${dbName}" WITH (FORCE)`);
+}
+
+async function recreateTestDatabase() {
+  const { adminUrl, dbName } = adminUrlAndDbName(DATABASE_URL);
+  const admin = new Client({ connectionString: adminUrl });
+  await admin.connect();
+  try {
+    await dropDatabase(admin, dbName);
+    await admin.query(`CREATE DATABASE "${dbName}"`);
+  } finally {
+    await admin.end();
+  }
+}
 
 // ---------- HTTP 小工具 ----------
 
@@ -89,31 +116,33 @@ async function readEvents(jobId, { lastEventId = 0, timeoutMs = 30000 } = {}) {
 
 let server;
 // 模拟存量库：旧 trips / generations 表缺少当前列，启动迁移必须自动补齐。
-// Clean checkouts (e.g. CI) do not have the data/ dir yet — better-sqlite3 requires
-// the parent directory to exist before opening a database file. Compute the parent
-// programmatically from DATABASE_PATH and create it recursively (idempotent on Windows local runs).
-mkdirSync(dirname(DATABASE_PATH), { recursive: true });
-const legacyDatabase = new Database(DATABASE_PATH);
-legacyDatabase.exec(`CREATE TABLE trips (
-  id TEXT PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  title TEXT NOT NULL,
-  destination TEXT NOT NULL,
-  days_count INTEGER NOT NULL,
-  activity_count INTEGER NOT NULL,
-  total_cost INTEGER NOT NULL,
-  data TEXT NOT NULL,
-  created_at INTEGER NOT NULL,
-  updated_at INTEGER NOT NULL
-);
-CREATE TABLE generations (
-  id TEXT PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  trip_id TEXT,
-  status TEXT NOT NULL,
-  created_at INTEGER NOT NULL
-)`);
-legacyDatabase.close();
+// 每次运行先重建测试库（drop + create），避免上一轮残留影响幂等迁移断言。
+await recreateTestDatabase();
+const legacyClient = new Client({ connectionString: DATABASE_URL });
+await legacyClient.connect();
+try {
+  await legacyClient.query(`CREATE TABLE trips (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    title TEXT NOT NULL,
+    destination TEXT NOT NULL,
+    days_count INTEGER NOT NULL,
+    activity_count INTEGER NOT NULL,
+    total_cost INTEGER NOT NULL,
+    data JSONB NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL
+  )`);
+  await legacyClient.query(`CREATE TABLE generations (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    trip_id TEXT,
+    status TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL
+  )`);
+} finally {
+  await legacyClient.end();
+}
 
 // 首个完成任务让审校模型持续 get_draft 直到超过 12 轮，验证审校耗尽只降级、不拖垮整次生成。
 const mock = await startMockLlm(MOCK_PORT, { delayMs: 300, reviewerOverrunOnce: true, requestRevisionOnce: true });
@@ -126,9 +155,10 @@ try {
     env: {
       ...process.env,
       NODE_ENV: 'development',
-      DOTENV_CONFIG_PATH: `${DB_FILE}.absent.env`,
+      // 隔离真实 .env：PG 连接由 DATABASE_URL 显式指定，不再依赖 sqlite 文件路径
+      DOTENV_CONFIG_PATH: `./data/verify-c2-${Date.now()}.absent.env`,
       PORT: String(API_PORT),
-      DATABASE_PATH: DB_FILE,
+      DATABASE_URL,
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
       REGISTRATION_MODE: 'invite',
       INVITE_CODE: 'C2TEST',
@@ -304,28 +334,37 @@ try {
   const usage2 = await api('GET', '/api/usage');
   check('BYOK 计入次数配额', usage2.json?.usedToday === 1, `usedToday=${usage2.json?.usedToday}`);
 
-  // ⑤ generations 表落库核对（直接读 SQLite）
+  // ⑤ generations 表落库核对（直接查 PG）
   console.log('\n— generations 表 —');
-  const db = new Database(DATABASE_PATH, { readonly: true });
-  const tripColumns = db.pragma('table_info(trips)').map((column) => column.name);
-  check('存量 trips 表迁移补齐 used_xhs', tripColumns.includes('used_xhs'), tripColumns.join(','));
-  const persistedTrip = db.prepare('select used_xhs from trips where id = ?').get(done.tripId);
-  check('迁移后行程写入 used_xhs 成功', persistedTrip?.used_xhs === 0, `used_xhs=${persistedTrip?.used_xhs}`);
-  const generationColumns = db.pragma('table_info(generations)').map((column) => column.name);
-  check(
-    '存量 generations 表迁移补齐审计列',
-    ['used_xhs', 'used_byok', 'tokens_in', 'tokens_out', 'xhs_calls', 'amap_calls', 'search_calls'].every((column) =>
-      generationColumns.includes(column),
-    ),
-    generationColumns.join(','),
-  );
-  const rows = db.prepare('select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations order by created_at').all();
-  db.close();
-  check('三行记录（cancelled/done/done）', rows.length === 3, JSON.stringify(rows.map((r) => r.status)));
-  check('cancelled 无 trip', rows[0]?.status === 'cancelled' && rows[0]?.trip_id === null);
-  check('done 有 token 用量', rows[1]?.status === 'done' && rows[1].tokens_in > 0 && rows[1].tokens_out > 0, `in=${rows[1]?.tokens_in} out=${rows[1]?.tokens_out}`);
-  check('Null 源不烧数据源额度', rows[1]?.amap_calls === 0 && rows[1]?.search_calls === 0, `amap=${rows[1]?.amap_calls} search=${rows[1]?.search_calls}`);
-  check('BYOK 行 used_byok=1', rows[2]?.used_byok === 1);
+  const db = new Client({ connectionString: DATABASE_URL });
+  await db.connect();
+  try {
+    const colsOf = async (table) =>
+      (await db.query('select column_name from information_schema.columns where table_schema = current_schema() and table_name = $1', [table]))
+        .rows.map((r) => r.column_name);
+    const tripColumns = await colsOf('trips');
+    check('存量 trips 表迁移补齐 used_xhs', tripColumns.includes('used_xhs'), tripColumns.join(','));
+    const persistedTrip = (await db.query('select used_xhs from trips where id = $1', [done.tripId])).rows[0];
+    check('迁移后行程写入 used_xhs 成功', persistedTrip?.used_xhs === false, `used_xhs=${persistedTrip?.used_xhs}`);
+    const generationColumns = await colsOf('generations');
+    check(
+      '存量 generations 表迁移补齐审计列',
+      ['used_xhs', 'used_byok', 'tokens_in', 'tokens_out', 'xhs_calls', 'amap_calls', 'search_calls'].every((column) =>
+        generationColumns.includes(column),
+      ),
+      generationColumns.join(','),
+    );
+    const rows = (
+      await db.query('select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations order by created_at')
+    ).rows;
+    check('三行记录（cancelled/done/done）', rows.length === 3, JSON.stringify(rows.map((r) => r.status)));
+    check('cancelled 无 trip', rows[0]?.status === 'cancelled' && rows[0]?.trip_id === null);
+    check('done 有 token 用量', rows[1]?.status === 'done' && rows[1].tokens_in > 0 && rows[1].tokens_out > 0, `in=${rows[1]?.tokens_in} out=${rows[1]?.tokens_out}`);
+    check('Null 源不烧数据源额度', rows[1]?.amap_calls === 0 && rows[1]?.search_calls === 0, `amap=${rows[1]?.amap_calls} search=${rows[1]?.search_calls}`);
+    check('BYOK 行 used_byok=true', rows[2]?.used_byok === true);
+  } finally {
+    await db.end();
+  }
 
   console.log(failures.length ? `\nFAIL：${failures.length} 项未过` : '\nPASS —— C2 验收全过');
 } catch (err) {
@@ -334,11 +373,17 @@ try {
 } finally {
   mock.close();
   server?.kill();
-  await sleep(300);
+  await sleep(500);
+  // 清理：杀掉服务后 drop 整个测试库（比 truncate 更干净，也避免下轮遗留 schema 漂移）
   try {
-    rmSync(DATABASE_PATH, { force: true });
-    rmSync(`${DATABASE_PATH}-shm`, { force: true });
-    rmSync(`${DATABASE_PATH}-wal`, { force: true });
+    const { adminUrl, dbName } = adminUrlAndDbName(DATABASE_URL);
+    const admin = new Client({ connectionString: adminUrl });
+    await admin.connect();
+    try {
+      await dropDatabase(admin, dbName);
+    } finally {
+      await admin.end();
+    }
   } catch {}
 }
 process.exit(failures.length ? 1 : 0);
