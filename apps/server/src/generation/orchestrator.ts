@@ -214,9 +214,9 @@ export async function runGeneration(
     endPhase('research', 1, `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`);
     geo.useResearchPlaces(research.pool, research.locations);
 
-    // RAG 地基（09-18）：调研与编排之间的检索调用点。当前恒返回空数组（占位），
-    // 接入时挂 canonical_places / research_evidence 的查询（见 generation/retrieveContext.ts）。
-    await retrieveContext(research.pool.map((p) => p.name));
+    // RAG 地基（09-18）：调研与编排之间的检索调用点。
+    // 接入 canonical_places / research_evidence 混合召回（关键词 + 可选向量），结果注入 plannerUserPrompt。
+    const ragContext = await retrieveContext(research.pool.map((p) => p.name));
 
     // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
     // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
@@ -265,7 +265,7 @@ export async function runGeneration(
         apiKey: cfg.apiKey,
         systemPrompt: round === 1 ? PLANNER_SYSTEM_PROMPT : PLANNER_REVISION_SYSTEM_PROMPT,
         tools: [...buildDraftTools(draft, round === 1 ? 'plan' : 'revision'), ...buildGeoTools(geo), buildSubmitPlanTool(draft, () => (planPassed = true))],
-        userPrompt: plannerUserPrompt(form, research, revisionRequests, longHaulIntel, round > 1 ? draft.render() : undefined),
+        userPrompt: plannerUserPrompt(form, research, revisionRequests, longHaulIntel, round > 1 ? draft.render() : undefined, ragContext),
         signal,
         sink: sinkFor('plan'),
         maxTurns: 30,

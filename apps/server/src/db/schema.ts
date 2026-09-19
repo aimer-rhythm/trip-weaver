@@ -1,4 +1,4 @@
-import { boolean, doublePrecision, index, integer, jsonb, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
+import { boolean, doublePrecision, index, integer, jsonb, pgTable, text, timestamp, vector } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
   id: text('id').primaryKey(),
@@ -64,8 +64,9 @@ export const generations = pgTable('generations', {
 });
 
 // ---------- RAG 地基（09-18）：已验证地点池 + 调研语料 ----------
-// 只建表不实现检索：embedding 模型/维度未定，接入 RAG 时再 ALTER 补向量列（避免维度锁死）。
-// canonical_places 承接金集 9 城 POI 资产化（回填脚本 scripts/seed-canonical-places.ts）。
+// embedding 列：1024 维（站点网关 cf/bge-m3；更换模型需同步 EMBEDDING_DIMS 与重建列）。
+// 维度与 EMBEDDING_DIMS 对齐；变更维度需 DROP COLUMN 重建（ALTER 维度不支持原地修改）。
+// 本地 PG 未装 pgvector 时列不存在（migrate 降级跳过），字段始终为 null。
 
 export const canonicalPlaces = pgTable(
   'canonical_places',
@@ -78,6 +79,7 @@ export const canonicalPlaces = pgTable(
     lat: doublePrecision('lat'),
     source: text('source').notNull(),              // goldset | amap | manual ...
     verified: boolean('verified').notNull().default(false),
+    embedding: vector('embedding', { dimensions: 1024 }),
     payload: jsonb('payload'),                     // 原始记录（快照活动对象/高德 POI 等）
     createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
   },
@@ -93,6 +95,7 @@ export const researchEvidence = pgTable(
     kind: text('kind').notNull(),                  // 语料类型（攻略/点评/官方说明……）
     content: text('content').notNull(),
     sourceUrl: text('source_url').notNull().default(''),
+    embedding: vector('embedding', { dimensions: 1024 }),
     fetchedAt: timestamp('fetched_at', { withTimezone: true }).notNull(),
   },
   (table) => [index('idx_research_evidence_city_kind').on(table.city, table.kind)],

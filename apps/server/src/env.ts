@@ -62,6 +62,13 @@ export const env = {
     apiKey: str('SITE_LLM_API_KEY'),
     model: str('SITE_LLM_MODEL'),
   },
+  // Embedding（RAG 向量召回，可选）：缺省回落到站点 LLM 的 baseUrl/apiKey（OpenAI 兼容端点普遍同址提供 /embeddings）
+  embedding: {
+    baseUrl: str('EMBEDDING_BASE_URL') || str('SITE_LLM_BASE_URL'),
+    apiKey: str('EMBEDDING_API_KEY') || str('SITE_LLM_API_KEY'),
+    model: str('EMBEDDING_MODEL', 'cf/bge-m3'),
+    dims: int('EMBEDDING_DIMS', 1024),
+  },
   genDailyLimit: int('GEN_DAILY_LIMIT', 3),
   // 调研数据源（均可选；缺失时对应源 Null 降级，两者皆缺 = 纯模型知识调研）
   amapKey: str('AMAP_KEY'),                             // 高德 Web 服务 Key
@@ -77,6 +84,10 @@ export const env = {
 
 export function hasSiteLlm(): boolean {
   return Boolean(env.siteLlm.baseUrl && env.siteLlm.apiKey && env.siteLlm.model);
+}
+
+export function hasEmbedding(): boolean {
+  return Boolean(env.embedding.baseUrl && env.embedding.apiKey && env.embedding.model);
 }
 
 export function hasGithubOauth(): boolean {

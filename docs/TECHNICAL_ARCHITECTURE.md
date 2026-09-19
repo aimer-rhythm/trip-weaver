@@ -21,7 +21,7 @@
 | 前端 | React 18 + TypeScript + Vite + react-router-dom | 多页面 SPA；生态与 react-leaflet 匹配 |
 | 状态 | @tanstack/react-query（服务端状态）+ zustand（编辑器交互态，不持久化） | 两类状态生命周期不同，分治 |
 | **API 层** | **Fastify + `@fastify/type-provider-typebox`** | TypeBox 即 JSON Schema，shared schema 直接挂路由，校验零胶水 |
-| **数据库** | **SQLite + Drizzle ORM（better-sqlite3）** | 单机自部署零运维；文件即状态 |
+| **数据库** | **PostgreSQL 16 + pgvector + Drizzle ORM（node-postgres）** | 多实例部署 + JSONB 查询；pgvector 扩展让 RAG 向量检索与业务数据同库（09-18 自 SQLite 迁入，理由见 §4.3） |
 | 认证 | 自实现：bcryptjs + 会话表 + httpOnly Cookie + **邀请码** | 需求简单；会话表支持吊销 |
 | **LLM 调用层** | **`@mariozechner/pi-ai`**（服务端） | 统一多厂商；自定义 Model 适配任意 OpenAI 兼容端点 |
 | **Agent 运行时** | **`@mariozechner/pi-agent-core`**（服务端） | 工具执行 + 事件流 + 循环控制，三 Agent 复用 |
@@ -128,17 +128,43 @@ travel-planner/
 - **TransitLeg 哨兵契约**：`fromActivityId`/`toActivityId` 允许哨兵值 `'lodging'`（leg 挂在 day 上，作用域限当天）——`{from:'lodging', to:首活动id}` 与 `{from:末活动id, to:'lodging'}`；前端经 `lodgingLegsForDay(day)` 严格 id 匹配，失配（重排/删改）静默丢弃。
 - `Activity.cost` 必填 → **可选**（粗估档位值：免费=0，不确定缺省；旧数据带值照读，读取方 `?? 0` 兜底）。派生 `BudgetSummary` 改区间 `{perPersonPerDayMin, perPersonPerDayMax, coveredDays}`（日成本=当天 cost 求和÷partySize，区间=[0.8×,1.3×] 十位取整），删除精确总额与 `overBudget` 超支判定；`trips.total_cost` 冗余列保留（列表页「约 ¥」展示）。
 
-### 4.2 数据库表（Drizzle / SQLite）
+### 4.2 数据库表（Drizzle / PostgreSQL）
 
 | 表 | 字段要点 |
 |---|---|
 | `users` | id · email(unique) · password_hash · created_at |
 | `sessions` | id · user_id(FK) · token_hash(unique) · expires_at |
 | `user_settings` | user_id(PK/FK) · **byok_enabled(bool)** · base_url · api_key_ciphertext · api_key_last4 · model · **amap_api_key_ciphertext · amap_api_key_last4 · amap_key_revision** · **search_api_key_ciphertext · search_api_key_last4 · search_api_base_url · search_credential_revision** · updated_at |
-| `trips` | id · user_id(FK+索引) · title · destination · days_count · activity_count · total_cost · used_xhs · data(JSON) · created_at · updated_at |
+| `trips` | id · user_id(FK+索引) · title · destination · days_count · activity_count · total_cost · used_xhs · data(**JSONB**) · created_at · updated_at |
 | `generations` | id · user_id(FK+索引) · trip_id(可空 FK) · status(done/error/cancelled) · used_xhs(旧数据) · used_byok · tokens_in · tokens_out · xhs_calls(旧数据) · **amap_calls · search_calls（v0.4）** · created_at —— **配额计数与用量核算的事实来源** |
+| `canonical_places` | id · city · name · category · lng/lat · source(goldset/xhs/amap/manual) · **verified** · payload(JSONB) · **embedding vector(1024) 可空** —— 已验证地点池，金集 9 城 POI 资产化（RAG 地基，09-18） |
+| `research_evidence` | id · place_id(可空 FK) · city · kind · content · source_url · fetched_at · **embedding vector(1024) 可空** —— 调研语料（小红书口碑/价格/预约/避坑），挂载到地点池 |
 
 配额查询即 `count(generations where user_id=? and status='done' and created_at>=今日零点)`——无需独立计数器表（KISS，且天然免「重置」逻辑）。
+
+### 4.3 向量检索选型：pgvector 而非独立向量数据库（09-18）
+
+**决策**：RAG 的向量与业务数据存同一个 PostgreSQL（pgvector 扩展），**不引入** Qdrant/Milvus/Pinecone 等独立向量数据库。
+
+**存储模型**：向量不是独立数据集，而是已有行的派生列——`canonical_places.embedding` / `research_evidence.embedding` 与原文、verified、city 等业务列**同一行、同事务写入**。一条 SQL 同时完成语义召回与结构化过滤：
+
+```sql
+SELECT ... FROM research_evidence
+WHERE verified_place AND city = $1 AND kind IN ('xhs_warning','xhs_reservation')
+ORDER BY embedding <=> $query_vec LIMIT 8
+```
+
+**理由**：
+
+1. **规模不匹配专用库**：全量语料为万级（当前 ~1.7k 行），pgvector 在百万级内与专用向量库无实质性能差距；<1000 行时顺序扫描已足够，连 ivfflat/hnsw 索引都暂不建（YAGNI）。
+2. **混合过滤是刚需**：本项目检索永远附带 `verified=true`、`city=X`、`kind IN (...)` 等 SQL 谓词。pgvector 原生表达；专用向量库需两次查询 + 应用层合并，或依赖其私有过滤语法。
+3. **数据一致性**：独立向量库意味着「向量库存 (id, vector)，PG 存原文」的双写架构——多一次网络往返，且需自行保证两套存储的一致性。pgvector 下向量列与事实列天然同事务。
+4. **部署哲学**：开源自部署定位下，compose 多一个向量库服务 = 部署门槛 +1；pgvector 只是把镜像从 `postgres:16` 换成 `pgvector/pgvector:pg16`，零新增组件。
+5. **可演进**：若未来数据量破百万或检索 QPS 过百，`canonical_places`/`research_evidence` 作为一等公民表可直接导出迁移，pgvector 层不构成锁定。
+
+**明确不引入**：独立向量数据库服务、向量索引（数据量达标前）、Repository 抽象层。
+
+**降级链**：pgvector 扩展不可用 → 启动告警不阻断，retrieveContext 退化为纯关键词召回；EMBEDDING_* 未配置 → 跳过向量生成与向量层检索；embedding HTTP 失败 → 单批置 null 继续。
 
 ---
 

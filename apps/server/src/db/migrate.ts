@@ -122,11 +122,20 @@ export async function runMigrations(pool: Pool): Promise<void> {
   }
 
   // pgvector 是 RAG 前置依赖；本地实例未装扩展时按降级告警处理，不阻断启动（检索能力后续任务再启用）
+  let vectorAvailable = false;
   try {
     await pool.query('CREATE EXTENSION IF NOT EXISTS vector');
+    vectorAvailable = true;
   } catch (err) {
     console.warn(
       `[db] pgvector 扩展不可用，RAG 向量检索暂不启用：${err instanceof Error ? err.message : String(err)}`,
     );
+  }
+
+  // embedding 列依赖 pgvector；扩展可用时幂等补列，不可用时跳过（列保持不存在，读写路径判 null 降级）
+  // 数据量 <1000 行时顺序扫描足够快，暂不建 ivfflat/hnsw 向量索引（YAGNI；索引有召回率-性能权衡，行数增长后再加）
+  if (vectorAvailable) {
+    await pool.query(`ALTER TABLE canonical_places ADD COLUMN IF NOT EXISTS embedding vector(1024)`);
+    await pool.query(`ALTER TABLE research_evidence ADD COLUMN IF NOT EXISTS embedding vector(1024)`);
   }
 }
