@@ -1,6 +1,7 @@
 // 调研、首次编排、局部修订与审校 prompt：步骤编号、工具纪律、token 节制（R2/R8）
 import { LONG_HAUL_THRESHOLDS, type GenerateForm, type LegMode, type PoiCategory, type ResearchPoi, type TransportMode } from '@tripweaver/shared';
 import type { LongHaulPoi } from './longHaul';
+import type { RetrievedPlace } from './retrieveContext';
 
 const TRANSPORT_LABEL: Record<TransportMode, string> = { transit: '公共交通', drive: '自驾', walk: '步行优先' };
 
@@ -126,6 +127,7 @@ export function plannerUserPrompt(
   revisionRequests: string[] = [],
   longHaulIntel: LongHaulPoi[] = [],
   currentDraft?: string,
+  ragContext?: RetrievedPlace[],
 ): string {
   const parts = [`用户需求：\n${formBrief(form)}`];
   const poolIndex = renderPoolIndex(research.pool);
@@ -133,12 +135,46 @@ export function plannerUserPrompt(
   // 长途点情报（层2）：修订轮与首轮共用本构造，情报在每一轮规划中都可见
   const intel = renderLongHaulIntel(longHaulIntel, form.transportMode ?? 'transit');
   if (intel) parts.push(intel);
+  // 已验证地点情报（RAG 检索）：ragContext 为空时不出现，保护金集可复现性
+  const rag = renderRagContext(ragContext);
+  if (rag) parts.push(rag);
   parts.push(`调研摘要：\n${research.summary || '（无调研数据，请基于你自己的知识规划）'}`);
   if (currentDraft) parts.push(`当前草稿（保留已有活动 ID，按下列实际状态局部修改）：\n${currentDraft}`);
   if (revisionRequests.length) {
     parts.push(`审校员的修订要求（在现有草稿基础上修改，勿推倒重来）：\n${revisionRequests.map((r, i) => `${i + 1}. ${r}`).join('\n')}`);
   }
   return parts.join('\n\n');
+}
+
+/** 已验证地点情报段落（RAG 检索）：每个 place 一行，evidence 每条 ≤80 字截断，
+ *  整体小节 ≤1200 字截断（防 prompt 膨胀）。空数组/undefined 返回空串（旧行为逐字不变）。
+ *  情报为参考依据（预约/避坑优先），非强制约束——对齐「可信规划器」定位。 */
+const EVIDENCE_KIND_LABEL: Record<string, string> = {
+  xhs_warning: '避坑',
+  xhs_reservation: '预约',
+  xhs_price: '价格',
+  xhs_reason: '口碑',
+};
+
+function truncate(text: string, max: number): string {
+  return text.length <= max ? text : text.slice(0, max) + '…';
+}
+
+export function renderRagContext(ragContext?: RetrievedPlace[]): string {
+  if (!ragContext?.length) return '';
+  const lines: string[] = [];
+  for (const place of ragContext) {
+    const evidence = place.evidence
+      .map((e) => `${EVIDENCE_KIND_LABEL[e.kind] ?? e.kind}：${truncate(e.content, 80)}`)
+      .join('；');
+    lines.push(`- ${place.name}（${place.category}）：${evidence}`);
+  }
+  const body = lines.join('\n');
+  const truncated = body.length > 1200 ? body.slice(0, 1200) + '\n…（更多情报略）' : body;
+  return [
+    '已验证地点情报（社区已验证，可作预约/避坑依据，优先级高于你的记忆；供参考，勿当强制约束写进行程）：',
+    truncated,
+  ].join('\n');
 }
 
 export function reviewerUserPrompt(form: GenerateForm, round: number, feasibilityReport?: string): string {
