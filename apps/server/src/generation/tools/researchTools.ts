@@ -15,6 +15,7 @@ import { defineTool } from './defineTool';
 import type { PoiSource } from '../../integrations/amap/poiSource';
 import type { SearchSource } from '../../integrations/websearch/searchSource';
 import { matchReservationSeed } from '../../data/reservationSeeds';
+import { findXhsEvidence, findXhsPlace } from '../../services/xhsPlaceService';
 import { rememberResearchLocation, type ResearchLocation } from '../placeLookup';
 
 function text(t: string) {
@@ -173,6 +174,27 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
           { title: `${seed.name}（官方渠道）`, url: seed.sourceUrl },
           ...poi.sourceLinks.filter((s) => s.url !== seed.sourceUrl),
         ];
+      }
+
+      // 小红书社区库命中（PG，xhs-travel-pipeline 导入）：种子表未覆盖时补充真实预约政策 + 社区口碑来源
+      const xhs = await findXhsPlace(name, destination);
+      if (xhs) {
+        const xhsPayload = xhs.payload;
+        if (
+          xhsPayload.reservation === 'required' &&
+          xhsPayload.reservationNote &&
+          poi.reservation !== 'required'
+        ) {
+          poi.reservation = 'required';
+          poi.reservationNote = xhsPayload.reservationNote.slice(0, 120);
+        }
+        const evidence = await findXhsEvidence(xhs.id, [], 4);
+        for (const item of evidence) {
+          if (!isHttpUrl(item.sourceUrl)) continue;
+          if (poi.sourceLinks.length >= MAX_SOURCE_NOTES) break;
+          if (poi.sourceLinks.some((s) => s.url === item.sourceUrl)) continue;
+          poi.sourceLinks.push({ title: `小红书社区口碑｜${xhs.name}`, url: item.sourceUrl });
+        }
       }
       poi.sourceLinks = poi.sourceLinks.slice(0, MAX_SOURCE_NOTES);
 
