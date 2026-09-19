@@ -10,8 +10,14 @@ COPY . .
 RUN npm run build
 
 FROM node:22-alpine
+ARG COMMIT=unknown
+ARG BUILD_DATE=unknown
 WORKDIR /app
-ENV NODE_ENV=production
+ENV NODE_ENV=production \
+    COMMIT_SHA=$COMMIT \
+    BUILD_DATE=$BUILD_DATE \
+    TZ=Asia/Shanghai
+RUN apk add --no-cache tzdata
 COPY --from=build /app ./
 EXPOSE 3001
 CMD ["npm", "run", "start"]

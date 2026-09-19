@@ -44,8 +44,14 @@ if [ ! -f .env ]; then
 fi
 
 # ---------- 3. 构建并启动 ----------
-echo "== docker compose up --build -d =="
-docker compose up --build -d
+echo "== docker compose pull app（优先预构建镜像）=="
+if docker compose pull app; then
+  echo "== 使用预构建镜像启动 =="
+  docker compose up -d
+else
+  echo "⚠ 预构建镜像拉取失败（未发布或离线），回退本地构建"
+  docker compose up --build -d
+fi
 
 # ---------- 4. 等待健康检查 ----------
 echo "== 等待 app 健康 =="
@@ -80,6 +86,26 @@ fi
 docker compose exec -T db psql -U postgres -d tripweaver -tAc \
   "SELECT count(*) FROM canonical_places WHERE verified" \
   | { read -r n; echo "✓ canonical_places verified=${n}（0 表示尚未回填金集，可执行: docker compose exec app npx tsx apps/server/scripts/seed-canonical-places.ts）"; }
+
+echo ""
+echo "== 部署版本对照 =="
+GIT_SHORT=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+echo "   本地仓库 commit: $GIT_SHORT"
+HEALTH_JSON=$(docker compose exec -T app wget -qO- http://127.0.0.1:3001/api/health 2>/dev/null || echo "")
+if [ -n "$HEALTH_JSON" ]; then
+  # 从 JSON 中提取 commit / buildDate（不依赖 jq，用 sed 兜底）
+  DEPLOYED_COMMIT=$(echo "$HEALTH_JSON" | sed -n 's/.*"commit":"\([^"]*\)".*/\1/p' | cut -c1-7)
+  DEPLOYED_BUILD_DATE=$(echo "$HEALTH_JSON" | sed -n 's/.*"buildDate":"\([^"]*\)".*/\1/p')
+  echo "   容器运行 commit: ${DEPLOYED_COMMIT:-unknown}"
+  echo "   镜像构建时间   : ${DEPLOYED_BUILD_DATE:-unknown}"
+  if [ "$GIT_SHORT" != "unknown" ] && [ -n "$DEPLOYED_COMMIT" ] && [ "$GIT_SHORT" = "$DEPLOYED_COMMIT" ]; then
+    echo "   ✓ 部署版本与本地一致"
+  else
+    echo "   ⚠ 部署版本与本地不一致（可能正在使用远端镜像）"
+  fi
+else
+  echo "   ⚠ 无法读取 /api/health 响应"
+fi
 
 echo ""
 echo "PASS —— 部署完成"

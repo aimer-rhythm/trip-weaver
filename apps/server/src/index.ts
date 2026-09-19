@@ -39,7 +39,13 @@ async function main() {
     return reply.code(statusCode).send({ error: statusCode >= 500 ? '服务器内部错误' : (err.message ?? '请求失败') });
   });
 
-  app.get('/api/health', async () => ({ ok: true, name: 'tripweaver', time: Date.now() }));
+  app.get('/api/health', async () => ({
+    ok: true,
+    name: 'tripweaver',
+    time: Date.now(),
+    commit: process.env.COMMIT_SHA ?? 'unknown',
+    buildDate: process.env.BUILD_DATE ?? 'unknown',
+  }));
 
   await app.register(authRoutes, { prefix: '/api/auth' });
   await app.register(settingsRoutes, { prefix: '/api/settings' });

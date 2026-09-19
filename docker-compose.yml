@@ -1,6 +1,18 @@
+# ===== Docker Compose 部署（双轨模式） =====
+# 模式 1（推荐）：默认拉取 GitHub Container Registry 预构建镜像
+#   docker compose up -d
+# 模式 2（兜底）：镜像不可用时本地构建
+#   TRIPWEAVER_IMAGE='' docker compose up --build -d
+# 也可显式指定镜像版本：TRIPWEAVER_IMAGE=ghcr.io/aimer-rhythm/trip-weaver:v1.2.3 docker compose up -d
 services:
   app:
-    build: .
+    image: ${TRIPWEAVER_IMAGE:-ghcr.io/aimer-rhythm/trip-weaver:latest}
+    pull_policy: always
+    build:
+      context: .
+      args:
+        COMMIT: ${COMMIT:-unknown}
+        BUILD_DATE: ${BUILD_DATE:-unknown}
     restart: unless-stopped
     env_file: .env
     environment:
