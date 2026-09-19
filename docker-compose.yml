@@ -35,22 +35,21 @@ services:
     expose:
       - "5432"
 
-  caddy:
-    image: caddy:2
+  nginx:
+    image: nginx:alpine
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     environment:
-      - SITE_DOMAIN=${SITE_DOMAIN:-:80}
+      - SITE_DOMAIN=${SITE_DOMAIN:-_}
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
+      # nginx:alpine 官方模板机制：启动时 envsubst 替换 ${SITE_DOMAIN}
+      - ./nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - nginx_certs:/etc/nginx/certs
     depends_on:
       - app
 
 volumes:
-  caddy_data:
-  caddy_config:
+  nginx_certs:
   pg_data:

@@ -32,35 +32,44 @@ services:
     expose:
       - "5432"
 
-  caddy:
-    image: caddy:2
+  nginx:
+    image: nginx:alpine
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     environment:
-      - SITE_DOMAIN=${SITE_DOMAIN:-:80}
-    # Caddyfile 内联进 compose 配置（caddy 支持 CADDY_* 之外的 --config stdin 不适用，
-    # 这里用 configs 机制挂载，免去对仓库 Caddyfile 文件的依赖）
+      - SITE_DOMAIN=${SITE_DOMAIN:-_}
+    # nginx 配置内联进 compose configs，免去对仓库文件的依赖
     configs:
-      - source: caddyfile
-        target: /etc/caddy/Caddyfile
+      - source: nginx_conf
+        target: /etc/nginx/templates/default.conf.template
     volumes:
-      - caddy_data:/data
-      - caddy_config:/config
+      - nginx_certs:/etc/nginx/certs
     depends_on:
       - app
 
+# nginx:alpine 启动时用 envsubst 替换 ${SITE_DOMAIN} 生成最终配置
 configs:
-  caddyfile:
+  nginx_conf:
     content: |
-      {$SITE_DOMAIN}
-      # SSE 需要关闭响应缓冲，进度事件才能实时到达浏览器
-      reverse_proxy app:3001 {
-        flush_interval -1
+      server {
+          listen 80;
+          server_name ${SITE_DOMAIN};
+          location / {
+              proxy_pass http://app:3001;
+              proxy_http_version 1.1;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_buffering off;
+              proxy_cache off;
+              gzip off;
+              proxy_read_timeout 1h;
+          }
       }
 
 volumes:
-  caddy_data:
-  caddy_config:
+  nginx_certs:
   pg_data:
