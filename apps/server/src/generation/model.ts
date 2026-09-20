@@ -23,6 +23,8 @@ export async function buildModel(cfg: LlmConfig): Promise<Model<'openai-completi
     input: ['text'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 65536,
-    maxTokens: 8192,
+    // pi-ai 的 streamSimple 会把 maxTokens 截到 min(model.maxTokens, 32000)：写更大值无意义。
+    // 8192 曾让 plan 阶段把预算烧在隐藏推理上（stopReason=length、正文为空）。
+    maxTokens: 32000,
   };
 }

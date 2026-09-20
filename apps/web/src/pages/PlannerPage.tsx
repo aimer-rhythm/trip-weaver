@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import {
+  GENERATION_TIMEOUT_MINUTES,
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
@@ -273,7 +274,7 @@ export function PlannerPage() {
             <p className="gen-result-title">已取消</p>
             <p className="muted">
               {terminal.reason === 'timeout'
-                ? '生成超过 10 分钟未完成，系统已自动取消。本次不计入今日配额，可稍后重新生成。'
+                ? `生成超过 ${GENERATION_TIMEOUT_MINUTES} 分钟未完成，系统已自动取消。本次不计入今日配额，可稍后重新生成。`
                 : '你已取消本次生成。本次不计入今日配额。'}
             </p>
             <button type="button" className="btn btn-primary" onClick={clearJob}>
