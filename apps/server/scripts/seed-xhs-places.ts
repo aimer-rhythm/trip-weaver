@@ -8,6 +8,9 @@
 // 幂等性：
 //   地点按主键 UPSERT（id 与金集同算法 sha256(city+name)[:32]，重复执行结果一致）
 //   语料先按 place_id 删除旧 xhs_* 记录再插入（避免重复累积）
+//
+// 性能：逐条 INSERT 在远程库（Neon）上是 5000+ 次往返，耗时数十分钟。
+//   这里改为按批 UNNEST 批量写入（每批 200 个地点），往返数降到十几条。
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -44,6 +47,15 @@ interface XhsPlacesFile {
   places: XhsPlaceInput[];
 }
 
+/** 每批地点数（每批 = 1 次地点 upsert + 1 次语料清理 + N 次语料插入） */
+const BATCH_SIZE = 200;
+
+function chunk<T>(items: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+  return out;
+}
+
 /** 语料确定性主键：同一条内容重复导入不产生新行 */
 function evidenceId(placeId: string, item: EvidenceItem): string {
   return createHash('sha256').update(`${placeId}|${item.kind}|${item.content}`).digest('hex').slice(0, 32);
@@ -78,14 +90,21 @@ async function main(): Promise<void> {
       );
     }
 
-    for (const place of file.places) {
-      if (!place.id || !place.name) continue;
+    const places = file.places.filter((p) => p.id && p.name);
+    const now = new Date().toISOString();
+    let processed = 0;
+    let evidencePlanned = 0;
+
+    for (const batch of chunk(places, BATCH_SIZE)) {
       // 地点 UPSERT：重复执行结果一致。
       // 关键：撞到其他 source（如金集 goldset）时**不覆盖**，只更新自家 xhs 记录，
       // 否则会把金集的 source/payload 改写掉（同类同名地点 id 相同）。
-      await client.query(
+      const res = await client.query(
         `INSERT INTO canonical_places (id, city, name, category, lng, lat, source, verified, payload, created_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10)
+         SELECT * FROM UNNEST(
+           $1::text[], $2::text[], $3::text[], $4::text[], $5::float8[], $6::float8[],
+           $7::text[], $8::boolean[], $9::jsonb[], $10::timestamptz[]
+         )
          ON CONFLICT (id) DO UPDATE SET
            city = EXCLUDED.city,
            name = EXCLUDED.name,
@@ -97,44 +116,57 @@ async function main(): Promise<void> {
            payload = EXCLUDED.payload
          WHERE canonical_places.source = EXCLUDED.source`,
         [
-          place.id,
-          file.city,
-          place.name,
-          place.category ?? '',
-          place.lng,
-          place.lat,
-          SOURCE,
-          place.verified ?? true,
-          JSON.stringify(place.payload ?? {}),
-          new Date(),
+          batch.map((p) => p.id),
+          batch.map(() => file.city),
+          batch.map((p) => p.name),
+          batch.map((p) => p.category ?? ''),
+          batch.map((p) => p.lng),
+          batch.map((p) => p.lat),
+          batch.map(() => SOURCE),
+          batch.map((p) => p.verified ?? true),
+          batch.map((p) => JSON.stringify(p.payload ?? {})),
+          batch.map(() => now),
         ],
       );
-      upserted += 1;
+      upserted += res.rowCount ?? 0;
 
-      const items = place.evidence ?? [];
-      if (!items.length) continue;
-      // 先清该地点的旧语料（重建式，避免累积）
-      await client.query(`DELETE FROM research_evidence WHERE place_id = $1 AND kind LIKE 'xhs\\_%'`, [place.id]);
-      for (const item of items) {
-        if (!item.content) continue;
-        const res = await client.query(
-          `INSERT INTO research_evidence (id, place_id, city, kind, content, source_url, fetched_at)
-           VALUES ($1,$2,$3,$4,$5,$6,$7)
-           ON CONFLICT (id) DO NOTHING`,
-          [
+      // 先清该批地点的旧语料（重建式，避免累积）
+      await client.query(`DELETE FROM research_evidence WHERE place_id = ANY($1::text[]) AND kind LIKE 'xhs\\_%'`, [
+        batch.map((p) => p.id),
+      ]);
+
+      const evRows: string[][] = [];
+      for (const place of batch) {
+        for (const item of place.evidence ?? []) {
+          if (!item.content) continue;
+          evRows.push([
             evidenceId(place.id, item),
             place.id,
             file.city,
             item.kind,
             item.content,
             item.sourceUrl ?? '',
-            new Date(),
-          ],
-        );
-        if ((res.rowCount ?? 0) > 0) evidenceInserted += 1;
-        else evidenceSkipped += 1;
+            now,
+          ]);
+        }
       }
+      evidencePlanned += evRows.length;
+      for (const evBatch of chunk(evRows, BATCH_SIZE * 8)) {
+        const evRes = await client.query(
+          `INSERT INTO research_evidence (id, place_id, city, kind, content, source_url, fetched_at)
+           SELECT * FROM UNNEST($1::text[], $2::text[], $3::text[], $4::text[], $5::text[], $6::text[], $7::timestamptz[])
+           ON CONFLICT (id) DO NOTHING`,
+          [0, 1, 2, 3, 4, 5, 6].map((i) => evBatch.map((r) => r[i])),
+        );
+        evidenceInserted += evRes.rowCount ?? 0;
+      }
+
+      processed += batch.length;
+      console.log(
+        `[xhs-seed] 进度 ${processed}/${places.length}（地点写入 ${upserted}，语料 ${evidenceInserted}）`,
+      );
     }
+    evidenceSkipped = evidencePlanned - evidenceInserted;
 
     await client.query('COMMIT');
   } catch (err) {
