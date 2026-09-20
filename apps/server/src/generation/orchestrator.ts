@@ -3,6 +3,7 @@
 import {
   describeFeasibility,
   feasibilityReviewNotes,
+  GENERATION_TIMEOUT_MINUTES,
   type DataSourceKind,
   type FeasibilityReport,
   type GenerateForm,
@@ -39,6 +40,7 @@ import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
 import { GenerationPerformance } from './performance';
 import { retrieveContext } from './retrieveContext';
+import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { buildGeoTools } from './tools/geoTools';
 import { buildDraftTools, buildSubmitPlanTool } from './tools/draftTools';
@@ -53,7 +55,7 @@ import {
   reviewerUserPrompt,
 } from './prompts';
 
-const JOB_TIMEOUT_MS = 10 * 60 * 1000;   // 整任务兜底超时
+const JOB_TIMEOUT_MS = GENERATION_TIMEOUT_MINUTES * 60 * 1000;   // 整任务兜底超时（与前端提示文案同源）
 const MAX_REVIEW_ROUNDS = 2;             // 审校 ≤2 轮（含修订回炉）
 
 class GenerationFailure extends Error {}
@@ -126,6 +128,18 @@ export async function runGeneration(
         xhsCalls: 0,   // 旧前端兼容字段（小红书已移除）
         amapCalls: poi.stats.calls + geo.stats.calls,
         searchCalls: search.stats.calls,
+      }),
+    // LLM 请求上下文快照（09-20 调试视图）：实时推给时间线，与落库互不影响
+    onLlmRequest: (info) => emit(job, { type: 'llm_request', phase, ...info }),
+    onLlmResponse: (info) =>
+      emit(job, {
+        type: 'llm_response',
+        phase,
+        turn: info.turn,
+        stopReason: info.stopReason,
+        tokensIn: info.usage?.input,
+        tokensOut: info.usage?.output,
+        errorMessage: info.errorMessage,
       }),
   });
 
@@ -207,6 +221,7 @@ export async function runGeneration(
       signal,
       sink: sinkFor('research'),
       maxTurns: 16,
+      recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'research', round: 1 }),
     });
     usage.tokensIn += researchRun.tokensIn;
     usage.tokensOut += researchRun.tokensOut;
@@ -269,6 +284,7 @@ export async function runGeneration(
         signal,
         sink: sinkFor('plan'),
         maxTurns: 30,
+        recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'plan', round }),
       });
       usage.tokensIn += plannerRun.tokensIn;
       usage.tokensOut += plannerRun.tokensOut;
@@ -317,6 +333,7 @@ export async function runGeneration(
         signal,
         sink: sinkFor('review'),
         maxTurns: 12,
+        recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round }),
       });
       usage.tokensIn += reviewerRun.tokensIn;
       usage.tokensOut += reviewerRun.tokensOut;

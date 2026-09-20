@@ -269,6 +269,14 @@ a { color: var(--color-primary); text-decoration: none; }
 .gen-thought details { font-size: 0.83rem; }
 .gen-thought summary { cursor: pointer; color: var(--color-muted); }
 .gen-thought p { margin: 6px 0 0; color: var(--color-muted); white-space: pre-wrap; background: #f4f7f9; border-radius: 8px; padding: 8px 10px; }
+/* LLM 请求上下文节点（09-20 调试视图） */
+.gen-llm details { font-size: 0.83rem; }
+.gen-llm summary { cursor: pointer; color: var(--color-muted); display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 6px; }
+.gen-llm.is-error summary { color: var(--color-danger); }
+.gen-llm-detail { margin: 6px 0 0; }
+.gen-llm-detail h5 { margin: 8px 0 4px; font-size: 0.78rem; color: var(--color-muted); font-weight: 600; }
+.gen-llm-detail pre { margin: 0; max-height: 320px; overflow: auto; white-space: pre-wrap; word-break: break-all; background: #f4f7f9; border-radius: 8px; padding: 8px 10px; font-size: 0.75rem; }
+.gen-llm-error { color: var(--color-danger); margin: 6px 0 0; }
 .gen-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.82rem; }
 .gen-metrics { display: flex; flex-wrap: wrap; gap: 4px 12px; min-width: 0; }
 

@@ -100,3 +100,27 @@ export const researchEvidence = pgTable(
   },
   (table) => [index('idx_research_evidence_city_kind').on(table.city, table.kind)],
 );
+
+// ---------- LLM 请求上下文快照（09-20）：生成流水线每次 API 请求的完整落库 ----------
+// 定位「模型不调工具/空响应」类问题的调试事实源；不含 API key（key 走 getApiKey 独立通道）。
+export const llmRequestLogs = pgTable(
+  'llm_request_logs',
+  {
+    id: text('id').primaryKey(),
+    jobId: text('job_id').notNull(),               // 内存 Job 号（非外键，Job 本身不落库）
+    userId: text('user_id').notNull(),
+    phase: text('phase').notNull(),                // research | plan | review
+    round: integer('round').notNull().default(1),  // 编排-审校轮次（调研恒 1）
+    turn: integer('turn').notNull(),               // 阶段内第几次 API 请求（从 1 开始）
+    model: text('model').notNull(),
+    systemPrompt: text('system_prompt').notNull(),
+    messages: jsonb('messages').notNull(),         // 完整消息历史快照
+    tools: jsonb('tools').notNull(),               // 完整工具定义快照
+    response: jsonb('response'),                   // { stopReason, usage, errorMessage, text }
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+  },
+  (table) => [
+    index('idx_llm_request_logs_job').on(table.jobId),
+    index('idx_llm_request_logs_user_time').on(table.userId, table.createdAt),
+  ],
+);

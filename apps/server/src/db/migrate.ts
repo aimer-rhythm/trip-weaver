@@ -88,6 +88,23 @@ const STATEMENTS = [
     fetched_at TIMESTAMPTZ NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS idx_research_evidence_city_kind ON research_evidence(city, kind)`,
+  // ---------- LLM 请求上下文快照（09-20） ----------
+  `CREATE TABLE IF NOT EXISTS llm_request_logs (
+    id TEXT PRIMARY KEY,
+    job_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    phase TEXT NOT NULL,
+    round INTEGER NOT NULL DEFAULT 1,
+    turn INTEGER NOT NULL,
+    model TEXT NOT NULL,
+    system_prompt TEXT NOT NULL,
+    messages JSONB NOT NULL,
+    tools JSONB NOT NULL,
+    response JSONB,
+    created_at TIMESTAMPTZ NOT NULL
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_llm_request_logs_job ON llm_request_logs(job_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_llm_request_logs_user_time ON llm_request_logs(user_id, created_at DESC)`,
 ];
 
 export async function runMigrations(pool: Pool): Promise<void> {

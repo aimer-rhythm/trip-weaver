@@ -1,7 +1,7 @@
 // 生成进度时间线：三阶段分组 + 工具时间线 + 候选卡片实时长出 + 思考折叠 + 用量/取消（PRD F1）
 import { useEffect, useMemo, useState } from 'react';
 import type { DataSourceKind, GenerationEvent, GenerationPhase } from '@tripweaver/shared';
-import { buildTimeline, formatDuration, type TimelineModel } from '../lib/generationTimeline';
+import { buildTimeline, formatDuration, type LlmRequestItem, type TimelineModel } from '../lib/generationTimeline';
 import { PoiCard } from './PoiCard';
 
 const PHASE_LABEL: Record<GenerationPhase, string> = {
@@ -30,6 +30,36 @@ function usageText(usage: TimelineModel['usage']): string {
 
 function DurationValue({ durationMs, className }: { durationMs: number | undefined; className?: string }) {
   return durationMs === undefined ? null : <span className={className}>{formatDuration(durationMs)}</span>;
+}
+
+/** LLM 请求节点摘要：请求 #N · 消息数 · 工具数 · system 字数 · 响应 token/stopReason */
+function llmSummary(item: LlmRequestItem): string {
+  const parts = [
+    `LLM 请求 #${item.turn}`,
+    `${item.messages.length} 条消息`,
+    `${item.tools.length} 工具`,
+    `system ${item.systemPrompt.length} 字`,
+  ];
+  if (!item.running) {
+    parts.push(item.stopReason ?? '结束');
+    if (item.tokensIn !== undefined) parts.push(`↑${item.tokensIn}/↓${item.tokensOut ?? 0}`);
+  }
+  return parts.join(' · ');
+}
+
+/** 展开全文：system prompt + 消息历史 + 工具定义（开发者调试用，原样呈现） */
+function LlmRequestDetail({ item }: { item: LlmRequestItem }) {
+  return (
+    <div className="gen-llm-detail">
+      <h5>System Prompt（{item.systemPrompt.length} 字）</h5>
+      <pre>{item.systemPrompt}</pre>
+      <h5>Messages（{item.messages.length} 条）</h5>
+      <pre>{JSON.stringify(item.messages, null, 2)}</pre>
+      <h5>Tools（{item.tools.length} 个）</h5>
+      <pre>{JSON.stringify(item.tools, null, 2)}</pre>
+      {item.errorMessage && <p className="gen-llm-error">{item.errorMessage}</p>}
+    </div>
+  );
 }
 
 export function GenerationTimeline({
@@ -86,6 +116,19 @@ export function GenerationTimeline({
                     />
                   </span>
                   {item.summary && <span className="gen-tool-summary">{item.summary}</span>}
+                </li>
+              ) : item.kind === 'llm' ? (
+                <li key={item.key} className={`gen-llm ${item.errorMessage ? 'is-error' : ''}`}>
+                  <details>
+                    <summary>
+                      {item.running ? <span className="spinner" /> : item.errorMessage ? '⚠' : '🧠'} {llmSummary(item)}
+                      <DurationValue
+                        className="gen-duration"
+                        durationMs={item.durationMs ?? (item.running && item.startedAt !== undefined ? Math.max(0, now - item.startedAt) : undefined)}
+                      />
+                    </summary>
+                    <LlmRequestDetail item={item} />
+                  </details>
                 </li>
               ) : (
                 <li key={item.key} className="gen-thought">
