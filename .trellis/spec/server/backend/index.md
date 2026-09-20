@@ -13,6 +13,7 @@ has a more specific convention.
 - [Security guidelines](./security-guidelines.md): authentication, sessions, OAuth, encryption, SSRF, and environment bootstrap.
 - [Integration guidelines](./integration-guidelines.md): external source adapters, Null implementations, caches, queues, limits, and accounting.
 - [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
+- [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
 - [Quality guidelines](./quality-guidelines.md): validation rules and the real command matrix.
 
 ## Pre-Development Checklist
@@ -23,6 +24,7 @@ has a more specific convention.
 - For every request input, plan a TypeBox schema for `body`, `params`, and/or `querystring` rather than relying on casts.
 - For database shape changes, plan matching edits to both `apps/server/src/db/schema.ts` and `apps/server/src/db/migrate.ts`.
 - For outbound calls, identify timeout, SSRF, Null fallback, cache, serialization, task limit, and quota/accounting behavior.
+- For retrieval, prompt-injection, or knowledge-table work, read [RAG retrieval guidelines](./rag-guidelines.md); retrieval stays optional enrichment that degrades to an empty result.
 - Check whether a verification script needs a built `apps/web/dist` or starts its own isolated server.
 
 ## Quality Check Checklist
@@ -33,4 +35,5 @@ has a more specific convention.
 - Confirm request schemas cover every changed input surface and response bodies do not expose secrets.
 - Confirm schema and migration definitions remain synchronized.
 - Confirm expected integration failures degrade without aborting generation, while programming and persistence failures remain visible.
+- Confirm retrieval changes still degrade to an empty result without failing generation, and that `source` ownership between the golden set and imported libraries is preserved.
 - Run `git diff --check -- .trellis/spec/server/backend .trellis/spec/server/frontend` for documentation changes.

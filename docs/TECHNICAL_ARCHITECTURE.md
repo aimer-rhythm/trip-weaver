@@ -1,15 +1,16 @@
 # 织程 TripWeaver · 技术架构文档
 
 - 项目名称：**织程 TripWeaver**（仓库名 `tripweaver`）
-- 文档版本：v0.5
-- 日期：2026-07-12
+- 文档版本：v0.6
+- 日期：2026-09-20
 - 关联文档：[PRD](./PRD.md) · [开发计划](./DEVELOPMENT_PLAN.md)
 
 > **修订记录**
 > - v0.2：纯前端 → 前后端分离（Fastify API + SQLite + 会话认证）；单 Agent → 三 Agent 流水线；新增小红书 MCP 接入层。
 > - v0.3：面向「开源 + 站长运营 + 非 IT 用户」——① LLM Key 双轨解析（站点 Key / BYOK）；② 邀请码 + 配额体系（新增 `generations` 用量表）；③ SSRF 私网黑名单升为强制；④ 小红书定为站长专用小号单账号模式；⑤ 新增开源工程与部署章节（Docker Compose / CI）。
 > - v0.4：小红书抓取风控不可持续，**彻底移除该集成**——调研数据源替换为「高德搜索POI 2.0（结构化底座）+ Web 搜索 API（攻略语义层，默认 LangSearch）」双层方案 + 预约种子表；调研产物升级为结构化候选池（`Trip.overview`），SSE 新增 `candidate` 事件；`generations` 用量列泛化（`amap_calls`/`search_calls`）。
-> - **v0.5（本版）**：**坐标决策反转**——Nominatim 在中国的 POI 级覆盖实测不可用，且 WGS-84 与高德 GCJ-02 混用不可行；行程坐标全面切换高德 GCJ-02（活动新增可选 `coordSystem`，缺省 wgs84 兼容旧数据）。新增高德地理编码/路径规划适配器与活动间通勤段 `TripDay.legs`（walk/transit/drive，`source=amap|heuristic`）；坐标解析与通勤估算移出 LLM 循环，改为审校后确定性后处理 pass（解析链：高德 POI text → v3 geocode → Nominatim+wgs84ToGcj02 → estimated 降级）。协议 3.5 缓解措施：只存活动坐标点值与通勤时长/距离数值、polyline 抽稀且 ≤4000 字符、不批量囤 POI、24h TTL 缓存、图片热链不转存不变。
+> - **v0.5**：**坐标决策反转**——Nominatim 在中国的 POI 级覆盖实测不可用，且 WGS-84 与高德 GCJ-02 混用不可行；行程坐标全面切换高德 GCJ-02（活动新增可选 `coordSystem`，缺省 wgs84 兼容旧数据）。新增高德地理编码/路径规划适配器与活动间通勤段 `TripDay.legs`（walk/transit/drive，`source=amap|heuristic`）；坐标解析与通勤估算移出 LLM 循环，改为审校后确定性后处理 pass（解析链：高德 POI text → v3 geocode → Nominatim+wgs84ToGcj02 → estimated 降级）。协议 3.5 缓解措施：只存活动坐标点值与通勤时长/距离数值、polyline 抽稀且 ≤4000 字符、不批量囤 POI、24h TTL 缓存、图片热链不转存不变。
+> - **v0.6（本版）**：**RAG 检索链路成文**——补 §4.4（`retrieveContext` 混合召回三层结构、两处注入入口、embedding 客户端参数、离线数据脚本、四级降级链、明确不做项）；同步修正 PostgreSQL 迁移后的文档残留（§1 地图坐标、§2 架构图、§10 部署与环境变量、§11 R10）。
 
 ---
 
@@ -26,14 +27,14 @@
 | **LLM 调用层** | **`@mariozechner/pi-ai`**（服务端） | 统一多厂商；自定义 Model 适配任意 OpenAI 兼容端点 |
 | **Agent 运行时** | **`@mariozechner/pi-agent-core`**（服务端） | 工具执行 + 事件流 + 循环控制，三 Agent 复用 |
 | **调研数据源** | 高德搜索POI 2.0 + Web 搜索 API（LangSearch，博查同族可切换）—— HTTP 直连 | 免费额度内近零成本；官方 API 无风控包袱；适配器隔离 + Null 降级 |
-| 地理编码 / 地图 | OSM Nominatim（服务端）/ Leaflet + react-leaflet | 免费免 Key；行程坐标统一 WGS-84（不用高德 GCJ-02 坐标） |
+| 地理编码 / 地图 | 高德 GCJ-02 主链（POI text → v3 geocode）+ OSM Nominatim 兜底（经 `wgs84ToGcj02` 转换）/ Leaflet + react-leaflet | 主链覆盖中国 POI；行程坐标统一 GCJ-02（v0.5 反转原 WGS-84 决策，活动 `coordSystem` 缺省 wgs84 兼容旧数据，见 §12.1） |
 | 长图 / 弹层 | html-to-image / 原生 `<dialog>` | 轻量 |
-| **部署** | **Docker Compose（app）+ Caddy（自动 HTTPS）** | 站长 30 分钟内可用（PRD 成功标准 2）；Caddy 免证书运维 |
+| **部署** | **Docker Compose（`app` + `pgvector/pg16` db），宿主机前置反代** | 站长 30 分钟内可用（PRD 成功标准 2）；复用站长现有证书体系（`nginx.host.conf`）；容器化内置反代场景见 `docker-compose.release.yml` |
 | CI | GitHub Actions：typecheck + build | 开源项目基础卫生 |
 
 **明确不引入**：NestJS、Prisma、Redis/队列、图表库、@dnd-kit、UI 组件库、zod、K8s/水平扩展。
 
-> ⚠️ 版本匹配：`react-leaflet@5.x` 要求 React 19（`npm ls react` 为准）；better-sqlite3 需匹配 Node LTS 预编译产物。
+> ⚠️ 版本匹配：`react-leaflet@5.x` 要求 React 19（`npm ls react` 为准）；自建 PostgreSQL 需装 `pgvector` 扩展（compose 已用 `pgvector/pgvector:pg16`；本地 PG 缺扩展时向量层静默降级，见 §4.4）。
 
 ---
 
@@ -44,7 +45,7 @@
 │  React SPA：登录注册(邀请码) · 我的行程 · 规划表单 ·           │
 │  生成进度页(SSE) · 行程编辑器(清单+地图+预算) · 导出           │
 └───────────────┬──────────────────────────────────────────┘
-                │ HTTPS(Caddy) · JSON API + SSE · httpOnly Cookie
+                │ HTTPS(宿主反代) · JSON API + SSE · httpOnly Cookie
 ┌───────────────▼──────────────────────────────────────────┐
 │  API 路由层（Fastify）                                     │
 │   /api/auth/*(邀请码) · /api/settings · /api/usage         │
@@ -60,11 +61,12 @@
 │     ①调研 Agent ─▶ PoiSource(高德) / SearchSource(Web搜索)   │
 │     ②编排 Agent ─▶ Nominatim / DraftTrip                    │
 │     ③审校 Agent ─▶ DraftTrip / 预算聚合                      │
+│     ④检索层 retrieveContext ─▶ pgvector 混合召回（09-19）      │
 │   （Key 双轨解析：用户 BYOK → 站点 Key）                      │
 ├──────────────────────────────────────────────────────────┤
-│  数据层：SQLite（users/sessions/user_settings/trips/         │
-│           generations）                                    │
-└──────────────────────────────────────────────────────────┘
+│  数据层：PostgreSQL 16 + pgvector（users/sessions/            │
+│           user_settings/trips/generations/                   │
+│           canonical_places / research_evidence）             │
    外部：站点或用户的 LLM 端点 · 高德 Web 服务 · LangSearch ·
          OSM(瓦片/Nominatim)
 ```
@@ -78,7 +80,7 @@
 ```
 travel-planner/
 ├─ docs/                              # 三份文档
-├─ docker-compose.yml · Caddyfile · .env.example
+├─ docker-compose.yml · nginx.host.conf · .env.example
 ├─ .github/workflows/ci.yml           # typecheck + build
 ├─ LICENSE (MIT) · README.md
 ├─ package.json                       # workspaces: apps/*, packages/*
@@ -166,6 +168,53 @@ ORDER BY embedding <=> $query_vec LIMIT 8
 
 **降级链**：pgvector 扩展不可用 → 启动告警不阻断，retrieveContext 退化为纯关键词召回；EMBEDDING_* 未配置 → 跳过向量生成与向量层检索；embedding HTTP 失败 → 单批置 null 继续。
 
+### 4.4 RAG 检索与注入链路（09-19 实施，v0.6 成文）
+
+**定位**：不是通用 RAG 框架，而是「已验证地点情报」的定点注入——检索结果只影响规划 Agent 的选点偏好，不改写用户输入、不进入对话历史。
+
+**检索入口**：`apps/server/src/generation/retrieveContext.ts`（唯一实现）。三层串联：
+
+1. **关键词层（必做，零依赖）**：`name = ANY($1)` 精确命中 + `name LIKE ANY($2)` 前缀兜底，`verified = TRUE` 过滤，精确命中优先排序，`LIMIT 8`。
+2. **向量层（可选）**：`embedTexts(names.join(' '))` → `ORDER BY embedding <=> $1 LIMIT 8`；与关键词层按 id 去重后**朴素拼接**（无 RRF、无加权分数融合），总数截断 8。
+3. **evidence 挂载**：对命中 place 批量查 `research_evidence`，每 place 至多 3 条，kind 优先级 `xhs_warning > xhs_reservation > xhs_price > 其他`，同级按 `fetched_at` 倒序。
+
+`options.city` 提供时两层召回均追加 `AND city = $x`，消除跨城串扰；不传时与未加城市过滤前逐字一致。
+
+**注入入口（两处）**：
+
+| 入口 | 位置 | 行为 |
+|---|---|---|
+| 自动注入 | `orchestrator.ts`（调研阶段结束后、规划循环开始前） | 以候选池名称为查询；结果经 `plannerUserPrompt(..., ragContext)` → `renderRagContext()` 渲染为「已验证地点情报」段落。**首轮与修订轮共用同一 prompt 构造，情报每轮可见**；`ragContext` 为空时该段落整体不出现（保护金集回归可复现性） |
+| Agent 工具 | `search_verified_places`（`tools/researchTools.ts`） | 调研 Agent 按关键词自主查库，返回「名称｜分类｜情报」文本行 |
+
+渲染规则：每条 evidence 截断 80 字，kind 经 `EVIDENCE_KIND_LABEL` 中文化。
+
+**Embedding 客户端**（`apps/server/src/integrations/embedding.ts`）：
+
+- OpenAI 兼容 `POST {baseUrl}/embeddings`；批 32 条，批间节流 300ms，单次超时 30s，指数退避重试 3 次（500ms 起）。
+- 维度硬校验 **1024**：不符即该批置 `null` 并 warn，不抛错。
+- 配置解析：`EMBEDDING_BASE_URL / _API_KEY / _MODEL / _DIMS` 缺省回落 `SITE_LLM_*`，默认模型 `cf/bge-m3`。
+- **不吃用户 BYOK**：embedding 恒用站长配置（用户 Key 不用于站内基础设施）；可用性由 `hasEmbedding()` 判定。
+- 换模型／维度需同步 `EMBEDDING_DIMS` 与 `embedding` 列——`vector(N)` 不支持原地改维度，须 `DROP COLUMN` 重建。
+
+**数据入口（全部离线脚本，非在线写入）**：
+
+| 脚本 | 作用 |
+|---|---|
+| `seed-canonical-places.ts` | 金集 9 城 POI → `canonical_places`（`verified=true, source='goldset'`） |
+| `seed-xhs-places.ts` | 社区地点库导出 JSON → `canonical_places` + `research_evidence`（`source='xhs'`）；同名同 id 撞金集时**不覆盖** |
+| `embed-backfill.ts` | 幂等回填两张表的 embedding；`--tables places` 可只跑地点（检索路径取语料一律按 `place_id`，`research_evidence.embedding` 目前无一处被查询，属纯支出） |
+| `restore-goldset.ts` | 从 eval 快照修复被社区库导入误改 `source` 的金集记录 |
+
+**降级链（四级，全静默，不抛错）**：
+
+1. pgvector 扩展不可用 → 启动迁移跳过 `embedding` 列，启动告警不阻断。
+2. `EMBEDDING_*` 未配置 → 跳过向量层，仅关键词召回。
+3. embedding HTTP 失败 → 单批置 `null`，其余批次继续。
+4. `retrieveContext` 任何异常 → 返回 `[]`，生成流程不受影响。
+
+**刻意不做（YAGNI，触发重评估的条件见 §4.3）**：chunking（evidence 整条进 prompt）、rerank、查询改写、ivfflat/hnsw 索引、Repository 抽象层、独立向量数据库。
+
 ---
 
 ## 5. 多 Agent 协作设计
@@ -247,16 +296,17 @@ resolveLlmConfig(userId):
 
 ## 10. 开源工程与部署（v0.3 新增）
 
-- **Docker Compose**：`app`（多阶段构建：web build → server 托管）+ `caddy`（自动 HTTPS 反代，`Caddyfile` 已含 SSE 所需 `flush_interval -1`）。数据卷：SQLite 文件。
+- **Docker Compose**：`app`（多阶段构建：web build → server 托管）+ `db`（`pgvector/pgvector:pg16`）。app 只绑 `127.0.0.1:${APP_PORT:-3001}`，由宿主机前置反代转发（`nginx.host.conf` 含 SSE 关键参数）；容器化内置反代场景见 `docker-compose.release.yml`。数据卷：`pg_data`（PostgreSQL 数据目录）。
 - **环境变量**（`.env.example` 全量注释）：
 
 | 变量 | 说明 |
 |---|---|
-| `PORT` / `DATABASE_PATH` | 服务端口 / SQLite 路径 |
+| `PORT` / `DATABASE_URL` / `POSTGRES_PASSWORD` | 服务端口 / PostgreSQL 连接串（09-18 起唯一运行态数据库）/ compose 内 `db` 服务密码。`DATABASE_PATH` 现仅被一次性迁移脚本读取 |
 | `MASTER_KEY` | 32 字节 hex，Key 加密主钥 |
 | `REGISTRATION_MODE` / `INVITE_CODE` | 注册三态 open/invite/closed（未设置时按 INVITE_CODE 推断）/ 邀请码（invite 模式必填） |
 | `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` / `APP_BASE_URL` | GitHub OAuth 登录（可留空=隐藏该入口）/ 站点对外地址（启用 GitHub 时必填） |
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 站点供 Key（可留空=纯 BYOK 模式） |
+| `EMBEDDING_BASE_URL` / `EMBEDDING_API_KEY` / `EMBEDDING_MODEL` / `EMBEDDING_DIMS` | RAG 向量召回（可选；缺省回落 `SITE_LLM_*`，默认模型 `cf/bge-m3`，维度 1024 须与 schema 对齐）。未配置时向量层静默跳过（§4.4） |
 | `GEN_DAILY_LIMIT` | 用户日生成配额（默认 3） |
 | `AMAP_KEY` / `AMAP_DAILY_BUDGET` | 站点默认高德 Web 服务 Key（用户个人 Key 优先；均为空=该源降级）/ 全站日额度（默认 150） |
 | `SEARCH_API_KEY` / `SEARCH_API_BASE_URL` / `SEARCH_DAILY_BUDGET` | Web 搜索 Key（可留空=该源降级）/ 端点（默认 LangSearch，博查同族可切）/ 全站日额度（默认 500） |
@@ -275,8 +325,8 @@ resolveLlmConfig(userId):
 | R8 | 多 Agent token 成本 | 确定 | 摘要化返回/轮次上限/用量落库透明化 |
 | **R11** | **开源后站点被滥用（Key 盗刷/爬注册）** | 中 | 三态注册开关（滥用时一键切回 invite）+ 双层配额 + 限流 + 用量表审计——三道闸缺一不可 |
 | **R12** | **微信内置浏览器兼容性怪癖**（下载/长按保存/SSE） | 中 | D2 真机实测；长图导出用「长按保存」引导而非 download 属性兜底 |
-| R9 | SSE 被反代缓冲 | 低 | 官方 Caddyfile 已配置；README 注明 nginx 等价配置 |
-| R10 | better-sqlite3 构建 | 低 | Node LTS 预编译；后备 `node:sqlite` |
+| R9 | SSE 被反代缓冲 | 低 | `nginx.host.conf` 已含 `proxy_buffering off` / `proxy_cache off` 等关键参数（`docker-compose.release.yml` 同）；README 注明等价配置 |
+| R10 | 自建 PG 未装 pgvector 扩展（向量层静默失效） | 低 | 启动迁移对扩展与 `embedding` 列均为幂等可跳过；检索退化为纯关键词召回，生成不受影响（§4.4 降级链） |
 | R6 | react-leaflet 版本 | 低 | §1 规则 |
 
 ## 12. 待实现期确认清单

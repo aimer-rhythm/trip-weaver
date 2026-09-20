@@ -1,13 +1,19 @@
 # 织程 TripWeaver · 开发计划
 
 - 项目名称：**织程 TripWeaver**（仓库名 `tripweaver`）
-- 文档版本：v0.3
-- 日期：2026-07-05
+- 文档版本：v0.6
+- 日期：2026-09-20
 - 关联文档：[PRD](./PRD.md) · [技术架构](./TECHNICAL_ARCHITECTURE.md)
 
 > **修订记录**
 > - v0.2：按全栈 + 多 Agent + 小红书重排阶段（29.5h）。
-> - **v0.3（本版）**：并入开源运营姿态——邀请码/配额/Key 双轨（A2、C2）、SSRF 强制（A2）、设置分级（B1）、微信真机实测（D2）、新增 E 段开源工程化；总估时 **34.5h**。
+> - **v0.3**：并入开源运营姿态——邀请码/配额/Key 双轨（A2、C2）、SSRF 强制（A2）、设置分级（B1）、微信真机实测（D2）、新增 E 段开源工程化；总估时 **34.5h**。
+> - **v0.4**（2026-07-09）：小红书抓取整体移除，调研数据源改为「高德搜索 POI 2.0 + Web 搜索 API」双层 + 预约种子表；`ContentSource` 抽象随之退役。
+> - **v0.5**（2026-07-12）：坐标决策反转（行程坐标统一高德 GCJ-02，Nominatim 仅兜底）；新增地理编码/路径规划适配器与 `TripDay.legs` 通勤段；机械工作移出 LLM 循环。
+> - **M0-A/B/C**（2026-07-14 ～ 07-19）：可行性引擎 + 时序前移（M0-A）、金集 eval harness 与长途日纪律（M0-B）、远郊 anchor 清零后解除公网部署阻塞（M0-C）；期间完成 ST1–ST3 地理数据层重构与住宿锚点契约。
+> - **v0.6（本版）**：持久层自 SQLite 迁至 PostgreSQL 16 + pgvector（09-18），并落地 RAG 检索链路；§1 策略、§2 里程碑、§5 风险、§6 交付物已对齐现状。
+
+> **状态说明**：§3 的 A–E 段是 2026-07-05 ～ 07-07 的**执行记录**，条目与验收快照保留原状（含当时的小红书 / SQLite 表述）。v0.4 之后的数据源替换、坐标反转、PG 迁移与 RAG 地基的实时状态，以 [技术架构](./TECHNICAL_ARCHITECTURE.md) 与 `.trellis/spec/` 为准。
 
 ---
 
@@ -15,8 +21,8 @@
 
 - **增量可验证**：每 Phase 结束可运行、可验收，标准明确到「点什么、看到什么」。
 - **纵向切片**：先通「注册(邀请码) → 示例行程 → 编辑 → 历史」全栈闭环（M1），再接多 Agent 生成（M2），再导出打磨（M3），最后开源发布件（M4）。
-- **外部依赖早冒烟**：better-sqlite3（A0）、pi-agent-core + 小红书 MCP 握手（C0）放在段首，失败立即走后备。
-- **单入口隔离**：前端只认 HTTP API；Orchestrator 只暴露 `runGeneration`；小红书只认 `ContentSource`；LLM 配置只认 `resolveLlmConfig`——四处替换实现均不返工上层。
+- **外部依赖早冒烟**：pi-agent-core（C0）、高德 / Web 搜索适配器（`scripts/smoke-sources.mjs`）放在段首，失败立即走 Null 降级；PostgreSQL 连接与 pgvector 扩展在启动迁移中幂等校验（缺扩展不阻断，向量层静默跳过）。
+- **单入口隔离**：前端只认 HTTP API；Orchestrator 只暴露 `runGeneration`；调研数据源只认 `PoiSource` / `SearchSource` 适配器；LLM 配置只认 `resolveLlmConfig`；检索只认 `retrieveContext`——实现替换均不返工上层。
 - **移动端基准**：B 段起所有 UI 按 <768px 先行设计，桌面是放大而非另做。
 
 ## 2. 里程碑
@@ -24,9 +30,12 @@
 | 里程碑 | 包含 Phase | 达成标志 |
 |---|---|---|
 | **M1 全栈行程编辑器** | A0–A3, B1–B3 | 邀请码注册登录 → 示例行程 → 编辑（清单/地图/预算）→ 自动保存 → 历史回访；全程无 Key |
-| **M2 多 Agent 智能生成** | C0–C3 | 站点 Key + 小红书 MCP：三阶段生成可见/可取消/可恢复；配额与降级全路径可用 |
+| **M2 多 Agent 智能生成** | C0–C3 | 站点 Key + 调研数据源（现为高德 POI + Web 搜索；v0.4 前为小红书 MCP）：三阶段生成可见/可取消/可恢复；配额与降级全路径可用 |
 | **M3 功能完备** | D1–D2 | 三种导出 + 响应式 + 微信真机 + 安全走查 + 回归全过 |
 | **M4 开源发布就绪** | E1 | Docker Compose 一键部署 + CI + README/LICENSE，站长 30 分钟可复现 |
+| **M0 生成质量硬化**（v0.4 后追加） | M0-A/B/C | 可行性引擎 + 时序前移、金集 eval harness、远郊 anchor 清零；解除公网部署阻塞 |
+
+> M1–M4 均已于 2026-07-07 达成（§3 各段验收快照）；M0 系列为之后追加的质量里程碑。
 
 ---
 
@@ -176,9 +185,9 @@
 
 | 风险 | 触发信号 | 应对落点 |
 |---|---|---|
-| R10 sqlite 构建 | A0 失败 | 切 node:sqlite |
+| R10 自建 PG 未装 pgvector | 启动迁移跳过 embedding 列 | 检索退化为纯关键词召回，生成不受影响（技术架构 §4.4） |
 | pi API 偏差 | C0 冒烟失败 | 手写工具循环（接口不变） |
-| R7 小红书 MCP 不稳/小号被踢 | 自检红/生成中报错 | Null 降级不断服；README 小号纪律 |
+| R7 调研数据源不稳（高德配额 / 搜索 API 无 SLA） | 自检红/生成中报错 | 适配器隔离 + Null 降级不断服 + 全站日额度 + 预约种子表离线兜底 |
 | R2 模型工具调用弱 | C2/C3 频繁不终止 | prompt 调优 + 完整性兜底 + 推荐模型标注 |
 | R11 成本滥用 | usage 异常增长 | 换邀请码/调低配额（均 env 级操作） |
 | R12 微信怪癖 | D2 真机 | 长按保存兜底等 |
@@ -187,6 +196,6 @@
 ## 6. 交付物清单
 
 1. 可运行 monorepo（dev 一键 / 生产 build + 托管）
-2. Docker Compose 部署件 + Caddyfile + `.env.example`
-3. SQLite 迁移脚本；`docs/` 三份文档随实现同步修订（§12 核对结果、MCP 映射表）
-4. README（部署/小号声明/成本说明/安全说明/截图）+ LICENSE + CI
+2. Docker Compose 部署件（`app` + `pgvector/pgvector:pg16` db）+ `nginx.host.conf` + `.env.example`
+3. SQLite → PostgreSQL 一次性迁移脚本；`docs/` 文档随实现同步修订（§12 核对结果、调研源适配器速查；RAG 链路见技术架构 §4.4 与 `.trellis/spec/server/backend/rag-guidelines.md`）
+4. README（部署/数据源与合规声明/成本说明/安全说明/截图）+ LICENSE + CI
