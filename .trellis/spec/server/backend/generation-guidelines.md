@@ -581,3 +581,114 @@ model/provider errors remain visible failures.
 Validation paths: `scripts/verify-c2.mjs` covers API/SSE replay, cancellation, quota, BYOK,
 and migration behavior; `scripts/verify-c3.mjs` covers the production browser flow and
 refresh recovery after `npm run build`.
+
+## Scenario: LLM Request Context Snapshots
+
+### 1. Scope / Trigger
+
+Apply this contract when debugging generation misbehavior (model ignoring tools, empty
+responses, prompt regressions) or changing `agents/runner.ts` / phase prompts. Every LLM API
+request made by the three phase agents is persisted as a full context snapshot so the exact
+system prompt, message history, and tool definitions can be inspected after the fact.
+
+### 2. Signatures
+
+- `createLlmRequestRecorder(scope: { jobId, userId, phase, round }): LlmRequestRecorder`
+  in `apps/server/src/generation/llmRequestLog.ts`
+- `RunAgentOptions.recorder?: LlmRequestRecorder` in `apps/server/src/generation/agents/runner.ts`
+- Table `llm_request_logs`: `id, job_id, user_id, phase, round, turn, model, system_prompt,
+  messages JSONB, tools JSONB, response JSONB NULL, created_at TIMESTAMPTZ`;
+  indexes `(job_id)` and `(user_id, created_at DESC)`.
+
+### 3. Contracts
+
+- The runner wraps the agent's `streamFn` (pi-agent-core defaults to pi-ai `streamSimple`;
+  see `agent.js` constructor). The wrapper inserts one row per API request with a per-phase
+  `turn` counter starting at 1, then delegates to `streamSimple` unchanged.
+- The same wrapper also drives the live debug view: `PhaseEventSink.onLlmRequest/onLlmResponse`
+  forward SSE `llm_request` (full context) / `llm_response` (stopReason, tokens) events,
+  emitted whenever a recorder OR the trace callback exists. Web rebuilds one timeline node per
+  turn (`generationTimeline.ts` `LlmRequestItem`, paired by phase+turn) with expandable full
+  prompt/messages/tools; replay from the event buffer restores the nodes.
+- `messages`/`tools` are the normalized pi-ai context objects, stored verbatim as JSONB.
+  API keys never enter the snapshot: keys flow through `getApiKey`, not the context.
+- On each assistant `message_end`, the runner writes `response =
+  { stopReason, usage, errorMessage, text }` back to the pending row. The assistant message
+  itself also appears in the next turn's `messages` snapshot; the write-back covers the final
+  turn and error stops.
+- Recording is an enhancement path: insert/update failures only `console.warn` and skip the
+  row; generation must never fail because logging failed.
+
+### 4. Validation & Error Matrix
+
+- Snapshot insert throws -> warn, return null row id, skip response write-back, continue.
+- Response write-back throws -> warn, continue.
+- No recorder passed -> runner behaves exactly as before (no streamFn override).
+- Request errors before any assistant `message_end` -> row keeps `response = NULL`.
+- `llm_response` matching no open phase block (legacy replay) -> event ignored.
+
+### 5. Good / Base / Bad Cases
+
+- Good: a failing plan phase shows turn=1 with `response.stopReason = 'length'` and
+  `usage.output = maxTokens`, directly revealing output-budget exhaustion.
+- Base: research phase logs ~10-16 rows with `messages` growing each turn as tool results
+  are appended.
+- Bad: swallow a generation exception because the recorder threw, or store api keys / BYOK
+  material in the snapshot.
+
+### 6. Tests Required
+
+- Run `apps/server/test-beijing-rag.mts` (or any generation), then query
+  `llm_request_logs` for the job: assert turn sequence per phase, growing message counts,
+  and non-null `response` on completed turns. `test-llm-log-check.mts` prints this summary.
+- `npm run typecheck` must pass; schema.ts and migrate.ts must stay in dual-update sync.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: subscribe to events and reconstruct the context from pieces.
+agent.subscribe((ev) => { if (ev.type === 'turn_start') guessContext(); });
+
+// Correct: wrap streamFn — the exact (model, context, options) tuple per API request.
+const streamFn: StreamFn = async (model, context, options) => {
+  await recorder.recordRequest({ turn: ++seq, model: model.id, ...context });
+  return streamSimple(model, context, options);
+};
+```
+
+### Common Mistake: weak models burn the whole output budget before emitting tool calls
+
+**Symptom**: plan phase ends with "行程草稿不完整" (0 tool calls, 0 visible text); the gateway
+may surface HTTP 500 "empty response content".
+
+**Cause**: `buildModel` sets `maxTokens`. pi-ai's `streamSimple` clamps it to
+`min(model.maxTokens, 32000)` (`providers/simple-options.js`), so `model.maxTokens` is the wire
+`max_tokens` ceiling. The old `8192` let a reasoning-heavy tool-calling model consume the whole
+budget on hidden reasoning (`stopReason = 'length'`, no tool call). Verify with
+`llm_request_logs.response.stopReason = 'length'` and `usage.output = maxTokens`.
+
+**Fix / Prevention**: `generation/model.ts` now uses `maxTokens: 32000` (= the pi-ai clamp, so
+writing `1000000` changes nothing). Do **not** expect large values to reach the wire: the gateway
+may reject them anyway (a New API relay answered `field MaxTokens invalid, should be in [1, 384000]`
+for `max_tokens: 1000000`). Trade-off seen live (09-20): a 32k budget let one plan turn emit
+21k output tokens and take ~3.7 min, so research + plan + review together can exceed the job
+timeout. Decision (09-20): keep `maxTokens: 32000` and raise the cap —
+`GENERATION_TIMEOUT_MINUTES = 15` in `packages/shared/src/constants.ts` is the single source for
+both `JOB_TIMEOUT_MS` and the frontend `timeout` copy. Diagnose with the snapshot table first
+instead of hand-writing curl repro scripts. Found in task `09-20-llm-context-logging`.
+
+### Upstream flakiness must not kill the whole job
+
+**Symptom**: web generation fails with `模型调用异常：400 Error from provider (Console): Upstream
+request failed: Model is unavailable.` even though the same model answers simple requests.
+
+**Cause**: relay/upstream pool flakiness (one channel lost the model) — the error is produced
+upstream of this repo, and every LLM error was fatal: `assertAlive` turns any `errorMessage` into
+`GenerationFailure`.
+
+**Fix / Prevention**: `agents/runner.ts` wraps `streamSimple` in `streamWithRetry`: each attempt's
+events are buffered and only a successful attempt is replayed to the agent, so a retry never pushes
+a half message into the context. Only "retry might help" errors retry (`isRetryableUpstreamError`:
+model unavailable / rate limit / 5xx / network); request-shape 400s, auth errors, and failures that
+already emitted content/tool deltas do not. Retry delays are `[1000, 3000]` ms. Unit tests:
+`apps/server/src/__tests__/llmRetry.test.ts`.

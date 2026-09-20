@@ -2,13 +2,15 @@
 
 ## Stack and Startup
 
-The server uses `better-sqlite3` with Drizzle ORM. `apps/server/src/db/client.ts`
-resolves `env.databasePath`, creates its parent directory, opens SQLite, runs migrations,
-and exports the Drizzle client. Importing the client during bootstrap performs this setup.
+The server uses PostgreSQL (Neon) with Drizzle ORM (`drizzle-orm/pg-core`; migrated 09-18,
+superseding the old better-sqlite3 stack). `apps/server/src/db/client.ts` resolves
+`env.databaseUrl`, creates the pg Pool, runs migrations, and exports the Drizzle client.
+Importing the client during bootstrap performs this setup.
 
-SQLite is configured with WAL mode and foreign key enforcement in
-`apps/server/src/db/migrate.ts`. Keep database work synchronous unless the surrounding
-operation is asynchronous for another reason; the selected driver is synchronous.
+Migrations are idempotent startup SQL in `apps/server/src/db/migrate.ts`
+(`CREATE TABLE IF NOT EXISTS` + `ADD COLUMN IF NOT EXISTS`), executed in one transaction.
+The pgvector extension is optional: when unavailable, embedding columns are skipped and
+vector search degrades to null. Keep database work async; the pg driver is asynchronous.
 
 ## Schema and Migration Dual-Update Contract
 
@@ -27,8 +29,7 @@ checks that startup migration adds current audit columns.
 
 - Drizzle properties use camelCase; SQLite columns use snake_case.
 - Identifiers are text IDs produced by the shared `uid()` helper.
-- Timestamps are integer epoch milliseconds from `Date.now()`.
-- SQLite booleans are integer `0`/`1`; convert on service boundaries.
+- Timestamps are `TIMESTAMPTZ` columns written with `new Date()`.
 - `trips.data` is the full JSON `Trip` source of truth; list columns are derived indexes and
   must be recomputed from the document on writes.
 
@@ -40,7 +41,7 @@ Representative paths: `apps/server/src/db/schema.ts`,
 - Include `userId` in protected read, update, and delete predicates.
 - Return `null`/`false` for missing or non-owned resources so routes use the same 404.
 - Use Drizzle query helpers rather than SQL string concatenation.
-- Use SQLite transactions for migration batches and atomic multi-step operations.
+- Migration batches run inside a single PG transaction (BEGIN/COMMIT in `runMigrations`).
 
 Representative paths: `apps/server/src/services/tripService.ts`,
 `apps/server/src/services/quotaService.ts`, `apps/server/src/generation/jobManager.ts`.
