@@ -69,14 +69,23 @@ async function backfillTable(
     const batch = rows.slice(i, i + BATCH_SIZE);
     const texts = batch.map(buildText);
     const vecs = await embedTexts(texts);
+    // 批量写入：一条 UPDATE 搞定一批（逐行 UPDATE 在远程库上是 N 次往返，慢几十倍）
+    const ids: string[] = [];
+    const vecStrs: string[] = [];
     for (let j = 0; j < batch.length; j++) {
       const vec = vecs[j];
       if (!vec) continue;
-      await pool.query(`UPDATE ${table} SET embedding = $1 WHERE id = $2`, [
-        `[${vec.join(',')}]`,
-        batch[j].id,
-      ]);
-      updated += 1;
+      ids.push(batch[j].id);
+      vecStrs.push(`[${vec.join(',')}]`);
+    }
+    if (ids.length > 0) {
+      const res = await pool.query(
+        `UPDATE ${table} AS t SET embedding = u.vec::vector
+         FROM UNNEST($1::text[], $2::text[]) AS u(id, vec)
+         WHERE t.id = u.id`,
+        [ids, vecStrs],
+      );
+      updated += res.rowCount ?? 0;
     }
     console.log(`[backfill] ${table}: ${Math.min(i + BATCH_SIZE, rows.length)}/${rows.length}`);
   }
