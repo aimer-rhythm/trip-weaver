@@ -32,7 +32,7 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | Change area | Command | Notes |
 | --- | --- | --- |
 | Any TypeScript contract/server change | `npm run typecheck` | Checks shared, server, and web. |
-| Generation logic, prompts, geocoding, and feasibility | `node --import tsx --test apps/server/src/__tests__/*.test.ts` | Includes isolated mock-provider and draft-revision regressions. |
+| Generation logic, prompts, geocoding, and feasibility | `node --import tsx --test apps/server/src/__tests__/*.test.ts` | Includes isolated mock-provider and draft-revision regressions. Requires `MASTER_KEY` (see below). |
 | Web production bundle/static serving | `npm run build` | Builds `apps/web/dist`. |
 | Authentication modes/OAuth bootstrap | `node scripts/verify-auth-modes.mjs` | Isolated server scenarios. |
 | Ownership, cookies, SSRF, secrets | `node scripts/verify-security.mjs` | Dev and production instances. |
@@ -47,6 +47,18 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 Run the smallest relevant script. Do not run credential-bearing real-provider checks without
 explicit approval. Verification scripts should inject environment values rather than depend
 on `apps/server/.env`.
+
+**Unit-test prerequisite**: `apps/server/src/env.ts` validates `MASTER_KEY` at import time, so
+any suite that transitively imports it (e.g. `placeLookup.test.ts`) aborts the whole run with
+`[env] MASTER_KEY 缺失或格式错误` when the variable is absent. Set it to any 32-byte hex value
+before running the suite — the value is never used by these tests, it only has to parse:
+
+```bash
+MASTER_KEY=$(printf 'a%.0s' {1..64}) node --import tsx --test apps/server/src/__tests__/*.test.ts
+```
+
+Without it the suite reports one "failing test" that is an environment problem, not a code
+regression — check for this before investigating a failure in that file.
 
 ## Review Checklist
 
