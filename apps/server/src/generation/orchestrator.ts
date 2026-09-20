@@ -216,7 +216,7 @@ export async function runGeneration(
 
     // RAG 地基（09-18）：调研与编排之间的检索调用点。
     // 接入 canonical_places / research_evidence 混合召回（关键词 + 可选向量），结果注入 plannerUserPrompt。
-    const ragContext = await retrieveContext(research.pool.map((p) => p.name));
+    const ragContext = await retrieveContext(research.pool.map((p) => p.name), { city: form.destination });
 
     // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
     // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。

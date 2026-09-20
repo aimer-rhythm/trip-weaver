@@ -17,12 +17,19 @@ import type { SearchSource } from '../../integrations/websearch/searchSource';
 import { matchReservationSeed } from '../../data/reservationSeeds';
 import { findXhsEvidence, findXhsPlace } from '../../services/xhsPlaceService';
 import { rememberResearchLocation, type ResearchLocation } from '../placeLookup';
+import { retrieveContext } from '../retrieveContext';
 
 function text(t: string) {
   return [{ type: 'text' as const, text: t }];
 }
 
 const CATEGORY_LABEL: Record<PoiCategory, string> = { attraction: '景点', food: '美食', hotel: '住宿' };
+const EVIDENCE_KIND_LABEL: Record<string, string> = {
+  xhs_warning: '避坑',
+  xhs_reservation: '预约',
+  xhs_price: '价格',
+  xhs_reason: '口碑',
+};
 
 export interface ResearchOutcome {
   summary: string;
@@ -48,6 +55,34 @@ function isHttpUrl(u: string): boolean {
 export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const { poiSource, searchSource, destination, outcome, onCandidate } = deps;
   const ambiguousNames = new Set<string>();
+
+  const verifiedTool = defineTool({
+    name: 'search_verified_places',
+    label: '查已验证地点库',
+    description:
+      '查询社区已验证地点库（小红书口碑治理产物），返回地点名、分类、避坑/预约/价格情报；命中的地点可信度高，优先采用。',
+    parameters: Type.Object({
+      keyword: Type.String({ description: '检索关键词，如「夜景」「亲子」「火锅」，不必带目的地名' }),
+    }),
+    execute: async (_id, params) => {
+      const keyword = params.keyword.trim();
+      if (!keyword) return { content: text('错误：keyword 不能为空。'), details: { ok: false } };
+      let places;
+      try {
+        places = await retrieveContext([keyword], { city: destination });
+      } catch {
+        return { content: text('已验证库无命中，请用 search_pois/search_web 补充。'), details: { count: 0 } };
+      }
+      if (!places.length) {
+        return { content: text('已验证库无命中，请用 search_pois/search_web 补充。'), details: { count: 0 } };
+      }
+      const lines = places.map((p, i) => {
+        const ev = p.evidence.map((e) => `${EVIDENCE_KIND_LABEL[e.kind] ?? e.kind}：${e.content}`).join('；');
+        return `${i + 1}. ${p.name}｜${p.category}｜${ev}`;
+      });
+      return { content: text(lines.join('\n')), details: { count: places.length, keyword } };
+    },
+  });
 
   const poisTool = defineTool({
     name: 'search_pois',
@@ -227,5 +262,5 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     },
   });
 
-  return [poisTool, webTool, addTool, submitTool];
+  return [verifiedTool, poisTool, webTool, addTool, submitTool];
 }

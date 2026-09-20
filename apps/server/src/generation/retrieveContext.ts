@@ -3,6 +3,8 @@
 //   1. 关键词层（必做，零依赖）：按 names 在 canonical_places 精确命中 + LIKE 前缀兜底，top 8，带 verified 过滤
 //   2. 向量层（可选）：env embedding 已配置且 pgvector 扩展可用时，叠加 ORDER BY embedding <=> $1 LIMIT 8
 //   3. 对命中 place 批量查 research_evidence（每 place 至多 3 条，实用信息优先于口碑）
+// city 过滤（09-19 新增）：options.city 提供时两层召回都加 AND city = $x，消除跨城市串扰；
+// 不传 city 时行为与之前完全一致（向后兼容）。
 // 降级：扩展不可用 / embedding 未配置 / 查询失败 → 退化为仅关键词层或空数组，绝不抛错
 import { pool } from '../db/client';
 import { env, hasEmbedding } from '../env';
@@ -20,6 +22,11 @@ export interface RetrievedPlace {
   evidence: EvidenceItem[];
 }
 
+export interface RetrieveOptions {
+  /** 城市过滤：提供时只召回该城市的地点，避免跨城市串扰 */
+  city?: string;
+}
+
 interface PlaceRow {
   id: string;
   name: string;
@@ -27,10 +34,23 @@ interface PlaceRow {
   verified: boolean;
 }
 
-/** 关键词层：name = ANY($1) 精确命中 + LIKE 前缀兜底，取 top 8，带 verified 过滤 */
-async function keywordRecall(names: string[]): Promise<PlaceRow[]> {
+/** 关键词层：name = ANY($1) 精确命中 + LIKE 前缀兜底，取 top 8，带 verified 过滤；可选 city 过滤 */
+async function keywordRecall(names: string[], city?: string): Promise<PlaceRow[]> {
   if (names.length === 0) return [];
   const patterns = names.map((n) => `${n}%`);
+  if (city) {
+    const { rows } = await pool.query<PlaceRow>(
+      `SELECT id, name, category, verified
+       FROM canonical_places
+       WHERE verified = TRUE
+         AND city = $3
+         AND (name = ANY($1) OR name LIKE ANY($2))
+       ORDER BY (name = ANY($1)) DESC, name
+       LIMIT 8`,
+      [names, patterns, city],
+    );
+    return rows;
+  }
   const { rows } = await pool.query<PlaceRow>(
     `SELECT id, name, category, verified
      FROM canonical_places
@@ -43,13 +63,24 @@ async function keywordRecall(names: string[]): Promise<PlaceRow[]> {
   return rows;
 }
 
-/** 向量层：pgvector 扩展可用 + embedding 已配置时叠加召回，与关键词层按 id 去重合并 */
-async function vectorRecall(names: string[]): Promise<PlaceRow[]> {
+/** 向量层：pgvector 扩展可用 + embedding 已配置时叠加召回，与关键词层按 id 去重合并；可选 city 过滤 */
+async function vectorRecall(names: string[], city?: string): Promise<PlaceRow[]> {
   if (!hasEmbedding()) return [];
   if (env.embedding.dims !== 1024) return [];
   const queryVecs = await embedTexts([names.join(' ')]);
   const queryVec = queryVecs[0];
   if (!queryVec) return [];
+  if (city) {
+    const { rows } = await pool.query<PlaceRow>(
+      `SELECT id, name, category, verified
+       FROM canonical_places
+       WHERE verified = TRUE AND city = $2 AND embedding IS NOT NULL
+       ORDER BY embedding <=> $1
+       LIMIT 8`,
+      [`[${queryVec.join(',')}]`, city],
+    );
+    return rows;
+  }
   const { rows } = await pool.query<PlaceRow>(
     `SELECT id, name, category, verified
      FROM canonical_places
@@ -87,13 +118,14 @@ async function fetchEvidence(placeIds: string[]): Promise<Map<string, EvidenceIt
   return map;
 }
 
-/** 编排前检索入口：混合召回 + evidence 挂载，返回注入 prompt 的上下文结构 */
-export async function retrieveContext(names: string[]): Promise<RetrievedPlace[]> {
+/** 编排前检索入口：混合召回 + evidence 挂载，返回注入 prompt 的上下文结构；可选 city 过滤 */
+export async function retrieveContext(names: string[], options?: RetrieveOptions): Promise<RetrievedPlace[]> {
   try {
-    const keywordHits = await keywordRecall(names);
+    const city = options?.city;
+    const keywordHits = await keywordRecall(names, city);
     let merged: PlaceRow[] = keywordHits;
     try {
-      const vectorHits = await vectorRecall(names);
+      const vectorHits = await vectorRecall(names, city);
       const seen = new Set(keywordHits.map((r) => r.id));
       merged = [...keywordHits, ...vectorHits.filter((r) => !seen.has(r.id))].slice(0, 8);
     } catch {
