@@ -7,21 +7,25 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { GenerateForm, Trip } from '@tripweaver/shared';
+import type { GenerateForm, ResearchPoi, Trip } from '@tripweaver/shared';
 import { config } from 'dotenv';
 import { GOLDEN_CASES, type GoldenCase } from './golden/cases';
-import { runChecks, type CaseResult } from './checks';
+import { runChecks, type CaseResult, type SnapshotTiming } from './checks';
 
 const EVAL_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SNAPSHOT_DIR = path.join(EVAL_DIR, 'snapshots');
 const REPORT_DIR = path.join(EVAL_DIR, 'reports');
 
+// v2 新增（均可选，v1 快照缺省时对应检查自动跳过）：
+// research —— 调研候选池（candidate 事件全量收集）；timing —— 阶段耗时与 token 用量（phase_end/usage/job_done 事件）
 interface Snapshot {
   caseId: string;
   generatedAt: number;
   model: string;      // 快照产自哪个模型（历史对比用）；离线手工快照可为 'manual'
   form: GenerateForm;
   trip: Trip;
+  research?: { candidates: ResearchPoi[] };
+  timing?: SnapshotTiming;
 }
 
 // ---------- CLI 参数 ----------
@@ -77,9 +81,19 @@ async function generateLive(gc: GoldenCase): Promise<Snapshot | null> {
 
   const job = createJob('eval-user');
   let errorMessage = '';
+  // v2 快照采集：候选池 + 阶段耗时 + token 用量（usage 事件为累计值，末次即全量）
+  const candidates: ResearchPoi[] = [];
+  const phases: Record<string, number> = {};
+  let tokensIn: number | undefined;
+  let tokensOut: number | undefined;
+  let totalMs: number | undefined;
   subscribe(job, 0, ({ event }) => {
     if (event.type === 'job_error') errorMessage = event.message;
     if (event.type === 'phase_start') console.log(`    [${gc.id}] 阶段 ${event.phase}（第 ${event.round ?? 1} 轮）`);
+    if (event.type === 'candidate') candidates.push(event.poi);
+    if (event.type === 'phase_end' && event.durationMs !== undefined) phases[`${event.phase}#${event.round}`] = event.durationMs;
+    if (event.type === 'usage') { tokensIn = event.tokensIn; tokensOut = event.tokensOut; }
+    if (event.type === 'job_done') totalMs = event.durationMs;
   });
   await runGeneration(job, gc.form, { baseUrl, apiKey, model, byok: false });
 
@@ -92,7 +106,15 @@ async function generateLive(gc: GoldenCase): Promise<Snapshot | null> {
     console.error(`    [${gc.id}] 落库后读回失败（tripId=${job.tripId}）`);
     return null;
   }
-  const snapshot: Snapshot = { caseId: gc.id, generatedAt: Date.now(), model, form: gc.form, trip };
+  const snapshot: Snapshot = {
+    caseId: gc.id,
+    generatedAt: Date.now(),
+    model,
+    form: gc.form,
+    trip,
+    research: { candidates },
+    timing: { phases, totalMs, tokensIn, tokensOut },
+  };
   fs.mkdirSync(SNAPSHOT_DIR, { recursive: true });
   fs.writeFileSync(path.join(SNAPSHOT_DIR, `${gc.id}.json`), JSON.stringify(snapshot, null, 2));
   console.log(`    [${gc.id}] 快照已落盘`);
@@ -118,7 +140,10 @@ for (const gc of cases) {
     if (!live) console.log('    无快照，跳过（先 npm run eval:live 生成）');
     continue;
   }
-  const result = runChecks(gc.id, snapshot.trip, gc.form);
+  const result = runChecks(gc.id, snapshot.trip, gc.form, {
+    candidates: snapshot.research?.candidates,
+    timing: snapshot.timing,
+  });
   results.push(result);
   const hard = result.hardViolations.length;
   const soft = result.softViolations.length;
@@ -126,6 +151,20 @@ for (const gc of cases) {
     `    ${result.pass ? '✓ PASS' : '✗ FAIL'}｜hard ${hard}｜soft ${soft}｜结构问题 ${result.structural.length}` +
       `｜located ${(result.geo.locatedRatio * 100).toFixed(0)}%｜geocode ${(result.geo.geocodedRatio * 100).toFixed(0)}%｜amap leg ${(result.geo.amapLegRatio * 100).toFixed(0)}%`,
   );
+  if (result.research) {
+    const r = result.research;
+    console.log(
+      `    调研：候选 ${r.poolSize}（景点 ${r.categoryCounts['attraction'] ?? 0}｜美食 ${r.categoryCounts['food'] ?? 0}｜住宿 ${r.categoryCounts['hotel'] ?? 0}）｜采用率 ${(r.adoptionRatio * 100).toFixed(0)}%（${r.adoptedCount}/${r.activityCount}）`,
+    );
+  }
+  if (result.timing && (result.timing.totalMs !== undefined || Object.keys(result.timing.phases).length > 0)) {
+    const t = result.timing;
+    const phaseText = Object.entries(t.phases).map(([k, ms]) => `${k} ${(ms / 1000).toFixed(0)}s`).join(' ');
+    console.log(
+      `    耗时：${t.totalMs !== undefined ? `总 ${(t.totalMs / 1000).toFixed(0)}s｜` : ''}${phaseText}` +
+        `${t.tokensIn !== undefined ? `｜token ${t.tokensIn}/${t.tokensOut}` : ''}`,
+    );
+  }
   for (const v of result.hardViolations) console.log(`      [hard/${v.code}] D${v.dayIndex} ${v.message}`);
   for (const p of result.structural) console.log(`      [结构] ${p}`);
   for (const p of result.geoGate) console.log(`      [geo] ${p}`);

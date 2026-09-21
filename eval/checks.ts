@@ -1,6 +1,7 @@
 // 确定性检查（M0-B eval）：输入 Trip + GenerateForm，输出结构化 CaseResult
 // 纯函数、无 IO —— 与可行性引擎同一铁律，离线快照重放与在线生成后检查共用同一份。
-// 四类指标：可行性违规（门槛）/ 结构完整性（门槛）/ 地理质量（可信度门槛）/ 预算一致性
+// 四类门槛指标：可行性违规（门槛）/ 结构完整性（门槛）/ 地理质量（可信度门槛）/ 预算一致性
+// 快照 v2 观测指标（不进 gate）：研究质量（候选池采用率）/ 阶段耗时与 token 用量
 // geo 门槛动机（2026-07-16 空心通过事故）：AMAP_KEY 缺失 + Nominatim 不可达 ⇒ 全活动 0,0/estimated、
 // 0 leg，可行性模拟对着空气跑出 0 违规仍 PASS —— 坐标可信度不达标必须整体判 FAIL，不得静默放行。
 import { Value } from '@sinclair/typebox/value';
@@ -10,6 +11,7 @@ import {
   computeBudgetSummary,
   simulateTrip,
   type GenerateForm,
+  type ResearchPoi,
   type Trip,
   type Violation,
 } from '@tripweaver/shared';
@@ -47,6 +49,8 @@ export interface CaseResult {
   geoGate: string[];                   // 地理可信度门槛问题清单（空 = 通过）
   geo: GeoQuality;
   budget: BudgetConsistency;
+  research?: ResearchQuality;          // 快照 v2：研究质量（观测指标，不进 gate）
+  timing?: SnapshotTiming;             // 快照 v2：阶段耗时与 token 用量（观测指标）
 }
 
 function countByCode(violations: Violation[]): Record<string, number> {
@@ -171,9 +175,64 @@ function checkBudget(trip: Trip, form: GenerateForm): BudgetConsistency {
   };
 }
 
+// ---------- 研究质量（快照 v2，观测指标不进 gate） ----------
+// 候选 POI 无坐标（高德协议 3.5：只落名称+摘要+链接），池级地理真实性不可查；
+// 被采用候选的坐标质量已由 checkGeo 在 Trip 层覆盖。此处度量「编排阶段有没有在用调研成果」。
+
+export interface ResearchQuality {
+  poolSize: number;
+  categoryCounts: Record<string, number>;   // attraction / food / hotel
+  activityCount: number;
+  adoptedCount: number;                     // 名称命中候选池的活动数（含餐次提取名）
+  adoptionRatio: number;                    // 采用率：过低 = 编排脱离调研成果自编地点
+  unmatchedActivities: string[];            // 未命中活动名采样（≤10），人肉审查幻觉用
+}
+
+export interface SnapshotTiming {
+  phases: Record<string, number>;           // '<phase>#<round>' → durationMs
+  totalMs?: number;
+  tokensIn?: number;
+  tokensOut?: number;
+}
+
+// 餐次展示名提取定位名：「午餐｜春熙路 · 川菜」→「春熙路」（与 geoPipeline 的 legacy meal extraction 同规则）
+function lookupName(name: string): string {
+  const bar = name.indexOf('｜');
+  if (bar < 0) return name;
+  const rest = name.slice(bar + 1);
+  const dot = rest.indexOf(' · ');
+  return (dot < 0 ? rest : rest.slice(0, dot)).trim();
+}
+
+function checkResearch(trip: Trip, candidates: ResearchPoi[]): ResearchQuality {
+  const poolNames = new Set(candidates.map((c) => c.name));
+  const categoryCounts: Record<string, number> = {};
+  for (const c of candidates) categoryCounts[c.category] = (categoryCounts[c.category] ?? 0) + 1;
+  const activities = trip.days.flatMap((d) => d.activities);
+  const unmatched: string[] = [];
+  let adopted = 0;
+  for (const a of activities) {
+    if (poolNames.has(a.name) || poolNames.has(lookupName(a.name))) adopted += 1;
+    else unmatched.push(a.name);
+  }
+  return {
+    poolSize: candidates.length,
+    categoryCounts,
+    activityCount: activities.length,
+    adoptedCount: adopted,
+    adoptionRatio: activities.length ? adopted / activities.length : 0,
+    unmatchedActivities: unmatched.slice(0, 10),
+  };
+}
+
 // ---------- 汇总入口 ----------
 
-export function runChecks(caseId: string, trip: Trip, form: GenerateForm): CaseResult {
+export function runChecks(
+  caseId: string,
+  trip: Trip,
+  form: GenerateForm,
+  extras?: { candidates?: ResearchPoi[]; timing?: SnapshotTiming },
+): CaseResult {
   const report = simulateTrip(trip);
   const hard = report.violations.filter((v) => v.severity === 'hard');
   const soft = report.violations.filter((v) => v.severity === 'soft');
@@ -191,5 +250,7 @@ export function runChecks(caseId: string, trip: Trip, form: GenerateForm): CaseR
     geoGate,
     geo,
     budget: checkBudget(trip, form),
+    research: extras?.candidates ? checkResearch(trip, extras.candidates) : undefined,
+    timing: extras?.timing,
   };
 }
