@@ -93,6 +93,7 @@ export const researchEvidence = pgTable(
     placeId: text('place_id'),                     // 可空：语料未必能挂到具体地点
     city: text('city').notNull(),
     kind: text('kind').notNull(),                  // 语料类型（攻略/点评/官方说明……）
+    strength: text('strength').notNull().default(''), // 证据强度：direct / weak / risk_only（迁移按 kind 回填，外部管线可精细覆盖）
     content: text('content').notNull(),
     sourceUrl: text('source_url').notNull().default(''),
     embedding: vector('embedding', { dimensions: 1024 }),

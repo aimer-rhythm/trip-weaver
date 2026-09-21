@@ -138,6 +138,15 @@ export async function runMigrations(pool: Pool): Promise<void> {
     client.release();
   }
 
+  // 证据强度分级（09-21）：幂等补列 + 按 kind 确定性回填（仅空值行）；外部管线后续可写入精细标签覆盖默认值
+  await pool.query(`ALTER TABLE research_evidence ADD COLUMN IF NOT EXISTS strength TEXT NOT NULL DEFAULT ''`);
+  await pool.query(`UPDATE research_evidence SET strength = CASE kind
+    WHEN 'xhs_reservation' THEN 'direct'
+    WHEN 'xhs_price' THEN 'direct'
+    WHEN 'xhs_warning' THEN 'risk_only'
+    ELSE 'weak' END
+  WHERE strength = ''`);
+
   // pgvector 是 RAG 前置依赖；本地实例未装扩展时按降级告警处理，不阻断启动（检索能力后续任务再启用）
   let vectorAvailable = false;
   try {

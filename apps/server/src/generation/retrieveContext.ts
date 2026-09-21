@@ -13,6 +13,8 @@ import { embedTexts } from '../integrations/embedding';
 export interface EvidenceItem {
   kind: string;
   content: string;
+  /** 证据强度：direct（可当事实陈述）/ weak（只能弱表达）/ risk_only（只能条件性提醒）；缺省视为 weak */
+  strength: string;
 }
 
 export interface RetrievedPlace {
@@ -96,8 +98,8 @@ async function vectorRecall(names: string[], city?: string): Promise<PlaceRow[]>
 async function fetchEvidence(placeIds: string[]): Promise<Map<string, EvidenceItem[]>> {
   const map = new Map<string, EvidenceItem[]>();
   if (placeIds.length === 0) return map;
-  const { rows } = await pool.query<{ place_id: string; kind: string; content: string }>(
-    `SELECT place_id, kind, content
+  const { rows } = await pool.query<{ place_id: string; kind: string; content: string; strength: string }>(
+    `SELECT place_id, kind, content, strength
      FROM research_evidence
      WHERE place_id = ANY($1)
      ORDER BY CASE kind
@@ -105,13 +107,19 @@ async function fetchEvidence(placeIds: string[]): Promise<Map<string, EvidenceIt
        WHEN 'xhs_reservation' THEN 1
        WHEN 'xhs_price' THEN 2
        ELSE 3
-     END, fetched_at DESC`,
+     END,
+     CASE strength
+       WHEN 'direct' THEN 0
+       WHEN 'risk_only' THEN 1
+       ELSE 2
+     END,
+     fetched_at DESC`,
     [placeIds],
   );
   for (const row of rows) {
     const list = map.get(row.place_id) ?? [];
     if (list.length < 3) {
-      list.push({ kind: row.kind, content: row.content });
+      list.push({ kind: row.kind, content: row.content, strength: row.strength || 'weak' });
       map.set(row.place_id, list);
     }
   }
