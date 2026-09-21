@@ -1,0 +1,29 @@
+{
+  "id": "research-rag-first",
+  "name": "research-rag-first",
+  "title": "调研阶段改为知识库 RAG 优先，网络搜索降级为兜底",
+  "description": "",
+  "status": "in_progress",
+  "dev_type": null,
+  "scope": null,
+  "package": "apps/server",
+  "priority": "P2",
+  "creator": "aimer",
+  "assignee": "aimer",
+  "createdAt": "2026-09-20",
+  "completedAt": null,
+  "branch": null,
+  "base_branch": "master",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "apps/server/src/generation/prompts.ts",
+    "apps/server/src/generation/tools/researchTools.ts"
+  ],
+  "notes": "",
+  "meta": {}
+}

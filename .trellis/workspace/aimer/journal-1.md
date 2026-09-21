@@ -440,3 +440,39 @@ database structure remain unchanged. No LangGraph dependency was added.
 ### Next Steps
 
 - None - task complete
+
+
+## Session 12: LLM 请求上下文快照模块 + 生成时间线实时展示
+
+**Date**: 2026-09-21
+**Task**: LLM 请求上下文快照模块 + 生成时间线实时展示
+**Branch**: `master`
+
+### Summary
+
+新增 llm_request_logs 表与 recorder 模块（streamFn 包装），生成时间线实时展示 LLM 请求摘要+可展开全文；借快照定位 plan 阶段失败根因（maxTokens 8192 被隐藏推理烧光，stopReason=length）；spec 沉淀调试契约
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `65a1b72` | (see git log) |
+| `6761efd` | (see git log) |
+| `c6b579b` | (see git log) |
+| `381103a` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

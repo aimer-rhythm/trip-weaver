@@ -8,8 +8,8 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 11
-- **Last Active**: 2026-09-14
+- **Total Sessions**: 12
+- **Last Active**: 2026-09-21
 <!-- @@@/auto:current-status -->
 
 ---
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~442 | Active |
+| `journal-1.md` | ~478 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 12 | 2026-09-21 | LLM 请求上下文快照模块 + 生成时间线实时展示 | `65a1b72`, `6761efd`, `c6b579b`, `381103a` | `master` |
 | 11 | 2026-09-14 | 行程生成 P0：坐标复用、定位名与局部修订 | `fafce25` | `master` |
 | 10 | 2026-07-19 | Verify release CI and Docker Compose | `77add45` | `master` |
 | 9 | 2026-07-19 | Archive beijing hard anchor | `9e4f287` | `master` |
