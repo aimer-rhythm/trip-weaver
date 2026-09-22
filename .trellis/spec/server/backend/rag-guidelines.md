@@ -35,7 +35,10 @@ Apply when changing `generation/retrieveContext.ts`, the planner prompt builders
 
 - `retrieveContext(names: string[], options?: RetrieveOptions): Promise<RetrievedPlace[]>`
 - `RetrievedPlace { name: string; category: string; verified: boolean; evidence: EvidenceItem[] }`
-- `EvidenceItem { kind: string; content: string }`
+- `EvidenceItem { kind: string; content: string; strength: string }` — `strength` is the evidence tier:
+  `direct` (may be stated as fact) / `weak` (soft phrasing only) / `risk_only` (conditional
+  warnings only); empty falls back to `weak`. The migration backfills it from `kind`; the
+  external pipeline may write finer labels.
 - `RetrieveOptions { city?: string }`
 - `embedTexts(texts: string[]): Promise<(number[] | null)[]>` in `integrations/embedding.ts`
 - `hasEmbedding(): boolean` in `apps/server/src/env.ts`
@@ -54,13 +57,20 @@ Apply when changing `generation/retrieveContext.ts`, the planner prompt builders
   contamination. Omitting it must reproduce the pre-city-filter behavior exactly; it is a scope
   filter, not a ranking change.
 - Evidence attaches per place, at most 3 rows, ordered by kind priority
-  (`xhs_warning` > `xhs_reservation` > `xhs_price` > everything else) then `fetched_at DESC`.
+  (`xhs_warning` > `xhs_reservation` > `xhs_price` > everything else), then strength
+  (`direct` > `risk_only` > `weak`), then `fetched_at DESC`.
   Evidence text enters the prompt verbatim (each item truncated to 80 chars) — never route it
   through an extra summarizing model call.
 - Injection has two entry points: an automatic pre-planner call in the orchestrator
   (`orchestrator.ts`, between research and the plan loop) and the research-phase
   `search_verified_places` agent tool. The planner prompt builder is shared by round 1 and
   revision rounds, so retrieved intel stays visible in every round.
+- The research phase is knowledge-base-first: `search_verified_places` is the primary source and
+  `search_pois` only supplies place facts (coordinates/address/cover image). `search_web` is a
+  degraded fallback — `RESEARCH_SYSTEM_PROMPT` allows it only after repeated knowledge-base
+  misses and caps it at 2 calls, and the tool descriptions plus `search_verified_places`'s
+  empty-hit reply (`FALLBACK_HINT` in `tools/researchTools.ts`) all state that. Do not restore
+  the old "always search the web for opening hours/tickets" workflow.
 - The vector layer queries `canonical_places` ONLY. `research_evidence.embedding` is written by
   the backfill script but read by nothing; do not assume evidence vectors change results.
 - Embedding dimension is 1024 and must match BOTH `EMBEDDING_DIMS` and the `vector(1024)`
@@ -79,6 +89,7 @@ Apply when changing `generation/retrieveContext.ts`, the planner prompt builders
 | embedding batch returns an unexpected dimension | that item becomes `null`, batch continues |
 | the vector-layer query throws | caught locally; keyword results survive |
 | `ragContext` empty in `plannerUserPrompt` | no RAG block appears in the prompt |
+| knowledge base returns nothing for the user's city | research still produces a pool: `search_pois` + model knowledge, with `search_web` allowed as the 2-call fallback |
 
 ### 5. Good / Base / Bad Cases
 

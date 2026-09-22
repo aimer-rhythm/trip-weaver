@@ -24,6 +24,9 @@ function text(t: string) {
 }
 
 const CATEGORY_LABEL: Record<PoiCategory, string> = { attraction: '景点', food: '美食', hotel: '住宿' };
+/** 知识库空命中提示：先把模型推回知识库换关键词，仅在连续无命中时才松口到 search_web（降级纪律的唯一执行点） */
+const FALLBACK_HINT =
+  '已验证库无命中：先换一个关键词再查（换片区、换主题、换同义说法）；连续多次仍无命中时，才用 search_web 兜底。';
 const EVIDENCE_KIND_LABEL: Record<string, string> = {
   xhs_warning: '避坑',
   xhs_reservation: '预约',
@@ -60,7 +63,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     name: 'search_verified_places',
     label: '查已验证地点库',
     description:
-      '查询社区已验证地点库（小红书口碑治理产物），返回地点名、分类、避坑/预约/价格情报；命中的地点可信度高，优先采用。',
+      '查询社区已验证地点库（小红书口碑治理产物），返回地点名、分类、避坑/预约/价格情报。这是调研阶段的主力信息源：命中的地点可信度高，优先 add_candidate；宜换不同关键词多查几次（3~6 次）再判断是否真的覆盖不足。',
     parameters: Type.Object({
       keyword: Type.String({ description: '检索关键词，如「夜景」「亲子」「火锅」，不必带目的地名' }),
     }),
@@ -71,10 +74,10 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       try {
         places = await retrieveContext([keyword], { city: destination });
       } catch {
-        return { content: text('已验证库无命中，请用 search_pois/search_web 补充。'), details: { count: 0 } };
+        return { content: text(FALLBACK_HINT), details: { count: 0 } };
       }
       if (!places.length) {
-        return { content: text('已验证库无命中，请用 search_pois/search_web 补充。'), details: { count: 0 } };
+        return { content: text(FALLBACK_HINT), details: { count: 0 } };
       }
       const lines = places.map((p, i) => {
         const ev = p.evidence.map((e) => `${EVIDENCE_KIND_LABEL[e.kind] ?? e.kind}：${e.content}`).join('；');
@@ -87,7 +90,8 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const poisTool = defineTool({
     name: 'search_pois',
     label: '搜索地点',
-    description: '按类目搜索目的地的真实地点（高德数据），返回名称、类型、地址与图片；餐饮动态价格、评分和营业信息不作为行程事实。',
+    description:
+      '按类目搜索目的地的真实地点（高德数据），返回名称、类型、地址、评分与图片。用途是补知识库未覆盖的地点与封面图——候选坐标由系统从知识库取，不必为了坐标反复调它；餐饮动态价格、评分和营业信息不作为行程事实。',
     parameters: Type.Object({
       category: Type.String({ description: '类目：attraction（景点）/ food（美食）/ hotel（住宿）' }),
       keyword: Type.String({ description: '搜索关键词，如「必去景点」「本地菜」「市中心酒店」，不必带目的地名' }),
@@ -127,7 +131,8 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const webTool = defineTool({
     name: 'search_web',
     label: '搜索攻略',
-    description: '全网搜索旅行攻略、玩法、避雷与预约政策，返回标题/摘要/来源链接。',
+    description:
+      '全网搜索旅行攻略、玩法、避雷与预约政策，返回标题/摘要/来源链接。降级兜底工具：仅当 search_verified_places 连续多次无命中或候选明显凑不齐时才使用，全阶段最多 2 次。',
     parameters: Type.Object({
       query: Type.String({ description: '搜索词，如「故宫 门票 预约」「XX市 三日游 避雷」' }),
     }),
@@ -147,10 +152,14 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     },
   });
 
+  // 同名去重是「查池 → await 查库 → push」：pi-agent-core 默认并行执行同一轮工具调用，
+  // 两个同名 add_candidate 会在 await 窗口前都看到空池而重复入池（09-21 复现，
+  // 09-18 异步化引入）。标记 sequential 让它串行执行，恢复去重语义。
   const addTool = defineTool({
     name: 'add_candidate',
     label: '写入候选池',
     description: '把一个筛选后的地点写入行程候选池（前端展示为概览卡片）。同名地点会被去重。',
+    executionMode: 'sequential',
     parameters: Type.Object({
       name: Type.String({ description: '地点名称（与 search_pois 返回一致）' }),
       category: Type.String({ description: '类目：attraction / food / hotel' }),
