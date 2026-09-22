@@ -70,3 +70,41 @@ test('调研工具旁路保留 adcode，公开候选不包含原始坐标', asyn
   assert.equal('location' in outcome.pool[0]!, false);
   assert.equal('adcode' in outcome.pool[0]!, false);
 });
+
+test('add_candidate 自动回填高德营业时间（仅 attraction），模型无需转抄', async () => {
+  const withHours: AmapPoi = {
+    name: '周一闭馆馆', type: '博物馆', address: '', rating: '', cost: '',
+    opentime: '09:00-17:00；周一闭馆', photoUrls: [], location: point, adcode: point.adcode,
+  };
+  const foodWithHours: AmapPoi = {
+    name: '营业面馆', type: '餐饮', address: '', rating: '', cost: '',
+    opentime: '10:00-22:00', photoUrls: [], location: point, adcode: point.adcode,
+  };
+  const source: PoiSource = {
+    kind: 'amap',
+    searchPois: async () => [withHours, foodWithHours],
+    selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }),
+  };
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  const tools = buildResearchTools({
+    poiSource: source,
+    searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
+    destination: '北京',
+    outcome,
+  });
+  const search = tools.find((tool) => tool.name === 'search_pois')!;
+  const add = tools.find((tool) => tool.name === 'add_candidate')!;
+  await search.execute('search', { category: 'attraction', keyword: '博物馆' });
+
+  // attraction 同名命中 → 回填
+  await add.execute('add1', { name: '周一闭馆馆', category: 'attraction', intro: '实地候选' });
+  assert.equal(outcome.pool[0]!.openTime, '09:00-17:00；周一闭馆');
+
+  // food 同名命中 → 不回填（餐饮营业时段不参与闭馆日检测）
+  await add.execute('add2', { name: '营业面馆', category: 'food', intro: '同名餐饮' });
+  assert.equal(outcome.pool[1]!.openTime, undefined);
+
+  // 未经过 search_pois 的点 → 无数据可回填
+  await add.execute('add3', { name: '纯知识候选', category: 'attraction', intro: '模型知识' });
+  assert.equal(outcome.pool[2]!.openTime, undefined);
+});

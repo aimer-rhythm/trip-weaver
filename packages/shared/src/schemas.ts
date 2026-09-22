@@ -42,6 +42,7 @@ export const ActivitySchema = Type.Object({
   coordSystem: Type.Optional(StringEnum(COORD_SYSTEMS)),   // 缺省 = wgs84（旧数据兼容），新生成一律 gcj02
   cost: Type.Optional(Type.Number({ minimum: 0 })),   // 人均粗估档位值（ST3 预算区间化）：免费=0，不确定缺省；旧数据带值照读，读取方 ?? 0 兜底
   category: StringEnum(ACTIVITY_CATEGORIES),
+  openTime: Type.Optional(Type.String({ maxLength: 60 })),   // 高德营业时间原文（仅 attraction；闭馆日检测用，非展示文案）
   sourceNotes: Type.Array(SourceNoteSchema, { maxItems: MAX_SOURCE_NOTES }),
 });
 
@@ -85,6 +86,7 @@ export const ResearchPoiSchema = Type.Object({
   intro: Type.String({ maxLength: 200 }),
   reservation: StringEnum(RESERVATION_STATUSES),                    // 预约三态，「以官方为准」
   reservationNote: Type.Optional(Type.String({ maxLength: 120 })),  // 预约渠道说明
+  openTime: Type.Optional(Type.String({ maxLength: 60 })),          // 高德营业时间原文（add_candidate 自动回填，仅 attraction 用于闭馆日检测）
   sourceLinks: Type.Array(SourceNoteSchema, { maxItems: MAX_SOURCE_NOTES }),
 });
 

@@ -192,8 +192,14 @@ constant, tuned to commonsense defaults, adjustable in one place):
 - `anchor_missing` (soft): lodging is named but its coordinates are unresolved. Suppressed
   until resolution has been attempted (`simulateTrip` infers this from any `geocoded` activity
   or any day having legs) so the pre-geoPipeline planner gate does not emit un-actionable noise.
-- `closed_on_arrival`: RESERVED. Activity has no open-hours field yet; the engine signature
-  carries an optional `openHours?` slot but never emits this code. Do not fabricate open hours.
+- `closed_on_arrival` (hard, enabled 09-22-opentime): the activity carries Amap `openTime`
+  text (auto-attached by `add_candidate`, never transcribed by the model) and the text declares
+  closure on the day's weekday (`isClosedOnDate` in `packages/shared/src/openHours.ts`).
+  `DaySimContext.date` is the only input; `simulateTrip` derives it from `trip.startDate +
+  dayIndex`. No `openTime` or no `startDate` -> the check is skipped entirely (never block on
+  missing data; never fabricate open hours). The scheduling pass avoids closed days at
+  segment->day assignment time (whole-segment move, preserving chain contiguity); this
+  violation is the backstop when avoidance is impossible.
 
 Degradation is truthful (never fail the job, never fabricate): an activity missing coordinates
 skips that segment's transit/backtrack checks; a missing leg is estimated with `estimateTransit`

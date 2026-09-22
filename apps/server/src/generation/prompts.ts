@@ -58,6 +58,7 @@ function activityRequirements(foodFocused: boolean): string {
 - placeName 只填写真实地点或片区名称，与展示 name 分开；如 name="午餐｜春熙路 · 川菜" 时 placeName="春熙路"。不得把菜系、餐次标签或整句建议当定位地名
 - startTime/endTime 用 24 小时制（如 "09:00"），同一天内不得重叠，顺序合理（上午→下午→晚上）；相邻活动间要留出足够的通勤时间，避免「上一个刚结束下一个已开始」
 - description ≤100 字，说明亮点与实用提示；候选标注「需预约」的活动，务必在 description 提醒提前预约
+- 营业时间/闭馆信息由系统按高德原文校验（闭馆日会硬性拦截）；不得在 description 编造或推断具体营业时段、开关门时间
 - category 从：美食/文化/自然/购物/住宿/交通/娱乐/其他 中选
 - 本次餐次纪律：${MEAL_REQUIREMENTS[foodFocused ? 'focused' : 'free']}
 - 来自候选池且候选带来源链接的活动，把该链接填入 sourceNotes（title + url）；禁止编造 url

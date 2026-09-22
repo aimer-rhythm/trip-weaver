@@ -33,6 +33,7 @@ export interface DraftActivityInput extends PlaceHint {
   lng?: number;
   coordSource?: 'geocoded' | 'estimated' | 'manual';
   coordSystem?: Activity['coordSystem'];
+  openTime?: string;
   sourceNotes?: SourceNote[];
 }
 
@@ -59,6 +60,7 @@ function toActivity(input: DraftActivityInput): DraftActivity {
     // cost 仅供旧数据/内部兼容；新生成工具不再向模型暴露该字段。
     ...(typeof input.cost === 'number' ? { cost: Math.max(0, input.cost) } : {}),
     category: normalizeCategory(input.category),
+    ...(input.openTime?.trim() ? { openTime: input.openTime.trim().slice(0, 60) } : {}),
     sourceNotes: (input.sourceNotes ?? []).slice(0, MAX_SOURCE_NOTES),
   };
 }

@@ -3,17 +3,18 @@
 // 定位：LLM proposes, solver disposes —— 可行性由代码计算，不再交给模型语感判断。
 import { haversineMeters } from './geo';
 import { effectiveLegMode, estimateTransit, lodgingLegsForDay } from './legs';
+import { dateForDayIndex, isClosedOnDate } from './openHours';
 import type { LegMode, Trip, TripDay } from './types';
 
 // ---------- 违规分级与阈值（集中常量，spec 记录来源与调参口径） ----------
 
-/** 违规码：本任务产出前四类；closed_on_arrival 预留（活动结构暂无营业时间字段，签名预留不产出） */
+/** 违规码：closed_on_arrival 自 09-22-opentime 起启用（活动携带高德营业时间原文 + trip.startDate 非空时产出） */
 export type ViolationCode =
   | 'transit_infeasible'   // 硬：单段通勤时长 > 相邻活动时间间隔，物理排不下
   | 'overpacked'           // 硬：日总时长 > 14h；软：活动数 > 8 / 步行 > 15km / 缓冲 < 10%
   | 'backtrack'            // 软：相邻三点回头角 > 90° 且回跳 > 2km
   | 'anchor_missing'       // 软：住宿锚点已指定但坐标未解析，无法计算住宿↔活动通勤
-  | 'closed_on_arrival';   // 预留：到达时已闭馆（需营业时间字段，本任务不产出）
+  | 'closed_on_arrival';   // 硬：活动安排在闭馆日（营业时间文本声明该星期闭馆）
 
 export type ViolationSeverity = 'hard' | 'soft';
 
@@ -59,7 +60,9 @@ export interface DaySimContext {
   dayIndex: number;
   baseMode: LegMode;                                   // 无 leg 时 haversine 兜底的出行基调
   lodging?: { name?: string; lat?: number; lng?: number } | null;   // day 级覆盖或 Trip 级
-  openHours?: readonly unknown[];                      // 预留（closed_on_arrival）；本任务不消费
+  /** 当天的日历日期（YYYY-MM-DD，simulateTrip 由 startDate + dayIndex 推出）：闭馆日判定的唯一输入；
+   *  缺省时 closed_on_arrival 整体跳过（去时间轴后无时刻可校验，只有日期维度）。 */
+  date?: string;
   /** 坐标解析是否已尝试（geoPipeline 已跑）。false 时抑制 anchor_missing —— 解析前报「住宿无坐标」是噪声，
    *  planner 无从修复。缺省 true：直接 simulateDay 的单测按「已解析」语义。 */
   anchorResolutionAttempted?: boolean;
@@ -278,6 +281,22 @@ export function simulateDay(day: TripDay, ctx: DaySimContext): DayReport {
     });
   }
 
+  // closed_on_arrival 硬：活动携带营业时间原文且当天日期已知时，命中「该星期闭馆」即违规（09-22-opentime）。
+  // 无 openTime / 无日期 → 跳过（拿不准不校验，绝不错误拦截）。
+  if (ctx.date) {
+    for (const activity of activities) {
+      if (activity.openTime && isClosedOnDate(activity.openTime, ctx.date)) {
+        violations.push({
+          code: 'closed_on_arrival',
+          severity: 'hard',
+          dayIndex,
+          activityId: activity.id,
+          message: `「${activity.name}」安排在 ${ctx.date}，但其营业时间文本声明当天闭馆（${activity.openTime}）`,
+        });
+      }
+    }
+  }
+
   return {
     dayIndex,
     activityCount: activities.length,
@@ -305,6 +324,7 @@ export function simulateTrip(trip: Trip): FeasibilityReport {
       baseMode,
       lodging: day.lodging ?? trip.lodging ?? null,
       anchorResolutionAttempted,
+      date: dateForDayIndex(trip.startDate, day.dayIndex),
     }),
   );
   return { dayReports, violations: dayReports.flatMap((r) => r.violations) };

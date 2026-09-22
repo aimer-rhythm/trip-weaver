@@ -58,6 +58,9 @@ function isHttpUrl(u: string): boolean {
 export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const { poiSource, searchSource, destination, outcome, onCandidate } = deps;
   const ambiguousNames = new Set<string>();
+  // 营业时间旁路捕获（09-22-opentime）：search_pois 如实带回高德 opentime 文本，add_candidate 同名自动回填，
+  // 不让模型转抄（转抄会失真）。仅 attraction 入排程检测，food/hotel 不消费。
+  const openTimeByName = new Map<string, string>();
 
   const verifiedTool = defineTool({
     name: 'search_verified_places',
@@ -112,6 +115,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       // 后续 add_candidate 的候选按同名关联（模型改写名称导致失配时仅漏标，由层3 兜底）
       for (const p of pois) {
         if (p.location) rememberResearchLocation(outcome.locations, ambiguousNames, p.name, { ...p.location, adcode: p.adcode });
+        if (p.opentime) openTimeByName.set(p.name, p.opentime);
       }
       const lines = pois.map((p, i) => {
         const bits = [
@@ -208,6 +212,12 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       };
       if (isHttpUrl(coverUrl)) poi.coverUrl = coverUrl;
       if (params.reservationNote?.trim()) poi.reservationNote = params.reservationNote.trim().slice(0, 120);
+
+      // 营业时间自动回填：同名命中 search_pois 捕获的 opentime 原文（仅 attraction 参与闭馆日检测）
+      if (category === 'attraction') {
+        const openTime = openTimeByName.get(name);
+        if (openTime) poi.openTime = openTime;
+      }
 
       // 预约种子表命中即置信：强制覆盖三态与说明，并把官方渠道链接放到来源首位
       const seed = category === 'attraction' ? matchReservationSeed(name) : null;

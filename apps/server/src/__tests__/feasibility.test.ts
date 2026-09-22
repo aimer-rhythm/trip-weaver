@@ -291,3 +291,43 @@ test('submit_plan：可行的草稿一次通过（feasible plan 不被门槛误�
   assert.equal(r.details?.pass, true);
   assert.equal(passed, true);
 });
+
+// ---------- closed_on_arrival（硬，09-22-opentime） ----------
+
+test('closed_on_arrival：活动安排在闭馆日 → 硬违规', () => {
+  const d = day([activity('a1', { name: '某博物馆', openTime: '09:00-17:00；周一闭馆' })]);
+  // 2026-09-21 = 周一
+  const report = simulateDay(d, ctx({ date: '2026-09-21' }));
+  const v = report.violations.find((x) => x.code === 'closed_on_arrival');
+  assert.ok(v, '周一闭馆的活动排在周一应报硬违规');
+  assert.equal(v.severity, 'hard');
+  assert.equal(v.activityId, 'a1');
+});
+
+test('closed_on_arrival：开放日 / 无 openTime / 无日期 → 不报', () => {
+  const closed = day([activity('a1', { name: '某博物馆', openTime: '09:00-17:00；周一闭馆' })]);
+  // 周二（开放日）不报
+  assert.equal(simulateDay(closed, ctx({ date: '2026-09-22' })).violations.filter((x) => x.code === 'closed_on_arrival').length, 0);
+  // 无 openTime 的活动不报
+  const noInfo = day([activity('a2')]);
+  assert.equal(simulateDay(noInfo, ctx({ date: '2026-09-21' })).violations.filter((x) => x.code === 'closed_on_arrival').length, 0);
+  // 无日期（startDate 未定）整体跳过
+  assert.equal(simulateDay(closed, ctx()).violations.filter((x) => x.code === 'closed_on_arrival').length, 0);
+});
+
+test('simulateTrip：按 startDate + dayIndex 推日期，第二天撞闭馆日也报', () => {
+  const trip = {
+    ...JSON.parse(JSON.stringify({})),
+    id: 't', title: '测试', destination: '北京', startDate: '2026-09-20', // 周日
+    budgetLevel: '舒适', totalBudget: 0, preferences: [], partySize: 2, extraNotes: '',
+    days: [
+      { id: 'd1', dayIndex: 1, title: '', activities: [activity('a1', { name: '露天公园', openTime: '周一闭馆' })] },
+      { id: 'd2', dayIndex: 2, title: '', activities: [activity('a2', { name: '某馆', openTime: '周一闭馆' })] },
+    ],
+    meta: { usedXhs: false, reviewNotes: [] }, createdAt: 0, updatedAt: 0,
+  } as unknown as Trip;
+  const report = simulateTrip(trip);
+  // day1 = 周日（开放）不报；day2 = 周一（闭馆）报
+  assert.equal(report.violations.filter((v) => v.code === 'closed_on_arrival').length, 1);
+  assert.equal(report.violations[0]!.dayIndex, 2);
+});
