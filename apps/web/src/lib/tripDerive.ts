@@ -59,8 +59,8 @@ export function legForPair(day: TripDay, fromActivityId: string, toActivityId: s
 // 住宿锚点 leg 匹配（ST3 哨兵 id 'lodging'）：纯函数实现放 shared 以便服务端单测复用，此处转出口供编辑器组件使用
 export { LODGING_SENTINEL, lodgingLegsForDay, type LodgingLegs } from '@tripweaver/shared';
 
-export const LEG_MODE_ICON: Record<TransitLeg['mode'], string> = { walk: '🚶', transit: '🚇', drive: '🚗' };
-export const LEG_MODE_LABEL: Record<TransitLeg['mode'], string> = { walk: '步行', transit: '公交/地铁', drive: '驾车' };
+export const LEG_MODE_ICON: Record<TransitLeg['mode'], string> = { walk: '🚶', cycle: '🚲', transit: '🚇', drive: '🚗' };
+export const LEG_MODE_LABEL: Record<TransitLeg['mode'], string> = { walk: '步行', cycle: '骑行', transit: '公交/地铁', drive: '驾车' };
 
 /** 距离展示：>1km 一位小数公里，否则整数米 */
 export function formatLegDistance(distanceM: number): string {

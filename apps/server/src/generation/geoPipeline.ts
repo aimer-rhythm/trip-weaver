@@ -2,7 +2,7 @@
 // orchestrator 在每轮编排后、审校前调用（M0-A 时序前移）：geocodeAll 补全全量坐标（GCJ-02），computeLegs 生成相邻活动通勤段。
 // 高德失败/超额/无 Key 均静默降级（Nominatim 转换 / 启发式估算），生成流程永不因此失败。
 // geocodeAll 出口统一过地理合理性校验（07-18，见 geoSanity.ts）：异地错配坐标弃用，宁缺毋错。
-import { LODGING_SENTINEL, WALK_THRESHOLD_M, haversineMeters, type LegMode, type ResearchPoi, type TransitLeg } from '@tripweaver/shared';
+import { LODGING_SENTINEL, effectiveLegMode, haversineMeters, type LegMode, type ResearchPoi, type TransitLeg } from '@tripweaver/shared';
 import { resolveAmapCredential } from '../services/settingsService';
 import { amapBudgetRemaining } from '../services/quotaService';
 import { geocodeActivity, type GeocodedPlace } from '../integrations/amap/geocoder';
@@ -262,8 +262,8 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
         from: { id: string; lat: number; lng: number },
         to: { id: string; lat: number; lng: number },
       ): Promise<TransitLeg> => {
-        const straightM = haversineMeters(from, to);
-        const mode: LegMode = straightM < WALK_THRESHOLD_M ? 'walk' : baseMode;
+        // 模式由 effectiveLegMode 判定（按时长，非直线距离）：走不动就骑行，再远才上公交/驾车
+        const mode: LegMode = effectiveLegMode(from, to, baseMode);
         // 熔断开启即整体跳过高德分支（含 adcode 兜底解析——省 geocode 额度与 10s 级等待），直接启发式
         if (apiKey && !routeBreaker.isOpen()) {
           // transit 需要起终点 adcode；活动级缺失时各自用目的地城市级兜底（不可互抄对端——
@@ -290,12 +290,6 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
       };
 
       const hasCoord = (p: { lat: number; lng: number }) => !(p.lat === 0 && p.lng === 0);
-      // 住宿锚点（ST3）：坐标解析成功才生成住宿 leg（哨兵 id 'lodging'，挂在 day 上作用域限当天）
-      const lodging = draft.lodging;
-      const lodgingPoint =
-        lodging && typeof lodging.lat === 'number' && typeof lodging.lng === 'number' && (lodging.lat !== 0 || lodging.lng !== 0)
-          ? { id: LODGING_SENTINEL, lat: lodging.lat, lng: lodging.lng }
-          : null;
 
       for (const day of days) {
         const legs: TransitLeg[] = [];
@@ -309,14 +303,8 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
           legs.push(await estimatePair(from, to));
           if (done % 4 === 0 || done === pairs) onProgress(`正在估算通勤时间 (${done}/${pairs})`);
         }
-        // 住宿 leg：住宿 → 首活动 / 末活动 → 住宿（两端坐标齐备才生成，失败静默）
-        const first = day.activities[0];
-        const last = day.activities[day.activities.length - 1];
-        if (lodgingPoint && first && last) {
-          if (signal?.aborted) throw new Error('已取消');
-          if (hasCoord(first)) legs.unshift(await estimatePair(lodgingPoint, first));
-          if (hasCoord(last)) legs.push(await estimatePair(last, lodgingPoint));
-        }
+        // 住宿通勤不再生成（09-22 决策）：只算景点↔景点。住宿锚点只保留名称供展示，
+        // 不进时间轴、也不进可行性引擎的通勤预算（否则每天凭空多两段远端通勤）。
         day.legs = legs;
       }
     },

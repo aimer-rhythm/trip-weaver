@@ -192,6 +192,9 @@ export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResu
     initialState: {
       systemPrompt: opts.systemPrompt,
       model: opts.model,
+      // 实测回退（09-20）：reasoning_effort='medium' 会写进请求体，但 plan 第1轮输出 token 反而从
+      // 47228 升到 51646，turn2 thinking 从 30105 升到 77576 字符——本网关基本吃掉该参数，无收益。
+      // 保持 off；model.ts 的 reasoning 标志同步回退。
       thinkingLevel: 'off',
       tools: opts.tools,
     },

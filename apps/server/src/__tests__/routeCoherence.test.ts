@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
   LODGING_SENTINEL,
-  WALK_THRESHOLD_M,
+  effectiveLegMode,
   estimateTransit,
   haversineMeters,
   type Activity,
@@ -63,7 +63,7 @@ function buildUlanqabDraft(): DraftTrip {
 function heuristicRecompute(draft: DraftTrip) {
   return async (dayIndexes: readonly number[]): Promise<void> => {
     const pair = (from: { id: string; lat: number; lng: number }, to: { id: string; lat: number; lng: number }): TransitLeg => {
-      const mode: LegMode = haversineMeters(from, to) < WALK_THRESHOLD_M ? 'walk' : 'drive';
+      const mode: LegMode = effectiveLegMode(from, to, 'drive');
       return { fromActivityId: from.id, toActivityId: to.id, mode, ...estimateTransit(from, to, mode), source: 'heuristic' };
     };
     for (const dayIndex of dayIndexes) {

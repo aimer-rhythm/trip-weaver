@@ -65,6 +65,12 @@ export function isMeal(activity: Activity, kind: MealKind): boolean {
   return start !== null && start >= rule.windowStart && start <= rule.windowEnd;
 }
 
+/** 美食导向判定：只有用户偏好里显式选了「美食」才要求每天午晚餐（09-21 决策 D3/D6）。
+ *  对齐 Yuntu 的 trip_is_food_focused，但只用显式偏好，不做关键词模糊匹配。 */
+export function isFoodFocused(preferences: readonly string[] | undefined): boolean {
+  return (preferences ?? []).includes('美食');
+}
+
 export function missingMeals(days: readonly DraftDayLike[]): Array<{ dayIndex: number; kind: MealKind }> {
   const missing: Array<{ dayIndex: number; kind: MealKind }> = [];
   days.forEach((day, index) => {
@@ -77,7 +83,9 @@ export function missingMeals(days: readonly DraftDayLike[]): Array<{ dayIndex: n
   return missing;
 }
 
-export function mealCoverageProblems(days: readonly DraftDayLike[]): string[] {
+export function mealCoverageProblems(days: readonly DraftDayLike[], options: { foodFocused: boolean }): string[] {
+  // 非美食导向（09-21 D3/D6）：行程本就不要求午晚餐，餐次不是完整性问题
+  if (!options.foodFocused) return [];
   return missingMeals(days).map(({ dayIndex, kind }) => {
     const { label } = MEAL_RULES[kind];
     return `第 ${dayIndex} 天缺少${label}（需安排就餐区域、菜系或代表菜，并预留明确时段）`;

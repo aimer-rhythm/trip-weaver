@@ -19,7 +19,7 @@ import {
   type TransitLeg,
   type Trip,
 } from '@tripweaver/shared';
-import { mealCoverageProblems } from './mealPlanning';
+import { isFoodFocused, mealCoverageProblems } from './mealPlanning';
 import { type DraftActivity, type PlaceHint } from './placeLookup';
 
 export interface DraftActivityInput extends PlaceHint {
@@ -206,7 +206,8 @@ export class DraftTrip {
       if (!day.activities.length) problems.push(`第 ${i + 1} 天没有任何活动`);
       if (day.activities.length > 8) problems.push(`第 ${i + 1} 天活动过多（${day.activities.length} 个，应 ≤8）`);
     });
-    problems.push(...mealCoverageProblems(this.days));
+    // 餐次要求改为偏好驱动（09-21 D3/D6）：仅偏好含「美食」时才算完整性问题
+    problems.push(...mealCoverageProblems(this.days, { foodFocused: isFoodFocused(this.form.preferences) }));
     // v0.5：坐标覆盖不再作为完整性问题 —— 审校后由确定性 geoPipeline 统一解析全量坐标
     return problems;
   }

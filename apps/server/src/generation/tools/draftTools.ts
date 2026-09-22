@@ -129,25 +129,51 @@ export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'p
   // 可行性自查（M0-A）：返回当前草稿的时空违规清单，供 planner 提交前主动排雷（引擎在 @tripweaver/shared）。
   // 注意：坐标/leg 由 geoPipeline 在规划阶段结束后统一解析——本工具在解析前调用时只能算到已填坐标的活动，
   // 无坐标段标注「无法判定」跳过（R6），据此提示模型「留空坐标的活动待系统解析后再判」。
+  // SOFT_CONVERGENCE_HINT：无硬性问题时追加收敛提示——实测模型会为一个 soft 缓冲提示空转 9 轮、76s（09-20 报告）
   const feasibilityTool = defineTool({
     name: 'check_feasibility',
     label: '可行性自查',
     description:
-      '检查当前行程草稿的时空可行性（通勤是否排得下、单日是否过载、路线是否折返）。硬性问题必须修正才能 submit_plan，可优化提示不阻断。',
+      '检查当前行程草稿的时空可行性（通勤是否排得下、单日是否过载、路线是否折返）。硬性问题必须修正才能 submit_plan；可优化提示不阻断提交，最多调整一次。',
     parameters: Type.Object({}),
     execute: async () => {
       const report = draft.feasibility();
       const hard = report.violations.filter((v) => v.severity === 'hard').length;
+      const content = describeFeasibility(report);
       return {
-        content: text(describeFeasibility(report)),
+        content: text(
+          hard === 0
+            ? `${content}\n\n（硬性问题 0 条：以上均为不阻断提交的可优化提示。最多再调整一次，随后立即 submit_plan，不要反复微调同一项。）`
+            : content,
+        ),
         details: { hard, soft: report.violations.length - hard },
+      };
+    },
+  });
+
+  // 文案专用写入口（第二期 D4）：结构由确定性排程决定，文案阶段只能改 description。
+  // 用独立工具而不是让 update_activity 少传字段 —— 从工具面上杜绝「文案阶段偷偷改时间/顺序」。
+  const describeTool = defineTool({
+    name: 'update_description',
+    label: '改写活动说明',
+    description: '改写某天第 N 个活动的说明文案。只能改说明，不能改时间、名称、地点或活动数量。',
+    parameters: Type.Object({
+      dayIndex: Type.Integer({ description: '第几天（从 1 开始）' }),
+      position: Type.Integer({ description: '第几个活动（从 1 开始，见 get_draft 输出）' }),
+      description: Type.String({ description: '新说明，≤100 字：是什么 + 为什么值得去 + 实用提示' }),
+    }),
+    execute: async (_id, params) => {
+      const msg = draft.updateActivity(params.dayIndex, params.position, { description: params.description });
+      return {
+        content: text(msg),
+        details: { dayIndex: params.dayIndex, position: params.position, isError: msg.startsWith('错误') },
       };
     },
   });
 
   return [
     ...(mode === 'plan' ? [skeletonTool] : [moveTool]),
-    addTool, updateTool, removeTool, getTool, lodgingTool, feasibilityTool,
+    addTool, updateTool, describeTool, removeTool, getTool, lodgingTool, feasibilityTool,
   ];
 }
 

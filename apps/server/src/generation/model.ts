@@ -19,10 +19,9 @@ export async function buildModel(cfg: LlmConfig): Promise<Model<'openai-completi
     api: 'openai-completions',
     provider: cfg.byok ? 'tripweaver-byok' : 'tripweaver-site',
     baseUrl: cfg.baseUrl,
-    // 真实模型会输出 thinking 块（实测 09-20），标 true 才能拿到 reasoning 开关：
-    // pi-ai 在 model.reasoning === false 时把任何 thinkingLevel 夹回 off，reasoning_effort 也就写不进请求体。
-    // 实际档位由 agents/runner.ts 的 thinkingLevel 决定（medium）。
-    reasoning: true,
+    // 保持 false（09-20 实测后回退）：标 true + thinkingLevel:'medium' 并不会减少输出
+    // （plan 第1轮 47228 → 51646 token），而 pi-ai 在 false 时把任何 thinkingLevel 夹回 off。
+    reasoning: false,
     input: ['text'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 65536,

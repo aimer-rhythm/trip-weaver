@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import type { Activity, TransitLeg } from '@tripweaver/shared';
+import type { Activity, GenerateForm, TransitLeg } from '@tripweaver/shared';
 import { DraftTrip } from '../generation/draft';
-import { ensureMealCoverage, isMeal, mealCoverageProblems, missingMeals } from '../generation/mealPlanning';
+import { ensureMealCoverage, isFoodFocused, isMeal, mealCoverageProblems, missingMeals } from '../generation/mealPlanning';
 
 function activity(name: string, startTime: string, category: Activity['category'] = '其他', overrides: Partial<Activity> = {}): Activity {
   return {
@@ -38,32 +38,49 @@ test('餐次完整性逐日点名缺失的午餐和晚餐', () => {
     { dayIndex: 2, kind: 'lunch' },
     { dayIndex: 2, kind: 'dinner' },
   ]);
-  assert.deepEqual(mealCoverageProblems(days), [
+  assert.deepEqual(mealCoverageProblems(days, { foodFocused: true }), [
     '第 1 天缺少晚餐（需安排就餐区域、菜系或代表菜，并预留明确时段）',
     '第 2 天缺少午餐（需安排就餐区域、菜系或代表菜，并预留明确时段）',
     '第 2 天缺少晚餐（需安排就餐区域、菜系或代表菜，并预留明确时段）',
   ]);
 });
 
-test('DraftTrip.validate 把每天午餐和晚餐作为提交完整性门槛', () => {
-  const draft = new DraftTrip({
-    destination: '上海',
-    days: 1,
-    startDate: '',
-    budgetLevel: '舒适',
-    totalBudget: 0,
-    preferences: [],
-    partySize: 2,
-    extraNotes: '',
-  });
-  draft.setSkeleton('上海一日', ['城市漫步']);
-  draft.addActivity(1, { name: '外滩', startTime: '09:00', endTime: '11:00', category: '文化' });
-  assert.ok(draft.validate().some((problem) => problem.includes('缺少午餐')));
-  assert.ok(draft.validate().some((problem) => problem.includes('缺少晚餐')));
+test('非美食导向时餐次不算完整性问题（09-21 D3/D6）', () => {
+  const days = [{ activities: [activity('景点', '09:00')] }];
+  assert.deepEqual(mealCoverageProblems(days, { foodFocused: false }), []);
+  assert.equal(isFoodFocused(['文化', '自然']), false);
+  assert.equal(isFoodFocused(['文化', '美食']), true);
+  assert.equal(isFoodFocused(undefined), false);
+  assert.equal(isFoodFocused([]), false);
+});
 
-  draft.addActivity(1, { name: '午餐｜南京东路 · 本帮菜', startTime: '12:00', endTime: '13:15', category: '美食' });
-  draft.addActivity(1, { name: '晚餐｜人民广场 · 上海小吃', startTime: '18:00', endTime: '19:15', category: '美食' });
-  assert.deepEqual(draft.validate(), []);
+test('DraftTrip.validate 只在偏好含「美食」时把午晚餐作为提交门槛', () => {
+  const makeDraft = (preferences: GenerateForm['preferences']) => {
+    const draft = new DraftTrip({
+      destination: '上海',
+      days: 1,
+      startDate: '',
+      budgetLevel: '舒适',
+      totalBudget: 0,
+      preferences,
+      partySize: 2,
+      extraNotes: '',
+    });
+    draft.setSkeleton('上海一日', ['城市漫步']);
+    draft.addActivity(1, { name: '外滩', startTime: '09:00', endTime: '11:00', category: '文化' });
+    return draft;
+  };
+
+  const foodFocused = makeDraft(['美食']);
+  assert.ok(foodFocused.validate().some((problem) => problem.includes('缺少午餐')));
+  assert.ok(foodFocused.validate().some((problem) => problem.includes('缺少晚餐')));
+
+  foodFocused.addActivity(1, { name: '午餐｜南京东路 · 本帮菜', startTime: '12:00', endTime: '13:15', category: '美食' });
+  foodFocused.addActivity(1, { name: '晚餐｜人民广场 · 上海小吃', startTime: '18:00', endTime: '19:15', category: '美食' });
+  assert.deepEqual(foodFocused.validate(), []);
+
+  // 非美食导向：纯景点行程也是完整行程
+  assert.deepEqual(makeDraft(['文化']).validate(), []);
 });
 
 test('最终兜底只补缺失餐次，按时间插入、清空旧 legs 且不生成费用', () => {

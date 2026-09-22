@@ -1,6 +1,6 @@
 import {
   LODGING_SENTINEL,
-  WALK_THRESHOLD_M,
+  effectiveLegMode,
   estimateTransit,
   haversineMeters,
   type Activity,
@@ -109,7 +109,7 @@ function hasStrongCrossDayAffinity(
 }
 
 function heuristicPairMinutes(from: Coordinate, to: Coordinate, mode: LegMode): number {
-  const pairMode: LegMode = haversineMeters(from, to) < WALK_THRESHOLD_M ? 'walk' : mode;
+  const pairMode: LegMode = effectiveLegMode(from, to, mode);
   return estimateTransit(from, to, pairMode).durationMin;
 }
 

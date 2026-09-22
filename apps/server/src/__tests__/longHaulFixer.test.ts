@@ -9,7 +9,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   LODGING_SENTINEL,
-  WALK_THRESHOLD_M,
+  effectiveLegMode,
   estimateTransit,
   haversineMeters,
   type Activity,
@@ -99,7 +99,7 @@ function heuristicRecompute(draft: DraftTrip, counter = { n: 0 }) {
         : null;
     const hasCoord = (p: { lat: number; lng: number }) => !(p.lat === 0 && p.lng === 0);
     const pair = (from: { id: string; lat: number; lng: number }, to: { id: string; lat: number; lng: number }): TransitLeg => {
-      const mode: LegMode = haversineMeters(from, to) < WALK_THRESHOLD_M ? 'walk' : 'transit';
+      const mode: LegMode = effectiveLegMode(from, to, 'transit');
       return { fromActivityId: from.id, toActivityId: to.id, mode, ...estimateTransit(from, to, mode), source: 'heuristic' };
     };
     for (const di of dayIndexes) {
@@ -209,11 +209,18 @@ test('computeMoveSlot：取整落在 :30', () => {
   assert.deepEqual(slot, { startTime: '17:30', endTime: '19:00' });
 });
 
-test('computeMoveSlot：<1.5km 段镜像 geoPipeline 用步行估算（时间槽 gap ≥ 重算 leg）', () => {
+test('computeMoveSlot：556m 段判步行（10min）→ 16:30；若误用 transit（12min）会取整到 17:00', () => {
+  const target = dayOf([act('p', { ...CENTER, startTime: '09:00', endTime: '16:20' })]);
+  // 直线 0.005°≈556m → 绕行 778m → walk 10min → 16:30（09-22 起改按时长判步行，不再按直线距离）
+  const slot = computeMoveSlot(target, act('m', { lat: 30.005, lng: 120, startTime: '18:00', endTime: '19:00' }), 'transit');
+  assert.deepEqual(slot, { startTime: '16:30', endTime: '17:30' });
+});
+
+test('computeMoveSlot：1.4km 段判骑行（12min）→ 16:30（超出步行上限但不值得上公交）', () => {
   const target = dayOf([act('p', { ...CENTER, startTime: '09:00', endTime: '16:10' })]);
-  // 直线 ~1.45km <1.5km → walk 27min → 16:37 → 17:00；若误用 transit（16min）会取整到 16:30
+  // 直线 ~1.45km：走路 27min 超上限 → 骑行 12min → 16:22 → 16:30
   const slot = computeMoveSlot(target, act('m', { lat: 30.013, lng: 120, startTime: '18:00', endTime: '19:00' }), 'transit');
-  assert.deepEqual(slot, { startTime: '17:00', endTime: '18:00' });
+  assert.deepEqual(slot, { startTime: '16:30', endTime: '17:30' });
 });
 
 test('computeMoveSlot：结束压过晚间边界 23:00 → null（该天放不下）', () => {
@@ -283,7 +290,7 @@ test('修复回滚：所有目标天验证不过（挪入即过载）→ 整日�
     ],
     [
       { name: '甲馆', lat: 30, lng: 120, startTime: '08:00', endTime: '14:00' },
-      { name: '乙园', lat: 30.01, lng: 120.01, startTime: '14:30', endTime: '20:30' },   // 全天 ~747min，再挪入 90min 活动即超 14h
+      { name: '乙园', lat: 30.01, lng: 120.01, startTime: '14:30', endTime: '21:15' },   // 全天 ~800min，再挪入 90min 活动即超 14h
     ],
     [
       { name: '丙寺', lat: 29.995, lng: 119.995, startTime: '08:00', endTime: '14:00' },

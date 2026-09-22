@@ -19,14 +19,16 @@ export const POI_CATEGORIES = ['attraction', 'food', 'hotel'] as const;
 
 // 地理数据层（v0.5）：坐标系标注 / 活动间通勤段
 export const COORD_SYSTEMS = ['wgs84', 'gcj02'] as const;   // 活动缺省 = wgs84（旧数据），新生成一律 gcj02
-export const LEG_MODES = ['walk', 'transit', 'drive'] as const;
+export const LEG_MODES = ['walk', 'cycle', 'transit', 'drive'] as const;
 // 通勤启发式分段速度模型（v0.6 估算修正）：estimateTransit 的唯一事实源。
 // 市内段沿用基础速度；绕行距离超过 longHaul.fromKm 的里程按长途等效速度计
-// （transit≈市郊铁路/快速公交，drive≈快速路/高速）——时长对距离连续且单调递增；walk 无长途段。
+// （transit≈市郊铁路/快速公交，drive≈快速路/高速）——时长对距离连续且单调递增；walk/cycle 无长途段。
+// cycle（09-22 新增）：共享单车城市均速 12~15km/h，取 13；overhead 含找车/锁车。
 // 校准依据（2026-07-18 金集快照）：北京八达岭段（绕行 84.7km transit）264→156min
 // （真实 S2/驾车 90-120min，保守略高）；市内段（绕行 ≤20km，如 19.5km→68min）估算不变。
 export const LEG_SPEED_MODEL = {
   walk: { speedKmh: 4.5, overheadMin: 0, longHaul: null },
+  cycle: { speedKmh: 13, overheadMin: 3, longHaul: null },
   transit: { speedKmh: 20, overheadMin: 10, longHaul: { fromKm: 20, speedKmh: 45 } },
   drive: { speedKmh: 30, overheadMin: 5, longHaul: { fromKm: 20, speedKmh: 70 } },
 } as const;

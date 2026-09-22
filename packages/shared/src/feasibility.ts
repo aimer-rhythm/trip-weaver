@@ -2,7 +2,7 @@
 // 纯函数、无 IO、无 server/DOM 依赖：server 生成期（planner 门槛 + reviewer 弹药）与未来评测/前端共用同一份。
 // 定位：LLM proposes, solver disposes —— 可行性由代码计算，不再交给模型语感判断。
 import { haversineMeters } from './geo';
-import { WALK_THRESHOLD_M, estimateTransit, lodgingLegsForDay } from './legs';
+import { effectiveLegMode, estimateTransit, lodgingLegsForDay } from './legs';
 import type { LegMode, Trip, TripDay } from './types';
 
 // ---------- 违规分级与阈值（集中常量，spec 记录来源与调参口径） ----------
@@ -141,9 +141,8 @@ export function simulateDay(day: TripDay, ctx: DaySimContext): DayReport {
       mode = leg.mode;
       if (leg.mode === 'walk') walkingMeters += leg.distanceM;
     } else if (hasCoord(from) && hasCoord(to)) {
-      // 无 leg 兜底：<1.5km 步行，否则出行基调；标注低置信
-      const straight = haversineMeters(from, to);
-      mode = straight < WALK_THRESHOLD_M ? 'walk' : baseMode;
+      // 无 leg 兜底：与 geoPipeline 共用 effectiveLegMode（判据与执行同一套模型），标注低置信
+      mode = effectiveLegMode(from, to, baseMode);
       const est = estimateTransit(from, to, mode);
       durationMin = est.durationMin;
       estimated = true;

@@ -33,8 +33,8 @@ import { DraftTrip } from './draft';
 import { createGeoSession } from './geoPipeline';
 import { classifyLongHaulPois, type LongHaulPoi } from './longHaul';
 import { repairLongHaulMixedDays, verifiedFixNotes, type AppliedFixMove } from './longHaulFixer';
-import { ensureMealCoverage } from './mealPlanning';
-import { optimizeCrossDayGrouping, repairTransitTiming } from './routeCoherence';
+import { isFoodFocused } from './mealPlanning';
+import { optimizeCrossDayGrouping } from './routeCoherence';
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
@@ -42,21 +42,18 @@ import { GenerationPerformance } from './performance';
 import { retrieveContext } from './retrieveContext';
 import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
-import { buildGeoTools } from './tools/geoTools';
-import { buildDraftTools, buildSubmitPlanTool } from './tools/draftTools';
+import { buildDraftTools } from './tools/draftTools';
 import { buildReviewTools, type ReviewOutcome } from './tools/reviewTools';
+import { applyDeterministicSchedule } from './scheduling/buildDraft';
+import { loadPlaceFacts } from './scheduling/placeFacts';
 import {
-  PLANNER_SYSTEM_PROMPT,
-  PLANNER_REVISION_SYSTEM_PROMPT,
+  WRITER_SYSTEM_PROMPT,
   RESEARCH_SYSTEM_PROMPT,
-  REVIEWER_SYSTEM_PROMPT,
   formBrief,
-  plannerUserPrompt,
-  reviewerUserPrompt,
+  writerUserPrompt,
 } from './prompts';
 
 const JOB_TIMEOUT_MS = GENERATION_TIMEOUT_MINUTES * 60 * 1000;   // 整任务兜底超时（与前端提示文案同源）
-const MAX_REVIEW_ROUNDS = 2;             // 审校 ≤2 轮（含修订回炉）
 
 class GenerationFailure extends Error {}
 
@@ -77,6 +74,8 @@ export async function runGeneration(
 ): Promise<void> {
   const signal = job.abort.signal;
   const usage = { tokensIn: 0, tokensOut: 0 };
+  // 餐次/餐宿要求的开关（09-21 D3/D6）：只在偏好含「美食」时强制午晚餐与餐次兜底
+  const foodFocused = isFoodFocused(form.preferences);
   const timing = new GenerationPerformance(job.createdAt);
   let terminalStatus: GenerationJobStatus = 'error';
   let systemTaskSeq = 0;
@@ -251,7 +250,6 @@ export async function runGeneration(
     // （降级成启发式的段不记忆，修订轮在剩余额度内重试高德）。
     const draft = new DraftTrip(form);
     let reviewNotes: string[] = [];
-    let revisionRequests: string[] = [];
     let feasibility: FeasibilityReport = { dayReports: [], violations: [] };
     // 层3 修复器采纳的挪动记录（跨轮累计）：落库前经 verifiedFixNotes 校验「活动确在注记声称的
     // 目标天」才并入 reviewNotes——修订轮可能推翻挪动（live beijing 实证），失真注记宁弃不留
@@ -272,93 +270,91 @@ export async function runGeneration(
       feasibility = await runSystemTask('plan', 'simulate_feasibility', '检查时空可行性', () => draft.feasibility());
     };
 
-    for (let round = 1; round <= MAX_REVIEW_ROUNDS; round++) {
-      startPhase('plan', round, round > 1 ? '按审校意见修订' : undefined);
-      let planPassed = false;
-      const plannerRun = await runPhaseAgent({
-        model,
-        apiKey: cfg.apiKey,
-        systemPrompt: round === 1 ? PLANNER_SYSTEM_PROMPT : PLANNER_REVISION_SYSTEM_PROMPT,
-        tools: [...buildDraftTools(draft, round === 1 ? 'plan' : 'revision'), ...buildGeoTools(geo), buildSubmitPlanTool(draft, () => (planPassed = true))],
-        userPrompt: plannerUserPrompt(form, research, revisionRequests, longHaulIntel, round > 1 ? draft.render() : undefined, ragContext),
-        signal,
-        sink: sinkFor('plan'),
-        maxTurns: 30,
-        recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'plan', round }),
-      });
-      usage.tokensIn += plannerRun.tokensIn;
-      usage.tokensOut += plannerRun.tokensOut;
-      assertAlive(signal, plannerRun.errorMessage);
+    // ---------- 阶段 2：确定性排程（零 LLM） ----------
+    // 结构（哪天、什么顺序、几点到几点）由知识库 + 空间算法算出，不经过 LLM：
+    // 实测让 LLM 推结构要烧 4.7 万输出 token / 432s，且第 2 轮修订又会撞超时（09-20 报告）。
+    // 排程是结构唯一来源 —— 排不出来就没有行程可言，不做「降级继续」。
+    startPhase('plan', 1, '确定性排程');
+    const placeFacts = await loadPlaceFacts(research.pool.map((poi) => poi.name), form.destination);
+    const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
+      applyDeterministicSchedule({
+        draft,
+        form,
+        pool: research.pool,
+        locations: research.locations,
+        longHaul: longHaulIntel,
+        foodFocused,
+        facts: placeFacts,
+      }),
+    );
+    const scheduleProblems = draft.validate();
+    if (scheduleProblems.length) {
+      throw new GenerationFailure(`行程排程结果不完整：${scheduleProblems.join('；')}。请重试`);
+    }
 
-      // 完整性兜底（R2）：模型没走 submit_plan 也以实际校验为准
-      const problems = draft.validate();
-      if (!planPassed && problems.length) {
-        throw new GenerationFailure(`行程草稿不完整：${problems.join('；')}。请重试，或换用工具调用能力更强的模型`);
+    // 时序前移（M0-A）：排程后立刻解析全量坐标/leg 并跑可行性引擎，让修复器与文案阶段拿到真实时间线。
+    // geoPipeline 内部按 signal 逐项中止（07-12 教训：AbortSignal 须逐迭代检查）。
+    await resolveGeoAndSimulate(sinkFor('plan'));
+
+    // 层3 兜底：确定性修复器 —— 排程层若仍产出「远郊日混排」且 feasibility 报出 hard 违规，
+    // 代码级把混排市区活动挪到别的天并重验证（hard 严格递减才采纳，否则回滚）。
+    // 修复器属增强路径：任何异常按「未修复」继续走文案（生成不失败原则，取消除外）；
+    // legs 重算复用 geoSession 定向重算（额度控制与 amap memo 内置）。
+    try {
+      const planSink = sinkFor('plan');
+      const fix = await runSystemTask('plan', 'repair_long_haul', '优化远郊行程', () =>
+        repairLongHaulMixedDays(draft, {
+          mode: form.transportMode ?? 'transit',
+          recomputeLegs: (dayIndexes) => geo.computeLegs(draft, planSink.onThought, signal, dayIndexes),
+          onProgress: planSink.onThought,
+          signal,
+        }),
+      );
+      if (fix.applied.length > 0) {
+        autoFixMoves.push(...fix.applied);
+        feasibility = draft.feasibility();
       }
+    } catch (err) {
+      if (signal.aborted) throw err;
+    }
+    endPhase(
+      'plan',
+      1,
+      `活动 ${scheduleOutcome.written} 个｜候选 ${research.pool.length} 个（无坐标补位 ${scheduleOutcome.withoutCoord}｜排不下丢弃 ${scheduleOutcome.schedule.droppedCount}）`,
+    );
 
-      // 时序前移：编排后立刻解析全量坐标/leg 并跑可行性引擎，供审校用真实报告
-      await resolveGeoAndSimulate(sinkFor('plan'));
-
-      // 层3 兜底：确定性修复器 —— 规划 LLM 无视长途点情报仍产出「远郊日混排」且 feasibility 报出
-      // hard 违规时，代码级把混排市区活动挪到别的天并重验证（hard 严格递减才采纳，否则回滚）。
-      // 修复器属增强路径：任何异常按「未修复」继续走审校（生成不失败原则，取消除外）；
-      // legs 重算复用 geoSession 定向重算（额度控制与 amap memo 内置）。
-      try {
-        const planSink = sinkFor('plan');
-        const fix = await runSystemTask('plan', 'repair_long_haul', '优化远郊行程', () =>
-          repairLongHaulMixedDays(draft, {
-            mode: form.transportMode ?? 'transit',
-            recomputeLegs: (dayIndexes) => geo.computeLegs(draft, planSink.onThought, signal, dayIndexes),
-            onProgress: planSink.onThought,
-            signal,
-          }),
-        );
-        if (fix.applied.length > 0) {
-          autoFixMoves.push(...fix.applied);
-          feasibility = draft.feasibility();   // 审校拿「修复器尽力后」的报告
-        }
-      } catch (err) {
-        if (signal.aborted) throw err;
-      }
-      endPhase('plan', round);
-
-      startPhase('review', round);
-      const review: ReviewOutcome = { submitted: false, approved: false, notes: [], revisionRequests: [] };
-      const reviewerRun = await runPhaseAgent({
-        model,
-        apiKey: cfg.apiKey,
-        systemPrompt: REVIEWER_SYSTEM_PROMPT,
-        tools: [...buildDraftTools(draft).filter((t) => t.name !== 'set_trip_skeleton' && t.name !== 'add_activity' && t.name !== 'set_lodging'), ...buildReviewTools(review)],
-        userPrompt: reviewerUserPrompt(form, round, describeFeasibility(feasibility)),
-        signal,
-        sink: sinkFor('review'),
-        maxTurns: 12,
-        recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round }),
-      });
-      usage.tokensIn += reviewerRun.tokensIn;
-      usage.tokensOut += reviewerRun.tokensOut;
-      if (reviewerRun.turnLimitExceeded) {
-        assertAlive(signal);
-        reviewNotes = [
-          ...review.notes,
-          '审校模型达到单阶段轮次上限，系统已保留已完成修订，并继续执行餐次完整性与可行性检查。',
-        ].slice(0, 5);
-        endPhase('review', round, '审校轮次已达上限，转为确定性检查');
-        break;
-      }
-      assertAlive(signal, reviewerRun.errorMessage);
-
-      if (!review.submitted || review.approved || round === MAX_REVIEW_ROUNDS) {
-        reviewNotes = review.notes;
-        if (review.submitted && !review.approved) {
-          // 轮次用尽仍未通过：把修订要求转成「审校遗留」提示（PRD F1）
-          reviewNotes = [...review.notes, ...review.revisionRequests.map((r) => `审校遗留：${r}`)].slice(0, 5);
-        }
-        endPhase('review', round, review.approved ? '审校通过' : '审校有遗留项');
-        break;
-      }
-      revisionRequests = review.revisionRequests;
-      endPhase('review', round, `需修订：${revisionRequests.length} 项`);
+    // ---------- 阶段 3：文案（单次 LLM 调用，只改 description） ----------
+    // 沿用 review 阶段名（前端与时间线契约不变），语义是「撰写说明」；
+    // 结构不归模型管：工具面只给 get_draft + update_description，改不动时间/顺序/数量。
+    // 文案属增强路径：模型没写完也不算失败，草稿里已有候选简介兜底。
+    startPhase('review', 1, '撰写说明文案');
+    const review: ReviewOutcome = { submitted: false, approved: false, notes: [], revisionRequests: [] };
+    const writerRun = await runPhaseAgent({
+      model,
+      apiKey: cfg.apiKey,
+      systemPrompt: WRITER_SYSTEM_PROMPT,
+      tools: [
+        ...buildDraftTools(draft).filter((t) => t.name === 'get_draft' || t.name === 'update_description'),
+        ...buildReviewTools(review),
+      ],
+      userPrompt: writerUserPrompt(form, draft.render()),
+      signal,
+      sink: sinkFor('review'),
+      maxTurns: 12,
+      recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round: 1 }),
+    });
+    usage.tokensIn += writerRun.tokensIn;
+    usage.tokensOut += writerRun.tokensOut;
+    if (writerRun.errorMessage) {
+      console.warn(`[writer] 文案阶段失败，按已有内容落库：${writerRun.errorMessage.slice(0, 200)}`);
+      reviewNotes = ['文案生成未完成，活动说明沿用候选简介。'].slice(0, 5);
+      endPhase('review', 1, '文案降级（按已有内容落库）');
+    } else {
+      assertAlive(signal);
+      reviewNotes = writerRun.turnLimitExceeded
+        ? [...review.notes, '文案模型达到单阶段轮次上限，系统按已写内容落库。'].slice(0, 5)
+        : review.notes;
+      endPhase('review', 1, writerRun.turnLimitExceeded ? '文案轮次已达上限' : review.submitted ? '文案已提交' : '文案未提交（按已有内容落库）');
     }
 
     const finalSink = sinkFor('review');
@@ -397,38 +393,10 @@ export async function runGeneration(
       if (signal.aborted) throw err;
     }
 
-    // 最终餐次兜底：正常路径由 submit_plan 的完整性门槛要求模型补齐；这里防止审校阶段
-    // 删除/改写最后一个午餐或晚餐后仍把不完整行程持久化。补位使用顺路片区建议，不冒充具体门店。
-    const mealRepairs = await runSystemTask('review', 'ensure_meal_coverage', '检查餐次完整性', () =>
-      ensureMealCoverage(draft.mutableDays(), form.destination),
-    );
-    if (mealRepairs.length) {
-      const changedDays = [...new Set(mealRepairs.filter((item) => item.action === 'inserted').map((item) => item.dayIndex))];
-      try {
-        if (changedDays.length) {
-          await runSystemTask('review', 'geo_recompute_meal_legs', '更新餐次通勤路线', () =>
-            geo.computeLegs(draft, finalSink.onThought, signal, changedDays),
-          );
-          assertAlive(signal);
-        }
-      } catch (err) {
-        if (signal.aborted) throw err;
-      }
-      const summary = mealRepairs.map((item) => `第${item.dayIndex}天${item.kind === 'lunch' ? '午餐' : '晚餐'}`).join('、');
-      reviewNotes = [`系统已补齐${summary}的顺路就餐时段；具体门店与实时信息请到大众点评或美团确认。`, ...reviewNotes].slice(0, 8);
-    }
-
-    // 以最终真实通勤段顺延贴边活动，修复「前一活动结束即开饭但仍需移动」等硬冲突；
-    // 单日无法在餐窗/23:00 边界内排下则该天整体不改，由最终可行性说明如实透出。
-    const timingDays = await runSystemTask('review', 'repair_transit_timing', '调整通勤时间', () =>
-      repairTransitTiming(draft.mutableDays()),
-    );
-    if (timingDays.length) {
-      reviewNotes = [
-        `系统已顺延第 ${timingDays.join('、')} 天的部分活动时间，为实际通勤预留间隔。`,
-        ...reviewNotes,
-      ].slice(0, 8);
-    }
+    // 餐次兜底与通勤时间顺延都不再执行（09-22 D5：行程不产出时间轴）：
+    // · ensureMealCoverage 靠时间窗插餐，没有时间轴就无处安放；餐次由确定性排程在每天直接插锚点。
+    // · repairTransitTiming 靠「活动结束时间 + 真实 leg」顺延，没有时间轴就无从顺延。
+    // 真通勤时长仍由 computeLegs 算在 leg 上，前端按「段间耗时」展示。
 
     // 层3 修复器的自动调整说明（可信透明）：系统替用户做过的换天动作必须可见，置于 reviewNotes 最前。
     // 真话契约：只保留最终草稿里仍成立的挪动注记（修订轮重排可能已推翻——live beijing 实证

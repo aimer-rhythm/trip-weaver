@@ -8,6 +8,7 @@ import { amapQueue } from './geocoder';
 
 const ROUTE_URLS: Record<LegMode, string> = {
   walk: 'https://restapi.amap.com/v5/direction/walking',
+  cycle: 'https://restapi.amap.com/v5/direction/bicycling',
   drive: 'https://restapi.amap.com/v5/direction/driving',
   transit: 'https://restapi.amap.com/v5/direction/transit/integrated',
 };

@@ -81,6 +81,7 @@ export async function startMockLlm(
 ) {
   const seenAuthHeaders = [];
   const seenRevisions = [];
+  let seenWriter = null;
   let reviewerOverrunAvailable = reviewerOverrunOnce;
   let reviewerOverrunActive = false;
   let reviewerRevisionAvailable = requestRevisionOnce;
@@ -118,6 +119,20 @@ export async function startMockLlm(
           : [{ name: 'update_activity', args: { dayIndex: 1, position: 1, startTime: '09:30', description: '局部修订：延后半小时参观，保留其他安排。' } }]);
       } else if (system.includes('行程规划师')) {
         respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0, { geocodedActivities, includeLodging }));
+      } else if (system.includes('行程文案撰写员')) {
+        // 第二期：plan 阶段由确定性排程产出结构，LLM 只在文案阶段改写 description
+        if (toolResults === 0) {
+          seenWriter = {
+            tools: (payload.tools ?? []).map((tool) => tool.function?.name).sort(),
+            hasDraft: userText.includes('当前草稿'),
+          };
+        }
+        respondWithToolCalls(res, payload.model,
+          toolResults >= 2
+            ? [{ name: 'submit_review', args: { approved: true, notes: ['测试建议：留意闭馆时间'], revisionRequests: [] } }]
+            : toolResults === 1
+              ? [{ name: 'update_description', args: { dayIndex: 1, position: 1, description: '文案阶段改写：按知识库素材说明亮点与实用提示。' } }]
+              : [{ name: 'get_draft', args: {} }]);
       } else if (system.includes('行程审校员')) {
         if (toolResults === 0) {
           reviewerOverrunActive = reviewerOverrunAvailable;
@@ -142,5 +157,5 @@ export async function startMockLlm(
     });
   });
   await new Promise((r) => server.listen(port, '127.0.0.1', r));
-  return { server, seenAuthHeaders, seenRevisions, close: () => server.close() };
+  return { server, seenAuthHeaders, seenRevisions, get seenWriter() { return seenWriter; }, close: () => server.close() };
 }

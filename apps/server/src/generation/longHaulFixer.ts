@@ -13,7 +13,7 @@
 import {
   FEASIBILITY_THRESHOLDS,
   LONG_HAUL_THRESHOLDS,
-  WALK_THRESHOLD_M,
+  effectiveLegMode,
   estimateTransit,
   haversineMeters,
   type Activity,
@@ -202,7 +202,7 @@ export function computeMoveSlot(
     return { startTime: '', endTime: '' };
   }
   // 通勤估算镜像 geoPipeline 的模式选择（<1.5km 走路），保证时间槽 gap ≥ 重算后的 leg 时长
-  const legMode: LegMode = haversineMeters(prev, activity) < WALK_THRESHOLD_M ? 'walk' : mode;
+  const legMode: LegMode = effectiveLegMode(prev, activity, mode);
   const transitMin = estimateTransit(prev, activity, legMode).durationMin;
   const start = Math.ceil((baseEnd + transitMin) / SLOT_ROUND_MIN) * SLOT_ROUND_MIN;
   const end = start + durationMin;

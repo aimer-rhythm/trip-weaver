@@ -65,6 +65,14 @@ Event payloads are shared contracts in `packages/shared/src/types.ts`. Preserve 
 fields until coordinated shared/web removal. Current `xhsEnabled`, `xhsCalls`, and `usedXhs`
 are historical fields with documented compatibility meanings.
 
+Eval harness collection semantics (eval snapshot v2): `usage` events are cumulative — the
+last one carries final totals. `phase_end.durationMs` must be keyed `<phase>#<round>` (plan
+and review can span multiple rounds). `candidate` events carry `ResearchPoi` without
+coordinates (Amap protocol 3.5), and persisted trips strip `placeName`/`poiId` — pool
+adoption metrics therefore match by name, extracting meal lookup names
+(`午餐｜春熙路 · 川菜` -> `春熙路`, the same rule geoPipeline uses). New metric dimensions
+enter reports as observational fields first and only join the gate after proving stable.
+
 Representative paths: `apps/server/src/routes/generations.ts`,
 `apps/server/src/generation/jobManager.ts`, `packages/shared/src/types.ts`.
 
@@ -291,6 +299,89 @@ lodging name invalidates its coordinates: clear them and drop the affected days'
 Representative paths: `packages/shared/src/schemas.ts`, `packages/shared/src/legs.ts`,
 `apps/server/src/generation/geoPipeline.ts`, `apps/web/src/store/editorStore.ts`.
 
+## Scenario: Deterministic Plan Phase and Copy-Only Writer (09-21, phase 2)
+
+### 1. Scope / Trigger
+
+Apply when changing `generation/scheduling/*`, the plan-phase orchestration in `orchestrator.ts`,
+`WRITER_SYSTEM_PROMPT` / `writerUserPrompt`, or the `update_description` tool. This REPLACES the
+LLM planner/reviewer loop for the live pipeline.
+
+### 2. Signatures
+
+- `visitMinutes(facts): { minutes, basis: 'canonical' | 'type_estimate' }` in
+  `scheduling/visitMinutes.ts` — pure, no IO
+- `loadPlaceFacts(names, city): Promise<Map<string, PlaceFacts>>` in `scheduling/placeFacts.ts`
+- `buildSchedule(candidates, options): { days, droppedCount }` in `scheduling/schedule.ts` — pure
+- `applyDeterministicSchedule(input): { schedule, written, skippedNoCoord }` in
+  `scheduling/buildDraft.ts`
+- `draft.setSkeleton(...)` / `draft.addActivity(...)` / `draft.setLodging(...)` — the only writers
+- `WRITER_SYSTEM_PROMPT`, `writerUserPrompt(form, draftRender)` in `generation/prompts.ts`
+- `update_description(dayIndex, position, description)` in `tools/draftTools.ts`
+
+### 3. Contracts
+
+- **The plan phase makes zero LLM calls.** Day assignment, intra-day order, and the time axis are
+  computed from knowledge-base facts plus the heuristic transit model. Do not reintroduce an agent
+  loop there; the measured cost of letting an LLM do it was 47228 output tokens / 432s, and the
+  round-2 revision blew the 15-minute job timeout.
+- Scheduling IS a hard dependency (unlike RAG enrichment): if `draft.validate()` fails after
+  scheduling, throw `GenerationFailure`. There is no degraded path — no structure means no trip.
+- Coordinates are OPTIONAL per candidate. Candidates without coordinates skip spatial clustering
+  and are distributed round-robin by score to the emptiest non-exclusive day; `geoPipeline`
+  resolves their coordinates afterwards (this matches the pre-existing rule that coordinates are
+  never required from the planner). Never drop a candidate merely for lacking coordinates at
+  scheduling time.
+- `visitMinutes` is a two-track value: `payload.typicalVisitMinutes` when present (basis
+  `canonical`), otherwise the `xhsPlaceType` table, then the 8-category table, then 75 minutes.
+  Do not make the real value mandatory — coverage is ~3.5% (32 of 912 Beijing rows).
+- The day timeline is built by SEGMENTING around meal windows when `foodFocused` is true:
+  `[open → lunch]`, `[lunch end → dinner]`, `[dinner end → close]`. This is what guarantees meals
+  exist, no activity straddles a meal window, and the day never runs past 21:30.
+- An empty day gets ONE placeholder activity named `自由安排｜<destination>` — never a fabricated
+  venue. This keeps the pre-existing "every day needs at least one activity" completeness gate
+  satisfiable when the knowledge base has no coverage for a city.
+- `lodging` is derived by code when the form leaves it empty: the hotel candidate nearest the
+  median centre of the scheduled activities, falling back to the highest-scored hotel candidate.
+  No candidates means no lodging suggestion (do not invent an area name).
+- The writer phase reuses the `review` phase name on the SSE stream (frontend contract unchanged)
+  but is semantically "write the copy". Its tool surface is EXACTLY `get_draft`,
+  `update_description`, `submit_review` — it cannot reach any structural tool, which is how D4
+  ("审校只审文案") is enforced rather than merely requested.
+- The writer is an enhancement path: an LLM error or turn limit degrades to the candidate `intro`
+  text already written into each activity and the job still succeeds.
+- `describeFeasibility`, `repairLongHaulMixedDays`, `ensureMealCoverage` (food-focused only),
+  `optimizeCrossDayGrouping`, and `repairTransitTiming` all still run; only the LLM planner and the
+  LLM reviewer loop are gone.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| `loadPlaceFacts` query fails | warn, empty map, schedule falls back to the type table |
+| no candidate has coordinates | every day gets one placeholder activity; job still succeeds |
+| candidates exceed days × 6 | lowest-scored overflow dropped, reported in `phase_end` summary |
+| food-focused with no food candidate | meal stop anchors on the destination name |
+| writer LLM error / turn limit | keep drafted copy, `job_done` unaffected |
+| cancellation during scheduling | propagates as on any other phase |
+
+### 5. Wrong vs Correct
+
+```typescript
+// Wrong: let the model decide the order again because "it writes nicer itineraries".
+const plannerRun = await runPhaseAgent({ systemPrompt: plannerSystemPrompt(foodFocused), ... });
+
+// Correct: structure is code's job; the model only writes descriptions.
+const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
+  applyDeterministicSchedule({ draft, form, pool, locations, longHaul, foodFocused, facts }),
+);
+```
+
+Representative paths: `apps/server/src/generation/scheduling/`,
+`apps/server/src/generation/orchestrator.ts`, `apps/server/src/generation/tools/draftTools.ts`.
+Measurement scripts: `cd apps/server && npx tsx test-gen-timing.mts`, plus `test-kb-shape.mts` for
+what the knowledge base can actually support.
+
 ## Scenario: Research Place Reuse and Local Planner Revisions (P0)
 
 ### 1. Scope / Trigger
@@ -488,18 +579,36 @@ queue, reservation, or transaction capability.
 ### 2. Signatures
 
 - `missingMeals(days): Array<{ dayIndex: number; kind: 'lunch' | 'dinner' }>`
-- `mealCoverageProblems(days): string[]`
+- `isFoodFocused(preferences): boolean` — `preferences.includes('美食')`, the ONLY source of the meal mandate
+- `mealCoverageProblems(days, { foodFocused }): string[]`
 - `ensureMealCoverage(days, destination): MealRepair[]`
+- `plannerSystemPrompt(foodFocused)` / `plannerRevisionSystemPrompt(foodFocused)` /
+  `reviewerSystemPrompt(foodFocused)` — `prompts.ts` exports these builders instead of
+  `PLANNER_SYSTEM_PROMPT` / `PLANNER_REVISION_SYSTEM_PROMPT` / `REVIEWER_SYSTEM_PROMPT` consts,
+  because the meal wording is conditional. `RESEARCH_SYSTEM_PROMPT` stays a const.
 - `DraftTrip.validate(): string[]` includes `mealCoverageProblems`.
 - `GenerateForm.budgetLevel`, `GenerateForm.totalBudget`, `Trip.budgetLevel`,
   `Trip.totalBudget`, and `Activity.cost?` remain compatibility fields.
 
 ### 3. Contracts
 
-- Every newly generated day must contain both lunch and dinner. Explicit meal names count;
-  otherwise only `category === '美食'` starting in 11:00-14:30 or 17:00-21:30 counts.
-- `submit_plan` rejects a draft with a day-specific missing-meal problem before review.
-- After the final review, `ensureMealCoverage` runs again. It inserts a non-overlapping meal
+- **The meal mandate is preference-driven (09-21 decision D3/D6).** Only when
+  `isFoodFocused(form.preferences)` is true must every generated day contain both lunch and
+  dinner; otherwise a day with no meals at all is a complete itinerary. Explicit meal names
+  count; otherwise only `category === '美食'` starting in 11:00-14:30 or 17:00-21:30 counts.
+- `submit_plan` rejects a draft with a day-specific missing-meal problem before review — but
+  only for food-focused forms, because `mealCoverageProblems` returns `[]` otherwise. Callers
+  must pass `{ foodFocused }` explicitly; there is no default, so a new call site cannot
+  silently inherit the old hard gate.
+- The orchestrator computes `foodFocused` ONCE at the top of `runGeneration` and threads it
+  through the planner/reviewer prompts and the `ensureMealCoverage` gate. Do not re-derive it
+  per phase from partial state.
+- Non-food-focused forms still keep the anti-fabrication rule: if a meal activity is present
+  its `description` must name the dining area/cuisine and defer live price/rating/hours to
+  Dianping or Meituan. Non-food-focused forms simply are not required to invent one.
+- `set_lodging` is an OPTIONAL step, not a mandatory one: the planner prompt calls it
+  “住宿（可选）” and says it is not a required step. Keep the area-only / no-hotel-brand rule.
+- After the final review, `ensureMealCoverage` runs again (food-focused forms only). It inserts
   slot with a 15-minute transfer buffer on both sides and invalidates that day's legs, or, when
   no slot exists, integrates the meal into an activity spanning the meal window so it does not
   create an overlap.
@@ -676,6 +785,63 @@ timeout. Decision (09-20): keep `maxTokens: 32000` and raise the cap —
 `GENERATION_TIMEOUT_MINUTES = 15` in `packages/shared/src/constants.ts` is the single source for
 both `JOB_TIMEOUT_MS` and the frontend `timeout` copy. Diagnose with the snapshot table first
 instead of hand-writing curl repro scripts. Found in task `09-20-llm-context-logging`.
+
+### Common Mistake: reasoning tokens, not tool arguments, dominate a phase's wall clock
+
+**Symptom**: the plan phase takes 7-10 minutes while every tool call is instant and the visible
+assistant text is a few hundred characters. Measured live (09-20): plan 597.8s of a 793.4s job,
+47228 output tokens across 14 turns, **392 characters of visible text**. Two turns alone
+(144.6s + 182.4s) carried 60275 + 30105 characters of hidden `thinking`.
+
+**Cause**: a reasoning model's `usage.output` counts hidden reasoning. Output speed is roughly
+constant (~150-166 tok/s here), so turn latency ≈ thinking length ÷ output speed — the tool
+arguments (14 `add_activity` = 5116 characters) are noise by comparison.
+
+**Measure before optimizing**: `cd apps/server && npx tsx test-gen-timing.mts` prints the
+phase / tool-union / LLM-wait split, and `npx tsx test-llm-output-probe.mts` breaks each turn's
+output into `thinking` vs `toolCall` vs `text` characters. (`llm_request_logs.response.text`
+only holds text parts, so a near-zero char count with a large `usage.output` is the tell.)
+Do NOT raise `maxTokens` for this — the budget is not the constraint; reasoning volume is.
+Ref: `.trellis/tasks/09-20-gen-timing/research/2026-09-20-phase-timing.md`.
+
+### Common Mistake: a dead geocoding fallback silently costs ~22s per unresolved place
+
+**Symptom**: `geo_geocode_all` takes 165.7s and produces zero coordinates.
+
+**Cause**: two stacked failures. (1) `geoPipeline.init()` gates the Amap credential on daily
+budget `remaining >= GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK` (= 60); with
+`AMAP_DAILY_BUDGET=150` mostly spent, `apiKey` becomes `null` and the whole chain skips Amap.
+(2) The fallback is Nominatim, which is unreachable from some networks: `integrations/geocode.ts`
+times out at 10s and returns `null`, and `geocodeActivity` calls it **twice** per place
+(`${city} ${name}` then `name`), so each unresolved activity costs ~22.3s (measured
+22315 / 22247 / 22257ms) — with `GEOCODE_PIPELINE_CONCURRENCY = 2`, 14 activities ≈ 166s.
+
+**Prevention**: when a fallback provider is expected to be unreachable, fail fast rather than
+wait for the timeout, and add a circuit breaker in the spirit of `createRouteBreaker`. Diagnose
+with `cd apps/server && npx tsx test-geo-latency.mts` (per-level latency + the budget gate
+verdict). Note the gate is a daily-budget policy knob, not a code bug: check
+`AMAP_DAILY_BUDGET` against the per-task reservation before blaming the geocoder.
+
+### Measured: what actually moves the wall clock (09-20 verification)
+
+Before optimizing any generation latency, read
+`.trellis/tasks/09-20-gen-timing-soft-reasoning-effort/research/2026-09-20-fix-verification.md`.
+Four measured results, all on the same 北京 3-day form:
+
+- **Nominatim fast-fail works**: 2.5s timeout + 3-failure breaker took `geo_geocode_all` from
+  165.7s to **3.2s** (the dead fallback was 22.3s per unresolved place). Probes:
+  `cd apps/server && npx tsx test-geo-latency.mts`.
+- **A soft-violation loop is real and cheap to kill**: the `check_feasibility` reply now appends
+a convergence hint when `hard === 0`. plan round 1 went 597.8s → **314.8s**, 14 turns → 6.
+- **`reasoning_effort` is not a lever on this gateway**: passing `reasoning: 'medium'` does
+  reach the request body (verify with `npx tsx test-reasoning-effort.mts`), but plan round-1
+  output *rose* 47228 → 51646 tokens. Measure before assuming a lower effort saves time; the
+  model's hidden thinking volume is what it is.
+- **The revision round is the dominant cost once round 1 is fast**: plan round 2 emitted
+  61243 tokens over 4 turns (~370s) and pushed the job past `GENERATION_TIMEOUT_MINUTES = 15`,
+  so the terminal state was `cancelled` — worse than slow. Any plan-phase optimization must
+  budget round 2, not just round 1. Also: the reviewer's soft-severity `revisionRequests` are
+  what triggers that round at all.
 
 ### Upstream flakiness must not kill the whole job
 

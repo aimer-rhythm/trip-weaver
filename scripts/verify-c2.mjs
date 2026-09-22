@@ -227,10 +227,11 @@ try {
   check('job_done 数据源为空（未配 Key）', Array.isArray(done?.dataSources) && done.dataSources.length === 0, JSON.stringify(done?.dataSources));
   check('审校建议传递', Array.isArray(done?.reviewNotes) && done.reviewNotes.length > 0, JSON.stringify(done?.reviewNotes));
   check(
-    '审校轮次超限降级后仍完成生成',
-    done?.reviewNotes?.some((note) => note.includes('审校模型达到单阶段轮次上限')) === true,
-    JSON.stringify(done?.reviewNotes),
+    '文案阶段未触发结构修订轮',
+    run.events.filter((event) => event.type === 'phase_start' && event.phase === 'plan').length === 1,
   );
+  const reviewPhaseEnd = run.events.find((event) => event.type === 'phase_end' && event.phase === 'review');
+  check('review 阶段已降为文案阶段', reviewPhaseEnd?.summary?.includes('文案') === true, reviewPhaseEnd?.summary);
 
   // 时序前移（M0-A）：geoPipeline 移到审校前 —— 坐标/通勤解析的 thought 必须出现在首个 review phase_start 之前，
   // 保证审校（及可行性引擎）拿到的是已解析的真实坐标/leg，而非空坐标。
@@ -257,15 +258,15 @@ try {
 
   const trip = await api('GET', `/api/trips/${done.tripId}`);
   check('行程已落库', trip.status === 200 && trip.json?.days?.length === 2, `days=${trip.json?.days?.length}`);
-  check('活动已填充', trip.json?.days?.every((d) => d.activities.length === 3));
+  check('活动已填充', trip.json?.days?.every((d) => d.activities.length >= 1));
   check('overview 随行程持久化', Array.isArray(trip.json?.overview) && trip.json.overview.length === 3, `overview=${trip.json?.overview?.length}`);
   check('overview 预约徽章数据正确', trip.json?.overview?.find((p) => p.name === '故宫博物院')?.reservation === 'required');
   check('meta.dataSources 未配 Key 时不写入', trip.json?.meta?.dataSources === undefined, JSON.stringify(trip.json?.meta));
-  // ST3：transportMode 缺省 transit 持久化；set_lodging 建议区域落 Trip.lodging。
+  // ST3：transportMode 缺省 transit 持久化；住宿区域由代码推导（用户未填时取知识库住宿候选）。
   // 坐标解析走高德→Nominatim 降级链：本脚本无高德 Key，Nominatim 视网络可用性可能成功——
   // 两种结果都合法，按「有坐标 ⇔ 有住宿哨兵 leg」的一致性断言（哨兵契约见 TransitLegSchema）。
   check('transportMode 缺省 transit 持久化', trip.json?.transportMode === 'transit', trip.json?.transportMode);
-  check('lodging 建议区域持久化', trip.json?.lodging?.name === '市中心站前区域', JSON.stringify(trip.json?.lodging));
+  check('住宿区域由代码推导自知识库住宿候选', trip.json?.lodging?.name === '测试酒店', JSON.stringify(trip.json?.lodging));
   const lodgingHasCoord = typeof trip.json?.lodging?.lat === 'number' && typeof trip.json?.lodging?.lng === 'number';
   const sentinelConsistent = trip.json?.days?.every((d) => {
     const legs = d.legs ?? [];
@@ -314,21 +315,27 @@ try {
   const runD = await readEvents(jobD.json.jobId);
   check('BYOK job_done', runD.events.at(-1)?.type === 'job_done', runD.events.at(-1)?.type);
   const planRounds = runD.events.filter((event) => event.type === 'phase_start' && event.phase === 'plan').map((event) => event.round);
-  check('审校意见实际触发第二轮规划', planRounds.join(',') === '1,2', planRounds.join(','));
-  const revision = mock.seenRevisions[0];
-  check('修订请求携带当前草稿和全部活动 ID', mock.seenRevisions.length === 1 && revision?.hasDraft && revision.activityIds.length === 6);
-  check('修订工具禁止清空骨架且支持跨天移动', revision?.tools.includes('move_activity') && !revision.tools.includes('set_trip_skeleton'));
-  check('两轮规划仅创建一次骨架', runD.events.filter((event) => event.type === 'tool_start' && event.tool === 'set_trip_skeleton').length === 1);
+  check('确定性排程只跑一轮（无修订轮）', planRounds.join(',') === '1', planRounds.join(','));
+  const structureTools = ['set_trip_skeleton', 'add_activity', 'update_activity', 'move_activity', 'remove_activity', 'check_feasibility', 'submit_plan'];
+  const structureCalls = runD.events.filter((event) => event.type === 'tool_start' && structureTools.includes(event.tool)).map((event) => event.tool);
+  check('排程阶段零 LLM 规划工具（结构由代码决定）', structureCalls.length === 0, structureCalls.join(','));
+  const writer = mock.seenWriter;
+  check(
+    '文案阶段拿到草稿且工具面仅 get_draft / update_description / submit_review',
+    Boolean(writer?.hasDraft)
+      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['get_draft', 'submit_review', 'update_description']),
+    JSON.stringify(writer?.tools),
+  );
   const revisedTrip = await api('GET', `/api/trips/${runD.events.at(-1)?.tripId}`);
   const revisedActivities = revisedTrip.json?.days?.flatMap((day) => day.activities) ?? [];
+  check('文案改写已落库', revisedActivities.some((activity) => activity.description.startsWith('文案阶段改写')));
+  check('排程保证每天至少一个活动', (revisedTrip.json?.days ?? []).every((day) => day.activities.length >= 1));
   check(
-    '局部修订保留原行程、全部活动 ID 和每日餐次',
-    revisedTrip.json?.title === '测试之旅'
-      && revisedTrip.json?.days?.every((day) => day.activities.length === 3 && day.activities.some((activity) => activity.name.startsWith('午餐')) && day.activities.some((activity) => activity.name.startsWith('晚餐')))
-      && JSON.stringify(revisedActivities.map((activity) => activity.id).sort()) === JSON.stringify([...(revision?.activityIds ?? [])].sort()),
+    '行程不产出时间轴（时间留空，前端按未排时刻展示）',
+    revisedActivities.every((activity) => activity.startTime === '' && activity.endTime === ''),
+    JSON.stringify(revisedActivities.map((activity) => `${activity.startTime}-${activity.endTime}`)),
   );
-  check('指定时间和说明修改已落库', revisedActivities[0]?.startTime === '09:30' && revisedActivities[0]?.description.startsWith('局部修订'));
-  check('生成内部定位引用未泄漏到持久化 Trip', revisedActivities.length === 6 && revisedActivities.every((activity) => !('placeName' in activity) && !('poiId' in activity)));
+  check('生成内部定位引用未泄漏到持久化 Trip', revisedActivities.length > 0 && revisedActivities.every((activity) => !('placeName' in activity) && !('poiId' in activity)));
   const byokAuths = seenAuthHeaders.slice(authCountBefore);
   check('BYOK 请求带自己的 Key', byokAuths.length > 0 && byokAuths.every((a) => a.includes('byok-secret-key')), byokAuths[0]);
   const usage2 = await api('GET', '/api/usage');
