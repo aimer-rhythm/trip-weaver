@@ -47,3 +47,75 @@ export const LEG_SOURCES = ['amap', 'heuristic'] as const;
 export const RESERVATION_STATUSES = ['required', 'none', 'unknown'] as const;
 export const DATA_SOURCE_KINDS = ['amap', 'websearch'] as const;
 export const MAX_OVERVIEW_POIS = 40;
+
+// ---------- 问答式行程生成入口（09-23） ----------
+// 对话只负责三件事：抽取参数、回答旅行问答、更新 Planning Brief；
+// 只有 Brief 齐备且用户确认，才创建正式生成任务（对话本身不生成行程）。
+
+/** 旅行侧重点（三选一，必填字段之一；标签供确认卡与追问按钮渲染） */
+export const TRIP_FOCUS_OPTIONS = ['sights_first', 'food_first', 'balanced'] as const;
+export const TRIP_FOCUS_LABELS: Record<(typeof TRIP_FOCUS_OPTIONS)[number], string> = {
+  sights_first: '景点为主',
+  food_first: '吃吃喝喝为主',
+  balanced: '均衡安排',
+};
+
+/** 旅行约束分类（11 枚举，确认卡分组标签） */
+export const CONSTRAINT_CATEGORIES = [
+  'attraction_preference',
+  'food_preference',
+  'dietary_requirement',
+  'travel_pace',
+  'budget_style',
+  'transport_preference',
+  'accommodation_preference',
+  'schedule_preference',
+  'companion_context',
+  'accessibility_need',
+  'other_travel_preference',
+] as const;
+export const CONSTRAINT_CATEGORY_LABELS: Record<(typeof CONSTRAINT_CATEGORIES)[number], string> = {
+  attraction_preference: '景点',
+  food_preference: '餐饮',
+  dietary_requirement: '饮食要求',
+  travel_pace: '旅行节奏',
+  budget_style: '预算习惯',
+  transport_preference: '交通',
+  accommodation_preference: '住宿',
+  schedule_preference: '作息',
+  companion_context: '同行',
+  accessibility_need: '无障碍',
+  other_travel_preference: '其他',
+};
+
+/**
+ * 约束极性：决定确认卡上的徽章文案与「本次排除」交互。
+ * `fact` 是关键——「带着 3 岁小孩」是背景信息，不等于「必须安排亲子景点」。
+ */
+export const CONSTRAINT_POLARITIES = ['prefer', 'avoid', 'require', 'fact'] as const;
+
+/** Brief 就绪判定的缺失清单：4 个必填字段 + dateRange（合成项，表示结束日期早于开始日期） */
+export const BRIEF_MISSING_FIELDS = ['destination', 'startDate', 'endDate', 'tripFocus', 'dateRange'] as const;
+export const BRIEF_MISSING_FIELD_LABELS: Record<(typeof BRIEF_MISSING_FIELDS)[number], string> = {
+  destination: '目的地',
+  startDate: '开始日期',
+  endDate: '结束日期或游玩天数',
+  tripFocus: '旅行侧重点',
+  dateRange: '有效的日期范围',
+};
+
+/** Brief 状态机：collecting → ready → submitted / discarded */
+export const BRIEF_STATUSES = ['collecting', 'ready', 'submitted', 'discarded'] as const;
+export const CONVERSATION_STATUSES = ['active', 'archived'] as const;
+export const CHAT_MESSAGE_ROLES = ['user', 'assistant'] as const;
+
+/** 对话理解意图白名单（模型只有这几个动作可做）；前端据 confirm 决定是否自动开始生成 */
+export const CHAT_INTENTS = ['update_brief', 'travel_qa', 'confirm', 'modify_itinerary', 'unclear'] as const;
+
+/** 追问控件选项的来源：canonical = 服务端给的字段值（点击→PATCH）；natural = 模型给的自然语言（点击→当作消息发给模型解析） */
+export const INTAKE_ENUM_KINDS = ['canonical', 'natural'] as const;
+
+/** 单次生成的类型：全新生成 vs 基于已有行程的修订 */
+export const GENERATION_KINDS = ['generation', 'revision'] as const;
+
+export const MAX_TRIP_CONSTRAINTS = 30;

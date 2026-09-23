@@ -15,16 +15,39 @@ import type {
   TransitLegSchema,
 } from './schemas';
 import type {
+  BriefInputSchemaSchema,
+  BriefIntakeSchema,
+  ChatMessageSchema,
+  ConversationDetailSchema,
+  ConversationSchema,
+  ConversationTripRefSchema,
+  PlanningBriefDataSchema,
+  PlanningBriefPatchSchema,
+  PlanningBriefViewSchema,
+  SendMessageResultSchema,
+  TripConstraintDraftSchema,
+  TripConstraintSchema,
+} from './chat';
+import type {
   ACTIVITY_CATEGORIES,
+  BRIEF_MISSING_FIELDS,
+  BRIEF_STATUSES,
   BUDGET_LEVELS,
+  CHAT_MESSAGE_ROLES,
+  CONVERSATION_STATUSES,
+  CHAT_INTENTS,
+  CONSTRAINT_CATEGORIES,
+  CONSTRAINT_POLARITIES,
   COORD_SOURCES,
   COORD_SYSTEMS,
   DATA_SOURCE_KINDS,
+  GENERATION_KINDS,
   LEG_MODES,
   LEG_SOURCES,
   POI_CATEGORIES,
   RESERVATION_STATUSES,
   TRANSPORT_MODES,
+  TRIP_FOCUS_OPTIONS,
 } from './constants';
 
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
@@ -41,6 +64,30 @@ export type GenerateForm = Static<typeof GenerateFormSchema>;
 export type RegisterBody = Static<typeof RegisterBodySchema>;
 export type LoginBody = Static<typeof LoginBodySchema>;
 export type SettingsPut = Static<typeof SettingsPutSchema>;
+
+// ---------- 问答式行程生成入口（09-23） ----------
+export type TripConstraint = Static<typeof TripConstraintSchema>;
+export type TripConstraintDraft = Static<typeof TripConstraintDraftSchema>;
+export type PlanningBriefData = Static<typeof PlanningBriefDataSchema>;
+export type PlanningBriefView = Static<typeof PlanningBriefViewSchema>;
+export type PlanningBriefPatch = Static<typeof PlanningBriefPatchSchema>;
+export type BriefInputSchema = Static<typeof BriefInputSchemaSchema>;
+export type BriefIntake = Static<typeof BriefIntakeSchema>;
+export type ChatMessage = Static<typeof ChatMessageSchema>;
+export type Conversation = Static<typeof ConversationSchema>;
+export type ConversationDetail = Static<typeof ConversationDetailSchema>;
+export type ConversationTripRef = Static<typeof ConversationTripRefSchema>;
+export type SendMessageResult = Static<typeof SendMessageResultSchema>;
+
+export type ConversationStatus = (typeof CONVERSATION_STATUSES)[number];
+export type ChatMessageRole = (typeof CHAT_MESSAGE_ROLES)[number];
+export type BriefStatus = (typeof BRIEF_STATUSES)[number];
+export type TripFocus = (typeof TRIP_FOCUS_OPTIONS)[number];
+export type ConstraintCategory = (typeof CONSTRAINT_CATEGORIES)[number];
+export type ConstraintPolarity = (typeof CONSTRAINT_POLARITIES)[number];
+export type BriefMissingField = (typeof BRIEF_MISSING_FIELDS)[number];
+export type GenerationKind = (typeof GENERATION_KINDS)[number];
+export type ChatIntent = (typeof CHAT_INTENTS)[number];
 
 export type ActivityCategory = (typeof ACTIVITY_CATEGORIES)[number];
 export type BudgetLevel = (typeof BUDGET_LEVELS)[number];
@@ -71,8 +118,23 @@ export interface TripListItem {
   activityCount: number;
   totalCost: number;
   usedXhs: boolean;   // 历史兼容：小红书时代旧行程可为 true，新生成恒 false（前端已不再展示）
+  /** 版本链上的序号（09-23）：1 = 首版；列表只返回每条链的最新版 */
+  version: number;
   createdAt: number;
   updatedAt: number;
+}
+
+/** 版本链上的一版（详情页版本切换用） */
+export interface TripVersionItem {
+  id: string;
+  version: number;
+  title: string;
+  createdAt: number;
+}
+
+export interface TripVersionChain {
+  rootId: string;
+  versions: TripVersionItem[];
 }
 
 // 用量视图

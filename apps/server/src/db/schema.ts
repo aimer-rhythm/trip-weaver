@@ -42,6 +42,11 @@ export const trips = pgTable('trips', {
   activityCount: integer('activity_count').notNull(),
   totalCost: integer('total_cost').notNull(),
   usedXhs: boolean('used_xhs').notNull().default(false),
+  // 版本链（09-23）：全新生成 root_id = 自身 id / version = 1；对话内修订产出新行，parent_id 指向被修订版本。
+  // /trips 列表只展示每条版本链的最新版，历史版本仍可按 id 访问。
+  rootId: text('root_id').notNull(),
+  version: integer('version').notNull().default(1),
+  parentId: text('parent_id'),
   data: jsonb('data').notNull(),                  // Trip 全量 JSON（唯一事实源，冗余列由其重算）
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
@@ -52,6 +57,10 @@ export const generations = pgTable('generations', {
   id: text('id').primaryKey(),
   userId: text('user_id').notNull(),
   tripId: text('trip_id'),
+  // 问答式入口（09-23）：来源会话 / 生成类型 / 修订目标。表单入口时代三列均为空/缺省值。
+  conversationId: text('conversation_id'),
+  kind: text('kind').notNull().default('generation'),   // generation | revision
+  targetTripId: text('target_trip_id'),                 // kind=revision 时指向被修订的行程
   status: text('status').notNull(),               // done | error | cancelled
   usedXhs: boolean('used_xhs').notNull().default(false),   // 小红书时代旧数据；新生成恒 false
   usedByok: boolean('used_byok').notNull().default(false),
@@ -101,6 +110,48 @@ export const researchEvidence = pgTable(
   },
   (table) => [index('idx_research_evidence_city_kind').on(table.city, table.kind)],
 );
+
+// ---------- 问答式行程生成入口（09-23） ----------
+// 对话只收集参数与更新 Brief，正式生成仍写 generations。
+// 与项目其余表一致：不建外键，靠 user_id 谓词做所有权过滤（见 spec/server/backend/security-guidelines.md）。
+
+export const conversations = pgTable(
+  'conversations',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id').notNull(),
+    title: text('title').notNull(),                 // 首条用户消息截断，可改名
+    status: text('status').notNull().default('active'),   // active | archived
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
+  },
+  (table) => [index('idx_conversations_user').on(table.userId, table.updatedAt)],
+);
+
+export const chatMessages = pgTable(
+  'chat_messages',
+  {
+    id: text('id').primaryKey(),
+    conversationId: text('conversation_id').notNull(),
+    userId: text('user_id').notNull(),              // 冗余以支持直接的所有权过滤，避免每次鉴权都要 join
+    role: text('role').notNull(),                   // user | assistant
+    content: text('content').notNull(),
+    sequence: integer('sequence').notNull(),        // 会话内自增，前端据此稳定排序
+    intake: jsonb('intake'),                        // assistant 消息携带的追问控件（可为 null）
+    relatedTripId: text('related_trip_id'),         // 该轮产出的行程（修订/生成结果卡片用）
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+  },
+  (table) => [index('idx_chat_messages_conversation').on(table.conversationId, table.sequence)],
+);
+
+// 一个会话一份 Brief。missing_fields 不落库——由 shared 的 requiredBriefFields 从 data 派生，避免两处状态漂移。
+export const planningBriefs = pgTable('planning_briefs', {
+  conversationId: text('conversation_id').primaryKey(),
+  userId: text('user_id').notNull(),
+  status: text('status').notNull().default('collecting'),   // collecting | ready | submitted | discarded
+  data: jsonb('data').notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
+});
 
 // ---------- LLM 请求上下文快照（09-20）：生成流水线每次 API 请求的完整落库 ----------
 // 定位「模型不调工具/空响应」类问题的调试事实源；不含 API key（key 走 getApiKey 独立通道）。

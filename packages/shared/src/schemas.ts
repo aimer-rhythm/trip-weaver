@@ -1,4 +1,5 @@
-import { Type, type TLiteral, type TUnion } from '@sinclair/typebox';
+import { Type } from '@sinclair/typebox';
+import { StringEnum } from './typebox';
 import {
   ACTIVITY_CATEGORIES,
   BUDGET_LEVELS,
@@ -18,10 +19,7 @@ import {
 } from './constants';
 
 // 字符串枚举辅助：字面量 Union（标准 TypeBox 构造，类型收窄为字面量联合）
-type LiteralTuple<T extends readonly string[]> = { -readonly [K in keyof T]: TLiteral<T[K] & string> };
-
-const StringEnum = <T extends readonly string[]>(values: T) =>
-  Type.Union(values.map((v) => Type.Literal(v))) as unknown as TUnion<LiteralTuple<T>>;
+// 定义见 ./typebox（chat.ts 共用同一构造，避免两套字面量 Union 写法漂移）
 
 // ---------- 行程领域 ----------
 

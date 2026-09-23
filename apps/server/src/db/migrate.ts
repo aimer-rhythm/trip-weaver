@@ -44,15 +44,23 @@ const STATEMENTS = [
     activity_count INTEGER NOT NULL,
     total_cost INTEGER NOT NULL,
     used_xhs BOOLEAN NOT NULL DEFAULT FALSE,
+    root_id TEXT NOT NULL,
+    version INTEGER NOT NULL DEFAULT 1,
+    parent_id TEXT,
     data JSONB NOT NULL,
     created_at TIMESTAMPTZ NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS idx_trips_user ON trips(user_id, updated_at DESC)`,
+  // 注意：idx_trips_root / idx_generations_conversation 建在新增列上，不能放在 STATEMENTS——
+  // 存量库执行到此处时 root_id / conversation_id 尚未补列，索引创建会失败。它们统一放在 runMigrations 的补列段之后。
   `CREATE TABLE IF NOT EXISTS generations (
     id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
     trip_id TEXT,
+    conversation_id TEXT,
+    kind TEXT NOT NULL DEFAULT 'generation',
+    target_trip_id TEXT,
     status TEXT NOT NULL,
     used_xhs BOOLEAN NOT NULL DEFAULT FALSE,
     used_byok BOOLEAN NOT NULL DEFAULT FALSE,
@@ -105,6 +113,35 @@ const STATEMENTS = [
   )`,
   `CREATE INDEX IF NOT EXISTS idx_llm_request_logs_job ON llm_request_logs(job_id)`,
   `CREATE INDEX IF NOT EXISTS idx_llm_request_logs_user_time ON llm_request_logs(user_id, created_at DESC)`,
+  // ---------- 问答式行程生成入口（09-23） ----------
+  `CREATE TABLE IF NOT EXISTS conversations (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    title TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'active',
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_conversations_user ON conversations(user_id, updated_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS chat_messages (
+    id TEXT PRIMARY KEY,
+    conversation_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    role TEXT NOT NULL,
+    content TEXT NOT NULL,
+    sequence INTEGER NOT NULL,
+    intake JSONB,
+    related_trip_id TEXT,
+    created_at TIMESTAMPTZ NOT NULL
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_chat_messages_conversation ON chat_messages(conversation_id, sequence)`,
+  `CREATE TABLE IF NOT EXISTS planning_briefs (
+    conversation_id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'collecting',
+    data JSONB NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL
+  )`,
 ];
 
 export async function runMigrations(pool: Pool): Promise<void> {
@@ -130,6 +167,18 @@ export async function runMigrations(pool: Pool): Promise<void> {
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS xhs_calls INTEGER NOT NULL DEFAULT 0`);
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS amap_calls INTEGER NOT NULL DEFAULT 0`);
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS search_calls INTEGER NOT NULL DEFAULT 0`);
+    // 问答式入口（09-23）：存量库补列。trips.root_id 先补列→回填→置 NOT NULL（单语句 ALTER 无法对存量行建 NOT NULL）。
+    // 顺序不可调整：UPDATE 必须在 SET NOT NULL 之前，否则存量库启动失败。
+    await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS root_id TEXT`);
+    await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 1`);
+    await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS parent_id TEXT`);
+    await client.query(`UPDATE trips SET root_id = id WHERE root_id IS NULL`);
+    await client.query(`ALTER TABLE trips ALTER COLUMN root_id SET NOT NULL`);
+    await client.query(`CREATE INDEX IF NOT EXISTS idx_trips_root ON trips(root_id, version DESC)`);
+    await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS conversation_id TEXT`);
+    await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'generation'`);
+    await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS target_trip_id TEXT`);
+    await client.query(`CREATE INDEX IF NOT EXISTS idx_generations_conversation ON generations(conversation_id)`);
     await client.query('COMMIT');
   } catch (err) {
     await client.query('ROLLBACK').catch(() => {});
