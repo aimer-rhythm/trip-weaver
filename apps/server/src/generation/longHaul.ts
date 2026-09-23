@@ -50,14 +50,17 @@ export function longHaulTier(durationMin: number): LongHaulTier | null {
  * 候选池 → 长途点情报（按通勤时长降序，最重的排最前）。
  * 防御性取舍：无坐标候选直接跳过（漏标由层3 修复器兜底），不为预计算引入额外 geocode 成本/时延；
  * 有坐标候选不足 MIN_LOCATED_POIS 时整体不判定，返回空数组。
+ * fallbackCoords（09-23）：知识库坐标兜底——知识库来源候选（search_verified_places）不经 search_pois，
+ * 旁路没有它的坐标，不兜底会被跳过标级（实测：八达岭因此当普通点塞进市区天，与慕田峪同时入选）。
  */
 export function classifyLongHaulPois(
   pool: readonly ResearchPoi[],
   locations: ReadonlyMap<string, Coord>,
   mode: LegMode,
+  fallbackCoords?: ReadonlyMap<string, Coord>,
 ): LongHaulPoi[] {
   const located = pool.flatMap((p) => {
-    const coord = locations.get(p.name);
+    const coord = locations.get(p.name) ?? fallbackCoords?.get(p.name);
     return coord ? [{ name: p.name, coord }] : [];
   });
   if (located.length < MIN_LOCATED_POIS) return [];

@@ -178,6 +178,9 @@ export async function runGeneration(
         id: uid(),
         userId: job.userId,
         tripId,
+        conversationId: job.provenance.conversationId ?? null,
+        kind: job.provenance.kind,
+        targetTripId: job.provenance.targetTripId ?? null,
         status,
         usedXhs: false,   // 列保留供旧数据读取；新生成恒 false
         usedByok: cfg.byok,
@@ -234,11 +237,20 @@ export async function runGeneration(
 
     // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
     // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
-    // 无坐标候选自动跳过（漏标由层3 修复器兜底）；无长途点时规划 user prompt 逐字不变。
+    // 坐标来源（09-23）：调研旁路捕获优先，知识库坐标兜底——知识库来源候选（search_verified_places）
+    // 不经 search_pois，旁路没有它的坐标，不兜底会被跳过标级（实测：八达岭因此与慕田峪同时入选市区天）。
+    // placeFacts 前移到此处：标级与排程复用同一份事实，不重复查询。
+    const placeFacts = await loadPlaceFacts(research.pool.map((poi) => poi.name), form.destination);
+    const kbCoords = new Map<string, { lat: number; lng: number }>();
+    for (const poi of research.pool) {
+      if (research.locations.has(poi.name)) continue;
+      const facts = placeFacts.get(poi.name);
+      if (facts?.lat !== undefined && facts.lng !== undefined) kbCoords.set(poi.name, { lat: facts.lat, lng: facts.lng });
+    }
     // 纯函数按理不抛，仍按增强路径防御（生成不失败原则，同 resolveGeoAndSimulate）：意外异常只损失情报、按无标记降级。
     let longHaulIntel: LongHaulPoi[] = [];
     try {
-      longHaulIntel = classifyLongHaulPois(research.pool, research.locations, form.transportMode ?? 'transit');
+      longHaulIntel = classifyLongHaulPois(research.pool, research.locations, form.transportMode ?? 'transit', kbCoords);
     } catch {
       // 按无情报降级，生成继续
     }
@@ -275,7 +287,6 @@ export async function runGeneration(
     // 实测让 LLM 推结构要烧 4.7 万输出 token / 432s，且第 2 轮修订又会撞超时（09-20 报告）。
     // 排程是结构唯一来源 —— 排不出来就没有行程可言，不做「降级继续」。
     startPhase('plan', 1, '确定性排程');
-    const placeFacts = await loadPlaceFacts(research.pool.map((poi) => poi.name), form.destination);
     const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
       applyDeterministicSchedule({
         draft,

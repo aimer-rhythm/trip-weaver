@@ -134,3 +134,42 @@ test('金标：市区点不误标；颐和园/圆明园按西北远郊方向标�
   // 降序：最重的排最前，注入 prompt 时优先呈现
   assert.ok(marks[0]!.durationMin >= marks[1]!.durationMin && marks[1]!.durationMin >= marks[2]!.durationMin);
 });
+
+// ---------- fallbackCoords：知识库坐标兜底（09-23） ----------
+
+// 北京真实坐标（GCJ-02）：市区三点 + 两个长城
+const BJ = {
+  gugong: { lat: 39.9163, lng: 116.3972 },
+  tiantan: { lat: 39.8822, lng: 116.4066 },
+  yonghegong: { lat: 39.947, lng: 116.4171 },
+  badaling: { lat: 40.3598, lng: 116.0201 },   // 西北远郊 ~60km
+  mutianyu: { lat: 40.4319, lng: 116.5703 },   // 东北远郊 ~70km
+};
+
+test('fallbackCoords：知识库来源候选无旁路坐标时，用兜底坐标参与标级', () => {
+  const pool = [poi('故宫博物院'), poi('天坛公园'), poi('雍和宫'), poi('八达岭长城')];
+  // 旁路只有市区三点（模拟 search_pois 只搜了市区），八达岭走知识库兜底
+  const locations = new Map([
+    ['故宫博物院', BJ.gugong],
+    ['天坛公园', BJ.tiantan],
+    ['雍和宫', BJ.yonghegong],
+  ]);
+  const fallback = new Map([['八达岭长城', BJ.badaling]]);
+  const marks = classifyLongHaulPois(pool, locations, 'transit', fallback);
+  const bdl = marks.find((m) => m.name === '八达岭长城');
+  assert.ok(bdl, '八达岭应被标级（兜底坐标参与），实际未被标记');
+  assert.equal(bdl.tier, 'exclusive', `八达岭应为强独占级，实际 ${bdl.tier}`);
+});
+
+test('fallbackCoords：旁路坐标优先于兜底（不覆盖已捕获值）', () => {
+  const pool = [poi('故宫博物院'), poi('天坛公园'), poi('雍和宫'), poi('八达岭长城')];
+  const locations = new Map([
+    ['故宫博物院', BJ.gugong],
+    ['天坛公园', BJ.tiantan],
+    ['雍和宫', BJ.yonghegong],
+    ['八达岭长城', BJ.gugong],  // 旁路捕到一个错误的市区坐标
+  ]);
+  const fallback = new Map([['八达岭长城', BJ.badaling]]);
+  const marks = classifyLongHaulPois(pool, locations, 'transit', fallback);
+  assert.equal(marks.find((m) => m.name === '八达岭长城'), undefined, '旁路坐标优先，错误坐标不应被兜底覆盖');
+});

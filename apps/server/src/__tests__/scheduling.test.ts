@@ -306,3 +306,21 @@ test('顺序约束：约束一端缺席时不生效，两端在但无坐标时�
   );
   assert.ok(strandedPred.days[0]!.stops.length > 0, '退让后仍应产出正常排程');
 });
+
+// ---------- 同类远郊点：独占上限挤掉低分者（09-23） ----------
+
+test('双长城场景：两个强独占级候选 → 低分者不入选（droppedCount 计入）', () => {
+  const result = buildSchedule(
+    [
+      poi({ name: '故宫博物院', score: 100, weight: 3, lat: 39.9163, lng: 116.3972 }),
+      poi({ name: '景山公园', score: 60, weight: 2, lat: 39.9251, lng: 116.3966 }),
+      poi({ name: '慕田峪长城', score: 50, weight: 3, lat: 40.4319, lng: 116.5703 }),
+      poi({ name: '八达岭长城', score: 40, weight: 3, lat: 40.3598, lng: 116.0201 }),
+    ],
+    { days: 3, foodFocused: false, exclusiveNames: ['慕田峪长城', '八达岭长城'] },
+  );
+  const allNames = result.days.flatMap((d) => d.stops.map((s) => s.poi.name));
+  assert.ok(allNames.includes('慕田峪长城'), '高分独占点应入选');
+  assert.ok(!allNames.includes('八达岭长城'), '第二个长城应被独占上限挤掉');
+  assert.equal(result.droppedCount, 1);
+});
