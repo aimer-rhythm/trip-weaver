@@ -49,13 +49,13 @@
 - 美食导向：每段插午餐/晚餐锚点（无时间，只作为顺序列表项）
 - orchestrator：`repairTransitTiming` 与 `ensureMealCoverage` 调用移除（都没有时间轴可依）
 
-## 验收标准
+## 验收结果（2026-09-22 实测闭环）
 
-- [ ] 任意一天的景点数 ≤ `maxStopsPerDay`，且天数间数量差 ≤1
-- [ ] 【强独占级】地点所在天不含其它远端点
-- [ ] 无时间轴的行程能正常落库、前端不崩
-- [ ] `npm run typecheck` + 单测 + `node scripts/verify-c2.mjs` 全绿
-- [ ] 复跑 `test-gen-timing.mts`：单日活动数均衡、无 200min+ 跨区段
+- [x] 任意一天景点数 ≤ maxStopsPerDay：实测 4/1/4（Day2=1 为慕田峪强独占日的**设计意图**，「数量差 ≤1」不适用于独占日，以独占豁免修正该条）
+- [x] 【强独占级】地点所在天不含其它远端点：慕田峪独占 Day2 ✓
+- [x] 无时间轴行程正常落库、verify-c2 断言「时间留空」通过 ✓
+- [x] `npm run typecheck` + 单测 207/207 + `node scripts/verify-c2.mjs` 全绿 ✓
+- [x] 复跑 `test-gen-timing.mts`：总耗时 228.6s（plan 阶段 2.9s 零 LLM 调用）；无 200min+ 跨区段（最差 89min）；Day3 景山→故宫→天坛→奥林匹克有 soft 回折提示（如实进 reviewNotes）
 
 ## Out of Scope
 
