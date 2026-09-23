@@ -1,0 +1,20 @@
+{"file": ".trellis/spec/guides/index.md", "reason": "跨包思考指南入口，任何跨 shared/server/web 的改动都要先过一遍"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务端开发前检查清单：模块归属、TypeBox 请求 schema、userId 所有权校验、schema/migrate 同步"}
+{"file": ".trellis/spec/server/backend/directory-structure.md", "reason": "新增 src/chat/ 模块与 src/routes/conversations.ts 的命名与 route/service 边界规则"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "新增 conversations / messages / planning_briefs 三表，并给 generations / trips 加列——drizzle schema 与 migrate 双改是硬约束"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "复用后台 job、SSE、取消与单实例限制；revision 链路必须遵循同一套约束"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "新增对话接口的错误处理与降级行为（LLM 失败、额度耗尽、会话不存在）"}
+{"file": ".trellis/spec/server/backend/logging-guidelines.md", "reason": "DoD 要求新增接口有日志；需遵循 Pino 级别、上下文与密钥脱敏约定"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "服务端验收命令矩阵与验证脚本选择"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "会话/消息都是用户私有数据，读写必须带 requireAuth + userId 所有权谓词，失败返回非枚举式 404"}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "前端开发前检查清单：路由/页面/组件/store 的归属决策与质量检查清单"}
+{"file": ".trellis/spec/web/frontend/state-management.md", "reason": "chatStore reducer 与 React Query / sessionStorage / SSE 派生状态的边界划分——本任务核心设计点"}
+{"file": ".trellis/spec/web/frontend/hook-guidelines.md", "reason": "新增对话 query/mutation 与 SSE 订阅、清理与重连逻辑"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "新增 components/chat/ 下的消息流、确认卡、输入区组件；含 form/dialog/可访问性约定"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "SSE payload、URL state、导入 JSON 等不可信输入必须在边界处校验后再进入领域状态"}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "web 端验证现实（无测试脚本）与必须执行的检查"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "shared 包后端面契约：新增 chat.ts 契约时必须遵守的导出口与依赖方向"}
+{"file": ".trellis/spec/shared/frontend/type-safety.md", "reason": "shared 统一用 TypeBox schema + Static<> 派生类型，禁止断言替代校验"}
+{"file": ".trellis/tasks/09-23-qa-trip-generation/research/floattrip-conversational-flow.md", "reason": "DialogueDecision / PlanningBriefPatch / TripConstraintPatch / input_schema / Run 生命周期与 SSE 重放的设计蓝本"}
+{"file": ".trellis/tasks/09-23-qa-trip-generation/research/rikkahub-chat-ui-patterns.md", "reason": "Message parts 模型、工具调用可视化三层降级、ask_user 内联控件、复制降级"}
+{"file": ".trellis/tasks/09-23-qa-trip-generation/research/conversational-vs-form-migration.md", "reason": "字段级形态建议（枚举/日期给控件、自由文本才对话）与可用性风险清单，直接约束确认卡与追问控件设计"}

@@ -1,0 +1,16 @@
+{"file": ".trellis/spec/guides/index.md", "reason": "跨包一致性检查入口"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "本任务横跨 shared 契约 → server 路由 → web 状态三层，需要逐层核对数据流"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "生成链路、SSE 时间线、行程编辑能力都已存在，检查是否被重复实现"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务端质量检查清单"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "验收命令矩阵：typecheck / 验证脚本 / git diff --check"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "核对 schema.ts 与 migrate.ts 是否同步、migration 是否幂等"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "核对新增接口的失败路径是否可操作、未泄露内部错误"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "重点核对会话/消息/行程的 userId 所有权过滤，防止越权读写"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "核对 revision 链路是否复用了既有 job/SSE/取消语义而未引入新分支"}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "前端质量检查清单（含无测试脚本时的手工验证要求）"}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "前端验证现实与反模式检查"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "核对 SSE payload / 服务端返回 JSON 是否在边界处校验"}
+{"file": ".trellis/spec/web/frontend/state-management.md", "reason": "核对 chatStore 是否纯函数、是否与 React Query 职责重叠、是否误把服务端状态放进 store"}
+{"file": ".trellis/spec/shared/frontend/type-safety.md", "reason": "核对新契约是否为 TypeBox schema + Static<> 派生，是否经 index.ts 导出"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "核对 shared 新增导出是否破坏跨运行时约束（不得引入 Fastify/React/DOM/DB）"}
+{"file": ".trellis/tasks/09-23-qa-trip-generation/research/floattrip-conversational-flow.md", "reason": "作为实现对照基准：核对对话/规划边界、4 个必填字段、polarity 语义是否被正确落地"}
