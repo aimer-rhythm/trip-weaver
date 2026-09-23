@@ -289,7 +289,10 @@ export async function runGeneration(
     );
     const scheduleProblems = draft.validate();
     if (scheduleProblems.length) {
-      throw new GenerationFailure(`行程排程结果不完整：${scheduleProblems.join('；')}。请重试`);
+      // 把每日活动数一并报出：排程 bug 的症状通常是「某天挤爆」而不是某个点排错，
+      // 且每日分布是唯一能一眼看出分组形状的信息。
+      const shape = scheduleOutcome.schedule.days.map((day) => `第${day.dayIndex}天${day.stops.length}个`).join('｜');
+      throw new GenerationFailure(`行程排程结果不完整（${shape}，候选 ${research.pool.length} 个）：${scheduleProblems.join('；')}。请重试`);
     }
 
     // 时序前移（M0-A）：排程后立刻解析全量坐标/leg 并跑可行性引擎，让修复器与文案阶段拿到真实时间线。

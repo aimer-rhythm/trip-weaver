@@ -266,7 +266,7 @@ try {
   // 坐标解析走高德→Nominatim 降级链：本脚本无高德 Key，Nominatim 视网络可用性可能成功——
   // 两种结果都合法，按「有坐标 ⇔ 有住宿哨兵 leg」的一致性断言（哨兵契约见 TransitLegSchema）。
   check('transportMode 缺省 transit 持久化', trip.json?.transportMode === 'transit', trip.json?.transportMode);
-  check('住宿区域由代码推导自知识库住宿候选', trip.json?.lodging?.name === '测试酒店', JSON.stringify(trip.json?.lodging));
+  check('住宿不由生成产出（未指定时留空，不推具体商家）', trip.json?.lodging === undefined, JSON.stringify(trip.json?.lodging));
   const lodgingHasCoord = typeof trip.json?.lodging?.lat === 'number' && typeof trip.json?.lodging?.lng === 'number';
   const sentinelConsistent = trip.json?.days?.every((d) => {
     const legs = d.legs ?? [];

@@ -7,6 +7,8 @@ export interface PlaceFacts {
   name: string;
   /** canonical_places.category：8 活动类目，作为停留时长的二级兜底 */
   category: string;
+  /** canonical_places.source：goldset | xhs | amap | manual —— 选点权重要用它给金集加分 */
+  source: string;
   /** payload.typicalVisitMinutes：上游抽到的真实停留时长 */
   visitMinutes?: number;
   /** payload.xhsPlaceType：细粒度地点类型 */
@@ -27,6 +29,7 @@ export interface PlaceFacts {
 interface FactRow {
   name: string;
   category: string;
+  source: string;
   lng: number | null;
   lat: number | null;
   payload: unknown;
@@ -50,6 +53,7 @@ function toFacts(row: FactRow): PlaceFacts {
   const facts: PlaceFacts = {
     name: row.name,
     category: row.category,
+    source: row.source,
     themes: stringArrayField(payload, 'themes'),
     recommendScore: numberField(payload, 'recommendScore') ?? 0,
     mentionCount: numberField(payload, 'mentionCount') ?? 0,
@@ -74,7 +78,7 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
   if (!unique.length || !city.trim()) return new Map();
   try {
     const { rows } = await pool.query<FactRow>(
-      `SELECT name, category, lng, lat, payload
+      `SELECT name, category, source, lng, lat, payload
        FROM canonical_places
        WHERE city = $1 AND name = ANY($2)`,
       [city, unique],

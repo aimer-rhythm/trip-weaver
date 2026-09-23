@@ -12,6 +12,7 @@
 // 分数只决定「入选 + 分到哪天」，不插手段内顺序 —— 否则会把高分点插到不顺路的位置，
 // 通勤成本又回来了（景山→故宫 41min 那种段就是这么来的）。
 import type { PoiCategory } from '@tripweaver/shared';
+import { dateForDayIndex, isClosedOnDate } from '@tripweaver/shared';
 
 export interface SchedulablePoi {
   id: string;
@@ -23,6 +24,10 @@ export interface SchedulablePoi {
   lng?: number;
   /** 入选与分天权重（社区推荐分 + 提及次数的归一化合成），越大越优先 */
   score: number;
+  /** 停留分量（1~3，见 visitWeight.ts）：没有可靠游玩时长，用相对量级守住「一天排不排得下」 */
+  weight: number;
+  /** 高德营业时间原文（仅 attraction 可能有）：闭馆日检测用（09-22-opentime） */
+  openTime?: string;
   /** payload.themes 的首个标签，用于每天主题 */
   theme?: string;
   /** 知识库的 8 活动类目（文化/自然/…），主题缺失时的回退标签 */
@@ -50,6 +55,8 @@ export interface ScheduleOptions {
   exclusiveNames?: readonly string[];
   /** 餐次锚点缺失、或空天占位时的兜底片区名（通常传目的地） */
   fallbackArea?: string;
+  /** 行程开始日期（YYYY-MM-DD）：闭馆日避让的唯一日期输入；为空时不干预分天（拿不准不校验） */
+  startDate?: string;
 }
 
 export interface ScheduleResult {
@@ -61,6 +68,17 @@ export interface ScheduleResult {
 export const SCHEDULE_LIMITS = {
   /** 单日最多活动数（既有单日 ≤8 完整性校验的上游约束，排程收紧到 6） */
   maxStopsPerDay: 6,
+  /**
+   * 强独占级地点最多吃掉多少比例的天数：远郊点占满一半就够，再多就没有市区行程了。
+   * 3 天行程实测踩到：八达岭 + 慕田峪 各占一天 → 3 天里 2 天在长城。
+   * 同类的远郊点（同为长城/同为古镇）自然被这个上限挤掉，不需要额外的相似度判定。
+   */
+  maxExclusiveDayRatio: 0.5,
+  /**
+   * 每日停留分量上限：8 = 一天 4 个普通景点，或 2 个大景区 + 1 个普通点。
+   * 实测六个点挤一天（合计 12）会被拆成两天。
+   */
+  dayWeightLimit: 8,
   /** 空天占位活动的名称前缀（知识库无覆盖时如实占位，不编造地点） */
   emptyDayPrefix: '自由安排',
 } as const;
@@ -111,16 +129,65 @@ function buildChain(points: readonly SchedulablePoi[]): SchedulablePoi[] {
   return [...chain, ...stranded];
 }
 
-/** 把链均分成 k 段：每段 ⌈n/k⌉ 个，余数自然落在前面的段（链上相邻 = 地理相邻） */
-function cutChain(chain: readonly SchedulablePoi[], k: number): SchedulablePoi[][] {
-  if (k <= 0 || !chain.length) return [];
-  const per = Math.ceil(chain.length / k);
-  const segments: SchedulablePoi[][] = [];
-  for (let i = 0; i < k; i++) {
-    const slice = chain.slice(i * per, (i + 1) * per);
-    if (slice.length) segments.push(slice);
+/**
+ * 段内排顺：从段内最高分点出发做最近邻。
+ * 为什么切段后还要排一次：全局最近邻成链是在**整池**上跑的，链被按分量切开后，
+ * 段内顺序不一定还是一条局部最短路径 —— 实测出现「国博→先农坛→圆明园→前门大街」
+ * 这种 101/85min 的折返（段内跨了南城与西北郊）。段内重排直接消除这类折返。
+ * 无坐标候选不参与几何排序，按原序接在后面。
+ */
+function orderSegment(segment: readonly SchedulablePoi[]): SchedulablePoi[] {
+  const located = segment.filter(hasCoord);
+  const stranded = segment.filter((poi) => !hasCoord(poi));
+  if (located.length <= 2) return [...segment];
+
+  const start = located.reduce((best, poi) => (poi.score > best.score ? poi : best), located[0]!);
+  const remaining = new Set<SchedulablePoi>(located);
+  remaining.delete(start);
+  const ordered: SchedulablePoi[] = [start];
+  let cursor: Coord = start;
+  while (remaining.size) {
+    let nearest: SchedulablePoi | null = null;
+    let nearestKm = Infinity;
+    for (const poi of remaining) {
+      if (!hasCoord(poi)) continue;
+      const km = distanceKm(cursor, poi);
+      if (km < nearestKm) {
+        nearestKm = km;
+        nearest = poi;
+      }
+    }
+    if (!nearest) break;
+    ordered.push(nearest);
+    remaining.delete(nearest);
+    if (hasCoord(nearest)) cursor = nearest;   // located 里元素必有坐标，仅让类型收窄
   }
-  return segments;
+  return [...ordered, ...stranded];
+}
+
+/**
+ * 把链按「每日停留分量上限 + 单日个数上限」切成若干段，再对每段做一次段内最近邻排顺。
+ * 按分量而不是个数切，是因为个数根本区分不了「大点」与「小点」：
+ * 实测 Day1 六个点（雍和宫/恭王府/故宫/北海/景山/什刹海）合计分量 14，两天都装不下。
+ */
+function cutChain(chain: readonly SchedulablePoi[]): SchedulablePoi[][] {
+  const segments: SchedulablePoi[][] = [];
+  let current: SchedulablePoi[] = [];
+  let currentWeight = 0;
+  for (const poi of chain) {
+    const full =
+      current.length >= SCHEDULE_LIMITS.maxStopsPerDay ||
+      currentWeight + poi.weight > SCHEDULE_LIMITS.dayWeightLimit;
+    if (current.length && full) {
+      segments.push(current);
+      current = [];
+      currentWeight = 0;
+    }
+    current.push(poi);
+    currentWeight += poi.weight;
+  }
+  if (current.length) segments.push(current);
+  return segments.map(orderSegment);
 }
 
 function dayTitle(members: readonly SchedulablePoi[]): string {
@@ -171,6 +238,7 @@ function withMeals(
     name: fallbackArea,
     category: 'food',
     score: 0,
+    weight: 1,
   };
   return { poi, meal: kind };
 }
@@ -182,6 +250,7 @@ function placeholderStop(destination: string): ScheduledStop {
       name: `${SCHEDULE_LIMITS.emptyDayPrefix}｜${destination}`,
       category: 'other',
       score: 0,
+      weight: 0,
     },
   };
 }
@@ -199,27 +268,71 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
   const dropped = new Set<SchedulablePoi>();
 
   const exclusiveNames = new Set(options.exclusiveNames ?? []);
-  const exclusive = attractions.filter((poi) => exclusiveNames.has(poi.name));
+  // 远郊独占点按分数降序：高分点优先占天
+  const exclusive = attractions.filter((poi) => exclusiveNames.has(poi.name)).sort(byScore);
   const rest = attractions.filter((poi) => !exclusiveNames.has(poi.name));
 
-  // 天数被强独占级吃掉的部分先算掉：独占点各占一天，多出来的直接丢弃
-  const keptExclusive = exclusive.slice(0, options.days);
-  for (const poi of exclusive.slice(options.days)) dropped.add(poi);
+  // 强独占级最多占一半天数，多出来的直接丢弃 —— 降级成普通点会把它塞进市区天，
+  // 正是长途点纪律要防的事（慕田峪距市区 70km，与市区点混排就是实测那份 JSON 的病）。
+  const exclusiveDayCap = Math.max(1, Math.floor(options.days * SCHEDULE_LIMITS.maxExclusiveDayRatio));
+  const keptExclusive = exclusive.slice(0, exclusiveDayCap);
+  for (const poi of exclusive.slice(exclusiveDayCap)) dropped.add(poi);
 
-  // 入选：其余按分数取到容量上限，超出的按分数丢弃
-  const capacity = Math.max(0, options.days * SCHEDULE_LIMITS.maxStopsPerDay - keptExclusive.length);
-  const selected = rest.slice(0, capacity);
-  for (const poi of rest.slice(capacity)) dropped.add(poi);
+  // 入选容量按**停留分量**，且只看剩下的天数（独占日各自只放它自己那 1 个点）。
+  // 按分数降序贪心装填：装不下的（太占分量）跳过，由后面的轻点补位。
+  const remainingDays = options.days - keptExclusive.length;
+  const weightCapacity = Math.max(0, remainingDays * SCHEDULE_LIMITS.dayWeightLimit);
+  const selected: SchedulablePoi[] = [];
+  let usedWeight = 0;
+  for (const poi of rest) {
+    if (usedWeight + poi.weight > weightCapacity) {
+      dropped.add(poi);
+      continue;
+    }
+    selected.push(poi);
+    usedWeight += poi.weight;
+  }
 
   const segments: SchedulablePoi[][] = keptExclusive.map((poi) => [poi]);
-  const remainingDays = options.days - segments.length;
-  if (remainingDays > 0) segments.push(...cutChain(buildChain(selected), remainingDays));
+  if (remainingDays > 0 && selected.length) {
+    const restSegments = cutChain(buildChain(selected));
+    // 切出来的段多于剩余天数（分量分布不均时会发生）：多出来的整段丢弃，不硬塞
+    for (const segment of restSegments.slice(remainingDays)) {
+      for (const poi of segment) dropped.add(poi);
+    }
+    segments.push(...restSegments.slice(0, remainingDays));
+  }
 
   // 段按权重降序 → Day1..k（D1：分数高的排靠前）。
   // 权重取**段内最高分**而非总分：总分会让「三个平庸点」压过「一个必去点」，
   // 把长城这类独占日的头牌推到 Day2。
   const weight = (segment: readonly SchedulablePoi[]) => Math.max(...segment.map((poi) => poi.score));
   segments.sort((a, b) => weight(b) - weight(a));
+
+  // 闭馆日避让（09-22-opentime）：段→天分配按权重顺序贪心选「该段无成员闭馆」的最早可用天；
+  // 整段移动而不是单点挪动 —— 段内顺序是链上顺路关系，挪单点会破坏连续性。
+  // 无处可避（全闭馆/天数不够）时照常分配，由可行性引擎的 closed_on_arrival 硬违规收口。
+  const closedDayIndexes = (segment: readonly SchedulablePoi[]): Set<number> => {
+    const closed = new Set<number>();
+    if (!options.startDate) return closed;
+    for (let i = 0; i < options.days; i++) {
+      const date = dateForDayIndex(options.startDate, i + 1);
+      if (date && segment.some((poi) => isClosedOnDate(poi.openTime, date))) closed.add(i);
+    }
+    return closed;
+  };
+
+  const assignedDays = new Set<number>();
+  const pickDay = (segment: readonly SchedulablePoi[]): number => {
+    const closed = closedDayIndexes(segment);
+    for (let i = 0; i < options.days; i++) {
+      if (!assignedDays.has(i) && !closed.has(i)) return i;
+    }
+    for (let i = 0; i < options.days; i++) {
+      if (!assignedDays.has(i)) return i;
+    }
+    return -1;
+  };
 
   const fallbackArea = options.fallbackArea?.trim() || '目的地';
   const days: ScheduledDay[] = Array.from({ length: options.days }, (_, index) => ({
@@ -228,8 +341,11 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     stops: [] as ScheduledStop[],
   }));
 
-  segments.slice(0, options.days).forEach((segment, index) => {
-    const day = days[index]!;
+  for (const segment of segments.slice(0, options.days)) {
+    const target = pickDay(segment);
+    if (target === -1) break;
+    assignedDays.add(target);
+    const day = days[target]!;
     day.title = dayTitle(segment);
     const stops: ScheduledStop[] = segment.map((poi) => ({ poi }));
     if (options.foodFocused) {
@@ -239,7 +355,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
       stops.push(withMeals(segment, foods, 'dinner', segment[segment.length - 1], fallbackArea));
     }
     day.stops = stops;
-  });
+  }
 
   for (const day of days) {
     if (day.stops.length) continue;

@@ -10,8 +10,10 @@ import {
 } from '@tripweaver/shared';
 import type { DraftTrip } from '../draft';
 import { createResearchPlaceLookup, type ResearchLocation } from '../placeLookup';
-import { medianCenter, type LongHaulPoi } from '../longHaul';
-import { buildSchedule, distanceKm, type ScheduleResult, type SchedulablePoi } from './schedule';
+import type { LongHaulPoi } from '../longHaul';
+import { buildSchedule, type ScheduleResult, type SchedulablePoi } from './schedule';
+import { poiScore, scoreMaxima } from './score';
+import { visitWeight } from './visitWeight';
 import type { PlaceFacts } from './placeFacts';
 
 export interface ScheduleDraftInput {
@@ -59,7 +61,6 @@ interface LocatedPoi {
 export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleDraftResult {
   const lookup = createResearchPlaceLookup(input.pool, input.locations);
   const located: LocatedPoi[] = [];
-  const hotels: LocatedPoi[] = [];
   let withoutCoord = 0;
   for (const poi of input.pool) {
     const { point } = lookup({ name: poi.name, poiId: poi.id });
@@ -72,25 +73,27 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
       (facts?.lat !== undefined && facts.lng !== undefined
         ? { lat: facts.lat, lng: facts.lng, adcode: facts.adcode ?? '' }
         : undefined);
-    const entry: LocatedPoi = { poi, ...(coords ? { point: coords } : {}), facts };
+    // 住宿不进编排（09-22）：既不排成活动，也不梯推导住宿区域。
+    // 之前拿 hotel 候选的 name 当住宿区域名，必然产出具体商家（实测：「北京丽晶酒店」
+    // 「观旗宾馆(北京天安门广场店)」），违反「只给区域名、严禁具体酒店」。
+    if (poi.category === 'hotel') continue;
     if (!coords) withoutCoord += 1;
-    // hotel 不排成活动，但无条件留着推导住宿区域
-    if (poi.category === 'hotel') hotels.push(entry);
-    else located.push(entry);
+    located.push({ poi, ...(coords ? { point: coords } : {}), facts });
   }
 
-  // 选点权重归一化（尺度无关，避免 recommendScore 与 mentionCount 量纲不同互相压死）：
-  // 社区推荐分（质量）0.6 + 提及次数（热度）0.4
-  const maxScore = Math.max(1, ...located.map((item) => item.facts?.recommendScore ?? 0));
-  const maxMention = Math.max(1, ...located.map((item) => item.facts?.mentionCount ?? 0));
+  // 选点权重：社区推荐分（质量）0.6 + 提及次数（热度）0.4 + 金集加分。
+  // 归一化基准只统计有值的样本；缺失值走中性比例（不当 0）—— 否则金集地标会被排到最后。
+  const maxima = scoreMaxima(located.map((item) => item.facts));
   const points: SchedulablePoi[] = located.map(({ poi, point, facts }) => {
     const schedulable: SchedulablePoi = {
       id: poi.id,
       name: poi.name,
       category: poi.category,
       ...(point ? { lat: point.lat, lng: point.lng } : {}),
-      score: ((facts?.recommendScore ?? 0) / maxScore) * 60 + ((facts?.mentionCount ?? 0) / maxMention) * 40,
+      score: poiScore(facts, maxima),
+      weight: visitWeight(facts),
     };
+    if (poi.openTime) schedulable.openTime = poi.openTime;
     const theme = facts?.themes[0];
     if (theme) schedulable.theme = theme;
     // 知识库的 8 活动类目：主题缺失时的回退标签（图片/街道类点上常常没有 themes）
@@ -103,32 +106,13 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     foodFocused: input.foodFocused,
     exclusiveNames: input.longHaul.filter((item) => item.tier === 'exclusive').map((item) => item.name),
     fallbackArea: input.form.destination,
+    startDate: input.form.startDate || undefined,
   });
 
   input.draft.setSkeleton(
     `${input.form.destination}${input.form.days}日行程`,
     schedule.days.map((day) => day.title),
   );
-
-  // 住宿区域：用户未指定时由代码推导（Yuntu accommodation_resolver 的最小版）——
-  // 取离「全部排入活动坐标中位中心」最近的住宿候选；都无坐标时退为最高分住宿候选。
-  // 没候选就留空 —— 不编造区域名，也不推荐具体酒店/价格。
-  if (!input.form.lodging?.trim() && hotels.length) {
-    const center = medianCenter(
-      points.filter((poi) => poi.lat !== undefined).map((poi) => ({ lat: poi.lat!, lng: poi.lng! })),
-    );
-    const withCoord = center ? hotels.filter((hotel) => hotel.point) : [];
-    const nearest = withCoord.length
-      ? withCoord.reduce((best, hotel) =>
-          distanceKm(hotel.point!, center!) < distanceKm(best.point!, center!) ? hotel : best,
-        )
-      : [...hotels].sort(
-          (a, b) =>
-            (b.facts?.recommendScore ?? 0) + (b.facts?.mentionCount ?? 0) -
-              ((a.facts?.recommendScore ?? 0) + (a.facts?.mentionCount ?? 0)) || a.poi.name.localeCompare(b.poi.name),
-        )[0]!;
-    input.draft.setLodging(nearest.poi.name);
-  }
 
   const byId = new Map(located.map((item) => [item.poi.id, item]));
   let written = 0;
@@ -155,6 +139,7 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
         endTime: '',
         category: activityCategory(stop.poi, source?.facts),
         description: (source?.poi.intro ?? '').trim().slice(0, 100),
+        ...(source?.poi.openTime ? { openTime: source.poi.openTime } : {}),
         ...(source?.poi.sourceLinks.length ? { sourceNotes: source.poi.sourceLinks.slice(0, MAX_SOURCE_NOTES) } : {}),
       });
       written += 1;

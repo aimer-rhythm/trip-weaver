@@ -97,8 +97,15 @@ async function main(): Promise<void> {
 
     for (const batch of chunk(places, BATCH_SIZE)) {
       // 地点 UPSERT：重复执行结果一致。
-      // 关键：撞到其他 source（如金集 goldset）时**不覆盖**，只更新自家 xhs 记录，
-      // 否则会把金集的 source/payload 改写掉（同类同名地点 id 相同）。
+      //
+      // 金集优先（09-22 修正）：现行为金集时**保留它的身份字段**（name/category/坐标/source/verified），
+      // 但把社区侧 payload 合并进来。原来是 `WHERE source = EXCLUDED.source` 直接跳过整行 ——
+      // 后果是金集行的 payload 永远停在 {caseId, activity}，拿不到 recommendScore/mentionCount，
+      // 而那些行恰好就是故宫/天坛/北海这类地标：编排里 score=0 → 排到链尾、段最后、
+      // 容量紧张时被优先丢弃，排序被彻底反转。
+      //
+      // 合并顺序 `EXCLUDED.payload || 现行 payload` 让金集的键胜出（金集优先）；
+      // 金集已有分数且不低于本次导入时保留金集的（同一地点两份分数取高者）。
       const res = await client.query(
         `INSERT INTO canonical_places (id, city, name, category, lng, lat, source, verified, payload, created_at)
          SELECT * FROM UNNEST(
@@ -106,15 +113,38 @@ async function main(): Promise<void> {
            $7::text[], $8::boolean[], $9::jsonb[], $10::timestamptz[]
          )
          ON CONFLICT (id) DO UPDATE SET
-           city = EXCLUDED.city,
-           name = EXCLUDED.name,
-           category = EXCLUDED.category,
-           lng = EXCLUDED.lng,
-           lat = EXCLUDED.lat,
-           source = EXCLUDED.source,
-           verified = EXCLUDED.verified,
-           payload = EXCLUDED.payload
-         WHERE canonical_places.source = EXCLUDED.source`,
+           city = canonical_places.city,
+           name = canonical_places.name,
+           category = canonical_places.category,
+           lng = canonical_places.lng,
+           lat = canonical_places.lat,
+           source = canonical_places.source,
+           verified = canonical_places.verified,
+           payload = CASE
+             WHEN canonical_places.source = EXCLUDED.source THEN
+               EXCLUDED.payload
+               -- 同为金集：两份都可能有分数，取高者（不因重导回退旧值）
+               || CASE
+                    WHEN coalesce((canonical_places.payload->>'recommendScore')::float8, 0)
+                       >= coalesce((EXCLUDED.payload->>'recommendScore')::float8, 0)
+                    THEN jsonb_build_object(
+                           'recommendScore', canonical_places.payload->'recommendScore',
+                           'mentionCount', canonical_places.payload->'mentionCount')
+                    ELSE '{}'::jsonb
+                  END
+             ELSE
+               EXCLUDED.payload || coalesce(canonical_places.payload, '{}'::jsonb)
+               || CASE
+                    WHEN coalesce((canonical_places.payload->>'recommendScore')::float8, 0)
+                       >= coalesce((EXCLUDED.payload->>'recommendScore')::float8, 0)
+                    THEN jsonb_build_object(
+                           'recommendScore', canonical_places.payload->'recommendScore',
+                           'mentionCount', canonical_places.payload->'mentionCount')
+                    ELSE '{}'::jsonb
+                  END
+           END
+         WHERE canonical_places.source = EXCLUDED.source
+            OR canonical_places.source = 'goldset'`,
         [
           batch.map((p) => p.id),
           batch.map(() => file.city),
