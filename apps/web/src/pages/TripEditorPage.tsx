@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useSaveTrip, useTrip } from '../api/hooks';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useSaveTrip, useTrip, useTripVersions } from '../api/hooks';
 import { useEditorStore } from '../store/editorStore';
 import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
 import { CandidateDrawer } from '../components/editor/CandidateDrawer';
@@ -15,7 +15,9 @@ type MobileTab = 'list' | 'map';
 
 export function TripEditorPage() {
   const { id = '' } = useParams();
+  const navigate = useNavigate();
   const tripQuery = useTrip(id);
+  const versions = useTripVersions(id);
   const saveTrip = useSaveTrip();
 
   const trip = useEditorStore((s) => s.trip);
@@ -116,6 +118,23 @@ export function TripEditorPage() {
               {trip.destination} · {trip.days.length} 天 · {trip.partySize} 人
             </span>
           </div>
+          {/* 版本链（09-23）：对话内修订产出的新版本可在同一链上切换对比 */}
+          {versions.data && versions.data.versions.length > 1 && (
+            <div className="trip-versions" role="group" aria-label="版本切换">
+              {versions.data.versions.map((v) => (
+                <button
+                  key={v.id}
+                  type="button"
+                  className={`btn btn-chip ${v.id === id ? 'is-active' : ''}`}
+                  aria-current={v.id === id}
+                  title={`${v.title} · ${new Date(v.createdAt).toLocaleDateString()}`}
+                  onClick={() => v.id !== id && navigate(`/trips/${v.id}`)}
+                >
+                  v{v.version}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <div className="editor-toolbar-right">
           <span className={`save-state ${saveState === 'error' ? 'text-danger' : ''}`}>{saveLabel[saveState]}</span>

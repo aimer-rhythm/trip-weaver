@@ -103,6 +103,7 @@ export function TripListPage() {
             <Link to={`/trips/${t.id}`} className="trip-card-main">
               <span className="trip-card-title">{t.title}</span>
               <span className="trip-card-meta">
+                {t.version > 1 && <span className="trip-version-badge">v{t.version}</span>}
                 {t.destination} · {t.daysCount} 天 · {t.activityCount} 个活动
               </span>
               <span className="trip-card-time muted">更新于 {formatTime(t.updatedAt)}</span>
