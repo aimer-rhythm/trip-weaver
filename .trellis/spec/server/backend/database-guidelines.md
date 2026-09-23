@@ -25,6 +25,14 @@ This project intentionally does not use a drizzle-kit migration history. A chang
 Drizzle types inaccurate. `scripts/verify-c2.mjs` creates a legacy `generations` table and
 checks that startup migration adds current audit columns.
 
+**Ordering rule for columns added later**: an index on a column that did not exist originally must be
+created *after* the `ADD COLUMN IF NOT EXISTS` statements, never inside the `STATEMENTS` array. The
+array runs first, so on an existing database `CREATE INDEX ... ON trips(root_id)` fails with
+`column "root_id" does not exist` before the column is ever added. The same applies to backfills:
+add the column, `UPDATE ... WHERE col IS NULL`, then `ALTER COLUMN col SET NOT NULL`, in that order.
+`verify-c2.mjs` seeds a legacy row rather than an empty table, because `SET NOT NULL` cannot fail on
+an empty table and would therefore hide a broken backfill.
+
 ## Naming and Storage Representation
 
 - Drizzle properties use camelCase; SQLite columns use snake_case.

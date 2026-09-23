@@ -14,6 +14,7 @@ has a more specific convention.
 - [Integration guidelines](./integration-guidelines.md): external source adapters, Null implementations, caches, queues, limits, and accounting.
 - [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
 - [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
+- [Chat and conversational intake guidelines](./chat-guidelines.md): dialogue intents, Brief readiness and intake controls, chat quota, revision and version chains, and the two-TypeBox-package trap.
 - [Quality guidelines](./quality-guidelines.md): validation rules and the real command matrix.
 
 ## Pre-Development Checklist
@@ -25,6 +26,7 @@ has a more specific convention.
 - For database shape changes, plan matching edits to both `apps/server/src/db/schema.ts` and `apps/server/src/db/migrate.ts`.
 - For outbound calls, identify timeout, SSRF, Null fallback, cache, serialization, task limit, and quota/accounting behavior.
 - For retrieval, prompt-injection, or knowledge-table work, read [RAG retrieval guidelines](./rag-guidelines.md); retrieval stays optional enrichment that degrades to an empty result.
+- For `/trips/new`, dialogue understanding, Planning Brief, chat quota, or revision/version-chain work, read [Chat and conversational intake guidelines](./chat-guidelines.md) — chat collects parameters and never generates itineraries.
 - Check whether a verification script needs a built `apps/web/dist` or starts its own isolated server.
 
 ## Quality Check Checklist

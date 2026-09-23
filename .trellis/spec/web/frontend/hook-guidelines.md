@@ -50,7 +50,23 @@ Generation progress is an external event stream, not React Query cache state. `P
 
 Evidence: `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/components/GenerationTimeline.tsx`, `packages/shared/src/types.ts`.
 
-Treat SSE data as untrusted input even when the server and client share a union type. Parse inside `try/catch`, validate or narrowly guard the event shape before appending it, and convert malformed payloads into a controlled stream error. A type assertion after `JSON.parse` is not runtime validation; the current direct cast in `PlannerPage` is boundary debt to avoid extending.
+Treat SSE data as untrusted input even when the server and client share a union type. Parse inside `try/catch`, validate or narrowly guard the event shape before appending it, and convert malformed payloads into a controlled stream error. A type assertion after `JSON.parse` is not runtime validation. `useGenerationRun.ts` now drops malformed frames with a `try/catch`; keep any new consumer at the same bar.
+
+### Common Mistake: clearing the event list on the first `onopen`
+
+**Symptom**: the timeline renders phases and tools but the降级 banner never appears, or the first
+phase's contents are missing while later ones show. Long-standing screens are unaffected; it appears
+only on pages that mount the stream while other requests are in flight.
+
+**Cause**: `es.onopen = () => setEvents([])` is meant to make a reconnect replay from scratch, but
+`open` can be dispatched after the first `message` events have already updated React state. Clearing
+then wipes `job_start` (and anything else already delivered) while later events survive — an internally
+inconsistent timeline that looks like a rendering bug.
+
+**Fix / Prevention**: only clear on reconnects. Track an `opened` flag, skip the clear on the first
+`open` (the array is already empty because `start` cleared it), and clear from the second one onward.
+`apps/web/src/hooks/useGenerationRun.ts` implements this; verify with
+`node scripts/verify-c3.mjs`, which asserts the degradation banner is visible mid-run.
 
 ## Dependency Discipline
 
