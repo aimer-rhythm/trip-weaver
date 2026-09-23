@@ -1,14 +1,28 @@
 // 生成任务路由：POST（配额闸门）/ SSE 进度（Last-Event-ID 重放）/ 取消 / 快照
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
+import { Type } from '@sinclair/typebox';
 import { GenerateFormSchema, type GenerationEvent } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
 import { resolveLlmConfig } from '../services/settingsService';
+import { getConversation } from '../services/conversationService';
 import { hasQuota, usageView } from '../services/quotaService';
+import { getTrip } from '../services/tripService';
 import { hasSiteLlm } from '../env';
 import { createJob, getJob, getRunningJobId, jobView, subscribe, type StoredEvent } from '../generation/jobManager';
 import { runGeneration } from '../generation/orchestrator';
 
 const HEARTBEAT_MS = 25_000;
+
+// 生成入参 = 既有表单 + 对话来源标注。标注字段全部可选：表单入口不传，行为与以前一致。
+// kind 用显式字面量 Union（不用 map 构造）：map 会让 TS 把联合坍缩成单个字面量。
+const GenerateBodySchema = Type.Intersect([
+  GenerateFormSchema,
+  Type.Object({
+    conversationId: Type.Optional(Type.String({ maxLength: 64 })),
+    kind: Type.Optional(Type.Union([Type.Literal('generation'), Type.Literal('revision')])),
+    targetTripId: Type.Optional(Type.String({ maxLength: 64 })),   // kind=revision 时的修订目标
+  }),
+]);
 
 function isTerminalEvent(event: GenerationEvent): boolean {
   return event.type === 'job_done' || event.type === 'job_error' || event.type === 'job_cancelled';
@@ -17,8 +31,26 @@ function isTerminalEvent(event: GenerationEvent): boolean {
 export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
 
-  app.post('/', { schema: { body: GenerateFormSchema } }, async (request, reply) => {
+  app.post('/', { schema: { body: GenerateBodySchema } }, async (request, reply) => {
     const userId = request.user!.id;
+
+    // 会话归属校验：不校验就能把生成挂到别人的会话上（userId 谓词是唯一防线）
+    const conversationId = request.body.conversationId;
+    if (conversationId && !(await getConversation(userId, conversationId))) {
+      return reply.code(404).send({ error: '会话不存在' });
+    }
+
+    // 修订（PR5）：目标行程必须属于当前用户 —— 不校验就能基于别人的行程重跑
+    const kind = request.body.kind ?? 'generation';
+    const targetTripId = request.body.targetTripId;
+    if (kind === 'revision') {
+      if (!targetTripId) {
+        return reply.code(400).send({ error: '修订需要指定目标行程', code: 'revision_target_missing' });
+      }
+      if (!(await getTrip(userId, targetTripId))) {
+        return reply.code(404).send({ error: '行程不存在' });
+      }
+    }
 
     const cfg = await resolveLlmConfig(userId);
     if (!cfg) {
@@ -34,7 +66,11 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
       return reply.code(409).send({ error: '已有生成任务进行中', code: 'job_running', jobId: runningId });
     }
 
-    const job = createJob(userId);
+    const job = createJob(userId, {
+      ...(conversationId ? { conversationId } : {}),
+      kind,
+      ...(kind === 'revision' && targetTripId ? { targetTripId } : {}),
+    });
     runGeneration(job, request.body, cfg, app.log).catch((err) => app.log.error(err, 'runGeneration 未捕获异常'));
     return reply.code(202).send({ jobId: job.id });
   });

@@ -437,7 +437,13 @@ export async function runGeneration(
       ...(poi.stats.gotResults ? (['amap'] as const) : []),
       ...(search.stats.gotResults ? (['websearch'] as const) : []),
     ];
-    const trip = await createTrip(job.userId, draft.toTrip(reviewNotes, { overview: research.pool, dataSources }));
+    // 修订（PR5）：targetTripId 存在时把新行程挂到同一版本链的下一版；否则就是全新行程
+  const revisionOf = job.provenance.kind === 'revision' ? job.provenance.targetTripId : undefined;
+  const trip = await createTrip(
+    job.userId,
+    draft.toTrip(reviewNotes, { overview: research.pool, dataSources }),
+    revisionOf,
+  );
     await record('done', trip.id);
     completeJob(job, trip.id, dataSources, reviewNotes);
     terminalStatus = 'done';

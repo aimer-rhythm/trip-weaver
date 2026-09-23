@@ -2,7 +2,7 @@ import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
 import { RenameTripSchema, TripExportSchema, TripSchema } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
-import { createTrip, deleteTrip, getTrip, listTrips, renameTrip, updateTrip } from '../services/tripService';
+import { createTrip, deleteTrip, getTrip, listTrips, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 
 const IdParams = Type.Object({ id: Type.String() });
 
@@ -21,6 +21,13 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
     const trip = await getTrip(request.user!.id, request.params.id);
     if (!trip) return reply.code(404).send({ error: '行程不存在' });
     return trip;
+  });
+
+  // 版本链：详情页版本切换用（含历史版本，按 version 升序）
+  app.get('/:id/versions', { schema: { params: IdParams } }, async (request, reply) => {
+    const chain = await listTripVersions(request.user!.id, request.params.id);
+    if (!chain) return reply.code(404).send({ error: '行程不存在' });
+    return chain;
   });
 
   app.put('/:id', { schema: { params: IdParams, body: TripSchema } }, async (request, reply) => {

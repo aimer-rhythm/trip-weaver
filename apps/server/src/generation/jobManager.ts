@@ -7,6 +7,7 @@ import {
   type GenerationEvent,
   type GenerationJobStatus,
   type GenerationJobView,
+  type GenerationKind,
 } from '@tripweaver/shared';
 
 const RING_SIZE = 512;
@@ -19,12 +20,20 @@ export interface StoredEvent {
 
 type Listener = (e: StoredEvent) => void;
 
+/** 生成来源：区分「表单/对话新建」与「基于已有行程的修订」；对话入口时代三列均缺省 */
+export interface JobProvenance {
+  conversationId?: string;
+  kind: GenerationKind;
+  targetTripId?: string;
+}
+
 export interface Job {
   id: string;
   userId: string;
   status: GenerationJobStatus;
   tripId: string | null;
   createdAt: number;
+  provenance: JobProvenance;
   abort: AbortController;
   /** 取消来源：路由层用户取消置 'user'；orchestrator 超时置 'timeout'。默认 'user' */
   cancelReason: GenerationCancelReason;
@@ -40,13 +49,14 @@ export function getRunningJobId(userId: string): string | null {
   return runningByUser.get(userId) ?? null;
 }
 
-export function createJob(userId: string): Job {
+export function createJob(userId: string, provenance: JobProvenance = { kind: 'generation' }): Job {
   const job: Job = {
     id: uid(),
     userId,
     status: 'running',
     tripId: null,
     createdAt: Date.now(),
+    provenance,
     abort: new AbortController(),
     cancelReason: 'user',
     events: [],
