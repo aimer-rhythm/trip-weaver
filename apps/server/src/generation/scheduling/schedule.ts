@@ -57,6 +57,8 @@ export interface ScheduleOptions {
   fallbackArea?: string;
   /** 行程开始日期（YYYY-MM-DD）：闭馆日避让的唯一日期输入；为空时不干预分天（拿不准不校验） */
   startDate?: string;
+  /** 游览顺序硬约束（09-23 顺序种子表）：before 必须在 after 之前进链；两端都在入选集合才生效 */
+  orderConstraints?: readonly { before: string; after: string }[];
 }
 
 export interface ScheduleResult {
@@ -99,11 +101,20 @@ export function distanceKm(a: Coord, b: Coord): number {
 /**
  * 全局最近邻成链：从权重最高的点出发，每次接最近的下一个。
  * 无坐标候选不参与几何成链（不知道它在哪），按分数接在链尾 —— 它们的坐标由 geoPipeline 事后解析。
+ * orderConstraints（09-23 顺序种子表）：after 的前置点还在链外时跳过 after（拓扑意识最近邻）——
+ * 修「景山排在故宫前」这类出入口方向错误；前置点无坐标（stranded）时约束无法满足，退让给纯距离。
  */
-function buildChain(points: readonly SchedulablePoi[]): SchedulablePoi[] {
+function buildChain(points: readonly SchedulablePoi[], orderConstraints: readonly { before: string; after: string }[] = []): SchedulablePoi[] {
   const located = points.filter(hasCoord);
   const stranded = points.filter((poi) => !hasCoord(poi));
   if (located.length <= 1) return [...located, ...stranded];
+
+  // after 名 → before 名；只约束 located 集合内的点对（stranded 在链尾，位置不受几何控制）
+  const predecessorOf = new Map<string, string>();
+  const locatedNames = new Set(located.map((poi) => poi.name));
+  for (const c of orderConstraints) {
+    if (locatedNames.has(c.before) && locatedNames.has(c.after)) predecessorOf.set(c.after, c.before);
+  }
 
   const start = located.reduce((best, poi) => (poi.score > best.score ? poi : best), located[0]!);
   const remaining = new Set<SchedulablePoi>(located);
@@ -111,16 +122,25 @@ function buildChain(points: readonly SchedulablePoi[]): SchedulablePoi[] {
   const chain: SchedulablePoi[] = [start];
   let cursor: Coord = start;
   while (remaining.size) {
-    let nearest: SchedulablePoi | null = null;
-    let nearestKm = Infinity;
-    for (const poi of remaining) {
-      if (!hasCoord(poi)) continue;
-      const km = distanceKm(cursor, poi);
-      if (km < nearestKm) {
-        nearestKm = km;
-        nearest = poi;
+    const nearestOf = (pool: Iterable<SchedulablePoi>): SchedulablePoi | null => {
+      let best: SchedulablePoi | null = null;
+      let bestKm = Infinity;
+      for (const poi of pool) {
+        if (!hasCoord(poi)) continue;
+        const km = distanceKm(cursor, poi);
+        if (km < bestKm) {
+          bestKm = km;
+          best = poi;
+        }
       }
-    }
+      return best;
+    };
+    // 先在被约束允许的集合里找最近邻；全被前置约束堵住（前置点是 stranded 等无法满足的情形）时退让，防死循环
+    const eligible = [...remaining].filter((poi) => {
+      const pred = predecessorOf.get(poi.name);
+      return !pred || ![...remaining].some((r) => r.name === pred);
+    });
+    const nearest = nearestOf(eligible) ?? nearestOf(remaining);
     if (!nearest) break;
     chain.push(nearest);
     remaining.delete(nearest);
@@ -295,7 +315,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
 
   const segments: SchedulablePoi[][] = keptExclusive.map((poi) => [poi]);
   if (remainingDays > 0 && selected.length) {
-    const restSegments = cutChain(buildChain(selected));
+    const restSegments = cutChain(buildChain(selected, options.orderConstraints));
     // 切出来的段多于剩余天数（分量分布不均时会发生）：多出来的整段丢弃，不硬塞
     for (const segment of restSegments.slice(remainingDays)) {
       for (const poi of segment) dropped.add(poi);

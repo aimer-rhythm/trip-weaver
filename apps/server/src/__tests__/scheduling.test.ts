@@ -267,3 +267,42 @@ test('闭馆日避让：所有天都闭馆时照常分配（交可行性引擎�
   );
   assert.equal(result.days[0]!.stops[0]!.poi.name, '甲馆');
 });
+
+// ---------- 顺序种子表（09-23） ----------
+
+test('顺序约束：景山必须在故宫之后进链（出入口方向修正）', () => {
+  // 景山离故宫质心极近，纯距离最近邻会把景山排前面（实测北京 3 日就是这么错的）
+  const result = buildSchedule(
+    [
+      poi({ name: '故宫博物院', score: 90, weight: 3, lat: 39.9163, lng: 116.3972 }),
+      poi({ name: '景山公园', score: 80, weight: 2, lat: 39.9251, lng: 116.3966 }),
+      poi({ name: '天坛公园', score: 70, weight: 3, lat: 39.8822, lng: 116.4066 }),
+    ],
+    {
+      days: 1,
+      foodFocused: false,
+      orderConstraints: [{ before: '故宫博物院', after: '景山公园' }],
+    },
+  );
+  const names = result.days[0]!.stops.map((s) => s.poi.name);
+  assert.ok(names.indexOf('故宫博物院') < names.indexOf('景山公园'), `期望故宫在景山前，实际：${names.join('→')}`);
+});
+
+test('顺序约束：约束一端缺席时不生效，两端在但无坐标时退让纯距离', () => {
+  // 只有景山没有故宫 → 约束不生效，景山可以排第一
+  const onlyAfter = buildSchedule(
+    [poi({ name: '景山公园', score: 80, weight: 2, lat: 39.9251, lng: 116.3966 }), poi({ name: '天坛公园', score: 70, weight: 3, lat: 39.8822, lng: 116.4066 })],
+    { days: 1, foodFocused: false, orderConstraints: [{ before: '故宫博物院', after: '景山公园' }] },
+  );
+  assert.equal(onlyAfter.days[0]!.stops[0]!.poi.name, '景山公园');
+  // 故宫无坐标（stranded）→ 约束退让，景山照常按距离排
+  const strandedPred = buildSchedule(
+    [
+      poi({ name: '故宫博物院', score: 90, weight: 3 }),  // 无坐标
+      poi({ name: '景山公园', score: 80, weight: 2, lat: 39.9251, lng: 116.3966 }),
+      poi({ name: '天坛公园', score: 70, weight: 3, lat: 39.8822, lng: 116.4066 }),
+    ],
+    { days: 1, foodFocused: false, orderConstraints: [{ before: '故宫博物院', after: '景山公园' }] },
+  );
+  assert.ok(strandedPred.days[0]!.stops.length > 0, '退让后仍应产出正常排程');
+});

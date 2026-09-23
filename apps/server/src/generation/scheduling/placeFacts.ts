@@ -24,6 +24,8 @@ export interface PlaceFacts {
   recommendScore: number;
   /** payload.mentionCount：被提及次数（缺省 0） */
   mentionCount: number;
+  /** 从 research_evidence 文本挖出的闭馆表述（如「周一闭馆」，截 60 字）：候选无高德 openTime 时的闭馆检测兜底（09-23） */
+  closureText?: string;
 }
 
 interface FactRow {
@@ -83,7 +85,24 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
        WHERE city = $1 AND name = ANY($2)`,
       [city, unique],
     );
-    return new Map(rows.map((row) => [row.name, toFacts(row)]));
+    const map = new Map(rows.map((row) => [row.name, toFacts(row)]));
+
+    // 闭馆文本挖掘（09-23）：evidence 里的「周X闭馆/不开放/休息」表述，补高德 openTime 的覆盖缺口
+    // （只覆盖 search_pois 来源）。同名多条取最新一条；挖不到就不设字段，绝不编造。
+    const { rows: closureRows } = await pool.query<{ name: string; content: string }>(
+      `SELECT DISTINCT ON (p.name) p.name, left(e.content, 60) AS content
+       FROM research_evidence e JOIN canonical_places p ON p.id = e.place_id
+       WHERE p.city = $1 AND p.name = ANY($2)
+         AND e.content ~ '周[一二三四五六日天][^；;。]{0,8}(闭馆|不开放|休息)'
+         AND e.content !~ '不休息'
+       ORDER BY p.name, e.fetched_at DESC`,
+      [city, unique],
+    );
+    for (const row of closureRows) {
+      const facts = map.get(row.name);
+      if (facts) facts.closureText = row.content;
+    }
+    return map;
   } catch (err) {
     console.warn(`[placeFacts] 地点事实补全失败，排程按类型表兜底：${err instanceof Error ? err.message : String(err)}`);
     return new Map();

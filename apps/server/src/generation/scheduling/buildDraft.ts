@@ -10,6 +10,7 @@ import {
 } from '@tripweaver/shared';
 import type { DraftTrip } from '../draft';
 import { createResearchPlaceLookup, type ResearchLocation } from '../placeLookup';
+import { routeOrderConstraints } from '../../data/routeOrderSeeds';
 import type { LongHaulPoi } from '../longHaul';
 import { buildSchedule, type ScheduleResult, type SchedulablePoi } from './schedule';
 import { poiScore, scoreMaxima } from './score';
@@ -93,7 +94,12 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
       score: poiScore(facts, maxima),
       weight: visitWeight(facts),
     };
-    if (poi.openTime) schedulable.openTime = poi.openTime;
+    if (poi.openTime) {
+      schedulable.openTime = poi.openTime;
+    } else if (facts?.closureText) {
+      // 闭馆回填（09-23）：高德 openTime 缺位时用 evidence 挖出的闭馆表述兜底（如「周一闭馆」）
+      schedulable.openTime = facts.closureText;
+    }
     const theme = facts?.themes[0];
     if (theme) schedulable.theme = theme;
     // 知识库的 8 活动类目：主题缺失时的回退标签（图片/街道类点上常常没有 themes）
@@ -107,6 +113,8 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     exclusiveNames: input.longHaul.filter((item) => item.tier === 'exclusive').map((item) => item.name),
     fallbackArea: input.form.destination,
     startDate: input.form.startDate || undefined,
+    // 顺序种子表（09-23）：出入口方向等固定先后（故宫→景山），两端都在候选池才生效
+    orderConstraints: routeOrderConstraints(input.form.destination, input.pool.map((p) => p.name)),
   });
 
   input.draft.setSkeleton(
@@ -139,7 +147,8 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
         endTime: '',
         category: activityCategory(stop.poi, source?.facts),
         description: (source?.poi.intro ?? '').trim().slice(0, 100),
-        ...(source?.poi.openTime ? { openTime: source.poi.openTime } : {}),
+        // openTime 取排程侧的有效值（高德原文或 evidence 闭馆回填），不止 ResearchPoi 原始字段
+        ...(stop.poi.openTime ? { openTime: stop.poi.openTime } : {}),
         ...(source?.poi.sourceLinks.length ? { sourceNotes: source.poi.sourceLinks.slice(0, MAX_SOURCE_NOTES) } : {}),
       });
       written += 1;
