@@ -476,3 +476,42 @@ database structure remain unchanged. No LangGraph dependency was added.
 ### Next Steps
 
 - None - task complete
+
+
+## Session 13: 问答式行程生成交互升级（6 个 PR 全交付）
+
+**Date**: 2026-09-23
+**Task**: 问答式行程生成交互升级（6 个 PR 全交付）
+**Branch**: `master`
+
+### Summary
+
+把 /trips/new 从 8 字段表单改为对话 + 可编辑确认卡：共享 TypeBox 契约与 conversations/chat_messages/planning_briefs 三表；对话理解与会话路由 + 独立日对话额度（失败一轮不计数不落库）；修订链路（kind=revision）与行程版本链（rootId/version/parentId）；对话页替换表单页，确认卡字段就地编辑、缺条件给可点选项、输入框钉底部；列表版本去重与详情页版本切换。踩到并修掉 3 个隐蔽 bug：es.onopen 清空事件丢掉 job_start、DIALOGUE_INTENTS 与共享 CHAT_INTENTS 漂移导致工具校验静默失败、Pino 写 stdout 而 C2 只接 stderr 导致服务端日志不可见。验证：typecheck + 264 单测 + verify-c2 PASS + verify-c3 46/46 + build 全绿。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `2e3fb4d` | (see git log) |
+| `c66b098` | (see git log) |
+| `c516655` | (see git log) |
+| `1b710d8` | (see git log) |
+| `e5d06d0` | (see git log) |
+| `fdaa837` | (see git log) |
+| `91cff77` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
