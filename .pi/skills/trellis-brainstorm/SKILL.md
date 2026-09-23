@@ -200,50 +200,32 @@ Examples:
 * The user asks for "best practice", "how others do it", "recommendation"
 * The user can't reasonably enumerate options
 
-### Delegate to `trellis-research` sub-agent (don't research inline)
+### Research inline (sub-agent dispatch removed)
 
-For each research topic, **spawn a `trellis-research` sub-agent via the Task tool** — don't do WebFetch / WebSearch / `gh api` inline in the main conversation.
+For each research topic, do the research **yourself in the main conversation** — WebFetch / WebSearch / `gh api` inline — and persist findings to `{TASK_DIR}/research/<topic>.md` (the contract — see `workflow.md` Phase 1.2).
 
-Why:
-- The sub-agent has its own context window → doesn't pollute brainstorm context with raw tool output
-- It persists findings to `{TASK_DIR}/research/<topic>.md` (the contract — see `workflow.md` Phase 1.2)
-- It returns only `{file path, one-line summary}` to the main agent
-- Independent topics can be **parallelized** — spawn multiple sub-agents in one tool call
+The sub-agent dispatch tool has been removed from this setup. All research is done by the current agent directly.
 
-> **Codex exception**: on Codex CLI, do NOT dispatch `trellis-research` for research-first mode — do the research inline (WebFetch / WebSearch in the main session) and write findings to `{TASK_DIR}/research/<topic>.md` yourself. Reason: Codex `spawn_agent` runs sub-agents with `fork_turns="none"` (isolated context, no parent session inheritance), so the research sub-agent cannot resolve the active task path via `task.py current` and silently aborts without producing files. Inline research on Codex avoids this failure mode. The 3+ inline research calls limit (B rule in `workflow.md`) is relaxed for Codex specifically.
-
-Agent type: `trellis-research`
-Task description template: "Research <specific question>; persist findings to `{TASK_DIR}/research/<topic-slug>.md`."
-
-❌ Bad (what you must NOT do):
+✅ How:
 ```
-Main agent: WebFetch(url-A) → WebFetch(url-B) → Bash(gh api ...)
-          → WebSearch(q1) → WebSearch(q2) → ... (10+ inline calls)
-          → Write(research/topic.md)
+Main agent: WebFetch / WebSearch / gh api for topic A
+          → Write(research/topic-a.md)
+          → WebFetch / WebSearch / gh api for topic B
+          → Write(research/topic-b.md)
+→ Reads research/topic-{a,b}.md and produces 2–3 feasible approaches.
 ```
-→ Pollutes main context with raw HTML/JSON, burns tokens.
+Keep each research topic bounded: stop after enough sources to write a usable summary, then move to the file.
 
-✅ Good:
-```
-Main agent: Task(subagent_type="trellis-research",
-                 prompt="Research topic A; persist to research/topic-a.md")
-          + Task(subagent_type="trellis-research",
-                 prompt="Research topic B; persist to research/topic-b.md")
-          + Task(subagent_type="trellis-research",
-                 prompt="Research topic C; persist to research/topic-c.md")
-→ Reads research/topic-{a,b,c}.md after they finish.
-```
+### Research steps
 
-### Research steps (to pass into each sub-agent prompt)
-
-Each `trellis-research` sub-agent should:
+For each research topic, the current agent should:
 
 1. Identify 2–4 comparable tools/patterns for its topic
 2. Summarize common conventions and why they exist
 3. Map conventions onto our repo constraints
 4. Write findings to `{TASK_DIR}/research/<topic>.md`
 
-Main agent then reads the persisted files and produces **2–3 feasible approaches** in PRD.
+Then read the persisted files and produce **2–3 feasible approaches** in PRD.
 
 ### Research output format (PRD)
 
