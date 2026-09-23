@@ -70,6 +70,7 @@ export const env = {
     dims: int('EMBEDDING_DIMS', 1024),
   },
   genDailyLimit: int('GEN_DAILY_LIMIT', 3),
+  chatDailyLimit: int('CHAT_DAILY_LIMIT', 40),   // 每日对话轮数上限（独立于生成配额；对话轮次不消耗 GEN_DAILY_LIMIT）
   // 调研数据源（均可选；缺失时对应源 Null 降级，两者皆缺 = 纯模型知识调研）
   amapKey: str('AMAP_KEY'),                             // 高德 Web 服务 Key
   amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度

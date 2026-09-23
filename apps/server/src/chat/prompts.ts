@@ -1,0 +1,120 @@
+// 对话理解 prompt：把「当前 Brief 快照 + 最近对话 + 本次消息」拼成一次调用的输入。
+//
+// 边界（PRD R2 / FloatTrip 的设计）：模型只做三件事——回复用户、抽取参数、更新 Brief。
+// 行程本身不在这里生成；对话阶段不产生任何行程内容。
+import {
+  BRIEF_MISSING_FIELD_LABELS,
+  CONSTRAINT_CATEGORY_LABELS,
+  requiredBriefFields,
+  TRIP_FOCUS_LABELS,
+  type ChatMessage,
+  type ConversationTripRef,
+  type PlanningBriefData,
+} from '@tripweaver/shared';
+
+/** 带进 prompt 的历史条数上限：只保留最近若干轮，避免 token 随会话长度无界增长 */
+export const HISTORY_LIMIT = 12;
+
+export const DIALOGUE_SYSTEM_PROMPT = `你是旅行规划的对话助手。你的唯一职责是把用户说的话变成结构化的出行条件，并自然地回复用户。
+
+你可以做三件事：
+1. 从用户消息中抽取出行条件（目的地、日期、天数、人数、出行方式、住宿、侧重点、偏好、约束），调用 propose_decision 提交。
+2. 回答与本次出行相关的旅行问题（天气、交通、适合带小孩吗），此时 intent 用 travel_qa，不要修改任何已确定的字段。
+3. 用户表示可以开始时（「就这些」「开始吧」「生成吧」），intent 用 confirm。
+
+规则：
+- 只填这次消息里真正出现的字段。没提到的字段不要猜、不要给默认值。
+- 用户给了开始和结束日期时不要再用 days；只给了天数时用 days，不要编造具体日期。
+- 用户表达的个人要求尽量做成约束（addConstraints），不要塞进 extraNotes。约束的 polarity 很重要：
+  prefer=优先考虑（想要）、avoid=明确避开、require=硬性要求（必须）、fact=仅背景信息（如「带着 2 岁小孩」，只是背景，不等于要求安排亲子景点）。
+- 用户说「不用考虑 X」「X 算了」时，把对应的已有约束 id 放进 removeConstraintIds。
+- 本会话已经生成过行程时（下方会给出上一版），用户针对已有行程提意见（「第二天换成博物馆」「别去爬山了」）属于修改行程：
+  intent 用 modify_itinerary，并把要改什么写进 modificationNotes（祈使句、一条一句）。不要用 update_brief 表达修改行程的诉求。
+- **缺少必填项时，一次只问一项**，并在 clarification 里给出 2–4 个具体选项，让用户点选而不是手打：
+  clarification = { question: '这次想去哪里？', options: ['成都', '重庆', '西安'] }。
+  侧重点、出行方式这类枚举项必须给选项；目的地按上下文能合理推断就给候选城市，实在想不出才留空 options。
+  日期类不用给选项（前端会直接给日期控件）。不要在一次 clarification 里问多个字段。
+- reply 要像人说话，一句话即可，不要复述字段列表，不要说「已更新 Brief」这类系统语言。缺关键信息时可以在 reply 里顺口问一句。
+- 不要输出行程安排、景点名或时间表。那是下一步生成阶段的事。
+- 不确定用户意思时 intent 用 unclear，并在 reply 里直接说不确定。`;
+
+function isoToday(now = new Date()): string {
+  return now.toISOString().slice(0, 10);
+}
+
+/** 把 Brief 当前快照渲染成模型能读懂的一段文本；空字段明确写「未确定」 */
+export function renderBrief(data: PlanningBriefData, now = new Date()): string {
+  const dateText =
+    data.startDate && data.endDate
+      ? `${data.startDate} → ${data.endDate}`
+      : data.startDate
+        ? `${data.startDate} 出发，返程日期未定`
+        : data.days
+          ? `${data.days} 天（具体日期未定）`
+          : '未确定';
+
+  const lines = [
+    `今天的日期：${isoToday(now)}`,
+    '',
+    '当前已确定的出行条件：',
+    `- 目的地：${data.destination?.trim() || '未确定'}`,
+    `- 日期：${dateText}`,
+    `- 侧重点：${data.tripFocus ? TRIP_FOCUS_LABELS[data.tripFocus] : '未确定'}`,
+    `- 人数：${data.partySize ?? '未确定'}`,
+    `- 出行方式：${data.transportMode ?? '未确定'}`,
+    `- 住宿：${data.lodging?.trim() || '未确定'}`,
+    `- 偏好：${data.preferences?.length ? data.preferences.join('、') : '未确定'}`,
+    `- 其他要求：${data.extraNotes?.trim() || '无'}`,
+  ];
+
+  if (data.constraints.length > 0) {
+    lines.push('', '已记录的约束（可用 id 取消）：');
+    for (const c of data.constraints) {
+      lines.push(`- id=${c.id}｜${CONSTRAINT_CATEGORY_LABELS[c.category]}｜${c.polarity}｜${c.valueText}`);
+    }
+  } else {
+    lines.push('', '已记录的约束：无');
+  }
+
+	// 复用 shared 的就绪判定，不在 prompt 里再写一套「算不算填够」
+  const missing = requiredBriefFields(data);
+  if (missing.length > 0) {
+    lines.push(
+      '',
+      '仍然缺少的必填项（可以在 reply 里顺口问一句，但不要一次问多个）：',
+      missing.map((f) => BRIEF_MISSING_FIELD_LABELS[f]).join('、'),
+    );
+  }
+
+  return lines.join('\n');
+}
+
+/** 本会话已生成的行程：给出它的存在，模型才能把「改成…」识别为修订而不是新需求 */
+export function renderCurrentTrip(trip: ConversationTripRef): string {
+  return [
+    '本会话已经生成过一版行程：',
+    `- 标题：${trip.title}`,
+    `- 版本：v${trip.version}`,
+    '用户如果在这版基础上提修改意见，按 modify_itinerary 处理。',
+  ].join('\n');
+}
+
+/** 最近若干轮对话的纯文本转录（模型只看到角色与内容，不需要 id/时间戳） */
+export function renderHistory(messages: ChatMessage[]): string {
+  const recent = messages.slice(-HISTORY_LIMIT);
+  if (recent.length === 0) return '（这是本次会话的第一条消息）';
+  return recent
+    .map((m) => `${m.role === 'user' ? '用户' : '你'}：${m.content}`)
+    .join('\n');
+}
+
+export function dialogueUserPrompt(history: ChatMessage[], userText: string): string {
+  return [
+    '最近的对话：',
+    renderHistory(history),
+    '',
+    `用户刚刚说：${userText}`,
+    '',
+    '请调用 propose_decision 提交你的判断。',
+  ].join('\n');
+}

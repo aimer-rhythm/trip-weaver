@@ -11,6 +11,7 @@ import './lib/proxy';                        // 需在任何出站 fetch 之前�
 import './db/client';                       // 触发建库与迁移
 import { SsrfError } from './integrations/ssrfGuard';
 import { authRoutes } from './routes/auth';
+import { conversationRoutes } from './routes/conversations';
 import { settingsRoutes } from './routes/settings';
 import { tripRoutes } from './routes/trips';
 import { usageRoutes } from './routes/usage';
@@ -50,6 +51,7 @@ async function main() {
   await app.register(authRoutes, { prefix: '/api/auth' });
   await app.register(settingsRoutes, { prefix: '/api/settings' });
   await app.register(tripRoutes, { prefix: '/api/trips' });
+  await app.register(conversationRoutes, { prefix: '/api/conversations' });
   await app.register(usageRoutes, { prefix: '/api/usage' });
   await app.register(generationRoutes, { prefix: '/api/generations' });
 
