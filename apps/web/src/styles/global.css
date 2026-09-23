@@ -414,3 +414,68 @@ a { color: var(--color-primary); text-decoration: none; }
   .editor-title .muted { display: none; }
 }
 
+
+/* ---- 问答式入口（09-23）：样式保持简洁，不做精细打磨（视觉统一重构留给后续任务） ---- */
+.chat-page { max-width: 760px; display: flex; flex-direction: column; }
+/* 对话视图占满视口：消息流自己滚，确认卡与输入框钉在底部（否则卡片一高就把输入框顶上去） */
+.chat-page.is-chat { height: calc(100vh - 56px); padding-bottom: 12px; }
+.chat-page.is-chat > *:not(.chat-stream) { flex: none; }
+.chat-stream { display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; overflow-y: auto; padding: 4px 0 12px; }
+.chat-empty { text-align: center; padding: 28px 8px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.chat-empty-title { font-size: 1rem; font-weight: 600; margin: 0; }
+
+.chat-msg { display: flex; flex-direction: column; gap: 6px; max-width: 86%; }
+.chat-msg-user { align-self: flex-end; align-items: flex-end; }
+.chat-msg-assistant { align-self: flex-start; align-items: flex-start; }
+.chat-bubble { padding: 8px 12px; border-radius: var(--radius); border: 1px solid var(--color-border); background: var(--color-card); font-size: 0.9rem; white-space: pre-wrap; word-break: break-word; }
+.chat-msg-user .chat-bubble { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+
+.chat-intake { border: 1px dashed var(--color-border); border-radius: var(--radius); padding: 10px; display: flex; flex-direction: column; gap: 8px; background: var(--color-card); }
+.chat-intake-question { margin: 0; font-size: 0.88rem; }
+.chat-intake-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.chat-intake-row input { flex: 1; min-width: 120px; border: 1px solid var(--color-border); border-radius: var(--radius); padding: 6px 10px; font: inherit; font-size: 0.88rem; }
+
+.chat-brief { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.chat-brief-head { display: flex; align-items: center; justify-content: space-between; font-size: 0.9rem; font-weight: 600; }
+.chat-brief-status { font-size: 0.78rem; font-weight: 400; color: var(--color-muted); }
+.chat-brief-status.is-ready { color: var(--color-ok); }
+.chat-brief-rows { display: flex; flex-direction: column; gap: 2px; margin: 0; }
+.chat-brief-row { display: flex; gap: 8px; font-size: 0.85rem; }
+.chat-brief-row dt { color: var(--color-muted); margin: 0; min-width: 62px; }
+.chat-brief-row dd { margin: 0; flex: 1; }
+.chat-brief-row.is-empty dd { color: var(--color-muted); }
+.chat-brief-constraints { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; }
+.chat-brief-constraints li { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.chat-constraint-text { flex: 1; }
+.chat-brief-missing { margin: 0; }
+
+.chat-polarity { border-radius: 999px; padding: 1px 8px; font-size: 0.72rem; white-space: nowrap; }
+.chat-polarity-prefer { background: #e8f3fb; color: #1d5578; }
+.chat-polarity-avoid { background: #fdecec; color: #a12b2b; }
+.chat-polarity-require { background: #fff4e0; color: #8a6100; }
+.chat-polarity-fact { background: #eef1f3; color: var(--color-muted); }
+
+.chat-input { display: flex; gap: 8px; align-items: flex-end; margin-top: 10px; }
+.chat-input textarea { flex: 1; resize: vertical; border: 1px solid var(--color-border); border-radius: var(--radius); padding: 8px 10px; font: inherit; font-size: 0.9rem; }
+
+/* ---- 确认卡字段编辑 / 历史对话（09-23 PR4，样式保持简洁） ---- */
+.chat-brief-value { background: none; border: none; border-bottom: 1px dashed var(--color-border); padding: 0; font: inherit; font-size: 0.85rem; color: inherit; text-align: left; cursor: pointer; }
+.chat-brief-value:disabled { cursor: default; opacity: 0.65; }
+.chat-brief-row.is-empty .chat-brief-value { color: var(--color-muted); }
+.chat-brief-editor { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.chat-brief-editor input { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 3px 8px; font: inherit; font-size: 0.85rem; min-width: 120px; }
+.chat-constraint-remove { font-size: 0.72rem; padding: 1px 8px; }
+
+.chat-conv-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; max-height: 50vh; overflow-y: auto; }
+.chat-conv-list li { display: flex; gap: 8px; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius); padding: 8px 10px; }
+.chat-conv-list li.is-active { border-color: var(--color-primary); }
+.chat-conv-main { flex: 1; display: flex; flex-direction: column; gap: 2px; background: none; border: none; padding: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.chat-conv-title { font-size: 0.9rem; }
+
+/* ---- 版本链（09-23 PR6，样式保持简洁） ---- */
+.trip-versions { display: flex; gap: 4px; align-items: center; }
+.trip-version-badge { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 999px; background: var(--color-primary); color: #fff; font-size: 0.72rem; }
+.chat-revision { background: var(--color-card); border: 1px solid var(--color-primary); border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px; display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.chat-revision-title { margin: 0; font-size: 0.9rem; font-weight: 600; }
+.chat-revision-notes { margin: 0; font-size: 0.85rem; }
+.chat-revision-actions { display: flex; gap: 8px; }
