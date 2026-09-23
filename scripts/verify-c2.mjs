@@ -140,6 +140,12 @@ try {
     status TEXT NOT NULL,
     created_at TIMESTAMPTZ NOT NULL
   )`);
+  // 存量行：用于验证 trips.root_id 的「补列 → 回填 → SET NOT NULL」链路
+  // （空表时 SET NOT NULL 不会失败，盖不住真实升级路径，所以必须插一行）
+  await legacyClient.query(
+    `INSERT INTO trips (id, user_id, title, destination, days_count, activity_count, total_cost, data, created_at, updated_at)
+     VALUES ('legacy-trip-1', 'legacy-user', '存量行程', '北京', 1, 1, 0, '{}'::jsonb, NOW(), NOW())`,
+  );
 } finally {
   await legacyClient.end();
 }
@@ -162,13 +168,14 @@ try {
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
       REGISTRATION_MODE: 'invite',
       INVITE_CODE: 'C2TEST',
+      CHAT_DAILY_LIMIT: '6',
       GITHUB_CLIENT_ID: '',
       GITHUB_CLIENT_SECRET: '',
       APP_BASE_URL: '',
       SITE_LLM_BASE_URL: `http://127.0.0.1:${MOCK_PORT}/v1`,
       SITE_LLM_API_KEY: 'site-mock-key',
       SITE_LLM_MODEL: 'mock-chat',
-      GEN_DAILY_LIMIT: '1',
+      GEN_DAILY_LIMIT: '2',
       AMAP_KEY: '',
       SEARCH_API_KEY: '',
       SSRF_ALLOWLIST: `127.0.0.1:${MOCK_PORT}`,
@@ -179,7 +186,8 @@ try {
       NO_PROXY: 'localhost,127.0.0.1',
     },
   });
-  server.stdout.on('data', () => {});
+  // Pino 默认写 stdout（不是 stderr），两侧都要接：VERBOSE 下才输出，否则测试静默
+  server.stdout.on('data', (d) => process.env.VERBOSE && console.error(String(d)));
   server.stderr.on('data', (d) => process.env.VERBOSE && console.error(String(d)));
 
   for (let i = 0; i < 120; i++) {
@@ -289,13 +297,17 @@ try {
   const snap = await api('GET', `/api/generations/${jobB.json.jobId}`);
   check('快照 done+tripId', snap.json?.status === 'done' && snap.json?.tripId === done.tripId);
 
-  // ③ 配额用尽 → 429 + resetAt
+  // ③ 配额用尽 → 429 + resetAt（GEN_DAILY_LIMIT=2：第 2 次仍可用，第 3 次才拦）
   console.log('\n— 配额路径 —');
   const usage = await api('GET', '/api/usage');
   check('usedToday=1', usage.json?.usedToday === 1, `usedToday=${usage.json?.usedToday}`);
   const jobC = await api('POST', '/api/generations', { destination: '东京', days: 2, budgetLevel: '经济', partySize: 1 });
-  check('配额尽 429', jobC.status === 429, `status=${jobC.status}`);
-  check('429 带 resetAt', typeof jobC.json?.resetAt === 'number');
+  check('第 2 次仍在额度内 202', jobC.status === 202, `status=${jobC.status}`);
+  const runC = await readEvents(jobC.json?.jobId);
+  check('第 2 次生成完成', runC.events.at(-1)?.type === 'job_done', runC.events.at(-1)?.type);
+  const jobC2 = await api('POST', '/api/generations', { destination: '东京', days: 2, budgetLevel: '经济', partySize: 1 });
+  check('配额尽 429', jobC2.status === 429, `status=${jobC2.status}`);
+  check('429 带 resetAt', typeof jobC2.json?.resetAt === 'number');
 
   // ④ BYOK：走自有端点 + 计次
   console.log('\n— BYOK 路径 —');
@@ -341,7 +353,200 @@ try {
   const usage2 = await api('GET', '/api/usage');
   check('BYOK 计入次数配额', usage2.json?.usedToday === 1, `usedToday=${usage2.json?.usedToday}`);
 
-  // ⑤ generations 表落库核对（直接查 PG）
+  // ⑤ 问答式入口：对话不消耗生成配额；Brief 齐备才谈生成；一切读写都带 userId 谓词
+  console.log('\n— 问答式入口 —');
+  // 越权验证要换一个用户，但 /register 限制 3 次/分钟（本脚本已用满），
+  // 因此复用 ④ 的 BYOK 用户会话而不是再注一个。
+  const cookieOtherUser = cookie;
+  cookie = '';
+  const email3 = `c${Date.now()}@test.dev`;
+  await api('POST', '/api/auth/register', { email: email3, password: 'password123', inviteCode: 'C2TEST' });
+
+  const created = await api('POST', '/api/conversations', {});
+  check('新建会话 201', created.status === 201, `status=${created.status}`);
+  const conversationId = created.json?.id;
+  check(
+    '新会话 Brief 为空且缺 4 项必填',
+    created.json?.brief?.status === 'collecting' && created.json?.brief?.missingFields?.length === 4,
+    JSON.stringify(created.json?.brief?.missingFields),
+  );
+
+  const turn1 = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '11月去成都玩3天，带2岁小孩，先不定日期' });
+  check('发消息 200', turn1.status === 200, JSON.stringify(turn1.json));
+  check('意图=update_brief', turn1.json?.intent === 'update_brief', turn1.json?.intent);
+  check(
+    '抽取目的地/天数/侧重点',
+    turn1.json?.brief?.data?.destination === '成都'
+      && turn1.json?.brief?.data?.days === 3
+      && turn1.json?.brief?.data?.tripFocus === 'balanced',
+    JSON.stringify(turn1.json?.brief?.data),
+  );
+  check(
+    '约束落地且带来源消息序号（可追溯）',
+    turn1.json?.brief?.data?.constraints?.[0]?.valueText === '带 2 岁小孩'
+      && turn1.json?.brief?.data?.constraints?.[0]?.polarity === 'fact'
+      && turn1.json?.brief?.data?.constraints?.[0]?.evidenceSequence === 1,
+    JSON.stringify(turn1.json?.brief?.data?.constraints),
+  );
+  check('仅缺出发日期', JSON.stringify(turn1.json?.brief?.missingFields) === JSON.stringify(['startDate']), JSON.stringify(turn1.json?.brief?.missingFields));
+  check(
+    '缺字段时给可点选控件而非纯文本要求',
+    turn1.json?.replyMessage?.intake?.inputSchema?.format === 'date-range',
+    JSON.stringify(turn1.json?.replyMessage?.intake),
+  );
+  const afterFirst = await api('GET', `/api/conversations/${conversationId}`);
+  check('首条用户消息成为会话标题', afterFirst.json?.conversation?.title?.startsWith('11月去成都玩3天') === true, afterFirst.json?.conversation?.title);
+
+  const turn2 = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '11月5号出发' });
+  check('第二轮意图=confirm', turn2.json?.intent === 'confirm', turn2.json?.intent);
+  check('必填齐备 → ready 且无缺字段', turn2.json?.brief?.status === 'ready' && turn2.json?.brief?.missingFields?.length === 0, JSON.stringify(turn2.json?.brief));
+  check('齐备后不再追问', turn2.json?.replyMessage?.intake === undefined, JSON.stringify(turn2.json?.replyMessage?.intake));
+
+  const patch = await api('PATCH', `/api/conversations/${conversationId}/brief`, { destination: '重庆' });
+  check('确认卡编辑 200', patch.status === 200, JSON.stringify(patch.json));
+  check('编辑落成人话的用户消息', patch.json?.userMessage?.content?.includes('目的地改为「重庆」') === true, patch.json?.userMessage?.content);
+  check('编辑立即回写 Brief', patch.json?.brief?.data?.destination === '重庆', patch.json?.brief?.data?.destination);
+  check('编辑追加 AI 确认回复', patch.json?.replyMessage?.content?.includes('已更新') === true, patch.json?.replyMessage?.content);
+
+  const detailAfter = await api('GET', `/api/conversations/${conversationId}`);
+  check('消息成对落库（3 轮 = 6 条）', detailAfter.json?.messages?.length === 6, `messages=${detailAfter.json?.messages?.length}`);
+  check(
+    '消息序号连续（刷新恢复的排序基础）',
+    JSON.stringify(detailAfter.json?.messages?.map((m) => m.sequence)) === JSON.stringify([1, 2, 3, 4, 5, 6]),
+    JSON.stringify(detailAfter.json?.messages?.map((m) => m.sequence)),
+  );
+  check('刷新后 Brief 可恢复', detailAfter.json?.conversation?.brief?.data?.destination === '重庆');
+
+  const chatList = await api('GET', '/api/conversations');
+  check('会话列表包含自身会话', chatList.json?.conversations?.length === 1, `count=${chatList.json?.conversations?.length}`);
+  check('对话额度独立计数（3 轮）', chatList.json?.chatUsage?.usedToday === 3, `usedToday=${chatList.json?.chatUsage?.usedToday}`);
+  check('对话不消耗生成配额', (await api('GET', '/api/usage')).json?.usedToday === 0, '生成配额应为 0');
+
+  // 5.w 缺条件时给可点选项（PR6 修正）：模型下发 clarification.options → 前端渲染按钮，而不是让用户手打
+  const askConv = await api('POST', '/api/conversations', {});
+  const askTurn = await api('POST', `/api/conversations/${askConv.json?.id}/messages`, { text: '想去玩几天但不知道去哪' });
+  const askIntake = askTurn.json?.replyMessage?.intake;
+  check(
+    '模型选项原样下发为可点按钮',
+    JSON.stringify(askIntake?.inputSchema?.enum) === JSON.stringify(['成都', '重庆', '西安']),
+    JSON.stringify(askIntake),
+  );
+  check('选项标记为自然语言（点击走消息而非 PATCH）', askIntake?.inputSchema?.enumKind === 'natural', String(askIntake?.inputSchema?.enumKind));
+  check('模型问题文案直接用于卡片', askIntake?.question === '这次想去哪里？', String(askIntake?.question));
+  check('缺字段清单包含目的地', askIntake?.missingFields?.includes('destination') === true, JSON.stringify(askIntake?.missingFields));
+
+  const answerTurn = await api('POST', `/api/conversations/${askConv.json?.id}/messages`, { text: '成都吧' });
+  check('点选后目的地落入 Brief', answerTurn.json?.brief?.data?.destination === '成都', JSON.stringify(answerTurn.json?.brief?.data));
+  check('补齐后无缺字段', answerTurn.json?.brief?.missingFields?.length === 0, JSON.stringify(answerTurn.json?.brief?.missingFields));
+
+  // 5.x 修订链路（PR5）：v1 直接用 PG 造出来 —— 用户 3 只有 1 次生成额度，得留给「修订」这一步
+  const seed = new Client({ connectionString: DATABASE_URL });
+  await seed.connect();
+  const v1 = 'c2-revision-v1';
+  const seedUserId = (await seed.query('select id from users where email = $1', [email3])).rows[0]?.id;
+  await seed.query(
+    `insert into trips (id, user_id, title, destination, days_count, activity_count, total_cost, used_xhs, root_id, version, parent_id, data, created_at, updated_at)
+     values ($1, $2, '旧版行程', '成都', 2, 4, 0, false, $1, 1, null, '{}'::jsonb, now(), now())`,
+    [v1, seedUserId],
+  );
+  await seed.query(
+    `insert into generations (id, user_id, trip_id, conversation_id, kind, status, created_at)
+     values ('c2-revision-gen-1', $1, $2, $3, 'generation', 'done', now())`,
+    [seedUserId, v1, conversationId],
+  );
+
+  const withTrip = await api('GET', `/api/conversations/${conversationId}`);
+  check(
+    '会话详情带上最近一次成功生成的行程',
+    withTrip.json?.latestTrip?.id === v1 && withTrip.json?.latestTrip?.version === 1,
+    JSON.stringify(withTrip.json?.latestTrip),
+  );
+
+  const modifyTurn = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '把第 2 天换成博物馆' });
+  check(
+    '修订意图识别',
+    modifyTurn.json?.intent === 'modify_itinerary',
+    `status=${modifyTurn.status} body=${JSON.stringify(modifyTurn.json).slice(0, 300)}`,
+  );
+  check(
+    '下发修订目标与意见',
+    modifyTurn.json?.revision?.targetTripId === v1 && typeof modifyTurn.json?.revision?.notes === 'string',
+    JSON.stringify(modifyTurn.json?.revision),
+  );
+
+  const reviseJob = await api('POST', '/api/generations', {
+    destination: '成都',
+    days: 2,
+    startDate: '',
+    budgetLevel: '舒适',
+    totalBudget: 0,
+    preferences: [],
+    partySize: 2,
+    extraNotes: modifyTurn.json?.revision?.notes ?? '',
+    transportMode: 'transit',
+    conversationId,
+    kind: 'revision',
+    targetTripId: v1,
+  });
+  check('修订建任务 202', reviseJob.status === 202, JSON.stringify(reviseJob.json));
+  const reviseRun = await readEvents(reviseJob.json?.jobId);
+  const v2 = reviseRun.events.at(-1)?.tripId;
+  check('修订 job_done', reviseRun.events.at(-1)?.type === 'job_done', reviseRun.events.at(-1)?.type);
+  const chain = (await seed.query('select root_id, version, parent_id from trips where id = $1', [v2])).rows[0];
+  check(
+    '修订产出 v2，挂在同一版本链',
+    chain?.root_id === v1 && chain?.version === 2 && chain?.parent_id === v1,
+    JSON.stringify(chain),
+  );
+  check('旧版 v1 原样保留', (await seed.query('select id from trips where id = $1', [v1])).rows.length === 1);
+  const revisionRow = (await seed.query('select kind from generations where trip_id = $1', [v2])).rows[0];
+  check('generation 行标记 kind=revision', revisionRow?.kind === 'revision', String(revisionRow?.kind));
+
+  // 版本链前端契约（PR6）：版本接口 + 列表去重
+  const chainRes = await api('GET', `/api/trips/${v1}/versions`);
+  check(
+    '版本链接口按 version 升序返回 v1+v2',
+    chainRes.json?.versions?.length === 2 && chainRes.json?.versions?.[0]?.version === 1 && chainRes.json?.versions?.[1]?.version === 2,
+    JSON.stringify(chainRes.json?.versions),
+  );
+  const listAfterRevision = await api('GET', '/api/trips');
+  check(
+    '行程列表只显示版本链最新版',
+    listAfterRevision.json?.length === 1 && listAfterRevision.json?.[0]?.id === v2 && listAfterRevision.json?.[0]?.version === 2,
+    JSON.stringify(listAfterRevision.json?.map((t) => `${t.id}:v${t.version}`)),
+  );
+  const oldVersionStillReadable = await api('GET', `/api/trips/${v1}`);
+  check('旧版仍可按 id 直接访问', oldVersionStillReadable.status === 200, `status=${oldVersionStillReadable.status}`);
+  await seed.end();
+
+  const overQuota = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '再来一轮' });
+  check('对话额度尽 429', overQuota.status === 429, `status=${overQuota.status}`);
+  check(
+    '429 带可操作码与恢复时刻',
+    overQuota.json?.code === 'chat_quota_exhausted' && typeof overQuota.json?.resetAt === 'number',
+    JSON.stringify(overQuota.json),
+  );
+  check('被拒的一轮不落库', (await api('GET', `/api/conversations/${conversationId}`)).json?.messages?.length === 8);
+
+  cookie = cookieOtherUser;
+  check('他人会话详情 404', (await api('GET', `/api/conversations/${conversationId}`)).status === 404);
+  check('他人会话发消息 404', (await api('POST', `/api/conversations/${conversationId}/messages`, { text: 'hi' })).status === 404);
+  check('他人会话改 Brief 404', (await api('PATCH', `/api/conversations/${conversationId}/brief`, { destination: 'X' })).status === 404);
+  check('他人会话删除 404', (await api('DELETE', `/api/conversations/${conversationId}`)).status === 404);
+  check(
+    '把生成挂到他人会话 404',
+    (await api('POST', '/api/generations', { destination: '东京', days: 2, budgetLevel: '经济', partySize: 1, conversationId })).status === 404,
+  );
+  check(
+    '基于他人行程发起修订 404',
+    (await api('POST', '/api/generations', { destination: '东京', days: 2, budgetLevel: '经济', partySize: 1, kind: 'revision', targetTripId: v1 })).status === 404,
+  );
+  check(
+    '修订不传目标行程 400',
+    (await api('POST', '/api/generations', { destination: '东京', days: 2, budgetLevel: '经济', partySize: 1, kind: 'revision' })).status === 400,
+  );
+
+  // ⑥ generations 表落库核对（直接查 PG）
   console.log('\n— generations 表 —');
   const db = new Client({ connectionString: DATABASE_URL });
   await db.connect();
@@ -349,26 +554,56 @@ try {
     const colsOf = async (table) =>
       (await db.query('select column_name from information_schema.columns where table_schema = current_schema() and table_name = $1', [table]))
         .rows.map((r) => r.column_name);
-    const tripColumns = await colsOf('trips');
-    check('存量 trips 表迁移补齐 used_xhs', tripColumns.includes('used_xhs'), tripColumns.join(','));
+    // 迁移把 root_id 置为 NOT NULL 是真实约束（NULL 会让版本链断链），断言列属性而非仅存在性
+    const isNotNull = async (table, column) =>
+      (await db.query(
+        'select is_nullable from information_schema.columns where table_schema = current_schema() and table_name = $1 and column_name = $2',
+        [table, column],
+      )).rows[0]?.is_nullable === 'NO';
     const persistedTrip = (await db.query('select used_xhs from trips where id = $1', [done.tripId])).rows[0];
     check('迁移后行程写入 used_xhs 成功', persistedTrip?.used_xhs === false, `used_xhs=${persistedTrip?.used_xhs}`);
+    const tripColumns = await colsOf('trips');
+    check('存量 trips 表迁移补齐 used_xhs', tripColumns.includes('used_xhs'), tripColumns.join(','));
+    // 问答式入口（09-23）：版本链三列。root_id 需要回填存量行后才能置 NOT NULL
+    check(
+      '存量 trips 表迁移补齐版本链三列',
+      ['root_id', 'version', 'parent_id'].every((column) => tripColumns.includes(column)),
+      tripColumns.join(','),
+    );
+    const legacyTrip = (await db.query('select root_id, version, parent_id from trips where id = $1', ['legacy-trip-1'])).rows[0];
+    check('存量行程 root_id 回填为自身 id', legacyTrip?.root_id === 'legacy-trip-1', `root_id=${legacyTrip?.root_id}`);
+    check('存量行程 version 默认 1', legacyTrip?.version === 1, `version=${legacyTrip?.version}`);
+    check('存量行程 parent_id 为空', legacyTrip?.parent_id === null, String(legacyTrip?.parent_id));
+    const newTrip = (await db.query('select root_id, version from trips where id = $1', [done.tripId])).rows[0];
+    check('新生成行程自为版本链根', newTrip?.root_id === done.tripId && newTrip?.version === 1, `root=${newTrip?.root_id} v=${newTrip?.version}`);
+    check('存量 trips 表 root_id 已置 NOT NULL', await isNotNull('trips', 'root_id'));
     const generationColumns = await colsOf('generations');
     check(
       '存量 generations 表迁移补齐审计列',
-      ['used_xhs', 'used_byok', 'tokens_in', 'tokens_out', 'xhs_calls', 'amap_calls', 'search_calls'].every((column) =>
+      ['used_xhs', 'used_byok', 'tokens_in', 'tokens_out', 'xhs_calls', 'amap_calls', 'search_calls', 'conversation_id', 'kind', 'target_trip_id'].every((column) =>
         generationColumns.includes(column),
       ),
       generationColumns.join(','),
     );
+    // 问答式入口三张新表
+    const tableNames = (
+      await db.query(`select table_name from information_schema.tables where table_schema = current_schema()`)
+    ).rows.map((r) => r.table_name);
+    check(
+      '问答式入口三张表已建',
+      ['conversations', 'chat_messages', 'planning_briefs'].every((table) => tableNames.includes(table)),
+      tableNames.join(','),
+    );
     const rows = (
-      await db.query('select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations order by created_at')
+      await db.query(
+        `select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations where conversation_id is null order by created_at`,
+      )
     ).rows;
-    check('三行记录（cancelled/done/done）', rows.length === 3, JSON.stringify(rows.map((r) => r.status)));
+    check('四行记录（cancelled + 三次 done）', rows.length === 4, JSON.stringify(rows.map((r) => r.status)));
     check('cancelled 无 trip', rows[0]?.status === 'cancelled' && rows[0]?.trip_id === null);
     check('done 有 token 用量', rows[1]?.status === 'done' && rows[1].tokens_in > 0 && rows[1].tokens_out > 0, `in=${rows[1]?.tokens_in} out=${rows[1]?.tokens_out}`);
     check('Null 源不烧数据源额度', rows[1]?.amap_calls === 0 && rows[1]?.search_calls === 0, `amap=${rows[1]?.amap_calls} search=${rows[1]?.search_calls}`);
-    check('BYOK 行 used_byok=true', rows[2]?.used_byok === true);
+    check('BYOK 行 used_byok=true', rows.some((row) => row.used_byok === true));
   } finally {
     await db.end();
   }

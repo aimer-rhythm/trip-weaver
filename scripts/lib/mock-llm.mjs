@@ -104,7 +104,42 @@ export async function startMockLlm(
       const userText = typeof rawUser === 'string' ? rawUser : Array.isArray(rawUser) ? rawUser.map((c) => c?.text ?? '').join('\n') : '';
       const days = Number(/天数：(\d+) 天/.exec(userText)?.[1] ?? 2);
 
-      if (system.includes('旅行调研员')) {
+      if (system.includes('对话助手')) {
+        // 问答式入口（09-23）：单轮工具调用，不带多轮工具链。
+        // fixture 标记「先不定日期」：故意不给出发日期，用来验证「缺字段 → 给可点选控件」。
+        const said = /用户刚刚说：([^\n]*)/.exec(userText)?.[1] ?? '';
+        const KNOWN_CITIES = ['东京', '大阪', '北京', '上海', '成都', '杭州', '重庆'];
+        const destination = KNOWN_CITIES.find((city) => said.includes(city)) ?? '成都';
+        const days = Number(/(\d+)\s*天/.exec(said)?.[1] ?? 3);
+        const omitDate = said.includes('先不定日期');
+        // 针对已有行程的修改意见「换成/改成/别去」→ modify_itinerary（PR5）
+        const isModification = /换成|改成|别去/.test(said);
+        // 还不知道去哪：不给 destination，改用 clarification.options 给可点候选（PR6 修正）
+        const askDestination = /不知道去哪/.test(said) && !KNOWN_CITIES.some((city) => said.includes(city));
+        respondWithToolCalls(res, payload.model, [{
+          name: 'propose_decision',
+          args: askDestination
+            ? {
+              intent: 'update_brief',
+              reply: '没问题，先定个方向？',
+              clarification: { question: '这次想去哪里？', options: ['成都', '重庆', '西安'] },
+            }
+            : isModification
+              ? { intent: 'modify_itinerary', reply: '好的，我按这个改一版。', modifyItinerary: true, modificationNotes: said }
+              : {
+                intent: omitDate ? 'update_brief' : 'confirm',
+                reply: omitDate
+                  ? `好的，${destination}记下了，大概什么时候出发？`
+                  : `好的，${destination} ${days} 天记下了，可以开始生成了。`,
+                destination,
+                days,
+                tripFocus: 'balanced',
+                transportMode: 'transit',
+                ...(omitDate ? {} : { startDate: '2026-11-05' }),
+                addConstraints: [{ category: 'companion_context', valueText: '带 2 岁小孩', polarity: 'fact' }],
+              },
+        }]);
+      } else if (system.includes('旅行调研员')) {
         respondWithToolCalls(res, payload.model, researchCalls(toolResults > 0));
       } else if (system.includes('行程规划师') && system.includes('局部修订')) {
         if (toolResults === 0) {

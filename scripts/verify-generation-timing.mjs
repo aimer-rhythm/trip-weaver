@@ -65,9 +65,11 @@ try {
   await page.getByRole('button', { name: '注册并登录' }).click();
   await page.waitForURL('**/trips', { timeout: 10_000 });
 
+  // 问答式入口（09-23）：/trips/new 已是对话页，先发一句话让确认卡齐备再开始生成
   await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  await page.getByLabel('目的地 *').fill('东京');
-  await page.getByLabel(/天数/).fill('2');
+  await page.getByLabel('输入你的行程想法').fill('东京玩2天');
+  await page.getByLabel('输入你的行程想法').press('Enter');
+  await page.getByRole('button', { name: /开始生成/ }).waitFor({ timeout: 20_000 });
   await page.getByRole('button', { name: /开始生成/ }).click();
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   await page.waitForSelector('.gen-result-ok', { timeout: 120_000 });

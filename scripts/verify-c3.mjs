@@ -21,6 +21,30 @@ function check(name, ok, detail = '') {
   if (!ok) failed++;
 }
 
+// ---------- 问答式入口辅助（09-23：/trips/new 已由表单页改为对话页） ----------
+
+const CHAT_INPUT = '输入你的行程想法';
+
+/** 只取生成额度那一段：对话轮数会随发消息变化，整串比较会误报 */
+async function generationQuota(page) {
+  const text = await page.locator('.quota-inline').innerText();
+  return text.split('·')[0].trim();
+}
+
+/** 发一句话等确认卡就绪；mock 按「城市 + N天」回复完整条件 */
+async function sendChatTurn(page, text) {
+  await page.getByLabel(CHAT_INPUT).fill(text);
+  await page.getByLabel(CHAT_INPUT).press('Enter');
+  await page.getByRole('button', { name: /开始生成/ }).waitFor({ timeout: 20_000 });
+}
+
+/** 经对话入口发起一次生成（原「填表单 + 点开始生成」的等价路径） */
+async function startGenerationViaChat(page, { destination, days = 2 }) {
+  await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
+  await sendChatTurn(page, `${destination}玩${days}天`);
+  await page.getByRole('button', { name: /开始生成/ }).click();
+}
+
 if (!existsSync('apps/web/dist/index.html')) {
   console.error('缺少 apps/web/dist，请先 npm run build');
   process.exit(2);
@@ -42,6 +66,10 @@ const server = spawn(process.execPath, ['../../node_modules/tsx/dist/cli.mjs', '
     SITE_LLM_API_KEY: 'site-mock-key',
     SITE_LLM_MODEL: 'mock-chat',
     GEN_DAILY_LIMIT: '3',
+    // 外部数据源钉死为空（同 verify-c2）：否则会读本机 apps/server/.env 并真实调用高德/搜索，
+    // 使候选池、住宿推导与降级标注全变成环境相关。
+    AMAP_KEY: '',
+    SEARCH_API_KEY: '',
     SSRF_ALLOWLIST: `127.0.0.1:${MOCK_PORT}`,
     NO_PROXY: 'localhost,127.0.0.1',
   },
@@ -72,26 +100,62 @@ try {
   await page.getByRole('button', { name: '注册并登录' }).click();
   await page.waitForURL('**/trips', { timeout: 10_000 });
 
-  // 1. 表单：今日剩余次数 + ST3 新字段（出行方式三选一默认公共交通 / 住宿位置输入）
+  // 1. 对话入口：额度可见 + 空态示例（不再有任何表单字段）
   await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
   const quotaText = await page.locator('.quota-inline').innerText();
-  check('表单显示今日剩余次数', quotaText.includes('3 / 3'), quotaText.trim());
-  const transitChip = page.locator('.btn-chip', { hasText: '公共交通' }).first();
-  const transitActive = await transitChip.getAttribute('class');
-  check('出行方式三选一，默认公共交通', (transitActive ?? '').includes('is-active'), String(transitActive));
-  check('住宿位置输入框存在', (await page.getByLabel(/住宿位置/).count()) === 1);
-  await page.screenshot({ path: `${SHOTS}/08-planner-form.png` });
+  check('入口显示今日剩余生成次数', quotaText.includes('3 / 3'), quotaText.trim());
+  check('生成额度与对话额度同屏可见', quotaText.includes('对话'), quotaText.trim());
+  check('空态给出可点选示例', (await page.locator('.chat-empty .btn-chip').count()) >= 2);
+  await page.screenshot({ path: `${SHOTS}/08-chat-entry.png` });
+
+  // 1.5 确认卡：一句话补齐必填后直接可见，缺字段提示消失，约束带极性徽章
+  await sendChatTurn(page, '东京玩2天');
+  const cardRows = await page.locator('.chat-brief-row').allInnerTexts();
+  check(
+    '确认卡展示已确定条件',
+    cardRows.some((r) => r.includes('东京')) && cardRows.some((r) => r.includes('2 天')),
+    cardRows.join('｜'),
+  );
+  check('出行方式默认公共交通', cardRows.some((r) => r.includes('公共交通')), cardRows.join('｜'));
+  check('齐备后不再显示缺字段提示', (await page.locator('.chat-brief-missing').count()) === 0);
+  const constraintBadge = await page.locator('.chat-brief-constraints .chat-polarity').first().innerText();
+  check('约束带极性徽章（fact → 仅作背景）', constraintBadge.includes('仅作背景'), constraintBadge);
+  await page.screenshot({ path: `${SHOTS}/08b-brief-card.png` });
+
+  // 1.6 确认卡可编辑（PR4）：字段就地修改立即回写 Brief 并追加 AI 确认
+  await page.locator('.chat-brief-row', { hasText: '补充要求' }).getByRole('button', { name: '修改补充要求' }).click();
+  await page.getByLabel('修改该字段').fill('想住得离地铁近');
+  await page.getByRole('button', { name: '保存' }).click();
+  await page.waitForFunction(() => document.body.innerText.includes('已更新：补充要求改为'));
+  const extraRow = await page.locator('.chat-brief-row', { hasText: '补充要求' }).innerText();
+  check('确认卡字段可就地编辑并回写', extraRow.includes('想住得离地铁近'), extraRow.replace(/\n/g, ' '));
+
+  // 1.7 约束按 polarity 单条排除（fact → 本次不参考）
+  const excludeLabel = await page.locator('.chat-constraint-remove').first().innerText();
+  check('排除按钮文案随 polarity（fact → 本次不参考）', excludeLabel.includes('本次不参考'), excludeLabel);
+  await page.locator('.chat-constraint-remove').first().click();
+  await page.waitForFunction(() => document.querySelectorAll('.chat-brief-constraints li').length === 0);
+  check('约束可单条排除', true);
+
+  // 1.8 历史对话入口（换设备/换标签页后找回未完成的对话）
+  await page.getByRole('button', { name: '历史对话' }).click();
+  await page.waitForSelector('.chat-conv-list');
+  const convCount = await page.locator('.chat-conv-list li').count();
+  check('历史对话列出现有会话', convCount === 1, `count=${convCount}`);
+  const convSummary = await page.locator('.chat-conv-list li .muted').first().innerText();
+  check('会话摘要显示状态与更新时间', /信息齐备|还差 \d+ 项/.test(convSummary), convSummary);
+  await page.getByRole('button', { name: '关闭' }).click();
+  await page.waitForSelector('.chat-conv-list', { state: 'detached' });
+  check('历史对话可关闭', true);
 
   // 2. 第一次生成：完整流水线
-  await page.getByLabel('目的地 *').fill('东京');
-  await page.getByLabel(/天数/).fill('2');
-  await page.locator('.btn-chip', { hasText: '经济' }).first().click();
   await page.getByRole('button', { name: /开始生成/ }).click();
 
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   check('时间线出现', true);
-  const bannerText = await page.locator('.gen-banner').innerText().catch(() => '');
-  check('降级标注可见（未配置外部数据源 → 模型知识调研）', bannerText.includes('模型知识'), bannerText.trim());
+  // 降级标注随 job_start（首个事件）出现；给短超时，避免断言失败时白等 30s 把生成拖完
+  const bannerText = await page.locator('.gen-banner').innerText({ timeout: 5_000 }).catch(() => '');
+  check('降级标注可见（未配置外部数据源 → 模型知识调研）', bannerText.includes('模型知识'), bannerText.trim() || '(无 banner)');
 
   // 2.5 调研阶段候选卡片实时长出（生成尚未结束时即可见）
   await page.waitForSelector('.gen-candidates .poi-card', { timeout: 20_000 });
@@ -124,31 +188,55 @@ try {
   check('自动跳转编辑器且天数正确', dayCount === 2, `days=${dayCount}`);
   // ST3：mock 规划师已 set_lodging → 有住宿锚点，不显示「未设住宿」弱提示；
   // 无高德 Key → lodging 无坐标 → 不生成住宿 leg（🏨 chip 为 0），静默降级不报错
+  // ST3 ↩ 09-22 决定：hotel 候选不进编排、也不推导住宿区域（只给区域名、严禁具体酒店），
+  // 因此每天都会显示「未设住宿」弱提示。这是预期行为，不是回归。
   const lodgingHints = await page.locator('.day-lodging-hint').count();
-  check('有住宿锚点时不显示未设住宿提示', lodgingHints === 0, `hints=${lodgingHints}`);
+  check('住宿不由候选推导 → 每天显示未设住宿弱提示（09-22 决定）', lodgingHints === dayCount, `hints=${lodgingHints}, days=${dayCount}`);
+  // 版本切换器只在真有多版时出现（单版本行程不应多出一排按钮）
+  check('单版本行程不显示版本切换器', (await page.locator('.trip-versions').count()) === 0);
   await page.screenshot({ path: `${SHOTS}/11-generated-trip.png` });
 
-  // 3.5 编辑器「备选」抽屉（概览并入行程后未命中活动的候选）：分组渲染 + 预约徽章三态 + 占位图 + 来源标注
-  // （mock 活动名为「活动d-j」，与候选名互不匹配 → 3 个候选全部进备选抽屉）
+  // 3.5 概览与备选抽屉
+  // 外部数据源已钉死为空 → 候选池就只有 mock 的 3 条；确定性排程（09-21）会把非 hotel
+  // 候选排成活动，所以命中活动的候选不会出现在备选抽屉里。断言按这一现实写：
+  //   概览层（payload）断言候选全量与预约种子表；抽屉层只断言未命中活动的两项。
+  const tripId = page.url().split('/').pop();
+  // 用页面内 fetch（同源、带 cookie），不用 page.request —— 后者在某些 Playwright 版本下不共用会话 cookie
+  const tripPayload = await page.evaluate(async (id) => (await fetch(`/api/trips/${id}`)).json(), tripId);
+  const overview = tripPayload.overview ?? [];
+  check('概览持久化 3 条候选', overview.length === 3, `overview=${overview.length}`);
+  const gugong = overview.find((p) => p.name === '故宫博物院');
+  check('预约种子表覆盖为 required', gugong?.reservation === 'required', String(gugong?.reservation));
+  check('种子来源链接注入', gugong?.sourceLinks?.[0]?.url?.includes('dpm.org.cn') === true, JSON.stringify(gugong?.sourceLinks));
+  check(
+    '住宿候选不排成活动（只给区域名，不推具体酒店）',
+    (tripPayload.days ?? []).flatMap((d) => d.activities).every((a) => a.category !== '住宿'),
+  );
+
   await page.waitForSelector('.editor-left .candidate-drawer', { timeout: 5_000 });
   await page.locator('.editor-left .candidate-drawer summary').click();
   const groupHeads = await page.locator('.editor-left .candidate-drawer .overview-group h3').allInnerTexts();
   check(
-    '备选按类目分组（景点/美食/住宿）',
-    ['景点', '美食', '住宿'].every((t) => groupHeads.some((x) => x.includes(t))),
+    '未命中活动的候选按类目分组（美食 + 住宿）',
+    ['美食', '住宿'].every((t) => groupHeads.some((x) => x.includes(t))),
     groupHeads.join('，'),
   );
-  const requiredBadge = await page.locator('.editor-left .candidate-drawer .rsv-required').first().innerText().catch(() => '');
-  check('预约种子表命中 → 需预约徽章', requiredBadge.includes('需预约'), requiredBadge);
-  const unknownBadges = await page.locator('.editor-left .candidate-drawer .rsv-unknown').count();
-  check('预约未知 → 中性徽章（建议核实）', unknownBadges === 2, `unknown=${unknownBadges}`);
   const poiCards = await page.locator('.editor-left .candidate-drawer .poi-card').count();
   const fallbackCovers = await page.locator('.editor-left .candidate-drawer .poi-cover-fallback').count();
-  check('无 coverUrl 时占位图兜底', poiCards === 3 && fallbackCovers === 3, `cards=${poiCards}, fallback=${fallbackCovers}`);
+  check('无 coverUrl 时占位图兜底', poiCards === 2 && fallbackCovers === 2, `cards=${poiCards}, fallback=${fallbackCovers}`);
+  const unknownBadges = await page.locator('.editor-left .candidate-drawer .rsv-unknown').count();
+  check('预约未知 → 中性徽章（建议核实）', unknownBadges === 2, `unknown=${unknownBadges}`);
   const overviewNote = await page.locator('.editor-left .overview-note').innerText();
   check('来源标注 +「以官方为准」提示', overviewNote.includes('以官方为准') && overviewNote.includes('模型知识'), overviewNote.trim());
-  const sourceLinkRel = await page.locator('.editor-left .candidate-drawer .tag-source').first().getAttribute('rel').catch(() => null);
-  check('来源外链带 noopener noreferrer', sourceLinkRel === 'noopener noreferrer', String(sourceLinkRel));
+  // 需要预约的候选（故宫）已被排成活动、不在抽屉里，因此离线候选池下抽屉无外链——
+  // 外链 rel 属性只在真的有外链时才有断言对象。
+  const sourceLinkCount = await page.locator('.editor-left .candidate-drawer .tag-source').count();
+  if (sourceLinkCount > 0) {
+    const sourceLinkRel = await page.locator('.editor-left .candidate-drawer .tag-source').first().getAttribute('rel');
+    check('来源外链带 noopener noreferrer', sourceLinkRel === 'noopener noreferrer', String(sourceLinkRel));
+  } else {
+    check('来源外链检查跳过（离线候选池中需要预约的候选已排成活动）', true);
+  }
   await page.screenshot({ path: `${SHOTS}/11b-trip-overview.png` });
 
   // 3.9 旧行程兼容：无 overview 字段 → 备选抽屉不渲染，编辑器正常
@@ -175,10 +263,14 @@ try {
   check('旧行程（无 lodging）显示未设住宿弱提示', oldHints === oldDayCount, `hints=${oldHints}`);
   await ctxOld.close();
 
+  // 3.6 版本链前端（PR6）：列表每条链一行、首版不显示版本徽章、单版本不显示切换器
+  await page.goto(`${BASE}/trips`, { waitUntil: 'networkidle' });
+  const listCards = await page.locator('.trip-card').count();
+  const versionBadges = await page.locator('.trip-version-badge').count();
+  check('列表每条版本链一行且首版无徽章', listCards === 1 && versionBadges === 0, `cards=${listCards}, badges=${versionBadges}`);
+
   // 4. 刷新恢复：开第二次生成，中途 reload
-  await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  await page.getByLabel('目的地 *').fill('大阪');
-  await page.getByRole('button', { name: /开始生成/ }).click();
+  await startGenerationViaChat(page, { destination: '大阪' });
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   await page.reload({ waitUntil: 'domcontentloaded' });   // SSE 长连接会卡 networkidle
   // 恢复有两条正路：任务仍在跑 → 重放时间线后自动跳；快照已 done → 直接跳编辑器
@@ -195,8 +287,8 @@ try {
 
   // 5. 取消：开第三次生成后立即取消
   await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  const quotaBefore = await page.locator('.quota-inline').innerText();
-  await page.getByLabel('目的地 *').fill('北京');
+  const quotaBefore = await generationQuota(page);
+  await sendChatTurn(page, '北京玩2天');
   await page.getByRole('button', { name: /开始生成/ }).click();
   let rejectNextCancellation = true;
   const cancellationRoutePattern = '**/api/generations/*/cancel';
@@ -238,13 +330,13 @@ try {
   await page.waitForSelector('.gen-result:has-text("已取消")', { timeout: 15_000 });
   await page.unroute(cancellationRoutePattern);
   check('取消后展示已取消', true);
-  await page.getByRole('button', { name: '返回表单' }).click();
-  await page.waitForSelector('.planner-form', { timeout: 5_000 });
-  const quotaAfterCancel = await page.locator('.quota-inline').innerText();
-  check('取消不消耗次数', quotaAfterCancel.trim() === quotaBefore.trim(), `${quotaBefore.trim()} → ${quotaAfterCancel.trim()}`);
+  await page.getByRole('button', { name: '返回对话' }).click();
+  await page.waitForSelector('.chat-input', { timeout: 5_000 });
+  const quotaAfterCancel = await generationQuota(page);
+  check('取消不消耗次数', quotaAfterCancel === quotaBefore, `${quotaBefore} → ${quotaAfterCancel}`);
 
   // 6. 旧取消轮询迟到时不得污染随后启动的新任务；随后用完配额
-  await page.getByLabel('目的地 *').fill('上海');
+  // （返回对话后 Brief 仍齐备，不必再发一条消息）
   await page.getByRole('button', { name: /开始生成/ }).click();
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   await sleep(1_800);
@@ -264,9 +356,12 @@ try {
   const mob = await context.newPage();
   await mob.setViewportSize({ width: 390, height: 844 });
   await mob.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  const mobBtn = await mob.getByRole('button', { name: '今日次数已用完' }).isVisible();
-  check('移动端表单渲染正常', mobBtn);
-  await mob.screenshot({ path: `${SHOTS}/13-mobile-planner.png` });
+  // 移动端新标签页没有 sessionStorage → 全新对话：断言入口本身渲染正常
+  // （额度耗尽的可操作文案由第 6 步在桌面端覆盖）
+  const mobInput = await mob.getByLabel(CHAT_INPUT).isVisible();
+  const mobExamples = await mob.locator('.chat-empty .btn-chip').count();
+  check('移动端对话入口渲染正常', mobInput && mobExamples >= 2, `input=${mobInput}, examples=${mobExamples}`);
+  await mob.screenshot({ path: `${SHOTS}/13-mobile-chat.png` });
   await mob.close();
 
   // 8. 无 Key 文案（纯 BYOK 模式站点）：另起无站点 Key 服务
@@ -305,8 +400,9 @@ try {
     await p2.getByRole('button', { name: '注册并登录' }).click();
     await p2.waitForURL('**/trips', { timeout: 10_000 });
     await p2.goto(`http://127.0.0.1:${API_PORT + 1}/trips/new`, { waitUntil: 'networkidle' });
-    await p2.getByLabel('目的地 *').fill('东京');
-    await p2.getByRole('button', { name: /开始生成/ }).click();
+    // 无站点 Key：对话第一句就会拿到 400 no_llm（对话理解与生成共用同一套 Key 双轨）
+    await p2.getByLabel(CHAT_INPUT).fill('东京玩2天');
+    await p2.getByLabel(CHAT_INPUT).press('Enter');
     const errText = await p2.locator('.form-error').innerText({ timeout: 10_000 });
     check('无 Key 双轨文案（联系站长 + 高级选项自填）', errText.includes('联系站长') && errText.includes('高级选项'), errText.trim());
     await p2.screenshot({ path: `${SHOTS}/14-no-llm-copy.png` });
