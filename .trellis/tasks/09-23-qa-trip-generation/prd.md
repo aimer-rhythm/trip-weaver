@@ -111,14 +111,19 @@ apps/server
   src/services/chatQuotaService.ts ← 日对话轮数计数
 
 apps/web
-  src/pages/ChatPage.tsx        ← 替换 /trips/new
-  src/components/chat/          ← MessageList / MessageBubble / BriefCard
-                                   IntakeButtons / ChatInput / RevisionResult
-  src/store/chatStore.ts        ← 对话 reducer（参考 FloatTrip applyEvent）
+  src/pages/ChatPage.tsx        ← 替换 /trips/new（对话 + 确认卡 + 生成进度）
+  src/components/chat/          ← MessageBubble / IntakeControls / BriefCard / ChatInput
+  src/components/GenerationRunPanel.tsx ← 从原 PlannerPage 抽出的生成进度视图
+  src/hooks/useGenerationRun.ts ← 从原 PlannerPage 抽出的 SSE / 恢复 / 取消
+  src/lib/chatDerive.ts         ← 对话视图纯函数（无 store：服务端状态归 React Query）
   src/api/hooks.ts              ← 新增 query / mutation
   src/pages/TripEditorPage.tsx  ← 版本切换 UI
   src/pages/TripListPage.tsx    ← 只显示最新版
 ```
+
+**不建 `chatStore`（对原计划的修正）**：消息与 Brief 都是服务端状态，React Query 已是唯一持有者；
+再复制一份到 zustand 会踩 `.trellis/spec/web/frontend/state-management.md` 明确列出的反模式。
+对照 `applyEvent` 得到的实际收敛物是「纯派生函数 + React Query 缓存失效」。
 
 ### 核心接口
 
