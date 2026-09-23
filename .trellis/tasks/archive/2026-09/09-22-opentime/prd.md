@@ -41,3 +41,10 @@
 - 排程：闭馆日候选被换到开放天；startDate 为空时不干预分天
 - 可行性：`closed_on_date` hard 出现在 report；无 openTime 活动不产出该违规
 - `npx tsx --test apps/server/src/__tests__/` 全绿 + `npm run typecheck`
+
+## 验收实录（2026-09-22）
+
+- 单测/typecheck 全绿（207/207）；闭馆避让单测覆盖：避让生效 / 无 startDate 不干预 / 全闭馆照常分配交引擎收口。
+- **e2e 未触发**（如实记录）：实测北京 3 日生成，候选全部来自知识库（search_verified_places），无一携带 openTime（自动回填只覆盖 search_pois 高德实测来源）；且表单 startDate 为空，日期检测整体跳过。
+- **覆盖现状**（探针实测）：canonical_places payload 的 hours 字段覆盖 93/2476（3.8%），含闭馆/星期语义的仅 2 行（人民大会堂、织梦乐园）——故宫的 hours 是「20:00放票」而非闭馆信息。闭馆检测当前只对「走了高德 search_pois 的候选 + 表单填了 startDate」的行程生效。
+- **后续改进口**：xhs 管道提升 hours 覆盖率与闭馆语义抽取；或接高德详情接口批量补 opentime。
