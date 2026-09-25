@@ -29,6 +29,7 @@ import { runGeneration } from '../generation/orchestrator';
 import { createGeoSession } from '../generation/geoPipeline';
 import { hasSiteLlm } from '../env';
 import { chatHasQuota, chatUsageView } from '../services/chatQuotaService';
+import { cityCoverage } from '../services/cityCoverageService';
 import { hasQuota } from '../services/quotaService';
 import { createTrip, getTrip, listTripVersions } from '../services/tripService';
 import {
@@ -193,6 +194,16 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
 
     const evidenceSequence = (detail.messages.at(-1)?.sequence ?? 0) + 1;
     const nextData = applyDialogueDecision(detail.conversation.brief.data, outcome.decision, evidenceSequence);
+
+    // R2（09-25 未覆盖城市诚实降级）：目的地新出现或变更时查一次知识库覆盖，
+    // 未覆盖则在回复尾部拼提示——不编造覆盖能力，也不过滤目的地（白名单方案已否决）。
+    // 提示只拼进本轮回复文本，不落库为独立消息（避免消息对计数错位）。
+    const destinationChanged =
+      Boolean(nextData.destination?.trim()) && nextData.destination !== detail.conversation.brief.data.destination;
+    let coverageHint = '';
+    if (destinationChanged && (await cityCoverage(nextData.destination!)) === 'uncovered') {
+      coverageHint = `另外说明一下：${nextData.destination}的攻略数据我掌握得比较少，生成时会更多参考实时搜索的结果，建议到手后多核对一下。`;
+    }
     const missingFields = requiredBriefFields(nextData);
     // 优先用模型给的可点选项（它更懂上下文）；没给就用服务端模板 —— 一次只问一项
     const options = outcome.clarification?.options ?? [];
@@ -208,7 +219,10 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     const editSummary = editResult
       ? editResult.outcomes.map((o) => o.summary).join('；')
       : '';
-    const replyContent = editSummary ? `${outcome.reply}（${editSummary}）` : outcome.reply;
+    const replyContent = [
+      editSummary ? `${outcome.reply}（${editSummary}）` : outcome.reply,
+      coverageHint,
+    ].filter(Boolean).join(' ');
 
     const appended = await appendMessages({
       userId,

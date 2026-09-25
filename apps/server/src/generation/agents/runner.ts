@@ -57,10 +57,12 @@ function summarizeToolResult(result: unknown): string {
 // ---------- 上游瞬时故障重试（09-20） ----------
 // 网关/上游抖动（模型短时不可用、限流、5xx、连接中断）只重试当前这一次请求：
 // 已完成的工具调用不回滚，单次抖动不再把整次生成判死。请求本身不合法的 400（字段/角色错误）不重试。
+// terminated（09-25）：undici 在响应体未读完就被上游关掉时抛的 TypeError，与 socket hang up 同类。
+// 实测文案阶段一次长响应跑到 62s 后被切断，因不在白名单而硬失败（文案降级），已纳入。
 const LLM_RETRY_DELAYS_MS = [1000, 3000] as const;
 
 const RETRYABLE_UPSTREAM_ERROR =
-  /model is unavailable|upstream request failed|rate ?limit|too many requests|overloaded|temporarily unavailable|try again|timed? ?out|fetch failed|socket hang up|ECONNRESET|ETIMEDOUT|EPIPE|bad gateway|service unavailable|gateway time-?out|internal server error|\b50[234]\b/i;
+  /model is unavailable|upstream request failed|rate ?limit|too many requests|overloaded|temporarily unavailable|try again|timed? ?out|fetch failed|socket hang up|terminated|ECONNRESET|ETIMEDOUT|EPIPE|bad gateway|service unavailable|gateway time-?out|internal server error|\b50[234]\b/i;
 
 /** 只认「换一次请求就可能成功」的错误，其余照常判死，避免把真实配置错误拖成三次慢失败 */
 export function isRetryableUpstreamError(message: string): boolean {
@@ -111,7 +113,9 @@ type StreamCall = (model: Model<Api>, context: Context, options?: SimpleStreamOp
 
 /**
  * 包一层上游重试：整次尝试的事件先缓冲，成功（done）才下发 —— 重试不会把上一半消息塞进 agent 上下文。
- * 已产出正文/思考/工具增量的失败不重试（重放可能造成重复工具调用）。
+ * 已产出工具调用增量（toolcall_*）的失败不重试——重放会重复执行有副作用的工具（search_pois 计费）。
+ * 仅正文/思考增量的失败仍可重试（09-25）：实测长 reasoning 请求断流必带 thinking_delta，
+ * 若按「任何非 start 事件」判死，这类上游抖动会永久判死整次生成（实测 research 阶段 87s 白等、候选 0）。
  */
 export function streamWithRetry(
   call: StreamCall,
@@ -140,10 +144,10 @@ export function streamWithRetry(
       }
 
       const failed = terminal.type === 'error' ? (terminal.error.errorMessage ?? '') : '';
-      const partial = buffered.some((ev) => ev.type !== 'start');
+      const hasToolCall = buffered.some((ev) => ev.type.startsWith('toolcall'));
       const canRetry =
         Boolean(failed) &&
-        !partial &&
+        !hasToolCall &&
         attempt <= delays.length &&
         !options?.signal?.aborted &&
         isRetryableUpstreamError(failed);

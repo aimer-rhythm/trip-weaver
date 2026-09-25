@@ -42,8 +42,11 @@ Apply when changing `generation/retrieveContext.ts`, the planner prompt builders
 - `RetrieveOptions { city?: string }`
 - `embedTexts(texts: string[]): Promise<(number[] | null)[]>` in `integrations/embedding.ts`
 - `hasEmbedding(): boolean` in `apps/server/src/env.ts`
-- `renderRagContext(ragContext?: RetrievedPlace[]): string` in `generation/prompts.ts`
-- `plannerUserPrompt(form, research, revisionRequests?, longHaulIntel?, currentDraft?, ragContext?)`
+- ~~`renderRagContext(ragContext?: RetrievedPlace[]): string`~~ and
+  ~~`plannerUserPrompt(form, research, revisionRequests?, longHaulIntel?, currentDraft?, ragContext?)`~~
+  — both deleted in 09-25. `retrieveContext` is now consumed ONLY by the research agent's
+  `search_verified_places` tool; the "inject RAG into the planner prompt" path is gone because the
+  planner is code, not a model.
 
 ### 3. Contracts
 
@@ -67,9 +70,13 @@ Apply when changing `generation/retrieveContext.ts`, the planner prompt builders
   revision rounds, so retrieved intel stays visible in every round.
 - The research phase is knowledge-base-first: `search_verified_places` is the primary source and
   `search_pois` only supplies place facts (coordinates/address/cover image). `search_web` is a
-  degraded fallback — `RESEARCH_SYSTEM_PROMPT` allows it only after repeated knowledge-base
-  misses and caps it at 2 calls, and the tool descriptions plus `search_verified_places`'s
-  empty-hit reply (`FALLBACK_HINT` in `tools/researchTools.ts`) all state that. Do not restore
+  degraded fallback — `researchSystemPrompt({ searchWebMax })` allows it only after repeated
+  knowledge-base misses, and the cap is coverage-dependent (09-25): `cityCoverage()` counts verified
+  `canonical_places` rows for the destination city; ≥ `CITY_COVERAGE_THRESHOLD` (100) keeps the cap
+  at 2, below it the cap relaxes to 6 (constants + `searchWebMaxFor` in
+  `services/cityCoverageService.ts`; the threshold cleanly separates 北京 1349 / 成都 411 from the
+  ≤21 tail). The process-level cache assumes city coverage changes only via offline imports.
+  `SEARCH_DAILY_BUDGET` still gates everything. Do not restore
   the old "always search the web for opening hours/tickets" workflow.
 - The vector layer queries `canonical_places` ONLY. `research_evidence.embedding` is written by
   the backfill script but read by nothing; do not assume evidence vectors change results.
@@ -88,14 +95,14 @@ Apply when changing `generation/retrieveContext.ts`, the planner prompt builders
 | `EMBEDDING_DIMS` ≠ 1024 | skip the vector layer, `console.warn`, keyword layer only |
 | embedding batch returns an unexpected dimension | that item becomes `null`, batch continues |
 | the vector-layer query throws | caught locally; keyword results survive |
-| `ragContext` empty in `plannerUserPrompt` | no RAG block appears in the prompt |
-| knowledge base returns nothing for the user's city | research still produces a pool: `search_pois` + model knowledge, with `search_web` allowed as the 2-call fallback |
+| retrieval returns nothing for the research keyword | `search_verified_places` returns the "换关键词、再用 search_web 兜底" hint; job unaffected |
+| knowledge base returns nothing for the user's city | research still produces a pool: `search_pois` + model knowledge, with `search_web` allowed as fallback (cap 2 when covered / 6 when uncovered) |
 
 ### 5. Good / Base / Bad Cases
 
 - Good: research produced 12 candidates; keyword recall hits 5 verified places, the vector layer
-  adds 3 more, each carries up to 3 evidence items, and the planner prompt gains one
-  verified-place intel block.
+  adds 3 more, each carries up to 3 evidence items, and the research agent sees that evidence
+  inline in the `search_verified_places` output it just called.
 - Base: no `EMBEDDING_*` configured — output is identical to a keyword-only deployment, with no
   startup failure and no user-visible degradation banner.
 - Bad: letting `retrieveContext` throw and failing the job; sending a user's BYOK key to the
@@ -118,8 +125,8 @@ const places = await retrieveContext(names, { city });
 if (!places.length) throw new GenerationFailure('无已验证地点情报');
 
 // Correct: retrieval is enrichment; an empty result changes nothing.
-const places = await retrieveContext(names, { city });
-const prompt = plannerUserPrompt(form, research, requests, intel, undefined, places);
+const places = await retrieveContext([keyword], { city: destination });
+if (!places.length) return { content: text(FALLBACK_HINT), details: { count: 0 } };
 ```
 
 Representative paths: `apps/server/src/generation/retrieveContext.ts`,

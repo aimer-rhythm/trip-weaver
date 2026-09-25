@@ -245,9 +245,10 @@ insufficient — the planner assigns `dayIndex` before any coordinates exist):
    `classifyLongHaulPois` (`apps/server/src/generation/longHaul.ts`) computes each candidate's
    `estimateTransit` duration to the candidate pool's median center and tiers it against
    `LONG_HAUL_THRESHOLDS` (shared constants: ≥60min long-haul, ≥90min exclusive-day).
-   Tiered intel + day-discipline rules are injected into `plannerUserPrompt` (revision rounds
-   reuse the same builder). With no long-haul POIs, only the intel block is omitted;
-   both planner modes retain the shared activity and meal requirements.
+   Tiered intel is consumed by CODE, not by a prompt: `classifyLongHaulPois` feeds
+   `applyDeterministicSchedule`'s `longHaul` input and the scheduling layer enforces the
+   exclusive-day discipline structurally. (The old `plannerUserPrompt` injection died with the
+   LLM planner in 09-21; the prompt builders were deleted in 09-25.)
 2. **Deterministic fixer (repair)** — `longHaulFixer.ts` runs INSIDE each plan⇆review round,
    after geoPipeline+feasibility and before the reviewer. Trigger: hard
    `transit_infeasible`/`overpacked` on a day that has an exclusive-tier long-haul activity
@@ -310,7 +311,7 @@ Representative paths: `packages/shared/src/schemas.ts`, `packages/shared/src/leg
 ### 1. Scope / Trigger
 
 Apply when changing `generation/scheduling/*`, the plan-phase orchestration in `orchestrator.ts`,
-`WRITER_SYSTEM_PROMPT` / `writerUserPrompt`, or the `update_description` tool. This REPLACES the
+`WRITER_SYSTEM_PROMPT` / `writerUserPrompt`, or the writer-phase description tools. This REPLACES the
 LLM planner/reviewer loop for the live pipeline.
 
 ### 2. Signatures
@@ -323,7 +324,13 @@ LLM planner/reviewer loop for the live pipeline.
   `scheduling/buildDraft.ts`
 - `draft.setSkeleton(...)` / `draft.addActivity(...)` / `draft.setLodging(...)` — the only writers
 - `WRITER_SYSTEM_PROMPT`, `writerUserPrompt(form, draftRender)` in `generation/prompts.ts`
-- `update_description(dayIndex, position, description)` in `tools/draftTools.ts`
+- `update_descriptions(entries: {activityId, description}[])` in `tools/draftTools.ts` — the
+  writer-phase write path, located by `activityId` (NOT `dayIndex`/`position`); the write goes
+  through `draft.updateDescriptionById`, which replaces the field in place. Position-based writes
+  were removed because the writer runs CONCURRENTLY with the plan phase, where
+  `repairLongHaulMixedDays` / `optimizeCrossDayGrouping` move activities to other days and
+  invalidate every position number. `update_description(dayIndex, position, description)` remains
+  for `buildDraftTools(draft, 'revision')` and other single-row callers
 
 ### 3. Contracts
 
@@ -352,8 +359,24 @@ LLM planner/reviewer loop for the live pipeline.
   No candidates means no lodging suggestion (do not invent an area name).
 - The writer phase reuses the `review` phase name on the SSE stream (frontend contract unchanged)
   but is semantically "write the copy". Its tool surface is EXACTLY `get_draft`,
-  `update_description`, `submit_review` — it cannot reach any structural tool, which is how D4
-  ("审校只审文案") is enforced rather than merely requested.
+  `update_descriptions`, `submit_review` — it cannot reach any structural tool, which is how D4
+  ("审校只审文案") is enforced rather than merely requested. `submit_review` takes ONLY `notes`:
+  it used to also require `approved` + `revisionRequests`, which no caller ever read while forcing
+  the model to reason about structure it cannot change (measured: ~85% of the writer's output
+  tokens on the longest turn were reasoning, not copy).
+- **The writer runs CONCURRENTLY with geo/repair (09-25).** It starts right after
+  `draft.validate()` passes and is `await`ed after `endPhase('plan')`. Measured effect: the writer's
+  42–82s (reasoning-dominated, high variance) no longer queues behind geo, and `plan`'s ~4s leaves
+  the critical path. Total wall clock ≈ `research + max(plan, review) + tail`, NOT
+  `research + plan + review`. Do NOT re-serialize it: nothing in the copy path needs coordinates or
+  legs. Concurrent structural moves are safe because copy is written by `activityId`; the fixers
+  only move (never delete) activities and they touch `day`/`position`/`startTime`, never
+  `description`.
+- The old "batch reduces turns" rationale is dead: measured 3 turns either way (`get_draft` →
+  write → `submit_review` is the protocol floor). The single-call batch form is kept for shape
+  only — one submit instead of N batches — not for speed. The writer's wall clock is decided by
+  reasoning volume, not by turn count or by the length cap on `description` (raising/lowering the
+  cap changed nothing measurable).
 - The writer is an enhancement path: an LLM error or turn limit degrades to the candidate `intro`
   text already written into each activity and the job still succeeds.
 - `describeFeasibility`, `repairLongHaulMixedDays`, `ensureMealCoverage` (food-focused only),
@@ -375,7 +398,8 @@ LLM planner/reviewer loop for the live pipeline.
 
 ```typescript
 // Wrong: let the model decide the order again because "it writes nicer itineraries".
-const plannerRun = await runPhaseAgent({ systemPrompt: plannerSystemPrompt(foodFocused), ... });
+// (A planner agent with `plannerSystemPrompt` used to do exactly this; both were deleted in 09-25.)
+const plannerRun = await runPhaseAgent({ systemPrompt: '<a planner prompt>', ... });
 
 // Correct: structure is code's job; the model only writes descriptions.
 const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
@@ -407,7 +431,8 @@ public Trip schemas, persistence, provider queues, timeouts, and quotas are unch
 - `DraftTrip.updateActivity(dayIndex, position, patch: Partial<DraftActivityInput>): string`.
 - `buildDraftTools(draft, mode: 'plan' | 'revision' = 'plan'): AgentTool[]`.
 - Revision tool: `move_activity({ fromDayIndex, activityId, toDayIndex })`, with 1-based days.
-- `plannerUserPrompt(form, research, revisionRequests?, longHaulIntel?, currentDraft?): string`.
+- ~~`plannerUserPrompt(form, research, revisionRequests?, longHaulIntel?, currentDraft?): string`~~
+  — deleted in 09-25 together with the other LLM-planner prompt builders.
 
 ### 3. Contracts
 
@@ -588,10 +613,12 @@ queue, reservation, or transaction capability.
 - `isFoodFocused(preferences): boolean` — `preferences.includes('美食')`, the ONLY source of the meal mandate
 - `mealCoverageProblems(days, { foodFocused }): string[]`
 - `ensureMealCoverage(days, destination): MealRepair[]`
-- `plannerSystemPrompt(foodFocused)` / `plannerRevisionSystemPrompt(foodFocused)` /
-  `reviewerSystemPrompt(foodFocused)` — `prompts.ts` exports these builders instead of
-  `PLANNER_SYSTEM_PROMPT` / `PLANNER_REVISION_SYSTEM_PROMPT` / `REVIEWER_SYSTEM_PROMPT` consts,
-  because the meal wording is conditional. `RESEARCH_SYSTEM_PROMPT` stays a const.
+- `prompts.ts` exports ONLY `formBrief`, `RESEARCH_SYSTEM_PROMPT`, `WRITER_SYSTEM_PROMPT`, and
+  `writerUserPrompt`. The conditional-meal prompt builders (`plannerSystemPrompt` /
+  `plannerRevisionSystemPrompt` / `reviewerSystemPrompt`), their user-prompt counterparts,
+  `renderPoolIndex` / `renderLongHaulIntel` / `renderRagContext`, and the shared
+  `activityRequirements` helper were all deleted in 09-25 — meal and long-haul discipline is
+  enforced by the deterministic scheduler, not by prompt wording.
 - `DraftTrip.validate(): string[]` includes `mealCoverageProblems`.
 - `GenerateForm.budgetLevel`, `GenerateForm.totalBudget`, `Trip.budgetLevel`,
   `Trip.totalBudget`, and `Activity.cost?` remain compatibility fields.

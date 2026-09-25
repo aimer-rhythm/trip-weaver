@@ -81,6 +81,8 @@ export async function startMockLlm(
 ) {
   const seenAuthHeaders = [];
   const seenRevisions = [];
+  // 调研阶段 system prompt 快照（按目的地记）：验证 search_web 上限随城市覆盖动态注入（09-25 R3）
+  const seenResearchPrompts = [];
   let seenWriter = null;
   let reviewerOverrunAvailable = reviewerOverrunOnce;
   let reviewerOverrunActive = false;
@@ -158,6 +160,9 @@ export async function startMockLlm(
               },
         }]);
       } else if (system.includes('旅行调研员')) {
+        // 快照调研 prompt 中 search_web 上限行：验证随城市覆盖动态注入（09-25 R3）
+        const destination = /目的地：(.+?)｜/.exec(userText)?.[1] ?? '';
+        seenResearchPrompts.push({ destination, searchWebMaxLine: /全阶段最多 \d+ 次/.exec(system)?.[0] ?? '' });
         respondWithToolCalls(res, payload.model, researchCalls(toolResults > 0));
       } else if (system.includes('行程规划师') && system.includes('局部修订')) {
         if (toolResults === 0) {
@@ -172,20 +177,21 @@ export async function startMockLlm(
           : [{ name: 'update_activity', args: { dayIndex: 1, position: 1, startTime: '09:30', description: '局部修订：延后半小时参观，保留其他安排。' } }]);
       } else if (system.includes('行程规划师')) {
         respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0, { geocodedActivities, includeLodging }));
-      } else if (system.includes('行程文案撰写员')) {
-        // 第二期：plan 阶段由确定性排程产出结构，LLM 只在文案阶段改写 description
+      } else if (system.includes('行程标题撰写员')) {
+        // 09-25：文案阶段只写标题，活动说明直接复用候选 intro（不再经模型二次编写）
         if (toolResults === 0) {
           seenWriter = {
             tools: (payload.tools ?? []).map((tool) => tool.function?.name).sort(),
-            hasDraft: userText.includes('当前草稿'),
+            hasDraft: userText.includes('当前行程'),
           };
         }
         respondWithToolCalls(res, payload.model,
-          toolResults >= 2
-            ? [{ name: 'submit_review', args: { approved: true, notes: ['测试建议：留意闭馆时间'], revisionRequests: [] } }]
-            : toolResults === 1
-              ? [{ name: 'update_descriptions', args: { entries: [{ dayIndex: 1, position: 1, description: '文案阶段改写：按知识库素材说明亮点与实用提示。' }] } }]
-              : [{ name: 'get_draft', args: {} }]);
+          toolResults >= 1
+            ? [{ name: 'submit_review', args: { notes: ['测试建议：留意闭馆时间'] } }]
+            : [{ name: 'update_titles', args: {
+              title: '测试行程标题',
+              dayTitles: Array.from({ length: days }, (_, i) => `第${i + 1}天主题`),
+            } }]);
       } else if (system.includes('行程审校员')) {
         if (toolResults === 0) {
           reviewerOverrunActive = reviewerOverrunAvailable;
@@ -210,5 +216,5 @@ export async function startMockLlm(
     });
   });
   await new Promise((r) => server.listen(port, '127.0.0.1', r));
-  return { server, seenAuthHeaders, seenRevisions, get seenWriter() { return seenWriter; }, close: () => server.close() };
+  return { server, seenAuthHeaders, seenRevisions, seenResearchPrompts, get seenWriter() { return seenWriter; }, close: () => server.close() };
 }

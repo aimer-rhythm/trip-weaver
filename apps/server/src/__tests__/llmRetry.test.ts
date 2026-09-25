@@ -1,5 +1,5 @@
 // 单测：上游瞬时故障重试（streamWithRetry）——只重试「换一次请求就可能成功」的错误，
-// 已产出正文/工具增量不重试（防重复工具调用），重试耗尽的错误仍按原路径透出。
+// 已产出工具调用增量不重试（防重复执行有副作用的工具），重试耗尽的错误仍按原路径透出。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -81,6 +81,7 @@ test('isRetryableUpstreamError：网关「模型不可用」可重试，请求�
   assert.equal(isRetryableUpstreamError('400 Error from provider (Console): Upstream request failed: Model is unavailable.'), true);
   assert.equal(isRetryableUpstreamError('429 rate limit exceeded'), true);
   assert.equal(isRetryableUpstreamError('fetch failed'), true);
+  assert.equal(isRetryableUpstreamError('terminated'), true);   // undici 响应体被上游提前关闭
   assert.equal(isRetryableUpstreamError('502 Bad Gateway'), true);
   assert.equal(isRetryableUpstreamError('field Messages[3].Role invalid, should be one of: user, assistant'), false);
   assert.equal(isRetryableUpstreamError('No API key for provider: tripweaver-byok'), false);
@@ -115,14 +116,14 @@ test('streamWithRetry：请求本身不合法（400 字段错误）不重试', a
   assert.equal((await streamResult(events)).errorMessage, 'field Messages[3].Role invalid, should be one of: user, assistant');
 });
 
-test('streamWithRetry：已产出正文/工具增量的失败不重试', async () => {
+test('streamWithRetry：已产出工具调用增量的失败不重试（防重复执行有副作用的工具）', async () => {
   let calls = 0;
   const call = () => {
     calls += 1;
     return fakeStream((stream) => {
       const message = assistantMessage('socket hang up');
       stream.push({ type: 'start', partial: message });
-      stream.push({ type: 'text_delta', contentIndex: 0, delta: '部分', partial: message });
+      stream.push({ type: 'toolcall_start', contentIndex: 0, partial: message });
       stream.push({ type: 'error', reason: 'error', error: message });
     });
   };
@@ -130,7 +131,27 @@ test('streamWithRetry：已产出正文/工具增量的失败不重试', async (
   assert.equal(calls, 1);
   assert.deepEqual(
     events.map((e) => e.type),
-    ['start', 'text_delta', 'error'],
+    ['start', 'toolcall_start', 'error'],
+  );
+});
+
+test('streamWithRetry：仅思考/正文增量的失败仍重试（长 reasoning 断流不判死整次生成）', async () => {
+  let calls = 0;
+  const call = () => {
+    calls += 1;
+    if (calls > 1) return upstreamOk();
+    return fakeStream((stream) => {
+      const message = assistantMessage('terminated');
+      stream.push({ type: 'start', partial: message });
+      stream.push({ type: 'thinking_delta', contentIndex: 0, delta: '推理中', partial: message });
+      stream.push({ type: 'error', reason: 'error', error: message });
+    });
+  };
+  const events = await collect(streamWithRetry(call, model, context, undefined, [0]));
+  assert.equal(calls, 2);
+  assert.deepEqual(
+    events.map((e) => e.type),
+    ['start', 'done'],
   );
 });
 

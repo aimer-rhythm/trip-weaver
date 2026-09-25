@@ -33,6 +33,13 @@ const EVIDENCE_KIND_LABEL: Record<string, string> = {
   xhs_price: '价格',
   xhs_reason: '口碑',
 };
+/** 证据强度标签（09-25 补回）：direct 可当事实陈述、weak 只能弱表达、risk_only 只能条件性提醒。
+ *  库里 87% 的情报是 weak（xhs_reason 2152 条 vs warning 241），不带强度标记会让模型把网友感受当确定事实写入。 */
+const EVIDENCE_STRENGTH_LABEL: Record<string, string> = {
+  direct: '实证',
+  risk_only: '仅风险',
+  weak: '网友感受',
+};
 
 export interface ResearchOutcome {
   summary: string;
@@ -46,6 +53,8 @@ export interface ResearchToolDeps {
   poiSource: PoiSource;
   searchSource: SearchSource;
   destination: string;
+  /** search_web 上限提示（注入工具描述与降级纪律文案；实际计数由 SEARCH_DAILY_BUDGET 日预算兜底） */
+  searchWebMax: number;
   outcome: ResearchOutcome;
   /** 每写入一条候选即回调（orchestrator 借此发 SSE candidate 事件） */
   onCandidate?: (poi: ResearchPoi) => void;
@@ -66,16 +75,20 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     name: 'search_verified_places',
     label: '查已验证地点库',
     description:
-      '查询社区已验证地点库（小红书口碑治理产物），返回地点名、分类、避坑/预约/价格情报。这是调研阶段的主力信息源：命中的地点可信度高，优先 add_candidate；宜换不同关键词多查几次（3~6 次）再判断是否真的覆盖不足。',
+      '查询社区已验证地点库（含避坑/预约/价格/口碑情报，每条带强度标记）。调研阶段的主力信息源：命中的地点可信度高，优先 add_candidate。keyword 可用空格一次给多个词（具体地点名 + 主题词 + 片区，如「故宫 胡同 亲子」）：系统会拆词后按地点名与主题标签精确匹配，并叠加语义召回，一次查询即可覆盖多个方向。',
     parameters: Type.Object({
-      keyword: Type.String({ description: '检索关键词，如「夜景」「亲子」「火锅」，不必带目的地名' }),
+      keyword: Type.String({ description: '检索关键词，如「故宫 颐和园 历史人文」「胡同 什刹海」；不必带目的地名' }),
     }),
     execute: async (_id, params) => {
       const keyword = params.keyword.trim();
       if (!keyword) return { content: text('错误：keyword 不能为空。'), details: { ok: false } };
+      // 分词语义（09-25）：模型实测给「故宫 历史文化」「颐和园 景山 国子监」这类空格分隔短语，
+      // 整串当地点名匹配必然空转（实测对照组命中 0 条）。拆词后精确名/主题标签层才真正生效，
+      // 向量层仍用整串做语义召回（retrieveContext 内部 names.join(' ')）。
+      const terms = [...new Set(keyword.split(/[\s,，、]+/).filter(Boolean))].slice(0, 8);
       let places;
       try {
-        places = await retrieveContext([keyword], { city: destination });
+        places = await retrieveContext(terms, { city: destination });
       } catch {
         return { content: text(FALLBACK_HINT), details: { count: 0 } };
       }
@@ -83,7 +96,9 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         return { content: text(FALLBACK_HINT), details: { count: 0 } };
       }
       const lines = places.map((p, i) => {
-        const ev = p.evidence.map((e) => `${EVIDENCE_KIND_LABEL[e.kind] ?? e.kind}：${e.content}`).join('；');
+        const ev = p.evidence
+          .map((e) => `${EVIDENCE_KIND_LABEL[e.kind] ?? e.kind}(${EVIDENCE_STRENGTH_LABEL[e.strength] ?? '网友感受'})：${e.content}`)
+          .join('；');
         return `${i + 1}. ${p.name}｜${p.category}｜${ev}`;
       });
       return { content: text(lines.join('\n')), details: { count: places.length, keyword } };
@@ -136,7 +151,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     name: 'search_web',
     label: '搜索攻略',
     description:
-      '全网搜索旅行攻略、玩法、避雷与预约政策，返回标题/摘要/来源链接。降级兜底工具：仅当 search_verified_places 连续多次无命中或候选明显凑不齐时才使用，全阶段最多 2 次。',
+      `全网搜索旅行攻略、玩法、避雷与预约政策，返回标题/摘要/来源链接。降级兜底工具：仅当 search_verified_places 连续多次无命中或候选明显凑不齐时才使用，全阶段最多 ${deps.searchWebMax} 次。`,
     parameters: Type.Object({
       query: Type.String({ description: '搜索词，如「故宫 门票 预约」「XX市 三日游 避雷」' }),
     }),
@@ -167,7 +182,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     parameters: Type.Object({
       name: Type.String({ description: '地点名称（与 search_pois 返回一致）' }),
       category: Type.String({ description: '类目：attraction / food / hotel' }),
-      intro: Type.String({ description: '一句话简介（≤120 字）：是什么 + 为什么值得去' }),
+      intro: Type.String({ description: '一句话简介（≤80 字）：是什么 + 为什么值得去' }),
       coverUrl: Type.Optional(Type.String({ description: '预览图链接，只能用 search_pois 返回的图片 url，没有则不填' })),
       reservation: Type.Optional(
         Type.String({ description: '是否需要预约：required / none / unknown（默认 unknown；仅在有官方或权威来源时才填 required/none）' }),

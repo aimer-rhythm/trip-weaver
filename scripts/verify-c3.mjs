@@ -170,7 +170,7 @@ try {
   const phaseTitles = await page.locator('.gen-phase-title').allInnerTexts();
   check(
     '三阶段齐全',
-    ['调研灵感', '编排行程', '审校把关'].every((t) => phaseTitles.some((x) => x.includes(t))),
+    ['调研灵感', '编排行程', '打磨标题'].every((t) => phaseTitles.some((x) => x.includes(t))),
     phaseTitles.join('，'),
   );
   const toolLabels = await page.locator('.gen-tool-label').allInnerTexts();

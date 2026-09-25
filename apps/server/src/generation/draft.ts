@@ -152,6 +152,19 @@ export class DraftTrip {
     return `已更新第 ${dayIndex} 天第 ${position} 个活动：${merged.name}`;
   }
 
+  /** 只改标题（文案阶段用）：`setSkeleton` 会重建 days 并清空已排活动，绝不能交给模型调用。 */
+  updateTitles(title: string, dayTitles: string[]): string {
+    const nextTitle = title.trim().slice(0, 60);
+    if (!nextTitle) return '错误：行程标题不能为空';
+    this.title = nextTitle;
+    const count = Math.min(dayTitles.length, this.days.length);
+    for (let i = 0; i < count; i += 1) {
+      const dayTitle = dayTitles[i]!.trim().slice(0, 30);
+      if (dayTitle) this.days[i]!.title = dayTitle;
+    }
+    return `标题已更新：${this.title}｜${this.days.map((day) => day.title).join(' / ')}`;
+  }
+
   removeActivity(dayIndex: number, position: number): string {
     const day = this.days[dayIndex - 1];
     if (!day || !day.activities[position - 1]) return `错误：第 ${dayIndex} 天第 ${position} 个活动不存在`;

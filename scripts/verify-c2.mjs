@@ -241,14 +241,21 @@ try {
   const reviewPhaseEnd = run.events.find((event) => event.type === 'phase_end' && event.phase === 'review');
   check('review 阶段已降为文案阶段', reviewPhaseEnd?.summary?.includes('文案') === true, reviewPhaseEnd?.summary);
 
-  // 时序前移（M0-A）：geoPipeline 移到审校前 —— 坐标/通勤解析的 thought 必须出现在首个 review phase_start 之前，
-  // 保证审校（及可行性引擎）拿到的是已解析的真实坐标/leg，而非空坐标。
+  // 时序前移（M0-A）仍成立：geoPipeline 紧随确定性排程，可行性与修复器拿到的是真实坐标/leg。
+  // 09-25 起文案与该解析并发，不再要求「解析早于 review」——文案不需要坐标/leg。
   const firstReviewIdx = run.events.findIndex((e) => e.type === 'phase_start' && e.phase === 'review');
   const geoResolveIdx = run.events.findIndex((e) => e.type === 'thought' && /解析坐标与通勤|解析活动坐标/.test(e.text ?? ''));
+  const scheduleIdx = run.events.findIndex((e) => e.type === 'tool_start' && e.tool === 'schedule_itinerary');
   check(
-    '坐标/通勤在审校前已解析（时序前移）',
-    geoResolveIdx >= 0 && firstReviewIdx >= 0 && geoResolveIdx < firstReviewIdx,
-    `geoIdx=${geoResolveIdx} reviewIdx=${firstReviewIdx}`,
+    '坐标/通勤解析紧随排程（时序前移）',
+    scheduleIdx >= 0 && geoResolveIdx > scheduleIdx,
+    `scheduleIdx=${scheduleIdx} geoIdx=${geoResolveIdx}`,
+  );
+  const reviewEndIdx = run.events.findIndex((e) => e.type === 'phase_end' && e.phase === 'review');
+  check(
+    '文案与地理解析并发（文案先启动，在地理之后收尾）',
+    firstReviewIdx >= 0 && firstReviewIdx < geoResolveIdx && reviewEndIdx > geoResolveIdx,
+    `review=${firstReviewIdx} geo=${geoResolveIdx} reviewEnd=${reviewEndIdx}`,
   );
   check(
     '解析发生在编排阶段（thought 归属 plan）',
@@ -265,6 +272,9 @@ try {
   check('candidate 三类齐全', ['attraction', 'food', 'hotel'].every((c) => candidates.some((e) => e.poi?.category === c)));
 
   const trip = await api('GET', `/api/trips/${done.tripId}`);
+  // R3（09-25）：东京不在 canonical_places → 未覆盖 → 调研 prompt 的 search_web 上限放宽为 6
+  const tokyoResearch = mock.seenResearchPrompts.find((p) => p.destination === '东京');
+  check('未覆盖城市 search_web 上限放宽为 6', tokyoResearch?.searchWebMaxLine === '全阶段最多 6 次', String(tokyoResearch?.searchWebMaxLine));
   check('行程已落库', trip.status === 200 && trip.json?.days?.length === 2, `days=${trip.json?.days?.length}`);
   check('活动已填充', trip.json?.days?.every((d) => d.activities.length >= 1));
   check('overview 随行程持久化', Array.isArray(trip.json?.overview) && trip.json.overview.length === 3, `overview=${trip.json?.overview?.length}`);
@@ -333,14 +343,24 @@ try {
   check('排程阶段零 LLM 规划工具（结构由代码决定）', structureCalls.length === 0, structureCalls.join(','));
   const writer = mock.seenWriter;
   check(
-    '文案阶段拿到草稿且工具面仅 get_draft / update_descriptions / submit_review',
+    '文案阶段拿到行程且工具面仅 get_draft / update_titles / submit_review',
     Boolean(writer?.hasDraft)
-      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['get_draft', 'submit_review', 'update_descriptions']),
+      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['get_draft', 'submit_review', 'update_titles']),
     JSON.stringify(writer?.tools),
   );
   const revisedTrip = await api('GET', `/api/trips/${runD.events.at(-1)?.tripId}`);
   const revisedActivities = revisedTrip.json?.days?.flatMap((day) => day.activities) ?? [];
-  check('文案改写已落库', revisedActivities.some((activity) => activity.description.startsWith('文案阶段改写')));
+  check('行程标题已由文案阶段写入', revisedTrip.json?.title === '测试行程标题', revisedTrip.json?.title);
+  check(
+    '每天标题已由文案阶段写入',
+    (revisedTrip.json?.days ?? []).every((day) => day.title === `第${day.dayIndex}天主题`),
+    JSON.stringify((revisedTrip.json?.days ?? []).map((day) => day.title)),
+  );
+  check(
+    '活动说明来自候选 intro（模型不再二次编写）',
+    revisedActivities.length > 0 && revisedActivities.every((activity) => activity.description.length > 0),
+    JSON.stringify(revisedActivities.map((activity) => activity.description.slice(0, 14))),
+  );
   check('排程保证每天至少一个活动', (revisedTrip.json?.days ?? []).every((day) => day.activities.length >= 1));
   check(
     '行程不产出时间轴（时间留空，前端按未排时刻展示）',
@@ -373,6 +393,8 @@ try {
 
   const turn1 = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '11月去成都玩3天，带2岁小孩，先不定日期' });
   check('发消息 200', turn1.status === 200, JSON.stringify(turn1.json));
+  // R2（09-25）：测试库 canonical_places 为空 → 成都未覆盖 → 回复尾部拼降级提示
+  check('未覆盖城市回复带降级提示', turn1.json?.replyMessage?.content?.includes('攻略数据我掌握得比较少') === true, turn1.json?.replyMessage?.content);
   check('意图=update_brief', turn1.json?.intent === 'update_brief', turn1.json?.intent);
   check(
     '抽取目的地/天数/侧重点',
@@ -572,6 +594,22 @@ try {
   );
   const oldVersionStillReadable = await api('GET', `/api/trips/${v1}`);
   check('旧版仍可按 id 直接访问', oldVersionStillReadable.status === 200, `status=${oldVersionStillReadable.status}`);
+
+  // R3 对照（09-25）：seed 北京 100 条 verified → 已覆盖 → search_web 上限保持 2。
+  // 用 BYOK 用户的最后一次额度跑（user3 的 2 次已被自动触发与 seed 修订行占满）
+  await seed.query(
+    `insert into canonical_places (id, city, name, category, source, verified, created_at)
+     select 'c2-bj-' || g, '北京', '北京地点' || g, '景点', 'goldset', true, now() from generate_series(1, 100) g`,
+  );
+  const chatUserCookie = cookie;
+  cookie = cookieOtherUser;
+  const bjJob = await api('POST', '/api/generations', { destination: '北京', days: 2, budgetLevel: '舒适', partySize: 2 });
+  check('已覆盖城市生成建任务 202', bjJob.status === 202, JSON.stringify(bjJob.json));
+  const bjRun = await readEvents(bjJob.json?.jobId);
+  check('已覆盖城市生成完成', bjRun.events.at(-1)?.type === 'job_done', bjRun.events.at(-1)?.type);
+  const bjResearch = mock.seenResearchPrompts.find((p) => p.destination === '北京');
+  check('已覆盖城市 search_web 上限保持 2', bjResearch?.searchWebMaxLine === '全阶段最多 2 次', String(bjResearch?.searchWebMaxLine));
+  cookie = chatUserCookie;
   await seed.end();
 
   const overQuota = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '再来一轮' });
@@ -654,7 +692,7 @@ try {
         `select status, used_byok, tokens_in, tokens_out, amap_calls, search_calls, trip_id from generations where conversation_id is null order by created_at`,
       )
     ).rows;
-    check('四行记录（cancelled + 三次 done）', rows.length === 4, JSON.stringify(rows.map((r) => r.status)));
+    check('五行记录（cancelled + 四次 done）', rows.length === 5, JSON.stringify(rows.map((r) => r.status)));
     check('cancelled 无 trip', rows[0]?.status === 'cancelled' && rows[0]?.trip_id === null);
     check('done 有 token 用量', rows[1]?.status === 'done' && rows[1].tokens_in > 0 && rows[1].tokens_out > 0, `in=${rows[1]?.tokens_in} out=${rows[1]?.tokens_out}`);
     check('Null 源不烧数据源额度', rows[1]?.amap_calls === 0 && rows[1]?.search_calls === 0, `amap=${rows[1]?.amap_calls} search=${rows[1]?.search_calls}`);

@@ -39,7 +39,6 @@ import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
 import { GenerationPerformance } from './performance';
-import { retrieveContext } from './retrieveContext';
 import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { buildDraftTools } from './tools/draftTools';
@@ -48,10 +47,11 @@ import { applyDeterministicSchedule } from './scheduling/buildDraft';
 import { loadPlaceFacts } from './scheduling/placeFacts';
 import {
   WRITER_SYSTEM_PROMPT,
-  RESEARCH_SYSTEM_PROMPT,
+  researchSystemPrompt,
   formBrief,
   writerUserPrompt,
 } from './prompts';
+import { cityCoverage, searchWebMaxFor } from '../services/cityCoverageService';
 
 const JOB_TIMEOUT_MS = GENERATION_TIMEOUT_MINUTES * 60 * 1000;   // 整任务兜底超时（与前端提示文案同源）
 
@@ -207,15 +207,18 @@ export async function runGeneration(
 
     // ---------- 阶段 1：调研 ----------
     startPhase('research', 1, researchNote(enabledSources));
+    // R3（09-25）：未覆盖城市放宽 search_web 上限（2→6），SEARCH_DAILY_BUDGET 日预算闸门不受影响
+    const searchWebMax = searchWebMaxFor(await cityCoverage(form.destination));
     const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
-      systemPrompt: RESEARCH_SYSTEM_PROMPT,
+      systemPrompt: researchSystemPrompt({ searchWebMax }),
       tools: buildResearchTools({
         poiSource: poi.source,
         searchSource: search.source,
         destination: form.destination,
+        searchWebMax,
         outcome: research,
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
       }),
@@ -231,12 +234,7 @@ export async function runGeneration(
     endPhase('research', 1, `候选 ${research.pool.length} 个｜${research.summary.slice(0, 160)}`);
     geo.useResearchPlaces(research.pool, research.locations);
 
-    // RAG 地基（09-18）：调研与编排之间的检索调用点。
-    // 接入 canonical_places / research_evidence 混合召回（关键词 + 可选向量），结果注入 plannerUserPrompt。
-    const ragContext = await retrieveContext(research.pool.map((p) => p.name), { city: form.destination });
-
-    // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级，
-    // 经 plannerUserPrompt 注入规划 prompt（首轮与修订轮共用同一构造，每轮可见）。
+    // 层2 编排预防：候选池距离预计算（确定性、零外呼）——远郊长途点按通勤时长标级。
     // 坐标来源（09-23）：调研旁路捕获优先，知识库坐标兜底——知识库来源候选（search_verified_places）
     // 不经 search_pois，旁路没有它的坐标，不兜底会被跳过标级（实测：八达岭因此与慕田峪同时入选市区天）。
     // placeFacts 前移到此处：标级与排程复用同一份事实，不重复查询。
@@ -306,7 +304,44 @@ export async function runGeneration(
       throw new GenerationFailure(`行程排程结果不完整（${shape}，候选 ${research.pool.length} 个）：${scheduleProblems.join('；')}。请重试`);
     }
 
-    // 时序前移（M0-A）：排程后立刻解析全量坐标/leg 并跑可行性引擎，让修复器与文案阶段拿到真实时间线。
+    // ---------- 阶段 3：文案（只写标题），与下面的地理/修复并发 ----------
+    // 排程已过 validate、结构定案，而文案只写 description（不依赖坐标与 leg）——把它与 geoPipeline /
+    // 远郊修复器并发，把整段 LLM 时间从关键路径上摘掉。原先串行时文案的 42~82s（reasoning 主导、方差极大）
+    // 全额计入总时长，并发后总时长 ≈ max(地理 + 修复, 文案) + 尾部。
+    // 结构并发变动无损：文案工具按 activityId 写入，活动被修复器提到别的天也不丢文案。
+    // 沿用 review 阶段名（前端与时间线契约不变），语义是「给行程与每天起标题」；
+    // 活动说明不归它写：research 的候选 intro 已按同一标准写成并直接复用到活动上。
+    // 工具面只给 get_draft + update_titles + submit_review，改不动活动/顺序/说明。
+    // 文案属增强路径：模型没写完也不算失败，草稿里已有候选简介兜底。
+    startPhase('review', 1, '撰写说明文案');
+    const review: ReviewOutcome = { submitted: false, notes: [] };
+    const writerPromise = runPhaseAgent({
+      model,
+      apiKey: cfg.apiKey,
+      systemPrompt: WRITER_SYSTEM_PROMPT,
+      tools: [
+        ...buildDraftTools(draft).filter((t) => t.name === 'get_draft' || t.name === 'update_titles'),
+        ...buildReviewTools(review),
+      ],
+      userPrompt: writerUserPrompt(form, draft.render()),
+      signal,
+      sink: sinkFor('review'),
+      maxTurns: 12,
+      recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round: 1 }),
+    }).catch((err: unknown) => {
+      // 并行段若因取消/排程异常先抛出，这个 Promise 仍会 settle：必须立刻挂 catch，
+      // 否则它的 rejection 无人接收（Node 视为 unhandledRejection）。
+      console.warn(`[writer] 文案阶段异常：${err instanceof Error ? err.message : String(err)}`);
+      return {
+        tokensIn: 0,
+        tokensOut: 0,
+        aborted: signal.aborted,
+        turnLimitExceeded: false,
+        errorMessage: err instanceof Error ? err.message : String(err),
+      };
+    });
+
+    // 时序前移（M0-A）：排程后立刻解析全量坐标/leg 并跑可行性引擎，让修复器拿到真实时间线。
     // geoPipeline 内部按 signal 逐项中止（07-12 教训：AbortSignal 须逐迭代检查）。
     await resolveGeoAndSimulate(sinkFor('plan'));
 
@@ -337,26 +372,8 @@ export async function runGeneration(
       `活动 ${scheduleOutcome.written} 个｜候选 ${research.pool.length} 个（无坐标补位 ${scheduleOutcome.withoutCoord}｜排不下丢弃 ${scheduleOutcome.schedule.droppedCount}）`,
     );
 
-    // ---------- 阶段 3：文案（单次 LLM 调用，只改 description） ----------
-    // 沿用 review 阶段名（前端与时间线契约不变），语义是「撰写说明」；
-    // 结构不归模型管：工具面只给 get_draft + update_description，改不动时间/顺序/数量。
-    // 文案属增强路径：模型没写完也不算失败，草稿里已有候选简介兜底。
-    startPhase('review', 1, '撰写说明文案');
-    const review: ReviewOutcome = { submitted: false, approved: false, notes: [], revisionRequests: [] };
-    const writerRun = await runPhaseAgent({
-      model,
-      apiKey: cfg.apiKey,
-      systemPrompt: WRITER_SYSTEM_PROMPT,
-      tools: [
-        ...buildDraftTools(draft).filter((t) => t.name === 'get_draft' || t.name === 'update_description'),
-        ...buildReviewTools(review),
-      ],
-      userPrompt: writerUserPrompt(form, draft.render()),
-      signal,
-      sink: sinkFor('review'),
-      maxTurns: 12,
-      recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round: 1 }),
-    });
+    // 文案收口（并行段结束）：启动时已记 startPhase，此处只等结果
+    const writerRun = await writerPromise;
     usage.tokensIn += writerRun.tokensIn;
     usage.tokensOut += writerRun.tokensOut;
     if (writerRun.errorMessage) {
@@ -373,12 +390,10 @@ export async function runGeneration(
 
     const finalSink = sinkFor('review');
 
-    // 审校可 update/remove 活动，旧 legs 会与最终活动序列失配。落库前全量重算一次；geoSession memo
+    // 落库前全量重算一次（文案阶段不动结构，但远郊修复器已换过天）：geoSession memo
     // 会复用未变化的高德路径，只有新相邻对才消耗路由额度。异常时清空 legs，宁缺勿持久化假路线。
     try {
-      // Reviewer may replace a place. Resolve only changed/new queries here; unchanged
-      // failed lookups do not gain another full retry pass just because review completed.
-      await runSystemTask('review', 'geo_geocode_review_changes', '解析修订地点坐标', () =>
+      await runSystemTask('review', 'geo_geocode_review_changes', '解析改动地点坐标', () =>
         geo.geocodeAll(draft, finalSink.onThought, signal, true),
       );
       assertAlive(signal);

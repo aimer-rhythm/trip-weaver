@@ -131,6 +131,9 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
       // 占位活动与无美食候选的餐次锚点用目的地定位（geocodeAll 会把它解析成市中心），
       // 不让「自由安排｜北京」这类文案名进入地理编码链。
       const synthetic = !source;
+      const fallbackDescription = stop.meal
+        ? '就近就餐的片区锚点；具体门店、价格与营业情况请到大众点评或美团确认。'
+        : '本天空余时段，可按体力与天气就近安排。';
       const placeName = synthetic ? input.form.destination : stop.poi.name;
       const coord = stop.poi.lat !== undefined && stop.poi.lng !== undefined ? { lat: stop.poi.lat, lng: stop.poi.lng } : {};
       input.draft.addActivity(day.dayIndex, {
@@ -146,7 +149,11 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
         startTime: '',
         endTime: '',
         category: activityCategory(stop.poi, source?.facts),
-        description: (source?.poi.intro ?? '').trim().slice(0, 100),
+        // 说明来源（09-25）：候选 intro 直接复用——research 已按活动说明标准写成（≤60 字，
+        // 是什么 + 看点 + 一条提示），系统不再让模型二次编写。
+        // 无候选来源的合成活动（空天占位、无美食候选的餐次锚点）由代码给一句如实说明。
+        // 有候选来源时即使 intro 为空也如实留空：替它编一句比空着更糟。
+        description: source ? (source.poi.intro ?? '').trim().slice(0, 60) : fallbackDescription,
         // openTime 取排程侧的有效值（高德原文或 evidence 闭馆回填），不止 ResearchPoi 原始字段
         ...(stop.poi.openTime ? { openTime: stop.poi.openTime } : {}),
         ...(source?.poi.sourceLinks.length ? { sourceNotes: source.poi.sourceLinks.slice(0, MAX_SOURCE_NOTES) } : {}),

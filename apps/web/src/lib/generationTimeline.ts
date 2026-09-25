@@ -95,7 +95,9 @@ export function buildTimeline(events: GenerationEvent[]): TimelineModel {
         break;
       }
       case 'thought': {
-        const block = model.phases.at(-1);
+        // 按 ev.phase 找未完成块：文案与 plan 阶段并发后，phases.at(-1) 会把地理进度归到文案块
+        // （文案块后创建）。与 tool_start 同一匹配规则，并发下不再错位。
+        const block = model.phases.find((phase) => phase.phase === ev.phase && !phase.done) ?? model.phases.at(-1);
         block?.items.push({ kind: 'thought', key: `t${seq}`, text: ev.text });
         break;
       }

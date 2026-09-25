@@ -14,7 +14,7 @@ const OptionalActivityFields = {
   poiId: Type.Optional(Type.String({ minLength: 1, maxLength: 100, description: '候选池地点 id；引用已有候选时填写，系统复用其真实坐标。' })),
   startTime: Type.Optional(Type.String({ description: '开始时间 HH:mm，如 09:00' })),
   endTime: Type.Optional(Type.String({ description: '结束时间 HH:mm' })),
-  description: Type.Optional(Type.String({ description: '亮点与实用提示，≤100 字' })),
+  description: Type.Optional(Type.String({ description: '亮点与实用提示，≤60 字' })),
   category: Type.Optional(Type.String({ description: '美食/文化/自然/购物/住宿/交通/娱乐/其他' })),
   lat: Type.Optional(Type.Number({ description: '纬度（geocode_place 的返回）' })),
   lng: Type.Optional(Type.Number({ description: '经度' })),
@@ -160,7 +160,7 @@ export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'p
     parameters: Type.Object({
       dayIndex: Type.Integer({ description: '第几天（从 1 开始）' }),
       position: Type.Integer({ description: '第几个活动（从 1 开始，见 get_draft 输出）' }),
-      description: Type.String({ description: '新说明，≤100 字：是什么 + 为什么值得去 + 实用提示' }),
+      description: Type.String({ description: '新说明，≤60 字：是什么 + 为什么值得去 + 实用提示' }),
     }),
     execute: async (_id, params) => {
       const msg = draft.updateActivity(params.dayIndex, params.position, { description: params.description });
@@ -171,9 +171,29 @@ export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'p
     },
   });
 
+  // 标题写入口（09-25）：文案阶段只负责行程标题与每天标题。
+  // 活动说明不再由模型编写——research 阶段的候选 intro 已按同一标准写成（≤60 字），
+  // buildDraft 直接把它用作活动 description，不需要第二次编写。
+  // 用独立工具而不是复用 set_trip_skeleton：后者会重建 days 并清空已排好的活动。
+  const titlesTool = defineTool({
+    name: 'update_titles',
+    label: '撰写行程标题',
+    description: '改写行程标题与每天标题。只能改文字，不能改天数、活动、顺序或说明。',
+    parameters: Type.Object({
+      title: Type.String({ description: '行程标题，≤20 字，点出这趟行程的特色' }),
+      dayTitles: Type.Array(Type.String(), {
+        description: '每天的主题标题（≤12 字，概括那天的内容与气质，不要罗列活动名），数组长度必须等于天数，按天序给出',
+      }),
+    }),
+    execute: async (_id, params) => ({
+      content: text(draft.updateTitles(params.title, params.dayTitles)),
+      details: { title: params.title, days: params.dayTitles.length },
+    }),
+  });
+
   return [
     ...(mode === 'plan' ? [skeletonTool] : [moveTool]),
-    addTool, updateTool, describeTool, removeTool, getTool, lodgingTool, feasibilityTool,
+    addTool, updateTool, describeTool, titlesTool, removeTool, getTool, lodgingTool, feasibilityTool,
   ];
 }
 

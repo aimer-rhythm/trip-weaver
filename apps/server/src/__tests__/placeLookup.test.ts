@@ -59,6 +59,7 @@ test('调研工具旁路保留 adcode，公开候选不包含原始坐标', asyn
     poiSource: source,
     searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
     destination: '北京',
+    searchWebMax: 2,
     outcome,
   });
   const search = tools.find((tool) => tool.name === 'search_pois')!;
@@ -90,6 +91,7 @@ test('add_candidate 自动回填高德营业时间（仅 attraction），模型�
     poiSource: source,
     searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
     destination: '北京',
+    searchWebMax: 2,
     outcome,
   });
   const search = tools.find((tool) => tool.name === 'search_pois')!;

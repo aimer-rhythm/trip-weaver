@@ -6,6 +6,7 @@
 // city 过滤（09-19 新增）：options.city 提供时两层召回都加 AND city = $x，消除跨城市串扰；
 // 不传 city 时行为与之前完全一致（向后兼容）。
 // 降级：扩展不可用 / embedding 未配置 / 查询失败 → 退化为仅关键词层或空数组，绝不抛错
+// 调用方须传「已分词」的 term 数组（researchTools 已拆词）：把整个短语当一个 term 传进来，关键词层等于不匹配。
 import { pool } from '../db/client';
 import { env, hasEmbedding } from '../env';
 import { embedTexts } from '../integrations/embedding';
@@ -36,7 +37,10 @@ interface PlaceRow {
   verified: boolean;
 }
 
-/** 关键词层：name = ANY($1) 精确命中 + LIKE 前缀兜底，取 top 8，带 verified 过滤；可选 city 过滤 */
+/** 关键词层：三层匹配 —— 精确名 / 名前缀 / payload.themes 主题标签，取 top 8，带 verified 过滤；可选 city 过滤。
+ *  themes（09-25）：模型实测给的是「故宫 历史文化」这类多词短语，拆词后主题词（历史人文/夜景/亲子）
+ *  在地点名里根本不存在，只靠 name 匹配必然空转（对照组命中 0 条）。themes 是库里已有的结构化主题标签
+ *  （北京 652/1349 有）。排序把精确名命中置顶、主题命中置末，避免长尾主题条目挤掉真正要找的地点。 */
 async function keywordRecall(names: string[], city?: string): Promise<PlaceRow[]> {
   if (names.length === 0) return [];
   const patterns = names.map((n) => `${n}%`);
@@ -46,10 +50,14 @@ async function keywordRecall(names: string[], city?: string): Promise<PlaceRow[]
        FROM canonical_places
        WHERE verified = TRUE
          AND city = $3
-         AND (name = ANY($1) OR name LIKE ANY($2))
-       ORDER BY (name = ANY($1)) DESC, name
+         AND (
+           name = ANY($1)
+           OR name LIKE ANY($2)
+           OR (jsonb_typeof(payload->'themes') = 'array' AND payload->'themes' ?| $4::text[])
+         )
+       ORDER BY CASE WHEN name = ANY($1) THEN 0 WHEN name LIKE ANY($2) THEN 1 ELSE 2 END, name
        LIMIT 8`,
-      [names, patterns, city],
+      [names, patterns, city, names],
     );
     return rows;
   }
@@ -57,10 +65,14 @@ async function keywordRecall(names: string[], city?: string): Promise<PlaceRow[]
     `SELECT id, name, category, verified
      FROM canonical_places
      WHERE verified = TRUE
-       AND (name = ANY($1) OR name LIKE ANY($2))
-     ORDER BY (name = ANY($1)) DESC, name
+       AND (
+         name = ANY($1)
+         OR name LIKE ANY($2)
+         OR (jsonb_typeof(payload->'themes') = 'array' AND payload->'themes' ?| $3::text[])
+       )
+     ORDER BY CASE WHEN name = ANY($1) THEN 0 WHEN name LIKE ANY($2) THEN 1 ELSE 2 END, name
      LIMIT 8`,
-    [names, patterns],
+    [names, patterns, names],
   );
   return rows;
 }

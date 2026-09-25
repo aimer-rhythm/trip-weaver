@@ -7,9 +7,15 @@ Brief; it never produces an itinerary. Understanding that boundary is the whole 
 
 - Chat understands one user message and returns `{ reply, briefPatch, missingFields }`. It may answer
   travel questions. It does not generate trips.
-- Only a ready Brief plus an explicit user action create a generation (`POST /api/generations`).
-  Conversations never auto-start a run, not even on `intent: confirm`.
-- A Brief is a snapshot: a generation task runs on the Brief as it was when the user confirmed it,
+- **Auto-start on confirm (09-24 R3)**: when the model returns `intent: 'confirm'` and the Brief is
+  ready, the messages route itself starts the generation (`createJob` + `runGeneration`) and returns
+  `autoStartedJobId`. There is no countdown or buffer. Silent degradation: if the generation quota is
+  exhausted or a job is already running, no job is started and the confirm card remains the manual fallback.
+- **Coverage honesty hint (09-25 R2)**: when the Brief's destination appears or changes, the route
+  checks `cityCoverage()` and, for uncovered cities, appends a fixed honest-degradation sentence to
+  the assistant reply (not a separate message — message pairing must stay intact). Destinations are
+  never blocked; the hint only sets expectations.
+- A Brief is a snapshot: a generation task runs on the Brief as it was when the run started,
   so chatting while a run is in flight cannot retroactively change that run.
 
 Representative paths: `apps/server/src/routes/conversations.ts`,

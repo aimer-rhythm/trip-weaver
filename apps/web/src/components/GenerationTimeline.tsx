@@ -7,9 +7,9 @@ import { PoiCard } from './PoiCard';
 const PHASE_LABEL: Record<GenerationPhase, string> = {
   research: '调研灵感',
   plan: '编排行程',
-  review: '审校把关',
+  review: '打磨标题',
 };
-const PHASE_ICON: Record<GenerationPhase, string> = { research: '🔍', plan: '🗺️', review: '✅' };
+const PHASE_ICON: Record<GenerationPhase, string> = { research: '🔍', plan: '🗺️', review: '✏️' };
 
 /** 数据源降级提示：双源齐全不提示；部分/全无时注明本次实际所用 */
 function sourceBanner(sources: DataSourceKind[] | null): string | null {
