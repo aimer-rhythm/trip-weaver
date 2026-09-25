@@ -322,15 +322,14 @@ LLM planner/reviewer loop for the live pipeline.
 - `buildSchedule(candidates, options): { days, droppedCount }` in `scheduling/schedule.ts` — pure
 - `applyDeterministicSchedule(input): { schedule, written, skippedNoCoord }` in
   `scheduling/buildDraft.ts`
-- `draft.setSkeleton(...)` / `draft.addActivity(...)` / `draft.setLodging(...)` — the only writers
+- `draft.setSkeleton(...)` / `draft.addActivity(...)` / `draft.setLodging(...)` /
+  `draft.updateTitles(...)` — the only writers
 - `WRITER_SYSTEM_PROMPT`, `writerUserPrompt(form, draftRender)` in `generation/prompts.ts`
-- `update_descriptions(entries: {activityId, description}[])` in `tools/draftTools.ts` — the
-  writer-phase write path, located by `activityId` (NOT `dayIndex`/`position`); the write goes
-  through `draft.updateDescriptionById`, which replaces the field in place. Position-based writes
-  were removed because the writer runs CONCURRENTLY with the plan phase, where
-  `repairLongHaulMixedDays` / `optimizeCrossDayGrouping` move activities to other days and
-  invalidate every position number. `update_description(dayIndex, position, description)` remains
-  for `buildDraftTools(draft, 'revision')` and other single-row callers
+- `update_titles(title, dayTitles[])` in `tools/draftTools.ts` — the writer-phase write path,
+  backed by `draft.updateTitles`, which rewrites ONLY `title` and `days[].title`. It must NOT be
+  `set_trip_skeleton`: that rebuilds `days` and discards every scheduled activity.
+  `update_description(dayIndex, position, description)` remains for
+  `buildDraftTools(draft, 'revision')` and other single-row callers
 
 ### 3. Contracts
 
@@ -358,27 +357,28 @@ LLM planner/reviewer loop for the live pipeline.
   median centre of the scheduled activities, falling back to the highest-scored hotel candidate.
   No candidates means no lodging suggestion (do not invent an area name).
 - The writer phase reuses the `review` phase name on the SSE stream (frontend contract unchanged)
-  but is semantically "write the copy". Its tool surface is EXACTLY `get_draft`,
-  `update_descriptions`, `submit_review` — it cannot reach any structural tool, which is how D4
-  ("审校只审文案") is enforced rather than merely requested. `submit_review` takes ONLY `notes`:
-  it used to also require `approved` + `revisionRequests`, which no caller ever read while forcing
-  the model to reason about structure it cannot change (measured: ~85% of the writer's output
-  tokens on the longest turn were reasoning, not copy).
+  but is semantically "title the trip". Its tool surface is EXACTLY `get_draft`, `update_titles`,
+  `submit_review` — it cannot touch activities, order, times, or the activity copy.
+  **Activity descriptions are not written by any model (09-25)**: `buildDraft.ts` copies the
+  research candidate `intro` verbatim, and `RESEARCH_SYSTEM_PROMPT` states that the intro IS the
+  activity copy — so it must be written to that standard (what it is + what to see + one tip,
+  ~60 chars). Synthetic activities with no candidate source (empty-day placeholder, meal anchor
+  without a food candidate) get a code-authored truthful sentence; when a candidate source exists
+  but its intro is empty, the description stays EMPTY — never fabricate. `submit_review` takes ONLY
+  `notes`: it used to also require `approved` + `revisionRequests`, which no caller ever read while
+  forcing the model to reason about structure it cannot change.
 - **The writer runs CONCURRENTLY with geo/repair (09-25).** It starts right after
   `draft.validate()` passes and is `await`ed after `endPhase('plan')`. Measured effect: the writer's
   42–82s (reasoning-dominated, high variance) no longer queues behind geo, and `plan`'s ~4s leaves
   the critical path. Total wall clock ≈ `research + max(plan, review) + tail`, NOT
   `research + plan + review`. Do NOT re-serialize it: nothing in the copy path needs coordinates or
-  legs. Concurrent structural moves are safe because copy is written by `activityId`; the fixers
-  only move (never delete) activities and they touch `day`/`position`/`startTime`, never
-  `description`.
-- The old "batch reduces turns" rationale is dead: measured 3 turns either way (`get_draft` →
-  write → `submit_review` is the protocol floor). The single-call batch form is kept for shape
-  only — one submit instead of N batches — not for speed. The writer's wall clock is decided by
-  reasoning volume, not by turn count or by the length cap on `description` (raising/lowering the
-  cap changed nothing measurable).
-- The writer is an enhancement path: an LLM error or turn limit degrades to the candidate `intro`
-  text already written into each activity and the job still succeeds.
+  legs. Concurrency is safe because the writer touches only `title`/`days[].title` while the fixers
+  move activities between days — disjoint fields, and the fixers never delete activities.
+- 3 turns (`get_draft` → write → `submit_review`) is the protocol floor, and the writer's wall clock
+  is set by output volume, not turn count or length caps: the copy-writing variant of this phase
+  measured 5132 output tokens / 42–126s, the title-only variant 711–1476 / 24–28s.
+- The writer is an enhancement path: an LLM error or turn limit degrades to the defaults already in
+  the draft (code-generated `day.title`s and the candidate `intro` copy) and the job still succeeds.
 - `describeFeasibility`, `repairLongHaulMixedDays`, `ensureMealCoverage` (food-focused only),
   `optimizeCrossDayGrouping`, and `repairTransitTiming` all still run; only the LLM planner and the
   LLM reviewer loop are gone.
@@ -857,6 +857,10 @@ verdict). Note the gate is a daily-budget policy knob, not a code bug: check
 
 ### Measured: what actually moves the wall clock (09-20 verification)
 
+> Superseded in part by "Measured: the wall-clock budget after 09-25" below: the plan/review
+> numbers here predate deterministic scheduling (09-21) and title-only writing (09-25). The two
+> levers it documents (`reasoning_effort`, `maxTokens`) are still dead ends.
+
 Before optimizing any generation latency, read
 `.trellis/tasks/09-20-gen-timing-soft-reasoning-effort/research/2026-09-20-fix-verification.md`.
 Four measured results, all on the same 北京 3-day form:
@@ -875,6 +879,66 @@ a convergence hint when `hard === 0`. plan round 1 went 597.8s → **314.8s**, 1
   so the terminal state was `cancelled` — worse than slow. Any plan-phase optimization must
   budget round 2, not just round 1. Also: the reviewer's soft-severity `revisionRequests` are
   what triggers that round at all.
+
+### Measured: the wall-clock budget after 09-25 (where the time actually goes now)
+
+Read this before proposing any further latency work. Nine real runs on the same 北京 3-day form
+(`cd apps/server && npx tsx test-gen-timing.mts`) produced a counter-intuitive conclusion: **the
+pipeline is no longer the bottleneck — the provider's output rate is.**
+
+**Current per-phase budget** (after the 09-25 changes):
+
+| phase | LLM calls | output tokens | wall clock | notes |
+| --- | --- | --- | --- | --- |
+| `research` | 4–7 turns | 5992–9222 | **89–180s** | ~73% of its output is writing the candidate pool (intro + selection reasoning) |
+| `plan` | **0** | 0 | **2.8–4.3s** | deterministic scheduling + geo + repair only |
+| `review` | 3 turns | 711–1476 | **24–28s** | writes titles only; runs CONCURRENT with geo/repair |
+
+Total wall clock across nine runs: 216 / 195 / 195 / (error) / 199 / 137 / 246 / 185 / 206s —
+median ≈ 195s, with no stable sub-3-minute guarantee.
+
+**The output rate is the real variable.** Same model, same phase, measured **31.7–80 output
+tokens/second (a 2.5× spread)**. The 9th run emitted 35% FEWER tokens than the 8th and took 23s
+LONGER because it hit the slow end of that spread:
+
+| run | turn | output tokens | wall clock | rate |
+| --- | --- | --- | --- | --- |
+| 8 | research | 4250 | 63.9s | 66 tok/s |
+| 8 | research | 2448 | 35.6s | 69 tok/s |
+| 9 | research | 4612 | 145.5s | **31.7 tok/s** |
+
+Consequence: **judge a prompt change on output token count, never on one run's wall clock.** Use
+`test-gen-timing.mts` for the phase split, or query `llm_request_logs` for per-turn `usage.output`
+(combined with `length(response->>'text')` to separate visible text from hidden reasoning).
+
+**What was already removed (do not re-add):**
+
+- LLM planning (09-21) — structure is `buildSchedule`'s job; the plan phase makes zero LLM calls.
+- Per-activity copy writing (09-25) — the writer used to rewrite every `description` (5132 output
+  tokens / 42–126s, high variance). Activity descriptions now reuse the research candidate `intro`
+  verbatim (`buildDraft.ts`), and the writer only calls `update_titles` (711–1476 tokens / 24–28s).
+- Serializing copy behind geo/repair (09-25) — the writer starts right after `draft.validate()` and
+  runs concurrently.
+- Candidate-pool size targets (09-25) — the prompt now asks for ~3–4 attractions per day and drops
+  the fixed food/hotel quotas; research output fell 9222 → 5992 tokens.
+- The empty keyword layer in `retrieveContext` (09-25) — the model sends space-separated phrases
+  like `"故宫 历史文化"`, and the SQL matched the whole phrase against `name`, so it never hit
+  anything. `researchTools` now splits on whitespace before calling, and `keywordRecall` also
+  matches `payload.themes`.
+
+**Measured ineffective — do not retry these:**
+
+- **Tightening `description` length caps.** Cutting 100 → 60 characters *raised* review output
+  (3327 → 4723 tokens): ~85% of a turn's output is hidden reasoning, which no character cap
+  governs.
+- **Batching the description tool.** `update_description` → `update_descriptions` did not change
+  the turn count — 3 turns (`get_draft` → write → `submit_review`) is the protocol floor.
+- **`reasoning_effort`** and **raising `maxTokens`** — see the 09-20 section above.
+
+**The only remaining lever is the model/provider.** The pipeline has no code-level waste left to
+remove. Swapping `SITE_LLM_MODEL` (or the BYOK model) for one with a higher, more stable output
+rate moves every phase proportionally. Never chase a wall-clock target with prompt micro-tuning
+before checking `usage.output` — you may be measuring the gateway, not the code.
 
 ### Upstream flakiness must not kill the whole job
 
