@@ -548,3 +548,53 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 15: 生成耗时优化（文案改标题+并发）与未覆盖城市诚实降级
+
+**Date**: 2026-09-25
+**Task**: 09-25-uncovered-city-degradation / 生成链路耗时优化
+**Branch**: `master`
+
+### Summary
+
+两批工作合并交付。(1) 未覆盖城市诚实降级：R1 阈值检测（cityCoverageService）、R2 对话前置提示、R3 按覆盖率放宽 search_web 配额（2→6）。(2) 生成耗时优化：文案阶段从「逐活动写说明」改为「只写行程与每天标题」，活动说明直接复用调研候选 intro，并与地理解析/远郊修复并发执行。九次真实生成实测：plan 降至 2.9s（零 LLM），review 输出 -85%（5132→711~1476 tokens）、耗时 -78%（42~126s→24~28s），research 输出 -35%（9222→5992 tokens）。总墙钟中位数仍约 195s；结论是上游输出速率（31.7~80 tok/s，2.5 倍波动）才是瓶颈，代码侧已无可压浪费。
+
+### Main Changes
+
+**生成耗时优化**
+- 文案阶段工具面改为 `get_draft` / `update_titles` / `submit_review`，只写标题；`draft.updateTitles` 只改 `title`/`days[].title`（不能复用会清空活动的 `set_trip_skeleton`）
+- 活动说明不再由模型编写：`buildDraft` 直接复用候选 `intro`（research 的 intro 标准同步改为「活动说明」口径）；无候选来源的合成活动由代码给如实说明，有来源但 intro 为空则如实留空
+- 文案与 geoPipeline/远郊修复并发，plan 阶段移出关键路径；并发 Promise 挂 catch 防 unhandledRejection
+- 调研候选数改为按天数定（景点 3~4 个/天），去掉美食与住宿硬性指标
+- `terminated` 纳入上游重试；`partial` 判定改为只看 `toolcall_*` 增量（长 reasoning 断流不再判死整次生成）
+- 检索关键词拆词后按地点名 + `payload.themes` 精确匹配，修复关键词层空转；情报输出补强度标记（实证/网友感受/仅风险）
+
+**死代码清理**
+- 删 `plannerSystemPrompt` / `plannerRevisionSystemPrompt` / `plannerUserPrompt` / `reviewerSystemPrompt` / `reviewerUserPrompt` / `renderPoolIndex` / `renderLongHaulIntel` / `renderRagContext` 及其私有依赖（prompts.ts 245 → 76 行）
+- 删 orchestrator 里无人消费的 `retrieveContext` 调用；`submit_review` 去掉无消费者的 `approved` / `revisionRequests`
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `38a6802` | ⚡ 优化行程生成耗时：文案只写标题并与编排并发，清理死代码 |
+| `8b07678` | 📝 记录生成管线耗时基线与各阶段输出量 |
+| `5212a05` | 📝 修正住宿字段说明：用户未指定时留空而非代码推导 |
+
+### Testing
+
+- [OK] `npm run typecheck`（shared / server / web / eval）
+- [OK] 服务端单测 266/266
+- [OK] `node scripts/verify-c2.mjs` PASS
+- [OK] `npm run build` + `node scripts/verify-c3.mjs` 49/49
+- [OK] 真实生成实测九次（`npx tsx test-gen-timing.mts`）：137 / 160.5 / 185 / 195 / 195 / 199 / 206 / 216 / error
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- 若仍需压制生成耗时，只能换输出更快的模型（`SITE_LLM_MODEL`）；代码侧已无剩余杠杆
+- 可选：用 `payload.recommendScore` 给 search_verified_places 的召回排序，把机位级长尾条目挤出 top 8
