@@ -353,9 +353,9 @@ LLM planner/reviewer loop for the live pipeline.
 - An empty day gets ONE placeholder activity named `自由安排｜<destination>` — never a fabricated
   venue. This keeps the pre-existing "every day needs at least one activity" completeness gate
   satisfiable when the knowledge base has no coverage for a city.
-- `lodging` is derived by code when the form leaves it empty: the hotel candidate nearest the
-  median centre of the scheduled activities, falling back to the highest-scored hotel candidate.
-  No candidates means no lodging suggestion (do not invent an area name).
+- `lodging` stays EMPTY when the form leaves it empty (09-22 decision): generation never derives
+  an area and never names a specific hotel. `verify-c2` asserts `trip.lodging === undefined` for
+  the unspecified case; only a user-supplied `form.lodging` is persisted.
 - The writer phase reuses the `review` phase name on the SSE stream (frontend contract unchanged)
   but is semantically "title the trip". Its tool surface is EXACTLY `get_draft`, `update_titles`,
   `submit_review` — it cannot touch activities, order, times, or the activity copy.
