@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/chat-guidelines.md", "reason": "R2 对话提示接线在 conversations 路由，须遵守对话层契约（消息成对落库、额度口径）"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "R3 放宽 search_web 上限涉及调研 prompt 与 orchestrator，须遵守生成链路约束与额度记账"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "覆盖率查询读 canonical_places，须遵守 DB 访问与迁移规范"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "测试矩阵与 lint/typecheck 门禁"}
+{"file": ".trellis/spec/server/backend/logging-guidelines.md", "reason": "降级路径的日志规范"}
