@@ -64,12 +64,18 @@ the chat quota, or the conversation-to-generation link.
   `enumKind: 'canonical'` options (server-provided field values) are `PATCH`ed directly instead, which is
   exact and costs no chat turn. `inputSchema.enum` carries values, `enumLabels` display copy — the backend
   or model owns the wording and the client only renders it.
-- **Revision is a re-run, not a targeted diff.** `kind: 'revision'` plus `targetTripId` records
-  provenance and links the new trip into the version chain (`rootId` / `version` = target + 1 /
-  `parentId`). The modification notes are appended to the generation input via
-  `briefToGenerateForm(data, { appendNotes })`. Do not claim the result is a minimal edit of the old
-  itinerary; the deterministic scheduler rebuilds the plan. UI copy must keep saying the conversation
-  path is a big change and the editor is the fine-tuning path.
+- **Revision is a targeted edit, not a re-run (09-24 R1).** The model emits `editOps`
+  (replace / delete / add activity — the only three supported operations) against the current trip
+  rendered into the prompt with activity ids (`renderCurrentTrip`). The route normalises them
+  (`normalizeEditOps`), geocodes new activities through the same chain as generation, applies them
+  deterministically (`applyItineraryEdits` in `apps/server/src/chat/editOps.ts`), and persists the
+  result as the next version via `createTrip(userId, trip, revisionOf)`. No generation row is
+  written and no generation quota is consumed. Cross-day moves / lodging / budget stay out of the
+  chat channel (editor-only). The legacy `kind='revision'` generation path still exists for API
+  compatibility but the chat UI no longer uses it.
+- **Edit anchoring follows messages, not just generations.** An edit writes no `generations` row,
+  so `latestConversationTrip` reads both `generations` and `chat_messages.relatedTripId` and picks
+  the higher version — otherwise the next "再改一下" would anchor back to the stale pre-edit version.
 - **Revision targets are ownership-checked.** Both the conversation and the target trip must belong to
   the authenticated user; `kind='revision'` without `targetTripId` is a 400, a non-owned target is a 404.
 
@@ -83,7 +89,7 @@ the chat quota, or the conversation-to-generation link.
 | No usable LLM config | 400 `no_llm` with `hasSiteKey`, same分流 as generation |
 | Brief not ready | No confirm card; missing fields drive intake controls |
 | Chat page first mounted, no conversation yet | The confirmation card still renders from an empty Brief so the user can see what will be collected |
-| Brief ready | Card renders with 开始生成; `intent: 'confirm'` still waits for the click |
+| Brief ready + `intent: 'confirm'` | Server auto-starts the generation and returns `autoStartedJobId`; quota exhausted / job running silently falls back to the manual card |
 | `kind='revision'` without `targetTripId` | 400 `revision_target_missing` |
 | `targetTripId` not owned | 404, identical to a missing trip |
 | Understanding fails mid-turn | user + assistant messages both dropped; the turn is not counted |
@@ -102,11 +108,15 @@ the chat quota, or the conversation-to-generation link.
   normalisation, `emit date > days` precedence.
 - `apps/server/src/__tests__/chatBriefApply.test.ts` — defensive `applyDialogueDecision` and
   `briefToGenerateForm` (including notice-able truncation).
+- `apps/server/src/__tests__/chatEditOps.test.ts` — edit-op normalisation and application:
+  in-place replace, leg pruning, append/position clamp, per-op rejection isolation, idempotence.
 - `apps/server/src/__tests__/chatDerive.test.ts` — web-side pure derivations (intake liveness, polarity
   copy, conversation summary).
-- `node scripts/verify-c2.mjs` — chat CRUD, quota separation, ownership 404s, revision chain
-  (`rootId`/`version`/`parentId`), trip-list version dedupe.
-- `node scripts/verify-c3.mjs` — the same flow through the production browser bundle.
+- `node scripts/verify-c2.mjs` — chat CRUD, quota separation, ownership 404s, confirm auto-start,
+  targeted-edit revision chain (`rootId`/`version`/`parentId`), edit anchoring across turns,
+  trip-list version dedupe.
+- `node scripts/verify-c3.mjs` — the same flow through the production browser bundle, including the
+  editor-embedded chat panel and chat-driven edits.
 
 ### 7. Wrong vs Correct
 

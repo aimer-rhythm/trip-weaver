@@ -264,6 +264,15 @@ export function useConversation(id: string | null) {
   });
 }
 
+/** 行程 → 来源会话反查（编辑器内嵌对话用）；无关联会话时 conversationId 为 null */
+export function useTripConversation(tripId: string | null) {
+  return useQuery({
+    queryKey: ['trips', tripId ?? '', 'conversation'] as const,
+    queryFn: () => api.get<{ conversationId: string | null }>(`/api/trips/${tripId}/conversation`),
+    enabled: Boolean(tripId),
+  });
+}
+
 /** 惰性建会话：只在真正要发第一条消息时创建，不在页面挂载时就留下空会话行 */
 export function useCreateConversation() {
   const qc = useQueryClient();

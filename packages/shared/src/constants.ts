@@ -118,4 +118,9 @@ export const INTAKE_ENUM_KINDS = ['canonical', 'natural'] as const;
 /** 单次生成的类型：全新生成 vs 基于已有行程的修订 */
 export const GENERATION_KINDS = ['generation', 'revision'] as const;
 
+/** 对话内按需编辑的操作集（09-24）：替换/删除/新增活动三件套，排序由服务端确定性处理 */
+export const EDIT_OP_KINDS = ['replace_activity', 'delete_activity', 'add_activity'] as const;
+/** 单轮对话最多接受的编辑操作数（超出截断，防模型刷操作） */
+export const MAX_EDIT_OPS_PER_TURN = 5;
+
 export const MAX_TRIP_CONSTRAINTS = 30;

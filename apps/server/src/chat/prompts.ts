@@ -8,8 +8,8 @@ import {
   requiredBriefFields,
   TRIP_FOCUS_LABELS,
   type ChatMessage,
-  type ConversationTripRef,
   type PlanningBriefData,
+  type Trip,
 } from '@tripweaver/shared';
 
 /** 带进 prompt 的历史条数上限：只保留最近若干轮，避免 token 随会话长度无界增长 */
@@ -28,8 +28,13 @@ export const DIALOGUE_SYSTEM_PROMPT = `你是旅行规划的对话助手。你�
 - 用户表达的个人要求尽量做成约束（addConstraints），不要塞进 extraNotes。约束的 polarity 很重要：
   prefer=优先考虑（想要）、avoid=明确避开、require=硬性要求（必须）、fact=仅背景信息（如「带着 2 岁小孩」，只是背景，不等于要求安排亲子景点）。
 - 用户说「不用考虑 X」「X 算了」时，把对应的已有约束 id 放进 removeConstraintIds。
-- 本会话已经生成过行程时（下方会给出上一版），用户针对已有行程提意见（「第二天换成博物馆」「别去爬山了」）属于修改行程：
-  intent 用 modify_itinerary，并把要改什么写进 modificationNotes（祈使句、一条一句）。不要用 update_brief 表达修改行程的诉求。
+- 本会话已经生成过行程时（下方会给出最新一版的完整内容），用户针对行程提意见（「第 2 天博物馆换成美术馆」「别去爬山了」「加个夜市」）属于修改行程：
+  intent 用 modify_itinerary，并在 editOps 里给出编辑操作，直接引用行程渲染里的活动 id：
+  - 换：{ kind: 'replace_activity', dayIndex, activityId, activity: { name, category?, description? } }
+  - 删：{ kind: 'delete_activity', dayIndex, activityId }
+  - 加：{ kind: 'add_activity', dayIndex, position?, activity: { name, category?, description? } }
+  只给真正要改的操作，没提到的活动不要动。拿不准用户指的是哪个活动时不要猜，用 clarification 追问。
+  跨天移动、改住宿、改预算这类操作对话不支持，reply 里告诉用户去编辑页手动改。
 - **缺少必填项时，一次只问一项**，并在 clarification 里给出 2–4 个具体选项，让用户点选而不是手打：
   clarification = { question: '这次想去哪里？', options: ['成都', '重庆', '西安'] }。
   侧重点、出行方式这类枚举项必须给选项；目的地按上下文能合理推断就给候选城市，实在想不出才留空 options。
@@ -89,14 +94,22 @@ export function renderBrief(data: PlanningBriefData, now = new Date()): string {
   return lines.join('\n');
 }
 
-/** 本会话已生成的行程：给出它的存在，模型才能把「改成…」识别为修订而不是新需求 */
-export function renderCurrentTrip(trip: ConversationTripRef): string {
-  return [
-    '本会话已经生成过一版行程：',
+/**
+ * 本会话已生成行程的完整渲染（含每个活动的 id，供 editOps 定位）。
+ * 只渲染名称与 id —— 时刻/坐标对「要改哪个」没有判别力，白烧 token。
+ */
+export function renderCurrentTrip(trip: Trip): string {
+  const lines = [
+    '本会话已经生成过一版行程（用户针对它提修改意见时，按 modify_itinerary + editOps 处理）：',
     `- 标题：${trip.title}`,
-    `- 版本：v${trip.version}`,
-    '用户如果在这版基础上提修改意见，按 modify_itinerary 处理。',
-  ].join('\n');
+  ];
+  for (const day of trip.days) {
+    lines.push(`第 ${day.dayIndex} 天「${day.title}」：`);
+    for (const activity of day.activities) {
+      lines.push(`  - id=${activity.id}｜${activity.name}`);
+    }
+  }
+  return lines.join('\n');
 }
 
 /** 最近若干轮对话的纯文本转录（模型只看到角色与内容，不需要 id/时间戳） */

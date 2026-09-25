@@ -1,5 +1,6 @@
 export * from './constants';
 export * from './chat';
+export * from './editOps';
 export * from './schemas';
 export * from './types';
 export * from './budget';

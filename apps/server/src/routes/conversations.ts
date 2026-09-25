@@ -12,17 +12,25 @@ import {
   TRIP_FOCUS_LABELS,
   briefIntake,
   briefIntakeWithOptions,
+  briefToGenerateForm,
   requiredBriefFields,
+  type EditOpOutcome,
   type PlanningBriefData,
   type SendMessageResult,
   type TripConstraint,
 } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
 import { applyDialogueDecision, briefStatus } from '../chat/brief';
+import { applyItineraryEdits, normalizeEditOps } from '../chat/editOps';
 import { DialogueUnderstandingError } from '../chat/models';
 import { understandMessage } from '../chat/understanding';
+import { createJob, getRunningJobId } from '../generation/jobManager';
+import { runGeneration } from '../generation/orchestrator';
+import { createGeoSession } from '../generation/geoPipeline';
 import { hasSiteLlm } from '../env';
 import { chatHasQuota, chatUsageView } from '../services/chatQuotaService';
+import { hasQuota } from '../services/quotaService';
+import { createTrip, getTrip, listTripVersions } from '../services/tripService';
 import {
   appendMessages,
   createConversation,
@@ -124,6 +132,9 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     const text = request.body.text.trim();
     if (!text) return reply.code(400).send({ error: '消息不能为空' });
 
+    // 修订需要行程完整内容（渲染进 prompt 供模型定位活动 id），不只是 ref
+    const currentTrip = detail.latestTrip ? await getTrip(userId, detail.latestTrip.id) : null;
+
     // 客户端断开时中止 LLM 调用；失败路径不写库、不消耗额度
     const controller = new AbortController();
     request.raw.on('close', () => controller.abort());
@@ -136,7 +147,7 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
         history: detail.messages,
         userText: text,
         signal: controller.signal,
-        ...(detail.latestTrip ? { currentTrip: detail.latestTrip } : {}),
+        ...(currentTrip ? { currentTrip } : {}),
         logger: request.log,
       });
     } catch (error) {
@@ -146,12 +157,39 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
       throw error;
     }
 
-    // 修订（PR5）：模型判定是「改已有行程」且本会话确实有行程时，把目标与意见一并下发；
-    // 只有用户确认后前端才发起 kind=revision 的生成（对话本身永不自动重跑）
-    const revision =
-      outcome.modification && detail.latestTrip
-        ? { targetTripId: detail.latestTrip.id, notes: outcome.modification }
-        : undefined;
+    // ---- R1（09-24）：按需修订。模型给编辑操作 → 确定性应用 → 落版本链下一版 ----
+    // 不再有 RevisionCard 确认环节（R3：LLM 判定修改意图即直接执行）
+    let editResult: { tripId: string; version: number; outcomes: EditOpOutcome[] } | undefined;
+    if (outcome.intent === 'modify_itinerary' && outcome.editOps && detail.latestTrip && currentTrip) {
+      const ops = normalizeEditOps(outcome.editOps);
+      // 新增/替换的活动需要坐标：走与生成链路相同的解析链（高德→Nominatim 降级），失败保持 estimated
+      const needsGeocode = ops.filter((op) => op.activity);
+      if (needsGeocode.length > 0) {
+        const geo = createGeoSession(userId, currentTrip.destination, currentTrip.transportMode ?? 'transit');
+        await geo.init();
+        for (const op of needsGeocode) {
+          if (controller.signal.aborted) break;
+          const place = await geo.resolvePlace(op.activity!.name);
+          if (place) {
+            op.activity!.lat = place.lat;
+            op.activity!.lng = place.lng;
+          }
+        }
+      }
+      const applied = applyItineraryEdits(currentTrip, ops);
+      if (applied.changed) {
+        const saved = await createTrip(userId, applied.trip, detail.latestTrip.id);
+        const versionRow = await listTripVersions(userId, saved.id);
+        editResult = {
+          tripId: saved.id,
+          version: versionRow?.versions.find((v) => v.id === saved.id)?.version ?? detail.latestTrip.version + 1,
+          outcomes: applied.outcomes,
+        };
+      } else {
+        // 全部拒绝：不落版本，outcomes 里的原因直接回给用户
+        editResult = { tripId: detail.latestTrip.id, version: detail.latestTrip.version, outcomes: applied.outcomes };
+      }
+    }
 
     const evidenceSequence = (detail.messages.at(-1)?.sequence ?? 0) + 1;
     const nextData = applyDialogueDecision(detail.conversation.brief.data, outcome.decision, evidenceSequence);
@@ -165,12 +203,26 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
           ? briefIntakeWithOptions(missingFields, outcome.clarification.question, options)
           : briefIntake(missingFields);
 
+    // 修订结果拼进回复尾部：对话历史脱离 editResult 也能读懂「改了什么」；
+    // relatedTripId 指向新版本，前端据此给「查看行程」入口
+    const editSummary = editResult
+      ? editResult.outcomes.map((o) => o.summary).join('；')
+      : '';
+    const replyContent = editSummary ? `${outcome.reply}（${editSummary}）` : outcome.reply;
+
     const appended = await appendMessages({
       userId,
       conversationId,
       messages: [
         { role: 'user', content: text },
-        { role: 'assistant', content: outcome.reply, ...(intake ? { intake } : {}) },
+        {
+          role: 'assistant',
+          content: replyContent,
+          ...(intake ? { intake } : {}),
+          ...(editResult && editResult.version > (detail.latestTrip?.version ?? 0)
+            ? { relatedTripId: editResult.tripId }
+            : {}),
+        },
       ],
     });
     if (!appended) return reply.code(404).send({ error: '会话不存在' });
@@ -180,12 +232,29 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
 
     const [userMessage, replyMessage] = appended;
     if (!userMessage || !replyMessage) throw new Error('消息写入后数量异常');
+
+    // ---- R3（09-24）：LLM 判信息齐备（intent=confirm 且 Brief ready）即自动触发生成 ----
+    // 无确认环节、无缓冲；误判白扣额度的风险由用户接受（PRD 已拍板）。
+    // 静默降级：额度尽 / 有任务在跑时不触发，前端确认卡仍可手动发起（行为回退到旧路径）。
+    let autoStartedJobId: string | undefined;
+    if (outcome.intent === 'confirm' && missingFields.length === 0 && !editResult) {
+      const canStart = (await hasQuota(userId)) && !getRunningJobId(userId);
+      if (canStart) {
+        const job = createJob(userId, { conversationId, kind: 'generation' });
+        runGeneration(job, briefToGenerateForm(nextData), cfg, app.log).catch((err) =>
+          app.log.error(err, 'runGeneration 未捕获异常'),
+        );
+        autoStartedJobId = job.id;
+      }
+    }
+
     const result: SendMessageResult = {
       userMessage,
       replyMessage,
       brief,
       intent: outcome.intent,
-      ...(revision ? { revision } : {}),
+      ...(autoStartedJobId ? { autoStartedJobId } : {}),
+      ...(editResult ? { editResult } : {}),
     };
     return result;
   });

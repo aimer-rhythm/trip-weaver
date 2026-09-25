@@ -3,6 +3,7 @@ import { Type } from '@sinclair/typebox';
 import { RenameTripSchema, TripExportSchema, TripSchema } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
 import { createTrip, deleteTrip, getTrip, listTrips, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
+import { findConversationForTrip } from '../services/conversationService';
 
 const IdParams = Type.Object({ id: Type.String() });
 
@@ -28,6 +29,13 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
     const chain = await listTripVersions(request.user!.id, request.params.id);
     if (!chain) return reply.code(404).send({ error: '行程不存在' });
     return chain;
+  });
+
+  // 编辑器内嵌对话（09-24 R2）：行程 → 来源会话反查；无关联会话（导入/旧数据）返回 conversationId=null
+  app.get('/:id/conversation', { schema: { params: IdParams } }, async (request, reply) => {
+    if (!(await getTrip(request.user!.id, request.params.id))) return reply.code(404).send({ error: '行程不存在' });
+    const conversationId = await findConversationForTrip(request.user!.id, request.params.id);
+    return { conversationId };
   });
 
   app.put('/:id', { schema: { params: IdParams, body: TripSchema } }, async (request, reply) => {

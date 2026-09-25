@@ -22,6 +22,7 @@ import {
   TRIP_FOCUS_OPTIONS,
 } from './constants';
 import { StringEnum } from './typebox';
+import { EditOpOutcomeSchema } from './editOps';
 import type { BriefIntake, BriefMissingField, GenerateForm, PlanningBriefData, TripConstraint } from './types';
 
 // ---------- 约束模型 ----------
@@ -134,9 +135,15 @@ export const SendMessageResultSchema = Type.Object({
   replyMessage: ChatMessageSchema,
   brief: PlanningBriefViewSchema,
   intent: StringEnum(CHAT_INTENTS),
-  /** 模型判定用户想改已有行程：带上修订目标与意见，由前端确认后发起 kind=revision 生成 */
-  revision: Type.Optional(
-    Type.Object({ targetTripId: Type.String(), notes: Type.String({ minLength: 1, maxLength: 500 }) }),
+  /** R3（09-24）：LLM 判信息齐备即自动触发生成，携带新任务 id；缺省 = 未触发（额度尽/有任务在跑/未齐备） */
+  autoStartedJobId: Type.Optional(Type.String()),
+  /** R1（09-24）：按需修订结果。LLM 判定修改意图即直接执行，落版本链下一版 */
+  editResult: Type.Optional(
+    Type.Object({
+      tripId: Type.String(),
+      version: Type.Integer({ minimum: 1 }),
+      outcomes: Type.Array(EditOpOutcomeSchema, { maxItems: 10 }),
+    }),
   ),
 });
 

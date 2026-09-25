@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useSaveTrip, useTrip, useTripVersions } from '../api/hooks';
+import { useSaveTrip, useTrip, useTripConversation, useTripVersions } from '../api/hooks';
 import { useEditorStore } from '../store/editorStore';
+import { ChatPanel } from '../components/chat/ChatPanel';
 import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
 import { CandidateDrawer } from '../components/editor/CandidateDrawer';
 import { DaySection } from '../components/editor/DaySection';
@@ -11,13 +12,15 @@ import { ExportMenu } from '../components/ExportMenu';
 import { matchOverview } from '../lib/tripDerive';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error';
-type MobileTab = 'list' | 'map';
+type MobileTab = 'chat' | 'list' | 'map';
 
 export function TripEditorPage() {
   const { id = '' } = useParams();
   const navigate = useNavigate();
   const tripQuery = useTrip(id);
   const versions = useTripVersions(id);
+  const conversationQuery = useTripConversation(id);
+  const conversationId = conversationQuery.data?.conversationId ?? null;
   const saveTrip = useSaveTrip();
 
   const trip = useEditorStore((s) => s.trip);
@@ -73,6 +76,7 @@ export function TripEditorPage() {
     : null;
 
   const mobileTabs: [MobileTab, string][] = [
+    ...(conversationId ? [['chat', '对话'] as [MobileTab, string]] : []),
     ['list', '行程'],
     ['map', '地图'],
   ];
@@ -159,6 +163,12 @@ export function TripEditorPage() {
       </div>
 
       <div className={`editor-body mobile-${mobileTab}`}>
+        {/* R2（09-24）：有来源会话的行程，对话常驻最左侧；导入/旧行程无会话则不占位 */}
+        {conversationId && (
+          <aside className="editor-chat">
+            <ChatPanel conversationId={conversationId} currentTripId={id} />
+          </aside>
+        )}
         <aside className="editor-left">
           <div className="editor-left-scroll">{itineraryPanel}</div>
         </aside>

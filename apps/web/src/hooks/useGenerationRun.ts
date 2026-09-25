@@ -21,6 +21,8 @@ export interface GenerationRun {
   /** 发起失败的可操作提示（配额 / 未配置 AI / 登录过期等） */
   errorMessage: string | null;
   start: (form: GenerationRequest) => void;
+  /** 接管已在跑的任务（服务端自动触发场景） */
+  adopt: (jobId: string) => void;
   cancel: () => void;
   /** 结束当前任务视图，回到可重新发起的状态 */
   reset: () => void;
@@ -213,6 +215,18 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
     });
   }, [cancel, jobId, qc]);
 
+  /** 接管一个已在跑的任务（R3：服务端自动触发的生成，前端直接进进度视图） */
+  const adopt = useCallback(
+    (id: string) => {
+      resetCancel();
+      sessionStorage.setItem(ACTIVE_JOB_KEY, id);
+      setEvents([]);
+      activeJobIdRef.current = id;
+      setJobId(id);
+    },
+    [resetCancel],
+  );
+
   return {
     jobId,
     events,
@@ -222,6 +236,7 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
     cancellationError: cancel.error ? cancellationErrorMessage(cancel.error) : null,
     errorMessage,
     start,
+    adopt,
     cancel: cancelCurrent,
     reset: clearJob,
   };

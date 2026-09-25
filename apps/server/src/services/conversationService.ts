@@ -1,6 +1,6 @@
 // 会话 / 消息 / Brief 的数据库操作。
 // 遵循目录规范：路由只管 HTTP，服务层负责查询与所有权谓词（每个读写都带 userId）。
-import { and, asc, desc, eq, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, inArray, sql } from 'drizzle-orm';
 import {
   BRIEF_STATUSES,
   CHAT_MESSAGE_ROLES,
@@ -91,14 +91,45 @@ export async function getConversation(userId: string, id: string): Promise<Conve
 }
 
 /**
- * 本会话最近一次成功生成的行程（修订目标 + 版本引用）。
- * 按 generations.createdAt 倒序，所以修订产生的新版本自然成为最新的一个。
+ * 行程 → 来源会话反查（09-24 R2：编辑器内嵌对话用）。
+ * 沿版本链找：generations.conversationId（生成/整单重跑产出）优先，
+ * 其次 chat_messages.relatedTripId（按需编辑产出，编辑不写 generations）。
+ * 都没有（表单时代/导入的行程）返回 null，编辑器据此隐藏对话面板。
+ */
+export async function findConversationForTrip(userId: string, tripId: string): Promise<string | null> {
+  const [anchor] = await db
+    .select({ rootId: trips.rootId })
+    .from(trips)
+    .where(and(eq(trips.id, tripId), eq(trips.userId, userId)));
+  if (!anchor) return null;
+  const chainIds = db.select({ id: trips.id }).from(trips).where(and(eq(trips.rootId, anchor.rootId), eq(trips.userId, userId)));
+  const [fromGeneration] = await db
+    .select({ conversationId: generations.conversationId })
+    .from(generations)
+    .where(and(eq(generations.userId, userId), inArray(generations.tripId, chainIds)))
+    .orderBy(desc(generations.createdAt))
+    .limit(1);
+  if (fromGeneration?.conversationId) return fromGeneration.conversationId;
+  const [fromMessage] = await db
+    .select({ conversationId: chatMessages.conversationId })
+    .from(chatMessages)
+    .where(and(eq(chatMessages.userId, userId), inArray(chatMessages.relatedTripId, chainIds)))
+    .orderBy(desc(chatMessages.sequence))
+    .limit(1);
+  return fromMessage?.conversationId ?? null;
+}
+
+/**
+ * 本会话当前生效的行程（修订目标 + 版本引用）。
+ * 两个来源取版本更高者：generations 行（生成/整单重跑产出）与
+ * chat_messages.relatedTripId（09-24 R1 按需编辑产出 —— 编辑不写 generations，
+ * 不看消息来源的话，下一轮「再改一下」会锚回旧版本）。
  */
 export async function latestConversationTrip(
   userId: string,
   conversationId: string,
 ): Promise<ConversationTripRef | null> {
-  const [row] = await db
+  const [fromGeneration] = await db
     .select({ id: trips.id, title: trips.title, version: trips.version })
     .from(generations)
     .innerJoin(trips, eq(trips.id, generations.tripId))
@@ -111,7 +142,17 @@ export async function latestConversationTrip(
     )
     .orderBy(desc(generations.createdAt))
     .limit(1);
-  return row ?? null;
+  const [fromMessage] = await db
+    .select({ id: trips.id, title: trips.title, version: trips.version })
+    .from(chatMessages)
+    .innerJoin(trips, eq(trips.id, chatMessages.relatedTripId))
+    .where(and(eq(chatMessages.conversationId, conversationId), eq(chatMessages.userId, userId)))
+    .orderBy(desc(chatMessages.sequence))
+    .limit(1);
+  if (!fromGeneration) return fromMessage ?? null;
+  if (!fromMessage) return fromGeneration;
+  // 同一版本链内比版本；消息指向不同链（理论不该发生）时信生成记录
+  return fromMessage.version > fromGeneration.version ? fromMessage : fromGeneration;
 }
 
 export async function getConversationDetail(userId: string, id: string): Promise<ConversationDetail | null> {

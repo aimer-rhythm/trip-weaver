@@ -8,9 +8,11 @@
 // v1 没有 `Static`，因此**不手写镜像接口**——模型输出的读取一律走 unknown + 逐字段防御性归一
 // （见 brief.ts 的 applyDialogueDecision / 本文件的 readDecisionHead），避免 schema 与接口漂移。
 import {
+  ACTIVITY_CATEGORIES,
   CHAT_INTENTS,
   CONSTRAINT_CATEGORIES,
   CONSTRAINT_POLARITIES,
+  MAX_EDIT_OPS_PER_TURN,
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
@@ -35,6 +37,40 @@ export const ConstraintDraftSchema = Type.Object({
   valueText: Type.String({ minLength: 1, maxLength: 200 }),
   polarity: enumOf(CONSTRAINT_POLARITIES),
 });
+
+const activityCategory = Type.Optional(enumOf(ACTIVITY_CATEGORIES));
+
+/**
+ * 编辑操作三件套（R1，09-24）：替换/删除/新增。与 shared/editOps.ts 同形状，
+ * 但这里是 typebox v1（工具参数校验用）；读取后交给 normalizeEditOps 再校验一轮。
+ */
+const EditOpSchema = Type.Union([
+  Type.Object({
+    kind: Type.Literal('replace_activity'),
+    dayIndex: Type.Integer({ minimum: 1 }),
+    activityId: Type.String({ description: '目标活动 id，从上一版行程渲染里照抄' }),
+    activity: Type.Object({
+      name: Type.String({ minLength: 1, maxLength: 100 }),
+      category: activityCategory,
+      description: Type.Optional(Type.String({ maxLength: 500 })),
+    }),
+  }),
+  Type.Object({
+    kind: Type.Literal('delete_activity'),
+    dayIndex: Type.Integer({ minimum: 1 }),
+    activityId: Type.String({ description: '目标活动 id，从上一版行程渲染里照抄' }),
+  }),
+  Type.Object({
+    kind: Type.Literal('add_activity'),
+    dayIndex: Type.Integer({ minimum: 1 }),
+    position: Type.Optional(Type.Integer({ minimum: 0, description: '插入位置（0 起），缺省追加到当天末尾' })),
+    activity: Type.Object({
+      name: Type.String({ minLength: 1, maxLength: 100 }),
+      category: activityCategory,
+      description: Type.Optional(Type.String({ maxLength: 500 })),
+    }),
+  }),
+]);
 
 export const DialogueDecisionSchema = Type.Object({
   intent: enumOf(DIALOGUE_INTENTS),
@@ -64,11 +100,11 @@ export const DialogueDecisionSchema = Type.Object({
       { description: '缺少必要条件时的一次追问。能枚举就给 2-4 个具体选项，让用户点选而不是手打；日期类不用给选项' },
     ),
   ),
-  modifyItinerary: Type.Optional(
-    Type.Boolean({ description: '用户想修改本会话已生成的行程（而不是重新生成一份）；仅当下方给出了上一版行程时才可能为 true' }),
-  ),
-  modificationNotes: Type.Optional(
-    Type.String({ maxLength: 500, description: '要改什么，用祈使句写清，一条一句（仅 modifyItinerary=true 时给）' }),
+  editOps: Type.Optional(
+    Type.Array(EditOpSchema, {
+      maxItems: MAX_EDIT_OPS_PER_TURN,
+      description: '用户想修改本会话已生成行程时的编辑操作（仅 intent=modify_itinerary 时给）；一次最多 5 条',
+    }),
   ),
 });
 
@@ -100,13 +136,12 @@ export function readDecisionHead(raw: unknown): { intent: DialogueIntent; reply:
 }
 
 /**
- * 读取修订意见（PR5）：必须同时有 modifyItinerary=true 与非空 notes，缺一不算。
- * 只有 intent 是 modify_itinerary 也不够 —— 宁可漏报也不要发起一次没头没脑的重跑。
+ * 读取编辑操作（R1）：只判存在性，逐条校验交给 normalizeEditOps（chat/editOps.ts）。
+ * 只在 intent=modify_itinerary 时有意义，但这里不耦合意图 —— 路由层决定什么时候采信。
  */
-export function readModification(raw: unknown): string | null {
-  if (asRecord(raw).modifyItinerary !== true) return null;
-  const notes = readString(raw, 'modificationNotes')?.trim();
-  return notes ? notes.slice(0, 500) : null;
+export function readEditOps(raw: unknown): unknown[] | null {
+  const ops = asRecord(raw).editOps;
+  return Array.isArray(ops) && ops.length > 0 ? ops : null;
 }
 
 /**

@@ -19,9 +19,10 @@ import { BriefCard } from '../components/chat/BriefCard';
 import { ChatInput } from '../components/chat/ChatInput';
 import { ConversationPicker } from '../components/chat/ConversationPicker';
 import { MessageBubble } from '../components/chat/MessageBubble';
-import { RevisionCard } from '../components/chat/RevisionCard';
 import { useGenerationRun } from '../hooks/useGenerationRun';
 import { activeIntake, canGenerate, chatErrorMessage, isIntakeLive } from '../lib/chatDerive';
+import { useQueryClient } from '@tanstack/react-query';
+import { keys } from '../api/hooks';
 
 const CONVERSATION_KEY = 'tw.activeConversationId';
 
@@ -42,13 +43,12 @@ const EMPTY_BRIEF: PlanningBriefView = {
 
 export function ChatPage() {
   const navigate = useNavigate();
+  const qc = useQueryClient();
   const [conversationId, setConversationId] = useState<string | null>(() => sessionStorage.getItem(CONVERSATION_KEY));
   const [error, setError] = useState<string | null>(null);
   const [pendingText, setPendingText] = useState<string | null>(null);
   const [doneTripId, setDoneTripId] = useState<string | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
-  // 模型判定「改已有行程」时挂上，用户在卡片上确认后才真发修订任务（PR6）
-  const [pendingRevision, setPendingRevision] = useState<{ targetTripId: string; notes: string } | null>(null);
   const streamRef = useRef<HTMLDivElement | null>(null);
 
   const list = useConversations();
@@ -101,7 +101,13 @@ export function ChatPage() {
       try {
         const id = await ensureConversation();
         const result = await sendMessage.mutateAsync({ id, text });
-        setPendingRevision(result.revision ?? null);
+        // R3：服务端判信息齐备已自动起生成任务，前端直接接管进度
+        if (result.autoStartedJobId) run.adopt(result.autoStartedJobId);
+        // R1：按需修订落了新版本，跳转到新版本编辑页（版本链切换）
+        if (result.editResult && result.editResult.tripId !== detail.data?.latestTrip?.id) {
+          qc.invalidateQueries({ queryKey: keys.trips });
+          navigate(`/trips/${result.editResult.tripId}`);
+        }
       } catch (err) {
         setPendingText(null);
         setError(chatErrorMessage(err));
@@ -109,7 +115,7 @@ export function ChatPage() {
       }
       setPendingText(null);
     },
-    [ensureConversation, sendMessage],
+    [ensureConversation, sendMessage, run, qc, navigate, detail.data?.latestTrip?.id],
   );
 
   /** 确认卡上的编辑：还没建会话时先建（让用户不聊天也能先点选条件） */
@@ -131,22 +137,9 @@ export function ChatPage() {
     run.start({ ...briefToGenerateForm(brief.data), ...(conversationId ? { conversationId } : {}) });
   }, [brief, conversationId, run]);
 
-  /** 修订（PR5/PR6）：把修改意见拼进生成输入，产出同一版本链的下一版 */
-  const confirmRevision = useCallback(() => {
-    if (!pendingRevision || !brief) return;
-    run.start({
-      ...briefToGenerateForm(brief.data, { appendNotes: pendingRevision.notes }),
-      ...(conversationId ? { conversationId } : {}),
-      kind: 'revision',
-      targetTripId: pendingRevision.targetTripId,
-    });
-    setPendingRevision(null);
-  }, [pendingRevision, brief, conversationId, run]);
-
   const startNewConversation = useCallback(() => {
     setError(null);
     setPendingText(null);
-    setPendingRevision(null);
     rememberConversation(null);
   }, [rememberConversation]);
 
@@ -265,17 +258,6 @@ export function ChatPage() {
 
       {error && <p className="form-error">{error}</p>}
       {run.errorMessage && <p className="form-error">{run.errorMessage}</p>}
-
-      {pendingRevision && (
-        <RevisionCard
-          currentVersion={detail.data?.latestTrip?.version ?? 1}
-          notes={pendingRevision.notes}
-          busy={run.starting}
-          generationExhausted={generationExhausted}
-          onConfirm={confirmRevision}
-          onDismiss={() => setPendingRevision(null)}
-        />
-      )}
 
       <BriefCard
         brief={brief}
