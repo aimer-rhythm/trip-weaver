@@ -112,8 +112,24 @@ export async function startMockLlm(
         const destination = KNOWN_CITIES.find((city) => said.includes(city)) ?? '成都';
         const days = Number(/(\d+)\s*天/.exec(said)?.[1] ?? 3);
         const omitDate = said.includes('先不定日期');
-        // 针对已有行程的修改意见「换成/改成/别去」→ modify_itinerary（PR5）
+        // 针对已有行程的修改意见「换成/改成/别去」→ modify_itinerary + editOps（09-24 R1：按需编辑，不再整单重跑）。
+        // activityId 从 system prompt 的行程渲染（id=xxx｜名称）里取目标天的第一个活动
         const isModification = /换成|改成|别去/.test(said);
+        const modificationDecision = () => {
+          const dayM = /第\s*(\d+)\s*天/.exec(said);
+          const dayIndex = dayM ? Number(dayM[1]) : 1;
+          const lines = system.split('\n');
+          const dayStart = lines.findIndex((l) => l.startsWith(`第 ${dayIndex} 天`));
+          const idLine = dayStart >= 0 ? lines.slice(dayStart + 1).find((l) => l.includes('id=')) : undefined;
+          const activityId = idLine ? /id=([^｜\s]+)｜/.exec(idLine)?.[1] : undefined;
+          return {
+            intent: 'modify_itinerary',
+            reply: '好的，换成博物馆。',
+            ...(activityId
+              ? { editOps: [{ kind: 'replace_activity', dayIndex, activityId, activity: { name: '成都博物馆', category: '文化' } }] }
+              : {}),
+          };
+        };
         // 还不知道去哪：不给 destination，改用 clarification.options 给可点候选（PR6 修正）
         const askDestination = /不知道去哪/.test(said) && !KNOWN_CITIES.some((city) => said.includes(city));
         respondWithToolCalls(res, payload.model, [{
@@ -125,9 +141,11 @@ export async function startMockLlm(
               clarification: { question: '这次想去哪里？', options: ['成都', '重庆', '西安'] },
             }
             : isModification
-              ? { intent: 'modify_itinerary', reply: '好的，我按这个改一版。', modifyItinerary: true, modificationNotes: said }
+              ? modificationDecision()
               : {
-                intent: omitDate ? 'update_brief' : 'confirm',
+                // confirm 只在用户表达「出发/开始/生成」时给出 —— R3 自动触发以 confirm 为准，
+                // 普通补全字段（如「成都吧」）保持 update_brief，不该误触发生成
+                intent: omitDate ? 'update_brief' : (/出发|开始|生成/.test(said) ? 'confirm' : 'update_brief'),
                 reply: omitDate
                   ? `好的，${destination}记下了，大概什么时候出发？`
                   : `好的，${destination} ${days} 天记下了，可以开始生成了。`,
@@ -166,7 +184,7 @@ export async function startMockLlm(
           toolResults >= 2
             ? [{ name: 'submit_review', args: { approved: true, notes: ['测试建议：留意闭馆时间'], revisionRequests: [] } }]
             : toolResults === 1
-              ? [{ name: 'update_description', args: { dayIndex: 1, position: 1, description: '文案阶段改写：按知识库素材说明亮点与实用提示。' } }]
+              ? [{ name: 'update_descriptions', args: { entries: [{ dayIndex: 1, position: 1, description: '文案阶段改写：按知识库素材说明亮点与实用提示。' }] } }]
               : [{ name: 'get_draft', args: {} }]);
       } else if (system.includes('行程审校员')) {
         if (toolResults === 0) {

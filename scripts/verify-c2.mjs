@@ -168,7 +168,7 @@ try {
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
       REGISTRATION_MODE: 'invite',
       INVITE_CODE: 'C2TEST',
-      CHAT_DAILY_LIMIT: '6',
+      CHAT_DAILY_LIMIT: '7',
       GITHUB_CLIENT_ID: '',
       GITHUB_CLIENT_SECRET: '',
       APP_BASE_URL: '',
@@ -333,9 +333,9 @@ try {
   check('排程阶段零 LLM 规划工具（结构由代码决定）', structureCalls.length === 0, structureCalls.join(','));
   const writer = mock.seenWriter;
   check(
-    '文案阶段拿到草稿且工具面仅 get_draft / update_description / submit_review',
+    '文案阶段拿到草稿且工具面仅 get_draft / update_descriptions / submit_review',
     Boolean(writer?.hasDraft)
-      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['get_draft', 'submit_review', 'update_description']),
+      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['get_draft', 'submit_review', 'update_descriptions']),
     JSON.stringify(writer?.tools),
   );
   const revisedTrip = await api('GET', `/api/trips/${runD.events.at(-1)?.tripId}`);
@@ -402,6 +402,15 @@ try {
   check('必填齐备 → ready 且无缺字段', turn2.json?.brief?.status === 'ready' && turn2.json?.brief?.missingFields?.length === 0, JSON.stringify(turn2.json?.brief));
   check('齐备后不再追问', turn2.json?.replyMessage?.intake === undefined, JSON.stringify(turn2.json?.replyMessage?.intake));
 
+  // R3（09-24）：confirm + Brief 齐备 → 服务端自动触发生成，无需用户再点「开始生成」
+  const autoJobId = turn2.json?.autoStartedJobId;
+  check('confirm 自动触发生成', typeof autoJobId === 'string', JSON.stringify(turn2.json?.autoStartedJobId));
+  const autoRun = await readEvents(autoJobId);
+  check('自动触发的生成完成', autoRun.events.at(-1)?.type === 'job_done', autoRun.events.at(-1)?.type);
+  const autoTripId = autoRun.events.at(-1)?.tripId;
+  const autoTrip = await api('GET', `/api/trips/${autoTripId}`);
+  check('自动触发的行程已落库', autoTrip.status === 200 && autoTrip.json?.days?.length === 3, `status=${autoTrip.status}`);
+
   const patch = await api('PATCH', `/api/conversations/${conversationId}/brief`, { destination: '重庆' });
   check('确认卡编辑 200', patch.status === 200, JSON.stringify(patch.json));
   check('编辑落成人话的用户消息', patch.json?.userMessage?.content?.includes('目的地改为「重庆」') === true, patch.json?.userMessage?.content);
@@ -420,7 +429,7 @@ try {
   const chatList = await api('GET', '/api/conversations');
   check('会话列表包含自身会话', chatList.json?.conversations?.length === 1, `count=${chatList.json?.conversations?.length}`);
   check('对话额度独立计数（3 轮）', chatList.json?.chatUsage?.usedToday === 3, `usedToday=${chatList.json?.chatUsage?.usedToday}`);
-  check('对话不消耗生成配额', (await api('GET', '/api/usage')).json?.usedToday === 0, '生成配额应为 0');
+  check('自动生成计入生成配额（1 次）', (await api('GET', '/api/usage')).json?.usedToday === 1, '自动触发的生成应计 1 次');
 
   // 5.w 缺条件时给可点选项（PR6 修正）：模型下发 clarification.options → 前端渲染按钮，而不是让用户手打
   const askConv = await api('POST', '/api/conversations', {});
@@ -439,15 +448,50 @@ try {
   check('点选后目的地落入 Brief', answerTurn.json?.brief?.data?.destination === '成都', JSON.stringify(answerTurn.json?.brief?.data));
   check('补齐后无缺字段', answerTurn.json?.brief?.missingFields?.length === 0, JSON.stringify(answerTurn.json?.brief?.missingFields));
 
-  // 5.x 修订链路（PR5）：v1 直接用 PG 造出来 —— 用户 3 只有 1 次生成额度，得留给「修订」这一步
+  // 5.x 按需修订（09-24 R1）：对话里直接给编辑操作 → 服务端确定性应用 → 落版本链下一版。
+  // 不再是「重跑一次生成」：不消耗生成配额、不动其余活动。
   const seed = new Client({ connectionString: DATABASE_URL });
   await seed.connect();
   const v1 = 'c2-revision-v1';
   const seedUserId = (await seed.query('select id from users where email = $1', [email3])).rows[0]?.id;
+  const v1Data = {
+    id: v1,
+    title: '旧版行程',
+    destination: '成都',
+    startDate: '2026-11-05',
+    budgetLevel: '舒适',
+    totalBudget: 0,
+    preferences: [],
+    partySize: 2,
+    extraNotes: '',
+    transportMode: 'transit',
+    days: [
+      {
+        id: 'c2-v1-d1',
+        dayIndex: 1,
+        title: '第 1 天',
+        activities: [
+          { id: 'c2-v1-d1-a1', name: '宽窄巷子', startTime: '', endTime: '', description: '', lat: 0, lng: 0, coordSource: 'estimated', category: '文化', sourceNotes: [] },
+        ],
+      },
+      {
+        id: 'c2-v1-d2',
+        dayIndex: 2,
+        title: '第 2 天',
+        activities: [
+          { id: 'c2-v1-d2-a1', name: '青羊宫', startTime: '', endTime: '', description: '', lat: 0, lng: 0, coordSource: 'estimated', category: '文化', sourceNotes: [] },
+          { id: 'c2-v1-d2-a2', name: '锦里', startTime: '', endTime: '', description: '', lat: 0, lng: 0, coordSource: 'estimated', category: '美食', sourceNotes: [] },
+        ],
+      },
+    ],
+    meta: { usedXhs: false, reviewNotes: [] },
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  };
   await seed.query(
     `insert into trips (id, user_id, title, destination, days_count, activity_count, total_cost, used_xhs, root_id, version, parent_id, data, created_at, updated_at)
-     values ($1, $2, '旧版行程', '成都', 2, 4, 0, false, $1, 1, null, '{}'::jsonb, now(), now())`,
-    [v1, seedUserId],
+     values ($1, $2, '旧版行程', '成都', 2, 3, 0, false, $1, 1, null, $3::jsonb, now(), now())`,
+    [v1, seedUserId, JSON.stringify(v1Data)],
   );
   await seed.query(
     `insert into generations (id, user_id, trip_id, conversation_id, kind, status, created_at)
@@ -462,36 +506,31 @@ try {
     JSON.stringify(withTrip.json?.latestTrip),
   );
 
+  // 配额基线：上面 seed 的 v1 已占 1 次 done，绝不能比对绝对值
+  const usageBeforeEdit = (await api('GET', '/api/usage')).json?.usedToday;
   const modifyTurn = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '把第 2 天换成博物馆' });
   check(
     '修订意图识别',
     modifyTurn.json?.intent === 'modify_itinerary',
     `status=${modifyTurn.status} body=${JSON.stringify(modifyTurn.json).slice(0, 300)}`,
   );
-  check(
-    '下发修订目标与意见',
-    modifyTurn.json?.revision?.targetTripId === v1 && typeof modifyTurn.json?.revision?.notes === 'string',
-    JSON.stringify(modifyTurn.json?.revision),
-  );
+  const editResult = modifyTurn.json?.editResult;
+  check('按需编辑直接落新版本', editResult?.version === 2 && typeof editResult?.tripId === 'string', JSON.stringify(editResult));
+  check('编辑操作回执已应用', editResult?.outcomes?.[0]?.applied === true, JSON.stringify(editResult?.outcomes));
+  const v2 = editResult?.tripId;
 
-  const reviseJob = await api('POST', '/api/generations', {
-    destination: '成都',
-    days: 2,
-    startDate: '',
-    budgetLevel: '舒适',
-    totalBudget: 0,
-    preferences: [],
-    partySize: 2,
-    extraNotes: modifyTurn.json?.revision?.notes ?? '',
-    transportMode: 'transit',
-    conversationId,
-    kind: 'revision',
-    targetTripId: v1,
-  });
-  check('修订建任务 202', reviseJob.status === 202, JSON.stringify(reviseJob.json));
-  const reviseRun = await readEvents(reviseJob.json?.jobId);
-  const v2 = reviseRun.events.at(-1)?.tripId;
-  check('修订 job_done', reviseRun.events.at(-1)?.type === 'job_done', reviseRun.events.at(-1)?.type);
+  const v2Trip = await api('GET', `/api/trips/${v2}`);
+  const v2day2 = v2Trip.json?.days?.find((d) => d.dayIndex === 2);
+  check(
+    '目标天第 1 个活动被替换为博物馆',
+    v2day2?.activities?.[0]?.name === '成都博物馆' && v2day2?.activities?.length === 2,
+    JSON.stringify(v2day2?.activities?.map((a) => a.name)),
+  );
+  check(
+    '其余行程原样保留',
+    v2Trip.json?.days?.find((d) => d.dayIndex === 1)?.activities?.[0]?.name === '宽窄巷子'
+      && v2day2?.activities?.[1]?.name === '锦里',
+  );
   const chain = (await seed.query('select root_id, version, parent_id from trips where id = $1', [v2])).rows[0];
   check(
     '修订产出 v2，挂在同一版本链',
@@ -499,20 +538,36 @@ try {
     JSON.stringify(chain),
   );
   check('旧版 v1 原样保留', (await seed.query('select id from trips where id = $1', [v1])).rows.length === 1);
-  const revisionRow = (await seed.query('select kind from generations where trip_id = $1', [v2])).rows[0];
-  check('generation 行标记 kind=revision', revisionRow?.kind === 'revision', String(revisionRow?.kind));
+  check(
+    '按需编辑不消耗生成配额',
+    (await api('GET', '/api/usage')).json?.usedToday === usageBeforeEdit,
+    `编辑前后均应为 ${usageBeforeEdit}`,
+  );
+  const noGenRow = (await seed.query('select count(*)::int as n from generations where trip_id = $1', [v2])).rows[0];
+  check('按需编辑不产生 generations 行', noGenRow?.n === 0, `n=${noGenRow?.n}`);
 
-  // 版本链前端契约（PR6）：版本接口 + 列表去重
+  // 连续第二轮修改：锚点应跟随到 v2（latestConversationTrip 看消息 relatedTripId）
+  const modify2 = await api('POST', `/api/conversations/${conversationId}/messages`, { text: '第 2 天别去锦里了' });
+  check(
+    '第二轮修订基于 v2（版本 3）',
+    modify2.json?.editResult?.version === 3,
+    JSON.stringify(modify2.json?.editResult ?? modify2.json),
+  );
+
+  // 版本链前端契约：版本接口 + 列表去重
   const chainRes = await api('GET', `/api/trips/${v1}/versions`);
   check(
-    '版本链接口按 version 升序返回 v1+v2',
-    chainRes.json?.versions?.length === 2 && chainRes.json?.versions?.[0]?.version === 1 && chainRes.json?.versions?.[1]?.version === 2,
-    JSON.stringify(chainRes.json?.versions),
+    '版本链接口按 version 升序返回 v1+v2+v3',
+    chainRes.json?.versions?.length === 3 && chainRes.json?.versions?.[0]?.version === 1 && chainRes.json?.versions?.[2]?.version === 3,
+    JSON.stringify(chainRes.json?.versions?.map((v) => v.version)),
   );
   const listAfterRevision = await api('GET', '/api/trips');
+  const v3 = modify2.json?.editResult?.tripId;
+  // 该用户还有一条自动触发生成的独立行程；版本链去重只针对同一 root
   check(
     '行程列表只显示版本链最新版',
-    listAfterRevision.json?.length === 1 && listAfterRevision.json?.[0]?.id === v2 && listAfterRevision.json?.[0]?.version === 2,
+    listAfterRevision.json?.some((t) => t.id === v3 && t.version === 3) === true
+      && listAfterRevision.json?.some((t) => t.id === v1 || t.id === v2) === false,
     JSON.stringify(listAfterRevision.json?.map((t) => `${t.id}:v${t.version}`)),
   );
   const oldVersionStillReadable = await api('GET', `/api/trips/${v1}`);
@@ -526,7 +581,7 @@ try {
     overQuota.json?.code === 'chat_quota_exhausted' && typeof overQuota.json?.resetAt === 'number',
     JSON.stringify(overQuota.json),
   );
-  check('被拒的一轮不落库', (await api('GET', `/api/conversations/${conversationId}`)).json?.messages?.length === 8);
+  check('被拒的一轮不落库', (await api('GET', `/api/conversations/${conversationId}`)).json?.messages?.length === 10);
 
   cookie = cookieOtherUser;
   check('他人会话详情 404', (await api('GET', `/api/conversations/${conversationId}`)).status === 404);

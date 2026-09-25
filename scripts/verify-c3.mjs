@@ -269,6 +269,23 @@ try {
   const versionBadges = await page.locator('.trip-version-badge').count();
   check('列表每条版本链一行且首版无徽章', listCards === 1 && versionBadges === 0, `cards=${listCards}, badges=${versionBadges}`);
 
+  // 3.7 编辑器内嵌对话（09-24 R2/R4）：对话常驻最左侧，可直接发起按需修改
+  // 放在 3.6 之后：编辑会产生 v2，列表断言（首版无徽章）必须赶在编辑之前跑
+  await page.goto(`${BASE}/trips/${tripId}`, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.editor-chat .chat-panel', { timeout: 5_000 });
+  const panelMsgs = await page.locator('.editor-chat .chat-msg').count();
+  check('编辑器左侧常驻对话面板且历史消息可见', panelMsgs >= 2, `msgs=${panelMsgs}`);
+  // 按需修订（R1）：说「换成」→ 服务端应用编辑操作并落 v2，面板跳转到新版本
+  await page.locator('.editor-chat').getByLabel(CHAT_INPUT).fill('把第 2 天换成博物馆');
+  await page.locator('.editor-chat').getByLabel(CHAT_INPUT).press('Enter');
+  await page.waitForFunction((oldId) => !location.pathname.endsWith(oldId), tripId, { timeout: 20_000 });
+  await page.waitForSelector('.trip-versions', { timeout: 10_000 });
+  const editedNames = await page.locator('.day-section .activity-name').allInnerTexts();
+  check('对话修改落新版本且只动目标活动', editedNames.some((n) => n.includes('成都博物馆')), editedNames.join('｜'));
+  const versionChips = await page.locator('.trip-versions .btn-chip').allInnerTexts();
+  check('版本链切换器出现 v1+v2', versionChips.length === 2, versionChips.join('，'));
+  await page.screenshot({ path: `${SHOTS}/11c-editor-chat-edit.png` });
+
   // 4. 刷新恢复：开第二次生成，中途 reload
   await startGenerationViaChat(page, { destination: '大阪' });
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
