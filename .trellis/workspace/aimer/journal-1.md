@@ -515,3 +515,36 @@ database structure remain unchanged. No LangGraph dependency was added.
 ### Next Steps
 
 - None - task complete
+
+
+## Session 14: 问答式交互升级：按需修订+自动触发+编辑器内嵌对话
+
+**Date**: 2026-09-25
+**Task**: 问答式交互升级：按需修订+自动触发+编辑器内嵌对话
+**Branch**: `master`
+
+### Summary
+
+R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链，不耗生成配额）；R3 LLM 自主触发（confirm+Brief ready 服务端直接 createJob，autoStartedJobId）；R2/R4 编辑器左侧内嵌 ChatPanel，trips/:id/conversation 反查；latestConversationTrip 兼看 relatedTripId 锚定最新版。验证：typecheck 绿、单测 254/257（3 个既有失败）、verify-c2 全过、verify-c3 49/49。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `815566d` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
