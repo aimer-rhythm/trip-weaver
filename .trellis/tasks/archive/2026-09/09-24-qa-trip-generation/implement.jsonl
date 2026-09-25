@@ -1,0 +1,8 @@
+{"file": ".trellis/spec/server/backend/chat-guidelines.md", "reason": "对话层全部契约（intent/Brief/修订/额度）；本次要推翻其中两条，必须先读才能安全改"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "生成任务与调度器约定；R1 局部重排要复用 scheduling/，R3 自主触发要接 jobManager"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "新增编辑操作通道的校验与错误码风格"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "测试要求与 lint/typecheck 标准"}
+{"file": ".trellis/spec/shared/backend/database-guidelines.md", "reason": "版本链落库（rootId/version/parentId）与 trips 表约束"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "R2 编辑器左侧对话栏复用 ChatPage 组件的规范"}
+{"file": ".trellis/spec/web/frontend/state-management.md", "reason": "对话状态与 TanStack Query 缓存的接线方式"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "shared 契约扩展（editOps schema）时的类型纪律"}
