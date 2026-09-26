@@ -15,14 +15,12 @@ import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
-import { amapBudgetRemaining, searchBudgetRemaining } from '../services/quotaService';
+import { searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
-import {
-  AMAP_MAX_PER_TASK,
-  createTaskPoiSource,
-  getNullPoiSource,
-  resolvePoiSourceForUser,
-} from '../integrations/amap/poiSource';
+import { geoBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
+import { getNullPoiSource } from '../integrations/nullPoiSource';
+import { POI_MAX_PER_TASK, createTaskPoiSource } from '../integrations/poiTaskSource';
+import { env } from '../env';
 import {
   SEARCH_MAX_PER_TASK,
   createTaskSearchSource,
@@ -60,10 +58,11 @@ class GenerationFailure extends Error {}
 /** 调研阶段降级说明：数据源缺失/超额不阻断生成，仅在时间线上明示 */
 function researchNote(sources: DataSourceKind[]): string | undefined {
   if (sources.length === 2) return undefined;
-  if (sources.length === 0) return '高德与全网搜索数据源均不可用，本次基于模型知识调研';
-  return sources[0] === 'amap'
-    ? '全网搜索不可用，本次基于高德地点数据 + 模型知识调研'
-    : '高德地点数据不可用，本次基于全网搜索 + 模型知识调研';
+  const only = sources[0];
+  if (only === undefined) return '地点数据源与全网搜索均不可用，本次基于模型知识调研';
+  return only === 'websearch'
+    ? '地点数据源不可用，本次基于全网搜索 + 模型知识调研'
+    : `全网搜索不可用，本次基于${only === 'tianditu' ? '天地图' : '高德'}地点数据 + 模型知识调研`;
 }
 
 export async function runGeneration(
@@ -91,21 +90,26 @@ export async function runGeneration(
     (error: unknown) => ({ ok: false as const, error }),
   );
   // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
+  const poiSource = await resolvePoiSourceForUser(job.userId);
   const poiBase =
-    (await amapBudgetRemaining()) >= AMAP_MAX_PER_TASK
-      ? (await resolvePoiSourceForUser(job.userId)).source
-      : getNullPoiSource();
+    (await geoBudgetRemaining()) >= POI_MAX_PER_TASK ? poiSource.source : getNullPoiSource();
   const searchBase =
     (await searchBudgetRemaining()) >= SEARCH_MAX_PER_TASK
       ? (await resolveSearchSourceForUser(job.userId)).source
       : getNullSearchSource();
   const poi = createTaskPoiSource(poiBase);
   const search = createTaskSearchSource(searchBase);
-  // 地理会话（v0.5）：geocode/route 统一凭据解析、任务上限与日额度记账（计入 amap_calls）；出行方式基调来自表单（ST3）
+  // 地理会话（v0.5）：geocode/route 统一服务商与凭据解析、任务上限与日额度记账；出行方式基调来自表单（ST3）
   const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
   await geo.init();   // 09-18：凭据/额度解析 PG 化后为异步，须在任何 geo 调用前完成
+  // 地理调用按当前生效的服务商计入各自用量列：两家日额度独立，切回高德不必等天地图额度次日重置。
+  // 返回值必须现算 —— poi/geo 的统计在生成过程中持续增长。
+  const providerCallCounts = () => {
+    const calls = poi.stats.calls + geo.stats.calls;
+    return env.mapProvider === 'tianditu' ? { amapCalls: 0, tiandituCalls: calls } : { amapCalls: calls, tiandituCalls: 0 };
+  };
   const enabledSources: DataSourceKind[] = [
-    ...(poi.source.kind === 'amap' ? (['amap'] as const) : []),
+    ...(poi.source.kind === 'null' ? [] : ([poi.source.kind] as const)),
     ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
   ];
 
@@ -125,7 +129,7 @@ export async function runGeneration(
         tokensIn: usage.tokensIn + tokensIn,
         tokensOut: usage.tokensOut + tokensOut,
         xhsCalls: 0,   // 旧前端兼容字段（小红书已移除）
-        amapCalls: poi.stats.calls + geo.stats.calls,
+        ...providerCallCounts(),
         searchCalls: search.stats.calls,
       }),
     // LLM 请求上下文快照（09-20 调试视图）：实时推给时间线，与落库互不影响
@@ -186,7 +190,7 @@ export async function runGeneration(
         usedByok: cfg.byok,
         tokensIn: usage.tokensIn,
         tokensOut: usage.tokensOut,
-        amapCalls: poi.stats.calls + geo.stats.calls,
+        ...providerCallCounts(),
         searchCalls: search.stats.calls,
         createdAt: new Date(),
       });
@@ -486,7 +490,7 @@ export async function runGeneration(
         usage: {
           tokensIn: usage.tokensIn,
           tokensOut: usage.tokensOut,
-          amapCalls: poi.stats.calls + geo.stats.calls,
+          ...providerCallCounts(),
           searchCalls: search.stats.calls,
         },
       },

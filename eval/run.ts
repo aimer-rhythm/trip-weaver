@@ -149,7 +149,7 @@ for (const gc of cases) {
   const soft = result.softViolations.length;
   console.log(
     `    ${result.pass ? '✓ PASS' : '✗ FAIL'}｜hard ${hard}｜soft ${soft}｜结构问题 ${result.structural.length}` +
-      `｜located ${(result.geo.locatedRatio * 100).toFixed(0)}%｜geocode ${(result.geo.geocodedRatio * 100).toFixed(0)}%｜amap leg ${(result.geo.amapLegRatio * 100).toFixed(0)}%`,
+      `｜located ${(result.geo.locatedRatio * 100).toFixed(0)}%｜geocode ${(result.geo.geocodedRatio * 100).toFixed(0)}%｜real leg ${(result.geo.providerLegRatio * 100).toFixed(0)}%`,
   );
   if (result.research) {
     const r = result.research;

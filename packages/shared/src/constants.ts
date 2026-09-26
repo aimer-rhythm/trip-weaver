@@ -43,9 +43,10 @@ export const LONG_HAUL_THRESHOLDS = {
 } as const;
 // 出行方式基调（ST3）：生成输入与 Trip 持久化共用；缺省 transit。>1.5km 的通勤段按此基调估算
 export const TRANSPORT_MODES = ['transit', 'drive', 'walk'] as const;
-export const LEG_SOURCES = ['amap', 'heuristic'] as const;
+// 真实路径规划来源：如实标注是哪家服务商（09-25 加入天地图），不要用 amap 指代“真实数据”
+export const LEG_SOURCES = ['amap', 'tianditu', 'heuristic'] as const;
 export const RESERVATION_STATUSES = ['required', 'none', 'unknown'] as const;
-export const DATA_SOURCE_KINDS = ['amap', 'websearch'] as const;
+export const DATA_SOURCE_KINDS = ['amap', 'tianditu', 'websearch'] as const;
 export const MAX_OVERVIEW_POIS = 40;
 
 // ---------- 问答式行程生成入口（09-23） ----------

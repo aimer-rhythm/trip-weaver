@@ -68,6 +68,7 @@ export const generations = pgTable('generations', {
   tokensOut: integer('tokens_out').notNull().default(0),
   xhsCalls: integer('xhs_calls').notNull().default(0),     // 小红书时代旧数据；新生成恒 0
   amapCalls: integer('amap_calls').notNull().default(0),
+  tiandituCalls: integer('tianditu_calls').notNull().default(0),   // 与高德分开计数：两家日额度互不影响
   searchCalls: integer('search_calls').notNull().default(0),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
 });

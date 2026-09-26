@@ -23,7 +23,7 @@ export interface GeoQuality {
   locatedRatio: number;      // 有效坐标覆盖率：(lat,lng) ≠ (0,0) 活动占全部活动比
   geocodedRatio: number;     // coordSource === 'geocoded' 占比（有坐标活动中）
   estimatedRatio: number;    // coordSource === 'estimated' 占比（有坐标活动中）：模型猜测，未经核实
-  amapLegRatio: number;      // leg source === 'amap' 占比；无 leg 时为 0
+  providerLegRatio: number;   // leg source ≠ 'heuristic' 占比（真实路由：amap 或 tianditu）；无 leg 时为 0
   legCount: number;
   expectedLegPairs: number;  // 相邻活动对总数（每日 max(0, n-1) 之和；不含住宿 leg）
   outlierActivities: string[];   // 距活动坐标中位中心 > 100km 的活动名（疑似幻觉/geocode 错城）
@@ -124,7 +124,7 @@ function checkGeo(trip: Trip): GeoQuality {
     locatedRatio: acts.length ? located.length / acts.length : 0,
     geocodedRatio: located.length ? located.filter((a) => a.coordSource === 'geocoded').length / located.length : 0,
     estimatedRatio: located.length ? located.filter((a) => a.coordSource === 'estimated').length / located.length : 0,
-    amapLegRatio: legs.length ? legs.filter((l) => l.source === 'amap').length / legs.length : 0,
+    providerLegRatio: legs.length ? legs.filter((l) => l.source !== 'heuristic').length / legs.length : 0,
     legCount: legs.length,
     expectedLegPairs: trip.days.reduce((n, d) => n + Math.max(0, d.activities.length - 1), 0),
     outlierActivities: outliers,

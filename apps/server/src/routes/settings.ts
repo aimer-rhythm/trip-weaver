@@ -2,46 +2,54 @@ import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { SettingsPutSchema } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
 import { getSettingsView, upsertSettings } from '../services/settingsService';
-import { resolvePoiSourceForUser } from '../integrations/amap/poiSource';
+import { resolvePoiSourceForUser } from '../integrations/geoProvider';
 import { resolveSearchSourceForUser } from '../integrations/websearch/searchSource';
+import { env, type MapProvider } from '../env';
 import type { SourceStatus } from '../integrations/sourceStatus';
 
 // 自检结果 60s 记忆化：按用户与凭据 revision 隔离，缓存中不保存凭据或数据源实例。
 const STATUS_TTL_MS = 60_000;
 interface SourceStatusMemo {
   at: number;
-  amapCredentialRevision: string;
+  geoCredentialRevision: string;
   searchCredentialRevision: string;
-  value: { amap: SourceStatus; websearch: SourceStatus };
+  value: { geo: SourceStatus; websearch: SourceStatus };
 }
 
 const statusMemoByUser = new Map<string, SourceStatusMemo>();
 
-export async function probeSourcesForUser(userId: string): Promise<{ amap: SourceStatus; websearch: SourceStatus }> {
+export interface SourcesStatusView {
+  /** 当前生效的地图服务商：前端据此标注自检卡片走的是哪条链路 */
+  provider: MapProvider;
+  geo: SourceStatus;
+  websearch: SourceStatus;
+}
+
+export async function probeSourcesForUser(userId: string): Promise<SourcesStatusView> {
   const resolvedPoiSource = await resolvePoiSourceForUser(userId);
   const resolvedSearchSource = await resolveSearchSourceForUser(userId);
   const memo = statusMemoByUser.get(userId);
   if (
     memo &&
-    memo.amapCredentialRevision === resolvedPoiSource.credentialRevision &&
+    memo.geoCredentialRevision === resolvedPoiSource.credentialRevision &&
     memo.searchCredentialRevision === resolvedSearchSource.credentialRevision &&
     Date.now() - memo.at <= STATUS_TTL_MS
   ) {
-    return memo.value;
+    return { provider: env.mapProvider, ...memo.value };
   }
 
-  const [amap, websearch] = await Promise.all([
+  const [geo, websearch] = await Promise.all([
     resolvedPoiSource.source.selfCheck(),
     resolvedSearchSource.source.selfCheck(),
   ]);
-  const value = { amap, websearch };
+  const value = { geo, websearch };
   statusMemoByUser.set(userId, {
     at: Date.now(),
-    amapCredentialRevision: resolvedPoiSource.credentialRevision,
+    geoCredentialRevision: resolvedPoiSource.credentialRevision,
     searchCredentialRevision: resolvedSearchSource.credentialRevision,
     value,
   });
-  return value;
+  return { provider: env.mapProvider, ...value };
 }
 
 export const settingsRoutes: FastifyPluginAsyncTypebox = async (app) => {

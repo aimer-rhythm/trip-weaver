@@ -68,6 +68,7 @@ const STATEMENTS = [
     tokens_out INTEGER NOT NULL DEFAULT 0,
     xhs_calls INTEGER NOT NULL DEFAULT 0,
     amap_calls INTEGER NOT NULL DEFAULT 0,
+    tianditu_calls INTEGER NOT NULL DEFAULT 0,
     search_calls INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMPTZ NOT NULL
   )`,
@@ -166,6 +167,8 @@ export async function runMigrations(pool: Pool): Promise<void> {
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS tokens_out INTEGER NOT NULL DEFAULT 0`);
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS xhs_calls INTEGER NOT NULL DEFAULT 0`);
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS amap_calls INTEGER NOT NULL DEFAULT 0`);
+    // 地图服务商降级（09-25）：天地图调用单独计数，与高德日额度互不影响
+    await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS tianditu_calls INTEGER NOT NULL DEFAULT 0`);
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS search_calls INTEGER NOT NULL DEFAULT 0`);
     // 问答式入口（09-23）：存量库补列。trips.root_id 先补列→回填→置 NOT NULL（单语句 ALTER 无法对存量行建 NOT NULL）。
     // 顺序不可调整：UPDATE 必须在 SET NOT NULL 之前，否则存量库启动失败。

@@ -37,15 +37,20 @@ export async function hasQuota(userId: string): Promise<boolean> {
 // 以 generations 用量列聚合为准（含 error/cancelled——外呼已实际发生），60s 内存缓存。
 // 运行中任务的调用未入库，并发下有界超额（≤ 并发任务数 × 单任务上限），KISS 取舍已记录于任务 PRD。
 
-const dailyAgg: Record<'amap' | 'search', { at: number; total: number }> = {
+const dailyAgg: Record<MeteredSource, { at: number; total: number }> = {
   amap: { at: 0, total: 0 },
+  tianditu: { at: 0, total: 0 },
   search: { at: 0, total: 0 },
 };
 
-async function callsToday(key: 'amap' | 'search'): Promise<number> {
+type MeteredSource = 'amap' | 'tianditu' | 'search';
+
+async function callsToday(key: MeteredSource): Promise<number> {
   const agg = dailyAgg[key];
   if (Date.now() - agg.at > 60_000) {
-    const column = key === 'amap' ? generations.amapCalls : generations.searchCalls;
+    // 每个计量源各自一列用量：地图服务商降级后两家额度独立，切回去不必等对方额度次日重置
+    const column =
+      key === 'amap' ? generations.amapCalls : key === 'tianditu' ? generations.tiandituCalls : generations.searchCalls;
     const [row] = await db
       .select({ n: sql<number>`coalesce(sum(${column}), 0)` })
       .from(generations)
@@ -58,6 +63,10 @@ async function callsToday(key: 'amap' | 'search'): Promise<number> {
 
 export async function amapBudgetRemaining(): Promise<number> {
   return Math.max(0, env.amapDailyBudget - (await callsToday('amap')));
+}
+
+export async function tiandituBudgetRemaining(): Promise<number> {
+  return Math.max(0, env.tiandituDailyBudget - (await callsToday('tianditu')));
 }
 
 export async function searchBudgetRemaining(): Promise<number> {

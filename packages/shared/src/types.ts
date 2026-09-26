@@ -166,7 +166,7 @@ type GenerationEventPayload =
   // LLM 请求上下文快照（09-20 调试视图）：每次 API 请求推送完整上下文，响应到后回填结果；turn 在阶段内从 1 递增
   | { type: 'llm_request'; phase: GenerationPhase; turn: number; model: string; systemPrompt: string; messages: unknown[]; tools: unknown[] }
   | { type: 'llm_response'; phase: GenerationPhase; turn: number; stopReason?: string; tokensIn?: number; tokensOut?: number; errorMessage?: string }
-  | { type: 'usage'; tokensIn: number; tokensOut: number; xhsCalls: number; amapCalls: number; searchCalls: number }
+  | { type: 'usage'; tokensIn: number; tokensOut: number; xhsCalls: number; amapCalls: number; tiandituCalls: number; searchCalls: number }
   | { type: 'job_done'; tripId: string; usedXhs: boolean; dataSources: DataSourceKind[]; reviewNotes: string[]; durationMs?: number }
   | { type: 'job_error'; message: string; durationMs?: number }
   | { type: 'job_cancelled'; reason?: GenerationCancelReason; durationMs?: number };

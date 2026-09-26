@@ -44,6 +44,23 @@ if (githubClientId && !appBaseUrl) {
   throw new Error('[env] 启用 GitHub 登录需要设置 APP_BASE_URL（用于构造回调地址，例如 https://your.domain）');
 }
 
+// 地图服务商（09-25）：站点级手动单选，不做自动回退 —— 行为可预测，额度与故障排查可控。
+// 显式选天地图却没给 Key 时走 Null 降级并留一条 warn，**不静默回退高德**（静默双开会让记账与排查失控）。
+const MAP_PROVIDERS = ['amap', 'tianditu'] as const;
+export type MapProvider = (typeof MAP_PROVIDERS)[number];
+
+const amapKey = str('AMAP_KEY');
+const tiandituKey = str('TIANDITU_KEY');
+const rawMapProvider = str('MAP_PROVIDER');
+if (rawMapProvider && !MAP_PROVIDERS.includes(rawMapProvider as MapProvider)) {
+  throw new Error(`[env] MAP_PROVIDER 取值不正确："${rawMapProvider}"，可选 amap | tianditu`);
+}
+// 缺省：有高德 Key 用高德，否则有天地图 Key 用天地图，都没有则保持存量行为（地理链路 Null 降级）
+const mapProvider = (rawMapProvider || (amapKey ? 'amap' : tiandituKey ? 'tianditu' : 'amap')) as MapProvider;
+if (mapProvider === 'tianditu' && !tiandituKey) {
+  console.warn('[env] MAP_PROVIDER=tianditu 但 TIANDITU_KEY 为空：地理数据源按未配置降级，不会回退高德');
+}
+
 export const env = {
   nodeEnv: str('NODE_ENV', 'development'),
   isProd: str('NODE_ENV') === 'production',
@@ -72,8 +89,11 @@ export const env = {
   genDailyLimit: int('GEN_DAILY_LIMIT', 3),
   chatDailyLimit: int('CHAT_DAILY_LIMIT', 40),   // 每日对话轮数上限（独立于生成配额；对话轮次不消耗 GEN_DAILY_LIMIT）
   // 调研数据源（均可选；缺失时对应源 Null 降级，两者皆缺 = 纯模型知识调研）
-  amapKey: str('AMAP_KEY'),                             // 高德 Web 服务 Key
+  mapProvider,                                          // 当前生效的地图服务商（amap | tianditu）
+  amapKey,                                              // 高德 Web 服务 Key
   amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度
+  tiandituKey,                                          // 天地图 Web 服务 Key（接口参数名 tk）
+  tiandituDailyBudget: int('TIANDITU_DAILY_BUDGET', 150),   // 全站天地图调用日额度（与高德分别计数）
   searchApiKey: str('SEARCH_API_KEY'),                  // Web 搜索 Key（默认 LangSearch）
   searchApiBaseUrl: str('SEARCH_API_BASE_URL', DEFAULT_SEARCH_API_BASE_URL).replace(/\/+$/, ''),
   searchDailyBudget: int('SEARCH_DAILY_BUDGET', 500),   // 全站搜索调用日额度
