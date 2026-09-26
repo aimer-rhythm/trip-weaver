@@ -85,9 +85,10 @@ source instances.
 - `clearAmapApiKey: true` explicitly removes the personal key; saving and clearing in one
   request is rejected.
 - Resolution order is personal key, then site `AMAP_KEY`, then `NullPoiSource` degradation.
-- Personal credentials are an **Amap-only** track. Under `MAP_PROVIDER=tianditu` the geographic
-  source is site-level single-track (`TIANDITU_KEY`): a saved personal Amap key neither applies
-  nor leaks into Tianditu calls. `resolveGeoProvider` is the single place that applies this rule.
+- Personal credentials are an **Amap-only** track, and they apply only to the **route planning +
+  geocoding** chain (`resolveGeoProvider`). POI search is always site-level Tianditu
+  (`resolvePoiSourceForUser`), so a saved personal Amap key can never leak into it — and losing that
+  key does not disable search. `resolveGeoProvider` is the single place applying the rule.
 - Personal credentials must not be stored in module-level source singletons, status cache
   values, query keys, response payloads, or logs.
 - Status memoization must include both user identity and credential revision. A settings update

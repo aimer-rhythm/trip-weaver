@@ -191,18 +191,24 @@ than throw through the settings route.
 
 - Trigger: adding a second geographic provider, or touching anything that decides which provider
   supplies POI search, route planning, or geocoding. Changed API payload, DB column, and env keys.
-- Goal: a site-level switch that swaps the provider **without** the upper layers or the frontend
-  noticing. Switching must never silently consume the other vendor's daily budget.
+  **Revised 09-25 (second decision): the two vendors are COMPLEMENTARY, not a single-switch choice.**
+  Tianditu owns POI search; Amap owns route planning + geocoding (with Tianditu as the fallback when
+  `AMAP_KEY` is absent). `MAP_PROVIDER` was removed.
+- Goal: each capability resolves its own vendor without the upper layers or the frontend noticing,
+  and no capability may silently consume the other vendor's daily budget.
 
 ### 2. Signatures
 
-- Env (`apps/server/src/env.ts`): `MAP_PROVIDER` (`'amap' | 'tianditu'`, optional),
-  `TIANDITU_KEY` (optional `tk`), `TIANDITU_DAILY_BUDGET` (default 150).
+- Env (`apps/server/src/env.ts`): `AMAP_KEY`, `TIANDITU_KEY`, `TIANDITU_DAILY_BUDGET` (default 150),
+  `AMAP_DAILY_BUDGET`. **`MAP_PROVIDER` no longer exists** — do not reintroduce a site-level
+  either/or switch; the capabilities are complementary and each key independently enables its chain.
+  Both keys are expected to be configured. Missing `AMAP_KEY` → route/geocode fall to Tianditu;
+  missing `TIANDITU_KEY` → POI search returns empty (no Amap fallback).
 - Facade (`apps/server/src/integrations/geoProvider.ts`) — the ONLY module upper layers may import:
   ```ts
-  resolveGeoProvider(userId: string, destination: string): Promise<GeoProvider>
-  resolvePoiSourceForUser(userId: string): Promise<ResolvedPoiSource>   // settings self-check
-  geoBudgetRemaining(): Promise<number>                                 // site-level, active provider
+  resolveGeoProvider(userId: string): Promise<GeoProvider>   // route + geocoding chain
+  resolvePoiSourceForUser(): ResolvedPoiSource                // POI search, ALWAYS Tianditu
+  poiBudgetRemaining(): Promise<number>                       // Tianditu daily budget
   createNullGeoProvider(): GeoProvider
 
   interface GeoProvider {
@@ -210,10 +216,12 @@ than throw through the settings route.
     readonly enabled: boolean;                       // false = no usable credential
     geocodeActivity(name, city, tryAcquire): Promise<GeocodedPlace | null>;
     createRouteBreaker(): RouteBreaker;               // per generation task
-    createPoiSource(): PoiSource;
-    budgetRemaining(): Promise<number>;
+    budgetRemaining(): Promise<number>;              // route/geocode chain budget
   }
   ```
+  `createPoiSource` is NOT on `GeoProvider` — POI search is not part of this chain.
+  `GeoSession.providerKind()` reports which vendor the route/geocode chain actually used, so the
+  usage columns can be attributed per chain instead of guessed from one switch.
 - Shared contracts (`apps/server/src/integrations/geoContracts.ts`): `GeoPoint`, `GeocodedPoint`,
   `GeocodedPlace`, `GeocodeOrigin` (`'amap-poi' | 'amap-geocode' | 'tianditu' | 'nominatim'`),
   `RouteEstimate`, `RouteOpts`, `RouteBreaker`, `SourcedPoi`, `PoiKind`, `PoiSource`.
@@ -230,8 +238,16 @@ than throw through the settings route.
   (≈WGS-84): outbound calls run `gcj02ToWgs84`, inbound values run `wgs84ToGcj02`, and the
   conversion stays entirely inside `integrations/tianditu/*`. `GeocodedPlace` / `RouteEstimate`
   are already GCJ-02, so no caller changes when the provider switches.
-- **No automatic fallback.** `MAP_PROVIDER=tianditu` with an empty `TIANDITU_KEY` degrades to the
-  Null provider (Nominatim → heuristic) and logs one warning; it must NOT fall back to Amap.
+- **Asymmetric fallback by capability — do not unify it.** Route planning + geocoding are
+  **Amap-first** (personal key → site key → Tianditu → Null). POI search is **Tianditu-only**: its
+  unavailability (no `tk`, no 地名搜索 permission, request failure) yields an empty result set and
+  the research agent falls back to model knowledge — it must NOT fall back to Amap, because Amap's
+  `v5/place/text` is shared with the geocoding primary path and would re-squeeze the quota that this
+  split just freed.
+- **The two budget gates are separate and must stay separate.** `provider.budgetRemaining()` gates
+  `geoPipeline`'s per-task reservation (route + geocoding); `poiBudgetRemaining()` (always Tianditu)
+  gates the orchestrator's POI-source injection. One shared check would let an exhausted Tianditu
+  search budget disable Amap route planning.
   Defaulting (variable unset) is derived from key presence: `AMAP_KEY` → amap, else `TIANDITU_KEY`
   → tianditu, else Null. Existing deployments behave byte-identically.
 - **Route-mode coverage differs by vendor, and Tianditu's endpoints/params are NOT what secondary
@@ -290,8 +306,9 @@ than throw through the settings route.
 
 ### 4. Validation & Error Matrix
 
-- `MAP_PROVIDER` set to a value other than `amap` / `tianditu` → throw at import (`[env]` prefix).
-- `MAP_PROVIDER=tianditu` and `TIANDITU_KEY` empty → `console.warn` once + Null provider; no Amap calls.
+- `AMAP_KEY` empty → one `console.warn` at import; the route/geocode chain falls to Tianditu, then
+  Null. `TIANDITU_KEY` empty → one warn; POI search returns `[]` and **no Amap fallback** happens.
+  There is no `MAP_PROVIDER`.
 - Tianditu geocoder `status !== '0'` (it is a STRING), HTTP failure, or unparsable location →
   fall through to Nominatim with `origin: 'nominatim'`.
 - Tianditu devolves errors through BOTH the HTTP status and a JSON body, and the codes are NOT
@@ -305,20 +322,21 @@ than throw through the settings route.
   `[]`; `selfCheck()` reports `ok:false` with the vendor message. Missing `pois` field → `[]`, ok.
 - Drive/walk XML lacking `<distance>`/`<duration>`, or bus segments summing to ≤ 0 → null → heuristic.
 - Implied speed outside 1–150 km/h → null → heuristic (never a repaired number).
-- Breaker `skip` predicate is true (cycling, transit without city, budget refused, breaker open) →
+- Breaker `skip` predicate is true (walking/cycling — no usable endpoint, budget refused, breaker open) →
   null, zero failures, zero quota consumed.
 - 5 consecutive real route failures → breaker opens for the rest of the task, exactly one warn.
 - Daily budget below the per-task reservation → Null provider for the whole task (no calls).
 
 ### 5. Good / Base / Bad Cases
 
-- Good: `MAP_PROVIDER=tianditu` with a valid `tk` — geocoding, routing, and POI search all hit
-  Tianditu, stored coordinates stay GCJ-02, `tianditu_calls` grows while `amap_calls` stays 0, and
-  the settings card reads 「地图数据源（天地图）」.
-- Base: `MAP_PROVIDER` unset with `AMAP_KEY` present — every code path, budget column, and log line
-  is what it was before the switch existed.
-- Bad: reusing `LEG_SOURCES: 'amap'` for a Tianditu route; sharing one call counter between both
-  vendors; routing Tianditu transit with an adcode (always empty → silently all-heuristic);
+- Good: both keys configured — POI search hits Tianditu (`tianditu_calls` grows), route planning +
+  geocoding hit Amap (`amap_calls` grows), stored coordinates stay GCJ-02, and the settings card
+  reads 「地点搜索（天地图）」＋「路线与地理编码 … 当前走高德」.
+- Base: `AMAP_KEY` present, no `TIANDITU_KEY` — route/geocode behave exactly as before; POI search
+  returns empty and research falls back to the knowledge base + model knowledge.
+- Bad: routing the POI source through Amap as a fallback (re-squeezes the shared `v5/place/text`
+  quota this split exists to protect); one shared budget check for both chains; attributing Tianditu
+  calls to `amap_calls`; giving Tianditu transit an adcode (it takes none);
   emitting a Tianditu `drive` estimate for a `cycle` request; trusting the raw `<distance>` unit;
   putting `walk` back on `/drive?style=3` (driving durations that pass the speed gate).
 
