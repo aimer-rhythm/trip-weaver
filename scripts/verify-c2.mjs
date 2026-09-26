@@ -397,10 +397,10 @@ try {
   check('未覆盖城市回复带降级提示', turn1.json?.replyMessage?.content?.includes('攻略数据我掌握得比较少') === true, turn1.json?.replyMessage?.content);
   check('意图=update_brief', turn1.json?.intent === 'update_brief', turn1.json?.intent);
   check(
-    '抽取目的地/天数/侧重点',
+    '抽取目的地/天数/节奏',
     turn1.json?.brief?.data?.destination === '成都'
       && turn1.json?.brief?.data?.days === 3
-      && turn1.json?.brief?.data?.tripFocus === 'balanced',
+      && turn1.json?.brief?.data?.pace === 'moderate',
     JSON.stringify(turn1.json?.brief?.data),
   );
   check(
@@ -609,6 +609,9 @@ try {
   check('已覆盖城市生成完成', bjRun.events.at(-1)?.type === 'job_done', bjRun.events.at(-1)?.type);
   const bjResearch = mock.seenResearchPrompts.find((p) => p.destination === '北京');
   check('已覆盖城市 search_web 上限保持 2', bjResearch?.searchWebMaxLine === '全阶段最多 2 次', String(bjResearch?.searchWebMaxLine));
+  // 09-26：已覆盖城市列表接口（城市选择首页数据源）——测试库此时仅北京达阈值（其余为空库）
+  const covered = await api('GET', '/api/destinations/covered');
+  check('已覆盖城市列表仅含北京', covered.status === 200 && JSON.stringify(covered.json?.cities) === JSON.stringify(['北京']), JSON.stringify(covered.json));
   cookie = chatUserCookie;
   await seed.end();
 

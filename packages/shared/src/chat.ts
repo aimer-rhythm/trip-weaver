@@ -16,10 +16,10 @@ import {
   INTAKE_ENUM_KINDS,
   MAX_TRIP_CONSTRAINTS,
   MAX_TRIP_DAYS,
+  PACE_LABELS,
+  PACE_OPTIONS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
-  TRIP_FOCUS_LABELS,
-  TRIP_FOCUS_OPTIONS,
 } from './constants';
 import { StringEnum } from './typebox';
 import { EditOpOutcomeSchema } from './editOps';
@@ -54,7 +54,7 @@ export const PlanningBriefDataSchema = Type.Object({
   startDate: Type.Optional(Type.String({ maxLength: 10 })),        // "2026-11-05"
   endDate: Type.Optional(Type.String({ maxLength: 10 })),
   days: Type.Optional(Type.Integer({ minimum: 1, maximum: MAX_TRIP_DAYS })),
-  tripFocus: Type.Optional(StringEnum(TRIP_FOCUS_OPTIONS)),
+  pace: Type.Optional(StringEnum(PACE_OPTIONS)),
   partySize: Type.Optional(Type.Integer({ minimum: 1, maximum: 20 })),
   transportMode: Type.Optional(StringEnum(TRANSPORT_MODES)),
   lodging: Type.Optional(Type.String({ maxLength: 60 })),
@@ -156,7 +156,7 @@ export const PlanningBriefPatchSchema = Type.Object({
   startDate: Type.Optional(Type.String({ maxLength: 10 })),
   endDate: Type.Optional(Type.String({ maxLength: 10 })),
   days: Type.Optional(Type.Integer({ minimum: 1, maximum: MAX_TRIP_DAYS })),
-  tripFocus: Type.Optional(StringEnum(TRIP_FOCUS_OPTIONS)),
+  pace: Type.Optional(StringEnum(PACE_OPTIONS)),
   partySize: Type.Optional(Type.Integer({ minimum: 1, maximum: 20 })),
   transportMode: Type.Optional(StringEnum(TRANSPORT_MODES)),
   lodging: Type.Optional(Type.String({ maxLength: 60 })),
@@ -183,7 +183,7 @@ function isValidIsoDate(value: string | undefined): boolean {
 
 /**
  * 返回缺失/非法的必填项，顺序即追问顺序。
- * 必填只有 4 项：目的地 / 开始日期 / 结束日期（或天数）/ 旅行侧重点；其余字段缺省也能生成。
+ * 必填只有 4 项：目的地 / 开始日期 / 结束日期（或天数）/ 旅行节奏；其余字段缺省也能生成。
  */
 export function requiredBriefFields(data: PlanningBriefData): BriefMissingField[] {
   const missing: BriefMissingField[] = [];
@@ -199,7 +199,7 @@ export function requiredBriefFields(data: PlanningBriefData): BriefMissingField[
   if (!hasEnd && !hasDays) missing.push('endDate');
   if (hasStart && hasEnd && end! < start!) missing.push('dateRange');
 
-  if (!data.tripFocus) missing.push('tripFocus');
+  if (!data.pace) missing.push('pace');
   return missing;
 }
 
@@ -212,7 +212,7 @@ const MISSING_FIELD_QUESTIONS: Record<BriefMissingField, string> = {
   destination: '这次想去哪里？',
   startDate: '大概什么时候出发？',
   endDate: '玩几天，或者哪天回来？',
-  tripFocus: '这趟更想景点为主、吃吃喝喝为主，还是两者均衡？',
+  pace: '这趟想轻松点、适中充实，还是特种兵式打卡？',
   dateRange: '结束日期不能早于开始日期，帮我确认一下日期范围？',
 };
 
@@ -220,14 +220,14 @@ const DATE_FIELDS: ReadonlySet<BriefMissingField> = new Set(['startDate', 'endDa
 
 /** 只缺一项时的精准控件；无法枚举的字段只能给文本框 */
 function singleFieldIntake(field: BriefMissingField): BriefIntake {
-  if (field === 'tripFocus') {
+  if (field === 'pace') {
     return {
-      question: MISSING_FIELD_QUESTIONS.tripFocus,
+      question: MISSING_FIELD_QUESTIONS.pace,
       missingFields: [field],
       inputSchema: {
         type: 'string',
-        enum: [...TRIP_FOCUS_OPTIONS],
-        enumLabels: TRIP_FOCUS_OPTIONS.map((option) => TRIP_FOCUS_LABELS[option]),
+        enum: [...PACE_OPTIONS],
+        enumLabels: PACE_OPTIONS.map((option) => PACE_LABELS[option]),
         enumKind: 'canonical',
       },
     };
@@ -250,7 +250,7 @@ function singleFieldIntake(field: BriefMissingField): BriefIntake {
  * 缺失字段 → 追问控件。
  * 关键：**一次只问一项**。缺多项时若合成一句「还需要：A、B」再把用户丢进文本框，
  * 就退化成「让用户自己写需求」——宁可连问几轮，也要让每一轮都能靠点击完成。
- * 能枚举的（侧重点）给按钮，日期给日期控件，其余才给文本框。
+ * 能枚举的（节奏）给按钮，日期给日期控件，其余才给文本框。
  */
 export function briefIntake(missingFields: BriefMissingField[]): BriefIntake {
   const missing = [...new Set(missingFields)];
@@ -342,6 +342,7 @@ export function briefToGenerateForm(
     partySize: data.partySize ?? 2,
     extraNotes: renderExtraNotes(data, options.appendNotes),
     transportMode: data.transportMode ?? 'transit',
+    ...(data.pace ? { pace: data.pace } : {}),
     ...(lodging ? { lodging } : {}),
   };
 }

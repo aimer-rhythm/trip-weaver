@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type {
   Conversation,
   ConversationDetail,
+  CoveredCitiesView,
   GenerateForm,
   GenerationJobView,
   GenerationJobStatus,
@@ -49,6 +50,7 @@ export const keys = {
   settings: ['settings'] as const,
   sourcesStatus: ['sources-status'] as const,
   usage: ['usage'] as const,
+  coveredCities: ['covered-cities'] as const,
   trips: ['trips'] as const,
   trip: (id: string) => ['trips', id] as const,
   conversations: ['conversations'] as const,
@@ -114,6 +116,15 @@ export function useSaveSettings() {
 
 export function useUsage() {
   return useQuery({ queryKey: keys.usage, queryFn: () => api.get<UsageView>('/api/usage') });
+}
+
+/** 已覆盖城市列表（09-26 首页城市选择）：只在离线采集导入时变化，长缓存 */
+export function useCoveredCities() {
+  return useQuery({
+    queryKey: keys.coveredCities,
+    queryFn: () => api.get<CoveredCitiesView>('/api/destinations/covered'),
+    staleTime: 10 * 60_000,
+  });
 }
 
 export function useTrips() {
@@ -278,11 +289,11 @@ export function useTripConversation(tripId: string | null) {
   });
 }
 
-/** 惰性建会话：只在真正要发第一条消息时创建，不在页面挂载时就留下空会话行 */
+/** 惰性建会话：只在真正要发第一条消息/发起表单生成时创建，不在页面挂载时就留下空会话行 */
 export function useCreateConversation() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: () => api.post<Conversation>('/api/conversations', {}),
+    mutationFn: (title?: string) => api.post<Conversation>('/api/conversations', title ? { title } : {}),
     onSuccess: () => qc.invalidateQueries({ queryKey: keys.conversations }),
   });
 }

@@ -12,7 +12,7 @@ import {
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
-  TRIP_FOCUS_OPTIONS,
+  PACE_OPTIONS,
   requiredBriefFields,
   uid,
   type BriefStatus,
@@ -103,8 +103,8 @@ export function applyDialogueDecision(
     if (trimmed) next[key] = trimmed.slice(0, TEXT_LIMITS[key]);
   }
 
-  const tripFocus = oneOf(TRIP_FOCUS_OPTIONS, input.tripFocus);
-  if (tripFocus) next.tripFocus = tripFocus;
+  const pace = oneOf(PACE_OPTIONS, input.pace);
+  if (pace) next.pace = pace;
 
   const transportMode = oneOf(TRANSPORT_MODES, input.transportMode);
   if (transportMode) next.transportMode = transportMode;

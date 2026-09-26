@@ -14,10 +14,10 @@ import { readClarification } from '../chat/models';
 const empty: PlanningBriefData = { constraints: [] };
 
 test('未提到的字段一律不动（patch 语义，不是整体覆盖）', () => {
-  const current: PlanningBriefData = { ...empty, destination: '成都', days: 3, tripFocus: 'balanced' };
+  const current: PlanningBriefData = { ...empty, destination: '成都', days: 3, pace: 'moderate' };
   const next = applyDialogueDecision(current, { days: 5 }, 1);
   assert.equal(next.destination, '成都');
-  assert.equal(next.tripFocus, 'balanced');
+  assert.equal(next.pace, 'moderate');
   assert.equal(next.days, 5);
 });
 
@@ -32,7 +32,7 @@ test('越界/非整数的 days、partySize 被忽略或夹紧，不抛错', () =
   assert.equal(applyDialogueDecision(empty, { days: 0 }, 1).days, undefined);
   assert.equal(applyDialogueDecision(empty, { days: 2.5 }, 1).days, undefined);
   assert.equal(applyDialogueDecision(empty, { partySize: 99 }, 1).partySize, 20);
-  assert.equal(applyDialogueDecision(empty, { tripFocus: 'whatever' }, 1).tripFocus, undefined);
+  assert.equal(applyDialogueDecision(empty, { pace: 'whatever' }, 1).pace, undefined);
 });
 
 test('起止日期压过天数：先说了 3 天、后来又给具体日期时，过期的 days 必须被清掉', () => {
@@ -106,7 +106,7 @@ test('normalizeBriefData 给缺失 constraints 的旧行补空数组', () => {
 
 test('briefStatus：够生成即 ready；submitted/discarded 是终态不被改写', () => {
   assert.equal(briefStatus(empty), 'collecting');
-  assert.equal(briefStatus({ ...empty, destination: '成都', startDate: '2026-11-05', days: 3, tripFocus: 'balanced' }), 'ready');
+  assert.equal(briefStatus({ ...empty, destination: '成都', startDate: '2026-11-05', days: 3, pace: 'moderate' }), 'ready');
   assert.equal(briefStatus(empty, 'submitted'), 'submitted');
   assert.equal(briefStatus(empty, 'discarded'), 'discarded');
 });
@@ -117,7 +117,7 @@ test('briefToGenerateForm：从起止日期推导天数，并给出契约要求�
     destination: '成都',
     startDate: '2026-11-05',
     endDate: '2026-11-07',
-    tripFocus: 'balanced',
+    pace: 'moderate',
   });
   assert.equal(form.days, 3);
   assert.equal(form.destination, '成都');
@@ -136,7 +136,7 @@ test('briefToGenerateForm：显式 days 优先，且约束进入 extraNotes 而�
     ],
     destination: '成都',
     days: 4,
-    tripFocus: 'food_first',
+    pace: 'relaxed',
     partySize: 3,
     extraNotes: '想住得离地铁近',
   });
@@ -155,7 +155,7 @@ test('briefToGenerateForm：约束过多时截断到 extraNotes 上限并留可�
     valueText: `要求编号${i}的详细说明文字填充填充`,
     polarity: 'prefer' as const,
   }));
-  const form = briefToGenerateForm({ constraints, destination: '成都', days: 2, tripFocus: 'balanced' });
+  const form = briefToGenerateForm({ constraints, destination: '成都', days: 2, pace: 'moderate' });
   assert.ok(form.extraNotes.length <= 200, `extraNotes 长度 ${form.extraNotes.length} 超出上限`);
   assert.ok(form.extraNotes.endsWith('…'), '截断必须有可见标记，不能静默丢字段');
   assert.ok(Value.Check(GenerateFormSchema, form));

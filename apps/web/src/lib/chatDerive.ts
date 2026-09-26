@@ -4,12 +4,8 @@
 // 再复制一份到 zustand 会踩 state-management.md 里明确列出的反模式；
 // 这里只保留「由服务端数据推导展示形态」的纯函数。
 import {
-  TRIP_FOCUS_LABELS,
   type BriefIntake,
   type ChatMessage,
-  type ConstraintPolarity,
-  type PlanningBriefData,
-  type PlanningBriefView,
   type TransportMode,
 } from '@tripweaver/shared';
 import { ApiError } from '../api/client';
@@ -19,23 +15,6 @@ export const TRANSPORT_LABELS: Record<TransportMode, string> = {
   drive: '自驾',
   walk: '步行优先',
 };
-/**
- * 约束极性的展示契约（四套文案差异必须明显）：
- * 尤其 `fact` ——「带着 2 岁小孩」是背景信息，不等于「必须安排亲子景点」。
- */
-export const POLARITY_PRESENTATION: Record<ConstraintPolarity, { badge: string; summary: string; excludeAction: string }> = {
-  prefer: { badge: '优先考虑', summary: '偏好', excludeAction: '本次不优先' },
-  avoid: { badge: '本次避开', summary: '避开', excludeAction: '本次允许安排' },
-  require: { badge: '必须满足', summary: '必须', excludeAction: '本次取消要求' },
-  fact: { badge: '仅作背景', summary: '背景', excludeAction: '本次不参考' },
-};
-
-/** 未知极性（历史数据/手改）不崩：落到和 fact 相同的展示，最保守 */
-const POLARITY_FALLBACK = POLARITY_PRESENTATION.fact;
-
-export function polarityPresentation(polarity: string) {
-  return POLARITY_PRESENTATION[polarity as ConstraintPolarity] ?? POLARITY_FALLBACK;
-}
 
 /** 追问控件在什么时候还该展示：只有它之后没有新的用户消息时才「活着」 */
 export function isIntakeLive(messages: ChatMessage[], message: ChatMessage): boolean {
@@ -51,57 +30,6 @@ export function activeIntake(messages: ChatMessage[]): BriefIntake | null {
     if (isIntakeLive(messages, message)) return message.intake;
   }
   return null;
-}
-
-/** Brief 齐备才允许「开始生成」（与服务端 requiredBriefFields 同源判定） */
-export function canGenerate(brief: PlanningBriefView | null | undefined): boolean {
-  return Boolean(brief?.status === 'ready' && brief.missingFields.length === 0);
-}
-
-/** 会话列表里的一行摘要：先看能不能生成，再看还差几项，最后给更新时间 */
-export function conversationSummary(brief: PlanningBriefView): string {
-  const state =
-    brief.status === 'ready'
-      ? '信息齐备'
-      : `还差 ${brief.missingFields.length} 项`;
-  const at = new Date(brief.updatedAt);
-  const stamp = Number.isNaN(at.getTime())
-    ? ''
-    : `${String(at.getMonth() + 1).padStart(2, '0')}-${String(at.getDate()).padStart(2, '0')} ${String(at.getHours()).padStart(2, '0')}:${String(at.getMinutes()).padStart(2, '0')}`;
-  return stamp ? `${state} · ${stamp}` : state;
-}
-
-export interface BriefRow {
-  key: string;
-  label: string;
-  value: string;
-}
-
-/** 确认卡的字段行；空值行也保留，用户才能看到「还差什么」 */
-export function briefRows(data: PlanningBriefData): BriefRow[] {
-  const dateValue =
-    data.startDate && data.endDate
-      ? `${data.startDate} → ${data.endDate}`
-      : data.startDate && data.days
-        ? `${data.startDate} 出发 · ${data.days} 天`
-        : data.startDate
-          ? `${data.startDate} 出发`
-          : data.days
-            ? `${data.days} 天（日期待定）`
-            : '';
-  return [
-    { key: 'destination', label: '目的地', value: data.destination?.trim() ?? '' },
-    { key: 'dates', label: '日期', value: dateValue },
-    { key: 'tripFocus', label: '侧重点', value: data.tripFocus ? TRIP_FOCUS_LABELS[data.tripFocus] : '' },
-    { key: 'partySize', label: '人数', value: data.partySize ? `${data.partySize} 人` : '' },
-    { key: 'transportMode', label: '出行方式', value: data.transportMode ? TRANSPORT_LABELS[data.transportMode] : '' },
-    { key: 'lodging', label: '住宿', value: data.lodging?.trim() ?? '' },
-    { key: 'extraNotes', label: '补充要求', value: data.extraNotes?.trim() ?? '' },
-  ];
-}
-
-export function preferenceText(data: PlanningBriefData): string {
-  return data.preferences?.length ? data.preferences.join('、') : '';
 }
 
 /** 三种追问控件的形态：枚举给按钮、日期给日期输入、其余给文本框 */

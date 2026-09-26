@@ -1,0 +1,11 @@
+{"file": ".trellis/spec/server/backend/chat-guidelines.md", "reason": "对话收集流下线 + 生成后修订/问答保留，需明确 Brief/追问控件契约哪些保留哪些废弃"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "生成链路、城市覆盖与 search_web 上限逻辑，生成时隐式建会话关联行程涉及此层"}
+{"file": ".trellis/spec/server/backend/directory-structure.md", "reason": "新增 covered 城市列表接口需遵循 routes/services 分层约定"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "服务端测试与质量门禁约定"}
+{"file": ".trellis/spec/web/frontend/directory-structure.md", "reason": "新增首页/表单页与路由调整的目录约定"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "城市卡片、表单组件、编辑器内嵌对话面板的组件规范"}
+{"file": ".trellis/spec/web/frontend/hook-guidelines.md", "reason": "useGenerationRun、api hooks 复用与新增 hook 约定"}
+{"file": ".trellis/spec/web/frontend/state-management.md", "reason": "表单状态与会话状态管理约定"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "共享契约类型使用约定"}
+{"file": ".trellis/spec/shared/backend/directory-structure.md", "reason": "shared 包契约改动（表单→GenerateForm 映射、covered 城市类型）的目录约定"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "复用现有 BriefCard/useGenerationRun/GenerationRunPanel 而非重写"}

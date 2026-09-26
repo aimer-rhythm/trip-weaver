@@ -1,18 +1,26 @@
-// C3 浏览器自动化验收：生成表单 → SSE 时间线三阶段（含候选卡片实时长出）→ 完成跳编辑器（含备选抽屉）
-//                     → 刷新恢复 → 取消 → 配额文案 → 旧行程（无 overview）兼容
+// C3 浏览器自动化验收：首页城市选择 → 结构化表单 → SSE 时间线三阶段（含候选卡片实时长出）→ 完成跳编辑器（含备选抽屉）
+//                     → 编辑器内嵌对话修订 → 刷新恢复 → 取消 → 配额文案 → 旧行程（无 overview）兼容
 // 走生产模式静态托管（同源 SSE），mock LLM 驱动。运行：node scripts/verify-c3.mjs
+// 数据库：09-26 起与 verify-c2 同例——独占专用测试库（默认 tripweaver_verify_c3，
+// 可用 VERIFY_C3_DATABASE_URL 覆盖），每次运行先 drop/create 保证干净，结束时 drop 清理。
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
-import { rmSync, existsSync } from 'node:fs';
 import { setTimeout as sleep } from 'node:timers/promises';
+import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
+import { existsSync } from 'node:fs';
 import { startMockLlm } from './lib/mock-llm.mjs';
 
 const MOCK_PORT = 18788;
 const API_PORT = 18791;
 const BASE = `http://127.0.0.1:${API_PORT}`;
-const DB_FILE = `./data/verify-c3-${Date.now()}.db`;
 const SHOTS = 'verify-shots';
+const DATABASE_URL =
+  process.env.VERIFY_C3_DATABASE_URL ?? 'postgres://postgres:postgres@127.0.0.1:5432/tripweaver_verify_c3';
+const DATABASE_URL_NOKEY =
+  process.env.VERIFY_C3_NOKEY_DATABASE_URL ?? 'postgres://postgres:postgres@127.0.0.1:5432/tripweaver_verify_c3_nokey';
+const requireFromServer = createRequire(new URL('../apps/server/package.json', import.meta.url));
+const { Client } = requireFromServer('pg');
 
 const results = [];
 let failed = 0;
@@ -21,27 +29,92 @@ function check(name, ok, detail = '') {
   if (!ok) failed++;
 }
 
-// ---------- 问答式入口辅助（09-23：/trips/new 已由表单页改为对话页） ----------
+// ---------- 测试库管理（与 verify-c2 同例） ----------
+
+function adminUrlAndDbName(url) {
+  const u = new URL(url);
+  const dbName = u.pathname.replace(/^\//, '');
+  if (!dbName || dbName === 'postgres') throw new Error('VERIFY_C3_DATABASE_URL 必须指向专用测试库，禁止 postgres');
+  u.pathname = '/postgres';
+  return { adminUrl: u.toString(), dbName };
+}
+
+async function recreateDatabase(url) {
+  const { adminUrl, dbName } = adminUrlAndDbName(url);
+  const admin = new Client({ connectionString: adminUrl });
+  await admin.connect();
+  try {
+    // PG 13+ 支持 WITH (FORCE)，自动断开存量连接
+    await admin.query(`DROP DATABASE IF EXISTS "${dbName}" WITH (FORCE)`);
+    await admin.query(`CREATE DATABASE "${dbName}"`);
+  } finally {
+    await admin.end();
+  }
+}
+
+async function dropDatabase(url) {
+  const { adminUrl, dbName } = adminUrlAndDbName(url);
+  const admin = new Client({ connectionString: adminUrl });
+  await admin.connect();
+  try {
+    await admin.query(`DROP DATABASE IF EXISTS "${dbName}" WITH (FORCE)`);
+  } finally {
+    await admin.end();
+  }
+}
+
+/**
+ * 已覆盖城市种子（09-26 首页城市选择的数据前提）：
+ * 每个城市插 100 条 verified（= CITY_COVERAGE_THRESHOLD），少于该值首页不列、表单页拒绝直达。
+ */
+async function seedCoveredCities(url, cities) {
+  const client = new Client({ connectionString: url });
+  await client.connect();
+  try {
+    for (const city of cities) {
+      await client.query(
+        `insert into canonical_places (id, city, name, category, source, verified, created_at)
+         select 'c3-' || $1 || '-' || g, $1, $1 || '地点' || g, '景点', 'goldset', true, now() from generate_series(1, 100) g`,
+        [city],
+      );
+    }
+  } finally {
+    await client.end();
+  }
+}
+
+// ---------- 表单入口辅助（09-26：/trips/new 已由对话页改为结构化表单页） ----------
 
 const CHAT_INPUT = '输入你的行程想法';
 
-/** 只取生成额度那一段：对话轮数会随发消息变化，整串比较会误报 */
+/** 生成额度只看顶栏 chip（AppLayout 常驻，全页面可比） */
 async function generationQuota(page) {
-  const text = await page.locator('.quota-inline').innerText();
-  return text.split('·')[0].trim();
+  return (await page.locator('.quota-chip').innerText()).trim();
 }
 
-/** 发一句话等确认卡就绪；mock 按「城市 + N天」回复完整条件 */
-async function sendChatTurn(page, text) {
-  await page.getByLabel(CHAT_INPUT).fill(text);
-  await page.getByLabel(CHAT_INPUT).press('Enter');
-  await page.getByRole('button', { name: /开始生成/ }).waitFor({ timeout: 20_000 });
+/** 首页点城市卡片进表单页 */
+async function gotoFormFromHome(page, city) {
+  await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+  await page.getByRole('link', { name: city }).click();
+  await page.waitForURL('**/trips/new?city=*', { timeout: 10_000 });
 }
 
-/** 经对话入口发起一次生成（原「填表单 + 点开始生成」的等价路径） */
-async function startGenerationViaChat(page, { destination, days = 2 }) {
-  await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  await sendChatTurn(page, `${destination}玩${days}天`);
+/** 胶囊段按钮（面板的「下一步：×× →」文案含同名，必须用 class 限定） */
+function capsuleSegment(page, name) {
+  return page.locator('button.capsule-segment', { hasText: name });
+}
+
+/** 表单填必填项并发起生成（胶囊交互：日期预填明天起 3 天，天数用快捷 chip，节奏进面板点选） */
+async function startGenerationViaForm(page, { city, days = 2, extraNotes = '' }) {
+  await gotoFormFromHome(page, city);
+  await capsuleSegment(page, '出行日期').click();
+  await page.getByRole('button', { name: `${days}天`, exact: true }).click();
+  await capsuleSegment(page, '节奏与同行').click();
+  await page.getByRole('button', { name: /适中充实/ }).click();
+  if (extraNotes) {
+    await capsuleSegment(page, '偏好与更多').click();
+    await page.getByLabel(/补充说明/).fill(extraNotes);
+  }
   await page.getByRole('button', { name: /开始生成/ }).click();
 }
 
@@ -49,6 +122,8 @@ if (!existsSync('apps/web/dist/index.html')) {
   console.error('缺少 apps/web/dist，请先 npm run build');
   process.exit(2);
 }
+
+await recreateDatabase(DATABASE_URL);
 
 const mock = await startMockLlm(MOCK_PORT, { delayMs: 400 });
 const server = spawn(process.execPath, ['../../node_modules/tsx/dist/cli.mjs', 'src/index.ts'], {
@@ -58,7 +133,7 @@ const server = spawn(process.execPath, ['../../node_modules/tsx/dist/cli.mjs', '
     ...process.env,
     NODE_ENV: 'production',
     PORT: String(API_PORT),
-    DATABASE_PATH: DB_FILE,
+    DATABASE_URL,
     MASTER_KEY: crypto.randomBytes(32).toString('hex'),
     REGISTRATION_MODE: 'invite',   // 钉死邀请码模式：不受本机 apps/server/.env 影响
     INVITE_CODE: 'C3TEST',
@@ -87,6 +162,8 @@ try {
     if (i === 119) throw new Error('服务端启动超时');
   }
   console.log('[api] 生产模式服务端就绪（静态托管 + SSE 同源）');
+  // 城市覆盖种子必须在首次访问首页前落库：listCoveredCities 进程内缓存无 TTL
+  await seedCoveredCities(DATABASE_URL, ['东京', '大阪', '北京']);
 
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const page = await context.newPage();
@@ -100,56 +177,36 @@ try {
   await page.getByRole('button', { name: '注册并登录' }).click();
   await page.waitForURL('**/trips', { timeout: 10_000 });
 
-  // 1. 对话入口：额度可见 + 空态示例（不再有任何表单字段）
-  await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  const quotaText = await page.locator('.quota-inline').innerText();
-  check('入口显示今日剩余生成次数', quotaText.includes('3 / 3'), quotaText.trim());
-  check('生成额度与对话额度同屏可见', quotaText.includes('对话'), quotaText.trim());
-  check('空态给出可点选示例', (await page.locator('.chat-empty .btn-chip').count()) >= 2);
-  await page.screenshot({ path: `${SHOTS}/08-chat-entry.png` });
+  // 1. 首页：已覆盖城市图集 + 顶栏生成额度
+  await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+  const cityCards = await page.locator('.city-card').allInnerTexts();
+  check('首页仅列出已覆盖城市（3 个种子城市）', cityCards.length === 3, cityCards.join('｜'));
+  const quotaText = await generationQuota(page);
+  check('顶栏显示今日剩余生成次数', quotaText.includes('3/3'), quotaText);
 
-  // 1.5 确认卡：一句话补齐必填后直接可见，缺字段提示消失，约束带极性徽章
-  await sendChatTurn(page, '东京玩2天');
-  const cardRows = await page.locator('.chat-brief-row').allInnerTexts();
-  check(
-    '确认卡展示已确定条件',
-    cardRows.some((r) => r.includes('东京')) && cardRows.some((r) => r.includes('2 天')),
-    cardRows.join('｜'),
-  );
-  check('出行方式默认公共交通', cardRows.some((r) => r.includes('公共交通')), cardRows.join('｜'));
-  check('齐备后不再显示缺字段提示', (await page.locator('.chat-brief-missing').count()) === 0);
-  const constraintBadge = await page.locator('.chat-brief-constraints .chat-polarity').first().innerText();
-  check('约束带极性徽章（fact → 仅作背景）', constraintBadge.includes('仅作背景'), constraintBadge);
-  await page.screenshot({ path: `${SHOTS}/08b-brief-card.png` });
+  // 1.5 表单页：日期已预填（明天起 3 天），只欠节奏时按钮禁用，点选后可用
+  await page.getByRole('link', { name: '东京' }).click();
+  await page.waitForURL('**/trips/new?city=*', { timeout: 10_000 });
+  // URL 变化先于 React 重渲：等胶囊条出现再读 h1，否则可能读到旧首页的标题
+  await page.waitForSelector('.capsule-deck', { timeout: 10_000 });
+  const h1Text = await page.locator('h1').innerText();
+  check('表单页标题带城市名', h1Text.includes('东京'), h1Text);
+  const submitBtn = page.getByRole('button', { name: /开始生成/ });
+  check('必填未齐时生成按钮禁用', await submitBtn.isDisabled());
+  await capsuleSegment(page, '节奏与同行').click();
+  await page.getByRole('button', { name: /适中充实/ }).click();
+  check('必填补齐后生成按钮可用', !(await submitBtn.isDisabled()));
+  await capsuleSegment(page, '偏好与更多').click();
+  await page.getByLabel(/补充说明/).fill('想住得离地铁近');
+  // 未覆盖城市直达防护：手写 URL 进表单页应被弹回首页
+  await page.goto(`${BASE}/trips/new?city=${encodeURIComponent('拉萨')}`, { waitUntil: 'networkidle' });
+  await page.waitForURL((url) => url.pathname === '/', { timeout: 10_000 });
+  check('未覆盖城市直达表单页被弹回首页', true);
+  await page.screenshot({ path: `${SHOTS}/08-city-home.png` });
 
-  // 1.6 确认卡可编辑（PR4）：字段就地修改立即回写 Brief 并追加 AI 确认
-  await page.locator('.chat-brief-row', { hasText: '补充要求' }).getByRole('button', { name: '修改补充要求' }).click();
-  await page.getByLabel('修改该字段').fill('想住得离地铁近');
-  await page.getByRole('button', { name: '保存' }).click();
-  await page.waitForFunction(() => document.body.innerText.includes('已更新：补充要求改为'));
-  const extraRow = await page.locator('.chat-brief-row', { hasText: '补充要求' }).innerText();
-  check('确认卡字段可就地编辑并回写', extraRow.includes('想住得离地铁近'), extraRow.replace(/\n/g, ' '));
-
-  // 1.7 约束按 polarity 单条排除（fact → 本次不参考）
-  const excludeLabel = await page.locator('.chat-constraint-remove').first().innerText();
-  check('排除按钮文案随 polarity（fact → 本次不参考）', excludeLabel.includes('本次不参考'), excludeLabel);
-  await page.locator('.chat-constraint-remove').first().click();
-  await page.waitForFunction(() => document.querySelectorAll('.chat-brief-constraints li').length === 0);
-  check('约束可单条排除', true);
-
-  // 1.8 历史对话入口（换设备/换标签页后找回未完成的对话）
-  await page.getByRole('button', { name: '历史对话' }).click();
-  await page.waitForSelector('.chat-conv-list');
-  const convCount = await page.locator('.chat-conv-list li').count();
-  check('历史对话列出现有会话', convCount === 1, `count=${convCount}`);
-  const convSummary = await page.locator('.chat-conv-list li .muted').first().innerText();
-  check('会话摘要显示状态与更新时间', /信息齐备|还差 \d+ 项/.test(convSummary), convSummary);
-  await page.getByRole('button', { name: '关闭' }).click();
-  await page.waitForSelector('.chat-conv-list', { state: 'detached' });
-  check('历史对话可关闭', true);
-
-  // 2. 第一次生成：完整流水线
-  await page.getByRole('button', { name: /开始生成/ }).click();
+  // 2. 第一次生成：完整流水线（extraNotes 随表单进 Brief 快照，3.55 验证留档）
+  await startGenerationViaForm(page, { city: '东京', extraNotes: '想住得离地铁近' });
+  await page.screenshot({ path: `${SHOTS}/08b-form-filled.png` });
 
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   check('时间线出现', true);
@@ -239,6 +296,20 @@ try {
   }
   await page.screenshot({ path: `${SHOTS}/11b-trip-overview.png` });
 
+  // 3.55 表单生成的会话关联（09-26）：提交时惰性建会话 + Brief 快照，编辑器据此挂对话面板
+  const convProbe = await page.evaluate(async (id) => {
+    const conv = await (await fetch(`/api/trips/${id}/conversation`)).json();
+    if (!conv.conversationId) return { conversationId: null };
+    const detail = await (await fetch(`/api/conversations/${conv.conversationId}`)).json();
+    return { conversationId: conv.conversationId, brief: detail.conversation.brief.data };
+  }, tripId);
+  check('表单生成的行程已关联会话', Boolean(convProbe.conversationId));
+  check(
+    'Brief 快照留档表单输入（含补充说明）',
+    convProbe.brief?.destination === '东京' && convProbe.brief?.extraNotes === '想住得离地铁近',
+    JSON.stringify({ destination: convProbe.brief?.destination, extraNotes: convProbe.brief?.extraNotes }),
+  );
+
   // 3.9 旧行程兼容：无 overview 字段 → 备选抽屉不渲染，编辑器正常
   const ctxOld = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const pOld = await ctxOld.newPage();
@@ -269,12 +340,12 @@ try {
   const versionBadges = await page.locator('.trip-version-badge').count();
   check('列表每条版本链一行且首版无徽章', listCards === 1 && versionBadges === 0, `cards=${listCards}, badges=${versionBadges}`);
 
-  // 3.7 编辑器内嵌对话（09-24 R2/R4）：对话常驻最左侧，可直接发起按需修改
+  // 3.7 编辑器内嵌对话（09-24 R2/R4，09-26 起为对话的唯一入口）：发起按需修改落版本链
   // 放在 3.6 之后：编辑会产生 v2，列表断言（首版无徽章）必须赶在编辑之前跑
   await page.goto(`${BASE}/trips/${tripId}`, { waitUntil: 'networkidle' });
   await page.waitForSelector('.editor-chat .chat-panel', { timeout: 5_000 });
   const panelMsgs = await page.locator('.editor-chat .chat-msg').count();
-  check('编辑器左侧常驻对话面板且历史消息可见', panelMsgs >= 2, `msgs=${panelMsgs}`);
+  check('编辑器左侧常驻对话面板且 Brief 快照消息可见', panelMsgs >= 2, `msgs=${panelMsgs}`);
   // 按需修订（R1）：说「换成」→ 服务端应用编辑操作并落 v2，面板跳转到新版本
   await page.locator('.editor-chat').getByLabel(CHAT_INPUT).fill('把第 2 天换成博物馆');
   await page.locator('.editor-chat').getByLabel(CHAT_INPUT).press('Enter');
@@ -287,7 +358,7 @@ try {
   await page.screenshot({ path: `${SHOTS}/11c-editor-chat-edit.png` });
 
   // 4. 刷新恢复：开第二次生成，中途 reload
-  await startGenerationViaChat(page, { destination: '大阪' });
+  await startGenerationViaForm(page, { city: '大阪' });
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
   await page.reload({ waitUntil: 'domcontentloaded' });   // SSE 长连接会卡 networkidle
   // 恢复有两条正路：任务仍在跑 → 重放时间线后自动跳；快照已 done → 直接跳编辑器
@@ -303,9 +374,11 @@ try {
   }
 
   // 5. 取消：开第三次生成后立即取消
-  await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
+  await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
   const quotaBefore = await generationQuota(page);
-  await sendChatTurn(page, '北京玩2天');
+  await gotoFormFromHome(page, '北京');
+  await capsuleSegment(page, '节奏与同行').click();
+  await page.getByRole('button', { name: /适中充实/ }).click();
   await page.getByRole('button', { name: /开始生成/ }).click();
   let rejectNextCancellation = true;
   const cancellationRoutePattern = '**/api/generations/*/cancel';
@@ -347,41 +420,46 @@ try {
   await page.waitForSelector('.gen-result:has-text("已取消")', { timeout: 15_000 });
   await page.unroute(cancellationRoutePattern);
   check('取消后展示已取消', true);
-  await page.getByRole('button', { name: '返回对话' }).click();
-  await page.waitForSelector('.chat-input', { timeout: 5_000 });
+  await page.getByRole('button', { name: '返回表单' }).click();
+  // 表单状态在组件内保留：回来后不必重填即可再次提交
+  await page.getByRole('button', { name: /开始生成/ }).waitFor({ timeout: 5_000 });
   const quotaAfterCancel = await generationQuota(page);
   check('取消不消耗次数', quotaAfterCancel === quotaBefore, `${quotaBefore} → ${quotaAfterCancel}`);
 
   // 6. 旧取消轮询迟到时不得污染随后启动的新任务；随后用完配额
-  // （返回对话后 Brief 仍齐备，不必再发一条消息）
   await page.getByRole('button', { name: /开始生成/ }).click();
   await page.waitForSelector('.gen-phase', { timeout: 15_000 });
+  // 先确认任务在跑（取消按钮可见）再断言无污染，避免生成过快时把「已完成」误判为污染
+  const cancelVisible = await page
+    .getByRole('button', { name: /取消生成|取消中…/ })
+    .waitFor({ timeout: 8_000 })
+    .then(() => true)
+    .catch(() => false);
   await sleep(1_800);
   check(
     '旧取消轮询迟到不关闭新任务 SSE 或注入取消终态',
-    (await page.locator('.gen-result:has-text("已取消")').count()) === 0 && (await page.getByRole('button', { name: /取消生成|取消中…/ }).count()) === 1,
+    (await page.locator('.gen-result:has-text("已取消")').count()) === 0 && cancelVisible,
+    `cancelVisible=${cancelVisible}`,
   );
   await page.unroute(cancellationSnapshotRoutePattern);
   await page.waitForSelector('.gen-result-ok', { timeout: 30_000 });
   await page.waitForURL('**/trips/*', { timeout: 10_000 });
-  await page.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
+  await gotoFormFromHome(page, '北京');
   const disabledBtn = await page.getByRole('button', { name: '今日次数已用完' }).isDisabled();
   check('配额用尽按钮禁用 + 文案', disabledBtn);
   await page.screenshot({ path: `${SHOTS}/12-quota-exhausted.png` });
 
-  // 7. 移动端时间线视口（375px）
+  // 7. 移动端首页视口（390px）：城市图集在小屏正常渲染
   const mob = await context.newPage();
   await mob.setViewportSize({ width: 390, height: 844 });
-  await mob.goto(`${BASE}/trips/new`, { waitUntil: 'networkidle' });
-  // 移动端新标签页没有 sessionStorage → 全新对话：断言入口本身渲染正常
-  // （额度耗尽的可操作文案由第 6 步在桌面端覆盖）
-  const mobInput = await mob.getByLabel(CHAT_INPUT).isVisible();
-  const mobExamples = await mob.locator('.chat-empty .btn-chip').count();
-  check('移动端对话入口渲染正常', mobInput && mobExamples >= 2, `input=${mobInput}, examples=${mobExamples}`);
-  await mob.screenshot({ path: `${SHOTS}/13-mobile-chat.png` });
+  await mob.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+  const mobCards = await mob.locator('.city-card').count();
+  check('移动端首页城市图集渲染正常', mobCards === 3, `cards=${mobCards}`);
+  await mob.screenshot({ path: `${SHOTS}/13-mobile-home.png` });
   await mob.close();
 
-  // 8. 无 Key 文案（纯 BYOK 模式站点）：另起无站点 Key 服务
+  // 8. 无 Key 文案（纯 BYOK 模式站点）：另起无站点 Key 服务（独立库）
+  await recreateDatabase(DATABASE_URL_NOKEY);
   const server2 = spawn(process.execPath, ['../../node_modules/tsx/dist/cli.mjs', 'src/index.ts'], {
     cwd: 'apps/server',
     stdio: ['ignore', 'ignore', 'pipe'],
@@ -389,7 +467,7 @@ try {
       ...process.env,
       NODE_ENV: 'production',
       PORT: String(API_PORT + 1),
-      DATABASE_PATH: `${DB_FILE}.nokey.db`,
+      DATABASE_URL: DATABASE_URL_NOKEY,
       MASTER_KEY: crypto.randomBytes(32).toString('hex'),
       REGISTRATION_MODE: 'invite',   // 钉死邀请码模式：不受本机 apps/server/.env 影响
       INVITE_CODE: 'C3TEST',
@@ -408,6 +486,7 @@ try {
       } catch {}
       await sleep(500);
     }
+    await seedCoveredCities(DATABASE_URL_NOKEY, ['东京']);
     const p2 = await context.newPage();
     await p2.goto(`http://127.0.0.1:${API_PORT + 1}/register`, { waitUntil: 'networkidle' });
     await p2.getByLabel('邮箱').fill(`nk-${Date.now()}@test.dev`);
@@ -416,22 +495,19 @@ try {
     await p2.getByLabel('邀请码').fill('C3TEST');
     await p2.getByRole('button', { name: '注册并登录' }).click();
     await p2.waitForURL('**/trips', { timeout: 10_000 });
-    await p2.goto(`http://127.0.0.1:${API_PORT + 1}/trips/new`, { waitUntil: 'networkidle' });
-    // 无站点 Key：对话第一句就会拿到 400 no_llm（对话理解与生成共用同一套 Key 双轨）
-    await p2.getByLabel(CHAT_INPUT).fill('东京玩2天');
-    await p2.getByLabel(CHAT_INPUT).press('Enter');
+    // 无站点 Key：表单提交时 POST /api/generations 拿 400 no_llm，文案分流不变
+    await p2.goto(`http://127.0.0.1:${API_PORT + 1}/`, { waitUntil: 'networkidle' });
+    await p2.getByRole('link', { name: '东京' }).click();
+    await p2.waitForURL('**/trips/new?city=*', { timeout: 10_000 });
+    await capsuleSegment(p2, '节奏与同行').click();
+    await p2.getByRole('button', { name: /适中充实/ }).click();
+    await p2.getByRole('button', { name: /开始生成/ }).click();
     const errText = await p2.locator('.form-error').innerText({ timeout: 10_000 });
     check('无 Key 双轨文案（联系站长 + 高级选项自填）', errText.includes('联系站长') && errText.includes('高级选项'), errText.trim());
     await p2.screenshot({ path: `${SHOTS}/14-no-llm-copy.png` });
     await p2.close();
   } finally {
     server2.kill();
-    await sleep(800);                        // Windows 需等进程释放 SQLite 文件锁
-    for (const suffix of ['', '-shm', '-wal']) {
-      try {
-        rmSync(`apps/server/${DB_FILE.replace('./', '')}.nokey.db${suffix}`, { force: true });
-      } catch {}
-    }
   }
 } catch (err) {
   check('脚本执行中断', false, String(err).slice(0, 300));
@@ -440,14 +516,12 @@ try {
   mock.close();
   server.kill();
   await sleep(800);
-  for (const suffix of ['', '-shm', '-wal']) {
-    try {
-      rmSync(`apps/server/${DB_FILE.replace('./', '')}${suffix}`, { force: true });
-    } catch {}
-  }
+  await dropDatabase(DATABASE_URL).catch(() => {});
+  await dropDatabase(DATABASE_URL_NOKEY).catch(() => {});
 }
 
 console.log('\n===== C3 浏览器验收结果 =====');
 for (const r of results) console.log(r);
 console.log(`===== ${results.length - failed}/${results.length} 通过 =====`);
 process.exit(failed ? 1 : 0);
+

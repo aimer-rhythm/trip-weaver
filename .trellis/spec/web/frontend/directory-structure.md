@@ -34,10 +34,10 @@ Keep route orchestration in pages, server-state behavior in API hooks, and reusa
 
 Public routes are `/login` and `/register`. Authenticated routes are nested under `RequireAuth`, then under `AppLayout`:
 
-- `/` redirects to `/trips` with `replace`.
+- `/` renders the covered-city selection home page.
 - `/trips` renders the trip list.
-- `/trips/new` renders the planner and generation flow.
-- `/trips/:id` renders the editor.
+- `/trips/new` renders the structured new-trip form (`?city=` 必填，未覆盖城市会被弹回首页) and generation flow.
+- `/trips/:id` renders the editor (含内嵌对话面板，行程有关联会话时出现).
 - Unknown paths redirect to `/trips`.
 
 `RequireAuth` waits for `useMe`. A 401 redirects to `/login` and preserves `location.pathname` in route state so login can return the user to the original page. A non-401 failure is not treated as logged out; it renders a service-unavailable message. Preserve that distinction.

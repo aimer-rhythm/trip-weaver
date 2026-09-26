@@ -5,7 +5,8 @@ import { AppLayout } from './components/AppLayout';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { TripListPage } from './pages/TripListPage';
-import { ChatPage } from './pages/ChatPage';
+import { HomePage } from './pages/HomePage';
+import { NewTripPage } from './pages/NewTripPage';
 import { TripEditorPage } from './pages/TripEditorPage';
 
 function RequireAuth() {
@@ -32,9 +33,9 @@ export const router = createBrowserRouter([
       {
         element: <AppLayout />,
         children: [
-          { path: '/', element: <Navigate to="/trips" replace /> },
+          { path: '/', element: <HomePage /> },
           { path: '/trips', element: <TripListPage /> },
-          { path: '/trips/new', element: <ChatPage /> },
+          { path: '/trips/new', element: <NewTripPage /> },
           { path: '/trips/:id', element: <TripEditorPage /> },
         ],
       },

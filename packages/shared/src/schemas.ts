@@ -11,6 +11,7 @@ import {
   MAX_OVERVIEW_POIS,
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
+  PACE_OPTIONS,
   POI_CATEGORIES,
   PREFERENCE_OPTIONS,
   RESERVATION_STATUSES,
@@ -133,6 +134,7 @@ export const GenerateFormSchema = Type.Object({
   partySize: Type.Integer({ minimum: 1, maximum: 20 }),
   extraNotes: Type.String({ maxLength: 200, default: '' }),
   transportMode: Type.Optional(StringEnum(TRANSPORT_MODES)),         // 出行方式基调（缺省 transit）
+  pace: Type.Optional(StringEnum(PACE_OPTIONS)),                     // 旅行节奏（缺省 moderate，决定每日景点密度）
   lodging: Type.Optional(Type.String({ maxLength: 60 })),            // 住宿位置（可选，酒店名或大致区域）；留空时由规划 Agent 建议一个区域
 });
 

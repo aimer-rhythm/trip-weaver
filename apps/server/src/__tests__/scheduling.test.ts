@@ -70,6 +70,18 @@ test('按停留分量切段：每天分量不超上限、个数不超单日上�
   assert.equal(result.droppedCount, 0);
 });
 
+test('节奏决定每日容量：轻松少排、紧凑多排、适中保持既有上限（09-26）', () => {
+  // 13 个普通点（分量 2，3 天）：
+  // relaxed 容量 3×5=15 → 选 7 个，切段每段 ≤2 → 3 天排 6 个；
+  // moderate 容量 3×8=24 → 选 12 个，每段 ≤4 → 排 12 个；
+  // tight 容量 3×12=36 → 全选 13 个，每段 ≤6 → 排 13 个。
+  const candidates = Array.from({ length: 13 }, (_, i) => poi({ name: `点${i}`, score: 100 - i, ...ring(i, 13) }));
+  const count = (r: { days: { stops: unknown[] }[] }) => r.days.flatMap((d) => d.stops).length;
+  assert.equal(count(buildSchedule(candidates, { days: 3, foodFocused: false, pace: 'relaxed' })), 6);
+  assert.equal(count(buildSchedule(candidates, { days: 3, foodFocused: false, pace: 'moderate' })), 12);
+  assert.equal(count(buildSchedule(candidates, { days: 3, foodFocused: false, pace: 'tight' })), 13);
+});
+
 test('容量不足时按分数丢弃：低分先出局，高分必留', () => {
   const candidates = Array.from({ length: 20 }, (_, i) => poi({ name: `点${i}`, score: 100 - i, ...ring(i, 20) }));
   const result = buildSchedule(candidates, { days: 2, foodFocused: false });

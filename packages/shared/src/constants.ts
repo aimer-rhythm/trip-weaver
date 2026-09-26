@@ -53,12 +53,12 @@ export const MAX_OVERVIEW_POIS = 40;
 // 对话只负责三件事：抽取参数、回答旅行问答、更新 Planning Brief；
 // 只有 Brief 齐备且用户确认，才创建正式生成任务（对话本身不生成行程）。
 
-/** 旅行侧重点（三选一，必填字段之一；标签供确认卡与追问按钮渲染） */
-export const TRIP_FOCUS_OPTIONS = ['sights_first', 'food_first', 'balanced'] as const;
-export const TRIP_FOCUS_LABELS: Record<(typeof TRIP_FOCUS_OPTIONS)[number], string> = {
-  sights_first: '景点为主',
-  food_first: '吃吃喝喝为主',
-  balanced: '均衡安排',
+/** 旅行节奏（三选一，必填字段之一；09-26 取代原「侧重点」：景点密度随节奏走，不再按美食/景点站队） */
+export const PACE_OPTIONS = ['relaxed', 'moderate', 'tight'] as const;
+export const PACE_LABELS: Record<(typeof PACE_OPTIONS)[number], string> = {
+  relaxed: '轻松悠闲',
+  moderate: '适中充实',
+  tight: '特种兵打卡',
 };
 
 /** 旅行约束分类（11 枚举，确认卡分组标签） */
@@ -96,12 +96,12 @@ export const CONSTRAINT_CATEGORY_LABELS: Record<(typeof CONSTRAINT_CATEGORIES)[n
 export const CONSTRAINT_POLARITIES = ['prefer', 'avoid', 'require', 'fact'] as const;
 
 /** Brief 就绪判定的缺失清单：4 个必填字段 + dateRange（合成项，表示结束日期早于开始日期） */
-export const BRIEF_MISSING_FIELDS = ['destination', 'startDate', 'endDate', 'tripFocus', 'dateRange'] as const;
+export const BRIEF_MISSING_FIELDS = ['destination', 'startDate', 'endDate', 'pace', 'dateRange'] as const;
 export const BRIEF_MISSING_FIELD_LABELS: Record<(typeof BRIEF_MISSING_FIELDS)[number], string> = {
   destination: '目的地',
   startDate: '开始日期',
   endDate: '结束日期或游玩天数',
-  tripFocus: '旅行侧重点',
+  pace: '旅行节奏',
   dateRange: '有效的日期范围',
 };
 

@@ -18,7 +18,7 @@ const MISSING_FIELD_KEY: Record<BriefMissingField, keyof PlanningBriefPatch | nu
   destination: 'destination',
   startDate: 'startDate',
   endDate: 'endDate',
-  tripFocus: 'tripFocus',
+  pace: 'pace',
   dateRange: null,
 };
 
@@ -35,7 +35,7 @@ export function IntakeControls({ intake, disabled, onPatch, onText }: Props) {
     const text = draft.trim();
     if (!text || disabled) return;
     // 只缺一项且该项是普通文本字段 → 结构化写入；否则当自由文本发出去
-    if (onlyKey && onlyKey !== 'tripFocus') onPatch({ [onlyKey]: text } as PlanningBriefPatch);
+    if (onlyKey && onlyKey !== 'pace') onPatch({ [onlyKey]: text } as PlanningBriefPatch);
     else onText(text);
     setDraft('');
   };

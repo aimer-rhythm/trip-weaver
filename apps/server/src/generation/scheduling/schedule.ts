@@ -11,7 +11,7 @@
 //
 // 分数只决定「入选 + 分到哪天」，不插手段内顺序 —— 否则会把高分点插到不顺路的位置，
 // 通勤成本又回来了（景山→故宫 41min 那种段就是这么来的）。
-import type { PoiCategory } from '@tripweaver/shared';
+import type { PoiCategory, TripPace } from '@tripweaver/shared';
 import { dateForDayIndex, isClosedOnDate } from '@tripweaver/shared';
 
 export interface SchedulablePoi {
@@ -59,6 +59,8 @@ export interface ScheduleOptions {
   startDate?: string;
   /** 游览顺序硬约束（09-23 顺序种子表）：before 必须在 after 之前进链；两端都在入选集合才生效 */
   orderConstraints?: readonly { before: string; after: string }[];
+  /** 旅行节奏（09-26）：决定每日容量上限；缺省 moderate（既有行为） */
+  pace?: TripPace;
 }
 
 export interface ScheduleResult {
@@ -84,6 +86,17 @@ export const SCHEDULE_LIMITS = {
   /** 空天占位活动的名称前缀（知识库无覆盖时如实占位，不编造地点） */
   emptyDayPrefix: '自由安排',
 } as const;
+
+/**
+ * 节奏 → 每日容量（09-26）：轻松少排、紧凑多排；moderate 即 SCHEDULE_LIMITS 的既有默认。
+ * 分量上限的换算直觉：普通点 weight≈2，relaxed 一天约 2 个点，moderate 约 4 个，tight 约 6 个；
+ * tight 的 maxStopsPerDay=8 贴着下游「单日 ≤8」完整性校验，不再往上加。
+ */
+export const PACE_SCHEDULE_LIMITS: Record<TripPace, { maxStopsPerDay: number; dayWeightLimit: number }> = {
+  relaxed: { maxStopsPerDay: 4, dayWeightLimit: 5 },
+  moderate: { maxStopsPerDay: SCHEDULE_LIMITS.maxStopsPerDay, dayWeightLimit: SCHEDULE_LIMITS.dayWeightLimit },
+  tight: { maxStopsPerDay: 8, dayWeightLimit: 12 },
+};
 
 type Coord = { lat: number; lng: number };
 
@@ -190,14 +203,17 @@ function orderSegment(segment: readonly SchedulablePoi[]): SchedulablePoi[] {
  * 按分量而不是个数切，是因为个数根本区分不了「大点」与「小点」：
  * 实测 Day1 六个点（雍和宫/恭王府/故宫/北海/景山/什刹海）合计分量 14，两天都装不下。
  */
-function cutChain(chain: readonly SchedulablePoi[]): SchedulablePoi[][] {
+function cutChain(
+  chain: readonly SchedulablePoi[],
+  limits: { maxStopsPerDay: number; dayWeightLimit: number },
+): SchedulablePoi[][] {
   const segments: SchedulablePoi[][] = [];
   let current: SchedulablePoi[] = [];
   let currentWeight = 0;
   for (const poi of chain) {
     const full =
-      current.length >= SCHEDULE_LIMITS.maxStopsPerDay ||
-      currentWeight + poi.weight > SCHEDULE_LIMITS.dayWeightLimit;
+      current.length >= limits.maxStopsPerDay ||
+      currentWeight + poi.weight > limits.dayWeightLimit;
     if (current.length && full) {
       segments.push(current);
       current = [];
@@ -282,6 +298,7 @@ function placeholderStop(destination: string): ScheduledStop {
  * 那正是层2 长途点纪律要防的事）；候选不足时当天用占位活动兜底（保住「每天至少一个活动」的门槛）。
  */
 export function buildSchedule(candidates: readonly SchedulablePoi[], options: ScheduleOptions): ScheduleResult {
+  const paceLimits = PACE_SCHEDULE_LIMITS[options.pace ?? 'moderate'];
   const byScore = (a: SchedulablePoi, b: SchedulablePoi) => b.score - a.score || a.name.localeCompare(b.name);
   const attractions = candidates.filter((poi) => poi.category === 'attraction').sort(byScore);
   const foods = new Set(candidates.filter((poi) => poi.category === 'food').sort(byScore));
@@ -301,7 +318,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
   // 入选容量按**停留分量**，且只看剩下的天数（独占日各自只放它自己那 1 个点）。
   // 按分数降序贪心装填：装不下的（太占分量）跳过，由后面的轻点补位。
   const remainingDays = options.days - keptExclusive.length;
-  const weightCapacity = Math.max(0, remainingDays * SCHEDULE_LIMITS.dayWeightLimit);
+  const weightCapacity = Math.max(0, remainingDays * paceLimits.dayWeightLimit);
   const selected: SchedulablePoi[] = [];
   let usedWeight = 0;
   for (const poi of rest) {
@@ -315,7 +332,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
 
   const segments: SchedulablePoi[][] = keptExclusive.map((poi) => [poi]);
   if (remainingDays > 0 && selected.length) {
-    const restSegments = cutChain(buildChain(selected, options.orderConstraints));
+    const restSegments = cutChain(buildChain(selected, options.orderConstraints), paceLimits);
     // 切出来的段多于剩余天数（分量分布不均时会发生）：多出来的整段丢弃，不硬塞
     for (const segment of restSegments.slice(remainingDays)) {
       for (const poi of segment) dropped.add(poi);

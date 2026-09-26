@@ -236,7 +236,7 @@ export async function runGeneration(
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
-      systemPrompt: researchSystemPrompt({ searchWebMax }),
+      systemPrompt: researchSystemPrompt({ searchWebMax, pace: form.pace, foodSearch: foodFocused }),
       tools: buildResearchTools({
         poiSource: poi.source,
         searchSource: search.source,

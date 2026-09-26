@@ -13,14 +13,14 @@ import {
   type PlanningBriefData,
 } from '@tripweaver/shared';
 
-const base: PlanningBriefData = { destination: '成都', startDate: '2026-11-05', days: 3, tripFocus: 'balanced', constraints: [] };
+const base: PlanningBriefData = { destination: '成都', startDate: '2026-11-05', days: 3, pace: 'moderate', constraints: [] };
 
 test('必填只有 4 项：全空时按固定顺序报缺', () => {
-  assert.deepEqual(requiredBriefFields({ constraints: [] }), ['destination', 'startDate', 'endDate', 'tripFocus']);
+  assert.deepEqual(requiredBriefFields({ constraints: [] }), ['destination', 'startDate', 'endDate', 'pace']);
 });
 
 test('days 是 endDate 的合法等价表达——给了 days 就不再报缺 endDate', () => {
-  assert.deepEqual(requiredBriefFields({ constraints: [], destination: '成都', startDate: '2026-11-05', days: 3, tripFocus: 'balanced' }), []);
+  assert.deepEqual(requiredBriefFields({ constraints: [], destination: '成都', startDate: '2026-11-05', days: 3, pace: 'moderate' }), []);
 });
 
 test('startDate + endDate 齐备时无需 days', () => {
@@ -39,13 +39,13 @@ test('结束早于开始 → 合成项 dateRange；相等不报错', () => {
 
 test('齐备时 isBriefReady 为真，缺任一必填为假', () => {
   assert.equal(isBriefReady(base), true);
-  assert.equal(isBriefReady({ ...base, tripFocus: undefined }), false);
+  assert.equal(isBriefReady({ ...base, pace: undefined }), false);
 });
 
-test('缺「旅行侧重点」单项时给三选一按钮，enum 用 canonical 值而非中文标签', () => {
-  const intake = briefIntake(['tripFocus']);
-  assert.deepEqual(intake.inputSchema.enum, ['sights_first', 'food_first', 'balanced']);
-  assert.deepEqual(intake.missingFields, ['tripFocus']);
+test('缺「旅行节奏」单项时给三选一按钮，enum 用 canonical 值而非中文标签', () => {
+  const intake = briefIntake(['pace']);
+  assert.deepEqual(intake.inputSchema.enum, ['relaxed', 'moderate', 'tight']);
+  assert.deepEqual(intake.missingFields, ['pace']);
   assert.equal(intake.inputSchema.enumKind, 'canonical');
 });
 
@@ -55,19 +55,19 @@ test('缺日期单项时给日期范围控件', () => {
 });
 
 test('缺多项时只问第一项，不再把多个字段汇总成一句丢给文本框', () => {
-  const intake = briefIntake(['startDate', 'destination', 'tripFocus']);
+  const intake = briefIntake(['startDate', 'destination', 'pace']);
   assert.deepEqual(intake.missingFields, ['startDate']);
   assert.equal(intake.inputSchema.format, 'date-range');
 });
 
-test('缺多项且第一项是侧重点 → 仍然是 canonical 按钮', () => {
-  const intake = briefIntake(['tripFocus', 'destination']);
-  assert.deepEqual(intake.inputSchema.enum, ['sights_first', 'food_first', 'balanced']);
+test('缺多项且第一项是节奏 → 仍然是 canonical 按钮', () => {
+  const intake = briefIntake(['pace', 'destination']);
+  assert.deepEqual(intake.inputSchema.enum, ['relaxed', 'moderate', 'tight']);
   assert.equal(intake.inputSchema.enumKind, 'canonical');
 });
 
 test('缺多项且第一项无法枚举 → 只问该字段的文本框（宁再三轮，不把需求丢给用户写）', () => {
-  const intake = briefIntake(['destination', 'tripFocus']);
+  const intake = briefIntake(['destination', 'pace']);
   assert.deepEqual(intake.missingFields, ['destination']);
   assert.equal(intake.question, '这次想去哪里？');
   assert.equal(intake.inputSchema.enum, undefined);
@@ -87,7 +87,7 @@ test('模型选项去空、去重、限量 6 个', () => {
 });
 
 test('briefIntake 产出符合 BriefIntakeSchema', () => {
-  for (const missing of [['tripFocus'], ['startDate'], ['destination', 'endDate', 'tripFocus']] as const) {
+  for (const missing of [['pace'], ['startDate'], ['destination', 'endDate', 'pace']] as const) {
     assert.ok(Value.Check(BriefIntakeSchema, briefIntake([...missing])));
   }
 });
@@ -104,6 +104,6 @@ test('Brief data schema：字段全可选（只要求 constraints），未知字
   assert.ok(Value.Check(PlanningBriefDataSchema, { constraints: [] }));
   assert.ok(!Value.Check(PlanningBriefDataSchema, {}));
   assert.ok(Value.Check(PlanningBriefDataSchema, base));
-  assert.ok(Value.Check(PlanningBriefDataSchema, { ...base, tripFocus: 'food_first' }));
-  assert.ok(!Value.Check(PlanningBriefDataSchema, { ...base, tripFocus: 'whatever' }));
+  assert.ok(Value.Check(PlanningBriefDataSchema, { ...base, pace: 'tight' }));
+  assert.ok(!Value.Check(PlanningBriefDataSchema, { ...base, pace: 'whatever' }));
 });

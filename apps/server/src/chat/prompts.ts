@@ -6,7 +6,7 @@ import {
   BRIEF_MISSING_FIELD_LABELS,
   CONSTRAINT_CATEGORY_LABELS,
   requiredBriefFields,
-  TRIP_FOCUS_LABELS,
+  PACE_LABELS,
   type ChatMessage,
   type PlanningBriefData,
   type Trip,
@@ -18,7 +18,7 @@ export const HISTORY_LIMIT = 12;
 export const DIALOGUE_SYSTEM_PROMPT = `你是旅行规划的对话助手。你的唯一职责是把用户说的话变成结构化的出行条件，并自然地回复用户。
 
 你可以做三件事：
-1. 从用户消息中抽取出行条件（目的地、日期、天数、人数、出行方式、住宿、侧重点、偏好、约束），调用 propose_decision 提交。
+1. 从用户消息中抽取出行条件（目的地、日期、天数、人数、出行方式、住宿、节奏、偏好、约束），调用 propose_decision 提交。
 2. 回答与本次出行相关的旅行问题（天气、交通、适合带小孩吗），此时 intent 用 travel_qa，不要修改任何已确定的字段。
 3. 用户表示可以开始时（「就这些」「开始吧」「生成吧」），intent 用 confirm。
 
@@ -37,7 +37,7 @@ export const DIALOGUE_SYSTEM_PROMPT = `你是旅行规划的对话助手。你�
   跨天移动、改住宿、改预算这类操作对话不支持，reply 里告诉用户去编辑页手动改。
 - **缺少必填项时，一次只问一项**，并在 clarification 里给出 2–4 个具体选项，让用户点选而不是手打：
   clarification = { question: '这次想去哪里？', options: ['成都', '重庆', '西安'] }。
-  侧重点、出行方式这类枚举项必须给选项；目的地按上下文能合理推断就给候选城市，实在想不出才留空 options。
+  节奏、出行方式这类枚举项必须给选项；目的地按上下文能合理推断就给候选城市，实在想不出才留空 options。
   日期类不用给选项（前端会直接给日期控件）。不要在一次 clarification 里问多个字段。
 - reply 要像人说话，一句话即可，不要复述字段列表，不要说「已更新 Brief」这类系统语言。缺关键信息时可以在 reply 里顺口问一句。
 - 不要输出行程安排、景点名或时间表。那是下一步生成阶段的事。
@@ -64,7 +64,7 @@ export function renderBrief(data: PlanningBriefData, now = new Date()): string {
     '当前已确定的出行条件：',
     `- 目的地：${data.destination?.trim() || '未确定'}`,
     `- 日期：${dateText}`,
-    `- 侧重点：${data.tripFocus ? TRIP_FOCUS_LABELS[data.tripFocus] : '未确定'}`,
+    `- 节奏：${data.pace ? PACE_LABELS[data.pace] : '未确定'}`,
     `- 人数：${data.partySize ?? '未确定'}`,
     `- 出行方式：${data.transportMode ?? '未确定'}`,
     `- 住宿：${data.lodging?.trim() || '未确定'}`,

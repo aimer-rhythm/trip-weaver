@@ -74,7 +74,7 @@ export function TripListPage() {
               e.target.value = '';
             }}
           />
-          <Link to="/trips/new" className="btn btn-primary">
+          <Link to="/" className="btn btn-primary">
             ＋ 新建行程
           </Link>
         </div>
@@ -87,7 +87,7 @@ export function TripListPage() {
           <p className="empty-title">还没有行程</p>
           <p className="muted">让 AI 为你规划一趟旅行，或先用示例行程逛逛各项功能。</p>
           <div className="empty-actions">
-            <Link to="/trips/new" className="btn btn-primary">
+            <Link to="/" className="btn btn-primary">
               开始规划
             </Link>
             <button type="button" className="btn btn-ghost" onClick={loadSample} disabled={importTrip.isPending}>

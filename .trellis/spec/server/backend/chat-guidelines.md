@@ -1,7 +1,12 @@
 # Chat and Conversational Intake Guidelines
 
-`/trips/new` is a conversation, not a form. This layer collects parameters and updates a Planning
-Brief; it never produces an itinerary. Understanding that boundary is the whole design.
+对话在 09-26 改版后只存在于**生成完成之后**：编辑器内嵌 `ChatPanel` 负责按需修订与旅行问答。
+行程创建入口是「首页城市选择 → 结构化表单」（`HomePage` + `NewTripPage`），表单提交时惰性建会话并把表单
+整包 PATCH 进 Brief 快照——编辑器靠 `findConversationForTrip` 反查会话挂出对话面板。
+首页只列已覆盖城市（`GET /api/destinations/covered`，verified ≥ 100）；未覆盖城市不提供生成入口
+（UI 级限制，服务端不硬拦，降级生成路径保留给 API/测试）。
+
+以下对话机制仍然有效，只是入口从「收集页」换成了「编辑器面板」。
 
 ## Boundary: chat collects, generation executes
 
@@ -44,7 +49,7 @@ the chat quota, or the conversation-to-generation link.
 
 ### 3. Contracts
 
-- **Required fields are exactly four**: destination, start date, end date *or* day count, trip focus.
+- **Required fields are exactly four**: destination, start date, end date *or* day count, pace（旅行节奏：relaxed/moderate/tight；09-26 取代 tripFocus，密度随节奏走）.
   Everything else may be missing and still generate. `days` is a legal equivalent of `endDate`;
   when both a date range and `days` exist, the explicit dates win (`applyDialogueDecision` deletes the
   stale `days`).

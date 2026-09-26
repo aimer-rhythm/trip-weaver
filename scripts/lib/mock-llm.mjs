@@ -153,7 +153,7 @@ export async function startMockLlm(
                   : `好的，${destination} ${days} 天记下了，可以开始生成了。`,
                 destination,
                 days,
-                tripFocus: 'balanced',
+                pace: 'moderate',
                 transportMode: 'transit',
                 ...(omitDate ? {} : { startDate: '2026-11-05' }),
                 addConstraints: [{ category: 'companion_context', valueText: '带 2 岁小孩', polarity: 'fact' }],

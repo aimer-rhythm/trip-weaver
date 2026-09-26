@@ -1,11 +1,10 @@
 // 编辑器内嵌对话面板（09-24 R2/R4）：行程页左侧常驻，边看图边聊、直接发起按需修改。
-//
-// 与 ChatPage 的关系：ChatPage 是「收集条件 → 生成」的入口页，面板只负责「已有行程后的对话修改」。
+// 09-26 起为对话的唯一入口（收集型对话页已删除，行程创建走首页城市选择 + 结构化表单）。
 // 复用 MessageBubble / ChatInput 与 useSendMessage / usePatchBrief，不复制消息流逻辑。
 //
 // 结果处理：
 //   - editResult：服务端已落版本链下一版 → 失效行程缓存并跳转到新版本（编辑器随之重载）
-//   - autoStartedJobId：用户在编辑页又把条件聊齐触发了重新生成 → 跳回 /trips/new 接管进度视图
+//   - autoStartedJobId：用户又把条件聊齐触发了重新生成 → 跳 /trips/new 由其恢复逻辑接管进度
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';

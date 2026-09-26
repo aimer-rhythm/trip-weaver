@@ -63,7 +63,7 @@ export function GenerationRunPanel({ events, cancelling, cancellationError, onCa
               : '你已取消本次生成。本次不计入今日配额。'}
           </p>
           <button type="button" className="btn btn-primary" onClick={onReset}>
-            返回对话
+            返回表单
           </button>
         </div>
       )}

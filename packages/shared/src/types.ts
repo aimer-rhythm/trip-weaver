@@ -47,7 +47,7 @@ import type {
   POI_CATEGORIES,
   RESERVATION_STATUSES,
   TRANSPORT_MODES,
-  TRIP_FOCUS_OPTIONS,
+  PACE_OPTIONS,
 } from './constants';
 
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
@@ -82,7 +82,7 @@ export type SendMessageResult = Static<typeof SendMessageResultSchema>;
 export type ConversationStatus = (typeof CONVERSATION_STATUSES)[number];
 export type ChatMessageRole = (typeof CHAT_MESSAGE_ROLES)[number];
 export type BriefStatus = (typeof BRIEF_STATUSES)[number];
-export type TripFocus = (typeof TRIP_FOCUS_OPTIONS)[number];
+export type TripPace = (typeof PACE_OPTIONS)[number];
 export type ConstraintCategory = (typeof CONSTRAINT_CATEGORIES)[number];
 export type ConstraintPolarity = (typeof CONSTRAINT_POLARITIES)[number];
 export type BriefMissingField = (typeof BRIEF_MISSING_FIELDS)[number];
@@ -143,6 +143,11 @@ export interface UsageView {
   dailyLimit: number;
   remaining: number;
   resetAt: number; // 次日零点时间戳（服务器时区）
+}
+
+// 已覆盖城市列表（09-26 城市选择首页）：知识库 verified 条数达阈值的城市
+export interface CoveredCitiesView {
+  cities: string[];
 }
 
 // ---------- 智能生成（C2 服务端 / C3 前端共用协议） ----------

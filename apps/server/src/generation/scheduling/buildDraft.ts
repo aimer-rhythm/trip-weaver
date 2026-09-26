@@ -113,6 +113,7 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     exclusiveNames: input.longHaul.filter((item) => item.tier === 'exclusive').map((item) => item.name),
     fallbackArea: input.form.destination,
     startDate: input.form.startDate || undefined,
+    ...(input.form.pace ? { pace: input.form.pace } : {}),
     // 顺序种子表（09-23）：出入口方向等固定先后（故宫→景山），两端都在候选池才生效
     orderConstraints: routeOrderConstraints(input.form.destination, input.pool.map((p) => p.name)),
   });

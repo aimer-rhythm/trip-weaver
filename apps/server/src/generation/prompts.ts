@@ -1,14 +1,22 @@
 // 调研与文案 prompt：步骤编号、工具纪律、token 节制（R2/R8）
 // 原 planner / reviewer prompt 随 09-21 确定性排程改造失去调用点（结构与审校已由代码承担），09-25 清理。
-import type { GenerateForm, TransportMode } from '@tripweaver/shared';
+import type { GenerateForm, TransportMode, TripPace } from '@tripweaver/shared';
+import { PACE_LABELS } from '@tripweaver/shared';
 
 const TRANSPORT_LABEL: Record<TransportMode, string> = { transit: '公共交通', drive: '自驾', walk: '步行优先' };
+
+/** 节奏 → 景点密度指引（09-26）：与排程层 PACE_SCHEDULE_LIMITS 同向，调研别搜一堆注定排不下的候选 */
+const PACE_DENSITY: Record<TripPace, string> = {
+  relaxed: '景点约 2~3 个/天（2 天≈4~6 个，3 天≈6~9 个，5 天≈10~15 个），留出休息与随意逛逛的空档',
+  moderate: '景点约 3~4 个/天（2 天≈6~8 个，3 天≈10~12 个，5 天≈16~20 个）',
+  tight: '景点约 5~6 个/天（2 天≈10~12 个，3 天≈15~18 个，5 天≈25~30 个），高密度但同一片区顺路排',
+};
 
 export function formBrief(form: GenerateForm): string {
   const prefs = form.preferences?.length ? form.preferences.join('、') : '无特别偏好';
   return [
     `目的地：${form.destination}｜天数：${form.days} 天｜出发日期：${form.startDate || '未定'}`,
-    `人数：${form.partySize} 人｜偏好：${prefs}`,
+    `人数：${form.partySize} 人｜偏好：${prefs}｜节奏：${PACE_LABELS[form.pace ?? 'moderate']}`,
     `出行方式：${TRANSPORT_LABEL[form.transportMode ?? 'transit']}｜住宿位置：${form.lodging?.trim() || '未指定（请建议一个区域）'}`,
     form.extraNotes ? `补充要求：${form.extraNotes}` : '',
   ]
@@ -16,8 +24,13 @@ export function formBrief(form: GenerateForm): string {
     .join('\n');
 }
 
-export function researchSystemPrompt(options: { searchWebMax: number }): string {
+export function researchSystemPrompt(options: { searchWebMax: number; pace?: TripPace; foodSearch?: boolean }): string {
   const max = options.searchWebMax;
+  const density = PACE_DENSITY[options.pace ?? 'moderate'];
+  // 美食/住宿搜索按偏好裁剪（09-26）：偏好不含「美食」就不指引餐饮检索；住宿永不进编排，不指引检索
+  const poiSearchStep = options.foodSearch
+    ? '用 search_pois 按类目搜真实地点（景点 2~3 次、美食 1~2 次）。'
+    : '用 search_pois 按类目搜真实地点（景点 2~3 次）。本趟用户未选美食偏好，不要检索美食/住宿类目。';
   return `你是旅行调研员，任务是以自有已验证地点库为主力信息源，为一次行程搜集真实地点与情报，产出结构化候选池。
 
 可用工具：
@@ -29,9 +42,9 @@ export function researchSystemPrompt(options: { searchWebMax: number }): string 
 
 工作流程（严格按顺序）：
 0. 主力步骤：用 search_verified_places 查社区已验证地点库。每个关键词组按「具体地点名 + 主题词 + 片区」混合给（如「故宫 天坛 历史人文」「胡同 什刹海 老北京」），命中的地点优先 add_candidate。**不要专门查「避坑」「预约」「门票」**——每次检索都附带着命中地点的社区情报，情报是随地点一起返回的，不是独立的查询项。
-1. 补知识库没覆盖的地点：用 search_pois 按类目搜真实地点（景点 2~3 次、美食 1~2 次、住宿 1 次）。它只给名称/类型/地址，不提供攻略情报、评分或图片；知识库候选已有坐标，**不必为了坐标反复调它**。
+1. 补知识库没覆盖的地点：${poiSearchStep}它只给名称/类型/地址，不提供攻略情报、评分或图片；知识库候选已有坐标，**不必为了坐标反复调它**。
 2. 降级兜底：**仅当**知识库连续两次以上无命中、或候选明显凑不齐时，才用 search_web 查攻略与预约政策（如「景点名 门票 预约」），全阶段最多 ${max} 次。知识库能覆盖时一次都不要调。
-3. 边调研边 add_candidate 写入候选。**数量按天数定：景点约 3~4 个/天**（2 天≈6~8 个，3 天≈10~12 个，5 天≈16~20 个）。美食与住宿不必凑数量：餐次由系统按天插入片区锚点，住宿不会排成活动，只在查到有代表性的片区或住处时各补 1~2 个。
+3. 边调研边 add_candidate 写入候选。**数量按天数与节奏定：${density}**。住宿不会排成活动，不要为它写入候选。
 4. 全部写完后调用 submit_research，随后立即停止。
 
 调用纪律（直接决定调研耗时，务必遵守）：

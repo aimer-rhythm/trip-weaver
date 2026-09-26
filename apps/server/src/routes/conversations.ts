@@ -9,7 +9,7 @@ import {
   ConversationCreateSchema,
   PlanningBriefPatchSchema,
   SendMessageSchema,
-  TRIP_FOCUS_LABELS,
+  PACE_LABELS,
   briefIntake,
   briefIntakeWithOptions,
   briefToGenerateForm,
@@ -49,7 +49,7 @@ const FIELD_LABELS: Record<string, string> = {
   startDate: '开始日期',
   endDate: '结束日期',
   days: '天数',
-  tripFocus: '旅行侧重点',
+  pace: '旅行节奏',
   partySize: '出行人数',
   transportMode: '出行方式',
   lodging: '住宿位置',
@@ -57,7 +57,7 @@ const FIELD_LABELS: Record<string, string> = {
 };
 
 function renderValue(key: string, data: PlanningBriefData): string {
-  if (key === 'tripFocus') return data.tripFocus ? TRIP_FOCUS_LABELS[data.tripFocus] : '';
+  if (key === 'pace') return data.pace ? PACE_LABELS[data.pace] : '';
   if (key === 'days') return data.days ? `${data.days} 天` : '';
   if (key === 'partySize') return data.partySize ? `${data.partySize} 人` : '';
   const value = data[key as keyof PlanningBriefData];

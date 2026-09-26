@@ -4,7 +4,7 @@
 // 阈值依据（09-25 生产库实测）：北京 1349 / 成都 411，断层之下 ≤21（青岛 21、重庆 19、
 // 上海 13、其余 ≤9），100 一个数即可把两档干净分开。
 // 结果按城市进程内缓存：城市数据只在离线采集导入时变化，运行期内不会变，无需 TTL。
-import { and, count, eq } from 'drizzle-orm';
+import { and, count, desc, eq, gte, ne } from 'drizzle-orm';
 import { db } from '../db/client';
 import { canonicalPlaces } from '../db/schema';
 
@@ -42,6 +42,26 @@ export async function cityCoverage(destination: string): Promise<CityCoverage> {
 /** 测试用：清空进程内缓存 */
 export function resetCityCoverageCache(): void {
   cache.clear();
+  coveredCitiesCache = null;
+}
+
+let coveredCitiesCache: string[] | null = null;
+
+/**
+ * 已覆盖城市列表（09-26 城市选择首页）：verified 条数达阈值的城市，按条数降序。
+ * 与 cityCoverage 同策略：进程内缓存无 TTL——城市数据只在离线采集导入时变化。
+ */
+export async function listCoveredCities(): Promise<string[]> {
+  if (coveredCitiesCache) return coveredCitiesCache;
+  const rows = await db
+    .select({ city: canonicalPlaces.city, n: count() })
+    .from(canonicalPlaces)
+    .where(and(eq(canonicalPlaces.verified, true), ne(canonicalPlaces.city, '')))
+    .groupBy(canonicalPlaces.city)
+    .having(gte(count(), CITY_COVERAGE_THRESHOLD))
+    .orderBy(desc(count()));
+  coveredCitiesCache = rows.map((row) => row.city);
+  return coveredCitiesCache;
 }
 
 /** 覆盖档位 → search_web 上限（R3：未覆盖城市放宽实时搜索配额） */

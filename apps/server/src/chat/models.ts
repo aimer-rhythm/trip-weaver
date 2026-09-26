@@ -16,7 +16,7 @@ import {
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
-  TRIP_FOCUS_OPTIONS,
+  PACE_OPTIONS,
 } from '@tripweaver/shared';
 import { Type } from 'typebox';
 
@@ -79,7 +79,7 @@ export const DialogueDecisionSchema = Type.Object({
   startDate: Type.Optional(Type.String({ maxLength: 10, description: 'YYYY-MM-DD；用户没给年份时按最近的将来推断' })),
   endDate: Type.Optional(Type.String({ maxLength: 10, description: 'YYYY-MM-DD' })),
   days: Type.Optional(Type.Integer({ minimum: 1, maximum: MAX_TRIP_DAYS, description: '玩几天' })),
-  tripFocus: Type.Optional(enumOf(TRIP_FOCUS_OPTIONS)),
+  pace: Type.Optional(enumOf(PACE_OPTIONS)),
   partySize: Type.Optional(Type.Integer({ minimum: 1, maximum: 20 })),
   transportMode: Type.Optional(enumOf(TRANSPORT_MODES)),
   lodging: Type.Optional(Type.String({ maxLength: 60, description: '住宿位置（区域或酒店名）' })),

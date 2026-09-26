@@ -140,6 +140,143 @@ a { color: var(--color-primary); text-decoration: none; }
 .trip-card-meta { font-size: 0.85rem; color: var(--color-muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .trip-card-time { font-size: 0.78rem; }
 .trip-card-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+/* 首页城市选择（09-26） */
+.city-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+.city-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  box-shadow: var(--shadow);
+  color: var(--color-text);
+}
+.city-card:hover { border-color: var(--color-primary); }
+.city-card-name { font-size: 1.15rem; font-weight: 600; }
+.city-card-cta { font-size: 0.82rem; }
+
+/* 新建行程胶囊指挥台（09-26，交互参考 Yuntu）：摘要段 + 浮动面板 */
+.capsule-deck {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: var(--shadow);
+}
+.capsule-segment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+}
+.capsule-segment:hover { background: var(--color-bg); }
+.capsule-segment.is-open { background: var(--color-bg); outline: 2px solid var(--color-primary); outline-offset: -2px; }
+.capsule-label { font-size: 0.72rem; font-weight: 600; color: var(--color-muted); letter-spacing: 0.04em; }
+.capsule-value { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.capsule-value.is-empty { color: var(--color-muted); }
+.capsule-submit { align-self: center; white-space: nowrap; }
+
+.capsule-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.capsule-panel-title { font-size: 0.82rem; font-weight: 600; color: var(--color-muted); margin: 0; }
+.capsule-panel-foot { display: flex; justify-content: flex-end; border-top: 1px solid var(--color-border); padding-top: 10px; }
+.capsule-quick-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 0.82rem; }
+.capsule-card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.capsule-choice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.capsule-choice-card.is-active { border-color: var(--color-primary); outline: 2px solid var(--color-primary); outline-offset: -2px; }
+.capsule-choice-title { font-weight: 600; font-size: 0.9rem; }
+.capsule-choice-desc { font-size: 0.76rem; }
+.capsule-stepper { display: inline-flex; align-items: center; gap: 10px; }
+.capsule-stepper-value { font-weight: 600; min-width: 5.5em; text-align: center; }
+.capsule-field { display: flex; flex-direction: column; gap: 5px; font-size: 0.82rem; font-weight: 600; color: var(--color-muted); }
+.capsule-field input,
+.capsule-field textarea {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 400;
+  background: var(--color-bg);
+  color: var(--color-text);
+  resize: vertical;
+}
+.capsule-field input:focus,
+.capsule-field textarea:focus { outline: 2px solid var(--color-primary); outline-offset: 0; border-color: transparent; }
+
+/* 范围日历 */
+.range-calendar { display: flex; flex-direction: column; gap: 8px; }
+.range-calendar-nav { display: flex; align-items: center; justify-content: space-between; }
+.range-calendar-title { font-weight: 700; font-size: 0.9rem; }
+.range-calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 0.72rem; font-weight: 600; color: var(--color-muted); }
+.range-calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.range-calendar-day {
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.range-calendar-day:hover:not(:disabled) { background: var(--color-bg); }
+.range-calendar-day.is-outside { color: var(--color-muted); opacity: 0.5; }
+.range-calendar-day.is-past { color: var(--color-muted); opacity: 0.4; cursor: not-allowed; }
+.range-calendar-day.is-in-range { background: color-mix(in srgb, var(--color-primary) 15%, transparent); border-radius: 0; }
+.range-calendar-day.is-start,
+.range-calendar-day.is-end { background: var(--color-primary); color: #fff; font-weight: 700; }
+.range-calendar-day.is-start { border-radius: 8px 0 0 8px; }
+.range-calendar-day.is-end { border-radius: 0 8px 8px 0; }
+.range-calendar-day.is-start.is-end { border-radius: 8px; }
+.range-calendar-foot { font-size: 0.76rem; border-top: 1px solid var(--color-border); padding-top: 8px; }
+
+@media (max-width: 720px) {
+  .capsule-deck { flex-direction: column; }
+  .capsule-submit { align-self: stretch; }
+}
 .tag { border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; }
 .tag-source { background: #e3eef5; color: #1d5578; }
 

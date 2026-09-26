@@ -13,7 +13,7 @@ export function AppLayout() {
   return (
     <div className="app-layout">
       <header className="topbar">
-        <Link to="/trips" className="brand">
+        <Link to="/" className="brand">
           织程 <span className="brand-en">TripWeaver</span>
         </Link>
         <div className="topbar-actions">

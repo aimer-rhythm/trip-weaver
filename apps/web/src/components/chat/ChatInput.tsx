@@ -31,7 +31,7 @@ export function ChatInput({ disabled, sending, onSend }: Props) {
         rows={2}
         maxLength={1000}
         disabled={disabled}
-        placeholder="用一句话说说你的行程想法，例如：11月去成都玩3天，带2岁小孩"
+        placeholder="说说要改哪里，或问问这趟行程的问题"
         aria-label="输入你的行程想法"
         onChange={(e) => setText(e.target.value)}
         onKeyDown={onKeyDown}
