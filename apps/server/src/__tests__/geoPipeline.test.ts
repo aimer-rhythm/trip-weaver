@@ -56,7 +56,17 @@ function mockProviders(points: ReadonlyMap<string, ResearchLocation>, onRequest?
         const point = points.get(name);
         return Response.json({ status: '1', pois: point ? [{ name, location: `${point.lng},${point.lat}`, adcode: point.adcode }] : [] });
       }
-      if (url.pathname === '/v3/geocode/geo') return Response.json({ status: '1', geocodes: [] });
+      if (url.pathname === '/v3/geocode/geo') {
+        // 定位链主路径 09-26 起是 v3（地理编码属「基础LBS服务」，个人 150,000/月；v5 搜索仅 5,000/月）。
+        // 与 v5 同源：v3 的 address 是「城市+地点名」拼接，用后缀匹配查表
+        const address = url.searchParams.get('address') ?? '';
+        const key = [...points.keys()].find((k) => address === k || address.endsWith(k));
+        const point = key ? points.get(key) : undefined;
+        return Response.json({
+          status: '1',
+          geocodes: point ? [{ location: `${point.lng},${point.lat}`, adcode: point.adcode }] : [],
+        });
+      }
       if (url.pathname.startsWith('/v5/direction/')) {
         return Response.json({ status: '1', route: { transits: [{ distance: '5000', cost: { duration: '1200' } }] } });
       }
@@ -84,7 +94,23 @@ function candidate(id: string, name: string): ResearchPoi {
 }
 
 const quiet = () => {};
-const textQueries = (requests: URL[]) => requests.filter((url) => url.pathname === '/v5/place/text').map((url) => url.searchParams.get('keywords'));
+/**
+ * 定位链的查询序列：主路径 09-26 起是 v3/geocode/geo（address = 「城市+地点名」），
+ * v5/place/text 仅在 v3 无结果时兜底。断言只关心「问了哪些地点」，故把 v3 的
+ * 城市前缀剥掉，与 v5 的 keywords 归一到同一形态（城市级定位的纯城市名保持不变）。
+ */
+const textQueries = (requests: URL[]) =>
+  requests
+    .filter((url) => url.pathname === '/v3/geocode/geo' || url.pathname === '/v5/place/text')
+    .map((url) =>
+      url.pathname === '/v5/place/text'
+        ? (url.searchParams.get('keywords') ?? '')
+        : (url.searchParams.get('address') ?? ''),
+    )
+    .map((raw) => {
+      const stripped = /^P0[^市]*市(.+)$/.exec(raw);
+      return stripped ? stripped[1]! : raw;
+    });
 const routes = (requests: URL[]) => requests.filter((url) => url.pathname.startsWith('/v5/direction/'));
 
 test('复用调研坐标后定位外呼从 4 次降到 1 次，坐标一致且 adcode 进入真实路线适配器', async (t) => {
@@ -239,7 +265,9 @@ test('取消阻止启动更多地点解析，也不采纳在途返回的坐标',
   const names = Array.from({ length: 6 }, (_, i) => `取消地点${i}`);
   const controller = new AbortController();
   const requests = mockProviders(new Map([city, ...names].map((name) => [name, point])), (url) => {
-    if (url.searchParams.get('keywords') === names[0]) controller.abort();
+    // 主路径 09-26 起是 v3/geocode/geo（参数是 address「城市+地点名」）；两个端点都要能识别出「首个地点」
+    const q = url.searchParams.get('keywords') ?? url.searchParams.get('address') ?? '';
+    if (q.endsWith(names[0]!)) controller.abort();
   });
   const draft = makeDraft(city, names.map((name) => ({ name })));
   const geo = createGeoSession('mock-user', city);

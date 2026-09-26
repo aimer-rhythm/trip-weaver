@@ -89,13 +89,21 @@ export async function geocodeActivity(
   city: string,
   tryAcquire: () => boolean = () => true,
 ): Promise<GeocodedPlace | null> {
-  if (apiKey && tryAcquire()) {
-    const poi = await amapPoiLocate(apiKey, name, city);
-    if (poi) return { ...poi, origin: 'amap-poi' };
-  }
+  // 顺序在 09-26 调过：两级分属**不同的配额组**（高德基础服务按组独立计数）——
+  //   · `v3/geocode/geo`（地理编码）属「基础LBS服务」，个人认证 **150,000/月**
+  //   · `v5/place/text`（关键字搜索）属「基础搜索服务」，个人认证**仅 5,000/月**
+  // 原顺序（v5 优先）会让地理编码先打满稀缺的搜索配额（实测 `10044
+  // USER_DAILY_QUERY_OVER_LIMIT`），之后全程走 v3 —— 等于白白浪费每个月的前 5,000 次。
+  // v3 实测对 8 个景点全部命中，与天地图 geocoder 的坐标差中位 422 米，排程足够。
   if (apiKey && tryAcquire()) {
     const geo = await amapGeocode(apiKey, name, city);
     if (geo) return { ...geo, origin: 'amap-geocode' };
+  }
+  // v5 POI 定位兜底：只在 v3 解析不到时才消耗那份 5,000/月的搜索配额
+  // （对「网红店名」这类非标准地址仍有效）
+  if (apiKey && tryAcquire()) {
+    const poi = await amapPoiLocate(apiKey, name, city);
+    if (poi) return { ...poi, origin: 'amap-poi' };
   }
   // Nominatim 兜底（WGS-84）→ 统一转 GCJ-02，与全链坐标系一致
   const fallback = await geocodeFallbackGcj02(name, city);

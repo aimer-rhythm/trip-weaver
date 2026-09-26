@@ -28,27 +28,28 @@ const GEOCODE_OK = { status: '1', geocodes: [{ location: '120.1552,30.2741', adc
 const GEOCODE_EMPTY = { status: '1', geocodes: [] };
 const NOMINATIM_OK = [{ lat: '31.1774276', lon: '121.5272106' }];
 
-test('解析链：POI text 命中即止，标注 amap-poi', async () => {
-  const { hits } = mockFetch([{ match: 'v5/place/text', body: POI_OK }]);
-  const place = await geocodeActivity('k', '天安门A', '北京');
-  assert.ok(place);
-  assert.equal(place.origin, 'amap-poi');
-  assert.equal(place.lat, 39.9042);
-  assert.equal(place.lng, 116.4074);
-  assert.equal(place.adcode, '110101');
-  assert.deepEqual(hits, ['v5/place/text']);
-});
-
-test('解析链：POI 无结果 → v3 geocode 兜住，标注 amap-geocode', async () => {
-  const { hits } = mockFetch([
-    { match: 'v5/place/text', body: POI_EMPTY },
-    { match: 'v3/geocode/geo', body: GEOCODE_OK },
-  ]);
-  const place = await geocodeActivity('k', '西湖B', '杭州');
+test('解析链：v3 geocode 优先命中即止，不消耗 v5 的 5,000/月搜索配额', async () => {
+  // v3（基础LBS服务，个人 150,000/月）优先于 v5（基础搜索服务，个人仅 5,000/月）
+  const { hits } = mockFetch([{ match: 'v3/geocode/geo', body: GEOCODE_OK }]);
+  const place = await geocodeActivity('k', '西湖A', '杭州');
   assert.ok(place);
   assert.equal(place.origin, 'amap-geocode');
+  assert.equal(place.lat, 30.2741);
+  assert.equal(place.lng, 120.1552);
   assert.equal(place.adcode, '330106');
-  assert.deepEqual(hits, ['v5/place/text', 'v3/geocode/geo']);
+  assert.deepEqual(hits, ['v3/geocode/geo'], 'v5 不该被调用（省下稀缺的搜索配额）');
+});
+
+test('解析链：v3 无结果 → v5 POI 定位兜底，标注 amap-poi', async () => {
+  const { hits } = mockFetch([
+    { match: 'v3/geocode/geo', body: GEOCODE_EMPTY },
+    { match: 'v5/place/text', body: POI_OK },
+  ]);
+  const place = await geocodeActivity('k', '天安门B', '北京');
+  assert.ok(place);
+  assert.equal(place.origin, 'amap-poi');
+  assert.equal(place.adcode, '110101');
+  assert.deepEqual(hits, ['v3/geocode/geo', 'v5/place/text']);
 });
 
 test('解析链：高德两级皆失败 → Nominatim + wgs84ToGcj02 转换，标注 nominatim', async () => {
@@ -64,8 +65,8 @@ test('解析链：高德两级皆失败 → Nominatim + wgs84ToGcj02 转换，�
   // 已转换为 GCJ-02：与原始 WGS-84 值不同，且偏差在 1e-4 内贴合已知向量
   assert.ok(Math.abs(place.lat - 31.17530398364597) < 1e-4);
   assert.ok(Math.abs(place.lng - 121.53154299111314) < 1e-4);
-  assert.equal(hits[0], 'v5/place/text');
-  assert.equal(hits[1], 'v3/geocode/geo');
+  assert.equal(hits[0], 'v3/geocode/geo');
+  assert.equal(hits[1], 'v5/place/text');
   assert.ok(hits.slice(2).every((h) => h === 'nominatim'));
 });
 
