@@ -1,102 +1,20 @@
+// 地图面板（09-26 重构）：渲染器选择 + 数据计算 + 按天筛选。
+//   · 主路径 AmapCanvas（高德 JS API）—— 唯一目的是能用 `features` 关掉 POI 文字层
+//   · 降级 LeafletCanvas（高德栅格瓦片）—— 未配 JS Key、或 SDK 加载失败 / 超时
+// 选择逻辑只在本文件；两个 canvas 只负责把数据画出来（数据层见 lib/mapData）。
 import { useEffect, useMemo, useState } from 'react';
-import L from 'leaflet';
-import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
-import { wgs84ToGcj02, type Activity, type TripDay } from '@tripweaver/shared';
-import { dayColor, hasValidCoord } from '../../lib/colors';
-import { legForPair } from '../../lib/tripDerive';
+import { api } from '../../api/client';
+import { dayColor } from '../../lib/colors';
+import { loadAmapSdk } from '../../lib/amapLoader';
+import { collectDayLines, collectPoints } from '../../lib/mapData';
+import type { AmapNamespace } from '../../lib/amapTypes';
 import { useEditorStore } from '../../store/editorStore';
+import { AmapCanvas } from './AmapCanvas';
+import { LeafletCanvas } from './LeafletCanvas';
 
-interface MapPoint {
-  day: TripDay;
-  activity: Activity;
-  order: number;
-  /** 高德底图展示坐标（GCJ-02，[lat, lng]） */
-  pos: [number, number];
-}
-
-// 展示坐标统一到 GCJ-02：新数据（gcj02）直用，缺省/wgs84（旧行程）正向偏移 —— 高德底图上新旧行程都无偏移
-function displayPos(activity: Activity): [number, number] {
-  if (activity.coordSystem === 'gcj02') return [activity.lat, activity.lng];
-  const c = wgs84ToGcj02(activity.lat, activity.lng);
-  return [c.lat, c.lng];
-}
-
-// leg.polyline「lng,lat;lng,lat…」（GCJ-02）→ Leaflet [lat, lng]；坏点静默跳过
-function parsePolyline(polyline: string): [number, number][] {
-  const points: [number, number][] = [];
-  for (const pair of polyline.split(';')) {
-    const [lng, lat] = pair.split(',').map(Number);
-    if (Number.isFinite(lat) && Number.isFinite(lng)) points.push([lat!, lng!]);
-  }
-  return points;
-}
-
-interface LegSegment {
-  key: string;
-  positions: [number, number][];
-  /** 无 polyline（heuristic/transit 估算段）→ 两点虚线直连 */
-  dashed: boolean;
-}
-
-// 一天内的路线段：仅画与当前相邻活动对匹配的 leg；无 leg / 失配的间隙不画线（旧行程整段无线）
-function collectLegSegments(day: TripDay): LegSegment[] {
-  const segments: LegSegment[] = [];
-  for (let i = 1; i < day.activities.length; i += 1) {
-    const from = day.activities[i - 1]!;
-    const to = day.activities[i]!;
-    if (!hasValidCoord(from) || !hasValidCoord(to)) continue;
-    const leg = legForPair(day, from.id, to.id);
-    if (!leg) continue;
-    const path = leg.polyline ? parsePolyline(leg.polyline) : [];
-    segments.push(
-      path.length >= 2
-        ? { key: `${from.id}:${to.id}`, positions: path, dashed: false }
-        : { key: `${from.id}:${to.id}`, positions: [displayPos(from), displayPos(to)], dashed: true },
-    );
-  }
-  return segments;
-}
-
-function collectPoints(days: TripDay[]): MapPoint[] {
-  const points: MapPoint[] = [];
-  for (const day of days) {
-    let order = 0;
-    for (const activity of day.activities) {
-      order += 1;
-      if (hasValidCoord(activity)) points.push({ day, activity, order, pos: displayPos(activity) });
-    }
-  }
-  return points;
-}
-
-function numberIcon(color: string, order: number, estimated: boolean): L.DivIcon {
-  return L.divIcon({
-    className: 'marker-wrap',
-    html: `<div class="marker-pin${estimated ? ' marker-estimated' : ''}" style="background:${color}">${order}</div>`,
-    iconSize: [28, 28],
-    iconAnchor: [14, 14],
-    popupAnchor: [0, -14],
-  });
-}
-
-// 尺寸与视野控制：容器从隐藏变可见（移动端切页签）或点位变化时，
-// 先 invalidateSize 再无动画 fitBounds —— 避免「隐藏容器初始化导致零尺寸定位」的经典坑
-function MapController({ points, visible }: { points: MapPoint[]; visible: boolean }) {
-  const map = useMap();
-  const key = points.map((p) => `${p.activity.id}:${p.pos[0]},${p.pos[1]}`).join('|');
-  useEffect(() => {
-    if (!visible) return;
-    const timer = setTimeout(() => {
-      map.invalidateSize();
-      if (points.length > 0) {
-        const bounds = L.latLngBounds(points.map((p) => p.pos));
-        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15, animate: false });
-      }
-    }, 60);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, visible, map]);
-  return null;
+interface AmapJsConfig {
+  amapJsKey: string;
+  amapJsSecurityCode: string;
 }
 
 // 桌面端地图常驻可见；≤768px 时由移动页签决定
@@ -109,6 +27,35 @@ function useIsDesktop(): boolean {
     return () => mq.removeEventListener('change', onChange);
   }, []);
   return isDesktop;
+}
+
+/**
+ * 高德 JS API 的可用性探测：**默认走 Leaflet，只有确认可用才切过去**。
+ * 地图是编辑器主视图，不能为了等增强而空着 —— 所以探测/加载期间渲染的就是降级路径。
+ * 未配置 Key、接口失败（含未登录 401）、SDK 加载失败与 8 秒超时，全部静默保持 Leaflet，
+ * 只留一行 console.warn 供排查（底图变化肉眼可见，不需要额外的界面提示）。
+ */
+function useAmapNamespace(): AmapNamespace | null {
+  const [amap, setAmap] = useState<AmapNamespace | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const cfg = await api.get<AmapJsConfig>('/api/config');
+        if (!cfg.amapJsKey || !cfg.amapJsSecurityCode) return; // 未配置：保持 Leaflet
+        await loadAmapSdk({ key: cfg.amapJsKey, securityJsCode: cfg.amapJsSecurityCode });
+        const namespace = window.AMap;
+        if (!namespace) throw new Error('SDK 已加载但未挂到 window.AMap');
+        if (!cancelled) setAmap(namespace);
+      } catch (err) {
+        console.warn('[map] 高德 JS API 不可用，回落 Leaflet：', err instanceof Error ? err.message : err);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return amap;
 }
 
 function DayFilterControl() {
@@ -144,6 +91,7 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
   const trip = useEditorStore((s) => s.trip);
   const dayFilter = useEditorStore((s) => s.dayFilter);
   const isDesktop = useIsDesktop();
+  const amap = useAmapNamespace();
 
   const visibleDays = useMemo(() => {
     const days = trip?.days ?? [];
@@ -151,62 +99,12 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
   }, [trip, dayFilter]);
 
   const points = useMemo(() => collectPoints(visibleDays), [visibleDays]);
+  const dayLines = useMemo(() => collectDayLines(visibleDays), [visibleDays]);
+  const canvasProps = { points, dayLines, visible: visible || isDesktop, onEditActivity };
 
   return (
     <div className="map-pane">
-      <MapContainer center={[35.0, 105.0]} zoom={4} className="leaflet-host" scrollWheelZoom>
-        <TileLayer
-          url="https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}"
-          subdomains={['1', '2', '3', '4']}
-          attribution="&copy; 高德地图"
-        />
-        {visibleDays.map((day) =>
-          collectLegSegments(day).map((seg) => (
-            <Polyline
-              key={`${day.id}:${seg.key}`}
-              positions={seg.positions}
-              pathOptions={{
-                color: dayColor(day.dayIndex),
-                weight: 3,
-                opacity: 0.75,
-                dashArray: seg.dashed ? '6 6' : undefined,
-              }}
-            />
-          )),
-        )}
-        {points.map(({ day, activity, order, pos }) => (
-          <Marker
-            key={activity.id}
-            position={pos}
-            icon={numberIcon(dayColor(day.dayIndex), order, activity.coordSource === 'estimated')}
-          >
-            <Popup>
-              <div className="map-popup">
-                <strong>{activity.name}</strong>
-                <p className="muted">
-                  Day {day.dayIndex} · {activity.startTime || '--:--'}
-                  {activity.endTime ? ` – ${activity.endTime}` : ''} · {activity.category}
-                </p>
-                {activity.description && <p>{activity.description}</p>}
-                {activity.coordSource === 'estimated' && <p className="tag tag-warn">坐标为估算</p>}
-                {activity.sourceNotes.length > 0 && (
-                  <p>
-                    {activity.sourceNotes.map((n) => (
-                      <a key={n.url} href={n.url} target="_blank" rel="noopener noreferrer">
-                        📕 {n.title || '来源笔记'}
-                      </a>
-                    ))}
-                  </p>
-                )}
-                <button type="button" className="btn btn-ghost" onClick={() => onEditActivity(day.id, activity.id)}>
-                  编辑
-                </button>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-        <MapController points={points} visible={visible || isDesktop} />
-      </MapContainer>
+      {amap ? <AmapCanvas amap={amap} {...canvasProps} /> : <LeafletCanvas {...canvasProps} />}
       <DayFilterControl />
       {points.length === 0 && <div className="map-empty muted">暂无可标注的活动坐标</div>}
     </div>
