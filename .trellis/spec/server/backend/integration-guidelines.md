@@ -74,6 +74,7 @@ segments (≤20km) must not change at all — urban drift regresses every city c
 
 Representative paths: `apps/server/src/generation/legEstimator.ts`,
 `apps/server/src/integrations/amap/route.ts`, `apps/server/src/integrations/amap/geocoder.ts`,
+`apps/server/src/integrations/tianditu/route.ts`, `apps/server/src/integrations/tianditu/geo.ts`,
 `packages/shared/src/legs.ts`, `packages/shared/src/constants.ts`.
 
 ## Task-Level Circuit Breaker for Cascading Provider Failure
@@ -183,3 +184,189 @@ the generation workflow can continue with model knowledge. `gotResults` is separ
 `calls`; only a non-empty result marks a source as actually used in trip metadata and the
 terminal event. `selfCheck()` may perform a real metered request and must return status rather
 than throw through the settings route.
+
+## Scenario: Swappable Map Provider (Amap / Tianditu)
+
+### 1. Scope / Trigger
+
+- Trigger: adding a second geographic provider, or touching anything that decides which provider
+  supplies POI search, route planning, or geocoding. Changed API payload, DB column, and env keys.
+- Goal: a site-level switch that swaps the provider **without** the upper layers or the frontend
+  noticing. Switching must never silently consume the other vendor's daily budget.
+
+### 2. Signatures
+
+- Env (`apps/server/src/env.ts`): `MAP_PROVIDER` (`'amap' | 'tianditu'`, optional),
+  `TIANDITU_KEY` (optional `tk`), `TIANDITU_DAILY_BUDGET` (default 150).
+- Facade (`apps/server/src/integrations/geoProvider.ts`) — the ONLY module upper layers may import:
+  ```ts
+  resolveGeoProvider(userId: string, destination: string): Promise<GeoProvider>
+  resolvePoiSourceForUser(userId: string): Promise<ResolvedPoiSource>   // settings self-check
+  geoBudgetRemaining(): Promise<number>                                 // site-level, active provider
+  createNullGeoProvider(): GeoProvider
+
+  interface GeoProvider {
+    readonly kind: 'amap' | 'tianditu' | 'null';
+    readonly enabled: boolean;                       // false = no usable credential
+    geocodeActivity(name, city, tryAcquire): Promise<GeocodedPlace | null>;
+    createRouteBreaker(): RouteBreaker;               // per generation task
+    createPoiSource(): PoiSource;
+    budgetRemaining(): Promise<number>;
+  }
+  ```
+- Shared contracts (`apps/server/src/integrations/geoContracts.ts`): `GeoPoint`, `GeocodedPoint`,
+  `GeocodedPlace`, `GeocodeOrigin` (`'amap-poi' | 'amap-geocode' | 'tianditu' | 'nominatim'`),
+  `RouteEstimate`, `RouteOpts`, `RouteBreaker`, `SourcedPoi`, `PoiKind`, `PoiSource`.
+- DB: `generations.tianditu_calls INTEGER NOT NULL DEFAULT 0` — must exist in BOTH
+  `db/schema.ts` and `db/migrate.ts` (create-table column + `ADD COLUMN IF NOT EXISTS`).
+- Shared constants: `LEG_SOURCES` and `DATA_SOURCE_KINDS` each gained `'tianditu'`. Persisted leg
+  `source` and trip `dataSources` must carry the real vendor, never a stand-in.
+- Settings API: `GET /api/settings/sources-status` returns `{ provider, geo, websearch }`
+  (was `{ amap, websearch }`).
+
+### 3. Contracts
+
+- **Coordinate contract is GCJ-02 everywhere above the adapters.** Tianditu uses CGCS2000
+  (≈WGS-84): outbound calls run `gcj02ToWgs84`, inbound values run `wgs84ToGcj02`, and the
+  conversion stays entirely inside `integrations/tianditu/*`. `GeocodedPlace` / `RouteEstimate`
+  are already GCJ-02, so no caller changes when the provider switches.
+- **No automatic fallback.** `MAP_PROVIDER=tianditu` with an empty `TIANDITU_KEY` degrades to the
+  Null provider (Nominatim → heuristic) and logs one warning; it must NOT fall back to Amap.
+  Defaulting (variable unset) is derived from key presence: `AMAP_KEY` → amap, else `TIANDITU_KEY`
+  → tianditu, else Null. Existing deployments behave byte-identically.
+- **Route-mode coverage differs by vendor, and Tianditu's endpoints/params are NOT what secondary
+  sources claim — cross-check the official doc pages AND probe endpoint existence.** The doc pages are
+  server-rendered (`/server/drive.html`, `/server/bus.html`, `/server/search.html`); probing with a
+  length-valid but unusable `tk` tells existence apart (a real endpoint answers `403 301001 非法key`,
+  an absent one `404` + HTML). Result: only `/geocoder`, `/drive`, `/transit`, and `/v2/search` exist;
+  `/walk`, `/bus`, `/search`, `/transfer`, `/busline`, and every `/v2/{drive,walk,bus,transit}` return
+  404. Therefore:
+  - `drive` = `/drive` + `style=0`, postStr `{orig,dest,style}`
+  - `transit` = `/transit` with **`type=busline`** and postStr `{startposition,endposition,linetype}`
+    (lowercase keys as in the working official example, NOT the doc table's camelCase) — and **no city
+    parameter**: Tianditu infers it from coordinates, so `RouteOpts` is unused on this chain.
+  - `walk` and `cycle` have no usable endpoint at all → pre-request skip → heuristic (see the
+    walking bullet below). Note `style=3` is NOT walking despite the doc claiming it.
+  `ROUTE_ENDPOINTS` is the single table for this, and the breaker's `skip` derives from it so the two
+  cannot disagree. Do NOT trust blogs/tutorials: they uniformly document `/walk` and `/bus`.
+- **Response shape and units differ per endpoint, and only live measurement settles them.** Measured
+  with a real `tk` (09-25): `/drive` returns **XML** (`<distance>` in **km**, `<duration>` in
+  **seconds**, `<routelatlon>` as the whole polyline), `/transit` returns **JSON** (`segmentDistance`
+  in **metres**, `segmentTime` in **minutes**). The docs omit every unit; guessing seconds for
+  `segmentTime` produces 804 km/h. Every parsed estimate still passes an implied-speed gate
+  (`1`–`150` km/h) — out-of-range means a wrong unit assumption, so it returns null instead of writing
+  a 60×-off duration into the itinerary.
+- **Tianditu has no walking route planning — `style=3` is a driving shortcut, not a pedestrian mode.**
+  Measured with a real `tk`: `style` 0/1/2 return **identical** results, and `style=3` is a
+  shorter-but-slower **driving** route (0.9 km in 97 s = 33 km/h; 17.3 km in 27 min = 38 km/h; true
+  walking is 11 min and 4 h). Wiring `walk` to it handed walking legs driving durations — 10× under on
+  a 15 km leg — and those values PASSED the speed gate, so the bad numbers reached the timeline. That
+  is strictly worse than heuristic, so `walk` was removed from `ROUTE_ENDPOINTS`. Generalization:
+  a vendor silently substituting a different transport mode is the worst failure shape, because no
+  plausibility gate can catch it. Verify the mode, not just the numbers.
+- **Tianditu transit's JSON nesting is a trap; verify it layer by layer.** `results[]` → `lines[]` is
+  **up to 5 mutually exclusive complete itineraries** (doc: 「数组中每个对象为一条由起点到终点的公交规划线路」),
+  so exactly one is taken — summing all five yields 53 km in 4 min. Within one line, `segments[]` are
+  serial, but `segmentLine[]` within one segment are **parallel alternatives** (measured: 特12外 and
+  44外 side by side) — taking all of them doubles that leg's duration. Negative values mark an unusable
+  segment (measured: the preferred metro itinerary is entirely negative), so a plan with no usable
+  amounts falls through to the next one. No polyline is produced: joining transfer sub-routes would
+  draw a fake straight line across the city.
+- **Tianditu POI search derives its own `mapBound`.** `queryType=1` (普通搜索) REQUIRES `mapBound`
+  (measured: omitting it returns `infocode 2003 缺少参数：mapBound`), but callers only supply a city
+  name. The adapter geocodes the region once through the same `tk` and takes ±0.5° around the
+  centre, cached per region for 24 h. Consequence to keep in mind: one extra geocoder request per
+  new region per process, which is NOT counted in `generations.tianditu_calls` — the persisted
+  counter remains "accepted `searchPois` attempts", not a strict HTTP-request count (see
+  Truthful Call-Attempt Accounting). Region resolution failure returns `[]` without issuing the
+  search request.
+- **Tianditu transit parses one itinerary, not every itinerary.** JSON only (measured); the XML-shape
+  fallback was removed once a real `tk` proved the format.
+- **Provider-aware labels.** Leg `source`, trip `dataSources`, the timeline banner, the usage line,
+  and the settings self-check card must all name the vendor that actually ran.
+- Frontend map tiles are NOT part of the switch: Leaflet renders Amap tiles, which share the
+  GCJ-02 frame with stored coordinates. Pointing the basemap at Tianditu (WGS-84) would offset
+  every marker by ~500 m.
+
+### 4. Validation & Error Matrix
+
+- `MAP_PROVIDER` set to a value other than `amap` / `tianditu` → throw at import (`[env]` prefix).
+- `MAP_PROVIDER=tianditu` and `TIANDITU_KEY` empty → `console.warn` once + Null provider; no Amap calls.
+- Tianditu geocoder `status !== '0'` (it is a STRING), HTTP failure, or unparsable location →
+  fall through to Nominatim with `origin: 'nominatim'`.
+- Tianditu devolves errors through BOTH the HTTP status and a JSON body, and the codes are NOT
+  interchangeable — surface the body (use `describeHttpFailure` in
+  `integrations/tianditu/http.ts`), never a bare `HTTP <status>`: `400 + 308011` = a parameter or
+  **`tk` length** is non-compliant; `400 + infocode 2003` = a required parameter is missing
+  (`mapBound`); `403 + 301001 非法key` = valid-length but unusable key; `418` = CloudWAF HTML block
+  page (typically an empty `tk`). Ordering matters for diagnosis: the key is validated BEFORE the
+  parameters, so a placeholder key can never reveal a parameter problem.
+- Tianditu search `status.infocode !== 1000` (e.g. permission not granted) → `searchPois` returns
+  `[]`; `selfCheck()` reports `ok:false` with the vendor message. Missing `pois` field → `[]`, ok.
+- Drive/walk XML lacking `<distance>`/`<duration>`, or bus segments summing to ≤ 0 → null → heuristic.
+- Implied speed outside 1–150 km/h → null → heuristic (never a repaired number).
+- Breaker `skip` predicate is true (cycling, transit without city, budget refused, breaker open) →
+  null, zero failures, zero quota consumed.
+- 5 consecutive real route failures → breaker opens for the rest of the task, exactly one warn.
+- Daily budget below the per-task reservation → Null provider for the whole task (no calls).
+
+### 5. Good / Base / Bad Cases
+
+- Good: `MAP_PROVIDER=tianditu` with a valid `tk` — geocoding, routing, and POI search all hit
+  Tianditu, stored coordinates stay GCJ-02, `tianditu_calls` grows while `amap_calls` stays 0, and
+  the settings card reads 「地图数据源（天地图）」.
+- Base: `MAP_PROVIDER` unset with `AMAP_KEY` present — every code path, budget column, and log line
+  is what it was before the switch existed.
+- Bad: reusing `LEG_SOURCES: 'amap'` for a Tianditu route; sharing one call counter between both
+  vendors; routing Tianditu transit with an adcode (always empty → silently all-heuristic);
+  emitting a Tianditu `drive` estimate for a `cycle` request; trusting the raw `<distance>` unit;
+  putting `walk` back on `/drive?style=3` (driving durations that pass the speed gate).
+
+### 6. Tests Required
+
+- `apps/server/src/__tests__/geo.test.ts`: `gcj02ToWgs84` inverse — known vector within 1e-5 and
+  forward/inverse round-trip within 1e-6 across five cities; out-of-China passthrough.
+- `apps/server/src/__tests__/tianditu.test.ts` (all mock-fetch, no real `tk`): WGS→GCJ inbound
+  conversion; `ds` is a JSON string with the city prefix; geocoder failure → Nominatim; null key and
+  refused `tryAcquire` skip the vendor; drive km/s → m/min with per-point polyline conversion;
+  `transit` maps to `/transit?type=busline` with `startposition`/`endposition`/`linetype`, picks a
+  single itinerary out of `lines[]`, takes only the first usable `segmentLine[]` alternative, reads
+  `segmentTime` as **minutes**; `walk` and `cycle` both return null with zero requests; speed-gate
+  rejection; missing-XML null;
+  24 h cache hit; bus positive-only summing / all-negative → null / no polyline;
+  breaker skips walking and cycling without counting failures; 5 failures trip with the `[tianditu-route]` prefix;
+  POI field gaps left empty, `mapBound` present and centred on the geocoded region, region resolution
+  failure → `[]` with no search request, `infocode` failure → `[]` + `ok:false`, missing `pois` → ok,
+  HTTP failure message carries the vendor body, `resolveTiandituPoiSource(null).kind === 'null'`.
+- `apps/server/src/__tests__/amapRoute.test.ts`: the same breaker contract via
+  `createAmapRouteBreaker(apiKey)` — threshold trip, mid-streak success reset, skip paths.
+- `scripts/verify-c2.mjs`: the migration assertion must list `tianditu_calls`, and the Null-source
+  row must still record zero calls in BOTH provider columns.
+- `scripts/verify-amap-settings-browser.mjs` / `verify-websearch-settings-browser.mjs`: their
+  `sources-status` mocks must serve the `{ provider, geo, websearch }` shape.
+
+### 7. Wrong vs Correct
+
+#### Wrong
+
+```ts
+// Upper layer reaching into one vendor, and letting a structural gap look like an outage.
+import { geocodeActivity } from '../integrations/amap/geocoder';
+
+if (mode === 'transit' && (!city1 || !city2)) return heuristicLeg();   // Tianditu can never pass this
+
+const route = await routeEstimate(apiKey, from, to, mode);
+leg.source = 'amap';                                                    // lie when Tianditu ran
+```
+
+#### Correct
+
+```ts
+// Upper layer only knows the facade; the adapter owns credentials, units, coordinates,
+// and which modes it can actually serve.
+import { resolveGeoProvider } from '../integrations/geoProvider';
+
+const provider = await resolveGeoProvider(userId, destination);
+const leg = await provider.createRouteBreaker().estimate(from, to, mode, { city1, city2 }, tryRoute);
+leg.source = provider.kind;   // 'amap' | 'tianditu'
+```

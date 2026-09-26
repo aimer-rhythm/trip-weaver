@@ -64,6 +64,9 @@ npm run dev                        # server:3001 + web:5173
 | `GEN_DAILY_LIMIT` | | 每用户每日生成次数（默认 3） |
 | `AMAP_KEY` | 建议 | 站点默认高德 Web 服务 Key；用户可在设置页保存仅自己可用的个人 Key，优先级为“个人 Key → `AMAP_KEY` → Null 降级”。[申请入口](https://console.amap.com/dev/key/app)，个人认证约 5000 次搜索/月 |
 | `AMAP_DAILY_BUDGET` | | 全站高德调用日额度（默认 150，超出自动降级） |
+| `MAP_PROVIDER` | | 地图服务商手动单选 `amap` \| `tianditu`，**不做自动回退**。不设时：有 `AMAP_KEY` 用高德 → 否则有 `TIANDITU_KEY` 用天地图 → 都没有则地理数据源降级（坐标走 Nominatim、通勤走启发式） |
+| `TIANDITU_KEY` | | 站点天地图 Web 服务 Key（参数名 `tk`）。[申请入口](https://console.tianditu.gov.cn/api/key)。与高德的能力差异：地名搜索需单独申请权限，POI 无评分/人均/营业时间/图片，**无骑行路径规划** |
+| `TIANDITU_DAILY_BUDGET` | | 全站天地图调用日额度（默认 150，与高德分别计数、互不影响） |
 | `SEARCH_API_KEY` | 建议 | 站点默认 Web 搜索 Key；用户可在设置页保存仅自己可用的个人 Key + Base URL，优先级为“个人配置 → 站点 `SEARCH_API_*` → Null 降级”。默认 [LangSearch](https://langsearch.com/) 免费申请 |
 | `SEARCH_API_BASE_URL` | | 站点搜索端点，默认 `https://api.langsearch.com`；个人新配置留空时也使用该默认值，博查同族接口可改 URL+Key 切换 |
 | `SEARCH_DAILY_BUDGET` | | 全站搜索调用日额度（默认 500，超出自动降级） |
@@ -95,12 +98,14 @@ node scripts/verify-auth-modes.mjs # 注册三态（open/invite/closed）+ 兼�
 npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏览器级验收（需 Playwright）
 ```
 
-## 调研数据源（高德 + 全网搜索）
+## 调研数据源（地图服务商 + 全网搜索）
 
 调研 Agent 采用「结构化底座 + 攻略语义层」双层数据源，模型知识兜底：
 
 1. **高德搜索POI 2.0**：真实地点的名称/地址/评分/人均/营业时间/官方图片。用户可在设置页保存个人 **Web 服务** Key（AES-256-GCM 加密，仅显示尾号），只用于自己的自检和新生成任务；未配置或清除后回退站点 `AMAP_KEY`，两者都没有时自动降级。到[高德开放平台](https://console.amap.com/dev/key/app)创建应用并申请 Key，个人实名认证即有约 5000 次/月免费搜索额度（以[官方定价](https://lbs.amap.com/upgrade)为准）
 2. **Web 搜索 API**：玩法、避雷与「是否需要预约」等攻略信息，带来源链接。用户可保存个人 API Key 与 Base URL（Key 以 AES-256-GCM 加密、仅显示尾号），只用于自己的自检与新生成任务；个人配置优先，清除后回退站点 `SEARCH_API_KEY` + `SEARCH_API_BASE_URL`，两者都不可用时 Null 降级。默认 [LangSearch](https://langsearch.com/)（免费）；[博查](https://open.bochaai.com)为同族接口（约 ¥0.036/次）
+
+地图服务商是**站点级手动切换**的：`MAP_PROVIDER=amap|tianditu`，**不做自动回退**（行为可预测，额度与故障排查可控）。切到天地图后地点搜索 / 路径规划 / 地理编码三块都走天地图 —— 天地图无骑行接口（骑行段回落启发式）、POI 无评分/人均/营业时间/图片，两家的调用额度分别计数、互不影响。不设该变量时按 `AMAP_KEY` / `TIANDITU_KEY` 的存在性自动判定，都没有则降级为 Nominatim 坐标 + 启发式通勤。前端底图固定用 Leaflet + 高德瓦片（与库内 GCJ-02 自洽），切服务商不影响展示。
 3. **预约种子表**：仓库内置约 50 条全国热门「需预约」景点（故宫/国博/莫高窟/陕历博等），命中即直接标注预约方式与官方链接，离线可用（`apps/server/src/data/reservationSeeds.json`，随仓库维护）
 
 内置纪律与合规边界：

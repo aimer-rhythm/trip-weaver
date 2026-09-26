@@ -138,7 +138,7 @@ travel-planner/
 | `sessions` | id · user_id(FK) · token_hash(unique) · expires_at |
 | `user_settings` | user_id(PK/FK) · **byok_enabled(bool)** · base_url · api_key_ciphertext · api_key_last4 · model · **amap_api_key_ciphertext · amap_api_key_last4 · amap_key_revision** · **search_api_key_ciphertext · search_api_key_last4 · search_api_base_url · search_credential_revision** · updated_at |
 | `trips` | id · user_id(FK+索引) · title · destination · days_count · activity_count · total_cost · used_xhs · data(**JSONB**) · created_at · updated_at |
-| `generations` | id · user_id(FK+索引) · trip_id(可空 FK) · status(done/error/cancelled) · used_xhs(旧数据) · used_byok · tokens_in · tokens_out · xhs_calls(旧数据) · **amap_calls · search_calls（v0.4）** · created_at —— **配额计数与用量核算的事实来源** |
+| `generations` | id · user_id(FK+索引) · trip_id(可空 FK) · status(done/error/cancelled) · used_xhs(旧数据) · used_byok · tokens_in · tokens_out · xhs_calls(旧数据) · **amap_calls · tianditu_calls（v0.6 拆分） · search_calls（v0.4）** · created_at —— **配额计数与用量核算的事实来源** |
 | `canonical_places` | id · city · name · category · lng/lat · source(goldset/xhs/amap/manual) · **verified** · payload(JSONB) · **embedding vector(1024) 可空** —— 已验证地点池，金集 9 城 POI 资产化（RAG 地基，09-18） |
 | `research_evidence` | id · place_id(可空 FK) · city · kind · content · source_url · fetched_at · **embedding vector(1024) 可空** —— 调研语料（小红书口碑/价格/预约/避坑），挂载到地点池 |
 
@@ -266,7 +266,7 @@ resolveLlmConfig(userId):
 | `POST /api/auth/login` · `POST /api/auth/logout` · `GET /api/auth/me` | 会话签发/销毁/查询 | 登录 5 次/min/IP；失败不泄露账号存在性 |
 | `GET /api/settings` | 普通字段 + LLM BYOK + 个人高德/搜索配置状态（仅 Key 存在性、尾号、个人搜索 Base URL 与站点回退存在性） | 需会话 |
 | `PUT /api/settings` | 写 LLM BYOK、个人高德 Key 与个人搜索 Key + Base URL；搜索配置用显式 `clearSearchConfig` 同时清除 Key 与 URL（Key 均加密入库） | 需会话 |
-| `GET /api/settings/sources-status` | 调研数据源自检 `{amap, websearch}`（真实探测；结果按 userId + Amap/search credential revision 隔离记忆化） | 需会话 |
+| `GET /api/settings/sources-status` | 调研数据源自检 `{provider, geo, websearch}`（`provider` = 当前生效的 `MAP_PROVIDER`；真实探测；结果按 userId + credential revision 隔离记忆化） | 需会话 |
 | `GET /api/usage` | 今日剩余配额 / 已用次数 / 重置时间 | 需会话 |
 | `GET /api/trips` · `POST /api/trips`(导入) · `GET/PUT/DELETE /api/trips/:id` | 历史/导入/详情/自动保存/删除 | TripSchema；user_id 归属校验 |
 | `POST /api/generations` | **先查配额**（quotaService）→ 创建任务 `202 {jobId}` | GenerateFormSchema；并发 1/用户；配额尽 → 429 + 重置时间 |
@@ -274,7 +274,7 @@ resolveLlmConfig(userId):
 | `POST /api/generations/:jobId/cancel` | 取消（丢弃草稿，**不计配额**） | 归属校验 |
 | 生产 | `@fastify/static` 托管 web/dist + SPA fallback；开发 Vite proxy 同源 | |
 
-**JobManager**：同 v0.2（内存任务表 + 512 条事件环形缓冲；单实例边界；重启则进行中任务置失败）。任务结束时把 status/tokens/amap_calls/search_calls/used_byok 写入 `generations`。
+**JobManager**：同 v0.2（内存任务表 + 512 条事件环形缓冲；单实例边界；重启则进行中任务置失败）。任务结束时把 status/tokens/amap_calls/tianditu_calls/search_calls/used_byok 写入 `generations`（地图调用按当前生效的服务商计入各自列）。
 
 ---
 
@@ -314,6 +314,7 @@ resolveLlmConfig(userId):
 | `EMBEDDING_BASE_URL` / `EMBEDDING_API_KEY` / `EMBEDDING_MODEL` / `EMBEDDING_DIMS` | RAG 向量召回（可选；缺省回落 `SITE_LLM_*`，默认模型 `cf/bge-m3`，维度 1024 须与 schema 对齐）。未配置时向量层静默跳过（§4.4） |
 | `GEN_DAILY_LIMIT` | 用户日生成配额（默认 3） |
 | `AMAP_KEY` / `AMAP_DAILY_BUDGET` | 站点默认高德 Web 服务 Key（用户个人 Key 优先；均为空=该源降级）/ 全站日额度（默认 150） |
+| `MAP_PROVIDER` / `TIANDITU_KEY` / `TIANDITU_DAILY_BUDGET` | 地图服务商手动单选 `amap` \| `tianditu`（不做自动回退；不设时按两把 Key 的存在性判定）/ 天地图 Web 服务 Key（`tk`）/ 天地图全站日额度（默认 150，与高德分别计数） |
 | `SEARCH_API_KEY` / `SEARCH_API_BASE_URL` / `SEARCH_DAILY_BUDGET` | Web 搜索 Key（可留空=该源降级）/ 端点（默认 LangSearch，博查同族可切）/ 全站日额度（默认 500） |
 | `SSRF_ALLOWLIST` | 逗号分隔的内网豁免地址 |
 
@@ -351,15 +352,26 @@ resolveLlmConfig(userId):
 - [x] better-sqlite3 本机安装（A0 已过）
 - [ ] 微信内置浏览器：长图保存路径、EventSource 行为（D2 真机）
 
-### 12.1 调研数据源适配器速查（v0.5）
+### 12.1 调研数据源适配器速查（v0.5；地图服务商切换 v0.6）
+
+地图侧适配器由 `integrations/geoProvider.ts` 按站点级 `MAP_PROVIDER` 二选一（
+`amap` | `tianditu`，**不做自动回退**）；形状由 `integrations/geoContracts.ts` 定义，
+**进出坐标一律 GCJ-02**（天地图侧的 WGS-84 ↔ GCJ-02 互转收敛在 `integrations/tianditu/*` 内部）。
 
 | 适配器方法 | 端点 | 关键入参 | 返回要点 |
 |---|---|---|---|
 | `PoiSource.searchPois(category, keyword, region)` | `GET https://restapi.amap.com/v5/place/text` | `key` · `keywords`(≤80字) · `types`(110000/050000/100000) · `region`+`city_limit=true` · `show_fields=business,photos` · `page_size` | `pois[]`：name/type/address + business.rating/cost/opentime_today/opentime_week + photos[].url + **location（「lng,lat」串，GCJ-02）+ adcode（v0.5 反转）** |
 | `amapGeocode(key, name, city)`（v0.5） | `GET https://restapi.amap.com/v3/geocode/geo` | `key` · `address`(city+name) · `city` | `geocodes[0]`：location（GCJ-02）+ adcode；失败回 null |
 | `routeEstimate(key, origin, dest, mode, opts)`（v0.5） | `GET /v5/direction/walking` · `/v5/direction/driving` · `/v5/direction/transit/integrated` | `origin`/`destination`（「lng,lat」）· `show_fields=polyline,cost` · transit 另需 `city1`/`city2`（adcode） | `paths[0]`/`transits[0]`：cost.duration（秒）+ distance（米）+ steps[].polyline（抽稀 ≤4000 字符，超长丢弃）；失败回 null → 启发式降级 |
+| `tiandituGeocodeActivity(tk, name, city)`（v0.6） | `GET https://api.tianditu.gov.cn/geocoder` | `ds={"keyWord":"城市+名称"}`（**JSON 字符串**）· `tk` | `location{lon,lat}`（CGCS2000/WGS-84 → 转 GCJ-02）；成功状态是**字符串** `status:"0"`，且**无 adcode**（回空串）；失败回 null → Nominatim 兜底 |
+| `tiandituRouteEstimate(tk, origin, dest, mode, opts)`（v0.6） | `GET /drive` · `/walk` · `/bus` | `postStr={"orig","dest","style"}`（WGS-84 坐标）· `type=search` · bus 另需 `city`（城市名，非 adcode） | **XML**：drive/walk 取 `<distance>`(km)/`<duration>`(秒)/`<routelatlon>`(整条折线)；bus 无总时长，累加各段 `segmentTime`(秒)/`segmentDistance`(米) 且**只累加正值**；**无骑行接口**；隐含速度超出 1~150km/h 即判字段异常回 null |
+| `TiandituPoiSource.searchPois(...)`（v0.6） | `GET https://api.tianditu.gov.cn/v2/search` | `postStr={"keyWord","level","queryType":"1","start","count"}` · `type=query` · `tk` | `pois[]`：name/address/**lonlat**（WGS-84 → 转 GCJ-02）/poiType；**无评分、人均、营业时间、图片，无 adcode**（均留空）；成功判定 `status.infocode===1000`；**需单独申请权限** |
 | `SearchSource.search(query)` | `POST {SEARCH_API_BASE_URL}/v1/web-search` | Bearer `SEARCH_API_KEY`；body `{query, summary: true, count, freshness}` | `data.webPages.value[]`：name/url/snippet/summary/siteName/datePublished（LangSearch 与博查同族） |
 | `selfCheck()`（两源各一） | 同上（最小探测请求） | — | `SourceStatus{configured, checked, ok, message}`；`GET /api/settings/sources-status` 数据源 |
 
 - 高德 `rating`/`cost` 仅餐饮/酒店/景点/影院类返回；无「简介」字段——候选 intro 由调研 Agent 综合搜索摘要与模型知识撰写。
 - 高德评分/人均/营业时间仅作调研工具输出文本供 Agent 参考，**不入候选池、不落库**（PRD 裁剪决策 + 协议 3.5 存储限制）。
+- **天地图不做骑行近似**：`drive` 结果冒充骑行会系统性低估时长，故 `cycle` 恒回 null 走启发式；
+  骑行在熔断器的**前置拦截**层处理，不计失败也不扣额度（否则一队骑行段会打穿熔断器）。
+- **前端底图不得随服务商切换**：Leaflet 高德瓦片与库内 GCJ-02 同系；换成天地图（WGS-84）瓦片会让所有
+  marker 偏移约 500m。地图服务商切换只影响服务端数据源。
