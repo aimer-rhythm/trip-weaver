@@ -183,9 +183,12 @@ export interface SourceStatusView {
 }
 
 export interface SourcesStatusView {
-  /** 当前生效的地图服务商（MAP_PROVIDER 决定），前端以此标注自检卡片 */
-  provider: 'amap' | 'tianditu';
-  geo: SourceStatusView;
+  /** POI 搜索链：**固定天地图**（配额分工，与 Key 自动决策无关） */
+  searchProvider: 'amap' | 'tianditu';
+  /** 路线规划 + 地理编码链：高德优先，缺 AMAP_KEY 时降级天地图；'null' = 无凭据 */
+  routeProvider: 'amap' | 'tianditu' | 'null';
+  /** POI 搜索源自检（原字段名 `geo`，内容一直是 POI 源） */
+  poi: SourceStatusView;
   websearch: SourceStatusView;
 }
 

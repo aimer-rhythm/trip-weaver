@@ -2,8 +2,13 @@ import { useState, type FormEvent } from 'react';
 import { useSaveSettings, useSettings, useSourcesStatus, useUsage, type SourceStatusView } from '../api/hooks';
 import { Modal } from './Modal';
 
-// 地图服务商显示名：自检卡片要让用户看出实际走的是哪条链路（MAP_PROVIDER 切换后无需看服务端日志）
-const MAP_PROVIDER_LABEL: Record<'amap' | 'tianditu', string> = { amap: '高德', tianditu: '天地图' };
+// 两条链的服务商显示名（09-25 二次调整：两家属**互补分工**，不再有单一开关）。
+// 自检卡片要让用户看出每条链实际走的是哪家，不用去翻服务端日志。
+const PROVIDER_LABEL: Record<'amap' | 'tianditu' | 'null', string> = {
+  amap: '高德',
+  tianditu: '天地图',
+  null: '未配置（整链降级）',
+};
 
 // 常见厂商预设：直接给完整 /v1 地址，绕开 baseUrl 填写坑
 const PRESETS = [
@@ -118,8 +123,23 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
       <details className="settings-advanced" open={advancedOpen} onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}>
         <summary>高级选项（API Key 与数据源）</summary>
         <SourceStatusRow
-          label={`地图数据源（${MAP_PROVIDER_LABEL[sources.data?.provider ?? 'amap']}）`}
-          status={sources.data?.geo}
+          label={`地点搜索（${PROVIDER_LABEL[sources.data?.searchProvider ?? 'tianditu']}）`}
+          status={sources.data?.poi}
+          loading={sources.isFetching}
+        />
+        {/* 路线链不做主动探测（无 selfCheck）：只如实报告当前走哪家，异常由生成时的 [amap-route] warn 暴露 */}
+        <SourceStatusRow
+          label="路线与地理编码"
+          status={
+            sources.data
+              ? {
+                  configured: sources.data.routeProvider !== 'null',
+                  checked: false,
+                  ok: null,
+                  message: `当前走 ${PROVIDER_LABEL[sources.data.routeProvider]}（高德优先，缺 AMAP_KEY 时降级天地图）`,
+                }
+              : undefined
+          }
           loading={sources.isFetching}
         />
         <SourceStatusRow label="全网搜索" status={sources.data?.websearch} loading={sources.isFetching} />
