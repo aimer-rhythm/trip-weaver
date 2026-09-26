@@ -4,6 +4,7 @@ import type { ResearchPoi } from '@tripweaver/shared';
 import { activityPlaceName, createResearchPlaceLookup, rememberResearchLocation, type ResearchLocation } from '../generation/placeLookup';
 import { buildResearchTools, type ResearchOutcome } from '../generation/tools/researchTools';
 import type { PoiSource, SourcedPoi } from '../integrations/geoContracts';
+import type { CoverLookup } from '../integrations/wikimedia/cover';
 
 const point: ResearchLocation = { lat: 39.9, lng: 116.4, adcode: '110101' };
 const candidate: ResearchPoi = { id: 'museum', name: '真实博物馆', category: 'attraction', intro: '', reservation: 'unknown', sourceLinks: [] };
@@ -109,4 +110,56 @@ test('add_candidate 自动回填高德营业时间（仅 attraction），模型�
   // 未经过 search_pois 的点 → 无数据可回填
   await add.execute('add3', { name: '纯知识候选', category: 'attraction', intro: '模型知识' });
   assert.equal(outcome.pool[2]!.openTime, undefined);
+});
+
+const WIKI_THUMB = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/example.jpg/500px-example.jpg';
+
+function recordingCover(): { lookup: CoverLookup; queries: string[] } {
+  const queries: string[] = [];
+  return {
+    queries,
+    lookup: {
+      coverFor: async (query) => {
+        queries.push(query.name);
+        return WIKI_THUMB;
+      },
+    },
+  };
+}
+
+test('景点封面：库内无图且有坐标时查维基，美食不查，库内有图不再查', async () => {
+  const poi: SourcedPoi = {
+    name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '',
+    opentime: '', photoUrls: [], location: point, adcode: point.adcode,
+  };
+  const source: PoiSource = {
+    kind: 'amap',
+    searchPois: async () => [poi],
+    selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }),
+  };
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  const cover = recordingCover();
+  const tools = buildResearchTools({
+    poiSource: source,
+    searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
+    destination: '北京',
+    searchWebMax: 2,
+    outcome,
+    coverLookup: cover.lookup,
+    storedCover: async (name) => (name === '天坛' ? 'https://example.com/stored.jpg' : null),
+  });
+  const search = tools.find((tool) => tool.name === 'search_pois')!;
+  const add = tools.find((tool) => tool.name === 'add_candidate')!;
+  await search.execute('search', { category: 'attraction', keyword: '故宫' });
+
+  await add.execute('a', { name: '故宫', category: 'attraction', intro: '中轴线' });
+  assert.equal(outcome.pool[0]!.coverUrl, WIKI_THUMB, '归一后「故宫」对上「故宫博物院」的坐标');
+
+  await add.execute('b', { name: '美食街', category: 'food', intro: '吃饭' });
+  assert.equal(outcome.pool[1]!.coverUrl, undefined, '非景点不查');
+
+  await add.execute('c', { name: '天坛', category: 'attraction', intro: '祈年殿' });
+  assert.equal(outcome.pool[2]!.coverUrl, 'https://example.com/stored.jpg', '库内有图直接用');
+
+  assert.deepEqual(cover.queries, ['故宫'], '只有缺图的景点触发了一次检索');
 });

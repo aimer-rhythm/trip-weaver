@@ -18,6 +18,8 @@ import { matchReservationSeed } from '../../data/reservationSeeds';
 import { findXhsEvidence, findXhsPlace } from '../../services/xhsPlaceService';
 import { rememberResearchLocation, type ResearchLocation } from '../placeLookup';
 import { retrieveContext } from '../retrieveContext';
+import { normalizePlaceKey } from '../scheduling/placeFacts';
+import { type CoverLookup, type CoverQuery } from '../../integrations/wikimedia/cover';
 
 function text(t: string) {
   return [{ type: 'text' as const, text: t }];
@@ -58,14 +60,50 @@ export interface ResearchToolDeps {
   outcome: ResearchOutcome;
   /** 每写入一条候选即回调（orchestrator 借此发 SSE candidate 事件） */
   onCandidate?: (poi: ResearchPoi) => void;
+  /** 封面降级：库内无图时按地点名 + 坐标查中文维基。默认进程级实现；测试注入避免发请求。 */
+  coverLookup?: CoverLookup;
+  /** 库内封面（未来 canonical_places 补图后由调用方提供）。返回非空则跳过实时检索。 */
+  storedCover?: (name: string) => Promise<string | null>;
+  /** 库内坐标兜底：调研阶段没捕到坐标时（知识库候选）用它。失败返回 null。 */
+  storedPoint?: (name: string) => Promise<{ lat: number; lng: number } | null>;
 }
 
 function isHttpUrl(u: string): boolean {
   return /^https?:\/\//.test(u);
 }
 
+/**
+ * 封面解析：库内封面优先；没有则用坐标查维基。
+ * 坐标先取调研阶段捕到的（search_pois），没有再问库内坐标兜底。
+ * 名字按归一键对齐：候选「故宫博物院」对得上搜索结果「故宫」。
+ */
+async function resolveCover(
+  name: string,
+  city: string,
+  locations: ReadonlyMap<string, ResearchLocation>,
+  covers: CoverLookup,
+  storedCover: (name: string) => Promise<string | null>,
+  storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>,
+): Promise<string | null> {
+  const stored = await storedCover(name);
+  if (stored && isHttpUrl(stored)) return stored.slice(0, 300);
+
+  const key = normalizePlaceKey(name);
+  const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
+  const point = known?.[1] ?? (await storedPoint(name));
+  if (!point) return null;
+
+  const query: CoverQuery = { name, city, lat: point.lat, lng: point.lng };
+  const url = await covers.coverFor(query);
+  return url && isHttpUrl(url) ? url.slice(0, 300) : null;
+}
+
 export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const { poiSource, searchSource, destination, outcome, onCandidate } = deps;
+  // 未注入时用空实现：单测与离线回放不发请求。真实生成由 orchestrator 显式注入。
+  const coverLookup = deps.coverLookup ?? { coverFor: async () => null };
+  const storedCover = deps.storedCover ?? (async () => null);
+  const storedPoint = deps.storedPoint ?? (async () => null);
   const ambiguousNames = new Set<string>();
   // 营业时间旁路捕获（09-22-opentime）：search_pois 如实带回高德 opentime 文本，add_candidate 同名自动回填，
   // 不让模型转抄（转抄会失真）。仅 attraction 入排程检测，food/hotel 不消费。
@@ -183,7 +221,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       name: Type.String({ description: '地点名称（与 search_pois 返回一致）' }),
       category: Type.String({ description: '类目：attraction / food / hotel' }),
       intro: Type.String({ description: '一句话简介（≤80 字）：是什么 + 为什么值得去' }),
-      coverUrl: Type.Optional(Type.String({ description: '预览图链接，只能用 search_pois 返回的图片 url，没有则不填' })),
+      coverUrl: Type.Optional(Type.String({ description: '已废弃：封面由系统补，模型给的值会被忽略' })),
       reservation: Type.Optional(
         Type.String({ description: '是否需要预约：required / none / unknown（默认 unknown；仅在有官方或权威来源时才填 required/none）' }),
       ),
@@ -230,6 +268,13 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       if (category === 'attraction') {
         const openTime = openTimeByName.get(name);
         if (openTime) poi.openTime = openTime;
+      }
+
+      // 封面降级（09-26）：库内有图就用库内的；没有才按「地点名 + 城市」查中文维基。
+      // 只补 attraction，food/hotel 命中差。失败留空，前端回落类目图标。命中不回写库。
+      if (category === 'attraction') {
+        const cover = await resolveCover(name, destination, outcome.locations, coverLookup, storedCover, storedPoint);
+        if (cover) poi.coverUrl = cover;
       }
 
       // 预约种子表命中即置信：强制覆盖三态与说明，并把官方渠道链接放到来源首位

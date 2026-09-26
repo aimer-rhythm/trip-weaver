@@ -377,6 +377,38 @@ const route = await routeEstimate(apiKey, from, to, mode);
 leg.source = 'amap';                                                    // lie when Tianditu ran
 ```
 
+## Attraction Cover Fallback (Wikimedia, live lookup)
+
+**Scope/Trigger**: an `attraction` candidate reaches `add_candidate` with no stored cover. The
+knowledge base (`canonical_places`) has no cover column yet, so today every attraction falls through.
+Filling that column is a later task; this lookup must stay the fallback, never the primary source.
+
+**Contract** (`createWikiCoverLookup` in `apps/server/src/integrations/wikimedia/cover.ts`, wired in
+`generation/orchestrator.ts`):
+
+- Order: stored cover (`storedCover`, currently always null) → Chinese Wikipedia article search
+  (`地点名 + 城市`) → empty. Only `attraction`. Food and hotel are never queried.
+- Accept an article only when it has a thumbnail AND coordinates within 2 km of the place. The
+  place coordinate is GCJ-02 and is converted with `gcj02ToWgs84` before comparing.
+- Coordinate source: the research-phase capture (`search_pois`) first, then `loadPlaceFacts` for
+  knowledge-base candidates. Names match through `normalizePlaceKey` so 「故宫」hits 「故宫博物院」.
+- The hit is written to the candidate's `coverUrl` only. It is NOT written back to
+  `canonical_places`. The model's own `coverUrl` argument is ignored.
+- A confirmed miss (no usable article) is negative-cached 24 h. A transport failure (timeout, non-2xx)
+  is NOT cached, so the next generation retries.
+- One generation makes at most 8 real lookups, serial, ≥1 s apart, 8 s timeout. Anything past the cap
+  returns null without a request. Every failure returns null and logs one `[wiki-cover]` warn; it
+  never throws into generation.
+
+**Why not the nearest geotagged file**: measured on Beijing — the closest file to 故宫 was an interior
+pavilion, and the closest to 鸟巢 was an Olympics ceremony photo. Title search plus a coordinate check
+hit 9 of 10.
+
+**Tests** (`apps/server/src/__tests__/wikimediaCover.test.ts`, `placeLookup.test.ts`): `pickCover`
+keeps the nearest in-range article and drops the rest; the adapter caches both hits and confirmed
+misses; HTTP failure returns null and is not cached; the 9th lookup makes no request; a food candidate
+and a candidate with a stored cover never call the lookup.
+
 #### Correct
 
 ```ts

@@ -38,10 +38,25 @@ import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
 import { GenerationPerformance } from './performance';
 import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
+import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
+import { loadPlaceFacts } from './scheduling/placeFacts';
+
+/**
+ * 封面降级的库内坐标兜底（09-26）。
+ * 库内尚无封面列，景点缺图时靠坐标查中文维基；调研阶段没捕到坐标（知识库候选）就用这里。
+ * loadPlaceFacts 拉的是全城行，一次生成只拉一次，后续候选复用。
+ */
+function cityPointLookup(city: string): (name: string) => Promise<{ lat: number; lng: number } | null> {
+  let pending: ReturnType<typeof loadPlaceFacts> | null = null;
+  return async (name) => {
+    pending ??= loadPlaceFacts([name], city);
+    const hit = (await pending).get(name);
+    return hit?.lat !== undefined && hit.lng !== undefined ? { lat: hit.lat, lng: hit.lng } : null;
+  };
+}
 import { buildDraftTools } from './tools/draftTools';
 import { buildReviewTools, type ReviewOutcome } from './tools/reviewTools';
 import { applyDeterministicSchedule } from './scheduling/buildDraft';
-import { loadPlaceFacts } from './scheduling/placeFacts';
 import {
   WRITER_SYSTEM_PROMPT,
   researchSystemPrompt,
@@ -229,6 +244,8 @@ export async function runGeneration(
         searchWebMax,
         outcome: research,
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
+        coverLookup: createWikiCoverLookup(),
+        storedPoint: cityPointLookup(form.destination),
       }),
       userPrompt: `${formBrief(form)}\n\n请开始调研。`,
       signal,
