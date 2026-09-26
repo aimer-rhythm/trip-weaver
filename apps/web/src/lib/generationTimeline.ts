@@ -52,7 +52,7 @@ export interface TimelineModel {
   dataSources: DataSourceKind[] | null;
   candidates: ResearchPoi[];
   phases: PhaseBlock[];
-  usage: { tokensIn: number; tokensOut: number; amapCalls: number; searchCalls: number } | null;
+  usage: { tokensIn: number; tokensOut: number; amapCalls: number; tiandituCalls: number; searchCalls: number } | null;
   terminal: Extract<GenerationEvent, { type: 'job_done' | 'job_error' | 'job_cancelled' }> | null;
   startedAt?: number;
   durationMs?: number;
@@ -166,7 +166,7 @@ export function buildTimeline(events: GenerationEvent[]): TimelineModel {
         break;
       }
       case 'usage':
-        model.usage = { tokensIn: ev.tokensIn, tokensOut: ev.tokensOut, amapCalls: ev.amapCalls, searchCalls: ev.searchCalls };
+        model.usage = { tokensIn: ev.tokensIn, tokensOut: ev.tokensOut, amapCalls: ev.amapCalls, tiandituCalls: ev.tiandituCalls, searchCalls: ev.searchCalls };
         break;
       case 'job_done':
       case 'job_error':

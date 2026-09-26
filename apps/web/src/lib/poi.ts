@@ -7,4 +7,4 @@ export const POI_CATEGORY_ICON: Record<PoiCategory, string> = { attraction: '�
 // 预约三态：required 醒目 / none 常规 / unknown 中性「建议核实」（以官方为准）
 export const RESERVATION_LABEL: Record<ReservationStatus, string> = { required: '需预约', none: '无需预约', unknown: '建议核实' };
 
-export const DATA_SOURCE_LABEL: Record<DataSourceKind, string> = { amap: '高德地点数据', websearch: '全网搜索' };
+export const DATA_SOURCE_LABEL: Record<DataSourceKind, string> = { amap: '高德地点数据', tianditu: '天地图地点数据', websearch: '全网搜索' };

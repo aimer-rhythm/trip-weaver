@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { DataSourceKind, GenerationEvent, GenerationPhase } from '@tripweaver/shared';
 import { buildTimeline, formatDuration, type LlmRequestItem, type TimelineModel } from '../lib/generationTimeline';
+import { DATA_SOURCE_LABEL } from '../lib/poi';
 import { PoiCard } from './PoiCard';
 
 const PHASE_LABEL: Record<GenerationPhase, string> = {
@@ -14,15 +15,20 @@ const PHASE_ICON: Record<GenerationPhase, string> = { research: '🔍', plan: '�
 /** 数据源降级提示：双源齐全不提示；部分/全无时注明本次实际所用 */
 function sourceBanner(sources: DataSourceKind[] | null): string | null {
   if (sources === null || sources.length >= 2) return null;
-  if (sources.length === 0) return '未配置外部数据源，本次基于模型知识调研。';
-  return sources[0] === 'amap'
-    ? '全网搜索不可用，本次基于高德地点数据 + 模型知识调研。'
-    : '高德地点数据不可用，本次基于全网搜索 + 模型知识调研。';
+  const only = sources[0];
+  if (only === undefined) return '未配置外部数据源，本次基于模型知识调研。';
+  return only === 'websearch'
+    ? '地点数据源不可用，本次基于全网搜索 + 模型知识调研。'
+    : `全网搜索不可用，本次基于${DATA_SOURCE_LABEL[only]} + 模型知识调研。`;
 }
 
 function usageText(usage: TimelineModel['usage']): string {
   if (!usage) return ' ';
-  const calls = [usage.amapCalls ? `高德 ${usage.amapCalls} 次` : '', usage.searchCalls ? `搜索 ${usage.searchCalls} 次` : '']
+  const calls = [
+    usage.amapCalls ? `高德 ${usage.amapCalls} 次` : '',
+    usage.tiandituCalls ? `天地图 ${usage.tiandituCalls} 次` : '',
+    usage.searchCalls ? `搜索 ${usage.searchCalls} 次` : '',
+  ]
     .filter(Boolean)
     .join('｜');
   return `Token ${usage.tokensIn + usage.tokensOut}（入 ${usage.tokensIn} / 出 ${usage.tokensOut}）${calls ? `｜${calls}` : ''}`;

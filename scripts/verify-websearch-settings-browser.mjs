@@ -61,7 +61,8 @@ try {
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify({
-        amap: { configured: false, checked: true, ok: null, message: '测试高德未配置' },
+        provider: 'amap',
+        geo: { configured: false, checked: true, ok: null, message: '测试高德未配置' },
         websearch: { configured: true, checked: true, ok: true, message: '测试搜索连接正常' },
       }),
     });

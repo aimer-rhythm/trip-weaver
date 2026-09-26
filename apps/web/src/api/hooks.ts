@@ -183,7 +183,9 @@ export interface SourceStatusView {
 }
 
 export interface SourcesStatusView {
-  amap: SourceStatusView;
+  /** 当前生效的地图服务商（MAP_PROVIDER 决定），前端以此标注自检卡片 */
+  provider: 'amap' | 'tianditu';
+  geo: SourceStatusView;
   websearch: SourceStatusView;
 }
 

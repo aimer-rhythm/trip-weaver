@@ -2,6 +2,9 @@ import { useState, type FormEvent } from 'react';
 import { useSaveSettings, useSettings, useSourcesStatus, useUsage, type SourceStatusView } from '../api/hooks';
 import { Modal } from './Modal';
 
+// 地图服务商显示名：自检卡片要让用户看出实际走的是哪条链路（MAP_PROVIDER 切换后无需看服务端日志）
+const MAP_PROVIDER_LABEL: Record<'amap' | 'tianditu', string> = { amap: '高德', tianditu: '天地图' };
+
 // 常见厂商预设：直接给完整 /v1 地址，绕开 baseUrl 填写坑
 const PRESETS = [
   { label: 'DeepSeek', baseUrl: 'https://api.deepseek.com/v1', model: 'deepseek-chat' },
@@ -114,7 +117,11 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
 
       <details className="settings-advanced" open={advancedOpen} onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}>
         <summary>高级选项（API Key 与数据源）</summary>
-        <SourceStatusRow label="高德地点数据" status={sources.data?.amap} loading={sources.isFetching} />
+        <SourceStatusRow
+          label={`地图数据源（${MAP_PROVIDER_LABEL[sources.data?.provider ?? 'amap']}）`}
+          status={sources.data?.geo}
+          loading={sources.isFetching}
+        />
         <SourceStatusRow label="全网搜索" status={sources.data?.websearch} loading={sources.isFetching} />
         <form onSubmit={submit} className="form">
           <label className="check-row">
