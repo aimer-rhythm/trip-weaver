@@ -7,6 +7,8 @@
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
 import { resolveAmapCredential } from '../../services/settingsService';
+import type { PoiSource, SourcedPoi } from '../geoContracts';
+import { getNullPoiSource } from '../nullPoiSource';
 import { parseAmapLocation } from './geocoder';
 import type { PoiCategory } from '@tripweaver/shared';
 import type { SourceStatus } from '../sourceStatus';
@@ -24,45 +26,13 @@ const CATEGORY_TYPECODE: Record<PoiCategory, string> = {
   hotel: '100000',      // 住宿服务
 };
 
-export interface AmapPoi {
-  name: string;
-  type: string;         // 最细一级分类，如「云南菜」
-  address: string;
-  rating: string;       // 评分（餐饮/酒店/景点类才有，可能为空）
-  cost: string;         // 人均消费（同上）
-  opentime: string;     // 营业时间描述（可能为空）
-  photoUrls: string[];  // 官方图片热链 ≤3（仅展示，不转存）
-  location: { lat: number; lng: number } | null;   // GCJ-02（v0.5 起如实返回；解析失败为 null）
-  adcode: string;       // 行政区划码（transit 路径规划需要；可能为空）
-}
-
-export interface PoiSource {
-  readonly kind: 'amap' | 'null';
-  searchPois(category: PoiCategory, keyword: string, region: string): Promise<AmapPoi[]>;
-  selfCheck(): Promise<SourceStatus>;
-}
-
-// ---------- Null 降级 ----------
-
-export class NullPoiSource implements PoiSource {
-  readonly kind = 'null' as const;
-  constructor(private reason = '站点未配置高德 Key') {}
-
-  async searchPois(): Promise<AmapPoi[]> {
-    return [];
-  }
-  async selfCheck(): Promise<SourceStatus> {
-    return { configured: false, checked: true, ok: null, message: `${this.reason}（生成时自动降级为模型知识调研）` };
-  }
-}
-
 // ---------- 宽容解析 ----------
 
 function str(v: unknown): string {
   return typeof v === 'string' ? v : '';
 }
 
-function mapPoi(raw: Record<string, unknown>): AmapPoi | null {
+function mapPoi(raw: Record<string, unknown>): SourcedPoi | null {
   const name = str(raw.name).trim();
   if (!name) return null;
   const business = (raw.business ?? {}) as Record<string, unknown>;
@@ -88,12 +58,12 @@ function mapPoi(raw: Record<string, unknown>): AmapPoi | null {
 export class AmapPoiSource implements PoiSource {
   readonly kind = 'amap' as const;
   private queue = createSerialQueue(AMAP_MIN_INTERVAL_MS);
-  private cache = new TtlCache<AmapPoi[]>(AMAP_CACHE_TTL_MS, 300);
+  private cache = new TtlCache<SourcedPoi[]>(AMAP_CACHE_TTL_MS, 300);
 
   constructor(private apiKey: string) {}
 
   /** 关键字搜索（region 提权召回 + city_limit 严格限定）；失败抛给调用方分支处理 */
-  private async request(category: PoiCategory, keyword: string, region: string): Promise<AmapPoi[]> {
+  private async request(category: PoiCategory, keyword: string, region: string): Promise<SourcedPoi[]> {
     const params = new URLSearchParams({
       key: this.apiKey,
       keywords: keyword.slice(0, 80),          // 高德限制单关键字 ≤80 字符
@@ -111,11 +81,11 @@ export class AmapPoiSource implements PoiSource {
       const body = (await res.json()) as { status?: string; info?: string; pois?: unknown };
       if (body.status !== '1') throw new Error(body.info || '未知错误');
       const pois = Array.isArray(body.pois) ? (body.pois as Record<string, unknown>[]) : [];
-      return pois.map(mapPoi).filter((p): p is AmapPoi => p !== null);
+      return pois.map(mapPoi).filter((p): p is SourcedPoi => p !== null);
     });
   }
 
-  async searchPois(category: PoiCategory, keyword: string, region: string): Promise<AmapPoi[]> {
+  async searchPois(category: PoiCategory, keyword: string, region: string): Promise<SourcedPoi[]> {
     const key = `${category}:${region}:${keyword}`.trim().toLowerCase();
     const cached = this.cache.get(key);
     if (cached) return cached;
@@ -148,35 +118,7 @@ export class AmapPoiSource implements PoiSource {
   }
 }
 
-// ---------- 任务级上限包装（单次生成 ≤8 次搜索） ----------
-
-export const AMAP_MAX_PER_TASK = 8;
-
-export interface TaskPoiSource {
-  source: PoiSource;
-  stats: { calls: number; gotResults: boolean };
-}
-
-export function createTaskPoiSource(inner: PoiSource): TaskPoiSource {
-  const stats = { calls: 0, gotResults: false };
-  const source: PoiSource = {
-    kind: inner.kind,
-    async searchPois(category, keyword, region) {
-      if (inner.kind === 'null') return [];                  // Null 源不计数，不烧日额度
-      if (stats.calls >= AMAP_MAX_PER_TASK) return [];
-      stats.calls += 1;
-      const pois = await inner.searchPois(category, keyword, region);
-      if (pois.length) stats.gotResults = true;
-      return pois;
-    },
-    selfCheck: () => inner.selfCheck(),
-  };
-  return { source, stats };
-}
-
 // ---------- 按用户动态构造 ----------
-
-const nullSource = new NullPoiSource();
 
 export interface ResolvedPoiSource {
   source: PoiSource;
@@ -186,23 +128,18 @@ export interface ResolvedPoiSource {
 
 /** 每次按有效凭据构造实例，避免把个人 Key 放进全局单例或跨用户结果缓存。 */
 export function createPoiSource(apiKey: string | null | undefined): PoiSource {
-  return apiKey ? new AmapPoiSource(apiKey) : nullSource;
+  return apiKey ? new AmapPoiSource(apiKey) : getNullPoiSource();
 }
 
 /** 用户个人 Key 优先，未配置或密文不可用时回退站点 Key，再回退 Null 源。 */
 export async function resolvePoiSourceForUser(userId: string): Promise<ResolvedPoiSource> {
   const credential = await resolveAmapCredential(userId);
   if (!credential) {
-    return { source: nullSource, credentialRevision: 'none', credentialOrigin: 'none' };
+    return { source: getNullPoiSource(), credentialRevision: 'none', credentialOrigin: 'none' };
   }
   return {
     source: createPoiSource(credential.apiKey),
     credentialRevision: credential.revision,
     credentialOrigin: credential.origin,
   };
-}
-
-/** 全站日额度用尽等场景下按需取用 Null 源 */
-export function getNullPoiSource(): PoiSource {
-  return nullSource;
 }

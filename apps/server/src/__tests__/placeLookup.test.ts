@@ -3,7 +3,7 @@ import test from 'node:test';
 import type { ResearchPoi } from '@tripweaver/shared';
 import { activityPlaceName, createResearchPlaceLookup, rememberResearchLocation, type ResearchLocation } from '../generation/placeLookup';
 import { buildResearchTools, type ResearchOutcome } from '../generation/tools/researchTools';
-import type { AmapPoi, PoiSource } from '../integrations/amap/poiSource';
+import type { PoiSource, SourcedPoi } from '../integrations/geoContracts';
 
 const point: ResearchLocation = { lat: 39.9, lng: 116.4, adcode: '110101' };
 const candidate: ResearchPoi = { id: 'museum', name: '真实博物馆', category: 'attraction', intro: '', reservation: 'unknown', sourceLinks: [] };
@@ -48,7 +48,7 @@ test('无效坐标不能进入复用索引，相同点可补充缺失的行政�
 });
 
 test('调研工具旁路保留 adcode，公开候选不包含原始坐标', async () => {
-  const poi: AmapPoi = { name: candidate.name, type: '博物馆', address: '', rating: '', cost: '', opentime: '', photoUrls: [], location: point, adcode: point.adcode };
+  const poi: SourcedPoi = { name: candidate.name, type: '博物馆', address: '', rating: '', cost: '', opentime: '', photoUrls: [], location: point, adcode: point.adcode };
   const source: PoiSource = {
     kind: 'amap',
     searchPois: async () => [poi],
@@ -73,11 +73,11 @@ test('调研工具旁路保留 adcode，公开候选不包含原始坐标', asyn
 });
 
 test('add_candidate 自动回填高德营业时间（仅 attraction），模型无需转抄', async () => {
-  const withHours: AmapPoi = {
+  const withHours: SourcedPoi = {
     name: '周一闭馆馆', type: '博物馆', address: '', rating: '', cost: '',
     opentime: '09:00-17:00；周一闭馆', photoUrls: [], location: point, adcode: point.adcode,
   };
-  const foodWithHours: AmapPoi = {
+  const foodWithHours: SourcedPoi = {
     name: '营业面馆', type: '餐饮', address: '', rating: '', cost: '',
     opentime: '10:00-22:00', photoUrls: [], location: point, adcode: point.adcode,
   };

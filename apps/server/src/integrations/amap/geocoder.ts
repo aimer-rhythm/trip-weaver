@@ -2,13 +2,13 @@
 // 纪律沿用四道闸中的前两道：与路径规划共用串行队列（350ms）+ 24h TTL 缓存；
 // 任务级上限与日额度闸门由调用方（generation/geoPipeline）通过 tryAcquire 回调把关。
 // 任何故障不抛错到上层 —— 各级回 null，链路整体失败由上层标注 estimated 降级。
-import { wgs84ToGcj02 } from '@tripweaver/shared';
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
-import { geocode as nominatimGeocode } from '../geocode';
+import type { GeocodedPlace, GeocodedPoint, GeoPoint } from '../geoContracts';
+import { geocodeFallbackGcj02 } from '../geocode';
 
 /** 解析高德「lng,lat」坐标串（GCJ-02）；非法输入回 null */
-export function parseAmapLocation(raw: unknown): { lat: number; lng: number } | null {
+export function parseAmapLocation(raw: unknown): GeoPoint | null {
   const parts = (typeof raw === 'string' ? raw : '').split(',');
   if (parts.length !== 2) return null;
   const lng = Number.parseFloat(parts[0]!);
@@ -23,14 +23,8 @@ const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 /** 高德全 API 共用串行队列（个人认证约 3 QPS）：geocode 与 route 共队列限速 */
 export const amapQueue = createSerialQueue(350);
 
-const poiLocateCache = new TtlCache<AmapGeoPoint | null>(CACHE_TTL_MS, 300);
-const geocodeCache = new TtlCache<AmapGeoPoint | null>(CACHE_TTL_MS, 300);
-
-export interface AmapGeoPoint {
-  lat: number;       // GCJ-02
-  lng: number;
-  adcode: string;    // 行政区划码（transit 路径规划 city1/city2 入参；可能为空）
-}
+const poiLocateCache = new TtlCache<GeocodedPoint | null>(CACHE_TTL_MS, 300);
+const geocodeCache = new TtlCache<GeocodedPoint | null>(CACHE_TTL_MS, 300);
 
 async function amapGet(url: string): Promise<Record<string, unknown>> {
   const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
@@ -41,7 +35,7 @@ async function amapGet(url: string): Promise<Record<string, unknown>> {
 }
 
 /** 高德 POI text 单点定位（名称 + 目的地消歧）→ GCJ-02 坐标 + adcode；失败回 null */
-export async function amapPoiLocate(apiKey: string, name: string, city: string): Promise<AmapGeoPoint | null> {
+export async function amapPoiLocate(apiKey: string, name: string, city: string): Promise<GeocodedPoint | null> {
   const cacheKey = `${city}:${name}`.trim().toLowerCase();
   const cached = poiLocateCache.get(cacheKey);
   if (cached !== undefined) return cached;
@@ -65,7 +59,7 @@ export async function amapPoiLocate(apiKey: string, name: string, city: string):
 }
 
 /** 高德 v3 地理编码（结构化地址）→ GCJ-02 坐标 + adcode；失败回 null */
-export async function amapGeocode(apiKey: string, name: string, city: string): Promise<AmapGeoPoint | null> {
+export async function amapGeocode(apiKey: string, name: string, city: string): Promise<GeocodedPoint | null> {
   const cacheKey = `${city}:${name}`.trim().toLowerCase();
   const cached = geocodeCache.get(cacheKey);
   if (cached !== undefined) return cached;
@@ -83,12 +77,6 @@ export async function amapGeocode(apiKey: string, name: string, city: string): P
   });
   geocodeCache.set(cacheKey, point);
   return point;
-}
-
-export type GeocodeOrigin = 'amap-poi' | 'amap-geocode' | 'nominatim';
-
-export interface GeocodedPlace extends AmapGeoPoint {
-  origin: GeocodeOrigin;   // 链路每级如实标注来源
 }
 
 /**
@@ -110,7 +98,6 @@ export async function geocodeActivity(
     if (geo) return { ...geo, origin: 'amap-geocode' };
   }
   // Nominatim 兜底（WGS-84）→ 统一转 GCJ-02，与全链坐标系一致
-  const wgs = (await nominatimGeocode(`${city} ${name}`)) ?? (await nominatimGeocode(name));
-  if (wgs) return { ...wgs84ToGcj02(wgs.lat, wgs.lng), adcode: '', origin: 'nominatim' };
-  return null;
+  const fallback = await geocodeFallbackGcj02(name, city);
+  return fallback ? { ...fallback, origin: 'nominatim' } : null;
 }

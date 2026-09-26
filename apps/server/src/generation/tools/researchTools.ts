@@ -12,7 +12,7 @@ import {
   type ResearchPoi,
 } from '@tripweaver/shared';
 import { defineTool } from './defineTool';
-import type { PoiSource } from '../../integrations/amap/poiSource';
+import type { PoiSource } from '../../integrations/geoContracts';
 import type { SearchSource } from '../../integrations/websearch/searchSource';
 import { matchReservationSeed } from '../../data/reservationSeeds';
 import { findXhsEvidence, findXhsPlace } from '../../services/xhsPlaceService';

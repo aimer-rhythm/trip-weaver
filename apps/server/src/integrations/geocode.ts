@@ -5,8 +5,10 @@
 // （「城市 名称」+「名称」），14 个活动 ≈166s 全花在等超时上（实测单地点 22.3s，且全部返回 null）。
 // 因此：① 超时 10s → 2.5s；② 加进程级熔断，连续失败达阈值后不再发请求。
 // 熔断取进程级而非任务级：Nominatim 是全局外部服务，不可达与单次生成无关（对照 amap route 的任务级熔断）。
+import { wgs84ToGcj02 } from '@tripweaver/shared';
 import { createSerialQueue } from '../lib/serialQueue';
 import { TtlCache } from '../lib/ttlCache';
+import type { GeocodedPoint } from './geoContracts';
 
 const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
 const USER_AGENT = 'tripweaver/0.1 (open-source trip planner; https://github.com/tripweaver)';
@@ -88,4 +90,15 @@ export async function geocode(query: string): Promise<GeoPoint | null> {
   // 失败不写缓存：服务恢复后立刻有机会拿到真实坐标，不必等 24h 负缓存过期
   if (!failed) cache.set(key, point);
   return point;
+}
+
+/**
+ * 坐标解析链的公共兜底级（各服务商适配器链路的最后一级）：
+ * Nominatim 查询（WGS-84）→ 转 GCJ-02，与全库坐标系一致；先试「城市 名称」再单独试「名称」。
+ * origin 由调用方标注 —— 各链路的上一级不同，这里不知道自己是第几级。
+ */
+export async function geocodeFallbackGcj02(name: string, city: string): Promise<GeocodedPoint | null> {
+  const wgs = (await geocode(`${city} ${name}`)) ?? (await geocode(name));
+  if (!wgs) return null;
+  return { ...wgs84ToGcj02(wgs.lat, wgs.lng), adcode: '' };
 }

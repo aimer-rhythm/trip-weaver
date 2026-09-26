@@ -2,7 +2,9 @@
 // + 任务级连续失败熔断（createRouteBreaker）：达阈值不再发请求不扣额度 / 成功清零计数 / 未发起的请求不计失败
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ROUTE_BREAKER_THRESHOLD, createRouteBreaker, downsamplePolyline, routeEstimate } from '../integrations/amap/route';
+import { ROUTE_BREAKER_THRESHOLD } from '../integrations/routeBreaker';
+import { downsamplePolyline } from '../lib/polyline';
+import { createAmapRouteBreaker, routeEstimate } from '../integrations/amap/route';
 
 const originalFetch = globalThis.fetch;
 
@@ -128,10 +130,10 @@ test('downsamplePolyline：长折线抽稀后 ≤4000 字符且保留首尾点',
   assert.ok(out.endsWith('116.1999,39.1999'));
 });
 
-// ---------- 任务级连续失败熔断 createRouteBreaker ----------
+// ---------- 任务级连续失败熔断 createAmapRouteBreaker ----------
 // 坐标空间用 25.x/26.x/27.x 段，避开其它用例的模块级 24h 成功缓存
 
-test('createRouteBreaker：连续失败达阈值熔断——不再发请求、不扣额度、warn 恰一条', async () => {
+test('createAmapRouteBreaker：连续失败达阈值熔断——不再发请求、不扣额度、warn 恰一条', async () => {
   const { calls } = mockFetchOnce({ status: '0', info: 'CUQPS_HAS_EXCEEDED_THE_LIMIT' });
   const warns: string[] = [];
   const originalWarn = console.warn;
@@ -139,7 +141,7 @@ test('createRouteBreaker：连续失败达阈值熔断——不再发请求、�
     warns.push(String(msg));
   };
   try {
-    const breaker = createRouteBreaker();
+    const breaker = createAmapRouteBreaker('k');
     let acquired = 0;
     const tryAcquire = () => {
       acquired += 1;
@@ -148,7 +150,6 @@ test('createRouteBreaker：连续失败达阈值熔断——不再发请求、�
     // 每次换点对：证明计数按「连续失败次数」而非按点对（负缓存已拆，同点对本也会重试）
     for (let i = 0; i < ROUTE_BREAKER_THRESHOLD; i++) {
       const r = await breaker.estimate(
-        'k',
         { lat: 25.1 + i * 0.01, lng: 100.1 },
         { lat: 25.2 + i * 0.01, lng: 100.2 },
         'walk',
@@ -161,7 +162,7 @@ test('createRouteBreaker：连续失败达阈值熔断——不再发请求、�
     assert.equal(calls.length, ROUTE_BREAKER_THRESHOLD, '阈值之前每次都发起真实请求');
     assert.equal(acquired, ROUTE_BREAKER_THRESHOLD, '真实请求逐次扣额度');
     // 熔断后：直接回 null（上层走启发式），不发请求也不扣额度
-    const after = await breaker.estimate('k', { lat: 25.8, lng: 100.8 }, { lat: 25.9, lng: 100.9 }, 'walk', {}, tryAcquire);
+    const after = await breaker.estimate({ lat: 25.8, lng: 100.8 }, { lat: 25.9, lng: 100.9 }, 'walk', {}, tryAcquire);
     assert.equal(after, null, '熔断后回 null，调用方降级启发式');
     assert.equal(calls.length, ROUTE_BREAKER_THRESHOLD, '熔断后不再发起真实请求');
     assert.equal(acquired, ROUTE_BREAKER_THRESHOLD, '熔断跳过的请求不消耗 route 额度');
@@ -171,35 +172,35 @@ test('createRouteBreaker：连续失败达阈值熔断——不再发请求、�
   }
 });
 
-test('createRouteBreaker：中途一次成功清零连续失败计数', async () => {
-  const breaker = createRouteBreaker();
+test('createAmapRouteBreaker：中途一次成功清零连续失败计数', async () => {
+  const breaker = createAmapRouteBreaker('k');
   mockFetchOnce({ status: '0', info: 'TIMEOUT' });
   for (let i = 0; i < ROUTE_BREAKER_THRESHOLD - 1; i++) {
-    await breaker.estimate('k', { lat: 26.1 + i * 0.01, lng: 101.1 }, { lat: 26.2 + i * 0.01, lng: 101.2 }, 'walk', {}, () => true);
+    await breaker.estimate({ lat: 26.1 + i * 0.01, lng: 101.1 }, { lat: 26.2 + i * 0.01, lng: 101.2 }, 'walk', {}, () => true);
   }
   assert.equal(breaker.failStreak(), ROUTE_BREAKER_THRESHOLD - 1);
   assert.equal(breaker.isOpen(), false, '差一次未达阈值');
   // 一次成功：清零计数，熔断不开启
   mockFetchOnce({ status: '1', route: { paths: [{ distance: '1000', cost: { duration: '600' }, steps: [] }] } });
-  const ok = await breaker.estimate('k', { lat: 26.5, lng: 101.5 }, { lat: 26.6, lng: 101.6 }, 'walk', {}, () => true);
+  const ok = await breaker.estimate({ lat: 26.5, lng: 101.5 }, { lat: 26.6, lng: 101.6 }, 'walk', {}, () => true);
   assert.ok(ok, '成功结果原样透传');
   assert.equal(breaker.failStreak(), 0, '成功清零连续失败计数');
   // 清零后再失败：从 1 重新计，不熔断
   const { calls } = mockFetchOnce({ status: '0', info: 'TIMEOUT' });
-  await breaker.estimate('k', { lat: 26.7, lng: 101.7 }, { lat: 26.8, lng: 101.8 }, 'walk', {}, () => true);
+  await breaker.estimate({ lat: 26.7, lng: 101.7 }, { lat: 26.8, lng: 101.8 }, 'walk', {}, () => true);
   assert.equal(calls.length, 1, '清零后仍正常发起真实请求');
   assert.equal(breaker.failStreak(), 1);
   assert.equal(breaker.isOpen(), false);
 });
 
-test('createRouteBreaker：额度拒绝与 transit 缺 adcode 不发请求、不计失败', async () => {
+test('createAmapRouteBreaker：额度拒绝与 transit 缺 adcode 不发请求、不计失败', async () => {
   const { calls } = mockFetchOnce({ status: '0', info: 'TIMEOUT' });
-  const breaker = createRouteBreaker();
+  const breaker = createAmapRouteBreaker('k');
   // 任务级上限拒绝：未发请求 → 不计连续失败
-  assert.equal(await breaker.estimate('k', { lat: 27.1, lng: 102.1 }, { lat: 27.2, lng: 102.2 }, 'walk', {}, () => false), null);
+  assert.equal(await breaker.estimate({ lat: 27.1, lng: 102.1 }, { lat: 27.2, lng: 102.2 }, 'walk', {}, () => false), null);
   // transit 缺 adcode：在扣额度之前拦截 → 不扣额度、不计失败
   let acquired = 0;
-  const r = await breaker.estimate('k', { lat: 27.3, lng: 102.3 }, { lat: 27.4, lng: 102.4 }, 'transit', {}, () => {
+  const r = await breaker.estimate({ lat: 27.3, lng: 102.3 }, { lat: 27.4, lng: 102.4 }, 'transit', {}, () => {
     acquired += 1;
     return true;
   });

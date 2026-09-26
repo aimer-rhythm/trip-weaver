@@ -1,5 +1,5 @@
 import type { Activity, ResearchPoi } from '@tripweaver/shared';
-import type { AmapGeoPoint } from '../integrations/amap/geocoder';
+import type { GeocodedPoint } from '../integrations/geoContracts';
 
 /** Generation-only hints. They are stripped when DraftTrip becomes a persisted Trip. */
 export interface PlaceHint {
@@ -8,7 +8,7 @@ export interface PlaceHint {
 }
 
 export type DraftActivity = Activity & PlaceHint;
-export type ResearchLocation = Readonly<AmapGeoPoint>;
+export type ResearchLocation = Readonly<GeocodedPoint>;
 
 export function isUsableResearchLocation(point: ResearchLocation): boolean {
   return Number.isFinite(point.lat) && Number.isFinite(point.lng)

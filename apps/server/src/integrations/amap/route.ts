@@ -2,8 +2,13 @@
 // 纪律沿用四道闸：与 geocoder 共用串行队列（350ms）+ 24h TTL 缓存（键=坐标取整5位+mode，仅缓存成功结果）；
 // 任务级上限 ROUTE_MAX_PER_TASK 与日额度由 generation/geoPipeline 把关并计入 amap_calls。
 // 任何故障回 null —— 上层降级 legEstimator 启发式，生成流程永不因此失败。
+// 09-25：对外形状改由 integrations/geoContracts.ts 定义（供天地图同形实现），
+// 任务级熔断器抽到 integrations/routeBreaker.ts（provider 中立），本文只保留高德特有的绑定与前置拦截。
 import type { LegMode } from '@tripweaver/shared';
 import { TtlCache } from '../../lib/ttlCache';
+import { downsamplePolyline } from '../../lib/polyline';
+import { createRouteBreaker } from '../routeBreaker';
+import type { GeoPoint, RouteBreaker, RouteEstimate, RouteOpts } from '../geoContracts';
 import { amapQueue } from './geocoder';
 
 const ROUTE_URLS: Record<LegMode, string> = {
@@ -14,42 +19,12 @@ const ROUTE_URLS: Record<LegMode, string> = {
 };
 
 export const ROUTE_MAX_PER_TASK = 30;   // 单次生成 ≤30 次路径规划，超出走启发式
-export const ROUTE_BREAKER_THRESHOLD = 5;   // 任务级熔断阈值：route 连续失败 ≥5 次即熔断（任一成功清零）
 
-const MAX_POLYLINE_CHARS = 4000;
 const cache = new TtlCache<RouteEstimate>(24 * 60 * 60 * 1000, 300);
-
-export interface GeoPoint {
-  lat: number;
-  lng: number;
-}
-
-export interface RouteEstimate {
-  durationMin: number;
-  distanceM: number;
-  polyline?: string;   // 「lng,lat;lng,lat…」抽稀后串；超长丢弃仅留时长距离
-}
-
-export interface RouteOpts {
-  city1?: string;   // 起点 adcode（transit 必需）
-  city2?: string;   // 终点 adcode（transit 必需）
-}
 
 function num(v: unknown): number {
   const n = typeof v === 'string' ? Number.parseFloat(v) : typeof v === 'number' ? v : NaN;
   return Number.isFinite(n) ? n : 0;
-}
-
-/** 折线抽稀：等间隔取点压到 4000 字符内；仍超长则整体丢弃（回 undefined） */
-export function downsamplePolyline(points: string[]): string | undefined {
-  const clean = points.filter(Boolean);
-  if (!clean.length) return undefined;
-  // 单点约 20 字符（含分隔符），据此估算保留点数
-  const keep = Math.max(2, Math.floor(MAX_POLYLINE_CHARS / 20));
-  const step = Math.max(1, Math.ceil(clean.length / keep));
-  const sampled = clean.filter((_, i) => i % step === 0 || i === clean.length - 1);
-  const joined = sampled.join(';');
-  return joined.length <= MAX_POLYLINE_CHARS ? joined : undefined;
 }
 
 /** 从 v5 步行/驾车 paths[0] 或公交 transits[0] 中提取时长（秒）/距离（米）/折线点 */
@@ -119,61 +94,20 @@ export async function routeEstimate(
   return estimate;
 }
 
-// ---------- 任务级连续失败熔断（circuit breaker，07-18） ----------
-// 背景：负缓存拆除后，本机/网络异常导致 route 大面积超时（单次硬等 10s + 350ms 队列间隔）时，
-// 首轮 geoPipeline、层3 修复器定向重算、修订轮会把失败段反复真实重试，最坏
-// ROUTE_MAX_PER_TASK×10.35s≈5.2min，叠加 LLM 推理直接吃穿整任务 10min 超时（终态 cancelled）。
-// 语义：同一生成任务内连续失败（超时/网络错/status!=1/无方案，适配层统一吞错回 null）达阈值
-// → 熔断开启：后续 estimate 直接回 null（调用方走启发式降级），不再发请求、不消耗 route 额度；
-// 任一次成功（含缓存命中）清零计数。状态为任务级会话内存，不跨任务不持久化 —— 下个任务重新给高德机会。
+// ---------- 任务级连续失败熔断（circuit breaker，07-18；09-25 抽出为 provider 中立核心） ----------
+// 阈值、语义与 warn 契约见 integrations/routeBreaker.ts；这里只绑定高德适配器与它特有的前置拦截。
 
-export interface RouteBreaker {
-  /** 熔断是否已开启：开启后调用方可提前跳过 adcode 解析等前置准备 */
-  isOpen(): boolean;
-  /** 当前连续失败计数（成功清零；供日志与测试观测） */
-  failStreak(): number;
-  /**
-   * 经熔断与额度闸门包装的路径规划。
-   * @param tryAcquire 任务级 route 额度记账回调（拒绝则不发请求）；熔断开启时不调用 —— 没发请求就不扣额度。
-   * 回 null 且不计失败的情形：熔断已开启 / transit 缺 adcode / 额度拒绝（三者均未发起真实请求）。
-   */
-  estimate(
-    apiKey: string,
-    origin: GeoPoint,
-    dest: GeoPoint,
-    mode: LegMode,
-    opts: RouteOpts,
-    tryAcquire: () => boolean,
-  ): Promise<RouteEstimate | null>;
+/** 高德特有前置拦截：transit 缺 adcode 时 routeEstimate 不会发真实请求，
+ * 应在扣额度之前拦截 —— 不扣额度、也不计连续失败 */
+function amapMissingAdcode(_origin: GeoPoint, _dest: GeoPoint, mode: LegMode, opts: RouteOpts): boolean {
+  return mode === 'transit' && (!opts.city1 || !opts.city2);
 }
 
-/** 每个生成任务（geoSession）各建一个实例：熔断状态与该任务同生命周期 */
-export function createRouteBreaker(): RouteBreaker {
-  let failStreak = 0;
-  let open = false;
-  return {
-    isOpen: () => open,
-    failStreak: () => failStreak,
-    async estimate(apiKey, origin, dest, mode, opts, tryAcquire) {
-      if (open) return null;   // 熔断开启：不发请求、不扣额度，调用方直接启发式
-      // transit 缺 adcode 时 routeEstimate 不会发真实请求：提前拦截，不扣额度也不计失败
-      if (mode === 'transit' && (!opts.city1 || !opts.city2)) return null;
-      if (!tryAcquire()) return null;   // 任务级上限拒绝：未发请求，不计失败
-      const route = await routeEstimate(apiKey, origin, dest, mode, opts);
-      if (route) {
-        failStreak = 0;   // 任一次成功（含缓存命中）清零连续失败
-        return route;
-      }
-      // 走到这里 = 一次真实调用尝试失败（超时/网络错/status!=1/无方案）
-      failStreak += 1;
-      if (failStreak >= ROUTE_BREAKER_THRESHOLD) {
-        open = true;
-        // 生成会话层无 Fastify logger 可达：单行 warn 供运维定位「整任务全启发式」根因，无敏感信息
-        console.warn(
-          `[amap-route] 路径规划连续失败 ${failStreak} 次（超时/网络错/status!=1/无方案），本任务熔断：后续通勤不再请求高德，直接启发式降级`,
-        );
-      }
-      return null;
-    },
-  };
+/** 每个生成任务（geoSession）各建一个实例：熔断状态与该任务同生命周期；apiKey 绑定在适配器内 */
+export function createAmapRouteBreaker(apiKey: string): RouteBreaker {
+  return createRouteBreaker({
+    estimate: (origin, dest, mode, opts) => routeEstimate(apiKey, origin, dest, mode, opts),
+    skip: amapMissingAdcode,
+    label: '[amap-route]',
+  });
 }
