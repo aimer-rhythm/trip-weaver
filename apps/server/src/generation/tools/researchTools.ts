@@ -109,7 +109,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
     name: 'search_pois',
     label: '搜索地点',
     description:
-      '按类目搜索目的地的真实地点（高德数据），返回名称、类型、地址、评分与图片。用途是补知识库未覆盖的地点与封面图——候选坐标由系统从知识库取，不必为了坐标反复调它；餐饮动态价格、评分和营业信息不作为行程事实。',
+      '按类目搜索目的地的真实地点（天地图数据），返回名称、类型与地址。用途只有一个：补知识库未覆盖的地点——候选坐标由系统从知识库取，不必为了坐标反复调它；天地图**不提供评分、人均、营业时间与图片**，不要反复追问这些字段。',
     parameters: Type.Object({
       category: Type.String({ description: '类目：attraction（景点）/ food（美食）/ hotel（住宿）' }),
       keyword: Type.String({ description: '搜索关键词，如「必去景点」「本地菜」「市中心酒店」，不必带目的地名' }),
@@ -122,7 +122,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       const pois = await poiSource.searchPois(category, params.keyword, destination);
       if (!pois.length) {
         return {
-          content: text('没有找到相关地点（高德数据源不可用、已达调用上限或无结果）。可换个关键词，或基于你自己的知识直接 add_candidate（coverUrl 留空）。'),
+          content: text('没有找到相关地点（天地图数据源不可用、未开通搜索权限、已达调用上限或无结果）。可换个关键词，或基于你自己的知识直接 add_candidate。'),
           details: { count: 0 },
         };
       }
@@ -212,7 +212,6 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       const reservation = (RESERVATION_STATUSES as readonly string[]).includes(params.reservation ?? '')
         ? (params.reservation as ResearchPoi['reservation'])
         : 'unknown';
-      const coverUrl = (params.coverUrl ?? '').trim().slice(0, 300);
       const sourceLinks = (params.sourceLinks ?? [])
         .map((s) => ({ title: (s.title ?? '').trim().slice(0, 100), url: (s.url ?? '').trim().slice(0, 300) }))
         .filter((s) => s.title && isHttpUrl(s.url));
@@ -225,7 +224,6 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         reservation,
         sourceLinks,
       };
-      if (isHttpUrl(coverUrl)) poi.coverUrl = coverUrl;
       if (params.reservationNote?.trim()) poi.reservationNote = params.reservationNote.trim().slice(0, 120);
 
       // 营业时间自动回填：同名命中 search_pois 捕获的 opentime 原文（仅 attraction 参与闭馆日检测）

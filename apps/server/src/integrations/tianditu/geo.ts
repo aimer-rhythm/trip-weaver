@@ -1,4 +1,4 @@
-// 天地图地理编码适配层（09-25，MAP_PROVIDER=tianditu 时充当高德同位置的主链）
+// 天地图地理编码适配层（09-25）：路线规划 + 地理编码链在高德缺 Key 时充当主链
 // 与高德同形：出 GeocodedPlace（GCJ-02）+ origin 如实标注；天地图不下发 adcode → 回空串。
 // 坐标系：天地图用 CGCS2000（≈WGS-84），返回坐标入站时经 wgs84ToGcj02 转回 GCJ-02 ——
 // 转换收敛在本文件内，上层（geoPipeline）拿到的永远是库内唯一坐标系 GCJ-02。

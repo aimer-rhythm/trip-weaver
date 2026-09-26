@@ -17,10 +17,9 @@ import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
 import { searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
-import { geoBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
+import { poiBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
 import { getNullPoiSource } from '../integrations/nullPoiSource';
 import { POI_MAX_PER_TASK, createTaskPoiSource } from '../integrations/poiTaskSource';
-import { env } from '../env';
 import {
   SEARCH_MAX_PER_TASK,
   createTaskSearchSource,
@@ -90,9 +89,9 @@ export async function runGeneration(
     (error: unknown) => ({ ok: false as const, error }),
   );
   // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
-  const poiSource = await resolvePoiSourceForUser(job.userId);
+  const poiSource = resolvePoiSourceForUser();
   const poiBase =
-    (await geoBudgetRemaining()) >= POI_MAX_PER_TASK ? poiSource.source : getNullPoiSource();
+    (await poiBudgetRemaining()) >= POI_MAX_PER_TASK ? poiSource.source : getNullPoiSource();
   const searchBase =
     (await searchBudgetRemaining()) >= SEARCH_MAX_PER_TASK
       ? (await resolveSearchSourceForUser(job.userId)).source
@@ -102,11 +101,16 @@ export async function runGeneration(
   // 地理会话（v0.5）：geocode/route 统一服务商与凭据解析、任务上限与日额度记账；出行方式基调来自表单（ST3）
   const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
   await geo.init();   // 09-18：凭据/额度解析 PG 化后为异步，须在任何 geo 调用前完成
-  // 地理调用按当前生效的服务商计入各自用量列：两家日额度独立，切回高德不必等天地图额度次日重置。
+  // 地理调用按链分流计入各自用量列：POI 搜索固定天地图，路线 + 地理编码走另一条（高德优先）。
+  // 两条链各自独立计数，不再靠单一开关二选一（高德缺 Key 时地理链自己降级到天地图，也要如实记到天地图列）。
   // 返回值必须现算 —— poi/geo 的统计在生成过程中持续增长。
   const providerCallCounts = () => {
-    const calls = poi.stats.calls + geo.stats.calls;
-    return env.mapProvider === 'tianditu' ? { amapCalls: 0, tiandituCalls: calls } : { amapCalls: calls, tiandituCalls: 0 };
+    const geoCalls = geo.stats.calls;
+    const geoTianditu = geo.providerKind() === 'tianditu';
+    return {
+      amapCalls: geoTianditu ? 0 : geoCalls,
+      tiandituCalls: poi.stats.calls + (geoTianditu ? geoCalls : 0),
+    };
   };
   const enabledSources: DataSourceKind[] = [
     ...(poi.source.kind === 'null' ? [] : ([poi.source.kind] as const)),

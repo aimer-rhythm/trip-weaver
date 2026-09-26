@@ -2,54 +2,58 @@ import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { SettingsPutSchema } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
 import { getSettingsView, upsertSettings } from '../services/settingsService';
-import { resolvePoiSourceForUser } from '../integrations/geoProvider';
+import { resolveGeoProvider, resolvePoiSourceForUser } from '../integrations/geoProvider';
 import { resolveSearchSourceForUser } from '../integrations/websearch/searchSource';
-import { env, type MapProvider } from '../env';
+import type { MapProvider } from '../env';
 import type { SourceStatus } from '../integrations/sourceStatus';
 
 // 自检结果 60s 记忆化：按用户与凭据 revision 隔离，缓存中不保存凭据或数据源实例。
 const STATUS_TTL_MS = 60_000;
 interface SourceStatusMemo {
   at: number;
-  geoCredentialRevision: string;
+  poiCredentialRevision: string;
   searchCredentialRevision: string;
-  value: { geo: SourceStatus; websearch: SourceStatus };
+  value: { poi: SourceStatus; websearch: SourceStatus };
 }
 
 const statusMemoByUser = new Map<string, SourceStatusMemo>();
 
 export interface SourcesStatusView {
-  /** 当前生效的地图服务商：前端据此标注自检卡片走的是哪条链路 */
-  provider: MapProvider;
-  geo: SourceStatus;
+  /** POI 搜索链：**固定天地图**，与 Key 自动决策无关（配额分工，见 env.ts 注释） */
+  searchProvider: MapProvider;
+  /** 路线规划 + 地理编码链：高德优先，缺 AMAP_KEY 时降级天地图；'null' = 无凭据 */
+  routeProvider: MapProvider | 'null';
+  /** POI 搜索源自检（原字段名 `geo`，内容一直是 POI 源 —— 改名消除与 routeProvider 的混淆） */
+  poi: SourceStatus;
   websearch: SourceStatus;
 }
 
 export async function probeSourcesForUser(userId: string): Promise<SourcesStatusView> {
-  const resolvedPoiSource = await resolvePoiSourceForUser(userId);
+  const resolvedPoiSource = resolvePoiSourceForUser();
   const resolvedSearchSource = await resolveSearchSourceForUser(userId);
+  const providers = { searchProvider: 'tianditu' as const, routeProvider: (await resolveGeoProvider(userId)).kind };
   const memo = statusMemoByUser.get(userId);
   if (
     memo &&
-    memo.geoCredentialRevision === resolvedPoiSource.credentialRevision &&
+    memo.poiCredentialRevision === resolvedPoiSource.credentialRevision &&
     memo.searchCredentialRevision === resolvedSearchSource.credentialRevision &&
     Date.now() - memo.at <= STATUS_TTL_MS
   ) {
-    return { provider: env.mapProvider, ...memo.value };
+    return { ...providers, ...memo.value };
   }
 
-  const [geo, websearch] = await Promise.all([
+  const [poi, websearch] = await Promise.all([
     resolvedPoiSource.source.selfCheck(),
     resolvedSearchSource.source.selfCheck(),
   ]);
-  const value = { geo, websearch };
+  const value = { poi, websearch };
   statusMemoByUser.set(userId, {
     at: Date.now(),
-    geoCredentialRevision: resolvedPoiSource.credentialRevision,
+    poiCredentialRevision: resolvedPoiSource.credentialRevision,
     searchCredentialRevision: resolvedSearchSource.credentialRevision,
     value,
   });
-  return { provider: env.mapProvider, ...value };
+  return { ...providers, ...value };
 }
 
 export const settingsRoutes: FastifyPluginAsyncTypebox = async (app) => {

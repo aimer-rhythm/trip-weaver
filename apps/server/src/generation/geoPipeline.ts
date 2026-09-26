@@ -5,6 +5,7 @@
 // 走哪家服务商由 integrations/geoProvider 决定（09-25）：本文件只认门面，不直接引用 amap/* 或 tianditu/*。
 import { LODGING_SENTINEL, effectiveLegMode, haversineMeters, type LegMode, type ResearchPoi, type TransitLeg } from '@tripweaver/shared';
 import type { GeocodedPlace } from '../integrations/geoContracts';
+import type { MapProvider } from '../env';
 import { ROUTE_MAX_PER_TASK } from '../integrations/amap/route';
 import { createNullGeoProvider, resolveGeoProvider, type GeoProvider } from '../integrations/geoProvider';
 import { estimateLeg } from './legEstimator';
@@ -18,6 +19,9 @@ const GEOCODE_PIPELINE_CONCURRENCY = 2;   // 仅重叠高德与 Nominatim 独立
 export interface GeoSession {
   /** 当前生效服务商的调用尝试次数（geocode + route 合计）：计入 usage 事件与 generations 的用量列 */
   stats: { calls: number };
+  /** 路线/地理编码链实际生效的服务商（init 后才有值；'null' = 无凭据）。供用量列按家分流记账 ——
+   *  POI 搜索固定天地图，与这条链各记各的，不能再靠单一开关判断。 */
+  providerKind(): MapProvider | 'null';
   /** 异步初始化（09-18 PG 化后凭据与额度解析为 async）：须在任何其他方法前 await 一次 */
   init(): Promise<void>;
   /** 调研结束后注入任务内真实地点；坐标仍由 geocodeAll 暂存、校验后采纳。 */
@@ -90,6 +94,7 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
 
   return {
     stats,
+    providerKind: () => provider.kind,
 
     async init() {
       // 任务级预留量闸门：日额度余额不足「定位上限 + 通勤上限」则整任务不用外部服务商，直接降级（不断服）。

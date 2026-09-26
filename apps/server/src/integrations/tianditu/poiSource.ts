@@ -1,8 +1,10 @@
-// 天地图地名搜索 V2 适配层（09-25，MAP_PROVIDER=tianditu 时的 POI 源）
+// 天地图地名搜索 V2 适配层（09-25）：POI 搜索**固定**走这里（高德 v5/place/text 与地理编码主路径
+// 共用同一份个人配额，实测会被打满 —— 这是配额分工，不是可用性降级）
 // 与高德 POI 源同形（形状见 integrations/geoContracts.ts），但**字段能力更弱**：
 // 只有名称 / 地址 / 坐标 / 电话 / 类型，没有评分、人均、营业时间、图片 —— 这四个字段一律留空
 // （上游对空值已有容忍，见 prd R5）。另有两处结构性差异：
-// ① 该接口需在天地图控制台**单独申请权限**；未开通时按请求失败处理 → 空数组 → 调研自动降级为模型知识；
+// ① 该接口需在天地图控制台**单独申请权限**；未开通时按请求失败处理 → 空数组 → 调研自动降级为模型知识
+//    （**不回落高德**：那会把刚腾给地理编码的 v5/place/text 配额重新挤掉）；
 // ② 没有高德那样的 POI 分类码（types）参数，类目不参与请求 —— 召回完全靠关键词。
 //
 // 待真实 tk 实测确认项（见 research/tianditu-api.md 第 6 节）：queryType/mapBound 的必需组合。
@@ -162,7 +164,7 @@ export class TiandituPoiSource implements PoiSource {
   }
 }
 
-/** 天地图只做站点级单轨凭据：未配置 tk 时回 Null 源，**不回退高德**（见 prd Decisions） */
+/** 天地图只做站点级单轨凭据：未配置 tk 时回 Null 源，**不回落高德**（配额分工，见 geoProvider 注释） */
 export function resolveTiandituPoiSource(tk: string | null | undefined): PoiSource {
   return tk ? new TiandituPoiSource(tk) : getNullPoiSource();
 }

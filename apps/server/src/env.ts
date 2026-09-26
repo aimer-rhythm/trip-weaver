@@ -44,21 +44,22 @@ if (githubClientId && !appBaseUrl) {
   throw new Error('[env] 启用 GitHub 登录需要设置 APP_BASE_URL（用于构造回调地址，例如 https://your.domain）');
 }
 
-// 地图服务商（09-25）：站点级手动单选，不做自动回退 —— 行为可预测，额度与故障排查可控。
-// 显式选天地图却没给 Key 时走 Null 降级并留一条 warn，**不静默回退高德**（静默双开会让记账与排查失控）。
+// 地图服务商（09-25 二次调整）：两家**互补共存**，不再是站点级二选一 —— MAP_PROVIDER 已废弃。
+//   · POI 搜索（search_pois） → 固定天地图：高德 v5/place/text 与地理编码主路径共用同一份个人配额，
+//                              实测会被打满（USER_DAILY_QUERY_OVER_LIMIT 10044），两者互相挤占
+//   · 路线规划 + 地理编码      → 高德优先（有 AMAP_KEY 就用），缺失时降级天地图
+// 天地图搜索不可用（未配 tk / 未开通地名搜索权限 / 请求失败）→ 空结果 + 模型知识，**不回落高德**。
 const MAP_PROVIDERS = ['amap', 'tianditu'] as const;
+/** 服务商标识：两家并存，各自承担不同能力（见上） */
 export type MapProvider = (typeof MAP_PROVIDERS)[number];
 
 const amapKey = str('AMAP_KEY');
 const tiandituKey = str('TIANDITU_KEY');
-const rawMapProvider = str('MAP_PROVIDER');
-if (rawMapProvider && !MAP_PROVIDERS.includes(rawMapProvider as MapProvider)) {
-  throw new Error(`[env] MAP_PROVIDER 取值不正确："${rawMapProvider}"，可选 amap | tianditu`);
+if (!amapKey) {
+  console.warn('[env] AMAP_KEY 未配置：路线规划与地理编码降级为天地图（天地图 Key 也缺则整链降级）');
 }
-// 缺省：有高德 Key 用高德，否则有天地图 Key 用天地图，都没有则保持存量行为（地理链路 Null 降级）
-const mapProvider = (rawMapProvider || (amapKey ? 'amap' : tiandituKey ? 'tianditu' : 'amap')) as MapProvider;
-if (mapProvider === 'tianditu' && !tiandituKey) {
-  console.warn('[env] MAP_PROVIDER=tianditu 但 TIANDITU_KEY 为空：地理数据源按未配置降级，不会回退高德');
+if (!tiandituKey) {
+  console.warn('[env] TIANDITU_KEY 未配置：地点搜索不可用，调研只能依赖知识库与模型知识');
 }
 
 export const env = {
@@ -89,8 +90,7 @@ export const env = {
   genDailyLimit: int('GEN_DAILY_LIMIT', 3),
   chatDailyLimit: int('CHAT_DAILY_LIMIT', 40),   // 每日对话轮数上限（独立于生成配额；对话轮次不消耗 GEN_DAILY_LIMIT）
   // 调研数据源（均可选；缺失时对应源 Null 降级，两者皆缺 = 纯模型知识调研）
-  mapProvider,                                          // 当前生效的地图服务商（amap | tianditu）
-  amapKey,                                              // 高德 Web 服务 Key
+  amapKey,                                              // 高德 Web 服务 Key（路线规划 + 地理编码）
   amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度
   tiandituKey,                                          // 天地图 Web 服务 Key（接口参数名 tk）
   tiandituDailyBudget: int('TIANDITU_DAILY_BUDGET', 150),   // 全站天地图调用日额度（与高德分别计数）
