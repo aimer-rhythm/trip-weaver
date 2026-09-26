@@ -91,6 +91,12 @@ Rules that keep this from becoming two divergent maps:
 - The JS key and security code are served by `GET /api/settings/config` and are **meant to reach the
   browser** — a JS API key cannot be hidden. Security comes from Amap's domain allowlist, not
   secrecy. Never log them; never treat them as secrets.
+- **Moving a route means re-checking the caller's URL string.** This endpoint started as a planned
+  standalone `/api/config` and ended up mounted under the settings group as `/api/settings/config`;
+  the frontend kept requesting the old path. Typecheck cannot see a wrong URL literal, and the 404
+  degrades **silently into the Leaflet fallback** — indistinguishable from "the key isn't
+  configured". Treat a new endpoint as unverified until one real request has returned its expected
+  body.
 - InfoWindow content is an HTML string, so model-authored text (activity names, descriptions) must
   pass through `escapeHtml` before interpolation. React components cannot be used there; the edit
   button uses data attributes plus one delegated click handler on the host element.

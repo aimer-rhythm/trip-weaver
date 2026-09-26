@@ -41,7 +41,7 @@ function useAmapNamespace(): AmapNamespace | null {
     let cancelled = false;
     void (async () => {
       try {
-        const cfg = await api.get<AmapJsConfig>('/api/config');
+        const cfg = await api.get<AmapJsConfig>('/api/settings/config');
         if (!cfg.amapJsKey || !cfg.amapJsSecurityCode) return; // 未配置：保持 Leaflet
         await loadAmapSdk({ key: cfg.amapJsKey, securityJsCode: cfg.amapJsSecurityCode });
         const namespace = window.AMap;
