@@ -1,5 +1,6 @@
-// 地理工具（前后端共用）：WGS-84 → GCJ-02 官方正向偏移算法 + Haversine 距离
+// 地理工具（前后端共用）：WGS-84 ↔ GCJ-02 双向偏移算法 + Haversine 距离
 // 确定性纯函数，无网络/环境依赖；中国境外坐标不偏移（outOfChina 判定为算法一部分）
+// 反向 gcj02ToWgs84 于 09-25 新增：天地图用 CGCS2000（≈WGS-84），回写库前需转回 GCJ-02
 
 const PI = Math.PI;
 const A = 6378245.0;                 // 克拉索夫斯基椭球长半轴
@@ -38,6 +39,26 @@ export function wgs84ToGcj02(lat: number, lng: number): { lat: number; lng: numb
   dLat = (dLat * 180.0) / (((A * (1 - EE)) / (magic * sqrtMagic)) * PI);
   dLng = (dLng * 180.0) / ((A / sqrtMagic) * Math.cos(radLat) * PI);
   return { lat: lat + dLat, lng: lng + dLng };
+}
+
+/**
+ * GCJ-02 → WGS-84 反向偏移；境外坐标原样返回。
+ *
+ * 正向偏移量随位置变化、无解析反函数，故用不动点迭代逼近：设 w 为 WGS-84 真值，
+ * 每轮用 w -= (fwd(w) - gcj) 修正。正向映射的雅可比接近单位阵（偏移 ~0.005° 对位置的
+ * 导数在 1e-3 量级），误差每轮缩小约三个数量级，3 轮即收敛到 1e-9 度量级（≈0.1mm），
+ * 远优于本项目的米级需求。
+ */
+export function gcj02ToWgs84(lat: number, lng: number): { lat: number; lng: number } {
+  if (outOfChina(lat, lng)) return { lat, lng };
+  let wLat = lat;
+  let wLng = lng;
+  for (let i = 0; i < 3; i++) {
+    const forward = wgs84ToGcj02(wLat, wLng);
+    wLat -= forward.lat - lat;
+    wLng -= forward.lng - lng;
+  }
+  return { lat: wLat, lng: wLng };
 }
 
 /** 球面直线距离（米），Haversine 公式 */
