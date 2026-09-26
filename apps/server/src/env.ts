@@ -54,6 +54,11 @@ const MAP_PROVIDERS = ['amap', 'tianditu'] as const;
 export type MapProvider = (typeof MAP_PROVIDERS)[number];
 
 const amapKey = str('AMAP_KEY');
+// 前端地图渲染的凭据（09-26）：高德 JS API 需要**独立类型**的 Key（创建时选「Web端(JS API)」，
+// 并绑定域名白名单）+ 安全密钥。两者都会明文下发到浏览器 —— 这是 JS API 的设计，
+// 安全性靠域名白名单而不是保密。缺失即视为「未启用高德渲染」，前端静默降级到 Leaflet + 栅格瓦片。
+const amapJsKey = str('AMAP_JS_KEY');
+const amapJsSecurityCode = str('AMAP_JS_SECURITY_CODE');
 const tiandituKey = str('TIANDITU_KEY');
 if (!amapKey) {
   console.warn('[env] AMAP_KEY 未配置：路线规划与地理编码降级为天地图（天地图 Key 也缺则整链降级）');
@@ -91,6 +96,8 @@ export const env = {
   chatDailyLimit: int('CHAT_DAILY_LIMIT', 40),   // 每日对话轮数上限（独立于生成配额；对话轮次不消耗 GEN_DAILY_LIMIT）
   // 调研数据源（均可选；缺失时对应源 Null 降级，两者皆缺 = 纯模型知识调研）
   amapKey,                                              // 高德 Web 服务 Key（路线规划 + 地理编码）
+  amapJsKey,                                            // 高德「Web端(JS API)」Key：前端地图渲染，与 Web 服务 Key 不通用
+  amapJsSecurityCode,                                   // JS API 2.0 必需的安全密钥，与 amapJsKey 一同下发
   amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度
   tiandituKey,                                          // 天地图 Web 服务 Key（接口参数名 tk）
   tiandituDailyBudget: int('TIANDITU_DAILY_BUDGET', 150),   // 全站天地图调用日额度（与高德分别计数）

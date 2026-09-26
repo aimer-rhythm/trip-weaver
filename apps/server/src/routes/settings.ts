@@ -4,7 +4,7 @@ import { requireAuth } from '../auth/guard';
 import { getSettingsView, upsertSettings } from '../services/settingsService';
 import { resolveGeoProvider, resolvePoiSourceForUser } from '../integrations/geoProvider';
 import { resolveSearchSourceForUser } from '../integrations/websearch/searchSource';
-import type { MapProvider } from '../env';
+import { env, type MapProvider } from '../env';
 import type { SourceStatus } from '../integrations/sourceStatus';
 
 // 自检结果 60s 记忆化：按用户与凭据 revision 隔离，缓存中不保存凭据或数据源实例。
@@ -67,4 +67,18 @@ export const settingsRoutes: FastifyPluginAsyncTypebox = async (app) => {
 
   // 调研数据源自检（真实探测，60s 记忆化；未配置时由 Null 源回报降级说明）
   app.get('/sources-status', async (request) => probeSourcesForUser(request.user!.id));
+
+  /**
+   * 前端运行时配置（09-26）：目前只回高德 JS API 的 Key 与安全密钥，供 MapView 决定用哪套渲染。
+   * 放在这里而不是新建 config 路由：这个模块已经是「前端运行时需要的只读信息」的家
+   * （sources-status 同类），且自带 requireAuth。
+   *
+   * ⚠️ 这两个值**有意下发给浏览器** —— JS API 的 Key 必须在客户端可用，无法隐藏；
+   * 安全性由高德的「域名白名单」保证，不靠保密。所以既不要当秘密，也不要打进日志。
+   * 未配置时回空串，前端据此静默降级到 Leaflet。
+   */
+  app.get('/config', async () => ({
+    amapJsKey: env.amapJsKey,
+    amapJsSecurityCode: env.amapJsSecurityCode,
+  }));
 };
