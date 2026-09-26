@@ -66,6 +66,7 @@ npm run dev                        # server:3001 + web:5173
 | `AMAP_DAILY_BUDGET` | | 全站高德调用日额度（默认 150，超出自动降级） |
 | `TIANDITU_KEY` | 建议 | 站点天地图 Web 服务 Key（参数名 `tk`）。**地点搜索固定用它**（高德 `v5/place/text` 与地理编码主路径共用一份个人配额，实测会被打满）。[申请入口](https://console.tianditu.gov.cn/api/key)。差异：地名搜索需单独申请权限，POI 无评分/人均/营业时间/图片，**无步行/骑行路径规划** |
 | `TIANDITU_DAILY_BUDGET` | | 全站天地图调用日额度（默认 150，与高德分别计数、互不影响） |
+| `AMAP_JS_KEY` / `AMAP_JS_SECURITY_CODE` | 可选 | 前端地图渲染用的高德 **「Web端(JS API)」** Key（与 Web 服务 Key **不通用**）与配套安全密钥。两者都会下发到浏览器（JS API 的设计，靠域名白名单限权）。留空则前端地图走 Leaflet + 栅格瓦片 |
 | `SEARCH_API_KEY` | 建议 | 站点默认 Web 搜索 Key；用户可在设置页保存仅自己可用的个人 Key + Base URL，优先级为“个人配置 → 站点 `SEARCH_API_*` → Null 降级”。默认 [LangSearch](https://langsearch.com/) 免费申请 |
 | `SEARCH_API_BASE_URL` | | 站点搜索端点，默认 `https://api.langsearch.com`；个人新配置留空时也使用该默认值，博查同族接口可改 URL+Key 切换 |
 | `SEARCH_DAILY_BUDGET` | | 全站搜索调用日额度（默认 500，超出自动降级） |
@@ -104,7 +105,11 @@ npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏
 1. **天地图地点搜索**：真实地点的名称、地址与坐标。**搜索固定走天地图**——高德 `v5/place/text` 与地理编码主路径共用同一份个人配额，实测会被打满、两者互相挤占。需在[天地图控制台](https://console.tianditu.gov.cn/api/key)申请 **服务端** Key，并在同一处**单独开通「地名搜索」权限**；不可用时回空结果、由模型知识兜底（**不回落高德**）
 2. **Web 搜索 API**：玩法、避雷与「是否需要预约」等攻略信息，带来源链接。用户可保存个人 API Key 与 Base URL（Key 以 AES-256-GCM 加密、仅显示尾号），只用于自己的自检与新生成任务；个人配置优先，清除后回退站点 `SEARCH_API_KEY` + `SEARCH_API_BASE_URL`，两者都不可用时 Null 降级。默认 [LangSearch](https://langsearch.com/)（免费）；[博查](https://open.bochaai.com)为同族接口（约 ¥0.036/次）
 
-地图侧两家是**互补分工**，不是二选一（**没有 `MAP_PROVIDER` 开关**）：地点搜索固定天地图；路线规划 + 地理编码**高德优先**（个人 Key → 站点 `AMAP_KEY` → 天地图 → Nominatim 降级）。两个 Key 都建议配置。天地图无步行/骑行路径规划（回落启发式）、POI 无评分/人均/营业时间/图片，两家的调用额度分别计数、互不影响。前端底图固定用 Leaflet + 高德瓦片（与库内 GCJ-02 自洽），不受上述分工影响。
+地图侧两家是**互补分工**，不是二选一（**没有 `MAP_PROVIDER` 开关**）：地点搜索固定天地图；路线规划 + 地理编码**高德优先**（个人 Key → 站点 `AMAP_KEY` → 天地图 → Nominatim 降级）。两个 Key 都建议配置。天地图无步行/骑行路径规划（回落启发式）、POI 无评分/人均/营业时间/图片，两家的调用额度分别计数、互不影响。
+
+前端底图**默认走 Leaflet + 高德栅格瓦片**；配了高德 **JS API** 凭据后自动切成高德 JS API 渲染 —— 这样才能隐藏未编入行程的 POI 文字（栅格瓦片把文字烘焙进图片，关不掉）。Key 缺失、接口未取到、或 SDK 加载失败/超时都**静默降级**回 Leaflet，编辑器不会出现没有地图的情况。
+
+启用 JS API 渲染需要在[高德控制台](https://console.amap.com/dev/key/app)单独申请一个 **「Web端(JS API)」** 类型的 Key（**与上面的 Web 服务 Key 不通用**）：创建时填**域名白名单**（本地开发填 `localhost`，线上填自己的域名），再把配套的**安全密钥**一起填到 `AMAP_JS_KEY` / `AMAP_JS_SECURITY_CODE`。两个值都会明文下发到浏览器 —— 这是 JS API 的设计，安全性靠域名白名单而不是保密，**不要当成秘密**。前端底图无论走哪条路都是 GCJ-02（与库内坐标同系），不受上述分工影响。
 3. **预约种子表**：仓库内置约 50 条全国热门「需预约」景点（故宫/国博/莫高窟/陕历博等），命中即直接标注预约方式与官方链接，离线可用（`apps/server/src/data/reservationSeeds.json`，随仓库维护）
 
 内置纪律与合规边界：

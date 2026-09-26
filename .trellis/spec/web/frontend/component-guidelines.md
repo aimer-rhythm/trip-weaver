@@ -67,6 +67,34 @@ Do not convert optional secondary-query failure into a full-page failure unless 
 
 Evidence: `apps/web/src/components/Modal.tsx`, `apps/web/src/components/editor/ActivityCard.tsx`, `apps/web/src/components/PoiCard.tsx`.
 
+## Map Rendering: Two Implementations Behind One Panel
+
+`MapView` owns renderer selection; the two canvases only draw the data they are given. The data layer
+(`lib/mapData.ts`) is SDK-free — it produces `MapPoint[]` / `DayLines[]` in **GCJ-02** as `{lat, lng}`
+objects, deliberately **not** `[lat, lng]` tuples: Amap takes `[lng, lat]` and Leaflet takes
+`[lat, lng]`, and that reversed order is a classic bug source.
+
+- **Primary** — `AmapCanvas` (Amap JS API). Its entire reason for existing is `features`: passing
+  `['bg','road','building']` and omitting **`point`** removes the POI text layer. Raster tiles bake
+  that text into the PNG and offer no switch to disable it (`style=` has none; a CSS-filter attempt
+  was made in `b7e85c9` and reverted in `1d5a59b`).
+- **Fallback** — `LeafletCanvas` (Amap raster tiles). Used when no JS key is configured, or when the
+  SDK fails or times out (8 s, `lib/amapLoader.ts`).
+
+Rules that keep this from becoming two divergent maps:
+
+- Selection lives ONLY in `MapView`. Canvases never fetch config or decide anything.
+- Degradation is **silent** apart from one `console.warn`. The fallback is also the initial state —
+  the map renders `LeafletCanvas` while probing, so the editor is never left map-less.
+- `window._AMapSecurityConfig` must be set BEFORE the SDK script loads. Setting it afterwards
+  silently breaks every request, because JS API 2.0 keys require the security code.
+- The JS key and security code are served by `GET /api/settings/config` and are **meant to reach the
+  browser** — a JS API key cannot be hidden. Security comes from Amap's domain allowlist, not
+  secrecy. Never log them; never treat them as secrets.
+- InfoWindow content is an HTML string, so model-authored text (activity names, descriptions) must
+  pass through `escapeHtml` before interpolation. React components cannot be used there; the edit
+  button uses data attributes plus one delegated click handler on the host element.
+
 ## Derived Data Matching
 
 ### Common Mistake: unguarded containment matching between domain lists
