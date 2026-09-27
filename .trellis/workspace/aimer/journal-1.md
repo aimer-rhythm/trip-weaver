@@ -633,3 +633,89 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 16: 景点封面来源工程：上游图库 → Pexels → 高德 + 闸门放宽（09-27）
+
+**Date**: 2026-09-27
+**Task**: 景点封面来源工程：上游图库 → Pexels → 高德 + 闸门放宽（09-27）
+**Package**: server
+**Branch**: `master`
+
+### Summary
+
+四级封面链路（上游图库→Pexels→高德→维基）从零到 20/20 覆盖；高德配额收紧 + 命中回写；Pexels 闸门放宽 45%→55%
+
+### Main Changes
+
+## 封面来源工程：三层来源 + 闸门放宽
+
+本次会话把景点封面从「只有维基降级（国内被墙，等于没图）」做成了一条四级链路：
+
+```
+上游图库（3 城实拍）→ Pexels → 高德 POI 图片 → 中文维基
+```
+
+### 1. 上游图库接入（09-27-xhs-place-images）
+
+- 上游新增 `export_place_images.py`（note_image 按景点归拢 + 转码 1024/webp q80），本仓新增 `seed-xhs-place-images.ts`、`generation/storedCover.ts`、`/media` 静态路由、compose 只读挂载
+- 杭州导出 34 张（4.6 MB，平均 137 KB），33 张写入库，`/media/...` 实测 200 image/webp
+- **踩坑**：manifest 的 `placeId` 一开始用了上游自增 id，导致 33 个地点全部「不在库里」；必须用 `sha256(city+name)[:32]`（与 `canonical_places.id` 同算法）
+- **顺手重构**：`normalizePlaceKey` 从 `generation/scheduling/placeFacts` 下沉到 `lib/placeKey.ts` —— 否则封面适配器导入它就会连库（`db/client` 顶层跑迁移），把纯单测拖成集成测试
+
+### 2. Pexels（09-27-pexels-cover）
+
+- 实测：Pexels 支持 `locale=zh-CN`，中文搜「故宫」返回真图（「北京故宫」「紫禁城」）
+- 文本闸门命中率 45%。三轮实验对比：中文 45% / 加城市前缀 45%（命中集合大洗牌，还放进了错图）/ 英文名 50%
+- 瓶颈不在语言，在 **alt 是摄影师描述、不保证含地名**（`Nanluoguxiang` → `Beijing's local neighborhood`）—— 这类无解
+- 署名：API 条款要求展示指向 Pexels 的链接 → `PexelsCredit` 挂在生成中页 / 备选抽屉 / 编辑器（无 Pexels 图时不渲染）
+
+### 3. 高德 POI 图片（09-27-amap-poi-photos）
+
+- 实测 `v5/place/text` + `show_fields=photos` 返回真图，**无 Referer 校验可直接热链**；URL http/https 混用必须归一成 https
+- 覆盖率 45% → **90%**
+- 配额纪律：`v5/place/text` 属「基础搜索服务」个人 **5,000/月**，而地理编码走的 `v3/geocode/geo` 是另一档 150,000/月 —— 因此单次生成 ≤3 次、进程窗口 40/24h、复用 `amapQueue`，并且**命中后回写 `payload.amapPhoto`**（实测第二轮 3 个地点 0 调用）。回写是把「每地点重复消耗」变成「终身一次」的关键
+- 类型白名单 + 插词容忍闸门：90% → **95%**，零误杀（`龙井村(公交站)` 被类型挡住、`西溪国家湿地公园` 靠分段匹配救回）
+
+### 4. Pexels 闸门放宽（09-27-pexels-gate）
+
+- `per_page` 5 → 15 + 核心词匹配（剥一层通用尾缀、保留 ≥2 字）：45% → **55%**
+- 专门构造反例：`虎跑公园` 不会因为 alt 里出现泛化的「公园」而误命中
+- 最终 20 个真实景点名 **20/20 有图**（放宽前 18/20）
+
+### 教训
+
+- **闸门宁可不出图，也不要错图**；放宽时必须配反例测试（泛化词不能构成命中）
+- **稀缺配额需要「终身一次」机制**（写回库），只靠 TTL 缓存会在过期后重复消耗
+- 跨仓库改动（上游 Python + 本仓 TS）要在 PRD 里写清**依赖顺序**（图片 seed 必须在 places seed 之后）
+- 并行会话同时改同一文件时，用 `git apply --cached` 构造只含自己 hunk 的 patch，避免把别人的改动一起提交
+
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `0a29278` | (see git log) |
+| `3e9c39b` | (see git log) |
+| `88f1798` | (see git log) |
+| `83dcd32` | (see git log) |
+| `e21536d` | (see git log) |
+| `a5ff137` | (see git log) |
+| `67065ca` | (see git log) |
+| `ee42e64` | (see git log) |
+| `d960987` | (see git log) |
+| `5bfb2e4` | (see git log) |
+| `a3922f3` | (see git log) |
+| `def5d2c` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
