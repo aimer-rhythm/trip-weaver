@@ -163,130 +163,41 @@ a { color: var(--color-primary); text-decoration: none; }
 .trip-card-time { font-size: 0.78rem; }
 .trip-card-actions { display: flex; gap: 4px; flex-shrink: 0; }
 
-/* 首页城市选择（09-26） */
-.city-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-.city-card {
+/* 范围日历（09-26）：头行左侧留出箭头槽位，箭头绝对定位在两端；双月并排由 months 控制。
+   尺寸全部走组件级变量（--rc-*），默认值就是新建页单月的那套；首页要双月紧凑版
+   只覆写这几个变量，不用逐条重写选择器（见文件末尾的 .home-page-root 块）。 */
+.range-calendar {
+  --rc-gap: 6px;
+  --rc-month-gap: 12px;
+  --rc-head-height: 30px;
+  --rc-head-pad-left: 26px;
+  --rc-title-size: 1rem;
+  --rc-arrow-width: 24px;
+  --rc-arrow-size: 1.15rem;
+  --rc-weekday-size: 0.82rem;
+  --rc-day-height: 34px;
+  --rc-day-size: 0.95rem;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  padding: 20px 16px;
-  box-shadow: var(--shadow);
-  color: var(--color-text);
+  gap: var(--rc-gap);
 }
-.city-card:hover { border-color: var(--color-primary); }
-.city-card-name { font-size: 1.15rem; font-weight: 600; }
-.city-card-cta { font-size: 0.82rem; }
-
-/* 新建行程胶囊指挥台（09-26，交互参考 Yuntu）：摘要段 + 浮动面板 */
-.capsule-deck {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  gap: 4px;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  padding: 8px;
-  box-shadow: var(--shadow);
-}
-.capsule-segment {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-  text-align: left;
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 12px;
-  background: transparent;
-  color: var(--color-text);
-  cursor: pointer;
-  font: inherit;
-}
-.capsule-segment:hover { background: var(--color-bg); }
-.capsule-segment.is-open { background: var(--color-bg); outline: 2px solid var(--color-primary); outline-offset: -2px; }
-.capsule-label { font-size: 0.72rem; font-weight: 600; color: var(--color-muted); letter-spacing: 0.04em; }
-.capsule-value { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.capsule-value.is-empty { color: var(--color-muted); }
-.capsule-submit { align-self: center; white-space: nowrap; }
-
-.capsule-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  right: 0;
-  z-index: 30;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-height: 70vh;
-  overflow-y: auto;
-}
-.capsule-panel-title { font-size: 0.82rem; font-weight: 600; color: var(--color-muted); margin: 0; }
-.capsule-panel-foot { display: flex; justify-content: flex-end; border-top: 1px solid var(--color-border); padding-top: 10px; }
-.capsule-quick-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 0.82rem; }
-.capsule-card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.capsule-choice-card {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 10px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background: var(--color-card);
-  color: var(--color-text);
-  cursor: pointer;
-  font: inherit;
-  text-align: left;
-}
-.capsule-choice-card.is-active { border-color: var(--color-primary); outline: 2px solid var(--color-primary); outline-offset: -2px; }
-.capsule-choice-title { font-weight: 600; font-size: 0.9rem; }
-.capsule-choice-desc { font-size: 0.76rem; }
-.capsule-stepper { display: inline-flex; align-items: center; gap: 10px; }
-.capsule-stepper-value { font-weight: 600; min-width: 5.5em; text-align: center; }
-.capsule-field { display: flex; flex-direction: column; gap: 5px; font-size: 0.82rem; font-weight: 600; color: var(--color-muted); }
-.capsule-field input,
-.capsule-field textarea {
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 10px 12px;
-  font: inherit;
-  font-weight: 400;
-  background: var(--color-bg);
-  color: var(--color-text);
-  resize: vertical;
-}
-.capsule-field input:focus,
-.capsule-field textarea:focus { outline: 2px solid var(--color-primary); outline-offset: 0; border-color: transparent; }
-
-/* 范围日历（09-26 首页双月并排）：头行左侧留出箭头槽位，箭头绝对定位在两端 */
-.range-calendar { display: flex; flex-direction: column; gap: 6px; }
-.range-calendar-months { display: flex; gap: 12px; }
-.range-calendar-month { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-.range-calendar-head { position: relative; display: flex; align-items: center; height: 30px; padding-left: 26px; }
-.range-calendar-title { font-weight: 700; font-size: 1rem; color: #1b3a63; }
+.range-calendar-months { display: flex; gap: var(--rc-month-gap); }
+.range-calendar-month { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--rc-gap); }
+.range-calendar-head { position: relative; display: flex; align-items: center; height: var(--rc-head-height); padding-left: var(--rc-head-pad-left); }
+.range-calendar-title { font-weight: 700; font-size: var(--rc-title-size); color: #1b3a63; }
 .range-calendar-arrow {
   position: absolute;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 30px;
+  width: var(--rc-arrow-width);
+  height: var(--rc-head-height);
   padding: 0;
   border: 0;
   background: none;
   font: inherit;
-  font-size: 1.15rem;
+  font-size: var(--rc-arrow-size);
   line-height: 1;
   color: var(--color-muted);
   cursor: pointer;
@@ -294,18 +205,18 @@ a { color: var(--color-primary); text-decoration: none; }
 .range-calendar-arrow.is-prev { left: 0; }
 .range-calendar-arrow.is-next { right: 0; }
 .range-calendar-arrow:hover { color: var(--color-primary); }
-.range-calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 0.82rem; font-weight: 600; color: var(--color-muted); }
+.range-calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: var(--rc-weekday-size); font-weight: 600; color: var(--color-muted); }
 .range-calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
 .range-calendar-day {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 34px;
+  height: var(--rc-day-height);
   border: 0;
   background: transparent;
   color: #1b3a63;
   font: inherit;
-  font-size: 0.95rem;
+  font-size: var(--rc-day-size);
   cursor: pointer;
   border-radius: 999px;
 }
@@ -316,11 +227,6 @@ a { color: var(--color-primary); text-decoration: none; }
 .range-calendar-day.is-start,
 .range-calendar-day.is-end { background: var(--color-primary); color: #fff; font-weight: 700; }
 .range-calendar-foot { font-size: 0.76rem; border-top: 1px solid var(--color-border); padding-top: 8px; }
-
-@media (max-width: 720px) {
-  .capsule-deck { flex-direction: column; }
-  .capsule-submit { align-self: stretch; }
-}
 .tag { border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; }
 .tag-source { background: #e3eef5; color: #1d5578; }
 
@@ -706,8 +612,8 @@ a { color: var(--color-primary); text-decoration: none; }
   stroke-width: 3px;
 }
 /* 首页文案入场：标题逐字入场（上浮 + 模糊到清晰 + 微旋转，逐字延迟 55ms），
-   副标题稍后淡入上浮。这里没有加 prefers-reduced-motion 降级：产品明确要这个入场效果
-   （本机系统已开减少动态效果，加降级规则就看不到）。 */
+   副标题稍后淡入上浮。
+   降级：系统开了「减少动态效果」时，保留逐字节奏但只淡入，不做位移/模糊/旋转。 */
 .home-hero-char {
   display: inline-block;
   animation: home-hero-char-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -733,20 +639,35 @@ a { color: var(--color-primary); text-decoration: none; }
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-char {
+    animation-name: home-hero-char-fade;
+    animation-duration: 0.4s;
+  }
+  .home-hero-sub { animation: none; }
+}
+@keyframes home-hero-char-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 /* 首页设计标尺与日期浮层（09-26）：UI 稿按 1668x943 绘制，1 设计像素 = 0.0599vw = 0.106vh。
    --ui 取两者较小值（小屏用 0.75px 保底），首页的尺寸一律写 calc(<设计px> * var(--ui))：
    宽屏不会因只用 vw 而竖向溢出，窄屏不会因只用 vh 而横向溢出。
-   新建行程页（非首页）的单月日历继续用上面的固定尺寸。 */
-.home-page-root { --ui: max(0.75px, min(0.0599vw, 0.106vh)); }
-.home-page-root .range-calendar { gap: calc(6 * var(--ui)); }
-.home-page-root .range-calendar-months { gap: calc(12 * var(--ui)); }
-.home-page-root .range-calendar-month { gap: calc(6 * var(--ui)); }
-.home-page-root .range-calendar-head { height: calc(30 * var(--ui)); padding-left: calc(26 * var(--ui)); }
-.home-page-root .range-calendar-title { font-size: calc(16 * var(--ui)); }
-.home-page-root .range-calendar-arrow { width: calc(20 * var(--ui)); height: calc(30 * var(--ui)); font-size: calc(21 * var(--ui)); }
-.home-page-root .range-calendar-weekdays { font-size: calc(13 * var(--ui)); }
-.home-page-root .range-calendar-day { height: calc(34 * var(--ui)); font-size: calc(16 * var(--ui)); }
+   日期浮层的尺寸只覆写日历自己的 --rc-* 变量，与组件默认值（新建页单月那套）解耦。 */
+.home-page-root {
+  --ui: max(0.75px, min(0.0599vw, 0.106vh));
+  --rc-gap: calc(6 * var(--ui));
+  --rc-month-gap: calc(12 * var(--ui));
+  --rc-head-height: calc(30 * var(--ui));
+  --rc-head-pad-left: calc(26 * var(--ui));
+  --rc-title-size: calc(16 * var(--ui));
+  --rc-arrow-width: calc(20 * var(--ui));
+  --rc-arrow-size: calc(21 * var(--ui));
+  --rc-weekday-size: calc(13 * var(--ui));
+  --rc-day-height: calc(34 * var(--ui));
+  --rc-day-size: calc(16 * var(--ui));
+}
 /* 首页标题字号必须在 global.css 里写：上面的 h1/h2 是无层级（unlayered）元素规则，
    Tailwind 的 utilities 都在一个 CSS 层里，优先级更低，原子类字号会被盖掉。 */
 .home-page-root h1 { font-size: calc(46 * var(--ui)); }
@@ -886,6 +807,19 @@ a { color: var(--color-primary); text-decoration: none; }
   0% { transform: scale(0); }
   70% { transform: scale(1.25); }
   100% { transform: scale(1); }
+}
+/* 候选未到时的虚线空相框（呼吸等待感） */
+.gen-polaroid-ghost {
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px dashed rgba(255, 255, 255, 0.75);
+  box-shadow: none;
+  animation: gen-ghost-breathe 2.8s ease-in-out infinite;
+}
+.gen-polaroid-ghost .gen-polaroid-photo { background: rgba(255, 255, 255, 0.3); }
+.gen-ghost-bar { height: 0.78rem; border-radius: 4px; background: rgba(255, 255, 255, 0.45); }
+@keyframes gen-ghost-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.95; }
 }
 
 /* 减少动画偏好：停用漂浮/脉冲/呼吸 */
