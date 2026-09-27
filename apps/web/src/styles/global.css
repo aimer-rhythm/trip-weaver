@@ -659,13 +659,15 @@ a { color: var(--color-primary); text-decoration: none; }
 .gen-page-root .gen-title {
   display: flex;
   align-items: center;
-  margin: 0;
+  margin: 0 0 0 calc(80 * var(--ui));
   font-family: var(--gen-serif);
   font-size: calc(52 * var(--ui));
   font-weight: 700;
   line-height: 1.12;
   color: #1a365d;
 }
+/* 设计稿的标题块整体比页面中心偏右 40px（实测文本中心 875 vs 页面中心 836，含两侧星形也是如此），
+   上面的 margin-left 把它推过去；flex 居中会把 margin 计入，所以写 80 得到 40 的位移。 */
 /* 标题装饰：四角星光点（设计稿为星形光点，不用 emoji） */
 .gen-title .gen-star {
   display: inline-block;
@@ -820,14 +822,14 @@ a { color: var(--color-primary); text-decoration: none; }
   50% { opacity: 1; }
 }
 
-/* 拍立得卡片（设计稿：卡宽 266px） */
+/* 拍立得卡片（设计稿：卡宽 250、略竖的照片、上下白边厚） */
 .gen-polaroid {
   position: absolute;
-  width: calc(266 * var(--ui));
+  width: calc(250 * var(--ui));
   margin: 0;
   background: #fff;
-  border-radius: calc(4 * var(--ui));
-  padding: calc(12 * var(--ui)) calc(12 * var(--ui)) calc(6 * var(--ui));
+  border-radius: calc(6 * var(--ui));
+  padding: calc(20 * var(--ui)) calc(20 * var(--ui)) calc(16 * var(--ui));
   box-shadow: 0 calc(10 * var(--ui)) calc(40 * var(--ui)) rgba(0, 0, 0, 0.12);
   animation: gen-polaroid-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -835,12 +837,13 @@ a { color: var(--color-primary); text-decoration: none; }
   0% { opacity: 0; translate: 0 -18px; scale: 0.85; }
   100% { opacity: 1; translate: 0 0; scale: 1; }
 }
-.gen-polaroid-photo { aspect-ratio: 4 / 3; overflow: hidden; border-radius: calc(2 * var(--ui)); background: #eef2f7; }
+/* 设计稿的拍立得是略竖的（210×220），不是 4:3 横版 */
+.gen-polaroid-photo { aspect-ratio: 1 / 1.05; overflow: hidden; border-radius: calc(2 * var(--ui)); background: #eef2f7; }
 .gen-polaroid-photo .poi-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gen-polaroid-photo .poi-cover-fallback { display: flex; align-items: center; justify-content: center; font-size: calc(46 * var(--ui)); }
 .gen-polaroid-caption {
-  margin: calc(8 * var(--ui)) 0 calc(4 * var(--ui));
-  font-size: calc(19 * var(--ui));
+  margin: calc(18 * var(--ui)) 0 0;
+  font-size: calc(23 * var(--ui));
   font-style: italic;
   color: #4a5568;
   text-align: center;
@@ -895,7 +898,7 @@ a { color: var(--color-primary); text-decoration: none; }
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
-  padding: calc(12 * var(--ui)) calc(22 * var(--ui));
+  padding: calc(11 * var(--ui)) calc(22 * var(--ui));
   font-size: calc(20 * var(--ui));
   color: #5a6c86;
   backdrop-filter: blur(10px);

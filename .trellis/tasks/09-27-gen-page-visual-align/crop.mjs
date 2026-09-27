@@ -7,8 +7,8 @@ import path from 'node:path';
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const PORT = 9230;
 const OUT = path.resolve('.trellis/tasks/09-27-gen-page-visual-align');
-const [x0 = '470', y0 = '105', x1 = '1280', y1 = '195', scale = '2', out = 'zoom-title.png'] = process.argv.slice(2);
-const IMG = `file:///D:/Project/tripweaver/.trellis/tasks/09-27-gen-page-visual-align/ui-ref.png`;
+const [x0 = '470', y0 = '105', x1 = '1280', y1 = '195', scale = '2', out = 'zoom-title.png', input = 'ui-ref.png'] = process.argv.slice(2);
+const IMG = `file:///D:/Project/tripweaver/.trellis/tasks/09-27-gen-page-visual-align/${input}`;
 const PROFILE = 'C:\\temp\\tw-crop-profile';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

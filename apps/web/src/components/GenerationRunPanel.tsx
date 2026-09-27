@@ -98,14 +98,15 @@ function SparkIcon({ className }: { className: string }) {
   );
 }
 
-/** 拍立得散落位姿（最多展示最近 6 张候选；确定性排布，避免重渲染抖动） */
+/** 拍立得散落位姿（最多展示最近 6 张候选；确定性排布，避免重渲染抖动）
+ *  前 5 个位姿按 UI 稿（1672×941）实测卡框左上角换算成百分比；第 6 个是 UI 稿没有的右下补位。 */
 const FAN = [
-  { left: '2%', top: '8%', rotate: -8 },
-  { left: '35%', top: '0%', rotate: 5 },
-  { left: '64%', top: '10%', rotate: 10 },
-  { left: '10%', top: '50%', rotate: -5 },
-  { left: '42%', top: '44%', rotate: 3 },
-  { left: '66%', top: '54%', rotate: -9 },
+  { left: '1.5%', top: '4.8%', rotate: -7 },
+  { left: '36.4%', top: '2.5%', rotate: 8 },
+  { left: '68%', top: '5.5%', rotate: 9 },
+  { left: '10.8%', top: '44%', rotate: -5 },
+  { left: '47.6%', top: '48%', rotate: 6 },
+  { left: '70%', top: '56%', rotate: -9 },
 ];
 
 type MilestoneState = 'pending' | 'active' | 'done';
