@@ -206,9 +206,13 @@ function coverTools(deps: {
   stored?: string | null;
   pexels?: string | null;
   amap?: string | null;
+  /** 库内已回写的高德图 */
+  cachedAmap?: string | null;
   onStored?: () => void;
   onPexels?: () => void;
   onAmap?: () => void;
+  /** 回写记录（`name|url`） */
+  saved?: string[];
 }) {
   const source: PoiSource = {
     kind: 'amap',
@@ -227,6 +231,10 @@ function coverTools(deps: {
     pexelsCover: { coverFor: async () => { deps.onPexels?.(); return deps.pexels ?? null; } },
     storedCover: async () => { deps.onStored?.(); return deps.stored ?? null; },
     amapPhotos: { coverFor: async () => { deps.onAmap?.(); return deps.amap ?? null; }, calls: 0 },
+    storedAmapPhoto: async () => deps.cachedAmap ?? null,
+    saveAmapPhoto: (name, url) => {
+      deps.saved?.push(`${name}|${url}`);
+    },
   });
   return { tools, outcome, cover };
 }
@@ -281,4 +289,28 @@ test('封面顺序：前两级都无图时用高德，且不再查维基', async
   assert.equal(await addFirst(tools, outcome), amapUrl);
   assert.deepEqual(calls, ['stored', 'pexels', 'amap']);
   assert.deepEqual(cover.queries, [], '高德命中后不再查维基');
+});
+
+test('封面顺序：库内已回写的高德图直接复用，不再打高德也不重写', async () => {
+  const cached = 'https://store.is.autonavi.com/showpic/cached';
+  const calls: string[] = [];
+  const saved: string[] = [];
+  const { tools, outcome } = coverTools({
+    stored: null,
+    pexels: null,
+    cachedAmap: cached,
+    onAmap: () => calls.push('amap'),
+    saved,
+  });
+  assert.equal(await addFirst(tools, outcome), cached);
+  assert.deepEqual(calls, [], '库内已有高德图时不该再发请求（省的是稀缺搜索配额）');
+  assert.deepEqual(saved, [], '复用已有值不需要回写');
+});
+
+test('封面顺序：高德实时命中后回写库内（fire-and-forget）', async () => {
+  const amapUrl = 'https://store.is.autonavi.com/showpic/fresh';
+  const saved: string[] = [];
+  const { tools, outcome } = coverTools({ stored: null, pexels: null, amap: amapUrl, saved });
+  assert.equal(await addFirst(tools, outcome), amapUrl);
+  assert.deepEqual(saved, [`故宫|${amapUrl}`], '命中后必须回写 payload.amapPhoto');
 });

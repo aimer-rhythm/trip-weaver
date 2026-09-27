@@ -39,6 +39,9 @@ export interface PlaceFacts {
   /** payload.coverImage：库内封面（09-27），形如 `xhs/杭州/{placeId}/00.webp` 的相对 key。
    *  绝对 URL 由 MEDIA_BASE_URL 拼出，见 generation/storedCover.ts。 */
   coverImage?: string;
+  /** payload.amapPhoto：高德 POI 图片命中后的回写（09-27）。存完整 https URL，
+   *  下次直接用不再消耗稀缺的搜索配额（个人 5,000/月）。 */
+  amapPhoto?: string;
 }
 
 interface FactRow {
@@ -118,6 +121,8 @@ function toFacts(row: FactRow): PlaceFacts {
   if (typeof payload.adcode === 'string' && payload.adcode) facts.adcode = payload.adcode;
   const cover = payload.coverImage;
   if (typeof cover === 'string' && cover.trim()) facts.coverImage = cover.trim();
+  const amapPhoto = payload.amapPhoto;
+  if (typeof amapPhoto === 'string' && amapPhoto.startsWith('https://')) facts.amapPhoto = amapPhoto;
   return facts;
 }
 
@@ -150,6 +155,8 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
   // 库内封面：同键分裂条目里任一有图即可用（图源同批导出，不会互相矛盾）
   const cover = members.find((f) => f.coverImage)?.coverImage;
   if (cover) merged.coverImage = cover;
+  const amapPhoto = members.find((f) => f.amapPhoto)?.amapPhoto;
+  if (amapPhoto) merged.amapPhoto = amapPhoto;
   return merged;
 }
 
@@ -211,5 +218,34 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
   } catch (err) {
     console.warn(`[placeFacts] 地点事实补全失败，排程按类型表兜底：${err instanceof Error ? err.message : String(err)}`);
     return new Map();
+  }
+}
+
+/**
+ * 高德图片命中后的回写（09-27）：`v5/place/text` 属稀缺的「基础搜索服务」配额（个人 5,000/月），
+ * 写回 `payload.amapPhoto` 后同一地点终身只消耗一次。
+ * 按归一键匹配库内行（候选名与库内名常有「博物院」之类的后缀差），已有值不覆盖；
+ * 任何失败只 warn，绝不阻断生成（回写只是优化）。
+ */
+export async function saveAmapPhoto(city: string, name: string, url: string): Promise<void> {
+  const key = normalizePlaceKey(name);
+  if (!key || !city.trim() || !url.startsWith('https://')) return;
+  try {
+    const { rows } = await pool.query<{ id: string; name: string }>(
+      `SELECT id, name FROM canonical_places WHERE city = $1 AND NOT (payload ? 'amapPhoto')`,
+      [city],
+    );
+    const hit = rows.find((row) => normalizePlaceKey(row.name) === key);
+    if (!hit) return;
+    await pool.query(
+      `UPDATE canonical_places
+          SET payload = coalesce(payload, '{}'::jsonb) || jsonb_build_object('amapPhoto', $2::text)
+        WHERE id = $1`,
+      [hit.id, url],
+    );
+  } catch (err) {
+    console.warn(
+      `[placeFacts] 高德图片回写失败（不影响本次生成）：${err instanceof Error ? err.message : String(err)}`,
+    );
   }
 }

@@ -43,8 +43,8 @@ import { buildResearchTools, type ResearchOutcome } from './tools/researchTools'
 import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
 import { createPexelsCoverLookup } from '../integrations/pexels/cover';
 import { createAmapPoiPhotoLookup } from '../integrations/amap/poiPhotos';
-import { createStoredCoverLookup } from './storedCover';
-import { loadPlaceFacts } from './scheduling/placeFacts';
+import { createStoredCoverLookup, createStoredAmapPhotoLookup } from './storedCover';
+import { loadPlaceFacts, saveAmapPhoto } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
 
 /**
@@ -259,6 +259,11 @@ export async function runGeneration(
         pexelsCover: createPexelsCoverLookup(env.pexelsApiKey),
         amapPhotos: amapPoiPhotos,
         storedCover: createStoredCoverLookup(form.destination),
+        // 高德命中后回写 payload.amapPhoto：同一地点终身只花一次搜索配额（fire-and-forget，失败不阻断）
+        storedAmapPhoto: createStoredAmapPhotoLookup(form.destination),
+        saveAmapPhoto: (name, url) => {
+          void saveAmapPhoto(form.destination, name, url);
+        },
         storedPoint: cityPointLookup(form.destination),
       }),
       userPrompt: `${formBrief(form)}\n\n请开始调研。`,

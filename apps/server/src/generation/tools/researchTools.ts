@@ -72,6 +72,10 @@ export interface ResearchToolDeps {
   storedCover?: (name: string) => Promise<string | null>;
   /** 库内坐标兜底：调研阶段没捕到坐标时（知识库候选）用它。失败返回 null。 */
   storedPoint?: (name: string) => Promise<{ lat: number; lng: number } | null>;
+  /** 库内已回写的高德图片（09-27）：命中则跳过实时查询，省下稀缺的搜索配额。 */
+  storedAmapPhoto?: (name: string) => Promise<string | null>;
+  /** 高德新命中后的回写（fire-and-forget）；未注入时不写。 */
+  saveAmapPhoto?: (name: string, url: string) => void;
 }
 
 function isHttpUrl(u: string): boolean {
@@ -103,6 +107,8 @@ async function resolveCover(
     storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>;
     pexels: PexelsCoverLookup;
     amapPhotos: AmapPoiPhotoLookup;
+    storedAmapPhoto: (name: string) => Promise<string | null>;
+    saveAmapPhoto: (name: string, url: string) => void;
   },
 ): Promise<string | null> {
   const stored = await deps.storedCover(name);
@@ -111,8 +117,13 @@ async function resolveCover(
   const pexelsUrl = await deps.pexels.coverFor({ name, city });
   if (pexelsUrl && isUsableCoverUrl(pexelsUrl)) return pexelsUrl.slice(0, 300);
 
-  const amapUrl = await deps.amapPhotos.coverFor({ name, city });
-  if (amapUrl && isUsableCoverUrl(amapUrl)) return amapUrl.slice(0, 300);
+  // 高德级：库内回写优先（零成本），没有再实时查。配额稀缺（个人 5,000/月），所以命中即回写复用。
+  const cachedAmap = await deps.storedAmapPhoto(name);
+  const amapUrl = cachedAmap ?? (await deps.amapPhotos.coverFor({ name, city }));
+  if (amapUrl && isUsableCoverUrl(amapUrl)) {
+    if (!cachedAmap) deps.saveAmapPhoto(name, amapUrl);
+    return amapUrl.slice(0, 300);
+  }
 
   const key = normalizePlaceKey(name);
   const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
@@ -132,6 +143,8 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const storedPoint = deps.storedPoint ?? (async () => null);
   const pexelsCover = deps.pexelsCover ?? { coverFor: async () => null };
   const amapPhotos = deps.amapPhotos ?? { coverFor: async () => null, calls: 0 };
+  const storedAmapPhoto = deps.storedAmapPhoto ?? (async () => null);
+  const saveAmapPhoto = deps.saveAmapPhoto ?? (() => {});
   const ambiguousNames = new Set<string>();
   // 营业时间旁路捕获（09-22-opentime）：search_pois 如实带回高德 opentime 文本，add_candidate 同名自动回填，
   // 不让模型转抄（转抄会失真）。仅 attraction 入排程检测，food/hotel 不消费。
@@ -307,6 +320,8 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
           storedPoint,
           pexels: pexelsCover,
           amapPhotos,
+          storedAmapPhoto,
+          saveAmapPhoto,
         });
         if (cover) poi.coverUrl = cover;
       }

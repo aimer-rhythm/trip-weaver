@@ -32,12 +32,15 @@
 
 * 调整 `generation/tools/researchTools.ts` 的 `resolveCover` 顺序：stored → Pexels → 高德 → 维基。
 * 新增 `apps/server/src/integrations/amap/poiPhotos.ts`：
-  * `createAmapPoiPhotoLookup(apiKey: string, requestsLeft = 8)`，接口 `coverFor({ name, city }): Promise<string | null>`，并暴露 `calls: number`（已发生的真实请求数，供 `providerCallCounts()` 计入 `amapCalls`）。
+  * `createAmapPoiPhotoLookup(apiKey: string, requestsLeft = 3)`，接口 `coverFor({ name, city }): Promise<string | null>`，并暴露 `calls: number`（已发生的真实请求数，供 `providerCallCounts()` 计入 `amapCalls`）。
   * 请求 `v5/place/text?keywords={name}&region={city}&show_fields=photos&page_size=3`，超时 8s，**复用 `amapQueue`**（与 geocode/route 同一串行队列，350ms 间隔，避免把个人约 3 QPS 打满）。
   * 命中闸门写在纯函数 `pickPhoto(pois, name)` 里：归一键相同的 POI 取 `photos[0].url`；无命中 / 无 photos → `null`。
   * URL 归一：`http://store.is.autonavi.com/...` → `https://...`；只接受 https 结果。
-  * 24h `TtlCache`（命中与确认未命中都缓存）；传输失败不缓存；单次生成最多 8 次真实调用。
-  * **进程内 24h 滚动窗口 ≤100 次**：`v5/place/text` 属「基础搜索服务」个人认证 5,000/月（≈166/天），与地理编码那 150,000/月 不是同一份配额，必须自己兜底。
+  * 24h `TtlCache`（命中与确认未命中都缓存）；传输失败不缓存；**单次生成最多 3 次真实调用**（配额稀缺，只给最难的那几个候选补图）。
+  * **进程内 24h 滚动窗口 ≤40 次**：`v5/place/text` 属「基础搜索服务」个人认证 5,000/月（≈166/天），与地理编码那 150,000/月 不是同一份配额，必须自己兜底。
+* **命中回写**（
+  `saveAmapPhoto(city, name, url)` in `generation/scheduling/placeFacts.ts`）：高德实时命中后把完整 URL 写进 `canonical_places.payload.amapPhoto`（jsonb 新键，无需迁移），按归一键匹配库内行、已有值不覆盖、失败只 warn。下次同一地点零成本复用 —— 这是把「每地点重复消耗配额」变成「终身一次」的关键。
+* 读取：`PlaceFacts.amapPhoto` 透传，`createStoredAmapPhotoLookup(city)` 在**高德那一级内部先读库**（与 Pexels 同级位置，不改变上游 → Pexels → 高德 的对外顺序）。
   * 未配置 key → 直接 `null`，不发请求。
 * `generation/orchestrator.ts`：
   * `resolveAmapCredential(job.userId)` 取 key，注入 `amapPoiPhotos`；
@@ -51,7 +54,9 @@
 * [ ] `pickPhoto`：POI name 归一后匹配（含「风景名胜区」等后缀）→ 取图；名字不符 → null；`photos` 缺失或为空 → null。
 * [ ] http 图片 URL 被改写成 https。
 * [ ] 未配置 key：不发请求，链路其余部分不受影响。
-* [ ] 缓存命中第二次不发请求；传输失败不缓存、下次重试；第 9 次起不发请求。
+* [ ] 缓存命中第二次不发请求；传输失败不缓存、下次重试；第 4 次起不发请求。
+* [ ] 库内已有 `payload.amapPhoto` 时直接复用，不发请求也不重写。
+* [ ] 高德实时命中后调用一次回写，参数为（地点名, 图片 URL）。
 * [ ] `amapPoiPhotos.calls` 反映真实请求数，且 `amapCalls` 统计包含它。
 * [ ] `npm run typecheck` / `node --import tsx --test --test-concurrency=1 apps/server/src/__tests__/*.test.ts` / `npm run build` 全绿。
 

@@ -30,3 +30,17 @@ export function createStoredCoverLookup(city: string): (name: string) => Promise
     return hit?.coverImage ? mediaUrl(hit.coverImage) : null;
   };
 }
+
+/**
+ * 库内已回写的高德图片（09-27）：命中直接返回，不再打高德稀缺的搜索配额（个人 5,000/月）。
+ * 与 createStoredCoverLookup 同模式：全城行只拉一次，后续候选复用。
+ */
+export function createStoredAmapPhotoLookup(city: string): (name: string) => Promise<string | null> {
+  let pending: ReturnType<typeof loadPlaceFacts> | null = null;
+  return async (name) => {
+    if (!city.trim()) return null;
+    pending ??= loadPlaceFacts([name], city);
+    const hit = (await pending).get(name);
+    return hit?.amapPhoto ?? null;
+  };
+}

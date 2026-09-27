@@ -419,6 +419,8 @@ writes nothing.
 | `PEXELS_API_KEY` unset | Pexels source skipped silently; covers behave exactly as before that change |
 | Amap POI `photos` empty or name mismatch | `pickPhoto` → `null` (negative-cached 24 h) → wiki |
 | Amap search quota exhausted (`status≠1`) | `null`, not cached, one `[amap-photo]` warn; later candidates fall through |
+| `payload.amapPhoto` already set | read from the DB — no request, never overwritten |
+| `saveAmapPhoto` write fails | warn only; this generation keeps the working URL and continues |
 | Pexels results carry no textual match | `pickCover` → `null` (negative-cached 24 h) → stored cover → wiki |
 | Pexels budget exhausted (8 per generation / 180 per hour) | `null` without a request; later candidates fall through |
 | `canonical_places` query throws | `loadPlaceFacts` warns and returns an empty Map → `null`; generation continues |

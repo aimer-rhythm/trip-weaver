@@ -409,9 +409,14 @@ retrieval guidelines under *Attraction Cover Images*.
   http image on an https page is blocked as mixed content.
 - Amap quota is separate and much scarcer than the geocode chain's: `v5/place/text` belongs to
   「基础搜索服务」 (personal: 5,000/month) while `v3/geocode/geo` belongs to 「基础LBS服务」
-  (150,000/month). Hence: only after the first two sources miss, ≤8 calls per generation, a shared
-  `amapQueue`, a 24 h cache, and a process-level 100/24 h window. Real call counts are exposed as
+  (150,000/month). Hence: only after the first two sources miss, **≤3 calls per generation**, a shared
+  `amapQueue`, a 24 h cache, and a process-level 40/24 h window. Real call counts are exposed as
   `calls` and added into `generation.amap_calls` by `providerCallCounts()`.
+- **A hit is written back** to `canonical_places.payload.amapPhoto` (full https URL) via
+  `saveAmapPhoto(city, name, url)` — matched by normalized key, never overwriting an existing value,
+  failures only warn. `createStoredAmapPhotoLookup(city)` reads it back inside the Amap stage (same
+  position in the order, NOT moved ahead of Pexels), so a place that ever resolved costs nothing
+  afterwards. Negative results are NOT written back — a miss must stay retryable.
 - URL acceptance differs per source: Pexels, Amap and Wikipedia must be `https://`; stored covers may
   also be a same-origin path starting with `/`.
 - Budgets are separate and do not share counters: Pexels 8 requests per generation + a process-level
