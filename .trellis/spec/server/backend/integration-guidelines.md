@@ -400,9 +400,13 @@ retrieval guidelines under *Attraction Cover Images*.
   search quota, so it goes last among the "has an image" sources. `upload.wikimedia.org` is blocked in
   mainland China, so the wiki lookup is an overseas/proxy fallback only.
 - Pexels has no coordinates. The accuracy gate is textual: a result is accepted only when its `alt`
-  or photo-page slug shares a normalized key with the place name (`lib/placeKey.ts`,
-  `normalizePlaceKey`). No match → `null` → fall through. Never take “first result” — a generic lake
-  photo must not be captioned as a named scenic spot.
+  or photo-page slug contains the place's normalized key **or the core key** — the name with a generic
+  tail (`村/街/路/寺/塔/山/湖/园/公园/景区/...`) stripped, keeping at least 2 characters. That second
+  form is what lets «龙井村» match alt «杭州龙井茶园», while «虎跑公园» still rejects an alt that merely
+  says «公园» (its core is «虎跑»). The candidate pool is `per_page=15` — many correct photos sit past
+  the first five. No match → `null` → fall through. Never take "first result": a generic lake photo must
+  not be captioned as a named scenic spot. Measured on 20 real names: strict gate 9/20, relaxed gate
+  11/20, with no gate regression (nothing that used to pass now fails).
 - Amap gate is two-stage, and both must pass:
   1. **Name**: equal to, end with, or contain the place's normalized key segments **in order**
      («杭州西湖风景名胜区» → ends with «西湖»; «西溪国家湿地公园» → segments 西溪 / 湿地 appear in
@@ -460,7 +464,9 @@ in-range article and drops the rest; the adapter caches both hits and confirmed 
 returns null and is not cached; the 9th lookup makes no request; a food candidate and a candidate with
 a stored cover never call the lookup; a stored `/media/...` path is accepted and skips the wiki
 request; `mediaUrl` joins keys against `/media`, an absolute CDN base, and an empty base. Pexels:
-alt-based acceptance and normalized-key alignment, non-https and empty `src` rejected, no request
+alt-based acceptance (full name and generic-tail-stripped core, e.g. «龙井村» → alt «杭州龙井茶园») and
+normalized-key alignment, a generic alt («城市公园里跑步») not fooling «虎跑公园», non-https and empty
+`src` rejected, no request
 without a key, cache and negative cache, 429 not cached, per-generation cap. Amap: name-suffix
 gate («西湖区××» rejected, «西溪国家湿地公园» accepted for «西溪湿地»), type whitelist (公交站/路名/餐厅
 rejected, missing type rejected), http→https rewrite, cache/negative cache, `status≠1` not cached, per-

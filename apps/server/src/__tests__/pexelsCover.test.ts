@@ -41,6 +41,19 @@ test('挑选：地点名过短（剥不出有效键）时不猜', () => {
   assert.equal(pickCover([photo('甲')], '甲'), null);
 });
 
+test('挑选：去掉通用尾缀的核心词也能命中（龙井村 → 龙井）', () => {
+  // normalizePlaceKey 不剥「村」，靠核心词才能对上 alt「杭州龙井茶园」
+  assert.equal(pickCover([photo('杭州龙井茶园')], '龙井村'), MEDIUM);
+  assert.equal(pickCover([photo('秋日西湖边的小路')], '西湖'), MEDIUM, '完整地名仍优先');
+});
+
+test('挑选：核心词匹配不会因 alt 里的泛化词而误放', () => {
+  // 「虎跑公园」归一后是「虎跑」（公园已被剥），alt 里的「公园」不构成命中
+  assert.equal(pickCover([photo('一名男子在城市公园里跑步')], '虎跑公园'), null);
+  assert.equal(pickCover([photo('秋日树木倒映在湿地池塘上')], '西溪湿地'), null);
+  assert.equal(pickCover([photo('静谧的石径穿过茂密竹林')], '云栖竹径'), null);
+});
+
 test('适配器：未配置 key 时直接返回 null 且不发请求', async () => {
   const original = globalThis.fetch;
   let calls = 0;

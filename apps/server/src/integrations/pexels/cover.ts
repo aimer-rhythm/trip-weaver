@@ -21,7 +21,8 @@ const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 const MAX_PER_TASK = 8;
 /** 小时窗口上限：官方 200/h，留 10% 余量。进程级、重启重置，不落库 */
 const MAX_PER_HOUR = 180;
-const PER_PAGE = 5;
+/** 候选池大小：闸门是文本匹配，池子越大越容易碰到带地名的 alt（实测 5 条时不少命中项排在后面） */
+const PER_PAGE = 15;
 
 const cache = new TtlCache<string | null>(CACHE_TTL_MS, 300);
 const recentCalls: number[] = [];
@@ -50,6 +51,21 @@ function slugOf(url: string): string {
   return match?.[1]?.replace(/-\d+$/, '') ?? '';
 }
 
+/**
+ * Pexels 的 alt 是摄影师写的描述，经常只写景类不写专名（「秋日的树木倒映在湿地池塘上」）。
+ * 所以除完整地名外，也允许「去掉这层通用尾缀后的核心词」（≥2 字）命中 ——
+ * 「龙井村」→「龙井」能对上 alt「杭州龙井茶园」，而「虎跑公园」→「虎跑」不会因为 alt 里
+ * 有个泛化的「公园」就蒙中。核心词不剥到少于 2 字。
+ */
+const GENERIC_SUFFIXES = ['公园', '景区', '村', '寺', '塔', '街', '路', '庙', '宫', '馆', '山', '湖', '园'] as const;
+
+function coreKey(key: string): string {
+  for (const suffix of GENERIC_SUFFIXES) {
+    if (key.length - suffix.length >= 2 && key.endsWith(suffix)) return key.slice(0, -suffix.length);
+  }
+  return key;
+}
+
 function httpsOnly(value: unknown): string {
   return typeof value === 'string' && value.startsWith('https://') ? value : '';
 }
@@ -61,10 +77,15 @@ function httpsOnly(value: unknown): string {
 export function pickCover(photos: readonly PexelsPhoto[], name: string): string | null {
   const wanted = normalizePlaceKey(name);
   if (wanted.length < 2) return null;
+  const core = coreKey(wanted);
+  // 先完整地名，再核心词；两者相同时不重复扫
+  const keys = core === wanted ? [wanted] : [wanted, core];
   for (const photo of photos) {
     const alt = typeof photo.alt === 'string' ? normalizePlaceKey(photo.alt) : '';
     const slug = slugOf(typeof photo.url === 'string' ? photo.url : '');
-    const hit = (alt.length > 0 && alt.includes(wanted)) || (slug.length > 0 && slug.includes(wanted));
+    const hit = keys.some(
+      (key) => (alt.length > 0 && alt.includes(key)) || (slug.length > 0 && slug.includes(key)),
+    );
     if (!hit) continue;
     const src = photo.src ?? {};
     const image = httpsOnly(src.medium) || httpsOnly(src.large) || httpsOnly(src.original);
