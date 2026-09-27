@@ -70,6 +70,9 @@ export function NewTripPage() {
   const patchBrief = usePatchBrief();
 
   const draft = useMemo(() => parseDraft(params), [params]);
+  // 到站时是否带了 autostart。守卫会把该参数从 URL 里清掉，所以后续渲染必须靠快照判断，
+  // 否则清参数的瞬间就把自己判成「非直达访问」踢回首页（start 还在建会话/写 Brief）。
+  const autostartRequested = useRef(params.get('autostart') === '1').current;
   const [error, setError] = useState<string | null>(null);
   const [doneTripId, setDoneTripId] = useState<string | null>(null);
 
@@ -182,8 +185,8 @@ export function NewTripPage() {
     );
   }
 
-  // 本页不再是收集入口：没有 autostart、或城市缺失/未覆盖 → 回首页重选
-  if (params.get('autostart') !== '1' || !draft.city || (covered.data && !covered.data.cities.includes(draft.city))) {
+  // 本页不再是收集入口：不是直达访问、或城市缺失/未覆盖 → 回首页重选
+  if (!autostartRequested || !draft.city || (covered.data && !covered.data.cities.includes(draft.city))) {
     return <Navigate to="/" replace />;
   }
 
