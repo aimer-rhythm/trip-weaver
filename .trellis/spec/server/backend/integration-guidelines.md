@@ -377,33 +377,46 @@ const route = await routeEstimate(apiKey, from, to, mode);
 leg.source = 'amap';                                                    // lie when Tianditu ran
 ```
 
-## Attraction Cover Sources (Pexels → stored cover → Wikimedia)
+## Attraction Cover Sources (stored library → Pexels → Amap POI photos → Wikimedia)
 
 **Scope/Trigger**: an `attraction` candidate reaches `add_candidate`, or the cover order/URL
-acceptance/budget rules change. Three sources serve one `coverUrl`; the order is fixed and each
+acceptance/budget rules change. Four sources serve one `coverUrl`; the order is fixed and each
 source must degrade to the next. Full stored-cover manifest/route/deploy contract lives in the RAG
 retrieval guidelines under *Attraction Cover Images*.
 
-**Contract** (`createPexelsCoverLookup` in `apps/server/src/integrations/pexels/cover.ts`,
-`createStoredCoverLookup` in `apps/server/src/generation/storedCover.ts`,
+**Contract** (`createStoredCoverLookup` in `apps/server/src/generation/storedCover.ts`,
+`createPexelsCoverLookup` in `apps/server/src/integrations/pexels/cover.ts`,
+`createAmapPoiPhotoLookup` in `apps/server/src/integrations/amap/poiPhotos.ts`,
 `createWikiCoverLookup` in `apps/server/src/integrations/wikimedia/cover.ts` — all wired in
 `generation/orchestrator.ts`):
 
-- Order: **Pexels** (keyword search, strict match) → **stored cover** (`payload.coverImage` →
-  `MEDIA_BASE_URL`, default `/media`) → **Chinese Wikipedia** (`地点名 + 城市`) → empty. Only
-  `attraction`. Food and hotel are never queried.
-- Why Pexels first: it covers any city; the stored library only exists for 3 cities, and
-  `upload.wikimedia.org` is blocked in mainland China — so both of the older sources together still
-  leave most candidates imageless.
+- Order: **stored library** (`payload.coverImage` → `MEDIA_BASE_URL`, default `/media`) → **Pexels**
+  (keyword search, strict textual match) → **Amap POI `photos`** (keyword search, name match) →
+  **Chinese Wikipedia** (name + 2 km coordinate check) → empty. Only `attraction`. Food and hotel are
+  never queried.
+- Why that order: the stored library is real photography but only ships for Beijing/Guangzhou/Hangzhou;
+  Pexels covers any city but its alt-text gate measures ~45–50% hit rate; Amap is the only source that
+  is both reachable from mainland China and reliably tied to the exact POI — and it burns the scarce
+  search quota, so it goes last among the "has an image" sources. `upload.wikimedia.org` is blocked in
+  mainland China, so the wiki lookup is an overseas/proxy fallback only.
 - Pexels has no coordinates. The accuracy gate is textual: a result is accepted only when its `alt`
   or photo-page slug shares a normalized key with the place name (`lib/placeKey.ts`,
   `normalizePlaceKey`). No match → `null` → fall through. Never take “first result” — a generic lake
   photo must not be captioned as a named scenic spot.
-- URL acceptance differs per source: Pexels and Wikipedia must be `https://`; stored covers may also be
-  a same-origin path starting with `/`.
+- Amap gate: the returned POI `name` must equal, or end with, the place's normalized key
+  («杭州西湖风景名胜区» → «杭州西湖» ends with «西湖»). `endsWith` rather than `includes` so «西湖区××»
+  cannot pass as «西湖». Images always get rewritten to `https://` — Amap mixes http and https, and an
+  http image on an https page is blocked as mixed content.
+- Amap quota is separate and much scarcer than the geocode chain's: `v5/place/text` belongs to
+  「基础搜索服务」 (personal: 5,000/month) while `v3/geocode/geo` belongs to 「基础LBS服务」
+  (150,000/month). Hence: only after the first two sources miss, ≤8 calls per generation, a shared
+  `amapQueue`, a 24 h cache, and a process-level 100/24 h window. Real call counts are exposed as
+  `calls` and added into `generation.amap_calls` by `providerCallCounts()`.
+- URL acceptance differs per source: Pexels, Amap and Wikipedia must be `https://`; stored covers may
+  also be a same-origin path starting with `/`.
 - Budgets are separate and do not share counters: Pexels 8 requests per generation + a process-level
-  180/hour window (its published limit is 200/hour; restart resets the window); Wikipedia 8 per
-  generation, serial with ≥1 s spacing.
+  180/hour window (its published limit is 200/hour; restart resets the window); Amap POI photos ≤8 per
+  generation + 100 per 24 h; Wikipedia 8 per generation, serial with ≥1 s spacing.
 - Pexels API terms require a visible link back to Pexels wherever its photos are shown. The frontend
   renders `Photos provided by Pexels` (`PexelsCredit` in `apps/web/src/components/PoiCard.tsx`) on the
   generation page, the candidate drawer, and the trip editor — it renders nothing when no Pexels URL
@@ -430,14 +443,17 @@ pavilion, and the closest to 鸟巢 was an Olympics ceremony photo. Title search
 hit 9 of 10.
 
 **Tests** (`apps/server/src/__tests__/wikimediaCover.test.ts`, `pexelsCover.test.ts`,
-`placeLookup.test.ts`, `storedCover.test.ts`): `pickCover` keeps the nearest in-range article and
-drops the rest; the adapter caches both hits and confirmed misses; HTTP failure returns null and is
-not cached; the 9th lookup makes no request; a food candidate and a candidate with a stored cover
-never call the lookup; a stored `/media/...` path is accepted and skips the wiki request; `mediaUrl`
-joins keys against `/media`, an absolute CDN base, and an empty base. Pexels: alt-based acceptance
-and normalized-key alignment, non-https and empty `src` rejected, no request without a key, cache and
-negative cache, 429 not cached, per-generation cap. `pexelsCover.test.ts` must stay free of DB
-imports (it asserts the adapter only depends on `lib/*`).
+`amapPoiPhotos.test.ts`, `placeLookup.test.ts`, `storedCover.test.ts`): `pickCover` keeps the nearest
+in-range article and drops the rest; the adapter caches both hits and confirmed misses; HTTP failure
+returns null and is not cached; the 9th lookup makes no request; a food candidate and a candidate with
+a stored cover never call the lookup; a stored `/media/...` path is accepted and skips the wiki
+request; `mediaUrl` joins keys against `/media`, an absolute CDN base, and an empty base. Pexels:
+alt-based acceptance and normalized-key alignment, non-https and empty `src` rejected, no request
+without a key, cache and negative cache, 429 not cached, per-generation cap. Amap: name-suffix
+gate («西湖区××» rejected), http→https rewrite, cache/negative cache, `status≠1` not cached, per-
+generation cap, `calls` only counts real requests. `placeLookup.test.ts` asserts the four-stage
+short-circuit order (stored hit skips Pexels and Amap; Pexels hit skips Amap; Amap hit skips the wiki).
+Both new suites must stay free of DB imports.
 
 #### Correct
 

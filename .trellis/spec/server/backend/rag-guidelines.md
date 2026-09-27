@@ -368,9 +368,10 @@ Apply when changing where an attraction's `coverUrl` comes from: the stored-cove
 `export_place_images.py` manifest, or `researchTools.resolveCover`'s URL acceptance rule.
 
 Background: the Wikimedia fallback cannot serve mainland users — `upload.wikimedia.org` and the
-rest of the Wikimedia media servers are blocked in China. Pexels is therefore the primary source
-(covers any city), stored covers are second (real photos, but only Beijing/Guangzhou/Hangzhou), and
-the live wiki lookup is a fallback for overseas/proxied environments only.
+rest of the Wikimedia media servers are blocked in China. The order is therefore: stored library
+(real photos, but only Beijing/Guangzhou/Hangzhou) → Pexels (any city, ~45–50% textual gate) → Amap
+POI photos (China-reachable and tied to the exact POI, but burns the scarce search quota) → live
+wiki lookup (overseas/proxied environments only).
 
 ### 2. Signatures
 
@@ -396,10 +397,9 @@ writes nothing.
 
 - **Store the relative key, never a URL.** The display prefix comes from `MEDIA_BASE_URL` at read
   time, so switching from the local disk to object storage is an env-var change, not a re-import.
-- Resolution order in `add_candidate` (attraction only): Pexels (strict keyword match) → stored cover
-  → Chinese Wikipedia → empty. Each hit short-circuits the remaining sources and their request
-  budgets. The three-source contract lives in the integration guidelines under *Attraction Cover
-  Sources*.
+- Resolution order in `add_candidate` (attraction only): stored library → Pexels → Amap POI photos →
+  Chinese Wikipedia → empty. Each hit short-circuits the remaining sources and their request budgets.
+  The four-source contract lives in the integration guidelines under *Attraction Cover Sources*.
 - URL acceptance is deliberately wider than the wiki path: `isUsableCoverUrl` accepts `http(s)://`
   OR a leading `/` (same-origin `/media/...`). The wiki result still requires `https://`.
 - `mergeFacts` takes `coverImage` from any member of a normalized group — split rows (「故宫」 vs
@@ -417,6 +417,8 @@ writes nothing.
 | --- | --- |
 | `payload.coverImage` absent | `storedCover` → `null`; the wiki fallback runs as before |
 | `PEXELS_API_KEY` unset | Pexels source skipped silently; covers behave exactly as before that change |
+| Amap POI `photos` empty or name mismatch | `pickPhoto` → `null` (negative-cached 24 h) → wiki |
+| Amap search quota exhausted (`status≠1`) | `null`, not cached, one `[amap-photo]` warn; later candidates fall through |
 | Pexels results carry no textual match | `pickCover` → `null` (negative-cached 24 h) → stored cover → wiki |
 | Pexels budget exhausted (8 per generation / 180 per hour) | `null` without a request; later candidates fall through |
 | `canonical_places` query throws | `loadPlaceFacts` warns and returns an empty Map → `null`; generation continues |

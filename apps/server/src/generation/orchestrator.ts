@@ -16,6 +16,7 @@ import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
+import { resolveAmapCredential } from '../services/settingsService';
 import { searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
 import { poiBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
@@ -41,6 +42,7 @@ import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
 import { createPexelsCoverLookup } from '../integrations/pexels/cover';
+import { createAmapPoiPhotoLookup } from '../integrations/amap/poiPhotos';
 import { createStoredCoverLookup } from './storedCover';
 import { loadPlaceFacts } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
@@ -120,6 +122,10 @@ export async function runGeneration(
   // 地理会话（v0.5）：geocode/route 统一服务商与凭据解析、任务上限与日额度记账；出行方式基调来自表单（ST3）
   const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
   await geo.init();   // 09-18：凭据/额度解析 PG 化后为异步，须在任何 geo 调用前完成
+  // 封面第三级（09-27）：高德 POI 图片。凭据与地理链同一份解析（个人 Key 优先、站点兜底），
+  // 但调用量单独计数 —— 它走的是 v5/place/text 的「基础搜索服务」配额（个人 5,000/月），比地理编码稀缺得多。
+  const amapPhotoCredential = await resolveAmapCredential(job.userId);
+  const amapPoiPhotos = createAmapPoiPhotoLookup(amapPhotoCredential?.apiKey ?? '');
   // 地理调用按链分流计入各自用量列：POI 搜索固定天地图，路线 + 地理编码走另一条（高德优先）。
   // 两条链各自独立计数，不再靠单一开关二选一（高德缺 Key 时地理链自己降级到天地图，也要如实记到天地图列）。
   // 返回值必须现算 —— poi/geo 的统计在生成过程中持续增长。
@@ -127,7 +133,7 @@ export async function runGeneration(
     const geoCalls = geo.stats.calls;
     const geoTianditu = geo.providerKind() === 'tianditu';
     return {
-      amapCalls: geoTianditu ? 0 : geoCalls,
+      amapCalls: (geoTianditu ? 0 : geoCalls) + amapPoiPhotos.calls,
       tiandituCalls: poi.stats.calls + (geoTianditu ? geoCalls : 0),
     };
   };
@@ -251,6 +257,7 @@ export async function runGeneration(
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
         coverLookup: createWikiCoverLookup(),
         pexelsCover: createPexelsCoverLookup(env.pexelsApiKey),
+        amapPhotos: amapPoiPhotos,
         storedCover: createStoredCoverLookup(form.destination),
         storedPoint: cityPointLookup(form.destination),
       }),

@@ -194,3 +194,91 @@ test('景点封面：库内相对路径（/media/...）也是合法封面，不�
   assert.equal(outcome.pool[0]!.coverUrl, media, '站内相对 URL 必须被接受（库内封面默认就是同源路径）');
   assert.deepEqual(cover.queries, [], '库内命中不该触发维基请求');
 });
+
+// ---------- 封面来源顺序（09-27）：上游图库 → Pexels → 高德 → 维基 ----------
+
+const testPoi: SourcedPoi = {
+  name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '',
+  opentime: '', photoUrls: [], location: point, adcode: point.adcode,
+};
+
+function coverTools(deps: {
+  stored?: string | null;
+  pexels?: string | null;
+  amap?: string | null;
+  onStored?: () => void;
+  onPexels?: () => void;
+  onAmap?: () => void;
+}) {
+  const source: PoiSource = {
+    kind: 'amap',
+    searchPois: async () => [testPoi],
+    selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }),
+  };
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  const cover = recordingCover();
+  const tools = buildResearchTools({
+    poiSource: source,
+    searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
+    destination: '北京',
+    searchWebMax: 2,
+    outcome,
+    coverLookup: cover.lookup,
+    pexelsCover: { coverFor: async () => { deps.onPexels?.(); return deps.pexels ?? null; } },
+    storedCover: async () => { deps.onStored?.(); return deps.stored ?? null; },
+    amapPhotos: { coverFor: async () => { deps.onAmap?.(); return deps.amap ?? null; }, calls: 0 },
+  });
+  return { tools, outcome, cover };
+}
+
+async function addFirst(tools: ReturnType<typeof coverTools>['tools'], outcome: ResearchOutcome) {
+  const search = tools.find((tool) => tool.name === 'search_pois')!;
+  const add = tools.find((tool) => tool.name === 'add_candidate')!;
+  await search.execute('search', { category: 'attraction', keyword: '故宫' });
+  await add.execute('a', { name: '故宫', category: 'attraction', intro: '中轴线' });
+  return outcome.pool[0]!.coverUrl;
+}
+
+test('封面顺序：上游图库命中即短路，不查 Pexels 与高德', async () => {
+  const calls: string[] = [];
+  const { tools, outcome, cover } = coverTools({
+    stored: '/media/xhs/北京/8f3a/00.webp',
+    onStored: () => calls.push('stored'),
+    onPexels: () => calls.push('pexels'),
+    onAmap: () => calls.push('amap'),
+  });
+  assert.equal(await addFirst(tools, outcome), '/media/xhs/北京/8f3a/00.webp');
+  assert.deepEqual(calls, ['stored'], '上游图库是最前一级');
+  assert.deepEqual(cover.queries, []);
+});
+
+test('封面顺序：上游无图时查 Pexels，命中即不再查高德', async () => {
+  const pexelsUrl = 'https://images.pexels.com/photos/1/a.jpeg?h=350';
+  const calls: string[] = [];
+  const { tools, outcome, cover } = coverTools({
+    stored: null,
+    pexels: pexelsUrl,
+    onStored: () => calls.push('stored'),
+    onPexels: () => calls.push('pexels'),
+    onAmap: () => calls.push('amap'),
+  });
+  assert.equal(await addFirst(tools, outcome), pexelsUrl);
+  assert.deepEqual(calls, ['stored', 'pexels'], 'Pexels 命中后不再打高德');
+  assert.deepEqual(cover.queries, []);
+});
+
+test('封面顺序：前两级都无图时用高德，且不再查维基', async () => {
+  const amapUrl = 'https://store.is.autonavi.com/showpic/78e3e7b4';
+  const calls: string[] = [];
+  const { tools, outcome, cover } = coverTools({
+    stored: null,
+    pexels: null,
+    amap: amapUrl,
+    onStored: () => calls.push('stored'),
+    onPexels: () => calls.push('pexels'),
+    onAmap: () => calls.push('amap'),
+  });
+  assert.equal(await addFirst(tools, outcome), amapUrl);
+  assert.deepEqual(calls, ['stored', 'pexels', 'amap']);
+  assert.deepEqual(cover.queries, [], '高德命中后不再查维基');
+});
