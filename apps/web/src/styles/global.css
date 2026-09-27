@@ -643,8 +643,8 @@ a { color: var(--color-primary); text-decoration: none; }
    注意：h1 字号必须写在这里——global.css 的 h1/h2 元素规则无层级，优先级高于 Tailwind utilities。 */
 .gen-page-root {
   --ui: max(0.75px, min(0.0599vw, 0.106vh));
-  /* 设计稿标题与里程碑标题是衷线体，正文/副文案仍是全局黑体栈 */
-  --gen-serif: 'Noto Serif SC Variable', 'Songti SC', 'STSong', 'SimSun', serif;
+  /* 设计稿标题是京華老宋体（老宋体）；分片未覆盖的字落到思源宋体，再不行用系统宋体 */
+  --gen-serif: 'KingHwa OldSong', 'Noto Serif SC Variable', 'Songti SC', 'STSong', 'SimSun', serif;
 }
 .gen-header {
   position: relative;
@@ -661,7 +661,7 @@ a { color: var(--color-primary); text-decoration: none; }
   align-items: center;
   margin: 0 0 0 calc(80 * var(--ui));
   font-family: var(--gen-serif);
-  font-size: calc(52 * var(--ui));
+  font-size: calc(48 * var(--ui));
   font-weight: 700;
   line-height: 1.12;
   color: #1a365d;
@@ -798,7 +798,7 @@ a { color: var(--color-primary); text-decoration: none; }
 .gen-page-root .gen-step-title {
   margin: 0;
   font-family: var(--gen-serif);
-  font-size: calc(30 * var(--ui));
+  font-size: calc(28 * var(--ui));
   font-weight: 700;
   line-height: 1.25;
   color: #1a365d;
