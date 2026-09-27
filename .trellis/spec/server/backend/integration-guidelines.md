@@ -403,10 +403,17 @@ retrieval guidelines under *Attraction Cover Images*.
   or photo-page slug shares a normalized key with the place name (`lib/placeKey.ts`,
   `normalizePlaceKey`). No match → `null` → fall through. Never take “first result” — a generic lake
   photo must not be captioned as a named scenic spot.
-- Amap gate: the returned POI `name` must equal, or end with, the place's normalized key
-  («杭州西湖风景名胜区» → «杭州西湖» ends with «西湖»). `endsWith` rather than `includes` so «西湖区××»
-  cannot pass as «西湖». Images always get rewritten to `https://` — Amap mixes http and https, and an
-  http image on an https page is blocked as mixed content.
+- Amap gate is two-stage, and both must pass:
+  1. **Name**: equal to, end with, or contain the place's normalized key segments **in order**
+     («杭州西湖风景名胜区» → ends with «西湖»; «西溪国家湿地公园» → segments 西溪 / 湿地 appear in
+     order, so «西溪湿地» matches). `endsWith` rather than `includes` for the plain case so «西湖区××»
+     cannot pass as «西湖».
+  2. **Type**: the first segment of the POI's `type` must be in
+     `['风景名胜', '体育休闲服务', '科教文化服务', '购物服务']`; a missing type is rejected. This is a
+     whitelist on purpose — searching «龙井村» returns «龙井村(公交站)» with photos, and «宋城» returns road
+     entries; without it those images get captioned as scenic spots.
+- Images always get rewritten to `https://` — Amap mixes http and https, and an http image on an
+  https page is blocked as mixed content.
 - Amap quota is separate and much scarcer than the geocode chain's: `v5/place/text` belongs to
   「基础搜索服务」 (personal: 5,000/month) while `v3/geocode/geo` belongs to 「基础LBS服务」
   (150,000/month). Hence: only after the first two sources miss, **≤3 calls per generation**, a shared
@@ -455,7 +462,8 @@ a stored cover never call the lookup; a stored `/media/...` path is accepted and
 request; `mediaUrl` joins keys against `/media`, an absolute CDN base, and an empty base. Pexels:
 alt-based acceptance and normalized-key alignment, non-https and empty `src` rejected, no request
 without a key, cache and negative cache, 429 not cached, per-generation cap. Amap: name-suffix
-gate («西湖区××» rejected), http→https rewrite, cache/negative cache, `status≠1` not cached, per-
+gate («西湖区××» rejected, «西溪国家湿地公园» accepted for «西溪湿地»), type whitelist (公交站/路名/餐厅
+rejected, missing type rejected), http→https rewrite, cache/negative cache, `status≠1` not cached, per-
 generation cap, `calls` only counts real requests. `placeLookup.test.ts` asserts the four-stage
 short-circuit order (stored hit skips Pexels and Amap; Pexels hit skips Amap; Amap hit skips the wiki).
 Both new suites must stay free of DB imports.

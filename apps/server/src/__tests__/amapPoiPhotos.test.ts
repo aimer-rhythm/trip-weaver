@@ -6,8 +6,10 @@ import { createAmapPoiPhotoLookup, pickPhoto } from '../integrations/amap/poiPho
 
 const PHOTO = 'https://store.is.autonavi.com/showpic/78e3e7b400e9290d0000003670488183';
 
-function poi(name: string, photos: { url: string }[] = [{ url: PHOTO }]) {
-  return { name, photos };
+const SCENIC = '风景名胜;风景名胜;国家级景点';
+
+function poi(name: string, photos: { url: string }[] = [{ url: PHOTO }], type = SCENIC) {
+  return { name, type, photos };
 }
 
 test('挑选：名字归一键相同或以其结尾的 POI 才算命中', () => {
@@ -29,8 +31,30 @@ test('挑选：http 图片地址改写成 https，其他协议丢弃', () => {
 });
 
 test('挑选：首个命中 POI 没图时继续看下一个候选', () => {
-  const pois = [{ name: '西湖', photos: [] }, { name: '杭州西湖风景名胜区', photos: [{ url: PHOTO }] }];
+  const pois = [poi('西湖', []), poi('杭州西湖风景名胜区', [{ url: PHOTO }])];
   assert.equal(pickPhoto(pois, '西湖'), PHOTO);
+});
+
+test('挑选：类型白名单拦住公交站 / 路名 / 餐厅类 POI 的图', () => {
+  const busStop = poi('龙井村(公交站)', [{ url: PHOTO }], '交通设施服务;公交车站;公交车站');
+  assert.equal(pickPhoto([busStop], '龙井村'), null, '公交站不能当景点封面');
+  const road = poi('宋城路', [{ url: PHOTO }], '地名地址信息;地名地址信息;地名地址信息');
+  assert.equal(pickPhoto([road], '宋城'), null, '路名不能当景点封面');
+  const restaurant = poi('龙井村', [{ url: PHOTO }], '餐饮服务;中餐厅;中餐厅');
+  assert.equal(pickPhoto([restaurant], '龙井村'), null);
+  assert.equal(pickPhoto([poi('龙井村', [{ url: PHOTO }], '')], '龙井村'), null, 'type 缺失一律拒绝');
+  assert.equal(
+    pickPhoto([poi('龙井村', [{ url: PHOTO }], '风景名胜;公园广场;公园')], '龙井村'),
+    PHOTO,
+    '白名单内的类型正常取图',
+  );
+});
+
+test('挑选：地点名中间插词也能命中（西溪湿地 → 西溪国家湿地公园）', () => {
+  assert.equal(pickPhoto([poi('西溪国家湿地公园')], '西溪湿地'), PHOTO);
+  assert.equal(pickPhoto([poi('杭州西溪国家湿地公园')], '西溪湿地'), PHOTO);
+  assert.equal(pickPhoto([poi('湿地西溪公园')], '西溪湿地'), null, '分段必须按序出现');
+  assert.equal(pickPhoto([poi('九溪烟树景区')], '九溪烟树'), PHOTO, '整体后缀仍走 endsWith');
 });
 
 test('挑选：地点名过短（剥不出有效键）时不猜', () => {

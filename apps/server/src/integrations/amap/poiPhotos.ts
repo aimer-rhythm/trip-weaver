@@ -26,8 +26,17 @@ const recentCalls: number[] = [];
 
 export interface AmapPoiRecord {
   name?: unknown;
+  type?: unknown;
   photos?: unknown;
 }
+
+/**
+ * 景点类型白名单（取高德 `type` 的第一段大类）。
+ * 用白名单而不是黑名单：搜「龙井村」高德会先返回「龙井村(公交站)」，搜「宋城」会返回路名 ——
+ * 这类 POI 同样带 photos，不挡就会把公交站/道路的图当作景点封面。
+ * 实测景点落在「风景名胜」（国家级景点/公园/寺庙）、「体育休闲服务」（体育场馆）两类。
+ */
+const PLACE_TYPE_PREFIXES = ['风景名胜', '体育休闲服务', '科教文化服务', '购物服务'] as const;
 
 export interface AmapPoiPhotoQuery {
   /** 地点名，作为 keywords */
@@ -53,17 +62,48 @@ function httpsOf(raw: unknown): string {
 }
 
 /**
- * 在已取回的 POI 里挑首图：归一键相同或以地点名结尾的 POI 才算命中
- * （高德 name 是权威地名，带「风景名胜区」等后缀 → 归一后「杭州西湖」以「西湖」结尾）。
- * 纯函数，方便单测不发请求。`photos[0]` 取不到就换下一个候选 POI。
+ * 地点名切段（每 2 字一段，尾段可 1 字）。
+ * 用于容忍 POI 名中间插词：「西溪湿地」→ ['西溪','湿地'] 能对上「西溪国家湿地公园」。
+ */
+function segmentsOf(key: string): string[] {
+  if (key.length <= 3) return [key];
+  const out: string[] = [];
+  for (let i = 0; i < key.length; i += 2) out.push(key.slice(i, i + 2));
+  return out;
+}
+
+/** 名字闸门：完全相同、或以地点名结尾，或地点名的各段按序出现（容忍中间插词） */
+function nameMatches(poiName: string, wanted: string): boolean {
+  // endsWith 而不是 includes：避免「西湖区××」被当成「西湖」
+  if (poiName === wanted || poiName.endsWith(wanted)) return true;
+  const segments = segmentsOf(wanted);
+  if (segments.length < 2) return false;
+  let cursor = 0;
+  for (const segment of segments) {
+    const at = poiName.indexOf(segment, cursor);
+    if (at < 0) return false;
+    cursor = at + segment.length;
+  }
+  return true;
+}
+
+/** 类型闸门：type 缺失或不在白名单一律拒绝（「宁可不插图」） */
+function typeAllowed(raw: unknown): boolean {
+  const head = typeof raw === 'string' ? raw.split(';')[0]?.trim() ?? '' : '';
+  return PLACE_TYPE_PREFIXES.some((prefix) => head === prefix);
+}
+
+/**
+ * 在已取回的 POI 里挑首图：名字闸门 + 类型闸门都过才算命中，
+ * 取 `photos[0]`；首个命中 POI 没图就继续看下一个候选。纯函数，方便单测不发请求。
  */
 export function pickPhoto(pois: readonly AmapPoiRecord[], name: string): string | null {
   const wanted = normalizePlaceKey(name);
   if (wanted.length < 2) return null;
   for (const poi of pois) {
     const poiName = typeof poi.name === 'string' ? normalizePlaceKey(poi.name) : '';
-    // endsWith 而不是 includes：避免「西湖区××」被当成「西湖」
-    if (poiName !== wanted && !poiName.endsWith(wanted)) continue;
+    if (!nameMatches(poiName, wanted)) continue;
+    if (!typeAllowed(poi.type)) continue;
     const photos = Array.isArray(poi.photos) ? poi.photos : [];
     for (const photo of photos) {
       const url = httpsOf((photo as { url?: unknown } | null)?.url);
