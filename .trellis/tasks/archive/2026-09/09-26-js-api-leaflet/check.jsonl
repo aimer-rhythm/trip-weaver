@@ -1,0 +1,6 @@
+{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "质量检查现实：web 无单测，verify-c3 浏览器回归是唯一防线"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "检查是否过早抽象、两套渲染的组件职责是否单一"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "类型严格性检查（AMap 类型与可选链）"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "Key 与安全密钥的暴露面与日志脱敏审查"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "降级链是否完整、是否按约定静默"}

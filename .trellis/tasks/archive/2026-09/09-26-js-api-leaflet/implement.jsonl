@@ -1,0 +1,10 @@
+{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "前端规范入口清单：确认改动落在组件 / 状态 / API 客户端哪个边界"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "新增 AmapCanvas / LeafletCanvas 的组件拆分与「有真实复用才抽象」约定"}
+{"file": ".trellis/spec/web/frontend/type-safety.md", "reason": "严格 TS 基线：AMap 全局类型声明与 noUncheckedIndexedAccess 的影响"}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "apps/web 无 test/lint 的验证现实：只能靠根 typecheck + 浏览器回归脚本"}
+{"file": ".trellis/spec/web/frontend/directory-structure.md", "reason": "Vite /api 代理与构建形态（新增 GET /api/config 供运行期取 Key）"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "新增 GET /api/config 路由应落在哪个模块边界"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "公开接口下发 JS API Key 与安全密钥的暴露面评估"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "降级语义：Key 未配置 / SDK 加载失败 / 超时一律静默回落 Leaflet"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "实现完成后要跑的验证命令矩阵"}
