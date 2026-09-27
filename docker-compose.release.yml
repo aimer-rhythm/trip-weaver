@@ -16,6 +16,9 @@ services:
       - DATABASE_URL=postgres://postgres:${POSTGRES_PASSWORD:-postgres}@db:5432/tripweaver
     expose:
       - "3001"
+    # 库内景点封面：纯镜像部署需先把 data/media 同步到宿主机该目录（容器内 /app/data/media）
+    volumes:
+      - ./data/media:/app/data/media:ro
     depends_on:
       - db
 

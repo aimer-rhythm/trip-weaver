@@ -377,17 +377,26 @@ const route = await routeEstimate(apiKey, from, to, mode);
 leg.source = 'amap';                                                    // lie when Tianditu ran
 ```
 
-## Attraction Cover Fallback (Wikimedia, live lookup)
+## Attraction Cover Fallback (stored cover → Wikimedia live lookup)
 
-**Scope/Trigger**: an `attraction` candidate reaches `add_candidate` with no stored cover. The
-knowledge base (`canonical_places`) has no cover column yet, so today every attraction falls through.
-Filling that column is a later task; this lookup must stay the fallback, never the primary source.
+**Scope/Trigger**: an `attraction` candidate reaches `add_candidate`. Stored covers
+(`canonical_places.payload.coverImage`, exported by the community pipeline and imported by
+`scripts/seed-xhs-place-images.ts`) are the PRIMARY source. The Wikimedia lookup is the fallback and
+is unreachable from mainland China — `upload.wikimedia.org` and the rest of the Wikimedia media
+servers are blocked there — so treat it as an overseas/proxy path, never the main one. The full
+stored-cover contract (manifest format, env keys, `/media` route, deploy sync) lives in the RAG
+retrieval guidelines under *Attraction Cover Images*.
 
-**Contract** (`createWikiCoverLookup` in `apps/server/src/integrations/wikimedia/cover.ts`, wired in
+**Contract** (`createStoredCoverLookup` in `apps/server/src/generation/storedCover.ts` +
+`createWikiCoverLookup` in `apps/server/src/integrations/wikimedia/cover.ts`, both wired in
 `generation/orchestrator.ts`):
 
-- Order: stored cover (`storedCover`, currently always null) → Chinese Wikipedia article search
-  (`地点名 + 城市`) → empty. Only `attraction`. Food and hotel are never queried.
+- Order: stored cover (`payload.coverImage` → `MEDIA_BASE_URL`, default `/media`) → Chinese Wikipedia
+  article search (`地点名 + 城市`) → empty. Only `attraction`. Food and hotel are never queried.
+- URL acceptance differ per source: stored covers may be `http(s)://` OR a same-origin path starting
+  with `/`; a wiki thumbnail must be `https://`.
+- A missing key, a failed `canonical_places` query, or a failed file fetch all degrade to `null`; the
+  frontend falls back to the category icon.
 - Accept an article only when it has a thumbnail AND coordinates within 2 km of the place. The
   place coordinate is GCJ-02 and is converted with `gcj02ToWgs84` before comparing.
 - Coordinate source: the research-phase capture (`search_pois`) first, then `loadPlaceFacts` for
@@ -404,10 +413,12 @@ Filling that column is a later task; this lookup must stay the fallback, never t
 pavilion, and the closest to 鸟巢 was an Olympics ceremony photo. Title search plus a coordinate check
 hit 9 of 10.
 
-**Tests** (`apps/server/src/__tests__/wikimediaCover.test.ts`, `placeLookup.test.ts`): `pickCover`
-keeps the nearest in-range article and drops the rest; the adapter caches both hits and confirmed
-misses; HTTP failure returns null and is not cached; the 9th lookup makes no request; a food candidate
-and a candidate with a stored cover never call the lookup.
+**Tests** (`apps/server/src/__tests__/wikimediaCover.test.ts`, `placeLookup.test.ts`,
+`storedCover.test.ts`): `pickCover` keeps the nearest in-range article and drops the rest; the
+adapter caches both hits and confirmed misses; HTTP failure returns null and is not cached; the 9th
+lookup makes no request; a food candidate and a candidate with a stored cover never call the lookup;
+a stored `/media/...` path is accepted and skips the wiki request; `mediaUrl` joins keys against
+`/media`, an absolute CDN base, and an empty base.
 
 #### Correct
 

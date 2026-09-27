@@ -358,3 +358,112 @@ Representative paths: `apps/server/src/generation/scheduling/placeRelations.ts`,
 `apps/server/src/generation/scheduling/placeFacts.ts`,
 `apps/server/src/generation/scheduling/buildDraft.ts`, `apps/server/src/db/migrate.ts`,
 `apps/server/scripts/seed-xhs-relations.ts`.
+
+## Scenario: Attraction Cover Images (payload.coverImage → /media)
+
+### 1. Scope / Trigger
+
+Apply when changing where an attraction's `coverUrl` comes from: the stored-cover lookup, the
+`/media` static route, `MEDIA_BASE_URL`, `scripts/seed-xhs-place-images.ts`, the upstream
+`export_place_images.py` manifest, or `researchTools.resolveCover`'s URL acceptance rule.
+
+Background: the Wikimedia fallback cannot serve mainland users — `upload.wikimedia.org` and the
+rest of the Wikimedia media servers are blocked in China. Stored covers are therefore the primary
+source, and the live wiki lookup is a fallback for overseas/proxied environments only.
+
+### 2. Signatures
+
+- Manifest `import/xhs-place-images-{city}.json`:
+  `{ city, generatedAt, count, images: [{ placeId, placeName, key, width, height, bytes, score, sourceUrl }] }`
+- `placeId` = `sha256(city + name)[:32]` — the SAME algorithm as `canonical_places.id`. Upstream's
+own auto-increment id must never be exported: it matches no row here and the import silently
+writes nothing.
+- `key` = `xhs/{city}/{placeId}/{index}.webp` — a RELATIVE key. No `/media` prefix, no host.
+- Upstream producer: `xhs-travel-pipeline/scripts/export_place_images.py [--city] [--out] [--media-root]
+  [--max-per-place] [--dry-run]`; `export_and_embed.ps1 -WithImages` chains it after the places import.
+- Importer: `tsx apps/server/scripts/seed-xhs-place-images.ts [path.json ...]` — run AFTER
+  `seed-xhs-places.ts`, because a key can only be written onto an existing row.
+- `createStoredCoverLookup(city: string): (name: string) => Promise<string | null>` in
+  `generation/storedCover.ts`
+- `mediaUrl(key: string, base = env.mediaBaseUrl): string | null` — same file
+- `PlaceFacts.coverImage?: string` in `generation/scheduling/placeFacts.ts`
+- `env.mediaBaseUrl` ← `MEDIA_BASE_URL` (default `/media`; trailing slashes stripped)
+- Fastify route `/media/` → `path.resolve(__dirname, '../../../data/media')`, registered in dev AND
+  prod, with `decorateReply: false`
+
+### 3. Contracts
+
+- **Store the relative key, never a URL.** The display prefix comes from `MEDIA_BASE_URL` at read
+  time, so switching from the local disk to object storage is an env-var change, not a re-import.
+- Resolution order in `add_candidate` (attraction only): stored cover → Chinese Wikipedia search →
+  empty. A stored hit skips the wiki lookup and its per-generation request budget entirely.
+- URL acceptance is deliberately wider than the wiki path: `isUsableCoverUrl` accepts `http(s)://`
+  OR a leading `/` (same-origin `/media/...`). The wiki result still requires `https://`.
+- `mergeFacts` takes `coverImage` from any member of a normalized group — split rows (「故宫」 vs
+  「故宫博物院」) share one exported image.
+- Images never enter the database or the Docker image: `data/media/` is gitignored and mounted
+  read-only into the container (`./data/media:/app/data/media:ro`). The DB stores keys; the host
+  stores bytes; they are synced separately.
+- The route is skipped when `data/media` does not exist, so a fresh clone still boots.
+- Upstream keeps `sourceUrl` (the Xiaohongshu CDN link, ~24 h signed) for provenance and takedown
+  only. The file has already been copied locally; the link is never used for display.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| `payload.coverImage` absent | `storedCover` → `null`; the wiki fallback runs as before |
+| `canonical_places` query throws | `loadPlaceFacts` warns and returns an empty Map → `null`; generation continues |
+| City argument empty | `createStoredCoverLookup` returns `null` without touching the DB |
+| `MEDIA_BASE_URL` empty string | `str()` falls back to `/media`; URLs stay same-origin |
+| `data/media` missing at boot | `/media` route not registered; nothing else changes |
+| key in DB but file missing | `/media/...` → 404 → `PoiCard` `onerror` → category placeholder |
+| place id not in `canonical_places` (wrong run order) | importer skips it and warns; exits 0 |
+| importer rerun | `payload \|\| jsonb_build_object('coverImage', key)`; other payload keys untouched |
+| upstream source image missing/unreadable | count as `skipped`, keep going; manifest lists only written files |
+
+### 5. Good / Base / Bad Cases
+
+- Good: 杭州 exports 34 covers (4.6 MB after webp q80, ~137 KB each); 33 land on existing rows; a
+  generated 杭州 trip renders `/media/xhs/杭州/{placeId}/00.webp` with no wiki request.
+- Base: a city with no exported images behaves exactly as before — wiki fallback, then the category
+  icon.
+- Bad: exporting upstream's `canonical_place.id` (auto-increment) as `placeId` — every row misses and
+  the importer reports「不在库里」for the whole city.
+
+### 6. Tests Required
+
+- `apps/server/src/__tests__/storedCover.test.ts` — key→URL joining for `/media`, absolute CDN base,
+  trailing slash, leading slash on the key, empty key → `null`, empty city → `null` without a query.
+- `apps/server/src/__tests__/exportFiles.test.ts` — `xhs-place-images-*.json` is recognized as its own
+  source with `rowCount` from `images`, and is NOT swallowed by the `xhs-places*` pattern.
+- `apps/server/src/__tests__/placeLookup.test.ts` — a stored `/media/...` value is accepted and no
+  wiki request is made.
+- `apps/server/src/__tests__/placeFacts.test.ts` — `mergeFacts` picks up `coverImage` from any member;
+  the value stays a relative key. DB-backed assertions skip when no covers were imported.
+- Assertion points: the resolved `poi.coverUrl` string and the recorded wiki-query list.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: absolute URL in the payload. Switching storage (or just running locally vs in prod)
+// then requires a full re-import, and localhost leaks into production data.
+payload.coverImage = 'http://localhost:3001/media/xhs/杭州/8f3a/00.webp';
+
+// Correct: relative key; the prefix is applied at read time.
+payload.coverImage = 'xhs/杭州/8f3a1b2c/00.webp';   // mediaUrl() → `${MEDIA_BASE_URL}/xhs/…`
+```
+
+```typescript
+// Wrong: reusing the wiki-path check for a stored cover — isHttpUrl() drops the same-origin path,
+// so every stored cover silently falls through to the (blocked-in-China) wiki lookup.
+if (stored && isHttpUrl(stored)) return stored;
+
+// Correct: accept same-origin absolute paths too.
+if (stored && isUsableCoverUrl(stored)) return stored.slice(0, 300);
+```
+
+Representative paths: `apps/server/src/generation/storedCover.ts`,
+`apps/server/src/generation/tools/researchTools.ts`, `apps/server/scripts/seed-xhs-place-images.ts`,
+`apps/server/scripts/lib/exportFiles.ts`, `apps/server/src/index.ts`, `docker-compose.yml`,
+`xhs-travel-pipeline/scripts/export_place_images.py`.

@@ -45,6 +45,15 @@ test('合并：坐标与停留时长取有值/最大', () => {
   assert.equal(merged.lat, 39.9);
 });
 
+test('合并：coverImage 任一成员有值即可用（同键分裂条目共享同一批导出的图）', () => {
+  const merged = mergeFacts([
+    fx({ name: '故宫' }),
+    fx({ name: '故宫博物院', coverImage: 'xhs/北京/8f3a/00.webp' }),
+  ]);
+  assert.equal(merged.coverImage, 'xhs/北京/8f3a/00.webp');
+  assert.equal(mergeFacts([fx({ name: '甲' })]).coverImage, undefined, '都没图时不编造');
+});
+
 // ---------- 加载集成（本地库；库不可达时 placeFacts 降级为空 Map，跳过断言） ----------
 
 test('loadPlaceFacts：候选「故宫博物院」合并到「故宫」分裂条目的分数与提及', async () => {
@@ -106,4 +115,17 @@ test('loadPlaceFacts：payload.openHours 渲染进 facts.openTime', async () => 
     return;
   }
   assert.equal(facts.openTime, '06:30-20:00');
+});
+
+// ---------- payload.coverImage（09-27） ----------
+
+test('loadPlaceFacts：payload.coverImage 透传为相对 key', async () => {
+  const map = await loadPlaceFacts(['故宫博物院'], '北京');
+  const facts = map.get('故宫博物院');
+  if (!facts?.coverImage) {
+    console.warn('本地库尚无封面 key（先跑 export_place_images.py + seed-xhs-place-images.ts），跳过断言');
+    return;
+  }
+  assert.match(facts.coverImage, /^xhs\//, '存的是相对 key，不带 /media 前缀');
+  assert.ok(!facts.coverImage.startsWith('/'), '绝对路径不入库');
 });

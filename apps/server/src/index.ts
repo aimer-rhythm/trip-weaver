@@ -69,6 +69,14 @@ async function main() {
     });
   }
 
+  // 库内景点封面（09-27）：上游导出的 webp 落在仓库 data/media（已 gitignore），
+  // 由 /media/ 前缀直接托管。dev 与 prod 都注册 —— 本地开发要能看图。
+  // decorateReply: false：避免与上面的前端产物注册抢 sendFile 装饰（只有一个 fastify-static 能装饰）。
+  const mediaRoot = path.resolve(__dirname, '../../../data/media');
+  if (fs.existsSync(mediaRoot)) {
+    await app.register(fastifyStatic, { root: mediaRoot, prefix: '/media/', decorateReply: false });
+  }
+
   await app.listen({ port: env.port, host: '0.0.0.0' });
 }
 

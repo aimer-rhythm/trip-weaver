@@ -73,6 +73,14 @@ function isHttpUrl(u: string): boolean {
 }
 
 /**
+ * 封面 URL 可用性：外链 http(s)，或站内相对 URL（/media/...，与页面同源）。
+ * 库内封面走后者——key 由 MEDIA_BASE_URL 拼出，默认就是同源路径。
+ */
+function isUsableCoverUrl(u: string): boolean {
+  return isHttpUrl(u) || u.startsWith('/');
+}
+
+/**
  * 封面解析：库内封面优先；没有则用坐标查维基。
  * 坐标先取调研阶段捕到的（search_pois），没有再问库内坐标兜底。
  * 名字按归一键对齐：候选「故宫博物院」对得上搜索结果「故宫」。
@@ -86,7 +94,7 @@ async function resolveCover(
   storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>,
 ): Promise<string | null> {
   const stored = await storedCover(name);
-  if (stored && isHttpUrl(stored)) return stored.slice(0, 300);
+  if (stored && isUsableCoverUrl(stored)) return stored.slice(0, 300);
 
   const key = normalizePlaceKey(name);
   const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);

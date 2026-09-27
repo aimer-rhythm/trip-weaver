@@ -32,6 +32,9 @@ export interface PlaceFacts {
   openTime?: string;
   /** payload.aliases：上游城市维度别名表（09-27）。只用于实体归一键扩展，不参与排程消费。 */
   aliases: string[];
+  /** payload.coverImage：库内封面（09-27），形如 `xhs/杭州/{placeId}/00.webp` 的相对 key。
+   *  绝对 URL 由 MEDIA_BASE_URL 拼出，见 generation/storedCover.ts。 */
+  coverImage?: string;
 }
 
 interface FactRow {
@@ -129,6 +132,8 @@ function toFacts(row: FactRow): PlaceFacts {
     facts.lat = row.lat;
   }
   if (typeof payload.adcode === 'string' && payload.adcode) facts.adcode = payload.adcode;
+  const cover = payload.coverImage;
+  if (typeof cover === 'string' && cover.trim()) facts.coverImage = cover.trim();
   return facts;
 }
 
@@ -158,6 +163,9 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
   // 结构化开闭馆：任一成员有值即可用（闭馆日信息不会互相矛盾到需要仲裁）
   const openTime = members.find((f) => f.openTime)?.openTime;
   if (openTime) merged.openTime = openTime;
+  // 库内封面：同键分裂条目里任一有图即可用（图源同批导出，不会互相矛盾）
+  const cover = members.find((f) => f.coverImage)?.coverImage;
+  if (cover) merged.coverImage = cover;
   return merged;
 }
 

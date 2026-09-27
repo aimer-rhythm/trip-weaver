@@ -163,3 +163,34 @@ test('景点封面：库内无图且有坐标时查维基，美食不查，库�
 
   assert.deepEqual(cover.queries, ['故宫'], '只有缺图的景点触发了一次检索');
 });
+
+test('景点封面：库内相对路径（/media/...）也是合法封面，不再查维基', async () => {
+  const poi: SourcedPoi = {
+    name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '',
+    opentime: '', photoUrls: [], location: point, adcode: point.adcode,
+  };
+  const source: PoiSource = {
+    kind: 'amap',
+    searchPois: async () => [poi],
+    selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }),
+  };
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  const cover = recordingCover();
+  const media = '/media/xhs/北京/8f3a1b/00.webp';
+  const tools = buildResearchTools({
+    poiSource: source,
+    searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
+    destination: '北京',
+    searchWebMax: 2,
+    outcome,
+    coverLookup: cover.lookup,
+    storedCover: async (name) => (name === '故宫' ? media : null),
+  });
+  const search = tools.find((tool) => tool.name === 'search_pois')!;
+  const add = tools.find((tool) => tool.name === 'add_candidate')!;
+  await search.execute('search', { category: 'attraction', keyword: '故宫' });
+  await add.execute('a', { name: '故宫', category: 'attraction', intro: '中轴线' });
+
+  assert.equal(outcome.pool[0]!.coverUrl, media, '站内相对 URL 必须被接受（库内封面默认就是同源路径）');
+  assert.deepEqual(cover.queries, [], '库内命中不该触发维基请求');
+});

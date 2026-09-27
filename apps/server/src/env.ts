@@ -75,6 +75,9 @@ export const env = {
   databaseUrl: str('DATABASE_URL', 'postgres://postgres:postgres@127.0.0.1:5432/tripweaver'),
   // 旧 SQLite 文件路径：仅一次性迁移脚本 scripts/migrate-sqlite-to-pg.ts 读取
   databasePath: str('DATABASE_PATH', './data/tripweaver.db'),
+  // 媒体静态资源 URL 前缀（09-27）：库内景点封面只存相对 key，由这里拼成可展示 URL。
+  // 缺省 /media 即同源相对路径（images.ts 已挂载该前缀）；换对象存储只改这一个变量。
+  mediaBaseUrl: str('MEDIA_BASE_URL', '/media').replace(/\/+$/, ''),
   masterKey,
   registrationMode,
   inviteCode,                                           // 仅 invite 模式使用

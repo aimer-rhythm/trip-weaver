@@ -1,14 +1,17 @@
 // 单测：导出文件扫描与版本选择（09-27）——识别两类产物、忽略无关文件、每城取最新
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { test } from 'node:test';
-import { IMPORT_DIR, latestExports, scanExports } from '../../scripts/lib/exportFiles';
+import { EXPORT_SOURCES, IMPORT_DIR, latestExports, scanExports } from '../../scripts/lib/exportFiles';
 
-test('scanExports：识别两类导出，忽略 backup.dump 等无关文件', () => {
+test('scanExports：识别三类导出，忽略 backup.dump 等无关文件', () => {
   const files = scanExports(IMPORT_DIR);
   assert.ok(files.length > 0, `import/ 下应有可识别的导出，实际 ${IMPORT_DIR}`);
   assert.ok(
-    files.every((item) => item.source === 'xhs_places' || item.source === 'xhs_relations'),
-    '只应识别 xhs-places*.json 与 xhs-place-relations-*.json',
+    files.every((item) => EXPORT_SOURCES.includes(item.source)),
+    '只应识别 xhs-places*.json / xhs-place-relations-*.json / xhs-place-images-*.json',
   );
   assert.ok(!files.some((item) => item.filePath.endsWith('.dump')));
   for (const item of files) {
@@ -44,4 +47,30 @@ test('latestExports：同城多份导出时只留一份（北京实测曾有三�
 
 test('latestExports：空输入返回空数组', () => {
   assert.deepEqual(latestExports([]), []);
+});
+
+test('图片产物与地点产物互斥：xhs-place-images-*.json 不被当成 places 导出', () => {
+  // 正则 ^xhs-places 要求第 10 个字符是 s，`xhs-place-images-` 那里是 `-`；写错会让两个源互相吞掉
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'export-files-'));
+  try {
+    fs.writeFileSync(
+      path.join(dir, 'xhs-place-images-杭州.json'),
+      JSON.stringify({ city: '杭州', generatedAt: '2026-09-27', count: 1, images: [{ placeId: 'a', key: 'x/x.webp' }] }),
+      'utf8',
+    );
+    fs.writeFileSync(
+      path.join(dir, 'xhs-places-杭州.json'),
+      JSON.stringify({ city: '杭州', generatedAt: '2026-09-27', count: 1, places: [{ id: 'a', name: 'X' }] }),
+      'utf8',
+    );
+    const found = scanExports(dir);
+    assert.equal(found.length, 2, '两份产物都应被识别');
+    const images = found.find((f) => f.source === 'xhs_place_images');
+    const places = found.find((f) => f.source === 'xhs_places');
+    assert.ok(images && places, '两个源各一份');
+    assert.equal(images.rowCount, 1, 'rowCount 取 images 数组长度');
+    assert.equal(places.rowCount, 1, 'rowCount 取 places 数组长度');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });

@@ -39,12 +39,13 @@ import { GenerationPerformance } from './performance';
 import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
+import { createStoredCoverLookup } from './storedCover';
 import { loadPlaceFacts } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
 
 /**
  * 封面降级的库内坐标兜底（09-26）。
- * 库内尚无封面列，景点缺图时靠坐标查中文维基；调研阶段没捕到坐标（知识库候选）就用这里。
+ * 库内封面（payload.coverImage）缺失时靠坐标查中文维基；调研阶段没捕到坐标（知识库候选）就用这里。
  * loadPlaceFacts 拉的是全城行，一次生成只拉一次，后续候选复用。
  */
 function cityPointLookup(city: string): (name: string) => Promise<{ lat: number; lng: number } | null> {
@@ -221,6 +222,7 @@ export async function runGeneration(
     emit(job, {
       type: 'job_start',
       destination: form.destination,
+      days: form.days,
       xhsEnabled: enabledSources.length > 0,
       dataSources: enabledSources,
       at: job.createdAt,
@@ -246,6 +248,7 @@ export async function runGeneration(
         outcome: research,
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
         coverLookup: createWikiCoverLookup(),
+        storedCover: createStoredCoverLookup(form.destination),
         storedPoint: cityPointLookup(form.destination),
       }),
       userPrompt: `${formBrief(form)}\n\n请开始调研。`,

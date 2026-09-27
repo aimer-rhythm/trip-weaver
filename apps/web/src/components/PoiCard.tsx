@@ -1,5 +1,6 @@
 // 调研候选卡片：生成页实时候选（compact）与编辑器概览（完整）共用
-// 高德协议 3.5：coverUrl 为热链实时展示、不转存；加载失败/缺图回落类目占位图
+// 封面来源：canonical_places.payload.coverImage（上游导出的 webp，走 /media 同源相对路径）
+// 与维基降级的热链 http(s) URL；加载失败/缺图回落类目占位图
 import { useState } from 'react';
 import type { ResearchPoi } from '@tripweaver/shared';
 import { POI_CATEGORY_ICON, POI_CATEGORY_LABEL, RESERVATION_LABEL } from '../lib/poi';

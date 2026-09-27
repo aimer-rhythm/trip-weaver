@@ -24,6 +24,9 @@ services:
     # 绑定 127.0.0.1：由宿主机 Nginx（或其他前置反代）转发，容器不直接对公网暴露
     ports:
       - "127.0.0.1:${APP_PORT:-3001}:3001"
+    # 库内景点封面（data/media 不进镜像）：只读挂载，图片由上游导出后同步到宿主机该目录
+    volumes:
+      - ./data/media:/app/data/media:ro
     depends_on:
       - db
 

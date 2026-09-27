@@ -88,6 +88,13 @@ else
   echo "⚠ pgvector 扩展未启用（不影响当前功能，RAG 接入前需排查）"
 fi
 
+# 库内景点封面（09-27）：数据库只存相对 key，图片本体在宿主机 ./data/media（只读挂载进容器）。
+# 图片不会随镜像发布，首次部署或上游重导后需自行同步：
+#   rsync -a --delete data/media/ user@host:/path/to/deploy/data/media/
+docker compose exec -T db psql -U postgres -d tripweaver -tAc \
+  "SELECT count(*) FROM canonical_places WHERE payload ? 'coverImage'" \
+  | { read -r n; echo "✓ 库内景点封面=${n}（0 = 尚未导入；图片目录需同步到宿主机 ./data/media）"; }
+
 docker compose exec -T db psql -U postgres -d tripweaver -tAc \
   "SELECT count(*) FROM canonical_places WHERE verified" \
   | { read -r n; echo "✓ canonical_places verified=${n}（0 表示尚未回填金集，可执行: docker compose exec app npx tsx apps/server/scripts/seed-canonical-places.ts）"; }

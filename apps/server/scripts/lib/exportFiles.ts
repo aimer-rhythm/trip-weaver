@@ -19,9 +19,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 /** 默认导出目录（tripweaver/import），两个 seed 脚本与新鲜度检查脚本共用 */
 export const IMPORT_DIR = path.resolve(__dirname, '../../../../import');
 
-export type ExportSource = 'xhs_places' | 'xhs_relations';
+export type ExportSource = 'xhs_places' | 'xhs_relations' | 'xhs_place_images';
 
-export const EXPORT_SOURCES: readonly ExportSource[] = ['xhs_places', 'xhs_relations'];
+export const EXPORT_SOURCES: readonly ExportSource[] = ['xhs_places', 'xhs_relations', 'xhs_place_images'];
 
 export interface ExportFile {
   source: ExportSource;
@@ -35,10 +35,12 @@ export interface ExportFile {
   rowCount: number;
 }
 
-/** 只认 xhs-travel-pipeline 导出的这两类产物（顺带排除 backup.dump 等无关文件） */
+/** 只认 xhs-travel-pipeline 导出的这三类产物（顺带排除 backup.dump 等无关文件）。
+ *  images 与 places 的正则互斥：`xhs-place-images-` 不匹配 `^xhs-places`（第 10 个字符是 `-` 不是 `s`）。 */
 const PATTERNS: readonly { source: ExportSource; test: RegExp }[] = [
   { source: 'xhs_places', test: /^xhs-places.*\.json$/ },
   { source: 'xhs_relations', test: /^xhs-place-relations-.*\.json$/ },
+  { source: 'xhs_place_images', test: /^xhs-place-images-.*\.json$/ },
 ];
 
 function hashFile(filePath: string): string {
@@ -67,7 +69,12 @@ export function readExport(filePath: string): ExportFile | null {
     console.warn(`[exportFiles] ${base} 缺 city 字段，跳过`);
     return null;
   }
-  const rows = matched.source === 'xhs_places' ? data.places : data.relations;
+  const rows =
+    matched.source === 'xhs_places'
+      ? data.places
+      : matched.source === 'xhs_relations'
+        ? data.relations
+        : data.images;
   const generatedAt = typeof data.generatedAt === 'string' && data.generatedAt ? data.generatedAt : mtimeDate(filePath);
   return {
     source: matched.source,
