@@ -9,7 +9,7 @@ Evidence: `apps/web/package.json`, `apps/web/vite.config.ts`, `package.json`.
 The application composition is intentionally shallow:
 
 1. `apps/web/index.html` provides `#root`.
-2. `apps/web/src/main.tsx` mounts React Strict Mode and imports Leaflet, global, and print CSS.
+2. `apps/web/src/main.tsx` mounts React Strict Mode and imports Leaflet, Tailwind, global, and print CSS.
 3. `apps/web/src/App.tsx` creates the single `QueryClient`, provides it, and renders `RouterProvider`.
 4. `apps/web/src/router.tsx` owns route declarations and the authentication gate.
 
@@ -26,7 +26,7 @@ Do not scatter providers or route declarations across feature files unless a con
 | `src/api/hooks.ts` | React Query keys, queries, mutations, and cache updates |
 | `src/store/editorStore.ts` | Zustand editing draft, revision counter, and editor-only filter state |
 | `src/lib/` | Focused browser/domain display helpers such as export, colors, and POI labels |
-| `src/styles/` | Plain global CSS and print CSS |
+| `src/styles/` | Tailwind entry (`tailwind.css`, holds the `@theme` semantic colours), legacy plain CSS (`global.css`), and print CSS |
 
 Keep route orchestration in pages, server-state behavior in API hooks, and reusable browser mechanics in components or `lib`. Examples include `apps/web/src/pages/TripEditorPage.tsx`, `apps/web/src/api/hooks.ts`, and `apps/web/src/lib/export.ts`.
 

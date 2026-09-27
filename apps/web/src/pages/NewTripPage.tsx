@@ -23,6 +23,7 @@ import { GenerationRunPanel } from '../components/GenerationRunPanel';
 import { RangeCalendar } from '../components/RangeCalendar';
 import { useGenerationRun } from '../hooks/useGenerationRun';
 import { TRANSPORT_LABELS } from '../lib/chatDerive';
+import { addDays, daysBetween, isISODate, isoDateAfter, shortDate } from '../lib/dates';
 
 type Preference = (typeof PREFERENCE_OPTIONS)[number];
 type PanelKey = 'city' | 'date' | 'pace' | 'more';
@@ -35,28 +36,6 @@ const PACE_DESCS: Record<TripPace, string> = {
 
 const QUICK_DAYS = [2, 3, 5, 7, 10];
 
-function isoDateAfter(daysFromNow: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() + daysFromNow);
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
-
-function addDays(iso: string, n: number): string {
-  const [y = 1970, m = 1, d = 1] = iso.split('-').map(Number);
-  const date = new Date(y, m - 1, d);
-  date.setDate(date.getDate() + n);
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-}
-
-function daysBetween(start: string, end: string): number {
-  const ms = Date.parse(`${end}T00:00:00Z`) - Date.parse(`${start}T00:00:00Z`);
-  return Math.round(ms / 86_400_000) + 1;
-}
-
-function shortDate(iso: string): string {
-  return iso.slice(5).replace('-', '/');
-}
-
 export function NewTripPage() {
   const navigate = useNavigate();
   const [params, setSearchParams] = useSearchParams();
@@ -67,17 +46,43 @@ export function NewTripPage() {
   const createConversation = useCreateConversation();
   const patchBrief = usePatchBrief();
 
-  const [startDate, setStartDate] = useState(() => isoDateAfter(1));
-  const [endDate, setEndDate] = useState(() => isoDateAfter(3));
-  const [pace, setPace] = useState<TripPace | null>(null);
-  const [preferences, setPreferences] = useState<Preference[]>([]);
-  const [partySize, setPartySize] = useState(2);
-  const [transportMode, setTransportMode] = useState<TransportMode | null>(null);
+  // 首页胶囊可带 start/end/pace/partySize/preferences/transport 预填（均需校验，不可信输入）
+  const [startDate, setStartDate] = useState(() => {
+    const s = params.get('start');
+    return s && isISODate(s) ? s : isoDateAfter(1);
+  });
+  const [endDate, setEndDate] = useState(() => {
+    const s = params.get('start');
+    const e = params.get('end');
+    if (s && e && isISODate(s) && isISODate(e)) {
+      const n = daysBetween(s, e);
+      if (n >= 1 && n <= MAX_TRIP_DAYS) return e;
+    }
+    return isoDateAfter(3);
+  });
+  const [pace, setPace] = useState<TripPace | null>(() => {
+    const p = params.get('pace');
+    return (PACE_OPTIONS as readonly string[]).includes(p ?? '') ? (p as TripPace) : null;
+  });
+  const [preferences, setPreferences] = useState<Preference[]>(() => {
+    const raw = params.get('preferences');
+    if (!raw) return [];
+    return raw.split(',').filter((p): p is Preference => (PREFERENCE_OPTIONS as readonly string[]).includes(p));
+  });
+  const [partySize, setPartySize] = useState(() => {
+    const n = Number(params.get('partySize'));
+    return Number.isInteger(n) && n >= 1 && n <= 20 ? n : 2;
+  });
+  const [transportMode, setTransportMode] = useState<TransportMode | null>(() => {
+    const t = params.get('transport');
+    return (TRANSPORT_MODES as readonly string[]).includes(t ?? '') ? (t as TransportMode) : null;
+  });
   const [lodging, setLodging] = useState('');
   const [extraNotes, setExtraNotes] = useState('');
   const [activePanel, setActivePanel] = useState<PanelKey | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [doneTripId, setDoneTripId] = useState<string | null>(null);
+  const [autoStarting, setAutoStarting] = useState(false);
   const deckRef = useRef<HTMLDivElement>(null);
 
   const openTrip = useCallback((tripId: string) => setDoneTripId(tripId), []);
@@ -144,6 +149,26 @@ export function NewTripPage() {
     }
   };
 
+  // 首页衔底带 autostart=1 直达：必填项已经齐了，到站就提交，不再让用户点第二次开始生成。
+  // 提交后清掉该参数，避免刷新页面又跑一次生成。restoring 期间先等快照（上次任务的恢复可能直接跳走），
+  // 否则会与恢复流程抢着发一次生成。（无依赖数组：每渲染后只做一次很轻的守卫检查）
+  const autoStarted = useRef(false);
+  useEffect(() => {
+    if (autoStarted.current || run.restoring) return;
+    if (params.get('autostart') !== '1') return;
+    if (!ready || busy || generationExhausted) return;
+    autoStarted.current = true;
+    setAutoStarting(true);
+    setSearchParams(
+      (prev) => {
+        prev.delete('autostart');
+        return prev;
+      },
+      { replace: true },
+    );
+    void submit().finally(() => setAutoStarting(false));
+  });
+
   // ---------- 生成中 / 结果视图 ----------
   if (run.restoring) {
     return (
@@ -153,21 +178,27 @@ export function NewTripPage() {
     );
   }
 
-  if (run.jobId) {
+  // 首页点了「开始规划」直接过来：先用启动态占位，不让用户看到一闪而过的表单
+  if (autoStarting && !run.jobId) {
     return (
       <div className="page">
-        <div className="page-head">
-          <h1>智能生成中</h1>
-        </div>
-        <GenerationRunPanel
-          events={run.events}
-          cancelling={run.cancelPending}
-          cancellationError={run.cancellationError}
-          onCancel={run.cancel}
-          onReset={run.reset}
-          onOpenTrip={(tripId) => navigate(`/trips/${tripId}`)}
-        />
+        <div className="page-loading">正在启动生成…</div>
       </div>
+    );
+  }
+
+  if (run.jobId) {
+    return (
+      <GenerationRunPanel
+        events={run.events}
+        city={city}
+        days={days}
+        cancelling={run.cancelPending}
+        cancellationError={run.cancellationError}
+        onCancel={run.cancel}
+        onReset={run.reset}
+        onOpenTrip={(tripId) => navigate(`/trips/${tripId}`)}
+      />
     );
   }
 
@@ -416,3 +447,4 @@ export function NewTripPage() {
     </div>
   );
 }
+

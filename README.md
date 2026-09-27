@@ -21,10 +21,12 @@
 React SPA ──HTTP API + SSE──▶ Fastify 路由层 ──▶ 多 Agent 编排（pi-agent-core / pi-ai）
                                    │                 ├─ 调研 Agent ─▶ 高德 POI / Web 搜索
                                    ▼                 ├─ 编排 Agent ─▶ OSM Nominatim
-                                SQLite               └─ 审校 Agent ─▶ 预算/动线审查
+                                PostgreSQL           └─ 审校 Agent ─▶ 预算/动线审查
 ```
 
-技术栈：React 18 + Vite / Fastify + TypeBox / SQLite + Drizzle / zustand + TanStack Query / Leaflet。详见 [docs/TECHNICAL_ARCHITECTURE.md](docs/TECHNICAL_ARCHITECTURE.md)。
+技术栈：React 18 + Vite + Tailwind CSS / Fastify + TypeBox / PostgreSQL + pgvector + Drizzle / zustand + TanStack Query / Leaflet。详见 [docs/TECHNICAL_ARCHITECTURE.md](docs/TECHNICAL_ARCHITECTURE.md)。
+
+样式约定：新页面用 Tailwind 原子类，颜色取 `apps/web/src/styles/tailwind.css` 里 `@theme` 定义的语义色；存量页面继续用 `global.css`，不做迁移。约束全文见 [docs/TECHNICAL_ARCHITECTURE.md §8](docs/TECHNICAL_ARCHITECTURE.md)。
 
 ## 截图
 

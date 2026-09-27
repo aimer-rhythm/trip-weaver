@@ -1,0 +1,71 @@
+/* Tailwind 入口（09-26 首页改版引入）：跳过 preflight，避免重置影响 global.css 支撑的旧页面；
+   只引入 theme + utilities 层，新页面用 Tailwind 原子类编写。
+   样式修改约定见 docs/TECHNICAL_ARCHITECTURE.md §8 与 .trellis/spec/web/frontend/component-guidelines.md。 */
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* 首页语义色：组件里只用这些 token 生成的类（bg-brand / text-ink-muted / stroke-map-line …），
+   不写 `[#RRGGBB]` 硬编码 —— 改色只改这里。与 global.css 的 --color-primary 一族是并存的两套
+   （旧页面不动）。命名按用途分组，色值取自 UI 稿。 */
+@theme {
+  /* 品牌与交互：主蓝、渐变两端、禁用态 */
+  --color-brand: #2f6bf3;
+  --color-brand-light: #5b8cfb;
+  --color-brand-deep: #2563eb;
+  --color-brand-sky: #60a5fa;
+  --color-brand-glow: #3b82f6;
+  --color-brand-disabled: #c3cfe8;
+  --color-brand-disabled-deep: #aebddc;
+
+  /* 图标点缀：胶囊四段与地图打点各一色 */
+  --color-accent-indigo: #4b5bd8;
+  --color-accent-teal: #17b8c9;
+  --color-accent-pink: #ef4d92;
+  --color-accent-cyan: #22c3d6;
+
+  /* 文字：由深到浅，按层级取用 */
+  --color-ink: #16325c;
+  --color-ink-strong: #1b3a63;
+  --color-ink-map: #20385c;
+  --color-ink-soft: #3c4c66;
+  --color-ink-muted: #5b6b86;
+  --color-ink-faint: #8592a8;
+  --color-ink-pending: #9aa6ba;
+  --color-ink-hint: #7b8aa3;
+
+  /* 面与线：页面底色、玻璃面板分隔线、地图省界/国界/点缀点 */
+  --color-canvas: #eef3fd;
+  --color-hairline: #eaf0fb;
+  --color-hairline-strong: #e3eaf7;
+  --color-map-line: #c6d3f0;
+  --color-map-line-strong: #a8bce6;
+  --color-map-dot: #7fc4e8;
+  --color-hairline-divider: #d9e2f4;
+}
+
+/* 跳过 preflight 的代价：button 这类原生控件的 UA 默认外观（1px 边框 + 灰底 + UA 字体）还在，
+   Tailwind 页面里就会冒出一堆不是设计要的方框。这里补一条补丁，写在 theme 层（比 utilities 低一层），
+   只负责把 UA 默认刷掉：原子类（bg-gradient-to-br / border-* / px-*）照旧能盖住它。
+   global.css 里无层级的 .btn 等规则优先级更高，不受影响。 */
+@layer theme {
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  button {
+    border: 0;
+    background: transparent;
+  }
+  /* 可点的地方一律手型（原生 button 默认是箭头），禁用态除外 */
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+

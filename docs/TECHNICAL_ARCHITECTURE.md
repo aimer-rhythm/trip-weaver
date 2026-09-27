@@ -20,6 +20,7 @@
 |---|---|---|
 | 仓库形态 | npm workspaces monorepo：`apps/web` + `apps/server` + `packages/shared` | 前后端共享领域类型与 TypeBox schema，杜绝双份定义漂移 |
 | 前端 | React 18 + TypeScript + Vite + react-router-dom | 多页面 SPA；生态与 react-leaflet 匹配 |
+| **样式** | **Tailwind CSS 4（只引 theme + utilities 层，关 preflight）+ 存量 `global.css`** | 新页面原子类直写 JSX；旧页面（登录/列表/编辑器）继续用 global.css 类，不做一次性重写。语义色集中在 `apps/web/src/styles/tailwind.css` 的 `@theme`，组件里不出现 hex（09-26 首页改版引入，见 §8） |
 | 状态 | @tanstack/react-query（服务端状态）+ zustand（编辑器交互态，不持久化） | 两类状态生命周期不同，分治 |
 | **API 层** | **Fastify + `@fastify/type-provider-typebox`** | TypeBox 即 JSON Schema，shared schema 直接挂路由，校验零胶水 |
 | **数据库** | **PostgreSQL 16 + pgvector + Drizzle ORM（node-postgres）** | 多实例部署 + JSONB 查询；pgvector 扩展让 RAG 向量检索与业务数据同库（09-18 自 SQLite 迁入，理由见 §4.3） |
@@ -32,7 +33,7 @@
 | **部署** | **Docker Compose（`app` + `pgvector/pg16` db），宿主机前置反代** | 站长 30 分钟内可用（PRD 成功标准 2）；复用站长现有证书体系（`nginx.host.conf`）；容器化内置反代场景见 `docker-compose.release.yml` |
 | CI | GitHub Actions：typecheck + build | 开源项目基础卫生 |
 
-**明确不引入**：NestJS、Prisma、Redis/队列、图表库、@dnd-kit、UI 组件库、zod、K8s/水平扩展。
+**明确不引入**：NestJS、Prisma、Redis/队列、图表库、@dnd-kit、UI 组件库、CSS Modules、CSS-in-JS、zod、K8s/水平扩展。
 
 > ⚠️ 版本匹配：`react-leaflet@5.x` 要求 React 19（`npm ls react` 为准）；自建 PostgreSQL 需装 `pgvector` 扩展（compose 已用 `pgvector/pgvector:pg16`；本地 PG 缺扩展时向量层静默降级，见 §4.4）。
 
@@ -112,7 +113,7 @@ travel-planner/
    ├─ pages/ Login · Register(邀请码) · TripList · Planner(表单+进度) · TripEditor
    ├─ store/ editorStore.ts
    ├─ components/ …（v0.2 组件族沿用；SettingsDialog 分级：普通视图+高级折叠区）
-   └─ styles/ global.css · print.css
+   └─ styles/ tailwind.css · global.css · print.css
 ```
 
 ---
@@ -285,6 +286,14 @@ resolveLlmConfig(userId):
 - 生成进度页 EventSource 断线重连 + Last-Event-ID 重放 + 刷新恢复。
 - **SettingsDialog 分级**：普通视图（账号 + 今日配额）默认；「高级选项」折叠区收纳 LLM BYOK、个人高德 Key，以及个人 Web 搜索 API Key + Base URL。两类个人数据源凭据均支持保存、更新、空 Key 保留和显式清除；搜索清除会同时删除个人 Key 与 URL。
 - **移动端基准**：核心流程按 <768px 设计再放大到桌面；微信内置浏览器实测入 D2 验收（长图保存/分享、SSE、地图手势）。
+- **样式双轨（09-26 起）**：
+  - 新页面 / 新组件用 **Tailwind 原子类**写在 JSX 里；颜色**只**允许取 `apps/web/src/styles/tailwind.css` 中 `@theme` 定义的语义色生成的类 —— 六组：`brand*`（主蓝、渐变两端、禁用态）、`accent-*`（四段图标与地图打点的点缀色）、`ink*`（文字层级，含地图标签与未选态）、`canvas`（页面底色）、`hairline*`（玻璃面板与分隔条）、`map-*`（省界、国界、背景城市点）。**不写** `bg-[#2f6bf3]` 这类硬编码 hex：要新颜色就先在 `@theme` 里加 token，改色只改一处。
+  - 存量页面（登录/行程列表/编辑器…）继续用 `global.css` 的类与 `--color-primary` 一族变量，**本次不做迁移**；Tailwind 侧的 `--color-*` 与它们是并存的两套，互不共用。
+  - Tailwind 只引 `theme` 与 `utilities` 两层，**关 preflight**：旧页面依赖浏览器默认样式，打开 preflight 会一次性改变全部存量页面。
+  - Tailwind 表达不了的（`@keyframes`、SVG 内部样式、`:has()` 父选择器、`paint-order`）写进 `global.css`，用独立注释块与类名前缀划分归属，而不是新开 CSS 文件。
+  - 数据驱动的值（按天路线色、进度宽度、背景图 URL、marker HTML 内联样式）继续用内联 `style` / CSS 变量，不为它们造类名。
+  - **两类字面值留在原地**：中性色的半透明（`bg-white/72`、`border-white/70`、SVG 的 `fill="rgba(255,255,255,0.5)"`）；以及阴影里的深蓝字面量（`shadow-[0_18px_50px_rgba(31,64,124,0.14)]` —— 它比品牌蓝更深，且只出现在四处，往任意值里嵌变量得不偿失）。token 只管品牌色与文字色。
+  - 同一组件不要既写原子类又在 `global.css` 里新增同类职责的规则；一个元素的样式来源保持单一。
 
 ## 9. 安全设计
 

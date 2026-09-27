@@ -33,11 +33,26 @@ Evidence: `apps/web/src/pages/TripListPage.tsx`, `apps/web/src/components/editor
 
 ## Styling
 
-Use the existing plain CSS system in `apps/web/src/styles/global.css` and `print.css`. Reuse established classes, CSS variables, responsive rules, and component prefixes. Do not add CSS modules, CSS-in-JS, utility frameworks, or a second design-token system without an explicit project decision.
+The project carries two style systems on purpose. Which one applies depends on the file you are editing.
 
-Inline styles are a deliberate exception for values that are genuinely data-dependent or library-facing, such as day colors, category colors, progress widths, and Leaflet marker HTML. Stable layout and appearance belong in CSS.
+**Tailwind for new surfaces.** New pages and components write Tailwind utilities in JSX. Colours must come from the semantic tokens declared in `apps/web/src/styles/tailwind.css`, grouped by purpose: `brand*` (primary blue, gradient ends, disabled), `accent-*` (icon accents), `ink*` (text hierarchy), `canvas`, `hairline*` (glass-panel dividers), `map-*` (province borders, national outline, background dots) — used as `bg-brand`, `text-ink-muted`, `stroke-map-line`, `from-brand-light`. Do not write `bg-[#2f6bf3]`: declaring a token is the cheaper edit, and a hard-coded hex turns the next colour change into a multi-file search. Neutral white/black translucency is exempt — `bg-white/72`, `border-white/70`, and SVG fills like `rgba(255,255,255,0.5)` stay inline — and so is the deeper blue inside glass shadows (`shadow-[0_18px_50px_rgba(31,64,124,0.14)]`): it is darker than the brand blue, it appears in four places, and threading a variable through an arbitrary shadow value costs more than it saves. The token set covers brand and text colours rather than neutrals and shadows. Tailwind is imported as `theme` + `utilities` only — **do not turn preflight back on**, because the legacy pages depend on browser defaults.
 
-Evidence: `apps/web/src/components/editor/BudgetPanel.tsx`, `apps/web/src/components/editor/DaySection.tsx`, `apps/web/src/components/editor/MapView.tsx`.
+**Plain CSS for everything that already exists.** `global.css` and `print.css` keep serving the existing pages (login, trip list, editor). Do not migrate them opportunistically, and do not restate a Tailwind utility as a new `global.css` rule for the same element — one element, one source of truth for its styling. The two token sets coexist on purpose: Tailwind's `--color-*` is not `global.css`'s `--color-primary` family, and nothing is shared between them.
+
+**The escape hatch.** What Tailwind cannot express goes into `global.css` as a commented, feature-prefixed block: `@keyframes`, SVG-internal styling, `:has()` parent selectors, `paint-order`. A third stylesheet, CSS Modules, CSS-in-JS, or a UI component library still needs an explicit project decision before it appears.
+
+**Skipping preflight has a cost.** With only the theme and utilities layers imported, native controls keep their UA look, so a Tailwind page full of `<button>`s renders as a row of 1px-bordered grey boxes. `tailwind.css` therefore carries a small patch in the `theme` layer (lower priority than `utilities`, higher than the UA defaults): `font`/`color: inherit`, `border: 0`, `background: transparent`, and `cursor: pointer` for enabled buttons / `not-allowed` for disabled. Utilities still win over it, and `global.css`'s unlayered `.btn` rules are untouched. Add new UA normalisations there, not per component.
+
+Inline styles stay deliberate for data-dependent or library-facing values, such as day and category colours, progress widths, background-image URLs, and Leaflet marker HTML. Stable layout and appearance belong in a class.
+
+**Traps found while building the 09-26 home page** (each one failed silently, so keep them in mind before "cleaning up" any of it):
+
+- `text-[calc(...)]` is ambiguous (size vs colour) and Tailwind resolves it to `color:`, so it silently does nothing. Force the font-size reading with the type hint: `text-[length:calc(16*var(--ui))]`.
+- Unlayered `global.css` element rules beat Tailwind utilities, because everything Tailwind emits lives in a cascade layer and specificity does not enter into it. `h1 { font-size: 1.35rem }` wins over `text-[length:...]` on the same element, so a Tailwind page's heading sizes belong in `global.css` (or the heading must not be an `h1`/`h2`).
+- If the page suddenly renders nothing or loses its stylesheet in dev, suspect a stale dev transform before touching any rule: `fetch('/src/styles/global.css')` showing `__vite__css = ""`, or a router-level `SyntaxError: The requested module ... does not provide an export named ...` from an untouched file, both mean the dev server is serving an old/empty transform of a file you just wrote. Re-saving the file clears it; neither `?direct` nor a production build shows anything wrong.
+- Sizing a fixed-aspect design (the 1668x943 UI mock) with the viewport: the home page defines one `--ui` ("1 design pixel") as `max(0.75px, min(0.0599vw, 0.106vh))` and writes every size as `calc(<design px> * var(--ui))`. Width-only units overflow vertically on wide screens; the `min()` keeps the scale inside both axes. Horizontal anchors stay percentages so they keep their relation to the capsule's edges.
+
+Evidence: `apps/web/src/pages/HomePage.tsx`, `apps/web/src/components/home/HomeCapsule.tsx`, `apps/web/src/components/home/ChinaMap.tsx`, `apps/web/src/styles/tailwind.css`.
 
 ## Dialogs and Browser UI
 

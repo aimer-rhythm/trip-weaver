@@ -16,7 +16,7 @@ These guidelines describe the conventions that are actually present in `apps/web
 ## Pre-Development Checklist
 
 - [ ] Read [Directory Structure](./directory-structure.md) before adding a route, page, provider, API module, store, or style file.
-- [ ] Read [Component Guidelines](./component-guidelines.md) before changing JSX, forms, dialogs, icon controls, or visual styling.
+- [ ] Read [Component Guidelines](./component-guidelines.md) before changing JSX, forms, dialogs, icon controls, or visual styling. Styling is dual-track: Tailwind utilities plus `@theme` tokens for new surfaces, `global.css` for existing pages — never both for the same element.
 - [ ] Read [Hook Guidelines](./hook-guidelines.md) and [State Management](./state-management.md) before adding fetching, mutations, autosave, persistence, timers, subscriptions, or browser APIs.
 - [ ] Read [Type Safety](./type-safety.md) before changing API payloads, imports, SSE events, URL state, or shared domain data.
 - [ ] Search `apps/web/src` and `packages/shared/src` for an existing component, hook, key, adapter, schema, constant, or type before creating another.
