@@ -1,0 +1,8 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "质量检查清单：typecheck、验证脚本、schema/migration 同步、集成失败降级"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "逐条核对四道闸、额度预留与记账口径、来源标注、熔断器、地理合理性防火墙是否被新 provider 破坏"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "核对天地图各路径失败都静默降级、不抛到生成流程"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "确定本次要跑哪些验证命令、断言什么"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "核对 tianditu_calls 列的 schema 与 migration 定义保持同步"}
+{"file": ".trellis/spec/shared/backend/quality-guidelines.md", "reason": "核对 gcj02ToWgs84 与常量扩展符合共享包质量约定"}
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "核对自检卡片文案与来源标注的前端改动"}
+{"file": ".trellis/tasks/09-25-map-provider-fallback/research/tianditu-api.md", "reason": "按待实测清单逐项核对实现是否真的验证过、退路是否落实"}

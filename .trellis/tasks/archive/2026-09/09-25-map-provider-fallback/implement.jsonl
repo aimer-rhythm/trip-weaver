@@ -1,0 +1,11 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务端后端入口清单：确认本次改动落在哪个模块边界（integration / generation / service / route）"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "外部数据源适配的硬约束：四道闸（超时/串行队列/TTL 缓存/任务上限）、Null 降级、多调用类型的额度预留、来源如实标注、任务级熔断器契约、地理结果合理性防火墙"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "集成层失败语义与逐级降级约定"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "geoPipeline / orchestrator 的任务级会话状态、额度记账、取消与增量重算语义"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "本仓库可用的验证命令矩阵，实现完成后要跑的那几条"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "新增 generations.tianditu_calls 列需要 schema.ts 与 migrate.ts 同步的约定"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "新增 TIANDITU_KEY 的密钥处理与日志脱敏约定"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared 改动清单：新增 gcj02ToWgs84 与常量扩展的导出与类型约定"}
+{"file": ".trellis/spec/shared/backend/quality-guidelines.md", "reason": "共享包类型与常量约定，LEG_SOURCES / DATA_SOURCE_KINDS 扩展必须遵守"}
+{"file": ".trellis/spec/web/frontend/index.md", "reason": "前端自检卡片显示服务商与来源标注文案改动的前端契约"}
+{"file": ".trellis/tasks/09-25-map-provider-fallback/research/tianditu-api.md", "reason": "天地图六类端点、请求参数、返回结构、字段缺口、坐标系与待实测清单"}
