@@ -65,6 +65,16 @@ Event payloads are shared contracts in `packages/shared/src/types.ts`. Preserve 
 fields until coordinated shared/web removal. Current `xhsEnabled`, `xhsCalls`, and `usedXhs`
 are historical fields with documented compatibility meanings.
 
+Task parameters the client must echo back live on `job_start` (`destination`, and `days` since
+09-27), not on a separate event: the refresh/recovery path (`/trips/new?city=…` + replayed SSE)
+has no dates in the URL, so the generation title can only learn the real day count from the
+event stream. Keep new title-relevant parameters optional and let the web fall back to its
+URL-derived draft, so replayed legacy events still render.
+
+For the web side of this contract see `.trellis/spec/web/frontend/component-guidelines.md`
+(generation panel) — the title prefers `TimelineModel.destination` / `TimelineModel.days` and
+treats the props as fallback only.
+
 Eval harness collection semantics (eval snapshot v2): `usage` events are cumulative — the
 last one carries final totals. `phase_end.durationMs` must be keyed `<phase>#<round>` (plan
 and review can span multiple rounds). `candidate` events carry `ResearchPoi` without

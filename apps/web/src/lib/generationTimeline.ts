@@ -50,6 +50,9 @@ export interface PhaseBlock {
 
 export interface TimelineModel {
   dataSources: DataSourceKind[] | null;
+  /** job_start 带回的任务参数：刷新/恢复链路里 URL 没有日期，标题只能靠它（见 09-27 视觉对齐任务） */
+  destination?: string;
+  days?: number;
   candidates: ResearchPoi[];
   phases: PhaseBlock[];
   usage: { tokensIn: number; tokensOut: number; amapCalls: number; tiandituCalls: number; searchCalls: number } | null;
@@ -73,6 +76,8 @@ export function buildTimeline(events: GenerationEvent[]): TimelineModel {
     switch (ev.type) {
       case 'job_start':
         model.dataSources = ev.dataSources;
+        model.destination = ev.destination;
+        model.days = ev.days;
         model.startedAt = ev.at;
         break;
       case 'phase_start':

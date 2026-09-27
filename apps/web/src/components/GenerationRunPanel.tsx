@@ -28,7 +28,6 @@ interface Props {
 
 interface Milestone {
   phase: GenerationPhase;
-  icon: string;
   title: string;
   pendingHint: string;
   doneHint: string;
@@ -36,10 +35,68 @@ interface Milestone {
 }
 
 const MILESTONES: Milestone[] = [
-  { phase: 'research', icon: '🔍', title: '搜罗全城 · 调研灵感', pendingHint: '即将开始收集城市灵感', doneHint: '已为你收集了丰富的城市灵感', activeFallback: '正在搜罗城市灵感…' },
-  { phase: 'plan', icon: '🧭', title: '串联路线 · 编排日程', pendingHint: '即将为你编排每日路线', doneHint: '每日路线已编排完成', activeFallback: '正在串联每日路线…' },
-  { phase: 'review', icon: '📝', title: '雕琢题名 · 撰写文案', pendingHint: '即将为你生成专属的旅行记录', doneHint: '旅行记录已撰写完成', activeFallback: '正在雕琢标题与文案…' },
+  { phase: 'research', title: '搜罗全城 · 调研灵感', pendingHint: '即将开始收集城市灵感', doneHint: '已为你收集了丰富的城市灵感', activeFallback: '正在搜罗城市灵感…' },
+  { phase: 'plan', title: '串联路线 · 编排日程', pendingHint: '即将为你编排每日路线', doneHint: '每日路线已编排完成', activeFallback: '正在串联每日路线…' },
+  { phase: 'review', title: '雕琢题名 · 撰写文案', pendingHint: '即将为你生成专属的旅行记录', doneHint: '旅行记录已撰写完成', activeFallback: '正在雕琢标题与文案…' },
 ];
+
+/** 里程碑线性图标（描边随 currentColor，等待/进行/完成三态由外层 badge 类控色） */
+function MilestoneIcon({ phase }: { phase: GenerationPhase }) {
+  const common = {
+    width: 26,
+    height: 26,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.7,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true,
+  };
+  if (phase === 'research') {
+    return (
+      <svg {...common}>
+        <circle cx="11" cy="11" r="6.5" />
+        <path d="M15.9 15.9 21 21" />
+      </svg>
+    );
+  }
+  if (phase === 'plan') {
+    // 设计稿的指南针是彩色圆盘 + 橙指针（不是单色线描），自带颜色不跟状态色
+    return (
+      <svg {...common} stroke="none" fill="none">
+        <circle cx="12" cy="12" r="9.2" fill="#6D9BEE" />
+        <circle cx="12" cy="12" r="7.4" fill="#EAF1FF" />
+        <path d="M12 4.8 14.6 12 12 19.2 9.4 12Z" fill="#F97316" />
+        <path d="M12 19.2 14.6 12H9.4Z" fill="#1E3A8A" />
+        <circle cx="12" cy="12" r="1.1" fill="#1E3A8A" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 3v5h5M9 13h6M9 17h4" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg width={26} height={26} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m5 12.5 4.5 4.5L19 7.5" />
+    </svg>
+  );
+}
+
+/** 四角星光点（标题两侧装饰） */
+function SparkIcon({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2c.6 5.6 4.4 9.4 10 10-5.6.6-9.4 4.4-10 10-.6-5.6-4.4-9.4-10-10 5.6-.6 9.4-4.4 10-10z" />
+    </svg>
+  );
+}
 
 /** 拍立得散落位姿（最多展示最近 6 张候选；确定性排布，避免重渲染抖动） */
 const FAN = [
@@ -84,6 +141,9 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
   const terminal = model.terminal;
   const running = terminal === null;
   const banner = sourceBanner(model.dataSources);
+  // 标题用任务自身参数；恢复/刷新链路 URL 里没有日期，prop 的值只是兜底
+  const titleCity = model.destination ?? city;
+  const titleDays = model.days ?? days;
 
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
@@ -102,14 +162,13 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
       className="gen-page-root relative flex flex-1 flex-col overflow-hidden bg-canvas bg-cover bg-center"
       style={{ backgroundImage: "url('/home-bg.png')" }}
     >
-      {/* 标题区：呼吸光晕 + 纸飞机（仅进行中显示，终态有自己的卡片标题） */}
+      {/* 标题区：星形光点 + 笔刷弧线（仅进行中显示，终态有自己的卡片标题） */}
       {!terminal && (
-        <header className="relative z-10 flex flex-col items-center gap-2 px-6 pt-10 text-center">
-          <h1 className="gen-title m-0 font-bold text-ink">
-            <span className="gen-plane" aria-hidden="true">✈️</span>
-            正在为你编织 {city} 的 {days} 天旅程…
-            <span aria-hidden="true">✨</span>
-            <span className="gen-plane gen-plane-r" aria-hidden="true">✈️</span>
+        <header className="gen-header">
+          <h1 className="gen-title">
+            <SparkIcon className="gen-star gen-star-l" />
+            正在为你编织 {titleCity} 的 {titleDays} 天旅程…
+            <SparkIcon className="gen-star gen-star-r" />
           </h1>
           <span className="gen-title-arc" aria-hidden="true" />
           {banner && <p className="m-0 rounded-full bg-white/60 px-4 py-1 text-[0.8rem] text-ink-muted backdrop-blur-md">{banner}</p>}
@@ -161,9 +220,9 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
         </main>
       ) : (
         /* ---------- 进行中：左里程碑小径 + 右拍立得 ---------- */
-        <main className="relative z-10 mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col gap-6 px-6 py-8 sm:flex-row sm:gap-10">
+        <main className="gen-main">
           {/* 里程碑小径 */}
-          <div className="gen-path flex w-full flex-col sm:w-[40%] sm:justify-center">
+          <div className="gen-path">
             {MILESTONES.map((m, i) => {
               const state = milestoneState(model, m.phase);
               const hint =
@@ -176,25 +235,30 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                 <div key={m.phase} className={`gen-step is-${state}`}>
                   {i > 0 && <span className="gen-step-line" aria-hidden="true" />}
                   <span className="gen-step-badge" aria-hidden="true">
-                    {state === 'done' ? '✓' : m.icon}
+                    <MilestoneIcon phase={m.phase} />
                     {state === 'active' && <span className="gen-step-halo" />}
+                    {state === 'done' && (
+                      <span className="gen-step-check">
+                        <CheckIcon />
+                      </span>
+                    )}
                   </span>
-                  <div className="min-w-0">
-                    <p className="m-0 text-[1.05rem] font-bold text-ink-strong">
+                  <div className="gen-step-body">
+                    <p className="gen-step-title">
                       {i + 1}. {m.title}
                     </p>
-                    <p className={`m-0 mt-1 text-[0.82rem] text-ink-hint ${state === 'active' ? 'gen-step-hint-live' : ''}`}>
+                    <p className={`gen-step-hint ${state === 'active' ? 'gen-step-hint-live' : ''}`}>
                       {hint}
                     </p>
                   </div>
                 </div>
               );
             })}
-            {model.phases.length === 0 && <p className="m-0 text-[0.85rem] text-ink-hint">任务排队中…</p>}
+            {model.phases.length === 0 && <p className="gen-queue-hint">任务排队中…</p>}
           </div>
 
           {/* 拍立得候选卡片 */}
-          <div className="relative min-h-[320px] min-w-0 flex-1">
+          <div className="gen-fan">
             {visibleCandidates.length === 0 ? (
               /* 候选未到时先放 3 张虚线空相框，避免右侧长时间全空 */
               FAN.slice(0, 3).map((pose, i) => (
@@ -232,7 +296,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
       )}
 
       {/* 底部：耗时 + 取消 */}
-      <footer className="relative z-10 flex flex-col items-center gap-2 pb-8">
+      <footer className="gen-footer">
         {cancellationError && (
           <p className="m-0 rounded-full bg-white/70 px-4 py-1 text-[0.82rem] text-red-600 backdrop-blur-md" role="alert">
             {cancellationError}
@@ -244,12 +308,12 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
               type="button"
               onClick={onCancel}
               disabled={cancelling}
-              className="rounded-full border border-white/50 bg-white/70 px-7 py-2 text-[0.88rem] text-ink-muted backdrop-blur-md transition-colors hover:bg-white/90 disabled:opacity-50"
+              className="gen-cancel-btn"
             >
               {cancelling ? '取消中…' : '取消生成'}
             </button>
             {elapsed !== undefined && (
-              <span className="text-[0.78rem] text-ink-faint">已用 {formatDuration(elapsed)}</span>
+              <span className="gen-elapsed">已用 {formatDuration(elapsed)}</span>
             )}
           </>
         )}

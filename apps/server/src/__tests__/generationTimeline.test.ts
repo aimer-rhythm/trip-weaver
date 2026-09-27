@@ -32,6 +32,22 @@ test('buildTimeline tolerates legacy events without timing fields', () => {
   assert.equal(model.phases[0]?.durationMs, undefined);
 });
 
+// 09-27 视觉对齐：刷新/恢复链路的 URL 只有 city，标题天数只能来自 job_start
+test('buildTimeline exposes job_start destination and days for the title', () => {
+  const model = buildTimeline([
+    { type: 'job_start', destination: '北京', days: 4, xhsEnabled: false, dataSources: [] },
+  ]);
+  assert.equal(model.destination, '北京');
+  assert.equal(model.days, 4);
+});
+
+test('buildTimeline leaves days undefined for legacy job_start events', () => {
+  const model = buildTimeline([
+    { type: 'job_start', destination: '北京', xhsEnabled: false, dataSources: [] },
+  ]);
+  assert.equal(model.days, undefined);
+});
+
 test('formatDuration uses compact Chinese units', () => {
   assert.equal(formatDuration(450), '0.5 秒');
   assert.equal(formatDuration(12_300), '12 秒');
