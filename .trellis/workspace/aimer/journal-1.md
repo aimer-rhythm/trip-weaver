@@ -598,3 +598,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 
 - 若仍需压制生成耗时，只能换输出更快的模型（`SITE_LLM_MODEL`）；代码侧已无剩余杠杆
 - 可选：用 `payload.recommendScore` 给 search_verified_places 的召回排序，把机位级长尾条目挤出 top 8
+
+
+## Session 15: 上游社区数据接入 + 排程闭馆日分配修复
+
+**Date**: 2026-09-27
+**Task**: 上游社区数据接入 + 排程闭馆日分配修复
+**Branch**: `master`
+
+### Summary
+
+接入上游 xhs-pipeline 三类社区数据（openHours / aliases / POI 无向关联对），修通导入链路的版本选择与 goldset 分数覆盖缺陷；修复排程「段→天」分配在闭馆日无解时的退化行为并加法定节假日豁免；算法写入 docs/DETERMINISTIC_SCHEDULING.md；在上游仓库建 3 个待办任务。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `5ec08a9` | (see git log) |
+| `b873c51` | (see git log) |
+| `57142f5` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
