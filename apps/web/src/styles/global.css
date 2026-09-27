@@ -843,8 +843,8 @@ a { color: var(--color-primary); text-decoration: none; }
 .gen-polaroid-photo .poi-cover-fallback { display: flex; align-items: center; justify-content: center; font-size: calc(46 * var(--ui)); }
 .gen-polaroid-caption {
   margin: calc(18 * var(--ui)) 0 0;
-  font-size: calc(23 * var(--ui));
-  font-style: italic;
+  font-family: 'QianTuBiFeng Handwriting', var(--gen-serif);
+  font-size: calc(24 * var(--ui));
   color: #4a5568;
   text-align: center;
   white-space: nowrap;

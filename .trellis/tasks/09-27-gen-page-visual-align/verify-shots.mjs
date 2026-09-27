@@ -138,13 +138,16 @@ try {
   })()`);
   console.log('measure:', JSON.stringify(measured));
 
-  await sleep(40000); // ~100s：候选更多，验证扇形堆叠上限
-  await cdp.shot('shot-04-gen-late.png');
+  // 候选带图的帧窗口很窄：取图是 await 的（高德/Pexels），且生成耗时波动大 → 密集取帧
+  for (let i = 0; i < 6; i++) {
+    await sleep(20000);
+    await cdp.shot(`shot-frames-${i}.png`);
+  }
 
   // 5. 取消 → 终态截图
   await cdp.eval(`fetch('/api/generations/${job.body.jobId}/cancel', { method: 'POST' }).then(r => r.status)`);
   await sleep(2500);
-  await cdp.shot('shot-05-cancelled.png');
+  await cdp.shot('shot-06-cancelled.png');
 } finally {
   chrome.kill('SIGKILL');
   // Windows 下 kill 只终止父进程，且未关闭的 WebSocket 会挂住事件循环——显式退出
