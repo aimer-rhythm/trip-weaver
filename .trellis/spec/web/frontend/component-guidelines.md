@@ -100,6 +100,25 @@ Rules that keep this from becoming two divergent maps:
 - InfoWindow content is an HTML string, so model-authored text (activity names, descriptions) must
   pass through `escapeHtml` before interpolation. React components cannot be used there; the edit
   button uses data attributes plus one delegated click handler on the host element.
+- Route stroke geometry lives in `lib/routeStyle.ts`, not in either canvas. Every route segment is
+  drawn twice — a wider dimmed underlay (`dimColor`, 7 px, z 60) then the day colour on top
+  (5 px, z 61) — and the numbers only stay identical across both renderers if there is one source.
+  Selecting a day no longer removes the other days from the data; `DayLines` / `MapPoint` carry a
+  `dimmed` flag and the faded band (opacity 0.2, z 10/11) is what the user sees instead. The map
+  still fits **all** days, dimmed ones included: fitting only the selected day would push them off
+  screen, which defeats the point of drawing them (a trip's days can be 0.5° apart).
+  Leaflet's `Path` has neither `zIndex` (JSX order decides layering) nor `showDir`
+  (Amap's direction arrows): the fallback is dual-layer but arrowless **by design**. Treat that as
+  a known asymmetry, not a missed edit, when reviewing the two canvases side by side.
+  Reference measurements and the source-project version drift are recorded in
+  `.trellis/tasks/09-26-route-polyline-style/research/pitravel-route-style.md`.
+- The marker DOM is a three-class contract owned by `lib/markerHtml.ts` and shared by both canvases:
+  `.map-marker` (28×28 positioning box, also the query root for collision) wrapping `.marker-pin`
+  and an absolutely positioned `.map-label`. `lib/labelCollision.ts` finds elements **only** by those
+  class names, so dropping one silently disables name avoidance — and the failure mode looks like
+  "we never implemented it" rather than like a breakage. Avoidance runs on `zoomend` / `moveend` plus
+  once after overlays are rebuilt; it is deliberately **not** a rAF loop, which is also why it needs
+  none of the reference implementation's hysteresis thresholds.
 
 ## Derived Data Matching
 

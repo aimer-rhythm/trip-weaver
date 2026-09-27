@@ -93,13 +93,10 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
   const isDesktop = useIsDesktop();
   const amap = useAmapNamespace();
 
-  const visibleDays = useMemo(() => {
-    const days = trip?.days ?? [];
-    return dayFilter === null ? days : days.filter((d) => d.dayIndex === dayFilter);
-  }, [trip, dayFilter]);
-
-  const points = useMemo(() => collectPoints(visibleDays), [visibleDays]);
-  const dayLines = useMemo(() => collectDayLines(visibleDays), [visibleDays]);
+  // 按天筛选不再把其他天从数据里删掉 —— 它们仍然画出来，只是被标成 dimmed 由画布淡化
+  const allDays = useMemo(() => trip?.days ?? [], [trip]);
+  const points = useMemo(() => collectPoints(allDays, dayFilter), [allDays, dayFilter]);
+  const dayLines = useMemo(() => collectDayLines(allDays, dayFilter), [allDays, dayFilter]);
   const canvasProps = { points, dayLines, visible: visible || isDesktop, onEditActivity };
 
   return (

@@ -1,11 +1,18 @@
 // Leaflet 渲染（09-26 从 MapView 抽出）：**降级路径** —— 未配高德 JS API Key、
 // 或 SDK 加载失败/超时（见 MapView 的选择逻辑）时使用。
 // 与 AmapCanvas 共用 lib/mapData 的点与线，这里只负责把 GeoPos 翻成 Leaflet 的 [lat, lng]。
+//
+// 路线是双层折线（参数见 lib/routeStyle），marker 带名称标签（HTML 见 lib/markerHtml，
+// 与高德侧同一个生成函数），标签避让见 lib/labelCollision。
 import { useEffect } from 'react';
 import L from 'leaflet';
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
 import type { Activity, TripDay } from '@tripweaver/shared';
+import { dimColor } from '../../lib/colors';
+import { resolveLabelCollisions } from '../../lib/labelCollision';
+import { markerHtml } from '../../lib/markerHtml';
 import { collectDayLines, type DayLines, type GeoPos, type MapPoint } from '../../lib/mapData';
+import { ROUTE_STROKE } from '../../lib/routeStyle';
 
 interface Props {
   points: MapPoint[];
@@ -17,10 +24,16 @@ interface Props {
 
 const toLatLng = (pos: GeoPos): [number, number] => [pos.lat, pos.lng];
 
-function numberIcon(color: string, order: number, estimated: boolean): L.DivIcon {
+function mapIcon(point: MapPoint): L.DivIcon {
   return L.divIcon({
     className: 'marker-wrap',
-    html: `<div class="marker-pin${estimated ? ' marker-estimated' : ''}" style="background:${color}">${order}</div>`,
+    html: markerHtml({
+      color: point.color,
+      order: point.order,
+      estimated: point.activity.coordSource === 'estimated',
+      dimmed: point.dimmed,
+      label: point.activity.name,
+    }),
     iconSize: [28, 28],
     iconAnchor: [14, 14],
     popupAnchor: [0, -14],
@@ -31,15 +44,36 @@ function numberIcon(color: string, order: number, estimated: boolean): L.DivIcon
 // 先 invalidateSize 再无动画 fitBounds —— 避免「隐藏容器初始化导致零尺寸定位」的经典坑
 function MapController({ points, visible }: { points: MapPoint[]; visible: boolean }) {
   const map = useMap();
-  const key = points.map((p) => `${p.activity.id}:${p.pos.lat},${p.pos.lng}`).join('|');
+
+  // 名称避让只在交互结束后各跑一次（与 AmapCanvas 一致），不做 rAF 循环。
+  // divIcon 的 DOM 挂在 map 容器内，所以用 getContainer() 当测量根。
+  useEffect(() => {
+    const relayout = () => resolveLabelCollisions(map.getContainer(), map.getZoom());
+    map.on('zoomend', relayout);
+    map.on('moveend', relayout);
+    return () => {
+      map.off('zoomend', relayout);
+      map.off('moveend', relayout);
+    };
+  }, [map]);
+
+  // 框的是**当前查看范围**：总览 → 全部天，选了某天 → 只框那天（对齐圆周旅迹）。
+  // 这要求 .editor-page 有高度约束（见 global.css）—— 否则容器比屏幕还高，
+  // 框出来的视野会有一部分落在屏幕外，看起来就像「定位失灵」。
+  const focused = points.filter((p) => !p.dimmed);
+  const targets = focused.length > 0 ? focused : points;
+  const key = targets.map((p) => `${p.activity.id}:${p.pos.lat},${p.pos.lng}`).join('|');
+
   useEffect(() => {
     if (!visible) return;
     const timer = setTimeout(() => {
       map.invalidateSize();
-      if (points.length > 0) {
-        const bounds = L.latLngBounds(points.map((p) => toLatLng(p.pos)));
+      if (targets.length > 0) {
+        const bounds = L.latLngBounds(targets.map((p) => toLatLng(p.pos)));
         map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15, animate: false });
       }
+      // fitBounds 之后 marker 已在目标位置，直接补一次避让（不依赖它抛出的事件）
+      resolveLabelCollisions(map.getContainer(), map.getZoom());
     }, 60);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,27 +124,34 @@ export function LeafletCanvas({ points, dayLines, visible, onEditActivity }: Pro
         attribution="&copy; 高德地图"
       />
       {dayLines.map((line) =>
-        line.segments.map((seg) => (
-          <Polyline
-            key={`${line.dayIndex}:${seg.key}`}
-            positions={seg.positions.map(toLatLng)}
-            pathOptions={{
-              color: line.color,
-              weight: 3,
-              opacity: 0.75,
-              dashArray: seg.dashed ? '6 6' : undefined,
-            }}
-          />
-        )),
+        line.segments.flatMap((seg) => {
+          // 与 AmapCanvas 同一种双层折线（数值见 lib/routeStyle）。Leaflet 的 Path
+          // 没有 zIndex，靠 JSX 顺序决定绘制层次 —— 所以底衬必须在主线之前返回。
+          // 也没有高德 showDir 那样的方向箭头，两侧的差异仅此一项。
+          const band = line.dimmed ? ROUTE_STROKE.faded : ROUTE_STROKE.active;
+          const positions = seg.positions.map(toLatLng);
+          return [
+            <Polyline
+              key={`${line.dayIndex}:${seg.key}:under`}
+              positions={positions}
+              pathOptions={{
+                color: dimColor(line.color, ROUTE_STROKE.dim),
+                weight: ROUTE_STROKE.underWeight,
+                opacity: band.opacity,
+              }}
+            />,
+            <Polyline
+              key={`${line.dayIndex}:${seg.key}:main`}
+              positions={positions}
+              pathOptions={{ color: line.color, weight: ROUTE_STROKE.mainWeight, opacity: band.opacity }}
+            />,
+          ];
+        }),
       )}
-      {points.map(({ day, activity, order, pos, color }) => (
-        <Marker
-          key={activity.id}
-          position={toLatLng(pos)}
-          icon={numberIcon(color, order, activity.coordSource === 'estimated')}
-        >
+      {points.map((point) => (
+        <Marker key={point.activity.id} position={toLatLng(point.pos)} icon={mapIcon(point)}>
           <Popup>
-            <ActivityPopup day={day} activity={activity} onEditActivity={onEditActivity} />
+            <ActivityPopup day={point.day} activity={point.activity} onEditActivity={onEditActivity} />
           </Popup>
         </Marker>
       ))}

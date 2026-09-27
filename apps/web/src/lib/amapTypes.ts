@@ -17,7 +17,13 @@ export interface AmapMap {
   setFitView(overlays?: AmapOverlay[], immediately?: boolean, avoid?: number[]): void;
   resize(): void;
   destroy(): void;
+  /** 只声明本项目真正监听的两个事件；高德与 Leaflet 在这两个名字上意外地一致 */
+  on(event: AmapMapEvent, handler: () => void): void;
+  off(event: AmapMapEvent, handler: () => void): void;
+  getZoom(): number;
 }
+
+type AmapMapEvent = 'zoomend' | 'moveend';
 
 export interface AmapInfoWindow {
   setContent(content: string): void;
