@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { POI_CATEGORIES, type ResearchPoi } from '@tripweaver/shared';
 import { DATA_SOURCE_LABEL, POI_CATEGORY_ICON, POI_CATEGORY_LABEL } from '../../lib/poi';
 import { useEditorStore } from '../../store/editorStore';
-import { PoiCard } from '../PoiCard';
+import { PoiCard, PexelsCredit } from '../PoiCard';
 
 export function CandidateDrawer({ pois }: { pois: ResearchPoi[] }) {
   const trip = useEditorStore((s) => s.trip);
@@ -30,6 +30,7 @@ export function CandidateDrawer({ pois }: { pois: ResearchPoi[] }) {
         备选（{pois.length}）<span className="muted">未编入行程的调研候选</span>
       </summary>
       <p className="overview-note muted">数据来源：{sourceText}｜预约信息以官方为准，出行前请核实</p>
+      <PexelsCredit pois={pois} />
       {groups.map((g) => (
         <section key={g.category} className="overview-group">
           <h3>

@@ -5,6 +5,7 @@ import { useEditorStore } from '../store/editorStore';
 import { ChatPanel } from '../components/chat/ChatPanel';
 import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
 import { CandidateDrawer } from '../components/editor/CandidateDrawer';
+import { PexelsCredit } from '../components/PoiCard';
 import { DaySection } from '../components/editor/DaySection';
 import { MapView } from '../components/editor/MapView';
 import { TripMetaDialog } from '../components/editor/TripMetaDialog';
@@ -106,6 +107,9 @@ export function TripEditorPage() {
         </button>
       )}
       <CandidateDrawer pois={overviewMatch.unmatched} />
+      <PexelsCredit
+        pois={[...Object.values(overviewMatch.poiByActivityId), ...overviewMatch.unmatched]}
+      />
     </div>
   );
 

@@ -20,6 +20,7 @@ import { rememberResearchLocation, type ResearchLocation } from '../placeLookup'
 import { retrieveContext } from '../retrieveContext';
 import { normalizePlaceKey } from '../scheduling/placeFacts';
 import { type CoverLookup, type CoverQuery } from '../../integrations/wikimedia/cover';
+import type { PexelsCoverLookup } from '../../integrations/pexels/cover';
 
 function text(t: string) {
   return [{ type: 'text' as const, text: t }];
@@ -62,6 +63,8 @@ export interface ResearchToolDeps {
   onCandidate?: (poi: ResearchPoi) => void;
   /** 封面降级：库内无图时按地点名 + 坐标查中文维基。默认进程级实现；测试注入避免发请求。 */
   coverLookup?: CoverLookup;
+  /** 封面主路径（09-27）：Pexels 关键词检索，排在库内封面之前。未注入时不发请求（测试与离线回放）。 */
+  pexelsCover?: PexelsCoverLookup;
   /** 库内封面（未来 canonical_places 补图后由调用方提供）。返回非空则跳过实时检索。 */
   storedCover?: (name: string) => Promise<string | null>;
   /** 库内坐标兜底：调研阶段没捕到坐标时（知识库候选）用它。失败返回 null。 */
@@ -81,7 +84,8 @@ function isUsableCoverUrl(u: string): boolean {
 }
 
 /**
- * 封面解析：库内封面优先；没有则用坐标查维基。
+ * 封面解析（09-27 顺序）：Pexels 严格命中 → 库内封面 → 按坐标查中文维基 → 空。
+ * Pexels 排最前是因为它覆盖任意城市；库内图只在 3 个城市有，维基在国内被封锁。
  * 坐标先取调研阶段捕到的（search_pois），没有再问库内坐标兜底。
  * 名字按归一键对齐：候选「故宫博物院」对得上搜索结果「故宫」。
  */
@@ -89,20 +93,26 @@ async function resolveCover(
   name: string,
   city: string,
   locations: ReadonlyMap<string, ResearchLocation>,
-  covers: CoverLookup,
-  storedCover: (name: string) => Promise<string | null>,
-  storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>,
+  deps: {
+    covers: CoverLookup;
+    storedCover: (name: string) => Promise<string | null>;
+    storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>;
+    pexels: PexelsCoverLookup;
+  },
 ): Promise<string | null> {
-  const stored = await storedCover(name);
+  const pexelsUrl = await deps.pexels.coverFor({ name, city });
+  if (pexelsUrl && isUsableCoverUrl(pexelsUrl)) return pexelsUrl.slice(0, 300);
+
+  const stored = await deps.storedCover(name);
   if (stored && isUsableCoverUrl(stored)) return stored.slice(0, 300);
 
   const key = normalizePlaceKey(name);
   const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
-  const point = known?.[1] ?? (await storedPoint(name));
+  const point = known?.[1] ?? (await deps.storedPoint(name));
   if (!point) return null;
 
   const query: CoverQuery = { name, city, lat: point.lat, lng: point.lng };
-  const url = await covers.coverFor(query);
+  const url = await deps.covers.coverFor(query);
   return url && isHttpUrl(url) ? url.slice(0, 300) : null;
 }
 
@@ -112,6 +122,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   const coverLookup = deps.coverLookup ?? { coverFor: async () => null };
   const storedCover = deps.storedCover ?? (async () => null);
   const storedPoint = deps.storedPoint ?? (async () => null);
+  const pexelsCover = deps.pexelsCover ?? { coverFor: async () => null };
   const ambiguousNames = new Set<string>();
   // 营业时间旁路捕获（09-22-opentime）：search_pois 如实带回高德 opentime 文本，add_candidate 同名自动回填，
   // 不让模型转抄（转抄会失真）。仅 attraction 入排程检测，food/hotel 不消费。
@@ -281,7 +292,12 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       // 封面降级（09-26）：库内有图就用库内的；没有才按「地点名 + 城市」查中文维基。
       // 只补 attraction，food/hotel 命中差。失败留空，前端回落类目图标。命中不回写库。
       if (category === 'attraction') {
-        const cover = await resolveCover(name, destination, outcome.locations, coverLookup, storedCover, storedPoint);
+        const cover = await resolveCover(name, destination, outcome.locations, {
+          covers: coverLookup,
+          storedCover,
+          storedPoint,
+          pexels: pexelsCover,
+        });
         if (cover) poi.coverUrl = cover;
       }
 

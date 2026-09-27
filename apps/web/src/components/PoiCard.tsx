@@ -78,3 +78,23 @@ export function PoiCard({ poi, compact = false }: { poi: ResearchPoi; compact?: 
     </div>
   );
 }
+
+/** 该封面是否来自 Pexels（API 条款：用到就要署名 + 链接回 Pexels） */
+export function isPexelsCover(url?: string): boolean {
+  return Boolean(url && url.includes('images.pexels.com'));
+}
+
+/**
+ * Pexels API 条款要求使用其图片的页面展示指向 Pexels 的显眼链接。
+ * 列表里没有 Pexels 图时返回 null —— 不产生任何占位。
+ */
+export function PexelsCredit({ pois }: { pois: readonly Pick<ResearchPoi, 'coverUrl'>[] }) {
+  if (!pois.some((p) => isPexelsCover(p.coverUrl))) return null;
+  return (
+    <p className="pexels-credit">
+      <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">
+        Photos provided by Pexels
+      </a>
+    </p>
+  );
+}

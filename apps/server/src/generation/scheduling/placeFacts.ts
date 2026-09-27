@@ -3,6 +3,10 @@
 // 一次全城拉取 + TS 侧归一合并（09-23 实体归一）：知识库存在「故宫 / 故宫博物院」式分裂条目，
 // 按名精确查会把分数与情报拆散——改为按归一键合并后服务候选。失败静默降级为空 Map，不阻断生成。
 import { pool } from '../../db/client';
+import { normalizePlaceKey } from '../../lib/placeKey';
+
+// 归一键已下沉到 lib/placeKey（09-27）；这里 re-export 保持既有导入路径不变
+export { normalizePlaceKey };
 
 export interface PlaceFacts {
   name: string;
@@ -46,27 +50,7 @@ interface FactRow {
   payload: unknown;
 }
 
-/** 机构类尾部后缀（长后缀优先，只剥一次）：「故宫博物院」与「故宫」归一到同键 */
-const MERGEABLE_SUFFIXES = [
-  '风景名胜区', '自然保护区', '旅游度假区',
-  '风景区', '旅游区', '度假区', '博物院', '博物馆', '纪念馆', '陈列馆',
-  '公园', '景区', '寺院', '寺庙', '陵寝', '故居', '广场',
-] as const;
-
-/**
- * 实体归一键（09-23）：trim + 去尾部机构后缀。
- * 只剥后缀、不做任意子串合并——「沈阳故宫」与「故宫博物院」归一键不同（「沈阳故宫」无后缀可剥），天然隔离。
- * 剥后至少保留 2 个字，防「公园」整名被剥空。
- */
-export function normalizePlaceKey(name: string): string {
-  const key = name.trim();
-  for (const suffix of MERGEABLE_SUFFIXES) {
-    if (key.length - suffix.length >= 2 && key.endsWith(suffix)) {
-      return key.slice(0, -suffix.length);
-    }
-  }
-  return key;
-}
+// normalizePlaceKey（09-23）定义在 lib/placeKey.ts，上方已 re-export
 
 /** 防御性读取：payload 是 jsonb，字段类型不由 DB 保证 */
 function numberField(payload: Record<string, unknown>, key: string): number | undefined {

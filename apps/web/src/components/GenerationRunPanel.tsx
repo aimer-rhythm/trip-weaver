@@ -11,7 +11,7 @@ import {
 } from '@tripweaver/shared';
 import { buildTimeline, formatDuration, type TimelineModel } from '../lib/generationTimeline';
 import { DATA_SOURCE_LABEL } from '../lib/poi';
-import { PoiCover } from './PoiCard';
+import { PoiCover, PexelsCredit } from './PoiCard';
 
 interface Props {
   events: GenerationEvent[];
@@ -227,6 +227,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
               })
             )}
           </div>
+          <PexelsCredit pois={visibleCandidates} />
         </main>
       )}
 

@@ -368,8 +368,9 @@ Apply when changing where an attraction's `coverUrl` comes from: the stored-cove
 `export_place_images.py` manifest, or `researchTools.resolveCover`'s URL acceptance rule.
 
 Background: the Wikimedia fallback cannot serve mainland users — `upload.wikimedia.org` and the
-rest of the Wikimedia media servers are blocked in China. Stored covers are therefore the primary
-source, and the live wiki lookup is a fallback for overseas/proxied environments only.
+rest of the Wikimedia media servers are blocked in China. Pexels is therefore the primary source
+(covers any city), stored covers are second (real photos, but only Beijing/Guangzhou/Hangzhou), and
+the live wiki lookup is a fallback for overseas/proxied environments only.
 
 ### 2. Signatures
 
@@ -395,8 +396,10 @@ writes nothing.
 
 - **Store the relative key, never a URL.** The display prefix comes from `MEDIA_BASE_URL` at read
   time, so switching from the local disk to object storage is an env-var change, not a re-import.
-- Resolution order in `add_candidate` (attraction only): stored cover → Chinese Wikipedia search →
-  empty. A stored hit skips the wiki lookup and its per-generation request budget entirely.
+- Resolution order in `add_candidate` (attraction only): Pexels (strict keyword match) → stored cover
+  → Chinese Wikipedia → empty. Each hit short-circuits the remaining sources and their request
+  budgets. The three-source contract lives in the integration guidelines under *Attraction Cover
+  Sources*.
 - URL acceptance is deliberately wider than the wiki path: `isUsableCoverUrl` accepts `http(s)://`
   OR a leading `/` (same-origin `/media/...`). The wiki result still requires `https://`.
 - `mergeFacts` takes `coverImage` from any member of a normalized group — split rows (「故宫」 vs
@@ -413,6 +416,9 @@ writes nothing.
 | Condition | Result |
 | --- | --- |
 | `payload.coverImage` absent | `storedCover` → `null`; the wiki fallback runs as before |
+| `PEXELS_API_KEY` unset | Pexels source skipped silently; covers behave exactly as before that change |
+| Pexels results carry no textual match | `pickCover` → `null` (negative-cached 24 h) → stored cover → wiki |
+| Pexels budget exhausted (8 per generation / 180 per hour) | `null` without a request; later candidates fall through |
 | `canonical_places` query throws | `loadPlaceFacts` warns and returns an empty Map → `null`; generation continues |
 | City argument empty | `createStoredCoverLookup` returns `null` without touching the DB |
 | `MEDIA_BASE_URL` empty string | `str()` falls back to `/media`; URLs stay same-origin |
@@ -466,4 +472,5 @@ if (stored && isUsableCoverUrl(stored)) return stored.slice(0, 300);
 Representative paths: `apps/server/src/generation/storedCover.ts`,
 `apps/server/src/generation/tools/researchTools.ts`, `apps/server/scripts/seed-xhs-place-images.ts`,
 `apps/server/scripts/lib/exportFiles.ts`, `apps/server/src/index.ts`, `docker-compose.yml`,
+`apps/server/src/integrations/pexels/cover.ts`, `apps/server/src/lib/placeKey.ts`,
 `xhs-travel-pipeline/scripts/export_place_images.py`.

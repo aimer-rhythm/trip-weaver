@@ -11,6 +11,7 @@ import {
   type GenerationPhase,
 } from '@tripweaver/shared';
 import type { FastifyBaseLogger } from 'fastify';
+import { env } from '../env';
 import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
@@ -39,6 +40,7 @@ import { GenerationPerformance } from './performance';
 import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
+import { createPexelsCoverLookup } from '../integrations/pexels/cover';
 import { createStoredCoverLookup } from './storedCover';
 import { loadPlaceFacts } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
@@ -248,6 +250,7 @@ export async function runGeneration(
         outcome: research,
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
         coverLookup: createWikiCoverLookup(),
+        pexelsCover: createPexelsCoverLookup(env.pexelsApiKey),
         storedCover: createStoredCoverLookup(form.destination),
         storedPoint: cityPointLookup(form.destination),
       }),

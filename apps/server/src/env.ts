@@ -105,6 +105,9 @@ export const env = {
   tiandituKey,                                          // 天地图 Web 服务 Key（接口参数名 tk）
   tiandituDailyBudget: int('TIANDITU_DAILY_BUDGET', 150),   // 全站天地图调用日额度（与高德分别计数）
   searchApiKey: str('SEARCH_API_KEY'),                  // Web 搜索 Key（默认 LangSearch）
+  // Pexels 免费图库（09-27）：景点封面第一优先来源。缺失时该源 Null 降级，不影响既有链路。
+  // 限流 200 次/小时、20000 次/月；API 条款要求使用图片的页面展示「Photos provided by Pexels」链接。
+  pexelsApiKey: str('PEXELS_API_KEY'),
   searchApiBaseUrl: str('SEARCH_API_BASE_URL', DEFAULT_SEARCH_API_BASE_URL).replace(/\/+$/, ''),
   searchDailyBudget: int('SEARCH_DAILY_BUDGET', 500),   // 全站搜索调用日额度
   ssrfAllowlist: str('SSRF_ALLOWLIST')

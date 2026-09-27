@@ -377,24 +377,40 @@ const route = await routeEstimate(apiKey, from, to, mode);
 leg.source = 'amap';                                                    // lie when Tianditu ran
 ```
 
-## Attraction Cover Fallback (stored cover → Wikimedia live lookup)
+## Attraction Cover Sources (Pexels → stored cover → Wikimedia)
 
-**Scope/Trigger**: an `attraction` candidate reaches `add_candidate`. Stored covers
-(`canonical_places.payload.coverImage`, exported by the community pipeline and imported by
-`scripts/seed-xhs-place-images.ts`) are the PRIMARY source. The Wikimedia lookup is the fallback and
-is unreachable from mainland China — `upload.wikimedia.org` and the rest of the Wikimedia media
-servers are blocked there — so treat it as an overseas/proxy path, never the main one. The full
-stored-cover contract (manifest format, env keys, `/media` route, deploy sync) lives in the RAG
+**Scope/Trigger**: an `attraction` candidate reaches `add_candidate`, or the cover order/URL
+acceptance/budget rules change. Three sources serve one `coverUrl`; the order is fixed and each
+source must degrade to the next. Full stored-cover manifest/route/deploy contract lives in the RAG
 retrieval guidelines under *Attraction Cover Images*.
 
-**Contract** (`createStoredCoverLookup` in `apps/server/src/generation/storedCover.ts` +
-`createWikiCoverLookup` in `apps/server/src/integrations/wikimedia/cover.ts`, both wired in
+**Contract** (`createPexelsCoverLookup` in `apps/server/src/integrations/pexels/cover.ts`,
+`createStoredCoverLookup` in `apps/server/src/generation/storedCover.ts`,
+`createWikiCoverLookup` in `apps/server/src/integrations/wikimedia/cover.ts` — all wired in
 `generation/orchestrator.ts`):
 
-- Order: stored cover (`payload.coverImage` → `MEDIA_BASE_URL`, default `/media`) → Chinese Wikipedia
-  article search (`地点名 + 城市`) → empty. Only `attraction`. Food and hotel are never queried.
-- URL acceptance differ per source: stored covers may be `http(s)://` OR a same-origin path starting
-  with `/`; a wiki thumbnail must be `https://`.
+- Order: **Pexels** (keyword search, strict match) → **stored cover** (`payload.coverImage` →
+  `MEDIA_BASE_URL`, default `/media`) → **Chinese Wikipedia** (`地点名 + 城市`) → empty. Only
+  `attraction`. Food and hotel are never queried.
+- Why Pexels first: it covers any city; the stored library only exists for 3 cities, and
+  `upload.wikimedia.org` is blocked in mainland China — so both of the older sources together still
+  leave most candidates imageless.
+- Pexels has no coordinates. The accuracy gate is textual: a result is accepted only when its `alt`
+  or photo-page slug shares a normalized key with the place name (`lib/placeKey.ts`,
+  `normalizePlaceKey`). No match → `null` → fall through. Never take “first result” — a generic lake
+  photo must not be captioned as a named scenic spot.
+- URL acceptance differs per source: Pexels and Wikipedia must be `https://`; stored covers may also be
+  a same-origin path starting with `/`.
+- Budgets are separate and do not share counters: Pexels 8 requests per generation + a process-level
+  180/hour window (its published limit is 200/hour; restart resets the window); Wikipedia 8 per
+  generation, serial with ≥1 s spacing.
+- Pexels API terms require a visible link back to Pexels wherever its photos are shown. The frontend
+  renders `Photos provided by Pexels` (`PexelsCredit` in `apps/web/src/components/PoiCard.tsx`) on the
+  generation page, the candidate drawer, and the trip editor — it renders nothing when no Pexels URL
+  is present in the list.
+- Any failure (missing key, timeout, non-2xx, budget exhausted, no textual match) returns `null` and
+alogs one warn at most; nothing throws into generation. A `null` from a confirmed miss is cached for
+  24 h, a transport failure is not.
 - A missing key, a failed `canonical_places` query, or a failed file fetch all degrade to `null`; the
   frontend falls back to the category icon.
 - Accept an article only when it has a thumbnail AND coordinates within 2 km of the place. The
@@ -413,12 +429,15 @@ retrieval guidelines under *Attraction Cover Images*.
 pavilion, and the closest to 鸟巢 was an Olympics ceremony photo. Title search plus a coordinate check
 hit 9 of 10.
 
-**Tests** (`apps/server/src/__tests__/wikimediaCover.test.ts`, `placeLookup.test.ts`,
-`storedCover.test.ts`): `pickCover` keeps the nearest in-range article and drops the rest; the
-adapter caches both hits and confirmed misses; HTTP failure returns null and is not cached; the 9th
-lookup makes no request; a food candidate and a candidate with a stored cover never call the lookup;
-a stored `/media/...` path is accepted and skips the wiki request; `mediaUrl` joins keys against
-`/media`, an absolute CDN base, and an empty base.
+**Tests** (`apps/server/src/__tests__/wikimediaCover.test.ts`, `pexelsCover.test.ts`,
+`placeLookup.test.ts`, `storedCover.test.ts`): `pickCover` keeps the nearest in-range article and
+drops the rest; the adapter caches both hits and confirmed misses; HTTP failure returns null and is
+not cached; the 9th lookup makes no request; a food candidate and a candidate with a stored cover
+never call the lookup; a stored `/media/...` path is accepted and skips the wiki request; `mediaUrl`
+joins keys against `/media`, an absolute CDN base, and an empty base. Pexels: alt-based acceptance
+and normalized-key alignment, non-https and empty `src` rejected, no request without a key, cache and
+negative cache, 429 not cached, per-generation cap. `pexelsCover.test.ts` must stay free of DB
+imports (it asserts the adapter only depends on `lib/*`).
 
 #### Correct
 

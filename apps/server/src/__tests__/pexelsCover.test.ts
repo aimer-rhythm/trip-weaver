@@ -1,0 +1,134 @@
+// Pexels 封面（09-27）：挑选闸门（纯函数）+ 适配器的缓存、失败降级、请求上限（mock fetch）
+// 适配器只依赖 lib/*，导入本文件不会连库 —— 保持这个性质，别把 placeFacts 之类的模块拉进来。
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { createPexelsCoverLookup, pickCover, type PexelsPhoto } from '../integrations/pexels/cover';
+
+const MEDIUM = 'https://images.pexels.com/photos/37467110/pexels-photo-37467110.jpeg?h=350';
+
+function photo(alt: string, over: Partial<PexelsPhoto> = {}): PexelsPhoto {
+  return {
+    alt,
+    url: 'https://www.pexels.com/photo/beijing-forbidden-city-37467110/',
+    src: { medium: MEDIUM },
+    ...over,
+  };
+}
+
+test('挑选：alt 命中地点名时取其图片直链', () => {
+  assert.equal(pickCover([photo('北京故宫')], '故宫'), MEDIUM);
+});
+
+test('挑选：归一键对齐 ——「故宫博物院」对得上 alt「北京故宫」', () => {
+  // 与 placeFacts 同一套归一：剥掉「博物院」后按「故宫」比较
+  assert.equal(pickCover([photo('北京故宫')], '故宫博物院'), MEDIUM);
+});
+
+test('挑选：alt 与地点名无关时判未命中，宁可不出图', () => {
+  assert.equal(pickCover([photo('Green trees in a park')], '虎跑公园'), null);
+  assert.equal(pickCover([photo('Sunset over a lake')], '西湖'), null);
+  assert.equal(pickCover([], '西湖'), null);
+});
+
+test('挑选：尺寸回落 medium → large → original，非 https 一律丢弃', () => {
+  assert.equal(pickCover([photo('西湖', { src: { large: `${MEDIUM}&large` } })], '西湖'), `${MEDIUM}&large`);
+  assert.equal(pickCover([photo('西湖', { src: { original: `${MEDIUM}&orig` } })], '西湖'), `${MEDIUM}&orig`);
+  assert.equal(pickCover([photo('西湖', { src: { medium: 'http://images.pexels.com/a.jpeg' } })], '西湖'), null);
+  assert.equal(pickCover([photo('西湖', { src: {} })], '西湖'), null);
+});
+
+test('挑选：地点名过短（剥不出有效键）时不猜', () => {
+  assert.equal(pickCover([photo('甲')], '甲'), null);
+});
+
+test('适配器：未配置 key 时直接返回 null 且不发请求', async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls += 1;
+    return Response.json({ photos: [] });
+  }) as typeof fetch;
+  try {
+    const lookup = createPexelsCoverLookup('', 8, 0);
+    assert.equal(await lookup.coverFor({ name: '西湖', city: '杭州' }), null);
+    assert.equal(calls, 0, '无 key 不得发请求');
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
+test('适配器：命中返回图片直链，第二次走缓存', async () => {
+  const original = globalThis.fetch;
+  const urls: string[] = [];
+  let auth = '';
+  globalThis.fetch = (async (input: string | URL | Request, init?: RequestInit) => {
+    urls.push(String(input));
+    auth = String((init?.headers as Record<string, string> | undefined)?.Authorization ?? '');
+    return Response.json({ photos: [photo('西湖'), photo('无关风景')] });
+  }) as typeof fetch;
+  try {
+    const lookup = createPexelsCoverLookup('test-key', 8, 0);
+    const query = { name: '西湖', city: '杭州' };
+    assert.equal(await lookup.coverFor(query), MEDIUM);
+    assert.equal(await lookup.coverFor(query), MEDIUM);
+    assert.equal(urls.length, 1, '第二次应命中缓存，不再发请求');
+    assert.match(urls[0]!, /api\.pexels\.com\/v1\/search\?/);
+    assert.match(urls[0]!, /locale=zh-CN/);
+    assert.equal(auth, 'test-key');
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
+test('适配器：确认无图的结果进负缓存，第二次不再发请求', async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls += 1;
+    return Response.json({ photos: [photo('Sunset over a lake')] });
+  }) as typeof fetch;
+  try {
+    const lookup = createPexelsCoverLookup('test-key', 8, 0);
+    const query = { name: '虎跑公园', city: '杭州' };
+    assert.equal(await lookup.coverFor(query), null);
+    assert.equal(await lookup.coverFor(query), null);
+    assert.equal(calls, 1, '两次调用只应发一次请求（负缓存命中）');
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
+test('适配器：失败（非 2xx）返回 null 且不进缓存，下次重试', async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls += 1;
+    return new Response('rate limited', { status: 429 });
+  }) as typeof fetch;
+  try {
+    const lookup = createPexelsCoverLookup('test-key', 8, 0);
+    const query = { name: '云栖竹径', city: '杭州' };
+    assert.equal(await lookup.coverFor(query), null);
+    assert.equal(await lookup.coverFor(query), null);
+    assert.equal(calls, 2, '失败不缓存，第二次应再次尝试');
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
+test('适配器：超过单次生成上限后不再发请求', async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls += 1;
+    return new Response('nope', { status: 500 });
+  }) as typeof fetch;
+  try {
+    const lookup = createPexelsCoverLookup('test-key', 1, 0);
+    assert.equal(await lookup.coverFor({ name: '甲园', city: '北京' }), null);
+    assert.equal(await lookup.coverFor({ name: '乙园', city: '北京' }), null);
+    assert.equal(calls, 1, '上限为 1 时第二次不得发请求');
+  } finally {
+    globalThis.fetch = original;
+  }
+});
