@@ -1,0 +1,4 @@
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "质量检查项与真实命令矩阵（测试需 MASTER_KEY）"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "核对新适配器是否满足超时/缓存/上限/降级契约"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "检查是否复用了 TtlCache/serialQueue/quotaService/Null 模式而非另起一套"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "Pexels 图片来源跨 server 适配器 → researchTools → 前端署名展示"}
