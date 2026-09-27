@@ -97,6 +97,29 @@ const STATEMENTS = [
     fetched_at TIMESTAMPTZ NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS idx_research_evidence_city_kind ON research_evidence(city, kind)`,
+  // ---------- POI 关联对（09-27）：上游 xhs-pipeline 规则挖掘的无向「常在同天」地点对 ----------
+  // 无向存储（同一对只一行），消费端只用作同天聚类的距离折扣信号，不表达先后。
+  `CREATE TABLE IF NOT EXISTS place_relation (
+    id TEXT PRIMARY KEY,
+    city TEXT NOT NULL,
+    from_name TEXT NOT NULL,
+    to_name TEXT NOT NULL,
+    strength TEXT NOT NULL DEFAULT 'direct',
+    note_count INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL
+  )`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS uq_place_relation_pair ON place_relation(city, from_name, to_name)`,
+  `CREATE INDEX IF NOT EXISTS idx_place_relation_city ON place_relation(city)`,
+  // ---------- 导出导入记录（09-27）：判定库里数据对应哪一版导出 ----------
+  `CREATE TABLE IF NOT EXISTS data_import (
+    source TEXT NOT NULL,
+    city TEXT NOT NULL,
+    content_hash TEXT NOT NULL,
+    file_path TEXT NOT NULL DEFAULT '',
+    row_count INTEGER NOT NULL DEFAULT 0,
+    imported_at TIMESTAMPTZ NOT NULL,
+    PRIMARY KEY (source, city)
+  )`,
   // ---------- LLM 请求上下文快照（09-20） ----------
   `CREATE TABLE IF NOT EXISTS llm_request_logs (
     id TEXT PRIMARY KEY,

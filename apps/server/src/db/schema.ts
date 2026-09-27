@@ -1,4 +1,4 @@
-import { boolean, doublePrecision, index, integer, jsonb, pgTable, text, timestamp, vector } from 'drizzle-orm/pg-core';
+import { boolean, doublePrecision, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uniqueIndex, vector } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
   id: text('id').primaryKey(),
@@ -110,6 +110,45 @@ export const researchEvidence = pgTable(
     fetchedAt: timestamp('fetched_at', { withTimezone: true }).notNull(),
   },
   (table) => [index('idx_research_evidence_city_kind').on(table.city, table.kind)],
+);
+
+// ---------- POI 关联对（09-27）：上游 xhs-pipeline 规则挖掘的「常在同天」地点对 ----------
+// 无向存储（同一对只有一行，不表达先后）—— 上游 47292c6 明确「顺序由消费端决定」，
+// 因此消费端只把它当「同天聚类」信号用（buildChain 距离折扣），绝不当先后硬约束。
+// 只存 strength='direct'（≥2 篇笔记支持），见 scripts/seed-xhs-relations.ts。
+export const placeRelations = pgTable(
+  'place_relation',
+  {
+    id: text('id').primaryKey(),                  // sha256(city|from|to)[:32]，与导入脚本同算法
+    city: text('city').notNull(),
+    fromName: text('from_name').notNull(),
+    toName: text('to_name').notNull(),
+    strength: text('strength').notNull().default('direct'),  // direct | weak（本任务只导入 direct）
+    noteCount: integer('note_count').notNull().default(0),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+  },
+  (table) => [
+    index('idx_place_relation_city').on(table.city),
+    uniqueIndex('uq_place_relation_pair').on(table.city, table.fromName, table.toName),
+  ],
+);
+
+// ---------- 导出导入记录（09-27）：让「磁盘上的最新版」与「库里已导入的版」可比较 ----------
+// 上游是离线批处理，重跑后不会通知消费端；没有这张表就只能靠文件名猜库里是哪一版。
+// 实测踩到：默认读 09-22 的导出文件，而上游已是 09-25，故宫博物院的社区分数静默停在旧值。
+// 写入方：scripts/seed-xhs-places.ts / seed-xhs-relations.ts（与业务写入同事务）。
+// 读取方：scripts/check-data-freshness.ts（只读，不进生成热路径）。
+export const dataImports = pgTable(
+  'data_import',
+  {
+    source: text('source').notNull(),            // xhs_places | xhs_relations
+    city: text('city').notNull(),
+    contentHash: text('content_hash').notNull(), // sha256(文件字节)[:32]，与 scripts/lib/exportFiles.ts 同算法
+    filePath: text('file_path').notNull().default(''),  // 文件名（便于人工回查是哪份导出的）
+    rowCount: integer('row_count').notNull().default(0),
+    importedAt: timestamp('imported_at', { withTimezone: true }).notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.source, table.city] })],
 );
 
 // ---------- 问答式行程生成入口（09-23） ----------

@@ -1,0 +1,8 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "Quality Check Checklist：schema/migrate 同步、降级不中断生成、typecheck 命令"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "核对排程改动是否破坏既有可观测行为、是否保持纯函数边界"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "核对 place_relation 表定义与 migrate 是否同步、索引与唯一约束是否合规"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "质量验证要跑的最小命令集"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "核对 shared 层是否有未申报的接口变更"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "跨层一致性核对：DB 新表 → 加载模块 → 排程入参 → 草稿输出 全链路"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "核对是否重复造了已有轮子（routeOrderSeeds 归一化、placeFacts 归一键）"}
+{"file": ".trellis/tasks/09-27-consume-upstream-xhs-data/research/upstream-data-contract.md", "reason": "验收依据：上游数据格式与覆盖率实测，用于判断实现是否如实处理了缺失数据"}

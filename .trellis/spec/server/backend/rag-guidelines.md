@@ -147,6 +147,15 @@ when changing the meaning of `source` / `verified` for those tables.
   `verified=true`; ids derived from city+name, so reruns skip existing rows
 - `apps/server/scripts/seed-xhs-places.ts` — community library export → `source='xhs'`;
   `--purge` deletes only rows this source owns
+- `apps/server/scripts/seed-xhs-relations.ts` — community POI association pairs
+  (`import/xhs-place-relations-{city}.json`) → `place_relation`; imports `strength='direct'` only,
+  upserts on `(city, from_name, to_name)`
+- `apps/server/scripts/lib/exportFiles.ts` — shared export scanner: `scanExports(dir)` /
+  `latestExports(files)` / `readExport(path)`; version identity is `sha256(file bytes)[:32]`
+- `apps/server/scripts/check-data-freshness.ts` — read-only diff of the newest on-disk exports
+  against `data_import`; exits 1 when anything is pending
+- `data_import(source, city, content_hash, file_path, row_count, imported_at)` — PK `(source, city)`,
+  `source` is `xhs_places` | `xhs_relations`
 - `apps/server/scripts/embed-backfill.ts` — idempotent embedding backfill (`WHERE embedding IS
   NULL`); `--tables places` limits it to `canonical_places`
 - `apps/server/scripts/restore-goldset.ts` — repairs rows whose `source`/`payload` were clobbered
@@ -159,6 +168,28 @@ when changing the meaning of `source` / `verified` for those tables.
 - Scripts must be idempotent and rerunnable, and a rerun of one source must never touch rows
   owned by another. The community importer updates only `WHERE canonical_places.source = 'xhs'`,
   because the same real place can exist as a `goldset` row with the same id.
+- **The `goldset` merge must not silently out-rank incoming values.** That branch merges with
+  `EXCLUDED.payload || canonical_places.payload`, and jsonb `||` lets the RIGHT operand win — so
+  every key present in both sides is frozen at its first-imported value. `recommendScore` /
+  `mentionCount` are what this bites. The trailing `CASE` must therefore write the incoming values
+  in its `ELSE` branch; returning `'{}'` there assumes the new value already won, and it does not.
+  Symptom when broken: 故宫博物院 sat at `17.33 / 6` while upstream had `137.64 / 55`, so scheduling
+  dropped it at rank 11 of a 3-day Beijing itinerary. Only `goldset` rows are affected — community
+  rows take the other branch, which has no such re-merge.
+- **The seeder's default input must not be a hard-coded single file.** `import/` accumulates several
+  exports per city under inconsistent names (`xhs-places.json` / `xhs-places-beijing.json` /
+  `xhs-places-北京.json`), so a hard-coded default silently imports a stale version. The contract is
+  newest `generatedAt` per `(source, city)` via `latestExports`; passing an explicit path imports
+  exactly that file.
+- **Version identity is the content hash, not `generatedAt`.** The relations export carries no
+  `generatedAt`, so `sha256(file bytes)[:32]` is the only identifier that works for both kinds; a
+  missing `generatedAt` falls back to the file's mtime date for display only.
+- **Every import writes one `data_import` row inside the SAME transaction as the data.** A record
+  written separately could claim a version the rows do not match, which is worse than no record.
+  `check-data-freshness.ts` compares `content_hash` and is read-only — it must stay out of the
+  generation hot path.
+- A city present on disk but absent from `data_import` is "never imported", not "no data". This is
+  how 重庆's 604-row export stayed invisible while the DB held only its 19 golden-set rows.
 - Re-importing rewrites `embedding` (typically to `NULL`) for the rows it touches, so
   `embed-backfill.ts` must be rerun after every import.
 - `verified` means "adopted into the project's curated pool", not "crawled". Retrieval filters on
@@ -171,7 +202,13 @@ when changing the meaning of `source` / `verified` for those tables.
 | Condition | Result |
 | --- | --- |
 | Importer rerun without `--purge` | upsert; existing ids updated, no duplicates |
-| Imported row collides with a golden-set id | golden-set row untouched (source/payload preserved) |
+| Imported row collides with a golden-set id | golden-set row keeps its identity fields, but `recommendScore` / `mentionCount` take the **higher** of the two |
+| `import/` holds several exports for one city | newest `generatedAt` wins; older files stay on disk as history |
+| Community score for a seeded place rises upstream but the row keeps the old value | the `goldset` merge order is inverted — see the Contracts entry above |
+| `import/` holds several exports for one city | `latestExports` keeps the newest `generatedAt`; older files stay on disk as history |
+| relations export has no `generatedAt` | falls back to file mtime for display; the content hash is still the version identity |
+| `data_import` disagrees with the rows actually present | rerun the seeders — the record is written in the same transaction as the data, so a mismatch means a write happened outside the seeder |
+| a city exists on disk but not in `data_import` | reported as “从未导入”; it is not a “no data” case |
 | `EMBEDDING_*` unset during backfill | notice printed, exit 0, no partial state |
 | Some embedding batches fail | those rows keep `NULL`; a rerun retries exactly them |
 
@@ -188,6 +225,10 @@ when changing the meaning of `source` / `verified` for those tables.
 - `npx tsx apps/server/test-rag-data-check.mts` after every import: the `goldset` count must be
   unchanged, `verified` rows must cover the golden-set cities, and embedding coverage must match
   the last backfill.
+- `npx tsx apps/server/scripts/check-data-freshness.ts` after every import: must print
+  “全部与磁盘最新导出一致” and exit 0. Before importing, it must report the pending cities.
+- `apps/server/src/__tests__/exportFiles.test.ts` — recognises only the two export kinds, keeps
+  exactly one entry per `(source, city)` at the newest `generatedAt`, empty input → empty output.
 - `npx tsx apps/server/scripts/verify-xhs-service.ts` exercises the read helpers
   (`findXhsPlace` / `findXhsEvidence` / `findXhsPlacesByCategory` / `xhsPlaceStats`) against the
   imported data.
@@ -203,4 +244,117 @@ INSERT INTO canonical_places ... ON CONFLICT (id) DO UPDATE SET source = EXCLUDE
 WHERE canonical_places.source = EXCLUDED.source;
 ```
 
+```sql
+-- Wrong: the ELSE assumes the incoming score already won, but jsonb `||` gives the RIGHT side
+-- priority — so `EXCLUDED.payload || canonical.payload` leaves the OLD score in place and the
+-- incoming file's score is discarded forever.
+payload = EXCLUDED.payload || canonical_places.payload
+       || CASE WHEN canon_score >= excl_score THEN jsonb_build_object('recommendScore', canon) ELSE '{}'::jsonb END
+
+-- Correct: write the incoming score explicitly when it is the higher one.
+payload = EXCLUDED.payload || canonical_places.payload
+       || CASE WHEN canon_score >= excl_score THEN jsonb_build_object('recommendScore', canon)
+               ELSE jsonb_build_object('recommendScore', EXCLUDED.payload->'recommendScore') END
+```
+
 Representative paths: `apps/server/scripts/`, `apps/server/test-rag-data-check.mts`.
+
+## Scenario: Upstream Community Enrichment (openHours / aliases / place_relation)
+
+### 1. Scope / Trigger
+
+Apply when changing how the community pipeline's derived data is consumed: `payload.openHours`,
+`payload.aliases` on `canonical_places`, or the `place_relation` table; also when changing
+`generation/scheduling/placeFacts.ts`, `generation/scheduling/placeRelations.ts`,
+`generation/scheduling/buildDraft.ts` (scheduling inputs), `scripts/seed-xhs-relations.ts`, or the
+`place_relation` DDL in `db/schema.ts` / `db/migrate.ts`.
+
+### 2. Signatures
+
+- `place_relation(id TEXT PK, city TEXT, from_name TEXT, to_name TEXT, strength TEXT,
+  note_count INTEGER, created_at TIMESTAMPTZ)` — UNIQUE `(city, from_name, to_name)`; the pair is
+  UNDIRECTED, stored once with `from_name < to_name`
+- `seed-xhs-relations.ts [path.json ...]` — default scans `import/xhs-place-relations-{city}.json`
+  for 北京/成都/广州/杭州/厦门
+- `loadPlaceRelations(city: string): Promise<PlaceRelations>` where
+  `PlaceRelations = ReadonlyMap<normalizedKey, readonly normalizedKey[]>`
+- `resolveRelatedPairs(relations, candidateNames): Set<string>` — candidate-pool names, not keys
+- `relatedPairKey(a: string, b: string): string` in `scheduling/schedule.ts`
+- `ScheduleOptions.relatedPairs?: ReadonlySet<string>`
+- `renderOpenHours(raw: unknown): string | undefined` in `scheduling/placeFacts.ts`
+- `PlaceFacts.openTime?: string`, `PlaceFacts.aliases: string[]`
+
+### 3. Contracts
+
+- The association pair is UNDIRECTED by upstream contract («顺序由消费端决定»). Consume it as a
+  same-day clustering signal only. Never emit `orderConstraints` from it — ordering seeds stay in
+  `data/routeOrderSeeds.json`.
+- `strength` is upstream's evidence tier: `direct` (≥2 notes) / `weak` (single note). Only `direct`
+  is imported; `weak` may just be an arrow in a post's layout.
+- The discount is applied ONLY in `buildChain`'s nearest-neighbour comparison (`distanceKm × 0.5`).
+  It never changes coordinates, coordinates-derived legs, `orderSegment`, day assignment, or the
+  feasibility simulation.
+- Name alignment: both sides of `resolveRelatedPairs` go through `normalizePlaceKey`. The returned
+  pair key uses the candidate pool's ORIGINAL name (untrimmed) because `buildChain` compares against
+  `poi.name` verbatim — trimming here silently disables every discount.
+- `openTime` precedence in `buildDraft`: `facts.openTime` (structured, carries `closedWeekdays`) >
+  `poi.openTime` (Amap raw text) > `facts.closureText` (regex-mined evidence fallback).
+- `payload.aliases` extends the `loadPlaceFacts` grouping keys: group key = primary
+  `normalizePlaceKey(name)` plus `normalizePlaceKey(alias)` for every alias. Any key hitting a row
+  serves that row's facts; `mergeFacts` then unions `aliases` across members.
+- `renderOpenHours` renders `closedWeekdays` (ints, 0=Sunday, matching `Date.getDay()`) into the
+  same free-text shape `isClosedOnDate` already parses, so `packages/shared/src/openHours.ts` needs
+  no signature change and the feasibility engine picks it up for free.
+- All three are optional enrichment. Missing → scheduling output byte-identical to before.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| `place_relation` empty for the city | `loadPlaceRelations` returns an empty Map; scheduling unchanged |
+| `place_relation` query throws | `console.warn('[placeRelations] ...')` + empty Map; job continues |
+| relation JSON file missing | `seed-xhs-relations.ts` warns and skips that city |
+| all relation files missing | seed exits 1 with the upstream command hint |
+| seed rerun | `ON CONFLICT (city, from_name, to_name) DO UPDATE`; row count stable |
+| `payload.openHours` absent | `renderOpenHours` → `undefined`; falls back to `poi.openTime` / `closureText` |
+| `closedWeekdays` out-of-range or non-numeric | filtered out; no remaining content → `undefined` |
+| `payload.aliases` absent for a city | grouping keys degrade to the pre-09-27 single key |
+| a relation pair has only one side in the candidate pool | pair dropped; no discount |
+
+### 5. Good / Base / Bad Cases
+
+- Good: 北京 imports 79 `direct` pairs; a pool containing 故宫 + 景山 keeps them on the same day,
+  and 香山双清别墅's `closedWeekdays:[1]` keeps it off a Monday.
+- Base: a city with no enrichment data schedules exactly as before the change — no discount, no
+  structured hours, a single grouping key.
+- Bad: turning an undirected pair into a `before`/`after` constraint (fabricates a direction the
+  upstream data never asserted); letting a failed `place_relation` query abort generation.
+
+### 6. Tests Required
+
+- `apps/server/src/__tests__/placeRelations.test.ts` — bidirectional key registration, candidate
+  cross-match against alias forms, single-sided pairs dropped, empty pool, empty city.
+- `apps/server/src/__tests__/placeFacts.test.ts` — `renderOpenHours` output and all `undefined`
+  cases; `payload.aliases` reaching a row the primary key cannot match (双清别墅 → 香山双清别墅);
+  `openHours` landing in `facts.openTime`.
+- `apps/server/src/__tests__/scheduling.test.ts` — a `relatedPairs` hit pulls two points into the
+  same day; absent/empty `relatedPairs` reproduces the baseline chain exactly.
+- Assertion points: `buildSchedule(...).days[i].stops` names and day assignment — not internals.
+- Local DB integration tests skip (not fail) when the enrichment data was never imported.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: undirected data turned into a directional constraint.
+const relations = await loadPlaceRelations(city);
+orderConstraints: [...relations.keys()].map(...)   // fabricates a 先后 the upstream never claimed
+
+// Correct: same-day clustering only — a distance discount inside the chain builder.
+relatedPairs: resolveRelatedPairs(relations, input.pool.map((p) => p.name)),
+// … buildChain compares distanceKm × RELATED_DISCOUNT for pairs in that set.
+```
+
+Representative paths: `apps/server/src/generation/scheduling/placeRelations.ts`,
+`apps/server/src/generation/scheduling/placeFacts.ts`,
+`apps/server/src/generation/scheduling/buildDraft.ts`, `apps/server/src/db/migrate.ts`,
+`apps/server/scripts/seed-xhs-relations.ts`.

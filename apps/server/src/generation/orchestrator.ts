@@ -40,6 +40,7 @@ import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
 import { loadPlaceFacts } from './scheduling/placeFacts';
+import { loadPlaceRelations } from './scheduling/placeRelations';
 
 /**
  * 封面降级的库内坐标兜底（09-26）。
@@ -264,6 +265,8 @@ export async function runGeneration(
     // 不经 search_pois，旁路没有它的坐标，不兜底会被跳过标级（实测：八达岭因此与慕田峪同时入选市区天）。
     // placeFacts 前移到此处：标级与排程复用同一份事实，不重复查询。
     const placeFacts = await loadPlaceFacts(research.pool.map((poi) => poi.name), form.destination);
+    // POI 关联对（09-27）：与 placeFacts 同处加载，失败静默为空集合（排程按无关联降级）
+    const placeRelations = await loadPlaceRelations(form.destination);
     const kbCoords = new Map<string, { lat: number; lng: number }>();
     for (const poi of research.pool) {
       if (research.locations.has(poi.name)) continue;
@@ -319,6 +322,7 @@ export async function runGeneration(
         longHaul: longHaulIntel,
         foodFocused,
         facts: placeFacts,
+        relations: placeRelations,
       }),
     );
     const scheduleProblems = draft.validate();
@@ -452,7 +456,21 @@ export async function runGeneration(
     // · repairTransitTiming 靠「活动结束时间 + 真实 leg」顺延，没有时间轴就无从顺延。
     // 真通勤时长仍由 computeLegs 算在 leg 上，前端按「段间耗时」展示。
 
-    // 层3 修复器的自动调整说明（可信透明）：系统替用户做过的换天动作必须可见，置于 reviewNotes 最前。
+    // 排程阶段的闭馆冲突（09-27）：某段在所有剩余可用天都整段闭馆 → 未排入，那天留空。
+// 必须显式告知：不说的后果就是用户只看到「莫名其妙少一天」，而不知道是闭馆日所致。
+// 与「远郊修复器自动换天」同类，放在 reviewNotes 最前（系统替用户做过的结构调整）。
+const WEEKDAY_LABELS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] as const;
+const closureNotes = scheduleOutcome.schedule.closureConflicts.map((conflict) => {
+  const parsed = new Date(`${conflict.date}T00:00:00`);
+  const weekday = Number.isNaN(parsed.getTime()) ? '' : WEEKDAY_LABELS[parsed.getDay()]!;
+  const holiday = conflict.holiday ? `（${conflict.holiday}）` : '';
+  return `${conflict.names.join('、')} 在 ${conflict.date}${weekday ? ` ${weekday}` : ''}${holiday} 闭馆，剩余天数里没有其他可用日，未排入行程（该天留空，可自由安排）。`;
+});
+if (closureNotes.length) {
+  reviewNotes = [...new Set([...closureNotes, ...reviewNotes])].slice(0, 8);
+}
+
+// 层3 修复器的自动调整说明（可信透明）：系统替用户做过的换天动作必须可见，置于 reviewNotes 最前。
     // 真话契约：只保留最终草稿里仍成立的挪动注记（修订轮重排可能已推翻——live beijing 实证
     // 轮1 挪出的活动被轮2 放回原天，跨轮累计若不校验会对用户宣称一次并不存在的调整）。
     const verifiedAutoNotes = verifiedFixNotes(draft, autoFixMoves);

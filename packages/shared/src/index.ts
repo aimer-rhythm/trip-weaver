@@ -6,6 +6,7 @@ export * from './types';
 export * from './budget';
 export * from './feasibility';
 export * from './geo';
+export * from './holidays';
 export * from './legs';
 export * from './openHours';
 export * from './sample';

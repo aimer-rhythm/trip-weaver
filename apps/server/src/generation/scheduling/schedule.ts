@@ -12,7 +12,7 @@
 // 分数只决定「入选 + 分到哪天」，不插手段内顺序 —— 否则会把高分点插到不顺路的位置，
 // 通勤成本又回来了（景山→故宫 41min 那种段就是这么来的）。
 import type { PoiCategory, TripPace } from '@tripweaver/shared';
-import { dateForDayIndex, isClosedOnDate } from '@tripweaver/shared';
+import { dateForDayIndex, findHoliday, isClosedOnDate } from '@tripweaver/shared';
 
 export interface SchedulablePoi {
   id: string;
@@ -59,6 +59,8 @@ export interface ScheduleOptions {
   startDate?: string;
   /** 游览顺序硬约束（09-23 顺序种子表）：before 必须在 after 之前进链；两端都在入选集合才生效 */
   orderConstraints?: readonly { before: string; after: string }[];
+  /** POI 无向关联对（09-27，来自 place_relation）：命中的两点成链时距离打折，使其更可能落进同一天 */
+  relatedPairs?: ReadonlySet<string>;
   /** 旅行节奏（09-26）：决定每日容量上限；缺省 moderate（既有行为） */
   pace?: TripPace;
 }
@@ -67,6 +69,20 @@ export interface ScheduleResult {
   days: ScheduledDay[];
   /** 因天数/容量不足未排入的候选数（D5：排不下就少排，不硬塞） */
   droppedCount: number;
+  /**
+   * 闭馆日冲突（09-27）：某段在**所有剩余可用天**都整段闭馆，因而没有排入。
+   * 调用方必须如实告知用户 —— 否则用户只会看到「莫名其妙少一天」。
+   */
+  closureConflicts: readonly ClosureConflict[];
+}
+
+export interface ClosureConflict {
+  /** 被放弃的段成员名 */
+  names: readonly string[];
+  /** 本来可用、但因整段闭馆而未使用的日期（YYYY-MM-DD） */
+  date: string;
+  /** 该日期所属的法定节假日名；非节假日为 null */
+  holiday: string | null;
 }
 
 export const SCHEDULE_LIMITS = {
@@ -111,13 +127,29 @@ export function distanceKm(a: Coord, b: Coord): number {
   return Math.hypot(dLat, dLng);
 }
 
+/** 无向 pair key（09-27）：两端用候选池实际名，顺序无关。buildDraft 解析关联对时用同一函数。 */
+export function relatedPairKey(a: string, b: string): string {
+  return a < b ? `${a}\u0000${b}` : `${b}\u0000${a}`;
+}
+
+/**
+ * 关联对的距离折扣（09-27）：命中关联对的两点在成链时按 0.5 倍距离竞争最近邻。
+ * 只影响「谁接在谁后面」，不改变坐标与通勤计算 —— 折扣让原本 10km 内才抢得过的一对，
+ * 20km 内也能抢，足以把强关联的点拉到链上相邻（→ 同段 → 同天），又不至于把链拉成不顺路的形状。
+ */
+const RELATED_DISCOUNT = 0.5;
+
 /**
  * 全局最近邻成链：从权重最高的点出发，每次接最近的下一个。
  * 无坐标候选不参与几何成链（不知道它在哪），按分数接在链尾 —— 它们的坐标由 geoPipeline 事后解析。
  * orderConstraints（09-23 顺序种子表）：after 的前置点还在链外时跳过 after（拓扑意识最近邻）——
  * 修「景山排在故宫前」这类出入口方向错误；前置点无坐标（stranded）时约束无法满足，退让给纯距离。
  */
-function buildChain(points: readonly SchedulablePoi[], orderConstraints: readonly { before: string; after: string }[] = []): SchedulablePoi[] {
+function buildChain(
+  points: readonly SchedulablePoi[],
+  orderConstraints: readonly { before: string; after: string }[] = [],
+  relatedPairs: ReadonlySet<string> = new Set(),
+): SchedulablePoi[] {
   const located = points.filter(hasCoord);
   const stranded = points.filter((poi) => !hasCoord(poi));
   if (located.length <= 1) return [...located, ...stranded];
@@ -134,6 +166,7 @@ function buildChain(points: readonly SchedulablePoi[], orderConstraints: readonl
   remaining.delete(start);
   const chain: SchedulablePoi[] = [start];
   let cursor: Coord = start;
+  let cursorName = start.name;
   while (remaining.size) {
     const nearestOf = (pool: Iterable<SchedulablePoi>): SchedulablePoi | null => {
       let best: SchedulablePoi | null = null;
@@ -141,8 +174,10 @@ function buildChain(points: readonly SchedulablePoi[], orderConstraints: readonl
       for (const poi of pool) {
         if (!hasCoord(poi)) continue;
         const km = distanceKm(cursor, poi);
-        if (km < bestKm) {
-          bestKm = km;
+        // 关联对折扣（09-27）：命中的两点按打折距离竞争最近邻，在链上自然相邻 → 更可能同段（天）
+        const effectiveKm = relatedPairs.has(relatedPairKey(cursorName, poi.name)) ? km * RELATED_DISCOUNT : km;
+        if (effectiveKm < bestKm) {
+          bestKm = effectiveKm;
           best = poi;
         }
       }
@@ -157,7 +192,10 @@ function buildChain(points: readonly SchedulablePoi[], orderConstraints: readonl
     if (!nearest) break;
     chain.push(nearest);
     remaining.delete(nearest);
-    if (hasCoord(nearest)) cursor = nearest;   // located 里元素必有坐标，这里只是让类型收窄
+    if (hasCoord(nearest)) {
+      cursor = nearest; // located 里元素必有坐标，这里只是让类型收窄
+      cursorName = nearest.name;
+    }
   }
   return [...chain, ...stranded];
 }
@@ -332,7 +370,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
 
   const segments: SchedulablePoi[][] = keptExclusive.map((poi) => [poi]);
   if (remainingDays > 0 && selected.length) {
-    const restSegments = cutChain(buildChain(selected, options.orderConstraints), paceLimits);
+    const restSegments = cutChain(buildChain(selected, options.orderConstraints, options.relatedPairs), paceLimits);
     // 切出来的段多于剩余天数（分量分布不均时会发生）：多出来的整段丢弃，不硬塞
     for (const segment of restSegments.slice(remainingDays)) {
       for (const poi of segment) dropped.add(poi);
@@ -348,27 +386,37 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
 
   // 闭馆日避让（09-22-opentime）：段→天分配按权重顺序贪心选「该段无成员闭馆」的最早可用天；
   // 整段移动而不是单点挪动 —— 段内顺序是链上顺路关系，挪单点会破坏连续性。
-  // 无处可避（全闭馆/天数不够）时照常分配，由可行性引擎的 closed_on_arrival 硬违规收口。
-  const closedDayIndexes = (segment: readonly SchedulablePoi[]): Set<number> => {
-    const closed = new Set<number>();
-    if (!options.startDate) return closed;
-    for (let i = 0; i < options.days; i++) {
-      const date = dateForDayIndex(options.startDate, i + 1);
-      if (date && segment.some((poi) => isClosedOnDate(poi.openTime, date))) closed.add(i);
-    }
-    return closed;
+  //
+  // **无处可避时的退化行为（09-27 修）**：原实现退回「最早未分配的天」，后果是拿剩下的那个段
+  // 被硬塞进它自己闭馆的那天 —— 实测北京 3 日（2026-09-28 周一）把单点的八达岭独占段塞进周一，
+  // 而八达岭当天闭馆，整天直接作废（可行性引擎事后报了 closed_on_arrival，但已经排出来了）。
+  // 新行为：优先选闭馆成员最少的天；**整段闭馆的天判为不可分配**（宁可空天，也不排一个全闭馆的日）。
+  const closedCountOn = (segment: readonly SchedulablePoi[], dayIndex: number): number => {
+    if (!options.startDate) return 0;
+    const date = dateForDayIndex(options.startDate, dayIndex + 1);
+    if (!date) return 0;
+    return segment.filter((poi) => isClosedOnDate(poi.openTime, date)).length;
   };
 
   const assignedDays = new Set<number>();
   const pickDay = (segment: readonly SchedulablePoi[]): number => {
-    const closed = closedDayIndexes(segment);
+    // 第一轮：零闭馆冲突的最早可用天
     for (let i = 0; i < options.days; i++) {
-      if (!assignedDays.has(i) && !closed.has(i)) return i;
+      if (!assignedDays.has(i) && closedCountOn(segment, i) === 0) return i;
     }
+    // 第二轮：避不开时取冲突最少的天；整段闭馆一律跳过（宁可空天）
+    let best = -1;
+    let bestCount = Infinity;
     for (let i = 0; i < options.days; i++) {
-      if (!assignedDays.has(i)) return i;
+      if (assignedDays.has(i)) continue;
+      const count = closedCountOn(segment, i);
+      if (count >= segment.length) continue;
+      if (count < bestCount) {
+        bestCount = count;
+        best = i;
+      }
     }
-    return -1;
+    return best;
   };
 
   const fallbackArea = options.fallbackArea?.trim() || '目的地';
@@ -378,9 +426,26 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     stops: [] as ScheduledStop[],
   }));
 
+  const closureConflicts: ClosureConflict[] = [];
   for (const segment of segments.slice(0, options.days)) {
     const target = pickDay(segment);
-    if (target === -1) break;
+    if (target === -1) {
+      // 没天可给。两种原因必须分开：天数用完（正常丢弃，无需提示）
+      // vs 还有空天但那天会整段闭馆（要告知用户为什么少了一天）
+      const freeDays = Array.from({ length: options.days }, (_, i) => i).filter((i) => !assignedDays.has(i));
+      for (const poi of segment) dropped.add(poi);
+      const date = options.startDate && freeDays.length
+        ? dateForDayIndex(options.startDate, freeDays[0]! + 1)
+        : undefined;
+      if (date) {
+        closureConflicts.push({
+          names: segment.map((poi) => poi.name),
+          date,
+          holiday: findHoliday(date)?.name ?? null,
+        });
+      }
+      continue;
+    }
     assignedDays.add(target);
     const day = days[target]!;
     day.title = dayTitle(segment);
@@ -400,5 +465,5 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     day.stops = [placeholderStop(fallbackArea)];
   }
 
-  return { days, droppedCount: dropped.size };
+  return { days, droppedCount: dropped.size, closureConflicts };
 }

@@ -26,6 +26,7 @@ has a more specific convention.
 - For database shape changes, plan matching edits to both `apps/server/src/db/schema.ts` and `apps/server/src/db/migrate.ts`.
 - For outbound calls, identify timeout, SSRF, Null fallback, cache, serialization, task limit, and quota/accounting behavior.
 - For retrieval, prompt-injection, or knowledge-table work, read [RAG retrieval guidelines](./rag-guidelines.md); retrieval stays optional enrichment that degrades to an empty result.
+- For community enrichment fields (`payload.openHours` / `payload.aliases` / `place_relation`) or the scheduling inputs that consume them, read [RAG retrieval guidelines](./rag-guidelines.md) — association pairs are UNDIRECTED and serve same-day clustering only, never ordering.
 - For `/trips/new`, dialogue understanding, Planning Brief, chat quota, or revision/version-chain work, read [Chat and conversational intake guidelines](./chat-guidelines.md) — chat collects parameters and never generates itineraries.
 - Check whether a verification script needs a built `apps/web/dist` or starts its own isolated server.
 

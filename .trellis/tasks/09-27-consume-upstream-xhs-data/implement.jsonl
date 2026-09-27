@@ -1,0 +1,8 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 后端入口：Pre-Development Checklist 与 Quality Check Checklist，含「数据库形状变更需同时改 schema.ts 与 migrate.ts」等硬约束"}
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "生成链路规范：确定性排程、静默降级、不阻断生成的既有纪律，本任务三项改动都在这个链路里"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "新增 place_relation 表必须遵守的表定义 / 启动迁移 / 幂等 UPSERT 约定"}
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "知识库（canonical_places / research_evidence）消费约定：检索是可选增强，必须降级为空而不失败"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "真实命令矩阵：typecheck 与最小验证脚本的跑法"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared 后端层规范：openHours.ts 是否改动、共享类型边界"}
+{"file": ".trellis/spec/guides/index.md", "reason": "跨包思考指南：数据从 DB → placeFacts → buildDraft → schedule → draft 的跨层流动"}
+{"file": ".trellis/tasks/09-27-consume-upstream-xhs-data/research/upstream-data-contract.md", "reason": "上游三类产物的精确格式、覆盖率实测、名字匹配规则、消费端接线点 —— 实现时的主要依据"}

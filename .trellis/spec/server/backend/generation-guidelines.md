@@ -955,3 +955,101 @@ a half message into the context. Only "retry might help" errors retry (`isRetrya
 model unavailable / rate limit / 5xx / network); request-shape 400s, auth errors, and failures that
 already emitted content/tool deltas do not. Retry delays are `[1000, 3000]` ms. Unit tests:
 `apps/server/src/__tests__/llmRetry.test.ts`.
+
+## Scenario: Closure-Day Day Assignment and Holiday Exemption (09-27)
+
+### 1. Scope / Trigger
+
+Apply when changing the segment→day assignment in `generation/scheduling/schedule.ts`,
+`packages/shared/src/openHours.ts` (`isClosedOnDate`), `packages/shared/src/holidays.ts`
+(`CN_HOLIDAYS`), or the `closureConflicts` note `orchestrator.ts` writes into `meta.reviewNotes`.
+
+### 2. Signatures
+
+- `isClosedOnDate(openTime: string | null | undefined, dateStr: string | null | undefined): boolean`
+  — a public holiday now short-circuits to `false` BEFORE the weekday match
+- `findHoliday(dateStr): HolidayRange | null` and `isPublicHoliday(dateStr): boolean` in
+  `packages/shared/src/holidays.ts`
+- `CN_HOLIDAYS: readonly { name: string; from: string; to: string }[]`
+- `ScheduleResult.closureConflicts: readonly ClosureConflict[]` where
+  `ClosureConflict = { names: readonly string[]; date: string; holiday: string | null }`
+
+### 3. Contracts
+
+- **Holiday data is per-year and hand-maintained.** `CN_HOLIDAYS` holds only the years published by
+  国务院办公厅 (currently 2026, 国办发明电〔2025〕7 号). A year absent from the table is NOT exempt —
+  `isPublicHoliday` returns false and the weekday rule applies as before. Update the file each
+  November when the next year's schedule is published; never pre-fill unconfirmed years.
+- **Store holiday ranges only — not the make-up workdays.** Venue opening rules key off the weekday,
+  not off "is today a workday": a make-up Saturday (e.g. 2026-10-10) still runs on a weekend schedule.
+  The single case needing exemption is a normally-closed day that is declared a public holiday
+  (e.g. 2026-10-05, a Monday inside National Day).
+- **The exemption is unconditional, not evidence-gated.** Any date inside a holiday range skips the
+  closure check entirely, rather than requiring the text to say 「法定节假日除外」. Rationale: the
+  Monday-closure rule carries that exception almost universally in China, while the mined evidence
+  rarely spells it out (coverage too low to matter). Cost: venues that do close on holidays get waved
+  through — an acceptable trade against wrongly blocking a day the venue is open.
+- **Segment→day assignment degrades in three tiers**: (1) earliest free day with zero closing members;
+  (2) the day with the fewest closing members, skipping any day where the WHOLE segment closes;
+  (3) no assignment — the day keeps its placeholder, the segment is dropped, and a `closureConflicts`
+  entry is produced.
+- **"Whole segment closes" ≠ "part of the segment closes".** A 4-member segment where 1 closes still
+  gets assigned (3 members are visitable); only `closedCount >= segment.length` is unassignable.
+- **A conflict must reach the user.** `orchestrator.ts` turns each `closureConflicts` entry into a
+  `meta.reviewNotes` line. Dropping a segment silently is exactly the failure mode this prevents
+  (the user would otherwise just see "a day is missing").
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| `startDate` absent | no avoidance at all; segments take the earliest free day in weight order |
+| date inside `CN_HOLIDAYS` | `isClosedOnDate` → false, regardless of weekday text |
+| year not present in `CN_HOLIDAYS` | no exemption; weekday rule applies (conservative) |
+| `dateStr` malformed | `false` / `null`, never throws |
+| a segment closes entirely on every remaining free day | dropped, day keeps its placeholder, one `closureConflicts` entry added |
+| a segment closes only partly on the one free day | assigned normally — partial loss beats losing the segment |
+| all days already assigned | segment dropped with NO `closureConflicts` entry (that is capacity, not closure) |
+
+### 5. Good / Base / Bad Cases
+
+- Good: Beijing 3-day starting 2026-09-28 (Monday). 故宫/景山/北海/什刹海 take Day2,
+  天坛/国博/圆明园/颐和园 take Day3, 八达岭 (whole segment closes Monday) is dropped and the user is
+  told; Day1 shows the placeholder instead of a closed attraction.
+- Good: the same pool starting 2026-10-05 (Monday inside National Day) puts the 故宫 segment on Day1 —
+  the exemption turns the blocked day into the best day.
+- Base: no `startDate` → assignment behaves exactly as before 09-22.
+- Bad: restoring the "fall back to the earliest unassigned day" branch — it re-creates a day where
+  every activity is closed, and the feasibility engine only reports it after the fact.
+
+### 6. Tests Required
+
+- `apps/server/src/__tests__/holidays.test.ts` — all seven 2026 ranges at both boundaries; dates
+  outside; non-2026 years; malformed input; the 2026-10-05 Monday exemption vs a normal Monday;
+  make-up workdays do not alter weekday behavior.
+- `apps/server/src/__tests__/scheduling.test.ts` — whole-segment closure yields a placeholder day +
+  one `closureConflicts` entry + a `droppedCount` bump; the 八达岭 fixture no longer lands on Monday;
+  partial closure still assigns.
+- Assertion points: `result.days[i].stops` names, `result.droppedCount`, `result.closureConflicts`.
+- Algorithm-level narrative and a worked Beijing trace live in `docs/DETERMINISTIC_SCHEDULING.md`.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: when no conflict-free day exists, take whatever day is left.
+for (let i = 0; i < options.days; i++) {
+  if (!assignedDays.has(i)) return i;          // may be a day where every member closes
+}
+
+// Correct: skip days where the whole segment closes; report the drop instead.
+for (let i = 0; i < options.days; i++) {
+  if (assignedDays.has(i)) continue;
+  const count = closedCountOn(segment, i);
+  if (count >= segment.length) continue;       // whole segment closed → leave the day empty
+  if (count < bestCount) { bestCount = count; best = i; }
+}
+```
+
+Representative paths: `apps/server/src/generation/scheduling/schedule.ts`,
+`packages/shared/src/holidays.ts`, `packages/shared/src/openHours.ts`,
+`apps/server/src/generation/orchestrator.ts`.

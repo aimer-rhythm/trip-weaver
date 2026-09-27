@@ -27,6 +27,11 @@ export interface PlaceFacts {
   mentionCount: number;
   /** 从 research_evidence 文本挖出的闭馆表述（如「周一闭馆」，截 60 字）：候选无高德 openTime 时的闭馆检测兜底（09-23） */
   closureText?: string;
+  /** payload.openHours 渲染出的开闭馆文本（09-27，如「09:00-17:00；周一闭馆」）。
+   *  上游给的是结构化数据（closedWeekdays 是明确的星期数字），排程能精确避让 —— 优先于自由文本的 closureText。 */
+  openTime?: string;
+  /** payload.aliases：上游城市维度别名表（09-27）。只用于实体归一键扩展，不参与排程消费。 */
+  aliases: string[];
 }
 
 interface FactRow {
@@ -72,9 +77,37 @@ function stringArrayField(payload: Record<string, unknown>, key: string): string
   return value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0);
 }
 
+/** 星期标签（索引 = Date.getDay()：0=周日），与 packages/shared/src/openHours.ts 的 WEEKDAY_LABELS 同序 */
+const WEEKDAY_CN = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] as const;
+
+/**
+ * payload.openHours → openTime 文本（09-27）。
+ * 上游给的是结构化对象（openTime/closeTime/closedWeekdays/note），渲染成与高德 openTime 同构的
+ * 自由文本后，排程的 isClosedOnDate 与 feasibility 的闭馆日检测可直接复用，不必改共享函数签名。
+ * 字段缺失或类型不符 → 返回 undefined（不编造）。
+ */
+export function renderOpenHours(raw: unknown): string | undefined {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const hours = raw as Record<string, unknown>;
+  const open = typeof hours.openTime === 'string' ? hours.openTime.trim() : '';
+  const close = typeof hours.closeTime === 'string' ? hours.closeTime.trim() : '';
+  const days = Array.isArray(hours.closedWeekdays)
+    ? [...new Set(hours.closedWeekdays.filter((d): d is number => Number.isInteger(d) && d >= 0 && d <= 6))].sort(
+        (a, b) => a - b,
+      )
+    : [];
+  const note = typeof hours.note === 'string' ? hours.note.trim() : '';
+  const parts: string[] = [];
+  if (open && close) parts.push(`${open}-${close}`);
+  else if (open) parts.push(`${open} 起`);
+  else if (close) parts.push(`${close} 止`);
+  if (days.length) parts.push(`${days.map((d) => WEEKDAY_CN[d]!).join('、')}闭馆`);
+  if (note) parts.push(note);
+  return parts.length ? parts.join('；') : undefined;
+}
+
 function toFacts(row: FactRow): PlaceFacts {
   const payload = row.payload && typeof row.payload === 'object' ? (row.payload as Record<string, unknown>) : {};
-  const placeType = payload.xhsPlaceType;
   const facts: PlaceFacts = {
     name: row.name,
     category: row.category,
@@ -82,10 +115,15 @@ function toFacts(row: FactRow): PlaceFacts {
     themes: stringArrayField(payload, 'themes'),
     recommendScore: numberField(payload, 'recommendScore') ?? 0,
     mentionCount: numberField(payload, 'mentionCount') ?? 0,
+    aliases: stringArrayField(payload, 'aliases'),
   };
   const visit = numberField(payload, 'typicalVisitMinutes');
   if (visit !== undefined) facts.visitMinutes = visit;
+  const placeType = payload.xhsPlaceType;
   if (typeof placeType === 'string' && placeType) facts.placeType = placeType;
+  // 结构化开闭馆（09-27）：上游规则挖掘产物，带明确的 closedWeekdays
+  const openTime = renderOpenHours(payload.openHours);
+  if (openTime) facts.openTime = openTime;
   if (typeof row.lng === 'number' && typeof row.lat === 'number') {
     facts.lng = row.lng;
     facts.lat = row.lat;
@@ -106,6 +144,7 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
     themes: [...new Set(members.flatMap((f) => f.themes))],
     recommendScore: Math.max(...members.map((f) => f.recommendScore)),
     mentionCount: members.reduce((sum, f) => sum + f.mentionCount, 0),
+    aliases: [...new Set(members.flatMap((f) => f.aliases))],
   };
   const visits = members.map((f) => f.visitMinutes).filter((v): v is number => v !== undefined);
   if (visits.length) merged.visitMinutes = Math.max(...visits);
@@ -116,6 +155,9 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
   }
   const placeType = members.find((f) => f.placeType)?.placeType;
   if (placeType) merged.placeType = placeType;
+  // 结构化开闭馆：任一成员有值即可用（闭馆日信息不会互相矛盾到需要仲裁）
+  const openTime = members.find((f) => f.openTime)?.openTime;
+  if (openTime) merged.openTime = openTime;
   return merged;
 }
 
@@ -135,13 +177,18 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
        WHERE city = $1`,
       [city],
     );
-    // 归一键 → 合并事实
+    // 归一键 → 合并事实。归一键来源（09-27）：主名 + payload.aliases ——
+    // 库内「紫禁城」带别名「故宫」时，候选「故宫」也能命中该行（上游城市别名表）。
     const groups = new Map<string, PlaceFacts[]>();
     for (const row of rows) {
-      const key = normalizePlaceKey(row.name);
-      const group = groups.get(key) ?? [];
-      group.push(toFacts(row));
-      groups.set(key, group);
+      const facts = toFacts(row);
+      const keys = new Set([normalizePlaceKey(row.name), ...facts.aliases.map((a) => normalizePlaceKey(a))]);
+      for (const key of keys) {
+        if (!key) continue;
+        const group = groups.get(key) ?? [];
+        group.push(facts);
+        groups.set(key, group);
+      }
     }
     const mergedByKey = new Map([...groups.entries()].map(([key, members]) => [key, mergeFacts(members)]));
 

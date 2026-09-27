@@ -15,7 +15,8 @@ import type { LongHaulPoi } from '../longHaul';
 import { buildSchedule, type ScheduleResult, type SchedulablePoi } from './schedule';
 import { poiScore, scoreMaxima } from './score';
 import { visitWeight } from './visitWeight';
-import type { PlaceFacts } from './placeFacts';
+import { type PlaceFacts } from './placeFacts';
+import { resolveRelatedPairs, type PlaceRelations } from './placeRelations';
 
 export interface ScheduleDraftInput {
   draft: DraftTrip;
@@ -25,6 +26,8 @@ export interface ScheduleDraftInput {
   longHaul: readonly LongHaulPoi[];
   foodFocused: boolean;
   facts: ReadonlyMap<string, PlaceFacts>;
+  /** POI 无向关联对（09-27，来自 place_relation 表）：成链时给强关联的两点距离打折，让它们更可能同天 */
+  relations: PlaceRelations;
 }
 
 export interface ScheduleDraftResult {
@@ -94,10 +97,14 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
       score: poiScore(facts, maxima),
       weight: visitWeight(facts),
     };
-    if (poi.openTime) {
+    if (facts?.openTime) {
+      // 社区结构化开闭馆（09-27）：上游 mine_open_hours 挖出的 closedWeekdays 是明确星期数字，
+      // 排程能精确避让；优先级高于高德原文（高德常只给时段、不给闭馆日，无法避让）。
+      schedulable.openTime = facts.openTime;
+    } else if (poi.openTime) {
       schedulable.openTime = poi.openTime;
     } else if (facts?.closureText) {
-      // 闭馆回填（09-23）：高德 openTime 缺位时用 evidence 挖出的闭馆表述兜底（如「周一闭馆」）
+      // 闭馆回填（09-23）：前两者都缺位时用 evidence 挖出的闭馆表述兜底（如「周一闭馆」）
       schedulable.openTime = facts.closureText;
     }
     const theme = facts?.themes[0];
@@ -116,6 +123,8 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     ...(input.form.pace ? { pace: input.form.pace } : {}),
     // 顺序种子表（09-23）：出入口方向等固定先后（故宫→景山），两端都在候选池才生效
     orderConstraints: routeOrderConstraints(input.form.destination, input.pool.map((p) => p.name)),
+    // 关联对（09-27）：只做同天聚类的距离折扣，不产出先后约束（上游数据无向，不表达顺序）
+    relatedPairs: resolveRelatedPairs(input.relations, input.pool.map((p) => p.name)),
   });
 
   input.draft.setSkeleton(

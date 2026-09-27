@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { SCHEDULE_LIMITS, buildSchedule, type SchedulablePoi } from '../generation/scheduling/schedule';
+import { SCHEDULE_LIMITS, buildSchedule, relatedPairKey, type SchedulablePoi } from '../generation/scheduling/schedule';
 import { NEUTRAL_RATIO, poiScore, scoreMaxima } from '../generation/scheduling/score';
 import { DEFAULT_VISIT_WEIGHT, isHeavy, visitWeight } from '../generation/scheduling/visitWeight';
 
@@ -272,12 +272,57 @@ test('闭馆日避让：无 startDate 时不干预分天（拿不准不校验）
   assert.equal(result.days[0]!.stops[0]!.poi.name, '甲馆');
 });
 
-test('闭馆日避让：所有天都闭馆时照常分配（交可行性引擎收口）', () => {
+test('闭馆日避让：整段闭馆的天判为不可分配，宁可留空并记冲突（09-27）', () => {
+  // 旧行为：无处可避时退回「最早未分配的天」，把闭馆的段硬塞进去（八达岭案例的病根）。
+  // 新行为：整段闭馆的天不分配 —— 空天占位 + closureConflicts 如实记下，由上层告知用户。
   const result = buildSchedule(
     [poi({ name: '甲馆', score: 100, weight: 5, openTime: '周一、周二闭馆', lat: 39.9, lng: 116.4 })],
-    { days: 1, foodFocused: false, startDate: '2026-09-21' },
+    { days: 1, foodFocused: false, startDate: '2026-09-21', fallbackArea: '北京' },
   );
-  assert.equal(result.days[0]!.stops[0]!.poi.name, '甲馆');
+  assert.equal(result.days[0]!.stops[0]!.poi.name, '自由安排｜北京', '闭馆日不该硬塞');
+  assert.equal(result.droppedCount, 1);
+  assert.equal(result.closureConflicts.length, 1);
+  assert.deepEqual(result.closureConflicts[0]!.names, ['甲馆']);
+  assert.equal(result.closureConflicts[0]!.date, '2026-09-21');
+  assert.equal(result.closureConflicts[0]!.holiday, null);
+});
+
+test('闭馆日避让：单点独占段不再吃掉它整段闭馆的那天（八达岭 2026-09-28 案例）', () => {
+  // 复刻实测：2 天行程、startDate 2026-09-28（周一）。
+  // 故宫段（3 人，只有故宫周一闭馆）与八达岭段（1 人，整段闭馆）争两个天。
+  // 旧行为：八达岭段被塞进周一（它自己闭馆）→ 那天完全作废。
+  // 新行为：八达岭段无处可去 → 留空 + 冲突提示；故宫段照常落周二。
+  const result = buildSchedule(
+    [
+      poi({ name: '故宫', score: 115, weight: 3, openTime: '周一闭馆', lat: 39.9187, lng: 116.397 }),
+      poi({ name: '景山', score: 83, weight: 2, lat: 39.9259, lng: 116.3966 }),
+      poi({ name: '北海', score: 59, weight: 2, lat: 39.9278, lng: 116.3887 }),
+      poi({ name: '八达岭', score: 69, weight: 3, openTime: '周一闭馆', lat: 40.3616, lng: 116.0113 }),
+    ],
+    { days: 2, foodFocused: false, exclusiveNames: ['八达岭'], startDate: '2026-09-28', fallbackArea: '北京' },
+  );
+  const namesByDay = result.days.map((d) => d.stops.map((s) => s.poi.name));
+  assert.ok(!namesByDay[0]!.includes('八达岭'), `八达岭不该出现在周一，实际 ${namesByDay[0]!.join('、')}`);
+  assert.deepEqual(namesByDay[1], ['故宫', '景山', '北海'], '故宫段应完整落在周二');
+  assert.equal(result.closureConflicts.length, 1);
+  assert.deepEqual(result.closureConflicts[0]!.names, ['八达岭']);
+  assert.equal(result.closureConflicts[0]!.date, '2026-09-28');
+});
+
+test('闭馆日避让：段内部分闭馆仍可分配（只避开人数，不弃整段）', () => {
+  // 故宫周一闭馆但景山/北海开放 → 该段放周一仍有 2 个点可游，不该被整体丢弃。
+  // （与上一条的差别：这里只有一个段，且它不是「整段闭馆」）
+  const result = buildSchedule(
+    [
+      poi({ name: '故宫', score: 115, weight: 2, openTime: '周一闭馆', lat: 39.9187, lng: 116.397 }),
+      poi({ name: '景山', score: 83, weight: 2, lat: 39.9259, lng: 116.3966 }),
+    ],
+    { days: 2, foodFocused: false, startDate: '2026-09-28', fallbackArea: '北京' },
+  );
+  assert.equal(result.droppedCount, 0, '有部分成员开放的段不该被丢弃');
+  assert.equal(result.closureConflicts.length, 0);
+  const all = result.days.flatMap((d) => d.stops.map((s) => s.poi.name));
+  assert.ok(all.includes('故宫') && all.includes('景山'));
 });
 
 // ---------- 顺序种子表（09-23） ----------
@@ -335,4 +380,58 @@ test('双长城场景：两个强独占级候选 → 低分者不入选（droppe
   assert.ok(allNames.includes('慕田峪长城'), '高分独占点应入选');
   assert.ok(!allNames.includes('八达岭长城'), '第二个长城应被独占上限挤掉');
   assert.equal(result.droppedCount, 1);
+});
+
+// ---------- POI 关联对：同天聚类的距离折扣（09-27） ----------
+
+/** 4 个分量 3 的点 → 切两段（每段 2 个），模拟两天行程 */
+const relationFixture = (): SchedulablePoi[] => [
+  poi({ name: '甲', score: 100, weight: 3, lat: 39.9, lng: 116.4 }),
+  poi({ name: '乙', score: 60, weight: 3, lat: 39.9, lng: 116.4155 }), // 离甲 1.32km
+  poi({ name: '丙', score: 50, weight: 3, lat: 39.9, lng: 116.4094 }), // 离甲 0.80km（比乙近）
+  poi({ name: '丁', score: 40, weight: 3, lat: 39.9, lng: 116.5 }),
+];
+
+const dayIndexByName = (result: ReturnType<typeof buildSchedule>, name: string): number =>
+  result.days.find((d) => d.stops.some((s) => s.poi.name === name))!.dayIndex;
+
+test('关联对：命中后距离打折，两点被拉到同一天（无关联时按纯几何分开）', () => {
+  const without = buildSchedule(relationFixture(), { days: 2, foodFocused: false });
+  assert.notEqual(
+    dayIndexByName(without, '甲'),
+    dayIndexByName(without, '乙'),
+    '无关联对时按纯几何：丙插在甲乙之间，乙落到第二天',
+  );
+
+  const withRelation = buildSchedule(relationFixture(), {
+    days: 2,
+    foodFocused: false,
+    relatedPairs: new Set([relatedPairKey('甲', '乙')]),
+  });
+  assert.equal(
+    dayIndexByName(withRelation, '甲'),
+    dayIndexByName(withRelation, '乙'),
+    '命中关联对后成链相邻，两点落进同一天',
+  );
+});
+
+test('关联对：不传或传空集合时排程输出与接入前一致（回归）', () => {
+  const shape = (result: ReturnType<typeof buildSchedule>) =>
+    result.days.map((d) => d.stops.map((s) => s.poi.name).join('→'));
+  const base = buildSchedule(relationFixture(), { days: 2, foodFocused: false });
+  const empty = buildSchedule(relationFixture(), { days: 2, foodFocused: false, relatedPairs: new Set() });
+  assert.deepEqual(shape(empty), shape(base));
+});
+
+test('关联对：无关候选不受影响，集合里不存在的 pair 不改变链', () => {
+  const shape = (result: ReturnType<typeof buildSchedule>) =>
+    result.days.map((d) => d.stops.map((s) => s.poi.name).join('→'));
+  const base = buildSchedule(relationFixture(), { days: 2, foodFocused: false });
+  const unrelated = buildSchedule(relationFixture(), {
+    days: 2,
+    foodFocused: false,
+    relatedPairs: new Set([relatedPairKey('丙', '丁')]),
+  });
+  // 丙丁本就近，打折后仍与基线同形状
+  assert.deepEqual(shape(unrelated), shape(base));
 });

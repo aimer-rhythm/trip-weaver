@@ -1,0 +1,6 @@
+{"file": ".trellis/spec/server/backend/generation-guidelines.md", "reason": "生成链路规范：确定性排程的阶段边界、静默降级纪律，以及本任务新增的「闭馆日分配与节假日豁免」Scenario（三级退化契约）"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 后端入口：Pre-Development Checklist 与 Quality Check Checklist（typecheck 命令、降级不中断生成）"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "packages/shared 后端层规范：openHours.ts / holidays.ts 属于共享层，改动影响 server 与 web"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "真实命令矩阵：typecheck 与最小验证脚本的跑法"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "跨层一致性：canonical_places → placeFacts → schedule → draft → feasibility 全链路的闭馆判定"}
+{"file": "docs/DETERMINISTIC_SCHEDULING.md", "reason": "确定性排程算法全文（十步流程 / 公式 / 参数速查 / 已知取舍），本次 A+C 改动的直接依据"}
