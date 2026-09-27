@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 侧开发入口：pre-development checklist 与 spec 索引"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "外部集成契约与现有 Attraction Cover Fallback 章节；本任务要在此补 stored cover 通道"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "payload jsonb 合并与 seed/迁移约定（本任务写 payload.coverImage）"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "外部源失败必须降级不阻断生成流程"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "改动跨上游产物 → DB → server → 前端四层，需按跨层检查清单核对"}
