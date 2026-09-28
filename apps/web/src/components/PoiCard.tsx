@@ -17,7 +17,7 @@ export function ReservationBadge({ poi }: { poi: ResearchPoi }) {
   );
 }
 
-export function PoiCover({ poi }: { poi: ResearchPoi }) {
+export function PoiCover({ poi, onCoverError }: { poi: ResearchPoi; onCoverError?: (url: string) => void }) {
   const [failed, setFailed] = useState(false);
   if (!poi.coverUrl || failed) {
     return (
@@ -33,7 +33,10 @@ export function PoiCover({ poi }: { poi: ResearchPoi }) {
       alt={poi.name}
       loading="lazy"
       referrerPolicy="no-referrer"
-      onError={() => setFailed(true)}
+      onError={() => {
+        setFailed(true);
+        if (poi.coverUrl) onCoverError?.(poi.coverUrl);
+      }}
     />
   );
 }

@@ -2,7 +2,7 @@
 // 只呈现用户向信息：三阶段进度、友好状态文案（tool label 直译）、候选卡片、耗时；
 // token/LLM 请求/system prompt 等开发者信息不再展示（见任务 PRD）。
 // 配色只用 tailwind.css @theme 里的语义 token（bg-brand / text-ink-* 等），不硬编码色值。
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import {
   GENERATION_TIMEOUT_MINUTES,
   type DataSourceKind,
@@ -11,7 +11,8 @@ import {
 } from '@tripweaver/shared';
 import { buildTimeline, formatDuration, type TimelineModel } from '../lib/generationTimeline';
 import { DATA_SOURCE_LABEL } from '../lib/poi';
-import { PoiCover, PexelsCredit } from './PoiCard';
+import { PoiCover } from './PoiCard';
+import { generationCardCaption, selectGenerationCards } from '../lib/generationCards';
 
 interface Props {
   events: GenerationEvent[];
@@ -67,8 +68,8 @@ function MilestoneIcon({ phase }: { phase: GenerationPhase }) {
       <svg {...common} stroke="none" fill="none">
         <circle cx="12" cy="12" r="9.2" fill="#6D9BEE" />
         <circle cx="12" cy="12" r="7.4" fill="#EAF1FF" />
-        <path d="M12 4.8 14.6 12 12 19.2 9.4 12Z" fill="#F97316" />
-        <path d="M12 19.2 14.6 12H9.4Z" fill="#1E3A8A" />
+        <path d="m18 6-3.4 8.6L6 18l3.4-8.6Z" fill="#F99364" />
+        <path d="m6 18 8.6-3.4-5.2-5.2Z" fill="#536DDA" />
         <circle cx="12" cy="12" r="1.1" fill="#1E3A8A" />
       </svg>
     );
@@ -98,15 +99,13 @@ function SparkIcon({ className }: { className: string }) {
   );
 }
 
-/** 拍立得散落位姿（最多展示最近 6 张候选；确定性排布，避免重渲染抖动）
- *  前 5 个位姿按 UI 稿（1672×941）实测卡框左上角换算成百分比；第 6 个是 UI 稿没有的右下补位。 */
+/** 拍立得散落位姿（最多展示最近 5 张候选；按设计稿排布，避免覆盖底部操作区）。 */
 const FAN = [
   { left: '1.5%', top: '4.8%', rotate: -7 },
   { left: '36.4%', top: '2.5%', rotate: 8 },
   { left: '68%', top: '5.5%', rotate: 9 },
   { left: '10.8%', top: '44%', rotate: -5 },
   { left: '47.6%', top: '48%', rotate: 6 },
-  { left: '70%', top: '56%', rotate: -9 },
 ];
 
 type MilestoneState = 'pending' | 'active' | 'done';
@@ -138,6 +137,8 @@ const submitBtnCls =
   'rounded-full bg-gradient-to-r from-brand-light to-brand px-8 py-2.5 text-[0.9rem] font-bold text-white shadow-md transition-transform hover:scale-[1.03] active:scale-95';
 
 export function GenerationRunPanel({ events, city, days, cancelling, cancellationError, onCancel, onReset, onOpenTrip }: Props) {
+  const brushId = useId();
+  const [failedCovers, setFailedCovers] = useState<ReadonlySet<string>>(() => new Set());
   const model = useMemo(() => buildTimeline(events), [events]);
   const terminal = model.terminal;
   const running = terminal === null;
@@ -154,24 +155,26 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
   }, [running]);
   const elapsed = model.durationMs ?? (running && model.startedAt !== undefined ? Math.max(0, now - model.startedAt) : undefined);
 
-  // 拍立得只展示最近 6 张；最后一张带 new 爆炸贴
-  const visibleCandidates = model.candidates.slice(-FAN.length);
-  const newestId = model.candidates.at(-1)?.id;
+  // 保留可用照片：后续无图候选不再把整个画面替换为空白。
+  const visibleCandidates = selectGenerationCards(model.candidates, failedCovers, FAN.length);
+  const newestId = visibleCandidates.at(-1)?.id;
 
   return (
     <div
-      className="gen-page-root relative flex flex-1 flex-col overflow-hidden bg-canvas bg-cover bg-center"
-      style={{ backgroundImage: "url('/home-bg.png')" }}
+      className="gen-page-root relative flex flex-1 flex-col overflow-hidden"
     >
       {/* 标题区：星形光点 + 笔刷弧线（仅进行中显示，终态有自己的卡片标题） */}
       {!terminal && (
         <header className="gen-header">
           <h1 className="gen-title">
             <SparkIcon className="gen-star gen-star-l" />
-            正在为你编织 {titleCity} 的 {titleDays} 天旅程…
+            <span>正在为你编织 <strong className="gen-title-city">{titleCity}</strong> 的 {titleDays} 天旅程…</span>
             <SparkIcon className="gen-star gen-star-r" />
           </h1>
-          <span className="gen-title-arc" aria-hidden="true" />
+          <svg className="gen-title-arc" viewBox="0 0 440 32" fill="none" aria-hidden="true">
+            <defs><linearGradient id={brushId}><stop stopColor="#eee5ff" stopOpacity="0" /><stop offset=".35" stopColor="#c9b1fc" /><stop offset=".7" stopColor="#99cfff" /><stop offset="1" stopColor="#c9b1fc" stopOpacity="0" /></linearGradient></defs>
+            <path d="M4 29C88 7 183 1 245 6c16 2-10 12 5 9s63-11 70-7-8 7 5 6 65-7 109 3" stroke={`url(#${brushId})`} strokeWidth="4" strokeLinecap="round" />
+          </svg>
           {banner && <p className="m-0 rounded-full bg-white/60 px-4 py-1 text-[0.8rem] text-ink-muted backdrop-blur-md">{banner}</p>}
         </header>
       )}
@@ -234,7 +237,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     : m.pendingHint;
               return (
                 <div key={m.phase} className={`gen-step is-${state}`}>
-                  {i > 0 && <span className="gen-step-line" aria-hidden="true" />}
+                  {i > 0 && <svg className="gen-step-line" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true"><path d="M58 0C54 20 8 24 16 54S45 82 58 100" /></svg>}
                   <span className="gen-step-badge" aria-hidden="true">
                     <MilestoneIcon phase={m.phase} />
                     {state === 'active' && <span className="gen-step-halo" />}
@@ -283,16 +286,15 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     style={{ left: pose.left, top: pose.top, transform: `rotate(${pose.rotate}deg)` }}
                   >
                     <div className="gen-polaroid-photo">
-                      <PoiCover poi={poi} />
+                      <PoiCover key={poi.coverUrl} poi={poi} onCoverError={(url) => setFailedCovers(previous => new Set(previous).add(url))} />
                     </div>
-                    <figcaption className="gen-polaroid-caption">{poi.name}</figcaption>
+                    <figcaption className="gen-polaroid-caption" title={generationCardCaption(poi)}>{generationCardCaption(poi)}</figcaption>
                     {poi.id === newestId && <span className="gen-polaroid-new">new</span>}
                   </figure>
                 );
               })
             )}
           </div>
-          <PexelsCredit pois={visibleCandidates} />
         </main>
       )}
 

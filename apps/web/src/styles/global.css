@@ -652,20 +652,20 @@ a { color: var(--color-primary); text-decoration: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(16 * var(--ui));
-  padding: calc(45 * var(--ui)) calc(40 * var(--ui)) 0;
+  gap: 0;
+  padding: calc(37 * var(--ui)) calc(40 * var(--ui)) 0;
   text-align: center;
 }
 .gen-page-root .gen-title {
-  display: flex;
-  align-items: center;
+  display: block;
   margin: 0 0 0 calc(80 * var(--ui));
   font-family: var(--gen-serif);
-  font-size: calc(48 * var(--ui));
+  font-size: calc(42 * var(--ui));
   font-weight: 700;
   line-height: 1.12;
   color: #1a365d;
 }
+.gen-title-city { font-size: 1.4em; font-weight: inherit; }
 /* 设计稿的标题块整体比页面中心偏右 40px（实测文本中心 875 vs 页面中心 836，含两侧星形也是如此），
    上面的 margin-left 把它推过去；flex 居中会把 margin 计入，所以写 80 得到 40 的位移。 */
 /* 标题装饰：四角星光点（设计稿为星形光点，不用 emoji） */
@@ -674,7 +674,8 @@ a { color: var(--color-primary); text-decoration: none; }
   flex-shrink: 0;
   width: calc(20 * var(--ui));
   height: calc(20 * var(--ui));
-  margin: 0 calc(20 * var(--ui));
+  margin: 0 calc(12 * var(--ui));
+  vertical-align: top;
   color: #a8c6ff;
   animation: gen-star-twinkle 3.2s ease-in-out infinite;
 }
@@ -686,10 +687,10 @@ a { color: var(--color-primary); text-decoration: none; }
 }
 .gen-title-arc {
   display: block;
-  width: calc(300 * var(--ui));
-  height: calc(4 * var(--ui));
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, #c4b5fd, #93c5fd, transparent);
+  width: calc(440 * var(--ui));
+  height: calc(32 * var(--ui));
+  max-width: 85%;
+  margin-left: calc(80 * var(--ui));
   animation: gen-breathe 3s ease-in-out infinite;
 }
 @keyframes gen-breathe {
@@ -723,15 +724,13 @@ a { color: var(--color-primary); text-decoration: none; }
 .gen-step { --gen-badge: calc(80 * var(--ui)); --gen-gap: calc(47 * var(--ui)); position: relative; display: flex; align-items: center; gap: calc(24 * var(--ui)); padding: var(--gen-gap) 0; }
 .gen-step-line {
   position: absolute;
-  left: calc(var(--gen-badge) / 2 - 1px);
+  left: calc(var(--gen-badge) / 2 - 58 * var(--ui));
   top: calc(-1 * var(--gen-gap));
   height: calc(50% + var(--gen-gap) - var(--gen-badge) / 2);
-  /* 浏览器默认的 dashed 点太密，设计稿是长虚线：用背景图案控制段长与间隔 */
-  width: calc(2 * var(--ui));
-  background-image: linear-gradient(to bottom, #b8c4e0 62%, transparent 62%);
-  background-size: calc(2 * var(--ui)) calc(14 * var(--ui));
-  background-repeat: repeat-y;
+  width: calc(60 * var(--ui));
+  overflow: visible;
 }
+.gen-step-line path { fill: none; stroke: #94a5c8; stroke-width: 1.8; stroke-dasharray: 6 8; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .gen-step-badge {
   position: relative;
   z-index: 1;
@@ -742,28 +741,31 @@ a { color: var(--color-primary); text-decoration: none; }
   width: var(--gen-badge);
   height: var(--gen-badge);
   border-radius: 50%;
-  background: #f1f4f9;
-  border: calc(1.5 * var(--ui)) solid #d3dbe8;
+  background: linear-gradient(145deg, #f5f7fc, #bbc5dc);
+  border: calc(2 * var(--ui)) solid rgba(255,255,255,.8);
   color: #a9b6c9;
   filter: grayscale(0.4);
   opacity: 0.85;
+  box-shadow: 0 0 0 calc(5 * var(--ui)) rgba(205,216,237,.35), inset 0 2px 5px rgba(255,255,255,.85);
 }
-.gen-step-badge svg { width: calc(40 * var(--ui)); height: calc(40 * var(--ui)); }
+.gen-step-badge > svg { position: relative; z-index: 2; width: calc(36 * var(--ui)); height: calc(36 * var(--ui)); }
+.gen-step-badge::before { content: ''; position: absolute; inset: calc(10 * var(--ui)); z-index: 1; border: calc(2 * var(--ui)) solid white; border-radius: 50%; background: linear-gradient(145deg, #fff, #edf2ff); box-shadow: 0 2px 5px rgba(60,88,150,.12); }
 /* 图钉尖角：设计稿的 badge 是地图 pin 形状（圆 + 下方尖角），不是正圆 */
 .gen-step-badge::after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: calc(-4 * var(--ui));
-  width: calc(15 * var(--ui));
-  height: calc(15 * var(--ui));
-  border-radius: calc(5 * var(--ui));
+  bottom: calc(-10 * var(--ui));
+  width: calc(24 * var(--ui));
+  height: calc(24 * var(--ui));
+  border-radius: calc(3 * var(--ui));
   background: inherit;
   transform: translateX(-50%) rotate(45deg);
 }
 /* 完成态：保留原图标 + 右下角绿色勾徽章（设计稿不是把图标换成勾） */
 .gen-step-check {
   position: absolute;
+  z-index: 3;
   right: calc(-9 * var(--ui));
   bottom: calc(-5 * var(--ui));
   display: flex;
@@ -779,20 +781,20 @@ a { color: var(--color-primary); text-decoration: none; }
 }
 .gen-step-check svg { width: calc(20 * var(--ui)); height: calc(20 * var(--ui)); }
 .gen-step.is-done .gen-step-badge {
-  background: #d4f5e2;
-  border-color: #34c77b;
+  background: linear-gradient(145deg, #d0f7e5, #75d2a9);
+  border-color: #c5f2df;
   color: #22a866;
   filter: none;
   opacity: 1;
   box-shadow: 0 0 0 calc(5 * var(--ui)) rgba(52, 199, 123, 0.12);
 }
 .gen-step.is-active .gen-step-badge {
-  background: #e4edff;
-  border-color: var(--color-brand-light);
+  background: linear-gradient(145deg, #afc7ff, #5c78eb);
+  border-color: #cbdcff;
   color: var(--color-brand);
   filter: none;
   opacity: 1;
-  box-shadow: 0 calc(8 * var(--ui)) calc(24 * var(--ui)) rgba(59, 130, 246, 0.22);
+  box-shadow: 0 0 0 calc(6 * var(--ui)) rgba(130,169,255,.26), 0 0 0 calc(13 * var(--ui)) rgba(174,205,255,.2), 0 0 calc(25 * var(--ui)) rgba(91,135,247,.4), inset 0 2px 6px rgba(255,255,255,.9);
 }
 .gen-step-body { min-width: 0; }
 .gen-page-root .gen-step-title {
@@ -803,6 +805,7 @@ a { color: var(--color-primary); text-decoration: none; }
   line-height: 1.25;
   color: #1a365d;
 }
+.gen-step.is-pending .gen-step-title { color: #8491b3; }
 .gen-step-hint { margin: calc(8 * var(--ui)) 0 0; font-size: calc(18 * var(--ui)); color: #8a99ad; }
 .gen-step-halo {
   position: absolute;
@@ -816,7 +819,13 @@ a { color: var(--color-primary); text-decoration: none; }
   0% { transform: scale(1); opacity: 0.8; }
   100% { transform: scale(1.7); opacity: 0; }
 }
-.gen-step-hint-live { font-style: italic; animation: gen-hint-fade 2.4s ease-in-out infinite; }
+.gen-step-hint-live {
+  font-family: 'QianTuBiFeng Handwriting', var(--gen-serif);
+  font-size: calc(24 * var(--ui));
+  line-height: 1.35;
+  color: #697da2;
+  animation: gen-hint-fade 2.4s ease-in-out infinite;
+}
 @keyframes gen-hint-fade {
   0%, 100% { opacity: 0.65; }
   50% { opacity: 1; }
@@ -825,6 +834,7 @@ a { color: var(--color-primary); text-decoration: none; }
 /* 拍立得卡片（设计稿：卡宽 250、略竖的照片、上下白边厚） */
 .gen-polaroid {
   position: absolute;
+  z-index: 1;
   width: calc(250 * var(--ui));
   margin: 0;
   background: #fff;
@@ -833,6 +843,8 @@ a { color: var(--color-primary); text-decoration: none; }
   box-shadow: 0 calc(10 * var(--ui)) calc(40 * var(--ui)) rgba(0, 0, 0, 0.12);
   animation: gen-polaroid-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+/* 上排白边压住下排照片的边缘，避免下排盖掉上排的地点说明。 */
+.gen-polaroid:nth-child(-n+3) { z-index: 2; }
 @keyframes gen-polaroid-in {
   0% { opacity: 0; translate: 0 -18px; scale: 0.85; }
   100% { opacity: 1; translate: 0 0; scale: 1; }
@@ -845,6 +857,7 @@ a { color: var(--color-primary); text-decoration: none; }
   margin: calc(18 * var(--ui)) 0 0;
   font-family: 'QianTuBiFeng Handwriting', var(--gen-serif);
   font-size: calc(24 * var(--ui));
+  line-height: 1.15;
   color: #4a5568;
   text-align: center;
   white-space: nowrap;
@@ -853,18 +866,19 @@ a { color: var(--color-primary); text-decoration: none; }
 }
 .gen-polaroid-new {
   position: absolute;
-  top: calc(-12 * var(--ui));
-  right: calc(-12 * var(--ui));
-  padding: calc(3 * var(--ui)) calc(12 * var(--ui));
-  border-radius: 999px;
-  background: #ffe066;
-  color: #7a5c00;
-  font-size: calc(15 * var(--ui));
-  font-weight: 700;
+  top: calc(14 * var(--ui));
+  right: calc(-18 * var(--ui));
+  padding: calc(9 * var(--ui)) calc(18 * var(--ui));
+  background: #fffdf4;
+  color: #efb93f;
+  font-size: calc(25 * var(--ui));
+  font-family: 'QianTuBiFeng Handwriting', cursive;
+  line-height: 1;
   font-style: italic;
-  box-shadow: 0 calc(3 * var(--ui)) calc(10 * var(--ui)) rgba(0, 0, 0, 0.15);
+  clip-path: polygon(4% 0, 20% 8%, 32% 0, 44% 9%, 59% 0, 70% 10%, 86% 4%, 88% 20%, 100% 30%, 92% 46%, 100% 62%, 90% 72%, 94% 92%, 76% 90%, 65% 100%, 50% 90%, 37% 100%, 25% 88%, 7% 94%, 10% 74%, 0 62%, 8% 46%, 0 29%, 9% 18%);
   animation: gen-new-pop 0.6s ease-out;
 }
+.gen-polaroid:has(.gen-polaroid-new)::after { content: ''; position: absolute; inset: -6px; pointer-events: none; background: linear-gradient(35deg, transparent 44%, #ffdc74 45% 55%, transparent 56%) left 15% / 18px 20px no-repeat, linear-gradient(-35deg, transparent 44%, #ffdc74 45% 55%, transparent 56%) right 70% / 18px 20px no-repeat; }
 @keyframes gen-new-pop {
   0% { transform: scale(0); }
   70% { transform: scale(1.25); }
@@ -908,12 +922,29 @@ a { color: var(--color-primary); text-decoration: none; }
 .gen-cancel-btn:disabled { opacity: 0.5; }
 .gen-elapsed { font-size: calc(16 * var(--ui)); color: #9aa8ba; }
 
-/* 窄屏：单列堆叠，--ui 随视口同步缩小 */
+/* 窄屏不再沿用桌面绝对定位：卡片进入文档流，为底部操作区保留真实高度。 */
 @media (max-width: 900px) {
-  .gen-header { padding: calc(60 * var(--ui)) calc(20 * var(--ui)) 0; }
-  .gen-main { flex-direction: column; gap: calc(20 * var(--ui)); padding: 0 calc(24 * var(--ui)); }
-  .gen-path { width: 100%; }
-  .gen-fan { min-height: calc(420 * var(--ui)); }
+  .gen-title-arc { margin-left: 0; }
+  .gen-header { padding: 36px 16px 0; }
+  .gen-page-root .gen-title { margin: 0; font-size: clamp(25px, 4.5vw, 36px); line-height: 1.4; }
+  .gen-title .gen-star { width: 12px; height: 12px; margin: 8px; }
+  .gen-main { flex-direction: column; flex: none; gap: 24px; padding: 16px 20px 24px; }
+  .gen-path { width: 100%; padding-bottom: 0; }
+  .gen-step { --gen-gap: 24px; }
+  .gen-step-hint { overflow-wrap: anywhere; }
+  .gen-fan { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; padding: 12px 0; }
+  .gen-fan .gen-polaroid {
+    position: relative;
+    /* 桌面位姿由候选索引内联传入；窄屏网格统一覆盖，不使用百分比偏移。 */
+    left: auto !important;
+    top: auto !important;
+    transform: rotate(-3deg) !important;
+    width: 100%;
+    padding: 10px 10px 14px;
+  }
+  .gen-fan .gen-polaroid:nth-child(even) { transform: rotate(3deg) !important; }
+  .gen-polaroid-caption { margin-top: 12px; font-size: 18px; }
+  .gen-footer { padding: 12px 16px 24px; }
 }
 
 /* 减少动画偏好：停用脉冲/呼吸/星闪 */
