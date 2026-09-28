@@ -981,7 +981,7 @@ a { color: var(--color-primary); text-decoration: none; }
 .editor-page {
   --editor-ink: #233f70;
   --editor-muted: #6f84aa;
-  --editor-gradient: linear-gradient(135deg, #78d0ff 0%, #568cff 56%, #8064ff 100%);
+  --editor-gradient: linear-gradient(135deg, var(--color-brand-light), var(--color-brand));
   color: var(--editor-ink);
   flex: none; height: calc(100dvh - 76px); max-height: calc(100dvh - 76px);
   padding: 12px 0 36px; gap: 8px;
@@ -989,7 +989,7 @@ a { color: var(--color-primary); text-decoration: none; }
 .editor-icon { display: inline-block; width: 22px; height: 22px; flex: none; vertical-align: middle; }
 .editor-page .muted { color: var(--editor-muted); }
 .editor-page .editor-toolbar {
-  min-height: 66px; flex: none; padding: 12px 20px; border: 1px solid #ffffffb3; border-radius: 24px;
+  position: relative; z-index: 2; min-height: 66px; flex: none; padding: 12px 20px; border: 1px solid #ffffffb3; border-radius: 24px;
   background: #ffffff9c; box-shadow: 0 6px 24px #3b65a30c; backdrop-filter: blur(18px);
 }
 .editor-page .editor-toolbar-left { gap: 22px; flex: 1; }
@@ -1000,9 +1000,10 @@ a { color: var(--color-primary); text-decoration: none; }
 .editor-page .editor-title h1 .editor-icon, .editor-trip-meta .editor-icon { color: #627dff; }
 .editor-trip-meta { display: flex; align-items: center; gap: 8px; font-size: 14px; }
 .editor-page .editor-title > .text-danger { flex-basis: 100%; font-size: 13px; }
-.editor-page .export-menu > summary { display: flex; align-items: center; gap: 8px; background: #ffffffd9; border-radius: 999px; color: var(--editor-ink); min-height: 40px; }
+.editor-page .export-menu > summary { display: flex; align-items: center; gap: 8px; background: var(--editor-gradient); border-radius: 999px; color: white; min-height: 40px; box-shadow: 0 6px 18px #2f6bf333; }
 .editor-page .export-menu { z-index: 15; }
-.editor-page .editor-body { display: grid; grid-template-columns: minmax(0, 26fr) minmax(0, 41fr) minmax(0, 33fr); gap: 16px; }
+.editor-page .btn-primary { background: var(--editor-gradient); color: white; }
+.editor-page .editor-body { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 26fr) minmax(0, 41fr) minmax(0, 33fr); gap: 16px; }
 .editor-page .editor-body.without-chat { grid-template-columns: minmax(0, 56fr) minmax(0, 44fr); }
 .editor-page :is(.editor-chat, .editor-left, .editor-map) {
   width: auto; min-width: 0; border: 1px solid #ffffffb3; border-radius: 24px; background: #ffffffaa;
@@ -1041,7 +1042,12 @@ a { color: var(--color-primary); text-decoration: none; }
 .editor-page .rsv-badge { padding: 5px 9px; border-radius: 999px; }
 .activity-between { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 2px 0 2px 6px; gap: 8px; }
 .editor-transit { display: flex; align-items: center; gap: 10px; font-size: 13px; line-height: 1.5; color: #4b679b; }
-.activity-between .editor-menu { margin-left: auto; }
+.activity-entry { margin-bottom: 16px; }
+.activity-heading { grid-column: 1 / -1; display: grid; grid-template-columns: 40px minmax(0, 1fr) 44px; align-items: center; gap: 12px; }
+.editor-page .activity-heading .activity-name { margin: 0; }
+.editor-page .activity-main { grid-column: 2; }
+.editor-page .activity-card > .poi-cover { grid-column: 3; }
+.activity-heading .editor-menu-list { top: 100%; bottom: auto; }
 .editor-menu { position: relative; flex: none; }
 .editor-menu > summary { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; font-size: 24px; font-weight: 600; list-style: none; cursor: pointer; color: #4f6a9c; }
 .editor-menu > summary::-webkit-details-marker { display: none; }
@@ -1069,8 +1075,8 @@ a { color: var(--color-primary); text-decoration: none; }
 .editor-page .chat-input { background: #ffffffc9; border: 1px solid white; border-radius: 28px; padding: 8px; margin: 0; align-items: center; box-shadow: 0 6px 18px #4f7aaf09; }
 .editor-page .chat-input textarea { width: 0; min-width: 0; max-height: 120px; border: 0; resize: none; background: transparent; font-size: 13px; padding: 10px; color: var(--editor-ink); }
 .editor-page .chat-input textarea::placeholder { color: #8da1bf; }
-.editor-page .chat-input .btn { width: 42px; height: 42px; flex: none; padding: 10px; border-radius: 50%; background: var(--editor-gradient); color: #fff; box-shadow: 0 3px 10px #7075ff44; }
-.editor-page .chat-input .btn:disabled { opacity: .6; }
+.editor-page .chat-input .btn { width: 42px; height: 42px; flex: none; padding: 10px; border-radius: 50%; background: var(--editor-gradient); color: #fff; box-shadow: 0 3px 10px #2f6bf344; }
+.editor-page .chat-input .btn:disabled { opacity: 1; background: linear-gradient(135deg, var(--color-brand-disabled), var(--color-brand-disabled-deep)); box-shadow: none; }
 .editor-page .map-pane { position: relative; inset: auto; display: flex; flex-direction: column; height: 100%; gap: 14px; }
 .editor-page .day-filter { position: static; display: flex; flex-wrap: nowrap; flex: none; max-width: 100%; overflow-x: auto; gap: 8px; z-index: auto; scrollbar-width: thin; padding-bottom: 2px; }
 .editor-map-canvas { position: relative; flex: 1; min-height: 0; border-radius: 18px; overflow: hidden; isolation: isolate; }
@@ -1134,4 +1140,19 @@ a { color: var(--color-primary); text-decoration: none; }
   .editor-page .activity-desc { font-size: 14px; }
   .editor-page .editor-map { padding: 12px; }
   .editor-page .chat-stream { padding-top: 12px; }
+}
+
+/* The viewport owns the editor; only the conversation/list panes scroll.
+   Export hosts are portalled to body, outside all backdrop-filter containing blocks. */
+@media screen {
+  .app-layout:has(.editor-page) { height: 100dvh; min-height: 0; overflow: hidden; }
+  .app-layout:has(.editor-page) .topbar { flex-shrink: 0; }
+  .app-layout:has(.editor-page) .app-main { overflow: hidden; }
+  .app-layout .editor-page { flex: 1; height: auto; max-height: none; }
+}
+@media (min-width: 1101px) and (max-width: 1400px) {
+  .activity-heading { grid-template-columns: 32px minmax(0, 1fr) 44px; gap: 8px; }
+}
+@media (max-width: 600px) {
+  .activity-heading { grid-template-columns: 28px minmax(0, 1fr) 44px; gap: 8px; }
 }

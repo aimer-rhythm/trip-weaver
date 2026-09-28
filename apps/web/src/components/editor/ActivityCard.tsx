@@ -29,9 +29,19 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
   return (
     <article className="activity-entry" aria-label={activity.name}>
       <div className={`activity-card ${showCover ? 'has-cover' : ''}`}>
-        <span className="activity-order">{String(index + 1).padStart(2, '0')}</span>
-        <div className="activity-main">
+        <div className="activity-heading">
+          <span className="activity-order">{String(index + 1).padStart(2, '0')}</span>
           <h3 className="activity-name">{activity.name}</h3>
+          <EditorMenu label={`${activity.name}更多操作`}>
+            <button type="button" onClick={() => setDetailOpen(true)}>查看完整信息</button>
+            <button type="button" onClick={onEdit}>编辑活动</button>
+            <button type="button" disabled={index === 0} onClick={() => moveActivity(day.id, activity.id, 'up')}>上移</button>
+            <button type="button" disabled={index === day.activities.length - 1} onClick={() => moveActivity(day.id, activity.id, 'down')}>下移</button>
+            {allDays.length > 1 && <label>移至其他天<select aria-label="移至其他天" value="" onChange={(e) => { if (e.target.value) moveActivityToDay(day.id, activity.id, e.target.value); }}><option value="">选择天数</option>{allDays.filter((d) => d.id !== day.id).map((d) => <option key={d.id} value={d.id}>第{d.dayIndex}天</option>)}</select></label>}
+            <button type="button" className="text-danger" onClick={() => window.confirm(`删除活动「${activity.name}」？`) && deleteActivity(day.id, activity.id)}>删除活动</button>
+          </EditorMenu>
+        </div>
+        <div className="activity-main">
           <span className="cat-badge"><EditorIcon name="place" />{activity.category}</span>
           {(activity.description || matchedPoi?.intro) && <p className="activity-desc">{activity.description || matchedPoi?.intro}</p>}
           {matchedPoi?.reservation === 'required' && <div className="activity-reservation"><ReservationBadge poi={matchedPoi} />{matchedPoi.reservationNote && <p>{matchedPoi.reservationNote}</p>}</div>}
@@ -40,17 +50,9 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
         </div>
         {showCover && matchedPoi && <PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} onCoverError={setFailedCover} />}
       </div>
-      <div className="activity-between">
-        {nextLeg && <div className="editor-transit"><EditorIcon name={nextLeg.mode === 'walk' ? 'walk' : 'route'} /><span>{LEG_MODE_LABEL[nextLeg.mode]}约{formatLegDuration(nextLeg.durationMin)} · {nextLeg.source === 'heuristic' ? '估算' : formatLegDistance(nextLeg.distanceM)}</span></div>}
-        <EditorMenu label={`${activity.name}更多操作`}>
-          <button type="button" onClick={() => setDetailOpen(true)}>查看完整信息</button>
-          <button type="button" onClick={onEdit}>编辑活动</button>
-          <button type="button" disabled={index === 0} onClick={() => moveActivity(day.id, activity.id, 'up')}>上移</button>
-          <button type="button" disabled={index === day.activities.length - 1} onClick={() => moveActivity(day.id, activity.id, 'down')}>下移</button>
-          {allDays.length > 1 && <label>移至其他天<select aria-label="移至其他天" value="" onChange={(e) => { if (e.target.value) moveActivityToDay(day.id, activity.id, e.target.value); }}><option value="">选择天数</option>{allDays.filter((d) => d.id !== day.id).map((d) => <option key={d.id} value={d.id}>第{d.dayIndex}天</option>)}</select></label>}
-          <button type="button" className="text-danger" onClick={() => window.confirm(`删除活动「${activity.name}」？`) && deleteActivity(day.id, activity.id)}>删除活动</button>
-        </EditorMenu>
-      </div>
+      {nextLeg && <div className="activity-between">
+        <div className="editor-transit"><EditorIcon name={nextLeg.mode === 'walk' ? 'walk' : 'route'} /><span>{LEG_MODE_LABEL[nextLeg.mode]}约{formatLegDuration(nextLeg.durationMin)} · {nextLeg.source === 'heuristic' ? '估算' : formatLegDistance(nextLeg.distanceM)}</span></div>
+      </div>}
       {detailOpen && <Modal title={activity.name} onClose={() => setDetailOpen(false)}>
         <div className="activity-detail">
           <p>{activity.category}</p>

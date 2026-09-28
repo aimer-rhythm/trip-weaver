@@ -55,14 +55,40 @@ try {
  await page.evaluate(()=>document.fonts.ready);
  await page.locator('.activity-card img').first().evaluate(img=>img.decode());
  const itinerary=page.getByRole('group',{name:'行程天数'}); const map=page.getByRole('group',{name:'地图天数'});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'document must not scroll vertically');
  assert.equal(await itinerary.getByRole('button',{name:'第1天',exact:true}).getAttribute('aria-pressed'),'true');
+ assert.ok(await page.locator('.activity-card').first().evaluate(card=>{const c=card.getBoundingClientRect(), m=card.querySelector('summary').getBoundingClientRect(); return m.right<=c.right && m.top<c.top+60 && m.left>c.left+c.width/2;}),'more menu must be at card top right');
  const tilesLoaded = amapMode ? null : await page.waitForFunction(()=>[...document.querySelectorAll('.leaflet-tile')].some(img=>img.complete && img.naturalWidth>0),{},{timeout:8000}).then(()=>true,()=>false);
  if (amapMode) await page.locator('.amap-host').waitFor();
  console.log('Map tiles loaded:',tilesLoaded);
  if (tilesLoaded) await page.waitForFunction(()=>[...document.querySelectorAll('.leaflet-tile-loaded')].every(img=>Number(getComputedStyle(img).opacity)===1),{},{timeout:3000}).catch(()=>{});
+ if(!amapMode) {
+  await page.locator('.export-menu summary').click();
+  const jsonDownload=page.waitForEvent('download');
+  await page.getByRole('button',{name:'💾 JSON 备份',exact:true}).click();
+  const jsonFile=await jsonDownload;
+  assert.equal(JSON.parse(await fs.readFile(await jsonFile.path(),'utf8')).trip.id,trip.id);
+  await page.locator('.export-menu summary').click();
+  const pngDownload=page.waitForEvent('download',{timeout:60000});
+  await page.getByRole('button',{name:'🖼️ 长图 PNG（分享）',exact:true}).click();
+  const pngFile=await pngDownload;
+  await pngFile.saveAs(path.join(out,'export.png'));
+  const png=await fs.readFile(await pngFile.path());
+  assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a');
+  assert.ok(png.readUInt32BE(16)>=1400 && png.readUInt32BE(20)>500);
+  await page.evaluate(()=>{window.printCount=0;window.print=()=>{window.printCount++;}});
+  await page.locator('.export-menu summary').click();
+  await page.getByRole('button',{name:'🖨️ 打印 / PDF',exact:true}).click();
+  assert.equal(await page.evaluate(()=>window.printCount),1);
+  assert.ok(await page.locator('.print-host').evaluate(el=>el.parentElement===document.body));
+  await page.emulateMedia({media:'print'});
+  assert.equal(await page.locator('.print-host .pv').evaluate(el=>getComputedStyle(el).visibility),'visible');
+  await page.emulateMedia({media:'screen'});
+ }
  await page.screenshot({path:path.join(out,'desktop.png'),fullPage:true});
  for(const [name,width,height] of [['laptop',1280,800],['tablet',900,1000],['mobile',390,844]]) {
   await page.setViewportSize({width,height});
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),`${name}: vertical document overflow`);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${name}: horizontal overflow`);
   assert.ok(await page.locator('.editor-body').evaluate(el=>el.getBoundingClientRect().bottom<=innerHeight),`${name}: body below viewport`);
   await page.screenshot({path:path.join(out,`${name}.png`),fullPage:true});
@@ -123,6 +149,7 @@ try {
  await page.getByRole('button',{name:'对话',exact:true}).click();
  await page.getByLabel('输入你的行程想法').waitFor({state:'visible'});
  await page.screenshot({path:path.join(out,'mobile-chat.png')});
+ trip.days[3].activities=Array.from({length:30},(_,i)=>({...trip.days[0].activities[0],id:`long-${i}`,name:`长行程活动${i}`,description:'很长的行程内容。'.repeat(20),lat:0,lng:0}));
  noChat=true; broken=true;
  await page.setViewportSize({width:1672,height:941});
  await page.reload();
@@ -130,7 +157,10 @@ try {
  await page.waitForFunction(()=>document.querySelectorAll('.activity-card.has-cover').length===0);
  await page.screenshot({path:path.join(out,'no-chat-broken-photos.png')});
  assert.equal(await page.locator('.activity-entry').count(),3);
+ assert.ok(await page.locator('.print-host').evaluate(el=>el.scrollHeight>innerHeight),'fixture must exercise long offscreen export');
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'long export must not cause page scrolling');
+ for(const width of [390,1280]) {await page.setViewportSize({width,height:844}); assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1 && document.documentElement.scrollWidth<=innerWidth+1),'long export: viewport stays bounded');}
  assert.deepEqual(errors,[]);
- await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',saves,errors,tilesLoaded,checks:['four viewports','two-way filtering','add/delete day','details','edit and add activity','reorder','cross-day move','stale transit hiding','candidates','map controls','save failure/retry','mobile panels','missing conversation and broken images']},null,2));
+ await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',saves,errors,tilesLoaded,checks:['JSON/PNG/print export','long itinerary without document scrolling','four viewports','two-way filtering','add/delete day','details','edit and add activity','reorder','cross-day move','stale transit hiding','candidates','map controls','save failure/retry','mobile panels','missing conversation and broken images']},null,2));
  console.log('Editor browser checks passed. Screenshots:',out);
 } finally {await browser.close();}

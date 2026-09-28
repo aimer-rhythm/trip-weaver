@@ -162,7 +162,15 @@ unit-testable and shared between panels and the map.
 - `dayFilter` is the single owner for itinerary and map selection: `null` means overview/all days. Loading defaults to the first available day. View changes never increment `revision`.
 - `deleteDay` preserves selection by original day ID after renumbering. If the selected day was removed, select the first remaining day; an empty trip uses `null`. Overview stays overview after mutations.
 - Cards show activity order, not a timeline. Keep persisted legacy time fields during edits, with raw time visible only in details; new activities use empty time strings.
-- The action disclosure belongs to the activity above it and remains available even without an outgoing transit leg. Derive transit from `legForPair` so reorder/delete cannot leave stale travel information.
+- The action disclosure lives in the activity card header at the top right and remains available even without an outgoing transit leg. Derive transit from `legForPair` so reorder/delete cannot leave stale travel information.
 - Desktop uses three panels; at 1100px and below, use section switching. `MapView.useIsDesktop` must share that breakpoint so hidden maps do not fit a zero-size canvas.
 - Both map renderers use `MapControls`. Reset fits the selected range without changing the filter. Amap overlay invalidation includes activity labels/details, not just coordinates, so editing a name also refreshes its map label.
 - Regression commands: `node --import tsx --test apps/web/tests/editorStore.test.ts`, `node apps/web/tests/editor-browser.mjs`, and `node apps/web/tests/editor-browser.mjs --amap`. Browser checks intercept API calls with local fixtures; `--amap` tests the SDK contract using a stub, not a live Amap service.
+
+### Editor export and viewport regression guard
+
+- A `backdrop-filter` ancestor establishes a containing block for fixed children. Keep the offscreen `.print-host` and fullscreen export preview portalled to `document.body`; otherwise a long print view can inflate editor scrolling or a preview can become confined to the toolbar.
+- The editor toolbar must have an explicit stacking level above the body panels. Raising only the export menu's z-index cannot escape the toolbar's stacking context.
+- Scope viewport height/overflow to the editor AppLayout, keeping panel scrolling and print media intact. Test both document scrollHeight and panel scrolling, including a print view taller than the viewport.
+- Editor primary buttons/selected states intentionally reference the homepage `--color-brand-light` / `--color-brand` tokens per user request; disabled sends use its disabled pair.
+- Export checks must click through PNG, JSON and print, verify the downloaded PNG/JSON, and exercise long itineraries. Testing only whether the menu exists misses stacking-context click interception.
