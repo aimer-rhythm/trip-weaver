@@ -1156,3 +1156,106 @@ a { color: var(--color-primary); text-decoration: none; }
 @media (max-width: 600px) {
   .activity-heading { grid-template-columns: 28px minmax(0, 1fr) 44px; gap: 8px; }
 }
+
+/* ---- 我的行程：旅行手册收藏页 ---- */
+.trip-collection { width: 100%; max-width: 1760px; margin: 0 auto; padding: 42px 28px 72px; color: #233f70; }
+.collection-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin: 0 0 30px; }
+.collection-eyebrow { display: block; color: #637d9f; font-size: 12px; letter-spacing: 3px; margin-bottom: 12px; }
+.collection-heading h1 { font: 600 clamp(34px, 2.7vw, 52px)/1.4 'Noto Serif SC Variable', SimSun, serif; letter-spacing: 2px; margin: 0; }
+.collection-heading p { margin: 12px 0 0; font: 400 23px/1.6 'QianTuBiFeng Handwriting', 'Noto Serif SC Variable', serif; color: #5f7798; }
+.collection-count { display: inline-block; margin-left: 36px; font: 400 14px/1.6 var(--font-sans, sans-serif); color: #687f9e; vertical-align: middle; }
+.collection-count strong { font-size: 24px; font-weight: 500; color: #375886; margin-right: 3px; }
+.collection-toolbar { display: flex; gap: 16px; align-items: center; padding: 14px 18px; background: #ffffffad; border: 1px solid #ffffffc7; border-radius: 22px; box-shadow: 0 8px 30px #315d9220; backdrop-filter: blur(18px); }
+.collection-search { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.collection-search svg { width: 21px; height: 21px; flex: none; color: #637fa7; }
+.collection-search input { width: 100%; min-width: 0; height: 44px; border: 0; background: transparent; font: inherit; font-size: 15px; color: #233f70; padding: 8px 4px; border-radius: 6px; }
+.collection-search input::placeholder { color: #697f9f; }
+.collection-select { display: flex; align-items: center; gap: 10px; border-left: 1px solid #bacce673; padding-left: 20px; }
+.collection-select > span { font-size: 12px; color: #627b9d; }
+.collection-select select { min-width: 120px; max-width: 220px; min-height: 44px; border: 0; padding: 8px 28px 8px 12px; border-radius: 12px; background-color: #edf3fc; color: #35517d; font: inherit; font-size: 14px; cursor: pointer; }
+.collection-result-line { display: flex; justify-content: space-between; align-items: center; min-height: 64px; gap: 10px; font-size: 13px; color: #5c7396; padding: 0 4px; }
+.collection-result-line p { margin: 0; }
+.collection-result-line button { border: 0; background: none; color: var(--color-brand); font: inherit; font-size: 13px; cursor: pointer; min-height: 44px; padding: 8px 12px; border-radius: 8px; }
+.collection-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
+.collection-card { --cover-a: #dceeff; --cover-b: #e9eaff; --cover-ink: #456999; min-width: 0; display: grid; grid-template-columns: 46% minmax(0, 1fr); min-height: 280px; background: #ffffffdb; border: 1px solid #ffffffed; border-radius: 17px; padding: 0; color: inherit; box-shadow: 0 4px 8px #26446b0a, 0 16px 32px #315d9224; transition: transform 180ms ease, box-shadow 180ms ease; }
+.collection-card[data-tone="1"] { --cover-a: #d6eeee; --cover-b: #e9f1f1; --cover-ink: #3e737b; }
+.collection-card[data-tone="2"] { --cover-a: #e6e2fa; --cover-b: #f3edfa; --cover-ink: #696398; }
+.collection-card[data-tone="3"] { --cover-a: #f1e8db; --cover-b: #f7f0e9; --cover-ink: #897354; }
+.collection-card:hover { transform: translateY(-4px); box-shadow: 0 6px 12px #26446b0f, 0 20px 36px #315d9226; }
+.collection-cover { position: relative; min-height: 280px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding: 60px 20px 16px 28px; border-radius: 15px; background: linear-gradient(125deg, var(--cover-a), var(--cover-b)); color: var(--cover-ink); overflow: hidden; border-left: 5px solid #ffffff66; box-shadow: 3px 0 5px #315d9212; }
+.collection-cover-label { position: relative; z-index: 1; font-size: 10px; letter-spacing: 4px; margin-bottom: 8px; }
+.collection-destination { position: relative; z-index: 1; font: 400 clamp(28px, 2.6vw, 48px)/1.25 'QianTuBiFeng Handwriting', 'Noto Serif SC Variable', serif; letter-spacing: 3px; overflow-wrap: anywhere; text-align: center; }
+.collection-route { position: absolute; bottom: -5px; right: -22px; width: 180px; height: 90px; color: var(--cover-ink); opacity: .3; pointer-events: none; }
+.collection-duration { position: absolute; top: 15px; right: 15px; background: #ffffff8c; border: 1px solid #ffffffb3; padding: 4px 9px; border-radius: 8px; font-size: 12px; }
+.collection-card-body { min-width: 0; padding: 30px 22px 22px; display: flex; flex-direction: column; }
+.collection-card h2 { color: #29466f; font: 600 20px/1.6 'Noto Sans SC Variable', sans-serif; margin: 0 0 8px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 0; overflow-wrap: anywhere; }
+.collection-card-meta { font-size: 13px; color: #58708e; margin: 14px 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.collection-card-foot { margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.collection-card-foot time { font-size: 12px; color: #637b9a; }
+.collection-open { color: var(--color-brand); font-size: 12px; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; }
+.collection-open > span { font-size: 19px; }
+.collection-empty { padding: 66px 24px; background: #ffffff91; border: 1px solid #ffffffbd; border-radius: 24px; text-align: center; }
+.collection-empty h2 { font: 500 23px/1.5 'Noto Serif SC Variable', SimSun, serif; color: #385579; margin: 18px 0 12px; }
+.collection-empty p { color: #5f7697; font-size: 14px; line-height: 1.8; max-width: 440px; margin: 0 auto; }
+.collection-empty-mark { font: 400 60px/1 'QianTuBiFeng Handwriting', serif; color: #788abd; }
+.collection-retry { margin-top: 24px; min-height: 44px; padding: 10px 24px; border: 0; border-radius: 999px; background: linear-gradient(135deg, var(--color-brand-light), var(--color-brand)); color: white; cursor: pointer; font: inherit; font-size: 14px; }
+.collection-retry:disabled { opacity: .6; cursor: wait; }
+.collection-skeleton { padding: 8px; border: 1px solid #ffffffad; background: #ffffffa3; border-radius: 20px; min-height: 345px; }
+.collection-skeleton div { height: 164px; border-radius: 14px; background: #dfe8f5; }
+.collection-skeleton span { display: block; height: 14px; width: 75%; margin: 28px 18px 18px; border-radius: 6px; background: #e5ecf7; }
+.collection-skeleton span:last-child { width: 45%; }
+.collection-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.trip-collection :is(a, button, input, select):focus-visible { outline: 2px solid var(--color-brand); outline-offset: 4px; }
+@media (max-width: 1400px) {
+  .trip-collection { padding-inline: 8px; }
+  .collection-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .collection-toolbar { flex-wrap: wrap; gap: 12px; }
+  .collection-search { flex-basis: 100%; }
+  .collection-select { border: 0; padding-left: 0; flex: 1; }
+  .collection-select select { flex: 1; max-width: none; min-width: 0; }
+}
+@media (max-width: 600px) {
+  .app-layout:has(.trip-collection) .brand-en, .app-layout:has(.trip-collection) .quota-chip { display: none; }
+  .app-layout:has(.trip-collection) .topbar-capsule { padding-left: 12px; }
+  .app-layout:has(.trip-collection) .topbar-actions { gap: 0; }
+  .app-layout:has(.trip-collection) .topbar-actions .btn { padding: 8px; font-size: 12px; }
+  .trip-collection { padding: 30px 2px 44px; }
+  .collection-heading { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+  .collection-heading h1 { font-size: 30px; }
+  .collection-heading p { font-size: 21px; }
+  .collection-count { display: block; margin: 8px 0 0; font-size: 12px; }
+  .collection-count strong { font-size: 18px; }
+  .collection-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .collection-toolbar { padding: 12px; gap: 8px; border-radius: 18px; }
+  .collection-select { min-width: 0; flex-direction: column; align-items: stretch; gap: 4px; }
+  .collection-select > span { padding-left: 4px; }
+  .collection-select select { width: 100%; }
+  .collection-cover { min-height: 250px; padding: 58px 12px 14px 20px; }
+  .collection-card { min-height: 250px; grid-template-columns: 42% minmax(0, 1fr); }
+  .collection-card-body { padding: 22px 14px 18px; }
+  .collection-card h2 { font-size: 16px; }
+  .collection-destination { font-size: 30px; }
+  .collection-card h2 { min-height: 0; }
+  .collection-card-meta { margin-bottom: 18px; }
+  .collection-empty { padding: 40px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .collection-card { transition: none; }
+  .collection-card:hover { transform: none; }
+}
+
+/* Book-cover details follow the approved collection reference. */
+.collection-card[data-tone="4"] { --cover-a: #e2efd9; --cover-b: #e7f3e3; --cover-ink: #577c69; }
+.collection-cover::before { content: ''; position: absolute; inset: 0 auto 0 8px; width: 10px; background: linear-gradient(90deg, #365d7615, #ffffff5c, #365d7610); border-right: 1px solid #ffffff55; }
+.collection-cover::after { content: ''; position: absolute; top: 36px; bottom: 36px; left: 0; width: 18px; border-top: 5px solid #ffffff55; border-bottom: 5px solid #ffffff55; }
+.collection-drawing { width: 100%; max-width: 180px; height: 140px; margin-top: 10px; opacity: .65; }
+.collection-card-meta > span { display: flex; align-items: flex-start; gap: 8px; overflow-wrap: anywhere; }
+.collection-card-meta svg { width: 18px; height: 18px; flex: none; color: #7897c2; }
+.collection-duration { background: #c9e0f3ab; border: 0; border-radius: 999px; }
+.collection-result-line-idle { min-height: 36px; }
+.collection-result-line-idle p { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (min-width: 1401px) {
+  .collection-select { border-left: 0; padding-left: 0; }
+  .collection-select > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .collection-select select { background-color: #ffffffb3; border-radius: 999px; min-width: 180px; }
+}

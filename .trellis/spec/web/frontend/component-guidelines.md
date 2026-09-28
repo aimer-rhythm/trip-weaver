@@ -174,3 +174,11 @@ unit-testable and shared between panels and the map.
 - Scope viewport height/overflow to the editor AppLayout, keeping panel scrolling and print media intact. Test both document scrollHeight and panel scrolling, including a print view taller than the viewport.
 - Editor primary buttons/selected states intentionally reference the homepage `--color-brand-light` / `--color-brand` tokens per user request; disabled sends use its disabled pair.
 - Export checks must click through PNG, JSON and print, verify the downloaded PNG/JSON, and exercise long itineraries. Testing only whether the menu exists misses stacking-context click interception.
+
+## My Trips Collection
+
+- `TripListPage` owns search, destination and sorting in URL parameters (`q`, `city`, `sort`), preserving conditions when returning from detail.
+- Render only list summaries; do not fetch each trip detail to fill covers or fabricate travel dates/photos. Dates are explicitly update dates.
+- Cards are accessible whole-card links. Covers use decorative SVGs and handwriting; body text remains readable sans serif. Keep natural page scrolling and responsive columns, scoped separately from the fixed editor viewport.
+- Collection has no create/import/rename/delete commands; export belongs in detail. Keep loading, empty, no-results and retry states.
+- Regression: `node apps/web/tests/trip-collection-browser.mjs` checks filters, navigation, recovery and responsive layouts with isolated API fixtures.
