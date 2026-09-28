@@ -753,3 +753,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 18: 行程详情改版完成并归档
+
+**Date**: 2026-09-28
+**Task**: 行程详情改版完成并归档
+**Branch**: `master`
+
+### Summary
+
+完成参考图改版、天数联动、更多菜单、响应式、导出修复与纯文字入口；交通方式切换及移动后路段重算已另记待办。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `2693178` | (see git log) |
+| `8fe946a` | (see git log) |
+| `026337c` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

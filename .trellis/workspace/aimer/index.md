@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 17
+- **Total Sessions**: 18
 - **Last Active**: 2026-09-28
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~755 | Active |
+| `journal-1.md` | ~790 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 18 | 2026-09-28 | 行程详情改版完成并归档 | `2693178`, `8fe946a`, `026337c` | `master` |
 | 17 | 2026-09-28 | 归档生成中页面视觉验收与对齐 | `f3d2cd4`, `f44d486` | `master` |
 | 16 | 2026-09-27 | 景点封面来源工程：上游图库 → Pexels → 高德 + 闸门放宽（09-27） | `0a29278`, `3e9c39b`, `88f1798`, `83dcd32`, `e21536d`, `a5ff137`, `67065ca`, `ee42e64`, `d960987`, `5bfb2e4`, `a3922f3`, `def5d2c` | `master` |
 | 15 | 2026-09-27 | 上游社区数据接入 + 排程闭馆日分配修复 | `5ec08a9`, `b873c51`, `57142f5` | `master` |
