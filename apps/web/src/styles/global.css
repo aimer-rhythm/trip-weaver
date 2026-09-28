@@ -977,3 +977,161 @@ a { color: var(--color-primary); text-decoration: none; }
 
 
 
+/* ---- 行程详情：参考图的磨砂旅行手册 ---- */
+.editor-page {
+  --editor-ink: #233f70;
+  --editor-muted: #6f84aa;
+  --editor-gradient: linear-gradient(135deg, #78d0ff 0%, #568cff 56%, #8064ff 100%);
+  color: var(--editor-ink);
+  flex: none; height: calc(100dvh - 76px); max-height: calc(100dvh - 76px);
+  padding: 12px 0 36px; gap: 8px;
+}
+.editor-icon { display: inline-block; width: 22px; height: 22px; flex: none; vertical-align: middle; }
+.editor-page .muted { color: var(--editor-muted); }
+.editor-page .editor-toolbar {
+  min-height: 66px; flex: none; padding: 12px 20px; border: 1px solid #ffffffb3; border-radius: 24px;
+  background: #ffffff9c; box-shadow: 0 6px 24px #3b65a30c; backdrop-filter: blur(18px);
+}
+.editor-page .editor-toolbar-left { gap: 22px; flex: 1; }
+.editor-page .btn-back { display: flex; align-items: center; gap: 10px; border: 0; background: transparent; border-right: 1px solid #bbccec80; border-radius: 0; padding: 0 22px 0 0; color: var(--editor-ink); }
+.editor-page .btn-back .editor-icon { box-sizing: content-box; padding: 8px; border-radius: 50%; background: #dfeafb; }
+.editor-page .editor-title { display: flex; align-items: center; gap: 22px; min-width: 0; flex-wrap: wrap; }
+.editor-page .editor-title h1 { display: flex; align-items: center; gap: 10px; font: 600 22px 'Noto Serif SC Variable', SimSun, serif; white-space: normal; overflow-wrap: anywhere; }
+.editor-page .editor-title h1 .editor-icon, .editor-trip-meta .editor-icon { color: #627dff; }
+.editor-trip-meta { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.editor-page .editor-title > .text-danger { flex-basis: 100%; font-size: 13px; }
+.editor-page .export-menu > summary { display: flex; align-items: center; gap: 8px; background: #ffffffd9; border-radius: 999px; color: var(--editor-ink); min-height: 40px; }
+.editor-page .export-menu { z-index: 15; }
+.editor-page .editor-body { display: grid; grid-template-columns: minmax(0, 26fr) minmax(0, 41fr) minmax(0, 33fr); gap: 16px; }
+.editor-page .editor-body.without-chat { grid-template-columns: minmax(0, 56fr) minmax(0, 44fr); }
+.editor-page :is(.editor-chat, .editor-left, .editor-map) {
+  width: auto; min-width: 0; border: 1px solid #ffffffb3; border-radius: 24px; background: #ffffffaa;
+  box-shadow: 0 10px 30px #31568c0b; min-height: 0;
+}
+.editor-page .editor-chat { overflow: hidden; }
+.editor-page .editor-left { overflow: hidden; }
+.editor-page .editor-map { padding: 16px; }
+.editor-page .editor-left-scroll { padding: 6px 18px 24px; scrollbar-width: thin; scrollbar-color: #aabde166 transparent; }
+.editor-day-nav { display: flex; align-items: center; gap: 10px; padding: 16px 18px 12px; flex: none; }
+.editor-day-tabs { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: thin; min-width: 0; flex: 1; padding: 2px 0 6px; }
+.editor-day-tabs button, .editor-candidates-button, .editor-page .day-filter-btn {
+  border: 0; border-radius: 999px; min-height: 38px; padding: 8px 17px; flex: none; cursor: pointer;
+  background: #ffffff70; color: var(--editor-muted); font: inherit; font-size: 14px; box-shadow: none; white-space: nowrap;
+}
+.editor-day-tabs button:first-child, .editor-candidates-button, .editor-page .day-filter-btn:first-child { background: #e2ebf980; }
+.editor-day-tabs button[aria-pressed=true], .editor-page .day-filter-btn.active { background: var(--editor-gradient); color: white; box-shadow: 0 4px 12px #527eff26; }
+.editor-candidates-button { padding: 8px 14px; font-size: 13px; }
+.editor-page .day-section { background: none; border: 0; border-radius: 0; overflow: visible; margin: 0; }
+.editor-page .day-head { display: flex; justify-content: space-between; align-items: flex-start; border: 0; padding: 6px 0 16px; gap: 6px; }
+.editor-page .day-head > div { min-width: 0; }
+.editor-page .day-head h2, .editor-overview h2 { font: 400 clamp(25px, 1.8vw, 32px)/1.5 'QianTuBiFeng Handwriting', 'Noto Serif SC Variable', serif; letter-spacing: 1px; margin: 0 0 8px; overflow-wrap: anywhere; }
+.editor-page .day-head p { margin: 0; color: var(--editor-muted); font-size: 14px; }
+.editor-page .day-body { padding: 0; gap: 0; }
+.editor-page .activity-card { display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: start; gap: 12px; padding: 18px 16px; background: #ffffffea; border: 1px solid #ffffff; border-radius: 18px; box-shadow: 0 3px 8px #23417312, 0 12px 28px #2341731a; }
+.editor-page .activity-card.has-cover { grid-template-columns: 40px minmax(0, 1fr) minmax(120px, 39%); }
+.activity-order { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; color: #6675ed; background: linear-gradient(135deg, #eef3ff, #cad6ff); font-size: 17px; }
+.editor-page .activity-name { font-size: 20px; line-height: 1.45; margin: 2px 0 8px; color: var(--editor-ink); font-weight: 600; overflow-wrap: anywhere; }
+.editor-page .cat-badge { color: var(--editor-muted); font-size: 14px; gap: 6px; }
+.editor-page .cat-badge .editor-icon { color: #7b82ef; width: 18px; height: 18px; }
+.editor-page .activity-desc { color: #4c648c; font-size: 14px; line-height: 1.8; margin: 10px 0 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.editor-page .activity-card > .poi-cover { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; align-self: stretch; min-height: 150px; max-height: 210px; border: 2px solid white; border-radius: 14px; box-shadow: 0 3px 10px #2c4c7a0d; }
+.activity-reservation { margin-top: 12px; font-size: 12px; }
+.activity-reservation p { margin: 6px 0 0; color: #a66b12; line-height: 1.5; }
+.editor-page .rsv-required { background: #fff4d9; color: #b77a16; font-weight: 500; }
+.editor-page .rsv-badge { padding: 5px 9px; border-radius: 999px; }
+.activity-between { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 2px 0 2px 6px; gap: 8px; }
+.editor-transit { display: flex; align-items: center; gap: 10px; font-size: 13px; line-height: 1.5; color: #4b679b; }
+.activity-between .editor-menu { margin-left: auto; }
+.editor-menu { position: relative; flex: none; }
+.editor-menu > summary { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; font-size: 24px; font-weight: 600; list-style: none; cursor: pointer; color: #4f6a9c; }
+.editor-menu > summary::-webkit-details-marker { display: none; }
+.editor-menu > summary:hover, .editor-menu[open] > summary { background: #dde9fb; }
+.editor-menu-list { position: absolute; right: 0; bottom: 100%; z-index: 12; display: flex; flex-direction: column; width: 180px; padding: 6px; border-radius: 14px; background: #fff; border: 1px solid #dce6f5; box-shadow: 0 10px 30px #23417326; }
+.day-head .editor-menu-list { top: 100%; bottom: auto; }
+.editor-menu-list button, .editor-menu-list label { font: inherit; font-size: 14px; padding: 10px; border: 0; background: none; text-align: left; border-radius: 8px; color: inherit; min-height: 40px; }
+.editor-menu-list button:not(:disabled):hover { background: #edf3ff; cursor: pointer; }
+.editor-menu-list button:disabled { opacity: .4; cursor: not-allowed; }
+.editor-menu-list label { display: grid; gap: 6px; }
+.editor-menu-list select { font: inherit; padding: 7px; border: 1px solid #dce6f5; border-radius: 6px; width: 100%; }
+.editor-menu-list .text-danger { color: #bd3737; border-top: 1px solid #eef1f5; }
+.activity-detail { line-height: 1.8; overflow-wrap: anywhere; }
+.activity-detail > a { display: block; margin-top: 8px; }
+.editor-page :is(.btn-add-activity, .btn-add-day) { border: 1px dashed #b5c9e6; color: #617fa8; border-radius: 14px; padding: 12px; background: #ffffff40; }
+.editor-overview-day { display: flex; flex-direction: column; gap: 10px; width: 100%; margin: 14px 0; padding: 20px; border: 1px solid white; border-radius: 18px; background: #ffffffdf; color: inherit; text-align: left; box-shadow: 0 8px 20px #2341730d; cursor: pointer; }
+.editor-overview-day strong { font: 400 26px/1.5 'QianTuBiFeng Handwriting', serif; }
+.editor-overview-day span { color: var(--editor-muted); font-size: 13px; }
+.editor-overview-day p { margin: 0; line-height: 1.7; }
+.editor-page .chat-panel { padding: 26px 18px; gap: 12px; }
+.editor-page .chat-stream { padding: 36px 10px 16px; gap: 24px; scrollbar-width: thin; }
+.editor-page .chat-msg { max-width: 90%; }
+.editor-page .chat-bubble { padding: 14px 16px; line-height: 1.8; font-size: 14px; background: #ffffffbf; border: 0; border-radius: 18px; color: #45608e; }
+.editor-page .chat-msg-user .chat-bubble { background: #dcecff; color: #315383; }
+.editor-page .chat-input { background: #ffffffc9; border: 1px solid white; border-radius: 28px; padding: 8px; margin: 0; align-items: center; box-shadow: 0 6px 18px #4f7aaf09; }
+.editor-page .chat-input textarea { width: 0; min-width: 0; max-height: 120px; border: 0; resize: none; background: transparent; font-size: 13px; padding: 10px; color: var(--editor-ink); }
+.editor-page .chat-input textarea::placeholder { color: #8da1bf; }
+.editor-page .chat-input .btn { width: 42px; height: 42px; flex: none; padding: 10px; border-radius: 50%; background: var(--editor-gradient); color: #fff; box-shadow: 0 3px 10px #7075ff44; }
+.editor-page .chat-input .btn:disabled { opacity: .6; }
+.editor-page .map-pane { position: relative; inset: auto; display: flex; flex-direction: column; height: 100%; gap: 14px; }
+.editor-page .day-filter { position: static; display: flex; flex-wrap: nowrap; flex: none; max-width: 100%; overflow-x: auto; gap: 8px; z-index: auto; scrollbar-width: thin; padding-bottom: 2px; }
+.editor-map-canvas { position: relative; flex: 1; min-height: 0; border-radius: 18px; overflow: hidden; isolation: isolate; }
+.editor-map-controls { position: absolute; right: 12px; bottom: 42px; z-index: 1000; border: 1px solid white; border-radius: 24px; background: #fffffff2; box-shadow: 0 4px 18px #2341731a; display: flex; flex-direction: column; padding: 6px; }
+.editor-map-controls button { width: 40px; height: 40px; border: 0; background: none; color: #3e5b8b; font-size: 24px; cursor: pointer; border-radius: 50%; display: grid; place-items: center; }
+.editor-map-controls button:last-child { border-top: 1px solid #e5eaf3; border-radius: 0 0 20px 20px; }
+.editor-map-controls button:hover { background: #edf3ff; }
+.editor-page :is(button, summary, a, textarea, select):focus-visible { outline: 2px solid #557af2; outline-offset: 3px; }
+@media (min-width: 1101px) and (max-width: 1400px) {
+  .editor-page .activity-card { gap: 8px; padding: 14px 12px; grid-template-columns: 32px minmax(0, 1fr); }
+  .editor-page .activity-card.has-cover { grid-template-columns: 32px minmax(0, 1fr) 34%; }
+  .activity-order { width: 32px; height: 32px; font-size: 14px; }
+  .editor-page .activity-name { font-size: 18px; }
+  .editor-page .activity-card > .poi-cover { min-height: 130px; }
+  .editor-day-nav { gap: 4px; padding-inline: 12px; }
+  .editor-day-tabs button { padding-inline: 12px; }
+  .editor-page .editor-title { gap: 10px; }
+  .editor-page .editor-trip-meta { font-size: 12px; }
+}
+@media (max-width: 1100px) {
+  .editor-page { padding-bottom: 16px; }
+  .editor-page .editor-mobile-tabs { display: flex; gap: 8px; padding: 4px; border: 0; background: #ffffff80; border-radius: 999px; flex: none; }
+  .editor-page .mobile-tab { flex: 1; min-height: 40px; border: 0; border-radius: 999px; background: none; color: var(--editor-muted); cursor: pointer; }
+  .editor-page .mobile-tab.active { background: var(--editor-gradient); color: white; }
+  .editor-page .editor-body, .editor-page .editor-body.without-chat { display: flex; }
+  .editor-page :is(.editor-chat, .editor-left, .editor-map) { display: none; width: 100%; flex: 1; }
+  .editor-page .mobile-chat .editor-chat, .editor-page .mobile-list .editor-left { display: flex; }
+  .editor-page .mobile-map .editor-map { display: block; }
+  .editor-page .editor-title { display: block; }
+  .editor-page .editor-title h1 { font-size: 19px; }
+  .editor-page .editor-trip-meta { margin-top: 6px; font-size: 12px; }
+  .editor-page .activity-card > .poi-cover { max-height: 230px; }
+}
+@media (max-width: 600px) {
+  .editor-page { height: calc(100dvh - 68px); max-height: calc(100dvh - 68px); padding-top: 8px; }
+  .app-layout:has(.editor-page) .topbar { padding-top: 12px; }
+  .app-layout:has(.editor-page) .brand-en, .app-layout:has(.editor-page) .quota-chip { display: none; }
+  .app-layout:has(.editor-page) .topbar-capsule { padding-left: 12px; }
+  .app-layout:has(.editor-page) .topbar-actions { gap: 0; }
+  .app-layout:has(.editor-page) .topbar-actions .btn { padding: 8px; font-size: 12px; }
+  .editor-page .editor-toolbar { padding: 10px; gap: 8px; border-radius: 18px; }
+  .editor-page .editor-toolbar-left { gap: 8px; }
+  .editor-page .btn-back { border: 0; padding: 0; }
+  .editor-page .btn-back span, .editor-page .editor-title h1 .editor-icon { display: none; }
+  .editor-page .editor-title h1 { font-size: 16px; }
+  .editor-page .editor-trip-meta { font-size: 11px; display: block; }
+  .editor-trip-meta .editor-icon { display: none; }
+  .editor-page .export-menu > summary { font-size: 12px; padding: 8px; gap: 4px; }
+  .editor-page .export-menu .editor-icon { width: 16px; height: 16px; }
+  .editor-page .editor-left-scroll { padding: 4px 12px 24px; }
+  .editor-day-nav { padding: 12px 12px 8px; gap: 4px; }
+  .editor-day-tabs button { padding-inline: 13px; }
+  .editor-candidates-button { padding-inline: 10px; font-size: 12px; }
+  .editor-page .day-head h2 { font-size: 26px; }
+  .editor-page .activity-card { padding: 14px 10px; gap: 8px; grid-template-columns: 28px minmax(0, 1fr); }
+  .editor-page .activity-card.has-cover { grid-template-columns: 28px minmax(0, 1fr) 32%; }
+  .activity-order { width: 28px; height: 28px; font-size: 13px; }
+  .editor-page .activity-name { font-size: 17px; }
+  .editor-page .activity-card > .poi-cover { min-height: 120px; max-height: 160px; border-radius: 10px; }
+  .editor-page .cat-badge { font-size: 12px; }
+  .editor-page .activity-desc { font-size: 14px; }
+  .editor-page .editor-map { padding: 12px; }
+  .editor-page .chat-stream { padding-top: 12px; }
+}

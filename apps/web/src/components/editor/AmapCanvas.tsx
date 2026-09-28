@@ -10,6 +10,7 @@
 //
 // 路线是双层折线（参数见 lib/routeStyle），marker 带名称标签（HTML 见 lib/markerHtml），
 // 标签避让见 lib/labelCollision —— 三者都与 LeafletCanvas 共用，改一处即两套生效。
+import { MapControls } from './MapControls';
 import { useEffect, useRef } from 'react';
 import type { Activity, TripDay } from '@tripweaver/shared';
 import type { AmapInfoWindow, AmapMap, AmapNamespace, AmapOverlay } from '../../lib/amapTypes';
@@ -34,7 +35,6 @@ const FIT_PADDING = [40, 40, 40, 40]; // 上、下、左、右
 
 /** 气泡内容：与 Leaflet 侧的 <ActivityPopup> 同构，编辑按钮走 data 属性委托 */
 function popupHtml(day: TripDay, activity: Activity): string {
-  const time = activity.startTime ? `${activity.startTime}${activity.endTime ? ` – ${activity.endTime}` : ''}` : '--:--';
   const notes = activity.sourceNotes
     .map(
       (n) =>
@@ -44,7 +44,7 @@ function popupHtml(day: TripDay, activity: Activity): string {
   return [
     '<div class="map-popup">',
     `<strong>${escapeHtml(activity.name)}</strong>`,
-    `<p class="muted">Day ${day.dayIndex} · ${time} · ${escapeHtml(activity.category)}</p>`,
+    `<p class="muted">第${day.dayIndex}天 · ${escapeHtml(activity.category)}</p>`,
     activity.description ? `<p>${escapeHtml(activity.description)}</p>` : '',
     activity.coordSource === 'estimated' ? '<p class="tag tag-warn">坐标为估算</p>' : '',
     notes ? `<p>${notes}</p>` : '',
@@ -66,10 +66,10 @@ export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: 
   onEditRef.current = onEditActivity;
 
   // 覆盖物的输入汇总成一个 key，供下面两个 effect 共用（逐项列依赖只会制造噪声）
-  const contentKey = [
-    points.map((p) => `${p.activity.id}:${p.pos.lat},${p.pos.lng}`).join('|'),
-    dayLines.map((l) => `${l.dayIndex}:${l.dimmed}:${l.segments.map((s) => s.key).join(',')}`).join('|'),
-  ].join('#');
+  const contentKey = JSON.stringify([
+    points.map(({ activity, day, pos, order, color, dimmed }) => ({ activity, dayIndex: day.dayIndex, pos, order, color, dimmed })),
+    dayLines,
+  ]);
 
   // 建图（只跑一次）
   useEffect(() => {
@@ -77,7 +77,7 @@ export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: 
     if (!host) return;
     const map = new amap.Map(host, {
       // ⚠️ 不要 'point' —— 那才是 POI 与文字标注层
-      features: ['bg', 'building'],
+      features: ['bg', 'road', 'building'],
       viewMode: '2D',
       zoom: 4,
       center: [105, 35],
@@ -194,7 +194,11 @@ export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: 
     return () => clearTimeout(timer);
   }, [contentKey, visible]);
 
-  return <div className="amap-host" ref={hostRef} onClick={handleHostClick} />;
+  return <><div className="amap-host" ref={hostRef} onClick={handleHostClick} /><MapControls
+    onZoomIn={() => mapRef.current?.setZoom(mapRef.current.getZoom() + 1)}
+    onZoomOut={() => mapRef.current?.setZoom(mapRef.current.getZoom() - 1)}
+    onReset={() => { const map = mapRef.current; if (!map) return; if (fitTargetsRef.current.length) map.setFitView(fitTargetsRef.current, false, FIT_PADDING); else { map.setCenter([105, 35]); map.setZoom(4); } }}
+  /></>;
 
   function handleHostClick(event: React.MouseEvent<HTMLDivElement>) {
     const button = (event.target as HTMLElement).closest('[data-edit-activity]');

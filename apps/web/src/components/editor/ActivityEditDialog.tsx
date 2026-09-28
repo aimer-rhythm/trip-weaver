@@ -14,8 +14,6 @@ export function ActivityEditDialog({ dayId, activity, onClose }: Props) {
   const updateActivity = useEditorStore((s) => s.updateActivity);
 
   const [name, setName] = useState(activity?.name ?? '');
-  const [startTime, setStartTime] = useState(activity?.startTime ?? '');
-  const [endTime, setEndTime] = useState(activity?.endTime ?? '');
   const [description, setDescription] = useState(activity?.description ?? '');
   const [lat, setLat] = useState(activity ? String(activity.lat) : '');
   const [lng, setLng] = useState(activity ? String(activity.lng) : '');
@@ -33,8 +31,9 @@ export function ActivityEditDialog({ dayId, activity, onClose }: Props) {
     const coordChanged = activity && (latNum !== activity.lat || lngNum !== activity.lng);
     const patch = {
       name: name.trim(),
-      startTime: startTime.trim(),
-      endTime: endTime.trim(),
+      // 旧行程时刻原样保留，新活动不创建定时排程。
+      startTime: activity?.startTime ?? '',
+      endTime: activity?.endTime ?? '',
       description: description.trim(),
       lat: latNum,
       lng: lngNum,
@@ -55,18 +54,8 @@ export function ActivityEditDialog({ dayId, activity, onClose }: Props) {
       <form onSubmit={submit} className="form">
         <label>
           名称
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="如：外滩漫步" />
+          <input value={name} maxLength={100} onChange={(e) => setName(e.target.value)} placeholder="如：外滩漫步" />
         </label>
-        <div className="form-grid-2">
-          <label>
-            开始时间
-            <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
-          </label>
-          <label>
-            结束时间
-            <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
-          </label>
-        </div>
         <label>
           介绍
           <input value={description} onChange={(e) => setDescription(e.target.value)} maxLength={500} placeholder="一句话介绍或游玩建议" />

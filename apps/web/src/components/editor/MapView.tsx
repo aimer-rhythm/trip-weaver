@@ -4,7 +4,6 @@
 // 选择逻辑只在本文件；两个 canvas 只负责把数据画出来（数据层见 lib/mapData）。
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../../api/client';
-import { dayColor } from '../../lib/colors';
 import { loadAmapSdk } from '../../lib/amapLoader';
 import { collectDayLines, collectPoints } from '../../lib/mapData';
 import type { AmapNamespace } from '../../lib/amapTypes';
@@ -17,11 +16,11 @@ interface AmapJsConfig {
   amapJsSecurityCode: string;
 }
 
-// 桌面端地图常驻可见；≤768px 时由移动页签决定
+// 桌面端地图常驻可见；≤1100px 时由移动页签决定
 function useIsDesktop(): boolean {
-  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 769px)').matches);
+  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 1101px)').matches);
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 769px)');
+    const mq = window.matchMedia('(min-width: 1101px)');
     const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);
@@ -62,12 +61,13 @@ function DayFilterControl() {
   const trip = useEditorStore((s) => s.trip);
   const dayFilter = useEditorStore((s) => s.dayFilter);
   const setDayFilter = useEditorStore((s) => s.setDayFilter);
-  if (!trip || trip.days.length <= 1) return null;
+  if (!trip) return null;
   return (
-    <div className="day-filter">
+    <div className="day-filter" role="group" aria-label="地图天数">
       <button
         type="button"
         className={`day-filter-btn ${dayFilter === null ? 'active' : ''}`}
+        aria-pressed={dayFilter === null}
         onClick={() => setDayFilter(null)}
       >
         全部
@@ -77,8 +77,8 @@ function DayFilterControl() {
           key={d.id}
           type="button"
           className={`day-filter-btn ${dayFilter === d.dayIndex ? 'active' : ''}`}
-          style={dayFilter === d.dayIndex ? { background: dayColor(d.dayIndex), borderColor: dayColor(d.dayIndex) } : undefined}
-          onClick={() => setDayFilter(dayFilter === d.dayIndex ? null : d.dayIndex)}
+          aria-pressed={dayFilter === d.dayIndex}
+          onClick={() => setDayFilter(d.dayIndex)}
         >
           D{d.dayIndex}
         </button>
@@ -101,8 +101,8 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
 
   return (
     <div className="map-pane">
-      {amap ? <AmapCanvas amap={amap} {...canvasProps} /> : <LeafletCanvas {...canvasProps} />}
       <DayFilterControl />
+      <div className="editor-map-canvas">{amap ? <AmapCanvas amap={amap} {...canvasProps} /> : <LeafletCanvas {...canvasProps} />}</div>
       {points.length === 0 && <div className="map-empty muted">暂无可标注的活动坐标</div>}
     </div>
   );

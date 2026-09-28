@@ -6,7 +6,7 @@ import { DATA_SOURCE_LABEL, POI_CATEGORY_ICON, POI_CATEGORY_LABEL } from '../../
 import { useEditorStore } from '../../store/editorStore';
 import { PoiCard, PexelsCredit } from '../PoiCard';
 
-export function CandidateDrawer({ pois }: { pois: ResearchPoi[] }) {
+export function CandidateDrawer({ pois, expanded = false }: { pois: ResearchPoi[]; expanded?: boolean }) {
   const trip = useEditorStore((s) => s.trip);
 
   const groups = useMemo(
@@ -25,7 +25,7 @@ export function CandidateDrawer({ pois }: { pois: ResearchPoi[] }) {
   const sourceText = sources.length ? sources.map((s) => DATA_SOURCE_LABEL[s]).join(' + ') : '模型知识';
 
   return (
-    <details className="candidate-drawer">
+    <details className="candidate-drawer" open={expanded || undefined}>
       <summary>
         备选（{pois.length}）<span className="muted">未编入行程的调研候选</span>
       </summary>

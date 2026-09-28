@@ -1,4 +1,5 @@
 // 输入区：Enter 发送、Shift+Enter 换行；发送中禁用避免重复提交。
+import { EditorIcon } from '../editor/EditorIcon';
 import { useState, type KeyboardEvent } from 'react';
 
 interface Props {
@@ -28,16 +29,16 @@ export function ChatInput({ disabled, sending, onSend }: Props) {
     <div className="chat-input">
       <textarea
         value={text}
-        rows={2}
+        rows={1}
         maxLength={1000}
         disabled={disabled}
-        placeholder="说说要改哪里，或问问这趟行程的问题"
+        placeholder="说说你想怎样调整行程…"
         aria-label="输入你的行程想法"
         onChange={(e) => setText(e.target.value)}
         onKeyDown={onKeyDown}
       />
-      <button type="button" className="btn btn-primary" disabled={!canSend} onClick={submit}>
-        {sending ? '思考中…' : '发送'}
+      <button type="button" className="btn btn-primary" disabled={!canSend} onClick={submit} aria-label={sending ? "思考中" : "发送"} title={sending ? "思考中" : "发送"}>
+        <EditorIcon name="send" />
       </button>
     </div>
   );

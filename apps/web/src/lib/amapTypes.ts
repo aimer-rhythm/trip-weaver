@@ -21,6 +21,8 @@ export interface AmapMap {
   on(event: AmapMapEvent, handler: () => void): void;
   off(event: AmapMapEvent, handler: () => void): void;
   getZoom(): number;
+  setZoom(zoom: number): void;
+  setCenter(center: [number, number]): void;
 }
 
 type AmapMapEvent = 'zoomend' | 'moveend';

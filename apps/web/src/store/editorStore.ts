@@ -52,7 +52,7 @@ export const useEditorStore = create<EditorState>((set, get) => {
     trip: null,
     revision: 0,
     dayFilter: null,
-    load: (trip) => set({ trip: structuredClone(trip), revision: 0, dayFilter: null }),
+    load: (trip) => set({ trip: structuredClone(trip), revision: 0, dayFilter: trip.days[0]?.dayIndex ?? null }),
     clear: () => set({ trip: null, revision: 0, dayFilter: null }),
     setDayFilter: (dayIndex) => set({ dayFilter: dayIndex }),
 
@@ -86,11 +86,15 @@ export const useEditorStore = create<EditorState>((set, get) => {
         draft.days.push({ id: uid(), dayIndex: draft.days.length + 1, title: '', activities: [] });
       }),
 
-    deleteDay: (dayId) =>
+    deleteDay: (dayId) => {
+      const selectedId = get().trip?.days.find((day) => day.dayIndex === get().dayFilter)?.id;
       mutate((draft) => {
         draft.days = draft.days.filter((d) => d.id !== dayId);
         renumber(draft.days);
-      }),
+      });
+      const days = get().trip?.days ?? [];
+      set({ dayFilter: get().dayFilter === null ? null : (days.find((day) => day.id === selectedId)?.dayIndex ?? days[0]?.dayIndex ?? null) });
+    },
 
     updateDayTitle: (dayId, title) =>
       mutate((draft) => {

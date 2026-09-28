@@ -123,8 +123,8 @@ Rules that keep this from becoming two divergent maps:
   (5 px, z 61) — and the numbers only stay identical across both renderers if there is one source.
   Selecting a day no longer removes the other days from the data; `DayLines` / `MapPoint` carry a
   `dimmed` flag and the faded band (opacity 0.2, z 10/11) is what the user sees instead. The map
-  still fits **all** days, dimmed ones included: fitting only the selected day would push them off
-  screen, which defeats the point of drawing them (a trip's days can be 0.5° apart).
+  fits the selected day (or all days in overview); other days stay as dimmed context outside or
+  inside that viewport. Reset uses the same selected range.
   Leaflet's `Path` has neither `zIndex` (JSX order decides layering) nor `showDir`
   (Amap's direction arrows): the fallback is dual-layer but arrowless **by design**. Treat that as
   a known asymmetry, not a missed edit, when reviewing the two canvases side by side.
@@ -156,3 +156,13 @@ id link at the producing side (generation) rather than strengthening string heur
 
 **Related**: keep name-match derivations in pure functions under `src/lib/` so they are
 unit-testable and shared between panels and the map.
+
+## Itinerary Detail Reading and Navigation (2026-09-28)
+
+- `dayFilter` is the single owner for itinerary and map selection: `null` means overview/all days. Loading defaults to the first available day. View changes never increment `revision`.
+- `deleteDay` preserves selection by original day ID after renumbering. If the selected day was removed, select the first remaining day; an empty trip uses `null`. Overview stays overview after mutations.
+- Cards show activity order, not a timeline. Keep persisted legacy time fields during edits, with raw time visible only in details; new activities use empty time strings.
+- The action disclosure belongs to the activity above it and remains available even without an outgoing transit leg. Derive transit from `legForPair` so reorder/delete cannot leave stale travel information.
+- Desktop uses three panels; at 1100px and below, use section switching. `MapView.useIsDesktop` must share that breakpoint so hidden maps do not fit a zero-size canvas.
+- Both map renderers use `MapControls`. Reset fits the selected range without changing the filter. Amap overlay invalidation includes activity labels/details, not just coordinates, so editing a name also refreshes its map label.
+- Regression commands: `node --import tsx --test apps/web/tests/editorStore.test.ts`, `node apps/web/tests/editor-browser.mjs`, and `node apps/web/tests/editor-browser.mjs --amap`. Browser checks intercept API calls with local fixtures; `--amap` tests the SDK contract using a stub, not a live Amap service.

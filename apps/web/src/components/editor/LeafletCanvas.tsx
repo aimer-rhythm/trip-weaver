@@ -4,6 +4,7 @@
 //
 // 路线是双层折线（参数见 lib/routeStyle），marker 带名称标签（HTML 见 lib/markerHtml，
 // 与高德侧同一个生成函数），标签避让见 lib/labelCollision。
+import { MapControls } from './MapControls';
 import { useEffect } from 'react';
 import L from 'leaflet';
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
@@ -78,7 +79,10 @@ function MapController({ points, visible }: { points: MapPoint[]; visible: boole
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, visible, map]);
-  return null;
+  return <MapControls onZoomIn={() => map.zoomIn()} onZoomOut={() => map.zoomOut()} onReset={() => {
+    if (targets.length) map.fitBounds(L.latLngBounds(targets.map((point) => toLatLng(point.pos))), { padding: [40, 40], maxZoom: 15, animate: false });
+    else map.setView([35, 105], 4);
+  }} />;
 }
 
 function ActivityPopup({
@@ -94,8 +98,7 @@ function ActivityPopup({
     <div className="map-popup">
       <strong>{activity.name}</strong>
       <p className="muted">
-        Day {day.dayIndex} · {activity.startTime || '--:--'}
-        {activity.endTime ? ` – ${activity.endTime}` : ''} · {activity.category}
+        第{day.dayIndex}天 · {activity.category}
       </p>
       {activity.description && <p>{activity.description}</p>}
       {activity.coordSource === 'estimated' && <p className="tag tag-warn">坐标为估算</p>}
@@ -117,7 +120,7 @@ function ActivityPopup({
 
 export function LeafletCanvas({ points, dayLines, visible, onEditActivity }: Props) {
   return (
-    <MapContainer center={[35.0, 105.0]} zoom={4} className="leaflet-host" scrollWheelZoom>
+    <MapContainer center={[35.0, 105.0]} zoom={4} className="leaflet-host" scrollWheelZoom zoomControl={false}>
       <TileLayer
         url="https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}"
         subdomains={['1', '2', '3', '4']}
