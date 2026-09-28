@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ResearchPoi } from '@tripweaver/shared';
-import { generationCardCaption, selectGenerationCards } from '../src/lib/generationCards';
+import { advanceGenerationCards, generationCardCaption, selectGenerationCards } from '../src/lib/generationCards';
 
 const poi = (id: string, coverUrl?: string): ResearchPoi => ({ id, name: id, coverUrl, category: 'attraction', intro: '', reservation: 'unknown', sourceLinks: [] });
 
@@ -28,4 +28,25 @@ test('caption uses a real introduction phrase and does not invent one when absen
   const place = { ...poi('颐和园'), intro: '昆明湖畔散步，欣赏园林建筑。' };
   assert.equal(generationCardCaption(place), '颐和园 · 昆明湖畔散步');
   assert.equal(generationCardCaption(poi('故宫')), '故宫');
+});
+
+test('a burst enters one card per tick without exceeding five slots', () => {
+  const target = Array.from({ length: 5 }, (_, i) => poi(String(i)));
+  let shown: ResearchPoi[] = [];
+  for (let i = 0; i < 5; i++) {
+    shown = advanceGenerationCards(shown, target);
+    assert.equal(shown.length, i + 1);
+  }
+  assert.strictEqual(advanceGenerationCards(shown, target), shown);
+});
+
+test('a changing SSE target replaces only one stale slot, then converges', () => {
+  const before = Array.from({ length: 5 }, (_, i) => poi(`old-${i}`));
+  const target = Array.from({ length: 5 }, (_, i) => poi(`new-${i}`));
+  let shown = advanceGenerationCards(before, target);
+  assert.equal(shown.filter(p => p.id.startsWith('old')).length, 4);
+  assert.equal(shown.length, 5);
+  for (let i = 1; i < 5; i++) shown = advanceGenerationCards(shown, target);
+  assert.deepEqual(shown, target);
+  assert.equal(advanceGenerationCards(shown, []).length, 4);
 });

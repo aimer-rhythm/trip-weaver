@@ -13,6 +13,7 @@ import { buildTimeline, formatDuration, type TimelineModel } from '../lib/genera
 import { DATA_SOURCE_LABEL } from '../lib/poi';
 import { PoiCover } from './PoiCard';
 import { generationCardCaption, selectGenerationCards } from '../lib/generationCards';
+import { useReducedMotion, useStagedGenerationCards } from '../hooks/useGenerationMotion';
 
 interface Props {
   events: GenerationEvent[];
@@ -116,11 +117,28 @@ function milestoneState(model: TimelineModel, phase: GenerationPhase): Milestone
   return last.done ? 'done' : 'active';
 }
 
-/** 进行中里程碑的友好状态行：取最近一个工具事件 label 直译；无则阶段兜底文案 */
+/** 最新 SSE 正文/进度短预览；工具事件继续使用用户可读 label。 */
 function activeStatusLine(model: TimelineModel, phase: GenerationPhase, fallback: string): string {
   const block = model.phases.filter((b) => b.phase === phase).at(-1);
-  const tool = block?.items.filter((i) => i.kind === 'tool').at(-1);
-  return tool && tool.kind === 'tool' ? `正在${tool.label}…` : fallback;
+  const item = block?.items.filter(i => i.kind === 'thought' || i.kind === 'tool').at(-1);
+  if (item?.kind === 'thought') {
+    const text = item.text.trim();
+    return text ? Array.from(text).slice(0, 90).join('') + (Array.from(text).length > 90 ? '…' : '') : fallback;
+  }
+  return item?.kind === 'tool' ? `正在${item.label}…` : fallback;
+}
+
+function TypedStatus({ text }: { text: string }) {
+  const characters = Array.from(text);
+  const characterDelay = Math.min(45, 2400 / Math.max(characters.length, 1));
+  return (
+    <span className="gen-typewriter" role="status" aria-label={text}>
+      <span aria-hidden="true">
+        {characters.map((char, index) => <span key={index} className="gen-typewriter-char" style={{ animationDelay: `${index * characterDelay}ms` }}>{char}</span>)}
+        <span className="gen-typewriter-caret" style={{ animationDelay: `${characters.length * characterDelay}ms` }} />
+      </span>
+    </span>
+  );
 }
 
 /** 数据源降级提示：双源齐全不提示；部分/全无时注明本次实际所用 */
@@ -142,6 +160,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
   const model = useMemo(() => buildTimeline(events), [events]);
   const terminal = model.terminal;
   const running = terminal === null;
+  const reducedMotion = useReducedMotion();
   const banner = sourceBanner(model.dataSources);
   // 标题用任务自身参数；恢复/刷新链路 URL 里没有日期，prop 的值只是兜底
   const titleCity = model.destination ?? city;
@@ -156,8 +175,9 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
   const elapsed = model.durationMs ?? (running && model.startedAt !== undefined ? Math.max(0, now - model.startedAt) : undefined);
 
   // 保留可用照片：后续无图候选不再把整个画面替换为空白。
-  const visibleCandidates = selectGenerationCards(model.candidates, failedCovers, FAN.length);
-  const newestId = visibleCandidates.at(-1)?.id;
+  const targetCandidates = selectGenerationCards(model.candidates, failedCovers, FAN.length);
+  const visibleCandidates = useStagedGenerationCards(targetCandidates, running, reducedMotion);
+  const newestId = targetCandidates.filter(poi => visibleCandidates.some(shown => shown.id === poi.id)).at(-1)?.id;
 
   return (
     <div
@@ -252,7 +272,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                       {i + 1}. {m.title}
                     </p>
                     <p className={`gen-step-hint ${state === 'active' ? 'gen-step-hint-live' : ''}`}>
-                      {hint}
+                      {state === 'active' ? <TypedStatus key={hint} text={hint} /> : hint}
                     </p>
                   </div>
                 </div>
