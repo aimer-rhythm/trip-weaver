@@ -1000,7 +1000,7 @@ a { color: var(--color-primary); text-decoration: none; }
 .editor-page .editor-title h1 .editor-icon, .editor-trip-meta .editor-icon { color: #627dff; }
 .editor-trip-meta { display: flex; align-items: center; gap: 8px; font-size: 14px; }
 .editor-page .editor-title > .text-danger { flex-basis: 100%; font-size: 13px; }
-.editor-page .export-menu > summary { display: flex; align-items: center; gap: 8px; background: var(--editor-gradient); border-radius: 999px; color: white; min-height: 40px; box-shadow: 0 6px 18px #2f6bf333; }
+.editor-page .export-menu > summary { display: flex; align-items: center; gap: 8px; background: transparent; border-radius: 8px; color: var(--color-brand); min-height: 44px; box-shadow: none; }
 .editor-page .export-menu { z-index: 15; }
 .editor-page .btn-primary { background: var(--editor-gradient); color: white; }
 .editor-page .editor-body { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 26fr) minmax(0, 41fr) minmax(0, 33fr); gap: 16px; }

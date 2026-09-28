@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const amapMode = process.argv.includes('--amap');
-const out = path.resolve('.trellis/tasks/09-28-itinerary-display-redesign/research/verification', amapMode ? 'amap-contract' : '.');
+const out = path.resolve('.trellis/tasks/archive/2026-09/09-28-itinerary-display-redesign/research/verification', amapMode ? 'amap-contract' : '.');
 await fs.mkdir(out, { recursive: true });
 const names = ['故宫博物院', '景山公园', '北海公园'];
 const coords = [[39.916,116.397],[39.925,116.397],[39.925,116.389]];

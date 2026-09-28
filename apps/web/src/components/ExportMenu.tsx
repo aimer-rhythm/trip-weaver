@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Trip } from '@tripweaver/shared';
 import { buildTripPng, downloadPng, exportTripJson, isWeChat, printTrip } from '../lib/export';
-import { EditorIcon } from './editor/EditorIcon';
 import { PrintView } from './PrintView';
 
 export function ExportMenu({ trip }: { trip: Trip }) {
@@ -49,7 +48,7 @@ export function ExportMenu({ trip }: { trip: Trip }) {
   return (
     <>
       <details ref={menuRef} className="export-menu">
-        <summary className="btn btn-ghost"><EditorIcon name="export" />{busy ? '导出中…' : '导出行程'}</summary>
+        <summary className="btn btn-ghost">{busy ? '导出中…' : '导出行程'}</summary>
         <div className="export-menu-list">
           <button type="button" className="btn" onClick={onPng} disabled={busy}>
             🖼️ 长图 PNG（分享）
