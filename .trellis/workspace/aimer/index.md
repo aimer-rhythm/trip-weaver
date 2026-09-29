@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 24
+- **Total Sessions**: 25
 - **Last Active**: 2026-09-29
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~991 | Active |
+| `journal-1.md` | ~1024 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 25 | 2026-09-29 | 对齐我的行程封面书脊阴影并归档 | `eb1e011` | `master` |
 | 24 | 2026-09-29 | 完成生成主流程审查续审与归档 | `c23d943`, `cb431fa` | `master` |
 | 23 | 2026-09-29 | 城市封面支持 PNG 与 WebP | `226839c` | `master` |
 | 22 | 2026-09-29 | 行程封面书脊与免费城市 SVG 接入 | `dfffba9` | `master` |

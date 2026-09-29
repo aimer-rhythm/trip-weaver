@@ -989,3 +989,36 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 25: 对齐我的行程封面书脊阴影并归档
+
+**Date**: 2026-09-29
+**Task**: 对齐我的行程封面书脊阴影并归档
+**Branch**: `master`
+
+### Summary
+
+对照参考图降低书脊白色高光，移除凹槽右侧亮线，采用随封面色调变化的柔和阴影。桌面与手机截图、列表浏览器回归、类型检查和构建通过，对比图已归档。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `eb1e011` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
