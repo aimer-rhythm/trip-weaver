@@ -889,3 +889,36 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 22: 行程封面书脊与免费城市 SVG 接入
+
+**Date**: 2026-09-29
+**Task**: 行程封面书脊与免费城市 SVG 接入
+**Branch**: `master`
+
+### Summary
+
+对照原 UI 修正窄弧面书脊、压痕和装订线；支持本地城市 SVG 自动发现及加载失败回退；整理 IconPark、Iconfont、UXWing 等免费来源与授权说明。类型检查、构建、样式检查和五种视口浏览器回归通过，素材由用户手动选择下载。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `dfffba9` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
