@@ -1,0 +1,4 @@
+{"file": ".trellis/spec/guides/index.md", "reason": "跨包思考指南入口，编码前确认通用约定"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "新增 scripts/ 脚本前先确认是否可复用现有 verify-*.mjs / smoke-*.mjs 的写法与工具函数"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "脚本产出物会被 apps/web 的 TripCover.tsx 通过 import.meta.glob 消费，需要确认跨层数据约定"}
+{"file": "apps/web/src/assets/city-landmarks/README.md", "reason": "目标素材目录的命名与格式约定（文件名用城市中文名、透明 PNG 要求）"}
