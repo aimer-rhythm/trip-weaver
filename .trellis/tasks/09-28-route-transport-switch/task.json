@@ -2,8 +2,8 @@
   "id": "route-transport-switch",
   "name": "route-transport-switch",
   "title": "高德路线支持切换交通方式并展示各方式时长",
-  "description": "记录待办：点击交通信息展开下拉，展示不同交通方式的耗时，支持切换并同步路线。暂不实施。",
-  "status": "planning",
+  "description": "仅当前路段按需查询四种交通方式，切换后同步时长、路线与自动保存；实现和回归验证完成。",
+  "status": "in_progress",
   "dev_type": null,
   "scope": null,
   "package": null,
@@ -21,6 +21,6 @@
   "children": [],
   "parent": null,
   "relatedFiles": [],
-  "notes": "",
+  "notes": "2026-09-29：用户确认单路段作用域。类型检查、Web 构建、21 项单测、浏览器回归及隔离 PostgreSQL API/配额验证通过。未使用真实高德配额。",
   "meta": {}
 }

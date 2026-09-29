@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Activity, ResearchPoi, TransitLeg, TripDay } from '@tripweaver/shared';
 import { hasValidCoord } from '../../lib/colors';
-import { formatLegDistance, formatLegDuration, LEG_MODE_LABEL } from '../../lib/tripDerive';
+import { RouteOptions } from './RouteOptions';
 import { useEditorStore } from '../../store/editorStore';
 import { PoiCover, ReservationBadge } from '../PoiCard';
 import { Modal } from '../Modal';
@@ -50,9 +50,7 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
         </div>
         {showCover && matchedPoi && <PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} onCoverError={setFailedCover} />}
       </div>
-      {nextLeg && <div className={"activity-between flex items-center justify-between [min-height:48px] [padding:2px_0_2px_6px] [gap:8px]"}>
-        <div className={"editor-transit flex items-center [gap:10px] [font-size:13px] [line-height:1.5] [color:var(--color-editor-transit-color-82)]"}><EditorIcon name={nextLeg.mode === 'walk' ? 'walk' : 'route'} /><span>{LEG_MODE_LABEL[nextLeg.mode]}约{formatLegDuration(nextLeg.durationMin)} · {nextLeg.source === 'heuristic' ? '估算' : formatLegDistance(nextLeg.distanceM)}</span></div>
-      </div>}
+      {index < day.activities.length - 1 && <RouteOptions dayId={day.id} fromId={activity.id} leg={nextLeg} />}
       {detailOpen && <Modal title={activity.name} onClose={() => setDetailOpen(false)}>
         <div className={"activity-detail [line-height:1.8] [overflow-wrap:anywhere] [&_>_a]:block [&_>_a]:[margin-top:8px]"}>
           <p>{activity.category}</p>

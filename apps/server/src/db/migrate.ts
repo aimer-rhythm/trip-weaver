@@ -4,6 +4,12 @@
 import type { Pool } from 'pg';
 
 const STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS editor_geo_usage (
+    day TEXT NOT NULL,
+    source TEXT NOT NULL,
+    calls INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (day, source)
+  )`,
   `CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,

@@ -27,6 +27,10 @@ The editor is a deliberate exception because it needs a mutable cross-component 
 
 ## Editor Draft, Revision, and Autosave
 
+Route selection uses `routePairKey(trip, dayId, fromId)` (trip/destination/day plus both endpoint IDs, names, coordinates and coordinate systems). `selectRoute(dayId, key, leg)` rejects changed or non-adjacent pairs before incrementing revision, replaces only that pair and preserves other legs. A coordinate edit drops incident legs. `RouteOptionsForPair` remounts on key changes and guards unmounted promise continuations; options use shared runtime validation. No query response writes the draft until the user selects it.
+
+`useSaveTrip` uses the `editor-trip-save` React Query mutation scope to serialize writes: debouncing alone cannot prevent an older in-flight PUT from overwriting the latest transport selection. Browser regression: `node apps/web/tests/route-options-browser.mjs` includes a deliberately slow first save, rapid second selection, reload, stale response after move, partial failure and mobile overflow.
+
 `useEditorStore` clones a fetched `Trip` on load. Every domain edit runs through the store's `mutate` helper, clones the current draft with `structuredClone`, applies a focused change, and increments `revision`. UI-only `dayFilter` changes do not increment revision.
 
 `TripEditorPage` loads only when the fetched trip id changes so a React Query cache write after save does not overwrite newer local edits. It clears the store on unmount. A revision change sets the save state to saving, waits 800 ms, reads the latest draft from `useEditorStore.getState()`, and calls `useSaveTrip`. The mutation writes the saved trip to the detail cache and invalidates the list summary.

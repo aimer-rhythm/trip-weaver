@@ -1,5 +1,50 @@
 # External Integration Guidelines
 
+## Scenario: Editor Route Options
+
+### 1. Scope / Trigger
+
+Editing one adjacent activity pair's transport mode, independently of generation jobs.
+
+### 2. Signatures
+
+- `POST /api/trips/:id/route-options`: `RouteOptionsRequestSchema` → `RouteOptionsResponseSchema`.
+- `editor_geo_usage(day TEXT, source TEXT, calls INTEGER)`, composite primary key `(day, source)`; schema and startup migration must match.
+- `reserveEditorGeoBudget(source, count)` returns an async finalizer or null.
+
+### 3. Contracts
+
+- Authenticate and check trip ownership before external work. Inputs are two validated draft activity snapshots and destination, allowing unsaved edits; querying never saves the trip.
+- Reuse `resolveGeoProvider`; return four available/unavailable entries with truthful sources. Never substitute heuristic estimates in selectable options.
+- Convert legacy WGS84 inputs to GCJ02. Amap transit resolves endpoint adcodes, then calls routing. Missing city or provider result is unavailable with retry text.
+- One active request per user; route rate limit is 10/minute. Reserve eight attempts atomically before queries; finalizer refunds unused attempts, including pre-request skips. Cache hits count as accepted attempts consistently with generation.
+- Daily budget subtracts persisted editor reservations as well as generation usage. Generation's existing 60s aggregate and running-job approximation remains; crashes can conservatively retain reservations until next day. No new env keys.
+- Amap transit geometry joins walking steps and the first bus alternative in segment order; absent geometry remains absent. Do not invent durations when provider duration is missing.
+
+### 4. Validation & Error Matrix
+
+- Missing session → 401; missing or other owner's trip → identical 404; invalid coordinate input → 400.
+- Busy user or insufficient budget → 429 without new provider attempts.
+- No credential, unsupported mode, missing coordinates/city or failed route → unavailable option; other options survive.
+- Database failures remain errors, not successful empty results.
+
+### 5. Good/Base/Bad Cases
+
+- Good: one route becomes drive with its real duration and polyline; other pairs remain untouched.
+- Base: Tianditu supports drive/transit while walk/cycle are unavailable.
+- Bad: inserting editor calls as fake generations, silently exhausting budget, or labeling a heuristic as Amap.
+
+### 6. Tests Required
+
+- `routeOptions.test.ts`: partial failure, source labels, missing coordinates/city, WGS84 and unsupported modes.
+- `amapRoute.test.ts`: transit geometry and missing-duration rejection.
+- `node --import tsx scripts/verify-route-options.mts`: dedicated local PostgreSQL at port 18797, disposable database per run; asserts migrations, ownership, validation, quota atomicity/refund and persistence. Upstream fetch is mocked.
+
+### 7. Wrong vs Correct
+
+- Wrong: check remaining budget then independently issue uncounted editor queries.
+- Correct: atomically reserve, increment accepted attempts through the provider callback, refund the unused reservation in `finally`.
+
 ## Adapter Shape and Null Implementations
 
 Optional research providers expose narrow interfaces with a `kind` discriminator, a normal

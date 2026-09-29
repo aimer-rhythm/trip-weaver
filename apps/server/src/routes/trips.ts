@@ -1,6 +1,7 @@
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
-import { RenameTripSchema, TripExportSchema, TripSchema } from '@tripweaver/shared';
+import { RenameTripSchema, RouteOptionsRequestSchema, RouteOptionsResponseSchema, TripExportSchema, TripSchema } from '@tripweaver/shared';
+import { getRouteOptions } from '../services/routeOptionsService';
 import { requireAuth } from '../auth/guard';
 import { createTrip, deleteTrip, getTrip, listTrips, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 import { findConversationForTrip } from '../services/conversationService';
@@ -11,6 +12,14 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
 
   app.get('/', async (request) => listTrips(request.user!.id));
+
+  app.post('/:id/route-options', {
+    schema: { params: IdParams, body: RouteOptionsRequestSchema, response: { 200: RouteOptionsResponseSchema, 404: Type.Object({ error: Type.String() }) } },
+    config: { rateLimit: { max: 10, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    if (!(await getTrip(request.user!.id, request.params.id))) return reply.code(404).send({ error: '行程不存在' });
+    return getRouteOptions(request.user!.id, request.body);
+  });
 
   // JSON 导入 → 新建一条历史行程
   app.post('/', { schema: { body: TripExportSchema } }, async (request, reply) => {

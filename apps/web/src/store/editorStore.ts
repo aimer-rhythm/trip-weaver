@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { LODGING_SENTINEL, uid, type Activity, type Trip, type TripDay } from '@tripweaver/shared';
+import { LODGING_SENTINEL, uid, type Activity, type TransitLeg, type Trip, type TripDay } from '@tripweaver/shared';
+import { routePairKey } from '../lib/routePair';
 
 // 编辑器交互态：业务数据以服务端为唯一事实源，此处仅为编辑期副本
 // revision 驱动防抖自动保存；结构化更新用 structuredClone（行程体量 <50KB，KISS）
@@ -9,6 +10,7 @@ interface EditorState {
   dayFilter: number | null;         // null = 全部天
   load: (trip: Trip) => void;
   clear: () => void;
+  selectRoute: (dayId: string, key: string, leg: TransitLeg) => boolean;
   setDayFilter: (dayIndex: number | null) => void;
   updateMeta: (patch: Partial<Pick<Trip, 'title' | 'destination' | 'startDate' | 'partySize' | 'extraNotes'>>) => void;
   /** Trip 级住宿锚点：改名即清空坐标并丢弃使用该锚点各天的住宿 leg（无客户端重编码端点）；空串 = 移除 */
@@ -54,6 +56,18 @@ export const useEditorStore = create<EditorState>((set, get) => {
     dayFilter: null,
     load: (trip) => set({ trip: structuredClone(trip), revision: 0, dayFilter: trip.days[0]?.dayIndex ?? null }),
     clear: () => set({ trip: null, revision: 0, dayFilter: null }),
+    selectRoute: (dayId, key, leg) => {
+      const trip = get().trip;
+      if (!trip || routePairKey(trip, dayId, leg.fromActivityId) !== key) return false;
+      const day = trip.days.find((d) => d.id === dayId)!;
+      const index = day.activities.findIndex((a) => a.id === leg.fromActivityId);
+      if (day.activities[index + 1]?.id !== leg.toActivityId) return false;
+      mutate((draft) => {
+        const target = findDay(draft, dayId)!;
+        target.legs = [...(target.legs ?? []).filter((l) => l.fromActivityId !== leg.fromActivityId || l.toActivityId !== leg.toActivityId), structuredClone(leg)];
+      });
+      return true;
+    },
     setDayFilter: (dayIndex) => set({ dayFilter: dayIndex }),
 
     updateMeta: (patch) => mutate((draft) => Object.assign(draft, patch)),
@@ -111,7 +125,16 @@ export const useEditorStore = create<EditorState>((set, get) => {
       mutate((draft) => {
         const list = findDay(draft, dayId)?.activities;
         const target = list?.find((a) => a.id === activityId);
-        if (target) Object.assign(target, patch);
+        if (target) {
+          const changed = (patch.lat !== undefined && patch.lat !== target.lat)
+            || (patch.lng !== undefined && patch.lng !== target.lng)
+            || (patch.coordSystem !== undefined && patch.coordSystem !== target.coordSystem);
+          Object.assign(target, patch);
+          if (changed) {
+            const day = findDay(draft, dayId)!;
+            day.legs = day.legs?.filter((l) => l.fromActivityId !== activityId && l.toActivityId !== activityId);
+          }
+        }
       }),
 
     deleteActivity: (dayId, activityId) =>

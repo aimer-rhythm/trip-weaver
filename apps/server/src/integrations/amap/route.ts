@@ -36,8 +36,8 @@ function parseRoute(mode: LegMode, body: Record<string, unknown>): RouteEstimate
   const cost = (first.cost ?? {}) as Record<string, unknown>;
   const durationSec = num(cost.duration) || num(first.duration);
   const distanceM = num(first.distance);
-  if (!durationSec && !distanceM) return null;
-  // 公交换乘 segments 结构复杂且折线意义有限，只对步行/驾车取 steps[].polyline
+  if (durationSec <= 0 || distanceM < 0) return null;
+  // 步行/骑行/驾车读取 steps；公交按行进顺序拼接步行与公交/地铁段。
   let polyline: string | undefined;
   if (mode !== 'transit' && Array.isArray(first.steps)) {
     const points = (first.steps as Record<string, unknown>[])
@@ -45,6 +45,22 @@ function parseRoute(mode: LegMode, body: Record<string, unknown>): RouteEstimate
       .join(';')
       .split(';');
     polyline = downsamplePolyline(points);
+  }
+  if (mode === 'transit' && Array.isArray(first.segments)) {
+    // Segment order is walking approach, then the first bus/subway alternative.
+    const parts: string[] = [];
+    for (const value of first.segments) {
+      if (!value || typeof value !== 'object') continue;
+      const segment = value as Record<string, unknown>;
+      const walking = segment.walking as { steps?: { polyline?: unknown }[] } | undefined;
+      if (Array.isArray(walking?.steps)) for (const step of walking.steps) {
+        if (typeof step?.polyline === 'string') parts.push(step.polyline);
+      }
+      const bus = segment.bus as { buslines?: { polyline?: unknown }[] } | undefined;
+      const line = Array.isArray(bus?.buslines) ? bus.buslines[0] : undefined;
+      if (typeof line?.polyline === 'string') parts.push(line.polyline);
+    }
+    polyline = downsamplePolyline(parts.join(';').split(';'));
   }
   return {
     durationMin: Math.max(1, Math.round(durationSec / 60)),
@@ -63,7 +79,7 @@ export async function routeEstimate(
 ): Promise<RouteEstimate | null> {
   if (mode === 'transit' && (!opts.city1 || !opts.city2)) return null;
   const fmt = (p: GeoPoint) => `${p.lng.toFixed(5)},${p.lat.toFixed(5)}`;   // 高德要求「lng,lat」，取整 5 位兼作缓存键
-  const cacheKey = `${mode}:${fmt(origin)}:${fmt(dest)}`;
+  const cacheKey = `${mode}:${fmt(origin)}:${fmt(dest)}:${opts.city1 ?? ''}:${opts.city2 ?? ''}`;
   const cached = cache.get(cacheKey);
   if (cached !== undefined) return cached;
 

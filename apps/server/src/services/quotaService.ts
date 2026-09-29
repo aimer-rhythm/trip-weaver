@@ -1,7 +1,7 @@
 import { and, eq, gte, sql } from 'drizzle-orm';
 import { startOfToday, startOfTomorrow, type UsageView } from '@tripweaver/shared';
 import { db } from '../db/client';
-import { generations } from '../db/schema';
+import { editorGeoUsage, generations } from '../db/schema';
 import { env } from '../env';
 
 /** 今日已成功生成次数（失败/取消不计，PRD F8） */
@@ -62,11 +62,38 @@ async function callsToday(key: MeteredSource): Promise<number> {
 }
 
 export async function amapBudgetRemaining(): Promise<number> {
-  return Math.max(0, env.amapDailyBudget - (await callsToday('amap')));
+  return Math.max(0, env.amapDailyBudget - (await callsToday('amap')) - (await editorCallsToday('amap')));
 }
 
 export async function tiandituBudgetRemaining(): Promise<number> {
-  return Math.max(0, env.tiandituDailyBudget - (await callsToday('tianditu')));
+  return Math.max(0, env.tiandituDailyBudget - (await callsToday('tianditu')) - (await editorCallsToday('tianditu')));
+}
+
+async function editorCallsToday(source: 'amap' | 'tianditu'): Promise<number> {
+  const [row] = await db.select().from(editorGeoUsage).where(and(
+    eq(editorGeoUsage.day, String(startOfToday())), eq(editorGeoUsage.source, source),
+  ));
+  return row?.calls ?? 0;
+}
+
+/** Atomically reserve editor calls; unused calls are refunded, including pre-request skips.
+ * Reservations survive crashes conservatively. Generation concurrency retains its existing
+ * approximate budget semantics; editor reservations themselves cannot overspend the snapshot. */
+export async function reserveEditorGeoBudget(source: 'amap' | 'tianditu', count: number) {
+  const day = String(startOfToday());
+  const limit = (source === 'amap' ? env.amapDailyBudget : env.tiandituDailyBudget) - await callsToday(source);
+  if (limit < count) return null;
+  const rows = await db.insert(editorGeoUsage).values({ day, source, calls: count })
+    .onConflictDoUpdate({ target: [editorGeoUsage.day, editorGeoUsage.source],
+      set: { calls: sql`${editorGeoUsage.calls} + ${count}` },
+      setWhere: sql`${editorGeoUsage.calls} + ${count} <= ${limit}`,
+    }).returning();
+  if (!rows.length) return null;
+  return async (used: number) => {
+    if (!Number.isInteger(used) || used < 0 || used > count) throw new Error('Invalid route call accounting');
+    await db.update(editorGeoUsage).set({ calls: sql`${editorGeoUsage.calls} - ${count - used}` })
+      .where(and(eq(editorGeoUsage.day, day), eq(editorGeoUsage.source, source)));
+  };
 }
 
 export async function searchBudgetRemaining(): Promise<number> {

@@ -1,5 +1,11 @@
 import { boolean, doublePrecision, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uniqueIndex, vector } from 'drizzle-orm/pg-core';
 
+export const editorGeoUsage = pgTable('editor_geo_usage', {
+  day: text('day').notNull(),
+  source: text('source').notNull(),
+  calls: integer('calls').notNull().default(0),
+}, (table) => [primaryKey({ columns: [table.day, table.source] })]);
+
 export const users = pgTable('users', {
   id: text('id').primaryKey(),
   email: text('email').notNull().unique(),

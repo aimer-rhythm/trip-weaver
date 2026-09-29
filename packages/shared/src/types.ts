@@ -1,6 +1,8 @@
 import type { Static } from '@sinclair/typebox';
 import type {
   ActivitySchema,
+  RouteOptionsRequestSchema,
+  RouteOptionsResponseSchema,
   GenerateFormSchema,
   LodgingSchema,
   LoginBodySchema,
@@ -53,6 +55,8 @@ import type {
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
 export type SourceNote = Static<typeof SourceNoteSchema>;
 export type Activity = Static<typeof ActivitySchema>;
+export type RouteOptionsRequest = Static<typeof RouteOptionsRequestSchema>;
+export type RouteOptionsResponse = Static<typeof RouteOptionsResponseSchema>;
 export type TransitLeg = Static<typeof TransitLegSchema>;
 export type Lodging = Static<typeof LodgingSchema>;
 export type TripDay = Static<typeof TripDaySchema>;

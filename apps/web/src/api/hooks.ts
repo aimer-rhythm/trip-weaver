@@ -155,6 +155,7 @@ export function useImportTrip() {
 export function useSaveTrip() {
   const qc = useQueryClient();
   return useMutation({
+    scope: { id: 'editor-trip-save' },
     mutationFn: (trip: Trip) => api.put<Trip>(`/api/trips/${trip.id}`, trip),
     onSuccess: (trip) => {
       qc.setQueryData(keys.trip(trip.id), trip);

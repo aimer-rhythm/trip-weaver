@@ -21,6 +21,19 @@ test.afterEach(() => {
   globalThis.fetch = originalFetch;
 });
 
+test('transit joins walking and first bus alternative in travel order', async () => {
+  mockFetchOnce({ status: '1', route: { transits: [{ distance: '5000', cost: { duration: '1800' }, segments: [
+    { walking: { steps: [{ polyline: '117,39;117.1,39.1' }] }, bus: { buslines: [{ polyline: '117.1,39.1;117.2,39.2' }, { polyline: '1,2;3,4' }] } },
+  ] }] } });
+  const r = await routeEstimate('k', { lat: 39, lng: 117 }, { lat: 39.2, lng: 117.2 }, 'transit', { city1: '110000', city2: '110000' });
+  assert.equal(r?.polyline, '117,39;117.1,39.1;117.1,39.1;117.2,39.2');
+});
+
+test('route without duration is unavailable, not a fabricated one-minute option', async () => {
+  mockFetchOnce({ status: '1', route: { paths: [{ distance: '9000' }] } });
+  assert.equal(await routeEstimate('k', { lat: 39, lng: 118 }, { lat: 39.2, lng: 118.2 }, 'cycle'), null);
+});
+
 test('routeEstimate：walking 解析时长/距离/折线', async () => {
   const { calls } = mockFetchOnce({
     status: '1',
