@@ -57,6 +57,7 @@ try {
   assert.equal(await page.locator('details[open]').count(), 0, 'prefetch starts without opening menu');
   const summary = page.getByLabel('切换交通方式').first();
   await summary.click();
+  assert.equal(await page.getByRole('button', { name: /^(重试|重新查询|查询中…)$/ }).count(), 0, 'normal prefetch has no retry button');
   await page.getByRole('button', { name: /^驾车/ }).click();
   await page.getByRole('button', { name: /^公交/ }).click();
   release(); hold = null;
@@ -78,21 +79,31 @@ try {
   await days.getByRole('button', { name: '第1天', exact: true }).click();
   await page.waitForTimeout(500);
   assert.equal(calls, 8, 'returning to the day reuses shared cache');
-  fail = true;
   await page.getByLabel('切换交通方式').first().click();
-  await page.getByRole('button', { name: '重新查询' }).click();
+  assert.equal(await page.getByRole('button', { name: /^(重试|重新查询)$/ }).count(), 0, 'successful and unavailable results have no retry button');
+  fail = true;
+  await page.reload();
+  await page.getByLabel('切换交通方式').first().click();
   await page.getByRole('alert').filter({ hasText: '暂不可用' }).waitFor();
-  fail = false;
-  await page.getByRole('button', { name: '重新查询' }).click();
-  await page.getByRole('button', { name: /^驾车.*8 分钟/ }).waitFor();
-  await page.waitForFunction(() => [...document.querySelectorAll('details[open] button')].some((button) => button.textContent === '重新查询' && !button.disabled));
-  // A response arriving after reorder must not become selectable on the changed pair.
   hold = new Promise((r) => { release = r; });
-  await page.getByRole('button', { name: '重新查询' }).click();
+  await page.getByRole('button', { name: '重试', exact: true }).click();
   const refreshing = page.getByRole('button', { name: '查询中…', exact: true });
   assert.equal(await refreshing.isDisabled(), true);
   assert.equal(await refreshing.getAttribute('aria-busy'), 'true');
   assert.equal(await refreshing.locator('svg.animate-spin').count(), 1);
+  fail = false;
+  release(); hold = null;
+  await page.getByRole('button', { name: /^驾车.*8 分钟/ }).waitFor();
+  await refreshing.waitFor({ state: 'hidden' });
+  assert.equal(await page.getByRole('button', { name: '重试', exact: true }).count(), 0, 'successful retry hides button');
+  // A response arriving after reorder must not become selectable on the changed pair.
+  fail = true;
+  await page.reload();
+  await page.getByLabel('切换交通方式').first().click();
+  await page.getByRole('alert').filter({ hasText: '暂不可用' }).waitFor();
+  hold = new Promise((r) => { release = r; });
+  await page.getByRole('button', { name: '重试', exact: true }).click();
+  fail = false;
   await page.getByLabel('故宫更多操作').click();
   await page.getByRole('button', { name: '下移', exact: true }).first().click();
   release(); hold = null;

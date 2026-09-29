@@ -39,7 +39,7 @@ Every replan has a unique request ID in addition to its endpoint fingerprint: ch
 
 Route disclosures share editor colours, rounded panels and gradient selection. Escape restores focus to the summary; pointer-outside dismisses. A null `relatedTarget` from a button becoming disabled must not dismiss the panel mid-refresh.
 
-Manual refresh sets local `refreshing` immediately and keeps the button disabled with a spinner, `aria-busy` and “查询中…” until all four queries settle (including failures). Use `Promise.allSettled` so one rejection does not end the loading indicator early. The label uses `aria-live`, and reduced-motion preferences disable spinner rotation.
+The route menu shows “重试” only after a query/selection error; normal prefetch and successful results have no refresh button or footer. Retry sets local `refreshing` immediately and keeps the button disabled with a spinner, `aria-busy` and “查询中…” until all four queries settle (including failures), then hides it on success. Use `Promise.allSettled` so one rejection does not end the loading indicator early. The label uses `aria-live`, and reduced-motion preferences disable spinner rotation.
 
 `useSaveTrip` uses the `editor-trip-save` React Query mutation scope to serialize writes: debouncing alone cannot prevent an older in-flight PUT from overwriting the latest transport selection. Browser regression: `node apps/web/tests/route-options-browser.mjs` includes a deliberately slow first save, rapid second selection, reload, stale response after move, partial failure and mobile overflow.
 
