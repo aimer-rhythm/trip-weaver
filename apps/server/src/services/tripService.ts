@@ -9,6 +9,8 @@ import {
 import { db } from '../db/client';
 import { trips } from '../db/schema';
 
+type TripWriter = Pick<typeof db, 'select' | 'insert'>;
+
 function summarize(trip: Trip) {
   // 冗余列 total_cost：粗估合计（cost 可选化后缺省按 0 计，仅供列表页「约 ¥」展示）
   const totalCost = trip.days.reduce((n, d) => n + d.activities.reduce((m, a) => m + (a.cost ?? 0), 0), 0);
@@ -78,8 +80,8 @@ export async function getTrip(userId: string, id: string): Promise<Trip | null> 
 }
 
 /** 新建（导入 / 生成落库共用）：分配新 id 与时间戳，归属当前用户；全新行程自为版本链根 */
-export async function createTrip(userId: string, source: Trip, revisionOf?: string): Promise<Trip> {
-  const [count] = await db.select({ n: sql<number>`count(*)` }).from(trips).where(eq(trips.userId, userId));
+export async function createTrip(userId: string, source: Trip, revisionOf?: string, writer: TripWriter = db): Promise<Trip> {
+  const [count] = await writer.select({ n: sql<number>`count(*)` }).from(trips).where(eq(trips.userId, userId));
   if (Number(count?.n ?? 0) >= MAX_TRIPS_PER_USER) {
     throw Object.assign(new Error(`行程数量已达上限（${MAX_TRIPS_PER_USER} 条），请先清理历史行程`), { statusCode: 409 });
   }
@@ -88,9 +90,9 @@ export async function createTrip(userId: string, source: Trip, revisionOf?: stri
   const trip: Trip = { ...source, id: uid(), createdAt: nowMs, updatedAt: nowMs };
   // 修订（PR5）：新行程挂到被修订行程所在版本链的下一版，旧版原样保留
   const lineage = revisionOf
-    ? await revisionLineage(userId, revisionOf)
+    ? await revisionLineage(userId, revisionOf, writer)
     : { rootId: trip.id, version: 1, parentId: null as string | null };
-  await db.insert(trips).values({
+  await writer.insert(trips).values({
     id: trip.id,
     userId,
     ...summarize(trip),
@@ -108,8 +110,9 @@ export async function createTrip(userId: string, source: Trip, revisionOf?: stri
 async function revisionLineage(
   userId: string,
   targetTripId: string,
+  writer: TripWriter,
 ): Promise<{ rootId: string; version: number; parentId: string }> {
-  const [target] = await db
+  const [target] = await writer
     .select({ rootId: trips.rootId, version: trips.version })
     .from(trips)
     .where(and(eq(trips.id, targetTripId), eq(trips.userId, userId)));

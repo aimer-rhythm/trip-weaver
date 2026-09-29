@@ -25,10 +25,10 @@ export interface PlaceFacts {
   adcode?: string;
   /** payload.themes：社区主题标签，用于生成每天主题 */
   themes: string[];
-  /** payload.recommendScore：社区推荐分（缺省 0）；合并取 max（质量分不叠加） */
-  recommendScore: number;
-  /** payload.mentionCount：被提及次数（缺省 0）；合并求和（热度可叠加） */
-  mentionCount: number;
+  /** 缺失保持未知；合并取已知值的 max，真实 0 不等于未知。 */
+  recommendScore?: number;
+  /** 缺失保持未知；合并对已知值求和。 */
+  mentionCount?: number;
   /** 从 research_evidence 文本挖出的闭馆表述（如「周一闭馆」，截 60 字）：候选无高德 openTime 时的闭馆检测兜底（09-23） */
   closureText?: string;
   /** payload.openHours 渲染出的开闭馆文本（09-27，如「09:00-17:00；周一闭馆」）。
@@ -103,8 +103,8 @@ function toFacts(row: FactRow): PlaceFacts {
     category: row.category,
     source: row.source,
     themes: stringArrayField(payload, 'themes'),
-    recommendScore: numberField(payload, 'recommendScore') ?? 0,
-    mentionCount: numberField(payload, 'mentionCount') ?? 0,
+    recommendScore: numberField(payload, 'recommendScore'),
+    mentionCount: numberField(payload, 'mentionCount'),
     aliases: stringArrayField(payload, 'aliases'),
   };
   const visit = numberField(payload, 'typicalVisitMinutes');
@@ -131,13 +131,15 @@ const SOURCE_RANK: Record<string, number> = { goldset: 0, xhs: 1, amap: 2, manua
 
 /** 同键多行合并：质量取 max、热度求和、themes 并集、坐标取有值行、source 取高优先（导出供单测） */
 export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
+  const scores = members.map((f) => f.recommendScore).filter((n): n is number => n !== undefined);
+  const mentions = members.map((f) => f.mentionCount).filter((n): n is number => n !== undefined);
   const base = members.reduce((best, f) => ((SOURCE_RANK[f.source] ?? 9) < (SOURCE_RANK[best.source] ?? 9) ? f : best), members[0]!);
   const merged: PlaceFacts = {
     ...base,
     name: base.name,
     themes: [...new Set(members.flatMap((f) => f.themes))],
-    recommendScore: Math.max(...members.map((f) => f.recommendScore)),
-    mentionCount: members.reduce((sum, f) => sum + f.mentionCount, 0),
+    recommendScore: scores.length ? Math.max(...scores) : undefined,
+    mentionCount: mentions.length ? mentions.reduce((sum, n) => sum + n, 0) : undefined,
     aliases: [...new Set(members.flatMap((f) => f.aliases))],
   };
   const visits = members.map((f) => f.visitMinutes).filter((v): v is number => v !== undefined);

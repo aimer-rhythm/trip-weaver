@@ -66,3 +66,5 @@ Evidence: `apps/web/src/router.tsx`, `apps/web/src/api/hooks.ts`, `apps/web/src/
 - `node apps/web/tests/editor-browser.mjs` and `--amap`: export downloads/print, scrolling, editing, map controls and both renderers (Amap uses an SDK stub).
 - `node apps/web/tests/generation-browser.mjs --motion`: timed card entry, typing, breathing, reduced motion, mobile clipping and footer separation. Set motion preference before mounting the fixture so reduced-motion rendering cannot prefill the staged cards.
 - `node apps/web/tests/shared-ui-browser.mjs`: authentication forms, navigation, settings dialog, calendar and home layouts using API fixtures.
+- `node apps/web/tests/generation-recovery-browser.mjs`: native SSE disconnect/reconnect, retained history, ID deduplication, new task cursor, and refresh (Vite at 18811).
+- `node scripts/verify-generation-browser.mjs`: current homepage → production generation → editor, running/completed recovery, cancellation retry, and lock release (build first; disposable local PostgreSQL + mock LLM).

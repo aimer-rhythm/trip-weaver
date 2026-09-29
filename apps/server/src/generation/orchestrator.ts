@@ -1,11 +1,9 @@
-// Orchestrator：代码级三阶段流水线（调研 → 编排 → 审校，≤2 轮修订）
+// 生成主流程：调研 → 确定性排程 → 地理增强与标题文案 → 原子落库。
 // 唯一入口 runGeneration —— 路由只见任务号与 SSE，Agent 细节全部封装在此（架构 §2 单入口隔离）
 import {
-  describeFeasibility,
   feasibilityReviewNotes,
   GENERATION_TIMEOUT_MINUTES,
   type DataSourceKind,
-  type FeasibilityReport,
   type GenerateForm,
   type GenerationJobStatus,
   type GenerationPhase,
@@ -89,7 +87,7 @@ export async function runGeneration(
   job: Job,
   form: GenerateForm,
   cfg: LlmConfig,
-  logger?: Pick<FastifyBaseLogger, 'info'>,
+  logger?: Pick<FastifyBaseLogger, 'info' | 'error'>,
 ): Promise<void> {
   const signal = job.abort.signal;
   const usage = { tokensIn: 0, tokensOut: 0 };
@@ -99,33 +97,20 @@ export async function runGeneration(
   let terminalStatus: GenerationJobStatus = 'error';
   let systemTaskSeq = 0;
   const timeout = setTimeout(() => {
+    if (signal.aborted) return;
     job.cancelReason = 'timeout';   // 超时自动取消：事件携带 reason，前端区分展示
     job.abort.abort();
   }, JOB_TIMEOUT_MS);
   timeout.unref?.();
 
-  // 模型安全校验与搜索源安全校验互不依赖，尽早并行启动以缩短初始化等待。
-  const modelPromise = buildModel(cfg).then(
-    (model) => ({ ok: true as const, model }),
-    (error: unknown) => ({ ok: false as const, error }),
-  );
-  // 全站日额度闸门：某源余额不足则该源整任务注入 Null 降级（不断服，架构 §6）
-  const poiSource = resolvePoiSourceForUser();
-  const poiBase =
-    (await poiBudgetRemaining()) >= POI_MAX_PER_TASK ? poiSource.source : getNullPoiSource();
-  const searchBase =
-    (await searchBudgetRemaining()) >= SEARCH_MAX_PER_TASK
-      ? (await resolveSearchSourceForUser(job.userId)).source
-      : getNullSearchSource();
-  const poi = createTaskPoiSource(poiBase);
-  const search = createTaskSearchSource(searchBase);
+  // 先建立零调用统计，让初始化失败也能发布终态、记账和清理计时器。
+  let poi = createTaskPoiSource(getNullPoiSource());
+  let search = createTaskSearchSource(getNullSearchSource());
   // 地理会话（v0.5）：geocode/route 统一服务商与凭据解析、任务上限与日额度记账；出行方式基调来自表单（ST3）
   const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
-  await geo.init();   // 09-18：凭据/额度解析 PG 化后为异步，须在任何 geo 调用前完成
   // 封面第三级（09-27）：高德 POI 图片。凭据与地理链同一份解析（个人 Key 优先、站点兜底），
   // 但调用量单独计数 —— 它走的是 v5/place/text 的「基础搜索服务」配额（个人 5,000/月），比地理编码稀缺得多。
-  const amapPhotoCredential = await resolveAmapCredential(job.userId);
-  const amapPoiPhotos = createAmapPoiPhotoLookup(amapPhotoCredential?.apiKey ?? '');
+  let amapPoiPhotos = createAmapPoiPhotoLookup('');
   // 地理调用按链分流计入各自用量列：POI 搜索固定天地图，路线 + 地理编码走另一条（高德优先）。
   // 两条链各自独立计数，不再靠单一开关二选一（高德缺 Key 时地理链自己降级到天地图，也要如实记到天地图列）。
   // 返回值必须现算 —— poi/geo 的统计在生成过程中持续增长。
@@ -137,10 +122,6 @@ export async function runGeneration(
       tiandituCalls: poi.stats.calls + (geoTianditu ? geoCalls : 0),
     };
   };
-  const enabledSources: DataSourceKind[] = [
-    ...(poi.source.kind === 'null' ? [] : ([poi.source.kind] as const)),
-    ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
-  ];
 
   const sinkFor = (phase: GenerationPhase): PhaseEventSink => ({
     onThought: (text) => emit(job, { type: 'thought', phase, text }),
@@ -205,8 +186,8 @@ export async function runGeneration(
     }
   };
 
-  const record = async (status: 'done' | 'error' | 'cancelled', tripId: string | null) => {
-    await db.insert(generations)
+  const record = async (status: 'done' | 'error' | 'cancelled', tripId: string | null, writer: Pick<typeof db, 'insert'> = db) => {
+    await writer.insert(generations)
       .values({
         id: uid(),
         userId: job.userId,
@@ -226,6 +207,30 @@ export async function runGeneration(
   };
 
   try {
+    assertAlive(signal);
+    // 两条安全校验尽早并行，拒绝也立即被观察，避免初始化提前退出后的游离 rejection。
+    const modelPromise = buildModel(cfg).then(
+      (model) => ({ ok: true as const, model }),
+      (error: unknown) => ({ ok: false as const, error }),
+    );
+    const poiSource = resolvePoiSourceForUser();
+    const poiBase = (await poiBudgetRemaining()) >= POI_MAX_PER_TASK ? poiSource.source : getNullPoiSource();
+    assertAlive(signal);
+    poi = createTaskPoiSource(poiBase);
+    const searchBase = (await searchBudgetRemaining()) >= SEARCH_MAX_PER_TASK
+      ? (await resolveSearchSourceForUser(job.userId)).source
+      : getNullSearchSource();
+    assertAlive(signal);
+    search = createTaskSearchSource(searchBase);
+    await geo.init();
+    assertAlive(signal);
+    const amapPhotoCredential = await resolveAmapCredential(job.userId);
+    assertAlive(signal);
+    amapPoiPhotos = createAmapPoiPhotoLookup(amapPhotoCredential?.apiKey ?? '');
+    const enabledSources: DataSourceKind[] = [
+      ...(poi.source.kind === 'null' ? [] : ([poi.source.kind] as const)),
+      ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
+    ];
     // xhsEnabled 为旧前端兼容字段，现语义 =「有任一外部调研数据源可用」
     emit(job, {
       type: 'job_start',
@@ -236,6 +241,7 @@ export async function runGeneration(
       at: job.createdAt,
     });
     const modelResult = await modelPromise;
+    assertAlive(signal);
     if (!modelResult.ok) throw modelResult.error;
     const { model } = modelResult;   // BYOK：使用时二次 ssrfGuard，失败即 job_error
 
@@ -299,16 +305,10 @@ export async function runGeneration(
       // 按无情报降级，生成继续
     }
 
-    // ---------- 阶段 2/3：编排 → 地理解析 → 可行性 → 审校（≤2 轮） ----------
-    // 时序前移（M0-A）：geoPipeline 从「审校循环之后」移到「每轮编排之后、审校之前」，
-    // 让可行性引擎在真实坐标/leg 上运行，审校拿到代码算出的真违规报告（不再纯语感）。
-    // 修订轮为增量解析：geocodeAll 跳过已 geocoded 活动，computeLegs 复用 amap leg memo 不重复烧 route 额度
-    // （降级成启发式的段不记忆，修订轮在剩余额度内重试高德）。
+    // ---------- 确定性排程，随后并发运行地理增强与标题文案 ----------
     const draft = new DraftTrip(form);
     let reviewNotes: string[] = [];
-    let feasibility: FeasibilityReport = { dayReports: [], violations: [] };
-    // 层3 修复器采纳的挪动记录（跨轮累计）：落库前经 verifiedFixNotes 校验「活动确在注记声称的
-    // 目标天」才并入 reviewNotes——修订轮可能推翻挪动（live beijing 实证），失真注记宁弃不留
+    // 记录修复器的实际挪动；后续跨天优化可能再次换天，落库前验证注记仍然成立。
     const autoFixMoves: AppliedFixMove[] = [];
 
     // 地理解析 + 可行性模拟：后处理属增强路径，意外异常只损失坐标补全/通勤段，不失败整个任务（取消除外）。
@@ -323,12 +323,11 @@ export async function runGeneration(
       } catch (err) {
         if (signal.aborted) throw err;
       }
-      feasibility = await runSystemTask('plan', 'simulate_feasibility', '检查时空可行性', () => draft.feasibility());
+      await runSystemTask('plan', 'simulate_feasibility', '检查时空可行性', () => draft.feasibility());
     };
 
     // ---------- 阶段 2：确定性排程（零 LLM） ----------
-    // 结构（哪天、什么顺序、几点到几点）由知识库 + 空间算法算出，不经过 LLM：
-    // 实测让 LLM 推结构要烧 4.7 万输出 token / 432s，且第 2 轮修订又会撞超时（09-20 报告）。
+    // 入选点、分天与顺序由知识库和空间算法决定，不产出具体起止时刻。
     // 排程是结构唯一来源 —— 排不出来就没有行程可言，不做「降级继续」。
     startPhase('plan', 1, '确定性排程');
     const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
@@ -352,10 +351,7 @@ export async function runGeneration(
     }
 
     // ---------- 阶段 3：文案（只写标题），与下面的地理/修复并发 ----------
-    // 排程已过 validate、结构定案，而文案只写 description（不依赖坐标与 leg）——把它与 geoPipeline /
-    // 远郊修复器并发，把整段 LLM 时间从关键路径上摘掉。原先串行时文案的 42~82s（reasoning 主导、方差极大）
-    // 全额计入总时长，并发后总时长 ≈ max(地理 + 修复, 文案) + 尾部。
-    // 结构并发变动无损：文案工具按 activityId 写入，活动被修复器提到别的天也不丢文案。
+    // 文案只写行程和每天标题，不修改活动；与地理增强并发缩短关键路径。
     // 沿用 review 阶段名（前端与时间线契约不变），语义是「给行程与每天起标题」；
     // 活动说明不归它写：research 的候选 intro 已按同一标准写成并直接复用到活动上。
     // 工具面只给 get_draft + update_titles + submit_review，改不动活动/顺序/说明。
@@ -388,8 +384,7 @@ export async function runGeneration(
       };
     });
 
-    // 时序前移（M0-A）：排程后立刻解析全量坐标/leg 并跑可行性引擎，让修复器拿到真实时间线。
-    // geoPipeline 内部按 signal 逐项中止（07-12 教训：AbortSignal 须逐迭代检查）。
+    // 修复器使用真实坐标与通勤段；地理循环内部按 signal 逐项检查取消。
     await resolveGeoAndSimulate(sinkFor('plan'));
 
     // 层3 兜底：确定性修复器 —— 排程层若仍产出「远郊日混排」且 feasibility 报出 hard 违规，
@@ -408,7 +403,6 @@ export async function runGeneration(
       );
       if (fix.applied.length > 0) {
         autoFixMoves.push(...fix.applied);
-        feasibility = draft.feasibility();
       }
     } catch (err) {
       if (signal.aborted) throw err;
@@ -474,33 +468,25 @@ export async function runGeneration(
     // · repairTransitTiming 靠「活动结束时间 + 真实 leg」顺延，没有时间轴就无从顺延。
     // 真通勤时长仍由 computeLegs 算在 leg 上，前端按「段间耗时」展示。
 
-    // 排程阶段的闭馆冲突（09-27）：某段在所有剩余可用天都整段闭馆 → 未排入，那天留空。
-// 必须显式告知：不说的后果就是用户只看到「莫名其妙少一天」，而不知道是闭馆日所致。
-// 与「远郊修复器自动换天」同类，放在 reviewNotes 最前（系统替用户做过的结构调整）。
-const WEEKDAY_LABELS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] as const;
-const closureNotes = scheduleOutcome.schedule.closureConflicts.map((conflict) => {
-  const parsed = new Date(`${conflict.date}T00:00:00`);
-  const weekday = Number.isNaN(parsed.getTime()) ? '' : WEEKDAY_LABELS[parsed.getDay()]!;
-  const holiday = conflict.holiday ? `（${conflict.holiday}）` : '';
-  return `${conflict.names.join('、')} 在 ${conflict.date}${weekday ? ` ${weekday}` : ''}${holiday} 闭馆，剩余天数里没有其他可用日，未排入行程（该天留空，可自由安排）。`;
-});
-if (closureNotes.length) {
-  reviewNotes = [...new Set([...closureNotes, ...reviewNotes])].slice(0, 8);
-}
+    // 全局日期匹配仍无法保留的闭馆段如实提示；自由安排日也保留所需餐次。
+    const WEEKDAY_LABELS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] as const;
+    const closureNotes = scheduleOutcome.schedule.closureConflicts.map((conflict) => {
+      const parsed = new Date(`${conflict.date}T00:00:00`);
+      const weekday = Number.isNaN(parsed.getTime()) ? '' : WEEKDAY_LABELS[parsed.getDay()]!;
+      const holiday = conflict.holiday ? `（${conflict.holiday}）` : '';
+      return `${conflict.names.join('、')} 在 ${conflict.date}${weekday ? ` ${weekday}` : ''}${holiday} 闭馆，无法与其他行程同时安排到开放日，未排入行程（该天可自由安排）。`;
+    });
+    if (closureNotes.length) {
+      reviewNotes = [...new Set([...closureNotes, ...reviewNotes])].slice(0, 8);
+    }
 
-// 层3 修复器的自动调整说明（可信透明）：系统替用户做过的换天动作必须可见，置于 reviewNotes 最前。
-    // 真话契约：只保留最终草稿里仍成立的挪动注记（修订轮重排可能已推翻——live beijing 实证
-    // 轮1 挪出的活动被轮2 放回原天，跨轮累计若不校验会对用户宣称一次并不存在的调整）。
+    // 只保留最终草稿中仍成立的换天说明。
     const verifiedAutoNotes = verifiedFixNotes(draft, autoFixMoves);
     if (verifiedAutoNotes.length) {
       reviewNotes = [...new Set([...verifiedAutoNotes, ...reviewNotes])].slice(0, 8);
     }
 
-    // 可行性降级（decision 2 守生成不失败）：修订轮用尽仍有 hard 违规 → 如实并入 reviewNotes，任务仍 done 不 throw；
-    // soft 违规同样汇入最终 reviewNotes（不阻断，仅提示）。geoPipeline 已在循环内解析，draft 无需再跑后处理。
-    // 用最终草稿重算：审校阶段可能已就地 update/remove 活动（时间微调、删点减负），落库前的降级说明须反映
-    // 真实持久化状态，否则会报「审校已修掉的」遗留问题或漏报审校新引入的问题（loop 内 feasibility 是审校前快照）。
-    // draft.feasibility() 是纯函数（无网络/geoPipeline）：未动的段仍用真实 leg，审校改动的段按 haversine 兜底如实降级。
+    // 最终草稿重算可行性：hard/soft 违规均如实汇入说明，不再交给模型修订结构。
     const finalFeasibility = draft.feasibility();
     const feasibilityNotes = feasibilityReviewNotes(finalFeasibility);
     if (feasibilityNotes.length) {
@@ -514,30 +500,39 @@ if (closureNotes.length) {
       ...(search.stats.gotResults ? (['websearch'] as const) : []),
     ];
     // 修订（PR5）：targetTripId 存在时把新行程挂到同一版本链的下一版；否则就是全新行程
-  const revisionOf = job.provenance.kind === 'revision' ? job.provenance.targetTripId : undefined;
-  const trip = await createTrip(
-    job.userId,
-    draft.toTrip(reviewNotes, { overview: research.pool, dataSources }),
-    revisionOf,
-  );
-    await record('done', trip.id);
+    const revisionOf = job.provenance.kind === 'revision' ? job.provenance.targetTripId : undefined;
+    assertAlive(signal);
+    const trip = await db.transaction(async (tx) => {
+      assertAlive(signal);
+      const saved = await createTrip(
+        job.userId,
+        draft.toTrip(reviewNotes, { overview: research.pool, dataSources }),
+        revisionOf,
+        tx,
+      );
+      assertAlive(signal);
+      await record('done', saved.id, tx);
+      assertAlive(signal);
+      return saved;
+    });
+    // COMMIT 是成功边界：事务内取消会回滚；提交成功后不再把已保存结果宣告取消。
     completeJob(job, trip.id, dataSources, reviewNotes);
     terminalStatus = 'done';
   } catch (err) {
     if (signal.aborted) {
       cancelJob(job);
       terminalStatus = 'cancelled';
-      // 先发布权威终态，避免审计表写入异常让已接受的取消永久停在 running。
-      await record('cancelled', null);           // 取消不计配额（配额只数 done）
-      return;
+    } else {
+      failJob(job, err instanceof GenerationFailure ? err.message : '生成失败，请稍后重试');
+      terminalStatus = 'error';
+      logger?.error({ jobId: job.id, errorType: err instanceof Error ? err.name : 'unknown' }, 'generation failed');
     }
-    await record('error', null);
-    const message =
-      err instanceof GenerationFailure
-        ? err.message
-        : `生成失败：${err instanceof Error ? err.message : '未知错误'}`;
-    failJob(job, message);
-    terminalStatus = 'error';
+    // 失败/取消先发布权威终态。审计异常必须可观测，但不能再次困住任务锁。
+    try {
+      await record(terminalStatus, null);
+    } catch {
+      logger?.error({ jobId: job.id, status: terminalStatus }, 'generation audit write failed');
+    }
   } finally {
     clearTimeout(timeout);
     logger?.info(

@@ -35,7 +35,7 @@ an empty table and would therefore hide a broken backfill.
 
 ## Naming and Storage Representation
 
-- Drizzle properties use camelCase; SQLite columns use snake_case.
+- Drizzle properties use camelCase; PostgreSQL columns use snake_case.
 - Identifiers are text IDs produced by the shared `uid()` helper.
 - Timestamps are `TIMESTAMPTZ` columns written with `new Date()`.
 - `trips.data` is the full JSON `Trip` source of truth; list columns are derived indexes and
@@ -53,6 +53,18 @@ Representative paths: `apps/server/src/db/schema.ts`,
 
 Representative paths: `apps/server/src/services/tripService.ts`,
 `apps/server/src/services/quotaService.ts`, `apps/server/src/generation/jobManager.ts`.
+
+### Generation transaction writer
+
+`createTrip(userId, source, revisionOf?, writer = db)` accepts `Pick<typeof db, 'select' | 'insert'>`.
+All count/lineage reads and the insert use this writer. A caller coordinating a larger transaction
+must pass its `tx`; a hidden global `db` query would escape the transaction.
+Generation saves the trip and its `generations.status = 'done'` audit row inside one
+`db.transaction`, then publishes `job_done` after COMMIT. An audit failure rolls back the trip.
+Cancellation observed before the callback returns rolls back both writes; a committed result stays
+successful. Error/cancel audit rows are best-effort writes after the in-memory terminal transition.
+See the terminal/persistence scenario in `generation-guidelines.md` and
+`node --import tsx scripts/verify-generation-flow.mts` for real PostgreSQL fault injection.
 
 ## Common Mistakes
 

@@ -12,6 +12,12 @@ ID. Always attach a rejection handler that logs an otherwise unhandled detached 
 The orchestrator must catch normal workflow failures and converge the job to exactly one of
 `done`, `error`, or `cancelled`.
 
+All asynchronous initialization belongs inside that catch boundary. Start with null adapters and
+zero usage counters so even setup failure can terminate and audit safely. Failure/cancellation
+publishes the terminal state before attempting its best-effort audit; success publishes only after
+the trip and success audit commit together. Terminal helpers are idempotent, and late nonterminal
+events from parallel enhancement work are discarded.
+
 Representative paths: `apps/server/src/routes/generations.ts`,
 `apps/server/src/generation/orchestrator.ts`, `apps/server/src/generation/jobManager.ts`.
 
@@ -60,6 +66,62 @@ Representative paths: `apps/server/src/routes/generations.ts`,
 - End the stream after `job_done`, `job_error`, or `job_cancelled`.
 - On connection close or write failure, unsubscribe and clear the heartbeat without affecting
   generation.
+- `subscribe` replays synchronously. Initialize the unsubscribe variable before subscribing, then
+  dispose the returned subscription if replay already closed the response. Terminal replay must
+  never register a live listener, and a terminal cursor with no remaining events still ends the stream.
+
+## Scenario: Terminal State and Atomic Persistence (09-29)
+
+### 1. Scope / Trigger
+
+Changes to initialization, cancellation, `createTrip`, audit writes, or SSE terminal cleanup.
+
+### 2. Signatures
+
+- `runGeneration(job, form, cfg, logger?: Pick<FastifyBaseLogger, 'info' | 'error'>): Promise<void>`
+- `createTrip(userId, source, revisionOf?, writer = db)`; writer exposes `select` and `insert`.
+- `completeJob` / `failJob` / `cancelJob`: one terminal transition per job.
+- `subscribe(job, afterId, listener): () => void`: synchronous replay, then optional live subscription.
+
+### 3. Contracts
+
+- Check AbortSignal on entry and after asynchronous initialization. Agent runner also checks entry.
+- Persist trip and `generations(status='done', tripId)` in the same `db.transaction` writer.
+- Cancellation observed inside the transaction throws and rolls back both writes. COMMIT is the
+  success boundary: an abort after commit must not turn the saved result into a cancelled job.
+- For failure/cancellation, release the per-user running lock before the audit write. Audit failure
+  logs safe job/status metadata and cannot leave a running job or a detached rejection.
+- Unexpected internal failures return a generic user message; never expose raw SQL or credentials.
+
+### 4. Validation & Error Matrix
+
+| Condition | Outcome |
+| --- | --- |
+| Initialization and error audit both fail | one `job_error`, released lock, safe error log |
+| Abort during initialization | one `job_cancelled`, released lock |
+| Success audit SQL fails | transaction rollback, no trip or success quota |
+| Abort while persistence waits | after the operation settles, rollback and cancellation |
+| COMMIT completed before abort observed | one `job_done`, saved trip and matching audit |
+| Terminal SSE replay / terminal cursor | response ends, no listener or heartbeat retained |
+
+### 5. Good/Base/Bad Cases
+
+- Good: a SQL trigger rejects success auditing and no trip survives.
+- Base: normal generation saves a trip and one successful audit, including revision lineage.
+- Bad: global `db` escapes the transaction, audit failure precedes lock release, or post-commit
+  cancellation claims that an already saved trip was cancelled.
+
+### 6. Tests Required
+
+`jobManager.test.ts` verifies idempotent terminal transitions, late events, and terminal replay.
+`scripts/verify-generation-flow.mts` injects setup/audit failures, locks PostgreSQL during saving,
+checks rollback and lineage, and reads actual HTTP SSE streams to EOF. Use a disposable database.
+
+### 7. Wrong vs Correct
+
+Wrong: `await createTrip(...); await record('done', id); completeJob(...)`.
+Correct: pass the same `tx` to `createTrip` and success auditing inside `db.transaction`, then call
+`completeJob` after commit. For failure, call `failJob` first and catch audit errors separately.
 
 Event payloads are shared contracts in `packages/shared/src/types.ts`. Preserve compatibility
 fields until coordinated shared/web removal. Current `xhsEnabled`, `xhsCalls`, and `usedXhs`
@@ -162,26 +224,23 @@ Bulk mechanical work with deterministic rules — batch geocoding, transit-leg c
 must NOT be delegated to agent tool loops (burns turns, unreliable on weak models). Run it as
 a code-level pass in the orchestrator.
 
-**Timing (M0-A shift)**: the geoPipeline pass runs INSIDE each plan⇆review round — after the
-planner phase and BEFORE the reviewer phase — not once after the whole loop. This is what lets
-the feasibility engine (below) simulate on real resolved coordinates/legs and hand the reviewer
-a code-computed violation report. Revision rounds therefore re-run resolution incrementally:
-`geocodeAll` skips already-`geocoded` activities, and `computeLegs` reuses a session-level
-`legMemo` (keyed by endpoint ids + rounded coords) so unchanged pairs do NOT spend the ROUTE
-cap twice. Verify `GEOCODE_MAX_PER_TASK` / `ROUTE_MAX_PER_TASK` still hold across rounds when
-changing this.
+**Timing**: after deterministic scheduling, geoPipeline and the title writer run concurrently.
+Geo results feed feasibility and the long-haul repair pass. Final geo/legs refresh and cross-day
+optimization run before persistence. `geocodeAll` skips already-`geocoded` activities, and
+`computeLegs` reuses a session-level `legMemo` (endpoint IDs + rounded coordinates) so unchanged
+pairs do not spend the route cap twice. Task-wide geocode/route caps apply across all passes.
 
 - Progress goes through the existing `thought` sink events (e.g. `正在解析坐标与通勤 (12/18)`);
   do not invent new SSE event types for internal passes.
 - Degradation inside the pass must never fail the job; skip items truthfully instead of
   fabricating data.
-- Agent tools remain available for judgment calls only (e.g. `geocode_place` for ambiguous
-  key places); the pass skips items the agent already resolved (`coordSource==='geocoded'`).
+- The pass skips coordinates already resolved from research or the knowledge base
+  (`coordSource==='geocoded'`); the title writer does not receive geo tools.
 
 Representative paths: `apps/server/src/generation/geoPipeline.ts`,
 `apps/server/src/generation/orchestrator.ts`.
 
-### Feasibility Engine (M0-A: LLM proposes, solver disposes)
+### Feasibility Engine
 
 Itinerary feasibility is computed by pure code, not judged by the LLM. `simulateDay` /
 `simulateTrip` in `packages/shared/src/feasibility.ts` are IO-free pure functions (no server,
@@ -216,28 +275,16 @@ skips that segment's transit/backtrack checks; a missing leg is estimated with `
 (the shared speed model, also backing `legEstimator`) and the violation `detail` is labeled
 low-confidence.
 
-Three reuse points, all via `@tripweaver/shared`:
+The live pipeline computes feasibility after geo resolution, uses it to accept or roll back
+deterministic repairs, then recomputes `draft.feasibility()` immediately before persistence.
+`feasibilityReviewNotes` reports remaining hard and soft issues truthfully. These quality notes
+do not replace `draft.validate()`'s structural gate (missing days or too many activities are fatal).
+Legacy revision tools may still expose `check_feasibility` / `submit_plan`; the live generation
+path has no LLM planner or structural reviewer loop.
 
-1. **Planner** — the `check_feasibility` tool returns `describeFeasibility(report)`; `submit_plan`
-   gates on HARD violations only (soft passes through). Because `submit_plan` fires BEFORE that
-   round's geoPipeline (draft has model-filled coords but no legs), the gate judges on best
-   available data with haversine fallback, then bounded self-heal: after `MAX_HARD_BLOCKS`
-   consecutive hard blocks it lets the plan through rather than looping into `maxTurns` failure.
-   The orchestrator's post-geoPipeline report on real legs is the authoritative judgment.
-2. **Reviewer** — `reviewerUserPrompt(form, round, describeFeasibility(report))` appends the
-   engine report so the reviewer judges structural issues against computed facts, not vibes.
-3. **Degrade-not-fail** — if revision rounds exhaust with hard violations still present,
-   `feasibilityReviewNotes(report)` folds them (and soft ones) into `reviewNotes` truthfully and
-   the job STILL converges to `done`. Feasibility problems are a gate/hint, never a thrown error
-   (generation-never-fails principle).
-
-**Common Mistake: persisting a pre-review feasibility snapshot.** The reviewer keeps
-`update_activity`/`remove_activity` and mutates the same draft in place (trimming an overpacked
-day is its designed case). Notes folded into the persisted trip must be recomputed from the
-FINAL draft (`draft.feasibility()` after the review phase), not the per-round snapshot handed to
-the reviewer prompt — otherwise the notes claim a violation the reviewer just fixed, or miss one
-it introduced, breaking the "truthful" contract. Found as a Medium/High issue in
-`07-13-feasibility-engine`.
+**Common mistake: persisting an earlier feasibility snapshot.** Repair/grouping passes mutate
+activities, so notes must use the final draft; otherwise they can describe already-fixed violations
+or miss newly introduced ones. The writer only changes titles and cannot repair structure.
 
 Representative paths: `packages/shared/src/feasibility.ts`,
 `apps/server/src/generation/tools/draftTools.ts`, `apps/server/src/generation/prompts.ts`,
@@ -259,8 +306,8 @@ insufficient — the planner assigns `dayIndex` before any coordinates exist):
    `applyDeterministicSchedule`'s `longHaul` input and the scheduling layer enforces the
    exclusive-day discipline structurally. (The old `plannerUserPrompt` injection died with the
    LLM planner in 09-21; the prompt builders were deleted in 09-25.)
-2. **Deterministic fixer (repair)** — `longHaulFixer.ts` runs INSIDE each plan⇆review round,
-   after geoPipeline+feasibility and before the reviewer. Trigger: hard
+2. **Deterministic fixer (repair)** — `longHaulFixer.ts` runs after geoPipeline+feasibility,
+   concurrently with the title writer. Trigger: hard
    `transit_infeasible`/`overpacked` on a day that has an exclusive-tier long-haul activity
    (re-identified from REAL resolved coordinates, not the name-keyed research intel) plus
    mixed-in urban activities (>45min from the long-haul point AND closer to the trip median
@@ -270,7 +317,7 @@ insufficient — the planner assigns `dayIndex` before any coordinates exist):
    batch only if total hards STRICTLY decreased, else roll the whole day back
    (three-level `structuredClone` snapshots). Bounded: ≤3 moves/day, ≤8 attempts/task;
    multi-far-suburb days are handled per-day by the same rule, never specially. Fixer
-   exceptions degrade to "not fixed" and the reviewer proceeds (generation-never-fails).
+   exceptions degrade to "not fixed" and the pipeline continues (cancellation still propagates).
 - Recomputation after each move uses
   `computeLegs(draft, onProgress, signal, onlyDayIndexes)` — the targeted-day variant;
   omitting `onlyDayIndexes` preserves the full recompute.
@@ -326,11 +373,10 @@ LLM planner/reviewer loop for the live pipeline.
 
 ### 2. Signatures
 
-- `visitMinutes(facts): { minutes, basis: 'canonical' | 'type_estimate' }` in
-  `scheduling/visitMinutes.ts` — pure, no IO
+- `visitWeight(facts): number` in `scheduling/visitWeight.ts` — relative weight, pure, no IO
 - `loadPlaceFacts(names, city): Promise<Map<string, PlaceFacts>>` in `scheduling/placeFacts.ts`
-- `buildSchedule(candidates, options): { days, droppedCount }` in `scheduling/schedule.ts` — pure
-- `applyDeterministicSchedule(input): { schedule, written, skippedNoCoord }` in
+- `buildSchedule(candidates, options): { days, droppedCount, closureConflicts }` in `scheduling/schedule.ts` — pure
+- `applyDeterministicSchedule(input): { schedule, written, withoutCoord }` in
   `scheduling/buildDraft.ts`
 - `draft.setSkeleton(...)` / `draft.addActivity(...)` / `draft.setLodging(...)` /
   `draft.updateTitles(...)` — the only writers
@@ -343,26 +389,29 @@ LLM planner/reviewer loop for the live pipeline.
 
 ### 3. Contracts
 
-- **The plan phase makes zero LLM calls.** Day assignment, intra-day order, and the time axis are
-  computed from knowledge-base facts plus the heuristic transit model. Do not reintroduce an agent
+- **The plan phase makes zero LLM calls and produces no time axis.** Selection, day assignment,
+  and intra-day order use knowledge-base facts and spatial heuristics. Do not reintroduce an agent
   loop there; the measured cost of letting an LLM do it was 47228 output tokens / 432s, and the
   round-2 revision blew the 15-minute job timeout.
 - Scheduling IS a hard dependency (unlike RAG enrichment): if `draft.validate()` fails after
   scheduling, throw `GenerationFailure`. There is no degraded path — no structure means no trip.
-- Coordinates are OPTIONAL per candidate. Candidates without coordinates skip spatial clustering
-  and are distributed round-robin by score to the emptiest non-exclusive day; `geoPipeline`
+- Coordinates are OPTIONAL per candidate. Candidates without coordinates follow located candidates
+  in score order before capacity-based chain cutting; `geoPipeline`
   resolves their coordinates afterwards (this matches the pre-existing rule that coordinates are
   never required from the planner). Never drop a candidate merely for lacking coordinates at
   scheduling time.
-- `visitMinutes` is a two-track value: `payload.typicalVisitMinutes` when present (basis
-  `canonical`), otherwise the `xhsPlaceType` table, then the 8-category table, then 75 minutes.
-  Do not make the real value mandatory — coverage is ~3.5% (32 of 912 Beijing rows).
-- The day timeline is built by SEGMENTING around meal windows when `foodFocused` is true:
-  `[open → lunch]`, `[lunch end → dinner]`, `[dinner end → close]`. This is what guarantees meals
-  exist, no activity straddles a meal window, and the day never runs past 21:30.
-- An empty day gets ONE placeholder activity named `自由安排｜<destination>` — never a fabricated
-  venue. This keeps the pre-existing "every day needs at least one activity" completeness gate
-  satisfiable when the knowledge base has no coverage for a city.
+- `visitWeight` uses the place-type table, then the 8-category table, then weight 2. It expresses
+  relative capacity, not a predicted visit duration. `relaxed/moderate/tight` set daily count and
+  weight limits. Food-focused days reserve two of the 8 total activity slots before cutting.
+- Located-chain start selection and segment reordering both honor all present predecessors.
+  Missing endpoints/coordinates keep the documented degradation; cyclic constraints fall back
+  deterministically rather than hanging. Relation distance discounts do not replace order constraints.
+- When `foodFocused`, insert lunch at the segment midpoint and dinner at its end. Empty days get
+  `自由安排｜<destination>` plus lunch and dinner; without that preference they get only the
+  placeholder. Missing food candidates use truthful area anchors, never fabricated venues.
+- `PlaceFacts.recommendScore` / `mentionCount` remain optional through loading and merging. Only
+  known values participate in aggregation; real zero stays zero. Unknown values use neutral score
+  ratios, so a gold-set landmark with no community metrics scores 65, not 15.
 - `lodging` stays EMPTY when the form leaves it empty (09-22 decision): generation never derives
   an area and never names a specific hotel. `verify-c2` asserts `trip.lodging === undefined` for
   the unspecified case; only a user-supplied `form.lodging` is persisted.
@@ -389,17 +438,18 @@ LLM planner/reviewer loop for the live pipeline.
   measured 5132 output tokens / 42–126s, the title-only variant 711–1476 / 24–28s.
 - The writer is an enhancement path: an LLM error or turn limit degrades to the defaults already in
   the draft (code-generated `day.title`s and the candidate `intro` copy) and the job still succeeds.
-- `describeFeasibility`, `repairLongHaulMixedDays`, `ensureMealCoverage` (food-focused only),
-  `optimizeCrossDayGrouping`, and `repairTransitTiming` all still run; only the LLM planner and the
-  LLM reviewer loop are gone.
+- Geo resolution, actual transit legs, feasibility checks, `repairLongHaulMixedDays`, and
+  `optimizeCrossDayGrouping` still run. `ensureMealCoverage` and `repairTransitTiming` no longer
+  run because they depend on a time axis; meal insertion belongs to deterministic scheduling.
 
 ### 4. Validation & Error Matrix
 
 | Condition | Result |
 | --- | --- |
 | `loadPlaceFacts` query fails | warn, empty map, schedule falls back to the type table |
-| no candidate has coordinates | every day gets one placeholder activity; job still succeeds |
-| candidates exceed days × 6 | lowest-scored overflow dropped, reported in `phase_end` summary |
+| no candidate has coordinates | retain candidates subject to capacity, resolve coordinates later |
+| no attractions / all closed | truthful placeholder and, when food-focused, lunch and dinner |
+| candidates exceed pace/capacity | overflow dropped, reported in `phase_end` summary |
 | food-focused with no food candidate | meal stop anchors on the destination name |
 | writer LLM error / turn limit | keep drafted copy, `job_done` unaffected |
 | cancellation during scheduling | propagates as on any other phase |
@@ -411,7 +461,7 @@ LLM planner/reviewer loop for the live pipeline.
 // (A planner agent with `plannerSystemPrompt` used to do exactly this; both were deleted in 09-25.)
 const plannerRun = await runPhaseAgent({ systemPrompt: '<a planner prompt>', ... });
 
-// Correct: structure is code's job; the model only writes descriptions.
+// Correct: structure is code's job; the model only writes titles.
 const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
   applyDeterministicSchedule({ draft, form, pool, locations, longHaul, foodFocused, facts }),
 );
@@ -999,10 +1049,12 @@ Apply when changing the segment→day assignment in `generation/scheduling/sched
   Monday-closure rule carries that exception almost universally in China, while the mined evidence
   rarely spells it out (coverage too low to matter). Cost: venues that do close on holidays get waved
   through — an acceptable trade against wrongly blocking a day the venue is open.
-- **Segment→day assignment degrades in three tiers**: (1) earliest free day with zero closing members;
-  (2) the day with the fewest closing members, skipping any day where the WHOLE segment closes;
-  (3) no assignment — the day keeps its placeholder, the segment is dropped, and a `closureConflicts`
-  entry is produced.
+- **Segment→day assignment is global.** Bitmask dynamic programming considers at most 15 dates
+  (`2^15` states). First minimize closed attractions actually scheduled; then minimize whole dropped
+  segments. Fully closed assignments drop the segment with cost 1; partial closures cost
+  `closedCount * (segmentCount + 1)`. Equal-cost solutions favor high-score segments on early dates.
+  A flexible segment cannot take another segment's only open date when a zero-conflict solution exists.
+  A dropped segment leaves a placeholder (plus meals if requested) and a `closureConflicts` entry.
 - **"Whole segment closes" ≠ "part of the segment closes".** A 4-member segment where 1 closes still
   gets assigned (3 members are visitable); only `closedCount >= segment.length` is unassignable.
 - **A conflict must reach the user.** `orchestrator.ts` turns each `closureConflicts` entry into a

@@ -2,6 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadPlaceFacts, mergeFacts, normalizePlaceKey, renderOpenHours, type PlaceFacts } from '../generation/scheduling/placeFacts';
+import { poiScore, scoreMaxima } from '../generation/scheduling/score';
 
 // ---------- 归一键 ----------
 
@@ -64,7 +65,21 @@ test('loadPlaceFacts：候选「故宫博物院」合并到「故宫」分裂条
     return;
   }
   // 分裂前实测：recommendScore 17.33 / mentionCount 6；合并后提及应 > 6（故宫条目的提及加进来）
-  assert.ok(facts.mentionCount > 6, `合并后提及应大于单条目 6，实际 ${facts.mentionCount}`);
+  assert.ok((facts.mentionCount ?? 0) > 6, `合并后提及应大于单条目 6，实际 ${facts.mentionCount}`);
+});
+
+test('未知评分在合并后仍走中性值，真实零保持为零', () => {
+  const unknown = fx({ name: '金集地标', source: 'goldset', recommendScore: undefined, mentionCount: undefined });
+  const merged = mergeFacts([unknown, { ...unknown, name: '金集地标公园' }]);
+  assert.equal(merged.recommendScore, undefined);
+  assert.equal(merged.mentionCount, undefined);
+  const maxima = scoreMaxima([merged, { recommendScore: 80, mentionCount: 10 }]);
+  assert.equal(poiScore(merged, maxima), 65);
+  const zero = mergeFacts([unknown, fx({ name: '零分地标' })]);
+  assert.equal(zero.recommendScore, 0);
+  assert.equal(zero.mentionCount, 0);
+  assert.equal(poiScore(zero, maxima), 15);
+  assert.equal(mergeFacts([unknown, fx({ name: '已知', mentionCount: 7 })]).mentionCount, 7);
 });
 
 // ---------- 结构化开闭馆渲染（09-27） ----------

@@ -100,21 +100,21 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
     const es = new EventSource(`/api/generations/${jobId}/events?lastEventId=0`);
     eventSourceRef.current = es;
     let gotTerminal = false;
-    let opened = false;
-
-    es.onopen = () => {
-      // 首连时事件数组本来就是空的（start 时已清过），不能再清：
-      // 若 onopen 晚于首批 message 到达，清空会把 job_start 丢掉（降级标注消失、阶段内容错位）。
-      // 只有重连才清空重建，避免全量重放重复追加。
-      if (opened) setEvents([]);
-      opened = true;
-    };
+    let lastEventId = 0;
+    // 原生重连携带 Last-Event-ID，服务端只补增量；历史事件一直保留。
+    // 游标绑定本次 job/effect，换任务或重新挂载后从 0 重建。
     es.onmessage = (msg) => {
+      if (gotTerminal) return;
       let ev: GenerationEvent;
       try {
         ev = JSON.parse(msg.data) as GenerationEvent;
       } catch {
         return; // 坏帧丢弃，不影响后续事件
+      }
+      const eventId = Number(msg.lastEventId);
+      if (Number.isSafeInteger(eventId) && eventId > 0) {
+        if (eventId <= lastEventId) return;
+        lastEventId = eventId;
       }
       setEvents((prev) => [...prev, ev]);
       if (ev.type === 'job_done' || ev.type === 'job_error' || ev.type === 'job_cancelled') {

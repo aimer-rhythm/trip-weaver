@@ -70,7 +70,7 @@ export interface ScheduleResult {
   /** 因天数/容量不足未排入的候选数（D5：排不下就少排，不硬塞） */
   droppedCount: number;
   /**
-   * 闭馆日冲突（09-27）：某段在**所有剩余可用天**都整段闭馆，因而没有排入。
+ * 闭馆日冲突：全局日期匹配仍无法保留某段，该段在分配日整段闭馆而未排入。
    * 调用方必须如实告知用户 —— 否则用户只会看到「莫名其妙少一天」。
    */
   closureConflicts: readonly ClosureConflict[];
@@ -155,13 +155,20 @@ function buildChain(
   if (located.length <= 1) return [...located, ...stranded];
 
   // after 名 → before 名；只约束 located 集合内的点对（stranded 在链尾，位置不受几何控制）
-  const predecessorOf = new Map<string, string>();
+  const predecessorOf = new Map<string, Set<string>>();
   const locatedNames = new Set(located.map((poi) => poi.name));
   for (const c of orderConstraints) {
-    if (locatedNames.has(c.before) && locatedNames.has(c.after)) predecessorOf.set(c.after, c.before);
+    if (locatedNames.has(c.before) && locatedNames.has(c.after) && c.before !== c.after) {
+      const predecessors = predecessorOf.get(c.after) ?? new Set<string>();
+      predecessors.add(c.before);
+      predecessorOf.set(c.after, predecessors);
+    }
   }
 
-  const start = located.reduce((best, poi) => (poi.score > best.score ? poi : best), located[0]!);
+  const starts = located.filter((poi) => !predecessorOf.has(poi.name));
+  // 循环约束无法满足时保持确定性降级；正常链的起点也必须满足先后关系。
+  const startPool = starts.length ? starts : located;
+  const start = startPool.reduce((best, poi) => (poi.score > best.score ? poi : best), startPool[0]!);
   const remaining = new Set<SchedulablePoi>(located);
   remaining.delete(start);
   const chain: SchedulablePoi[] = [start];
@@ -183,10 +190,10 @@ function buildChain(
       }
       return best;
     };
-    // 先在被约束允许的集合里找最近邻；全被前置约束堵住（前置点是 stranded 等无法满足的情形）时退让，防死循环
+    // 先在被约束允许的集合里找最近邻；循环前置约束堵住全部候选时退让，防死循环
     const eligible = [...remaining].filter((poi) => {
-      const pred = predecessorOf.get(poi.name);
-      return !pred || ![...remaining].some((r) => r.name === pred);
+      const predecessors = predecessorOf.get(poi.name);
+      return !predecessors || ![...remaining].some((r) => predecessors.has(r.name));
     });
     const nearest = nearestOf(eligible) ?? nearestOf(remaining);
     if (!nearest) break;
@@ -201,49 +208,14 @@ function buildChain(
 }
 
 /**
- * 段内排顺：从段内最高分点出发做最近邻。
- * 为什么切段后还要排一次：全局最近邻成链是在**整池**上跑的，链被按分量切开后，
- * 段内顺序不一定还是一条局部最短路径 —— 实测出现「国博→先农坛→圆明园→前门大街」
- * 这种 101/85min 的折返（段内跨了南城与西北郊）。段内重排直接消除这类折返。
- * 无坐标候选不参与几何排序，按原序接在后面。
- */
-function orderSegment(segment: readonly SchedulablePoi[]): SchedulablePoi[] {
-  const located = segment.filter(hasCoord);
-  const stranded = segment.filter((poi) => !hasCoord(poi));
-  if (located.length <= 2) return [...segment];
-
-  const start = located.reduce((best, poi) => (poi.score > best.score ? poi : best), located[0]!);
-  const remaining = new Set<SchedulablePoi>(located);
-  remaining.delete(start);
-  const ordered: SchedulablePoi[] = [start];
-  let cursor: Coord = start;
-  while (remaining.size) {
-    let nearest: SchedulablePoi | null = null;
-    let nearestKm = Infinity;
-    for (const poi of remaining) {
-      if (!hasCoord(poi)) continue;
-      const km = distanceKm(cursor, poi);
-      if (km < nearestKm) {
-        nearestKm = km;
-        nearest = poi;
-      }
-    }
-    if (!nearest) break;
-    ordered.push(nearest);
-    remaining.delete(nearest);
-    if (hasCoord(nearest)) cursor = nearest;   // located 里元素必有坐标，仅让类型收窄
-  }
-  return [...ordered, ...stranded];
-}
-
-/**
- * 把链按「每日停留分量上限 + 单日个数上限」切成若干段，再对每段做一次段内最近邻排顺。
+ * 把链按「每日停留分量上限 + 单日个数上限」切段，再复用受先后约束的最近邻排序。
  * 按分量而不是个数切，是因为个数根本区分不了「大点」与「小点」：
  * 实测 Day1 六个点（雍和宫/恭王府/故宫/北海/景山/什刹海）合计分量 14，两天都装不下。
  */
 function cutChain(
   chain: readonly SchedulablePoi[],
   limits: { maxStopsPerDay: number; dayWeightLimit: number },
+  orderConstraints: ScheduleOptions['orderConstraints'],
 ): SchedulablePoi[][] {
   const segments: SchedulablePoi[][] = [];
   let current: SchedulablePoi[] = [];
@@ -261,7 +233,7 @@ function cutChain(
     currentWeight += poi.weight;
   }
   if (current.length) segments.push(current);
-  return segments.map(orderSegment);
+  return segments.map((segment) => buildChain(segment, orderConstraints));
 }
 
 function dayTitle(members: readonly SchedulablePoi[]): string {
@@ -336,7 +308,9 @@ function placeholderStop(destination: string): ScheduledStop {
  * 那正是层2 长途点纪律要防的事）；候选不足时当天用占位活动兜底（保住「每天至少一个活动」的门槛）。
  */
 export function buildSchedule(candidates: readonly SchedulablePoi[], options: ScheduleOptions): ScheduleResult {
-  const paceLimits = PACE_SCHEDULE_LIMITS[options.pace ?? 'moderate'];
+  const paceLimits = { ...PACE_SCHEDULE_LIMITS[options.pace ?? 'moderate'] };
+  // 完整性上限包含午晚餐；在切段前预留，不能排满景点后再超额追加。
+  if (options.foodFocused) paceLimits.maxStopsPerDay = Math.min(paceLimits.maxStopsPerDay, 6);
   const byScore = (a: SchedulablePoi, b: SchedulablePoi) => b.score - a.score || a.name.localeCompare(b.name);
   const attractions = candidates.filter((poi) => poi.category === 'attraction').sort(byScore);
   const foods = new Set(candidates.filter((poi) => poi.category === 'food').sort(byScore));
@@ -370,7 +344,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
 
   const segments: SchedulablePoi[][] = keptExclusive.map((poi) => [poi]);
   if (remainingDays > 0 && selected.length) {
-    const restSegments = cutChain(buildChain(selected, options.orderConstraints, options.relatedPairs), paceLimits);
+    const restSegments = cutChain(buildChain(selected, options.orderConstraints, options.relatedPairs), paceLimits, options.orderConstraints);
     // 切出来的段多于剩余天数（分量分布不均时会发生）：多出来的整段丢弃，不硬塞
     for (const segment of restSegments.slice(remainingDays)) {
       for (const poi of segment) dropped.add(poi);
@@ -384,13 +358,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
   const weight = (segment: readonly SchedulablePoi[]) => Math.max(...segment.map((poi) => poi.score));
   segments.sort((a, b) => weight(b) - weight(a));
 
-  // 闭馆日避让（09-22-opentime）：段→天分配按权重顺序贪心选「该段无成员闭馆」的最早可用天；
-  // 整段移动而不是单点挪动 —— 段内顺序是链上顺路关系，挪单点会破坏连续性。
-  //
-  // **无处可避时的退化行为（09-27 修）**：原实现退回「最早未分配的天」，后果是拿剩下的那个段
-  // 被硬塞进它自己闭馆的那天 —— 实测北京 3 日（2026-09-28 周一）把单点的八达岭独占段塞进周一，
-  // 而八达岭当天闭馆，整天直接作废（可行性引擎事后报了 closed_on_arrival，但已经排出来了）。
-  // 新行为：优先选闭馆成员最少的天；**整段闭馆的天判为不可分配**（宁可空天，也不排一个全闭馆的日）。
+  // 日期匹配保持整段移动；没有完整开放解时最少冲突，整段闭馆则留空并如实提示。
   const closedCountOn = (segment: readonly SchedulablePoi[], dayIndex: number): number => {
     if (!options.startDate) return 0;
     const date = dateForDayIndex(options.startDate, dayIndex + 1);
@@ -398,26 +366,27 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     return segment.filter((poi) => isClosedOnDate(poi.openTime, date)).length;
   };
 
-  const assignedDays = new Set<number>();
-  const pickDay = (segment: readonly SchedulablePoi[]): number => {
-    // 第一轮：零闭馆冲突的最早可用天
-    for (let i = 0; i < options.days; i++) {
-      if (!assignedDays.has(i) && closedCountOn(segment, i) === 0) return i;
+  // 全局日期匹配（最多 15 天，状态数 <= 2^15）：先最少安排闭馆活动，再最少整段丢弃。
+  // 同成本优先把高分段排在较早日期；不会让灵活段占走其他段唯一的开放日。
+  const closedCounts = segments.map((segment) => Array.from({ length: options.days }, (_, i) => closedCountOn(segment, i)));
+  const closurePenalty = segments.length + 1;
+  const memo = new Map<number, { cost: number; day: number }>();
+  const assign = (index: number, mask: number): number => {
+    if (index === segments.length) return 0;
+    const cached = memo.get(mask);
+    if (cached) return cached.cost;
+    let best = { cost: Infinity, day: -1 };
+    for (let day = 0; day < options.days; day++) {
+      if (mask & (1 << day)) continue;
+      const closed = closedCounts[index]![day]!;
+      const cost = (closed === segments[index]!.length ? 1 : closed * closurePenalty) + assign(index + 1, mask | (1 << day));
+      if (cost < best.cost) best = { cost, day };
     }
-    // 第二轮：避不开时取冲突最少的天；整段闭馆一律跳过（宁可空天）
-    let best = -1;
-    let bestCount = Infinity;
-    for (let i = 0; i < options.days; i++) {
-      if (assignedDays.has(i)) continue;
-      const count = closedCountOn(segment, i);
-      if (count >= segment.length) continue;
-      if (count < bestCount) {
-        bestCount = count;
-        best = i;
-      }
-    }
-    return best;
+    memo.set(mask, best);
+    return best.cost;
   };
+  assign(0, 0);
+  let assignedMask = 0;
 
   const fallbackArea = options.fallbackArea?.trim() || '目的地';
   const days: ScheduledDay[] = Array.from({ length: options.days }, (_, index) => ({
@@ -427,15 +396,13 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
   }));
 
   const closureConflicts: ClosureConflict[] = [];
-  for (const segment of segments.slice(0, options.days)) {
-    const target = pickDay(segment);
-    if (target === -1) {
-      // 没天可给。两种原因必须分开：天数用完（正常丢弃，无需提示）
-      // vs 还有空天但那天会整段闭馆（要告知用户为什么少了一天）
-      const freeDays = Array.from({ length: options.days }, (_, i) => i).filter((i) => !assignedDays.has(i));
+  for (const [index, segment] of segments.entries()) {
+    const target = memo.get(assignedMask)!.day;
+    assignedMask |= 1 << target;
+    if (closedCounts[index]![target] === segment.length) {
       for (const poi of segment) dropped.add(poi);
-      const date = options.startDate && freeDays.length
-        ? dateForDayIndex(options.startDate, freeDays[0]! + 1)
+      const date = options.startDate
+        ? dateForDayIndex(options.startDate, target + 1)
         : undefined;
       if (date) {
         closureConflicts.push({
@@ -446,7 +413,6 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
       }
       continue;
     }
-    assignedDays.add(target);
     const day = days[target]!;
     day.title = dayTitle(segment);
     const stops: ScheduledStop[] = segment.map((poi) => ({ poi }));
@@ -463,6 +429,10 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     if (day.stops.length) continue;
     day.title = SCHEDULE_LIMITS.emptyDayPrefix;
     day.stops = [placeholderStop(fallbackArea)];
+    if (options.foodFocused) {
+      day.stops.push(withMeals([], foods, 'lunch', undefined, fallbackArea));
+      day.stops.push(withMeals([], foods, 'dinner', undefined, fallbackArea));
+    }
   }
 
   return { days, droppedCount: dropped.size, closureConflicts };

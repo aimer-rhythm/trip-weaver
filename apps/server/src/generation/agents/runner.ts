@@ -170,6 +170,7 @@ export function streamWithRetry(
 }
 
 export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResult> {
+  opts.signal.throwIfAborted();
   const labelByTool = new Map(opts.tools.map((t) => [t.name, t.label]));
   const result: RunAgentResult = { tokensIn: 0, tokensOut: 0, aborted: false, turnLimitExceeded: false };
   let turns = 0;

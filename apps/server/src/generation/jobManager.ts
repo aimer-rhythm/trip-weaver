@@ -78,6 +78,7 @@ export function jobView(job: Job): GenerationJobView {
 }
 
 export function emit(job: Job, event: GenerationEvent): void {
+  if (job.status !== 'running' && event.type !== 'job_done' && event.type !== 'job_error' && event.type !== 'job_cancelled') return;
   const stored: StoredEvent = { id: job.nextEventId++, event: { ...event, at: event.at ?? Date.now() } };
   job.events.push(stored);
   if (job.events.length > RING_SIZE) job.events.splice(0, job.events.length - RING_SIZE);
@@ -97,6 +98,7 @@ function finish(job: Job, status: GenerationJobStatus): void {
 }
 
 export function completeJob(job: Job, tripId: string, dataSources: DataSourceKind[], reviewNotes: string[]): void {
+  if (job.status !== 'running') return;
   const finishedAt = Date.now();
   job.tripId = tripId;
   finish(job, 'done');
@@ -105,12 +107,14 @@ export function completeJob(job: Job, tripId: string, dataSources: DataSourceKin
 }
 
 export function failJob(job: Job, message: string): void {
+  if (job.status !== 'running') return;
   const finishedAt = Date.now();
   finish(job, 'error');
   emit(job, { type: 'job_error', message, at: finishedAt, durationMs: finishedAt - job.createdAt });
 }
 
 export function cancelJob(job: Job, reason: GenerationCancelReason = job.cancelReason): void {
+  if (job.status !== 'running') return;
   const finishedAt = Date.now();
   finish(job, 'cancelled');
   emit(job, { type: 'job_cancelled', reason, at: finishedAt, durationMs: finishedAt - job.createdAt });
@@ -121,7 +125,7 @@ export function subscribe(job: Job, afterId: number, listener: Listener): () => 
   for (const stored of job.events) {
     if (stored.id > afterId) listener(stored);
   }
-  job.listeners.add(listener);
+  if (!isTerminal(job.status)) job.listeners.add(listener);
   return () => job.listeners.delete(listener);
 }
 

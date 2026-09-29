@@ -103,6 +103,7 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     res.write(': connected\n\n');
 
     let closed = false;
+    let unsubscribe = () => {};
     const finish = () => {
       if (closed) return;
       closed = true;
@@ -123,12 +124,20 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     };
 
     const heartbeat = setInterval(() => {
-      if (!closed) res.write(': hb\n\n');
+      if (closed) return;
+      try {
+        res.write(': hb\n\n');
+      } catch {
+        finish();
+      }
     }, HEARTBEAT_MS);
     heartbeat.unref?.();
 
-    const unsubscribe = subscribe(job, afterId, send);
-    request.raw.on('close', finish);
+    res.on('close', finish);
+    unsubscribe = subscribe(job, afterId, send);
+    // 同步重放可能已经结束；包括客户端持有终态 ID、没有新事件可回放的情况。
+    if (closed) unsubscribe();
+    else if (job.status !== 'running') finish();
   });
 
   app.post('/:jobId/cancel', async (request, reply) => {

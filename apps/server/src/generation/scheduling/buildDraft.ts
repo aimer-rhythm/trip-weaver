@@ -1,5 +1,5 @@
 // 排程结果 → DraftTrip 落盘（第二期）：把纯函数排出的序列写成草稿活动。
-// 文案不在这里编：description 先用候选 intro 截断兜底，随后由 writer 阶段（单次 LLM 调用）统一改写。
+// 活动说明直接复用候选 intro；后续 writer 只写行程与每日标题，不改活动说明。
 // 坐标直接用调研阶段旁路捕获的真实坐标（GCJ-02），标 coordSource='geocoded' 让 geoPipeline 跳过重解析。
 import {
   ACTIVITY_CATEGORIES,

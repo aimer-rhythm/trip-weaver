@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import { SCHEDULE_LIMITS, buildSchedule, relatedPairKey, type SchedulablePoi } from '../generation/scheduling/schedule';
 import { NEUTRAL_RATIO, poiScore, scoreMaxima } from '../generation/scheduling/score';
 import { DEFAULT_VISIT_WEIGHT, isHeavy, visitWeight } from '../generation/scheduling/visitWeight';
+import { DraftTrip } from '../generation/draft';
 
 let seq = 0;
 function poi(overrides: Partial<SchedulablePoi> & { name: string }): SchedulablePoi {
@@ -17,6 +18,75 @@ function ring(index: number, total: number): { lat: number; lng: number } {
 }
 
 const sumScore = (stops: { poi: SchedulablePoi }[]) => stops.reduce((sum, stop) => sum + stop.poi.score, 0);
+
+test('所有节奏的美食行程预留餐次容量，空天及闭馆降级也满足完整性', () => {
+  for (const pace of ['relaxed', 'moderate', 'tight'] as const) {
+    for (const count of [0, 1, 8, 20]) {
+      for (const closed of [false, true]) {
+        const result = buildSchedule(Array.from({ length: count }, (_, i) => poi({
+          name: `街区${i}`, weight: 1, score: 100 - i, ...ring(i, count),
+          ...(closed ? { openTime: '周一、周二、周三闭馆' } : {}),
+        })), { days: 3, foodFocused: true, pace, startDate: '2026-09-28' });
+        const draft = new DraftTrip({ destination: '北京', days: 3, budgetLevel: '经济', partySize: 1,
+          startDate: '', totalBudget: 0, preferences: ['美食'], extraNotes: '', pace });
+        draft.setSkeleton('完整性回归', result.days.map((day) => day.title));
+        for (const day of result.days) {
+          assert.ok(day.stops.length <= 8, `${pace}/${count}: 活动数不得超过 8`);
+          assert.deepEqual(day.stops.filter((stop) => stop.meal).map((stop) => stop.meal), ['lunch', 'dinner']);
+          for (const stop of day.stops) draft.addActivity(day.dayIndex, {
+            name: stop.meal ? `${stop.meal === 'lunch' ? '午餐' : '晚餐'}｜${stop.poi.name}` : stop.poi.name,
+            category: stop.meal ? '美食' : '其他',
+          });
+        }
+        assert.deepEqual(draft.validate(), [], `${pace}/${count}/${closed}`);
+      }
+    }
+  }
+});
+
+test('先后约束同时约束起点、多个前置点和最终段内重排', () => {
+  for (const afterScore of [70, 120]) {
+    const result = buildSchedule([
+      poi({ name: '起点', score: 100, lat: 39.9, lng: 116.4 }),
+      poi({ name: '前置甲', score: 80, lat: 39.9, lng: 116.45 }),
+      poi({ name: '前置乙', score: 75, lat: 39.9, lng: 116.46 }),
+      poi({ name: '后置', score: afterScore, lat: 39.9, lng: 116.401 }),
+    ], { days: 1, foodFocused: false, orderConstraints: [{ before: '前置甲', after: '后置' }, { before: '前置乙', after: '后置' }] });
+    const names = result.days[0]!.stops.map((stop) => stop.poi.name);
+    assert.ok(names.indexOf('前置甲') < names.indexOf('后置'));
+    assert.ok(names.indexOf('前置乙') < names.indexOf('后置'));
+  }
+});
+
+test('循环顺序约束有限退让，不挂起或丢点', () => {
+  const result = buildSchedule([poi({ name: '甲', ...ring(0, 2) }), poi({ name: '乙', ...ring(1, 2) })], {
+    days: 1, foodFocused: false, orderConstraints: [{ before: '甲', after: '乙' }, { before: '乙', after: '甲' }],
+  });
+  assert.equal(result.days[0]!.stops.length, 2);
+});
+
+test('日期匹配把灵活段让到后一天，保住唯一开放日的低分段', () => {
+  const result = buildSchedule([
+    poi({ name: '每日开放', score: 100, weight: 5, ...ring(0, 2) }),
+    poi({ name: '周二闭馆', score: 90, weight: 5, openTime: '周二闭馆', ...ring(1, 2) }),
+  ], { days: 2, foodFocused: false, startDate: '2026-09-28' });
+  assert.deepEqual(result.days.map((day) => day.stops[0]!.poi.name), ['周二闭馆', '每日开放']);
+  assert.equal(result.droppedCount, 0);
+  assert.deepEqual(result.closureConflicts, []);
+});
+
+test('日期匹配支持多段连锁换日与最大 15 天，且不改变无约束时的优先顺序', () => {
+  const candidates = Array.from({ length: 15 }, (_, i) => poi({ name: `景点${i}`, score: 100 - i, weight: 5, ...ring(i, 15) }));
+  const result = buildSchedule(candidates, { days: 15, foodFocused: false });
+  assert.equal(result.droppedCount, 0);
+  assert.deepEqual(result.days.map((day) => day.stops[0]!.poi.name), candidates.map((p) => p.name));
+  const constrained = buildSchedule([
+    poi({ name: '灵活', score: 100, weight: 5, ...ring(0, 3) }),
+    poi({ name: '仅周一', score: 90, weight: 5, openTime: '周二、周三闭馆', ...ring(1, 3) }),
+    poi({ name: '仅周二', score: 80, weight: 5, openTime: '周一、周三闭馆', ...ring(2, 3) }),
+  ], { days: 3, foodFocused: false, startDate: '2026-09-28' });
+  assert.deepEqual(constrained.days.map((day) => day.stops[0]!.poi.name), ['仅周一', '仅周二', '灵活']);
+});
 
 test('选点权重：缺失分走中性（不当 0），金集另有加分', () => {
   const maxima = { score: 50, mention: 20 };

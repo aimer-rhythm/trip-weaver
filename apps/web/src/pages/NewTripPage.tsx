@@ -139,7 +139,7 @@ export function NewTripPage() {
   // 否则会与恢复流程抢着发一次生成。（无依赖数组：每渲染后只做一次很轻的守卫检查）
   const autoStarted = useRef(false);
   useEffect(() => {
-    if (autoStarted.current || run.restoring) return;
+    if (autoStarted.current || run.restoring || run.jobId || doneTripId) return;
     if (params.get('autostart') !== '1') return;
     if (blocked || busy) return;
     autoStarted.current = true;
@@ -171,11 +171,17 @@ export function NewTripPage() {
         cancelling={run.cancelPending}
         cancellationError={run.cancellationError}
         onCancel={run.cancel}
-        onReset={run.reset}
+        onReset={() => {
+          run.reset();
+          navigate('/', { replace: true });
+        }}
         onOpenTrip={(tripId) => navigate(`/trips/${tripId}`)}
       />
     );
   }
+
+  // 快照已完成时没有运行中的 jobId；优先打开结果，避免下面的入口守卫抢先回首页。
+  if (doneTripId) return <Navigate to={`/trips/${doneTripId}`} replace />;
 
   if (covered.isPending) {
     return (

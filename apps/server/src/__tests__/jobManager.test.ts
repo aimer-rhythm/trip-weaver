@@ -1,6 +1,22 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { cancelJob, createJob, emit, subscribe, type StoredEvent } from '../generation/jobManager';
+import { cancelJob, completeJob, createJob, emit, failJob, getRunningJobId, subscribe, type StoredEvent } from '../generation/jobManager';
+
+test('终态唯一，迟到的阶段消息和重复终态不覆盖结果，终态重放不保留监听器', () => {
+  const job = createJob('terminal-once');
+  completeJob(job, 'saved', [], []);
+  cancelJob(job);
+  failJob(job, 'late error');
+  emit(job, { type: 'thought', phase: 'review', text: 'late writer' });
+  assert.equal(job.status, 'done');
+  assert.equal(job.tripId, 'saved');
+  assert.equal(getRunningJobId(job.userId), null);
+  assert.equal(job.events.length, 1);
+  const replay: StoredEvent[] = [];
+  subscribe(job, 0, (event) => replay.push(event));
+  assert.equal(replay.length, 1);
+  assert.equal(job.listeners.size, 0);
+});
 
 test('job manager timestamps events and fixes terminal duration', () => {
   const job = createJob(`timing-user-${Date.now()}`);

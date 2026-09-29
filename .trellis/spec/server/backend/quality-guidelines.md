@@ -36,8 +36,10 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | Web production bundle/static serving | `npm run build` | Builds `apps/web/dist`. |
 | Authentication modes/OAuth bootstrap | `node scripts/verify-auth-modes.mjs` | Isolated server scenarios. |
 | Ownership, cookies, SSRF, secrets | `node scripts/verify-security.mjs` | Dev and production instances. |
-| Generation API, migration, SSE, quota, BYOK | `node scripts/verify-c2.mjs` | Mock LLM and temporary SQLite. |
-| Production generation browser flow | `node scripts/verify-c3.mjs` | Requires `npm run build` first. |
+| Generation API, migration, SSE, quota, BYOK | `node scripts/verify-c2.mjs` | Mock LLM and dedicated PostgreSQL test database. |
+| Generation failure/transaction/terminal SSE boundaries | `node --import tsx scripts/verify-generation-flow.mts` | Dedicated PostgreSQL database; mock LLM, SQL fault injection and lock-controlled cancellation. |
+| Current production generation browser flow | `node scripts/verify-generation-browser.mjs` | Build first; current homepage, editor, refresh, cancellation/retry; random PostgreSQL test database. |
+| Native SSE reconnect and hook recovery | `node apps/web/tests/generation-recovery-browser.mjs` | Vite at 18811; native EventSource against local fixture at 18810. |
 | Core browser trip flow | `node scripts/verify-m1.mjs` | Expects a suitable app at `BASE`. |
 | Export/import production flow | `node scripts/verify-d1.mjs` | Requires `npm run build` first. |
 | Golden-set eval (offline snapshot replay) | `npm run eval` | Deterministic checks; gate = zero hard violations. |
@@ -59,6 +61,13 @@ MASTER_KEY=$(printf 'a%.0s' {1..64}) node --import tsx --test apps/server/src/__
 
 Without it the suite reports one "failing test" that is an environment problem, not a code
 regression — check for this before investigating a failure in that file.
+
+Database-backed suites also need `DATABASE_URL` pointing at a dedicated, disposable test database.
+Run the full server suite with `--test-concurrency=1` because its startup migrations share that
+database. Never aim it at application data. The new generation verification scripts default to
+local PostgreSQL port 18797; override `VERIFY_GENERATION_ADMIN_URL` to use another test server.
+`verify-c3.mjs` still targets the removed city-card/form UI; its broader legacy assertions are not
+current acceptance evidence. Use the current generation browser script for this workflow.
 
 ## Review Checklist
 

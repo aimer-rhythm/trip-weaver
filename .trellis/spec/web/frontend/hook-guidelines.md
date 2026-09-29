@@ -46,27 +46,34 @@ Evidence: `apps/web/src/components/Modal.tsx`, `apps/web/src/lib/export.ts`.
 
 ## SSE and Recovery
 
-Generation progress is an external event stream, not React Query cache state. `PlannerPage` stores the active job id in `sessionStorage`, checks a snapshot on refresh, then connects `EventSource` with `lastEventId=0` so the timeline can be rebuilt from replayed events. On reconnect, the event list is cleared before replay to avoid duplicates. Terminal events close the stream, clear session state, update relevant caches, and navigate or display recovery UI.
+Generation progress is an external event stream, not React Query cache state. `useGenerationRun` stores the active job id in `sessionStorage`, checks a snapshot on refresh, then connects `EventSource` with `lastEventId=0` so the timeline can be rebuilt from replayed events. Native reconnects carry `Last-Event-ID`; the server prioritizes that header and sends only the missing suffix. Preserve the existing event list and deduplicate positive safe-integer IDs within the current job/effect. A new task or mount starts at zero. Terminal events close the stream, clear session state, update relevant caches, and navigate or display recovery UI.
 
-Evidence: `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/components/GenerationTimeline.tsx`, `packages/shared/src/types.ts`.
+Evidence: `apps/web/src/hooks/useGenerationRun.ts`, `apps/server/src/routes/generations.ts`, `packages/shared/src/types.ts`.
 
 Treat SSE data as untrusted input even when the server and client share a union type. Parse inside `try/catch`, validate or narrowly guard the event shape before appending it, and convert malformed payloads into a controlled stream error. A type assertion after `JSON.parse` is not runtime validation. `useGenerationRun.ts` now drops malformed frames with a `try/catch`; keep any new consumer at the same bar.
 
-### Common Mistake: clearing the event list on the first `onopen`
+### Common Mistake: clearing the event list on reconnect
 
-**Symptom**: the timeline renders phases and tools but the降级 banner never appears, or the first
-phase's contents are missing while later ones show. Long-standing screens are unaffected; it appears
-only on pages that mount the stream while other requests are in flight.
+**Symptom**: after a short disconnect, the task title, candidates, or completed phases disappear.
 
-**Cause**: `es.onopen = () => setEvents([])` is meant to make a reconnect replay from scratch, but
-`open` can be dispatched after the first `message` events have already updated React state. Clearing
-then wipes `job_start` (and anything else already delivered) while later events survive — an internally
-inconsistent timeline that looks like a rendering bug.
+**Cause**: clearing React state assumes a full server replay, while native EventSource reconnection
+uses the last delivered ID. Skipping only the first `open` still loses all earlier history on reconnect.
 
-**Fix / Prevention**: only clear on reconnects. Track an `opened` flag, skip the clear on the first
-`open` (the array is already empty because `start` cleared it), and clear from the second one onward.
-`apps/web/src/hooks/useGenerationRun.ts` implements this; verify with
-`node scripts/verify-c3.mjs`, which asserts the degradation banner is visible mid-run.
+**Fix / Prevention**: never clear from `onopen`; clear when starting/adopting/resetting a task.
+Keep the event ID cursor local to the effect and ignore IDs already seen. Verify with
+`node apps/web/tests/generation-recovery-browser.mjs` (Vite at 18811): the server sends IDs 1–3,
+disconnects, then sends duplicate 3 and new 4; all four original events must remain exactly once.
+The same test checks terminal callback/session cleanup, a new task with smaller IDs, and refresh.
+
+### Recovery-aware route guards
+
+`NewTripPage` must resolve a restored job or completed `tripId` before applying the homepage-entry
+guard. A completed snapshot has no running `jobId`; navigate directly to its editor instead of
+returning home. Skip automatic submission while restoration, an adopted job, or a completed result
+exists. Error/cancel reset must also navigate to the homepage: clearing the hook alone leaves the
+page's one-shot autostart flag set and strands it on “正在启动生成…”.
+`scripts/verify-generation-browser.mjs` covers running refresh, completed snapshot, cancellation
+retry, return navigation, and successful generation after cancellation.
 
 ## Dependency Discipline
 
