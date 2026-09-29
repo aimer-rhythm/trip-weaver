@@ -788,3 +788,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 19: 排序后路线自动推荐与失败重试
+
+**Date**: 2026-09-29
+**Task**: 排序后路线自动推荐与失败重试
+**Branch**: `master`
+
+### Summary
+
+完成移动后新路段自动推荐、缓存复用、隐藏日期规划及仅失败时重试；类型检查与浏览器回归通过。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `50e156d` | (see git log) |
+| `db61363` | (see git log) |
+| `b5caecf` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
