@@ -22,7 +22,7 @@ Web服务 API
 * [概述](/api/webservice/summary)
 * [创建应用和 Key](/api/webservice/create-project-and-key)
 * [入门指南](/api/webservice/gettingstarted)
-* 开发指南  
+* 开发指南
   + 基础 API 文档
     - [地理/逆地理编码](/api/webservice/guide/api/georegeo)
     - [路径规划](/api/webservice/guide/api/direction)
@@ -61,5 +61,5 @@ web平台基础服务调用配额参考，请跳转[定价-基础服务配额说
 
 QPS 配额信息，请在[控制台-流量分析-配额管理](https://console.amap.com/dev/flow/manage)页面查看
 
-[返回顶部](javascript:void(0);)  [示例中心](/demo/center)  [常见问题](/faq)  [智能客服](javascript:void(0))  [公众号  
+[返回顶部](javascript:void(0);)  [示例中心](/demo/center)  [常见问题](/faq)  [智能客服](javascript:void(0))  [公众号
 二维码 ![](https://a.amap.com/lbs-dev-yuntu/static/web/image/qrcode.jpg)](javascript:void(0))
