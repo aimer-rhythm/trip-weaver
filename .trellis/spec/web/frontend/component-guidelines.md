@@ -190,6 +190,8 @@ unit-testable and shared between panels and the map.
 
 ## My Trips Collection
 
+- Spine shading uses a soft 24px gradient tinted with the cover's `currentColor`. Keep white highlights restrained (18% alpha) and fade the crease into the cover without a second white stripe; a bright crease edge makes the binding look metallic. Compare with `09-28-my-trips-redesign/research/ui-reference.png` at matching scale.
+
 - `TripListPage` owns search, destination and sorting in URL parameters (`q`, `city`, `sort`), preserving conditions when returning from detail.
 - Render only list summaries; do not fetch each trip detail to fill covers or fabricate travel dates/photos. Dates are explicitly update dates.
 - Cards are accessible whole-card links. `TripCover` renders pastel covers with a narrow curved spine, a crease and two short binding marks. Without an asset, destination handwriting stays centred; body text remains readable sans serif. Keep natural page scrolling and responsive columns, scoped separately from the fixed editor viewport.

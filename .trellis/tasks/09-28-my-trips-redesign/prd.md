@@ -63,3 +63,10 @@
 - [x] 移除书封手绘图，1920 × 1080 展示六张卡片，小屏不横向溢出。
 - [x] 类型检查、构建、9 项 Node 测试和全部相关浏览器回归通过。
 - 完整验收证据见 `research/tailwind-acceptance.md`。
+
+## 封面书脊阴影对齐（2026-09-29）
+
+- 用户指出封面左侧阴影与 `research/ui-reference.png` 仍有差异。
+- 对齐柔和同色书脊：降低白色高光、取消凹槽右侧独立亮线，扩大渐隐范围；阴影跟随各封面文字色，保留两处装订痕迹。
+- 使用当前页面截图对比参考图，验证桌面和手机效果以及既有列表回归。
+- 已通过：`npm run typecheck`、`npm run build -w apps/web`、`node apps/web/tests/trip-collection-browser.mjs`。截图见 `research/spine-before/`、`research/spine-after/`；`spine-after/comparison.png` 从左到右为参考图、调整前、调整后（裁切后统一尺寸）。
