@@ -955,3 +955,37 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 24: 完成生成主流程审查续审与归档
+
+**Date**: 2026-09-29
+**Task**: 完成生成主流程审查续审与归档
+**Branch**: `master`
+
+### Summary
+
+复核九项生成主流程问题及两项恢复问题，重新通过 388 项服务端测试、10 组数据库故障、3 组 SSE 恢复和 5 组生产页面场景；类型检查与构建通过；修正闭馆日期匹配规范残留示例。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `c23d943` | (see git log) |
+| `cb431fa` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
