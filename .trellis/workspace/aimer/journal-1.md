@@ -922,3 +922,36 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 23: 城市封面支持 PNG 与 WebP
+
+**Date**: 2026-09-29
+**Task**: 城市封面支持 PNG 与 WebP
+**Branch**: `master`
+
+### Summary
+
+修复本地北京 PNG 不显示，扩展 SVG/PNG/WebP 格式发现与明确优先级，保留原图和城市匹配逻辑。类型检查、构建、样式检查与五种视口浏览器回归通过，已核对真实北京素材的桌面及手机显示。关闭自动英文提交，使用中文提交说明。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `226839c` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

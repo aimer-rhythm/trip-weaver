@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 22
+- **Total Sessions**: 23
 - **Last Active**: 2026-09-29
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~924 | Active |
+| `journal-1.md` | ~957 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 23 | 2026-09-29 | 城市封面支持 PNG 与 WebP | `226839c` | `master` |
 | 22 | 2026-09-29 | 行程封面书脊与免费城市 SVG 接入 | `dfffba9` | `master` |
 | 21 | 2026-09-29 | AI 行程分享图导出 | `6adc669` | `master` |
 | 20 | 2026-09-29 | 高德分服务预算与官方月配额分配 | `21785f7` | `master` |
