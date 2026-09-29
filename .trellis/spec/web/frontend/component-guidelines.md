@@ -171,7 +171,9 @@ unit-testable and shared between panels and the map.
 - The editor toolbar must have an explicit stacking level above the body panels. Raising only the export menu's z-index cannot escape the toolbar's stacking context.
 - Scope viewport height/overflow to the editor AppLayout, keeping panel scrolling and print media intact. Test both document scrollHeight and panel scrolling, including a print view taller than the viewport.
 - Editor primary buttons/selected states intentionally reference the homepage `--color-brand-light` / `--color-brand` tokens per user request; disabled sends use its disabled pair.
-- Export checks must click through PNG, JSON and print, verify the downloaded PNG/JSON, and exercise long itineraries. Testing only whether the menu exists misses stacking-context click interception.
+- Image export now uses `TripShareImageDialog` with shared Modal/Button, explicit generate → loading → preview/download or manual retry. Opening alone must not call the paid API. JSON/print remain independent; `.print-host` stays portalled to body. Tests use a mocked image provider, never paid calls.
+- Keep pending/result state while the modal is closed; clear stale image state after relevant draft changes and isolate component state by trip ID. Returning an old request after draft edits must not show an image for the current draft.
+- `trip-share-image-browser.mjs` checks loading, close/reopen, failure retry, preview/download and portrait mobile bounds; editor regression retains JSON and print checks.
 
 ## Shared UI Components (2026-09-29)
 

@@ -2,6 +2,8 @@ import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
 import { RenameTripSchema, RouteOptionsRequestSchema, RouteOptionsResponseSchema, TripExportSchema, TripSchema } from '@tripweaver/shared';
 import { getRouteOptions } from '../services/routeOptionsService';
+import { TripShareImageRequestSchema, TripShareImageResponseSchema } from '@tripweaver/shared';
+import { getTripShareImage } from '../services/tripShareImageService';
 import { requireAuth } from '../auth/guard';
 import { createTrip, deleteTrip, getTrip, listTrips, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 import { findConversationForTrip } from '../services/conversationService';
@@ -12,6 +14,24 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
 
   app.get('/', async (request) => listTrips(request.user!.id));
+
+  app.post('/:id/share-image', {
+    schema: { params: IdParams, body: TripShareImageRequestSchema, response: { 200: TripShareImageResponseSchema, 400: Type.Object({ error: Type.String() }), 404: Type.Object({ error: Type.String() }) } },
+    bodyLimit: 1024 * 1024,
+    config: { rateLimit: { max: 6, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    if (!(await getTrip(request.user!.id, request.params.id))) return reply.code(404).send({ error: '行程不存在' });
+    if (request.body.trip.id !== request.params.id) return reply.code(400).send({ error: '行程标识不一致' });
+    const started = Date.now();
+    try {
+      const image = await getTripShareImage(request.user!.id, request.body.trip);
+      request.log.info({ outcome: 'success', durationMs: Date.now() - started }, '[trip-share-image]');
+      return reply.header('Cache-Control', 'no-store').send(image);
+    } catch (error) {
+      request.log.warn({ outcome: 'failed', durationMs: Date.now() - started }, '[trip-share-image]');
+      throw error;
+    }
+  });
 
   app.post('/:id/route-options', {
     schema: { params: IdParams, body: RouteOptionsRequestSchema, response: { 200: RouteOptionsResponseSchema, 404: Type.Object({ error: Type.String() }) } },

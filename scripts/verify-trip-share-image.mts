@@ -1,0 +1,70 @@
+// Disposable PostgreSQL database; upstream Images API is always mocked.
+import assert from 'node:assert/strict';
+import Fastify from 'fastify';
+import cookie from '@fastify/cookie';
+import { Client } from 'pg';
+import { makeSampleTrip } from '@tripweaver/shared';
+
+const name = `share_image_verify_${Date.now()}`;
+const admin = new Client({ connectionString: 'postgres://postgres@127.0.0.1:18797/postgres' });
+await admin.connect();
+await admin.query(`CREATE DATABASE "${name}"`);
+process.env.DATABASE_URL = `postgres://postgres@127.0.0.1:18797/${name}`;
+process.env.MASTER_KEY = 'a'.repeat(64);
+process.env.IMAGE_API_BASE_URL = 'https://8.8.8.8/v1';
+process.env.IMAGE_API_KEY = 'image-test-fixture';
+process.env.IMAGE_MODEL = 'gpt-image2.5';
+process.env.AMAP_KEY = '';
+process.env.TIANDITU_KEY = '';
+process.env.REGISTRATION_MODE = 'open';
+process.env.GITHUB_CLIENT_ID = '';
+process.env.GITHUB_CLIENT_SECRET = '';
+const { db, pool } = await import('../apps/server/src/db/client');
+const { users } = await import('../apps/server/src/db/schema');
+const { createSession } = await import('../apps/server/src/auth/session');
+const { createTrip } = await import('../apps/server/src/services/tripService');
+const { tripRoutes } = await import('../apps/server/src/routes/trips');
+const { env } = await import('../apps/server/src/env');
+const app = Fastify();
+const originalFetch = globalThis.fetch;
+let calls = 0;
+globalThis.fetch = async (url, init) => {
+  calls++;
+  assert.equal(String(url), 'https://8.8.8.8/v1/images/generations');
+  assert.equal(JSON.parse(String(init?.body)).model, 'gpt-image2.5');
+  return Response.json({ data: [{ b64_json: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a7hQAAAAASUVORK5CYII=' }] });
+};
+try {
+  await db.insert(users).values(['owner', 'other'].map(id => ({ id, email: `${id}@share.test`, passwordHash: '', createdAt: new Date() })));
+  const owner = `tw_session=${(await createSession('owner')).token}`;
+  const other = `tw_session=${(await createSession('other')).token}`;
+  const trip = await createTrip('owner', makeSampleTrip());
+  await app.register(cookie);
+  await app.register(tripRoutes, { prefix: '/api/trips' });
+  const request = (cookieValue?: string, payload: unknown = { trip }, id = trip.id) => app.inject({ method: 'POST', url: `/api/trips/${id}/share-image`, headers: cookieValue ? { cookie: cookieValue } : {}, payload });
+  assert.equal((await request()).statusCode, 401);
+  assert.equal((await request(other)).statusCode, 404);
+  assert.equal((await request(owner, { trip }, 'missing')).statusCode, 404);
+  assert.equal((await request(owner, { trip: { ...trip, id: 'wrong' } })).statusCode, 400);
+  assert.equal((await request(owner, { trip: { ...trip, title: '' } })).statusCode, 400);
+  assert.equal(calls, 0);
+  const response = await request(owner);
+  assert.equal(response.statusCode, 200, response.body);
+  assert.equal(response.json().mimeType, 'image/png');
+  assert.equal(response.body.includes('image-test-fixture'), false);
+  assert.equal(response.headers['cache-control'], 'no-store');
+  assert.equal((await request(owner)).statusCode, 200);
+  assert.equal(calls, 1, 'cache avoids paid request');
+  env.imageGeneration.apiKey = '';
+  const missingKey = await request(owner, { trip: { ...trip, title: 'new draft' } });
+  assert.equal(missingKey.statusCode, 503);
+  assert.equal(calls, 1);
+  console.log('PASS share image API: 401/404/400, configured model, safe response, cache and missing-key 503; no live provider calls');
+} finally {
+  globalThis.fetch = originalFetch;
+  await app.close();
+  await pool.end();
+  if (!/^share_image_verify_\d+$/.test(name)) throw new Error('Invalid disposable DB name');
+  await admin.query(`DROP DATABASE "${name}"`);
+  await admin.end();
+}

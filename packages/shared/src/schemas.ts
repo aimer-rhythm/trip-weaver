@@ -138,6 +138,12 @@ export const TripExportSchema = Type.Object({
   trip: TripSchema,
 });
 
+export const TripShareImageRequestSchema = Type.Object({ trip: TripSchema });
+export const TripShareImageResponseSchema = Type.Object({
+  dataUrl: Type.String({ maxLength: 15_000_000 }),
+  mimeType: StringEnum(['image/png', 'image/jpeg', 'image/webp'] as const),
+});
+
 // ---------- 生成表单 ----------
 
 export const GenerateFormSchema = Type.Object({

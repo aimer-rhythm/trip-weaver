@@ -89,6 +89,11 @@ export const env = {
     apiKey: str('SITE_LLM_API_KEY'),
     model: str('SITE_LLM_MODEL'),
   },
+  imageGeneration: {
+    baseUrl: str('IMAGE_API_BASE_URL', 'https://xjbh.lol/v1').replace(/\/+$/, ''),
+    apiKey: str('IMAGE_API_KEY'),
+    model: str('IMAGE_MODEL', 'gpt-image2.5'),
+  },
   // Embedding（RAG 向量召回，可选）：缺省回落到站点 LLM 的 baseUrl/apiKey（OpenAI 兼容端点普遍同址提供 /embeddings）
   embedding: {
     baseUrl: str('EMBEDDING_BASE_URL') || str('SITE_LLM_BASE_URL'),

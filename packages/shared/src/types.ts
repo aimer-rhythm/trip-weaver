@@ -14,6 +14,8 @@ import type {
   TripExportSchema,
   TripMetaSchema,
   TripSchema,
+  TripShareImageRequestSchema,
+  TripShareImageResponseSchema,
   TransitLegSchema,
 } from './schemas';
 import type {
@@ -63,6 +65,8 @@ export type TripDay = Static<typeof TripDaySchema>;
 export type TripMeta = Static<typeof TripMetaSchema>;
 export type ResearchPoi = Static<typeof ResearchPoiSchema>;
 export type Trip = Static<typeof TripSchema>;
+export type TripShareImageRequest = Static<typeof TripShareImageRequestSchema>;
+export type TripShareImageResponse = Static<typeof TripShareImageResponseSchema>;
 export type TripExport = Static<typeof TripExportSchema>;
 export type GenerateForm = Static<typeof GenerateFormSchema>;
 export type RegisterBody = Static<typeof RegisterBodySchema>;

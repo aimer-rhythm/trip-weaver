@@ -1,8 +1,8 @@
-// D1 浏览器验收：长图/JSON/打印 + 跨账号导入还原 + 坏文件报错（PRD F5）
+// 历史 D1 浏览器验收：AI分享入口/JSON/打印 + 跨账号导入；生图验证见 trip-share-image-browser.mjs
 // 运行：node scripts/verify-d1.mjs（需先 npm run build）
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { setTimeout as sleep } from 'node:timers/promises';
 import crypto from 'node:crypto';
 
@@ -81,16 +81,11 @@ try {
   check('JSON 导出：version=2 且 3 天', exported.version === 2 && exported.trip?.days?.length === 3, `version=${exported.version}, days=${exported.trip?.days?.length}`);
   const exportedActivityCount = exported.trip.days.reduce((n, d) => n + d.activities.length, 0);
 
-  // 2. 长图 PNG 导出
+  // 2. AI 分享图入口（此历史脚本不发送付费生图请求）
   await pageA.locator('.export-menu summary').click();
-  const [pngDl] = await Promise.all([
-    pageA.waitForEvent('download', { timeout: 30_000 }),
-    pageA.getByRole('button', { name: /长图 PNG/ }).click(),
-  ]);
-  const pngPath = `${TMP}/export.png`;
-  await pngDl.saveAs(pngPath);
-  const pngSize = statSync(pngPath).size;
-  check('长图 PNG 导出（2x）', pngDl.suggestedFilename().endsWith('.png') && pngSize > 50_000, `${pngDl.suggestedFilename()}，${Math.round(pngSize / 1024)}KB`);
+  await pageA.getByRole('button', { name: 'AI 分享图', exact: true }).click();
+  check('AI 分享图入口', await pageA.getByRole('button', { name: '生成分享图', exact: true }).isVisible());
+  await pageA.getByRole('dialog').getByRole('button', { name: '关闭', exact: true }).last().click();
 
   // 3. 打印媒介：只显示 PrintView
   await pageA.emulateMedia({ media: 'print' });

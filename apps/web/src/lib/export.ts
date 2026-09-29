@@ -1,6 +1,5 @@
-// 导出三件套的纯函数层（PRD F5）：长图 dataUrl / JSON 下载 / 打印 / 微信环境探测
-import { toPng } from 'html-to-image';
-import { TRIP_EXPORT_VERSION, type Trip, type TripExport } from '@tripweaver/shared';
+// 导出浏览器工具：AI 图片下载 / JSON 下载 / 打印 / 微信环境探测
+import { TRIP_EXPORT_VERSION, type Trip, type TripExport, type TripShareImageResponse } from '@tripweaver/shared';
 
 export function isWeChat(): boolean {
   return /MicroMessenger/i.test(navigator.userAgent);
@@ -28,14 +27,10 @@ export function exportTripJson(trip: Trip): void {
   URL.revokeObjectURL(url);
 }
 
-/** 长图 PNG：2x 清晰度渲染指定节点（微信主场景） */
-export function buildTripPng(node: HTMLElement): Promise<string> {
-  return toPng(node, { pixelRatio: 2, backgroundColor: '#ffffff', cacheBust: true });
-}
-
 /** 非微信环境直接触发下载；微信由调用方走「长按保存」引导（R12） */
-export function downloadPng(dataUrl: string, title: string): void {
-  downloadUrl(dataUrl, `${safeFileName(title)}.png`);
+export function downloadShareImage(image: TripShareImageResponse, title: string): void {
+  const extension = image.mimeType === 'image/jpeg' ? 'jpg' : image.mimeType === 'image/webp' ? 'webp' : 'png';
+  downloadUrl(image.dataUrl, `${safeFileName(title)}-AI分享图.${extension}`);
 }
 
 export function printTrip(): void {

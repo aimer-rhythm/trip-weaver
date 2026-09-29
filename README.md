@@ -12,7 +12,7 @@
 - 🗺️ **地图可视化**：Leaflet + OSM，按天配色的序号标记与动线折线，天数过滤，坐标来自真实地理编码（Nominatim）
 - 💰 **预算计算**：按天/按类别聚合，超支实时预警
 - ✏️ **行程编辑**：增删改活动、日内排序、跨天移动，编辑自动保存
-- 📤 **导出**：长图（微信分享友好）/ JSON 备份导入 / 打印 PDF
+- 📤 **导出**：AI 行程分享图（内置旅行海报提示词）/ JSON 备份导入 / 打印 PDF
 - 👥 **多用户**：开放注册 / GitHub 登录，邀请码模式可随时切回（防滥用备选），行程历史云端留存、每日生成配额、站点供 Key 或用户自带 Key（BYOK）
 
 ## 架构
@@ -68,6 +68,7 @@ npm run dev                        # server:3001 + web:5173
 | `AMAP_LBS_MONTHLY_BUDGET` / `AMAP_SEARCH_MONTHLY_BUDGET` | | 个人认证默认 150000 / 5000，按 31 天折算服务日预算，详见[高德限额与日志](docs/AMAP_QUOTAS.md) |
 | `AMAP_{GEOCODE,PLACE,WALK,CYCLE,DRIVE,TRANSIT}_DAILY_BUDGET` | | 六项独立上限；默认 POI 搜索 161，其余各 967。0 禁用；五项 LBS 合计不得超过月预算 / 31 |
 | `AMAP_DAILY_BUDGET` | | 旧配置兼容：仅压低未独立配置项的默认值；新部署留空 |
+| `IMAGE_API_BASE_URL` / `IMAGE_MODEL` / `IMAGE_API_KEY` | 可选 | AI 分享图：默认第三方 OpenAI Images 兼容地址 `https://xjbh.lol/v1`，模型 `gpt-image2.5`，需独立密钥。[配置说明](docs/AI_SHARE_IMAGES.md) |
 | `TIANDITU_KEY` | 建议 | 站点天地图 Web 服务 Key（参数名 `tk`）。**地点搜索固定用它**（高德 `v5/place/text` 与地理编码主路径共用一份个人配额，实测会被打满）。[申请入口](https://console.tianditu.gov.cn/api/key)。差异：地名搜索需单独申请权限，POI 无评分/人均/营业时间/图片，**无步行/骑行路径规划** |
 | `TIANDITU_DAILY_BUDGET` | | 全站天地图调用日额度（默认 150，与高德分别计数、互不影响） |
 | `AMAP_JS_KEY` / `AMAP_JS_SECURITY_CODE` | 可选 | 前端地图渲染用的高德 **「Web端(JS API)」** Key（与 Web 服务 Key **不通用**）与配套安全密钥。两者都会下发到浏览器（JS API 的设计，靠域名白名单限权）。留空则前端地图走 Leaflet + 栅格瓦片 |

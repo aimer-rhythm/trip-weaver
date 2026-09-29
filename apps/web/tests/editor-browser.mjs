@@ -69,13 +69,11 @@ try {
   const jsonFile=await jsonDownload;
   assert.equal(JSON.parse(await fs.readFile(await jsonFile.path(),'utf8')).trip.id,trip.id);
   await page.locator('.export-menu summary').click();
-  const pngDownload=page.waitForEvent('download',{timeout:60000});
-  await page.getByRole('button',{name:'长图 PNG（分享）',exact:true}).click();
-  const pngFile=await pngDownload;
-  await pngFile.saveAs(path.join(out,'export.png'));
-  const png=await fs.readFile(await pngFile.path());
-  assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a');
-  assert.ok(png.readUInt32BE(16)>=1400 && png.readUInt32BE(20)>500);
+  await page.getByRole('button',{name:'AI 分享图',exact:true}).click();
+  await page.getByRole('dialog',{name:'AI 行程分享图'}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'生成分享图',exact:true}).isEnabled(),true);
+  // Generation and download are covered with mocked upstream in trip-share-image-browser.mjs.
+  await page.getByRole('dialog').getByRole('button',{name:'关闭',exact:true}).last().click();
   await page.evaluate(()=>{window.printCount=0;window.print=()=>{window.printCount++;}});
   await page.locator('.export-menu summary').click();
   await page.getByRole('button',{name:'打印 / PDF',exact:true}).click();

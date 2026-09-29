@@ -1,5 +1,47 @@
 # External Integration Guidelines
 
+## Scenario: AI trip sharing images
+
+### 1. Scope / Trigger
+
+Explicit generation from the itinerary export dialog; never prefetch paid images.
+
+### 2. Signatures
+
+- `POST /api/trips/:id/share-image`, `TripShareImageRequestSchema {trip}` → `TripShareImageResponseSchema {dataUrl,mimeType}`.
+- `generateShareImage(config, prompt)` handles OpenAI Images-compatible transport; `createTripShareImageService(generate?)` handles bounded cache/admission.
+- `buildTripSharePrompt(trip)` is a pure server-owned prompt builder.
+
+### 3. Contracts
+
+- `IMAGE_API_BASE_URL=https://xjbh.lol/v1`, `IMAGE_MODEL=gpt-image2.5`, independent `IMAGE_API_KEY`; names are user-specified third-party identifiers, not silently normalized to official model names.
+- POST `/images/generations` with model/prompt/n=1/size=1024x1536. Accept base64 or safe HTTPS image URL, do not follow redirects or forward API authorization to image URLs. Reuse SSRF validation.
+- Prompt includes only destination, title and up to six non-lodging activity names per day. Exclude private notes, dates, coordinates, lodging, descriptions and links; distinguish itinerary data from instructions.
+- Authenticate and check trip ownership before provider work; snapshot ID must match route. Draft snapshots are allowed to avoid autosave races. Request body ≤1 MiB, upstream JSON ≤15 MiB, decoded PNG/JPEG/WebP ≤10 MiB, timeout180s.
+- Same-user/trip/prompt success cache30min/max8; pending identical requests coalesce; one active job/user and two/process. No automatic retry, monthly accounting, durable jobs or multi-instance locking implied.
+
+### 4. Validation & Error Matrix
+
+- 401 unauthenticated; 404 missing/non-owned; 400 invalid schema or mismatched ID; 429 busy; 503 missing key; sanitized502 upstream/format/size/timeout errors.
+- Check image magic bytes before returning a data URL. Never send upstream bodies, keys, prompt, returned URLs or raw fetch exceptions to logs/errors.
+
+### 5. Good/Base/Bad Cases
+
+- Good: explicit generate uses given model, authenticates owner, reuses cached image on reopen.
+- Base: missing key produces a recoverable503 and no upstream call.
+- Bad: use site LLM credentials automatically, fetch provider URL with authorization, or create a paid image on opening the menu.
+
+### 6. Tests Required
+
+- `tripShareImage.test.ts`: prompt exclusions/order, exact protocol, base64/URL parsing, safe failures, concurrency/cache and retry lock cleanup.
+- `verify-trip-share-image.mts`: real ownership/session/API validation against disposable PG with mocked upstream.
+- `trip-share-image-browser.mjs`: explicit start, loading, close/reopen, retry, preview, download, mobile bounds.
+
+### 7. Wrong vs Correct
+
+- Wrong: render screenshots with html-to-image or directly call provider from browser with its secret.
+- Correct: authenticated server image endpoint with minimized prompt, sanitized raster data response and shared UI preview.
+
 ## Scenario: Amap service admission and monthly-derived defaults
 
 ### 1. Scope / Trigger
