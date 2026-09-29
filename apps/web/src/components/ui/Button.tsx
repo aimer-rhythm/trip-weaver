@@ -6,11 +6,13 @@ const variants: Record<ButtonVariant, string> = {
   secondary: 'border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-text)] hover:border-brand hover:text-brand',
   ghost: 'border-transparent bg-transparent text-[var(--color-text)] hover:bg-[var(--color-hairline)]',
   danger: 'border-transparent bg-transparent text-[var(--color-danger)] hover:bg-[var(--color-hairline)]',
-  plain: 'border-0 bg-transparent',
+  plain: '',
 };
 
 export function buttonClassName(variant: ButtonVariant = 'secondary', size: 'default' | 'icon' = 'default') {
-  return `ui-button inline-flex items-center justify-center gap-2 rounded-xl border border-solid text-sm font-medium cursor-pointer transition-colors motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:opacity-50 disabled:cursor-not-allowed ${variant === 'plain' ? '' : 'min-h-11 px-4 py-2'} ${size === 'icon' ? 'min-h-11 min-w-11 p-2' : ''} ${variants[variant]}`;
+  const interaction = 'ui-button cursor-pointer motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed';
+  if (variant === 'plain') return interaction;
+  return `${interaction} inline-flex items-center justify-center gap-2 rounded-xl border border-solid text-sm font-medium transition-colors disabled:opacity-50 min-h-11 ${size === 'icon' ? 'min-w-11 p-2' : 'px-4 py-2'} ${variants[variant]}`;
 }
 
 export function Spinner() {

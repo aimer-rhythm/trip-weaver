@@ -3,6 +3,41 @@
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
+/* Native select semantics, with a shared trigger and progressively themed picker. */
+@layer components {
+  .ui-select {
+    appearance: none;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b6b86' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .875rem center;
+  }
+  @supports (appearance: base-select) {
+    .ui-select, .ui-select::picker(select) { appearance: base-select; }
+    .ui-select { align-items: center; }
+    .ui-select::picker-icon { display: none; }
+    .ui-select::picker(select) {
+      margin-block: .375rem;
+      padding: .375rem;
+      border: 1px solid var(--color-border);
+      border-radius: .875rem;
+      background: var(--color-card);
+      color: var(--color-text);
+      box-shadow: 0 12px 32px rgb(31 64 124 / .14);
+    }
+    .ui-select option {
+      min-height: 2.75rem;
+      box-sizing: border-box;
+      padding: .625rem .75rem;
+      border-radius: .625rem;
+      font: inherit;
+    }
+    .ui-select option:hover, .ui-select option:focus { background: var(--color-hairline); }
+    .ui-select option:checked { background: var(--color-brand); color: white; }
+    .ui-select option:disabled { opacity: .5; }
+  }
+}
+
 /* 全站语义色，组件使用工具类或引用这些 token 的任意值。 */
 @theme {
   /* 品牌与交互：主蓝、渐变两端、禁用态 */

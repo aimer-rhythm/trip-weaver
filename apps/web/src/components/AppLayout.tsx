@@ -39,9 +39,9 @@ export function AppLayout() {
                 opacity="0.7"
               />
             </svg>
-            织程 <span className={"brand-en [color:var(--color-brand-en-color-1)] font-semibold"}>TripWeaver</span>
+            <span className="whitespace-nowrap">织程</span> <span className={"brand-en hidden sm:inline [color:var(--color-brand-en-color-1)] font-semibold"}>TripWeaver</span>
           </Link>
-          <div className={"topbar-actions flex items-center [gap:8px]"}>
+          <div className={"topbar-actions flex shrink-0 items-center gap-2 whitespace-nowrap max-sm:gap-1 max-sm:[&_button]:px-3 max-sm:[&_a]:px-3"}>
             <Link to="/trips" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"}>
               我的行程
             </Link>

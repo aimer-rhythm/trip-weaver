@@ -175,6 +175,10 @@ unit-testable and shared between panels and the map.
 
 ## Shared UI Components (2026-09-29)
 
+- `Button variant="plain"` is deliberately interaction-only: no display, spacing, border, radius, background, typography or opacity utilities. Those conflict with domain classes through Tailwind generation order (appending className does not guarantee overrides). Verify selected chips and calendar cells by computed colours and screenshots, not only aria-pressed.
+- The shared Select retains native semantics, with a uniform arrow and `appearance: base-select` picker styling where supported; other browsers use their native popup. Keep arrow clearance in the utility layer (`pr-10`), since `px-3` would override component-layer padding. Picker rules live in the single tailwind.css entry.
+- Home date picker uses two months on desktop and one at <=640px. Calendar grids include six weeks, hide adjacent-month cells and retain next/previous month navigation. `picker-browser.mjs` covers a six-week month, selected-chip contrast, open pickers and mobile overflow.
+
 - Use `components/ui/Button.tsx` for all JSX buttons: `primary`, `secondary`, `ghost`, `danger`, and `plain` for domain-specific layouts (calendar cells, map filters, route choices). The default type is `button`; forms must explicitly use `type="submit"`. Native props and React 19 refs pass through. `loading` adds Spinner, disables repeated actions and sets `aria-busy`; provide visible pending text. IconButton requires an accessible label. Button-like links use `buttonClassName` without changing anchor semantics.
 - Use `ui/Field.tsx` Input/Select/Textarea. Do not restyle their borders, colours, font or focus through parent selectors. Keep layout at the caller. Select retains native keyboard and OS popup behaviour; checkbox/radio/file/range keep native compact semantics.
 - `ui/Dropdown.tsx` owns details/summary menu panels, external-click dismissal, focus leaving and Escape focus restoration. EditorMenu is a domain wrapper. Route options share `useDismissibleDisclosure` while retaining their asynchronous selection behaviour. Never use ARIA menu roles without implementing their keyboard model.

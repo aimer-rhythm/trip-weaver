@@ -8,7 +8,7 @@ export function Input({ className = '', type = 'text', ...props }: ComponentProp
 }
 
 export function Select({ className = '', ...props }: ComponentProps<'select'>) {
-  return <select {...props} className={`${fieldClass} cursor-pointer ${className}`} />;
+  return <select {...props} className={`${fieldClass} ui-select cursor-pointer pr-10 ${className}`} />;
 }
 
 export function Textarea({ className = '', ...props }: ComponentProps<'textarea'>) {

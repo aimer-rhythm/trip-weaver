@@ -25,13 +25,13 @@ function startOfDay(d: Date): Date {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate());
 }
 
-/** 周一开头的 35 格月历 */
+/** Six complete weeks cover every month without dropping its last dates. */
 function generateMonthGrid(year: number, month: number): Date[] {
   const first = new Date(year, month, 1);
   const offset = (first.getDay() + 6) % 7;
   const gridStart = new Date(year, month, 1 - offset);
   return Array.from(
-    { length: 35 },
+    { length: 42 },
     (_, i) => new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + i),
   );
 }
@@ -137,7 +137,7 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
                   const inRange = iso >= effectiveStart && iso <= effectiveEnd;
                   const className = [
                     "range-calendar-day flex items-center justify-center [height:var(--rc-day-height)] border-0 bg-transparent [color:var(--color-ink-strong)] [font:inherit] [font-size:var(--rc-day-size)] cursor-pointer rounded-full [&:hover:not(:disabled)]:[background:var(--color-bg)] [&.is-outside]:[color:var(--color-muted)] [&.is-outside]:[opacity:0.45] [&.is-past]:[color:var(--color-muted)] [&.is-past]:[opacity:0.4] [&.is-past]:[cursor:not-allowed] [&.is-in-range]:[background:var(--color-range-calendar-day-background-4)] [&.is-start]:[background:var(--color-primary)] [&.is-start]:[color:var(--color-btn-primary-color-3)] [&.is-start]:font-bold [&.is-end]:[background:var(--color-primary)] [&.is-end]:[color:var(--color-btn-primary-color-3)] [&.is-end]:font-bold",
-                    isCurrentMonth ? '' : 'is-outside',
+                    isCurrentMonth ? '' : 'invisible',
                     isPast ? 'is-past' : '',
                     inRange ? 'is-in-range' : '',
                     isStart ? 'is-start' : '',
@@ -150,7 +150,9 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
                       key={iso}
                       type="button"
                       aria-label={iso}
-                      disabled={isPast}
+                      disabled={isPast || !isCurrentMonth}
+                      aria-hidden={!isCurrentMonth}
+                      aria-pressed={isCurrentMonth && (isStart || isEnd)}
                       className={className}
                       onClick={() => handleDayClick(iso)}
                       onMouseEnter={() => {

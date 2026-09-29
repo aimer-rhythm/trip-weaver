@@ -56,15 +56,15 @@ const PACE_DESCS: Record<TripPace, string> = {
 
 /** 面板外壳：玻璃卡片 + 指向所在段的尾巴（宽度与内边距由各面板自己给，避免原子类互相覆盖） */
 const panelShellCls =
-  'absolute bottom-[calc(100%_+_31*var(--ui))] left-0 z-30 flex max-w-[calc(100vw_-_2rem)] flex-col rounded-[calc(20*var(--ui))] border border-white/70 bg-white/88 shadow-[0_18px_50px_rgba(31,64,124,0.14)] backdrop-blur-2xl backdrop-saturate-150';
+  'absolute bottom-[calc(100%_+_31*var(--ui))] left-0 z-30 box-border flex max-h-[calc(100dvh-100px)] max-w-[calc(100vw_-_3rem)] flex-col rounded-[calc(20*var(--ui))] border border-white/70 bg-white/95 shadow-[0_18px_50px_rgba(31,64,124,0.14)] backdrop-blur-2xl backdrop-saturate-150';
 const spacedPanelCls = 'gap-[calc(14*var(--ui))] p-[calc(18*var(--ui))]';
 const cityPanelCls = `${panelShellCls} ${spacedPanelCls} w-[max(300px,21vw)]`;
 const pacePanelCls = `${panelShellCls} ${spacedPanelCls} w-[max(320px,22vw)]`;
-const datePanelCls = `${panelShellCls} w-[max(340px,25vw)]`;
+const datePanelCls = `${panelShellCls} w-[560px]`;
 
-const panelLabelCls = 'm-0 text-[length:calc(13*var(--ui))] text-ink-muted';
+const panelLabelCls = 'm-0 text-xs text-ink-muted';
 const chipCls = (active: boolean) =>
-  `rounded-full border px-[calc(14*var(--ui))] py-[calc(6*var(--ui))] text-[length:calc(14*var(--ui))] transition-colors ${
+  `min-h-11 rounded-full border border-solid px-3 py-1.5 text-sm transition-colors ${
     active
       ? 'border-brand bg-brand font-semibold text-white'
       : 'border-black/10 bg-white/70 text-ink-strong hover:border-brand hover:text-brand'
@@ -153,10 +153,18 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
   const [preferences, setPreferences] = useState<Preference[]>([]);
   const [transportMode, setTransportMode] = useState<TransportMode | null>(null);
   const [activePanel, setActivePanel] = useState<PanelKey | null>(null);
+  const [calendarMonths, setCalendarMonths] = useState(() => window.matchMedia('(max-width: 640px)').matches ? 1 : 2);
   const deckRef = useRef<HTMLDivElement>(null);
 
   const days = daysBetween(startDate, endDate);
   const ready = Boolean(city) && pace !== null;
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 640px)');
+    const update = () => setCalendarMonths(query.matches ? 1 : 2);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
 
   // 点胶囊条外部收起面板
   useEffect(() => {
@@ -252,7 +260,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                   startDate={startDate}
                   endDate={endDate}
                   maxDays={MAX_TRIP_DAYS}
-                  months={2}
+                  months={calendarMonths}
                   onRangeChange={(s, e) => {
                     setStartDate(s);
                     setEndDate(e);
