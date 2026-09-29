@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // Only files supplied locally are included; unknown destinations never request a guessed URL.
-const landmarks = import.meta.glob<string>('../assets/city-landmarks/*.svg', {
+const landmarks = import.meta.glob<string>('../assets/city-landmarks/*.{svg,png,webp}', {
   eager: true,
   query: '?url',
   import: 'default',
@@ -9,7 +9,9 @@ const landmarks = import.meta.glob<string>('../assets/city-landmarks/*.svg', {
 
 export function TripCover({ destination, daysCount }: { destination: string; daysCount: number }) {
   const city = destination.trim().replace(/市$/, '');
-  const landmark = landmarks[`../assets/city-landmarks/${city}.svg`];
+  const landmark = landmarks[`../assets/city-landmarks/${city}.svg`]
+    ?? landmarks[`../assets/city-landmarks/${city}.png`]
+    ?? landmarks[`../assets/city-landmarks/${city}.webp`];
   const [loadedUrl, setLoadedUrl] = useState<string>();
   const hasIllustration = Boolean(landmark && loadedUrl === landmark);
 

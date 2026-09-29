@@ -9,12 +9,22 @@ await fs.mkdir(out,{recursive:true});
 const names=[['北京','北京 · 四日漫游'],['杭州','湖山之间，慢慢走过杭州'],['成都','成都的街巷与烟火'],['上海','梧桐树下的周末'],['北京','古都秋日散步计划'],['大理','在苍山洱海之间，留一点时间给自己']];
 const fixture=names.map(([destination,title],i)=>({id:`trip-${i}`,destination,title,daysCount:i+2,activityCount:8+i*3,totalCost:0,usedXhs:false,version:1,createdAt:Date.UTC(2026,8,10+i),updatedAt:Date.UTC(2026,8,28-i)}));
 const assetDir=path.resolve('apps/web/src/assets/city-landmarks');
-const testAssets=[path.join(assetDir,'封面测试.svg'),path.join(assetDir,'损坏测试.svg')];
+const pngFixture=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALklEQVR4nGNgGPKAEY3/n1R9TJS6gIWQDYRcyESpC5hGDWDAFQv/6RaIDEMfAAA4OQMXTobSuAAAAABJRU5ErkJggg==','base64');
+const webpFixture=Buffer.from('UklGRiwAAABXRUJQVlA4TB8AAAAvD8ADEA8QEfMfgkzaZjL21b/DChjTENH/zIj0imQAAA==','base64');
+const testAssets=[
+ ['封面测试.svg','<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"><path fill="none" stroke="black" stroke-width="2" d="M20 100h120M40 95V55l40-35 40 35v40M65 95V70h30v25"/></svg>'],
+ ['损坏测试.svg','invalid SVG fixture'],
+ ['封面测试.png',pngFixture],
+ ['位图测试.png',pngFixture],
+ ['位图测试.webp',webpFixture],
+ ['WebP测试.webp',webpFixture],
+];
 const createdAssets=[];
 let browser;
 try {
- for(const [index,file] of testAssets.entries()) {
-  await fs.writeFile(file,index===0?'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"><path fill="none" stroke="black" stroke-width="2" d="M20 100h120M40 95V55l40-35 40 35v40M65 95V70h30v25"/></svg>':'invalid SVG fixture',{flag:'wx'});
+ for(const [name,contents] of testAssets) {
+  const file=path.join(assetDir,name);
+  await fs.writeFile(file,contents,{flag:'wx'});
   createdAssets.push(file);
  }
  browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
@@ -40,6 +50,7 @@ try {
  await page.locator('.collection-card').first().waitFor();
  await page.evaluate(()=>document.fonts.ready);
  await page.waitForFunction(()=>document.querySelectorAll('.collection-card').length===6);
+ await page.waitForFunction(()=>Array.from(document.querySelectorAll('.collection-cover img')).every(img=>img.complete));
  assert.equal(await page.locator('.collection-card').count(),6);
  assert.equal(detailRequests,0,'list must not fetch full detail per card');
  const contents=await page.locator('.trip-collection').innerText();
@@ -97,20 +108,33 @@ try {
   {...fixture[0],destination:'封面测试市'},
   {...fixture[1],destination:'损坏测试'},
   {...fixture[2],destination:'封面测试、杭州'},
+  {...fixture[3],destination:'位图测试市'},
+  {...fixture[4],destination:'WebP测试'},
  ];
  await page.reload();
- await page.locator('.collection-landmark').waitFor();
- assert.equal(await page.locator('.collection-landmark').count(),1,'only an exact city match gets a local illustration');
+ await page.waitForFunction(()=>document.querySelectorAll('.collection-landmark').length===3);
+ assert.equal(await page.locator('.collection-landmark').count(),3,'SVG, PNG and WebP illustrations load for exact city matches');
  assert.equal(await page.locator('.collection-cover[data-illustrated="false"]').count(),2,'invalid or unmatched SVGs keep text covers');
- assert.ok(await page.locator('.collection-landmark').evaluate(el=>getComputedStyle(el).maskImage!=='none'),'local SVG is used as the cover-coloured mask');
+ assert.ok(await page.locator('.collection-landmark').first().evaluate(el=>getComputedStyle(el).maskImage!=='none'),'local SVG is used as the cover-coloured mask');
  assert.equal(await page.locator('.collection-cover img').first().evaluate(el=>el.complete&&el.naturalWidth>0),true);
+ const svgImage=page.getByRole('link',{name:`查看行程：${fixture[0].title}`}).locator('.collection-cover img');
+ const pngImage=page.getByRole('link',{name:`查看行程：${fixture[3].title}`}).locator('.collection-cover img');
+ const webpImage=page.getByRole('link',{name:`查看行程：${fixture[4].title}`}).locator('.collection-cover img');
+ assert.ok(await svgImage.evaluate(img=>img.src.startsWith('data:image/svg+xml')||new URL(img.src).pathname.endsWith('.svg')),'SVG takes priority over PNG');
+ assert.ok(await pngImage.evaluate(img=>img.src.startsWith('data:image/png')||new URL(img.src).pathname.endsWith('.png')),'PNG takes priority over WebP');
+ assert.ok(await webpImage.evaluate(img=>img.naturalWidth===16&&(img.src.startsWith('data:image/webp')||new URL(img.src).pathname.endsWith('.webp'))),'WebP decodes');
+ assert.equal(await pngImage.evaluate(img=>{
+  const canvas=document.createElement('canvas');canvas.width=16;canvas.height=16;
+  const context=canvas.getContext('2d');context.drawImage(img,0,0);
+  return context.getImageData(0,0,1,1).data[3];
+ }),0,'PNG transparent background survives loading');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
- await page.screenshot({path:path.join(out,'local-svg-mobile.png'),fullPage:true});
+ await page.screenshot({path:path.join(out,'local-assets-mobile.png'),fullPage:true});
  await page.setViewportSize({width:1920,height:1080});
- await page.screenshot({path:path.join(out,'local-svg-desktop.png'),fullPage:true});
+ await page.screenshot({path:path.join(out,'local-assets-desktop.png'),fullPage:true});
  assert.equal(writes,0,'collection interactions must not mutate data');
  assert.deepEqual(errors,[]);
- await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',checks:['removed actions','loading','search/filter combination','sort','no result/reset','URL restoration','keyboard navigation','retry','empty','5 viewports','long title','no list detail fanout','no writes','local SVG load and mask','city suffix matching','broken SVG fallback','multi-city fallback'],errors},null,2));
+ await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',checks:['removed actions','loading','search/filter combination','sort','no result/reset','URL restoration','keyboard navigation','retry','empty','5 viewports','long title','no list detail fanout','no writes','local SVG load and mask','local PNG/WebP load','SVG/PNG/WebP priority','PNG alpha preserved','city suffix matching','broken SVG fallback','multi-city fallback'],errors},null,2));
  console.log('My trips collection checks passed:',out);
 }finally{
  await browser?.close();
