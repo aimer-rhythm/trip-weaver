@@ -4,6 +4,7 @@ import Fastify from 'fastify';
 import cookie from '@fastify/cookie';
 import { makeSampleTrip } from '@tripweaver/shared';
 import { Client } from 'pg';
+import { mock } from 'node:test';
 
 const databaseName = `route_options_verify_${Date.now()}`;
 const admin = new Client({ connectionString: 'postgres://postgres@127.0.0.1:18797/postgres' });
@@ -26,6 +27,7 @@ const { tripRoutes } = await import('../apps/server/src/routes/trips');
 const { reserveEditorGeoBudget, amapBudgetRemaining } = await import('../apps/server/src/services/quotaService');
 const app = Fastify();
 const originalFetch = globalThis.fetch;
+mock.timers.enable({ apis: ['Date'], now: new Date('2026-09-29T04:00:00Z') });
 let externalCalls = 0;
 globalThis.fetch = async (url) => {
   externalCalls++;
@@ -56,6 +58,10 @@ try {
   assert.equal(response.json().options.filter((o: { status: string }) => o.status === 'available').length, 4);
   assert.equal(response.body.includes('route-test-fixture'), false);
   assert.equal(await amapBudgetRemaining(), 34, '6 accepted attempts counted, unused reservation refunded');
+  const afterFirstQuery = externalCalls;
+  assert.equal((await request(ownerCookie, { ...body, mode: 'drive' })).statusCode, 200);
+  assert.equal(externalCalls, afterFirstQuery, 'single-mode query reuses prefetched result');
+  assert.equal(await amapBudgetRemaining(), 34, 'server cache hit consumes no quota');
   const selected = response.json().options[0].leg;
   trip.days[0]!.legs = [selected];
   assert.equal((await app.inject({ method: 'PUT', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie }, payload: trip })).statusCode, 200);
@@ -63,15 +69,28 @@ try {
   const leases = await Promise.all(Array.from({ length: 10 }, () => reserveEditorGeoBudget('amap', 8)));
   assert.equal(leases.filter(Boolean).length, 4, 'atomic reservations cannot overspend 34 remaining');
   const callsBefore = externalCalls;
-  assert.equal((await request(ownerCookie)).statusCode, 429);
+  assert.equal((await request(ownerCookie)).statusCode, 200, 'cached routes still usable with exhausted quota');
+  assert.equal((await request(ownerCookie, { ...body, refresh: true })).statusCode, 429);
   assert.equal(externalCalls, callsBefore);
   for (const finish of leases) if (finish) await finish(0);
   assert.equal(await amapBudgetRemaining(), 34);
   await runMigrations(pool);
   assert.equal((await db.select().from(editorGeoUsage))[0]!.calls, 6);
+  const { upsertSettings } = await import('../apps/server/src/services/settingsService');
+  await upsertSettings('owner', { amapApiKey: 'changed-fixture' });
+  assert.equal((await request(ownerCookie, { ...body, mode: 'drive' })).statusCode, 200);
+  assert.equal(await amapBudgetRemaining(), 33, 'credential revision invalidates result cache');
+  const shifted = { ...body, mode: 'drive', from: { ...body.from, lat: body.from.lat + 0.01 } };
+  assert.equal((await request(ownerCookie, shifted)).statusCode, 200);
+  assert.equal(await amapBudgetRemaining(), 32, 'coordinate change invalidates cache');
+  const beforeExpiry = externalCalls;
+  mock.timers.setTime(Date.now() + 301_000);
+  assert.equal((await request(ownerCookie, shifted)).statusCode, 200);
+  assert.equal(externalCalls, beforeExpiry + 1, 'expired route/result cache queries provider again');
   console.log('PASS route API: migrations, 401/404/400, real adapter mocked upstream, source/secrets, save reload, atomic quota/refund/429');
 } finally {
   globalThis.fetch = originalFetch;
+  mock.timers.reset();
   await app.close();
   await pool.end();
   if (!/^route_options_verify_\d+$/.test(databaseName)) throw new Error('Invalid disposable database name');

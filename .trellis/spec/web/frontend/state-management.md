@@ -29,6 +29,12 @@ The editor is a deliberate exception because it needs a mutable cross-component 
 
 Route selection uses `routePairKey(trip, dayId, fromId)` (trip/destination/day plus both endpoint IDs, names, coordinates and coordinate systems). `selectRoute(dayId, key, leg)` rejects changed or non-adjacent pairs before incrementing revision, replaces only that pair and preserves other legs. A coordinate edit drops incident legs. `RouteOptionsForPair` remounts on key changes and guards unmounted promise continuations; options use shared runtime validation. No query response writes the draft until the user selects it.
 
+`api/routeOptions.ts` observes four separate React Query entries per pair/user. Mounted current-day cards prefetch after a 350ms settling delay; successful results are fresh for five minutes, unavailable results for 30 seconds, retained for 30 minutes in memory and cleared by logout. Saving settings invalidates them. Opening a menu does not start an all-mode blocking request.
+
+`RouteQueryQueue` sends only one request at a time across cards. Choosing a mode promotes its queued request and automatically applies the successful recommendation; a selection sequence counter rejects superseded choices. Abort signals skip queued work after unmount/day changes. Already-sent work is allowed to finish before the next request, matching the server concurrency gate. HTTP 429 starts a 30s frontend cooldown; cached valid options remain usable. Manual refresh retries options without changing the saved route by itself.
+
+Route disclosures share editor colours, rounded panels and gradient selection. Escape restores focus to the summary; pointer-outside dismisses. A null `relatedTarget` from a button becoming disabled must not dismiss the panel mid-refresh.
+
 `useSaveTrip` uses the `editor-trip-save` React Query mutation scope to serialize writes: debouncing alone cannot prevent an older in-flight PUT from overwriting the latest transport selection. Browser regression: `node apps/web/tests/route-options-browser.mjs` includes a deliberately slow first save, rapid second selection, reload, stale response after move, partial failure and mobile overflow.
 
 `useEditorStore` clones a fetched `Trip` on load. Every domain edit runs through the store's `mutate` helper, clones the current draft with `structuredClone`, applies a focused change, and increments `revision`. UI-only `dayFilter` changes do not increment revision.

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Value } from '@sinclair/typebox/value';
-import { RouteOptionsResponseSchema, type RouteOptionsResponse, type TransitLeg } from '@tripweaver/shared';
-import { api } from '../../api/client';
+import { LEG_MODES, type LegMode, type RouteOptionsRequest, type TransitLeg } from '@tripweaver/shared';
+import { useRouteOptions } from '../../api/routeOptions';
 import { routePairKey } from '../../lib/routePair';
 import { hasValidCoord } from '../../lib/colors';
 import { formatLegDistance, formatLegDuration, LEG_MODE_LABEL } from '../../lib/tripDerive';
@@ -11,69 +10,89 @@ import { EditorIcon } from './EditorIcon';
 export function RouteOptions({ dayId, fromId, leg }: { dayId: string; fromId: string; leg?: TransitLeg }) {
   const trip = useEditorStore((s) => s.trip);
   const key = trip ? routePairKey(trip, dayId, fromId) : null;
-  // Remount the request owner when endpoints change, so late promises cannot populate a new pair.
-  if (!key) return null;
-  return <RouteOptionsForPair key={key} pairKey={key} dayId={dayId} fromId={fromId} leg={leg} />;
+  if (!trip || !key) return null;
+  const day = trip.days.find((d) => d.id === dayId)!;
+  const index = day.activities.findIndex((a) => a.id === fromId);
+  const input = { from: day.activities[index]!, to: day.activities[index + 1]!, destination: trip.destination };
+  return <RouteOptionsForPair key={key} pairKey={key} tripId={trip.id} input={input} dayId={dayId} leg={leg} />;
 }
 
-function RouteOptionsForPair({ pairKey, dayId, fromId, leg }: { pairKey: string; dayId: string; fromId: string; leg?: TransitLeg }) {
-  const [result, setResult] = useState<RouteOptionsResponse>();
-  const [loading, setLoading] = useState(false);
+function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
+  pairKey: string; tripId: string; input: RouteOptionsRequest; dayId: string; leg?: TransitLeg;
+}) {
+  const valid = hasValidCoord(input.from) && hasValidCoord(input.to);
+  const { queries, get } = useRouteOptions(pairKey, tripId, input, valid);
+  const [pendingMode, setPendingMode] = useState<LegMode>();
   const [error, setError] = useState('');
   const active = useRef(true);
-  const pending = useRef(false);
+  const selection = useRef(0);
   const details = useRef<HTMLDetailsElement>(null);
-  useEffect(() => { active.current = true; return () => { active.current = false; }; }, []);
+  useEffect(() => {
+    active.current = true;
+    const dismiss = (event: PointerEvent) => {
+      if (details.current && event.target instanceof Node && !details.current.contains(event.target)) details.current.open = false;
+    };
+    document.addEventListener('pointerdown', dismiss);
+    return () => { active.current = false; selection.current++; document.removeEventListener('pointerdown', dismiss); };
+  }, []);
 
-  async function query() {
-    if (pending.current) return;
-    const trip = useEditorStore.getState().trip;
-    if (!trip || routePairKey(trip, dayId, fromId) !== pairKey) return;
-    const day = trip.days.find((d) => d.id === dayId)!;
-    const i = day.activities.findIndex((a) => a.id === fromId);
-    const from = day.activities[i]!;
-    const to = day.activities[i + 1]!;
-    if (!hasValidCoord(from) || !hasValidCoord(to)) { setError('地点缺少坐标，请先编辑地点'); return; }
-    pending.current = true;
-    setLoading(true);
+  async function select(mode: LegMode) {
+    const version = ++selection.current;
+    setPendingMode(mode);
     setError('');
     try {
-      const response = await api.post<unknown>(`/api/trips/${encodeURIComponent(trip.id)}/route-options`, { from, to, destination: trip.destination });
-      if (!Value.Check(RouteOptionsResponseSchema, response)) throw new Error('路线数据格式异常，请重试');
-      if (active.current) setResult(response);
+      const option = await get(mode);
+      if (!active.current || selection.current !== version) return;
+      if (option.status !== 'available') { setError(option.reason); return; }
+      if (!useEditorStore.getState().selectRoute(dayId, pairKey, option.leg)) { setError('路段已变化，请重新选择'); return; }
+      if (details.current) { details.current.open = false; details.current.querySelector('summary')?.focus(); }
     } catch (e) {
-      if (active.current) setError(e instanceof Error ? e.message : '路线查询失败，请重试');
+      if (active.current && selection.current === version) setError(e instanceof Error ? e.message : '路线查询失败，请重试');
     } finally {
-      pending.current = false;
-      if (active.current) setLoading(false);
+      if (active.current && selection.current === version) setPendingMode(undefined);
     }
   }
 
-  return <div className="activity-between py-2 text-[13px] text-muted">
-    <details ref={details} className="rounded-lg" onToggle={(e) => { if (e.currentTarget.open && !result && !error) void query(); }}>
-      <summary className="editor-transit flex min-h-10 cursor-pointer items-center gap-2 rounded-lg px-2 hover:bg-black/5" aria-label="切换交通方式">
-        <EditorIcon name={leg?.mode === 'walk' ? 'walk' : 'route'} />
-        <span>{leg ? `${LEG_MODE_LABEL[leg.mode]}约${formatLegDuration(leg.durationMin)} · ${leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)}` : '查询交通方式'}</span>
-        <span aria-hidden="true">⌄</span>
+  async function retry() {
+    setError('');
+    try { await Promise.all(LEG_MODES.map((mode) => get(mode, true))); }
+    catch (e) { if (active.current) setError(e instanceof Error ? e.message : '路线查询失败，请重试'); }
+  }
+
+  const backgroundError = queries.find((q) => q.error)?.error?.message;
+  return <div className="activity-between py-2 text-[13px] text-[var(--editor-muted)]">
+    <details ref={details} className="group rounded-[14px]"
+      onBlur={(e) => { if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) e.currentTarget.open = false; }}
+      onKeyDown={(e) => { if (e.key === 'Escape' && details.current) { details.current.open = false; details.current.querySelector('summary')?.focus(); } }}>
+      <summary className="editor-transit flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border-0 bg-transparent px-3 text-[var(--color-editor-menu-color-83)] transition-colors hover:bg-[var(--color-editor-menu-list-background-87)] group-open:bg-[var(--color-editor-menu-list-background-87)] [&::-webkit-details-marker]:hidden" aria-label="切换交通方式">
+        <EditorIcon name={leg?.mode === 'transit' ? 'route' : leg?.mode ?? 'route'} />
+        <span className="flex-1">{pendingMode ? '正在规划' + LEG_MODE_LABEL[pendingMode] + '路线…' : leg ? LEG_MODE_LABEL[leg.mode] + '约' + formatLegDuration(leg.durationMin) + ' · ' + (leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)) : '选择交通方式'}</span>
+        <svg className="transition-transform group-open:rotate-180" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
       </summary>
-      <div className="mt-1 rounded-lg border border-border bg-white/90 p-2" aria-label="交通方式选项">
-        {loading && <p role="status" className="p-2">正在查询各方式耗时…</p>}
-        {error && <p role="alert" className="p-2">{error}</p>}
-        {result?.options.map((option) => {
-          const mode = option.status === 'available' ? option.leg.mode : option.mode;
-          return <button key={mode} type="button" disabled={loading || option.status !== 'available'}
-            aria-pressed={leg?.mode === mode} className="flex min-h-11 w-full items-center justify-between gap-3 rounded-md px-2 py-2 text-left hover:bg-black/5 disabled:cursor-default disabled:opacity-60"
-            onClick={() => {
-              if (option.status !== 'available') return;
-              if (!useEditorStore.getState().selectRoute(dayId, pairKey, option.leg)) { setError('路段已变化，请重新查询'); return; }
-              if (details.current) details.current.open = false;
-            }}>
-            <span className="shrink-0">{LEG_MODE_LABEL[mode]}{leg?.mode === mode ? ' ✓' : ''}</span>
-            <span>{option.status === 'available' ? `${formatLegDuration(option.leg.durationMin)} · ${formatLegDistance(option.leg.distanceM)} · ${option.leg.source === 'amap' ? '高德' : '天地图'}` : option.reason}</span>
+      <div className="mt-2 rounded-[14px] border border-[var(--color-editor-menu-list-border-85)] bg-[var(--color-card)] p-1.5 shadow-[0_10px_30px_var(--color-editor-menu-list-box-shadow-86)]" aria-label="交通方式选项">
+        <p className="px-3 pb-1 pt-2 text-[11px] text-[var(--editor-muted)]">选择后自动规划推荐路线</p>
+        {!valid && <p role="status" className="px-3 py-2">地点缺少坐标，请先编辑地点</p>}
+        {(error || backgroundError) && <p role="alert" className="px-3 py-2 text-[var(--color-danger)]">{error || backgroundError}</p>}
+        {LEG_MODES.map((mode, index) => {
+          const query = queries[index]!;
+          const option = query.data;
+          const selected = leg?.mode === mode;
+          const pending = pendingMode === mode;
+          return <button key={mode} type="button" disabled={!valid || option?.status === 'unavailable'}
+            aria-pressed={selected} aria-busy={pending}
+            className={['flex min-h-12 w-full items-center gap-3 rounded-[10px] border-0 px-3 py-2 text-left text-[13px] shadow-none transition-colors disabled:cursor-not-allowed disabled:opacity-50',
+              selected ? '[background:var(--editor-gradient)] text-white' : 'bg-transparent text-[var(--color-editor-menu-color-83)] hover:bg-[var(--color-editor-menu-list-background-87)]'].join(' ')}
+            onClick={() => void select(mode)}>
+            <EditorIcon name={mode === 'transit' ? 'route' : mode} />
+            <span className="shrink-0">{LEG_MODE_LABEL[mode]}</span>
+            <span className="ml-auto text-right text-xs">{pending ? '正在规划…' : option?.status === 'available' ? formatLegDuration(option.leg.durationMin) + ' · ' + formatLegDistance(option.leg.distanceM) : option?.status === 'unavailable' ? option.reason : query.isFetching ? '查询中…' : '选择后规划'}</span>
+            {selected && <span aria-hidden="true">✓</span>}
           </button>;
         })}
-        {leg && leg.source !== 'heuristic' && !leg.polyline && <p className="px-2 py-1">此路线暂无路径图，地图显示地点连线。</p>}
-        <button type="button" className="min-h-10 px-2 underline" disabled={loading} onClick={() => void query()}>重新查询</button>
+        {leg && leg.source !== 'heuristic' && !leg.polyline && <p className="px-3 py-2 text-xs">此路线暂无路径图，地图显示地点连线。</p>}
+        <div className="mt-1 flex justify-end border-t border-[var(--color-editor-menu-list-border-top-89)] pt-1">
+          <button type="button" className="min-h-10 rounded-full border-0 bg-transparent px-3 text-xs text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)]" disabled={!valid || queries.some((q) => q.isFetching)} onClick={() => void retry()}>重新查询</button>
+        </div>
       </div>
     </details>
   </div>;

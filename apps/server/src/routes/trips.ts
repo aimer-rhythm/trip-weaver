@@ -15,7 +15,7 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
 
   app.post('/:id/route-options', {
     schema: { params: IdParams, body: RouteOptionsRequestSchema, response: { 200: RouteOptionsResponseSchema, 404: Type.Object({ error: Type.String() }) } },
-    config: { rateLimit: { max: 10, timeWindow: '1 minute' } },
+    config: { rateLimit: { max: 60, timeWindow: '1 minute' } },
   }, async (request, reply) => {
     if (!(await getTrip(request.user!.id, request.params.id))) return reply.code(404).send({ error: '行程不存在' });
     return getRouteOptions(request.user!.id, request.body);

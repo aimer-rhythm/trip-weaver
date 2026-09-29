@@ -110,6 +110,7 @@ export function useSaveSettings() {
     onSuccess: (view) => {
       qc.setQueryData(keys.settings, view);
       qc.invalidateQueries({ queryKey: keys.sourcesStatus });
+      qc.invalidateQueries({ queryKey: ['route-options'] });
     },
   });
 }

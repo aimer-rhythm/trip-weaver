@@ -17,11 +17,11 @@ export class TtlCache<V> {
     return hit.v;
   }
 
-  set(key: string, v: V): void {
+  set(key: string, v: V, ttlMs = this.ttlMs): void {
     if (this.map.size >= this.maxSize && !this.map.has(key)) {
       const oldest = this.map.keys().next().value;
       if (oldest !== undefined) this.map.delete(oldest);
     }
-    this.map.set(key, { v, exp: Date.now() + this.ttlMs });
+    this.map.set(key, { v, exp: Date.now() + ttlMs });
   }
 }

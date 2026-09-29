@@ -1,5 +1,5 @@
 // 高德路径规划适配层（v0.5）：步行/驾车/公交三模式时长距离估算 + 折线抽稀
-// 纪律沿用四道闸：与 geocoder 共用串行队列（350ms）+ 24h TTL 缓存（键=坐标取整5位+mode，仅缓存成功结果）；
+// 与 geocoder 共用串行队列（350ms）+ 5min TTL 缓存（坐标+mode+城市，仅缓存成功结果）；
 // 任务级上限 ROUTE_MAX_PER_TASK 与日额度由 generation/geoPipeline 把关并计入 amap_calls。
 // 任何故障回 null —— 上层降级 legEstimator 启发式，生成流程永不因此失败。
 // 09-25：对外形状改由 integrations/geoContracts.ts 定义（供天地图同形实现），
@@ -20,7 +20,7 @@ const ROUTE_URLS: Record<LegMode, string> = {
 
 export const ROUTE_MAX_PER_TASK = 30;   // 单次生成 ≤30 次路径规划，超出走启发式
 
-const cache = new TtlCache<RouteEstimate>(24 * 60 * 60 * 1000, 300);
+const cache = new TtlCache<RouteEstimate>(5 * 60 * 1000, 300);
 
 function num(v: unknown): number {
   const n = typeof v === 'string' ? Number.parseFloat(v) : typeof v === 'number' ? v : NaN;
@@ -91,7 +91,10 @@ export async function routeEstimate(
         destination: fmt(dest),
         show_fields: 'polyline,cost',
       });
+      // Official v5 default: the same recommendation strategy as the Amap app.
+      if (mode === 'drive') params.set('strategy', '32');
       if (mode === 'transit') {
+        params.set('strategy', '0');
         params.set('city1', opts.city1!);
         params.set('city2', opts.city2!);
       }

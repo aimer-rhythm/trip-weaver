@@ -19,6 +19,7 @@ import type { GeocodedPlace, PoiSource, RouteBreaker } from './geoContracts';
 
 /** 路线规划 + 地理编码的服务商实例（POI 源不在其中，见 resolvePoiSourceForUser） */
 export interface GeoProvider {
+  readonly cacheIdentity?: string; // Credential revision only, never key material.
   readonly kind: MapProvider | 'null';
   /** 是否绑定了可用的真实凭据。false 时上层整条 provider 链路跳过，只留 Nominatim → 启发式两级。 */
   readonly enabled: boolean;
@@ -74,7 +75,7 @@ function createTiandituProvider(tk: string): GeoProvider {
  */
 export async function resolveGeoProvider(userId: string): Promise<GeoProvider> {
   const credential = await resolveAmapCredential(userId);
-  if (credential) return createAmapProvider(credential.apiKey);
+  if (credential) return { ...createAmapProvider(credential.apiKey), cacheIdentity: credential.revision };
   if (env.tiandituKey) return createTiandituProvider(env.tiandituKey);
   return createNullGeoProvider();
 }

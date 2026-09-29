@@ -17,7 +17,13 @@ try {
   page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const errors = []; page.on('pageerror', (e) => errors.push(e.message));
   let trip = { id: 'route-test', title: '北京路线验证', destination: '北京', startDate: '2026-10-01', partySize: 1, preferences: [], budgetLevel: '舒适', totalBudget: 0, extraNotes: '', createdAt: 0, updatedAt: 0, meta: { usedXhs: false, reviewNotes: [] }, days: [{ id: 'd1', dayIndex: 1, title: '第一天', activities: ['故宫', '景山', '北海'].map((name, i) => ({ id: `a${i}`, name, lat: 39.91 + i * .01, lng: 116.39, coordSource: 'manual', coordSystem: 'gcj02', category: '文化', description: '', startTime: '', endTime: '', sourceNotes: [] })), legs: [] }] };
+  trip.days.push({ id: 'd2', dayIndex: 2, title: '第二天', activities: [], legs: [] });
   let calls = 0; let fail = false; let hold; let release;
+  const requested = [];
+  const until = async (condition) => {
+    for (let i = 0; i < 100; i++) { if (condition()) return; await new Promise((r) => setTimeout(r, 50)); }
+    assert.ok(condition(), 'condition timed out');
+  };
   const saved = [];
   await page.route(`${base}/api/**`, async (route) => {
     const pathname = new URL(route.request().url()).pathname;
@@ -28,10 +34,13 @@ try {
     else if (pathname === '/api/settings/config') data = { amapJsKey: '', amapJsSecurityCode: '' };
     else if (pathname.endsWith('/route-options')) {
       calls++;
-      if (hold) await hold;
-      if (fail) return route.fulfill({ status: 429, json: { error: '今日路线查询额度不足，请稍后再试' } });
       const input = route.request().postDataJSON();
-      data = { options: ['walk', 'cycle', 'transit', 'drive'].map((mode, i) => mode === 'cycle' ? { status: 'unavailable', mode, reason: '暂无可用路线' } : { status: 'available', leg: { fromActivityId: input.from.id, toActivityId: input.to.id, mode, source: 'amap', durationMin: 20 - i * 4, distanceM: 1000 + i * 100, polyline: `116.39,39.91;116.4,${39.93 + i * .01}` } }) };
+      requested.push(input.mode);
+      if (hold) await hold;
+      if (fail) return route.fulfill({ status: 503, json: { error: '路线服务暂不可用，请重试' } });
+      const mode = input.mode;
+      const i = ['walk', 'cycle', 'transit', 'drive'].indexOf(mode);
+      data = { options: [mode === 'cycle' ? { status: 'unavailable', mode, reason: '暂无可用路线' } : { status: 'available', leg: { fromActivityId: input.from.id, toActivityId: input.to.id, mode, source: 'amap', durationMin: 20 - i * 4, distanceM: 1000 + i * 100, polyline: `116.39,39.91;116.4,${39.93 + i * .01}` } }] };
     } else if (pathname === '/api/trips/route-test') {
       if (route.request().method() === 'PUT') {
         const next = route.request().postDataJSON();
@@ -42,29 +51,41 @@ try {
     }
     return route.fulfill({ json: data });
   });
+  hold = new Promise((r) => { release = r; });
   await page.goto(`${base}/trips/route-test`);
+  await until(() => calls === 1);
+  assert.equal(await page.locator('details[open]').count(), 0, 'prefetch starts without opening menu');
   const summary = page.getByLabel('切换交通方式').first();
   await summary.click();
-  await page.getByRole('button', { name: /驾车.*高德/ }).click();
-  await page.waitForFunction(() => document.body.textContent.includes('驾车约8 分钟'));
+  await page.getByRole('button', { name: /^驾车/ }).click();
+  await page.getByRole('button', { name: /^公交/ }).click();
+  release(); hold = null;
+  await page.waitForFunction(() => document.body.textContent.includes('公交/地铁约12 分钟'));
+  assert.deepEqual(requested.slice(0, 2), ['walk', 'transit'], 'last user selection promoted ahead of background work');
+  await until(() => calls === 8);
   // Let the first autosave start, then select again; serialized saves must preserve the latest route.
   await page.waitForTimeout(900);
   await summary.click();
   assert.equal(await page.getByRole('button', { name: /骑行/ }).isDisabled(), true);
-  await page.getByRole('button', { name: /步行.*高德/ }).click();
+  await page.getByRole('button', { name: /^步行/ }).click();
   await page.waitForTimeout(2200);
   assert.equal(trip.days[0].legs[0].mode, 'walk');
-  assert.equal(calls, 1, 'reopening successful options should not refetch');
+  assert.equal(calls, 8, 'reopening prefetched options should not refetch');
   assert.equal(saved.length, 2);
   assert.ok(await page.locator('.leaflet-overlay-pane path').count() >= 2, 'selected polyline rendered');
-  await page.reload();
-  await page.getByText('步行约20 分钟', { exact: false }).waitFor();
+  const days = page.getByRole('group', { name: '行程天数' });
+  await days.getByRole('button', { name: '第2天', exact: true }).click();
+  await days.getByRole('button', { name: '第1天', exact: true }).click();
+  await page.waitForTimeout(500);
+  assert.equal(calls, 8, 'returning to the day reuses shared cache');
   fail = true;
   await page.getByLabel('切换交通方式').first().click();
-  await page.getByRole('alert').filter({ hasText: '额度不足' }).waitFor();
+  await page.getByRole('button', { name: '重新查询' }).click();
+  await page.getByRole('alert').filter({ hasText: '暂不可用' }).waitFor();
   fail = false;
   await page.getByRole('button', { name: '重新查询' }).click();
-  await page.getByRole('button', { name: /驾车.*高德/ }).waitFor();
+  await page.getByRole('button', { name: /^驾车.*8 分钟/ }).waitFor();
+  await page.waitForFunction(() => [...document.querySelectorAll('details[open] button')].some((button) => button.textContent === '重新查询' && !button.disabled));
   // A response arriving after reorder must not become selectable on the changed pair.
   hold = new Promise((r) => { release = r; });
   await page.getByRole('button', { name: '重新查询' }).click();
@@ -72,15 +93,27 @@ try {
   await page.getByRole('button', { name: '下移', exact: true }).first().click();
   release(); hold = null;
   await page.waitForTimeout(100);
-  assert.equal(await page.getByRole('button', { name: /驾车.*高德/ }).count(), 0);
+  assert.equal(await page.getByRole('button', { name: /^驾车/ }).count(), 0);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByLabel('切换交通方式').first().click();
-  await page.getByRole('button', { name: /驾车.*高德/ }).waitFor();
+  await page.getByRole('button', { name: /^驾车.*8 分钟/ }).waitFor();
+  await page.getByRole('button', { name: /^驾车/ }).click();
+  await page.getByLabel('切换交通方式').first().click();
+  const selected = page.getByRole('button', { name: /^驾车/ });
+  assert.equal(await selected.getAttribute('aria-pressed'), 'true');
+  assert.ok(await selected.evaluate((el) => getComputedStyle(el).backgroundImage.includes('linear-gradient')), 'editor blue gradient selected state');
+  await page.waitForFunction(() => [...document.querySelectorAll('details[open] button[aria-pressed="true"]')].some((button) => getComputedStyle(button).color === 'rgb(255, 255, 255)'));
+  assert.equal(await selected.evaluate((el) => getComputedStyle(el).color), 'rgb(255, 255, 255)', 'selected text keeps contrast over editor parent styles');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
   await fs.mkdir('.trellis/tasks/09-28-route-transport-switch/research', { recursive: true });
   await page.screenshot({ path: '.trellis/tasks/09-28-route-transport-switch/research/mobile-options.png' });
   assert.deepEqual(errors, []);
-  console.log('PASS route options: selection, partial failure, save ordering, reload, map, quota retry, stale response, mobile');
+  await selected.press('Escape');
+  assert.equal(await page.locator('details[open]').count(), 0);
+  await page.waitForTimeout(1000);
+  await page.reload();
+  await page.getByText('驾车约8 分钟', { exact: false }).waitFor();
+  console.log('PASS routes: prefetch, request priority, latest selection, cache across days, save ordering/reload, map, retry, stale response, mobile style and Escape');
 } catch (error) {
   console.error(await page?.locator('body').innerText());
   throw error;

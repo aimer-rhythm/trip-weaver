@@ -8,9 +8,10 @@ export async function queryRouteOptions(
   input: RouteOptionsRequest,
   provider: GeoProvider,
   acquire: () => boolean,
+  modes = input.mode ? [input.mode] : [...LEG_MODES],
 ): Promise<RouteOptionsResponse> {
   const unavailable = (reason: string): RouteOptionsResponse => ({
-    options: LEG_MODES.map((mode) => ({ status: 'unavailable', mode, reason })),
+    options: modes.map((mode) => ({ status: 'unavailable', mode, reason })),
   });
   if (input.from.id === input.to.id) return unavailable('请选择两个不同地点');
   if ([input.from, input.to].some((a) => (a.lat === 0 && a.lng === 0))) return unavailable('地点缺少坐标');
@@ -18,7 +19,7 @@ export async function queryRouteOptions(
   const point = (a: Activity) => a.coordSystem === 'gcj02' ? { lat: a.lat, lng: a.lng } : wgs84ToGcj02(a.lat, a.lng);
   const breaker = provider.createRouteBreaker();
   const options: RouteOptionsResponse['options'] = [];
-  for (const mode of LEG_MODES) {
+  for (const mode of modes) {
     if (provider.kind === 'tianditu' && (mode === 'walk' || mode === 'cycle')) {
       options.push({ status: 'unavailable', mode, reason: '当前路线服务不支持此方式' });
       continue;

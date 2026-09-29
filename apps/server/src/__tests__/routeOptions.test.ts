@@ -59,3 +59,12 @@ test('missing transit city does not fabricate a route', async () => {
   const result = await queryRouteOptions(input(), p, () => true);
   assert.ok(result.options.some((o) => o.status === 'unavailable' && o.mode === 'transit' && o.reason.includes('城市')));
 });
+
+test('single-mode selection queries only that mode and does not spend geocoding calls', async () => {
+  const data = { ...input(), mode: 'drive' as const };
+  let calls = 0;
+  const result = await queryRouteOptions(data, provider(), () => { calls++; return true; });
+  assert.equal(result.options.length, 1);
+  assert.equal(calls, 1);
+  assert.equal(result.options[0]?.status, 'available');
+});

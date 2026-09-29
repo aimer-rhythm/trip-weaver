@@ -93,7 +93,7 @@ test('routeEstimate：driving 超长折线丢弃，仅留时长距离', async ()
   assert.equal(r.polyline, undefined);
 });
 
-test('routeEstimate：24h 缓存命中，第二次不发请求', async () => {
+test('routeEstimate：有效期内缓存命中，第二次不发请求', async () => {
   const { calls } = mockFetchOnce({
     status: '1',
     route: { paths: [{ distance: '800', cost: { duration: '600' }, steps: [] }] },

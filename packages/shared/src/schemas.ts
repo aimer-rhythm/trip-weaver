@@ -68,6 +68,8 @@ export const TransitLegSchema = Type.Object({
 });
 
 export const RouteOptionsRequestSchema = Type.Object({
+  mode: Type.Optional(StringEnum(LEG_MODES)),
+  refresh: Type.Optional(Type.Boolean()),
   from: ActivitySchema,
   to: ActivitySchema,
   destination: Type.String({ minLength: 1, maxLength: 100 }),
@@ -78,7 +80,7 @@ export const RouteOptionSchema = Type.Union([
   Type.Object({ status: Type.Literal('unavailable'), mode: StringEnum(LEG_MODES), reason: Type.String() }),
 ]);
 export const RouteOptionsResponseSchema = Type.Object({
-  options: Type.Array(RouteOptionSchema, { minItems: 4, maxItems: 4 }),
+  options: Type.Array(RouteOptionSchema, { minItems: 1, maxItems: 4 }),
 });
 
 export const TripDaySchema = Type.Object({

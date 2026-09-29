@@ -15,9 +15,11 @@ Editing one adjacent activity pair's transport mode, independently of generation
 ### 3. Contracts
 
 - Authenticate and check trip ownership before external work. Inputs are two validated draft activity snapshots and destination, allowing unsaved edits; querying never saves the trip.
-- Reuse `resolveGeoProvider`; return four available/unavailable entries with truthful sources. Never substitute heuristic estimates in selectable options.
+- Reuse `resolveGeoProvider`; optional `mode` requests a single available/unavailable entry; omitting it returns all four. Never substitute heuristic estimates in selectable options. `refresh: true` bypasses the editor result cache for explicit retries.
 - Convert legacy WGS84 inputs to GCJ02. Amap transit resolves endpoint adcodes, then calls routing. Missing city or provider result is unavailable with retry text.
-- One active request per user; route rate limit is 10/minute. Reserve eight attempts atomically before queries; finalizer refunds unused attempts, including pre-request skips. Cache hits count as accepted attempts consistently with generation.
+- One active cache-miss request per user; route rate limit is 60/minute to support per-mode prefetch. Reserve one attempt per missing mode plus four possible geocode attempts if Amap transit is missing; finalizer refunds unused attempts, including pre-request skips.
+- Cache each result by user ID, provider kind, credential revision, destination, endpoint identities and coordinates/system. Available results live five minutes, unavailable results 30 seconds, bounded to 1200 entries. Result-cache hits happen before concurrency/quota gates and consume no quota; lower adapter cache hits still count as accepted attempts. Credential revision is metadata, never key material.
+- Amap route adapter successful cache TTL is five minutes (formerly 24 hours). Driving explicitly uses `strategy=32` (Amap recommended); transit keeps default `0`; adopt the first provider-ranked result. Official reference: `https://lbs.amap.com/api/webservice/guide/api/newroute`.
 - Daily budget subtracts persisted editor reservations as well as generation usage. Generation's existing 60s aggregate and running-job approximation remains; crashes can conservatively retain reservations until next day. No new env keys.
 - Amap transit geometry joins walking steps and the first bus alternative in segment order; absent geometry remains absent. Do not invent durations when provider duration is missing.
 
@@ -38,7 +40,7 @@ Editing one adjacent activity pair's transport mode, independently of generation
 
 - `routeOptions.test.ts`: partial failure, source labels, missing coordinates/city, WGS84 and unsupported modes.
 - `amapRoute.test.ts`: transit geometry and missing-duration rejection.
-- `node --import tsx scripts/verify-route-options.mts`: dedicated local PostgreSQL at port 18797, disposable database per run; asserts migrations, ownership, validation, quota atomicity/refund and persistence. Upstream fetch is mocked.
+- `node --import tsx scripts/verify-route-options.mts`: dedicated local PostgreSQL at port 18797, disposable database per run; asserts migrations, ownership, validation, quota atomicity/refund, persistence, free cache hits under quota exhaustion, credential/coordinate invalidation and TTL expiry. Upstream fetch is mocked.
 
 ### 7. Wrong vs Correct
 
