@@ -856,3 +856,36 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 21: AI 行程分享图导出
+
+**Date**: 2026-09-29
+**Task**: AI 行程分享图导出
+**Branch**: `master`
+
+### Summary
+
+第三方gpt-image2.5 Images API集成，内置隐私最小化行程海报提示词，共享UI预览下载，缓存去重；类型检查、构建、7项单测、API与桌面手机浏览器模拟验证通过。真实接口待配置IMAGE_API_KEY联调。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `6adc669` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
