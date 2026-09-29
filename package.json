@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit -p packages/shared && tsc --noEmit -p apps/server && tsc --noEmit -p apps/web && tsc --noEmit -p eval",
     "eval": "tsx --tsconfig eval/tsconfig.json eval/run.ts",
     "eval:live": "tsx --tsconfig eval/tsconfig.json eval/run.ts --live",
+  "assets:transparent": "node scripts/to-transparent.mjs",
     "build": "npm run build -w apps/web",
     "start": "npm run start -w apps/server"
   },
