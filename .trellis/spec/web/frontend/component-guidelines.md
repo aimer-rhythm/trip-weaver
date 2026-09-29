@@ -114,8 +114,8 @@ Rules that keep this from becoming two divergent maps:
   configured". Treat a new endpoint as unverified until one real request has returned its expected
   body.
 - InfoWindow content is an HTML string, so model-authored text (activity names, descriptions) must
-  pass through `escapeHtml` before interpolation. React components cannot be used there; the edit
-  button uses data attributes plus one delegated click handler on the host element.
+  pass through `escapeHtml` before interpolation. It shows only activity summaries; no edit button
+  or delegated edit handler remains.
 - Route stroke geometry lives in `lib/routeStyle.ts`, not in either canvas. Every route segment is
   drawn twice — a wider dimmed underlay (`dimColor`, 7 px, z 60) then the day colour on top
   (5 px, z 61) — and the numbers only stay identical across both renderers if there is one source.
@@ -159,7 +159,7 @@ unit-testable and shared between panels and the map.
 
 - `dayFilter` is the single owner for itinerary and map selection: `null` means overview/all days. Loading defaults to the first available day. View changes never increment `revision`.
 - `deleteDay` preserves selection by original day ID after renumbering. If the selected day was removed, select the first remaining day; an empty trip uses `null`. Overview stays overview after mutations.
-- Cards show activity order, not a timeline. Keep persisted legacy time fields during edits, with raw time visible only in details; new activities use empty time strings.
+- Cards show activity order, not a timeline. Persisted legacy time fields remain in data; the full-detail dialog has been removed and new activities use empty time strings.
 - The action disclosure lives in the activity card header at the top right and remains available even without an outgoing transit leg. Derive transit from `legForPair` so reorder/delete cannot leave stale travel information.
 - Desktop uses three panels; at 1100px and below, use section switching. `MapView.useIsDesktop` must share that breakpoint so hidden maps do not fit a zero-size canvas.
 - Both map renderers use `MapControls`. Reset fits the selected range without changing the filter. Amap overlay invalidation includes activity labels/details, not just coordinates, so editing a name also refreshes its map label.
@@ -172,6 +172,15 @@ unit-testable and shared between panels and the map.
 - Scope viewport height/overflow to the editor AppLayout, keeping panel scrolling and print media intact. Test both document scrollHeight and panel scrolling, including a print view taller than the viewport.
 - Editor primary buttons/selected states intentionally reference the homepage `--color-brand-light` / `--color-brand` tokens per user request; disabled sends use its disabled pair.
 - Export checks must click through PNG, JSON and print, verify the downloaded PNG/JSON, and exercise long itineraries. Testing only whether the menu exists misses stacking-context click interception.
+
+## Shared UI Components (2026-09-29)
+
+- Use `components/ui/Button.tsx` for all JSX buttons: `primary`, `secondary`, `ghost`, `danger`, and `plain` for domain-specific layouts (calendar cells, map filters, route choices). The default type is `button`; forms must explicitly use `type="submit"`. Native props and React 19 refs pass through. `loading` adds Spinner, disables repeated actions and sets `aria-busy`; provide visible pending text. IconButton requires an accessible label. Button-like links use `buttonClassName` without changing anchor semantics.
+- Use `ui/Field.tsx` Input/Select/Textarea. Do not restyle their borders, colours, font or focus through parent selectors. Keep layout at the caller. Select retains native keyboard and OS popup behaviour; checkbox/radio/file/range keep native compact semantics.
+- `ui/Dropdown.tsx` owns details/summary menu panels, external-click dismissal, focus leaving and Escape focus restoration. EditorMenu is a domain wrapper. Route options share `useDismissibleDisclosure` while retaining their asynchronous selection behaviour. Never use ARIA menu roles without implementing their keyboard model.
+- `Modal` remains the only dialog shell: named by its title, native modal focus trap, viewport-bounded scroll, Escape and actual-backdrop close. Closing returns focus to the trigger (or its collapsed disclosure summary). `ui/ActionDialog` provides ConfirmDialog and PromptDialog; no window.confirm/prompt in product flows. Export image preview uses Modal too.
+- Activity cards and both map renderers expose summaries, not manual activity-edit or full-detail actions. Existing activities remain reorderable/movable/deletable; adding activities remains available. Do not tell users to use a removed editor when coordinates are missing.
+- Tests: `styles.test.mjs` prevents raw JSX controls outside ui and browser prompt/confirm; `shared-ui-browser.mjs` covers form states, dialog naming/focus, calendar and narrow viewports; editor tests cover both renderers and export.
 
 ## My Trips Collection
 

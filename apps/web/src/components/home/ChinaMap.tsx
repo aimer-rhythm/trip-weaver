@@ -1,3 +1,4 @@
+import { Button } from '../ui/Button';
 // 首页 SVG 中国地图（09-26）：省界 + 国界 + 已覆盖城市打点，支持拖拽平移、滚轮缩放与右下角缩放胶囊。
 // 布局参考 Yuntu 首页的 CinematicMap：拖拽热区与画布都是整屏（absolute inset-0 + svg 100%），
 // 地图内容靠内部 translate/scale 视图变换摆放，可平移范围与缩放范围都放宽。
@@ -269,7 +270,7 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
         className="absolute right-[2.5%] bottom-[calc(190*var(--ui))] z-20 flex flex-col items-center gap-[calc(4*var(--ui))] rounded-[calc(24*var(--ui))] border border-white/70 bg-white/72 p-[calc(7*var(--ui))] shadow-[0_10px_30px_rgba(31,64,124,0.12)] backdrop-blur-2xl backdrop-saturate-150"
         onPointerDown={(e) => e.stopPropagation()}
       >
-        <button
+        <Button variant="plain"
           type="button"
           aria-label="放大地图"
           title="放大"
@@ -277,9 +278,9 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
           className="grid h-[calc(34*var(--ui))] w-[calc(34*var(--ui))] place-items-center rounded-full text-ink-soft transition-colors hover:bg-white/80 hover:text-brand"
         >
           <PlusIcon className="h-[calc(18*var(--ui))] w-[calc(18*var(--ui))]" />
-        </button>
+        </Button>
         <span aria-hidden="true" className="h-px w-[calc(18*var(--ui))] bg-hairline-strong" />
-        <button
+        <Button variant="plain"
           type="button"
           aria-label="缩小地图"
           title="缩小"
@@ -287,9 +288,9 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
           className="grid h-[calc(34*var(--ui))] w-[calc(34*var(--ui))] place-items-center rounded-full text-ink-soft transition-colors hover:bg-white/80 hover:text-brand"
         >
           <MinusIcon className="h-[calc(18*var(--ui))] w-[calc(18*var(--ui))]" />
-        </button>
+        </Button>
         <span aria-hidden="true" className="h-px w-[calc(18*var(--ui))] bg-hairline-strong" />
-        <button
+        <Button variant="plain"
           type="button"
           aria-label="重置地图"
           title="回到默认视角"
@@ -297,7 +298,7 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
           className="grid h-[calc(34*var(--ui))] w-[calc(34*var(--ui))] place-items-center rounded-full text-ink-soft transition-colors hover:bg-white/80 hover:text-brand"
         >
           <ResetIcon className="h-[calc(18*var(--ui))] w-[calc(18*var(--ui))]" />
-        </button>
+        </Button>
       </div>
     </div>
   );

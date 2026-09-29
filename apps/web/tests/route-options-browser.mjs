@@ -123,8 +123,8 @@ try {
   await page.waitForFunction(() => [...document.querySelectorAll('details[open] button[aria-pressed="true"]')].some((button) => getComputedStyle(button).color === 'rgb(255, 255, 255)'));
   assert.equal(await selected.evaluate((el) => getComputedStyle(el).color), 'rgb(255, 255, 255)', 'selected text keeps contrast over editor parent styles');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
-  await fs.mkdir('.trellis/tasks/09-28-replan-transit-after-move/research', { recursive: true });
-  await page.screenshot({ path: '.trellis/tasks/09-28-replan-transit-after-move/research/mobile-options.png' });
+  await fs.mkdir('.trellis/tasks/09-29-ui-consistency/research', { recursive: true });
+  await page.screenshot({ path: '.trellis/tasks/09-29-ui-consistency/research/mobile-options.png' });
   assert.deepEqual(errors, []);
   await selected.press('Escape');
   assert.equal(await page.locator('details[open]').count(), 0);

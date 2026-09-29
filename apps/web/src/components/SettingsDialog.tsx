@@ -1,3 +1,5 @@
+import { Button } from './ui/Button';
+import { Input } from './ui/Field';
 import { useState, type FormEvent } from 'react';
 import { useSaveSettings, useSettings, useSourcesStatus, useUsage, type SourceStatusView } from '../api/hooks';
 import { Modal } from './Modal';
@@ -143,33 +145,33 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           loading={sources.isFetching}
         />
         <SourceStatusRow label="全网搜索" status={sources.data?.websearch} loading={sources.isFetching} />
-        <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)] [&_input:not([type='checkbox'])]:[border:1px_solid_var(--color-border)] [&_input:not([type='checkbox'])]:[border-radius:var(--radius)] [&_input:not([type='checkbox'])]:[padding:9px_11px] [&_input:not([type='checkbox'])]:[font-size:0.95rem] [&_input:not([type='checkbox'])]:[color:var(--color-text)] [&_input:not([type='checkbox'])]:[background:var(--color-card)] [&_input:focus]:[outline:2px_solid_var(--color-primary)] [&_input:focus]:[outline-offset:0] [&_input:focus]:[border-color:transparent] [&_select]:[border:1px_solid_var(--color-border)] [&_select]:[border-radius:var(--radius)] [&_select]:[padding:9px_11px] [&_select]:[font-size:0.95rem] [&_select]:[background:var(--color-card)] [&_select]:[color:var(--color-text)]"}>
+        <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)]"}>
           <label className={"check-row [flex-direction:row]! items-center [gap:8px]! [color:var(--color-text)]!"}>
-            <input type="checkbox" checked={curByok} onChange={(e) => setByokEnabled(e.target.checked)} />
+            <Input type="checkbox" checked={curByok} onChange={(e) => setByokEnabled(e.target.checked)} />
             使用我自己的 OpenAI 兼容 Key（配置后生成走你自己的账户计费）
           </label>
           <div className={"preset-row flex [gap:8px] flex-wrap"}>
             {PRESETS.map((p) => (
-              <button
+              <Button variant="ghost"
                 key={p.label}
                 type="button"
-                className={"btn [border:1px_solid_transparent] cursor-pointer [background:none] [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-chip [border-color:var(--color-border)] rounded-full [padding:4px_12px] [font-size:0.82rem] [&.is-active]:[background:var(--color-primary)] [&.is-active]:[border-color:var(--color-primary)] [&.is-active]:[color:var(--color-btn-primary-color-3)]"}
+                className={"btn-chip rounded-full [padding:4px_12px] [font-size:0.82rem] [&.is-active]:[background:var(--color-primary)] [&.is-active]:[border-color:var(--color-primary)] [&.is-active]:[color:var(--color-btn-primary-color-3)]"}
                 onClick={() => {
                   setBaseUrl(p.baseUrl);
                   setModel(p.model);
                 }}
               >
                 {p.label}
-              </button>
+              </Button>
             ))}
           </div>
           <label>
             Base URL
-            <input value={curBaseUrl} onChange={(e) => setBaseUrl(e.target.value)} placeholder="https://api.deepseek.com/v1" />
+            <Input value={curBaseUrl} onChange={(e) => setBaseUrl(e.target.value)} placeholder="https://api.deepseek.com/v1" />
           </label>
           <label>
             API Key
-            <input
+            <Input
               type="password"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
@@ -178,11 +180,11 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           </label>
           <label>
             模型名
-            <input value={curModel} onChange={(e) => setModel(e.target.value)} placeholder="deepseek-chat" />
+            <Input value={curModel} onChange={(e) => setModel(e.target.value)} placeholder="deepseek-chat" />
           </label>
           <label>
             高德 Web 服务 Key
-            <input
+            <Input
               type="password"
               value={amapApiKey}
               onChange={(e) => {
@@ -208,7 +210,7 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           </p>
           {view?.hasPersonalAmapKey && (
             <label className={"check-row [flex-direction:row]! items-center [gap:8px]! [color:var(--color-text)]!"}>
-              <input
+              <Input
                 type="checkbox"
                 checked={clearAmapApiKey}
                 onChange={(e) => {
@@ -221,7 +223,7 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           )}
           <label>
             Web 搜索 API Key
-            <input
+            <Input
               type="password"
               value={searchApiKey}
               disabled={clearSearchConfig}
@@ -240,7 +242,7 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           </label>
           <label>
             Web 搜索 Base URL
-            <input
+            <Input
               value={curSearchApiBaseUrl}
               disabled={clearSearchConfig}
               onChange={(e) => setSearchApiBaseUrl(e.target.value)}
@@ -257,7 +259,7 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           </p>
           {view?.hasPersonalSearchKey && (
             <label className={"check-row [flex-direction:row]! items-center [gap:8px]! [color:var(--color-text)]!"}>
-              <input
+              <Input
                 type="checkbox"
                 checked={clearSearchConfig}
                 onChange={(e) => {
@@ -273,9 +275,9 @@ export function SettingsDialog({ email, onClose }: { email: string; onClose: () 
           )}
           <div className={"form-foot flex items-center [justify-content:flex-end] [gap:12px]"}>
             {message && <span className={"form-msg [color:var(--color-ok)] [font-size:0.85rem]"}>{message}</span>}
-            <button type="submit" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)]"} disabled={save.isPending}>
+            <Button variant="primary" type="submit" loading={save.isPending}>
               {save.isPending ? '保存中…' : '保存'}
-            </button>
+            </Button>
           </div>
         </form>
       </details>

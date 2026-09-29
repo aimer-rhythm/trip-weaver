@@ -1,3 +1,4 @@
+import { Button } from './ui/Button';
 // 范围日历（09-26，交互参考 Yuntu InputPage.CustomCalendarRange）：
 // 点第一次定出发日，悬停预览区间，点第二次定返回日；跨度超过 maxDays 时自动收短到上限。
 // 纯受控组件：值由父组件持有，这里只负责网格渲染与两次点击的区间语义。
@@ -96,27 +97,27 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
             <div className={"range-calendar-month flex-1 min-w-0 flex flex-col [gap:var(--rc-gap)]"} key={`${mYear}-${mMonth}`}>
               <div className={"range-calendar-head relative flex items-center [height:var(--rc-head-height)] [padding-left:var(--rc-head-pad-left)]"}>
                 {index === 0 && (
-                  <button
+                  <Button variant="plain"
                     type="button"
                     className={"range-calendar-arrow absolute [top:0] flex items-center justify-center [width:var(--rc-arrow-width)] [height:var(--rc-head-height)] p-0 border-0 [background:none] [font:inherit] [font-size:var(--rc-arrow-size)] [line-height:1] [color:var(--color-muted)] cursor-pointer [&.is-prev]:[left:0] [&.is-next]:[right:0] [&:hover]:[color:var(--color-primary)] is-prev"}
                     aria-label="上一月"
                     onClick={() => shiftMonth(-1)}
                   >
                     ‹
-                  </button>
+                  </Button>
                 )}
                 <span className={"range-calendar-title font-bold [font-size:var(--rc-title-size)] [color:var(--color-ink-strong)]"}>
                   {mYear}年{mMonth + 1}月
                 </span>
                 {index === months - 1 && (
-                  <button
+                  <Button variant="plain"
                     type="button"
                     className={"range-calendar-arrow absolute [top:0] flex items-center justify-center [width:var(--rc-arrow-width)] [height:var(--rc-head-height)] p-0 border-0 [background:none] [font:inherit] [font-size:var(--rc-arrow-size)] [line-height:1] [color:var(--color-muted)] cursor-pointer [&.is-prev]:[left:0] [&.is-next]:[right:0] [&:hover]:[color:var(--color-primary)] is-next"}
                     aria-label="下一月"
                     onClick={() => shiftMonth(1)}
                   >
                     ›
-                  </button>
+                  </Button>
                 )}
               </div>
 
@@ -145,7 +146,7 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
                     .filter(Boolean)
                     .join(' ');
                   return (
-                    <button
+                    <Button variant="plain"
                       key={iso}
                       type="button"
                       aria-label={iso}
@@ -157,7 +158,7 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
                       }}
                     >
                       {d.getDate()}
-                    </button>
+                    </Button>
                   );
                 })}
               </div>

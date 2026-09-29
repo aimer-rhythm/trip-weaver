@@ -24,7 +24,7 @@ function PlanPair({ job, tripId, input }: { job: RouteReplan; tripId: string; in
     let active = true;
     const timer = setTimeout(() => {
       if (!hasValidCoord(input.from) || !hasValidCoord(input.to)) {
-        useEditorStore.getState().finishRouteReplan(job.id, undefined, '地点缺少坐标，请先编辑地点');
+        useEditorStore.getState().finishRouteReplan(job.id, undefined, '地点缺少坐标，暂时无法规划路线');
         return;
       }
       void Promise.allSettled(LEG_MODES.map((mode) => get(mode, job.refresh))).then((results) => {

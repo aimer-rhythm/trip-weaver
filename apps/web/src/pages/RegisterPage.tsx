@@ -1,3 +1,5 @@
+import { Button } from '../components/ui/Button';
+import { Input } from '../components/ui/Field';
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthConfig, useRegister } from '../api/hooks';
@@ -40,29 +42,29 @@ export function RegisterPage() {
           <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>注册暂未开放，请联系站长</p>
         ) : (
           <>
-            <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)] [&_input:not([type='checkbox'])]:[border:1px_solid_var(--color-border)] [&_input:not([type='checkbox'])]:[border-radius:var(--radius)] [&_input:not([type='checkbox'])]:[padding:9px_11px] [&_input:not([type='checkbox'])]:[font-size:0.95rem] [&_input:not([type='checkbox'])]:[color:var(--color-text)] [&_input:not([type='checkbox'])]:[background:var(--color-card)] [&_input:focus]:[outline:2px_solid_var(--color-primary)] [&_input:focus]:[outline-offset:0] [&_input:focus]:[border-color:transparent] [&_select]:[border:1px_solid_var(--color-border)] [&_select]:[border-radius:var(--radius)] [&_select]:[padding:9px_11px] [&_select]:[font-size:0.95rem] [&_select]:[background:var(--color-card)] [&_select]:[color:var(--color-text)]"}>
+            <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)]"}>
               <label>
                 邮箱
-                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
+                <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
               </label>
               <label>
                 密码（至少 8 位）
-                <input type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="new-password" />
+                <Input type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="new-password" />
               </label>
               <label>
                 确认密码
-                <input type="password" required value={confirm} onChange={(e) => setConfirm(e.target.value)} autoComplete="new-password" />
+                <Input type="password" required value={confirm} onChange={(e) => setConfirm(e.target.value)} autoComplete="new-password" />
               </label>
               {inviteRequired && (
                 <label>
                   邀请码
-                  <input required value={inviteCode} onChange={(e) => setInviteCode(e.target.value)} placeholder="向站长索取" />
+                  <Input required value={inviteCode} onChange={(e) => setInviteCode(e.target.value)} placeholder="向站长索取" />
                 </label>
               )}
               {error && <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
-              <button type="submit" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)] btn-block w-full justify-center"} disabled={register.isPending}>
+              <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={register.isPending}>
                 {register.isPending ? '注册中…' : '注册并登录'}
-              </button>
+              </Button>
             </form>
             {config?.githubEnabled && (
               <>

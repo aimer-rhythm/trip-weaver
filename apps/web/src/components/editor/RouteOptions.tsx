@@ -1,3 +1,4 @@
+import { Button } from '../ui/Button';
 import { useEffect, useRef, useState } from 'react';
 import { LEG_MODES, type LegMode, type RouteOptionsRequest, type TransitLeg } from '@tripweaver/shared';
 import { useRouteOptions } from '../../api/routeOptions';
@@ -6,6 +7,7 @@ import { hasValidCoord } from '../../lib/colors';
 import { formatLegDistance, formatLegDuration, LEG_MODE_LABEL } from '../../lib/tripDerive';
 import { useEditorStore } from '../../store/editorStore';
 import { EditorIcon } from './EditorIcon';
+import { useDismissibleDisclosure } from '../ui/Dropdown';
 
 export function RouteOptions({ dayId, fromId, leg }: { dayId: string; fromId: string; leg?: TransitLeg }) {
   const trip = useEditorStore((s) => s.trip);
@@ -29,13 +31,10 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
   const active = useRef(true);
   const selection = useRef(0);
   const details = useRef<HTMLDetailsElement>(null);
+  const disclosureEvents = useDismissibleDisclosure(details);
   useEffect(() => {
     active.current = true;
-    const dismiss = (event: PointerEvent) => {
-      if (details.current && event.target instanceof Node && !details.current.contains(event.target)) details.current.open = false;
-    };
-    document.addEventListener('pointerdown', dismiss);
-    return () => { active.current = false; selection.current++; document.removeEventListener('pointerdown', dismiss); };
+    return () => { active.current = false; selection.current++; };
   }, []);
 
   async function select(mode: LegMode) {
@@ -68,9 +67,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
 
   const backgroundError = queries.find((q) => q.error)?.error?.message;
   return <div className="activity-between py-2 text-[13px] text-[var(--editor-muted)]">
-    <details ref={details} className="group rounded-[14px]"
-      onBlur={(e) => { if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) e.currentTarget.open = false; }}
-      onKeyDown={(e) => { if (e.key === 'Escape' && details.current) { details.current.open = false; details.current.querySelector('summary')?.focus(); } }}>
+    <details ref={details} className="group rounded-[14px]" {...disclosureEvents}>
       <summary className="editor-transit flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border-0 bg-transparent px-3 text-[var(--color-editor-menu-color-83)] transition-colors hover:bg-[var(--color-editor-menu-list-background-87)] group-open:bg-[var(--color-editor-menu-list-background-87)] [&::-webkit-details-marker]:hidden" aria-label="切换交通方式">
         <EditorIcon name={leg?.mode === 'transit' ? 'route' : leg?.mode ?? 'route'} />
         <span className="flex-1" role="status">{pendingMode ? '正在规划' + LEG_MODE_LABEL[pendingMode] + '路线…' : replan?.status === 'pending' ? '正在选择推荐交通方式…' : leg ? LEG_MODE_LABEL[leg.mode] + '约' + formatLegDuration(leg.durationMin) + ' · ' + (leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)) : '选择交通方式'}</span>
@@ -78,14 +75,14 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
       </summary>
       <div className="mt-2 rounded-[14px] border border-[var(--color-editor-menu-list-border-85)] bg-[var(--color-card)] p-1.5 shadow-[0_10px_30px_var(--color-editor-menu-list-box-shadow-86)]" aria-label="交通方式选项">
         <p className="px-3 pb-1 pt-2 text-[11px] text-[var(--editor-muted)]">选择后自动规划推荐路线</p>
-        {!valid && <p role="status" className="px-3 py-2">地点缺少坐标，请先编辑地点</p>}
+        {!valid && <p role="status" className="px-3 py-2">地点缺少坐标，暂时无法规划路线</p>}
         {(error || backgroundError) && <p role="alert" className="px-3 py-2 text-[var(--color-danger)]">{error || backgroundError}</p>}
         {LEG_MODES.map((mode, index) => {
           const query = queries[index]!;
           const option = query.data;
           const selected = leg?.mode === mode;
           const pending = pendingMode === mode;
-          return <button key={mode} type="button" disabled={!valid || option?.status === 'unavailable'}
+          return <Button variant="plain" key={mode} type="button" disabled={!valid || option?.status === 'unavailable'}
             aria-pressed={selected} aria-busy={pending}
             className={['flex min-h-12 w-full items-center gap-3 rounded-[10px] border-0 px-3 py-2 text-left text-[13px] shadow-none transition-colors disabled:cursor-not-allowed disabled:opacity-50',
               selected ? '[background:var(--editor-gradient)] text-white' : 'bg-transparent text-[var(--color-editor-menu-color-83)] hover:bg-[var(--color-editor-menu-list-background-87)]'].join(' ')}
@@ -94,20 +91,19 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
             <span className="shrink-0">{LEG_MODE_LABEL[mode]}</span>
             <span className="ml-auto text-right text-xs">{pending ? '正在规划…' : option?.status === 'available' ? formatLegDuration(option.leg.durationMin) + ' · ' + formatLegDistance(option.leg.distanceM) : option?.status === 'unavailable' ? option.reason : query.isFetching ? '查询中…' : '选择后规划'}</span>
             {selected && <span aria-hidden="true">✓</span>}
-          </button>;
+          </Button>;
         })}
         {leg && leg.source !== 'heuristic' && !leg.polyline && <p className="px-3 py-2 text-xs">此路线暂无路径图，地图显示地点连线。</p>}
         {(error || backgroundError || refreshing) && <div className="mt-1 flex justify-end border-t border-[var(--color-editor-menu-list-border-top-89)] pt-1">
-          <button type="button" className="inline-flex min-h-10 items-center gap-1.5 rounded-full border-0 bg-transparent px-3 text-xs text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)] disabled:cursor-not-allowed" disabled={!valid || refreshing || queries.some((q) => q.isFetching)} aria-busy={refreshing} onClick={() => void retry()}>
-            {refreshing && <svg className="animate-spin motion-reduce:animate-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle className="opacity-25" cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 3a9 9 0 0 1 9 9" /></svg>}
+          <Button variant="ghost" type="button" className="text-xs" disabled={!valid || queries.some((q) => q.isFetching)} loading={refreshing} onClick={() => void retry()}>
             <span aria-live="polite">{refreshing ? '查询中…' : '重试'}</span>
-          </button>
+          </Button>
         </div>}
       </div>
     </details>
     {replan?.status === 'error' && <div role="alert" className="flex items-center gap-2 px-3 text-xs text-[var(--color-danger)]">
       <span>{replan.error}</span>
-      <button type="button" className="min-h-10 shrink-0 rounded-full border-0 bg-transparent px-3 text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)]" onClick={() => useEditorStore.getState().retryRouteReplan(pairKey)}>重试推荐</button>
+      <Button variant="plain" type="button" className="min-h-10 shrink-0 rounded-full border-0 bg-transparent px-3 text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)]" onClick={() => useEditorStore.getState().retryRouteReplan(pairKey)}>重试推荐</Button>
     </div>}
   </div>;
 }

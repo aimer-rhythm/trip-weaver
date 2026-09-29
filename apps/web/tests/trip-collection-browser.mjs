@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const out=path.resolve('.trellis/tasks/09-28-my-trips-redesign/research/verification');
+const out=path.resolve('.trellis/tasks/09-29-ui-consistency/research/verification');
 await fs.mkdir(out,{recursive:true});
 const names=[['北京','北京 · 四日漫游'],['杭州','湖山之间，慢慢走过杭州'],['成都','成都的街巷与烟火'],['上海','梧桐树下的周末'],['北京','古都秋日散步计划'],['大理','在苍山洱海之间，留一点时间给自己']];
 const fixture=names.map(([destination,title],i)=>({id:`trip-${i}`,destination,title,daysCount:i+2,activityCount:8+i*3,totalCost:0,usedXhs:false,version:1,createdAt:Date.UTC(2026,8,10+i),updatedAt:Date.UTC(2026,8,28-i)}));

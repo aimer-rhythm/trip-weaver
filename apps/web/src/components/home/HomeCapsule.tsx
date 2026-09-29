@@ -1,3 +1,4 @@
+import { Button } from '../ui/Button';
 // 首页渐进式玻璃胶囊指挥台（09-26）：4 段摘要（目的地/日期/节奏与同行/偏好与出行）+ 圆形提交。
 // 每段点击后在「自己上方」弹出玻璃面板，面板带指向该段的小尾巴；四段共用同一套外壳样式。
 // 只做收集与展示，跳转 /trips/new 预填由 HomePage 负责。
@@ -91,7 +92,7 @@ interface SegmentProps {
 
 function Segment({ icon, iconCls, label, value, pending = false, open, onClick }: SegmentProps) {
   return (
-    <button
+    <Button variant="plain"
       type="button"
       aria-expanded={open}
       onClick={onClick}
@@ -111,7 +112,7 @@ function Segment({ icon, iconCls, label, value, pending = false, open, onClick }
           <ChevronDownIcon className="h-[calc(15*var(--ui))] w-[calc(15*var(--ui))] shrink-0 text-ink-faint" />
         </span>
       </span>
-    </button>
+    </Button>
   );
 }
 
@@ -121,14 +122,14 @@ function PanelHead({ icon, title, onClose }: { icon: ReactNode; title: string; o
       <span className="grid h-[calc(20*var(--ui))] w-[calc(20*var(--ui))] shrink-0 place-items-center">{icon}</span>
       <h2 className="m-0 font-semibold text-ink-strong">{title}</h2>
       {onClose && (
-        <button
+        <Button variant="plain"
           type="button"
           aria-label={`关闭${title}`}
           onClick={onClose}
           className="ml-auto grid h-[calc(28*var(--ui))] w-[calc(28*var(--ui))] place-items-center rounded-full text-ink-soft transition-colors hover:bg-canvas"
         >
           <CloseIcon className="h-[calc(14*var(--ui))] w-[calc(14*var(--ui))]" />
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -201,7 +202,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
               <p className={panelLabelCls}>可规划城市（也可直接点地图圆点）</p>
               <div className="grid grid-cols-3 gap-[calc(10*var(--ui))]">
                 {cities.map((c) => (
-                  <button
+                  <Button variant="plain"
                     key={c}
                     type="button"
                     aria-pressed={c === city}
@@ -211,7 +212,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                     }}
                   >
                     {c}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <PanelTail />
@@ -237,14 +238,14 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                   <CalendarIcon className="h-[calc(20*var(--ui))] w-[calc(20*var(--ui))] text-accent-indigo" />
                 </span>
                 <h2 className="m-0 font-semibold text-ink-strong">选择出行日期</h2>
-                <button
+                <Button variant="plain"
                   type="button"
                   aria-label="关闭选择出行日期"
                   onClick={() => setActivePanel(null)}
                   className="ml-auto grid h-[calc(28*var(--ui))] w-[calc(28*var(--ui))] place-items-center rounded-full text-ink-soft transition-colors hover:bg-canvas"
                 >
                   <CloseIcon className="h-[calc(14*var(--ui))] w-[calc(14*var(--ui))]" />
-                </button>
+                </Button>
               </div>
               <div className="px-[calc(16*var(--ui))]">
                 <RangeCalendar
@@ -262,14 +263,14 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                       <span className="text-[length:calc(16*var(--ui))] font-semibold text-ink-soft">
                         {dateSummary}
                       </span>
-                      <button
+                      <Button variant="plain"
                         type="button"
                         aria-label="收起日期选择"
                         onClick={() => setActivePanel(null)}
                         className="ml-auto grid h-[calc(28*var(--ui))] w-[calc(28*var(--ui))] place-items-center rounded-full text-ink-muted transition-colors hover:bg-canvas"
                       >
                         <ChevronUpIcon className="h-[calc(18*var(--ui))] w-[calc(18*var(--ui))]" />
-                      </button>
+                      </Button>
                     </div>
                   }
                 />
@@ -301,7 +302,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
               <p className={panelLabelCls}>旅行节奏</p>
               <div className="grid grid-cols-3 gap-[calc(10*var(--ui))]">
                 {PACE_OPTIONS.map((option) => (
-                  <button
+                  <Button variant="plain"
                     key={option}
                     type="button"
                     aria-pressed={pace === option}
@@ -312,12 +313,12 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                       {PACE_LABELS[option]}
                     </span>
                     <span className="text-[length:calc(12*var(--ui))] text-ink-muted">{PACE_DESCS[option]}</span>
-                  </button>
+                  </Button>
                 ))}
               </div>
               <p className={panelLabelCls}>同行人数</p>
               <div className="inline-flex items-center gap-[calc(12*var(--ui))]">
-                <button
+                <Button variant="plain"
                   type="button"
                   aria-label="减少人数"
                   disabled={partySize <= 1}
@@ -325,11 +326,11 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                   className="grid h-[calc(32*var(--ui))] w-[calc(32*var(--ui))] place-items-center rounded-[calc(10*var(--ui))] border border-hairline-strong bg-white/70 text-ink-strong disabled:opacity-30"
                 >
                   −
-                </button>
+                </Button>
                 <span className="min-w-[6em] text-center text-[length:calc(15*var(--ui))] font-semibold text-ink-strong">
                   {partySize} 人同行
                 </span>
-                <button
+                <Button variant="plain"
                   type="button"
                   aria-label="增加人数"
                   disabled={partySize >= 20}
@@ -337,7 +338,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                   className="grid h-[calc(32*var(--ui))] w-[calc(32*var(--ui))] place-items-center rounded-[calc(10*var(--ui))] border border-hairline-strong bg-white/70 text-ink-strong disabled:opacity-30"
                 >
                   ＋
-                </button>
+                </Button>
               </div>
               <PanelTail />
             </div>
@@ -365,7 +366,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
               <p className={panelLabelCls}>偏好（多选）</p>
               <div className="flex flex-wrap gap-[calc(8*var(--ui))]">
                 {PREFERENCE_OPTIONS.map((option) => (
-                  <button
+                  <Button variant="plain"
                     key={option}
                     type="button"
                     aria-pressed={preferences.includes(option)}
@@ -373,13 +374,13 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                     onClick={() => togglePreference(option)}
                   >
                     {option}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <p className={panelLabelCls}>出行方式（缺省公共交通）</p>
               <div className="flex flex-wrap gap-[calc(8*var(--ui))]">
                 {TRANSPORT_MODES.map((mode) => (
-                  <button
+                  <Button variant="plain"
                     key={mode}
                     type="button"
                     aria-pressed={transportMode === mode}
@@ -387,7 +388,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                     onClick={() => setTransportMode((prev) => (prev === mode ? null : mode))}
                   >
                     {TRANSPORT_LABELS[mode]}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <PanelTail />
@@ -398,7 +399,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
         {divider}
 
         <div className="flex shrink-0 items-center justify-center rounded-full bg-white/55 px-[calc(12*var(--ui))] py-[calc(6*var(--ui))]">
-          <button
+          <Button variant="plain"
             type="button"
             aria-label="开始规划"
             title={ready ? '开始规划' : '先选目的地与节奏'}
@@ -407,7 +408,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
             className="grid h-[calc(76*var(--ui))] w-[calc(76*var(--ui))] place-items-center rounded-full bg-gradient-to-br from-brand-light to-brand text-white shadow-[0_12px_26px_rgba(47,107,243,0.35)] transition-transform enabled:hover:scale-[1.04] enabled:active:scale-95 disabled:cursor-not-allowed disabled:from-brand-disabled disabled:to-brand-disabled-deep disabled:shadow-none"
           >
             <CompassIcon className="h-[calc(30*var(--ui))] w-[calc(30*var(--ui))]" />
-          </button>
+          </Button>
         </div>
       </div>
 

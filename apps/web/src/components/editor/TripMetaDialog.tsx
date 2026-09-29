@@ -1,3 +1,5 @@
+import { Button } from '../ui/Button';
+import { Input } from '../ui/Field';
 import { useState, type FormEvent } from 'react';
 import { useEditorStore } from '../../store/editorStore';
 import { Modal } from '../Modal';
@@ -41,28 +43,28 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
 
   return (
     <Modal title="行程信息" onClose={onClose}>
-      <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)] [&_input:not([type='checkbox'])]:[border:1px_solid_var(--color-border)] [&_input:not([type='checkbox'])]:[border-radius:var(--radius)] [&_input:not([type='checkbox'])]:[padding:9px_11px] [&_input:not([type='checkbox'])]:[font-size:0.95rem] [&_input:not([type='checkbox'])]:[color:var(--color-text)] [&_input:not([type='checkbox'])]:[background:var(--color-card)] [&_input:focus]:[outline:2px_solid_var(--color-primary)] [&_input:focus]:[outline-offset:0] [&_input:focus]:[border-color:transparent] [&_select]:[border:1px_solid_var(--color-border)] [&_select]:[border-radius:var(--radius)] [&_select]:[padding:9px_11px] [&_select]:[font-size:0.95rem] [&_select]:[background:var(--color-card)] [&_select]:[color:var(--color-text)]"}>
+      <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)]"}>
         <label>
           行程名称
-          <input value={title} onChange={(e) => setTitle(e.target.value)} maxLength={60} />
+          <Input value={title} onChange={(e) => setTitle(e.target.value)} maxLength={60} />
         </label>
         <div className={"form-grid-2 grid [grid-template-columns:1fr_1fr] [gap:10px]"}>
           <label>
             目的地
-            <input value={destination} onChange={(e) => setDestination(e.target.value)} maxLength={40} />
+            <Input value={destination} onChange={(e) => setDestination(e.target.value)} maxLength={40} />
           </label>
           <label>
             出发日期
-            <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+            <Input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
           </label>
         </div>
         <label>
           出行人数
-          <input inputMode="numeric" value={partySize} onChange={(e) => setPartySize(e.target.value)} />
+          <Input inputMode="numeric" value={partySize} onChange={(e) => setPartySize(e.target.value)} />
         </label>
         <label>
           住宿位置（通勤锚点，可选）
-          <input
+          <Input
             value={lodgingName}
             onChange={(e) => setLodgingName(e.target.value)}
             maxLength={60}
@@ -77,7 +79,7 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
           {trip.days.map((d) => (
             <label key={d.id}>
               Day {d.dayIndex} 住宿
-              <input
+              <Input
                 value={dayLodgings[d.id] ?? ''}
                 onChange={(e) => setDayLodgings((prev) => ({ ...prev, [d.id]: e.target.value }))}
                 maxLength={60}
@@ -88,12 +90,12 @@ export function TripMetaDialog({ onClose }: { onClose: () => void }) {
         </details>
         {error && <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
         <div className={"form-foot flex items-center [justify-content:flex-end] [gap:12px]"}>
-          <button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"} onClick={onClose}>
+          <Button variant="secondary" type="button" onClick={onClose}>
             取消
-          </button>
-          <button type="submit" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)]"}>
+          </Button>
+          <Button variant="primary" type="submit">
             保存
-          </button>
+          </Button>
         </div>
       </form>
     </Modal>

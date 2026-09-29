@@ -1,3 +1,4 @@
+import { Button } from './ui/Button';
 // 生成进度视图（09-27 改版）：旅行手账氛围 —— 左侧旅程里程碑小径 + 右侧拍立得候选卡片扇形散开。
 // 只呈现用户向信息：三阶段进度、友好状态文案（tool label 直译）、候选卡片、耗时；
 // token/LLM 请求/system prompt 等开发者信息不再展示（见任务 PRD）。
@@ -213,18 +214,18 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     ))}
                   </ul>
                 )}
-                <button type="button" onClick={() => onOpenTrip(terminal.tripId)} className={submitBtnCls}>
+                <Button variant="plain" type="button" onClick={() => onOpenTrip(terminal.tripId)} className={submitBtnCls}>
                   立即打开
-                </button>
+                </Button>
               </>
             )}
             {terminal.type === 'job_error' && (
               <>
                 <p className="m-0 mb-2 text-xl font-bold text-ink">生成失败</p>
                 <p className="m-0 mb-4 text-[0.88rem] text-ink-soft">{terminal.message}（失败不计入今日配额）</p>
-                <button type="button" onClick={onReset} className={submitBtnCls}>
+                <Button variant="plain" type="button" onClick={onReset} className={submitBtnCls}>
                   返回重试
-                </button>
+                </Button>
               </>
             )}
             {terminal.type === 'job_cancelled' && (
@@ -235,9 +236,9 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     ? `生成超过 ${GENERATION_TIMEOUT_MINUTES} 分钟未完成，系统已自动取消。本次不计入今日配额，可稍后重新生成。`
                     : '你已取消本次生成。本次不计入今日配额。'}
                 </p>
-                <button type="button" onClick={onReset} className={submitBtnCls}>
+                <Button variant="plain" type="button" onClick={onReset} className={submitBtnCls}>
                   返回表单
-                </button>
+                </Button>
               </>
             )}
           </div>
@@ -327,14 +328,14 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
         )}
         {running && (
           <>
-            <button
+            <Button variant="plain"
               type="button"
               onClick={onCancel}
               disabled={cancelling}
               className={"gen-cancel-btn [border:1px_solid_rgba(255,_255,_255,_0.5)] rounded-full [background:rgba(255,_255,_255,_0.72)] [padding:calc(11_*_var(--ui))_calc(22_*_var(--ui))] [font-size:calc(20_*_var(--ui))] [color:var(--color-gen-cancel-btn-color-53)] [backdrop-filter:blur(10px)] [transition:background-color_0.2s] [&:hover]:[background:rgba(255,_255,_255,_0.92)] [&:disabled]:[opacity:0.5]"}
             >
               {cancelling ? '取消中…' : '取消生成'}
-            </button>
+            </Button>
             {elapsed !== undefined && (
               <span className={"gen-elapsed [font-size:calc(16_*_var(--ui))] [color:var(--color-gen-elapsed-color-54)]"}>已用 {formatDuration(elapsed)}</span>
             )}

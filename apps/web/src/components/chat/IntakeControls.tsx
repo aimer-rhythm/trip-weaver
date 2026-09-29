@@ -1,3 +1,5 @@
+import { Button } from '../ui/Button';
+import { Input } from '../ui/Field';
 // 追问控件：由服务端下发的 inputSchema 决定形态（enum → 按钮组，date-range → 日期输入，其余 → 文本框）。
 //
 // 关键取舍：只有一个缺失字段时走 PATCH /brief（结构化、不经过 LLM、结果精确）；
@@ -76,22 +78,22 @@ export function IntakeControls({ intake, disabled, onPatch, onText }: Props) {
       {shape === 'buttons' && intake.inputSchema.enum && (
         <div className={"preset-row flex [gap:8px] flex-wrap"}>
           {intake.inputSchema.enum.map((value, index) => (
-            <button
+            <Button variant="ghost"
               key={value}
               type="button"
-              className={"btn [border:1px_solid_transparent] cursor-pointer [background:none] [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-chip [border-color:var(--color-border)] rounded-full [padding:4px_12px] [font-size:0.82rem] [&.is-active]:[background:var(--color-primary)] [&.is-active]:[border-color:var(--color-primary)] [&.is-active]:[color:var(--color-btn-primary-color-3)]"}
+              className={"btn-chip rounded-full [padding:4px_12px] [font-size:0.82rem] [&.is-active]:[background:var(--color-primary)] [&.is-active]:[border-color:var(--color-primary)] [&.is-active]:[color:var(--color-btn-primary-color-3)]"}
               disabled={disabled}
               onClick={() => submitOption(value)}
             >
               {intake.inputSchema.enumLabels?.[index] ?? value}
-            </button>
+            </Button>
           ))}
         </div>
       )}
 
       {shape === 'date-range' && (
-        <form className={"chat-intake-row flex [gap:8px] items-center flex-wrap [&_input]:flex-1 [&_input]:[min-width:120px] [&_input]:[border:1px_solid_var(--color-border)] [&_input]:[border-radius:var(--radius)] [&_input]:[padding:6px_10px] [&_input]:[font:inherit] [&_input]:[font-size:0.88rem]"} onSubmit={submitDates}>
-          <input
+        <form className={"chat-intake-row flex [gap:8px] items-center flex-wrap [&_input]:flex-1 [&_input]:[min-width:120px]"} onSubmit={submitDates}>
+          <Input
             type="date"
             aria-label="开始日期"
             value={startDate}
@@ -99,19 +101,19 @@ export function IntakeControls({ intake, disabled, onPatch, onText }: Props) {
             onChange={(e) => setStartDate(e.target.value)}
           />
           <span className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>至</span>
-          <input type="date" aria-label="结束日期" value={endDate} disabled={disabled} onChange={(e) => setEndDate(e.target.value)} />
-          <button type="submit" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)]"} disabled={disabled || (!startDate && !endDate)}>
+          <Input type="date" aria-label="结束日期" value={endDate} disabled={disabled} onChange={(e) => setEndDate(e.target.value)} />
+          <Button variant="primary" type="submit" disabled={disabled || (!startDate && !endDate)}>
             确定
-          </button>
+          </Button>
         </form>
       )}
 
       {shape === 'text' && (
-        <form className={"chat-intake-row flex [gap:8px] items-center flex-wrap [&_input]:flex-1 [&_input]:[min-width:120px] [&_input]:[border:1px_solid_var(--color-border)] [&_input]:[border-radius:var(--radius)] [&_input]:[padding:6px_10px] [&_input]:[font:inherit] [&_input]:[font-size:0.88rem]"} onSubmit={submitText}>
-          <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="直接回答…" maxLength={200} aria-label={intake.question} />
-          <button type="submit" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)]"} disabled={disabled || !draft.trim()}>
+        <form className={"chat-intake-row flex [gap:8px] items-center flex-wrap [&_input]:flex-1 [&_input]:[min-width:120px]"} onSubmit={submitText}>
+          <Input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="直接回答…" maxLength={200} aria-label={intake.question} />
+          <Button variant="primary" type="submit" disabled={disabled || !draft.trim()}>
             发送
-          </button>
+          </Button>
         </form>
       )}
     </div>

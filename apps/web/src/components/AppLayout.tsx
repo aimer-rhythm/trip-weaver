@@ -1,3 +1,4 @@
+import { Button } from './ui/Button';
 import { useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useLogout, useMe, useUsage } from '../api/hooks';
@@ -49,12 +50,11 @@ export function AppLayout() {
                 今日可生成 {usage.data.remaining}/{usage.data.dailyLimit} 次
               </span>
             )}
-            <button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"} onClick={() => setSettingsOpen(true)}>
+            <Button variant="secondary" type="button" onClick={() => setSettingsOpen(true)}>
               设置
-            </button>
-            <button
+            </Button>
+            <Button variant="secondary"
               type="button"
-              className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"}
               onClick={() =>
                 logout.mutate(undefined, {
                   onSuccess: () => navigate('/login', { replace: true }),
@@ -62,7 +62,7 @@ export function AppLayout() {
               }
             >
               退出
-            </button>
+            </Button>
           </div>
         </div>
       </header>

@@ -5,7 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 
-const out = path.resolve('.trellis/tasks/09-28-my-trips-redesign/research/generation-verification', 'after');
+const out = path.resolve('.trellis/tasks/09-29-ui-consistency/research/generation-verification', 'after');
 await fs.mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
 try {

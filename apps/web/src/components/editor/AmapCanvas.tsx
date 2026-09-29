@@ -27,12 +27,11 @@ interface Props {
   dayLines: DayLines[];
   /** 容器可见性：隐藏时 setFitView 会算出零尺寸视野，必须等可见再算 */
   visible: boolean;
-  onEditActivity: (dayId: string, activityId: string) => void;
 }
 
 const FIT_PADDING = [40, 40, 40, 40]; // 上、下、左、右
 
-/** 气泡内容：与 Leaflet 侧的 <ActivityPopup> 同构，编辑按钮走 data 属性委托 */
+/** 气泡只展示活动概要，与 Leaflet 的 ActivityPopup 保持一致。 */
 function popupHtml(day: TripDay, activity: Activity): string {
   const notes = activity.sourceNotes
     .map(
@@ -47,22 +46,18 @@ function popupHtml(day: TripDay, activity: Activity): string {
     activity.description ? `<p>${escapeHtml(activity.description)}</p>` : '',
     activity.coordSource === 'estimated' ? `<p class="${escapeHtml("tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]")}">坐标为估算</p>` : '',
     notes ? `<p>${notes}</p>` : '',
-    `<button type="button" class="${escapeHtml("btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]")}" data-edit-day="${escapeHtml(day.id)}" data-edit-activity="${escapeHtml(activity.id)}">编辑</button>`,
     '</div>',
   ]
     .filter(Boolean)
     .join('');
 }
 
-export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: Props) {
+export function AmapCanvas({ amap, points, dayLines, visible }: Props) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<AmapMap | null>(null);
   const overlaysRef = useRef<AmapOverlay[]>([]);
   // 视野自适应的目标 = 当前「查看范围」：总览时是全部天，选了某天时就只有那天
   const fitTargetsRef = useRef<AmapOverlay[]>([]);
-  // 回调进 ref：避免它变化时把建图 / 覆盖物 effect 整个重跑
-  const onEditRef = useRef(onEditActivity);
-  onEditRef.current = onEditActivity;
 
   // 覆盖物的输入汇总成一个 key，供下面两个 effect 共用（逐项列依赖只会制造噪声）
   const contentKey = JSON.stringify([
@@ -193,17 +188,10 @@ export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: 
     return () => clearTimeout(timer);
   }, [contentKey, visible]);
 
-  return <><div className="amap-host w-full h-full" ref={hostRef} onClick={handleHostClick} /><MapControls
+  return <><div className="amap-host w-full h-full" ref={hostRef} /><MapControls
     onZoomIn={() => mapRef.current?.setZoom(mapRef.current.getZoom() + 1)}
     onZoomOut={() => mapRef.current?.setZoom(mapRef.current.getZoom() - 1)}
     onReset={() => { const map = mapRef.current; if (!map) return; if (fitTargetsRef.current.length) map.setFitView(fitTargetsRef.current, false, FIT_PADDING); else { map.setCenter([105, 35]); map.setZoom(4); } }}
   /></>;
 
-  function handleHostClick(event: React.MouseEvent<HTMLDivElement>) {
-    const button = (event.target as HTMLElement).closest('[data-edit-activity]');
-    if (!(button instanceof HTMLElement)) return;
-    const dayId = button.dataset.editDay;
-    const activityId = button.dataset.editActivity;
-    if (dayId && activityId) onEditRef.current(dayId, activityId);
-  }
 }

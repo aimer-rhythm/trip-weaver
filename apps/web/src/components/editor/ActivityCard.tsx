@@ -1,10 +1,12 @@
+import { Button } from '../ui/Button';
+import { Select } from '../ui/Field';
 import { useState } from 'react';
 import type { Activity, ResearchPoi, TransitLeg, TripDay } from '@tripweaver/shared';
 import { hasValidCoord } from '../../lib/colors';
 import { RouteOptions } from './RouteOptions';
 import { useEditorStore } from '../../store/editorStore';
 import { PoiCover, ReservationBadge } from '../PoiCard';
-import { Modal } from '../Modal';
+import { ConfirmDialog } from '../ui/ActionDialog';
 import { EditorIcon } from './EditorIcon';
 import { EditorMenu } from './EditorMenu';
 
@@ -15,14 +17,13 @@ interface Props {
   allDays: TripDay[];
   matchedPoi?: ResearchPoi;
   nextLeg?: TransitLeg;
-  onEdit: () => void;
 }
 
-export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLeg, onEdit }: Props) {
+export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLeg }: Props) {
   const moveActivity = useEditorStore((s) => s.moveActivity);
   const moveActivityToDay = useEditorStore((s) => s.moveActivityToDay);
   const deleteActivity = useEditorStore((s) => s.deleteActivity);
-  const [detailOpen, setDetailOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const [failedCover, setFailedCover] = useState<string>();
   const showCover = matchedPoi?.coverUrl && matchedPoi.coverUrl !== failedCover;
 
@@ -33,12 +34,10 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
           <span className={"activity-order [width:40px] [height:40px] grid [place-items:center] [border-radius:50%] [color:var(--color-activity-order-color-73)] [background:linear-gradient(135deg,_var(--color-activity-order-background-74),_var(--color-activity-order-background-75))] [font-size:17px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[width:32px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[height:32px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[font-size:14px] [@media_(max-width:_600px)]:[width:28px] [@media_(max-width:_600px)]:[height:28px] [@media_(max-width:_600px)]:[font-size:13px]"}>{String(index + 1).padStart(2, '0')}</span>
           <h3 className={"activity-name font-semibold [font-size:0.94rem]"}>{activity.name}</h3>
           <EditorMenu label={`${activity.name}更多操作`}>
-            <button type="button" onClick={() => setDetailOpen(true)}>查看完整信息</button>
-            <button type="button" onClick={onEdit}>编辑活动</button>
-            <button type="button" disabled={index === 0} onClick={() => moveActivity(day.id, activity.id, 'up')}>上移</button>
-            <button type="button" disabled={index === day.activities.length - 1} onClick={() => moveActivity(day.id, activity.id, 'down')}>下移</button>
-            {allDays.length > 1 && <label>移至其他天<select aria-label="移至其他天" value="" onChange={(e) => { if (e.target.value) moveActivityToDay(day.id, activity.id, e.target.value); }}><option value="">选择天数</option>{allDays.filter((d) => d.id !== day.id).map((d) => <option key={d.id} value={d.id}>第{d.dayIndex}天</option>)}</select></label>}
-            <button type="button" className={"text-danger [color:var(--color-danger)]"} onClick={() => window.confirm(`删除活动「${activity.name}」？`) && deleteActivity(day.id, activity.id)}>删除活动</button>
+            <Button variant="ghost" type="button" disabled={index === 0} onClick={() => moveActivity(day.id, activity.id, 'up')}>上移</Button>
+            <Button variant="ghost" type="button" disabled={index === day.activities.length - 1} onClick={() => moveActivity(day.id, activity.id, 'down')}>下移</Button>
+            {allDays.length > 1 && <label>移至其他天<Select aria-label="移至其他天" value="" onChange={(e) => { if (e.target.value) moveActivityToDay(day.id, activity.id, e.target.value); }}><option value="">选择天数</option>{allDays.filter((d) => d.id !== day.id).map((d) => <option key={d.id} value={d.id}>第{d.dayIndex}天</option>)}</Select></label>}
+            <Button variant="danger" type="button" onClick={() => setDeleteOpen(true)}>删除活动</Button>
           </EditorMenu>
         </div>
         <div className={"activity-main min-w-0"}>
@@ -51,15 +50,7 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
         {showCover && matchedPoi && <PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} onCoverError={setFailedCover} />}
       </div>
       {index < day.activities.length - 1 && <RouteOptions dayId={day.id} fromId={activity.id} leg={nextLeg} />}
-      {detailOpen && <Modal title={activity.name} onClose={() => setDetailOpen(false)}>
-        <div className={"activity-detail [line-height:1.8] [overflow-wrap:anywhere] [&_>_a]:block [&_>_a]:[margin-top:8px]"}>
-          <p>{activity.category}</p>
-          {activity.startTime && <p>原始时间：{activity.startTime}{activity.endTime ? ` — ${activity.endTime}` : ''}</p>}
-          {activity.description && <p>{activity.description}</p>}
-          {matchedPoi && <><ReservationBadge poi={matchedPoi} />{matchedPoi.reservationNote && <p>{matchedPoi.reservationNote}</p>}{matchedPoi.intro && <p>{matchedPoi.intro}</p>}</>}
-          {[...activity.sourceNotes, ...(matchedPoi?.sourceLinks ?? [])].map((source, i) => <a key={`${source.url}:${i}`} href={source.url} target="_blank" rel="noopener noreferrer">{source.title || '来源笔记'}</a>)}
-        </div>
-      </Modal>}
+      {deleteOpen && <ConfirmDialog title="删除活动" description={`确定删除「${activity.name}」？`} onClose={() => setDeleteOpen(false)} onConfirm={() => deleteActivity(day.id, activity.id)} />}
     </article>
   );
 }

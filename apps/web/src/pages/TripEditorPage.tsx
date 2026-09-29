@@ -1,3 +1,4 @@
+import { Button } from '../components/ui/Button';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSaveTrip, useTrip, useTripConversation } from '../api/hooks';
@@ -110,14 +111,14 @@ export function TripEditorPage() {
           <p className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>{trip.days.length}天 · {trip.destination}</p>
           {trip.days.length === 0 && <p className={"day-empty text-center [padding:8px_0]"}>还没有行程，添加一天开始安排吧。</p>}
           {trip.days.map((day) => (
-            <button key={day.id} type="button" className={"editor-overview-day flex flex-col [gap:10px] w-full [margin:14px_0] [padding:20px] [border:1px_solid_white] [border-radius:18px] [background:var(--color-editor-overview-day-background-93)] [color:inherit] text-left [box-shadow:0_8px_20px_var(--color-editor-overview-day-box-shadow-94)] cursor-pointer [&_strong]:[font:400_26px/1.5_'QianTuBiFeng_Handwriting',_serif] [&_span]:[color:var(--editor-muted)] [&_span]:[font-size:13px] [&_p]:m-0 [&_p]:[line-height:1.7]"} onClick={() => setDayFilter(day.dayIndex)}>
+            <Button variant="plain" key={day.id} type="button" className={"editor-overview-day flex flex-col [gap:10px] w-full [margin:14px_0] [padding:20px] [border:1px_solid_white] [border-radius:18px] [background:var(--color-editor-overview-day-background-93)] [color:inherit] text-left [box-shadow:0_8px_20px_var(--color-editor-overview-day-box-shadow-94)] cursor-pointer [&_strong]:[font:400_26px/1.5_'QianTuBiFeng_Handwriting',_serif] [&_span]:[color:var(--editor-muted)] [&_span]:[font-size:13px] [&_p]:m-0 [&_p]:[line-height:1.7]"} onClick={() => setDayFilter(day.dayIndex)}>
               <span>第{day.dayIndex}天 · {dateForDayIndex(trip.startDate, day.dayIndex) || '日期待定'}</span>
               <strong>{day.title || '待安排的旅程'}</strong>
               <p>{day.activities.map((activity) => activity.name).join(' · ') || '这一天还没有安排'}</p>
               <span>查看当天 →</span>
-            </button>
+            </Button>
           ))}
-          <button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)] btn-add-day justify-center [border-style:dashed] w-full"} onClick={addDay}>＋ 添加一天</button>
+          <Button variant="secondary" type="button" className={"btn-add-day justify-center [border-style:dashed] w-full"} onClick={addDay}>＋ 添加一天</Button>
         </section>
       )}
       <PexelsCredit
@@ -134,7 +135,7 @@ export function TripEditorPage() {
           <div className={"editor-title [&_h1]:[font-size:1.05rem] [&_h1]:whitespace-nowrap [&_h1]:overflow-hidden [&_h1]:[text-overflow:ellipsis] [&_.muted]:[font-size:0.78rem] [@media_(max-width:_768px)]:[&_.muted]:hidden"}>
             <h1><EditorIcon name="pin" />{trip.title}</h1>
             <span className={"editor-trip-meta [&_.editor-icon]:[color:var(--color-editor-page-color-62)] flex items-center [gap:8px] [font-size:14px] [@media_(max-width:_600px)]:[&_.editor-icon]:hidden"}><EditorIcon name="calendar" />{dateLabel ? `${dateLabel} · ` : ''}{trip.days.length}天 · {trip.partySize}人</span>
-            {saveState === 'error' && <span className={"text-danger [color:var(--color-danger)]"} role="alert">保存失败，请检查网络后<button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [background:none] [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed]"} onClick={() => { setSaveState('saving'); saveTrip.mutate(trip, { onSuccess: () => setSaveState('saved'), onError: () => setSaveState('error') }); }}>重试保存</button></span>}
+            {saveState === 'error' && <span className={"text-danger [color:var(--color-danger)]"} role="alert">保存失败，请检查网络后<Button variant="ghost" type="button" onClick={() => { setSaveState('saving'); saveTrip.mutate(trip, { onSuccess: () => setSaveState('saved'), onError: () => setSaveState('error') }); }}>重试保存</Button></span>}
           </div>
         </div>
         <div className={"editor-toolbar-right flex items-center [gap:8px] shrink-0"}><ExportMenu trip={trip} /></div>
@@ -142,7 +143,7 @@ export function TripEditorPage() {
 
       <div className={"editor-mobile-tabs hidden [@media_(max-width:_768px)]:flex [@media_(max-width:_768px)]:[background:var(--color-card)] [@media_(max-width:_768px)]:[border-bottom:1px_solid_var(--color-border)]"}>
         {mobileTabs.map(([tab, label]) => (
-          <button
+          <Button variant="plain"
             key={tab}
             type="button"
             className={`mobile-tab [@media_(max-width:_768px)]:flex-1 [@media_(max-width:_768px)]:[border:none] [@media_(max-width:_768px)]:[background:none] [@media_(max-width:_768px)]:[padding:10px_0] [@media_(max-width:_768px)]:[font-size:0.9rem] [@media_(max-width:_768px)]:[color:var(--color-muted)] [@media_(max-width:_768px)]:[border-bottom:2px_solid_transparent] [@media_(max-width:_768px)]:[&.active]:[color:var(--color-primary)] [@media_(max-width:_768px)]:[&.active]:[border-bottom-color:var(--color-primary)] [@media_(max-width:_768px)]:[&.active]:font-semibold ${mobileTab === tab ? "active" : ""}`}
@@ -150,7 +151,7 @@ export function TripEditorPage() {
             onClick={() => setMobileTab(tab)}
           >
             {label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -164,18 +165,15 @@ export function TripEditorPage() {
         <aside className={"editor-left [width:430px] shrink-0 flex flex-col [border-right:1px_solid_var(--color-border)] [background:var(--color-bg)] min-h-0 [@media_(max-width:_768px)]:w-full [@media_(max-width:_768px)]:[border-right:none] [@media_(max-width:_768px)]:hidden"}>
           <div className={"editor-day-nav flex items-center [gap:10px] [padding:16px_18px_12px] flex-none [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[gap:4px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[padding-inline:12px] [@media_(max-width:_600px)]:[padding:12px_12px_8px] [@media_(max-width:_600px)]:[gap:4px]"}>
             <div className={"editor-day-tabs flex [gap:5px] overflow-x-auto [scrollbar-width:thin] min-w-0 flex-1 [padding:2px_0_6px] [&_button]:border-0 [&_button]:rounded-full [&_button]:[min-height:38px] [&_button]:[padding:8px_17px] [&_button]:flex-none [&_button]:cursor-pointer [&_button]:[background:var(--color-editor-day-tabs-background-66)] [&_button]:[color:var(--editor-muted)] [&_button]:[font:inherit] [&_button]:[font-size:14px] [&_button]:shadow-none [&_button]:whitespace-nowrap [&_button:first-child]:[background:var(--color-editor-day-tabs-background-67)] [&_button[aria-pressed=true]]:[background:var(--editor-gradient)] [&_button[aria-pressed=true]]:[color:white] [&_button[aria-pressed=true]]:[box-shadow:0_4px_12px_var(--color-editor-day-tabs-box-shadow-68)] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[&_button]:[padding-inline:12px] [@media_(max-width:_600px)]:[&_button]:[padding-inline:13px]"} role="group" aria-label="行程天数">
-              <button type="button" aria-pressed={dayFilter === null} onClick={() => setDayFilter(null)}>总览</button>
-              {trip.days.map((day) => <button key={day.id} type="button" aria-pressed={dayFilter === day.dayIndex} onClick={() => setDayFilter(day.dayIndex)}>第{day.dayIndex}天</button>)}
+              <Button variant="plain" type="button" aria-pressed={dayFilter === null} onClick={() => setDayFilter(null)}>总览</Button>
+              {trip.days.map((day) => <Button variant="plain" key={day.id} type="button" aria-pressed={dayFilter === day.dayIndex} onClick={() => setDayFilter(day.dayIndex)}>第{day.dayIndex}天</Button>)}
             </div>
-            <button type="button" className={"editor-candidates-button border-0 rounded-full [min-height:38px] [padding:8px_14px] flex-none cursor-pointer [background:var(--color-editor-day-tabs-background-67)] [color:var(--editor-muted)] [font:inherit] [font-size:13px] shadow-none whitespace-nowrap [@media_(max-width:_600px)]:[padding-inline:10px] [@media_(max-width:_600px)]:[font-size:12px]"} onClick={() => setCandidatesOpen(true)}>备选清单</button>
+            <Button variant="plain" type="button" className={"editor-candidates-button border-0 rounded-full [min-height:38px] [padding:8px_14px] flex-none cursor-pointer [background:var(--color-editor-day-tabs-background-67)] [color:var(--editor-muted)] [font:inherit] [font-size:13px] shadow-none whitespace-nowrap [@media_(max-width:_600px)]:[padding-inline:10px] [@media_(max-width:_600px)]:[font-size:12px]"} onClick={() => setCandidatesOpen(true)}>备选清单</Button>
           </div>
           <div className={"editor-left-scroll flex-1 overflow-y-auto [padding:12px_14px_40px] min-h-0"} ref={scrollRef}>{itineraryPanel}</div>
         </aside>
         <div className={"editor-map flex-1 min-w-0 relative [@media_(max-width:_768px)]:hidden"}>
-          <MapView
-            visible={mobileTab === 'map'}
-            onEditActivity={(dayId, activityId) => setEditing({ dayId, activityId })}
-          />
+          <MapView visible={mobileTab === 'map'} />
         </div>
       </div>
 

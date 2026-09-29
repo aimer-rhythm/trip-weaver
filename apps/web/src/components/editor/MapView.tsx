@@ -1,3 +1,4 @@
+import { Button } from '../ui/Button';
 // 地图面板（09-26 重构）：渲染器选择 + 数据计算 + 按天筛选。
 //   · 主路径 AmapCanvas（高德 JS API）—— 唯一目的是能用 `features` 关掉 POI 文字层
 //   · 降级 LeafletCanvas（高德栅格瓦片）—— 未配 JS Key、或 SDK 加载失败 / 超时
@@ -64,16 +65,16 @@ function DayFilterControl() {
   if (!trip) return null;
   return (
     <div className={"day-filter absolute [top:12px] [left:12px] [z-index:1000] flex [gap:6px] flex-wrap [max-width:calc(100%_-_24px)]"} role="group" aria-label="地图天数">
-      <button
+      <Button variant="plain"
         type="button"
         className={`day-filter-btn [border:1px_solid_var(--color-border)] [background:var(--color-btn-primary-color-3)] rounded-full [padding:4px_12px] [font-size:0.8rem] cursor-pointer [box-shadow:var(--shadow)] [&.active]:[background:var(--color-primary)] [&.active]:[border-color:var(--color-primary)] [&.active]:[color:var(--color-btn-primary-color-3)] ${dayFilter === null ? "active" : ""}`}
         aria-pressed={dayFilter === null}
         onClick={() => setDayFilter(null)}
       >
         全部
-      </button>
+      </Button>
       {trip.days.map((d) => (
-        <button
+        <Button variant="plain"
           key={d.id}
           type="button"
           className={`day-filter-btn [border:1px_solid_var(--color-border)] [background:var(--color-btn-primary-color-3)] rounded-full [padding:4px_12px] [font-size:0.8rem] cursor-pointer [box-shadow:var(--shadow)] [&.active]:[background:var(--color-primary)] [&.active]:[border-color:var(--color-primary)] [&.active]:[color:var(--color-btn-primary-color-3)] ${dayFilter === d.dayIndex ? "active" : ""}`}
@@ -81,13 +82,13 @@ function DayFilterControl() {
           onClick={() => setDayFilter(d.dayIndex)}
         >
           D{d.dayIndex}
-        </button>
+        </Button>
       ))}
     </div>
   );
 }
 
-export function MapView({ visible, onEditActivity }: { visible: boolean; onEditActivity: (dayId: string, activityId: string) => void }) {
+export function MapView({ visible }: { visible: boolean }) {
   const trip = useEditorStore((s) => s.trip);
   const dayFilter = useEditorStore((s) => s.dayFilter);
   const isDesktop = useIsDesktop();
@@ -97,7 +98,7 @@ export function MapView({ visible, onEditActivity }: { visible: boolean; onEditA
   const allDays = useMemo(() => trip?.days ?? [], [trip]);
   const points = useMemo(() => collectPoints(allDays, dayFilter), [allDays, dayFilter]);
   const dayLines = useMemo(() => collectDayLines(allDays, dayFilter), [allDays, dayFilter]);
-  const canvasProps = { points, dayLines, visible: visible || isDesktop, onEditActivity };
+  const canvasProps = { points, dayLines, visible: visible || isDesktop };
 
   return (
     <div className={"map-pane absolute [inset:0]"}>

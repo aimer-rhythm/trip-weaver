@@ -20,7 +20,6 @@ interface Props {
   dayLines: DayLines[];
   /** 容器可见性（桌面端常驻可见；≤768px 由移动页签决定） */
   visible: boolean;
-  onEditActivity: (dayId: string, activityId: string) => void;
 }
 
 const toLatLng = (pos: GeoPos): [number, number] => [pos.lat, pos.lng];
@@ -88,11 +87,9 @@ function MapController({ points, visible }: { points: MapPoint[]; visible: boole
 function ActivityPopup({
   day,
   activity,
-  onEditActivity,
 }: {
   day: TripDay;
   activity: Activity;
-  onEditActivity: (dayId: string, activityId: string) => void;
 }) {
   return (
     <div className={"map-popup [max-width:220px] [&_p]:[margin:4px_0] [&_p]:[font-size:0.82rem]"}>
@@ -111,14 +108,12 @@ function ActivityPopup({
           ))}
         </p>
       )}
-      <button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"} onClick={() => onEditActivity(day.id, activity.id)}>
-        编辑
-      </button>
+
     </div>
   );
 }
 
-export function LeafletCanvas({ points, dayLines, visible, onEditActivity }: Props) {
+export function LeafletCanvas({ points, dayLines, visible }: Props) {
   return (
     <MapContainer center={[35.0, 105.0]} zoom={4} className={"leaflet-host w-full h-full"} scrollWheelZoom zoomControl={false}>
       <TileLayer
@@ -154,7 +149,7 @@ export function LeafletCanvas({ points, dayLines, visible, onEditActivity }: Pro
       {points.map((point) => (
         <Marker key={point.activity.id} position={toLatLng(point.pos)} icon={mapIcon(point)}>
           <Popup>
-            <ActivityPopup day={point.day} activity={point.activity} onEditActivity={onEditActivity} />
+            <ActivityPopup day={point.day} activity={point.activity} />
           </Popup>
         </Marker>
       ))}

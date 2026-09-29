@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const out = path.resolve('.trellis/tasks/09-28-my-trips-redesign/research/shared-verification');
+const out = path.resolve('.trellis/tasks/09-29-ui-consistency/research/shared-verification');
 await fs.mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
 try {
@@ -51,10 +51,12 @@ try {
   await page.getByRole('button', { name: '设置', exact: true }).click();
   const dialog = page.getByRole('dialog');
   await dialog.waitFor();
+  assert.equal(await dialog.getAttribute('aria-labelledby') !== null, true);
   assert.ok(await dialog.evaluate(el => el.getBoundingClientRect().width <= innerWidth));
   await page.screenshot({ path: path.join(out, 'settings-mobile.png') });
   await page.keyboard.press('Escape');
   await dialog.waitFor({ state: 'hidden' });
+  assert.equal(await page.getByRole('button', { name: '设置', exact: true }).evaluate(el => el === document.activeElement), true, 'modal restores trigger focus');
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto('http://127.0.0.1:5173/');
   await page.locator('.home-page-root').waitFor();
