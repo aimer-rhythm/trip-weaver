@@ -2,8 +2,15 @@
 // PG 方言（09-18 迁移）：CREATE TABLE IF NOT EXISTS + ADD COLUMN IF NOT EXISTS；
 // pgvector 扩展缺失时降级告警，不阻断启动（本地实例未装 pgvector 时仍可开发）。
 import type { Pool } from 'pg';
+import { AMAP_SERVICES, amapDay } from '../integrations/amap/services';
 
 const STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS amap_service_usage (
+    day TEXT NOT NULL,
+    service TEXT NOT NULL,
+    calls INTEGER NOT NULL DEFAULT 0 CHECK (calls >= 0),
+    PRIMARY KEY (day, service)
+  )`,
   `CREATE TABLE IF NOT EXISTS editor_geo_usage (
     day TEXT NOT NULL,
     source TEXT NOT NULL,
@@ -211,6 +218,16 @@ export async function runMigrations(pool: Pool): Promise<void> {
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'generation'`);
     await client.query(`ALTER TABLE generations ADD COLUMN IF NOT EXISTS target_trip_id TEXT`);
     await client.query(`CREATE INDEX IF NOT EXISTS idx_generations_conversation ON generations(conversation_id)`);
+    // First rollout only: historical calls cannot be attributed to services. Conservatively
+    // charge the recent legacy total to every service; never re-seed on later restarts.
+    const { day, start } = amapDay();
+    await client.query(`INSERT INTO amap_service_usage (day, service, calls)
+      SELECT $1, service, LEAST(2147483647,
+        (SELECT COALESCE(SUM(amap_calls), 0) FROM generations WHERE created_at >= $3) +
+        (SELECT COALESCE(SUM(calls), 0) FROM editor_geo_usage WHERE source = 'amap' AND day::bigint >= $4))::integer
+      FROM unnest($2::text[]) AS service
+      WHERE NOT EXISTS (SELECT 1 FROM amap_service_usage)
+      ON CONFLICT DO NOTHING`, [day, [...AMAP_SERVICES], new Date(start - 86400_000), String(start - 86400_000)]);
     await client.query('COMMIT');
   } catch (err) {
     await client.query('ROLLBACK').catch(() => {});

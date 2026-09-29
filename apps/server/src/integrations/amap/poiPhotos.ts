@@ -6,23 +6,19 @@
 //
 // 配额纪律（关键）：`v5/place/text` 属高德「基础搜索服务」，个人认证仅 **5,000/月**
 // （对比 `v3/geocode/geo` 的「基础LBS服务」150,000/月 —— 见 geocoder.ts 的降级顺序注释）。
-// 因此这里四重限流：只在前两级都没图时才被调用（外层顺序保证）、单次生成 ≤3 次、进程内 24h 窗口 ≤40 次、
+// 因此这里四重限流：只在前两级都没图时才被调用（外层顺序保证）、单次生成 ≤3 次、place 服务的持久化日预算、
 // 命中后由调用方回写 `canonical_places.payload.amapPhoto` —— 同一地点终身只花一次配额。
-// 真实调用数通过 `calls` 暴露，由 orchestrator 计入 amapCalls 日额度。
+// `calls` 暴露任务尝试统计；真实外呼预算由 amapRequest 的持久账本计量。
 import { TtlCache } from '../../lib/ttlCache';
 import { normalizePlaceKey } from '../../lib/placeKey';
 import { amapQueue } from './geocoder';
+import { amapRequest } from './request';
 
-const AMAP_TEXT_URL = 'https://restapi.amap.com/v5/place/text';
 const TIMEOUT_MS = 8_000;
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 /** 单次生成的真实调用上限。高德搜索配额稀缺（个人 5,000/月），只给最难的那几个候选补图 */
 const MAX_PER_TASK = 3;
-/** 进程内 24h 滚动窗口；≈ 1,200/月，占个人 5,000/月 的四分之一 */
-const MAX_PER_DAY = 40;
-
 const cache = new TtlCache<string | null>(CACHE_TTL_MS, 300);
-const recentCalls: number[] = [];
 
 export interface AmapPoiRecord {
   name?: unknown;
@@ -113,13 +109,6 @@ export function pickPhoto(pois: readonly AmapPoiRecord[], name: string): string 
   return null;
 }
 
-/** 清掉 24h 之前的记账；返回当日窗口是否还有余量 */
-function dayWindowHasRoom(now: number): boolean {
-  const cutoff = now - 24 * 60 * 60 * 1000;
-  while (recentCalls.length > 0 && recentCalls[0]! < cutoff) recentCalls.shift();
-  return recentCalls.length < MAX_PER_DAY;
-}
-
 interface LookupOutcome {
   ok: boolean;
   url: string | null;
@@ -141,11 +130,9 @@ export function createAmapPoiPhotoLookup(apiKey: string, requestsLeft = MAX_PER_
       const cacheKey = `${query.city}|${query.name}`.trim().toLowerCase();
       const cached = cache.get(cacheKey);
       if (cached !== undefined) return cached;
-      const now = Date.now();
-      if (remaining <= 0 || !dayWindowHasRoom(now)) return null;
+      if (remaining <= 0) return null;
       remaining -= 1;
       calls += 1;
-      recentCalls.push(now);
       const outcome = await amapQueue<LookupOutcome>(async () => {
         try {
           const params = new URLSearchParams({
@@ -158,14 +145,10 @@ export function createAmapPoiPhotoLookup(apiKey: string, requestsLeft = MAX_PER_
             params.set('region', query.city.slice(0, 40));
             params.set('city_limit', 'true');
           }
-          const res = await fetch(`${AMAP_TEXT_URL}?${params}`, { signal: AbortSignal.timeout(TIMEOUT_MS) });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const body = (await res.json()) as { status?: unknown; info?: unknown; pois?: unknown };
-          if (body.status !== '1') throw new Error(String(body.info || '未知错误'));
+          const body = await amapRequest('place', params, TIMEOUT_MS);
           const pois = Array.isArray(body.pois) ? (body.pois as AmapPoiRecord[]) : [];
           return { ok: true, url: pickPhoto(pois, query.name) };
-        } catch (err) {
-          console.warn(`[amap-photo] ${query.name} 查询失败：${err instanceof Error ? err.message : '未知错误'}`);
+        } catch {
           return { ok: false, url: null };
         }
       });

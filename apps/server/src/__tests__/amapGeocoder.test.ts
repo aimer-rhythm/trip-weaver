@@ -1,5 +1,6 @@
 // 单测：geocodeActivity 解析链降级顺序（mock fetch）——高德 POI text → v3 geocode → Nominatim+转换 → null
 import { test } from 'node:test';
+import './helpers/amapQuotaMock';
 import assert from 'node:assert/strict';
 import { geocodeActivity, parseAmapLocation } from '../integrations/amap/geocoder';
 

@@ -6,6 +6,7 @@ import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
 import type { GeocodedPlace, GeocodedPoint, GeoPoint } from '../geoContracts';
 import { geocodeFallbackGcj02 } from '../geocode';
+import { amapRequest } from './request';
 
 /** 解析高德「lng,lat」坐标串（GCJ-02）；非法输入回 null */
 export function parseAmapLocation(raw: unknown): GeoPoint | null {
@@ -16,8 +17,6 @@ export function parseAmapLocation(raw: unknown): GeoPoint | null {
   return Number.isFinite(lat) && Number.isFinite(lng) && (lat !== 0 || lng !== 0) ? { lat, lng } : null;
 }
 
-const AMAP_TEXT_URL = 'https://restapi.amap.com/v5/place/text';
-const AMAP_GEOCODE_URL = 'https://restapi.amap.com/v3/geocode/geo';
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 
 /** 高德全 API 共用串行队列（个人认证约 3 QPS）：geocode 与 route 共队列限速 */
@@ -25,14 +24,6 @@ export const amapQueue = createSerialQueue(350);
 
 const poiLocateCache = new TtlCache<GeocodedPoint | null>(CACHE_TTL_MS, 300);
 const geocodeCache = new TtlCache<GeocodedPoint | null>(CACHE_TTL_MS, 300);
-
-async function amapGet(url: string): Promise<Record<string, unknown>> {
-  const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const body = (await res.json()) as Record<string, unknown>;
-  if (body.status !== '1') throw new Error(String(body.info || '未知错误'));
-  return body;
-}
 
 /** 高德 POI text 单点定位（名称 + 目的地消歧）→ GCJ-02 坐标 + adcode；失败回 null */
 export async function amapPoiLocate(apiKey: string, name: string, city: string): Promise<GeocodedPoint | null> {
@@ -46,7 +37,7 @@ export async function amapPoiLocate(apiKey: string, name: string, city: string):
         params.set('region', city.slice(0, 40));
         params.set('city_limit', 'true');
       }
-      const body = await amapGet(`${AMAP_TEXT_URL}?${params}`);
+      const body = await amapRequest('place', params);
       const first = Array.isArray(body.pois) ? (body.pois[0] as Record<string, unknown> | undefined) : undefined;
       const location = first ? parseAmapLocation(first.location) : null;
       return location ? { ...location, adcode: typeof first!.adcode === 'string' ? first!.adcode : '' } : null;
@@ -54,7 +45,7 @@ export async function amapPoiLocate(apiKey: string, name: string, city: string):
       return null;
     }
   });
-  poiLocateCache.set(cacheKey, point);
+  if (point) poiLocateCache.set(cacheKey, point);
   return point;
 }
 
@@ -67,7 +58,7 @@ export async function amapGeocode(apiKey: string, name: string, city: string): P
     try {
       const params = new URLSearchParams({ key: apiKey, address: `${city}${name}`.slice(0, 80) });
       if (city) params.set('city', city.slice(0, 40));
-      const body = await amapGet(`${AMAP_GEOCODE_URL}?${params}`);
+      const body = await amapRequest('geocode', params);
       const first = Array.isArray(body.geocodes) ? (body.geocodes[0] as Record<string, unknown> | undefined) : undefined;
       const location = first ? parseAmapLocation(first.location) : null;
       return location ? { ...location, adcode: typeof first!.adcode === 'string' ? first!.adcode : '' } : null;
@@ -75,7 +66,7 @@ export async function amapGeocode(apiKey: string, name: string, city: string): P
       return null;
     }
   });
-  geocodeCache.set(cacheKey, point);
+  if (point) geocodeCache.set(cacheKey, point);
   return point;
 }
 

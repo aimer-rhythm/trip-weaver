@@ -3,6 +3,7 @@ import { startOfToday, startOfTomorrow, type UsageView } from '@tripweaver/share
 import { db } from '../db/client';
 import { editorGeoUsage, generations } from '../db/schema';
 import { env } from '../env';
+import { amapQuotaLedger } from './amapQuotaService';
 
 /** 今日已成功生成次数（失败/取消不计，PRD F8） */
 export async function usedToday(userId: string): Promise<number> {
@@ -62,7 +63,7 @@ async function callsToday(key: MeteredSource): Promise<number> {
 }
 
 export async function amapBudgetRemaining(): Promise<number> {
-  return Math.max(0, env.amapDailyBudget - (await callsToday('amap')) - (await editorCallsToday('amap')));
+  return amapQuotaLedger.remaining();
 }
 
 export async function tiandituBudgetRemaining(): Promise<number> {
@@ -79,9 +80,9 @@ async function editorCallsToday(source: 'amap' | 'tianditu'): Promise<number> {
 /** Atomically reserve editor calls; unused calls are refunded, including pre-request skips.
  * Reservations survive crashes conservatively. Generation concurrency retains its existing
  * approximate budget semantics; editor reservations themselves cannot overspend the snapshot. */
-export async function reserveEditorGeoBudget(source: 'amap' | 'tianditu', count: number) {
+export async function reserveEditorGeoBudget(source: 'tianditu', count: number) {
   const day = String(startOfToday());
-  const limit = (source === 'amap' ? env.amapDailyBudget : env.tiandituDailyBudget) - await callsToday(source);
+  const limit = env.tiandituDailyBudget - await callsToday(source);
   if (limit < count) return null;
   const rows = await db.insert(editorGeoUsage).values({ day, source, calls: count })
     .onConflictDoUpdate({ target: [editorGeoUsage.day, editorGeoUsage.source],

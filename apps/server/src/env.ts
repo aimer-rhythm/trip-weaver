@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { readAmapServiceBudgets } from './integrations/amap/services';
 
 export const DEFAULT_SEARCH_API_BASE_URL = 'https://api.langsearch.com';
 
@@ -101,7 +102,7 @@ export const env = {
   amapKey,                                              // 高德 Web 服务 Key（路线规划 + 地理编码）
   amapJsKey,                                            // 高德「Web端(JS API)」Key：前端地图渲染，与 Web 服务 Key 不通用
   amapJsSecurityCode,                                   // JS API 2.0 必需的安全密钥，与 amapJsKey 一同下发
-  amapDailyBudget: int('AMAP_DAILY_BUDGET', 150),       // 全站高德调用日额度
+  amapServiceBudgets: readAmapServiceBudgets(process.env),
   tiandituKey,                                          // 天地图 Web 服务 Key（接口参数名 tk）
   tiandituDailyBudget: int('TIANDITU_DAILY_BUDGET', 150),   // 全站天地图调用日额度（与高德分别计数）
   searchApiKey: str('SEARCH_API_KEY'),                  // Web 搜索 Key（默认 LangSearch）

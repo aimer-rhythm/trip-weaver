@@ -7,6 +7,7 @@ import rateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
 import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import { env } from './env';
+import { setAmapLogger } from './integrations/amap/request';
 import './lib/proxy';                        // 需在任何出站 fetch 之前接管代理
 import './db/client';                       // 触发建库与迁移
 import { SsrfError } from './integrations/ssrfGuard';
@@ -24,6 +25,7 @@ async function main() {
   const app = Fastify({
     logger: { level: env.isProd ? 'info' : 'debug' },
   }).withTypeProvider<TypeBoxTypeProvider>();
+  setAmapLogger(app.log);
 
   await app.register(cookie);
   await app.register(rateLimit, { global: false });

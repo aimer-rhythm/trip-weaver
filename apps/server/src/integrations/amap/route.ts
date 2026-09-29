@@ -10,13 +10,7 @@ import { downsamplePolyline } from '../../lib/polyline';
 import { createRouteBreaker } from '../routeBreaker';
 import type { GeoPoint, RouteBreaker, RouteEstimate, RouteOpts } from '../geoContracts';
 import { amapQueue } from './geocoder';
-
-const ROUTE_URLS: Record<LegMode, string> = {
-  walk: 'https://restapi.amap.com/v5/direction/walking',
-  cycle: 'https://restapi.amap.com/v5/direction/bicycling',
-  drive: 'https://restapi.amap.com/v5/direction/driving',
-  transit: 'https://restapi.amap.com/v5/direction/transit/integrated',
-};
+import { amapRequest } from './request';
 
 export const ROUTE_MAX_PER_TASK = 30;   // 单次生成 ≤30 次路径规划，超出走启发式
 
@@ -98,10 +92,7 @@ export async function routeEstimate(
         params.set('city1', opts.city1!);
         params.set('city2', opts.city2!);
       }
-      const res = await fetch(`${ROUTE_URLS[mode]}?${params}`, { signal: AbortSignal.timeout(10_000) });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const body = (await res.json()) as Record<string, unknown>;
-      if (body.status !== '1') throw new Error(String(body.info || '未知错误'));
+      const body = await amapRequest(mode, params);
       return parseRoute(mode, body);
     } catch {
       return null;

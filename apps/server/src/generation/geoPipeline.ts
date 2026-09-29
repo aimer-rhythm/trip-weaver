@@ -97,11 +97,10 @@ export function createGeoSession(userId: string, destination: string, baseMode: 
     providerKind: () => provider.kind,
 
     async init() {
-      // 任务级预留量闸门：日额度余额不足「定位上限 + 通勤上限」则整任务不用外部服务商，直接降级（不断服）。
-      // 两家服务商各自独立计数，切回去不必等对方额度次日重置。
+      // 高德每次外呼前按服务原子扣减；天地图保留任务级余额预检。
       const resolved = await resolveGeoProvider(userId);
       provider =
-        resolved.enabled && (await resolved.budgetRemaining()) >= GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK
+        resolved.enabled && (resolved.kind === 'amap' || (await resolved.budgetRemaining()) >= GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK)
           ? resolved
           : createNullGeoProvider();
       routeBreaker = provider.createRouteBreaker();

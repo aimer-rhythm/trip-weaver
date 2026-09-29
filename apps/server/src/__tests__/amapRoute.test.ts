@@ -1,6 +1,7 @@
 // 单测：高德路径规划适配层（mock fetch）——三模式解析 / 折线抽稀与超长丢弃 / 缓存命中 / transit 缺 adcode 降级
 // + 任务级连续失败熔断（createRouteBreaker）：达阈值不再发请求不扣额度 / 成功清零计数 / 未发起的请求不计失败
 import { test } from 'node:test';
+import './helpers/amapQuotaMock';
 import assert from 'node:assert/strict';
 import { ROUTE_BREAKER_THRESHOLD } from '../integrations/routeBreaker';
 import { downsamplePolyline } from '../lib/polyline';

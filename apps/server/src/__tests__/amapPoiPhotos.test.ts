@@ -2,6 +2,7 @@
 // 只依赖 lib/* 与同目录 geocoder 的共享队列，导入本文件不连库。
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import './helpers/amapQuotaMock';
 import { createAmapPoiPhotoLookup, pickPhoto } from '../integrations/amap/poiPhotos';
 
 const PHOTO = 'https://store.is.autonavi.com/showpic/78e3e7b400e9290d0000003670488183';

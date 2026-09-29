@@ -1,5 +1,52 @@
 # External Integration Guidelines
 
+## Scenario: Amap service admission and monthly-derived defaults
+
+### 1. Scope / Trigger
+
+Every server-side Amap external call, including generation, editor routes and POI photos.
+
+### 2. Signatures
+
+- `amapRequest(service: AmapService, params: URLSearchParams, timeout?: number)` is the only Amap fetch boundary.
+- `createAmapQuotaLedger(pool, limits, now?).acquire(service)` returns `{allowed,service,day,used,limit,resetAt}`.
+- `amap_service_usage(day TEXT, service TEXT, calls INTEGER CHECK(calls >= 0))`, primary key `(day,service)`.
+- `readAmapServiceBudgets(source)` validates configuration without importing DB/env.
+
+### 3. Contracts
+
+- Services: geocode, place, walk, cycle, drive, transit; POI lookup and photos share place.
+- Official personal defaults from https://lbs.amap.com/upgrade (2026-09-29): LBS shares 150000/month; search 5000/month. Divide by 31, then split LBS equally into five: 967 each, place 161. These are system budgets, not fetched account balances.
+- `AMAP_LBS_MONTHLY_BUDGET` and `AMAP_SEARCH_MONTHLY_BUDGET` may override totals. `AMAP_<SERVICE>_DAILY_BUDGET` overrides individual caps; LBS sum and search cap cannot exceed their monthly total / 31. Legacy `AMAP_DAILY_BUDGET` only lowers unset service defaults.
+- Atomic INSERT/ON CONFLICT increments before fetch; failed attempts stay charged. All keys share counters conservatively. UTC+8 midnight resets the day, independent of host timezone. Recheck the day after reservation before fetch.
+- Cache hits bypass admission; task caps and serial queue still apply. `remaining()` is advisory, never a combined admission gate.
+- First migration seeds each service with recent legacy aggregate usage, conservatively including the previous day; subsequent migrations never reseed. Old task counts remain telemetry only.
+- No account balance lookup, historical monthly subtraction, or cross-process QPS limiter is implied. See `docs/AMAP_QUOTAS.md` for quota scope and rollout caveats.
+
+### 4. Validation & Error Matrix
+
+- Zero disables a service; non-integer, negative, out-of-range or overallocated group budgets fail startup.
+- Exhaustion → `local_budget_exhausted`, no fetch. DB outage → `budget_store_error`, no fetch.
+- Upstream failures remain charged and emit categorized diagnostics; adapters degrade to null/unavailable.
+- Log `[amap-call]` with service, outcome, used/limit and sanitized infocode/info; never key, raw URL, address or coordinates.
+
+### 5. Good/Base/Bad Cases
+
+- Good: 50 concurrent attempts against limit 5 admit exactly 5; exhausted walk leaves drive available.
+- Base: default five LBS caps × 31 ≤ 150000; place cap × 31 ≤ 5000.
+- Bad: assign 150000/month separately to each LBS endpoint, or debit only when a generation completes.
+
+### 6. Tests Required
+
+- `amapRequest.test.ts`: configuration/group limits, UTC+8 boundary, zero fetch on denial/DB failure, service routing, failed-attempt charge, log redaction, midnight reacquisition.
+- Adapter suites mock `amapQuotaGate` explicitly to avoid DB imports.
+- `scripts/verify-route-options.mts`: real PostgreSQL concurrency, restart, independent/zero limits, midnight, first legacy seed and migration idempotency; mocked upstream only.
+
+### 7. Wrong vs Correct
+
+- Wrong: `fetch('https://restapi.amap.com/...')` directly from an adapter, or use a generation aggregate to authorize requests.
+- Correct: successful cache lookup first, then shared queue → `amapRequest(service, params)` → atomic durable admission → fetch.
+
 ## Scenario: Editor Route Options
 
 ### 1. Scope / Trigger
@@ -10,25 +57,25 @@ Editing one adjacent activity pair's transport mode, independently of generation
 
 - `POST /api/trips/:id/route-options`: `RouteOptionsRequestSchema` → `RouteOptionsResponseSchema`.
 - `editor_geo_usage(day TEXT, source TEXT, calls INTEGER)`, composite primary key `(day, source)`; schema and startup migration must match.
-- `reserveEditorGeoBudget(source, count)` returns an async finalizer or null.
+- `reserveEditorGeoBudget('tianditu', count)` returns an async finalizer or null; Amap uses the service ledger below.
 
 ### 3. Contracts
 
 - Authenticate and check trip ownership before external work. Inputs are two validated draft activity snapshots and destination, allowing unsaved edits; querying never saves the trip.
 - Reuse `resolveGeoProvider`; optional `mode` requests a single available/unavailable entry; omitting it returns all four. Never substitute heuristic estimates in selectable options. `refresh: true` bypasses the editor result cache for explicit retries.
 - Convert legacy WGS84 inputs to GCJ02. Amap transit resolves endpoint adcodes, then calls routing. Missing city or provider result is unavailable with retry text.
-- One active cache-miss request per user; route rate limit is 60/minute to support per-mode prefetch. Reserve one attempt per missing mode plus four possible geocode attempts if Amap transit is missing; finalizer refunds unused attempts, including pre-request skips.
-- Cache each result by user ID, provider kind, credential revision, destination, endpoint identities and coordinates/system. Available results live five minutes, unavailable results 30 seconds, bounded to 1200 entries. Result-cache hits happen before concurrency/quota gates and consume no quota; lower adapter cache hits still count as accepted attempts. Credential revision is metadata, never key material.
+- One active cache-miss request per user; route rate limit is 60/minute to support per-mode prefetch. Task attempt cap includes missing modes plus four possible Amap geocode attempts; only Tianditu uses the editor reservation/finalizer.
+- Cache each result by user ID, provider kind, credential revision, destination, endpoint identities and coordinates/system. Available results live five minutes, unavailable results 30 seconds, bounded to 1200 entries. Result-cache hits consume no quota; Amap lower adapter cache hits also consume no daily quota. Credential revision is metadata, never key material.
 - Amap route adapter successful cache TTL is five minutes (formerly 24 hours). Driving explicitly uses `strategy=32` (Amap recommended); transit keeps default `0`; adopt the first provider-ranked result. Official reference: `https://lbs.amap.com/api/webservice/guide/api/newroute`.
-- Daily budget subtracts persisted editor reservations as well as generation usage. Generation's existing 60s aggregate and running-job approximation remains; crashes can conservatively retain reservations until next day. No new env keys.
+- Amap uses durable service counters for all paths; Tianditu retains editor reservations plus approximate generation usage.
 - Amap transit geometry joins walking steps and the first bus alternative in segment order; absent geometry remains absent. Do not invent durations when provider duration is missing.
 
 ### 4. Validation & Error Matrix
 
 - Missing session → 401; missing or other owner's trip → identical 404; invalid coordinate input → 400.
-- Busy user or insufficient budget → 429 without new provider attempts.
+- Busy user or insufficient Tianditu budget → 429; exhausted Amap service budget → unavailable option without an outbound request.
 - No credential, unsupported mode, missing coordinates/city or failed route → unavailable option; other options survive.
-- Database failures remain errors, not successful empty results.
+- Amap admission DB failure logs `budget_store_error`, blocks fetch and degrades that option; route ownership/persistence DB errors remain API errors.
 
 ### 5. Good/Base/Bad Cases
 
@@ -40,7 +87,7 @@ Editing one adjacent activity pair's transport mode, independently of generation
 
 - `routeOptions.test.ts`: partial failure, source labels, missing coordinates/city, WGS84 and unsupported modes.
 - `amapRoute.test.ts`: transit geometry and missing-duration rejection.
-- `node --import tsx scripts/verify-route-options.mts`: dedicated local PostgreSQL at port 18797, disposable database per run; asserts migrations, ownership, validation, quota atomicity/refund, persistence, free cache hits under quota exhaustion, credential/coordinate invalidation and TTL expiry. Upstream fetch is mocked.
+- `node --import tsx scripts/verify-route-options.mts`: dedicated PostgreSQL port 18797, disposable DB; asserts migrations, ownership, validation, service quota atomicity, persistence, free cache hits, credential/coordinate invalidation and TTL expiry. Upstream fetch is mocked.
 
 ### 7. Wrong vs Correct
 
@@ -83,19 +130,11 @@ Task wrappers cap one generation at `AMAP_MAX_PER_TASK` (8) and
 `SEARCH_MAX_PER_TASK` (10). Null providers do not increment task statistics. Once the cap is
 reached, the wrapper returns an empty result and does not invoke the provider.
 
-Site budgets are read from centralized environment configuration. `quotaService` aggregates
-the persisted `generations.amapCalls` and `generations.searchCalls` columns with a 60-second
-in-memory aggregate cache. The orchestrator selects a Null provider for the whole task when
-remaining budget is below that provider's per-task maximum.
-
-This is intentionally approximate under concurrency: running jobs are not persisted until a
-terminal state, so multiple simultaneous jobs can exceed the daily budget by a bounded amount.
-
-When one provider serves multiple metered call kinds in a single task (e.g. Amap POI search +
-geocoding + route planning), the daily-budget gate must reserve the SUM of all per-task caps
-before enabling the provider for that task (`GEOCODE_MAX_PER_TASK + ROUTE_MAX_PER_TASK` = 70
-in `geoPipeline`), and all kinds share one serial queue and count into the same
-`generations.amap_calls` column.
+Site budgets come from centralized environment configuration. Amap uses the durable
+per-service admission ledger below; `generations.amap_calls` is task attempt telemetry only.
+Search and Tianditu retain their 60-second aggregate cache and running-job approximation.
+Tianditu checks geocode + route task caps before enabling its pipeline. Amap never disables
+the whole pipeline based on aggregate remaining budget: each service decides before fetch.
 
 Representative paths: `apps/server/src/services/quotaService.ts`,
 `apps/server/src/generation/orchestrator.ts`, `apps/server/src/generation/geoPipeline.ts`,
@@ -468,8 +507,8 @@ retrieval guidelines under *Attraction Cover Images*.
 - Amap quota is separate and much scarcer than the geocode chain's: `v5/place/text` belongs to
   「基础搜索服务」 (personal: 5,000/month) while `v3/geocode/geo` belongs to 「基础LBS服务」
   (150,000/month). Hence: only after the first two sources miss, **≤3 calls per generation**, a shared
-  `amapQueue`, a 24 h cache, and a process-level 40/24 h window. Real call counts are exposed as
-  `calls` and added into `generation.amap_calls` by `providerCallCounts()`.
+  `amapQueue`, a 24 h cache, and the shared persistent `place` daily budget. Task attempt counts
+  are exposed as `calls` and added into `generation.amap_calls` by `providerCallCounts()`.
 - **A hit is written back** to `canonical_places.payload.amapPhoto` (full https URL) via
   `saveAmapPhoto(city, name, url)` — matched by normalized key, never overwriting an existing value,
   failures only warn. `createStoredAmapPhotoLookup(city)` reads it back inside the Amap stage (same

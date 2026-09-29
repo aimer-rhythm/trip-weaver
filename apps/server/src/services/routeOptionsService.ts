@@ -22,12 +22,12 @@ export async function getRouteOptions(userId: string, input: RouteOptionsRequest
   activeUsers.add(userId);
   try {
     const maxCalls = missing.length + (missing.includes('transit') && provider.kind === 'amap' ? 4 : 0);
-    const finish = provider.kind === 'null' ? null : await reserveEditorGeoBudget(provider.kind, maxCalls);
-    if (provider.kind !== 'null' && !finish) throw Object.assign(new Error('今日路线查询额度不足，请稍后再试'), { statusCode: 429 });
+    const finish = provider.kind === 'tianditu' ? await reserveEditorGeoBudget('tianditu', maxCalls) : null;
+    if (provider.kind === 'tianditu' && !finish) throw Object.assign(new Error('今日路线查询额度不足，请稍后再试'), { statusCode: 429 });
     let used = 0;
     try {
       const result = await queryRouteOptions(input, provider, () => {
-        if (!finish || used >= maxCalls) return false;
+        if (provider.kind === 'null' || used >= maxCalls) return false;
         used += 1;
         return true;
       }, missing);

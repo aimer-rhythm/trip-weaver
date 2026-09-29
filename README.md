@@ -65,7 +65,9 @@ npm run dev                        # server:3001 + web:5173
 | `SITE_LLM_BASE_URL` / `SITE_LLM_API_KEY` / `SITE_LLM_MODEL` | 建议 | 站点供 Key（普通用户零配置使用）；留空 = 纯 BYOK 模式 |
 | `GEN_DAILY_LIMIT` | | 每用户每日生成次数（默认 3） |
 | `AMAP_KEY` | 建议 | 站点默认高德 Web 服务 Key；用户可在设置页保存仅自己可用的个人 Key，优先级为“个人 Key → `AMAP_KEY` → Null 降级”。[申请入口](https://console.amap.com/dev/key/app)，个人认证约 5000 次搜索/月 |
-| `AMAP_DAILY_BUDGET` | | 全站高德调用日额度（默认 150，超出自动降级） |
+| `AMAP_LBS_MONTHLY_BUDGET` / `AMAP_SEARCH_MONTHLY_BUDGET` | | 个人认证默认 150000 / 5000，按 31 天折算服务日预算，详见[高德限额与日志](docs/AMAP_QUOTAS.md) |
+| `AMAP_{GEOCODE,PLACE,WALK,CYCLE,DRIVE,TRANSIT}_DAILY_BUDGET` | | 六项独立上限；默认 POI 搜索 161，其余各 967。0 禁用；五项 LBS 合计不得超过月预算 / 31 |
+| `AMAP_DAILY_BUDGET` | | 旧配置兼容：仅压低未独立配置项的默认值；新部署留空 |
 | `TIANDITU_KEY` | 建议 | 站点天地图 Web 服务 Key（参数名 `tk`）。**地点搜索固定用它**（高德 `v5/place/text` 与地理编码主路径共用一份个人配额，实测会被打满）。[申请入口](https://console.tianditu.gov.cn/api/key)。差异：地名搜索需单独申请权限，POI 无评分/人均/营业时间/图片，**无步行/骑行路径规划** |
 | `TIANDITU_DAILY_BUDGET` | | 全站天地图调用日额度（默认 150，与高德分别计数、互不影响） |
 | `AMAP_JS_KEY` / `AMAP_JS_SECURITY_CODE` | 可选 | 前端地图渲染用的高德 **「Web端(JS API)」** Key（与 Web 服务 Key **不通用**）与配套安全密钥。两者都会下发到浏览器（JS API 的设计，靠域名白名单限权）。留空则前端地图走 Leaflet + 栅格瓦片 |
@@ -116,7 +118,7 @@ npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏
 
 内置纪律与合规边界：
 
-- 串行限速、24h 结果缓存、单次生成调用上限、全站日额度（`AMAP_DAILY_BUDGET` / `SEARCH_DAILY_BUDGET`）四道闸，超出自动降级
+- 串行限速、结果缓存（路线 5 分钟）、单次生成调用上限、全站预算；高德按服务在实际请求前持久化原子扣减，超出自动降级
 - 任一数据源缺失/超额**不影响生成**：自动降级为「仅高德」「仅搜索」或纯模型知识调研，行程会标注实际所用数据源
 - 遵守高德服务协议：地点图片仅**热链实时展示、不转存文件**；候选落库只保留名称、短摘要与来源链接；请勿改造为批量采集工具
 - 预约信息为搜索抽取 + 种子表，**以官方渠道为准**（卡片附来源链接与免责提示）
