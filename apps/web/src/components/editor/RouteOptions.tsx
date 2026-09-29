@@ -21,6 +21,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
   pairKey: string; tripId: string; input: RouteOptionsRequest; dayId: string; leg?: TransitLeg;
 }) {
   const valid = hasValidCoord(input.from) && hasValidCoord(input.to);
+  const replan = useEditorStore((s) => s.routeReplans[pairKey]);
   const { queries, get } = useRouteOptions(pairKey, tripId, input, valid);
   const [pendingMode, setPendingMode] = useState<LegMode>();
   const [error, setError] = useState('');
@@ -37,6 +38,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
   }, []);
 
   async function select(mode: LegMode) {
+    useEditorStore.getState().cancelRouteReplan(pairKey);
     const version = ++selection.current;
     setPendingMode(mode);
     setError('');
@@ -66,7 +68,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
       onKeyDown={(e) => { if (e.key === 'Escape' && details.current) { details.current.open = false; details.current.querySelector('summary')?.focus(); } }}>
       <summary className="editor-transit flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border-0 bg-transparent px-3 text-[var(--color-editor-menu-color-83)] transition-colors hover:bg-[var(--color-editor-menu-list-background-87)] group-open:bg-[var(--color-editor-menu-list-background-87)] [&::-webkit-details-marker]:hidden" aria-label="切换交通方式">
         <EditorIcon name={leg?.mode === 'transit' ? 'route' : leg?.mode ?? 'route'} />
-        <span className="flex-1">{pendingMode ? '正在规划' + LEG_MODE_LABEL[pendingMode] + '路线…' : leg ? LEG_MODE_LABEL[leg.mode] + '约' + formatLegDuration(leg.durationMin) + ' · ' + (leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)) : '选择交通方式'}</span>
+        <span className="flex-1" role="status">{pendingMode ? '正在规划' + LEG_MODE_LABEL[pendingMode] + '路线…' : replan?.status === 'pending' ? '正在选择推荐交通方式…' : leg ? LEG_MODE_LABEL[leg.mode] + '约' + formatLegDuration(leg.durationMin) + ' · ' + (leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)) : '选择交通方式'}</span>
         <svg className="transition-transform group-open:rotate-180" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
       </summary>
       <div className="mt-2 rounded-[14px] border border-[var(--color-editor-menu-list-border-85)] bg-[var(--color-card)] p-1.5 shadow-[0_10px_30px_var(--color-editor-menu-list-box-shadow-86)]" aria-label="交通方式选项">
@@ -95,5 +97,9 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
         </div>
       </div>
     </details>
+    {replan?.status === 'error' && <div role="alert" className="flex items-center gap-2 px-3 text-xs text-[var(--color-danger)]">
+      <span>{replan.error}</span>
+      <button type="button" className="min-h-10 shrink-0 rounded-full border-0 bg-transparent px-3 text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)]" onClick={() => useEditorStore.getState().retryRouteReplan(pairKey)}>重试推荐</button>
+    </div>}
   </div>;
 }

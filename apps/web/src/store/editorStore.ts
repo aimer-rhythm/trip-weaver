@@ -4,7 +4,21 @@ import { routePairKey } from '../lib/routePair';
 
 // 编辑器交互态：业务数据以服务端为唯一事实源，此处仅为编辑期副本
 // revision 驱动防抖自动保存；结构化更新用 structuredClone（行程体量 <50KB，KISS）
+export interface RouteReplan {
+  id: string;
+  key: string;
+  dayId: string;
+  fromId: string;
+  status: 'pending' | 'error';
+  error?: string;
+  refresh?: boolean;
+}
+
 interface EditorState {
+  routeReplans: Record<string, RouteReplan>;
+  finishRouteReplan: (id: string, leg?: TransitLeg, error?: string) => void;
+  retryRouteReplan: (key: string) => void;
+  cancelRouteReplan: (key: string) => void;
   trip: Trip | null;
   revision: number;
   dayFilter: number | null;         // null = 全部天
@@ -40,28 +54,57 @@ function dropLodgingLegs(day: TripDay): void {
 }
 
 export const useEditorStore = create<EditorState>((set, get) => {
-  const mutate = (fn: (draft: Trip) => void) => {
+  const mutate = (fn: (draft: Trip) => void, replan = false) => {
     const cur = get().trip;
     if (!cur) return;
     const draft = structuredClone(cur);
     fn(draft);
-    set({ trip: draft, revision: get().revision + 1 });
+    const routeReplans = Object.fromEntries(Object.entries(get().routeReplans).filter(([key, job]) => routePairKey(draft, job.dayId, job.fromId) === key));
+    if (replan) {
+      for (const day of draft.days) {
+        const previous = cur.days.find((item) => item.id === day.id);
+        if (previous?.activities.map((a) => a.id).join(',') === day.activities.map((a) => a.id).join(',')) continue;
+        if (day.legs) day.legs = day.legs.filter((leg) => leg.fromActivityId === LODGING_SENTINEL || leg.toActivityId === LODGING_SENTINEL || day.activities.some((a, i) => a.id === leg.fromActivityId && day.activities[i + 1]?.id === leg.toActivityId));
+        for (const from of day.activities.slice(0, -1)) {
+          const key = routePairKey(draft, day.id, from.id)!;
+          if (key !== routePairKey(cur, day.id, from.id)) routeReplans[key] = { id: uid(), key, dayId: day.id, fromId: from.id, status: 'pending' };
+        }
+      }
+    }
+    set({ trip: draft, routeReplans, revision: get().revision + 1 });
   };
 
   const findDay = (draft: Trip, dayId: string) => draft.days.find((d) => d.id === dayId);
 
   return {
     trip: null,
+    routeReplans: {},
+    cancelRouteReplan: (key) => set((state) => {
+      const routeReplans = { ...state.routeReplans };
+      delete routeReplans[key];
+      return { routeReplans };
+    }),
+    retryRouteReplan: (key) => set((state) => {
+      const job = state.routeReplans[key];
+      return job ? { routeReplans: { ...state.routeReplans, [key]: { ...job, id: uid(), status: 'pending', error: undefined, refresh: true } } } : {};
+    }),
+    finishRouteReplan: (id, leg, error) => {
+      const job = Object.values(get().routeReplans).find((item) => item.id === id && item.status === 'pending');
+      if (!job) return;
+      if (leg && get().selectRoute(job.dayId, job.key, leg)) return;
+      set((state) => ({ routeReplans: { ...state.routeReplans, [job.key]: { ...job, status: 'error', error: error ?? '暂无可用路线，请重试' } } }));
+    },
     revision: 0,
     dayFilter: null,
-    load: (trip) => set({ trip: structuredClone(trip), revision: 0, dayFilter: trip.days[0]?.dayIndex ?? null }),
-    clear: () => set({ trip: null, revision: 0, dayFilter: null }),
+    load: (trip) => set({ trip: structuredClone(trip), routeReplans: {}, revision: 0, dayFilter: trip.days[0]?.dayIndex ?? null }),
+    clear: () => set({ trip: null, routeReplans: {}, revision: 0, dayFilter: null }),
     selectRoute: (dayId, key, leg) => {
       const trip = get().trip;
       if (!trip || routePairKey(trip, dayId, leg.fromActivityId) !== key) return false;
       const day = trip.days.find((d) => d.id === dayId)!;
       const index = day.activities.findIndex((a) => a.id === leg.fromActivityId);
       if (day.activities[index + 1]?.id !== leg.toActivityId) return false;
+      get().cancelRouteReplan(key);
       mutate((draft) => {
         const target = findDay(draft, dayId)!;
         target.legs = [...(target.legs ?? []).filter((l) => l.fromActivityId !== leg.fromActivityId || l.toActivityId !== leg.toActivityId), structuredClone(leg)];
@@ -153,7 +196,7 @@ export const useEditorStore = create<EditorState>((set, get) => {
         const a = list[i]!;
         list[i] = list[j]!;
         list[j] = a;
-      }),
+      }, true),
 
     moveActivityToDay: (fromDayId, activityId, toDayId) =>
       mutate((draft) => {
@@ -164,6 +207,6 @@ export const useEditorStore = create<EditorState>((set, get) => {
         if (i < 0) return;
         const [moved] = from.activities.splice(i, 1);
         if (moved) to.activities.push(moved);
-      }),
+      }, true),
   };
 });

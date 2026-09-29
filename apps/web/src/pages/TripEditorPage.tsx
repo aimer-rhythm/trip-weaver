@@ -7,6 +7,7 @@ import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
 import { CandidateDrawer } from '../components/editor/CandidateDrawer';
 import { PexelsCredit } from '../components/PoiCard';
 import { DaySection } from '../components/editor/DaySection';
+import { AutoRoutePlanner } from '../components/editor/AutoRoutePlanner';
 import { MapView } from '../components/editor/MapView';
 import { dateForDayIndex } from '@tripweaver/shared';
 import { EditorIcon } from '../components/editor/EditorIcon';
@@ -178,6 +179,7 @@ export function TripEditorPage() {
         </div>
       </div>
 
+      <AutoRoutePlanner />
       {candidatesOpen && <Modal title="备选清单" onClose={() => setCandidatesOpen(false)}>{overviewMatch.unmatched.length ? <CandidateDrawer pois={overviewMatch.unmatched} expanded /> : <p className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>暂无未编入行程的备选地点。</p>}</Modal>}
       {editing && (
         <ActivityEditDialog

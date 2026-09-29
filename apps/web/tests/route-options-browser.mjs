@@ -18,7 +18,7 @@ try {
   const errors = []; page.on('pageerror', (e) => errors.push(e.message));
   let trip = { id: 'route-test', title: '北京路线验证', destination: '北京', startDate: '2026-10-01', partySize: 1, preferences: [], budgetLevel: '舒适', totalBudget: 0, extraNotes: '', createdAt: 0, updatedAt: 0, meta: { usedXhs: false, reviewNotes: [] }, days: [{ id: 'd1', dayIndex: 1, title: '第一天', activities: ['故宫', '景山', '北海'].map((name, i) => ({ id: `a${i}`, name, lat: 39.91 + i * .01, lng: 116.39, coordSource: 'manual', coordSystem: 'gcj02', category: '文化', description: '', startTime: '', endTime: '', sourceNotes: [] })), legs: [] }] };
   trip.days.push({ id: 'd2', dayIndex: 2, title: '第二天', activities: [], legs: [] });
-  let calls = 0; let fail = false; let hold; let release;
+  let calls = 0; let fail = false; let hold; let release; let walkDistance = 1000;
   const requested = [];
   const until = async (condition) => {
     for (let i = 0; i < 100; i++) { if (condition()) return; await new Promise((r) => setTimeout(r, 50)); }
@@ -40,7 +40,7 @@ try {
       if (fail) return route.fulfill({ status: 503, json: { error: '路线服务暂不可用，请重试' } });
       const mode = input.mode;
       const i = ['walk', 'cycle', 'transit', 'drive'].indexOf(mode);
-      data = { options: [mode === 'cycle' ? { status: 'unavailable', mode, reason: '暂无可用路线' } : { status: 'available', leg: { fromActivityId: input.from.id, toActivityId: input.to.id, mode, source: 'amap', durationMin: 20 - i * 4, distanceM: 1000 + i * 100, polyline: `116.39,39.91;116.4,${39.93 + i * .01}` } }] };
+      data = { options: [mode === 'cycle' ? { status: 'unavailable', mode, reason: '暂无可用路线' } : { status: 'available', leg: { fromActivityId: input.from.id, toActivityId: input.to.id, mode, source: 'amap', durationMin: 20 - i * 4, distanceM: mode === 'walk' ? walkDistance : 1000 + i * 100, polyline: `116.39,39.91;116.4,${39.93 + i * .01}` } }] };
     } else if (pathname === '/api/trips/route-test') {
       if (route.request().method() === 'PUT') {
         const next = route.request().postDataJSON();
@@ -94,6 +94,9 @@ try {
   release(); hold = null;
   await page.waitForTimeout(100);
   assert.equal(await page.getByRole('button', { name: /^驾车/ }).count(), 0);
+  await page.waitForFunction(() => [...document.querySelectorAll('summary[aria-label="切换交通方式"]')].every((el) => el.textContent.includes('步行约20 分钟')));
+  await page.waitForTimeout(1000);
+  assert.deepEqual(trip.days[0].legs.map((leg) => [leg.fromActivityId, leg.toActivityId, leg.mode]).sort(), [['a0', 'a2', 'walk'], ['a1', 'a0', 'walk']]);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByLabel('切换交通方式').first().click();
   await page.getByRole('button', { name: /^驾车.*8 分钟/ }).waitFor();
@@ -105,14 +108,29 @@ try {
   await page.waitForFunction(() => [...document.querySelectorAll('details[open] button[aria-pressed="true"]')].some((button) => getComputedStyle(button).color === 'rgb(255, 255, 255)'));
   assert.equal(await selected.evaluate((el) => getComputedStyle(el).color), 'rgb(255, 255, 255)', 'selected text keeps contrast over editor parent styles');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
-  await fs.mkdir('.trellis/tasks/09-28-route-transport-switch/research', { recursive: true });
-  await page.screenshot({ path: '.trellis/tasks/09-28-route-transport-switch/research/mobile-options.png' });
+  await fs.mkdir('.trellis/tasks/09-28-replan-transit-after-move/research', { recursive: true });
+  await page.screenshot({ path: '.trellis/tasks/09-28-replan-transit-after-move/research/mobile-options.png' });
   assert.deepEqual(errors, []);
   await selected.press('Escape');
   assert.equal(await page.locator('details[open]').count(), 0);
   await page.waitForTimeout(1000);
   await page.reload();
   await page.getByText('驾车约8 分钟', { exact: false }).waitFor();
+  fail = true;
+  await page.getByLabel('故宫更多操作').click();
+  await page.getByRole('article', { name: '故宫', exact: true }).getByLabel('移至其他天').selectOption('d2');
+  await page.getByRole('button', { name: '重试推荐' }).waitFor();
+  fail = false;
+  walkDistance = 1600;
+  await page.getByRole('button', { name: '重试推荐' }).click();
+  await page.getByLabel('切换交通方式').filter({ hasText: '驾车约8 分钟' }).waitFor();
+  // The destination is hidden but must still be planned and saved.
+  await page.getByLabel('北海更多操作').click();
+  await page.getByRole('article', { name: '北海', exact: true }).getByLabel('移至其他天').selectOption('d2');
+  await until(() => trip.days[1].legs.some((leg) => leg.fromActivityId === 'a0' && leg.toActivityId === 'a2' && leg.mode === 'drive'));
+  await days.getByRole('button', { name: '第2天', exact: true }).click();
+  await page.getByLabel('切换交通方式').filter({ hasText: '驾车约8 分钟' }).waitFor();
+  assert.deepEqual(errors, []);
   console.log('PASS routes: prefetch, request priority, latest selection, cache across days, save ordering/reload, map, retry, stale response, mobile style and Escape');
 } catch (error) {
   console.error(await page?.locator('body').innerText());
