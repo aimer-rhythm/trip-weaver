@@ -89,6 +89,10 @@ try {
   // A response arriving after reorder must not become selectable on the changed pair.
   hold = new Promise((r) => { release = r; });
   await page.getByRole('button', { name: '重新查询' }).click();
+  const refreshing = page.getByRole('button', { name: '查询中…', exact: true });
+  assert.equal(await refreshing.isDisabled(), true);
+  assert.equal(await refreshing.getAttribute('aria-busy'), 'true');
+  assert.equal(await refreshing.locator('svg.animate-spin').count(), 1);
   await page.getByLabel('故宫更多操作').click();
   await page.getByRole('button', { name: '下移', exact: true }).first().click();
   release(); hold = null;

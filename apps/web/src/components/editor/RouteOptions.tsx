@@ -25,6 +25,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
   const { queries, get } = useRouteOptions(pairKey, tripId, input, valid);
   const [pendingMode, setPendingMode] = useState<LegMode>();
   const [error, setError] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
   const active = useRef(true);
   const selection = useRef(0);
   const details = useRef<HTMLDetailsElement>(null);
@@ -56,9 +57,13 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
   }
 
   async function retry() {
+    setRefreshing(true);
     setError('');
-    try { await Promise.all(LEG_MODES.map((mode) => get(mode, true))); }
-    catch (e) { if (active.current) setError(e instanceof Error ? e.message : '路线查询失败，请重试'); }
+    const results = await Promise.allSettled(LEG_MODES.map((mode) => get(mode, true)));
+    if (!active.current) return;
+    const failure = results.find((result) => result.status === 'rejected');
+    if (failure?.status === 'rejected') setError(failure.reason instanceof Error ? failure.reason.message : '路线查询失败，请重试');
+    setRefreshing(false);
   }
 
   const backgroundError = queries.find((q) => q.error)?.error?.message;
@@ -93,7 +98,10 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
         })}
         {leg && leg.source !== 'heuristic' && !leg.polyline && <p className="px-3 py-2 text-xs">此路线暂无路径图，地图显示地点连线。</p>}
         <div className="mt-1 flex justify-end border-t border-[var(--color-editor-menu-list-border-top-89)] pt-1">
-          <button type="button" className="min-h-10 rounded-full border-0 bg-transparent px-3 text-xs text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)]" disabled={!valid || queries.some((q) => q.isFetching)} onClick={() => void retry()}>重新查询</button>
+          <button type="button" className="inline-flex min-h-10 items-center gap-1.5 rounded-full border-0 bg-transparent px-3 text-xs text-[var(--editor-muted)] shadow-none hover:bg-[var(--color-editor-menu-list-background-87)] disabled:cursor-not-allowed" disabled={!valid || refreshing || queries.some((q) => q.isFetching)} aria-busy={refreshing} onClick={() => void retry()}>
+            {refreshing && <svg className="animate-spin motion-reduce:animate-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle className="opacity-25" cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 3a9 9 0 0 1 9 9" /></svg>}
+            <span aria-live="polite">{refreshing ? '查询中…' : '重新查询'}</span>
+          </button>
         </div>
       </div>
     </details>

@@ -26,6 +26,8 @@
 
 ## 验证
 
+- 后续交互补充：重新查询立即显示转圈图标与“查询中…”，所有方式结束后恢复；查询中禁用重复点击，支持减少动态效果。浏览器已验证 loading、禁用状态及恢复。
+
 - 全仓 typecheck、web build 通过。
 - editorStore / recommendedRoute / routeQueryQueue 共 9 项测试通过。
 - route-options-browser 回归通过：1 公里优先步行、超过阈值选最快方式、源天失败后重试、隐藏目标天自动规划并保存、重开恢复、手动选择、移动端样式。
