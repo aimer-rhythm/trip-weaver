@@ -1069,9 +1069,10 @@ Apply when changing the segment→day assignment in `generation/scheduling/sched
 | date inside `CN_HOLIDAYS` | `isClosedOnDate` → false, regardless of weekday text |
 | year not present in `CN_HOLIDAYS` | no exemption; weekday rule applies (conservative) |
 | `dateStr` malformed | `false` / `null`, never throws |
-| a segment closes entirely on every remaining free day | dropped, day keeps its placeholder, one `closureConflicts` entry added |
-| a segment closes only partly on the one free day | assigned normally — partial loss beats losing the segment |
-| all days already assigned | segment dropped with NO `closureConflicts` entry (that is capacity, not closure) |
+| a zero-closure assignment exists for all selected segments | preserve all segments by globally assigning dates |
+| global matching assigns a fully closed date to a segment | drop that segment, retain the day's placeholder, add one `closureConflicts` entry |
+| global matching assigns a partly closed date | retain the segment; the overall assignment minimizes scheduled closed attractions before dropped segments |
+| segments exceed available days during selection | excess segments are dropped before date matching, with NO `closureConflicts` entry (capacity, not closure) |
 
 ### 5. Good / Base / Bad Cases
 
@@ -1103,13 +1104,11 @@ for (let i = 0; i < options.days; i++) {
   if (!assignedDays.has(i)) return i;          // may be a day where every member closes
 }
 
-// Correct: skip days where the whole segment closes; report the drop instead.
-for (let i = 0; i < options.days; i++) {
-  if (assignedDays.has(i)) continue;
-  const count = closedCountOn(segment, i);
-  if (count >= segment.length) continue;       // whole segment closed → leave the day empty
-  if (count < bestCount) { bestCount = count; best = i; }
-}
+// Correct: evaluate each unused date together with the optimal remaining assignment.
+// Fully closed segments are dropped (cost 1); scheduled closures have higher priority.
+const assignmentCost = closed === segment.length ? 1 : closed * (segments.length + 1);
+const cost = assignmentCost + assign(index + 1, mask | (1 << day));
+// Pick the lowest total cost; after matching, report each fully closed segment's drop.
 ```
 
 Representative paths: `apps/server/src/generation/scheduling/schedule.ts`,

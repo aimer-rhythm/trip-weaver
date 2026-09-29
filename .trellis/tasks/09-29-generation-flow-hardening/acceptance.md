@@ -40,6 +40,13 @@ node --import tsx --test --test-concurrency=1 apps/server/src/__tests__/*.test.t
 
 两个新的数据库验收脚本自行创建和删除随机命名库；可用 `VERIFY_GENERATION_ADMIN_URL` 指定测试 PostgreSQL（默认本机 18797）。浏览器完整流程先构建 web；hook 回归先在 18811 启动 Vite。Chrome 默认使用 Windows 本机安装，可用 `CHROME_PATH` 指定。服务器预加载 `scripts/lib/local-fetch-only.mjs`，阻止地图/封面的公共 fetch 兜底影响结果。
 
+## 续审复核（2026-09-29）
+
+- 恢复任务后核对暂存实现、回归测试及跨层契约，未发现新的阻断性代码问题。
+- 本次重新通过全仓 typecheck、web build、服务端 388/388 单测、10 组数据库故障场景、3 组原生 SSE 恢复场景和 5 组生产页面场景；`verify-c2.mjs` 沿用前轮验收记录，未重复执行。
+- 初次复跑因本地 PostgreSQL 未启动、旧测试库已清理而失败；启动原隔离实例并新建 `generation_flow_unit_review_20260929` 后，全套单测通过（0 失败、取消、跳过）。
+- 修正 `generation-guidelines.md` 闭馆场景中残留的贪心算法示例与错误矩阵，统一为全局日期匹配及其冲突优先级。
+
 ## 范围与限制
 
 - 旧 `verify-c3.mjs` 依赖已删除的城市卡片、独立表单和旧时间线选择器，未作为通过证据；当前主流程由新生产浏览器脚本覆盖。旧 C3 中与本任务无关的历史编辑器/移动端断言未宣称已验收。
