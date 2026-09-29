@@ -27,7 +27,7 @@ const toLatLng = (pos: GeoPos): [number, number] => [pos.lat, pos.lng];
 
 function mapIcon(point: MapPoint): L.DivIcon {
   return L.divIcon({
-    className: 'marker-wrap',
+    className: "marker-wrap [background:none] [border:none]",
     html: markerHtml({
       color: point.color,
       order: point.order,
@@ -59,7 +59,7 @@ function MapController({ points, visible }: { points: MapPoint[]; visible: boole
   }, [map]);
 
   // 框的是**当前查看范围**：总览 → 全部天，选了某天 → 只框那天（对齐圆周旅迹）。
-  // 这要求 .editor-page 有高度约束（见 global.css）—— 否则容器比屏幕还高，
+  // 这要求 .editor-page 有高度约束（见 AppLayout 与 TripEditorPage 的 Tailwind 类）—— 否则容器比屏幕还高，
   // 框出来的视野会有一部分落在屏幕外，看起来就像「定位失灵」。
   const focused = points.filter((p) => !p.dimmed);
   const targets = focused.length > 0 ? focused : points;
@@ -95,13 +95,13 @@ function ActivityPopup({
   onEditActivity: (dayId: string, activityId: string) => void;
 }) {
   return (
-    <div className="map-popup">
+    <div className={"map-popup [max-width:220px] [&_p]:[margin:4px_0] [&_p]:[font-size:0.82rem]"}>
       <strong>{activity.name}</strong>
-      <p className="muted">
+      <p className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>
         第{day.dayIndex}天 · {activity.category}
       </p>
       {activity.description && <p>{activity.description}</p>}
-      {activity.coordSource === 'estimated' && <p className="tag tag-warn">坐标为估算</p>}
+      {activity.coordSource === 'estimated' && <p className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>坐标为估算</p>}
       {activity.sourceNotes.length > 0 && (
         <p>
           {activity.sourceNotes.map((n) => (
@@ -111,7 +111,7 @@ function ActivityPopup({
           ))}
         </p>
       )}
-      <button type="button" className="btn btn-ghost" onClick={() => onEditActivity(day.id, activity.id)}>
+      <button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"} onClick={() => onEditActivity(day.id, activity.id)}>
         编辑
       </button>
     </div>
@@ -120,7 +120,7 @@ function ActivityPopup({
 
 export function LeafletCanvas({ points, dayLines, visible, onEditActivity }: Props) {
   return (
-    <MapContainer center={[35.0, 105.0]} zoom={4} className="leaflet-host" scrollWheelZoom zoomControl={false}>
+    <MapContainer center={[35.0, 105.0]} zoom={4} className={"leaflet-host w-full h-full"} scrollWheelZoom zoomControl={false}>
       <TileLayer
         url="https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}"
         subdomains={['1', '2', '3', '4']}

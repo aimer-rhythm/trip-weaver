@@ -95,9 +95,7 @@ function Segment({ icon, iconCls, label, value, pending = false, open, onClick }
       type="button"
       aria-expanded={open}
       onClick={onClick}
-      className={`flex h-full w-full min-w-0 items-center gap-[calc(8*var(--ui))] rounded-[calc(20*var(--ui))] px-[calc(8*var(--ui))] py-[calc(9*var(--ui))] text-left transition-colors ${
-        open ? 'bg-white/80' : 'hover:bg-white/55'
-      }`}
+      className={`flex h-full w-full min-w-0 items-center gap-[calc(8*var(--ui))] rounded-[calc(20*var(--ui))] px-[calc(8*var(--ui))] py-[calc(9*var(--ui))] text-left transition-colors ${open ? "bg-white/80" : "hover:bg-white/55"}`}
     >
       <span className={`grid h-[calc(26*var(--ui))] w-[calc(26*var(--ui))] shrink-0 place-items-center ${iconCls}`}>
         {icon}
@@ -106,7 +104,7 @@ function Segment({ icon, iconCls, label, value, pending = false, open, onClick }
         <span className="text-[length:calc(13*var(--ui))] leading-none text-ink-faint">{label}</span>
         <span className="flex min-w-0 items-center gap-[calc(5*var(--ui))]">
           <span
-            className={`text-[length:calc(16*var(--ui))] leading-tight font-semibold ${pending ? 'text-ink-pending' : 'text-ink-strong'}`}
+            className={`text-[length:calc(16*var(--ui))] leading-tight font-semibold ${pending ? "text-ink-pending" : "text-ink-strong"}`}
           >
             {value}
           </span>
@@ -308,11 +306,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                     type="button"
                     aria-pressed={pace === option}
                     onClick={() => setPace(option)}
-                    className={`flex flex-col gap-[calc(4*var(--ui))] rounded-[calc(12*var(--ui))] border px-[calc(12*var(--ui))] py-[calc(12*var(--ui))] text-left transition-colors ${
-                      pace === option
-                        ? 'border-brand bg-brand/10 ring-1 ring-brand'
-                        : 'border-hairline-strong bg-white/60 hover:border-brand'
-                    }`}
+                    className={`flex flex-col gap-[calc(4*var(--ui))] rounded-[calc(12*var(--ui))] border px-[calc(12*var(--ui))] py-[calc(12*var(--ui))] text-left transition-colors ${pace === option ? "border-brand bg-brand/10 ring-1 ring-brand" : "border-hairline-strong bg-white/60 hover:border-brand"}`}
                   >
                     <span className="text-[length:calc(15*var(--ui))] font-semibold text-ink-strong">
                       {PACE_LABELS[option]}

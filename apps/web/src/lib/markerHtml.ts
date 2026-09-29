@@ -29,9 +29,9 @@ export interface MarkerHtmlInput {
 
 export function markerHtml({ color, order, estimated, dimmed, label }: MarkerHtmlInput): string {
   return [
-    `<div class="map-marker${dimmed ? ' map-marker--dimmed' : ''}">`,
-    `<div class="marker-pin${estimated ? ' marker-estimated' : ''}" style="background:${color}">${order}</div>`,
-    `<div class="map-label">${escapeHtml(label)}</div>`,
+    `<div class="${escapeHtml(`map-marker relative [width:28px] [height:28px]${dimmed ? " map-marker--dimmed [opacity:0.3]" : ""}`)}">`,
+    `<div class="${escapeHtml(`marker-pin [width:28px] [height:28px] [border-radius:50%] [color:var(--color-btn-primary-color-3)] [font-size:0.82rem] font-bold flex items-center justify-center [border:2px_solid_var(--color-btn-primary-color-3)] [box-shadow:0_1px_4px_rgba(0,_0,_0,_0.35)]${estimated ? " marker-estimated [border-style:dashed] [opacity:0.85]" : ""}`)}" style="background:${color}">${order}</div>`,
+    `<div class="${escapeHtml("map-label absolute [top:100%] [left:50%] [transform:translateX(-50%)] [margin-top:2px] whitespace-nowrap [font-size:0.72rem] font-semibold [color:var(--color-map-label-color-10)] [text-shadow:0_0_3px_var(--color-btn-primary-color-3),_0_0_2px_var(--color-btn-primary-color-3)] pointer-events-none [&.map-label--hidden]:invisible")}">${escapeHtml(label)}</div>`,
     '</div>',
   ].join('');
 }

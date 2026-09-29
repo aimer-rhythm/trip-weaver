@@ -26,7 +26,7 @@ export function ChatInput({ disabled, sending, onSend }: Props) {
   };
 
   return (
-    <div className="chat-input">
+    <div className={"chat-input flex [gap:8px] items-end [margin-top:10px] [&_textarea]:flex-1 [&_textarea]:[resize:vertical] [&_textarea]:[border:1px_solid_var(--color-border)] [&_textarea]:[border-radius:var(--radius)] [&_textarea]:[padding:8px_10px] [&_textarea]:[font:inherit] [&_textarea]:[font-size:0.9rem]"}>
       <textarea
         value={text}
         rows={1}
@@ -37,7 +37,7 @@ export function ChatInput({ disabled, sending, onSend }: Props) {
         onChange={(e) => setText(e.target.value)}
         onKeyDown={onKeyDown}
       />
-      <button type="button" className="btn btn-primary" disabled={!canSend} onClick={submit} aria-label={sending ? "思考中" : "发送"} title={sending ? "思考中" : "发送"}>
+      <button type="button" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)]"} disabled={!canSend} onClick={submit} aria-label={sending ? "思考中" : "发送"} title={sending ? "思考中" : "发送"}>
         <EditorIcon name="send" />
       </button>
     </div>

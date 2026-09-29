@@ -19,7 +19,6 @@ import { resolveLabelCollisions } from '../../lib/labelCollision';
 import { escapeHtml, markerHtml } from '../../lib/markerHtml';
 import type { DayLines, MapPoint } from '../../lib/mapData';
 import { ROUTE_STROKE } from '../../lib/routeStyle';
-import '../../styles/map-canvas.css';
 
 interface Props {
   /** 已加载完成的高德命名空间（由 MapView 在加载成功后传入） */
@@ -42,13 +41,13 @@ function popupHtml(day: TripDay, activity: Activity): string {
     )
     .join('');
   return [
-    '<div class="map-popup">',
+    `<div class="${escapeHtml("map-popup [max-width:220px] [&_p]:[margin:4px_0] [&_p]:[font-size:0.82rem]")}">`,
     `<strong>${escapeHtml(activity.name)}</strong>`,
-    `<p class="muted">第${day.dayIndex}天 · ${escapeHtml(activity.category)}</p>`,
+    `<p class="${escapeHtml("muted [color:var(--color-muted)] [font-size:0.88rem]")}">第${day.dayIndex}天 · ${escapeHtml(activity.category)}</p>`,
     activity.description ? `<p>${escapeHtml(activity.description)}</p>` : '',
-    activity.coordSource === 'estimated' ? '<p class="tag tag-warn">坐标为估算</p>' : '',
+    activity.coordSource === 'estimated' ? `<p class="${escapeHtml("tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]")}">坐标为估算</p>` : '',
     notes ? `<p>${notes}</p>` : '',
-    `<button type="button" class="btn btn-ghost" data-edit-day="${escapeHtml(day.id)}" data-edit-activity="${escapeHtml(activity.id)}">编辑</button>`,
+    `<button type="button" class="${escapeHtml("btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]")}" data-edit-day="${escapeHtml(day.id)}" data-edit-activity="${escapeHtml(activity.id)}">编辑</button>`,
     '</div>',
   ]
     .filter(Boolean)
@@ -181,7 +180,7 @@ export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: 
 
   // 尺寸与视野：容器从隐藏变可见（移动端切页签）或查看范围变化时，先 resize 再无动画自适应。
   // 框的是**当前查看范围**：总览 → 全部天，选了某天 → 只框那天（对齐圆周旅迹）。
-  // 这要求 .editor-page 有高度约束（见 global.css）—— 否则容器比屏幕还高，
+  // 这要求 .editor-page 有高度约束（见 AppLayout 与 TripEditorPage 的 Tailwind 类）—— 否则容器比屏幕还高，
   // 框出来的视野会有一部分落在屏幕外，看起来就像「定位失灵」。
   useEffect(() => {
     if (!visible) return;
@@ -194,7 +193,7 @@ export function AmapCanvas({ amap, points, dayLines, visible, onEditActivity }: 
     return () => clearTimeout(timer);
   }, [contentKey, visible]);
 
-  return <><div className="amap-host" ref={hostRef} onClick={handleHostClick} /><MapControls
+  return <><div className="amap-host w-full h-full" ref={hostRef} onClick={handleHostClick} /><MapControls
     onZoomIn={() => mapRef.current?.setZoom(mapRef.current.getZoom() + 1)}
     onZoomOut={() => mapRef.current?.setZoom(mapRef.current.getZoom() - 1)}
     onReset={() => { const map = mapRef.current; if (!map) return; if (fitTargetsRef.current.length) map.setFitView(fitTargetsRef.current, false, FIT_PADDING); else { map.setCenter([105, 35]); map.setZoom(4); } }}

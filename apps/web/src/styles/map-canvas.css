@@ -1,7 +1,0 @@
-/* 两套地图渲染容器的尺寸契约（09-26）。
-   单独成文件是为了不碰 global.css 的「地图」段（那段正被并行改动），与 print.css 同例。
-   Leaflet 侧的 .leaflet-host 仍留在 global.css。 */
-.amap-host {
-  width: 100%;
-  height: 100%;
-}

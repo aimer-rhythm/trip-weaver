@@ -160,7 +160,7 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
   return (
     <div
       ref={surfaceRef}
-      className={`absolute inset-0 touch-none select-none ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      className={`absolute inset-0 touch-none select-none ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -216,11 +216,11 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
                 }}
               >
                 {active && <circle r={20} fill="url(#map-city-glow)" />}
-                {active && <circle className="map-city-ripple" r={6} />}
-                {active && <circle className="map-city-ripple map-city-ripple-late" r={6} />}
+                {active && <circle className={"map-city-ripple [fill:none] [stroke:var(--color-brand-deep)] [stroke-width:1.6] [animation:map-city-pulse_2.4s_ease-out_infinite]"} r={6} />}
+                {active && <circle className={"map-city-ripple [fill:none] [stroke:var(--color-brand-deep)] [stroke-width:1.6] [animation:map-city-pulse_2.4s_ease-out_infinite] map-city-ripple-late [animation-delay:1.2s]"} r={6} />}
                 <circle
                   r={active ? 5.2 : 3.6}
-                  className={`transition-[r] ${active ? 'fill-brand-deep' : 'fill-accent-cyan'}`}
+                  className={`transition-[r] ${active ? "fill-brand-deep" : "fill-accent-cyan"}`}
                   stroke={active ? '#fff' : 'none'}
                   strokeWidth={active ? 1.2 : 0}
                 />
@@ -230,7 +230,7 @@ export function ChinaMap({ cities, contextCities, selected, onSelect }: ChinaMap
                   y={offset.dy}
                   textAnchor={offset.align}
                   dominantBaseline="middle"
-                  className="map-city-label fill-ink-map text-[9px] font-semibold"
+                  className={"map-city-label [paint-order:stroke] [stroke:rgba(255,_255,_255,_0.85)] [stroke-width:3px] fill-ink-map text-[9px] font-semibold"}
                 >
                   {city.name}
                 </text>

@@ -16,7 +16,7 @@ These guidelines describe the conventions that are actually present in `apps/web
 ## Pre-Development Checklist
 
 - [ ] Read [Directory Structure](./directory-structure.md) before adding a route, page, provider, API module, store, or style file.
-- [ ] Read [Component Guidelines](./component-guidelines.md) before changing JSX, forms, dialogs, icon controls, or visual styling. Styling is dual-track: Tailwind utilities plus `@theme` tokens for new surfaces, `global.css` for existing pages — never both for the same element.
+- [ ] Read [Component Guidelines](./component-guidelines.md) before changing JSX, forms, dialogs, icon controls, or visual styling. All pages use Tailwind utilities in JSX with tokens/base defaults/fonts/keyframes in the single `tailwind.css` entry. There is no legacy-page exception.
 - [ ] Read [Hook Guidelines](./hook-guidelines.md) and [State Management](./state-management.md) before adding fetching, mutations, autosave, persistence, timers, subscriptions, or browser APIs.
 - [ ] Read [Type Safety](./type-safety.md) before changing API payloads, imports, SSE events, URL state, or shared domain data.
 - [ ] Search `apps/web/src` and `packages/shared/src` for an existing component, hook, key, adapter, schema, constant, or type before creating another.
@@ -28,7 +28,7 @@ These guidelines describe the conventions that are actually present in `apps/web
 
 - [ ] Run `npm run typecheck` from the repository root; the base config enables `strict`, `noUncheckedIndexedAccess`, and `noFallthroughCasesInSwitch`.
 - [ ] Run `npm run build -w apps/web` (or root `npm run build`) for changes that affect the web bundle, routes, imports, or Vite behavior.
-- [ ] Manually exercise the smallest affected flow because `apps/web` currently has no test script or checked-in web test suite.
+- [ ] Manually exercise the smallest affected flow and run relevant checked-in browser regressions from `apps/web/tests/`.
 - [ ] Verify authenticated route loading, 401 redirect behavior, and non-401 service-error behavior when routing or auth changes.
 - [ ] Verify every changed async view has intentional loading, error, empty, retry/recovery, and disabled-action behavior as applicable.
 - [ ] Verify effects release timers, listeners, `EventSource` instances, object URLs, and other browser resources.

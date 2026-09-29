@@ -25,19 +25,19 @@ export function CandidateDrawer({ pois, expanded = false }: { pois: ResearchPoi[
   const sourceText = sources.length ? sources.map((s) => DATA_SOURCE_LABEL[s]).join(' + ') : '模型知识';
 
   return (
-    <details className="candidate-drawer" open={expanded || undefined}>
+    <details className={"candidate-drawer [background:var(--color-card)] [border:1px_dashed_var(--color-border)] [border-radius:12px] [padding:10px_14px] [margin-top:12px] [&_summary]:cursor-pointer [&_summary]:font-semibold [&_summary]:[font-size:0.92rem] [&_summary_.muted]:[font-weight:400] [&_summary_.muted]:[margin-left:6px] [&_.overview-note]:[margin:10px_0_0] [&_.overview-group]:[margin-top:10px]"} open={expanded || undefined}>
       <summary>
-        备选（{pois.length}）<span className="muted">未编入行程的调研候选</span>
+        备选（{pois.length}）<span className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>未编入行程的调研候选</span>
       </summary>
-      <p className="overview-note muted">数据来源：{sourceText}｜预约信息以官方为准，出行前请核实</p>
+      <p className={"overview-note m-0 muted [color:var(--color-muted)] [font-size:0.88rem]"}>数据来源：{sourceText}｜预约信息以官方为准，出行前请核实</p>
       <PexelsCredit pois={pois} />
       {groups.map((g) => (
-        <section key={g.category} className="overview-group">
+        <section key={g.category} className={"overview-group [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:12px] [padding:12px_14px] [&_h3]:[margin:0_0_10px] [&_h3]:[font-size:0.92rem]"}>
           <h3>
             {POI_CATEGORY_ICON[g.category]} {POI_CATEGORY_LABEL[g.category]}
-            <span className="muted">（{g.pois.length}）</span>
+            <span className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>（{g.pois.length}）</span>
           </h3>
-          <div className="overview-grid">
+          <div className={"overview-grid grid [grid-template-columns:repeat(auto-fill,_minmax(280px,_1fr))] [gap:10px]"}>
             {g.pois.map((p) => (
               <PoiCard key={p.id} poi={p} />
             ))}

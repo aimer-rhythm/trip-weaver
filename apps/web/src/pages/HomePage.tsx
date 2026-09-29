@@ -59,17 +59,17 @@ export function HomePage() {
         : null;
 
   return (
-    <div className="home-page-root relative flex flex-1 flex-col overflow-hidden">
+    <div className={"home-page-root [--ui:max(0.75px,_min(0.0599vw,_0.106vh))] [--rc-gap:calc(6_*_var(--ui))] [--rc-month-gap:calc(12_*_var(--ui))] [--rc-head-height:calc(30_*_var(--ui))] [--rc-head-pad-left:calc(26_*_var(--ui))] [--rc-title-size:calc(16_*_var(--ui))] [--rc-arrow-width:calc(20_*_var(--ui))] [--rc-arrow-size:calc(21_*_var(--ui))] [--rc-weekday-size:calc(13_*_var(--ui))] [--rc-day-height:calc(34_*_var(--ui))] [--rc-day-size:calc(16_*_var(--ui))] [&_h1]:[font-size:calc(46_*_var(--ui))] [&_h2]:[font-size:calc(16_*_var(--ui))] [&_h2]:m-0 [&_.range-calendar-day.is-start]:[background:var(--color-brand)] [&_.range-calendar-day.is-end]:[background:var(--color-brand)] relative flex flex-1 flex-col overflow-hidden"}>
       {/* 文案区：字号跟 --ui 标尺，位置用百分比对齐胶囊左边界；不拦截地图手势 */}
       <div className="pointer-events-none relative z-10 px-8 pt-10 lg:absolute lg:top-[9%] lg:left-[6.3%] lg:px-0 lg:pt-0">
         <h1 className="m-0 leading-tight font-medium text-ink">
           {Array.from(HEADLINE).map((char, index) => (
-            <span key={`${char}-${index}`} className="home-hero-char" style={{ '--char-i': index } as CSSProperties}>
+            <span key={`${char}-${index}`} className={"home-hero-char inline-block [animation:home-hero-char-in_0.85s_cubic-bezier(0.22,_1,_0.36,_1)_both] [animation-delay:calc(var(--char-i,_0)_*_55ms)] [@media_(prefers-reduced-motion:_reduce)]:[animation-name:home-hero-char-fade] [@media_(prefers-reduced-motion:_reduce)]:[animation-duration:0.4s]"} style={{ '--char-i': index } as CSSProperties}>
               {char}
             </span>
           ))}
         </h1>
-        <p className="home-hero-sub mt-[calc(14*var(--ui))] mb-0 text-[length:calc(19*var(--ui))] text-ink-muted">
+        <p className={"home-hero-sub [animation:home-hero-rise_0.7s_ease-out_0.5s_both] [@media_(prefers-reduced-motion:_reduce)]:[animation:none] mt-[calc(14*var(--ui))] mb-0 text-[length:calc(19*var(--ui))] text-ink-muted"}>
           让每一次出发，都有专属的旅行方案
         </p>
       </div>

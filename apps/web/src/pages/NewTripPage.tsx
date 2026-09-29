@@ -156,8 +156,8 @@ export function NewTripPage() {
   // ---------- 生成中 / 恢复 ----------
   if (run.restoring) {
     return (
-      <div className="page">
-        <div className="page-loading">正在恢复生成进度…</div>
+      <div className={"page w-full [max-width:880px] [margin:0_auto] [padding:20px_16px_48px]"}>
+        <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>正在恢复生成进度…</div>
       </div>
     );
   }
@@ -179,8 +179,8 @@ export function NewTripPage() {
 
   if (covered.isPending) {
     return (
-      <div className="page">
-        <div className="page-loading">加载中…</div>
+      <div className={"page w-full [max-width:880px] [margin:0_auto] [padding:20px_16px_48px]"}>
+        <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>加载中…</div>
       </div>
     );
   }
@@ -193,21 +193,21 @@ export function NewTripPage() {
   // ---------- 启动中 / 启动失败 ----------
   const failure = error ?? run.errorMessage ?? blocked;
   return (
-    <div className="page">
-      <div className="page-head">
+    <div className={"page w-full [max-width:880px] [margin:0_auto] [padding:20px_16px_48px]"}>
+      <div className={"page-head flex items-center justify-between [gap:12px] [margin-bottom:16px] flex-wrap"}>
         <h1>{draft.city}之旅</h1>
       </div>
       {failure ? (
         <>
-          <p className="form-error">{failure}</p>
-          <div className="page-head-actions">
-            <Link to="/" className="btn btn-primary">
+          <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{failure}</p>
+          <div className={"page-head-actions flex [gap:8px]"}>
+            <Link to="/" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-primary [background:var(--color-primary)] [color:var(--color-btn-primary-color-3)] [&:not(:disabled):hover]:[background:var(--color-primary-dark)]"}>
               回首页重新选择
             </Link>
           </div>
         </>
       ) : (
-        <div className="page-loading">正在启动生成…</div>
+        <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>正在启动生成…</div>
       )}
     </div>
   );

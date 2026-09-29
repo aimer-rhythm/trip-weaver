@@ -33,11 +33,13 @@ try {
  await page.waitForFunction(()=>document.querySelectorAll('.collection-card').length===6);
  assert.equal(await page.locator('.collection-card').count(),6);
  assert.equal(detailRequests,0,'list must not fetch full detail per card');
+ assert.equal(await page.locator('.collection-cover svg').count(),0,'destination covers must have no drawings');
  const contents=await page.locator('.trip-collection').innerText();
  for(const removed of ['导入 JSON','新建行程','重命名','删除','加载示例行程'])assert.ok(!contents.includes(removed),removed);
  for(const [name,width,height]of [['desktop',1920,1080],['laptop',1280,800],['tablet',820,1100],['mobile',375,812],['landscape',812,375]]){
   await page.setViewportSize({width,height});
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${name}: horizontal overflow`);
+  if(name==='desktop')assert.ok(await page.locator('.collection-card').last().evaluate(el=>el.getBoundingClientRect().bottom<=innerHeight),'six cards must fit 1920x1080');
   await page.screenshot({path:path.join(out,`${name}.png`),fullPage:true});
  }
  await page.setViewportSize({width:1280,height:800});

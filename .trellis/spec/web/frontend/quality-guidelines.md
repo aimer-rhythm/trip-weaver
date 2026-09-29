@@ -58,3 +58,11 @@ Avoid these unless the local code provides a deliberate, documented reason:
 For route changes, verify public/authenticated nesting and redirect state. For API changes, verify keys, retry policy, cache updates, and `ApiError` handling. For editor changes, verify clone/revision/autosave invariants. For import, URL, storage, HTTP, or SSE changes, verify runtime validation. For UI changes, verify keyboard access, labels, loading/error/empty states, and responsive behavior.
 
 Evidence: `apps/web/src/router.tsx`, `apps/web/src/api/hooks.ts`, `apps/web/src/store/editorStore.ts`.
+
+## Tailwind Migration Regression Gates
+
+- `node --test apps/web/tests/styles.test.mjs` enforces the single application stylesheet and prevents old CSS imports returning.
+- `node apps/web/tests/trip-collection-browser.mjs`: collection filters, keyboard navigation, responsive views and recovery.
+- `node apps/web/tests/editor-browser.mjs` and `--amap`: export downloads/print, scrolling, editing, map controls and both renderers (Amap uses an SDK stub).
+- `node apps/web/tests/generation-browser.mjs --motion`: timed card entry, typing, breathing, reduced motion, mobile clipping and footer separation. Set motion preference before mounting the fixture so reduced-motion rendering cannot prefill the staged cards.
+- `node apps/web/tests/shared-ui-browser.mjs`: authentication forms, navigation, settings dialog, calendar and home layouts using API fixtures.

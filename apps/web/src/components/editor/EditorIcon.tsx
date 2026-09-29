@@ -11,5 +11,5 @@ export function EditorIcon({ name }: { name: 'pin' | 'calendar' | 'back' | 'send
     reset: 'M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5M12 8v8M8 12h8',
     export: 'M12 15V2m-4 4 4-4 4 4M5 10H3v11h18V10h-2',
   };
-  return <svg className="editor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;
+  return <svg className={"editor-icon inline-block [width:22px] [height:22px] flex-none [vertical-align:middle]"} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;
 }

@@ -86,32 +86,32 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
   const shiftMonth = (delta: number) => setViewDate(new Date(year, month + delta, 1));
 
   return (
-    <div className="range-calendar">
-      <div className="range-calendar-months">
+    <div className={"range-calendar [--rc-gap:6px] [--rc-month-gap:12px] [--rc-head-height:30px] [--rc-head-pad-left:26px] [--rc-title-size:1rem] [--rc-arrow-width:24px] [--rc-arrow-size:1.15rem] [--rc-weekday-size:0.82rem] [--rc-day-height:34px] [--rc-day-size:0.95rem] flex flex-col [gap:var(--rc-gap)]"}>
+      <div className={"range-calendar-months flex [gap:var(--rc-month-gap)]"}>
         {viewMonths.map((monthDate, index) => {
           const mYear = monthDate.getFullYear();
           const mMonth = monthDate.getMonth();
           const grid = generateMonthGrid(mYear, mMonth);
           return (
-            <div className="range-calendar-month" key={`${mYear}-${mMonth}`}>
-              <div className="range-calendar-head">
+            <div className={"range-calendar-month flex-1 min-w-0 flex flex-col [gap:var(--rc-gap)]"} key={`${mYear}-${mMonth}`}>
+              <div className={"range-calendar-head relative flex items-center [height:var(--rc-head-height)] [padding-left:var(--rc-head-pad-left)]"}>
                 {index === 0 && (
                   <button
                     type="button"
-                    className="range-calendar-arrow is-prev"
+                    className={"range-calendar-arrow absolute [top:0] flex items-center justify-center [width:var(--rc-arrow-width)] [height:var(--rc-head-height)] p-0 border-0 [background:none] [font:inherit] [font-size:var(--rc-arrow-size)] [line-height:1] [color:var(--color-muted)] cursor-pointer [&.is-prev]:[left:0] [&.is-next]:[right:0] [&:hover]:[color:var(--color-primary)] is-prev"}
                     aria-label="上一月"
                     onClick={() => shiftMonth(-1)}
                   >
                     ‹
                   </button>
                 )}
-                <span className="range-calendar-title">
+                <span className={"range-calendar-title font-bold [font-size:var(--rc-title-size)] [color:var(--color-ink-strong)]"}>
                   {mYear}年{mMonth + 1}月
                 </span>
                 {index === months - 1 && (
                   <button
                     type="button"
-                    className="range-calendar-arrow is-next"
+                    className={"range-calendar-arrow absolute [top:0] flex items-center justify-center [width:var(--rc-arrow-width)] [height:var(--rc-head-height)] p-0 border-0 [background:none] [font:inherit] [font-size:var(--rc-arrow-size)] [line-height:1] [color:var(--color-muted)] cursor-pointer [&.is-prev]:[left:0] [&.is-next]:[right:0] [&:hover]:[color:var(--color-primary)] is-next"}
                     aria-label="下一月"
                     onClick={() => shiftMonth(1)}
                   >
@@ -120,13 +120,13 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
                 )}
               </div>
 
-              <div className="range-calendar-weekdays">
+              <div className={"range-calendar-weekdays grid [grid-template-columns:repeat(7,_1fr)] text-center [font-size:var(--rc-weekday-size)] font-semibold [color:var(--color-muted)]"}>
                 {WEEKDAYS.map((w) => (
                   <span key={w}>{w}</span>
                 ))}
               </div>
 
-              <div className="range-calendar-grid">
+              <div className={"range-calendar-grid grid [grid-template-columns:repeat(7,_1fr)] [gap:2px]"}>
                 {grid.map((d) => {
                   const iso = toISO(d);
                   const isCurrentMonth = d.getMonth() === mMonth;
@@ -135,7 +135,7 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
                   const isEnd = iso === effectiveEnd;
                   const inRange = iso >= effectiveStart && iso <= effectiveEnd;
                   const className = [
-                    'range-calendar-day',
+                    "range-calendar-day flex items-center justify-center [height:var(--rc-day-height)] border-0 bg-transparent [color:var(--color-ink-strong)] [font:inherit] [font-size:var(--rc-day-size)] cursor-pointer rounded-full [&:hover:not(:disabled)]:[background:var(--color-bg)] [&.is-outside]:[color:var(--color-muted)] [&.is-outside]:[opacity:0.45] [&.is-past]:[color:var(--color-muted)] [&.is-past]:[opacity:0.4] [&.is-past]:[cursor:not-allowed] [&.is-in-range]:[background:var(--color-range-calendar-day-background-4)] [&.is-start]:[background:var(--color-primary)] [&.is-start]:[color:var(--color-btn-primary-color-3)] [&.is-start]:font-bold [&.is-end]:[background:var(--color-primary)] [&.is-end]:[color:var(--color-btn-primary-color-3)] [&.is-end]:font-bold",
                     isCurrentMonth ? '' : 'is-outside',
                     isPast ? 'is-past' : '',
                     inRange ? 'is-in-range' : '',
@@ -167,7 +167,7 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
       </div>
 
       {footSlot ?? (
-        <div className="range-calendar-foot muted">
+        <div className={"range-calendar-foot [border-top:1px_solid_var(--color-border)] [padding-top:8px] muted [color:var(--color-muted)] [font-size:0.88rem]"}>
           {pendingStart ? `再点返回日期（最多 ${maxDays} 天）` : `已选：${startDate} ~ ${endDate}`}
         </div>
       )}

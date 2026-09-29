@@ -76,10 +76,10 @@ export function ChatPanel({ conversationId, currentTripId }: Props) {
   const liveIntake = activeIntake(messages);
 
   return (
-    <div className="chat-panel">
-      <div className="chat-stream" ref={streamRef}>
-        {detail.isPending && <div className="page-loading">正在加载对话…</div>}
-        {detail.isError && <p className="form-error">{chatErrorMessage(detail.error)}</p>}
+    <div className={"chat-panel flex-1 flex flex-col min-h-0 [padding:10px] [gap:8px] [&_.chat-stream]:p-0"}>
+      <div className={"chat-stream flex flex-col [gap:10px] flex-1 min-h-0 overflow-y-auto [padding:4px_0_12px]"} ref={streamRef}>
+        {detail.isPending && <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>正在加载对话…</div>}
+        {detail.isError && <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{chatErrorMessage(detail.error)}</p>}
         {messages.map((message) => (
           <MessageBubble
             key={message.id}
@@ -91,17 +91,17 @@ export function ChatPanel({ conversationId, currentTripId }: Props) {
           />
         ))}
         {pendingText && (
-          <div className="chat-msg chat-msg-user">
-            <div className="chat-bubble">{pendingText}</div>
+          <div className={"chat-msg flex flex-col [gap:6px] [max-width:86%] chat-msg-user [align-self:flex-end] items-end [&_.chat-bubble]:[background:var(--color-primary)] [&_.chat-bubble]:[border-color:var(--color-primary)] [&_.chat-bubble]:[color:var(--color-btn-primary-color-3)]"}>
+            <div className={"chat-bubble [padding:8px_12px] [border-radius:var(--radius)] [border:1px_solid_var(--color-border)] [background:var(--color-card)] [font-size:0.9rem] [white-space:pre-wrap] [word-break:break-word]"}>{pendingText}</div>
           </div>
         )}
         {busy && (
-          <div className="chat-msg chat-msg-assistant">
-            <div className="chat-bubble muted">正在理解…</div>
+          <div className={"chat-msg flex flex-col [gap:6px] [max-width:86%] chat-msg-assistant [align-self:flex-start] items-start"}>
+            <div className={"chat-bubble [padding:8px_12px] [border-radius:var(--radius)] [border:1px_solid_var(--color-border)] [background:var(--color-card)] [white-space:pre-wrap] [word-break:break-word] muted [color:var(--color-muted)] [font-size:0.88rem]"}>正在理解…</div>
           </div>
         )}
       </div>
-      {error && <p className="form-error">{error}</p>}
+      {error && <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
       <ChatInput disabled={busy} sending={busy} onSend={(text) => void sendText(text)} />
     </div>
   );
