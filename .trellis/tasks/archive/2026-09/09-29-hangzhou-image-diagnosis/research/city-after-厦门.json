@@ -1,0 +1,637 @@
+{
+  "generatedAt": "2026-09-29T17:05:32.563Z",
+  "city": "厦门",
+  "readOnly": true,
+  "allCities": [
+    {
+      "city": "上海",
+      "scenery": 5,
+      "linked": 0,
+      "places": 0
+    },
+    {
+      "city": "北京",
+      "scenery": 55,
+      "linked": 17,
+      "places": 6
+    },
+    {
+      "city": "厦门",
+      "scenery": 121,
+      "linked": 11,
+      "places": 3
+    },
+    {
+      "city": "广州",
+      "scenery": 327,
+      "linked": 96,
+      "places": 33
+    },
+    {
+      "city": "成都",
+      "scenery": 66,
+      "linked": 7,
+      "places": 2
+    },
+    {
+      "city": "杭州",
+      "scenery": 428,
+      "linked": 96,
+      "places": 39
+    }
+  ],
+  "upstream": {
+    "notes": [
+      {
+        "total": 203,
+        "image_urls": 2477,
+        "unified_processed": 56,
+        "text_analyzed": 40
+      }
+    ],
+    "mentionDistribution": [
+      {
+        "places_per_note": "multiple",
+        "notes": 136
+      },
+      {
+        "places_per_note": "none",
+        "notes": 32
+      },
+      {
+        "places_per_note": "single",
+        "notes": 35
+      }
+    ],
+    "places": [
+      {
+        "total": 701,
+        "active": 667,
+        "resolved": 667,
+        "exportable": 667
+      }
+    ],
+    "images": [
+      {
+        "img_type": "scenery",
+        "total": 121,
+        "linked": 11,
+        "places": 3
+      }
+    ],
+    "unlinked": [
+      {
+        "reason": "multiple",
+        "images": 95
+      },
+      {
+        "reason": "no_mentions",
+        "images": 15
+      }
+    ],
+    "missingSourceFiles": 0,
+    "topPlaces": [
+      {
+        "id": "2540",
+        "name": "鼓浪屿",
+        "normalized_name": "鼓浪屿",
+        "place_type": "attraction",
+        "recommend_score": 134.4,
+        "linked_images": 5,
+        "unlinked_images_in_related_notes": 32,
+        "downstreamCover": {
+          "place": "鼓浪屿",
+          "key": "xhs/厦门/582cedb34ba4cbff94e3481f8e1e9acd/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "2536",
+        "name": "沙坡尾",
+        "normalized_name": "沙坡尾",
+        "place_type": "attraction",
+        "recommend_score": 104.12,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 15,
+        "downstreamCover": null
+      },
+      {
+        "id": "2602",
+        "name": "白城沙滩",
+        "normalized_name": "白城沙滩",
+        "place_type": "attraction",
+        "recommend_score": 89.71,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 17,
+        "downstreamCover": null
+      },
+      {
+        "id": "2534",
+        "name": "南普陀寺",
+        "normalized_name": "南普陀寺",
+        "place_type": "attraction",
+        "recommend_score": 84.44,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "2554",
+        "name": "厦门大学",
+        "normalized_name": "厦门大学",
+        "place_type": "attraction",
+        "recommend_score": 71.29,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      },
+      {
+        "id": "2537",
+        "name": "环岛路",
+        "normalized_name": "环岛路",
+        "place_type": "attraction",
+        "recommend_score": 68.92,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "2670",
+        "name": "中山路步行街",
+        "normalized_name": "中山路步行街",
+        "place_type": "attraction",
+        "recommend_score": 67.1,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 18,
+        "downstreamCover": null
+      },
+      {
+        "id": "2560",
+        "name": "集美学村",
+        "normalized_name": "集美学村",
+        "place_type": "attraction",
+        "recommend_score": 60,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "2539",
+        "name": "中山路",
+        "normalized_name": "中山路",
+        "place_type": "attraction",
+        "recommend_score": 60,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 19,
+        "downstreamCover": null
+      },
+      {
+        "id": "2630",
+        "name": "十里长堤",
+        "normalized_name": "十里长堤",
+        "place_type": "attraction",
+        "recommend_score": 59.77,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 15,
+        "downstreamCover": null
+      },
+      {
+        "id": "2559",
+        "name": "曾厝垵",
+        "normalized_name": "曾厝垵",
+        "place_type": "attraction",
+        "recommend_score": 58.41,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 20,
+        "downstreamCover": null
+      },
+      {
+        "id": "2699",
+        "name": "厦门园林植物园",
+        "normalized_name": "厦门园林植物园",
+        "place_type": "attraction",
+        "recommend_score": 56.55,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "2555",
+        "name": "八市",
+        "normalized_name": "八市",
+        "place_type": "market",
+        "recommend_score": 55.33,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 12,
+        "downstreamCover": null
+      },
+      {
+        "id": "2557",
+        "name": "椰风寨",
+        "normalized_name": "椰风寨",
+        "place_type": "attraction",
+        "recommend_score": 52.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 29,
+        "downstreamCover": null
+      },
+      {
+        "id": "2544",
+        "name": "音乐广场",
+        "normalized_name": "音乐广场",
+        "place_type": "attraction",
+        "recommend_score": 52.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 29,
+        "downstreamCover": null
+      },
+      {
+        "id": "2551",
+        "name": "玩月坡",
+        "normalized_name": "玩月坡",
+        "place_type": "attraction",
+        "recommend_score": 50,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 29,
+        "downstreamCover": null
+      },
+      {
+        "id": "2613",
+        "name": "黄厝沙滩",
+        "normalized_name": "黄厝沙滩",
+        "place_type": "attraction",
+        "recommend_score": 49.72,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 16,
+        "downstreamCover": null
+      },
+      {
+        "id": "2652",
+        "name": "钟鼓索道",
+        "normalized_name": "钟鼓索道",
+        "place_type": "attraction",
+        "recommend_score": 49.17,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "2702",
+        "name": "日光岩",
+        "normalized_name": "日光岩",
+        "place_type": "attraction",
+        "recommend_score": 47.21,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 22,
+        "downstreamCover": null
+      },
+      {
+        "id": "2703",
+        "name": "菽庄花园",
+        "normalized_name": "菽庄花园",
+        "place_type": "attraction",
+        "recommend_score": 44.69,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 22,
+        "downstreamCover": null
+      },
+      {
+        "id": "2656",
+        "name": "黄厝海滩",
+        "normalized_name": "黄厝海滩",
+        "place_type": "attraction",
+        "recommend_score": 44.69,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 19,
+        "downstreamCover": null
+      },
+      {
+        "id": "2654",
+        "name": "集美大社",
+        "normalized_name": "集美大社",
+        "place_type": "attraction",
+        "recommend_score": 42.17,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": {
+          "place": "集美大社",
+          "key": "xhs/厦门/dafedd5497103f30ffe872b05101fd92/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "2667",
+        "name": "屿见闽南",
+        "normalized_name": "屿见闽南",
+        "place_type": "attraction",
+        "recommend_score": 40,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "2662",
+        "name": "幸福路",
+        "normalized_name": "幸福路",
+        "place_type": "attraction",
+        "recommend_score": 37.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 16,
+        "downstreamCover": null
+      },
+      {
+        "id": "2628",
+        "name": "最美转角",
+        "normalized_name": "最美转角",
+        "place_type": "photo_spot",
+        "recommend_score": 33.75,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 21,
+        "downstreamCover": null
+      },
+      {
+        "id": "2697",
+        "name": "不在书店",
+        "normalized_name": "不在书店",
+        "place_type": "cafe",
+        "recommend_score": 32.05,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 16,
+        "downstreamCover": null
+      },
+      {
+        "id": "2655",
+        "name": "嘉庚公园",
+        "normalized_name": "嘉庚公园",
+        "place_type": "attraction",
+        "recommend_score": 32.05,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 12,
+        "downstreamCover": null
+      },
+      {
+        "id": "2704",
+        "name": "皓月园",
+        "normalized_name": "皓月园",
+        "place_type": "attraction",
+        "recommend_score": 30,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "2600",
+        "name": "山海步道",
+        "normalized_name": "山海步道",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "2706",
+        "name": "石鼓路",
+        "normalized_name": "石鼓路",
+        "place_type": "food",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "2700",
+        "name": "鹭江夜游",
+        "normalized_name": "鹭江夜游",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "2614",
+        "name": "溪头下",
+        "normalized_name": "溪头下",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "2541",
+        "name": "三丘田码头",
+        "normalized_name": "三丘田码头",
+        "place_type": "other",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "2601",
+        "name": "上李水库",
+        "normalized_name": "上李水库",
+        "place_type": "attraction",
+        "recommend_score": 23.88,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "2650",
+        "name": "厦门第八市场",
+        "normalized_name": "厦门第八市场",
+        "place_type": "market",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "2634",
+        "name": "海湾公园",
+        "normalized_name": "海湾公园",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "2735",
+        "name": "天泉步道广场",
+        "normalized_name": "天泉步道广场",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      },
+      {
+        "id": "2565",
+        "name": "阿杰五香",
+        "normalized_name": "阿杰五香",
+        "place_type": "food",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "2739",
+        "name": "盼归塔",
+        "normalized_name": "盼归塔",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "2675",
+        "name": "彩虹沙滩",
+        "normalized_name": "彩虹沙滩",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "2542",
+        "name": "大德记沙滩",
+        "normalized_name": "大德记沙滩",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 5,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": {
+          "place": "大德记沙滩",
+          "key": "xhs/厦门/4b9b143acfe9de0ad26275abff010b73/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "2716",
+        "name": "第八市场",
+        "normalized_name": "第八市场",
+        "place_type": "market",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "2563",
+        "name": "四里沙茶面",
+        "normalized_name": "四里沙茶面",
+        "place_type": "food",
+        "recommend_score": 21.07,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "2676",
+        "name": "厦门山海健康步道",
+        "normalized_name": "厦门山海健康步道",
+        "place_type": "attraction",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "2576",
+        "name": "钟丽君满煎糕",
+        "normalized_name": "钟丽君满煎糕",
+        "place_type": "food",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "2581",
+        "name": "局口拌面",
+        "normalized_name": "局口拌面",
+        "place_type": "food",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "2708",
+        "name": "龙舟池",
+        "normalized_name": "龙舟池",
+        "place_type": "attraction",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "2568",
+        "name": "1980烧肉粽",
+        "normalized_name": "1980烧肉粽",
+        "place_type": "food",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "2569",
+        "name": "思北特香包",
+        "normalized_name": "思北特香包",
+        "place_type": "food",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "2615",
+        "name": "珍珠湾",
+        "normalized_name": "珍珠湾",
+        "place_type": "attraction",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 10,
+        "downstreamCover": null
+      }
+    ]
+  },
+  "downstream": {
+    "places": 667,
+    "withCover": 3,
+    "manifestEntries": 3,
+    "missingMediaFiles": [],
+    "orphanManifestEntries": [],
+    "imports": [
+      {
+        "source": "xhs_relations",
+        "row_count": 75,
+        "file_path": "xhs-place-relations-厦门.json",
+        "imported_at": "2026-09-27T04:24:11.397Z"
+      },
+      {
+        "source": "xhs_places",
+        "row_count": 667,
+        "file_path": "xhs-places-厦门.json",
+        "imported_at": "2026-09-27T04:24:17.134Z"
+      },
+      {
+        "source": "xhs_place_images",
+        "row_count": 3,
+        "file_path": "xhs-place-images-厦门.json",
+        "imported_at": "2026-09-29T17:04:56.096Z"
+      }
+    ]
+  },
+  "trip": null,
+  "caveat": "相关笔记中的未绑定图不是已确认属于该景点的图；各地点该计数可重叠。"
+}

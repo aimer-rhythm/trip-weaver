@@ -1,0 +1,14 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["node"],
+    "paths": { "@tripweaver/shared": ["../../../../packages/shared/src/index.ts"] }
+  },
+  "include": [
+    "../../../../apps/server/scripts/audit-xhs-images.ts",
+    "../../../../apps/server/scripts/seed-xhs-places.ts",
+    "../../../../apps/server/scripts/seed-xhs-place-images.ts"
+  ]
+}

@@ -1,0 +1,629 @@
+{
+  "generatedAt": "2026-09-29T17:05:31.757Z",
+  "city": "北京",
+  "readOnly": true,
+  "allCities": [
+    {
+      "city": "上海",
+      "scenery": 5,
+      "linked": 0,
+      "places": 0
+    },
+    {
+      "city": "北京",
+      "scenery": 55,
+      "linked": 17,
+      "places": 6
+    },
+    {
+      "city": "厦门",
+      "scenery": 121,
+      "linked": 11,
+      "places": 3
+    },
+    {
+      "city": "广州",
+      "scenery": 327,
+      "linked": 96,
+      "places": 33
+    },
+    {
+      "city": "成都",
+      "scenery": 66,
+      "linked": 7,
+      "places": 2
+    },
+    {
+      "city": "杭州",
+      "scenery": 428,
+      "linked": 96,
+      "places": 39
+    }
+  ],
+  "upstream": {
+    "notes": [
+      {
+        "total": 437,
+        "image_urls": 4832,
+        "unified_processed": 261,
+        "text_analyzed": 261
+      }
+    ],
+    "mentionDistribution": [
+      {
+        "places_per_note": "single",
+        "notes": 113
+      },
+      {
+        "places_per_note": "multiple",
+        "notes": 262
+      },
+      {
+        "places_per_note": "none",
+        "notes": 62
+      }
+    ],
+    "places": [
+      {
+        "total": 1334,
+        "active": 1309,
+        "resolved": 1309,
+        "exportable": 1309
+      }
+    ],
+    "images": [
+      {
+        "img_type": "scenery",
+        "total": 55,
+        "linked": 17,
+        "places": 6
+      }
+    ],
+    "unlinked": [
+      {
+        "reason": "multiple",
+        "images": 38
+      }
+    ],
+    "missingSourceFiles": 0,
+    "topPlaces": [
+      {
+        "id": "2075",
+        "name": "故宫博物院",
+        "normalized_name": "故宫博物院",
+        "place_type": "attraction",
+        "recommend_score": 137.64,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "929",
+        "name": "天坛",
+        "normalized_name": "天坛",
+        "place_type": "attraction",
+        "recommend_score": 110.53,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1063",
+        "name": "景山公园",
+        "normalized_name": "景山公园",
+        "place_type": "attraction",
+        "recommend_score": 98,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": null
+      },
+      {
+        "id": "668",
+        "name": "什刹海",
+        "normalized_name": "什刹海",
+        "place_type": "attraction",
+        "recommend_score": 95.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "724",
+        "name": "雍和宫",
+        "normalized_name": "雍和宫",
+        "place_type": "attraction",
+        "recommend_score": 93.31,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "661",
+        "name": "颐和园",
+        "normalized_name": "颐和园",
+        "place_type": "attraction",
+        "recommend_score": 80.19,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "982",
+        "name": "八达岭长城",
+        "normalized_name": "八达岭长城",
+        "place_type": "attraction",
+        "recommend_score": 78.05,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "793",
+        "name": "南锣鼓巷",
+        "normalized_name": "南锣鼓巷",
+        "place_type": "attraction",
+        "recommend_score": 66.92,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": null
+      },
+      {
+        "id": "763",
+        "name": "地坛公园",
+        "normalized_name": "地坛公园",
+        "place_type": "attraction",
+        "recommend_score": 65.1,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "662",
+        "name": "鼓楼",
+        "normalized_name": "鼓楼",
+        "place_type": "attraction",
+        "recommend_score": 63.29,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "989",
+        "name": "圆明园",
+        "normalized_name": "圆明园",
+        "place_type": "attraction",
+        "recommend_score": 63.08,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1036",
+        "name": "北海公园",
+        "normalized_name": "北海公园",
+        "place_type": "attraction",
+        "recommend_score": 61.07,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": {
+          "place": "北海公园",
+          "key": "xhs/北京/4c43da4bfc3095a1bd5b60ed08a0b15d/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "686",
+        "name": "国家博物馆",
+        "normalized_name": "国家博物馆",
+        "place_type": "attraction",
+        "recommend_score": 59.33,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "736",
+        "name": "烟袋斜街",
+        "normalized_name": "烟袋斜街",
+        "place_type": "attraction",
+        "recommend_score": 58.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "667",
+        "name": "杨梅竹斜街",
+        "normalized_name": "杨梅竹斜街",
+        "place_type": "attraction",
+        "recommend_score": 49,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1163",
+        "name": "天安门广场",
+        "normalized_name": "天安门广场",
+        "place_type": "attraction",
+        "recommend_score": 44.74,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "745",
+        "name": "前门大街",
+        "normalized_name": "前门大街",
+        "place_type": "attraction",
+        "recommend_score": 44.19,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "690",
+        "name": "天安门",
+        "normalized_name": "天安门",
+        "place_type": "attraction",
+        "recommend_score": 43.25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "744",
+        "name": "大栅栏",
+        "normalized_name": "大栅栏",
+        "place_type": "market",
+        "recommend_score": 41.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1062",
+        "name": "慕田峪长城",
+        "normalized_name": "慕田峪长城",
+        "place_type": "attraction",
+        "recommend_score": 41.33,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": {
+          "place": "慕田峪长城",
+          "key": "xhs/北京/7fa4e63e1293630dd5555036283a638c/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "675",
+        "name": "北锣鼓巷",
+        "normalized_name": "北锣鼓巷",
+        "place_type": "attraction",
+        "recommend_score": 39.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "757",
+        "name": "牛街",
+        "normalized_name": "牛街",
+        "place_type": "food",
+        "recommend_score": 37,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "831",
+        "name": "中山公园",
+        "normalized_name": "中山公园",
+        "place_type": "attraction",
+        "recommend_score": 34.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1299",
+        "name": "恭王府",
+        "normalized_name": "恭王府",
+        "place_type": "attraction",
+        "recommend_score": 33.33,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "700",
+        "name": "四季民福（故宫店）",
+        "normalized_name": "四季民福",
+        "place_type": "food",
+        "recommend_score": 32.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "743",
+        "name": "三里河公园",
+        "normalized_name": "三里河公园",
+        "place_type": "attraction",
+        "recommend_score": 32.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "799",
+        "name": "人民大会堂",
+        "normalized_name": "人民大会堂",
+        "place_type": "attraction",
+        "recommend_score": 32.42,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "725",
+        "name": "五道营胡同",
+        "normalized_name": "五道营胡同",
+        "place_type": "attraction",
+        "recommend_score": 32,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1562",
+        "name": "银锭桥",
+        "normalized_name": "银锭桥",
+        "place_type": "attraction",
+        "recommend_score": 32,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "742",
+        "name": "西兴隆街",
+        "normalized_name": "西兴隆街",
+        "place_type": "attraction",
+        "recommend_score": 32,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "764",
+        "name": "国子监",
+        "normalized_name": "国子监",
+        "place_type": "attraction",
+        "recommend_score": 31.55,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "663",
+        "name": "国子监街",
+        "normalized_name": "国子监街",
+        "place_type": "attraction",
+        "recommend_score": 30,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1224",
+        "name": "白塔寺",
+        "normalized_name": "白塔寺",
+        "place_type": "attraction",
+        "recommend_score": 30,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1484",
+        "name": "香山公园",
+        "normalized_name": "香山公园",
+        "place_type": "attraction",
+        "recommend_score": 28.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1068",
+        "name": "古北水镇",
+        "normalized_name": "古北水镇",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1264",
+        "name": "王府井",
+        "normalized_name": "王府井",
+        "place_type": "market",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "658",
+        "name": "姚记炒肝",
+        "normalized_name": "姚记炒肝",
+        "place_type": "food",
+        "recommend_score": 26.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "758",
+        "name": "法源寺",
+        "normalized_name": "法源寺",
+        "place_type": "attraction",
+        "recommend_score": 26.44,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1255",
+        "name": "牛街洪记小吃店",
+        "normalized_name": "牛街洪记小吃店",
+        "place_type": "food",
+        "recommend_score": 25.89,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "833",
+        "name": "紫竹院",
+        "normalized_name": "紫竹院",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "688",
+        "name": "三里屯",
+        "normalized_name": "三里屯",
+        "place_type": "market",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": null
+      },
+      {
+        "id": "752",
+        "name": "鲁迅博物馆",
+        "normalized_name": "鲁迅博物馆",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "824",
+        "name": "坡峰岭",
+        "normalized_name": "坡峰岭",
+        "place_type": "attraction",
+        "recommend_score": 24.38,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "653",
+        "name": "南门涮肉",
+        "normalized_name": "南门涮肉",
+        "place_type": "food",
+        "recommend_score": 23.88,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1149",
+        "name": "天安门城楼",
+        "normalized_name": "天安门城楼",
+        "place_type": "attraction",
+        "recommend_score": 23.12,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1069",
+        "name": "首钢园",
+        "normalized_name": "首钢园",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": null
+      },
+      {
+        "id": "756",
+        "name": "历代帝王庙",
+        "normalized_name": "历代帝王庙",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "740",
+        "name": "荷花市场",
+        "normalized_name": "荷花市场",
+        "place_type": "market",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "876",
+        "name": "奥林匹克森林公园",
+        "normalized_name": "奥林匹克森林公园",
+        "place_type": "attraction",
+        "recommend_score": 22,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "761",
+        "name": "烂缦胡同",
+        "normalized_name": "烂缦胡同",
+        "place_type": "attraction",
+        "recommend_score": 22,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      }
+    ]
+  },
+  "downstream": {
+    "places": 1349,
+    "withCover": 6,
+    "manifestEntries": 6,
+    "missingMediaFiles": [],
+    "orphanManifestEntries": [],
+    "imports": [
+      {
+        "source": "xhs_relations",
+        "row_count": 79,
+        "file_path": "xhs-place-relations-北京.json",
+        "imported_at": "2026-09-27T04:24:11.397Z"
+      },
+      {
+        "source": "xhs_places",
+        "row_count": 1346,
+        "file_path": "xhs-places-北京.json",
+        "imported_at": "2026-09-27T04:24:17.134Z"
+      },
+      {
+        "source": "xhs_place_images",
+        "row_count": 6,
+        "file_path": "xhs-place-images-北京.json",
+        "imported_at": "2026-09-29T17:04:56.096Z"
+      }
+    ]
+  },
+  "trip": null,
+  "caveat": "相关笔记中的未绑定图不是已确认属于该景点的图；各地点该计数可重叠。"
+}

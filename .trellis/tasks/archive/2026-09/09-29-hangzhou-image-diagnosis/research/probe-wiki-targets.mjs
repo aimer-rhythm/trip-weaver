@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import '../../../../apps/server/src/lib/proxy.ts';
+const names = ['断桥残雪','苏堤','三潭印月','宝石山','飞来峰 (杭州)','九溪十八涧','西溪国家湿地公园','南宋御街'];
+const params=new URLSearchParams({action:'query',titles:names.join('|'),prop:'pageimages|coordinates|pageprops',piprop:'thumbnail|name',pithumbsize:'500',colimit:'1',format:'json',redirects:'1'});
+const response=await fetch('https://zh.wikipedia.org/w/api.php?'+params,{signal:AbortSignal.timeout(15000)});
+if(!response.ok) throw new Error(String(response.status));
+const data=await response.json();
+fs.writeFileSync('.trellis/tasks/09-29-hangzhou-image-diagnosis/research/wiki-target-metadata.json',JSON.stringify(data,null,2));
+const pages=Object.values(data.query?.pages||{});
+const ids=pages.map(p=>p.pageprops?.wikibase_item).filter(Boolean);
+const claims=await (await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:ids.join('|'),props:'claims',format:'json'}),{signal:AbortSignal.timeout(15000)})).json();
+fs.writeFileSync('.trellis/tasks/09-29-hangzhou-image-diagnosis/research/wiki-target-claims.json',JSON.stringify(claims,null,2));
+for(const p of pages) console.log(JSON.stringify({title:p.title,item:p.pageprops?.wikibase_item,coordinates:p.coordinates,claims:claims.entities?.[p.pageprops?.wikibase_item]?.claims?.P625?.map(x=>x.mainsnak.datavalue?.value)}));

@@ -1,0 +1,633 @@
+{
+  "generatedAt": "2026-09-29T16:27:23.098Z",
+  "city": "成都",
+  "readOnly": true,
+  "allCities": [
+    {
+      "city": "上海",
+      "scenery": 5,
+      "linked": 0,
+      "places": 0
+    },
+    {
+      "city": "北京",
+      "scenery": 55,
+      "linked": 17,
+      "places": 6
+    },
+    {
+      "city": "厦门",
+      "scenery": 121,
+      "linked": 11,
+      "places": 3
+    },
+    {
+      "city": "广州",
+      "scenery": 327,
+      "linked": 96,
+      "places": 33
+    },
+    {
+      "city": "成都",
+      "scenery": 66,
+      "linked": 7,
+      "places": 2
+    },
+    {
+      "city": "杭州",
+      "scenery": 428,
+      "linked": 96,
+      "places": 39
+    }
+  ],
+  "upstream": {
+    "notes": [
+      {
+        "total": 242,
+        "image_urls": 2247,
+        "unified_processed": 216,
+        "text_analyzed": 202
+      }
+    ],
+    "mentionDistribution": [
+      {
+        "places_per_note": "multiple",
+        "notes": 69
+      },
+      {
+        "places_per_note": "none",
+        "notes": 126
+      },
+      {
+        "places_per_note": "single",
+        "notes": 47
+      }
+    ],
+    "places": [
+      {
+        "total": 415,
+        "active": 404,
+        "resolved": 404,
+        "exportable": 404
+      }
+    ],
+    "images": [
+      {
+        "img_type": "scenery",
+        "total": 66,
+        "linked": 7,
+        "places": 2
+      }
+    ],
+    "unlinked": [
+      {
+        "reason": "multiple",
+        "images": 32
+      },
+      {
+        "reason": "no_mentions",
+        "images": 27
+      }
+    ],
+    "missingSourceFiles": 0,
+    "topPlaces": [
+      {
+        "id": "1688",
+        "name": "武侯祠",
+        "normalized_name": "武侯祠",
+        "place_type": "attraction",
+        "recommend_score": 69.23,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 14,
+        "downstreamCover": null
+      },
+      {
+        "id": "1640",
+        "name": "东郊记忆",
+        "normalized_name": "东郊记忆",
+        "place_type": "attraction",
+        "recommend_score": 64.08,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "1692",
+        "name": "宽窄巷子",
+        "normalized_name": "宽窄巷子",
+        "place_type": "attraction",
+        "recommend_score": 58.14,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "1944",
+        "name": "成都太古里",
+        "normalized_name": "成都太古里",
+        "place_type": "attraction",
+        "recommend_score": 57.02,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "1697",
+        "name": "春熙路",
+        "normalized_name": "春熙路",
+        "place_type": "attraction",
+        "recommend_score": 54.25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1700",
+        "name": "文殊院",
+        "normalized_name": "文殊院",
+        "place_type": "attraction",
+        "recommend_score": 52.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1687",
+        "name": "人民公园",
+        "normalized_name": "人民公园",
+        "place_type": "attraction",
+        "recommend_score": 52.5,
+        "linked_images": 5,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": {
+          "place": "人民公园",
+          "key": "xhs/成都/c59fb8b0967139fdc1bbf231b57283b1/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "1686",
+        "name": "成都博物馆",
+        "normalized_name": "成都博物馆",
+        "place_type": "attraction",
+        "recommend_score": 49.44,
+        "linked_images": 2,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": {
+          "place": "成都博物馆",
+          "key": "xhs/成都/e35dd8c5d493408a525edee193c816d4/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "1689",
+        "name": "锦里",
+        "normalized_name": "锦里",
+        "place_type": "attraction",
+        "recommend_score": 45.44,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 10,
+        "downstreamCover": null
+      },
+      {
+        "id": "1704",
+        "name": "杜甫草堂",
+        "normalized_name": "杜甫草堂",
+        "place_type": "attraction",
+        "recommend_score": 45,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "1734",
+        "name": "大慈寺",
+        "normalized_name": "大慈寺",
+        "place_type": "attraction",
+        "recommend_score": 42.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "1743",
+        "name": "熊猫基地",
+        "normalized_name": "熊猫基地",
+        "place_type": "attraction",
+        "recommend_score": 40.33,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1694",
+        "name": "望平街",
+        "normalized_name": "望平街",
+        "place_type": "attraction",
+        "recommend_score": 40,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "1690",
+        "name": "玉林路",
+        "normalized_name": "玉林路",
+        "place_type": "other",
+        "recommend_score": 35,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1702",
+        "name": "九眼桥",
+        "normalized_name": "九眼桥",
+        "place_type": "attraction",
+        "recommend_score": 32.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1693",
+        "name": "成都大熊猫繁育研究基地",
+        "normalized_name": "成都大熊猫繁育研究基地",
+        "place_type": "attraction",
+        "recommend_score": 26.39,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1746",
+        "name": "奎星楼街",
+        "normalized_name": "奎星楼街",
+        "place_type": "food",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1785",
+        "name": "都江堰",
+        "normalized_name": "都江堰",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1635",
+        "name": "翠孃孃老火锅（文殊院店）",
+        "normalized_name": "翠娘娘老火锅",
+        "place_type": "food",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1637",
+        "name": "岳富贵老火锅",
+        "normalized_name": "岳富贵老火锅",
+        "place_type": "food",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1750",
+        "name": "烤匠麻辣烤鱼（春熙路店）",
+        "normalized_name": "烤匠麻辣烤鱼",
+        "place_type": "food",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1732",
+        "name": "熊猫书店",
+        "normalized_name": "熊猫书店",
+        "place_type": "other",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1847",
+        "name": "鹤鸣茶社",
+        "normalized_name": "鹤鸣茶社",
+        "place_type": "cafe",
+        "recommend_score": 17.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1629",
+        "name": "抚琴夜市",
+        "normalized_name": "抚琴夜市",
+        "place_type": "market",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "1695",
+        "name": "镗钯街",
+        "normalized_name": "镗钯街",
+        "place_type": "photo_spot",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "1737",
+        "name": "熊猫邮局",
+        "normalized_name": "熊猫邮局",
+        "place_type": "other",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "1900",
+        "name": "熊猫谷",
+        "normalized_name": "熊猫谷",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1812",
+        "name": "玉林",
+        "normalized_name": "玉林",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "1787",
+        "name": "红杏酒家",
+        "normalized_name": "红杏酒家",
+        "place_type": "food",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1636",
+        "name": "鹏鹏妈老火锅",
+        "normalized_name": "鹏鹏妈老火锅",
+        "place_type": "food",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1761",
+        "name": "青羊宫",
+        "normalized_name": "青羊宫",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1869",
+        "name": "博客楼",
+        "normalized_name": "博客楼",
+        "place_type": "attraction",
+        "recommend_score": 13.25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1851",
+        "name": "IFS国际金融中心",
+        "normalized_name": "IFS国际金融中心",
+        "place_type": "market",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "1950",
+        "name": "四川博物院",
+        "normalized_name": "四川博物院",
+        "place_type": "attraction",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1850",
+        "name": "安顺廊桥",
+        "normalized_name": "安顺廊桥",
+        "place_type": "photo_spot",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "1751",
+        "name": "王婆婆老妈蹄花・川菜馆（太古里一店）",
+        "normalized_name": "王婆婆老妈蹄花川菜馆",
+        "place_type": "food",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1733",
+        "name": "IFS国金",
+        "normalized_name": "IFS国金",
+        "place_type": "attraction",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "1788",
+        "name": "龙户人家串串香（九眼桥店）",
+        "normalized_name": "龙户人家串串香",
+        "place_type": "food",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1946",
+        "name": "玉林串串香（春熙路店）",
+        "normalized_name": "玉林串串香",
+        "place_type": "food",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1868",
+        "name": "洛带古镇",
+        "normalized_name": "洛带古镇",
+        "place_type": "attraction",
+        "recommend_score": 10.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1774",
+        "name": "无名冒菜",
+        "normalized_name": "无名冒菜",
+        "place_type": "food",
+        "recommend_score": 10.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1846",
+        "name": "IFS爬墙熊猫",
+        "normalized_name": "IFS爬墙熊猫",
+        "place_type": "photo_spot",
+        "recommend_score": 10.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1648",
+        "name": "东郊记忆成都墙",
+        "normalized_name": "东郊记忆成都墙",
+        "place_type": "photo_spot",
+        "recommend_score": 10.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1685",
+        "name": "文殊坊",
+        "normalized_name": "文殊坊",
+        "place_type": "attraction",
+        "recommend_score": 10.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "1860",
+        "name": "圆胖子老火锅",
+        "normalized_name": "圆胖子老火锅",
+        "place_type": "food",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1856",
+        "name": "沈堂甜水面",
+        "normalized_name": "沈堂甜水面",
+        "place_type": "food",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1852",
+        "name": "青莲上街",
+        "normalized_name": "青莲上街",
+        "place_type": "photo_spot",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1873",
+        "name": "四大会馆",
+        "normalized_name": "四大会馆",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1823",
+        "name": "川纳万海",
+        "normalized_name": "川纳万海",
+        "place_type": "cafe",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "1738",
+        "name": "中车·源STAGE",
+        "normalized_name": "中车源STAGE",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      }
+    ]
+  },
+  "downstream": {
+    "places": 411,
+    "withCover": 2,
+    "manifestEntries": 2,
+    "missingMediaFiles": [],
+    "orphanManifestEntries": [],
+    "imports": [
+      {
+        "source": "xhs_relations",
+        "row_count": 22,
+        "file_path": "xhs-place-relations-成都.json",
+        "imported_at": "2026-09-27T04:24:11.397Z"
+      },
+      {
+        "source": "xhs_places",
+        "row_count": 404,
+        "file_path": "xhs-places-成都.json",
+        "imported_at": "2026-09-29T12:00:56.100Z"
+      },
+      {
+        "source": "xhs_place_images",
+        "row_count": 2,
+        "file_path": "xhs-place-images-成都.json",
+        "imported_at": "2026-09-29T12:00:58.693Z"
+      }
+    ]
+  },
+  "trip": null,
+  "caveat": "相关笔记中的未绑定图不是已确认属于该景点的图；各地点该计数可重叠。"
+}

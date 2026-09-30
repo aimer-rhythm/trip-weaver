@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>杭州配图对比 · 横版与氛围优先</title>
+  <style>
+    :root{color-scheme:light;--ink:#253750;--muted:#586b83;--line:#d8e0ea;--paper:#f4f7fb;--blue:#3866c6;--wash:#eaf1ff;--green:#326255}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 system-ui,'Microsoft YaHei',sans-serif}
+    main{max-width:1760px;margin:auto;padding:38px 36px 26px}h1,h2,h3,p{margin:0}h1{font-size:32px;letter-spacing:.02em;font-weight:650;margin:6px 0 12px}h2{font-size:24px;font-weight:650}h3{font-size:17px}p{color:var(--muted)}a{color:var(--blue);text-underline-offset:4px}button,select{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+    .eyebrow{color:var(--muted);font-size:12px;letter-spacing:.12em}.lead{max-width:1100px;font-size:16px}.intro-links{display:flex;gap:24px;margin:16px 0}.intro-links a{min-height:44px;display:inline-flex;align-items:center}
+    .toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 0;border-block:1px solid var(--line);margin:8px 0 28px}select{min-height:44px;background:white;border:1px solid var(--line);border-radius:8px;padding:8px 40px 8px 12px;color:var(--ink);max-width:100%}.toolbar span{color:var(--muted);font-size:13px}.toolbar label{font-weight:600}
+    section{scroll-margin-top:20px}.section-heading{margin-bottom:20px}.section-heading p{margin-top:5px}.number{font-size:12px;color:var(--blue);letter-spacing:.1em;margin-bottom:5px}.layout-board{padding:26px;background:#eaf0fa;border:1px solid #d5dfef;border-radius:18px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.layout-option{min-width:0}.option-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}.badge{display:inline-block;font-size:12px;border-radius:5px;background:#e9edf3;color:#4b607e;padding:3px 7px}.badge.green{color:#285447;background:#ddeee8}.layout-option>p{font-size:13px;margin-top:12px;min-height:44px}.compare-caption{font-size:12px;margin-top:16px;color:var(--muted)}
+    .activity{border:1px solid #e0e8f2;border-radius:16px;background:#fff;box-shadow:0 5px 12px #365a8c0a;padding:18px 16px 14px;min-width:0}.activity-header{display:grid;grid-template-columns:36px minmax(0,1fr) 24px;align-items:center;gap:10px;margin-bottom:16px}.order{display:grid;place-items:center;width:36px;height:36px;background:#dbe4ff;border-radius:50%;color:#5c71bb;font-size:15px}.activity-title{font-size:18px;font-weight:600;color:#284c80}.dots{color:#637aa0;letter-spacing:2px}.activity-content{display:flex;gap:14px;padding-left:46px;align-items:flex-start}.activity-text{min-width:0;flex:1}.category{font-size:13px;color:#6177a1;margin-bottom:9px;display:block}.activity-description{font-size:13px;line-height:1.85;color:#50668b}.preview-open{display:block;padding:0;border:0;background:transparent;border-radius:10px;overflow:hidden;flex:none;min-width:44px;min-height:44px}.preview-open img{display:block;object-fit:contain;border-radius:10px}.activity-credit{font-size:10px;color:#63728a;line-height:1.5;margin-top:14px;overflow-wrap:anywhere}.activity-credit a{color:inherit}.old .preview-open img{width:180px;height:146px;object-fit:cover}.small .preview-open img{width:auto;height:auto;max-width:128px;max-height:128px}.landscape .preview-open img{width:auto;height:auto;max-width:180px;max-height:120px}.activity.landscape.portrait .preview-open img{max-height:150px;max-width:108px}.mini .activity{box-shadow:none;border-radius:12px}.mini .activity-content{padding-left:0}.mini .activity-header{grid-template-columns:28px minmax(0,1fr) 20px;gap:8px;margin-bottom:12px}.mini .order{width:28px;height:28px;font-size:12px}.mini .activity-title{font-size:16px}.mini .activity-description{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}.mini .landscape .preview-open img{max-width:142px;max-height:96px}.mini .landscape.portrait .preview-open img{max-width:78px;max-height:116px}
+    #candidates{margin-top:32px;padding:26px 0 0}.candidates-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.candidates-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.candidate{min-width:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}.candidate-heading{padding:15px 16px 12px;display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap}.candidate-heading h3{font-size:16px}.full-photo{display:flex;align-items:center;justify-content:center;width:100%;height:260px;background:#edf0f3;border:0;border-block:1px solid #e3e8ee;padding:0;cursor:zoom-in}.full-photo img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.candidate-body{padding:12px 16px 16px;flex:1;display:flex;flex-direction:column}.dimensions{font-size:12px;color:#425c7d;margin-bottom:7px}.reason{font-size:14px;min-height:47px}.limit{font-size:12px;margin-top:7px;min-height:60px}.source{font-size:12px;margin-top:9px;overflow-wrap:anywhere}.mini{margin-top:16px}.mini-label{font-size:11px;color:#5b6d87;margin-bottom:6px}.mini .activity-credit{display:none}.choice{margin-top:16px;width:100%;min-height:44px;border:1px solid #c8d6ed;background:#f7faff;color:#315a9d;border-radius:8px}.choice[aria-pressed=true]{background:#e9f0ff;border-color:#7b9acf}.candidate[data-role="不推荐"]{background:#faf9f7}.candidate[data-role="不推荐"] .badge{background:#ede8df;color:#765a38}.source-status{font-size:12px;color:#5c6d83;margin-top:4px}details{font-size:12px;margin-top:10px}summary{cursor:pointer;min-height:44px;display:flex;align-items:center}details p{margin-top:5px}.empty{border:1px dashed #b5c3d5;background:#fff;border-radius:12px;padding:30px}.empty a{display:inline-flex;min-height:44px;align-items:center}.footnote{border-top:1px solid var(--line);margin-top:32px;padding:20px 0;font-size:12px;color:var(--muted)}.footnote p+p{margin-top:8px}#selected-description{min-height:26px}
+    dialog{padding:18px;border:1px solid var(--line);border-radius:14px;max-width:min(1180px,95vw);max-height:94dvh;background:#fff;color:var(--ink)}dialog::backdrop{background:#15243ccc}dialog .dialog-top{display:flex;gap:20px;align-items:center;justify-content:space-between;margin-bottom:10px}dialog h2{font-size:18px}dialog .close{min-width:60px;min-height:44px;background:#f2f5fa;border:1px solid var(--line);border-radius:8px}dialog img{display:block;max-width:100%;max-height:72dvh;object-fit:contain;margin:auto}dialog p{font-size:12px;margin-top:10px;overflow-wrap:anywhere}[hidden]{display:none!important}
+    @media(max-width:1380px){.three{gap:12px}.layout-board{padding:18px}.activity-content{padding-left:0}.activity-description{font-size:12px}.candidates-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.old .preview-open img{width:156px;height:127px}.landscape .preview-open img{max-width:156px;max-height:110px}.small .preview-open img{max-width:112px;max-height:112px}}
+    @media(max-width:1080px){.three{grid-template-columns:1fr}.layout-option{max-width:560px;width:100%;margin:auto}.activity-description{font-size:14px}.candidates-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.activity-content{padding-left:46px}.old .preview-open img{width:180px;height:146px}.landscape .preview-open img{max-width:180px;max-height:120px}.small .preview-open img{max-width:128px;max-height:128px}}
+    @media(max-width:620px){main{padding:24px 16px}h1{font-size:26px}h2{font-size:21px}.lead{font-size:14px}.toolbar{align-items:flex-start}.toolbar span{width:100%}.intro-links{gap:16px;font-size:13px}.layout-board{padding:16px 12px}.three{gap:24px}.activity{padding:14px 12px}.activity-header{margin-bottom:12px}.activity-content{padding-left:0;gap:10px}.activity-description{font-size:12px}.old .preview-open img{width:120px;height:98px}.small .preview-open img{max-width:96px;max-height:108px}.landscape .preview-open img{max-width:128px;max-height:88px}.activity.landscape.portrait .preview-open img{max-width:74px;max-height:110px}.candidates-grid,.candidates-grid.four{grid-template-columns:1fr}.full-photo{height:240px}.reason,.limit{min-height:0}.candidate-heading h3{font-size:17px}.layout-option>p{min-height:0}.mini .activity-description{font-size:13px}#candidates{padding-top:0}.footnote{font-size:12px}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">TRIPWEAVER / 杭州配图 · 第三轮对比</div>
+    <h1>回到中等配图，先选好横版。</h1>
+    <p class="lead">先比较同一张照片的大小，再比较同一布局里的照片。候选优先看横向构图、光影和氛围；出众的竖图保留备选，普通游客照不因横版而加分。</p>
+    <nav class="intro-links" aria-label="对比导航" style="flex-wrap:wrap"><a href="openverse.html">新增 Openverse / Flickr 候选 →</a><a href="#candidates">看已复看的照片 ↓</a><a href="index.html">查看首轮全部来源</a></nav>
+  </header>
+  <div class="toolbar"><label for="place">比较景点</label><select id="place"></select><span>本地提案预览 · 可切换照片比较排版，点击照片看完整图</span></div>
+  <section id="layouts" class="layout-board" aria-labelledby="layout-title">
+    <div class="section-heading"><div class="number">01 / 同图比较布局</div><h2 id="layout-title">保持文字为主，让照片有适当的存在感</h2><p id="selected-description" aria-live="polite"></p></div>
+    <div id="layout-options" class="three"></div>
+    <p class="compare-caption">卡片示意，非正式详情页截图。三列文字和照片相同；A 模拟原版中图裁切，B 模拟当前小图，C 保留横图比例。手机端尺寸相应缩小。</p>
+  </section>
+  <section id="candidates" aria-labelledby="candidate-title">
+    <div class="section-heading"><div class="number">02 / 同布局比较照片</div><h2 id="candidate-title"></h2><p id="place-note"></p></div>
+    <div id="candidate-grid" class="candidates-grid"></div>
+    <div id="empty" class="empty" hidden><p>暂留缺口，继续寻找地点准确、横向构图且有氛围的照片。</p><a id="legacy-link" href="index.html">查看已有样本与来源 →</a></div>
+  </section>
+  <footer class="footnote">
+    <p>Commons 是 Wikimedia Commons（维基共享资源），属于开放媒体库；每张作品的作者与许可各自列出。来源说明不代表摄影质量评价。</p>
+    <p>照片已按地点证据复看；小红书图保留水印和原构图，仅作风格参考。夜景、日出与季节画面不保证实际到访效果。此页切换不写入行程或正式图库。2026.09.30</p>
+  </footer>
+</main>
+<dialog id="photo-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><h2 id="dialog-title"></h2><button type="button" class="close">关闭</button></div><img id="dialog-image" alt=""><p id="dialog-credit"></p></dialog>
+<script id="photo-data" type="application/json">__PHOTO_DATA__</script>
+<script>
+  const data = JSON.parse(document.getElementById('photo-data').textContent);
+  const $ = s => document.querySelector(s);
+  const E = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const credit = p => `<a href="${E(p.credit.sourceUrl)}" target="_blank" rel="noopener noreferrer">${E(p.credit.photographer)} · ${E(p.credit.source)}</a> · <a href="${E(p.credit.licenseUrl)}" target="_blank" rel="noopener noreferrer">${E(p.credit.license)}</a>`;
+  const dims = p => `${p.orientation} ${p.ratio} · 本地 ${p.width} × ${p.height}${p.rotate ? ' · 旋转转正' : ''}`;
+  const image = p => `<img src="${E(p.src)}" alt="${E(p.title)}" width="${p.width}" height="${p.height}">`;
+  function card(place, p, mode){
+    return `<div class="activity ${mode} ${p.orientation === '竖版' ? 'portrait' : ''}"><div class="activity-header"><span class="order">01</span><span class="activity-title">${E(place.name)}</span><span class="dots" aria-hidden="true">···</span></div><div class="activity-content"><div class="activity-text"><span class="category">景点 · 风景</span><p class="activity-description">${E(place.intro)}</p></div><button class="preview-open" type="button" data-open="${E(p.id)}" aria-label="查看${E(p.title)}完整图片">${image(p)}</button></div><div class="activity-credit">${credit(p)}</div></div>`;
+  }
+  const select = $('#place');
+  select.innerHTML = data.places.map(p => `<option value="${E(p.id)}">${E(p.name)}${p.photos.length ? '' : ' · 待补充'}</option>`).join('');
+  const url = new URL(location.href);
+  let place = data.places.find(p => p.id === url.searchParams.get('place')) || data.places[0];
+  let selected = place.photos.find(p => p.id === url.searchParams.get('photo')) || place.photos[0];
+  select.value = place.id;
+  function syncUrl(){
+    const url = new URL(location.href);
+    url.searchParams.set('place', place.id);
+    if(selected) url.searchParams.set('photo', selected.id); else url.searchParams.delete('photo');
+    history.replaceState(null, '', url);
+  }
+  function renderLayouts(){
+    $('#layouts').hidden = !selected;
+    if(!selected){$('#layout-options').innerHTML = ''; return;}
+    $('#selected-description').textContent = `${place.name} / ${selected.title} · ${dims(selected)}`;
+    const choices = [
+      ['old', 'A · 原版中图', '作为基准', '接近原版右侧中图的大小；固定框会截去横图两侧。'],
+      ['small', 'B · 当前小图', '上一版', '完整构图但图片较小，塔影、树枝和光线细节不易看清。'],
+      ['landscape', 'C · 中图保留比例', '建议方向', '接近原版宽度，横图完整缩放；竖图保留为窄幅备选，点击看大图。']
+    ];
+    $('#layout-options').innerHTML = choices.map(([mode, title, badge, note]) => `<article class="layout-option"><div class="option-top"><h3>${title}</h3><span class="badge ${mode==='landscape'?'green':''}">${badge}</span></div>${card(place, selected, mode)}<p>${note}</p></article>`).join('');
+    document.querySelectorAll('.choice').forEach(b => {
+      const current = b.dataset.choose === selected.id;
+      b.setAttribute('aria-pressed', String(current));
+      b.textContent = current ? '正在上方比较这张' : '用这张比较排版 ↑';
+    });
+  }
+  function renderCandidates(){
+    $('#candidate-title').textContent = `${place.name} · 横版与氛围候选`;
+    $('#place-note').textContent = place.note;
+    $('#empty').hidden = !!place.photos.length;
+    $('#legacy-link').href = `index.html?place=place-${place.legacyIndex}`;
+    $('#candidate-grid').classList.toggle('four', place.photos.length === 4);
+    $('#candidate-grid').innerHTML = place.photos.map(p => `<article class="candidate" data-id="${E(p.id)}" data-role="${E(p.role)}"><div class="candidate-heading"><h3>${E(p.title)}</h3><span class="badge ${p.role==='优先候选'?'green':''}">${E(p.role)}</span></div><button class="full-photo" type="button" data-open="${E(p.id)}" aria-label="放大${E(p.title)}">${image(p)}</button><div class="candidate-body"><p class="dimensions">${dims(p)}</p><p class="reason">${E(p.reason)}</p><p class="limit">${E(p.limit)}</p><p class="source">${credit(p)}</p><p class="source-status">${E(p.status)}</p><div class="mini"><p class="mini-label">放入右侧中图布局 · 按本列宽度缩放</p>${card(place, p, 'landscape')}</div><button class="choice" type="button" data-choose="${E(p.id)}" aria-pressed="false">用这张比较排版 ↑</button><details><summary>地点依据与作品信息</summary><p>${E(p.evidence)}</p><p>${E(p.sourceTitle)}</p><p>${E(p.id)}${p.sourceSize.every(Boolean) ? ` · 来源标注 ${p.sourceSize.join(' × ')}` : ''}</p></details></div></article>`).join('');
+  }
+  renderCandidates(); renderLayouts(); syncUrl();
+  select.addEventListener('change', () => {
+    place = data.places.find(p => p.id === select.value);
+    selected = place.photos[0]; renderCandidates(); renderLayouts(); syncUrl();
+  });
+  const dialog = $('#photo-dialog'); let trigger;
+  document.addEventListener('click', event => {
+    const choose = event.target.closest('[data-choose]');
+    if(choose){selected = place.photos.find(p => p.id === choose.dataset.choose); renderLayouts(); syncUrl(); $('#layouts').scrollIntoView({block:'start'}); return;}
+    const open = event.target.closest('[data-open]');
+    if(open){
+      const p = place.photos.find(p => p.id === open.dataset.open);
+      trigger = open; $('#dialog-title').textContent = p.title;
+      $('#dialog-image').src = p.src; $('#dialog-image').alt = p.title;
+      $('#dialog-credit').innerHTML = `${credit(p)} · ${E(dims(p))} · ${E(p.status)}`;
+      dialog.showModal();
+    }
+  });
+  dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    const rect = dialog.getBoundingClientRect();
+    if(event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+  });
+  dialog.addEventListener('close', () => {if(trigger?.isConnected) trigger.focus();});
+</script>
+</body>
+</html>

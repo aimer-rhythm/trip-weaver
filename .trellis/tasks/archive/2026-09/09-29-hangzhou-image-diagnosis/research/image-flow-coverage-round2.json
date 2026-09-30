@@ -1,0 +1,789 @@
+{
+  "generatedAt": "2026-09-30T00:53:36.886Z",
+  "city": "杭州",
+  "readOnly": true,
+  "allCities": [
+    {
+      "city": "上海",
+      "scenery": 5,
+      "linked": 0,
+      "places": 0
+    },
+    {
+      "city": "北京",
+      "scenery": 55,
+      "linked": 17,
+      "places": 6
+    },
+    {
+      "city": "厦门",
+      "scenery": 121,
+      "linked": 11,
+      "places": 3
+    },
+    {
+      "city": "广州",
+      "scenery": 327,
+      "linked": 96,
+      "places": 33
+    },
+    {
+      "city": "成都",
+      "scenery": 66,
+      "linked": 7,
+      "places": 2
+    },
+    {
+      "city": "杭州",
+      "scenery": 433,
+      "linked": 98,
+      "places": 41
+    }
+  ],
+  "upstream": {
+    "notes": [
+      {
+        "total": 235,
+        "image_urls": 2757,
+        "unified_processed": 14,
+        "text_analyzed": 6
+      }
+    ],
+    "mentionDistribution": [
+      {
+        "places_per_note": "multiple",
+        "notes": 156
+      },
+      {
+        "places_per_note": "none",
+        "notes": 28
+      },
+      {
+        "places_per_note": "single",
+        "notes": 51
+      }
+    ],
+    "places": [
+      {
+        "total": 682,
+        "active": 669,
+        "resolved": 669,
+        "exportable": 669
+      }
+    ],
+    "images": [
+      {
+        "img_type": "scenery",
+        "total": 433,
+        "linked": 98,
+        "places": 41
+      },
+      {
+        "img_type": "collage",
+        "total": 23,
+        "linked": 2,
+        "places": 2
+      },
+      {
+        "img_type": "interior",
+        "total": 6,
+        "linked": 4,
+        "places": 4
+      },
+      {
+        "img_type": "text_card",
+        "total": 3,
+        "linked": 1,
+        "places": 1
+      }
+    ],
+    "unlinked": [
+      {
+        "reason": "multiple",
+        "images": 306
+      },
+      {
+        "reason": "no_mentions",
+        "images": 29
+      }
+    ],
+    "missingSourceFiles": 0,
+    "topPlaces": [
+      {
+        "id": "4007",
+        "name": "灵隐寺",
+        "normalized_name": "灵隐寺",
+        "place_type": "attraction",
+        "recommend_score": 111.91,
+        "linked_images": 2,
+        "unlinked_images_in_related_notes": 58,
+        "downstreamCover": {
+          "place": "灵隐寺",
+          "key": "xhs/杭州/56e268b7cdcca76052bd6359c8ffb278/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3991",
+        "name": "西湖",
+        "normalized_name": "西湖",
+        "place_type": "attraction",
+        "recommend_score": 88.26,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 47,
+        "downstreamCover": {
+          "place": "西湖",
+          "key": "xhs/杭州/9e3d184e145964553e87f1c379734be7/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4006",
+        "name": "河坊街",
+        "normalized_name": "河坊街",
+        "place_type": "market",
+        "recommend_score": 73.79,
+        "linked_images": 2,
+        "unlinked_images_in_related_notes": 26,
+        "downstreamCover": {
+          "place": "河坊街",
+          "key": "xhs/杭州/362c93988a8e230258f54eed610a7fa4/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3995",
+        "name": "小河直街",
+        "normalized_name": "小河直街",
+        "place_type": "attraction",
+        "recommend_score": 72.31,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 30,
+        "downstreamCover": null
+      },
+      {
+        "id": "3994",
+        "name": "曲院风荷",
+        "normalized_name": "曲院风荷",
+        "place_type": "attraction",
+        "recommend_score": 70,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 49,
+        "downstreamCover": {
+          "place": "曲院风荷",
+          "key": "xhs/杭州/42bf304ad5dc5c3a90279a09506b6044/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4005",
+        "name": "雷峰塔",
+        "normalized_name": "雷峰塔",
+        "place_type": "attraction",
+        "recommend_score": 69.04,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 31,
+        "downstreamCover": {
+          "place": "雷峰塔",
+          "key": "xhs/杭州/65bd21fa2a000639d6238c25c2cfbb63/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4010",
+        "name": "拱宸桥",
+        "normalized_name": "拱宸桥",
+        "place_type": "attraction",
+        "recommend_score": 60,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 24,
+        "downstreamCover": null
+      },
+      {
+        "id": "4008",
+        "name": "法喜寺",
+        "normalized_name": "法喜寺",
+        "place_type": "attraction",
+        "recommend_score": 59.05,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 21,
+        "downstreamCover": null
+      },
+      {
+        "id": "3990",
+        "name": "太子湾公园",
+        "normalized_name": "太子湾公园",
+        "place_type": "attraction",
+        "recommend_score": 57.02,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 52,
+        "downstreamCover": {
+          "place": "太子湾公园",
+          "key": "xhs/杭州/7acd0bdb6ee77ccb5586ccdbac752b2e/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4050",
+        "name": "龙井村",
+        "normalized_name": "龙井村",
+        "place_type": "attraction",
+        "recommend_score": 56.76,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 37,
+        "downstreamCover": null
+      },
+      {
+        "id": "3996",
+        "name": "虎跑公园",
+        "normalized_name": "虎跑公园",
+        "place_type": "attraction",
+        "recommend_score": 55,
+        "linked_images": 5,
+        "unlinked_images_in_related_notes": 47,
+        "downstreamCover": {
+          "place": "虎跑公园",
+          "key": "xhs/杭州/89a1b6c43752013aac4b68bcafe8a7cf/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3993",
+        "name": "云栖竹径",
+        "normalized_name": "云栖竹径",
+        "place_type": "attraction",
+        "recommend_score": 54,
+        "linked_images": 6,
+        "unlinked_images_in_related_notes": 45,
+        "downstreamCover": {
+          "place": "云栖竹径",
+          "key": "xhs/杭州/e3aa3117c504f3b961f54e0e40c96379/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4056",
+        "name": "花港观鱼",
+        "normalized_name": "花港观鱼",
+        "place_type": "attraction",
+        "recommend_score": 52.24,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 44,
+        "downstreamCover": null
+      },
+      {
+        "id": "3997",
+        "name": "柳浪闻莺",
+        "normalized_name": "柳浪闻莺",
+        "place_type": "attraction",
+        "recommend_score": 47.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 48,
+        "downstreamCover": null
+      },
+      {
+        "id": "4011",
+        "name": "武林夜市",
+        "normalized_name": "武林夜市",
+        "place_type": "market",
+        "recommend_score": 46.62,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      },
+      {
+        "id": "3992",
+        "name": "九溪烟树",
+        "normalized_name": "九溪烟树",
+        "place_type": "attraction",
+        "recommend_score": 45,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 37,
+        "downstreamCover": {
+          "place": "九溪烟树",
+          "key": "xhs/杭州/b1fe60915782867d914bff2db22b960d/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4004",
+        "name": "三潭印月",
+        "normalized_name": "三潭印月",
+        "place_type": "attraction",
+        "recommend_score": 41.83,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 19,
+        "downstreamCover": null
+      },
+      {
+        "id": "4151",
+        "name": "茅家埠",
+        "normalized_name": "茅家埠",
+        "place_type": "attraction",
+        "recommend_score": 40,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 31,
+        "downstreamCover": null
+      },
+      {
+        "id": "4108",
+        "name": "乌龟潭",
+        "normalized_name": "乌龟潭",
+        "place_type": "attraction",
+        "recommend_score": 37.12,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 31,
+        "downstreamCover": null
+      },
+      {
+        "id": "4148",
+        "name": "苏堤",
+        "normalized_name": "苏堤",
+        "place_type": "attraction",
+        "recommend_score": 35.96,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 21,
+        "downstreamCover": {
+          "place": "苏堤",
+          "key": "xhs/杭州/78886d74e678d61a4d3e5ebd5fd9f74c/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4003",
+        "name": "断桥残雪",
+        "normalized_name": "断桥残雪",
+        "place_type": "attraction",
+        "recommend_score": 35,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": {
+          "place": "西湖断桥",
+          "key": "xhs/杭州/072594881c58508fb7b76c320f3c8c20/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3980",
+        "name": "晓霞弄",
+        "normalized_name": "晓霞弄",
+        "place_type": "photo_spot",
+        "recommend_score": 35,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 32,
+        "downstreamCover": null
+      },
+      {
+        "id": "4105",
+        "name": "九溪十八涧",
+        "normalized_name": "九溪十八涧",
+        "place_type": "attraction",
+        "recommend_score": 34.58,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 32,
+        "downstreamCover": null
+      },
+      {
+        "id": "4051",
+        "name": "十里琅珰",
+        "normalized_name": "十里琅珰",
+        "place_type": "attraction",
+        "recommend_score": 33.25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 26,
+        "downstreamCover": null
+      },
+      {
+        "id": "3970",
+        "name": "李百蟹蟹黄面（西湖店）",
+        "normalized_name": "李百蟹蟹黄面",
+        "place_type": "food",
+        "recommend_score": 32.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "4097",
+        "name": "浴鹄湾",
+        "normalized_name": "浴鹄湾",
+        "place_type": "attraction",
+        "recommend_score": 32.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 30,
+        "downstreamCover": null
+      },
+      {
+        "id": "3988",
+        "name": "良渚古城遗址公园",
+        "normalized_name": "良渚古城遗址公园",
+        "place_type": "attraction",
+        "recommend_score": 32.05,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 26,
+        "downstreamCover": null
+      },
+      {
+        "id": "3967",
+        "name": "断桥",
+        "normalized_name": "断桥",
+        "place_type": "attraction",
+        "recommend_score": 31.14,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 20,
+        "downstreamCover": {
+          "place": "西湖断桥",
+          "key": "xhs/杭州/072594881c58508fb7b76c320f3c8c20/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4111",
+        "name": "杨公堤",
+        "normalized_name": "杨公堤",
+        "place_type": "attraction",
+        "recommend_score": 30,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 28,
+        "downstreamCover": null
+      },
+      {
+        "id": "4087",
+        "name": "南宋御街",
+        "normalized_name": "南宋御街",
+        "place_type": "attraction",
+        "recommend_score": 29,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 10,
+        "downstreamCover": null
+      },
+      {
+        "id": "4088",
+        "name": "西溪国家湿地公园",
+        "normalized_name": "西溪国家湿地公园",
+        "place_type": "attraction",
+        "recommend_score": 28.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 14,
+        "downstreamCover": null
+      },
+      {
+        "id": "4141",
+        "name": "白堤",
+        "normalized_name": "白堤",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "4125",
+        "name": "香积寺",
+        "normalized_name": "香积寺",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 15,
+        "downstreamCover": {
+          "place": "香积寺",
+          "key": "xhs/杭州/7e8cdca3eac556fd6c5ebdce6d2aef99/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4096",
+        "name": "杭州植物园",
+        "normalized_name": "杭州植物园",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 24,
+        "downstreamCover": null
+      },
+      {
+        "id": "4009",
+        "name": "西溪湿地",
+        "normalized_name": "西溪湿地",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "4053",
+        "name": "北山街",
+        "normalized_name": "北山街",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 23,
+        "downstreamCover": null
+      },
+      {
+        "id": "4123",
+        "name": "小河公园",
+        "normalized_name": "小河公园",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 17,
+        "downstreamCover": null
+      },
+      {
+        "id": "4124",
+        "name": "大兜路历史文化街区",
+        "normalized_name": "大兜路历史文化街区",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "4049",
+        "name": "九溪",
+        "normalized_name": "九溪",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 17,
+        "downstreamCover": null
+      },
+      {
+        "id": "4057",
+        "name": "净慈寺",
+        "normalized_name": "净慈寺",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 19,
+        "downstreamCover": null
+      },
+      {
+        "id": "4020",
+        "name": "知味观",
+        "normalized_name": "知味观",
+        "place_type": "food",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      },
+      {
+        "id": "3998",
+        "name": "青山湖",
+        "normalized_name": "青山湖",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 15,
+        "downstreamCover": null
+      },
+      {
+        "id": "4154",
+        "name": "满觉陇",
+        "normalized_name": "满觉陇",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 10,
+        "downstreamCover": null
+      },
+      {
+        "id": "4153",
+        "name": "飞来峰",
+        "normalized_name": "飞来峰",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      },
+      {
+        "id": "4107",
+        "name": "六和塔",
+        "normalized_name": "六和塔",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 1,
+        "unlinked_images_in_related_notes": 24,
+        "downstreamCover": {
+          "place": "六和塔",
+          "key": "xhs/杭州/a3f8d5378ca5915c1a77b7f6551ca154/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "4058",
+        "name": "长桥公园",
+        "normalized_name": "长桥公园",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 12,
+        "downstreamCover": null
+      },
+      {
+        "id": "4189",
+        "name": "韬光寺",
+        "normalized_name": "韬光寺",
+        "place_type": "attraction",
+        "recommend_score": 21.79,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 15,
+        "downstreamCover": null
+      },
+      {
+        "id": "4190",
+        "name": "永福寺",
+        "normalized_name": "永福寺",
+        "place_type": "attraction",
+        "recommend_score": 21.79,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 17,
+        "downstreamCover": null
+      },
+      {
+        "id": "4287",
+        "name": "桥西历史街区",
+        "normalized_name": "桥西历史街区",
+        "place_type": "attraction",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "4169",
+        "name": "白蛇飞渡桥",
+        "normalized_name": "白蛇飞渡桥",
+        "place_type": "photo_spot",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      }
+    ]
+  },
+  "downstream": {
+    "places": 670,
+    "withCover": 40,
+    "manifestEntries": 40,
+    "missingMediaFiles": [],
+    "orphanManifestEntries": [],
+    "imports": [
+      {
+        "source": "xhs_relations",
+        "row_count": 72,
+        "file_path": "xhs-place-relations-杭州.json",
+        "imported_at": "2026-09-27T04:24:11.397Z"
+      },
+      {
+        "source": "xhs_places",
+        "row_count": 669,
+        "file_path": "xhs-places-杭州.json",
+        "imported_at": "2026-09-30T00:50:33.755Z"
+      },
+      {
+        "source": "xhs_place_images",
+        "row_count": 40,
+        "file_path": "xhs-place-images-杭州.json",
+        "imported_at": "2026-09-30T00:50:34.570Z"
+      }
+    ]
+  },
+  "trip": {
+    "id": "f00889cd-d163-4b3c-b90d-dec61c985b52",
+    "title": "杭州三日 山水人文之旅",
+    "candidates": [
+      {
+        "name": "断桥残雪",
+        "savedCover": "/media/xhs/杭州/072594881c58508fb7b76c320f3c8c20/00.webp",
+        "availableLocalCover": {
+          "place": "西湖断桥",
+          "key": "xhs/杭州/072594881c58508fb7b76c320f3c8c20/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "name": "苏堤",
+        "savedCover": "/media/xhs/杭州/78886d74e678d61a4d3e5ebd5fd9f74c/00.webp",
+        "availableLocalCover": {
+          "place": "苏堤",
+          "key": "xhs/杭州/78886d74e678d61a4d3e5ebd5fd9f74c/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "name": "雷峰塔",
+        "savedCover": "/media/xhs/杭州/65bd21fa2a000639d6238c25c2cfbb63/00.webp",
+        "availableLocalCover": {
+          "place": "雷峰塔",
+          "key": "xhs/杭州/65bd21fa2a000639d6238c25c2cfbb63/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "name": "三潭印月",
+        "savedCover": "/media/wikimedia/315cb05f155fdcfdd05e26b39f2d55cba6f51aa670f9cefceb24f90ccab56c58.jpg",
+        "availableLocalCover": null
+      },
+      {
+        "name": "宝石山",
+        "savedCover": "/media/wikimedia/be527f0b315576551e7af5590d43e065b80eaf88cab59cd59b557abfddbd6b1e.jpg",
+        "availableLocalCover": null
+      },
+      {
+        "name": "灵隐寺",
+        "savedCover": "/media/xhs/杭州/56e268b7cdcca76052bd6359c8ffb278/00.webp",
+        "availableLocalCover": {
+          "place": "灵隐寺",
+          "key": "xhs/杭州/56e268b7cdcca76052bd6359c8ffb278/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "name": "飞来峰",
+        "savedCover": null,
+        "availableLocalCover": null
+      },
+      {
+        "name": "龙井村",
+        "savedCover": "https://images.pexels.com/photos/32454737/pexels-photo-32454737.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "availableLocalCover": null
+      },
+      {
+        "name": "九溪十八涧",
+        "savedCover": null,
+        "availableLocalCover": null
+      },
+      {
+        "name": "六和塔",
+        "savedCover": "/media/xhs/杭州/a3f8d5378ca5915c1a77b7f6551ca154/00.webp",
+        "availableLocalCover": {
+          "place": "六和塔",
+          "key": "xhs/杭州/a3f8d5378ca5915c1a77b7f6551ca154/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "name": "西溪国家湿地公园",
+        "savedCover": null,
+        "availableLocalCover": null
+      },
+      {
+        "name": "京杭大运河水上巴士",
+        "savedCover": null,
+        "availableLocalCover": null
+      },
+      {
+        "name": "河坊街·南宋御街",
+        "savedCover": null,
+        "availableLocalCover": null
+      }
+    ]
+  },
+  "caveat": "相关笔记中的未绑定图不是已确认属于该景点的图；各地点该计数可重叠。"
+}

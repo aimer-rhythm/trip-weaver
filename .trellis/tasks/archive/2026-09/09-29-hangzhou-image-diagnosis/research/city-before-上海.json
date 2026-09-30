@@ -1,0 +1,602 @@
+{
+  "generatedAt": "2026-09-29T16:27:24.834Z",
+  "city": "上海",
+  "readOnly": true,
+  "allCities": [
+    {
+      "city": "上海",
+      "scenery": 5,
+      "linked": 0,
+      "places": 0
+    },
+    {
+      "city": "北京",
+      "scenery": 55,
+      "linked": 17,
+      "places": 6
+    },
+    {
+      "city": "厦门",
+      "scenery": 121,
+      "linked": 11,
+      "places": 3
+    },
+    {
+      "city": "广州",
+      "scenery": 327,
+      "linked": 96,
+      "places": 33
+    },
+    {
+      "city": "成都",
+      "scenery": 66,
+      "linked": 7,
+      "places": 2
+    },
+    {
+      "city": "杭州",
+      "scenery": 428,
+      "linked": 96,
+      "places": 39
+    }
+  ],
+  "upstream": {
+    "notes": [
+      {
+        "total": 126,
+        "image_urls": 1378,
+        "unified_processed": 4,
+        "text_analyzed": 3
+      }
+    ],
+    "mentionDistribution": [
+      {
+        "places_per_note": "multiple",
+        "notes": 84
+      },
+      {
+        "places_per_note": "none",
+        "notes": 16
+      },
+      {
+        "places_per_note": "single",
+        "notes": 26
+      }
+    ],
+    "places": [
+      {
+        "total": 414,
+        "active": 379,
+        "resolved": 366,
+        "exportable": 232
+      }
+    ],
+    "images": [
+      {
+        "img_type": "scenery",
+        "total": 5,
+        "linked": 0,
+        "places": 0
+      }
+    ],
+    "unlinked": [
+      {
+        "reason": "multiple",
+        "images": 5
+      }
+    ],
+    "missingSourceFiles": 0,
+    "topPlaces": [
+      {
+        "id": "4654",
+        "name": "外滩",
+        "normalized_name": "外滩",
+        "place_type": "attraction",
+        "recommend_score": 71.13,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "4655",
+        "name": "武康路",
+        "normalized_name": "武康路",
+        "place_type": "attraction",
+        "recommend_score": 51.97,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4660",
+        "name": "豫园",
+        "normalized_name": "豫园",
+        "place_type": "attraction",
+        "recommend_score": 46.12,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4659",
+        "name": "静安寺",
+        "normalized_name": "静安寺",
+        "place_type": "attraction",
+        "recommend_score": 41.67,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "4651",
+        "name": "陆家嘴",
+        "normalized_name": "陆家嘴",
+        "place_type": "attraction",
+        "recommend_score": 41.67,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4649",
+        "name": "南京路步行街",
+        "normalized_name": "南京路步行街",
+        "place_type": "attraction",
+        "recommend_score": 41.67,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4656",
+        "name": "武康大楼",
+        "normalized_name": "武康大楼",
+        "place_type": "attraction",
+        "recommend_score": 33.17,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4664",
+        "name": "沪公馆·上海菜",
+        "normalized_name": "沪公馆上海菜",
+        "place_type": "food",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4662",
+        "name": "李百蟹·蟹黄面·临江餐厅(外滩·豫园店)",
+        "normalized_name": "李百蟹蟹黄面临江餐厅",
+        "place_type": "food",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4653",
+        "name": "人民广场",
+        "normalized_name": "人民广场",
+        "place_type": "attraction",
+        "recommend_score": 27.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4650",
+        "name": "东方明珠",
+        "normalized_name": "东方明珠",
+        "place_type": "attraction",
+        "recommend_score": 26.44,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4657",
+        "name": "安福路",
+        "normalized_name": "安福路",
+        "place_type": "attraction",
+        "recommend_score": 26.44,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4666",
+        "name": "东方明珠广播电视塔",
+        "normalized_name": "东方明珠广播电视塔",
+        "place_type": "attraction",
+        "recommend_score": 25.89,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4711",
+        "name": "外白渡桥",
+        "normalized_name": "外白渡桥",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4661",
+        "name": "城隍庙",
+        "normalized_name": "城隍庙",
+        "place_type": "attraction",
+        "recommend_score": 24.38,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4658",
+        "name": "淮海中路",
+        "normalized_name": "淮海中路",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4779",
+        "name": "上海城隍庙",
+        "normalized_name": "上海城隍庙",
+        "place_type": "attraction",
+        "recommend_score": 21.29,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4766",
+        "name": "沈大成",
+        "normalized_name": "沈大成",
+        "place_type": "food",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4854",
+        "name": "鲜得来排骨年糕",
+        "normalized_name": "鲜得来排骨年糕",
+        "place_type": "food",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4652",
+        "name": "上海国金中心",
+        "normalized_name": "上海国金中心",
+        "place_type": "other",
+        "recommend_score": 19.17,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4770",
+        "name": "莱莱小笼",
+        "normalized_name": "莱莱小笼",
+        "place_type": "food",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4740",
+        "name": "思南公馆",
+        "normalized_name": "思南公馆",
+        "place_type": "attraction",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4712",
+        "name": "上海邮政博物馆",
+        "normalized_name": "上海邮政博物馆",
+        "place_type": "attraction",
+        "recommend_score": 16.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4757",
+        "name": "李百蟹·蟹黄面",
+        "normalized_name": "李百蟹蟹黄面",
+        "place_type": "food",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4738",
+        "name": "新天地",
+        "normalized_name": "新天地",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4670",
+        "name": "苏州河",
+        "normalized_name": "苏州河",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4768",
+        "name": "大壶春",
+        "normalized_name": "大壶春",
+        "place_type": "food",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4716",
+        "name": "陆家嘴三件套",
+        "normalized_name": "陆家嘴三件套",
+        "place_type": "photo_spot",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4866",
+        "name": "国际饭店蝴蝶酥",
+        "normalized_name": "国际饭店蝴蝶酥",
+        "place_type": "food",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4743",
+        "name": "甜爱路",
+        "normalized_name": "甜爱路",
+        "place_type": "photo_spot",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4777",
+        "name": "国际饭店",
+        "normalized_name": "国际饭店",
+        "place_type": "food",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4802",
+        "name": "上海迪士尼乐园",
+        "normalized_name": "上海迪士尼乐园",
+        "place_type": "attraction",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "4665",
+        "name": "上海迪士尼度假区",
+        "normalized_name": "上海迪士尼度假区",
+        "place_type": "attraction",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4723",
+        "name": "乍浦路桥",
+        "normalized_name": "乍浦路桥",
+        "place_type": "attraction",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4759",
+        "name": "沪公馆",
+        "normalized_name": "沪公馆",
+        "place_type": "food",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4758",
+        "name": "外滩家宴",
+        "normalized_name": "外滩家宴",
+        "place_type": "food",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4739",
+        "name": "田子坊",
+        "normalized_name": "田子坊",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4769",
+        "name": "小杨生煎",
+        "normalized_name": "小杨生煎",
+        "place_type": "food",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4732",
+        "name": "国际港务大厦",
+        "normalized_name": "国际港务大厦",
+        "place_type": "photo_spot",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "4737",
+        "name": "外滩码头",
+        "normalized_name": "外滩码头",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4725",
+        "name": "沙美大楼",
+        "normalized_name": "沙美大楼",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4720",
+        "name": "正大广场",
+        "normalized_name": "正大广场",
+        "place_type": "other",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4726",
+        "name": "礼和洋行",
+        "normalized_name": "礼和洋行",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4771",
+        "name": "虹口糕团食品厂",
+        "normalized_name": "虹口糕团食品厂",
+        "place_type": "food",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4715",
+        "name": "东金线轮渡",
+        "normalized_name": "东金线轮渡",
+        "place_type": "other",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4745",
+        "name": "M50创意园",
+        "normalized_name": "M50创意园",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4744",
+        "name": "鲁迅公园",
+        "normalized_name": "鲁迅公园",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4710",
+        "name": "中国证券博物馆",
+        "normalized_name": "中国证券博物馆",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4717",
+        "name": "浦东美术馆",
+        "normalized_name": "浦东美术馆",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "4742",
+        "name": "多伦路",
+        "normalized_name": "多伦路",
+        "place_type": "attraction",
+        "recommend_score": 10,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      }
+    ]
+  },
+  "downstream": {
+    "places": 13,
+    "withCover": 0,
+    "manifestEntries": 0,
+    "missingMediaFiles": [],
+    "orphanManifestEntries": [],
+    "imports": []
+  },
+  "trip": null,
+  "caveat": "相关笔记中的未绑定图不是已确认属于该景点的图；各地点该计数可重叠。"
+}

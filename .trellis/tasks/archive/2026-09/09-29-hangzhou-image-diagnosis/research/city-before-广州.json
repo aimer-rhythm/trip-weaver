@@ -1,0 +1,692 @@
+{
+  "generatedAt": "2026-09-29T16:27:23.138Z",
+  "city": "广州",
+  "readOnly": true,
+  "allCities": [
+    {
+      "city": "上海",
+      "scenery": 5,
+      "linked": 0,
+      "places": 0
+    },
+    {
+      "city": "北京",
+      "scenery": 55,
+      "linked": 17,
+      "places": 6
+    },
+    {
+      "city": "厦门",
+      "scenery": 121,
+      "linked": 11,
+      "places": 3
+    },
+    {
+      "city": "广州",
+      "scenery": 327,
+      "linked": 96,
+      "places": 33
+    },
+    {
+      "city": "成都",
+      "scenery": 66,
+      "linked": 7,
+      "places": 2
+    },
+    {
+      "city": "杭州",
+      "scenery": 428,
+      "linked": 96,
+      "places": 39
+    }
+  ],
+  "upstream": {
+    "notes": [
+      {
+        "total": 240,
+        "image_urls": 2831,
+        "unified_processed": 0,
+        "text_analyzed": 0
+      }
+    ],
+    "mentionDistribution": [
+      {
+        "places_per_note": "multiple",
+        "notes": 146
+      },
+      {
+        "places_per_note": "none",
+        "notes": 34
+      },
+      {
+        "places_per_note": "single",
+        "notes": 60
+      }
+    ],
+    "places": [
+      {
+        "total": 733,
+        "active": 714,
+        "resolved": 714,
+        "exportable": 714
+      }
+    ],
+    "images": [
+      {
+        "img_type": "scenery",
+        "total": 327,
+        "linked": 96,
+        "places": 33
+      },
+      {
+        "img_type": "collage",
+        "total": 29,
+        "linked": 1,
+        "places": 1
+      },
+      {
+        "img_type": "interior",
+        "total": 14,
+        "linked": 6,
+        "places": 3
+      },
+      {
+        "img_type": "text_card",
+        "total": 2,
+        "linked": 1,
+        "places": 1
+      },
+      {
+        "img_type": "food",
+        "total": 1,
+        "linked": 1,
+        "places": 1
+      }
+    ],
+    "unlinked": [
+      {
+        "reason": "multiple",
+        "images": 210
+      },
+      {
+        "reason": "no_mentions",
+        "images": 21
+      }
+    ],
+    "missingSourceFiles": 0,
+    "topPlaces": [
+      {
+        "id": "3278",
+        "name": "广州塔",
+        "normalized_name": "广州塔",
+        "place_type": "attraction",
+        "recommend_score": 129.4,
+        "linked_images": 8,
+        "unlinked_images_in_related_notes": 44,
+        "downstreamCover": {
+          "place": "广州塔",
+          "key": "xhs/广州/c626d628d8cdec42573c8e72d86ae372/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3272",
+        "name": "永庆坊",
+        "normalized_name": "永庆坊",
+        "place_type": "attraction",
+        "recommend_score": 127.19,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 56,
+        "downstreamCover": null
+      },
+      {
+        "id": "3274",
+        "name": "沙面岛",
+        "normalized_name": "沙面岛",
+        "place_type": "attraction",
+        "recommend_score": 84.03,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 29,
+        "downstreamCover": null
+      },
+      {
+        "id": "3281",
+        "name": "北京路步行街",
+        "normalized_name": "北京路步行街",
+        "place_type": "market",
+        "recommend_score": 77.16,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 21,
+        "downstreamCover": null
+      },
+      {
+        "id": "3280",
+        "name": "陈家祠",
+        "normalized_name": "陈家祠",
+        "place_type": "attraction",
+        "recommend_score": 74.64,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 18,
+        "downstreamCover": null
+      },
+      {
+        "id": "3276",
+        "name": "石室圣心大教堂",
+        "normalized_name": "石室圣心大教堂",
+        "place_type": "attraction",
+        "recommend_score": 62.07,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 24,
+        "downstreamCover": null
+      },
+      {
+        "id": "3295",
+        "name": "花城广场",
+        "normalized_name": "花城广场",
+        "place_type": "attraction",
+        "recommend_score": 50,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 15,
+        "downstreamCover": null
+      },
+      {
+        "id": "3279",
+        "name": "珠江夜游",
+        "normalized_name": "珠江夜游",
+        "place_type": "attraction",
+        "recommend_score": 49.17,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "3246",
+        "name": "大佛寺",
+        "normalized_name": "大佛寺",
+        "place_type": "attraction",
+        "recommend_score": 47.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 12,
+        "downstreamCover": null
+      },
+      {
+        "id": "3282",
+        "name": "广东省博物馆",
+        "normalized_name": "广东省博物馆",
+        "place_type": "attraction",
+        "recommend_score": 43.12,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "3275",
+        "name": "上下九步行街",
+        "normalized_name": "上下九步行街",
+        "place_type": "market",
+        "recommend_score": 36.73,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "3329",
+        "name": "白云山",
+        "normalized_name": "白云山",
+        "place_type": "attraction",
+        "recommend_score": 35,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "3270",
+        "name": "荔湾湖公园",
+        "normalized_name": "荔湾湖公园",
+        "place_type": "attraction",
+        "recommend_score": 35,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 20,
+        "downstreamCover": null
+      },
+      {
+        "id": "3283",
+        "name": "海心桥",
+        "normalized_name": "海心桥",
+        "place_type": "attraction",
+        "recommend_score": 34.58,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "3313",
+        "name": "沙面",
+        "normalized_name": "沙面",
+        "place_type": "attraction",
+        "recommend_score": 34.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 18,
+        "downstreamCover": null
+      },
+      {
+        "id": "3355",
+        "name": "圣心大教堂",
+        "normalized_name": "圣心大教堂",
+        "place_type": "attraction",
+        "recommend_score": 30.14,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "3326",
+        "name": "北京路",
+        "normalized_name": "北京路",
+        "place_type": "market",
+        "recommend_score": 28.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "3296",
+        "name": "广州大剧院",
+        "normalized_name": "广州大剧院",
+        "place_type": "attraction",
+        "recommend_score": 26.94,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "3310",
+        "name": "粤剧艺术博物馆",
+        "normalized_name": "粤剧艺术博物馆",
+        "place_type": "attraction",
+        "recommend_score": 26.94,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 19,
+        "downstreamCover": null
+      },
+      {
+        "id": "3473",
+        "name": "广州文化公园",
+        "normalized_name": "广州文化公园",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": {
+          "place": "广州文化公园",
+          "key": "xhs/广州/570749e7dbeba47c5da7194281f040b1/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3286",
+        "name": "南越王博物院",
+        "normalized_name": "南越王博物院",
+        "place_type": "attraction",
+        "recommend_score": 25,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "3335",
+        "name": "长隆欢乐世界",
+        "normalized_name": "长隆欢乐世界",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 1,
+        "downstreamCover": null
+      },
+      {
+        "id": "3324",
+        "name": "越秀公园",
+        "normalized_name": "越秀公园",
+        "place_type": "attraction",
+        "recommend_score": 22.5,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": {
+          "place": "越秀公园",
+          "key": "xhs/广州/c66d9226c5bda21433f0855dac8d9231/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3287",
+        "name": "广州酒家",
+        "normalized_name": "广州酒家",
+        "place_type": "food",
+        "recommend_score": 21.79,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": null
+      },
+      {
+        "id": "3346",
+        "name": "陶陶居",
+        "normalized_name": "陶陶居",
+        "place_type": "food",
+        "recommend_score": 21.29,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "3337",
+        "name": "沙湾古镇",
+        "normalized_name": "沙湾古镇",
+        "place_type": "attraction",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "3315",
+        "name": "东山口",
+        "normalized_name": "东山口",
+        "place_type": "attraction",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      },
+      {
+        "id": "3384",
+        "name": "海心沙亚运公园",
+        "normalized_name": "海心沙亚运公园",
+        "place_type": "attraction",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "3325",
+        "name": "中山纪念堂",
+        "normalized_name": "中山纪念堂",
+        "place_type": "attraction",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 8,
+        "downstreamCover": null
+      },
+      {
+        "id": "3328",
+        "name": "珠江新城",
+        "normalized_name": "珠江新城",
+        "place_type": "other",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "3253",
+        "name": "阿姨牛杂",
+        "normalized_name": "阿姨牛杂",
+        "place_type": "food",
+        "recommend_score": 20,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "3323",
+        "name": "沿江西路",
+        "normalized_name": "沿江西路",
+        "place_type": "attraction",
+        "recommend_score": 19.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 13,
+        "downstreamCover": null
+      },
+      {
+        "id": "3314",
+        "name": "兰圃",
+        "normalized_name": "兰圃",
+        "place_type": "attraction",
+        "recommend_score": 19.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 10,
+        "downstreamCover": {
+          "place": "兰圃公园",
+          "key": "xhs/广州/52f2f9f46361dc25696e2653b120734f/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3386",
+        "name": "猎德大桥",
+        "normalized_name": "猎德大桥",
+        "place_type": "photo_spot",
+        "recommend_score": 19.17,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "3408",
+        "name": "恩宁路",
+        "normalized_name": "恩宁路",
+        "place_type": "attraction",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 7,
+        "downstreamCover": null
+      },
+      {
+        "id": "3297",
+        "name": "海心沙",
+        "normalized_name": "海心沙",
+        "place_type": "attraction",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": {
+          "place": "海心沙公园",
+          "key": "xhs/广州/55bd3b38fb56b0d7db96f7efdbb36d31/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3285",
+        "name": "西华路",
+        "normalized_name": "西华路",
+        "place_type": "food",
+        "recommend_score": 17.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "3428",
+        "name": "广州动物园",
+        "normalized_name": "广州动物园",
+        "place_type": "attraction",
+        "recommend_score": 16.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 4,
+        "downstreamCover": null
+      },
+      {
+        "id": "3334",
+        "name": "长隆野生动物世界",
+        "normalized_name": "长隆野生动物世界",
+        "place_type": "attraction",
+        "recommend_score": 16.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "3561",
+        "name": "广州长隆野生动物世界",
+        "normalized_name": "广州长隆野生动物世界",
+        "place_type": "attraction",
+        "recommend_score": 16.5,
+        "linked_images": 6,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": {
+          "place": "广州长隆野生动物世界",
+          "key": "xhs/广州/4c73c78f9b0daab3f3773306f9f2df65/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3311",
+        "name": "广州十三行博物馆",
+        "normalized_name": "广州十三行博物馆",
+        "place_type": "attraction",
+        "recommend_score": 16.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 5,
+        "downstreamCover": null
+      },
+      {
+        "id": "3410",
+        "name": "泮塘古村",
+        "normalized_name": "泮塘古村",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 11,
+        "downstreamCover": null
+      },
+      {
+        "id": "3404",
+        "name": "点都德",
+        "normalized_name": "点都德",
+        "place_type": "food",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "3277",
+        "name": "惠食佳",
+        "normalized_name": "惠食佳",
+        "place_type": "food",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": null
+      },
+      {
+        "id": "3254",
+        "name": "民记煲仔饭",
+        "normalized_name": "民记煲仔饭",
+        "place_type": "food",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": null
+      },
+      {
+        "id": "3309",
+        "name": "荔湾博物馆",
+        "normalized_name": "荔湾博物馆",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 9,
+        "downstreamCover": null
+      },
+      {
+        "id": "3383",
+        "name": "广州塔广场",
+        "normalized_name": "广州塔广场",
+        "place_type": "attraction",
+        "recommend_score": 15,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 2,
+        "downstreamCover": {
+          "place": "广州塔",
+          "key": "xhs/广州/c626d628d8cdec42573c8e72d86ae372/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3350",
+        "name": "银记肠粉",
+        "normalized_name": "银记肠粉",
+        "place_type": "food",
+        "recommend_score": 13.75,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 3,
+        "downstreamCover": null
+      },
+      {
+        "id": "3290",
+        "name": "天环广场",
+        "normalized_name": "天环广场",
+        "place_type": "photo_spot",
+        "recommend_score": 13.25,
+        "linked_images": 3,
+        "unlinked_images_in_related_notes": 0,
+        "downstreamCover": {
+          "place": "天环广场",
+          "key": "xhs/广州/edd0a63f7280c262e24a5875de9fa5f8/00.webp",
+          "exists": true
+        }
+      },
+      {
+        "id": "3299",
+        "name": "琶醍",
+        "normalized_name": "琶醍",
+        "place_type": "attraction",
+        "recommend_score": 12.5,
+        "linked_images": 0,
+        "unlinked_images_in_related_notes": 6,
+        "downstreamCover": null
+      }
+    ]
+  },
+  "downstream": {
+    "places": 714,
+    "withCover": 31,
+    "manifestEntries": 33,
+    "missingMediaFiles": [],
+    "orphanManifestEntries": [
+      {
+        "placeId": "84163f308ca34c80ef1efc29da756fe3",
+        "placeName": "广佛周边溯溪地",
+        "key": "xhs/广州/84163f308ca34c80ef1efc29da756fe3/00.webp"
+      },
+      {
+        "placeId": "2caf0d2809e544e769002e5113622dc8",
+        "placeName": "摩伦威士忌吧",
+        "key": "xhs/广州/2caf0d2809e544e769002e5113622dc8/00.webp"
+      }
+    ],
+    "imports": [
+      {
+        "source": "xhs_relations",
+        "row_count": 22,
+        "file_path": "xhs-place-relations-广州.json",
+        "imported_at": "2026-09-27T04:24:11.397Z"
+      },
+      {
+        "source": "xhs_places",
+        "row_count": 714,
+        "file_path": "xhs-places-广州.json",
+        "imported_at": "2026-09-27T04:24:17.134Z"
+      },
+      {
+        "source": "xhs_place_images",
+        "row_count": 33,
+        "file_path": "xhs-place-images-广州.json",
+        "imported_at": "2026-09-27T14:20:32.564Z"
+      }
+    ]
+  },
+  "trip": null,
+  "caveat": "相关笔记中的未绑定图不是已确认属于该景点的图；各地点该计数可重叠。"
+}
