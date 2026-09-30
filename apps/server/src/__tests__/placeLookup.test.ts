@@ -5,6 +5,7 @@ import { activityPlaceName, createResearchPlaceLookup, rememberResearchLocation,
 import { buildResearchTools, type ResearchOutcome } from '../generation/tools/researchTools';
 import type { PoiSource, SourcedPoi } from '../integrations/geoContracts';
 import type { CoverLookup } from '../integrations/wikimedia/cover';
+import type { StockPhotoLookup } from '../integrations/stockPhotoSupport';
 
 const point: ResearchLocation = { lat: 39.9, lng: 116.4, adcode: '110101' };
 const candidate: ResearchPoi = { id: 'museum', name: '真实博物馆', category: 'attraction', intro: '', reservation: 'unknown', sourceLinks: [] };
@@ -112,7 +113,66 @@ test('add_candidate 自动回填高德营业时间（仅 attraction），模型�
   assert.equal(outcome.pool[2]!.openTime, undefined);
 });
 
-const WIKI_THUMB = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/example.jpg/500px-example.jpg';
+const WIKI_THUMB = '/media/wikimedia/abc123.jpg';
+
+test('精选封面优先并保留署名，精选服务故障继续已有封面路径', async () => {
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  let storedCalls = 0;
+  const attribution: NonNullable<ResearchPoi['coverAttribution']> = {
+    source: 'commons', photographer: '摄影师', sourceUrl: 'https://commons.wikimedia.org/wiki/File:Bridge.jpg',
+    license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', changes: '已调整尺寸与裁切',
+  };
+  const tools = buildResearchTools({
+    poiSource: { kind: 'null', searchPois: async () => [], selfCheck: async () => ({ configured: false, checked: false, ok: false, message: '' }) },
+    searchSource: { kind: 'null', search: async () => [], selfCheck: async () => ({ configured: false, checked: false, ok: false, message: '' }) },
+    destination: '杭州', searchWebMax: 0, outcome,
+    curatedCover: async name => { if (name === '苏堤') throw new Error('optional failure'); return { coverUrl: '/media/photography/commons-1.webp', coverAttribution: attribution, photos: [{ url: '/media/photography/commons-1.webp', attribution }, { url: '/media/photography/commons-2.webp', attribution }] }; },
+    storedCover: async () => { storedCalls++; return '/media/xhs/fallback.webp'; },
+  });
+  const add = tools.find(tool => tool.name === 'add_candidate')!;
+  await add.execute('one', { name: '断桥残雪', category: 'attraction', intro: '' });
+  assert.equal(storedCalls, 0);
+  assert.deepEqual(outcome.pool[0]?.coverAttribution, attribution);
+  assert.equal(outcome.pool[0]?.photos?.length, 2, '照片组随候选快照输出，封面包含在内');
+  await add.execute('two', { name: '苏堤', category: 'attraction', intro: '' });
+  assert.equal(storedCalls, 1);
+  assert.equal(outcome.pool[1]?.coverUrl, '/media/xhs/fallback.webp');
+  assert.equal(outcome.pool[1]?.coverAttribution, undefined);
+});
+
+test('已保存的外链照片优先于所有新搜索，文件缺失也不自动重选', async () => {
+  for (const provider of ['pexels', 'wikimedia'] as const) {
+    for (const missing of [false, true]) {
+      const photos = missing ? [] : [{ url: `/media/${provider === 'pexels' ? 'remote-photos' : 'wikimedia'}/saved.jpg` }];
+      const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map([[candidate.name, point]]) };
+      const noSearch = async (): Promise<never> => { assert.fail('已保存的地点不得重新检索图源'); };
+      let reads = 0;
+      const tools = buildResearchTools({
+        poiSource: { kind: 'null', searchPois: async () => [], selfCheck: noSearch },
+        searchSource: { kind: 'null', search: async () => [], selfCheck: noSearch },
+        destination: '北京', searchWebMax: 0, outcome,
+        pexelsCover: {
+          cachedPhotosFor: async () => provider === 'pexels' ? (reads++, photos) : null,
+          photosFor: noSearch, coverFor: noSearch,
+        },
+        coverLookup: {
+          cachedPhotosFor: async query => {
+            assert.deepEqual(query, { name: candidate.name, city: '北京', lat: point.lat, lng: point.lng });
+            reads++;
+            return photos;
+          },
+          coverFor: noSearch,
+        },
+        amapPhotos: { coverFor: noSearch, calls: 0 },
+        storedAmapPhoto: noSearch,
+      });
+      await tools.find(tool => tool.name === 'add_candidate')!.execute('saved', { name: candidate.name, category: 'attraction', intro: '' });
+      assert.equal(reads, 1);
+      assert.equal(outcome.pool[0]?.coverUrl, photos[0]?.url);
+      assert.deepEqual(outcome.pool[0]?.photos, missing ? undefined : photos);
+    }
+  }
+});
 
 function recordingCover(): { lookup: CoverLookup; queries: string[] } {
   const queries: string[] = [];
@@ -313,4 +373,35 @@ test('封面顺序：高德实时命中后回写库内（fire-and-forget）', as
   const { tools, outcome } = coverTools({ stored: null, pexels: null, amap: amapUrl, saved });
   assert.equal(await addFirst(tools, outcome), amapUrl);
   assert.deepEqual(saved, [`故宫|${amapUrl}`], '命中后必须回写 payload.amapPhoto');
+});
+
+test('新图库已保存选择先于所有新搜索；Unsplash只在胜出时执行采用', async () => {
+  for (const winner of ['pexels', 'unsplash', 'pixabay', 'new-unsplash', 'new-pixabay']) {
+    const calls: string[] = [];
+    const photo = { url: winner.includes('unsplash') ? 'https://images.unsplash.com/photo-one?ixid=keep' : '/media/remote-photos/fixture.png' };
+    const stock = (source: string): StockPhotoLookup => ({
+      cachedPhotosFor: async () => { calls.push(`peek-${source}`); return winner === source ? [photo] : null; },
+      photosFor: async () => { calls.push(`use-${source}`); return winner === source || winner === `new-${source}` ? [photo] : []; },
+    });
+    const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+    const tools = buildResearchTools({
+      poiSource: { kind: 'amap', searchPois: async () => [], selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }) },
+      searchSource: { kind: 'null', search: async () => [], selfCheck: async () => ({ configured: false, checked: false, ok: false, message: '' }) },
+      destination: '北京', searchWebMax: 0, outcome,
+      pexelsCover: {
+        cachedPhotosFor: async () => winner === 'pexels' ? [photo] : null,
+        coverFor: async () => null,
+        photosFor: async () => { calls.push('new-pexels'); return []; },
+      },
+      unsplashCover: stock('unsplash'), pixabayCover: stock('pixabay'),
+      amapPhotos: { calls: 0, coverFor: async () => { assert.fail('已命中图库不应再查询高德'); } },
+    });
+    await tools.find(tool => tool.name === 'add_candidate')!.execute('add', { name: '故宫', category: 'attraction', intro: '' });
+    assert.equal(outcome.pool[0]?.coverUrl, photo.url);
+    if (winner === 'pexels') assert.deepEqual(calls, [], '已有Pexels无需窥探或上报Unsplash');
+    if (winner === 'unsplash') assert.deepEqual(calls, ['peek-unsplash', 'use-unsplash']);
+    if (winner === 'pixabay') assert.deepEqual(calls, ['peek-unsplash', 'peek-pixabay'], '已存Pixabay不触发新搜索或下载');
+    if (winner === 'new-unsplash') assert.deepEqual(calls, ['peek-unsplash', 'peek-pixabay', 'new-pexels', 'use-unsplash']);
+    if (winner === 'new-pixabay') assert.deepEqual(calls, ['peek-unsplash', 'peek-pixabay', 'new-pexels', 'use-unsplash', 'use-pixabay']);
+  }
 });

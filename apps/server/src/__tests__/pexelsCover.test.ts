@@ -1,14 +1,26 @@
 // Pexels 封面（09-27）：挑选闸门（纯函数）+ 适配器的缓存、失败降级、请求上限（mock fetch）
 // 适配器只依赖 lib/*，导入本文件不会连库 —— 保持这个性质，别把 placeFacts 之类的模块拉进来。
 import assert from 'node:assert/strict';
-import test from 'node:test';
-import { createPexelsCoverLookup, pickCover, type PexelsPhoto } from '../integrations/pexels/cover';
+import test, { after } from 'node:test';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { createPexelsCoverLookup as createLookup, pickCover, pickPhotos, type PexelsPhoto } from '../integrations/pexels/cover';
+
+const dataRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'tripweaver-pexels-'));
+const createPexelsCoverLookup = (key: string, cap = 8, interval = 0) => createLookup(key, cap, interval, { dataRoot });
+after(async () => {
+  assert.ok(path.resolve(dataRoot).startsWith(path.resolve(os.tmpdir()) + path.sep));
+  await fs.rm(dataRoot, { recursive: true, force: true });
+});
+const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j3ioAAAAASUVORK5CYII=', 'base64');
 
 const MEDIUM = 'https://images.pexels.com/photos/37467110/pexels-photo-37467110.jpeg?h=350';
 
 function photo(alt: string, over: Partial<PexelsPhoto> = {}): PexelsPhoto {
   return {
     alt,
+    photographer: 'Test Photographer', width: 1600, height: 900,
     url: 'https://www.pexels.com/photo/beijing-forbidden-city-37467110/',
     src: { medium: MEDIUM },
     ...over,
@@ -70,27 +82,45 @@ test('适配器：未配置 key 时直接返回 null 且不发请求', async () 
   }
 });
 
-test('适配器：命中返回图片直链，第二次走缓存', async () => {
+test('适配器：首次入选下载，重建适配器并移除API密钥后仍只读本地文件', async () => {
   const original = globalThis.fetch;
   const urls: string[] = [];
   let auth = '';
   globalThis.fetch = (async (input: string | URL | Request, init?: RequestInit) => {
     urls.push(String(input));
+    if (String(input).startsWith('https://images.pexels.com/')) {
+      assert.equal((init?.headers as Record<string, string>)?.Authorization, undefined, '不向图片域名转发 API 凭据');
+      return new Response(PNG, { headers: { 'Content-Type': 'image/png' } });
+    }
     auth = String((init?.headers as Record<string, string> | undefined)?.Authorization ?? '');
     return Response.json({ photos: [photo('西湖'), photo('无关风景')] });
   }) as typeof fetch;
   try {
     const lookup = createPexelsCoverLookup('test-key', 8, 0);
     const query = { name: '西湖', city: '杭州' };
-    assert.equal(await lookup.coverFor(query), MEDIUM);
-    assert.equal(await lookup.coverFor(query), MEDIUM);
-    assert.equal(urls.length, 1, '第二次应命中缓存，不再发请求');
+    const cover = await lookup.coverFor(query);
+    assert.match(cover!, /^\/media\/remote-photos\/[a-f0-9]{64}\.png$/);
+    assert.equal(await lookup.coverFor(query), cover);
+    assert.equal(await createPexelsCoverLookup('', 0, 0).coverFor(query), cover, '跨实例与无密钥时复用持久记录');
+    assert.equal((await lookup.photosFor!(query))[0]?.attribution?.photographer, 'Test Photographer');
+    assert.equal(urls.length, 2, '一回搜索加一次图片下载；其余调用零网络');
     assert.match(urls[0]!, /api\.pexels\.com\/v1\/search\?/);
     assert.match(urls[0]!, /locale=zh-CN/);
     assert.equal(auth, 'test-key');
   } finally {
     globalThis.fetch = original;
   }
+});
+
+test('候选优先横向氛围图，保留逐图作者并优先可放大尺寸', () => {
+  const candidates = pickPhotos([
+    photo('西湖白天', { src: { large2x: `${MEDIUM}&day` } }),
+    photo('西湖晨雾', { width: 800, height: 1200, src: { large2x: `${MEDIUM}&portrait` } }),
+    photo('西湖 sunset', { src: { large2x: `${MEDIUM}&sunset` } }),
+  ], '西湖');
+  assert.equal(candidates[0]?.url, `${MEDIUM}&sunset`);
+  assert.equal(candidates[1]?.url, `${MEDIUM}&day`);
+  assert.equal(candidates[2]?.url, `${MEDIUM}&portrait`);
 });
 
 test('适配器：确认无图的结果进负缓存，第二次不再发请求', async () => {

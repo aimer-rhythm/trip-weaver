@@ -12,7 +12,7 @@ import {
 } from '@tripweaver/shared';
 import { buildTimeline, formatDuration, type TimelineModel } from '../lib/generationTimeline';
 import { DATA_SOURCE_LABEL } from '../lib/poi';
-import { PoiCover } from './PoiCard';
+import { PoiCover, PhotoCredit } from './PoiCard';
 import { generationCardCaption, selectGenerationCards } from '../lib/generationCards';
 import { useReducedMotion, useStagedGenerationCards } from '../hooks/useGenerationMotion';
 
@@ -283,7 +283,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
           </div>
 
           {/* 拍立得候选卡片 */}
-          <div className={"gen-fan relative flex-1 min-w-0 [@media_(max-width:_900px)]:grid [@media_(max-width:_900px)]:[grid-template-columns:repeat(2,_minmax(0,_1fr))] [@media_(max-width:_900px)]:[gap:28px_20px] [@media_(max-width:_900px)]:[padding:12px_0] [@media_(max-width:_900px)]:[&_.gen-polaroid]:relative [@media_(max-width:_900px)]:[&_.gen-polaroid]:[left:auto]! [@media_(max-width:_900px)]:[&_.gen-polaroid]:[top:auto]! [@media_(max-width:_900px)]:[&_.gen-polaroid]:[transform:rotate(-3deg)]! [@media_(max-width:_900px)]:[&_.gen-polaroid]:w-full [@media_(max-width:_900px)]:[&_.gen-polaroid]:[padding:10px_10px_14px] [@media_(max-width:_900px)]:[&_.gen-polaroid:nth-child(even)]:[transform:rotate(3deg)]!"}>
+          <div className={"gen-fan relative flex-1 min-w-0 [@media_(min-width:_901px)]:[&:has(.photo-credit)]:[margin-bottom:calc(80_*_var(--ui))] [@media_(max-width:_900px)]:grid [@media_(max-width:_900px)]:[grid-template-columns:repeat(2,_minmax(0,_1fr))] [@media_(max-width:_900px)]:[gap:28px_20px] [@media_(max-width:_900px)]:[padding:12px_0] [@media_(max-width:_900px)]:[&_.gen-polaroid]:relative [@media_(max-width:_900px)]:[&_.gen-polaroid]:[left:auto]! [@media_(max-width:_900px)]:[&_.gen-polaroid]:[top:auto]! [@media_(max-width:_900px)]:[&_.gen-polaroid]:[transform:rotate(-3deg)]! [@media_(max-width:_900px)]:[&_.gen-polaroid]:w-full [@media_(max-width:_900px)]:[&_.gen-polaroid]:[padding:10px_10px_14px] [@media_(max-width:_900px)]:[&_.gen-polaroid:nth-child(even)]:[transform:rotate(3deg)]!"}>
             {visibleCandidates.length === 0 ? (
               /* 候选未到时先放 3 张虚线空相框，避免右侧长时间全空 */
               FAN.slice(0, 3).map((pose, i) => (
@@ -311,6 +311,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     </div>
                     <figcaption className={"gen-polaroid-caption [margin:calc(18_*_var(--ui))_0_0] [font-family:'QianTuBiFeng_Handwriting',_var(--gen-serif)] [font-size:calc(24_*_var(--ui))] [line-height:1.15] [color:var(--color-gen-polaroid-caption-color-49)] text-center whitespace-nowrap overflow-hidden [text-overflow:ellipsis] [@media_(max-width:_900px)]:[margin-top:12px] [@media_(max-width:_900px)]:[font-size:18px]"} title={generationCardCaption(poi)}>{generationCardCaption(poi)}</figcaption>
                     {poi.id === newestId && <span className={"gen-polaroid-new absolute [top:calc(14_*_var(--ui))] [right:calc(-18_*_var(--ui))] [padding:calc(9_*_var(--ui))_calc(18_*_var(--ui))] [background:var(--color-gen-polaroid-new-background-50)] [color:var(--color-gen-polaroid-new-color-51)] [font-size:calc(25_*_var(--ui))] [font-family:'QianTuBiFeng_Handwriting',_cursive] [line-height:1] [font-style:italic] [clip-path:polygon(4%_0,_20%_8%,_32%_0,_44%_9%,_59%_0,_70%_10%,_86%_4%,_88%_20%,_100%_30%,_92%_46%,_100%_62%,_90%_72%,_94%_92%,_76%_90%,_65%_100%,_50%_90%,_37%_100%,_25%_88%,_7%_94%,_10%_74%,_0_62%,_8%_46%,_0_29%,_9%_18%)] [animation:gen-new-pop_0.6s_ease-out] [@media_(prefers-reduced-motion:_reduce)]:[animation:none]"}>new</span>}
+                    <PhotoCredit poi={poi} />
                   </figure>
                 );
               })

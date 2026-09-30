@@ -5,7 +5,7 @@ import type { Activity, ResearchPoi, TransitLeg, TripDay } from '@tripweaver/sha
 import { hasValidCoord } from '../../lib/colors';
 import { RouteOptions } from './RouteOptions';
 import { useEditorStore } from '../../store/editorStore';
-import { PoiCover, ReservationBadge } from '../PoiCard';
+import { PoiCover, PhotoCredit, ReservationBadge } from '../PoiCard';
 import { ConfirmDialog } from '../ui/ActionDialog';
 import { EditorIcon } from './EditorIcon';
 import { EditorMenu } from './EditorMenu';
@@ -40,14 +40,17 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
             <Button variant="danger" type="button" onClick={() => setDeleteOpen(true)}>删除活动</Button>
           </EditorMenu>
         </div>
-        <div className={"activity-main min-w-0"}>
+        <div className="activity-content col-span-full flex items-start gap-3 pl-[52px] min-[1101px]:max-[1400px]:pl-10 max-[600px]:gap-2 max-[600px]:pl-0">
+        <div className="activity-main min-w-0 flex-1">
           <span className={"cat-badge inline-flex items-center [gap:4px] [font-size:0.76rem] [color:var(--color-muted)] [&_i]:[width:8px] [&_i]:[height:8px] [&_i]:[border-radius:50%] [&_i]:inline-block"}><EditorIcon name="place" />{activity.category}</span>
           {(activity.description || matchedPoi?.intro) && <p className={"activity-desc [margin:4px_0_0] [font-size:0.83rem] [color:var(--color-muted)]"}>{activity.description || matchedPoi?.intro}</p>}
           {matchedPoi?.reservation === 'required' && <div className={"activity-reservation [margin-top:12px] [font-size:12px] [&_p]:[margin:6px_0_0] [&_p]:[color:var(--color-activity-reservation-color-79)] [&_p]:[line-height:1.5]"}><ReservationBadge poi={matchedPoi} />{matchedPoi.reservationNote && <p>{matchedPoi.reservationNote}</p>}</div>}
           {!hasValidCoord(activity) && <span className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>无坐标</span>}
           {hasValidCoord(activity) && activity.coordSource === 'estimated' && <span className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>坐标为估算</span>}
         </div>
-        {showCover && matchedPoi && <PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} onCoverError={setFailedCover} />}
+        {showCover && matchedPoi && <PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} variant="photo" onCoverError={setFailedCover} />}
+        </div>
+        {showCover && matchedPoi && <div className="col-span-full"><PhotoCredit poi={matchedPoi} /></div>}
       </div>
       {index < day.activities.length - 1 && <RouteOptions dayId={day.id} fromId={activity.id} leg={nextLeg} />}
       {deleteOpen && <ConfirmDialog title="删除活动" description={`确定删除「${activity.name}」？`} onClose={() => setDeleteOpen(false)} onConfirm={() => deleteActivity(day.id, activity.id)} />}

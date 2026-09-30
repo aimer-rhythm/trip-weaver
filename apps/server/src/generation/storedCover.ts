@@ -7,7 +7,7 @@
 //
 // 命中即跳过维基降级 —— upload.wikimedia.org 在国内被封锁，维基只能当海外/代理环境的兜底。
 import { env } from '../env';
-import { loadPlaceFacts } from './scheduling/placeFacts';
+import { loadCityPlaceFacts, normalizePlaceKey } from './scheduling/placeFacts';
 
 /** 相对 key → 可展示 URL；空 key 返回 null。key 已含 `xhs/` 前缀，与上游导出脚本对齐。
  *  base 默认取 MEDIA_BASE_URL（可注入便于单测）。 */
@@ -17,18 +17,37 @@ export function mediaUrl(key: string, base: string = env.mediaBaseUrl): string |
   return base ? `${base.replace(/\/+$/, '')}/${clean}` : `/${clean}`;
 }
 
-/**
- * 与 cityPointLookup 同模式：全城行只拉一次，后续候选复用同一 promise。
- * 查库失败或地点不存在都是 null（loadPlaceFacts 内部已吞异常回空 Map），调用方继续走维基降级。
- */
-export function createStoredCoverLookup(city: string): (name: string) => Promise<string | null> {
-  let pending: ReturnType<typeof loadPlaceFacts> | null = null;
-  return async (name) => {
-    if (!city.trim()) return null;
-    pending ??= loadPlaceFacts([name], city);
-    const hit = (await pending).get(name);
-    return hit?.coverImage ? mediaUrl(hit.coverImage) : null;
+/** 一次生成共享全城索引；主名、别名、坐标和两种图片均从同一份事实读取。 */
+export function createStoredPlaceLookups(city: string, loadFacts = loadCityPlaceFacts) {
+  let pending: ReturnType<typeof loadCityPlaceFacts> | null = null;
+  const find = async (name: string) => {
+    if (!city.trim() || !name.trim()) return null;
+    pending ??= loadFacts(city);
+    const index = await pending;
+    const exact = index.get(normalizePlaceKey(name));
+    if (exact) return exact;
+    // 候选常写作「九溪烟树（九溪十八涧）」。先匹配完整名字，再匹配括号前的主体；
+    // 不用括号内的父景区替代主体（「断桥（西湖）」仍不能取西湖封面）。
+    const annotated = name.normalize('NFKC').trim().match(/^([^()]+)\([^()]+\)$/);
+    return annotated ? index.get(normalizePlaceKey(annotated[1]!)) ?? null : null;
   };
+  return {
+    async coverFor(name: string): Promise<string | null> {
+      const hit = await find(name);
+      return hit?.coverImage ? mediaUrl(hit.coverImage) : null;
+    },
+    async amapPhotoFor(name: string): Promise<string | null> {
+      return (await find(name))?.amapPhoto ?? null;
+    },
+    async pointFor(name: string): Promise<{ lat: number; lng: number } | null> {
+      const hit = await find(name);
+      return hit?.lat !== undefined && hit.lng !== undefined ? { lat: hit.lat, lng: hit.lng } : null;
+    },
+  };
+}
+
+export function createStoredCoverLookup(city: string): (name: string) => Promise<string | null> {
+  return createStoredPlaceLookups(city).coverFor;
 }
 
 /**
@@ -36,11 +55,5 @@ export function createStoredCoverLookup(city: string): (name: string) => Promise
  * 与 createStoredCoverLookup 同模式：全城行只拉一次，后续候选复用。
  */
 export function createStoredAmapPhotoLookup(city: string): (name: string) => Promise<string | null> {
-  let pending: ReturnType<typeof loadPlaceFacts> | null = null;
-  return async (name) => {
-    if (!city.trim()) return null;
-    pending ??= loadPlaceFacts([name], city);
-    const hit = (await pending).get(name);
-    return hit?.amapPhoto ?? null;
-  };
+  return createStoredPlaceLookups(city).amapPhotoFor;
 }

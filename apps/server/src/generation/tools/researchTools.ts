@@ -21,6 +21,7 @@ import { retrieveContext } from '../retrieveContext';
 import { normalizePlaceKey } from '../scheduling/placeFacts';
 import { type CoverLookup, type CoverQuery } from '../../integrations/wikimedia/cover';
 import type { PexelsCoverLookup } from '../../integrations/pexels/cover';
+import type { StockPhotoLookup } from '../../integrations/stockPhotoSupport';
 import type { AmapPoiPhotoLookup } from '../../integrations/amap/poiPhotos';
 
 function text(t: string) {
@@ -64,12 +65,16 @@ export interface ResearchToolDeps {
   onCandidate?: (poi: ResearchPoi) => void;
   /** 封面降级：库内无图时按地点名 + 坐标查中文维基。默认进程级实现；测试注入避免发请求。 */
   coverLookup?: CoverLookup;
-  /** 封面主路径（09-27）：Pexels 关键词检索，排在库内封面之前。未注入时不发请求（测试与离线回放）。 */
+  /** Pexels 关键词检索与已存照片，排在精选和上游本地图之后。未注入时不发请求。 */
   pexelsCover?: PexelsCoverLookup;
+  unsplashCover?: StockPhotoLookup;
+  pixabayCover?: StockPhotoLookup;
   /** 封面第三级（09-27）：高德 POI 图片。排在上游图库与 Pexels 之后，未注入时不发请求。 */
   amapPhotos?: AmapPoiPhotoLookup;
   /** 库内封面（未来 canonical_places 补图后由调用方提供）。返回非空则跳过实时检索。 */
   storedCover?: (name: string) => Promise<string | null>;
+  /** 图片级审核通过的摄影作品；未注入时沿用现有来源。 */
+  curatedCover?: (name: string) => Promise<(Required<Pick<ResearchPoi, 'coverUrl' | 'coverAttribution'>> & Pick<ResearchPoi, 'photos'>) | null>;
   /** 库内坐标兜底：调研阶段没捕到坐标时（知识库候选）用它。失败返回 null。 */
   storedPoint?: (name: string) => Promise<{ lat: number; lng: number } | null>;
   /** 库内已回写的高德图片（09-27）：命中则跳过实时查询，省下稀缺的搜索配额。 */
@@ -91,7 +96,7 @@ function isUsableCoverUrl(u: string): boolean {
 }
 
 /**
- * 封面解析（09-27 顺序）：上游图库 → Pexels → 高德 POI 图片 → 按坐标查中文维基 → 空。
+ * 封面解析：上游图库 → 各源已保存选择 → 新 Pexels → Unsplash → Pixabay → 高德 → 新维基 → 空。
  * 上游图库是真实实拍但只在 3 个城市有货；Pexels 覆盖任意城市但文本闸门只有约一半命中；
  * 高德是唯一「国内可访问 + 能精确对应景点」的一级（消耗稀缺的 5,000/月搜索配额，所以排最后）。
  * 坐标先取调研阶段捕到的（search_pois），没有再问库内坐标兜底。
@@ -106,33 +111,59 @@ async function resolveCover(
     storedCover: (name: string) => Promise<string | null>;
     storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>;
     pexels: PexelsCoverLookup;
+    unsplash?: StockPhotoLookup;
+    pixabay?: StockPhotoLookup;
     amapPhotos: AmapPoiPhotoLookup;
     storedAmapPhoto: (name: string) => Promise<string | null>;
     saveAmapPhoto: (name: string, url: string) => void;
   },
-): Promise<string | null> {
+): Promise<Pick<ResearchPoi, 'coverUrl' | 'coverAttribution' | 'photos'> | null> {
   const stored = await deps.storedCover(name);
-  if (stored && isUsableCoverUrl(stored)) return stored.slice(0, 300);
+  if (stored && isUsableCoverUrl(stored)) return { coverUrl: stored.slice(0, 300) };
 
-  const pexelsUrl = await deps.pexels.coverFor({ name, city });
-  if (pexelsUrl && isUsableCoverUrl(pexelsUrl)) return pexelsUrl.slice(0, 300);
+  const fromPhotos = (photos: NonNullable<ResearchPoi['photos']>) => photos[0] ? {
+    coverUrl: photos[0].url, coverAttribution: photos[0].attribution, photos,
+  } : null;
+  const savedPexels = await deps.pexels.cachedPhotosFor?.({ name, city });
+  if (savedPexels != null) return fromPhotos(savedPexels);
+
+  const key = normalizePlaceKey(name);
+  const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
+  const point = known?.[1] ?? (await deps.storedPoint(name));
+  const query: CoverQuery | null = point ? { name, city, lat: point.lat, lng: point.lng } : null;
+  const savedWiki = query ? await deps.covers.cachedPhotosFor?.(query) : null;
+  // 所有持久选择都先于新搜索；已选文件缺失也不触发其他图源重新选片。
+  if (savedWiki != null) return fromPhotos(savedWiki);
+
+  const savedUnsplash = await deps.unsplash?.cachedPhotosFor({ name, city });
+  // 只在实际采用时上报；只读窥探不得产生下载事件。上报失败则降级，旧行程不受影响。
+  if (savedUnsplash != null) {
+    const adopted = await deps.unsplash?.photosFor({ name, city });
+    if (adopted?.length) return fromPhotos(adopted);
+  }
+  const savedPixabay = await deps.pixabay?.cachedPhotosFor({ name, city });
+  if (savedPixabay != null) return fromPhotos(savedPixabay);
+
+  const photos = await deps.pexels.photosFor?.({ name, city });
+  const pexelsUrl = photos ? photos[0]?.url : await deps.pexels.coverFor({ name, city });
+  if (pexelsUrl && isUsableCoverUrl(pexelsUrl)) return { coverUrl: pexelsUrl.slice(0, 300), coverAttribution: photos?.[0]?.attribution, ...(photos?.length ? { photos } : {}) };
+
+  for (const source of [deps.unsplash, deps.pixabay]) {
+    const selected = await source?.photosFor({ name, city });
+    if (selected?.length) return fromPhotos(selected);
+  }
 
   // 高德级：库内回写优先（零成本），没有再实时查。配额稀缺（个人 5,000/月），所以命中即回写复用。
   const cachedAmap = await deps.storedAmapPhoto(name);
   const amapUrl = cachedAmap ?? (await deps.amapPhotos.coverFor({ name, city }));
   if (amapUrl && isUsableCoverUrl(amapUrl)) {
     if (!cachedAmap) deps.saveAmapPhoto(name, amapUrl);
-    return amapUrl.slice(0, 300);
+    return { coverUrl: amapUrl.slice(0, 300) };
   }
 
-  const key = normalizePlaceKey(name);
-  const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
-  const point = known?.[1] ?? (await deps.storedPoint(name));
-  if (!point) return null;
-
-  const query: CoverQuery = { name, city, lat: point.lat, lng: point.lng };
+  if (!query) return null;
   const url = await deps.covers.coverFor(query);
-  return url && isHttpUrl(url) ? url.slice(0, 300) : null;
+  return url && (isHttpUrl(url) || url.startsWith('/media/wikimedia/')) ? { coverUrl: url.slice(0, 300) } : null;
 }
 
 export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
@@ -311,19 +342,22 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         if (openTime) poi.openTime = openTime;
       }
 
-      // 封面降级（09-26）：库内有图就用库内的；没有才按「地点名 + 城市」查中文维基。
+      // 离线精选图通过身份、许可、文件校验后优先；未命中继续原有多级封面降级。
       // 只补 attraction，food/hotel 命中差。失败留空，前端回落类目图标。命中不回写库。
       if (category === 'attraction') {
-        const cover = await resolveCover(name, destination, outcome.locations, {
+        const curated = await deps.curatedCover?.(name).catch(() => null);
+        const cover = curated ?? await resolveCover(name, destination, outcome.locations, {
           covers: coverLookup,
           storedCover,
           storedPoint,
           pexels: pexelsCover,
+          unsplash: deps.unsplashCover,
+          pixabay: deps.pixabayCover,
           amapPhotos,
           storedAmapPhoto,
           saveAmapPhoto,
         });
-        if (cover) poi.coverUrl = cover;
+        if (cover) Object.assign(poi, cover);
       }
 
       // 预约种子表命中即置信：强制覆盖三态与说明，并把官方渠道链接放到来源首位

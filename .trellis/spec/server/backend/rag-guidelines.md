@@ -385,8 +385,11 @@ writes nothing.
   [--max-per-place] [--dry-run]`; `export_and_embed.ps1 -WithImages` chains it after the places import.
 - Importer: `tsx apps/server/scripts/seed-xhs-place-images.ts [path.json ...]` — run AFTER
   `seed-xhs-places.ts`, because a key can only be written onto an existing row.
-- `createStoredCoverLookup(city: string): (name: string) => Promise<string | null>` in
-  `generation/storedCover.ts`
+- `createStoredPlaceLookups(city, loadFacts = loadCityPlaceFacts)` returns `coverFor(name)`,
+  `amapPhotoFor(name)`, `pointFor(name)`; the orchestrator shares this instance per generation.
+- `loadCityPlaceFacts(city)` returns the complete normalized-name/alias index;
+  `loadPlaceFacts(names, city)` returns only the requested names (trimmed, otherwise unchanged).
+- `createStoredCoverLookup(city)` / `createStoredAmapPhotoLookup(city)` remain convenience wrappers.
 - `mediaUrl(key: string, base = env.mediaBaseUrl): string | null` — same file
 - `PlaceFacts.coverImage?: string` in `generation/scheduling/placeFacts.ts`
 - `env.mediaBaseUrl` ← `MEDIA_BASE_URL` (default `/media`; trailing slashes stripped)
@@ -408,6 +411,17 @@ writes nothing.
   read-only into the container (`./data/media:/app/data/media:ro`). The DB stores keys; the host
   stores bytes; they are synced separately.
 - The route is skipped when `data/media` does not exist, so a fresh clone still boots.
+- Vite must proxy `/media` to the same Fastify backend as `/api`. A 200 HTML SPA fallback is
+  NOT a valid media response; verify `image/webp` and browser decoding.
+- Cache the full `loadCityPlaceFacts` index, never the candidate subset returned by
+  `loadPlaceFacts([firstName], city)`. The latter silently loses every later name, including
+  coordinates required for the Wikimedia fallback. Empty city/name does not load the index.
+- Re-importing xhs places preserves independently maintained `coverImage` and `amapPhoto` fields,
+  while other upstream-owned payload fields refresh normally. Image imports choose the FIRST
+  valid manifest entry per place; upstream order is preference order, not last-write-wins.
+- Saved trips contain a cover snapshot in `overview`; library imports do not update old trips.
+  A targeted backfill must preserve other trip content, save a backup, and protect against
+  concurrent edits with an owner-scoped compare-and-swap write.
 - Upstream keeps `sourceUrl` (the Xiaohongshu CDN link, ~24 h signed) for provenance and takedown
   only. The file has already been copied locally; the link is never used for display.
 
@@ -415,13 +429,13 @@ writes nothing.
 
 | Condition | Result |
 | --- | --- |
-| `payload.coverImage` absent | `storedCover` → `null`; the wiki fallback runs as before |
+| `payload.coverImage` absent | stored lookup → `null`; continue with Pexels, Amap, then wiki |
 | `PEXELS_API_KEY` unset | Pexels source skipped silently; covers behave exactly as before that change |
 | Amap POI `photos` empty or name mismatch | `pickPhoto` → `null` (negative-cached 24 h) → wiki |
 | Amap search quota exhausted (`status≠1`) | `null`, not cached, one `[amap-photo]` warn; later candidates fall through |
 | `payload.amapPhoto` already set | read from the DB — no request, never overwritten |
 | `saveAmapPhoto` write fails | warn only; this generation keeps the working URL and continues |
-| Pexels results carry no textual match | `pickCover` → `null` (negative-cached 24 h) → stored cover → wiki |
+| Pexels results carry no textual match | `pickCover` → `null` (negative-cached 24 h) → Amap → wiki |
 | Pexels budget exhausted (8 per generation / 180 per hour) | `null` without a request; later candidates fall through |
 | `canonical_places` query throws | `loadPlaceFacts` warns and returns an empty Map → `null`; generation continues |
 | City argument empty | `createStoredCoverLookup` returns `null` without touching the DB |
@@ -430,6 +444,8 @@ writes nothing.
 | key in DB but file missing | `/media/...` → 404 → `PoiCard` `onerror` → category placeholder |
 | place id not in `canonical_places` (wrong run order) | importer skips it and warns; exits 0 |
 | importer rerun | `payload \|\| jsonb_build_object('coverImage', key)`; other payload keys untouched |
+| first candidate has no cover / no matching row | later candidates still query the full city index |
+| duplicate place entries in image manifest | first entry wins; repeated import is idempotent |
 | upstream source image missing/unreadable | count as `skipped`, keep going; manifest lists only written files |
 
 ### 5. Good / Base / Bad Cases
@@ -445,6 +461,11 @@ writes nothing.
 
 - `apps/server/src/__tests__/storedCover.test.ts` — key→URL joining for `/media`, absolute CDN base,
   trailing slash, leading slash on the key, empty key → `null`, empty city → `null` without a query.
+  Also cover multiple sequential/concurrent names after a first miss, shared loading across the
+  three readers, aliases, city isolation, and real database full-index/subset boundaries.
+- `apps/server/src/__tests__/imageImport.test.ts` — real seed scripts in a disposable database:
+  retain both image fields through place re-import, refresh other payload fields, first-image
+  selection and idempotence. Never run against application data.
 - `apps/server/src/__tests__/exportFiles.test.ts` — `xhs-place-images-*.json` is recognized as its own
   source with `rowCount` from `images`, and is NOT swallowed by the `xhs-places*` pattern.
 - `apps/server/src/__tests__/placeLookup.test.ts` — a stored `/media/...` value is accepted and no
@@ -478,3 +499,11 @@ Representative paths: `apps/server/src/generation/storedCover.ts`,
 `apps/server/scripts/lib/exportFiles.ts`, `apps/server/src/index.ts`, `docker-compose.yml`,
 `apps/server/src/integrations/pexels/cover.ts`, `apps/server/src/lib/placeKey.ts`,
 `xhs-travel-pipeline/scripts/export_place_images.py`.
+
+Read-only audit: `node --import tsx apps/server/scripts/audit-xhs-images.ts --city 杭州
+--trip-id <id> --out <report.json>`. Optional `--pipeline-root` defaults to the sibling pipeline
+repository. It reads each project's `.env` without importing the migrating database bootstrap,
+uses read-only transactions, and reports link/classification/assignment/export/import/trip
+coverage without contacting external providers. Counts of images in notes mentioning a place
+are only attribution candidates, not confirmed images of that place; do not sum overlapping
+per-place counts as unique images.

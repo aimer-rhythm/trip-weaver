@@ -9,6 +9,7 @@ export default defineConfig({
     strictPort: true,   // GitHub OAuth 回调端口必须与注册值精确匹配，禁止端口漂移
     proxy: {
       '/api': 'http://localhost:8787',
+      '/media': 'http://localhost:8787',
     },
   },
 });

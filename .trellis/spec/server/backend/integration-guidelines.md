@@ -1,5 +1,37 @@
 # External Integration Guidelines
 
+## Scenario: Unsplash and Pixabay automatic fallback photos
+
+- User-requested trip generation may search missing attractions through `createUnsplashCoverLookup` / `createPixabayCoverLookup`. Curated and stored covers plus saved Pexels/Wikimedia/Unsplash/Pixabay selections precede new searches; new search order is Pexels → Unsplash → Pixabay → Amap → Wikimedia. A winning provider supplies at most three photos including the cover; no extra searches just to fill a gallery. Existing trip viewing never invokes these adapters.
+- `UNSPLASH_ACCESS_KEY` and `PIXABAY_API_KEY` are optional server-only `env.ts` fields, configured in `apps/server/.env`. Never expose keys to frontend, log requests with Pixabay's query-string key, or save arbitrary API response fields. Missing credentials disable new requests; local Pixabay selections remain usable. Missing Unsplash credentials disable new adoption, not display of existing snapshots.
+- Unsplash API images must use exact `photo.urls.regular` hotlinks (including `ixid`), never local image copies. Public URLs over the existing300-character contract are rejected, never truncated. Persistent `unsplash-places` stores only validated selection metadata and private download endpoints. `cachedPhotosFor` is read-only; call `photosFor` when this source actually wins to report each selected photo's exact `links.download_location`. Same-task duplicate calls coalesce; a later task reports a new adoption without repeating the search. Failed reports exclude those images for that adoption and permit retries in a later task. Do not put download endpoints in public snapshots or fetch the event response's image URL.
+- Unsplash credits link the photographer profile and work, and all Unsplash links (including license) carry `utm_source=tripweaver&utm_medium=referral`. Shared attribution adds `photographerUrl` and explicit source literals. The curated local catalog still accepts only Pexels/Commons; extending the shared enum must not implicitly allow another provider through its Commons branch.
+- Pixabay query responses, including confirmed empty results, are cached on disk for24h. Cache keys contain place/city, never keys. Selected images must be downloaded via `photoStore`, saved in `media/remote-photos`, and indexed in `pixabay-places` without a positive TTL; never return a persistent Pixabay image hotlink. Allow only `cdn.pixabay.com` or `pixabay.com/get/` downloads. Try at most six candidates to obtain three valid unique images; download failures retry from the24h query cache. Runtime validation still applies on cache reads.
+- Both providers require city and specific place evidence in metadata. Preserve distinct Great Wall sections and reject Old Summer Palace/圆明园 for颐和园 even in hyphenated URL slugs. Landscape and atmospheric words rank candidates; this is metadata-based selection, not visual review or a guarantee of photographic quality.
+- Requests have8s timeout, no redirects,1MiB actual JSON body cap, task budgets (Unsplash12 including adoption events; Pixabay6 searches), process limits (45/hour and90/minute), and429 backoff. Pixabay coalesces same-query work across instances. These budgets are single-process and do not coordinate replicas. No background city crawl or bulk download is scheduled.
+- Official references: [Unsplash API guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines), [download events](https://help.unsplash.com/en/articles/2511258-guideline-triggering-a-download), [Pixabay API](https://pixabay.com/api/docs/). API rules supersede ordinary download-license assumptions.
+- Verification: `stockPhotos.test.ts`, `placeLookup.test.ts`, `curatedPhotos.test.ts`, `photoStore.test.ts`; `photo-layout-browser.mjs` tests profile/source links on gallery switch. `node --import tsx apps/server/scripts/verify-stock-photos.mts` makes one query per configured provider for故宫/北京 without generating an itinerary; missing keys must be reported as unverified live coverage, not zero source coverage.
+
+## Scenario: Offline curated place photography
+
+- `createCuratedCoverLookup(city)` reads the checked-in photography catalog before the existing stored/Pexels/Amap/Wikimedia fallback. It performs no network calls.
+- Default catalogs currently cover Hangzhou and the bounded Beijing sample. Keep per-city catalogs and provenance separate; adding a city requires a routing test and a media verification pass (`install-curated-photos.py --city beijing`). Never alias distinct Great Wall sections or other nearby attractions to improve coverage.
+- Match the city and exact primary name or explicit alias; a single trailing display annotation may be removed. Reject ambiguous aliases, combined places and inferred neighboring attractions.
+- Require approved review, verified place identity, valid source/license pairing and matching WebP SHA-256. Check images in catalog order; missing, unreadable or mismatched files skip to the next. No usable entry means normal fallback, never a generation error.
+- Identity/license eligibility is separate from photographic quality. Preserve withdrawn entries as `rejected`; they must not return from the lookup or be restored by the installer. Replay/build scripts apply the recorded quality feedback too. Prefer landscape and atmospheric photography while retaining outstanding portraits; ordinary tourist photos do not qualify merely by orientation. Use long-edge/short-edge size thresholds and separate search caches when orientation filters change.
+- Keep reviewer provenance (`agent-reviewed` is not human approval), source/derivative hashes, work title, author, work URL, license and resizing/cropping notice. Optional `ResearchPoi.photos` contains one to three valid local photos in stable order, including the cover; each photo retains its own attribution. `coverUrl`/`coverAttribution` mirror the first photo and remain compatible with old snapshots. Invalid files do not consume gallery slots.
+- `data/media/photography` is a deployable media volume, not a Git asset. `install-curated-photos.py` verifies by default; explicit `--download` restores approved files only, with HTTPS host allowlisting, no redirects, 20s timeout, 8MiB source limit and both hashes checked. Changed source bytes require review, not automatic hash replacement.
+- Tests: `curatedPhotos.test.ts` (identity/alias conflicts, review, license pairing and file fallback), `placeLookup.test.ts` (source priority, attribution and optional failure). Verify actual media HTTP responses, browser decode and visible credits in generation/editor cards.
+
+## Scenario: Persist selected external photos and expand the review pool
+
+- `photoStore.ts` keeps Pexels image bytes in `data/media/remote-photos`, URL-to-content hashes in `data/photo-store/sources`, and place selections in `data/photo-store/places`. Wikimedia selections use `wiki-places` and existing `data/media/wikimedia` files. Deploy the media and selection indices together.
+- Positive selections do not expire. Adapters expose read-only `cachedPhotosFor`; check all persisted selections before searching any provider. Pexels reads remain available without an API key or request budget. Wikimedia identity also includes coordinates; a same-name location at a different point cannot reuse that conclusion. A missing selected file produces remaining local photos or no photo, not an automatic cross-provider search.
+- New Pexels queries retain the place-text gate, prefer landscape and atmosphere metadata, download up to six candidates to obtain at most three valid unique photos, and keep work/photographer/license attribution. Metadata ranking is a heuristic, not visual review. Failed downloads remain retryable; confirmed empty search results may use a short-lived negative cache.
+- Remote storage permits fixed Pexels/Wikimedia/Pixabay HTTPS image hosts only; Unsplash is excluded: no credentials, ports or redirects, full 200 response, raster MIME/magic validation, 8s timeout and 8MiB actual-stream cap. Use atomic writes, pending-download coalescing, content hashes, durable URL deduplication and a 256MiB cap without evicting referenced media. Generic Wikimedia fallback retains its own 4MiB downloader and one-photo selection. Amap retains its existing external-URL provider contract.
+- `collect-openverse-pilot.mts` expands the offline pool via the Openverse index of Flickr works; it is not a production search adapter. Query four named places with CC BY/BY-SA/CC0 and landscape filters, at most20 records and six local previews per place. Cached previews count toward that cap on rerun. Preserve original source/author/license and pending status; verify place identity and composition before promoting to the curated catalog.
+- Tests: `photoStore.test.ts`, `pexelsCover.test.ts`, `wikimediaCover.test.ts`, `placeLookup.test.ts`; the task's `verify-openverse-review.mjs` verifies zero-request cached replay and local browser previews.
+
 ## Scenario: AI trip sharing images
 
 ### 1. Scope / Trigger
@@ -556,8 +588,9 @@ retrieval guidelines under *Attraction Cover Images*.
   failures only warn. `createStoredAmapPhotoLookup(city)` reads it back inside the Amap stage (same
   position in the order, NOT moved ahead of Pexels), so a place that ever resolved costs nothing
   afterwards. Negative results are NOT written back — a miss must stay retryable.
-- URL acceptance differs per source: Pexels, Amap and Wikipedia must be `https://`; stored covers may
-  also be a same-origin path starting with `/`.
+- URL acceptance differs per source: external providers use HTTP(S); stored covers may also be
+  same-origin paths. Wikimedia adapter downloads allowlisted HTTPS images and returns
+  `/media/wikimedia/<content-sha256>.<raster-extension>` after persistence.
 - Budgets are separate and do not share counters: Pexels 8 requests per generation + a process-level
   180/hour window (its published limit is 200/hour; restart resets the window); Amap POI photos ≤8 per
   generation + 100 per 24 h; Wikipedia 8 per generation, serial with ≥1 s spacing.
@@ -572,8 +605,27 @@ alogs one warn at most; nothing throws into generation. A `null` from a confirme
   frontend falls back to the category icon.
 - Accept an article only when it has a thumbnail AND coordinates within 2 km of the place. The
   place coordinate is GCJ-02 and is converted with `gcj02ToWgs84` before comparing.
+- Wikipedia article identity must also match the normalized requested place name (optional city
+  prefix / city disambiguation suffix). Nearby parent articles are not substitutes: 西湖 cannot
+  supply a photo for 断桥残雪 or 苏堤, and 灵隐寺 cannot supply one for 飞来峰.
+- Try direct title and city-disambiguated title lookup before full-text search; a search-index miss
+  does not imply the exact article is absent. When that same article has no coordinate template,
+  its `pageprops.wikibase_item` may provide P625: require one non-deprecated Earth coordinate,
+  finite valid latitude/longitude and precision ≤0.005 degrees, then apply the same 2 km gate.
+  Do not use parent/city/related entities, ambiguous claims, or redirects with a different subject.
+- Before returning a Wikipedia cover, download the complete image from an allowlisted Wikimedia
+  host with an 8s timeout, redirects disabled, a 4 MiB per-image limit (headers AND actual stream),
+  image Content-Type and recognized raster magic bytes. Reject partial responses. Save under
+  `data/media/wikimedia` with a source URL sidecar and a 256 MiB cache capacity check; do not
+  evict images already referenced by trips. Failures yield no cover; transport errors stay retryable.
+  The browser loads the same-origin local URL: server proxy reachability alone does not prove
+  external URLs work in a user's browser. Verification includes actual browser image decoding.
 - Coordinate source: the research-phase capture (`search_pois`) first, then `loadPlaceFacts` for
   knowledge-base candidates. Names match through `normalizePlaceKey` so 「故宫」hits 「故宫博物院」.
+- Stored place lookup loads the whole city once per generation. Try the complete display name
+  first, then the leading subject for a trailing parenthetical annotation, e.g.
+  九溪烟树（九溪十八涧） → 九溪烟树. Never use the parenthetical content as a substitute subject:
+  断桥（西湖） must not borrow 西湖's photo. Do not globally merge these names in the canonical data.
 - The hit is written to the candidate's `coverUrl` only. It is NOT written back to
   `canonical_places`. The model's own `coverUrl` argument is ignored.
 - A confirmed miss (no usable article) is negative-cached 24 h. A transport failure (timeout, non-2xx)

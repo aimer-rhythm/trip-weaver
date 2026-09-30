@@ -81,10 +81,10 @@ async function importFile(
   now: string,
 ): Promise<{ updated: number; missing: number }> {
   const file = JSON.parse(fs.readFileSync(target.filePath, 'utf8')) as PlaceImagesFile;
-  // 同一地点多行会让 rowCount 少算，先去重（后出现的覆盖前者）
+  // 上游按质量排序，同一地点保留第一张封面；多图导出不能让次选覆盖首选。
   const byPlace = new Map<string, ImageEntry>();
   for (const entry of file.images ?? []) {
-    if (entry?.placeId && entry.key) byPlace.set(entry.placeId, entry);
+    if (entry?.placeId && entry.key && !byPlace.has(entry.placeId)) byPlace.set(entry.placeId, entry);
   }
   const entries = [...byPlace.values()];
   console.log(

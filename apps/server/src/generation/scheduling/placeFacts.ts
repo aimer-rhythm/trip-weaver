@@ -163,14 +163,13 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
 }
 
 /**
- * 按候选名批量取事实（实体归一版）：全城行拉回 → 归一键分组合并 → 按候选名的归一键服务。
- * 候选「故宫博物院」与库内「故宫」分裂条目由此合并取数（09-23）。
+ * 全城事实索引：主名与别名均以归一键分组合并，适合生成期间按城市缓存。
+ * 返回完整索引；需要按候选原名返回子集时使用 loadPlaceFacts。
  * 查询失败返回空 Map —— 调用方按「无事实」处理（类型表兜底）。
  * city 必传：跨城市同名地点会因缺 city 过滤而串味（同 retrieveContext 的 city 语义）。
  */
-export async function loadPlaceFacts(names: readonly string[], city: string): Promise<Map<string, PlaceFacts>> {
-  const unique = [...new Set(names.map((n) => n.trim()).filter(Boolean))];
-  if (!unique.length || !city.trim()) return new Map();
+export async function loadCityPlaceFacts(city: string): Promise<Map<string, PlaceFacts>> {
+  if (!city.trim()) return new Map();
   try {
     const { rows } = await pool.query<FactRow>(
       `SELECT name, category, source, lng, lat, payload
@@ -206,21 +205,28 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
     );
     const closureByKey = new Map(closureRows.map((row) => [normalizePlaceKey(row.name), row.content]));
 
-    // 按候选名归一键服务；key 保持候选传入名（调用方无感）
-    const result = new Map<string, PlaceFacts>();
-    for (const name of unique) {
-      const key = normalizePlaceKey(name);
-      const facts = mergedByKey.get(key);
-      if (!facts) continue;
+    for (const [key, facts] of mergedByKey) {
       const closure = closureByKey.get(key);
       if (closure) facts.closureText = closure;
-      result.set(name, facts);
     }
-    return result;
+    return mergedByKey;
   } catch (err) {
     console.warn(`[placeFacts] 地点事实补全失败，排程按类型表兜底：${err instanceof Error ? err.message : String(err)}`);
     return new Map();
   }
+}
+
+/** 批量候选查询仍按传入名称返回；全城索引与候选子集不能混作同一个缓存。 */
+export async function loadPlaceFacts(names: readonly string[], city: string): Promise<Map<string, PlaceFacts>> {
+  const unique = [...new Set(names.map((n) => n.trim()).filter(Boolean))];
+  if (!unique.length || !city.trim()) return new Map();
+  const index = await loadCityPlaceFacts(city);
+  const result = new Map<string, PlaceFacts>();
+  for (const name of unique) {
+    const facts = index.get(normalizePlaceKey(name));
+    if (facts) result.set(name, facts);
+  }
+  return result;
 }
 
 /**

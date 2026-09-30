@@ -1,10 +1,30 @@
 // 维基封面降级：挑选规则（纯函数）+ 适配器的缓存、失败降级、请求上限（mock fetch）
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { createWikiCoverLookup, pickCover, type CoverQuery } from '../integrations/wikimedia/cover';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { cacheWikiImage, downloadWikiImage } from '../integrations/wikimedia/imageCache';
+import { createWikiCoverLookup, pickCover, verifyWikiImage, wikiTitleMatches, type CoverQuery } from '../integrations/wikimedia/cover';
 
 const here = { lat: 39.9, lng: 116.4 };
 const thumb = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/example.jpg/500px-example.jpg';
+
+test('完整下载：限制声明长度和流实际长度，拒绝部分响应，不跟随重定向', async () => {
+  const original = globalThis.fetch;
+  try {
+    globalThis.fetch = (async (_url, init) => {
+      assert.equal(init?.redirect, 'error');
+      return new Response('small', { headers: { 'content-type': 'image/jpeg', 'content-length': String(5 * 1024 * 1024) } });
+    }) as typeof fetch;
+    assert.equal(await downloadWikiImage(thumb), null);
+    globalThis.fetch = (async () => new Response(new Uint8Array(4 * 1024 * 1024 + 1), { headers: { 'content-type': 'image/jpeg' } })) as typeof fetch;
+    assert.equal(await downloadWikiImage(thumb), null);
+    globalThis.fetch = (async () => new Response(new Uint8Array([255, 216, 255]), { status: 206, headers: { 'content-type': 'image/jpeg' } })) as typeof fetch;
+    assert.equal(await downloadWikiImage(thumb), null);
+    assert.equal(await downloadWikiImage('not-a-url'), null);
+  } finally { globalThis.fetch = original; }
+});
 
 function page(partial: Partial<{ title: string; lat: number | null; lng: number | null; thumb: string | null }>) {
   return { title: '词条', lat: here.lat, lng: here.lng, thumb, ...partial };
@@ -37,10 +57,15 @@ function wikiBody(pages: Record<string, unknown>) {
 
 test('适配器：搜索后按坐标核对，命中返回缩略图且第二次走缓存', async () => {
   const original = globalThis.fetch;
+  const root = await mkdtemp(path.join(tmpdir(), 'wiki-cache-'));
+  const mediaRoot = path.join(root, 'media/wikimedia');
   const urls: string[] = [];
   globalThis.fetch = (async (input: string | URL | Request) => {
     const url = String(input);
     urls.push(url);
+    if (url.startsWith('https://upload.wikimedia.org/')) {
+      return new Response(new Uint8Array([0xff, 0xd8, 0xff, 0xe0]), { headers: { 'Content-Type': 'image/jpeg' } });
+    }
     if (url.includes('list=search')) {
       return Response.json({ query: { search: [{ title: '颐和园 (电影)' }, { title: '故宫博物院' }] } });
     }
@@ -55,14 +80,65 @@ test('适配器：搜索后按坐标核对，命中返回缩略图且第二次�
   }) as typeof fetch;
 
   try {
-    const lookup = createWikiCoverLookup(8, 0);
-    assert.equal(await lookup.coverFor(query), `${thumb}?palace`);
-    assert.equal(await lookup.coverFor(query), `${thumb}?palace`);
-    assert.equal(urls.length, 2, '第二次应命中缓存，不再发请求');
-    assert.match(urls[0]!, /srsearch=/);
+    const lookup = createWikiCoverLookup(8, 0, url => cacheWikiImage(url, mediaRoot), { dataRoot: root });
+    const actual = await lookup.coverFor(query);
+    assert.match(actual!, /^\/media\/wikimedia\/[a-f0-9]{64}\.jpg$/);
+    assert.deepEqual(await readFile(path.join(mediaRoot, path.basename(actual!))), Buffer.from([0xff, 0xd8, 0xff, 0xe0]));
+    assert.equal(JSON.parse(await readFile(path.join(mediaRoot, path.basename(actual!) + '.json'), 'utf8')).source, thumb + '?palace');
+    assert.equal(await lookup.coverFor(query), actual);
+    const restored = createWikiCoverLookup(0, 0, async () => { throw new Error('不得访问图源'); }, { dataRoot: root });
+    assert.deepEqual(await restored.cachedPhotosFor?.(query), [{ url: actual }]);
+    assert.equal(await restored.cachedPhotosFor?.({ ...query, lng: query.lng + 1 }), null, '只读缓存不能复用同名异地照片');
+    assert.equal(await restored.coverFor({ ...query, name: ' 故宫博物院 ' }), actual, '新实例、不同内存缓存键与零请求预算仍复用持久结果');
+    assert.equal(urls.length, 2, '同名详情与图片验证；命中后不依赖搜索索引');
+    assert.match(urls[0]!, /titles=/);
   } finally {
     globalThis.fetch = original;
+    assert.ok(path.resolve(root).startsWith(path.resolve(tmpdir()) + path.sep));
+    await rm(root, { recursive: true, force: true });
   }
+});
+
+test('词条身份：邻近的西湖不能代替断桥，灵隐寺不能代替飞来峰', () => {
+  assert.equal(wikiTitleMatches('西湖', '断桥残雪', '杭州'), false);
+  assert.equal(wikiTitleMatches('灵隐寺', '飞来峰', '杭州'), false);
+  assert.equal(wikiTitleMatches('飞来峰 (杭州)', '飞来峰', '杭州'), true);
+  assert.equal(wikiTitleMatches('杭州西湖', '西湖', '杭州'), true);
+  assert.equal(pickCover([page({ title: '西湖' })], here, { name: '断桥残雪', city: '杭州' }), null);
+});
+
+test('图片探测：HTML、伪装图片和任意第三方域名不可作为图片保存', async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => { calls++; return new Response('<html>oops</html>', { headers: { 'Content-Type': 'image/jpeg' } }); }) as typeof fetch;
+  try {
+    assert.equal(await verifyWikiImage('https://example.com/image.jpg'), false);
+    assert.equal(calls, 0);
+    assert.equal(await verifyWikiImage(thumb), false);
+    globalThis.fetch = (async () => new Response('<html>oops</html>', { headers: { 'Content-Type': 'text/html' } })) as typeof fetch;
+    assert.equal(await verifyWikiImage(thumb), false);
+  } finally { globalThis.fetch = original; }
+});
+
+test('图片探测服务暂时失败不进负缓存，下一次查询仍重试', async () => {
+  const original = globalThis.fetch;
+  let imageCalls = 0;
+  globalThis.fetch = (async (input: string | URL | Request) => {
+    const url = String(input);
+    if (url.startsWith('https://upload.wikimedia.org/')) {
+      imageCalls++;
+      return new Response('unavailable', { status: 503 });
+    }
+    if (url.includes('list=search')) return Response.json({ query: { search: [{ title: '重试园' }] } });
+    return Response.json(wikiBody({ '1': { title: '重试园', thumbnail: { source: thumb }, coordinates: [{ lat: 39.916, lon: 116.397 }] } }));
+  }) as typeof fetch;
+  try {
+    const lookup = createWikiCoverLookup(8, 0);
+    const q = { ...query, name: '重试园' };
+    assert.equal(await lookup.coverFor(q), null);
+    assert.equal(await lookup.coverFor(q), null);
+    assert.equal(imageCalls, 2);
+  } finally { globalThis.fetch = original; }
 });
 
 test('适配器：超时或非 2xx 返回 null，不抛异常', async () => {
@@ -90,7 +166,7 @@ test('适配器：确认无图的结果进负缓存，第二次不再发请求',
     const q = { ...query, name: '只有电影同名' };
     assert.equal(await lookup.coverFor(q), null);
     assert.equal(await lookup.coverFor(q), null);
-    assert.equal(calls, 2, '两次请求（搜索 + 详情）后应命中负缓存');
+    assert.equal(calls, 3, '直接详情、搜索、搜索详情后应命中负缓存');
   } finally {
     globalThis.fetch = original;
   }
@@ -126,4 +202,48 @@ test('适配器：超过单次生成上限后不再发请求', async () => {
   } finally {
     globalThis.fetch = original;
   }
+});
+
+test('词条无坐标时仅采用同一实体唯一、精确、非弃用的地球坐标', async () => {
+  const original = globalThis.fetch;
+  const point = { latitude: 39.916, longitude: 116.397, globe: 'http://www.wikidata.org/entity/Q2', precision: 0.00001 };
+  try {
+    const cases = [
+      { values: [point], rank: 'normal', ok: true },
+      { values: [{ ...point, precision: 1 }], rank: 'normal', ok: false },
+      { values: [{ ...point, globe: 'http://www.wikidata.org/entity/Q111' }], rank: 'normal', ok: false },
+      { values: [point], rank: 'deprecated', ok: false },
+      { values: [point, { ...point, latitude: 40 }], rank: 'normal', ok: false },
+      { values: [{ ...point, latitude: 31 }], rank: 'normal', ok: false },
+    ];
+    for (const [i, scenario] of cases.entries()) {
+      const name = `坐标回归园${i}`;
+      globalThis.fetch = (async input => {
+        const url = String(input);
+        if (url.startsWith('https://www.wikidata.org/w/api.php?')) {
+          return Response.json({ entities: { Q123: { claims: { P625: scenario.values.map(value => ({ rank: scenario.rank, mainsnak: { datavalue: { value } } })) } } } });
+        }
+        if (url.includes('list=search')) return Response.json({ query: { search: [] } });
+        return Response.json(wikiBody({ '1': { title: name, thumbnail: { source: thumb }, pageprops: { wikibase_item: 'Q123' } } }));
+      }) as typeof fetch;
+      const lookup = createWikiCoverLookup(1, 0, async () => '/media/wikimedia/verified.jpg');
+      assert.equal(await lookup.coverFor({ ...query, name }), scenario.ok ? '/media/wikimedia/verified.jpg' : null);
+    }
+  } finally { globalThis.fetch = original; }
+});
+
+test('直接词条无结果仍走搜索，但父景区重定向不能绕过身份匹配', async () => {
+  const original = globalThis.fetch;
+  const calls: string[] = [];
+  globalThis.fetch = (async input => {
+    const url = String(input); calls.push(url);
+    if (url.includes('list=search')) return Response.json({ query: { search: [{ title: '搜索回归园' }] } });
+    const titles = new URL(url).searchParams.get('titles');
+    return Response.json(wikiBody({ '1': { title: titles?.includes('|') ? '西湖' : '搜索回归园', thumbnail: { source: thumb }, coordinates: [{ lat: 39.916, lon: 116.397 }] } }));
+  }) as typeof fetch;
+  try {
+    assert.equal(await createWikiCoverLookup(1, 0, async () => '/media/wikimedia/search.jpg').coverFor({ ...query, name: '搜索回归园' }), '/media/wikimedia/search.jpg');
+    assert.equal(calls.length, 3);
+    assert.ok(calls[1]!.includes('list=search'));
+  } finally { globalThis.fetch = original; }
 });

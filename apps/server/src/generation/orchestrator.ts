@@ -40,24 +40,14 @@ import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
 import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
 import { createPexelsCoverLookup } from '../integrations/pexels/cover';
+import { createUnsplashCoverLookup } from '../integrations/unsplash/cover';
+import { createPixabayCoverLookup } from '../integrations/pixabay/cover';
 import { createAmapPoiPhotoLookup } from '../integrations/amap/poiPhotos';
-import { createStoredCoverLookup, createStoredAmapPhotoLookup } from './storedCover';
+import { createStoredPlaceLookups } from './storedCover';
+import { createCuratedCoverLookup } from '../integrations/curatedPhotos';
 import { loadPlaceFacts, saveAmapPhoto } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
 
-/**
- * 封面降级的库内坐标兜底（09-26）。
- * 库内封面（payload.coverImage）缺失时靠坐标查中文维基；调研阶段没捕到坐标（知识库候选）就用这里。
- * loadPlaceFacts 拉的是全城行，一次生成只拉一次，后续候选复用。
- */
-function cityPointLookup(city: string): (name: string) => Promise<{ lat: number; lng: number } | null> {
-  let pending: ReturnType<typeof loadPlaceFacts> | null = null;
-  return async (name) => {
-    pending ??= loadPlaceFacts([name], city);
-    const hit = (await pending).get(name);
-    return hit?.lat !== undefined && hit.lng !== undefined ? { lat: hit.lat, lng: hit.lng } : null;
-  };
-}
 import { buildDraftTools } from './tools/draftTools';
 import { buildReviewTools, type ReviewOutcome } from './tools/reviewTools';
 import { applyDeterministicSchedule } from './scheduling/buildDraft';
@@ -250,6 +240,7 @@ export async function runGeneration(
     // R3（09-25）：未覆盖城市放宽 search_web 上限（2→6），SEARCH_DAILY_BUDGET 日预算闸门不受影响
     const searchWebMax = searchWebMaxFor(await cityCoverage(form.destination));
     const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+    const storedPlaces = createStoredPlaceLookups(form.destination);
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
@@ -263,14 +254,17 @@ export async function runGeneration(
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
         coverLookup: createWikiCoverLookup(),
         pexelsCover: createPexelsCoverLookup(env.pexelsApiKey),
+        unsplashCover: createUnsplashCoverLookup(env.unsplashAccessKey),
+        pixabayCover: createPixabayCoverLookup(env.pixabayApiKey),
         amapPhotos: amapPoiPhotos,
-        storedCover: createStoredCoverLookup(form.destination),
+        storedCover: storedPlaces.coverFor,
+        curatedCover: createCuratedCoverLookup(form.destination, { mediaBase: env.mediaBaseUrl }),
         // 高德命中后回写 payload.amapPhoto：同一地点终身只花一次搜索配额（fire-and-forget，失败不阻断）
-        storedAmapPhoto: createStoredAmapPhotoLookup(form.destination),
+        storedAmapPhoto: storedPlaces.amapPhotoFor,
         saveAmapPhoto: (name, url) => {
           void saveAmapPhoto(form.destination, name, url);
         },
-        storedPoint: cityPointLookup(form.destination),
+        storedPoint: storedPlaces.pointFor,
       }),
       userPrompt: `${formBrief(form)}\n\n请开始调研。`,
       signal,

@@ -8,6 +8,7 @@ import type {
   LoginBodySchema,
   RegisterBodySchema,
   ResearchPoiSchema,
+  PoiPhotoSchema,
   SettingsPutSchema,
   SourceNoteSchema,
   TripDaySchema,
@@ -64,6 +65,7 @@ export type Lodging = Static<typeof LodgingSchema>;
 export type TripDay = Static<typeof TripDaySchema>;
 export type TripMeta = Static<typeof TripMetaSchema>;
 export type ResearchPoi = Static<typeof ResearchPoiSchema>;
+export type PoiPhoto = Static<typeof PoiPhotoSchema>;
 export type Trip = Static<typeof TripSchema>;
 export type TripShareImageRequest = Static<typeof TripShareImageRequestSchema>;
 export type TripShareImageResponse = Static<typeof TripShareImageResponseSchema>;

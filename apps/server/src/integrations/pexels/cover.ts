@@ -1,7 +1,4 @@
-// 景点封面第一来源（09-27）：Pexels 免费图库关键词搜索。
-//
-// 为什么排在库内封面与维基之前：库内图只覆盖 3 个城市（北京/广州/杭州），维基的
-// upload.wikimedia.org 在国内被封锁 —— 两者合起来出不了几张图。
+// 景点摄影补充：精选和本地图未命中时搜索 Pexels；入选照片持久保存并优先复用。
 //
 // 没有坐标可核对，所以用「alt / 照片页 slug 与地点名的归一键匹配」当闸门：
 // 宁可这张卡片回落类目图标，也不要把某公园的通用湖景贴到具体景点上。
@@ -11,6 +8,8 @@
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';
 import { normalizePlaceKey } from '../../lib/placeKey';
+import type { PoiPhoto } from '@tripweaver/shared';
+import { readPhotoSelection, saveRemotePhoto, writePhotoSelection } from '../photoStore';
 
 const API = 'https://api.pexels.com/v1/search';
 const TIMEOUT_MS = 8_000;
@@ -24,13 +23,16 @@ const MAX_PER_HOUR = 180;
 /** 候选池大小：闸门是文本匹配，池子越大越容易碰到带地名的 alt（实测 5 条时不少命中项排在后面） */
 const PER_PAGE = 15;
 
-const cache = new TtlCache<string | null>(CACHE_TTL_MS, 300);
+const cache = new TtlCache<PoiPhoto[]>(CACHE_TTL_MS, 300);
 const recentCalls: number[] = [];
 
 export interface PexelsPhoto {
   alt?: unknown;
   url?: unknown;
   src?: Record<string, unknown>;
+  photographer?: unknown;
+  width?: unknown;
+  height?: unknown;
 }
 
 export interface PexelsCoverQuery {
@@ -41,8 +43,11 @@ export interface PexelsCoverQuery {
 }
 
 export interface PexelsCoverLookup {
-  /** 返回 https 图片 URL；未命中、超限或失败都是 null */
+  /** 只读本地选择；null 表示未选过，空数组表示已选文件不可用。 */
+  cachedPhotosFor?(query: PexelsCoverQuery): Promise<PoiPhoto[] | null>;
+  /** 入选图片持久保存后返回本地 URL；未命中、超限或失败都是 null。 */
   coverFor(query: PexelsCoverQuery): Promise<string | null>;
+  photosFor?(query: PexelsCoverQuery): Promise<PoiPhoto[]>;
 }
 
 /** 照片页 URL → 可比较的要点串（`/photo/beijing-forbidden-city-12345/` → `beijing-forbidden-city`） */
@@ -72,7 +77,7 @@ function httpsOnly(value: unknown): string {
 
 /**
  * 在已取回的结果里挑封面：alt 或照片页 slug 与地点名的归一键有交集才算命中，返回该条目的图片直链。
- * 纯函数，方便单测不发请求。尺寸回落：medium（高约 350px，够 72px 卡片）→ large → original。
+ * 保留单封面兼容入口；照片组由 pickPhotos 优先选择适合放大查看的尺寸。
  */
 export function pickCover(photos: readonly PexelsPhoto[], name: string): string | null {
   const wanted = normalizePlaceKey(name);
@@ -88,7 +93,7 @@ export function pickCover(photos: readonly PexelsPhoto[], name: string): string 
     );
     if (!hit) continue;
     const src = photo.src ?? {};
-    const image = httpsOnly(src.medium) || httpsOnly(src.large) || httpsOnly(src.original);
+    const image = httpsOnly(src.medium) || httpsOnly(src.large2x) || httpsOnly(src.large) || httpsOnly(src.original);
     if (image) return image;
   }
   return null;
@@ -101,48 +106,92 @@ function hourWindowHasRoom(now: number): boolean {
   return recentCalls.length < MAX_PER_HOUR;
 }
 
-async function lookup(name: string, apiKey: string): Promise<string | null> {
+export function pickPhotos(photos: readonly PexelsPhoto[], name: string): PoiPhoto[] {
+  const ranked = photos.filter(photo => pickCover([photo], name)).map(photo => {
+    const landscape = typeof photo.width === 'number' && typeof photo.height === 'number' && photo.width > photo.height;
+    const atmosphere = typeof photo.alt === 'string' && /sunset|sunrise|dusk|mist|fog|twilight|golden hour|晨|雾|夕|暮|日落/i.test(photo.alt);
+    return { photo, score: (landscape ? 2 : 0) + (atmosphere ? 1 : 0) };
+  }).sort((a, b) => b.score - a.score);
+  const selected: PoiPhoto[] = [];
+  for (const { photo } of ranked) {
+    if (typeof photo.photographer !== 'string' || !photo.photographer.trim() || typeof photo.url !== 'string') continue;
+    let page: URL;
+    try { page = new URL(photo.url); } catch { continue; }
+    if (page.protocol !== 'https:' || page.hostname !== 'www.pexels.com' || page.username || page.password || page.port || !page.pathname.startsWith('/photo/')) continue;
+    const src = photo.src ?? {};
+    const url = httpsOnly(src.large2x) || httpsOnly(src.large) || httpsOnly(src.original) || httpsOnly(src.medium);
+    if (!url || selected.some(p => p.url === url)) continue;
+    selected.push({ url, attribution: { source: 'pexels', photographer: photo.photographer.trim().slice(0, 300), sourceUrl: page.href,
+      license: 'Pexels License', licenseUrl: 'https://www.pexels.com/license/', changes: '已保存图源提供的尺寸版本，未另行裁切' } });
+    if (selected.length === 6) break; // 下载失败可以补位，但最终图库最多3张。
+  }
+  return selected;
+}
+
+async function lookup(name: string, apiKey: string): Promise<PoiPhoto[]> {
   const params = new URLSearchParams({ query: name, locale: 'zh-CN', per_page: String(PER_PAGE) });
   const res = await fetch(`${API}?${params}`, {
     headers: { Authorization: apiKey, Accept: 'application/json' },
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!res.ok) throw new Error(`pexels http ${res.status}`);
-  const body = (await res.json()) as { photos?: PexelsPhoto[] };
-  return pickCover(body.photos ?? [], name);
+  const body: unknown = await res.json();
+  if (!body || typeof body !== 'object' || !('photos' in body) || !Array.isArray(body.photos)) throw new Error('invalid pexels response');
+  const photos = body.photos.filter((photo): photo is PexelsPhoto => !!photo && typeof photo === 'object' &&
+    (!('src' in photo) || (!!photo.src && typeof photo.src === 'object' && !Array.isArray(photo.src))));
+  return pickPhotos(photos, name);
 }
 
 /**
- * 进程级缓存 + 队列；requestsLeft 由单次生成持有，跨任务不共享。
- * 未配置 apiKey 时退化为 Null 实现（不发请求、不影响既有链路）。
+ * 持久选择优先，另有进程级负缓存 + 队列；requestsLeft 由单次生成持有。
+ * 未配置 apiKey 时仍可读已存照片，仅新搜索退化为 Null 实现。
  * minIntervalMs 仅供测试缩短等待。
  */
 export function createPexelsCoverLookup(
   apiKey: string,
   requestsLeft = MAX_PER_TASK,
   minIntervalMs = MIN_INTERVAL_MS,
+  options: { dataRoot?: string } = {},
 ): PexelsCoverLookup {
   const run = createSerialQueue(minIntervalMs);
   let remaining = requestsLeft;
-  return {
-    async coverFor(query) {
-      if (!apiKey) return null;
-      const cacheKey = `${query.city}|${query.name}`.trim().toLowerCase();
-      const cached = cache.get(cacheKey);
-      if (cached !== undefined) return cached;
-      const now = Date.now();
-      if (remaining <= 0 || !hourWindowHasRoom(now)) return null;
-      remaining -= 1;
-      recentCalls.push(now);
-      try {
-        const url = await run(() => lookup(query.name, apiKey));
-        cache.set(cacheKey, url); // 含 null：确认没图的地点 24h 内不再打
-        return url;
-      } catch (err) {
-        // 失败不进缓存：超时与限流都是瞬时的，下次生成应再试一次
-        console.warn(`[pexels-cover] ${query.name} 检索失败：${err instanceof Error ? err.message : '未知错误'}`);
-        return null;
-      }
-    },
+  const pending = new Map<string, Promise<PoiPhoto[]>>();
+  const cachedPhotosFor = (query: PexelsCoverQuery) => readPhotoSelection(query.city, query.name, options.dataRoot);
+  const photosFor = async (query: PexelsCoverQuery): Promise<PoiPhoto[]> => {
+    const cacheKey = JSON.stringify([options.dataRoot ?? '', query.city.trim().toLowerCase(), query.name.trim().toLowerCase()]);
+    let task = pending.get(cacheKey);
+    if (!task) {
+      task = (async () => {
+        const saved = await cachedPhotosFor(query);
+        if (saved !== null) return saved;
+        if (!apiKey) return [];
+        const cached = cache.get(cacheKey);
+        if (cached !== undefined) return cached;
+        const now = Date.now();
+        if (remaining <= 0 || !hourWindowHasRoom(now)) return [];
+        remaining -= 1;
+        recentCalls.push(now);
+        try {
+          const candidates = await run(() => lookup(query.name, apiKey));
+          const photos: PoiPhoto[] = [];
+          for (const candidate of candidates) {
+            const photo = await saveRemotePhoto(candidate, options.dataRoot);
+            if (photo && !photos.some(p => p.url === photo.url)) photos.push(photo);
+            if (photos.length === 3) break;
+          }
+          if (photos.length) await writePhotoSelection(query.city, query.name, photos, options.dataRoot);
+          // 确认没有候选才负缓存；图片下载失败不固化为空。
+          if (photos.length || !candidates.length) cache.set(cacheKey, photos);
+          return photos;
+        } catch (err) {
+          // 失败不进缓存：超时与限流都是瞬时的，下次生成应再试一次
+          console.warn(`[pexels-cover] ${query.name} 检索失败：${err instanceof Error ? err.message : '未知错误'}`);
+          return [];
+        }
+      })().finally(() => pending.delete(cacheKey));
+      pending.set(cacheKey, task);
+    }
+    return task;
   };
+  return { cachedPhotosFor, photosFor, coverFor: async query => (await photosFor(query))[0]?.url ?? null };
 }

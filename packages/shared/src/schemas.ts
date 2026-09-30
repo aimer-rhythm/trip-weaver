@@ -12,6 +12,7 @@ import {
   MAX_SOURCE_NOTES,
   MAX_TRIP_DAYS,
   PACE_OPTIONS,
+  PHOTO_SOURCES,
   POI_CATEGORIES,
   PREFERENCE_OPTIONS,
   RESERVATION_STATUSES,
@@ -92,12 +93,29 @@ export const TripDaySchema = Type.Object({
   lodging: Type.Optional(LodgingSchema),               // day 级住宿覆盖（多城市场景）；缺省用 Trip 级
 });
 
-// 调研候选（行程概览卡片）。高德协议 3.5：只落名称+短摘要+来源链接，图片仅存热链 URL 不转存文件
+// 调研候选（行程概览卡片）。照片按图源协议使用本地副本或官方外链；高德图片仍不转存。
+export const PhotoAttributionSchema = Type.Object({
+  source: StringEnum(PHOTO_SOURCES),
+  photographer: Type.String({ minLength: 1, maxLength: 300 }),
+  photographerUrl: Type.Optional(Type.String({ maxLength: 1500, pattern: '^https://' })),
+  sourceUrl: Type.String({ maxLength: 1500, pattern: '^https://' }),
+  license: Type.String({ minLength: 1, maxLength: 80 }),
+  licenseUrl: Type.String({ maxLength: 300, pattern: '^https://' }),
+  changes: Type.String({ maxLength: 120 }),
+});
+
+export const PoiPhotoSchema = Type.Object({
+  url: Type.String({ minLength: 1, maxLength: 300, pattern: '^(https?://|/[^/])' }),
+  attribution: Type.Optional(PhotoAttributionSchema),
+});
+
 export const ResearchPoiSchema = Type.Object({
   id: Type.String(),
   name: Type.String({ minLength: 1, maxLength: 100 }),
   category: StringEnum(POI_CATEGORIES),
   coverUrl: Type.Optional(Type.String({ maxLength: 300 })),        // 预览图热链，可能失效（前端 onerror 兜底）
+  coverAttribution: Type.Optional(PhotoAttributionSchema),
+  photos: Type.Optional(Type.Array(PoiPhotoSchema, { minItems: 1, maxItems: 3 })), // 含首选封面，按选片顺序；旧行程仍可仅有 coverUrl
   intro: Type.String({ maxLength: 200 }),
   reservation: StringEnum(RESERVATION_STATUSES),                    // 预约三态，「以官方为准」
   reservationNote: Type.Optional(Type.String({ maxLength: 120 })),  // 预约渠道说明
