@@ -419,13 +419,6 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
           </Button>
         </div>
       </div>
-
-      {/* 提示语脱离文档流，不占胶囊外层高度 */}
-      {!ready && (
-        <p className="absolute inset-x-0 -bottom-[calc(26*var(--ui))] m-0 text-center text-[length:calc(13*var(--ui))] text-ink-hint">
-          先选好目的地与节奏，再开始规划
-        </p>
-      )}
     </div>
   );
 }
