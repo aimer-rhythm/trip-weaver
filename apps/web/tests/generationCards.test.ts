@@ -24,9 +24,9 @@ test('partial and empty photo pools fill remaining positions with recent candida
   assert.deepEqual(selectGenerationCards(pool.map(p => ({ ...p, coverUrl: undefined })), new Set(), 2).map(p => p.id), ['new', 'newest']);
 });
 
-test('caption uses a real introduction phrase and does not invent one when absent', () => {
+test('caption keeps only the place name even when an introduction is available', () => {
   const place = { ...poi('颐和园'), intro: '昆明湖畔散步，欣赏园林建筑。' };
-  assert.equal(generationCardCaption(place), '颐和园 · 昆明湖畔散步');
+  assert.equal(generationCardCaption(place), '颐和园');
   assert.equal(generationCardCaption(poi('故宫')), '故宫');
 });
 

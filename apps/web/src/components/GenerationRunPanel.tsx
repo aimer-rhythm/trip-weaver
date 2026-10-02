@@ -1,3 +1,4 @@
+import { handwritingFallback } from '../lib/handwriting';
 import { Button } from './ui/Button';
 // 生成进度视图（09-27 改版）：旅行手账氛围 —— 左侧旅程里程碑小径 + 右侧拍立得候选卡片扇形散开。
 // 只呈现用户向信息：三阶段进度、友好状态文案（tool label 直译）、候选卡片、耗时；
@@ -38,9 +39,9 @@ interface Milestone {
 }
 
 const MILESTONES: Milestone[] = [
-  { phase: 'research', title: '搜罗全城 · 调研灵感', pendingHint: '即将开始收集城市灵感', doneHint: '已为你收集了丰富的城市灵感', activeFallback: '正在搜罗城市灵感…' },
-  { phase: 'plan', title: '串联路线 · 编排日程', pendingHint: '即将为你编排每日路线', doneHint: '每日路线已编排完成', activeFallback: '正在串联每日路线…' },
-  { phase: 'review', title: '雕琢题名 · 撰写文案', pendingHint: '即将为你生成专属的旅行记录', doneHint: '旅行记录已撰写完成', activeFallback: '正在雕琢标题与文案…' },
+  { phase: 'research', title: '发现好去处', pendingHint: '寻找适合你的景点与体验', doneHint: '好去处已收集', activeFallback: '正在寻找旅行灵感…' },
+  { phase: 'plan', title: '安排每日路线', pendingHint: '串联景点，安排游玩顺序', doneHint: '每日路线已安排', activeFallback: '正在安排游玩顺序…' },
+  { phase: 'review', title: '完善旅程细节', pendingHint: '为旅程起名，检查路线安排', doneHint: '旅程细节已完善', activeFallback: '正在完善旅程细节…' },
 ];
 
 /** 里程碑线性图标（描边随 currentColor，等待/进行/完成三态由外层 badge 类控色） */
@@ -114,20 +115,50 @@ type MilestoneState = 'pending' | 'active' | 'done';
 
 function milestoneState(model: TimelineModel, phase: GenerationPhase): MilestoneState {
   const last = model.phases.filter((b) => b.phase === phase).at(-1);
-  if (!last) return 'pending';
+  if (!last) return !model.terminal && model.phases.length === 0 && phase === 'research' ? 'active' : 'pending';
+  // A phase_end is not job completion: final route checks and persistence run afterward.
+  // Keep the latest step live across these gaps, including replayed snapshots.
+  if (!model.terminal && model.phases.every(block => block.done) && model.phases.at(-1)?.phase === phase) return 'active';
   return last.done ? 'done' : 'active';
 }
 
 /** 最新 SSE 正文/进度短预览；工具事件继续使用用户可读 label。 */
-function activeStatusLine(model: TimelineModel, phase: GenerationPhase, fallback: string): string {
+function activeStatusLine(model: TimelineModel, phase: GenerationPhase, fallback: string): { key: string; text: string } {
   const block = model.phases.filter((b) => b.phase === phase).at(-1);
+  if (!block) return { key: `${phase}:preparing`, text: '正在准备你的旅程…' };
   const item = block?.items.filter(i => i.kind === 'thought' || i.kind === 'tool').at(-1);
+  const key = `${block?.key ?? phase}:${item?.key ?? 'pending'}`;
   if (item?.kind === 'thought') {
     const text = item.text.trim();
-    return text ? Array.from(text).slice(0, 90).join('') + (Array.from(text).length > 90 ? '…' : '') : fallback;
+    return { key, text: text ? Array.from(text).slice(0, 90).join('') + (Array.from(text).length > 90 ? '…' : '') : fallback };
   }
-  return item?.kind === 'tool' ? `正在${item.label}…` : fallback;
+  return { key, text: item?.kind === 'tool' ? `正在${TOOL_COPY[item.label] ?? item.label}…` : fallback };
 }
+
+/** Translate internal operation labels into short, truthful progress messages. */
+const TOOL_COPY: Record<string, string> = {
+  '查已验证地点库': '查找可靠的地点信息',
+  '搜索地点': '寻找适合你的好去处',
+  '搜索攻略': '参考当地游玩攻略',
+  '写入候选池': '收集心仪的好去处',
+  '提交调研摘要': '整理旅行灵感',
+  '查询地点坐标': '确认景点位置',
+  '建立行程骨架': '安排每日行程',
+  '添加活动': '安排游玩活动',
+  '修改活动': '调整游玩安排',
+  '删除活动': '精简行程安排',
+  '查看草稿': '检查行程安排',
+  '调整活动日期': '调整游玩日期',
+  '建议住宿区域': '寻找方便落脚的区域',
+  '可行性自查': '检查路线是否顺畅',
+  '改写活动说明': '补充游玩提示',
+  '撰写行程标题': '为旅程起个名字',
+  '提交行程草稿': '整理每日路线',
+  '提交文案': '整理旅行手账',
+  '解析改动地点坐标': '确认最终景点位置',
+  '复核最终通勤路线': '检查景点之间的交通',
+  '优化跨天路线': '优化每日游玩顺序',
+};
 
 function TypedStatus({ text }: { text: string }) {
   const characters = Array.from(text);
@@ -206,7 +237,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
           <div className="w-[min(460px,100%)] rounded-[20px] border border-white/50 bg-white/75 p-8 text-center shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl">
             {terminal.type === 'job_done' && (
               <>
-                <p className="m-0 mb-2 text-xl font-bold text-ink">行程已生成！正在打开编辑器…</p>
+                <p className="m-0 mb-2 text-xl font-bold text-ink">行程已准备好，正在为你打开…</p>
                 {terminal.reviewNotes.length > 0 && (
                   <ul className="m-0 mb-4 list-none p-0 text-left text-[0.88rem] text-ink-soft">
                     {terminal.reviewNotes.map((note, i) => (
@@ -237,7 +268,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     : '你已取消本次生成。本次不计入今日配额。'}
                 </p>
                 <Button variant="plain" type="button" onClick={onReset} className={submitBtnCls}>
-                  返回表单
+                  返回重新规划
                 </Button>
               </>
             )}
@@ -250,11 +281,12 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
           <div className={"gen-path flex flex-col justify-center shrink-0 [width:calc(500_*_var(--ui))] [padding-bottom:calc(42_*_var(--ui))] [@media_(max-width:_900px)]:w-full [@media_(max-width:_900px)]:[padding-bottom:0]"}>
             {MILESTONES.map((m, i) => {
               const state = milestoneState(model, m.phase);
+              const liveStatus = activeStatusLine(model, m.phase, m.activeFallback);
               const hint =
                 state === 'done'
                   ? m.doneHint
                   : state === 'active'
-                    ? activeStatusLine(model, m.phase, m.activeFallback)
+                    ? liveStatus.text
                     : m.pendingHint;
               return (
                 <div key={m.phase} className={`gen-step [--gen-badge:calc(80_*_var(--ui))] [--gen-gap:calc(47_*_var(--ui))] relative flex items-center [gap:calc(24_*_var(--ui))] [padding:var(--gen-gap)_0] [&.is-done_.gen-step-badge]:[background:linear-gradient(145deg,_var(--color-gen-step-background-39),_var(--color-gen-step-background-40))] [&.is-done_.gen-step-badge]:[border-color:var(--color-gen-step-border-color-41)] [&.is-done_.gen-step-badge]:[color:var(--color-gen-step-color-42)] [&.is-done_.gen-step-badge]:[filter:none] [&.is-done_.gen-step-badge]:[opacity:1] [&.is-done_.gen-step-badge]:[box-shadow:0_0_0_calc(5_*_var(--ui))_rgba(52,_199,_123,_0.12)] [&.is-active_.gen-step-badge]:[background:linear-gradient(145deg,_var(--color-gen-step-background-43),_var(--color-gen-step-background-44))] [&.is-active_.gen-step-badge]:[border-color:var(--color-gen-step-border-color-45)] [&.is-active_.gen-step-badge]:[color:var(--color-brand)] [&.is-active_.gen-step-badge]:[filter:none] [&.is-active_.gen-step-badge]:[opacity:1] [&.is-active_.gen-step-badge]:[box-shadow:0_0_0_calc(6_*_var(--ui))_rgba(130,169,255,.26),_0_0_0_calc(13_*_var(--ui))_rgba(174,205,255,.2),_0_0_calc(25_*_var(--ui))_rgba(91,135,247,.4),_inset_0_2px_6px_rgba(255,255,255,.9)] [&.is-active_.gen-step-badge]:[animation:gen-badge-breathe_2.8s_ease-in-out_infinite] [&.is-pending_.gen-step-title]:[color:var(--color-gen-step-color-46)] [@media_(max-width:_900px)]:[--gen-gap:24px] [@media_(prefers-reduced-motion:_reduce)]:[&.is-active_.gen-step-badge]:[animation:none] is-${state}`}>
@@ -272,14 +304,14 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                     <p className="gen-step-title">
                       {i + 1}. {m.title}
                     </p>
-                    <p className={`gen-step-hint [margin:calc(8_*_var(--ui))_0_0] [font-size:calc(18_*_var(--ui))] [color:var(--color-gen-queue-hint-color-32)] [@media_(max-width:_900px)]:[overflow-wrap:anywhere] ${state === 'active' ? "gen-step-hint-live [font-family:'QianTuBiFeng_Handwriting',_var(--gen-serif)] [font-size:calc(24_*_var(--ui))] [line-height:1.35] [color:var(--color-gen-step-hint-live-color-47)] [min-height:2.7em] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden [@media_(prefers-reduced-motion:_reduce)]:[animation:none]" : ""}`}>
-                      {state === 'active' ? <TypedStatus key={hint} text={hint} /> : hint}
+                    <p style={state === 'active' ? handwritingFallback(hint) : undefined} className={`gen-step-hint [margin:calc(8_*_var(--ui))_0_0] [font-size:calc(18_*_var(--ui))] [color:var(--color-gen-queue-hint-color-32)] [@media_(max-width:_900px)]:[overflow-wrap:anywhere] ${state === 'active' ? "gen-step-hint-live [font-family:'Youran_Handwriting',_var(--gen-serif)] [font-size:calc(34_*_var(--ui))] [letter-spacing:-0.075em] [@media_(max-width:_900px)]:[font-size:28px] [line-height:1.25] [color:var(--color-gen-step-hint-live-color-47)] [min-height:2.5em] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden [@media_(prefers-reduced-motion:_reduce)]:[animation:none]" : ""}`}>
+                      {state === 'active' ? <TypedStatus key={liveStatus.key} text={hint} /> : hint}
                     </p>
                   </div>
                 </div>
               );
             })}
-            {model.phases.length === 0 && <p className={"gen-queue-hint m-0 [font-size:calc(18_*_var(--ui))] [color:var(--color-gen-queue-hint-color-32)]"}>任务排队中…</p>}
+            {model.phases.length === 0 && <p className={"gen-queue-hint m-0 [font-size:calc(18_*_var(--ui))] [color:var(--color-gen-queue-hint-color-32)]"}>正在准备你的旅程…</p>}
           </div>
 
           {/* 拍立得候选卡片 */}
@@ -294,7 +326,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                   aria-hidden="true"
                 >
                   <div className={"gen-polaroid-photo [aspect-ratio:1_/_1.05] overflow-hidden [border-radius:calc(2_*_var(--ui))] [background:var(--color-gen-polaroid-photo-background-48)] [&_.poi-cover]:w-full [&_.poi-cover]:h-full [&_.poi-cover]:[object-fit:cover] [&_.poi-cover]:block [&_.poi-cover-fallback]:flex [&_.poi-cover-fallback]:items-center [&_.poi-cover-fallback]:justify-center [&_.poi-cover-fallback]:[font-size:calc(46_*_var(--ui))]"} />
-                  <div className={"gen-polaroid-caption [margin:calc(18_*_var(--ui))_0_0] [font-family:'QianTuBiFeng_Handwriting',_var(--gen-serif)] [font-size:calc(24_*_var(--ui))] [line-height:1.15] [color:var(--color-gen-polaroid-caption-color-49)] text-center whitespace-nowrap overflow-hidden [text-overflow:ellipsis] [@media_(max-width:_900px)]:[margin-top:12px] [@media_(max-width:_900px)]:[font-size:18px] gen-ghost-bar [height:calc(19_*_var(--ui))] [border-radius:calc(4_*_var(--ui))] [background:rgba(255,_255,_255,_0.45)]"} />
+                  <div className={"gen-polaroid-caption [margin:calc(18_*_var(--ui))_0_0] [font-family:'Youran_Handwriting',_var(--gen-serif)] [font-size:calc(30_*_var(--ui))] [letter-spacing:-0.055em] [line-height:1.25] [color:var(--color-gen-polaroid-caption-color-49)] text-center whitespace-normal [overflow-wrap:anywhere] [@media_(max-width:_900px)]:[margin-top:12px] [@media_(max-width:_900px)]:[font-size:24px] gen-ghost-bar [height:calc(24_*_var(--ui))] [border-radius:calc(4_*_var(--ui))] [background:rgba(255,_255,_255,_0.45)]"} />
                 </div>
               ))
             ) : (
@@ -302,15 +334,15 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                 const pose = FAN[i % FAN.length]!;
                 return (
                   <figure
-                    key={poi.id}
+                    key={`${poi.id}:${poi.coverUrl ?? ''}`}
                     className={"gen-polaroid absolute [z-index:1] [width:calc(250_*_var(--ui))] m-0 [background:var(--color-btn-primary-color-3)] [border-radius:calc(6_*_var(--ui))] [padding:calc(20_*_var(--ui))_calc(20_*_var(--ui))_calc(16_*_var(--ui))] [box-shadow:0_calc(10_*_var(--ui))_calc(40_*_var(--ui))_rgba(0,_0,_0,_0.12)] [animation:gen-polaroid-in_1.1s_cubic-bezier(0.22,_1,_0.36,_1)_both] [&:nth-child(-n+3)]:[z-index:2] [&:has(.gen-polaroid-new)::after]:[content:''] [&:has(.gen-polaroid-new)::after]:absolute [&:has(.gen-polaroid-new)::after]:[inset:-6px] [&:has(.gen-polaroid-new)::after]:pointer-events-none [&:has(.gen-polaroid-new)::after]:[background:linear-gradient(35deg,_transparent_44%,_var(--color-gen-polaroid-background-52)_45%_55%,_transparent_56%)_left_15%_/_18px_20px_no-repeat,_linear-gradient(-35deg,_transparent_44%,_var(--color-gen-polaroid-background-52)_45%_55%,_transparent_56%)_right_70%_/_18px_20px_no-repeat] [@media_(prefers-reduced-motion:_reduce)]:[animation:none]"}
                     style={{ left: pose.left, top: pose.top, transform: `rotate(${pose.rotate}deg)` }}
                   >
                     <div className={"gen-polaroid-photo [aspect-ratio:1_/_1.05] overflow-hidden [border-radius:calc(2_*_var(--ui))] [background:var(--color-gen-polaroid-photo-background-48)] [&_.poi-cover]:w-full [&_.poi-cover]:h-full [&_.poi-cover]:[object-fit:cover] [&_.poi-cover]:block [&_.poi-cover-fallback]:flex [&_.poi-cover-fallback]:items-center [&_.poi-cover-fallback]:justify-center [&_.poi-cover-fallback]:[font-size:calc(46_*_var(--ui))]"}>
                       <PoiCover key={poi.coverUrl} poi={poi} onCoverError={(url) => setFailedCovers(previous => new Set(previous).add(url))} />
                     </div>
-                    <figcaption className={"gen-polaroid-caption [margin:calc(18_*_var(--ui))_0_0] [font-family:'QianTuBiFeng_Handwriting',_var(--gen-serif)] [font-size:calc(24_*_var(--ui))] [line-height:1.15] [color:var(--color-gen-polaroid-caption-color-49)] text-center whitespace-nowrap overflow-hidden [text-overflow:ellipsis] [@media_(max-width:_900px)]:[margin-top:12px] [@media_(max-width:_900px)]:[font-size:18px]"} title={generationCardCaption(poi)}>{generationCardCaption(poi)}</figcaption>
-                    {poi.id === newestId && <span className={"gen-polaroid-new absolute [top:calc(14_*_var(--ui))] [right:calc(-18_*_var(--ui))] [padding:calc(9_*_var(--ui))_calc(18_*_var(--ui))] [background:var(--color-gen-polaroid-new-background-50)] [color:var(--color-gen-polaroid-new-color-51)] [font-size:calc(25_*_var(--ui))] [font-family:'QianTuBiFeng_Handwriting',_cursive] [line-height:1] [font-style:italic] [clip-path:polygon(4%_0,_20%_8%,_32%_0,_44%_9%,_59%_0,_70%_10%,_86%_4%,_88%_20%,_100%_30%,_92%_46%,_100%_62%,_90%_72%,_94%_92%,_76%_90%,_65%_100%,_50%_90%,_37%_100%,_25%_88%,_7%_94%,_10%_74%,_0_62%,_8%_46%,_0_29%,_9%_18%)] [animation:gen-new-pop_0.6s_ease-out] [@media_(prefers-reduced-motion:_reduce)]:[animation:none]"}>new</span>}
+                    <figcaption style={handwritingFallback(generationCardCaption(poi))} className={"gen-polaroid-caption [margin:calc(18_*_var(--ui))_0_0] [font-family:'Youran_Handwriting',_var(--gen-serif)] [font-size:calc(30_*_var(--ui))] [letter-spacing:-0.055em] [line-height:1.25] [color:var(--color-gen-polaroid-caption-color-49)] text-center whitespace-normal [overflow-wrap:anywhere] [@media_(max-width:_900px)]:[margin-top:12px] [@media_(max-width:_900px)]:[font-size:24px]"} title={generationCardCaption(poi)}>{generationCardCaption(poi)}</figcaption>
+                    {poi.id === newestId && <span className={"gen-polaroid-new absolute [top:calc(14_*_var(--ui))] [right:calc(-18_*_var(--ui))] [padding:calc(9_*_var(--ui))_calc(18_*_var(--ui))] [background:var(--color-gen-polaroid-new-background-50)] [color:var(--color-gen-polaroid-new-color-51)] [font-size:calc(38_*_var(--ui))] [font-family:'Youran_Handwriting',_cursive] [line-height:1] [font-style:italic] [clip-path:polygon(4%_0,_20%_8%,_32%_0,_44%_9%,_59%_0,_70%_10%,_86%_4%,_88%_20%,_100%_30%,_92%_46%,_100%_62%,_90%_72%,_94%_92%,_76%_90%,_65%_100%,_50%_90%,_37%_100%,_25%_88%,_7%_94%,_10%_74%,_0_62%,_8%_46%,_0_29%,_9%_18%)] [animation:gen-new-pop_0.6s_ease-out] [@media_(prefers-reduced-motion:_reduce)]:[animation:none]"}>new</span>}
                     <PhotoCredit poi={poi} />
                   </figure>
                 );

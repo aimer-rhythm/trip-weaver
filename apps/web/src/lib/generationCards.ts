@@ -12,10 +12,9 @@ export function selectGenerationCards(pois: readonly ResearchPoi[], failedUrls: 
   return pois.filter(poi => ids.has(poi.id));
 }
 
-/** Use the actual research introduction, never invent a location-specific caption. */
+/** Keep the photo label focused on the place; descriptions belong in the itinerary. */
 export function generationCardCaption(poi: ResearchPoi): string {
-  const detail = poi.intro?.split(/[。！？；，\n]/u)[0]?.trim();
-  return detail ? `${poi.name} · ${detail}` : poi.name;
+  return poi.name;
 }
 
 /** Change at most one slot per tick; keep the others stable while a newer target arrives. */
