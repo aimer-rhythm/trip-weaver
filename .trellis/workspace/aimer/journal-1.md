@@ -1074,3 +1074,64 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - 生成页动画、封面与字体、排行摄影三项继续等待用户验收；相关改动保留，未推送。
+
+
+## Session 27: 三项任务归档与提交规范沉淀
+
+**Date**: 2026-10-02
+**Task**: 三项任务归档与提交规范沉淀
+**Branch**: `master`
+
+### Summary
+
+提交字体、封面、生成页、摄影四组工作改动，归档生成页动画、封面字体、排行摄影三项任务，并沉淀提交信息与收尾规范。类型检查与 15 项定向测试通过。
+
+### Main Changes
+
+### 交付与验收
+
+- 用户验收通过三项任务并授权归档，工作区 31 个改动文件按任务切成四个工作提交。
+- `8bad955` 字体：全站换用悠然小楷并按需分片加载，动态文字缺字整段回退；标题写入前按字体 cmap 校验，缺字整批拒绝。
+- `cc42640` 封面：有插画封面改为上部偏左标题、右下线稿与虚线路线，字号按名称长度分档；输入法组字期间不再提前提交搜索关键词。
+- `1f100c3` 生成页：阶段全部结束后保留最后一步光圈，同文案的不同事件与同景点换图都会重播；拍立得只显示景点名称。
+- `8f74fa5` 摄影：上游清单新增封面与三图图库，导入校验审核与来源后按序入库，地点重导保留图库。
+
+### 归档范围
+
+- 生成页动画、封面字体、排行摄影三项归档至 `archive/2026-10`。
+- 排行摄影目录 2001 个文件、369MB，Windows 260 字符路径上限导致 `task.py archive` 移动中断；改用 `robocopy /MOVE` 完成移动后单独提交，源目录仅剩两个被进程占用的 pytest server 日志副本。
+
+### 规范沉淀
+
+- 新增 `.trellis/spec/guides/commit-convention.md`：工作提交 → 归档提交 → 日志提交的三段式节奏、前缀与 scope 用法、标题写法与检查清单，并在 `guides/index.md` 挂载。
+
+### 验证
+
+- `npm run typecheck` 通过。
+- 15 项定向测试通过：`titleFont.test.ts`、`handwriting.test.ts`、`generationCards.test.ts`、`imageImport.test.ts`。其中 `imageImport.test.ts` 首次运行因上次中断残留的 `image-import-regression` 行报主键冲突，清理残留后复跑通过。
+
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `8bad955` | (see git log) |
+| `cc42640` | (see git log) |
+| `1f100c3` | (see git log) |
+| `8f74fa5` | (see git log) |
+| `1eaf455` | (see git log) |
+| `89cdf08` | (see git log) |
+| `e7afeaa` | (see git log) |
+| `45c37f2` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
