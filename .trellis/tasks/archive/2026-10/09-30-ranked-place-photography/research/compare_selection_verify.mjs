@@ -1,0 +1,98 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {randomUUID,createHash} from 'node:crypto';
+import {chromium} from 'playwright';
+import {createComparisonServer} from './compare_all_server.mjs';
+import {selectionCatalog} from './compare_selection.mjs';
+const here=path.dirname(fileURLToPath(import.meta.url)),webRoot=path.join(here,'live/all-pools');
+const qa=path.join(here,'verification/selection');await fs.mkdir(qa,{recursive:true});
+const out=await fs.mkdtemp(path.join(qa,'run-')),feedbackDirectory=path.join(out,'feedback');
+const data=JSON.parse(await fs.readFile(path.join(webRoot,'comparison.json'),'utf8'));
+const hash=file=>fs.readFile(file).then(v=>createHash('sha256').update(v).digest('hex'));
+const before=await hash(path.join(webRoot,'comparison.json'));
+const {groups,catalogVersion}=selectionCatalog(data);
+assert.equal(data.selectionCatalogVersion,catalogVersion);
+const duplicate=groups.find(g=>g.place==='故宫博物院'&&g.records.some(p=>p.source==='curated')&&g.records.some(p=>p.id==='current-1'));
+assert(duplicate,'curated/current photo should share identity');
+const amap=groups.filter(g=>g.place==='故宫博物院'&&g.records.some(p=>p.source==='amap'));
+assert.equal(amap.length,6,'same POI URL must not combine distinct photos');
+assert.equal(selectionCatalog({places:[{name:'test',current:[]}],candidates:[
+ {place:'test',source:'xhs',id:'1',sourceUrl:'https://www.xiaohongshu.com/explore/note',preview:'media/a.webp'},
+ {place:'test',source:'xhs',id:'2',sourceUrl:'https://www.xiaohongshu.com/explore/note',preview:'media/b.webp'}
+]}).groups.length,2,'same XHS note must not combine distinct photos');
+const server=await createComparisonServer({webRoot,feedbackDirectory});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const base=`http://127.0.0.1:${server.address().port}`;
+const get=()=>fetch(base+'/api/selections').then(r=>r.json());
+const post=async(body,headers={})=>fetch(base+'/api/selections',{method:'POST',headers:{'Content-Type':'application/json','Origin':base,'X-Photo-Review':'1',...headers},body:JSON.stringify(body)});
+const browser=await chromium.launch({headless:true});
+const errors=[];
+try{
+ let state=await get();assert.equal(state.revision,0);
+ const request={kind:'rating',key:duplicate.key,value:'selected',revision:0,catalogVersion,operationId:randomUUID()};
+ assert.equal((await post(request,{'Origin':'https://example.org'})).status,403);
+ assert.equal((await post({...request,key:'../outside'})).status,400);
+ assert.equal((await post({...request,value:'selected',padding:'x'.repeat(17000)})).status,413);
+ assert.equal((await post(request)).status,200);
+ assert.equal((await post(request)).status,200,'same operation retry should be idempotent');
+ assert.equal((await get()).revision,1);
+ assert.equal((await post({...request,operationId:randomUUID()})).status,409,'stale tab cannot overwrite');
+ assert.equal((await post({...request,kind:'place',place:'故宫博物院',value:'none',revision:1,operationId:randomUUID()})).status,400,'none cannot coexist with selected photos');
+ const page=await browser.newPage({viewport:{width:1560,height:1100}});page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'/?place='+encodeURIComponent('故宫博物院'));await page.waitForFunction(()=>window.comparisonReady);
+ const waitSaved=()=>page.waitForFunction(()=>document.querySelector('#save-status').textContent==='已保存');
+ await page.waitForFunction(()=>document.querySelector('#selection-progress').textContent.includes('已选 1 张'));
+ assert(await page.locator('#hide-ai').isChecked());assert(!(await page.locator('.ai-summary').isVisible()));
+ const selected=page.locator(`.column[data-source="curated"] [data-key="${duplicate.key}"][data-rating="selected"]`);
+ assert.equal(await selected.getAttribute('aria-pressed'),'true');
+ await selected.click();await waitSaved();assert.equal(Object.keys((await get()).ratings).length,0);
+ await selected.click();await waitSaved();
+ await page.locator('#current-summary').click();
+ assert.equal(await page.locator(`#current-photos [data-key="${duplicate.key}"][data-rating="selected"]`).getAttribute('aria-pressed'),'true');
+ await page.locator('#current-summary').click();
+ await page.locator('.column[data-source="pexels"] .image-button').first().click();
+ await page.locator('#dialog-selection [data-rating="rejected"]').click();await waitSaved();
+ assert.equal(await page.locator('#dialog-selection [data-rating="rejected"]').getAttribute('aria-pressed'),'true');
+ await page.keyboard.press('Escape');assert(!(await page.locator('dialog').isVisible()));
+ await page.locator('#selection-note').fill('喜欢水面倒影、完整建筑；<script>不要运行</script>');
+ await page.locator('#save-note').click();await waitSaved();
+ await page.locator('[data-place-status="done"]').click();await waitSaved();
+ assert((await page.locator('#place-selection-count').textContent()).includes('已挑完'));
+ await page.reload();await page.waitForFunction(()=>window.comparisonReady);
+ await page.waitForFunction(()=>document.querySelector('#selection-progress').textContent.includes('1 / 25'));
+ assert.equal(await page.locator('#selection-note').inputValue(),'喜欢水面倒影、完整建筑；<script>不要运行</script>');
+ await page.selectOption('#place-select','1');await page.locator('[data-place-status="none"]').click();await waitSaved();
+ await page.locator('#selection-snapshot').click();await waitSaved();
+ state=await get();assert.equal(state.snapshots.length,1);assert.equal(state.snapshots[0].completedPlaces,2);
+ const snapshot=JSON.parse(await fs.readFile(path.join(feedbackDirectory,'snapshots',state.snapshots[0].id+'.json'),'utf8'));
+ const palace=snapshot.places.find(p=>p.place==='故宫博物院');
+ assert.equal(palace.candidates.filter(p=>p.rating==='selected').length,1);
+ assert.equal(palace.candidates.filter(p=>p.rating==='rejected').length,1);
+ assert(palace.candidates.some(p=>p.rating==='unmarked'));
+ assert.equal(snapshot.places.find(p=>p.place==='景山公园').status,'in_progress');
+ const download=page.waitForEvent('download');await page.locator('#export-selection').click();const file=await download;await file.saveAs(path.join(out,'export.json'));
+ assert.equal(JSON.parse(await fs.readFile(path.join(out,'export.json'),'utf8')).feedback.revision,state.revision);
+ // Failed save remains visibly unconfirmed; read recovery never overwrites saved state.
+ await page.route('**/api/selections',route=>route.request().method()==='POST'?route.fulfill({status:500,contentType:'application/json',body:JSON.stringify({error:'测试保存失败'})}):route.continue());
+ await page.locator('.column[data-source="pexels"] [data-rating="selected"]').first().click();
+ await page.waitForFunction(()=>document.querySelector('#save-status').textContent.includes('保存未确认'));
+ assert.equal((await get()).revision,state.revision);
+ await page.unroute('**/api/selections');await page.locator('#reload-selection').click();
+ await page.waitForFunction(()=>document.querySelector('#save-status').textContent==='已恢复保存的选择');
+ await page.selectOption('#place-select','4');
+ await page.screenshot({path:path.join(out,'desktop.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});
+ assert(!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)));
+ await page.locator('.column[data-source="curated"] .image-button').first().click();
+ await page.locator('#dialog-selection [data-rating="selected"]').click();await waitSaved();
+ await page.locator('#close-dialog').click();
+ assert((await page.locator('#place-selection-count').textContent()).includes('挑选中'),'changing ratings reopens completion');
+ await page.screenshot({path:path.join(out,'mobile.png'),fullPage:true});
+ assert.deepEqual(errors,[]);assert.equal(await hash(path.join(webRoot,'comparison.json')),before);
+ // Restart store/server uses the same persisted revision and ratings.
+ const second=await createComparisonServer({webRoot,feedbackDirectory});await new Promise(resolve=>second.listen(0,'127.0.0.1',resolve));
+ try{assert.deepEqual(await fetch(`http://127.0.0.1:${second.address().port}/api/selections`).then(r=>r.json()),await get());}finally{await new Promise(resolve=>second.close(resolve));}
+ const result={passed:true,groups:groups.length,checks:['same-place dedup','distinct Amap photos','origin guard','input/size guard','revision conflict','idempotent retry','selection/rejection/cancel','modal+keyboard','notes+refresh','done+none','snapshot labels','export','save failure recovery','mobile bounds','restart persistence','source data unchanged'],errors,evidence:out};
+ await fs.writeFile(path.join(qa,'result.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+}finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
