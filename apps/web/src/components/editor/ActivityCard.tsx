@@ -5,7 +5,7 @@ import type { Activity, ResearchPoi, TransitLeg, TripDay } from '@tripweaver/sha
 import { hasValidCoord } from '../../lib/colors';
 import { RouteOptions } from './RouteOptions';
 import { useEditorStore } from '../../store/editorStore';
-import { PoiCover, PhotoCredit, ReservationBadge } from '../PoiCard';
+import { PoiCover, ReservationBadge } from '../PoiCard';
 import { ConfirmDialog } from '../ui/ActionDialog';
 import { EditorIcon } from './EditorIcon';
 import { EditorMenu } from './EditorMenu';
@@ -50,7 +50,6 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
         </div>
         {showCover && matchedPoi && <PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} variant="photo" onCoverError={setFailedCover} />}
         </div>
-        {showCover && matchedPoi && <div className="col-span-full"><PhotoCredit poi={matchedPoi} /></div>}
       </div>
       {index < day.activities.length - 1 && <RouteOptions dayId={day.id} fromId={activity.id} leg={nextLeg} />}
       {deleteOpen && <ConfirmDialog title="删除活动" description={`确定删除「${activity.name}」？`} onClose={() => setDeleteOpen(false)} onConfirm={() => deleteActivity(day.id, activity.id)} />}

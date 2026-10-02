@@ -46,16 +46,15 @@ export function PoiCover({ poi, onCoverError, variant = 'thumbnail' }: { poi: Re
   );
 }
 
-/** 缓存图也保留作品作者、出处与许可；不把上游 HTML 插入页面。 */
+/** 缓存图也保留作品作者、出处与许可；不把上游 HTML 插入页面。只在放大弹窗内展示，卡片位置一律不渲染（2026-10-02 产品决定）。 */
 const PHOTO_SOURCE_NAMES = { pexels: 'Pexels', commons: 'Wikimedia Commons', unsplash: 'Unsplash', pixabay: 'Pixabay', xhs: '小红书' } satisfies Record<NonNullable<PoiPhoto['attribution']>['source'], string>;
 export function PhotoCredit({ poi }: { poi: Pick<ResearchPoi, 'coverUrl' | 'coverAttribution'> }) {
   const credit = poi.coverAttribution;
   if (!poi.coverUrl || !credit || !safeCreditUrl(credit.sourceUrl) || !safeCreditUrl(credit.licenseUrl)) return null;
-  return <p className="photo-credit m-0 text-[10px] leading-normal text-ink-muted break-words" title={credit.changes}>
+  return <p className="photo-credit m-0 text-[10px] leading-normal text-ink-muted break-words">
     <a href={credit.photographerUrl && safeCreditUrl(credit.photographerUrl) ? credit.photographerUrl : credit.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-inherit underline">{credit.photographer}</a>
     {' · '}<a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-inherit underline">{PHOTO_SOURCE_NAMES[credit.source]}</a>
     {' · '}<a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer" className="text-inherit underline">{credit.license}</a>
-    <span> · {credit.changes}</span>
   </p>;
 }
 
@@ -125,7 +124,6 @@ export function PoiCard({ poi, compact = false }: { poi: ResearchPoi; compact?: 
         <PoiCover poi={poi} />
         <div className={"poi-body min-w-0 flex-1 flex flex-col [gap:4px]"}>
           <span className={"poi-name font-semibold [font-size:0.92rem] overflow-hidden [text-overflow:ellipsis]"}>{poi.name}</span>
-          <PhotoCredit poi={poi} />
           <span className={"poi-badges flex [gap:6px] items-center flex-wrap"}>
             <span className={"poi-cat [font-size:0.72rem] [color:var(--color-primary-dark)] [background:var(--color-quota-chip-background-2)] rounded-full [padding:1px_8px] whitespace-nowrap"}>{POI_CATEGORY_LABEL[poi.category]}</span>
             <ReservationBadge poi={poi} />
@@ -143,7 +141,6 @@ export function PoiCard({ poi, compact = false }: { poi: ResearchPoi; compact?: 
           <ReservationBadge poi={poi} />
         </div>
         {poi.intro && <p className={"poi-intro m-0 [font-size:0.82rem] [color:var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden"}>{poi.intro}</p>}
-        <PhotoCredit poi={poi} />
         {poi.reservation === 'required' && poi.reservationNote && <p className={"poi-rsv-note m-0 [font-size:0.78rem] [color:var(--color-tag-warn-color-8)]"}>📌 {poi.reservationNote}</p>}
         {poi.sourceLinks.length > 0 && (
           <p className={"poi-links m-0 flex [gap:6px] flex-wrap"}>

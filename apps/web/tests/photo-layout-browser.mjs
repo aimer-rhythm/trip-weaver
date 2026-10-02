@@ -54,6 +54,8 @@ try {
   });
   await page.goto('http://127.0.0.1:5173/trips/photo-layout-fixture');
   await page.getByRole('group', { name: '行程天数' }).waitFor();
+  assert.equal(await page.locator('.photo-credit').count(), 0, '卡片位置不再展示版权行，只在放大弹窗内展示');
+  assert.equal(await page.locator('.poi-card .photo-credit').count(), 0);
   for (const [width, height] of [[1440, 1000], [1280, 800], [390, 844], [844, 390]]) {
     await page.setViewportSize({ width, height });
     for (const [name, naturalWidth, naturalHeight] of fixtures.slice(0, 5)) {
@@ -119,6 +121,8 @@ try {
     await gallery.locator('.poi-photo-expanded').evaluate(img => img.decode());
     assert.match(await gallery.locator('.poi-photo-expanded').getAttribute('src'), /photo-layout-1/);
     assert.match(await gallery.locator('.photo-credit').textContent(), /摄影师2/);
+    assert.doesNotMatch(await gallery.locator('.photo-credit').textContent(), /模拟署名验证/, '放大弹窗不再展示裁切说明文字');
+    assert.equal(await gallery.locator('.photo-credit').getAttribute('title'), null);
     assert.equal(await gallery.locator('.photo-credit').getByRole('link', { name: '摄影师2', exact: true }).getAttribute('href'), credit(1).photographerUrl);
     assert.equal(await gallery.locator('.photo-credit').getByRole('link', { name: 'Unsplash', exact: true }).getAttribute('href'), credit(1).sourceUrl);
     await gallery.getByRole('button', { name: '查看第3张照片', exact: true }).click();
