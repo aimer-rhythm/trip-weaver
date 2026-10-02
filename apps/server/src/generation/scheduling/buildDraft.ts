@@ -159,11 +159,10 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
         startTime: '',
         endTime: '',
         category: activityCategory(stop.poi, source?.facts),
-        // 说明来源（09-25）：候选 intro 直接复用——research 已按活动说明标准写成（≤60 字，
-        // 是什么 + 看点 + 一条提示），系统不再让模型二次编写。
+        // 候选intro优先复用上游提纯完整介绍（≤200字），不再截成60字。
         // 无候选来源的合成活动（空天占位、无美食候选的餐次锚点）由代码给一句如实说明。
         // 有候选来源时即使 intro 为空也如实留空：替它编一句比空着更糟。
-        description: source ? (source.poi.intro ?? '').trim().slice(0, 60) : fallbackDescription,
+        description: source ? (source.poi.intro ?? '').trim().slice(0, 200) : fallbackDescription,
         // openTime 取排程侧的有效值（高德原文或 evidence 闭馆回填），不止 ResearchPoi 原始字段
         ...(stop.poi.openTime ? { openTime: stop.poi.openTime } : {}),
         ...(source?.poi.sourceLinks.length ? { sourceNotes: source.poi.sourceLinks.slice(0, MAX_SOURCE_NOTES) } : {}),

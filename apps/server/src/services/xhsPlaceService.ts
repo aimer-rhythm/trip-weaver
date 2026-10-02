@@ -10,6 +10,7 @@ const XHS_SOURCE = 'xhs';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 单次生成内数据不变，10 分钟足够
 
 export interface XhsPlacePayload {
+  content?: unknown;
   xhsPlaceType?: string;
   themes?: string[];
   address?: string;
@@ -88,6 +89,7 @@ export async function findXhsPlace(name: string, city?: string): Promise<XhsPlac
       `SELECT id, name, category, lat, lng, payload
          FROM canonical_places
         WHERE source = $3
+          AND payload->>'canonicalRedirectTo' IS NULL
           AND ($1::text IS NULL OR $1 LIKE '%' || city || '%')
           AND (
             name = $2
@@ -171,6 +173,7 @@ export async function findXhsPlacesByCategory(
       `SELECT id, name, category, lat, lng, payload
          FROM canonical_places
         WHERE source = $3
+          AND payload->>'canonicalRedirectTo' IS NULL
           AND $1 LIKE '%' || city || '%'
           AND category = $2
         ORDER BY COALESCE((payload->>'recommendScore')::numeric, 0) DESC
@@ -194,7 +197,7 @@ export async function findXhsPlacesByCategory(
 export async function xhsPlaceStats(): Promise<{ cities: { city: string; n: number }[]; evidence: number }> {
   try {
     const places = await pool.query<{ city: string; n: number }>(
-      `SELECT city, count(*)::int AS n FROM canonical_places WHERE source = $1 GROUP BY city ORDER BY n DESC`,
+      `SELECT city, count(*)::int AS n FROM canonical_places WHERE source = $1 AND payload->>'canonicalRedirectTo' IS NULL GROUP BY city ORDER BY n DESC`,
       [XHS_SOURCE],
     );
     const ev = await pool.query<{ n: number }>(`SELECT count(*)::int AS n FROM research_evidence`);

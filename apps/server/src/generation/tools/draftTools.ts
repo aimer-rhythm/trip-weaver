@@ -26,7 +26,7 @@ const OptionalActivityFields = {
   ),
 };
 
-export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'plan'): AgentTool[] {
+export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'plan', onTitlesSubmitted?: (notes: string[]) => void): AgentTool[] {
   const skeletonTool = defineTool({
     name: 'set_trip_skeleton',
     label: '建立行程骨架',
@@ -185,8 +185,14 @@ export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'p
       dayTitles: Type.Array(Type.String(), {
         description: '每天的主题标题（≤12 字，概括那天的内容与气质，不要罗列活动名），数组长度必须等于天数，按天序给出',
       }),
+      notes: Type.Optional(Type.Array(Type.String(), { maxItems: 3, description: '可选实用建议，最多3条，无需另外提交' })),
     }),
     execute: async (_id, params) => {
+      if (!params.title.trim() || Array.from(params.title.trim()).length > 20
+        || params.dayTitles.length !== draft.mutableDays().length
+        || params.dayTitles.some((title) => !title.trim() || Array.from(title.trim()).length > 12)) {
+        return { content: text('错误：行程标题须为1–20字，每天标题须为1–12字，且每天标题数量必须等于行程天数。所有标题均未写入。'), details: { isError: true } };
+      }
       const missingCharacters = missingTitleCharacters([params.title, ...params.dayTitles]);
       if (missingCharacters.length) {
         return {
@@ -194,9 +200,12 @@ export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'p
           details: { isError: true, missingCharacters },
         };
       }
+      const message = draft.updateTitles(params.title, params.dayTitles);
+      const isError = message.startsWith('错误');
+      if (!isError) onTitlesSubmitted?.((params.notes ?? []).slice(0, 3).map((note) => note.slice(0, 200)));
       return {
-        content: text(draft.updateTitles(params.title, params.dayTitles)),
-        details: { title: params.title, days: params.dayTitles.length },
+        content: text(message), details: { title: params.title, days: params.dayTitles.length, isError },
+        ...(!isError && onTitlesSubmitted ? { terminate: true } : {}),
       };
     },
   });

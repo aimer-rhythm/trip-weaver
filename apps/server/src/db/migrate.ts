@@ -110,6 +110,7 @@ const STATEMENTS = [
     fetched_at TIMESTAMPTZ NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS idx_research_evidence_city_kind ON research_evidence(city, kind)`,
+  `CREATE INDEX IF NOT EXISTS idx_research_evidence_place ON research_evidence(place_id, fetched_at DESC)`,
   // ---------- POI 关联对（09-27）：上游 xhs-pipeline 规则挖掘的无向「常在同天」地点对 ----------
   // 无向存储（同一对只一行），消费端只用作同天聚类的距离折扣信号，不表达先后。
   `CREATE TABLE IF NOT EXISTS place_relation (

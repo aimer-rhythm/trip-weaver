@@ -45,3 +45,21 @@ test('任一标题缺字时整批拒绝，改写后可提交且活动不变', as
   assert.equal(draft.mutableDays()[0]!.title, '中轴宫苑漫步');
   assert.deepEqual(draft.mutableDays()[0]!.activities, activities);
 });
+
+test('标题生成成功一次收口；缺字或数量错误不提交、不改草稿', async () => {
+  const draft = new DraftTrip({ destination: '北京', days: 1, startDate: '', budgetLevel: '舒适',
+    totalBudget: 0, preferences: [], partySize: 2, extraNotes: '' });
+  draft.setSkeleton('原行程', ['第一天']);
+  let submitted = 0;
+  const tool = buildDraftTools(draft, 'plan', () => { submitted++; }).find((item) => item.name === 'update_titles')!;
+  for (const params of [{ title: '古罍听风', dayTitles: ['公园漫步'] }, { title: '公园漫步', dayTitles: [] }]) {
+    const result = await tool.execute('invalid', params);
+    assert.equal(result.details.isError, true);
+    assert.equal(result.terminate, undefined);
+    assert.equal(submitted, 0);
+    assert.equal(draft.title, '原行程');
+  }
+  const result = await tool.execute('valid', { title: '公园漫步', dayTitles: ['公园漫步'] });
+  assert.equal(result.terminate, true);
+  assert.equal(submitted, 1);
+});

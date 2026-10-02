@@ -1,6 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { GenerationPerformance } from '../generation/performance';
+import { GenerationPerformance, unionDurationMs } from '../generation/performance';
+
+test('并行阶段按并集计算，包含嵌套、零耗时和间隔', () => {
+  assert.equal(unionDurationMs([{ start: 0, end: 100 }, { start: 80, end: 150 }, { start: 90, end: 95 }, { start: 200, end: 210 }]), 160);
+  assert.equal(unionDurationMs([]), 0);
+  assert.equal(unionDurationMs([{ start: 1, end: 1 }]), 0);
+});
 
 test('GenerationPerformance records stable phase and task durations', () => {
   let now = 1_000;

@@ -23,6 +23,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { env } from '../src/env';
+import { reconcileImportedPlaces } from '../src/services/placeImportIdentity';
 import { IMPORT_DIR, latestExports, readExport, scanExports, type ExportFile } from './lib/exportFiles';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -233,6 +234,9 @@ async function importFile(
     processed += batch.length;
     console.log(`[xhs-seed]   ${target.city} 进度 ${processed}/${places.length}`);
   }
+
+  const redirected = await reconcileImportedPlaces(client, target.city, places);
+  console.log(`[xhs-seed]   归一旧记录重定向 ${redirected} 条（保留原始数据）`);
 
   // 导入记录：与业务写入同事务，保证「记录说导了哪一版」和「库里真的是那一版」一致
   await client.query(

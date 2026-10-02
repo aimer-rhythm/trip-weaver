@@ -162,8 +162,12 @@ export async function startMockLlm(
       } else if (system.includes('旅行调研员')) {
         // 快照调研 prompt 中 search_web 上限行：验证随城市覆盖动态注入（09-25 R3）
         const destination = /目的地：(.+?)｜/.exec(userText)?.[1] ?? '';
-        seenResearchPrompts.push({ destination, searchWebMaxLine: /全阶段最多 \d+ 次/.exec(system)?.[0] ?? '' });
-        respondWithToolCalls(res, payload.model, researchCalls(toolResults > 0));
+        seenResearchPrompts.push({ destination, searchWebMaxLine: /全阶段最多 \d+ 次/.exec(system)?.[0] ?? '',
+          hasPrefetch: userText.includes('系统已预取以下已验证候选') && userText.includes('id=') });
+        const prefetched = [...userText.matchAll(/^id=([^｜\n]+)｜([^｜\n]+)/gm)].slice(0, days * 3);
+        respondWithToolCalls(res, payload.model, prefetched.length
+          ? [{ name: 'submit_research', args: { candidates: prefetched.map(([, placeId, name]) => ({ placeId, intro: `${name}适合漫步参观。` })) } }]
+          : researchCalls(toolResults > 0));
       } else if (system.includes('行程规划师') && system.includes('局部修订')) {
         if (toolResults === 0) {
           seenRevisions.push({
@@ -185,12 +189,10 @@ export async function startMockLlm(
             hasDraft: userText.includes('当前行程'),
           };
         }
-        respondWithToolCalls(res, payload.model,
-          toolResults >= 1
-            ? [{ name: 'submit_review', args: { notes: ['测试建议：留意闭馆时间'] } }]
-            : [{ name: 'update_titles', args: {
+        respondWithToolCalls(res, payload.model, [{ name: 'update_titles', args: {
               title: '测试行程标题',
               dayTitles: Array.from({ length: days }, (_, i) => `第${i + 1}天主题`),
+              notes: ['测试建议：留意闭馆时间'],
             } }]);
       } else if (system.includes('行程审校员')) {
         if (toolResults === 0) {

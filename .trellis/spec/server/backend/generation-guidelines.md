@@ -416,6 +416,15 @@ LLM planner/reviewer loop for the live pipeline.
 - Located-chain start selection and segment reordering both honor all present predecessors.
   Missing endpoints/coordinates keep the documented degradation; cyclic constraints fall back
   deterministically rather than hanging. Relation distance discounts do not replace order constraints.
+- Within-day order uses `scheduling/routeOrder.ts`: bounded search of at most 8 points, fewer
+  feasibility backtracks first, then shorter haversine distance. A valid original order sets a
+  distance ceiling (1m tolerance); mandatory predecessors take priority over that ceiling when
+  the original violates them. Score/relation discounts never enter this geometric objective.
+  `orderUntimedDayRoutes(draft, destination)` reruns after geocoding and final cross-day repair,
+  fixes meal slots and missing/invalid coordinates, and skips days with explicit times. It
+  preserves all daily members and IDs and clears stale legs; only changed days need new legs.
+  Lodging round trips count when coordinates are available. This optimizes geometric order,
+  not road-network travel-time optimality; mandatory orders can retain unavoidable backtracks.
 - When `foodFocused`, insert lunch at the segment midpoint and dinner at its end. Empty days get
   `自由安排｜<destination>` plus lunch and dinner; without that preference they get only the
   placeholder. Missing food candidates use truthful area anchors, never fabricated venues.
@@ -426,16 +435,22 @@ LLM planner/reviewer loop for the live pipeline.
   an area and never names a specific hotel. `verify-c2` asserts `trip.lodging === undefined` for
   the unspecified case; only a user-supplied `form.lodging` is persisted.
 - The writer phase reuses the `review` phase name on the SSE stream (frontend contract unchanged)
-  but is semantically "title the trip". Its tool surface is EXACTLY `get_draft`, `update_titles`,
-  `submit_review` — it cannot touch activities, order, times, or the activity copy.
-  **Activity descriptions are not written by any model (09-25)**: `buildDraft.ts` copies the
-  research candidate `intro` verbatim, and `RESEARCH_SYSTEM_PROMPT` states that the intro IS the
-  activity copy — so it must be written to that standard (what it is + what to see + one tip,
-  ~60 chars). Synthetic activities with no candidate source (empty-day placeholder, meal anchor
+  but is semantically "title the trip". Its tool surface is EXACTLY `update_titles` (10-02).
+  The complete draft is already in the initial prompt. A successful write terminates the phase;
+  font/length/day-count errors leave the draft unchanged and allow at most two repairs (`maxTurns=3`).
+  The tool cannot touch activities, order, times, or the activity copy.
+  **No separate model pass writes activity descriptions (09-25, tightened 10-02)**:
+  research reuses upstream `payload.content.intro` verbatim when present; the model only writes
+  missing copy. Target 120–180 Chinese characters, maximum 200, with identity, background and
+  concrete sights. `cleanResearchIntro` only trims whitespace and enforces complete-sentence
+  length limits; it MUST NOT delete sentences by policy keywords. Source purification, factual
+  qualifications and separation of transient policies belong upstream. `buildDraft.ts` copies
+  the complete candidate `intro`, with the same 200-character cap.
+  Dynamic reservation facts live in separately validated metadata/source links; title writing
+  cannot reintroduce them. Synthetic activities with no candidate source (empty-day placeholder, meal anchor
   without a food candidate) get a code-authored truthful sentence; when a candidate source exists
-  but its intro is empty, the description stays EMPTY — never fabricate. `submit_review` takes ONLY
-  `notes`: it used to also require `approved` + `revisionRequests`, which no caller ever read while
-  forcing the model to reason about structure it cannot change.
+  but its intro is empty, the description stays EMPTY — never fabricate. Optional `notes` are
+  included in `update_titles`; do not expose the legacy `submit_review` tool to the writer.
 - **The writer runs CONCURRENTLY with geo/repair (09-25).** It starts right after
   `draft.validate()` passes and is `await`ed after `endPhase('plan')`. Measured effect: the writer's
   42–82s (reasoning-dominated, high variance) no longer queues behind geo, and `plan`'s ~4s leaves
@@ -443,9 +458,8 @@ LLM planner/reviewer loop for the live pipeline.
   `research + plan + review`. Do NOT re-serialize it: nothing in the copy path needs coordinates or
   legs. Concurrency is safe because the writer touches only `title`/`days[].title` while the fixers
   move activities between days — disjoint fields, and the fixers never delete activities.
-- 3 turns (`get_draft` → write → `submit_review`) is the protocol floor, and the writer's wall clock
-  is set by output volume, not turn count or length caps: the copy-writing variant of this phase
-  measured 5132 output tokens / 42–126s, the title-only variant 711–1476 / 24–28s.
+- The normal title path takes one model request; the former three-call protocol was removed on
+  10-02. Historical 09-25 title timings (711–1476 tokens / 24–28s) do not describe this new protocol.
 - The writer is an enhancement path: an LLM error or turn limit degrades to the defaults already in
   the draft (code-generated `day.title`s and the candidate `intro` copy) and the job still succeeds.
 - Geo resolution, actual transit legs, feasibility checks, `repairLongHaulMixedDays`, and
@@ -950,13 +964,13 @@ a convergence hint when `hard === 0`. plan round 1 went 597.8s → **314.8s**, 1
   budget round 2, not just round 1. Also: the reviewer's soft-severity `revisionRequests` are
   what triggers that round at all.
 
-### Measured: the wall-clock budget after 09-25 (where the time actually goes now)
+### Historical measurement: wall-clock budget after 09-25
 
 Read this before proposing any further latency work. Nine real runs on the same 北京 3-day form
 (`cd apps/server && npx tsx test-gen-timing.mts`) produced a counter-intuitive conclusion: **the
 pipeline is no longer the bottleneck — the provider's output rate is.**
 
-**Current per-phase budget** (after the 09-25 changes):
+**Historical per-phase budget** (after the 09-25 changes; before SQL prefetch/single-call titles):
 
 | phase | LLM calls | output tokens | wall clock | notes |
 | --- | --- | --- | --- | --- |
@@ -1002,15 +1016,75 @@ Consequence: **judge a prompt change on output token count, never on one run's w
   (3327 → 4723 tokens): ~85% of a turn's output is hidden reasoning, which no character cap
   governs.
 - **Batching the description tool.** `update_description` → `update_descriptions` did not change
-  the turn count — 3 turns (`get_draft` → write → `submit_review`) is the protocol floor.
+  the turn count under the old three-step protocol. The 10-02 change removes read/submit steps
+  themselves; this is different from merely batching the write tool.
 - **`reasoning_effort`** and **raising `maxTokens`** — see the 09-20 section above.
 
-**The only remaining lever is the model/provider.** The pipeline has no code-level waste left to
-remove. Swapping `SITE_LLM_MODEL` (or the BYOK model) for one with a higher, more stable output
-rate moves every phase proportionally. Never chase a wall-clock target with prompt micro-tuning
-before checking `usage.output` — you may be measuring the gateway, not the code.
+Model/provider output rate remains important, but is not the only lever. The 10-02 audit found
+discarded vector calls and redundant title round trips. SQL prefetch now feeds the first research
+request directly; the writer normally makes one request. Compare token counts, actual request
+durations and total wall-clock across multiple runs. `test-gen-timing.mts` uses phase interval
+union and actual request/response timestamps, not phase-duration sums or adjacent request starts.
+Request cycles include the awaited log write and retries; do not label them pure inference time.
 
-### Upstream flakiness must not kill the whole job
+## Scenario: Explicit DeepSeek Thinking Toggle in Generation (2026-10-02)
+
+### 1. Scope / Trigger
+
+The user's 10-02 Beijing trip took 208.418s from first model request to save; first-turn output
+was 17,835 of 19,247 tokens despite SQL prefetch. SDK `thinkingLevel: 'off'` alone did not send
+an off switch when `model.reasoning = false`. This is distinct from the ineffective historical
+`reasoning_effort: medium` experiment.
+
+### 2. Signatures
+
+`buildModel(cfg, {disableDeepSeekThinking?: boolean})`; the generation orchestrator opts in.
+Chat understanding uses the default options. No settings/API/schema changes.
+
+### 3. Contracts
+
+Only exact native IDs `deepseek-v4-flash` / `deepseek-v4-pro` opt in, including compatible relays
+using these IDs. Set capability `reasoning: true` and `compat.thinkingFormat = 'deepseek'` so
+the runner's `off` emits `thinking: {type: 'disabled'}`. Also set
+`compat.requiresReasoningContentOnAssistantMessages = true`: even with thinking disabled,
+tool continuation must include `reasoning_content: ''` on assistant messages. Omitting it
+caused a real second-turn HTTP 400; a one-turn mock cannot detect this. Do not set `reasoning_effort`, change
+the model/provider, or reduce the 32k output ceiling. Unknown/namespace-qualified IDs retain
+existing behavior; do not infer native protocol from a loose substring. BYOK SSRF checks remain.
+
+Official [DeepSeek thinking documentation](https://api-docs.deepseek.com/guides/thinking_mode)
+states thinking is enabled by default and documents the explicit toggle. Local HTTP capture
+proves serialization, not whether a third-party relay honors it or the resulting output quality.
+
+### 4. Validation & Error Matrix
+
+| Input | Outgoing behavior |
+| --- | --- |
+| Generation opts in, exact native V4 ID | `thinking.type = disabled`, no `reasoning_effort` |
+| Default caller / other model / namespaced alias | No new provider-specific parameters |
+| Relay ignores the toggle | Real-run token/timing comparison still needed; do not claim speedup |
+| BYOK unsafe URL | Existing SSRF rejection before constructing model |
+
+### 5. Good / Base / Bad Cases
+
+Good: inspect the actual SDK HTTP body and compare multiple real runs. Base: another compatible
+model is unaffected. Bad: set `reasoning:false` and claim server thinking is disabled, or lower
+`maxTokens` until reasoning exhausts the budget before emitting tools.
+
+### 6. Tests Required
+
+`generationModel.test.ts` runs the real runner/SDK against a local mock, verifies both V4 IDs,
+unknown/namespaced/default cases, lookup then submit across two requests, the empty assistant
+reasoning field on continuation, no post-submit request, and retained output budget.
+Run typecheck and isolated full server/C2 tests; never treat mock wall clock as live latency.
+
+### 7. Wrong vs Correct
+
+Wrong: `{reasoning: false}` with `thinkingLevel: 'off'` sends no DeepSeek toggle.
+Correct: for the explicitly supported generation models, set the capability and DeepSeek
+compatibility format, then keep the runner at `off` and assert the serialized body.
+
+## Upstream flakiness must not kill the whole job
 
 **Symptom**: web generation fails with `模型调用异常：400 Error from provider (Console): Upstream
 request failed: Model is unavailable.` even though the same model answers simple requests.

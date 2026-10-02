@@ -9,8 +9,30 @@ import {
 } from '@tripweaver/shared';
 import type { DraftTrip } from './draft';
 import { isMeal, mealWindow } from './mealPlanning';
+import { optimizeRouteOrder } from './scheduling/routeOrder';
+import { routeOrderConstraints } from '../data/routeOrderSeeds';
 
 type DraftDay = ReturnType<DraftTrip['mutableDays']>[number];
+
+/** 补齐坐标后、计算通勤腿前再排一次。固定已有时刻的天与餐次槽位，只调整日内访问顺序。 */
+export function orderUntimedDayRoutes(draft: DraftTrip, destination: string): number[] {
+  const changed: number[] = [];
+  const lodging = draft.lodging;
+  const origin = lodging && typeof lodging.lat === 'number' && typeof lodging.lng === 'number'
+    ? { lat: lodging.lat, lng: lodging.lng } : undefined;
+  draft.mutableDays().forEach((day, index) => {
+    if (day.activities.some((a) => a.startTime || a.endTime)) return;
+    const ordered = optimizeRouteOrder(day.activities, {
+      constraints: routeOrderConstraints(destination, day.activities.map((a) => a.name)),
+      fixedIndexes: new Set(day.activities.flatMap((a, i) => isMealActivity(a) ? [i] : [])), origin,
+    });
+    if (ordered.every((a, i) => a.id === day.activities[i]?.id)) return;
+    day.activities.splice(0, day.activities.length, ...ordered);
+    delete day.legs;
+    changed.push(index + 1);
+  });
+  return changed;
+}
 
 const NEAR_DAY_CLUSTER_M = 20_000;
 const FAR_SAME_DAY_M = 40_000;

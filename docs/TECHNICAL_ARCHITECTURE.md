@@ -169,34 +169,24 @@ ORDER BY embedding <=> $query_vec LIMIT 8
 
 **降级链**：pgvector 扩展不可用 → 启动告警不阻断，retrieveContext 退化为纯关键词召回；EMBEDDING_* 未配置 → 跳过向量生成与向量层检索；embedding HTTP 失败 → 单批置 null 继续。
 
-### 4.4 RAG 检索与注入链路（09-19 实施，v0.6 成文）
+### 4.4 SQL 优先的调研检索（2026-10-02）
 
-**定位**：不是通用 RAG 框架，而是「已验证地点情报」的定点注入——检索结果只影响规划 Agent 的选点偏好，不改写用户输入、不进入对话历史。
+**定位**：为调研提供已验证候选与证据。编排由确定性排程承担；模型筛选候选、写简介，标题阶段常规一次 `update_titles` 自动结束。
 
-**检索入口**：`apps/server/src/generation/retrieveContext.ts`（唯一实现）。三层串联：
+**实现**：`retrieveContext.ts` 连接应用依赖；`placeRetrieval.ts` 执行参数化 SQL；`retrievalRanking.ts` 负责有界候选排序与实体归并；`researchContext.ts` 预取并渲染首轮上下文。
 
-1. **关键词层（必做，零依赖）**：`name = ANY($1)` 精确命中 + `name LIKE ANY($2)` 前缀兜底，`verified = TRUE` 过滤，精确命中优先排序，`LIMIT 8`。
-2. **向量层（可选）**：`embedTexts(names.join(' '))` → `ORDER BY embedding <=> $1 LIMIT 8`；与关键词层按 id 去重后**朴素拼接**（无 RRF、无加权分数融合），总数截断 8。
-3. **evidence 挂载**：对命中 place 批量查 `research_evidence`，每 place 至多 3 条，kind 优先级 `xhs_warning > xhs_reservation > xhs_price > 其他`，同级按 `fetched_at` 倒序。
+1. **SQL 召回**：始终过滤 verified 和目的地，可按类别限制。名称、别名、前缀、主题及结构化类别匹配先取最多 256 行，再按精确命中、推荐分、主景点和适度空间多样性选取。泛称别名与父子景点不会互相串用事实。
+2. **按需语义补充**：普通查询在归并后足量时跳过向量；复杂偏好允许显式 semantic 补查。向量查询同样限制城市、verified 和类别。语义相似不代表满足无障碍、不拥挤等硬条件。
+3. **证据挂载**：按实体成员 ID 查询，每个地点最多 3 条，SQL LATERAL 内限制返回行数。按避坑、预约、价格、其他，以及 direct/risk_only/weak 与新鲜度排序；提示保留证据强度，来源 URL 在任务 catalog 内保留并在入池时自动附上。
+4. **批量调研提交**：预取足量时一次 `submit_research(candidates: [{placeId, intro}], summary?)` 写入已知地点并结束；程序复用名称、类别、预约、来源、坐标与照片，仍逐条发候选 SSE。整批先校验、同名去重、可取消；外部地点沿用 `add_candidate` 降级。调研优先复用上游完整介绍（通常120～180字，上限200字），仅补齐缺失内容；日期/路线由排程处理。上游负责来源提纯及别名/组成实体归一；行程端不按关键词删句。组成地点政策保留在 `components`，导入为旧行写 `canonicalRedirectTo` 后检索排除重复候选。
 
-`options.city` 提供时两层召回均追加 `AND city = $x`，消除跨城串扰；不传时与未加城市过滤前逐字一致。
+生成阶段的原生 DeepSeek V4 ID（`deepseek-v4-flash/pro`）通过 SDK 的 DeepSeek 兼容格式显式发送 `thinking: {type: 'disabled'}`；仅写 `reasoning:false` 不会关闭服务端默认思考。其他模型、别名和对话入口沿用原有配置。实际网关是否采纳及提速幅度需真实样本验证，不以模拟端点耗时替代。
 
-**注入入口（两处）**：
+**两个调研入口**：生成开始时先按表单预取景点候选，美食偏好才加餐饮候选；模型首轮即可引用 placeId 写入候选池。`search_verified_places(keyword, category?, semantic?)` 只补缺项。已检索候选复用坐标、预约事实与证据，不逐条重查 XHS；没有预取结果时沿用外部搜索与模型知识降级。
 
-| 入口 | 位置 | 行为 |
-|---|---|---|
-| 自动注入 | `orchestrator.ts`（调研阶段结束后、规划循环开始前） | 以候选池名称为查询；结果经 `plannerUserPrompt(..., ragContext)` → `renderRagContext()` 渲染为「已验证地点情报」段落。**首轮与修订轮共用同一 prompt 构造，情报每轮可见**；`ragContext` 为空时该段落整体不出现（保护金集回归可复现性） |
-| Agent 工具 | `search_verified_places`（`tools/researchTools.ts`） | 调研 Agent 按关键词自主查库，返回「名称｜分类｜情报」文本行 |
+**Embedding**：在线 `embedQuery` 单次请求 2.5 秒超时，可取消，无重试/节流，成功结果缓存 10 分钟（最多 256 项）；离线 `embedTexts` 保留 32 条批处理、30 秒超时及重试，300ms 节流仅在批间发生。两者都只使用站点 EMBEDDING_*（可回落 SITE_LLM_*），不使用用户 BYOK，维度固定 1024。
 
-渲染规则：每条 evidence 截断 80 字，kind 经 `EVIDENCE_KIND_LABEL` 中文化。
-
-**Embedding 客户端**（`apps/server/src/integrations/embedding.ts`）：
-
-- OpenAI 兼容 `POST {baseUrl}/embeddings`；批 32 条，批间节流 300ms，单次超时 30s，指数退避重试 3 次（500ms 起）。
-- 维度硬校验 **1024**：不符即该批置 `null` 并 warn，不抛错。
-- 配置解析：`EMBEDDING_BASE_URL / _API_KEY / _MODEL / _DIMS` 缺省回落 `SITE_LLM_*`，默认模型 `cf/bge-m3`。
-- **不吃用户 BYOK**：embedding 恒用站长配置（用户 Key 不用于站内基础设施）；可用性由 `hasEmbedding()` 判定。
-- 换模型／维度需同步 `EMBEDDING_DIMS` 与 `embedding` 列——`vector(N)` 不支持原地改维度，须 `DROP COLUMN` 重建。
+完整边界与验证命令见 `.trellis/spec/server/backend/rag-guidelines.md`。`scripts/benchmark-place-retrieval.mts` 只读当前知识库、不触发迁移或外部模型；其中需要向量的样本不能当成完整 RAG 耗时。
 
 **数据入口（全部离线脚本，非在线写入）**：
 

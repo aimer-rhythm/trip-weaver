@@ -2,6 +2,9 @@
 // 失败一律回 null（网络/4xx/维度不符），不抛错（对齐项目降级哲学）
 // BYOK baseUrl 不过 ssrfGuard：embedding 走站长独立配置或 SITE_* 回落，不走用户 BYOK（见 model.ts 注释）
 import { env, hasEmbedding } from '../env';
+import { createQueryEmbedder } from './queryEmbedding';
+
+export const embedQuery = createQueryEmbedder(env.embedding);
 
 interface EmbeddingResponse {
   data?: { embedding?: number[] }[];
@@ -64,7 +67,7 @@ export async function embedTexts(texts: string[]): Promise<(number[] | null)[]> 
       }
     }
     // 批次间节流：缓解网关并发限流（实测 32 条/批持续请求触发 503）
-    await sleep(300);
+    if (i + BATCH_LIMIT < texts.length) await sleep(300);
   }
   return results;
 }

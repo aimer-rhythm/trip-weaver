@@ -121,7 +121,10 @@ export const researchEvidence = pgTable(
     embedding: vector('embedding', { dimensions: 1024 }),
     fetchedAt: timestamp('fetched_at', { withTimezone: true }).notNull(),
   },
-  (table) => [index('idx_research_evidence_city_kind').on(table.city, table.kind)],
+  (table) => [
+    index('idx_research_evidence_city_kind').on(table.city, table.kind),
+    index('idx_research_evidence_place').on(table.placeId, table.fetchedAt.desc()),
+  ],
 );
 
 // ---------- POI 关联对（09-27）：上游 xhs-pipeline 规则挖掘的「常在同天」地点对 ----------

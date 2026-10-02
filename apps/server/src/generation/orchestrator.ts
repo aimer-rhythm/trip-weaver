@@ -29,7 +29,7 @@ import { createGeoSession } from './geoPipeline';
 import { classifyLongHaulPois, type LongHaulPoi } from './longHaul';
 import { repairLongHaulMixedDays, verifiedFixNotes, type AppliedFixMove } from './longHaulFixer';
 import { isFoodFocused } from './mealPlanning';
-import { optimizeCrossDayGrouping } from './routeCoherence';
+import { optimizeCrossDayGrouping, orderUntimedDayRoutes } from './routeCoherence';
 import { buildModel } from './model';
 import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
@@ -41,7 +41,9 @@ import { loadPlaceFacts } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
 
 import { buildDraftTools } from './tools/draftTools';
-import { buildReviewTools, type ReviewOutcome } from './tools/reviewTools';
+import type { ReviewOutcome } from './tools/reviewTools';
+import { retrieveContext } from './retrieveContext';
+import { prepareResearchContext, renderRetrievedPlaces } from './researchContext';
 import { applyDeterministicSchedule } from './scheduling/buildDraft';
 import {
   WRITER_SYSTEM_PROMPT,
@@ -189,7 +191,7 @@ export async function runGeneration(
   try {
     assertAlive(signal);
     // 两条安全校验尽早并行，拒绝也立即被观察，避免初始化提前退出后的游离 rejection。
-    const modelPromise = buildModel(cfg).then(
+    const modelPromise = buildModel(cfg, { disableDeepSeekThinking: true }).then(
       (model) => ({ ok: true as const, model }),
       (error: unknown) => ({ ok: false as const, error }),
     );
@@ -227,6 +229,9 @@ export async function runGeneration(
     // R3（09-25）：未覆盖城市放宽 search_web 上限（2→6），SEARCH_DAILY_BUDGET 日预算闸门不受影响
     const searchWebMax = searchWebMaxFor(await cityCoverage(form.destination));
     const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+    const verifiedPlaces = await runSystemTask('research', 'prefetch_verified_places', '筛选行程地点', () =>
+      prepareResearchContext(form, retrieveContext, signal));
+    assertAlive(signal);
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
@@ -239,8 +244,13 @@ export async function runGeneration(
         outcome: research,
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
         reviewedCover: createGenerationPhotoLookup(form.destination),
+        verifiedPlaces,
+        signal,
+        foodSearch: foodFocused,
       }),
-      userPrompt: `${formBrief(form)}\n\n请开始调研。`,
+      userPrompt: `${formBrief(form)}\n\n${verifiedPlaces.length
+        ? `系统已预取以下已验证候选（只是备选，不必全部入选）。足够时直接一次 submit_research，candidates 只填 placeId 和 intro；名称、类别、预约与来源自动复用。只做地点筛选和短简介，不编排日程。只有缺地点或复杂偏好尚未满足时才补查。语义相似不能证明无障碍、无拥挤等硬条件。\n${renderRetrievedPlaces(verifiedPlaces)}`
+        : '系统预取未命中，请按知识库与外部来源降级流程调研。'}`,
       signal,
       sink: sinkFor('research'),
       maxTurns: 16,
@@ -256,9 +266,10 @@ export async function runGeneration(
     // 坐标来源（09-23）：调研旁路捕获优先，知识库坐标兜底——知识库来源候选（search_verified_places）
     // 不经 search_pois，旁路没有它的坐标，不兜底会被跳过标级（实测：八达岭因此与慕田峪同时入选市区天）。
     // placeFacts 前移到此处：标级与排程复用同一份事实，不重复查询。
-    const placeFacts = await loadPlaceFacts(research.pool.map((poi) => poi.name), form.destination);
-    // POI 关联对（09-27）：与 placeFacts 同处加载，失败静默为空集合（排程按无关联降级）
-    const placeRelations = await loadPlaceRelations(form.destination);
+    const [placeFacts, placeRelations] = await Promise.all([
+      loadPlaceFacts(research.pool.map((poi) => poi.name), form.destination),
+      loadPlaceRelations(form.destination),
+    ]);
     const kbCoords = new Map<string, { lat: number; lng: number }>();
     for (const poi of research.pool) {
       if (research.locations.has(poi.name)) continue;
@@ -286,6 +297,7 @@ export async function runGeneration(
         sink.onThought('正在解析坐标与通勤…');
         await runSystemTask('plan', 'geo_geocode_all', '解析活动坐标', () => geo.geocodeAll(draft, sink.onThought, signal));
         assertAlive(signal);
+        await runSystemTask('plan', 'optimize_day_routes', '调整顺路顺序', async () => orderUntimedDayRoutes(draft, form.destination));
         await runSystemTask('plan', 'geo_compute_legs', '估算通勤路线', () => geo.computeLegs(draft, sink.onThought, signal));
         assertAlive(signal);
       } catch (err) {
@@ -322,7 +334,7 @@ export async function runGeneration(
     // 文案只写行程和每天标题，不修改活动；与地理增强并发缩短关键路径。
     // 沿用 review 阶段名（前端与时间线契约不变），语义是「给行程与每天起标题」；
     // 活动说明不归它写：research 的候选 intro 已按同一标准写成并直接复用到活动上。
-    // 工具面只给 get_draft + update_titles + submit_review，改不动活动/顺序/说明。
+    // 工具面只给 update_titles，成功即结束；改不动活动/顺序/说明。
     // 文案属增强路径：模型没写完也不算失败，草稿里已有候选简介兜底。
     startPhase('review', 1, '撰写说明文案');
     const review: ReviewOutcome = { submitted: false, notes: [] };
@@ -330,14 +342,12 @@ export async function runGeneration(
       model,
       apiKey: cfg.apiKey,
       systemPrompt: WRITER_SYSTEM_PROMPT,
-      tools: [
-        ...buildDraftTools(draft).filter((t) => t.name === 'get_draft' || t.name === 'update_titles'),
-        ...buildReviewTools(review),
-      ],
+      tools: buildDraftTools(draft, 'plan', (notes) => { review.submitted = true; review.notes = notes; })
+        .filter((tool) => tool.name === 'update_titles'),
       userPrompt: writerUserPrompt(form, draft.render()),
       signal,
       sink: sinkFor('review'),
-      maxTurns: 12,
+      maxTurns: 3,
       recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round: 1 }),
     }).catch((err: unknown) => {
       // 并行段若因取消/排程异常先抛出，这个 Promise 仍会 settle：必须立刻挂 catch，
@@ -429,6 +439,18 @@ export async function runGeneration(
       if (grouping.notes.length) reviewNotes = [...grouping.notes, ...reviewNotes].slice(0, 8);
     } catch (err) {
       if (signal.aborted) throw err;
+    }
+
+    // 换天修复后的最终邻接关系再校验；只重算真正改变的天，不持久化旧顺序的 legs。
+    const reorderedDays = orderUntimedDayRoutes(draft, form.destination);
+    if (reorderedDays.length) {
+      try {
+        await runSystemTask('review', 'route_recompute_ordered_days', '复核顺路通勤', () =>
+          geo.computeLegs(draft, finalSink.onThought, signal, reorderedDays));
+      } catch (err) {
+        if (signal.aborted) throw err;
+        for (const dayIndex of reorderedDays) delete draft.mutableDays()[dayIndex - 1]!.legs;
+      }
     }
 
     // 餐次兜底与通勤时间顺延都不再执行（09-22 D5：行程不产出时间轴）：

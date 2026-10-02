@@ -183,7 +183,7 @@ export async function loadCityPlaceFacts(city: string): Promise<Map<string, Plac
     const { rows } = await pool.query<FactRow>(
       `SELECT name, category, source, lng, lat, payload
        FROM canonical_places
-       WHERE city = $1`,
+       WHERE city = $1 AND payload->>'canonicalRedirectTo' IS NULL`,
       [city],
     );
     // 归一键 → 合并事实。归一键来源（09-27）：主名 + payload.aliases ——
@@ -207,6 +207,8 @@ export async function loadCityPlaceFacts(city: string): Promise<Map<string, Plac
       `SELECT DISTINCT ON (p.name) p.name, left(e.content, 60) AS content
        FROM research_evidence e JOIN canonical_places p ON p.id = e.place_id
        WHERE p.city = $1
+         AND p.payload->>'canonicalRedirectTo' IS NULL
+         AND COALESCE(p.payload->'identity'->>'kind', '') <> 'complex'
          AND e.content ~ '周[一二三四五六日天][^；;。]{0,8}(闭馆|不开放|休息)'
          AND e.content !~ '不休息'
        ORDER BY p.name, e.fetched_at DESC`,

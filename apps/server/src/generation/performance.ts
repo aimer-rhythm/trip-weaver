@@ -27,6 +27,20 @@ export interface GenerationTimingSummary {
 
 const phaseKey = (phase: GenerationPhase, round: number) => `${phase}:${round}`;
 
+/** 并发阶段/请求按区间并集计算墙钟，不能直接相加。 */
+export function unionDurationMs(spans: readonly { start: number; end: number }[]): number {
+  const sorted = spans.filter((span) => span.end >= span.start).sort((a, b) => a.start - b.start);
+  if (!sorted.length) return 0;
+  let start = sorted[0]!.start;
+  let end = sorted[0]!.end;
+  let total = 0;
+  for (const span of sorted.slice(1)) {
+    if (span.start <= end) end = Math.max(end, span.end);
+    else { total += end - start; start = span.start; end = span.end; }
+  }
+  return total + end - start;
+}
+
 /** 单任务内存计时器。只保存稳定名称和毫秒数，不接触 prompt、参数或用户输入。 */
 export class GenerationPerformance {
   private readonly phaseStarts = new Map<string, number>();

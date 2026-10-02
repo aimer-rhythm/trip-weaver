@@ -44,7 +44,7 @@ test('文案 prompt：只写标题，不改活动说明', () => {
 
 test('调研 prompt：intro 按活动说明标准写并会被直接复用', () => {
   const prompt = researchSystemPrompt({ searchWebMax: 2 });
-  assert.ok(prompt.includes('按「活动说明」标准写'));
+  assert.ok(prompt.includes('按「完整景点介绍」写'));
   assert.ok(prompt.includes('直接作为该活动在行程里的说明文案'));
 });
 

@@ -18,121 +18,108 @@ layer degrades silently:
 | missing `embedding` column during backfill | script logs and skips that table, exit 0 |
 | any `retrieveContext` exception | `console.warn` + return `[]` |
 
-Consequences to preserve: `retrieveContext` never throws to the orchestrator, and an empty
-result must leave the planner prompt byte-identical to a run without RAG (this is what keeps the
-golden set reproducible). Do not surface retrieval failure in `JobStatus`, SSE events, or
-`generations`.
+Consequences to preserve: `retrieveContext` returns an empty result on failure. The research
+model can then use existing external-source/model-knowledge fallback; no planner model exists.
+The system prefetch has its own timing event, but retrieval failures never become job errors.
 
-## Scenario: Hybrid Recall and Prompt Injection
+## Scenario: SQL-first Research (2026-10-02)
 
 ### 1. Scope / Trigger
 
-Apply when changing `generation/retrieveContext.ts`, the planner prompt builders in
-`generation/prompts.ts`, the `search_verified_places` research tool, the `canonical_places` /
-`research_evidence` schemas, or the embedding client.
+Apply to `placeRetrieval.ts`, `retrievalRanking.ts`, `researchContext.ts`, research tools/prompts,
+the embedding clients, and knowledge-table migrations. The user approved this change after a
+read-only audit found the old top 8 monopolized by Tiantan entrances/photo spots and discarded
+vector calls. This supersedes the historical concatenation-only ranking contract.
 
-### 2. Signatures
+### 2. Signatures and contracts
 
-- `retrieveContext(names: string[], options?: RetrieveOptions): Promise<RetrievedPlace[]>`
-- `RetrievedPlace { name: string; category: string; verified: boolean; evidence: EvidenceItem[] }`
-- `EvidenceItem { kind: string; content: string; strength: string }` — `strength` is the evidence tier:
-  `direct` (may be stated as fact) / `weak` (soft phrasing only) / `risk_only` (conditional
-  warnings only); empty falls back to `weak`. The migration backfills it from `kind`; the
-  external pipeline may write finer labels.
-- `RetrieveOptions { city?: string }`
-- `embedTexts(texts: string[]): Promise<(number[] | null)[]>` in `integrations/embedding.ts`
-- `hasEmbedding(): boolean` in `apps/server/src/env.ts`
-- ~~`renderRagContext(ragContext?: RetrievedPlace[]): string`~~ and
-  ~~`plannerUserPrompt(form, research, revisionRequests?, longHaulIntel?, currentDraft?, ragContext?)`~~
-  — both deleted in 09-25. `retrieveContext` is now consumed ONLY by the research agent's
-  `search_verified_places` tool; the "inject RAG into the planner prompt" path is gone because the
-  planner is code, not a model.
+- `createPlaceRetriever({query, embed})` accepts read-only dependencies without importing the
+  migrating `db/client`. `retrieveContext` wires it to the application pool and `embedQuery`.
+- `RetrieveOptions` includes `city`, `category`, `preferences`, `limit` (1–48), `browse`,
+  `vector: 'auto' | 'off' | 'force'`, and `signal`. Empty names return `[]` unless city-scoped
+  system browsing is explicitly enabled. All SQL uses parameters and `verified = TRUE`;
+  both keyword and vector paths apply the same city/category filters. LIKE metacharacters escape.
+- SQL supplies at most 256 keyword/browse rows. Exact name/alias hits lead; structured category
+  mappings supplement missing themes. Code normalizes institution suffixes and unambiguous
+  name/alias links, favors exact matches, quality, main sights and modest spatial diversity.
+  Shared generic aliases and parent/child substring matches do not merge facts across places.
+- `prepareResearchContext(form, retrieve, signal)` browses attractions with zero vector requests,
+  at `ceil(days * paceDensity * 1.4)`, clamped to 8–36. Food preference adds up to 12 food candidates;
+  hotels are excluded. These are choices for the model, not automatically selected activities.
+- `renderRetrievedPlaces` includes canonical IDs, names, categories and up to 3 evidence items.
+  Evidence keeps direct/weak/risk_only labels and prompt excerpts of at most 80 chars. Source URLs
+  remain in the task catalog and are automatically attached on insertion, not copied by the model.
+- `search_verified_places(keyword, category?, semantic?)` supplements missing information.
+  Auto mode skips vectors when deduplicated keyword results fill the limit. `semantic=true`
+  requests force mode for complex preferences. Semantic similarity never proves hard conditions.
+- `embedQuery` uses the site configuration only: one HTTP attempt, 2500ms timeout, caller abort,
+  finite 1024-dimensional values, successful-query cache (10min, 256 entries), no retry/throttle.
+  `embedTexts` remains the offline batch client; its 300ms delay is BETWEEN batches only.
+- Evidence is fetched with `LATERAL ... LIMIT 3` per member ID and capped to 3 after same-entity
+  merging, ordered by kind, strength, freshness. Both schema/migration define
+  `idx_research_evidence_place(place_id, fetched_at DESC)`.
+- `add_candidate(placeId?, name, ...)` validates an ID against this task's retrieved catalog,
+  exact/known alias name, city and category. It reuses coordinates, opening/reservation fields
+  and evidence without another XHS lookup. Candidate insertion remains sequential for safe dedup.
+- `submit_research(candidates?: {placeId, intro}[], summary?)` is the normal known-place path:
+  validate all IDs/city/verified/category, nonblank intros and total capacity before inserting.
+  Each known place goes through the same sequential enrichment and candidate SSE path; deduplicate
+  by canonical name, including already inserted entries. Empty pools cannot terminate successfully.
+  `normalizeReservation(status, note)` validates both structured and model-supplied policies:
+  conflicts (e.g. `required` + `无需预约`), uncertain text, name-only or missing notes become
+  `unknown` with an explicit confirmation reminder. Consistent explicit `none`/`required` survive;
+  official reservation seeds override after validation and retain their first source link.
+  Weak/risk-only evidence is never parsed into a confirmed reservation policy. This does not
+  repair canonical database rows or assert that unconflicted source data is currently correct.
+  `cleanResearchIntro` preserves complete introduction sentences within the 200-character limit;
+  upstream purification verifies their content and sources, while structured reservation policies
+  are validated separately. Source links remain available.
+  Invalid batches remain repairable; cancellation stops further insertion and final submission.
+  External/model-knowledge candidates retain `add_candidate` followed by submission. Summary is
+  optional; it records unmet requirements/source limitations, not a second route-planning pass.
 
-### 3. Contracts
+### 3. Runtime boundaries
 
-- Two layers merge into at most 8 places. Keyword recall is mandatory and dependency-free:
-  exact `name = ANY($1)` matches first, then prefix `LIKE ANY($2)`, always filtered by
-  `verified = TRUE`. Vector recall is optional: `ORDER BY embedding <=> $1`.
-- The merge is id-deduplicated concatenation followed by `slice(0, 8)`. There is no RRF, no
-  weighted fusion, and no reranker. Keep it that way until a measured quality gap justifies the
-  extra machinery — keyword-only behavior is the reference.
-- `options.city` adds `AND city = $x` to BOTH layers, which is what prevents cross-city
-  contamination. Omitting it must reproduce the pre-city-filter behavior exactly; it is a scope
-  filter, not a ranking change.
-- Evidence attaches per place, at most 3 rows, ordered by kind priority
-  (`xhs_warning` > `xhs_reservation` > `xhs_price` > everything else), then strength
-  (`direct` > `risk_only` > `weak`), then `fetched_at DESC`.
-  Evidence text enters the prompt verbatim (each item truncated to 80 chars) — never route it
-  through an extra summarizing model call.
-- Injection has two entry points: an automatic pre-planner call in the orchestrator
-  (`orchestrator.ts`, between research and the plan loop) and the research-phase
-  `search_verified_places` agent tool. The planner prompt builder is shared by round 1 and
-  revision rounds, so retrieved intel stays visible in every round.
-- The research phase is knowledge-base-first: `search_verified_places` is the primary source and
-  `search_pois` only supplies place facts (coordinates/address/cover image). `search_web` is a
-  degraded fallback — `researchSystemPrompt({ searchWebMax })` allows it only after repeated
-  knowledge-base misses, and the cap is coverage-dependent (09-25): `cityCoverage()` counts verified
-  `canonical_places` rows for the destination city; ≥ `CITY_COVERAGE_THRESHOLD` (100) keeps the cap
-  at 2, below it the cap relaxes to 6 (constants + `searchWebMaxFor` in
-  `services/cityCoverageService.ts`; the threshold cleanly separates 北京 1349 / 成都 411 from the
-  ≤21 tail). The process-level cache assumes city coverage changes only via offline imports.
-  `SEARCH_DAILY_BUDGET` still gates everything. Do not restore
-  the old "always search the web for opening hours/tickets" workflow.
-- The vector layer queries `canonical_places` ONLY. `research_evidence.embedding` is written by
-  the backfill script but read by nothing; do not assume evidence vectors change results.
-- Embedding dimension is 1024 and must match BOTH `EMBEDDING_DIMS` and the `vector(1024)`
-  column. A model or dimension change requires `DROP COLUMN` + re-add + re-backfill, because
-  pgvector cannot alter a column's dimension in place.
-- Embeddings use site-level credentials only (`EMBEDDING_*`, falling back to `SITE_LLM_*`).
-  A user's BYOK key must never reach the embedding endpoint.
+Retrieval remains optional, city-scoped enrichment. Cache entries contain only site-generated query vectors; no BYOK configuration enters this path.
 
-### 4. Validation & Error Matrix
+### 4. Validation and errors
 
-| Condition | Result |
+| Condition | Behavior |
 | --- | --- |
-| `names` empty | return `[]` without touching the database |
-| `embedding` column absent (upgraded DB without the extension) | keyword layer only |
-| `EMBEDDING_DIMS` ≠ 1024 | skip the vector layer, `console.warn`, keyword layer only |
-| embedding batch returns an unexpected dimension | that item becomes `null`, batch continues |
-| the vector-layer query throws | caught locally; keyword results survive |
-| retrieval returns nothing for the research keyword | `search_verified_places` returns the "换关键词、再用 search_web 兜底" hint; job unaffected |
-| knowledge base returns nothing for the user's city | research still produces a pool: `search_pois` + model knowledge, with `search_web` allowed as fallback (cap 2 when covered / 6 when uncovered) |
+| No SQL rows / unknown city | Model receives the fallback instruction and can use existing sources |
+| Vector unavailable, malformed or timed out | Retain SQL candidates; no online retry |
+| Caller abort | No new vector calls or candidate publication; orchestrator owns cancellation |
+| Wrong placeId/name/city/category | Reject candidate (or entire submitted batch) without mutating the pool |
+| Batch exceeds pool capacity / blank intro | Reject before any enrichment or candidate publication |
+| Repeated ID/name / retry of inserted batch | Reuse existing entries, no duplicate candidate events |
+| Shared generic alias / different city | Keep separate entities, never mix evidence |
 
-### 5. Good / Base / Bad Cases
+### 5. Good / Base / Bad
 
-- Good: research produced 12 candidates; keyword recall hits 5 verified places, the vector layer
-  adds 3 more, each carries up to 3 evidence items, and the research agent sees that evidence
-  inline in the `search_verified_places` output it just called.
-- Base: no `EMBEDDING_*` configured — output is identical to a keyword-only deployment, with no
-  startup failure and no user-visible degradation banner.
-- Bad: letting `retrieveContext` throw and failing the job; sending a user's BYOK key to the
-  embedding endpoint; reordering keyword recall and calling it a RAG improvement.
+Good: SQL prefetch gives the first research request a diverse candidate set; it selects using
+`placeId` and writes intros directly. Base: empty library uses existing fallback. Bad: closing
+vector retrieval entirely despite absent themes, rerunning the same search before writing known
+candidates, or treating all phase-duration sums as wall clock.
 
-### 6. Tests Required
+### 6. Tests required
 
-- Offline data check: `npx tsx apps/server/test-rag-data-check.mts` (row counts, embedding
-  coverage, covered cities).
-- Real job: `npx tsx apps/server/test-beijing-rag.mts` reports `search_verified_places` call
-  counts and candidate quality.
-- `npm run typecheck` after touching `RetrievedPlace` or the prompt signature — `ragContext`
-  must stay the LAST and OPTIONAL parameter so every existing call site still compiles.
+`node --import tsx scripts/verify-sql-first.mts` tests real SQL against a disposable database,
+ranking, alias/city isolation, evidence ordering/reuse, vector fallback/cancellation and title
+termination. `--full` runs all server tests. `benchmark-place-retrieval.mts` is a read-only SQL
+probe with external vectors disabled; never report its vector-requesting cases as full RAG latency.
+`researchSubmission.test.ts` verifies batch atomic validation, evidence/photos/seed reuse and
+cancellation; `verify-c2.mjs` verifies initial candidate injection, one-request known-place
+research with per-candidate SSE, legacy fallback, and one-request titles; generation-flow
+verification protects cancellation and transactions. Historical model timings remain historical.
 
 ### 7. Wrong vs Correct
 
-```typescript
-// Wrong: retrieval becomes a hard dependency of the job.
-const places = await retrieveContext(names, { city });
-if (!places.length) throw new GenerationFailure('无已验证地点情报');
-
-// Correct: retrieval is enrichment; an empty result changes nothing.
-const places = await retrieveContext([keyword], { city: destination });
-if (!places.length) return { content: text(FALLBACK_HINT), details: { count: 0 } };
+```ts
+// Wrong: full SQL output still pays for discarded vectors.
+const merged = [...sqlHits, ...await vectorRecall()].slice(0, limit);
+// Correct: online semantic supplementation is conditional and cancellable.
+if (sqlHits.length < limit || semanticRequested) await embedQuery(query, signal);
 ```
-
-Representative paths: `apps/server/src/generation/retrieveContext.ts`,
-`apps/server/src/generation/prompts.ts`, `apps/server/src/generation/orchestrator.ts`,
-`apps/server/src/generation/tools/researchTools.ts`,
-`apps/server/src/integrations/embedding.ts`, `apps/server/src/env.ts`.
 
 ## Scenario: Offline Knowledge Ingestion
 
@@ -499,6 +486,50 @@ Representative paths: `apps/server/src/generation/storedCover.ts`,
 `apps/server/scripts/lib/exportFiles.ts`, `apps/server/src/index.ts`, `docker-compose.yml`,
 `apps/server/src/integrations/pexels/cover.ts`, `apps/server/src/lib/placeKey.ts`,
 `xhs-travel-pipeline/scripts/export_place_images.py`.
+
+## Upstream content and entity repair (2026-10-02)
+
+### 1. Scope / trigger
+
+Community extraction, canonical export, library import, SQL/vector retrieval and itinerary copy share one entity/content contract.
+
+### 2. Signatures
+
+- `reconcileImportedPlaces(client, city, places)` executes inside the seed transaction.
+- `purifiedIntro(payload)` reads version 1 content; `cleanResearchIntro(raw)` trims and bounds complete sentences to 200 characters.
+- Upstream `canonical_place.content_profile` stores a nullable JSONB profile. Offline refinement emits a preview report before writes, and can apply/restore reports with a before-value comparison.
+
+### 3. Contracts
+
+`payload.content` contains `{version:1,intro,highlights:[{text,quote,sourceUrl,observedAt,strength}]}`. Longer offline profiles also carry `profileVersion:1,qualityVersion:2,method,compiledAt`. Aim for 120–180 Chinese characters where evidence permits; shorter descriptions are valid. Do not invent facts to meet a length target. Research tools prefer this intro over model-supplied copy, and scheduling copies it intact. Policies remain separate from descriptive content. Upstream heuristics validate provenance and reject known policy/marketing patterns; they do not prove factual correctness, so repair previews need source and editorial review.
+
+The complete-intro job now searches and fetches web pages, with model knowledge supplying stable background. XHS supplies experience, warnings and other practical fields, not the encyclopedia intro. A web sentence can have `basis:'web',citations:[{quote,sourceUrl,observedAt}]` for several real excerpts. The legacy `quote/sourceUrl` is the first citation. A model-background sentence has `basis:'model_knowledge',quote:null,sourceUrl:null,strength:'unverified'`; never invent a citation. `purifiedIntroSources` expands all nested citations, validates HTTP(S) URLs and deduplicates them; no source link is synthesized for model knowledge. Export/import preserves the entire profile and downstream still copies the intro unchanged.
+
+`identity:{version:1,canonicalName,memberNames,kind}` declares explicit city-scoped ownership. Synonyms go into `aliases`; constituent venues go into `components` with independent policy/evidence. Tiananmen uses a single planning entity, while square/tower policies retain their scope. Do not infer equivalence by distance or substring.
+
+Import refreshes authoritative upstream content/policy fields even on golden-set rows. Old matching rows receive `canonicalRedirectTo`; retain IDs, provenance and all independently stored photo fields. Both SQL and vector retrieval, place-fact loaders and library browsing exclude redirected rows. Queries against `memberNames` still resolve to the root. Old saved trip snapshots remain unchanged.
+
+### 4. Validation and errors
+
+| Condition | Behavior |
+| --- | --- |
+| Conflicting ownership / malformed identity | Reject and roll back the entire import transaction |
+| No reliable content | Model fallback; never fabricate a profile or pad text |
+| Required reservation with “无需预约” | Unknown; retain evidence and ask readers to verify separately |
+| Complex entity with tower closure | Keep closure on component; never assign to root |
+| Repeated import | Same roots/redirects; keep photos and IDs |
+
+### 5. Good / base / bad cases
+
+Good: 奥森 → 奥林匹克森林公园, 天安门城楼 → 天安门, with separate tower policy. Base: missing content uses existing research fallback. Bad: treating 奥林匹克公园 as an alias of the forest park, or retaining stale golden-set policy after reimport.
+
+### 6. Tests
+
+`placeImportIdentity.test.ts` uses an isolated database to assert import/rerun, conflict rollback, photo preservation, alias lookup, component closure isolation and complete description propagation. `researchQuality.test.ts` explicitly verifies that downstream does not remove policy-keyword sentences.
+
+### 7. Wrong vs correct
+
+Wrong: truncate a sourced intro to 60 characters, then delete sentences containing “门票”; merge tower closure into a square. Correct: purify and review upstream, keep the full intro downstream, and preserve policies under their actual constituent entity.
 
 Read-only audit: `node --import tsx apps/server/scripts/audit-xhs-images.ts --city 杭州
 --trip-id <id> --out <report.json>`. Optional `--pipeline-root` defaults to the sibling pipeline

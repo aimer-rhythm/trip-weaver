@@ -342,10 +342,12 @@ try {
   const structureCalls = runD.events.filter((event) => event.type === 'tool_start' && structureTools.includes(event.tool)).map((event) => event.tool);
   check('排程阶段零 LLM 规划工具（结构由代码决定）', structureCalls.length === 0, structureCalls.join(','));
   const writer = mock.seenWriter;
+  const writerRequests = run.events.filter((event) => event.type === 'llm_request' && event.phase === 'review');
+  check('常规标题仅一次模型请求', writerRequests.length === 1, String(writerRequests.length));
   check(
-    '文案阶段拿到行程且工具面仅 get_draft / update_titles / submit_review',
+    '文案阶段拿到行程且一次 update_titles 即收口',
     Boolean(writer?.hasDraft)
-      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['get_draft', 'submit_review', 'update_titles']),
+      && JSON.stringify(writer?.tools ?? []) === JSON.stringify(['update_titles']),
     JSON.stringify(writer?.tools),
   );
   const revisedTrip = await api('GET', `/api/trips/${runD.events.at(-1)?.tripId}`);
@@ -608,6 +610,10 @@ try {
   const bjRun = await readEvents(bjJob.json?.jobId);
   check('已覆盖城市生成完成', bjRun.events.at(-1)?.type === 'job_done', bjRun.events.at(-1)?.type);
   const bjResearch = mock.seenResearchPrompts.find((p) => p.destination === '北京');
+  check('已覆盖城市首轮模型直接收到SQL候选', bjResearch?.hasPrefetch === true);
+  check('已覆盖城市调研一次请求即完成', bjRun.events.filter((e) => e.type === 'llm_request' && e.phase === 'research').length === 1);
+  check('批量提交仍逐条发布候选', bjRun.events.filter((e) => e.type === 'candidate').length === 6);
+  check('已知候选没有逐条模型入池调用', !bjRun.events.some((e) => e.type === 'tool_start' && e.tool === 'add_candidate'));
   check('已覆盖城市 search_web 上限保持 2', bjResearch?.searchWebMaxLine === '全阶段最多 2 次', String(bjResearch?.searchWebMaxLine));
   // 09-26：已覆盖城市列表接口（城市选择首页数据源）——测试库此时仅北京达阈值（其余为空库）
   const covered = await api('GET', '/api/destinations/covered');

@@ -11,17 +11,22 @@ export class NoLlmConfiguredError extends Error {
 }
 
 /** 自定义 OpenAI 兼容端点模型；compat 由 pi-ai 按 baseUrl 自动探测（§12 已核对） */
-export async function buildModel(cfg: LlmConfig): Promise<Model<'openai-completions'>> {
+export async function buildModel(cfg: LlmConfig, options: { disableDeepSeekThinking?: boolean } = {}): Promise<Model<'openai-completions'>> {
   if (cfg.byok) await assertSafeBaseUrl(cfg.baseUrl);
+  // 原生 V4 ID（包括透传这些 ID 的兼容网关）使用 DeepSeek 协议；不猜测其他供应商/别名。
+  // reasoning:false 只让 SDK 不发开关，并不能关闭服务端默认启用的思考。
+  const disableThinking = options.disableDeepSeekThinking === true && /^deepseek-v4-(flash|pro)$/.test(cfg.model);
   return {
     id: cfg.model,
     name: cfg.model,
     api: 'openai-completions',
     provider: cfg.byok ? 'tripweaver-byok' : 'tripweaver-site',
     baseUrl: cfg.baseUrl,
-    // 保持 false（09-20 实测后回退）：标 true + thinkingLevel:'medium' 并不会减少输出
-    // （plan 第1轮 47228 → 51646 token），而 pi-ai 在 false 时把任何 thinkingLevel 夹回 off。
-    reasoning: false,
+    // 能力标志与实际开关分离：runner 的 off 经 deepseek compat 才会发送 thinking.disabled。
+    // 其他模型保留历史行为，避免向任意兼容服务发送不支持的参数。
+    reasoning: disableThinking,
+    // DeepSeek 工具续轮要求 assistant 消息带 reasoning_content，即使关闭思考也需空串占位。
+    ...(disableThinking ? { compat: { thinkingFormat: 'deepseek' as const, requiresReasoningContentOnAssistantMessages: true } } : {}),
     input: ['text'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 65536,

@@ -5,14 +5,15 @@
 // 现在只决定三件事：入选哪些点、每个点在哪天、当天内的顺路顺序。
 //
 // 分组算法：**先成链再切段**（route-first, cluster-second）
-//   1. 全局最近邻把入选点连成一条巡游链 —— 链本身就近似最优顺路顺序，段内不需要再做 TSP
-//   2. 按顺序把链切成 k 段（k = 可用天数），段内保持链上顺序
+//   1. 全局最近邻把入选点连成一条巡游链，用于相近地点分组
+//   2. 按容量切段，段内有界搜索满足先后约束的顺序，减少回折并缩短路程
 //   3. 段按权重降序分配 Day1..k（D1：分数高的排靠前的天）
 //
 // 分数只决定「入选 + 分到哪天」，不插手段内顺序 —— 否则会把高分点插到不顺路的位置，
 // 通勤成本又回来了（景山→故宫 41min 那种段就是这么来的）。
 import type { PoiCategory, TripPace } from '@tripweaver/shared';
 import { dateForDayIndex, findHoliday, isClosedOnDate } from '@tripweaver/shared';
+import { optimizeRouteOrder } from './routeOrder';
 
 export interface SchedulablePoi {
   id: string;
@@ -233,7 +234,7 @@ function cutChain(
     currentWeight += poi.weight;
   }
   if (current.length) segments.push(current);
-  return segments.map((segment) => buildChain(segment, orderConstraints));
+  return segments.map((segment) => optimizeRouteOrder(buildChain(segment, orderConstraints), { constraints: orderConstraints }));
 }
 
 function dayTitle(members: readonly SchedulablePoi[]): string {
