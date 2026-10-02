@@ -62,6 +62,23 @@ try {
   await page.screenshot({path:path.join(out,`${name}.png`),fullPage:true});
  }
  await page.setViewportSize({width:1280,height:800});
+ const searchInput=page.getByRole('searchbox',{name:'搜索行程'});
+ const ime=await page.context().newCDPSession(page);
+ await searchInput.focus();
+ await ime.send('Input.imeSetComposition',{text:'beijing',selectionStart:7,selectionEnd:7});
+ assert.equal(await searchInput.inputValue(),'beijing','uncommitted pinyin stays in the input');
+ assert.equal(new URL(page.url()).searchParams.get('q'),null,'IME composition must not update the URL');
+ assert.equal(await page.locator('.collection-card').count(),6,'IME composition must not filter away the list');
+ await ime.send('Input.insertText',{text:'北京'});
+ await page.waitForFunction(()=>new URL(location.href).searchParams.get('q')==='北京');
+ assert.equal(await searchInput.inputValue(),'北京','IME commit keeps the selected Chinese text');
+ await searchInput.press('ControlOrMeta+a');
+ await ime.send('Input.imeSetComposition',{text:'shanghai',selectionStart:8,selectionEnd:8});
+ assert.equal(new URL(page.url()).searchParams.get('q'),'北京','replacement composition keeps the committed search');
+ await ime.send('Input.insertText',{text:'上海'});
+ await page.waitForFunction(()=>new URL(location.href).searchParams.get('q')==='上海');
+ assert.equal(await searchInput.inputValue(),'上海','a second composition replaces the selection intact');
+ await ime.detach();
  await page.getByRole('searchbox',{name:'搜索行程'}).fill('北京');
  await page.waitForFunction(()=>document.querySelectorAll('.collection-card').length===2);
  assert.equal(await page.locator('.collection-card').count(),2);
@@ -115,6 +132,8 @@ try {
  await page.waitForFunction(()=>document.querySelectorAll('.collection-landmark').length===3);
  assert.equal(await page.locator('.collection-landmark').count(),3,'SVG, PNG and WebP illustrations load for exact city matches');
  assert.equal(await page.locator('.collection-cover[data-illustrated="false"]').count(),2,'invalid or unmatched SVGs keep text covers');
+ assert.equal(await page.locator('.collection-cover-route').count(),3,'only loaded illustrations show the decorative route');
+ assert.equal(await page.locator('.collection-cover[data-illustrated="false"] .collection-cover-route').count(),0,'missing or broken illustrations retain the plain cover');
  assert.ok(await page.locator('.collection-landmark').first().evaluate(el=>getComputedStyle(el).maskImage!=='none'),'local SVG is used as the cover-coloured mask');
  assert.equal(await page.locator('.collection-cover img').first().evaluate(el=>el.complete&&el.naturalWidth>0),true);
  const svgImage=page.getByRole('link',{name:`查看行程：${fixture[0].title}`}).locator('.collection-cover img');
@@ -129,6 +148,21 @@ try {
   return context.getImageData(0,0,1,1).data[3];
  }),0,'PNG transparent background survives loading');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ for (const width of [375, 1920]) {
+  await page.setViewportSize({width,height:1080});
+  await page.evaluate(()=>document.fonts.ready);
+  const overlaps=await page.locator('.collection-cover[data-illustrated="true"]').evaluateAll(covers=>covers.filter(cover=>{
+   const title=cover.querySelector('.collection-destination').getBoundingClientRect();
+   const art=cover.querySelector('.collection-landmark').getBoundingClientRect();
+   return title.bottom>art.top+2;
+  }).map(cover=>({
+   text:cover.querySelector('.collection-destination').textContent,
+   titleBottom:cover.querySelector('.collection-destination').getBoundingClientRect().bottom,
+   artTop:cover.querySelector('.collection-landmark').getBoundingClientRect().top,
+  })));
+  assert.deepEqual(overlaps,[],`long handwritten destinations must not cover artwork at ${width}px`);
+ }
+ await page.setViewportSize({width:375,height:812});
  await page.screenshot({path:path.join(out,'local-assets-mobile.png'),fullPage:true});
  await page.setViewportSize({width:1920,height:1080});
  await page.screenshot({path:path.join(out,'local-assets-desktop.png'),fullPage:true});

@@ -1,6 +1,6 @@
 import { Button } from '../components/ui/Button';
 import { Input, Select } from '../components/ui/Field';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTrips } from '../api/hooks';
 import { TripCover } from '../components/TripCover';
@@ -19,6 +19,12 @@ export function TripListPage() {
   const trips = useTrips();
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
+  const [searchInput, setSearchInput] = useState(query);
+  const composing = useRef(false);
+  // URL stores the committed search; an IME owns the in-progress composition.
+  useEffect(() => {
+    if (!composing.current) setSearchInput(query);
+  }, [query]);
   const city = params.get('city') ?? '';
   const requestedSort = params.get('sort');
   const sort = requestedSort === 'created' || requestedSort === 'name' ? requestedSort : 'updated';
@@ -47,6 +53,8 @@ export function TripListPage() {
     }, { replace: true });
   };
   const clearFilters = () => {
+    composing.current = false;
+    setSearchInput('');
     setParams((previous) => {
       const next = new URLSearchParams(previous);
       next.delete('q');
@@ -58,11 +66,11 @@ export function TripListPage() {
 
   return (
     <div className={"trip-collection w-full [max-width:1760px] [margin:0_auto] [padding:42px_28px_72px] [color:var(--color-editor-page-editor-ink-55)] [&_:is(a,_button,_input,_select):focus-visible]:[outline:2px_solid_var(--color-brand)] [&_:is(a,_button,_input,_select):focus-visible]:[outline-offset:4px] [@media_(max-width:_1400px)]:[padding-inline:8px] [@media_(max-width:_600px)]:[padding:30px_2px_44px]"}>
-      <header className={"collection-heading flex justify-between items-end [gap:24px] [margin:0_0_30px] [&_h1]:[font:600_clamp(34px,_2.7vw,_52px)/1.4_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h1]:[letter-spacing:2px] [&_h1]:m-0 [&_p]:[margin:12px_0_0] [&_p]:[font:400_23px/1.6_'QianTuBiFeng_Handwriting',_'Noto_Serif_SC_Variable',_serif] [&_p]:[color:var(--color-collection-heading-color-109)] [@media_(max-width:_600px)]:items-start [@media_(max-width:_600px)]:flex-col [@media_(max-width:_600px)]:[gap:12px] [@media_(max-width:_600px)]:[margin-bottom:22px] [@media_(max-width:_600px)]:[&_h1]:[font-size:30px] [@media_(max-width:_600px)]:[&_p]:[font-size:21px]"}>
+      <header className={"collection-heading flex justify-between items-end [gap:24px] [margin:0_0_30px] [&_h1]:[font:600_clamp(34px,_2.7vw,_52px)/1.4_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h1]:[letter-spacing:2px] [&_h1]:m-0 [&_p]:[margin:12px_0_0] [&_p]:[font:400_30px/1.4_'Youran_Handwriting',_'Noto_Serif_SC_Variable',_serif] [&_p]:[letter-spacing:-0.03em] [&_p]:text-balance [&_p]:[color:var(--color-collection-heading-color-109)] [@media_(max-width:_600px)]:items-start [@media_(max-width:_600px)]:flex-col [@media_(max-width:_600px)]:[gap:12px] [@media_(max-width:_600px)]:[margin-bottom:22px] [@media_(max-width:_600px)]:[&_h1]:[font-size:30px] [@media_(max-width:_600px)]:[&_p]:[font-size:26px]"}>
         <div>
           <h1>我的行程</h1>
-          <p>把想去的远方，收进一本本旅行手册。
-            {!trips.isPending && !trips.isError && <span className={"collection-count inline-block [margin-left:36px] [font:400_14px/1.6_var(--font-sans,_sans-serif)] [color:var(--color-collection-count-color-110)] [vertical-align:middle] [&_strong]:[font-size:24px] [&_strong]:font-medium [&_strong]:[color:var(--color-collection-count-color-111)] [&_strong]:[margin-right:3px] [@media_(max-width:_600px)]:block [@media_(max-width:_600px)]:[margin:8px_0_0] [@media_(max-width:_600px)]:[font-size:12px] [@media_(max-width:_600px)]:[&_strong]:[font-size:18px]"}>共 {trips.data?.length ?? 0} 本旅行手册</span>}
+          <p>把想去的远方，<br className="hidden max-[600px]:block" />收进一本本旅行手册。
+            {!trips.isPending && !trips.isError && <span className={"collection-count tracking-normal inline-block [margin-left:36px] [font:400_14px/1.6_var(--font-sans,_sans-serif)] [color:var(--color-collection-count-color-110)] [vertical-align:middle] [&_strong]:[font-size:24px] [&_strong]:font-medium [&_strong]:[color:var(--color-collection-count-color-111)] [&_strong]:[margin-right:3px] [@media_(max-width:_600px)]:block [@media_(max-width:_600px)]:[margin:8px_0_0] [@media_(max-width:_600px)]:[font-size:12px] [@media_(max-width:_600px)]:[&_strong]:[font-size:18px]"}>共 {trips.data?.length ?? 0} 本旅行手册</span>}
           </p>
         </div>
       </header>
@@ -71,7 +79,24 @@ export function TripListPage() {
         <label className={"collection-search flex items-center [gap:12px] flex-1 min-w-0 [&_svg]:[width:21px] [&_svg]:[height:21px] [&_svg]:flex-none [&_svg]:[color:var(--color-collection-search-color-115)] [&_input]:w-full [&_input]:min-w-0 [&_input]:[height:44px] [&_input]:bg-transparent [@media_(max-width:_1400px)]:[flex-basis:100%]"}>
           <span className={"collection-sr-only absolute [width:1px] [height:1px] p-0 [margin:-1px] overflow-hidden [clip-path:inset(50%)] whitespace-nowrap border-0"}>搜索行程</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" strokeLinecap="round" /></svg>
-          <Input type="search" value={query} onChange={(event) => updateFilter('q', event.target.value)} placeholder="搜索行程名称或目的地" maxLength={100} />
+          <Input
+            type="search"
+            value={searchInput}
+            onCompositionStart={() => { composing.current = true; }}
+            onCompositionEnd={(event) => {
+              composing.current = false;
+              const value = event.currentTarget.value;
+              setSearchInput(value);
+              updateFilter('q', value);
+            }}
+            onChange={(event) => {
+              const value = event.target.value;
+              setSearchInput(value);
+              if (!composing.current) updateFilter('q', value);
+            }}
+            placeholder="搜索行程名称或目的地"
+            maxLength={100}
+          />
         </label>
         <label className={"collection-select flex items-center [gap:10px] [border-left:1px_solid_var(--color-collection-select-border-left-117)] [padding-left:20px] [&_>_span]:[font-size:12px] [&_>_span]:[color:var(--color-collection-select-color-118)] [&_select]:[min-width:120px] [&_select]:[max-width:220px] [&_select]:[min-height:44px] [&_select]:cursor-pointer [@media_(max-width:_1400px)]:border-0 [@media_(max-width:_1400px)]:[padding-left:0] [@media_(max-width:_1400px)]:flex-1 [@media_(max-width:_1400px)]:[&_select]:flex-1 [@media_(max-width:_1400px)]:[&_select]:[max-width:none] [@media_(max-width:_1400px)]:[&_select]:min-w-0 [@media_(max-width:_600px)]:min-w-0 [@media_(max-width:_600px)]:flex-col [@media_(max-width:_600px)]:items-stretch [@media_(max-width:_600px)]:[gap:4px] [@media_(max-width:_600px)]:[&_>_span]:[padding-left:4px] [@media_(max-width:_600px)]:[&_select]:w-full [@media_(min-width:_1401px)]:[border-left:0] [@media_(min-width:_1401px)]:[padding-left:0] [@media_(min-width:_1401px)]:[&_>_span]:absolute [@media_(min-width:_1401px)]:[&_>_span]:[width:1px] [@media_(min-width:_1401px)]:[&_>_span]:[height:1px] [@media_(min-width:_1401px)]:[&_>_span]:overflow-hidden [@media_(min-width:_1401px)]:[&_>_span]:[clip-path:inset(50%)] [@media_(min-width:_1401px)]: [@media_(min-width:_1401px)]: [@media_(min-width:_1401px)]:[&_select]:[min-width:180px]"}><span>目的地</span>
           <Select aria-label="目的地" value={city} onChange={(event) => updateFilter('city', event.target.value)}>
@@ -97,7 +122,7 @@ export function TripListPage() {
       {trips.isPending && <div className={"collection-grid grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] [gap:40px_32px] [@media_(max-width:_1400px)]:[grid-template-columns:repeat(2,_minmax(0,_1fr))] [@media_(max-width:_600px)]:[grid-template-columns:minmax(0,_1fr)] [@media_(max-width:_600px)]:[gap:18px]"} aria-hidden="true">{[0, 1, 2].map((item) => <div className={"collection-skeleton [padding:8px] [border:1px_solid_var(--color-collection-toolbar-background-112)] [background:var(--color-collection-skeleton-background-151)] [border-radius:20px] [min-height:345px] [&_div]:[height:164px] [&_div]:[border-radius:14px] [&_div]:[background:var(--color-collection-skeleton-background-152)] [&_span]:block [&_span]:[height:14px] [&_span]:[width:75%] [&_span]:[margin:28px_18px_18px] [&_span]:[border-radius:6px] [&_span]:[background:var(--color-collection-skeleton-background-153)] [&_span:last-child]:[width:45%]"} key={item}><div /><span /><span /></div>)}</div>}
       {trips.isError && <div className={"collection-empty [padding:66px_24px] [background:var(--color-collection-empty-background-146)] [border:1px_solid_var(--color-collection-empty-border-147)] [border-radius:24px] text-center [&_h2]:[font:500_23px/1.5_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h2]:[color:var(--color-collection-empty-color-148)] [&_h2]:[margin:18px_0_12px] [&_p]:[color:var(--color-collection-empty-color-149)] [&_p]:[font-size:14px] [&_p]:[line-height:1.8] [&_p]:[max-width:440px] [&_p]:[margin:0_auto] [@media_(max-width:_600px)]:[padding:40px_20px]"} role="alert"><h2>行程暂时没有加载出来</h2><p>请检查网络连接，再试一次。</p><Button variant="plain" type="button" className={"collection-retry [margin-top:24px] [min-height:44px] [padding:10px_24px] border-0 rounded-full [background:linear-gradient(135deg,_var(--color-brand-light),_var(--color-brand))] [color:white] cursor-pointer [font:inherit] [font-size:14px] [&:disabled]:[opacity:.6] [&:disabled]:[cursor:wait]"} disabled={trips.isFetching} onClick={() => void trips.refetch()}>{trips.isFetching ? '正在重试…' : '重新加载'}</Button></div>}
       {!trips.isPending && !trips.isError && visibleTrips.length === 0 && <div className={"collection-empty [padding:66px_24px] [background:var(--color-collection-empty-background-146)] [border:1px_solid_var(--color-collection-empty-border-147)] [border-radius:24px] text-center [&_h2]:[font:500_23px/1.5_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h2]:[color:var(--color-collection-empty-color-148)] [&_h2]:[margin:18px_0_12px] [&_p]:[color:var(--color-collection-empty-color-149)] [&_p]:[font-size:14px] [&_p]:[line-height:1.8] [&_p]:[max-width:440px] [&_p]:[margin:0_auto] [@media_(max-width:_600px)]:[padding:40px_20px]"}>
-        <span className={"collection-empty-mark [font:400_60px/1_'QianTuBiFeng_Handwriting',_serif] [color:var(--color-collection-empty-mark-color-150)]"} aria-hidden="true">旅</span>
+        <span className={"collection-empty-mark [font:400_72px/1_'Youran_Handwriting',_serif] [color:var(--color-collection-empty-mark-color-150)]"} aria-hidden="true">旅</span>
         <h2>{trips.data?.length ? '还没有找到这份旅程' : '你的旅行手册，等待第一段故事'}</h2>
         <p>{trips.data?.length ? '换个关键词或目的地试试，也可以清除筛选查看全部行程。' : '从顶部「织程」返回首页，规划完成的行程会收在这里。'}</p>
       </div>}
