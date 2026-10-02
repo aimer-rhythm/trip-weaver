@@ -6,6 +6,7 @@ import { ActivityCard } from './ActivityCard';
 import { EditorMenu } from './EditorMenu';
 import { useState } from 'react';
 import { ConfirmDialog, PromptDialog } from '../ui/ActionDialog';
+import { handwritingFallback } from '../../lib/handwriting';
 
 interface Props {
   day: TripDay;
@@ -20,10 +21,11 @@ export function DaySection({ day, allDays, poiByActivityId, onEditActivity }: Pr
   const deleteDay = useEditorStore((s) => s.deleteDay);
   const startDate = useEditorStore((s) => s.trip?.startDate);
   const date = dateForDayIndex(startDate, day.dayIndex);
+  const title = day.title || `第${day.dayIndex}天的旅程`;
   return (
     <section className={"day-section [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:12px] [margin-bottom:12px] overflow-hidden"} aria-label={`第${day.dayIndex}天行程`}>
       <header className={"day-head flex items-center [gap:8px] [padding:8px_10px] [border-left:4px_solid_transparent] [&_.editor-menu-list]:[top:100%] [&_.editor-menu-list]:[bottom:auto]"}>
-        <div><h2>{day.title || `第${day.dayIndex}天的旅程`}</h2><p>{date ? `${date.slice(5).replace('-', '月')}日 · ` : ''}第{day.dayIndex}天</p></div>
+        <div><h2 style={handwritingFallback(title)}>{title}</h2><p>{date ? `${date.slice(5).replace('-', '月')}日 · ` : ''}第{day.dayIndex}天</p></div>
         <EditorMenu label="当天更多操作">
           <Button variant="ghost" onClick={() => setDialog('rename')}>修改当日主题</Button>
           <Button variant="danger" onClick={() => setDialog('delete')}>删除这一天</Button>

@@ -2,6 +2,16 @@
 
 ## Boundary and Lifecycle
 
+### Title handwriting coverage contract
+
+1. **Scope**: newly written itinerary/day titles in the writer's `update_titles` tool; do not rewrite real place names, activities, imports or stored trips to satisfy a font.
+2. **Signatures**: shared `missingTitleCharacters(titles: readonly string[]): string[]`; `python scripts/generate-title-font-coverage.py [--check]` regenerates/verifies the server `titleFont.generated.ts` hash manifest and shared `handwriting.generated.ts` from deployed `apps/web/public/fonts/handwriting/*.woff2` Unicode cmap tables (exclude glyph ID 0). Server and web consume the same coverage through `@tripweaver/shared`; the server's `titleFont.ts` is a compatibility re-export. The generator requires `fonttools[woff]`; production uses only generated TypeScript data.
+3. **Contract**: check all submitted titles by Unicode code point before any draft mutation. Return distinct missing characters in `details.missingCharacters`, `details.isError=true`, and readable tool feedback. Writer should rephrase faithfully, with at most two correction attempts requested by the prompt. Retain existing default-title fallback if writing fails; this is not a guarantee that historical/default titles use only covered characters.
+4. **Validation/errors**: any missing character → reject the entire title batch without mutation; complete coverage → existing `draft.updateTitles` validation/write behavior; changed font files → coverage-source hash test fails until regeneration. Never substitute `document.fonts.check()` or CSS unicode-range declarations for parsing actual font cmap data.
+5. **Cases**: selected Youran Handwriting (演示悠然小楷) includes “苑麓雍颐榭锣祈簋”, so “中轴宫苑漫步” and “南麓泉塔听溪谷” pass. “古罍听风” still fails because “罍” is absent. Do not fabricate a new place name to satisfy a font. Historical/default/manual titles retain their text; frontend whole-text fallback handles unsupported letters without rewriting them.
+6. **Tests**: `titleFont.test.ts` checks file set/SHA-256, Unicode/deduplication, trip or day missing glyph rejection, no partial writes and unchanged activities after corrected submission. Run the generator with `--check` after editing it or font assets.
+7. **Wrong vs correct**: merely telling the model to use common characters is insufficient; parse actual shipped fonts, validate tool arguments, and return actionable missing-character feedback before writing.
+
 `apps/server/src/routes/generations.ts` owns HTTP admission, quota/conflict responses, job
 snapshots, SSE transport, and cancellation requests. `apps/server/src/generation/orchestrator.ts`
 is the single generation entry point and owns the research, planning, review, persistence,

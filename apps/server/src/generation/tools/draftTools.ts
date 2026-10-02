@@ -4,6 +4,7 @@ import { describeFeasibility } from '@tripweaver/shared';
 import type { AgentTool } from '@mariozechner/pi-agent-core';
 import { defineTool } from './defineTool';
 import type { DraftTrip, DraftActivityInput } from '../draft';
+import { missingTitleCharacters } from '../titleFont';
 
 function text(t: string) {
   return [{ type: 'text' as const, text: t }];
@@ -178,17 +179,26 @@ export function buildDraftTools(draft: DraftTrip, mode: 'plan' | 'revision' = 'p
   const titlesTool = defineTool({
     name: 'update_titles',
     label: '撰写行程标题',
-    description: '改写行程标题与每天标题。只能改文字，不能改天数、活动、顺序或说明。',
+    description: '改写行程标题与每天标题。写入前按实际手写字体 cmap 校验全部字符；缺字时返回缺失字符且不写入，请改用已收录字重新拟题。只能改文字，不能改天数、活动、顺序或说明。',
     parameters: Type.Object({
       title: Type.String({ description: '行程标题，≤20 字，点出这趟行程的特色' }),
       dayTitles: Type.Array(Type.String(), {
         description: '每天的主题标题（≤12 字，概括那天的内容与气质，不要罗列活动名），数组长度必须等于天数，按天序给出',
       }),
     }),
-    execute: async (_id, params) => ({
-      content: text(draft.updateTitles(params.title, params.dayTitles)),
-      details: { title: params.title, days: params.dayTitles.length },
-    }),
+    execute: async (_id, params) => {
+      const missingCharacters = missingTitleCharacters([params.title, ...params.dayTitles]);
+      if (missingCharacters.length) {
+        return {
+          content: text(`错误：手写字体 cmap 未收录这些字符：${missingCharacters.join('、')}。所有标题均未写入。请换用已收录的字重新拟题；可概括行程内容，但不得篡改真实地名或活动信息。`),
+          details: { isError: true, missingCharacters },
+        };
+      }
+      return {
+        content: text(draft.updateTitles(params.title, params.dayTitles)),
+        details: { title: params.title, days: params.dayTitles.length },
+      };
+    },
   });
 
   return [

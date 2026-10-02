@@ -1,0 +1,31 @@
+// Generated from deployed WOFF2 Unicode cmap tables; do not edit by hand.
+// Regenerate: python scripts/generate-title-font-coverage.py
+export const titleFontSources = {
+  "youran-00-a31d164ace.woff2": "a31d164aceba270e5757859fe652382208214d6c9c8196cd52008dc3eb6c4f63",
+  "youran-01-9a1b7d442d.woff2": "9a1b7d442dbbd15ae895529532c78d7efe170ffbb6a3608fa6ea3fc190cb1ed6",
+  "youran-02-fe3da82c3f.woff2": "fe3da82c3fcd7534ad6a3f4ea14b39237831948e5ebcf5e639948778db2d4500",
+  "youran-03-5a33aff93e.woff2": "5a33aff93e1c3ce2f7ea494cc5ee82760248a973e0b0e857c89d7ca303ae74c4",
+  "youran-04-990ab7a127.woff2": "990ab7a127a9563352ab5dfca4962d9e3bf03e7a1a1b36db3290e0c59e19a060",
+  "youran-05-ca20523c2f.woff2": "ca20523c2f7708a1749a2de2d1676e834e7f930153746c3b7324552f1d801be3",
+  "youran-06-fdbf5cc842.woff2": "fdbf5cc8423ddea015ff80a7f983437d7ee47884598cacba878a7c67d0ddd452",
+  "youran-07-cb5c5bdb7f.woff2": "cb5c5bdb7f905b5041ba003c3ad946e723f9b3202132984df03fe5c274c83fd5",
+  "youran-08-c2e6260cec.woff2": "c2e6260cec080502aa498c29b37d4f79a4dac03bd2e2eeccef2fc8e9b2f1ea81",
+  "youran-09-162eea7488.woff2": "162eea74888f4e1df605c2c266f156996b0d0b86d43b56ce3d8d2faa0c7c6a0b",
+  "youran-10-7450a4e072.woff2": "7450a4e072570bfffa170d1697d87cd1aff6fb6a75e9a7cc866b37769f628f37",
+  "youran-11-9137d488a9.woff2": "9137d488a92454bc4c3b1aeb0c0d1fafa3dc5fe8223451604b7a5b1e8f9a07c8",
+  "youran-12-d4e4e2a02c.woff2": "d4e4e2a02c676385bf0d5c4ad7858808f74f64c71a78fdda103189464e20b844",
+  "youran-13-4e1208effa.woff2": "4e1208effadaed5a4b7b86bdb01b28d4525734c0265b4bede38d6e5d5d43c197",
+  "youran-14-526e2e351c.woff2": "526e2e351c9d72788e3af5ed98cc327eee813f8e02e2eb50ae8a70869c8ef244",
+  "youran-15-871f57ac87.woff2": "871f57ac8721c785409955c4221830a8b09ab3cc5dedc511ee9e0d7e5a901d15",
+  "youran-16-b9f3cb2866.woff2": "b9f3cb28660a9f3e01511e49017e2f8f892092de6d5bb0350e6cbe8d2081d69c",
+  "youran-17-630be6819a.woff2": "630be6819a90d05b70488691c457bc2d4e2e77a83936b10e274cba098c3953a2",
+  "youran-18-9cdc54333d.woff2": "9cdc54333dbc824bfe5c8476d19747dfabf59a6674dc8f8fd5696d46e1427ec2",
+  "youran-19-5cb65f3b66.woff2": "5cb65f3b66ccc67465fedaaadbc94a7a84de2857da642adfddb9e1199b6918d4",
+  "youran-20-1fdcfd23fa.woff2": "1fdcfd23fa8f7d2cb1ae9c70156341c064aa69181c17dd5ab7ef5ae240895b02",
+  "youran-21-968771ba2f.woff2": "968771ba2faae7882d73ffc9e1a6e7536be05abf2eaf3667ca7905522eedcb2a",
+  "youran-22-8c66533e45.woff2": "8c66533e45f4bba705370ad4d07ab87d9194c0afa402b0fd3c54c1b804682475",
+  "youran-23-dd19aeae76.woff2": "dd19aeae76a21ea0b3e4cdc12701b681a816e7c6e657f7e8809e7f2786fce083",
+  "youran-24-aee5d3f997.woff2": "aee5d3f997e7596da6f10f807b88df36fb0c9b4e31d243eb354ad297ac36da9c",
+  "youran-25-3b0f1a8e94.woff2": "3b0f1a8e94926338366b7ffb160d450a22a94fbb33fad9a266fa8378118367a6",
+  "youran-26-c1c958ba4c.woff2": "c1c958ba4cd56437e872002a17cef3151989e18a57e4f8d480133621375b88b1"
+} as const;
