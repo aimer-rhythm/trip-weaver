@@ -16,6 +16,8 @@ has a more specific convention.
 - [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
 - [Chat and conversational intake guidelines](./chat-guidelines.md): dialogue intents, Brief readiness and intake controls, chat quota, revision and version chains, and the two-TypeBox-package trap.
 - [Quality guidelines](./quality-guidelines.md): validation rules and the real command matrix.
+- [Research photo selection](./research-photo-selection.md): independent local comparison-site feedback, atomic persistence and preference-sample semantics; outside the production application.
+- [Preference photo pipeline](./preference-photo-pipeline.md): authorized Beijing selections first, reviewed fallback, independent visual model, durable nonblocking backfill and versioned cross-source selection.
 
 ## Pre-Development Checklist
 

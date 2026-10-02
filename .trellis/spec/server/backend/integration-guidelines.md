@@ -1,8 +1,10 @@
 # External Integration Guidelines
 
+> 2026-10-02：正式新行程采用[人工选图、视觉审核图库与后台补图](./preference-photo-pipeline.md)。北京先读明确授权的人工快照，无图才读视觉审核结果并异步补图。以下来源顺序属于保留的旧adapter/采集接口；不能再作为新行程的未审核兜底。
+
 ## Scenario: Unsplash and Pixabay automatic fallback photos
 
-- User-requested trip generation may search missing attractions through `createUnsplashCoverLookup` / `createPixabayCoverLookup`. Curated and stored covers plus saved Pexels/Wikimedia/Unsplash/Pixabay selections precede new searches; new search order is Pexels → Unsplash → Pixabay → Amap → Wikimedia. A winning provider supplies at most three photos including the cover; no extra searches just to fill a gallery. Existing trip viewing never invokes these adapters.
+- User-requested trip generation first uses reviewed curated photography, then persisted external selections in Pexels → Pixabay → Unsplash → Wikimedia order. New search order is Pexels → Pixabay → Unsplash → Wikimedia, followed by the independently imported XHS gallery/legacy cover, then Amap. XHS is supplemental and must not short-circuit external photography in new generation. A winning provider supplies at most three photos including the cover; no extra searches just to fill a gallery. Existing trip viewing never invokes these adapters or changes saved covers.
 - `UNSPLASH_ACCESS_KEY` and `PIXABAY_API_KEY` are optional server-only `env.ts` fields, configured in `apps/server/.env`. Never expose keys to frontend, log requests with Pixabay's query-string key, or save arbitrary API response fields. Missing credentials disable new requests; local Pixabay selections remain usable. Missing Unsplash credentials disable new adoption, not display of existing snapshots.
 - Unsplash API images must use exact `photo.urls.regular` hotlinks (including `ixid`), never local image copies. Public URLs over the existing300-character contract are rejected, never truncated. Persistent `unsplash-places` stores only validated selection metadata and private download endpoints. `cachedPhotosFor` is read-only; call `photosFor` when this source actually wins to report each selected photo's exact `links.download_location`. Same-task duplicate calls coalesce; a later task reports a new adoption without repeating the search. Failed reports exclude those images for that adoption and permit retries in a later task. Do not put download endpoints in public snapshots or fetch the event response's image URL.
 - Unsplash credits link the photographer profile and work, and all Unsplash links (including license) carry `utm_source=tripweaver&utm_medium=referral`. Shared attribution adds `photographerUrl` and explicit source literals. The curated local catalog still accepts only Pexels/Commons; extending the shared enum must not implicitly allow another provider through its Commons branch.
@@ -14,7 +16,7 @@
 
 ## Scenario: Offline curated place photography
 
-- `createCuratedCoverLookup(city)` reads the checked-in photography catalog before the existing stored/Pexels/Amap/Wikimedia fallback. It performs no network calls.
+- `createCuratedCoverLookup(city)` reads the checked-in photography catalog before the external-first fallback above. It performs no network calls.
 - Default catalogs currently cover Hangzhou and the bounded Beijing sample. Keep per-city catalogs and provenance separate; adding a city requires a routing test and a media verification pass (`install-curated-photos.py --city beijing`). Never alias distinct Great Wall sections or other nearby attractions to improve coverage.
 - Match the city and exact primary name or explicit alias; a single trailing display annotation may be removed. Reject ambiguous aliases, combined places and inferred neighboring attractions.
 - Require approved review, verified place identity, valid source/license pairing and matching WebP SHA-256. Check images in catalog order; missing, unreadable or mismatched files skip to the next. No usable entry means normal fallback, never a generation error.

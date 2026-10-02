@@ -10,6 +10,24 @@ import type { StockPhotoLookup } from '../integrations/stockPhotoSupport';
 const point: ResearchLocation = { lat: 39.9, lng: 116.4, adcode: '110101' };
 const candidate: ResearchPoi = { id: 'museum', name: '真实博物馆', category: 'attraction', intro: '', reservation: 'unknown', sourceLinks: [] };
 
+test('正式新版选图入口：命中传递三图，缺图与失败均不能调用旧来源', async () => {
+  const source: PoiSource = { kind: 'null', searchPois: async () => [], selfCheck: async () => ({ configured: false, checked: false, ok: true, message: '' }) };
+  let legacyCalls = 0;
+  const legacy = async () => { legacyCalls++; return null; };
+  for (const mode of ['hit', 'missing', 'failed'] as const) {
+    const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+    const photos = [{ url: '/media/reviewed-a.webp' }, { url: '/media/reviewed-b.webp' }];
+    const tools = buildResearchTools({ poiSource: source, searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck }, destination: '北京', searchWebMax: 2, outcome,
+      reviewedCover: async () => { if (mode === 'failed') throw new Error('unavailable'); return mode === 'hit' ? { coverUrl: photos[0]!.url, photos } : null; },
+      curatedCover: legacy, storedCover: legacy, pexelsCover: { coverFor: legacy }, amapPhotos: { coverFor: legacy, calls: 0 },
+    });
+    await tools.find(t => t.name === 'add_candidate')!.execute(mode, { name: candidate.name, category: 'attraction', intro: '' });
+    assert.equal(outcome.pool[0]?.coverUrl, mode === 'hit' ? photos[0]!.url : undefined);
+    assert.deepEqual(outcome.pool[0]?.photos, mode === 'hit' ? photos : undefined);
+  }
+  assert.equal(legacyCalls, 0);
+});
+
 test('定位名兼容旧餐次文案，并优先使用显式片区', () => {
   assert.equal(activityPlaceName({ name: '午餐｜春熙路 · 川菜' }), '春熙路');
   assert.equal(activityPlaceName({ name: ' 晚饭 | 南京东路 • 本帮菜 ' }), '南京东路');
@@ -174,14 +192,14 @@ test('已保存的外链照片优先于所有新搜索，文件缺失也不自�
   }
 });
 
-function recordingCover(): { lookup: CoverLookup; queries: string[] } {
+function recordingCover(url: string | null = WIKI_THUMB): { lookup: CoverLookup; queries: string[] } {
   const queries: string[] = [];
   return {
     queries,
     lookup: {
       coverFor: async (query) => {
         queries.push(query.name);
-        return WIKI_THUMB;
+        return url;
       },
     },
   };
@@ -224,7 +242,7 @@ test('景点封面：库内无图且有坐标时查维基，美食不查，库�
   assert.deepEqual(cover.queries, ['故宫'], '只有缺图的景点触发了一次检索');
 });
 
-test('景点封面：库内相对路径（/media/...）也是合法封面，不再查维基', async () => {
+test('景点封面：外部图源未命中时接受库内相对路径（/media/...）', async () => {
   const poi: SourcedPoi = {
     name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '',
     opentime: '', photoUrls: [], location: point, adcode: point.adcode,
@@ -235,7 +253,7 @@ test('景点封面：库内相对路径（/media/...）也是合法封面，不�
     selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }),
   };
   const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
-  const cover = recordingCover();
+  const cover = recordingCover(null);
   const media = '/media/xhs/北京/8f3a1b/00.webp';
   const tools = buildResearchTools({
     poiSource: source,
@@ -252,10 +270,10 @@ test('景点封面：库内相对路径（/media/...）也是合法封面，不�
   await add.execute('a', { name: '故宫', category: 'attraction', intro: '中轴线' });
 
   assert.equal(outcome.pool[0]!.coverUrl, media, '站内相对 URL 必须被接受（库内封面默认就是同源路径）');
-  assert.deepEqual(cover.queries, [], '库内命中不该触发维基请求');
+  assert.deepEqual(cover.queries, ['故宫'], '先检索 Commons，未命中时回退小红书图库');
 });
 
-// ---------- 封面来源顺序（09-27）：上游图库 → Pexels → 高德 → 维基 ----------
+// ---------- 封面来源顺序：Pexels → Pixabay → Unsplash → Commons → 小红书图库 → 高德 ----------
 
 const testPoi: SourcedPoi = {
   name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '',
@@ -265,6 +283,7 @@ const testPoi: SourcedPoi = {
 function coverTools(deps: {
   stored?: string | null;
   pexels?: string | null;
+  wiki?: string | null;
   amap?: string | null;
   /** 库内已回写的高德图 */
   cachedAmap?: string | null;
@@ -280,7 +299,7 @@ function coverTools(deps: {
     selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }),
   };
   const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
-  const cover = recordingCover();
+  const cover = recordingCover(deps.wiki ?? null);
   const tools = buildResearchTools({
     poiSource: source,
     searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
@@ -307,7 +326,7 @@ async function addFirst(tools: ReturnType<typeof coverTools>['tools'], outcome: 
   return outcome.pool[0]!.coverUrl;
 }
 
-test('封面顺序：上游图库命中即短路，不查 Pexels 与高德', async () => {
+test('封面顺序：外部摄影均无图后才用小红书补充，不查高德', async () => {
   const calls: string[] = [];
   const { tools, outcome, cover } = coverTools({
     stored: '/media/xhs/北京/8f3a/00.webp',
@@ -316,26 +335,26 @@ test('封面顺序：上游图库命中即短路，不查 Pexels 与高德', asy
     onAmap: () => calls.push('amap'),
   });
   assert.equal(await addFirst(tools, outcome), '/media/xhs/北京/8f3a/00.webp');
-  assert.deepEqual(calls, ['stored'], '上游图库是最前一级');
-  assert.deepEqual(cover.queries, []);
+  assert.deepEqual(calls, ['pexels', 'stored'], '已有小红书图不能挡住外部主候选源');
+  assert.deepEqual(cover.queries, ['故宫']);
 });
 
-test('封面顺序：上游无图时查 Pexels，命中即不再查高德', async () => {
+test('封面顺序：Pexels 命中即不读小红书也不查高德', async () => {
   const pexelsUrl = 'https://images.pexels.com/photos/1/a.jpeg?h=350';
   const calls: string[] = [];
   const { tools, outcome, cover } = coverTools({
-    stored: null,
+    stored: '/media/xhs/existing.webp',
     pexels: pexelsUrl,
     onStored: () => calls.push('stored'),
     onPexels: () => calls.push('pexels'),
     onAmap: () => calls.push('amap'),
   });
   assert.equal(await addFirst(tools, outcome), pexelsUrl);
-  assert.deepEqual(calls, ['stored', 'pexels'], 'Pexels 命中后不再打高德');
+  assert.deepEqual(calls, ['pexels'], 'Pexels 命中后不读小红书，也不打高德');
   assert.deepEqual(cover.queries, []);
 });
 
-test('封面顺序：前两级都无图时用高德，且不再查维基', async () => {
+test('封面顺序：摄影与小红书都无图时才用高德', async () => {
   const amapUrl = 'https://store.is.autonavi.com/showpic/78e3e7b4';
   const calls: string[] = [];
   const { tools, outcome, cover } = coverTools({
@@ -347,8 +366,8 @@ test('封面顺序：前两级都无图时用高德，且不再查维基', async
     onAmap: () => calls.push('amap'),
   });
   assert.equal(await addFirst(tools, outcome), amapUrl);
-  assert.deepEqual(calls, ['stored', 'pexels', 'amap']);
-  assert.deepEqual(cover.queries, [], '高德命中后不再查维基');
+  assert.deepEqual(calls, ['pexels', 'stored', 'amap']);
+  assert.deepEqual(cover.queries, ['故宫'], 'Commons 先于小红书和高德');
 });
 
 test('封面顺序：库内已回写的高德图直接复用，不再打高德也不重写', async () => {
@@ -399,9 +418,34 @@ test('新图库已保存选择先于所有新搜索；Unsplash只在胜出时执
     await tools.find(tool => tool.name === 'add_candidate')!.execute('add', { name: '故宫', category: 'attraction', intro: '' });
     assert.equal(outcome.pool[0]?.coverUrl, photo.url);
     if (winner === 'pexels') assert.deepEqual(calls, [], '已有Pexels无需窥探或上报Unsplash');
-    if (winner === 'unsplash') assert.deepEqual(calls, ['peek-unsplash', 'use-unsplash']);
-    if (winner === 'pixabay') assert.deepEqual(calls, ['peek-unsplash', 'peek-pixabay'], '已存Pixabay不触发新搜索或下载');
-    if (winner === 'new-unsplash') assert.deepEqual(calls, ['peek-unsplash', 'peek-pixabay', 'new-pexels', 'use-unsplash']);
-    if (winner === 'new-pixabay') assert.deepEqual(calls, ['peek-unsplash', 'peek-pixabay', 'new-pexels', 'use-unsplash', 'use-pixabay']);
+    if (winner === 'unsplash') assert.deepEqual(calls, ['peek-pixabay', 'peek-unsplash', 'use-unsplash']);
+    if (winner === 'pixabay') assert.deepEqual(calls, ['peek-pixabay'], '已存Pixabay不触发Unsplash采用或新搜索');
+    if (winner === 'new-unsplash') assert.deepEqual(calls, ['peek-pixabay', 'peek-unsplash', 'new-pexels', 'use-pixabay', 'use-unsplash']);
+    if (winner === 'new-pixabay') assert.deepEqual(calls, ['peek-pixabay', 'peek-unsplash', 'new-pexels', 'use-pixabay']);
+  }
+});
+
+test('Commons 优先于已有小红书；外部都缺图时小红书三图与署名仍完整', async () => {
+  const attribution: NonNullable<ResearchPoi['coverAttribution']> = {
+    source: 'xhs', photographer: '摄影师', sourceUrl: 'https://www.xiaohongshu.com/explore/sample',
+    license: '未确认授权', licenseUrl: 'https://www.xiaohongshu.com', changes: '缩放',
+  };
+  const photos = [1,2,3].map(i=>({url:`/media/xhs/photography/${i}.webp`,attribution}));
+  for(const wiki of [WIKI_THUMB,null]) {
+    const outcome: ResearchOutcome = {summary:'',pool:[],locations:new Map([['故宫',point]])};
+    const calls: string[]=[];
+    const tools=buildResearchTools({
+      destination:'北京',searchWebMax:0,outcome,
+      poiSource:{kind:'null',searchPois:async()=>[],selfCheck:async()=>({configured:false,checked:false,ok:false,message:''})},
+      searchSource:{kind:'null',search:async()=>[],selfCheck:async()=>({configured:false,checked:false,ok:false,message:''})},
+      coverLookup:{coverFor:async()=>{calls.push('commons');return wiki;}},
+      storedPhotos:async()=>{calls.push('xhs');return photos;},
+      storedCover:async()=>assert.fail('三图命中不得再读旧封面'),
+      amapPhotos:{calls:0,coverFor:async()=>assert.fail('摄影命中不打高德')},
+    });
+    await tools.find(t=>t.name==='add_candidate')!.execute('add',{name:'故宫',category:'attraction',intro:''});
+    assert.deepEqual(calls,wiki?['commons']:['commons','xhs']);
+    assert.equal(outcome.pool[0]?.coverUrl,wiki??photos[0]!.url);
+    if(!wiki) assert.deepEqual(outcome.pool[0]?.photos,photos);
   }
 });

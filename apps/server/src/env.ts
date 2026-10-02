@@ -89,6 +89,13 @@ export const env = {
     apiKey: str('SITE_LLM_API_KEY'),
     model: str('SITE_LLM_MODEL'),
   },
+  photoReview: {
+    enabled: str('PHOTO_REVIEW_ENABLED', 'true') !== 'false',
+    baseUrl: str('PHOTO_REVIEW_BASE_URL'),
+    apiKey: str('PHOTO_REVIEW_API_KEY'),
+    model: str('PHOTO_REVIEW_MODEL'),
+    dailyLimit: Math.min(int('PHOTO_REVIEW_DAILY_PLACES', 10), 50),
+  },
   imageGeneration: {
     baseUrl: str('IMAGE_API_BASE_URL', 'https://xjbh.lol/v1').replace(/\/+$/, ''),
     apiKey: str('IMAGE_API_KEY'),

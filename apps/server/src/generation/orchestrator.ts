@@ -9,12 +9,10 @@ import {
   type GenerationPhase,
 } from '@tripweaver/shared';
 import type { FastifyBaseLogger } from 'fastify';
-import { env } from '../env';
 import { db } from '../db/client';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
-import { resolveAmapCredential } from '../services/settingsService';
 import { searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
 import { poiBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
@@ -38,14 +36,8 @@ import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
 import { GenerationPerformance } from './performance';
 import { createLlmRequestRecorder } from './llmRequestLog';
 import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
-import { createWikiCoverLookup } from '../integrations/wikimedia/cover';
-import { createPexelsCoverLookup } from '../integrations/pexels/cover';
-import { createUnsplashCoverLookup } from '../integrations/unsplash/cover';
-import { createPixabayCoverLookup } from '../integrations/pixabay/cover';
-import { createAmapPoiPhotoLookup } from '../integrations/amap/poiPhotos';
-import { createStoredPlaceLookups } from './storedCover';
-import { createCuratedCoverLookup } from '../integrations/curatedPhotos';
-import { loadPlaceFacts, saveAmapPhoto } from './scheduling/placeFacts';
+import { createGenerationPhotoLookup } from '../integrations/photoEnrichment';
+import { loadPlaceFacts } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
 
 import { buildDraftTools } from './tools/draftTools';
@@ -98,9 +90,7 @@ export async function runGeneration(
   let search = createTaskSearchSource(getNullSearchSource());
   // 地理会话（v0.5）：geocode/route 统一服务商与凭据解析、任务上限与日额度记账；出行方式基调来自表单（ST3）
   const geo = createGeoSession(job.userId, form.destination, form.transportMode ?? 'transit');
-  // 封面第三级（09-27）：高德 POI 图片。凭据与地理链同一份解析（个人 Key 优先、站点兜底），
-  // 但调用量单独计数 —— 它走的是 v5/place/text 的「基础搜索服务」配额（个人 5,000/月），比地理编码稀缺得多。
-  let amapPoiPhotos = createAmapPoiPhotoLookup('');
+  // 图片采集由独立后台任务处理，不计入本次生成的地理调用统计。
   // 地理调用按链分流计入各自用量列：POI 搜索固定天地图，路线 + 地理编码走另一条（高德优先）。
   // 两条链各自独立计数，不再靠单一开关二选一（高德缺 Key 时地理链自己降级到天地图，也要如实记到天地图列）。
   // 返回值必须现算 —— poi/geo 的统计在生成过程中持续增长。
@@ -108,7 +98,7 @@ export async function runGeneration(
     const geoCalls = geo.stats.calls;
     const geoTianditu = geo.providerKind() === 'tianditu';
     return {
-      amapCalls: (geoTianditu ? 0 : geoCalls) + amapPoiPhotos.calls,
+      amapCalls: geoTianditu ? 0 : geoCalls,
       tiandituCalls: poi.stats.calls + (geoTianditu ? geoCalls : 0),
     };
   };
@@ -214,9 +204,6 @@ export async function runGeneration(
     search = createTaskSearchSource(searchBase);
     await geo.init();
     assertAlive(signal);
-    const amapPhotoCredential = await resolveAmapCredential(job.userId);
-    assertAlive(signal);
-    amapPoiPhotos = createAmapPoiPhotoLookup(amapPhotoCredential?.apiKey ?? '');
     const enabledSources: DataSourceKind[] = [
       ...(poi.source.kind === 'null' ? [] : ([poi.source.kind] as const)),
       ...(search.source.kind === 'websearch' ? (['websearch'] as const) : []),
@@ -240,7 +227,6 @@ export async function runGeneration(
     // R3（09-25）：未覆盖城市放宽 search_web 上限（2→6），SEARCH_DAILY_BUDGET 日预算闸门不受影响
     const searchWebMax = searchWebMaxFor(await cityCoverage(form.destination));
     const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
-    const storedPlaces = createStoredPlaceLookups(form.destination);
     const researchRun = await runPhaseAgent({
       model,
       apiKey: cfg.apiKey,
@@ -252,19 +238,7 @@ export async function runGeneration(
         searchWebMax,
         outcome: research,
         onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
-        coverLookup: createWikiCoverLookup(),
-        pexelsCover: createPexelsCoverLookup(env.pexelsApiKey),
-        unsplashCover: createUnsplashCoverLookup(env.unsplashAccessKey),
-        pixabayCover: createPixabayCoverLookup(env.pixabayApiKey),
-        amapPhotos: amapPoiPhotos,
-        storedCover: storedPlaces.coverFor,
-        curatedCover: createCuratedCoverLookup(form.destination, { mediaBase: env.mediaBaseUrl }),
-        // 高德命中后回写 payload.amapPhoto：同一地点终身只花一次搜索配额（fire-and-forget，失败不阻断）
-        storedAmapPhoto: storedPlaces.amapPhotoFor,
-        saveAmapPhoto: (name, url) => {
-          void saveAmapPhoto(form.destination, name, url);
-        },
-        storedPoint: storedPlaces.pointFor,
+        reviewedCover: createGenerationPhotoLookup(form.destination),
       }),
       userPrompt: `${formBrief(form)}\n\n请开始调研。`,
       signal,

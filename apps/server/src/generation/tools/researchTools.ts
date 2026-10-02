@@ -55,6 +55,8 @@ export interface ResearchOutcome {
 }
 
 export interface ResearchToolDeps {
+  /** 正式生成入口：人工选图优先，再读新版审核图库；缺图后台入队，禁止旧链路兜底。 */
+  reviewedCover?: (name: string) => Promise<Pick<ResearchPoi, 'coverUrl' | 'coverAttribution' | 'photos'> | null>;
   poiSource: PoiSource;
   searchSource: SearchSource;
   destination: string;
@@ -65,14 +67,15 @@ export interface ResearchToolDeps {
   onCandidate?: (poi: ResearchPoi) => void;
   /** 封面降级：库内无图时按地点名 + 坐标查中文维基。默认进程级实现；测试注入避免发请求。 */
   coverLookup?: CoverLookup;
-  /** Pexels 关键词检索与已存照片，排在精选和上游本地图之后。未注入时不发请求。 */
+  /** Pexels 主候选源，与 Pixabay 优先于补充来源。未注入时不发请求。 */
   pexelsCover?: PexelsCoverLookup;
   unsplashCover?: StockPhotoLookup;
   pixabayCover?: StockPhotoLookup;
-  /** 封面第三级（09-27）：高德 POI 图片。排在上游图库与 Pexels 之后，未注入时不发请求。 */
+  /** 高德 POI 图片：摄影来源和小红书补充均无图后的最终兜底。 */
   amapPhotos?: AmapPoiPhotoLookup;
-  /** 库内封面（未来 canonical_places 补图后由调用方提供）。返回非空则跳过实时检索。 */
+  /** 独立小红书图库/旧库封面，仅在外部摄影来源无图后补充。 */
   storedCover?: (name: string) => Promise<string | null>;
+  storedPhotos?: (name: string) => Promise<NonNullable<ResearchPoi['photos']>>;
   /** 图片级审核通过的摄影作品；未注入时沿用现有来源。 */
   curatedCover?: (name: string) => Promise<(Required<Pick<ResearchPoi, 'coverUrl' | 'coverAttribution'>> & Pick<ResearchPoi, 'photos'>) | null>;
   /** 库内坐标兜底：调研阶段没捕到坐标时（知识库候选）用它。失败返回 null。 */
@@ -96,9 +99,8 @@ function isUsableCoverUrl(u: string): boolean {
 }
 
 /**
- * 封面解析：上游图库 → 各源已保存选择 → 新 Pexels → Unsplash → Pixabay → 高德 → 新维基 → 空。
- * 上游图库是真实实拍但只在 3 个城市有货；Pexels 覆盖任意城市但文本闸门只有约一半命中；
- * 高德是唯一「国内可访问 + 能精确对应景点」的一级（消耗稀缺的 5,000/月搜索配额，所以排最后）。
+ * 封面解析：外部已保存选择 → Pexels → Pixabay → Unsplash → Commons → 小红书图库 → 高德。
+ * 精选摄影在调用方优先处理；新搜索仅在外部持久选择都不存在时发生。
  * 坐标先取调研阶段捕到的（search_pois），没有再问库内坐标兜底。
  * 名字按归一键对齐：候选「故宫博物院」对得上搜索结果「故宫」。
  */
@@ -109,6 +111,7 @@ async function resolveCover(
   deps: {
     covers: CoverLookup;
     storedCover: (name: string) => Promise<string | null>;
+    storedPhotos?: (name: string) => Promise<NonNullable<ResearchPoi['photos']>>;
     storedPoint: (name: string) => Promise<{ lat: number; lng: number } | null>;
     pexels: PexelsCoverLookup;
     unsplash?: StockPhotoLookup;
@@ -118,22 +121,13 @@ async function resolveCover(
     saveAmapPhoto: (name: string, url: string) => void;
   },
 ): Promise<Pick<ResearchPoi, 'coverUrl' | 'coverAttribution' | 'photos'> | null> {
-  const stored = await deps.storedCover(name);
-  if (stored && isUsableCoverUrl(stored)) return { coverUrl: stored.slice(0, 300) };
-
   const fromPhotos = (photos: NonNullable<ResearchPoi['photos']>) => photos[0] ? {
     coverUrl: photos[0].url, coverAttribution: photos[0].attribution, photos,
   } : null;
   const savedPexels = await deps.pexels.cachedPhotosFor?.({ name, city });
   if (savedPexels != null) return fromPhotos(savedPexels);
-
-  const key = normalizePlaceKey(name);
-  const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
-  const point = known?.[1] ?? (await deps.storedPoint(name));
-  const query: CoverQuery | null = point ? { name, city, lat: point.lat, lng: point.lng } : null;
-  const savedWiki = query ? await deps.covers.cachedPhotosFor?.(query) : null;
-  // 所有持久选择都先于新搜索；已选文件缺失也不触发其他图源重新选片。
-  if (savedWiki != null) return fromPhotos(savedWiki);
+  const savedPixabay = await deps.pixabay?.cachedPhotosFor({ name, city });
+  if (savedPixabay != null) return fromPhotos(savedPixabay);
 
   const savedUnsplash = await deps.unsplash?.cachedPhotosFor({ name, city });
   // 只在实际采用时上报；只读窥探不得产生下载事件。上报失败则降级，旧行程不受影响。
@@ -141,17 +135,32 @@ async function resolveCover(
     const adopted = await deps.unsplash?.photosFor({ name, city });
     if (adopted?.length) return fromPhotos(adopted);
   }
-  const savedPixabay = await deps.pixabay?.cachedPhotosFor({ name, city });
-  if (savedPixabay != null) return fromPhotos(savedPixabay);
+  const key = normalizePlaceKey(name);
+  const known = [...locations.entries()].find(([knownName]) => normalizePlaceKey(knownName) === key);
+  const point = known?.[1] ?? (await deps.storedPoint(name));
+  const query: CoverQuery | null = point ? { name, city, lat: point.lat, lng: point.lng } : null;
+  const savedWiki = query ? await deps.covers.cachedPhotosFor?.(query) : null;
+  // 外部持久选择先于新搜索；已选文件缺失不自动换图，小红书仅作无外部选择时的补充。
+  if (savedWiki != null) return fromPhotos(savedWiki);
 
   const photos = await deps.pexels.photosFor?.({ name, city });
   const pexelsUrl = photos ? photos[0]?.url : await deps.pexels.coverFor({ name, city });
   if (pexelsUrl && isUsableCoverUrl(pexelsUrl)) return { coverUrl: pexelsUrl.slice(0, 300), coverAttribution: photos?.[0]?.attribution, ...(photos?.length ? { photos } : {}) };
 
-  for (const source of [deps.unsplash, deps.pixabay]) {
+  for (const source of [deps.pixabay, deps.unsplash]) {
     const selected = await source?.photosFor({ name, city });
     if (selected?.length) return fromPhotos(selected);
   }
+
+  if (query) {
+    const url = await deps.covers.coverFor(query);
+    if (url && (isHttpUrl(url) || url.startsWith('/media/wikimedia/'))) return { coverUrl: url.slice(0, 300) };
+  }
+
+  const gallery = await deps.storedPhotos?.(name);
+  if (gallery?.[0]) return fromPhotos(gallery);
+  const stored = await deps.storedCover(name);
+  if (stored && isUsableCoverUrl(stored)) return { coverUrl: stored.slice(0, 300) };
 
   // 高德级：库内回写优先（零成本），没有再实时查。配额稀缺（个人 5,000/月），所以命中即回写复用。
   const cachedAmap = await deps.storedAmapPhoto(name);
@@ -161,9 +170,7 @@ async function resolveCover(
     return { coverUrl: amapUrl.slice(0, 300) };
   }
 
-  if (!query) return null;
-  const url = await deps.covers.coverFor(query);
-  return url && (isHttpUrl(url) || url.startsWith('/media/wikimedia/')) ? { coverUrl: url.slice(0, 300) } : null;
+  return null;
 }
 
 export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
@@ -342,13 +349,14 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         if (openTime) poi.openTime = openTime;
       }
 
-      // 离线精选图通过身份、许可、文件校验后优先；未命中继续原有多级封面降级。
+      // 正式生成走人工选图/新版审核图库；旧来源接口仅保留兼容测试和采集用途。
       // 只补 attraction，food/hotel 命中差。失败留空，前端回落类目图标。命中不回写库。
       if (category === 'attraction') {
-        const curated = await deps.curatedCover?.(name).catch(() => null);
-        const cover = curated ?? await resolveCover(name, destination, outcome.locations, {
+        const curated = deps.reviewedCover ? null : await deps.curatedCover?.(name).catch(() => null);
+        const cover = deps.reviewedCover ? await deps.reviewedCover(name).catch(() => null) : curated ?? await resolveCover(name, destination, outcome.locations, {
           covers: coverLookup,
           storedCover,
+          storedPhotos: deps.storedPhotos,
           storedPoint,
           pexels: pexelsCover,
           unsplash: deps.unsplashCover,

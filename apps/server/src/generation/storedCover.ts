@@ -7,6 +7,7 @@
 //
 // 命中即跳过维基降级 —— upload.wikimedia.org 在国内被封锁，维基只能当海外/代理环境的兜底。
 import { env } from '../env';
+import type { ResearchPoi } from '@tripweaver/shared';
 import { loadCityPlaceFacts, normalizePlaceKey } from './scheduling/placeFacts';
 
 /** 相对 key → 可展示 URL；空 key 返回 null。key 已含 `xhs/` 前缀，与上游导出脚本对齐。
@@ -32,6 +33,13 @@ export function createStoredPlaceLookups(city: string, loadFacts = loadCityPlace
     return annotated ? index.get(normalizePlaceKey(annotated[1]!)) ?? null : null;
   };
   return {
+    async photosFor(name: string): Promise<NonNullable<ResearchPoi['photos']>> {
+      const hit = await find(name);
+      return (hit?.imageGallery ?? []).flatMap(photo => {
+        const url = mediaUrl(photo.key);
+        return url ? [{ url, attribution: photo.attribution }] : [];
+      }).slice(0, 3);
+    },
     async coverFor(name: string): Promise<string | null> {
       const hit = await find(name);
       return hit?.coverImage ? mediaUrl(hit.coverImage) : null;

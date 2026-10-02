@@ -47,7 +47,7 @@ export function PoiCover({ poi, onCoverError, variant = 'thumbnail' }: { poi: Re
 }
 
 /** 缓存图也保留作品作者、出处与许可；不把上游 HTML 插入页面。 */
-const PHOTO_SOURCE_NAMES = { pexels: 'Pexels', commons: 'Wikimedia Commons', unsplash: 'Unsplash', pixabay: 'Pixabay' } satisfies Record<NonNullable<PoiPhoto['attribution']>['source'], string>;
+const PHOTO_SOURCE_NAMES = { pexels: 'Pexels', commons: 'Wikimedia Commons', unsplash: 'Unsplash', pixabay: 'Pixabay', xhs: '小红书' } satisfies Record<NonNullable<PoiPhoto['attribution']>['source'], string>;
 export function PhotoCredit({ poi }: { poi: Pick<ResearchPoi, 'coverUrl' | 'coverAttribution'> }) {
   const credit = poi.coverAttribution;
   if (!poi.coverUrl || !credit || !safeCreditUrl(credit.sourceUrl) || !safeCreditUrl(credit.licenseUrl)) return null;
@@ -113,7 +113,7 @@ function safeCreditUrl(value: string): boolean {
   try {
     const url = new URL(value);
     return url.protocol === 'https:' && !url.username && !url.password && !url.port &&
-      ['www.pexels.com', 'commons.wikimedia.org', 'creativecommons.org', 'unsplash.com', 'pixabay.com'].includes(url.hostname);
+      ['www.pexels.com', 'commons.wikimedia.org', 'creativecommons.org', 'unsplash.com', 'pixabay.com', 'www.xiaohongshu.com'].includes(url.hostname);
   } catch { return false; }
 }
 

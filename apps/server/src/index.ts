@@ -18,6 +18,7 @@ import { tripRoutes } from './routes/trips';
 import { usageRoutes } from './routes/usage';
 import { destinationRoutes } from './routes/destinations';
 import { generationRoutes } from './routes/generations';
+import { photoReviewConfigured, photoReviewQueue } from './integrations/photoEnrichment';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -75,11 +76,15 @@ async function main() {
   // 由 /media/ 前缀直接托管。dev 与 prod 都注册 —— 本地开发要能看图。
   // decorateReply: false：避免与上面的前端产物注册抢 sendFile 装饰（只有一个 fastify-static 能装饰）。
   const mediaRoot = path.resolve(__dirname, '../../../data/media');
+  fs.mkdirSync(mediaRoot, { recursive: true });
   if (fs.existsSync(mediaRoot)) {
     await app.register(fastifyStatic, { root: mediaRoot, prefix: '/media/', decorateReply: false });
   }
 
+  app.addHook('onClose', async () => { await photoReviewQueue.stop(); });
   await app.listen({ port: env.port, host: '0.0.0.0' });
+  if (photoReviewConfigured) photoReviewQueue.start();
+  else app.log.info('[photo-review] 视觉审核未启用或未配置；缺图任务保留待处理');
 }
 
 main().catch((err) => {

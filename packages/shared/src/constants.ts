@@ -127,4 +127,4 @@ export const MAX_EDIT_OPS_PER_TURN = 5;
 export const MAX_TRIP_CONSTRAINTS = 30;
 
 /** 照片署名的受支持来源；存储方式由各图源适配器决定。 */
-export const PHOTO_SOURCES = ['pexels', 'commons', 'unsplash', 'pixabay'] as const;
+export const PHOTO_SOURCES = ['pexels', 'commons', 'unsplash', 'pixabay', 'xhs'] as const;

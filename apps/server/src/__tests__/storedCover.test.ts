@@ -30,6 +30,16 @@ test('mediaUrl：空 key 返回 null，不生成指向目录的 URL', () => {
   assert.equal(mediaUrl('/', '/media'), null);
 });
 
+test('库内多图按已选顺序读取并复用同一城市索引', async () => {
+  let loads = 0;
+  const facts: PlaceFacts = { name: '故宫', category: '历史', source: 'xhs', themes: [], aliases: [],
+    coverImage: 'xhs/first.webp', imageGallery: [{ key: 'xhs/first.webp' }, { key: 'xhs/second.webp' }] };
+  const lookups = createStoredPlaceLookups('北京', async () => { loads++; return new Map([['故宫', facts]]); });
+  assert.deepEqual((await lookups.photosFor('故宫')).map(photo => photo.url), [mediaUrl('xhs/first.webp'), mediaUrl('xhs/second.webp')]);
+  assert.equal(await lookups.coverFor('故宫'), mediaUrl('xhs/first.webp'));
+  assert.equal(loads, 1);
+});
+
 test('createStoredCoverLookup：城市为空直接返回 null，不查库', async () => {
   assert.equal(await createStoredCoverLookup('')('故宫'), null);
   assert.equal(await createStoredCoverLookup('   ')('故宫'), null);

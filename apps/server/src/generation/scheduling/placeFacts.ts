@@ -4,6 +4,7 @@
 // 按名精确查会把分数与情报拆散——改为按归一键合并后服务候选。失败静默降级为空 Map，不阻断生成。
 import { pool } from '../../db/client';
 import { normalizePlaceKey } from '../../lib/placeKey';
+import { readImageGallery, type StoredImage } from '../../lib/imageGallery';
 
 // 归一键已下沉到 lib/placeKey（09-27）；这里 re-export 保持既有导入路径不变
 export { normalizePlaceKey };
@@ -39,6 +40,7 @@ export interface PlaceFacts {
   /** payload.coverImage：库内封面（09-27），形如 `xhs/杭州/{placeId}/00.webp` 的相对 key。
    *  绝对 URL 由 MEDIA_BASE_URL 拼出，见 generation/storedCover.ts。 */
   coverImage?: string;
+  imageGallery?: StoredImage[];
   /** payload.amapPhoto：高德 POI 图片命中后的回写（09-27）。存完整 https URL，
    *  下次直接用不再消耗稀缺的搜索配额（个人 5,000/月）。 */
   amapPhoto?: string;
@@ -121,6 +123,8 @@ function toFacts(row: FactRow): PlaceFacts {
   if (typeof payload.adcode === 'string' && payload.adcode) facts.adcode = payload.adcode;
   const cover = payload.coverImage;
   if (typeof cover === 'string' && cover.trim()) facts.coverImage = cover.trim();
+  const gallery = readImageGallery(payload.imageGallery);
+  if (gallery.length) facts.imageGallery = gallery;
   const amapPhoto = payload.amapPhoto;
   if (typeof amapPhoto === 'string' && amapPhoto.startsWith('https://')) facts.amapPhoto = amapPhoto;
   return facts;
@@ -157,6 +161,11 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
   // 库内封面：同键分裂条目里任一有图即可用（图源同批导出，不会互相矛盾）
   const cover = members.find((f) => f.coverImage)?.coverImage;
   if (cover) merged.coverImage = cover;
+  const gallery = members.find((f) => f.imageGallery?.length)?.imageGallery;
+  if (gallery) {
+    merged.imageGallery = gallery;
+    merged.coverImage = gallery[0]!.key;
+  }
   const amapPhoto = members.find((f) => f.amapPhoto)?.amapPhoto;
   if (amapPhoto) merged.amapPhoto = amapPhoto;
   return merged;
