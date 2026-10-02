@@ -1135,3 +1135,36 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 28: 行程生成与上游景点提纯优化验收归档
+
+**Date**: 2026-10-02
+**Task**: 行程生成与上游景点提纯优化验收归档
+**Branch**: `master`
+
+### Summary
+
+用户明确要求提交并归档。本仓库 a4596ce 完成 SQL 优先调研、批量提交、路线顺序与介绍来源复用；上游 xhs-travel-pipeline 提交 5ee3a7d，完善实体归一、搜索与模型知识介绍及 Web/CLI 全链路入口。上游独立提交版本 80 项测试与 Web 构建通过；此前 108 项上游定向测试、下游 6 项测试及类型检查通过。归档保留报告和补丁，数据库备份仅留本地，其他任务改动保留，未推送。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `a4596ce` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

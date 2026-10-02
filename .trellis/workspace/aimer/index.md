@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 27
+- **Total Sessions**: 28
 - **Last Active**: 2026-10-02
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1137 | Active |
+| `journal-1.md` | ~1170 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 28 | 2026-10-02 | 行程生成与上游景点提纯优化验收归档 | `a4596ce` | `master` |
 | 27 | 2026-10-02 | 三项任务归档与提交规范沉淀 | `8bad955`, `cc42640`, `1f100c3`, `8f74fa5`, `1eaf455`, `89cdf08`, `e7afeaa`, `45c37f2` | `master` |
 | 26 | 2026-10-02 | 选图任务验收与六项任务归档 | `42b212b` | `master` |
 | 25 | 2026-09-29 | 对齐我的行程封面书脊阴影并归档 | `eb1e011` | `master` |
