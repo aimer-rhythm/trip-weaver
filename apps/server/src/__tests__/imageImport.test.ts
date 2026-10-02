@@ -46,8 +46,12 @@ test('地点重导保留独立图片字段，多图导入采用首张且重复�
     await seed('seed-xhs-place-images.ts', images);
     const final = (await pool.query('SELECT payload FROM canonical_places WHERE id=$1', [id])).rows[0].payload;
     assert.equal(final.coverImage, 'first.webp');
+    assert.deepEqual(final.imageGallery.map((image: { key: string }) => image.key), ['first.webp', 'second.webp']);
     assert.equal(final.amapPhoto, 'https://example.com/photo.jpg');
     assert.equal(final.recommendScore, 100);
+    await seed('seed-xhs-places.ts', places);
+    const reimported = (await pool.query('SELECT payload FROM canonical_places WHERE id=$1', [id])).rows[0].payload;
+    assert.deepEqual(reimported.imageGallery, final.imageGallery, '地点重导不能清空独立维护的图库');
   } finally {
     await pool.query('DELETE FROM canonical_places WHERE id=$1', [id]);
     await pool.query('DELETE FROM data_import WHERE city=$1', [city]);

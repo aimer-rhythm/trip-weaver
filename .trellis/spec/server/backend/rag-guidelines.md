@@ -507,3 +507,51 @@ uses read-only transactions, and reports link/classification/assignment/export/i
 coverage without contacting external providers. Counts of images in notes mentioning a place
 are only attribution candidates, not confirmed images of that place; do not sum overlapping
 per-place counts as unique images.
+
+## Ranked photography gallery contract (2026-10-01)
+
+### 1. Scope / trigger
+
+The upstream photography manifest now supplies an ordered gallery. This contract spans export, import, place facts, generation and saved trip snapshots.
+
+### 2. Signatures
+
+- `imageGroups(value: unknown): Map<string, StoredImage[]>` validates the exported `images` array.
+- `readImageGallery(value: unknown): StoredImage[]` reads persisted optional data.
+- `seed-xhs-place-images.ts` stores `payload.coverImage` and `payload.imageGallery` for the manifest city.
+- `createStoredPlaceLookups(city).photosFor(name)` supplies stored photos to research; curated manual photos retain priority.
+
+### 3. Contracts
+
+`imageGallery` holds at most three `{ key, attribution?, provenance? }` entries in selected order. The first key is `coverImage`; exported `placeId` still uses the shared city/name hash. `provenance` retains original source, author, note/image index, model review and rights. Keys are safe relative WebP paths, including immutable `xhs/photography/<placeId>/<contentHash>.webp` keys. Existing `MEDIA_BASE_URL` maps these keys to local or remote media.
+
+Photography entries require `reviewMethod=model`, `review.status=eligible`, `review.identity=match` and an HTTPS `www.xiaohongshu.com/explore/<id>` source. Attribution uses `source=xhs`, `license=未确认授权`; model review never implies a copyright license or human approval. Place reimport must retain both cover and gallery. New generation snapshots copy ordered photos; historical trips never change merely because the library was refreshed.
+
+### 4. Validation and errors
+
+| Condition | Result |
+| --- | --- |
+| Malformed manifest, unsafe path or photography missing review/source | Reject import before database writes |
+| Duplicate key / more than three entries | Deduplicate and keep first three in source order |
+| Missing or invalid legacy gallery | Read as empty; use existing single cover/fallback |
+| Place outside manifest city | Do not update |
+| Valid source excluded by frontend URL allowlist | Bug: synchronize `PhotoCredit.safeCreditUrl` when adding providers |
+
+### 5. Good / Base / Bad cases
+
+- Good: two selected photos import in order with independent attribution and complete provenance.
+- Base: old payload contains only `coverImage`; existing rendering remains supported.
+- Bad: photography manifest says only “note mentions this place” without an eligible identity review; reject it.
+
+### 6. Required tests
+
+`imageGallery.test.ts`, `imageImport.test.ts` and `storedCover.test.ts` assert malformed inputs, city isolation, reimport retention, cover-first order and attribution. Actual export-to-disposable-database verification and browser gallery switching must also cover per-photo credits and zero writes while browsing.
+
+### 7. Wrong vs correct
+
+```typescript
+// Wrong: drops alternatives and erases gallery provenance on place reimport.
+payload = { ...incoming, coverImage: old.coverImage };
+// Correct: retain both optional stored-image fields in the reimport merge.
+payload = { ...incoming, coverImage: old.coverImage, imageGallery: old.imageGallery };
+```

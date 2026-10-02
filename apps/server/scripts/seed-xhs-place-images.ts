@@ -17,24 +17,11 @@ import path from 'node:path';
 import pg from 'pg';
 import { env } from '../src/env';
 import { IMPORT_DIR, latestExports, readExport, scanExports, type ExportFile } from './lib/exportFiles';
+import { imageGroups } from '../src/lib/imageGallery';
 
 const IMPORT_SOURCE = 'xhs_place_images';
 const BATCH_SIZE = 200;
 const LOG = '[xhs-cover]';
-
-interface ImageEntry {
-  placeId: string;
-  placeName?: string;
-  /** 相对 key，如 `xhs/杭州/{placeId}/00.webp` */
-  key: string;
-}
-
-interface PlaceImagesFile {
-  city: string;
-  generatedAt: string;
-  count: number;
-  images: ImageEntry[];
-}
 
 function chunk<T>(items: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -80,13 +67,12 @@ async function importFile(
   target: ExportFile,
   now: string,
 ): Promise<{ updated: number; missing: number }> {
-  const file = JSON.parse(fs.readFileSync(target.filePath, 'utf8')) as PlaceImagesFile;
-  // 上游按质量排序，同一地点保留第一张封面；多图导出不能让次选覆盖首选。
-  const byPlace = new Map<string, ImageEntry>();
-  for (const entry of file.images ?? []) {
-    if (entry?.placeId && entry.key && !byPlace.has(entry.placeId)) byPlace.set(entry.placeId, entry);
+  const file: unknown = JSON.parse(fs.readFileSync(target.filePath, 'utf8'));
+  if (!file || typeof file !== 'object' || !('images' in file) || !('city' in file) || file.city !== target.city) {
+    throw new Error('图片清单城市或 images 字段无效');
   }
-  const entries = [...byPlace.values()];
+  // 上游按质量排序，同一地点保留第一张封面；多图导出不能让次选覆盖首选。
+  const entries = [...imageGroups(file.images)].map(([placeId, photos]) => ({ placeId, key: photos[0]!.key, photos }));
   console.log(
     `${LOG} 导入 ${path.basename(target.filePath)}｜城市 ${target.city}｜${entries.length} 张封面｜生成于 ${target.generatedAt}`,
   );
@@ -95,10 +81,10 @@ async function importFile(
   for (const batch of chunk(entries, BATCH_SIZE)) {
     const res = await client.query(
       `UPDATE canonical_places AS c
-       SET payload = coalesce(c.payload, '{}'::jsonb) || jsonb_build_object('coverImage', u.key)
-       FROM UNNEST($1::text[], $2::text[]) AS u(id, key)
-       WHERE c.id = u.id`,
-      [batch.map((e) => e.placeId), batch.map((e) => e.key)],
+       SET payload = coalesce(c.payload, '{}'::jsonb) || jsonb_build_object('coverImage', u.key, 'imageGallery', u.gallery::jsonb)
+       FROM UNNEST($1::text[], $2::text[], $3::text[]) AS u(id, key, gallery)
+       WHERE c.id = u.id AND c.city = $4`,
+      [batch.map((e) => e.placeId), batch.map((e) => e.key), batch.map((e) => JSON.stringify(e.photos)), target.city],
     );
     updated += res.rowCount ?? 0;
   }

@@ -157,6 +157,7 @@ async function importFile(
              -- 图片由独立导入/回写维护，重导地点不能把已知封面清掉。
              || jsonb_strip_nulls(jsonb_build_object(
                   'coverImage', canonical_places.payload->'coverImage',
+                  'imageGallery', canonical_places.payload->'imageGallery',
                   'amapPhoto', canonical_places.payload->'amapPhoto'))
              -- 同为金集：两份都可能有分数，取高者（不因重导回退旧值）
              || CASE

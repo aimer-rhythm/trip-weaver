@@ -26,6 +26,8 @@ Review secondary queries individually. It is acceptable for a quota chip not to 
 
 ## Browser and Resource Safety
 
+- For lazy or collapsed photo galleries, check DOM loading separately from media decoding. Calling `decode()` on hidden/offscreen nodes during loading changes can reject even when their media is valid. Verify actual image URLs with independent `Image` probes under a test timeout, then exercise visible gallery expansion and modal rendering. Keep real decode/network failures as failures; never suppress `EncodingError` globally.
+
 - Close `EventSource` on terminal events and cleanup.
 - Clear timers on rerender and unmount.
 - Remove native event listeners.
