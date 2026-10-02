@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const out = path.resolve('.trellis/tasks/09-29-ui-consistency/research/shared-verification');
+const out = path.resolve('.trellis/tasks/archive/2026-10/09-29-ui-consistency/research/shared-verification');
 await fs.mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
 try {

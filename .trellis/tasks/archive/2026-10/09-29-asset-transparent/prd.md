@@ -74,3 +74,9 @@
 - 现有 `scripts/` 全部为无依赖 ESM 脚本（`verify-*.mjs` / `smoke-*.mjs`），root `package.json` 的 scripts 未接入它们，本次新增 `assets:transparent` 是该目录第一个 npm 入口。
 - 根 `tsconfig` 只检查 `packages/shared`、`apps/server`、`apps/web`、`eval`，`scripts/*.mjs` 不参与 typecheck。
 - 参考实现（本次手工跑通，PowerShell + GDI+）：`alpha = 255 - max(R,G,B)`，RGB 置 0；泛洪版 `cutout` 耗时约 59 秒 / 1024²，不纳入本任务。
+
+## 2026-10-02 归档核对
+
+用户本轮授权提交当前任务，并检查归档其他已落地任务。零依赖透明化脚本、npm入口和规范已提交；本轮只补任务归档，不处理或重写新增城市素材。
+
+工作提交：`9edac21`、`98b3a4f`。本轮关闭脚本自动提交，手动以中文信息归档。

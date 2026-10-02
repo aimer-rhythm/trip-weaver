@@ -1,0 +1,694 @@
+{
+  "sourceTripId": "ad3ce7ef-254b-4e8e-a43f-cd5c48629b4b",
+  "startedAt": "2026-10-01T15:48:30.852Z",
+  "mode": "real-generation-api",
+  "form": {
+    "destination": "北京",
+    "startDate": "2026-10-02",
+    "budgetLevel": "舒适",
+    "totalBudget": 0,
+    "preferences": [],
+    "partySize": 2,
+    "extraNotes": "",
+    "transportMode": "transit",
+    "days": 3,
+    "pace": "moderate"
+  },
+  "sourceOverview": [
+    {
+      "name": "故宫博物院",
+      "coverUrl": "https://images.unsplash.com/photo-1614555383820-941c466f1b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8Rm9yYmlkZGVuJTIwQ2l0eSUyMEJlaWppbmd8ZW58MXx8fHwxNzkwODY0ODQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "photos": 3
+    },
+    {
+      "name": "天安门广场",
+      "photos": 0
+    },
+    {
+      "name": "景山公园",
+      "photos": 0
+    },
+    {
+      "name": "天坛公园",
+      "coverUrl": "/media/photography/pexels-7759763.webp",
+      "photos": 3
+    },
+    {
+      "name": "颐和园",
+      "photos": 0
+    },
+    {
+      "name": "圆明园",
+      "coverUrl": "/media/remote-photos/15ab1fa5e81756b9f5e4801bfd8332522d88654b246a235d2d756a7bf167a75c.webp",
+      "photos": 3
+    },
+    {
+      "name": "恭王府",
+      "photos": 0
+    },
+    {
+      "name": "什刹海",
+      "photos": 0
+    },
+    {
+      "name": "慕田峪长城",
+      "photos": 0
+    },
+    {
+      "name": "国家博物馆",
+      "photos": 0
+    },
+    {
+      "name": "奥林匹克公园",
+      "photos": 0
+    },
+    {
+      "name": "前门·大栅栏",
+      "photos": 0
+    }
+  ],
+  "queueBefore": [
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "天安门广场",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790955624194,
+      "updatedAt": 1790869224194,
+      "lastStartedAt": 1790869203798
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "慕田峪长城",
+      "state": "failed",
+      "attempts": 1,
+      "nextAt": 1790870218115,
+      "updatedAt": 1790868418115,
+      "lastStartedAt": 1790868198264
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "故宫博物院",
+      "state": "done",
+      "attempts": 3,
+      "nextAt": 1790955983488,
+      "updatedAt": 1790869583488,
+      "lastStartedAt": 1790869579026
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "什刹海",
+      "state": "failed",
+      "attempts": 1,
+      "nextAt": 1790869992451,
+      "updatedAt": 1790868192452,
+      "lastStartedAt": 1790868033199
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "天坛公园",
+      "state": "done",
+      "attempts": 1,
+      "nextAt": 1790951551437,
+      "updatedAt": 1790865151437,
+      "lastStartedAt": 1790864988184
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "景山公园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790955878683,
+      "updatedAt": 1790869478683,
+      "lastStartedAt": 1790869458941
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "奥林匹克公园",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790867178679,
+      "updatedAt": 1790867178679,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "国家博物馆",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790867178664,
+      "updatedAt": 1790867178664,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "颐和园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790956079829,
+      "updatedAt": 1790869679829,
+      "lastStartedAt": 1790869669101
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "恭王府",
+      "state": "failed",
+      "attempts": 1,
+      "nextAt": 1790869818818,
+      "updatedAt": 1790868018818,
+      "lastStartedAt": 1790867868102
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "圆明园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790952347089,
+      "updatedAt": 1790865947089,
+      "lastStartedAt": 1790865932133
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "北海公园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790952404865,
+      "updatedAt": 1790866004866,
+      "lastStartedAt": 1790865977148
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "前门·大栅栏",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790867178688,
+      "updatedAt": 1790867178688,
+      "lastStartedAt": 0
+    }
+  ],
+  "conversationId": "125dac6e-7dd9-4810-bf3a-1100c5c07fda",
+  "jobId": "73da9e04-e7be-4852-a99d-be8e6c1169c7",
+  "job": {
+    "jobId": "73da9e04-e7be-4852-a99d-be8e6c1169c7",
+    "status": "done",
+    "tripId": "031af66f-a7e7-4190-98cd-a9c5782646c0",
+    "createdAt": 1790869711024
+  },
+  "tripId": "031af66f-a7e7-4190-98cd-a9c5782646c0",
+  "title": "京城三日·古都风韵尽览",
+  "finishedAt": "2026-10-01T15:51:26.470Z",
+  "generatedOverview": [
+    {
+      "name": "天安门广场",
+      "coverUrl": "https://aos-cdn-image.amap.com/sns/ugccomment/fab72424-5643-4c14-9486-ae1c8475eab7.jpg",
+      "photos": 3
+    },
+    {
+      "name": "景山公园",
+      "coverUrl": "/media/photography/pexels-7692220.webp",
+      "photos": 3
+    },
+    {
+      "name": "天坛",
+      "photos": 0
+    },
+    {
+      "name": "颐和园",
+      "coverUrl": "/media/remote-photos/242ed3fb21f1f2905da9b375e2fe7ccabc39f712d936f1df7b874b69b6b1dcd2.jpg",
+      "photos": 3
+    },
+    {
+      "name": "圆明园",
+      "coverUrl": "/media/remote-photos/15ab1fa5e81756b9f5e4801bfd8332522d88654b246a235d2d756a7bf167a75c.webp",
+      "photos": 3
+    },
+    {
+      "name": "八达岭长城",
+      "photos": 0
+    },
+    {
+      "name": "鸟巢（国家体育场）",
+      "photos": 0
+    },
+    {
+      "name": "水立方（国家游泳中心）",
+      "photos": 0
+    },
+    {
+      "name": "雍和宫",
+      "photos": 0
+    },
+    {
+      "name": "中国国家博物馆",
+      "photos": 0
+    },
+    {
+      "name": "什刹海",
+      "coverUrl": "/media/remote-photos/0562f080b87eac871e9cbf4d5836670476c32ec5338a477cc67d0a99a0b76fde.jpg",
+      "photos": 3
+    },
+    {
+      "name": "前门大栅栏",
+      "photos": 0
+    },
+    {
+      "name": "故宫博物院",
+      "coverUrl": "https://images.unsplash.com/photo-1614555383820-941c466f1b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8Rm9yYmlkZGVuJTIwQ2l0eSUyMEJlaWppbmd8ZW58MXx8fHwxNzkwODY0ODQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "photos": 3
+    }
+  ],
+  "queueAfter": [
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "天安门广场",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790955624194,
+      "updatedAt": 1790869224194,
+      "lastStartedAt": 1790869203798
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "慕田峪长城",
+      "state": "failed",
+      "attempts": 1,
+      "nextAt": 1790870218115,
+      "updatedAt": 1790868418115,
+      "lastStartedAt": 1790868198264
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "故宫博物院",
+      "state": "done",
+      "attempts": 3,
+      "nextAt": 1790955983488,
+      "updatedAt": 1790869583488,
+      "lastStartedAt": 1790869579026
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "八达岭长城",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822812,
+      "updatedAt": 1790869822812,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "什刹海",
+      "state": "failed",
+      "attempts": 1,
+      "nextAt": 1790869992451,
+      "updatedAt": 1790868192452,
+      "lastStartedAt": 1790868033199
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "天坛",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822529,
+      "updatedAt": 1790869822529,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "鸟巢（国家体育场）",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822820,
+      "updatedAt": 1790869822820,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "天坛公园",
+      "state": "done",
+      "attempts": 1,
+      "nextAt": 1790951551437,
+      "updatedAt": 1790865151437,
+      "lastStartedAt": 1790864988184
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "雍和宫",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822843,
+      "updatedAt": 1790869822843,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "中国国家博物馆",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822854,
+      "updatedAt": 1790869822854,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "景山公园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790955878683,
+      "updatedAt": 1790869478683,
+      "lastStartedAt": 1790869458941
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "奥林匹克公园",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790867178679,
+      "updatedAt": 1790867178679,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "国家博物馆",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790867178664,
+      "updatedAt": 1790867178664,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "颐和园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790956079829,
+      "updatedAt": 1790869679829,
+      "lastStartedAt": 1790869669101
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "恭王府",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790956231000,
+      "updatedAt": 1790869831000,
+      "lastStartedAt": 1790869819170
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "圆明园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790952347089,
+      "updatedAt": 1790865947089,
+      "lastStartedAt": 1790865932133
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "北海公园",
+      "state": "done",
+      "attempts": 2,
+      "nextAt": 1790952404865,
+      "updatedAt": 1790866004866,
+      "lastStartedAt": 1790865977148
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "前门·大栅栏",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790867178688,
+      "updatedAt": 1790867178688,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "水立方（国家游泳中心）",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822833,
+      "updatedAt": 1790869822833,
+      "lastStartedAt": 0
+    },
+    {
+      "version": "place-preference-v1",
+      "city": "北京",
+      "name": "前门大栅栏",
+      "state": "queued",
+      "attempts": 0,
+      "nextAt": 1790869822866,
+      "updatedAt": 1790869822866,
+      "lastStartedAt": 0
+    }
+  ],
+  "comparison": {
+    "before": 3,
+    "beforeTotal": 12,
+    "after": 6,
+    "afterTotal": 13
+  },
+  "imageChecks": [
+    {
+      "name": "天安门广场",
+      "url": "https://aos-cdn-image.amap.com/sns/ugccomment/fab72424-5643-4c14-9486-ae1c8475eab7.jpg",
+      "status": 200,
+      "type": "application/octet-stream",
+      "bytes": 143090,
+      "magic": "jpeg"
+    },
+    {
+      "name": "天安门广场",
+      "url": "/media/remote-photos/90accdd8d2589e6cd568d288fd842267a8e6222e66318fcd2d2a951a69fb0ea9.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 294855,
+      "magic": "jpeg"
+    },
+    {
+      "name": "天安门广场",
+      "url": "/media/remote-photos/c99ec20206786a290780fc27aa400da15ec136c6163f1ddd47c3ea594b9a7b8e.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 276824,
+      "magic": "jpeg"
+    },
+    {
+      "name": "景山公园",
+      "url": "/media/photography/pexels-7692220.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 233274,
+      "magic": "webp"
+    },
+    {
+      "name": "景山公园",
+      "url": "https://images.unsplash.com/photo-1680182785729-aa9978590517?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8M3x8SmluZ3NoYW4lMjBCZWlqaW5nfGVufDF8fHx8MTc5MDg2NzQwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 148599,
+      "magic": "jpeg"
+    },
+    {
+      "name": "景山公园",
+      "url": "/media/remote-photos/87c691488da324c135231967e5d3749354f762b15f4d4a3d8d7555ab78d68a94.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 247198,
+      "magic": "jpeg"
+    },
+    {
+      "name": "颐和园",
+      "url": "/media/remote-photos/242ed3fb21f1f2905da9b375e2fe7ccabc39f712d936f1df7b874b69b6b1dcd2.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 261454,
+      "magic": "jpeg"
+    },
+    {
+      "name": "颐和园",
+      "url": "/media/photography/commons-131731224.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 246854,
+      "magic": "webp"
+    },
+    {
+      "name": "颐和园",
+      "url": "https://images.unsplash.com/photo-1619825479213-62e158b5a79d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8M3x8U3VtbWVyJTIwUGFsYWNlJTIwQmVpamluZ3xlbnwxfHx8fDE3OTA4Njc2NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 316284,
+      "magic": "jpeg"
+    },
+    {
+      "name": "圆明园",
+      "url": "/media/remote-photos/15ab1fa5e81756b9f5e4801bfd8332522d88654b246a235d2d756a7bf167a75c.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 101384,
+      "magic": "webp"
+    },
+    {
+      "name": "圆明园",
+      "url": "/media/remote-photos/da5a5e11c4b8b7d8b3b76ed30d9b8fdc2a32607b5ab517e8850f95bb93c52ab1.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 395623,
+      "magic": "jpeg"
+    },
+    {
+      "name": "圆明园",
+      "url": "/media/remote-photos/25a03bd734ad4f1c9dd01a88a4aa2f41d380f727158a5aa62a48447a1d4e59cf.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 82070,
+      "magic": "webp"
+    },
+    {
+      "name": "什刹海",
+      "url": "/media/remote-photos/0562f080b87eac871e9cbf4d5836670476c32ec5338a477cc67d0a99a0b76fde.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 427861,
+      "magic": "jpeg"
+    },
+    {
+      "name": "什刹海",
+      "url": "/media/remote-photos/4b939fc0c7a862c8197cf6a1d09f4a83529130cea1c69a95df5ba866749d7c8d.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 92116,
+      "magic": "webp"
+    },
+    {
+      "name": "什刹海",
+      "url": "/media/remote-photos/4c0a08f03f6517b082edf690f32abd9b74cbcd4cb0a65ec19cac1a9f272447b4.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 345771,
+      "magic": "jpeg"
+    },
+    {
+      "name": "故宫博物院",
+      "url": "https://images.unsplash.com/photo-1614555383820-941c466f1b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8Rm9yYmlkZGVuJTIwQ2l0eSUyMEJlaWppbmd8ZW58MXx8fHwxNzkwODY0ODQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 210054,
+      "magic": "jpeg"
+    },
+    {
+      "name": "故宫博物院",
+      "url": "/media/remote-photos/2d4c23eab5a13e4029edcfd40e99b5c36dbe4ddbdff3377ebb03ace32660a510.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 396301,
+      "magic": "jpeg"
+    },
+    {
+      "name": "故宫博物院",
+      "url": "/media/remote-photos/2f09fdd90ae02e2f107b33675b6d39a8cd212258c32f52349a3ee55f3047f518.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 118680,
+      "magic": "jpeg"
+    }
+  ],
+  "imageChecksPassed": false,
+  "newQueuedPlaces": [
+    {
+      "name": "八达岭长城",
+      "state": "queued",
+      "attempts": 0
+    },
+    {
+      "name": "天坛",
+      "state": "queued",
+      "attempts": 0
+    },
+    {
+      "name": "鸟巢（国家体育场）",
+      "state": "queued",
+      "attempts": 0
+    },
+    {
+      "name": "雍和宫",
+      "state": "queued",
+      "attempts": 0
+    },
+    {
+      "name": "中国国家博物馆",
+      "state": "queued",
+      "attempts": 0
+    },
+    {
+      "name": "水立方（国家游泳中心）",
+      "state": "queued",
+      "attempts": 0
+    },
+    {
+      "name": "前门大栅栏",
+      "state": "queued",
+      "attempts": 0
+    }
+  ],
+  "browserVerification": "内置浏览器不可用；验证了正式API结果和图片HTTP响应及文件类型，未做页面视觉验收",
+  "httpAndImageSignaturesPassed": true,
+  "contentTypeExceptions": [
+    {
+      "name": "天安门广场",
+      "url": "https://aos-cdn-image.amap.com/sns/ugccomment/fab72424-5643-4c14-9486-ae1c8475eab7.jpg",
+      "contentType": "application/octet-stream",
+      "signature": "jpeg"
+    }
+  ],
+  "findings": {
+    "automaticQueueTriggered": true,
+    "configuredVisualModel": true,
+    "rolling24HourPlaceLimit": 10,
+    "startedPlacesAtRerun": 10,
+    "newJobs": 7,
+    "aliasMisses": [
+      {
+        "requested": "天坛",
+        "catalog": "天坛公园"
+      }
+    ],
+    "notes": [
+      "模型生成候选非固定；同参数重跑由12个候选变成13个，长城由慕田峪变成八达岭。",
+      "原行程不回填后台新增照片；本次新行程读取生成时已完成的审核图库。",
+      "国家博物馆/中国国家博物馆、前门·大栅栏/前门大栅栏在队列中被视作不同地点。",
+      "严格Content-Type检查有1项未通过：高德天安门广场首图HTTP200且JPEG字节正确，但返回application/octet-stream。未验证浏览器解码。"
+    ]
+  }
+}

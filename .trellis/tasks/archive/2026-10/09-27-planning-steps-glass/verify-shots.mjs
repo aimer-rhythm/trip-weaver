@@ -1,6 +1,6 @@
 // 生成页视觉校对（09-27）：无头 Chrome + CDP 走真实流程截图。
 // 流程：注册一次性账号 → 首页截图 → API 发起生成 → sessionStorage 标记 → 打开 /trips/new 走恢复链路 → 分阶段截图 → 取消 → 终态截图。
-// 用法：node .trellis/tasks/09-27-planning-steps-glass/verify-shots.mjs
+// 用法：node .trellis/tasks/archive/2026-10/09-27-planning-steps-glass/verify-shots.mjs
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,7 +8,7 @@ import path from 'node:path';
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const PORT = 9223;
 const BASE = 'http://localhost:5173';
-const OUT = path.resolve('.trellis/tasks/09-27-planning-steps-glass');
+const OUT = path.resolve('.trellis/tasks/archive/2026-10/09-27-planning-steps-glass');
 const PROFILE = 'C:\\temp\\tw-verify-profile';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

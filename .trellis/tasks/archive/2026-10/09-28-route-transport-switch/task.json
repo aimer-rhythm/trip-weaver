@@ -3,7 +3,7 @@
   "name": "route-transport-switch",
   "title": "高德路线支持切换交通方式并展示各方式时长",
   "description": "仅当前路段按需查询四种交通方式，切换后同步时长、路线与自动保存；实现和回归验证完成。",
-  "status": "in_progress",
+  "status": "completed",
   "dev_type": null,
   "scope": null,
   "package": null,
@@ -11,16 +11,26 @@
   "creator": "aimer",
   "assignee": "aimer",
   "createdAt": "2026-09-28",
-  "completedAt": null,
+  "completedAt": "2026-10-02",
   "branch": null,
   "base_branch": "master",
   "worktree_path": null,
-  "commit": null,
+  "commit": "8b08b1c",
   "pr_url": null,
   "subtasks": [],
   "children": [],
   "parent": null,
   "relatedFiles": [],
   "notes": "2026-09-29：单路段切换完成后，追加当前天后台预查询、分方式优先调度、5分钟双层缓存与编辑器一致UI。24项单测、浏览器回归及PostgreSQL缓存/权限/配额验证通过；上游为模拟响应。",
-  "meta": {}
+  "meta": {
+    "archiveReview": {
+      "date": "2026-10-02",
+      "authorization": "归档提交该任务，同步检查当前其他任务进行归档",
+      "basis": "单路段切换、当前天预查询、双层缓存已提交；PRD保留单测、浏览器与隔离PostgreSQL验证记录，后续移动重排任务也已归档。",
+      "workCommits": [
+        "3560af8",
+        "8b08b1c"
+      ]
+    }
+  }
 }

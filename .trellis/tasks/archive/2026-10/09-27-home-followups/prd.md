@@ -38,3 +38,8 @@
 - 浏览器实测：`/trips/new` 跳转与 `autostart` 直发、首页 reduced-motion 观感。代码侧已核对，未跑真机。
 - 提交受生成中页面改版（09-27-planning-steps-glass）耦合：`NewTripPage` 新传的 `city`/`days` props
   只有新版 `GenerationRunPanel` 才接受，单独提交本任务会产生编译不过的中间态。
+## 2026-10-02 归档核对
+
+用户本轮授权提交当前任务，并检查归档其他已落地任务。首页唯一入口及旧表单清理已有提交；后续修复autostart跳转，生成主流程审查已有验收记录。省界压缩明确不做，preset-row因仍有消费者保留。
+
+工作提交：`9b46bd3`、`fbae83e`、`c23d943`。本轮关闭脚本自动提交，手动以中文信息归档。

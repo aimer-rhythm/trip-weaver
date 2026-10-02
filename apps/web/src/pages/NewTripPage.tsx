@@ -1,6 +1,6 @@
 // 新建行程（09-27 收尾）：首页已完成全部信息收集并带 autostart=1 直达，本页不再渲染表单，
 // 只负责「发起生成 → 生成中 / 启动失败」这一段；缺 autostart 或参数不完整时回首页重选
-// （首页是唯一的收集入口，见 .trellis/tasks/09-27-home-followups/prd.md）。
+// （首页是唯一的收集入口，见 .trellis/tasks/archive/2026-10/09-27-home-followups/prd.md）。
 // 提交链路：惰性建会话 → PATCH 写入 Brief 快照（编辑器内嵌对话靠会话关联反查）→ POST /api/generations。
 // Brief → GenerateForm 的映射复用 shared 的 briefToGenerateForm，前端不另写一套。
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

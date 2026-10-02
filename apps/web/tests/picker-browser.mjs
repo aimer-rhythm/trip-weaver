@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 
-const out = '.trellis/tasks/09-29-ui-consistency/research/pickers';
+const out = '.trellis/tasks/archive/2026-10/09-29-ui-consistency/research/pickers';
 await fs.mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
 try {

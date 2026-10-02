@@ -64,3 +64,9 @@
 - 浏览器验证自动预查询、连续点选最后一次生效、换天返回不重复查询、保存重载、失败重试、移动后丢弃旧结果、移动端蓝底白字选中态和 Escape 关闭。
 - PostgreSQL 集成验证：缓存免费命中（额度耗尽仍可读取）、修改凭据或坐标失效、5 分钟过期后重新请求；模拟上游。
 - 官方参数证据：`smart-search fetch https://lbs.amap.com/api/webservice/guide/api/newroute --format markdown`，见 `research/amap-newroute.md`；驾车 strategy=32 为高德推荐。
+
+## 2026-10-02 归档核对
+
+用户本轮授权提交当前任务，并检查归档其他已落地任务。单路段切换、当前天预查询、双层缓存已提交；PRD保留单测、浏览器与隔离PostgreSQL验证记录，后续移动重排任务也已归档。
+
+工作提交：`3560af8`、`8b08b1c`。本轮关闭脚本自动提交，手动以中文信息归档。
