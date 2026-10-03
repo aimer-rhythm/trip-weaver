@@ -20,7 +20,15 @@ export interface RetrieveOptions {
   /** 只供系统表单预取；普通空关键词仍返回空数组。 */
   browse?: boolean;
   vector?: 'auto' | 'off' | 'force';
+  /** SQL 仍按地点/主题匹配，向量使用独立的自然语言问题。 */
+  semanticQuery?: string;
+  onDiagnostics?: (result: RetrievalDiagnostics) => void;
   signal?: AbortSignal;
+}
+export interface RetrievalDiagnostics {
+  keywordHits: number;
+  vector: 'off' | 'unavailable' | 'used' | 'failed';
+  vectorHits: number;
 }
 export interface RetrievalDeps {
   query<T extends QueryResultRow>(sql: string, values: unknown[]): Promise<{ rows: T[] }>;
@@ -52,6 +60,7 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
     const limit = Math.max(1, Math.min(48, Math.floor(options.limit ?? 8)));
     const preferences = options.preferences ?? [];
     const categories = categoryValues(options.category);
+    const diagnostics: RetrievalDiagnostics = { keywordHits: 0, vector: 'off', vectorHits: 0 };
     try {
       const { rows } = await deps.query<PlaceRow>(
         `SELECT ${COLUMNS} FROM canonical_places
@@ -70,9 +79,12 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
       );
       if (options.signal?.aborted) return [];
       let selected = rankPlaces(rows, terms, preferences, limit);
-      if (terms.length && options.vector !== 'off' && (selected.length < limit || options.vector === 'force')) {
+      diagnostics.keywordHits = selected.length;
+      const semanticQuery = options.semanticQuery?.trim() || terms.join(' ');
+      if (semanticQuery && options.vector !== 'off' && (selected.length < limit || options.vector === 'force')) {
         try {
-          const vector = await deps.embed(terms.join(' '), options.signal);
+          diagnostics.vector = 'unavailable';
+          const vector = await deps.embed(semanticQuery, options.signal);
           if (vector && !options.signal?.aborted) {
             const hits = await deps.query<PlaceRow>(
               `SELECT ${COLUMNS}, embedding <=> $1 AS distance FROM canonical_places
@@ -82,6 +94,8 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
               [`[${vector.join(',')}]`, options.city ?? null, categories],
             );
             const unique = new Map([...rows, ...hits.rows].map((row) => [row.id, row]));
+            diagnostics.vector = 'used';
+            diagnostics.vectorHits = hits.rows.length;
             const ranked = rankPlaces([...unique.values()], terms, preferences, limit + selected.length);
             if (options.vector === 'force') selected = ranked.slice(0, limit);
             else {
@@ -89,9 +103,10 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
               selected = [...selected, ...ranked.filter((place) => !place.ids.some((id) => seen.has(id)))].slice(0, limit);
             }
           }
-        } catch { /* 向量失败时保留关键词结果。 */ }
+        } catch { diagnostics.vector = 'failed'; /* 向量失败时保留关键词结果。 */ }
       }
       if (options.signal?.aborted) return [];
+      options.onDiagnostics?.(diagnostics);
       return await withEvidence(selected, deps);
     } catch (err) {
       console.warn(`[retrieveContext] 检索失败，降级为空数组：${err instanceof Error ? err.message : String(err)}`);

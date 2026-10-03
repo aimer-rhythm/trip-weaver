@@ -154,6 +154,7 @@ export interface TripVersionItem {
   version: number;
   title: string;
   createdAt: number;
+  summary?: string;
 }
 
 export interface TripVersionChain {

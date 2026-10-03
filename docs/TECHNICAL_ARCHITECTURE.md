@@ -249,6 +249,8 @@ resolveLlmConfig(userId):
 
 ## 7. API 设计
 
+普通 JSON 响应统一为 `{ code, message, data }`：成功 `code=0`，业务载荷在 `data`；失败保留 HTTP 4xx/5xx，业务码与可读消息分别在 `code`、`message`。下表中的业务结构均指 `data`。SSE 帧、OAuth 重定向及静态文件保留各自协议。前端请求层统一解包、处理超时和业务 401。详见 [API 响应与请求约定](API_CONTRACT.md)。
+
 | 方法 & 路径 | 说明 | 校验/限制 |
 |---|---|---|
 | `POST /api/auth/register` | 邮箱+密码（`REGISTRATION_MODE=invite` 时另需邀请码，比对 `INVITE_CODE` env） | 密码≥8；3 次/min/IP |
@@ -260,7 +262,7 @@ resolveLlmConfig(userId):
 | `GET /api/settings/sources-status` | 调研数据源自检 `{searchProvider, routeProvider, poi, websearch}`（搜索固定天地图、路线链高德优先；`poi`/`websearch` 真实探测，`routeProvider` 只报配置归属；结果按 userId + credential revision 隔离记忆化） | 需会话 |
 | `GET /api/usage` | 今日剩余配额 / 已用次数 / 重置时间 | 需会话 |
 | `GET /api/trips` · `POST /api/trips`(导入) · `GET/PUT/DELETE /api/trips/:id` | 历史/导入/详情/自动保存/删除 | TripSchema；user_id 归属校验 |
-| `POST /api/generations` | **先查配额**（quotaService）→ 创建任务 `202 {jobId}` | GenerateFormSchema；并发 1/用户；配额尽 → 429 + 重置时间 |
+| `POST /api/generations` | **先查配额**（quotaService）→ 创建任务，HTTP 202，`data: {jobId}` | GenerateFormSchema；并发 1/用户；配额尽 → 429 + 重置时间 |
 | `GET /api/generations/:jobId/events` | SSE 进度（Last-Event-ID 重放） | 归属校验 |
 | `POST /api/generations/:jobId/cancel` | 取消（丢弃草稿，**不计配额**） | 归属校验 |
 | 生产 | `@fastify/static` 托管 web/dist + SPA fallback；开发 Vite proxy 同源 | |

@@ -8,6 +8,10 @@
 
 以下对话机制仍然有效，只是入口从「收集页」换成了「编辑器面板」。
 
+10-02 详情页改用 POST 流式端点；正文增量、查询建议、候选添加、历史版本及保存并发规则见
+[详情对话流与版本恢复](./detail-chat-history.md)。下文 confirm 自动启动描述保留给旧端点；
+新详情端点还要求明确重新生成文字，建议查询始终只读。
+
 ## Boundary: chat collects, generation executes
 
 - Chat understands one user message and returns `{ reply, briefPatch, missingFields }`. It may answer

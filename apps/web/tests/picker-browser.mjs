@@ -1,3 +1,4 @@
+import { apiSuccess } from '../../../scripts/lib/api-contract.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -18,7 +19,7 @@ try {
       '/api/destinations/covered': { cities: ['北京', '杭州', '成都'] },
       '/api/trips': { items: [], total: 0, destinations: [] },
     };
-    return route.fulfill({ json: data[pathname] ?? {} });
+    return route.fulfill({ json: apiSuccess(data[pathname] ?? {}) });
   });
   for (const [name, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 844]]) {
     await page.setViewportSize({ width, height });

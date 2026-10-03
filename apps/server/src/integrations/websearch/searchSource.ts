@@ -24,7 +24,7 @@ export interface WebSearchHit {
 
 export interface SearchSource {
   readonly kind: 'websearch' | 'null';
-  search(query: string): Promise<WebSearchHit[]>;
+  search(query: string, signal?: AbortSignal): Promise<WebSearchHit[]>;
   selfCheck(): Promise<SourceStatus>;
 }
 
@@ -82,14 +82,15 @@ export class WebSearchSource implements SearchSource {
   ) {}
 
   /** 失败抛给调用方分支处理 */
-  private async request(query: string, count: number): Promise<WebSearchHit[]> {
+  private async request(query: string, count: number, signal?: AbortSignal): Promise<WebSearchHit[]> {
     return this.queue(async () => {
+      signal?.throwIfAborted();
       if (this.validateBaseUrlBeforeUse) await assertSafeBaseUrl(this.baseUrl);
       const res = await fetch(`${this.baseUrl}/v1/web-search`, {
         method: 'POST',
         headers: { authorization: `Bearer ${this.apiKey}`, 'content-type': 'application/json' },
         body: JSON.stringify({ query: query.slice(0, 100), summary: true, count, freshness: 'noLimit' }),
-        signal: AbortSignal.timeout(15_000),
+        signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(15_000)]) : AbortSignal.timeout(15_000),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const hits = pickPages(await res.json())
@@ -99,15 +100,18 @@ export class WebSearchSource implements SearchSource {
     });
   }
 
-  async search(query: string): Promise<WebSearchHit[]> {
+  async search(query: string, signal?: AbortSignal): Promise<WebSearchHit[]> {
+    signal?.throwIfAborted();
     const key = query.trim().toLowerCase();
     const cached = this.cache.get(key);
     if (cached) return cached;
     try {
-      const hits = await this.request(query, MAX_RESULTS);
+      const hits = await this.request(query, MAX_RESULTS, signal);
+      signal?.throwIfAborted();
       this.cache.set(key, hits);
       return hits;
     } catch {
+      signal?.throwIfAborted();
       return [];                               // 不抛错：调研 Agent 自动降级为模型知识
     }
   }
@@ -140,11 +144,12 @@ export function createTaskSearchSource(inner: SearchSource): TaskSearchSource {
   const stats = { calls: 0, gotResults: false };
   const source: SearchSource = {
     kind: inner.kind,
-    async search(query) {
+    async search(query, signal) {
+      signal?.throwIfAborted();
       if (inner.kind === 'null') return [];                  // Null 源不计数，不烧日额度
       if (stats.calls >= SEARCH_MAX_PER_TASK) return [];
       stats.calls += 1;
-      const hits = await inner.search(query);
+      const hits = await inner.search(query, signal);
       if (hits.length) stats.gotResults = true;
       return hits;
     },

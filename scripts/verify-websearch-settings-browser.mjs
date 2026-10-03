@@ -1,3 +1,4 @@
+import { apiSuccess } from './lib/api-contract.mjs';
 // 设置页 Web 搜索回归：默认 URL、空白保留、更新、显式清除及状态刷新。
 // 运行前先 npm run build，再执行：node scripts/verify-websearch-settings-browser.mjs
 import { chromium } from 'playwright';
@@ -60,12 +61,12 @@ try {
     await route.fulfill({
       status: 200,
       contentType: 'application/json',
-      body: JSON.stringify({
+      body: JSON.stringify(apiSuccess({
         searchProvider: 'tianditu',
         routeProvider: 'null',
         poi: { configured: false, checked: true, ok: null, message: '测试天地图未配置' },
         websearch: { configured: true, checked: true, ok: true, message: '测试搜索连接正常' },
-      }),
+      })),
     });
   });
 
@@ -91,7 +92,7 @@ try {
   check('新个人搜索配置空 URL 使用默认值并仅显示尾号', (await dialog.innerText()).includes('https://api.langsearch.com'));
   check('保存后使数据源状态查询失效并重新探测', sourceStatusRequests >= 2, `requests=${sourceStatusRequests}`);
 
-  const savedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json());
+  const savedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json().then(body => body.data));
   const savedSettingsJson = JSON.stringify(savedSettings);
   check(
     '浏览器 API 响应不含搜索 Key 明文或密文',
@@ -104,7 +105,7 @@ try {
 
   await dialog.getByRole('button', { name: '保存' }).click();
   await page.waitForTimeout(200);
-  const preservedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json());
+  const preservedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json().then(body => body.data));
   check('普通空 Key 提交保留个人搜索配置', preservedSettings.searchApiKeyLast4 === 'a111');
 
   await searchBaseUrlInput.fill('https://api.langsearch.com/compatible');
@@ -120,7 +121,7 @@ try {
   await dialog.getByLabel(/清除已保存的个人 Web 搜索 Key 与 Base URL/).check();
   await dialog.getByRole('button', { name: '保存' }).click();
   await page.waitForFunction(() => document.querySelector('dialog')?.textContent?.includes('当前 Web 搜索配置：站点默认配置'));
-  const clearedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json());
+  const clearedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json().then(body => body.data));
   check(
     '显式清除同时删除个人 Key 与 Base URL并恢复站点配置',
     clearedSettings.hasPersonalSearchKey === false &&

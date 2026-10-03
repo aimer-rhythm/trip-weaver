@@ -70,7 +70,7 @@ export async function tiandituBudgetRemaining(): Promise<number> {
   return Math.max(0, env.tiandituDailyBudget - (await callsToday('tianditu')) - (await editorCallsToday('tianditu')));
 }
 
-async function editorCallsToday(source: 'amap' | 'tianditu'): Promise<number> {
+async function editorCallsToday(source: MeteredSource): Promise<number> {
   const [row] = await db.select().from(editorGeoUsage).where(and(
     eq(editorGeoUsage.day, String(startOfToday())), eq(editorGeoUsage.source, source),
   ));
@@ -80,9 +80,9 @@ async function editorCallsToday(source: 'amap' | 'tianditu'): Promise<number> {
 /** Atomically reserve editor calls; unused calls are refunded, including pre-request skips.
  * Reservations survive crashes conservatively. Generation concurrency retains its existing
  * approximate budget semantics; editor reservations themselves cannot overspend the snapshot. */
-export async function reserveEditorGeoBudget(source: 'tianditu', count: number) {
+export async function reserveEditorGeoBudget(source: 'tianditu' | 'search', count: number) {
   const day = String(startOfToday());
-  const limit = env.tiandituDailyBudget - await callsToday(source);
+  const limit = (source === 'search' ? env.searchDailyBudget : env.tiandituDailyBudget) - await callsToday(source);
   if (limit < count) return null;
   const rows = await db.insert(editorGeoUsage).values({ day, source, calls: count })
     .onConflictDoUpdate({ target: [editorGeoUsage.day, editorGeoUsage.source],
@@ -98,5 +98,5 @@ export async function reserveEditorGeoBudget(source: 'tianditu', count: number) 
 }
 
 export async function searchBudgetRemaining(): Promise<number> {
-  return Math.max(0, env.searchDailyBudget - (await callsToday('search')));
+  return Math.max(0, env.searchDailyBudget - (await callsToday('search')) - (await editorCallsToday('search')));
 }

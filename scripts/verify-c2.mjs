@@ -1,3 +1,4 @@
+import { readApiResponse } from './lib/api-contract.mjs';
 // C2 端到端验收（离线可复跑）：mock OpenAI 兼容端点驱动三 Agent 流水线
 // 覆盖：SSE 三阶段与 job_done 落库 / candidate 候选池事件 / 预约种子表覆盖 / Last-Event-ID 重放 /
 //       配额 429 / 取消不计数不残留 / BYOK 走自有端点且计次 / 第二轮只局部修订并保留活动 ID
@@ -67,10 +68,7 @@ async function api(method, path, body, extraHeaders = {}) {
   });
   const setCookie = res.headers.get('set-cookie');
   if (setCookie) cookie = setCookie.split(';')[0];
-  let json = null;
-  try {
-    json = await res.json();
-  } catch {}
+  const json = await readApiResponse(res);
   return { status: res.status, json };
 }
 
@@ -317,7 +315,7 @@ try {
   check('第 2 次生成完成', runC.events.at(-1)?.type === 'job_done', runC.events.at(-1)?.type);
   const jobC2 = await api('POST', '/api/generations', { destination: '东京', days: 2, budgetLevel: '经济', partySize: 1 });
   check('配额尽 429', jobC2.status === 429, `status=${jobC2.status}`);
-  check('429 带 resetAt', typeof jobC2.json?.resetAt === 'number');
+  check('429 带 resetAt', typeof jobC2.json?.data?.resetAt === 'number');
 
   // ④ BYOK：走自有端点 + 计次
   console.log('\n— BYOK 路径 —');
@@ -626,7 +624,7 @@ try {
   check('对话额度尽 429', overQuota.status === 429, `status=${overQuota.status}`);
   check(
     '429 带可操作码与恢复时刻',
-    overQuota.json?.code === 'chat_quota_exhausted' && typeof overQuota.json?.resetAt === 'number',
+    overQuota.json?.code === 'chat_quota_exhausted' && typeof overQuota.json?.data?.resetAt === 'number',
     JSON.stringify(overQuota.json),
   );
   check('被拒的一轮不落库', (await api('GET', `/api/conversations/${conversationId}`)).json?.messages?.length === 10);

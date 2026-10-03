@@ -15,11 +15,12 @@ export function createTaskPoiSource(inner: PoiSource): TaskPoiSource {
   const stats = { calls: 0, gotResults: false };
   const source: PoiSource = {
     kind: inner.kind,
-    async searchPois(category, keyword, region) {
+    async searchPois(category, keyword, region, signal) {
+      signal?.throwIfAborted();
       if (inner.kind === 'null') return [];                  // Null 源不计数，不烧日额度
       if (stats.calls >= POI_MAX_PER_TASK) return [];
       stats.calls += 1;
-      const pois = await inner.searchPois(category, keyword, region);
+      const pois = await inner.searchPois(category, keyword, region, signal);
       if (pois.length) stats.gotResults = true;
       return pois;
     },

@@ -7,11 +7,11 @@ import { getTripShareImage } from '../services/tripShareImageService';
 import { requireAuth } from '../auth/guard';
 import { createTrip, deleteTrip, getTrip, listTripsPage, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 import { findConversationForTrip } from '../services/conversationService';
+import { TripOperationRequestSchema } from '@tripweaver/shared';
+import { ensureTripConversation, restoreTrip } from '../services/tripHistoryService';
 
 const IdParams = Type.Object({ id: Type.String() });
 
-export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
-  app.addHook('preHandler', requireAuth);
 // 行程列表分页（10-03）：筛选/排序/计数都在服务端；Fastify 默认 coerce，query 里的字符串会转成 integer
 const TripListQuerySchema = Type.Object({
   offset: Type.Optional(Type.Integer({ minimum: 0 })),
@@ -21,6 +21,8 @@ const TripListQuerySchema = Type.Object({
   sort: Type.Optional(Type.Union([Type.Literal('updated'), Type.Literal('created'), Type.Literal('name')])),
 });
 
+export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
+  app.addHook('preHandler', requireAuth);
 
   app.get('/', { schema: { querystring: TripListQuerySchema } }, async (request) => listTripsPage(request.user!.id, {
     offset: request.query.offset ?? 0,
@@ -29,6 +31,9 @@ const TripListQuerySchema = Type.Object({
     city: request.query.city,
     sort: request.query.sort,
   }));
+  app.post('/:id/conversation', { schema: { params: IdParams } }, async (request) => ensureTripConversation(request.user!.id, request.params.id));
+  app.post('/:id/restore', { schema: { params: IdParams, body: TripOperationRequestSchema } }, async (request) =>
+    restoreTrip(request.user!.id, request.params.id, request.body));
 
   app.post('/:id/share-image', {
     schema: { params: IdParams, body: TripShareImageRequestSchema, response: { 200: TripShareImageResponseSchema, 400: Type.Object({ error: Type.String() }), 404: Type.Object({ error: Type.String() }) } },

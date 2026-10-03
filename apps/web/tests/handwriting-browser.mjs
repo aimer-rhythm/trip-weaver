@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -28,7 +29,7 @@ try {
     const url = new URL(route.request().url());
     if (url.pathname.startsWith('/api/photos/')) return route.continue();
     // Route menus perform POST reads when mounted; do not call real route providers.
-    if (url.pathname.endsWith('/route-options')) return route.fulfill({ status: 503, json: { error: 'Font fixture: routing unavailable' } });
+    if (url.pathname.endsWith('/route-options')) return route.fulfill({ status: 503, json: apiFailure(503, 'Font fixture: routing unavailable') });
     if (route.request().method() !== 'GET') writes++;
     let data = {};
     if (url.pathname === '/api/auth/me') data = { id: 'font-test', email: 'font@example.test' };
@@ -40,7 +41,7 @@ try {
     else if (url.pathname.endsWith('/conversation')) data = { conversationId: 'font-chat' };
     else if (url.pathname === '/api/conversations/font-chat') data = { messages: [{ id: 'message-1', role: 'assistant', content: '今天从故宫开始，慢慢感受老北京的宫苑与街巷。', createdAt: 0 }] };
     else if (url.pathname === `/api/trips/${trip.id}`) data = trip;
-    return route.fulfill({ json: data });
+    return route.fulfill({ json: apiSuccess(data) });
   });
   const ready = async () => {
     await page.evaluate(async () => {

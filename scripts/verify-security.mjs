@@ -1,3 +1,4 @@
+import { readApiResponse } from './lib/api-contract.mjs';
 // D2 安全走查（自动化）：横向越权 / 限流 / Key 不见于响应·日志·库文件 / Cookie 属性 / ssrfGuard / 邀请码
 // 运行：node scripts/verify-security.mjs
 import { spawn } from 'node:child_process';
@@ -74,10 +75,7 @@ function makeClient(base) {
       });
       const setCookie = res.headers.get('set-cookie') ?? '';
       if (setCookie && rawCookie === undefined) cookie = setCookie.split(';')[0];
-      let json = null;
-      try {
-        json = await res.json();
-      } catch {}
+      const json = await readApiResponse(res);
       return { status: res.status, json, setCookie };
     },
   };
@@ -134,7 +132,7 @@ try {
   }
   check('登录限流（第 6 次/分钟 → 429）', last.status === 429, `status=${last.status}`);
   const probe = await A.call('POST', '/api/auth/login', { email: 'ghost@sec.dev', password: 'x'.repeat(10) }, '');
-  check('登录失败不泄露账号存在性', probe.json?.error === '邮箱或密码不正确' || probe.status === 429, JSON.stringify(probe.json));
+  check('登录失败不泄露账号存在性', probe.json?.message === '邮箱或密码不正确' || probe.status === 429, JSON.stringify(probe.json));
 
   console.log('— 未登录与横向越权 —');
   const anon = await A.call('GET', '/api/trips', undefined, '');

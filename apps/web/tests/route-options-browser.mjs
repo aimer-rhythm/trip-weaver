@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
@@ -37,7 +38,7 @@ try {
       const input = route.request().postDataJSON();
       requested.push(input.mode);
       if (hold) await hold;
-      if (fail) return route.fulfill({ status: 503, json: { error: '路线服务暂不可用，请重试' } });
+      if (fail) return route.fulfill({ status: 503, json: apiFailure(503, '路线服务暂不可用，请重试') });
       const mode = input.mode;
       const i = ['walk', 'cycle', 'transit', 'drive'].indexOf(mode);
       data = { options: [mode === 'cycle' ? { status: 'unavailable', mode, reason: '暂无可用路线' } : { status: 'available', leg: { fromActivityId: input.from.id, toActivityId: input.to.id, mode, source: 'amap', durationMin: 20 - i * 4, distanceM: mode === 'walk' ? walkDistance : 1000 + i * 100, polyline: `116.39,39.91;116.4,${39.93 + i * .01}` } }] };
@@ -49,7 +50,7 @@ try {
       }
       data = trip;
     }
-    return route.fulfill({ json: data });
+    return route.fulfill({ json: apiSuccess(data) });
   });
   hold = new Promise((r) => { release = r; });
   await page.goto(`${base}/trips/route-test`);

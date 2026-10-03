@@ -11,6 +11,7 @@ export function Select({ className = '', ...props }: ComponentProps<'select'>) {
   return <select {...props} className={`${fieldClass} ui-select cursor-pointer pr-10 ${className}`} />;
 }
 
-export function Textarea({ className = '', ...props }: ComponentProps<'textarea'>) {
-  return <textarea {...props} className={`${fieldClass} resize-y ${className}`} />;
+export function Textarea({ className = '', appearance = 'default', ...props }: ComponentProps<'textarea'> & { appearance?: 'default' | 'embedded' }) {
+  const embedded = 'ui-field box-border min-h-11 min-w-0 border-0 bg-transparent px-3 py-2 text-base text-[var(--color-text)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50';
+  return <textarea {...props} className={`${appearance === 'embedded' ? embedded : fieldClass + ' resize-y'} ${className}`} />;
 }

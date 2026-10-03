@@ -14,14 +14,16 @@ import {
   briefIntakeWithOptions,
   briefToGenerateForm,
   requiredBriefFields,
+  uid,
   type EditOpOutcome,
   type PlanningBriefData,
   type SendMessageResult,
   type TripConstraint,
 } from '@tripweaver/shared';
 import { requireAuth } from '../auth/guard';
-import { applyDialogueDecision, briefStatus } from '../chat/brief';
-import { applyItineraryEdits, normalizeEditOps } from '../chat/editOps';
+import { applyDialogueDecision, briefStatus, syncBriefTripDates } from '../chat/brief';
+import { applyItineraryEdits, editActivityDrafts, normalizeEditOps } from '../chat/editOps';
+import { runDetailChat } from '../services/detailChatService';
 import { DialogueUnderstandingError } from '../chat/models';
 import { understandMessage } from '../chat/understanding';
 import { createJob, getRunningJobId } from '../generation/jobManager';
@@ -41,6 +43,7 @@ import {
   saveBrief,
 } from '../services/conversationService';
 import { resolveLlmConfig } from '../services/settingsService';
+import { detailChatRoutes } from './detailChat';
 
 const IdParams = Type.Object({ id: Type.String() });
 
@@ -88,6 +91,7 @@ function describeBriefChanges(before: PlanningBriefData, after: PlanningBriefDat
 
 export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
+  await app.register(detailChatRoutes);
 
   app.get('/', async (request) => ({
     conversations: await listConversations(request.user!.id),
@@ -159,21 +163,25 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     }
 
     // ---- R1（09-24）：按需修订。模型给编辑操作 → 确定性应用 → 落版本链下一版 ----
+    // 旧客户端追加日期同样走调研和原子保存，复用已经完成的理解，避免多调一次模型。
+    if (currentTrip && outcome.intent === 'modify_itinerary' && normalizeEditOps(outcome.editOps).some((op) => op.kind === 'add_days')) {
+      return runDetailChat(userId, conversationId, { requestId: uid(), text, tripId: currentTrip.id, updatedAt: currentTrip.updatedAt }, cfg, controller.signal, () => {}, outcome);
+    }
     // 不再有 RevisionCard 确认环节（R3：LLM 判定修改意图即直接执行）
     let editResult: { tripId: string; version: number; outcomes: EditOpOutcome[] } | undefined;
     if (outcome.intent === 'modify_itinerary' && outcome.editOps && detail.latestTrip && currentTrip) {
       const ops = normalizeEditOps(outcome.editOps);
       // 新增/替换的活动需要坐标：走与生成链路相同的解析链（高德→Nominatim 降级），失败保持 estimated
-      const needsGeocode = ops.filter((op) => op.activity);
+      const needsGeocode = editActivityDrafts(ops);
       if (needsGeocode.length > 0) {
         const geo = createGeoSession(userId, currentTrip.destination, currentTrip.transportMode ?? 'transit');
         await geo.init();
-        for (const op of needsGeocode) {
+        for (const activity of needsGeocode) {
           if (controller.signal.aborted) break;
-          const place = await geo.resolvePlace(op.activity!.name);
+          const place = await geo.resolvePlace(activity.name);
           if (place) {
-            op.activity!.lat = place.lat;
-            op.activity!.lng = place.lng;
+            activity.lat = place.lat;
+            activity.lng = place.lng;
           }
         }
       }
@@ -193,7 +201,9 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     }
 
     const evidenceSequence = (detail.messages.at(-1)?.sequence ?? 0) + 1;
-    const nextData = applyDialogueDecision(detail.conversation.brief.data, outcome.decision, evidenceSequence);
+    const decisionData = applyDialogueDecision(detail.conversation.brief.data, outcome.decision, evidenceSequence);
+    const editedTrip = editResult?.outcomes.some((item) => item.kind === 'add_days') ? await getTrip(userId, editResult.tripId) : null;
+    const nextData = editedTrip ? syncBriefTripDates(decisionData, editedTrip) : decisionData;
 
     // R2（09-25 未覆盖城市诚实降级）：目的地新出现或变更时查一次知识库覆盖，
     // 未覆盖则在回复尾部拼提示——不编造覆盖能力，也不过滤目的地（白名单方案已否决）。

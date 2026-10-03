@@ -25,7 +25,9 @@ const { createSession } = await import('../apps/server/src/auth/session');
 const { createTrip } = await import('../apps/server/src/services/tripService');
 const { tripRoutes } = await import('../apps/server/src/routes/trips');
 const { env } = await import('../apps/server/src/env');
+const { installApiResponses } = await import('../apps/server/src/http/apiResponse');
 const app = Fastify();
+installApiResponses(app);
 const originalFetch = globalThis.fetch;
 let calls = 0;
 globalThis.fetch = async (url, init) => {
@@ -50,7 +52,7 @@ try {
   assert.equal(calls, 0);
   const response = await request(owner);
   assert.equal(response.statusCode, 200, response.body);
-  assert.equal(response.json().mimeType, 'image/png');
+  assert.equal(response.json().data.mimeType, 'image/png');
   assert.equal(response.body.includes('image-test-fixture'), false);
   assert.equal(response.headers['cache-control'], 'no-store');
   assert.equal((await request(owner)).statusCode, 200);

@@ -40,7 +40,7 @@ Public routes are `/login` and `/register`. Authenticated routes are nested unde
 - `/trips/:id` renders the editor (含内嵌对话面板，行程有关联会话时出现).
 - Unknown paths redirect to `/trips`.
 
-`RequireAuth` waits for `useMe`. A 401 redirects to `/login` and preserves `location.pathname` in route state so login can return the user to the original page. A non-401 failure is not treated as logged out; it renders a service-unavailable message. Preserve that distinction.
+`RequireAuth` waits for `useMe`. A 401 redirects to `/login` and preserves pathname/search/hash in route state so login can return the user to the original page. The common client also notifies `App.tsx` of any protected API 401, clearing user caches and redirecting even while `useMe` is fresh. A non-401 failure is not treated as logged out; the auth gate renders a service-unavailable message. Preserve that distinction.
 
 Evidence: `apps/web/src/router.tsx`, `apps/web/src/pages/LoginPage.tsx`, `apps/web/src/components/AppLayout.tsx`.
 

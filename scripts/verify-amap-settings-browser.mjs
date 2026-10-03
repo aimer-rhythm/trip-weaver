@@ -1,3 +1,4 @@
+import { apiSuccess } from './lib/api-contract.mjs';
 // 设置页浏览器回归：保存、空白保留、更新、显式清除，以及 sources-status 缓存失效。
 // 运行前先 npm run build，再执行：node scripts/verify-amap-settings-browser.mjs
 import { chromium } from 'playwright';
@@ -58,12 +59,12 @@ try {
     await route.fulfill({
       status: 200,
       contentType: 'application/json',
-      body: JSON.stringify({
+      body: JSON.stringify(apiSuccess({
         searchProvider: 'tianditu',
         routeProvider: 'amap',
         poi: { configured: true, checked: true, ok: true, message: '测试天地图地点数据源连接正常' },
         websearch: { configured: false, checked: true, ok: null, message: '测试搜索未配置' },
-      }),
+      })),
     });
   });
 
@@ -88,7 +89,7 @@ try {
   check('设置页保存个人 Key 并仅显示尾号', (await dialog.innerText()).includes('个人 Key（尾号 a111）'));
   check('保存后使数据源状态查询失效并重新探测', sourceStatusRequests >= 2, `requests=${sourceStatusRequests}`);
 
-  const savedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json());
+  const savedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json().then(body => body.data));
   const savedSettingsJson = JSON.stringify(savedSettings);
   check(
     '浏览器 API 响应不含个人 Key 明文或密文',
@@ -100,7 +101,7 @@ try {
 
   await dialog.getByRole('button', { name: '保存' }).click();
   await page.waitForTimeout(200);
-  const preservedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json());
+  const preservedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json().then(body => body.data));
   check('普通空输入提交保留个人 Key', preservedSettings.hasPersonalAmapKey && preservedSettings.amapApiKeyLast4 === 'a111');
 
   await amapInput.fill(secondPersonalKey);
@@ -111,7 +112,7 @@ try {
   await dialog.getByLabel(/清除已保存的个人高德 Key/).check();
   await dialog.getByRole('button', { name: '保存' }).click();
   await page.waitForFunction(() => document.querySelector('dialog')?.textContent?.includes('当前高德配置：站点默认 Key'));
-  const clearedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json());
+  const clearedSettings = await page.evaluate(async () => (await fetch('/api/settings')).json().then(body => body.data));
   check(
     '显式清除后恢复站点默认 Key',
     clearedSettings.hasPersonalAmapKey === false &&

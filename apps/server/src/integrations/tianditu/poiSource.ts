@@ -75,12 +75,13 @@ export class TiandituPoiSource implements PoiSource {
    * 结果按 region 缓存（与 geocode 同为 24h）：同一目的地的一次生成里最多多出一次 geocoder 调用，
    * 且该调用是地域级的、跨生成可复用。
    */
-  private async cityBound(region: string): Promise<string | null> {
+  private async cityBound(region: string, signal?: AbortSignal): Promise<string | null> {
+    signal?.throwIfAborted();
     const key = region.trim().toLowerCase();
     if (!key) return null;
     const cached = boundCache.get(key);
     if (cached !== undefined) return cached;
-    const center = await tiandituGeocode(this.tk, region, '');
+    const center = await tiandituGeocode(this.tk, region, '', signal);
     // mapBound 也是「出站参数」，与其他出站坐标一样回 WGS-84（geocoder 入站时已转成 GCJ-02）。
     // 500m 的偏差对 ±0.5° 的视野本来无实际影响，但保持一致才不会有「哪个参数忘了转」的下一次。
     const wgs = center ? gcj02ToWgs84(center.lat, center.lng) : null;
@@ -103,8 +104,9 @@ export class TiandituPoiSource implements PoiSource {
    * 类目不参与请求（天地图无分类码参数）；`region` 既拼进 keyWord 消歧、也用于算 mapBound ——
    * 天地图的普通搜索没有「搜索区划」入参，这是最接近高德 region + city_limit 语义的等价做法。
    */
-  private async request(keyword: string, region: string): Promise<SourcedPoi[]> {
-    const mapBound = await this.cityBound(region);
+  private async request(keyword: string, region: string, signal?: AbortSignal): Promise<SourcedPoi[]> {
+    const mapBound = await this.cityBound(region, signal);
+    signal?.throwIfAborted();
     if (!mapBound) return [];          // 拿不到城市视野：普通搜索无法进行，按空结果降级
     const postStr = JSON.stringify({
       keyWord: `${region}${keyword}`.slice(0, 80),
@@ -116,7 +118,8 @@ export class TiandituPoiSource implements PoiSource {
     });
     const params = new URLSearchParams({ postStr, type: 'query', tk: this.tk });
     return this.queue(async () => {
-      const res = await fetch(`${SEARCH_URL}?${params}`, { signal: AbortSignal.timeout(10_000) });
+      signal?.throwIfAborted();
+      const res = await fetch(`${SEARCH_URL}?${params}`, { signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(10_000)]) : AbortSignal.timeout(10_000) });
       if (!res.ok) throw await describeHttpFailure(res);
       const body = (await res.json()) as Record<string, unknown>;
       // 成功判定：status.infocode === 1000（未开通权限时这里会给出非 1000 的状态）
@@ -130,16 +133,19 @@ export class TiandituPoiSource implements PoiSource {
     });
   }
 
-  async searchPois(category: PoiCategory, keyword: string, region: string): Promise<SourcedPoi[]> {
+  async searchPois(category: PoiCategory, keyword: string, region: string, signal?: AbortSignal): Promise<SourcedPoi[]> {
+    signal?.throwIfAborted();
     void category;                                          // 天地图无分类码参数，类别由 keyword 承载
     const cacheKey = `${region}:${keyword}`.trim().toLowerCase();
     const cached = this.cache.get(cacheKey);
     if (cached) return cached;
     try {
-      const pois = await this.request(keyword, region);
+      const pois = await this.request(keyword, region, signal);
+      signal?.throwIfAborted();
       this.cache.set(cacheKey, pois);
       return pois;
     } catch {
+      signal?.throwIfAborted();
       return [];                               // 不抛错：调研 Agent 自动降级为模型知识
     }
   }

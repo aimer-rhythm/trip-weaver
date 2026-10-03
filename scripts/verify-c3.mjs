@@ -1,3 +1,4 @@
+import { apiFailure } from './lib/api-contract.mjs';
 // C3 浏览器自动化验收：首页城市选择 → 结构化表单 → SSE 时间线三阶段（含候选卡片实时长出）→ 完成跳编辑器（含备选抽屉）
 //                     → 编辑器内嵌对话修订 → 刷新恢复 → 取消 → 配额文案 → 旧行程（无 overview）兼容
 // 走生产模式静态托管（同源 SSE），mock LLM 驱动。运行：node scripts/verify-c3.mjs
@@ -259,7 +260,7 @@ try {
   //   概览层（payload）断言候选全量与预约种子表；抽屉层只断言未命中活动的两项。
   const tripId = page.url().split('/').pop();
   // 用页面内 fetch（同源、带 cookie），不用 page.request —— 后者在某些 Playwright 版本下不共用会话 cookie
-  const tripPayload = await page.evaluate(async (id) => (await fetch(`/api/trips/${id}`)).json(), tripId);
+  const tripPayload = await page.evaluate(async (id) => (await fetch(`/api/trips/${id}`)).json().then(body => body.data), tripId);
   const overview = tripPayload.overview ?? [];
   check('概览持久化 3 条候选', overview.length === 3, `overview=${overview.length}`);
   const gugong = overview.find((p) => p.name === '故宫博物院');
@@ -298,9 +299,9 @@ try {
 
   // 3.55 表单生成的会话关联（09-26）：提交时惰性建会话 + Brief 快照，编辑器据此挂对话面板
   const convProbe = await page.evaluate(async (id) => {
-    const conv = await (await fetch(`/api/trips/${id}/conversation`)).json();
+    const conv = await (await fetch(`/api/trips/${id}/conversation`)).json().then(body => body.data);
     if (!conv.conversationId) return { conversationId: null };
-    const detail = await (await fetch(`/api/conversations/${conv.conversationId}`)).json();
+    const detail = await (await fetch(`/api/conversations/${conv.conversationId}`)).json().then(body => body.data);
     return { conversationId: conv.conversationId, brief: detail.conversation.brief.data };
   }, tripId);
   check('表单生成的行程已关联会话', Boolean(convProbe.conversationId));
@@ -387,7 +388,7 @@ try {
     await sleep(300);
     if (rejectNextCancellation) {
       rejectNextCancellation = false;
-      await route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: '模拟取消失败' }) });
+      await route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify(apiFailure(500, '模拟取消失败')) });
       return;
     }
     await route.continue();

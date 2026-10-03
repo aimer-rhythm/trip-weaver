@@ -10,7 +10,7 @@ import { env } from './env';
 import { setAmapLogger } from './integrations/amap/request';
 import './lib/proxy';                        // 需在任何出站 fetch 之前接管代理
 import './db/client';                       // 触发建库与迁移
-import { SsrfError } from './integrations/ssrfGuard';
+import { installApiResponses } from './http/apiResponse';
 import { authRoutes } from './routes/auth';
 import { conversationRoutes } from './routes/conversations';
 import { settingsRoutes } from './routes/settings';
@@ -31,18 +31,7 @@ async function main() {
   await app.register(cookie);
   await app.register(rateLimit, { global: false });
 
-  app.setErrorHandler((error: unknown, _request, reply) => {
-    if (error instanceof SsrfError) {
-      return reply.code(400).send({ error: error.message });
-    }
-    const err = error as { statusCode?: number; validation?: unknown; message?: string };
-    if (err.validation) {
-      return reply.code(400).send({ error: '请求参数不正确', detail: err.message });
-    }
-    const statusCode = err.statusCode ?? 500;
-    if (statusCode >= 500) app.log.error(error);
-    return reply.code(statusCode).send({ error: statusCode >= 500 ? '服务器内部错误' : (err.message ?? '请求失败') });
-  });
+  installApiResponses(app);
 
   app.get('/api/health', async () => ({
     ok: true,

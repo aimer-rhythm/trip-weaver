@@ -1,8 +1,10 @@
 // 单测：对话按需编辑的归一与应用（纯函数，见 chat/editOps.ts）
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { makeSampleTrip, type Trip } from '@tripweaver/shared';
-import { applyItineraryEdits, normalizeEditOps } from '../chat/editOps';
+import { ItineraryEditOpsSchema, EditOpOutcomeSchema, MAX_TRIP_DAYS, TripSchema, briefToGenerateForm, makeSampleTrip, type Trip } from '@tripweaver/shared';
+import { Value } from '@sinclair/typebox/value';
+import { applyItineraryEdits, editActivityDrafts, normalizeEditOps } from '../chat/editOps';
+import { syncBriefTripDates } from '../chat/brief';
 
 function trip(): Trip {
   const t = makeSampleTrip();
@@ -103,4 +105,66 @@ test('不修改传入的原行程对象（immutable）', () => {
   const before = structuredClone(t);
   applyItineraryEdits(t, [{ kind: 'delete_activity', dayIndex: 1, activityId: t.days[0]!.activities[0]!.id }]);
   assert.deepEqual(t, before);
+});
+
+test('add_days：整组追加多个日期和活动，保留旧日期，坐标草稿进入解析列表', () => {
+  const current = trip();
+  const before = structuredClone(current);
+  const firstIndex = current.days.length + 1;
+  const raw = [{ kind: 'add_days', dayIndex: firstIndex, days: [
+    { title: '城市慢游', activities: [{ name: '上海博物馆', category: '文化' }] },
+    { title: '自由休息', activities: [] },
+  ] }];
+  assert.equal(Value.Check(ItineraryEditOpsSchema, raw), true);
+  const ops = normalizeEditOps(raw);
+  const drafts = editActivityDrafts(ops);
+  assert.equal(drafts.length, 1);
+  Object.assign(drafts[0]!, { lat: 31.23, lng: 121.47 });
+  const result = applyItineraryEdits(current, ops);
+  assert.equal(result.changed, true);
+  assert.equal(result.trip.days.length, current.days.length + 2);
+  assert.deepEqual(result.trip.days.slice(0, current.days.length), current.days);
+  assert.deepEqual(current, before);
+  assert.deepEqual(result.trip.days.slice(-2).map((day) => day.dayIndex), [firstIndex, firstIndex + 1]);
+  assert.equal(result.trip.days.at(-2)!.activities[0]!.coordSource, 'geocoded');
+  assert.equal(new Set(result.trip.days.map((day) => day.id)).size, result.trip.days.length);
+  assert.equal(Value.Check(TripSchema, result.trip), true);
+  assert.equal(Value.Check(EditOpOutcomeSchema, result.outcomes[0]), true);
+});
+
+test('add_days：不跳号、不覆盖已有日期、不重复追加、不部分接受超限天数', () => {
+  const current = trip();
+  const days = [{ title: '新增日期', activities: [] }];
+  for (const dayIndex of [1, current.days.length + 2]) {
+    const result = applyItineraryEdits(current, [{ kind: 'add_days', dayIndex, days }]);
+    assert.equal(result.changed, false);
+    assert.deepEqual(result.trip.days, current.days);
+  }
+  const tooMany = applyItineraryEdits(current, [{ kind: 'add_days', dayIndex: current.days.length + 1, days: Array.from({ length: MAX_TRIP_DAYS }, () => days[0]!) }]);
+  assert.equal(tooMany.changed, false);
+  assert.match(tooMany.outcomes[0]!.summary, /最多支持 15 天/);
+  const duplicate = applyItineraryEdits(current, [
+    { kind: 'add_days', dayIndex: current.days.length + 1, days },
+    { kind: 'add_days', dayIndex: current.days.length + 2, days },
+  ]);
+  assert.equal(duplicate.trip.days.length, current.days.length + 1);
+  assert.equal(duplicate.outcomes[1]!.applied, false);
+});
+
+test('add_days：非法日期组整组拒绝，明确空白日期允许', () => {
+  const validDay = { title: '有效日期', activities: [{ name: '公园' }] };
+  for (const days of [[], [validDay, { title: '坏数据', activities: [{ name: '  ' }] }], [validDay, { title: '坏数据' }], [{ title: '太满', activities: Array.from({ length: 13 }, () => ({ name: '公园' })) }]]) {
+    assert.deepEqual(normalizeEditOps([{ kind: 'add_days', dayIndex: 4, days }]), []);
+  }
+  assert.equal(normalizeEditOps([{ kind: 'add_days', dayIndex: 4, days: [{ title: '休息日', activities: [] }] }]).length, 1);
+});
+
+test('日期同步：新增天数跨月并更新旧结束日期，恢复短行程后重新生成不沿用长天数', () => {
+  const current = trip(); current.startDate = '2026-12-31'; current.days = current.days.slice(0, 2);
+  const next = syncBriefTripDates({ constraints: [], days: 10, startDate: '2026-12-20', endDate: '2026-12-29' }, current);
+  assert.equal(next.endDate, '2027-01-01');
+  assert.equal(briefToGenerateForm(next).days, 2);
+  const noDate = syncBriefTripDates(next, { ...current, startDate: '' });
+  assert.equal(noDate.endDate, undefined);
+  assert.equal(noDate.days, 2);
 });

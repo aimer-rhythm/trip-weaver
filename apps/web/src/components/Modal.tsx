@@ -2,7 +2,7 @@ import { IconButton } from './ui/Button';
 import { useEffect, useId, useRef, type ReactNode } from 'react';
 
 // 原生 <dialog> 封装：免费拿到遮罩、焦点陷阱与 ESC 关闭
-export function Modal({ title, onClose, children, size = 'default' }: { title: string; onClose: () => void; children: ReactNode; size?: 'default' | 'photo' }) {
+export function Modal({ title, onClose, children, footer, size = 'default' }: { title: string; onClose: () => void; children: ReactNode; footer?: ReactNode; size?: 'default' | 'photo' | 'drawer' }) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const closeRef = useRef(onClose);
@@ -30,19 +30,20 @@ export function Modal({ title, onClose, children, size = 'default' }: { title: s
   }, []);
 
   return (
-    <dialog ref={ref} aria-labelledby={titleId} className={`modal box-border max-h-[calc(100dvh-32px)] w-[calc(100vw-32px)] ${size === 'photo' ? 'max-w-[1100px]' : 'max-w-[480px]'} overflow-y-auto rounded-2xl border border-solid border-[var(--color-border)] bg-[var(--color-card)] p-0 text-[var(--color-text)] shadow-xl backdrop:bg-[rgba(19,32,40,0.45)]`} onClick={(e) => {
+    <dialog ref={ref} aria-labelledby={titleId} className={`modal box-border ${size === 'drawer' ? 'fixed bottom-5 left-auto right-[clamp(16px,1.9vw,32px)] top-[clamp(56px,4.2vw,72px)] m-0 h-[calc(100dvh-clamp(56px,4.2vw,72px)-20px)] max-h-none w-[clamp(280px,20vw,340px)] max-w-[calc(100vw-32px)] overflow-hidden rounded-[18px] border-white bg-white/95 text-[var(--color-editor-page-editor-ink-55)] backdrop-blur-xl backdrop:bg-ink/30 backdrop:backdrop-blur-[2px] max-[600px]:inset-0 max-[600px]:h-dvh max-[600px]:w-full max-[600px]:max-w-none max-[600px]:rounded-none' : `max-h-[calc(100dvh-32px)] w-[calc(100vw-32px)] overflow-y-auto rounded-2xl border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-text)] backdrop:bg-[rgba(19,32,40,0.45)] ${size === 'photo' ? 'max-w-[1100px]' : 'max-w-[480px]'}`} border border-solid p-0 shadow-xl`} onClick={(e) => {
       if (e.target !== ref.current) return;
       const rect = e.currentTarget.getBoundingClientRect();
       if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) onClose();
     }}>
-      <div className={"modal-body [padding:20px]"}>
-        <div className={"modal-head flex items-center justify-between [margin-bottom:14px]"}>
+      <div className={size === 'drawer' ? 'modal-body box-border flex h-full min-h-0 flex-col p-5' : 'modal-body p-5'}>
+        <div className={`modal-head flex shrink-0 items-center justify-between ${size === 'drawer' ? 'mb-5' : 'mb-3.5'}`}>
           <h2 id={titleId} className="m-0 text-lg">{title}</h2>
           <IconButton onClick={onClose} aria-label="关闭">
             ✕
           </IconButton>
         </div>
-        {children}
+        {size === 'drawer' ? <div className="modal-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">{children}</div> : children}
+        {footer && <div className="modal-footer mt-4 shrink-0 border-0 border-t border-solid border-ink/5 pt-4">{footer}</div>}
       </div>
     </dialog>
   );

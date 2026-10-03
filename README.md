@@ -138,6 +138,7 @@ npm run build && node scripts/verify-c3.mjs && node scripts/verify-d1.mjs  # 浏
 
 - [产品需求 PRD](docs/PRD.md)
 - [技术架构](docs/TECHNICAL_ARCHITECTURE.md)
+- [API 响应与请求约定](docs/API_CONTRACT.md)
 - [开发计划](docs/DEVELOPMENT_PLAN.md)
 
 ## 路线图

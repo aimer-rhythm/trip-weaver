@@ -45,17 +45,19 @@ function parseLocationObject(raw: unknown): GeoPoint | null {
  * 目的地城市名拼进 keyWord 做消歧（与高德 v3 geocode 的 `${city}${name}` 同策略）；
  * ds 必须是 JSON **字符串**而不是对象，参数名是 tk 而不是官方表格里写的 appkey。
  */
-export async function tiandituGeocode(tk: string, name: string, city: string): Promise<GeocodedPoint | null> {
+export async function tiandituGeocode(tk: string, name: string, city: string, signal?: AbortSignal): Promise<GeocodedPoint | null> {
+  signal?.throwIfAborted();
   const cacheKey = `${city}:${name}`.trim().toLowerCase();
   const cached = geocodeCache.get(cacheKey);
   if (cached !== undefined) return cached;
   const point = await tiandituQueue(async () => {
     try {
+      signal?.throwIfAborted();
       const params = new URLSearchParams({
         ds: JSON.stringify({ keyWord: `${city}${name}`.slice(0, 80) }),
         tk,
       });
-      const res = await fetch(`${GEOCODER_URL}?${params}`, { signal: AbortSignal.timeout(10_000) });
+      const res = await fetch(`${GEOCODER_URL}?${params}`, { signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(10_000)]) : AbortSignal.timeout(10_000) });
       if (!res.ok) throw await describeHttpFailure(res);
       const body = (await res.json()) as Record<string, unknown>;
       if (body.status !== SUCCESS_STATUS) throw new Error(String(body.msg || '未知错误'));
@@ -64,9 +66,11 @@ export async function tiandituGeocode(tk: string, name: string, city: string): P
       // 天地图回 WGS-84/CGCS2000 → 落库前转 GCJ-02（库内唯一坐标系契约）
       return { ...wgs84ToGcj02(wgs.lat, wgs.lng), adcode: '' };
     } catch {
+      signal?.throwIfAborted();
       return null;
     }
   });
+  signal?.throwIfAborted();
   geocodeCache.set(cacheKey, point);
   return point;
 }

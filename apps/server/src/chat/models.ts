@@ -13,6 +13,7 @@ import {
   CONSTRAINT_CATEGORIES,
   CONSTRAINT_POLARITIES,
   MAX_EDIT_OPS_PER_TURN,
+  MAX_EDIT_ACTIVITIES_PER_DAY,
   MAX_TRIP_DAYS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
@@ -41,10 +42,22 @@ export const ConstraintDraftSchema = Type.Object({
 const activityCategory = Type.Optional(enumOf(ACTIVITY_CATEGORIES));
 
 /**
- * 编辑操作三件套（R1，09-24）：替换/删除/新增。与 shared/editOps.ts 同形状，
+ * 编辑操作：替换/删除/新增活动与追加日期。与 shared/editOps.ts 同形状，
  * 但这里是 typebox v1（工具参数校验用）；读取后交给 normalizeEditOps 再校验一轮。
  */
 const EditOpSchema = Type.Union([
+  Type.Object({
+    kind: Type.Literal('add_days'),
+    dayIndex: Type.Integer({ minimum: 1, maximum: MAX_TRIP_DAYS, description: '新增日期的起点，必须为当前最后一天的 dayIndex + 1' }),
+    days: Type.Array(Type.Object({
+      title: Type.String({ minLength: 1, maxLength: 30 }),
+      activities: Type.Array(Type.Object({
+        name: Type.String({ minLength: 1, maxLength: 100 }),
+        category: activityCategory,
+        description: Type.Optional(Type.String({ maxLength: 500 })),
+      }), { maxItems: MAX_EDIT_ACTIVITIES_PER_DAY }),
+    }), { minItems: 1, maxItems: MAX_TRIP_DAYS, description: '按顺序追加的新日期；通常每一天安排 2～4 个活动，明确留白或休息时可为空' }),
+  }),
   Type.Object({
     kind: Type.Literal('replace_activity'),
     dayIndex: Type.Integer({ minimum: 1 }),

@@ -45,7 +45,9 @@ globalThis.fetch = async (input, init) => {
   return originalFetch(input, init);
 };
 const appErrors: unknown[] = [];
+const { installApiResponses } = await import('../apps/server/src/http/apiResponse');
 const app = Fastify();
+installApiResponses(app);
 app.setErrorHandler((error, _request, reply) => { appErrors.push(error); reply.code(500).send({ error: 'test failure' }); });
 const counts = async (userId: string) => (await pool.query(
   `SELECT (SELECT count(*)::int FROM trips WHERE user_id=$1) AS trips,

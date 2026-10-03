@@ -1,3 +1,4 @@
+import { readApiResponse } from './lib/api-contract.mjs';
 // 认证模式验收：REGISTRATION_MODE 三态 + 兼容推断 + GitHub OAuth 路由骨架
 // 自行拉起服务（每场景独立 env + 临时库），无需预先启动；运行：node scripts/verify-auth-modes.mjs
 import { spawn } from 'node:child_process';
@@ -100,7 +101,7 @@ const uniqueEmail = () => `vm-${Date.now()}-${Math.random().toString(36).slice(2
 
 // ---- 场景 1：open 模式（显式）----
 await scenario('open', 18931, { REGISTRATION_MODE: 'open' }, async (base) => {
-  const cfg = await (await fetch(`${base}/api/auth/config`)).json();
+  const cfg = await readApiResponse(await fetch(`${base}/api/auth/config`));
   check('open：config 上报 open + github 关闭', cfg.registrationMode === 'open' && cfg.githubEnabled === false, JSON.stringify(cfg));
   const res = await post(base, '/api/auth/register', { email: uniqueEmail(), password: 'password123' });
   check('open：免邀请码注册成功', res.status === 201, `status=${res.status}`);
@@ -111,7 +112,7 @@ await scenario('open', 18931, { REGISTRATION_MODE: 'open' }, async (base) => {
 
 // ---- 场景 2：兼容推断（REGISTRATION_MODE 未设 + INVITE_CODE 非空 → invite，旧版行为）----
 await scenario('legacy-invite', 18932, { INVITE_CODE: 'legacy-code-2026' }, async (base) => {
-  const cfg = await (await fetch(`${base}/api/auth/config`)).json();
+  const cfg = await readApiResponse(await fetch(`${base}/api/auth/config`));
   check('推断：INVITE_CODE 非空自动进入 invite 模式', cfg.registrationMode === 'invite', JSON.stringify(cfg));
   const noCode = await post(base, '/api/auth/register', { email: uniqueEmail(), password: 'password123' });
   check('推断：缺邀请码被拒 403', noCode.status === 403, `status=${noCode.status}`);
@@ -125,7 +126,7 @@ await scenario('legacy-invite', 18932, { INVITE_CODE: 'legacy-code-2026' }, asyn
 await scenario('closed', 18933, { REGISTRATION_MODE: 'closed' }, async (base) => {
   const res = await post(base, '/api/auth/register', { email: uniqueEmail(), password: 'password123' });
   check('closed：注册被拒 403', res.status === 403, `status=${res.status}`);
-  const cfg = await (await fetch(`${base}/api/auth/config`)).json();
+  const cfg = await readApiResponse(await fetch(`${base}/api/auth/config`));
   check('closed：config 上报 closed', cfg.registrationMode === 'closed', JSON.stringify(cfg));
 });
 
@@ -154,7 +155,7 @@ await scenario(
     APP_BASE_URL: 'http://localhost:5173',
   },
   async (base) => {
-    const cfg = await (await fetch(`${base}/api/auth/config`)).json();
+    const cfg = await readApiResponse(await fetch(`${base}/api/auth/config`));
     check('github：config 上报 githubEnabled=true', cfg.githubEnabled === true, JSON.stringify(cfg));
     const go = await fetch(`${base}/api/auth/github`, { redirect: 'manual' });
     const loc = go.headers.get('location') ?? '';

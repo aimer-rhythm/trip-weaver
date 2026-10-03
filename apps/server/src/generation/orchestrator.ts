@@ -35,7 +35,7 @@ import { emit, completeJob, failJob, cancelJob, type Job } from './jobManager';
 import { runPhaseAgent, type PhaseEventSink } from './agents/runner';
 import { GenerationPerformance } from './performance';
 import { createLlmRequestRecorder } from './llmRequestLog';
-import { buildResearchTools, type ResearchOutcome } from './tools/researchTools';
+import { runResearchPhase } from './researchPhase';
 import { createGenerationPhotoLookup } from '../integrations/photoEnrichment';
 import { loadPlaceFacts } from './scheduling/placeFacts';
 import { loadPlaceRelations } from './scheduling/placeRelations';
@@ -43,12 +43,10 @@ import { loadPlaceRelations } from './scheduling/placeRelations';
 import { buildDraftTools } from './tools/draftTools';
 import type { ReviewOutcome } from './tools/reviewTools';
 import { retrieveContext } from './retrieveContext';
-import { prepareResearchContext, renderRetrievedPlaces } from './researchContext';
+import { prepareResearchContext } from './researchContext';
 import { applyDeterministicSchedule } from './scheduling/buildDraft';
 import {
   WRITER_SYSTEM_PROMPT,
-  researchSystemPrompt,
-  formBrief,
   writerUserPrompt,
 } from './prompts';
 import { cityCoverage, searchWebMaxFor } from '../services/cityCoverageService';
@@ -228,32 +226,15 @@ export async function runGeneration(
     startPhase('research', 1, researchNote(enabledSources));
     // R3（09-25）：未覆盖城市放宽 search_web 上限（2→6），SEARCH_DAILY_BUDGET 日预算闸门不受影响
     const searchWebMax = searchWebMaxFor(await cityCoverage(form.destination));
-    const research: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
     const verifiedPlaces = await runSystemTask('research', 'prefetch_verified_places', '筛选行程地点', () =>
       prepareResearchContext(form, retrieveContext, signal));
     assertAlive(signal);
-    const researchRun = await runPhaseAgent({
-      model,
-      apiKey: cfg.apiKey,
-      systemPrompt: researchSystemPrompt({ searchWebMax, pace: form.pace, foodSearch: foodFocused }),
-      tools: buildResearchTools({
-        poiSource: poi.source,
-        searchSource: search.source,
-        destination: form.destination,
-        searchWebMax,
-        outcome: research,
-        onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
-        reviewedCover: createGenerationPhotoLookup(form.destination),
-        verifiedPlaces,
-        signal,
-        foodSearch: foodFocused,
-      }),
-      userPrompt: `${formBrief(form)}\n\n${verifiedPlaces.length
-        ? `系统已预取以下已验证候选（只是备选，不必全部入选）。足够时直接一次 submit_research，candidates 只填 placeId 和 intro；名称、类别、预约与来源自动复用。只做地点筛选和短简介，不编排日程。只有缺地点或复杂偏好尚未满足时才补查。语义相似不能证明无障碍、无拥挤等硬条件。\n${renderRetrievedPlaces(verifiedPlaces)}`
-        : '系统预取未命中，请按知识库与外部来源降级流程调研。'}`,
-      signal,
+    const { research, result: researchRun } = await runResearchPhase({
+      form, model, apiKey: cfg.apiKey, signal, verifiedPlaces, searchWebMax,
+      poiSource: poi.source, searchSource: search.source,
+      onCandidate: (candidate) => emit(job, { type: 'candidate', poi: candidate }),
+      reviewedCover: createGenerationPhotoLookup(form.destination),
       sink: sinkFor('research'),
-      maxTurns: 16,
       recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'research', round: 1 }),
     });
     usage.tokensIn += researchRun.tokensIn;

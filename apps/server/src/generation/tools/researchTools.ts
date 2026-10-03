@@ -44,6 +44,10 @@ export interface ResearchOutcome {
 
 export interface ResearchToolDeps {
   verifiedPlaces?: readonly RetrievedPlace[];
+  retrieve?: typeof retrieveContext;
+  acceptPlace?: (name: string, aliases?: readonly string[]) => boolean;
+  /** 对话追加必须有库内实体或本轮地点搜索坐标，不能凭模型知识造新地点。 */
+  groundedOnly?: boolean;
   signal?: AbortSignal;
   foodSearch?: boolean;
   /** 正式生成入口：人工选图优先，再读新版审核图库；缺图后台入队，禁止旧链路兜底。 */
@@ -206,7 +210,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         const key = JSON.stringify([category, Boolean(params.semantic), terms]);
         let pending = searches.get(key);
         if (!pending) {
-          pending = retrieveContext(terms, { city: destination, category, signal: deps.signal, vector: params.semantic ? 'force' : 'auto' });
+          pending = (deps.retrieve ?? retrieveContext)(terms, { city: destination, category, signal: deps.signal, vector: params.semantic ? 'force' : 'auto' });
           searches.set(key, pending);
         }
         places = await pending;
@@ -235,7 +239,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       if (!(POI_CATEGORIES as readonly string[]).includes(category)) {
         return { content: text('错误：category 必须是 attraction / food / hotel 之一。'), details: { ok: false } };
       }
-      const pois = await poiSource.searchPois(category, params.keyword, destination);
+      const pois = await poiSource.searchPois(category, params.keyword, destination, deps.signal);
       if (!pois.length) {
         return {
           content: text('没有找到相关地点（天地图数据源不可用、未开通搜索权限、已达调用上限或无结果）。可换个关键词，或基于你自己的知识直接 add_candidate。'),
@@ -272,7 +276,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       query: Type.String({ description: '搜索词，如「故宫 门票 预约」「XX市 三日游 避雷」' }),
     }),
     execute: async (_id, params) => {
-      const hits = await searchSource.search(params.query);
+      const hits = await searchSource.search(params.query, deps.signal);
       if (!hits.length) {
         return {
           content: text('没有搜到相关内容（搜索数据源不可用、已达调用上限或无结果）。可换个说法，或基于你自己的知识继续。'),
@@ -328,6 +332,12 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         return { content: text('错误：候选城市或类目不一致。'), details: { ok: false } };
       }
       if (known) name = known.name;
+      if (deps.acceptPlace && !deps.acceptPlace(name, known?.aliases)) {
+        return { content: text('该地点已在原行程中，请选择不同地点。'), details: { ok: false } };
+      }
+      if (deps.groundedOnly && !known && !outcome.locations.has(name)) {
+        return { content: text('新增日期只使用已检索的知识库地点或有真实坐标的地点搜索结果，请先检索。'), details: { ok: false } };
+      }
       if (outcome.pool.length >= MAX_OVERVIEW_POIS) {
         return { content: text(`候选池已满（${MAX_OVERVIEW_POIS} 条），请停止添加，调用 submit_research 收尾。`), details: { ok: false } };
       }
@@ -336,7 +346,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         return { content: text(`「${name}」已在候选池中（${CATEGORY_LABEL[dup.category]}类），无需重复添加。`), details: { ok: false } };
       }
 
-      const sourceLinks = (params.sourceLinks ?? [])
+      const sourceLinks = (deps.groundedOnly ? [] : params.sourceLinks ?? [])
         .map((s) => ({ title: (s.title ?? '').trim().slice(0, 100), url: (s.url ?? '').trim().slice(0, 300) }))
         .filter((s) => s.title && isHttpUrl(s.url));
 
@@ -348,6 +358,9 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         ...normalizeReservation(params.reservation, params.reservationNote),
         sourceLinks: [...purifiedIntroSources(known?.payload), ...sourceLinks],
       };
+      if (deps.groundedOnly && !known && poiSource.kind === 'tianditu') {
+        poi.sourceLinks.push({ title: '天地图地点搜索', url: 'https://map.tianditu.gov.cn/' });
+      }
 
       // 营业时间自动回填：同名命中 search_pois 捕获的 opentime 原文（仅 attraction 参与闭馆日检测）
       if (category === 'attraction') {
@@ -450,6 +463,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       for (const item of params.candidates ?? []) {
         const place = knownPlaces.get(item.placeId);
         if (!place || !place.verified || place.city !== destination || placeCategory(place.category) === 'hotel'
+          || (deps.acceptPlace && !deps.acceptPlace(place.name, place.aliases))
           || (placeCategory(place.category) === 'food' && deps.foodSearch === false)) {
           return { content: text(`错误：候选 id=${item.placeId} 不在本次可用地点中，请使用已检索的同城景点/美食 id。`), details: { ok: false } };
         }

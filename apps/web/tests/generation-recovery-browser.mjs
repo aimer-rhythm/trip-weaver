@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 // Real React hook + native EventSource against a local reconnecting SSE fixture.
 // Start Vite on 18811, then: node apps/web/tests/generation-recovery-browser.mjs
 import assert from 'node:assert/strict';
@@ -41,14 +42,17 @@ try {
     contentType: 'text/html', body: '<!doctype html><html><body><div id="root"></div></body></html>',
   }));
   let starts = 0;
+  let snapshotUnauthorized = false;
   await page.route((url) => url.port === '18811' && url.pathname.startsWith('/api/'), async (route) => {
     const request = route.request();
     if (request.url().endsWith('/api/generations') && request.method() === 'POST') {
       starts++;
-      return route.fulfill({ json: { jobId: starts === 1 ? 'job-a' : 'job-b' } });
+      return route.fulfill({ json: apiSuccess({ jobId: starts === 1 ? 'job-a' : 'job-b' }) });
     }
-    if (/\/api\/generations\/job-[ab]$/.test(request.url())) return route.fulfill({ json: { jobId: request.url().split('/').at(-1), status: 'running', tripId: null, createdAt: 1 } });
-    return route.fulfill({ status: 401, json: { error: 'fixture' } });
+    if (/\/api\/generations\/job-[ab]$/.test(request.url())) return snapshotUnauthorized
+      ? route.fulfill({ status: 401, json: apiFailure(401, '登录过期') })
+      : route.fulfill({ json: apiSuccess({ jobId: request.url().split('/').at(-1), status: 'running', tripId: null, createdAt: 1 }) });
+    return route.fulfill({ status: 401, json: apiFailure(401, 'fixture') });
   });
   const mount = async () => {
     await page.waitForSelector('#root', { state: 'attached' });
@@ -98,6 +102,16 @@ try {
   assert.equal(connections.at(-1).after, '');
   assert.deepEqual(errors, []);
   console.log('PASS 刷新后快照恢复并全量重建，没有浏览器异常');
+  snapshotUnauthorized = true;
+  connections.at(-1).res.end();
+  await page.waitForFunction(() => JSON.parse(document.querySelector('#state').textContent).errorMessage === '登录已过期，请重新登录');
+  assert.equal(await page.evaluate(() => sessionStorage.getItem('tw.activeJobId')), null);
+  const connectionCount = connections.length;
+  await new Promise(resolve => setTimeout(resolve, 350));
+  assert.equal(connections.length, connectionCount, '401 后必须停止原生 SSE 重连');
+  assert.equal(streams.size, 0);
+  assert.deepEqual(errors, []);
+  console.log('PASS SSE 重连遇到会话失效时清理恢复状态并停止重连');
 } finally {
   await browser.close();
   for (const stream of streams) stream.end();

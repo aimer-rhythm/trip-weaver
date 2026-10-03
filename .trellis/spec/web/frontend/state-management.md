@@ -58,7 +58,49 @@ Preserve these invariants:
 - Autosave reads the latest store snapshot, not a stale closure.
 - A successful save must not reload and replace in-progress local edits.
 
-The current save error label says a later edit will retry; there is no independent retry queue. Do not describe autosave as durable offline persistence or guaranteed retry.
+`useEditorSave` owns the 800ms debounce and serial saved-revision watermark. A save receipt only updates
+the version ID and timestamps through `acknowledgeSave`, preserving newer local draft fields. `flush()` waits for all edited
+revisions before chat, food insertion, restore, or version navigation. A failed save keeps the current URL
+and draft and exposes a retry button. This is not durable offline persistence.
+
+Manual autosave creates a new version only when content changes. Keep the save owner across its own
+URL replacement, seed the new trip/version/conversation caches before navigation, and do not remount
+the chat or reload the editor draft on that receipt. Retain the failed snapshot for an idempotent retry;
+edits made while waiting stay queued. Route-replan keys follow the new ID and obsolete results are rejected.
+On editor unmount, stop applying receipts and navigation callbacks: a completed save may remain stored,
+but it must not pull the user back from the trip list. The detail-chat browser regression gates two delayed
+saves, preserved day/input state, reload persistence, and navigating away before the receipt arrives.
+
+The history drawer uses the shared native `Modal size="drawer"`, a descending timeline and independent
+scroll region with fixed header/footer. Latest and currently viewed versions are separate states. At
+600px and below it fills the viewport; close/Escape restore focus. Startup suggestions live inside the
+welcome message only when there are no detail messages or pending answer. Follow-up suggestions render
+only beside the final message when it is an assistant reply and there is no pending answer (including
+stopped/error partial answers). Never fall back to an earlier reply when the latest has no suggestions;
+keep historical message data, food cards and clarification choices intact.
+New follow-ups are stored `{label,text,kind}` objects attached to their source reply: render `label`,
+send the stored `text`/`kind` with the attachment's `dayId`, and never substitute the currently selected
+day or a generic menu. Legacy enum suggestions remain readable but are hidden outside the empty-chat
+startup menu. Empty/failed follow-up generation leaves the latest answer without suggestion buttons.
+
+Historical routes are read-only in both UI and store guards; automatic route planning does not mount and
+route options only display saved legs. Version loading is conservative (read-only until latest is known).
+Restore copies content into a new latest version. Apply pending day/activity selection after `load`,
+never race it against route changes via an arbitrary frame.
+
+Partial answers, stopped/error state, and recoverable input live in component state; complete messages
+and attachments live in React Query. The POST fetch reader validates shared events, UTF-8 chunks,
+request IDs, sequence gaps and terminal state. Recovery queries the stored operation result; committed
+edits cannot be reported as cancelled. Candidate state derives from current trip POI identity, not a
+local `added` flag. See [server contract](../../server/backend/detail-chat-history.md).
+
+`ChatProgress` renders only the server's bounded phase summaries (up to 12 entries, 300 characters
+each), never internal model reasoning or tool arguments. While running it starts expanded and allows
+manual collapse; completed messages mount collapsed and retain the full list for later expansion or
+refresh. Pending components are keyed by request ID and terminal state, so retries start expanded and
+stopped/error rows do not carry an active indicator. Persisted summaries end with the successful save
+result; an in-flight save is not labelled successful. Both pending and historical rows share the same
+16px, keyboard-accessible disclosure and reduced-motion styling. No timer simulates progress.
 
 ## URL, Session, and SSE State
 

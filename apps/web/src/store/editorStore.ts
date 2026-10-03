@@ -15,6 +15,9 @@ export interface RouteReplan {
 }
 
 interface EditorState {
+  readOnly: boolean;
+  setReadOnly: (value: boolean) => void;
+  acknowledgeSave: (tripId: string, saved: Trip) => void;
   routeReplans: Record<string, RouteReplan>;
   finishRouteReplan: (id: string, leg?: TransitLeg, error?: string) => void;
   retryRouteReplan: (key: string) => void;
@@ -55,6 +58,7 @@ function dropLodgingLegs(day: TripDay): void {
 
 export const useEditorStore = create<EditorState>((set, get) => {
   const mutate = (fn: (draft: Trip) => void, replan = false) => {
+    if (get().readOnly) return;
     const cur = get().trip;
     if (!cur) return;
     const draft = structuredClone(cur);
@@ -77,6 +81,18 @@ export const useEditorStore = create<EditorState>((set, get) => {
   const findDay = (draft: Trip, dayId: string) => draft.days.find((d) => d.id === dayId);
 
   return {
+    readOnly: false,
+    setReadOnly: (value) => set({ readOnly: value }),
+    acknowledgeSave: (tripId, saved) => set((state) => {
+      if (state.trip?.id !== tripId) return {};
+      // 只接收版本身份，不用较早快照覆盖保存期间的新编辑和日期选择。
+      const trip = { ...state.trip, id: saved.id, createdAt: saved.createdAt, updatedAt: saved.updatedAt };
+      const routeReplans = Object.fromEntries(Object.values(state.routeReplans).flatMap((job) => {
+        const key = routePairKey(trip, job.dayId, job.fromId);
+        return key ? [[key, { ...job, key, id: saved.id === tripId ? job.id : uid() }]] : [];
+      }));
+      return { trip, routeReplans };
+    }),
     trip: null,
     routeReplans: {},
     cancelRouteReplan: (key) => set((state) => {
@@ -99,6 +115,7 @@ export const useEditorStore = create<EditorState>((set, get) => {
     load: (trip) => set({ trip: structuredClone(trip), routeReplans: {}, revision: 0, dayFilter: trip.days[0]?.dayIndex ?? null }),
     clear: () => set({ trip: null, routeReplans: {}, revision: 0, dayFilter: null }),
     selectRoute: (dayId, key, leg) => {
+      if (get().readOnly) return false;
       const trip = get().trip;
       if (!trip || routePairKey(trip, dayId, leg.fromActivityId) !== key) return false;
       const day = trip.days.find((d) => d.id === dayId)!;

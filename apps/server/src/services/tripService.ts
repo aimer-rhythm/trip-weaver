@@ -1,17 +1,37 @@
 import { and, asc, desc, eq, ilike, or, sql, type SQL } from 'drizzle-orm';
+import { isDeepStrictEqual } from 'node:util';
+import { Value } from '@sinclair/typebox/value';
 import {
   MAX_TRIPS_PER_USER,
+  TripSchema,
   uid,
   type Trip,
   type TripListItem,
+  type TripListPage,
+  type TripListSort,
   type TripVersionChain,
 } from '@tripweaver/shared';
 import { db } from '../db/client';
-  type TripListPage,
-  type TripListSort,
-import { trips } from '../db/schema';
+import { trips, users } from '../db/schema';
+import { commitOperation, operationFingerprint } from './detailOperationService';
 
-type TripWriter = Pick<typeof db, 'select' | 'insert'>;
+export type TripWriter = Pick<typeof db, 'select' | 'insert' | 'update'>;
+
+/** 所有版本创建与原地保存共用用户行锁，包括尚无版本链的首次创建。 */
+export async function lockTripWriter(userId: string, writer: TripWriter) {
+  await writer.select({ id: users.id }).from(users).where(eq(users.id, userId)).for('update');
+}
+
+export async function assertLatestTrip(userId: string, id: string, updatedAt?: number, writer: TripWriter = db) {
+  const [target] = await writer.select().from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId)));
+  if (!target) throw Object.assign(new Error('行程不存在'), { statusCode: 404 });
+  const [latest] = await writer.select({ id: trips.id }).from(trips)
+    .where(and(eq(trips.rootId, target.rootId), eq(trips.userId, userId))).orderBy(desc(trips.version)).limit(1);
+  if (latest?.id !== id || (updatedAt !== undefined && target.updatedAt.getTime() !== updatedAt)) {
+    throw Object.assign(new Error('行程已有新版本或修改，请刷新后重试'), { statusCode: 409 });
+  }
+  return target;
+}
 
 function summarize(trip: Trip) {
   // 冗余列 total_cost：粗估合计（cost 可选化后缺省按 0 计，仅供列表页「约 ¥」展示）
@@ -39,6 +59,19 @@ function toListItem(row: typeof trips.$inferSelect): TripListItem {
     createdAt: row.createdAt.getTime(),
     updatedAt: row.updatedAt.getTime(),
   };
+}
+
+/** LIKE 元字符转义：用户输入不能被当成通配符（口径同 generation/placeRetrieval） */
+function escapeLike(term: string): string {
+  return term.replace(/[\\%_]/g, '\\$&');
+}
+
+export interface TripListQuery {
+  offset: number;
+  limit: number;
+  q?: string | undefined;
+  city?: string | undefined;
+  sort?: TripListSort | undefined;
 }
 
 /**
@@ -87,31 +120,18 @@ export async function listTripsPage(userId: string, query: TripListQuery): Promi
 /** 版本链（含历史版本）；非本人或不存在返回 null，路由统一 404 */
 export async function listTripVersions(userId: string, id: string): Promise<TripVersionChain | null> {
   const [anchor] = await db
-/** LIKE 元字符转义：用户输入不能被当成通配符（口径同 generation/placeRetrieval） */
-function escapeLike(term: string): string {
-  return term.replace(/[\\%_]/g, '\\$&');
-}
-
-export interface TripListQuery {
-  offset: number;
-  limit: number;
-  q?: string | undefined;
-  city?: string | undefined;
-  sort?: TripListSort | undefined;
-}
-
     .select({ rootId: trips.rootId })
     .from(trips)
     .where(and(eq(trips.id, id), eq(trips.userId, userId)));
   if (!anchor) return null;
   const rows = await db
-    .select({ id: trips.id, version: trips.version, title: trips.title, createdAt: trips.createdAt })
+    .select({ id: trips.id, version: trips.version, title: trips.title, createdAt: trips.createdAt, summary: trips.changeSummary })
     .from(trips)
     .where(and(eq(trips.rootId, anchor.rootId), eq(trips.userId, userId)))
     .orderBy(asc(trips.version));
   return {
     rootId: anchor.rootId,
-    versions: rows.map((row) => ({ ...row, createdAt: row.createdAt.getTime() })),
+    versions: rows.map(({ summary, ...row }) => ({ ...row, ...(summary ? { summary } : {}), createdAt: row.createdAt.getTime() })),
   };
 }
 
@@ -122,6 +142,8 @@ export async function getTrip(userId: string, id: string): Promise<Trip | null> 
 
 /** 新建（导入 / 生成落库共用）：分配新 id 与时间戳，归属当前用户；全新行程自为版本链根 */
 export async function createTrip(userId: string, source: Trip, revisionOf?: string, writer: TripWriter = db): Promise<Trip> {
+  if (writer === db) return db.transaction((tx) => createTrip(userId, source, revisionOf, tx));
+  await lockTripWriter(userId, writer);
   const [count] = await writer.select({ n: sql<number>`count(*)` }).from(trips).where(eq(trips.userId, userId));
   if (Number(count?.n ?? 0) >= MAX_TRIPS_PER_USER) {
     throw Object.assign(new Error(`行程数量已达上限（${MAX_TRIPS_PER_USER} 条），请先清理历史行程`), { statusCode: 409 });
@@ -153,6 +175,7 @@ async function revisionLineage(
   targetTripId: string,
   writer: TripWriter,
 ): Promise<{ rootId: string; version: number; parentId: string }> {
+  await assertLatestTrip(userId, targetTripId, undefined, writer);
   const [target] = await writer
     .select({ rootId: trips.rootId, version: trips.version })
     .from(trips)
@@ -161,17 +184,22 @@ async function revisionLineage(
   return { rootId: target.rootId, version: target.version + 1, parentId: targetTripId };
 }
 
-export async function updateTrip(userId: string, id: string, incoming: Trip): Promise<Trip | null> {
-  const [existing] = await db.select().from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId)));
-  if (!existing) return null;
-  const nowMs = Date.now();
-  // id 与 createdAt 以服务端为准，防止客户端篡改
-  const trip: Trip = { ...incoming, id, createdAt: existing.createdAt.getTime(), updatedAt: nowMs };
-  await db
-    .update(trips)
-    .set({ ...summarize(trip), data: trip, updatedAt: new Date(nowMs) })
-    .where(and(eq(trips.id, id), eq(trips.userId, userId)));
-  return trip;
+export async function updateTrip(userId: string, id: string, incoming: Trip): Promise<Trip> {
+  // 同一快照的断线重试返回原结果，不能再次创建版本；指纹包含原版本与时间戳。
+  const fingerprint = operationFingerprint('manual-save', [id, incoming]);
+  const result = await commitOperation(userId, `save:${fingerprint}`, fingerprint, async (tx) => {
+    const existing = await assertLatestTrip(userId, id, incoming.updatedAt, tx);
+    if (!Value.Check(TripSchema, existing.data)) throw new Error('行程数据无效');
+    const previous = existing.data;
+    const content = ({ id: _id, createdAt: _createdAt, updatedAt: _updatedAt, ...rest }: Trip) => rest;
+    if (isDeepStrictEqual(content(previous), content(incoming))) return previous;
+    const trip = await createTrip(userId, incoming, id, tx);
+    await tx.update(trips).set({ changeSummary: '手动修改行程' })
+      .where(and(eq(trips.id, trip.id), eq(trips.userId, userId)));
+    return trip;
+  });
+  if (!Value.Check(TripSchema, result)) throw new Error('保存结果无效');
+  return result;
 }
 
 export async function renameTrip(userId: string, id: string, title: string): Promise<boolean> {

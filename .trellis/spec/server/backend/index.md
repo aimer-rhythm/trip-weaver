@@ -15,6 +15,7 @@ has a more specific convention.
 - [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
 - [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
 - [Chat and conversational intake guidelines](./chat-guidelines.md): dialogue intents, Brief readiness and intake controls, chat quota, revision and version chains, and the two-TypeBox-package trap.
+- [详情对话流与版本恢复](./detail-chat-history.md)：POST SSE、真实候选、幂等添加、保存并发和历史恢复契约。
 - [Quality guidelines](./quality-guidelines.md): validation rules and the real command matrix.
 - [Research photo selection](./research-photo-selection.md): independent local comparison-site feedback, atomic persistence and preference-sample semantics; outside the production application.
 - [Preference photo pipeline](./preference-photo-pipeline.md): authorized Beijing selections first, reviewed fallback, independent visual model, durable nonblocking backfill and versioned cross-source selection.

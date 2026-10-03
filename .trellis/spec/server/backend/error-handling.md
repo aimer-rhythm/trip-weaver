@@ -2,10 +2,18 @@
 
 ## Global HTTP Boundary
 
-`apps/server/src/index.ts` installs the Fastify error handler. It maps `SsrfError` and
-validation failures to 400, honors an error's `statusCode`, logs 5xx failures, and hides
-internal details behind a generic response. Do not expose stack traces, SQL details,
-provider responses, tokens, or secrets.
+`apps/server/src/index.ts` calls `installApiResponses` from `http/apiResponse.ts` before
+registering routes. It maps `SsrfError` and validation failures to 400, honors an error's
+`statusCode`, logs 5xx failures, and hides internal details behind a generic response.
+Do not expose stack traces, SQL details, validation internals, provider responses, tokens, or secrets.
+
+All `/api` JSON responses use `{ code, message, data }`. Success has code 0 and preserves
+HTTP 200/201/202. Errors preserve HTTP status, use an existing business code (or HTTP status),
+and put extra fields such as `resetAt` / `jobId` in `data` (null when absent). The `onSend`
+boundary wraps serialized JSON **after** the route's business response schema filters fields.
+Routes keep their business response schemas and raw return values; do not wrap twice.
+SSE frames, redirects, static assets and no-content responses retain their protocols.
+Independent Fastify test fixtures must install the same boundary. See `docs/API_CONTRACT.md`.
 
 ## Route Boundary
 

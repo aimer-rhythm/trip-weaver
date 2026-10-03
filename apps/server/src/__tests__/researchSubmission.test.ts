@@ -22,6 +22,24 @@ function setup(places: RetrievedPlace[], extra: Partial<ResearchToolDeps> = {}) 
   return { outcome, published, submit: tools.find((t) => t.name === 'submit_research')!, add: tools.find((t) => t.name === 'add_candidate')! };
 }
 
+test('追加调研拒绝原行程实体和无依据地点，模型不能自行添加来源链接', async () => {
+  const old = place('old', { name: '已经安排的公园', aliases: ['旧公园'] });
+  const fresh = place('fresh');
+  const { submit, add, outcome } = setup([old, fresh], {
+    groundedOnly: true, acceptPlace: (name, aliases = []) => ![name, ...aliases].includes('旧公园'),
+  });
+  const invalid = await submit.execute('reject-old', { candidates: [
+    { placeId: fresh.id, intro: '新公园介绍' }, { placeId: old.id, intro: '旧公园介绍' },
+  ] });
+  assert.equal(invalid.details.ok, false);
+  assert.equal(outcome.pool.length, 0, '不能部分提交新地点');
+  const invented = await add.execute('reject-invention', { name: '未查询的地点', category: 'attraction', intro: '模型虚构', sourceLinks: [{ title: '伪造来源', url: 'https://example.com/invented' }] });
+  assert.equal(invented.details.ok, false);
+  const accepted = await add.execute('known', { name: fresh.name, placeId: fresh.id, category: 'attraction', intro: '公园介绍', sourceLinks: [{ title: '伪造来源', url: 'https://example.com/invented' }] });
+  assert.equal(accepted.details.ok, true);
+  assert.equal(outcome.pool[0]!.sourceLinks.length, 0);
+});
+
 test('一批提交只需ID与简介，复用事实/照片/官方来源并逐条发布，无重复查库', async () => {
   const places = [place('palace', { name: '故宫博物院', payload: { reservation: 'none', reservationNote: '不能覆盖官方种子' } }),
     place('park', { payload: { openHours: { closedWeekdays: [1] } }, evidence: [

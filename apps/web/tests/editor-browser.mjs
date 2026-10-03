@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -46,10 +47,10 @@ try {
   else if(url.pathname==='/api/trips/editor-ui-test/conversation') data={conversationId:noChat?null:'fixture-chat'};
   else if(url.pathname==='/api/conversations/fixture-chat') data={messages};
   else if(url.pathname==='/api/trips/editor-ui-test') {
-    if(route.request().method()==='PUT') { saves++; if(failSave) return route.fulfill({status:500,json:{message:'测试保存失败'}}); data=route.request().postDataJSON(); }
+    if(route.request().method()==='PUT') { saves++; if(failSave) return route.fulfill({status: 500, json: apiFailure(500, '测试保存失败')}); data=route.request().postDataJSON(); }
     else data=trip;
   }
-  return route.fulfill({json:data});
+  return route.fulfill({json: apiSuccess(data) });
  });
  await page.goto('http://127.0.0.1:5173/trips/editor-ui-test');
  await page.locator('.activity-card').first().waitFor({timeout:10000}).catch(async error => { console.log(await page.locator('body').innerText()); await page.screenshot({path:path.join(out,'failure.png')}); throw error; });

@@ -10,7 +10,9 @@ import { EditorIcon } from './EditorIcon';
 import { useDismissibleDisclosure } from '../ui/Dropdown';
 
 export function RouteOptions({ dayId, fromId, leg }: { dayId: string; fromId: string; leg?: TransitLeg }) {
+  const readOnly = useEditorStore((s) => s.readOnly);
   const trip = useEditorStore((s) => s.trip);
+  if (readOnly) return leg ? <p className="px-3 text-[14px] text-ink-muted">{LEG_MODE_LABEL[leg.mode]} · {formatLegDuration(leg.durationMin)}{leg.source === 'heuristic' ? '（估算）' : ''}</p> : null;
   const key = trip ? routePairKey(trip, dayId, fromId) : null;
   if (!trip || !key) return null;
   const day = trip.days.find((d) => d.id === dayId)!;

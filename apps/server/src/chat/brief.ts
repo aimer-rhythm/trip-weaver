@@ -14,10 +14,12 @@ import {
   TRANSPORT_MODES,
   PACE_OPTIONS,
   requiredBriefFields,
+  dateForDayIndex,
   uid,
   type BriefStatus,
   type PlanningBriefData,
   type TripConstraint,
+  type Trip,
 } from '@tripweaver/shared';
 import { asRecord, readStringArray } from './models';
 
@@ -53,6 +55,15 @@ export function normalizeBriefData(raw: unknown): PlanningBriefData {
 export function briefStatus(data: PlanningBriefData, current?: BriefStatus): BriefStatus {
   if (current === 'submitted' || current === 'discarded') return current;
   return requiredBriefFields(data).length === 0 ? 'ready' : 'collecting';
+}
+
+/** 修改/恢复后的日期以实际行程为准，避免旧 endDate 把新增天数覆盖回去。 */
+export function syncBriefTripDates(data: PlanningBriefData, trip: Trip): PlanningBriefData {
+  const next = { ...data, startDate: trip.startDate, days: Math.max(1, trip.days.length) };
+  const endDate = dateForDayIndex(trip.startDate, next.days);
+  if (endDate) next.endDate = endDate;
+  else delete next.endDate;
+  return next;
 }
 
 function constraintKey(category: string, valueText: string): string {

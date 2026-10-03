@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -13,8 +14,8 @@ try {
   let authenticated = false;
   await page.route(/^http:\/\/127\.0\.0\.1:5173\/api\//, route => {
     const pathname = new URL(route.request().url()).pathname;
-    if (pathname === '/api/auth/me' && !authenticated) return route.fulfill({ status: 401, json: { message: '请登录' } });
-    if (pathname === '/api/auth/login') { authenticated = true; return route.fulfill({ json: { id: 'fixture', email: 'fixture@example.test' } }); }
+    if (pathname === '/api/auth/me' && !authenticated) return route.fulfill({ status: 401, json: apiFailure(401, '请登录') });
+    if (pathname === '/api/auth/login') { authenticated = true; return route.fulfill({ json: apiSuccess({ id: 'fixture', email: 'fixture@example.test' }) }); }
     const fixtures = {
       '/api/auth/config': { registrationMode: 'open', githubEnabled: false },
       '/api/auth/me': { id: 'fixture', email: 'fixture@example.test' },
@@ -23,7 +24,7 @@ try {
       '/api/trips': { items: [], total: 0, destinations: [] },
       '/api/settings': { byokEnabled: false, baseUrl: '', model: '', apiKeyLast4: '', hasSiteKey: true, hasPersonalAmapKey: false, amapApiKeyLast4: '', hasSiteAmapKey: true, hasPersonalSearchKey: false, searchApiKeyLast4: '', searchApiBaseUrl: '', hasSiteSearchKey: true },
     };
-    return route.fulfill({ json: fixtures[pathname] ?? {} });
+    return route.fulfill({ json: apiSuccess(fixtures[pathname] ?? {}) });
   });
   await page.goto('http://127.0.0.1:5173/login');
   await page.getByLabel('邮箱').fill('fixture@example.test');

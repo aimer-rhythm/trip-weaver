@@ -85,6 +85,8 @@ export function rankPlaces(rows: readonly PlaceRow[], terms: readonly string[], 
         ...(scores.length ? { recommendScore: Math.max(...scores) } : {}),
         ...(mentions.length ? { mentionCount: mentions.reduce((a, b) => a + b, 0) } : {}),
       },
+        ...([base.distance, supplement.distance].some((d) => typeof d === 'number')
+          ? { distance: Math.min(...[base.distance, supplement.distance].filter((d): d is number => typeof d === 'number')) } : {}),
         ...(base.lat == null || base.lng == null ? { lat: supplement.lat, lng: supplement.lng } : {}) };
     } else {
       const next = { row, ids: [row.id], aliases: [row.name, ...stringList(row.payload?.aliases)] };

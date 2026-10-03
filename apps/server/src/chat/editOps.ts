@@ -1,7 +1,7 @@
 // 行程按需编辑：纯函数，不读库、不调 LLM、不做网络解析 —— 与 brief.ts 同一设计。
 //
 // 设计约束（09-24 PRD R1）：
-//   - 操作集只有替换/删除/新增三件套；坐标解析（异步）由路由层先做，这里只接收已解析结果。
+//   - 操作集支持活动修改与追加日期；坐标解析（异步）由调用方先做，这里只接收已解析结果。
 //   - 防御性归一：dayIndex 越界、activityId 不存在、操作重复命中同一活动等一律按「该条拒绝」处理，
 //     不丢整批。模型给的输入是 unknown，逐字段校验后才进入行程。
 //   - 时刻轴恒为空（D5）：编辑只动活动列表，不推算时刻；通勤段 leg 凡触及变动活动的一律丢弃，
@@ -9,6 +9,8 @@
 import {
   ACTIVITY_CATEGORIES,
   MAX_EDIT_OPS_PER_TURN,
+  MAX_EDIT_ACTIVITIES_PER_DAY,
+  MAX_TRIP_DAYS,
   uid,
   type Activity,
   type EditOpOutcome,
@@ -23,6 +25,10 @@ export interface ResolvedNewActivity extends NewActivityDraft {
   lat?: number;
   lng?: number;
   openTime?: string;
+  /** 仅服务端调研写入；normalizeEditOps 不读取模型给出的来源。 */
+  sourceNotes?: Activity['sourceNotes'];
+  placeName?: string;
+  skipGeocode?: boolean;
 }
 
 export interface ResolvedEditOp {
@@ -31,6 +37,7 @@ export interface ResolvedEditOp {
   activityId?: string;          // replace / delete 必填
   position?: number;            // add 可选
   activity?: ResolvedNewActivity; // replace / add 必填
+  days?: { title: string; activities: ResolvedNewActivity[] }[]; // add_days 必填
 }
 
 export interface EditApplyResult {
@@ -42,7 +49,7 @@ export interface EditApplyResult {
 }
 
 const MAX_OPS = MAX_EDIT_OPS_PER_TURN;
-const MAX_ACTIVITIES_PER_DAY = 12;   // 与排程器产出上限同量级；防模型把一天塞爆
+const MAX_ACTIVITIES_PER_DAY = MAX_EDIT_ACTIVITIES_PER_DAY;
 
 function readDayIndex(raw: unknown): number | null {
   return typeof raw === 'number' && Number.isInteger(raw) && raw >= 1 ? raw : null;
@@ -79,6 +86,21 @@ export function normalizeEditOps(raw: unknown): ResolvedEditOp[] {
     const kind = readString(node, 'kind');
     const dayIndex = readDayIndex(node.dayIndex);
     if (!dayIndex) continue;
+    if (kind === 'add_days') {
+      if (!Array.isArray(node.days) || !node.days.length || node.days.length > MAX_TRIP_DAYS) continue;
+      const days: NonNullable<ResolvedEditOp['days']> = [];
+      for (const rawDay of node.days) {
+        const day = asRecord(rawDay);
+        const title = readString(day, 'title')?.trim();
+        if (!title || !Array.isArray(day.activities) || day.activities.length > MAX_ACTIVITIES_PER_DAY) break;
+        const activities = day.activities.map(readDraft);
+        if (activities.some((activity) => !activity)) break;
+        days.push({ title: title.slice(0, 30), activities: activities.filter((activity): activity is ResolvedNewActivity => activity !== null) });
+      }
+      // 不截断新增日期组，避免「延长两天」只保存了一天。
+      if (days.length === node.days.length) ops.push({ kind, dayIndex, days });
+      continue;
+    }
     if (kind === 'delete_activity') {
       const activityId = readActivityId(node);
       if (activityId) ops.push({ kind, dayIndex, activityId });
@@ -99,6 +121,11 @@ export function normalizeEditOps(raw: unknown): ResolvedEditOp[] {
   return ops;
 }
 
+/** 调用方在解析地点时同时覆盖单个活动和新增日期内的所有活动。 */
+export function editActivityDrafts(ops: ResolvedEditOp[]): ResolvedNewActivity[] {
+  return ops.flatMap((op) => op.kind === 'add_days' ? op.days?.flatMap((day) => day.activities) ?? [] : op.activity ? [op.activity] : []);
+}
+
 function toActivity(draft: ResolvedNewActivity): Activity {
   const geocoded = draft.lat !== undefined && draft.lng !== undefined;
   return {
@@ -113,7 +140,7 @@ function toActivity(draft: ResolvedNewActivity): Activity {
     ...(geocoded ? { coordSystem: 'gcj02' as const } : {}),
     category: draft.category ?? '其他',
     ...(draft.openTime ? { openTime: draft.openTime } : {}),
-    sourceNotes: [],
+    sourceNotes: draft.sourceNotes ?? [],
   };
 }
 
@@ -143,8 +170,27 @@ export function applyItineraryEdits(current: Trip, ops: ResolvedEditOp[]): EditA
   const touchedActivityIds = new Set<string>();
   const removedIds = new Set<string>();
   let changed = false;
+  let daysAdded = false;
 
   for (const op of ops) {
+    if (op.kind === 'add_days') {
+      const nextIndex = Math.max(0, ...trip.days.map((day) => day.dayIndex)) + 1;
+      const days = op.days;
+      const invalid = !days?.length || days.some((day) => !day.title.trim() || day.activities.length > MAX_ACTIVITIES_PER_DAY);
+      if (invalid || !days || daysAdded || op.dayIndex !== nextIndex) {
+        outcomes.push({ kind: op.kind, applied: false, summary: `新增日期须从第 ${nextIndex} 天开始，且每轮只追加一组日期` });
+        continue;
+      }
+      if (trip.days.length + days.length > MAX_TRIP_DAYS || nextIndex + days.length - 1 > MAX_TRIP_DAYS) {
+        outcomes.push({ kind: op.kind, applied: false, summary: `行程最多支持 ${MAX_TRIP_DAYS} 天，本次未新增日期` });
+        continue;
+      }
+      trip.days.push(...days.map((day, index) => ({ id: uid(), dayIndex: nextIndex + index, title: day.title, activities: day.activities.map(toActivity), legs: [] })));
+      daysAdded = true;
+      changed = true;
+      outcomes.push({ kind: op.kind, applied: true, summary: `新增 ${days.length} 天行程（第 ${nextIndex}${days.length > 1 ? `～${nextIndex + days.length - 1}` : ''} 天），共 ${trip.days.length} 天` });
+      continue;
+    }
     if (op.kind === 'delete_activity') {
       const target = op.activityId && !touchedActivityIds.has(op.activityId) ? findTarget(trip, op.dayIndex, op.activityId) : null;
       if (!target || !op.activityId) {

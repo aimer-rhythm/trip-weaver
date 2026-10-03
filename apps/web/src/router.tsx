@@ -17,7 +17,7 @@ function RequireAuth() {
   }
   if (me.isError) {
     if (me.error instanceof ApiError && me.error.status === 401) {
-      return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+      return <Navigate to="/login" replace state={{ from: location.pathname + location.search + location.hash }} />;
     }
     return <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>服务暂不可用，请稍后刷新重试</div>;
   }

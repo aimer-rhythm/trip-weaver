@@ -2,7 +2,11 @@
 
 ## API Client and React Query Boundary
 
-Use `api/client.ts` for normal JSON HTTP transport. It applies same-origin credentials, JSON request headers, content-type-aware response parsing, and `ApiError` with status plus a loosely typed error body. Put reusable server-state operations in `api/hooks.ts` as React Query queries or mutations.
+Use `api/client.ts` for normal JSON HTTP transport. It applies same-origin credentials, merged JSON request headers, abort/timeout handling, and runtime validation/unwrapping of `{ code, message, data }`. Callers receive business data directly; errors are `ApiError` with `status`, `code`, `message`, and additional fields in `data`. Put reusable server-state operations in `api/hooks.ts` as React Query queries or mutations. See `docs/API_CONTRACT.md`.
+
+`App.tsx` subscribes once to business-request 401: clear the query cache and generation recovery marker, then navigate to login preserving pathname/search/hash. Concurrent failures are deduplicated; login/register use `auth: 'public'` and reset the auth epoch on success. Do not treat 403/5xx as logout. Query retries are limited to one network/timeout/5xx retry; mutations never retry automatically. Keep business error messages in their existing views rather than adding duplicate global toasts.
+
+Normal request timeout is 30s; long chat requests explicitly allow 180s, source probes 90s, and image generation 240s. POST SSE uses `requestStream` for headers, handshake timeout and HTTP errors; its established stream retains its own lifecycle. Native EventSource confirms failures through a snapshot request and stops reconnecting on 401/404. Avoid duplicate snapshot requests while one is pending, and ignore completions after cleanup.
 
 Evidence: `apps/web/src/api/client.ts`, `apps/web/src/api/hooks.ts`, `apps/web/src/App.tsx`.
 
@@ -37,6 +41,8 @@ Every effect that creates a resource must return cleanup:
 - Close `EventSource` subscriptions.
 - Guard promise continuations when an async operation cannot be cancelled.
 - Clear store state on page unmount when the state belongs only to that mounted editor.
+
+Auto-growing textareas must resize after both text changes and width changes. `ChatInput` observes the textarea's width with `ResizeObserver`, skips zero-width hidden panels, clamps height to 44–120px, and disconnects on cleanup. Ignore height-only observations to avoid feedback loops. Verify a retained draft when resizing from a wide desktop to 1150px and when switching to the 375px chat tab; text below the cap should fit without internal clipping.
 
 Evidence: `apps/web/src/pages/TripEditorPage.tsx`, `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/components/editor/MapView.tsx`.
 

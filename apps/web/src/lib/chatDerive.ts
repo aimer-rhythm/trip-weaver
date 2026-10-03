@@ -51,7 +51,7 @@ export function chatErrorMessage(error: unknown): string {
     const at = resetAt ? `，${String(resetAt.getHours()).padStart(2, '0')}:${String(resetAt.getMinutes()).padStart(2, '0')} 后重置` : '';
     return `今日对话次数已用完${at}。条件齐了可以直接点「开始生成」，生成次数是另一套额度。`;
   }
-  if (error.status === 400 && error.data?.code === 'no_llm') {
+  if (error.status === 400 && error.code === 'no_llm') {
     return error.data?.hasSiteKey
       ? '站点 AI 配置异常，请联系站长。'
       : '本站未配置 AI 服务：普通用户请联系站长开通；也可以在「设置 → 高级选项」填入自己的 API Key 立即使用。';

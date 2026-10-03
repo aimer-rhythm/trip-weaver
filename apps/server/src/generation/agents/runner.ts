@@ -14,6 +14,8 @@ import {
 import type { LlmRequestRecorder } from '../llmRequestLog';
 
 export interface PhaseEventSink {
+  /** 仅无工具的用户正文流使用；不转发 thinking/toolcall。 */
+  onTextDelta?(text: string): void;
   onThought(text: string): void;
   onToolStart(toolCallId: string, tool: string, label: string, args: unknown): void;
   onToolEnd(toolCallId: string, tool: string, label: string, summary: string, isError: boolean): void;
@@ -171,6 +173,7 @@ export function streamWithRetry(
 
 export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResult> {
   opts.signal.throwIfAborted();
+  if (opts.sink.onTextDelta && opts.tools.length) throw new Error('用户正文流必须使用无工具调用');
   const labelByTool = new Map(opts.tools.map((t) => [t.name, t.label]));
   const result: RunAgentResult = { tokensIn: 0, tokensOut: 0, aborted: false, turnLimitExceeded: false };
   let turns = 0;
@@ -190,7 +193,8 @@ export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResu
     pendingRowId = opts.recorder
       ? await opts.recorder.recordRequest({ turn, model: model.id, systemPrompt, messages, tools })
       : null;
-    return streamWithRetry(streamSimple, model, context, options);
+    // 正文已发给用户后不可重放；共用生成通道继续保留原有完整重试语义。
+    return opts.sink.onTextDelta ? streamSimple(model, context, options) : streamWithRetry(streamSimple, model, context, options);
   };
 
   const agent = new Agent({
@@ -211,6 +215,9 @@ export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResu
 
   agent.subscribe((ev) => {
     switch (ev.type) {
+      case 'message_update':
+        if (ev.assistantMessageEvent.type === 'text_delta') opts.sink.onTextDelta?.(ev.assistantMessageEvent.delta);
+        break;
       case 'turn_start':
         turns += 1;
         if (turns > (opts.maxTurns ?? DEFAULT_MAX_TURNS)) {

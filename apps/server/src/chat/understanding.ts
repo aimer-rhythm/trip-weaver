@@ -34,6 +34,8 @@ export interface UnderstandInput {
   signal: AbortSignal;
   /** 本会话已生成行程的完整内容；渲染进 prompt（含活动 id），模型才能定位要改哪个活动 */
   currentTrip?: Trip;
+  /** 详情页始终用单项问答补充信息，不回退到生成前的表单采集。 */
+  detailMode?: boolean;
   logger?: DialogueLogger;
 }
 
@@ -76,6 +78,7 @@ export async function understandMessage(input: UnderstandInput): Promise<Underst
       DIALOGUE_SYSTEM_PROMPT,
       renderBrief(input.brief),
       ...(input.currentTrip ? [renderCurrentTrip(input.currentTrip)] : []),
+      ...(input.detailMode ? ['当前在已生成行程的详情对话中。优先回答本轮问题，不重新采集已有出行条件。需要补充信息或消除歧义时，一次只问一个问题，在 clarification 提供 2～3 个具体、短小、可直接回答该问题的选项；包括日期也用当前行程日期选项，不要求用户填表。历史选项回答要结合紧邻的助手问题理解；只讨论、问建议不执行修改。'] : []),
     ].join('\n\n'),
     tools: [tool],
     userPrompt: dialogueUserPrompt(input.history, input.userText),

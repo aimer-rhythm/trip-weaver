@@ -25,7 +25,9 @@ const { createSession } = await import('../apps/server/src/auth/session');
 const { createTrip } = await import('../apps/server/src/services/tripService');
 const { tripRoutes } = await import('../apps/server/src/routes/trips');
 const { amapBudgetRemaining } = await import('../apps/server/src/services/quotaService');
+const { installApiResponses } = await import('../apps/server/src/http/apiResponse');
 const app = Fastify();
+installApiResponses(app);
 const originalFetch = globalThis.fetch;
 mock.timers.enable({ apis: ['Date'], now: new Date('2026-09-29T04:00:00Z') });
 let externalCalls = 0;
@@ -55,17 +57,17 @@ try {
   assert.equal(externalCalls, 0);
   const response = await request(ownerCookie);
   assert.equal(response.statusCode, 200, response.body);
-  assert.equal(response.json().options.filter((o: { status: string }) => o.status === 'available').length, 4);
+  assert.equal(response.json().data.options.filter((o: { status: string }) => o.status === 'available').length, 4);
   assert.equal(response.body.includes('route-test-fixture'), false);
   assert.equal(await amapBudgetRemaining(), 240 - externalCalls, 'only actual outbound attempts charged by service');
   const afterFirstQuery = externalCalls;
   assert.equal((await request(ownerCookie, { ...body, mode: 'drive' })).statusCode, 200);
   assert.equal(externalCalls, afterFirstQuery, 'single-mode query reuses prefetched result');
   assert.equal(await amapBudgetRemaining(), 240 - externalCalls, 'server cache hit consumes no quota');
-  const selected = response.json().options[0].leg;
+  const selected = response.json().data.options[0].leg;
   trip.days[0]!.legs = [selected];
   assert.equal((await app.inject({ method: 'PUT', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie }, payload: trip })).statusCode, 200);
-  assert.deepEqual((await app.inject({ method: 'GET', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie } })).json().days[0].legs[0], selected);
+  assert.deepEqual((await app.inject({ method: 'GET', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie } })).json().data.days[0].legs[0], selected);
   const callsBefore = externalCalls;
   assert.equal((await request(ownerCookie)).statusCode, 200);
   assert.equal(externalCalls, callsBefore);
@@ -101,7 +103,7 @@ try {
   const beforeDenied = externalCalls;
   const exhausted = await request(ownerCookie, { ...shifted, from: { ...shifted.from, lat: shifted.from.lat + 0.02 } });
   assert.equal(exhausted.statusCode, 200);
-  assert.equal(exhausted.json().options[0].status, 'unavailable');
+  assert.equal(exhausted.json().data.options[0].status, 'unavailable');
   assert.equal(externalCalls, beforeDenied);
 
   // Simulate the first upgrade in this disposable DB, with legacy aggregate usage.

@@ -24,7 +24,7 @@ export function TripShareImageDialog({ trip, open, onClose }: { trip: Trip; open
     setError('');
     const requestedSignature = signature;
     try {
-      const result = await api.post<TripShareImageResponse>(`/api/trips/${encodeURIComponent(trip.id)}/share-image`, { trip });
+      const result = await api.post<TripShareImageResponse>(`/api/trips/${encodeURIComponent(trip.id)}/share-image`, { trip }, { timeoutMs: 240_000 });
       if (!mounted.current) return;
       if (requestedSignature !== currentSignature.current) { setError('行程已更新，请根据最新行程重新生成'); return; }
       if (!result || !['image/png', 'image/jpeg', 'image/webp'].includes(result.mimeType) || typeof result.dataUrl !== 'string' || !result.dataUrl.startsWith(`data:${result.mimeType};base64,`)) throw new Error('图片响应异常，请重试');

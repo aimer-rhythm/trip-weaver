@@ -14,7 +14,7 @@ export function mountGenerationRecovery() {
     return <>
       <button onClick={() => run.start({ destination: '北京', days: 3, startDate: '', budgetLevel: '经济',
         partySize: 1, preferences: [], totalBudget: 0, extraNotes: '' })}>开始测试生成</button>
-      <pre id="state">{JSON.stringify({ jobId: run.jobId, events: run.events, done, restoring: run.restoring })}</pre>
+      <pre id="state">{JSON.stringify({ jobId: run.jobId, events: run.events, done, restoring: run.restoring, errorMessage: run.errorMessage })}</pre>
     </>;
   }
   createRoot(document.getElementById('root')!).render(

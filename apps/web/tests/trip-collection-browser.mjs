@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -39,7 +40,7 @@ try {
   else if(pathname==='/api/usage')data={remaining:2,dailyLimit:4};
   else if(pathname==='/api/trips') {
    if(hold)await held;
-   if(fail)return route.fulfill({status:503,json:{message:'test failure'}});
+   if(fail)return route.fulfill({status: 503, json: apiFailure(503, 'test failure')});
    // 筛选/排序/计数从 10-03 起在服务端：mock 按同样的口径算，前端只负责渲染与滚动加载
    const params=new URL(route.request().url()).searchParams;
    const keyword=(params.get('q')??'').trim().toLocaleLowerCase();
@@ -57,7 +58,7 @@ try {
   else if(pathname.endsWith('/versions')){const item=fixture.find(t=>pathname.includes(t.id));data={versions:[{id:item?.id??'trip-x',version:1}]};}
   else if(pathname.startsWith('/api/trips/')){detailRequests++;const item=fixture.find(t=>pathname.endsWith(t.id));data={...item,days:[],startDate:'',partySize:2,preferences:[],extraNotes:'',meta:{usedXhs:false,reviewNotes:[]}};}
   else if(pathname==='/api/settings/config')data={amapJsKey:'',amapJsSecurityCode:''};
-  return route.fulfill({json:data});
+  return route.fulfill({json: apiSuccess(data) });
  });
  await page.goto(`${baseUrl}/trips`);
  await page.locator('.collection-skeleton').first().waitFor();

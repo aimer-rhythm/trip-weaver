@@ -1,3 +1,4 @@
+import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
@@ -37,15 +38,16 @@ try {
     if (pathname === '/api/auth/me') data = { id: 'test', email: 'test@example.test' };
     else if (pathname === '/api/usage') data = { remaining: 5, dailyLimit: 5, usedToday: 0 };
     else if (pathname.endsWith('/conversation')) data = { conversationId: null };
+    else if (pathname.endsWith('/versions')) data = { versions: [{ id: trip.id, version: 1 }] };
     else if (pathname === '/api/settings/config') data = { amapJsKey: '', amapJsSecurityCode: '' };
     else if (pathname.endsWith('/share-image')) {
       calls++;
       assert.equal(route.request().postDataJSON().trip.title, trip.title);
       if (hold) await hold;
-      if (fail) return route.fulfill({ status: 503, json: { error: '生图服务繁忙，请稍后重试' } });
+      if (fail) return route.fulfill({ status: 503, json: apiFailure(503, '生图服务繁忙，请稍后重试') });
       data = { mimeType: 'image/png', dataUrl: `data:image/png;base64,${png}` };
     } else if (pathname === '/api/trips/share-test') data = trip;
-    return route.fulfill({ json: data });
+    return route.fulfill({ json: apiSuccess(data) });
   });
   const open = async () => {
     await page.getByText('导出行程', { exact: true }).click();

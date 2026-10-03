@@ -19,7 +19,7 @@ import type {
   UsageView,
 } from '@tripweaver/shared';
 import { TRIP_LIST_PAGE_SIZE } from '@tripweaver/shared';
-import { ApiError, api } from './client';
+import { api, resetAuthState, shouldRetryQuery } from './client';
 
 export interface MeView {
   id: string;
@@ -72,7 +72,7 @@ export function useMe() {
   return useQuery({
     queryKey: keys.me,
     queryFn: () => api.get<MeView>('/api/auth/me'),
-    retry: (count, error) => !(error instanceof ApiError && error.status === 401) && count < 2,
+    retry: shouldRetryQuery,
     staleTime: 5 * 60_000,
   });
 }
@@ -80,16 +80,16 @@ export function useMe() {
 export function useLogin() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (body: LoginBody) => api.post<MeView>('/api/auth/login', body),
-    onSuccess: () => qc.invalidateQueries(),
+    mutationFn: (body: LoginBody) => api.post<MeView>('/api/auth/login', body, { auth: 'public' }),
+    onSuccess: () => { resetAuthState(); return qc.invalidateQueries(); },
   });
 }
 
 export function useRegister() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (body: RegisterBody) => api.post<MeView>('/api/auth/register', body),
-    onSuccess: () => qc.invalidateQueries(),
+    mutationFn: (body: RegisterBody) => api.post<MeView>('/api/auth/register', body, { auth: 'public' }),
+    onSuccess: () => { resetAuthState(); return qc.invalidateQueries(); },
   });
 }
 
@@ -180,10 +180,7 @@ export function useSaveTrip() {
   return useMutation({
     scope: { id: 'editor-trip-save' },
     mutationFn: (trip: Trip) => api.put<Trip>(`/api/trips/${trip.id}`, trip),
-    onSuccess: (trip) => {
-      qc.setQueryData(keys.trip(trip.id), trip);
-      qc.invalidateQueries({ queryKey: keys.trips });
-    },
+    onSuccess: (trip) => { qc.setQueryData(keys.trip(trip.id), trip); },
   });
 }
 
@@ -347,7 +344,7 @@ export function useSendMessage() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: ({ id, text }: { id: string; text: string }) =>
-      api.post<SendMessageResult>(`/api/conversations/${id}/messages`, { text }),
+      api.post<SendMessageResult>(`/api/conversations/${id}/messages`, { text }, { timeoutMs: 180_000 }),
     onSuccess: (_result, { id }) => refreshAfterTurn(qc, id),
   });
 }
@@ -365,7 +362,7 @@ export function usePatchBrief() {
 export function useSourcesStatus(enabled: boolean) {
   return useQuery({
     queryKey: keys.sourcesStatus,
-    queryFn: () => api.get<SourcesStatusView>('/api/settings/sources-status'),
+    queryFn: () => api.get<SourcesStatusView>('/api/settings/sources-status', { timeoutMs: 90_000 }),
     enabled,
     staleTime: 30_000,
     retry: false,

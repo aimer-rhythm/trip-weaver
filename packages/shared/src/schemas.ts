@@ -32,6 +32,7 @@ export const SourceNoteSchema = Type.Object({
 
 export const ActivitySchema = Type.Object({
   id: Type.String(),
+  poiKey: Type.Optional(Type.String({ maxLength: 200 })),
   name: Type.String({ minLength: 1, maxLength: 100 }),
   startTime: Type.String({ maxLength: 5 }),   // "09:00"，允许空串
   endTime: Type.String({ maxLength: 5 }),

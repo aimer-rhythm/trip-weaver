@@ -70,6 +70,6 @@ export type PoiKind = 'amap' | 'tianditu' | 'null';
 
 export interface PoiSource {
   readonly kind: PoiKind;
-  searchPois(category: PoiCategory, keyword: string, region: string): Promise<SourcedPoi[]>;
+  searchPois(category: PoiCategory, keyword: string, region: string, signal?: AbortSignal): Promise<SourcedPoi[]>;
   selfCheck(): Promise<SourceStatus>;
 }

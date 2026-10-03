@@ -16,8 +16,12 @@ import {
   type ConversationTripRef,
   type PlanningBriefData,
   type PlanningBriefView,
+  type Trip,
 } from '@tripweaver/shared';
-import { normalizeBriefData } from '../chat/brief';
+import { normalizeBriefData, syncBriefTripDates } from '../chat/brief';
+import { Value } from '@sinclair/typebox/value';
+import { ChatAttachmentSchema, type ChatAttachment } from '@tripweaver/shared';
+import type { TripWriter } from './tripService';
 import { db } from '../db/client';
 import { chatMessages, conversations, generations, planningBriefs, trips } from '../db/schema';
 
@@ -63,6 +67,7 @@ function toChatMessage(row: MessageRow): ChatMessage {
     sequence: row.sequence,
     ...(row.intake ? { intake: row.intake as BriefIntake } : {}),
     ...(row.relatedTripId ? { relatedTripId: row.relatedTripId } : {}),
+    ...(Value.Check(ChatAttachmentSchema, row.attachment) ? { attachment: row.attachment } : {}),
     createdAt: row.createdAt.getTime(),
   };
 }
@@ -149,10 +154,16 @@ export async function latestConversationTrip(
     .where(and(eq(chatMessages.conversationId, conversationId), eq(chatMessages.userId, userId)))
     .orderBy(desc(chatMessages.sequence))
     .limit(1);
-  if (!fromGeneration) return fromMessage ?? null;
-  if (!fromMessage) return fromGeneration;
-  // 同一版本链内比版本；消息指向不同链（理论不该发生）时信生成记录
-  return fromMessage.version > fromGeneration.version ? fromMessage : fromGeneration;
+  const anchor = !fromGeneration ? fromMessage : !fromMessage ? fromGeneration
+    : fromMessage.version > fromGeneration.version ? fromMessage : fromGeneration;
+  if (!anchor) return null;
+  // 手动保存不向聊天插入假助手回复，沿已关联的版本链取得真正的最新版。
+  const [root] = await db.select({ rootId: trips.rootId }).from(trips)
+    .where(and(eq(trips.id, anchor.id), eq(trips.userId, userId)));
+  if (!root) return null;
+  const [latest] = await db.select({ id: trips.id, title: trips.title, version: trips.version }).from(trips)
+    .where(and(eq(trips.rootId, root.rootId), eq(trips.userId, userId))).orderBy(desc(trips.version)).limit(1);
+  return latest ?? null;
 }
 
 export async function getConversationDetail(userId: string, id: string): Promise<ConversationDetail | null> {
@@ -168,11 +179,11 @@ export async function getConversationDetail(userId: string, id: string): Promise
 }
 
 /** 新建会话同时建好空的 Brief：保证「会话存在 ⇒ Brief 行存在」，读取路径无需合成假数据 */
-export async function createConversation(userId: string, title?: string): Promise<Conversation> {
+export async function createConversation(userId: string, title?: string, writer?: TripWriter): Promise<Conversation> {
   const now = new Date();
   const id = uid();
   const data: PlanningBriefData = { constraints: [] };
-  await db.transaction(async (tx) => {
+  const run = async (tx: TripWriter) => {
     await tx.insert(conversations).values({
       id,
       userId,
@@ -182,10 +193,9 @@ export async function createConversation(userId: string, title?: string): Promis
       updatedAt: now,
     });
     await tx.insert(planningBriefs).values({ conversationId: id, userId, status: 'collecting', data, updatedAt: now });
-  });
-  const conversation = await getConversation(userId, id);
-  if (!conversation) throw new Error('会话创建后读取失败');
-  return conversation;
+  };
+  if (writer) await run(writer); else await db.transaction(run);
+  return { id, title: title?.trim().slice(0, TITLE_MAX) || DEFAULT_CONVERSATION_TITLE, status: 'active', createdAt: now.getTime(), updatedAt: now.getTime(), brief: { data, status: 'collecting', missingFields: requiredBriefFields(data), updatedAt: now.getTime() } };
 }
 
 export async function deleteConversation(userId: string, id: string): Promise<boolean> {
@@ -206,6 +216,7 @@ export interface AppendMessageInput {
   content: string;
   intake?: BriefIntake;
   relatedTripId?: string;
+  attachment?: ChatAttachment;
 }
 
 export interface AppendMessagesInput {
@@ -222,9 +233,9 @@ export interface AppendMessagesInput {
  * sequence 靠 `SELECT … FOR UPDATE` 锁住会话行，避免并发写入撞号。
  * 归属校验失败返回 null（路由统一映射 404），不抛错。
  */
-export async function appendMessages(input: AppendMessagesInput): Promise<ChatMessage[] | null> {
+export async function appendMessages(input: AppendMessagesInput, writer?: TripWriter): Promise<ChatMessage[] | null> {
   const now = new Date();
-  return db.transaction(async (tx) => {
+  const run = async (tx: TripWriter) => {
     const [conversation] = await tx
       .select({ id: conversations.id, title: conversations.title })
       .from(conversations)
@@ -254,6 +265,7 @@ export async function appendMessages(input: AppendMessagesInput): Promise<ChatMe
       };
       if (message.intake) values.intake = message.intake;
       if (message.relatedTripId) values.relatedTripId = message.relatedTripId;
+      if (message.attachment) values.attachment = message.attachment;
       await tx.insert(chatMessages).values(values);
       appended.push({
         id,
@@ -263,6 +275,7 @@ export async function appendMessages(input: AppendMessagesInput): Promise<ChatMe
         sequence,
         ...(message.intake ? { intake: message.intake } : {}),
         ...(message.relatedTripId ? { relatedTripId: message.relatedTripId } : {}),
+        ...(message.attachment ? { attachment: message.attachment } : {}),
         createdAt: now.getTime(),
       });
     }
@@ -276,7 +289,8 @@ export async function appendMessages(input: AppendMessagesInput): Promise<ChatMe
     await tx.update(conversations).set(patch).where(eq(conversations.id, input.conversationId));
 
     return appended;
-  });
+  };
+  return writer ? run(writer) : db.transaction(run);
 }
 
 /** 写入 Brief（整体替换 data）并同步 status；返回派生好的视图 */
@@ -285,17 +299,27 @@ export async function saveBrief(
   conversationId: string,
   data: PlanningBriefData,
   status: BriefStatus,
+  writer: TripWriter = db,
 ): Promise<PlanningBriefView | null> {
   const now = new Date();
-  const rows = await db
+  const rows = await writer
     .update(planningBriefs)
     .set({ data, status, updatedAt: now })
     .where(and(eq(planningBriefs.conversationId, conversationId), eq(planningBriefs.userId, userId)))
     .returning();
   const [row] = rows;
   if (!row) return null;
-  await db.update(conversations).set({ updatedAt: now }).where(eq(conversations.id, conversationId));
+  await writer.update(conversations).set({ updatedAt: now }).where(and(eq(conversations.id, conversationId), eq(conversations.userId, userId)));
   return toBriefView(row, now);
+}
+
+/** 恢复行程时在同一事务同步日期，保留当前偏好和约束。 */
+export async function syncConversationTripDates(userId: string, conversationId: string, trip: Trip, writer: TripWriter) {
+  const [row] = await writer.select().from(planningBriefs)
+    .where(and(eq(planningBriefs.conversationId, conversationId), eq(planningBriefs.userId, userId)));
+  if (!row) throw Object.assign(new Error('关联会话已不存在'), { statusCode: 404 });
+  const brief = toBriefView(row, new Date());
+  return saveBrief(userId, conversationId, syncBriefTripDates(brief.data, trip), brief.status, writer);
 }
 
 /** 记录某轮对话产出的行程（用于消息流里的「已生成」卡片） */

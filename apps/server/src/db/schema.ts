@@ -59,6 +59,7 @@ export const trips = pgTable('trips', {
   rootId: text('root_id').notNull(),
   version: integer('version').notNull().default(1),
   parentId: text('parent_id'),
+  changeSummary: text('change_summary'),
   data: jsonb('data').notNull(),                  // Trip 全量 JSON（唯一事实源，冗余列由其重算）
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
@@ -194,6 +195,7 @@ export const chatMessages = pgTable(
     sequence: integer('sequence').notNull(),        // 会话内自增，前端据此稳定排序
     intake: jsonb('intake'),                        // assistant 消息携带的追问控件（可为 null）
     relatedTripId: text('related_trip_id'),         // 该轮产出的行程（修订/生成结果卡片用）
+    attachment: jsonb('attachment'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
   },
   (table) => [index('idx_chat_messages_conversation').on(table.conversationId, table.sequence)],
@@ -207,6 +209,15 @@ export const planningBriefs = pgTable('planning_briefs', {
   data: jsonb('data').notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
 });
+
+// 成功操作与其写入同事务落库；断线重试返回原结果，不重复生成版本或扣对话额度。
+export const detailOperations = pgTable('detail_operations', {
+  userId: text('user_id').notNull(),
+  id: text('id').notNull(),
+  fingerprint: text('fingerprint').notNull(),
+  result: jsonb('result').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+}, (table) => [primaryKey({ columns: [table.userId, table.id] })]);
 
 // ---------- LLM 请求上下文快照（09-20）：生成流水线每次 API 请求的完整落库 ----------
 // 定位「模型不调工具/空响应」类问题的调试事实源；不含 API key（key 走 getApiKey 独立通道）。

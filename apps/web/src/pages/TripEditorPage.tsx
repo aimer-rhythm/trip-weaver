@@ -1,7 +1,12 @@
 import { Button } from '../components/ui/Button';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useSaveTrip, useTrip, useTripConversation } from '../api/hooks';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
+import { Value } from '@sinclair/typebox/value';
+import { keys, useTrip, useTripConversation, useTripVersions } from '../api/hooks';
+import { api } from '../api/client';
+import { useEditorSave } from '../hooks/useEditorSave';
+import { HistoryPanel } from '../components/editor/HistoryPanel';
 import { useEditorStore } from '../store/editorStore';
 import { ChatPanel } from '../components/chat/ChatPanel';
 import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
@@ -10,31 +15,49 @@ import { PexelsCredit } from '../components/PoiCard';
 import { DaySection } from '../components/editor/DaySection';
 import { AutoRoutePlanner } from '../components/editor/AutoRoutePlanner';
 import { MapView } from '../components/editor/MapView';
-import { dateForDayIndex } from '@tripweaver/shared';
+import { TripSchema, dateForDayIndex, type TripOperationResult } from '@tripweaver/shared';
 import { EditorIcon } from '../components/editor/EditorIcon';
 import { Modal } from '../components/Modal';
 import { ExportMenu } from '../components/ExportMenu';
 import { matchOverview } from '../lib/tripDerive';
 import { handwritingFallback } from '../lib/handwriting';
 
-type SaveState = 'idle' | 'saving' | 'saved' | 'error';
 type MobileTab = 'chat' | 'list' | 'map';
 
 export function TripEditorPage() {
   const { id = '' } = useParams();
+  const navigate = useNavigate();
+  const qc = useQueryClient();
   const tripQuery = useTrip(id);
+  const versions = useTripVersions(id);
+  const latest = versions.data?.versions.reduce((a, b) => b.version > a.version ? b : a);
+  const historyVersion = versions.data?.versions.find((v) => v.id === id);
+  const readOnly = !latest || latest.id !== id;
   const conversationQuery = useTripConversation(id);
   const conversationId = conversationQuery.data?.conversationId ?? null;
-  const saveTrip = useSaveTrip();
+  const save = useEditorSave(id, readOnly, (saved) => navigate(`/trips/${saved.id}`, { replace: true }));
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [restoreId, setRestoreId] = useState<string>();
+  const [busy, setBusy] = useState(false);
+  const operation = useRef(false);
+  const nextView = useRef<{ id: string; dayIndex: number | null; activityId?: string } | null>(null);
+  const [conversationError, setConversationError] = useState('');
+  const createChat = async () => {
+    let acquired = false;
+    try {
+      const saved = await begin(); acquired = true; setConversationError('');
+      const result = await api.post<{ conversationId: string }>(`/api/trips/${saved.id}/conversation`);
+      qc.setQueryData(['trips', saved.id, 'conversation'], result);
+    } catch (err) { setConversationError(err instanceof Error ? err.message : '对话关联失败'); }
+    finally { if (acquired) end(); }
+  };
 
   const trip = useEditorStore((s) => s.trip);
-  const revision = useEditorStore((s) => s.revision);
   const dayFilter = useEditorStore((s) => s.dayFilter);
   const load = useEditorStore((s) => s.load);
   const clear = useEditorStore((s) => s.clear);
   const addDay = useEditorStore((s) => s.addDay);
 
-  const [saveState, setSaveState] = useState<SaveState>('idle');
   const [mobileTab, setMobileTab] = useState<MobileTab>('list');
   const [candidatesOpen, setCandidatesOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -44,26 +67,50 @@ export function TripEditorPage() {
   // 载入：仅在行程 id 变化时执行，避免自动保存回写触发重载覆盖本地编辑
   const loadedId = tripQuery.data?.id;
   useEffect(() => {
-    if (tripQuery.data) load(tripQuery.data);
-    return () => clear();
+    if (tripQuery.data && useEditorStore.getState().trip?.id !== loadedId) {
+      load(tripQuery.data);
+      const view = nextView.current;
+      if (view && view.id === loadedId) {
+        setDayFilter(view.dayIndex);
+        if (view.activityId) requestAnimationFrame(() => document.getElementById(`activity-${view.activityId}`)?.scrollIntoView({ block: 'center' }));
+        nextView.current = null;
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadedId]);
+  useEffect(() => () => clear(), [clear]);
 
-  // 防抖自动保存（800ms）
-  useEffect(() => {
-    if (revision === 0) return;
-    setSaveState('saving');
-    const timer = setTimeout(() => {
+  useEffect(() => { useEditorStore.getState().setReadOnly(readOnly || busy); }, [readOnly, busy]);
+  const begin = async () => {
+    if (operation.current) throw new Error('请等待当前操作结束');
+    if (Object.values(useEditorStore.getState().routeReplans).some((job) => job.status === 'pending')) throw new Error('路线仍在更新，请稍后重试');
+    operation.current = true; setBusy(true); useEditorStore.getState().setReadOnly(true);
+    try {
+      await save.flush();
       const current = useEditorStore.getState().trip;
-      if (!current) return;
-      saveTrip.mutate(current, {
-        onSuccess: () => setSaveState('saved'),
-        onError: () => setSaveState('error'),
-      });
-    }, 800);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [revision]);
+      if (!current) throw new Error('行程已切换');
+      return current;
+    } catch (err) { operation.current = false; setBusy(false); useEditorStore.getState().setReadOnly(readOnly); throw err; }
+  };
+  const end = () => { operation.current = false; setBusy(false); };
+  const onTrip = async (targetId: string, result?: TripOperationResult) => {
+    const target: unknown = result?.trip ?? await api.get<unknown>(`/api/trips/${targetId}`);
+    if (!Value.Check(TripSchema, target)) throw new Error('版本内容读取失败');
+    const selected = useEditorStore.getState().dayFilter;
+    qc.setQueryData(keys.trip(targetId), target);
+    qc.setQueryData(['trips', targetId, 'conversation'], { conversationId });
+    await qc.invalidateQueries({ queryKey: keys.trips });
+    if (conversationId) await qc.invalidateQueries({ queryKey: keys.conversation(conversationId) });
+    const day = target.days.find((d) => result?.dayId ? d.id === result.dayId : d.dayIndex === selected);
+    const view = { id: targetId, dayIndex: day?.dayIndex ?? null, activityId: result?.activityId };
+    if (result?.activityId) setMobileTab('list');
+    // 日期选择必须在 load 之后恢复，避免下一帧比路由 effect 更早导致选择被覆盖。
+    if (targetId === id) {
+      setDayFilter(view.dayIndex);
+      if (view.activityId) requestAnimationFrame(() => document.getElementById(`activity-${view.activityId}`)?.scrollIntoView({ block: 'center' }));
+    } else nextView.current = view;
+    navigate(`/trips/${targetId}`);
+  };
 
   const visibleDays = useMemo(() => {
     const days = trip?.days ?? [];
@@ -84,7 +131,7 @@ export function TripEditorPage() {
     : null;
 
   const mobileTabs: [MobileTab, string][] = [
-    ...(conversationId ? [['chat', '对话'] as [MobileTab, string]] : []),
+    ['chat', '对话'],
     ['list', '行程'],
     ['map', '地图'],
   ];
@@ -119,7 +166,7 @@ export function TripEditorPage() {
               <span>查看当天 →</span>
             </Button>
           ))}
-          <Button variant="secondary" type="button" className={"btn-add-day justify-center [border-style:dashed] w-full"} onClick={addDay}>＋ 添加一天</Button>
+          {!readOnly && <Button disabled={busy} variant="secondary" type="button" className={"btn-add-day justify-center [border-style:dashed] w-full"} onClick={addDay}>＋ 添加一天</Button>}
         </section>
       )}
       <PexelsCredit
@@ -136,11 +183,14 @@ export function TripEditorPage() {
           <div className={"editor-title [&_h1]:[font-size:1.05rem] [&_h1]:whitespace-nowrap [&_h1]:overflow-hidden [&_h1]:[text-overflow:ellipsis] [&_.muted]:[font-size:0.78rem] [@media_(max-width:_768px)]:[&_.muted]:hidden"}>
             <h1><EditorIcon name="pin" />{trip.title}</h1>
             <span className={"editor-trip-meta [&_.editor-icon]:[color:var(--color-editor-page-color-62)] flex items-center [gap:8px] [font-size:14px] [@media_(max-width:_600px)]:[&_.editor-icon]:hidden"}><EditorIcon name="calendar" />{dateLabel ? `${dateLabel} · ` : ''}{trip.days.length}天 · {trip.partySize}人</span>
-            {saveState === 'error' && <span className={"text-danger [color:var(--color-danger)]"} role="alert">保存失败，请检查网络后<Button variant="ghost" type="button" onClick={() => { setSaveState('saving'); saveTrip.mutate(trip, { onSuccess: () => setSaveState('saved'), onError: () => setSaveState('error') }); }}>重试保存</Button></span>}
+            {save.state === 'error' && <span className="text-[var(--color-danger)]" role="alert">{save.error}<Button variant="ghost" type="button" onClick={() => void save.flush().catch(() => {})}>重试保存</Button></span>}
           </div>
         </div>
-        <div className={"editor-toolbar-right flex items-center [gap:8px] shrink-0"}><ExportMenu trip={trip} /></div>
+        <div className="editor-toolbar-right flex items-center gap-2 shrink-0 max-[600px]:w-full max-[600px]:justify-end"><Button variant="ghost" className="min-h-11 rounded-full text-ink-muted" onClick={() => { setRestoreId(undefined); setHistoryOpen(true); }}><EditorIcon name="history" />历史版本</Button><ExportMenu trip={trip} /></div>
       </div>
+
+      {latest && latest.id !== id && <div className="flex flex-wrap items-center gap-2 rounded-xl bg-[var(--color-card)] px-4 py-2" role="status">正在查看历史版本 v{historyVersion?.version}<Button disabled={busy} onClick={() => { void (async () => { await begin(); try { await onTrip(latest.id); } finally { end(); } })().catch(() => setHistoryOpen(true)); }}>返回最新版本</Button><Button disabled={busy} onClick={() => { setRestoreId(id); setHistoryOpen(true); }}>恢复此版本</Button></div>}
+      {versions.isError && <p role="alert">版本信息加载失败，暂时只读。<Button onClick={() => void versions.refetch()}>重试</Button></p>}
 
       <div className={"editor-mobile-tabs hidden [@media_(max-width:_768px)]:flex [@media_(max-width:_768px)]:[background:var(--color-card)] [@media_(max-width:_768px)]:[border-bottom:1px_solid_var(--color-border)]"}>
         {mobileTabs.map(([tab, label]) => (
@@ -156,11 +206,11 @@ export function TripEditorPage() {
         ))}
       </div>
 
-      <div className={`editor-body flex-1 flex min-h-0 [@media_(max-width:_768px)]:relative [@media_(max-width:_768px)]:[&.mobile-chat_.editor-chat]:flex [@media_(max-width:_768px)]:[&.mobile-list_.editor-left]:flex [@media_(max-width:_768px)]:[&.mobile-map_.editor-map]:block mobile-${mobileTab} ${conversationId ? "has-chat" : "without-chat"}`}>
+      <div className={`editor-body flex-1 flex min-h-0 [@media_(max-width:_768px)]:relative [@media_(max-width:_768px)]:[&.mobile-chat_.editor-chat]:flex [@media_(max-width:_768px)]:[&.mobile-list_.editor-left]:flex [@media_(max-width:_768px)]:[&.mobile-map_.editor-map]:block mobile-${mobileTab} has-chat`}>
         {/* R2（09-24）：有来源会话的行程，对话常驻最左侧；导入/旧行程无会话则不占位 */}
-        {conversationId && (
+        {(
           <aside className={"editor-chat [width:300px] shrink-0 flex flex-col [border-right:1px_solid_var(--color-border)] [background:var(--color-card)] min-h-0 [@media_(max-width:_768px)]:w-full [@media_(max-width:_768px)]:[border-right:none] [@media_(max-width:_768px)]:hidden"} aria-label="旅行助手">
-            <ChatPanel conversationId={conversationId} currentTripId={id} />
+            {conversationId ? <ChatPanel conversationId={conversationId} trip={trip} dayId={trip.days.find((d) => d.dayIndex === dayFilter)?.id} readOnly={readOnly} busy={busy} begin={begin} end={end} onTrip={onTrip} /> : <div className="p-4 text-[16px]"><p>{conversationQuery.isPending ? '正在加载对话…' : conversationQuery.isError ? '对话关联加载失败' : '为当前行程开启对话，继续获取沿途建议。'}</p><Button disabled={readOnly || busy || conversationQuery.isPending} onClick={() => conversationQuery.isError ? void conversationQuery.refetch() : void createChat()}>{conversationQuery.isError ? '重试' : '开启行程对话'}</Button>{conversationError && <p role="alert">{conversationError}</p>}</div>}
           </aside>
         )}
         <aside className={"editor-left [width:430px] shrink-0 flex flex-col [border-right:1px_solid_var(--color-border)] [background:var(--color-bg)] min-h-0 [@media_(max-width:_768px)]:w-full [@media_(max-width:_768px)]:[border-right:none] [@media_(max-width:_768px)]:hidden"}>
@@ -178,9 +228,10 @@ export function TripEditorPage() {
         </div>
       </div>
 
-      <AutoRoutePlanner />
+      {!readOnly && !busy && <AutoRoutePlanner />}
+      {historyOpen && <HistoryPanel currentId={id} chain={versions.data} loading={versions.isPending} failed={versions.isError} busy={busy} initialRestore={restoreId} refresh={() => void versions.refetch()} close={() => setHistoryOpen(false)} begin={begin} end={end} onTrip={onTrip} />}
       {candidatesOpen && <Modal title="备选清单" onClose={() => setCandidatesOpen(false)}>{overviewMatch.unmatched.length ? <CandidateDrawer pois={overviewMatch.unmatched} expanded /> : <p className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>暂无未编入行程的备选地点。</p>}</Modal>}
-      {editing && (
+      {editing && !readOnly && !busy && (
         <ActivityEditDialog
           key={`${editing.dayId}:${editing.activityId ?? 'new'}`}
           dayId={editing.dayId}

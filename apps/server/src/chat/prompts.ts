@@ -7,6 +7,7 @@ import {
   CONSTRAINT_CATEGORY_LABELS,
   requiredBriefFields,
   PACE_LABELS,
+  MAX_TRIP_DAYS,
   type ChatMessage,
   type PlanningBriefData,
   type Trip,
@@ -33,6 +34,10 @@ export const DIALOGUE_SYSTEM_PROMPT = `你是旅行规划的对话助手。你�
   - 换：{ kind: 'replace_activity', dayIndex, activityId, activity: { name, category?, description? } }
   - 删：{ kind: 'delete_activity', dayIndex, activityId }
   - 加：{ kind: 'add_activity', dayIndex, position?, activity: { name, category?, description? } }
+  - 延长行程 / 再加一天 / 改为更多天数：{ kind: 'add_days', dayIndex: 当前最后一天序号 + 1, days: [{ title, activities: [{ name, category?, description? }] }] }。
+    把所有新增日期放进同一个 add_days 操作，按顺序追加；保留已有日期和活动。用户说「再加两天」是额外增加两天，「改成五天」是总计五天。总天数最多 ${MAX_TRIP_DAYS} 天，超出时解释上限，不擅自截断请求。
+    新日期的 activities 仅作为调研需求草稿，最终地点会通过知识库、联网和排程核验后安排；可给 2～4 个偏好候选，也可留空让调研补齐。用户明确要空白日或休息日时 activities 留空。不编造营业、票价或时刻。不要把 add_activity 指向尚不存在的日期，也不要只修改 days 字段而不创建日期。
+    已有行程时，新增日期无需重新生成整趟行程，也无需收集已有的出行信息。用户只是询问「多一天能去哪」或明确「先给建议」时只回答，不执行修改。
   只给真正要改的操作，没提到的活动不要动。拿不准用户指的是哪个活动时不要猜，用 clarification 追问。
   跨天移动、改住宿、改预算这类操作对话不支持，reply 里告诉用户去编辑页手动改。
 - **缺少必填项时，一次只问一项**，并在 clarification 里给出 2–4 个具体选项，让用户点选而不是手打：
@@ -40,7 +45,7 @@ export const DIALOGUE_SYSTEM_PROMPT = `你是旅行规划的对话助手。你�
   节奏、出行方式这类枚举项必须给选项；目的地按上下文能合理推断就给候选城市，实在想不出才留空 options。
   日期类不用给选项（前端会直接给日期控件）。不要在一次 clarification 里问多个字段。
 - reply 要像人说话，一句话即可，不要复述字段列表，不要说「已更新 Brief」这类系统语言。缺关键信息时可以在 reply 里顺口问一句。
-- 不要输出行程安排、景点名或时间表。那是下一步生成阶段的事。
+- 生成前不输出行程安排或时间表；已有行程的修改可以在 editOps 提供所需活动草稿，reply 只简述本次修改。
 - 不确定用户意思时 intent 用 unclear，并在 reply 里直接说不确定。`;
 
 function isoToday(now = new Date()): string {

@@ -100,6 +100,8 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
     const es = new EventSource(`/api/generations/${jobId}/events?lastEventId=0`);
     eventSourceRef.current = es;
     let gotTerminal = false;
+    let active = true;
+    let checkingSnapshot = false;
     let lastEventId = 0;
     // 原生重连携带 Last-Event-ID，服务端只补增量；历史事件一直保留。
     // 游标绑定本次 job/effect，换任务或重新挂载后从 0 重建。
@@ -130,10 +132,21 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
       }
     };
     es.onerror = () => {
-      if (gotTerminal) return;
+      if (!active || gotTerminal || checkingSnapshot) return;
       // 浏览器会自动重连；若任务已不在（服务重启/过期），快照 404 时收尾
+      checkingSnapshot = true;
       fetchJobSnapshot(jobId).catch((err) => {
+        if (!active || gotTerminal) return;
+        if (err instanceof ApiError && err.status === 401) {
+          gotTerminal = true;
+          es.close();
+          if (eventSourceRef.current === es) eventSourceRef.current = null;
+          sessionStorage.removeItem(ACTIVE_JOB_KEY);
+          setErrorMessage('登录已过期，请重新登录');
+          return;
+        }
         if (err instanceof ApiError && err.status === 404) {
+          gotTerminal = true;
           es.close();
           if (eventSourceRef.current === es) eventSourceRef.current = null;
           setEvents((prev) => [
@@ -142,9 +155,10 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
           ]);
           sessionStorage.removeItem(ACTIVE_JOB_KEY);
         }
-      });
+      }).finally(() => { checkingSnapshot = false; });
     };
     return () => {
+      active = false;
       es.close();
       if (eventSourceRef.current === es) eventSourceRef.current = null;
     };
@@ -169,7 +183,7 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
           if (err.status === 429) {
             const resetAt = typeof err.data?.resetAt === 'number' ? err.data.resetAt : null;
             setErrorMessage(`今日生成次数已用完${resetAt ? `，${formatResetTime(resetAt)} 后重置` : ''}。已有行程仍可继续编辑。`);
-          } else if (err.status === 400 && err.data?.code === 'no_llm') {
+          } else if (err.status === 400 && err.code === 'no_llm') {
             setErrorMessage(
               err.data?.hasSiteKey
                 ? '站点 AI 配置异常，请联系站长。'

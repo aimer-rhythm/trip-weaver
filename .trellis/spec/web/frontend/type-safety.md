@@ -40,7 +40,7 @@ The following values are untrusted at runtime even if TypeScript knows the expec
 
 Validate shared domain payloads against the exported shared schemas, or add a focused runtime guard at the adapter boundary. Only pass validated data into React Query cache, Zustand, navigation decisions, or mutations.
 
-The generic API client currently casts successful JSON to `T`, and the current import and SSE paths also rely on unchecked values. These are known trust-boundary limitations, not conventions to repeat. New or touched boundary code should improve validation where practical rather than adding another broad assertion.
+The generic API client validates the shared `{ code, message, data }` envelope at runtime, then casts its business `data` to `T`. This does not validate every endpoint's data schema. Complex domain data still needs its endpoint validator. The POST chat stream validates shared event schemas; the native generation stream still uses a narrow JSON parse guard. These remaining limitations are not conventions to repeat.
 
 Evidence: `apps/web/src/api/client.ts`, `apps/web/src/pages/TripListPage.tsx`, `apps/web/src/pages/PlannerPage.tsx`.
 

@@ -1,3 +1,4 @@
+import { apiFailure } from './lib/api-contract.mjs';
 // 当前首页 → 自动生成 → 编辑器，以及刷新恢复/取消重试的生产浏览器验收。
 // 先 npm run build；本地 PG 就绪后 node scripts/verify-generation-browser.mjs。
 // VERIFY_GENERATION_ADMIN_URL 只用于创建/删除本脚本随机命名的专用测试库。
@@ -75,7 +76,7 @@ try {
   const json = (path) => page.evaluate(async (path) => {
     const response = await fetch(path);
     if (!response.ok) throw new Error(`${path}: ${response.status}`);
-    return response.json();
+    return (await response.json()).data;
   }, path);
   const begin = async () => {
     await page.goto(`${base}/`);
@@ -143,7 +144,7 @@ try {
     await sleep(250);
     if (firstCancel) {
       firstCancel = false;
-      return route.fulfill({ status: 500, json: { error: '模拟取消失败' } });
+      return route.fulfill({ status: 500, json: apiFailure(500, '模拟取消失败') });
     }
     return route.continue();
   });

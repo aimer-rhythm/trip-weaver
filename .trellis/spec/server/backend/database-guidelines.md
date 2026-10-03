@@ -56,7 +56,7 @@ Representative paths: `apps/server/src/services/tripService.ts`,
 
 ### Generation transaction writer
 
-`createTrip(userId, source, revisionOf?, writer = db)` accepts `Pick<typeof db, 'select' | 'insert'>`.
+`createTrip(userId, source, revisionOf?, writer = db)` accepts `TripWriter = Pick<typeof db, 'select' | 'insert' | 'update'>`.
 All count/lineage reads and the insert use this writer. A caller coordinating a larger transaction
 must pass its `tx`; a hidden global `db` query would escape the transaction.
 Generation saves the trip and its `generations.status = 'done'` audit row inside one
@@ -65,6 +65,10 @@ Cancellation observed before the callback returns rolls back both writes; a comm
 successful. Error/cancel audit rows are best-effort writes after the in-memory terminal transition.
 See the terminal/persistence scenario in `generation-guidelines.md` and
 `node --import tsx scripts/verify-generation-flow.mts` for real PostgreSQL fault injection.
+
+版本创建和原地保存共用 `users` 行锁。`assertLatestTrip` 在事务内拒绝旧版本和过期 `updatedAt`；
+`updateTrip` 的时间戳至少增加 1ms。详情操作需原子写入 `detail_operations`，消息/Brief 服务接受
+同一 writer，禁止另开事务逃逸。迁移、幂等和恢复规则见 [详情对话流与版本恢复](./detail-chat-history.md)。
 
 ## Common Mistakes
 

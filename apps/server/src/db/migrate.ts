@@ -5,6 +5,11 @@ import type { Pool } from 'pg';
 import { AMAP_SERVICES, amapDay } from '../integrations/amap/services';
 
 const STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS detail_operations (
+    user_id TEXT NOT NULL, id TEXT NOT NULL, fingerprint TEXT NOT NULL,
+    result JSONB NOT NULL, created_at TIMESTAMPTZ NOT NULL,
+    PRIMARY KEY (user_id, id)
+  )`,
   `CREATE TABLE IF NOT EXISTS amap_service_usage (
     day TEXT NOT NULL,
     service TEXT NOT NULL,
@@ -212,6 +217,8 @@ export async function runMigrations(pool: Pool): Promise<void> {
     await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS root_id TEXT`);
     await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 1`);
     await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS parent_id TEXT`);
+    await client.query(`ALTER TABLE trips ADD COLUMN IF NOT EXISTS change_summary TEXT`);
+    await client.query(`ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment JSONB`);
     await client.query(`UPDATE trips SET root_id = id WHERE root_id IS NULL`);
     await client.query(`ALTER TABLE trips ALTER COLUMN root_id SET NOT NULL`);
     await client.query(`CREATE INDEX IF NOT EXISTS idx_trips_root ON trips(root_id, version DESC)`);

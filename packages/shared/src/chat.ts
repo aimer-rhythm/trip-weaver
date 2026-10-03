@@ -3,7 +3,7 @@
 // 设计边界（借鉴 FloatTrip，见 tasks/09-23-qa-trip-generation/research/floattrip-conversational-flow.md）：
 //   对话 → DialogueDecision（reply + briefPatch）→ Planning Brief → 用户确认 → 正式生成任务。
 // 对话永远不直接生成行程；Brief 是「已确认的事实快照」，生成只在快照上跑。
-import { Type } from '@sinclair/typebox';
+import { Type, type Static } from '@sinclair/typebox';
 import {
   BRIEF_MISSING_FIELDS,
   BRIEF_STATUSES,
@@ -23,6 +23,7 @@ import {
 } from './constants';
 import { StringEnum } from './typebox';
 import { EditOpOutcomeSchema } from './editOps';
+import { ChatAttachmentSchema } from './detailChat';
 import type { BriefIntake, BriefMissingField, GenerateForm, PlanningBriefData, TripConstraint } from './types';
 
 // ---------- 约束模型 ----------
@@ -98,6 +99,7 @@ export const ChatMessageSchema = Type.Object({
   sequence: Type.Integer({ minimum: 0 }),
   intake: Type.Optional(BriefIntakeSchema),   // 仅 assistant 消息可能携带追问控件
   relatedTripId: Type.Optional(Type.String()),
+  attachment: Type.Optional(ChatAttachmentSchema),
   createdAt: Type.Number(),
 });
 
@@ -146,6 +148,18 @@ export const SendMessageResultSchema = Type.Object({
     }),
   ),
 });
+
+const StreamEnvelope = { requestId: Type.String(), sequence: Type.Integer({ minimum: 1 }) };
+export const ChatStreamEventSchema = Type.Union([
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('accepted') }),
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('progress'), text: Type.String() }),
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('answer_delta'), text: Type.String() }),
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('recommendations'), attachment: ChatAttachmentSchema }),
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('edit_result'), result: Type.Object({ tripId: Type.String(), version: Type.Integer({ minimum: 1 }), outcomes: Type.Array(EditOpOutcomeSchema, { maxItems: 10 }) }) }),
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('done'), result: SendMessageResultSchema }),
+  Type.Object({ ...StreamEnvelope, type: Type.Literal('error'), error: Type.String(), code: Type.String() }),
+]);
+export type ChatStreamEvent = Static<typeof ChatStreamEventSchema>;
 
 /**
  * Brief 增量补丁：undefined = 该字段不动（与「清空」区分开，清空不在本期范围）。

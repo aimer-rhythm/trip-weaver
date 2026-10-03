@@ -20,6 +20,7 @@ interface Props {
 }
 
 export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLeg }: Props) {
+  const readOnly = useEditorStore((s) => s.readOnly);
   const moveActivity = useEditorStore((s) => s.moveActivity);
   const moveActivityToDay = useEditorStore((s) => s.moveActivityToDay);
   const deleteActivity = useEditorStore((s) => s.deleteActivity);
@@ -28,17 +29,17 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
   const showCover = matchedPoi?.coverUrl && matchedPoi.coverUrl !== failedCover;
 
   return (
-    <article className={"activity-entry [margin-bottom:16px]"} aria-label={activity.name}>
+    <article id={`activity-${activity.id}`} className={"activity-entry [margin-bottom:16px]"} aria-label={activity.name}>
       <div className={`activity-card flex flex-col [gap:6px] [border:1px_solid_var(--color-border)] [border-radius:10px] [padding:8px_10px] [background:var(--color-activity-card-background-6)] ${showCover ? "has-cover" : ""}`}>
         <div className={"activity-heading [grid-column:1_/_-1] grid [grid-template-columns:40px_minmax(0,_1fr)_44px] items-center [gap:12px] [&_.editor-menu-list]:[top:100%] [&_.editor-menu-list]:[bottom:auto] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[grid-template-columns:32px_minmax(0,_1fr)_44px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[gap:8px] [@media_(max-width:_600px)]:[grid-template-columns:28px_minmax(0,_1fr)_44px] [@media_(max-width:_600px)]:[gap:8px]"}>
           <span className={"activity-order [width:40px] [height:40px] grid [place-items:center] [border-radius:50%] [color:var(--color-activity-order-color-73)] [background:linear-gradient(135deg,_var(--color-activity-order-background-74),_var(--color-activity-order-background-75))] [font-size:17px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[width:32px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[height:32px] [@media_(min-width:_1101px)_and_(max-width:_1400px)]:[font-size:14px] [@media_(max-width:_600px)]:[width:28px] [@media_(max-width:_600px)]:[height:28px] [@media_(max-width:_600px)]:[font-size:13px]"}>{String(index + 1).padStart(2, '0')}</span>
           <h3 className={"activity-name font-semibold [font-size:0.94rem]"}>{activity.name}</h3>
-          <EditorMenu label={`${activity.name}更多操作`}>
+          {!readOnly && <EditorMenu label={`${activity.name}更多操作`}>
             <Button variant="ghost" type="button" disabled={index === 0} onClick={() => moveActivity(day.id, activity.id, 'up')}>上移</Button>
             <Button variant="ghost" type="button" disabled={index === day.activities.length - 1} onClick={() => moveActivity(day.id, activity.id, 'down')}>下移</Button>
             {allDays.length > 1 && <label>移至其他天<Select aria-label="移至其他天" value="" onChange={(e) => { if (e.target.value) moveActivityToDay(day.id, activity.id, e.target.value); }}><option value="">选择天数</option>{allDays.filter((d) => d.id !== day.id).map((d) => <option key={d.id} value={d.id}>第{d.dayIndex}天</option>)}</Select></label>}
             <Button variant="danger" type="button" onClick={() => setDeleteOpen(true)}>删除活动</Button>
-          </EditorMenu>
+          </EditorMenu>}
         </div>
         <div className="activity-content col-span-full flex items-start gap-3 pl-[52px] min-[1101px]:max-[1400px]:pl-10 max-[600px]:gap-2 max-[600px]:pl-0">
         <div className="activity-main min-w-0 flex-1">

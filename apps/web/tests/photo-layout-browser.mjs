@@ -1,3 +1,4 @@
+import { apiSuccess } from '../../../scripts/lib/api-contract.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -50,7 +51,7 @@ try {
     else if (url.pathname.endsWith('/conversation')) data = { conversationId: 'photo-chat' };
     else if (url.pathname === '/api/conversations/photo-chat') data = { messages: [] };
     else if (url.pathname === '/api/trips/photo-layout-fixture') data = trip;
-    return route.fulfill({ json: data });
+    return route.fulfill({ json: apiSuccess(data) });
   });
   await page.goto('http://127.0.0.1:5173/trips/photo-layout-fixture');
   await page.getByRole('group', { name: '行程天数' }).waitFor();
