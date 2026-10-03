@@ -1,0 +1,76 @@
+{
+  "说明": "仅包含当前任务相对前置未提交工作的增量；根据本会话已执行修改反向重建基线，并在隔离目录应用补丁逐文件验证。源代码仍留在工作区，未混入前置任务提交。",
+  "前置任务": [
+    "10-02-detail-chat-streaming-suggestions",
+    "10-03-detail-chat-qa-history"
+  ],
+  "补丁校验": "git apply --check、隔离应用、逐文件 LF 标准化内容比对通过",
+  "files": [
+    {
+      "path": "apps/web/src/components/chat/ChatPanel.tsx",
+      "base_sha256_lf": "0491fabaf20d33d3ebb5c17849e2b4021683e36c72bdfc942e0f90f6f5e7b678",
+      "accepted_sha256_lf": "247174f6da15b29437275e92aaec3630a473078f351363313bebfb1df3dcb196",
+      "new_file": false
+    },
+    {
+      "path": "packages/shared/src/detailChat.ts",
+      "base_sha256_lf": "cc927fd3177e0a52d786ac86ba66ecf619f3e99fc5fd5c6fc7fc7de3fa3a3374",
+      "accepted_sha256_lf": "77557bb060113ac65dd4405227bd6e0e90224f84bb0d1e953a87dd4fe49c47fd",
+      "new_file": false
+    },
+    {
+      "path": "apps/server/src/services/detailChatService.ts",
+      "base_sha256_lf": "a00fd1c8d9e27b662cd8230aa02dfdb7a545f44038ed304af5a9ec1168223529",
+      "accepted_sha256_lf": "fdc627ec2f5fada71ca3aa984adbea1c9c77a6308cc63af88b1931841bf9be9d",
+      "new_file": false
+    },
+    {
+      "path": "apps/server/src/services/tripHistoryService.ts",
+      "base_sha256_lf": "e4416b5c12a7824a5bef809c980ce3c899b8cb0f10ac18e8980ab72550c1350e",
+      "accepted_sha256_lf": "f95a5d8a1e549a89f3fbb096f225581b71843c6d048c7e46d9c11dd34be243f3",
+      "new_file": false
+    },
+    {
+      "path": "apps/web/src/pages/TripEditorPage.tsx",
+      "base_sha256_lf": "630ea7e5cb40ebbe48ef92628823c6494da566710fdee44e89e7de830576f928",
+      "accepted_sha256_lf": "76144f452620ee002e337ab46e1fb77e4497d89975fed5680ee0d2969ab438b1",
+      "new_file": false
+    },
+    {
+      "path": "scripts/verify-detail-chat.mts",
+      "base_sha256_lf": "87389fb7e0ccd7f31455a557ae2591be92766fbdf6334e520aa406c9aa95ebd9",
+      "accepted_sha256_lf": "23db5130b7796e4ebdb9a0a3c69d86594110df625bdc428b486e7bfdb7a853c1",
+      "new_file": false
+    },
+    {
+      "path": ".trellis/spec/web/frontend/component-guidelines.md",
+      "base_sha256_lf": "4e12dc1c379b3fc2e7e132eb6f5fe098456a5a36554fd68b8bc93ae345e603fd",
+      "accepted_sha256_lf": "24f31c098818e483f036e6fe91bddda1c9d39cd9a3bd79441238654c1d545cf6",
+      "new_file": false
+    },
+    {
+      "path": ".trellis/spec/web/frontend/state-management.md",
+      "base_sha256_lf": "27df85eaa491d74d13ddf6fe25153049ec316ebe1ac9634448b553dfb89a0690",
+      "accepted_sha256_lf": "a9a8b11295010814ab5e47e1b498a26a86d0c9d8cef03c606b2fbf06b6b21925",
+      "new_file": false
+    },
+    {
+      "path": ".trellis/spec/server/backend/detail-chat-history.md",
+      "base_sha256_lf": "5e1556c128906ee3482a59f8b6348bcf9116e1a8ad4d94da808c333a2f4b8dcf",
+      "accepted_sha256_lf": "bf14f786e6daae3ccc81be914ba86c138e28124b5524837006691a5e727fd08d",
+      "new_file": false
+    },
+    {
+      "path": "apps/server/src/chat/followUpSuggestions.ts",
+      "base_sha256_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "accepted_sha256_lf": "f9a2fa94822a74e983889096f3edb7dc2db34f0d54ce0470f968eafcfd738e79",
+      "new_file": true
+    },
+    {
+      "path": "apps/server/src/__tests__/followUpSuggestions.test.ts",
+      "base_sha256_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "accepted_sha256_lf": "444c44c83c22e21064787cb2a147c96efbc993dc8ed54e9ed3a63a1d3f3ecae7",
+      "new_file": true
+    }
+  ]
+}
