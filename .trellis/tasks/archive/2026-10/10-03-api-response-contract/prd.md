@@ -21,3 +21,9 @@
 
 ## 工作流说明
 本地 `.agents/skills` 为空，已搜索全局 skill 目录，Trellis start/brainstorm/before-dev/check 文件不可用。按已读取的 workflow.md、各层 spec 和用户已确认的范围执行等价流程，使用 inline 模式，不调用自动收尾脚本。
+
+## 验收与收尾
+
+- 用户于 2026-10-03 确认验收。
+- 本任务的实现随三条 detail-chat 任务一并提交在 `9b4a7b5`（两者在 `client.ts` 的 `requestStream` 上硬耦合，拆开会产生编译不过的中间提交），因此归档提交只含任务元数据。
+- 收尾时的 spec/docs 同步（`error-handling.md`、`docs/API_CONTRACT.md`、README、架构文档）已在同一次提交里。
