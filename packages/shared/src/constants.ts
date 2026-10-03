@@ -10,6 +10,9 @@ export const DAY_COLORS = ['#e63946', '#f4862f', '#2a9d8f', '#457b9d', '#8338ec'
 export const TRIP_EXPORT_VERSION = 2;
 export const MAX_TRIP_DAYS = 15;
 export const MAX_TRIPS_PER_USER = 100;
+// 行程列表分页（10-03）：默认每批 20 条，服务端 limit 上限防滥用
+export const TRIP_LIST_PAGE_SIZE = 20;
+export const TRIP_LIST_PAGE_SIZE_MAX = 50;
 export const MAX_SOURCE_NOTES = 3;
 // 单次生成兜底超时（服务端中断 + 前端超时文案同源；32k 输出预算下单轮可达数分钟）
 export const GENERATION_TIMEOUT_MINUTES = 15;

@@ -134,6 +134,20 @@ export interface TripListItem {
   updatedAt: number;
 }
 
+/** 行程列表排序键（10-03 服务端分页）：与列表页「排序」下拉一一对应 */
+export const TRIP_LIST_SORTS = ['updated', 'created', 'name'] as const;
+export type TripListSort = (typeof TRIP_LIST_SORTS)[number];
+
+/**
+ * 行程列表一页（10-03）：筛选、排序、计数都在服务端算。
+ * `destinations` 是该用户全部行程的目的地去重升序，不受筛选影响（供「目的地」下拉）。
+ */
+export interface TripListPage {
+  items: TripListItem[];
+  total: number;
+  destinations: string[];
+}
+
 /** 版本链上的一版（详情页版本切换用） */
 export interface TripVersionItem {
   id: string;

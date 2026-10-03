@@ -35,7 +35,8 @@ try {
     else if (url.pathname === '/api/usage') data = { remaining: 2, dailyLimit: 4 };
     else if (url.pathname === '/api/settings/config') data = { amapJsKey: '', amapJsSecurityCode: '' };
     else if (url.pathname === '/api/destinations/covered') data = [];
-    else if (url.pathname === '/api/trips') data = ['北京', '罍城'].map((destination, i) => ({ id: `cover-${i}`, title: '旅行手账', destination, daysCount: 3, activityCount: 8, totalCost: 0, usedXhs: false, version: 1, createdAt: 0, updatedAt: 0 }));
+    else if (url.pathname === '/api/trips') { const items = ['北京', '罍城'].map((destination, i) => ({ id: `cover-${i}`, title: '旅行手账', destination, daysCount: 3, activityCount: 8, totalCost: 0, usedXhs: false, version: 1, createdAt: 0, updatedAt: 0 })); data = { items, total: items.length, destinations: items.map(item => item.destination) }; }
+    else if (url.pathname.endsWith('/versions')) data = { versions: [{ id: trip.id, version: 1 }] };
     else if (url.pathname.endsWith('/conversation')) data = { conversationId: 'font-chat' };
     else if (url.pathname === '/api/conversations/font-chat') data = { messages: [{ id: 'message-1', role: 'assistant', content: '今天从故宫开始，慢慢感受老北京的宫苑与街巷。', createdAt: 0 }] };
     else if (url.pathname === `/api/trips/${trip.id}`) data = trip;

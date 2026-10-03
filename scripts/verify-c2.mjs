@@ -586,13 +586,14 @@ try {
     JSON.stringify(chainRes.json?.versions?.map((v) => v.version)),
   );
   const listAfterRevision = await api('GET', '/api/trips');
+  const listItems = listAfterRevision.json?.items ?? [];
   const v3 = modify2.json?.editResult?.tripId;
   // 该用户还有一条自动触发生成的独立行程；版本链去重只针对同一 root
   check(
     '行程列表只显示版本链最新版',
-    listAfterRevision.json?.some((t) => t.id === v3 && t.version === 3) === true
-      && listAfterRevision.json?.some((t) => t.id === v1 || t.id === v2) === false,
-    JSON.stringify(listAfterRevision.json?.map((t) => `${t.id}:v${t.version}`)),
+    listItems.some((t) => t.id === v3 && t.version === 3) === true
+      && listItems.some((t) => t.id === v1 || t.id === v2) === false,
+    JSON.stringify({ total: listAfterRevision.json?.total, items: listItems.map((t) => `${t.id}:v${t.version}`) }),
   );
   const oldVersionStillReadable = await api('GET', `/api/trips/${v1}`);
   check('旧版仍可按 id 直接访问', oldVersionStillReadable.status === 200, `status=${oldVersionStillReadable.status}`);

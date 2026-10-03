@@ -1,19 +1,34 @@
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
-import { RenameTripSchema, RouteOptionsRequestSchema, RouteOptionsResponseSchema, TripExportSchema, TripSchema } from '@tripweaver/shared';
+import { RenameTripSchema, RouteOptionsRequestSchema, RouteOptionsResponseSchema, TripExportSchema, TripSchema, TRIP_LIST_PAGE_SIZE, TRIP_LIST_PAGE_SIZE_MAX } from '@tripweaver/shared';
 import { getRouteOptions } from '../services/routeOptionsService';
 import { TripShareImageRequestSchema, TripShareImageResponseSchema } from '@tripweaver/shared';
 import { getTripShareImage } from '../services/tripShareImageService';
 import { requireAuth } from '../auth/guard';
-import { createTrip, deleteTrip, getTrip, listTrips, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
+import { createTrip, deleteTrip, getTrip, listTripsPage, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 import { findConversationForTrip } from '../services/conversationService';
 
 const IdParams = Type.Object({ id: Type.String() });
 
 export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
+// 行程列表分页（10-03）：筛选/排序/计数都在服务端；Fastify 默认 coerce，query 里的字符串会转成 integer
+const TripListQuerySchema = Type.Object({
+  offset: Type.Optional(Type.Integer({ minimum: 0 })),
+  limit: Type.Optional(Type.Integer({ minimum: 1, maximum: TRIP_LIST_PAGE_SIZE_MAX })),
+  q: Type.Optional(Type.String({ maxLength: 100 })),
+  city: Type.Optional(Type.String({ maxLength: 100 })),
+  sort: Type.Optional(Type.Union([Type.Literal('updated'), Type.Literal('created'), Type.Literal('name')])),
+});
 
-  app.get('/', async (request) => listTrips(request.user!.id));
+
+  app.get('/', { schema: { querystring: TripListQuerySchema } }, async (request) => listTripsPage(request.user!.id, {
+    offset: request.query.offset ?? 0,
+    limit: request.query.limit ?? TRIP_LIST_PAGE_SIZE,
+    q: request.query.q,
+    city: request.query.city,
+    sort: request.query.sort,
+  }));
 
   app.post('/:id/share-image', {
     schema: { params: IdParams, body: TripShareImageRequestSchema, response: { 200: TripShareImageResponseSchema, 400: Type.Object({ error: Type.String() }), 404: Type.Object({ error: Type.String() }) } },

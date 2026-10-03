@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, ilike, or, sql, type SQL } from 'drizzle-orm';
 import {
   MAX_TRIPS_PER_USER,
   uid,
@@ -7,6 +7,8 @@ import {
   type TripVersionChain,
 } from '@tripweaver/shared';
 import { db } from '../db/client';
+  type TripListPage,
+  type TripListSort,
 import { trips } from '../db/schema';
 
 type TripWriter = Pick<typeof db, 'select' | 'insert'>;
@@ -40,25 +42,64 @@ function toListItem(row: typeof trips.$inferSelect): TripListItem {
 }
 
 /**
- * 行程列表：每条版本链只返回最新版（09-23）。
- * 在 JS 里做归并而不是 SQL 自连接：单用户上限 MAX_TRIPS_PER_USER 条，
- * 一次全取 + Map 归并既便宜又不会写错，比子查询/自连接好读。
+ * 行程列表分页（10-03）：每条版本链只返回最新版，筛选/排序/计数全在 SQL 里做。
+ * 内层 `distinct on (root_id)` 只按 user_id 过滤，筛选放到外层 ——
+ * WHERE 在 DISTINCT ON 之前求值，混在一层会让旧版本命中筛选词后把旧内容当最新版返回。
  */
-export async function listTrips(userId: string): Promise<TripListItem[]> {
-  const rows = await db.select().from(trips).where(eq(trips.userId, userId)).orderBy(desc(trips.updatedAt));
-  const latestByRoot = new Map<string, (typeof rows)[number]>();
-  for (const row of rows) {
-    const kept = latestByRoot.get(row.rootId);
-    if (!kept || row.version > kept.version) latestByRoot.set(row.rootId, row);
+export async function listTripsPage(userId: string, query: TripListQuery): Promise<TripListPage> {
+  const latest = db
+    .selectDistinctOn([trips.rootId])
+    .from(trips)
+    .where(eq(trips.userId, userId))
+    .orderBy(trips.rootId, desc(trips.version))
+    .as('latest');
+
+  const filters: SQL[] = [];
+  const city = query.city?.trim();
+  if (city) filters.push(eq(latest.destination, city));
+  const keyword = query.q?.trim();
+  if (keyword) {
+    const pattern = `%${escapeLike(keyword)}%`;
+    filters.push(or(ilike(latest.title, pattern), ilike(latest.destination, pattern))!);
   }
-  return [...latestByRoot.values()]
-    .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
-    .map(toListItem);
+  const where = filters.length ? and(...filters) : undefined;
+
+  // 三种排序都以 title/id 收尾，等值时 offset 分页不会跨页重复或漏项
+  const order = query.sort === 'name'
+    ? [asc(latest.title), asc(latest.id)]
+    : query.sort === 'created'
+      ? [desc(latest.createdAt), asc(latest.title), asc(latest.id)]
+      : [desc(latest.updatedAt), asc(latest.title), asc(latest.id)];
+
+  const [rows, counted, destinations] = await Promise.all([
+    db.select().from(latest).where(where).orderBy(...order).limit(query.limit).offset(query.offset),
+    db.select({ n: sql<number>`count(*)::int` }).from(latest).where(where),
+    db.selectDistinct({ destination: trips.destination }).from(trips).where(eq(trips.userId, userId)).orderBy(asc(trips.destination)),
+  ]);
+
+  return {
+    items: rows.map(toListItem),
+    total: Number(counted[0]?.n ?? 0),
+    destinations: destinations.map((row) => row.destination),
+  };
 }
 
 /** 版本链（含历史版本）；非本人或不存在返回 null，路由统一 404 */
 export async function listTripVersions(userId: string, id: string): Promise<TripVersionChain | null> {
   const [anchor] = await db
+/** LIKE 元字符转义：用户输入不能被当成通配符（口径同 generation/placeRetrieval） */
+function escapeLike(term: string): string {
+  return term.replace(/[\\%_]/g, '\\$&');
+}
+
+export interface TripListQuery {
+  offset: number;
+  limit: number;
+  q?: string | undefined;
+  city?: string | undefined;
+  sort?: TripListSort | undefined;
+}
+
     .select({ rootId: trips.rootId })
     .from(trips)
     .where(and(eq(trips.id, id), eq(trips.userId, userId)));

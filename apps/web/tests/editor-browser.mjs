@@ -42,6 +42,7 @@ try {
   if(url.pathname==='/api/auth/me') data={id:'test',email:'ui@example.test'};
   else if(url.pathname==='/api/usage') data={remaining:1,dailyLimit:4};
   else if(url.pathname==='/api/settings/config') data={amapJsKey:amapMode?'fixture-key':'',amapJsSecurityCode:amapMode?'fixture-code':''};
+  else if(url.pathname==='/api/trips/editor-ui-test/versions') data={versions:[{id:'editor-ui-test',version:1}]};
   else if(url.pathname==='/api/trips/editor-ui-test/conversation') data={conversationId:noChat?null:'fixture-chat'};
   else if(url.pathname==='/api/conversations/fixture-chat') data={messages};
   else if(url.pathname==='/api/trips/editor-ui-test') {

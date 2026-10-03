@@ -37,8 +37,24 @@ try {
   if(route.request().method()!=='GET') writes++;
   if(pathname==='/api/auth/me')data={id:'test',email:'collection@example.test'};
   else if(pathname==='/api/usage')data={remaining:2,dailyLimit:4};
-  else if(pathname==='/api/trips') {if(hold)await held;if(fail)return route.fulfill({status:503,json:{message:'test failure'}});data=rows;}
+  else if(pathname==='/api/trips') {
+   if(hold)await held;
+   if(fail)return route.fulfill({status:503,json:{message:'test failure'}});
+   // 筛选/排序/计数从 10-03 起在服务端：mock 按同样的口径算，前端只负责渲染与滚动加载
+   const params=new URL(route.request().url()).searchParams;
+   const keyword=(params.get('q')??'').trim().toLocaleLowerCase();
+   const city=params.get('city')??'';
+   const sort=params.get('sort')??'updated';
+   const matched=rows
+    .filter(t=>(!city||t.destination===city)&&(!keyword||`${t.title} ${t.destination}`.toLocaleLowerCase().includes(keyword)))
+    .sort((a,b)=>{if(sort==='name')return a.title.localeCompare(b.title,'zh-CN');const d=sort==='created'?b.createdAt-a.createdAt:b.updatedAt-a.updatedAt;return d||a.title.localeCompare(b.title,'zh-CN');});
+   const offset=Number(params.get('offset')??0);
+   const limit=Number(params.get('limit')??20);
+   data={items:matched.slice(offset,offset+limit),total:matched.length,destinations:[...new Set(rows.map(t=>t.destination))].sort((a,b)=>a.localeCompare(b,'zh-CN'))};
+  }
   else if(pathname.endsWith('/conversation'))data={conversationId:null};
+  // 版本链：编辑器从 09-xx 起在进入时读最新版（HistoryPanel 未打开也解析），mock 必须给出版本数组
+  else if(pathname.endsWith('/versions')){const item=fixture.find(t=>pathname.includes(t.id));data={versions:[{id:item?.id??'trip-x',version:1}]};}
   else if(pathname.startsWith('/api/trips/')){detailRequests++;const item=fixture.find(t=>pathname.endsWith(t.id));data={...item,days:[],startDate:'',partySize:2,preferences:[],extraNotes:'',meta:{usedXhs:false,reviewNotes:[]}};}
   else if(pathname==='/api/settings/config')data={amapJsKey:'',amapJsSecurityCode:''};
   return route.fulfill({json:data});
@@ -54,8 +70,7 @@ try {
  assert.equal(await page.locator('.collection-card').count(),6);
  assert.equal(detailRequests,0,'list must not fetch full detail per card');
  const contents=await page.locator('.trip-collection').innerText();
- for(const removed of ['导入 JSON','新建行程','重命名','删除','加载示例行程'])assert.ok(!contents.includes(removed),removed);
- for(const [name,width,height]of [['desktop',1920,1080],['laptop',1280,800],['tablet',820,1100],['mobile',375,812],['landscape',812,375]]){
+ for(const removed of ['导入 JSON','新建行程','重命名','删除','加载示例行程'])assert.ok(!contents.includes(removed),removed); for(const [name,width,height]of [['desktop',1920,1080],['laptop',1280,800],['tablet',820,1100],['mobile',375,812],['landscape',812,375]]){
   await page.setViewportSize({width,height});
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${name}: horizontal overflow`);
   if(name==='desktop')assert.ok(await page.locator('.collection-card').last().evaluate(el=>el.getBoundingClientRect().bottom<=innerHeight),'six cards must fit 1920x1080');
@@ -166,9 +181,19 @@ try {
  await page.screenshot({path:path.join(out,'local-assets-mobile.png'),fullPage:true});
  await page.setViewportSize({width:1920,height:1080});
  await page.screenshot({path:path.join(out,'local-assets-desktop.png'),fullPage:true});
+ rows=Array.from({length:25},(_,i)=>({...fixture[0],id:`page-${i}`,title:`分页行程 ${String(i+1).padStart(2,'0')}`,updatedAt:Date.UTC(2026,8,28-i)}));
+ await page.setViewportSize({width:1280,height:800});
+ await page.reload();
+ await page.waitForFunction(()=>document.querySelectorAll('.collection-card').length===20);
+ assert.equal(await page.locator('.collection-card').count(),20,'first batch renders 20 cards');
+ assert.ok(await page.locator('.collection-more').count()===0,'no loading hint before scrolling');
+ await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
+ await page.waitForFunction(()=>document.querySelectorAll('.collection-card').length===25);
+ assert.equal(await page.locator('.collection-card').count(),25,'scrolling to the bottom loads the remaining cards');
+ await page.screenshot({path:path.join(out,'pagination.png')});
  assert.equal(writes,0,'collection interactions must not mutate data');
  assert.deepEqual(errors,[]);
- await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',checks:['removed actions','loading','search/filter combination','sort','no result/reset','URL restoration','keyboard navigation','retry','empty','5 viewports','long title','no list detail fanout','no writes','local SVG load and mask','local PNG/WebP load','SVG/PNG/WebP priority','PNG alpha preserved','city suffix matching','broken SVG fallback','multi-city fallback'],errors},null,2));
+ await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',checks:['removed actions','loading','search/filter combination','sort','no result/reset','URL restoration','keyboard navigation','retry','empty','5 viewports','long title','no list detail fanout','no writes','local SVG load and mask','local PNG/WebP load','SVG/PNG/WebP priority','PNG alpha preserved','city suffix matching','broken SVG fallback','multi-city fallback','server-side pagination 20+rest'],errors},null,2));
  console.log('My trips collection checks passed:',out);
 }finally{
  await browser?.close();

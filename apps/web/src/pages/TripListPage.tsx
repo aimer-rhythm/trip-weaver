@@ -16,7 +16,6 @@ function coverTone(destination: string): number {
 }
 
 export function TripListPage() {
-  const trips = useTrips();
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
   const [searchInput, setSearchInput] = useState(query);
@@ -28,21 +27,25 @@ export function TripListPage() {
   const city = params.get('city') ?? '';
   const requestedSort = params.get('sort');
   const sort = requestedSort === 'created' || requestedSort === 'name' ? requestedSort : 'updated';
+  const trips = useTrips({ q: query, city, sort });
 
-  const destinations = useMemo(
-    () => [...new Set((trips.data ?? []).map((trip) => trip.destination))].sort((a, b) => a.localeCompare(b, 'zh-CN')),
-    [trips.data],
-  );
-  const visibleTrips = useMemo(() => {
-    const keyword = query.trim().toLocaleLowerCase();
-    return (trips.data ?? [])
-      .filter((trip) => (!city || trip.destination === city) && (!keyword || `${trip.title} ${trip.destination}`.toLocaleLowerCase().includes(keyword)))
-      .sort((a, b) => {
-        if (sort === 'name') return a.title.localeCompare(b.title, 'zh-CN');
-        const difference = sort === 'created' ? b.createdAt - a.createdAt : b.updatedAt - a.updatedAt;
-        return difference || a.title.localeCompare(b.title, 'zh-CN');
-      });
-  }, [trips.data, query, city, sort]);
+  const items = useMemo(() => trips.data?.pages.flatMap((page) => page.items) ?? [], [trips.data]);
+  // 计数与目的地下拉都取第一批：前者是筛选后总数，后者不受筛选影响，翻页时不会变
+  const total = trips.data?.pages[0]?.total ?? 0;
+  const destinations = trips.data?.pages[0]?.destinations ?? [];
+
+  // 滚到底部自动取下一批：哨兵始终挂载，hasNextPage 为 false 时 fetchNextPage 是空操作
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const fetchMore = trips.fetchNextPage;
+  useEffect(() => {
+    const node = sentinelRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) void fetchMore();
+    }, { rootMargin: '400px' });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [fetchMore]);
 
   const updateFilter = (key: string, value: string) => {
     setParams((previous) => {
@@ -70,7 +73,6 @@ export function TripListPage() {
         <div>
           <h1>我的行程</h1>
           <p>把想去的远方，<br className="hidden max-[600px]:block" />收进一本本旅行手册。
-            {!trips.isPending && !trips.isError && <span className={"collection-count tracking-normal inline-block [margin-left:36px] [font:400_14px/1.6_var(--font-sans,_sans-serif)] [color:var(--color-collection-count-color-110)] [vertical-align:middle] [&_strong]:[font-size:24px] [&_strong]:font-medium [&_strong]:[color:var(--color-collection-count-color-111)] [&_strong]:[margin-right:3px] [@media_(max-width:_600px)]:block [@media_(max-width:_600px)]:[margin:8px_0_0] [@media_(max-width:_600px)]:[font-size:12px] [@media_(max-width:_600px)]:[&_strong]:[font-size:18px]"}>共 {trips.data?.length ?? 0} 本旅行手册</span>}
           </p>
         </div>
       </header>
@@ -115,20 +117,20 @@ export function TripListPage() {
       </form>
 
       <div className={`collection-result-line flex justify-between items-center [min-height:64px] [gap:10px] [font-size:13px] [color:var(--color-collection-result-line-color-121)] [padding:0_4px] [&_p]:m-0 [&_button]:border-0 [&_button]:[background:none] [&_button]:[color:var(--color-brand)] [&_button]:[font:inherit] [&_button]:[font-size:13px] [&_button]:cursor-pointer [&_button]:[min-height:44px] [&_button]:[padding:8px_12px] [&_button]:[border-radius:8px]${!hasFilters && !trips.isPending && !trips.isError ? " collection-result-line-idle [&&]:[min-height:36px] [&_p]:absolute [&_p]:[width:1px] [&_p]:[height:1px] [&_p]:overflow-hidden [&_p]:[clip-path:inset(50%)]" : ""}`}>
-        <p role="status">{trips.isPending ? '正在取来你的旅行手册…' : trips.isError ? '暂时无法读取行程' : hasFilters ? `找到 ${visibleTrips.length} 份行程` : '所有行程'}</p>
+        <p role="status">{trips.isPending ? '正在取来你的旅行手册…' : trips.isError ? '暂时无法读取行程' : hasFilters ? `找到 ${total} 份行程` : '所有行程'}</p>
         {hasFilters && <Button variant="plain" type="button" onClick={clearFilters}>清除筛选</Button>}
       </div>
 
       {trips.isPending && <div className={"collection-grid grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] [gap:40px_32px] [@media_(max-width:_1400px)]:[grid-template-columns:repeat(2,_minmax(0,_1fr))] [@media_(max-width:_600px)]:[grid-template-columns:minmax(0,_1fr)] [@media_(max-width:_600px)]:[gap:18px]"} aria-hidden="true">{[0, 1, 2].map((item) => <div className={"collection-skeleton [padding:8px] [border:1px_solid_var(--color-collection-toolbar-background-112)] [background:var(--color-collection-skeleton-background-151)] [border-radius:20px] [min-height:345px] [&_div]:[height:164px] [&_div]:[border-radius:14px] [&_div]:[background:var(--color-collection-skeleton-background-152)] [&_span]:block [&_span]:[height:14px] [&_span]:[width:75%] [&_span]:[margin:28px_18px_18px] [&_span]:[border-radius:6px] [&_span]:[background:var(--color-collection-skeleton-background-153)] [&_span:last-child]:[width:45%]"} key={item}><div /><span /><span /></div>)}</div>}
       {trips.isError && <div className={"collection-empty [padding:66px_24px] [background:var(--color-collection-empty-background-146)] [border:1px_solid_var(--color-collection-empty-border-147)] [border-radius:24px] text-center [&_h2]:[font:500_23px/1.5_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h2]:[color:var(--color-collection-empty-color-148)] [&_h2]:[margin:18px_0_12px] [&_p]:[color:var(--color-collection-empty-color-149)] [&_p]:[font-size:14px] [&_p]:[line-height:1.8] [&_p]:[max-width:440px] [&_p]:[margin:0_auto] [@media_(max-width:_600px)]:[padding:40px_20px]"} role="alert"><h2>行程暂时没有加载出来</h2><p>请检查网络连接，再试一次。</p><Button variant="plain" type="button" className={"collection-retry [margin-top:24px] [min-height:44px] [padding:10px_24px] border-0 rounded-full [background:linear-gradient(135deg,_var(--color-brand-light),_var(--color-brand))] [color:white] cursor-pointer [font:inherit] [font-size:14px] [&:disabled]:[opacity:.6] [&:disabled]:[cursor:wait]"} disabled={trips.isFetching} onClick={() => void trips.refetch()}>{trips.isFetching ? '正在重试…' : '重新加载'}</Button></div>}
-      {!trips.isPending && !trips.isError && visibleTrips.length === 0 && <div className={"collection-empty [padding:66px_24px] [background:var(--color-collection-empty-background-146)] [border:1px_solid_var(--color-collection-empty-border-147)] [border-radius:24px] text-center [&_h2]:[font:500_23px/1.5_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h2]:[color:var(--color-collection-empty-color-148)] [&_h2]:[margin:18px_0_12px] [&_p]:[color:var(--color-collection-empty-color-149)] [&_p]:[font-size:14px] [&_p]:[line-height:1.8] [&_p]:[max-width:440px] [&_p]:[margin:0_auto] [@media_(max-width:_600px)]:[padding:40px_20px]"}>
+      {!trips.isPending && !trips.isError && total === 0 && <div className={"collection-empty [padding:66px_24px] [background:var(--color-collection-empty-background-146)] [border:1px_solid_var(--color-collection-empty-border-147)] [border-radius:24px] text-center [&_h2]:[font:500_23px/1.5_'Noto_Serif_SC_Variable',_SimSun,_serif] [&_h2]:[color:var(--color-collection-empty-color-148)] [&_h2]:[margin:18px_0_12px] [&_p]:[color:var(--color-collection-empty-color-149)] [&_p]:[font-size:14px] [&_p]:[line-height:1.8] [&_p]:[max-width:440px] [&_p]:[margin:0_auto] [@media_(max-width:_600px)]:[padding:40px_20px]"}>
         <span className={"collection-empty-mark [font:400_72px/1_'Youran_Handwriting',_serif] [color:var(--color-collection-empty-mark-color-150)]"} aria-hidden="true">旅</span>
-        <h2>{trips.data?.length ? '还没有找到这份旅程' : '你的旅行手册，等待第一段故事'}</h2>
-        <p>{trips.data?.length ? '换个关键词或目的地试试，也可以清除筛选查看全部行程。' : '从顶部「织程」返回首页，规划完成的行程会收在这里。'}</p>
+        <h2>{hasFilters ? '还没有找到这份旅程' : '你的旅行手册，等待第一段故事'}</h2>
+        <p>{hasFilters ? '换个关键词或目的地试试，也可以清除筛选查看全部行程。' : '从顶部「织程」返回首页，规划完成的行程会收在这里。'}</p>
       </div>}
 
-      {!trips.isPending && visibleTrips.length > 0 && <div className={"collection-grid grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] [gap:40px_32px] [@media_(max-width:_1400px)]:[grid-template-columns:repeat(2,_minmax(0,_1fr))] [@media_(max-width:_600px)]:[grid-template-columns:minmax(0,_1fr)] [@media_(max-width:_600px)]:[gap:18px]"} aria-label="行程列表">
-        {visibleTrips.map((trip) => (
+      {items.length > 0 && <div className={"collection-grid grid [grid-template-columns:repeat(3,_minmax(0,_1fr))] [gap:40px_32px] [@media_(max-width:_1400px)]:[grid-template-columns:repeat(2,_minmax(0,_1fr))] [@media_(max-width:_600px)]:[grid-template-columns:minmax(0,_1fr)] [@media_(max-width:_600px)]:[gap:18px]"} aria-label="行程列表">
+        {items.map((trip) => (
           <Link key={trip.id} to={`/trips/${trip.id}`} className={"collection-card [--cover-a:var(--color-collection-card-cover-a-122)] [--cover-b:var(--color-collection-card-cover-b-123)] [--cover-ink:var(--color-collection-card-cover-ink-124)] min-w-0 grid [grid-template-columns:46%_minmax(0,_1fr)] [min-height:280px] [background:var(--color-collection-card-background-125)] [border:1px_solid_var(--color-collection-card-border-126)] [border-radius:17px] p-0 [color:inherit] [box-shadow:0_4px_8px_var(--color-collection-card-box-shadow-127),_0_16px_32px_var(--color-collection-card-box-shadow-128)] [transition:transform_180ms_ease,_box-shadow_180ms_ease] [&[data-tone='1']]:[--cover-a:var(--color-collection-card-cover-a-129)] [&[data-tone='1']]:[--cover-b:var(--color-collection-card-cover-b-130)] [&[data-tone='1']]:[--cover-ink:var(--color-collection-card-cover-ink-131)] [&[data-tone='2']]:[--cover-a:var(--color-collection-card-cover-a-132)] [&[data-tone='2']]:[--cover-b:var(--color-collection-card-cover-b-133)] [&[data-tone='2']]:[--cover-ink:var(--color-collection-card-cover-ink-134)] [&[data-tone='3']]:[--cover-a:var(--color-collection-card-cover-a-135)] [&[data-tone='3']]:[--cover-b:var(--color-collection-card-cover-b-136)] [&[data-tone='3']]:[--cover-ink:var(--color-collection-card-cover-ink-137)] [&:hover]:[transform:translateY(-4px)] [&:hover]:[box-shadow:0_6px_12px_var(--color-collection-card-box-shadow-138),_0_20px_36px_var(--color-collection-card-box-shadow-139)] [&_h2]:[color:var(--color-collection-card-color-143)] [&_h2]:[font:600_20px/1.6_'Noto_Sans_SC_Variable',_sans-serif] [&_h2]:[margin:0_0_8px] [&_h2]:[display:-webkit-box] [&_h2]:[-webkit-box-orient:vertical] [&_h2]:[-webkit-line-clamp:2] [&_h2]:overflow-hidden [&_h2]:min-h-0 [&_h2]:[overflow-wrap:anywhere] [@media_(max-width:_600px)]:[min-height:250px] [@media_(max-width:_600px)]:[grid-template-columns:42%_minmax(0,_1fr)] [@media_(max-width:_600px)]:[&_h2]:[font-size:16px] [@media_(max-width:_600px)]:[&_h2]:min-h-0 [@media_(prefers-reduced-motion:_reduce)]:[transition:none] [@media_(prefers-reduced-motion:_reduce)]:[&:hover]:[transform:none] [&[data-tone='4']]:[--cover-a:var(--color-collection-card-cover-a-154)] [&[data-tone='4']]:[--cover-b:var(--color-collection-card-cover-b-155)] [&[data-tone='4']]:[--cover-ink:var(--color-collection-card-cover-ink-156)]"} data-tone={coverTone(trip.destination)} aria-label={`查看行程：${trip.title}`}>
             <TripCover destination={trip.destination} daysCount={trip.daysCount} />
             <div className={"collection-card-body min-w-0 [padding:30px_22px_22px] flex flex-col [@media_(max-width:_600px)]:[padding:22px_14px_18px]"}>
@@ -142,6 +144,9 @@ export function TripListPage() {
           </Link>
         ))}
       </div>}
+
+      <div ref={sentinelRef} aria-hidden="true" className={"collection-sentinel [height:1px]"} />
+      {trips.isFetchingNextPage && <p role="status" className={"collection-more [margin:24px_0_0] text-center [font-size:13px] [color:var(--color-collection-result-line-color-121)]"}>正在加载更多…</p>}
     </div>
   );
 }

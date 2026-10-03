@@ -16,7 +16,7 @@ try {
       '/api/auth/me': { id: 'picker', email: 'picker@example.test' },
       '/api/usage': { remaining: 3, dailyLimit: 5 },
       '/api/destinations/covered': { cities: ['北京', '杭州', '成都'] },
-      '/api/trips': [],
+      '/api/trips': { items: [], total: 0, destinations: [] },
     };
     return route.fulfill({ json: data[pathname] ?? {} });
   });

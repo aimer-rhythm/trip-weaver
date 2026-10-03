@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type {
   Conversation,
   ConversationDetail,
@@ -13,10 +13,12 @@ import type {
   SettingsPut,
   Trip,
   TripExport,
-  TripListItem,
+  TripListPage,
+  TripListSort,
   TripVersionChain,
   UsageView,
 } from '@tripweaver/shared';
+import { TRIP_LIST_PAGE_SIZE } from '@tripweaver/shared';
 import { ApiError, api } from './client';
 
 export interface MeView {
@@ -128,8 +130,28 @@ export function useCoveredCities() {
   });
 }
 
-export function useTrips() {
-  return useQuery({ queryKey: keys.trips, queryFn: () => api.get<TripListItem[]>('/api/trips') });
+/** 列表页三个筛选条件（10-03）：在服务端生效，任一变化都会回到第一批 */
+export interface TripListFilters {
+  q: string;
+  city: string;
+  sort: TripListSort;
+}
+
+export function useTrips(filters: TripListFilters) {
+  return useInfiniteQuery({
+    queryKey: [...keys.trips, 'list', filters],
+    initialPageParam: 0,
+    queryFn: ({ pageParam }) => {
+      const params = new URLSearchParams({ offset: String(pageParam), limit: String(TRIP_LIST_PAGE_SIZE), sort: filters.sort });
+      if (filters.q.trim()) params.set('q', filters.q.trim());
+      if (filters.city) params.set('city', filters.city);
+      return api.get<TripListPage>(`/api/trips?${params.toString()}`);
+    },
+    getNextPageParam: (lastPage, pages) => {
+      const loaded = pages.reduce((count, page) => count + page.items.length, 0);
+      return loaded < lastPage.total ? loaded : undefined;
+    },
+  });
 }
 
 export function useTrip(id: string) {

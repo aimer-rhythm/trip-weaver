@@ -148,7 +148,7 @@ try {
   const bDel = await B.call('DELETE', `/api/trips/${tripId}`);
   check('B 读/改/删 A 的行程均 404', bGet.status === 404 && bPut.status === 404 && bDel.status === 404, `${bGet.status}/${bPut.status}/${bDel.status}`);
   const bList = await B.call('GET', '/api/trips');
-  check('B 列表看不到 A 数据', Array.isArray(bList.json) && bList.json.length === 0);
+  check('B 列表看不到 A 数据', bList.json?.items?.length === 0 && bList.json?.total === 0);
 
   console.log('— 生成任务越权 —');
   const jobRes = await A.call('POST', '/api/generations', { destination: '东京', days: 1, budgetLevel: '经济', partySize: 1 });
