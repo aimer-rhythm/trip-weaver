@@ -8,6 +8,8 @@ import { requireAuth } from '../auth/guard';
 import { createTrip, deleteTrip, getTrip, listTripsPage, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 import { findConversationForTrip } from '../services/conversationService';
 import { TripOperationRequestSchema } from '@tripweaver/shared';
+import { enrichTripPhotos } from '../services/tripPhotoService';
+import { createGenerationPhotoLookup } from '../integrations/photoEnrichment';
 import { ensureTripConversation, restoreTrip } from '../services/tripHistoryService';
 import { TripWeatherSchema } from '@tripweaver/shared';
 import { getTripWeather } from '../services/tripWeatherService';
@@ -81,7 +83,10 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.get('/:id', { schema: { params: IdParams } }, async (request, reply) => {
     const trip = await getTrip(request.user!.id, request.params.id);
     if (!trip) return reply.code(404).send({ error: '行程不存在' });
-    return trip;
+    const enriched = await enrichTripPhotos(trip, createGenerationPhotoLookup(trip.destination));
+    const missing = (value: typeof trip) => (value.overview ?? []).filter(p => p.category === 'attraction' && !p.coverUrl && !p.photos?.length).length;
+    request.log.info({ tripId: trip.id, missingBefore: missing(trip), missingAfter: missing(enriched) }, '[trip-photos]');
+    return enriched;
   });
 
   // 版本链：详情页版本切换用（含历史版本，按 version 升序）

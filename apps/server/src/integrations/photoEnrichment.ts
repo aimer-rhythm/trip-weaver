@@ -42,5 +42,5 @@ export function createGenerationPhotoLookup(city: string) {
   const options = { unsplashKey: env.unsplashAccessKey, mediaBase: env.mediaBaseUrl };
   const selected = createSelectedPhotoLibrary(city, options);
   return selectedFirstLookup(selected, createReviewedCoverLookup(city, { ...options, acceptPhoto: selected.acceptSupplement }),
-    name => photoReviewQueue.enqueue(city, name));
+    name => photoReviewQueue.enqueue(city, name, 'trip'));
 }

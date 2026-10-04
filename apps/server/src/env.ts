@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { DEFAULT_PHOTO_REVIEW_DAILY_PLACES } from './integrations/photoReviewPolicy';
 import { readAmapServiceBudgets } from './integrations/amap/services';
 import { looksLikeJwt, type QWeatherAuth } from './integrations/qweather/auth';
 
@@ -119,7 +120,7 @@ export const env = {
     baseUrl: str('PHOTO_REVIEW_BASE_URL'),
     apiKey: str('PHOTO_REVIEW_API_KEY'),
     model: str('PHOTO_REVIEW_MODEL'),
-    dailyLimit: Math.min(int('PHOTO_REVIEW_DAILY_PLACES', 10), 50),
+    dailyLimit: Math.min(int('PHOTO_REVIEW_DAILY_PLACES', DEFAULT_PHOTO_REVIEW_DAILY_PLACES), DEFAULT_PHOTO_REVIEW_DAILY_PLACES),
   },
   imageGeneration: {
     baseUrl: str('IMAGE_API_BASE_URL', 'https://xjbh.lol/v1').replace(/\/+$/, ''),

@@ -1,10 +1,10 @@
 import type { FastifyBaseLogger } from 'fastify';
-import type { AmapQuotaDecision } from '../../lib/amapQuotaLedger';
+import type { ServiceQuotaDecision } from '../../lib/amapQuotaLedger';
 import { AMAP_PATHS, amapDay, type AmapService } from './services';
 
 // Lazy production binding keeps adapters importable without starting a DB connection.
 export const amapQuotaGate = {
-  async acquire(service: AmapService): Promise<AmapQuotaDecision> {
+  async acquire(service: AmapService): Promise<ServiceQuotaDecision> {
     const { amapQuotaLedger } = await import('../../services/amapQuotaService');
     return amapQuotaLedger.acquire(service);
   },
@@ -18,9 +18,10 @@ function report(level: 'info' | 'warn', data: Record<string, unknown>) {
 }
 
 /** No raw URL, upstream body, address, coordinate or credential ever enters diagnostics. */
-export async function amapRequest(service: AmapService, params: URLSearchParams, timeout = 10_000): Promise<Record<string, unknown>> {
+export async function amapRequest(service: AmapService, params: URLSearchParams, timeout = 10_000, signal?: AbortSignal): Promise<Record<string, unknown>> {
+  signal?.throwIfAborted();
   const started = Date.now();
-  let decision: AmapQuotaDecision;
+  let decision: ServiceQuotaDecision;
   try {
     do { decision = await amapQuotaGate.acquire(service); }
     while (decision.allowed && decision.day !== amapDay().day);
@@ -34,7 +35,8 @@ export async function amapRequest(service: AmapService, params: URLSearchParams,
   }
   let response: Response;
   try {
-    response = await fetch(`https://restapi.amap.com${AMAP_PATHS[service]}?${params}`, { signal: AbortSignal.timeout(timeout) });
+    const timeoutSignal = AbortSignal.timeout(timeout);
+    response = await fetch(`https://restapi.amap.com${AMAP_PATHS[service]}?${params}`, { signal: signal ? AbortSignal.any([signal, timeoutSignal]) : timeoutSignal });
   } catch (error) {
     report('warn', { service, outcome: error instanceof Error && ['TimeoutError', 'AbortError'].includes(error.name) ? 'timeout' : 'network_error', used: decision.used, limit: decision.limit, durationMs: Date.now() - started });
     throw new Error('高德请求失败');

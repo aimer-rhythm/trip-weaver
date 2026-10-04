@@ -1,10 +1,55 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, rm, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { createPhotoReviewQueue } from '../integrations/photoReviewQueue';
 import { reviewFirstLookup } from '../integrations/reviewedPhotos';
+
+test('默认滚动预算允许50个地点，第51个等待窗口释放', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'photo-budget-'));
+  let at = 1_800_000_000_000, calls = 0;
+  const queue = createPhotoReviewQueue({ dataRoot: root, now: () => at, run: async () => { calls++; } });
+  try {
+    for (let i = 0; i < 51; i++) await queue.enqueue('杭州', `景点${i}`);
+    for (let i = 0; i < 51; i++) await queue.tick();
+    assert.equal(calls, 50);
+    at += 86_400_001;
+    await queue.tick();
+    assert.equal(calls, 51);
+  } finally { await queue.stop(); await rm(root, { recursive: true, force: true }); }
+});
+
+test('旧队列任务提升行程优先级并跨重启保留，不改变退避与尝试数', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'photo-priority-'));
+  const at = 1_800_000_000_000, seen: string[] = [];
+  const first = createPhotoReviewQueue({ dataRoot: root, now: () => at, run: async () => {} });
+  try {
+    await first.enqueue('北京', '预热');
+    await first.enqueue('杭州', '西湖');
+    const dir = path.join(root, 'photo-store/review-jobs');
+    for (const f of await readdir(dir)) {
+      const file = path.join(dir, f), job = JSON.parse(await readFile(file, 'utf8'));
+      delete job.priority;
+      await writeFile(file, JSON.stringify(job));
+    }
+    const before = (await first.jobs()).find(j => j.name === '西湖')!;
+    assert.equal(await first.enqueue('杭州', '西湖', 'trip'), false);
+    assert.deepEqual((await first.jobs()).find(j => j.name === '西湖'), { ...before, priority: 'trip' });
+    await first.stop();
+    const restarted = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at,
+      run: async job => { seen.push(job.name); throw new Error('失败'); } });
+    try {
+      await restarted.tick();
+      assert.deepEqual(seen, ['西湖']);
+      const failed = (await restarted.jobs()).find(j => j.name === '西湖');
+      await restarted.enqueue('杭州', '西湖', 'trip');
+      await restarted.tick();
+      assert.deepEqual(seen, ['西湖']);
+      assert.deepEqual((await restarted.jobs()).find(j => j.name === '西湖'), failed);
+    } finally { await restarted.stop(); }
+  } finally { await first.stop(); await rm(root, { recursive: true, force: true }); }
+});
 
 test('缺图查询不等待入队/审图，已有图片不入队', async () => {
   let calls = 0;

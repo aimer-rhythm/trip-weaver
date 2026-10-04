@@ -7,6 +7,7 @@ import { createSerialQueue } from '../lib/serialQueue';
 import { PHOTO_DATA, DAY } from './stockPhotoSupport';
 import { PHOTO_REVIEW_VERSION, reviewDigest, reviewName } from './reviewedPhotos';
 import { readPhotoJson, writePhotoJson } from './photoReviewIO';
+import { DEFAULT_PHOTO_REVIEW_DAILY_PLACES } from './photoReviewPolicy';
 
 const JobSchema = Type.Object({
   version: Type.Literal(PHOTO_REVIEW_VERSION), city: Type.String({ minLength: 1, maxLength: 80 }),
@@ -14,6 +15,7 @@ const JobSchema = Type.Object({
   state: Type.Union([Type.Literal('queued'), Type.Literal('running'), Type.Literal('done'), Type.Literal('failed')]),
   attempts: Type.Integer({ minimum: 0, maximum: 3 }), nextAt: Type.Number(), updatedAt: Type.Number(),
   lastStartedAt: Type.Number(),
+  priority: Type.Optional(Type.Union([Type.Literal('background'), Type.Literal('trip')])),
 });
 export type PhotoReviewJob = Static<typeof JobSchema>;
 export function createPhotoReviewQueue(options: {
@@ -32,13 +34,19 @@ export function createPhotoReviewQueue(options: {
     const rows = await Promise.all(files.filter(f => /^[a-f0-9]{64}\.json$/.test(f)).map(f => readPhotoJson(path.join(dir, f), 8192)));
     return rows.filter((v): v is PhotoReviewJob => Value.Check(JobSchema, v));
   }
-  async function enqueue(city: string, name: string): Promise<boolean> {
+  async function enqueue(city: string, name: string, priority: 'background' | 'trip' = 'background'): Promise<boolean> {
     return serialize(async () => {
       const file = fileFor(city, name), previous = await readPhotoJson(file, 8192);
-      if (Value.Check(JobSchema, previous) && (previous.state === 'queued' || previous.state === 'running' || now() - previous.updatedAt < DAY)) return false;
+      if (Value.Check(JobSchema, previous) && (previous.state === 'queued' || previous.state === 'running' || now() - previous.updatedAt < DAY)) {
+        // 提升等待任务，不修改退避时间/尝试数/运行租约；旧文件无 priority 按普通任务处理。
+        if (priority === 'trip' && previous.priority !== 'trip' && (previous.state === 'queued' || previous.state === 'failed')) {
+          await writePhotoJson(file, { ...previous, priority });
+        }
+        return false;
+      }
       // 有界积压；任务中只保存公共地点名，不保存用户/行程/个人密钥。
       if ((await jobs()).filter(j => j.state === 'queued' || j.state === 'running').length >= 200) return false;
-      const job: PhotoReviewJob = { version: PHOTO_REVIEW_VERSION, city: city.trim(), name: name.trim(), state: 'queued', attempts: 0, nextAt: now(), updatedAt: now(), lastStartedAt: 0 };
+      const job: PhotoReviewJob = { version: PHOTO_REVIEW_VERSION, city: city.trim(), name: name.trim(), priority, state: 'queued', attempts: 0, nextAt: now(), updatedAt: now(), lastStartedAt: 0 };
       if (!Value.Check(JobSchema, job)) return false;
       await writePhotoJson(file, job);
       return true;
@@ -59,11 +67,11 @@ export function createPhotoReviewQueue(options: {
     active = (async () => {
       const job = await serialize(async () => {
         const all = await jobs();
-        const capacity = all.filter(j => j.lastStartedAt > now() - DAY).length < (options.dailyLimit ?? 10);
+        const capacity = all.filter(j => j.lastStartedAt > now() - DAY).length < (options.dailyLimit ?? DEFAULT_PHOTO_REVIEW_DAILY_PLACES);
         // running来自上次进程中断；本实例串行tick，租约超时后可恢复。
         const next = all.filter(j => j.attempts < 3 && j.nextAt <= now() && (capacity || j.lastStartedAt > now() - DAY) &&
           (j.state === 'queued' || j.state === 'failed' || j.state === 'running' && now() - j.updatedAt > 15 * 60_000))
-          .sort((a, b) => a.nextAt - b.nextAt)[0];
+          .sort((a, b) => Number(b.priority === 'trip') - Number(a.priority === 'trip') || a.nextAt - b.nextAt)[0];
         if (!next) return undefined;
         next.state = 'running'; next.attempts++; next.updatedAt = now(); next.lastStartedAt = now();
         await writePhotoJson(fileFor(next.city, next.name), next);

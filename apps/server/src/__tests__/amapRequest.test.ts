@@ -11,6 +11,7 @@ test('service configuration preserves explicit zero, validates integers and defa
   assert.equal(readAmapServiceBudgets({ AMAP_PLACE_DAILY_BUDGET: '0' }).place, 0);
   assert.equal(readAmapServiceBudgets({ AMAP_DAILY_BUDGET: '600' }).place, 161);
   assert.equal(readAmapServiceBudgets({ AMAP_DAILY_BUDGET: '600' }).walk, 600);
+  assert.equal(readAmapServiceBudgets({ AMAP_WALK_DAILY_BUDGET: '1' }).geocode, 967);
   assert.throws(() => readAmapServiceBudgets({ AMAP_PLACE_DAILY_BUDGET: '162' }));
   assert.throws(() => readAmapServiceBudgets({ AMAP_DRIVE_DAILY_BUDGET: '1000' }));
   assert.equal(readAmapServiceBudgets({ AMAP_LBS_MONTHLY_BUDGET: '0' }).drive, 0);
@@ -44,7 +45,7 @@ test('each endpoint reserves its service once, including upstream rejection', as
   });
   for (const service of AMAP_SERVICES) await assert.rejects(amapRequest(service, new URLSearchParams()));
   assert.deepEqual(paths, AMAP_SERVICES.map(service => AMAP_PATHS[service]));
-  assert.equal(gate.mock.callCount(), 6);
+  assert.equal(gate.mock.callCount(), AMAP_SERVICES.length);
 });
 
 test('network failure is charged and sensitive upstream content is excluded from logs', async () => {
