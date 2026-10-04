@@ -181,6 +181,12 @@ export const GenerateFormSchema = Type.Object({
 
 // ---------- 认证与设置 ----------
 
+export const TravelPreferencesSchema = Type.Object({
+  preferences: Type.Array(StringEnum(PREFERENCE_OPTIONS), { maxItems: 7, uniqueItems: true }),
+  transportMode: StringEnum(TRANSPORT_MODES),
+  extraNotes: Type.String({ maxLength: 200 }),
+}, { additionalProperties: false });
+
 const EmailSchema = Type.String({
   pattern: '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$',
   maxLength: 100,

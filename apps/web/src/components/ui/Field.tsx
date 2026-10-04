@@ -11,7 +11,10 @@ export function Select({ className = '', ...props }: ComponentProps<'select'>) {
   return <select {...props} className={`${fieldClass} ui-select cursor-pointer pr-10 ${className}`} />;
 }
 
-export function Textarea({ className = '', appearance = 'default', ...props }: ComponentProps<'textarea'> & { appearance?: 'default' | 'embedded' }) {
+export function Textarea({ className = '', appearance = 'default', ...props }: ComponentProps<'textarea'> & { appearance?: 'default' | 'embedded' | 'panel' }) {
   const embedded = 'ui-field box-border min-h-11 min-w-0 border-0 bg-transparent px-3 py-2 text-base text-[var(--color-text)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50';
-  return <textarea {...props} className={`${appearance === 'embedded' ? embedded : fieldClass + ' resize-y'} ${className}`} />;
+  // 首页玻璃面板内的输入框：token 与面板控件一致，尺寸按 --ui 缩放（不低于基础尺寸）；面板外无 --ui，以 1px 兜底。
+  const panel = 'ui-field box-border min-h-[calc(44*max(1px,var(--ui,1px)))] min-w-0 rounded-[calc(12*max(1px,var(--ui,1px)))] border border-solid border-hairline-strong bg-white/60 px-[calc(12*max(1px,var(--ui,1px)))] py-[calc(8*max(1px,var(--ui,1px)))] text-[length:calc(16*max(1px,var(--ui,1px)))] text-ink-strong transition-colors focus:border-brand focus:bg-brand/10 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50';
+  const shared = appearance === 'embedded' ? embedded : appearance === 'panel' ? panel : `${fieldClass} resize-y`;
+  return <textarea {...props} className={`${shared} ${className}`} />;
 }

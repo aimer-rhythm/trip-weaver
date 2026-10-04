@@ -1,0 +1,71 @@
+# 账号旅行偏好
+
+## 1. 适用范围
+
+首页“偏好与出行”与右上角“个人资料”共用当前账号最近一次偏好设置。只保存偏好标签、交通方式、备注；目的地、日期、节奏、同行人数及多套历史不在此契约中。
+
+## 2. 接口与存储
+
+- `GET /api/settings/travel-preferences` 返回当前设置。
+- `PUT /api/settings/travel-preferences` 整包替换当前设置。
+- `TravelPreferencesSchema` 定义 `{ preferences, transportMode, extraNotes }`；类型从 schema 派生。
+- `user_travel_preferences(user_id PRIMARY KEY, data JSONB, updated_at TIMESTAMPTZ)`；启动时幂等建表，独立于凭据设置。
+
+## 3. 数据约定
+
+接口复用 `requireAuth` 与 API envelope，userId 仅取会话。preferences 使用现有枚举、最多 7 项且不重复；transportMode 使用已有枚举；extraNotes 最多 200 字。无记录返回空偏好、transit、空备注。清空即写入该默认值。
+
+PUT 使用路由级 `validatorCompiler` 和 `@sinclair/typebox/value` 的 `Value.Check` 校验原始 body；禁止 AJV 默认类型转换或移除未知字段，避免 `extraNotes: null` 被转换成空备注而覆盖旧记录。当前共享 schema 属于 `@sinclair/typebox`，不要混用另一套 `typebox` validator。
+
+`TravelPreferencesProvider` 放在 AppLayout，按 userId 重建；本地草稿覆盖服务器快照，不自动写库。两种提交入口：
+
+- 首页：只写本地草稿，不调 PUT，也不显示保存状态。生成行程成功后（`useGenerationRun` 的 `onDone`）由 NewTripPage 调 `persist()` 一次性提交这一轮选择。生成失败、刷新、退出、账号切换都会丢弃草稿。
+- **个人资料弹窗**：`TravelPreferencesFields` 传 `autoSave`，改动 500ms 防抖后调 `persist()`；关闭弹窗时补写未到点的草稿。
+
+`persist()` 只写「有草稿」的情形（草稿为空则不发请求），mutation scope 串行写入，成功回执只清除它实际写过的草稿，不能清掉在途的新修改。Provider 挂在布局层，导航不卸载保存主体；登录期间切换账号会按 userId 重建 Provider，旧队列随作用域取消。退出按钮在写入中禁用。失败保留草稿并提供重试；首页草稿的失败会留到下次打开面板才可见。
+
+每笔 mutation 真正发送前核对 React Query 的 `keys.me` 与该笔保存的 userId；会话失效或账号切换后拒绝旧队列。成功回执同样核对身份，不能在退出清缓存后重新填入旧账号数据。串行 scope 只协调当前页面内的写入，不提供跨设备冲突合并。
+
+首页通过现有参数链路传 extraNotes，NewTripPage 同时写入 Brief 和 GenerateForm；后续账号设置变化不改写生成快照或已有行程。
+
+## 4. 校验与错误
+
+| 情况 | 行为 |
+| --- | --- |
+| 未登录 | 401，走统一会话失效处理 |
+| 标签重复、枚举非法、备注超长、null/错误类型、缺字段、附加 userId 等未知字段 | 400，原记录不变，不做隐式转换 |
+| 无偏好记录 | 返回默认值，不写库 |
+| 保存失败 | 显示尚未记住并保留输入，可重试；首页草稿的失败留到下次打开面板可见 |
+| 读取失败 | 显示重试，不将默认值当已保存值覆盖账号 |
+| 库内数据非法 | 500，不伪装成新账号默认值 |
+| 存储读写失败 | 500，统一错误 envelope，不泄露表名和 SQL，原记录保持不变 |
+
+## 5. 正常与反例
+
+- 正常（首页）：用户输入“带小孩一起”、勾选「美食」→ 不写库；生成行程成功后才一次性写入账号，刷新/重新登录恢复，生成输入和 Brief 同时收到备注。
+- 正常（个人资料）：弹窗内改动 500ms 后自动保存，切换账号互相隔离。
+- 基线：新账号默认为公共交通、无偏好和备注。
+- 反例：首页每次勾选都写账号；仅保存在 localStorage；GET 完成时自动写默认值；旧 PUT 回执清除用户新输入；生成失败也把草稿写进账号。
+
+## 6. 验证
+
+- `node --import tsx scripts/verify-travel-preferences.mts`：独立临时 PG 数据库（默认 18797，可用 `VERIFY_PREFERENCES_ADMIN_URL` 指向测试实例），检查重复迁移、旧设置保留、401、非法输入、两个账号、重新登录、清空，以及库内数据损坏和读写故障；故障恢复后读取原值。
+- `node apps/web/tests/travel-preferences-browser.mjs`：默认 5173，可用 BASE 指向生产预览；mock API（含一条 SSE `job_done` 的成功生成）验证首页选择仅在生成成功后写入、生成失败与刷新不写账号、个人资料即时保存、在途修改、失败重试、清空、账号隔离、会话切换的旧队列隔离、移动端与 Escape。图片在 `data/travel-preferences-review/`。
+- `npm run typecheck` 与 `npm run build -w apps/web`。
+
+## 7. 错误与正确示例
+
+```ts
+// 错误：任何旧请求完成都丢弃新输入。
+setDraft(null);
+
+// 正确：仅清除该请求实际保存过的草稿。
+setDraft(current => current === submittedDraft ? null : current);
+
+// 错误：change 里直接写库，首页每次勾选都扣一次 PUT。
+change = (value) => { setDraft(value); void send(value); };
+
+// 正确：change 只改草稿，由生成成功 / 个人资料自动保存调 persist。
+change = (value) => { setDraft(value); };
+persist = async () => { const snapshot = draftRef.current; if (!snapshot) return; await send(snapshot); };
+```

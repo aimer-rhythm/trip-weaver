@@ -8,6 +8,7 @@ import type {
   GenerationJobStatus,
   LoginBody,
   PlanningBriefPatch,
+  PlanningBriefView,
   RegisterBody,
   SendMessageResult,
   SettingsPut,
@@ -16,9 +17,11 @@ import type {
   TripListPage,
   TripListSort,
   TripVersionChain,
+  TravelPreferences,
   UsageView,
 } from '@tripweaver/shared';
-import { TRIP_LIST_PAGE_SIZE } from '@tripweaver/shared';
+import { TRIP_LIST_PAGE_SIZE, TravelPreferencesSchema } from '@tripweaver/shared';
+import { Value } from '@sinclair/typebox/value';
 import { api, resetAuthState, shouldRetryQuery } from './client';
 
 export interface MeView {
@@ -50,6 +53,7 @@ export const keys = {
   me: ['me'] as const,
   authConfig: ['auth-config'] as const,
   settings: ['settings'] as const,
+  travelPreferences: (userId: string) => ['travel-preferences', userId] as const,
   sourcesStatus: ['sources-status'] as const,
   usage: ['usage'] as const,
   coveredCities: ['covered-cities'] as const,
@@ -103,6 +107,35 @@ export function useLogout() {
 
 export function useSettings() {
   return useQuery({ queryKey: keys.settings, queryFn: () => api.get<SettingsView>('/api/settings') });
+}
+
+function parseTravelPreferences(value: unknown): TravelPreferences {
+  if (!Value.Check(TravelPreferencesSchema, value)) throw new Error('偏好设置格式异常，请重试');
+  return value;
+}
+
+export function useTravelPreferences(userId: string) {
+  return useQuery({
+    queryKey: keys.travelPreferences(userId),
+    queryFn: async ({ signal }) => parseTravelPreferences(await api.get<unknown>('/api/settings/travel-preferences', { signal })),
+    enabled: Boolean(userId),
+    staleTime: Infinity,
+  });
+}
+
+export function useSaveTravelPreferences(userId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    scope: { id: `travel-preferences-${userId}` },
+    mutationFn: async (body: TravelPreferences) => {
+      // 排队期间会话可能已失效；旧账号草稿不能借新账号的 cookie 发出。
+      if (qc.getQueryData<MeView>(keys.me)?.id !== userId) throw new Error('账号已切换，请重新加载偏好');
+      return parseTravelPreferences(await api.put<unknown>('/api/settings/travel-preferences', body));
+    },
+    onSuccess: (view) => {
+      if (qc.getQueryData<MeView>(keys.me)?.id === userId) qc.setQueryData(keys.travelPreferences(userId), view);
+    },
+  });
 }
 
 export function useSaveSettings() {
@@ -356,6 +389,14 @@ export function usePatchBrief() {
     mutationFn: ({ id, patch }: { id: string; patch: PlanningBriefPatch }) =>
       api.patch<SendMessageResult>(`/api/conversations/${id}/brief`, patch),
     onSuccess: (_result, { id }) => refreshAfterTurn(qc, id),
+  });
+}
+
+/** 首页发起生成前把整包 Brief 写进会话留档：只落 Brief，不产生对话消息 */
+export function useSaveBriefSnapshot() {
+  return useMutation({
+    mutationFn: ({ id, patch }: { id: string; patch: PlanningBriefPatch }) =>
+      api.patch<{ brief: PlanningBriefView }>(`/api/conversations/${id}/brief?snapshot=1`, patch),
   });
 }
 

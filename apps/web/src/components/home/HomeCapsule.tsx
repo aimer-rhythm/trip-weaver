@@ -9,11 +9,12 @@ import {
   PACE_LABELS,
   PACE_OPTIONS,
   PREFERENCE_OPTIONS,
-  TRANSPORT_MODES,
   type TransportMode,
   type TripPace,
 } from '@tripweaver/shared';
 import { RangeCalendar } from '../RangeCalendar';
+import { TravelPreferencesFields } from '../TravelPreferencesFields';
+import { useTravelPreferencesDraft } from '../TravelPreferencesProvider';
 import { TRANSPORT_LABELS } from '../../lib/chatDerive';
 import { daysBetween, isoDateAfter, shortDate } from '../../lib/dates';
 import {
@@ -39,6 +40,7 @@ export interface HomeTripDraft {
   partySize: number;
   preferences: Preference[];
   transportMode: TransportMode | null;
+  extraNotes: string;
 }
 
 interface HomeCapsuleProps {
@@ -62,13 +64,7 @@ const cityPanelCls = `${panelShellCls} ${spacedPanelCls} w-[max(300px,21vw)]`;
 const pacePanelCls = `${panelShellCls} ${spacedPanelCls} w-[max(320px,22vw)]`;
 const datePanelCls = `${panelShellCls} w-[560px]`;
 
-const panelLabelCls = 'm-0 text-xs text-ink-muted';
-const chipCls = (active: boolean) =>
-  `min-h-11 rounded-full border border-solid px-3 py-1.5 text-sm transition-colors ${
-    active
-      ? 'border-brand bg-brand font-semibold text-white'
-      : 'border-black/10 bg-white/70 text-ink-strong hover:border-brand hover:text-brand'
-  }`;
+const panelLabelCls = 'm-0 text-[length:calc(12*max(1px,var(--ui,1px)))] text-ink-muted';
 const cityCardCls = (active: boolean) =>
   `rounded-[calc(12*var(--ui))] border px-[calc(10*var(--ui))] py-[calc(13*var(--ui))] text-center text-[length:calc(15*var(--ui))] font-semibold transition-colors ${
     active
@@ -136,11 +132,11 @@ function PanelHead({ icon, title, onClose }: { icon: ReactNode; title: string; o
 }
 
 /** 指向所在胶囊段的尾巴：只有右下两条边需要描边 */
-function PanelTail() {
+function PanelTail({ align = 'left' }: { align?: 'left' | 'preferences' }) {
   return (
     <span
       aria-hidden="true"
-      className="absolute -bottom-[calc(8*var(--ui))] left-[calc(30*var(--ui))] h-[calc(16*var(--ui))] w-[calc(16*var(--ui))] rotate-45 border-r border-b border-white/70 bg-white/88"
+      className={`absolute -bottom-[calc(8*var(--ui))] left-[calc(30*var(--ui))] h-[calc(16*var(--ui))] w-[calc(16*var(--ui))] rotate-45 border-r border-b border-white/70 bg-white/88 ${align === 'preferences' ? 'lg:left-auto lg:right-[calc(110*var(--ui))]' : ''}`}
     />
   );
 }
@@ -150,14 +146,14 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
   const [endDate, setEndDate] = useState(() => isoDateAfter(3));
   const [pace, setPace] = useState<TripPace | null>(null);
   const [partySize, setPartySize] = useState(2);
-  const [preferences, setPreferences] = useState<Preference[]>([]);
-  const [transportMode, setTransportMode] = useState<TransportMode | null>(null);
+  const savedPreferences = useTravelPreferencesDraft();
+  const { preferences = [], transportMode = 'transit', extraNotes = '' } = savedPreferences.value ?? {};
   const [activePanel, setActivePanel] = useState<PanelKey | null>(null);
   const [calendarMonths, setCalendarMonths] = useState(() => window.matchMedia('(max-width: 640px)').matches ? 1 : 2);
   const deckRef = useRef<HTMLDivElement>(null);
 
   const days = daysBetween(startDate, endDate);
-  const ready = Boolean(city) && pace !== null;
+  const ready = Boolean(city) && pace !== null && Boolean(savedPreferences.value);
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 640px)');
@@ -176,13 +172,12 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
   }, []);
 
   const togglePanel = (key: PanelKey) => setActivePanel((cur) => (cur === key ? null : key));
-  const togglePreference = (option: Preference) =>
-    setPreferences((prev) => (prev.includes(option) ? prev.filter((p) => p !== option) : [...prev, option]));
 
   const paceSummary = `${partySize} 人 · ${pace ? PACE_LABELS[pace] : '选择节奏'}`;
   const moreSummary = [
     preferences.length > 0 ? preferences.join(' · ') : '偏好不限',
     transportMode ? TRANSPORT_LABELS[transportMode] : '',
+    extraNotes.trim() ? '已填备注' : '',
   ]
     .filter(Boolean)
     .join(' · ');
@@ -360,46 +355,21 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
             icon={<ScissorsIcon className="h-[calc(26*var(--ui))] w-[calc(26*var(--ui))]" />}
             iconCls="text-accent-pink"
             label="偏好与出行"
-            value={moreSummary}
+            value={savedPreferences.value ? moreSummary : savedPreferences.error ? '加载失败，请重试' : '正在加载偏好…'}
             open={activePanel === 'more'}
             onClick={() => togglePanel('more')}
           />
           {activePanel === 'more' && (
-            <div className={pacePanelCls}>
+            <div className={`${pacePanelCls} lg:left-auto lg:right-0`}>
               <PanelHead
                 icon={<ScissorsIcon className="h-[calc(20*var(--ui))] w-[calc(20*var(--ui))] text-accent-pink" />}
                 title="偏好与出行"
                 onClose={() => setActivePanel(null)}
               />
-              <p className={panelLabelCls}>偏好（多选）</p>
-              <div className="flex flex-wrap gap-[calc(8*var(--ui))]">
-                {PREFERENCE_OPTIONS.map((option) => (
-                  <Button variant="plain"
-                    key={option}
-                    type="button"
-                    aria-pressed={preferences.includes(option)}
-                    className={chipCls(preferences.includes(option))}
-                    onClick={() => togglePreference(option)}
-                  >
-                    {option}
-                  </Button>
-                ))}
+              <div className="min-h-0 overflow-y-auto overscroll-contain">
+                <TravelPreferencesFields />
               </div>
-              <p className={panelLabelCls}>出行方式（缺省公共交通）</p>
-              <div className="flex flex-wrap gap-[calc(8*var(--ui))]">
-                {TRANSPORT_MODES.map((mode) => (
-                  <Button variant="plain"
-                    key={mode}
-                    type="button"
-                    aria-pressed={transportMode === mode}
-                    className={chipCls(transportMode === mode)}
-                    onClick={() => setTransportMode((prev) => (prev === mode ? null : mode))}
-                  >
-                    {TRANSPORT_LABELS[mode]}
-                  </Button>
-                ))}
-              </div>
-              <PanelTail />
+              <PanelTail align="preferences" />
             </div>
           )}
         </div>
@@ -410,9 +380,9 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
           <Button variant="plain"
             type="button"
             aria-label="开始规划"
-            title={ready ? '开始规划' : '先选目的地与节奏'}
+            title={ready ? '开始规划' : !savedPreferences.value ? '请先加载偏好设置' : '先选目的地与节奏'}
             disabled={!ready}
-            onClick={() => onStart({ startDate, endDate, days, pace, partySize, preferences, transportMode })}
+            onClick={() => onStart({ startDate, endDate, days, pace, partySize, preferences, transportMode, extraNotes })}
             className="grid h-[calc(76*var(--ui))] w-[calc(76*var(--ui))] place-items-center rounded-full bg-gradient-to-br from-brand-light to-brand text-white shadow-[0_12px_26px_rgba(47,107,243,0.35)] transition-transform enabled:hover:scale-[1.04] enabled:active:scale-95 disabled:cursor-not-allowed disabled:from-brand-disabled disabled:to-brand-disabled-deep disabled:shadow-none"
           >
             <CompassIcon className="h-[calc(30*var(--ui))] w-[calc(30*var(--ui))]" />

@@ -45,6 +45,12 @@ export const userSettings = pgTable('user_settings', {
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
 });
 
+export const userTravelPreferences = pgTable('user_travel_preferences', {
+  userId: text('user_id').primaryKey(),
+  data: jsonb('data').notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
+});
+
 export const trips = pgTable('trips', {
   id: text('id').primaryKey(),
   userId: text('user_id').notNull(),

@@ -20,6 +20,7 @@ try {
       '/api/auth/config': { registrationMode: 'open', githubEnabled: false },
       '/api/auth/me': { id: 'fixture', email: 'fixture@example.test' },
       '/api/usage': { remaining: 2, dailyLimit: 4 },
+      '/api/settings/travel-preferences': { preferences: [], transportMode: 'transit', extraNotes: '' },
       '/api/destinations/covered': { cities: ['北京', '杭州', '成都'] },
       '/api/trips': { items: [], total: 0, destinations: [] },
       '/api/settings': { byokEnabled: false, baseUrl: '', model: '', apiKeyLast4: '', hasSiteKey: true, hasPersonalAmapKey: false, amapApiKeyLast4: '', hasSiteAmapKey: true, hasPersonalSearchKey: false, searchApiKeyLast4: '', searchApiBaseUrl: '', hasSiteSearchKey: true },

@@ -69,7 +69,11 @@ the chat quota, or the conversation-to-generation link.
   the generation rule that failed and cancelled runs do not consume quota.
 - **Chat quota is independent of generation quota.** `CHAT_DAILY_LIMIT` counts user turns; the
   generation quota counts `generations.status='done'`. Card edits (`PATCH /brief`) also record a user
-  message and so do consume a chat turn.
+  message and so do consume a chat turn. The one exception is the home-page snapshot write
+  (`PATCH /brief?snapshot=1`), which only persists the brief the user already assembled in the capsule:
+  it appends no messages, so the editor's chat opens on the welcome copy instead of a machine-written
+  「已更新：…」 pair, and it consumes no chat turn. Keep the two paths distinct — the flag is the only
+  difference, and `useSaveBriefSnapshot` / `usePatchBrief` are the respective front doors.
 - **Intake controls are click-first, one field at a time.** Never summarise several missing fields into
   one sentence and drop the user into a text box — that degenerates into "write your own requirements".
   `briefIntake` asks for the *first* missing field only: enumerable fields get buttons, dates get a date

@@ -47,6 +47,9 @@ import { detailChatRoutes } from './detailChat';
 
 const IdParams = Type.Object({ id: Type.String() });
 
+/** 首页把整包 Brief 写进会话留档时带 `?snapshot=1`：只落 Brief，不追加对话消息 */
+const BriefPatchQuery = Type.Object({ snapshot: Type.Optional(Type.String({ maxLength: 8 })) });
+
 const FIELD_LABELS: Record<string, string> = {
   destination: '目的地',
   startDate: '开始日期',
@@ -284,7 +287,7 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
   });
 
   // 确认卡上的字段编辑：与对话理解走同一个归一函数，id / 来源序号由服务端补
-  app.patch('/:id/brief', { schema: { params: IdParams, body: PlanningBriefPatchSchema } }, async (request, reply) => {
+  app.patch('/:id/brief', { schema: { params: IdParams, querystring: BriefPatchQuery, body: PlanningBriefPatchSchema } }, async (request, reply) => {
     const userId = request.user!.id;
     const detail = await getConversationDetail(userId, request.params.id);
     if (!detail) return reply.code(404).send({ error: '会话不存在' });
@@ -292,6 +295,14 @@ export const conversationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     const before = detail.conversation.brief.data;
     const evidenceSequence = (detail.messages.at(-1)?.sequence ?? 0) + 1;
     const nextData = applyDialogueDecision(before, request.body, evidenceSequence);
+
+    // 首页快照：只留档生成输入，不是用户说过的话，所以不往对话里追加「已更新：…」那两条
+    if (request.query.snapshot === '1') {
+      const snapshotBrief = await saveBrief(userId, request.params.id, nextData, briefStatus(nextData, detail.conversation.brief.status));
+      if (!snapshotBrief) return reply.code(404).send({ error: '会话不存在' });
+      return { brief: snapshotBrief, intent: 'update_brief' as const };
+    }
+
     const changes = describeBriefChanges(before, nextData);
     const missingFields = requiredBriefFields(nextData);
     const intake = missingFields.length > 0 ? briefIntake(missingFields) : undefined;

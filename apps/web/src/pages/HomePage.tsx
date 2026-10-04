@@ -45,6 +45,7 @@ export function HomePage() {
     if (draft.partySize !== 2) params.set('partySize', String(draft.partySize));
     if (draft.preferences.length > 0) params.set('preferences', draft.preferences.join(','));
     if (draft.transportMode) params.set('transport', draft.transportMode);
+    if (draft.extraNotes) params.set('extraNotes', draft.extraNotes);
     // 首页已经收集完必填项：带着 autostart 过去，新建页不再让用户点第二次「开始生成」
     params.set('autostart', '1');
     navigate(`/trips/new?${params.toString()}`);

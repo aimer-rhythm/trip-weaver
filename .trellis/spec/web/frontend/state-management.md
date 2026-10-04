@@ -104,6 +104,8 @@ result; an in-flight save is not labelled successful. Both pending and historica
 
 ## URL, Session, and SSE State
 
+账号偏好使用 AppLayout 下按 userId 隔离的 `TravelPreferencesProvider`：React Query 管理服务器快照，本地草稿支持首页与个人资料共同编辑。首页只改草稿，不写账号也不显示保存状态；生成行程成功的回调调用 `persist()` 才把这一轮选择提交给账号（生成失败、刷新、退出都丢弃草稿）。个人资料弹窗传 `autoSave`，500ms 防抖后同样调 `persist()`，关闭弹窗时补写未到点的草稿；mutation scope 串行提交，旧回执不能清除新草稿，失败保留输入并重试。只记住偏好、出行方式、200 字备注。见 [完整契约](../../server/backend/travel-preferences.md)。
+
 Use URL state for navigation-relevant values: route ids, OAuth error codes, and the post-login return path. Treat route and search values as untrusted strings and narrow them before use.
 
 Use `sessionStorage` only for the active generation job id because it should survive refresh in the current tab but not become permanent application data. On restoration, query the snapshot before reconnecting or navigating. Clear the key on terminal status, missing/expired jobs, cancellation recovery, and explicit reset.

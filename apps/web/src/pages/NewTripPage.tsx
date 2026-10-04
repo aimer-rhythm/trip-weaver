@@ -17,9 +17,10 @@ import {
   type TransportMode,
   type TripPace,
 } from '@tripweaver/shared';
-import { useCoveredCities, useCreateConversation, usePatchBrief, useUsage } from '../api/hooks';
+import { useCoveredCities, useCreateConversation, useSaveBriefSnapshot, useUsage } from '../api/hooks';
 import { GenerationRunPanel } from '../components/GenerationRunPanel';
 import { useGenerationRun } from '../hooks/useGenerationRun';
+import { useTravelPreferencesDraft } from '../components/TravelPreferencesProvider';
 import { daysBetween, isISODate, isoDateAfter } from '../lib/dates';
 
 type Preference = (typeof PREFERENCE_OPTIONS)[number];
@@ -33,6 +34,7 @@ interface TripDraft {
   preferences: Preference[];
   partySize: number;
   transportMode: TransportMode | null;
+  extraNotes: string;
 }
 
 /** 从 URL 解析草稿：预览参数一律不可信，逐项校验后回落到默认值 */
@@ -57,7 +59,8 @@ function parseDraft(params: URLSearchParams): TripDraft {
   const transportMode = (TRANSPORT_MODES as readonly string[]).includes(rawTransport ?? '')
     ? (rawTransport as TransportMode)
     : null;
-  return { city, startDate, endDate, days: daysBetween(startDate, endDate), pace, preferences, partySize, transportMode };
+  const extraNotes = (params.get('extraNotes') ?? '').slice(0, 200);
+  return { city, startDate, endDate, days: daysBetween(startDate, endDate), pace, preferences, partySize, transportMode, extraNotes };
 }
 
 export function NewTripPage() {
@@ -67,7 +70,7 @@ export function NewTripPage() {
   const covered = useCoveredCities();
   const usage = useUsage();
   const createConversation = useCreateConversation();
-  const patchBrief = usePatchBrief();
+  const patchBrief = useSaveBriefSnapshot();
 
   const draft = useMemo(() => parseDraft(params), [params]);
   // 到站时是否带了 autostart。守卫会把该参数从 URL 里清掉，所以后续渲染必须靠快照判断，
@@ -76,20 +79,23 @@ export function NewTripPage() {
   const [error, setError] = useState<string | null>(null);
   const [doneTripId, setDoneTripId] = useState<string | null>(null);
 
-  const openTrip = useCallback((tripId: string) => setDoneTripId(tripId), []);
-  const run = useGenerationRun({ onDone: openTrip });
+  const { persist } = useTravelPreferencesDraft();
+  const persistRef = useRef(persist);
+  persistRef.current = persist;
 
-  // 生成成功：先让结果卡片可见，再跳编辑器（与原入口的停留时长一致）
-  useEffect(() => {
-    if (!doneTripId) return;
-    const timer = setTimeout(() => navigate(`/trips/${doneTripId}`), 1800);
-    return () => clearTimeout(timer);
-  }, [doneTripId, navigate]);
+  const openTrip = useCallback((tripId: string) => {
+    // 生成成功才算“记住了上一轮选择”：首页草稿在这里提交给账号。
+    // 失败不阻塞跳转，错误留在 Provider 里，下次打开偏好面板能看到并重试。
+    void persistRef.current();
+    setDoneTripId(tripId);
+  }, []);
+  const run = useGenerationRun({ onDone: openTrip });
 
   const briefData = useMemo<PlanningBriefData>(
     () => ({
       destination: draft.city,
       constraints: [],
+      extraNotes: draft.extraNotes,
       startDate: draft.startDate,
       endDate: draft.endDate,
       days: draft.days,
@@ -123,6 +129,7 @@ export function NewTripPage() {
         endDate: draft.endDate,
         days: draft.days,
         partySize: draft.partySize,
+        extraNotes: draft.extraNotes,
       };
       if (draft.pace) patch.pace = draft.pace;
       if (draft.preferences.length > 0) patch.preferences = draft.preferences;
@@ -162,7 +169,8 @@ export function NewTripPage() {
     );
   }
 
-  if (run.jobId) {
+  // 生成成功直接进详情页：doneTripId 一置就不再渲染进度面板，下面的 Navigate 接管
+  if (run.jobId && !doneTripId) {
     return (
       <GenerationRunPanel
         events={run.events}
@@ -180,7 +188,7 @@ export function NewTripPage() {
     );
   }
 
-  // 快照已完成时没有运行中的 jobId；优先打开结果，避免下面的入口守卫抢先回首页。
+  // 生成成功即接管：实时 SSE 与快照恢复两条路都落在这里，不再显示进度面板的终态卡片。
   if (doneTripId) return <Navigate to={`/trips/${doneTripId}`} replace />;
 
   if (covered.isPending) {

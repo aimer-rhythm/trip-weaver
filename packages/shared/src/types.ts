@@ -10,6 +10,7 @@ import type {
   ResearchPoiSchema,
   PoiPhotoSchema,
   SettingsPutSchema,
+  TravelPreferencesSchema,
   SourceNoteSchema,
   TripDaySchema,
   TripExportSchema,
@@ -57,6 +58,7 @@ import type {
 
 // 全部领域类型从 TypeBox schema 派生 —— schema 是唯一事实源
 export type SourceNote = Static<typeof SourceNoteSchema>;
+export type TravelPreferences = Static<typeof TravelPreferencesSchema>;
 export type Activity = Static<typeof ActivitySchema>;
 export type RouteOptionsRequest = Static<typeof RouteOptionsRequestSchema>;
 export type RouteOptionsResponse = Static<typeof RouteOptionsResponseSchema>;

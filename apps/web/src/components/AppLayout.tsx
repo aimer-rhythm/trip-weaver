@@ -3,13 +3,24 @@ import { useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useLogout, useMe, useUsage } from '../api/hooks';
 import { SettingsDialog } from './SettingsDialog';
+import { ProfileDialog } from './ProfileDialog';
+import { TravelPreferencesProvider, useTravelPreferencesDraft } from './TravelPreferencesProvider';
 
 export function AppLayout() {
+  const me = useMe();
+  return <TravelPreferencesProvider key={me.data?.id} userId={me.data?.id ?? ''}>
+    <AppLayoutContent />
+  </TravelPreferencesProvider>;
+}
+
+function AppLayoutContent() {
   const me = useMe();
   const usage = useUsage();
   const logout = useLogout();
   const navigate = useNavigate();
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const preferences = useTravelPreferencesDraft();
 
   return (
     <div className={"app-layout [min-height:100vh] flex flex-col [background:var(--color-canvas)_url('/home-bg.png')_center_/_cover_no-repeat] [&:has(.home-page-root)_.app-main]:p-0 [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar]:[padding-top:12px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.brand-en]:hidden [@media_(max-width:_600px)]:[&:has(.editor-page)_.quota-chip]:hidden [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-capsule]:[padding-left:12px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions]:[gap:0] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions_.btn]:[padding:8px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions_.btn]:[font-size:12px] [@media_screen]:[&:has(.editor-page)]:[height:100dvh] [@media_screen]:[&:has(.editor-page)]:min-h-0 [@media_screen]:[&:has(.editor-page)]:overflow-hidden [@media_screen]:[&:has(.editor-page)_.topbar]:shrink-0 [@media_screen]:[&:has(.editor-page)_.app-main]:overflow-hidden [@media_screen]:[&_.editor-page]:flex-1 [@media_screen]:[&_.editor-page]:[height:auto] [@media_screen]:[&_.editor-page]:[max-height:none] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.brand-en]:hidden [@media_(max-width:_600px)]:[&:has(.trip-collection)_.quota-chip]:hidden [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-capsule]:[padding-left:12px] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions]:[gap:0] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions_.btn]:[padding:8px] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions_.btn]:[font-size:12px]"}>
@@ -50,11 +61,16 @@ export function AppLayout() {
                 今日可生成 {usage.data.remaining}/{usage.data.dailyLimit} 次
               </span>
             )}
-            <Button variant="secondary" type="button" onClick={() => setSettingsOpen(true)}>
+            <Button variant="secondary" type="button" className="max-sm:!px-2 max-sm:text-xs" onClick={() => setProfileOpen(true)}>
+              个人资料
+            </Button>
+            <Button variant="secondary" type="button" className="max-sm:!px-2 max-sm:text-xs" onClick={() => setSettingsOpen(true)}>
               设置
             </Button>
             <Button variant="secondary"
               type="button"
+              className="max-sm:!px-2 max-sm:text-xs"
+              disabled={preferences.saving}
               onClick={() =>
                 logout.mutate(undefined, {
                   onSuccess: () => navigate('/login', { replace: true }),
@@ -70,6 +86,7 @@ export function AppLayout() {
         <Outlet />
       </main>
       {settingsOpen && <SettingsDialog email={me.data?.email ?? ''} onClose={() => setSettingsOpen(false)} />}
+      {profileOpen && <ProfileDialog email={me.data?.email ?? ''} onClose={() => setProfileOpen(false)} />}
     </div>
   );
 }

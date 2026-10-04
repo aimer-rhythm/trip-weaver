@@ -5,6 +5,11 @@ import type { Pool } from 'pg';
 import { AMAP_SERVICES, amapDay } from '../integrations/amap/services';
 
 const STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS user_travel_preferences (
+    user_id TEXT PRIMARY KEY,
+    data JSONB NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL
+  )`,
   `CREATE TABLE IF NOT EXISTS detail_operations (
     user_id TEXT NOT NULL, id TEXT NOT NULL, fingerprint TEXT NOT NULL,
     result JSONB NOT NULL, created_at TIMESTAMPTZ NOT NULL,

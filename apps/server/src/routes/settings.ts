@@ -1,5 +1,7 @@
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
-import { SettingsPutSchema } from '@tripweaver/shared';
+import { Value } from '@sinclair/typebox/value';
+import { SettingsPutSchema, TravelPreferencesSchema } from '@tripweaver/shared';
+import { getTravelPreferences, saveTravelPreferences } from '../services/travelPreferencesService';
 import { requireAuth } from '../auth/guard';
 import { getSettingsView, upsertSettings } from '../services/settingsService';
 import { resolveGeoProvider, resolvePoiSourceForUser } from '../integrations/geoProvider';
@@ -60,6 +62,16 @@ export const settingsRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
 
   app.get('/', async (request) => getSettingsView(request.user!.id));
+
+  app.get('/travel-preferences', { schema: { response: { 200: TravelPreferencesSchema } } },
+    async (request) => getTravelPreferences(request.user!.id));
+
+  app.put('/travel-preferences', {
+    schema: { body: TravelPreferencesSchema, response: { 200: TravelPreferencesSchema } },
+    // 整包替换必须拒绝非法原值，避免 AJV 将 null 转为空字符串后覆盖已保存备注。
+    validatorCompiler: () => (body: unknown) => Value.Check(TravelPreferencesSchema, body)
+      ? { value: body } : { error: new Error('偏好设置格式不正确') },
+  }, async (request) => saveTravelPreferences(request.user!.id, request.body));
 
   app.put('/', { schema: { body: SettingsPutSchema } }, async (request) => {
     return upsertSettings(request.user!.id, request.body);

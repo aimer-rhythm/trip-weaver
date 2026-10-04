@@ -109,7 +109,7 @@ export function ChatPanel({ conversationId, trip, dayId, readOnly, busy, begin, 
       {detail.isError && <p role="alert">对话加载失败 <Button variant="ghost" onClick={() => void detail.refetch()}>重试</Button></p>}
       {!detail.isPending && !detail.isError && <div className="chat-welcome pb-3 pt-5">
         <h2 className="m-0 flex items-start gap-3 text-[18px] font-semibold leading-[1.6]"><span className="mt-1 text-brand" aria-hidden="true"><EditorIcon name="sparkle" /></span>行程已生成，可以继续完善沿途安排。</h2>
-        <p className="mb-0 mt-5 text-[16px] leading-[1.8] text-ink-muted">我为你整理了 {trip.days.length} 天的行程安排，已包含主要景点、交通和住宿信息，你可以根据需要进一步调整。</p>
+        <p className="mb-0 mt-5 text-[16px] leading-[1.8] text-ink-muted">我为你整理了 {trip.days.length} 天的行程安排，已包含主要景点与交通安排，你可以根据需要进一步调整。</p>
         {messages.length === 0 && !pending && renderSuggestions(initialSuggestions, dayId, true)}</div>}
       {messages.map((message) => <div key={message.id} className="min-w-0">
         <MessageBubble message={message} intakeLive={false} disabled={busy || readOnly} onPatch={() => {}} onText={(text) => void send(text)} />
