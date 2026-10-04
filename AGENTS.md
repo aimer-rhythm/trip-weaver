@@ -1,3 +1,13 @@
+## 提交信息
+
+以 `.trellis/spec/guides/commit-convention.md` 为准，一次提交一件事：
+
+- 格式 `<type>(<scope>): <中文简述>`：标题中文、动宾短语、≤20 字、无句号；scope 从该文档的词表取（`web` / `server` / `shared` / `scripts` / `spec` / `task` / `tasks` 等），不新造
+- 正文一到两句中文：做了什么 + 验证结果
+- 三段式节奏：工作提交 → `chore(task):` 归档 → `chore: 记录…` 日志，不交错；不 `--amend`、不 push
+
+不要用 emoji 前缀（`✨` / `🐛`）加 `- ` 长列表的写法 —— 历史里这类提交是旧写法，不沿用；`gencom` skill 的 emoji 模板只适用于没有提交规范的项目。
+
 <!-- TRELLIS:START -->
 # Trellis Instructions
 
