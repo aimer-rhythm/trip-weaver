@@ -12,7 +12,7 @@ import { useDismissibleDisclosure } from '../ui/Dropdown';
 export function RouteOptions({ dayId, fromId, leg }: { dayId: string; fromId: string; leg?: TransitLeg }) {
   const readOnly = useEditorStore((s) => s.readOnly);
   const trip = useEditorStore((s) => s.trip);
-  if (readOnly) return leg ? <p className="px-3 text-[14px] text-ink-muted">{LEG_MODE_LABEL[leg.mode]} · {formatLegDuration(leg.durationMin)}{leg.source === 'heuristic' ? '（估算）' : ''}</p> : null;
+  if (readOnly) return leg ? <p className="flex flex-wrap items-center gap-2 px-3 text-[14px] text-ink-muted">{LEG_MODE_LABEL[leg.mode]}<span>{formatLegDuration(leg.durationMin)}{leg.source === 'heuristic' ? '（估算）' : ''}</span></p> : null;
   const key = trip ? routePairKey(trip, dayId, fromId) : null;
   if (!trip || !key) return null;
   const day = trip.days.find((d) => d.id === dayId)!;
@@ -72,7 +72,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
     <details ref={details} className="group rounded-[14px]" {...disclosureEvents}>
       <summary className="editor-transit flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border-0 bg-transparent px-3 text-[var(--color-editor-menu-color-83)] transition-colors hover:bg-[var(--color-editor-menu-list-background-87)] group-open:bg-[var(--color-editor-menu-list-background-87)] [&::-webkit-details-marker]:hidden" aria-label="切换交通方式">
         <EditorIcon name={leg?.mode === 'transit' ? 'route' : leg?.mode ?? 'route'} />
-        <span className="flex-1" role="status">{pendingMode ? '正在规划' + LEG_MODE_LABEL[pendingMode] + '路线…' : replan?.status === 'pending' ? '正在选择推荐交通方式…' : leg ? LEG_MODE_LABEL[leg.mode] + '约' + formatLegDuration(leg.durationMin) + ' · ' + (leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)) : '选择交通方式'}</span>
+        <span className="flex flex-1 flex-wrap items-center gap-2" role="status">{pendingMode ? '正在规划' + LEG_MODE_LABEL[pendingMode] + '路线…' : replan?.status === 'pending' ? '正在选择推荐交通方式…' : leg ? <><span>{LEG_MODE_LABEL[leg.mode] + '约' + formatLegDuration(leg.durationMin)}</span><span>{leg.source === 'heuristic' ? '估算' : formatLegDistance(leg.distanceM)}</span></> : '选择交通方式'}</span>
         <svg className="transition-transform group-open:rotate-180" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
       </summary>
       <div className="mt-2 rounded-[14px] border border-[var(--color-editor-menu-list-border-85)] bg-[var(--color-card)] p-1.5 shadow-[0_10px_30px_var(--color-editor-menu-list-box-shadow-86)]" aria-label="交通方式选项">
@@ -91,7 +91,7 @@ function RouteOptionsForPair({ pairKey, tripId, input, dayId, leg }: {
             onClick={() => void select(mode)}>
             <EditorIcon name={mode === 'transit' ? 'route' : mode} />
             <span className="shrink-0">{LEG_MODE_LABEL[mode]}</span>
-            <span className="ml-auto text-right text-xs">{pending ? '正在规划…' : option?.status === 'available' ? formatLegDuration(option.leg.durationMin) + ' · ' + formatLegDistance(option.leg.distanceM) : option?.status === 'unavailable' ? option.reason : query.isFetching ? '查询中…' : '选择后规划'}</span>
+            <span className="ml-auto flex items-center gap-2 text-right text-xs">{pending ? '正在规划…' : option?.status === 'available' ? <><span>{formatLegDuration(option.leg.durationMin)}</span><span>{formatLegDistance(option.leg.distanceM)}</span></> : option?.status === 'unavailable' ? option.reason : query.isFetching ? '查询中…' : '选择后规划'}</span>
             {selected && <span aria-hidden="true">✓</span>}
           </Button>;
         })}

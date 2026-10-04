@@ -4,19 +4,17 @@
 // `point` 才是兴趣点与文字标注层 —— 栅格瓦片把文字烘焙进 PNG（`style=` 关不掉，CSS 滤镜试过并回滚
 // 于 commit 1d5a59b），JS API 能按图层精确控制，这是换渲染器唯一的收益来源。
 //
-// 交互：编辑按钮不用 React 组件（InfoWindow 的 content 是 HTML 字符串），改用 data 属性 +
-// 容器上的事件委托 —— 高德把气泡 DOM 挂在传给它的容器内，也就是本组件的 div 里，
-// 所以 React 合成事件能捕获到。
+// 交互：点 marker 不再弹气泡，直接让中间行程栏跳转到对应景点（回调见 Props.onSelectActivity，
+// 由 MapView 从 TripEditorPage 传入）。
 //
 // 路线是双层折线（参数见 lib/routeStyle），marker 带名称标签（HTML 见 lib/markerHtml），
 // 标签避让见 lib/labelCollision —— 三者都与 LeafletCanvas 共用，改一处即两套生效。
 import { MapControls } from './MapControls';
 import { useEffect, useRef } from 'react';
-import type { Activity, TripDay } from '@tripweaver/shared';
-import type { AmapInfoWindow, AmapMap, AmapNamespace, AmapOverlay } from '../../lib/amapTypes';
+import type { AmapMap, AmapNamespace, AmapOverlay } from '../../lib/amapTypes';
 import { dimColor } from '../../lib/colors';
 import { resolveLabelCollisions } from '../../lib/labelCollision';
-import { escapeHtml, markerHtml } from '../../lib/markerHtml';
+import { markerHtml } from '../../lib/markerHtml';
 import type { DayLines, MapPoint } from '../../lib/mapData';
 import { ROUTE_STROKE } from '../../lib/routeStyle';
 
@@ -27,35 +25,19 @@ interface Props {
   dayLines: DayLines[];
   /** 容器可见性：隐藏时 setFitView 会算出零尺寸视野，必须等可见再算 */
   visible: boolean;
+  /** 点中地图地点：让中间行程栏切到那天并滚到该景点 */
+  onSelectActivity: (dayIndex: number, activityId: string) => void;
 }
 
 const FIT_PADDING = [40, 40, 40, 40]; // 上、下、左、右
 
-/** 气泡只展示活动概要，与 Leaflet 的 ActivityPopup 保持一致。 */
-function popupHtml(day: TripDay, activity: Activity): string {
-  const notes = activity.sourceNotes
-    .map(
-      (n) =>
-        `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">📕 ${escapeHtml(n.title || '来源笔记')}</a>`,
-    )
-    .join('');
-  return [
-    `<div class="${escapeHtml("map-popup [max-width:220px] [&_p]:[margin:4px_0] [&_p]:[font-size:0.82rem]")}">`,
-    `<strong>${escapeHtml(activity.name)}</strong>`,
-    `<p class="${escapeHtml("muted [color:var(--color-muted)] [font-size:0.88rem]")}">第${day.dayIndex}天 · ${escapeHtml(activity.category)}</p>`,
-    activity.description ? `<p>${escapeHtml(activity.description)}</p>` : '',
-    activity.coordSource === 'estimated' ? `<p class="${escapeHtml("tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]")}">坐标为估算</p>` : '',
-    notes ? `<p>${notes}</p>` : '',
-    '</div>',
-  ]
-    .filter(Boolean)
-    .join('');
-}
-
-export function AmapCanvas({ amap, points, dayLines, visible }: Props) {
+export function AmapCanvas({ amap, points, dayLines, visible, onSelectActivity }: Props) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<AmapMap | null>(null);
   const overlaysRef = useRef<AmapOverlay[]>([]);
+  // 回调进 ref：否则每次父组件重渲染都会重建全部覆盖物
+  const selectRef = useRef(onSelectActivity);
+  selectRef.current = onSelectActivity;
   // 视野自适应的目标 = 当前「查看范围」：总览时是全部天，选了某天时就只有那天
   const fitTargetsRef = useRef<AmapOverlay[]>([]);
 
@@ -100,7 +82,6 @@ export function AmapCanvas({ amap, points, dayLines, visible }: Props) {
     const map = mapRef.current;
     if (!map) return;
     map.remove(overlaysRef.current);
-    const info = new amap.InfoWindow({ offset: new amap.Pixel(0, -18) });
     const overlays: AmapOverlay[] = [];
     const focused: AmapOverlay[] = [];
 
@@ -144,12 +125,7 @@ export function AmapCanvas({ amap, points, dayLines, visible }: Props) {
         // 淡化层的 marker 压到当天之下（线最高 61，故两档都远高于线）
         zIndex: point.dimmed ? 90 : 100,
       });
-      marker.on('click', () => {
-        const current = mapRef.current;
-        if (!current) return;
-        info.setContent(popupHtml(point.day, point.activity));
-        info.open(current, [point.pos.lng, point.pos.lat]);
-      });
+      marker.on('click', () => selectRef.current(point.day.dayIndex, point.activity.id));
       overlays.push(marker);
       if (!point.dimmed) focused.push(marker);
     }
@@ -167,7 +143,6 @@ export function AmapCanvas({ amap, points, dayLines, visible }: Props) {
     });
     return () => {
       cancelAnimationFrame(raf);
-      info.close();
     };
     // contentKey 已覆盖 points / dayLines 的全部输入
     // eslint-disable-next-line react-hooks/exhaustive-deps

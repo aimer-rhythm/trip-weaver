@@ -1,4 +1,5 @@
 import { Type } from '@sinclair/typebox';
+import { TripWeatherSchema } from './weather';
 import { StringEnum } from './typebox';
 import {
   ACTIVITY_CATEGORIES,
@@ -146,6 +147,7 @@ export const TripSchema = Type.Object({
   days: Type.Array(TripDaySchema, { maxItems: MAX_TRIP_DAYS }),
   // 调研候选池（行程概览页数据；可选：旧行程无此字段）
   overview: Type.Optional(Type.Array(ResearchPoiSchema, { maxItems: MAX_OVERVIEW_POIS })),
+  weather: Type.Optional(TripWeatherSchema),
   meta: TripMetaSchema,
   createdAt: Type.Number(),
   updatedAt: Type.Number(),

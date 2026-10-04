@@ -4,11 +4,11 @@
 //
 // 路线是双层折线（参数见 lib/routeStyle），marker 带名称标签（HTML 见 lib/markerHtml，
 // 与高德侧同一个生成函数），标签避让见 lib/labelCollision。
+// 点 marker 不弹气泡，直接让中间行程栏跳转到对应景点（onSelectActivity 由 TripEditorPage 传入）。
 import { MapControls } from './MapControls';
 import { useEffect } from 'react';
 import L from 'leaflet';
-import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
-import type { Activity, TripDay } from '@tripweaver/shared';
+import { MapContainer, Marker, Polyline, TileLayer, useMap } from 'react-leaflet';
 import { dimColor } from '../../lib/colors';
 import { resolveLabelCollisions } from '../../lib/labelCollision';
 import { markerHtml } from '../../lib/markerHtml';
@@ -20,6 +20,8 @@ interface Props {
   dayLines: DayLines[];
   /** 容器可见性（桌面端常驻可见；≤768px 由移动页签决定） */
   visible: boolean;
+  /** 点中地图地点：让中间行程栏切到那天并滚到该景点 */
+  onSelectActivity: (dayIndex: number, activityId: string) => void;
 }
 
 const toLatLng = (pos: GeoPos): [number, number] => [pos.lat, pos.lng];
@@ -84,36 +86,7 @@ function MapController({ points, visible }: { points: MapPoint[]; visible: boole
   }} />;
 }
 
-function ActivityPopup({
-  day,
-  activity,
-}: {
-  day: TripDay;
-  activity: Activity;
-}) {
-  return (
-    <div className={"map-popup [max-width:220px] [&_p]:[margin:4px_0] [&_p]:[font-size:0.82rem]"}>
-      <strong>{activity.name}</strong>
-      <p className={"muted [color:var(--color-muted)] [font-size:0.88rem]"}>
-        第{day.dayIndex}天 · {activity.category}
-      </p>
-      {activity.description && <p>{activity.description}</p>}
-      {activity.coordSource === 'estimated' && <p className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>坐标为估算</p>}
-      {activity.sourceNotes.length > 0 && (
-        <p>
-          {activity.sourceNotes.map((n) => (
-            <a key={n.url} href={n.url} target="_blank" rel="noopener noreferrer">
-              📕 {n.title || '来源笔记'}
-            </a>
-          ))}
-        </p>
-      )}
-
-    </div>
-  );
-}
-
-export function LeafletCanvas({ points, dayLines, visible }: Props) {
+export function LeafletCanvas({ points, dayLines, visible, onSelectActivity }: Props) {
   return (
     <MapContainer center={[35.0, 105.0]} zoom={4} className={"leaflet-host w-full h-full"} scrollWheelZoom zoomControl={false}>
       <TileLayer
@@ -147,11 +120,12 @@ export function LeafletCanvas({ points, dayLines, visible }: Props) {
         }),
       )}
       {points.map((point) => (
-        <Marker key={point.activity.id} position={toLatLng(point.pos)} icon={mapIcon(point)}>
-          <Popup>
-            <ActivityPopup day={point.day} activity={point.activity} />
-          </Popup>
-        </Marker>
+        <Marker
+          key={point.activity.id}
+          position={toLatLng(point.pos)}
+          icon={mapIcon(point)}
+          eventHandlers={{ click: () => onSelectActivity(point.day.dayIndex, point.activity.id) }}
+        />
       ))}
       <MapController points={points} visible={visible} />
     </MapContainer>

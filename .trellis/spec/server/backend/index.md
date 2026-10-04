@@ -12,6 +12,7 @@ has a more specific convention.
 - [Logging guidelines](./logging-guidelines.md): Fastify/Pino usage, levels, context, and secret redaction.
 - [Security guidelines](./security-guidelines.md): authentication, sessions, OAuth, encryption, SSRF, and environment bootstrap.
 - [Integration guidelines](./integration-guidelines.md): external source adapters, Null implementations, caches, queues, limits, and accounting.
+- [行程天气](./trip-weather.md)：和风十五日预报、日期匹配、独立额度、生成快照与详情补查。
 - [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
 - [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
 - [Chat and conversational intake guidelines](./chat-guidelines.md): dialogue intents, Brief readiness and intake controls, chat quota, revision and version chains, and the two-TypeBox-package trap.

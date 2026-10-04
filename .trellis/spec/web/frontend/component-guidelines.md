@@ -149,6 +149,12 @@ Rules that keep this from becoming two divergent maps:
   "we never implemented it" rather than like a breakage. Avoidance runs on `zoomend` / `moveend` plus
   once after overlays are rebuilt; it is deliberately **not** a rAF loop, which is also why it needs
   none of the reference implementation's hysteresis thresholds.
+- Clicking a marker jumps the middle itinerary column to that activity instead of opening a popup: `MapView`
+  takes `onSelectActivity(dayIndex, activityId)` from `TripEditorPage` (which also switches the mobile tab back
+  to 行程), and both canvases call it from the marker click handler. Keep the canvas callback in a ref — putting
+  it in the overlay-rebuild effect's dependencies would rebuild every polyline and marker on each parent render.
+  There are no `InfoWindow` / `Leaflet.Popup` bubbles any more, so `AmapNamespace` no longer declares `InfoWindow`.
+  Run `node apps/web/tests/editor-browser.mjs` (it clicks a pin that landed inside the canvas) after touching this.
 
 ## Derived Data Matching
 
@@ -171,13 +177,23 @@ unit-testable and shared between panels and the map.
 
 ## Itinerary Detail Reading and Navigation (2026-09-28)
 
-- `dayFilter` is the single owner for itinerary and map selection: `null` means overview/all days. Loading defaults to the first available day. View changes never increment `revision`.
+- `dayFilter` is the single owner for itinerary and map selection: `null` means overview/all days. Loading defaults to the overview (`null`); tests that need day cards must click a day tab first. View changes never increment `revision`. The left column's day tabs (`editor-day-tabs`) are the only control: the map deliberately has no day tabs of its own, so picking a day dims the other days on the map without a second, divergent selector.
 - `deleteDay` preserves selection by original day ID after renumbering. If the selected day was removed, select the first remaining day; an empty trip uses `null`. Overview stays overview after mutations.
 - Cards show activity order, not a timeline. Persisted legacy time fields remain in data; the full-detail dialog has been removed and new activities use empty time strings.
 - The action disclosure lives in the activity card header at the top right and remains available even without an outgoing transit leg. Derive transit from `legForPair` so reorder/delete cannot leave stale travel information.
 - Desktop uses three panels; at 1100px and below, use section switching. `MapView.useIsDesktop` must share that breakpoint so hidden maps do not fit a zero-size canvas.
 - Both map renderers use `MapControls`. Reset fits the selected range without changing the filter. Amap overlay invalidation includes activity labels/details, not just coordinates, so editing a name also refreshes its map label.
 - Regression commands: `node --import tsx --test apps/web/tests/editorStore.test.ts`, `node apps/web/tests/editor-browser.mjs`, and `node apps/web/tests/editor-browser.mjs --amap`. Browser checks intercept API calls with local fixtures; `--amap` tests the SDK contract using a stub, not a live Amap service.
+
+### 总览布局（2026-10-04 参考图）
+
+- `.editor-overview` 使用「行程总览」区域名称，不再显示「出行手册」「每日安排」标题；目的地/天数/人数只出现在详情顶栏。页签（总览 + 第 N 天）属于 `editor-day-nav`，不由总览渲染；备选清单入口已移除。
+- 每日卡片：主题保持现有手写体，右端用 `EditorIcon forward` 箭头，路线行以 `pin` 图标起头。不要再塞回 `01` 序号徽章或底部天气来源行。
+- `DayWeather` 只输出「图标 + 天气 + 温度」一行，根元素是 `inline-flex`，所以既能放在总览卡日期行右端（`compact`），也能直接放进每日卡片的「第N天」那一行（非 `compact`）。白天/夜间风力、城市、数据来源与更新时间、未配置说明都不再展示；`detailed` 变体已删除，别再恢复。需要细节时看总览页的「旅行建议」与「注意事项」。
+- 详情页不用 `·` 做分隔符：把条目拆成 `span`，靠容器上的 `flex flex-wrap items-center gap-2` 供间距（顶栏 `editor-trip-meta` 用已有的 `[gap:8px]`）。总览卡日期行这类 `justify-between` 容器要先包一层 flex 分组，否则拆分出来的 `span` 会被拉到两端。回归：`node apps/web/tests/trip-weather-browser.mjs` 不再断言「第 1 天 · 」与「白天 20℃」。
+- 「旅行建议」「注意事项」位于所有每日行程卡上方，并排成一个 `repeat(auto-fit, minmax(200px, 1fr))` 网格，窄屏自然堆叠；纯圆点列表，每项是「粗体小标题：说明」。建议区底部细分隔线后接总站数提示与每日卡片；不要卡片背景，也不要回到「小标题 + 说明」两段式。
+- 总览不提供手动刷新天气入口：进入详情必查、30 分钟自动刷新，因此 `TripOverview` 不收 `onRefresh` / `failed`。
+- 回归：`node --import tsx apps/web/tests/trip-weather-browser.mjs`（含 390/768/1600px 溢出检查与各天气状态断言）。
 
 ### Editor export and viewport regression guard
 

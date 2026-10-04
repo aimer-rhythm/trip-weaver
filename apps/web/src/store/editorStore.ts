@@ -112,7 +112,7 @@ export const useEditorStore = create<EditorState>((set, get) => {
     },
     revision: 0,
     dayFilter: null,
-    load: (trip) => set({ trip: structuredClone(trip), routeReplans: {}, revision: 0, dayFilter: trip.days[0]?.dayIndex ?? null }),
+    load: (trip) => set({ trip: structuredClone(trip), routeReplans: {}, revision: 0, dayFilter: null }),
     clear: () => set({ trip: null, routeReplans: {}, revision: 0, dayFilter: null }),
     selectRoute: (dayId, key, leg) => {
       if (get().readOnly) return false;

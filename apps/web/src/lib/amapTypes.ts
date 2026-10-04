@@ -27,18 +27,11 @@ export interface AmapMap {
 
 type AmapMapEvent = 'zoomend' | 'moveend';
 
-export interface AmapInfoWindow {
-  setContent(content: string): void;
-  open(map: AmapMap, position: [number, number]): void;
-  close(): void;
-}
-
 /** 全局 `AMap` 命名空间里我们用到的那几个构造器 */
 export interface AmapNamespace {
   Map: new (container: HTMLElement, options: Record<string, unknown>) => AmapMap;
   Marker: new (options: Record<string, unknown>) => AmapMarker;
   Polyline: new (options: Record<string, unknown>) => AmapOverlay;
-  InfoWindow: new (options: Record<string, unknown>) => AmapInfoWindow;
   Pixel: new (x: number, y: number) => unknown;
 }
 

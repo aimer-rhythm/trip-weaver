@@ -27,6 +27,8 @@ The editor is a deliberate exception because it needs a mutable cross-component 
 
 ## Editor Draft, Revision, and Autosave
 
+详情初次 `load` 默认 `dayFilter=null` 显示「行程总览」总览；显式天数选择、对话结果定位和自动保存回执保持当前选择。`api/weather.ts` 独立查询 `GET /api/trips/:id/weather`，进入详情必查、30 分钟刷新；不写 Zustand 草稿、不触发保存、不创建版本。生成时可选 `Trip.weather` 仅用作请求期间的快照回退，匹配目的地和日期、经过新鲜度检查后才展示。`TripOverview` 提供每日路线/天气与派生建议，`DaySection` 显示昼夜天气，总览不提供手动刷新入口（进入详情必查、30 分钟自动刷新）。见 [天气完整契约](../../server/backend/trip-weather.md)。
+
 Route selection uses `routePairKey(trip, dayId, fromId)` (trip/destination/day plus both endpoint IDs, names, coordinates and coordinate systems). `selectRoute(dayId, key, leg)` rejects changed or non-adjacent pairs before incrementing revision, replaces only that pair and preserves other legs. A coordinate edit drops incident legs. `RouteOptionsForPair` remounts on key changes and guards unmounted promise continuations; options use shared runtime validation. Query responses write the draft only for explicit manual selection or a pending move-triggered recommendation.
 
 Moves create transient `routeReplans` only for newly adjacent pairs; unchanged pairs retain choices. `AutoRoutePlanner` lives above day filtering so hidden source/target days are also handled. It shares the menu cache/serial queue, waits for all modes to settle, and selects a real walk <=1000m, otherwise shortest duration, then distance, then walk/cycle/transit/drive order. Partial failures allow remaining real routes; no real result or missing coordinates yields a visible retry state. Retry creates a fresh job ID and refreshes results. Loading does not schedule recommendations.

@@ -30,7 +30,7 @@ try {
    setFitView(overlays){window.amapCalls.push(['fit',overlays.length]);}
  }
  class Overlay {constructor(options){this.options=options;}setMap(){}on(){}}
- window.AMap={Map:TestMap,Marker:Overlay,Polyline:Overlay,Pixel:class{},InfoWindow:class{setContent(){}open(){}close(){}}};
+ window.AMap={Map:TestMap,Marker:Overlay,Polyline:Overlay,Pixel:class{}};
  `}));
  await page.route('**/fixture-photo-*.jpg' ,async route=>{
   if(broken) return route.fulfill({status:404,body:''});
@@ -53,10 +53,11 @@ try {
   return route.fulfill({json: apiSuccess(data) });
  });
  await page.goto('http://127.0.0.1:5173/trips/editor-ui-test');
+ const itinerary=page.getByRole('group',{name:'行程天数'});
+ await itinerary.getByRole('button',{name:'第1天',exact:true}).click();
  await page.locator('.activity-card').first().waitFor({timeout:10000}).catch(async error => { console.log(await page.locator('body').innerText()); await page.screenshot({path:path.join(out,'failure.png')}); throw error; });
  await page.evaluate(()=>document.fonts.ready);
  await page.locator('.activity-card img').first().evaluate(img=>img.decode());
- const itinerary=page.getByRole('group',{name:'行程天数'}); const map=page.getByRole('group',{name:'地图天数'});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'document must not scroll vertically');
  assert.equal(await itinerary.getByRole('button',{name:'第1天',exact:true}).getAttribute('aria-pressed'),'true');
  assert.ok(await page.locator('.activity-card').first().evaluate(card=>{const c=card.getBoundingClientRect(), m=card.querySelector('summary').getBoundingClientRect(); return m.right<=c.right && m.top<c.top+60 && m.left>c.left+c.width/2;}),'more menu must be at card top right');
@@ -94,12 +95,13 @@ try {
   await page.screenshot({path:path.join(out,`${name}.png`),fullPage:true});
  }
  await page.setViewportSize({width:1672,height:941});
+ assert.equal(await page.getByRole('group',{name:'地图天数'}).count(),0,'地图上方不再有天数页签');
  await itinerary.getByRole('button',{name:'第2天',exact:true}).click();
- assert.equal(await map.getByRole('button',{name:'D2',exact:true}).getAttribute('aria-pressed'),'true');
- await map.getByRole('button',{name:'D3',exact:true}).click();
+ assert.equal(await itinerary.getByRole('button',{name:'第2天',exact:true}).getAttribute('aria-pressed'),'true');
+ await itinerary.getByRole('button',{name:'第3天',exact:true}).click();
  assert.equal(await itinerary.getByRole('button',{name:'第3天',exact:true}).getAttribute('aria-pressed'),'true');
- await map.getByRole('button',{name:'全部',exact:true}).click();
- await page.getByRole('region',{name:'全程概览'}).waitFor();
+ await itinerary.getByRole('button',{name:'总览',exact:true}).click();
+ await page.getByRole('region',{name:'行程总览'}).waitFor();
  assert.equal(saves,0,'filter changes must not autosave');
  await itinerary.getByRole('button',{name:'第1天',exact:true}).click();
  await page.getByLabel('当天更多操作').click();
@@ -129,12 +131,33 @@ try {
  await page.getByLabel('名称',{exact:true}).fill('休息一下');
  await page.getByRole('button',{name:'保存',exact:true}).click();
  assert.equal(await page.getByRole('article',{name:'休息一下',exact:true}).count(),1);
- await page.getByRole('button',{name:'备选清单',exact:true}).click();
- await page.locator('dialog[open]').waitFor();
- await page.getByRole('button',{name:'关闭',exact:true}).click();
  await page.getByRole('button',{name:'放大地图',exact:true}).click();
  await page.getByRole('button',{name:'默认视图',exact:true}).click();
  if(amapMode) {const calls=await page.evaluate(()=>window.amapCalls); assert.ok(calls.some(c=>c[0]==='zoom')); assert.ok(calls.some(c=>c[0]==='fit' && c[1]>0)); assert.ok(calls.some(c=>c[0]==='create' && c[1].includes('road')));}
+ if(!amapMode) {
+  // 点地图地点：中间行程栏切到那天并滚到对应景点，不再弹气泡
+  await itinerary.getByRole('button',{name:'总览',exact:true}).click();
+  await page.getByRole('region',{name:'行程总览'}).waitFor();
+  const marker=page.locator('.map-marker .marker-pin');
+  // setFitView 有 60ms 延迟，等有 pin 真的落在画布内再点
+  await page.waitForFunction(()=>{
+    const c=document.querySelector('.editor-map-canvas')?.getBoundingClientRect();
+    return !!c&&[...document.querySelectorAll('.map-marker .marker-pin')].some(p=>{const r=p.getBoundingClientRect();return r.width>0&&r.left>=c.left&&r.right<=c.right&&r.top>=c.top&&r.bottom<=c.bottom;});
+  });
+  const picked=await page.evaluate(()=>{
+    const c=document.querySelector('.editor-map-canvas').getBoundingClientRect();
+    const pins=[...document.querySelectorAll('.map-marker .marker-pin')];
+    const i=pins.findIndex(p=>{const r=p.getBoundingClientRect();return r.width>0&&r.left>=c.left&&r.right<=c.right&&r.top>=c.top&&r.bottom<=c.bottom;});
+    return {i,label:pins[i].parentElement.querySelector('.map-label').textContent};
+  });
+  await marker.nth(picked.i).click();
+  assert.equal(await page.locator('.leaflet-popup').count(),0,'点地点不再弹气泡');
+  assert.equal(await itinerary.getByRole('button',{name:'总览',exact:true}).getAttribute('aria-pressed'),'false');
+  const target=page.getByRole('article',{name:picked.label,exact:true});
+  await target.waitFor();
+  assert.ok(await target.evaluate(el=>{const box=el.parentElement.parentElement.getBoundingClientRect(),r=el.getBoundingClientRect();return r.top>=box.top-1&&r.bottom<=box.bottom+1;}),'对应景点滚进视野');
+  await itinerary.getByRole('button',{name:'第2天',exact:true}).click();
+ }
  failSave=true;
  await page.getByLabel('景山公园更多操作').click();
  await page.getByRole('button',{name:'删除活动',exact:true}).click();
@@ -154,7 +177,8 @@ try {
  noChat=true; broken=true;
  await page.setViewportSize({width:1672,height:941});
  await page.reload();
- await page.locator('.editor-body.without-chat').waitFor();
+ await page.getByRole('button',{name:'开启行程对话',exact:true}).waitFor();
+ await itinerary.getByRole('button',{name:'第1天',exact:true}).click();
  await page.waitForFunction(()=>document.querySelectorAll('.activity-card.has-cover').length===0);
  await page.screenshot({path:path.join(out,'no-chat-broken-photos.png')});
  assert.equal(await page.locator('.activity-entry').count(),3);
@@ -162,6 +186,6 @@ try {
  assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'long export must not cause page scrolling');
  for(const width of [390,1280]) {await page.setViewportSize({width,height:844}); assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1 && document.documentElement.scrollWidth<=innerWidth+1),'long export: viewport stays bounded');}
  assert.deepEqual(errors,[]);
- await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',saves,errors,tilesLoaded,checks:['JSON/PNG/print export','long itinerary without document scrolling','four viewports','two-way filtering','add/delete day','details','edit and add activity','reorder','cross-day move','stale transit hiding','candidates','map controls','save failure/retry','mobile panels','missing conversation and broken images']},null,2));
+ await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',saves,errors,tilesLoaded,checks:['JSON/PNG/print export','long itinerary without document scrolling','four viewports','day tabs drive the map filter (no map day tabs)','add/delete day','details','edit and add activity','reorder','cross-day move','stale transit hiding','map marker jumps to the activity','map controls','save failure/retry','mobile panels','missing conversation and broken images']},null,2));
  console.log('Editor browser checks passed. Screenshots:',out);
 } finally {await browser.close();}

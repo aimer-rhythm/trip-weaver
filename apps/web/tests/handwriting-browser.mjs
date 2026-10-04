@@ -63,6 +63,7 @@ try {
     else assert.ok(result.fonts.every(font => font.familyName !== 'Youran-Handwriting'), label);
   }
   await page.goto(`${base}/trips/${trip.id}`);
+  await page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '第1天', exact: true }).click();
   await page.locator('.day-head h2').waitFor().catch(async error => {
     console.log(JSON.stringify({ errors, body: await page.locator('body').innerText() }));
     await page.screenshot({ path: path.join(out, 'failure.png') });
@@ -72,7 +73,7 @@ try {
   await check('.day-head h2', true, '北京旧标题全部使用悠然小楷');
   await page.screenshot({ path: path.join(out, 'editor-desktop.png') });
   await page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '总览', exact: true }).click();
-  await check('.editor-overview-day strong', true, '全程概览标题');
+  await check('.editor-overview-day h4', true, '全程概览标题');
   await page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '第1天', exact: true }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await check('.day-head h2', true, '手机标题');
@@ -80,6 +81,7 @@ try {
   await page.screenshot({ path: path.join(out, 'editor-mobile.png') });
   trip.days[0].title = '古罍听风';
   await page.reload();
+  await page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '第1天', exact: true }).click();
   await page.locator('.day-head h2').waitFor();
   await check('.day-head h2', false, '未收录字整段回退');
   assert.equal(await page.locator('.day-head h2').textContent(), '古罍听风');

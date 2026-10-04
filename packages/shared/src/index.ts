@@ -16,3 +16,4 @@ export * from './legs';
 export * from './openHours';
 export * from './sample';
 export * from './utils';
+export * from './weather';

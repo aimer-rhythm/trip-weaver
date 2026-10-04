@@ -9,6 +9,8 @@ import { createTrip, deleteTrip, getTrip, listTripsPage, listTripVersions, renam
 import { findConversationForTrip } from '../services/conversationService';
 import { TripOperationRequestSchema } from '@tripweaver/shared';
 import { ensureTripConversation, restoreTrip } from '../services/tripHistoryService';
+import { TripWeatherSchema } from '@tripweaver/shared';
+import { getTripWeather } from '../services/tripWeatherService';
 
 const IdParams = Type.Object({ id: Type.String() });
 
@@ -23,6 +25,15 @@ const TripListQuerySchema = Type.Object({
 
 export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.addHook('preHandler', requireAuth);
+
+  app.get('/:id/weather', {
+    schema: { params: IdParams, response: { 200: TripWeatherSchema, 404: Type.Object({ error: Type.String() }) } },
+    config: { rateLimit: { max: 20, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    const trip = await getTrip(request.user!.id, request.params.id);
+    if (!trip) return reply.code(404).send({ error: '行程不存在' });
+    return reply.header('Cache-Control', 'no-store').send(await getTripWeather(trip));
+  });
 
   app.get('/', { schema: { querystring: TripListQuerySchema } }, async (request) => listTripsPage(request.user!.id, {
     offset: request.query.offset ?? 0,

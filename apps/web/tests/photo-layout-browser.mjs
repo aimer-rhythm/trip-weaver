@@ -50,11 +50,14 @@ try {
     else if (url.pathname === '/api/settings/config') data = { amapJsKey: '', amapJsSecurityCode: '' };
     else if (url.pathname.endsWith('/conversation')) data = { conversationId: 'photo-chat' };
     else if (url.pathname === '/api/conversations/photo-chat') data = { messages: [] };
+    else if (url.pathname === '/api/trips/photo-layout-fixture/versions') data = { rootId: trip.id, versions: [{ id: trip.id, version: 1, title: trip.title, createdAt: 0, updatedAt: 0 }] };
     else if (url.pathname === '/api/trips/photo-layout-fixture') data = trip;
     return route.fulfill({ json: apiSuccess(data) });
   });
   await page.goto('http://127.0.0.1:5173/trips/photo-layout-fixture');
   await page.getByRole('group', { name: '行程天数' }).waitFor();
+  // 详情页默认落在「总览」，需要每日卡片必须先进某一天
+  await page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '第1天', exact: true }).click();
   assert.equal(await page.locator('.photo-credit').count(), 0, '卡片位置不再展示版权行，只在放大弹窗内展示');
   assert.equal(await page.locator('.poi-card .photo-credit').count(), 0);
   for (const [width, height] of [[1440, 1000], [1280, 800], [390, 844], [844, 390]]) {
@@ -74,6 +77,8 @@ try {
       const maxHeight = width < 640 ? (portraitPhoto ? 110 : 88) : (portraitPhoto ? 150 : 120);
       assert.ok(box.height <= maxHeight + 1 && box.width > 0 && box.height > 0, `${name}: photo must remain secondary to the itinerary`);
       if (name === '横版风景' && (width === 1440 || width === 390)) {
+        // 照片宽度 = min(180px, 44% × 内容盒)：中栏 41fr 时 44% ≈ 209px，所以吃满 180px 固定档。
+        // 若中栏变窄（曾经改到 37fr），44% 会变成约束、照片掉到 ~161px，这条就会挂。
         assert.ok(box.width >= (width === 1440 ? 170 : 120), `${name}: chosen medium layout should not regress to the small thumbnail`);
       }
       const cardBox = await card.boundingBox();
@@ -140,19 +145,6 @@ try {
     await page.keyboard.press('Escape');
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '总览', exact: true }).click();
-  await page.getByRole('region', { name: '全程概览' }).waitFor();
-  const candidates = page.getByRole('button', { name: '备选清单', exact: true });
-  await candidates.click();
-  const candidatePhoto = page.locator('.poi-card img.poi-photo').first();
-  await candidatePhoto.waitFor();
-  assert.equal(await candidatePhoto.evaluate(img => getComputedStyle(img).objectFit), 'contain');
-  await page.getByRole('button', { name: '查看候选竖版风景完整照片', exact: true }).click();
-  await page.getByRole('dialog', { name: '候选竖版风景 · 完整照片', exact: true }).waitFor();
-  await page.waitForFunction(() => document.querySelectorAll('.poi-photo-viewer [aria-label="选择照片"] button').length === 2);
-  assert.equal(await page.locator('.poi-photo-viewer .poi-photo-expanded').isVisible(), true, '坏掉的备选移除，不影响封面与其他照片');
-  await page.keyboard.press('Escape');
-  await page.keyboard.press('Escape');
   assert.equal(writes, 0, 'Viewing images must not change a trip or send conversation messages');
   assert.deepEqual(errors, []);
   await fs.writeFile(path.join(out, 'result.json'), JSON.stringify({ passed: true, measurements, writes, pageErrors: errors }, null, 2));

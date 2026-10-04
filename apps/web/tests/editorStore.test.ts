@@ -89,7 +89,7 @@ test('route selection updates one pair and map, rejects stale endpoints and coor
 test('day navigation never increments revision, deletion preserves selected day identity', () => {
   const trip = makeSampleTrip();
   useEditorStore.getState().load(trip);
-  assert.equal(useEditorStore.getState().dayFilter, 1);
+  assert.equal(useEditorStore.getState().dayFilter, null);
   useEditorStore.getState().setDayFilter(3);
   assert.equal(useEditorStore.getState().revision, 0);
   useEditorStore.getState().deleteDay(trip.days[0]!.id);

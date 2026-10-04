@@ -8,6 +8,7 @@ import fastifyStatic from '@fastify/static';
 import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import { env } from './env';
 import { setAmapLogger } from './integrations/amap/request';
+import { setQWeatherLogger } from './integrations/qweather/client';
 import './lib/proxy';                        // 需在任何出站 fetch 之前接管代理
 import './db/client';                       // 触发建库与迁移
 import { installApiResponses } from './http/apiResponse';
@@ -27,6 +28,7 @@ async function main() {
     logger: { level: env.isProd ? 'info' : 'debug' },
   }).withTypeProvider<TypeBoxTypeProvider>();
   setAmapLogger(app.log);
+  setQWeatherLogger(app.log);
 
   await app.register(cookie);
   await app.register(rateLimit, { global: false });

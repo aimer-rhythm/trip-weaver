@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { readAmapServiceBudgets } from './integrations/amap/services';
+import { looksLikeJwt, type QWeatherAuth } from './integrations/qweather/auth';
 
 export const DEFAULT_SEARCH_API_BASE_URL = 'https://api.langsearch.com';
 
@@ -61,6 +62,30 @@ const amapKey = str('AMAP_KEY');
 const amapJsKey = str('AMAP_JS_KEY');
 const amapJsSecurityCode = str('AMAP_JS_SECURITY_CODE');
 const tiandituKey = str('TIANDITU_KEY');
+// 和风天气（10-04 起取代高德天气）：API Host 是控制台分配的**专属域名**，与 API Key 一起
+// 构成身份认证（即使 Key 泄露，不知道 Host 也无法请求），因此两者缺一即视为未配置。
+// 公共域名 api/devapi/geoapi.qweather.com 自 2026 年起逐步停服，不要再回落它们。
+// API Key 通过 X-QW-Api-Key 请求头传递；和风自 2027-01-01 起限制 API KEY 的每日请求数，
+// 届时需切换为 JWT（Ed25519）认证。
+const qweatherApiHost = str('QWEATHER_API_HOST').replace(/^https?:\/\//, '').replace(/\/+$/, '');
+const qweatherKey = str('QWEATHER_KEY');
+const qweatherJwt = {
+  keyId: str('QWEATHER_JWT_KEY_ID'),                    // 凭据 ID（kid）：控制台-项目管理-凭据
+  developerId: str('QWEATHER_JWT_DEVELOPER_ID'),        // 开发者 ID（iss）：控制台-设置，Q 开头 10 位
+  projectId: str('QWEATHER_JWT_PROJECT_ID'),            // 项目 ID（sub）：控制台-项目管理
+  privateKey: str('QWEATHER_JWT_PRIVATE_KEY'),          // Ed25519 私钥 PEM，换行可写 \n
+};
+const qweatherJwtFields = Object.values(qweatherJwt).filter(Boolean).length;
+const qweatherJwtReady = qweatherJwtFields === 4;
+if (!qweatherApiHost && !qweatherKey && !qweatherJwtFields) {
+  console.warn('[env] QWEATHER_API_HOST 与和风凭据未配置：行程天气不可用（详情页其它功能不受影响）');
+} else if (!qweatherApiHost) {
+  console.warn('[env] QWEATHER_API_HOST 未配置：行程天气不可用（它也是身份认证的一部分，不能留空）');
+} else if (qweatherJwtFields > 0 && !qweatherJwtReady) {
+  console.warn('[env] QWEATHER_JWT_KEY_ID / DEVELOPER_ID / PROJECT_ID / PRIVATE_KEY 必须四项同时配置：JWT 认证不可用');
+} else if (!qweatherJwtReady && !qweatherKey) {
+  console.warn('[env] 和风凭据缺失：请配置 QWEATHER_KEY（API Key）或四项 JWT 凭据');
+}
 if (!amapKey) {
   console.warn('[env] AMAP_KEY 未配置：路线规划与地理编码降级为天地图（天地图 Key 也缺则整链降级）');
 }
@@ -115,6 +140,10 @@ export const env = {
   amapJsKey,                                            // 高德「Web端(JS API)」Key：前端地图渲染，与 Web 服务 Key 不通用
   amapJsSecurityCode,                                   // JS API 2.0 必需的安全密钥，与 amapJsKey 一同下发
   amapServiceBudgets: readAmapServiceBudgets(process.env),
+  qweatherApiHost,                                     // 和风天气专属 API Host（控制台-设置）
+  qweatherKey,                                         // 和风 API Key（或已签好的静态 JWT，会自动识别）
+  qweatherJwtReady,                                    // 四项 JWT 凭据齐备时优先用私钥现签
+  qweatherDailyBudget: int('QWEATHER_DAILY_BUDGET', 200),   // 全站和风调用日额度（应用上限，非官方套餐额度）
   tiandituKey,                                          // 天地图 Web 服务 Key（接口参数名 tk）
   tiandituDailyBudget: int('TIANDITU_DAILY_BUDGET', 150),   // 全站天地图调用日额度（与高德分别计数）
   searchApiKey: str('SEARCH_API_KEY'),                  // Web 搜索 Key（默认 LangSearch）
@@ -141,4 +170,12 @@ export function hasEmbedding(): boolean {
 
 export function hasGithubOauth(): boolean {
   return Boolean(env.github.clientId && env.github.clientSecret && env.appBaseUrl);
+}
+
+/** 和风凭据双轨：四项 JWT（私钥现签，推荐）优先 → QWEATHER_KEY（API Key，或自动识别的静态 JWT）→ null。
+ * JWT 的 token 最长只有 24 小时，静态串过期就会 401，因此不把它当长期方案。 */
+export function qweatherCredential(): QWeatherAuth | null {
+  if (env.qweatherJwtReady) return { mode: 'jwt', ...qweatherJwt };
+  if (env.qweatherKey) return looksLikeJwt(env.qweatherKey) ? { mode: 'token', token: env.qweatherKey } : { mode: 'api-key', apiKey: env.qweatherKey };
+  return null;
 }

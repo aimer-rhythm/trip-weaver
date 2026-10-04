@@ -12,7 +12,7 @@
 
 const HTML_ESCAPES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
-/** 活动名 / 简介来自模型输出，拼进 HTML 前必须转义（marker 与 InfoWindow 都走 innerHTML） */
+/** 活动名 / 简介来自模型输出，拼进 HTML 前必须转义（marker 走 innerHTML） */
 export function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (c) => HTML_ESCAPES[c]!);
 }

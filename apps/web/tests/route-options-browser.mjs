@@ -32,6 +32,8 @@ try {
     if (pathname === '/api/auth/me') data = { id: 'test', email: 'test@example.test' };
     else if (pathname === '/api/usage') data = { remaining: 5, dailyLimit: 5, usedToday: 0 };
     else if (pathname.endsWith('/conversation')) data = { conversationId: null };
+    else if (pathname.endsWith('/versions')) data = { versions: [{ id: trip.id, version: 1 }] };
+    else if (pathname.endsWith('/weather')) data = { destination: trip.destination, checkedAt: Date.now(), status: 'not_needed' };
     else if (pathname === '/api/settings/config') data = { amapJsKey: '', amapJsSecurityCode: '' };
     else if (pathname.endsWith('/route-options')) {
       calls++;
@@ -54,6 +56,8 @@ try {
   });
   hold = new Promise((r) => { release = r; });
   await page.goto(`${base}/trips/route-test`);
+  const selectFirstDay = () => page.getByRole('group', { name: '行程天数' }).getByRole('button', { name: '第1天', exact: true }).click();
+  await selectFirstDay();
   await until(() => calls === 1);
   assert.equal(await page.locator('details[open]').count(), 0, 'prefetch starts without opening menu');
   const summary = page.getByLabel('切换交通方式').first();
@@ -84,6 +88,7 @@ try {
   assert.equal(await page.getByRole('button', { name: /^(重试|重新查询)$/ }).count(), 0, 'successful and unavailable results have no retry button');
   fail = true;
   await page.reload();
+  await selectFirstDay();
   await page.getByLabel('切换交通方式').first().click();
   await page.getByRole('alert').filter({ hasText: '暂不可用' }).waitFor();
   hold = new Promise((r) => { release = r; });
@@ -100,6 +105,7 @@ try {
   // A response arriving after reorder must not become selectable on the changed pair.
   fail = true;
   await page.reload();
+  await selectFirstDay();
   await page.getByLabel('切换交通方式').first().click();
   await page.getByRole('alert').filter({ hasText: '暂不可用' }).waitFor();
   hold = new Promise((r) => { release = r; });
@@ -124,13 +130,14 @@ try {
   await page.waitForFunction(() => [...document.querySelectorAll('details[open] button[aria-pressed="true"]')].some((button) => getComputedStyle(button).color === 'rgb(255, 255, 255)'));
   assert.equal(await selected.evaluate((el) => getComputedStyle(el).color), 'rgb(255, 255, 255)', 'selected text keeps contrast over editor parent styles');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
-  await fs.mkdir('.trellis/tasks/archive/2026-10/09-29-ui-consistency/research', { recursive: true });
-  await page.screenshot({ path: '.trellis/tasks/archive/2026-10/09-29-ui-consistency/research/mobile-options.png' });
+  await fs.mkdir('verify-shots/route-options', { recursive: true });
+  await page.screenshot({ path: 'verify-shots/route-options/mobile-options.png' });
   assert.deepEqual(errors, []);
   await selected.press('Escape');
   assert.equal(await page.locator('details[open]').count(), 0);
   await page.waitForTimeout(1000);
   await page.reload();
+  await selectFirstDay();
   await page.getByText('驾车约8 分钟', { exact: false }).waitFor();
   fail = true;
   await page.getByLabel('故宫更多操作').click();
