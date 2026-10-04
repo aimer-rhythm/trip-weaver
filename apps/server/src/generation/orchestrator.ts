@@ -10,6 +10,7 @@ import {
 } from '@tripweaver/shared';
 import type { FastifyBaseLogger } from 'fastify';
 import { db } from '../db/client';
+import { getTripWeather } from '../services/tripWeatherService';
 import { generations } from '../db/schema';
 import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
@@ -472,12 +473,14 @@ export async function runGeneration(
     ];
     // 修订（PR5）：targetTripId 存在时把新行程挂到同一版本链的下一版；否则就是全新行程
     const revisionOf = job.provenance.kind === 'revision' ? job.provenance.targetTripId : undefined;
+    const completedDraft = draft.toTrip(reviewNotes, { overview: research.pool, dataSources });
+    completedDraft.weather = await getTripWeather(completedDraft);
     assertAlive(signal);
     const trip = await db.transaction(async (tx) => {
       assertAlive(signal);
       const saved = await createTrip(
         job.userId,
-        draft.toTrip(reviewNotes, { overview: research.pool, dataSources }),
+        completedDraft,
         revisionOf,
         tx,
       );
