@@ -9,7 +9,7 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 960 } });
 page.setDefaultTimeout(15_000);
 const errors = [];
 page.on('pageerror', (error) => errors.push(error.message));
-const defaults = () => ({ preferences: [], transportMode: 'transit', extraNotes: '' });
+const defaults = () => ({ preferences: [], transportMode: 'transit', pace: null, partySize: 2, extraNotes: '' });
 const saved = { a: defaults(), b: defaults() };
 let account = 'a';
 let failSave = false;
@@ -107,6 +107,10 @@ try {
   assert.deepEqual(saved.a, defaults());
   await mkdir('data/travel-preferences-review', { recursive: true });
   await page.screenshot({ path: 'data/travel-preferences-review/home-desktop.png' });
+  // 新账号还没选过节奏，也不要有预选的同行人数
+  await page.getByRole('button', { name: /节奏与同行/ }).click();
+  assert.equal(await page.getByRole('button', { name: /少走路/ }).getAttribute('aria-pressed'), 'false', '新账号不预选节奏');
+  await page.getByText('2 人同行', { exact: true }).waitFor();
   await page.reload();
   await openMore();
   assert.equal(await page.getByLabel('备注').inputValue(), '', '未生成过的首页改动不跨会话保留');
@@ -132,6 +136,9 @@ try {
   const submittedNotes = '带小孩一起，避开台阶，需要午休';
   await page.getByLabel('备注').fill(submittedNotes);
   await page.getByRole('button', { name: '美食', exact: true }).click();
+  // 节奏与同行人数也进账号记忆：节奏已由 pickTrip 选中，这里再加一人
+  await page.getByRole('button', { name: /节奏与同行/ }).click();
+  await page.getByRole('button', { name: '增加人数' }).click();
   generationOk = true;
   const putAfterGeneration = page.waitForResponse((res) =>
     res.request().method() === 'PUT' && new URL(res.url()).pathname === '/api/settings/travel-preferences');
@@ -141,12 +148,16 @@ try {
   assert.equal(generation.extraNotes, submittedNotes);
   assert.equal(brief.extraNotes, submittedNotes);
   assert.ok(briefUrl.includes('snapshot=1'), '首页留档 Brief 走 snapshot，不在对话里产生「已更新…」消息');
-  await waitSaved({ extraNotes: submittedNotes, preferences: ['美食'], transportMode: 'transit' });
+  await waitSaved({ extraNotes: submittedNotes, preferences: ['美食'], transportMode: 'transit', pace: 'relaxed', partySize: 3 });
   // 生成成功直接跳详情页，不停留进度面板；回首页继续后面的用例
   await page.goto(base);
   await openMore();
   assert.equal(await page.getByLabel('备注').inputValue(), submittedNotes);
   assert.equal(await page.getByRole('button', { name: '美食', exact: true }).getAttribute('aria-pressed'), 'true');
+  // 重开首页：节奏与同行人数直接从账号记忆里带出来，不用重选
+  await page.getByRole('button', { name: /节奏与同行/ }).click();
+  assert.equal(await page.getByRole('button', { name: /少走路/ }).getAttribute('aria-pressed'), 'true', '节奏应随账号记忆预选');
+  await page.getByText('3 人同行', { exact: true }).waitFor();
 
   // 个人资料：即时保存，且与首页共用同一份值
   await page.getByRole('button', { name: '个人资料', exact: true }).click();
@@ -255,7 +266,7 @@ try {
   assert.equal(saved.a.extraNotes, 'A 已发送的备注');
   assert.equal(saved.b.extraNotes, 'B 独立的备注');
   assert.deepEqual(errors, []);
-  console.log('PASS 首页选择仅在生成成功后记忆、生成失败与刷新不写账号、个人资料即时保存与串行写入、失败重试、清空、账号隔离、会话切换队列隔离、移动端边界与 Escape');
+  console.log('PASS 首页选择仅在生成成功后记忆（含节奏与同行人数）、生成失败与刷新不写账号、个人资料即时保存与串行写入、失败重试、清空、账号隔离、会话切换队列隔离、移动端边界与 Escape');
 } catch (error) {
   console.error('Page errors:', errors);
   console.error('Visible page:', await page.locator('body').innerText());

@@ -35,7 +35,7 @@ await page.route(`${base}/api/**`, async route => {
   const path = new URL(route.request().url()).pathname;
   const ok = data => route.fulfill({ json: apiSuccess(data) });
   if (path === '/api/auth/me') return ok({ id: 'weather-user', email: 'weather@example.test' });
-  if (path === '/api/settings/travel-preferences') return ok({ preferences: [], transportMode: 'transit', extraNotes: '' });
+  if (path === '/api/settings/travel-preferences') return ok({ preferences: [], transportMode: 'transit', pace: null, partySize: 2, extraNotes: '' });
   if (path === '/api/settings/config') return ok({ amapJsKey: '', amapJsSecurityCode: '' });
   if (path === '/api/usage') return ok({ remaining: 3, dailyLimit: 5 });
   if (path.endsWith('/conversation')) return ok({ conversationId: 'weather-chat' });

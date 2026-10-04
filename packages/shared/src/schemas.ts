@@ -186,6 +186,8 @@ export const GenerateFormSchema = Type.Object({
 export const TravelPreferencesSchema = Type.Object({
   preferences: Type.Array(StringEnum(PREFERENCE_OPTIONS), { maxItems: 7, uniqueItems: true }),
   transportMode: StringEnum(TRANSPORT_MODES),
+  pace: Type.Union([StringEnum(PACE_OPTIONS), Type.Null()], { default: null }),  // 最近一次选的旅行节奏；null = 还没选过
+  partySize: Type.Integer({ minimum: 1, maximum: 20, default: 2 }),             // 最近一次的同行人数
   extraNotes: Type.String({ maxLength: 200 }),
 }, { additionalProperties: false });
 

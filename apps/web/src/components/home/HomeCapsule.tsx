@@ -10,6 +10,7 @@ import {
   PACE_OPTIONS,
   PREFERENCE_OPTIONS,
   type TransportMode,
+  type TravelPreferences,
   type TripPace,
 } from '@tripweaver/shared';
 import { RangeCalendar } from '../RangeCalendar';
@@ -144,10 +145,13 @@ function PanelTail({ align = 'left' }: { align?: 'left' | 'preferences' }) {
 export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsuleProps) {
   const [startDate, setStartDate] = useState(() => isoDateAfter(1));
   const [endDate, setEndDate] = useState(() => isoDateAfter(3));
-  const [pace, setPace] = useState<TripPace | null>(null);
-  const [partySize, setPartySize] = useState(2);
   const savedPreferences = useTravelPreferencesDraft();
-  const { preferences = [], transportMode = 'transit', extraNotes = '' } = savedPreferences.value ?? {};
+  // 节奏与同行人数跟偏好共用同一份账号记忆：初值直接读账号快照，选择只写本地草稿，
+  // 生成成功后才由 NewTripPage 一起提交（见 TravelPreferencesProvider）。
+  const saved = savedPreferences.value;
+  const pace = saved?.pace ?? null;
+  const partySize = saved?.partySize ?? 2;
+  const { preferences = [], transportMode = 'transit', extraNotes = '' } = saved ?? {};
   const [activePanel, setActivePanel] = useState<PanelKey | null>(null);
   const [calendarMonths, setCalendarMonths] = useState(() => window.matchMedia('(max-width: 640px)').matches ? 1 : 2);
   const deckRef = useRef<HTMLDivElement>(null);
@@ -172,6 +176,12 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
   }, []);
 
   const togglePanel = (key: PanelKey) => setActivePanel((cur) => (cur === key ? null : key));
+
+  /** 只改账号草稿，不写库；偏好还没加载完时不允许改（按钮同时置灰，避免点了没反应）。 */
+  const changeDraft = (patch: Partial<Pick<TravelPreferences, 'pace' | 'partySize'>>) => {
+    if (!saved) return;
+    savedPreferences.change({ ...saved, ...patch });
+  };
 
   const paceSummary = `${partySize} 人 · ${pace ? PACE_LABELS[pace] : '选择节奏'}`;
   const moreSummary = [
@@ -308,8 +318,9 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                   <Button variant="plain"
                     key={option}
                     type="button"
+                    disabled={!saved}
                     aria-pressed={pace === option}
-                    onClick={() => setPace(option)}
+                    onClick={() => changeDraft({ pace: option })}
                     className={`flex flex-col gap-[calc(4*var(--ui))] rounded-[calc(12*var(--ui))] border px-[calc(12*var(--ui))] py-[calc(12*var(--ui))] text-left transition-colors ${pace === option ? "border-brand bg-brand/10 ring-1 ring-brand" : "border-hairline-strong bg-white/60 hover:border-brand"}`}
                   >
                     <span className="text-[length:calc(15*var(--ui))] font-semibold text-ink-strong">
@@ -324,8 +335,8 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                 <Button variant="plain"
                   type="button"
                   aria-label="减少人数"
-                  disabled={partySize <= 1}
-                  onClick={() => setPartySize((n) => Math.max(1, n - 1))}
+                  disabled={!saved || partySize <= 1}
+                  onClick={() => changeDraft({ partySize: Math.max(1, partySize - 1) })}
                   className="grid h-[calc(32*var(--ui))] w-[calc(32*var(--ui))] place-items-center rounded-[calc(10*var(--ui))] border border-hairline-strong bg-white/70 text-ink-strong disabled:opacity-30"
                 >
                   −
@@ -336,8 +347,8 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
                 <Button variant="plain"
                   type="button"
                   aria-label="增加人数"
-                  disabled={partySize >= 20}
-                  onClick={() => setPartySize((n) => Math.min(20, n + 1))}
+                  disabled={!saved || partySize >= 20}
+                  onClick={() => changeDraft({ partySize: Math.min(20, partySize + 1) })}
                   className="grid h-[calc(32*var(--ui))] w-[calc(32*var(--ui))] place-items-center rounded-[calc(10*var(--ui))] border border-hairline-strong bg-white/70 text-ink-strong disabled:opacity-30"
                 >
                   ＋

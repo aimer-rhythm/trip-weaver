@@ -80,7 +80,7 @@ export function TravelPreferencesFields({ allowClear = false, autoSave = false }
       {error && <Button variant="ghost" onClick={retry}>重试</Button>}
     </div>}
     {allowClear && value && <Button variant="ghost" className="self-start" onClick={() => update({
-      preferences: [], transportMode: 'transit', extraNotes: '',
-    })}>清空偏好与备注，恢复公共交通</Button>}
+      ...value, preferences: [], transportMode: 'transit', pace: null, partySize: 2, extraNotes: '',
+    })}>清空偏好、节奏与备注，恢复公共交通</Button>}
   </div>;
 }
