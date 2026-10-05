@@ -1242,3 +1242,39 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - 本任务无后续待办；其他任务修改保留，未推送或自动接纳基线。
+
+
+## Session 31: 修复选图额度饥饿并补齐全城中英别名
+
+**Date**: 2026-10-05
+**Task**: 修复选图额度饥饿并补齐全城中英别名
+**Branch**: `master`
+
+### Summary
+
+定位济南行程零图片的两个独立根因：选图队列额度耗尽时把新任务与重试一起饿死（且无日志），以及图库搜索别名只覆盖北京/杭州导致纯中文查询命中他城同类景观。修复额度口径为只计首次启动、饱和时只放行重试并输出一次 [photo-review] warn；别名表扩到 11 个生效城市 119 条中英地标名。photoReviewQueue 8/8、stockPhotos 12/12、typecheck 全绿，两个任务均已归档。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `b5fbec1` | (see git log) |
+| `b485d51` | (see git log) |
+| `918d36a` | (see git log) |
+| `fbdc606` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

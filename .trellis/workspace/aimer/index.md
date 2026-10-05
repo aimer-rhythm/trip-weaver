@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 30
+- **Total Sessions**: 31
 - **Last Active**: 2026-10-05
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1241 | Active |
+| `journal-1.md` | ~1280 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 31 | 2026-10-05 | 修复选图额度饥饿并补齐全城中英别名 | `b5fbec1`, `b485d51`, `918d36a`, `fbdc606` | `master` |
 | 30 | 2026-10-05 | 评估体系验收与营业数据修复归档 | `ec51ded`, `7684cb9` | `master` |
 | 29 | 2026-10-03 | 对话建议与输入焦点验收归档 | `d7f8c22` | `master` |
 | 28 | 2026-10-02 | 行程生成与上游景点提纯优化验收归档 | `a4596ce` | `master` |
