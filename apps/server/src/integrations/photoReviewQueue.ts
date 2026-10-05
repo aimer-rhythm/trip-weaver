@@ -15,6 +15,8 @@ const JobSchema = Type.Object({
   state: Type.Union([Type.Literal('queued'), Type.Literal('running'), Type.Literal('done'), Type.Literal('failed')]),
   attempts: Type.Integer({ minimum: 0, maximum: 3 }), nextAt: Type.Number(), updatedAt: Type.Number(),
   lastStartedAt: Type.Number(),
+  // 额度计数只认首次启动时刻，写一次不再变；缺失时回退 lastStartedAt（旧文件无此字段）。
+  countedAt: Type.Optional(Type.Number()),
   priority: Type.Optional(Type.Union([Type.Literal('background'), Type.Literal('trip')])),
 });
 export type PhotoReviewJob = Static<typeof JobSchema>;
@@ -26,8 +28,10 @@ export function createPhotoReviewQueue(options: {
   const root = options.dataRoot ?? PHOTO_DATA, dir = path.join(root, 'photo-store/review-jobs');
   const now = options.now ?? Date.now, serialize = createSerialQueue(0);
   const fileFor = (city: string, name: string) => path.join(dir, reviewDigest(JSON.stringify([PHOTO_REVIEW_VERSION, reviewName(city), reviewName(name)])) + '.json');
-  let active: Promise<void> | undefined, timer: ReturnType<typeof setInterval> | undefined, stopped = false;
+  let active: Promise<void> | undefined, timer: ReturnType<typeof setInterval> | undefined, stopped = false, saturated = false;
   const controller = new AbortController();
+  // 额度按“首次启动”计：重试既不占用额度，也不能把24h窗口向后推移。
+  const counted = (job: PhotoReviewJob) => job.countedAt ?? job.lastStartedAt;
   async function jobs(): Promise<PhotoReviewJob[]> {
     let files: string[];
     try { files = await readdir(dir); } catch { return []; }
@@ -67,13 +71,22 @@ export function createPhotoReviewQueue(options: {
     active = (async () => {
       const job = await serialize(async () => {
         const all = await jobs();
-        const capacity = all.filter(j => j.lastStartedAt > now() - DAY).length < (options.dailyLimit ?? DEFAULT_PHOTO_REVIEW_DAILY_PLACES);
-        // running来自上次进程中断；本实例串行tick，租约超时后可恢复。
-        const next = all.filter(j => j.attempts < 3 && j.nextAt <= now() && (capacity || j.lastStartedAt > now() - DAY) &&
+        const limit = options.dailyLimit ?? DEFAULT_PHOTO_REVIEW_DAILY_PLACES;
+        const used = all.filter(j => counted(j) > now() - DAY).length;
+        const capacity = used < limit;
+        // 饱和期只提醒一次；容量恢复后复位，便于下一次耗尽再次可见。
+        if (capacity) saturated = false;
+        else if (!saturated) {
+          saturated = true;
+          options.warn?.(`[photo-review] 滚动24h额度已满 ${used}/${limit}，${all.filter(j => j.attempts === 0).length} 个新地点等待额度释放`);
+        }
+        // running来自上次进程中断；本实例串行tick，租约超时后可恢复。额度耗尽时只放行重试，绝不放进新任务。
+        const next = all.filter(j => j.attempts < 3 && j.nextAt <= now() && (capacity || j.attempts > 0) &&
           (j.state === 'queued' || j.state === 'failed' || j.state === 'running' && now() - j.updatedAt > 15 * 60_000))
           .sort((a, b) => Number(b.priority === 'trip') - Number(a.priority === 'trip') || a.nextAt - b.nextAt)[0];
         if (!next) return undefined;
         next.state = 'running'; next.attempts++; next.updatedAt = now(); next.lastStartedAt = now();
+        next.countedAt ??= now();
         await writePhotoJson(fileFor(next.city, next.name), next);
         return next;
       });

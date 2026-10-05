@@ -51,6 +51,69 @@ test('旧队列任务提升行程优先级并跨重启保留，不改变退避�
   } finally { await first.stop(); await rm(root, { recursive: true, force: true }); }
 });
 
+test('额度耗尽的窗口不被重试刷新，新地点等窗口滑出即可启动', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'photo-retry-window-'));
+  let at = 1_800_000_000_000;
+  const seen: string[] = [];
+  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at,
+    run: async job => { seen.push(job.name); if (job.name === '甲') throw new Error('源不可用'); } });
+  try {
+    await queue.enqueue('杭州', '甲');
+    await queue.enqueue('杭州', '乙');
+    await queue.tick();
+    assert.deepEqual(seen, ['甲']);
+    at += 23 * 3600_000;
+    await queue.tick();
+    assert.deepEqual(seen, ['甲', '甲'], '窗口末尾允许重试，但不放进新任务');
+    at += 3600_001;
+    await queue.tick();
+    assert.deepEqual(seen, ['甲', '甲', '乙'], '重试不得把窗口向后推移，首次启动满24h后新地点应能启动');
+  } finally { await queue.stop(); await rm(root, { recursive: true, force: true }); }
+});
+
+test('重试不占用额度，也不刷新额度计数时间', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'photo-retry-count-'));
+  let at = 1_800_000_000_000;
+  const start = at;
+  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at, run: async () => { throw new Error('源不可用'); } });
+  try {
+    await queue.enqueue('杭州', '甲');
+    await queue.tick();
+    const first = (await queue.jobs())[0]!;
+    assert.equal(first.countedAt, start);
+    at += 30 * 60_000 + 1;
+    await queue.tick();
+    const retried = (await queue.jobs())[0]!;
+    assert.equal(retried.attempts, 2);
+    assert.equal(retried.lastStartedAt, at, 'lastStartedAt 仍反映真实最后启动时间');
+    assert.equal(retried.countedAt, start, '额度计数时间只写一次');
+  } finally { await queue.stop(); await rm(root, { recursive: true, force: true }); }
+});
+
+test('额度耗尽只提醒一次，容量恢复后再次耗尽重新提醒', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'photo-warn-'));
+  let at = 1_800_000_000_000;
+  const warnings: string[] = [];
+  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at,
+    run: async () => {}, warn: message => warnings.push(message) });
+  const saturated = () => warnings.filter(m => m.includes('额度已满'));
+  try {
+    await queue.enqueue('杭州', '甲');
+    await queue.enqueue('杭州', '乙');
+    await queue.tick();
+    await queue.tick();
+    await queue.tick();
+    assert.equal(saturated().length, 1);
+    assert.match(saturated()[0]!, /^\[photo-review\]/);
+    assert.match(saturated()[0]!, /1\/1/);
+    assert.match(saturated()[0]!, /1 个新地点/);
+    at += 86_400_001;
+    await queue.tick();
+    await queue.tick();
+    assert.equal(saturated().length, 2, '容量恢复后再次耗尽应重新提醒');
+  } finally { await queue.stop(); await rm(root, { recursive: true, force: true }); }
+});
+
 test('缺图查询不等待入队/审图，已有图片不入队', async () => {
   let calls = 0;
   const lookup = reviewFirstLookup(async () => null, async () => { calls++; await new Promise(() => {}); });
