@@ -569,6 +569,23 @@ retrieval guidelines under *Attraction Cover Images*.
   the first five. No match → `null` → fall through. Never take "first result": a generic lake photo must
   not be captioned as a named scenic spot. Measured on 20 real names: strict gate 9/20, relaxed gate
   11/20, with no gate regression (nothing that used to pass now fails).
+- **Search terms come from a per-city alias table, and the outer libraries only speak English.**
+  `stockPhotoSupport.ts` holds `cityAliases` (city translations) and `aliases` (landmark translations);
+  `stockPhotoSearch` sends «first English place term + first English city term», falling back to the
+  Chinese originals when a city/place is absent. Coverage is the **11 frozen-knowledge cities minus 云
+  南** — 北京、上海、厦门、广州、成都、杭州、重庆、济南、苏州、西安、青岛 — matching
+  `eval/scenarios.ts` `MATRIX_CITIES`; keep the two lists in sync when a city is added. Two rules when
+  extending it: (1) **the key must be `normalizePlaceKey(name)`** — the name with
+  `博物馆/公园/广场/景区/…` stripped — `山东博物馆`→`山东`, `五四广场`→`五四`, `五龙潭公园`→`五龙潭`; a key that keeps the suffix
+  silently never matches and falls back to Chinese. (2) **Only add a landmark that has an established
+  English name**; a literal translation of a minor spot is no better than the Chinese original and still
+  burns one metered query. The table changes the query and the `matchesStockPlace` gate only — it does not
+  raise the acceptance ceiling, because the visual review still adopts `match` only. Measured context
+  (2026-10-05, `data/photo-store/reviewed`): without aliases Jinan scored 0/26 Pexels candidates
+  (`identity=mismatch`: Taiwan Sun Moon Lake, Nanjing Xuanwu Lake, Korea Suwon Hwaseong…), while
+  alias-backed Beijing/Hangzhou reached 21%/28%. Regression coverage in `stockPhotos.test.ts` asserts,
+  for **real `canonical_places` names**, that every alias resolves to an English query term — that test is
+  what catches a suffix that was not stripped.
 - Amap gate is two-stage, and both must pass:
   1. **Name**: equal to, end with, or contain the place's normalized key segments **in order**
      («杭州西湖风景名胜区» → ends with «西湖»; «西溪国家湿地公园» → segments 西溪 / 湿地 appear in
