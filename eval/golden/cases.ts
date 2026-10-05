@@ -1,4 +1,5 @@
-// 评测金集（M0-B）：固定 GenerateForm 用例，覆盖多城 × 天数 × 出行方式 × 预算/住宿组合
+// 历史兼容的固定请求：多城 × 天数 × 出行方式 × 偏好/可选住宿。
+// budgetLevel / totalBudget 与旧 ID 仅为快照兼容；预算不参与当前生成与评估。
 // 上线门槛口径：全部用例 hard violation = 0（见 .trellis/spec/server/backend/generation-guidelines.md）
 import type { GenerateForm } from '@tripweaver/shared';
 
@@ -10,6 +11,8 @@ export interface GoldenCase {
 
 const base = { startDate: '', totalBudget: 0, extraNotes: '' } as const;
 
+export const SMOKE_CASE_IDS: readonly string[] = ['shanghai-3d-transit', 'beijing-5d-family', 'chongqing-4d-night'];
+
 export const GOLDEN_CASES: GoldenCase[] = [
   {
     id: 'shanghai-3d-transit',
@@ -18,7 +21,7 @@ export const GOLDEN_CASES: GoldenCase[] = [
   },
   {
     id: 'beijing-5d-family',
-    note: '长行程 + 亲子：景点分散（市区/郊区长城），易触发 transit_infeasible 与 overpacked',
+    note: '长行程 + 亲子：市区/远郊分组、活动间交通与候选保留；不要求具体游玩时刻',
     form: { ...base, destination: '北京', days: 5, budgetLevel: '舒适', preferences: ['文化', '亲子'], partySize: 3, transportMode: 'transit', totalBudget: 8000 },
   },
   {
@@ -48,12 +51,12 @@ export const GOLDEN_CASES: GoldenCase[] = [
   },
   {
     id: 'suzhou-2d-luxury',
-    note: '豪华档 + 明确总预算：验证预算一致性偏离度',
+    note: '文化购物 + 指定金鸡湖住宿：验证住宿保留与往返路线；ID 沿用历史名称',
     form: { ...base, destination: '苏州', days: 2, budgetLevel: '豪华', preferences: ['文化', '购物'], partySize: 2, totalBudget: 10000, transportMode: 'transit', lodging: '金鸡湖' },
   },
   {
     id: 'qingdao-7d-slow',
-    note: '7 日慢行程：验证长行程不空天、节奏不塌缩为重复模板',
+    note: '7 日行程：验证不空天、餐次与候选使用；relaxed/tight 的差异由流程回归验证',
     form: { ...base, destination: '青岛', days: 7, budgetLevel: '舒适', preferences: ['自然', '美食'], partySize: 2, transportMode: 'transit' },
   },
 ];

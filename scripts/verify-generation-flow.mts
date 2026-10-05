@@ -164,6 +164,26 @@ try {
   assert.equal(denseDraft.mutableDays()[0]!.activities.length, 8);
   console.log('PASS 紧凑美食排程写入真实草稿满足 8 活动上限');
 
+  const suburbForm = { ...form, days: 1 };
+  const suburbDraft = new DraftTrip(suburbForm);
+  applyDeterministicSchedule({ draft: suburbDraft, form: suburbForm, foodFocused: true,
+    pool: [{ id: 'wall', name: '八达岭长城', category: 'attraction', intro: '长城游览', reservation: 'unknown', sourceLinks: [] }],
+    locations: new Map([['八达岭长城', { lat: 40.36, lng: 116.01, adcode: '' }]]),
+    longHaul: [], facts: new Map(), relations: new Map(),
+  });
+  const suburbMeals = suburbDraft.mutableDays()[0]!.activities.filter((a) => a.category === '美食');
+  assert.equal(suburbMeals.length, 2);
+  for (const meal of suburbMeals) {
+    assert.match(meal.name, /八达岭长城周边/);
+    assert.equal(meal.placeName, '八达岭长城');
+    assert.equal(meal.lat, 40.36);
+    assert.equal(meal.lng, 116.01);
+    assert.equal(meal.poiId, undefined);
+    assert.equal(meal.startTime, '');
+    assert.match(meal.description, /片区锚点/);
+  }
+  console.log('PASS 远郊餐次保留景点周边参考点，不重定位市中心或冒充门店');
+
   await pool.query(`INSERT INTO users (id,email,password_hash,created_at) VALUES ('success','success@verify.test','',NOW())`);
   const auth = `tw_session=${(await createSession('success')).token}`;
   await app.register(cookie);
@@ -176,6 +196,38 @@ try {
     assert.equal(response.status, 200);
     return response.text();
   };
+  // 真实生成闭館无解不能写占位成功；同一错误经实际 HTTP SSE 到 EOF，且不消耗成功配额。
+  await pool.query(`INSERT INTO canonical_places (id,name,city,category,lat,lng,source,verified,payload,created_at)
+    VALUES ('closed-palace','故宫博物院','北京','文化',39.918,116.397,'xhs',true,
+    '{"openHours":{"closedWeekdays":[1]},"content":{"intro":"历史建筑。"}}',NOW())`);
+  const beforeClosed = await counts('success');
+  const closedJob = createJob('success');
+  await runGeneration(closedJob, { ...form, days: 1, startDate: '2026-10-19' }, cfg, logger);
+  assert.equal(closedJob.status, 'error');
+  assert.deepEqual(await counts('success'), beforeClosed);
+  assert.equal(getRunningJobId('success'), null);
+  const closedSse = await sse(closedJob.id);
+  assert.match(closedSse, /job_error/);
+  assert.match(closedSse, /闭馆/);
+  assert.match(closedSse, /调整出发日期/);
+  assert.doesNotMatch(closedSse, /job_done/);
+  assert.equal(closedJob.events.filter((e) => e.event.type === 'job_error').length, 1);
+  assert.equal(closedJob.listeners.size, 0);
+  await pool.query(`DELETE FROM canonical_places WHERE id='closed-palace'`);
+  console.log('PASS 闭馆无解明确失败、无落库或成功配额，SSE 只终止一次');
+
+  await pool.query(`INSERT INTO canonical_places (id,name,city,category,lat,lng,source,verified,payload,created_at)
+    VALUES ('hours-unknown','待审街区','营业测试城','美食',30.67,104.06,'xhs',true,
+      '{"openHours":{"version":2,"subject":"待审街区","scope":"place","status":"unknown","closedWeekdays":[],"review":[{"sentence":"其他博物馆周一闭馆"}]}}',NOW()),
+      ('hours-valid','明确博物馆','营业测试城','文化',30.68,104.06,'xhs',true,
+      '{"openHours":{"version":2,"subject":"明确博物馆","scope":"place","status":"attributed","closedWeekdays":[1]}}',NOW())`);
+  await pool.query(`INSERT INTO research_evidence (id,place_id,city,kind,strength,content,source_url,fetched_at)
+    VALUES ('hours-legacy','hours-unknown','营业测试城','xhs_reason','strong','其他博物馆周一闭馆','https://example.org',NOW())`);
+  const hoursFacts = await loadPlaceFacts(['待审街区', '明确博物馆'], '营业测试城');
+  assert.equal(hoursFacts.get('待审街区')!.openTime, undefined);
+  assert.equal(hoursFacts.get('待审街区')!.closureText, undefined, '不能从旧 evidence 再次引入已拒绝规则');
+  assert.equal(hoursFacts.get('明确博物馆')!.openTime, '周一闭馆');
+  console.log('PASS 营业归属待审不经旧证据回流，明确博物馆闭馆仍保留');
   const replay = await sse(success.id);
   assert.match(replay, /job_done/);
   assert.equal(success.listeners.size, 0);

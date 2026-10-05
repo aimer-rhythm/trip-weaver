@@ -43,7 +43,12 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | Core browser trip flow | `node scripts/verify-m1.mjs` | Expects a suitable app at `BASE`. |
 | Export/import production flow | `node scripts/verify-d1.mjs` | Requires `npm run build` first. |
 | Golden-set eval (offline snapshot replay) | `npm run eval` | Deterministic checks; gate = zero hard violations. |
-| Golden-set eval (live generation) | `npm run eval:live` | Real LLM via `SITE_LLM_*`; writes `eval/snapshots/`. |
+| Golden-set eval (live generation) | `npm run eval:live` | Explicit local `EVAL_PG_ADMIN_URL` + `SITE_LLM_*`; isolated DB, writes new `eval/runs/<id>/`. |
+| Eval harness/checker tests | `npm run eval:test` | Offline failure/status/baseline/comparison regressions; no credentials. |
+| Current supported product journey | `EVAL_PG_ADMIN_URL=... npm run eval:flow` | Owned PG databases + mocks; current input/research/schedule/geo/persistence, preferences, routes/weather, homepage/recovery and detail/history browsers. Individual logs; all stages required for complete PASS. |
+| Eval live isolation and collection | `npm run eval:verify` | Explicit local `EVAL_PG_ADMIN_URL`; mock model/geography, checks collection and DB cleanup. |
+| Frozen knowledge export/import | `npm run eval:knowledge:verify -- --self-test` | Explicit local `EVAL_PG_ADMIN_URL`; synthetic source, privacy/filtering/roundtrip/vector guards and cleanup. |
+| Prepared frozen knowledge | `npm run eval:knowledge:verify -- --snapshot <dir>` | Imports into disposable DB; checks row hashes, city retrieval and vectors without model/map calls. |
 | Docker release artifact | `cp .env.example .env && docker compose config && docker compose build app` | CI/build host only; validates configuration and image build without starting services or using real credentials. |
 
 Run the smallest relevant script. Do not run credential-bearing real-provider checks without

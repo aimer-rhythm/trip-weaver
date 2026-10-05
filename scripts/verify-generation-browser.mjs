@@ -53,7 +53,7 @@ try {
   } finally { await seed.end(); }
 
   browser = await chromium.launch({
-    executablePath: process.env.CHROME_PATH ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    executablePath: process.env.CHROME_PATH ?? (process.platform === 'win32' ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : undefined),
     args: ['--no-proxy-server'], headless: true,
   });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
@@ -82,17 +82,19 @@ try {
     await page.goto(`${base}/`);
     await page.getByRole('button', { name: /^目的地/ }).click();
     await page.getByRole('button', { name: '北京', exact: true }).click();
-    assert.ok(await page.getByRole('button', { name: '开始规划', exact: true }).isDisabled());
+    if (generationPosts.length === 0) assert.ok(await page.getByRole('button', { name: '开始规划', exact: true }).isDisabled());
     await page.getByRole('button', { name: /节奏与同行/ }).click();
-    await page.getByRole('button', { name: /特种兵打卡/ }).click();
+    await page.getByRole('button', { name: /^特种兵打卡/ }).click();
     await page.getByRole('button', { name: /偏好与出行/ }).click();
-    await page.getByRole('button', { name: '美食', exact: true }).click();
+    const food = page.getByRole('button', { name: '美食', exact: true });
+    if (await food.getAttribute('aria-pressed') !== 'true') await food.click();
     await page.getByRole('button', { name: '开始规划', exact: true }).click();
     await page.getByRole('button', { name: '取消生成', exact: true }).waitFor();
     return page.evaluate(() => sessionStorage.getItem('tw.activeJobId'));
   };
   const editor = async () => {
     await page.waitForURL((url) => /^\/trips\/(?!new$)[^/]+$/.test(url.pathname), { timeout: 35_000 });
+    await page.getByRole('group', { name: '行程天数', exact: true }).getByRole('button', { name: '第1天', exact: true }).click();
     await page.locator('.day-section').first().waitFor();
     return page.url().split('/').at(-1);
   };
@@ -157,7 +159,7 @@ try {
   assert.equal((await json(`/api/generations/${cancelledJobId}`)).status, 'cancelled');
   assert.equal((await json('/api/usage')).remaining, usageBefore.remaining);
   assert.equal(await page.evaluate(() => sessionStorage.getItem('tw.activeJobId')), null);
-  await page.getByRole('button', { name: '返回表单', exact: true }).click();
+  await page.getByRole('button', { name: '返回重新规划', exact: true }).click();
   await page.waitForURL(`${base}/`);
   await page.unroute('**/api/generations/*/cancel');
   console.log('PASS 取消 pending/失败重试/权威终态与配额不变，返回首页');

@@ -1,0 +1,84 @@
+{
+  "source": "eval/runs/2026-10-04T13-10-06-296Z-1d307915/snapshots/shanghai-3d-transit.json",
+  "snapshotSha256": "8b487f201a5e153d90d1468cac38bce05cee57a6f3f12f15f5d913338238f11d",
+  "scheduleSha256": "945ec72d64fc14207de6b81f496b58a4062e06e9c8cd6d7c1099a5fd8bbdb6d9",
+  "method": "固定原快照日期、景点顺序与餐次位置，按原调研候选顺序重放 selectMealStop；坐标来自原最终行程，距离为直线近似。",
+  "limits": {
+    "nearbyKm": 2,
+    "detourKm": 2
+  },
+  "rows": [
+    {
+      "day": 1,
+      "kind": "lunch",
+      "before": "豫园",
+      "after": "外滩",
+      "original": "午餐｜南翔馒头店",
+      "selected": "午餐｜南翔馒头店",
+      "areaAnchor": null,
+      "previousAddedKm": 0.13764433719024705,
+      "nextAddedKm": 0.13764433719024705
+    },
+    {
+      "day": 1,
+      "kind": "dinner",
+      "before": "南京路步行街",
+      "after": null,
+      "original": "晚餐｜莱莱小笼",
+      "selected": "晚餐｜莱莱小笼",
+      "areaAnchor": null,
+      "previousAddedKm": 0.26301971112581307,
+      "nextAddedKm": 0.26301971112581307
+    },
+    {
+      "day": 2,
+      "kind": "lunch",
+      "before": "武康路",
+      "after": "武康大楼",
+      "original": "午餐｜沈大成",
+      "selected": "午餐｜武康路周边",
+      "areaAnchor": "武康路",
+      "previousAddedKm": 7.97575239681482,
+      "nextAddedKm": 0
+    },
+    {
+      "day": 2,
+      "kind": "dinner",
+      "before": "思南公馆",
+      "after": null,
+      "original": "晚餐｜大壶春",
+      "selected": "晚餐｜思南公馆周边",
+      "areaAnchor": "思南公馆",
+      "previousAddedKm": 2.9885383904468767,
+      "nextAddedKm": 0
+    },
+    {
+      "day": 3,
+      "kind": "lunch",
+      "before": "东方明珠",
+      "after": "陆家嘴",
+      "original": "午餐｜鲜得来排骨年糕",
+      "selected": "午餐｜东方明珠周边",
+      "areaAnchor": "东方明珠",
+      "previousAddedKm": 31.254098599781187,
+      "nextAddedKm": 0
+    },
+    {
+      "day": 3,
+      "kind": "dinner",
+      "before": "新天地",
+      "after": null,
+      "original": "晚餐｜沪公馆·上海菜",
+      "selected": "晚餐｜新天地周边",
+      "areaAnchor": "新天地",
+      "previousAddedKm": 17.42464445468882,
+      "nextAddedKm": 0
+    }
+  ],
+  "unusedRestaurants": [
+    "沈大成",
+    "大壶春",
+    "沪公馆·上海菜",
+    "鲜得来排骨年糕"
+  ]
+}

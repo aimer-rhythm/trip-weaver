@@ -19,6 +19,7 @@ has a more specific convention.
 - [账号旅行偏好](./travel-preferences.md)：首页备注、账号记忆、个人资料、保存顺序及生成快照。
 - [详情对话流与版本恢复](./detail-chat-history.md)：POST SSE、真实候选、幂等添加、保存并发和历史恢复契约。
 - [Quality guidelines](./quality-guidelines.md): validation rules and the real command matrix.
+- [Evaluation execution](./evaluation.md): isolated live PostgreSQL, frozen knowledge export/import, immutable runs, comparison/baseline acceptance, offline CI and mock verification.
 - [Research photo selection](./research-photo-selection.md): independent local comparison-site feedback, atomic persistence and preference-sample semantics; outside the production application.
 - [Preference photo pipeline](./preference-photo-pipeline.md): authorized Beijing selections first, reviewed fallback, independent visual model, durable nonblocking backfill and versioned cross-source selection.
 

@@ -16,7 +16,11 @@ try {
   created = true;
   const folder = 'apps/server/src/__tests__';
   const files = process.argv.includes('--full') ? (await readdir(folder)).filter((name) => name.endsWith('.test.ts')).sort()
-    : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts'];
+    : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts',
+      ...(process.argv.includes('--flow') ? ['dateRepair.test.ts', 'mealLocality.test.ts', 'longHaul.test.ts', 'longHaulFixer.test.ts', 'openHours.test.ts',
+        'placeFacts.test.ts', 'placeRelations.test.ts', 'placeLookup.test.ts', 'geoPipeline.test.ts', 'legs.test.ts',
+        'agentCompletion.test.ts', 'llmRetry.test.ts', 'draftRevision.test.ts', 'chatBrief.test.ts', 'chatBriefApply.test.ts',
+        'chatDerive.test.ts', 'exportFiles.test.ts', 'reviewedPhotos.test.ts'] : [])];
   const env = { ...process.env, DATABASE_URL: url.toString(), MASTER_KEY: 'a'.repeat(64),
     DOTENV_CONFIG_PATH: './data/absent-verification.env',
     SITE_LLM_BASE_URL: '', SITE_LLM_API_KEY: '', SITE_LLM_MODEL: '', EMBEDDING_BASE_URL: '', EMBEDDING_API_KEY: '',

@@ -22,6 +22,7 @@ Object.assign(process.env, {
   DATABASE_URL: databaseUrl.toString(), DOTENV_CONFIG_PATH: './data/detail-chat-absent.env', MASTER_KEY: 'a'.repeat(64),
   AMAP_KEY: '', TIANDITU_KEY: '', SEARCH_API_KEY: 'mock-search', SEARCH_API_BASE_URL: 'http://127.0.0.1:18828', PEXELS_API_KEY: '',
   SITE_LLM_BASE_URL: 'http://127.0.0.1:18828/v1', SITE_LLM_API_KEY: 'mock', SITE_LLM_MODEL: 'mock-chat',
+  EMBEDDING_BASE_URL: 'http://127.0.0.1:18828/v1', EMBEDDING_API_KEY: 'mock', EMBEDDING_MODEL: 'mock-embedding',
   GITHUB_CLIENT_ID: '', GITHUB_CLIENT_SECRET: '', REGISTRATION_MODE: 'open',
 });
 let broken = false;
@@ -31,6 +32,7 @@ let failResearch = false;
 let delayResearch = false;
 let releaseResearch: (() => void) | undefined;
 let webRequests = 0;
+let failEmbedding = false;
 let decision: object = { intent: 'travel_qa', reply: '可以结合当前路线安排。' };
 const contextualSuggestion = { label: '了解沿途餐厅怎么选', text: '结合刚才回答，第 1 天沿途餐厅怎样按景点位置选择？', kind: 'follow_up' };
 const extraSuggestion = { label: '了解沿途用餐注意事项', text: '结合刚才关于沿途餐厅的回答，第 1 天用餐有哪些需要提前核实的信息？', kind: 'follow_up' };
@@ -42,6 +44,7 @@ const llm = createServer(async (req, res) => {
   let body = ''; for await (const chunk of req) body += chunk;
   const input = JSON.parse(body);
   if (req.url?.endsWith('/embeddings')) {
+    if (failEmbedding) { res.writeHead(503).end('fixture embedding unavailable'); return; }
     res.setHeader('content-type', 'application/json');
     res.end(JSON.stringify({ data: [{ embedding: Array.from({ length: 1024 }, (_, i) => i === 0 ? 1 : 0) }] }));
     return;
@@ -341,11 +344,13 @@ try {
   assert.deepEqual((await call(`/api/conversations/${extendConversation}`, undefined, 'GET')).data, beforeResearchFailure);
   delayResearch = false;
   const currentWebCalls = webRequests;
+  failEmbedding = true; // 显式制造降级，不依赖本机 PostgreSQL 是否安装 pgvector。
   const webAnswer = await streamExtension(extended, '联网查一下现在这些公园的开放和预约信息', uid(), 'follow_up');
+  failEmbedding = false;
   assert.equal(webAnswer.at(-1).type, 'done', JSON.stringify(webAnswer));
   assert.ok(webRequests > currentWebCalls);
   assert.ok(webAnswer.at(-1).result.replyMessage.attachment.references.some((r: any) => r.url === 'https://example.com/official-hours'));
-  assert.ok(webAnswer.some((event: any) => event.type === 'progress' && /语义检索暂不可用/.test(event.text)), '无 pgvector 的隔离库必须如实降级');
+  assert.ok(webAnswer.some((event: any) => event.type === 'progress' && /语义检索暂不可用/.test(event.text)), '向量服务失败必须如实降级');
   console.log('PASS 调研失败/中途停止不写半成品、按需联网、真实来源持久化、向量不可用明示降级');
   const extendRestored = await call(`/api/trips/${extendSource.id}/restore`, { operationId: uid(), expectedTripId: extended.id, updatedAt: extended.updatedAt });
   assert.equal(extendRestored.status, 200);
@@ -612,6 +617,7 @@ try {
   await page.getByRole('dialog', { name: '历史版本' }).getByRole('button', { name: '关闭', exact: true }).click();
   await page.setViewportSize({ width: 1440, height: 960 });
   await page.goto(`${base}/trips/${finalDraft.id}`);
+  await page.getByRole('group', { name: '行程天数', exact: true }).getByRole('button', { name: '第1天', exact: true }).click();
   let releaseLeavingSave: (() => void) | undefined;
   const leavingGate = new Promise<void>((resolve) => { releaseLeavingSave = resolve; });
   let observeLeavingSave: (() => void) | undefined;

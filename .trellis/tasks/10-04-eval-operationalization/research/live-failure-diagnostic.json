@@ -1,0 +1,85 @@
+{
+  "runId": "2026-10-04T12-35-42-434Z-c8163edf",
+  "records": [
+    {
+      "jobId": "3e7dd69f-af12-4aa7-a46e-8e744339f0fc",
+      "phase": "research",
+      "turn": 1,
+      "model": "grok-4.7",
+      "stopReason": "toolUse",
+      "responseTextLength": 0,
+      "containsJsonFence": false,
+      "textCandidateCount": null,
+      "historyTools": [],
+      "errorStatus": null
+    },
+    {
+      "jobId": "3e7dd69f-af12-4aa7-a46e-8e744339f0fc",
+      "phase": "research",
+      "turn": 2,
+      "model": "grok-4.7",
+      "stopReason": "toolUse",
+      "responseTextLength": 0,
+      "containsJsonFence": false,
+      "textCandidateCount": null,
+      "historyTools": [
+        "search_verified_places",
+        "search_verified_places"
+      ],
+      "errorStatus": null
+    },
+    {
+      "jobId": "3e7dd69f-af12-4aa7-a46e-8e744339f0fc",
+      "phase": "research",
+      "turn": 3,
+      "model": "grok-4.7",
+      "stopReason": "stop",
+      "responseTextLength": 1664,
+      "containsJsonFence": true,
+      "textCandidateCount": 12,
+      "historyTools": [
+        "search_verified_places",
+        "search_verified_places",
+        "search_web",
+        "search_web"
+      ],
+      "errorStatus": null
+    },
+    {
+      "jobId": "3e7dd69f-af12-4aa7-a46e-8e744339f0fc",
+      "phase": "review",
+      "turn": 1,
+      "model": "grok-4.7",
+      "stopReason": "toolUse",
+      "responseTextLength": 0,
+      "containsJsonFence": false,
+      "textCandidateCount": null,
+      "historyTools": [],
+      "errorStatus": null
+    },
+    {
+      "jobId": "8268557d-a2a5-4b2d-8a5d-3245c199d141",
+      "phase": "research",
+      "turn": 1,
+      "model": "grok-4.7",
+      "stopReason": "toolUse",
+      "responseTextLength": 0,
+      "containsJsonFence": false,
+      "textCandidateCount": null,
+      "historyTools": [],
+      "errorStatus": null
+    },
+    {
+      "jobId": "8268557d-a2a5-4b2d-8a5d-3245c199d141",
+      "phase": "review",
+      "turn": 1,
+      "model": "grok-4.7",
+      "stopReason": null,
+      "responseTextLength": 0,
+      "containsJsonFence": false,
+      "textCandidateCount": null,
+      "historyTools": [],
+      "errorStatus": null
+    }
+  ]
+}

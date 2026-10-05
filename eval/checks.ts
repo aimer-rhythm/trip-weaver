@@ -1,6 +1,6 @@
 // 确定性检查（M0-B eval）：输入 Trip + GenerateForm，输出结构化 CaseResult
 // 纯函数、无 IO —— 与可行性引擎同一铁律，离线快照重放与在线生成后检查共用同一份。
-// 四类门槛指标：可行性违规（门槛）/ 结构完整性（门槛）/ 地理质量（可信度门槛）/ 预算一致性
+// 当前门槛：可行性违规 / 结构完整性 / 地理质量；预算字段仅兼容旧数据，不参与评估。
 // 快照 v2 观测指标（不进 gate）：研究质量（候选池采用率）/ 阶段耗时与 token 用量
 // geo 门槛动机（2026-07-16 空心通过事故）：AMAP_KEY 缺失 + Nominatim 不可达 ⇒ 全活动 0,0/estimated、
 // 0 leg，可行性模拟对着空气跑出 0 违规仍 PASS —— 坐标可信度不达标必须整体判 FAIL，不得静默放行。
@@ -8,7 +8,6 @@ import { Value } from '@sinclair/typebox/value';
 import {
   FEASIBILITY_THRESHOLDS,
   TripSchema,
-  computeBudgetSummary,
   simulateTrip,
   type GenerateForm,
   type ResearchPoi,
@@ -29,15 +28,6 @@ export interface GeoQuality {
   outlierActivities: string[];   // 距活动坐标中位中心 > 100km 的活动名（疑似幻觉/geocode 错城）
 }
 
-export interface BudgetConsistency {
-  formTotalBudget: number;
-  perPersonPerDayMin: number;
-  perPersonPerDayMax: number;
-  coveredDays: number;
-  /** 表单人均日预算相对 summary 区间的偏离比：区间内 0；区间外 = 越界幅度/边界值。表单未给预算或无成本数据为 null */
-  deviationRatio: number | null;
-}
-
 export interface CaseResult {
   caseId: string;
   pass: boolean;                       // 门槛判定：hard violation = 0 且结构问题 = 0 且 geo 门槛 = 0
@@ -48,7 +38,6 @@ export interface CaseResult {
   structural: string[];                // 结构问题清单（空 = 通过）
   geoGate: string[];                   // 地理可信度门槛问题清单（空 = 通过）
   geo: GeoQuality;
-  budget: BudgetConsistency;
   research?: ResearchQuality;          // 快照 v2：研究质量（观测指标，不进 gate）
   timing?: SnapshotTiming;             // 快照 v2：阶段耗时与 token 用量（观测指标）
 }
@@ -155,26 +144,6 @@ function checkGeoGate(geo: GeoQuality): string[] {
   return problems;
 }
 
-// ---------- 预算一致性 ----------
-
-function checkBudget(trip: Trip, form: GenerateForm): BudgetConsistency {
-  const summary = computeBudgetSummary(trip);
-  let deviationRatio: number | null = null;
-  if (form.totalBudget > 0 && summary.coveredDays > 0) {
-    const target = form.totalBudget / Math.max(1, form.partySize) / Math.max(1, form.days);
-    if (target < summary.perPersonPerDayMin) deviationRatio = (summary.perPersonPerDayMin - target) / summary.perPersonPerDayMin;
-    else if (target > summary.perPersonPerDayMax) deviationRatio = (target - summary.perPersonPerDayMax) / summary.perPersonPerDayMax;
-    else deviationRatio = 0;
-  }
-  return {
-    formTotalBudget: form.totalBudget,
-    perPersonPerDayMin: summary.perPersonPerDayMin,
-    perPersonPerDayMax: summary.perPersonPerDayMax,
-    coveredDays: summary.coveredDays,
-    deviationRatio,
-  };
-}
-
 // ---------- 研究质量（快照 v2，观测指标不进 gate） ----------
 // 候选 POI 无坐标（高德协议 3.5：只落名称+摘要+链接），池级地理真实性不可查；
 // 被采用候选的坐标质量已由 checkGeo 在 Trip 层覆盖。此处度量「编排阶段有没有在用调研成果」。
@@ -249,7 +218,6 @@ export function runChecks(
     structural,
     geoGate,
     geo,
-    budget: checkBudget(trip, form),
     research: extras?.candidates ? checkResearch(trip, extras.candidates) : undefined,
     timing: extras?.timing,
   };

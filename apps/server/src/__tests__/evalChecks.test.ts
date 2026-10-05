@@ -74,18 +74,13 @@ test('地理：异城坐标（>100km）计入离群；geocoded 比例统计正�
   assert.equal(result.geo.geocodedRatio, 0);   // 样例全为 manual
 });
 
-test('预算：表单人均日预算超出区间 → deviationRatio > 0；未给预算 → null', () => {
+test('旧预算和费用值不影响当前评估，也不产生预算维度', () => {
   const trip: Trip = makeSampleTrip(NOW);
-  // 样例成本合计 1180，2 人 3 天 → 区间约 [160, 260]；表单 3000 → 人均日 500 越上界
-  const over = runChecks('budget-over', trip, sampleForm({ totalBudget: 3000 }));
-  assert.ok(over.budget.deviationRatio !== null && over.budget.deviationRatio > 0);
-
-  const none = runChecks('budget-none', trip, sampleForm({ totalBudget: 0 }));
-  assert.equal(none.budget.deviationRatio, null);
-
-  // 区间内：表单 1200 → 人均日 200 落在 [min, max] 内 → 0
-  const within = runChecks('budget-within', trip, sampleForm({ totalBudget: 1200 }));
-  assert.equal(within.budget.deviationRatio, 0);
+  const before = runChecks('compatibility', trip, sampleForm());
+  for (const day of trip.days) for (const a of day.activities) delete a.cost;
+  const after = runChecks('compatibility', trip, sampleForm({ totalBudget: 999999, budgetLevel: '豪华' }));
+  assert.deepEqual(after, before);
+  assert.ok(!('budget' in after));
 });
 
 test('geo 门槛：空心快照形态（全活动 0,0/estimated、无 leg）→ 点名覆盖率，pass=false', () => {

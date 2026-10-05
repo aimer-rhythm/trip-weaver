@@ -43,7 +43,7 @@ test('对话额度耗尽的错误文案给出下一步（引导去生成），�
 });
 
 test('未配置 AI 的错误按 hasSiteKey 分流；未知错误保留原文', () => {
-  assert.match(chatErrorMessage(new ApiError(400, 'x', { code: 'no_llm', hasSiteKey: false })), /高级选项/);
-  assert.match(chatErrorMessage(new ApiError(400, 'x', { code: 'no_llm', hasSiteKey: true })), /联系站长/);
+  assert.match(chatErrorMessage(new ApiError(400, 'x', { hasSiteKey: false }, 'no_llm')), /高级选项/);
+  assert.match(chatErrorMessage(new ApiError(400, 'x', { hasSiteKey: true }, 'no_llm')), /联系站长/);
   assert.equal(chatErrorMessage(new ApiError(418, '我是一只茶壶')), '我是一只茶壶');
 });

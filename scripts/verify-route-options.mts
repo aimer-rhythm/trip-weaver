@@ -1,4 +1,4 @@
-// Dedicated disposable PG instance on port 18797 only. No real external provider calls.
+// Dedicated disposable PG database. No real external provider calls.
 import assert from 'node:assert/strict';
 import Fastify from 'fastify';
 import cookie from '@fastify/cookie';
@@ -7,10 +7,13 @@ import { Client } from 'pg';
 import { mock } from 'node:test';
 
 const databaseName = `route_options_verify_${Date.now()}`;
-const admin = new Client({ connectionString: 'postgres://postgres@127.0.0.1:18797/postgres' });
+const adminUrl = process.env.VERIFY_GENERATION_ADMIN_URL ?? 'postgres://postgres@127.0.0.1:18797/postgres';
+const databaseUrl = new URL(adminUrl); databaseUrl.pathname = `/${databaseName}`;
+const admin = new Client({ connectionString: adminUrl });
 await admin.connect();
 await admin.query(`CREATE DATABASE "${databaseName}"`);
-process.env.DATABASE_URL = `postgres://postgres@127.0.0.1:18797/${databaseName}`;
+process.env.DATABASE_URL = databaseUrl.toString();
+process.env.DOTENV_CONFIG_PATH = './data/route-options-absent.env';
 process.env.MASTER_KEY = 'a'.repeat(64);
 process.env.AMAP_KEY = 'route-test-fixture';
 process.env.AMAP_DAILY_BUDGET = '40';
@@ -18,6 +21,8 @@ process.env.TIANDITU_KEY = '';
 process.env.GITHUB_CLIENT_ID = '';
 process.env.GITHUB_CLIENT_SECRET = '';
 process.env.REGISTRATION_MODE = 'open';
+// 在服务构造并捕获 Date.now 前设置时钟，避免 admission 与请求侧看到不同日期。
+mock.timers.enable({ apis: ['Date'], now: new Date('2026-09-29T04:00:00Z') });
 const { db, pool } = await import('../apps/server/src/db/client');
 const { runMigrations } = await import('../apps/server/src/db/migrate');
 const { users } = await import('../apps/server/src/db/schema');
@@ -29,7 +34,6 @@ const { installApiResponses } = await import('../apps/server/src/http/apiRespons
 const app = Fastify();
 installApiResponses(app);
 const originalFetch = globalThis.fetch;
-mock.timers.enable({ apis: ['Date'], now: new Date('2026-09-29T04:00:00Z') });
 let externalCalls = 0;
 globalThis.fetch = async (url) => {
   externalCalls++;
@@ -66,8 +70,11 @@ try {
   assert.equal(await amapBudgetRemaining(), 240 - externalCalls, 'server cache hit consumes no quota');
   const selected = response.json().data.options[0].leg;
   trip.days[0]!.legs = [selected];
-  assert.equal((await app.inject({ method: 'PUT', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie }, payload: trip })).statusCode, 200);
-  assert.deepEqual((await app.inject({ method: 'GET', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie } })).json().data.days[0].legs[0], selected);
+  const saved = await app.inject({ method: 'PUT', url: `/api/trips/${trip.id}`, headers: { cookie: ownerCookie }, payload: trip });
+  assert.equal(saved.statusCode, 200);
+  const savedId = saved.json().data.id;
+  assert.notEqual(savedId, trip.id, '编辑保存生成新版本，原行程冻结');
+  assert.deepEqual((await app.inject({ method: 'GET', url: `/api/trips/${savedId}`, headers: { cookie: ownerCookie } })).json().data.days[0].legs[0], selected);
   const callsBefore = externalCalls;
   assert.equal((await request(ownerCookie)).statusCode, 200);
   assert.equal(externalCalls, callsBefore);
