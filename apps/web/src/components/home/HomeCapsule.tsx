@@ -49,6 +49,7 @@ interface HomeCapsuleProps {
   cities: string[];
   onSelectCity: (name: string) => void;
   onStart: (draft: HomeTripDraft) => void;
+  onOpenGeneration?: () => void;
 }
 
 const PACE_DESCS: Record<TripPace, string> = {
@@ -142,7 +143,7 @@ function PanelTail({ align = 'left' }: { align?: 'left' | 'preferences' }) {
   );
 }
 
-export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsuleProps) {
+export function HomeCapsule({ city, cities, onSelectCity, onStart, onOpenGeneration }: HomeCapsuleProps) {
   const [startDate, setStartDate] = useState(() => isoDateAfter(1));
   const [endDate, setEndDate] = useState(() => isoDateAfter(3));
   const savedPreferences = useTravelPreferencesDraft();
@@ -390,10 +391,10 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart }: HomeCapsule
         <div className="flex shrink-0 items-center justify-center rounded-full bg-white/55 px-[calc(12*var(--ui))] py-[calc(6*var(--ui))]">
           <Button variant="plain"
             type="button"
-            aria-label="开始规划"
-            title={ready ? '开始规划' : !savedPreferences.value ? '请先加载偏好设置' : '先选目的地与节奏'}
-            disabled={!ready}
-            onClick={() => onStart({ startDate, endDate, days, pace, partySize, preferences, transportMode, extraNotes })}
+            aria-label={onOpenGeneration ? '查看正在生成的行程' : '开始规划'}
+            title={onOpenGeneration ? '查看正在生成的行程' : ready ? '开始规划' : !savedPreferences.value ? '请先加载偏好设置' : '先选目的地与节奏'}
+            disabled={!onOpenGeneration && !ready}
+            onClick={() => onOpenGeneration ? onOpenGeneration() : onStart({ startDate, endDate, days, pace, partySize, preferences, transportMode, extraNotes })}
             className="grid h-[calc(76*var(--ui))] w-[calc(76*var(--ui))] place-items-center rounded-full bg-gradient-to-br from-brand-light to-brand text-white shadow-[0_12px_26px_rgba(47,107,243,0.35)] transition-transform enabled:hover:scale-[1.04] enabled:active:scale-95 disabled:cursor-not-allowed disabled:from-brand-disabled disabled:to-brand-disabled-deep disabled:shadow-none"
           >
             <CompassIcon className="h-[calc(30*var(--ui))] w-[calc(30*var(--ui))]" />

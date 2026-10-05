@@ -5,8 +5,15 @@ export function useDismissibleDisclosure(ref: RefObject<HTMLDetailsElement | nul
     const dismiss = (event: PointerEvent) => {
       if (ref.current && event.target instanceof Node && !ref.current.contains(event.target)) ref.current.open = false;
     };
+    // 异步操作将按钮禁用时焦点可能落回 body，Escape 仍应能收起已打开的面板。
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.defaultPrevented || !ref.current?.open || document.querySelector('dialog[open]')) return;
+      ref.current.open = false;
+      ref.current.querySelector('summary')?.focus();
+    };
     document.addEventListener('pointerdown', dismiss);
-    return () => document.removeEventListener('pointerdown', dismiss);
+    document.addEventListener('keydown', escape);
+    return () => { document.removeEventListener('pointerdown', dismiss); document.removeEventListener('keydown', escape); };
   }, [ref]);
   return {
     onBlur: (event: React.FocusEvent<HTMLDetailsElement>) => { if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false; },

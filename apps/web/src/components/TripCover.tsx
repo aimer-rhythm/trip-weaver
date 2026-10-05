@@ -28,7 +28,7 @@ export function TripCover({ destination, daysCount }: { destination: string; day
 
   return (
     <div
-      className="collection-cover relative isolate flex min-h-[280px] min-w-0 flex-col items-center justify-center overflow-hidden rounded-[15px] bg-[linear-gradient(125deg,var(--cover-a),var(--cover-b))] px-5 py-[60px] pl-7 text-[color:var(--cover-ink)] shadow-[inset_0_1px_0_var(--color-cover-highlight),inset_0_-1px_0_var(--color-cover-edge),2px_1px_3px_var(--color-collection-cover-box-shadow-141)] max-[600px]:min-h-[250px] max-[600px]:px-3 max-[600px]:pl-6"
+      className="collection-cover relative isolate flex min-h-[230px] min-w-0 flex-col items-center justify-center overflow-hidden rounded-[15px] bg-[linear-gradient(125deg,var(--cover-a),var(--cover-b))] px-5 py-[60px] pl-7 text-[color:var(--cover-ink)] shadow-[inset_0_1px_0_var(--color-cover-highlight),inset_0_-1px_0_var(--color-cover-edge),2px_1px_3px_var(--color-collection-cover-box-shadow-141)] max-[600px]:min-h-[250px] max-[600px]:px-3 max-[600px]:pl-6"
       data-illustrated={hasIllustration}
     >
       <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 w-6 rounded-l-[15px] bg-[linear-gradient(90deg,color-mix(in_srgb,currentColor_12%,transparent)_0%,var(--color-cover-highlight)_20%,transparent_40%,color-mix(in_srgb,currentColor_18%,transparent)_64%,color-mix(in_srgb,currentColor_7%,transparent)_80%,transparent_100%)]" />

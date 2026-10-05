@@ -31,6 +31,8 @@ const { loadPlaceFacts } = await import('../apps/server/src/generation/schedulin
 const { poiScore, scoreMaxima } = await import('../apps/server/src/generation/scheduling/score');
 const { createSession } = await import('../apps/server/src/auth/session');
 const { generationRoutes } = await import('../apps/server/src/routes/generations');
+const { notificationRoutes } = await import('../apps/server/src/routes/notifications');
+const { recordGenerationNotification, listNotifications } = await import('../apps/server/src/services/notificationService');
 const { applyDeterministicSchedule } = await import('../apps/server/src/generation/scheduling/buildDraft');
 const { DraftTrip } = await import('../apps/server/src/generation/draft');
 const form = { destination: '北京', days: 3, startDate: '', budgetLevel: '经济' as const,
@@ -48,7 +50,10 @@ const appErrors: unknown[] = [];
 const { installApiResponses } = await import('../apps/server/src/http/apiResponse');
 const app = Fastify();
 installApiResponses(app);
-app.setErrorHandler((error, _request, reply) => { appErrors.push(error); reply.code(500).send({ error: 'test failure' }); });
+app.setErrorHandler((error, _request, reply) => {
+  if (error.validation) { reply.code(400).send({ error: '请求格式错误' }); return; }
+  appErrors.push(error); reply.code(500).send({ error: 'test failure' });
+});
 const counts = async (userId: string) => (await pool.query(
   `SELECT (SELECT count(*)::int FROM trips WHERE user_id=$1) AS trips,
           (SELECT count(*)::int FROM generations WHERE user_id=$1 AND status='done') AS done`, [userId],
@@ -100,6 +105,25 @@ try {
     assert.ok(day.activities.some((a: { name: string }) => a.name.startsWith('晚餐')));
   }
   console.log('PASS 候选不足的美食行程完整生成并同时记账');
+
+  const savedNotice = (await listNotifications(success.userId)).items[0]!;
+  assert.equal(savedNotice.tripId, success.tripId);
+  assert.equal(savedNotice.jobId, success.id);
+  assert.equal(savedNotice.readAt, null);
+  await recordGenerationNotification({ userId: success.userId, jobId: success.id, kind: 'success', tripId: success.tripId,
+    destination: '北京', days: 3, title: '重复通知', message: '', jobCreatedAt: new Date(success.createdAt) });
+  assert.equal((await listNotifications(success.userId)).items.length, 1);
+  console.log('PASS 生成事务持久化正确通知，同一任务幂等去重');
+
+  await pool.query(`CREATE FUNCTION reject_success_notification() RETURNS trigger LANGUAGE plpgsql AS $$
+    BEGIN IF NEW.user_id='notification-rollback' AND NEW.kind='success' THEN RAISE EXCEPTION 'injected notification failure'; END IF; RETURN NEW; END $$`);
+  await pool.query(`CREATE TRIGGER notification_failure BEFORE INSERT ON generation_notifications FOR EACH ROW EXECUTE FUNCTION reject_success_notification()`);
+  const notificationRollback = createJob('notification-rollback');
+  await runGeneration(notificationRollback, form, cfg, logger);
+  assert.equal(notificationRollback.status, 'error');
+  assert.deepEqual(await counts(notificationRollback.userId), { trips: 0, done: 0 });
+  assert.equal((await listNotifications(notificationRollback.userId)).items[0]?.kind, 'error');
+  console.log('PASS 成功通知落库失败整体回滚，不产生虚假成功消息或扣额');
 
   const revision = createJob('success', { kind: 'revision', targetTripId: success.tripId! });
   await runGeneration(revision, form, cfg, logger);
@@ -188,7 +212,40 @@ try {
   const auth = `tw_session=${(await createSession('success')).token}`;
   await app.register(cookie);
   await app.register(generationRoutes, { prefix: '/api/generations' });
+  await app.register(notificationRoutes, { prefix: '/api/notifications' });
   await app.listen({ host: '127.0.0.1', port: 18809 });
+  const notificationRequest = (url: string, method: 'GET' | 'POST' = 'GET', payload?: object) => app.inject({ method, url, headers: { cookie: auth }, ...(payload ? { payload } : {}) });
+  assert.equal((await app.inject({ method: 'GET', url: '/api/notifications' })).statusCode, 401);
+  const beforeRead = (await notificationRequest('/api/notifications')).json().data;
+  assert.equal(beforeRead.hasUnread, true);
+  const cursor = beforeRead.readThrough;
+  await recordGenerationNotification({ userId: 'success', jobId: 'persisted-only', kind: 'success', tripId: success.tripId,
+    destination: '北京', days: 3, title: '新通知', message: '', jobCreatedAt: new Date() });
+  await notificationRequest('/api/notifications/read-all', 'POST', { through: cursor });
+  const afterRead = (await notificationRequest('/api/notifications')).json().data;
+  assert.equal(afterRead.hasUnread, true);
+  assert.equal(afterRead.items.filter((item: { readAt: number | null }) => item.readAt === null).length, 1);
+  const fresh = afterRead.items.find((item: { jobId: string }) => item.jobId === 'persisted-only');
+  await notificationRequest(`/api/notifications/${fresh.id}/read`, 'POST');
+  assert.equal((await notificationRequest('/api/notifications')).json().data.hasUnread, false);
+  const other = (await listNotifications(notificationRollback.userId)).items[0]!;
+  assert.equal((await notificationRequest(`/api/notifications/${other.id}/read`, 'POST')).statusCode, 404);
+  assert.equal((await listNotifications(notificationRollback.userId)).items[0]?.readAt, null);
+  assert.equal((await notificationRequest('/api/notifications?before=-1')).statusCode, 400);
+  const firstPage = (await notificationRequest('/api/notifications?limit=1')).json().data;
+  assert.equal(firstPage.items.length, 1);
+  assert.ok(firstPage.nextCursor);
+  const nextPage = (await notificationRequest(`/api/notifications?limit=1&before=${firstPage.nextCursor}`)).json().data;
+  assert.notEqual(firstPage.items[0].id, nextPage.items[0].id);
+  const persistedSnapshot = (await notificationRequest('/api/generations/persisted-only')).json().data;
+  assert.equal(persistedSnapshot.status, 'done');
+  assert.equal(persistedSnapshot.tripId, success.tripId);
+  assert.equal((await notificationRequest(`/api/generations/${other.jobId}`)).statusCode, 404);
+  const discoverable = createJob('success');
+  assert.equal((await notificationRequest('/api/generations/current')).json().data.jobId, discoverable.id);
+  cancelJob(discoverable);
+  assert.equal((await notificationRequest('/api/generations/current')).json().data, null);
+  console.log('PASS 通知鉴权、分页、未读持久化与已读边界，内存任务过期后恢复结果，按账号发现任务');
   const sse = async (id: string, after = 0) => {
     const response = await fetch(`http://127.0.0.1:18809/api/generations/${id}/events?lastEventId=${after}`, {
       headers: { cookie: auth }, signal: AbortSignal.timeout(3000),

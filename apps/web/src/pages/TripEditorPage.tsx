@@ -6,6 +6,7 @@ import { Value } from '@sinclair/typebox/value';
 import { keys, useTrip, useTripConversation, useTripVersions } from '../api/hooks';
 import { api } from '../api/client';
 import { useEditorSave } from '../hooks/useEditorSave';
+import { useAppNavigation } from '../components/NavigationProvider';
 import { HistoryPanel } from '../components/editor/HistoryPanel';
 import { useEditorStore } from '../store/editorStore';
 import { ChatPanel } from '../components/chat/ChatPanel';
@@ -36,6 +37,14 @@ export function TripEditorPage() {
   const conversationQuery = useTripConversation(id);
   const conversationId = conversationQuery.data?.conversationId ?? null;
   const save = useEditorSave(id, readOnly, (saved) => navigate(`/trips/${saved.id}`, { replace: true }));
+  const { register } = useAppNavigation();
+  const flushRef = useRef(save.flush); flushRef.current = save.flush;
+  useEffect(() => register(async () => {
+    if (operation.current) throw new Error('行程仍在更新，请稍后再离开');
+    if (Object.values(useEditorStore.getState().routeReplans).some((job) => job.status === 'pending')) throw new Error('路线仍在更新，请稍后再离开');
+    await flushRef.current();
+    if (operation.current || Object.values(useEditorStore.getState().routeReplans).some((job) => job.status === 'pending')) throw new Error('行程仍在更新，请稍后再离开');
+  }), [register]);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [restoreId, setRestoreId] = useState<string>();
   const [busy, setBusy] = useState(false);

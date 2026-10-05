@@ -6,6 +6,7 @@ import type {
   GenerateForm,
   GenerationJobView,
   GenerationJobStatus,
+  NotificationPage,
   LoginBody,
   PlanningBriefPatch,
   PlanningBriefView,
@@ -20,7 +21,7 @@ import type {
   TravelPreferences,
   UsageView,
 } from '@tripweaver/shared';
-import { TRIP_LIST_PAGE_SIZE, TravelPreferencesSchema } from '@tripweaver/shared';
+import { TRIP_LIST_PAGE_SIZE, TravelPreferencesSchema, NotificationPageSchema, GenerationJobViewSchema } from '@tripweaver/shared';
 import { Value } from '@sinclair/typebox/value';
 import { api, ApiError, resetAuthState, shouldRetryQuery } from './client';
 
@@ -56,6 +57,8 @@ export const keys = {
   travelPreferences: (userId: string) => ['travel-preferences', userId] as const,
   sourcesStatus: ['sources-status'] as const,
   usage: ['usage'] as const,
+  notifications: (userId: string) => ['notifications', userId] as const,
+  currentGeneration: (userId: string) => ['current-generation', userId] as const,
   coveredCities: ['covered-cities'] as const,
   trips: ['trips'] as const,
   trip: (id: string) => ['trips', id] as const,
@@ -321,8 +324,47 @@ export function useCancelGeneration() {
 }
 
 /** 刷新恢复：查任务快照（404 = 任务过期） */
-export function fetchJobSnapshot(jobId: string): Promise<GenerationJobView> {
-  return api.get<GenerationJobView>(`/api/generations/${jobId}`);
+export async function fetchJobSnapshot(jobId: string): Promise<GenerationJobView> {
+  const data = await api.get<unknown>(`/api/generations/${encodeURIComponent(jobId)}`);
+  if (!Value.Check(GenerationJobViewSchema, data)) throw new Error('生成进度格式异常，请重试');
+  return data;
+}
+
+export function useCurrentGeneration(userId: string) {
+  return useQuery({
+    queryKey: keys.currentGeneration(userId),
+    queryFn: async ({ signal }) => {
+      const data = await api.get<unknown>('/api/generations/current', { signal });
+      if (data === null) return null;
+      if (!Value.Check(GenerationJobViewSchema, data)) throw new Error('生成进度暂时无法读取');
+      return data;
+    },
+    enabled: Boolean(userId), refetchInterval: 15_000, refetchOnWindowFocus: true,
+  });
+}
+
+export function useNotifications(userId: string) {
+  return useInfiniteQuery({
+    queryKey: keys.notifications(userId), initialPageParam: undefined as number | undefined,
+    queryFn: async ({ pageParam, signal }): Promise<NotificationPage> => {
+      const query = pageParam === undefined ? '' : `?before=${pageParam}`;
+      const data = await api.get<unknown>(`/api/notifications${query}`, { signal });
+      if (!Value.Check(NotificationPageSchema, data)) throw new Error('通知暂时无法读取，请重试');
+      return data;
+    },
+    getNextPageParam: (page) => page.nextCursor ?? undefined,
+    enabled: Boolean(userId), refetchInterval: 15_000, refetchOnWindowFocus: true,
+  });
+}
+
+export function useReadNotifications(userId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (target: { id: string } | { through: number }) => 'id' in target
+      ? api.post<{ ok: true }>(`/api/notifications/${encodeURIComponent(target.id)}/read`)
+      : api.post<{ ok: true }>('/api/notifications/read-all', target),
+    onSuccess: () => qc.invalidateQueries({ queryKey: keys.notifications(userId) }),
+  });
 }
 
 // ---------- 问答式入口（09-23） ----------

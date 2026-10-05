@@ -1,93 +1,62 @@
-import { Button } from './ui/Button';
-import { useState } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { useLogout, useMe, useUsage } from '../api/hooks';
-import { SettingsDialog } from './SettingsDialog';
-import { ProfileDialog } from './ProfileDialog';
+import { LoginDialogProvider, useLoginDialog } from './LoginDialogProvider';
+import type { MouseEvent } from 'react';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useLogout, useMe } from '../api/hooks';
+import { Button, IconButton, Spinner } from './ui/Button';
 import { TravelPreferencesProvider, useTravelPreferencesDraft } from './TravelPreferencesProvider';
+import { GenerationProvider, useActiveGeneration } from './GenerationProvider';
+import { NavigationProvider, useAppNavigation } from './NavigationProvider';
+import { NotificationCenter } from './NotificationCenter';
+import { NavigationIcon } from './NavigationIcon';
 
 export function AppLayout() {
   const me = useMe();
-  return <TravelPreferencesProvider key={me.data?.id} userId={me.data?.id ?? ''}>
-    <AppLayoutContent />
-  </TravelPreferencesProvider>;
+  const userId = me.data?.id ?? '';
+  return <LoginDialogProvider><TravelPreferencesProvider key={userId} userId={userId}>
+    <NavigationProvider><GenerationProvider userId={userId}><AppLayoutContent userId={userId} /></GenerationProvider></NavigationProvider>
+  </TravelPreferencesProvider></LoginDialogProvider>;
 }
 
-function AppLayoutContent() {
+function AppLayoutContent({ userId }: { userId: string }) {
   const me = useMe();
-  const usage = useUsage();
   const logout = useLogout();
+  const openLogin = useLoginDialog();
   const navigate = useNavigate();
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
   const preferences = useTravelPreferencesDraft();
+  const navigation = useAppNavigation();
+  const generation = useActiveGeneration();
+  const follow = (event: MouseEvent<HTMLAnchorElement>, to: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    void navigation.go(to);
+  };
+  const generationLink = generation.running && generation.jobId ? `/generations/${encodeURIComponent(generation.jobId)}` : null;
+  const progress = (mobile: boolean) => generationLink && <NavLink to={generationLink} onClick={(event) => follow(event, generationLink)} className={`generation-nav items-center justify-center gap-2 rounded-full border border-solid border-brand/10 bg-brand/[0.07] px-4 text-[13px] font-medium text-brand transition-colors hover:bg-brand/10 focus-visible:outline-2 focus-visible:outline-brand ${mobile ? 'mt-2 flex min-h-10 w-full min-[601px]:hidden' : 'mr-3 flex min-h-10 max-w-[240px] max-[600px]:hidden'}`}><Spinner /><span className="truncate">{generation.destination ? `${generation.destination} · ` : ''}生成中</span><NavigationIcon name="arrow" className="h-4 w-4 shrink-0" /></NavLink>;
 
-  return (
-    <div className={"app-layout [min-height:100vh] flex flex-col [background:var(--color-canvas)_url('/home-bg.png')_center_/_cover_no-repeat] [&:has(.home-page-root)_.app-main]:p-0 [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar]:[padding-top:12px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.brand-en]:hidden [@media_(max-width:_600px)]:[&:has(.editor-page)_.quota-chip]:hidden [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-capsule]:[padding-left:12px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions]:[gap:0] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions_.btn]:[padding:8px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions_.btn]:[font-size:12px] [@media_screen]:[&:has(.editor-page)]:[height:100dvh] [@media_screen]:[&:has(.editor-page)]:min-h-0 [@media_screen]:[&:has(.editor-page)]:overflow-hidden [@media_screen]:[&:has(.editor-page)_.topbar]:shrink-0 [@media_screen]:[&:has(.editor-page)_.app-main]:overflow-hidden [@media_screen]:[&_.editor-page]:flex-1 [@media_screen]:[&_.editor-page]:[height:auto] [@media_screen]:[&_.editor-page]:[max-height:none] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.brand-en]:hidden [@media_(max-width:_600px)]:[&:has(.trip-collection)_.quota-chip]:hidden [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-capsule]:[padding-left:12px] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions]:[gap:0] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions_.btn]:[padding:8px] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions_.btn]:[font-size:12px]"}>
-      <header className={"topbar flex [padding:20px_2.5%_0] sticky [top:0] [z-index:20] [@media_(max-width:_768px)]:[padding:12px_12px_0]"}>
-        <div className={"topbar-capsule flex-1 [height:56px] flex items-center justify-between [padding:0_10px_0_20px] [background:rgba(255,_255,_255,_0.62)] [backdrop-filter:blur(18px)_saturate(1.6)] [-webkit-backdrop-filter:blur(18px)_saturate(1.6)] [border:1px_solid_rgba(255,_255,_255,_0.75)] rounded-full [box-shadow:0_12px_32px_rgba(31,_64,_124,_0.1)]"}>
-          <Link to="/" className={"brand flex items-center [gap:8px] font-bold [font-size:1.1rem] [color:var(--color-ink)]"}>
-            <svg className={"brand-mark [width:30px] [height:22px] flex-none"} viewBox="0 0 34 24" aria-hidden="true">
-              <defs>
-                <linearGradient id="brand-wave" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stopColor="#4f8ef7" />
-                  <stop offset="1" stopColor="#8b5cf6" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M3 16.5c3.6-8 7.2-8 10.8 0s7.2 8 10.8 0"
-                fill="none"
-                stroke="url(#brand-wave)"
-                strokeWidth="4.4"
-                strokeLinecap="round"
-              />
-              <path
-                d="M7.6 8.6c2.4-5.2 4.8-5.2 7.2 0"
-                fill="none"
-                stroke="url(#brand-wave)"
-                strokeWidth="3.4"
-                strokeLinecap="round"
-                opacity="0.7"
-              />
-            </svg>
-            <span className="whitespace-nowrap">织程</span> <span className={"brand-en hidden sm:inline [color:var(--color-brand-en-color-1)] font-semibold"}>TripWeaver</span>
+  return <div className="app-layout flex min-h-dvh flex-col [background:var(--color-canvas)_url('/home-bg.png')_center_/_cover_no-repeat] [&:has(.home-page-root)_.app-main]:p-0 [@media_screen]:[&:has(.editor-page)]:h-dvh [@media_screen]:[&:has(.editor-page)]:min-h-0 [@media_screen]:[&:has(.editor-page)]:overflow-hidden [@media_screen]:[&:has(.editor-page)_.app-main]:overflow-hidden [@media_screen]:[&_.editor-page]:flex-1 [@media_screen]:[&_.editor-page]:h-auto [@media_screen]:[&_.editor-page]:max-h-none">
+    <header className="topbar sticky top-0 z-40 shrink-0 px-[2.5%] pt-4 max-[768px]:px-3 max-[768px]:pt-3">
+      <div className="topbar-capsule flex h-14 items-center justify-between rounded-full border border-solid border-white/75 bg-white/[0.62] pl-6 pr-5 shadow-[0_12px_32px_rgba(31,64,124,0.1)] backdrop-blur-[18px] backdrop-saturate-150 max-[600px]:pl-2 max-[600px]:pr-2">
+        <div className="flex min-w-0 items-center">
+          <Link to="/" onClick={(event) => follow(event, '/')} aria-label="返回首页" title="返回首页" className="brand grid h-11 w-11 shrink-0 place-items-center rounded-full text-ink focus-visible:outline-2 focus-visible:outline-brand">
+            <img className="brand-mark h-9 w-9 object-contain" src="/brand/logo-bird.png" width={256} height={256} alt="" aria-hidden="true" />
           </Link>
-          <div className={"topbar-actions flex shrink-0 items-center gap-2 whitespace-nowrap max-sm:gap-1 max-sm:[&_button]:px-3 max-sm:[&_a]:px-3"}>
-            <Link to="/trips" className={"btn [border:1px_solid_transparent] [border-radius:var(--radius)] [padding:8px_14px] [font-size:0.9rem] cursor-pointer [color:var(--color-text)] inline-flex items-center [gap:4px] [&:disabled]:[opacity:0.55] [&:disabled]:[cursor:not-allowed] btn-ghost [border-color:var(--color-border)] [background:var(--color-card)] [&:not(:disabled):hover]:[border-color:var(--color-primary)] [&:not(:disabled):hover]:[color:var(--color-primary)]"}>
-              我的行程
-            </Link>
-            {usage.data && (
-              <span className={"quota-chip [font-size:0.8rem] [color:var(--color-primary-dark)] [background:var(--color-quota-chip-background-2)] rounded-full [padding:4px_10px] [@media_(max-width:_768px)]:hidden"} title="每日生成次数将在次日零点重置">
-                今日可生成 {usage.data.remaining}/{usage.data.dailyLimit} 次
-              </span>
-            )}
-            <Button variant="secondary" type="button" className="max-sm:!px-2 max-sm:text-xs" onClick={() => setProfileOpen(true)}>
-              个人资料
-            </Button>
-            <Button variant="secondary" type="button" className="max-sm:!px-2 max-sm:text-xs" onClick={() => setSettingsOpen(true)}>
-              设置
-            </Button>
-            <Button variant="secondary"
-              type="button"
-              className="max-sm:!px-2 max-sm:text-xs"
-              disabled={preferences.saving}
-              onClick={() =>
-                logout.mutate(undefined, {
-                  onSuccess: () => navigate('/login', { replace: true }),
-                })
-              }
-            >
-              退出
-            </Button>
-          </div>
+          <nav aria-label="主导航" className="ml-8 flex items-center gap-3 max-[600px]:ml-1 max-[600px]:gap-1">
+            {([{ to: '/', label: '首页' }, { to: '/trips', label: '我的行程' }] as const).filter(({ to }) => to === '/' || Boolean(userId)).map(({ to, label }) => <NavLink key={to} to={to} end={to === '/'} onClick={(event) => follow(event, to)} className={({ isActive }) => `flex min-h-11 items-center whitespace-nowrap rounded-2xl px-6 text-base font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-brand max-[600px]:px-3 max-[600px]:text-sm ${isActive ? 'bg-brand/10 text-brand' : 'text-ink hover:bg-white/60'}`}>{label}</NavLink>)}
+          </nav>
         </div>
-      </header>
-      <main className={"app-main flex-1 flex flex-col min-h-0 [padding:0_2.5%] [@media_(max-width:_768px)]:[padding:0_12px]"}>
-        <Outlet />
-      </main>
-      {settingsOpen && <SettingsDialog email={me.data?.email ?? ''} onClose={() => setSettingsOpen(false)} />}
-      {profileOpen && <ProfileDialog email={me.data?.email ?? ''} onClose={() => setProfileOpen(false)} />}
-    </div>
-  );
+        <div className="topbar-actions flex shrink-0 items-center gap-6 max-[600px]:gap-1">
+          {progress(false)}
+          {userId && <NotificationCenter userId={userId} />}
+          {userId ? <IconButton variant="plain" aria-label="退出登录" title="退出登录" className="grid h-11 w-11 place-items-center rounded-full text-ink transition-colors hover:bg-white/70 disabled:opacity-40" disabled={preferences.saving || logout.isPending || navigation.pending} onClick={() => void navigation.perform(async () => {
+            await navigate('/', { replace: true, state: null });
+            await logout.mutateAsync();
+            sessionStorage.removeItem('tw.activeJobId');
+          })}><NavigationIcon name="logout" /></IconButton> : <Button variant="primary" disabled={!me.isSuccess} onClick={() => openLogin()}>{me.isPending ? '加载中…' : me.isError ? '暂不可用' : '登录'}</Button>}
+        </div>
+      </div>
+      {progress(true)}
+    </header>
+    {navigation.error && <div role="alert" className="mx-auto mt-3 flex max-w-[calc(100%-24px)] items-center gap-3 rounded-xl bg-white/95 px-4 py-2 text-sm text-[var(--color-danger)] shadow-sm"><span>{navigation.error}</span><Button variant="plain" className="min-h-11 shrink-0 px-2 text-ink-muted" onClick={navigation.clearError}>关闭</Button></div>}
+    <main className="app-main flex min-h-0 flex-1 flex-col px-[2.5%] max-[768px]:px-3"><Outlet /></main>
+  </div>;
 }
-

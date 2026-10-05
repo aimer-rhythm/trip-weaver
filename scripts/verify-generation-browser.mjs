@@ -165,12 +165,21 @@ try {
   console.log('PASS 取消 pending/失败重试/权威终态与配额不变，返回首页');
 
   await begin();
+  await page.getByRole('link', { name: '首页', exact: true }).click();
+  await page.getByRole('button', { name: /节奏与同行/ }).click();
+  await page.getByRole('button', { name: /^轻松悠闲/ }).click();
+  await page.getByRole('button', { name: '关闭节奏与同行', exact: true }).click();
+  await page.locator('.notification-toast').waitFor({ timeout: 35_000 });
+  assert.equal(new URL(page.url()).pathname, '/');
+  assert.match(await page.getByRole('button', { name: /节奏与同行/ }).innerText(), /轻松悠闲/);
+  assert.equal((await json('/api/settings/travel-preferences')).pace, 'tight', '完成时记住提交快照，不误存首页新草稿');
+  await page.locator('.notification-toast').getByRole('button', { name: /查看行程/ }).click();
   await editor();
   assert.equal(generationPosts.length, 4);
   assert.equal((await json('/api/usage')).remaining, usageBefore.remaining - 1);
   assert.deepEqual(browserErrors, []);
   assert.ok(!serverOutput.includes('ReferenceError'));
-  console.log('PASS 取消释放运行锁，随后新任务成功；浏览器无未处理异常');
+  console.log('PASS 取消释放运行锁，随后新任务成功；后台完成不抢页面、不覆盖新偏好草稿，通知可打开详情；浏览器无未处理异常');
 } catch (error) {
   await mkdir('verify-shots', { recursive: true });
   if (page) {

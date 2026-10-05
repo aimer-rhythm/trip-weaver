@@ -6,7 +6,8 @@ import { useLoginDialog } from '../components/LoginDialogProvider';
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCoveredCities, useMe } from '../api/hooks';
+import { useCoveredCities, useUsage, useMe } from '../api/hooks';
+import { useActiveGeneration } from '../components/GenerationProvider';
 import { ChinaMap, type MapCityDot } from '../components/home/ChinaMap';
 import { HomeCapsule, type HomeTripDraft } from '../components/home/HomeCapsule';
 import { CITY_GEO, projectToSvg } from '../lib/chinaMap';
@@ -17,9 +18,12 @@ const HEADLINE = '想去哪座城市？';
 export function HomePage() {
   const covered = useCoveredCities();
   const navigate = useNavigate();
+  const generation = useActiveGeneration();
   const me = useMe();
   const openLogin = useLoginDialog();
+  const usage = useUsage(Boolean(me.data));
   const [selected, setSelected] = useState<string | null>(null);
+
   const cities = useMemo(() => covered.data?.cities ?? [], [covered.data]);
 
   const mapCities = useMemo(
@@ -92,8 +96,10 @@ export function HomePage() {
             {notice}
           </p>
         ) : (
-          <HomeCapsule city={selected} cities={cities} onSelectCity={setSelected} onStart={start} />
+          <HomeCapsule city={selected} cities={cities} onSelectCity={setSelected} onStart={start}
+            onOpenGeneration={generation.running && generation.jobId ? () => navigate(`/generations/${encodeURIComponent(generation.jobId!)}`) : undefined} />
         )}
+        {usage.data && <p className="mb-0 mt-3 text-center text-xs text-ink-muted" title="每日生成次数将在次日零点重置">今日可生成 {usage.data.remaining}/{usage.data.dailyLimit} 次</p>}
       </div>
     </div>
   );

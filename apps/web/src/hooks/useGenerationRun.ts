@@ -12,6 +12,7 @@ export const ACTIVE_JOB_KEY = 'tw.activeJobId';
 
 export interface GenerationRun {
   jobId: string | null;
+  completed: { jobId: string; tripId: string } | null;
   events: GenerationEvent[];
   /** 首次挂载时正在查快照（决定重连 / 跳走 / 全新开始） */
   restoring: boolean;
@@ -29,8 +30,10 @@ export interface GenerationRun {
 }
 
 interface Options {
+  enabled?: boolean;
   /** 生成成功后的落地动作（通常是跳转行程编辑器） */
-  onDone: (tripId: string) => void;
+  onDone: (tripId: string, jobId: string) => void;
+  onStarted?: (jobId: string) => void;
 }
 
 function formatResetTime(resetAt: number): string {
@@ -43,20 +46,23 @@ function cancellationErrorMessage(error: unknown): string {
   return '取消请求失败，请重试';
 }
 
-export function useGenerationRun({ onDone }: Options): GenerationRun {
+export function useGenerationRun({ onDone, onStarted, enabled = true }: Options): GenerationRun {
   const qc = useQueryClient();
   const startMutation = useStartGeneration();
   const cancel = useCancelGeneration();
 
   const [jobId, setJobId] = useState<string | null>(null);
+  const [completed, setCompleted] = useState<GenerationRun['completed']>(null);
   const [events, setEvents] = useState<GenerationEvent[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [restoring, setRestoring] = useState(() => Boolean(sessionStorage.getItem(ACTIVE_JOB_KEY)));
+  const [restoring, setRestoring] = useState(() => enabled && Boolean(sessionStorage.getItem(ACTIVE_JOB_KEY)));
 
   const activeJobIdRef = useRef<string | null>(null);
   const eventSourceRef = useRef<EventSource | null>(null);
   const onDoneRef = useRef(onDone);
   onDoneRef.current = onDone;
+  const onStartedRef = useRef(onStarted);
+  onStartedRef.current = onStarted;
 
   const resetCancel = cancel.reset;
   const clearJob = useCallback(() => {
@@ -65,12 +71,15 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
     sessionStorage.removeItem(ACTIVE_JOB_KEY);
     activeJobIdRef.current = null;
     setJobId(null);
+    setCompleted(null);
+    setErrorMessage(null);
     setEvents([]);
     resetCancel();
   }, [resetCancel]);
 
   // 刷新恢复：先查快照，再决定重连 SSE / 跳走 / 什么也不做
   useEffect(() => {
+    if (!enabled) return;
     const saved = sessionStorage.getItem(ACTIVE_JOB_KEY);
     if (!saved) return;
     let alive = true;
@@ -82,17 +91,22 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
           setJobId(saved); // 重连 SSE：全量重放重建时间线
         } else if (snap.status === 'done' && snap.tripId) {
           sessionStorage.removeItem(ACTIVE_JOB_KEY);
-          onDoneRef.current(snap.tripId);
+          setCompleted({ jobId: saved, tripId: snap.tripId });
+          onDoneRef.current(snap.tripId, saved);
         } else {
           sessionStorage.removeItem(ACTIVE_JOB_KEY);
         }
       })
-      .catch(() => sessionStorage.removeItem(ACTIVE_JOB_KEY))
+      .catch((error) => {
+        if (!alive) return;
+        if (error instanceof ApiError && (error.status === 404 || error.status === 401)) sessionStorage.removeItem(ACTIVE_JOB_KEY);
+        else setErrorMessage('暂时无法恢复生成进度，请检查网络后重试');
+      })
       .finally(() => alive && setRestoring(false));
     return () => {
       alive = false;
     };
-  }, []);
+  }, [enabled]);
 
   // SSE：EventSource 断线自带 Last-Event-ID 重连；首连用 lastEventId=0 全量重放
   useEffect(() => {
@@ -127,7 +141,8 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
         void qc.invalidateQueries({ queryKey: keys.usage });
         if (ev.type === 'job_done') {
           void qc.invalidateQueries({ queryKey: keys.trips });
-          onDoneRef.current(ev.tripId);
+          setCompleted({ jobId, tripId: ev.tripId });
+          onDoneRef.current(ev.tripId, jobId);
         }
       }
     };
@@ -135,7 +150,21 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
       if (!active || gotTerminal || checkingSnapshot) return;
       // 浏览器会自动重连；若任务已不在（服务重启/过期），快照 404 时收尾
       checkingSnapshot = true;
-      fetchJobSnapshot(jobId).catch((err) => {
+      fetchJobSnapshot(jobId).then((snap) => {
+        if (!active || gotTerminal || snap.status === 'running') return;
+        gotTerminal = true;
+        es.close();
+        sessionStorage.removeItem(ACTIVE_JOB_KEY);
+        void qc.invalidateQueries({ queryKey: keys.usage });
+        if (snap.status === 'done' && snap.tripId) {
+          setCompleted({ jobId, tripId: snap.tripId });
+          setEvents((prev) => [...prev, { type: 'job_done', tripId: snap.tripId!, usedXhs: false, dataSources: [], reviewNotes: [] }]);
+          void qc.invalidateQueries({ queryKey: keys.trips });
+          onDoneRef.current(snap.tripId, jobId);
+        } else {
+          setEvents((prev) => [...prev, snap.status === 'cancelled' ? { type: 'job_cancelled' } : { type: 'job_error', message: snap.message ?? '生成未完成，请回首页重试' }]);
+        }
+      }).catch((err) => {
         if (!active || gotTerminal) return;
         if (err instanceof ApiError && err.status === 401) {
           gotTerminal = true;
@@ -167,6 +196,9 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
   const start = useCallback(
     (form: GenerationRequest) => {
       setErrorMessage(null);
+      setCompleted(null);
+      setJobId(null);
+      setEvents([]);
       startMutation.mutate(form, {
         onSuccess: ({ jobId: id }) => {
           resetCancel();
@@ -174,6 +206,7 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
           setEvents([]);
           activeJobIdRef.current = id;
           setJobId(id);
+          onStartedRef.current?.(id);
         },
         onError: (err) => {
           if (!(err instanceof ApiError)) {
@@ -187,7 +220,7 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
             setErrorMessage(
               err.data?.hasSiteKey
                 ? '站点 AI 配置异常，请联系站长。'
-                : '本站未配置 AI 服务：普通用户请联系站长开通；也可以在「设置 → 高级选项」填入自己的 API Key 立即使用。',
+                : '本站尚未配置 AI 服务，请联系站长开通后再试。',
             );
           } else if (err.status === 409 && typeof err.data?.jobId === 'string') {
             // 已有任务进行中 → 直接接管进度
@@ -232,7 +265,10 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
   /** 接管一个已在跑的任务（R3：服务端自动触发的生成，前端直接进进度视图） */
   const adopt = useCallback(
     (id: string) => {
+      if (activeJobIdRef.current === id) return;
       resetCancel();
+      setErrorMessage(null);
+      setCompleted(null);
       sessionStorage.setItem(ACTIVE_JOB_KEY, id);
       setEvents([]);
       activeJobIdRef.current = id;
@@ -243,6 +279,7 @@ export function useGenerationRun({ onDone }: Options): GenerationRun {
 
   return {
     jobId,
+    completed,
     events,
     restoring,
     starting: startMutation.isPending,

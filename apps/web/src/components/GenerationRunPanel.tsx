@@ -227,6 +227,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
             <defs><linearGradient id={brushId}><stop stopColor="#eee5ff" stopOpacity="0" /><stop offset=".35" stopColor="#c9b1fc" /><stop offset=".7" stopColor="#99cfff" /><stop offset="1" stopColor="#c9b1fc" stopOpacity="0" /></linearGradient></defs>
             <path d="M4 29C88 7 183 1 245 6c16 2-10 12 5 9s63-11 70-7-8 7 5 6 65-7 109 3" stroke={`url(#${brushId})`} strokeWidth="4" strokeLinecap="round" />
           </svg>
+          <p className="mx-4 mb-2 mt-1 text-center text-[13px] leading-6 text-ink-muted">你可以先去看看其他行程，生成完成后会在站内通知你。</p>
           {banner && <p className="m-0 rounded-full bg-white/60 px-4 py-1 text-[0.8rem] text-ink-muted backdrop-blur-md">{banner}</p>}
         </header>
       )}

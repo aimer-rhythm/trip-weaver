@@ -11,13 +11,16 @@ Use state according to its lifetime and authority:
 | Server resources and mutation status | React Query |
 | Shared editor draft plus editor-only filter | Zustand editor store |
 | Refresh recovery for an in-progress generation job | `sessionStorage` |
-| Live generation timeline | Local state derived from replayable SSE events |
+| Live generation timeline | AppLayout 的 GenerationProvider 持有可重放 SSE 状态，独立生成页消费 |
+| Account notifications / current running job | React Query，按账号缓存与服务端持久通知/任务查询 |
 
 Evidence: `apps/web/src/pages/LoginPage.tsx`, `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/pages/TripEditorPage.tsx`.
 
 There is currently no `localStorage` usage in `apps/web`. Add it only for intentionally durable, non-sensitive browser preferences that should survive browser restarts. Do not use it for auth, authoritative trips, API keys, or server cache. Version and guard any persisted value because storage contents are untrusted and may outlive code changes.
 
 ## React Query Is Server State
+
+全局导航、独立生成路由、通知未读及离开编辑器保存的执行约定见 [导航与生成通知](../../server/backend/generation-notifications.md)。生成完成不在全局回调导航；仅可见的对应生成页自动进入详情。
 
 React Query owns authenticated user data, settings, usage, trip collections, and trip details. Components should consume hooks rather than copying fetched server data into another global store by default. Mutation cache effects belong beside the mutation in `api/hooks.ts`. Generation restoration is a narrow exception: its snapshot is fetched as a one-shot command and used immediately to decide whether to reconnect, navigate, or clear recovery state.
 

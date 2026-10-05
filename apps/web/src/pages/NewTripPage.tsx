@@ -3,8 +3,8 @@
 // （首页是唯一的收集入口，见 .trellis/tasks/archive/2026-10/09-27-home-followups/prd.md）。
 // 提交链路：惰性建会话 → PATCH 写入 Brief 快照（编辑器内嵌对话靠会话关联反查）→ POST /api/generations。
 // Brief → GenerateForm 的映射复用 shared 的 briefToGenerateForm，前端不另写一套。
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import {
   MAX_TRIP_DAYS,
   PACE_OPTIONS,
@@ -18,9 +18,7 @@ import {
   type TripPace,
 } from '@tripweaver/shared';
 import { useCoveredCities, useCreateConversation, useSaveBriefSnapshot, useUsage } from '../api/hooks';
-import { GenerationRunPanel } from '../components/GenerationRunPanel';
-import { useGenerationRun } from '../hooks/useGenerationRun';
-import { useTravelPreferencesDraft } from '../components/TravelPreferencesProvider';
+import { useActiveGeneration } from '../components/GenerationProvider';
 import { daysBetween, isISODate, isoDateAfter } from '../lib/dates';
 
 type Preference = (typeof PREFERENCE_OPTIONS)[number];
@@ -64,7 +62,6 @@ function parseDraft(params: URLSearchParams): TripDraft {
 }
 
 export function NewTripPage() {
-  const navigate = useNavigate();
   const [params, setSearchParams] = useSearchParams();
 
   const covered = useCoveredCities();
@@ -77,19 +74,9 @@ export function NewTripPage() {
   // 否则清参数的瞬间就把自己判成「非直达访问」踢回首页（start 还在建会话/写 Brief）。
   const autostartRequested = useRef(params.get('autostart') === '1').current;
   const [error, setError] = useState<string | null>(null);
-  const [doneTripId, setDoneTripId] = useState<string | null>(null);
-
-  const { persist } = useTravelPreferencesDraft();
-  const persistRef = useRef(persist);
-  persistRef.current = persist;
-
-  const openTrip = useCallback((tripId: string) => {
-    // 生成成功才算“记住了上一轮选择”：首页草稿在这里提交给账号。
-    // 失败不阻塞跳转，错误留在 Provider 里，下次打开偏好面板能看到并重试。
-    void persistRef.current();
-    setDoneTripId(tripId);
-  }, []);
-  const run = useGenerationRun({ onDone: openTrip });
+  const run = useActiveGeneration();
+  const completedAtEntry = useRef(run.completed?.jobId);
+  const doneTripId = run.completed && run.completed.jobId !== completedAtEntry.current ? run.completed.tripId : null;
 
   const briefData = useMemo<PlanningBriefData>(
     () => ({
@@ -146,7 +133,7 @@ export function NewTripPage() {
   // 否则会与恢复流程抢着发一次生成。（无依赖数组：每渲染后只做一次很轻的守卫检查）
   const autoStarted = useRef(false);
   useEffect(() => {
-    if (autoStarted.current || run.restoring || run.jobId || doneTripId) return;
+    if (autoStarted.current || run.restoring || run.discovering || run.running || doneTripId) return;
     if (params.get('autostart') !== '1') return;
     if (blocked || busy) return;
     autoStarted.current = true;
@@ -161,7 +148,7 @@ export function NewTripPage() {
   });
 
   // ---------- 生成中 / 恢复 ----------
-  if (run.restoring) {
+  if (run.restoring || run.discovering) {
     return (
       <div className={"page w-full [max-width:880px] [margin:0_auto] [padding:20px_16px_48px]"}>
         <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>正在恢复生成进度…</div>
@@ -170,23 +157,7 @@ export function NewTripPage() {
   }
 
   // 生成成功直接进详情页：doneTripId 一置就不再渲染进度面板，下面的 Navigate 接管
-  if (run.jobId && !doneTripId) {
-    return (
-      <GenerationRunPanel
-        events={run.events}
-        city={draft.city}
-        days={draft.days}
-        cancelling={run.cancelPending}
-        cancellationError={run.cancellationError}
-        onCancel={run.cancel}
-        onReset={() => {
-          run.reset();
-          navigate('/', { replace: true });
-        }}
-        onOpenTrip={(tripId) => navigate(`/trips/${tripId}`)}
-      />
-    );
-  }
+  if (run.running && run.jobId) return <Navigate to={`/generations/${encodeURIComponent(run.jobId)}`} replace />;
 
   // 生成成功即接管：实时 SSE 与快照恢复两条路都落在这里，不再显示进度面板的终态卡片。
   if (doneTripId) return <Navigate to={`/trips/${doneTripId}`} replace />;
