@@ -106,7 +106,7 @@ result; an in-flight save is not labelled successful. Both pending and historica
 
 ## URL, Session, and SSE State
 
-账号偏好使用 AppLayout 下按 userId 隔离的 `TravelPreferencesProvider`：React Query 管理服务器快照，本地草稿支持首页与个人资料共同编辑。首页只改草稿，不写账号也不显示保存状态；生成行程成功的回调调用 `persist()` 才把这一轮选择提交给账号（生成失败、刷新、退出都丢弃草稿）。个人资料弹窗传 `autoSave`，500ms 防抖后同样调 `persist()`，关闭弹窗时补写未到点的草稿；mutation scope 串行提交，旧回执不能清除新草稿，失败保留输入并重试。只记住偏好、出行方式、200 字备注。见 [完整契约](../../server/backend/travel-preferences.md)。
+账号偏好使用 AppLayout 下按 userId 隔离的 `TravelPreferencesProvider`：React Query 管理服务器快照，本地草稿支持首页与个人资料共同编辑。首页只改草稿，不写账号也不显示保存状态；生成行程成功后，由全局 GenerationProvider 调 `persist(snapshot)` 保存实际提交快照；切页保留新草稿，旧回执不能清除它，保存失败可重试原快照。导航已移除个人资料入口；旧组件保留，不再作为可达操作。只记住偏好、出行方式、200 字备注。见 [完整契约](../../server/backend/travel-preferences.md)。
 
 Use URL state for navigation-relevant values: route ids, OAuth error codes, and the post-login return path. Treat route and search values as untrusted strings and narrow them before use.
 

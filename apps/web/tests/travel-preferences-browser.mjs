@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
+import { makeSampleTrip } from '../../../packages/shared/src/sample.ts';
 import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true,
@@ -12,19 +13,14 @@ page.on('pageerror', (error) => errors.push(error.message));
 const defaults = () => ({ preferences: [], transportMode: 'transit', pace: null, partySize: 2, extraNotes: '' });
 const saved = { a: defaults(), b: defaults() };
 let account = 'a';
-let failSave = false;
 let failLoad = false;
-let slowSave = false;
+let failSave = false;
 let generationOk = false;
 let activeWrites = 0;
-let maxWrites = 0;
 let brief;
 let briefUrl = '';
 let generation;
 const writes = [];
-let expireTrips = false;
-let saveGate;
-let releaseSave;
 await page.route((url) => url.pathname.startsWith('/api/'), async (route) => {
   const req = route.request();
   const path = new URL(req.url()).pathname;
@@ -36,9 +32,13 @@ await page.route((url) => url.pathname.startsWith('/api/'), async (route) => {
     return ok({ id: account, email: `${account}@example.test` });
   }
   if (path === '/api/auth/logout') return ok({ ok: true });
-  if (path === '/api/trips') return expireTrips
-    ? route.fulfill({ status: 401, json: apiFailure(401, '请重新登录') })
-    : ok({ items: [], total: 0, destinations: [] });
+  if (path === '/api/trips') return ok({ items: [], total: 0, destinations: [] });
+  if (path === '/api/notifications') return ok({ items: [], hasUnread: false, readThrough: 0, nextCursor: null });
+  if (path === '/api/generations/current') return ok(null);
+  if (path === '/api/generations/job-success') return ok({ jobId: 'job-success', status: 'done', tripId: 'trip-generated', createdAt: Date.now() });
+  if (path === '/api/trips/trip-generated') return ok({ ...makeSampleTrip(Date.now()), id: 'trip-generated' });
+  if (path.endsWith('/versions')) return ok({ versions: [{ id: 'trip-generated', version: 1, title: '测试行程', createdAt: Date.now() }] });
+  if (path.endsWith('/conversation')) return ok({ conversationId: null });
   if (path === '/api/usage') return ok({ remaining: 5, dailyLimit: 5 });
   if (path === '/api/destinations/covered') return ok({ cities: ['北京', '杭州'] });
   if (path === '/api/settings/travel-preferences') {
@@ -47,11 +47,8 @@ await page.route((url) => url.pathname.startsWith('/api/'), async (route) => {
       ? route.fulfill({ status: 500, json: apiFailure(500, '加载失败') }) : ok(saved[owner]);
     if (failSave) return route.fulfill({ status: 500, json: apiFailure(500, '保存失败') });
     activeWrites++;
-    maxWrites = Math.max(maxWrites, activeWrites);
     const body = req.postDataJSON();
     writes.push(body);
-    if (saveGate) await saveGate;
-    if (slowSave) await new Promise((resolve) => setTimeout(resolve, 1100));
     saved[owner] = body;
     activeWrites--;
     return ok(body);
@@ -159,63 +156,21 @@ try {
   assert.equal(await page.getByRole('button', { name: /少走路/ }).getAttribute('aria-pressed'), 'true', '节奏应随账号记忆预选');
   await page.getByText('3 人同行', { exact: true }).waitFor();
 
-  // 个人资料：即时保存，且与首页共用同一份值
-  await page.getByRole('button', { name: '个人资料', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: '个人资料' });
-  await dialog.waitFor();
-  assert.equal(await dialog.getByLabel('备注').inputValue(), submittedNotes);
-  slowSave = true;
-  await dialog.getByLabel('备注').fill('第一版');
-  await page.waitForFunction(() => document.querySelector('dialog textarea')?.value === '第一版');
-  await page.waitForResponse((res) => res.request().method() === 'PUT');
-  await dialog.getByLabel('备注').fill('第二版');
-  // 等第二次开始写入，再修改，覆盖在途请求场景。
-  await page.waitForRequest((req) => req.method() === 'PUT');
-  await dialog.getByLabel('备注').fill('最后一版：带小孩一起');
-  await waitSaved({ extraNotes: '最后一版：带小孩一起' });
-  assert.equal(saved.a.extraNotes, '最后一版：带小孩一起');
-  assert.equal(maxWrites, 1);
-  slowSave = false;
-  failSave = true;
-  await dialog.getByLabel('备注').fill('失败后仍保留的备注');
-  await page.getByText('保存失败，当前修改尚未记住', { exact: true }).waitFor();
-  failSave = false;
-  await dialog.getByRole('button', { name: '重试', exact: true }).click();
-  await waitSaved({ extraNotes: '失败后仍保留的备注' });
-  assert.equal(saved.a.extraNotes, '失败后仍保留的备注');
-  await page.screenshot({ path: 'data/travel-preferences-review/profile-desktop.png' });
-  await page.keyboard.press('Escape');
-  await dialog.waitFor({ state: 'hidden' });
-  assert.equal(await page.getByRole('button', { name: '个人资料', exact: true }).evaluate((el) => el === document.activeElement), true);
-
-  // 清空
+  // 个人资料入口已移除，偏好继续在首页管理；窄屏不溢出。
+  assert.equal(await page.getByRole('button', { name: '个人资料', exact: true }).count(), 0);
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.getByRole('button', { name: '个人资料', exact: true }).click();
-  await dialog.waitFor();
-  await checkBounds();
-  await page.screenshot({ path: 'data/travel-preferences-review/profile-mobile.png' });
-  await dialog.getByRole('button', { name: /清空偏好/ }).click();
-  await waitSaved(defaults());
-  await page.reload();
   await openMore();
-  assert.deepEqual(saved.a, defaults());
-  assert.equal(await page.getByLabel('备注').inputValue(), '');
   await checkBounds();
   await page.screenshot({ path: 'data/travel-preferences-review/home-mobile.png' });
   await page.setViewportSize({ width: 1440, height: 960 });
-  await checkBounds();
 
-  // 账号隔离
-  await page.getByRole('button', { name: '个人资料', exact: true }).click();
-  await dialog.getByLabel('备注').fill('账号 A 的个性化要求');
-  await waitSaved({ extraNotes: '账号 A 的个性化要求' });
-  await page.keyboard.press('Escape');
-  await dialog.waitFor({ state: 'hidden' });
+  // 未提交草稿在账号切换后清理，账号 B 不继承 A 的记忆。
+  await page.getByLabel('备注').fill('尚未生成的新草稿');
   account = 'b';
   await page.reload();
   await openMore();
   assert.equal(await page.getByLabel('备注').inputValue(), '');
-  assert.equal(saved.b.extraNotes, '');
+  assert.deepEqual(saved.b, defaults());
 
   failLoad = true;
   await page.reload();
@@ -225,48 +180,32 @@ try {
   await page.getByRole('button', { name: '重试', exact: true }).click();
   await page.getByLabel('备注').waitFor();
 
-  // 正常退出/登录走同一个 SPA，验证缓存清理和重新登录后的服务端恢复。
-  await page.getByRole('button', { name: '退出', exact: true }).click();
+  // 图标退出、同一 SPA 重新登录，恢复账号 A 上次生成成功时的偏好。
+  await page.getByRole('button', { name: '退出登录', exact: true }).click();
   await page.getByLabel('邮箱').fill('a@example.test');
   await page.getByLabel('密码', { exact: true }).fill('fixture-password');
   await page.getByRole('button', { name: '登录', exact: true }).click();
-  await page.getByRole('link', { name: /织程/ }).click();
+  await page.getByRole('link', { name: '返回首页', exact: true }).click();
   await openMore();
-  assert.equal(await page.getByLabel('备注').inputValue(), '账号 A 的个性化要求');
-
-  // 第一笔在途、第二笔排队；另一个请求返回 401 后登录 B，旧队列不得写入 B。
-  saveGate = new Promise((resolve) => { releaseSave = resolve; });
-  await page.getByRole('button', { name: '个人资料', exact: true }).click();
-  await dialog.waitFor();
-  const firstWrite = page.waitForRequest((req) => req.method() === 'PUT');
-  await dialog.getByLabel('备注').fill('A 已发送的备注');
-  await firstWrite;
-  await dialog.getByLabel('备注').fill('A 排队中的备注');
-  // 等待 500ms 防抖触发排队，第一笔仍由 gate 保持在途。
-  await page.waitForTimeout(700);
-  assert.equal(await page.getByRole('button', { name: '退出', exact: true }).isDisabled(), true);
-  await page.keyboard.press('Escape');
-  await dialog.waitFor({ state: 'hidden' });
-  expireTrips = true;
-  await page.getByRole('link', { name: '我的行程', exact: true }).click();
-  await page.getByLabel('邮箱').fill('b@example.test');
-  await page.getByLabel('密码', { exact: true }).fill('fixture-password');
-  expireTrips = false;
-  await page.getByRole('button', { name: '登录', exact: true }).click();
-  await page.getByRole('button', { name: '个人资料', exact: true }).click();
-  await dialog.getByText('b@example.test', { exact: true }).waitFor();
-  const writesBeforeRelease = writes.length;
-  const pendingResponse = page.waitForResponse((res) => res.request().method() === 'PUT');
-  saveGate = undefined;
-  releaseSave();
-  await pendingResponse;
-  await dialog.getByLabel('备注').fill('B 独立的备注');
-  await waitSaved({ extraNotes: 'B 独立的备注' });
-  assert.equal(writes.length, writesBeforeRelease + 1, '过期账号排队中的保存必须在发送前取消');
-  assert.equal(saved.a.extraNotes, 'A 已发送的备注');
-  assert.equal(saved.b.extraNotes, 'B 独立的备注');
+  assert.equal(await page.getByLabel('备注').inputValue(), submittedNotes);
+  assert.equal(writes.length, 1);
+  // 生成已成功但偏好保存失败，提示可重试，重试仍写这次提交的快照。
+  await pickTrip();
+  await openMore();
+  await page.getByLabel('备注').fill('等待重试的生成偏好');
+  failSave = true;
+  const failedPut = page.waitForResponse((res) => res.request().method() === 'PUT' && res.status() === 500);
+  await page.getByRole('button', { name: '开始规划', exact: true }).click();
+  await failedPut;
+  await page.waitForURL('**/trips/trip-generated');
+  await page.getByRole('link', { name: '首页', exact: true }).click();
+  await openMore();
+  await page.getByText('保存失败，当前修改尚未记住', { exact: true }).waitFor();
+  failSave = false;
+  await page.getByRole('button', { name: '重试', exact: true }).click();
+  await waitSaved({ extraNotes: '等待重试的生成偏好' });
   assert.deepEqual(errors, []);
-  console.log('PASS 首页选择仅在生成成功后记忆（含节奏与同行人数）、生成失败与刷新不写账号、个人资料即时保存与串行写入、失败重试、清空、账号隔离、会话切换队列隔离、移动端边界与 Escape');
+  console.log('PASS 首页偏好仅生成成功后记忆；失败、刷新不写账号；移除资料入口、手机边界、加载重试及退出登录账号隔离');
 } catch (error) {
   console.error('Page errors:', errors);
   console.error('Visible page:', await page.locator('body').innerText());

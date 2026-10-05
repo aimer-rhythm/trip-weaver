@@ -2,7 +2,7 @@
 
 ## 1. 适用范围
 
-首页“偏好与出行”“节奏与同行”与右上角“个人资料”共用当前账号最近一次偏好设置。保存偏好标签、交通方式、旅行节奏、同行人数与备注；目的地、日期及多套历史不在此契约中。
+首页“偏好与出行”“节奏与同行”共用当前账号最近一次偏好设置。2026-10-05 已删除导航“个人资料”入口，保留底层字段组件。保存偏好标签、交通方式、旅行节奏、同行人数与备注；目的地、日期及多套历史不在此契约中。
 
 ## 2. 接口与存储
 
@@ -20,14 +20,14 @@
 
 PUT 使用路由级 `validatorCompiler` 和 `@sinclair/typebox/value` 的 `Value.Check` 校验原始 body；禁止 AJV 默认类型转换或移除未知字段，避免 `extraNotes: null` 被转换成空备注而覆盖旧记录。当前共享 schema 属于 `@sinclair/typebox`，不要混用另一套 `typebox` validator。
 
-`TravelPreferencesProvider` 放在 AppLayout，按 userId 重建；本地草稿覆盖服务器快照，不自动写库。两种提交入口：
+`TravelPreferencesProvider` 放在 AppLayout，按 userId 重建；本地草稿覆盖服务器快照，不自动写库。当前可达入口为首页：
 
-- 首页：只写本地草稿，不调 PUT，也不显示保存状态。生成行程成功后（`useGenerationRun` 的 `onDone`）由 NewTripPage 调 `persist()` 一次性提交这一轮选择。生成失败、刷新、退出、账号切换都会丢弃草稿。
-- **个人资料弹窗**：`TravelPreferencesFields` 传 `autoSave`，改动 500ms 防抖后调 `persist()`；关闭弹窗时补写未到点的草稿。
+- 首页只写本地草稿，不调 PUT。`GenerationProvider.start(form)` 从实际表单构造偏好快照，任务成功后调用 `persist(snapshot)`；页面切换保留草稿，失败不保存，刷新/退出/账号切换丢弃草稿。409 接管不保存当前表单。旧任务成功不能把首页后来的新选择误存到账号，也不能清除新草稿。
+- 原个人资料弹窗与 autoSave 组件仍保留代码，但导航无入口，不作为当前产品可达流程。
 
 首页的「节奏与同行」与「偏好与出行」共用同一份草稿：面板初值直接读账号快照（`value.pace` / `value.partySize`），选择只调 `change`；偏好还没加载完时这些控件置灰，避免点了没反应。个人资料弹窗**不提供**这两个控件，但它的「清空」必须把 `pace` 与 `partySize` 一起复位，否则账号里的节奏无法清除。
 
-`persist()` 只写「有草稿」的情形（草稿为空则不发请求），mutation scope 串行写入，成功回执只清除它实际写过的草稿，不能清掉在途的新修改。Provider 挂在布局层，导航不卸载保存主体；登录期间切换账号会按 userId 重建 Provider，旧队列随作用域取消。退出按钮在写入中禁用。失败保留草稿并提供重试；首页草稿的失败会留到下次打开面板才可见。
+`persist(snapshot?)` 写显式提交快照或当前草稿（两者皆空则不发请求），mutation scope 串行写入，成功回执只清除它实际写过的草稿，不能清掉在途的新修改。Provider 挂在布局层，导航不卸载保存主体；登录期间切换账号会按 userId 重建 Provider，旧队列随作用域取消。退出按钮在写入中禁用。失败保留草稿并提供重试；首页草稿的失败会留到下次打开面板才可见。
 
 每笔 mutation 真正发送前核对 React Query 的 `keys.me` 与该笔保存的 userId；会话失效或账号切换后拒绝旧队列。成功回执同样核对身份，不能在退出清缓存后重新填入旧账号数据。串行 scope 只协调当前页面内的写入，不提供跨设备冲突合并。
 
@@ -51,14 +51,14 @@ PUT 使用路由级 `validatorCompiler` 和 `@sinclair/typebox/value` 的 `Value
 
 - 正常（首页）：用户输入“带小孩一起”、勾选「美食」、选「轻松悠闲 / 4 人」→ 不写库；生成行程成功后才一次性写入账号，刷新/重新登录恢复，生成输入和 Brief 同时收到备注。
 - 正常（节奏与同行）：重开首页时节奏与人数直接从账号带出，不必重选即可提交。
-- 正常（个人资料）：弹窗内改动 500ms 后自动保存，切换账号互相隔离。
+- 正常（后台生成）：旧任务成功记住其提交快照，首页新草稿保持；快照保存失败保留提示，重试原快照。
 - 基线：新账号默认为公共交通、无偏好、无备注、节奏未选、2 人。
 - 反例：首页每次勾选都写账号；仅保存在 localStorage；GET 完成时自动写默认值；旧 PUT 回执清除用户新输入；生成失败也把草稿写进账号；把 pace/partySize 只放在组件 state 或 localStorage；个人资料「清空」留下 pace。
 
 ## 6. 验证
 
 - `node --import tsx scripts/verify-travel-preferences.mts`：独立临时 PostgreSQL 数据库（默认 18797，可用 `VERIFY_PREFERENCES_ADMIN_URL` 指向测试实例；本机只有 5432 时指向 5432 即可，脚本只建/删自己的临时库），检查重复迁移、旧设置保留、401、非法输入（含 pace 枚举、partySize 越界与类型）、两个账号、重新登录、清空，以及上一版三字段行的缺省补齐、库内数据损坏和读写故障；故障恢复后读取原值。
-- `node apps/web/tests/travel-preferences-browser.mjs`：默认 5173，可用 BASE 指向生产预览；mock API（含一条 SSE `job_done` 的成功生成）验证首页选择仅在生成成功后写入、生成失败与刷新不写账号、个人资料即时保存、在途修改、失败重试、清空、账号隔离、会话切换的旧队列隔离、移动端与 Escape，以及节奏与同行人数重开首页后从账号带出。图片在 `data/travel-preferences-review/`。
+- `node --import tsx apps/web/tests/travel-preferences-browser.mjs`：默认 5173；mock API 验证首页仅生成成功后保存、失败与刷新不写账号、偏好加载/保存失败重试、图标退出与账号隔离、移动端边界。生产链路的并发新草稿验证见 `scripts/verify-generation-browser.mjs`。
 - `npm run typecheck` 与 `npm run build -w apps/web`。
 
 ## 7. 错误与正确示例
