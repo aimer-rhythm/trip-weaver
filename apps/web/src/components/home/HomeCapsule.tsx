@@ -21,8 +21,6 @@ import { daysBetween, isoDateAfter, shortDate } from '../../lib/dates';
 import {
   CalendarIcon,
   ChevronDownIcon,
-  ChevronUpIcon,
-  ClockIcon,
   CloseIcon,
   CompassIcon,
   GaugeIcon,
@@ -261,7 +259,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart, onOpenGenerat
                   <CloseIcon className="h-[calc(14*var(--ui))] w-[calc(14*var(--ui))]" />
                 </Button>
               </div>
-              <div className="px-[calc(16*var(--ui))]">
+              <div className="px-[calc(16*var(--ui))] pb-[calc(16*var(--ui))]">
                 <RangeCalendar
                   startDate={startDate}
                   endDate={endDate}
@@ -271,22 +269,7 @@ export function HomeCapsule({ city, cities, onSelectCity, onStart, onOpenGenerat
                     setStartDate(s);
                     setEndDate(e);
                   }}
-                  footSlot={
-                    <div className="-mx-[calc(16*var(--ui))] mt-[calc(16*var(--ui))] flex items-center gap-[calc(12*var(--ui))] border-t border-hairline px-[calc(20*var(--ui))] py-[calc(14*var(--ui))]">
-                      <ClockIcon className="h-[calc(16*var(--ui))] w-[calc(16*var(--ui))] shrink-0 text-ink-muted" />
-                      <span className="text-[length:calc(16*var(--ui))] font-semibold text-ink-soft">
-                        {dateSummary}
-                      </span>
-                      <Button variant="plain"
-                        type="button"
-                        aria-label="收起日期选择"
-                        onClick={() => setActivePanel(null)}
-                        className="ml-auto grid h-[calc(28*var(--ui))] w-[calc(28*var(--ui))] place-items-center rounded-full text-ink-muted transition-colors hover:bg-canvas"
-                      >
-                        <ChevronUpIcon className="h-[calc(18*var(--ui))] w-[calc(18*var(--ui))]" />
-                      </Button>
-                    </div>
-                  }
+                  footSlot={null}
                 />
               </div>
               <PanelTail />

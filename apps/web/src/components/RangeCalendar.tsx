@@ -3,7 +3,7 @@ import { Button } from './ui/Button';
 // 点第一次定出发日，悬停预览区间，点第二次定返回日；跨度超过 maxDays 时自动收短到上限。
 // 纯受控组件：值由父组件持有，这里只负责网格渲染与两次点击的区间语义。
 // months 控制并列月数（首页日期浮层用 2 个月并排，其它调用方默认 1）；
-// footSlot 用于替换底栏内容（首页把「已选摘要 + 收起」交给调用方渲染）。
+// footSlot 用于替换底栏内容；传 null 表示不要底栏（首页日期面板只用标题栏 + 日历）。
 import { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 
@@ -42,7 +42,7 @@ interface Props {
   maxDays: number;
   onRangeChange: (start: string, end: string) => void;
   months?: number;
-  footSlot?: ReactNode;
+  footSlot?: ReactNode;   // 不传用默认底栏，传 null 则不渲染底栏
 }
 
 export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, months = 1, footSlot }: Props) {
@@ -169,10 +169,12 @@ export function RangeCalendar({ startDate, endDate, maxDays, onRangeChange, mont
         })}
       </div>
 
-      {footSlot ?? (
+      {footSlot === undefined ? (
         <div className={"range-calendar-foot [border-top:1px_solid_var(--color-border)] [padding-top:8px] muted [color:var(--color-muted)] [font-size:0.88rem]"}>
           {pendingStart ? `再点返回日期（最多 ${maxDays} 天）` : `已选：${startDate} ~ ${endDate}`}
         </div>
+      ) : (
+        footSlot
       )}
     </div>
   );
