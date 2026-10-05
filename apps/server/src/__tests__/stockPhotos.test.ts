@@ -42,6 +42,46 @@ test('地名闸门要求城市和具体景点；不把圆明园、通用长城�
   assert.ok(matchesStockPlace('Badaling Great Wall Beijing', { name: '八达岭长城', city: '北京' }));
 });
 
+// 地点名取自生产库 canonical_places 的景点类条目（2026-10-05），用来锁住 normalizePlaceKey() 的剥后缀结果。
+const cityPlaces: Record<string, string[]> = {
+  '北京': ['故宫博物院', '天坛公园', '北海公园', '什刹海', '雍和宫', '八达岭长城', '慕田峪长城', '国家博物馆'],
+  '上海': ['外滩', '豫园', '静安寺', '南京路', '陆家嘴', '城隍庙', '上海城隍庙', '东方明珠广播电视塔', '武康大楼', '外白渡桥', '田子坊', '新天地'],
+  '厦门': ['鼓浪屿', '南普陀寺', '厦门大学', '曾厝垵', '环岛路', '集美学村', '厦门园林植物园', '中山路', '胡里山炮台'],
+  '广州': ['广州塔', '陈家祠', '沙面岛', '石室圣心大教堂', '永庆坊', '白云山', '花城广场', '广东省博物馆', '北京路步行街'],
+  '成都': ['武侯祠', '宽窄巷子', '杜甫草堂', '成都博物馆', '成都太古里', '春熙路', '文殊院', '熊猫基地', '锦里', '九眼桥'],
+  '杭州': ['灵隐寺', '西湖', '雷峰塔', '三潭印月', '苏堤', '西溪湿地', '飞来峰', '九溪烟树'],
+  '重庆': ['洪崖洞', '解放碑', '磁器口', '长江索道', '李子坝', '观音桥', '十八梯', '三峡博物馆', '鹅岭公园', '朝天门'],
+  '济南': ['趵突泉', '大明湖', '千佛山', '黑虎泉', '五龙潭公园', '超然楼', '山东博物馆', '珍珠泉', '洪家楼天主教堂', '灵岩寺'],
+  '苏州': ['拙政园', '狮子林', '留园', '网师园', '虎丘', '寒山寺', '平江路', '山塘街', '金鸡湖景区', '苏州博物馆'],
+  '西安': ['秦始皇兵马俑博物馆', '华清宫', '西安城墙', '西安钟楼', '西安鼓楼', '大雁塔', '小雁塔', '陕西历史博物馆', '大唐不夜城', '回民街'],
+  '青岛': ['栈桥', '八大关', '五四广场', '青岛啤酒博物馆', '信号山公园', '小鱼山公园', '石老人海水浴场', '小麦岛公园', '金沙滩', '唐岛湾公园', '鲁迅公园', '崂山'],
+};
+
+test('别名表的key与剥后缀结果一致，全部生效城市都产出英文查询词', () => {
+  assert.deepEqual(Object.keys(cityPlaces).sort(), ['北京', '上海', '厦门', '广州', '成都', '杭州', '重庆', '济南', '苏州', '西安', '青岛'].sort());
+  for (const [city, names] of Object.entries(cityPlaces)) {
+    for (const name of names) {
+      const search = stockPhotoSearch({ city, name });
+      assert.match(search, /^[A-Za-z]/, `${city}${name} 应产出英文查询词，实际：${search}`);
+      assert.ok(matchesStockPlace(search, { city, name }), `${city}${name} 的英文元数据应通过闸门：${search}`);
+    }
+  }
+});
+
+test('英文查询词命中英文元数据；同城不得互相顶替，异城同名证据仍被拒', () => {
+  assert.equal(stockPhotoSearch({ city: '济南', name: '趵突泉' }), 'Baotu Spring Jinan');
+  assert.equal(stockPhotoSearch({ city: '西安', name: '秦始皇兵马俑博物馆' }), "Terracotta Army Xi'an");
+  assert.equal(stockPhotoSearch({ city: '苏州', name: '拙政园' }), "Humble Administrator's Garden Suzhou");
+  assert.equal(stockPhotoSearch({ city: '青岛', name: '五四广场' }), 'May Fourth Square Qingdao');
+  assert.equal(stockPhotoSearch({ city: '济南', name: '山东博物馆' }), 'Shandong Museum Jinan');
+  assert.ok(matchesStockPlace('Baotu Spring Jinan', { city: '济南', name: '趵突泉' }));
+  assert.ok(matchesStockPlace('Daming Lake Jinan', { city: '济南', name: '大明湖公园' }), '后缀被剥后仍要命中');
+  assert.ok(matchesStockPlace('Terracotta Army Xi an', { city: '西安', name: '秦始皇兵马俑博物馆' }));
+  assert.equal(matchesStockPlace('Baotu Spring Shanghai', { city: '济南', name: '趵突泉' }), false, '只有景点名没有目标城市不得通过');
+  assert.equal(matchesStockPlace('Baotu Spring Jinan', { city: '济南', name: '大明湖' }), false, '同城其他景点不得顶替目标');
+  assert.equal(matchesStockPlace('Chen Clan Ancestral Hall Foshan', { city: '广州', name: '陈家祠' }), false, '同城证据不符不得通过');
+});
+
 test('Unsplash保留原始hotlink与ixid，只在采用时上报；跨实例复用元数据但重新计采用', async () => fixture(async root => {
   const calls: string[] = [];
   globalThis.fetch = async (input, init) => {

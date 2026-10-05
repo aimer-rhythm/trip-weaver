@@ -85,10 +85,26 @@ export function stockPhotoBudget(provider: 'unsplash' | 'pixabay', requestsLeft:
 }
 
 // 只使用明确的同城译名；未知地点依然要求原名和城市同时出现在作品元数据中。
-const cityAliases: Record<string, string[]> = { '北京': ['Beijing', 'Peking'], '杭州': ['Hangzhou'], '上海': ['Shanghai'], '广州': ['Guangzhou', 'Canton'], '成都': ['Chengdu'], '厦门': ['Xiamen'], '重庆': ['Chongqing'] };
+// 生效城市 = 冻结知识库城市集合去掉云南，与 eval/scenarios.ts 的 MATRIX_CITIES 一致。
+const cityAliases: Record<string, string[]> = {
+  '北京': ['Beijing', 'Peking'], '上海': ['Shanghai'], '厦门': ['Xiamen'], '广州': ['Guangzhou', 'Canton'],
+  '成都': ['Chengdu'], '杭州': ['Hangzhou'], '重庆': ['Chongqing'], '济南': ['Jinan'],
+  '苏州': ['Suzhou'], '西安': ["Xi'an", 'Xian'], '青岛': ['Qingdao', 'Tsingtao'],
+};
+// key 必须是 normalizePlaceKey() 剥后缀后的名字：山东博物馆→山东、五四广场→五四、五龙潭公园→五龙潭。
+// 只收有通行英文专名的头部地标；纯直译的地名不加——英文泛词不会比中文原名命中得更好。
 const aliases: Record<string, Record<string, string[]>> = {
   '北京': { '故宫': ['Forbidden City', 'Palace Museum'], '景山': ['Jingshan'], '北海': ['Beihai Park'], '什刹海': ['Shichahai', 'Houhai'], '天坛': ['Temple of Heaven', 'Tiantan'], '颐和园': ['Summer Palace'], '圆明园': ['Old Summer Palace', 'Yuanmingyuan'], '雍和宫': ['Yonghe', 'Lama Temple'], '八达岭长城': ['Badaling'], '慕田峪长城': ['Mutianyu'], '中国国家': ['National Museum of China'] },
   '杭州': { '西湖': ['West Lake'], '西湖断桥': ['Broken Bridge'], '断桥残雪': ['Broken Bridge'], '苏堤': ['Su Causeway'], '雷峰塔': ['Leifeng Pagoda'], '三潭印月': ['Three Pools Mirroring the Moon'], '灵隐': ['Lingyin'], '飞来峰': ['Feilai'], '九溪烟树': ['Jiuxi', 'Nine Creeks'], '西溪湿地': ['Xixi Wetland'], '宝石山': ['Baoshi Hill'] },
+  '上海': { '外滩': ['The Bund'], '豫园': ['Yu Garden', 'Yuyuan Garden'], '静安寺': ["Jing'an Temple"], '南京路': ['Nanjing Road'], '陆家嘴': ['Lujiazui'], '城隍庙': ['City God Temple'], '上海城隍庙': ['City God Temple of Shanghai'], '东方明珠': ['Oriental Pearl Tower'], '东方明珠广播电视塔': ['Oriental Pearl Tower'], '武康大楼': ['Wukang Mansion'], '外白渡桥': ['Waibaidu Bridge'], '田子坊': ['Tianzifang'], '新天地': ['Xintiandi'] },
+  '厦门': { '鼓浪屿': ['Gulangyu'], '南普陀寺': ['Nanputuo Temple'], '厦门大学': ['Xiamen University'], '曾厝垵': ['Zengcuoan'], '环岛路': ['Island Ring Road'], '集美学村': ['Jimei School Village'], '厦门园林植物园': ['Xiamen Botanical Garden'], '中山路': ['Zhongshan Road'], '胡里山炮台': ['Hulishan Fortress'] },
+  '广州': { '广州塔': ['Canton Tower'], '陈家祠': ['Chen Clan Ancestral Hall'], '沙面岛': ['Shamian Island'], '沙面': ['Shamian Island'], '石室圣心大教堂': ['Sacred Heart Cathedral'], '圣心大教堂': ['Sacred Heart Cathedral'], '永庆坊': ['Yongqingfang'], '白云山': ['Baiyun Mountain'], '花城': ['Flower City Square'], '广东省': ['Guangdong Museum'], '北京路步行街': ['Beijing Road Pedestrian Street'], '大佛寺': ['Dafo Temple'] },
+  '成都': { '武侯祠': ['Wuhou Shrine'], '宽窄巷子': ['Kuanzhai Alley'], '杜甫草堂': ['Du Fu Thatched Cottage'], '成都': ['Chengdu Museum'], '成都太古里': ['Taikoo Li Chengdu'], '太古里': ['Taikoo Li Chengdu'], '春熙路': ['Chunxi Road'], '文殊院': ['Wenshu Monastery'], '熊猫基地': ['Chengdu Research Base of Giant Panda Breeding'], '锦里': ['Jinli'], '九眼桥': ['Jiuyan Bridge'] },
+  '重庆': { '洪崖洞': ['Hongyadong'], '解放碑': ['Jiefangbei'], '磁器口': ['Ciqikou'], '长江索道': ['Yangtze River Cableway'], '李子坝': ['Liziba'], '观音桥': ['Guanyinqiao'], '十八梯': ['Shibati'], '三峡': ['Three Gorges Museum'], '鹅岭': ["E'ling Park"], '朝天门': ['Chaotianmen'] },
+  '济南': { '趵突泉': ['Baotu Spring'], '大明湖': ['Daming Lake'], '千佛山': ['Thousand Buddha Mountain', 'Qianfo Mountain'], '黑虎泉': ['Black Tiger Spring'], '五龙潭': ['Five Dragon Pool'], '超然楼': ['Chaoran Tower'], '山东': ['Shandong Museum'], '珍珠泉': ['Zhenzhu Spring'], '洪家楼天主教堂': ['Hongjialou Cathedral'], '灵岩寺': ['Lingyan Temple'] },
+  '苏州': { '拙政园': ["Humble Administrator's Garden"], '狮子林': ['Lion Grove Garden'], '留园': ['Lingering Garden'], '网师园': ['Master of the Nets Garden'], '虎丘': ['Tiger Hill'], '寒山寺': ['Hanshan Temple'], '平江路': ['Pingjiang Road'], '山塘街': ['Shantang Street'], '金鸡湖': ['Jinji Lake'], '苏州': ['Suzhou Museum'] },
+  '西安': { '秦始皇兵马俑': ['Terracotta Army'], '华清宫': ['Huaqing Palace'], '西安城墙': ["Xi'an City Wall"], '西安钟楼': ["Xi'an Bell Tower"], '西安鼓楼': ["Xi'an Drum Tower"], '大雁塔': ['Giant Wild Goose Pagoda'], '小雁塔': ['Small Wild Goose Pagoda'], '陕西历史': ['Shaanxi History Museum'], '大唐不夜城': ['Datang Everbright City'], '回民街': ['Muslim Quarter'] },
+  '青岛': { '栈桥': ['Zhanqiao Pier'], '八大关': ['Badaguan'], '五四': ['May Fourth Square'], '青岛啤酒': ['Tsingtao Beer Museum'], '信号山': ['Signal Hill'], '小鱼山': ['Xiaoyushan Park'], '石老人海水浴场': ['Shilaoren Beach'], '小麦岛': ['Xiaomai Island Park'], '金沙滩': ['Golden Beach'], '唐岛湾': ['Tangdao Bay'], '鲁迅': ['Lu Xun Park'], '崂山': ['Laoshan'] },
 };
 function names(query: StockPhotoQuery) {
   const city = query.city.trim(), name = normalizePlaceKey(query.name.normalize('NFKC'));
