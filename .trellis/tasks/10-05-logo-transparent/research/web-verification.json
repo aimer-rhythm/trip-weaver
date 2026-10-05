@@ -1,0 +1,51 @@
+{
+  "measurements": [
+    {
+      "label": "desktop",
+      "width": 36,
+      "height": 36,
+      "naturalWidth": 256,
+      "naturalHeight": 256,
+      "targetWidth": 44,
+      "targetHeight": 44,
+      "objectFit": "contain",
+      "src": "/brand/logo-bird.png",
+      "viewport": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "label": "mobile",
+      "width": 36,
+      "height": 36,
+      "naturalWidth": 256,
+      "naturalHeight": 256,
+      "targetWidth": 44,
+      "targetHeight": 44,
+      "objectFit": "contain",
+      "src": "/brand/logo-bird.png",
+      "viewport": 390,
+      "scrollWidth": 390
+    },
+    {
+      "label": "narrow",
+      "width": 36,
+      "height": 36,
+      "naturalWidth": 256,
+      "naturalHeight": 256,
+      "targetWidth": 44,
+      "targetHeight": 44,
+      "objectFit": "contain",
+      "src": "/brand/logo-bird.png",
+      "viewport": 320,
+      "scrollWidth": 320
+    }
+  ],
+  "errors": [],
+  "unexpected": [],
+  "checks": [
+    "homepage and collection shared logo",
+    "44px click target and keyboard focus",
+    "16/32px favicon served and included in build",
+    "320/390/1440px layouts"
+  ]
+}
