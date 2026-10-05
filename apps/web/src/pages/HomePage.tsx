@@ -2,10 +2,11 @@
 // 左上文案、右侧中国地图、中部日期浮层（由 HomeCapsule 固定定位）、底部全宽玻璃胶囊通栏。
 // 只列知识库已覆盖城市——未覆盖城市不提供生成入口（产品边界，见 09-26 任务 PRD）；
 // 已覆盖但无国内坐标的海外城市不在地图打点，但仍可从胶囊「目的地」面板选中。
+import { useLoginDialog } from '../components/LoginDialogProvider';
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCoveredCities } from '../api/hooks';
+import { useCoveredCities, useMe } from '../api/hooks';
 import { ChinaMap, type MapCityDot } from '../components/home/ChinaMap';
 import { HomeCapsule, type HomeTripDraft } from '../components/home/HomeCapsule';
 import { CITY_GEO, projectToSvg } from '../lib/chinaMap';
@@ -16,8 +17,9 @@ const HEADLINE = '想去哪座城市？';
 export function HomePage() {
   const covered = useCoveredCities();
   const navigate = useNavigate();
+  const me = useMe();
+  const openLogin = useLoginDialog();
   const [selected, setSelected] = useState<string | null>(null);
-
   const cities = useMemo(() => covered.data?.cities ?? [], [covered.data]);
 
   const mapCities = useMemo(
@@ -39,7 +41,8 @@ export function HomePage() {
   );
 
   const start = (draft: HomeTripDraft) => {
-    if (!selected) return;
+    if (!me.isSuccess) return;
+    if (!selected || !draft.pace) return;
     const params = new URLSearchParams({ city: selected, start: draft.startDate, end: draft.endDate });
     if (draft.pace) params.set('pace', draft.pace);
     if (draft.partySize !== 2) params.set('partySize', String(draft.partySize));
@@ -48,10 +51,14 @@ export function HomePage() {
     if (draft.extraNotes) params.set('extraNotes', draft.extraNotes);
     // 首页已经收集完必填项：带着 autostart 过去，新建页不再让用户点第二次「开始生成」
     params.set('autostart', '1');
-    navigate(`/trips/new?${params.toString()}`);
+    const destination = `/trips/new?${params.toString()}`;
+    if (!me.data) { openLogin(destination); return; }
+    navigate(destination);
   };
 
-  const notice = covered.isPending
+  const notice = me.isError
+    ? '登录状态暂不可用，请刷新重试。'
+    : covered.isPending
     ? '城市列表加载中…'
     : covered.isError
       ? '城市列表加载失败，请刷新重试。'

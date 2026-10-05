@@ -22,7 +22,7 @@ import type {
 } from '@tripweaver/shared';
 import { TRIP_LIST_PAGE_SIZE, TravelPreferencesSchema } from '@tripweaver/shared';
 import { Value } from '@sinclair/typebox/value';
-import { api, resetAuthState, shouldRetryQuery } from './client';
+import { api, ApiError, resetAuthState, shouldRetryQuery } from './client';
 
 export interface MeView {
   id: string;
@@ -75,7 +75,13 @@ export function useAuthConfig() {
 export function useMe() {
   return useQuery({
     queryKey: keys.me,
-    queryFn: () => api.get<MeView>('/api/auth/me'),
+    queryFn: async ({ signal }) => {
+      try { return await api.get<MeView>('/api/auth/me', { auth: 'public', signal }); }
+      catch (error) {
+        if (error instanceof ApiError && error.status === 401) return null;
+        throw error;
+      }
+    },
     retry: shouldRetryQuery,
     staleTime: 5 * 60_000,
   });
@@ -101,7 +107,12 @@ export function useLogout() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: () => api.post<{ ok: true }>('/api/auth/logout'),
-    onSuccess: () => qc.clear(),
+    onSuccess: async () => {
+      await qc.cancelQueries();
+      // 公共布局退出后仍挂载，显式发布访客快照以更新导航。
+      qc.setQueryData(keys.me, null);
+      qc.removeQueries({ predicate: (query) => query.queryKey[0] !== keys.me[0] });
+    },
   });
 }
 
@@ -150,8 +161,8 @@ export function useSaveSettings() {
   });
 }
 
-export function useUsage() {
-  return useQuery({ queryKey: keys.usage, queryFn: () => api.get<UsageView>('/api/usage') });
+export function useUsage(enabled = true) {
+  return useQuery({ queryKey: keys.usage, enabled, queryFn: () => api.get<UsageView>('/api/usage') });
 }
 
 /** 已覆盖城市列表（09-26 首页城市选择）：只在离线采集导入时变化，长缓存 */

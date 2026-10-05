@@ -32,15 +32,18 @@ Keep route orchestration in pages, server-state behavior in API hooks, and reusa
 
 ## Router Structure and Authentication
 
-Public routes are `/login` and `/register`. Authenticated routes are nested under `RequireAuth`, then under `AppLayout`:
+`AppLayout` contains the public homepage and a nested `RequireAuth` branch. `/login` and `/register` redirect to the homepage with the same native authentication dialog in login or registration mode:
 
 - `/` renders the covered-city selection home page.
 - `/trips` renders the trip list.
 - `/trips/new` renders the structured new-trip form (`?city=` 必填，未覆盖城市会被弹回首页) and generation flow.
 - `/trips/:id` renders the editor (含内嵌对话面板，行程有关联会话时出现).
-- Unknown paths redirect to `/trips`.
+- `/generations/:jobId` renders the authenticated generation view.
+- Unknown paths redirect to `/`.
 
-`RequireAuth` waits for `useMe`. A 401 redirects to `/login` and preserves pathname/search/hash in route state so login can return the user to the original page. The common client also notifies `App.tsx` of any protected API 401, clearing user caches and redirecting even while `useMe` is fresh. A non-401 failure is not treated as logged out; the auth gate renders a service-unavailable message. Preserve that distinction.
+`useMe` probes with `auth: 'public'`: HTTP 401 becomes a `null` guest snapshot without triggering global expiration. `RequireAuth` waits for this query and sends guests to the homepage login dialog, preserving pathname/search/hash in route state. Non-401 failures render service-unavailable UI. `LoginDialogProvider` owns the dialog above account-keyed providers so authentication cannot unmount its success callback. Login/registration switches use local dialog state, preserving the homepage and return target. Closing keeps the mounted homepage draft; a complete draft resumes through `/trips/new` after password login or registration. Registration retains confirmation, invitation and closed-registration validation.
+
+The planning button uses the same required-field readiness for guests and authenticated users; missing destination or pace disables it before any login prompt. Guests hide account menus and disable usage, account preferences and generation restoration queries. On logout or protected API 401, publish `keys.me = null` before removing other queries; `QueryClient.clear()` alone leaves mounted observers displaying stale account state. Keep protected API expiration handling in `App.tsx`. Verify these contracts with `node apps/web/tests/login-dialog-browser.mjs`.
 
 Evidence: `apps/web/src/router.tsx`, `apps/web/src/pages/LoginPage.tsx`, `apps/web/src/components/AppLayout.tsx`.
 

@@ -1,12 +1,16 @@
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Field';
 import { useState, type FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthConfig, useRegister } from '../api/hooks';
 
-export function RegisterPage() {
+export function RegisterPage({ embedded = false, from: destination, onSuccess, onLogin }: { embedded?: boolean; from?: string; onSuccess?: () => void; onLogin?: () => void }) {
   const register = useRegister();
   const navigate = useNavigate();
+  const location = useLocation();
+  const state: unknown = location.state;
+  const requested = destination ?? (typeof state === 'object' && state !== null && 'from' in state && typeof state.from === 'string' ? state.from : '/');
+  const from = requested.startsWith('/') && !requested.startsWith('//') && !requested.includes('\\') && !/^\/(login|register)([/?#]|$)/.test(requested) ? requested : '/';
   const { data: config } = useAuthConfig();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,17 +31,15 @@ export function RegisterPage() {
     register.mutate(
       { email, password, ...(inviteRequired ? { inviteCode } : {}) },
       {
-        onSuccess: () => navigate('/trips', { replace: true }),
+        onSuccess: () => { onSuccess?.(); void navigate(from, { replace: true, state: null }); },
         onError: (err) => setError(err.message),
       },
     );
   };
 
   return (
-    <div className={"auth-page [min-height:100vh] flex items-center justify-center [padding:24px_16px]"}>
-      <div className={"auth-card w-full [max-width:380px] [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:14px] [box-shadow:var(--shadow)] [padding:28px_24px] [&_.brand]:[font-size:1.4rem]"}>
-        <h1 className={"brand flex items-center [gap:8px] font-bold [font-size:1.1rem] [color:var(--color-ink)]"}>织程 <span className={"brand-en [color:var(--color-brand-en-color-1)] font-semibold"}>TripWeaver</span></h1>
-        <p className={"auth-sub [color:var(--color-muted)] [margin:6px_0_20px]"}>{inviteRequired ? '凭邀请码注册，注册即可开始规划' : '注册即可开始规划'}</p>
+    <div className={embedded ? "auth-page" : "auth-page min-h-dvh flex items-center justify-center px-4 py-6"}>
+      <div className={embedded ? "auth-card w-full" : "auth-card w-full [max-width:380px] [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:14px] [box-shadow:var(--shadow)] [padding:28px_24px] [&_.brand]:[font-size:1.4rem]"}>
         {closed ? (
           <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>注册暂未开放，请联系站长</p>
         ) : (
@@ -61,7 +63,7 @@ export function RegisterPage() {
                   <Input required value={inviteCode} onChange={(e) => setInviteCode(e.target.value)} placeholder="向站长索取" />
                 </label>
               )}
-              {error && <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
+              {error && <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
               <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={register.isPending}>
                 {register.isPending ? '注册中…' : '注册并登录'}
               </Button>
@@ -75,7 +77,9 @@ export function RegisterPage() {
           </>
         )}
         <p className={"auth-switch [margin:16px_0_0] [font-size:0.88rem] [color:var(--color-muted)]"}>
-          已有账号？<Link to="/login">直接登录</Link>
+          已有账号？{onLogin
+            ? <button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-sm text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" disabled={register.isPending} onClick={onLogin}>直接登录</button>
+            : <Link to="/login" state={{ from }}>直接登录</Link>}
         </p>
       </div>
     </div>

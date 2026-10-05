@@ -2,8 +2,7 @@ import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router
 import { ApiError } from './api/client';
 import { useMe } from './api/hooks';
 import { AppLayout } from './components/AppLayout';
-import { LoginPage } from './pages/LoginPage';
-import { RegisterPage } from './pages/RegisterPage';
+
 import { TripListPage } from './pages/TripListPage';
 import { HomePage } from './pages/HomePage';
 import { NewTripPage } from './pages/NewTripPage';
@@ -21,19 +20,27 @@ function RequireAuth() {
     }
     return <div className={"page-loading [padding:20vh_16px] text-center [color:var(--color-muted)]"}>服务暂不可用，请稍后刷新重试</div>;
   }
+  if (!me.data) return <Navigate to="/login" replace state={{ from: location.pathname + location.search + location.hash }} />;
   return <Outlet />;
 }
 
+function LoginRedirect({ register = false }: { register?: boolean }) {
+  const location = useLocation();
+  const state: unknown = location.state;
+  const from = typeof state === 'object' && state !== null && 'from' in state && typeof state.from === 'string' ? state.from : '/';
+  return <Navigate to={`/${location.search}`} replace state={{ login: true, register, from }} />;
+}
+
 export const router = createBrowserRouter([
-  { path: '/login', element: <LoginPage /> },
-  { path: '/register', element: <RegisterPage /> },
+  { path: '/login', element: <LoginRedirect /> },
+  { path: '/register', element: <LoginRedirect register /> },
   {
-    element: <RequireAuth />,
+    element: <AppLayout />,
     children: [
+      { path: '/', element: <HomePage /> },
       {
-        element: <AppLayout />,
+        element: <RequireAuth />,
         children: [
-          { path: '/', element: <HomePage /> },
           { path: '/trips', element: <TripListPage /> },
           { path: '/trips/new', element: <NewTripPage /> },
           { path: '/trips/:id', element: <TripEditorPage /> },
@@ -41,5 +48,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  { path: '*', element: <Navigate to="/trips" replace /> },
+  { path: '*', element: <Navigate to="/" replace /> },
 ]);

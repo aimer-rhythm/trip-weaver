@@ -13,7 +13,7 @@ const OAUTH_ERRORS: Record<string, string> = {
   signup_closed: '注册暂未开放，无法通过 GitHub 创建新账号',
 };
 
-export function LoginPage() {
+export function LoginPage({ embedded = false, from: destination, onSuccess, onRegister }: { embedded?: boolean; from?: string; onSuccess?: () => void; onRegister?: () => void }) {
   const login = useLogin();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,7 +24,9 @@ export function LoginPage() {
   const oauthError = searchParams.get('error');
   const [error, setError] = useState(oauthError ? (OAUTH_ERRORS[oauthError] ?? '登录失败，请重试') : '');
 
-  const from = (location.state as { from?: string } | null)?.from ?? '/trips';
+  const state: unknown = location.state;
+  const requested = destination ?? (typeof state === 'object' && state !== null && 'from' in state && typeof state.from === 'string' ? state.from : '/');
+  const from = requested.startsWith('/') && !requested.startsWith('//') && !requested.includes('\\') && !/^\/(login|register)([/?#]|$)/.test(requested) ? requested : '/';
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -32,17 +34,15 @@ export function LoginPage() {
     login.mutate(
       { email, password },
       {
-        onSuccess: () => navigate(from, { replace: true }),
+        onSuccess: () => { onSuccess?.(); void navigate(from, { replace: true, state: null }); },
         onError: (err) => setError(err.message),
       },
     );
   };
 
   return (
-    <div className={"auth-page [min-height:100vh] flex items-center justify-center [padding:24px_16px]"}>
-      <div className={"auth-card w-full [max-width:380px] [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:14px] [box-shadow:var(--shadow)] [padding:28px_24px] [&_.brand]:[font-size:1.4rem]"}>
-        <h1 className={"brand flex items-center [gap:8px] font-bold [font-size:1.1rem] [color:var(--color-ink)]"}>织程 <span className={"brand-en [color:var(--color-brand-en-color-1)] font-semibold"}>TripWeaver</span></h1>
-        <p className={"auth-sub [color:var(--color-muted)] [margin:6px_0_20px]"}>AI 替你刷攻略、排行程</p>
+    <div className={embedded ? "auth-page" : "auth-page min-h-dvh flex items-center justify-center px-4 py-6"}>
+      <div className={embedded ? "auth-card w-full" : "auth-card w-full [max-width:380px] [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:14px] [box-shadow:var(--shadow)] [padding:28px_24px] [&_.brand]:[font-size:1.4rem]"}>
         <form onSubmit={submit} className={"form flex flex-col [gap:12px] [&_label]:flex [&_label]:flex-col [&_label]:[gap:5px] [&_label]:[font-size:0.88rem] [&_label]:[color:var(--color-muted)]"}>
           <label>
             邮箱
@@ -52,7 +52,7 @@ export function LoginPage() {
             密码
             <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
           </label>
-          {error && <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
+          {error && <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
           <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={login.isPending}>
             {login.isPending ? '登录中…' : '登录'}
           </Button>
@@ -64,7 +64,9 @@ export function LoginPage() {
           </>
         )}
         <p className={"auth-switch [margin:16px_0_0] [font-size:0.88rem] [color:var(--color-muted)]"}>
-          还没有账号？<Link to="/register">{config?.registrationMode === 'invite' ? '用邀请码注册' : '注册'}</Link>
+          还没有账号？{onRegister
+            ? <button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-sm text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" disabled={login.isPending} onClick={onRegister}>{config?.registrationMode === 'invite' ? '用邀请码注册' : '注册'}</button>
+            : <Link to="/register" state={{ from }}>{config?.registrationMode === 'invite' ? '用邀请码注册' : '注册'}</Link>}
         </p>
       </div>
     </div>
