@@ -252,7 +252,7 @@ test('美食导向每天必有午餐与晚餐；非美食导向一个餐次都�
   assert.ok(focused.days[0]!.stops.filter((stop) => stop.meal).every((stop) => stop.poi.category === 'food'));
 });
 
-test('美食导向没有美食候选时用目的地占位补齐餐次（餐次是硬门槛）', () => {
+test('美食导向没有美食候选时用景点周边补齐餐次（餐次是硬门槛）', () => {
   const result = buildSchedule([poi({ name: '甲馆', score: 50, lat: 39.9, lng: 116.4 })], {
     days: 1,
     foodFocused: true,
@@ -260,7 +260,8 @@ test('美食导向没有美食候选时用目的地占位补齐餐次（餐次�
   });
   const meals = result.days[0]!.stops.filter((stop) => stop.meal);
   assert.deepEqual(meals.map((stop) => stop.meal), ['lunch', 'dinner']);
-  assert.ok(meals.every((stop) => stop.poi.name === '北京'));
+  assert.ok(meals.every((stop) => stop.poi.name === '甲馆周边' && stop.areaAnchorName === '甲馆'));
+  assert.ok(meals.every((stop) => stop.poi.lat === 39.9 && stop.poi.lng === 116.4));
 });
 
 test('候选排不满天数：空天用占位活动兜底（保住每天至少一个活动）', () => {
@@ -342,26 +343,25 @@ test('闭馆日避让：无 startDate 时不干预分天（拿不准不校验）
   assert.equal(result.days[0]!.stops[0]!.poi.name, '甲馆');
 });
 
-test('闭馆日避让：整段闭馆的天判为不可分配，宁可留空并记冲突（09-27）', () => {
-  // 旧行为：无处可避时退回「最早未分配的天」，把闭馆的段硬塞进去（八达岭案例的病根）。
-  // 新行为：整段闭馆的天不分配 —— 空天占位 + closureConflicts 如实记下，由上层告知用户。
+test('闭馆日无解保留景点和结构化冲突，不用删点或空天掩盖', () => {
   const result = buildSchedule(
     [poi({ name: '甲馆', score: 100, weight: 5, openTime: '周一、周二闭馆', lat: 39.9, lng: 116.4 })],
     { days: 1, foodFocused: false, startDate: '2026-09-21', fallbackArea: '北京' },
   );
-  assert.equal(result.days[0]!.stops[0]!.poi.name, '自由安排｜北京', '闭馆日不该硬塞');
-  assert.equal(result.droppedCount, 1);
+  assert.equal(result.days[0]!.stops[0]!.poi.name, '甲馆', '保留诊断，由 buildDraft 拒绝写入');
+  assert.equal(result.droppedCount, 0);
+  assert.equal(result.dateRepair.reason, 'no_open_day');
   assert.equal(result.closureConflicts.length, 1);
   assert.deepEqual(result.closureConflicts[0]!.names, ['甲馆']);
   assert.equal(result.closureConflicts[0]!.date, '2026-09-21');
   assert.equal(result.closureConflicts[0]!.holiday, null);
 });
 
-test('闭馆日避让：单点独占段不再吃掉它整段闭馆的那天（八达岭 2026-09-28 案例）', () => {
+test('两个闭馆组竞争唯一开放日且独占不能合并时明确无解', () => {
   // 复刻实测：2 天行程、startDate 2026-09-28（周一）。
   // 故宫段（3 人，只有故宫周一闭馆）与八达岭段（1 人，整段闭馆）争两个天。
   // 旧行为：八达岭段被塞进周一（它自己闭馆）→ 那天完全作废。
-  // 新行为：八达岭段无处可去 → 留空 + 冲突提示；故宫段照常落周二。
+  // 修复不能将八达岭与市区合并，也不能删掉任何已选景点。
   const result = buildSchedule(
     [
       poi({ name: '故宫', score: 115, weight: 3, openTime: '周一闭馆', lat: 39.9187, lng: 116.397 }),
@@ -372,10 +372,11 @@ test('闭馆日避让：单点独占段不再吃掉它整段闭馆的那天（�
     { days: 2, foodFocused: false, exclusiveNames: ['八达岭'], startDate: '2026-09-28', fallbackArea: '北京' },
   );
   const namesByDay = result.days.map((d) => d.stops.map((s) => s.poi.name));
-  assert.ok(!namesByDay[0]!.includes('八达岭'), `八达岭不该出现在周一，实际 ${namesByDay[0]!.join('、')}`);
-  assert.deepEqual(namesByDay[1], ['故宫', '景山', '北海'], '故宫段应完整落在周二');
+  assert.equal(namesByDay.flat().length, 4);
+  assert.equal(namesByDay.find((day) => day.includes('八达岭'))!.length, 1);
+  assert.equal(result.droppedCount, 0);
   assert.equal(result.closureConflicts.length, 1);
-  assert.deepEqual(result.closureConflicts[0]!.names, ['八达岭']);
+  assert.equal(result.dateRepair.reason, 'search_exhausted');
   assert.equal(result.closureConflicts[0]!.date, '2026-09-28');
 });
 

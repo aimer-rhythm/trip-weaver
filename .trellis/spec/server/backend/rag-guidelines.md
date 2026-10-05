@@ -292,6 +292,11 @@ Apply when changing how the community pipeline's derived data is consumed: `payl
 - `renderOpenHours` renders `closedWeekdays` (ints, 0=Sunday, matching `Date.getDay()`) into the
   same free-text shape `isClosedOnDate` already parses, so `packages/shared/src/openHours.ts` needs
   no signature change and the feasibility engine picks it up for free.
+- Upstream `openHours.version=2` carries `subject`, `scope='place'`, `status='attributed'|'unknown'`,
+  accepted `attributions` and rejected `review` (original sentence/raw text, source link and reason).
+  Only attributed main-place fields render. Unknown/component records yield no opening promise;
+  v2 rows are excluded from legacy `research_evidence` closure-text mining, so a rejected museum
+  clause cannot reappear as a street closure through the fallback. Existing v1 rows remain compatible.
 - All three are optional enrichment. Missing → scheduling output byte-identical to before.
 
 ### 4. Validation & Error Matrix
@@ -305,6 +310,7 @@ Apply when changing how the community pipeline's derived data is consumed: `payl
 | seed rerun | `ON CONFLICT (city, from_name, to_name) DO UPDATE`; row count stable |
 | `payload.openHours` absent | `renderOpenHours` → `undefined`; falls back to `poi.openTime` / `closureText` |
 | `closedWeekdays` out-of-range or non-numeric | filtered out; no remaining content → `undefined` |
+| v2 unknown or component scope | `undefined`, no legacy evidence closure fallback |
 | `payload.aliases` absent for a city | grouping keys degrade to the pre-09-27 single key |
 | a relation pair has only one side in the candidate pool | pair dropped; no discount |
 
@@ -345,6 +351,35 @@ Representative paths: `apps/server/src/generation/scheduling/placeRelations.ts`,
 `apps/server/src/generation/scheduling/placeFacts.ts`,
 `apps/server/src/generation/scheduling/buildDraft.ts`, `apps/server/src/db/migrate.ts`,
 `apps/server/scripts/seed-xhs-relations.ts`.
+
+### Opening-fact attribution and repair previews (2026-10-05)
+
+- Upstream signature: `mine_open_hours(records: list[HoursEvidence], *, target, aliases=(), known_names=())`.
+  Each record carries candidate target, raw text, source URL/kind and scope. A mention being filed
+  under a place is not proof that every clause belongs to it. Longest named entities and child
+  facilities split the text before parsing. Unknown/other subjects only enter `review`; explicit
+  place-scoped sources may use subjectless text. Source links retain the document path without
+  signature query parameters. The exporter reads in a repeatable-read read-only transaction.
+- Good: `锦里全天开放；成都博物馆周一闭馆` keeps the street's opening signal and rejects the other
+  subject's closure. Base: a named museum's Monday closure remains. Bad: regex-mining the entire
+  mixed text, cropping away the subject, or treating every food place as always open.
+- Tests: upstream `test_hours_attribution.py` (multiple entities, aliases, child facilities,
+  subjectless uncertainty, ticket times, provenance), server `placeFacts.test.ts`, and the actual
+  SQL fallback case in `verify-generation-flow.mts`.
+- A data repair is a preview until explicitly accepted. Compare old/new `openHours` by stable
+  ID/name; preserve all other fields, independent evidence, relation rows, images and history.
+  `source='goldset'` describes the place row: its top-level `openHours.evidence` may still be an
+  upstream enrichment (golden seeding writes `caseId/activity`). Review field ownership separately.
+  Use a targeted patch for an opening-only repair: full imports also reconcile unrelated content,
+  identities and evidence. `reconcileImportedPlaces` already replaces `openHours` on both `xhs`
+  and `goldset` rows when valid identity metadata is present; the initial merge is not the whole
+  import contract. Apply only accepted field changes with identity/expected-old-value checks,
+  a durable pre-update backup and transactional non-hours field hashes, then export a new immutable
+  knowledge version and verify it against the accepted candidate.
+- Opening-only preview patches do not change current embedding inputs: places use city/name/category,
+  evidence uses kind/content (`scripts/embed-backfill.ts`). Reuse vectors only while those fields
+  remain byte-equivalent; verify isolated roundtrip hashes and vector queries. Adding/replacing
+  evidence or changing embedding inputs requires a fresh vector decision.
 
 ## Scenario: Attraction Cover Images (payload.coverImage → /media)
 

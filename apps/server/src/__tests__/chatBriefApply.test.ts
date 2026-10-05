@@ -13,6 +13,42 @@ import { readClarification } from '../chat/models';
 
 const empty: PlanningBriefData = { constraints: [] };
 
+test('只读旅行问答忽略夹带的字段、增加与删除约束，保持原 Brief', () => {
+  const current: PlanningBriefData = {
+    destination: '北京', days: 3, pace: 'moderate', preferences: [],
+    extraNotes: '不能吃辣，不去故宫博物院。',
+    constraints: [{ id: 'diet', category: 'dietary_requirement', polarity: 'avoid', valueText: '花生' }],
+  };
+  const before = structuredClone(current);
+  const next = applyDialogueDecision(current, {
+    intent: 'travel_qa', destination: '上海', days: 5, preferences: ['文化'], extraNotes: '',
+    addConstraints: [{ category: 'companion_context', polarity: 'fact', valueText: '膝盖不好' }],
+    removeConstraintIds: ['diet'],
+  }, 10);
+  assert.deepEqual(next, before);
+  assert.deepEqual(current, before);
+});
+
+test('合法非只读 intent 保留增量更新能力', () => {
+  for (const intent of ['update_brief', 'confirm', 'modify_itinerary']) {
+    const next = applyDialogueDecision(empty, {
+      intent, days: 5,
+      addConstraints: [{ category: 'dietary_requirement', polarity: 'avoid', valueText: '花生' }],
+    }, 2);
+    assert.equal(next.days, 5);
+    assert.equal(next.constraints[0]?.valueText, '花生');
+  }
+});
+
+test('明确清空 extraNotes 可以取消旧备注，缺省字段仍不变', () => {
+  const current: PlanningBriefData = { ...empty, destination: '北京', extraNotes: '不去故宫' };
+  const next = applyDialogueDecision(current, { intent: 'update_brief', extraNotes: '  ', destination: '' }, 1);
+  assert.equal(next.extraNotes, '');
+  assert.equal(next.destination, '北京');
+  assert.equal(applyDialogueDecision(current, { days: 3 }, 1).extraNotes, '不去故宫');
+  assert.equal(current.extraNotes, '不去故宫');
+});
+
 test('未提到的字段一律不动（patch 语义，不是整体覆盖）', () => {
   const current: PlanningBriefData = { ...empty, destination: '成都', days: 3, pace: 'moderate' };
   const next = applyDialogueDecision(current, { days: 5 }, 1);

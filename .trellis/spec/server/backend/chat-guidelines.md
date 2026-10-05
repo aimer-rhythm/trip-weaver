@@ -63,6 +63,15 @@ the chat quota, or the conversation-to-generation link.
 - **The model's output is untrusted.** `applyDialogueDecision` reads `unknown` and drops or clamps
   anything invalid (unknown polarity/category, out-of-range days, over-long text) instead of throwing.
   A single bad field must not cost the user the whole conversation.
+- **Read-only intent cannot mutate the Brief.** `applyDialogueDecision` ignores all fields and
+  constraint additions/removals for `intent='travel_qa'`, even if those patches are otherwise valid.
+  Ordinary patches without an intent and legitimate update/confirm/edit decisions keep patch semantics.
+- **Replacing a requirement must remove its stale source.** When an explicit update cancels or changes
+  a requirement stored in `extraNotes`, the understanding prompt requires updating that text while
+  retaining unrelated requirements and removing contradictory constraint IDs. An explicit empty
+  `extraNotes` clears it; an omitted field preserves it. Do not append “can eat spicy food” while
+  keeping “cannot eat spicy food” in the old notes. `chatBriefApply.test.ts` covers QA mutation guards,
+  legal patch compatibility and empty-note cancellation; real `eval:intent` checks note updates.
 - **One turn writes both messages, or writes nothing.** `appendMessages` inserts the user message and
   the assistant reply in one transaction. An understanding failure leaves no trace, and the chat quota
   (counted from `chat_messages` where `role='user'`) therefore never charges a failed turn. This mirrors
@@ -89,8 +98,8 @@ the chat quota, or the conversation-to-generation link.
   (`normalizeEditOps`), geocodes new activities through the same chain as generation, applies them
   deterministically (`applyItineraryEdits` in `apps/server/src/chat/editOps.ts`), and persists the
   result as the next version via `createTrip(userId, trip, revisionOf)`. No generation row is
-  written and no generation quota is consumed. Cross-day moves / lodging / budget stay out of the
-  chat channel (editor-only). The legacy `kind='revision'` generation path still exists for API
+  written and no generation quota is consumed. Cross-day moves / lodging stay out of the
+  chat channel (editor-only). Budget has been removed from the product. The legacy `kind='revision'` generation path still exists for API
   compatibility but the chat UI no longer uses it.
 - **Edit anchoring follows messages, not just generations.** An edit writes no `generations` row,
   so `latestConversationTrip` reads both `generations` and `chat_messages.relatedTripId` and picks

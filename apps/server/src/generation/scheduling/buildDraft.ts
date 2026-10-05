@@ -12,7 +12,7 @@ import type { DraftTrip } from '../draft';
 import { createResearchPlaceLookup, type ResearchLocation } from '../placeLookup';
 import { routeOrderConstraints } from '../../data/routeOrderSeeds';
 import type { LongHaulPoi } from '../longHaul';
-import { buildSchedule, type ScheduleResult, type SchedulablePoi } from './schedule';
+import { buildSchedule, ScheduleDateConflictError, type ScheduleResult, type SchedulablePoi } from './schedule';
 import { poiScore, scoreMaxima } from './score';
 import { visitWeight } from './visitWeight';
 import { type PlaceFacts } from './placeFacts';
@@ -127,6 +127,10 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     relatedPairs: resolveRelatedPairs(input.relations, input.pool.map((p) => p.name)),
   });
 
+  if (schedule.closureConflicts.length) {
+    throw new ScheduleDateConflictError(schedule.closureConflicts, schedule.dateRepair.reason);
+  }
+
   input.draft.setSkeleton(
     `${input.form.destination}${input.form.days}日行程`,
     schedule.days.map((day) => day.title),
@@ -138,13 +142,12 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     for (const stop of day.stops) {
       const source = byId.get(stop.poi.id);
       const mealLabel = stop.meal === 'lunch' ? '午餐' : '晚餐';
-      // 占位活动与无美食候选的餐次锚点用目的地定位（geocodeAll 会把它解析成市中心），
-      // 不让「自由安排｜北京」这类文案名进入地理编码链。
+      // 周边就餐区域引用真实景点，不把周边区域名当门店查，也不将远郊餐次重定位到市中心。
       const synthetic = !source;
       const fallbackDescription = stop.meal
         ? '就近就餐的片区锚点；具体门店、价格与营业情况请到大众点评或美团确认。'
         : '本天空余时段，可按体力与天气就近安排。';
-      const placeName = synthetic ? input.form.destination : stop.poi.name;
+      const placeName = stop.areaAnchorName ?? (synthetic ? input.form.destination : stop.poi.name);
       const coord = stop.poi.lat !== undefined && stop.poi.lng !== undefined ? { lat: stop.poi.lat, lng: stop.poi.lng } : {};
       input.draft.addActivity(day.dayIndex, {
         name: stop.meal ? `${mealLabel}｜${stop.poi.name}` : stop.poi.name,

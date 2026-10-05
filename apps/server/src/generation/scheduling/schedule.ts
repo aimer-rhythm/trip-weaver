@@ -12,8 +12,9 @@
 // 分数只决定「入选 + 分到哪天」，不插手段内顺序 —— 否则会把高分点插到不顺路的位置，
 // 通勤成本又回来了（景山→故宫 41min 那种段就是这么来的）。
 import type { PoiCategory, TripPace } from '@tripweaver/shared';
-import { dateForDayIndex, findHoliday, isClosedOnDate } from '@tripweaver/shared';
+import { dateForDayIndex, isClosedOnDate } from '@tripweaver/shared';
 import { optimizeRouteOrder } from './routeOrder';
+import { repairScheduleDates, type DateRepairResult } from './dateRepair';
 
 export interface SchedulablePoi {
   id: string;
@@ -27,7 +28,7 @@ export interface SchedulablePoi {
   score: number;
   /** 停留分量（1~3，见 visitWeight.ts）：没有可靠游玩时长，用相对量级守住「一天排不排得下」 */
   weight: number;
-  /** 高德营业时间原文（仅 attraction 可能有）：闭馆日检测用（09-22-opentime） */
+  /** 营业时间原文：景点与餐次候选的闭馆日检测用 */
   openTime?: string;
   /** payload.themes 的首个标签，用于每天主题 */
   theme?: string;
@@ -39,6 +40,8 @@ export interface ScheduledStop {
   poi: SchedulablePoi;
   /** 确定性插入的餐次标记（锚点是真实美食候选，语义是「这一餐」） */
   meal?: 'lunch' | 'dinner';
+  /** 无合适餐厅时引用真实景点的周边区域，不能冒充已核实门店。 */
+  areaAnchorName?: string;
 }
 
 export interface ScheduledDay {
@@ -70,23 +73,32 @@ export interface ScheduleResult {
   days: ScheduledDay[];
   /** 因天数/容量不足未排入的候选数（D5：排不下就少排，不硬塞） */
   droppedCount: number;
-  /**
- * 闭馆日冲突：全局日期匹配仍无法保留某段，该段在分配日整段闭馆而未排入。
-   * 调用方必须如实告知用户 —— 否则用户只会看到「莫名其妙少一天」。
-   */
+  /** 未解决的闭馆冲突；结果保留所有已选景点供诊断，调用方必须阻止保存。 */
   closureConflicts: readonly ClosureConflict[];
+  dateRepair: Pick<DateRepairResult, 'attempts' | 'reason'>;
 }
 
 export interface ClosureConflict {
-  /** 被放弃的段成员名 */
+  /** 当前日期仍闭馆的成员名 */
   names: readonly string[];
-  /** 本来可用、但因整段闭馆而未使用的日期（YYYY-MM-DD） */
+  /** 冲突日期（YYYY-MM-DD） */
   date: string;
   /** 该日期所属的法定节假日名；非节假日为 null */
   holiday: string | null;
 }
 
+export class ScheduleDateConflictError extends Error {
+  readonly code = 'SCHEDULE_DATE_CONFLICT';
+  constructor(readonly conflicts: readonly ClosureConflict[], readonly reason: DateRepairResult['reason'] | 'post_processing') {
+    super(`当前日期无法安排全部已选景点：${conflicts.map((c) => `${c.date} ${c.names.join('、')}闭馆`).join('；')}。请调整出发日期或景点要求后重试。`);
+    this.name = 'ScheduleDateConflictError';
+  }
+}
+
 export const SCHEDULE_LIMITS = {
+  /** 就餐点须靠近前后景点之一，且插入午餐造成的额外直线绕行不超过此值。 */
+  mealNearbyKm: 2,
+  mealDetourKm: 2,
   /** 单日最多活动数（既有单日 ≤8 完整性校验的上游约束，排程收紧到 6） */
   maxStopsPerDay: 6,
   /**
@@ -251,43 +263,50 @@ function dayTitle(members: readonly SchedulablePoi[]): string {
   return count((poi) => poi.theme) ?? count((poi) => poi.kbCategory) ?? '自由漫步';
 }
 
-/** 餐次锚点：离上一个点最近、尚未使用的美食候选；没有就退到目的地名（不编造门店） */
-function takeMealAnchor(foods: Set<SchedulablePoi>, near: SchedulablePoi | undefined): SchedulablePoi | undefined {
-  if (!foods.size) return undefined;
+/** 只选有坐标且顺路的门店；午餐按前后两点的增量距离排序，晚餐按末点距离。 */
+function takeMealAnchor(foods: Set<SchedulablePoi>, before?: SchedulablePoi, after?: SchedulablePoi, date?: string): SchedulablePoi | undefined {
+  const previous = before && hasCoord(before) ? before : undefined;
+  const next = after && hasCoord(after) ? after : undefined;
+  if (!previous && !next) return undefined;
   let best: SchedulablePoi | undefined;
-  if (near && hasCoord(near)) {
-    let bestKm = Infinity;
-    for (const food of foods) {
-      if (!hasCoord(food)) continue;
-      const km = distanceKm(near, food);
-      if (km < bestKm) {
-        bestKm = km;
-        best = food;
-      }
+  let bestDetour = Infinity;
+  for (const food of foods) {
+    if (!hasCoord(food)) continue;
+    if (date && isClosedOnDate(food.openTime, date)) continue;
+    const fromKm = previous ? distanceKm(previous, food) : Infinity;
+    const toKm = next ? distanceKm(food, next) : Infinity;
+    if (Math.min(fromKm, toKm) > SCHEDULE_LIMITS.mealNearbyKm) continue;
+    const detour = previous && next ? Math.max(0, fromKm + toKm - distanceKm(previous, next)) : Math.min(fromKm, toKm);
+    if (detour > SCHEDULE_LIMITS.mealDetourKm) continue;
+    if (detour < bestDetour) {
+      bestDetour = detour;
+      best = food;
     }
   }
-  const anchor = best ?? [...foods][0]!;
-  foods.delete(anchor);
-  return anchor;
+  if (best) foods.delete(best);
+  return best;
 }
 
-/** 美食导向时在段内插午餐（中段之后）与晚餐（段尾）；餐次锚点也是候选池里的真实美食点 */
-function withMeals(
-  members: readonly SchedulablePoi[],
+/** 没有顺路门店时如实标注周边区域，复用景点位置；不会为了用完候选而跨城选餐。 */
+export function selectMealStop(
   foods: Set<SchedulablePoi>,
   kind: 'lunch' | 'dinner',
-  near: SchedulablePoi | undefined,
+  before: SchedulablePoi | undefined,
+  after: SchedulablePoi | undefined,
   fallbackArea: string,
+  date?: string,
 ): ScheduledStop {
-  const anchor = takeMealAnchor(foods, near);
+  const anchor = takeMealAnchor(foods, before, after, date);
+  const near = [before, after].find((point) => point && hasCoord(point));
   const poi: SchedulablePoi = anchor ?? {
-    id: `meal-${kind}-${members.length}`,
-    name: fallbackArea,
+    id: `meal-${kind}-${near?.id ?? 'area'}`,
+    name: near ? `${near.name}周边` : fallbackArea,
     category: 'food',
     score: 0,
     weight: 1,
+    ...(near ? { lat: near.lat, lng: near.lng } : {}),
   };
-  return { poi, meal: kind };
+  return { poi, meal: kind, ...(!anchor && near ? { areaAnchorName: near.name } : {}) };
 }
 
 function placeholderStop(destination: string): ScheduledStop {
@@ -359,7 +378,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
   const weight = (segment: readonly SchedulablePoi[]) => Math.max(...segment.map((poi) => poi.score));
   segments.sort((a, b) => weight(b) - weight(a));
 
-  // 日期匹配保持整段移动；没有完整开放解时最少冲突，整段闭馆则留空并如实提示。
+  // 整段匹配作为快速路径；剩余冲突再做有界跨日重组。
   const closedCountOn = (segment: readonly SchedulablePoi[], dayIndex: number): number => {
     if (!options.startDate) return 0;
     const date = dateForDayIndex(options.startDate, dayIndex + 1);
@@ -367,10 +386,9 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     return segment.filter((poi) => isClosedOnDate(poi.openTime, date)).length;
   };
 
-  // 全局日期匹配（最多 15 天，状态数 <= 2^15）：先最少安排闭馆活动，再最少整段丢弃。
+  // 全局日期匹配（最多 15 天，状态数 <= 2^15）：最少闭馆活动，不再用删段降低成本。
   // 同成本优先把高分段排在较早日期；不会让灵活段占走其他段唯一的开放日。
   const closedCounts = segments.map((segment) => Array.from({ length: options.days }, (_, i) => closedCountOn(segment, i)));
-  const closurePenalty = segments.length + 1;
   const memo = new Map<number, { cost: number; day: number }>();
   const assign = (index: number, mask: number): number => {
     if (index === segments.length) return 0;
@@ -380,7 +398,7 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     for (let day = 0; day < options.days; day++) {
       if (mask & (1 << day)) continue;
       const closed = closedCounts[index]![day]!;
-      const cost = (closed === segments[index]!.length ? 1 : closed * closurePenalty) + assign(index + 1, mask | (1 << day));
+      const cost = closed + assign(index + 1, mask | (1 << day));
       if (cost < best.cost) best = { cost, day };
     }
     memo.set(mask, best);
@@ -388,6 +406,13 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
   };
   assign(0, 0);
   let assignedMask = 0;
+  const assigned: SchedulablePoi[][] = Array.from({ length: options.days }, () => []);
+  for (const segment of segments) {
+    const target = memo.get(assignedMask)!.day;
+    assignedMask |= 1 << target;
+    assigned[target] = segment;
+  }
+  const repaired = repairScheduleDates(assigned, options, paceLimits);
 
   const fallbackArea = options.fallbackArea?.trim() || '目的地';
   const days: ScheduledDay[] = Array.from({ length: options.days }, (_, index) => ({
@@ -396,32 +421,17 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     stops: [] as ScheduledStop[],
   }));
 
-  const closureConflicts: ClosureConflict[] = [];
-  for (const [index, segment] of segments.entries()) {
-    const target = memo.get(assignedMask)!.day;
-    assignedMask |= 1 << target;
-    if (closedCounts[index]![target] === segment.length) {
-      for (const poi of segment) dropped.add(poi);
-      const date = options.startDate
-        ? dateForDayIndex(options.startDate, target + 1)
-        : undefined;
-      if (date) {
-        closureConflicts.push({
-          names: segment.map((poi) => poi.name),
-          date,
-          holiday: findHoliday(date)?.name ?? null,
-        });
-      }
-      continue;
-    }
+  for (const [target, segment] of repaired.days.entries()) {
+    if (!segment.length) continue;
     const day = days[target]!;
     day.title = dayTitle(segment);
     const stops: ScheduledStop[] = segment.map((poi) => ({ poi }));
     if (options.foodFocused) {
       // 午餐落在段中段之后、晚餐落段尾：没有时间轴，位置只表达阅读顺序
+      const date = options.startDate ? dateForDayIndex(options.startDate, target + 1) : undefined;
       const lunchAt = Math.max(1, Math.ceil(stops.length / 2));
-      stops.splice(lunchAt, 0, withMeals(segment, foods, 'lunch', segment[lunchAt - 1], fallbackArea));
-      stops.push(withMeals(segment, foods, 'dinner', segment[segment.length - 1], fallbackArea));
+      stops.splice(lunchAt, 0, selectMealStop(foods, 'lunch', segment[lunchAt - 1], segment[lunchAt], fallbackArea, date));
+      stops.push(selectMealStop(foods, 'dinner', segment[segment.length - 1], undefined, fallbackArea, date));
     }
     day.stops = stops;
   }
@@ -431,10 +441,11 @@ export function buildSchedule(candidates: readonly SchedulablePoi[], options: Sc
     day.title = SCHEDULE_LIMITS.emptyDayPrefix;
     day.stops = [placeholderStop(fallbackArea)];
     if (options.foodFocused) {
-      day.stops.push(withMeals([], foods, 'lunch', undefined, fallbackArea));
-      day.stops.push(withMeals([], foods, 'dinner', undefined, fallbackArea));
+      day.stops.push(selectMealStop(foods, 'lunch', undefined, undefined, fallbackArea));
+      day.stops.push(selectMealStop(foods, 'dinner', undefined, undefined, fallbackArea));
     }
   }
 
-  return { days, droppedCount: dropped.size, closureConflicts };
+  return { days, droppedCount: dropped.size, closureConflicts: repaired.conflicts,
+    dateRepair: { attempts: repaired.attempts, ...(repaired.reason ? { reason: repaired.reason } : {}) } };
 }

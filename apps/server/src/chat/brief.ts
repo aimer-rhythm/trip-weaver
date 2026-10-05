@@ -102,6 +102,8 @@ export function applyDialogueDecision(
   evidenceSequence: number,
 ): PlanningBriefData {
   const input = asRecord(raw);
+  // 只读问答即使夹带合法字段或约束，也不能改变下一次生成使用的条件。
+  if (input.intent === 'travel_qa') return { ...current, constraints: [...current.constraints] };
   const next: PlanningBriefData = {
     ...current,
     constraints: applyConstraints(current.constraints, input, evidenceSequence),
@@ -111,7 +113,8 @@ export function applyDialogueDecision(
     const value = input[key];
     if (typeof value !== 'string') continue;
     const trimmed = value.trim();
-    if (trimmed) next[key] = trimmed.slice(0, TEXT_LIMITS[key]);
+    // 显式空备注表示取消全部自由文本要求；字段缺省仍保持原值。
+    if (trimmed || key === 'extraNotes') next[key] = trimmed.slice(0, TEXT_LIMITS[key]);
   }
 
   const pace = oneOf(PACE_OPTIONS, input.pace);

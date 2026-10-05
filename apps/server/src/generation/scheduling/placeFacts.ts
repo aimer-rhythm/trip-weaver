@@ -81,6 +81,8 @@ const WEEKDAY_CN = ['周日', '周一', '周二', '周三', '周四', '周五', 
 export function renderOpenHours(raw: unknown): string | undefined {
   if (!raw || typeof raw !== 'object') return undefined;
   const hours = raw as Record<string, unknown>;
+  // v2 归属待审字段不是营业承诺；不能靠遗留值或 review 原文重新捏造闭馆规则。
+  if (hours.version === 2 && (hours.status !== 'attributed' || hours.scope !== 'place')) return undefined;
   const open = typeof hours.openTime === 'string' ? hours.openTime.trim() : '';
   const close = typeof hours.closeTime === 'string' ? hours.closeTime.trim() : '';
   const days = Array.isArray(hours.closedWeekdays)
@@ -209,6 +211,7 @@ export async function loadCityPlaceFacts(city: string): Promise<Map<string, Plac
        WHERE p.city = $1
          AND p.payload->>'canonicalRedirectTo' IS NULL
          AND COALESCE(p.payload->'identity'->>'kind', '') <> 'complex'
+         AND (p.payload->'openHours'->>'version') IS DISTINCT FROM '2'
          AND e.content ~ '周[一二三四五六日天][^；;。]{0,8}(闭馆|不开放|休息)'
          AND e.content !~ '不休息'
        ORDER BY p.name, e.fetched_at DESC`,

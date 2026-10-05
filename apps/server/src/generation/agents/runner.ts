@@ -37,6 +37,8 @@ export interface RunAgentOptions {
   maxTurns?: number;
   /** LLM 请求上下文快照（09-20）：传入后每次 API 请求落库，失败不影响生成 */
   recorder?: LlmRequestRecorder;
+  /** 必须经工具提交的阶段：正文停机后最多提醒一次，复用同一 Agent 上下文与总轮次上限。 */
+  completion?: { isComplete(): boolean; reminder: string; errorMessage: string };
 }
 
 export interface RunAgentResult {
@@ -69,6 +71,13 @@ const RETRYABLE_UPSTREAM_ERROR =
 /** 只认「换一次请求就可能成功」的错误，其余照常判死，避免把真实配置错误拖成三次慢失败 */
 export function isRetryableUpstreamError(message: string): boolean {
   return RETRYABLE_UPSTREAM_ERROR.test(message);
+}
+
+/** 网关 HTML 不作为模型诊断正文透出；保留 HTTP 状态便于区分网络故障。 */
+export function summarizeUpstreamError(message: string): string {
+  if (!/<(?:!doctype|html|head|body)\b/i.test(message)) return message;
+  const status = message.match(/\b([45]\d{2})\b/)?.[1];
+  return `${status ? `HTTP ${status}：` : ''}模型网关返回 HTML 错误页，上游连接失败或超时`;
 }
 
 function abortableSleep(ms: number, signal?: AbortSignal): Promise<void> {
@@ -156,15 +165,16 @@ export function streamWithRetry(
 
       if (!canRetry) {
         for (const ev of buffered) stream.push(ev);
-        if (terminal.type === 'error' && attempt > 1) {
-          terminal.error.errorMessage = `${terminal.error.errorMessage ?? failed}（上游已重试 ${attempt - 1} 次）`;
+        if (terminal.type === 'error') {
+          terminal.error.errorMessage = summarizeUpstreamError(terminal.error.errorMessage ?? failed)
+            + (attempt > 1 ? `（上游已重试 ${attempt - 1} 次）` : '');
         }
         stream.push(terminal);
         return;
       }
 
       const delayMs = delays[attempt - 1] ?? 0;
-      console.warn(`[llm-retry] 第 ${attempt} 次请求失败，${delayMs}ms 后重试：${failed.slice(0, 200)}`);
+      console.warn(`[llm-retry] 第 ${attempt} 次请求失败，${delayMs}ms 后重试：${summarizeUpstreamError(failed).slice(0, 200)}`);
       await abortableSleep(delayMs, options?.signal);
     }
   })();
@@ -266,6 +276,12 @@ export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResu
   try {
     await agent.prompt(opts.userPrompt);
     await agent.waitForIdle();
+    if (opts.completion && !opts.completion.isComplete() && !opts.signal.aborted
+      && !result.errorMessage && !agent.state.errorMessage && turns < (opts.maxTurns ?? DEFAULT_MAX_TURNS)) {
+      // 正文中的 JSON 没有经过工具校验，不能直接当作提交；让模型修正协议，不重跑搜索。
+      await agent.prompt(opts.completion.reminder);
+      await agent.waitForIdle();
+    }
   } finally {
     opts.signal.removeEventListener('abort', onAbort);
   }
@@ -273,6 +289,9 @@ export async function runPhaseAgent(opts: RunAgentOptions): Promise<RunAgentResu
   result.aborted = opts.signal.aborted;
   if (!result.errorMessage && agent.state.errorMessage && !result.aborted) {
     result.errorMessage = agent.state.errorMessage;
+  }
+  if (!result.errorMessage && !result.aborted && opts.completion && !opts.completion.isComplete()) {
+    result.errorMessage = opts.completion.errorMessage;
   }
   return result;
 }

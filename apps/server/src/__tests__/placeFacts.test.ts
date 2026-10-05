@@ -84,6 +84,13 @@ test('未知评分在合并后仍走中性值，真实零保持为零', () => {
 
 // ---------- 结构化开闭馆渲染（09-27） ----------
 
+test('v2 归属待审及子设施不渲染为主地点营业规则，明确主语继续生效', () => {
+  const fields = { version: 2, scope: 'place', openTime: '09:00', closeTime: '17:00', closedWeekdays: [1] };
+  assert.equal(renderOpenHours({ ...fields, status: 'unknown' }), undefined);
+  assert.equal(renderOpenHours({ ...fields, status: 'attributed', scope: 'component' }), undefined);
+  assert.equal(renderOpenHours({ ...fields, status: 'attributed' }), '09:00-17:00；周一闭馆');
+});
+
 test('renderOpenHours：营业时段与闭馆星期渲染成 openTime 同构文本', () => {
   assert.equal(renderOpenHours({ openTime: '09:00', closeTime: '17:00', closedWeekdays: [] }), '09:00-17:00');
   assert.equal(renderOpenHours({ text: '周一闭馆', openTime: null, closeTime: null, closedWeekdays: [1] }), '周一闭馆');

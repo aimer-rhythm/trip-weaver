@@ -10,7 +10,7 @@ import {
   type Context,
   type Model,
 } from '@mariozechner/pi-ai';
-import { isRetryableUpstreamError, streamWithRetry } from '../generation/agents/runner';
+import { isRetryableUpstreamError, streamWithRetry, summarizeUpstreamError } from '../generation/agents/runner';
 
 const model = {
   id: 'test-model',
@@ -86,6 +86,17 @@ test('isRetryableUpstreamError：网关「模型不可用」可重试，请求�
   assert.equal(isRetryableUpstreamError('field Messages[3].Role invalid, should be one of: user, assistant'), false);
   assert.equal(isRetryableUpstreamError('No API key for provider: tripweaver-byok'), false);
   assert.equal(isRetryableUpstreamError(''), false);
+});
+
+test('HTML 网关错误保留 504 状态，诊断与最终错误不带网页正文', async () => {
+  const html = '504 <html lang="en"><head><title>无法连接到服务器</title></head>PRIVATE-PROVIDER-BODY</html>';
+  assert.match(summarizeUpstreamError(html), /HTTP 504/);
+  assert.ok(!summarizeUpstreamError(html).includes('PRIVATE-PROVIDER-BODY'));
+  const stream = streamWithRetry(() => upstreamError(html), model, context, undefined, []);
+  await collect(stream);
+  const result = await stream.result();
+  assert.match(result.errorMessage!, /HTTP 504/);
+  assert.ok(!result.errorMessage!.includes('<html'));
 });
 
 test('streamWithRetry：上游瞬时故障重试后成功，失败尝试的事件不透出', async () => {

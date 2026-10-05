@@ -31,6 +31,64 @@ events from parallel enhancement work are discarded.
 Representative paths: `apps/server/src/routes/generations.ts`,
 `apps/server/src/generation/orchestrator.ts`, `apps/server/src/generation/jobManager.ts`.
 
+## Scenario: Research Tool Submission Completion (2026-10-04)
+
+### 1. Scope / Trigger
+
+Research agent completion and the shared phase runner. Real eval observed a model outputting
+12 candidates in a JSON code fence with stopReason=stop, without invoking submit_research;
+the empty pool previously reached scheduling and produced only free-time/meal placeholders.
+
+### 2. Signatures
+
+- `RunAgentOptions.completion?: { isComplete(): boolean; reminder: string; errorMessage: string }`
+- `runResearchPhase` requires a nonempty pool and the summary set by successful submit_research.
+- `summarizeUpstreamError(message)` retains HTTP status while removing gateway HTML bodies.
+
+### 3. Contracts
+
+- After normal agent idle without successful submission, issue at most one corrective prompt
+  on the same Agent. Preserve catalog, tool results, inserted candidates and cumulative usage.
+- Never parse assistant prose/code fences as a tool submission. Existing tool schema and
+  catalog/city/ID validation remain authoritative.
+- Upstream errors, cancellation and exhausted total turn budget do not trigger correction.
+  If correction still fails the completion predicate, return an explicit phase error.
+- Orchestrator observes that error before scheduling/persistence. Optional retrieval failure
+  still permits external/model-knowledge candidate fallback through the existing tools.
+- Phases without a completion requirement retain their current behavior. HTTP retry policy
+  and single-job timeout remain unchanged; HTML errors become concise status diagnostics.
+
+### 4. Validation & Error Matrix
+
+| Condition | Behavior |
+| --- | --- |
+| First response submits successfully | no correction request |
+| Plain text or JSON instead of successful submission | one reminder with existing context |
+| Still no successful submission | phase error; no placeholder-only saved trip |
+| Cancelled / model error / total turns exhausted | preserve reason; no extra request |
+| HTTP 504 HTML page | status and gateway summary; no HTML body in retry/final error |
+
+### 5. Good / Base / Bad Cases
+
+Good: model corrects a prose response by invoking the validated submission tool.
+Base: valid one-call submission stays one call.
+Bad: any stopReason=stop is treated as successful research, or code parses prose into the pool.
+
+### 6. Tests Required
+
+`agentCompletion.test.ts`: actual local HTTP model protocol, text→tool correction, repeated
+text rejection, retained context/usage, normal tools, ordinary text phases, errors, abort and
+turn limits. `llmRetry.test.ts`: existing retry semantics and sanitized HTML status.
+`eval:verify -- --research-response text-first|text-only`: real research phase and isolated DB,
+recovery or explicit error before planning, event diagnostics and cleanup.
+
+### 7. Wrong vs Correct
+
+Wrong: `await agent.prompt(...); return research;` regardless of successful submission.
+
+Correct: validate the successful tool-controlled completion predicate, offer one bounded
+correction, then return a clear error when it remains false.
+
 ## In-Memory Job Model
 
 Jobs, running-job ownership, listeners, event buffers, provider caches, and quota aggregate
@@ -385,7 +443,7 @@ LLM planner/reviewer loop for the live pipeline.
 
 - `visitWeight(facts): number` in `scheduling/visitWeight.ts` — relative weight, pure, no IO
 - `loadPlaceFacts(names, city): Promise<Map<string, PlaceFacts>>` in `scheduling/placeFacts.ts`
-- `buildSchedule(candidates, options): { days, droppedCount, closureConflicts }` in `scheduling/schedule.ts` — pure
+- `buildSchedule(candidates, options): { days, droppedCount, closureConflicts, dateRepair }` in `scheduling/schedule.ts` — pure
 - `applyDeterministicSchedule(input): { schedule, written, withoutCoord }` in
   `scheduling/buildDraft.ts`
 - `draft.setSkeleton(...)` / `draft.addActivity(...)` / `draft.setLodging(...)` /
@@ -405,6 +463,21 @@ LLM planner/reviewer loop for the live pipeline.
   round-2 revision blew the 15-minute job timeout.
 - Scheduling IS a hard dependency (unlike RAG enrichment): if `draft.validate()` fails after
   scheduling, throw `GenerationFailure`. There is no degraded path — no structure means no trip.
+- Date assignment first matches whole groups, minimizing closed activities (at most `2^15`
+  matching states). Remaining closures use `repairScheduleDates`: move or swap up to two
+  same-day ordering bundles, retaining every selected attraction. Candidates must respect
+  weight/count limits, exclusive days, same-day predecessor bundles and cross-day order.
+  Search accepts only fewer closures, ranks by geometric distance then changed-day count,
+  and has stable ties, 30,000 attempts / 256 expanded states / 16 frontier entries. It is a
+  bounded heuristic, not proof that every feasible itinerary will be found. Route distance
+  may grow by at most max(2 km, 10%); no road-network duration guarantee is implied.
+- `dateRepair.reason` distinguishes `no_open_day`, `search_exhausted` and `search_limit`.
+  `closureConflicts` names the still-closed attractions and dates; never count them as dropped
+  or replace their day with a placeholder. `applyDeterministicSchedule` throws
+  `ScheduleDateConflictError(code='SCHEDULE_DATE_CONFLICT')` BEFORE mutating the draft.
+  Orchestrator uses the existing `job_error` message path, records an error audit and saves
+  neither a trip nor success quota. After geo/cross-day processing, `scheduleClosureConflicts`
+  checks all final attractions/meals once more before persistence (`post_processing` reason).
 - Coordinates are OPTIONAL per candidate. Candidates without coordinates follow located candidates
   in score order before capacity-based chain cutting; `geoPipeline`
   resolves their coordinates afterwards (this matches the pre-existing rule that coordinates are
@@ -428,6 +501,23 @@ LLM planner/reviewer loop for the live pipeline.
 - When `foodFocused`, insert lunch at the segment midpoint and dinner at its end. Empty days get
   `自由安排｜<destination>` plus lunch and dinner; without that preference they get only the
   placeholder. Missing food candidates use truthful area anchors, never fabricated venues.
+- Meal selection (10-04): `selectMealStop(foods, kind, before, after, fallbackArea)` requires
+  known restaurant coordinates and at least one located adjacent attraction. A restaurant must
+  be within `SCHEDULE_LIMITS.mealNearbyKm` (2 km) of either neighbor; lunch adds at most
+  `mealDetourKm` (2 km) over the direct before→after distance, dinner is within 2 km of the last
+  attraction. Rank by that added distance, not only distance from the previous stop. These are
+  geometric selection limits, not road-network duration guarantees. Rejected candidates remain
+  available for a later nearby meal; never fall back to an arbitrary unlocated or distant food POI.
+- Meal selection also filters `isClosedOnDate(food.openTime, date)` using the **assigned day** after
+  segment/date matching, never the segment's original index. Closed foods remain in the pool for an
+  open day. Missing dates retain distance-only selection. This does not verify source attribution of
+  opening facts. All meals are selected only after final scheduling dates are assigned/repaired.
+- Without a suitable restaurant, use `<adjacent attraction>周边` with its reference coordinates
+  and `ScheduledStop.areaAnchorName`. `buildDraft` uses the actual attraction as `placeName`,
+  keeps `poiId` absent and explains that a specific restaurant is unverified. Do not geocode
+  the synthetic display name or move a remote meal to the city center. Only when neither
+  neighbor has coordinates does the meal fall back to the destination area. Blank times stay
+  blank; area-reference zero-distance legs are not proof of a zero-distance restaurant visit.
 - `PlaceFacts.recommendScore` / `mentionCount` remain optional through loading and merging. Only
   known values participate in aggregation; real zero stays zero. Unknown values use neutral score
   ratios, so a gold-set landmark with no community metrics scores 65, not 15.
@@ -472,9 +562,10 @@ LLM planner/reviewer loop for the live pipeline.
 | --- | --- |
 | `loadPlaceFacts` query fails | warn, empty map, schedule falls back to the type table |
 | no candidate has coordinates | retain candidates subject to capacity, resolve coordinates later |
-| no attractions / all closed | truthful placeholder and, when food-focused, lunch and dinner |
+| no attractions | truthful placeholder and, when food-focused, lunch and dinner |
+| selected attractions still closed after bounded repair | explicit `job_error`; no draft mutation/save/success quota |
 | candidates exceed pace/capacity | overflow dropped, reported in `phase_end` summary |
-| food-focused with no food candidate | meal stop anchors on the destination name |
+| no nearby food candidate / all would detour | adjacent attraction area reference; destination only without located neighbors |
 | writer LLM error / turn limit | keep drafted copy, `job_done` unaffected |
 | cancellation during scheduling | propagates as on any other phase |
 
@@ -493,6 +584,15 @@ const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排�
 
 Representative paths: `apps/server/src/generation/scheduling/`,
 `apps/server/src/generation/orchestrator.ts`, `apps/server/src/generation/tools/draftTools.ts`.
+Meal regressions: `mealLocality.test.ts` covers added-distance selection, both distance limits,
+unknown coordinates, retained candidates, closed-day rejection/open-day reuse and actual assigned
+dates after segment swaps; `scheduling.test.ts` covers daily meal capacity.
+`dateRepair.test.ts` covers moves/swaps, ordered bundles, unknown coordinates, holidays, 15 days,
+exclusive/no-solution cases, distance ceilings and meals after repair. The generation-flow script
+checks actual closed-date failure, database counts and one terminal HTTP SSE replay.
+`scripts/verify-generation-flow.mts` verifies remote area names/coordinates/place hints in a
+real draft under its owned PostgreSQL database. Pure meal tests must not import `buildDraft`
+because its relation-loader dependency imports the application database client.
 Measurement scripts: `cd apps/server && npx tsx test-gen-timing.mts`, plus `test-kb-shape.mts` for
 what the knowledge base can actually support.
 

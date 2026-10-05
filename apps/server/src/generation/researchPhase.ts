@@ -17,6 +17,11 @@ export async function runResearchPhase(input: ResearchPhaseInput) {
   const result = await runPhaseAgent({
     model: input.model, apiKey: input.apiKey, signal: input.signal, sink: input.sink,
     maxTurns: input.maxTurns ?? 16, recorder: input.recorder,
+    completion: {
+      isComplete: () => Boolean(research.summary) && research.pool.length > 0,
+      reminder: '调研尚未成功提交。正文或 JSON 代码块不会写入候选池。请保留已有检索结果，通过真正的 submit_research 工具调用提交 candidates；已 add_candidate 入池的地点不用重复添加。根据工具反馈修正无效参数，提交成功后结束。不要再输出候选 JSON 正文。',
+      errorMessage: '调研未成功调用 submit_research 提交候选，已停止生成；请重试或检查模型的工具调用能力',
+    },
     systemPrompt: researchSystemPrompt({ searchWebMax: input.searchWebMax, pace: input.form.pace, foodSearch }),
     tools: buildResearchTools({ ...input, destination: input.form.destination, outcome: research, foodSearch }),
     userPrompt: `${formBrief(input.form)}\n\n${places.length

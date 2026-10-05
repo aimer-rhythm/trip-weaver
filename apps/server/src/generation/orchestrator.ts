@@ -46,6 +46,8 @@ import type { ReviewOutcome } from './tools/reviewTools';
 import { retrieveContext } from './retrieveContext';
 import { prepareResearchContext } from './researchContext';
 import { applyDeterministicSchedule } from './scheduling/buildDraft';
+import { ScheduleDateConflictError } from './scheduling/schedule';
+import { scheduleClosureConflicts } from './scheduling/dateRepair';
 import {
   WRITER_SYSTEM_PROMPT,
   writerUserPrompt,
@@ -440,18 +442,6 @@ export async function runGeneration(
     // · repairTransitTiming 靠「活动结束时间 + 真实 leg」顺延，没有时间轴就无从顺延。
     // 真通勤时长仍由 computeLegs 算在 leg 上，前端按「段间耗时」展示。
 
-    // 全局日期匹配仍无法保留的闭馆段如实提示；自由安排日也保留所需餐次。
-    const WEEKDAY_LABELS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] as const;
-    const closureNotes = scheduleOutcome.schedule.closureConflicts.map((conflict) => {
-      const parsed = new Date(`${conflict.date}T00:00:00`);
-      const weekday = Number.isNaN(parsed.getTime()) ? '' : WEEKDAY_LABELS[parsed.getDay()]!;
-      const holiday = conflict.holiday ? `（${conflict.holiday}）` : '';
-      return `${conflict.names.join('、')} 在 ${conflict.date}${weekday ? ` ${weekday}` : ''}${holiday} 闭馆，无法与其他行程同时安排到开放日，未排入行程（该天可自由安排）。`;
-    });
-    if (closureNotes.length) {
-      reviewNotes = [...new Set([...closureNotes, ...reviewNotes])].slice(0, 8);
-    }
-
     // 只保留最终草稿中仍成立的换天说明。
     const verifiedAutoNotes = verifiedFixNotes(draft, autoFixMoves);
     if (verifiedAutoNotes.length) {
@@ -460,6 +450,8 @@ export async function runGeneration(
 
     // 最终草稿重算可行性：hard/soft 违规均如实汇入说明，不再交给模型修订结构。
     const finalFeasibility = draft.feasibility();
+    const finalClosures = scheduleClosureConflicts(draft.mutableDays().map((day) => day.activities), form.startDate);
+    if (finalClosures.length) throw new ScheduleDateConflictError(finalClosures, 'post_processing');
     const feasibilityNotes = feasibilityReviewNotes(finalFeasibility);
     if (feasibilityNotes.length) {
       reviewNotes = [...new Set([...reviewNotes, ...feasibilityNotes])].slice(0, 8);
@@ -497,7 +489,7 @@ export async function runGeneration(
       cancelJob(job);
       terminalStatus = 'cancelled';
     } else {
-      failJob(job, err instanceof GenerationFailure ? err.message : '生成失败，请稍后重试');
+      failJob(job, err instanceof GenerationFailure || err instanceof ScheduleDateConflictError ? err.message : '生成失败，请稍后重试');
       terminalStatus = 'error';
       logger?.error({ jobId: job.id, errorType: err instanceof Error ? err.name : 'unknown' }, 'generation failed');
     }
