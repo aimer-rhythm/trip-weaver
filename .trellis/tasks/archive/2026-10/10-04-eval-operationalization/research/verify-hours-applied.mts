@@ -2,9 +2,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { Client } from 'pg';
-import { hash, writeJson } from '../../../../eval/artifacts';
-import { readFrozen } from '../../../../eval/frozenKnowledge';
-import { sourceConfiguration } from '../../../../eval/exportKnowledge';
+import { hash, writeJson } from '../../../../../../eval/artifacts';
+import { readFrozen } from '../../../../../../eval/frozenKnowledge';
+import { sourceConfiguration } from '../../../../../../eval/exportKnowledge';
 import type { HoursBackup } from './hoursPatch';
 
 const application = 'eval/runs/hours-apply-1791173395975';

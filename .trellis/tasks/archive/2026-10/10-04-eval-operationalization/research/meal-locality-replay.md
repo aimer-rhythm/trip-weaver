@@ -1,6 +1,6 @@
 # 上海餐饮顺路规则：固定景点顺序的几何对照
 
-来源：[原 live 报告](../../../../eval/runs/2026-10-04T13-10-06-296Z-1d307915/report.md)。
+来源：[原 live 报告](../../../../../../eval/runs/2026-10-04T13-10-06-296Z-1d307915/report.md)。
 
 固定原快照日期、景点顺序与餐次位置，按原调研候选顺序重放 selectMealStop；坐标来自原最终行程，距离为直线近似。
 
@@ -21,4 +21,4 @@
 
 原快照 SHA-256：`8b487f201a5e153d90d1468cac38bce05cee57a6f3f12f15f5d913338238f11d`。
 
-复现：`node --import tsx .trellis/tasks/10-04-eval-operationalization/research/replay-meal-locality.mts`。
+复现：`node --import tsx .trellis/tasks/archive/2026-10/10-04-eval-operationalization/research/replay-meal-locality.mts`。

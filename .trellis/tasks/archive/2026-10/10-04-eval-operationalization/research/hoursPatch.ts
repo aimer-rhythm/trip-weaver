@@ -1,6 +1,6 @@
 // 只修改已批准地点的 openHours；调用方负责凭据、预览身份和备份落盘。
 import type { Client } from 'pg';
-import { hash } from '../../../../eval/artifacts';
+import { hash } from '../../../../../../eval/artifacts';
 
 export interface HoursChange {
   id: string;

@@ -1,9 +1,9 @@
 // 只生成营业字段修复预览和可验证的候选冻结版；不连接生产库、不应用到现有行程。
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { hash, writeJson } from '../../../../eval/artifacts';
-import { readFrozen, saveFrozen, type FrozenData } from '../../../../eval/frozenKnowledge';
-import { verifyFrozenImport } from '../../../../eval/knowledgeVerification';
+import { hash, writeJson } from '../../../../../../eval/artifacts';
+import { readFrozen, saveFrozen, type FrozenData } from '../../../../../../eval/frozenKnowledge';
+import { verifyFrozenImport } from '../../../../../../eval/knowledgeVerification';
 
 const out = 'eval/runs/hours-preview-2026-10-05-v2';
 fs.mkdirSync(out);

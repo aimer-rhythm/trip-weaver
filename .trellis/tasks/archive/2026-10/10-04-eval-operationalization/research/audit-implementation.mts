@@ -1,8 +1,8 @@
 // 最终交付只读审计；不运行生成，不改原报告，不标记验收/提交。
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { hash, createManifest, readReport, hashSources, writeJson } from '../../../../eval/artifacts';
-import { readFrozen } from '../../../../eval/frozenKnowledge';
+import { hash, createManifest, readReport, hashSources, writeJson } from '../../../../../../eval/artifacts';
+import { readFrozen } from '../../../../../../eval/frozenKnowledge';
 
 const root = 'eval/runs/date-retest-1791169501846';
 const paths = [
@@ -53,7 +53,7 @@ assert.equal(knowledgeVerification.rowContentHashesMatch, true);
 assert.equal(knowledgeVerification.vectorQueryVerified, true);
 assert.equal(knowledgeVerification.isolatedDatabaseCleaned, true);
 for (const lock of ['eval/data/live.lock', 'eval/runs/campaign-2026-10-05-live-matrix/campaign.lock']) assert.ok(!fs.existsSync(lock));
-const task = JSON.parse(fs.readFileSync('.trellis/tasks/10-04-eval-operationalization/task.json', 'utf8'));
+const task = JSON.parse(fs.readFileSync('.trellis/tasks/archive/2026-10/10-04-eval-operationalization/task.json', 'utf8'));
 assert.equal(task.status, 'in_progress');
 assert.equal(task.commit, null);
 const output = `${applicationPath}/delivery-audit-${Date.now()}.json`;

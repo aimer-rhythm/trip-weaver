@@ -8,8 +8,8 @@
 
 | 来源 | 单例 | 原 gate | 主要发现 |
 | --- | --- | --- | --- |
-| [上海原运行](../../../../eval/runs/2026-10-04T13-10-06-296Z-1d307915/report.md) | shanghai-3d-transit | PASS，hard 0 / soft 2 | D1–3 活动间交通 76 / 146 / 309 分钟；D3 82.692 km；餐厅有明显绕行 |
-| [北京原运行](../../../../eval/runs/2026-10-04T13-17-19-490Z-5f128733/report.md) | beijing-5d-family | PASS，hard 0 / soft 0 | D2 天坛→国博→圆明园→颐和园，活动间交通 169 分钟 / 34.232 km |
+| [上海原运行](../../../../../../eval/runs/2026-10-04T13-10-06-296Z-1d307915/report.md) | shanghai-3d-transit | PASS，hard 0 / soft 2 | D1–3 活动间交通 76 / 146 / 309 分钟；D3 82.692 km；餐厅有明显绕行 |
+| [北京原运行](../../../../../../eval/runs/2026-10-04T13-17-19-490Z-5f128733/report.md) | beijing-5d-family | PASS，hard 0 / soft 0 | D2 天坛→国博→圆明园→颐和园，活动间交通 169 分钟 / 34.232 km |
 
 两次均是单例，原报告 `live / full` 不能理解为跑完 9 例；原 live 报告误用离线固定说明已修正。上海生成耗时 27068ms，北京 32505ms，来自原始采集，不是新离线复查耗时。
 
@@ -27,8 +27,8 @@
 
 ## 可审阅产物
 
-- [北京新覆盖报告](../../../../eval/runs/2026-10-04T13-45-13-536Z-7fecebb0/report.md)
-- [上海新覆盖报告](../../../../eval/runs/2026-10-04T13-45-07-575Z-d5b0e8c0/report.md)
+- [北京新覆盖报告](../../../../../../eval/runs/2026-10-04T13-45-13-536Z-7fecebb0/report.md)
+- [上海新覆盖报告](../../../../../../eval/runs/2026-10-04T13-45-07-575Z-d5b0e8c0/report.md)
 - [上海餐饮几何对照](meal-locality-replay.md) / [结构化数据](meal-locality-replay.json) / [复现脚本](replay-meal-locality.mts)
 
 前两份仅复查原最终行程，没有重跑排程，所以仍保留原 soft 与路段数值。几何对照固定原景点顺序、日期和餐次槽位，使用六个原美食候选及其已保存坐标，仅重放选餐函数。D1 两家保持；D2–3 四餐使用周边区域。D3 午餐原额外直线绕行约 31.25km，晚餐距末站约 17.42km，均不再被选入。
@@ -43,8 +43,8 @@
 | `node --import tsx --test apps/server/src/__tests__/mealLocality.test.ts apps/server/src/__tests__/scheduling.test.ts` | 35/35 通过 |
 | `npm run typecheck` | shared / server / web / eval 全部通过 |
 | `VERIFY_GENERATION_ADMIN_URL=本机管理连接 node --import tsx scripts/verify-generation-flow.mts` | 事务、取消、SSE 和远郊周边参考点写入草稿全部通过；自建专用库 |
-| `npm run eval` | 历史 9/9 PASS，hard 0 / soft 54；[报告](../../../../eval/runs/2026-10-04T13-45-17-909Z-d299b95f/report.md) |
-| `EVAL_PG_ADMIN_URL=本机管理连接 npm run eval:verify` | mock live 通过，只连接管理库/专用评估库，采集、清理与隐私断言通过；[报告](../../../../eval/runs/verify-live-1791121522344/2026-10-04T13-45-23-047Z-32f01d4e/report.md) |
+| `npm run eval` | 历史 9/9 PASS，hard 0 / soft 54；[报告](../../../../../../eval/runs/2026-10-04T13-45-17-909Z-d299b95f/report.md) |
+| `EVAL_PG_ADMIN_URL=本机管理连接 npm run eval:verify` | mock live 通过，只连接管理库/专用评估库，采集、清理与隐私断言通过；[报告](../../../../../../eval/runs/verify-live-1791121522344/2026-10-04T13-45-23-047Z-32f01d4e/report.md) |
 | `git diff --check` / 两份工作流 YAML 解析 | 通过 |
 | 原真实快照校验 | 内容仍匹配原报告 snapshotHash；新复查输入与原 JSON 深度相同 |
 

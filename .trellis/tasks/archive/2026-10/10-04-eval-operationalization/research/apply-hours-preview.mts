@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { parseArgs } from 'node:util';
 import { Client } from 'pg';
-import { hash, writeJson } from '../../../../eval/artifacts';
-import { readFrozen } from '../../../../eval/frozenKnowledge';
-import { sourceConfiguration } from '../../../../eval/exportKnowledge';
+import { hash, writeJson } from '../../../../../../eval/artifacts';
+import { readFrozen } from '../../../../../../eval/frozenKnowledge';
+import { sourceConfiguration } from '../../../../../../eval/exportKnowledge';
 import { patchHours, HoursPatchConflict, type HoursChange } from './hoursPatch';
 
 const { values } = parseArgs({ options: { apply: { type: 'boolean', default: false } }, strict: true });

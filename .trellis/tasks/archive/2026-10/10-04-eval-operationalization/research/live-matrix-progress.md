@@ -1,3 +1,5 @@
+> 已于 2026-10-05 获用户明确授权提交并归档。当前状态为 completed，详见[验收与归档记录](acceptance.md)；下文保留实施阶段记录。
+
 # 最新执行检查点（2026-10-05 成都营业预览应用后）
 
 用户已明确“开始实施修改”，两份大改已实施；审阅 v2 预览后又回复“可以，继续”，402 条营业修复已应用。当前等待最终交付验收，未提交、归档或接纳基线。不要按下方旧记录继续等待实施或数据应用授权。
@@ -23,7 +25,7 @@
 
 ## 当前交付
 
-- [总验证报告](../../../../eval/runs/campaign-2026-10-05-live-matrix/validation-report.md)
+- [总验证报告](../../../../../../eval/runs/campaign-2026-10-05-live-matrix/validation-report.md)
 - [日期排程方案](date-scheduling-proposal.md)与[营业信息归属方案](knowledge-attribution-proposal.md)：均未实施，依用户“大改先文档等确认”要求等待确认。
 - 原生成基线 **96/96 执行，93 PASS、3 FAIL**，主 session 18002 exit 1。两个北京备注场景的周一故宫闭馆仍未修。
 - 语义 watch 52925 exit 0；23/23 组 VALID，79 aligned / 17 mixed；最终采用 semantic-audit.md/json（含 v1/v2 复核）。

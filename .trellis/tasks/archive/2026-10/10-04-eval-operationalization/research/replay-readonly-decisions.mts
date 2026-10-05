@@ -2,8 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import { applyDialogueDecision } from '../../../../apps/server/src/chat/brief';
-import { hashSources, writeJson } from '../../../../eval/artifacts';
+import { applyDialogueDecision } from '../../../../../../apps/server/src/chat/brief';
+import { hashSources, writeJson } from '../../../../../../eval/artifacts';
 
 const campaign = path.resolve('eval/runs/campaign-2026-10-05-live-matrix');
 const source = '2026-10-04T16-52-53-763Z-ef1eb0a0/intent-report.json';

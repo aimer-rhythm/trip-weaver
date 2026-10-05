@@ -2,9 +2,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { hashSources, readReport, writeJson } from '../../../../eval/artifacts';
-import { parseSnapshot } from '../../../../eval/contracts';
-import { MATRIX_CASES, NOTE_CASES } from '../../../../eval/scenarios';
+import { hashSources, readReport, writeJson } from '../../../../../../eval/artifacts';
+import { parseSnapshot } from '../../../../../../eval/contracts';
+import { MATRIX_CASES, NOTE_CASES } from '../../../../../../eval/scenarios';
 
 const campaign = path.resolve('eval/runs/campaign-2026-10-05-live-matrix');
 const read = (file: string) => JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -53,7 +53,7 @@ const totals = {
   uncovered: eligible.filter((r: { candidateCases: string[]; selectedCases: string[] }) => !r.candidateCases.length && !r.selectedCases.length).length,
 };
 assert.deepEqual(totals, { eligible: 4705, candidate: 430, selected: 319, uncovered: 4275 });
-const task = read(path.resolve('.trellis/tasks/10-04-eval-operationalization/task.json'));
+const task = read(path.resolve('.trellis/tasks/archive/2026-10/10-04-eval-operationalization/task.json'));
 assert.equal(task.status, 'in_progress');
 assert.equal(task.commit, null);
 const result = {

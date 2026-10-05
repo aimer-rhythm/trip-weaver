@@ -1,7 +1,7 @@
 // 合成 PostgreSQL 表验证原值守卫、全事务回滚、独立字段保护和幂等；不连接应用库。
 import assert from 'node:assert/strict';
 import { Client } from 'pg';
-import { createEvaluationDatabase } from '../../../../eval/isolation';
+import { createEvaluationDatabase } from '../../../../../../eval/isolation';
 import { patchHours, HoursPatchConflict, type HoursChange, type HoursBackup } from './hoursPatch';
 
 const database = await createEvaluationDatabase(process.env.EVAL_PG_ADMIN_URL);
