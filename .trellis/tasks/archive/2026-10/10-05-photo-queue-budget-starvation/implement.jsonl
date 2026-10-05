@@ -1,0 +1,6 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 后端预开发清单与质量检查清单，确认本次改动落在哪个模块边界"}
+{"file": ".trellis/spec/server/backend/preference-photo-pipeline.md", "reason": "本次要改的队列额度契约就在 §3 Contracts 与 §8 补图验证章节，改动后需同步更新该文档"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "外部源适配、队列、额度与计账的通用约定，额度语义改动必须遵守"}
+{"file": ".trellis/spec/server/backend/logging-guidelines.md", "reason": "本轮要新增额度耗尽的 warn 日志，级别/上下文/脱敏需符合约定"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "真实命令矩阵，确认跑哪些校验命令"}
+{"file": ".trellis/tasks/10-05-photo-queue-budget-starvation/research/queue-starvation-evidence.md", "reason": "现场证据、时间线与三个缺陷的复现方式，实现以该文件的事实为准"}

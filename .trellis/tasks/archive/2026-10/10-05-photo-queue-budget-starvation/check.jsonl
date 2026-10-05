@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "质量检查清单：typecheck、最相关验证脚本、失败降级可见性"}
+{"file": ".trellis/spec/server/backend/preference-photo-pipeline.md", "reason": "队列额度契约与 §8 验证章节，核对实现是否与新契约一致"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "真实命令矩阵，用于跑最小相关验证"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "核查是否复用了已有队列/额度计数逻辑，而不是新造一套"}
+{"file": ".trellis/tasks/10-05-photo-queue-budget-starvation/research/queue-starvation-evidence.md", "reason": "核对复现用例是否真的覆盖了三个缺陷"}
