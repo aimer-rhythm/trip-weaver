@@ -14,6 +14,7 @@ has a more specific convention.
 - [Integration guidelines](./integration-guidelines.md): external source adapters, Null implementations, caches, queues, limits, and accounting.
 - [行程天气](./trip-weather.md)：和风十五日预报、日期匹配、独立额度、生成快照与详情补查。
 - [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
+- [导航与生成通知](./generation-notifications.md)：全局生成恢复、账号通知、已读游标、事务边界与离开保存。
 - [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
 - [Chat and conversational intake guidelines](./chat-guidelines.md): dialogue intents, Brief readiness and intake controls, chat quota, revision and version chains, and the two-TypeBox-package trap.
 - [账号旅行偏好](./travel-preferences.md)：首页备注、账号记忆、个人资料、保存顺序及生成快照。

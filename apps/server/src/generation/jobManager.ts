@@ -32,6 +32,8 @@ export interface Job {
   userId: string;
   status: GenerationJobStatus;
   tripId: string | null;
+  destination?: string;
+  days?: number;
   createdAt: number;
   provenance: JobProvenance;
   abort: AbortController;
@@ -74,10 +76,11 @@ export function getJob(jobId: string, userId: string): Job | null {
 }
 
 export function jobView(job: Job): GenerationJobView {
-  return { jobId: job.id, status: job.status, tripId: job.tripId, createdAt: job.createdAt };
+  return { jobId: job.id, status: job.status, tripId: job.tripId, createdAt: job.createdAt, destination: job.destination, days: job.days };
 }
 
 export function emit(job: Job, event: GenerationEvent): void {
+  if (event.type === 'job_start') { job.destination = event.destination; job.days = event.days; }
   if (job.status !== 'running' && event.type !== 'job_done' && event.type !== 'job_error' && event.type !== 'job_cancelled') return;
   const stored: StoredEvent = { id: job.nextEventId++, event: { ...event, at: event.at ?? Date.now() } };
   job.events.push(stored);

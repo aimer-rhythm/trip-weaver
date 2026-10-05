@@ -10,6 +10,7 @@ import { getTrip } from '../services/tripService';
 import { hasSiteLlm } from '../env';
 import { createJob, getJob, getRunningJobId, jobView, subscribe, type StoredEvent } from '../generation/jobManager';
 import { runGeneration } from '../generation/orchestrator';
+import { getGenerationResult } from '../services/notificationService';
 
 const HEARTBEAT_MS = 25_000;
 
@@ -76,10 +77,19 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
   });
 
   // 快照：刷新恢复时先查状态，再决定是否重连 SSE
+  app.get('/current', async (request) => {
+    const id = getRunningJobId(request.user!.id);
+    const job = id ? getJob(id, request.user!.id) : null;
+    return job ? jobView(job) : null;
+  });
+
   app.get('/:jobId', async (request, reply) => {
     const { jobId } = request.params as { jobId: string };
     const job = getJob(jobId, request.user!.id);
-    if (!job) return reply.code(404).send({ error: '任务不存在或已过期' });
+    if (!job) {
+      const result = await getGenerationResult(request.user!.id, jobId);
+      return result ?? reply.code(404).send({ error: '任务不存在或已过期' });
+    }
     return jobView(job);
   });
 

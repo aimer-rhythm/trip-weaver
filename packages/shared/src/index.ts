@@ -1,5 +1,6 @@
 export * from './constants';
 export * from './api';
+export * from './notifications';
 export * from './chat';
 export * from './detailChat';
 export * from './followUpSuggestions';

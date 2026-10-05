@@ -16,6 +16,7 @@ import { uid } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
 import { searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
+import { recordGenerationNotification } from '../services/notificationService';
 import { poiBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
 import { getNullPoiSource } from '../integrations/nullPoiSource';
 import { POI_MAX_PER_TASK, createTaskPoiSource } from '../integrations/poiTaskSource';
@@ -478,6 +479,11 @@ export async function runGeneration(
       );
       assertAlive(signal);
       await record('done', saved.id, tx);
+      await recordGenerationNotification({
+        userId: job.userId, jobId: job.id, kind: 'success', tripId: saved.id,
+        destination: form.destination, days: form.days, title: `${form.destination} ${form.days} 天行程已生成`,
+        message: '路线与每日安排已准备好。', jobCreatedAt: new Date(job.createdAt),
+      }, tx);
       assertAlive(signal);
       return saved;
     });
@@ -494,6 +500,16 @@ export async function runGeneration(
       logger?.error({ jobId: job.id, errorType: err instanceof Error ? err.name : 'unknown' }, 'generation failed');
     }
     // 失败/取消先发布权威终态。审计异常必须可观测，但不能再次困住任务锁。
+    if (terminalStatus === 'error' || job.cancelReason === 'timeout') {
+      try {
+        await recordGenerationNotification({
+          userId: job.userId, jobId: job.id, kind: 'error', tripId: null,
+          destination: form.destination, days: form.days, title: `${form.destination}行程暂未生成成功`,
+          message: job.cancelReason === 'timeout' ? '生成超时，本次不计入配额。可回首页重新规划。' : '本次不计入配额，可回首页检查后重试。',
+          jobCreatedAt: new Date(job.createdAt),
+        });
+      } catch { logger?.error({ jobId: job.id }, 'generation notification write failed'); }
+    }
     try {
       await record(terminalStatus, null);
     } catch {

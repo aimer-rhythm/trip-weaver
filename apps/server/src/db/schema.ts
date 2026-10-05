@@ -1,4 +1,4 @@
-import { boolean, doublePrecision, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uniqueIndex, vector } from 'drizzle-orm/pg-core';
+import { bigserial, boolean, doublePrecision, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uniqueIndex, vector } from 'drizzle-orm/pg-core';
 
 export const amapServiceUsage = pgTable('amap_service_usage', {
   day: text('day').notNull(),
@@ -70,6 +70,26 @@ export const trips = pgTable('trips', {
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull(),
 });
+
+// 账号站内通知独立于内存任务；生成完成与行程写入在同一事务提交。
+export const generationNotifications = pgTable('generation_notifications', {
+  id: text('id').primaryKey(),
+  sequence: bigserial('sequence', { mode: 'number' }).notNull(),
+  userId: text('user_id').notNull(),
+  jobId: text('job_id').notNull(),
+  kind: text('kind').$type<'success' | 'error'>().notNull(),
+  tripId: text('trip_id'),
+  destination: text('destination').notNull(),
+  days: integer('days').notNull(),
+  title: text('title').notNull(),
+  message: text('message').notNull(),
+  jobCreatedAt: timestamp('job_created_at', { withTimezone: true }).notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+  readAt: timestamp('read_at', { withTimezone: true }),
+}, (table) => [
+  uniqueIndex('idx_generation_notifications_job').on(table.userId, table.jobId),
+  index('idx_generation_notifications_user').on(table.userId, table.sequence),
+]);
 
 // 配额计数与用量核算的事实来源
 export const generations = pgTable('generations', {

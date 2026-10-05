@@ -1,4 +1,5 @@
 import type { Static } from '@sinclair/typebox';
+import type { GenerationJobViewSchema } from './notifications';
 import type {
   ActivitySchema,
   RouteOptionsRequestSchema,
@@ -207,9 +208,4 @@ type GenerationEventPayload =
 export type GenerationEvent = GenerationEventPayload & { at?: number };
 
 /** GET /api/generations/:jobId 快照（刷新恢复用） */
-export interface GenerationJobView {
-  jobId: string;
-  status: GenerationJobStatus;
-  tripId: string | null;
-  createdAt: number;
-}
+export type GenerationJobView = Static<typeof GenerationJobViewSchema>;

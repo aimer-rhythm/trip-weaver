@@ -5,6 +5,17 @@ import type { Pool } from 'pg';
 import { AMAP_SERVICES, amapDay } from '../integrations/amap/services';
 
 const STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS generation_notifications (
+    id TEXT PRIMARY KEY, sequence BIGSERIAL NOT NULL,
+    user_id TEXT NOT NULL, job_id TEXT NOT NULL,
+    kind TEXT NOT NULL CHECK (kind IN ('success', 'error')), trip_id TEXT,
+    destination TEXT NOT NULL, days INTEGER NOT NULL,
+    title TEXT NOT NULL, message TEXT NOT NULL,
+    job_created_at TIMESTAMPTZ NOT NULL, created_at TIMESTAMPTZ NOT NULL,
+    read_at TIMESTAMPTZ
+  )`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS idx_generation_notifications_job ON generation_notifications(user_id, job_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_generation_notifications_user ON generation_notifications(user_id, sequence)`,
   `CREATE TABLE IF NOT EXISTS user_travel_preferences (
     user_id TEXT PRIMARY KEY,
     data JSONB NOT NULL,

@@ -19,6 +19,7 @@ import { tripRoutes } from './routes/trips';
 import { usageRoutes } from './routes/usage';
 import { destinationRoutes } from './routes/destinations';
 import { generationRoutes } from './routes/generations';
+import { notificationRoutes } from './routes/notifications';
 import { photoReviewConfigured, photoReviewQueue } from './integrations/photoEnrichment';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -50,6 +51,7 @@ async function main() {
   await app.register(usageRoutes, { prefix: '/api/usage' });
   await app.register(destinationRoutes, { prefix: '/api/destinations' });
   await app.register(generationRoutes, { prefix: '/api/generations' });
+  await app.register(notificationRoutes, { prefix: '/api/notifications' });
 
   // 生产模式：托管前端构建产物 + SPA fallback
   const webDist = path.resolve(__dirname, '../../web/dist');
