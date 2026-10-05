@@ -31,6 +31,16 @@ filter by the authenticated `userId`. Return 404 for both missing and non-owned 
 Representative paths: `apps/server/src/auth/guard.ts`,
 `apps/server/src/routes/trips.ts`, `apps/server/src/services/tripService.ts`.
 
+## Public Homepage City List
+
+- Scope: visitors need destination names before authentication.
+- Signature: `GET /api/destinations/covered` returns the existing `CoveredCitiesView` envelope without `requireAuth`.
+- Contract: only verified coverage city names are public; no user identity, preferences, itinerary or generation details are returned. No request body or new environment settings.
+- Errors: empty coverage returns `{ cities: [] }`; service failures keep the normal API error envelope. They must not be converted into authentication failures.
+- Cases: anonymous/registered users receive the same city names; personal trips, settings, usage and generation endpoints still reject anonymous requests with 401.
+- Verification: request the city endpoint without cookies and assert 200; request protected endpoints without cookies and assert 401; exercise guest homepage with `apps/web/tests/login-dialog-browser.mjs`.
+- Wrong: remove authentication from all route groups to enable the homepage. Correct: expose only the read-only city-name endpoint.
+
 ## Sessions and Cookies
 
 - Generate random 256-bit session tokens.
