@@ -29,6 +29,7 @@
 - 新行程最终采用Unsplash时才上报对应download_location；同任务重复读取合并，上报失败则补位。每张图片保留自身署名。XHS保留原导入署名/授权状态，不因模型审核变更权利声明；高德继续使用原外链、不伪造作者。
 - 本地文件验证字节摘要和图片magic；精确城市、名称/显式别名，允许移除一次尾部展示括注，禁止借用邻近景点。最多三图；首图与cover一致，排除同字节摘要或相同视角标签。视角标签并非完整的感知去重算法。
 - 单实例队列持久化在 `data/photo-store/review-jobs`，同地点去重，积压最多200，串行worker，默认滚动24h最多50个地点（显式配置可降低，上限50），失败最多3次，30/60分钟后重试；第三次失败后不再自动重试。`priority=trip`（生成与详情缺图）优先于 `background`（CLI预热），同级按nextAt先后；旧文件无priority按background处理。提升优先级不能修改nextAt、attempts或运行租约。进程中断的running任务15分钟后可恢复。目录在 `data/photo-store/reviewed`，审图缓存在 `visual-reviews`。部署时这些目录与media一起保留。
+- 额度只计**首次启动**的地点：任务首次启动时写入 `countedAt`（只写一次，旧文件回退 `lastStartedAt`），每次启动仍刷新 `lastStartedAt` 供运行租约使用。重试既不占用额度，也不能把24h窗口向后推移——否则窗口末期的一次重试会重新在窗口内占位，新地点被无限期饿死（2026-10-05 济南零图片事故）。额度耗尽时只放行重试（`attempts > 0`），新地点一律排队，并输出一次 `[photo-review]` warn（含 used/limit 与排队新地点数），容量恢复后复位以便下次耗尽重新提醒；同一饱和期不重复刷屏。
 - 这是现有单实例服务的队列，不支持两个worker/CLI或多副本同时消费同一目录。不会自动以后台补图耗时增加用户生成配额。
 
 ## 4. Validation / Errors
@@ -77,5 +78,5 @@ return cover;
 
 - `GET /api/trips/:id` 在 requireAuth 与 userId 查询成功后才补图，404 不查询图库或入队；其他内部 getTrip 调用保持原快照语义。
 - `[trip-photos]` 日志记录 tripId、missingBefore、missingAfter；这些计数表示响应中的缺图数量，不代表后台已处理成功。
-- `tripPhotos.test.ts` 覆盖已有图保留、纯相册保留、非景点跳过、查询失败降级、旧数据无overview、刷新后采用新审核图及原对象不变。`photoReviewQueue.test.ts` 覆盖50/51额度边界与旧文件优先级提升/重启/退避。
+- `tripPhotos.test.ts` 覆盖已有图保留、纯相册保留、非景点跳过、查询失败降级、旧数据无overview、刷新后采用新审核图及原对象不变。`photoReviewQueue.test.ts` 覆盖50/51额度边界、旧文件优先级提升/重启/退避，以及额度饥饿回归：窗口末期重试不得推迟新地点启动、重试不刷新 `countedAt`、额度耗尽只提醒一次且容量恢复后重新提醒。旧行为下「窗口末期重试 → 新地点永不启动」的用例必须失败。
 - 禁止读取详情时扫描修改用户行程表或使用未审核旧图库；回滚时去掉详情增强即可恢复原有展示，图库及原行程不丢失。
