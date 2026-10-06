@@ -1313,3 +1313,39 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 33: 行程卡片固定图片列并移除活动添加入口
+
+**Date**: 2026-10-06
+**Task**: 行程卡片固定图片列并移除活动添加入口
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+每日卡片右端固定 180/128px 图片列并让照片在列内水平垂直居中，无封面时留同宽占位，所有卡片文字宽度一致；「需预约」徽章并入类别标签行，放大弹窗标题去掉「· 完整照片」。按用户要求彻底移除「＋ 添加活动」入口及其失效链路（ActivityEditDialog、editorStore.addActivity/updateActivity），并删掉卡片底部 Pexels 署名行，只保留弹窗内 PhotoCredit；同步更新 Pexels 条款描述与悬空的 spec 引用。typecheck、web 构建、photo-layout（20 组合）、editor-browser、trip-weather、editorStore 单测全部通过。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `e4b6d6d` | (see git log) |
+| `d4fba52` | (see git log) |
+| `91792af` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
