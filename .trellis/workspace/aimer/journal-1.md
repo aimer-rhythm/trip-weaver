@@ -1417,3 +1417,37 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 36: 无封面卡片文字占满宽度
+
+**Date**: 2026-10-06
+**Task**: 无封面卡片文字占满宽度
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+推翻了同一天早先的「无图也占位」实现：没有可用封面时不再渲染 .activity-photo 空列，文字独占整行；有封面卡片仍固定 180/128px 列宽并让照片列内水平+垂直居中。photo-layout 回归断言改为「无封面不留空列且文字宽度 > 卡片 60%」，typecheck 与三个浏览器回归通过。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `d326b53` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
