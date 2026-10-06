@@ -58,6 +58,16 @@ vector calls. This supersedes the historical concatenation-only ranking contract
 - Evidence is fetched with `LATERAL ... LIMIT 3` per member ID and capped to 3 after same-entity
   merging, ordered by kind, strength, freshness. Both schema/migration define
   `idx_research_evidence_place(place_id, fetched_at DESC)`.
+- Evidence strength is decided at import time by `services/evidenceStrength.ts`, not by the
+  migration's kind backfill: upstream's value wins, `xhs_reservation` / `xhs_price` without a
+  `sourceUrl` drop to `weak` (they come from booking-platform screenshots and lists, not from
+  notes), and other kinds fall back to `xhs_reason`→weak / `xhs_warning`→risk_only / else direct.
+  A sourceless reservation line must never be the only thing that justifies “需预约”.
+- `normalizeReservation` (`generation/researchQuality.ts`) downgrades a note whose `提前 N 天`
+  figures do not overlap — e.g.「天坛公园提前7天；天坛公园提前1天00:00预约」— to `unknown` plus
+  「预约资料存在冲突，请通过官方渠道确认后安排。」。Ranges such as「提前3-7天」count as one
+  interval, so a normal range plus a value inside it is not a conflict. Never paste two sources'
+  lead times into one note without normalising them first.
 - `add_candidate(placeId?, name, ...)` validates an ID against this task's retrieved catalog,
   exact/known alias name, city and category. It reuses coordinates, opening/reservation fields
   and evidence without another XHS lookup. Candidate insertion remains sequential for safe dedup.

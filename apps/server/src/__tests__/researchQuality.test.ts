@@ -69,3 +69,15 @@ test('介绍来源只保留安全URL并去重，旧版/空介绍不携带伪来�
   assert.deepEqual(purifiedIntroSources({ content }), [{ title: '景点介绍来源', url: 'https://www.dpm.org.cn/about/about_view.html' }]);
   assert.deepEqual(purifiedIntroSources({ content: { ...content, intro: '' } }), []);
 });
+
+test('同一段说明里互不重叠的提前天数判为冲突，区间写法不算冲突', () => {
+  const conflict = normalizeReservation('required', '天坛公园提前7天；天坛公园提前1天00:00预约');
+  assert.equal(conflict.reservation, 'unknown');
+  assert.match(conflict.reservationNote!, /冲突/);
+  for (const note of [
+    '故宫博物院提前3-7天20:00放票；故宫/天安门升旗/天安门城楼均需通过官方小程序提前7天预约',
+    '人民大会堂提前3天；人民大会堂提前3天',
+    '钟鼓索道热门时段建议提前7天左右抢；钟鼓索道：需提前预约',
+    '四川博物院提前7天放票',
+  ]) assert.doesNotMatch(normalizeReservation('required', note).reservationNote!, /冲突/);
+});

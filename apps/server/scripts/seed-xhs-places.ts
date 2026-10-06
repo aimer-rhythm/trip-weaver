@@ -24,6 +24,7 @@ import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { env } from '../src/env';
 import { reconcileImportedPlaces } from '../src/services/placeImportIdentity';
+import { evidenceStrength } from '../src/services/evidenceStrength';
 import { IMPORT_DIR, latestExports, readExport, scanExports, type ExportFile } from './lib/exportFiles';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -35,6 +36,8 @@ interface EvidenceItem {
   kind: string;
   content: string;
   sourceUrl?: string;
+  /** 上游可选覆盖；缺省由 evidenceStrength 按 kind 与是否有来源决定 */
+  strength?: string;
 }
 
 interface XhsPlaceInput {
@@ -214,6 +217,7 @@ async function importFile(
           place.id,
           target.city,
           item.kind,
+          evidenceStrength(item),
           item.content,
           item.sourceUrl ?? '',
           now,
@@ -223,10 +227,10 @@ async function importFile(
     evidencePlanned += evRows.length;
     for (const evBatch of chunk(evRows, BATCH_SIZE * 8)) {
       const evRes = await client.query(
-        `INSERT INTO research_evidence (id, place_id, city, kind, content, source_url, fetched_at)
-         SELECT * FROM UNNEST($1::text[], $2::text[], $3::text[], $4::text[], $5::text[], $6::text[], $7::timestamptz[])
+        `INSERT INTO research_evidence (id, place_id, city, kind, strength, content, source_url, fetched_at)
+         SELECT * FROM UNNEST($1::text[], $2::text[], $3::text[], $4::text[], $5::text[], $6::text[], $7::text[], $8::timestamptz[])
          ON CONFLICT (id) DO NOTHING`,
-        [0, 1, 2, 3, 4, 5, 6].map((i) => evBatch.map((r) => r[i])),
+        [0, 1, 2, 3, 4, 5, 6, 7].map((i) => evBatch.map((r) => r[i])),
       );
       evidenceInserted += evRes.rowCount ?? 0;
     }
