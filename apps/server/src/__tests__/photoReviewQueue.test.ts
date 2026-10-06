@@ -6,10 +6,11 @@ import os from 'node:os';
 import { createPhotoReviewQueue } from '../integrations/photoReviewQueue';
 import { reviewFirstLookup } from '../integrations/reviewedPhotos';
 
-test('默认滚动预算允许50个地点，第51个等待窗口释放', async () => {
+test('额度上限内允许全部地点，第上限+1个等待窗口释放', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-budget-'));
   let at = 1_800_000_000_000, calls = 0;
-  const queue = createPhotoReviewQueue({ dataRoot: root, now: () => at, run: async () => { calls++; } });
+  // 注入固定额度，避免边界用例耦合 DEFAULT_PHOTO_REVIEW_DAILY_PLACES 的数值。
+  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 50, now: () => at, run: async () => { calls++; } });
   try {
     for (let i = 0; i < 51; i++) await queue.enqueue('杭州', `景点${i}`);
     for (let i = 0; i < 51; i++) await queue.tick();
