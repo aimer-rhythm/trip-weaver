@@ -1383,3 +1383,37 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 35: 活动卡片去掉预约说明正文
+
+**Date**: 2026-10-06
+**Task**: 活动卡片去掉预约说明正文
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+按用户要求删除活动卡片上的 activity-rsv-note 段落，预约信息只保留类别标签行的「需预约」徽章（title 仍带 reservationNote，悬停可见）与总览「注意事项」条目。typecheck、photo-layout、editor、trip-weather 四个回归通过，类名无残留。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `43d726f` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 34
+- **Total Sessions**: 35
 - **Last Active**: 2026-10-06
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1385 | Active |
+| `journal-1.md` | ~1419 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 35 | 2026-10-06 | 活动卡片去掉预约说明正文 | `43d726f` | `master` |
 | 34 | 2026-10-06 | 预约资料冲突降级与无源语料降权 | `e488221` | `master` |
 | 33 | 2026-10-06 | 行程卡片固定图片列并移除活动添加入口 | `e4b6d6d`, `d4fba52`, `91792af` | `master` |
 | 32 | 2026-10-06 | 总览建议图标与卡片对齐微调 | `c482788`, `ef341d4` | `master` |
