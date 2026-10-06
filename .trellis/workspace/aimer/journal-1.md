@@ -1349,3 +1349,37 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 34: 预约资料冲突降级与无源语料降权
+
+**Date**: 2026-10-06
+**Task**: 预约资料冲突降级与无源语料降权
+**Package**: server
+**Branch**: `master`
+
+### Summary
+
+排查天坛公园「提前7天；提前1天00:00预约」时确认该字符串本身就是 canonical_places.payload.reservationNote，配套 research_evidence 是一条无 source_url 的 xhs_reservation/direct。改动两处：normalizeReservation 在「提前 N 天」区间互不重叠时降为 unknown + 冲突提示（「提前3-7天」按单区间处理）；新增 services/evidenceStrength.ts，导入时按上游值 > 无来源预约/价格降 weak > kind 默认决定 research_evidence.strength。typecheck 与 8 项单测通过；对库内 5324 条带预约说明的地点重算，仅天坛公园 1 条真冲突被降级。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `e488221` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
