@@ -1278,3 +1278,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 32: 总览建议图标与卡片对齐微调
+
+**Date**: 2026-10-06
+**Task**: 总览建议图标与卡片对齐微调
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+总览「旅行建议」改用新增的 bulb 灯泡图标，行程卡路线行图标改为与整段路线文本垂直居中，单日面板标题栏去掉重复的「第 N 天」，并同步前端组件规范中总览布局一节。typecheck、web 生产构建、trip-weather-browser 与 editor-browser 回归全部通过，截图确认三处效果；任务已归档。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `c482788` | (see git log) |
+| `ef341d4` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
