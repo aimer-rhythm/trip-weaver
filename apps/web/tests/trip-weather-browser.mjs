@@ -74,6 +74,11 @@ try {
       `${title} appears above daily itinerary cards`);
   }
   await page.screenshot({ path: `${out}/overview-desktop.png` });
+  await select('第1天').click();
+  const palaceCard = page.getByRole('article', { name: '故宫博物院', exact: true });
+  assert.equal(await palaceCard.locator('.activity-tags .cat-badge').count(), 1, '类别标签保留在标签行容器内');
+  assert.equal(await palaceCard.locator('.activity-tags .rsv-badge').count(), 1, '预约徽章与类别标签同行');
+  await select('总览').click();
   await page.setViewportSize({ width: 1600, height: 1600 });
   await page.locator('.editor-overview').screenshot({ path: `${out}/overview-panel.png` });
   await page.setViewportSize({ width: 1600, height: 1000 });
