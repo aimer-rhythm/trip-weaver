@@ -30,7 +30,7 @@ export function DaySection({ day, allDays, poiByActivityId, onEditActivity, weat
   return (
     <section className={"day-section [background:var(--color-card)] [border:1px_solid_var(--color-border)] [border-radius:12px] [margin-bottom:12px] overflow-hidden"} aria-label={`第${day.dayIndex}天行程`}>
       <header className={"day-head flex items-center [gap:8px] [padding:8px_10px] [border-left:4px_solid_transparent] [&_.editor-menu-list]:[top:100%] [&_.editor-menu-list]:[bottom:auto]"}>
-        <div><h2 style={handwritingFallback(title)}>{title}</h2><p className="flex flex-wrap items-center gap-2">{date && <span>{`${date.slice(5).replace('-', '月')}日`}</span>}<span>第{day.dayIndex}天</span><DayWeather weather={weather} destination={destination} date={date} loading={weatherLoading} /></p></div>
+        <div><h2 style={handwritingFallback(title)}>{title}</h2><p className="flex flex-wrap items-center gap-2">{date && <span>{`${date.slice(5).replace('-', '月')}日`}</span>}<DayWeather weather={weather} destination={destination} date={date} loading={weatherLoading} /></p></div>
         {!readOnly && <EditorMenu label="当天更多操作">
           <Button variant="ghost" onClick={() => setDialog('rename')}>修改当日主题</Button>
           <Button variant="danger" onClick={() => setDialog('delete')}>删除这一天</Button>

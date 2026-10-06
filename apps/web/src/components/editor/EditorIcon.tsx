@@ -1,5 +1,5 @@
 /** 行程手册中的统一细线图标。 */
-export function EditorIcon({ name }: { name: 'pin' | 'calendar' | 'back' | 'send' | 'walk' | 'cycle' | 'drive' | 'route' | 'place' | 'reset' | 'export' | 'history' | 'food' | 'clock' | 'sparkle' | 'forward' | 'alert' }) {
+export function EditorIcon({ name }: { name: 'pin' | 'calendar' | 'back' | 'send' | 'walk' | 'cycle' | 'drive' | 'route' | 'place' | 'reset' | 'export' | 'history' | 'food' | 'clock' | 'sparkle' | 'forward' | 'alert' | 'bulb' }) {
   const paths = {
     pin: 'M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0ZM15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0',
     calendar: 'M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2ZM7 2v4M17 2v4M3 9h18M7 13h3M14 13h3M7 17h3',
@@ -18,6 +18,7 @@ export function EditorIcon({ name }: { name: 'pin' | 'calendar' | 'back' | 'send
     sparkle: 'm12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3ZM20 2v4M18 4h4',
     forward: 'm9 5 7 7-7 7',
     alert: 'M12 4 2 20h20L12 4ZM12 10v5M12 18h.01',
+    bulb: 'M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5a6 6 0 0 0-12 0c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5M9 18h6M10 22h4',
   };
   return <svg className={"editor-icon inline-block [width:22px] [height:22px] flex-none [vertical-align:middle]"} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;
 }

@@ -7,7 +7,7 @@ import { handwritingFallback } from '../../lib/handwriting';
 
 function AdviceList({ title, items, caution = false }: { title: string; items: TripAdvice[]; caution?: boolean }) {
   return <section aria-label={title}>
-    <h3 className="mb-3 flex items-center gap-2 text-base font-semibold"><span className="text-[var(--color-brand)]"><EditorIcon name={caution ? 'alert' : 'pin'} /></span>{title}</h3>
+    <h3 className="mb-3 flex items-center gap-2 text-base font-semibold"><span className="text-[var(--color-brand)]"><EditorIcon name={caution ? 'alert' : 'bulb'} /></span>{title}</h3>
     <ul className="m-0 list-none space-y-2 p-0">
       {items.map(item => <li key={item.id} className="relative pl-4 text-sm leading-7 text-[var(--editor-muted)] before:absolute before:left-0 before:top-[12px] before:size-1 before:rounded-full before:bg-[var(--color-brand)] before:content-['']">
         <span className="font-medium text-[var(--editor-ink)]">{item.title}</span>：{item.text}
@@ -42,8 +42,8 @@ export function TripOverview({ trip, weather, loading, onSelectDay, onAddDay, re
               <h4 className="m-0 break-words [font:400_30px/1.3_'Youran_Handwriting',_serif]" style={handwritingFallback(day.title || '待安排的旅程')}>{day.title || '待安排的旅程'}</h4>
               <span aria-hidden="true" className="mt-2 shrink-0 text-[var(--color-brand)]"><EditorIcon name="forward" /></span>
             </div>
-            <p className="mb-0 mt-2 flex items-start gap-1.5 text-sm leading-7 text-[var(--editor-muted)]">
-              <span aria-hidden="true" className="mt-1.5 shrink-0 text-[var(--color-brand)]"><EditorIcon name="pin" /></span>
+            <p className="mb-0 mt-2 flex items-center gap-1.5 text-sm leading-7 text-[var(--editor-muted)]">
+              <span aria-hidden="true" className="shrink-0 text-[var(--color-brand)]"><EditorIcon name="pin" /></span>
               <span className="min-w-0">{day.activities.map((activity, index) => <span key={activity.id}>{index > 0 && <span aria-hidden="true" className="mx-1.5 opacity-60">→</span>}{activity.name}</span>)}{day.activities.length === 0 && '这一天还没有安排'}</span>
             </p>
           </Button>
