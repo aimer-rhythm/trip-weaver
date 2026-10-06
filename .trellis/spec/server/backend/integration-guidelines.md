@@ -613,10 +613,12 @@ retrieval guidelines under *Attraction Cover Images*.
 - Budgets are separate and do not share counters: Pexels 8 requests per generation + a process-level
   180/hour window (its published limit is 200/hour; restart resets the window); Amap POI photos ≤8 per
   generation + 100 per 24 h; Wikipedia 8 per generation, serial with ≥1 s spacing.
-- Pexels API terms require a visible link back to Pexels wherever its photos are shown. The frontend
-  renders `Photos provided by Pexels` (`PexelsCredit` in `apps/web/src/components/PoiCard.tsx`) on the
-  generation page, the candidate drawer, and the trip editor — it renders nothing when no Pexels URL
-  is present in the list.
+- Pexels API terms require a visible link back to Pexels wherever its photos are shown. Since
+  2026-10-06 the only frontend surface is the enlarged photo modal: `PhotoCredit`
+  (`apps/web/src/components/PoiCard.tsx`) links the photo to Pexels/Commons/Unsplash/Pixabay/XHS and
+  renders nothing when no validated credit URL exists. The former list-level `PexelsCredit` row
+  (“Photos provided by Pexels”) and `isPexelsCover` were deleted with the editor card rework — do not
+  reintroduce a list-level credit row without revisiting the terms trade-off.
 - Any failure (missing key, timeout, non-2xx, budget exhausted, no textual match) returns `null` and
 alogs one warn at most; nothing throws into generation. A `null` from a confirmed miss is cached for
   24 h, a transport failure is not.

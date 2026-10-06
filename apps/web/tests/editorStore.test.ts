@@ -44,7 +44,7 @@ test('moves schedule only new pairs, preserve unaffected choices, and reject obs
   assert.deepEqual(store().routeReplans, {});
 });
 
-test('cross-day moves schedule hidden source and destination and coordinate edits invalidate jobs', () => {
+test('cross-day moves schedule hidden source and destination', () => {
   const trip = makeSampleTrip();
   const store = () => useEditorStore.getState();
   store().load(trip);
@@ -54,13 +54,10 @@ test('cross-day moves schedule hidden source and destination and coordinate edit
   const jobs = Object.values(store().routeReplans);
   assert.ok(jobs.some((j) => j.dayId === source.id));
   assert.ok(jobs.some((j) => j.dayId === target.id));
-  const job = jobs[0]!;
-  store().updateActivity(job.dayId, job.fromId, { lat: 1 });
-  assert.equal(store().routeReplans[job.key], undefined);
   store().clear();
 });
 
-test('route selection updates one pair and map, rejects stale endpoints and coordinates', () => {
+test('route selection updates one pair and map, rejects stale endpoints and cleared trips', () => {
   const trip = makeSampleTrip();
   const day = trip.days[0]!;
   const from = day.activities[0]!;
@@ -79,9 +76,6 @@ test('route selection updates one pair and map, rejects stale endpoints and coor
   assert.equal(store().revision, rev);
   store().load(trip);
   store().selectRoute(day.id, key, route);
-  store().updateActivity(day.id, from.id, { lat: from.lat + 0.1 });
-  assert.equal(store().selectRoute(day.id, key, route), false);
-  assert.equal(store().trip!.days[0]!.legs?.length, 0);
   store().clear();
   assert.equal(store().selectRoute(day.id, key, route), false);
 });

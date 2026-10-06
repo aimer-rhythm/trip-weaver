@@ -17,7 +17,7 @@ Code in `@tripweaver/shared` must remain usable by both `apps/web` and `apps/ser
 
 Use type assertions only when a library boundary has a real invariant that TypeScript cannot express. The TypeBox union helper in `packages/shared/src/schemas.ts` is the current justified example. Keep such assertions narrow and local.
 
-Do not treat casts at JSON, DOM, form, database, SSE, or third-party boundaries as validation. Existing assertions in `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/components/editor/ActivityEditDialog.tsx`, and `apps/server/src/integrations/amap/poiSource.ts` illustrate boundaries that require deliberate trust or checks.
+Do not treat casts at JSON, DOM, form, database, SSE, or third-party boundaries as validation. Existing assertions in `apps/web/src/pages/PlannerPage.tsx` and `apps/server/src/integrations/amap/poiSource.ts` illustrate boundaries that require deliberate trust or checks.
 
 ## Testing
 

@@ -127,10 +127,7 @@ try {
  await page.getByRole('article',{name:'景山公园',exact:true}).getByLabel('移至其他天').selectOption('day-2');
  await itinerary.getByRole('button',{name:'第2天',exact:true}).click();
  assert.equal(await page.locator('.activity-name').first().innerText(),'景山公园');
- await page.getByRole('button',{name:'＋ 添加活动',exact:true}).click();
- await page.getByLabel('名称',{exact:true}).fill('休息一下');
- await page.getByRole('button',{name:'保存',exact:true}).click();
- assert.equal(await page.getByRole('article',{name:'休息一下',exact:true}).count(),1);
+ assert.equal(await page.getByRole('button',{name:'＋ 添加活动',exact:true}).count(),0,'活动添加入口已移除');
  await page.getByRole('button',{name:'放大地图',exact:true}).click();
  await page.getByRole('button',{name:'默认视图',exact:true}).click();
  if(amapMode) {const calls=await page.evaluate(()=>window.amapCalls); assert.ok(calls.some(c=>c[0]==='zoom')); assert.ok(calls.some(c=>c[0]==='fit' && c[1]>0)); assert.ok(calls.some(c=>c[0]==='create' && c[1].includes('road')));}
@@ -179,7 +176,7 @@ try {
  await page.reload();
  await page.getByRole('button',{name:'开启行程对话',exact:true}).waitFor();
  await itinerary.getByRole('button',{name:'第1天',exact:true}).click();
- await page.waitForFunction(()=>document.querySelectorAll('.activity-card.has-cover').length===0);
+ await page.waitForFunction(()=>document.querySelectorAll('.poi-photo-trigger').length===0);
  await page.screenshot({path:path.join(out,'no-chat-broken-photos.png')});
  assert.equal(await page.locator('.activity-entry').count(),3);
  assert.ok(await page.locator('.print-host').evaluate(el=>el.scrollHeight>innerHeight),'fixture must exercise long offscreen export');

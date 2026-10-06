@@ -3,7 +3,7 @@
 // 没有坐标可核对，所以用「alt / 照片页 slug 与地点名的归一键匹配」当闸门：
 // 宁可这张卡片回落类目图标，也不要把某公园的通用湖景贴到具体景点上。
 //
-// 条款（API Guidelines）：每次 API 请求都要求展示指向 Pexels 的显眼链接（前端 PexelsCredit 组件），
+// 条款（API Guidelines）：每次 API 请求都要求展示指向 Pexels 的显眼链接（前端在照片放大弹窗内用 PhotoCredit 署名），
 // 限流 200 次/小时、20000 次/月。这里用进程内小时窗口自我约束，避免把限流打穿。
 import { createSerialQueue } from '../../lib/serialQueue';
 import { TtlCache } from '../../lib/ttlCache';

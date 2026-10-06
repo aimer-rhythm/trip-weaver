@@ -10,8 +10,6 @@ import { useAppNavigation } from '../components/NavigationProvider';
 import { HistoryPanel } from '../components/editor/HistoryPanel';
 import { useEditorStore } from '../store/editorStore';
 import { ChatPanel } from '../components/chat/ChatPanel';
-import { ActivityEditDialog } from '../components/editor/ActivityEditDialog';
-import { PexelsCredit } from '../components/PoiCard';
 import { DaySection } from '../components/editor/DaySection';
 import { AutoRoutePlanner } from '../components/editor/AutoRoutePlanner';
 import { MapView } from '../components/editor/MapView';
@@ -70,7 +68,6 @@ export function TripEditorPage() {
   const [mobileTab, setMobileTab] = useState<MobileTab>('list');
   const scrollRef = useRef<HTMLDivElement>(null);
   const setDayFilter = useEditorStore((s) => s.setDayFilter);
-  const [editing, setEditing] = useState<{ dayId: string; activityId: string | null } | null>(null);
 
   // 地图马克点与对话“查看编辑结果”共用：先切到那天，再滚到对应地点
   const jumpToActivity = useCallback((dayIndex: number, activityId: string) => {
@@ -143,10 +140,6 @@ export function TripEditorPage() {
   const weatherSnapshot = weatherQuery.data ?? (weatherQuery.isError ? undefined : trip.weather);
   const weather = weatherSnapshot?.destination === trip.destination ? weatherSnapshot : undefined;
 
-  const editingActivity = editing?.activityId
-    ? trip.days.find((d) => d.id === editing.dayId)?.activities.find((a) => a.id === editing.activityId) ?? null
-    : null;
-
   const mobileTabs: [MobileTab, string][] = [
     ['chat', '对话'],
     ['list', '行程'],
@@ -169,7 +162,6 @@ export function TripEditorPage() {
           poiByActivityId={overviewMatch.poiByActivityId}
           weather={weather}
           weatherLoading={weatherQuery.isFetching}
-          onEditActivity={(dayId, activityId) => setEditing({ dayId, activityId })}
         />
       ))}
       {dayFilter === null && (
@@ -177,9 +169,6 @@ export function TripEditorPage() {
           onSelectDay={setDayFilter} onAddDay={addDay}
           readOnly={readOnly} busy={busy} pois={overviewMatch.poiByActivityId} />
       )}
-      <PexelsCredit
-        pois={[...overviewMatch.poiByActivityId.values(), ...overviewMatch.unmatched]}
-      />
     </div>
   );
 
@@ -237,14 +226,6 @@ export function TripEditorPage() {
 
       {!readOnly && !busy && <AutoRoutePlanner />}
       {historyOpen && <HistoryPanel currentId={id} chain={versions.data} loading={versions.isPending} failed={versions.isError} busy={busy} initialRestore={restoreId} refresh={() => void versions.refetch()} close={() => setHistoryOpen(false)} begin={begin} end={end} onTrip={onTrip} />}
-      {editing && !readOnly && !busy && (
-        <ActivityEditDialog
-          key={`${editing.dayId}:${editing.activityId ?? 'new'}`}
-          dayId={editing.dayId}
-          activity={editingActivity}
-          onClose={() => setEditing(null)}
-        />
-      )}
     </div>
   );
 }

@@ -37,8 +37,6 @@ interface EditorState {
   addDay: () => void;
   deleteDay: (dayId: string) => void;
   updateDayTitle: (dayId: string, title: string) => void;
-  addActivity: (dayId: string, activity: Omit<Activity, 'id'>) => void;
-  updateActivity: (dayId: string, activityId: string, patch: Partial<Omit<Activity, 'id'>>) => void;
   deleteActivity: (dayId: string, activityId: string) => void;
   moveActivity: (dayId: string, activityId: string, dir: 'up' | 'down') => void;
   moveActivityToDay: (fromDayId: string, activityId: string, toDayId: string) => void;
@@ -174,27 +172,6 @@ export const useEditorStore = create<EditorState>((set, get) => {
       mutate((draft) => {
         const day = findDay(draft, dayId);
         if (day) day.title = title;
-      }),
-
-    addActivity: (dayId, activity) =>
-      mutate((draft) => {
-        findDay(draft, dayId)?.activities.push({ ...activity, id: uid() });
-      }),
-
-    updateActivity: (dayId, activityId, patch) =>
-      mutate((draft) => {
-        const list = findDay(draft, dayId)?.activities;
-        const target = list?.find((a) => a.id === activityId);
-        if (target) {
-          const changed = (patch.lat !== undefined && patch.lat !== target.lat)
-            || (patch.lng !== undefined && patch.lng !== target.lng)
-            || (patch.coordSystem !== undefined && patch.coordSystem !== target.coordSystem);
-          Object.assign(target, patch);
-          if (changed) {
-            const day = findDay(draft, dayId)!;
-            day.legs = day.legs?.filter((l) => l.fromActivityId !== activityId && l.toActivityId !== activityId);
-          }
-        }
       }),
 
     deleteActivity: (dayId, activityId) =>

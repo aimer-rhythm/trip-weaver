@@ -10,7 +10,7 @@ Do not create a parallel interface that can drift from an existing schema. Inter
 
 Closed domain values belong in readonly `as const` arrays in `packages/shared/src/constants.ts`. Derive unions with `(typeof VALUES)[number]` in `packages/shared/src/types.ts`, and reuse the same values when constructing schemas in `packages/shared/src/schemas.ts`. Examples include activity categories, budget levels, coordinate sources, POI categories, reservation statuses, and data source kinds.
 
-Do not duplicate string unions, option arrays, or validators in consumers such as `apps/server/src/generation/draft.ts` or `apps/web/src/components/editor/ActivityEditDialog.tsx`.
+Do not duplicate string unions, option arrays, or validators in consumers such as `apps/server/src/generation/draft.ts` or `apps/web/src/components/editor/ActivityCard.tsx`.
 
 ## Framework Independence and Purity
 

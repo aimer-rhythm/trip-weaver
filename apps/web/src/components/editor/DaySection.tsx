@@ -13,12 +13,11 @@ interface Props {
   day: TripDay;
   allDays: TripDay[];
   poiByActivityId: Map<string, ResearchPoi>;
-  onEditActivity: (dayId: string, activityId: string | null) => void;
   weather?: TripWeather;
   weatherLoading?: boolean;
 }
 
-export function DaySection({ day, allDays, poiByActivityId, onEditActivity, weather, weatherLoading }: Props) {
+export function DaySection({ day, allDays, poiByActivityId, weather, weatherLoading }: Props) {
   const readOnly = useEditorStore((s) => s.readOnly);
   const [dialog, setDialog] = useState<'rename' | 'delete' | null>(null);
   const updateDayTitle = useEditorStore((s) => s.updateDayTitle);
@@ -37,12 +36,11 @@ export function DaySection({ day, allDays, poiByActivityId, onEditActivity, weat
         </EditorMenu>}
       </header>
       <div className={"day-body [padding:4px_10px_10px] flex flex-col [gap:8px]"}>
-        {day.activities.length === 0 && <p className={"muted [color:var(--color-muted)] [font-size:0.88rem] day-empty text-center [padding:8px_0]"}>这一天还没有安排，添加第一个活动吧。</p>}
+        {day.activities.length === 0 && <p className={"muted [color:var(--color-muted)] [font-size:0.88rem] day-empty text-center [padding:8px_0]"}>这一天还没有安排，让旅行助手补上想去的活动吧。</p>}
         {day.activities.map((activity, index) => {
           const next = day.activities[index + 1];
           return <ActivityCard key={activity.id} day={day} activity={activity} index={index} allDays={allDays} matchedPoi={poiByActivityId.get(activity.id)} nextLeg={next ? legForPair(day, activity.id, next.id) : undefined} />;
         })}
-        {!readOnly && <Button variant="secondary" type="button" className={"btn-add-activity justify-center [border-style:dashed]"} onClick={() => onEditActivity(day.id, null)}>＋ 添加活动</Button>}
       </div>
       {dialog === 'rename' && <PromptDialog title="修改当日主题" initialValue={day.title} maxLength={30} onConfirm={(title) => updateDayTitle(day.id, title)} onClose={() => setDialog(null)} />}
       {dialog === 'delete' && <ConfirmDialog title="删除这一天" description={`确定删除第${day.dayIndex}天及其中的 ${day.activities.length} 个活动？`} onConfirm={() => deleteDay(day.id)} onClose={() => setDialog(null)} />}

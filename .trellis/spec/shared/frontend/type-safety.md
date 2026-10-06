@@ -22,7 +22,7 @@ export const BUDGET_LEVELS = ['economic', 'comfortable', 'luxury'] as const;
 export type BudgetLevel = (typeof BUDGET_LEVELS)[number];
 ```
 
-The repository follows this pattern for categories, budget levels, coordinate sources, reservation states, and data source kinds in `packages/shared/src/constants.ts` and `packages/shared/src/types.ts`. The same constants feed TypeBox unions in `packages/shared/src/schemas.ts` and UI choices in `apps/web/src/components/editor/TripMetaDialog.tsx` and `apps/web/src/components/editor/ActivityEditDialog.tsx`.
+The repository follows this pattern for categories, budget levels, coordinate sources, reservation states, and data source kinds in `packages/shared/src/constants.ts` and `packages/shared/src/types.ts`. The same constants feed TypeBox unions in `packages/shared/src/schemas.ts` and UI choices in `apps/web/src/components/editor/TripMetaDialog.tsx`.
 
 ## Runtime Validation Caveat
 
@@ -37,7 +37,7 @@ The repository follows this pattern for categories, budget levels, coordinate so
 
 Assertions are permitted only at narrow library boundaries after the runtime invariant is established. The `StringEnum` helper in `packages/shared/src/schemas.ts` constructs a union from every member of a readonly tuple and uses a localized double assertion because TypeBox and TypeScript cannot preserve the mapped tuple type automatically.
 
-Do not copy that pattern into normal domain code. For unknown input, validate or narrow first. Select values and third-party JSON in `apps/web/src/components/editor/ActivityEditDialog.tsx`, `apps/server/src/integrations/amap/poiSource.ts`, and `apps/server/src/integrations/websearch/searchSource.ts` are boundary cases, not permission for unchecked assertions.
+Do not copy that pattern into normal domain code. For unknown input, validate or narrow first. Select values and third-party JSON in `apps/server/src/integrations/amap/poiSource.ts` and `apps/server/src/integrations/websearch/searchSource.ts` are boundary cases, not permission for unchecked assertions.
 
 ## Import Safety
 

@@ -81,10 +81,12 @@ try {
         // 若中栏变窄（曾经改到 37fr），44% 会变成约束、照片掉到 ~161px，这条就会挂。
         assert.ok(box.width >= (width === 1440 ? 170 : 120), `${name}: chosen medium layout should not regress to the small thumbnail`);
       }
-      const cardBox = await card.boundingBox();
-      assert.ok(box.width <= cardBox.width * 0.44, `${name}: photo occupies too much card width`);
+      assert.ok(box.width <= (width < 640 ? 128 : 180) + 1, `${name}: photo must stay inside the fixed photo column`);
       const textBox = await card.locator('.activity-main').boundingBox();
       const imageBox = await image.boundingBox();
+      const slotBox = await card.locator('.activity-photo').boundingBox();
+      assert.ok(Math.abs(slotBox.width - (width < 640 ? 128 : 180)) < 1, `${name}: photo column keeps a fixed width`);
+      assert.ok(Math.abs(slotBox.x + slotBox.width / 2 - (imageBox.x + imageBox.width / 2)) < 1, `${name}: photo is centered in its column`);
       assert.ok(textBox.x + textBox.width <= imageBox.x + 1, `${name}: photo should sit beside the text`);
       assert.ok(textBox.width > imageBox.width, `${name}: text must have more space than the photo`);
       const triggerBox = await card.locator('.poi-photo-trigger').boundingBox();
@@ -96,7 +98,7 @@ try {
     await page.screenshot({ path: path.join(out, `portrait-${width}.png`) });
     await portrait.focus();
     await page.keyboard.press('Enter');
-    const dialog = page.getByRole('dialog', { name: '竖版风景 · 完整照片', exact: true });
+    const dialog = page.getByRole('dialog', { name: '竖版风景', exact: true });
     await dialog.waitFor();
     await dialog.locator('img').evaluate(img => img.decode());
     const dialogImage = await dialog.locator('img').boundingBox();
@@ -114,12 +116,14 @@ try {
     await card.scrollIntoViewIfNeeded();
     await page.waitForFunction(name => [...document.querySelectorAll('article')].find(el => el.getAttribute('aria-label') === name)?.querySelector('button.poi-photo-trigger') == null, name);
     assert.equal(await card.getByRole('button', { name: `查看${name}完整照片` }).count(), 0);
+    const emptySlot = await card.locator('.activity-photo').boundingBox();
+    assert.ok(emptySlot && emptySlot.width >= 120, `${name}: empty photo column still reserves space`);
   }
   for (const [width, height] of [[1440, 1000], [390, 844], [844, 390]]) {
     await page.setViewportSize({ width, height });
     const trigger = page.getByRole('button', { name: '查看横版风景完整照片', exact: true });
     await trigger.click();
-    const gallery = page.getByRole('dialog', { name: '横版风景 · 完整照片', exact: true });
+    const gallery = page.getByRole('dialog', { name: '横版风景', exact: true });
     const choices = gallery.getByRole('group', { name: '选择照片' });
     assert.equal(await choices.getByRole('button').count(), 3, '封面在三张总数内，异常第四张不展示');
     assert.match(await gallery.locator('[role="status"]').textContent(), /1 \/ 3/);

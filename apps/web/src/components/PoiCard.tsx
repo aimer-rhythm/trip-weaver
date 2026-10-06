@@ -81,10 +81,10 @@ function PoiPhotoGallery({ poi, onCoverError }: { poi: ResearchPoi; onCoverError
   const index = photos.indexOf(selected);
   const move = (offset: number) => setSelectedUrl(photos[(index + offset + photos.length) % photos.length]?.url);
   return <>
-    <Button variant="plain" className={`poi-photo-trigger inline-flex min-h-11 min-w-11 w-fit shrink-0 self-start items-center justify-center cursor-zoom-in rounded-lg border-0 bg-transparent p-0 ${portrait ? 'max-w-[min(108px,44%)] max-sm:max-w-[min(74px,44%)]' : 'max-w-[min(180px,44%)] max-sm:max-w-[min(128px,44%)]'}`} aria-label={`查看${poi.name}完整照片`} onClick={() => { setSelectedUrl(cover.url); setOpened(true); }}>
+    <Button variant="plain" className={`poi-photo-trigger inline-flex min-h-11 min-w-11 w-full cursor-zoom-in items-center justify-center rounded-lg border-0 bg-transparent p-0`} aria-label={`查看${poi.name}完整照片`} onClick={() => { setSelectedUrl(cover.url); setOpened(true); }}>
       <img key={cover.url} className={`poi-photo block h-auto w-auto min-w-0 max-w-full rounded-lg object-contain ${portrait ? 'max-h-[150px] max-sm:max-h-[110px]' : 'max-h-[120px] max-sm:max-h-[88px]'}`} src={cover.url} alt={poi.name} loading="lazy" referrerPolicy="no-referrer" onLoad={event => setLoadedPhoto({ url: cover.url, portrait: event.currentTarget.naturalHeight > event.currentTarget.naturalWidth })} onError={() => fail(cover.url)} />
     </Button>
-    {opened && <Modal title={`${poi.name} · 完整照片`} size="photo" onClose={() => setOpened(false)}>
+    {opened && <Modal title={poi.name} size="photo" onClose={() => setOpened(false)}>
       <div className="poi-photo-viewer" onKeyDown={event => {
         if (photos.length < 2 || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
         event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1);
@@ -154,25 +154,5 @@ export function PoiCard({ poi, compact = false }: { poi: ResearchPoi; compact?: 
       </div>
       <PoiCover key={poi.coverUrl} poi={poi} variant="photo" />
     </div>
-  );
-}
-
-/** 该封面是否来自 Pexels（API 条款：用到就要署名 + 链接回 Pexels） */
-export function isPexelsCover(url?: string): boolean {
-  return Boolean(url && url.includes('images.pexels.com'));
-}
-
-/**
- * Pexels API 条款要求使用其图片的页面展示指向 Pexels 的显眼链接。
- * 列表里没有 Pexels 图时返回 null —— 不产生任何占位。
- */
-export function PexelsCredit({ pois }: { pois: readonly Pick<ResearchPoi, 'coverUrl' | 'coverAttribution'>[] }) {
-  if (!pois.some((p) => isPexelsCover(p.coverUrl) || (p.coverUrl && p.coverAttribution?.source === 'pexels'))) return null;
-  return (
-    <p className={"pexels-credit [grid-column:1_/_-1] [margin:6px_0_0] [font-size:0.72rem] [color:var(--color-muted)] [&_a]:[color:inherit]"}>
-      <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">
-        Photos provided by Pexels
-      </a>
-    </p>
   );
 }
