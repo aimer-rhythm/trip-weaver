@@ -45,7 +45,6 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
         <div className="activity-main min-w-0 flex-1">
           <div className="activity-tags flex flex-wrap items-center gap-2"><span className={"cat-badge inline-flex items-center [gap:4px] [font-size:0.76rem] [color:var(--color-muted)] [&_i]:[width:8px] [&_i]:[height:8px] [&_i]:[border-radius:50%] [&_i]:inline-block"}><EditorIcon name="place" />{activity.category}</span>{matchedPoi?.reservation === 'required' && <ReservationBadge poi={matchedPoi} />}</div>
           {(activity.description || matchedPoi?.intro) && <p className={"activity-desc [margin:4px_0_0] [font-size:0.83rem] [color:var(--color-muted)]"}>{activity.description || matchedPoi?.intro}</p>}
-          {matchedPoi?.reservation === 'required' && matchedPoi.reservationNote && <p className={"activity-rsv-note [margin:6px_0_0] [font-size:12px] [color:var(--color-activity-reservation-color-79)] [line-height:1.5]"}>{matchedPoi.reservationNote}</p>}
           {!hasValidCoord(activity) && <span className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>无坐标</span>}
           {hasValidCoord(activity) && activity.coordSource === 'estimated' && <span className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>坐标为估算</span>}
         </div>
