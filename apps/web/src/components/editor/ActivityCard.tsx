@@ -48,7 +48,7 @@ export function ActivityCard({ day, activity, index, allDays, matchedPoi, nextLe
           {!hasValidCoord(activity) && <span className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>无坐标</span>}
           {hasValidCoord(activity) && activity.coordSource === 'estimated' && <span className={"tag [border-radius:4px] [padding:1px_6px] [font-size:0.72rem] tag-warn [background:var(--color-tag-warn-background-7)] [color:var(--color-tag-warn-color-8)]"}>坐标为估算</span>}
         </div>
-        {showCover && matchedPoi ? <span className="activity-photo flex w-[180px] shrink-0 items-center justify-center max-[600px]:w-[128px]"><PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} variant="photo" onCoverError={setFailedCover} /></span> : <span className="activity-photo w-[180px] shrink-0 max-[600px]:w-[128px]" aria-hidden="true" />}
+        {showCover && matchedPoi && <span className="activity-photo flex w-[180px] shrink-0 items-center justify-center max-[600px]:w-[128px]"><PoiCover key={matchedPoi.coverUrl} poi={matchedPoi} variant="photo" onCoverError={setFailedCover} /></span>}
         </div>
       </div>
       {index < day.activities.length - 1 && <RouteOptions dayId={day.id} fromId={activity.id} leg={nextLeg} />}

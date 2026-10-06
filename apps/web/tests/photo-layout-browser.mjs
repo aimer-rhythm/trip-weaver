@@ -116,8 +116,10 @@ try {
     await card.scrollIntoViewIfNeeded();
     await page.waitForFunction(name => [...document.querySelectorAll('article')].find(el => el.getAttribute('aria-label') === name)?.querySelector('button.poi-photo-trigger') == null, name);
     assert.equal(await card.getByRole('button', { name: `查看${name}完整照片` }).count(), 0);
-    const emptySlot = await card.locator('.activity-photo').boundingBox();
-    assert.ok(emptySlot && emptySlot.width >= 120, `${name}: empty photo column still reserves space`);
+    assert.equal(await card.locator('.activity-photo').count(), 0, `${name}: 无封面不再保留空列`);
+    const cardBox = await card.boundingBox();
+    const textBox = await card.locator('.activity-main').boundingBox();
+    assert.ok(textBox.width > cardBox.width * 0.6, `${name}: 无封面时文字占满宽度`);
   }
   for (const [width, height] of [[1440, 1000], [390, 844], [844, 390]]) {
     await page.setViewportSize({ width, height });
