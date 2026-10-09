@@ -1,0 +1,49 @@
+{
+  "isolated": true,
+  "synthetic": true,
+  "city": "联合来源链路测试",
+  "oldIds": [
+    "a00532a8bcad503726e0b5bc4b38ce18",
+    "0bbfa5deeed19c9020a99484f49c0c27"
+  ],
+  "targetIds": [
+    "ad57f2dd3767d4a02d6bde8f807f1e33",
+    "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+  ],
+  "files": {
+    "before": {
+      "file": "before.json",
+      "sha256": "4061618f4a123009ebe51b960ef1e1a5f2f2ac9bb539475b0a7ecb7bf1b8a66e",
+      "active": [
+        "0bbfa5deeed19c9020a99484f49c0c27",
+        "a00532a8bcad503726e0b5bc4b38ce18",
+        "ad57f2dd3767d4a02d6bde8f807f1e33",
+        "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+      ]
+    },
+    "assigned": {
+      "file": "assigned.json",
+      "sha256": "b38480a3da1b7b75bf1519e3262d5cf668ad371541c0751a62d930c5b5e40f4b",
+      "active": [
+        "ad57f2dd3767d4a02d6bde8f807f1e33",
+        "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+      ]
+    },
+    "empty": {
+      "file": "empty.json",
+      "sha256": "befe14b5c973977c119034041ba1d9e9b16ad87882cdc40d28bb95831a9bfaeb",
+      "active": []
+    },
+    "restored": {
+      "file": "restored.json",
+      "sha256": "97e3e167d7be80552cdde761320efb1601ff2e1a245afcf1d4a7e9f680e9da30",
+      "active": [
+        "ad57f2dd3767d4a02d6bde8f807f1e33",
+        "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+      ]
+    }
+  },
+  "idempotency": true,
+  "reverseRollback": true,
+  "sourceTextUnchanged": true
+}

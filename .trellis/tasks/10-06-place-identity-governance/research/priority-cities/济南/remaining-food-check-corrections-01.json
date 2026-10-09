@@ -1,0 +1,18 @@
+{
+  "batch": 60,
+  "corrections": [
+    {
+      "check": "preview-remaining-food.py",
+      "initialFailure": "错误要求三条撤回记录继续携带美食/food字段，并预设withdrawal.reason为split_source。",
+      "evidence": "现合同无确认候选时导出category=其他、无xhsPlaceType，reason=unavailable_source；不是停业或原始非地点判定。",
+      "correction": "明确区分有效餐厅和撤回占位行，逐字段验证无内容、坐标、语料、图片及候选，并验证逆序回滚。"
+    },
+    {
+      "check": "verify-remaining-food-data.mts",
+      "initialFailure": "使用旧户外冻结器的扁平source.sources字段，本批冻结器将来源保存在groups[].sources。",
+      "correction": "遍历完整groups[].sources，五源派生字段全部保持；SQL/向量和内容检查不放宽。"
+    }
+  ],
+  "businessDataChangedForCorrections": false,
+  "successfulArtifactsReplayed": false
+}

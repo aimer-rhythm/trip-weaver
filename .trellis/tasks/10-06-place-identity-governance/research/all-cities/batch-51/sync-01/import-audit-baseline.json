@@ -1,0 +1,21 @@
+{
+  "batch": 51,
+  "readOnly": true,
+  "at": "2026-10-08T20:17:28.278Z",
+  "preflightSucceeded": false,
+  "incident": "前置检查误用batch/mode参数顺序，失败后编排仍继续导入；本记录是事后事务审计补证，不是前置成功证明。",
+  "auditId": "e550a944-8ad6-4c84-8702-f64f2230c429",
+  "importBeforeStateEqualsFrozenLibrary": true,
+  "tablesVerified": 6,
+  "auditBoundary": "事务前快照覆盖5个整城表及地点/关系导入记录；其他导入记录以现状与冻结值逐项核验。",
+  "otherImportRowsPreserved": 1,
+  "tripBaseline": "metadata/content-dates-01/sync-01/live-check.json",
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "preservedVectors": 232,
+  "evidenceContentsPreserved": 524,
+  "evidenceFetchTimesRefreshed": 505,
+  "failures": []
+}

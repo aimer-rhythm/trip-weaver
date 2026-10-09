@@ -1,0 +1,65 @@
+{
+  "batch": 43,
+  "readOnly": true,
+  "at": "2026-10-08T17:40:40.589Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes"
+  ],
+  "results": [
+    {
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "name": "黑虎泉",
+      "confirmed": 36,
+      "pending": 11,
+      "effectiveMinutes": 50,
+      "boundaries": [
+        "玛瑙泉",
+        "黑虎泉游船码头",
+        "黑虎泉茶摊",
+        "环城公园",
+        "黑虎阁"
+      ]
+    },
+    {
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "name": "千佛山",
+      "confirmed": 10,
+      "pending": 3,
+      "effectiveMinutes": null,
+      "boundaries": [
+        "千佛山山顶",
+        "兴国禅寺",
+        "四窟万象",
+        "千佛山美院门"
+      ]
+    }
+  ],
+  "assignmentRows": 141,
+  "priorPendingPreserved": 77,
+  "pendingMentions": 91,
+  "previousOtherDurationAndReservationFieldsPreserved": true,
+  "sqlProbes": 2,
+  "realVectorProbes": 2,
+  "graph": 20,
+  "directEdges": 6,
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

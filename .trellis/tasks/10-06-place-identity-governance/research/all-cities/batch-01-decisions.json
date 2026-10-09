@@ -1,0 +1,3266 @@
+[
+  {
+    "key": "all-cities-20261006-batch-01-001",
+    "city": "上海",
+    "entityId": "ff63e933b29f74b1675a0fd9e9c73acc",
+    "mergeEntityIds": [
+      "09fa1bcbfe86b89f58e74ad71131b4bd"
+    ],
+    "canonicalName": "上海国金中心",
+    "expectedRevisions": {
+      "09fa1bcbfe86b89f58e74ad71131b4bd": 1,
+      "ff63e933b29f74b1675a0fd9e9c73acc": 1
+    },
+    "overrides": {
+      "lat": 31.236575,
+      "lng": 121.501064,
+      "address": "世纪大道8号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          2
+        ],
+        "conclusion": "两条源记录均为世纪大道8号的同一商业体；陆家嘴天桥通达的原文语境一致。",
+        "sourcePlaceIds": [
+          "5215",
+          "4652"
+        ],
+        "mentions": [
+          {
+            "id": "11254",
+            "name": "国金中心",
+            "quote": "天桥直达",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a915376000000001803fea8"
+          },
+          {
+            "id": "11010",
+            "name": "国金中心",
+            "quote": "节假日天桥拍照人挤人",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa7bfcf000000000d0243d0"
+          },
+          {
+            "id": "10310",
+            "name": "上海国金中心",
+            "quote": "陆家嘴➠国金中心",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a08710a000000003501d13d"
+          },
+          {
+            "id": "10279",
+            "name": "上海国金中心",
+            "quote": "陆家嘴➡国金中心",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ce816100000000210064d5"
+          },
+          {
+            "id": "10258",
+            "name": "上海国金中心",
+            "quote": "节假日天桥拍照人挤人",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa7bfcf000000000d0243d0"
+          },
+          {
+            "id": "10179",
+            "name": "上海国金中心",
+            "quote": "➡️国金中心➡️人民广场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fa2970000000007022d97"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4652",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 31.236575,
+        "lng": 121.501064,
+        "address": "世纪大道8号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-002",
+    "city": "上海",
+    "entityId": "24992aaea406895e3f3e4010d086d2cb",
+    "mergeEntityIds": [
+      "a46b716fe203e12fb7e11cfa28dc587f"
+    ],
+    "canonicalName": "浦东美术馆",
+    "expectedRevisions": {
+      "24992aaea406895e3f3e4010d086d2cb": 1,
+      "a46b716fe203e12fb7e11cfa28dc587f": 1
+    },
+    "overrides": {
+      "lat": 31.23821,
+      "lng": 121.496361,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          13
+        ],
+        "conclusion": "同一浦东滨江馆舍；原文分别描述东方明珠取景窗和看外滩的顶层露台，源定位相同。",
+        "sourcePlaceIds": [
+          "4717",
+          "4869"
+        ],
+        "mentions": [
+          {
+            "id": "11279",
+            "name": "浦东美术馆",
+            "quote": "窗户将东方明珠完美框住",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694cece7000000001e013c6e"
+          },
+          {
+            "id": "11227",
+            "name": "浦东美术馆",
+            "quote": "浦东美术馆须提前1-3天在予约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3b9394000000000f004c46"
+          },
+          {
+            "id": "11180",
+            "name": "浦东美术馆",
+            "quote": "浦东美术馆日落长廊",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6981d89f000000002200b241"
+          },
+          {
+            "id": "10212",
+            "name": "浦东美术馆",
+            "quote": "浦东美术馆 → 滨江大道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a93a509000000001803d4e3"
+          },
+          {
+            "id": "10071",
+            "name": "上海浦东美术馆",
+            "quote": "顶楼露台欣赏外滩夜景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69804599000000002802059c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4717",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 31.23821,
+        "lng": 121.496361,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-003",
+    "city": "上海",
+    "entityId": "f084260339829787e7ea4526dcfde0d0",
+    "mergeEntityIds": [
+      "d8672ca99c47bf594c763140b64b1202"
+    ],
+    "canonicalName": "徐家汇天主堂",
+    "expectedRevisions": {
+      "d8672ca99c47bf594c763140b64b1202": 1,
+      "f084260339829787e7ea4526dcfde0d0": 1
+    },
+    "overrides": {
+      "lat": 31.191267,
+      "lng": 121.436724,
+      "address": "蒲西路158号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          24
+        ],
+        "conclusion": "徐家汇教堂的两种称呼；保留蒲西路158号主体，纠正另一源记录误落崇明的定位。",
+        "sourcePlaceIds": [
+          "4826",
+          "4756"
+        ],
+        "mentions": [
+          {
+            "id": "10978",
+            "name": "徐家汇天主教堂",
+            "quote": "免费又出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1aa571000000003700fb88"
+          },
+          {
+            "id": "9983",
+            "name": "徐家汇天主教堂",
+            "quote": "徐家汇教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69fc354500000000350388d0"
+          },
+          {
+            "id": "10047",
+            "name": "徐家汇天主堂",
+            "quote": "天主大教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/692e9864000000001e014f9f"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4756",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 31.191267,
+        "lng": 121.436724,
+        "address": "蒲西路158号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/徐家汇天主堂",
+        "file": "all-cities/shanghai-xujiahui-fetch.json",
+        "sha256": "e8e850a184691fefc3642d123161311bc75ab7e705e08ee4467fd12d12b6f420"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-004",
+    "city": "云南",
+    "entityId": "d2fc88ba4a68b14f93a2543500afd712",
+    "mergeEntityIds": [
+      "49cad807a37372921bf8be9184f97c3b"
+    ],
+    "canonicalName": "斗南花卉市场",
+    "expectedRevisions": {
+      "49cad807a37372921bf8be9184f97c3b": 1,
+      "d2fc88ba4a68b14f93a2543500afd712": 1
+    },
+    "overrides": {
+      "lat": 24.902412,
+      "lng": 102.788277,
+      "address": "云南省昆明市呈贡区斗南街道中国斗南花卉市场",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          47
+        ],
+        "conclusion": "两侧原文均明确昆明斗南鲜花交易市场；保留呈贡区斗南街道市场主体定位。",
+        "sourcePlaceIds": [
+          "4979",
+          "4952"
+        ],
+        "mentions": [
+          {
+            "id": "10871",
+            "name": "斗南花市",
+            "quote": "离斗南花市很近，可以一起游玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eab752000000001901e000"
+          },
+          {
+            "id": "10836",
+            "name": "斗南花市",
+            "quote": "场内超级多美丽花花",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a98ef2c0000000011031653"
+          },
+          {
+            "id": "10811",
+            "name": "斗南花市",
+            "quote": "斗南花市",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a981895000000002900d2b5"
+          },
+          {
+            "id": "10740",
+            "name": "斗南花市",
+            "quote": "斗南花市",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aadf0de0000000027017763"
+          },
+          {
+            "id": "10752",
+            "name": "斗南花卉市场",
+            "quote": "鲜花全部白菜价",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5a1cc9000000000503bfcd"
+          },
+          {
+            "id": "10524",
+            "name": "斗南花卉市场",
+            "quote": "玫瑰10块一大把",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2ebf4d0000000007020cfb"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4952",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.902412,
+        "lng": 102.788277,
+        "address": "云南省昆明市呈贡区斗南街道中国斗南花卉市场",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-005",
+    "city": "云南",
+    "entityId": "cbc91df2b6231c16087b89db4dde1c2c",
+    "mergeEntityIds": [
+      "d59b5ccffd482f5ee6fe2605adc214f8"
+    ],
+    "canonicalName": "捞渔河湿地公园",
+    "expectedRevisions": {
+      "cbc91df2b6231c16087b89db4dde1c2c": 1,
+      "d59b5ccffd482f5ee6fe2605adc214f8": 1
+    },
+    "overrides": {
+      "lat": 24.82584,
+      "lng": 102.771484,
+      "address": "云南省呈贡区大渔街道大河社区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          48
+        ],
+        "conclusion": "昆明滇池东岸同一湿地公园的渔/鱼写法，原文均在昆明游览语境且描述水杉和日落。",
+        "sourcePlaceIds": [
+          "4984",
+          "4953"
+        ],
+        "mentions": [
+          {
+            "id": "10736",
+            "name": "捞渔河湿地公园",
+            "quote": "捞渔河湿地公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aadf0de0000000027017763"
+          },
+          {
+            "id": "10872",
+            "name": "捞鱼河湿地公园",
+            "quote": "捞鱼河是绝佳日落观赏地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eab752000000001901e000"
+          },
+          {
+            "id": "10753",
+            "name": "捞鱼河湿地公园",
+            "quote": "成片水杉林荫道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5a1cc9000000000503bfcd"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4984",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.82584,
+        "lng": 102.771484,
+        "address": "云南省呈贡区大渔街道大河社区",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-006",
+    "city": "云南",
+    "entityId": "2fae3c7a932a72360c8d626fb39dbd27",
+    "mergeEntityIds": [
+      "7fe3fe0665f3474e6948ef34be10ee05",
+      "da1aad58e652734ee86105380dddb662"
+    ],
+    "canonicalName": "云南陆军讲武堂旧址",
+    "expectedRevisions": {
+      "7fe3fe0665f3474e6948ef34be10ee05": 1,
+      "da1aad58e652734ee86105380dddb662": 1,
+      "2fae3c7a932a72360c8d626fb39dbd27": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          50,
+          58
+        ],
+        "conclusion": "三条源记录均为昆明黄色历史建筑的参观语境；没有不同校区或分馆信息，保留未解析坐标状态。",
+        "sourcePlaceIds": [
+          "5107",
+          "4983",
+          "5099"
+        ],
+        "mentions": [
+          {
+            "id": "10553",
+            "name": "云南陆军讲武堂",
+            "quote": "顺路可逛（8.5 分）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a92c3550000000029028427"
+          },
+          {
+            "id": "10869",
+            "name": "陆军讲武堂",
+            "quote": "黄色建筑肃穆庄重，感受历史的沉淀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eab752000000001901e000"
+          },
+          {
+            "id": "10815",
+            "name": "陆军讲武堂",
+            "quote": "陆军讲武堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a981895000000002900d2b5"
+          },
+          {
+            "id": "10734",
+            "name": "陆军讲武堂",
+            "quote": "陆军讲武堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aadf0de0000000027017763"
+          },
+          {
+            "id": "10722",
+            "name": "陆军讲武堂",
+            "quote": "陆军讲武堂感受历史厚重",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0449ed000000000702b587"
+          },
+          {
+            "id": "10516",
+            "name": "云南陆军讲武堂旧址",
+            "quote": "明黄外墙不用滤镜就出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2ebf4d0000000007020cfb"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5099",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": null,
+        "lng": null,
+        "geoStatus": "unresolvable"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-007",
+    "city": "云南",
+    "entityId": "172791cfdf7dbb4e66c5a42463751180",
+    "mergeEntityIds": [
+      "d60e5c2e6e6620a43b0e3cf96d645ed1"
+    ],
+    "canonicalName": "海洪湿地公园",
+    "expectedRevisions": {
+      "172791cfdf7dbb4e66c5a42463751180": 1,
+      "d60e5c2e6e6620a43b0e3cf96d645ed1": 1
+    },
+    "overrides": {
+      "lat": 24.954466,
+      "lng": 102.686032,
+      "address": "云南省西山区前卫街道星海社区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          59
+        ],
+        "conclusion": "同为西山区前卫街道星海社区湿地，地址与定位一致，原文都是海洪湿地游览。",
+        "sourcePlaceIds": [
+          "5104",
+          "5164"
+        ],
+        "mentions": [
+          {
+            "id": "10623",
+            "name": "海洪湿地公园",
+            "quote": "海洪湿地公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69cc86b8000000001d01d28c"
+          },
+          {
+            "id": "10521",
+            "name": "海洪湿地公园",
+            "quote": "人少安静",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2ebf4d0000000007020cfb"
+          },
+          {
+            "id": "10835",
+            "name": "海洪湿地",
+            "quote": "一路走到海洪湿地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a98ef2c0000000011031653"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5104",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.954466,
+        "lng": 102.686032,
+        "address": "云南省西山区前卫街道星海社区",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-008",
+    "city": "云南",
+    "entityId": "1fde31c4bf540460274ad2f9ed89a2e2",
+    "mergeEntityIds": [
+      "0827e0e34cd02e73dabadb86e33bdbd2"
+    ],
+    "canonicalName": "西山龙门景区",
+    "expectedRevisions": {
+      "0827e0e34cd02e73dabadb86e33bdbd2": 1,
+      "1fde31c4bf540460274ad2f9ed89a2e2": 1
+    },
+    "overrides": {
+      "lat": 24.946331,
+      "lng": 102.634559,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          60
+        ],
+        "conclusion": "原文均指昆明西山登龙门观滇池项目，源定位相同；不并入西山整体。",
+        "sourcePlaceIds": [
+          "5105",
+          "5154"
+        ],
+        "mentions": [
+          {
+            "id": "10522",
+            "name": "西山龙门",
+            "quote": "俯瞰滇池全景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2ebf4d0000000007020cfb"
+          },
+          {
+            "id": "10775",
+            "name": "西山龙门景区",
+            "quote": "不推荐腿脚不好的老人去了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6bc54200000000050325f5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5154",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.946331,
+        "lng": 102.634559,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-009",
+    "city": "云南",
+    "entityId": "53fa84b5e0190aaa54a799108a3d0ee9",
+    "mergeEntityIds": [
+      "30ed1c8c8d09c5fb0c5f1ce569622497"
+    ],
+    "canonicalName": "西山风景名胜区",
+    "expectedRevisions": {
+      "30ed1c8c8d09c5fb0c5f1ce569622497": 1,
+      "53fa84b5e0190aaa54a799108a3d0ee9": 1
+    },
+    "overrides": {
+      "lat": 24.983469,
+      "lng": 102.619787,
+      "address": "碧鸡街道高峣村",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          61
+        ],
+        "conclusion": "两条均为昆明碧鸡街道西山整体景区的游览语境，保留名胜区主体。",
+        "sourcePlaceIds": [
+          "5108",
+          "5153"
+        ],
+        "mentions": [
+          {
+            "id": "10556",
+            "name": "西山风景区",
+            "quote": "顺路可逛（8.5 分）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a92c3550000000029028427"
+          },
+          {
+            "id": "10774",
+            "name": "西山风景名胜区",
+            "quote": "观滇池最佳点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6bc54200000000050325f5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5153",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.983469,
+        "lng": 102.619787,
+        "address": "碧鸡街道高峣村",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-010",
+    "city": "北京",
+    "entityId": "471db02d4be8ffa9b3c99dc97841310e",
+    "mergeEntityIds": [
+      "120cd278050265e524d45f01cba1cd62"
+    ],
+    "canonicalName": "三里屯SOHO",
+    "expectedRevisions": {
+      "120cd278050265e524d45f01cba1cd62": 1,
+      "471db02d4be8ffa9b3c99dc97841310e": 1
+    },
+    "overrides": {
+      "lat": 39.932257,
+      "lng": 116.453502,
+      "address": "工人体育场北路8号(工人体育场地铁站D口步行380米)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          83
+        ],
+        "conclusion": "同一三里屯商业体的大小写变体，保留工体北路8号定位；不涉及任何品牌分店。",
+        "sourcePlaceIds": [
+          "780",
+          "951"
+        ],
+        "mentions": [
+          {
+            "id": "1967",
+            "name": "三里屯soho",
+            "quote": "三里屯soho",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b130dd0000000008032a02"
+          },
+          {
+            "id": "4539",
+            "name": "三里屯SOHO",
+            "quote": "购物吃喝两不误",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2cc8f40000000022008940"
+          },
+          {
+            "id": "2207",
+            "name": "三里屯SOHO",
+            "quote": "三里屯SOHO",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698619140000000015030695"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "951",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.932257,
+        "lng": 116.453502,
+        "address": "工人体育场北路8号(工人体育场地铁站D口步行380米)",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-011",
+    "city": "北京",
+    "entityId": "c8f22f8d5a3917d3ab2a4b9ee83fc5cd",
+    "mergeEntityIds": [
+      "48463413ce45bb38cdce9db80023ccd6"
+    ],
+    "canonicalName": "蓝色港湾",
+    "expectedRevisions": {
+      "48463413ce45bb38cdce9db80023ccd6": 1,
+      "c8f22f8d5a3917d3ab2a4b9ee83fc5cd": 1
+    },
+    "overrides": {
+      "lat": 39.949336,
+      "lng": 116.475944,
+      "address": "朝阳公园路6号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          86
+        ],
+        "conclusion": "两条均指朝阳公园路6号蓝色港湾商场及其灯光活动，行政区前缀不改变实体。",
+        "sourcePlaceIds": [
+          "1125",
+          "784"
+        ],
+        "mentions": [
+          {
+            "id": "2427",
+            "name": "朝阳蓝色港湾",
+            "quote": "新年倒计时我觉得还不错",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694033ba000000001d03d81c"
+          },
+          {
+            "id": "3214",
+            "name": "蓝色港湾",
+            "quote": "吃饭就在蓝港解决吧",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a739995000000000e03c000"
+          },
+          {
+            "id": "2994",
+            "name": "蓝色港湾",
+            "quote": "灯光节、音乐表演、跨年市集、万人倒计时",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69462667000000000d03f62c"
+          },
+          {
+            "id": "2357",
+            "name": "蓝色港湾",
+            "quote": "灯光秀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694ba3f0000000001d0389c9"
+          },
+          {
+            "id": "1971",
+            "name": "蓝色港湾",
+            "quote": "蓝色港湾",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b130dd0000000008032a02"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "784",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.949336,
+        "lng": 116.475944,
+        "address": "朝阳公园路6号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-012",
+    "city": "北京",
+    "entityId": "00ce68d2675b99bab94be58c313cecd2",
+    "mergeEntityIds": [
+      "136af858274895a216d09930a5ace814"
+    ],
+    "canonicalName": "北京环球影城",
+    "expectedRevisions": {
+      "00ce68d2675b99bab94be58c313cecd2": 1,
+      "136af858274895a216d09930a5ace814": 1
+    },
+    "overrides": {
+      "lat": 39.853381,
+      "lng": 116.679373,
+      "address": "北京环球度假区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          89
+        ],
+        "conclusion": "原文均明确北京环球主题乐园及其哈利波特等园区，同为通州环球度假区内乐园。",
+        "sourcePlaceIds": [
+          "820",
+          "800"
+        ],
+        "mentions": [
+          {
+            "id": "3277",
+            "name": "北京环球影城",
+            "quote": "冬天20:00就闭园了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695903e9000000001e00c174"
+          },
+          {
+            "id": "2676",
+            "name": "北京环球影城",
+            "quote": "哈利波特灯光秀必看",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a739b0b000000000e03f000"
+          },
+          {
+            "id": "2607",
+            "name": "北京环球影城",
+            "quote": "拒绝瞎逛绕路",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a969df80000000029012454"
+          },
+          {
+            "id": "2593",
+            "name": "北京环球影城",
+            "quote": "哈利波特魔法世界→变形金刚基地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f1faec000000003601e18b"
+          },
+          {
+            "id": "5062",
+            "name": "环球影城",
+            "quote": "沉浸式玩乐园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaba28d0000000011032190"
+          },
+          {
+            "id": "4481",
+            "name": "环球影城",
+            "quote": "铂金级｜看兴趣冲！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a44c5bd000000002103c69b"
+          },
+          {
+            "id": "2997",
+            "name": "环球影城",
+            "quote": "花车巡游、烟花、飘雪、灯光",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69462667000000000d03f62c"
+          },
+          {
+            "id": "1996",
+            "name": "环球影城",
+            "quote": "每个园区都很有特色",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c0e2d4000000002102c0d2"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "820",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.853381,
+        "lng": 116.679373,
+        "address": "北京环球度假区",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-013",
+    "city": "北京",
+    "entityId": "025397f77a3ce6abdabd68648faabf88",
+    "mergeEntityIds": [
+      "495feeff9fc5b88bac9f68eebae44a49",
+      "db91f231d3594b2007896be6db3c284f"
+    ],
+    "canonicalName": "北京古代建筑博物馆",
+    "expectedRevisions": {
+      "025397f77a3ce6abdabd68648faabf88": 1,
+      "495feeff9fc5b88bac9f68eebae44a49": 1,
+      "db91f231d3594b2007896be6db3c284f": 1
+    },
+    "overrides": {
+      "lat": 39.877536,
+      "lng": 116.392052,
+      "address": "东经路21号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          92,
+          93,
+          118
+        ],
+        "conclusion": "三个名称的提及均定位星空藻井这一独特展品，保留先农坛东经路21号馆址，清除城市中心误定位。",
+        "sourcePlaceIds": [
+          "842",
+          "2494",
+          "1147"
+        ],
+        "mentions": [
+          {
+            "id": "4882",
+            "name": "北京古代建筑博物馆",
+            "quote": "北京古代建筑博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aae786b000000001203659c"
+          },
+          {
+            "id": "2845",
+            "name": "北京古代建筑博物馆",
+            "quote": "六层金丝楠木雕天宫楼阁",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3e2a45000000001003eaf8"
+          },
+          {
+            "id": "2371",
+            "name": "北京古代建筑博物馆",
+            "quote": "头顶正是大名鼎鼎的“隆福寺星空藻井”",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8acbe30000000028027ae1"
+          },
+          {
+            "id": "2038",
+            "name": "北京古代建筑博物馆",
+            "quote": "博物馆篇",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a33aca8000000001c027aa7"
+          },
+          {
+            "id": "5171",
+            "name": "北京建筑博物馆",
+            "quote": "顶部则由一千四百颗璀璨星空组成",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1dfad0000000035017b0c"
+          },
+          {
+            "id": "3403",
+            "name": "北京古建筑博物馆",
+            "quote": "星空藻井",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698d4d49000000001600b73b"
+          },
+          {
+            "id": "2475",
+            "name": "北京古建筑博物馆",
+            "quote": "图1：北京古建筑博物馆的星空藻井",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a739b45000000000e03b402"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "842",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.877536,
+        "lng": 116.392052,
+        "address": "东经路21号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-014",
+    "city": "北京",
+    "entityId": "55f244b58d783bcc7149097a44998104",
+    "mergeEntityIds": [
+      "e42f4546653559a11e87746e54b7467a"
+    ],
+    "canonicalName": "东大桥地铁站A口",
+    "expectedRevisions": {
+      "55f244b58d783bcc7149097a44998104": 1,
+      "e42f4546653559a11e87746e54b7467a": 1
+    },
+    "overrides": {
+      "lat": 39.922852,
+      "lng": 116.450379,
+      "address": "北京市朝阳区东大桥(地铁站)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          120
+        ],
+        "conclusion": "两条取景说明均明确东大桥地铁站A出口，入口字母一致，不合并其他出口或母站。",
+        "sourcePlaceIds": [
+          "1157",
+          "1619"
+        ],
+        "mentions": [
+          {
+            "id": "2485",
+            "name": "东大桥地铁站A口",
+            "quote": "图11：东大桥地铁站A口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a739b45000000000e03b402"
+          },
+          {
+            "id": "3413",
+            "name": "东大桥地铁站A出口",
+            "quote": "东大桥地铁站A出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698d4d49000000001600b73b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1157",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.922852,
+        "lng": 116.450379,
+        "address": "北京市朝阳区东大桥(地铁站)",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-015",
+    "city": "北京",
+    "entityId": "06054a69796b3e7a8ce941fed6a29dac",
+    "mergeEntityIds": [
+      "30b8c725a4f8ae47fe81f4c99e5ff479"
+    ],
+    "canonicalName": "北京坊PageOne书店",
+    "expectedRevisions": {
+      "06054a69796b3e7a8ce941fed6a29dac": 1,
+      "30b8c725a4f8ae47fe81f4c99e5ff479": 1
+    },
+    "overrides": {
+      "lat": 39.897909,
+      "lng": 116.395782,
+      "address": "北京市西城区北京坊",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          124
+        ],
+        "conclusion": "分店位置均明确北京坊，原文描述书店二层正阳楼视野，地址和坐标一致。",
+        "sourcePlaceIds": [
+          "1192",
+          "1531"
+        ],
+        "mentions": [
+          {
+            "id": "2551",
+            "name": "北京坊PageOne书店",
+            "quote": "北京坊PageOne书店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fe5540000000011034483"
+          },
+          {
+            "id": "3436",
+            "name": "北京坊Pageone",
+            "quote": "书店二层可以看到正阳楼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68fa2ef7000000000301f643"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1192",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.897909,
+        "lng": 116.395782,
+        "address": "北京市西城区北京坊",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-016",
+    "city": "北京",
+    "entityId": "a0e92d8d6e6ec2bf93386b50def2eba1",
+    "mergeEntityIds": [
+      "f55514feb5bd7d234aac3b476f0e4549"
+    ],
+    "canonicalName": "798艺术区",
+    "expectedRevisions": {
+      "a0e92d8d6e6ec2bf93386b50def2eba1": 1,
+      "f55514feb5bd7d234aac3b476f0e4549": 1
+    },
+    "overrides": {
+      "lat": 39.985127,
+      "lng": 116.496361,
+      "address": "酒仙桥路4号798·751园区内(东侧)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          125
+        ],
+        "conclusion": "均为酒仙桥798艺术园区的厂房及艺术游览，城市前缀不改变主体。",
+        "sourcePlaceIds": [
+          "1213",
+          "2526"
+        ],
+        "mentions": [
+          {
+            "id": "5082",
+            "name": "798艺术区",
+            "quote": "好多可爱的小店！好适合和朋友citywalk",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69aa7cd700000000160081c8"
+          },
+          {
+            "id": "4949",
+            "name": "798艺术区",
+            "quote": "全园光影王炸机位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3d18ce0000000006034348"
+          },
+          {
+            "id": "4945",
+            "name": "798艺术区",
+            "quote": "提前规划会更好逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6ab9c5000000000100e794"
+          },
+          {
+            "id": "4939",
+            "name": "798艺术区",
+            "quote": "真的是全北京最爱的地方",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a09a6b3000000000702504e"
+          },
+          {
+            "id": "5280",
+            "name": "北京798艺术区",
+            "quote": "随手一拍就是废土风大片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4511f80000000020038269"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1213",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.985127,
+        "lng": 116.496361,
+        "address": "酒仙桥路4号798·751园区内(东侧)",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-017",
+    "city": "北京",
+    "entityId": "9384d2ccd9946942c1fa561ff00291d3",
+    "mergeEntityIds": [
+      "3a9a962e2922f2f9314c29634b176704"
+    ],
+    "canonicalName": "侏罗纪世界大冒险",
+    "expectedRevisions": {
+      "3a9a962e2922f2f9314c29634b176704": 1,
+      "9384d2ccd9946942c1fa561ff00291d3": 1
+    },
+    "overrides": {
+      "lat": 39.856623,
+      "lng": 116.683079,
+      "address": "侏罗纪世界努布拉岛",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          131
+        ],
+        "conclusion": "两侧原文均为环球的实体恐龙骑乘项目，保留努布拉岛项目定位；与飞跃侏罗纪保持独立。",
+        "sourcePlaceIds": [
+          "1535",
+          "1429"
+        ],
+        "mentions": [
+          {
+            "id": "3196",
+            "name": "侏罗纪大冒险",
+            "quote": "有实体的大恐龙会扑到你的眼前",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a98391d000000002b00041d"
+          },
+          {
+            "id": "3026",
+            "name": "侏罗纪世界大冒险",
+            "quote": "个人比较喜欢的几个项目",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa75ee20000000026018c46"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1429",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.856623,
+        "lng": 116.683079,
+        "address": "侏罗纪世界努布拉岛",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-018",
+    "city": "北京",
+    "entityId": "613ca04d48e9c7d060e0c9defc4ad1a2",
+    "mergeEntityIds": [
+      "8bd2e1f5db4955e748a0c5b2ebf3bb2e"
+    ],
+    "canonicalName": "未来水世界",
+    "expectedRevisions": {
+      "613ca04d48e9c7d060e0c9defc4ad1a2": 1,
+      "8bd2e1f5db4955e748a0c5b2ebf3bb2e": 1
+    },
+    "overrides": {
+      "lat": 39.858352,
+      "lng": 116.68549,
+      "address": "北京环球度假区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          132
+        ],
+        "conclusion": "两条均明确环球未来水世界现场表演，地点和原文活动一致。",
+        "sourcePlaceIds": [
+          "1432",
+          "1540"
+        ],
+        "mentions": [
+          {
+            "id": "3269",
+            "name": "未来水世界",
+            "quote": "建议提前1.5小时到门口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7396c6000000000e03f000"
+          },
+          {
+            "id": "3029",
+            "name": "未来水世界",
+            "quote": "表演看未来水世界",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa75ee20000000026018c46"
+          },
+          {
+            "id": "3202",
+            "name": "未来水世界表演",
+            "quote": "表演还是很震撼刺激的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a98391d000000002b00041d"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1432",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 39.858352,
+        "lng": 116.68549,
+        "address": "北京环球度假区",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-019",
+    "city": "厦门",
+    "entityId": "d0e0f1dff1caee95784a31c71d9ac46f",
+    "mergeEntityIds": [
+      "d47144f2ffddf79bbeb00c87cc6f7acf"
+    ],
+    "canonicalName": "南普陀寺",
+    "expectedRevisions": {
+      "d0e0f1dff1caee95784a31c71d9ac46f": 1,
+      "d47144f2ffddf79bbeb00c87cc6f7acf": 1
+    },
+    "overrides": {
+      "lat": 24.442641,
+      "lng": 118.097143,
+      "address": "思明南路515号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          162
+        ],
+        "conclusion": "厦门南普陀寺简称，保留思明南路515号寺院主体，替换城市中心占位坐标。",
+        "sourcePlaceIds": [
+          "2534",
+          "2814"
+        ],
+        "mentions": [
+          {
+            "id": "6862",
+            "name": "南普陀寺",
+            "quote": "一年来南普，三年不受苦",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+          },
+          {
+            "id": "6817",
+            "name": "南普陀寺",
+            "quote": "南普陀当天基本都能约上",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "6775",
+            "name": "南普陀寺",
+            "quote": "南普陀寺…淡季人少随便逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          },
+          {
+            "id": "6677",
+            "name": "南普陀寺",
+            "quote": "在南普陀寺领了春联",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695a65110000000022033b6b"
+          },
+          {
+            "id": "5724",
+            "name": "南普陀",
+            "quote": "南普陀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a697f3a000000000301f181"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2534",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.442641,
+        "lng": 118.097143,
+        "address": "思明南路515号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/南普陀寺",
+        "file": "all-cities/xiamen-nanputuo-fetch.json",
+        "sha256": "4013ce8fd34c8469c423706ad7aee3267a045e1e3c2dd1e27732fb20ec0f283c"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-020",
+    "city": "厦门",
+    "entityId": "7bf4e295ad746a652ccc6c3fc7ea75d8",
+    "mergeEntityIds": [
+      "c0d669f23b64b70f984578de60bb4d05",
+      "82efe4b385e56b2a1de7d0cfee1fa6b0"
+    ],
+    "canonicalName": "厦门第八市场",
+    "expectedRevisions": {
+      "7bf4e295ad746a652ccc6c3fc7ea75d8": 1,
+      "c0d669f23b64b70f984578de60bb4d05": 1,
+      "82efe4b385e56b2a1de7d0cfee1fa6b0": 1
+    },
+    "overrides": {
+      "lat": 24.457902,
+      "lng": 118.075017,
+      "address": "开禾路44号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          172,
+          185
+        ],
+        "conclusion": "三条源记录均指思明开禾路第八市场即八市，源地址明示同一市场，原文都是老城海鲜美食游览。",
+        "sourcePlaceIds": [
+          "2650",
+          "2572",
+          "2716"
+        ],
+        "mentions": [
+          {
+            "id": "6778",
+            "name": "厦门第八市场",
+            "quote": "八市、中山路老街游客少",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          },
+          {
+            "id": "6586",
+            "name": "厦门第八市场",
+            "quote": "步行可达八市，晚上炫沙茶面",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa75fc5000000002601f991"
+          },
+          {
+            "id": "6402",
+            "name": "厦门第八市场",
+            "quote": "中山路 + 八市",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a48c9fa000000001c027139"
+          },
+          {
+            "id": "6117",
+            "name": "厦门第八市场",
+            "quote": "本地人烟火气、平价古早味、海鲜不宰客",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a648228000000001f01cef1"
+          },
+          {
+            "id": "6447",
+            "name": "厦门八市",
+            "quote": "来厦门一定要来八市了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6859110c000000002400ef35"
+          },
+          {
+            "id": "6233",
+            "name": "第八市场",
+            "quote": "吃海鲜要小心，鱼龙混杂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1a237a0000000038022df7"
+          },
+          {
+            "id": "5887",
+            "name": "第八市场",
+            "quote": "从第八市场开始感受",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9c421000000002202bd97"
+          },
+          {
+            "id": "5645",
+            "name": "第八市场",
+            "quote": "八市海鲜新鲜价优",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89c87e000000000b02470e"
+          },
+          {
+            "id": "5553",
+            "name": "第八市场",
+            "quote": "中山路步行街→第八市场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3a3aa2000000001702eac1"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2650",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.457902,
+        "lng": 118.075017,
+        "address": "开禾路44号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-021",
+    "city": "厦门",
+    "entityId": "410da5dd0d2e2802ead6a313bf030a19",
+    "mergeEntityIds": [
+      "8ea23363faf5024d4b6402a3023e2b90",
+      "6c19123b3dadf77f400a92d78d543be7",
+      "f0e46d4b86cc4549002eb2816943ddeb"
+    ],
+    "canonicalName": "厦门园林植物园",
+    "expectedRevisions": {
+      "410da5dd0d2e2802ead6a313bf030a19": 1,
+      "8ea23363faf5024d4b6402a3023e2b90": 1,
+      "6c19123b3dadf77f400a92d78d543be7": 1,
+      "f0e46d4b86cc4549002eb2816943ddeb": 1
+    },
+    "overrides": {
+      "lat": 24.447728,
+      "lng": 118.109277,
+      "address": "福建省厦门市思明区厦门园林植物园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          186,
+          195,
+          196
+        ],
+        "conclusion": "四条均为厦门园林植物园参观；雨林喷雾、多肉区、花展原文相互印证，不把地图返回北门当原文独立入口。",
+        "sourcePlaceIds": [
+          "2699",
+          "2651",
+          "2905",
+          "2907"
+        ],
+        "mentions": [
+          {
+            "id": "6858",
+            "name": "厦门园林植物园",
+            "quote": "直奔多肉植物区拍沙漠大片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+          },
+          {
+            "id": "6816",
+            "name": "厦门园林植物园",
+            "quote": "植物园当天基本都能约上",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "6791",
+            "name": "厦门园林植物园",
+            "quote": "提前2天，8:30放票",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a31fe1e00000000210214df"
+          },
+          {
+            "id": "6776",
+            "name": "厦门园林植物园",
+            "quote": "植物园…淡季人更少",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          },
+          {
+            "id": "6733",
+            "name": "厦门植物园",
+            "quote": "多肉区拍照很出片！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6968ecf9000000001a037b2f"
+          },
+          {
+            "id": "5680",
+            "name": "厦门植物园",
+            "quote": "厦门植物园必打卡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695b6c51000000001a02654d"
+          },
+          {
+            "id": "5533",
+            "name": "厦门植物园",
+            "quote": "雨林区喷雾时像蒙上薄雾",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a58ad10000000002201924d"
+          },
+          {
+            "id": "5315",
+            "name": "厦门植物园",
+            "quote": "上午游玩避开烈日，雨林区、巨型多肉区记得打卡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3a759d000000000803c474"
+          },
+          {
+            "id": "5927",
+            "name": "园林植物园",
+            "quote": "非常适合拍照打卡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a16b50600000000070109f6"
+          },
+          {
+            "id": "6248",
+            "name": "厦门市园林植物园",
+            "quote": "植物园迎春花展",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69788102000000000a02b029"
+          },
+          {
+            "id": "5952",
+            "name": "厦门市园林植物园",
+            "quote": "雨林区地面常年湿滑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0598a10000000035032450"
+          },
+          {
+            "id": "5951",
+            "name": "厦门市园林植物园",
+            "quote": "雨林区喷雾9:30准时开",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0598a10000000035032450"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2699",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 24.447728,
+        "lng": 118.109277,
+        "address": "福建省厦门市思明区厦门园林植物园",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-022",
+    "city": "广州",
+    "entityId": "fab510c4b94a973cd0e5e52c0c53fd76",
+    "mergeEntityIds": [
+      "61fc2bf8b931ec1512bf424f70862bc0"
+    ],
+    "canonicalName": "大佛寺",
+    "expectedRevisions": {
+      "61fc2bf8b931ec1512bf424f70862bc0": 1,
+      "fab510c4b94a973cd0e5e52c0c53fd76": 1
+    },
+    "overrides": {
+      "lat": 23.122373,
+      "lng": 113.268027,
+      "address": "广东省广州市越秀区大佛寺",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          250
+        ],
+        "conclusion": "均为越秀北京路大佛寺，原文描述同一夜间亮灯阁楼，保留寺院主体定位。",
+        "sourcePlaceIds": [
+          "3419",
+          "3246"
+        ],
+        "mentions": [
+          {
+            "id": "7262",
+            "name": "大佛古寺",
+            "quote": "晚上亮灯后好看，层层阁楼颇有千与千寻的感觉",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695323a00000000022008edc"
+          },
+          {
+            "id": "7244",
+            "name": "大佛古寺",
+            "quote": "古寺暖光亮起，梦幻又震撼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a66c9b10000000001003fe0"
+          },
+          {
+            "id": "7189",
+            "name": "大佛古寺",
+            "quote": "开放时间：07:30-21:30，亮灯时间：19:00-21:00",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a03e60000000000d00a43a"
+          },
+          {
+            "id": "8189",
+            "name": "大佛寺",
+            "quote": "陈家祠→北京路→大佛寺→珠江夜游",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9a7b1a0000000025034a04"
+          },
+          {
+            "id": "8111",
+            "name": "大佛寺",
+            "quote": "步行十分钟可达大佛寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7c44690000000008012f32"
+          },
+          {
+            "id": "8081",
+            "name": "大佛寺",
+            "quote": "老广子的信仰真的很浓，超有气氛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a28835000000000e03cea1"
+          },
+          {
+            "id": "8028",
+            "name": "大佛寺",
+            "quote": "灯光，出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8b231c000000001602b763"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3246",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 23.122373,
+        "lng": 113.268027,
+        "address": "广东省广州市越秀区大佛寺",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-023",
+    "city": "广州",
+    "entityId": "967985f1b9a63e1d603ded85fc627c28",
+    "mergeEntityIds": [
+      "5efcbc39e55a384f203a9f283201c527"
+    ],
+    "canonicalName": "石室圣心大教堂",
+    "expectedRevisions": {
+      "5efcbc39e55a384f203a9f283201c527": 1,
+      "967985f1b9a63e1d603ded85fc627c28": 1
+    },
+    "overrides": {
+      "lat": 23.114589,
+      "lng": 113.260262,
+      "address": "广东省广州市越秀区广州圣心大教堂",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          254
+        ],
+        "conclusion": "越秀官方资料确认圣心大教堂又称石室，原文都指同一哥特式教堂；保留主体而非地图东门定位。",
+        "sourcePlaceIds": [
+          "3276",
+          "3355"
+        ],
+        "mentions": [
+          {
+            "id": "8259",
+            "name": "石室圣心大教堂",
+            "quote": "外形和内饰都很好看",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69886f4d000000001d011089"
+          },
+          {
+            "id": "7955",
+            "name": "石室圣心大教堂",
+            "quote": "庄严出片的石室圣心大教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a297877000000001700b8e1"
+          },
+          {
+            "id": "7912",
+            "name": "石室圣心大教堂",
+            "quote": "彩色玻璃窗美到失语",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a073a870000000035038354"
+          },
+          {
+            "id": "7854",
+            "name": "石室圣心大教堂",
+            "quote": "彩绘玻璃的光影非常出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9cf1ac000000000b0016d6"
+          },
+          {
+            "id": "8219",
+            "name": "圣心大教堂",
+            "quote": "哥特式复古教堂，拍照出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0f082000000003303b537"
+          },
+          {
+            "id": "8079",
+            "name": "圣心大教堂",
+            "quote": "圣心大教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1173b000000003300a495"
+          },
+          {
+            "id": "7808",
+            "name": "圣心大教堂",
+            "quote": "周一闭馆别跑空",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eee4d7000000001f004b8c"
+          },
+          {
+            "id": "7807",
+            "name": "圣心大教堂",
+            "quote": "哥特式教堂，每周二-周日开放",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eee4d7000000001f004b8c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3355",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 23.114589,
+        "lng": 113.260262,
+        "address": "广东省广州市越秀区广州圣心大教堂",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "http://www.yuexiu.gov.cn/zjyx/yxjd/zjwh/content/post_8665100.html",
+        "file": "all-cities/guangzhou-cathedral-fetch.json",
+        "sha256": "fd89d5202badd1bdeb157e8111c61a35cbe9572ef7c5ea395a8d1c2355d704a8"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-024",
+    "city": "广州",
+    "entityId": "40f8eb9a8fbd66286a5083fcc2f4e785",
+    "mergeEntityIds": [
+      "d1ada1335dcb4bcefb43d55ad804bf52"
+    ],
+    "canonicalName": "广州十三行博物馆",
+    "expectedRevisions": {
+      "40f8eb9a8fbd66286a5083fcc2f4e785": 1,
+      "d1ada1335dcb4bcefb43d55ad804bf52": 1
+    },
+    "overrides": {
+      "lat": 23.108918,
+      "lng": 113.250915,
+      "address": "广东省广州市荔湾区广州十三行博物馆",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          260
+        ],
+        "conclusion": "同一荔湾十三行博物馆，源地址与坐标完全相同，原文均参观馆内展品；不并入十三行街区。",
+        "sourcePlaceIds": [
+          "3311",
+          "3440"
+        ],
+        "mentions": [
+          {
+            "id": "7925",
+            "name": "广州十三行博物馆",
+            "quote": "免费进入，里面藏品非常精美",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699272eb000000000c036991"
+          },
+          {
+            "id": "7739",
+            "name": "广州十三行博物馆",
+            "quote": "看十三行博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/683c3cfc00000000220375f4"
+          },
+          {
+            "id": "7225",
+            "name": "广州十三行博物馆",
+            "quote": "展品震撼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68aed76e000000001b01d8e8"
+          },
+          {
+            "id": "7018",
+            "name": "广州十三行博物馆",
+            "quote": "展品都绝美",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e9c5170000000004005b83"
+          },
+          {
+            "id": "7257",
+            "name": "十三行博物馆",
+            "quote": "十三行博物馆一定要去，小而精",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695323a00000000022008edc"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3311",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 23.108918,
+        "lng": 113.250915,
+        "address": "广东省广州市荔湾区广州十三行博物馆",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-025",
+    "city": "广州",
+    "entityId": "9f61bc62b4529078b1483c0f8f147fca",
+    "mergeEntityIds": [
+      "31ba8368998d4022d89ba2b7c56317a1"
+    ],
+    "canonicalName": "广州市文化馆",
+    "expectedRevisions": {
+      "31ba8368998d4022d89ba2b7c56317a1": 1,
+      "9f61bc62b4529078b1483c0f8f147fca": 1
+    },
+    "overrides": {
+      "lat": 23.075673,
+      "lng": 113.329381,
+      "address": "广东省广州市海珠区广州市文化馆",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          264
+        ],
+        "conclusion": "两种称呼原文均为广州新文化馆古典园林馆舍和艺术展览，保留海珠馆址，剔除广州市中心误定位。",
+        "sourcePlaceIds": [
+          "3320",
+          "3462"
+        ],
+        "mentions": [
+          {
+            "id": "7389",
+            "name": "广州文化馆",
+            "quote": "古色古香，彷如天上宫阙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6954eb80000000001e0361da"
+          },
+          {
+            "id": "7035",
+            "name": "广州文化馆",
+            "quote": "广州文化馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695862a90000000022020a30"
+          },
+          {
+            "id": "8056",
+            "name": "广州市文化馆",
+            "quote": "可以去广州市文化馆看珐琅艺术",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4a7cf000000001802c890"
+          },
+          {
+            "id": "7299",
+            "name": "广州市文化馆",
+            "quote": "p5-6广州文化馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68ddffbf0000000003011389"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3462",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 23.075673,
+        "lng": 113.329381,
+        "address": "广东省广州市海珠区广州市文化馆",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-026",
+    "city": "广州",
+    "entityId": "0b1368d0fb11b937df91a924e0e8e2a3",
+    "mergeEntityIds": [
+      "9ed6a0987c31e655b5984808a12d5e37"
+    ],
+    "canonicalName": "华南国家植物园",
+    "expectedRevisions": {
+      "0b1368d0fb11b937df91a924e0e8e2a3": 1,
+      "9ed6a0987c31e655b5984808a12d5e37": 1
+    },
+    "overrides": {
+      "lat": 23.181902,
+      "lng": 113.367139,
+      "address": "广东省广州市天河区华南国家植物园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          278
+        ],
+        "conclusion": "同一广州华南植物园，原文均为植物园绿植与热带雨林游览，保留天河园址。",
+        "sourcePlaceIds": [
+          "3426",
+          "3699"
+        ],
+        "mentions": [
+          {
+            "id": "7202",
+            "name": "华南国家植物园",
+            "quote": "20块就能带娃闯进热带雨林",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6932ad8d000000001e034959"
+          },
+          {
+            "id": "7745",
+            "name": "华南植物园",
+            "quote": "阴雨天的植物园被湿润的空气和满屏的绿意弥漫",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c9eeef0000000021011985"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3426",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 23.181902,
+        "lng": 113.367139,
+        "address": "广东省广州市天河区华南国家植物园",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-027",
+    "city": "成都",
+    "entityId": "3cd3a38a5562fab49fb4798e691562df",
+    "mergeEntityIds": [
+      "c028a4a6af9042edaaf7df3e5bfc0158",
+      "effaae5fb739b94e03b73d65d6fd2fbe",
+      "197a967aba804396cb5695eb3abd846b",
+      "bf3d9894da5d48ab6da9e275e392cbd6",
+      "7ce09c718b527295714e12060fcefd34",
+      "bb4aede3012361a0b1c001c2e8801937"
+    ],
+    "canonicalName": "成都IFS国金中心",
+    "expectedRevisions": {
+      "3cd3a38a5562fab49fb4798e691562df": 1,
+      "c028a4a6af9042edaaf7df3e5bfc0158": 1,
+      "effaae5fb739b94e03b73d65d6fd2fbe": 1,
+      "197a967aba804396cb5695eb3abd846b": 1,
+      "bf3d9894da5d48ab6da9e275e392cbd6": 1,
+      "7ce09c718b527295714e12060fcefd34": 1,
+      "bb4aede3012361a0b1c001c2e8801937": 1
+    },
+    "overrides": {
+      "lat": 30.655082,
+      "lng": 104.081387,
+      "address": "四川省成都市锦江区成都ifs号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          301,
+          302,
+          308,
+          310,
+          316,
+          317
+        ],
+        "conclusion": "全部源提及位于春熙路—IFS—太古里路线，含独特爬墙熊猫描述；保留锦江成都IFS主体定位，纠正城市中心和望平街误点。",
+        "sourcePlaceIds": [
+          "1918",
+          "1698",
+          "1733",
+          "1780",
+          "1759",
+          "1851",
+          "2015"
+        ],
+        "mentions": [
+          {
+            "id": "4217",
+            "name": "IFS国金中心",
+            "quote": "IFS国金中心→太古里",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b"
+          },
+          {
+            "id": "3918",
+            "name": "IFS国金中心",
+            "quote": "IFS国金中心",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69550945000000001f007c88"
+          },
+          {
+            "id": "3511",
+            "name": "ifs国金",
+            "quote": "春熙路→ifs国金",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699f978a000000001a02e2b4"
+          },
+          {
+            "id": "3809",
+            "name": "IFS国金",
+            "quote": "春熙路→IFS国金→太古里",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3ca1e6000000000f0168ab"
+          },
+          {
+            "id": "3798",
+            "name": "IFS国金",
+            "quote": "对面拍❤️成都和熊猫爬墙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9119290000000006011ec8"
+          },
+          {
+            "id": "3552",
+            "name": "IFS国金",
+            "quote": "熊猫爬墙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5736e70000000008025cf0"
+          },
+          {
+            "id": "3637",
+            "name": "ifs",
+            "quote": "ifs",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a159c52000000003501ffec"
+          },
+          {
+            "id": "3983",
+            "name": "IFS",
+            "quote": "IFS",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a58f4e6000000001c012192"
+          },
+          {
+            "id": "3594",
+            "name": "IFS",
+            "quote": "春熙路—IFS—太古里",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9b9035000000002802c083"
+          },
+          {
+            "id": "4011",
+            "name": "IFS国际金融中心",
+            "quote": "打卡网红爬楼大熊猫",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8da081000000001f003dfc"
+          },
+          {
+            "id": "3972",
+            "name": "IFS国际金融中心",
+            "quote": "早十点入场免排队",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7932a0000000002c006928"
+          },
+          {
+            "id": "3782",
+            "name": "IFS国际金融中心",
+            "quote": "跟各种可爱大熊猫🐼合影",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2cd468000000000702209f"
+          },
+          {
+            "id": "4153",
+            "name": "成都 IFS 国金中心",
+            "quote": "顺路可逛（8.5 分左右）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aabe61b000000002a027b1f"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1918",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 30.655082,
+        "lng": 104.081387,
+        "address": "四川省成都市锦江区成都ifs号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-028",
+    "city": "成都",
+    "entityId": "971539fddb70ccb08d4e1acee1ee3f8a",
+    "mergeEntityIds": [
+      "e1da73dd54cacb9b7e612022726b2f05"
+    ],
+    "canonicalName": "四川博物院",
+    "expectedRevisions": {
+      "971539fddb70ccb08d4e1acee1ee3f8a": 1,
+      "e1da73dd54cacb9b7e612022726b2f05": 1
+    },
+    "overrides": {
+      "lat": 30.660792,
+      "lng": 104.034127,
+      "address": "青华路5号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          314
+        ],
+        "conclusion": "四川博物馆是四川博物院历史名称，原文区分川博与成都博物馆；保留青华路5号馆址。",
+        "sourcePlaceIds": [
+          "1950",
+          "1794"
+        ],
+        "mentions": [
+          {
+            "id": "4080",
+            "name": "四川博物院",
+            "quote": "四川博物院在青羊区，提前7天放票",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2"
+          },
+          {
+            "id": "4052",
+            "name": "四川博物院",
+            "quote": "很值得去看看！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa9e715000000002601fecb"
+          },
+          {
+            "id": "4001",
+            "name": "四川博物院",
+            "quote": "免费，但需要预约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a32209b0000000016025fda"
+          },
+          {
+            "id": "3682",
+            "name": "四川博物馆",
+            "quote": "场馆老旧交通也没成博方便",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a75e3790000000022012fa0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1950",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 30.660792,
+        "lng": 104.034127,
+        "address": "青华路5号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/四川博物院",
+        "file": "all-cities/chengdu-museum-fetch.json",
+        "sha256": "3656469ecb66b5e38f9b37f777c3950381aa6f246bd47ddc099e80479da5ea7d"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-029",
+    "city": "杭州",
+    "entityId": "e20edd33a6085a9108fa1a9d29bfbf08",
+    "mergeEntityIds": [
+      "5d551348d474438ee491d44abf1a7fb4"
+    ],
+    "canonicalName": "法喜寺",
+    "expectedRevisions": {
+      "5d551348d474438ee491d44abf1a7fb4": 1,
+      "e20edd33a6085a9108fa1a9d29bfbf08": 1
+    },
+    "overrides": {
+      "lat": 30.227748,
+      "lng": 120.092258,
+      "address": "天竺路239号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          321
+        ],
+        "conclusion": "同为杭州天竺路239号法喜寺，讲寺称呼不改变主体；保留寺院主记录。",
+        "sourcePlaceIds": [
+          "4530",
+          "4008"
+        ],
+        "mentions": [
+          {
+            "id": "9503",
+            "name": "法喜讲寺",
+            "quote": "法喜讲寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1fdc2000000003100e1ca"
+          },
+          {
+            "id": "9875",
+            "name": "法喜寺",
+            "quote": "法喜寺→灵隐寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa836f000000000d027899"
+          },
+          {
+            "id": "9820",
+            "name": "法喜寺",
+            "quote": "白墙黛瓦，香火鼎盛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6984628e0000000022031562"
+          },
+          {
+            "id": "9797",
+            "name": "法喜寺",
+            "quote": "下山可选法喜寺或者云栖竹径",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a68173000000002203bfe2"
+          },
+          {
+            "id": "9647",
+            "name": "法喜寺",
+            "quote": "提前予约，没予约可能进不去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69cf88d3000000001a032fe9"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4008",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 30.227748,
+        "lng": 120.092258,
+        "address": "天竺路239号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/法喜寺",
+        "file": "all-cities/hangzhou-faxi-fetch.json",
+        "sha256": "ac7ce897be44a246c10d590e63230ae6c71b0fa13cb5049cb5baf44d0eba0dc2"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-030",
+    "city": "杭州",
+    "entityId": "981dd00c9816e3af57569ceba3229a7f",
+    "mergeEntityIds": [
+      "3f3a0bc0ff6a23484c8bb499ba4a915d"
+    ],
+    "canonicalName": "中国茶叶博物馆双峰馆区",
+    "expectedRevisions": {
+      "3f3a0bc0ff6a23484c8bb499ba4a915d": 1,
+      "981dd00c9816e3af57569ceba3229a7f": 1
+    },
+    "overrides": {
+      "lat": 30.232323,
+      "lng": 120.121145,
+      "address": "龙井路88号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          333
+        ],
+        "conclusion": "馆区明确为双峰而非龙井馆区，两源均定位龙井路88号；名称只差馆区称谓。",
+        "sourcePlaceIds": [
+          "4434",
+          "4091"
+        ],
+        "mentions": [
+          {
+            "id": "9233",
+            "name": "中国茶叶博物馆双峰馆",
+            "quote": "一品亭的溪边超好拍",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3e09f000000002b0121c2"
+          },
+          {
+            "id": "8439",
+            "name": "中国茶叶博物馆双峰馆区",
+            "quote": "位于双峰馆区附近，可问下保安",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6987e11d000000000b01267e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4091",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 30.232323,
+        "lng": 120.121145,
+        "address": "龙井路88号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-031",
+    "city": "杭州",
+    "entityId": "7b7821c982ed80a6b8fd3ef6651b5f32",
+    "mergeEntityIds": [
+      "2302afa5772b0fdb025e924434a4cf42"
+    ],
+    "canonicalName": "龙翔桥地铁站",
+    "expectedRevisions": {
+      "2302afa5772b0fdb025e924434a4cf42": 1,
+      "7b7821c982ed80a6b8fd3ef6651b5f32": 1
+    },
+    "overrides": {
+      "lat": 30.255206,
+      "lng": 120.163647,
+      "address": "浙江省杭州市上城区湖滨街道",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          349
+        ],
+        "conclusion": "原文均明确杭州龙翔桥地铁站拥挤提醒，不将周边商圈或独立出口并入。",
+        "sourcePlaceIds": [
+          "4221",
+          "4518"
+        ],
+        "mentions": [
+          {
+            "id": "9861",
+            "name": "龙翔桥站",
+            "quote": "西湖别只冲龙翔桥C口！🚇假期只进不出",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa836f000000000d027899"
+          },
+          {
+            "id": "8689",
+            "name": "龙翔桥站",
+            "quote": "不要去龙翔桥站挤",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69fb48f2000000003701c804"
+          },
+          {
+            "id": "9440",
+            "name": "龙翔桥地铁站",
+            "quote": "尽量错过，人真的多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bb158000000001d039d38"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4518",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 30.255206,
+        "lng": 120.163647,
+        "address": "浙江省杭州市上城区湖滨街道",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-032",
+    "city": "济南",
+    "entityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+    "mergeEntityIds": [
+      "1a060853b777277a6b313243f7b13d0f"
+    ],
+    "canonicalName": "山东博物馆",
+    "expectedRevisions": {
+      "1a060853b777277a6b313243f7b13d0f": 1,
+      "6ed737543bd4e4f550f0fd357c9e8c71": 1
+    },
+    "overrides": {
+      "lat": 36.658602,
+      "lng": 117.095698,
+      "address": "山东省济南市历下区姚家街道经十路11899号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          367
+        ],
+        "conclusion": "山东省博物馆为旧称；原文与山东美术馆同游，保留经十路11899号新馆，剔除错误远郊坐标。",
+        "sourcePlaceIds": [
+          "5370",
+          "5355"
+        ],
+        "mentions": [
+          {
+            "id": "12750",
+            "name": "山东省博物馆",
+            "quote": "去山东省美术馆和山东省博物馆记得提前yue!",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+          },
+          {
+            "id": "12683",
+            "name": "山东省博物馆",
+            "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4"
+          },
+          {
+            "id": "11497",
+            "name": "山东省博物馆",
+            "quote": "去山东省美术馆和山东省博物馆记得提前yue!",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+          },
+          {
+            "id": "11417",
+            "name": "山东省博物馆",
+            "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4"
+          },
+          {
+            "id": "12876",
+            "name": "山东博物馆",
+            "quote": "馆藏文物丰富，商周、汉魏等历代珍品",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19"
+          },
+          {
+            "id": "12864",
+            "name": "山东博物馆",
+            "quote": "山东省博物馆/美术馆周一闭馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a"
+          },
+          {
+            "id": "12852",
+            "name": "山东博物馆",
+            "quote": "亚醜钺、鲁王之宝都是必看的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e"
+          },
+          {
+            "id": "12822",
+            "name": "山东博物馆",
+            "quote": "两个就隔一条街 非常之近",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5355",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 36.658602,
+        "lng": 117.095698,
+        "address": "山东省济南市历下区姚家街道经十路11899号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/山东博物馆",
+        "file": "all-cities/jinan-museum-fetch.json",
+        "sha256": "2696c2f738ca0ed37475ade2c7edf8e8076f529cac141ff6716acc53d343418d"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-033",
+    "city": "济南",
+    "entityId": "0f3bfc53c2a77e85d2c1699c7c90fd10",
+    "mergeEntityIds": [
+      "ce78d90e345061b913c30ce1b4296d2f"
+    ],
+    "canonicalName": "山东美术馆",
+    "expectedRevisions": {
+      "0f3bfc53c2a77e85d2c1699c7c90fd10": 1,
+      "ce78d90e345061b913c30ce1b4296d2f": 1
+    },
+    "overrides": {
+      "lat": 36.657688,
+      "lng": 117.097928,
+      "address": "山东省济南市历下区姚家街道经十路11777号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          368
+        ],
+        "conclusion": "原文均与现山东博物馆相邻参观，保留经十路11777号新馆，另一别名误到泉城路的坐标不沿用。",
+        "sourcePlaceIds": [
+          "5356",
+          "5369"
+        ],
+        "mentions": [
+          {
+            "id": "12877",
+            "name": "山东美术馆",
+            "quote": "馆内有绘画、雕塑、现代艺术等作品",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19"
+          },
+          {
+            "id": "12865",
+            "name": "山东美术馆",
+            "quote": "山东省博物馆/美术馆周一闭馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a"
+          },
+          {
+            "id": "12823",
+            "name": "山东美术馆",
+            "quote": "两个就隔一条街 非常之近",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4"
+          },
+          {
+            "id": "12805",
+            "name": "山东美术馆",
+            "quote": "文艺青年必打卡，定期展出优质美术作品",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f"
+          },
+          {
+            "id": "12749",
+            "name": "山东省美术馆",
+            "quote": "去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+          },
+          {
+            "id": "11496",
+            "name": "山东省美术馆",
+            "quote": "去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5356",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 36.657688,
+        "lng": 117.097928,
+        "address": "山东省济南市历下区姚家街道经十路11777号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-034",
+    "city": "西安",
+    "entityId": "1caeeb32cab7efd6b09b7f72772859df",
+    "mergeEntityIds": [
+      "ae35c0c84935fb605b72175b270e858a",
+      "ce86c5e4141973fe7b58c5e32c333495"
+    ],
+    "canonicalName": "唐大慈恩寺遗址公园",
+    "expectedRevisions": {
+      "1caeeb32cab7efd6b09b7f72772859df": 1,
+      "ae35c0c84935fb605b72175b270e858a": 1,
+      "ce86c5e4141973fe7b58c5e32c333495": 1
+    },
+    "overrides": {
+      "lat": 34.217641,
+      "lng": 108.966368,
+      "address": "陕西省西安市雁塔区大雁塔街道大雁塔环塔路大唐博相府酒店旁边",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          385,
+          386,
+          415
+        ],
+        "conclusion": "三种称呼原文均描述遗址公园如来佛与大雁塔同框，保留环塔路主体；不并入大慈恩寺或大雁塔。",
+        "sourcePlaceIds": [
+          "5524",
+          "5756",
+          "5703"
+        ],
+        "mentions": [
+          {
+            "id": "12164",
+            "name": "唐大慈恩寺遗址公园",
+            "quote": "一佛一塔一俗人，北门进去最近",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4a37b00000000011011663"
+          },
+          {
+            "id": "12080",
+            "name": "唐大慈恩寺遗址公园",
+            "quote": "佛像拈花微笑，古塔遥立身后，禅意瞬间拉满",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695a765a000000001e00d1cc"
+          },
+          {
+            "id": "12502",
+            "name": "大慈恩寺遗址公园",
+            "quote": "可以拍大佛与大雁塔同框照",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693abb9f000000001e03b1e7"
+          },
+          {
+            "id": "12434",
+            "name": "大慈恩寺遗址公园",
+            "quote": "银杏配柿子",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab12fde000000003302d233"
+          },
+          {
+            "id": "12193",
+            "name": "大慈恩寺遗址公园",
+            "quote": "大慈恩寺遗址公园（如来佛+大雁塔）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6898252e00000000220232e5"
+          },
+          {
+            "id": "12105",
+            "name": "大慈恩寺遗址公园",
+            "quote": "可以拍大佛与大雁塔同框照",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693abb9f000000001e03b1e7"
+          },
+          {
+            "id": "12298",
+            "name": "大唐慈恩寺遗址公园",
+            "quote": "大唐慈恩寺遗址公园 · 如来佛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68d7dac0000000001101fcc7"
+          },
+          {
+            "id": "11891",
+            "name": "大唐慈恩寺遗址公园",
+            "quote": "大唐慈恩寺遗址公园 · 如来佛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6855452d000000002203fbd2"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5524",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 34.217641,
+        "lng": 108.966368,
+        "address": "陕西省西安市雁塔区大雁塔街道大雁塔环塔路大唐博相府酒店旁边",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-035",
+    "city": "西安",
+    "entityId": "cb3d6b27b71703aa54065b6d2102eaa1",
+    "mergeEntityIds": [
+      "862f7b4e3e497839bea5ffe13bb59a3a"
+    ],
+    "canonicalName": "西安碑林博物馆",
+    "expectedRevisions": {
+      "862f7b4e3e497839bea5ffe13bb59a3a": 1,
+      "cb3d6b27b71703aa54065b6d2102eaa1": 1
+    },
+    "overrides": {
+      "lat": 34.253808,
+      "lng": 108.952834,
+      "address": "陕西省西安市碑林区三学街15号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          388
+        ],
+        "conclusion": "同为三学街15号馆舍，原文参观石刻碑刻和书法，地址、定位一致。",
+        "sourcePlaceIds": [
+          "5616",
+          "5531"
+        ],
+        "mentions": [
+          {
+            "id": "12265",
+            "name": "碑林博物馆",
+            "quote": "书法爱好者推荐去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a100abe000000000702bf19"
+          },
+          {
+            "id": "11982",
+            "name": "碑林博物馆",
+            "quote": "永宁门-书院门-碑林博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696907ae000000000a030596"
+          },
+          {
+            "id": "11901",
+            "name": "碑林博物馆",
+            "quote": "观藏了历代碑刻、墓志、石刻造像等文物",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f36c25000000003601cca8"
+          },
+          {
+            "id": "11882",
+            "name": "碑林博物馆",
+            "quote": "书法爱好者推荐去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a100abe000000000702bf19"
+          },
+          {
+            "id": "12513",
+            "name": "西安碑林博物馆",
+            "quote": "西安精华景点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6abe0fc0000000001b021f76"
+          },
+          {
+            "id": "12116",
+            "name": "西安碑林博物馆",
+            "quote": "碑林博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6abe0fc0000000001b021f76"
+          },
+          {
+            "id": "12093",
+            "name": "西安碑林博物馆",
+            "quote": "陕历博、碑林、小雁塔、书院门读懂千年文脉",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5efa350000000006010663"
+          },
+          {
+            "id": "12072",
+            "name": "西安碑林博物馆",
+            "quote": "看石刻书法，大人还是可以去看看的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ce71fa000000002200edb6"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5531",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 34.253808,
+        "lng": 108.952834,
+        "address": "陕西省西安市碑林区三学街15号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-036",
+    "city": "西安",
+    "entityId": "f2142e8e64416668e8e7284c6133d03f",
+    "mergeEntityIds": [
+      "cd2b2b022980abd7a8b0a8ee2328eabd"
+    ],
+    "canonicalName": "大明宫国家遗址公园",
+    "expectedRevisions": {
+      "cd2b2b022980abd7a8b0a8ee2328eabd": 1,
+      "f2142e8e64416668e8e7284c6133d03f": 1
+    },
+    "overrides": {
+      "lat": 34.298645,
+      "lng": 108.963356,
+      "address": "陕西省西安市未央区大明宫街道自强东路585号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          399
+        ],
+        "conclusion": "两条均指大明宫宫殿遗址及园区游览，保留自强东路585号整体公园定位。",
+        "sourcePlaceIds": [
+          "5810",
+          "5564"
+        ],
+        "mentions": [
+          {
+            "id": "12538",
+            "name": "大明宫遗址公园",
+            "quote": "夯土宫殿遗址+银杏大道，适合骑行",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab24043000000003501228e"
+          },
+          {
+            "id": "11815",
+            "name": "大明宫国家遗址公园",
+            "quote": "大明宫国家遗址公园（60r）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7868ce000000002c007393"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5564",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 34.298645,
+        "lng": 108.963356,
+        "address": "陕西省西安市未央区大明宫街道自强东路585号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-037",
+    "city": "西安",
+    "entityId": "f54a5c3ac9f95600f01e2c41b0dc5860",
+    "mergeEntityIds": [
+      "5aeab900f63238edb4b58511b26d43d0"
+    ],
+    "canonicalName": "兴庆宫公园",
+    "expectedRevisions": {
+      "5aeab900f63238edb4b58511b26d43d0": 1,
+      "f54a5c3ac9f95600f01e2c41b0dc5860": 1
+    },
+    "overrides": {
+      "lat": 34.251317,
+      "lng": 108.983783,
+      "address": "陕西省西安市碑林区咸宁西路55号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          402
+        ],
+        "conclusion": "兴庆宫源提及明确沉香亭、迎春桥等公园游览项目，保留咸宁西路55号公园，剔除景观工程公司误定位。",
+        "sourcePlaceIds": [
+          "5585",
+          "5809"
+        ],
+        "mentions": [
+          {
+            "id": "12317",
+            "name": "兴庆宫",
+            "quote": "兴庆宫拍妆造（沉香亭｜迎春桥）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f3293d000000002301fa8a"
+          },
+          {
+            "id": "12041",
+            "name": "兴庆宫",
+            "quote": "兴庆宫拍照",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a05a0690000000036003b26"
+          },
+          {
+            "id": "12536",
+            "name": "兴庆宫公园",
+            "quote": "唐代皇家园林，满园桂香",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab24043000000003501228e"
+          },
+          {
+            "id": "12266",
+            "name": "兴庆宫公园",
+            "quote": "除了拍照打卡，没啥东西，可以不去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a100abe000000000702bf19"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5809",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 34.251317,
+        "lng": 108.983783,
+        "address": "陕西省西安市碑林区咸宁西路55号",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-038",
+    "city": "重庆",
+    "entityId": "b3edf53d263d5c6318d5a4734eed1117",
+    "mergeEntityIds": [
+      "d1ade0437dd5011e3426459a9cdae1b6",
+      "d518da62265e6c80bc8772f69ab034e7"
+    ],
+    "canonicalName": "重庆人民大礼堂",
+    "expectedRevisions": {
+      "d1ade0437dd5011e3426459a9cdae1b6": 1,
+      "d518da62265e6c80bc8772f69ab034e7": 1,
+      "b3edf53d263d5c6318d5a4734eed1117": 1
+    },
+    "overrides": {
+      "lat": 29.561674,
+      "lng": 106.553277,
+      "address": "重庆市人民路173号(曾家岩地铁站3号口步行240米)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          436,
+          445
+        ],
+        "conclusion": "均为人民路173号红墙蓝瓦礼堂及其背面取景，保留礼堂主体记录。",
+        "sourcePlaceIds": [
+          "36",
+          "195",
+          "63"
+        ],
+        "mentions": [
+          {
+            "id": "1180",
+            "name": "重庆大礼堂",
+            "quote": "看到大礼堂背面",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68fb4b0f000000000703a8ef"
+          },
+          {
+            "id": "628",
+            "name": "重庆大礼堂",
+            "quote": "重庆大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "320",
+            "name": "重庆大礼堂",
+            "quote": "重庆大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "1730",
+            "name": "重庆人民大礼堂",
+            "quote": "重庆人民大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89abc800000000140282f9"
+          },
+          {
+            "id": "1661",
+            "name": "重庆人民大礼堂",
+            "quote": "重庆人民大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1d28450000000036033447"
+          },
+          {
+            "id": "1643",
+            "name": "重庆人民大礼堂",
+            "quote": "重庆人民大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a7d8f900000000260316f5"
+          },
+          {
+            "id": "1602",
+            "name": "重庆人民大礼堂",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1719",
+            "name": "人民大礼堂",
+            "quote": "人民大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d45c1000000002201cd54"
+          },
+          {
+            "id": "1582",
+            "name": "人民大礼堂",
+            "quote": "经典机位必打卡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e650fd0000000005031fec"
+          },
+          {
+            "id": "1364",
+            "name": "人民大礼堂",
+            "quote": "能近距离的看到大礼堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa12ffb000000001103190d"
+          },
+          {
+            "id": "1351",
+            "name": "人民大礼堂",
+            "quote": "重庆小天坛，红墙蓝瓦对称美学",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ecdac500000000350261bf"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "63",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 29.561674,
+        "lng": 106.553277,
+        "address": "重庆市人民路173号(曾家岩地铁站3号口步行240米)",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-039",
+    "city": "重庆",
+    "entityId": "d3aca4046c24110ffe37d243ef9f128e",
+    "mergeEntityIds": [
+      "4739ef5ae657933f133270599564cdd9",
+      "8c1e94da7b93a9ba0ce94eb6ad31ac05"
+    ],
+    "canonicalName": "重庆中国三峡博物馆",
+    "expectedRevisions": {
+      "4739ef5ae657933f133270599564cdd9": 1,
+      "d3aca4046c24110ffe37d243ef9f128e": 1,
+      "8c1e94da7b93a9ba0ce94eb6ad31ac05": 1
+    },
+    "overrides": {
+      "lat": 29.562014,
+      "lng": 106.550513,
+      "address": "重庆市人民路236号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          437,
+          438
+        ],
+        "conclusion": "三峡博物馆的简称与山/三误字，原文关联渝中礼堂线路和博物馆参观；保留人民路236号，剔除万州误定位。",
+        "sourcePlaceIds": [
+          "624",
+          "37",
+          "161"
+        ],
+        "mentions": [
+          {
+            "id": "1731",
+            "name": "山峡博物馆",
+            "quote": "山峡博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89abc800000000140282f9"
+          },
+          {
+            "id": "1793",
+            "name": "三峡博物馆",
+            "quote": "李子坝→三峡博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6864db9f000000001002422b"
+          },
+          {
+            "id": "1583",
+            "name": "三峡博物馆",
+            "quote": "在对面三峡博物馆门口拍全景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e650fd0000000005031fec"
+          },
+          {
+            "id": "1568",
+            "name": "三峡博物馆",
+            "quote": "3号口出去就是三峡博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a60946b000000000f032aab"
+          },
+          {
+            "id": "1353",
+            "name": "三峡博物馆",
+            "quote": "免费需预约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ecdac500000000350261bf"
+          },
+          {
+            "id": "1058",
+            "name": "重庆三峡博物馆",
+            "quote": "满意到不行",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5e1041000000001d00d204"
+          },
+          {
+            "id": "706",
+            "name": "重庆三峡博物馆",
+            "quote": "重庆三峡博物馆、四川美术学院美术馆周一闭馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6863a9e50000000013010586"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "37",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 29.562014,
+        "lng": 106.550513,
+        "address": "重庆市人民路236号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/重庆中国三峡博物馆",
+        "file": "all-cities/chongqing-museum-fetch.json",
+        "sha256": "72cb1ebc62df07477461a57ae50da0748e0b92cf483844367bb55f9a1f985e76"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-040",
+    "city": "重庆",
+    "entityId": "81cea05008b5c8f1ffb6f3503e8148ce",
+    "mergeEntityIds": [
+      "13074b860cd4c4ed3f2133c137d9ed25"
+    ],
+    "canonicalName": "重庆光环购物公园",
+    "expectedRevisions": {
+      "13074b860cd4c4ed3f2133c137d9ed25": 1,
+      "81cea05008b5c8f1ffb6f3503e8148ce": 1
+    },
+    "overrides": {
+      "lat": 29.650527,
+      "lng": 106.529275,
+      "address": "重庆市湖彩路118号(重光地铁站1号口步行)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          440
+        ],
+        "conclusion": "湖彩路118号同一商业体，原文均提及沐光森林，源地址和定位完全相同。",
+        "sourcePlaceIds": [
+          "40",
+          "362"
+        ],
+        "mentions": [
+          {
+            "id": "1190",
+            "name": "重庆光环购物公园",
+            "quote": "重庆光环购物公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68fb4b0f000000000703a8ef"
+          },
+          {
+            "id": "634",
+            "name": "重庆光环购物公园",
+            "quote": "沐光森林",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "326",
+            "name": "重庆光环购物公园",
+            "quote": "沐光森林",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "1651",
+            "name": "光环购物公园",
+            "quote": "光环购物公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a7d8f900000000260316f5"
+          },
+          {
+            "id": "1051",
+            "name": "光环购物公园",
+            "quote": "新加坡同款沐光森林",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a900f24000000002501ae63"
+          },
+          {
+            "id": "1015",
+            "name": "光环购物公园",
+            "quote": "光环购物公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6913fad0000000000703b674"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "362",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 29.650527,
+        "lng": 106.529275,
+        "address": "重庆市湖彩路118号(重光地铁站1号口步行)",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-01-041",
+    "city": "重庆",
+    "entityId": "a46fb5bc9681e228e8a48155d15a3ba6",
+    "mergeEntityIds": [
+      "eef8d0e520a7a94adc66645bae283221"
+    ],
+    "canonicalName": "T3航站楼7号出口",
+    "expectedRevisions": {
+      "a46fb5bc9681e228e8a48155d15a3ba6": 1,
+      "eef8d0e520a7a94adc66645bae283221": 1
+    },
+    "overrides": {
+      "lat": 29.708542,
+      "lng": 106.655482,
+      "address": "重庆市机场航站楼免费摆渡车",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          484
+        ],
+        "conclusion": "两条均为江北机场T3航站楼7号出口取景机位，航站楼和出口号相同，大小写不改变主体。",
+        "sourcePlaceIds": [
+          "639",
+          "589"
+        ],
+        "mentions": [
+          {
+            "id": "1759",
+            "name": "T3航站楼7号出口",
+            "quote": "重庆法拉利",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/684684f0000000002301ce0b"
+          },
+          {
+            "id": "1665",
+            "name": "t3航站楼7号出口",
+            "quote": "t3航站楼7号出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1d28450000000036033447"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "639",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "lat": 29.708542,
+        "lng": 106.655482,
+        "address": "重庆市机场航站楼免费摆渡车",
+        "geoStatus": "reviewed_source"
+      }
+    ]
+  }
+]

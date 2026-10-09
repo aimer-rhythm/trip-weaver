@@ -1,0 +1,92 @@
+{
+  "city": "济南",
+  "batch": 49,
+  "roots": 1,
+  "sources": 2,
+  "mentions": 56,
+  "fullNotes": 45,
+  "previousReview": "priority-cities/济南/shared-routes-source-review-01.json",
+  "priorWholeScopeReviewPreserved": true,
+  "allOriginalFingerprintsUnchanged": true,
+  "changedNotesReadInFull": [
+    2546,
+    2837
+  ],
+  "confirmed": 46,
+  "pending": 10,
+  "pendingResolved": [
+    11369,
+    12610
+  ],
+  "unchangedAssignments": 54,
+  "partialHighlightExclusionsAdded": 2,
+  "descriptionFieldExclusionsAdded": 2,
+  "rows": [
+    {
+      "mentionId": 11369,
+      "noteId": 2546,
+      "inputHash": "b7c1abde7bdf2d96c45b5ba3671fa99bfdaa052346f9be0917597b1ac026672d",
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "quote": "⒈曲水亭街：这里小桥流水、青石板路，比芙蓉街更有老济南韵味，起凤桥是拍“家家泉水，户户垂杨”的绝佳点位。",
+      "factExclusions": {
+        "reason": {
+          "reason": "subject_mismatch",
+          "quote": "⒈曲水亭街：这里小桥流水、青石板路，比芙蓉街更有老济南韵味，起凤桥是拍“家家泉水，户户垂杨”的绝佳点位。"
+        },
+        "place_content": {
+          "reason": "subject_mismatch",
+          "quote": "⒈曲水亭街：这里小桥流水、青石板路，比芙蓉街更有老济南韵味，起凤桥是拍“家家泉水，户户垂杨”的绝佳点位。",
+          "highlightIndexes": [
+            1
+          ]
+        }
+      },
+      "retainedEvidenceText": "比芙蓉街更有老济南韵味",
+      "retainedHighlight": {
+        "text": "小桥流水、青石板路，有老济南韵味",
+        "quote": "这里小桥流水、青石板路，比芙蓉街更有老济南韵味"
+      },
+      "reason": "独立曲水亭街条目明确街道风貌；起凤桥为单独机位，排除混合reason与看点1，保留街道看点0及有效evidence_text。",
+      "status": "reviewed_target"
+    },
+    {
+      "mentionId": 12610,
+      "noteId": 2546,
+      "inputHash": "9b22f4df731ac96d845fdb3e19d21b40107fa5a7310fa79f2a8c7f1c30155d4b",
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "quote": "⒈曲水亭街：这里小桥流水、青石板路，比芙蓉街更有老济南韵味，起凤桥是拍“家家泉水，户户垂杨”的绝佳点位。",
+      "factExclusions": {
+        "reason": {
+          "reason": "subject_mismatch",
+          "quote": "⒈曲水亭街：这里小桥流水、青石板路，比芙蓉街更有老济南韵味，起凤桥是拍“家家泉水，户户垂杨”的绝佳点位。"
+        },
+        "place_content": {
+          "reason": "subject_mismatch",
+          "quote": "⒈曲水亭街：这里小桥流水、青石板路，比芙蓉街更有老济南韵味，起凤桥是拍“家家泉水，户户垂杨”的绝佳点位。",
+          "highlightIndexes": [
+            1
+          ]
+        }
+      },
+      "retainedEvidenceText": "比芙蓉街更有老济南韵味",
+      "retainedHighlight": {
+        "text": "小桥流水、青石板路，有老济南韵味。",
+        "quote": "这里小桥流水、青石板路，比芙蓉街更有老济南韵味"
+      },
+      "reason": "独立曲水亭街条目明确街道风貌；起凤桥为单独机位，排除混合reason与看点1，保留街道看点0及有效evidence_text。",
+      "status": "reviewed_target"
+    }
+  ],
+  "retainedPendingFinding": {
+    "entityId": "b58d15060ff3828b071f950487e487db",
+    "mentionId": 12946,
+    "noteId": 2837,
+    "quote": "6️⃣曲水亭街、百花洲（p17）\n▪️这两个地方也是紧邻着，有很多文创小店、临水茶座。泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好🌿",
+    "reason": "双主体共用描述不能分辨哪些小店或茶座属于百花洲；仅能分看点不足以确认事实归属，保持原待审。",
+    "applied": false
+  },
+  "locationStatus": "existing_points_preserved_not_newly_verified",
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

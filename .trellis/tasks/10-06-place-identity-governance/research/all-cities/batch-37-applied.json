@@ -1,0 +1,311 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "065e077002130047feaadff4f607b480",
+          "city": "济南",
+          "canonical_name": "起凤泉",
+          "primary_place_id": 5988,
+          "aliases": [
+            "起凤泉"
+          ],
+          "legacy_ids": [
+            "065e077002130047feaadff4f607b480"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_spring_activity_category",
+              "file": "priority-cities/济南/spring-category-review-01.json",
+              "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+              "sourcePlaceId": 5988,
+              "noteId": 2837,
+              "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）",
+              "mentionIds": [
+                12943
+              ],
+              "conclusion": "泉水citywalk全文明确街巷泉水为游览对象；保留起凤泉独立主体与唯一来源，不认领起凤桥或院内商户。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5988,
+          "entity_id": "065e077002130047feaadff4f607b480"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "06ecc5ddb78dc622997f9947a414e77c",
+          "city": "济南",
+          "canonical_name": "腾蛟泉",
+          "primary_place_id": 5948,
+          "aliases": [
+            "腾蛟泉"
+          ],
+          "legacy_ids": [
+            "06ecc5ddb78dc622997f9947a414e77c"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_spring_activity_category",
+              "file": "priority-cities/济南/spring-category-review-01.json",
+              "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+              "sourcePlaceId": 5948,
+              "noteId": 2813,
+              "quote": "腾蛟泉（王府池子出来往北走的一个岔路口）",
+              "mentionIds": [
+                12584
+              ],
+              "conclusion": "全文以泉水walk串联明确泉体；原美食主题来自整篇标签，不属于该泉体活动类别。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5948,
+          "entity_id": "06ecc5ddb78dc622997f9947a414e77c"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "95513a0ce9f9a81486fbb865e7bc8466",
+          "city": "济南",
+          "canonical_name": "刘氏泉",
+          "primary_place_id": 5950,
+          "aliases": [
+            "刘氏泉"
+          ],
+          "legacy_ids": [
+            "95513a0ce9f9a81486fbb865e7bc8466"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_spring_activity_category",
+              "file": "priority-cities/济南/spring-category-review-01.json",
+              "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+              "sourcePlaceId": 5950,
+              "noteId": 2813,
+              "quote": "刘氏泉（西更道走到头就能看到一条细长的水流）",
+              "mentionIds": [
+                12587
+              ],
+              "conclusion": "当前确认提及指泉体及水流，按自然体验分类；12692的簪花摄影主体继续null，未完成整组身份自查。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5950,
+          "entity_id": "95513a0ce9f9a81486fbb865e7bc8466"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "a4e2cf834fef59d81531b82e42296fa1",
+          "city": "济南",
+          "canonical_name": "玛瑙泉",
+          "primary_place_id": 5967,
+          "aliases": [
+            "玛瑙泉"
+          ],
+          "legacy_ids": [
+            "a4e2cf834fef59d81531b82e42296fa1"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_spring_activity_category",
+              "file": "priority-cities/济南/spring-category-review-01.json",
+              "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+              "sourcePlaceId": 5967,
+              "noteId": 2797,
+              "quote": "1️⃣0️⃣玛瑙泉：小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动；",
+              "mentionIds": [
+                12771
+              ],
+              "conclusion": "原文描述泉水与游鱼，没有另给泉外摄影点的站位范围；按泉体自然景观分类，不因引用小石潭记归文化。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5967,
+          "entity_id": "a4e2cf834fef59d81531b82e42296fa1"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "d275db4ab60aaa28bfdf9fb75c7a5196",
+          "city": "济南",
+          "canonical_name": "王府池子",
+          "primary_place_id": 5499,
+          "aliases": [
+            "王府池子"
+          ],
+          "legacy_ids": [
+            "d275db4ab60aaa28bfdf9fb75c7a5196"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_spring_activity_category",
+              "file": "priority-cities/济南/spring-category-review-01.json",
+              "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+              "sourcePlaceId": 5499,
+              "noteId": 2813,
+              "quote": "王府池子（隐藏在老城区的宝藏泉水濯缨泉）",
+              "mentionIds": [
+                12583
+              ],
+              "conclusion": "以池中泉水为当前游览对象；街道、院落及小王府池子不进入身份范围。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5499,
+          "entity_id": "d275db4ab60aaa28bfdf9fb75c7a5196"
+        }
+      ]
+    }
+  ]
+}

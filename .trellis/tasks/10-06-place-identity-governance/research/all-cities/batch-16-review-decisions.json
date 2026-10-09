@@ -1,0 +1,60 @@
+[
+  {
+    "key": "all-cities-20261006-batch-16-review-996",
+    "city": "厦门",
+    "reviewFingerprint": "5e347ba6d4a49ebc800e61d44f2c7b1ec5520ff5f19169ca68ef99233ea61925",
+    "expectedRevisions": {
+      "3344c8d21cebbb866f03ee4b23363386": 2,
+      "e8d12f20f7daba2e6c3f2a7688580efc": 2
+    },
+    "verdict": "part_of",
+    "explanation": "5320及1514明确海上体验为高崎至集美学村段；5900主体名为厦门地铁1号线。厦门日报2024-12-17报道正文明确该约2.8公里海上区间位于地铁1号线中，支持跨海段属于全线而非同义。两ID独立，交通全线不能替代观光段排程。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          996
+        ],
+        "conclusion": "5320及1514明确海上体验为高崎至集美学村段；5900主体名为厦门地铁1号线。厦门日报2024-12-17报道正文明确该约2.8公里海上区间位于地铁1号线中，支持跨海段属于全线而非同义。两ID独立，交通全线不能替代观光段排程。",
+        "sourcePlaceIds": [
+          "2653",
+          "2899"
+        ]
+      },
+      {
+        "kind": "reviewed_supplemental_review",
+        "file": "all-cities/xiamen-batch16-review-supplement.json",
+        "sha256": "0f596668c0fa764e43636133c5378c14fcf107141cc02a102a9d934e935df18a",
+        "conclusion": "5320及1514明确海上体验为高崎至集美学村段；5900主体名为厦门地铁1号线。厦门日报2024-12-17报道正文明确该约2.8公里海上区间位于地铁1号线中，支持跨海段属于全线而非同义。两ID独立，交通全线不能替代观光段排程。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5320,
+          6312
+        ],
+        "conclusion": "5320及1514明确海上体验为高崎至集美学村段；5900主体名为厦门地铁1号线。厦门日报2024-12-17报道正文明确该约2.8公里海上区间位于地铁1号线中，支持跨海段属于全线而非同义。两ID独立，交通全线不能替代观光段排程。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch16-transit-context.json",
+        "sha256": "5c85150ef8e3014c6280892d982d341380cda37a284690267d74f920822c404a",
+        "mentionIds": [
+          5900
+        ],
+        "conclusion": "5320及1514明确海上体验为高崎至集美学村段；5900主体名为厦门地铁1号线。厦门日报2024-12-17报道正文明确该约2.8公里海上区间位于地铁1号线中，支持跨海段属于全线而非同义。两ID独立，交通全线不能替代观光段排程。"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://news.xmnn.cn/xmxw/202412/t20241217_287910.html",
+        "file": "all-cities/xiamen-metro-scope-fetch.json",
+        "sha256": "70f3b2d1d200cfa6c1d57db864dcfb6a78f56e43bf50a857f541e09ee2a6dac6"
+      }
+    ],
+    "childEntityId": "3344c8d21cebbb866f03ee4b23363386"
+  }
+]

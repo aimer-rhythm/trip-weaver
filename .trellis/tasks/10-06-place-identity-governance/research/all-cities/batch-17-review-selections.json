@@ -1,0 +1,43 @@
+[
+  {
+    "review": 453,
+    "verdict": "uncertain",
+    "explanation": "补充门店正文确认范嬢嬢春森路糯米团位于学田湾正街59号春森路社区入口，原先将春森路与学田湾视作不同分店的推断没有依据。746原文确有抽取错字；839早餐后步行三峡博物馆与该店相容，但note28泛品牌推荐仍缺具体门店，尚不据此把全部源合并。本批仅撤销两泛名远郊错点，保留边界待核。",
+    "sources": [
+      "chongqing-fan-trip-fetch.json"
+    ],
+    "contexts": [
+      {
+        "file": "chongqing-batch14-context.json",
+        "mentionIds": [
+          746,
+          410,
+          816,
+          839,
+          1337
+        ]
+      }
+    ]
+  },
+  {
+    "review": 454,
+    "verdict": "uncertain",
+    "explanation": "新抓取Trip门店正文直接写明学田湾正街59号春森路社区入口，507/1065只提供店名，未写所在街道。旧评估所称春森路店与学田湾地址冲突不成立，现保留该店坐标并纠正美食类别。839行程与该店相容，但410/816/1337泛名源仍未明确分店，暂不把所有范嬢嬢提及归为一个门店。",
+    "sources": [
+      "chongqing-fan-trip-fetch.json"
+    ],
+    "contexts": [
+      {
+        "file": "chongqing-batch14-context.json",
+        "mentionIds": [
+          507,
+          1065,
+          410,
+          816,
+          839,
+          1337
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "scopeFile": "run-1791372788231/scope-06.json",
+  "scopeSha256": "73af20a5e458e6eb6cd55c630d0e553f7ae8d0522fdda21e9cdbbf49d8edf353",
+  "inputSha256": "47f35a083f7354959810eaab5dbf6433da37b13ae00561e4d62edc022e9fc70f",
+  "reportFile": "run-1791372788231/scope-06.md",
+  "policy": {
+    "quotas": {
+      "attraction": 50,
+      "food": 30,
+      "cafe": 10,
+      "photo_spot": 10,
+      "market": 10
+    },
+    "excludedCities": [
+      "云南"
+    ],
+    "quotaUnit": "每city桶内每类型的稳定实体",
+    "tieBreak": "推荐分、独立来源数、质量分；均相同后优先较少覆盖的约2km网格，再用稳定ID固定顺序",
+    "deferredMeaning": "不在本轮主动清洗范围，原始数据/待审状态及现有身份防护保留"
+  },
+  "summary": {
+    "inputQualified": 4919,
+    "eligible": 4374,
+    "manuallyExcluded": 37,
+    "quotaSelected": 967,
+    "referenceAdded": 11,
+    "primary": 978,
+    "dependencies": 56,
+    "sourceRows": 1135,
+    "pendingInScope": 50,
+    "pendingDeferred": 126,
+    "quarantinedReviewRows": 37,
+    "deferredOtherRows": 89,
+    "inScopeReviews": {
+      "rows": 50,
+      "entityPairs": 50,
+      "mentions": 0,
+      "images": 0
+    },
+    "deferredReviews": {
+      "rows": 126,
+      "entityPairs": 84,
+      "mentions": 41,
+      "images": 0
+    },
+    "referenceNeedsReview": 4,
+    "preservedReferences": 49
+  },
+  "latestAppliedEntityBatch": 33,
+  "latestFlow": "../all-cities/flow/run-35",
+  "latestAudit": "../all-cities/audit/run-31",
+  "userAcceptance": false,
+  "taskStatus": "in_progress",
+  "activatedAt": "2026-10-07T14:59:32.000Z",
+  "selectionFrozenAfterEntityBatch": 29,
+  "cityReviewLedgers": {
+    "济南": "../priority-cities/济南/review-04.json"
+  },
+  "progressNote": "scope06保留batch29固定入选集合978主体+56依赖/1135源。batch33已逐条核对五龙潭两源43提及/37原文，25归公园、18待补证；裸名旧ID撤回不重定向，公园保留自然类别及本体点。228行（223有效+5撤回）/23关系双同步、真实检索/向量/旧ID/原源/历史行程通过。济南原98项中4非地点、4归一自查，90行未完成（其中2行本批部分治理、另88继续），7仍待定位。未验收，不提交归档。",
+  "progressUpdatedAt": "2026-10-07T17:30:03.734Z",
+  "summaryMeaning": "summary为scope06固定入选时统计；后续逐提及待审增量见currentScopeReviews，不重排或静默删除原入选行。",
+  "currentScopeReviews": {
+    "frozenEntityPairs": 50,
+    "addedPendingMentions": 18,
+    "currentReviewRows": 68,
+    "referenceNeedsReview": 4,
+    "evidence": "../priority-cities/济南/wulongtan-source-review-01.json",
+    "meaning": "第33批18条提及已读但具体主体/语义证据不足，scope以null保留；原50重点实体对未关闭，不能将新增提及待审混算成长尾。"
+  }
+}

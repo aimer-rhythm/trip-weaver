@@ -1,0 +1,394 @@
+[
+  {
+    "key": "all-cities-20261006-batch-09-review-364",
+    "city": "济南",
+    "reviewFingerprint": "ccbf85f5080d6505ec7cb401e1336478f2ed47c28e5e43f2bf98a49f13bfaa0d",
+    "expectedRevisions": {
+      "8808e16f1472d0df17bed729a2e54e83": 1,
+      "d14cc0c8a631defad91e60d475b7aedd": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          364
+        ],
+        "conclusion": "趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。",
+        "sourcePlaceIds": [
+          "5349",
+          "5366"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          12662,
+          12762,
+          12643
+        ],
+        "conclusion": "趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-365",
+    "city": "济南",
+    "reviewFingerprint": "0b59ea7086161412a7f05a1f0a7acc090952545d3f4d0058a675565f9d07816c",
+    "expectedRevisions": {
+      "d7dfe7ae5196779e613b8fa0d9bacf5a": 1,
+      "f65621879204866b17b645554f9848db": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          365
+        ],
+        "conclusion": "五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。",
+        "sourcePlaceIds": [
+          "5359",
+          "5350"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          12662
+        ],
+        "conclusion": "五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-369",
+    "city": "济南",
+    "reviewFingerprint": "f70bf44d39d737f3d2f1777058993e960533d4497d2eac1a32d70f10c46218f2",
+    "expectedRevisions": {
+      "48bbca08dc8a0fd00189dbe41cfa127a": 1,
+      "79e713e197315afb0440835502699789": 1
+    },
+    "verdict": "part_of",
+    "explanation": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          369
+        ],
+        "conclusion": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+        "sourcePlaceIds": [
+          "5372",
+          "5961"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          12643
+        ],
+        "conclusion": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。"
+      }
+    ],
+    "childEntityId": "79e713e197315afb0440835502699789"
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-371",
+    "city": "济南",
+    "reviewFingerprint": "ef2e2091804fb1a46cd11b8d324466bcc49ef213c5c14dbce688c234ce1b26fd",
+    "expectedRevisions": {
+      "326cd34165dd905d31af6cd929a0deda": 1,
+      "665e9903d644a1b41ce76e27467fb353": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          371
+        ],
+        "conclusion": "泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。",
+        "sourcePlaceIds": [
+          "5427",
+          "5388"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          11629
+        ],
+        "conclusion": "泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-372",
+    "city": "济南",
+    "reviewFingerprint": "22be5001045ed36c2139ec176b4b05ffaf84c71891fb73743532771aae52224b",
+    "expectedRevisions": {
+      "665e9903d644a1b41ce76e27467fb353": 1,
+      "e394dd2fefdf968a0bbea165941a8652": 1
+    },
+    "verdict": "distinct",
+    "explanation": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          372
+        ],
+        "conclusion": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。",
+        "sourcePlaceIds": [
+          "5388",
+          "5428"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          11630
+        ],
+        "conclusion": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-374",
+    "city": "济南",
+    "reviewFingerprint": "a8582ff65eb49ddd7b95bea3b636d569d23f3fae520f9e36bec6b67f60f062f6",
+    "expectedRevisions": {
+      "1c37774f673afed61066011e157e544d": 1,
+      "8fc58c8c72a37525b8574ac798393a58": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          374
+        ],
+        "conclusion": "11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。",
+        "sourcePlaceIds": [
+          "5471",
+          "5985"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          11675,
+          12894
+        ],
+        "conclusion": "11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-375",
+    "city": "济南",
+    "reviewFingerprint": "28bad7b9e13ff3031d8bbd1ce788da869c582b1ddaa438c9443a7616888d4343",
+    "expectedRevisions": {
+      "908b0aec5ee27f58554a8442f8eef1de": 1,
+      "9664ac094b1fc9e794ccaaa4e77aa9fa": 1
+    },
+    "verdict": "part_of",
+    "explanation": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          375
+        ],
+        "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+        "sourcePlaceIds": [
+          "5479",
+          "5960"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          12643,
+          12626
+        ],
+        "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。"
+      }
+    ],
+    "childEntityId": "908b0aec5ee27f58554a8442f8eef1de"
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-376",
+    "city": "济南",
+    "reviewFingerprint": "147b14f6b2374dddc62e4dfbf5532f1bd0fb4f9fba576d31d7597ec905345646",
+    "expectedRevisions": {
+      "6f0051f4dcf714df1a9700bc2fb993d9": 1,
+      "d025994fc1b1449de922fa97abdd96f8": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          376
+        ],
+        "conclusion": "11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。",
+        "sourcePlaceIds": [
+          "5484",
+          "5483"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          11510
+        ],
+        "conclusion": "11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-377",
+    "city": "济南",
+    "reviewFingerprint": "247e069b0890e2756e49f8d7b1b5750063afae7dbc6ee3cb262737bd532b125a",
+    "expectedRevisions": {
+      "bb53ff904464fb67e2ddf46d7ed0d2b8": 1,
+      "d025994fc1b1449de922fa97abdd96f8": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          377
+        ],
+        "conclusion": "11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。",
+        "sourcePlaceIds": [
+          "6003",
+          "5483"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          11510,
+          12961
+        ],
+        "conclusion": "11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-378",
+    "city": "济南",
+    "reviewFingerprint": "bd9b9fe6a4ce5eea4bc08f864f1dabdb31eda1ec499d1c01cfe9429c5bbc4890",
+    "expectedRevisions": {
+      "6f0051f4dcf714df1a9700bc2fb993d9": 1,
+      "bb53ff904464fb67e2ddf46d7ed0d2b8": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          378
+        ],
+        "conclusion": "穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。",
+        "sourcePlaceIds": [
+          "5484",
+          "6003"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          12961
+        ],
+        "conclusion": "穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-09-review-380",
+    "city": "济南",
+    "reviewFingerprint": "e90a2651114a4e7f76ee609b950fb26916845a397908a7a2b307f00e93f7e797",
+    "expectedRevisions": {
+      "083e3c3dacac00065603cff6b51ec0de": 1,
+      "31d1664e1fcd59b5abe1689bfd5addd7": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          380
+        ],
+        "conclusion": "芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。",
+        "sourcePlaceIds": [
+          "5983",
+          "5987"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-batch09-context.json",
+        "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+        "mentionIds": [
+          12854
+        ],
+        "conclusion": "芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。"
+      }
+    ]
+  }
+]

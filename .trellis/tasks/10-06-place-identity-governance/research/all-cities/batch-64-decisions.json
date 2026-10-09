@@ -1,0 +1,75 @@
+[
+  {
+    "key": "all-cities-20261009-batch-64-source-5331-branch-name",
+    "city": "济南",
+    "entityId": "5781e650f27ad011986a13e12281e79f",
+    "expectedRevisions": {
+      "5781e650f27ad011986a13e12281e79f": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "许记排骨（县东巷71号）",
+    "aliases": [
+      "许记排骨",
+      "许记排骨（县东巷71号）"
+    ],
+    "overrides": {
+      "address": "县东巷71号",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "original_address_and_fetched_branch_name",
+        "file": "priority-cities/济南/last-restaurants-web-review-01.json",
+        "conclusion": "许记为地址限定展示名，不冒充官方分店名；桥下/蜗牛分店名有抓取正文。许记明显偏离老城旧点清空待核，其余两点未新验证，保持。蜗牛旧狮子口街地址保持，不将历史评论证明为2026营业。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-64-source-5343-branch-name",
+    "city": "济南",
+    "entityId": "4486ee493729467741a9428ba67b1b80",
+    "expectedRevisions": {
+      "4486ee493729467741a9428ba67b1b80": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "桥下把子肉（山大南路店）",
+    "aliases": [
+      "桥下把子肉",
+      "桥下把子肉（山大南路店）"
+    ],
+    "overrides": {
+      "address": "山大南路蜀易火锅隔壁"
+    },
+    "evidence": [
+      {
+        "kind": "original_address_and_fetched_branch_name",
+        "file": "priority-cities/济南/last-restaurants-web-review-01.json",
+        "conclusion": "许记为地址限定展示名，不冒充官方分店名；桥下/蜗牛分店名有抓取正文。许记明显偏离老城旧点清空待核，其余两点未新验证，保持。蜗牛旧狮子口街地址保持，不将历史评论证明为2026营业。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-64-source-5340-branch-name",
+    "city": "济南",
+    "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+    "expectedRevisions": {
+      "e2740e4ad547f99f5ff9311f7d5359b8": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "蜗牛叔叔的食堂（泉城路店）",
+    "aliases": [
+      "蜗牛叔叔的食堂",
+      "蜗牛叔叔的食堂（泉城路店）"
+    ],
+    "overrides": {},
+    "evidence": [
+      {
+        "kind": "original_address_and_fetched_branch_name",
+        "file": "priority-cities/济南/last-restaurants-web-review-01.json",
+        "conclusion": "许记为地址限定展示名，不冒充官方分店名；桥下/蜗牛分店名有抓取正文。许记明显偏离老城旧点清空待核，其余两点未新验证，保持。蜗牛旧狮子口街地址保持，不将历史评论证明为2026营业。"
+      }
+    ]
+  }
+]

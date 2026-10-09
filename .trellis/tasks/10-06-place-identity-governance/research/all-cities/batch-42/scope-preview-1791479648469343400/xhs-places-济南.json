@@ -1,0 +1,1360 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "49b6ea945dd82cf83cf90a0e7e2293aae40f580a6794f4d4f494c0060fd4e3f3",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "大明湖公园",
+    "大明湖景区",
+    "大明湖"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11342,
+     "noteId": 2545,
+     "inputHash": "dc203578b322711271205094caac47d9e5582ffee95a9886df121a09fcfbeade",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11379,
+     "noteId": 2547,
+     "inputHash": "a215000598ce9f16b0ea018427fff9a7ac4e9649a6049bc0088351b5bed57c7b",
+     "textHash": "613809d4b5a79b3837377198ef56302b47b3cc0e7409ad45ff894b5aec2de56d",
+     "textLength": 344,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11387,
+     "noteId": 2548,
+     "inputHash": "d80bb75de95b550142fdea5ee197fda33511edbba6bea3748286e294ef40edb6",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11402,
+     "noteId": 2569,
+     "inputHash": "3bd2e34f75bfd9908944a8ab12fa3c5c5b5b172fc14b93ecd6c896786c6758c8",
+     "textHash": "33939ae95e63a7d8a09a532b8f66a813aa999ae5f8d9f907fd2e0b3b220b4c67",
+     "textLength": 572,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11411,
+     "noteId": 2550,
+     "inputHash": "0871e20cbac7dff387436c86e369e38bcc2a20b48bbb42f588d22d3b0803109f",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11421,
+     "noteId": 2550,
+     "inputHash": "ca04fe8d23bd0ca2c7a049ae792931869420d5538bef1d7124683ce8286755b9",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11429,
+     "noteId": 2567,
+     "inputHash": "dcd326260fe92004a681f309d8697e6f04e4b91be36d48b769ab6e393defa9f5",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11434,
+     "noteId": 2618,
+     "inputHash": "09f59ae74137f1a0d6fc90589e6ca9397ce8dc567bad037fb21b4441e2edad44",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11450,
+     "noteId": 2553,
+     "inputHash": "bfdb28ca6b70c52604f3d7e87630dd0729d62aaef0c065323c711f4ca6848b7e",
+     "textHash": "237d15917021e78754aa89cfe5553e593877938f739d8bb78e94b15ba64e22c3",
+     "textLength": 1001,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11462,
+     "noteId": 2570,
+     "inputHash": "3df68fb1319e22a3696e033a26573b9a76b996c0b91cd0cde313a76813fb8999",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11473,
+     "noteId": 2560,
+     "inputHash": "42587bbf74a56e90ae6cb0fbba55d5d49d2c7eed56c15c93a1498940c9c63ac6",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11494,
+     "noteId": 2554,
+     "inputHash": "743da95ae04c0f44093edf349da62130dcb9afe66b7e40ed3652e5ddf2c23c4a",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11507,
+     "noteId": 2619,
+     "inputHash": "122a8bee077c8d36209a19b2c6597c707b1dfeb26d7554aa1388eeca9e7fd44c",
+     "textHash": "86d27eef6c5c7c00f37320618c396610c01fd6ac93212e2f6b596593f51d2fbd",
+     "textLength": 257,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11522,
+     "noteId": 2563,
+     "inputHash": "3a72a9c55676e18ad414587b1a38995e42dfe15944b4ba44f10f0f52d1c2d248",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11539,
+     "noteId": 2582,
+     "inputHash": "ff5fc550134890e3702e7aa270731f90feb758781b04debfb972688a4ca93b21",
+     "textHash": "fe52f8c98f958decdcb029c38e9bcb533b02098063a088c1184b98368660abe8",
+     "textLength": 339,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11578,
+     "noteId": 2564,
+     "inputHash": "bc75d09b09cc43ff1f405a9496e4ec996dd724cb7737bd79916bac9b2095bac6",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11581,
+     "noteId": 2583,
+     "inputHash": "ae883c3c1a540e9298cb167bb202da3d15f3ab734296b97f8a7b475a11b0b52e",
+     "textHash": "0f30dad8531471b80b6ef4319c5353cd2841a1e62fbaa00b48b64294ae170707",
+     "textLength": 637,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11594,
+     "noteId": 2622,
+     "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d",
+     "textHash": "428b2ed826c931c732f2f636a85909125f77e78cc5fcaf0aec72ebf9bee4d06e",
+     "textLength": 352,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11598,
+     "noteId": 2589,
+     "inputHash": "8c21af9414b5a9573d3043a4a62b45977fa36dde821c8a795e6d3110b24a1dc3",
+     "textHash": "172194a42d2cb96d3fe6948cbc7e213b5519c91653f3ad1a39d0d3945d444e62",
+     "textLength": 290,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11601,
+     "noteId": 2620,
+     "inputHash": "d59dda51e4ed5ca21ebfae1b728b0aa64826672c9897a27a0453af48ffcef5ad",
+     "textHash": "8c234dba168a62ff766d09907fdf66f324d0b2f5cd342ff52f0222f266994e05",
+     "textLength": 248,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11604,
+     "noteId": 2608,
+     "inputHash": "9756f825487b148759959c940c5ea7965b9ff0839a2a46b7643638137d6467f3",
+     "textHash": "5195c49e5483cb4b7daf1d1eab77927af2cc36513eabd727abe9492081242e05",
+     "textLength": 940,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11611,
+     "noteId": 2584,
+     "inputHash": "91cf304c9cde9c73b3832edc0baa6d7a78de455c2e3bc28cf6c6ab3f7acfbc50",
+     "textHash": "5099f704c06236615b5d0128ebceb7bbb4fc2c4a11ed8e4863102c3f0f483fbf",
+     "textLength": 355,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11627,
+     "noteId": 2624,
+     "inputHash": "c8e808bb521e406967eeb1a747d653a481d69e3cb95b2be93b644ec7f9d4610d",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11683,
+     "noteId": 2609,
+     "inputHash": "0c3e9d5d261f2225d0cf9855d01e44c9ba12de9b7f81d31b117b72e7d677fdbb",
+     "textHash": "90e42025de21784b9f76ab9847189df0e8a4ab5c4b9cc819be1e0e219b30c6bb",
+     "textLength": 518,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11693,
+     "noteId": 2623,
+     "inputHash": "74d818a21b749c5492e3ecee25ec6eb73712bdbbfd0ef2c63e17a83dad150627",
+     "textHash": "68f2fd3d244871bbe44a38049de6bf2975a4e5f7cd3496c29fa254caf668f404",
+     "textLength": 83,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11695,
+     "noteId": 2611,
+     "inputHash": "c9eab08ccd30803cfd8046d051c5b4c21cf91193ad1ad8bcab21faa379903db4",
+     "textHash": "db9c60a31ee95775e6cef00101dfb1ee954b5cb178442b1d7495cf21fc173510",
+     "textLength": 592,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11703,
+     "noteId": 2614,
+     "inputHash": "8f64e6bad28c6144fba6dec9072c684a7f7c3482f1fff7386983297621c6087b",
+     "textHash": "61f4b9cf20d69cf6f59220fa93c4bb42fc4fe582a23b96002848c10495182855",
+     "textLength": 358,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11705,
+     "noteId": 2613,
+     "inputHash": "4c53bfdf97f3987402cd77fe4544dc6056067a79703300fdeffd62bcdeca9064",
+     "textHash": "1aa2269d97df5c8de8ead7de1fe765529a683461d0c31a5f39716bc09f16b67d",
+     "textLength": 326,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12570,
+     "noteId": 2545,
+     "inputHash": "a0f074a67c08be49ad2275f4c84fbed16393e28af1671da6f5e0b5b98f31057e",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12575,
+     "noteId": 2803,
+     "inputHash": "984603851eb5b0860ef757d1de846de56b5f6973ba40092b7361ab2360c57764",
+     "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9",
+     "textLength": 661,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12629,
+     "noteId": 2793,
+     "inputHash": "3d791c021a49e342e72e6b5edc6bef5e8922cb3270bb03ca712b6bd5b51024dc",
+     "textHash": "e08c8f750bb29c4fa9be9d06e88f5a1b837fbe50e2f8dc693179b3bc2952865d",
+     "textLength": 979,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12641,
+     "noteId": 2782,
+     "inputHash": "c9d00f8cb81aa2ece1ec95293adcbac79807dedcaa8d2ba76b0f4fbe80aa6f7a",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12649,
+     "noteId": 2547,
+     "inputHash": "d45eacbf5dea84a467b5e1a6f70f809bc83a241bca620cae3818ad3979c16a7e",
+     "textHash": "613809d4b5a79b3837377198ef56302b47b3cc0e7409ad45ff894b5aec2de56d",
+     "textLength": 344,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12654,
+     "noteId": 2795,
+     "inputHash": "fb2a678a1c7464ee9cdc155b56e42a83ce0ebc4ab205a5d4087443af3b3a14f8",
+     "textHash": "0249c2f45a9fb388e6feb43485de54ecf3c786a1ef47bd4dbf550a0e487f8ae9",
+     "textLength": 572,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12661,
+     "noteId": 2816,
+     "inputHash": "f4446fa3337afb0edc1a649aa9a484a0c944542e4a3138093f9ef488442afe95",
+     "textHash": "582744d8a66d1abe24524bf28fa9fc3089c23da256a9be41f7d7839f641e44ec",
+     "textLength": 521,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12664,
+     "noteId": 2806,
+     "inputHash": "ad00acebb700cf56d3cf74f83be4a8cbabac6b0b1ea92e24f1d21c578f11d2b8",
+     "textHash": "519e9d65f3008a774241c0029d4031b0c781b789c1ef1ad58d82ac65783cc7dc",
+     "textLength": 369,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12671,
+     "noteId": 2786,
+     "inputHash": "c3517409147067b56ea23750afc3aeef6e2e61207a67a116f8ed7056bbded0dc",
+     "textHash": "eba79d2eac0c5f89b23868b91c8e1fefe538f2ca48cadd56cebfbf4c769b98e8",
+     "textLength": 709,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12677,
+     "noteId": 2550,
+     "inputHash": "274b598d4124b55e4c14b0687ff26298a23b2999efcc091d5e217cd96c3e3b97",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12687,
+     "noteId": 2817,
+     "inputHash": "967481a159b506d8e4c8a816a24c2a1b47295a5e0c0bc1d90ecea2da04b7812c",
+     "textHash": "2655f9422962f151baa9c012324f5eaf6fb1b5ce42a1e28664c21a08333a520b",
+     "textLength": 273,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12700,
+     "noteId": 2807,
+     "inputHash": "951dbe71fc36c897f9fd0810406cabdb20d065a02a436d76416b98934858d0f5",
+     "textHash": "3abaca98e880cd4cc56ced08dbddb8ecb47e4bb97e2a15d70a602b4a59ceb8a7",
+     "textLength": 350,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12707,
+     "noteId": 2567,
+     "inputHash": "2172d878c917464cb6ef29a048caebee00bfc347343f2b2ae24d801de3a2d552",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12712,
+     "noteId": 2618,
+     "inputHash": "83597abf5c60e2955eddcfcf5e02f8e3cc22533fb3f9f7aeb387ff09978bce04",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12728,
+     "noteId": 2570,
+     "inputHash": "f826c538905d5552ad227240d6db541064556ada979314e39700e62cee96a377",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12733,
+     "noteId": 2560,
+     "inputHash": "796195042dd9892e8f7f77fdca07b23a67ef46b63565e9cdf222a52d1f769f3c",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12748,
+     "noteId": 2554,
+     "inputHash": "ce20717b44535ca4163279dc3239a4c0c3123a4e5c8adfd256beddb3cb8b6946",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12764,
+     "noteId": 2808,
+     "inputHash": "db97f650504bba744e7a1bdadf61eb4cedf996c25fa091ddc0b656a069c04102",
+     "textHash": "2fc7d6413650eaed93c857f6f4631d386450fbd80af9a0f058bc1cd7c5ecc1e5",
+     "textLength": 722,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12772,
+     "noteId": 2797,
+     "inputHash": "dbe953277c384143ed529d0669c1e9afeddc278482eea4fca8b1b59c3499d948",
+     "textHash": "8dea1677404eff3326dcd80069c50197fe246492a9dc574fe34d42880a7f0a8b",
+     "textLength": 736,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12779,
+     "noteId": 2798,
+     "inputHash": "c43a2d64becd10fcf732b83209e5a60178ad3008e5244d0fbfee83715891647e",
+     "textHash": "25d67cb703abfa478de8f9ee7245af6d47100f5eb9bd739279e2031207248ab9",
+     "textLength": 248,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12794,
+     "noteId": 2789,
+     "inputHash": "d3a5c7b8142c66e3a864ec90ab7246a0e26e10b78029aa7d209b59b09a5e219e",
+     "textHash": "8917e9483198fff61bf54b7ea15fca2b2bbddd2a50c8e548af6bb2cd029dfafd",
+     "textLength": 1023,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12802,
+     "noteId": 2811,
+     "inputHash": "6f1b43d5fceeb2d6764614d352724e1fa1e9f836c84dc1e5e3eeed8e91982f7a",
+     "textHash": "bef4db58db8ae1cb68809c1f8a5cd13f4fbc5463367139e66dd75d11468ae5c6",
+     "textLength": 1031,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12814,
+     "noteId": 2810,
+     "inputHash": "85075a990e2dca08541fb1b673cb67d948420c20bc93c89775a0e05433140b5f",
+     "textHash": "1ea2139ca1ef950016ebd6711495b2dbf0971a3585a9ed195c03a9c32b54a8c2",
+     "textLength": 596,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12832,
+     "noteId": 2564,
+     "inputHash": "bf481bc69588ebc6c83f2b49673500e4d488a567ece69d707cb8a4b55849ac97",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12839,
+     "noteId": 2800,
+     "inputHash": "3154e8c27bca40bcb9d4896d5327b00f3ac90b8eef1b1febb72ec857f378af3e",
+     "textHash": "0c34aaf41feea9c1605722eea9f220c7a397e18ea4e4f95df6f163e9f535fb91",
+     "textLength": 338,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12853,
+     "noteId": 2829,
+     "inputHash": "dca7ec2aefa3852ee412d47ff8c5e26ba4c6dde9776c8873fbfec0f50a23cf75",
+     "textHash": "cf3fe51e0296bbc5937a6a61b404fd45d778df0017057454db75a5f5c069ceec",
+     "textLength": 757,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12860,
+     "noteId": 2830,
+     "inputHash": "1b47910f97beaad8787a3ecb9c8fb9cd36c10eafa306d18074564f22625d1fd3",
+     "textHash": "d5ebf44cc1b2477dc2e5d060da85337930d52c99eeea88b41bc824f4812cd47f",
+     "textLength": 1087,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12873,
+     "noteId": 2834,
+     "inputHash": "1502fe4cef025f7686e7c1489a63beb25b899826f687081ce9d8920b9cccc40b",
+     "textHash": "2d4d39f8b2116269c11fcc469da9b3cfa7b03533236086256a929c67c20f03e9",
+     "textLength": 1026,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12900,
+     "noteId": 2856,
+     "inputHash": "7ccecb25db584ef56ceb02b0064fdc7e32fea2cbd619c610a7bcc52ba2ee9d5c",
+     "textHash": "3c70fe62cd037e3d1963af1204716c73f2e40c2fcd12dd3b9b325fc1de5e2caa",
+     "textLength": 297,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12908,
+     "noteId": 2853,
+     "inputHash": "7967ca1bc02796fad4ad8ed6099f70373703977d385b29f76e29cd25ea077a2e",
+     "textHash": "50d6ae04ef47f4847c3da2f4336d0b0b1ceb673d7d096ac70390d0229239b18f",
+     "textLength": 530,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12921,
+     "noteId": 2624,
+     "inputHash": "8002827debd63aef1711e1a2c20d7dabae9df1d6b7666e15ade6ccd0cfb0f560",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12923,
+     "noteId": 2801,
+     "inputHash": "f65c68ab18097ac4b7a696c1f9118d705290011176ab34d3c9c0a490a2715615",
+     "textHash": "79789ef4a1274e5748fbe0bb42eee85b43491bacefa550a816f6d25e4d85805e",
+     "textLength": 319,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12926,
+     "noteId": 2835,
+     "inputHash": "04875833136e2bcb0e273d017115157fda13f53b8eb687a4e13b93676ca57edc",
+     "textHash": "c4fbd094482a30231c8aa5fb83d03e8cb6df162cde27e9ca4fcd287fc2290aff",
+     "textLength": 1031,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12947,
+     "noteId": 2837,
+     "inputHash": "e7e8cad295a76a03ba8e8a92e17154214d2d37e96f9fa98dc2751e937a8cfdac",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12959,
+     "noteId": 2839,
+     "inputHash": "2bad3e4eb854ed62d4b958dc154479c4fccc3e7db2be60bd5b95884242b55ef3",
+     "textHash": "d84fcfd04d7d41967af06aa8cc26d032eb3aba2025e1ae31e3b6afbe076e523f",
+     "textLength": 885,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12973,
+     "noteId": 2840,
+     "inputHash": "db535aedfb0b22ac29adbf61d3a93a11e7e8f49e276e75f6d9d7c60c60270894",
+     "textHash": "897c5778c9fe8aefa2ef55560f2e5fa29987f4aff551f015232fdaf68d779f9c",
+     "textLength": 990,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12979,
+     "noteId": 2843,
+     "inputHash": "647a0a6a44d34b58d421155a234ee7d83918bef01a7bafedc2ad3581da485ce1",
+     "textHash": "e136a67463472a124f49c64a4a3b1a27eec68bc429c06b10d0d6fa0ddde12cf2",
+     "textLength": 176,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "1e1c6d4109dc6a10c959a817de9ed799",
+     "revision": 2,
+     "canonicalName": "大明湖公园",
+     "aliases": [
+      "大明湖公园"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": "550d6810857b4487aae8ce39c9ee093b",
+     "managed": false
+    },
+    {
+     "entityId": "39c1c314e86091e13d382c2c716cc2ad",
+     "revision": 2,
+     "canonicalName": "大明湖景区",
+     "aliases": [
+      "大明湖景区"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": "550d6810857b4487aae8ce39c9ee093b",
+     "managed": false
+    },
+    {
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "canonicalName": "大明湖",
+     "aliases": [
+      "大明湖",
+      "大明湖公园",
+      "大明湖景区"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "550d6810857b4487aae8ce39c9ee093b",
+   "name": "大明湖",
+   "category": "自然",
+   "lng": 117.031652,
+   "lat": 36.677524,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "大明湖路271号大明湖风景名胜区",
+    "adcode": "",
+    "mentionCount": 48,
+    "recommendScore": 120.5,
+    "topReasons": [
+     "济南最著名景点，可乘船环湖漫步，欣赏湖景",
+     "建议从北门进，先看荷花再看超然楼，南门出即曲水亭街，路线顺畅",
+     "建议从北门进，先看荷花再看超然楼，从南门出即到曲水亭街"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "大明湖畔夏雨荷是夏天的限定。济南最著名的景点之一。可乘坐游船，环湖漫步，欣赏湖景。大明湖有荷花和超然楼等景观。",
+     "highlights": [
+      {
+       "text": "大明湖畔夏雨荷是夏天的限定",
+       "quote": "大明湖畔夏雨荷是夏天的限定哦",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:14:08.697999+00:00"
+      },
+      {
+       "text": "济南最著名的景点之一",
+       "quote": "大明湖是济南最著名的景点之一",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:14:08.698003+00:00"
+      },
+      {
+       "text": "可乘坐游船，环湖漫步，欣赏湖景",
+       "quote": "在这里可以乘坐游船，环湖漫步，欣赏美丽的湖景",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:14:08.698003+00:00"
+      },
+      {
+       "text": "大明湖有荷花和超然楼等景观",
+       "quote": "可以先看荷花再看超然楼",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665?xsec_token=ABbytXkAiMeM5k56PdMqJISc7ZEayJFpeC3RB1hK16724=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:14:08.698005+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T17:14:09.070942+00:00"
+    },
+    "originalName": "大明湖",
+    "openHours": {
+     "version": 2,
+     "subject": "大明湖",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11387,
+      "noteId": 2548,
+      "inputHash": "d80bb75de95b550142fdea5ee197fda33511edbba6bea3748286e294ef40edb6"
+     },
+     {
+      "mentionId": 11450,
+      "noteId": 2553,
+      "inputHash": "bfdb28ca6b70c52604f3d7e87630dd0729d62aaef0c065323c711f4ca6848b7e"
+     },
+     {
+      "mentionId": 11494,
+      "noteId": 2554,
+      "inputHash": "743da95ae04c0f44093edf349da62130dcb9afe66b7e40ed3652e5ddf2c23c4a"
+     },
+     {
+      "mentionId": 11683,
+      "noteId": 2609,
+      "inputHash": "0c3e9d5d261f2225d0cf9855d01e44c9ba12de9b7f81d31b117b72e7d677fdbb"
+     },
+     {
+      "mentionId": 12570,
+      "noteId": 2545,
+      "inputHash": "a0f074a67c08be49ad2275f4c84fbed16393e28af1671da6f5e0b5b98f31057e"
+     },
+     {
+      "mentionId": 12748,
+      "noteId": 2554,
+      "inputHash": "ce20717b44535ca4163279dc3239a4c0c3123a4e5c8adfd256beddb3cb8b6946"
+     },
+     {
+      "mentionId": 12794,
+      "noteId": 2789,
+      "inputHash": "d3a5c7b8142c66e3a864ec90ab7246a0e26e10b78029aa7d209b59b09a5e219e"
+     },
+     {
+      "mentionId": 12802,
+      "noteId": 2811,
+      "inputHash": "6f1b43d5fceeb2d6764614d352724e1fa1e9f836c84dc1e5e3eeed8e91982f7a"
+     },
+     {
+      "mentionId": 12853,
+      "noteId": 2829,
+      "inputHash": "dca7ec2aefa3852ee412d47ff8c5e26ba4c6dde9776c8873fbfec0f50a23cf75"
+     },
+     {
+      "mentionId": 12973,
+      "noteId": 2840,
+      "inputHash": "db535aedfb0b22ac29adbf61d3a93a11e7e8f49e276e75f6d9d7c60c60270894"
+     },
+     {
+      "mentionId": 11342,
+      "noteId": 2545,
+      "inputHash": "dc203578b322711271205094caac47d9e5582ffee95a9886df121a09fcfbeade"
+     },
+     {
+      "mentionId": 11402,
+      "noteId": 2569,
+      "inputHash": "3bd2e34f75bfd9908944a8ab12fa3c5c5b5b172fc14b93ecd6c896786c6758c8"
+     },
+     {
+      "mentionId": 11411,
+      "noteId": 2550,
+      "inputHash": "0871e20cbac7dff387436c86e369e38bcc2a20b48bbb42f588d22d3b0803109f"
+     },
+     {
+      "mentionId": 11429,
+      "noteId": 2567,
+      "inputHash": "dcd326260fe92004a681f309d8697e6f04e4b91be36d48b769ab6e393defa9f5"
+     },
+     {
+      "mentionId": 11434,
+      "noteId": 2618,
+      "inputHash": "09f59ae74137f1a0d6fc90589e6ca9397ce8dc567bad037fb21b4441e2edad44"
+     },
+     {
+      "mentionId": 11462,
+      "noteId": 2570,
+      "inputHash": "3df68fb1319e22a3696e033a26573b9a76b996c0b91cd0cde313a76813fb8999"
+     },
+     {
+      "mentionId": 11473,
+      "noteId": 2560,
+      "inputHash": "42587bbf74a56e90ae6cb0fbba55d5d49d2c7eed56c15c93a1498940c9c63ac6"
+     },
+     {
+      "mentionId": 11507,
+      "noteId": 2619,
+      "inputHash": "122a8bee077c8d36209a19b2c6597c707b1dfeb26d7554aa1388eeca9e7fd44c"
+     },
+     {
+      "mentionId": 11522,
+      "noteId": 2563,
+      "inputHash": "3a72a9c55676e18ad414587b1a38995e42dfe15944b4ba44f10f0f52d1c2d248"
+     },
+     {
+      "mentionId": 11578,
+      "noteId": 2564,
+      "inputHash": "bc75d09b09cc43ff1f405a9496e4ec996dd724cb7737bd79916bac9b2095bac6"
+     },
+     {
+      "mentionId": 11594,
+      "noteId": 2622,
+      "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d"
+     },
+     {
+      "mentionId": 11627,
+      "noteId": 2624,
+      "inputHash": "c8e808bb521e406967eeb1a747d653a481d69e3cb95b2be93b644ec7f9d4610d"
+     },
+     {
+      "mentionId": 12629,
+      "noteId": 2793,
+      "inputHash": "3d791c021a49e342e72e6b5edc6bef5e8922cb3270bb03ca712b6bd5b51024dc"
+     },
+     {
+      "mentionId": 12641,
+      "noteId": 2782,
+      "inputHash": "c9d00f8cb81aa2ece1ec95293adcbac79807dedcaa8d2ba76b0f4fbe80aa6f7a"
+     },
+     {
+      "mentionId": 12661,
+      "noteId": 2816,
+      "inputHash": "f4446fa3337afb0edc1a649aa9a484a0c944542e4a3138093f9ef488442afe95"
+     },
+     {
+      "mentionId": 12664,
+      "noteId": 2806,
+      "inputHash": "ad00acebb700cf56d3cf74f83be4a8cbabac6b0b1ea92e24f1d21c578f11d2b8"
+     },
+     {
+      "mentionId": 12671,
+      "noteId": 2786,
+      "inputHash": "c3517409147067b56ea23750afc3aeef6e2e61207a67a116f8ed7056bbded0dc"
+     },
+     {
+      "mentionId": 12677,
+      "noteId": 2550,
+      "inputHash": "274b598d4124b55e4c14b0687ff26298a23b2999efcc091d5e217cd96c3e3b97"
+     },
+     {
+      "mentionId": 12700,
+      "noteId": 2807,
+      "inputHash": "951dbe71fc36c897f9fd0810406cabdb20d065a02a436d76416b98934858d0f5"
+     },
+     {
+      "mentionId": 12707,
+      "noteId": 2567,
+      "inputHash": "2172d878c917464cb6ef29a048caebee00bfc347343f2b2ae24d801de3a2d552"
+     },
+     {
+      "mentionId": 12712,
+      "noteId": 2618,
+      "inputHash": "83597abf5c60e2955eddcfcf5e02f8e3cc22533fb3f9f7aeb387ff09978bce04"
+     },
+     {
+      "mentionId": 12728,
+      "noteId": 2570,
+      "inputHash": "f826c538905d5552ad227240d6db541064556ada979314e39700e62cee96a377"
+     },
+     {
+      "mentionId": 12733,
+      "noteId": 2560,
+      "inputHash": "796195042dd9892e8f7f77fdca07b23a67ef46b63565e9cdf222a52d1f769f3c"
+     },
+     {
+      "mentionId": 12764,
+      "noteId": 2808,
+      "inputHash": "db97f650504bba744e7a1bdadf61eb4cedf996c25fa091ddc0b656a069c04102"
+     },
+     {
+      "mentionId": 12772,
+      "noteId": 2797,
+      "inputHash": "dbe953277c384143ed529d0669c1e9afeddc278482eea4fca8b1b59c3499d948"
+     },
+     {
+      "mentionId": 12832,
+      "noteId": 2564,
+      "inputHash": "bf481bc69588ebc6c83f2b49673500e4d488a567ece69d707cb8a4b55849ac97"
+     },
+     {
+      "mentionId": 12860,
+      "noteId": 2830,
+      "inputHash": "1b47910f97beaad8787a3ecb9c8fb9cd36c10eafa306d18074564f22625d1fd3"
+     },
+     {
+      "mentionId": 12873,
+      "noteId": 2834,
+      "inputHash": "1502fe4cef025f7686e7c1489a63beb25b899826f687081ce9d8920b9cccc40b"
+     },
+     {
+      "mentionId": 12921,
+      "noteId": 2624,
+      "inputHash": "8002827debd63aef1711e1a2c20d7dabae9df1d6b7666e15ade6ccd0cfb0f560"
+     },
+     {
+      "mentionId": 12926,
+      "noteId": 2835,
+      "inputHash": "04875833136e2bcb0e273d017115157fda13f53b8eb687a4e13b93676ca57edc"
+     },
+     {
+      "mentionId": 12947,
+      "noteId": 2837,
+      "inputHash": "e7e8cad295a76a03ba8e8a92e17154214d2d37e96f9fa98dc2751e937a8cfdac"
+     },
+     {
+      "mentionId": 12959,
+      "noteId": 2839,
+      "inputHash": "2bad3e4eb854ed62d4b958dc154479c4fccc3e7db2be60bd5b95884242b55ef3"
+     },
+     {
+      "mentionId": 11693,
+      "noteId": 2623,
+      "inputHash": "74d818a21b749c5492e3ecee25ec6eb73712bdbbfd0ef2c63e17a83dad150627"
+     },
+     {
+      "mentionId": 12779,
+      "noteId": 2798,
+      "inputHash": "c43a2d64becd10fcf732b83209e5a60178ad3008e5244d0fbfee83715891647e"
+     },
+     {
+      "mentionId": 12814,
+      "noteId": 2810,
+      "inputHash": "85075a990e2dca08541fb1b673cb67d948420c20bc93c89775a0e05433140b5f"
+     },
+     {
+      "mentionId": 12900,
+      "noteId": 2856,
+      "inputHash": "7ccecb25db584ef56ceb02b0064fdc7e32fea2cbd619c610a7bcc52ba2ee9d5c"
+     },
+     {
+      "mentionId": 12923,
+      "noteId": 2801,
+      "inputHash": "f65c68ab18097ac4b7a696c1f9118d705290011176ab34d3c9c0a490a2715615"
+     },
+     {
+      "mentionId": 12979,
+      "noteId": 2843,
+      "inputHash": "647a0a6a44d34b58d421155a234ee7d83918bef01a7bafedc2ad3581da485ce1"
+     }
+    ],
+    "typicalVisitMinutes": 120,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "550d6810857b4487aae8ce39c9ee093b",
+     "canonicalName": "大明湖",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "大明湖",
+      "大明湖公园",
+      "大明湖景区"
+     ],
+     "memberIds": [
+      "550d6810857b4487aae8ce39c9ee093b",
+      "1e1c6d4109dc6a10c959a817de9ed799",
+      "39c1c314e86091e13d382c2c716cc2ad"
+     ]
+    },
+    "aliases": [
+     "大明湖",
+     "大明湖公园",
+     "大明湖景区"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "可看超然楼亮灯，有游船项目",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南最著名景点，可乘船环湖漫步，欣赏湖景",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "建议从北门进，先看荷花再看超然楼，南门出即曲水亭街，路线顺畅",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665?xsec_token=ABbytXkAiMeM5k56PdMqJISc7ZEayJFpeC3RB1hK16724=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "泉城明珠，超然楼亮灯瞬间绝美，四季皆景",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费，傍晚看超然楼亮灯夜景，游玩2小时",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "建议从北门进，先看荷花再看超然楼，从南门出即到曲水亭街",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665?xsec_token=ABbytXkAiMeM5k56PdMqJISc7ZEayJFpeC3RB1hK16724=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "环湖步行看历下亭、铁公祠，可游船，超然楼开灯氛围感拉满",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948?xsec_token=ABzCUuyjT5dnc4Ql3csxoOwtZxkH3aIcDgdiReojDNLO4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "一城山色半城湖，夏日荷风拂面，傍晚超然楼亮灯湖面光影绝美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "四面荷花三面柳，景色优美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "超大湖泊，可坐游船到历下亭，傍晚湖风舒服，垂柳依依，有古迹可看",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a64569c000000000402b9b4?xsec_token=AB44w96U_1pa6hAFcNgEvGfi5OIH33xORRWx7MdtbEvok=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费，傍晚可看超然楼亮灯夜景，游玩2小时",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南必玩景区，免费",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69f339c4000000001e00c640?xsec_token=ABPvdzyX8DSY-ngnoVq-rgPAFTJ6nxsAPgvnJwcxK5SxE=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南著名湖泊，列入推荐路线第二天。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可泛舟游湖，荷花即将开放。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "全网最火雨荷花灯在北门入口附近，夜景好看",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "小桥流水，氛围感强，适合拍照",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费开放，值得一逛",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与曲水亭街、芙蓉街相邻，可串联游览",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69dce6d90000000021011235?xsec_token=ABG-QGMzILIfWGl1wDGJYbJhr1cyPunsPatLPf4ANB3TU=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "四面荷花三面柳，一城山色半城湖",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "傍晚六点左右去可看落日和夜景。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "湖景核心，可歇脚吃特色煎饼并等超然楼亮灯",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a439b81000000001700aa5e?xsec_token=ABUPjz-iLinK5sPFu7VkKq7oXQPWAyLW3mv6pYIRKTtA0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "重点景点，吹风舒服，可看超然楼亮灯和夏雨荷。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "蓝调时刻可拍到超然楼亮灯，氛围感十足",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从南门进可依次打卡夏雨荷和超然楼",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从曲水亭街对面入口进入，可逛到湖北门附近",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/693b8a81000000001e032f74?xsec_token=ABX5M6l5_YamIjJgrpb0bGrde0difAw0w11Ae3jHHAFk8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从五龙潭东门沿河边步行10分钟到西南门，可坐电瓶车游湖",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a71f150000000002702297e?xsec_token=AB1ck8vN1wfWsMiWttlLe3EHmiPFvk55rvRXjUooFhCLs=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "湖水辽阔，杨柳依依，超然楼前拍照满意",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a084bde000000003503a888?xsec_token=ABVy_LdXk7xRIR3JahDg9hM09wvdM9Tp6ilwXaxSuKejo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南著名景点，列入推荐路线第二日行程。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "西南门进，可坐船上岛看中心，船程约30分钟",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a4a3a2d00000000110178dc?xsec_token=ABnTitkVw2LEWQDUxbjbSKnP8UnZ6NF-9MWvdIkURqsOk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可泛舟游湖，荷花将开，景色惬意",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "湖畔雨荷花灯全网最火，超然楼亮灯有古风表演，夜景值得打卡",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可拍小桥流水，氛围感拉满",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费开放，最值得看超然楼，白天壮观，晚上灯光不逊色",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21?xsec_token=ABMGyy4eiM81bJbOQ5Iln3wNL3vavyZtic9IOAgO1ihdE=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "四面荷花三面柳的典型景观，体现济南水乡特色",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费大湖，风光治愈，可散步划船，傍晚看超然楼亮灯",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "“四面荷花三面柳，一城山色半城湖”，《还珠格格》夏雨荷所在地",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19?xsec_token=ABuRgOP8Me4mp1MSDbBSCRuNnDyNti5Abu5mhj6eJZHkc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "吹风舒服，可看超然楼亮灯和夏雨荷。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "南门进沿路有卖荷花和超然楼手串，景色优美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可等待日落和超然楼亮灯，结束一日行程",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "打卡超然楼、夏雨荷同款点位，沿湖风景绝美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0?xsec_token=ABufILSqDZN2_5MVzAQdFTtsyPtk2xmUl7aW-FLFEP3rI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "夜景和白天景色均值得观赏。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69891468000000000b009e16?xsec_token=ABJK6rRioCYEgWnU1Y8Kzg2gJStnM0tSX4hIqQxHiAN58=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南经典景点，适合拍照出片",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a799fc90000000005030228?xsec_token=ABIdwy9QS8no2-FqpllUvZOgdt0cPnDF7Pf345e7xBMPw=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "citywalk路线途经景点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "推荐游览，位于推荐路线第五站",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "白天游览，但未详细描述，仅作为行程起点。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/691c421d000000001b0336ac?xsec_token=ABnl8eaCSL3K_-5D1l-4rmel8oq29xKCsW31GsyYHZcos=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "夜景静谧唯美，适合打卡",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69aa5fac000000001a023b9e?xsec_token=AByVQQqMwhN8neWf1E2LIyyywDcmR_FDmBL00VvS23HzQ=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

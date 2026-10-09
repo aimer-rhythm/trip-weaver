@@ -1,0 +1,28 @@
+[
+  {
+    "key": "all-cities-20261006-batch-01-v2-export-approval",
+    "city": "云南",
+    "entityId": "2fae3c7a932a72360c8d626fb39dbd27",
+    "mergeEntityIds": [],
+    "expectedRevisions": {
+      "2fae3c7a932a72360c8d626fb39dbd27": 2
+    },
+    "overrides": {
+      "exportApproved": true
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_export_eligibility",
+        "file": "all-cities/batch-01-v2-decisions.json",
+        "decisionKey": "all-cities-20261006-batch-01-v2-006",
+        "conclusion": "三条记录已有原文与历史建筑特征核实为昆明讲武堂；源记录因缺坐标被grade统一停用，并非已知不存在的地点。明确批准稳定身份和有来源内容导出，坐标继续未知，不重启原始采集或图片导出。",
+        "sourcePlaceIds": [
+          5099,
+          5107,
+          4983
+        ],
+        "codeEvidence": "app/aggregate/grade.py: unresolved/pending -> quality_score=0,is_active=False"
+      }
+    ]
+  }
+]

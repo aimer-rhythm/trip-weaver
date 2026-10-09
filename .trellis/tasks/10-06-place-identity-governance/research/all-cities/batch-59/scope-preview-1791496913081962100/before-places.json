@@ -1,0 +1,209 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "70bbce737eb233cd27640973b32ae9d21822e4e43bcd400ceddba04f32a0284a",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "环联夜市"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11464,
+     "noteId": 2588,
+     "inputHash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1",
+     "textHash": "ddbaa7379983ba091a605ee93268df70d7e21d8e5d06da14e2ee7757d33d95b5",
+     "textLength": 882,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11571,
+     "noteId": 2564,
+     "inputHash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11607,
+     "noteId": 2608,
+     "inputHash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604",
+     "textHash": "5195c49e5483cb4b7daf1d1eab77927af2cc36513eabd727abe9492081242e05",
+     "textLength": 940,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12647,
+     "noteId": 2782,
+     "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12825,
+     "noteId": 2564,
+     "inputHash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 1,
+     "canonicalName": "环联夜市",
+     "aliases": [
+      "环联夜市"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "7950bfadd891932d01be8636aba8b51a",
+   "name": "环联夜市",
+   "category": "购物",
+   "lng": 117.085623,
+   "lat": 36.699241,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "market",
+    "themes": [
+     "购物",
+     "美食"
+    ],
+    "address": "环联汽配城南区2-015号正东方向110米",
+    "adcode": "",
+    "mentionCount": 5,
+    "recommendScore": 14.0,
+    "topReasons": [
+     "夜市火爆，小吃种类丰富，推荐品尝烤冷面、鸡柳等",
+     "人超级多，可能拥挤。",
+     "距离地铁站稍远，交通不便"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "夜市位于济南市历城区祝舜路1469号。地铁2号线祝甸站B口可达。超级大的夜市，有时间可逛。",
+     "highlights": [
+      {
+       "text": "夜市位于济南市历城区祝舜路1469号",
+       "quote": "济南市历城区祝舜路1469号",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69e89396000000001d01bff0?xsec_token=AB-TCNGQHc7ozqR5O-enQqZT_yl_oUAZ1gnIwZfVy0EeA=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.421487+00:00"
+      },
+      {
+       "text": "地铁2号线祝甸站B口可达",
+       "quote": "地铁：2号线祝甸站B口",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69e89396000000001d01bff0?xsec_token=AB-TCNGQHc7ozqR5O-enQqZT_yl_oUAZ1gnIwZfVy0EeA=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.421487+00:00"
+      },
+      {
+       "text": "超级大的夜市，有时间可逛",
+       "quote": "超级大的夜市，有时间可逛",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:02:22.855979+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T22:01:53.382293+00:00"
+    },
+    "originalName": "环联夜市",
+    "openHours": {
+     "version": 2,
+     "subject": "环联夜市",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "canonicalName": "环联夜市",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "环联夜市"
+     ],
+     "memberIds": [
+      "7950bfadd891932d01be8636aba8b51a"
+     ]
+    },
+    "aliases": [
+     "环联夜市"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "夜市火爆，小吃种类丰富，推荐品尝烤冷面、鸡柳等",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69e89396000000001d01bff0?xsec_token=AB-TCNGQHc7ozqR5O-enQqZT_yl_oUAZ1gnIwZfVy0EeA=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "超级大的夜市，有时间可逛",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "人超级多，可能拥挤。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "人超级多，体验可能不佳。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "距离地铁站稍远，交通不便",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69db9ba2000000001b0223c4?xsec_token=ABg3Lch8x4dluI-86PLh77NP7093FbQu1DSxLgc9QuADs=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

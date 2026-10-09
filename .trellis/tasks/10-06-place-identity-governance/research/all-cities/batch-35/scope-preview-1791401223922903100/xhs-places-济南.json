@@ -1,0 +1,777 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-08）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-08",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "4aca4358a2679e77c03cac8347b6c9ae522078f4be77c20b33a4e2e7991234e6",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "泉城广场"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11334,
+     "noteId": 2545,
+     "inputHash": "d9ae0f4e01f1248e4c8bf97274b34cfac3f7b5020472a2067f1092654331d304",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11390,
+     "noteId": 2548,
+     "inputHash": "4e57fb130ce36f54243ed1291ef2be702ae063a5e67a59489f84c8bccf9f1a2b",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11398,
+     "noteId": 2569,
+     "inputHash": "f8b29505ebe6bc6a80d4afcc927924b5cdbc6599b1585596d5ef11fe78672233",
+     "textHash": "33939ae95e63a7d8a09a532b8f66a813aa999ae5f8d9f907fd2e0b3b220b4c67",
+     "textLength": 572,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11408,
+     "noteId": 2550,
+     "inputHash": "f8f805513865024e2c4ccb7c7afa39f3eb237cd53ab4d4db09056d7b3ab3ada6",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11420,
+     "noteId": 2550,
+     "inputHash": "b8c20d3e8ebc11c575e5efab714c784586bf442da37adada41f152a3d9981db7",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11427,
+     "noteId": 2567,
+     "inputHash": "d9f71c10add1e413f5112ab516fc61e11df88bd468954f47ccecf36ff884cfab",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11438,
+     "noteId": 2618,
+     "inputHash": "ceaf2330b8aa2d80d9445f5d9557c67efba2e76c9f037b89b5c113c10578d7e2",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11443,
+     "noteId": 2553,
+     "inputHash": "e3329d4ddefa019e4e0c17b1f3f6206ca620a5142effe8f4d58fcbe2872b2a29",
+     "textHash": "237d15917021e78754aa89cfe5553e593877938f739d8bb78e94b15ba64e22c3",
+     "textLength": 1001,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11504,
+     "noteId": 2554,
+     "inputHash": "b0360eea6e85ed7a3344fab3be8a9a2c206d6768b1702d83da8c53599e5e06b9",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11513,
+     "noteId": 2607,
+     "inputHash": "5dc6be77c3057492ddca2c92ecf723dc73d857ab9fd7f77b892154ac2733b0f6",
+     "textHash": "1c29b16e30b9f2a451b1e111b2d17d1fe9dc6a8ffc5bed8d1d1cf507c45ad6c8",
+     "textLength": 1012,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11517,
+     "noteId": 2563,
+     "inputHash": "288666a1a5eb4f837782a9d51da38c35ab466c401ef8eef0167b9834d95656a7",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11574,
+     "noteId": 2564,
+     "inputHash": "3cc24275a02d48f75bb3a350b12a4f3492bea322eba42480df5de8e70b2531c5",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11587,
+     "noteId": 2583,
+     "inputHash": "c6f6b9310fe91c72558ea771a01bc90c7ca11eadc57bad1d14c762aeaa41102c",
+     "textHash": "0f30dad8531471b80b6ef4319c5353cd2841a1e62fbaa00b48b64294ae170707",
+     "textLength": 637,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11697,
+     "noteId": 2611,
+     "inputHash": "1ceefa336bb6d25d39a20cddcab8b8b2053ad1df53be8de7756bc4bc2d253bf5",
+     "textHash": "db9c60a31ee95775e6cef00101dfb1ee954b5cb178442b1d7495cf21fc173510",
+     "textLength": 592,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12562,
+     "noteId": 2545,
+     "inputHash": "d753211d166effa6325bd57babb5f185174b1faed93d642222b35b146309e68b",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12580,
+     "noteId": 2803,
+     "inputHash": "c22758c5c4229046342006f5978b76c5c20f40141ac919fc5b52f98d05c1077a",
+     "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9",
+     "textLength": 661,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12634,
+     "noteId": 2782,
+     "inputHash": "365732a79f41f6fc9e114f716828264acb842d76ff5cdf50fc05a16b6373a643",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12674,
+     "noteId": 2550,
+     "inputHash": "69780e7777433e6311d75f50726159e3f03ee2a1e2e305f024daa77d6bc85794",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12697,
+     "noteId": 2807,
+     "inputHash": "2bdb301933a64853062e3c65c0582c796ff10cb2934dc8dc05789be8ddfde959",
+     "textHash": "3abaca98e880cd4cc56ced08dbddb8ecb47e4bb97e2a15d70a602b4a59ceb8a7",
+     "textLength": 350,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12705,
+     "noteId": 2567,
+     "inputHash": "4092d077503f315a57527c188e88d59bfe85ba22dd95d01a19c6be27c5af57a3",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12715,
+     "noteId": 2618,
+     "inputHash": "3a925b3d076820f72f7485ef153abe49664afe174b086fc3408ce0f9fa356153",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12759,
+     "noteId": 2808,
+     "inputHash": "8292b6c06e7c7b8f2463ddf90ae5c4ec86bf46f2f7e45ed3a8cb0cfc380fb367",
+     "textHash": "2fc7d6413650eaed93c857f6f4631d386450fbd80af9a0f058bc1cd7c5ecc1e5",
+     "textLength": 722,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12770,
+     "noteId": 2797,
+     "inputHash": "c7b2b7f116c215411c7ad153bbb0fb8d460171ce610f0acf0feee375e99e6039",
+     "textHash": "8dea1677404eff3326dcd80069c50197fe246492a9dc574fe34d42880a7f0a8b",
+     "textLength": 736,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12828,
+     "noteId": 2564,
+     "inputHash": "6980e5831321a1f567ff71caed3e3d4203ec28a6de9edb73b931b7a752ae7489",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12909,
+     "noteId": 2853,
+     "inputHash": "43932d7b1aa4279714804e637695655bef878db913cea0b7105297e7d6573342",
+     "textHash": "50d6ae04ef47f4847c3da2f4336d0b0b1ceb673d7d096ac70390d0229239b18f",
+     "textLength": 530,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12913,
+     "noteId": 2624,
+     "inputHash": "84da558a8b922f1dfbf2952cf4230a27b63b55c6cdf3f3e8822758ad3add8a33",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12952,
+     "noteId": 2839,
+     "inputHash": "dc199eb839b800a27c239e8efdb657dc537ac6fc30adff3a3d887436a05fb9ca",
+     "textHash": "d84fcfd04d7d41967af06aa8cc26d032eb3aba2025e1ae31e3b6afbe076e523f",
+     "textLength": 885,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12968,
+     "noteId": 2840,
+     "inputHash": "729c3725661abae512b16b7532260e787a7b4a204f3eee9afd51f28b167fb568",
+     "textHash": "897c5778c9fe8aefa2ef55560f2e5fa29987f4aff551f015232fdaf68d779f9c",
+     "textLength": 990,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12981,
+     "noteId": 2843,
+     "inputHash": "6f14a71a09c285f778196dacf663625b6b94234abe2302b1747e1a7329d329d4",
+     "textHash": "e136a67463472a124f49c64a4a3b1a27eec68bc429c06b10d0d6fa0ddde12cf2",
+     "textLength": 176,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12982,
+     "noteId": 2844,
+     "inputHash": "c2720e65f255d8adfb7775e9c179037b48ac0cede2584d943d8b619e67bc47bc",
+     "textHash": "2a3286a20281cc30df271292509a9e58fbfd2aefc8da21b669b3c768eb7ff5f1",
+     "textLength": 102,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12983,
+     "noteId": 2845,
+     "inputHash": "19aa4a5b4a90a1a872ae28b12647c82503e61362832fea196e4dcadd8d0d248b",
+     "textHash": "0cad28b64c24294f25c166fff0b2eda6de29a9ec72f545ca85b0f41aef766ce8",
+     "textLength": 241,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12984,
+     "noteId": 2846,
+     "inputHash": "3d2a92a85121ef513619708d4f29b1ab0c78aff75f1f9edbce2684a31562964e",
+     "textHash": "5468fa47cecbc70b7951770879432d889875565d2d1a8d836880e865ee6ecd31",
+     "textLength": 188,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12987,
+     "noteId": 2847,
+     "inputHash": "69ac0ea728ec216d7a8a5a5cd4fbd31a4905a06a1c0cfa1b66971ba87111dcf5",
+     "textHash": "6f923bc65044dff30e0f47c2c29aad580f0cdd98099fe4faef0501e576741f4e",
+     "textLength": 355,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "canonicalName": "泉城广场",
+     "aliases": [
+      "泉城广场"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "8cc25e536e67519c958ee54248ead04f",
+   "name": "泉城广场",
+   "category": "娱乐",
+   "lng": 117.025546,
+   "lat": 36.661818,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "南门大街1号西北方向110米",
+    "adcode": "",
+    "mentionCount": 30,
+    "recommendScore": 77.5,
+    "topReasons": [
+     "济南市中心标志性广场，有音乐喷泉和雕塑，适合拍照打卡",
+     "音乐喷泉改造完成，新水形新歌单，晚上八点持续半小时，最佳观赏点可俯瞰全景",
+     "可打卡泉标，晚上有喷泉表演"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T19:27:04.424589+00:00"
+    },
+    "originalName": "泉城广场",
+    "openHours": {
+     "version": 2,
+     "subject": "泉城广场",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11443,
+      "noteId": 2553,
+      "inputHash": "e3329d4ddefa019e4e0c17b1f3f6206ca620a5142effe8f4d58fcbe2872b2a29"
+     },
+     {
+      "mentionId": 12562,
+      "noteId": 2545,
+      "inputHash": "d753211d166effa6325bd57babb5f185174b1faed93d642222b35b146309e68b"
+     },
+     {
+      "mentionId": 12983,
+      "noteId": 2845,
+      "inputHash": "19aa4a5b4a90a1a872ae28b12647c82503e61362832fea196e4dcadd8d0d248b"
+     },
+     {
+      "mentionId": 12987,
+      "noteId": 2847,
+      "inputHash": "69ac0ea728ec216d7a8a5a5cd4fbd31a4905a06a1c0cfa1b66971ba87111dcf5"
+     },
+     {
+      "mentionId": 11334,
+      "noteId": 2545,
+      "inputHash": "d9ae0f4e01f1248e4c8bf97274b34cfac3f7b5020472a2067f1092654331d304"
+     },
+     {
+      "mentionId": 11398,
+      "noteId": 2569,
+      "inputHash": "f8b29505ebe6bc6a80d4afcc927924b5cdbc6599b1585596d5ef11fe78672233"
+     },
+     {
+      "mentionId": 11427,
+      "noteId": 2567,
+      "inputHash": "d9f71c10add1e413f5112ab516fc61e11df88bd468954f47ccecf36ff884cfab"
+     },
+     {
+      "mentionId": 11438,
+      "noteId": 2618,
+      "inputHash": "ceaf2330b8aa2d80d9445f5d9557c67efba2e76c9f037b89b5c113c10578d7e2"
+     },
+     {
+      "mentionId": 11504,
+      "noteId": 2554,
+      "inputHash": "b0360eea6e85ed7a3344fab3be8a9a2c206d6768b1702d83da8c53599e5e06b9"
+     },
+     {
+      "mentionId": 11517,
+      "noteId": 2563,
+      "inputHash": "288666a1a5eb4f837782a9d51da38c35ab466c401ef8eef0167b9834d95656a7"
+     },
+     {
+      "mentionId": 11574,
+      "noteId": 2564,
+      "inputHash": "3cc24275a02d48f75bb3a350b12a4f3492bea322eba42480df5de8e70b2531c5"
+     },
+     {
+      "mentionId": 12634,
+      "noteId": 2782,
+      "inputHash": "365732a79f41f6fc9e114f716828264acb842d76ff5cdf50fc05a16b6373a643"
+     },
+     {
+      "mentionId": 12705,
+      "noteId": 2567,
+      "inputHash": "4092d077503f315a57527c188e88d59bfe85ba22dd95d01a19c6be27c5af57a3"
+     },
+     {
+      "mentionId": 12715,
+      "noteId": 2618,
+      "inputHash": "3a925b3d076820f72f7485ef153abe49664afe174b086fc3408ce0f9fa356153"
+     },
+     {
+      "mentionId": 12759,
+      "noteId": 2808,
+      "inputHash": "8292b6c06e7c7b8f2463ddf90ae5c4ec86bf46f2f7e45ed3a8cb0cfc380fb367"
+     },
+     {
+      "mentionId": 12770,
+      "noteId": 2797,
+      "inputHash": "c7b2b7f116c215411c7ad153bbb0fb8d460171ce610f0acf0feee375e99e6039"
+     },
+     {
+      "mentionId": 12968,
+      "noteId": 2840,
+      "inputHash": "729c3725661abae512b16b7532260e787a7b4a204f3eee9afd51f28b167fb568"
+     },
+     {
+      "mentionId": 12982,
+      "noteId": 2844,
+      "inputHash": "c2720e65f255d8adfb7775e9c179037b48ac0cede2584d943d8b619e67bc47bc"
+     },
+     {
+      "mentionId": 12984,
+      "noteId": 2846,
+      "inputHash": "3d2a92a85121ef513619708d4f29b1ab0c78aff75f1f9edbce2684a31562964e"
+     },
+     {
+      "mentionId": 11587,
+      "noteId": 2583,
+      "inputHash": "c6f6b9310fe91c72558ea771a01bc90c7ca11eadc57bad1d14c762aeaa41102c"
+     },
+     {
+      "mentionId": 11390,
+      "noteId": 2548,
+      "inputHash": "4e57fb130ce36f54243ed1291ef2be702ae063a5e67a59489f84c8bccf9f1a2b"
+     },
+     {
+      "mentionId": 11408,
+      "noteId": 2550,
+      "inputHash": "f8f805513865024e2c4ccb7c7afa39f3eb237cd53ab4d4db09056d7b3ab3ada6"
+     },
+     {
+      "mentionId": 11513,
+      "noteId": 2607,
+      "inputHash": "5dc6be77c3057492ddca2c92ecf723dc73d857ab9fd7f77b892154ac2733b0f6"
+     },
+     {
+      "mentionId": 11697,
+      "noteId": 2611,
+      "inputHash": "1ceefa336bb6d25d39a20cddcab8b8b2053ad1df53be8de7756bc4bc2d253bf5"
+     },
+     {
+      "mentionId": 12674,
+      "noteId": 2550,
+      "inputHash": "69780e7777433e6311d75f50726159e3f03ee2a1e2e305f024daa77d6bc85794"
+     },
+     {
+      "mentionId": 12697,
+      "noteId": 2807,
+      "inputHash": "2bdb301933a64853062e3c65c0582c796ff10cb2934dc8dc05789be8ddfde959"
+     },
+     {
+      "mentionId": 12828,
+      "noteId": 2564,
+      "inputHash": "6980e5831321a1f567ff71caed3e3d4203ec28a6de9edb73b931b7a752ae7489"
+     },
+     {
+      "mentionId": 12909,
+      "noteId": 2853,
+      "inputHash": "43932d7b1aa4279714804e637695655bef878db913cea0b7105297e7d6573342"
+     },
+     {
+      "mentionId": 12952,
+      "noteId": 2839,
+      "inputHash": "dc199eb839b800a27c239e8efdb657dc537ac6fc30adff3a3d887436a05fb9ca"
+     },
+     {
+      "mentionId": 12981,
+      "noteId": 2843,
+      "inputHash": "6f14a71a09c285f778196dacf663625b6b94234abe2302b1747e1a7329d329d4"
+     }
+    ],
+    "typicalVisitMinutes": 30,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "8cc25e536e67519c958ee54248ead04f",
+     "canonicalName": "泉城广场",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "泉城广场"
+     ],
+     "memberIds": [
+      "8cc25e536e67519c958ee54248ead04f"
+     ]
+    },
+    "aliases": [
+     "泉城广场"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "济南市中心标志性广场，有音乐喷泉和雕塑，适合拍照打卡",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费，游玩0.5小时",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "音乐喷泉改造完成，新水形新歌单，晚上八点持续半小时，最佳观赏点可俯瞰全景",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "晚上8点音乐喷泉有灯光，氛围感最强，免费观看，视野好适合拍照",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费，游玩半小时",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可打卡泉标，晚上有喷泉表演",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "地标打卡，可看喷泉、喂鸽子。",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可蹲音乐喷泉，19:00/20:00，雨天可能不演",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "附近吃饭选择多，背面是芙蓉街",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南城市客厅，有泉标和音乐喷泉",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可打卡地标。",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从趵突泉东门出来即可看到地标建筑",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "地标打卡，看喷泉喂鸽子，感受泉城氛围",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可蹲音乐喷泉，19:00/20:00两场，雨天可能不演",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费开放，向东直行可到护城河边，适合步行游览",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "音乐喷泉有固定时间，推荐10点、15点、20点前往",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "标志性蓝色泉标适合拍照，下午有音乐喷泉，但内容不多路过打卡即可",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南C位地标，兼具浪漫与活力，适合打卡",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "曾是济南繁华核心，现可俯瞰古今对比",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "离餐厅很近，适合顺路游览",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可看夜景",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南地标广场，列入推荐路线第一天。",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从趵突泉东门出去可顺路前往",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "步行可达的景点",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南地标广场，列入推荐路线首日行程。",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "作为行程第一站，可先去游览",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "打卡地标。",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "距离芙蓉街步行可达，适合游览",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "顺路打卡济南地标",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "夜景静谧唯美，适合打卡",
+     "sourceUrl": ""
+    }
+   ]
+  }
+ ]
+}

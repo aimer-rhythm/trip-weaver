@@ -1,0 +1,41 @@
+[
+  {
+    "key": "all-cities-20261009-batch-41-platform-correct",
+    "city": "济南",
+    "entityId": "2c8372d3a47dbcb68abd998af495436d",
+    "mergeEntityIds": [],
+    "canonicalName": "尚泉尚水茶馆前平台",
+    "aliases": [
+      "尚泉尚水茶馆前平台"
+    ],
+    "excludeNames": [
+      "尚泉尚水茶馆"
+    ],
+    "expectedRevisions": {
+      "2c8372d3a47dbcb68abd998af495436d": 3
+    },
+    "overrides": {
+      "category": "自然",
+      "xhsPlaceType": "photo_spot",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "address": "济南大明湖畔尚泉尚水茶馆前平台，精确机位待核"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_text_platform_scope",
+        "file": "priority-cities/济南/platform-source-review-01.json",
+        "sha256": "2bec436ed2b57d4a916fbc7ada9de21fadc50c01a473909093d319048d9c1689",
+        "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+        "mentionIds": [
+          12653
+        ],
+        "sourcePlaceIds": [
+          5945
+        ],
+        "conclusion": "茶馆仅为导航参照，推荐主体为茶馆前平台；保留原稳定ID及有效摄影描述，排除茶馆裸名同义，细分类改photo_spot。"
+      }
+    ]
+  }
+]

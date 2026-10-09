@@ -1,0 +1,33 @@
+[
+  {
+    "key": "top30-20261009-batch-74-wudaoying",
+    "city": "北京",
+    "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+    "expectedRevisions": {
+      "fde55b90529621c6f3ba9a237046a7ee": 1,
+      "bd35189ca9afcb8364b760d5c9279247": 1
+    },
+    "mergeEntityIds": [
+      "bd35189ca9afcb8364b760d5c9279247"
+    ],
+    "canonicalName": "五道营胡同",
+    "aliases": [
+      "五道营胡同",
+      "五道营"
+    ],
+    "overrides": {
+      "recommendationPolicy": "resolved_attraction_mentions_v1"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_same_hutong_sources",
+        "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\wudaoying-source-review.json",
+        "sourcePlaceIds": [
+          725,
+          2448
+        ],
+        "conclusion": "十三提及均指雍和宫/国子监周边五道营胡同；1052同篇使用短名和全名，1073的五道营段指整条街内多家店，school另有独立条目，不是把店铺并入胡同。2448旧market是同一胡同的类型误分，本批不处理街内商户或其它购物实体。"
+      }
+    ]
+  }
+]

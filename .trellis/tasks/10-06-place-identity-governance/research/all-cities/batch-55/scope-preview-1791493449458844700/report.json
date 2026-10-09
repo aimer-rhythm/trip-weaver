@@ -1,0 +1,44 @@
+{
+  "batch": 55,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 4,
+  "notes": 3,
+  "supplementalNotesRead": 1,
+  "confirmedScoped": 1,
+  "ordinaryMentionsPreserved": 3,
+  "pendingAdded": 0,
+  "historicalReviewPreserved": true,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "济南老舍纪念馆",
+      "mentions": 3,
+      "category": "文化",
+      "type": "attraction",
+      "coordinatesCleared": false,
+      "museumScopeDeferred": true
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "name": "老舍笔下的济南主题墙",
+      "mentions": 1,
+      "category": "文化",
+      "type": "photo_spot",
+      "coordinatesCleared": true,
+      "museumScopeDeferred": false
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "67993cb0439e69a2003b0c2668c8909818d14130cbad67e5ba417d3377318dab"
+}

@@ -1,0 +1,10 @@
+{
+  "queryAtFailure": "济南经二路398号",
+  "errorType": "HTTPStatusError",
+  "statusCode": 429,
+  "partialResultsSaved": false,
+  "requestedOutput": "food-address-streets-01.json",
+  "interpretation": "原探针在整组完成后才写文件，中途限流，前面结果未保存；不能当作街道未命中或位置证据。",
+  "replayed": false,
+  "credentialNotIncluded": true
+}

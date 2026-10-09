@@ -1,0 +1,154 @@
+{
+  "readOnly": true,
+  "city": "济南",
+  "baselineFile": "all-cities/batch-38-baseline.json",
+  "baselineSha256": "59165aaa143c35788b4ec3981d9f512733afd257ab8a4e04f609d51af25c31bc",
+  "sourceFile": "priority-cities/济南/streets-source-packet-01.json",
+  "sourceSha256": "eae0b5c18a6a283714483f4b613b984f711352a2fed22d8e0e83f03b54de0efc",
+  "group": {
+    "entity": {
+      "entity_id": "a76a124615e676af06c7a75968519280",
+      "city": "济南",
+      "canonical_name": "西更道街",
+      "primary_place_id": 5391,
+      "aliases": [
+        "西更道",
+        "西更道街"
+      ],
+      "legacy_ids": [
+        "404621ad6aef2a8247de6a28acdfb2e7",
+        "a76a124615e676af06c7a75968519280"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {
+        "lat": 36.666317,
+        "lng": 117.024442,
+        "address": "",
+        "category": "文化",
+        "geoStatus": "reviewed_source"
+      },
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12586",
+              "name": "西更道",
+              "quote": "连接泉城路和曲水亭街的老街道",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314"
+            },
+            {
+              "id": "12762",
+              "name": "西更道街",
+              "quote": "济南古城区，一路向北，路上有一些小景点",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21"
+            },
+            {
+              "id": "12723",
+              "name": "西更道街",
+              "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+            },
+            {
+              "id": "11457",
+              "name": "西更道街",
+              "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+            }
+          ],
+          "reviewIds": [
+            373
+          ],
+          "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+          "sourcePlaceIds": [
+            "5949",
+            "5391"
+          ]
+        },
+        {
+          "lat": 36.666317,
+          "lng": 117.024442,
+          "kind": "primary_source_geometry",
+          "address": "",
+          "category": "文化",
+          "original": {
+            "lat": 36.666317,
+            "lng": 117.024442,
+            "address": "",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5391",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/jinan-batch09-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+          "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+          "mentionIds": [
+            12586,
+            12762
+          ]
+        }
+      ]
+    },
+    "sourceIds": [
+      5391,
+      5949
+    ],
+    "relatedSourceIds": [
+      5391,
+      5949
+    ],
+    "mentionIds": [
+      11457,
+      12586,
+      12723,
+      12762
+    ],
+    "noteIds": [
+      2570,
+      2808,
+      2813
+    ],
+    "sources": [
+      {
+        "id": 5391,
+        "name": "西更道街",
+        "placeType": "attraction",
+        "themes": [],
+        "lat": 36.66631711177838,
+        "lng": 117.02444153473616,
+        "address": ""
+      },
+      {
+        "id": 5949,
+        "name": "西更道",
+        "placeType": "attraction",
+        "themes": [
+          "美食"
+        ],
+        "lat": 36.66631711177838,
+        "lng": 117.02444153473616,
+        "address": ""
+      }
+    ]
+  },
+  "noteIds": [
+    2570,
+    2808,
+    2813
+  ],
+  "geoFile": "priority-cities/济南/geo-11.json",
+  "geoSha256": "554bd150ea3a5457db6eca992206fb5a530dfb5e95f2486d0bc93d20f5496ede"
+}

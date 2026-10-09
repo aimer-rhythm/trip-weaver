@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "scopeFile": "run-1791372788231/scope-06.json",
+  "scopeSha256": "73af20a5e458e6eb6cd55c630d0e553f7ae8d0522fdda21e9cdbbf49d8edf353",
+  "inputSha256": "47f35a083f7354959810eaab5dbf6433da37b13ae00561e4d62edc022e9fc70f",
+  "reportFile": "run-1791372788231/scope-06.md",
+  "policy": {
+    "quotas": {
+      "attraction": 50,
+      "food": 30,
+      "cafe": 10,
+      "photo_spot": 10,
+      "market": 10
+    },
+    "excludedCities": [
+      "云南"
+    ],
+    "quotaUnit": "每city桶内每类型的稳定实体",
+    "tieBreak": "推荐分、独立来源数、质量分；均相同后优先较少覆盖的约2km网格，再用稳定ID固定顺序",
+    "deferredMeaning": "不在本轮主动清洗范围，原始数据/待审状态及现有身份防护保留"
+  },
+  "summary": {
+    "inputQualified": 4919,
+    "eligible": 4374,
+    "manuallyExcluded": 37,
+    "quotaSelected": 967,
+    "referenceAdded": 11,
+    "primary": 978,
+    "dependencies": 56,
+    "sourceRows": 1135,
+    "pendingInScope": 50,
+    "pendingDeferred": 126,
+    "quarantinedReviewRows": 37,
+    "deferredOtherRows": 89,
+    "inScopeReviews": {
+      "rows": 50,
+      "entityPairs": 50,
+      "mentions": 0,
+      "images": 0
+    },
+    "deferredReviews": {
+      "rows": 126,
+      "entityPairs": 84,
+      "mentions": 41,
+      "images": 0
+    },
+    "referenceNeedsReview": 4,
+    "preservedReferences": 49
+  },
+  "latestAppliedEntityBatch": 38,
+  "latestFlow": "../all-cities/flow/run-40",
+  "latestAudit": "../all-cities/audit/run-36",
+  "userAcceptance": false,
+  "taskStatus": "in_progress",
+  "activatedAt": "2026-10-07T14:59:32.000Z",
+  "selectionFrozenAfterEntityBatch": 29,
+  "cityReviewLedgers": {
+    "济南": "../priority-cities/济南/review-15.json"
+  },
+  "progressNote": "第38批西更道街位置从源泉POI改为同名街道参考点，revision3，完整地点/关系双同步及向量核验完成。原4提及、60分钟、107源/662提及/82原文、238旧行/39图片字段/9独立绑定及201历史行程保持。四处5名称SQL、4真实向量、19边界负例通过；趵突泉裸名向量超时经recheck02成功关闭，原失败保留。14篇全文/13提及及19张取证图（7张逐图放大）复核，西更道街、起凤桥街、百花桥AI自查通过；起凤桥桥/门洞及刘氏泉12692继续待核。review15：98项，4非地点、18行AI自查（16主体）、76未完成，其中6行部分scope治理，其余70；原7待定位及教堂位置保留。scope06固定978主体+56依赖/1135源；110待审及4必去缺口不变。flow40为288正例/113边界/47撤回0失败，audit36为240PENDING。实体至38、图片03禁止重放，无待同步步骤。云南不处理，未验收，不提交归档。",
+  "progressUpdatedAt": "2026-10-08T04:48:56.762Z",
+  "summaryMeaning": "summary为scope06固定入选时统计；后续逐提及待审增量见currentScopeReviews，不重排或静默删除原入选行。",
+  "currentScopeReviews": {
+    "frozenEntityPairs": 50,
+    "addedPendingMentions": 60,
+    "currentReviewRows": 110,
+    "referenceNeedsReview": 4,
+    "evidence": [
+      "../priority-cities/济南/wulongtan-source-review-01.json",
+      "../priority-cities/济南/baotu-source-review-01.json",
+      "../priority-cities/济南/square-source-review-02.json",
+      "../priority-cities/济南/spring-source-review-02.json"
+    ],
+    "meaning": "50重点实体对仍待审；五龙潭18、趵突泉38、泉城广场3及刘氏泉摄影主体1条scope保持null，固定scope06统计不作实时队列。"
+  },
+  "latestIndependentPhotoBatch": 3,
+  "unappliedFindings": [],
+  "pendingVerification": [],
+  "latestReadOnlyFindings": {
+    "file": "../priority-cities/济南/streets-visual-review-01.json",
+    "bridgeGateBoundaryPending": true,
+    "liuPhotoMentionPending": 12692,
+    "webSearchStatus": "main_search_available_but_generated_claims_rejected;qq_page_fetched;second_search_timeout",
+    "noteRefresh": "../all-cities/jinan-streets-note-refresh-01.json",
+    "downloadedOriginalImages": 19
+  },
+  "resolvedVerification": [
+    {
+      "batch": 36,
+      "city": "济南",
+      "entityId": "033a692df5218d571ddd2cca8a8c91e3",
+      "name": "甜沫儿",
+      "kind": "withdrawal_live_vector",
+      "reason": "production_timeout",
+      "evidence": "../all-cities/batch-37/sync-01/verification-vectors.json",
+      "verifiedByEntityBatch": 37
+    },
+    {
+      "batch": 38,
+      "city": "济南",
+      "entityId": "8808e16f1472d0df17bed729a2e54e83",
+      "name": "趵突泉",
+      "kind": "withdrawal_live_vector",
+      "reason": "production_timeout",
+      "verifiedByEntityBatch": 38,
+      "evidence": "../all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+    }
+  ],
+  "latestReviewEvidence": {
+    "file": "../priority-cities/济南/streets-source-review-01.json",
+    "fullReviewsAdded": 3,
+    "partiallyReviewed": 1
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "city": "济南",
+  "batch": 54,
+  "sourcePacket": "priority-cities/济南/beverage-branches-source-packet-01.json",
+  "sources": 2,
+  "mentions": 2,
+  "fullNotes": 1,
+  "confirmed": 2,
+  "pending": 0,
+  "rows": [
+    {
+      "entityId": "9626de365121d40b3565b4a7dbc5be1a",
+      "sourceId": 5322,
+      "mentionId": 11344,
+      "noteId": 2566,
+      "originalName": "喜茶(济南融汇老商埠店)",
+      "currentName": "喜茶",
+      "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】",
+      "identityConclusion": "原文明确完整分店名，恢复既有根名称；没有证明店铺与装置为同一主体，不建立同义关系。",
+      "factConclusion": "唯一reason/evidence/highlight均描述摄影装置，按subject_mismatch隔离三字段，原文/原提及不改写；没有独立饮品或店内体验需要保留。",
+      "originalReason": "打卡爱心雕塑和老爷车",
+      "originalEvidence": "打卡爱心雕塑和老爷车",
+      "originalContent": {
+        "version": 1,
+        "highlights": [
+          {
+            "text": "有爱心雕塑和老爷车",
+            "quote": "打卡爱心雕塑和老爷车"
+          }
+        ]
+      },
+      "oldLocation": {
+        "address": "泉城路188号恒隆广场西塔1层",
+        "lat": 36.66326169418812,
+        "lng": 117.02321608883494
+      },
+      "locationOverride": {
+        "lat": null,
+        "lng": null,
+        "address": "融汇济南老商埠",
+        "geoStatus": "unresolvable"
+      },
+      "distanceToExistingShangbuReferenceKm": 2.72,
+      "distanceMeaning": "同一GCJ02系统的现行街区参考点仅供检查明显偏离，不证明店铺或装置坐标；不复制参考点。",
+      "remaining": "精确店址、店外或店内装置范围、摄影主体是否单独建模及图片仍待核。"
+    },
+    {
+      "entityId": "eb75294ebee7a37c374a3f5cd374d4ac",
+      "sourceId": 5324,
+      "mentionId": 11346,
+      "noteId": 2566,
+      "originalName": "山耶云耶(融汇济南老商埠店)",
+      "currentName": "山耶云耶",
+      "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】",
+      "identityConclusion": "原文明确完整分店名，恢复既有根名称；没有证明店铺与装置为同一主体，不建立同义关系。",
+      "factConclusion": "唯一reason/evidence/highlight均描述摄影装置，按subject_mismatch隔离三字段，原文/原提及不改写；没有独立饮品或店内体验需要保留。",
+      "originalReason": "打卡马力欧像素天桥",
+      "originalEvidence": "打卡马力欧像素天桥",
+      "originalContent": {
+        "version": 1,
+        "highlights": [
+          {
+            "text": "有马力欧像素天桥",
+            "quote": "打卡马力欧像素天桥"
+          }
+        ]
+      },
+      "oldLocation": {
+        "address": "",
+        "lat": 36.59966672382187,
+        "lng": 117.04827061012148
+      },
+      "locationOverride": {
+        "lat": null,
+        "lng": null,
+        "address": "融汇济南老商埠",
+        "geoStatus": "unresolvable"
+      },
+      "distanceToExistingShangbuReferenceKm": 8.527,
+      "distanceMeaning": "同一GCJ02系统的现行街区参考点仅供检查明显偏离，不证明店铺或装置坐标；不复制参考点。",
+      "remaining": "精确店址、店外或店内装置范围、摄影主体是否单独建模及图片仍待核。"
+    }
+  ],
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "externalReference": {
+    "file": "priority-cities/济南/beverage-reference-02.json",
+    "sha256": "4b74c1fa00ee119bb4d52b935429bac4bc3f7e80d962ed672ae99f6532a09d41",
+    "url": "https://www.sohu.com/a/165116372_182854",
+    "quote": "在济南市的经三路、纬三路、经四路和纬四路这个方形地块里",
+    "use": "仅支持街区边界，不支持门店或摄影装置的精确位置。"
+  },
+  "searchLimitations": "search01仅计划文本；02/03提供商选择配置错误；04/06补充搜索有街区与点评链接，点评两次抓取无内容；05超时。搜索摘要不作精确店址依据。",
+  "locationStatus": "incompatible_old_points_cleared_precise_branch_and_installation_locations_pending",
+  "newEntities": 0,
+  "mapRequests": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

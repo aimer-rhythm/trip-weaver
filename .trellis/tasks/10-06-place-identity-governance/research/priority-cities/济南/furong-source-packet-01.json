@@ -1,0 +1,2494 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T23:12:54.825795+00:00",
+  "city": "济南",
+  "entityBatch": 62,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+        "city": "济南",
+        "canonical_name": "芙蓉街",
+        "primary_place_id": 5353,
+        "aliases": [
+          "芙蓉街"
+        ],
+        "legacy_ids": [
+          "747792d1b5834255f5feaa6c2dc62925"
+        ],
+        "revision": 3,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.6669643677903,
+          "lng": 117.02301064448173,
+          "address": "山东省济南市历下区泉城路街道芙蓉街",
+          "category": "文化",
+          "geoStatus": "resolved",
+          "xhsPlaceType": "other"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "从芙蓉街32号拐进去就是起凤桥街",
+            "noteId": 2782,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5353,
+                "lat": 36.7298661925534,
+                "lng": 117.46540911355349,
+                "address": "山东省济南市章丘区枣园街道芙蓉街",
+                "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1"
+              }
+            ],
+            "conclusion": "30条提及/23篇原文所述为大明湖、曲水亭街与泉城路附近小吃街。地图同时返回章丘枣园和历下泉城路同名道路；原坐标精确等于章丘条目，应改为历下道路条目。只修正位置，街区与沿街商户不合并。",
+            "mentionIds": [
+              11339,
+              11389,
+              11415,
+              11431,
+              11447,
+              11499,
+              11506,
+              11579,
+              11586,
+              11613,
+              11623,
+              11689,
+              11699,
+              12567,
+              12573,
+              12625,
+              12638,
+              12659,
+              12681,
+              12709,
+              12752,
+              12816,
+              12833,
+              12835,
+              12836,
+              12904,
+              12917,
+              12932,
+              12948,
+              12956
+            ],
+            "sourcePlaceIds": [
+              5353
+            ]
+          },
+          {
+            "file": "priority-cities/济南/geo-02.json",
+            "kind": "reviewed_exact_poi",
+            "query": "芙蓉街",
+            "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+            "address": "山东省济南市历下区泉城路街道芙蓉街",
+            "poiName": "芙蓉街",
+            "rawLonLat": "117.017095,36.666651",
+            "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+            "sourceCoordinateSystem": "CGCS2000",
+            "storedCoordinateSystem": "GCJ-02"
+          },
+          {
+            "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+            "kind": "reviewed_street_or_river_corridor_subject",
+            "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。",
+            "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5353,
+            "city": "济南",
+            "name": "芙蓉街",
+            "normalized_name": "芙蓉街",
+            "address": "山东省济南市章丘区枣园街道芙蓉街",
+            "latitude": 36.7298661925534,
+            "longitude": 117.46540911355349,
+            "place_type": "food",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 137.7
+          },
+          "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1",
+          "derivedBefore": {
+            "typical_visit_minutes": 30,
+            "typical_visit_source": "xhs_median",
+            "theme_tags": [
+              "美食",
+              "住宿",
+              "夜景"
+            ],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5353,
+            "mention_count_30d": 30,
+            "recommend_score": 76.17,
+            "top_reasons": [
+              {
+                "reason": "吃喝休整，游玩半小时",
+                "evidence": "吃喝休整"
+              },
+              {
+                "reason": "晚上有空可前往看夜景",
+                "evidence": "晚上有空余时间，可以前往芙蓉街"
+              },
+              {
+                "reason": "济南美食街，列入推荐路线第二天。",
+                "evidence": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街"
+              },
+              {
+                "reason": "比宽厚里更老牌，小吃种类多，但人很多。",
+                "evidence": "比宽厚里更老牌！小吃多到挑花眼！人从众"
+              },
+              {
+                "reason": "济南美食街，汇聚地道小吃，可品尝济南风味",
+                "evidence": "这里汇聚了各种地道的小吃"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "芙蓉街"
+      ],
+      "mentionIds": [
+        11339,
+        11389,
+        11415,
+        11431,
+        11447,
+        11499,
+        11506,
+        11579,
+        11586,
+        11613,
+        11623,
+        11689,
+        11699,
+        12567,
+        12573,
+        12625,
+        12638,
+        12659,
+        12681,
+        12709,
+        12752,
+        12816,
+        12833,
+        12835,
+        12836,
+        12904,
+        12917,
+        12932,
+        12948,
+        12956
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+        "city": "济南",
+        "canonical_name": "芙蓉街",
+        "primary_place_id": 5353,
+        "aliases": [
+          "芙蓉街"
+        ],
+        "legacy_ids": [
+          "747792d1b5834255f5feaa6c2dc62925"
+        ],
+        "revision": 3,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.6669643677903,
+          "lng": 117.02301064448173,
+          "address": "山东省济南市历下区泉城路街道芙蓉街",
+          "category": "文化",
+          "geoStatus": "resolved",
+          "xhsPlaceType": "other"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "从芙蓉街32号拐进去就是起凤桥街",
+            "noteId": 2782,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5353,
+                "lat": 36.7298661925534,
+                "lng": 117.46540911355349,
+                "address": "山东省济南市章丘区枣园街道芙蓉街",
+                "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1"
+              }
+            ],
+            "conclusion": "30条提及/23篇原文所述为大明湖、曲水亭街与泉城路附近小吃街。地图同时返回章丘枣园和历下泉城路同名道路；原坐标精确等于章丘条目，应改为历下道路条目。只修正位置，街区与沿街商户不合并。",
+            "mentionIds": [
+              11339,
+              11389,
+              11415,
+              11431,
+              11447,
+              11499,
+              11506,
+              11579,
+              11586,
+              11613,
+              11623,
+              11689,
+              11699,
+              12567,
+              12573,
+              12625,
+              12638,
+              12659,
+              12681,
+              12709,
+              12752,
+              12816,
+              12833,
+              12835,
+              12836,
+              12904,
+              12917,
+              12932,
+              12948,
+              12956
+            ],
+            "sourcePlaceIds": [
+              5353
+            ]
+          },
+          {
+            "file": "priority-cities/济南/geo-02.json",
+            "kind": "reviewed_exact_poi",
+            "query": "芙蓉街",
+            "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+            "address": "山东省济南市历下区泉城路街道芙蓉街",
+            "poiName": "芙蓉街",
+            "rawLonLat": "117.017095,36.666651",
+            "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+            "sourceCoordinateSystem": "CGCS2000",
+            "storedCoordinateSystem": "GCJ-02"
+          },
+          {
+            "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+            "kind": "reviewed_street_or_river_corridor_subject",
+            "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。",
+            "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5353,
+        "entity_id": "747792d1b5834255f5feaa6c2dc62925"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11339,
+      "raw_note_id": 2545,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "吃喝休整，游玩半小时",
+      "evidence_text": "吃喝休整",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.826069+00:00",
+      "inputHash": "abfee3a7d1542a7254ff7a2224e73d56604b30e01acf4b9da57e9e56fb531f90"
+    },
+    {
+      "id": 11389,
+      "raw_note_id": 2548,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "晚上有空可前往看夜景",
+      "evidence_text": "晚上有空余时间，可以前往芙蓉街",
+      "route_order": 9,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.841133+00:00",
+      "inputHash": "be5b801ffe262ab14b8ce4fc42bb86d948e3625671a75f42c33dcacc6c2a41bf"
+    },
+    {
+      "id": 11415,
+      "raw_note_id": 2550,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南美食街，列入推荐路线第二天。",
+      "evidence_text": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "cefc7755ff13314437459d52a3ed50cd0026517d59a36a556f46f5d1a7fd240c"
+    },
+    {
+      "id": 11431,
+      "raw_note_id": 2567,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "比宽厚里更老牌，小吃种类多，但人很多。",
+      "evidence_text": "比宽厚里更老牌！小吃多到挑花眼！人从众",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "5a4730280c9fa7fb26c2c9d8c40d2b46e3043bc22b867a5edbd9c84318041629"
+    },
+    {
+      "id": 11447,
+      "raw_note_id": 2553,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南美食街，汇聚地道小吃，可品尝济南风味",
+      "evidence_text": "这里汇聚了各种地道的小吃",
+      "route_order": 7,
+      "confidence": 0.95,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "济南的美食街，汇聚各种地道小吃",
+              "quote": "芙蓉街是济南的美食街，这里汇聚了各种地道的小吃"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.939024+00:00",
+      "inputHash": "57bd9a8ab7123894158a4cb9fd695764799dc99bcb652e97e33024227137d364"
+    },
+    {
+      "id": 11499,
+      "raw_note_id": 2554,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "泉城广场背面，有很多特色小吃",
+      "evidence_text": "可以去泉城广场背面的芙蓉街，里面有很多特色小吃",
+      "route_order": null,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.985456+00:00",
+      "inputHash": "724b2d6991c95f799383fb737b54528eb35029792d05072132eabf0fae9c9806"
+    },
+    {
+      "id": 11506,
+      "raw_note_id": 2619,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "与曲水亭街、大明湖相邻，可串联游览",
+      "evidence_text": "周边就是芙蓉街、大明湖，走路几分钟就到",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:22.996602+00:00",
+      "inputHash": "6e44ef42cf02a5a8c1b1f3b5d8b94664cc8d2e4156d2e6aec30a13e25904f1ce"
+    },
+    {
+      "id": 11579,
+      "raw_note_id": 2564,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "晚上十点左右去人不多。",
+      "evidence_text": "大概十点左右去 人不多",
+      "route_order": 12,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.614650+00:00",
+      "inputHash": "396d1a39c67c514cbe56ba9a9514ded4d358c8f2b9666f877dd7e814716a047c"
+    },
+    {
+      "id": 11586,
+      "raw_note_id": 2583,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "离餐厅很近，适合顺路游览",
+      "evidence_text": "附近离着趵突泉、五龙潭、黑虎泉、曲水亭街、芙蓉街、泉城广场都很近",
+      "route_order": 7,
+      "confidence": 0.85,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:45.334180+00:00",
+      "inputHash": "aef71b7817c75f13895f8ef3fd827297a45aa35c25ab77177ae0151f1bd70ac3"
+    },
+    {
+      "id": 11613,
+      "raw_note_id": 2584,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "距离小馆子不远，可顺路游览",
+      "evidence_text": "距离芙蓉街，曲水亭街也不远",
+      "route_order": 4,
+      "confidence": 0.7,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:45.377346+00:00",
+      "inputHash": "ef5f798da2fd2c05ac7a1368fcbf747cabd4178780d3b613162ed92789f8afed"
+    },
+    {
+      "id": 11623,
+      "raw_note_id": 2624,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "都是小吃，适合逛吃。",
+      "evidence_text": "也都是小吃",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "516335f25ebdfe736b2f72a8e4801449c954d05c7a345cd62fdc0f779cb29051"
+    },
+    {
+      "id": 11689,
+      "raw_note_id": 2609,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "百年小吃街，有油旋、甜沫、把子肉等美食",
+      "evidence_text": "百年小吃街，油旋、甜沫、把子肉",
+      "route_order": 8,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "百年小吃街",
+              "quote": "百年小吃街"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.217557+00:00",
+      "inputHash": "14c73b076c626bf6ff33c983ab7499d808bae9392a50f68a09e7d9ee3fe0602c"
+    },
+    {
+      "id": 11699,
+      "raw_note_id": 2611,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "晚上去小吃街方便",
+      "evidence_text": "晚上去芙蓉街宽厚里小吃街也很方便",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.260073+00:00",
+      "inputHash": "c4168c7c3cc56b89f94e302b8fb42ee6dd1c16cd27aea688f8050ae78d85263c"
+    },
+    {
+      "id": 12567,
+      "raw_note_id": 2545,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "吃喝休整，游玩0.5小时",
+      "evidence_text": "吃喝休整",
+      "route_order": 7,
+      "confidence": 0.95,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.826069+00:00",
+      "inputHash": "371d27ef75a630d94bfe24aa5accbce397d3574536d2f4adef02eeac568d33a1"
+    },
+    {
+      "id": 12573,
+      "raw_note_id": 2803,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "美食街，位于历下区，周边景点多",
+      "evidence_text": "大名鼎鼎的芙蓉美食街也在这里",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "美食街，位于历下区",
+              "quote": "大名鼎鼎的芙蓉美食街也在这里"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:18.547973+00:00",
+      "inputHash": "295b59ca185aa8ace5d612000fdfbc733491dc03991bd5509541e1405b797ff7"
+    },
+    {
+      "id": 12625,
+      "raw_note_id": 2793,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "与宽厚里相邻，小吃美食多，适合拍照逛吃",
+      "evidence_text": "两处相邻，遍布济南特色小吃和美食",
+      "route_order": 10,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "与宽厚里相邻，遍布济南特色小吃和美食",
+              "quote": "两处相邻，遍布济南特色小吃和美食"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:49.499466+00:00",
+      "inputHash": "9844ec387077feca715485dd396f0eeaeb52100a7bef5b11203184c0d58a5f37"
+    },
+    {
+      "id": 12638,
+      "raw_note_id": 2782,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "小吃街，从32号拐进去可打卡起凤桥",
+      "evidence_text": "也是一条小吃街，从芙蓉街32号拐进去就是起凤桥街",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:22.855979+00:00",
+      "inputHash": "7bfa873b5312e2f55b6ded1c8d79e41851282a948ab20044a05137f72b017c25"
+    },
+    {
+      "id": 12659,
+      "raw_note_id": 2816,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "热闹的卖小吃步行街，每个城市都有类似",
+      "evidence_text": "反正每个城市都得有个这种热闹的卖小吃的步行街",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:42.325142+00:00",
+      "inputHash": "84d672577986dfb4cf36404b5414d2a4744c76d3c5766e9bb0401e089b6d954a"
+    },
+    {
+      "id": 12681,
+      "raw_note_id": 2550,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南著名美食街，列入推荐路线第二日行程。",
+      "evidence_text": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "route_order": 10,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "d840988297172242512fc5ab9fc3510af74c252d747aaa45308995eca60f6073"
+    },
+    {
+      "id": 12709,
+      "raw_note_id": 2567,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "比宽厚里更老牌，小吃多到挑花眼，但人很多",
+      "evidence_text": "比宽厚里更老牌！小吃多到挑花眼！人从众",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "小吃种类多，有爆肚、煎饼卷大葱等",
+              "quote": "爆肚、煎饼卷大葱"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "820194004e0cb8aba2a46fa55bf03614b59fff79ed9903cd513ec6a17f7737b2"
+    },
+    {
+      "id": 12752,
+      "raw_note_id": 2554,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "特色小吃多，适合吃小吃",
+      "evidence_text": "如果想吃小吃的友友们可以去泉城广场背面的芙蓉街，里面有很多特色小吃",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.985456+00:00",
+      "inputHash": "f873b431b50f15d54c754f8f59436387629f020727301ec01ada8e65191652d7"
+    },
+    {
+      "id": 12816,
+      "raw_note_id": 2810,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "warning",
+      "sentiment": "neutral",
+      "reason": "小吃逛逛就行，不必特意吃",
+      "evidence_text": "芙蓉街、宽厚里小吃逛逛就行",
+      "route_order": null,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:19.111155+00:00",
+      "inputHash": "558aba2b925c1e7f04e095c634e0e9fc914355f5d71c4e939b90019a8864910c"
+    },
+    {
+      "id": 12833,
+      "raw_note_id": 2564,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "晚上十点左右去人不多。",
+      "evidence_text": "吃完晚饭大概十点左右去 人不多",
+      "route_order": 12,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.614650+00:00",
+      "inputHash": "2b86478fbc90e56969f96d0f97467c1ef50dffab9ea97326eb6ea357ca119ba3"
+    },
+    {
+      "id": 12835,
+      "raw_note_id": 2851,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "小吃一条街，主吃油旋、甜沫、烤猪蹄，但人多需避开饭点",
+      "evidence_text": "主吃油旋（济南特色，外酥里软，刚出炉咸香）、甜沫、烤猪蹄",
+      "route_order": 2,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "油旋是济南特色，外酥里软，刚出炉咸香",
+              "quote": "油旋（济南特色，外酥里软，刚出炉咸香）"
+            },
+            {
+              "text": "有甜沫、烤猪蹄等小吃",
+              "quote": "甜沫、烤猪蹄"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.625775+00:00",
+      "inputHash": "d7a614e6132c2a59fb9dfa3ec2b693fde59b0ac611685909b4afe993f86ed2cc"
+    },
+    {
+      "id": 12836,
+      "raw_note_id": 2851,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "人最多，拥挤，不宜推婴儿车",
+      "evidence_text": "人最多，尽量避开饭点",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.625775+00:00",
+      "inputHash": "1203229d70d607369234f296929140a8533893ee1ea12100d8c7b11646210a22"
+    },
+    {
+      "id": 12904,
+      "raw_note_id": 2853,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "有好吃的小馆子，菜品如茶香排骨、糖醋鲤鱼等评价好",
+      "evidence_text": "芙蓉街也是有好吃的小馆子的！！",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "茶香排骨有淡淡茶香味，排骨酱香味多一点",
+              "quote": "茶香排骨是有淡淡茶香味，排骨是酱香味多一点！"
+            },
+            {
+              "text": "糖醋鲤鱼每桌都有",
+              "quote": "糖醋鲤鱼每桌都有！！"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.673466+00:00",
+      "inputHash": "5f7050bc7f576461a4f3afc5425ba582b08efef3e90ef60e7de8080348130515"
+    },
+    {
+      "id": 12917,
+      "raw_note_id": 2624,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "小吃街，可继续逛吃。",
+      "evidence_text": "也都是小吃",
+      "route_order": 8,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "14fdc0aaaca8ca435d72677ea1b71cfb0a526f8803e5ad2dd26cb5ff59d3e43e"
+    },
+    {
+      "id": 12932,
+      "raw_note_id": 2835,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "行程中提及，作为逛吃地点",
+      "evidence_text": "芙蓉街",
+      "route_order": 4,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:30.986231+00:00",
+      "inputHash": "a624a0ddc8c4b53639b38d876dc7818f26be2dd609eb6ba2eca52ebaf4432ff8"
+    },
+    {
+      "id": 12948,
+      "raw_note_id": 2857,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "三刷认证，量大便宜烟火气满满，位置在芙蓉街和西更道交叉口",
+      "evidence_text": "三刷了！在芙蓉街和西更道交叉口上",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.850303+00:00",
+      "inputHash": "d3b391da028b1e3b5c0180b20a600331b41ffdc1bd766f48fce740b40ad5aa07"
+    },
+    {
+      "id": 12956,
+      "raw_note_id": 2839,
+      "name": "芙蓉街",
+      "normalized_name": "芙蓉街",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "小吃种类超多，逛吃模式",
+      "evidence_text": "小吃种类超多",
+      "route_order": 8,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:31.165217+00:00",
+      "inputHash": "f856aee472120fb66ae6e7a05d19fa18edb546273e7a2812926ee8845adb8ed3"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2545,
+      "city": "济南",
+      "title": "济南citywalk🍃1-2日经典游玩路线live",
+      "desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11339,
+        12567
+      ]
+    },
+    {
+      "id": 2548,
+      "city": "济南",
+      "title": "山东——济南",
+      "desc": "一日游线路如图所示\n济南的四季，各有各的风采\n春天的花朵，夏天的绿荫\n秋天的果实，冬天的雪景\n\t\n到达济南站已是早晨\n下了火车立刻步行前往赵家甜沫\n会路过一条路\n路旁长满了高大的梧桐树\n分不清品种\n在春夏之交只觉得清凉\n\t\n吃了两次甜沫\n感觉还可以\n再配上炸物\n妥妥充满碳水的早晨\n吃饱喝足毕竟要走一天路\n按照一日游的地图\n首先赶早去趵突泉\n\t\n景区内还有很多大大小小的泉眼\n每个都咕噜咕噜咕噜\n还有小鱼嬉戏其中\n皆若空游无所依\n\t\n赶在大部队到来之前游览完趵突泉景区\n随后步行前往五龙潭\n\t\n夏季的五龙潭\n是孩童玩水的好地方\n拥有一个强有力的水枪\n是不是可以称霸水池\n\t\n看时间已过中午\n前往最近的春水锅贴吃午饭\n顺路买杯阿水大杯茶\n量大，好吃\n\t\n饭饱后\n找个小巷子钻进去\n沿着弯曲的小巷子\n前往曲水亭街和百花洲\n\t\n小巷子里也有很多泉眼\n开发前的曲水亭街很安静\n溪水潺潺\n垂柳依依\n顺路往北走\n便到了大明湖\n\t\n大明湖畔夏雨荷是夏天的限定哦\n想看超然楼亮灯\n那就凑好时间玩到晚上\n关于超然楼的亮灯时间还是提前看景区公众号\n最新时间如图所示\n\t\n五龙潭，趵突泉，大明湖均有游船可乘\n大明湖景区内\n南门码头：\n日间票价50/人\n航线：绕大明湖老区、新区一周\n夜间票价35/人（17:30-21:00）\n航线：绕大明湖老区一周\n稼轩祠码头：\n票价10/人\n航线一：稼轩祠-历下亭-稼轩祠（往返）\n航线二：稼轩祠-历下亭-铁公祠（单程）\n湖西码头：\n票价35/人（豪华游舫含导游讲解）\n路线：湖西码头-历下亭-湖西码头\n有夜航18:00-21:00\n铁公祠码头：\n票价10/人\n航线一：铁公祠-历下亭-铁公祠（往返）\n航线二：铁公祠-历下亭-稼轩祠（单程）\n超然楼码头：\n票价50/人\n航线：绕大明湖老区、新区一周\n自驾电瓶船\n海底世界小船站（2-6座）\n150/小时，每超过10分钟加收20元\n铁公祠小船站（2-4座）\n100/小时，每超过10分钟加收20元\n护城河游船\n黑虎泉-趵突泉60/人（含趵突泉门票）\n黑虎泉-大明湖湖西50/人\n黑虎泉-大明湖超然楼80/人\n黑虎泉-黑虎泉（环线）100/人\n营业时间9:00-17:30\n夜航18:00-20:00\n\t\n按照我个人的行程\n第一天的安排差不多到此\n晚上有空余时间\n可以前往芙蓉街\n泉城广场看看夜景\n想吃把子肉作为晚餐的话\n也可以选择超意兴\n\t\n第二天的早晨\n吃扎实的山东煎饼\n配上一碗豆腐脑\n\t\n早起爬千佛山\n爬的不是很累\n挺热的\n后可以坐地铁前往山东博物馆\n剩下的小半天\n交给城中心剩下的黑虎泉等地\n顺带看一眼解放阁\n离开之前\n带上泉水\n#济南旅游[话题]# #山东旅游[话题]##趵突泉[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11389
+      ]
+    },
+    {
+      "id": 2550,
+      "city": "济南",
+      "title": "愿每一个去济南的人都能刷到这篇！！！",
+      "desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11415,
+        12681
+      ]
+    },
+    {
+      "id": 2553,
+      "city": "济南",
+      "title": "济南特种兵一日游",
+      "desc": "1.【五龙潭】 早上9:00\n第一站是五龙潭公园。清晨的五龙潭，空气清新，水波荡漾，宁静的环境非常适合散步和拍照。免费。从东门进南门出，南门有龙潭观鱼、中共山东省委旧址。游览时间：约1小时，\n2.【趵突泉】 上午10：00\n从五龙潭步行约10分钟即可到达趵突泉。在这里可以看到泉水从地下喷涌而出，场面十分壮观。趵突泉公园内还有许多历史建筑和纪念碑，非常值得一看。五龙潭公园南门对面就是趵突泉北门，北门进，东门出。成人门票40元/人。\n游览时间：约1.5小时\n3.【泉城广场】 上午11:30\n游览完趵突泉后，步行至泉城广场。泉城广场是济南市中心的标志性广场，广场上有音乐喷泉和各种雕塑，是拍照打卡的好地方。游览时间：约20分钟\n4.【黑虎泉】 中午12:00\n从泉城广场步行前往黑虎泉，黑虎泉是济南四大名泉之一，以其独特的“黑虎吐水”景观闻名。这里的泉水特别清凉甘甜，游客可以尝试饮用，感受纯净的泉水滋味。游览时间：约30分钟\n5. 【解放阁】 下午12:30\n从黑虎泉步行至解放阁，大约10分钟。解放阁是济南市的重要历史纪念建筑，登上解放阁，可以俯瞰整个济南市区\n游览时间：约30分钟\n6. 【宽厚里】 下午12:30\n接下来前往宽厚里，这是济南的一条古色古香的商业街，充满了传统的风味。在这里可以品尝到各种济南特色小吃，还可以购买一些纪念品带回家。\n午餐和游览时间：约1.5小时\n7. 【芙蓉街】 或【恒隆广场】休息一下 下午2:00\n从宽厚里步行至芙蓉街，约10分钟。芙蓉街是济南的美食街，这里汇聚了各种地道的小吃，可以继续品尝更多的美食，感受济南的风味。\n游览时间：约30分钟\n8. 【曲水亭街】 下午2:30\n游览完芙蓉街后，步行至曲水亭街。曲水亭街是济南保存最完好的明清古街之一，两旁是古老的建筑，很有特色。\n游览时间：约30分钟\n9.【文庙】免费。南门进，北门出，北门出去就是大明湖。\n10.【大明湖】 下午3:30\n从曲水亭街步行前往大明湖，大明湖是济南最著名的景点之一，在这里可以乘坐游船，环湖漫步，欣赏美丽的湖景。南门进，东北门出。\n游览时间：约2小时\n11. 【超然楼】 晚上5:30\n最后一站是超然楼，从大明湖步行前往，超然楼是济南的地标建筑之一，登楼俯瞰大明湖和整个济南市区，夜晚的超然楼灯光璀璨，景色非常迷人。\n游览时间：约30分钟#旅游式特种兵[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11447
+      ]
+    },
+    {
+      "id": 2554,
+      "city": "济南",
+      "title": "大学生暑假旅行📍济南citywalk两日游路线",
+      "desc": "如果你周末想换种方式逛城市，\n那就来济南citywalk吧！\n从趵突泉的泉眼到曲水亭街的石板路，\n听泉水叮咚，寻老城烟火。\n收好这份济南一日游citywalk路线\n一起感受老舍笔下的济南！\n\t\n📕济南旅游省心建议\n‼️趵突泉早上7点就开放，如果想不拥挤的就能在各个不错角度拍到照片，建议早上九点前就要去，越早越好!大学生领“畅游卡”可以mian门票哦！\n‼️高铁站可以选择大明湖站或者济南站，这两个站离景区更近些，而且大明湖站出站步行十分钟就可以到达大明湖南门!\n‼️不要再济南万象城地下停车场停车!标识很乱找不到自己的车在哪里，气流不畅停车费还很贵\n‼️去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入\n‼️可能会有朋友选择汉服妆造，不太推荐曲水亭街的店建议提前一天找好，避免浪费时间\n‼️如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离，如果不是很喜欢拍照不太建议\n‼️游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街\n‼️来玩的宝子们建议选择大明湖附近的酒店，步行十分钟即可到达景区，让你身临其境的感受湖光山色\n‼️吃饭的话，在泉城广场里面有很多，如果想吃小吃的友友们可以去泉城广场背面的芙蓉街，里面有很多特色小吃\n\t\n✅济南交通:\n济南的景点大部分都在一起，其实步行就可以到达，部分远的景点可以骑单车或者打车\n\t\n✅济南住宿:\n建议住在大明湖或者泉城广场附近，比较热闹，距离其他景点都比较方便\n\t\n✅济南美食\n早餐在民族大街吃的人均💰20\n午餐在恒隆广场一家面馆吃的 味道一般\n晚餐可以去芙蓉街宽厚里吃一些小吃\n#济南citywalk[话题]# #济南旅游攻略[话题]# #济南打卡[话题]# #济南两日游[话题]# #济南景点[话题]# #济南两天一晚[话题]# #老舍笔下的济南[话题]# #泉城[话题]# #济南[话题]# #暑假旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11499,
+        12752
+      ]
+    },
+    {
+      "id": 2564,
+      "city": "济南",
+      "title": "大学生济南两日游｜来看看老舍笔下的济南📝",
+      "desc": "🌷Day1\n第一站：山东博物馆➕山东美术馆\n两个就隔一条街 非常之近\n——博物馆旁边有一个万象城 可以去那里吃中饭\n\t\n第二站：千佛山 美院门进 先往左看大佛 再往右上山\n上山可以乘坐缆车 也可以步行\n\t\n第三站：环联夜市 人超级多\n\t\n🌷Day2\n第一站：五龙潭公园 西门进 南门出\n\t\n第二站：趵突泉 北门进 东门出\n⭐️尽量在九点之前到达 人较少\n\t\n第三站：泉城广场 打卡地标\n\t\n第四站：黑虎泉➕解放阁 沿护城河走\n——吃中饭\n\t\n第五站：宽厚里 就是一个步行街 可以选择不去\n——下午回酒店休息\n\t\n第六站：大明湖 傍晚六点左右去 可以看落日和夜景\n\t\n——吃晚饭\n第七站：芙蓉街 吃完晚饭大概十点左右去 人不多\n\t\n济南真的是大学生友好城市\n公共交通和景点都不需要钱\n而且人都很善良且有素质\n唯一的感觉不足的就是吃的没什么特色\n但是景真的很好看\n春天来了公园里花都开了 很美\n不愧是被称作北方小江南的地方\n\t\n⭐️酒店尽量选在中山公园附近\n离景点都很近\n景点之间距离都不远\n从哪个门进出都是有考虑的\n完全顺路 不走回头路 不走重复景点\n#济南[话题]# #济南攻略[话题]#\n#济南旅游[话题]# #济南旅游打卡[话题]#\n#大学生周末游[话题]#\n#出游大学生[话题]#\n#泉城[话题]# #趵突泉[话题]# #大明湖[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11579,
+        12833
+      ]
+    },
+    {
+      "id": 2567,
+      "city": "济南",
+      "title": "📍𝐉𝐢 𝐍𝐚𝐧  |  老舍笔下的泉城",
+      "desc": "济南City Walk Day1️⃣老商埠+大观园+宽厚里+泉城广场⛲\n📍 老商埠：复古建筑超出片！文艺青年必冲！红砖墙+咖啡馆，氛围感拉满~ ☕️\n📍 大观园：穿越老济南！市井烟火气十足，夜景更有味道！🌆\n📍 宽厚里：吃货天堂名不虚传！把子肉、油旋、奶茶...空着肚子来就对了！🍢🥤\n📍 泉城广场：地标打卡！看喷泉⛲️、喂鸽子🕊️，感受泉城心跳！💙\n\t\n济南City Walk Day2️⃣趵突泉+大明湖+曲水亭街+芙蓉街+解放阁+黑虎泉，日行3万步玩遍济南古城！\n💧 趵突泉：天下第一泉名不虚传！三股水翻腾太治愈~课本照进现实！📖\n🏞️ 大明湖：“皇上，您还记得大明湖畔的夏雨荷吗？”泛舟游湖，超惬意！荷花🪷快开啦~\n🍶 曲水亭街：济南版“小江南”！青砖小瓦，泉水穿流，茶馆超有韵味~必喝大碗茶！🍵\n🍜 芙蓉街：比宽厚里更老牌！爆肚、煎饼卷大葱...小吃多到挑花眼！人从众𠈌~ 😋\n🏯 解放阁：俯瞰老城&黑虎泉！登高怀古，夜景超震撼！✨\n🐯 黑虎泉：本地人打水的地方！泉水清甜直饮，接一杯尝尝济南味道！🚰\n\t\nDay3️⃣淄博City Walk | 进淄赶烤🔥 暴走3件套：烧烤+文创+琉璃，爽到飞起！\n\t\n🍢 【八大局市场】\n终于吃到正宗淄博烧烤！小饼蘸酱+炭火小炉🔥卷葱撸串香迷糊了～人均50撑到扶墙出！\n✅必点：带皮五花肉、小饼、甘蓝菜！本地人蹲小马扎的烟火气绝了！\n\t\n📸 【唐库文创园】\n宝藏打卡地！科比墙、彩虹楼梯、复古咖啡店…随手拍都像在加州！文艺青年狂喜✨\n☕️ Tips：下午茶选露台位置，夕阳滤镜美哭！\n\t\n💎 【琉璃博物馆】\n震撼！看千年琉璃工艺在发光✨ 梦幻吊灯、琉璃白菜…像闯进水晶宫！\n🔥 伴手礼强推：琉璃手串！精致不贵～\n\t\n#济南旅游[话题]# #济南攻略[话题]# #老商埠[话题]# #趵突泉[话题]# #大明湖[话题]# #曲水亭街[话题]# #淄博烧烤[话题]# #进淄赶考[话题]# #淄博陶瓷琉璃馆[话题]# #唐库文创园[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11431,
+        12709
+      ]
+    },
+    {
+      "id": 2583,
+      "city": "济南",
+      "title": "济南，吃完会用一生怀念的。。。。🥹🥹",
+      "desc": "就在济南大明湖附近，跟朋友经常吃他家的老店，这才是我们本地人爱吃的鲁菜馆子！新开这家味道也是没的说👍🏻饭点来基本座无虚席…很多本地回头客和游客都来吃。。\n\t\n他家的👉🏻肘蹄拌饭、烧饼夹虾球、番茄拉丝炒蛋、干煸鱿鱼须、芥末虾球、茶香排骨、烙馍卷牛胸口…这些特色菜都能吃到🤤也有经典的鲁菜家常菜，像是糖醋鲤鱼、爆炒腰花、风味茄子、爆三样、九转大肠等等都是随便点不出错，现点现做！好好吃！！\n\t\n吃完饭过马路就是大明湖，附近离着趵突泉、五龙潭、黑虎泉、曲水亭街、芙蓉街、泉城广场都很近。。来旅游的姐妹们，真心建议和家里人还有朋友来吃一顿！！好吃实惠！！\n\t\n📍鲁宴·八不食味道(大明湖总店)\n\t\n#济南[话题]# #济南美食[话题]# #济南鲁菜[话题]# #济南美食推荐[话题]# #趵突泉附近美食[话题]# #曲水亭街[话题]# #济南特色美食[话题]# #趵突泉[话题]# #济南美食必吃榜[话题]# #济南旅游攻略[话题]#  #济南本地人推荐[话题]# #济南旅游[话题]# #济南美食攻略[话题]# #济南鲁菜推荐[话题]# #济南鲁菜馆推荐[话题]# #济南老馆子[话题]# #周末去哪儿[话题]# #济南攻略[话题]# #鲁菜[话题]# #走街串巷找美食[话题]# #街头巷尾的苍蝇馆子[话题]# #大明湖附近美食[话题]# #济南大明湖附近美食[话题]# #济南好吃的美食[话题]# #大明湖[话题]# #泉城广场[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11586
+      ]
+    },
+    {
+      "id": 2584,
+      "city": "济南",
+      "title": "济南！好吃的小馆子总是默默无闻。。（好吃不贵",
+      "desc": "济南趵突泉附近！街边默默无闻的小馆子！\n就是济南家常菜的味道。。点的几道菜都不错！\n\t\n脱骨大肘子、椒麻黄喉鱼、芥末虾球、烧饼夹虾球、锅包肉大虾、番茄拉丝炒蛋、茶香排骨…\n•\n鲁菜做的也不错，糖醋鲤鱼、风味茄子、糖醋里脊、炒鸡…盲点不踩雷～不点硬菜的话差不多人均五六十\n\t\n吃完建议直奔大明湖、趵突泉！距离芙蓉街，曲水亭街也不远～\n\t\n📍李长久萃华楼\n#适合父母辈的宝藏餐厅[话题]# #本地人安利的美食[话题]# #大声安利本地美食[话题]# #条条小路有好吃[话题]# #济南美食[话题]# #老城区美食[话题]# #老巷子美食[话题]# #本地人爱吃的店[话题]# #小城暴走吃喝路线[话题]##济南[话题]#  @吃货薯@吃货薯@生活薯@生活薯@城市情报官",
+      "unavailable": false,
+      "mentionIds": [
+        11613
+      ]
+    },
+    {
+      "id": 2609,
+      "city": "济南",
+      "title": "事实证明！在济南只有看地图才能玩明白",
+      "desc": "太实用了不愧是济南本地人‼来济南只有看地图攻略才靠谱真心是这样的！20多年济南人给大家熬夜做了份济南行程攻略，吃住行都是写全了✍希望大家能够来济南派上用场哦\n-\n✅必去九大景点\n1️⃣ 趵突泉 – 天下第①泉，三股水昼夜喷涌，李清照纪念堂藏身园中2️⃣ 大明湖 – 泉城明珠，超然楼亮灯瞬间绝美，四季皆景3️⃣ 千佛山 – 登顶俯瞰泉城全景，兴国禅寺香火千年4️⃣ 山东博物馆 – 齐鲁文化殿堂，亚醜钺等21万件藏品免费预约5️⃣ 灵岩寺 – 海内四大名刹之首，宋代彩塑罗汉像被誉为“海内第 一名塑”6️⃣ 黑虎泉 – 免费开放，泉水从三兽头喷射，可自带杯子接水品尝7️⃣ 五龙潭 – 26处古泉藏身园中，秦琼祠所在地，潭水湛蓝如玉8️⃣ 芙蓉街/宽厚里 – 百年小吃街，油旋、甜沫、把子肉满足舌尖狂欢9️⃣ 曲水亭街 – 家家泉水，户户垂杨，老济南水墨长卷漫步好去处\n#济南旅游攻略[话题]##济南美食[话题]##济南旅游住宿[话题]##济南旅游路线图[话题]##济南[话题]##济南旅游[话题]##济南旅游景点[话题]##济南旅游景点攻略[话题]##假期去哪玩[话题]##济南吃喝玩乐[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11689
+      ]
+    },
+    {
+      "id": 2611,
+      "city": "济南",
+      "title": "五一来济南住这3家吧！人均120💰！",
+      "desc": "📍第一家（大明湖）\n就在济南核心景区大明湖附近，周边商圈网红美食打卡点遍布\n步行就能到达#宽厚里[话题]# #泉城广场[话题]# #大明湖[话题]# 等景点\n轻奢商务风设计简约又高级，房间全部都是智能家居\n躺在床上就能完成开关灯窗帘等。就连卫生间都有两个洗手台\n-\n📍第二家（大明湖）\n离大明湖、曲水亭街很近，步行十分钟就到\n晚上去芙蓉街宽厚里小吃街也很方便\n装修设计也很复古和现代元素结合\nLoft设计每层都不小，上下都有卫生间\n有浴缸累了可以边赏景边泡澡，很舒服\n-\n📍第三家（趵突泉）\n步行可达大明湖和趵突泉\n五龙潭公园 出门就是小吃街\n酒店位于趵突泉内被周围的花草树木环抱其中🥰\n坐在房间内的飘窗上🕊\n窗外就是护城河，春赏花，夏赏荷，秋听婵，冬观雪🌨无论四季，无论晴雨，皆有欢喜\n-\n🚩作为经常出游的“老司机”，出游酒店建议一定要提早订！我看过了，去哪儿旅行很靠谱！\n-\n#济南[话题]# #济南酒店[话题]# #济南民宿[话题]# #济南住宿[话题]# #济南平价酒店[话题]# #济南平价民宿[话题]# #济南平价住宿[话题]# #济南旅行[话题]# #大明湖[话题]# #泉城路步行街[话题]##五一假期[话题]# #五一节[话题]# #五一出游[话题]# #五一去哪玩[话题]# #假期去哪玩[话题]# #五一假期去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11699
+      ]
+    },
+    {
+      "id": 2619,
+      "city": "济南",
+      "title": "曲水亭街｜晚上逛才是正确打开方式🌙",
+      "desc": "晚上来逛曲水亭街，氛围感直接拉满✨\n\t\n巷子不宽，人不少，但很有烟火气。\n两边的小店亮着灯，泉水在脚下静静流。\n\t\n最惊喜的是买了一条手链，才5块钱！\n好看不廉价，景区这个价格真的良心\n\t\n📍周边就是芙蓉街、大明湖，走路几分钟就到，可以串在一起逛。\n#济南[话题]# #曲水亭街[话题]# #济南夜景[话题]# #济南小众景点[话题]# #5块钱的快乐[话题]##山东旅游[话题]# #灯会[话题]# #巷子里的烟火气[话题]# #小城夜生活[话题]# #相约古城夜景[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11506
+      ]
+    },
+    {
+      "id": 2624,
+      "city": "济南",
+      "title": "济南一日游，跟我走👍",
+      "desc": "时间有限的小伙伴们，出发济南一日游，不迷路，拿捏拿捏[微笑R]\n我们是周六晚上做的卧铺北京出发，周日早上六点多到达大明湖站，吃喝就看自己的选择啦，，，\n第一站五龙潭，七点开园，一个小时就能逛完，西门进南门出，斜对过就是趵突泉啦，，，园子不小，里面有点东西，可以仔细逛一下呢。\n接着想去老舍故居就从南门出，500米就是老舍故居，不去的从东门出，马路对面就是泉城广场，走旁边的林荫小路，沿着护城河，就能看到黑虎泉，可以接泉水，能够直接喝的。\n尽头就是解放阁，可以进去参观一下。下来就是宽厚里，一整条街可以逛吃逛喝[吧唧R]，午饭可以在这里解决。接着逛芙蓉街，也都是小吃，走着走着到曲水亭街，很优美，然后去看有名的王府池子、起风桥。\n重点来到了大明湖，吹吹风太舒服了，等到快天黑的时候去找好位置看超然楼亮灯，然后去看看夏雨荷，非常充实的一天，晚上八点多从离得很近的济南西站打道回京。",
+      "unavailable": false,
+      "mentionIds": [
+        11623,
+        12917
+      ]
+    },
+    {
+      "id": 2782,
+      "city": "济南",
+      "title": "📍济南3️⃣天2️⃣晚｜保姆级攻略‼️人均500💰",
+      "desc": "篇幅有限，济南“景点拍照打卡机位”在下一篇，喜欢拍照的姐妹不要放过哦‼️\n\t\n🗺️路线\n📍Day1：\n1️⃣五龙潭：\n其实五龙潭并不大，每个景点离得也都很近，真的很美！\n2️⃣趵突泉：\n如果不想逛，只想去趵突泉，可以从南门或者东门进，很快就到了！\n3️⃣泉城广场：从趵突泉东门出来就直接可以看到泉城广场的地标建筑！\n4️⃣黑虎泉：\n❣️定位到南二门，进门右转下去就是黑虎泉，接泉水也在这里，⚠️注意从莲花水台盆接的水才能直饮！\n5️⃣解放阁：过桥从黑虎泉九女亭后面上去就是解放阁\n6️⃣宽厚里：解放阁马路对过就是宽厚里，一条小吃街\n7️⃣芙蓉街：也是一条小吃街，从芙蓉街32号拐进去就是起凤桥街，可以打卡起凤桥，然后穿过胡同就到曲水亭街了\n8️⃣曲水亭街：\n两边是小茶馆小酒馆，拍照超级出片，涌泉胡同机位也在这条街\n9️⃣百花洲：\n很多人导航“百花洲”，搜出来的是“百花洲历史文化街区”，其实曲水亭街和百花洲都属于“百花洲历史文化街区”。\n❣️大家说的百花洲的景点，是围着百花洲湖的街区，有很多小摊位，可以在这里逛逛（如图4红色⭕️所示）\n🔟大明湖：\n曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼\n\t\n📍Day2：\n1️⃣千佛山：\n这里我真的很想说一句，我恐高，所以对于我来说从历山院去山顶的路真的很难走！但是也有姐妹带着小朋友登顶！所以根据自身情况选择吧！\n2️⃣民族大街市场：当地居民去买菜的菜市场，整条街前面是各种小吃，后面是卖菜的，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆\n3️⃣大观园：可去可不去\n4️⃣老商埠•经三路：街区网红打卡点，很出片\n5️⃣泉城之眼：喜欢拍照的可以去机位打卡，只是为了看风景的话没太有必要\n9️⃣环联夜市：超级大的夜市！有时间可以去逛逛\n\t\n🥘美食：老周家牛肉烧饼（推荐👍）、杨家甜沫、孙家糖油条、油旋张、超意兴\n\t\n🚗出行：共享单车➕打车\n\t\n🏠住宿：我们住在火车站附近，到景点很方便\n#深度游攻略[话题]##济南旅游[话题]# #济南美食[话题]# #济南旅游攻略[话题]# #趵突泉[话题]# #大明湖[话题]# #千佛山[话题]##济南一日游[话题]##经三路[话题]# #老商埠[话题]# #每天写一篇旅游攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12638
+      ]
+    },
+    {
+      "id": 2793,
+      "city": "济南",
+      "title": "为了这❶❽张照片，特意🚄去了趟济南❗️附攻略",
+      "desc": "“四面荷花三面柳，一城山色半城湖”\n一座被泉水包围的城市\n有江南的温润也有北方的豪情 春暖花开，可以带着家人朋友一起漫步济南\n感受这座城市的浪漫和松弛～\n\t\n北京出发🚄1.5h即可达，周末两天刚刚好，轻松不赶路\n\t\n🗺️两天悠闲游玩路线\nDAY①:经三路➠纬三路➠老商埠➠大观园➠五龙潭➠趵突泉➠洪家楼\nDAY②:解放阁➠宽厚里➠芙蓉街➠起凤桥➠曲水亭街➠百花洲➠大明湖超然楼\n\t\n📷必玩打卡点\n❶老商埠：超大 “济南” 地标、玫瑰花墙、复古老爷车、多巴胺彩色墙面都很出片， 建议早上去，人少更好拍\n❷经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯，随手拍都很有氛围感\n❸大观园：古色古香的，汇聚了很多济南当地美食小吃，适合边走边尝鲜\n❹五龙潭公园：北方少有的清泉园林，泉水潺潺，景致清幽\n❺趵突泉公园：看三股泉水喷涌，泉池幽深波光粼粼，氛围感拉满\n❻洪家楼：哥特式建筑外观很有特色，内部彩色玻璃精致好看！有固定开放时间，建议提前规划，避免跑空\n❼解放阁：济南标志建筑，站在远处拍全景，很有纪念意义\n❽宽厚里&芙蓉街：两处相邻，遍布济南特色小吃和美食，也有不少“济南”大字打卡点，适合拍照逛吃\n❾起凤桥街：藏在巷子里的小桥流水，青砖黛瓦，满是江南韵味\n❶⓿百花洲&曲水亭街：自带江南氛围感，慢悠悠散步，就能感受老济南的慢生活\n❶❶大明湖&超然楼：蓝调时刻在大明湖可以拍到超然楼亮灯，氛围感十足！也可以登楼俯瞰大明湖全景\n❶❷时间充裕的，可以安排济南千佛山\n\t\n🏨住宿：住在泉水广场附近，出行、逛吃都方便\n\t\n🥣美食：油旋、甜麻辣肥蛤超好吃，把子肉配米饭，香而不腻，很下饭\n#新年旅行第一站[话题]##我是春节主理人[话题]##带着父母去旅行[话题]##长辈友好旅行地[话题]##过年就来小红书[话题]##北京周末去哪儿[话题]##北京出发旅游[话题]##我的私藏旅行路线[话题]##我的小众旅行攻略[话题]##周末去哪儿[话题]##本地人才知道的好地方[话题]##我和我的春节[话题]##咔嚓一张新年照[话题]##济南旅游[话题]# #济南拍照[话题]# #济南攻略[话题]# #济南周末游[话题]##济南两日游[话题]##大明湖[话题]##趵突泉[话题]#@生活薯",
+      "unavailable": false,
+      "mentionIds": [
+        12625
+      ]
+    },
+    {
+      "id": 2803,
+      "city": "济南",
+      "title": "济南会惩罚每一个不做攻略的P人🏃🏻‍♂️",
+      "desc": "济南city walk路线｜2天1晚超全攻略来了✅\n刚从济南回来，济南真的别太好玩了，出片的景点真的不要太多🥹🥹这份旅游攻略大家快码住！希望能够帮助暑假即将去玩的宝宝们🫶🏻\n🟢路线安排\nDay1️⃣：趵突泉➡️五龙潭➡️芙蓉街➡️曲水亭街➡️大明湖\nDay2️⃣：黑虎泉➡️解放阁➡️洪家楼教堂➡️宽厚里➡️泉城广场\n🟢住宿建议\n1、一定要提前预约好酒店！！临时订房极有可能床位紧张，价格也会上涨很多倍，临走前不要遗忘自己的行李哦😙\n2、对住宿没有过多要求的宝宝，可以选择 民宿或青旅，注意对比评论区图片，以防“照骗”\n💡大明湖景区附近\n靠近济南站和大明湖景区，交通 便利，赶车超方便，步行几分钟即可抵达超然楼和百花洲打卡！！\n💡泉城广场附近\n有济南地标性建筑，性价比高，周边小吃较多，步行可抵达趵突泉景区\n💡历下区\n济南中心地区，周边景点多，交通 便利，大名鼎鼎的芙蓉美食街也在这里哦\n💡宽厚里附近\n地理位置优越，喜欢汉服和旗袍拍照的姐妹闭眼冲，氛围感超好，步行即可抵达黑虎泉\n明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。来这里，做一日“泉边人家”，便懂了老舍笔下“理想的境界”。\n#济南[话题]##济南旅游攻略[话题]##济南打卡[话题]# #学生党旅游[话题]# #攻略[话题]# #大学生暑假旅游[话题]# #老舍笔下的济南[话题]##趵突泉[话题]##大明湖[话题]##放假去哪玩⚡️⚡️[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12573
+      ]
+    },
+    {
+      "id": 2810,
+      "city": "济南",
+      "title": "济南📍一日游 超舒服的citywalk逛吃住攻略",
+      "desc": "路线行程🚗\n老舍故居→趵突泉→黑虎泉→宽厚里→解放阁→白石泉→曲水亭街→大明湖→超然楼\n\t\n🏠住宿\n住泉城广场/大明湖附近，步行看超然楼亮灯，周边吃喝便利，经济型酒店200左右\n\t\n🚇交通\n景点间骑车/步行就行，打车起步价不贵\n\t\n🍜必吃美食\n牛肉烧饼、羊汤、锅贴、把子肉、泉水包子\n\t\n✨小建议\n1. 趵突泉8点前去，人少好拍照\n2. 黑虎泉茶摊喝泉水茶，超惬意\n3. 曲水亭街工作日去更清净\n\t\n❌避坑\n1. 趵突泉枯水期别去，雨季后去更出片\n2. 芙蓉街、宽厚里小吃逛逛就行\n3. 超然楼亮灯前人多，提前占位\n\t\n#济南旅游[话题]# #济南一日游[话题]# #济南攻略[话题]# #济南美食[话题]# #济南打卡[话题]# #超然楼[话题]# #趵突泉[话题]# #大明湖[话题]# #济南旅行[话题]# #山东旅游[话题]# #打卡济南[话题]# #山东博物馆[话题]# #济南旅游攻略[话题]# #京津冀周边游[话题]# #周末旅游[话题]# #假期旅游[话题]# #济南旅行[话题]# #济南拍照[话题]# #济南美食[话题]# #曲水亭[话题]# #宽厚里[话题]#  #济南一日游[话题]# #济南特种兵旅游攻略[话题]# #济南旅游[话题]# #山东周边游[话题]# #不为打卡的旅游[话题]# #本地人做的攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12816
+      ]
+    },
+    {
+      "id": 2816,
+      "city": "济南",
+      "title": "2025年11月29日济南一日游",
+      "desc": "我可太喜欢济南了，济南的秋天和冬天真的封神，那些泉水太清澈了，连护城河都那么好看，我喜欢看这么清澈透亮的水，好纯净好健康好治愈！坐火车到济南站，然后直接去五龙潭，从这里开始逛起。坐公交车才发现老周家牛肉火烧就在上一站，离这不远，下次可以去尝尝。五龙潭对面就是趵突泉，以前我去过了因为有门票所以这次就不去了，五龙潭是没有门票的，听说是因为今年雨水多所以里面那个泉才喷水了。从五龙潭出去做公交车去黑虎泉，公交站旁边就是护城河，太好看了，我要是生活在这我愿意每周都出来看泉水。黑虎泉是济南市接泉水喝的地方，居然是像个水管子不停在流，旁边还有个游泳池，好像是免费的，应该也是这个泉水的吧。黑虎泉这里可以做游船，水好清像玻璃。黑虎泉对面就是宽厚里，从宽厚里往回走就是恒隆广场，今天的午饭是麻六记。穿过恒隆马路对面就是芙蓉街，反正每个城市都得有个这种热闹的卖小吃的步行街。芙蓉街走到头继续顺着胡同走就是曲水亭街，这一路胡同都好逛，里面有好几个网红拍照地。曲水亭街对面就是大明湖入口。从这个入口进去逛到湖北门附近就是夏雨荷。该说不说这版确实没有上版好看。从北门出来坐公交车到济南站结束一天行程。济南太好看了，明年秋天再来。",
+      "unavailable": false,
+      "mentionIds": [
+        12659
+      ]
+    },
+    {
+      "id": 2835,
+      "city": "济南",
+      "title": "济南精华版攻略（！含特色盖章项目）",
+      "desc": "7月底从炎热的西安➡️看似低5-8度的济南，实际一点也不比西安凉快🥲如果要来建议还是在其他季节来玩，以下为本次出行游玩项目！\n注：其他帖子还提到很多具体的项目，就我自己做攻略情况来看补充一些内容，其他不多作赘述\n\t\n⭐️游玩路线：最多一天半\nD1：🚝14点到济南西站➡️酒店➡️世茂广场（饭）➡️曲水亭街➡️大明湖➡️百花洲➡️芙蓉街\nD2：10点出门，五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里（大概在15点已逛完）➡️济南站\n\t\n⭐️具体建议\n【酒店】建议住大明湖景区周围，我住在泉城广场附近汉庭，实际去哪里都需要走10分钟➕，大明湖景区离各个景点都不远\n【景点】\n★大明湖景区：南门进，沿路有卖荷花的，会帮忙开花，还有老婆婆叫卖银色可以亮灯的超然楼手串，非常漂亮（准备回去再买结果下暴雨再没碰到🥲）\n★五龙潭公园：南门进，进门就是文创店，五龙潭离门口很近，其他景点为五龙柱子、秦琼祠，南门出（离趵突泉很近）\n★趵突泉（门票40）：北门进，沿路能看到很多漂亮的小潭，能看到趵突泉石碑的那一边是游客最多的地方，其余三边人都相对少一点（可以坐），东门出（离黑虎潭步行15分钟左右）\n★黑虎泉：❗️坐船需要提前买票选座（p10），大约提前两小时买，导航黑虎泉会路过金虎泉、一虎泉等等，黑虎泉对面的台阶上去黑虎阁是文创店（p8-9）❗️接水点是扫码出水，一个人最多3次扫码，所以别人在接的时候可以提前关注公众号但不要点扫码接水！（桥通着解放阁）\n★解放阁：没上楼，远远看了一眼\n\t\n【文创】如果你是冰箱贴/盖章爱好者，以下官方文创店值得拥有：\n★盖章本（推荐x2）：\n百花洲/芙蓉街：大明湖内文创店本子同款，价格略低\n五龙潭：南门一进门的猫的天空城，本子精美漂亮，价格略高\n★盖章\n大明湖超然楼+文创店、五龙潭猫的天空城（付费）、趵突泉天下第一泉文创、黑虎泉黑虎阁\n★冰箱贴/其他文创\n✭大明湖：超然楼旁边的文创店，原创正版趵突泉、黑虎泉冰箱贴（p1）@Heron 禾恩 ，这个冰箱贴只有官方景区卖正版（还有趵突泉，见下），还有一个透明可亮灯超然楼冰箱贴，其他地方没有卖\n✭五龙潭：猫的天空城，有很多精美的冰箱贴，价格也略高，40+\n✭趵突泉：天下第一泉文创中心（正版半透冰箱贴p1、4）\n\t\n写在最后：济南城市观感很难相信是一座省会城市，反而更像发展不错的县城，如果想来看看泉水可以作为一个短暂的中转旅游地\n#济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12932
+      ]
+    },
+    {
+      "id": 2839,
+      "city": "济南",
+      "title": "自驾第一站✨｜济南一日全攻略👍",
+      "desc": "沈阳出发自驾第一站👉济南我来啦🚗\n27号中午沈阳出发，夜里睡在理想小车车里😴\n28号一早就抵达济南！\n🏨住宿｜沃德酒店（趵突泉大明湖店）\n性价比直接拉满💯位置真的绝绝子！\n出门就是五龙潭公园，景点离得都很近，停车也方便，来济南住这超省心👍\n📅28号全天打卡路线👇\n▫️【上午｜全程步行🚶‍♀️】\n①五龙潭✨酒店出门即到！人少清幽，泉水潺潺，慢悠悠散步超治愈\n②趵突泉💧五龙潭南门出来就是趵突泉北门！打卡课本里的天下第一泉\n③泉城广场⛲顺路打卡济南地标\n④黑虎泉🥤可以直接接泉水尝一尝，氛围感狠狠拿捏\n⑤解放阁🏯紧挨着黑虎泉，登高拍照巨出片！\n⑥宽厚里🍢出了解放阁就是，边走边炫各种小吃\n⑦芙蓉街🍡继续逛吃模式，小吃种类超多\n⑧曲水亭街🌿家家泉水户户垂杨！超多网红拍照机位，随手拍都好看\n▫️【中午🍚干饭时间】\n⑨大明湖附近炫午饭👉就是上一篇分享的「大滋味·大师鲁菜」🔥\n爆炒腰花香迷糊啦！想看美食的宝子直接翻我上一篇笔记～\n▫️【下午｜继续步行🚶】\n⑩大明湖景区🌊吃完饭逛大明湖！打卡超然楼、夏雨荷同款点位，沿湖吹吹风，风景绝美✨\n逛完从大明湖北门打车回酒店，美美休整2小时，蓄力晚上夜游！\n▫️【晚上｜骑行出发🚲】\n⑪泉源之眼🌃天黑骑车出发！到泉源之眼路程十多分钟，打卡绝美夜景，骑车完全不堵车，太舒服啦\n⑫穆德老周家牛肉烧饼🥞【强力推荐！！】\n看完夜景顺路过来干饭！真的巨好吃😭！烧饼外酥里软，吸满肉汁，咬一口满嘴香；羊汤奶白醇厚，热乎乎下肚，直接治愈一整天暴走的疲惫✨。来济南一定要试一试！\n吃完离酒店不远，慢悠悠步行溜溜达达就回酒店啦，完美收官济南这一天🥳\n✅白天步行逛老城感受泉城烟火，晚上骑车看夜景，饭后散步消食，节奏刚刚好，不会很累！\n下一站准备出发青岛🌊继续蹲我的自驾连载🚗\n#济南一日游[话题]# #济南旅游攻略[话题]# #沈阳自驾山东[话题]# #济南打卡[话题]# #大明湖超然楼[话题]# #济南住宿推荐[话题]# #自驾连载[话题]# #济南骑行[话题]# #圆周旅记[话题]# #国庆旅游howto[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12956
+      ]
+    },
+    {
+      "id": 2851,
+      "city": "济南",
+      "title": "济南这三条街这么逛才地道（古城逛吃）",
+      "desc": "曲水亭街、芙蓉街、宽厚里离得不远，可以连成一条线逛，但玩法完全不同，别走冤枉路。\n\t\n顺序建议：曲水亭街 → 芙蓉街 → 宽厚里，从文艺一路逛到热闹。\n\t\n1. 曲水亭街：文艺担当。青石板上一条清浅溪水顺着流，路边有人支桌喝泉水茶，很出片。别急着吃饭，先顺着溪水慢走，石板路配老民居，随手拍都是「老济南」。\n\t\n2. 芙蓉街：小吃一条街，主吃油旋（济南特色，外酥里软，刚出炉咸香）、甜沫、烤猪蹄，边走边吃。人最多，尽量避开饭点。\n\t\n3. 宽厚里：仿古街区，比芙蓉街新也大，各种店更全，适合坐下慢慢吃加拍照。旁边就是解放阁、黑虎泉，逛完正好接黑虎泉喝口泉水。\n\t\n避雷提醒：\n· 三街都有网红店，认准本地招牌（油旋/扒蹄/把子肉），别一进街就乱买；\n· 芙蓉街挤是真的挤，别推婴儿车进去；\n· 曲水亭街的「泉水大碗茶」是氛围，想正经喝泉水去黑虎泉；\n· 逛吃记得留肚子，这条线一路掌不停。\n\t\n离得近，从大明湖南门出来走几步就到曲水亭街，正好接行程。\n\t\n#济南古城[话题]# #曲水亭街[话题]#  #芙蓉街[话题]#  #宽厚里[话题]#  #济南小吃[话题]#  #济南旅游攻略[话题]#  #济南美食[话题]#  #周末去哪儿[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12835,
+        12836
+      ]
+    },
+    {
+      "id": 2853,
+      "city": "济南",
+      "title": "济南芙蓉街！！最怕倒闭的鲁菜小馆子。。没踩雷",
+      "desc": "不得不说芙蓉街也是有好吃的小馆子的！！\n茶香排骨、松子桂花排骨、口袋虾球、芥末虾球、炸鲜奶酥、拉丝番茄炒蛋。。。\n\t\n茶香排骨是有淡淡茶香味，排骨是酱香味多一点！番茄拉丝鸡蛋也是甜咸口的！！搭配蒜瓣很下饭～糖醋鲤鱼每桌都有！！还有爆炒腰花、风味茄子、糖醋里脊。。\n\t\n济南旅行小tips：\n距离黑虎泉、解放阁、曲水亭街、大明湖、泉城广场…都是步行就可以到的！！\n\t\n#济南[话题]##济南美食[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南特色美食[话题]##济南芙蓉街美食[话题]##济南芙蓉街小吃[话题]##小众旅行地[话题]##周末去哪儿[话题]##第一波春菜已经占领[话题]##春天开幕式[话题]# #大学特种兵[话题]##济南旅游[话题]##济南旅行攻略[话题]# #旅行随手拍[话题]# #小城里的好味道[话题]##记录旅途中的美食[话题]##大声安利本地美食[话题]# #条条小路有好吃[话题]# #本地人推荐美食[话题]# #条条大路都好吃[话题]# #本地人推荐小吃[话题]# #本地人爱吃的店[话题]# #为宵夜而生的美食安利[话题]#@吃货薯@吃货薯@生活薯@生活薯 @城市情报官",
+      "unavailable": false,
+      "mentionIds": [
+        12904
+      ]
+    },
+    {
+      "id": 2857,
+      "city": "济南",
+      "title": "来济南可以不吃把子肉，但一定要吃这家！！！",
+      "desc": "三刷了！在芙蓉街和西更道交叉口上，地方不太好找但确实好吃！且量大便宜烟火气满满，在这个位置很难得～\n对面就是恒隆旁边是珍珠泉，穿过西更道就是曲水亭大明湖，离着趵突泉五龙潭也很近～\n\t\n推荐茶香排骨、锅包大虾、牛胸口烙馍、鱿鱼烧饼、芥末虾球……\n\t\n#济南[话题]##济南美食[话题]##济南旅游[话题]##济南旅游攻略[话题]##趵突泉附近美食[话题]##趵突泉附近的美食[话题]##济南泉城路美食[话题]##济南特色美食[话题]##曲水亭街[话题]##大明湖[话题]##济南大明湖附近美食[话题]##济南鲁菜[话题]##大声安利本地美食[话题]##济南吃喝玩乐[话题]##芙蓉街美食推荐[话题]##济南美食推荐[话题]##济南美食必吃榜[话题]##济南好吃的美食[话题]##大明湖附近美食[话题]##大明湖附近的美食[话题]##曲水亭街美食[话题]##芙蓉街美食[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12948
+      ]
+    }
+  ],
+  "noteDetails": [
+    {
+      "id": 2545,
+      "city": "济南",
+      "title": "济南citywalk🍃1-2日经典游玩路线live",
+      "desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南趵突泉景区风景拼贴图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "趵突泉"
+        }
+      ],
+      "observedAt": "2026-10-04T11:17:32.826069+00:00",
+      "publishedAt": "2026-06-07T12:05:23+00:00",
+      "analysisSha256": "b3235f4178323c547bd8fb699ba2851276790c92ce27607d5b85f6c461e76bc5"
+    },
+    {
+      "id": 2548,
+      "city": "济南",
+      "title": "山东——济南",
+      "desc": "一日游线路如图所示\n济南的四季，各有各的风采\n春天的花朵，夏天的绿荫\n秋天的果实，冬天的雪景\n\t\n到达济南站已是早晨\n下了火车立刻步行前往赵家甜沫\n会路过一条路\n路旁长满了高大的梧桐树\n分不清品种\n在春夏之交只觉得清凉\n\t\n吃了两次甜沫\n感觉还可以\n再配上炸物\n妥妥充满碳水的早晨\n吃饱喝足毕竟要走一天路\n按照一日游的地图\n首先赶早去趵突泉\n\t\n景区内还有很多大大小小的泉眼\n每个都咕噜咕噜咕噜\n还有小鱼嬉戏其中\n皆若空游无所依\n\t\n赶在大部队到来之前游览完趵突泉景区\n随后步行前往五龙潭\n\t\n夏季的五龙潭\n是孩童玩水的好地方\n拥有一个强有力的水枪\n是不是可以称霸水池\n\t\n看时间已过中午\n前往最近的春水锅贴吃午饭\n顺路买杯阿水大杯茶\n量大，好吃\n\t\n饭饱后\n找个小巷子钻进去\n沿着弯曲的小巷子\n前往曲水亭街和百花洲\n\t\n小巷子里也有很多泉眼\n开发前的曲水亭街很安静\n溪水潺潺\n垂柳依依\n顺路往北走\n便到了大明湖\n\t\n大明湖畔夏雨荷是夏天的限定哦\n想看超然楼亮灯\n那就凑好时间玩到晚上\n关于超然楼的亮灯时间还是提前看景区公众号\n最新时间如图所示\n\t\n五龙潭，趵突泉，大明湖均有游船可乘\n大明湖景区内\n南门码头：\n日间票价50/人\n航线：绕大明湖老区、新区一周\n夜间票价35/人（17:30-21:00）\n航线：绕大明湖老区一周\n稼轩祠码头：\n票价10/人\n航线一：稼轩祠-历下亭-稼轩祠（往返）\n航线二：稼轩祠-历下亭-铁公祠（单程）\n湖西码头：\n票价35/人（豪华游舫含导游讲解）\n路线：湖西码头-历下亭-湖西码头\n有夜航18:00-21:00\n铁公祠码头：\n票价10/人\n航线一：铁公祠-历下亭-铁公祠（往返）\n航线二：铁公祠-历下亭-稼轩祠（单程）\n超然楼码头：\n票价50/人\n航线：绕大明湖老区、新区一周\n自驾电瓶船\n海底世界小船站（2-6座）\n150/小时，每超过10分钟加收20元\n铁公祠小船站（2-4座）\n100/小时，每超过10分钟加收20元\n护城河游船\n黑虎泉-趵突泉60/人（含趵突泉门票）\n黑虎泉-大明湖湖西50/人\n黑虎泉-大明湖超然楼80/人\n黑虎泉-黑虎泉（环线）100/人\n营业时间9:00-17:30\n夜航18:00-20:00\n\t\n按照我个人的行程\n第一天的安排差不多到此\n晚上有空余时间\n可以前往芙蓉街\n泉城广场看看夜景\n想吃把子肉作为晚餐的话\n也可以选择超意兴\n\t\n第二天的早晨\n吃扎实的山东煎饼\n配上一碗豆腐脑\n\t\n早起爬千佛山\n爬的不是很累\n挺热的\n后可以坐地铁前往山东博物馆\n剩下的小半天\n交给城中心剩下的黑虎泉等地\n顺带看一眼解放阁\n离开之前\n带上泉水\n#济南旅游[话题]# #山东旅游[话题]##趵突泉[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南一日游景点路线及步行时间",
+          "has_text": true,
+          "key_info": {
+            "tips": "超然楼约18点亮灯",
+            "hours": null,
+            "price": "大明湖免费，大学生免费",
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "济南 晴 14/26°C\n湖畔苑大明翠庭 明湖北路\n明湖北路 泉城夜宴\n大明湖景区-海底世界\n大明湖南门 龙泉池\n辛稼轩纪念祠 老舍纪念馆\n门票免费 大明湖\n约18点亮灯 超然楼\n走路18分钟 大明湖景区-雨荷厅 崇明寺\n走路3分钟 曲水亭街\n山东省人民政府 济南古城\n走路5分钟 芙蓉街 不愿泉\n五龙潭 走路5分钟 走路15分钟\n宽厚里 风景区 趵突泉\n泉城广场 走路13分钟 黑虎泉 济南市环城公园 解放阁\n走路10分钟 大学生免费 走路5分钟 门入防\n趵突泉 泉城广场 黑虎泉 解放阁 宽厚里 芙蓉街 曲水亭街 大明湖南门 大明湖 超然楼\n济南一日游"
+        },
+        {
+          "summary": "地图搜索宝鸡扯面餐厅，显示济南多家鲁菜馆位置",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "19:27\n宝鸡扯面哪里好吃\n美食 景点 酒店 加油站\n硬核挑战赢现金！敢战就来→\n北园高架路\n顺河高架路\n春水锅贴·传统鲁菜(大明湖...\n山东省政府\n秦记火烧(济南供电局第二宿...\n油旋张(大观园店)\n泉城老董家菜馆(泺文路店)\n市中区\n山东大学(千佛山校区)\n图层 反馈 榜\n1公里\n23℃\n首页 周边 AI 打车 我的"
+        }
+      ],
+      "observedAt": "2026-10-04T11:17:32.841133+00:00",
+      "publishedAt": "2026-06-09T13:21:51+00:00",
+      "analysisSha256": "151919c03be9cf97a4ac21472668edf181db2daf8df977fe1276fe2611d7c843"
+    },
+    {
+      "id": 2550,
+      "city": "济南",
+      "title": "愿每一个去济南的人都能刷到这篇！！！",
+      "desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南三大景点游览攻略与避坑提示",
+          "has_text": true,
+          "key_info": {
+            "tips": "周一闭馆；趵突泉建议早上7点入园；山东博物馆可与美术馆串联游览",
+            "hours": "千佛山：早上6点前、晚上18:30后免费入园",
+            "price": "趵突泉40元、千佛山30元（早上6点前/晚上18:30后免费）",
+            "reservation": "山东博物馆需提前7天预约"
+          },
+          "image_index": 0,
+          "text_content": "去济南一定要避雷：\n1 趵突泉 一定要去 98分\n门票40r，建议早上7点入园，人少游玩体验好也方便拍照，除了最出名的泉眼，观澜庭、濯缨池、李清照纪念堂、万竹园这些也很值得一逛。\n2 千佛山 一定要去 90分\n门票30r，早上6点前，晚上18.30之后免费入园，登顶后可以俯瞰全城，也适合傍晚看日落。\n3 山东博物馆 一定要去 95分\n周一闭馆，提前7天预约，镇馆之宝红陶兽形壶、东平汉墓壁画等等很震撼，美术馆挨着很近，时间充裕的话可以串联一起逛逛。"
+        },
+        {
+          "summary": "济南三个必去景点推荐及避坑指南",
+          "has_text": true,
+          "key_info": {
+            "tips": "大明湖不要做小船；洪家楼天主教堂拍照建议下午两三点，光影效果最佳",
+            "hours": "洪家楼天主教堂：周一闭馆，周日10:00-16:00不对外开放；建议下午14:00-15:00前往",
+            "price": "超然楼门票40r",
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "4 大明湖 一定要去 92分\n大明湖畔夏雨荷的出处，泉水汇集成湖很漂亮，可以坐船游玩很惬意，不要做小船，晚上可以在这里看超然楼夜景，超然楼门票40r，个人感觉湖边拍夜景即可，不用特意进去。\n\n5 曲水亭街&百花洲 一定要去 88分\n很适合citywalk，青石板、石桥、流水很有氛围感，也很适合穿汉服拍照。\n\n6 洪家楼天主教堂 一定要去 92分\n哥特式建筑超级漂亮，建议下午两三点过来，照在彩窗上光影很绝，周一闭馆，周日10-16点不对外开放。"
+        },
+        {
+          "summary": "济南景区游玩贴士与建议",
+          "has_text": true,
+          "key_info": {
+            "tips": "济南初秋较热适合上午游户外；黑虎泉直饮点接水；超然楼亮灯提前线上确认，建议18:30前占位；省博美术馆周一闭馆；老城区石板路不平防滑；大明湖游湖提前问清票价和时长",
+            "hours": null,
+            "price": null,
+            "reservation": "省博和美术馆都需要提前且分开预约"
+          },
+          "image_index": 4,
+          "text_content": "游玩贴士\n1 济南初秋依然比较热，可以把户外景点安排在上午，下午安排室内景点。\n2 黑虎泉去直饮点接水，不要接护城河、泉池里的水，容易拉肚子。\n3 超然楼亮灯时间需要提前线上看，可能会有变动，建议18.30之前占位。\n4 省博和美术馆都需要提前且分开预约，周一闭馆千万别跑空。\n5 老城区大部分是石板路，不平易打滑，务必穿舒适的鞋。\n6 大明湖游湖一定要提前问清票价和时长，是单程还是环湖，避免纠纷。"
+        },
+        {
+          "summary": "济南第二天旅游路线攻略图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "济南Day2路线\n大明湖\n步行3分钟\n枕湖私宴(大明湖店)\n入选打卡榜\n曲水亭街\n步行3分钟\n曲水亭街民俗文化市场\n百花洲\n步行18分钟\n珍珠泉\n芙蓉街\n步行8分钟\n山东省人大常委会\n四喜居老济南把子\n山东政协大酒店\n万海商街\n县西巷\n大明湖路\n省府西街\n省府东街\n芙蓉街\n舜井街\n院上墙根街\n翠柳屏岛\n辛稼轩纪念祠\n历下亭\n秋柳诗社\n老舍纪念馆\n玉涵桥\n吕祖庙\n雪泉\n大喜汉服(大明湖店)\nTHANK Bar\n漫心府\n光明体验馆\n山东手造展示体验中心\n西更道历史"
+        },
+        {
+          "summary": "超然楼夜景亮灯震撼美",
+          "has_text": true,
+          "key_info": {
+            "tips": "蓝调时刻亮灯瞬间很震撼，全场'哇塞'",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 10,
+          "text_content": "超燃楼\n蓝调时刻美疯了，亮灯瞬间\n全场\"哇塞\"不断\n超然楼\n超然楼"
+        }
+      ],
+      "observedAt": "2026-10-04T11:17:32.888035+00:00",
+      "publishedAt": "2026-09-18T06:36:37+00:00",
+      "analysisSha256": "1ee14daa359c547d5a6512445f121a096eece1980ac8aa4219aca8d6d8860546"
+    },
+    {
+      "id": 2553,
+      "city": "济南",
+      "title": "济南特种兵一日游",
+      "desc": "1.【五龙潭】 早上9:00\n第一站是五龙潭公园。清晨的五龙潭，空气清新，水波荡漾，宁静的环境非常适合散步和拍照。免费。从东门进南门出，南门有龙潭观鱼、中共山东省委旧址。游览时间：约1小时，\n2.【趵突泉】 上午10：00\n从五龙潭步行约10分钟即可到达趵突泉。在这里可以看到泉水从地下喷涌而出，场面十分壮观。趵突泉公园内还有许多历史建筑和纪念碑，非常值得一看。五龙潭公园南门对面就是趵突泉北门，北门进，东门出。成人门票40元/人。\n游览时间：约1.5小时\n3.【泉城广场】 上午11:30\n游览完趵突泉后，步行至泉城广场。泉城广场是济南市中心的标志性广场，广场上有音乐喷泉和各种雕塑，是拍照打卡的好地方。游览时间：约20分钟\n4.【黑虎泉】 中午12:00\n从泉城广场步行前往黑虎泉，黑虎泉是济南四大名泉之一，以其独特的“黑虎吐水”景观闻名。这里的泉水特别清凉甘甜，游客可以尝试饮用，感受纯净的泉水滋味。游览时间：约30分钟\n5. 【解放阁】 下午12:30\n从黑虎泉步行至解放阁，大约10分钟。解放阁是济南市的重要历史纪念建筑，登上解放阁，可以俯瞰整个济南市区\n游览时间：约30分钟\n6. 【宽厚里】 下午12:30\n接下来前往宽厚里，这是济南的一条古色古香的商业街，充满了传统的风味。在这里可以品尝到各种济南特色小吃，还可以购买一些纪念品带回家。\n午餐和游览时间：约1.5小时\n7. 【芙蓉街】 或【恒隆广场】休息一下 下午2:00\n从宽厚里步行至芙蓉街，约10分钟。芙蓉街是济南的美食街，这里汇聚了各种地道的小吃，可以继续品尝更多的美食，感受济南的风味。\n游览时间：约30分钟\n8. 【曲水亭街】 下午2:30\n游览完芙蓉街后，步行至曲水亭街。曲水亭街是济南保存最完好的明清古街之一，两旁是古老的建筑，很有特色。\n游览时间：约30分钟\n9.【文庙】免费。南门进，北门出，北门出去就是大明湖。\n10.【大明湖】 下午3:30\n从曲水亭街步行前往大明湖，大明湖是济南最著名的景点之一，在这里可以乘坐游船，环湖漫步，欣赏美丽的湖景。南门进，东北门出。\n游览时间：约2小时\n11. 【超然楼】 晚上5:30\n最后一站是超然楼，从大明湖步行前往，超然楼是济南的地标建筑之一，登楼俯瞰大明湖和整个济南市区，夜晚的超然楼灯光璀璨，景色非常迷人。\n游览时间：约30分钟#旅游式特种兵[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南起凤桥街的网红打卡墙，布满文艺励志标语",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "起凤桥街\nQifengqiao St.\nW E\n月亮不会奔向你\n但我会\nLOVEYOU\n等风等雨也等你\nWAIT FOR THE WIND AND RAIN\n济 南\nJI NAN\n不开心的时候\n就当是\n快乐正在加载\n我虽不善言辞\n但关于爱你\n我无法掩饰\n浪漫分半\n一半治愈于我\n一半照亮于你\nROMANCE IS DIVIDED IN HALVES\n热爱可抵\n岁月漫长\nFUN AND HAPPY\n人间一趟\n快乐至上\n不要焦虑\n让我陪你去热爱这个世界\n注意！\n前方好运将至\nGETGOODLUCK\n平安喜乐"
+        },
+        {
+          "summary": "济南特色打卡墙，多句\"来都来了\"标语装饰",
+          "has_text": true,
+          "key_info": {
+            "tips": "济南打卡地，多处\"来都来了\"主题标语装饰墙",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "来都来了welcome\n来都来了，👀进来看看？\n来都来了，你揍啥去？\n济南\nJINAN\n处方自由\n剂剂皆中\n来都来了，不要客气\n来都来了，不如喝点\n来都来了，都是朋友\n来都来了，不醉不归\n来都来了，📸拍拍照片？\n来都来了，喝点再走\n来都来了，进来坐一下嘛\n来都来了，就别乱乱了！"
+        }
+      ],
+      "observedAt": "2026-10-04T11:17:32.939024+00:00",
+      "publishedAt": "2025-12-31T14:45:36+00:00",
+      "analysisSha256": "2af49db2e6b99ed88a69fea5e63fb08307b45f3e5985f679293654603e35318a"
+    },
+    {
+      "id": 2554,
+      "city": "济南",
+      "title": "大学生暑假旅行📍济南citywalk两日游路线",
+      "desc": "如果你周末想换种方式逛城市，\n那就来济南citywalk吧！\n从趵突泉的泉眼到曲水亭街的石板路，\n听泉水叮咚，寻老城烟火。\n收好这份济南一日游citywalk路线\n一起感受老舍笔下的济南！\n\t\n📕济南旅游省心建议\n‼️趵突泉早上7点就开放，如果想不拥挤的就能在各个不错角度拍到照片，建议早上九点前就要去，越早越好!大学生领“畅游卡”可以mian门票哦！\n‼️高铁站可以选择大明湖站或者济南站，这两个站离景区更近些，而且大明湖站出站步行十分钟就可以到达大明湖南门!\n‼️不要再济南万象城地下停车场停车!标识很乱找不到自己的车在哪里，气流不畅停车费还很贵\n‼️去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入\n‼️可能会有朋友选择汉服妆造，不太推荐曲水亭街的店建议提前一天找好，避免浪费时间\n‼️如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离，如果不是很喜欢拍照不太建议\n‼️游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街\n‼️来玩的宝子们建议选择大明湖附近的酒店，步行十分钟即可到达景区，让你身临其境的感受湖光山色\n‼️吃饭的话，在泉城广场里面有很多，如果想吃小吃的友友们可以去泉城广场背面的芙蓉街，里面有很多特色小吃\n\t\n✅济南交通:\n济南的景点大部分都在一起，其实步行就可以到达，部分远的景点可以骑单车或者打车\n\t\n✅济南住宿:\n建议住在大明湖或者泉城广场附近，比较热闹，距离其他景点都比较方便\n\t\n✅济南美食\n早餐在民族大街吃的人均💰20\n午餐在恒隆广场一家面馆吃的 味道一般\n晚餐可以去芙蓉街宽厚里吃一些小吃\n#济南citywalk[话题]# #济南旅游攻略[话题]# #济南打卡[话题]# #济南两日游[话题]# #济南景点[话题]# #济南两天一晚[话题]# #老舍笔下的济南[话题]# #泉城[话题]# #济南[话题]# #暑假旅行[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665?xsec_token=ABbytXkAiMeM5k56PdMqJISc7ZEayJFpeC3RB1hK16724=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南第一天旅游路线攻略，含景点及步行时间",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "济南第一天路线\n步行2分钟 五龙潭→趵突泉\n步行2分钟 趵突泉→泉城广场\n步行7分钟 泉城广场→黑虎泉\n步行1分钟 黑虎泉→解放阁\n步行2分钟 解放阁→宽厚里\n宽厚里\n解放阁\n黑虎泉\n步行14分钟 宽厚里→曲水亭街\n步行2分钟 曲水亭街→大明湖\n步行12分钟 大明湖→超然楼"
+        },
+        {
+          "summary": "济南第二天路线攻略，标注景点间交通方式与时长大脑",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "第二天汕头路线\n经三路\nJiaxin\n夹心胡同\n步行1分钟\n老商埠\n打车23分钟\n洪家楼教堂\n打车15分钟\n山东博物馆\n步行1分钟\n山东美术馆\n返程"
+        },
+        {
+          "summary": "济南经三路历史文化街区打卡拼图",
+          "has_text": true,
+          "key_info": {
+            "tips": "慢行低速",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "济南 JINAN CITY\nJiaxin Hutong 嘉馨胡同\n☑ 经三路\n我喜欢济南 更喜欢 不期而遇的你\nSLOW DOWN 慢行低速\nEver"
+        }
+      ],
+      "observedAt": "2026-10-04T11:17:32.985456+00:00",
+      "publishedAt": "2026-07-14T11:29:44+00:00",
+      "analysisSha256": "d5455b113b0002389fcc4c45bf56389511a855b929527142eac204d1bd7ec26c"
+    },
+    {
+      "id": 2564,
+      "city": "济南",
+      "title": "大学生济南两日游｜来看看老舍笔下的济南📝",
+      "desc": "🌷Day1\n第一站：山东博物馆➕山东美术馆\n两个就隔一条街 非常之近\n——博物馆旁边有一个万象城 可以去那里吃中饭\n\t\n第二站：千佛山 美院门进 先往左看大佛 再往右上山\n上山可以乘坐缆车 也可以步行\n\t\n第三站：环联夜市 人超级多\n\t\n🌷Day2\n第一站：五龙潭公园 西门进 南门出\n\t\n第二站：趵突泉 北门进 东门出\n⭐️尽量在九点之前到达 人较少\n\t\n第三站：泉城广场 打卡地标\n\t\n第四站：黑虎泉➕解放阁 沿护城河走\n——吃中饭\n\t\n第五站：宽厚里 就是一个步行街 可以选择不去\n——下午回酒店休息\n\t\n第六站：大明湖 傍晚六点左右去 可以看落日和夜景\n\t\n——吃晚饭\n第七站：芙蓉街 吃完晚饭大概十点左右去 人不多\n\t\n济南真的是大学生友好城市\n公共交通和景点都不需要钱\n而且人都很善良且有素质\n唯一的感觉不足的就是吃的没什么特色\n但是景真的很好看\n春天来了公园里花都开了 很美\n不愧是被称作北方小江南的地方\n\t\n⭐️酒店尽量选在中山公园附近\n离景点都很近\n景点之间距离都不远\n从哪个门进出都是有考虑的\n完全顺路 不走回头路 不走重复景点\n#济南[话题]# #济南攻略[话题]#\n#济南旅游[话题]# #济南旅游打卡[话题]#\n#大学生周末游[话题]#\n#出游大学生[话题]#\n#泉城[话题]# #趵突泉[话题]# #大明湖[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南老舍相关景点宣传标语",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "总得来趟\n老舍笔下的济南\n小赵爱铜锅烧吗"
+        },
+        {
+          "summary": "城市街景中的蓝色抽象雕塑及背景建筑",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "桔子\n今天吃铜锣烧呀"
+        },
+        {
+          "summary": "山东博物馆外观及馆藏青铜器、陶狗文物展示",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 14,
+          "text_content": "山东博物馆"
+        }
+      ],
+      "observedAt": "2026-10-04T11:17:57.614650+00:00",
+      "publishedAt": "2026-03-28T03:18:54+00:00",
+      "analysisSha256": "4c5f6d02a6ed57b69847963d5da6fc7c49b5a24e33d9cb396ccc1e83cf58d0ee"
+    },
+    {
+      "id": 2567,
+      "city": "济南",
+      "title": "📍𝐉𝐢 𝐍𝐚𝐧  |  老舍笔下的泉城",
+      "desc": "济南City Walk Day1️⃣老商埠+大观园+宽厚里+泉城广场⛲\n📍 老商埠：复古建筑超出片！文艺青年必冲！红砖墙+咖啡馆，氛围感拉满~ ☕️\n📍 大观园：穿越老济南！市井烟火气十足，夜景更有味道！🌆\n📍 宽厚里：吃货天堂名不虚传！把子肉、油旋、奶茶...空着肚子来就对了！🍢🥤\n📍 泉城广场：地标打卡！看喷泉⛲️、喂鸽子🕊️，感受泉城心跳！💙\n\t\n济南City Walk Day2️⃣趵突泉+大明湖+曲水亭街+芙蓉街+解放阁+黑虎泉，日行3万步玩遍济南古城！\n💧 趵突泉：天下第一泉名不虚传！三股水翻腾太治愈~课本照进现实！📖\n🏞️ 大明湖：“皇上，您还记得大明湖畔的夏雨荷吗？”泛舟游湖，超惬意！荷花🪷快开啦~\n🍶 曲水亭街：济南版“小江南”！青砖小瓦，泉水穿流，茶馆超有韵味~必喝大碗茶！🍵\n🍜 芙蓉街：比宽厚里更老牌！爆肚、煎饼卷大葱...小吃多到挑花眼！人从众𠈌~ 😋\n🏯 解放阁：俯瞰老城&黑虎泉！登高怀古，夜景超震撼！✨\n🐯 黑虎泉：本地人打水的地方！泉水清甜直饮，接一杯尝尝济南味道！🚰\n\t\nDay3️⃣淄博City Walk | 进淄赶烤🔥 暴走3件套：烧烤+文创+琉璃，爽到飞起！\n\t\n🍢 【八大局市场】\n终于吃到正宗淄博烧烤！小饼蘸酱+炭火小炉🔥卷葱撸串香迷糊了～人均50撑到扶墙出！\n✅必点：带皮五花肉、小饼、甘蓝菜！本地人蹲小马扎的烟火气绝了！\n\t\n📸 【唐库文创园】\n宝藏打卡地！科比墙、彩虹楼梯、复古咖啡店…随手拍都像在加州！文艺青年狂喜✨\n☕️ Tips：下午茶选露台位置，夕阳滤镜美哭！\n\t\n💎 【琉璃博物馆】\n震撼！看千年琉璃工艺在发光✨ 梦幻吊灯、琉璃白菜…像闯进水晶宫！\n🔥 伴手礼强推：琉璃手串！精致不贵～\n\t\n#济南旅游[话题]# #济南攻略[话题]# #老商埠[话题]# #趵突泉[话题]# #大明湖[话题]# #曲水亭街[话题]# #淄博烧烤[话题]# #进淄赶考[话题]# #淄博陶瓷琉璃馆[话题]# #唐库文创园[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南某街区网红打卡墙与花墙装饰",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "济南\nJINAN CITY\n品忆香炒货工坊"
+        }
+      ],
+      "observedAt": "2026-10-04T11:18:21.068468+00:00",
+      "publishedAt": "2025-06-05T10:14:06+00:00",
+      "analysisSha256": "fcde0169b927fd9355ec90c6e833523185a9c0ae3b0c799e732e171423adf2f6"
+    },
+    {
+      "id": 2568,
+      "city": "济南",
+      "title": "终于有人一次性把济南保姆级攻略说清楚了！",
+      "desc": "#济南旅游攻略[话题]# #济南旅游景点推荐[话题]# #济南三天两夜攻略[话题]# #济南city_walk[话题]# #济南旅行[话题]# #济南自驾游[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a41daf300000000220088b3?xsec_token=AB8Xo1Ashy3MNhwHve_BqZoELSnoPCS-nAmNAQwymYm0c=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南一日游玩路线含景点、美食及贴士",
+          "has_text": true,
+          "key_info": {
+            "tips": "景点大多集中，步行或骑行都很方便；泉水四季恒温，记得带瓶水尝尝；夏季喷泉开放时间：19:30-20:00；记得带相机，随手一拍都很出片",
+            "hours": "夏季喷泉开放时间：19:30-20:00",
+            "price": "五龙潭/黑虎泉/解放阁/宽厚里/泉城广场：免费；趵突泉：40元",
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "济南第一天路线 泉城之旅 一日打卡济南精华景点\n五龙潭\n济南四大名泉之一，潭水清澈见底，亭台楼阁映水而建，风景如画。\n门票：免费\n步行5min\n趵突泉\n济南“泉王”，泉水喷涌，三窟并发，景色壮观，冬季雾气缭绕如仙境。\n门票：40元\n骑行10min\n黑虎泉\n泉水从石雕虎头喷涌而出，声如虎啸，十分有气势。\n门票：免费\n步行5min\n解放阁\n济南地标建筑，可俯瞰全城与大明湖美景，夜景尤为迷人。\n门票：免费\n步行5min\n宽厚里\n老济南风情街，古色古香，小吃、手作、文创店超多。\n门票：免费\n超赞！值得打卡~\n骑行10min\n泉城广场\n济南市中心广场，音乐喷泉超震撼，夜晚灯光璀璨超浪漫！\n门票：免费\n泉在济南，爱上这座城！\n欢迎来济南！\n美食推荐\n草包包子\n皮薄馅大，汤汁鲜美，经典老字号！\n油旋\n外酥里嫩，葱香浓郁，越嚼越香！\n甜沫\n济南特色早点，暖胃又暖心～\n把子肉\n肥而不腻，入口即化，配米饭绝了！\n芙蓉街小吃\n各种小吃集合地，边走边吃超满足！\n小贴士\n★景点大多集中，步行或骑行都很方便～\n★泉水四季恒温，记得带瓶水尝尝！\n★夏季喷泉开放时间：19:30-20:00\n★记得带相机，随手一拍都很出片！"
+        },
+        {
+          "summary": "济南一日游景点美食路线推荐",
+          "has_text": true,
+          "key_info": {
+            "tips": "夏季泉水开放时间：6:00-21:00；建议步行或骑行游览；带好水杯接泉水体验泉城特色",
+            "hours": null,
+            "price": "超然楼门票40元",
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "济南第二天路线\n古韵泉城·一日精华打卡路线\n泉城漫游日记\n经三路\n济南文艺老街，小巷里藏着很多咖啡馆和特色小店，拍照超出色！\n大明湖\n济南三大名胜之一，湖光山色美不胜收，超适合散步发呆！\n打车15min\n步行8min\n步行5min\n曲水亭街\n泉水穿街而过，青砖灰瓦，小桥流水，仿佛走进老济南的慢时光。\n免费开放\n起凤桥\n小桥流水人家，古色古香的老桥，超适合拍照打卡！\n免费开放\n步行10min\n骑行15min\n珍珠泉\n济南四大名泉之一，泉水清澈见底，环境清幽，适合静静感受泉城魅力。\n免费开放\n超然楼\n夜幕灯光璀璨，登楼远眺大明湖，感受“一湖一楼一城”的浪漫夜景！\n门票：40元\n济南，真美呀\n美食推荐\n鲁味把子肉\n肥而不腻，酱香浓郁，配米饭绝了！\n草包包子\n皮薄馅大，汤汁鲜美，经典老字号！\n甜沫\n济南特色早餐，暖胃又暖心～\n油旋\n外酥里嫩，葱香浓郁，越嚼越香！\n芙蓉街小吃\n各种小吃集合地，边走边吃超满足！\n小贴士\n★ 济南景点多集中，步行或骑行都很方便～\n★ 带好水杯，随时接泉水，体验“泉城”特色！\n★ 夏季泉水开放时间：6:00-21:00\n★ 记得带相机，随手一拍都是大片！\n必体验！\n打卡泉水\n老街漫步\n夜游大明湖"
+        },
+        {
+          "summary": "济南第三天文旅路线攻略，涵盖教堂、博物馆、美术馆、千佛山、泉城公园",
+          "has_text": true,
+          "key_info": {
+            "tips": "第三天以文化+自然为主推荐轻松慢游；千佛山建议傍晚去欣赏落日；记得穿舒适鞋子；带上相机捕捉风景",
+            "hours": null,
+            "price": "洪家楼教堂免费；山东省博物馆免费（需预约）；山东省美术馆免费（需预约）；千佛山30元；泉城公园免费",
+            "reservation": "山东省博物馆、山东省美术馆需提前预约，记得带好身份证"
+          },
+          "image_index": 2,
+          "text_content": "济南第三天路线\n文化·艺术·自然，感受济南的多彩魅力\n泉城漫游日记\n一天玩转济南精华景点！\n\n洪家楼教堂\n哥特式建筑，庄严肃穆，\n彩色玻璃窗在阳光下\n超级美！\n门票：免费\n\n打车15min →\n\n山东省博物馆\n文物宝藏地！镇馆之宝\"亚丑钺\"\n必看，了解山东历史文化～\n门票：免费（需预约）\n\n步行5min ← → 打车15min\n\n山东省美术馆\n艺术氛围超浓厚，各种展览\n轮换不断，拍照超出片！\n门票：免费（需预约）\n\n打车15min →\n\n千佛山\n济南三大名胜之一，\n登高望远看落日，超治愈！\n门票：30元\n\n打车15min →\n\n泉城公园\n济南老牌公园，湖光山色，\n垂柳依依，泛舟湖上超惬意！\n门票：免费\n\n济南的美好藏在每一步里～\n\n小贴士\n★ 第三天以文化+自然为主，\n推荐轻松慢游～\n★ 美术馆、博物馆都需提前\n预约，记得带好身份证！\n★ 千佛山建议傍晚去，落日\n超美，记得穿舒适鞋子。\n★ 带上相机，济南到处都是\n风景，美好瞬间别错过！\n\n泉水之城·文化之都·自然之美"
+        },
+        {
+          "summary": "济南旅游攻略，含交通、避坑、航线及第三天路线推荐",
+          "has_text": true,
+          "key_info": {
+            "tips": "别在芙蓉街买小吃；山东博物馆周一闭馆；建议自带空瓶接黑虎泉泉水；注意防晒，穿舒适鞋子",
+            "hours": "超然楼亮灯约10分钟，建议提前1小时去占位；曲水亭街下午4点后光线好",
+            "price": "游船票价：10元/站/人，全程100元/人；千佛山门票30元",
+            "reservation": "趵突泉、千佛山需提前线上预约；山东博物馆、山东美术馆需预约（免费）"
+          },
+          "image_index": 3,
+          "text_content": "第一次去济南旅游\n超全攻略·省心不踩坑\n泉城济南欢迎你！\n关于济南交通\n火车：济南站、大明湖站距离市中心近，济南西站和济南东站都距离很远\n飞机：机场距离市中心将近30公里，可以坐机场大巴进市区，20元/人\n自驾：建议把车停在酒店，济南市中心堵车严重，不好找停车位\n避坑指南\n门票：趵突泉、千佛山提前线上预约，现场买票要排大队；山东博物馆免费，但周一闭馆，别跑空\n美食：别在芙蓉街买小吃，又贵又不正宗！\n拍照：超然楼亮灯只有10多分钟，提前1小时去湖边占位置，别卡点到；曲水亭街下午4点后光线好，拍出来的照片自带柔光\n饮水：黑虎泉接泉水记得自带空瓶，景区卖的瓶子溢价高；泉水虽清，不建议直接生喝\n护城河航线站点（顺时针单循环）\n沿途共10个站点：\n黑虎泉船站、泉城广场船站、趵突泉船站、五龙潭船站、大明湖西南门船站、大明湖稼轩祠船站、司家码头船站、小东湖船站、老东门船站、青龙桥船站\n游船票价：10元/站/人，全程100元/人\n济南第三天路线推荐\n① 洪家楼教堂：哥特式建筑，美轮美奂拍照超出片！打车15min\n② 山东省博物馆：镇馆之宝“亚丑钺”，了解山东历史文化~免费（需预约），步行5min\n③ 山东省美术馆：艺术氛围超浓厚，展览轮换不断，拍照超出片！免费（需预约），打车15min\n④ 千佛山：登高望远看落日，超治愈！门票：30元\n⑤ 泉城公园：济南老牌公园，湖光山色，垂柳依依，泛舟湖上超惬意！免费，步行10min\n⑥ 曲水亭街：青砖灰瓦，小桥流水，老济南的慢时光~免费，步行5min\n小贴士\n第三天以文化+自然为主，推荐轻松漫游~\n带好水杯，随时接泉水，体验“泉城”特色！\n注意防晒，轻便出行，穿舒适鞋子更方便哦~\n济南，一座来了就舍不得走的城市！"
+        }
+      ],
+      "observedAt": "2026-10-04T11:18:21.124040+00:00",
+      "publishedAt": "2026-06-29T02:39:47+00:00",
+      "analysisSha256": "62d1ba052c2ba46cbf0d30bc8e6a09adcd652b152bf7d1cf1a0beec05bd266a9"
+    },
+    {
+      "id": 2583,
+      "city": "济南",
+      "title": "济南，吃完会用一生怀念的。。。。🥹🥹",
+      "desc": "就在济南大明湖附近，跟朋友经常吃他家的老店，这才是我们本地人爱吃的鲁菜馆子！新开这家味道也是没的说👍🏻饭点来基本座无虚席…很多本地回头客和游客都来吃。。\n\t\n他家的👉🏻肘蹄拌饭、烧饼夹虾球、番茄拉丝炒蛋、干煸鱿鱼须、芥末虾球、茶香排骨、烙馍卷牛胸口…这些特色菜都能吃到🤤也有经典的鲁菜家常菜，像是糖醋鲤鱼、爆炒腰花、风味茄子、爆三样、九转大肠等等都是随便点不出错，现点现做！好好吃！！\n\t\n吃完饭过马路就是大明湖，附近离着趵突泉、五龙潭、黑虎泉、曲水亭街、芙蓉街、泉城广场都很近。。来旅游的姐妹们，真心建议和家里人还有朋友来吃一顿！！好吃实惠！！\n\t\n📍鲁宴·八不食味道(大明湖总店)\n\t\n#济南[话题]# #济南美食[话题]# #济南鲁菜[话题]# #济南美食推荐[话题]# #趵突泉附近美食[话题]# #曲水亭街[话题]# #济南特色美食[话题]# #趵突泉[话题]# #济南美食必吃榜[话题]# #济南旅游攻略[话题]#  #济南本地人推荐[话题]# #济南旅游[话题]# #济南美食攻略[话题]# #济南鲁菜推荐[话题]# #济南鲁菜馆推荐[话题]# #济南老馆子[话题]# #周末去哪儿[话题]# #济南攻略[话题]# #鲁菜[话题]# #走街串巷找美食[话题]# #街头巷尾的苍蝇馆子[话题]# #大明湖附近美食[话题]# #济南大明湖附近美食[话题]# #济南好吃的美食[话题]# #大明湖[话题]# #泉城广场[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a7c8ac8000000003301f7e1?xsec_token=ABoclrWGQ03pUwQrzfBbQV_iUpgjEYcbLNhRRFhURz1Yc=&xsec_source=pc_search",
+      "images": null,
+      "observedAt": "2026-10-04T11:18:45.334180+00:00",
+      "publishedAt": "2026-08-15T11:59:56+00:00",
+      "analysisSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": 2584,
+      "city": "济南",
+      "title": "济南！好吃的小馆子总是默默无闻。。（好吃不贵",
+      "desc": "济南趵突泉附近！街边默默无闻的小馆子！\n就是济南家常菜的味道。。点的几道菜都不错！\n\t\n脱骨大肘子、椒麻黄喉鱼、芥末虾球、烧饼夹虾球、锅包肉大虾、番茄拉丝炒蛋、茶香排骨…\n•\n鲁菜做的也不错，糖醋鲤鱼、风味茄子、糖醋里脊、炒鸡…盲点不踩雷～不点硬菜的话差不多人均五六十\n\t\n吃完建议直奔大明湖、趵突泉！距离芙蓉街，曲水亭街也不远～\n\t\n📍李长久萃华楼\n#适合父母辈的宝藏餐厅[话题]# #本地人安利的美食[话题]# #大声安利本地美食[话题]# #条条小路有好吃[话题]# #济南美食[话题]# #老城区美食[话题]# #老巷子美食[话题]# #本地人爱吃的店[话题]# #小城暴走吃喝路线[话题]##济南[话题]#  @吃货薯@吃货薯@生活薯@生活薯@城市情报官",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a8fafd8000000002c03e6ae?xsec_token=ABHXnWFVX8dyQvY67-RW9kxYTy3LcxZB05PRUCMYTQPLM=&xsec_source=pc_search",
+      "images": null,
+      "observedAt": "2026-10-04T11:18:45.377346+00:00",
+      "publishedAt": "2026-08-27T03:39:23+00:00",
+      "analysisSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": 2609,
+      "city": "济南",
+      "title": "事实证明！在济南只有看地图才能玩明白",
+      "desc": "太实用了不愧是济南本地人‼来济南只有看地图攻略才靠谱真心是这样的！20多年济南人给大家熬夜做了份济南行程攻略，吃住行都是写全了✍希望大家能够来济南派上用场哦\n-\n✅必去九大景点\n1️⃣ 趵突泉 – 天下第①泉，三股水昼夜喷涌，李清照纪念堂藏身园中2️⃣ 大明湖 – 泉城明珠，超然楼亮灯瞬间绝美，四季皆景3️⃣ 千佛山 – 登顶俯瞰泉城全景，兴国禅寺香火千年4️⃣ 山东博物馆 – 齐鲁文化殿堂，亚醜钺等21万件藏品免费预约5️⃣ 灵岩寺 – 海内四大名刹之首，宋代彩塑罗汉像被誉为“海内第 一名塑”6️⃣ 黑虎泉 – 免费开放，泉水从三兽头喷射，可自带杯子接水品尝7️⃣ 五龙潭 – 26处古泉藏身园中，秦琼祠所在地，潭水湛蓝如玉8️⃣ 芙蓉街/宽厚里 – 百年小吃街，油旋、甜沫、把子肉满足舌尖狂欢9️⃣ 曲水亭街 – 家家泉水，户户垂杨，老济南水墨长卷漫步好去处\n#济南旅游攻略[话题]##济南美食[话题]##济南旅游住宿[话题]##济南旅游路线图[话题]##济南[话题]##济南旅游[话题]##济南旅游景点[话题]##济南旅游景点攻略[话题]##假期去哪玩[话题]##济南吃喝玩乐[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南三天旅游路线参考图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "济南旅游路线参考\nDAY1:\n1 趵突泉 → 2 五龙潭 → 3 大明湖 → 4 超然楼 → 5 曲水亭街\nDAY2:\n1 黑虎泉 → 2 解放阁 → 3 宽厚里 → 4 泉城广场 → 5 千佛山\nDAY3:\n1 山东博物馆 → 2 山东美术馆 → 3 百花洲 → 4 洪家楼教堂"
+        },
+        {
+          "summary": "济南6-7月旅游攻略路线图，含5个景点",
+          "has_text": true,
+          "key_info": {
+            "tips": "建议游玩总时长约5.5-7h，景点间车程10-15min，主要乘坐公交或地铁2号线",
+            "hours": "趵突泉/五龙潭07:00-19:00；大明湖05:00-22:00；超然楼09:00-22:00；曲水亭街全天开放",
+            "price": "趵突泉40元，其余景点免费",
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "6-7月-济南旅游（第①站）\n趵突泉（40r）\n开放时间：07:00-19:00\n建议游玩：1-1.5h\n交通：地铁2号线\n车程15min\n五龙潭（免费）\n开放时间：07:00-19:00\n建议游玩：1-1.5h\n交通：乘坐3/5路公交\n车程10min\n大明湖（免费）\n开放时间：05:00-22:00\n建议游玩：1.5-2h\n交通：乘坐K11/11路公交\n车程10min\n超然楼（免费）\n开放时间：09:00-22:00\n建议游玩：1h\n交通：乘坐K11/11路公交\n车程15min\n曲水亭街（免费）\n开放时间：全天开放\n建议游玩：1-1.5h\n交通：乘坐5/101路公交"
+        },
+        {
+          "summary": "济南6-7月旅行路线规划",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": "6-7月-济南旅游（第③站）\n山东博物馆\n开放时间：09:00-17:00\n山东省最大的综合性博物馆\n馆藏丰富，展览多样\n步行15min\n山东美术馆\n开放时间：09:00-17:00\n山东省重要美术展览场馆\n建筑现代，展览品质高\n步行20min\n百花洲\n开放时间：全天开放\n济南老城区历史文化街区\n小桥流水，泉水环绕\n步行15min\n洪家楼教堂\n开放时间：08:30-17:00\n济南著名天主教堂\n哥特式建筑，庄严静谧"
+        },
+        {
+          "summary": "济南8条游玩避坑指南，涵盖热门景点人流、交通、时间规划等注意事项",
+          "has_text": true,
+          "key_info": {
+            "tips": "趵突泉人多拥挤建议早去或选其他泉群；大明湖避开节假日周末；千佛山合理规划路线；黑虎泉停车难；灵岩寺距离远半天不够；红叶谷需穿合适鞋子；泉城广场夜游建议合并周边景点",
+            "hours": null,
+            "price": null,
+            "reservation": "节假日需提前在官方平台预约购票，否则可能现场排队进不去"
+          },
+          "image_index": 4,
+          "text_content": "济南游玩避雷：\n\n避雷1：想看泉水就别只选趵突泉，多又拥挤，体验感一般，想避开人流就早点去，或者选择其他泉群\n\n避雷2：大明湖节假日和周末人很多，湖边空间有限，想清静悠闲体验会打折扣，尽量避开高峰期\n\n避雷3：千佛山山路较长，全部走完比较耗时，时间紧张或体力一般的游客要合理规划路线\n\n避雷4：黑虎泉位置在老城区，周边道路窄停车难，开车前往容易浪费大量时间\n\n避雷5：灵岩寺距离市区较远，来回路程长，如果只有半天时间不建议安排，容易太赶\n\n避雷6：红叶谷景区面积较大，部分路段坡度较陡，穿不合适的鞋会很累，时间不足的话游览不完\n\n避雷7：节假日景点人多时，提前在官方平台预约购票，否则可能现场排队进不去，影响行程\n\n避雷8：泉城广场夜景不错，但夜间活动范围有限，单独安排夜游意义不大，建议和周边景点合并游览"
+        },
+        {
+          "summary": "济南五个热门住宿区域推荐及特点介绍",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 6,
+          "text_content": "济南住宿：\n泉城广场/趵突泉附近\n位于市中心，步行可达趵突泉、大明湖，周边是泉城路、芙蓉街，很适合首次来济南的游客，交通便利，地铁2号线、3号线交汇出行方便\n大明湖/黑虎泉附近\n临近大明湖景区，步行可赏湖景和泉水，黑虎泉、解放阁也在附近，环境清幽安静，适合喜欢散步和慢节奏游玩的游客\n历下区CBD\n济南的商务中心，靠近万象城、茂业天地等商圈，地铁2号线直达济南西站和各大景点，住宿选择多，适合出差和购物出行的游客\n洪楼/山大周边\n靠近山东大学、洪楼教堂、百花洲等地，文化氛围浓厚，生活气息足，交通便利，地铁2号线可直达市区各景点，适合学生和预算有限的游客\n济南西站/高铁片区\n临近济南西站，地铁1号线和2号线可换乘，去市区和景点都方便，适合乘坐高铁到达或离开济南的游客，住宿性价比较高"
+        },
+        {
+          "summary": "济南一家临沂炒鸡餐厅的美食打卡分享",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "济南美食：\n炒鸡庄主·老临沂临沂炒鸡"
+        }
+      ],
+      "observedAt": "2026-10-04T11:19:58.217557+00:00",
+      "publishedAt": "2026-08-04T09:36:25+00:00",
+      "analysisSha256": "ed35b00fe160d8cdf9231b66a63e090b2ed15a55e784f76dd62024e0931bf7fa"
+    },
+    {
+      "id": 2611,
+      "city": "济南",
+      "title": "五一来济南住这3家吧！人均120💰！",
+      "desc": "📍第一家（大明湖）\n就在济南核心景区大明湖附近，周边商圈网红美食打卡点遍布\n步行就能到达#宽厚里[话题]# #泉城广场[话题]# #大明湖[话题]# 等景点\n轻奢商务风设计简约又高级，房间全部都是智能家居\n躺在床上就能完成开关灯窗帘等。就连卫生间都有两个洗手台\n-\n📍第二家（大明湖）\n离大明湖、曲水亭街很近，步行十分钟就到\n晚上去芙蓉街宽厚里小吃街也很方便\n装修设计也很复古和现代元素结合\nLoft设计每层都不小，上下都有卫生间\n有浴缸累了可以边赏景边泡澡，很舒服\n-\n📍第三家（趵突泉）\n步行可达大明湖和趵突泉\n五龙潭公园 出门就是小吃街\n酒店位于趵突泉内被周围的花草树木环抱其中🥰\n坐在房间内的飘窗上🕊\n窗外就是护城河，春赏花，夏赏荷，秋听婵，冬观雪🌨无论四季，无论晴雨，皆有欢喜\n-\n🚩作为经常出游的“老司机”，出游酒店建议一定要提早订！我看过了，去哪儿旅行很靠谱！\n-\n#济南[话题]# #济南酒店[话题]# #济南民宿[话题]# #济南住宿[话题]# #济南平价酒店[话题]# #济南平价民宿[话题]# #济南平价住宿[话题]# #济南旅行[话题]# #大明湖[话题]# #泉城路步行街[话题]##五一假期[话题]# #五一节[话题]# #五一出游[话题]# #五一去哪玩[话题]# #假期去哪玩[话题]# #五一假期去哪玩[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69d60bc7000000001a027377?xsec_token=ABaQonFZgK5DMiLE9Q2JT_vRTasvzF4FSTUuTW3tUTdx0=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "推荐第三家近大明湖的古韵酒店，人均170元。",
+          "has_text": true,
+          "key_info": {
+            "tips": "近大明湖，古韵特色",
+            "hours": null,
+            "price": "人均170元",
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": "第三家\n近大明湖 古韵特色 人均170"
+        }
+      ],
+      "observedAt": "2026-10-04T11:19:58.260073+00:00",
+      "publishedAt": "2026-04-08T08:31:47+00:00",
+      "analysisSha256": "e1f490b95c7325de44906a73a732ca85b776372103901ba7901729002db567d4"
+    },
+    {
+      "id": 2619,
+      "city": "济南",
+      "title": "曲水亭街｜晚上逛才是正确打开方式🌙",
+      "desc": "晚上来逛曲水亭街，氛围感直接拉满✨\n\t\n巷子不宽，人不少，但很有烟火气。\n两边的小店亮着灯，泉水在脚下静静流。\n\t\n最惊喜的是买了一条手链，才5块钱！\n好看不廉价，景区这个价格真的良心\n\t\n📍周边就是芙蓉街、大明湖，走路几分钟就到，可以串在一起逛。\n#济南[话题]# #曲水亭街[话题]# #济南夜景[话题]# #济南小众景点[话题]# #5块钱的快乐[话题]##山东旅游[话题]# #灯会[话题]# #巷子里的烟火气[话题]# #小城夜生活[话题]# #相约古城夜景[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69dce6d90000000021011235?xsec_token=ABG-QGMzILIfWGl1wDGJYbJhr1cyPunsPatLPf4ANB3TU=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "老舍笔下的济南宣传标语",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "总得来趟\n老舍笔下的济南\n有电危险"
+        },
+        {
+          "summary": "济南景区介绍墙，展示泉城名句与风景画",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 2,
+          "text_content": "濟南\n胜景\n四面荷花三面柳\n一城山色半城湖"
+        },
+        {
+          "summary": "济南文化墙励志标语展示",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": "奋斗有我\n一颗红心向太阳\n泉在济南一年四季\n一名党员一面旗\n济南\n我在济南刚刚好的时候\n奋斗扬帆\n路虽远\nGO!行则必至\n爱生活 爱远方\nBAO CHI RE AI 认真 living 保持热爱\n追光的人 终会光芒万丈\n我们这座\n风禾尽起 怀揣瑾瑜\n激昂的青春 最芳华\n清阳曜灵 和风容与\n一路生花"
+        }
+      ],
+      "observedAt": "2026-10-04T11:20:22.996602+00:00",
+      "publishedAt": "2026-04-13T12:51:37+00:00",
+      "analysisSha256": "346a659ef02ef4aff1fd7775291fa13632c41945094240bdaf4157c0ed1b663e"
+    },
+    {
+      "id": 2624,
+      "city": "济南",
+      "title": "济南一日游，跟我走👍",
+      "desc": "时间有限的小伙伴们，出发济南一日游，不迷路，拿捏拿捏[微笑R]\n我们是周六晚上做的卧铺北京出发，周日早上六点多到达大明湖站，吃喝就看自己的选择啦，，，\n第一站五龙潭，七点开园，一个小时就能逛完，西门进南门出，斜对过就是趵突泉啦，，，园子不小，里面有点东西，可以仔细逛一下呢。\n接着想去老舍故居就从南门出，500米就是老舍故居，不去的从东门出，马路对面就是泉城广场，走旁边的林荫小路，沿着护城河，就能看到黑虎泉，可以接泉水，能够直接喝的。\n尽头就是解放阁，可以进去参观一下。下来就是宽厚里，一整条街可以逛吃逛喝[吧唧R]，午饭可以在这里解决。接着逛芙蓉街，也都是小吃，走着走着到曲水亭街，很优美，然后去看有名的王府池子、起风桥。\n重点来到了大明湖，吹吹风太舒服了，等到快天黑的时候去找好位置看超然楼亮灯，然后去看看夏雨荷，非常充实的一天，晚上八点多从离得很近的济南西站打道回京。",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南景区游览路线图，标注大明湖、趵突泉等景点及路线",
+          "has_text": true,
+          "key_info": {
+            "tips": "标注了大明湖→曲水亭街→趵突泉→泉城广场→黑虎泉→解放阁→宽厚里→芙蓉街→五龙潭→大明湖的游览路线",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "大明湖站\n大明湖\n夏雨荷\n超然楼\n曲水亭街\n芙蓉街\n五龙潭\n趵突泉\n泉城广场\n宽厚里\n解放阁\n黑虎泉\n大明湖景区\n老舍纪念馆\n百花洲历史文化街区\n泉乐坊步行商业街\n泉城路商业街\n绿地·泉景商务大厦\n济南剧院\n济南市环城公园\n圣凯财富广场\n银座商城\n恒祺广场\n济南历下世茂广场\n山东省政协\n华为授权服务中心\nRELX悦刻\n铁公祠\n历下亭\n明湖小区\n仟那酒店\n济南大明湖趵突泉北路轻居酒店\n济南复大肿瘤医院\n如家商旅酒店\n维也纳3好酒店\n杨记炸鸡\n泺河小区\n保利\n长盛\n传统鲁菜\n天下第一泉景区"
+        }
+      ],
+      "observedAt": "2026-10-04T11:20:23.062328+00:00",
+      "publishedAt": "2026-05-15T03:12:00+00:00",
+      "analysisSha256": "94820e155679a0a7fe79eaf3bd2abb67373e383de6849531d35d73f99a81b4d4"
+    },
+    {
+      "id": 2782,
+      "city": "济南",
+      "title": "📍济南3️⃣天2️⃣晚｜保姆级攻略‼️人均500💰",
+      "desc": "篇幅有限，济南“景点拍照打卡机位”在下一篇，喜欢拍照的姐妹不要放过哦‼️\n\t\n🗺️路线\n📍Day1：\n1️⃣五龙潭：\n其实五龙潭并不大，每个景点离得也都很近，真的很美！\n2️⃣趵突泉：\n如果不想逛，只想去趵突泉，可以从南门或者东门进，很快就到了！\n3️⃣泉城广场：从趵突泉东门出来就直接可以看到泉城广场的地标建筑！\n4️⃣黑虎泉：\n❣️定位到南二门，进门右转下去就是黑虎泉，接泉水也在这里，⚠️注意从莲花水台盆接的水才能直饮！\n5️⃣解放阁：过桥从黑虎泉九女亭后面上去就是解放阁\n6️⃣宽厚里：解放阁马路对过就是宽厚里，一条小吃街\n7️⃣芙蓉街：也是一条小吃街，从芙蓉街32号拐进去就是起凤桥街，可以打卡起凤桥，然后穿过胡同就到曲水亭街了\n8️⃣曲水亭街：\n两边是小茶馆小酒馆，拍照超级出片，涌泉胡同机位也在这条街\n9️⃣百花洲：\n很多人导航“百花洲”，搜出来的是“百花洲历史文化街区”，其实曲水亭街和百花洲都属于“百花洲历史文化街区”。\n❣️大家说的百花洲的景点，是围着百花洲湖的街区，有很多小摊位，可以在这里逛逛（如图4红色⭕️所示）\n🔟大明湖：\n曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼\n\t\n📍Day2：\n1️⃣千佛山：\n这里我真的很想说一句，我恐高，所以对于我来说从历山院去山顶的路真的很难走！但是也有姐妹带着小朋友登顶！所以根据自身情况选择吧！\n2️⃣民族大街市场：当地居民去买菜的菜市场，整条街前面是各种小吃，后面是卖菜的，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆\n3️⃣大观园：可去可不去\n4️⃣老商埠•经三路：街区网红打卡点，很出片\n5️⃣泉城之眼：喜欢拍照的可以去机位打卡，只是为了看风景的话没太有必要\n9️⃣环联夜市：超级大的夜市！有时间可以去逛逛\n\t\n🥘美食：老周家牛肉烧饼（推荐👍）、杨家甜沫、孙家糖油条、油旋张、超意兴\n\t\n🚗出行：共享单车➕打车\n\t\n🏠住宿：我们住在火车站附近，到景点很方便\n#深度游攻略[话题]##济南旅游[话题]# #济南美食[话题]# #济南旅游攻略[话题]# #趵突泉[话题]# #大明湖[话题]# #千佛山[话题]##济南一日游[话题]##经三路[话题]# #老商埠[话题]# #每天写一篇旅游攻略[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南三日游景点分布路线图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "济南景点分布图\nCamping diary\nDay1\n环联夜市 3.4km 约4分钟\n19 洪家楼主教座堂 天主堂 4.1km 约4分钟\n20 卧牛山牌坊\nDay2\n济南站\n21 泉城之眼·高空观景台\n经三路 老商埠夜市\n大观园\n民族大街市场 2.7km 约3分钟\n12 曲水亭街\n五龙潭公园\n芙蓉街\n解放阁\n泉城广场 济南市环城公园-黑虎泉\n大明湖 超然楼 夏雨荷雕塑 10\n1km 约1分钟\n千佛山风景名胜区 11\nDay3\n山东博物馆\n山东美术馆\n济南动物园\n济南黄金谷山水风景区"
+        },
+        {
+          "summary": "千佛山登山地图，展示四条登山路线及各景点位置",
+          "has_text": true,
+          "key_info": {
+            "tips": "四条登山路线：红色(北门)、黄色(东门)、蓝色(美院门)、绿色(南门)；有索道和滑道上山",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "千佛山\n南门\n山顶\n兴国禅寺\n唐槐亭\n卧佛\n历山院\n美院门\n弥勒胜苑(大金佛)\n三官殿\n灵官殿\n财神殿\n索道上山\n滑道\n东门\n正门(北门)\n红色→红色北门路线\n黄色→黄色东门路线\n蓝色→蓝色美院门路线\n绿色→绿色南门路线\n步行200m\n游客服务中心"
+        },
+        {
+          "summary": "趵突泉景区导览路线图及推荐游览路线",
+          "has_text": true,
+          "key_info": {
+            "tips": "提供趵突泉不回头路线推荐，涵盖北门至东门全程游览顺序",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 9,
+          "text_content": "1 趵突泉(北门)\n2 步青桥\n济南五三惨案纪念碑\n21\n3 泺苑\n20 濯缨池\n4 花墙子泉\n5 杜康泉\n6 登州泉\n7 文创中心\n8 激湍碑\n19 李清照纪念堂\n17 漱玉泉 龟石\n22 趵突泉东出水\n23 趵突泉(东门)\n9 趵突泉\n10 万竹园\n11 李苦禅纪念馆\n12 无忧泉\n13 白雪楼\n14 酒泉\n15 沧园\n16 王雪涛纪念馆\n趵突泉不回头路线：\n趵突泉（北门）→步青桥→花墙子泉→杜康泉→登州泉→天下第一泉文创中心→趵突泉→激湍碑→万竹园→李苦禅纪念馆→无忧泉，白雪楼→酒泉→沧园→王雪涛纪念馆→龟石→漱玉泉→李清照纪念堂→濯缨池→济南五三惨案纪念碑→趵突泉东出水口→趵突泉（东门）"
+        },
+        {
+          "summary": "济南大明湖夜景四宫格拼图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": "大明湖"
+        }
+      ],
+      "observedAt": "2026-10-06T02:02:22.855979+00:00",
+      "publishedAt": "2025-05-25T13:35:24+00:00",
+      "analysisSha256": "17e47f55b6ac525b382e9c23d383e35d33f6f93ca4fb3252fe5254f1bc610812"
+    },
+    {
+      "id": 2793,
+      "city": "济南",
+      "title": "为了这❶❽张照片，特意🚄去了趟济南❗️附攻略",
+      "desc": "“四面荷花三面柳，一城山色半城湖”\n一座被泉水包围的城市\n有江南的温润也有北方的豪情 春暖花开，可以带着家人朋友一起漫步济南\n感受这座城市的浪漫和松弛～\n\t\n北京出发🚄1.5h即可达，周末两天刚刚好，轻松不赶路\n\t\n🗺️两天悠闲游玩路线\nDAY①:经三路➠纬三路➠老商埠➠大观园➠五龙潭➠趵突泉➠洪家楼\nDAY②:解放阁➠宽厚里➠芙蓉街➠起凤桥➠曲水亭街➠百花洲➠大明湖超然楼\n\t\n📷必玩打卡点\n❶老商埠：超大 “济南” 地标、玫瑰花墙、复古老爷车、多巴胺彩色墙面都很出片， 建议早上去，人少更好拍\n❷经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯，随手拍都很有氛围感\n❸大观园：古色古香的，汇聚了很多济南当地美食小吃，适合边走边尝鲜\n❹五龙潭公园：北方少有的清泉园林，泉水潺潺，景致清幽\n❺趵突泉公园：看三股泉水喷涌，泉池幽深波光粼粼，氛围感拉满\n❻洪家楼：哥特式建筑外观很有特色，内部彩色玻璃精致好看！有固定开放时间，建议提前规划，避免跑空\n❼解放阁：济南标志建筑，站在远处拍全景，很有纪念意义\n❽宽厚里&芙蓉街：两处相邻，遍布济南特色小吃和美食，也有不少“济南”大字打卡点，适合拍照逛吃\n❾起凤桥街：藏在巷子里的小桥流水，青砖黛瓦，满是江南韵味\n❶⓿百花洲&曲水亭街：自带江南氛围感，慢悠悠散步，就能感受老济南的慢生活\n❶❶大明湖&超然楼：蓝调时刻在大明湖可以拍到超然楼亮灯，氛围感十足！也可以登楼俯瞰大明湖全景\n❶❷时间充裕的，可以安排济南千佛山\n\t\n🏨住宿：住在泉水广场附近，出行、逛吃都方便\n\t\n🥣美食：油旋、甜麻辣肥蛤超好吃，把子肉配米饭，香而不腻，很下饭\n#新年旅行第一站[话题]##我是春节主理人[话题]##带着父母去旅行[话题]##长辈友好旅行地[话题]##过年就来小红书[话题]##北京周末去哪儿[话题]##北京出发旅游[话题]##我的私藏旅行路线[话题]##我的小众旅行攻略[话题]##周末去哪儿[话题]##本地人才知道的好地方[话题]##我和我的春节[话题]##咔嚓一张新年照[话题]##济南旅游[话题]# #济南拍照[话题]# #济南攻略[话题]# #济南周末游[话题]##济南两日游[话题]##大明湖[话题]##趵突泉[话题]#@生活薯",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南景点九宫格拼贴，含大明湖、曲水亭街、解放阁等",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "Jiaxin Hutong\n皇宫\n济南\n解放阁"
+        }
+      ],
+      "observedAt": "2026-10-06T02:02:49.499466+00:00",
+      "publishedAt": "2026-02-26T06:37:29+00:00",
+      "analysisSha256": "954213a8975737a9df9b12333e748fd554e8dc64c1f77fbd9e88f78c56eee6f4"
+    },
+    {
+      "id": 2803,
+      "city": "济南",
+      "title": "济南会惩罚每一个不做攻略的P人🏃🏻‍♂️",
+      "desc": "济南city walk路线｜2天1晚超全攻略来了✅\n刚从济南回来，济南真的别太好玩了，出片的景点真的不要太多🥹🥹这份旅游攻略大家快码住！希望能够帮助暑假即将去玩的宝宝们🫶🏻\n🟢路线安排\nDay1️⃣：趵突泉➡️五龙潭➡️芙蓉街➡️曲水亭街➡️大明湖\nDay2️⃣：黑虎泉➡️解放阁➡️洪家楼教堂➡️宽厚里➡️泉城广场\n🟢住宿建议\n1、一定要提前预约好酒店！！临时订房极有可能床位紧张，价格也会上涨很多倍，临走前不要遗忘自己的行李哦😙\n2、对住宿没有过多要求的宝宝，可以选择 民宿或青旅，注意对比评论区图片，以防“照骗”\n💡大明湖景区附近\n靠近济南站和大明湖景区，交通 便利，赶车超方便，步行几分钟即可抵达超然楼和百花洲打卡！！\n💡泉城广场附近\n有济南地标性建筑，性价比高，周边小吃较多，步行可抵达趵突泉景区\n💡历下区\n济南中心地区，周边景点多，交通 便利，大名鼎鼎的芙蓉美食街也在这里哦\n💡宽厚里附近\n地理位置优越，喜欢汉服和旗袍拍照的姐妹闭眼冲，氛围感超好，步行即可抵达黑虎泉\n明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。来这里，做一日“泉边人家”，便懂了老舍笔下“理想的境界”。\n#济南[话题]##济南旅游攻略[话题]##济南打卡[话题]# #学生党旅游[话题]# #攻略[话题]# #大学生暑假旅游[话题]# #老舍笔下的济南[话题]##趵突泉[话题]##大明湖[话题]##放假去哪玩⚡️⚡️[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6856c487000000001202dfa1?xsec_token=ABc27i8OVOwsMxqa0hcmBlAUi5AFX0ruz0MLOsEDY0bIw=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南一日游路线攻略（Day2）",
+          "has_text": true,
+          "key_info": {
+            "tips": "洪家楼教堂内不能带已开封的饮料；解放阁网红机位在龙潭观鱼对岸假山里，晴天更出片",
+            "hours": "黑虎泉07:00-19:00，解放阁07:00-22:00，洪家楼教堂09:00-11:30/14:00-16:00，宽厚里全天，泉城广场全天",
+            "price": "黑虎泉门票40元，学生20元；其余景点免费",
+            "reservation": "洪家楼教堂需按开放时间参观（09:00-11:30，14:00-16:00）"
+          },
+          "image_index": 1,
+          "text_content": "第一次来济南旅游\n千万不要把顺序搞反了\nDay2\n黑虎泉\n门票40 学生20r\n时间:07:00-19:00\n老舍笔下的趵突泉，设若没有这泉，济南定会丢了一半的美\n步行2分钟\n解放阁\n门票免费\n时间07:00-22:00\n网红机位在龙潭观鱼对岸的假山里，晴天更出片\n步行2分钟\n洪家楼教堂\n门票：免费\n时间09:00-11:30，14:00-16:00\n济南地标性哥特式天主教堂，造型宏伟，进去不能带已开封的饮料\n步行2分钟\n宽厚里\n门票：免费\n时间：全天\n现代与复古融合的潮流商业街区，夜晚灯火璀璨氛围十足。\n步行1分钟\n泉城广场\n门票：免费\n时间：全天\n济南市中心地标，集文化、休闲、购物于一体，夜晚音乐喷泉尤为震撼。"
+        },
+        {
+          "summary": "济南美食景点推荐攻略图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 6,
+          "text_content": "济南逛吃逛吃\n好吃又好玩！"
+        }
+      ],
+      "observedAt": "2026-10-06T02:03:18.547973+00:00",
+      "publishedAt": "2025-06-21T14:41:11+00:00",
+      "analysisSha256": "3295e4d7029917811571ded5d46c5331673db3d562c08da96eee8f63fdefcb01"
+    },
+    {
+      "id": 2810,
+      "city": "济南",
+      "title": "济南📍一日游 超舒服的citywalk逛吃住攻略",
+      "desc": "路线行程🚗\n老舍故居→趵突泉→黑虎泉→宽厚里→解放阁→白石泉→曲水亭街→大明湖→超然楼\n\t\n🏠住宿\n住泉城广场/大明湖附近，步行看超然楼亮灯，周边吃喝便利，经济型酒店200左右\n\t\n🚇交通\n景点间骑车/步行就行，打车起步价不贵\n\t\n🍜必吃美食\n牛肉烧饼、羊汤、锅贴、把子肉、泉水包子\n\t\n✨小建议\n1. 趵突泉8点前去，人少好拍照\n2. 黑虎泉茶摊喝泉水茶，超惬意\n3. 曲水亭街工作日去更清净\n\t\n❌避坑\n1. 趵突泉枯水期别去，雨季后去更出片\n2. 芙蓉街、宽厚里小吃逛逛就行\n3. 超然楼亮灯前人多，提前占位\n\t\n#济南旅游[话题]# #济南一日游[话题]# #济南攻略[话题]# #济南美食[话题]# #济南打卡[话题]# #超然楼[话题]# #趵突泉[话题]# #大明湖[话题]# #济南旅行[话题]# #山东旅游[话题]# #打卡济南[话题]# #山东博物馆[话题]# #济南旅游攻略[话题]# #京津冀周边游[话题]# #周末旅游[话题]# #假期旅游[话题]# #济南旅行[话题]# #济南拍照[话题]# #济南美食[话题]# #曲水亭[话题]# #宽厚里[话题]#  #济南一日游[话题]# #济南特种兵旅游攻略[话题]# #济南旅游[话题]# #山东周边游[话题]# #不为打卡的旅游[话题]# #本地人做的攻略[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "老舍纪念馆介绍，济南住所及创作历史，院内小心柿子掉落",
+          "has_text": true,
+          "key_info": {
+            "tips": "小心柿子掉落",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "老舍纪念\n老舍纪念馆\n1930年代老舍在济南的住所，\n在此完成《猫城记》等作品。\n院落清幽，还原了生活场景，\n可感受济南的“第二故乡”之情。\n小心柿子掉落\n老舍\n1899-1966"
+        },
+        {
+          "summary": "济南解放阁景点介绍，免费参观",
+          "has_text": true,
+          "key_info": {
+            "tips": "为纪念济南解放而建，位于旧城城墙遗址。登阁可看展览了解历史，也能俯瞰黑虎泉和护城河景色。",
+            "hours": "周二至周日09:00-17:00",
+            "price": "免费",
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "解放阁\n济南解放纪念馆\n为纪念济南解放而建，位于旧城城墙遗址。\n登阁可看展览了解历史，也能俯瞰黑虎泉和护城河景色。\n门票：免费\n时间：周二至周日09:00-17:00"
+        },
+        {
+          "summary": "超然楼夜景介绍及门票开放时间",
+          "has_text": true,
+          "key_info": {
+            "tips": "登顶可俯瞰湖景及城景。傍晚亮灯时场面好看，适合拍摄。",
+            "hours": "08:30-22:00",
+            "price": "上楼40元/人",
+            "reservation": null
+          },
+          "image_index": 9,
+          "text_content": "超然楼\n大明湖畔的建筑，\n登顶可俯瞰湖景及城景。\n傍晚亮灯时场面好看，适合拍摄。\n门票：上楼40元/人\n时间：08:30-22:00"
+        }
+      ],
+      "observedAt": "2026-10-06T02:03:19.111155+00:00",
+      "publishedAt": "2026-03-29T09:22:59+00:00",
+      "analysisSha256": "44d3f5e3cc8a08df2f6601af9fbc651ace16e2a4ac7d68703e83f7facb90ce0c"
+    },
+    {
+      "id": 2816,
+      "city": "济南",
+      "title": "2025年11月29日济南一日游",
+      "desc": "我可太喜欢济南了，济南的秋天和冬天真的封神，那些泉水太清澈了，连护城河都那么好看，我喜欢看这么清澈透亮的水，好纯净好健康好治愈！坐火车到济南站，然后直接去五龙潭，从这里开始逛起。坐公交车才发现老周家牛肉火烧就在上一站，离这不远，下次可以去尝尝。五龙潭对面就是趵突泉，以前我去过了因为有门票所以这次就不去了，五龙潭是没有门票的，听说是因为今年雨水多所以里面那个泉才喷水了。从五龙潭出去做公交车去黑虎泉，公交站旁边就是护城河，太好看了，我要是生活在这我愿意每周都出来看泉水。黑虎泉是济南市接泉水喝的地方，居然是像个水管子不停在流，旁边还有个游泳池，好像是免费的，应该也是这个泉水的吧。黑虎泉这里可以做游船，水好清像玻璃。黑虎泉对面就是宽厚里，从宽厚里往回走就是恒隆广场，今天的午饭是麻六记。穿过恒隆马路对面就是芙蓉街，反正每个城市都得有个这种热闹的卖小吃的步行街。芙蓉街走到头继续顺着胡同走就是曲水亭街，这一路胡同都好逛，里面有好几个网红拍照地。曲水亭街对面就是大明湖入口。从这个入口进去逛到湖北门附近就是夏雨荷。该说不说这版确实没有上版好看。从北门出来坐公交车到济南站结束一天行程。济南太好看了，明年秋天再来。",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/693b8a81000000001e032f74?xsec_token=ABX5M6l5_YamIjJgrpb0bGrde0difAw0w11Ae3jHHAFk8=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南经典景点游览路线图及步行时间",
+          "has_text": true,
+          "key_info": {
+            "tips": "济南经典景点游览路线，串联大明湖、趵突泉、泉城广场、宽厚里等，标注各点间步行/骑行时间",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "大明湖\n超然楼\n老舍纪念馆\n曲水亭街\n济南府学文庙\n百花洲文化街\n芙蓉街\n五龙潭\n宽厚里\n解放阁\n黑虎泉\n泉城广场\n趵突泉\n步行9分钟\n步行6分钟\n步行4分钟\n步行2分钟\n骑行6分钟\n步行3分钟\n步行2分钟\n步行10分钟\n步行3分钟"
+        }
+      ],
+      "observedAt": "2026-10-06T02:03:42.325142+00:00",
+      "publishedAt": "2025-12-12T03:22:41+00:00",
+      "analysisSha256": "fe4bcc7d9847b9b8a923bb8d789fa284cc4ca26150311a1f93e5f3bf07356845"
+    },
+    {
+      "id": 2835,
+      "city": "济南",
+      "title": "济南精华版攻略（！含特色盖章项目）",
+      "desc": "7月底从炎热的西安➡️看似低5-8度的济南，实际一点也不比西安凉快🥲如果要来建议还是在其他季节来玩，以下为本次出行游玩项目！\n注：其他帖子还提到很多具体的项目，就我自己做攻略情况来看补充一些内容，其他不多作赘述\n\t\n⭐️游玩路线：最多一天半\nD1：🚝14点到济南西站➡️酒店➡️世茂广场（饭）➡️曲水亭街➡️大明湖➡️百花洲➡️芙蓉街\nD2：10点出门，五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里（大概在15点已逛完）➡️济南站\n\t\n⭐️具体建议\n【酒店】建议住大明湖景区周围，我住在泉城广场附近汉庭，实际去哪里都需要走10分钟➕，大明湖景区离各个景点都不远\n【景点】\n★大明湖景区：南门进，沿路有卖荷花的，会帮忙开花，还有老婆婆叫卖银色可以亮灯的超然楼手串，非常漂亮（准备回去再买结果下暴雨再没碰到🥲）\n★五龙潭公园：南门进，进门就是文创店，五龙潭离门口很近，其他景点为五龙柱子、秦琼祠，南门出（离趵突泉很近）\n★趵突泉（门票40）：北门进，沿路能看到很多漂亮的小潭，能看到趵突泉石碑的那一边是游客最多的地方，其余三边人都相对少一点（可以坐），东门出（离黑虎潭步行15分钟左右）\n★黑虎泉：❗️坐船需要提前买票选座（p10），大约提前两小时买，导航黑虎泉会路过金虎泉、一虎泉等等，黑虎泉对面的台阶上去黑虎阁是文创店（p8-9）❗️接水点是扫码出水，一个人最多3次扫码，所以别人在接的时候可以提前关注公众号但不要点扫码接水！（桥通着解放阁）\n★解放阁：没上楼，远远看了一眼\n\t\n【文创】如果你是冰箱贴/盖章爱好者，以下官方文创店值得拥有：\n★盖章本（推荐x2）：\n百花洲/芙蓉街：大明湖内文创店本子同款，价格略低\n五龙潭：南门一进门的猫的天空城，本子精美漂亮，价格略高\n★盖章\n大明湖超然楼+文创店、五龙潭猫的天空城（付费）、趵突泉天下第一泉文创、黑虎泉黑虎阁\n★冰箱贴/其他文创\n✭大明湖：超然楼旁边的文创店，原创正版趵突泉、黑虎泉冰箱贴（p1）@Heron 禾恩 ，这个冰箱贴只有官方景区卖正版（还有趵突泉，见下），还有一个透明可亮灯超然楼冰箱贴，其他地方没有卖\n✭五龙潭：猫的天空城，有很多精美的冰箱贴，价格也略高，40+\n✭趵突泉：天下第一泉文创中心（正版半透冰箱贴p1、4）\n\t\n写在最后：济南城市观感很难相信是一座省会城市，反而更像发展不错的县城，如果想来看看泉水可以作为一个短暂的中转旅游地\n#济南[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "手持贴纸在泉边留影，背景为垂柳与传统亭台",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "泉水 sp"
+        },
+        {
+          "summary": "济南趵突泉主题邮局的纪念明信片或宣传页",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "济南\nJINAN\n趵突胜境\n相遇天下客 共聚济南城\n山东 济南\n趵突泉主题邮局\n海马崖前水满川\n汇心泉通荡家园\n济南七十泉流乳\n趵突独称第一泉"
+        },
+        {
+          "summary": "黑虎泉手绘印章纪念页，配文寄语",
+          "has_text": true,
+          "key_info": {
+            "tips": "地点：黑虎泉（济南）；日期：2026.7.31",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "众生皆不易\n终将遇欢喜\n2026.7.31 于黑虎泉"
+        },
+        {
+          "summary": "护城河游船黑虎泉码头扫码购票告示牌，含路线票价与优惠政策",
+          "has_text": true,
+          "key_info": {
+            "tips": "儿童1.2米以下免票，1.2-1.4米半价，1.4米以上全票；每位成人限带一名免费儿童；65岁以上老人及行动不便残疾人须监护人陪同；证件购船票无优惠",
+            "hours": "运营时间被遮挡，无法识别",
+            "price": "黑虎泉→泉城广场10元/人；→趵突泉20元/人；→大明湖西50元/人；→游览大明湖→超然楼80元/人；→黑虎泉环线100元/人",
+            "reservation": "微信扫码/支付宝扫码购票，需点击已阅读后一键登录购买"
+          },
+          "image_index": 9,
+          "text_content": "护城河游船黑虎泉码头 扫码购票\n\n购票指南：\n微信（支付宝）扫描二维码→点击已阅读→点击一键登录→点击购买黑虎泉码头船票→选择乘船人数→选择座位（选择时间和船次）→确认→点击已阅读→立即支付→生成核销二维码→核销\n\n购票政策：\n1. 黑虎泉→泉城广场10元/人\n   黑虎泉→趵突泉 20元/人（不含门票，请至码头另行购买）\n   黑虎泉→大明湖西 50元/人\n   黑虎泉→游览大明湖→超然楼 80元/人\n   黑虎泉→黑虎泉 100元/人\n2. 优惠政策：儿童1.2米以下免票，1.2米-1.4米购买半价票，1.4米以上购买全价票（每位成人仅限带一名免费儿童乘船）；年满65周岁及以上老年人和行动不能自理的残疾人必须有监护人陪同，方可购票；所有证件购买船票均无优惠。\n\n运营时间：[被遮挡]\n咨询电话：0531-86092869"
+        }
+      ],
+      "observedAt": "2026-10-06T02:04:30.986231+00:00",
+      "publishedAt": "2026-07-31T08:30:48+00:00",
+      "analysisSha256": "47c9f25ff62ea6a542f6f35863a4705cd221a6b45893aa81c991a0724ec21cff"
+    },
+    {
+      "id": 2839,
+      "city": "济南",
+      "title": "自驾第一站✨｜济南一日全攻略👍",
+      "desc": "沈阳出发自驾第一站👉济南我来啦🚗\n27号中午沈阳出发，夜里睡在理想小车车里😴\n28号一早就抵达济南！\n🏨住宿｜沃德酒店（趵突泉大明湖店）\n性价比直接拉满💯位置真的绝绝子！\n出门就是五龙潭公园，景点离得都很近，停车也方便，来济南住这超省心👍\n📅28号全天打卡路线👇\n▫️【上午｜全程步行🚶‍♀️】\n①五龙潭✨酒店出门即到！人少清幽，泉水潺潺，慢悠悠散步超治愈\n②趵突泉💧五龙潭南门出来就是趵突泉北门！打卡课本里的天下第一泉\n③泉城广场⛲顺路打卡济南地标\n④黑虎泉🥤可以直接接泉水尝一尝，氛围感狠狠拿捏\n⑤解放阁🏯紧挨着黑虎泉，登高拍照巨出片！\n⑥宽厚里🍢出了解放阁就是，边走边炫各种小吃\n⑦芙蓉街🍡继续逛吃模式，小吃种类超多\n⑧曲水亭街🌿家家泉水户户垂杨！超多网红拍照机位，随手拍都好看\n▫️【中午🍚干饭时间】\n⑨大明湖附近炫午饭👉就是上一篇分享的「大滋味·大师鲁菜」🔥\n爆炒腰花香迷糊啦！想看美食的宝子直接翻我上一篇笔记～\n▫️【下午｜继续步行🚶】\n⑩大明湖景区🌊吃完饭逛大明湖！打卡超然楼、夏雨荷同款点位，沿湖吹吹风，风景绝美✨\n逛完从大明湖北门打车回酒店，美美休整2小时，蓄力晚上夜游！\n▫️【晚上｜骑行出发🚲】\n⑪泉源之眼🌃天黑骑车出发！到泉源之眼路程十多分钟，打卡绝美夜景，骑车完全不堵车，太舒服啦\n⑫穆德老周家牛肉烧饼🥞【强力推荐！！】\n看完夜景顺路过来干饭！真的巨好吃😭！烧饼外酥里软，吸满肉汁，咬一口满嘴香；羊汤奶白醇厚，热乎乎下肚，直接治愈一整天暴走的疲惫✨。来济南一定要试一试！\n吃完离酒店不远，慢悠悠步行溜溜达达就回酒店啦，完美收官济南这一天🥳\n✅白天步行逛老城感受泉城烟火，晚上骑车看夜景，饭后散步消食，节奏刚刚好，不会很累！\n下一站准备出发青岛🌊继续蹲我的自驾连载🚗\n#济南一日游[话题]# #济南旅游攻略[话题]# #沈阳自驾山东[话题]# #济南打卡[话题]# #大明湖超然楼[话题]# #济南住宿推荐[话题]# #自驾连载[话题]# #济南骑行[话题]# #圆周旅记[话题]# #国庆旅游howto[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0?xsec_token=ABufILSqDZN2_5MVzAQdFTtsyPtk2xmUl7aW-FLFEP3rI=&xsec_source=pc_search",
+      "images": [
+        {
+          "summary": "济南一日游景点路线地图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "济南一日游路线\n夏雨荷\n超然楼\n大明湖\n曲水亭街\n芙蓉街\n五龙潭\n酒店\n趵突泉\n宽厚里\n解放阁\n黑虎泉\n泉城广场"
+        },
+        {
+          "summary": "济南老舍相关景点的文化宣传墙",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "总得来趟\n老舍笔下的济南"
+        }
+      ],
+      "observedAt": "2026-10-06T02:04:31.165217+00:00",
+      "publishedAt": "2026-09-29T14:56:58+00:00",
+      "analysisSha256": "7cedd43503349be2d250081b4e4354d6ab4acc91a6a579c5a77242b845a6dcd1"
+    },
+    {
+      "id": 2851,
+      "city": "济南",
+      "title": "济南这三条街这么逛才地道（古城逛吃）",
+      "desc": "曲水亭街、芙蓉街、宽厚里离得不远，可以连成一条线逛，但玩法完全不同，别走冤枉路。\n\t\n顺序建议：曲水亭街 → 芙蓉街 → 宽厚里，从文艺一路逛到热闹。\n\t\n1. 曲水亭街：文艺担当。青石板上一条清浅溪水顺着流，路边有人支桌喝泉水茶，很出片。别急着吃饭，先顺着溪水慢走，石板路配老民居，随手拍都是「老济南」。\n\t\n2. 芙蓉街：小吃一条街，主吃油旋（济南特色，外酥里软，刚出炉咸香）、甜沫、烤猪蹄，边走边吃。人最多，尽量避开饭点。\n\t\n3. 宽厚里：仿古街区，比芙蓉街新也大，各种店更全，适合坐下慢慢吃加拍照。旁边就是解放阁、黑虎泉，逛完正好接黑虎泉喝口泉水。\n\t\n避雷提醒：\n· 三街都有网红店，认准本地招牌（油旋/扒蹄/把子肉），别一进街就乱买；\n· 芙蓉街挤是真的挤，别推婴儿车进去；\n· 曲水亭街的「泉水大碗茶」是氛围，想正经喝泉水去黑虎泉；\n· 逛吃记得留肚子，这条线一路掌不停。\n\t\n离得近，从大明湖南门出来走几步就到曲水亭街，正好接行程。\n\t\n#济南古城[话题]# #曲水亭街[话题]#  #芙蓉街[话题]#  #宽厚里[话题]#  #济南小吃[话题]#  #济南旅游攻略[话题]#  #济南美食[话题]#  #周末去哪儿[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a95346700000000210334e5?xsec_token=ABp9V80Coia5QUBoIv7rmegP8jLRR4cX8331S_bgCg60k=&xsec_source=pc_search",
+      "images": null,
+      "observedAt": "2026-10-06T02:05:11.625775+00:00",
+      "publishedAt": "2026-08-31T07:59:35+00:00",
+      "analysisSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": 2853,
+      "city": "济南",
+      "title": "济南芙蓉街！！最怕倒闭的鲁菜小馆子。。没踩雷",
+      "desc": "不得不说芙蓉街也是有好吃的小馆子的！！\n茶香排骨、松子桂花排骨、口袋虾球、芥末虾球、炸鲜奶酥、拉丝番茄炒蛋。。。\n\t\n茶香排骨是有淡淡茶香味，排骨是酱香味多一点！番茄拉丝鸡蛋也是甜咸口的！！搭配蒜瓣很下饭～糖醋鲤鱼每桌都有！！还有爆炒腰花、风味茄子、糖醋里脊。。\n\t\n济南旅行小tips：\n距离黑虎泉、解放阁、曲水亭街、大明湖、泉城广场…都是步行就可以到的！！\n\t\n#济南[话题]##济南美食[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南特色美食[话题]##济南芙蓉街美食[话题]##济南芙蓉街小吃[话题]##小众旅行地[话题]##周末去哪儿[话题]##第一波春菜已经占领[话题]##春天开幕式[话题]# #大学特种兵[话题]##济南旅游[话题]##济南旅行攻略[话题]# #旅行随手拍[话题]# #小城里的好味道[话题]##记录旅途中的美食[话题]##大声安利本地美食[话题]# #条条小路有好吃[话题]# #本地人推荐美食[话题]# #条条大路都好吃[话题]# #本地人推荐小吃[话题]# #本地人爱吃的店[话题]# #为宵夜而生的美食安利[话题]#@吃货薯@吃货薯@生活薯@生活薯 @城市情报官",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69fdfc2a000000001a02d782?xsec_token=ABpsda6hHFj3KVpwfqaBOZXjnFc8n4Uld-bo8E_oh1WXE=&xsec_source=pc_search",
+      "images": null,
+      "observedAt": "2026-10-06T02:05:11.673466+00:00",
+      "publishedAt": "2026-05-09T03:38:48+00:00",
+      "analysisSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": 2857,
+      "city": "济南",
+      "title": "来济南可以不吃把子肉，但一定要吃这家！！！",
+      "desc": "三刷了！在芙蓉街和西更道交叉口上，地方不太好找但确实好吃！且量大便宜烟火气满满，在这个位置很难得～\n对面就是恒隆旁边是珍珠泉，穿过西更道就是曲水亭大明湖，离着趵突泉五龙潭也很近～\n\t\n推荐茶香排骨、锅包大虾、牛胸口烙馍、鱿鱼烧饼、芥末虾球……\n\t\n#济南[话题]##济南美食[话题]##济南旅游[话题]##济南旅游攻略[话题]##趵突泉附近美食[话题]##趵突泉附近的美食[话题]##济南泉城路美食[话题]##济南特色美食[话题]##曲水亭街[话题]##大明湖[话题]##济南大明湖附近美食[话题]##济南鲁菜[话题]##大声安利本地美食[话题]##济南吃喝玩乐[话题]##芙蓉街美食推荐[话题]##济南美食推荐[话题]##济南美食必吃榜[话题]##济南好吃的美食[话题]##大明湖附近美食[话题]##大明湖附近的美食[话题]##曲水亭街美食[话题]##芙蓉街美食[话题]#",
+      "status": "EXTRACTED",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a6b58fb0000000022010057?xsec_token=ABII9zYIQ0PNWRqf-CmLu1VM5AZe61DTPdSv03bck62G0=&xsec_source=pc_search",
+      "images": null,
+      "observedAt": "2026-10-06T02:05:11.850303+00:00",
+      "publishedAt": "2026-07-31T00:59:53+00:00",
+      "analysisSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "noteTimes": [
+    {
+      "noteId": 2545,
+      "publishTime": "2026-06-07T12:05:23+00:00",
+      "collectedAt": "2026-10-04T11:17:32.826069+00:00",
+      "rawJsonSha256": "4af7cd15eee81d9bc9fd67586fd5efb52c48210552e1f75a73bfeeca70891e5e",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1780833923000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1780909557000
+        }
+      ]
+    },
+    {
+      "noteId": 2548,
+      "publishTime": "2026-06-09T13:21:51+00:00",
+      "collectedAt": "2026-10-04T11:17:32.841133+00:00",
+      "rawJsonSha256": "ddc0124f9936535925329f7be8cb87ce04251bfb0c29d33122dc4762adf336c0",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1781011311000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1781011724000
+        }
+      ]
+    },
+    {
+      "noteId": 2550,
+      "publishTime": "2026-09-18T06:36:37+00:00",
+      "collectedAt": "2026-10-04T11:17:32.888035+00:00",
+      "rawJsonSha256": "c0781b98d0398785eb4ff5963fd251457daef4a2c3a8f25f86db421d96e733c7",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1789713397000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1790181809000
+        }
+      ]
+    },
+    {
+      "noteId": 2553,
+      "publishTime": "2025-12-31T14:45:36+00:00",
+      "collectedAt": "2026-10-04T11:17:32.939024+00:00",
+      "rawJsonSha256": "008a579ef62581367a894d2ec17a610318cc83c44c0205b3456f18fbfc1a29c5",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1767192336000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1769988708000
+        }
+      ]
+    },
+    {
+      "noteId": 2554,
+      "publishTime": "2026-07-14T11:29:44+00:00",
+      "collectedAt": "2026-10-04T11:17:32.985456+00:00",
+      "rawJsonSha256": "a69772c0a073b4ffb89dcd530238347a9adbc560a121c7a5367dc72f8c4e8501",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1784028584000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1784028585000
+        }
+      ]
+    },
+    {
+      "noteId": 2564,
+      "publishTime": "2026-03-28T03:18:54+00:00",
+      "collectedAt": "2026-10-04T11:17:57.614650+00:00",
+      "rawJsonSha256": "cbfc1e8ccb30f822dbec1b0558303acaf30f389fd94ac3807ca4897eb855e5a9",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1774667934000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1774667934000
+        }
+      ]
+    },
+    {
+      "noteId": 2567,
+      "publishTime": "2025-06-05T10:14:06+00:00",
+      "collectedAt": "2026-10-04T11:18:21.068468+00:00",
+      "rawJsonSha256": "04f9957a4eb8b1dd30836c60078abbe61f948d1066cdbf2cb82a29f6ff20839d",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1749118446000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1749118446000
+        }
+      ]
+    },
+    {
+      "noteId": 2568,
+      "publishTime": "2026-06-29T02:39:47+00:00",
+      "collectedAt": "2026-10-04T11:18:21.124040+00:00",
+      "rawJsonSha256": "b285052ce7dc58113c6eb71235d2d6015f5db6fb1ff1aa0816d6df1ba03ed09d",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1782700787000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1782700788000
+        }
+      ]
+    },
+    {
+      "noteId": 2583,
+      "publishTime": "2026-08-15T11:59:56+00:00",
+      "collectedAt": "2026-10-04T11:18:45.334180+00:00",
+      "rawJsonSha256": "3c0b52a2632d70bd3e66d72afba0776ae07b9b63e749cc190b44677c98eb86f9",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1786795196000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1787403936000
+        }
+      ]
+    },
+    {
+      "noteId": 2584,
+      "publishTime": "2026-08-27T03:39:23+00:00",
+      "collectedAt": "2026-10-04T11:18:45.377346+00:00",
+      "rawJsonSha256": "c70e20eaef464f625743d804b8af924c94003d03dbcadb24130381c4831f2d20",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1787801963000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1789966873000
+        }
+      ]
+    },
+    {
+      "noteId": 2609,
+      "publishTime": "2026-08-04T09:36:25+00:00",
+      "collectedAt": "2026-10-04T11:19:58.217557+00:00",
+      "rawJsonSha256": "55b243f05e1dcdc6051e6fa2d52046d1eed5c80d452b7a086f2e2343a65d0947",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1785836185000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1785836186000
+        }
+      ]
+    },
+    {
+      "noteId": 2611,
+      "publishTime": "2026-04-08T08:31:47+00:00",
+      "collectedAt": "2026-10-04T11:19:58.260073+00:00",
+      "rawJsonSha256": "199743d7bb6f6b22103f629a9ab7b36eb4c833a402cf12ffbbb7cc194a998b7e",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1775637107000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1775635400000
+        }
+      ]
+    },
+    {
+      "noteId": 2619,
+      "publishTime": "2026-04-13T12:51:37+00:00",
+      "collectedAt": "2026-10-04T11:20:22.996602+00:00",
+      "rawJsonSha256": "a95aba57ea9e4735a2f6ad94a6a76e6749042a171d3390b3b82067f744bc53f4",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1776084697000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1776084697000
+        }
+      ]
+    },
+    {
+      "noteId": 2624,
+      "publishTime": "2026-05-15T03:12:00+00:00",
+      "collectedAt": "2026-10-04T11:20:23.062328+00:00",
+      "rawJsonSha256": "9f009642fea4b68b9a5f64a76c69c0eb08fcf86dc3dcd7e6dfe191fd912b85d2",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1778814720000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1778815978000
+        }
+      ]
+    },
+    {
+      "noteId": 2782,
+      "publishTime": "2025-05-25T13:35:24+00:00",
+      "collectedAt": "2026-10-06T02:02:22.855979+00:00",
+      "rawJsonSha256": "0b73cda2bcac7a369d35ea3c5d74975f51d7d0df653713da3952b2ca2f296cb5",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1748180124000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1777700545000
+        }
+      ]
+    },
+    {
+      "noteId": 2793,
+      "publishTime": "2026-02-26T06:37:29+00:00",
+      "collectedAt": "2026-10-06T02:02:49.499466+00:00",
+      "rawJsonSha256": "2f5f6fe4c50d8c077394d2badd682d0658b3af44ef190d8b123b69dd617aeec2",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1772087849000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1772087849000
+        }
+      ]
+    },
+    {
+      "noteId": 2803,
+      "publishTime": "2025-06-21T14:41:11+00:00",
+      "collectedAt": "2026-10-06T02:03:18.547973+00:00",
+      "rawJsonSha256": "8732929ff8ba7abf77274db45cac98725359fe7014f3e8849e2981f22d748a82",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1750516871000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1750516871000
+        }
+      ]
+    },
+    {
+      "noteId": 2810,
+      "publishTime": "2026-03-29T09:22:59+00:00",
+      "collectedAt": "2026-10-06T02:03:19.111155+00:00",
+      "rawJsonSha256": "1b557c36d4d31092414f3fb26c1621bc779eb913f9a9540b58fb6cbf0f2b659c",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1774776179000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1780750150000
+        }
+      ]
+    },
+    {
+      "noteId": 2816,
+      "publishTime": "2025-12-12T03:22:41+00:00",
+      "collectedAt": "2026-10-06T02:03:42.325142+00:00",
+      "rawJsonSha256": "636a289367ed6483c6a23494dbff6aff1134ebcee0af47d473a5a65ef5a2b5b5",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1765509761000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1765509761000
+        }
+      ]
+    },
+    {
+      "noteId": 2835,
+      "publishTime": "2026-07-31T08:30:48+00:00",
+      "collectedAt": "2026-10-06T02:04:30.986231+00:00",
+      "rawJsonSha256": "d14b5d6157cd0f1ed64ecb6075b0ecdf8e088f394eb1e5aef4d0f8df46f9ffc8",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1785486648000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1785486937000
+        }
+      ]
+    },
+    {
+      "noteId": 2839,
+      "publishTime": "2026-09-29T14:56:58+00:00",
+      "collectedAt": "2026-10-06T02:04:31.165217+00:00",
+      "rawJsonSha256": "80cb2fe7687b3dc9fae72c280581c5aaf264a199c5dc88003aaa3fedc9e8d914",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1790693818000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1790693818000
+        }
+      ]
+    },
+    {
+      "noteId": 2851,
+      "publishTime": "2026-08-31T07:59:35+00:00",
+      "collectedAt": "2026-10-06T02:05:11.625775+00:00",
+      "rawJsonSha256": "3385073056e11ab340731163f3890bd321174e6d85564b34bd6bf04c5962f975",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1788163175000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1788163176000
+        }
+      ]
+    },
+    {
+      "noteId": 2853,
+      "publishTime": "2026-05-09T03:38:48+00:00",
+      "collectedAt": "2026-10-06T02:05:11.673466+00:00",
+      "rawJsonSha256": "0b38f8e60ecc1b4febd440c83e191bc01087b10461c4fab17ed024454988bf22",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1778297928000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1778335471000
+        }
+      ]
+    },
+    {
+      "noteId": 2857,
+      "publishTime": "2026-07-31T00:59:53+00:00",
+      "collectedAt": "2026-10-06T02:05:11.850303+00:00",
+      "rawJsonSha256": "6b597daae50e254392722f20b6995dedf296f9c10de9664ecce6e8be57950cfa",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1785459593000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1785646524000
+        }
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

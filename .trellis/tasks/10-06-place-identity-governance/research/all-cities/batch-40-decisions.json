@@ -1,0 +1,44 @@
+[
+  {
+    "key": "all-cities-20261009-batch-40-retain-category-5481",
+    "city": "济南",
+    "entityId": "69b816cda273f29ed9296314fbe6f52d",
+    "mergeEntityIds": [],
+    "canonicalName": "明水古城",
+    "expectedRevisions": {
+      "69b816cda273f29ed9296314fbe6f52d": 2
+    },
+    "overrides": {
+      "category": "娱乐"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_text_subject_mismatch",
+        "file": "priority-cities/济南/description-source-review-01.json",
+        "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+        "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-40-retain-category-5974",
+    "city": "济南",
+    "entityId": "abc624edea07111dc19aa79dfbb18289",
+    "mergeEntityIds": [],
+    "canonicalName": "济南野生动物园",
+    "expectedRevisions": {
+      "abc624edea07111dc19aa79dfbb18289": 2
+    },
+    "overrides": {
+      "category": "娱乐"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_text_subject_mismatch",
+        "file": "priority-cities/济南/description-source-review-01.json",
+        "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+        "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+      }
+    ]
+  }
+]

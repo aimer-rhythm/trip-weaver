@@ -1,0 +1,520 @@
+{
+ "_comment": "关系上下游合成城社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-07）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "关系上下游合成城",
+ "generatedAt": "2026-10-07",
+ "count": 5,
+ "activeCount": 4,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 3,
+  "sourceHash": "fa04f4d40ad962df144dc3d8249025c4195df1ebf566b3517387302b2d36f3b0",
+  "relationHash": "6c528447e34a7e9df824a028533932832d15fdb79df6ea11e0b9e545bafe24a8",
+  "sourceState": {
+   "city": "关系上下游合成城",
+   "algorithmVersion": 1,
+   "minMentions": 2,
+   "surfaces": [
+    "东门小院",
+    "双门咖啡",
+    "西街客厅",
+    "北园",
+    "南馆"
+   ],
+   "mentions": [
+    {
+     "mentionId": 5,
+     "noteId": 3,
+     "inputHash": "d4c3a741f603fc0c8bd1b4837e3cb31d9bb0197fb488aeb90a6fb4b1b39ea4c1",
+     "textHash": "1aed70db1fcab7b5d009a836c29aa1842655e2430980a731bad72c21b32e992b",
+     "textLength": 32,
+     "entityId": "e29dc42c280fc23df4e31a77167ee138",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 6,
+     "noteId": 3,
+     "inputHash": "a83abfd959e7219c2aae77f5dfd9eeb6f5ce1d1ac2ec8465a449cdd20c540165",
+     "textHash": "1aed70db1fcab7b5d009a836c29aa1842655e2430980a731bad72c21b32e992b",
+     "textLength": 32,
+     "entityId": "4d883692608e3cd8987c0af0cd4b500b",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 7,
+     "noteId": 3,
+     "inputHash": "e40f0e9b75711198456bf4eb3c373a77e2c04a1a1cebf555964111466cf6e5b9",
+     "textHash": "1aed70db1fcab7b5d009a836c29aa1842655e2430980a731bad72c21b32e992b",
+     "textLength": 32,
+     "entityId": "3b5a853b3dc18b084e0b900a9c77954d",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 8,
+     "noteId": 3,
+     "inputHash": "2d4043718b92b1a993476b060844c83ba6d895d463871d59989d27e163cb71e3",
+     "textHash": "1aed70db1fcab7b5d009a836c29aa1842655e2430980a731bad72c21b32e992b",
+     "textLength": 32,
+     "entityId": "de8935c0ff7522c09bd46b560278a2f5",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 9,
+     "noteId": 4,
+     "inputHash": "89f6f9b418b66c94b7a2e5e7b5035c24df67a32ec90610b65f5a950ad2e80f7e",
+     "textHash": "2621afadc4580a14dc98fc5b84c2553c7c261c78b3befc7298cc122aac0c92c2",
+     "textLength": 32,
+     "entityId": "e29dc42c280fc23df4e31a77167ee138",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 10,
+     "noteId": 4,
+     "inputHash": "280cdd729b20f9fbc4ffa6e687a2efc0ee3b4e03b3beae5dda873054c44a24c6",
+     "textHash": "2621afadc4580a14dc98fc5b84c2553c7c261c78b3befc7298cc122aac0c92c2",
+     "textLength": 32,
+     "entityId": "4d883692608e3cd8987c0af0cd4b500b",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11,
+     "noteId": 4,
+     "inputHash": "99169b61ba82cd0e3033eecd523577b41d10428a1fe3d257374b5ed7f12dad49",
+     "textHash": "2621afadc4580a14dc98fc5b84c2553c7c261c78b3befc7298cc122aac0c92c2",
+     "textLength": 32,
+     "entityId": "3b5a853b3dc18b084e0b900a9c77954d",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12,
+     "noteId": 4,
+     "inputHash": "ec12ec489fb725510b715e0e870a3f7eb28e58a2794ce06edec2c20c8d27e9c4",
+     "textHash": "2621afadc4580a14dc98fc5b84c2553c7c261c78b3befc7298cc122aac0c92c2",
+     "textLength": 32,
+     "entityId": "de8935c0ff7522c09bd46b560278a2f5",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "3b5a853b3dc18b084e0b900a9c77954d",
+     "revision": 1,
+     "canonicalName": "北园",
+     "aliases": [
+      "北园"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "4d883692608e3cd8987c0af0cd4b500b",
+     "revision": 2,
+     "canonicalName": "西街客厅",
+     "aliases": [
+      "西街客厅"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "6d3d533db00c99e2b41b8efddbe30396",
+     "revision": 2,
+     "canonicalName": "双门咖啡",
+     "aliases": [
+      "双门咖啡"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "de8935c0ff7522c09bd46b560278a2f5",
+     "revision": 1,
+     "canonicalName": "南馆",
+     "aliases": [
+      "南馆"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "e29dc42c280fc23df4e31a77167ee138",
+     "revision": 2,
+     "canonicalName": "东门小院",
+     "aliases": [
+      "东门小院"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "e29dc42c280fc23df4e31a77167ee138",
+   "name": "东门小院",
+   "category": "文化",
+   "lng": 120.102,
+   "lat": 30.102,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "同游路线的原文提及"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T08:02:05.451947+00:00"
+    },
+    "originalName": "东门小院",
+    "openHours": {
+     "version": 2,
+     "subject": "东门小院",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 5,
+      "noteId": 3,
+      "inputHash": "d4c3a741f603fc0c8bd1b4837e3cb31d9bb0197fb488aeb90a6fb4b1b39ea4c1"
+     },
+     {
+      "mentionId": 9,
+      "noteId": 4,
+      "inputHash": "89f6f9b418b66c94b7a2e5e7b5035c24df67a32ec90610b65f5a950ad2e80f7e"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "e29dc42c280fc23df4e31a77167ee138",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "e29dc42c280fc23df4e31a77167ee138",
+     "canonicalName": "东门小院",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "东门小院"
+     ],
+     "memberIds": [
+      "e29dc42c280fc23df4e31a77167ee138"
+     ]
+    },
+    "aliases": [
+     "东门小院"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "同游路线的原文提及",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "4d883692608e3cd8987c0af0cd4b500b",
+   "name": "西街客厅",
+   "category": "文化",
+   "lng": 120.104,
+   "lat": 30.104,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "同游路线的原文提及"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T08:02:05.451947+00:00"
+    },
+    "originalName": "西街客厅",
+    "openHours": {
+     "version": 2,
+     "subject": "西街客厅",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 6,
+      "noteId": 3,
+      "inputHash": "a83abfd959e7219c2aae77f5dfd9eeb6f5ce1d1ac2ec8465a449cdd20c540165"
+     },
+     {
+      "mentionId": 10,
+      "noteId": 4,
+      "inputHash": "280cdd729b20f9fbc4ffa6e687a2efc0ee3b4e03b3beae5dda873054c44a24c6"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "4d883692608e3cd8987c0af0cd4b500b",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "4d883692608e3cd8987c0af0cd4b500b",
+     "canonicalName": "西街客厅",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "西街客厅"
+     ],
+     "memberIds": [
+      "4d883692608e3cd8987c0af0cd4b500b"
+     ]
+    },
+    "aliases": [
+     "西街客厅"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "同游路线的原文提及",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "3b5a853b3dc18b084e0b900a9c77954d",
+   "name": "北园",
+   "category": "文化",
+   "lng": 120.106,
+   "lat": 30.106,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T08:02:05.451947+00:00"
+    },
+    "originalName": "北园",
+    "openHours": {
+     "version": 2,
+     "subject": "北园",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "3b5a853b3dc18b084e0b900a9c77954d",
+     "canonicalName": "北园",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "北园"
+     ],
+     "memberIds": [
+      "3b5a853b3dc18b084e0b900a9c77954d"
+     ]
+    },
+    "aliases": [
+     "北园"
+    ],
+    "components": []
+   },
+   "evidence": []
+  },
+  {
+   "id": "de8935c0ff7522c09bd46b560278a2f5",
+   "name": "南馆",
+   "category": "文化",
+   "lng": 120.108,
+   "lat": 30.108,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T08:02:05.451947+00:00"
+    },
+    "originalName": "南馆",
+    "openHours": {
+     "version": 2,
+     "subject": "南馆",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "de8935c0ff7522c09bd46b560278a2f5",
+     "canonicalName": "南馆",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "南馆"
+     ],
+     "memberIds": [
+      "de8935c0ff7522c09bd46b560278a2f5"
+     ]
+    },
+    "aliases": [
+     "南馆"
+    ],
+    "components": []
+   },
+   "evidence": []
+  },
+  {
+   "id": "6d3d533db00c99e2b41b8efddbe30396",
+   "name": "双门咖啡",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "6d3d533db00c99e2b41b8efddbe30396",
+     "canonicalName": "双门咖啡",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "双门咖啡"
+     ],
+     "memberIds": [
+      "6d3d533db00c99e2b41b8efddbe30396"
+     ]
+    },
+    "aliases": [
+     "双门咖啡"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "split_source",
+     "candidateIds": [
+      "4d883692608e3cd8987c0af0cd4b500b",
+      "e29dc42c280fc23df4e31a77167ee138"
+     ]
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "6d3d533db00c99e2b41b8efddbe30396",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  }
+ ]
+}

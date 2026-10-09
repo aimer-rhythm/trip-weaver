@@ -1,0 +1,133 @@
+{
+  "batch": 60,
+  "readOnly": true,
+  "at": "2026-10-08T22:18:48.822Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus",
+    "price",
+    "tips"
+  ],
+  "results": [
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "withdrawn": true,
+      "ordinaryUnchanged": false,
+      "confirmed": 0,
+      "pending": 4,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "name": "春水锅贴",
+      "withdrawn": true,
+      "ordinaryUnchanged": false,
+      "confirmed": 0,
+      "pending": 2,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "3f6a2dce847940205f501690e2548e88",
+      "name": "草包包子",
+      "withdrawn": true,
+      "ordinaryUnchanged": false,
+      "confirmed": 0,
+      "pending": 2,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+      "name": "天天过年",
+      "withdrawn": false,
+      "ordinaryUnchanged": false,
+      "confirmed": 1,
+      "pending": 1,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "d342ff3eb8d541f17253786d0dd148fa",
+      "name": "陈氏肥蛤",
+      "withdrawn": false,
+      "ordinaryUnchanged": true,
+      "confirmed": 2,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    }
+  ],
+  "assignmentRows": 310,
+  "pendingMentions": 126,
+  "scopesAdded": 4,
+  "confirmed": 1,
+  "pendingAdded": 9,
+  "coordinatesCleared": 1,
+  "withdrawals": 3,
+  "withdrawnCoordinatesRemoved": 3,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 0,
+  "ordinaryReviewed": 1,
+  "sqlProbes": 5,
+  "boundaryProbes": 30,
+  "realVectorProbes": 5,
+  "realVectors": [
+    {
+      "name": "超意兴",
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "vector": "used",
+      "withdrawn": true
+    },
+    {
+      "name": "春水锅贴",
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "vector": "used",
+      "withdrawn": true
+    },
+    {
+      "name": "草包包子",
+      "entityId": "3f6a2dce847940205f501690e2548e88",
+      "vector": "used",
+      "withdrawn": true
+    },
+    {
+      "name": "天天过年",
+      "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "陈氏肥蛤",
+      "entityId": "d342ff3eb8d541f17253786d0dd148fa",
+      "vector": "used",
+      "withdrawn": false
+    }
+  ],
+  "graph": 19,
+  "directEdges": 3,
+  "relationEvidenceAndStrengthPreserved": true,
+  "priorReviewRowsPreserved": true,
+  "rawDerivedCachesPreserved": true,
+  "confirmedFactsAndDatesPreserved": true,
+  "unresolvedBranchFactsRemoved": true,
+  "fallbackObservedAtChanges": [],
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

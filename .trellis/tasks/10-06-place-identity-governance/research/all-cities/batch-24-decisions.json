@@ -1,0 +1,48 @@
+[
+  {
+    "key": "all-cities-20261007-batch-24-correct-459",
+    "city": "重庆",
+    "entityId": "2f6c627fdf341bf54b049f3c0ae84d74",
+    "canonicalName": "呼归石公交站对面",
+    "mergeEntityIds": [
+      "79afbf6edf8899c29d2eb71edf8c3c81"
+    ],
+    "expectedRevisions": {
+      "2f6c627fdf341bf54b049f3c0ae84d74": 4,
+      "79afbf6edf8899c29d2eb71edf8c3c81": 2
+    },
+    "aliases": [
+      "呼归石公交站对面"
+    ],
+    "excludeNames": [
+      "呼归石公交站"
+    ],
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+      "category": "景点",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_mention_scope",
+        "file": "scope-source-459-1791335308979279800.json",
+        "sha256": "8e9e7b914506e690bb146cfc3324cc78692a5539b89784848e2d01ea15d77f4d",
+        "mentionIds": [
+          534,
+          1119,
+          1615
+        ],
+        "reviewIds": [
+          459
+        ],
+        "sourcePlaceIds": [
+          176,
+          215
+        ],
+        "conclusion": "三条原提及来自同一篇note7，原始证据均为呼归石公交站对面；534/1615错抽取丢失对面。逐条分给站外机位，排除公交站裸名，不声明公交站与站外机位永久同义。保留旧ID兼容正确名称，未来真实公交站提及仍须独立审核。"
+      }
+    ]
+  }
+]

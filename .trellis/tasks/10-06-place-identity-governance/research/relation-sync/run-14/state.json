@@ -1,0 +1,55 @@
+{
+  "city": "厦门",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "sourceRevision": 1,
+  "sourceHash": "847e10737a25420dcefbb01f07c19cdff014336379d96e0e2f8e3f03de2423e6",
+  "placesHash": "bf7cb67b9f186665d591df7faa70124c9945bd5f6c89c8e7598dfe60d7cc5118",
+  "relationsHash": "c276628aafe22505026dbedce039e74657cb5b2f50557692d79283d08b10ff0b",
+  "libraryHash": "43dd5470e204715516e3462ee102592fe5df71f74720bb2b9fce111ffbc18b30",
+  "counts": {
+    "places": 617,
+    "graph": 116,
+    "direct": 42,
+    "library": {
+      "canonical_places": 669,
+      "research_evidence": 945,
+      "place_relation": 75,
+      "data_import": 3,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "bf7cb67b9f186665d591df7faa70124c",
+      "row_count": 617
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "c276628aafe22505026dbedce039e746",
+      "row_count": 42
+    }
+  ],
+  "audits": [
+    {
+      "id": "2b10d038-dcde-40b6-a036-cf20fc82c465",
+      "content_hash": "bf7cb67b9f186665d591df7faa70124c"
+    },
+    {
+      "id": "d4e23270-fb12-47ff-a6f8-c0e84c8d079b",
+      "content_hash": "c276628aafe22505026dbedce039e746"
+    }
+  ],
+  "importedAt": "2026-10-07T09:11:23.600Z"
+}

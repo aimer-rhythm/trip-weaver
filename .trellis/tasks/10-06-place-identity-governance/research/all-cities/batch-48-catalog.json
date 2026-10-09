@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "entity_id": "af9116d87efcdf105915ca6303cb6274",
+      "city": "济南",
+      "canonical_name": "珍珠泉",
+      "primary_place_id": 5363,
+      "aliases": [
+        "珍珠泉"
+      ],
+      "legacy_ids": [
+        "af9116d87efcdf105915ca6303cb6274"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6",
+      "city": "济南",
+      "canonical_name": "珍珠泉大院",
+      "primary_place_id": 5947,
+      "aliases": [
+        "珍珠泉大院"
+      ],
+      "legacy_ids": [
+        "bdf4a854f642c85b65ed4d0760de0bd6"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5363,
+      "entity_id": "af9116d87efcdf105915ca6303cb6274"
+    },
+    {
+      "place_id": 5947,
+      "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6"
+    }
+  ],
+  "reviews": []
+}

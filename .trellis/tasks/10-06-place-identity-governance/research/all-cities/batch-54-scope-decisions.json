@@ -1,0 +1,84 @@
+[
+  {
+    "key": "all-cities-20261009-batch-54-source-5322-scope",
+    "city": "济南",
+    "sourcePlaceId": 5322,
+    "expectedSourceHash": "725b796d812c6dcddcd0cd8478675cea87f67fa42beb3bc5b69b947657a2350b",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "9626de365121d40b3565b4a7dbc5be1a": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11344,
+        "inputHash": "800f8260cd01de115af2af5f6be3cc45f01f35b245c9fea93ca0b850f22f5128",
+        "entityId": "9626de365121d40b3565b4a7dbc5be1a",
+        "factExclusions": {
+          "reason": {
+            "reason": "subject_mismatch",
+            "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】"
+          },
+          "evidence_text": {
+            "reason": "subject_mismatch",
+            "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】"
+          },
+          "place_content": {
+            "reason": "subject_mismatch",
+            "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】"
+          }
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_branch_navigation_anchor",
+        "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+        "mentionIds": [
+          11344
+        ],
+        "conclusion": "原文明确商店分店名称，但全部描述均为独立雕塑/车/天桥的摄影动作，不作为饮品店自身体验或设施事实；原摄影线索保留，装置位置和归属继续待核。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-54-source-5324-scope",
+    "city": "济南",
+    "sourcePlaceId": 5324,
+    "expectedSourceHash": "4e28ab8d506fdd5c07c8f04d959424995f324ed2c5372fa18a0bc7ee57580cea",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "eb75294ebee7a37c374a3f5cd374d4ac": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11346,
+        "inputHash": "d0b07ea17b97ec0aa55d662d6b1d5952cb2910593fc941531ade8012258f3ea5",
+        "entityId": "eb75294ebee7a37c374a3f5cd374d4ac",
+        "factExclusions": {
+          "reason": {
+            "reason": "subject_mismatch",
+            "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】"
+          },
+          "evidence_text": {
+            "reason": "subject_mismatch",
+            "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】"
+          },
+          "place_content": {
+            "reason": "subject_mismatch",
+            "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】"
+          }
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_branch_navigation_anchor",
+        "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+        "mentionIds": [
+          11346
+        ],
+        "conclusion": "原文明确商店分店名称，但全部描述均为独立雕塑/车/天桥的摄影动作，不作为饮品店自身体验或设施事实；原摄影线索保留，装置位置和归属继续待核。"
+      }
+    ]
+  }
+]

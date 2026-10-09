@@ -1,0 +1,178 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "fa3e866010cca86b700dd2b3fbb1845c8de46b1cc3b5922618d05c6f2ebae49b",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "秦记火烧"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11364,
+     "noteId": 2585,
+     "inputHash": "9a1accef11c992568fc90b6d0c2f50b1e627aef328b392003198a7c2f5ba25bf",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "53fc7a0204959595c1277e9c76915534",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11664,
+     "noteId": 2602,
+     "inputHash": "8398d229f3c24901e48b8ee2500c1576593eda927c62ec7b1bfd52bed0209309",
+     "textHash": "a388d10e7c12f8baf826a2b6634e357de0bfe3af326313446c36a4b8aef72430",
+     "textLength": 1004,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12605,
+     "noteId": 2585,
+     "inputHash": "abfa234e3b452810dbc65218b6551bde66cd7704063c8c84a2ead7ec40da0b16",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "53fc7a0204959595c1277e9c76915534",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12892,
+     "noteId": 2856,
+     "inputHash": "86bebb9e8c05d91ac6386dc327d52853321d566542149a98c16d23320c21fd9b",
+     "textHash": "3c70fe62cd037e3d1963af1204716c73f2e40c2fcd12dd3b9b325fc1de5e2caa",
+     "textLength": 297,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "53fc7a0204959595c1277e9c76915534",
+     "revision": 2,
+     "canonicalName": "秦记火烧",
+     "aliases": [
+      "秦记火烧"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "53fc7a0204959595c1277e9c76915534",
+   "name": "秦记火烧",
+   "category": "美食",
+   "lng": 117.015715,
+   "lat": 36.669433,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "铜元局前街37东北方向110米",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [
+     "本地人推荐，有特色且味道好"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:25:00.336696+00:00"
+    },
+    "originalName": "秦记火烧",
+    "openHours": {
+     "version": 2,
+     "subject": "秦记火烧",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11364,
+      "noteId": 2585,
+      "inputHash": "9a1accef11c992568fc90b6d0c2f50b1e627aef328b392003198a7c2f5ba25bf"
+     },
+     {
+      "mentionId": 12605,
+      "noteId": 2585,
+      "inputHash": "abfa234e3b452810dbc65218b6551bde66cd7704063c8c84a2ead7ec40da0b16"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "53fc7a0204959595c1277e9c76915534",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "53fc7a0204959595c1277e9c76915534",
+     "canonicalName": "秦记火烧",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "秦记火烧"
+     ],
+     "memberIds": [
+      "53fc7a0204959595c1277e9c76915534"
+     ]
+    },
+    "aliases": [
+     "秦记火烧"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

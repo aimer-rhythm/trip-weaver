@@ -1,0 +1,97 @@
+{
+  "city": "济南",
+  "batch": 61,
+  "sourcePacket": "priority-cities/济南/built-place-source-packet-01.json",
+  "reviewedSources": 7,
+  "reviewedMentions": 7,
+  "fullNotes": 4,
+  "appliedSources": 2,
+  "appliedMentions": 2,
+  "confirmed": 1,
+  "pending": 1,
+  "withdrawals": 1,
+  "newEntities": 0,
+  "rows": [
+    {
+      "entityId": "0d0968c2ca848678bcf24e2c0db83554",
+      "sourceId": 5955,
+      "name": "月下观棠",
+      "mentionIds": [
+        12689
+      ],
+      "action": "read_only_boundary_pending",
+      "conclusion": "原文以月下观棠作白底书法墙导航参照，现有图中文字含汉服妆造；店铺与附近几面墙不是同一主体。公开搜索未取得同店地址正文，暂不指定店型/分店/墙面或新坐标，保留现状并记录未应用边界。"
+    },
+    {
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "sourceId": 5954,
+      "name": "济南文字墙",
+      "mentionId": 12688,
+      "noteId": 2817,
+      "targetEntityId": "66c835ba565f34cbd12206d7169c8da1",
+      "action": "original_route_subject_confirmed_foreign_tips_removed",
+      "conclusion": "12688只确认note2817路线第②站所指文字墙，保留该原始主体/稳定ID，不宣称具体墙面已定位；第③站月下观棠附近是另外几面墙，老商埠喜艾旁的墙来自note2566，不能通过通用名称导入。完整scope保留原提及，停止两个未归属图片提示消费，不增加别名/实体/坐标。"
+    },
+    {
+      "entityId": "78d5eff53c3692218e93a142d69021cf",
+      "sourceId": 5971,
+      "name": "山东大厦",
+      "mentionIds": [
+        12778
+      ],
+      "action": "read_only_boundary_pending",
+      "conclusion": "原文明确山东大厦内中庭拍照，官网正文支持马鞍山路2-1号酒店地址；不将酒店经营用途自动等同照片主体，也不把酒店地址当中庭精确点/开放许可。保持现名、类别、点位及描述，粒度和位置媒体待核。"
+    },
+    {
+      "entityId": "88a3e4b4f75459daacfe23ed6ca4157d",
+      "sourceId": 5969,
+      "name": "济南墙",
+      "mentionIds": [
+        12773
+      ],
+      "action": "read_only_boundary_pending",
+      "conclusion": "原文明示百花洲西月下观棠旁街巷的济南墙，具体墙面仍未辨明；不与济南文字墙或店铺合并。继承第30批清空的点位与revision2，本批无重复清点。"
+    },
+    {
+      "entityId": "ca1b5db55316182cf144e13eab8e402d",
+      "sourceId": 5966,
+      "name": "明珠天地C",
+      "mentionIds": [
+        12766
+      ],
+      "action": "read_only_boundary_pending",
+      "conclusion": "原文确写明珠天地C，未取得该建筑的独立名称/地址正文；不能把猜测的明湖天地或明珠国际商务港作同义名。现有远东点缺确认，待继续定位，不在本批猜改名字或坐标。"
+    },
+    {
+      "entityId": "d4292fdc91029db1a1714b00686787ff",
+      "sourceId": 5328,
+      "name": "夹心胡同",
+      "mentionIds": [
+        11350
+      ],
+      "action": "read_only_boundary_pending",
+      "conclusion": "原文夹心胡同(融汇济南老商埠店)作爱心天桥导航，现有文字分析同时有店名/装置和DIY字样；公开检索仍不足裁定商户与同名创意场景边界。保持revision2空点，不自动改shop或补分店主名。"
+    },
+    {
+      "entityId": "dc445410375df79cab73ba2b18448910",
+      "sourceId": 5400,
+      "name": "淘子外单",
+      "mentionId": 11536,
+      "noteId": 2573,
+      "targetEntityId": null,
+      "action": "specific_branch_unresolved",
+      "conclusion": "全文列出经四万达店、高新店、西市场店，但实际到访描述只写裸名；路线邻近不能选择分店。唯一提及待审，完整scope显式撤回原单店消费，不创建候选门店或标为非地点。"
+    }
+  ],
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "supplementalExistingAnalysisNote": 2856,
+  "noNotAPlaceExclusions": true,
+  "readOnlyBoundaryPending": 5,
+  "coordinatesExplicitlyCleared": 0,
+  "withdrawnCoordinatesRemoved": 1,
+  "newPreciseLocations": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

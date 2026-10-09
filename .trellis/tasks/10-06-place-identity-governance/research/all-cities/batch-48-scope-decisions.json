@@ -1,0 +1,138 @@
+[
+  {
+    "key": "all-cities-20261009-batch-48-source-5363-scope",
+    "city": "济南",
+    "sourcePlaceId": 5363,
+    "expectedSourceHash": "74a53934fa833d1fd0125efe84cc13d2af1456f46ac0178175ecf060a0a62aba",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "af9116d87efcdf105915ca6303cb6274": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11338,
+        "inputHash": "b3efeac122b102d00ab44730fdeef61f3a2712205a0a14f78e66417ba7715d5a",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 11400,
+        "inputHash": "2429b0bef4e53aec0246f4b8ed5648c8474c29c23f148a1c283df11a4fbc0286",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 11414,
+        "inputHash": "a0bc4c09b3f7bdf01ff2b81c51e7f9ca3d33ac6e8787f0956cdfebcbe9fa89cc",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 12566,
+        "inputHash": "699de5a7d2560b93a4c476151bb27a706523816c63e59215e0ffd7f84918d8d9",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 12592,
+        "inputHash": "b8031d24d7467f7d74556faa5cf19f8d5a1d060192d4c0ee73620d52ea835021",
+        "entityId": "af9116d87efcdf105915ca6303cb6274",
+        "factExclusions": {
+          "reason": {
+            "reason": "subject_mismatch",
+            "quote": "顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。"
+          },
+          "evidence_text": {
+            "reason": "subject_mismatch",
+            "quote": "顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。"
+          },
+          "place_content": {
+            "reason": "subject_mismatch",
+            "quote": "顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。",
+            "highlightIndexes": [
+              1
+            ]
+          }
+        }
+      },
+      {
+        "mentionId": 12669,
+        "inputHash": "824e7dbf4cdf60096af92aa7b6fd17a3dd385cec2116647a407c483ca5a4d340",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 12680,
+        "inputHash": "da18d48ab8069a50d038d8fcfafa9b4fff150592881c8d85575d593037b19908",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 12696,
+        "inputHash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      },
+      {
+        "mentionId": 12940,
+        "inputHash": "98179ec13659bbfd76d3d70e7c75955c2af419a3e8e5b5c11578b49d43a44e2e",
+        "entityId": "af9116d87efcdf105915ca6303cb6274"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_scope",
+        "file": "priority-cities/济南/pearl-source-review-01.json",
+        "mentionIds": [
+          11338,
+          11400,
+          11414,
+          12566,
+          12592,
+          12669,
+          12680,
+          12696,
+          12940
+        ],
+        "conclusion": "全文区分泉池与容纳多泉的大院；两条混合看点逐项删错留真，完整提及身份保持，不扩展到整个珍珠泉泉群。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-48-source-5947-scope",
+    "city": "济南",
+    "sourcePlaceId": 5947,
+    "expectedSourceHash": "4058a4fcedfe9fc274bd461a162e4f6b3282af1c377c14a5608496ca2e8d0f0a",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "bdf4a854f642c85b65ed4d0760de0bd6": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 12582,
+        "inputHash": "c8c3164979d978ab3f125e0123e02340f3c1ccb99b587b5f75a6e85b89759b56",
+        "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+        "factExclusions": {
+          "reason": {
+            "reason": "subject_mismatch",
+            "quote": "珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）"
+          },
+          "evidence_text": {
+            "reason": "subject_mismatch",
+            "quote": "珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）"
+          },
+          "place_content": {
+            "reason": "subject_mismatch",
+            "quote": "珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）",
+            "highlightIndexes": [
+              0
+            ]
+          }
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_scope",
+        "file": "priority-cities/济南/pearl-source-review-01.json",
+        "mentionIds": [
+          12582
+        ],
+        "conclusion": "全文区分泉池与容纳多泉的大院；两条混合看点逐项删错留真，完整提及身份保持，不扩展到整个珍珠泉泉群。"
+      }
+    ]
+  }
+]

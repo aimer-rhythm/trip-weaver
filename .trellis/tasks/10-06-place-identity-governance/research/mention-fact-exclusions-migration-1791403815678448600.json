@@ -1,0 +1,91 @@
+{
+  "apply": false,
+  "preview": {
+    "missing": [],
+    "missingColumns": [
+      "place_mention_assignment.fact_exclusions"
+    ],
+    "apply": false,
+    "present": [
+      "place_entity",
+      "place_entity_member",
+      "place_entity_review",
+      "place_entity_change",
+      "place_identity_scope",
+      "place_identity_scope_source",
+      "place_mention_assignment",
+      "place_image_assignment"
+    ]
+  },
+  "applied": null,
+  "repeated": null,
+  "before": {
+    "place_entity": {
+      "rows": 5865,
+      "sha256": "ac583507441e800d94970b62da9143194295e037614aae45e93f3f56d8a5929e"
+    },
+    "place_entity_member": {
+      "rows": 5870,
+      "sha256": "bc2b1409a2b353ae4d8530a7c7cee2e21bcde6b99e4f112630ce61fecfbb9257"
+    },
+    "place_entity_review": {
+      "rows": 585,
+      "sha256": "c5dfe31c36a537a1d41e8e260018a6ca9406ba69515d77c988544752fe1b9b0b"
+    },
+    "place_entity_change": {
+      "rows": 592,
+      "sha256": "49312ea291c22b45a877a2498e8052d25dfcc695542e012fb7587249cd93bfb8"
+    },
+    "place_identity_scope": {
+      "rows": 48,
+      "sha256": "0f703aa07d9bc4a2e0675ca6d3179b8cc2eb32ae5b5fd38a0897df831ad251d9"
+    },
+    "place_identity_scope_source": {
+      "rows": 8,
+      "sha256": "22fda4185a0b6595110f525218cfcfab4b62852fd261f131117867117ec98624"
+    },
+    "place_mention_assignment": {
+      "rows": 188,
+      "sha256": "969154e59d739084619f21c9f77d7a670b78aa1da4e10eadacc6c105d9412ef1"
+    },
+    "place_image_assignment": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "after": {
+    "place_entity": {
+      "rows": 5865,
+      "sha256": "ac583507441e800d94970b62da9143194295e037614aae45e93f3f56d8a5929e"
+    },
+    "place_entity_member": {
+      "rows": 5870,
+      "sha256": "bc2b1409a2b353ae4d8530a7c7cee2e21bcde6b99e4f112630ce61fecfbb9257"
+    },
+    "place_entity_review": {
+      "rows": 585,
+      "sha256": "c5dfe31c36a537a1d41e8e260018a6ca9406ba69515d77c988544752fe1b9b0b"
+    },
+    "place_entity_change": {
+      "rows": 592,
+      "sha256": "49312ea291c22b45a877a2498e8052d25dfcc695542e012fb7587249cd93bfb8"
+    },
+    "place_identity_scope": {
+      "rows": 48,
+      "sha256": "0f703aa07d9bc4a2e0675ca6d3179b8cc2eb32ae5b5fd38a0897df831ad251d9"
+    },
+    "place_identity_scope_source": {
+      "rows": 8,
+      "sha256": "22fda4185a0b6595110f525218cfcfab4b62852fd261f131117867117ec98624"
+    },
+    "place_mention_assignment": {
+      "rows": 188,
+      "sha256": "969154e59d739084619f21c9f77d7a670b78aa1da4e10eadacc6c105d9412ef1"
+    },
+    "place_image_assignment": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "dataUnchanged": true
+}

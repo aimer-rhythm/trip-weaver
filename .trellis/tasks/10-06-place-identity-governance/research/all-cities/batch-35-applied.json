@@ -1,0 +1,846 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "city": "济南",
+          "canonical_name": "泉城广场",
+          "primary_place_id": 5354,
+          "aliases": [
+            "泉城广场"
+          ],
+          "legacy_ids": [
+            "8cc25e536e67519c958ee54248ead04f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5354,
+          "content_profile": {
+            "intro": "泉城广场位于济南市中心，东西约780米、南北宽约230米，面积16.96公顷，是济南的标志性城市广场。广场东侧的文化长廊是登高欣赏广场全貌的最佳场所，南北两侧的四季花园呈现“三季花开、四季常绿”的景观。广场西侧入口处有石刻《泉城颂》，与趵突泉遥相呼应；地下一层设有银座购物广场，集购物、餐饮、娱乐于一体。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-06T02:53:04.459419+00:00",
+            "highlights": [
+              {
+                "text": "泉城广场位于济南市中心，东西约780米、南北宽约230米，面积16.96公顷，是济南的标志性城市广场。",
+                "basis": "web",
+                "quote": "泉城广场东西约780米，南北宽约230米，面积16.96公顷。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "泉城广场东西约780米，南北宽约230米，面积16.96公顷。",
+                    "sourceUrl": "https://www.bang.cn/article/142401.html",
+                    "observedAt": "2026-10-06T02:53:00Z"
+                  }
+                ],
+                "sourceUrl": "https://www.bang.cn/article/142401.html",
+                "observedAt": "2026-10-06T02:53:00Z"
+              },
+              {
+                "text": "广场东侧的文化长廊是登高欣赏广场全貌的最佳场所，南北两侧的四季花园呈现“三季花开、四季常绿”的景观。",
+                "basis": "web",
+                "quote": "文化长廊位于泉城广场东侧，是泉城广场东部重要标志性建筑物，也是登高欣赏广场全貌的最佳场所。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "文化长廊位于泉城广场东侧，是泉城广场东部重要标志性建筑物，也是登高欣赏广场全貌的最佳场所。",
+                    "sourceUrl": "https://www.bang.cn/article/142401.html",
+                    "observedAt": "2026-10-06T02:53:00Z"
+                  },
+                  {
+                    "quote": "四季花园位于泉城广场南北两侧，绘出一幅“三季花开、四季常绿”的景观。",
+                    "sourceUrl": "https://www.bang.cn/article/142401.html",
+                    "observedAt": "2026-10-06T02:53:00Z"
+                  }
+                ],
+                "sourceUrl": "https://www.bang.cn/article/142401.html",
+                "observedAt": "2026-10-06T02:53:00Z"
+              },
+              {
+                "text": "广场西侧入口处有石刻《泉城颂》，与趵突泉遥相呼应；地下一层设有银座购物广场，集购物、餐饮、娱乐于一体。",
+                "basis": "web",
+                "quote": "在泉城广场西侧趵突泉广场入口处，坐落着一座石刻作品——《泉城颂》，与济南三大名胜之首趵突泉遥相呼应。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "在泉城广场西侧趵突泉广场入口处，坐落着一座石刻作品——《泉城颂》，与济南三大名胜之首趵突泉遥相呼应。",
+                    "sourceUrl": "https://www.bang.cn/article/142401.html",
+                    "observedAt": "2026-10-06T02:53:00Z"
+                  },
+                  {
+                    "quote": "银座购物广场位于泉城广场地下一层，经营面积3万多平方米，其中大型超市、精品区、餐饮娱乐区各占1万平方米。",
+                    "sourceUrl": "https://www.bang.cn/article/142401.html",
+                    "observedAt": "2026-10-06T02:53:00Z"
+                  }
+                ],
+                "sourceUrl": "https://www.bang.cn/article/142401.html",
+                "observedAt": "2026-10-06T02:53:00Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": 30,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 155.7,
+          "theme_tags": [
+            "住宿",
+            "夜景",
+            "文艺"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5354,
+          "mention_count_30d": 33,
+          "positive_count_30d": 33,
+          "source_count": 27,
+          "top_reasons": [
+            {
+              "reason": "免费，游玩半小时",
+              "evidence": "游玩0.5h｜免费"
+            },
+            {
+              "reason": "可看夜景",
+              "evidence": "泉城广场看看夜景"
+            },
+            {
+              "reason": "可打卡泉标，晚上有喷泉表演",
+              "evidence": "泉城广场可以去打卡泉标"
+            },
+            {
+              "reason": "济南地标广场，列入推荐路线第一天。",
+              "evidence": "day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁"
+            },
+            {
+              "reason": "住宿推荐区域，步行可达趵突泉、黑虎泉，吃饭交通方便。",
+              "evidence": "泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。"
+            }
+          ],
+          "recommend_score": 84.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7773,
+          "canonical_place_id": 5354,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 泉城广场",
+          "evidence_summary": "离餐厅很近，适合顺路游览"
+        },
+        {
+          "id": 7774,
+          "canonical_place_id": 5354,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 泉城广场",
+          "evidence_summary": "可打卡地标。"
+        },
+        {
+          "id": 7775,
+          "canonical_place_id": 5354,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 泉城广场",
+          "evidence_summary": "免费，游玩半小时"
+        },
+        {
+          "id": 8617,
+          "canonical_place_id": 5354,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 泉城广场",
+          "evidence_summary": "可看夜景"
+        },
+        {
+          "id": 8618,
+          "canonical_place_id": 5354,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 泉城广场",
+          "evidence_summary": "可打卡泉标，晚上有喷泉表演"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4835,
+          "from_name": "泉城广场",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 5,
+          "evidence": "）➡️起凤桥八号➡️泉城广场➡️黑虎泉➡️解放阁 \t 🌈大",
+          "source_url": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+        },
+        {
+          "id": 4845,
+          "from_name": "泉城广场",
+          "to_name": "起凤桥",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "曲水亭（百花洲）➡️起凤桥八号➡️泉城广场➡️黑虎泉➡️解放阁",
+          "source_url": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQYc5Q15tkHxoGEABokrK3As=&xsec_source=pc_search"
+        },
+        {
+          "id": 4849,
+          "from_name": "泉城广场",
+          "to_name": "趵突泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 4,
+          "evidence": "住宿🏨 ✔️泉城路&泉城广场附近：步行直达趵突泉、五龙潭、宽厚里等知",
+          "source_url": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948?xsec_token=ABzCUuyjT5dnc4Ql3csxoOwtZxkH3aIcDgdiReojDNLO4=&xsec_source=pc_search"
+        },
+        {
+          "id": 4981,
+          "from_name": "泉城广场",
+          "to_name": "起凤桥八号",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "曲水亭（百花洲）➡️起凤桥八号➡️泉城广场➡️黑虎泉➡️解放阁",
+          "source_url": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+        },
+        {
+          "id": 4998,
+          "from_name": "宽厚里",
+          "to_name": "泉城广场",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "阁➡️洪家楼教堂➡️宽厚里➡️泉城广场 🟢住宿建议 1、一",
+          "source_url": "https://www.xiaohongshu.com/explore/6856c487000000001202dfa1?xsec_token=ABc27i8OVOwsMxqa0hcmBlAUi5AFX0ruz0MLOsEDY0bIw=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5354,
+          "city": "济南",
+          "name_keys": [
+            "泉城广场"
+          ],
+          "entity_ids": [
+            "8cc25e536e67519c958ee54248ead04f"
+          ],
+          "source_hash": "722e3e4a385fd0050d9337c9ef944c5a996f8347be0ea4cd39cc7e578466338f",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/square-source-review-02.json",
+              "kind": "reviewed_square_complete_source",
+              "sha256": "8043ae6262fbe421e54bb77caf4d9fd7c5b4dcee8c6b9a94fc6ebec4aadacd4f",
+              "conclusion": "30提及归广场，3条因住宿语境/错路线保留null待审；保留广场稳定ID、无新酒店或摄影点。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "8cc25e536e67519c958ee54248ead04f"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11334,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "d9ae0f4e01f1248e4c8bf97274b34cfac3f7b5020472a2067f1092654331d304",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11390,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "4e57fb130ce36f54243ed1291ef2be702ae063a5e67a59489f84c8bccf9f1a2b",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11398,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "f8b29505ebe6bc6a80d4afcc927924b5cdbc6599b1585596d5ef11fe78672233",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11408,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "f8f805513865024e2c4ccb7c7afa39f3eb237cd53ab4d4db09056d7b3ab3ada6",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11420,
+          "scope_place_id": 5354,
+          "entity_id": null,
+          "input_hash": "b8c20d3e8ebc11c575e5efab714c784586bf442da37adada41f152a3d9981db7",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11427,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "d9f71c10add1e413f5112ab516fc61e11df88bd468954f47ccecf36ff884cfab",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11438,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "ceaf2330b8aa2d80d9445f5d9557c67efba2e76c9f037b89b5c113c10578d7e2",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11443,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "e3329d4ddefa019e4e0c17b1f3f6206ca620a5142effe8f4d58fcbe2872b2a29",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11504,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "b0360eea6e85ed7a3344fab3be8a9a2c206d6768b1702d83da8c53599e5e06b9",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11513,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "5dc6be77c3057492ddca2c92ecf723dc73d857ab9fd7f77b892154ac2733b0f6",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11517,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "288666a1a5eb4f837782a9d51da38c35ab466c401ef8eef0167b9834d95656a7",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11574,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "3cc24275a02d48f75bb3a350b12a4f3492bea322eba42480df5de8e70b2531c5",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11587,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "c6f6b9310fe91c72558ea771a01bc90c7ca11eadc57bad1d14c762aeaa41102c",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 11697,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "1ceefa336bb6d25d39a20cddcab8b8b2053ad1df53be8de7756bc4bc2d253bf5",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12562,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "d753211d166effa6325bd57babb5f185174b1faed93d642222b35b146309e68b",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12580,
+          "scope_place_id": 5354,
+          "entity_id": null,
+          "input_hash": "c22758c5c4229046342006f5978b76c5c20f40141ac919fc5b52f98d05c1077a",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12634,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "365732a79f41f6fc9e114f716828264acb842d76ff5cdf50fc05a16b6373a643",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12674,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "69780e7777433e6311d75f50726159e3f03ee2a1e2e305f024daa77d6bc85794",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12697,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "2bdb301933a64853062e3c65c0582c796ff10cb2934dc8dc05789be8ddfde959",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12705,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "4092d077503f315a57527c188e88d59bfe85ba22dd95d01a19c6be27c5af57a3",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12715,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "3a925b3d076820f72f7485ef153abe49664afe174b086fc3408ce0f9fa356153",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12759,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "8292b6c06e7c7b8f2463ddf90ae5c4ec86bf46f2f7e45ed3a8cb0cfc380fb367",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12770,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "c7b2b7f116c215411c7ad153bbb0fb8d460171ce610f0acf0feee375e99e6039",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12828,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "6980e5831321a1f567ff71caed3e3d4203ec28a6de9edb73b931b7a752ae7489",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12909,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "43932d7b1aa4279714804e637695655bef878db913cea0b7105297e7d6573342",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12913,
+          "scope_place_id": 5354,
+          "entity_id": null,
+          "input_hash": "84da558a8b922f1dfbf2952cf4230a27b63b55c6cdf3f3e8822758ad3add8a33",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12952,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "dc199eb839b800a27c239e8efdb657dc537ac6fc30adff3a3d887436a05fb9ca",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12968,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "729c3725661abae512b16b7532260e787a7b4a204f3eee9afd51f28b167fb568",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12981,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "6f14a71a09c285f778196dacf663625b6b94234abe2302b1747e1a7329d329d4",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12982,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "c2720e65f255d8adfb7775e9c179037b48ac0cede2584d943d8b619e67bc47bc",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12983,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "19aa4a5b4a90a1a872ae28b12647c82503e61362832fea196e4dcadd8d0d248b",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12984,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "3d2a92a85121ef513619708d4f29b1ab0c78aff75f1f9edbce2684a31562964e",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        },
+        {
+          "mention_id": 12987,
+          "scope_place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "input_hash": "69ac0ea728ec216d7a8a5a5cd4fbd31a4905a06a1c0cfa1b66971ba87111dcf5",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-35-square-5354"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "722e3e4a385fd0050d9337c9ef944c5a996f8347be0ea4cd39cc7e578466338f",
+        "mentions": [
+          {
+            "mentionId": 11334,
+            "inputHash": "d9ae0f4e01f1248e4c8bf97274b34cfac3f7b5020472a2067f1092654331d304"
+          },
+          {
+            "mentionId": 11390,
+            "inputHash": "4e57fb130ce36f54243ed1291ef2be702ae063a5e67a59489f84c8bccf9f1a2b"
+          },
+          {
+            "mentionId": 11398,
+            "inputHash": "f8b29505ebe6bc6a80d4afcc927924b5cdbc6599b1585596d5ef11fe78672233"
+          },
+          {
+            "mentionId": 11408,
+            "inputHash": "f8f805513865024e2c4ccb7c7afa39f3eb237cd53ab4d4db09056d7b3ab3ada6"
+          },
+          {
+            "mentionId": 11420,
+            "inputHash": "b8c20d3e8ebc11c575e5efab714c784586bf442da37adada41f152a3d9981db7"
+          },
+          {
+            "mentionId": 11427,
+            "inputHash": "d9f71c10add1e413f5112ab516fc61e11df88bd468954f47ccecf36ff884cfab"
+          },
+          {
+            "mentionId": 11438,
+            "inputHash": "ceaf2330b8aa2d80d9445f5d9557c67efba2e76c9f037b89b5c113c10578d7e2"
+          },
+          {
+            "mentionId": 11443,
+            "inputHash": "e3329d4ddefa019e4e0c17b1f3f6206ca620a5142effe8f4d58fcbe2872b2a29"
+          },
+          {
+            "mentionId": 11504,
+            "inputHash": "b0360eea6e85ed7a3344fab3be8a9a2c206d6768b1702d83da8c53599e5e06b9"
+          },
+          {
+            "mentionId": 11513,
+            "inputHash": "5dc6be77c3057492ddca2c92ecf723dc73d857ab9fd7f77b892154ac2733b0f6"
+          },
+          {
+            "mentionId": 11517,
+            "inputHash": "288666a1a5eb4f837782a9d51da38c35ab466c401ef8eef0167b9834d95656a7"
+          },
+          {
+            "mentionId": 11574,
+            "inputHash": "3cc24275a02d48f75bb3a350b12a4f3492bea322eba42480df5de8e70b2531c5"
+          },
+          {
+            "mentionId": 11587,
+            "inputHash": "c6f6b9310fe91c72558ea771a01bc90c7ca11eadc57bad1d14c762aeaa41102c"
+          },
+          {
+            "mentionId": 11697,
+            "inputHash": "1ceefa336bb6d25d39a20cddcab8b8b2053ad1df53be8de7756bc4bc2d253bf5"
+          },
+          {
+            "mentionId": 12562,
+            "inputHash": "d753211d166effa6325bd57babb5f185174b1faed93d642222b35b146309e68b"
+          },
+          {
+            "mentionId": 12580,
+            "inputHash": "c22758c5c4229046342006f5978b76c5c20f40141ac919fc5b52f98d05c1077a"
+          },
+          {
+            "mentionId": 12634,
+            "inputHash": "365732a79f41f6fc9e114f716828264acb842d76ff5cdf50fc05a16b6373a643"
+          },
+          {
+            "mentionId": 12674,
+            "inputHash": "69780e7777433e6311d75f50726159e3f03ee2a1e2e305f024daa77d6bc85794"
+          },
+          {
+            "mentionId": 12697,
+            "inputHash": "2bdb301933a64853062e3c65c0582c796ff10cb2934dc8dc05789be8ddfde959"
+          },
+          {
+            "mentionId": 12705,
+            "inputHash": "4092d077503f315a57527c188e88d59bfe85ba22dd95d01a19c6be27c5af57a3"
+          },
+          {
+            "mentionId": 12715,
+            "inputHash": "3a925b3d076820f72f7485ef153abe49664afe174b086fc3408ce0f9fa356153"
+          },
+          {
+            "mentionId": 12759,
+            "inputHash": "8292b6c06e7c7b8f2463ddf90ae5c4ec86bf46f2f7e45ed3a8cb0cfc380fb367"
+          },
+          {
+            "mentionId": 12770,
+            "inputHash": "c7b2b7f116c215411c7ad153bbb0fb8d460171ce610f0acf0feee375e99e6039"
+          },
+          {
+            "mentionId": 12828,
+            "inputHash": "6980e5831321a1f567ff71caed3e3d4203ec28a6de9edb73b931b7a752ae7489"
+          },
+          {
+            "mentionId": 12909,
+            "inputHash": "43932d7b1aa4279714804e637695655bef878db913cea0b7105297e7d6573342"
+          },
+          {
+            "mentionId": 12913,
+            "inputHash": "84da558a8b922f1dfbf2952cf4230a27b63b55c6cdf3f3e8822758ad3add8a33"
+          },
+          {
+            "mentionId": 12952,
+            "inputHash": "dc199eb839b800a27c239e8efdb657dc537ac6fc30adff3a3d887436a05fb9ca"
+          },
+          {
+            "mentionId": 12968,
+            "inputHash": "729c3725661abae512b16b7532260e787a7b4a204f3eee9afd51f28b167fb568"
+          },
+          {
+            "mentionId": 12981,
+            "inputHash": "6f14a71a09c285f778196dacf663625b6b94234abe2302b1747e1a7329d329d4"
+          },
+          {
+            "mentionId": 12982,
+            "inputHash": "c2720e65f255d8adfb7775e9c179037b48ac0cede2584d943d8b619e67bc47bc"
+          },
+          {
+            "mentionId": 12983,
+            "inputHash": "19aa4a5b4a90a1a872ae28b12647c82503e61362832fea196e4dcadd8d0d248b"
+          },
+          {
+            "mentionId": 12984,
+            "inputHash": "3d2a92a85121ef513619708d4f29b1ab0c78aff75f1f9edbce2684a31562964e"
+          },
+          {
+            "mentionId": 12987,
+            "inputHash": "69ac0ea728ec216d7a8a5a5cd4fbd31a4905a06a1c0cfa1b66971ba87111dcf5"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2771,
+          "fingerprint": "49172794d0be0f7658b4b22224a59529b30be1027597a5553b27f2cc53cb2086",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "b8c20d3e8ebc11c575e5efab714c784586bf442da37adada41f152a3d9981db7",
+            "mentionId": 11420,
+            "scopePlaceIds": [
+              5354
+            ]
+          }
+        },
+        {
+          "id": 2799,
+          "fingerprint": "6d8a5bce4ffaaed497b242b3710b1f8cfca340d7f55d46e8142421558cf82ef7",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "c22758c5c4229046342006f5978b76c5c20f40141ac919fc5b52f98d05c1077a",
+            "mentionId": 12580,
+            "scopePlaceIds": [
+              5354
+            ]
+          }
+        },
+        {
+          "id": 2820,
+          "fingerprint": "98e4f317dd66ea2e7ec541421162cc878fbb9503648bbb65f2e2fc46264c615c",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "84da558a8b922f1dfbf2952cf4230a27b63b55c6cdf3f3e8822758ad3add8a33",
+            "mentionId": 12913,
+            "scopePlaceIds": [
+              5354
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "8cc25e536e67519c958ee54248ead04f",
+          "city": "济南",
+          "canonical_name": "泉城广场",
+          "primary_place_id": 5354,
+          "aliases": [
+            "泉城广场"
+          ],
+          "legacy_ids": [
+            "8cc25e536e67519c958ee54248ead04f"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "娱乐"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_square_complete_source",
+              "file": "priority-cities/济南/square-source-review-02.json",
+              "sha256": "8043ae6262fbe421e54bb77caf4d9fd7c5b4dcee8c6b9a94fc6ebec4aadacd4f",
+              "conclusion": "30提及归广场，3条因住宿语境/错路线保留null待审；保留广场稳定ID、无新酒店或摄影点。"
+            },
+            {
+              "kind": "reviewed_public_square_category",
+              "conclusion": "原类别娱乐与已确认的喷泉、休闲及夜景打卡一致。scope清旧themes后显式保留，防止默认退为文化或继承住宿类型；不是音乐喷泉本身与广场判等。",
+              "file": "priority-cities/济南/geo-06.json",
+              "sha256": "bba8a2e6110b2b54f54fc3c424eb79c8c08ad710453f6d32d8782a2f9652845e"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5354,
+          "entity_id": "8cc25e536e67519c958ee54248ead04f"
+        }
+      ]
+    }
+  ]
+}

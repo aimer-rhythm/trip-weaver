@@ -1,0 +1,80 @@
+{
+  "createdAt": "2026-10-09T01:55:47.262Z",
+  "kind": "research_and_installed_protocol_checkpoint",
+  "entityBatchUnchanged": 69,
+  "fullReviewsAdded": 0,
+  "tests": {
+    "upstreamFull": 743,
+    "liveMapTestsDeselected": 1,
+    "stagedWarning": 28,
+    "installedWarning": 28,
+    "downstreamProtocol": 1,
+    "mediaPreflight": 1,
+    "realQuotes": 2,
+    "rejectedRealVariants": 10
+  },
+  "logs": {
+    "upstreamFull": "upstream-full-place_identity_test_1791510199382.log",
+    "stagedWarning": "upstream-stage-place_identity_test_1791510212253.log",
+    "installedWarning": "upstream-installed-place_identity_test_1791510390012.log",
+    "downstreamProtocol": "downstream-place_identity_test_1791510297204.log",
+    "mediaPreflight": "downstream-place_identity_test_1791510317961.log"
+  },
+  "installedFilesHashVerified": 65,
+  "changedFiles": 3,
+  "extendedTypecheck": {
+    "passed": true,
+    "command": "node node_modules/typescript/bin/tsc --noEmit -p .trellis/tasks/10-06-place-identity-governance/research/tsconfig.verify-joint.json"
+  },
+  "sources": [
+    {
+      "file": "priority-cities/成都/wuhou-jinli-source-01.json",
+      "sha256": "d49aa33671cdf873ed879c9f93e2849e05db4a673fc4d3f0dfa506dd0d6191d6"
+    },
+    {
+      "file": "priority-cities/成都/wuhou-jinli-source-review-01.json",
+      "sha256": "5ad76facb43eff33d7916b3ccb018b4c0428e38a82ba432dd0d7c8b69d7a9610"
+    },
+    {
+      "file": "priority-cities/成都/numbered-warning-real-proof-01.json",
+      "sha256": "e105f3c1141c1a6076dd05da0dd9de2b2adf36032057dd9555c86c5b20953117"
+    },
+    {
+      "file": "priority-cities/成都/wuhou-jinli-content-preflight-01.json",
+      "sha256": "538f5e870ea787258d3e22273bd5b33731d302934f22e5f7e7ad9cf5fe3105c3"
+    },
+    {
+      "file": "priority-cities/成都/wuhou-jinli-photo-preflight-01.json",
+      "sha256": "83cbf3b6da87b0f1bc58d84f7c3e074379b3fde2c1e12a36f3db095fd9e810f8"
+    },
+    {
+      "file": "note-warning-preview-1791510212253/numbered/downstream-verification-1791510309579.json",
+      "sha256": "fdefe6928107f4b5941bee0f3f29a8cec1d5d250cf43c2fc3f4e33669de2f30b"
+    },
+    {
+      "file": "upstream-install.json",
+      "sha256": "7986c24024b3bebc446be553105867ec255acfbc6ff862e84aa7cf17ca76ce71"
+    }
+  ],
+  "userAcceptance": false,
+  "businessScopeApplied": false,
+  "failures": [],
+  "finalChecks": {
+    "taskContextValidation": {
+      "passed": true,
+      "implementEntries": 57,
+      "checkEntries": 56
+    },
+    "gitDiffCheck": {
+      "passed": true,
+      "exitCode": 0,
+      "lineEndingWarningsOnly": true
+    },
+    "newAndTouchedFileCheck": {
+      "files": 21,
+      "pythonSyntaxPassed": true,
+      "jsonSyntaxPassed": true,
+      "whitespacePassed": true
+    }
+  }
+}

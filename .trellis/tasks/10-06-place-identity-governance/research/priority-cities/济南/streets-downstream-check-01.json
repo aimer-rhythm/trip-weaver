@@ -1,0 +1,183 @@
+{
+  "readOnly": true,
+  "batch": 38,
+  "capturedAt": "2026-10-08T04:30:46.296Z",
+  "entities": [
+    {
+      "name": "起凤桥",
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "revision": 1,
+      "sql": [
+        {
+          "name": "起凤桥",
+          "firstId": "908b0aec5ee27f58554a8442f8eef1de"
+        }
+      ],
+      "vector": {
+        "diagnostics": {
+          "keywordHits": 3,
+          "vector": "used",
+          "vectorHits": 48
+        },
+        "firstId": "908b0aec5ee27f58554a8442f8eef1de"
+      },
+      "legacyIds": [
+        "908b0aec5ee27f58554a8442f8eef1de"
+      ],
+      "mentions": 7,
+      "lat": 36.668344,
+      "lng": 117.023666,
+      "address": "山东省济南市历下区泉城路街道起凤桥街",
+      "referenceStatus": "bridge_vs_gate_location_pending",
+      "negativeNames": [
+        "起凤桥街",
+        "起凤桥八号",
+        "起凤泉",
+        "腾蛟泉",
+        "起风桥·五号院"
+      ],
+      "sourceImages": 0,
+      "boundImages": 0,
+      "fullReviewPassed": false
+    },
+    {
+      "name": "起凤桥街",
+      "entityId": "9664ac094b1fc9e794ccaaa4e77aa9fa",
+      "revision": 1,
+      "sql": [
+        {
+          "name": "起凤桥街",
+          "firstId": "9664ac094b1fc9e794ccaaa4e77aa9fa"
+        }
+      ],
+      "vector": {
+        "diagnostics": {
+          "keywordHits": 1,
+          "vector": "used",
+          "vectorHits": 48
+        },
+        "firstId": "9664ac094b1fc9e794ccaaa4e77aa9fa"
+      },
+      "legacyIds": [
+        "9664ac094b1fc9e794ccaaa4e77aa9fa"
+      ],
+      "mentions": 1,
+      "lat": 36.668344,
+      "lng": 117.023666,
+      "address": "山东省济南市历下区泉城路街道起凤桥街",
+      "referenceStatus": "reviewed_reference_point",
+      "negativeNames": [
+        "起凤桥",
+        "起凤桥八号",
+        "起凤泉",
+        "西更道街"
+      ],
+      "sourceImages": 0,
+      "boundImages": 0,
+      "fullReviewPassed": false
+    },
+    {
+      "name": "西更道街",
+      "entityId": "a76a124615e676af06c7a75968519280",
+      "revision": 3,
+      "sql": [
+        {
+          "name": "西更道街",
+          "firstId": "a76a124615e676af06c7a75968519280"
+        },
+        {
+          "name": "西更道",
+          "firstId": "a76a124615e676af06c7a75968519280"
+        }
+      ],
+      "vector": {
+        "diagnostics": {
+          "keywordHits": 1,
+          "vector": "used",
+          "vectorHits": 48
+        },
+        "firstId": "a76a124615e676af06c7a75968519280"
+      },
+      "legacyIds": [
+        "a76a124615e676af06c7a75968519280",
+        "404621ad6aef2a8247de6a28acdfb2e7"
+      ],
+      "mentions": 4,
+      "lat": 36.667095839368386,
+      "lng": 117.0245279809005,
+      "address": "山东省济南市历下区大明湖街道西更道街",
+      "referenceStatus": "reviewed_reference_point",
+      "negativeNames": [
+        "源泉",
+        "碧玉泉",
+        "曲水亭街",
+        "观泉新中餐",
+        "簪花少女墙",
+        "老舍笔下的济南墙"
+      ],
+      "sourceImages": 0,
+      "boundImages": 0,
+      "fullReviewPassed": false
+    },
+    {
+      "name": "百花桥",
+      "entityId": "b6898fcd137cd506753c47a4a2b16693",
+      "revision": 1,
+      "sql": [
+        {
+          "name": "百花桥",
+          "firstId": "b6898fcd137cd506753c47a4a2b16693"
+        }
+      ],
+      "vector": {
+        "diagnostics": {
+          "keywordHits": 1,
+          "vector": "used",
+          "vectorHits": 48
+        },
+        "firstId": "b6898fcd137cd506753c47a4a2b16693"
+      },
+      "legacyIds": [
+        "b6898fcd137cd506753c47a4a2b16693"
+      ],
+      "mentions": 1,
+      "lat": 36.67042,
+      "lng": 117.024562,
+      "address": "山东省济南市历下区大明湖街道百花桥",
+      "referenceStatus": "reviewed_reference_point",
+      "negativeNames": [
+        "百花洲",
+        "大明湖",
+        "百花桥(大明湖景区)",
+        "涌泉胡同"
+      ],
+      "sourceImages": 0,
+      "boundImages": 0,
+      "fullReviewPassed": false
+    }
+  ],
+  "failures": [
+    {
+      "kind": "reviewed_reference",
+      "detail": "西更道街"
+    }
+  ],
+  "independentLibrary": {
+    "catalogFiles": 12,
+    "reviewedCatalogs": 12,
+    "sourceImages": 123,
+    "bindings": 9,
+    "warnings": []
+  },
+  "preserved": {
+    "priorAssignments": 11,
+    "factExclusions": 4,
+    "pendingMentions": 60,
+    "trips": {
+      "count": 201,
+      "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+    },
+    "relations": 20,
+    "strongRelations": 9
+  }
+}

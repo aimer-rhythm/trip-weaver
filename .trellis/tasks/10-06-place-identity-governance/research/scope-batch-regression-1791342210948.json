@@ -1,0 +1,120 @@
+{
+  "isolated": true,
+  "results": [
+    {
+      "batch": "batch-01-v2",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 41, \"reviewDecisions\": 0, \"rejectedReviews\": 0, \"resolvedReviews\": 56, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342060547.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-02",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 6, \"reviewDecisions\": 9, \"rejectedReviews\": 6, \"resolvedReviews\": 9, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342069373.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-03",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 5, \"reviewDecisions\": 3, \"rejectedReviews\": 0, \"resolvedReviews\": 9, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342074081.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-04",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 0, \"reviewDecisions\": 19, \"rejectedReviews\": 19, \"resolvedReviews\": 0, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342079935.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-05-v2",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 7, \"reviewDecisions\": 7, \"rejectedReviews\": 3, \"resolvedReviews\": 7, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342086664.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-06",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 22, \"reviewDecisions\": 20, \"rejectedReviews\": 20, \"resolvedReviews\": 23, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342092004.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-07",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-06\"], \"groups\": 0, \"reviewDecisions\": 21, \"rejectedReviews\": 24, \"resolvedReviews\": 23, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342098983.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-08",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-01-v2\"], \"groups\": 2, \"reviewDecisions\": 10, \"rejectedReviews\": 4, \"resolvedReviews\": 58, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342105453.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-09",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 3, \"reviewDecisions\": 11, \"rejectedReviews\": 3, \"resolvedReviews\": 3, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342111624.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-10",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-01-v2\"], \"groups\": 13, \"reviewDecisions\": 24, \"rejectedReviews\": 12, \"resolvedReviews\": 72, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342116141.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-11",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 3, \"reviewDecisions\": 16, \"rejectedReviews\": 3, \"resolvedReviews\": 4, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342123359.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-12",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-01-v2\"], \"groups\": 16, \"reviewDecisions\": 25, \"rejectedReviews\": 9, \"resolvedReviews\": 74, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342127423.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-13",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 7, \"reviewDecisions\": 34, \"rejectedReviews\": 8, \"resolvedReviews\": 9, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342135892.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-14",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 20, \"reviewDecisions\": 23, \"rejectedReviews\": 10, \"resolvedReviews\": 25, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342143054.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-15",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [], \"groups\": 34, \"reviewDecisions\": 37, \"rejectedReviews\": 11, \"resolvedReviews\": 40, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342152808.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-16",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-15\"], \"groups\": 17, \"reviewDecisions\": 1, \"rejectedReviews\": 12, \"resolvedReviews\": 40, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342163282.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-17",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-14\"], \"groups\": 10, \"reviewDecisions\": 2, \"rejectedReviews\": 10, \"resolvedReviews\": 25, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342172208.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-18",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-03\"], \"groups\": 1, \"reviewDecisions\": 0, \"rejectedReviews\": 0, \"resolvedReviews\": 10, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342178934.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-19",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-01-v2\", \"batch-10\", \"batch-13\"], \"groups\": 3, \"reviewDecisions\": 1, \"rejectedReviews\": 20, \"resolvedReviews\": 82, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342183101.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-20",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-02\", \"batch-11\"], \"groups\": 4, \"reviewDecisions\": 2, \"rejectedReviews\": 9, \"resolvedReviews\": 14, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342190030.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-21",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-06\", \"batch-07\"], \"groups\": 1, \"reviewDecisions\": 1, \"rejectedReviews\": 25, \"resolvedReviews\": 24, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342194321.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-22",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-09\"], \"groups\": 6, \"reviewDecisions\": 3, \"rejectedReviews\": 3, \"resolvedReviews\": 5, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342200844.log\",\"exitCode\":0}\n"
+    },
+    {
+      "batch": "batch-23",
+      "exitCode": 0,
+      "output": "{\"isolatedDatabase\": true, \"prerequisites\": [\"batch-13\"], \"groups\": 3, \"reviewDecisions\": 2, \"rejectedReviews\": 9, \"resolvedReviews\": 9, \"idempotencyVerified\": true, \"rollbackVerified\": true, \"stagedModules\": true}\r\n{\"log\":\"upstream-stage-place_identity_test_1791342205760.log\",\"exitCode\":0}\n"
+    }
+  ]
+}

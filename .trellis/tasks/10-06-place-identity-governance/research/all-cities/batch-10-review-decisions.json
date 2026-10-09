@@ -1,0 +1,878 @@
+[
+  {
+    "key": "all-cities-20261006-batch-10-review-319",
+    "city": "杭州",
+    "reviewFingerprint": "39a1401985d432c12808381fac1aad3d96b160ee2447867de64505ad6f7af59f",
+    "expectedRevisions": {
+      "0a43f8223783cbb3145438025abbc066": 1,
+      "3082ba406dfb94cfa7852cf8e14ea912": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9201只列龙翔桥臭豆腐，9441/8416只列龙翔臭豆腐及菜品，没有相互可核对门牌；两源地图近地铁站不能排除不同店铺，需门头/分店地址。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          319
+        ],
+        "conclusion": "9201只列龙翔桥臭豆腐，9441/8416只列龙翔臭豆腐及菜品，没有相互可核对门牌；两源地图近地铁站不能排除不同店铺，需门头/分店地址。",
+        "sourcePlaceIds": [
+          "4425",
+          "3985"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9201,
+          9441,
+          8416
+        ],
+        "conclusion": "9201只列龙翔桥臭豆腐，9441/8416只列龙翔臭豆腐及菜品，没有相互可核对门牌；两源地图近地铁站不能排除不同店铺，需门头/分店地址。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-322",
+    "city": "杭州",
+    "reviewFingerprint": "99dfa98dc830e53dce56f1f6b13ba0fb833e4a2e7516094d730d39ae3df0719e",
+    "expectedRevisions": {
+      "a7f8b55fe97baed0da96f7542a1a2b40": 1,
+      "be06d72b88e1f5e13b79ce549a0cdab2": 1
+    },
+    "verdict": "part_of",
+    "explanation": "8448在同篇分列西溪湿地曲水寻梅和西溪湿地洪园，洪园为西溪湿地具体园区，9877的周家村福堤行程也不能全部套入洪园。保留子园区身份。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          322
+        ],
+        "conclusion": "8448在同篇分列西溪湿地曲水寻梅和西溪湿地洪园，洪园为西溪湿地具体园区，9877的周家村福堤行程也不能全部套入洪园。保留子园区身份。",
+        "sourcePlaceIds": [
+          "4009",
+          "4088",
+          "4099"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8448,
+          9877
+        ],
+        "conclusion": "8448在同篇分列西溪湿地曲水寻梅和西溪湿地洪园，洪园为西溪湿地具体园区，9877的周家村福堤行程也不能全部套入洪园。保留子园区身份。"
+      }
+    ],
+    "childEntityId": "be06d72b88e1f5e13b79ce549a0cdab2"
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-323",
+    "city": "杭州",
+    "reviewFingerprint": "609f2877c47af8b41e62fa92289c1fa132e47263ec113c3e7ae3719e4ba25dac",
+    "expectedRevisions": {
+      "20b74e974a69141eca64457700adb5cb": 1,
+      "e6e61c9e9a1bc7d4d8ccb258e982d97a": 1
+    },
+    "verdict": "distinct",
+    "explanation": "9097/9099同篇把杭州中心面包节和奥体中心吉市驾到分别列出；9771杭州中心在中山北路屏风街逛吃线，奥体为钱塘江南岸体育场馆，中心二字不能判等。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          323
+        ],
+        "conclusion": "9097/9099同篇把杭州中心面包节和奥体中心吉市驾到分别列出；9771杭州中心在中山北路屏风街逛吃线，奥体为钱塘江南岸体育场馆，中心二字不能判等。",
+        "sourcePlaceIds": [
+          "4385",
+          "4016"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9097,
+          9099,
+          9771
+        ],
+        "conclusion": "9097/9099同篇把杭州中心面包节和奥体中心吉市驾到分别列出；9771杭州中心在中山北路屏风街逛吃线，奥体为钱塘江南岸体育场馆，中心二字不能判等。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-324",
+    "city": "杭州",
+    "reviewFingerprint": "8a8a033d041ffa234a823e684c39c6bf8a0cc5f60baedff8a87f91d341100cf8",
+    "expectedRevisions": {
+      "056866f311d8a991077e1cd6599f4de4": 1,
+      "15881f71d19fe0c101dc6a27620dc4ea": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "葱包桧/葱包烩为同小吃的常见写法，但8414和8784都只给孙奶奶品牌与菜品，无具体门牌；两源旧坐标远离河坊街语境，缺乏门店级证据，暂不合并并需核实错位坐标。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          324
+        ],
+        "conclusion": "葱包桧/葱包烩为同小吃的常见写法，但8414和8784都只给孙奶奶品牌与菜品，无具体门牌；两源旧坐标远离河坊街语境，缺乏门店级证据，暂不合并并需核实错位坐标。",
+        "sourcePlaceIds": [
+          "4019",
+          "4075"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8414,
+          8784
+        ],
+        "conclusion": "葱包桧/葱包烩为同小吃的常见写法，但8414和8784都只给孙奶奶品牌与菜品，无具体门牌；两源旧坐标远离河坊街语境，缺乏门店级证据，暂不合并并需核实错位坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-325",
+    "city": "杭州",
+    "reviewFingerprint": "52cc8dce5a8e3804f42bd4d5ad75df422f68969c7acb895ca02092e45c2d324b",
+    "expectedRevisions": {
+      "4be810c4dd05486c2426ad12fac01956": 1,
+      "d404a0b72e41d2ec84133f87ff80b8fd": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "8419百家味鸡馆可能为百家鸡味馆字序误写，但只称杭州港式老店，9202也只列店名；地图一条中山中路一条城北，缺少原图门牌证据，不能认定同一分店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          325
+        ],
+        "conclusion": "8419百家味鸡馆可能为百家鸡味馆字序误写，但只称杭州港式老店，9202也只列店名；地图一条中山中路一条城北，缺少原图门牌证据，不能认定同一分店。",
+        "sourcePlaceIds": [
+          "4021",
+          "4078"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8419,
+          9202
+        ],
+        "conclusion": "8419百家味鸡馆可能为百家鸡味馆字序误写，但只称杭州港式老店，9202也只列店名；地图一条中山中路一条城北，缺少原图门牌证据，不能认定同一分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-326",
+    "city": "杭州",
+    "reviewFingerprint": "856b08d120265e8cd99146e20aa5efe6e8b71526b60d3feea7e41edf2b86dc8f",
+    "expectedRevisions": {
+      "4fa49f803fcaeda0a452d5ba85e09863": 1,
+      "e14271836ea4852ac1387d40be6eb691": 1
+    },
+    "verdict": "part_of",
+    "explanation": "8594的长桥明确雷峰塔后看日落的桥体机位，9007对应长桥公园整体；桥是公园内子项，不等于公园所有区域。长桥现临安坐标不符合西湖原文，须另核实，不能借误坐标归并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          326
+        ],
+        "conclusion": "8594的长桥明确雷峰塔后看日落的桥体机位，9007对应长桥公园整体；桥是公园内子项，不等于公园所有区域。长桥现临安坐标不符合西湖原文，须另核实，不能借误坐标归并。",
+        "sourcePlaceIds": [
+          "4058",
+          "4158"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8594,
+          9007
+        ],
+        "conclusion": "8594的长桥明确雷峰塔后看日落的桥体机位，9007对应长桥公园整体；桥是公园内子项，不等于公园所有区域。长桥现临安坐标不符合西湖原文，须另核实，不能借误坐标归并。"
+      }
+    ],
+    "childEntityId": "e14271836ea4852ac1387d40be6eb691"
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-327",
+    "city": "杭州",
+    "reviewFingerprint": "da100c3b93a819b667e5c1234bde3d738bdd97c50615c8e38172f5324b0b6ad1",
+    "expectedRevisions": {
+      "7b7821c982ed80a6b8fd3ef6651b5f32": 2,
+      "ae4d573784d6b37c08e7efb08651b3e7": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9476把龙翔桥写作地铁站，但8888明确用作餐饮区域，源内混合车站和片区粒度。龙翔桥站已在第一批归入龙翔桥地铁站；该泛名需先拆分源提及，不能把整个片区合进站体。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          327
+        ],
+        "conclusion": "9476把龙翔桥写作地铁站，但8888明确用作餐饮区域，源内混合车站和片区粒度。龙翔桥站已在第一批归入龙翔桥地铁站；该泛名需先拆分源提及，不能把整个片区合进站体。",
+        "sourcePlaceIds": [
+          "4221",
+          "4059"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9476,
+          8888,
+          9861
+        ],
+        "conclusion": "9476把龙翔桥写作地铁站，但8888明确用作餐饮区域，源内混合车站和片区粒度。龙翔桥站已在第一批归入龙翔桥地铁站；该泛名需先拆分源提及，不能把整个片区合进站体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-329",
+    "city": "杭州",
+    "reviewFingerprint": "f0f938ecdf953c50dfe453ca66f53626fa165e83405e7e0242660a1a0f4575a7",
+    "expectedRevisions": {
+      "558c74623bc3e294df7d7b3e8b7980f4": 1,
+      "909befb636ecdae405872e0dc09dbdcf": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9494只列浙江省博物馆后去西湖，8399只写博物馆，没有明确馆区；8559同篇明确之江馆约不到可选孤山馆，说明机构至少两个独立馆区，不能由行程接近孤山推定全部泛称就是孤山馆。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          329
+        ],
+        "conclusion": "9494只列浙江省博物馆后去西湖，8399只写博物馆，没有明确馆区；8559同篇明确之江馆约不到可选孤山馆，说明机构至少两个独立馆区，不能由行程接近孤山推定全部泛称就是孤山馆。",
+        "sourcePlaceIds": [
+          "4150",
+          "4067"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9494,
+          8559
+        ],
+        "conclusion": "9494只列浙江省博物馆后去西湖，8399只写博物馆，没有明确馆区；8559同篇明确之江馆约不到可选孤山馆，说明机构至少两个独立馆区，不能由行程接近孤山推定全部泛称就是孤山馆。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-330",
+    "city": "杭州",
+    "reviewFingerprint": "50fafc1853abcd7f020a54f156ed877daa39ca347dc538fb9f3e6a66443aad21",
+    "expectedRevisions": {
+      "909befb636ecdae405872e0dc09dbdcf": 1,
+      "9379497d8e2e857359798ecf72e90563": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "浙江省博物馆泛称源缺馆区，8558区分之江馆和孤山馆；不能把泛称当之江馆唯一别名，需逐篇确认具体建筑及地址。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          330
+        ],
+        "conclusion": "浙江省博物馆泛称源缺馆区，8558区分之江馆和孤山馆；不能把泛称当之江馆唯一别名，需逐篇确认具体建筑及地址。",
+        "sourcePlaceIds": [
+          "4067",
+          "4149"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9494,
+          8558
+        ],
+        "conclusion": "浙江省博物馆泛称源缺馆区，8558区分之江馆和孤山馆；不能把泛称当之江馆唯一别名，需逐篇确认具体建筑及地址。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-331",
+    "city": "杭州",
+    "reviewFingerprint": "34189ce5f7fcb81f1d95be9088f724b058ccc74853ce75052ad9968f0a1beeb2",
+    "expectedRevisions": {
+      "691f80ff32adeb2f607382ddcfc8fe04": 1,
+      "8c3420c51d088f391802af3b7bef3357": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "8413泮春芳可能是泮芳春字序错误，但无分店地址；9356河坊街语境和8786菜品介绍不能证明该拼错名来自同一门店，两地图又分落远端，需补原图/门牌。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          331
+        ],
+        "conclusion": "8413泮春芳可能是泮芳春字序错误，但无分店地址；9356河坊街语境和8786菜品介绍不能证明该拼错名来自同一门店，两地图又分落远端，需补原图/门牌。",
+        "sourcePlaceIds": [
+          "4074",
+          "4134"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8413,
+          9356,
+          8786
+        ],
+        "conclusion": "8413泮春芳可能是泮芳春字序错误，但无分店地址；9356河坊街语境和8786菜品介绍不能证明该拼错名来自同一门店，两地图又分落远端，需补原图/门牌。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-334",
+    "city": "杭州",
+    "reviewFingerprint": "9bee88d011aa5967af23219679f3e9f5505b30ce810b88ec3741630a2fa37456",
+    "expectedRevisions": {
+      "63da99ffcf75b4a333e4b1ea9413ae91": 1,
+      "e0f76152992d42b3a68e3352d282fec7": 1
+    },
+    "verdict": "distinct",
+    "explanation": "9177植物园为玉泉锦鲤睡莲和植物游览，8546动物园为虎跑路动物园；两个独立机构和位置，不因动/植字相近而归并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          334
+        ],
+        "conclusion": "9177植物园为玉泉锦鲤睡莲和植物游览，8546动物园为虎跑路动物园；两个独立机构和位置，不因动/植字相近而归并。",
+        "sourcePlaceIds": [
+          "4096",
+          "4145"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9177,
+          8546
+        ],
+        "conclusion": "9177植物园为玉泉锦鲤睡莲和植物游览，8546动物园为虎跑路动物园；两个独立机构和位置，不因动/植字相近而归并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-335",
+    "city": "杭州",
+    "reviewFingerprint": "67c1ff0c68aad6b403bd255f411e4394ce055b46ddd9be8449217e2177431f84",
+    "expectedRevisions": {
+      "6ceef5814d5d92e17a94a8ead10d6947": 1,
+      "a7bb2724ee489ef357a824c5d7cc3302": 1
+    },
+    "verdict": "part_of",
+    "explanation": "8485明确满觉陇路道路散步，9545满觉陇为桂树林与村落片区，9601又分上下满觉陇；道路不是整个区域的同义名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          335
+        ],
+        "conclusion": "8485明确满觉陇路道路散步，9545满觉陇为桂树林与村落片区，9601又分上下满觉陇；道路不是整个区域的同义名。",
+        "sourcePlaceIds": [
+          "4154",
+          "4110"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8485,
+          9545,
+          9601
+        ],
+        "conclusion": "8485明确满觉陇路道路散步，9545满觉陇为桂树林与村落片区，9601又分上下满觉陇；道路不是整个区域的同义名。"
+      }
+    ],
+    "childEntityId": "a7bb2724ee489ef357a824c5d7cc3302"
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-338",
+    "city": "杭州",
+    "reviewFingerprint": "2cbe193eb9d22851f3532009131c91311754b75a2555fb9ff47f9815213c2e13",
+    "expectedRevisions": {
+      "200b746a5520f9d8bbb8c2aa07ddeda9": 1,
+      "7e2c8a96acc030a9a49656df1ea8ff1b": 1
+    },
+    "verdict": "distinct",
+    "explanation": "8496/8497同篇分别列中国伞博物馆和中国扇博物馆，展陈对象和场馆独立；同音及邻近博物馆群不构成同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          338
+        ],
+        "conclusion": "8496/8497同篇分别列中国伞博物馆和中国扇博物馆，展陈对象和场馆独立；同音及邻近博物馆群不构成同义。",
+        "sourcePlaceIds": [
+          "4121",
+          "4120"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8496,
+          8497
+        ],
+        "conclusion": "8496/8497同篇分别列中国伞博物馆和中国扇博物馆，展陈对象和场馆独立；同音及邻近博物馆群不构成同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-341",
+    "city": "杭州",
+    "reviewFingerprint": "501fb2dcce5f1a07452a4e241cb4206572d113cf226aaa005ca611e5d2b47f6f",
+    "expectedRevisions": {
+      "66bd3ad1617975882b84c9bb36ddb90e": 1,
+      "fbcd711cafa7594ecc707cb1d37adb43": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9839孤山公园只给机位名单，9733孤山只给游览顺序，无法划清是公园本体还是包含西泠印社/浙博的整个孤山区域。需具体机位与区域边界，不能只去公园后缀自动合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          341
+        ],
+        "conclusion": "9839孤山公园只给机位名单，9733孤山只给游览顺序，无法划清是公园本体还是包含西泠印社/浙博的整个孤山区域。需具体机位与区域边界，不能只去公园后缀自动合并。",
+        "sourcePlaceIds": [
+          "4223",
+          "4143"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9839,
+          9733
+        ],
+        "conclusion": "9839孤山公园只给机位名单，9733孤山只给游览顺序，无法划清是公园本体还是包含西泠印社/浙博的整个孤山区域。需具体机位与区域边界，不能只去公园后缀自动合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-342",
+    "city": "杭州",
+    "reviewFingerprint": "7848952a28acb79f3fb016e7c98b99d021287890af713374fced39c2a0105bac",
+    "expectedRevisions": {
+      "6145f7d03e1bfbe57ead578fa17b429a": 2,
+      "eb23494ae65e72e74fbab895d8018627": 1
+    },
+    "verdict": "part_of",
+    "explanation": "9111飞来峰明确登山看宋代石刻，9220景区原文另分飞来峰、灵隐、永福与韬光寺；山体石刻子项不等于整个灵隐飞来峰景区。景区四名本批同义归并后仍保持该子项独立。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          342
+        ],
+        "conclusion": "9111飞来峰明确登山看宋代石刻，9220景区原文另分飞来峰、灵隐、永福与韬光寺；山体石刻子项不等于整个灵隐飞来峰景区。景区四名本批同义归并后仍保持该子项独立。",
+        "sourcePlaceIds": [
+          "4560",
+          "4153"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9111,
+          9220
+        ],
+        "conclusion": "9111飞来峰明确登山看宋代石刻，9220景区原文另分飞来峰、灵隐、永福与韬光寺；山体石刻子项不等于整个灵隐飞来峰景区。景区四名本批同义归并后仍保持该子项独立。"
+      }
+    ],
+    "childEntityId": "eb23494ae65e72e74fbab895d8018627"
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-343",
+    "city": "杭州",
+    "reviewFingerprint": "1361b727a6451e6eac94198c1f577d7964e77ba4e8a43609c6e4561ad962dc80",
+    "expectedRevisions": {
+      "5e0346fa8d0aebe466e875405603f573": 1,
+      "6ceef5814d5d92e17a94a8ead10d6947": 1
+    },
+    "verdict": "part_of",
+    "explanation": "9601明确从下满觉陇出发、经过上下满觉陇起伏路段再到杨梅岭，9545满觉陇为整体赏桂区域。下片区不能吞并上片区和整个满觉陇。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          343
+        ],
+        "conclusion": "9601明确从下满觉陇出发、经过上下满觉陇起伏路段再到杨梅岭，9545满觉陇为整体赏桂区域。下片区不能吞并上片区和整个满觉陇。",
+        "sourcePlaceIds": [
+          "4562",
+          "4154"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9601,
+          9545
+        ],
+        "conclusion": "9601明确从下满觉陇出发、经过上下满觉陇起伏路段再到杨梅岭，9545满觉陇为整体赏桂区域。下片区不能吞并上片区和整个满觉陇。"
+      }
+    ],
+    "childEntityId": "5e0346fa8d0aebe466e875405603f573"
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-344",
+    "city": "杭州",
+    "reviewFingerprint": "25ce8e1b9c88ae4ba76ce7ed3ae8e8293fc628e1b6e114e4e291542087c88517",
+    "expectedRevisions": {
+      "42372e079d101ce643d7cb8215c9f605": 1,
+      "543777e58cad7641ca82eb9f1564153a": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9659和8954都谈住宿选址的武林片区，未给具体酒店；另有武林广场活动源。广场、商圈、住宿区域粒度混杂，先明确区域模型与原文归属，不能把hotel标签条目当某家酒店或广场唯一别名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          344
+        ],
+        "conclusion": "9659和8954都谈住宿选址的武林片区，未给具体酒店；另有武林广场活动源。广场、商圈、住宿区域粒度混杂，先明确区域模型与原文归属，不能把hotel标签条目当某家酒店或广场唯一别名。",
+        "sourcePlaceIds": [
+          "4162",
+          "4323"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9659,
+          8954
+        ],
+        "conclusion": "9659和8954都谈住宿选址的武林片区，未给具体酒店；另有武林广场活动源。广场、商圈、住宿区域粒度混杂，先明确区域模型与原文归属，不能把hotel标签条目当某家酒店或广场唯一别名。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-346",
+    "city": "杭州",
+    "reviewFingerprint": "83f9d5c4a5237b1e759f319917f4b4b517fccae75b1a33fc9d4a1bdc2d8f1047",
+    "expectedRevisions": {
+      "3fb73be9f7632b80b7df7a3bee88e91c": 1,
+      "7951329bc1cf9f061177616329ef9fde": 1
+    },
+    "verdict": "distinct",
+    "explanation": "8638同篇分别推荐西子国宾馆和西湖国宾馆，两个独立酒店；不是西子/西湖文字别名，且西子现城东北坐标与西湖语境矛盾不能作为归并依据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          346
+        ],
+        "conclusion": "8638同篇分别推荐西子国宾馆和西湖国宾馆，两个独立酒店；不是西子/西湖文字别名，且西子现城东北坐标与西湖语境矛盾不能作为归并依据。",
+        "sourcePlaceIds": [
+          "4170",
+          "4183"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8638,
+          8639
+        ],
+        "conclusion": "8638同篇分别推荐西子国宾馆和西湖国宾馆，两个独立酒店；不是西子/西湖文字别名，且西子现城东北坐标与西湖语境矛盾不能作为归并依据。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-347",
+    "city": "杭州",
+    "reviewFingerprint": "d5875b72c0e2d9af8ad8b2061c0e0c9e916b4869dd5bd481301cebb07f189c82",
+    "expectedRevisions": {
+      "6a525b1a7412b41129b4b2c40cf5206e": 1,
+      "8203530cf967da0365efcbb891b6574e": 1
+    },
+    "verdict": "distinct",
+    "explanation": "8630山顶观景台在安溪村康门水库上方良渚文明探索步道，9673雉山观景台在良渚古城遗址公园南门游线，所属场地独立；不能把山顶通名当雉山别名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          347
+        ],
+        "conclusion": "8630山顶观景台在安溪村康门水库上方良渚文明探索步道，9673雉山观景台在良渚古城遗址公园南门游线，所属场地独立；不能把山顶通名当雉山别名。",
+        "sourcePlaceIds": [
+          "4175",
+          "4586"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8630,
+          9673
+        ],
+        "conclusion": "8630山顶观景台在安溪村康门水库上方良渚文明探索步道，9673雉山观景台在良渚古城遗址公园南门游线，所属场地独立；不能把山顶通名当雉山别名。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-350",
+    "city": "杭州",
+    "reviewFingerprint": "77e490809e94c045d85a2dcf489447e5ea75611db383a50b73e1eebc87019d25",
+    "expectedRevisions": {
+      "0af8e05ff07562a4ec6a4ad80ace8adb": 1,
+      "1d4d49612739567f2b29c3c8156455f2": 1
+    },
+    "verdict": "distinct",
+    "explanation": "8938长河老街是滨江长河历史街区，9427小河直街在运河拱宸桥附近，跨江不同街区，不能由长/小河和历史文化后缀判等。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          350
+        ],
+        "conclusion": "8938长河老街是滨江长河历史街区，9427小河直街在运河拱宸桥附近，跨江不同街区，不能由长/小河和历史文化后缀判等。",
+        "sourcePlaceIds": [
+          "4317",
+          "4225"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8938,
+          9427
+        ],
+        "conclusion": "8938长河老街是滨江长河历史街区，9427小河直街在运河拱宸桥附近，跨江不同街区，不能由长/小河和历史文化后缀判等。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-353",
+    "city": "杭州",
+    "reviewFingerprint": "a157f0dfe05995207571052a2460e79c4895339774caa8b092bd0141f8d84844",
+    "expectedRevisions": {
+      "645d3267a5034b6d2d41985aab7a795f": 1,
+      "6589facecf31951dc668812b1e9191f5": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "8953是河坊街南宋御街周边住宿区域建议，8943是两个商业街组合游览；没有明确区域边界或具体酒店，暂不把周边和两个街道组成一个独立POI。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          353
+        ],
+        "conclusion": "8953是河坊街南宋御街周边住宿区域建议，8943是两个商业街组合游览；没有明确区域边界或具体酒店，暂不把周边和两个街道组成一个独立POI。",
+        "sourcePlaceIds": [
+          "4322",
+          "4318"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8953,
+          8943
+        ],
+        "conclusion": "8953是河坊街南宋御街周边住宿区域建议，8943是两个商业街组合游览；没有明确区域边界或具体酒店，暂不把周边和两个街道组成一个独立POI。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-354",
+    "city": "杭州",
+    "reviewFingerprint": "f0b0012a81312cf54bd8fc84a97f05554fbf94529a1f32e7f13058f3f9506b7b",
+    "expectedRevisions": {
+      "17c1107d9162a2b033e2ac10804e4528": 1,
+      "92fb4a1e18598e6df9d120b29bb7582f": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9077只列中秋银盐复古市集无地点日期细目，9783写天目里9.24附近的银盐市集；活动品牌可能跨期跨场地，同一个旧地图点不足以证明同一届同一地点，需活动海报。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          354
+        ],
+        "conclusion": "9077只列中秋银盐复古市集无地点日期细目，9783写天目里9.24附近的银盐市集；活动品牌可能跨期跨场地，同一个旧地图点不足以证明同一届同一地点，需活动海报。",
+        "sourcePlaceIds": [
+          "4367",
+          "4630"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9077,
+          9783
+        ],
+        "conclusion": "9077只列中秋银盐复古市集无地点日期细目，9783写天目里9.24附近的银盐市集；活动品牌可能跨期跨场地，同一个旧地图点不足以证明同一届同一地点，需活动海报。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-355",
+    "city": "杭州",
+    "reviewFingerprint": "1c75ac07794dd7a8db805f1e29a36dbe9c9962f6fd2dde86ce69dff4edb6dd0b",
+    "expectedRevisions": {
+      "058166f39e9ecf1eb86710df790dab85": 1,
+      "bbd224f15b9bc39cb937b7e5600ceb04": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9286从濮家轮渡站北上，9186从运河天地乘1号线到拱宸桥，均为交通航程而非固定单点；需明确以线路还是码头/具体乘坐段建模，不能任选一处坐标作为两者统一地点。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          355
+        ],
+        "conclusion": "9286从濮家轮渡站北上，9186从运河天地乘1号线到拱宸桥，均为交通航程而非固定单点；需明确以线路还是码头/具体乘坐段建模，不能任选一处坐标作为两者统一地点。",
+        "sourcePlaceIds": [
+          "4456",
+          "4423"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9286,
+          9186
+        ],
+        "conclusion": "9286从濮家轮渡站北上，9186从运河天地乘1号线到拱宸桥，均为交通航程而非固定单点；需明确以线路还是码头/具体乘坐段建模，不能任选一处坐标作为两者统一地点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-review-359",
+    "city": "杭州",
+    "reviewFingerprint": "c197fe4e16a1677f11403019416c009d989a2060dbf23dd9fcf63237ee28044d",
+    "expectedRevisions": {
+      "60d7d29af5532723f9d0c652cb9e6231": 1,
+      "6413025ea86027139b8955294d11e546": 1
+    },
+    "verdict": "distinct",
+    "explanation": "9469说明杭州东站住宿位置，9439明确建议杭州站离西湖近；8954同篇区分东站和杭州站，属于不同铁路站房。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          359
+        ],
+        "conclusion": "9469说明杭州东站住宿位置，9439明确建议杭州站离西湖近；8954同篇区分东站和杭州站，属于不同铁路站房。",
+        "sourcePlaceIds": [
+          "4524",
+          "4517"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9469,
+          9439,
+          8954
+        ],
+        "conclusion": "9469说明杭州东站住宿位置，9439明确建议杭州站离西湖近；8954同篇区分东站和杭州站，属于不同铁路站房。"
+      }
+    ]
+  }
+]

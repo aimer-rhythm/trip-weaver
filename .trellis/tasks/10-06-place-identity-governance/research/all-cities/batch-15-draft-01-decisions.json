@@ -1,0 +1,3178 @@
+[
+  {
+    "key": "all-cities-20261006-batch-15-001",
+    "city": "厦门",
+    "entityId": "f8d3fda12867f2fdd7efb06a56300c0d",
+    "mergeEntityIds": [
+      "35173f340c24aef12d20a81ec67ba415",
+      "b0c7513c5b1dd1d259d0d7adf083fbac",
+      "ee86ab033304370900d86dc24eaeac17"
+    ],
+    "canonicalName": "鼓浪屿天主教堂",
+    "expectedRevisions": {
+      "35173f340c24aef12d20a81ec67ba415": 1,
+      "b0c7513c5b1dd1d259d0d7adf083fbac": 1,
+      "ee86ab033304370900d86dc24eaeac17": 1,
+      "f8d3fda12867f2fdd7efb06a56300c0d": 1
+    },
+    "overrides": {
+      "lat": 24.443562,
+      "lng": 118.072819,
+      "address": "福建省厦门市思明区鼓浪屿天主教堂(西南门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          163,
+          180
+        ],
+        "conclusion": "5947、6898的天主堂与5627、6418天主教堂均位于鼓浪屿步行路线，1330明确哥特式白色尖顶，6616亦为鼓浪屿天主堂。四名同一教堂；不含原文另列的协和礼拜堂。泛名的杏林高浦匹配错误，主源教堂西南门为同一建筑的参考点，不把门作为新同义实体。",
+        "sourcePlaceIds": [
+          "2906",
+          "2545",
+          "2766",
+          "2626"
+        ],
+        "mentions": [
+          {
+            "id": "6898",
+            "name": "天主堂",
+            "quote": "绝美天主堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69315aea000000001e0122fd"
+          },
+          {
+            "id": "5947",
+            "name": "天主堂",
+            "quote": "天主堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a16b50600000000070109f6"
+          },
+          {
+            "id": "6418",
+            "name": "天主教堂",
+            "quote": "天主教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ce8ce3000000001a03575b"
+          },
+          {
+            "id": "5627",
+            "name": "天主教堂",
+            "quote": "天主教堂+协和礼拜堂：复古欧式建筑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4f069c000000002103f58d"
+          },
+          {
+            "id": "6616",
+            "name": "鼓浪屿天主堂",
+            "quote": "鼓浪屿的大别墅和民国建筑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695359ce000000001f007bb9"
+          },
+          {
+            "id": "5607",
+            "name": "鼓浪屿天主堂",
+            "quote": "天主堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a6b23c000000001a020467"
+          },
+          {
+            "id": "6516",
+            "name": "鼓浪屿天主教堂",
+            "quote": "哥特式白色尖顶在阳光下好纯洁好美",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f09c530000000035027edc"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2626",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.443562,
+          "lng": 118.072819,
+          "address": "福建省厦门市思明区鼓浪屿天主教堂(西南门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.443562,
+        "lng": 118.072819,
+        "address": "福建省厦门市思明区鼓浪屿天主教堂(西南门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5607,
+          5627,
+          5947,
+          6418,
+          6516,
+          6616,
+          6898
+        ],
+        "conclusion": "5947、6898的天主堂与5627、6418天主教堂均位于鼓浪屿步行路线，1330明确哥特式白色尖顶，6616亦为鼓浪屿天主堂。四名同一教堂；不含原文另列的协和礼拜堂。泛名的杏林高浦匹配错误，主源教堂西南门为同一建筑的参考点，不把门作为新同义实体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-002",
+    "city": "厦门",
+    "entityId": "b5aafe8228f99dca3ab61421b4452cf4",
+    "mergeEntityIds": [
+      "6c9f04ec8847a7c001ee011147ea554b"
+    ],
+    "canonicalName": "十里长堤",
+    "expectedRevisions": {
+      "6c9f04ec8847a7c001ee011147ea554b": 1,
+      "b5aafe8228f99dca3ab61421b4452cf4": 1
+    },
+    "overrides": {
+      "lat": 24.563722,
+      "lng": 118.089475,
+      "address": "厦门大桥南",
+      "geoStatus": "reviewed_source",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          166
+        ],
+        "conclusion": "6435及6690的集美十里长堤与十里长堤诸源均指集美学村海边、看跨海地铁和日落的草坪长堤；春节、中秋活动也明确集美。两名同体，婚登装置、南堤公园和集美学村保持独立。",
+        "sourcePlaceIds": [
+          "2561",
+          "2630"
+        ],
+        "mentions": [
+          {
+            "id": "6690",
+            "name": "集美十里长堤",
+            "quote": "集美十里长堤中秋活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6435",
+            "name": "集美十里长堤",
+            "quote": "傍晚还能偶遇海上地铁经过海面",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa8fc970000000028000c61"
+          },
+          {
+            "id": "6890",
+            "name": "十里长堤",
+            "quote": "十里长堤",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+          },
+          {
+            "id": "6867",
+            "name": "十里长堤",
+            "quote": "傍晚会有很多人来这里看日落",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+          },
+          {
+            "id": "6717",
+            "name": "十里长堤",
+            "quote": "看日落就来这里，氛围超级好",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab23461000000003703a320"
+          },
+          {
+            "id": "6605",
+            "name": "十里长堤",
+            "quote": "十里长堤夕阳",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6988aca40000000015021516"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2630",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.563722,
+          "lng": 118.089475,
+          "address": "厦门大桥南",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.563722,
+        "lng": 118.089475,
+        "address": "厦门大桥南",
+        "geoStatus": "reviewed_source",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5434,
+          5496,
+          5674,
+          5759,
+          5902,
+          5915,
+          5977,
+          6014,
+          6087,
+          6180,
+          6235,
+          6244,
+          6337,
+          6388,
+          6405,
+          6435,
+          6521,
+          6605,
+          6690,
+          6717,
+          6867,
+          6890
+        ],
+        "conclusion": "6435及6690的集美十里长堤与十里长堤诸源均指集美学村海边、看跨海地铁和日落的草坪长堤；春节、中秋活动也明确集美。两名同体，婚登装置、南堤公园和集美学村保持独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-003",
+    "city": "厦门",
+    "entityId": "8c6b873c947b3ebfcdb4e057394bd7a5",
+    "mergeEntityIds": [
+      "577a49662fcf6ab1065b8f5286b1a6ad"
+    ],
+    "canonicalName": "惠源面包店",
+    "expectedRevisions": {
+      "577a49662fcf6ab1065b8f5286b1a6ad": 1,
+      "8c6b873c947b3ebfcdb4e057394bd7a5": 1
+    },
+    "overrides": {
+      "lat": 24.457466,
+      "lng": 118.07528,
+      "address": "开禾路22号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          173
+        ],
+        "conclusion": "6020八市惠源面包店与6450原文八市至中山路路线中的惠源面包店，均是开禾路老店炸面包；主体门牌开禾路22号与另一源同点，没有其他分店限定。",
+        "sourcePlaceIds": [
+          "2919",
+          "2575"
+        ],
+        "mentions": [
+          {
+            "id": "6020",
+            "name": "八市惠源面包店",
+            "quote": "✅ 八市惠源面包店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6349130000000001033509"
+          },
+          {
+            "id": "6450",
+            "name": "惠源面包店",
+            "quote": "3r一个的炸面包太香了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6859110c000000002400ef35"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2575",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.457466,
+          "lng": 118.07528,
+          "address": "开禾路22号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.457466,
+        "lng": 118.07528,
+        "address": "开禾路22号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6020,
+          6450
+        ],
+        "conclusion": "6020八市惠源面包店与6450原文八市至中山路路线中的惠源面包店，均是开禾路老店炸面包；主体门牌开禾路22号与另一源同点，没有其他分店限定。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-004",
+    "city": "厦门",
+    "entityId": "c42291429c1705032f92a330a3b1e8ec",
+    "mergeEntityIds": [
+      "5dc48d9929d06a4c2b61798fecd1bf00"
+    ],
+    "canonicalName": "钟丽君满煎糕",
+    "expectedRevisions": {
+      "5dc48d9929d06a4c2b61798fecd1bf00": 1,
+      "c42291429c1705032f92a330a3b1e8ec": 1
+    },
+    "overrides": {
+      "lat": 24.457156,
+      "lng": 118.075896,
+      "address": "开元路129号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          174
+        ],
+        "conclusion": "6021明确八市钟丽君，6451、5908、6151、6255均在八市美食路线指现做三口味满煎糕。两名为同一八市摊店，沿用开元路129号主源，八市范围点不替代店址。",
+        "sourcePlaceIds": [
+          "2920",
+          "2576"
+        ],
+        "mentions": [
+          {
+            "id": "6021",
+            "name": "八市钟丽君满煎糕",
+            "quote": "✅ 八市钟丽君满煎糕",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6349130000000001033509"
+          },
+          {
+            "id": "6451",
+            "name": "钟丽君满煎糕",
+            "quote": "现做的满煎糕糯叽叽的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6859110c000000002400ef35"
+          },
+          {
+            "id": "6407",
+            "name": "钟丽君满煎糕",
+            "quote": "香甜软糯",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a48c9fa000000001c027139"
+          },
+          {
+            "id": "6255",
+            "name": "钟丽君满煎糕",
+            "quote": "钟丽君满煎糕",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69788102000000000a02b029"
+          },
+          {
+            "id": "6151",
+            "name": "钟丽君满煎糕",
+            "quote": "🥞钟丽君满煎糕",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698baf07000000001a02405a"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2576",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.457156,
+          "lng": 118.075896,
+          "address": "开元路129号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.457156,
+        "lng": 118.075896,
+        "address": "开元路129号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5908,
+          6021,
+          6151,
+          6255,
+          6407,
+          6451
+        ],
+        "conclusion": "6021明确八市钟丽君，6451、5908、6151、6255均在八市美食路线指现做三口味满煎糕。两名为同一八市摊店，沿用开元路129号主源，八市范围点不替代店址。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-005",
+    "city": "厦门",
+    "entityId": "9eca880667ffe616ddea0fa7db4b7049",
+    "mergeEntityIds": [
+      "c1d6280849024636b2d54c9ad17f8500",
+      "00aea3b5aadad4511258c26f4f378f82"
+    ],
+    "canonicalName": "白城沙滩",
+    "expectedRevisions": {
+      "9eca880667ffe616ddea0fa7db4b7049": 1,
+      "c1d6280849024636b2d54c9ad17f8500": 1,
+      "00aea3b5aadad4511258c26f4f378f82": 1
+    },
+    "overrides": {
+      "lat": 24.432281,
+      "lng": 118.100875,
+      "address": "大学路",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          177,
+          213
+        ],
+        "conclusion": "6086直接写厦大白城沙滩，5668在黄厝至曾厝垵沿海骑行路线再往厦大白城走；其他源均说明厦大校门外的沙滩，包含踏浪及日落。三名称指本批白城海滩，不是公交站；舍弃厦大白城公交站点，沿用大学路海滩参考点。",
+        "sourcePlaceIds": [
+          "2602",
+          "2944",
+          "2787"
+        ],
+        "mentions": [
+          {
+            "id": "6882",
+            "name": "白城沙滩",
+            "quote": "日落在音乐广场、白城沙滩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+          },
+          {
+            "id": "6861",
+            "name": "白城沙滩",
+            "quote": "来看橘子海日落",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+          },
+          {
+            "id": "6821",
+            "name": "白城沙滩",
+            "quote": "从椰风寨到白城沙滩，傍晚看日落",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "6772",
+            "name": "白城沙滩",
+            "quote": "椰风寨一路晃到白城沙滩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          },
+          {
+            "id": "6086",
+            "name": "厦大白城沙滩",
+            "quote": "别去厦大白城沙滩人特别多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e5c742000000001d019b90"
+          },
+          {
+            "id": "5668",
+            "name": "厦大白城",
+            "quote": "再往厦大白城走",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69dc76ab00000000220241ca"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2602",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.432281,
+          "lng": 118.100875,
+          "address": "大学路",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.432281,
+        "lng": 118.100875,
+        "address": "大学路",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5668,
+          5799,
+          5895,
+          5936,
+          5978,
+          6063,
+          6086,
+          6120,
+          6227,
+          6236,
+          6293,
+          6316,
+          6482,
+          6502,
+          6534,
+          6548,
+          6588,
+          6594,
+          6772,
+          6821,
+          6861,
+          6882
+        ],
+        "conclusion": "6086直接写厦大白城沙滩，5668在黄厝至曾厝垵沿海骑行路线再往厦大白城走；其他源均说明厦大校门外的沙滩，包含踏浪及日落。三名称指本批白城海滩，不是公交站；舍弃厦大白城公交站点，沿用大学路海滩参考点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-006",
+    "city": "厦门",
+    "entityId": "db3e36b4466d11242a9f5c736dc2321b",
+    "mergeEntityIds": [
+      "42690473b1f1b336091fc23bd6d9cda5"
+    ],
+    "canonicalName": "天竺山森林公园",
+    "expectedRevisions": {
+      "42690473b1f1b336091fc23bd6d9cda5": 1,
+      "db3e36b4466d11242a9f5c736dc2321b": 1
+    },
+    "overrides": {
+      "lat": 24.59997,
+      "lng": 117.917177,
+      "address": "东孚镇洪塘村天竺山路1号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          178
+        ],
+        "conclusion": "1369和1578均明确天竺山西门出发，皓月湖—四季花谷—鸳鸯溪—两二湖路线；1570同为天竺山森林公园，差城市前缀。两主源同为天竺山路1号，独立西门、鸳鸯溪及山峰不并入。",
+        "sourcePlaceIds": [
+          "2603",
+          "2609"
+        ],
+        "mentions": [
+          {
+            "id": "6483",
+            "name": "厦门天竺山森林公园",
+            "quote": "厦门天竺山3h轻徒步",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a76d535000000002800a3b8"
+          },
+          {
+            "id": "6520",
+            "name": "天竺山森林公园",
+            "quote": "适合带娃，可溯溪",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69dba2c500000000230116f6"
+          },
+          {
+            "id": "6489",
+            "name": "天竺山森林公园",
+            "quote": "短短10km包含了溪水、栈道、水库、山路……",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e37533000000002102fc0e"
+          },
+          {
+            "id": "5983",
+            "name": "天竺山森林公园",
+            "quote": "有湖有溪，有峡谷也有古寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b619110000000021013260"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2609",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.59997,
+          "lng": 117.917177,
+          "address": "东孚镇洪塘村天竺山路1号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.59997,
+        "lng": 117.917177,
+        "address": "东孚镇洪塘村天竺山路1号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5983,
+          6483,
+          6489,
+          6520
+        ],
+        "conclusion": "1369和1578均明确天竺山西门出发，皓月湖—四季花谷—鸳鸯溪—两二湖路线；1570同为天竺山森林公园，差城市前缀。两主源同为天竺山路1号，独立西门、鸳鸯溪及山峰不并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-007",
+    "city": "厦门",
+    "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+    "mergeEntityIds": [
+      "33d36d2ffcc454e4e6339335006dfdcd",
+      "6ac19b2cf03933d05ea4cfe6489af837"
+    ],
+    "canonicalName": "中山路步行街",
+    "expectedRevisions": {
+      "33d36d2ffcc454e4e6339335006dfdcd": 1,
+      "5950d3c70e76f5682842a6726f2b1e92": 1,
+      "6ac19b2cf03933d05ea4cfe6489af837": 1
+    },
+    "overrides": {
+      "lat": 24.455453,
+      "lng": 118.079259,
+      "address": "中山路56号",
+      "geoStatus": "reviewed_source",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          184
+        ],
+        "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。",
+        "sourcePlaceIds": [
+          "2649",
+          "2670",
+          "2539"
+        ],
+        "mentions": [
+          {
+            "id": "6808",
+            "name": "厦门中山路步行街",
+            "quote": "厦门中山路美食推荐",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8aa2f0000000003301aa1a"
+          },
+          {
+            "id": "5308",
+            "name": "厦门中山路步行街",
+            "quote": "下午中山路步行街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a027cd4000000003502511b"
+          },
+          {
+            "id": "6802",
+            "name": "中山路步行街",
+            "quote": "在中山路住到人生海景房",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7ae95b0000000026036e6c"
+          },
+          {
+            "id": "6679",
+            "name": "中山路步行街",
+            "quote": "中秋博饼状元赛 侨批广场、汉服嘉年华",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6584",
+            "name": "中山路步行街",
+            "quote": "离中山路步行街巨近",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa75fc5000000002601f991"
+          },
+          {
+            "id": "6401",
+            "name": "中山路步行街",
+            "quote": "中山路 + 八市",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a48c9fa000000001c027139"
+          },
+          {
+            "id": "5313",
+            "name": "中山路",
+            "quote": "南洋复古骑楼傍晚亮灯氛围好",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3a759d000000000803c474"
+          },
+          {
+            "id": "5341",
+            "name": "中山路",
+            "quote": "买伴手礼很方便",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6892f9120000000023028ba3"
+          },
+          {
+            "id": "5471",
+            "name": "中山路",
+            "quote": "中山路的小吃一定不能错过",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f1edda000000001f005b57"
+          },
+          {
+            "id": "5486",
+            "name": "中山路",
+            "quote": "中山路",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6978a690000000001a034cd4"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2670",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.455453,
+          "lng": 118.079259,
+          "address": "中山路56号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.455453,
+        "lng": 118.079259,
+        "address": "中山路56号",
+        "geoStatus": "reviewed_source",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xiamen-batch15-supplement.json",
+        "sha256": "00f5b76037099b1d5e801e31ea4673666decd7ed2cb9679f4c521f840a571a63",
+        "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5308,
+          5552,
+          5644,
+          5770,
+          5771,
+          5888,
+          5904,
+          5963,
+          6049,
+          6069,
+          6080,
+          6118,
+          6142,
+          6225,
+          6232,
+          6389,
+          6395,
+          6401,
+          6584,
+          6679,
+          6802,
+          6808
+        ],
+        "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-variant-context.json",
+        "sha256": "31e5b82b688005ac662d6cce158967f7a463c873a58bbf17deb4a569af9231a6",
+        "mentionIds": [
+          5313,
+          5341,
+          5355,
+          5363,
+          5427,
+          5437,
+          5471,
+          5486,
+          5543,
+          5631,
+          5730,
+          5754,
+          5966,
+          5997,
+          6160,
+          6168,
+          6201,
+          6240,
+          6320,
+          6414,
+          6429,
+          6475,
+          6597,
+          6762,
+          6852,
+          6857,
+          6912
+        ],
+        "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-008",
+    "city": "厦门",
+    "entityId": "3344c8d21cebbb866f03ee4b23363386",
+    "mergeEntityIds": [
+      "488c66c79a11859524586cb3c836f28d"
+    ],
+    "canonicalName": "厦门地铁1号线跨海段",
+    "expectedRevisions": {
+      "3344c8d21cebbb866f03ee4b23363386": 1,
+      "488c66c79a11859524586cb3c836f28d": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门地铁1号线高崎站至集美学村站跨海段",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          187
+        ],
+        "conclusion": "5320、6352均以千与千寻海上列车指地铁1号线跨海体验，1514正文明确高崎站至集美学村段。两名只归一本批跨海路段，不代表厦门全地铁网；两旧点均是城市中心默认值，成对清空。",
+        "sourcePlaceIds": [
+          "2653",
+          "3074"
+        ],
+        "mentions": [
+          {
+            "id": "6537",
+            "name": "海上地铁",
+            "quote": "列车会开进海里，窗外整片蓝海铺展开",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab5ae8000000002802f9f8"
+          },
+          {
+            "id": "5320",
+            "name": "海上地铁",
+            "quote": "千与千寻同款海上列车",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3a759d000000000803c474"
+          },
+          {
+            "id": "6352",
+            "name": "厦门海上地铁",
+            "quote": "跨海的风景超治愈",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/697c6c95000000000a02e1f9"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2653",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门地铁1号线高崎站至集美学村站跨海段",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5320,
+          6352,
+          6537
+        ],
+        "conclusion": "5320、6352均以千与千寻海上列车指地铁1号线跨海体验，1514正文明确高崎站至集美学村段。两名只归一本批跨海路段，不代表厦门全地铁网；两旧点均是城市中心默认值，成对清空。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-009",
+    "city": "厦门",
+    "entityId": "e13fe95624cb315bfef5538a7db0ece0",
+    "mergeEntityIds": [
+      "6358c3daf9acd23e9118c00e3c492b88",
+      "7878a7d6e08576965b6f2c573962dcbc",
+      "fb76c9eb9592596adc4b54e94afa31b8"
+    ],
+    "canonicalName": "溪岸路花鸟市场",
+    "expectedRevisions": {
+      "6358c3daf9acd23e9118c00e3c492b88": 1,
+      "e13fe95624cb315bfef5538a7db0ece0": 1,
+      "7878a7d6e08576965b6f2c573962dcbc": 1,
+      "fb76c9eb9592596adc4b54e94afa31b8": 1
+    },
+    "overrides": {
+      "lat": 24.461732,
+      "lng": 118.092388,
+      "address": "溪岸路121号-16",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          188,
+          189,
+          204,
+          215
+        ],
+        "conclusion": "1264图片明确溪岸路花鸟市场入口；1267沿街花鸟铺面、1270溪岸路与1364华新路幸福路附近花鸟市场、1263溪岸花鸟市场指同一沿街市场。四名称统一，保留溪岸路121号主源；美仁宫大厦停车场的厦门好字牌是附近摄影点，不并为市场同义。",
+        "sourcePlaceIds": [
+          "3229",
+          "2657",
+          "2724",
+          "2805"
+        ],
+        "mentions": [
+          {
+            "id": "6884",
+            "name": "溪岸花鸟市场",
+            "quote": "“厦门好”大字也在这里",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+          },
+          {
+            "id": "6141",
+            "name": "溪岸路花鸟市场",
+            "quote": "可以一起逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68bbd7ea000000001d000ad9"
+          },
+          {
+            "id": "5686",
+            "name": "溪岸路花鸟市场",
+            "quote": "溪岸路花鸟市场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698343dc000000001a02324c"
+          },
+          {
+            "id": "5330",
+            "name": "溪岸路花鸟市场",
+            "quote": "建议花鸟市场放白天第一站，光线好更适合拍照",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69dfa953000000002302720e"
+          },
+          {
+            "id": "5466",
+            "name": "溪岸路花鸟鱼虫市场",
+            "quote": "沿街铺面摆满花和绿植",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f1edda000000001f005b57"
+          },
+          {
+            "id": "6827",
+            "name": "花鸟市场",
+            "quote": "花鸟市场藏着好多古着屋和咖啡馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "5710",
+            "name": "花鸟市场",
+            "quote": "花鸟市场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a828a6800000000270237c4"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2657",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.461732,
+          "lng": 118.092388,
+          "address": "溪岸路121号-16",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.461732,
+        "lng": 118.092388,
+        "address": "溪岸路121号-16",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5330,
+          5466,
+          5686,
+          5710,
+          6141,
+          6827,
+          6884
+        ],
+        "conclusion": "1264图片明确溪岸路花鸟市场入口；1267沿街花鸟铺面、1270溪岸路与1364华新路幸福路附近花鸟市场、1263溪岸花鸟市场指同一沿街市场。四名称统一，保留溪岸路121号主源；美仁宫大厦停车场的厦门好字牌是附近摄影点，不并为市场同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-010",
+    "city": "厦门",
+    "entityId": "f5b56f6b1d1d4c4a71c2ef2f155ba77e",
+    "mergeEntityIds": [
+      "6ce5e3c6bd82786ca9e320e1e4f8c018"
+    ],
+    "canonicalName": "一国两制沙滩",
+    "expectedRevisions": {
+      "6ce5e3c6bd82786ca9e320e1e4f8c018": 1,
+      "f5b56f6b1d1d4c4a71c2ef2f155ba77e": 1
+    },
+    "overrides": {
+      "lat": 24.442638,
+      "lng": 118.161934,
+      "address": "环岛南路",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          190
+        ],
+        "conclusion": "5742在黄厝、一国两制、椰风寨三处日出沙滩推荐中省略沙滩后缀；1342、1316、1487及1263均明确一国两制沙滩。归一到同片海滩，不将政策术语或标牌单体作为地点别名的新来源。",
+        "sourcePlaceIds": [
+          "2821",
+          "2672"
+        ],
+        "mentions": [
+          {
+            "id": "5742",
+            "name": "一国两制",
+            "quote": "首选黄厝、一国两制或椰风寨",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b93b1c000000001e00dbec"
+          },
+          {
+            "id": "6883",
+            "name": "一国两制沙滩",
+            "quote": "一国两制沙滩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+          },
+          {
+            "id": "6116",
+            "name": "一国两制沙滩",
+            "quote": "还有一个是一国两制沙滩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2a4153000000001603e407"
+          },
+          {
+            "id": "5767",
+            "name": "一国两制沙滩",
+            "quote": "人少风景漂亮",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/688abc07000000002502555a"
+          },
+          {
+            "id": "5364",
+            "name": "一国两制沙滩",
+            "quote": "看日出超美",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696cb548000000002103d7ba"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2672",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.442638,
+          "lng": 118.161934,
+          "address": "环岛南路",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.442638,
+        "lng": 118.161934,
+        "address": "环岛南路",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5364,
+          5742,
+          5767,
+          6116,
+          6883
+        ],
+        "conclusion": "5742在黄厝、一国两制、椰风寨三处日出沙滩推荐中省略沙滩后缀；1342、1316、1487及1263均明确一国两制沙滩。归一到同片海滩，不将政策术语或标牌单体作为地点别名的新来源。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-011",
+    "city": "厦门",
+    "entityId": "7fab661b8d498abf595489811cc27e58",
+    "mergeEntityIds": [
+      "49b19204fbc3de663bc182959e52e176"
+    ],
+    "canonicalName": "彩虹沙滩",
+    "expectedRevisions": {
+      "49b19204fbc3de663bc182959e52e176": 1,
+      "7fab661b8d498abf595489811cc27e58": 1
+    },
+    "overrides": {
+      "lat": 24.627821,
+      "lng": 118.150455,
+      "address": "厦门市",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          191
+        ],
+        "conclusion": "1522、1475同安彩虹沙滩跨年源，与1525同安彩虹沙滩详细攻略及1580同安露营分区一致；两主源同点。本批短名指同安滨海西海岸沙滩，不含整条环东浪漫线或七星湾酒店。",
+        "sourcePlaceIds": [
+          "3051",
+          "2675"
+        ],
+        "mentions": [
+          {
+            "id": "6571",
+            "name": "同安彩虹沙滩",
+            "quote": "海风+烟火+音乐",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bfae8000000001e027fd2"
+          },
+          {
+            "id": "6306",
+            "name": "同安彩虹沙滩",
+            "quote": "同安彩虹沙滩跨年烟花",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6719",
+            "name": "彩虹沙滩",
+            "quote": "彩虹沙滩停车相对困难",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6954a8b9000000002202c698"
+          },
+          {
+            "id": "6640",
+            "name": "彩虹沙滩",
+            "quote": "彩虹沙滩万人烟花局",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694c824e0000000019027f95"
+          },
+          {
+            "id": "6338",
+            "name": "彩虹沙滩",
+            "quote": "彩虹跑道+落日大道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e5195e0000000007000817"
+          },
+          {
+            "id": "6085",
+            "name": "彩虹沙滩",
+            "quote": "岛外去彩虹沙滩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e5c742000000001d019b90"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2675",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.627821,
+          "lng": 118.150455,
+          "address": "厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.627821,
+        "lng": 118.150455,
+        "address": "厦门市",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5373,
+          5444,
+          5497,
+          6085,
+          6306,
+          6338,
+          6571,
+          6640,
+          6719
+        ],
+        "conclusion": "1522、1475同安彩虹沙滩跨年源，与1525同安彩虹沙滩详细攻略及1580同安露营分区一致；两主源同点。本批短名指同安滨海西海岸沙滩，不含整条环东浪漫线或七星湾酒店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-012",
+    "city": "厦门",
+    "entityId": "1f4af38ff90647e040e4c82cdc7c27a5",
+    "mergeEntityIds": [
+      "59635dc253a62a3a6a8afc1c8683fe84"
+    ],
+    "canonicalName": "打渔船·老厦门本地菜（沙坡尾店）",
+    "expectedRevisions": {
+      "1f4af38ff90647e040e4c82cdc7c27a5": 1,
+      "59635dc253a62a3a6a8afc1c8683fe84": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "address": "厦门市思明区沙坡尾附近，具体门牌待核",
+      "category": "美食",
+      "exportApproved": true
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          197
+        ],
+        "conclusion": "1332、1514及1471都指厦大沙坡尾旁的20年姜母鸭老店；1397、1399原提及显式保留沙坡尾店限定，支持两简名同店。更正主名携带分店，保留无坐标，不借厦大或沙坡尾坐标；分店原提及证据另附。",
+        "sourcePlaceIds": [
+          "2701",
+          "3220"
+        ],
+        "mentions": [
+          {
+            "id": "6312",
+            "name": "打渔船·老厦门本地菜",
+            "quote": "姜母鸭炖得软烂入味",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2249890000000038036815"
+          },
+          {
+            "id": "5422",
+            "name": "打渔船·老厦门本地菜",
+            "quote": "招牌姜母鸭很正宗，味道地道不踩雷",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e83546000000001a02b0c2"
+          },
+          {
+            "id": "6864",
+            "name": "打渔船·厦门本地菜",
+            "quote": "非遗姜母鸭是本地人都敲爱吃的菜",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2701",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": null,
+          "lng": null,
+          "geoStatus": "unresolvable"
+        },
+        "lat": null,
+        "lng": null,
+        "geoStatus": "unresolvable",
+        "address": "厦门市思明区沙坡尾附近，具体门牌待核",
+        "category": "美食",
+        "exportApproved": true
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5422,
+          6312,
+          6864
+        ],
+        "conclusion": "1332、1514及1471都指厦大沙坡尾旁的20年姜母鸭老店；1397、1399原提及显式保留沙坡尾店限定，支持两简名同店。更正主名携带分店，保留无坐标，不借厦大或沙坡尾坐标；分店原提及证据另附。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-variant-context.json",
+        "sha256": "31e5b82b688005ac662d6cce158967f7a463c873a58bbf17deb4a569af9231a6",
+        "mentionIds": [
+          5886,
+          6061
+        ],
+        "conclusion": "1332、1514及1471都指厦大沙坡尾旁的20年姜母鸭老店；1397、1399原提及显式保留沙坡尾店限定，支持两简名同店。更正主名携带分店，保留无坐标，不借厦大或沙坡尾坐标；分店原提及证据另附。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-013",
+    "city": "厦门",
+    "entityId": "48c72e23f6cb15621b52e319c43e9ace",
+    "mergeEntityIds": [
+      "12d7d3ae8089e419e3e594e0ffa40c5c"
+    ],
+    "canonicalName": "诚毅科技探索中心",
+    "expectedRevisions": {
+      "12d7d3ae8089e419e3e594e0ffa40c5c": 1,
+      "48c72e23f6cb15621b52e319c43e9ace": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市集美区诚毅科技探索中心",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          198
+        ],
+        "conclusion": "1332正文和图片写厦门诚毅自然探索馆，在集美石鼓路/大社之前游览；1453集美活动写诚毅科探，均指集美同一科普场馆的抽取名称。两主体差城市前缀；旧地址只有诚毅且点位未核，不以模糊地名当场馆坐标。",
+        "sourcePlaceIds": [
+          "2705",
+          "3013"
+        ],
+        "mentions": [
+          {
+            "id": "5429",
+            "name": "厦门诚毅科技探索中心",
+            "quote": "Day3：厦门诚毅自然探索馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e83546000000001a02b0c2"
+          },
+          {
+            "id": "6246",
+            "name": "诚毅科技探索中心",
+            "quote": "诚毅科探《解救生肖马》亲子必冲",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69788102000000000a02b029"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3013",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.587644,
+          "lng": 118.0947,
+          "address": "福建省厦门市集美区诚毅",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市集美区诚毅科技探索中心",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5429,
+          6246
+        ],
+        "conclusion": "1332正文和图片写厦门诚毅自然探索馆，在集美石鼓路/大社之前游览；1453集美活动写诚毅科探，均指集美同一科普场馆的抽取名称。两主体差城市前缀；旧地址只有诚毅且点位未核，不以模糊地名当场馆坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-014",
+    "city": "厦门",
+    "entityId": "b92acd45b74d2190bef966b198b7ce86",
+    "mergeEntityIds": [
+      "d5764ec92bfba2cf494651c55d7edb01",
+      "19a525384fa317d818cf0bd0be4b6e9b"
+    ],
+    "canonicalName": "OFF WORK在海边（环岛路店）",
+    "expectedRevisions": {
+      "b92acd45b74d2190bef966b198b7ce86": 1,
+      "d5764ec92bfba2cf494651c55d7edb01": 1,
+      "19a525384fa317d818cf0bd0be4b6e9b": 1
+    },
+    "overrides": {
+      "lat": 24.448289,
+      "lng": 118.170428,
+      "address": "福建省厦门市思明区OFF WORK在海边(环岛路店)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          200
+        ],
+        "conclusion": "1307与1287图文明确OFF WORK在海边（环岛路店），位于椰风寨，蓝白门框、海边吹风标语、秋千、红灯塔。1263椰风寨OFF WORK与1342环岛路店湖蓝门相符，三名同店。保留环岛路店主源；不吞1260在不在书店旁的奶黄巴士营地。",
+        "sourcePlaceIds": [
+          "2712",
+          "3225",
+          "2673"
+        ],
+        "mentions": [
+          {
+            "id": "5930",
+            "name": "OFF WORK在海边",
+            "quote": "OFF WORK在海边",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a16b50600000000070109f6"
+          },
+          {
+            "id": "5590",
+            "name": "OFF WORK在海边",
+            "quote": "非常适合拍照打卡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a6b23c000000001a020467"
+          },
+          {
+            "id": "5443",
+            "name": "OFF WORK在海边",
+            "quote": "每个地方人都蛮多的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ea5467000000001f007a48"
+          },
+          {
+            "id": "6872",
+            "name": "OFF WORK",
+            "quote": "椰风寨沙滩的OFF WORK",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+          },
+          {
+            "id": "5365",
+            "name": "off work环岛路店",
+            "quote": "这扇湖蓝色的门太出片了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696cb548000000002103d7ba"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2712",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.448289,
+          "lng": 118.170428,
+          "address": "福建省厦门市思明区OFF WORK在海边(环岛路店)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.448289,
+        "lng": 118.170428,
+        "address": "福建省厦门市思明区OFF WORK在海边(环岛路店)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xiamen-batch15-supplement.json",
+        "sha256": "00f5b76037099b1d5e801e31ea4673666decd7ed2cb9679f4c521f840a571a63",
+        "conclusion": "1307与1287图文明确OFF WORK在海边（环岛路店），位于椰风寨，蓝白门框、海边吹风标语、秋千、红灯塔。1263椰风寨OFF WORK与1342环岛路店湖蓝门相符，三名同店。保留环岛路店主源；不吞1260在不在书店旁的奶黄巴士营地。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5443,
+          5590,
+          5930,
+          6872
+        ],
+        "conclusion": "1307与1287图文明确OFF WORK在海边（环岛路店），位于椰风寨，蓝白门框、海边吹风标语、秋千、红灯塔。1263椰风寨OFF WORK与1342环岛路店湖蓝门相符，三名同店。保留环岛路店主源；不吞1260在不在书店旁的奶黄巴士营地。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-variant-context.json",
+        "sha256": "31e5b82b688005ac662d6cce158967f7a463c873a58bbf17deb4a569af9231a6",
+        "mentionIds": [
+          5365
+        ],
+        "conclusion": "1307与1287图文明确OFF WORK在海边（环岛路店），位于椰风寨，蓝白门框、海边吹风标语、秋千、红灯塔。1263椰风寨OFF WORK与1342环岛路店湖蓝门相符，三名同店。保留环岛路店主源；不吞1260在不在书店旁的奶黄巴士营地。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-015",
+    "city": "厦门",
+    "entityId": "a2147ca69cc591b9f264c966b595a802",
+    "mergeEntityIds": [
+      "952b1eecf1b3b075e361329851703924"
+    ],
+    "canonicalName": "集美水秀广场",
+    "expectedRevisions": {
+      "952b1eecf1b3b075e361329851703924": 1,
+      "a2147ca69cc591b9f264c966b595a802": 1
+    },
+    "overrides": {
+      "lat": 24.597026,
+      "lng": 118.080897,
+      "address": "福建省厦门市集美区水秀广场",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          210
+        ],
+        "conclusion": "1464明确集美水秀广场，1580将水秀广场列于集美露营分区，描述草坪芦苇落日；两源同一广场同点，差集美前缀。",
+        "sourcePlaceIds": [
+          "3063",
+          "2753"
+        ],
+        "mentions": [
+          {
+            "id": "6335",
+            "name": "水秀广场",
+            "quote": "超大草坪，芦苇与落日并排",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e5195e0000000007000817"
+          },
+          {
+            "id": "5575",
+            "name": "集美水秀广场",
+            "quote": "p12：集美水秀广场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e781ea000000001d01e774"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2753",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.597026,
+          "lng": 118.080897,
+          "address": "福建省厦门市集美区水秀广场",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.597026,
+        "lng": 118.080897,
+        "address": "福建省厦门市集美区水秀广场",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5575,
+          6335
+        ],
+        "conclusion": "1464明确集美水秀广场，1580将水秀广场列于集美露营分区，描述草坪芦苇落日；两源同一广场同点，差集美前缀。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-016",
+    "city": "厦门",
+    "entityId": "2c5dcd5e6a5e6178980c8a5ab87f91ae",
+    "mergeEntityIds": [
+      "1774b18568161d3a2a4c3c0dc7e776aa",
+      "c14b67c481533036cba6cc6837bcc203"
+    ],
+    "canonicalName": "鼓浪屿管风琴艺术中心",
+    "expectedRevisions": {
+      "1774b18568161d3a2a4c3c0dc7e776aa": 1,
+      "2c5dcd5e6a5e6178980c8a5ab87f91ae": 1,
+      "c14b67c481533036cba6cc6837bcc203": 1
+    },
+    "overrides": {
+      "lat": 24.448408,
+      "lng": 118.068862,
+      "address": "福建省厦门市思明区鼓浪屿管风琴艺术中心",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          211,
+          216
+        ],
+        "conclusion": "1445、1325、1330、1331及1353明确鼓浪屿管风琴演奏场所，1325与1330又把八卦楼风琴博物馆单独分列。三种艺术中心名称归一，保留有场馆定位的主源；不吞风琴博物馆或钢琴博物馆。",
+        "sourcePlaceIds": [
+          "2825",
+          "2764",
+          "2896"
+        ],
+        "mentions": [
+          {
+            "id": "6906",
+            "name": "管风琴艺术中心",
+            "quote": "管风琴艺术中心：聆听穿越百年时空的琴声",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69315aea000000001e0122fd"
+          },
+          {
+            "id": "5941",
+            "name": "管风琴艺术中心",
+            "quote": "管风琴艺术中心",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a16b50600000000070109f6"
+          },
+          {
+            "id": "5781",
+            "name": "管风琴艺术中心",
+            "quote": "早上演奏时间9:00，10:30，12:00",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/691c79e2000000001e02aced"
+          },
+          {
+            "id": "6819",
+            "name": "鼓浪屿管风琴艺术中心",
+            "quote": "管风琴艺术中心值得一去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "6769",
+            "name": "鼓浪屿管风琴艺术中心",
+            "quote": "记得去管风琴艺术中心",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          },
+          {
+            "id": "6558",
+            "name": "鼓浪屿管风琴艺术中心",
+            "quote": "那台巨型管风琴，现场听一下真的很震撼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa2b002000000002902dfb8"
+          },
+          {
+            "id": "5658",
+            "name": "鼓浪屿管风琴艺术中心",
+            "quote": "小众宝藏展馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89c87e000000000b02470e"
+          },
+          {
+            "id": "5885",
+            "name": "厦门管风琴艺术中心",
+            "quote": "下午四点半到的时候票已经售罄",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8484f50000000008011746"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2764",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.448408,
+          "lng": 118.068862,
+          "address": "福建省厦门市思明区鼓浪屿管风琴艺术中心",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.448408,
+        "lng": 118.068862,
+        "address": "福建省厦门市思明区鼓浪屿管风琴艺术中心",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5601,
+          5658,
+          5781,
+          5885,
+          5941,
+          6558,
+          6769,
+          6819,
+          6906
+        ],
+        "conclusion": "1445、1325、1330、1331及1353明确鼓浪屿管风琴演奏场所，1325与1330又把八卦楼风琴博物馆单独分列。三种艺术中心名称归一，保留有场馆定位的主源；不吞风琴博物馆或钢琴博物馆。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-017",
+    "city": "厦门",
+    "entityId": "9b52e692216c418716aa7f4f153b5118",
+    "mergeEntityIds": [
+      "059252691aa2e422fec27734696a6500"
+    ],
+    "canonicalName": "厦门市郑成功纪念馆",
+    "expectedRevisions": {
+      "059252691aa2e422fec27734696a6500": 1,
+      "9b52e692216c418716aa7f4f153b5118": 1
+    },
+    "overrides": {
+      "lat": 24.44269,
+      "lng": 118.066932,
+      "address": "福建省厦门市思明区厦门市郑成功纪念馆",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          217
+        ],
+        "conclusion": "1445鼓浪屿路线中的郑成功纪念馆与1331日光岩范围内厦门市郑成功纪念馆同体，两源同点；不把皓月园郑成功雕像并入。",
+        "sourcePlaceIds": [
+          "2829",
+          "3095"
+        ],
+        "mentions": [
+          {
+            "id": "5788",
+            "name": "郑成功纪念馆",
+            "quote": "9点和15点有讲解",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/691c79e2000000001e02aced"
+          },
+          {
+            "id": "6561",
+            "name": "厦门市郑成功纪念馆",
+            "quote": "在日光岩景区范围内，顺路就能到",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa2b002000000002902dfb8"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3095",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.44269,
+          "lng": 118.066932,
+          "address": "福建省厦门市思明区厦门市郑成功纪念馆",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.44269,
+        "lng": 118.066932,
+        "address": "福建省厦门市思明区厦门市郑成功纪念馆",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5788,
+          6561
+        ],
+        "conclusion": "1445鼓浪屿路线中的郑成功纪念馆与1331日光岩范围内厦门市郑成功纪念馆同体，两源同点；不把皓月园郑成功雕像并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-018",
+    "city": "厦门",
+    "entityId": "04794732e1ab3ba2c970a48549fe62cc",
+    "mergeEntityIds": [
+      "883043c81940d30a6be1e36764a8a084",
+      "c6f16233fb4086aac26a81c81e2d1b09"
+    ],
+    "canonicalName": "厦门盛之乡温泉度假村",
+    "expectedRevisions": {
+      "04794732e1ab3ba2c970a48549fe62cc": 1,
+      "883043c81940d30a6be1e36764a8a084": 1,
+      "c6f16233fb4086aac26a81c81e2d1b09": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市同安区汀溪镇盛之乡温泉度假村",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          221
+        ],
+        "conclusion": "1549私汤和1555公共泡池均以同安盛之乡温泉渡假村全名命名场所，1553又以盛之乡（厦门）温泉渡假村全名提及同一经营场所。三种全名仅词序/度渡差异；不合并泛名盛之乡温泉为独立池区。三旧点跨不同区域且入口参考未经核实，清空坐标。",
+        "sourcePlaceIds": [
+          "3208",
+          "2894",
+          "3204"
+        ],
+        "mentions": [
+          {
+            "id": "6804",
+            "name": "厦门盛之乡温泉度假村",
+            "quote": "每个池子都包场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6827f1e9000000002301d7b7"
+          },
+          {
+            "id": "5878",
+            "name": "厦门盛之乡温泉渡假村",
+            "quote": "不用预约，天然溶洞风格私汤",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699e3f360000000026031a59"
+          },
+          {
+            "id": "6798",
+            "name": "盛之乡（厦门）温泉渡假村",
+            "quote": "孩子意外受伤，店家推诿压价",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a940205000000001f01fc0b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3208",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.764944,
+          "lng": 118.143031,
+          "address": "福建省厦门市同安区盛之乡",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市同安区汀溪镇盛之乡温泉度假村",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xiamen-batch15-supplement.json",
+        "sha256": "00f5b76037099b1d5e801e31ea4673666decd7ed2cb9679f4c521f840a571a63",
+        "conclusion": "1549私汤和1555公共泡池均以同安盛之乡温泉渡假村全名命名场所，1553又以盛之乡（厦门）温泉渡假村全名提及同一经营场所。三种全名仅词序/度渡差异；不合并泛名盛之乡温泉为独立池区。三旧点跨不同区域且入口参考未经核实，清空坐标。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5878,
+          6804
+        ],
+        "conclusion": "1549私汤和1555公共泡池均以同安盛之乡温泉渡假村全名命名场所，1553又以盛之乡（厦门）温泉渡假村全名提及同一经营场所。三种全名仅词序/度渡差异；不合并泛名盛之乡温泉为独立池区。三旧点跨不同区域且入口参考未经核实，清空坐标。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-variant-context.json",
+        "sha256": "31e5b82b688005ac662d6cce158967f7a463c873a58bbf17deb4a569af9231a6",
+        "mentionIds": [
+          6798
+        ],
+        "conclusion": "1549私汤和1555公共泡池均以同安盛之乡温泉渡假村全名命名场所，1553又以盛之乡（厦门）温泉渡假村全名提及同一经营场所。三种全名仅词序/度渡差异；不合并泛名盛之乡温泉为独立池区。三旧点跨不同区域且入口参考未经核实，清空坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-019",
+    "city": "厦门",
+    "entityId": "91b7b070cd563edf4cb5309556997c5b",
+    "mergeEntityIds": [
+      "89fb3afe7d83bbf7ed397c9292e6d5d0"
+    ],
+    "canonicalName": "演武大桥观景平台",
+    "expectedRevisions": {
+      "89fb3afe7d83bbf7ed397c9292e6d5d0": 1,
+      "91b7b070cd563edf4cb5309556997c5b": 1
+    },
+    "overrides": {
+      "lat": 24.433305,
+      "lng": 118.090262,
+      "address": "福建省厦门市思明区演武大桥观景平台",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          222
+        ],
+        "conclusion": "1379与1467称观景台，1377详细描写近海观景平台与星光通道，1522为同平台观烟花；同一公众观景设施。选择平台主源而非桥梁主源点，演武大桥桥体保持独立。",
+        "sourcePlaceIds": [
+          "2898",
+          "3011"
+        ],
+        "mentions": [
+          {
+            "id": "6229",
+            "name": "演武大桥观景台",
+            "quote": "离海蕞近的立交桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1a237a0000000038022df7"
+          },
+          {
+            "id": "5891",
+            "name": "演武大桥观景台",
+            "quote": "上演武大桥观景台",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9c421000000002202bd97"
+          },
+          {
+            "id": "6292",
+            "name": "演武大桥观景平台",
+            "quote": "演武大桥观景平台",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6237",
+            "name": "演武大桥观景平台",
+            "quote": "宛如一条白玉龙浮在海面",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e41b9900000000040039b6"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3011",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.433305,
+          "lng": 118.090262,
+          "address": "福建省厦门市思明区演武大桥观景平台",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.433305,
+        "lng": 118.090262,
+        "address": "福建省厦门市思明区演武大桥观景平台",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5891,
+          6229,
+          6237,
+          6292
+        ],
+        "conclusion": "1379与1467称观景台，1377详细描写近海观景平台与星光通道，1522为同平台观烟花；同一公众观景设施。选择平台主源而非桥梁主源点，演武大桥桥体保持独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-020",
+    "city": "厦门",
+    "entityId": "78d08b50537f953e75eb79a048c6e671",
+    "mergeEntityIds": [
+      "c9a7c5ea910f964183aed27f9e04a775"
+    ],
+    "canonicalName": "小坪森林公园",
+    "expectedRevisions": {
+      "78d08b50537f953e75eb79a048c6e671": 1,
+      "c9a7c5ea910f964183aed27f9e04a775": 1
+    },
+    "overrides": {
+      "lat": 24.842781,
+      "lng": 118.022758,
+      "address": "福建省厦门市同安区小坪森林公园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          224
+        ],
+        "conclusion": "1570小坪山森林公园的水渠、石降湖、瀑布与1572小坪森林公园森林徒步源一致；为同安同一森林公园称呼，不是新山峰实体。保留同安公园主源，替换城市中心默认点。",
+        "sourcePlaceIds": [
+          "3036",
+          "2913"
+        ],
+        "mentions": [
+          {
+            "id": "6284",
+            "name": "小坪森林公园",
+            "quote": "森林吸氧+瀑布群",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699d5f2b00000000150238b9"
+          },
+          {
+            "id": "5982",
+            "name": "小坪山森林公园",
+            "quote": "原始森林风貌、网红水渠桥、石降湖、瀑布",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b619110000000021013260"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3036",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.842781,
+          "lng": 118.022758,
+          "address": "福建省厦门市同安区小坪森林公园",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.842781,
+        "lng": 118.022758,
+        "address": "福建省厦门市同安区小坪森林公园",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5982,
+          6284
+        ],
+        "conclusion": "1570小坪山森林公园的水渠、石降湖、瀑布与1572小坪森林公园森林徒步源一致；为同安同一森林公园称呼，不是新山峰实体。保留同安公园主源，替换城市中心默认点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-021",
+    "city": "厦门",
+    "entityId": "96dc88064ed1abf940ef5d2cf660f431",
+    "mergeEntityIds": [
+      "806f8065ac78bdd74e2855934cb2340c"
+    ],
+    "canonicalName": "厦门市博物馆",
+    "expectedRevisions": {
+      "806f8065ac78bdd74e2855934cb2340c": 1,
+      "96dc88064ed1abf940ef5d2cf660f431": 1
+    },
+    "overrides": {
+      "lat": 24.490327,
+      "lng": 118.109425,
+      "address": "福建省厦门市思明区厦门博物馆(南门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          225
+        ],
+        "conclusion": "1451皇家珍品展、1513厦门市博物馆二楼临展C厅及1367厦门博物馆均指文化艺术中心的市级馆。两名同体，采用馆南门主源参考点，不合并其他专题博物馆。",
+        "sourcePlaceIds": [
+          "3147",
+          "2938"
+        ],
+        "mentions": [
+          {
+            "id": "6683",
+            "name": "厦门市博物馆",
+            "quote": "沙州寻踪——敦煌文物特展",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6173",
+            "name": "厦门博物馆",
+            "quote": "厦门博物馆皇家珍品展",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c3a15000000000d00816e"
+          },
+          {
+            "id": "6072",
+            "name": "厦门博物馆",
+            "quote": "适合慢逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6b0ece0000000033013f37"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2938",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.490327,
+          "lng": 118.109425,
+          "address": "福建省厦门市思明区厦门博物馆(南门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.490327,
+        "lng": 118.109425,
+        "address": "福建省厦门市思明区厦门博物馆(南门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6072,
+          6173,
+          6683
+        ],
+        "conclusion": "1451皇家珍品展、1513厦门市博物馆二楼临展C厅及1367厦门博物馆均指文化艺术中心的市级馆。两名同体，采用馆南门主源参考点，不合并其他专题博物馆。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-022",
+    "city": "厦门",
+    "entityId": "fbc36bfbb3c95e696f1eedb315562fc4",
+    "mergeEntityIds": [
+      "06b135e71bc5cc4baa759df92137c342"
+    ],
+    "canonicalName": "宝龙一城",
+    "expectedRevisions": {
+      "06b135e71bc5cc4baa759df92137c342": 1,
+      "fbc36bfbb3c95e696f1eedb315562fc4": 1
+    },
+    "overrides": {
+      "lat": 24.485801,
+      "lng": 118.17297,
+      "address": "福建省厦门市思明区宝龙一城",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          228
+        ],
+        "conclusion": "1475跨年演唱会与1451春节、1510中秋、1513六号门外市集、1523跨年商场清单均为宝龙一城。两主源同点，仅厦门前缀差异，不含同安宝龙。",
+        "sourcePlaceIds": [
+          "3101",
+          "2977"
+        ],
+        "mentions": [
+          {
+            "id": "6576",
+            "name": "厦门宝龙一城",
+            "quote": "22:30-次日0:30(跨年倒计时)",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bfae8000000001e027fd2"
+          },
+          {
+            "id": "6686",
+            "name": "宝龙一城",
+            "quote": "闽南古早味市集6号门外",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6673",
+            "name": "宝龙一城",
+            "quote": "一埕风味・闽南古早风物集",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab11fe40000000036028761"
+          },
+          {
+            "id": "6626",
+            "name": "宝龙一城",
+            "quote": "宝龙一城",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694c824e0000000019027f95"
+          },
+          {
+            "id": "6171",
+            "name": "宝龙一城",
+            "quote": "厦门宝龙一城春节活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c3a15000000000d00816e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2977",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.485801,
+          "lng": 118.17297,
+          "address": "福建省厦门市思明区宝龙一城",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.485801,
+        "lng": 118.17297,
+        "address": "福建省厦门市思明区宝龙一城",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6171,
+          6576,
+          6626,
+          6673,
+          6686
+        ],
+        "conclusion": "1475跨年演唱会与1451春节、1510中秋、1513六号门外市集、1523跨年商场清单均为宝龙一城。两主源同点，仅厦门前缀差异，不含同安宝龙。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-023",
+    "city": "厦门",
+    "entityId": "b9b8ee35029a199c80d1c527dfa942f5",
+    "mergeEntityIds": [
+      "46f4baa9a773e58865ca6bef0adff10c"
+    ],
+    "canonicalName": "湖里万达广场",
+    "expectedRevisions": {
+      "46f4baa9a773e58865ca6bef0adff10c": 1,
+      "b9b8ee35029a199c80d1c527dfa942f5": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市湖里区湖里万达广场",
+      "geoStatus": "unresolvable",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          229
+        ],
+        "conclusion": "1451湖里万达年味活动与1510湖里万达儿童博饼同一湖里商业体；两名只差广场后缀。旧点是公交站和舞爪门店，不足作为商场主体定位，清空；集美与杏林万达保持独立。",
+        "sourcePlaceIds": [
+          "3138",
+          "2978"
+        ],
+        "mentions": [
+          {
+            "id": "6666",
+            "name": "湖里万达",
+            "quote": "千人儿童博饼大会",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab11fe40000000036028761"
+          },
+          {
+            "id": "6175",
+            "name": "湖里万达广场",
+            "quote": "湖里万达年味活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c3a15000000000d00816e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2978",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.504469,
+          "lng": 118.176124,
+          "address": "福建省厦门市湖里区湖里万达广场(公交站)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市湖里区湖里万达广场",
+        "geoStatus": "unresolvable",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6175,
+          6666
+        ],
+        "conclusion": "1451湖里万达年味活动与1510湖里万达儿童博饼同一湖里商业体；两名只差广场后缀。旧点是公交站和舞爪门店，不足作为商场主体定位，清空；集美与杏林万达保持独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-024",
+    "city": "厦门",
+    "entityId": "c5af2929e77ff6984593c6cc942275bd",
+    "mergeEntityIds": [
+      "cdeeb5aba975491604e49c740a043f83"
+    ],
+    "canonicalName": "SM海沧城市广场",
+    "expectedRevisions": {
+      "c5af2929e77ff6984593c6cc942275bd": 1,
+      "cdeeb5aba975491604e49c740a043f83": 1
+    },
+    "overrides": {
+      "lat": 24.5394,
+      "lng": 117.956546,
+      "address": "福建省厦门市海沧区SM城市广场(厦门海沧店)",
+      "geoStatus": "reviewed_source",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1522海沧SM城市广场跨年与1513明确SM海沧城市广场1号门外博饼，语序两名同体，主源为海沧店。另一个SM城市广场的1528源明确湖里一期二期，禁止通过候选230/231将岛内店吞入。",
+        "sourcePlaceIds": [
+          "3050",
+          "3152"
+        ],
+        "mentions": [
+          {
+            "id": "6305",
+            "name": "海沧SM城市广场",
+            "quote": "海沧SM城市广场跨年",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6696",
+            "name": "SM海沧城市广场",
+            "quote": "博饼状元赛SM海沧",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3050",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.5394,
+          "lng": 117.956546,
+          "address": "福建省厦门市海沧区SM城市广场(厦门海沧店)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.5394,
+        "lng": 117.956546,
+        "address": "福建省厦门市海沧区SM城市广场(厦门海沧店)",
+        "geoStatus": "reviewed_source",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6305,
+          6696
+        ],
+        "conclusion": "1522海沧SM城市广场跨年与1513明确SM海沧城市广场1号门外博饼，语序两名同体，主源为海沧店。另一个SM城市广场的1528源明确湖里一期二期，禁止通过候选230/231将岛内店吞入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-025",
+    "city": "厦门",
+    "entityId": "bd5dcd09a4dbb172c7885627bd378218",
+    "mergeEntityIds": [
+      "7c36d97897d80d137be5cec3afa3006f",
+      "d693bb5846f426d24d84575144147ba1"
+    ],
+    "canonicalName": "杏林万达广场",
+    "expectedRevisions": {
+      "7c36d97897d80d137be5cec3afa3006f": 1,
+      "bd5dcd09a4dbb172c7885627bd378218": 1,
+      "d693bb5846f426d24d84575144147ba1": 1
+    },
+    "overrides": {
+      "lat": 24.589739,
+      "lng": 118.015091,
+      "address": "福建省厦门市集美区杏林万达广场(1号门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          232,
+          233
+        ],
+        "conclusion": "1451、1522都明确集美杏林万达，1513又把杏林万达与集美万达分别列项。三种杏林名称同一商场，主源为杏林万达一号门参考点；泛名误匹配湖里舞爪门店的点不沿用。",
+        "sourcePlaceIds": [
+          "3150",
+          "2983",
+          "3049"
+        ],
+        "mentions": [
+          {
+            "id": "6692",
+            "name": "杏林万达",
+            "quote": "杏林万达中秋活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6183",
+            "name": "杏林万达广场",
+            "quote": "集美杏林万达春节活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c3a15000000000d00816e"
+          },
+          {
+            "id": "6304",
+            "name": "厦门杏林万达广场",
+            "quote": "集美杏林万达跨年",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2983",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.589739,
+          "lng": 118.015091,
+          "address": "福建省厦门市集美区杏林万达广场(1号门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.589739,
+        "lng": 118.015091,
+        "address": "福建省厦门市集美区杏林万达广场(1号门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6183,
+          6304,
+          6692
+        ],
+        "conclusion": "1451、1522都明确集美杏林万达，1513又把杏林万达与集美万达分别列项。三种杏林名称同一商场，主源为杏林万达一号门参考点；泛名误匹配湖里舞爪门店的点不沿用。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-026",
+    "city": "厦门",
+    "entityId": "676814ccd82ebb77f84ac651008e74ee",
+    "mergeEntityIds": [
+      "78100d189704a59c11aadaf7a8c29142"
+    ],
+    "canonicalName": "同安宝龙广场",
+    "expectedRevisions": {
+      "676814ccd82ebb77f84ac651008e74ee": 1,
+      "78100d189704a59c11aadaf7a8c29142": 1
+    },
+    "overrides": {
+      "lat": 24.716256,
+      "lng": 118.166621,
+      "address": "福建省厦门市同安区同安宝龙广场(3号门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          234
+        ],
+        "conclusion": "1451春节、1522和1523跨年清单及1513同安宝龙雀王争霸赛均限定同安商业体，短名省略广场。同安宝龙主源三号门作为同商场参考点，舍弃区中心默认点。",
+        "sourcePlaceIds": [
+          "2988",
+          "3156"
+        ],
+        "mentions": [
+          {
+            "id": "6634",
+            "name": "同安宝龙广场",
+            "quote": "同安宝龙广场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694c824e0000000019027f95"
+          },
+          {
+            "id": "6308",
+            "name": "同安宝龙广场",
+            "quote": "同安宝龙广场跨年",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6190",
+            "name": "同安宝龙广场",
+            "quote": "同安宝龙广场春节活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c3a15000000000d00816e"
+          },
+          {
+            "id": "6700",
+            "name": "同安宝龙",
+            "quote": "同安宝龙雀王争霸赛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2988",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.716256,
+          "lng": 118.166621,
+          "address": "福建省厦门市同安区同安宝龙广场(3号门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.716256,
+        "lng": 118.166621,
+        "address": "福建省厦门市同安区同安宝龙广场(3号门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6190,
+          6308,
+          6634,
+          6700
+        ],
+        "conclusion": "1451春节、1522和1523跨年清单及1513同安宝龙雀王争霸赛均限定同安商业体，短名省略广场。同安宝龙主源三号门作为同商场参考点，舍弃区中心默认点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-027",
+    "city": "厦门",
+    "entityId": "cce232b558c622638ee53c68cbcdfab1",
+    "mergeEntityIds": [
+      "d2f0e2c88e2e612748a9e035949c4daa",
+      "faf0e988664921aa0398aeaa0f88335c"
+    ],
+    "canonicalName": "厦门首创奥特莱斯",
+    "expectedRevisions": {
+      "cce232b558c622638ee53c68cbcdfab1": 1,
+      "d2f0e2c88e2e612748a9e035949c4daa": 1,
+      "faf0e988664921aa0398aeaa0f88335c": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市翔安区首创奥特莱斯",
+      "geoStatus": "unresolvable",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          235,
+          236
+        ],
+        "conclusion": "1451与1513都明确翔安首创奥莱年味和中秋活动，1510厦门中秋清单首创奥特莱斯指同一商业体。三个名称统一，旧点为公交站或城市中心，清空；具体门牌及入口坐标另核。",
+        "sourcePlaceIds": [
+          "3159",
+          "2990",
+          "3139"
+        ],
+        "mentions": [
+          {
+            "id": "6703",
+            "name": "翔安首创奥莱",
+            "quote": "翔安首创奥莱中秋活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6192",
+            "name": "首创奥莱",
+            "quote": "翔安首创奥莱年味活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c3a15000000000d00816e"
+          },
+          {
+            "id": "6667",
+            "name": "首创奥特莱斯",
+            "quote": "首届挑豆大赛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab11fe40000000036028761"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3159",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.543668,
+          "lng": 118.236208,
+          "address": "福建省厦门市翔安区翔安首创奥莱(公交站)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市翔安区首创奥特莱斯",
+        "geoStatus": "unresolvable",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6192,
+          6667,
+          6703
+        ],
+        "conclusion": "1451与1513都明确翔安首创奥莱年味和中秋活动，1510厦门中秋清单首创奥特莱斯指同一商业体。三个名称统一，旧点为公交站或城市中心，清空；具体门牌及入口坐标另核。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-028",
+    "city": "厦门",
+    "entityId": "33958c4564d5c1d9aeb219e6dce99ce1",
+    "mergeEntityIds": [
+      "e9ba312b187ff9cc2a901b4d65d38ff8"
+    ],
+    "canonicalName": "厦门星河COCO Park",
+    "expectedRevisions": {
+      "33958c4564d5c1d9aeb219e6dce99ce1": 1,
+      "e9ba312b187ff9cc2a901b4d65d38ff8": 1
+    },
+    "overrides": {
+      "lat": 24.474795,
+      "lng": 118.188584,
+      "address": "福建省厦门市思明区厦门星河COCO Park(3号门)",
+      "geoStatus": "reviewed_source",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          239
+        ],
+        "conclusion": "1522明确软件园二期站附近厦门星河COCO，1475写厦门星河COCO Park一层外广场，1523同一跨年清单星河COCOPark。两名同体，保留商场三号门主源参考点。",
+        "sourcePlaceIds": [
+          "3038",
+          "3115"
+        ],
+        "mentions": [
+          {
+            "id": "6579",
+            "name": "厦门星河COCO Park",
+            "quote": "圣诞新年主题市集",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bfae8000000001e027fd2"
+          },
+          {
+            "id": "6288",
+            "name": "厦门星河COCO Park",
+            "quote": "当日还有市集和飘雪！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6625",
+            "name": "星河COCOPark",
+            "quote": "星河COCOPark",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694c824e0000000019027f95"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3038",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.474795,
+          "lng": 118.188584,
+          "address": "福建省厦门市思明区厦门星河COCO Park(3号门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.474795,
+        "lng": 118.188584,
+        "address": "福建省厦门市思明区厦门星河COCO Park(3号门)",
+        "geoStatus": "reviewed_source",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6288,
+          6579,
+          6625
+        ],
+        "conclusion": "1522明确软件园二期站附近厦门星河COCO，1475写厦门星河COCO Park一层外广场，1523同一跨年清单星河COCOPark。两名同体，保留商场三号门主源参考点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-029",
+    "city": "厦门",
+    "entityId": "a0cab94d8be90e704714913508b2f1d3",
+    "mergeEntityIds": [
+      "05d1ca93e1f83cfa64f3c42ae01fab7f"
+    ],
+    "canonicalName": "嘉庚剧院",
+    "expectedRevisions": {
+      "05d1ca93e1f83cfa64f3c42ae01fab7f": 1,
+      "a0cab94d8be90e704714913508b2f1d3": 1
+    },
+    "overrides": {
+      "lat": 24.592642,
+      "lng": 118.060484,
+      "address": "福建省厦门市集美区嘉庚剧院",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          240
+        ],
+        "conclusion": "1522、1475及1528均为郑小瑛跨年音乐会，后者明确集美杏林湾路嘉庚剧院；两源同点，只差厦门前缀。",
+        "sourcePlaceIds": [
+          "3040",
+          "3219"
+        ],
+        "mentions": [
+          {
+            "id": "6574",
+            "name": "厦门嘉庚剧院",
+            "quote": "郑小瑛跨年音乐会",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bfae8000000001e027fd2"
+          },
+          {
+            "id": "6294",
+            "name": "厦门嘉庚剧院",
+            "quote": "非.免.费.",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6856",
+            "name": "嘉庚剧院",
+            "quote": "交响歌剧演出质感拉满",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6950aae2000000002103fba5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3219",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.592642,
+          "lng": 118.060484,
+          "address": "福建省厦门市集美区嘉庚剧院",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.592642,
+        "lng": 118.060484,
+        "address": "福建省厦门市集美区嘉庚剧院",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6294,
+          6574,
+          6856
+        ],
+        "conclusion": "1522、1475及1528均为郑小瑛跨年音乐会，后者明确集美杏林湾路嘉庚剧院；两源同点，只差厦门前缀。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-030",
+    "city": "厦门",
+    "entityId": "b1eb17a9f301aa0a058427f1df153734",
+    "mergeEntityIds": [
+      "a4d4b4b8be988a11ded6a0542d7db9ca"
+    ],
+    "canonicalName": "航空古地石广场",
+    "expectedRevisions": {
+      "a4d4b4b8be988a11ded6a0542d7db9ca": 1,
+      "b1eb17a9f301aa0a058427f1df153734": 1
+    },
+    "overrides": {
+      "lat": 24.491899,
+      "lng": 118.167913,
+      "address": "福建省厦门市湖里区航空古地石广场",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          241
+        ],
+        "conclusion": "1522简称古地石广场的牛马躺平市集，1475同名活动明确湖里航空古地石广场月亮广场，1523同一跨年活动。两商业体名称同义，采用广场主源不沿用公交站点；月亮广场子设施不并为同义。",
+        "sourcePlaceIds": [
+          "3045",
+          "3106"
+        ],
+        "mentions": [
+          {
+            "id": "6300",
+            "name": "古地石广场",
+            "quote": "古地石牛马躺平市集",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6672",
+            "name": "航空古地石广场",
+            "quote": "微醺音乐电台·有圆人派对",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab11fe40000000036028761"
+          },
+          {
+            "id": "6642",
+            "name": "航空古地石广场",
+            "quote": "航空古地石广场跨年活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/694c824e0000000019027f95"
+          },
+          {
+            "id": "6582",
+            "name": "航空古地石广场",
+            "quote": "牛马躺平市集",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bfae8000000001e027fd2"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3106",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.491899,
+          "lng": 118.167913,
+          "address": "福建省厦门市湖里区航空古地石广场",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.491899,
+        "lng": 118.167913,
+        "address": "福建省厦门市湖里区航空古地石广场",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6300,
+          6582,
+          6642,
+          6672
+        ],
+        "conclusion": "1522简称古地石广场的牛马躺平市集，1475同名活动明确湖里航空古地石广场月亮广场，1523同一跨年活动。两商业体名称同义，采用广场主源不沿用公交站点；月亮广场子设施不并为同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-031",
+    "city": "厦门",
+    "entityId": "d9c093ed03298d5fa8d1d65b23d7946b",
+    "mergeEntityIds": [
+      "6f3234bec8c89797db253cc19a8d3d2a"
+    ],
+    "canonicalName": "集美万达广场",
+    "expectedRevisions": {
+      "6f3234bec8c89797db253cc19a8d3d2a": 1,
+      "d9c093ed03298d5fa8d1d65b23d7946b": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市集美区集美万达广场，非杏林万达",
+      "geoStatus": "unresolvable",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          244
+        ],
+        "conclusion": "1522集美万达2026松松新年季与1510、1513集美万达活动同体；1522和1513同时另列杏林万达，证实边界独立。两个旧点分别错到杏林一号门和集美区中心，成对清空，不向另一商场借坐标。",
+        "sourcePlaceIds": [
+          "3048",
+          "3136"
+        ],
+        "mentions": [
+          {
+            "id": "6303",
+            "name": "集美万达广场",
+            "quote": "集美万达2026松松新年季",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69441ee5000000001f008826"
+          },
+          {
+            "id": "6693",
+            "name": "集美万达",
+            "quote": "集美万达中秋活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+          },
+          {
+            "id": "6664",
+            "name": "集美万达",
+            "quote": "露天电影 桌游卡牌赛 王中王博饼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab11fe40000000036028761"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3136",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.575976,
+          "lng": 118.097407,
+          "address": "福建省厦门市集美区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市集美区集美万达广场，非杏林万达",
+        "geoStatus": "unresolvable",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6303,
+          6664,
+          6693
+        ],
+        "conclusion": "1522集美万达2026松松新年季与1510、1513集美万达活动同体；1522和1513同时另列杏林万达，证实边界独立。两个旧点分别错到杏林一号门和集美区中心，成对清空，不向另一商场借坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-032",
+    "city": "厦门",
+    "entityId": "dbfca6989e7921604aa6ef2a91babfc3",
+    "mergeEntityIds": [
+      "9e4510a3f671c4222c1fdf7449451558"
+    ],
+    "canonicalName": "下潭尾红树林湿地公园",
+    "expectedRevisions": {
+      "9e4510a3f671c4222c1fdf7449451558": 1,
+      "dbfca6989e7921604aa6ef2a91babfc3": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "address": "厦门市翔安区下潭尾红树林湿地公园",
+      "category": "景点",
+      "exportApproved": true
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          245
+        ],
+        "conclusion": "1580翔安露营分区明确下潭尾红树林湿地公园，1585翔安分区简称下潭尾湿地公园，均为同一红树林公园。另一个旧点错到湖里湿地公园地铁站，保留主源无坐标并批准导出，不吞湖里湿地公园。",
+        "sourcePlaceIds": [
+          "3087",
+          "3070"
+        ],
+        "mentions": [
+          {
+            "id": "6528",
+            "name": "下潭尾湿地公园",
+            "quote": "可生火，有很多小路边摊",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69dba2c500000000230116f6"
+          },
+          {
+            "id": "6347",
+            "name": "下潭尾红树林湿地公园",
+            "quote": "超大草坪、白鹭、湿地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e5195e0000000007000817"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3070",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": null,
+          "lng": null,
+          "geoStatus": "unresolvable"
+        },
+        "lat": null,
+        "lng": null,
+        "geoStatus": "unresolvable",
+        "address": "厦门市翔安区下潭尾红树林湿地公园",
+        "category": "景点",
+        "exportApproved": true
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6347,
+          6528
+        ],
+        "conclusion": "1580翔安露营分区明确下潭尾红树林湿地公园，1585翔安分区简称下潭尾湿地公园，均为同一红树林公园。另一个旧点错到湖里湿地公园地铁站，保留主源无坐标并批准导出，不吞湖里湿地公园。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-033",
+    "city": "厦门",
+    "entityId": "daf9fc51945ba5a856ca2225a0da58ab",
+    "mergeEntityIds": [
+      "1b3c0ebc6b0a831faa43a769dc7f939f"
+    ],
+    "canonicalName": "厦门方特旅游度假区",
+    "expectedRevisions": {
+      "1b3c0ebc6b0a831faa43a769dc7f939f": 1,
+      "daf9fc51945ba5a856ca2225a0da58ab": 1
+    },
+    "overrides": {
+      "lat": 24.679679,
+      "lng": 118.176532,
+      "address": "福建省厦门市同安区厦门方特旅游度假区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          246
+        ],
+        "conclusion": "1475厦门方特旅游区跨年烟花无人机与1528明确同安石浔南路1111号、双园畅玩的厦门方特旅游度假区是同一园区总称。只合并两条总称，不吞梦幻王国、东方神画等单园及未明确范围的泛名厦门方特。",
+        "sourcePlaceIds": [
+          "3098",
+          "3217"
+        ],
+        "mentions": [
+          {
+            "id": "6570",
+            "name": "厦门方特旅游区",
+            "quote": "百万级跨年烟花秀+无人机表演",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bfae8000000001e027fd2"
+          },
+          {
+            "id": "6851",
+            "name": "厦门方特旅游度假区",
+            "quote": "千架无人机天幕秀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6950aae2000000002103fba5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3217",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.679679,
+          "lng": 118.176532,
+          "address": "福建省厦门市同安区厦门方特旅游度假区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.679679,
+        "lng": 118.176532,
+        "address": "福建省厦门市同安区厦门方特旅游度假区",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6570,
+          6851
+        ],
+        "conclusion": "1475厦门方特旅游区跨年烟花无人机与1528明确同安石浔南路1111号、双园畅玩的厦门方特旅游度假区是同一园区总称。只合并两条总称，不吞梦幻王国、东方神画等单园及未明确范围的泛名厦门方特。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-034",
+    "city": "厦门",
+    "entityId": "500c71601d85f359d85e3ae3752ddc66",
+    "mergeEntityIds": [
+      "41c222c05de7c8615aaa597c3b026216"
+    ],
+    "canonicalName": "鼓浪屿钢琴博物馆",
+    "expectedRevisions": {
+      "41c222c05de7c8615aaa597c3b026216": 1,
+      "500c71601d85f359d85e3ae3752ddc66": 1
+    },
+    "overrides": {
+      "lat": 24.4383,
+      "lng": 118.069799,
+      "address": "福建省厦门市思明区鼓浪屿钢琴博物馆",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1324明确菽庄花园与钢琴博物馆，1445鼓浪屿钢琴博物馆说明两者同一个检票口；1328亦明确菽庄花园两个钢琴展馆。两名称指同一钢琴博物馆，花园本身和馆出口阳台、八卦楼风琴馆保持独立。",
+        "sourcePlaceIds": [
+          "2775",
+          "2828"
+        ],
+        "mentions": [
+          {
+            "id": "5622",
+            "name": "钢琴博物馆",
+            "quote": "菽庄花园+钢琴博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4f069c000000002103f58d"
+          },
+          {
+            "id": "5787",
+            "name": "鼓浪屿钢琴博物馆",
+            "quote": "同一个检票进入",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/691c79e2000000001e02aced"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2828",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.4383,
+          "lng": 118.069799,
+          "address": "福建省厦门市思明区鼓浪屿钢琴博物馆",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 24.4383,
+        "lng": 118.069799,
+        "address": "福建省厦门市思明区鼓浪屿钢琴博物馆",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xiamen-batch15-supplement.json",
+        "sha256": "00f5b76037099b1d5e801e31ea4673666decd7ed2cb9679f4c521f840a571a63",
+        "conclusion": "1324明确菽庄花园与钢琴博物馆，1445鼓浪屿钢琴博物馆说明两者同一个检票口；1328亦明确菽庄花园两个钢琴展馆。两名称指同一钢琴博物馆，花园本身和馆出口阳台、八卦楼风琴馆保持独立。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5622
+        ],
+        "conclusion": "1324明确菽庄花园与钢琴博物馆，1445鼓浪屿钢琴博物馆说明两者同一个检票口；1328亦明确菽庄花园两个钢琴展馆。两名称指同一钢琴博物馆，花园本身和馆出口阳台、八卦楼风琴馆保持独立。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-variant-context.json",
+        "sha256": "31e5b82b688005ac662d6cce158967f7a463c873a58bbf17deb4a569af9231a6",
+        "mentionIds": [
+          5787
+        ],
+        "conclusion": "1324明确菽庄花园与钢琴博物馆，1445鼓浪屿钢琴博物馆说明两者同一个检票口；1328亦明确菽庄花园两个钢琴展馆。两名称指同一钢琴博物馆，花园本身和馆出口阳台、八卦楼风琴馆保持独立。"
+      }
+    ]
+  }
+]

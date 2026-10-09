@@ -1,0 +1,23 @@
+[
+  {"review":63,"verdict":"uncertain","explanation":"5065明说方砖厂已遍布北京，4814无门牌且同时带南锣/前门标签，4764只是拿方砖厂作口味对比；不能把品牌泛称按地图归到南锣或方砖厂胡同门店。需按原提及补具体分店。","contexts":[{"file":"beijing-batch08-context.json","mentionIds":[5065,4814,4764]}]},
+  {"review":67,"verdict":"uncertain","explanation":"西北角楼2308方向明确，但故宫角楼实体混有5025明确西北与5173等不带方向的提及，不能把全部泛称都认作西北角楼；需要逐提及核对机位。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2308]}]},
+  {"review":68,"verdict":"uncertain","explanation":"2540原文只写故宫西角楼，未给西南或西北；故宫角楼实体亦有未定方向的来源。北京市中心兜底坐标不构成同一塔楼证据。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2540]}]},
+  {"review":72,"verdict":"uncertain","explanation":"2562原路线只写鼓楼大街，从烟袋斜街到南锣鼓巷，地图却匹配2/8号线车站；原文没有明确东大街，尚不能判为该道路别名或地铁站。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2562]}]},
+  {"review":103,"verdict":"uncertain","explanation":"2222和4591都说牛街白记但未写具体柜台，4558同一实体另一来源明确聚宝源旁与马路对面两家白记分店；不能在同一条街内把不同分店合并。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2222,4591]},{"file":"beijing-batch07-context.json","mentionIds":[4558]}]},
+  {"review":108,"verdict":"part_of","childEntityId":"0a114d0a1226b9264b5c021af8c2607f","explanation":"4875原文明确合列东南/西北角楼，2308单指西北角楼；组合拍摄清单包含两个塔楼，不能把两栋都作为西北角楼别名。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[4875,2308]}]},
+  {"review":109,"verdict":"uncertain","explanation":"2308是西北角楼，2540仅西角楼且没有方向补充，照片尚未核到西北/西南；保留待审，不能省掉决定实体边界的北字。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2308,2540]}]},
+  {"review":112,"verdict":"uncertain","explanation":"3148说天安门、故宫、石景山公园一下午逛完，疑将景山误写石景山；地图首钢园无法解释原文。缺照片/路线确认，不能按字面或推测直接合并。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[3148]}]},
+  {"review":115,"verdict":"uncertain","explanation":"2562鼓楼大街原路线未区分东西大街，地图又误落地铁站；不能凭沿途接近鼓楼就归为西大街，需查路线图。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2562]}]},
+  {"review":119,"verdict":"uncertain","explanation":"4319主项在古稀门透拍祈年殿，3411/2483仅写祈年殿门缝机位；拍摄对象与站位可能不同，未确认是否同一门点，不能用同一母景区坐标判等。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[4319]},{"file":"beijing-batch08-context.json","mentionIds":[3411,2483]}]},
+  {"review":121,"verdict":"part_of","childEntityId":"33297aff7fde3ac374465da6b65c2885","explanation":"4875同篇机位列表把奥林匹克塔底部公园单列为局部赏银杏区域，奥林匹克公园原实体涵盖鸟巢水立方等全域；塔底区域属于整体中的局部，不作为全域别名。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[4875]}]},
+  {"review":126,"verdict":"uncertain","explanation":"2544全文将红墙美术馆放在798路线，红砖美术馆源地址在何各庄；红墙是否误写或另一空间尚未核实，不能依据墙/砖形近作同义或虚构独立机构结论。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2544]}]},
+  {"review":134,"verdict":"uncertain","explanation":"4558指牛街聚宝源爆肚粉窗口，3103也写牛街聚宝源但未给具体门牌/柜台。两者地图同5-2号不足以排除连锁或窗口错配，需现场/门头证据再合并。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4558]},{"file":"beijing-batch08-context.json","mentionIds":[3103]}]},
+  {"review":135,"verdict":"uncertain","explanation":"石景山乐园已归到游乐园；3148石景山公园语境却在故宫天安门附近，可能是景山误写，不足以确认首钢公园或石景山游乐园，保留原审核继续核图。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[3148]},{"file":"beijing-batch08-context.json","mentionIds":[3211]}]},
+  {"review":136,"verdict":"uncertain","explanation":"4383与3185都把鸟巢水立方合列，属于两个独立场馆组合推荐；当前模型尚未拆开组合源提及，不能为清队列将组合记录宣称为单一场馆。需核实组合范围及分别归属。","contexts":[{"file":"beijing-batch08-context.json","mentionIds":[4383,3185]}]},
+  {"review":149,"verdict":"uncertain","explanation":"4506写老北京炸酱面大王，5070只写老北京炸酱面，均无原文门牌；现地图东兴隆街与翠花胡同冲突，无法从通用食品名确定店铺，需门头或地址。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4506,5070]}]},
+  {"review":150,"verdict":"uncertain","explanation":"4511把postpost列在幸福三村，5283路线又经过西五街院落，4636只称三里屯店；现图太古里北区亭子与原文不一致，需核实是否同店/迁址，不能只按三里屯片区合并。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4511,5283,4636]}]},
+  {"review":154,"verdict":"uncertain","explanation":"4558仅泛称牛街门钉肉饼，4894只列肉饼品类且未给门店；地图分别落地安门及体育馆西路，不能判断两者具体店铺同异，留待门头/地址核实。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4558,4894]}]},
+  {"review":157,"verdict":"distinct","explanation":"4658明确北八楼，5095明确北四楼，敌楼编号是独立位置，不能因都附好汉坡而合并；北四楼现地图误落怀柔书画山也不能吞并八达岭编号。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4658,5095]}]},
+  {"review":158,"verdict":"distinct","explanation":"5134标题虽称王府井但正文明确紧邻国贸、乘地铁到王府井；4849正文称王府井正中心。两条住宿位置描述不同，均未给店名，拒绝同义但不认定具体酒店已核实。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[5134,4849]}]},
+  {"review":159,"verdict":"uncertain","explanation":"5108只说市中心和院内咖啡厅，5134正文实为紧邻国贸的智能酒店，两者都无具体店名；共同王府井标题和片区兜底坐标不能确认同一酒店，需补名称/门牌。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[5108,5134]}]}
+]

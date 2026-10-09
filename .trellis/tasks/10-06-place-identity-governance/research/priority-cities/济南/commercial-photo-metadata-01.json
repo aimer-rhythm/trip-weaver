@@ -1,0 +1,1144 @@
+{
+  "readOnly": true,
+  "city": "济南",
+  "capturedAt": "2026-10-08T18:13:41.943Z",
+  "inputDigest": "3c8f676cfb5c79332da4c6de007971ba7d30d4f9de1094436f330b25a9f60d52",
+  "sourceImages": 123,
+  "reviewedCatalogs": 12,
+  "sourceCatalogs": [
+    {
+      "name": "五龙潭公园",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "环联夜市",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "大明湖",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "超然楼",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "经三路",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "趵突泉",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "洪家楼天主教堂",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老商埠",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老舍故居",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "千佛山",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "山东博物馆",
+      "aliases": [],
+      "images": 13
+    },
+    {
+      "name": "黑虎泉",
+      "aliases": [],
+      "images": 10
+    }
+  ],
+  "cityAssignments": 9,
+  "entities": [
+    {
+      "entityId": "46bf462d545dc6435d6de296ba099d0f",
+      "name": "融汇老商埠",
+      "revision": 2,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "46bf462d545dc6435d6de296ba099d0f",
+        "nameKeys": [
+          "融汇老商埠",
+          "济南老商埠",
+          "经三路老商埠",
+          "老商埠",
+          "老商埠·经三路",
+          "老商埠经三路",
+          "融汇济南老商埠"
+        ],
+        "revision": 2,
+        "memberIds": [
+          "46bf462d545dc6435d6de296ba099d0f",
+          "4b9803715c2c4c49d9f8bbde3b53a34f",
+          "4dd3530aa4bb1a615b12f5b19efef8e8",
+          "8938c5287c8e485e587e951e69b5ccb9",
+          "c51be8e43cf0b3687cb1ccbd069ed358",
+          "ddd11def37286b278f4dcdf87e2ca91f",
+          "eaa2d2785770cd20fcd7f56e40d926c5"
+        ],
+        "memberNames": [
+          "融汇老商埠",
+          "济南老商埠",
+          "经三路老商埠",
+          "老商埠",
+          "老商埠·经三路",
+          "老商埠经三路",
+          "融汇济南老商埠"
+        ],
+        "canonicalName": "融汇老商埠"
+      },
+      "aliases": [
+        "融汇老商埠",
+        "济南老商埠",
+        "经三路老商埠",
+        "老商埠",
+        "老商埠·经三路",
+        "老商埠经三路",
+        "融汇济南老商埠"
+      ],
+      "lat": 36.662082,
+      "lng": 116.992757,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "1fb2936ab3752cf6068a932f5da680ae38dce0c8bd33e5c14f68a1b477e9886c",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "ainc T",
+                "sourceUrl": "https://www.pexels.com/photo/nightscape-of-illuminated-building-in-harbin-36286021/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Bright lights illuminate an elegant building in Harbin at night.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:17:28.454Z",
+            "sha256": "bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片描述明确标注'Harbin at night'（哈尔滨夜景），与标题中的济南老商埠地理位置完全不符。画面为哈尔滨典型欧式风格建筑夜景，非济南老商埠历史街区景观。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜景-欧式建筑立面",
+              "reason": "图片实际拍摄地点为哈尔滨，与济南老商埠无地理关联，属于明显错配"
+            }
+          },
+          "imageKey": "reviewed:f115529118c35e01390be7e0aae4396c686f5a7f90e7f640d1f57a563c01fc8b",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "eligible": false,
+          "inputHash": "f1d361559e432eefc3830330ddb53b110216891df904ba87e7292534c2167aa1"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/3160eb47fe5111ea4f4eb65dbb29c01e4de6462abb3f500833266d9e1332e204.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "Hugo_ob",
+                "sourceUrl": "https://pixabay.com/photos/taiwan-taipei-new-taipei-city-4959461/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "taiwan, nature, taipei, new taipei city, seaside, old plum, sea, old meishicao, green algae, plant",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:17:34.385Z",
+            "sha256": "3160eb47fe5111ea4f4eb65dbb29c01e4de6462abb3f500833266d9e1332e204",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示绿色海藻覆盖的岩石纹理，来源标签明确标注taiwan/taipei/seaside/green algae，与济南老商埠（历史商业街区/民国建筑群）完全无关",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "特写-绿色海藻覆盖岩石",
+              "reason": "图片来源及标签均为台湾海边藻类景观，济南老商埠为历史街区建筑，照片主体与目标景点无关联"
+            }
+          },
+          "imageKey": "reviewed:eb5f37b004cd6124cc24c7d8d45c44341aa4205311f5a0739899e185f577dd19",
+          "assetKey": "local_bytes:3160eb47fe5111ea4f4eb65dbb29c01e4de6462abb3f500833266d9e1332e204",
+          "eligible": false,
+          "inputHash": "096dba83d78dc7ec9854dbbd2b63bd2135c0495ec71298673c647456421b1ce9"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "Suginami",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E7%BB%8F%E4%B8%89%E8%B7%AF%E8%80%81%E5%95%86%E5%9F%A0.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南经三路老商埠.jpg Jinan Jing-san Road area",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:17:41.798Z",
+            "sha256": "bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+            "review": {
+              "identity": "match",
+              "evidence": "图片显示济南经三路老商埠区域特征：仿古装饰汽车雕塑、石墙建筑、遮雨棚为济南老商埠文创街区典型陈设，与城市及景点匹配",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜景-建筑旁复古汽车雕塑-侧视近景",
+              "reason": "夜景拍摄，仅展示经三路老商埠局部装置艺术，可识别地点但非地标全景"
+            }
+          },
+          "imageKey": "reviewed:ecc20ec7b0a7657a9d20b4f24829fb27f4d11f45f41ff09b1863a3d06438b06f",
+          "assetKey": "local_bytes:bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+          "eligible": true,
+          "inputHash": "a7c3d14c71aa192b7215be50e43c4171dbb53a68d536b505e7cdd884958da001"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://store.is.autonavi.com/showpic/42f3f5e9d2147be40000003327724096?type=pic"
+            },
+            "provider": "amap",
+            "evidence": "济南 老商埠 高德POI关联图；关联不是主体身份保证，必须独立核对画面",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:17:50.815Z",
+            "sha256": "f5cc1aa30650aae95460171899c566fc660e4ad48888a5eb0b4624e35a7edc2d",
+            "review": {
+              "identity": "match",
+              "evidence": "照片显示济南老商埠区域内的1903 MIX商业区，可见'1903 MIX'招牌、青岛啤酒1903标识、'喝醉济南'标志及济南字样的立牌，建筑风格为老商埠典型的砖石结构历史建筑，与济南老商埠实地特征一致",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "建筑正面-日景",
+              "reason": "照片中1903 MIX商业体位于济南老商埠区域内，具有明确的地标性招牌和历史建筑风格，可识别该地点为济南老商埠的商业改造区域"
+            }
+          },
+          "imageKey": "reviewed:ae33c8090e156ff8d3a719ed46405a0038ffe1eeb3d20476bf1e5a3694cfc6d7",
+          "assetKey": "official_url:f5cc1aa30650aae95460171899c566fc660e4ad48888a5eb0b4624e35a7edc2d",
+          "eligible": true,
+          "inputHash": "71f7b394963fff270ab5cd168cce333802828cd9a28607602067b3b159be7855"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/d2e77274d44d472d3432bc4b3d47516ea67ca53189bde20d97beb8d7b52edd6d.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Cheng Shi Song",
+                "sourceUrl": "https://www.pexels.com/photo/senior-practicing-tai-chi-at-nanjing-pavilion-36161472/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "An elderly man performing Tai Chi outside a traditional Chinese pavilion in Nanjing.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:00.097Z",
+            "sha256": "d2e77274d44d472d3432bc4b3d47516ea67ca53189bde20d97beb8d7b52edd6d",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片显示传统中式亭阁与晨练场景，来源网址（pexels）及图片内容均指向南京（Nanjing）。老商埠是济南市中区的历史商业街区，以民国时期中西合璧骑楼、街巷和商业建筑群为特征，两者无任何主体证据关联。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "亭阁斜角-日景",
+              "reason": "来源证据明确标注南京，与济南老商埠无关联；老商埠地标为街区骑楼建筑群，非园林亭阁。"
+            }
+          },
+          "imageKey": "reviewed:fc148f32acd3219cadcd2f853c4dad1667c2fdbfb76e8960bfdb9e3391436fbb",
+          "assetKey": "local_bytes:d2e77274d44d472d3432bc4b3d47516ea67ca53189bde20d97beb8d7b52edd6d",
+          "eligible": false,
+          "inputHash": "38599eb56921642167403ea3c1cfeba21fdafee8e2ee65226161c22b994ca37d"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/4adf75a609d7b6127f595d40a51d7c584c3aead1e2006defa7aa976fde91bc22.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "Matthias_koll_leverkusen",
+                "sourceUrl": "https://pixabay.com/photos/pet-game-park-play-old-dog-7106365/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "pet, game, park, play, old dog, dog park, dog playing fetch, dog, animal, sunset, grass, nature, canine",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:04.746Z",
+            "sha256": "4adf75a609d7b6127f595d40a51d7c584c3aead1e2006defa7aa976fde91bc22",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为日落草地上追逐蓝色球的腊肠犬，无任何济南老商埠的建筑、街景、路牌或地标证据",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "低角度草地-黄昏",
+              "reason": "照片为宠物追逐场景，与济南老商埠无关，无建筑或街区证据"
+            }
+          },
+          "imageKey": "reviewed:3ed4802e9cb08327be54e5cacef1ffac051ac4fd127d1b440f0be8319a0ee850",
+          "assetKey": "local_bytes:4adf75a609d7b6127f595d40a51d7c584c3aead1e2006defa7aa976fde91bc22",
+          "eligible": false,
+          "inputHash": "94d2aa933304c0d7fe1c9bb325e7e40fa58dd6ca2ae59784f75485a29cb72830"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/bf1e2278a60a4e535a332f249502525c58dd4ce2619975a703cacceb9401696c.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "Suginami",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E7%BB%8F%E4%B8%89%E8%B7%AF%E8%80%81%E5%95%86%E5%9F%A0%E5%95%86%E5%BA%97.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南经三路老商埠商店.jpg Jinan, Jing-san road",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:10.547Z",
+            "sha256": "bf1e2278a60a4e535a332f249502525c58dd4ce2619975a703cacceb9401696c",
+            "review": {
+              "identity": "match",
+              "evidence": "照片显示济南经三路老商埠区域的石墙建筑，HEYTEA喜茶门店位于该历史文化街区。建筑为石砌外墙、木结构楼梯，符合经三路老商埠民国时期建筑特征。经三路是济南老商埠核心商业街，该地段已有明确标识佐证位置。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜间街景-平视-商业店铺立面",
+              "reason": "石墙建筑与木楼梯符合济南经三路老商埠历史街区风貌，HEYTEA门店位于该区域内，属于典型的老商埠商业活化场景。夜间光线清晰呈现建筑细节，构图稳定。"
+            }
+          },
+          "imageKey": "reviewed:bc63b9a8011192bce4d63c144e1327b1f0de7b3bd1c8782150660b5f2a6160a7",
+          "assetKey": "local_bytes:bf1e2278a60a4e535a332f249502525c58dd4ce2619975a703cacceb9401696c",
+          "eligible": true,
+          "inputHash": "48c4f4f11dcebb9479f5e8b1103bb543241520c0204bf9798a0f206506fef097"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/ee8f79c62a3e6b8bdde66e9852409b9360e4eae7fcfd3df090afdc8ecfc5e469.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Afham Hamsyari",
+                "sourceUrl": "https://www.pexels.com/photo/charming-hutong-street-in-beijing-china-34021123/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Discover the quaint charm of a traditional Hutong street in Beijing, China.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:19.013Z",
+            "sha256": "ee8f79c62a3e6b8bdde66e9852409b9360e4eae7fcfd3df090afdc8ecfc5e469",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片显示的是北京胡同风格的灰砖建筑与传统民居，街道两侧为典型四合院式灰瓦房，有胡同灯笼与青石板路。济南老商埠是以近代欧式商业建筑为主的街区，建筑风格与图不符。且来源说明明确标注'Beijing, China'，与目标城市济南不符",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "胡同街道-日景-蓝天白云",
+              "reason": "城市错误：图片来源标注为北京胡同，建筑风格与济南老商埠的近代欧式商业建筑不符，为明显错配"
+            }
+          },
+          "imageKey": "reviewed:80cfd2d667007f0a2fb444ac4223f77a180bc880ba056a1b7d674cc847cced3e",
+          "assetKey": "local_bytes:ee8f79c62a3e6b8bdde66e9852409b9360e4eae7fcfd3df090afdc8ecfc5e469",
+          "eligible": false,
+          "inputHash": "5d629d31b270410ba20289f516bcb5c284cb09410e69b4d5224b5d37617e7280"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老商埠",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/92e5eb30d0c23e22ef0fbd1799ca6c9c6dff53f3c5e1ec302bc070f12627d435.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "sintec",
+                "sourceUrl": "https://pixabay.com/photos/lobster-seafood-ocean-4952603/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "lobster, seafood, nature, ocean",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:24.846Z",
+            "sha256": "92e5eb30d0c23e22ef0fbd1799ca6c9c6dff53f3c5e1ec302bc070f12627d435",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片主体为盘中的熟龙虾及柠檬香菜摆盘，属于海鲜美食摄影，完全不存在济南老商埠的建筑、街区、历史地标或景观特征；画面内容无法证明拍摄于济南老商埠任何位置",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "食物近景-室内光",
+              "reason": "图片展示的是海鲜料理而非景点实体，与济南老商埠无地理或视觉关联"
+            }
+          },
+          "imageKey": "reviewed:915abe541a54d350cc7b1410985c06cf59d7539d6b009819aa431c6b427069ab",
+          "assetKey": "local_bytes:92e5eb30d0c23e22ef0fbd1799ca6c9c6dff53f3c5e1ec302bc070f12627d435",
+          "eligible": false,
+          "inputHash": "213976c7651d4069a05d1ce2bea1693943388c8d6446927b556d669def4b89d0"
+        }
+      ],
+      "relatedAssetSources": [
+        {
+          "imageKey": "reviewed:7d7f839ae38931907f7c9c44ff4acfd03c2a7df7e3635552c17b72c3a7b7a049",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:9adac905c49089876327b082469b8fec1546359c45e86e654d9c0e2ee3baa996",
+          "assetKey": "local_bytes:bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:f115529118c35e01390be7e0aae4396c686f5a7f90e7f640d1f57a563c01fc8b",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:eb5f37b004cd6124cc24c7d8d45c44341aa4205311f5a0739899e185f577dd19",
+          "assetKey": "local_bytes:3160eb47fe5111ea4f4eb65dbb29c01e4de6462abb3f500833266d9e1332e204",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:ecc20ec7b0a7657a9d20b4f24829fb27f4d11f45f41ff09b1863a3d06438b06f",
+          "assetKey": "local_bytes:bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+          "catalogName": "老商埠",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:ae33c8090e156ff8d3a719ed46405a0038ffe1eeb3d20476bf1e5a3694cfc6d7",
+          "assetKey": "official_url:f5cc1aa30650aae95460171899c566fc660e4ad48888a5eb0b4624e35a7edc2d",
+          "catalogName": "老商埠",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:fc148f32acd3219cadcd2f853c4dad1667c2fdbfb76e8960bfdb9e3391436fbb",
+          "assetKey": "local_bytes:d2e77274d44d472d3432bc4b3d47516ea67ca53189bde20d97beb8d7b52edd6d",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:3ed4802e9cb08327be54e5cacef1ffac051ac4fd127d1b440f0be8319a0ee850",
+          "assetKey": "local_bytes:4adf75a609d7b6127f595d40a51d7c584c3aead1e2006defa7aa976fde91bc22",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:bc63b9a8011192bce4d63c144e1327b1f0de7b3bd1c8782150660b5f2a6160a7",
+          "assetKey": "local_bytes:bf1e2278a60a4e535a332f249502525c58dd4ce2619975a703cacceb9401696c",
+          "catalogName": "老商埠",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:80cfd2d667007f0a2fb444ac4223f77a180bc880ba056a1b7d674cc847cced3e",
+          "assetKey": "local_bytes:ee8f79c62a3e6b8bdde66e9852409b9360e4eae7fcfd3df090afdc8ecfc5e469",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:915abe541a54d350cc7b1410985c06cf59d7539d6b009819aa431c6b427069ab",
+          "assetKey": "local_bytes:92e5eb30d0c23e22ef0fbd1799ca6c9c6dff53f3c5e1ec302bc070f12627d435",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:c399605f91fd11d2febd6b008482936c53a445659ecb9516c09b62b0af723d65",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "catalogName": "山东博物馆",
+          "eligible": false
+        }
+      ],
+      "assignments": []
+    },
+    {
+      "entityId": "c11648e477180d1b3f97da06808da5e7",
+      "name": "经三路",
+      "revision": 2,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "c11648e477180d1b3f97da06808da5e7",
+        "nameKeys": [
+          "经三路"
+        ],
+        "revision": 2,
+        "memberIds": [
+          "c11648e477180d1b3f97da06808da5e7"
+        ],
+        "memberNames": [
+          "经三路"
+        ],
+        "canonicalName": "经三路"
+      },
+      "aliases": [
+        "经三路"
+      ],
+      "lat": 36.66172763288482,
+      "lng": 116.98727328058241,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "e4d0eeafa4e59fd301bf000bebd49ec5dcd465b3b22de78110f16c476ca1e8ab",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "ainc T",
+                "sourceUrl": "https://www.pexels.com/photo/nightscape-of-illuminated-building-in-harbin-36286021/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Bright lights illuminate an elegant building in Harbin at night.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:43.397Z",
+            "sha256": "bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片为哈尔滨夜景，建筑顶部有中文招牌，暖黄色灯光照明，长曝光车流轨迹。但证据描述已明确指出'Harbin'，与济南经三路不符。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜景-欧式建筑街角立面",
+              "reason": "照片明确为哈尔滨夜景建筑，与济南经三路不符，城市证据冲突"
+            }
+          },
+          "imageKey": "reviewed:7d7f839ae38931907f7c9c44ff4acfd03c2a7df7e3635552c17b72c3a7b7a049",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "eligible": false,
+          "inputHash": "76d6b615707fa117fb9fed9e598f8ca838d3cd645716b12afab75d283b93a6f7"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/1a2ef26a8a47dd88e3d122c3abbe8e4030a5ef0efaced2e33889d234945b7908.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "solenedesjardins",
+                "sourceUrl": "https://pixabay.com/photos/mountains-snow-road-pyrenees-6562436/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "mountains, snow, road, pyrenees, take-off runway, altiport, landscape, nature, winter, snow, road, road, road, road, road, winter, winter",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:18:48.893Z",
+            "sha256": "1a2ef26a8a47dd88e3d122c3abbe8e4030a5ef0efaced2e33889d234945b7908",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示雪山环绕的高原公路，远处可见明显山脉轮廓与滑雪道痕迹，为比利牛斯山脉 altiport 地貌；济南为鲁西平原城市，经三路是普通城市街道，无雪山高原地貌，两者完全不符",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "公路尽头-冬季雪山",
+              "reason": "图片来源于pixabay.com/mountains-snow-road-pyrenees，显示比利牛斯山脉雪地公路，与济南经三路城市街道无关联"
+            }
+          },
+          "imageKey": "reviewed:04d09c8eaf73c1f97c8d240381333470417b869587eaab30c7bb2f6e83236e93",
+          "assetKey": "local_bytes:1a2ef26a8a47dd88e3d122c3abbe8e4030a5ef0efaced2e33889d234945b7908",
+          "eligible": false,
+          "inputHash": "361ff2a713c76581d1c5cb83da328a5f4176198900909539a4135ed7769aafe9"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/d1194852c6cf23ce83a58cfc48044c8906772ee78a789a07da06e007f1be220b.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "A relative of StefanTsingtauer",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E4%B8%9C%E8%8E%B1%E9%93%B6%E8%A1%8C%E6%97%A7%E5%9D%80_2018-02-04.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南东莱银行旧址 2018-02-04.jpg ​济南东莱银行旧址，经三路89号（经三路纬三路路口东北角）",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:00.652Z",
+            "sha256": "d1194852c6cf23ce83a58cfc48044c8906772ee78a789a07da06e007f1be220b",
+            "review": {
+              "identity": "match",
+              "evidence": "照片主体为灰色两层历史建筑，位于街道转角处，红瓦屋顶与拱形窗符合东莱银行旧址特征，背景现代高楼与经三路城市肌理吻合，街景元素（行道树、电线杆、路牌）体现经三路街区风貌",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "街角建筑-日景-冬季",
+              "reason": "照片展示经三路典型历史建筑街景，虽无'经三路'路牌，但建筑特征与东莱银行旧址一致，能代表该街道历史风貌"
+            }
+          },
+          "imageKey": "reviewed:18a9dc799ef3f616dd9be478d28dec6b3b0d9638d9133532bc66a4a596b2121b",
+          "assetKey": "local_bytes:d1194852c6cf23ce83a58cfc48044c8906772ee78a789a07da06e007f1be220b",
+          "eligible": true,
+          "inputHash": "3a8b98f441c52e5b70fa39b3003d47a732bb7b066df298014d7453017be30179"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/392ff62153bcf67fa3bfd5f54a87a99279c2826c40a28acad1674548271b2906.jpg",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Cheng Shi Song",
+                "sourceUrl": "https://www.pexels.com/photo/mother-and-child-on-electric-bike-in-nanjing-29967130/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "A mother and child ride an electric bike at a crosswalk in Nanjing, China during winter.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:09.452Z",
+            "sha256": "392ff62153bcf67fa3bfd5f54a87a99279c2826c40a28acad1674548271b2906",
+            "review": {
+              "identity": "unknown",
+              "evidence": "照片主体为一辆电动车及骑行者背影，未呈现经三路任何标志性建筑、街景或地理特征；证据文字注明拍摄于南京，与标题济南经三路存在冲突，无法证实地点为济南经三路。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "背面平视-日景",
+              "reason": "照片未展示经三路地标或街区特征，无法确认地点；证据文字称南京，与标题济南冲突，属于证据不足。"
+            }
+          },
+          "imageKey": "reviewed:4b36e63f70874ec5bd3f2e7b0a1cd2b5c4924f8acd83fac5fa62b75f8fd5337d",
+          "assetKey": "local_bytes:392ff62153bcf67fa3bfd5f54a87a99279c2826c40a28acad1674548271b2906",
+          "eligible": false,
+          "inputHash": "19e412352edc5d1f7dcb6a36120854751a02bb8bc4716c1e47a714b7ca0cc357"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/0c68599ff041f0a615d1f6a30fec98c18ee9c6ca582dd2013bf4311ae64c15ad.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "BMeyendriesch",
+                "sourceUrl": "https://pixabay.com/photos/river-architecture-water-6858013/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "river, architecture, nature, water, scholen-santiago, st-jean-pied-de-port, pilgerweg",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:22.614Z",
+            "sha256": "0c68599ff041f0a615d1f6a30fec98c18ee9c6ca582dd2013bf4311ae64c15ad",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示的是西班牙/法国边境的古老石拱桥与河畔建筑群（标签含scholen-santiago、st-jean-pied-de-port、pilgerweg等朝圣之路关键词），建筑风格、石拱桥样式、临河布局均为欧洲中世纪小镇特征，与济南经三路城市街区不符。济南经三路位于城区，无此山峦背景与古桥河流场景。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "石拱桥夜景-河面倒映-欧洲古镇",
+              "reason": "图片实际为西班牙圣让皮耶德波尔（Saint-Jean-Pied-de-Port）或朝圣之路沿途场景，标签证据与目标景点济南经三路完全不符，属于明显错配。"
+            }
+          },
+          "imageKey": "reviewed:8268c3cc274a8ed7afcfdf378f3b8ca77fccaa2391919b11d605cbcdaab2e66d",
+          "assetKey": "local_bytes:0c68599ff041f0a615d1f6a30fec98c18ee9c6ca582dd2013bf4311ae64c15ad",
+          "eligible": false,
+          "inputHash": "f6172a705d7f59ec9c2dedcf37fe09251098c2770377824560d46c92de3db814"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/dba303aaa6146fad93b772513c833e3e5d19997cdb46b247b868a5264ef7273d.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "LXFY",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E5%A4%96%E5%9B%BD%E8%AF%AD%E5%AD%A6%E6%A0%A1%E5%8E%9F%E6%9C%AC%E9%83%A8.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南外国语学校原本部.jpg ​济南外国语学校旧校址，建国小经三路1号",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:29.979Z",
+            "sha256": "dba303aaa6146fad93b772513c833e3e5d19997cdb46b247b868a5264ef7273d",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为济南外国语学校建筑及校门（牌匾清晰可见'济南外国语学校'），拍摄地点为建国小经三路1号校址。但输入景点名称为'经三路'（济南一条街巷），照片展示的是学校建筑而非经三路街道本身。学校门牌/证据提及的地址不等于目标景点即街道。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "校门正面-日景",
+              "reason": "目标为'经三路'街道，照片实际为济南外国语学校校址建筑，主体与景点不符"
+            }
+          },
+          "imageKey": "reviewed:033b5c663152739e2c6c3d4ec8cac58a1f145da8be7a2b6aca63b21aad1a1c53",
+          "assetKey": "local_bytes:dba303aaa6146fad93b772513c833e3e5d19997cdb46b247b868a5264ef7273d",
+          "eligible": false,
+          "inputHash": "a17924b3448cce85747475e53212ae38186654de88bad8efd0fc1f2c0aed4683"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/68ea2073c3829847201d7b3f25714bf88ea9f10fd8967a47ce09fc67823b1603.jpg",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "闻 禾",
+                "sourceUrl": "https://www.pexels.com/photo/sunlit-street-in-city-under-clear-sky-19999076/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Aerial perspective of a bustling city street lined with vehicles under a clear sky.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:39.496Z",
+            "sha256": "68ea2073c3829847201d7b3f25714bf88ea9f10fd8967a47ce09fc67823b1603",
+            "review": {
+              "identity": "unknown",
+              "evidence": "照片为俯瞰城市街道视角，可见车流、公交车、行道树及两侧建筑，但无任何济南或经三路的明确地标、路牌、建筑特征可识别。Pexels素材描述仅为'Aerial perspective of a bustling city street'，未标注具体城市，无法确认主体为济南经三路。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "俯瞰全景-日景-街道",
+              "reason": "照片为通用城市街景，无济南经三路可识别特征，证据不足以确认景点身份"
+            }
+          },
+          "imageKey": "reviewed:8c5b9433ab5319b2bfb21b5c53c7846375ddbe1cbefc4f411eff9d701325d957",
+          "assetKey": "local_bytes:68ea2073c3829847201d7b3f25714bf88ea9f10fd8967a47ce09fc67823b1603",
+          "eligible": false,
+          "inputHash": "480cde57defa4d055f680c1821945aa676f1634431d28c98c462c5332cea55cf"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/f85ee52c5ce043af2242a0128f8748c79d91a7c5482c88aca280b4700f83d3b9.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "hpgruesen",
+                "sourceUrl": "https://pixabay.com/photos/aviator-begin-take-off-lift-up-1359867/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "aviator, begin, take off, lift up, amsterdam schiphol airport, control tower, tower, martinair, prior to, terminal, klm, netherlands, flying, plane, start, three-way, jet, aviation, runway, holland, amsterdam, schiphol, take off, take off, take off, take off, take off, control tower, runway, amsterdam, amsterdam, schiphol, schiphol, schiphol, schiphol, schiphol",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:45.181Z",
+            "sha256": "f85ee52c5ce043af2242a0128f8748c79d91a7c5482c88aca280b4700f83d3b9",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为阿姆斯特丹史基浦机场（可见KLM/Martinair飞机、机场控制塔、航站楼），与济南经三路（城市街道）完全不符",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "飞机起飞-机场跑道-日景",
+              "reason": "照片显示荷兰阿姆斯特丹史基浦机场场景，证据与济南经三路无关联"
+            }
+          },
+          "imageKey": "reviewed:e6dd8448512194d467ad908f4c48d3e6dab30cf397e878c09d7bcf7b412f382b",
+          "assetKey": "local_bytes:f85ee52c5ce043af2242a0128f8748c79d91a7c5482c88aca280b4700f83d3b9",
+          "eligible": false,
+          "inputHash": "0c511f63dc50c134edee8e2872f36154ca022677b4df3c75469d85ac11ee2f50"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "经三路",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "Suginami",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E7%BB%8F%E4%B8%89%E8%B7%AF%E8%80%81%E5%95%86%E5%9F%A0.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南经三路老商埠.jpg Jinan Jing-san Road area",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:19:51.042Z",
+            "sha256": "bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+            "review": {
+              "identity": "unknown",
+              "evidence": "照片展示济南老商埠区域夜间街景，可见欧式风格建筑、复古汽车雕塑装置、积雪路面及霓虹灯招牌。建筑风格与济南经三路老商埠区特征相符，但缺乏可明确识别该路段的专属地标或路牌证据。青铜色复古车雕塑可能为该区域装饰装置，但无法确认其位于经三路而非老商埠其他街道（如纬二路、经二路等）。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜间雪景-建筑立面与雕塑装置",
+              "reason": "照片呈现济南老商埠区典型风貌，但缺少经三路专属识别证据（如路牌、标志性建筑），无法确认拍摄地点为经三路。复古汽车雕塑作为装饰装置，可能分布于老商埠多个街角，不足以锁定具体路段。identity=unknown"
+            }
+          },
+          "imageKey": "reviewed:9adac905c49089876327b082469b8fec1546359c45e86e654d9c0e2ee3baa996",
+          "assetKey": "local_bytes:bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+          "eligible": false,
+          "inputHash": "80f0fcdcb68eb843214a7cdb75696347cdd05650f439e688edf3c4752c533e19"
+        }
+      ],
+      "relatedAssetSources": [
+        {
+          "imageKey": "reviewed:7d7f839ae38931907f7c9c44ff4acfd03c2a7df7e3635552c17b72c3a7b7a049",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:04d09c8eaf73c1f97c8d240381333470417b869587eaab30c7bb2f6e83236e93",
+          "assetKey": "local_bytes:1a2ef26a8a47dd88e3d122c3abbe8e4030a5ef0efaced2e33889d234945b7908",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:18a9dc799ef3f616dd9be478d28dec6b3b0d9638d9133532bc66a4a596b2121b",
+          "assetKey": "local_bytes:d1194852c6cf23ce83a58cfc48044c8906772ee78a789a07da06e007f1be220b",
+          "catalogName": "经三路",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:4b36e63f70874ec5bd3f2e7b0a1cd2b5c4924f8acd83fac5fa62b75f8fd5337d",
+          "assetKey": "local_bytes:392ff62153bcf67fa3bfd5f54a87a99279c2826c40a28acad1674548271b2906",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:8268c3cc274a8ed7afcfdf378f3b8ca77fccaa2391919b11d605cbcdaab2e66d",
+          "assetKey": "local_bytes:0c68599ff041f0a615d1f6a30fec98c18ee9c6ca582dd2013bf4311ae64c15ad",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:033b5c663152739e2c6c3d4ec8cac58a1f145da8be7a2b6aca63b21aad1a1c53",
+          "assetKey": "local_bytes:dba303aaa6146fad93b772513c833e3e5d19997cdb46b247b868a5264ef7273d",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:8c5b9433ab5319b2bfb21b5c53c7846375ddbe1cbefc4f411eff9d701325d957",
+          "assetKey": "local_bytes:68ea2073c3829847201d7b3f25714bf88ea9f10fd8967a47ce09fc67823b1603",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:e6dd8448512194d467ad908f4c48d3e6dab30cf397e878c09d7bcf7b412f382b",
+          "assetKey": "local_bytes:f85ee52c5ce043af2242a0128f8748c79d91a7c5482c88aca280b4700f83d3b9",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:9adac905c49089876327b082469b8fec1546359c45e86e654d9c0e2ee3baa996",
+          "assetKey": "local_bytes:bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+          "catalogName": "经三路",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:f115529118c35e01390be7e0aae4396c686f5a7f90e7f640d1f57a563c01fc8b",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "catalogName": "老商埠",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:ecc20ec7b0a7657a9d20b4f24829fb27f4d11f45f41ff09b1863a3d06438b06f",
+          "assetKey": "local_bytes:bd78400d44e0396d94b93237838cc9070ce35c47b1f79e6b6d6ac28fd374b962",
+          "catalogName": "老商埠",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:c399605f91fd11d2febd6b008482936c53a445659ecb9516c09b62b0af723d65",
+          "assetKey": "local_bytes:bd79095e968e011fd221828f3dc8b83d7153132342e95dd121e5b66d7e4cf0bf",
+          "catalogName": "山东博物馆",
+          "eligible": false
+        }
+      ],
+      "assignments": []
+    },
+    {
+      "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+      "name": "经三路爱心红绿灯",
+      "revision": 2,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+        "nameKeys": [
+          "经三路爱心红绿灯"
+        ],
+        "revision": 2,
+        "memberIds": [
+          "ce733b67e45f0d657e53ff9bff8cbbce"
+        ],
+        "memberNames": [
+          "经三路爱心红绿灯"
+        ],
+        "canonicalName": "经三路爱心红绿灯"
+      },
+      "aliases": [
+        "经三路爱心红绿灯"
+      ],
+      "lat": null,
+      "lng": null,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "cfdd34f522dd8e95dd12767fd14e1e85a1377ede973c41cd1feace73f3703514",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [],
+      "relatedAssetSources": [],
+      "assignments": []
+    },
+    {
+      "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+      "name": "纬三路与经三路交叉口",
+      "revision": 1,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+        "nameKeys": [
+          "纬三路与经三路交叉口"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "fef9784ad510099ad3bd150eee3fbf5c"
+        ],
+        "memberNames": [
+          "纬三路与经三路交叉口"
+        ],
+        "canonicalName": "纬三路与经三路交叉口"
+      },
+      "aliases": [
+        "纬三路与经三路交叉口"
+      ],
+      "lat": 36.661722,
+      "lng": 116.993629,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "0617d34cbdc6fcaa75bb03773b03cdb6912f7e17fd6e42691f77f468cf2a2ee9",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [],
+      "relatedAssetSources": [],
+      "assignments": []
+    },
+    {
+      "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "name": "大观园",
+      "revision": 1,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+        "nameKeys": [
+          "大观园"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "910ac4e3fee34da1dd5f4378c7319ba5"
+        ],
+        "memberNames": [
+          "大观园"
+        ],
+        "canonicalName": "大观园"
+      },
+      "aliases": [
+        "大观园"
+      ],
+      "lat": 36.659931,
+      "lng": 116.968157,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "f1e01b631527a73c2336460f41c1757a3d8c44c9753437186887b72014f10e13",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [],
+      "relatedAssetSources": [],
+      "assignments": []
+    }
+  ],
+  "warnings": []
+}

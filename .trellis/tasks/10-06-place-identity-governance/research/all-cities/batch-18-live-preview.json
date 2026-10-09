@@ -1,0 +1,214 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 7,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "765d12cf332a7a8596e6bfae194cc36e",
+          "city": "成都",
+          "canonical_name": "HANDBELL（玉林店）",
+          "primary_place_id": 1824,
+          "aliases": [
+            "HANDBELL",
+            "HANDBELL（玉林店）",
+            "handbell"
+          ],
+          "legacy_ids": [
+            "180022f61ccac0e9a09fc2dc0835aa88",
+            "765d12cf332a7a8596e6bfae194cc36e",
+            "ec50ce1141b9419d030e4931cb4999d5"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 30.623402,
+            "lng": 104.056389,
+            "address": "成都高新区芳华街9号、芳华街9号附1号",
+            "geoStatus": "reviewed_source",
+            "category": "咖啡"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                304
+              ],
+              "conclusion": "两篇原文分别明确handbell P9和HANDBELL P14；刷新后标题正文未变，已逐图核实是同一栋楼同一门面：品牌招牌、左拱窗吧台、右拱门、外墙损纹/线脚/灯具、楼上防盗窗均对应。现有地图同落芳华街，主体1824保存明确POI B0KGOCIJZD及芳华街9号/附1号地址。以独立原图互证归一两条大小写变体，保留玉林分店边界和稳定主ID。",
+              "sourcePlaceIds": [
+                "1824",
+                "1715"
+              ],
+              "mentions": [
+                {
+                  "id": "3722",
+                  "name": "HANDBELL",
+                  "quote": "30💰就能坐一下午",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a65bf1d000000000601287d"
+                },
+                {
+                  "id": "3532",
+                  "name": "handbell",
+                  "quote": "✔️handbell. P9",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/695c6859000000000e03c46a"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "1824",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "原图证明两源为同一实体，保留已有明确POI主源的GCJ-02坐标；不平均坐标，也不从照片自行推算经纬度。",
+              "original": {
+                "lat": 30.623402,
+                "lng": 104.056389,
+                "address": "成都高新区芳华街9号、芳华街9号附1号",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 30.623402,
+              "lng": 104.056389,
+              "address": "成都高新区芳华街9号、芳华街9号附1号",
+              "geoStatus": "reviewed_source",
+              "category": "咖啡"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/chengdu-handbell-image-context.json",
+              "sha256": "d6f12b36dfb1f1b000a398523b1b650cda04604fc26c8e40e8904c346c5ef1a8",
+              "mentionIds": [
+                3532,
+                3722
+              ],
+              "conclusion": "两篇原文分别明确handbell P9和HANDBELL P14；刷新后标题正文未变，已逐图核实是同一栋楼同一门面：品牌招牌、左拱窗吧台、右拱门、外墙损纹/线脚/灯具、楼上防盗窗均对应。现有地图同落芳华街，主体1824保存明确POI B0KGOCIJZD及芳华街9号/附1号地址。以独立原图互证归一两条大小写变体，保留玉林分店边界和稳定主ID。"
+            }
+          ]
+        },
+        {
+          "entity_id": "ec50ce1141b9419d030e4931cb4999d5",
+          "city": "成都",
+          "canonical_name": "handbell",
+          "primary_place_id": 1715,
+          "aliases": [
+            "handbell"
+          ],
+          "legacy_ids": [
+            "ec50ce1141b9419d030e4931cb4999d5"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "765d12cf332a7a8596e6bfae194cc36e",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1715,
+          "entity_id": "765d12cf332a7a8596e6bfae194cc36e"
+        },
+        {
+          "place_id": 1824,
+          "entity_id": "765d12cf332a7a8596e6bfae194cc36e"
+        }
+      ]
+    }
+  ]
+}

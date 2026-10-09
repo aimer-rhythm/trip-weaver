@@ -1,0 +1,418 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 4,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "a5639d4fad4d1cf85dd5241cbedaca1852f50ef22b15908334b42b8a321e1aa3",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "天天过年",
+    "春水锅贴",
+    "草包包子",
+    "超意兴"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11375,
+     "noteId": 2576,
+     "inputHash": "9c5423a46169252ee8b350de4958017c7a662b563737e1851dee3212a42a078c",
+     "textHash": "1cd7204095cd4649bf55c4f95b6113424a00f145fc6bbdcc7803602a5ab737c2",
+     "textLength": 375,
+     "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11384,
+     "noteId": 2548,
+     "inputHash": "e5877028d7fe5d99b3325bef7fd9e449bc4682afc8b1187cbd6b35e02d50b739",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11391,
+     "noteId": 2548,
+     "inputHash": "3aef70fcdbc1a794214d639e6c54170eb9dc4e887f71613d4c4e26da95b1d439",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11477,
+     "noteId": 2560,
+     "inputHash": "28b41d6039b92b532cd7834242e14aba6fa23d5ccc4c824ae05101e64a4d8e08",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11480,
+     "noteId": 2560,
+     "inputHash": "db55e8010a39607f4abe8b29c6ed8da8d8c26a98febacda5352e722e3c1bc3af",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11524,
+     "noteId": 2563,
+     "inputHash": "46cb8278fd30d1d3e75ce136d972ee681f99d0c88d6fb7166e2e5cd65cbeaf68",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11526,
+     "noteId": 2563,
+     "inputHash": "16d1a513c47ccf9937e6eed20fb5ea534f2c1b4b72f95e770313a5f73113e4a9",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12737,
+     "noteId": 2560,
+     "inputHash": "c238a48bf7a597d9d6856b22b0012c2d92177674b147bbfa8a4a7a608827d488",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12740,
+     "noteId": 2560,
+     "inputHash": "3f080cb2826578c0ee29b96822c1129ad7a978fed78613449e651a4383993dff",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12806,
+     "noteId": 2811,
+     "inputHash": "fa7039b322f891bbb7fc8d6caa1fa30d47a6cd336fc624c08c2f77b1f00462a8",
+     "textHash": "bef4db58db8ae1cb68809c1f8a5cd13f4fbc5463367139e66dd75d11468ae5c6",
+     "textLength": 1031,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "25c9903816f03d4aed350c11c1e44b24",
+     "revision": 2,
+     "canonicalName": "超意兴",
+     "aliases": [
+      "超意兴"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+     "revision": 2,
+     "canonicalName": "春水锅贴",
+     "aliases": [
+      "春水锅贴"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "3f6a2dce847940205f501690e2548e88",
+     "revision": 2,
+     "canonicalName": "草包包子",
+     "aliases": [
+      "草包包子"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+     "revision": 3,
+     "canonicalName": "天天过年",
+     "aliases": [
+      "天天过年"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "b8880b34d9a4e56942c76ea7a4e5555c",
+   "name": "天天过年",
+   "category": "美食",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "济南西周边",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "20年老店，本地人推荐，菜品美味分量足"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "茶香排骨炸到干脆，里面嫩嫩的。炖公鸡超大一份，肉香嫩配饼子绝了。",
+     "highlights": [
+      {
+       "text": "茶香排骨炸到干脆，里面嫩嫩的",
+       "quote": "茶香排骨炸到干脆，咬下去里面还是嫩嫩的",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69df761a000000001a0339c4?xsec_token=ABMrvwKSqn2yqB283A-DXodBWI6rFTfwm3dvwvzzNMl4A=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:18:45.105402+00:00"
+      },
+      {
+       "text": "炖公鸡超大一份，肉香嫩配饼子绝了",
+       "quote": "上桌超大一份量很足，肉贼香嫩，配饼子绝了",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69df761a000000001a0339c4?xsec_token=ABMrvwKSqn2yqB283A-DXodBWI6rFTfwm3dvwvzzNMl4A=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:18:45.105402+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T22:15:35.816323+00:00"
+    },
+    "originalName": "天天过年",
+    "openHours": {
+     "version": 2,
+     "subject": "天天过年",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11375,
+      "noteId": 2576,
+      "inputHash": "9c5423a46169252ee8b350de4958017c7a662b563737e1851dee3212a42a078c"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+     "canonicalName": "天天过年",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "天天过年"
+     ],
+     "memberIds": [
+      "b8880b34d9a4e56942c76ea7a4e5555c"
+     ]
+    },
+    "aliases": [
+     "天天过年"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "20年老店，本地人推荐，菜品美味分量足",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69df761a000000001a0339c4?xsec_token=ABMrvwKSqn2yqB283A-DXodBWI6rFTfwm3dvwvzzNMl4A=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "25c9903816f03d4aed350c11c1e44b24",
+   "name": "超意兴",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "25c9903816f03d4aed350c11c1e44b24",
+     "canonicalName": "超意兴",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "超意兴"
+     ],
+     "memberIds": [
+      "25c9903816f03d4aed350c11c1e44b24"
+     ]
+    },
+    "aliases": [
+     "超意兴"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "unavailable_source",
+     "candidateIds": []
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "25c9903816f03d4aed350c11c1e44b24",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  },
+  {
+   "id": "3a06f30f2d9d492d8892d793a839bdb8",
+   "name": "春水锅贴",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+     "canonicalName": "春水锅贴",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "春水锅贴"
+     ],
+     "memberIds": [
+      "3a06f30f2d9d492d8892d793a839bdb8"
+     ]
+    },
+    "aliases": [
+     "春水锅贴"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "unavailable_source",
+     "candidateIds": []
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  },
+  {
+   "id": "3f6a2dce847940205f501690e2548e88",
+   "name": "草包包子",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "3f6a2dce847940205f501690e2548e88",
+     "canonicalName": "草包包子",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "草包包子"
+     ],
+     "memberIds": [
+      "3f6a2dce847940205f501690e2548e88"
+     ]
+    },
+    "aliases": [
+     "草包包子"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "unavailable_source",
+     "candidateIds": []
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "3f6a2dce847940205f501690e2548e88",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  }
+ ]
+}

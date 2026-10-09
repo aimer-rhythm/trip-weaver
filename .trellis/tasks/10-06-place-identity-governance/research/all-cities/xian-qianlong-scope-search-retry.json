@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "0b9bc854542b",
+  "query": "少华山 潜龙寺景区 潜龙寺 寺院 五大景区 官方",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先检索少华山潜龙寺景区的官方介绍、寺院信息和五大景区划分。",
+  "sources": [
+    {
+      "url": "https://www.sxtourgroup.com/home/guanzhonglishiwenhua/info/id/2596/catId/242.html",
+      "provider": "tavily",
+      "title": "少华山",
+      "description": "由红崖湖景区、石门峡景区、密林谷景区、潜龙寺景区、少华峰景区这五大景区组成。景区内有峻秀的山峰，茂密的森林，神奇的巨石，跌宕的流水，多姿的"
+    },
+    {
+      "url": "https://sn.cri.cn/n/20190313/ea802a15-c21f-18e8-509e-39fe25d3c40e.html",
+      "provider": "tavily",
+      "title": "少华山：山水仙境美如画名刹古寺藏神韵 - 陕西",
+      "description": "少华山由红崖湖、石门峡、密林谷、潜龙寺、少华峰五大景区组成。 是陕西东部最大的山水观光、生态休闲旅游风景区。"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E6%BD%9C%E9%BE%99%E5%AF%BA%E6%99%AF%E5%8C%BA/6663579",
+      "provider": "tavily",
+      "title": "潜龙寺景区",
+      "description": "潜龙寺景区位于陕西省渭南市华州区东南少华山国家森林公园内,地处莲花寺镇迷糊峪,属该公园东部景区。 是中国最早的佛教寺院之一3 。 明成化四年(1468年)至清咸"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.sxtourgroup.com/home/guanzhonglishiwenhua/info/id/2596/catId/242.html",
+      "provider": "tavily",
+      "title": "少华山",
+      "description": "由红崖湖景区、石门峡景区、密林谷景区、潜龙寺景区、少华峰景区这五大景区组成。景区内有峻秀的山峰，茂密的森林，神奇的巨石，跌宕的流水，多姿的"
+    },
+    {
+      "url": "https://sn.cri.cn/n/20190313/ea802a15-c21f-18e8-509e-39fe25d3c40e.html",
+      "provider": "tavily",
+      "title": "少华山：山水仙境美如画名刹古寺藏神韵 - 陕西",
+      "description": "少华山由红崖湖、石门峡、密林谷、潜龙寺、少华峰五大景区组成。 是陕西东部最大的山水观光、生态休闲旅游风景区。"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E6%BD%9C%E9%BE%99%E5%AF%BA%E6%99%AF%E5%8C%BA/6663579",
+      "provider": "tavily",
+      "title": "潜龙寺景区",
+      "description": "潜龙寺景区位于陕西省渭南市华州区东南少华山国家森林公园内,地处莲花寺镇迷糊峪,属该公园东部景区。 是中国最早的佛教寺院之一3 。 明成化四年(1468年)至清咸"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 2747.07,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 6901.81,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 6901.83
+}

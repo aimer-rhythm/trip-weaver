@@ -1,0 +1,66 @@
+{
+  "verifiedAt": "2026-10-06T23:27:49.679Z",
+  "batch": "batch-23",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "西安",
+      "exported": 397,
+      "total": 415,
+      "active": 397,
+      "embedded": 397,
+      "probes": [
+        {
+          "name": "潜龙寺",
+          "id": "4a4505a1baed0f14c8a4fe6386bc5798"
+        },
+        {
+          "name": "潜龙寺景区",
+          "id": "cac7b5d4f244dad808626ba1590c38f2"
+        },
+        {
+          "name": "开元商城6楼观景平台",
+          "id": "202788eb4f60cff0ca71ae79e5709fa1"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "潜龙寺",
+          "id": "4a4505a1baed0f14c8a4fe6386bc5798",
+          "diagnostics": {
+            "keywordHits": 2,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "潜龙寺景区",
+          "id": "cac7b5d4f244dad808626ba1590c38f2",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "开元商城6楼观景平台",
+          "id": "202788eb4f60cff0ca71ae79e5709fa1",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "7737934d-757b-4ce0-afc7-66c63d1e456f"
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,692 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 6,
+ "activeCount": 6,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "cd60f1f1471299c43e0a1c1cb26df90fbda15d9830028cc2857f5ca41400854e",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "邻家羊肉面饸饹面",
+    "李山记铁板炒鸡",
+    "乐乎哉刘家菜",
+    "杨氏泉水茶汤",
+    "凉皮嫂子",
+    "新秀炸鸡"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11354,
+     "noteId": 2585,
+     "inputHash": "df8abd6ebe85a4c0afa46c438c2cddd4212b6b6f5b3f0352d3badd7a14fbd4f2",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "3290af7793dea0fd22138e561900775f",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11358,
+     "noteId": 2585,
+     "inputHash": "c75215dfe9dda43b788626e77b0e2afc5334558acb7083075dd046862b33da7e",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11359,
+     "noteId": 2585,
+     "inputHash": "1a0340a5ccb8ee35e6929f53b62afb13e04bea62a731823e1f18bb49a25ae21e",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "6580c2664a98b2aef1203dc3459157e6",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11360,
+     "noteId": 2585,
+     "inputHash": "e43b63d1c5a591386d5e7307a63b43aad36b98992a626deabafe515c783e8335",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "ec447b923b04fcefb80f15c27392e452",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11363,
+     "noteId": 2585,
+     "inputHash": "9aa1e766c682a7aef193e7fbcbfe9b77ffaf23097e1b01c4cc3d73e216e3844b",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "2f5f0095f24c189ebf61109638172394",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11366,
+     "noteId": 2585,
+     "inputHash": "d7e131bd0d79a948a7a6e1cf6d1c839bc2f08cd7677c49eed18b267a577e6c02",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12595,
+     "noteId": 2585,
+     "inputHash": "daefdcc44a69bfc20eeaf0836ae217050c771b619faa571a0f286913296bdb68",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "3290af7793dea0fd22138e561900775f",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12599,
+     "noteId": 2585,
+     "inputHash": "edf3b1ca277ac6c09bf60f89f3e7271d9aa991eba812c4a3f433f8e13efde1d1",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12600,
+     "noteId": 2585,
+     "inputHash": "c6d784038cf4f37dca85e03a7f659d6849195f749fa44bd805047dbb2a69fe73",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "6580c2664a98b2aef1203dc3459157e6",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12601,
+     "noteId": 2585,
+     "inputHash": "dfdeb79b92ed4fd44cccac8174fb0a9f40d01bbe9c86bb863e68799fe0afcaa1",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "ec447b923b04fcefb80f15c27392e452",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12604,
+     "noteId": 2585,
+     "inputHash": "346b6d6a967cf13c3a50771a9db8fc506b39a97c7f7f3f0d0f4f4f0d0672ea58",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "2f5f0095f24c189ebf61109638172394",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12607,
+     "noteId": 2585,
+     "inputHash": "2631f824f191a81f3ded37ba7fc609d418e166b655fed535bd1fa2f90ca199eb",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "2f5f0095f24c189ebf61109638172394",
+     "revision": 1,
+     "canonicalName": "邻家羊肉面饸饹面",
+     "aliases": [
+      "邻家羊肉面饸饹面"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "3290af7793dea0fd22138e561900775f",
+     "revision": 1,
+     "canonicalName": "李山记铁板炒鸡",
+     "aliases": [
+      "李山记铁板炒鸡"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "6580c2664a98b2aef1203dc3459157e6",
+     "revision": 1,
+     "canonicalName": "乐乎哉刘家菜",
+     "aliases": [
+      "乐乎哉刘家菜"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+     "revision": 1,
+     "canonicalName": "新秀炸鸡",
+     "aliases": [
+      "新秀炸鸡"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "ec447b923b04fcefb80f15c27392e452",
+     "revision": 1,
+     "canonicalName": "凉皮嫂子",
+     "aliases": [
+      "凉皮嫂子"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+     "revision": 1,
+     "canonicalName": "杨氏泉水茶汤",
+     "aliases": [
+      "杨氏泉水茶汤"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "3290af7793dea0fd22138e561900775f",
+   "name": "李山记铁板炒鸡",
+   "category": "美食",
+   "lng": 116.525997,
+   "lat": 36.278642,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:14:49.546928+00:00"
+    },
+    "originalName": "李山记铁板炒鸡",
+    "openHours": {
+     "version": 2,
+     "subject": "李山记铁板炒鸡",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "3290af7793dea0fd22138e561900775f",
+     "canonicalName": "李山记铁板炒鸡",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "李山记铁板炒鸡"
+     ],
+     "memberIds": [
+      "3290af7793dea0fd22138e561900775f"
+     ]
+    },
+    "aliases": [
+     "李山记铁板炒鸡"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "d3f593e4d3857459ee857a488a57fc7a",
+   "name": "新秀炸鸡",
+   "category": "美食",
+   "lng": 117.231944,
+   "lat": 36.692904,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:14:49.546928+00:00"
+    },
+    "originalName": "新秀炸鸡",
+    "openHours": {
+     "version": 2,
+     "subject": "新秀炸鸡",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+     "canonicalName": "新秀炸鸡",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "新秀炸鸡"
+     ],
+     "memberIds": [
+      "d3f593e4d3857459ee857a488a57fc7a"
+     ]
+    },
+    "aliases": [
+     "新秀炸鸡"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "6580c2664a98b2aef1203dc3459157e6",
+   "name": "乐乎哉刘家菜",
+   "category": "美食",
+   "lng": 117.14576,
+   "lat": 36.65818,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:14:49.546928+00:00"
+    },
+    "originalName": "乐乎哉刘家菜",
+    "openHours": {
+     "version": 2,
+     "subject": "乐乎哉刘家菜",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "6580c2664a98b2aef1203dc3459157e6",
+     "canonicalName": "乐乎哉刘家菜",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "乐乎哉刘家菜"
+     ],
+     "memberIds": [
+      "6580c2664a98b2aef1203dc3459157e6"
+     ]
+    },
+    "aliases": [
+     "乐乎哉刘家菜"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "ec447b923b04fcefb80f15c27392e452",
+   "name": "凉皮嫂子",
+   "category": "美食",
+   "lng": 116.956666,
+   "lat": 36.644315,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:14:49.546928+00:00"
+    },
+    "originalName": "凉皮嫂子",
+    "openHours": {
+     "version": 2,
+     "subject": "凉皮嫂子",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "ec447b923b04fcefb80f15c27392e452",
+     "canonicalName": "凉皮嫂子",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "凉皮嫂子"
+     ],
+     "memberIds": [
+      "ec447b923b04fcefb80f15c27392e452"
+     ]
+    },
+    "aliases": [
+     "凉皮嫂子"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "2f5f0095f24c189ebf61109638172394",
+   "name": "邻家羊肉面饸饹面",
+   "category": "美食",
+   "lng": 116.958842,
+   "lat": 36.356934,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:14:49.546928+00:00"
+    },
+    "originalName": "邻家羊肉面饸饹面",
+    "openHours": {
+     "version": 2,
+     "subject": "邻家羊肉面饸饹面",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "2f5f0095f24c189ebf61109638172394",
+     "canonicalName": "邻家羊肉面饸饹面",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "邻家羊肉面饸饹面"
+     ],
+     "memberIds": [
+      "2f5f0095f24c189ebf61109638172394"
+     ]
+    },
+    "aliases": [
+     "邻家羊肉面饸饹面"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "f97da2f352fa1dd39ff4ce17f29d700d",
+   "name": "杨氏泉水茶汤",
+   "category": "美食",
+   "lng": 116.959012,
+   "lat": 36.62757,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:14:49.546928+00:00"
+    },
+    "originalName": "杨氏泉水茶汤",
+    "openHours": {
+     "version": 2,
+     "subject": "杨氏泉水茶汤",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+     "canonicalName": "杨氏泉水茶汤",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "杨氏泉水茶汤"
+     ],
+     "memberIds": [
+      "f97da2f352fa1dd39ff4ce17f29d700d"
+     ]
+    },
+    "aliases": [
+     "杨氏泉水茶汤"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

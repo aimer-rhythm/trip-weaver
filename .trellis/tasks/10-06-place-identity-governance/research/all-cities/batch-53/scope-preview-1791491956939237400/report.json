@@ -1,0 +1,40 @@
+{
+  "batch": 53,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 6,
+  "notes": 6,
+  "confirmed": 3,
+  "pendingAdded": 3,
+  "historicalReviewPreserved": true,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "name": "鑫龙火锅（北园大街店）",
+      "mentions": 1,
+      "category": "美食",
+      "type": "food",
+      "locationPreservedNotNewlyVerified": true
+    },
+    {
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "name": "七九刘家烧烤(纬九路店)",
+      "mentions": 2,
+      "category": "美食",
+      "type": "food",
+      "locationPreservedNotNewlyVerified": true
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "0f7ff85fbba8033fdedce09e5ccfb9cd8e08837c9f31525fef76f3c136532b43"
+}

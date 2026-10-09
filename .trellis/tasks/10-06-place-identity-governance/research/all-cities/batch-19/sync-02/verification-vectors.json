@@ -1,0 +1,89 @@
+{
+  "verifiedAt": "2026-10-06T19:10:28.333Z",
+  "batch": "batch-19",
+  "attempt": "sync-02",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "西安",
+      "exported": 397,
+      "total": 415,
+      "active": 397,
+      "embedded": 397,
+      "probes": [
+        {
+          "name": "老金家蛋菜夹馍（洒金桥店）",
+          "id": "2f7513af7303c3259c6de17b8645d8be"
+        },
+        {
+          "name": "老金家蛋菜夹馍",
+          "id": "2f7513af7303c3259c6de17b8645d8be"
+        },
+        {
+          "name": "老金蛋菜夹馍",
+          "id": "2f7513af7303c3259c6de17b8645d8be"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "老金家蛋菜夹馍",
+          "id": "2f7513af7303c3259c6de17b8645d8be",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "fad61c8b-ad29-465e-832b-a68e1b2c37ef"
+      ]
+    },
+    {
+      "city": "杭州",
+      "exported": 646,
+      "total": 670,
+      "active": 647,
+      "embedded": 647,
+      "probes": [
+        {
+          "name": "泮春芳煎饺",
+          "id": "691f80ff32adeb2f607382ddcfc8fe04"
+        },
+        {
+          "name": "泮芳春煎饺",
+          "id": "8c3420c51d088f391802af3b7bef3357"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "泮春芳煎饺",
+          "id": "691f80ff32adeb2f607382ddcfc8fe04",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "泮芳春煎饺",
+          "id": "8c3420c51d088f391802af3b7bef3357",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 80,
+      "audits": [
+        "ba6a9ce8-96a4-42dd-8cb0-5ca5d7d62abe"
+      ]
+    }
+  ],
+  "failures": []
+}

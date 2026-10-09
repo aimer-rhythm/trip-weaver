@@ -1,0 +1,495 @@
+{
+  "generatedAt": "2026-10-06T04:53:45.997Z",
+  "readOnly": true,
+  "city": "济南",
+  "export": {
+    "generatedAt": "2026-10-04",
+    "count": 180,
+    "targets": [
+      {
+        "id": "550d6810857b4487aae8ce39c9ee093b",
+        "name": "大明湖",
+        "category": "娱乐",
+        "source": "xhs",
+        "lat": 36.677524,
+        "lng": 117.031652,
+        "aliases": [],
+        "identity": {
+          "version": 1,
+          "canonicalName": "大明湖",
+          "memberNames": [
+            "大明湖"
+          ],
+          "kind": "same_entity"
+        },
+        "redirect": null,
+        "address": "大明湖路271号大明湖风景名胜区"
+      },
+      {
+        "id": "46bf462d545dc6435d6de296ba099d0f",
+        "name": "老商埠",
+        "category": "文化",
+        "source": "xhs",
+        "lat": 36.662082,
+        "lng": 116.992757,
+        "aliases": [],
+        "identity": {
+          "version": 1,
+          "canonicalName": "老商埠",
+          "memberNames": [
+            "老商埠"
+          ],
+          "kind": "same_entity"
+        },
+        "redirect": null,
+        "address": "山东省济南市市中区大观园街道经四路333号"
+      },
+      {
+        "id": "4dd3530aa4bb1a615b12f5b19efef8e8",
+        "name": "经三路老商埠",
+        "category": "美食",
+        "source": "xhs",
+        "lat": 36.974469,
+        "lng": 117.205681,
+        "aliases": [],
+        "identity": {
+          "version": 1,
+          "canonicalName": "经三路老商埠",
+          "memberNames": [
+            "经三路老商埠"
+          ],
+          "kind": "same_entity"
+        },
+        "redirect": null,
+        "address": "山东省济南市济阳区济阳街道经三路"
+      }
+    ]
+  },
+  "normalizedKeys": [
+    {
+      "name": "大明湖",
+      "key": "大明湖"
+    },
+    {
+      "name": "大明湖景区",
+      "key": "大明湖"
+    },
+    {
+      "name": "经三路老商埠",
+      "key": "经三路老商埠"
+    },
+    {
+      "name": "老商埠",
+      "key": "老商埠"
+    }
+  ],
+  "upstream": [
+    {
+      "id": "5348",
+      "city": "济南",
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "latitude": 36.67752439711543,
+      "longitude": 117.03165220153181,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": "大明湖路271号大明湖风景名胜区"
+    },
+    {
+      "id": "5968",
+      "city": "济南",
+      "name": "大明湖公园",
+      "normalized_name": "大明湖公园",
+      "place_type": "attraction",
+      "latitude": 36.67406050523545,
+      "longitude": 117.03468380261435,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": "大明湖路271号大明湖风景名胜区"
+    },
+    {
+      "id": "5953",
+      "city": "济南",
+      "name": "大明湖景区",
+      "normalized_name": "大明湖景区",
+      "place_type": "attraction",
+      "latitude": 36.676092446523626,
+      "longitude": 117.03493702134887,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": ""
+    },
+    {
+      "id": "5365",
+      "city": "济南",
+      "name": "大明湖超然楼",
+      "normalized_name": "大明湖超然楼",
+      "place_type": "attraction",
+      "latitude": 36.67161882672144,
+      "longitude": 117.01709115183189,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": ""
+    },
+    {
+      "id": "5496",
+      "city": "济南",
+      "name": "大明湖附近鲁菜烤鸭店",
+      "normalized_name": "大明湖附近鲁菜烤鸭店",
+      "place_type": "food",
+      "latitude": 36.67161882672144,
+      "longitude": 117.01709115183189,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": ""
+    },
+    {
+      "id": "5380",
+      "city": "济南",
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "attraction",
+      "latitude": 36.974469274712526,
+      "longitude": 117.20568128188651,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": "山东省济南市济阳区济阳街道经三路"
+    },
+    {
+      "id": "5371",
+      "city": "济南",
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "attraction",
+      "latitude": 36.66208187078392,
+      "longitude": 116.99275735987153,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": "山东省济南市市中区大观园街道经四路333号"
+    },
+    {
+      "id": "5962",
+      "city": "济南",
+      "name": "老商埠经三路",
+      "normalized_name": "老商埠经三路",
+      "place_type": "photo_spot",
+      "latitude": 36.66088126072875,
+      "longitude": 116.98311508230685,
+      "amap_poi_id": "",
+      "is_active": true,
+      "address": ""
+    }
+  ],
+  "downstream": {
+    "total": 180,
+    "active": 180,
+    "targets": [
+      {
+        "id": "550d6810857b4487aae8ce39c9ee093b",
+        "name": "大明湖",
+        "category": "娱乐",
+        "source": "xhs",
+        "lat": 36.677524,
+        "lng": 117.031652,
+        "aliases": [],
+        "identity": {
+          "kind": "same_entity",
+          "version": 1,
+          "memberNames": [
+            "大明湖"
+          ],
+          "canonicalName": "大明湖"
+        },
+        "redirect": null,
+        "address": "大明湖路271号大明湖风景名胜区"
+      },
+      {
+        "id": "4dd3530aa4bb1a615b12f5b19efef8e8",
+        "name": "经三路老商埠",
+        "category": "美食",
+        "source": "xhs",
+        "lat": 36.974469,
+        "lng": 117.205681,
+        "aliases": [],
+        "identity": {
+          "kind": "same_entity",
+          "version": 1,
+          "memberNames": [
+            "经三路老商埠"
+          ],
+          "canonicalName": "经三路老商埠"
+        },
+        "redirect": null,
+        "address": "山东省济南市济阳区济阳街道经三路"
+      },
+      {
+        "id": "46bf462d545dc6435d6de296ba099d0f",
+        "name": "老商埠",
+        "category": "文化",
+        "source": "xhs",
+        "lat": 36.662082,
+        "lng": 116.992757,
+        "aliases": [],
+        "identity": {
+          "kind": "same_entity",
+          "version": 1,
+          "memberNames": [
+            "老商埠"
+          ],
+          "canonicalName": "老商埠"
+        },
+        "redirect": null,
+        "address": "山东省济南市市中区大观园街道经四路333号"
+      }
+    ],
+    "related": [
+      {
+        "id": "ef9937ce2185cc51d0870a6c8ce9feaa",
+        "name": "大明湖超然楼",
+        "category": "文化",
+        "source": "xhs",
+        "lat": 36.671619,
+        "lng": 117.017091,
+        "aliases": [],
+        "identity": {
+          "kind": "same_entity",
+          "version": 1,
+          "memberNames": [
+            "大明湖超然楼"
+          ],
+          "canonicalName": "大明湖超然楼"
+        },
+        "redirect": null,
+        "address": ""
+      },
+      {
+        "id": "c222bd2cd901a9370b4407c3cc50c22c",
+        "name": "大明湖附近鲁菜烤鸭店",
+        "category": "美食",
+        "source": "xhs",
+        "lat": 36.671619,
+        "lng": 117.017091,
+        "aliases": [],
+        "identity": {
+          "kind": "same_entity",
+          "version": 1,
+          "memberNames": [
+            "大明湖附近鲁菜烤鸭店"
+          ],
+          "canonicalName": "大明湖附近鲁菜烤鸭店"
+        },
+        "redirect": null,
+        "address": ""
+      }
+    ]
+  },
+  "keywordProbes": [
+    {
+      "query": "大明湖",
+      "results": [
+        {
+          "id": "550d6810857b4487aae8ce39c9ee093b",
+          "name": "大明湖",
+          "category": "娱乐"
+        },
+        {
+          "id": "ef9937ce2185cc51d0870a6c8ce9feaa",
+          "name": "大明湖超然楼",
+          "category": "文化"
+        },
+        {
+          "id": "c222bd2cd901a9370b4407c3cc50c22c",
+          "name": "大明湖附近鲁菜烤鸭店",
+          "category": "美食"
+        }
+      ]
+    },
+    {
+      "query": "大明湖景区",
+      "results": []
+    },
+    {
+      "query": "经三路老商埠",
+      "results": [
+        {
+          "id": "4dd3530aa4bb1a615b12f5b19efef8e8",
+          "name": "经三路老商埠",
+          "category": "美食"
+        }
+      ]
+    },
+    {
+      "query": "老商埠",
+      "results": [
+        {
+          "id": "46bf462d545dc6435d6de296ba099d0f",
+          "name": "老商埠",
+          "category": "文化"
+        }
+      ]
+    }
+  ],
+  "shangbuStoredDistanceKm": 39.6,
+  "retrievalProbe": [
+    {
+      "names": [
+        "大明湖",
+        "大明湖景区"
+      ],
+      "together": [
+        {
+          "id": "550d6810857b4487aae8ce39c9ee093b",
+          "name": "大明湖",
+          "ids": [
+            "550d6810857b4487aae8ce39c9ee093b"
+          ],
+          "aliases": [
+            "大明湖"
+          ]
+        }
+      ],
+      "separately": [
+        {
+          "id": "550d6810857b4487aae8ce39c9ee093b",
+          "name": "大明湖",
+          "aliases": [
+            "大明湖"
+          ]
+        }
+      ]
+    },
+    {
+      "names": [
+        "经三路老商埠",
+        "老商埠"
+      ],
+      "together": [
+        {
+          "id": "46bf462d545dc6435d6de296ba099d0f",
+          "name": "老商埠",
+          "ids": [
+            "46bf462d545dc6435d6de296ba099d0f"
+          ],
+          "aliases": [
+            "老商埠"
+          ]
+        },
+        {
+          "id": "4dd3530aa4bb1a615b12f5b19efef8e8",
+          "name": "经三路老商埠",
+          "ids": [
+            "4dd3530aa4bb1a615b12f5b19efef8e8"
+          ],
+          "aliases": [
+            "经三路老商埠"
+          ]
+        }
+      ],
+      "separately": [
+        {
+          "id": "4dd3530aa4bb1a615b12f5b19efef8e8",
+          "name": "经三路老商埠",
+          "aliases": [
+            "经三路老商埠"
+          ]
+        },
+        {
+          "id": "46bf462d545dc6435d6de296ba099d0f",
+          "name": "老商埠",
+          "aliases": [
+            "老商埠"
+          ]
+        }
+      ]
+    }
+  ],
+  "sameTextKeyGroups": [
+    {
+      "key": "五龙潭",
+      "members": [
+        {
+          "id": "f65621879204866b17b645554f9848db",
+          "name": "五龙潭",
+          "category": "美食",
+          "source": "xhs",
+          "lat": 36.665312,
+          "lng": 117.014524,
+          "aliases": [],
+          "identity": {
+            "kind": "same_entity",
+            "version": 1,
+            "memberNames": [
+              "五龙潭"
+            ],
+            "canonicalName": "五龙潭"
+          },
+          "redirect": null,
+          "address": "山东省济南市天桥区制锦市街道芙蓉街38号"
+        },
+        {
+          "id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "name": "五龙潭公园",
+          "category": "自然",
+          "source": "xhs",
+          "lat": 36.666543,
+          "lng": 117.014694,
+          "aliases": [],
+          "identity": {
+            "kind": "same_entity",
+            "version": 1,
+            "memberNames": [
+              "五龙潭公园"
+            ],
+            "canonicalName": "五龙潭公园"
+          },
+          "redirect": null,
+          "address": "山东省济南市天桥区制锦市街道筐市街18号"
+        }
+      ]
+    },
+    {
+      "key": "趵突泉",
+      "members": [
+        {
+          "id": "8808e16f1472d0df17bed729a2e54e83",
+          "name": "趵突泉",
+          "category": "娱乐",
+          "source": "xhs",
+          "lat": 36.664356,
+          "lng": 117.010803,
+          "aliases": [],
+          "identity": {
+            "kind": "same_entity",
+            "version": 1,
+            "memberNames": [
+              "趵突泉"
+            ],
+            "canonicalName": "趵突泉"
+          },
+          "redirect": null,
+          "address": "普利街29号"
+        },
+        {
+          "id": "d14cc0c8a631defad91e60d475b7aedd",
+          "name": "趵突泉公园",
+          "category": "自然",
+          "source": "xhs",
+          "lat": 36.661532,
+          "lng": 117.015635,
+          "aliases": [],
+          "identity": {
+            "kind": "same_entity",
+            "version": 1,
+            "memberNames": [
+              "趵突泉公园"
+            ],
+            "canonicalName": "趵突泉公园"
+          },
+          "redirect": null,
+          "address": "山东省济南市历下区趵突泉街道趵突泉南路1号"
+        }
+      ]
+    }
+  ]
+}

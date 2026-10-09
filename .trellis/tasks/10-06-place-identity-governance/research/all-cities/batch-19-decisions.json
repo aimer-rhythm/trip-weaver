@@ -1,0 +1,231 @@
+[
+  {
+    "key": "all-cities-20261006-batch-19-001",
+    "city": "西安",
+    "entityId": "2f7513af7303c3259c6de17b8645d8be",
+    "mergeEntityIds": [
+      "6e42343ceaf8fb77aa8cc2f767262165"
+    ],
+    "canonicalName": "老金家蛋菜夹馍（洒金桥店）",
+    "expectedRevisions": {
+      "2f7513af7303c3259c6de17b8645d8be": 1,
+      "6e42343ceaf8fb77aa8cc2f767262165": 1
+    },
+    "overrides": {
+      "lat": 34.263413,
+      "lng": 108.932652,
+      "address": "西安市莲湖区洒金桥5号",
+      "geoStatus": "reviewed_source",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          429
+        ],
+        "conclusion": "2744 P4原图明确写老金家、洒金桥5号，且拍到实体招牌，补足原来缺的门牌证据。2748正文和P3表格均指洒金桥老金家蛋菜夹馍，主源5915地址亦为洒金桥5号。确认这两条是同店，归一到稳定主ID，保留原名与旧ID。",
+        "sourcePlaceIds": [
+          "5915",
+          "5869"
+        ],
+        "mentions": [
+          {
+            "id": "12398",
+            "name": "老金家蛋菜夹馍",
+            "quote": "吃不腻的小店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69df7e9000000000220259d6"
+          },
+          {
+            "id": "12279",
+            "name": "老金蛋菜夹馍",
+            "quote": "位置和口味附在图片文字了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c88d4000000001a020747"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5915",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "保留洒金桥5号主源GCJ-02坐标；原图与该地址互证，旧省略名南郊点不参与平均。",
+        "original": {
+          "lat": 34.263413,
+          "lng": 108.932652,
+          "address": "洒金桥5",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 34.263413,
+        "lng": 108.932652,
+        "address": "西安市莲湖区洒金桥5号",
+        "geoStatus": "reviewed_source",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-19-image-context.json",
+        "sha256": "169481182efad6e55c09d8ea4ade200083cc96ad0179738989849e249b991485",
+        "mentionIds": [
+          12279,
+          12398
+        ],
+        "conclusion": "2744 P4原图明确写老金家、洒金桥5号，且拍到实体招牌，补足原来缺的门牌证据。2748正文和P3表格均指洒金桥老金家蛋菜夹馍，主源5915地址亦为洒金桥5号。确认这两条是同店，归一到稳定主ID，保留原名与旧ID。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-19-002",
+    "city": "杭州",
+    "entityId": "691f80ff32adeb2f607382ddcfc8fe04",
+    "mergeEntityIds": [],
+    "canonicalName": "泮春芳煎饺",
+    "expectedRevisions": {
+      "691f80ff32adeb2f607382ddcfc8fe04": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "杭州市泮芳春煎饺，原抽取名有字序错误，具体分店待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "2029 P2证实正文泮春芳是泮芳春的字序错误，但未指具体分店；旧点经度120.607028远离原文杭州主城美食路线，且无地址或POI互证。撤销错误精确点，保持稳定ID及待审边界，不擅给另一分店坐标或永久冲突别名。",
+        "sourcePlaceIds": [
+          "4074"
+        ],
+        "mentions": [
+          {
+            "id": "8413",
+            "name": "泮春芳煎饺",
+            "quote": "皮薄肉嫩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69171485000000000d00c63e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4074",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "无地址错字记录的远端点未获原图支持，成对清空。",
+        "original": {
+          "lat": 30.330777,
+          "lng": 120.607028,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "杭州市泮芳春煎饺，原抽取名有字序错误，具体分店待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-19-image-context.json",
+        "sha256": "169481182efad6e55c09d8ea4ade200083cc96ad0179738989849e249b991485",
+        "mentionIds": [
+          8413
+        ],
+        "conclusion": "2029 P2证实正文泮春芳是泮芳春的字序错误，但未指具体分店；旧点经度120.607028远离原文杭州主城美食路线，且无地址或POI互证。撤销错误精确点，保持稳定ID及待审边界，不擅给另一分店坐标或永久冲突别名。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-19-003",
+    "city": "杭州",
+    "entityId": "8c3420c51d088f391802af3b7bef3357",
+    "mergeEntityIds": [],
+    "canonicalName": "泮芳春煎饺",
+    "expectedRevisions": {
+      "8c3420c51d088f391802af3b7bef3357": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "杭州市泮芳春煎饺，原来源涉及多家门店，具体分店待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "2074 P1明确地址为西湖区多家门店，而2036源位于河坊街背景，原记录混入不同分店范围。现有无地址单点30.209668/120.164615不能代表多门店源；撤销固定坐标，保留品牌泛指与具体分店待拆清的事实。",
+        "sourcePlaceIds": [
+          "4134"
+        ],
+        "mentions": [
+          {
+            "id": "9442",
+            "name": "泮芳春煎饺",
+            "quote": "太火啦，排队人很多，现做的很好吃",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693bb158000000001d039d38"
+          },
+          {
+            "id": "9356",
+            "name": "泮芳春煎饺",
+            "quote": "泮芳春煎饺是一定要吃的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b8b400000000002103afa9"
+          },
+          {
+            "id": "8872",
+            "name": "泮芳春煎饺",
+            "quote": "泮芳春煎饺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f30d7c0000000036019e13"
+          },
+          {
+            "id": "8786",
+            "name": "泮芳春煎饺",
+            "quote": "底部煎得金黄酥脆，咬开瞬间鲜汁爆出来",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d47ad2000000001a020d4a"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4134",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "多门店源不绑定单一未经核实门店点。",
+        "original": {
+          "lat": 30.209668,
+          "lng": 120.164615,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "杭州市泮芳春煎饺，原来源涉及多家门店，具体分店待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-19-image-context.json",
+        "sha256": "169481182efad6e55c09d8ea4ade200083cc96ad0179738989849e249b991485",
+        "mentionIds": [
+          8786
+        ],
+        "conclusion": "2074 P1明确地址为西湖区多家门店，而2036源位于河坊街背景，原记录混入不同分店范围。现有无地址单点30.209668/120.164615不能代表多门店源；撤销固定坐标，保留品牌泛指与具体分店待拆清的事实。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9356
+        ],
+        "conclusion": "2074 P1明确地址为西湖区多家门店，而2036源位于河坊街背景，原记录混入不同分店范围。现有无地址单点30.209668/120.164615不能代表多门店源；撤销固定坐标，保留品牌泛指与具体分店待拆清的事实。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {"review":64,"verdict":"distinct","explanation":"国子监是国子监街13-15号古学府建筑群，国子监街是其外的道路；5181讲古建，4948描述从雍和宫出来到街上打卡。道路与机构主体不合并。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[5181,4948]}]},
+  {"review":65,"verdict":"distinct","explanation":"5187明确八号线什刹海站，湖区什刹海另有环湖、银锭桥等游览提及；交通站点不作为湖区同义。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[5187]}]},
+  {"review":70,"verdict":"distinct","explanation":"国家自然博物馆位于天桥南大街126号，国家博物馆位于天安门广场东侧；前者亲子自然主题，后者华夏文物，机构与地址独立。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[2694,4956]}]},
+  {"review":71,"verdict":"part_of","childEntityId":"8c02a5695ffc014e0c8e4a8ba401f75f","explanation":"朝阳公园冰场为公园内季节性项目，源地址明确公园内北侧，1874独立列冰场开放与项目价格；不能把冰场政策套到公园全域或归成同义。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[1874]}]},
+  {"review":73,"verdict":"distinct","explanation":"鼓楼东大街和鼓楼西大街是鼓楼两侧独立道路；东大街原文明确一路往东，西大街有自己路牌机位及地址，方向词不能剥离。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[4933]}]},
+  {"review":77,"verdict":"distinct","explanation":"宫门口二条与头条是不同胡同编号，源地址和机位分别独立；原文3316指定二条拍白塔，1925路线指定头条，不能忽略编号。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[3316,1925]}]},
+  {"review":82,"verdict":"distinct","explanation":"中国美术馆在五四大街1号，中国工艺美术馆在湖景东路16号；2839对应工艺美术玉雕牙雕漆器，不是同馆的简称。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[2839]}]},
+  {"review":84,"verdict":"part_of","childEntityId":"35a250f514f41873387509cf133637b1","explanation":"太古里南区是太古里整体的组成区域。原文4639将南北区分站介绍，整体地址涵盖11和19号院，不能把南区名称当全域别名。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[4639]}]},
+  {"review":85,"verdict":"part_of","childEntityId":"b8729ea5ab6120424aaec9f4d1db2381","explanation":"太古里北区为11号院区域，是太古里组成部分；原文4637与南区分别列站，建筑机位和南区大屏各有边界。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[4637]}]},
+  {"review":90,"verdict":"distinct","explanation":"北京植物园是植物园景区，北京动物园是西直门外的动物园；地址分离，原文分别赏秋和看萌兰，不能因园名相似归并。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[5017,1998]}]},
+  {"review":91,"verdict":"distinct","explanation":"西直门外北京动物园和大兴榆垡北京野生动物园是两个独立园区，原文分别看萌兰与野生动物园遛娃，不能跨园借用身份、门票和路线。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[1998,5126]}]},
+  {"review":95,"verdict":"distinct","explanation":"同一什刹海攻略分别介绍宋庆龄故居参观和宋庆龄故居码头上船，码头以邻近故居命名，不是故居建筑。码头原北京市中心坐标不作为判等依据。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[3260,3237]}]},
+  {"review":99,"verdict":"part_of","childEntityId":"b40dfae5e6f8bc0e82523392b83ad24e","explanation":"天坛公园西门是公园入口，4432明确讨论从西门入园的选择；门点与整体园区分别保留身份和坐标。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[4432]}]},
+  {"review":110,"verdict":"part_of","childEntityId":"112b313098de8bb71203bc445db3c8ff","explanation":"北海公园南门是入园门点，5273明确南门进、之后看荷花登白塔；入口不可替代整个公园身份。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[5273]}]},
+  {"review":116,"verdict":"distinct","explanation":"科荟路的奥林匹克森林公园与中东路的奥北森林公园是独立公园；奥北不是本批奥森的简称，3056明确奥北端午活动。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[3056]}]},
+  {"review":129,"verdict":"distinct","explanation":"雁栖湖游览景区与雁栖湖路的环湖公路分别为景区和道路，源3040明确13.9公里环湖公路。不能把路段政策或骑行身份归入湖体景区。","contexts":[]},
+  {"review":130,"verdict":"distinct","explanation":"同一原文2917/2918按1飞跃侏罗纪、2侏罗纪大冒险列两个相邻但独立的项目及排队时间；地图共同误落环球公交站不能证明是同一游乐设施。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[2917,2918]}]},
+  {"review":145,"verdict":"distinct","explanation":"同一原文P11中左门、P12左翼门是两个独立拍摄门点，各有取景说明；相同北京市中心兜底坐标不能吞掉不同宫门。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[4322,4323]}]},
+  {"review":146,"verdict":"distinct","explanation":"4418中的大兴机场线是骑行攻略的一条路线，不是机场航站楼；4325单独描述机场建筑摄影。不得把骑行线与机场主体归为同义，也不误标成地铁机场线。","contexts":[{"file":"beijing-negative-context.json","mentionIds":[4418,4325]}]}
+]

@@ -1,0 +1,1348 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "city": "济南",
+          "canonical_name": "五龙潭公园",
+          "primary_place_id": 5359,
+          "aliases": [
+            "五龙潭公园"
+          ],
+          "legacy_ids": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f65621879204866b17b645554f9848db",
+          "city": "济南",
+          "canonical_name": "五龙潭",
+          "primary_place_id": 5350,
+          "aliases": [
+            "五龙潭"
+          ],
+          "legacy_ids": [
+            "f65621879204866b17b645554f9848db"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5350,
+          "entity_id": "f65621879204866b17b645554f9848db"
+        },
+        {
+          "place_id": 5359,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5350,
+          "content_profile": {
+            "intro": "五龙潭位于济南市天桥区，又称龙居泉、灰湾泉，是济南最深的一处泉水，今为山东省文物保护单位。北魏时称净池，宋代称四望湖，1985年扩建后将周围27处泉池连为一体，组成五龙潭泉群，公园以潭、池、溪、港等景观构成。园内名士阁为二层仿古建筑，登临可眺望五龙潭全景；月牙泉是七十二名泉中水位最高者，需达29米才喷涌。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-04T12:04:25.597623+00:00",
+            "highlights": [
+              {
+                "text": "五龙潭位于济南市天桥区，又称龙居泉、灰湾泉，是济南最深的一处泉水，今为山东省文物保护单位。",
+                "basis": "web",
+                "quote": "五龙潭又称龙居泉、灰湾泉，长约70米，宽约35米，深约6米，是济南最深的一处泉水。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "五龙潭又称龙居泉、灰湾泉，长约70米，宽约35米，深约6米，是济南最深的一处泉水。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                    "observedAt": "2026-10-04T12:04:13Z"
+                  },
+                  {
+                    "quote": "今为[山东省文物保护单位](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81%E6%96%87%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D \"山东省文物保护单位\")。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                    "observedAt": "2026-10-04T12:04:13Z"
+                  },
+                  {
+                    "quote": "| 地址 | [山东省](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81 \"山东省\")[济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[天桥区](/wiki/%E5%A4%A9%E6%A1%A5%E5%8C%BA \"天桥区\") |",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                    "observedAt": "2026-10-04T12:04:13Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                "observedAt": "2026-10-04T12:04:13Z"
+              },
+              {
+                "text": "北魏时称净池，宋代称四望湖，1985年扩建后将周围27处泉池连为一体，组成五龙潭泉群，公园以潭、池、溪、港等景观构成。",
+                "basis": "web",
+                "quote": "五龙潭北魏时称“净池”，宋称“四望湖”，1985年重新规划、扩建，将周围的天镜、回马、古温、月牙、洗钵、贤清等27处泉池连为一体，共同组成五龙潭泉群。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "五龙潭北魏时称“净池”，宋称“四望湖”，1985年重新规划、扩建，将周围的天镜、回马、古温、月牙、洗钵、贤清等27处泉池连为一体，共同组成五龙潭泉群。",
+                    "sourceUrl": "https://m.airchina.com/c/invoke/bdgl/tna@pgzhcn",
+                    "observedAt": "2026-10-04T12:04:21Z"
+                  },
+                  {
+                    "quote": "五龙潭公园的建园风格兼具南北造园之精华，以潭、池、溪、港等景观构成，其中著名景点的有秦琼故宅遗址、中共山东省领导机关旧址、名士阁等。",
+                    "sourceUrl": "https://m.airchina.com/c/invoke/bdgl/tna@pgzhcn",
+                    "observedAt": "2026-10-04T12:04:21Z"
+                  }
+                ],
+                "sourceUrl": "https://m.airchina.com/c/invoke/bdgl/tna@pgzhcn",
+                "observedAt": "2026-10-04T12:04:21Z"
+              },
+              {
+                "text": "园内名士阁为二层仿古建筑，登临可眺望五龙潭全景；月牙泉是七十二名泉中水位最高者，需达29米才喷涌。",
+                "basis": "web",
+                "quote": "五龙潭边有名士阁，为二层仿古建筑，可站在二层眺望五龙潭全景。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "五龙潭边有名士阁，为二层仿古建筑，可站在二层眺望五龙潭全景。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                    "observedAt": "2026-10-04T12:04:13Z"
+                  },
+                  {
+                    "quote": "五龙潭内的月牙泉是[七十二名泉](/wiki/%E4%B8%83%E5%8D%81%E4%BA%8C%E5%90%8D%E6%B3%89 \"七十二名泉\")内水位最高者，需达到29米才会喷涌[[2]](#cite_note-2)。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                    "observedAt": "2026-10-04T12:04:13Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E4%BA%94%E9%BE%99%E6%BD%AD_(%E6%B5%8E%E5%8D%97)",
+                "observedAt": "2026-10-04T12:04:13Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": 60,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 141.7,
+          "theme_tags": [
+            "住宿",
+            "美食"
+          ],
+          "is_active": true
+        },
+        {
+          "id": 5359,
+          "content_profile": null,
+          "typical_visit_minutes": 60,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 72.7,
+          "theme_tags": [
+            "自然风光",
+            "住宿",
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5350,
+          "mention_count_30d": 29,
+          "positive_count_30d": 29,
+          "source_count": 25,
+          "top_reasons": [
+            {
+              "reason": "免费，建议东门进南门出，游玩1.5小时",
+              "evidence": "免费，建议从东门进，南门出"
+            },
+            {
+              "reason": "夏季孩童玩水好去处，适合亲子",
+              "evidence": "夏季的五龙潭，是孩童玩水的好地方"
+            },
+            {
+              "reason": "免费景点，位于推荐路线上，适合citywalk",
+              "evidence": "五龙潭——趵突泉——泉城广场"
+            },
+            {
+              "reason": "济南经典景点，列入推荐路线第一天。",
+              "evidence": "day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁"
+            },
+            {
+              "reason": "对面假山有框镜机位，适合拍照",
+              "evidence": "对面假山拍框镜机位"
+            }
+          ],
+          "recommend_score": 75.5
+        },
+        {
+          "canonical_place_id": 5359,
+          "mention_count_30d": 14,
+          "positive_count_30d": 14,
+          "source_count": 12,
+          "top_reasons": [
+            {
+              "reason": "免费，环境宁静，适合散步拍照，有龙潭观鱼和中共山东省委旧址",
+              "evidence": "免费。南门有龙潭观鱼、中共山东省委旧址"
+            },
+            {
+              "reason": "路线顺路，步行可达",
+              "evidence": "步行5min"
+            },
+            {
+              "reason": "建议西门进南门出，顺路游览。",
+              "evidence": "西门进 南门出"
+            },
+            {
+              "reason": "出门就是小吃街",
+              "evidence": "五龙潭公园 出门就是小吃街"
+            },
+            {
+              "reason": "路线顺路，步行可达",
+              "evidence": "步行5min"
+            }
+          ],
+          "recommend_score": 39.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7761,
+          "canonical_place_id": 5350,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭",
+          "evidence_summary": "离餐厅很近，适合顺路游览"
+        },
+        {
+          "id": 7762,
+          "canonical_place_id": 5350,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭",
+          "evidence_summary": "免费，建议东门进南门出，游玩1.5小时"
+        },
+        {
+          "id": 7763,
+          "canonical_place_id": 5350,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭",
+          "evidence_summary": "夏季孩童玩水好去处，适合亲子"
+        },
+        {
+          "id": 7787,
+          "canonical_place_id": 5359,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭公园",
+          "evidence_summary": "建议西门进南门出，顺路游览。"
+        },
+        {
+          "id": 7788,
+          "canonical_place_id": 5359,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭公园",
+          "evidence_summary": "免费，环境宁静，适合散步拍照，有龙潭观鱼和中共山东省委旧址"
+        },
+        {
+          "id": 7789,
+          "canonical_place_id": 5359,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭公园",
+          "evidence_summary": "路线顺路，步行可达"
+        },
+        {
+          "id": 8614,
+          "canonical_place_id": 5350,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五龙潭",
+          "evidence_summary": "免费景点，位于推荐路线上，适合citywalk"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4836,
+          "from_name": "五龙潭",
+          "to_name": "趵突泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 11,
+          "evidence": " D2：10点出门，五龙潭➡️趵突泉➡️黑虎泉➡️解放阁",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+        },
+        {
+          "id": 4839,
+          "from_name": "五龙潭公园",
+          "to_name": "趵突泉",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "itywalk路线 趵突泉 → 步行5min → 五龙潭公园 → 步行8min ",
+          "source_url": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+        },
+        {
+          "id": 4840,
+          "from_name": "五龙潭公园",
+          "to_name": "曲水亭街",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": " 步行5min → 五龙潭公园 → 步行8min → 曲水亭街 → 大明湖 → 黑",
+          "source_url": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+        },
+        {
+          "id": 4975,
+          "from_name": "五龙潭",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 2,
+          "evidence": " ✔️D1：趵突泉→五龙潭→芙蓉街→曲水亭街→大明湖→",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        },
+        {
+          "id": 5001,
+          "from_name": "五龙潭",
+          "to_name": "曲水亭街",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "→泉城广场→趵突泉→五龙潭→曲水亭街→解放阁→芙蓉街→大",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5350,
+          "city": "济南",
+          "name_keys": [
+            "五龙潭",
+            "五龙潭公园"
+          ],
+          "entity_ids": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "source_hash": "6b98f2b4d2e957bb7eb30eb1e75a7b7fd3025fa6b40fdd0cd83478e3151baadc",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/wulongtan-source-review-01.json",
+              "kind": "reviewed_joint_park_scope",
+              "sha256": "8d8e227340b59b3a69ae0ee571a4410d2438f60fc238989cbdd93d181877f9a4",
+              "reviewIds": [
+                365
+              ],
+              "conclusion": "五龙潭旧ID保留显式撤回，不重定向到公园或主潭。公园仅消费已确认25提及；不新增主潭、不授予裸名别名。审核365继续待审。",
+              "mentionIds": [
+                11332,
+                11383,
+                11396,
+                11406,
+                11441,
+                11453,
+                11471,
+                11488,
+                11512,
+                11515,
+                11544,
+                11572,
+                11583,
+                11588,
+                11599,
+                11617,
+                11688,
+                11701,
+                12560,
+                12572,
+                12620,
+                12632,
+                12655,
+                12663,
+                12666,
+                12672,
+                12699,
+                12719,
+                12731,
+                12757,
+                12767,
+                12788,
+                12826,
+                12855,
+                12867,
+                12896,
+                12910,
+                12927,
+                12938,
+                12950,
+                12963,
+                12965,
+                12975
+              ],
+              "sourcePlaceIds": [
+                5350,
+                5359
+              ]
+            },
+            {
+              "file": "priority-cities/济南/geo-01.json",
+              "kind": "map_candidates",
+              "sha256": "87a5c0ef699796d00a850365fdbafd8dbdc632ae3e2cf81c342de0bacac4c599",
+              "conclusion": "保留5359公园本体参考点，不借用5350裸名点或任何门、码头、商店点；坐标不构成两实体同义证据。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11332,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "6e2a1c4a923d98dd80a42159a71dd7bd4ae00f45403ebb68c3948aeab93ae539",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11383,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "a88ff4cee14ee8d21c7c14c59c2ad58ed1665195663fa7afeb8857f83eb6c26a",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11396,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "56fad28716f9fb31a1e7e49bb721c726527d514ca5719404008b28472c613b5d",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11406,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "273119f009c8d5a6234d7289bbe4dd3bffd790d25431fffc20db7c672ed03198",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11441,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "5d835df8a0256c2292968a667adcbc079ee797f43b298d04cb8d59ab2e34ea36",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11453,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "ae30e7096d31a1b238ff79bd2df4638277cdd53d7117412799684bb456e570f4",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11471,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "4e8305efbdb6379d9f2980bab16960dc4032180ba7fe5a98d960a2e76b1893a9",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11488,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "a9e5afd34f9637116f73528eb2074d97611b6b6fdc5bd951efbf0d421ce4ec6a",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11512,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "fbd8f8712dac015ed697a73a7f7b9e3d7f38c0823d3fbf35c17ee2c08ef8c0dc",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11515,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "93b2b902dca157b9697a06e220bd45a33b7f879cbda5ea13649e897aef3a2aee",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11544,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "3193d78f3d540593a69c828cf5574bd7135825a93e8862021a58b3d13a923466",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11572,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "7b074c4d1a674cd18e0f4f3efa99ab4d69f768a673f3d8e4b3ff31b4381f892b",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11583,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "e58808ace40791b9217e8621be1b727222720ced2fae5f5581bfd73b9c334121",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11588,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "d69fa892bfc0cd35924579cd2b11387c2efc541a7dd0800b7084786ce15adca3",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11599,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "4529479776d762f28204b79c7e767af95114ad7bf0de2e10cb6e351bd3e51d12",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11617,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "18f32251e8cd2d6d2ce8ddc8472759aa25b51473e0a071686e0869c904b2b90f",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11688,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "5a86437d7bac75eee828c8b4d399aba33e93c7f62d63b8b3f6f756f3b2062321",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 11701,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "cbf95c95a43f8db558020bc50bec0db9f7593aea40fd86b6b3f2c59e710a83c4",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12560,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "ffdbc0bca576adb4761165e4ddf69e64ef14a57778022a4a59d968a370693f8e",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12572,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "9b988acfef724fefe6529c08b4bbdbd6e40d0ae39f18eadd61f610148e73aa02",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12620,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "e6c668e723b22f061d2a46774c1e7a41b0ba5359f3dd7177ec6d327d400dbad2",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12632,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "3e92c98e88f837818952e125dc506c12257d21f2857d2b7169a25441d070ad91",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12655,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "1a952f8067f008041fe879fc4433fdd9475389972f6f842d89a529858725eab4",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12663,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "dbe36659d8f742b01683acba85b8afd9fd9d27f3d165b8c258381830295557cd",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12666,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "1f7d532699483d322f51e8124c5689e77dc682156ddbd849fa18037eb0183481",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12672,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "950d257b5bba98374df971c23dd9b8b032fd6788a7210bebea6b71b67e2c8e51",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12699,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "a427cf5096e1e52f3e601b1d01652c0aed5027238e9059a8af0f2ccbccd31abd",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12719,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "9e2347fac93de6bfcdd6d8d1ef2590457c247e684d2b1ae01b8ab4bc53161ac9",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12731,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "31a5129045daa6f16142e54c6df85844e0cdd1efc78382f3182cccb295f22a0d",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12757,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "e40b6fe3456830ba681cb8970359808f66e5c525a8e304316b13dc8e06d06351",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12767,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "989c4ab5009470294412896f4afca73e7b9b54368c6fd502097e1fc4bc7e45a3",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12788,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "2a9a90b2ea1743aceae2fd2f158cd0b6b4b0930a5db694a16abe72b74130fa6a",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12826,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "eae89c87cbf2f6be941db9624fa154e9ce36e27793e5286284cfb62a220268d8",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12855,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "8ef48564c4a143eb2b7403732732231017930958c9ff995c4180e0c70e84afe8",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12867,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "43157f2342180930a600aa508bd8163c960d06d649a510ebad08a7135eac174f",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12896,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "7a8cbc77ddd01c909108129b71ed799fae4f2b40078f2d502511934c45b4de34",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12910,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "81bb8cd61b6901f4d984451dbacb6f7716dced6706535f74e8149104cfd241ba",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12927,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "42c26c52cc54470f32e7c6d8b12e376316e8c4e9d5edb4fb133136e52387252c",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12938,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "6557b4e8d07ca1b075893661f8f43b73e11eee9f0aef262e84ffbf0dbcef0e38",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12950,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "c158572ca1f6cfb0ef3f4ff428589c9ca3b66174cbffa358bc4bf0ab902a19be",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12963,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "b07822245692df54989e9dd87a7e1834f3b1095844d756681662c42923525864",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12965,
+          "scope_place_id": 5350,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "input_hash": "32d5dbf3383623a77ef816939cb4dd95ab141a03c197473b38ce80d77cbd6350",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        },
+        {
+          "mention_id": 12975,
+          "scope_place_id": 5350,
+          "entity_id": null,
+          "input_hash": "b7a4ec26d471976f24fb50dce5b73b7d834a19c6ef15b43107ed8af63ebb4cd7",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-33-wulongtan-5350"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "6b98f2b4d2e957bb7eb30eb1e75a7b7fd3025fa6b40fdd0cd83478e3151baadc",
+        "mentions": [
+          {
+            "mentionId": 11332,
+            "inputHash": "6e2a1c4a923d98dd80a42159a71dd7bd4ae00f45403ebb68c3948aeab93ae539"
+          },
+          {
+            "mentionId": 11383,
+            "inputHash": "a88ff4cee14ee8d21c7c14c59c2ad58ed1665195663fa7afeb8857f83eb6c26a"
+          },
+          {
+            "mentionId": 11396,
+            "inputHash": "56fad28716f9fb31a1e7e49bb721c726527d514ca5719404008b28472c613b5d"
+          },
+          {
+            "mentionId": 11406,
+            "inputHash": "273119f009c8d5a6234d7289bbe4dd3bffd790d25431fffc20db7c672ed03198"
+          },
+          {
+            "mentionId": 11441,
+            "inputHash": "5d835df8a0256c2292968a667adcbc079ee797f43b298d04cb8d59ab2e34ea36"
+          },
+          {
+            "mentionId": 11453,
+            "inputHash": "ae30e7096d31a1b238ff79bd2df4638277cdd53d7117412799684bb456e570f4"
+          },
+          {
+            "mentionId": 11471,
+            "inputHash": "4e8305efbdb6379d9f2980bab16960dc4032180ba7fe5a98d960a2e76b1893a9"
+          },
+          {
+            "mentionId": 11488,
+            "inputHash": "a9e5afd34f9637116f73528eb2074d97611b6b6fdc5bd951efbf0d421ce4ec6a"
+          },
+          {
+            "mentionId": 11512,
+            "inputHash": "fbd8f8712dac015ed697a73a7f7b9e3d7f38c0823d3fbf35c17ee2c08ef8c0dc"
+          },
+          {
+            "mentionId": 11515,
+            "inputHash": "93b2b902dca157b9697a06e220bd45a33b7f879cbda5ea13649e897aef3a2aee"
+          },
+          {
+            "mentionId": 11544,
+            "inputHash": "3193d78f3d540593a69c828cf5574bd7135825a93e8862021a58b3d13a923466"
+          },
+          {
+            "mentionId": 11572,
+            "inputHash": "7b074c4d1a674cd18e0f4f3efa99ab4d69f768a673f3d8e4b3ff31b4381f892b"
+          },
+          {
+            "mentionId": 11583,
+            "inputHash": "e58808ace40791b9217e8621be1b727222720ced2fae5f5581bfd73b9c334121"
+          },
+          {
+            "mentionId": 11588,
+            "inputHash": "d69fa892bfc0cd35924579cd2b11387c2efc541a7dd0800b7084786ce15adca3"
+          },
+          {
+            "mentionId": 11599,
+            "inputHash": "4529479776d762f28204b79c7e767af95114ad7bf0de2e10cb6e351bd3e51d12"
+          },
+          {
+            "mentionId": 11617,
+            "inputHash": "18f32251e8cd2d6d2ce8ddc8472759aa25b51473e0a071686e0869c904b2b90f"
+          },
+          {
+            "mentionId": 11688,
+            "inputHash": "5a86437d7bac75eee828c8b4d399aba33e93c7f62d63b8b3f6f756f3b2062321"
+          },
+          {
+            "mentionId": 11701,
+            "inputHash": "cbf95c95a43f8db558020bc50bec0db9f7593aea40fd86b6b3f2c59e710a83c4"
+          },
+          {
+            "mentionId": 12560,
+            "inputHash": "ffdbc0bca576adb4761165e4ddf69e64ef14a57778022a4a59d968a370693f8e"
+          },
+          {
+            "mentionId": 12572,
+            "inputHash": "9b988acfef724fefe6529c08b4bbdbd6e40d0ae39f18eadd61f610148e73aa02"
+          },
+          {
+            "mentionId": 12620,
+            "inputHash": "e6c668e723b22f061d2a46774c1e7a41b0ba5359f3dd7177ec6d327d400dbad2"
+          },
+          {
+            "mentionId": 12632,
+            "inputHash": "3e92c98e88f837818952e125dc506c12257d21f2857d2b7169a25441d070ad91"
+          },
+          {
+            "mentionId": 12655,
+            "inputHash": "1a952f8067f008041fe879fc4433fdd9475389972f6f842d89a529858725eab4"
+          },
+          {
+            "mentionId": 12663,
+            "inputHash": "dbe36659d8f742b01683acba85b8afd9fd9d27f3d165b8c258381830295557cd"
+          },
+          {
+            "mentionId": 12666,
+            "inputHash": "1f7d532699483d322f51e8124c5689e77dc682156ddbd849fa18037eb0183481"
+          },
+          {
+            "mentionId": 12672,
+            "inputHash": "950d257b5bba98374df971c23dd9b8b032fd6788a7210bebea6b71b67e2c8e51"
+          },
+          {
+            "mentionId": 12699,
+            "inputHash": "a427cf5096e1e52f3e601b1d01652c0aed5027238e9059a8af0f2ccbccd31abd"
+          },
+          {
+            "mentionId": 12719,
+            "inputHash": "9e2347fac93de6bfcdd6d8d1ef2590457c247e684d2b1ae01b8ab4bc53161ac9"
+          },
+          {
+            "mentionId": 12731,
+            "inputHash": "31a5129045daa6f16142e54c6df85844e0cdd1efc78382f3182cccb295f22a0d"
+          },
+          {
+            "mentionId": 12757,
+            "inputHash": "e40b6fe3456830ba681cb8970359808f66e5c525a8e304316b13dc8e06d06351"
+          },
+          {
+            "mentionId": 12767,
+            "inputHash": "989c4ab5009470294412896f4afca73e7b9b54368c6fd502097e1fc4bc7e45a3"
+          },
+          {
+            "mentionId": 12788,
+            "inputHash": "2a9a90b2ea1743aceae2fd2f158cd0b6b4b0930a5db694a16abe72b74130fa6a"
+          },
+          {
+            "mentionId": 12826,
+            "inputHash": "eae89c87cbf2f6be941db9624fa154e9ce36e27793e5286284cfb62a220268d8"
+          },
+          {
+            "mentionId": 12855,
+            "inputHash": "8ef48564c4a143eb2b7403732732231017930958c9ff995c4180e0c70e84afe8"
+          },
+          {
+            "mentionId": 12867,
+            "inputHash": "43157f2342180930a600aa508bd8163c960d06d649a510ebad08a7135eac174f"
+          },
+          {
+            "mentionId": 12896,
+            "inputHash": "7a8cbc77ddd01c909108129b71ed799fae4f2b40078f2d502511934c45b4de34"
+          },
+          {
+            "mentionId": 12910,
+            "inputHash": "81bb8cd61b6901f4d984451dbacb6f7716dced6706535f74e8149104cfd241ba"
+          },
+          {
+            "mentionId": 12927,
+            "inputHash": "42c26c52cc54470f32e7c6d8b12e376316e8c4e9d5edb4fb133136e52387252c"
+          },
+          {
+            "mentionId": 12938,
+            "inputHash": "6557b4e8d07ca1b075893661f8f43b73e11eee9f0aef262e84ffbf0dbcef0e38"
+          },
+          {
+            "mentionId": 12950,
+            "inputHash": "c158572ca1f6cfb0ef3f4ff428589c9ca3b66174cbffa358bc4bf0ab902a19be"
+          },
+          {
+            "mentionId": 12963,
+            "inputHash": "b07822245692df54989e9dd87a7e1834f3b1095844d756681662c42923525864"
+          },
+          {
+            "mentionId": 12965,
+            "inputHash": "32d5dbf3383623a77ef816939cb4dd95ab141a03c197473b38ce80d77cbd6350"
+          },
+          {
+            "mentionId": 12975,
+            "inputHash": "b7a4ec26d471976f24fb50dce5b73b7d834a19c6ef15b43107ed8af63ebb4cd7"
+          }
+        ],
+        "sources": [
+          {
+            "sourcePlaceId": 5350,
+            "sourceHash": "6b98f2b4d2e957bb7eb30eb1e75a7b7fd3025fa6b40fdd0cd83478e3151baadc"
+          },
+          {
+            "sourcePlaceId": 5359,
+            "sourceHash": "6f97fe34fe7ac99dc8f7bbfa72dc6d4f1b9a3b41a49d8e56ec3f3c65897abb50"
+          }
+        ],
+        "matchingSources": [
+          {
+            "sourcePlaceId": 5350,
+            "sourceHash": "6b98f2b4d2e957bb7eb30eb1e75a7b7fd3025fa6b40fdd0cd83478e3151baadc"
+          },
+          {
+            "sourcePlaceId": 5359,
+            "sourceHash": "6f97fe34fe7ac99dc8f7bbfa72dc6d4f1b9a3b41a49d8e56ec3f3c65897abb50"
+          }
+        ]
+      },
+      "scopeSources": [
+        {
+          "place_id": 5350,
+          "scope_place_id": 5350,
+          "source_hash": "6b98f2b4d2e957bb7eb30eb1e75a7b7fd3025fa6b40fdd0cd83478e3151baadc"
+        },
+        {
+          "place_id": 5359,
+          "scope_place_id": 5350,
+          "source_hash": "6f97fe34fe7ac99dc8f7bbfa72dc6d4f1b9a3b41a49d8e56ec3f3c65897abb50"
+        }
+      ],
+      "scopeReviews": [
+        {
+          "id": 2577,
+          "fingerprint": "50979c7983ab34cd30667467fe834e71c291429f697feba5a4f93775aedadd8f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a88ff4cee14ee8d21c7c14c59c2ad58ed1665195663fa7afeb8857f83eb6c26a",
+            "mentionId": 11383,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2578,
+          "fingerprint": "09634ca275f62928b835d03d6f7a8a0e9298498a97ec403112d38b4f3bac1ee6",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "56fad28716f9fb31a1e7e49bb721c726527d514ca5719404008b28472c613b5d",
+            "mentionId": 11396,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2579,
+          "fingerprint": "d4db018aaad84dfc6abe96d21ddfada7765790f0413d5f6214def34838f33a56",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "273119f009c8d5a6234d7289bbe4dd3bffd790d25431fffc20db7c672ed03198",
+            "mentionId": 11406,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2580,
+          "fingerprint": "50e13e644b39f117aeab016e3323fa6ee42396155f36bb3bd008c21ef5e9791c",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "ae30e7096d31a1b238ff79bd2df4638277cdd53d7117412799684bb456e570f4",
+            "mentionId": 11453,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2581,
+          "fingerprint": "c7213b137dd3ca6545898ae1c2e5004b283ae5c70a41d030bc48fd1d52b040f7",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "fbd8f8712dac015ed697a73a7f7b9e3d7f38c0823d3fbf35c17ee2c08ef8c0dc",
+            "mentionId": 11512,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2582,
+          "fingerprint": "f1607227a136e234c32e212ed684cfbf4f64187304a927f2f613146767694ba9",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "93b2b902dca157b9697a06e220bd45a33b7f879cbda5ea13649e897aef3a2aee",
+            "mentionId": 11515,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2583,
+          "fingerprint": "061637776006f31b93c420b232affdb1910a485376f775d4ded7ebba8df0d2aa",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "3193d78f3d540593a69c828cf5574bd7135825a93e8862021a58b3d13a923466",
+            "mentionId": 11544,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2584,
+          "fingerprint": "eb2bc6519b8b54d0df16a77eb43209c609b8e1629e8d6c2a4d2f2d5f7c412817",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "e58808ace40791b9217e8621be1b727222720ced2fae5f5581bfd73b9c334121",
+            "mentionId": 11583,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2585,
+          "fingerprint": "bbf084a42c53be6da10935b5745937eeee42bca25246e770f55e48a3cc7c78de",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "d69fa892bfc0cd35924579cd2b11387c2efc541a7dd0800b7084786ce15adca3",
+            "mentionId": 11588,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2586,
+          "fingerprint": "0912c510eab630c8c1b6db5b3af2091eab5c14bb48aaa4a10b2e092e6478db1b",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "4529479776d762f28204b79c7e767af95114ad7bf0de2e10cb6e351bd3e51d12",
+            "mentionId": 11599,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2587,
+          "fingerprint": "9a2071ed2b20bc6a194b29fd79a5f431ba73abcb31d1550df55a8a5e14781d32",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "cbf95c95a43f8db558020bc50bec0db9f7593aea40fd86b6b3f2c59e710a83c4",
+            "mentionId": 11701,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2588,
+          "fingerprint": "ff3639213619b7be78c042497c2c9a4c32ec35f132dffb6d5f8541a12fda8958",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "9b988acfef724fefe6529c08b4bbdbd6e40d0ae39f18eadd61f610148e73aa02",
+            "mentionId": 12572,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2589,
+          "fingerprint": "538da2e9ba8fc7ed841a05e30c4ca711a860e8af68b284d80a7b76486dd04146",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "950d257b5bba98374df971c23dd9b8b032fd6788a7210bebea6b71b67e2c8e51",
+            "mentionId": 12672,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2590,
+          "fingerprint": "94e2d8320e9a95a045e5e78163ecbcb8182ab90b84efce03b5012ea25c9a0c5a",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a427cf5096e1e52f3e601b1d01652c0aed5027238e9059a8af0f2ccbccd31abd",
+            "mentionId": 12699,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2591,
+          "fingerprint": "430729d872528385ef9f0c7e0f4ce0ccee91df206450e91abfe2d9d6ed402032",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "9e2347fac93de6bfcdd6d8d1ef2590457c247e684d2b1ae01b8ab4bc53161ac9",
+            "mentionId": 12719,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2592,
+          "fingerprint": "fe90b7850ac59aec5d2d58b9b5d5e2b4ff47663330c837d2ff631563175a2a87",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8ef48564c4a143eb2b7403732732231017930958c9ff995c4180e0c70e84afe8",
+            "mentionId": 12855,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2593,
+          "fingerprint": "d03ad30cabbd501d805a049454272b657dd3c63dd0c195550a8617de6deedf3f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "7a8cbc77ddd01c909108129b71ed799fae4f2b40078f2d502511934c45b4de34",
+            "mentionId": 12896,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        },
+        {
+          "id": 2594,
+          "fingerprint": "7defb81e3fd75e1cdbcb5c6e9c52d0814b8ff66f150c727fac068e5a5bf62a51",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "b7a4ec26d471976f24fb50dce5b73b7d834a19c6ef15b43107ed8af63ebb4cd7",
+            "mentionId": 12975,
+            "scopePlaceIds": [
+              5350
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "city": "济南",
+          "canonical_name": "五龙潭公园",
+          "primary_place_id": 5359,
+          "aliases": [
+            "五龙潭公园"
+          ],
+          "legacy_ids": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_park_category",
+              "file": "batch33-category-adjustment-20261008.md",
+              "sha256": "9d72897b38b65a4ef01167da4a3b08148ab33c94415b7c4b73eca78e69d9da99",
+              "noteIds": [
+                2786,
+                2793,
+                2834
+              ],
+              "conclusion": "原文明确园林公园、清泉园林及园内泉潭。以显式自然类别替代混合旧themes，不把旧住宿美食主题带入受控公园。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5359,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a"
+        }
+      ]
+    }
+  ]
+}

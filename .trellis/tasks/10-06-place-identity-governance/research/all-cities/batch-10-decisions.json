@@ -1,0 +1,1222 @@
+[
+  {
+    "key": "all-cities-20261006-batch-10-001",
+    "city": "杭州",
+    "entityId": "7acd0bdb6ee77ccb5586ccdbac752b2e",
+    "mergeEntityIds": [
+      "afa03e530be147b58e21eda34e453cb2"
+    ],
+    "canonicalName": "太子湾公园",
+    "expectedRevisions": {
+      "7acd0bdb6ee77ccb5586ccdbac752b2e": 1,
+      "afa03e530be147b58e21eda34e453cb2": 1
+    },
+    "overrides": {
+      "lat": 30.227586,
+      "lng": 120.143154,
+      "address": "浙江省杭州市西湖区北山街道南山路1-1号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          320
+        ],
+        "conclusion": "9866以太子湾称浴鹄湾后步行到达的公园，9232指园内桥边红枫与湖水，9492也作为南山线同一游览点；两源地址均为南山路1-1号，简称未指另一设施。",
+        "sourcePlaceIds": [
+          "3990",
+          "4269"
+        ],
+        "mentions": [
+          {
+            "id": "9866",
+            "name": "太子湾公园",
+            "quote": "太子湾",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa836f000000000d027899"
+          },
+          {
+            "id": "9830",
+            "name": "太子湾公园",
+            "quote": "📍p2、3 太子湾公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa820f100000000280378ee"
+          },
+          {
+            "id": "9791",
+            "name": "太子湾公园",
+            "quote": "看郁金香和樱花",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a68173000000002203bfe2"
+          },
+          {
+            "id": "9786",
+            "name": "太子湾公园",
+            "quote": "zui值得来的公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68285a9d0000000021008f5d"
+          },
+          {
+            "id": "9492",
+            "name": "太子湾",
+            "quote": "太子湾→虎跑公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3f0da000000002901247b"
+          },
+          {
+            "id": "9232",
+            "name": "太子湾",
+            "quote": "桥边红枫映着湖水",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3e09f000000002b0121c2"
+          },
+          {
+            "id": "9107",
+            "name": "太子湾",
+            "quote": "绿色大草坪的长椅经典机位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9572a000000001a028a79"
+          },
+          {
+            "id": "8799",
+            "name": "太子湾",
+            "quote": "步行→太子湾",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a59c5ff0000000010024887"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3990",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.227586,
+          "lng": 120.143154,
+          "address": "浙江省杭州市西湖区北山街道南山路1-1号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.227586,
+        "lng": 120.143154,
+        "address": "浙江省杭州市西湖区北山街道南山路1-1号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9866,
+          9232,
+          9492
+        ],
+        "conclusion": "9866以太子湾称浴鹄湾后步行到达的公园，9232指园内桥边红枫与湖水，9492也作为南山线同一游览点；两源地址均为南山路1-1号，简称未指另一设施。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-002",
+    "city": "杭州",
+    "entityId": "e5a2743efcbc26b6819492763372877f",
+    "mergeEntityIds": [
+      "ea527983170e1a7598320ff6ae53daaf"
+    ],
+    "canonicalName": "马岭天观景区",
+    "expectedRevisions": {
+      "e5a2743efcbc26b6819492763372877f": 1,
+      "ea527983170e1a7598320ff6ae53daaf": 1
+    },
+    "overrides": {
+      "lat": 29.567007,
+      "lng": 119.738801,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          328
+        ],
+        "conclusion": "8391和8569逐项描述同一建德景区佛手桥、金龙桥、云梯、漂流，8569还明确导航马岭天观；带景区后缀不改变主体。",
+        "sourcePlaceIds": [
+          "4152",
+          "4060"
+        ],
+        "mentions": [
+          {
+            "id": "8569",
+            "name": "马岭天观景区",
+            "quote": "40分钟轻松登顶，新手友好",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696c75fe000000000d009d8c"
+          },
+          {
+            "id": "8391",
+            "name": "马岭天观",
+            "quote": "一双建造在高山悬崖上的巨大佛手",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68820426000000000d026b7b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4152",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.567007,
+          "lng": 119.738801,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.567007,
+        "lng": 119.738801,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8391,
+          8569
+        ],
+        "conclusion": "8391和8569逐项描述同一建德景区佛手桥、金龙桥、云梯、漂流，8569还明确导航马岭天观；带景区后缀不改变主体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-003",
+    "city": "杭州",
+    "entityId": "697267b1629d920321f05f84009a9706",
+    "mergeEntityIds": [
+      "87d642f2bfa3fc452e69eb1aac06df67"
+    ],
+    "canonicalName": "江湖汇观亭",
+    "expectedRevisions": {
+      "697267b1629d920321f05f84009a9706": 1,
+      "87d642f2bfa3fc452e69eb1aac06df67": 1
+    },
+    "overrides": {
+      "lat": 30.232804,
+      "lng": 120.166182,
+      "address": "浙江省杭州市上城区",
+      "geoStatus": "reviewed_source",
+      "category": "文化"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          332
+        ],
+        "conclusion": "8716的江湖汇关亭为杭州机位清单中观字误写，9623明确吴山能望西湖和城隍阁的江湖汇观亭，两源同一位置；不是根据邻近关系合并吴山其他亭台。",
+        "sourcePlaceIds": [
+          "4084",
+          "4227"
+        ],
+        "mentions": [
+          {
+            "id": "9810",
+            "name": "江湖汇观亭",
+            "quote": "江湖汇观亭",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a68173000000002203bfe2"
+          },
+          {
+            "id": "9623",
+            "name": "江湖汇观亭",
+            "quote": "吴山最佳观景台，可以眺望西湖",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aabca2a000000001001d96d"
+          },
+          {
+            "id": "9243",
+            "name": "江湖汇观亭",
+            "quote": "远眺西湖",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9544400000000004028ed6"
+          },
+          {
+            "id": "8538",
+            "name": "江湖汇观亭",
+            "quote": "俯瞰杭州城和西湖",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e7629b000000002103bed0"
+          },
+          {
+            "id": "8716",
+            "name": "江湖汇关亭",
+            "quote": "江湖汇关亭",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f36ef900000000070095de"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4084",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.232804,
+          "lng": 120.166182,
+          "address": "浙江省杭州市上城区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.232804,
+        "lng": 120.166182,
+        "address": "浙江省杭州市上城区",
+        "geoStatus": "reviewed_source",
+        "category": "文化"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8716,
+          9623
+        ],
+        "conclusion": "8716的江湖汇关亭为杭州机位清单中观字误写，9623明确吴山能望西湖和城隍阁的江湖汇观亭，两源同一位置；不是根据邻近关系合并吴山其他亭台。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-004",
+    "city": "杭州",
+    "entityId": "89004bf26b389ddee3b94fc020d1688d",
+    "mergeEntityIds": [
+      "2fa733e4bf323d1ce8efad29493fb3e0",
+      "e626aa9a03dd5fc46329d491a52cdcf3"
+    ],
+    "canonicalName": "桥西历史文化街区",
+    "expectedRevisions": {
+      "2fa733e4bf323d1ce8efad29493fb3e0": 1,
+      "89004bf26b389ddee3b94fc020d1688d": 1,
+      "e626aa9a03dd5fc46329d491a52cdcf3": 1
+    },
+    "overrides": {
+      "lat": 30.318395,
+      "lng": 120.137839,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          336,
+          337
+        ],
+        "conclusion": "9370明确过拱宸桥后的拱宸桥西历史文化街区，配图写桥西·拱宸桥；9432和9894的桥西历史街区也均在拱宸桥同一岸、含同一博物馆群。三名指同一街区，不把拱宸桥桥体或馆群单馆并入。",
+        "sourcePlaceIds": [
+          "4287",
+          "4113",
+          "4486"
+        ],
+        "mentions": [
+          {
+            "id": "9894",
+            "name": "桥西历史街区",
+            "quote": "桥西历史街区",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa836f000000000d027899"
+          },
+          {
+            "id": "9511",
+            "name": "桥西历史街区",
+            "quote": "桥西历史街区",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1fdc2000000003100e1ca"
+          },
+          {
+            "id": "9207",
+            "name": "桥西历史街区",
+            "quote": "青石板老街、老民居",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d30eb000000001a02650d"
+          },
+          {
+            "id": "9189",
+            "name": "桥西历史街区",
+            "quote": "清末民初老街，烟火气很足",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab5b45a00000000120377a3"
+          },
+          {
+            "id": "9432",
+            "name": "桥西历史文化街区",
+            "quote": "逛拱宸桥、运河博物馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1639250000000038020252"
+          },
+          {
+            "id": "9288",
+            "name": "桥西历史文化街区",
+            "quote": "沉浸式感受非遗人文",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3d0d05000000001c025fd7"
+          },
+          {
+            "id": "8489",
+            "name": "桥西历史文化街区",
+            "quote": "一条很常规的步行街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68d9d41400000000130154c1"
+          },
+          {
+            "id": "9370",
+            "name": "拱宸桥西历史文化街区",
+            "quote": "白墙黛瓦、石板路、老屋、红灯笼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaaa425000000002b0125ac"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4113",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.318395,
+          "lng": 120.137839,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.318395,
+        "lng": 120.137839,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9370,
+          9432,
+          9894
+        ],
+        "conclusion": "9370明确过拱宸桥后的拱宸桥西历史文化街区，配图写桥西·拱宸桥；9432和9894的桥西历史街区也均在拱宸桥同一岸、含同一博物馆群。三名指同一街区，不把拱宸桥桥体或馆群单馆并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-005",
+    "city": "杭州",
+    "entityId": "30c38a874f46124d8d150cf6b6493c50",
+    "mergeEntityIds": [
+      "d2a13fe52b8b8ea0a8a591841101cb03"
+    ],
+    "canonicalName": "大兜路历史文化街区",
+    "expectedRevisions": {
+      "30c38a874f46124d8d150cf6b6493c50": 1,
+      "d2a13fe52b8b8ea0a8a591841101cb03": 1
+    },
+    "overrides": {
+      "lat": 30.302247,
+      "lng": 120.143103,
+      "address": "杭州市拱墅区湖墅街道",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          339
+        ],
+        "conclusion": "9373和9458均在香积寺旁沿运河漫步的大兜路街区，9458明确寺外右拐可达；差异仅省略文化二字，采用现有主体定位且保留旧地址轨迹。",
+        "sourcePlaceIds": [
+          "4124",
+          "4271"
+        ],
+        "mentions": [
+          {
+            "id": "9823",
+            "name": "大兜路历史文化街区",
+            "quote": "禅意古街，香积寺旁",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6984628e0000000022031562"
+          },
+          {
+            "id": "9650",
+            "name": "大兜路历史文化街区",
+            "quote": "运河边老街，茶馆多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69cf88d3000000001a032fe9"
+          },
+          {
+            "id": "9373",
+            "name": "大兜路历史文化街区",
+            "quote": "梧桐树下慢慢走",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaaa425000000002b0125ac"
+          },
+          {
+            "id": "9100",
+            "name": "大兜路历史文化街区",
+            "quote": "大兜路：兜来运转",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6950c96a000000001e0324d4"
+          },
+          {
+            "id": "9458",
+            "name": "大兜路历史街区",
+            "quote": "梧桐树荫遮住整条青石板路",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8b0c1700000000290261e5"
+          },
+          {
+            "id": "9292",
+            "name": "大兜路历史街区",
+            "quote": "时间充裕可顺路逛完",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3d0d05000000001c025fd7"
+          },
+          {
+            "id": "9194",
+            "name": "大兜路历史街区",
+            "quote": "有很多清末民初的历史建筑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab5b45a00000000120377a3"
+          },
+          {
+            "id": "8807",
+            "name": "大兜路历史街区",
+            "quote": "路两边都是树荫",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa92245000000002802aeae"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4124",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.302247,
+          "lng": 120.143103,
+          "address": "杭州市拱墅区湖墅街道",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.302247,
+        "lng": 120.143103,
+        "address": "杭州市拱墅区湖墅街道",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9373,
+          9458
+        ],
+        "conclusion": "9373和9458均在香积寺旁沿运河漫步的大兜路街区，9458明确寺外右拐可达；差异仅省略文化二字，采用现有主体定位且保留旧地址轨迹。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-006",
+    "city": "杭州",
+    "entityId": "6c1908652ec855251f1b7bbacb0abbc0",
+    "mergeEntityIds": [
+      "a680b840fb1f57b52c37ab5827dbcb1f"
+    ],
+    "canonicalName": "五柳巷历史文化街区",
+    "expectedRevisions": {
+      "6c1908652ec855251f1b7bbacb0abbc0": 1,
+      "a680b840fb1f57b52c37ab5827dbcb1f": 1
+    },
+    "overrides": {
+      "lat": 30.239744,
+      "lng": 120.176082,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          340
+        ],
+        "conclusion": "9618与8531均从江城路站开始五柳巷、十五奎巷、晓霞弄的街区步行路线；两称同一沿河老街范围，文化为名称补全。",
+        "sourcePlaceIds": [
+          "4573",
+          "4137"
+        ],
+        "mentions": [
+          {
+            "id": "9618",
+            "name": "五柳巷历史文化街区",
+            "quote": "非常有生活气息，有老杭州的那种烟火气",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aabca2a000000001001d96d"
+          },
+          {
+            "id": "8531",
+            "name": "五柳巷历史街区",
+            "quote": "沿河有绿荫，穿巷有高墙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e7629b000000002103bed0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4573",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.239744,
+          "lng": 120.176082,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.239744,
+        "lng": 120.176082,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9618,
+          8531
+        ],
+        "conclusion": "9618与8531均从江城路站开始五柳巷、十五奎巷、晓霞弄的街区步行路线；两称同一沿河老街范围，文化为名称补全。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-007",
+    "city": "杭州",
+    "entityId": "5067539b865621263d592e291952b397",
+    "mergeEntityIds": [
+      "51f9cabd9849c6572862c63130b32982"
+    ],
+    "canonicalName": "白蛇飞渡桥",
+    "expectedRevisions": {
+      "5067539b865621263d592e291952b397": 1,
+      "51f9cabd9849c6572862c63130b32982": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "",
+      "geoStatus": "unresolvable",
+      "category": "文化"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          345
+        ],
+        "conclusion": "9847明确万松书院到白蛇飞渡桥再到柳浪闻莺，9108明确万松岭书院旁的空中长廊，指同一桥。两旧坐标经度118.904777明显远离吴山/西湖南线，不能因两源一致而沿用；尚无精确桥位，成对清空待重新核实。",
+        "sourcePlaceIds": [
+          "4169",
+          "4226"
+        ],
+        "mentions": [
+          {
+            "id": "9885",
+            "name": "白蛇飞渡桥",
+            "quote": "白蛇飞渡桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa836f000000000d027899"
+          },
+          {
+            "id": "9847",
+            "name": "白蛇飞渡桥",
+            "quote": "万松书院→白蛇飞渡桥→柳浪闻莺→夕影亭",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa820f100000000280378ee"
+          },
+          {
+            "id": "9785",
+            "name": "白蛇飞渡桥",
+            "quote": "穿越传说的空中长廊",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68285a9d0000000021008f5d"
+          },
+          {
+            "id": "9624",
+            "name": "白蛇飞渡桥",
+            "quote": "网红s弯的木栈桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aabca2a000000001001d96d"
+          },
+          {
+            "id": "9491",
+            "name": "白蛇飞渡",
+            "quote": "白蛇飞渡→苏堤",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3f0da000000002901247b"
+          },
+          {
+            "id": "9157",
+            "name": "白蛇飞渡",
+            "quote": "Jolin同款打卡地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a354e060000000022019cb1"
+          },
+          {
+            "id": "9108",
+            "name": "白蛇飞渡",
+            "quote": "万松岭书院旁的空中长廊，拍照很出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9572a000000001a028a79"
+          },
+          {
+            "id": "8713",
+            "name": "白蛇飞渡",
+            "quote": "白蛇飞渡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f36ef900000000070095de"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4169",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.240498,
+          "lng": 118.904777,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "",
+        "geoStatus": "unresolvable",
+        "category": "文化"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9847,
+          9108,
+          9623
+        ],
+        "conclusion": "9847明确万松书院到白蛇飞渡桥再到柳浪闻莺，9108明确万松岭书院旁的空中长廊，指同一桥。两旧坐标经度118.904777明显远离吴山/西湖南线，不能因两源一致而沿用；尚无精确桥位，成对清空待重新核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-008",
+    "city": "杭州",
+    "entityId": "d7bacb93f9eea66509a4e7ddd772b641",
+    "mergeEntityIds": [
+      "12f1551781ed18d02fe682bf9a91d102"
+    ],
+    "canonicalName": "永福禅寺",
+    "expectedRevisions": {
+      "12f1551781ed18d02fe682bf9a91d102": 1,
+      "d7bacb93f9eea66509a4e7ddd772b641": 1
+    },
+    "overrides": {
+      "lat": 30.239626,
+      "lng": 120.095516,
+      "address": "浙江省杭州市西湖区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          348
+        ],
+        "conclusion": "9667把永福禅寺列在灵隐、韬光寺之间的独立寺院，9308用永福寺指同一灵隐西侧上山寺院；禅字为寺名补全，保留其独立于灵隐寺的身份与政策。",
+        "sourcePlaceIds": [
+          "4190",
+          "4386"
+        ],
+        "mentions": [
+          {
+            "id": "9594",
+            "name": "永福寺",
+            "quote": "永福寺侧边还有一个 3 号门",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a31383100000000070106db"
+          },
+          {
+            "id": "9536",
+            "name": "永福寺",
+            "quote": "可以去永福寺/韬光寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9d67930000000011039e88"
+          },
+          {
+            "id": "9308",
+            "name": "永福寺",
+            "quote": "店员态度也明显好很多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e73734000000001b000858"
+          },
+          {
+            "id": "9271",
+            "name": "永福寺",
+            "quote": "灵隐寺，飞来峰，永福寺，韬光寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d779a00000000023022167"
+          },
+          {
+            "id": "9667",
+            "name": "永福禅寺",
+            "quote": "永福禅寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a317e090000000015024777"
+          },
+          {
+            "id": "9112",
+            "name": "永福禅寺",
+            "quote": "捧一碗慈杯咖啡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6979788a000000000a03236b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4386",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.239626,
+          "lng": 120.095516,
+          "address": "浙江省杭州市西湖区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.239626,
+        "lng": 120.095516,
+        "address": "浙江省杭州市西湖区",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9667,
+          9308
+        ],
+        "conclusion": "9667把永福禅寺列在灵隐、韬光寺之间的独立寺院，9308用永福寺指同一灵隐西侧上山寺院；禅字为寺名补全，保留其独立于灵隐寺的身份与政策。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-009",
+    "city": "杭州",
+    "entityId": "855dd8736f2010974353e4940fe4fbee",
+    "mergeEntityIds": [
+      "4bb62fb0a02a33bedd08b6e46e981709"
+    ],
+    "canonicalName": "天屿山景区",
+    "expectedRevisions": {
+      "4bb62fb0a02a33bedd08b6e46e981709": 1,
+      "855dd8736f2010974353e4940fe4fbee": 1
+    },
+    "overrides": {
+      "lat": 29.626767,
+      "lng": 119.051039,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          351
+        ],
+        "conclusion": "9539标题与提及用天屿山景区、正文用天屿山并描述登山电梯、千岛湖全景和水滑梯；9349同一千岛湖目的地提及该门票景区，两个源同一登山游览区。",
+        "sourcePlaceIds": [
+          "4258",
+          "4540"
+        ],
+        "mentions": [
+          {
+            "id": "9588",
+            "name": "天屿山",
+            "quote": "天屿山",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9aa2cd0000000011035ad7"
+          },
+          {
+            "id": "9349",
+            "name": "天屿山",
+            "quote": "门票套餐一百多不值得",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a939ee6000000001f007a28"
+          },
+          {
+            "id": "9254",
+            "name": "天屿山",
+            "quote": "傍晚天屿山蹲日落",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a79ddc100000000220177b1"
+          },
+          {
+            "id": "8767",
+            "name": "天屿山",
+            "quote": "没有遗憾只有惬意",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d51373000000002102d94a"
+          },
+          {
+            "id": "9539",
+            "name": "天屿山景区",
+            "quote": "看千岛湖全景还是很不错滴",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0dadc00000000280343b3"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4540",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.626767,
+          "lng": 119.051039,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.626767,
+        "lng": 119.051039,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9539,
+          9349
+        ],
+        "conclusion": "9539标题与提及用天屿山景区、正文用天屿山并描述登山电梯、千岛湖全景和水滑梯；9349同一千岛湖目的地提及该门票景区，两个源同一登山游览区。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-010",
+    "city": "杭州",
+    "entityId": "0b13b674687974b505f90c3580f23766",
+    "mergeEntityIds": [
+      "be7bb69d33edb2541fca5376418e8955"
+    ],
+    "canonicalName": "羽和铃咖啡店",
+    "expectedRevisions": {
+      "0b13b674687974b505f90c3580f23766": 1,
+      "be7bb69d33edb2541fca5376418e8955": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          352
+        ],
+        "conclusion": "8918明确晓霞弄附近半坡、环翠楼附近的羽和铃咖啡，9892位于同一吴山老城散步支线。两条是同一小院咖啡馆的有无店字写法；旧坐标30.400396,119.834459远离原文老城，清空而不借相邻景点坐标。",
+        "sourcePlaceIds": [
+          "4644",
+          "4309"
+        ],
+        "mentions": [
+          {
+            "id": "9892",
+            "name": "羽和铃咖啡店",
+            "quote": "拐进咖啡小院，安静发呆一下午",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa836f000000000d027899"
+          },
+          {
+            "id": "8918",
+            "name": "羽和铃咖啡",
+            "quote": "半坡有一家羽和铃咖啡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9f8bb10000000029011ebd"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4644",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.400396,
+          "lng": 119.834459,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          8918,
+          9892
+        ],
+        "conclusion": "8918明确晓霞弄附近半坡、环翠楼附近的羽和铃咖啡，9892位于同一吴山老城散步支线。两条是同一小院咖啡馆的有无店字写法；旧坐标30.400396,119.834459远离原文老城，清空而不借相邻景点坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-011",
+    "city": "杭州",
+    "entityId": "c206f2f936b771036507292ba2c89224",
+    "mergeEntityIds": [
+      "4c008c6ea9d7495c81c150a40ff831cd"
+    ],
+    "canonicalName": "西湖音乐喷泉",
+    "expectedRevisions": {
+      "4c008c6ea9d7495c81c150a40ff831cd": 1,
+      "c206f2f936b771036507292ba2c89224": 1
+    },
+    "overrides": {
+      "lat": 30.254865,
+      "lng": 120.162665,
+      "address": "",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          356
+        ],
+        "conclusion": "9217从西湖边酒馆出门游览音乐喷泉、集贤亭、长桥公园，9332明确西湖湖滨三公园音乐喷泉；此处泛名可由西湖语境消歧，不与钱江新城或杭州大剧院喷泉合并。",
+        "sourcePlaceIds": [
+          "4431",
+          "4470"
+        ],
+        "mentions": [
+          {
+            "id": "9217",
+            "name": "音乐喷泉",
+            "quote": "推荐音乐喷泉",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698b06af000000000e03ceb7"
+          },
+          {
+            "id": "9332",
+            "name": "西湖音乐喷泉",
+            "quote": "每晚一场免费水舞秀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a25652e000000003502a4ab"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4470",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.254865,
+          "lng": 120.162665,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.254865,
+        "lng": 120.162665,
+        "address": "",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9217,
+          9332
+        ],
+        "conclusion": "9217从西湖边酒馆出门游览音乐喷泉、集贤亭、长桥公园，9332明确西湖湖滨三公园音乐喷泉；此处泛名可由西湖语境消歧，不与钱江新城或杭州大剧院喷泉合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-012",
+    "city": "杭州",
+    "entityId": "6145f7d03e1bfbe57ead578fa17b429a",
+    "mergeEntityIds": [
+      "93c6a9ed22573527af5ef1e09d7bac25",
+      "0f9179145b76f85af826c3c4df50f53e",
+      "4274b89486650b29bcec943e131bb689"
+    ],
+    "canonicalName": "杭州灵隐飞来峰景区",
+    "expectedRevisions": {
+      "6145f7d03e1bfbe57ead578fa17b429a": 1,
+      "93c6a9ed22573527af5ef1e09d7bac25": 1,
+      "0f9179145b76f85af826c3c4df50f53e": 1,
+      "4274b89486650b29bcec943e131bb689": 1
+    },
+    "overrides": {
+      "lat": 30.240041,
+      "lng": 120.105489,
+      "address": "灵隐路飞来峰景区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          357,
+          360,
+          361
+        ],
+        "conclusion": "9220、9502、9657和9825均把灵隐飞来峰作为实名预约的整个景区，杭州和景区为地名/后缀差异，9481另列灵隐寺。合并这四种景区名称，不把飞来峰石刻山体或灵隐寺当同义成员。",
+        "sourcePlaceIds": [
+          "4432",
+          "4529",
+          "4526",
+          "4560"
+        ],
+        "mentions": [
+          {
+            "id": "9220",
+            "name": "杭州灵隐飞来峰景区",
+            "quote": "免费不等于免预约，而且不能当天约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a73226f000000003301dc5c"
+          },
+          {
+            "id": "9502",
+            "name": "灵隐飞来峰景区",
+            "quote": "灵隐飞来峰景区",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1fdc2000000003100e1ca"
+          },
+          {
+            "id": "9657",
+            "name": "灵隐飞来峰",
+            "quote": "灵隐飞来峰目前需要提前实名预约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3628300000000100007c4"
+          },
+          {
+            "id": "9481",
+            "name": "灵隐飞来峰",
+            "quote": "灵隐飞来峰→灵隐寺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3f0da000000002901247b"
+          },
+          {
+            "id": "9825",
+            "name": "飞来峰景区",
+            "quote": "飞来峰景区免票但仍予约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6984628e0000000022031562"
+          },
+          {
+            "id": "9593",
+            "name": "飞来峰景区",
+            "quote": "整个飞来峰其实有 6个门",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a31383100000000070106db"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4432",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.240041,
+          "lng": 120.105489,
+          "address": "灵隐路飞来峰景区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.240041,
+        "lng": 120.105489,
+        "address": "灵隐路飞来峰景区",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9220,
+          9502,
+          9657,
+          9825,
+          9476
+        ],
+        "conclusion": "9220、9502、9657和9825均把灵隐飞来峰作为实名预约的整个景区，杭州和景区为地名/后缀差异，9481另列灵隐寺。合并这四种景区名称，不把飞来峰石刻山体或灵隐寺当同义成员。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-10-013",
+    "city": "杭州",
+    "entityId": "37a6e0846b129cbc6a44290e8e4e9c46",
+    "mergeEntityIds": [
+      "668ccc462fe2ac44e7e3272801baee0c"
+    ],
+    "canonicalName": "千岛湖喜来登度假酒店",
+    "expectedRevisions": {
+      "37a6e0846b129cbc6a44290e8e4e9c46": 1,
+      "668ccc462fe2ac44e7e3272801baee0c": 1
+    },
+    "overrides": {
+      "lat": 29.608525,
+      "lng": 119.039251,
+      "address": "浙江省杭州市淳安县千岛湖镇市心中路818号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          358
+        ],
+        "conclusion": "9347明确千岛湖镇绿城附近临湖的喜来登度假酒店，9406在千岛湖喜来登住宿并提及采悦轩中餐厅和湖景，两源位置近市心中路818号。简称省略度假二字，未跨其他城市喜来登分店。",
+        "sourcePlaceIds": [
+          "4477",
+          "4500"
+        ],
+        "mentions": [
+          {
+            "id": "9778",
+            "name": "千岛湖喜来登度假酒店",
+            "quote": "真是太惊喜了，不想出酒店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a843c710000000025014e7b"
+          },
+          {
+            "id": "9347",
+            "name": "千岛湖喜来登度假酒店",
+            "quote": "湖景房离湖比较近",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a939ee6000000001f007a28"
+          },
+          {
+            "id": "9406",
+            "name": "千岛湖喜来登酒店",
+            "quote": "回酒店看湖景发呆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6315fb000000001003c9de"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4477",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.608525,
+          "lng": 119.039251,
+          "address": "浙江省杭州市淳安县千岛湖镇市心中路818号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.608525,
+        "lng": 119.039251,
+        "address": "浙江省杭州市淳安县千岛湖镇市心中路818号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/hangzhou-batch10-context.json",
+        "sha256": "2fba0804a4ab40eb760be70691c80beb6e64bc7be174612f000773b4f5b55fc3",
+        "mentionIds": [
+          9347,
+          9406
+        ],
+        "conclusion": "9347明确千岛湖镇绿城附近临湖的喜来登度假酒店，9406在千岛湖喜来登住宿并提及采悦轩中餐厅和湖景，两源位置近市心中路818号。简称省略度假二字，未跨其他城市喜来登分店。"
+      }
+    ]
+  }
+]

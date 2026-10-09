@@ -1,0 +1,81 @@
+[
+  {
+    "key": "all-cities-20261009-batch-62-source-5353-category",
+    "city": "济南",
+    "entityId": "747792d1b5834255f5feaa6c2dc62925",
+    "expectedRevisions": {
+      "747792d1b5834255f5feaa6c2dc62925": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "芙蓉街",
+    "aliases": [
+      "芙蓉街"
+    ],
+    "overrides": {
+      "lat": 36.6669643677903,
+      "lng": 117.02301064448173,
+      "address": "山东省济南市历下区泉城路街道芙蓉街",
+      "geoStatus": "resolved",
+      "category": "文化",
+      "xhsPlaceType": "other"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_street_or_river_corridor_subject",
+        "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+        "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json",
+        "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-62-source-5393-category",
+    "city": "济南",
+    "entityId": "9dbf8ef94ec1777461c9d486973ce0c7",
+    "expectedRevisions": {
+      "9dbf8ef94ec1777461c9d486973ce0c7": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "后宰门街",
+    "aliases": [
+      "后宰门街"
+    ],
+    "overrides": {
+      "category": "文化",
+      "xhsPlaceType": "other"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_street_or_river_corridor_subject",
+        "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+        "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json",
+        "conclusion": "两篇正文明确以后宰门街为路线停留主体，拍墙是该次街道活动。note2570的16:00–16:30是独立街道停留，不是与曲水亭或百花洲合计时长，11460/12726同篇30分钟只算一个独立样本；12690保留第二篇簪花文字墙的限定看点。确认3条完整scope，改文化/other，不把街道改名墙面、不合并济南文字墙/济南墙；原点保持但未新定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-62-source-5403-category",
+    "city": "济南",
+    "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+    "expectedRevisions": {
+      "a16d03423b6c350d1d3526a2a1c4280d": 1
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "腊山河廊道",
+    "aliases": [
+      "腊山河廊道"
+    ],
+    "overrides": {
+      "category": "自然",
+      "xhsPlaceType": "attraction"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_street_or_river_corridor_subject",
+        "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+        "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json",
+        "conclusion": "原文独立写逛腊山河廊道吹晚风，公开全文支持腊山河城市滨河生态景观。只将文化改自然、保留attraction，保留原理由、名称/ID和原点，未确定具体廊道段或精确位置；不采用仅标题可见的南延工程内容，不合并整条河流。无需建立scope。"
+      }
+    ]
+  }
+]

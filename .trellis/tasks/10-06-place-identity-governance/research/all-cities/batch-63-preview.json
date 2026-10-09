@@ -1,0 +1,795 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "city": "济南",
+          "canonical_name": "芙蓉街",
+          "primary_place_id": 5353,
+          "aliases": [
+            "芙蓉街"
+          ],
+          "legacy_ids": [
+            "747792d1b5834255f5feaa6c2dc62925"
+          ],
+          "revision": 4,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.6669643677903,
+            "lng": 117.02301064448173,
+            "address": "山东省济南市历下区泉城路街道芙蓉街",
+            "category": "文化",
+            "geoStatus": "resolved",
+            "xhsPlaceType": "other"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "从芙蓉街32号拐进去就是起凤桥街",
+              "noteId": 2782,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5353,
+                  "lat": 36.7298661925534,
+                  "lng": 117.46540911355349,
+                  "address": "山东省济南市章丘区枣园街道芙蓉街",
+                  "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1"
+                }
+              ],
+              "conclusion": "30条提及/23篇原文所述为大明湖、曲水亭街与泉城路附近小吃街。地图同时返回章丘枣园和历下泉城路同名道路；原坐标精确等于章丘条目，应改为历下道路条目。只修正位置，街区与沿街商户不合并。",
+              "mentionIds": [
+                11339,
+                11389,
+                11415,
+                11431,
+                11447,
+                11499,
+                11506,
+                11579,
+                11586,
+                11613,
+                11623,
+                11689,
+                11699,
+                12567,
+                12573,
+                12625,
+                12638,
+                12659,
+                12681,
+                12709,
+                12752,
+                12816,
+                12833,
+                12835,
+                12836,
+                12904,
+                12917,
+                12932,
+                12948,
+                12956
+              ],
+              "sourcePlaceIds": [
+                5353
+              ]
+            },
+            {
+              "file": "priority-cities/济南/geo-02.json",
+              "kind": "reviewed_exact_poi",
+              "query": "芙蓉街",
+              "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+              "address": "山东省济南市历下区泉城路街道芙蓉街",
+              "poiName": "芙蓉街",
+              "rawLonLat": "117.017095,36.666651",
+              "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+              "sourceCoordinateSystem": "CGCS2000",
+              "storedCoordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+              "kind": "reviewed_street_or_river_corridor_subject",
+              "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。",
+              "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5353,
+          "content_profile": null,
+          "typical_visit_minutes": 30,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 137.7,
+          "theme_tags": [
+            "美食",
+            "住宿",
+            "夜景"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5353,
+          "mention_count_30d": 30,
+          "positive_count_30d": 28,
+          "source_count": 23,
+          "top_reasons": [
+            {
+              "reason": "吃喝休整，游玩半小时",
+              "evidence": "吃喝休整"
+            },
+            {
+              "reason": "晚上有空可前往看夜景",
+              "evidence": "晚上有空余时间，可以前往芙蓉街"
+            },
+            {
+              "reason": "济南美食街，列入推荐路线第二天。",
+              "evidence": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街"
+            },
+            {
+              "reason": "比宽厚里更老牌，小吃种类多，但人很多。",
+              "evidence": "比宽厚里更老牌！小吃多到挑花眼！人从众"
+            },
+            {
+              "reason": "济南美食街，汇聚地道小吃，可品尝济南风味",
+              "evidence": "这里汇聚了各种地道的小吃"
+            }
+          ],
+          "recommend_score": 76.17
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7770,
+          "canonical_place_id": 5353,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 芙蓉街",
+          "evidence_summary": "离餐厅很近，适合顺路游览"
+        },
+        {
+          "id": 7771,
+          "canonical_place_id": 5353,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 芙蓉街",
+          "evidence_summary": "晚上十点左右去人不多。"
+        },
+        {
+          "id": 7772,
+          "canonical_place_id": 5353,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 芙蓉街",
+          "evidence_summary": "吃喝休整，游玩半小时"
+        },
+        {
+          "id": 8622,
+          "canonical_place_id": 5353,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 芙蓉街",
+          "evidence_summary": "晚上有空可前往看夜景"
+        },
+        {
+          "id": 8623,
+          "canonical_place_id": 5353,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 芙蓉街",
+          "evidence_summary": "济南美食街，列入推荐路线第二天。"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4971,
+          "from_name": "曲水亭街",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 3,
+          "evidence": "1：趵突泉→五龙潭→芙蓉街→曲水亭街→大明湖→超然楼→宽",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        },
+        {
+          "id": 4975,
+          "from_name": "五龙潭",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 2,
+          "evidence": " ✔️D1：趵突泉→五龙潭→芙蓉街→曲水亭街→大明湖→",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        },
+        {
+          "id": 4978,
+          "from_name": "百花洲",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "水亭街➡️大明湖➡️百花洲➡️芙蓉街 D2：10点出门，",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+        },
+        {
+          "id": 4999,
+          "from_name": "宽厚里",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "建议：曲水亭街 → 芙蓉街 → 宽厚里，从文艺一路逛到热闹",
+          "source_url": "https://www.xiaohongshu.com/explore/6a95346700000000210334e5?xsec_token=ABp9V80Coia5QUBoIv7rmegP8jLRR4cX8331S_bgCg60k=&xsec_source=pc_search"
+        },
+        {
+          "id": 5002,
+          "from_name": "芙蓉街",
+          "to_name": "解放阁",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "→五龙潭→曲水亭街→解放阁→芙蓉街→大明湖→超然楼 🖼",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search"
+        },
+        {
+          "id": 5003,
+          "from_name": "大明湖",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "→曲水亭街→解放阁→芙蓉街→大明湖→超然楼 🖼Day2",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5353,
+          "city": "济南",
+          "name_keys": [
+            "芙蓉街"
+          ],
+          "entity_ids": [
+            "747792d1b5834255f5feaa6c2dc62925"
+          ],
+          "source_hash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/furong-source-review-01.json",
+              "kind": "reviewed_full_text_and_existing_analysis_warning",
+              "conclusion": "30提及完整审核：28确认，2未具名餐馆待审；酒店位置评价字段排除，独立30分钟与正负意见保持。既有图片文字的完整警示原句以输入指纹保留，无图片查看。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "747792d1b5834255f5feaa6c2dc62925"
+          ],
+          "text_warnings": [
+            {
+              "end": 200,
+              "quote": "美食：别在芙蓉街买小吃，又贵又不正宗！",
+              "start": 181,
+              "noteId": 2568,
+              "entityId": "747792d1b5834255f5feaa6c2dc62925",
+              "inputHash": "6cca83a48ce21c0902dc27e7f339d11a48f4dc4ce39c8918c37eaccbedde3f4e",
+              "imageIndex": 3
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11339,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "abfee3a7d1542a7254ff7a2224e73d56604b30e01acf4b9da57e9e56fb531f90",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11389,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "be5b801ffe262ab14b8ce4fc42bb86d948e3625671a75f42c33dcacc6c2a41bf",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11415,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "cefc7755ff13314437459d52a3ed50cd0026517d59a36a556f46f5d1a7fd240c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11431,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "5a4730280c9fa7fb26c2c9d8c40d2b46e3043bc22b867a5edbd9c84318041629",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11447,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "57bd9a8ab7123894158a4cb9fd695764799dc99bcb652e97e33024227137d364",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11499,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "724b2d6991c95f799383fb737b54528eb35029792d05072132eabf0fae9c9806",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11506,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "6e44ef42cf02a5a8c1b1f3b5d8b94664cc8d2e4156d2e6aec30a13e25904f1ce",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11579,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "396d1a39c67c514cbe56ba9a9514ded4d358c8f2b9666f877dd7e814716a047c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11586,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "aef71b7817c75f13895f8ef3fd827297a45aa35c25ab77177ae0151f1bd70ac3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11613,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "ef5f798da2fd2c05ac7a1368fcbf747cabd4178780d3b613162ed92789f8afed",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11623,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "516335f25ebdfe736b2f72a8e4801449c954d05c7a345cd62fdc0f779cb29051",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11689,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "14c73b076c626bf6ff33c983ab7499d808bae9392a50f68a09e7d9ee3fe0602c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 11699,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "c4168c7c3cc56b89f94e302b8fb42ee6dd1c16cd27aea688f8050ae78d85263c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "📍第二家（大明湖）\n离大明湖、曲水亭街很近，步行十分钟就到\n晚上去芙蓉街宽厚里小吃街也很方便\n装修设计也很复古和现代元素结合\nLoft设计每层都不小，上下都有卫生间\n有浴缸累了可以边赏景边泡澡，很舒服",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "📍第二家（大明湖）\n离大明湖、曲水亭街很近，步行十分钟就到\n晚上去芙蓉街宽厚里小吃街也很方便\n装修设计也很复古和现代元素结合\nLoft设计每层都不小，上下都有卫生间\n有浴缸累了可以边赏景边泡澡，很舒服",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 12567,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "371d27ef75a630d94bfe24aa5accbce397d3574536d2f4adef02eeac568d33a1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12573,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "295b59ca185aa8ace5d612000fdfbc733491dc03991bd5509541e1405b797ff7",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12625,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "9844ec387077feca715485dd396f0eeaeb52100a7bef5b11203184c0d58a5f37",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12638,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "7bfa873b5312e2f55b6ded1c8d79e41851282a948ab20044a05137f72b017c25",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12659,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "84d672577986dfb4cf36404b5414d2a4744c76d3c5766e9bb0401e089b6d954a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12681,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "d840988297172242512fc5ab9fc3510af74c252d747aaa45308995eca60f6073",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12709,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "820194004e0cb8aba2a46fa55bf03614b59fff79ed9903cd513ec6a17f7737b2",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12752,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "f873b431b50f15d54c754f8f59436387629f020727301ec01ada8e65191652d7",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12816,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "558aba2b925c1e7f04e095c634e0e9fc914355f5d71c4e939b90019a8864910c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12833,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "2b86478fbc90e56969f96d0f97467c1ef50dffab9ea97326eb6ea357ca119ba3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12835,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "d7a614e6132c2a59fb9dfa3ec2b693fde59b0ac611685909b4afe993f86ed2cc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12836,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "1203229d70d607369234f296929140a8533893ee1ea12100d8c7b11646210a22",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12904,
+          "scope_place_id": 5353,
+          "entity_id": null,
+          "input_hash": "5f7050bc7f576461a4f3afc5425ba582b08efef3e90ef60e7de8080348130515",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12917,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "14fdc0aaaca8ca435d72677ea1b71cfb0a526f8803e5ad2dd26cb5ff59d3e43e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12932,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "a624a0ddc8c4b53639b38d876dc7818f26be2dd609eb6ba2eca52ebaf4432ff8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12948,
+          "scope_place_id": 5353,
+          "entity_id": null,
+          "input_hash": "d3b391da028b1e3b5c0180b20a600331b41ffdc1bd766f48fce740b40ad5aa07",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        },
+        {
+          "mention_id": 12956,
+          "scope_place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "input_hash": "f856aee472120fb66ae6e7a05d19fa18edb546273e7a2812926ee8845adb8ed3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-63-source-5353-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1",
+        "mentions": [
+          {
+            "mentionId": 11339,
+            "inputHash": "abfee3a7d1542a7254ff7a2224e73d56604b30e01acf4b9da57e9e56fb531f90"
+          },
+          {
+            "mentionId": 11389,
+            "inputHash": "be5b801ffe262ab14b8ce4fc42bb86d948e3625671a75f42c33dcacc6c2a41bf"
+          },
+          {
+            "mentionId": 11415,
+            "inputHash": "cefc7755ff13314437459d52a3ed50cd0026517d59a36a556f46f5d1a7fd240c"
+          },
+          {
+            "mentionId": 11431,
+            "inputHash": "5a4730280c9fa7fb26c2c9d8c40d2b46e3043bc22b867a5edbd9c84318041629"
+          },
+          {
+            "mentionId": 11447,
+            "inputHash": "57bd9a8ab7123894158a4cb9fd695764799dc99bcb652e97e33024227137d364"
+          },
+          {
+            "mentionId": 11499,
+            "inputHash": "724b2d6991c95f799383fb737b54528eb35029792d05072132eabf0fae9c9806"
+          },
+          {
+            "mentionId": 11506,
+            "inputHash": "6e44ef42cf02a5a8c1b1f3b5d8b94664cc8d2e4156d2e6aec30a13e25904f1ce"
+          },
+          {
+            "mentionId": 11579,
+            "inputHash": "396d1a39c67c514cbe56ba9a9514ded4d358c8f2b9666f877dd7e814716a047c"
+          },
+          {
+            "mentionId": 11586,
+            "inputHash": "aef71b7817c75f13895f8ef3fd827297a45aa35c25ab77177ae0151f1bd70ac3"
+          },
+          {
+            "mentionId": 11613,
+            "inputHash": "ef5f798da2fd2c05ac7a1368fcbf747cabd4178780d3b613162ed92789f8afed"
+          },
+          {
+            "mentionId": 11623,
+            "inputHash": "516335f25ebdfe736b2f72a8e4801449c954d05c7a345cd62fdc0f779cb29051"
+          },
+          {
+            "mentionId": 11689,
+            "inputHash": "14c73b076c626bf6ff33c983ab7499d808bae9392a50f68a09e7d9ee3fe0602c"
+          },
+          {
+            "mentionId": 11699,
+            "inputHash": "c4168c7c3cc56b89f94e302b8fb42ee6dd1c16cd27aea688f8050ae78d85263c"
+          },
+          {
+            "mentionId": 12567,
+            "inputHash": "371d27ef75a630d94bfe24aa5accbce397d3574536d2f4adef02eeac568d33a1"
+          },
+          {
+            "mentionId": 12573,
+            "inputHash": "295b59ca185aa8ace5d612000fdfbc733491dc03991bd5509541e1405b797ff7"
+          },
+          {
+            "mentionId": 12625,
+            "inputHash": "9844ec387077feca715485dd396f0eeaeb52100a7bef5b11203184c0d58a5f37"
+          },
+          {
+            "mentionId": 12638,
+            "inputHash": "7bfa873b5312e2f55b6ded1c8d79e41851282a948ab20044a05137f72b017c25"
+          },
+          {
+            "mentionId": 12659,
+            "inputHash": "84d672577986dfb4cf36404b5414d2a4744c76d3c5766e9bb0401e089b6d954a"
+          },
+          {
+            "mentionId": 12681,
+            "inputHash": "d840988297172242512fc5ab9fc3510af74c252d747aaa45308995eca60f6073"
+          },
+          {
+            "mentionId": 12709,
+            "inputHash": "820194004e0cb8aba2a46fa55bf03614b59fff79ed9903cd513ec6a17f7737b2"
+          },
+          {
+            "mentionId": 12752,
+            "inputHash": "f873b431b50f15d54c754f8f59436387629f020727301ec01ada8e65191652d7"
+          },
+          {
+            "mentionId": 12816,
+            "inputHash": "558aba2b925c1e7f04e095c634e0e9fc914355f5d71c4e939b90019a8864910c"
+          },
+          {
+            "mentionId": 12833,
+            "inputHash": "2b86478fbc90e56969f96d0f97467c1ef50dffab9ea97326eb6ea357ca119ba3"
+          },
+          {
+            "mentionId": 12835,
+            "inputHash": "d7a614e6132c2a59fb9dfa3ec2b693fde59b0ac611685909b4afe993f86ed2cc"
+          },
+          {
+            "mentionId": 12836,
+            "inputHash": "1203229d70d607369234f296929140a8533893ee1ea12100d8c7b11646210a22"
+          },
+          {
+            "mentionId": 12904,
+            "inputHash": "5f7050bc7f576461a4f3afc5425ba582b08efef3e90ef60e7de8080348130515"
+          },
+          {
+            "mentionId": 12917,
+            "inputHash": "14fdc0aaaca8ca435d72677ea1b71cfb0a526f8803e5ad2dd26cb5ff59d3e43e"
+          },
+          {
+            "mentionId": 12932,
+            "inputHash": "a624a0ddc8c4b53639b38d876dc7818f26be2dd609eb6ba2eca52ebaf4432ff8"
+          },
+          {
+            "mentionId": 12948,
+            "inputHash": "d3b391da028b1e3b5c0180b20a600331b41ffdc1bd766f48fce740b40ad5aa07"
+          },
+          {
+            "mentionId": 12956,
+            "inputHash": "f856aee472120fb66ae6e7a05d19fa18edb546273e7a2812926ee8845adb8ed3"
+          }
+        ],
+        "textWarnings": [
+          {
+            "noteId": 2568,
+            "imageIndex": 3,
+            "inputHash": "6cca83a48ce21c0902dc27e7f339d11a48f4dc4ce39c8918c37eaccbedde3f4e"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 11925,
+          "fingerprint": "4b17a73a03a8507cc8408e1859208aec3343e2e5e3b028809ba9816353fe6b70",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "5f7050bc7f576461a4f3afc5425ba582b08efef3e90ef60e7de8080348130515",
+            "mentionId": 12904,
+            "scopePlaceIds": [
+              5353
+            ]
+          }
+        },
+        {
+          "id": 11934,
+          "fingerprint": "028d64399175c52900e3035b09d89efa54fe4180d32eb4b9d5b29227234c7f65",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "d3b391da028b1e3b5c0180b20a600331b41ffdc1bd766f48fce740b40ad5aa07",
+            "mentionId": 12948,
+            "scopePlaceIds": [
+              5353
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

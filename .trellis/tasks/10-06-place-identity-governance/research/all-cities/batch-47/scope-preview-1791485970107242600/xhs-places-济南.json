@@ -1,0 +1,271 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "f22ac2ba2442f2a56fdf7bb5b5b070b70264f3657cbc72d18c3883c1c5976b9b",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "民族大街市场",
+    "民族大街"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11501,
+     "noteId": 2554,
+     "inputHash": "3cd3fd864b22fe41c434aa806ded6372655a3274a2bced426fdbe1cc5b29a610",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11608,
+     "noteId": 2608,
+     "inputHash": "7f372acdd8daae842ca6ad0a3657932202722e1a45cb061fa1929045f11556c9",
+     "textHash": "5195c49e5483cb4b7daf1d1eab77927af2cc36513eabd727abe9492081242e05",
+     "textLength": 940,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12643,
+     "noteId": 2782,
+     "inputHash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "79e713e197315afb0440835502699789",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12754,
+     "noteId": 2554,
+     "inputHash": "7dd23a697b46ea98e423ef99b07235dbf499042a4e06c22ac6533b75a2920923",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+     "revision": 3,
+     "canonicalName": "民族大街",
+     "aliases": [
+      "民族大街"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "79e713e197315afb0440835502699789",
+     "revision": 2,
+     "canonicalName": "民族大街市场",
+     "aliases": [
+      "民族大街市场"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "48bbca08dc8a0fd00189dbe41cfa127a",
+   "name": "民族大街",
+   "category": "文化",
+   "lng": 117.011966,
+   "lat": 36.653602,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "other",
+    "themes": [],
+    "address": "山东省济南市市中区泺源街道民族大街",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-08T18:59:30.541668+00:00"
+    },
+    "originalName": "民族大街",
+    "openHours": {
+     "version": 2,
+     "subject": "民族大街",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11501,
+      "noteId": 2554,
+      "inputHash": "3cd3fd864b22fe41c434aa806ded6372655a3274a2bced426fdbe1cc5b29a610"
+     },
+     {
+      "mentionId": 12754,
+      "noteId": 2554,
+      "inputHash": "7dd23a697b46ea98e423ef99b07235dbf499042a4e06c22ac6533b75a2920923"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+     "canonicalName": "民族大街",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "民族大街"
+     ],
+     "memberIds": [
+      "48bbca08dc8a0fd00189dbe41cfa127a"
+     ]
+    },
+    "aliases": [
+     "民族大街"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "早餐人均20元，性价比高",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665?xsec_token=ABbytXkAiMeM5k56PdMqJISc7ZEayJFpeC3RB1hK16724=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "79e713e197315afb0440835502699789",
+   "name": "民族大街市场",
+   "category": "购物",
+   "lng": 117.011867,
+   "lat": 36.651941,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "market",
+    "themes": [],
+    "address": "经八路1号正东方向86米",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆。",
+     "highlights": [
+      {
+       "text": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+       "quote": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T18:59:30.541668+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T18:59:30.541668+00:00"
+    },
+    "originalName": "民族大街市场",
+    "openHours": {
+     "version": 2,
+     "subject": "民族大街市场",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12643,
+      "noteId": 2782,
+      "inputHash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "79e713e197315afb0440835502699789",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "79e713e197315afb0440835502699789",
+     "canonicalName": "民族大街市场",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "民族大街市场"
+     ],
+     "memberIds": [
+      "79e713e197315afb0440835502699789"
+     ]
+    },
+    "aliases": [
+     "民族大街市场"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

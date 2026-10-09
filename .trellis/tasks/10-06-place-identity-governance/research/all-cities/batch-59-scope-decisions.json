@@ -1,0 +1,53 @@
+[
+  {
+    "key": "all-cities-20261009-batch-59-source-5358-scope",
+    "city": "济南",
+    "sourcePlaceId": 5358,
+    "expectedSourceHash": "a6dec5de5a7fc522eb631da9b0e8031eb547c5a786ef899f0e20fb26d140a310",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "7950bfadd891932d01be8636aba8b51a": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11464,
+        "inputHash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1",
+        "entityId": null
+      },
+      {
+        "mentionId": 11571,
+        "inputHash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761",
+        "entityId": "7950bfadd891932d01be8636aba8b51a"
+      },
+      {
+        "mentionId": 11607,
+        "inputHash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604",
+        "entityId": "7950bfadd891932d01be8636aba8b51a"
+      },
+      {
+        "mentionId": 12647,
+        "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3",
+        "entityId": "7950bfadd891932d01be8636aba8b51a"
+      },
+      {
+        "mentionId": 12825,
+        "inputHash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c",
+        "entityId": "7950bfadd891932d01be8636aba8b51a"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_relocated_market_scope",
+        "file": "priority-cities/济南/night-market-source-review-01.json",
+        "mentionIds": [
+          11464,
+          11571,
+          11607,
+          12647,
+          12825
+        ],
+        "conclusion": "四条市场正负观点保留，11464旧导航事实整条待审；原始来源、评价与日期不改。"
+      }
+    ]
+  }
+]

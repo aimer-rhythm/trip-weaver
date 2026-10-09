@@ -1,0 +1,405 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "3290af7793dea0fd22138e561900775f",
+          "city": "济南",
+          "canonical_name": "李山记铁板炒鸡",
+          "primary_place_id": 5332,
+          "aliases": [
+            "李山记铁板炒鸡"
+          ],
+          "legacy_ids": [
+            "3290af7793dea0fd22138e561900775f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "县西巷86号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_address",
+              "noteId": 2585,
+              "quote": "🔸李山记铁板炒鸡📍县西巷86号（近大明湖/泉城路）",
+              "file": "priority-cities/济南/food-address-source-review-01.json",
+              "conclusion": "原文分别列出店名和地址，12提及仅1篇独立来源；保留原名/ID/餐饮类别及原推荐文字，不据同篇相邻合并。"
+            },
+            {
+              "kind": "unsupported_location_cleared",
+              "file": "priority-cities/济南/food-address-geo-01.json",
+              "conclusion": "未匹配到原名与原文地址相符的门店POI；旧点远离原文所在街区参照，清空消费坐标但不采用参照点替代。"
+            },
+            {
+              "kind": "candidate_rejected",
+              "file": "priority-cities/济南/food-address-geo-02.json",
+              "conclusion": "裸名搜索未补齐本城门店依据；无锡同名炸鸡店不作济南门店身份或坐标证据。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5332,
+          "entity_id": "3290af7793dea0fd22138e561900775f"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "d3f593e4d3857459ee857a488a57fc7a",
+          "city": "济南",
+          "canonical_name": "新秀炸鸡",
+          "primary_place_id": 5336,
+          "aliases": [
+            "新秀炸鸡"
+          ],
+          "legacy_ids": [
+            "d3f593e4d3857459ee857a488a57fc7a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "老商埠5号楼109"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_address",
+              "noteId": 2585,
+              "quote": "🔸新秀炸鸡📍老商埠5号楼109（经三路爱心红绿灯西侧50米）",
+              "file": "priority-cities/济南/food-address-source-review-01.json",
+              "conclusion": "原文分别列出店名和地址，12提及仅1篇独立来源；保留原名/ID/餐饮类别及原推荐文字，不据同篇相邻合并。"
+            },
+            {
+              "kind": "unsupported_location_cleared",
+              "file": "priority-cities/济南/food-address-geo-01.json",
+              "conclusion": "未匹配到原名与原文地址相符的门店POI；旧点远离原文所在街区参照，清空消费坐标但不采用参照点替代。"
+            },
+            {
+              "kind": "candidate_rejected",
+              "file": "priority-cities/济南/food-address-geo-02.json",
+              "conclusion": "裸名搜索未补齐本城门店依据；无锡同名炸鸡店不作济南门店身份或坐标证据。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5336,
+          "entity_id": "d3f593e4d3857459ee857a488a57fc7a"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6580c2664a98b2aef1203dc3459157e6",
+          "city": "济南",
+          "canonical_name": "乐乎哉刘家菜",
+          "primary_place_id": 5337,
+          "aliases": [
+            "乐乎哉刘家菜"
+          ],
+          "legacy_ids": [
+            "6580c2664a98b2aef1203dc3459157e6"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "经二路398号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_address",
+              "noteId": 2585,
+              "quote": "🔸乐乎哉刘家菜📍经二路398号（近经三路/西市场）",
+              "file": "priority-cities/济南/food-address-source-review-01.json",
+              "conclusion": "原文分别列出店名和地址，12提及仅1篇独立来源；保留原名/ID/餐饮类别及原推荐文字，不据同篇相邻合并。"
+            },
+            {
+              "kind": "unsupported_location_cleared",
+              "file": "priority-cities/济南/food-address-geo-01.json",
+              "conclusion": "未匹配到原名与原文地址相符的门店POI；旧点远离原文所在街区参照，清空消费坐标但不采用参照点替代。"
+            },
+            {
+              "kind": "candidate_rejected",
+              "file": "priority-cities/济南/food-address-geo-02.json",
+              "conclusion": "裸名搜索未补齐本城门店依据；无锡同名炸鸡店不作济南门店身份或坐标证据。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5337,
+          "entity_id": "6580c2664a98b2aef1203dc3459157e6"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "ec447b923b04fcefb80f15c27392e452",
+          "city": "济南",
+          "canonical_name": "凉皮嫂子",
+          "primary_place_id": 5338,
+          "aliases": [
+            "凉皮嫂子"
+          ],
+          "legacy_ids": [
+            "ec447b923b04fcefb80f15c27392e452"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "铜元局前街"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_address",
+              "noteId": 2585,
+              "quote": "🔸凉皮嫂子📍铜元局前街(近大明湖西南门)",
+              "file": "priority-cities/济南/food-address-source-review-01.json",
+              "conclusion": "原文分别列出店名和地址，12提及仅1篇独立来源；保留原名/ID/餐饮类别及原推荐文字，不据同篇相邻合并。"
+            },
+            {
+              "kind": "unsupported_location_cleared",
+              "file": "priority-cities/济南/food-address-geo-01.json",
+              "conclusion": "未匹配到原名与原文地址相符的门店POI；旧点远离原文所在街区参照，清空消费坐标但不采用参照点替代。"
+            },
+            {
+              "kind": "candidate_rejected",
+              "file": "priority-cities/济南/food-address-geo-02.json",
+              "conclusion": "裸名搜索未补齐本城门店依据；无锡同名炸鸡店不作济南门店身份或坐标证据。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5338,
+          "entity_id": "ec447b923b04fcefb80f15c27392e452"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2f5f0095f24c189ebf61109638172394",
+          "city": "济南",
+          "canonical_name": "邻家羊肉面饸饹面",
+          "primary_place_id": 5341,
+          "aliases": [
+            "邻家羊肉面饸饹面"
+          ],
+          "legacy_ids": [
+            "2f5f0095f24c189ebf61109638172394"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "经二路253号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_address",
+              "noteId": 2585,
+              "quote": "🔸邻家羊肉面饸饹面📍经二路253号(近经三路/大观园)",
+              "file": "priority-cities/济南/food-address-source-review-01.json",
+              "conclusion": "原文分别列出店名和地址，12提及仅1篇独立来源；保留原名/ID/餐饮类别及原推荐文字，不据同篇相邻合并。"
+            },
+            {
+              "kind": "unsupported_location_cleared",
+              "file": "priority-cities/济南/food-address-geo-01.json",
+              "conclusion": "未匹配到原名与原文地址相符的门店POI；旧点远离原文所在街区参照，清空消费坐标但不采用参照点替代。"
+            },
+            {
+              "kind": "candidate_rejected",
+              "file": "priority-cities/济南/food-address-geo-02.json",
+              "conclusion": "裸名搜索未补齐本城门店依据；无锡同名炸鸡店不作济南门店身份或坐标证据。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5341,
+          "entity_id": "2f5f0095f24c189ebf61109638172394"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f97da2f352fa1dd39ff4ce17f29d700d",
+          "city": "济南",
+          "canonical_name": "杨氏泉水茶汤",
+          "primary_place_id": 5344,
+          "aliases": [
+            "杨氏泉水茶汤"
+          ],
+          "legacy_ids": [
+            "f97da2f352fa1dd39ff4ce17f29d700d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "辘轳把子街12号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_address",
+              "noteId": 2585,
+              "quote": "🔹杨氏泉水茶汤📍辘轳把子街12号(近泉城路曲水亭街大明湖)",
+              "file": "priority-cities/济南/food-address-source-review-01.json",
+              "conclusion": "原文分别列出店名和地址，12提及仅1篇独立来源；保留原名/ID/餐饮类别及原推荐文字，不据同篇相邻合并。"
+            },
+            {
+              "kind": "unsupported_location_cleared",
+              "file": "priority-cities/济南/food-address-geo-01.json",
+              "conclusion": "未匹配到原名与原文地址相符的门店POI；旧点远离原文所在街区参照，清空消费坐标但不采用参照点替代。"
+            },
+            {
+              "kind": "candidate_rejected",
+              "file": "priority-cities/济南/food-address-geo-02.json",
+              "conclusion": "裸名搜索未补齐本城门店依据；无锡同名炸鸡店不作济南门店身份或坐标证据。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5344,
+          "entity_id": "f97da2f352fa1dd39ff4ce17f29d700d"
+        }
+      ]
+    }
+  ]
+}

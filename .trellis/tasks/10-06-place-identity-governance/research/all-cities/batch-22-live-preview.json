@@ -1,0 +1,1163 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "083e3c3dacac00065603cff6b51ec0de",
+          "city": "济南",
+          "canonical_name": "芙蓉楼百年鲁菜馆（芙蓉街店）",
+          "primary_place_id": 5983,
+          "aliases": [
+            "芙蓉楼百年鲁菜馆",
+            "芙蓉楼百年鲁菜馆（芙蓉街店）",
+            "芙蓉楼鲁菜馆"
+          ],
+          "legacy_ids": [
+            "083e3c3dacac00065603cff6b51ec0de",
+            "31d1664e1fcd59b5abe1689bfd5addd7",
+            "c0239e4427b42d0e397fc3ffd643aeef"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.665964,
+            "lng": 117.023158,
+            "address": "",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                380
+              ],
+              "conclusion": "已恢复12843原始名称芙蓉楼百年鲁菜馆(芙蓉街店)，原记录缺提及仅因括号被规范化去掉。2850正文同样明确芙蓉街老街，P11直接展示芙蓉楼鲁菜馆与百年鲁菜门头，餐厅环境互相吻合；确认同一芙蓉街门店，保持主ID并恢复分店限定。不是仅凭同地图点或同菜品合并。",
+              "sourcePlaceIds": [
+                "5983",
+                "5987"
+              ],
+              "mentions": [
+                {
+                  "id": "12854",
+                  "name": "芙蓉楼鲁菜馆",
+                  "quote": "直奔这家藏在老街的鲁菜馆",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a02f6ea000000003701df52"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5983",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "保留主源5983已有GCJ-02参考点36.665964/117.023158，范围与原文明示芙蓉街一致；不采用广告同时距三景点100m的夸张距离，也不从其他餐厅地址推造新点。",
+              "original": {
+                "lat": 36.665964,
+                "lng": 117.023158,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 36.665964,
+              "lng": 117.023158,
+              "address": "",
+              "geoStatus": "reviewed_source"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/batch-22-image-context.json",
+              "sha256": "c5a739d7047e4cd123a767ea19b528e439219863430fe6930e69f09cec8b7bf8",
+              "mentionIds": [
+                12843,
+                12854
+              ],
+              "conclusion": "已恢复12843原始名称芙蓉楼百年鲁菜馆(芙蓉街店)，原记录缺提及仅因括号被规范化去掉。2850正文同样明确芙蓉街老街，P11直接展示芙蓉楼鲁菜馆与百年鲁菜门头，餐厅环境互相吻合；确认同一芙蓉街门店，保持主ID并恢复分店限定。不是仅凭同地图点或同菜品合并。"
+            }
+          ]
+        },
+        {
+          "entity_id": "31d1664e1fcd59b5abe1689bfd5addd7",
+          "city": "济南",
+          "canonical_name": "芙蓉楼鲁菜馆",
+          "primary_place_id": 5987,
+          "aliases": [
+            "芙蓉楼鲁菜馆"
+          ],
+          "legacy_ids": [
+            "31d1664e1fcd59b5abe1689bfd5addd7"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "083e3c3dacac00065603cff6b51ec0de",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5983,
+          "entity_id": "083e3c3dacac00065603cff6b51ec0de"
+        },
+        {
+          "place_id": 5987,
+          "entity_id": "083e3c3dacac00065603cff6b51ec0de"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1c37774f673afed61066011e157e544d",
+          "city": "济南",
+          "canonical_name": "台湾奶香脆皮麻花",
+          "primary_place_id": 5471,
+          "aliases": [
+            "台湾奶香脆皮麻花",
+            "奶香脆皮麻花"
+          ],
+          "legacy_ids": [
+            "1c37774f673afed61066011e157e544d",
+            "8fc58c8c72a37525b8574ac798393a58"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.685957,
+            "lng": 117.065448,
+            "address": "洪家楼1正北方向20米",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                374
+              ],
+              "conclusion": "2602原文明确台湾奶香脆皮麻花在洪家楼北路；此前2856只读正文未明确分店，现原图P7明确洪家楼教堂旁边并展示该处奶香脆皮麻花小门面。已抓取2023公开视频标题独立称洪楼教堂旁台湾奶香脆皮麻花，连接两种叫法，确认此两条来源是同一教堂旁门店。",
+              "sourcePlaceIds": [
+                "5471",
+                "5985"
+              ],
+              "mentions": [
+                {
+                  "id": "11675",
+                  "name": "台湾奶香脆皮麻花",
+                  "quote": "我个人感觉还不错的一些店",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042"
+                },
+                {
+                  "id": "12894",
+                  "name": "奶香脆皮麻花",
+                  "quote": "6️⃣奶香脆皮麻花",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5471",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "沿用主源5471已有GCJ-02点36.685957/117.065448、洪家楼1正北方向20米，与洪家楼北路教堂旁原图文相合。360抓取实际是另一家紫菜包饭，不借其坐标或地址替代本店。",
+              "original": {
+                "lat": 36.685957,
+                "lng": 117.065448,
+                "address": "洪家楼1正北方向20米",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 36.685957,
+              "lng": 117.065448,
+              "address": "洪家楼1正北方向20米",
+              "geoStatus": "reviewed_source"
+            },
+            {
+              "kind": "published_source",
+              "url": "https://www.youtube.com/watch?v=yn7hBRbLL2s",
+              "file": "all-cities/jinan-mahua-video-fetch.json",
+              "sha256": "c70f69f06f08409e3bbd9aca84b457f70dd50a016d778b9ff5a5754857eee56c"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/batch-22-image-context.json",
+              "sha256": "c5a739d7047e4cd123a767ea19b528e439219863430fe6930e69f09cec8b7bf8",
+              "mentionIds": [
+                12894
+              ],
+              "conclusion": "2602原文明确台湾奶香脆皮麻花在洪家楼北路；此前2856只读正文未明确分店，现原图P7明确洪家楼教堂旁边并展示该处奶香脆皮麻花小门面。已抓取2023公开视频标题独立称洪楼教堂旁台湾奶香脆皮麻花，连接两种叫法，确认此两条来源是同一教堂旁门店。"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-food-variants-01.json",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "mentionIds": [
+                11675
+              ],
+              "conclusion": "2602原文明确台湾奶香脆皮麻花在洪家楼北路；此前2856只读正文未明确分店，现原图P7明确洪家楼教堂旁边并展示该处奶香脆皮麻花小门面。已抓取2023公开视频标题独立称洪楼教堂旁台湾奶香脆皮麻花，连接两种叫法，确认此两条来源是同一教堂旁门店。"
+            }
+          ]
+        },
+        {
+          "entity_id": "8fc58c8c72a37525b8574ac798393a58",
+          "city": "济南",
+          "canonical_name": "奶香脆皮麻花",
+          "primary_place_id": 5985,
+          "aliases": [
+            "奶香脆皮麻花"
+          ],
+          "legacy_ids": [
+            "8fc58c8c72a37525b8574ac798393a58"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "1c37774f673afed61066011e157e544d",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5471,
+          "entity_id": "1c37774f673afed61066011e157e544d"
+        },
+        {
+          "place_id": 5985,
+          "entity_id": "1c37774f673afed61066011e157e544d"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "326cd34165dd905d31af6cd929a0deda",
+          "city": "济南",
+          "canonical_name": "杨家牛肉烧饼",
+          "primary_place_id": 5427,
+          "aliases": [
+            "杨家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "326cd34165dd905d31af6cd929a0deda"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市回民小区清真南大寺附近，具体门牌待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [],
+              "conclusion": "2602明确杨家在回民小区清真南大寺，且特别排除远郊党家庄门店；旧36.204366/117.688582远离中心回民小区，不能用于这家店。",
+              "sourcePlaceIds": [
+                "5427"
+              ],
+              "mentions": [
+                {
+                  "id": "11629",
+                  "name": "杨家牛肉烧饼",
+                  "quote": "我个人感觉还不错的一些店",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5427",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "original": {
+                "lat": 36.204366,
+                "lng": 117.688582,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "济南市回民小区清真南大寺附近，具体门牌待核",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-food-variants-01.json",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "mentionIds": [
+                11629
+              ],
+              "conclusion": "2602明确杨家在回民小区清真南大寺，且特别排除远郊党家庄门店；旧36.204366/117.688582远离中心回民小区，不能用于这家店。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5427,
+          "entity_id": "326cd34165dd905d31af6cd929a0deda"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "665e9903d644a1b41ce76e27467fb353",
+          "city": "济南",
+          "canonical_name": "牛肉烧饼",
+          "primary_place_id": 5388,
+          "aliases": [
+            "牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市回民小区，原笔记未明确店名",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [],
+              "conclusion": "2560明确回民小区排队王，旧福泰路623号附近、经度117.533862在远东侧，与中心回民小区冲突；泛称尚不能指定杨家或其他店。",
+              "sourcePlaceIds": [
+                "5388"
+              ],
+              "mentions": [
+                {
+                  "id": "12744",
+                  "name": "牛肉烧饼",
+                  "quote": "回民小区排队王，肉香饼酥",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133"
+                },
+                {
+                  "id": "11484",
+                  "name": "牛肉烧饼",
+                  "quote": "回民小区排队王，肉香饼酥",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5388",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "original": {
+                "lat": 36.69668,
+                "lng": 117.533862,
+                "address": "福泰路623正西方向120米",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "济南市回民小区，原笔记未明确店名",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-food-variants-01.json",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "mentionIds": [
+                11484
+              ],
+              "conclusion": "2560明确回民小区排队王，旧福泰路623号附近、经度117.533862在远东侧，与中心回民小区冲突；泛称尚不能指定杨家或其他店。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5388,
+          "entity_id": "665e9903d644a1b41ce76e27467fb353"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+          "city": "济南",
+          "canonical_name": "穆德老周家牛肉烧饼",
+          "primary_place_id": 6003,
+          "aliases": [
+            "穆德老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [],
+              "conclusion": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。",
+              "sourcePlaceIds": [
+                "6003"
+              ],
+              "mentions": [
+                {
+                  "id": "12961",
+                  "name": "穆德老周家牛肉烧饼",
+                  "quote": "真的巨好吃😭！烧饼外酥里软，吸满肉汁，咬一口满嘴香；羊汤奶白醇厚",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "6003",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "original": {
+                "lat": 36.463688,
+                "lng": 116.986808,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-food-variants-01.json",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "mentionIds": [
+                12961
+              ],
+              "conclusion": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 6003,
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8",
+          "city": "济南",
+          "canonical_name": "老周家牛肉烧饼",
+          "primary_place_id": 5483,
+          "aliases": [
+            "老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [],
+              "conclusion": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。",
+              "sourcePlaceIds": [
+                "5483"
+              ],
+              "mentions": [
+                {
+                  "id": "11510",
+                  "name": "老周家牛肉烧饼",
+                  "quote": "味道都大差不大，就近就可以了",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a29f1750000000007024b80"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5483",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "original": {
+                "lat": 36.664617,
+                "lng": 117.008082,
+                "address": "普利街77号绿地中心北",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-food-variants-01.json",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "mentionIds": [
+                11510
+              ],
+              "conclusion": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5483,
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9",
+          "city": "济南",
+          "canonical_name": "穆得老周家牛肉烧饼",
+          "primary_place_id": 5484,
+          "aliases": [
+            "穆得老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "6f0051f4dcf714df1a9700bc2fb993d9"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8",
+          "city": "济南",
+          "canonical_name": "老周家牛肉烧饼",
+          "primary_place_id": 5483,
+          "aliases": [
+            "老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "11510",
+                  "name": "老周家牛肉烧饼",
+                  "quote": "味道都大差不大，就近就可以了",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a29f1750000000007024b80"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。",
+              "sourcePlaceIds": [
+                "5483"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+              "original": {
+                "lat": 36.664617,
+                "lng": 117.008082,
+                "address": "普利街77号绿地中心北",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "sourcePlaceId": "5483",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/jinan-food-variants-01.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "conclusion": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。",
+              "mentionIds": [
+                11510
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5483,
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8"
+        },
+        {
+          "place_id": 5484,
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 376,
+          "fingerprint": "147b14f6b2374dddc62e4dfbf5532f1bd0fb4f9fba576d31d7597ec905345646",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "穆得老周家牛肉烧饼",
+              "老周家牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "6f0051f4dcf714df1a9700bc2fb993d9",
+              "d025994fc1b1449de922fa97abdd96f8"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-22-review-376",
+              "verdict": "uncertain",
+              "explanation": "已恢复11527原名穆得·老周家牛肉烧饼，之前精确同名查不到是中间点被规范化去掉，不再称无原始来源。2563仅列品牌，无分店地址；2607明确连锁各店就近选择，不能确定同一门店。品牌泛称本批撤销单一分店点，继续待分店证据。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    376
+                  ],
+                  "conclusion": "已恢复11527原名穆得·老周家牛肉烧饼，之前精确同名查不到是中间点被规范化去掉，不再称无原始来源。2563仅列品牌，无分店地址；2607明确连锁各店就近选择，不能确定同一门店。品牌泛称本批撤销单一分店点，继续待分店证据。",
+                  "sourcePlaceIds": [
+                    "5484",
+                    "5483"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-food-variants-01.json",
+                  "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+                  "mentionIds": [
+                    11527,
+                    11510
+                  ],
+                  "conclusion": "已恢复11527原名穆得·老周家牛肉烧饼，之前精确同名查不到是中间点被规范化去掉，不再称无原始来源。2563仅列品牌，无分店地址；2607明确连锁各店就近选择，不能确定同一门店。品牌泛称本批撤销单一分店点，继续待分店证据。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+          "city": "济南",
+          "canonical_name": "穆德老周家牛肉烧饼",
+          "primary_place_id": 6003,
+          "aliases": [
+            "穆德老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "12961",
+                  "name": "穆德老周家牛肉烧饼",
+                  "quote": "真的巨好吃😭！烧饼外酥里软，吸满肉汁，咬一口满嘴香；羊汤奶白醇厚",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。",
+              "sourcePlaceIds": [
+                "6003"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+              "original": {
+                "lat": 36.463688,
+                "lng": 116.986808,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "sourcePlaceId": "6003",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/jinan-food-variants-01.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "conclusion": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。",
+              "mentionIds": [
+                12961
+              ]
+            }
+          ]
+        },
+        {
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8",
+          "city": "济南",
+          "canonical_name": "老周家牛肉烧饼",
+          "primary_place_id": 5483,
+          "aliases": [
+            "老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "11510",
+                  "name": "老周家牛肉烧饼",
+                  "quote": "味道都大差不大，就近就可以了",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a29f1750000000007024b80"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。",
+              "sourcePlaceIds": [
+                "5483"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+              "original": {
+                "lat": 36.664617,
+                "lng": 117.008082,
+                "address": "普利街77号绿地中心北",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "sourcePlaceId": "5483",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/jinan-food-variants-01.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "conclusion": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。",
+              "mentionIds": [
+                11510
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5483,
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8"
+        },
+        {
+          "place_id": 6003,
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 377,
+          "fingerprint": "247e069b0890e2756e49f8d7b1b5750063afae7dbc6ee3cb262737bd532b125a",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "穆德老周家牛肉烧饼",
+              "老周家牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "bb53ff904464fb67e2ddf46d7ed0d2b8",
+              "d025994fc1b1449de922fa97abdd96f8"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-22-review-377",
+              "verdict": "uncertain",
+              "explanation": "2607明确老周家连锁就近选店；2839只说明夜游泉源之眼后吃饭再步行回五龙潭旁酒店，不能唯一确定分店。两条本批分别清除品牌泛称绑定点和远南侧错点，不把地理清理当成身份合并。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    377
+                  ],
+                  "conclusion": "2607明确老周家连锁就近选店；2839只说明夜游泉源之眼后吃饭再步行回五龙潭旁酒店，不能唯一确定分店。两条本批分别清除品牌泛称绑定点和远南侧错点，不把地理清理当成身份合并。",
+                  "sourcePlaceIds": [
+                    "6003",
+                    "5483"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-food-variants-01.json",
+                  "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+                  "mentionIds": [
+                    11510,
+                    12961
+                  ],
+                  "conclusion": "2607明确老周家连锁就近选店；2839只说明夜游泉源之眼后吃饭再步行回五龙潭旁酒店，不能唯一确定分店。两条本批分别清除品牌泛称绑定点和远南侧错点，不把地理清理当成身份合并。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9",
+          "city": "济南",
+          "canonical_name": "穆得老周家牛肉烧饼",
+          "primary_place_id": 5484,
+          "aliases": [
+            "穆得老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "6f0051f4dcf714df1a9700bc2fb993d9"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+          "city": "济南",
+          "canonical_name": "穆德老周家牛肉烧饼",
+          "primary_place_id": 6003,
+          "aliases": [
+            "穆德老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "12961",
+                  "name": "穆德老周家牛肉烧饼",
+                  "quote": "真的巨好吃😭！烧饼外酥里软，吸满肉汁，咬一口满嘴香；羊汤奶白醇厚",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。",
+              "sourcePlaceIds": [
+                "6003"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+              "original": {
+                "lat": 36.463688,
+                "lng": 116.986808,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+              "sourcePlaceId": "6003",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/jinan-food-variants-01.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+              "conclusion": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。",
+              "mentionIds": [
+                12961
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5484,
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9"
+        },
+        {
+          "place_id": 6003,
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 378,
+          "fingerprint": "bd9b9fe6a4ce5eea4bc08f864f1dabdb31eda1ec499d1c01cfe9429c5bbc4890",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "穆得老周家牛肉烧饼",
+              "穆德老周家牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "6f0051f4dcf714df1a9700bc2fb993d9",
+              "bb53ff904464fb67e2ddf46d7ed0d2b8"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-22-review-378",
+              "verdict": "uncertain",
+              "explanation": "已找回11527穆得·老周家原始提及，撤销缺原始生成来源的旧理由。但2563是沿线美食品牌名单，2839仅有老城区夜游与酒店相对位置；两者仍无对应门牌，不能仅凭穆得/穆德字形相近跨连锁分店合并。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    378
+                  ],
+                  "conclusion": "已找回11527穆得·老周家原始提及，撤销缺原始生成来源的旧理由。但2563是沿线美食品牌名单，2839仅有老城区夜游与酒店相对位置；两者仍无对应门牌，不能仅凭穆得/穆德字形相近跨连锁分店合并。",
+                  "sourcePlaceIds": [
+                    "5484",
+                    "6003"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-food-variants-01.json",
+                  "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+                  "mentionIds": [
+                    11527,
+                    12961
+                  ],
+                  "conclusion": "已找回11527穆得·老周家原始提及，撤销缺原始生成来源的旧理由。但2563是沿线美食品牌名单，2839仅有老城区夜游与酒店相对位置；两者仍无对应门牌，不能仅凭穆得/穆德字形相近跨连锁分店合并。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

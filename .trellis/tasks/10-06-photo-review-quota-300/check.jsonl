@@ -1,0 +1,4 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "Quality Check Checklist：typecheck 命令、集成失败需降级不得中止生成、文档改动需跑 git diff --check"}
+{"file": ".trellis/spec/server/backend/preference-photo-pipeline.md", "reason": "逐条核对额度记账语义（countedAt 只写一次、重试不占额度也不推迟窗口）、饱和 warn 只提醒一次、第 7 节 Tests 要求的用例，确认改动未破坏这些契约"}
+{"file": ".trellis/spec/guides/commit-convention.md", "reason": "提交信息格式、scope 词表与三段式收尾节奏"}
+{"file": ".trellis/tasks/10-06-photo-review-quota-300/research/photo-quota-baseline.md", "reason": "验收基线：改动后应能观察到新任务被调度（attempts 0→1、countedAt 写入）、饱和 warn 消失、5 个死任务消失"}

@@ -1,0 +1,323 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce",
+          "city": "济南",
+          "canonical_name": "经三路爱心红绿灯",
+          "primary_place_id": 5970,
+          "aliases": [
+            "经三路爱心红绿灯"
+          ],
+          "legacy_ids": [
+            "ce733b67e45f0d657e53ff9bff8cbbce"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里",
+              "noteId": 2797,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5970,
+                  "lat": 36.974469274712526,
+                  "lng": 117.20568128188651,
+                  "address": "山东省济南市济阳区济阳街道经三路",
+                  "sourceHash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86"
+                }
+              ],
+              "conclusion": "唯一原文指市区经三路机位；旧点为济阳区同名道路，与同篇及2793/2566街区位置不符。无精确红绿灯地图条目，清空而不借整条道路坐标。",
+              "mentionIds": [
+                12776
+              ],
+              "sourcePlaceIds": [
+                5970
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5970,
+          "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5970,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5970,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "爱心红绿灯和夹心胡同都在这里，适合拍照",
+              "evidence": "爱心红绿灯和夹心胡同都在这里"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8705,
+          "canonical_place_id": 5970,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 经三路爱心红绿灯",
+          "evidence_summary": "爱心红绿灯和夹心胡同都在这里，适合拍照"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5970,
+          "city": "济南",
+          "name_keys": [
+            "经三路爱心红绿灯"
+          ],
+          "entity_ids": [
+            "ce733b67e45f0d657e53ff9bff8cbbce"
+          ],
+          "source_hash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-46-light-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/light-source-review-01.json",
+              "kind": "qualified_heading_text_review",
+              "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+              "conclusion": "灯为独立摄影主体；这里的夹心胡同属于经三路周边，不是灯本体所含景观。排除三错误描述字段，保留12776身份与原指纹。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "ce733b67e45f0d657e53ff9bff8cbbce"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12776,
+          "scope_place_id": 5970,
+          "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce",
+          "input_hash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-46-light-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+              "reason": "subject_mismatch",
+              "subjectAnchor": {
+                "kind": "qualified_heading",
+                "subject": "爱心红绿灯",
+                "qualifier": "经三路"
+              }
+            },
+            "evidence_text": {
+              "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+              "reason": "subject_mismatch",
+              "subjectAnchor": {
+                "kind": "qualified_heading",
+                "subject": "爱心红绿灯",
+                "qualifier": "经三路"
+              }
+            },
+            "place_content": {
+              "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+              "reason": "subject_mismatch",
+              "subjectAnchor": {
+                "kind": "qualified_heading",
+                "subject": "爱心红绿灯",
+                "qualifier": "经三路"
+              }
+            }
+          }
+        }
+      ],
+      "inputs": {
+        "sourceHash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86",
+        "mentions": [
+          {
+            "mentionId": 12776,
+            "inputHash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce",
+          "city": "济南",
+          "canonical_name": "经三路爱心红绿灯",
+          "primary_place_id": 5970,
+          "aliases": [
+            "经三路爱心红绿灯"
+          ],
+          "legacy_ids": [
+            "ce733b67e45f0d657e53ff9bff8cbbce"
+          ],
+          "revision": 4,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "",
+            "geoStatus": "unresolvable",
+            "category": "文化",
+            "xhsPlaceType": "photo_spot"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里",
+              "noteId": 2797,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5970,
+                  "lat": 36.974469274712526,
+                  "lng": 117.20568128188651,
+                  "address": "山东省济南市济阳区济阳街道经三路",
+                  "sourceHash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86"
+                }
+              ],
+              "conclusion": "唯一原文指市区经三路机位；旧点为济阳区同名道路，与同篇及2793/2566街区位置不符。无精确红绿灯地图条目，清空而不借整条道路坐标。",
+              "mentionIds": [
+                12776
+              ],
+              "sourcePlaceIds": [
+                5970
+              ]
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/light-source-review-01.json",
+              "conclusion": "城市爱心红绿灯摄影主体，保持原稳定ID与此前清空错点的override，不借整路或爱心斑马线路口位置。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5970,
+          "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce"
+        }
+      ]
+    }
+  ]
+}

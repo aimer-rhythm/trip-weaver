@@ -1,0 +1,48 @@
+{
+  "batch": 57,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 3,
+  "historicalEntities": 3,
+  "mentions": 8,
+  "notes": 6,
+  "confirmed": 4,
+  "pendingAdded": 4,
+  "historicalReviewPreserved": true,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "name": "燕喜堂（CBD店）",
+      "mentions": 2,
+      "category": "美食",
+      "type": "food",
+      "unsupportedBranchPointClearedPreciseLocationPending": true
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面（经十一路）",
+      "mentions": 1,
+      "category": "美食",
+      "type": "food",
+      "unsupportedBranchPointClearedPreciseLocationPending": true
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉（联四路）",
+      "mentions": 1,
+      "category": "美食",
+      "type": "food",
+      "unsupportedBranchPointClearedPreciseLocationPending": true
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "7c2aefe42e08215ebd760f419da54b38477ca7da69369270991e7765a9979b91"
+}

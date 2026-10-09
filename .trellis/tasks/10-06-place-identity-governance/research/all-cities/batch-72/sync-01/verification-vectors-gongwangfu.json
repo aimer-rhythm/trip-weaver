@@ -1,0 +1,47 @@
+{
+  "verifiedAt": "2026-10-09T08:32:11.708Z",
+  "batch": "batch-72",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": [
+    "c5250326550bc954a0a07f41679bf87f"
+  ],
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "北京",
+      "exported": 1272,
+      "total": 1350,
+      "active": 1294,
+      "embedded": 1294,
+      "probes": [
+        {
+          "name": "恭王府",
+          "id": "c5250326550bc954a0a07f41679bf87f"
+        },
+        {
+          "name": "恭王府博物馆",
+          "id": "c5250326550bc954a0a07f41679bf87f"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "恭王府博物馆",
+          "id": "c5250326550bc954a0a07f41679bf87f",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "withdrawals": [],
+      "photosChecked": 31,
+      "audits": [
+        "966194b9-1a5c-431b-aa08-529579bc57be"
+      ]
+    }
+  ],
+  "failures": []
+}

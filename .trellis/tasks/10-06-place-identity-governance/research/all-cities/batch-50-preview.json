@@ -1,0 +1,191 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566",
+          "city": "济南",
+          "canonical_name": "VILLASHAKA",
+          "primary_place_id": 5399,
+          "aliases": [
+            "VILLASHAKA"
+          ],
+          "legacy_ids": [
+            "2ccb52ac3eeda4ca713a2b7bd975b566"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_distinct_shop_subject",
+              "file": "priority-cities/济南/vintage-source-review-01.json",
+              "mentionId": 11535,
+              "quote": "VILLA SHAKA的墙超好拍，咖啡也很赞",
+              "conclusion": "同篇分别介绍的古着杂货铺和咖啡店保持独立，名称空格仅按现行键归一；不互借看点或同义合并。"
+            },
+            {
+              "kind": "unsupported_geocoder_point_cleared",
+              "file": "priority-cities/济南/vintage-geocode-provenance-01.json",
+              "conclusion": "两个不同名称均复现同一无POI猜测点，且命名检索无门店命中；清空消费坐标，原源保持，不能当作精确定位。"
+            },
+            {
+              "kind": "public_place_reference",
+              "file": "priority-cities/济南/vintage-reference-09.json",
+              "url": "https://m.map.360.cn?new=1&src=pc_shenbian&pid=e5ad4681923ba3db",
+              "conclusion": "纬四路店公开页面仅为分店候选；另有上新街文字记录，原笔记无明确店址，不将候选名、门牌或坐标加成当前实体身份。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5399,
+          "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a",
+          "city": "济南",
+          "canonical_name": "BLUEDUCK骨董屋",
+          "primary_place_id": 5398,
+          "aliases": [
+            "BLUEDUCK骨董屋"
+          ],
+          "legacy_ids": [
+            "46bf3d4bc9d5aa019dd4a3184329e58a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "category": "购物",
+            "address": "山东省济南市市中区经三路120号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_distinct_shop_subject",
+              "file": "priority-cities/济南/vintage-source-review-01.json",
+              "mentionId": 11534,
+              "quote": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道",
+              "conclusion": "同篇分别介绍的古着杂货铺和咖啡店保持独立，名称空格仅按现行键归一；不互借看点或同义合并。"
+            },
+            {
+              "kind": "unsupported_geocoder_point_cleared",
+              "file": "priority-cities/济南/vintage-geocode-provenance-01.json",
+              "conclusion": "两个不同名称均复现同一无POI猜测点，且命名检索无门店命中；清空消费坐标，原源保持，不能当作精确定位。"
+            },
+            {
+              "kind": "public_place_reference",
+              "file": "priority-cities/济南/vintage-reference-05.json",
+              "url": "https://maps.apple.com/place?auid=1118368912447206&lsp=57879",
+              "conclusion": "地图中文全名及地址字段支持经三路120号，仅补文字地址，不用附近地点替代精确坐标。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5398,
+          "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a"
+        }
+      ]
+    }
+  ]
+}

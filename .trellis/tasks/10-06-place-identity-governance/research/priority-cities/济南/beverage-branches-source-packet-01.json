@@ -1,0 +1,268 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T20:46:20.051697+00:00",
+  "city": "济南",
+  "entityBatch": 53,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "9626de365121d40b3565b4a7dbc5be1a",
+        "city": "济南",
+        "canonical_name": "喜茶",
+        "primary_place_id": 5322,
+        "aliases": [
+          "喜茶"
+        ],
+        "legacy_ids": [
+          "9626de365121d40b3565b4a7dbc5be1a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5322,
+            "city": "济南",
+            "name": "喜茶",
+            "normalized_name": "喜茶",
+            "address": "泉城路188号恒隆广场西塔1层",
+            "latitude": 36.66326169418812,
+            "longitude": 117.02321608883494,
+            "place_type": "cafe",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "725b796d812c6dcddcd0cd8478675cea87f67fa42beb3bc5b69b947657a2350b",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "文艺"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5322,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "喜茶"
+      ],
+      "mentionIds": [
+        11344
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac",
+        "city": "济南",
+        "canonical_name": "山耶云耶",
+        "primary_place_id": 5324,
+        "aliases": [
+          "山耶云耶"
+        ],
+        "legacy_ids": [
+          "eb75294ebee7a37c374a3f5cd374d4ac"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5324,
+            "city": "济南",
+            "name": "山耶云耶",
+            "normalized_name": "山耶云耶",
+            "address": "",
+            "latitude": 36.59966672382187,
+            "longitude": 117.04827061012148,
+            "place_type": "cafe",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "4e28ab8d506fdd5c07c8f04d959424995f324ed2c5372fa18a0bc7ee57580cea",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "文艺"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5324,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "山耶云耶"
+      ],
+      "mentionIds": [
+        11346
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "9626de365121d40b3565b4a7dbc5be1a",
+        "city": "济南",
+        "canonical_name": "喜茶",
+        "primary_place_id": 5322,
+        "aliases": [
+          "喜茶"
+        ],
+        "legacy_ids": [
+          "9626de365121d40b3565b4a7dbc5be1a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac",
+        "city": "济南",
+        "canonical_name": "山耶云耶",
+        "primary_place_id": 5324,
+        "aliases": [
+          "山耶云耶"
+        ],
+        "legacy_ids": [
+          "eb75294ebee7a37c374a3f5cd374d4ac"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5322,
+        "entity_id": "9626de365121d40b3565b4a7dbc5be1a"
+      },
+      {
+        "place_id": 5324,
+        "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11344,
+      "raw_note_id": 2566,
+      "name": "喜茶(济南融汇老商埠店)",
+      "normalized_name": "喜茶",
+      "place_type": "cafe",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "打卡爱心雕塑和老爷车",
+      "evidence_text": "打卡爱心雕塑和老爷车",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有爱心雕塑和老爷车",
+              "quote": "打卡爱心雕塑和老爷车"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.016919+00:00",
+      "inputHash": "800f8260cd01de115af2af5f6be3cc45f01f35b245c9fea93ca0b850f22f5128"
+    },
+    {
+      "id": 11346,
+      "raw_note_id": 2566,
+      "name": "山耶云耶(融汇济南老商埠店)",
+      "normalized_name": "山耶云耶",
+      "place_type": "cafe",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "打卡马力欧像素天桥",
+      "evidence_text": "打卡马力欧像素天桥",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有马力欧像素天桥",
+              "quote": "打卡马力欧像素天桥"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.016919+00:00",
+      "inputHash": "d0b07ea17b97ec0aa55d662d6b1d5952cb2910593fc941531ade8012258f3ea5"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2566,
+      "city": "济南",
+      "title": "济南经三路citywalk全机位图文打卡路线攻略",
+      "desc": "济南经三路真的是很有意思的街区，各种涂鸦墙，可爱的打卡装置都很有趣。旁边又挨着非常文艺的咖啡文创小街道，只要一两个小时就能寄拍到多巴胺配色的照片，也能逛到文艺硬核的咖啡店。特整理打卡路线图文攻略，希望帮到大家。\n\t\n🗺️推荐路线，见图2:\n①纬三路与经三路交叉口【打卡爱心斑马线】→②喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】→③1903 MIX淘醉济南(老商埠店)【打卡济南路牌】→④山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】→⑤品忆香炒货工坊(老商埠店)【打卡超大济南文字墙和紫色涂鸦墙】→⑥fufuland生乳舒芙蕾(济南老商埠店)【打卡小熊涂鸦】→⑦喜艾gelato(老商埠店)【打卡济南文字墙、泉城文字墙和爱心转角】→⑧夹心胡同(融汇济南老商埠店)【打卡爱心天桥】→然后走经四路→⑨上优超市烟酒超市，走到这家超市基本就逛完了\n\t\n🌞整条路线一点都不累，因为非常的密集，所以一个小时左右就可以。\n\t\n#济南旅游[话题]# #济南旅行[话题]# #济南一日游[话题]# #老商埠[话题]# #经三路[话题]# #济南citywalk[话题]# #济南拍照[话题]# #济南约拍[话题]# #大学生旅游[话题]# #济南周末去哪儿[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11344,
+        11346
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

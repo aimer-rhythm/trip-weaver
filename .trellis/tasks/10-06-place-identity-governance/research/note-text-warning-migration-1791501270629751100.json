@@ -1,0 +1,153 @@
+{
+  "apply": true,
+  "preview": {
+    "missing": [],
+    "missingColumns": [
+      "place_identity_scope.text_warnings"
+    ],
+    "apply": false,
+    "present": [
+      "place_entity",
+      "place_entity_member",
+      "place_entity_review",
+      "place_entity_change",
+      "place_identity_scope",
+      "place_identity_scope_source",
+      "place_mention_assignment",
+      "place_image_assignment"
+    ]
+  },
+  "applied": {
+    "missing": [],
+    "missingColumns": [
+      "place_identity_scope.text_warnings"
+    ],
+    "apply": true,
+    "present": [
+      "place_entity",
+      "place_entity_member",
+      "place_entity_review",
+      "place_entity_change",
+      "place_identity_scope",
+      "place_identity_scope_source",
+      "place_mention_assignment",
+      "place_image_assignment"
+    ]
+  },
+  "repeated": {
+    "missing": [],
+    "missingColumns": [],
+    "apply": true,
+    "present": [
+      "place_entity",
+      "place_entity_member",
+      "place_entity_review",
+      "place_entity_change",
+      "place_identity_scope",
+      "place_identity_scope_source",
+      "place_mention_assignment",
+      "place_image_assignment"
+    ]
+  },
+  "before": {
+    "place_entity": {
+      "rows": 5865,
+      "sha256": "cbfefe13998756d70830ec783d0102446e4a7093191dda7828344db0b5dc49cb"
+    },
+    "place_entity_member": {
+      "rows": 5870,
+      "sha256": "bc2b1409a2b353ae4d8530a7c7cee2e21bcde6b99e4f112630ce61fecfbb9257"
+    },
+    "place_entity_review": {
+      "rows": 658,
+      "sha256": "cc12163c11f8648802f866f198d72a642244c8be7a880e337ec93516c30d3b87"
+    },
+    "place_entity_change": {
+      "rows": 681,
+      "sha256": "01def7170591a9d34ce19eaa8792c090d0255a61c484fd86d414c1083cabc8f1"
+    },
+    "place_identity_scope": {
+      "rows": 91,
+      "sha256": "a8afe0da3666d784679e90a04beb8ee7195eb11deb88b608624a3450c2c497e3"
+    },
+    "place_identity_scope_source": {
+      "rows": 13,
+      "sha256": "e422771d3957e8953b32fd9d91c5ed0ba8941f690ec70794e81c383f74fecb3e"
+    },
+    "place_mention_assignment": {
+      "rows": 507,
+      "sha256": "c406dc4856ae11e07365e48ff9077cbca90d40c5c305fc04daf48c7a20fedfc2"
+    },
+    "place_image_assignment": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "canonical_place": {
+      "rows": 5870,
+      "sha256": "5b9f476fc08d7c29fce8f15d772ee4785b3dacbb29b43f0b8d7affb5f9c79b26"
+    },
+    "place_mention": {
+      "rows": 12700,
+      "sha256": "5358035163d771b7861e6de3370fc6fdf917daaafbb7c2687473ff97d6c2fbe0"
+    },
+    "raw_note": {
+      "rows": 1984,
+      "sha256": "5f75caa76afaf51baae0b04089c58766a6c74fb5d1e76318143451f94b3833e8"
+    },
+    "place_summary": {
+      "rows": 5427,
+      "sha256": "2ca0adb014fe689ab8ca28645224057201a9b51820dcadd55e19398f9945e599"
+    }
+  },
+  "after": {
+    "place_entity": {
+      "rows": 5865,
+      "sha256": "cbfefe13998756d70830ec783d0102446e4a7093191dda7828344db0b5dc49cb"
+    },
+    "place_entity_member": {
+      "rows": 5870,
+      "sha256": "bc2b1409a2b353ae4d8530a7c7cee2e21bcde6b99e4f112630ce61fecfbb9257"
+    },
+    "place_entity_review": {
+      "rows": 658,
+      "sha256": "cc12163c11f8648802f866f198d72a642244c8be7a880e337ec93516c30d3b87"
+    },
+    "place_entity_change": {
+      "rows": 681,
+      "sha256": "01def7170591a9d34ce19eaa8792c090d0255a61c484fd86d414c1083cabc8f1"
+    },
+    "place_identity_scope": {
+      "rows": 91,
+      "sha256": "a8afe0da3666d784679e90a04beb8ee7195eb11deb88b608624a3450c2c497e3"
+    },
+    "place_identity_scope_source": {
+      "rows": 13,
+      "sha256": "e422771d3957e8953b32fd9d91c5ed0ba8941f690ec70794e81c383f74fecb3e"
+    },
+    "place_mention_assignment": {
+      "rows": 507,
+      "sha256": "c406dc4856ae11e07365e48ff9077cbca90d40c5c305fc04daf48c7a20fedfc2"
+    },
+    "place_image_assignment": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "canonical_place": {
+      "rows": 5870,
+      "sha256": "5b9f476fc08d7c29fce8f15d772ee4785b3dacbb29b43f0b8d7affb5f9c79b26"
+    },
+    "place_mention": {
+      "rows": 12700,
+      "sha256": "5358035163d771b7861e6de3370fc6fdf917daaafbb7c2687473ff97d6c2fbe0"
+    },
+    "raw_note": {
+      "rows": 1984,
+      "sha256": "5f75caa76afaf51baae0b04089c58766a6c74fb5d1e76318143451f94b3833e8"
+    },
+    "place_summary": {
+      "rows": 5427,
+      "sha256": "2ca0adb014fe689ab8ca28645224057201a9b51820dcadd55e19398f9945e599"
+    }
+  },
+  "dataUnchanged": true
+}

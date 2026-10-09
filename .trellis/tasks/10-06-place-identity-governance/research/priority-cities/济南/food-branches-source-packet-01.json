@@ -1,0 +1,405 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T20:33:49.766563+00:00",
+  "city": "济南",
+  "entityBatch": 52,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "cc3ebff96b9f814d82ef808324a42400",
+        "city": "济南",
+        "canonical_name": "鑫龙火锅",
+        "primary_place_id": 5474,
+        "aliases": [
+          "鑫龙火锅"
+        ],
+        "legacy_ids": [
+          "cc3ebff96b9f814d82ef808324a42400"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5474,
+            "city": "济南",
+            "name": "鑫龙火锅",
+            "normalized_name": "鑫龙火锅",
+            "address": "北园大街445",
+            "latitude": 36.68528984015009,
+            "longitude": 117.0112475856792,
+            "place_type": "food",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 28.8
+          },
+          "sourceHash": "b1fababfa71fc440457625c1f9087a3143c548f76f932bc0c9d5893e1e66eef9",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "美食"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5474,
+            "mention_count_30d": 4,
+            "recommend_score": 12.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "鑫龙火锅"
+      ],
+      "mentionIds": [
+        11708,
+        11709,
+        12846,
+        12890
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "97c845bd4afbe220afe8545ed5030c95",
+        "city": "济南",
+        "canonical_name": "七九刘家烧烤",
+        "primary_place_id": 5433,
+        "aliases": [
+          "七九刘家烧烤"
+        ],
+        "legacy_ids": [
+          "97c845bd4afbe220afe8545ed5030c95"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5433,
+            "city": "济南",
+            "name": "七九刘家烧烤",
+            "normalized_name": "七九刘家烧烤",
+            "address": "小经六路东首",
+            "latitude": 36.65396661961726,
+            "longitude": 116.97935920920152,
+            "place_type": "food",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 18.5
+          },
+          "sourceHash": "00a0cd73927fd6ad2f432dd73d8a51cc1af76b8b732c6f22d3ab94cfc5911f9b",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "美食"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5433,
+            "mention_count_30d": 2,
+            "recommend_score": 10.0
+          }
+        }
+      ],
+      "nameKeys": [
+        "七九刘家烧烤"
+      ],
+      "mentionIds": [
+        11635,
+        12886
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "97c845bd4afbe220afe8545ed5030c95",
+        "city": "济南",
+        "canonical_name": "七九刘家烧烤",
+        "primary_place_id": 5433,
+        "aliases": [
+          "七九刘家烧烤"
+        ],
+        "legacy_ids": [
+          "97c845bd4afbe220afe8545ed5030c95"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "cc3ebff96b9f814d82ef808324a42400",
+        "city": "济南",
+        "canonical_name": "鑫龙火锅",
+        "primary_place_id": 5474,
+        "aliases": [
+          "鑫龙火锅"
+        ],
+        "legacy_ids": [
+          "cc3ebff96b9f814d82ef808324a42400"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5433,
+        "entity_id": "97c845bd4afbe220afe8545ed5030c95"
+      },
+      {
+        "place_id": 5474,
+        "entity_id": "cc3ebff96b9f814d82ef808324a42400"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11708,
+      "raw_note_id": 2603,
+      "name": "鑫龙火锅",
+      "normalized_name": "鑫龙火锅",
+      "place_type": "food",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "锅底与素菜分开收费，糖蒜未点却强制收费，存在文字游戏。",
+      "evidence_text": "锅底17，带的菜32",
+      "route_order": 1,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:33.620956+00:00",
+      "inputHash": "33c619a40256cb34b37732c6cd6430d240e84fa925a34f1eced5b4bf221a86dd"
+    },
+    {
+      "id": 11709,
+      "raw_note_id": 2604,
+      "name": "鑫龙火锅（北园大街店）",
+      "normalized_name": "鑫龙火锅",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "最正宗，清水葱姜锅底配麻汁辣椒油，羊肉原味爆汁",
+      "evidence_text": "一定要吃北园大街店‼️感觉最正宗",
+      "route_order": 1,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "锅底非常简单就是清水加葱姜",
+              "quote": "锅底非常简单就是清水➕葱姜"
+            },
+            {
+              "text": "调料麻汁配特炸的辣椒油加韭花酱",
+              "quote": "调料麻汁配特炸的辣椒油➕韭花酱"
+            },
+            {
+              "text": "到店每一桌上四菜加一盘羊肉",
+              "quote": "到店 每一桌上四菜➕一盘羊肉"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:33.623497+00:00",
+      "inputHash": "06c05d431925e384a548302225e87588f033c8e55722b9414b100f31523c0625"
+    },
+    {
+      "id": 12846,
+      "raw_note_id": 2852,
+      "name": "鑫龙火锅",
+      "normalized_name": "鑫龙火锅",
+      "place_type": "food",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "本土铜锅但口味单调，作者不喜欢，但老公喜欢。",
+      "evidence_text": "口味太单调",
+      "route_order": null,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.628299+00:00",
+      "inputHash": "bfce72f70b00cb1226e1edf8aabe4346999b1c6c9e54c7f78778e322c28b4082"
+    },
+    {
+      "id": 12890,
+      "raw_note_id": 2856,
+      "name": "鑫龙火锅",
+      "normalized_name": "鑫龙火锅",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南美食推荐，具体菜品未详述",
+      "evidence_text": "2️⃣鑫龙火锅",
+      "route_order": null,
+      "confidence": 0.7,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.805290+00:00",
+      "inputHash": "43be79682b5bc5ee909167e1082949f6f31443b3aecd5690744557ea61d4a1b7"
+    },
+    {
+      "id": 11635,
+      "raw_note_id": 2602,
+      "name": "七九刘家烧烤",
+      "normalized_name": "七九刘家烧烤",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "纬九路烧烤，口碑好",
+      "evidence_text": "我个人感觉还不错的一些店",
+      "route_order": 7,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:33.571044+00:00",
+      "inputHash": "afd98f5faf65d40faa07a3aae3824094e93acebe846cf9ffc76292ed378a4c8b"
+    },
+    {
+      "id": 12886,
+      "raw_note_id": 2854,
+      "name": "七九刘家烧烤(纬九路店)",
+      "normalized_name": "七九刘家烧烤",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "本地人推荐的老字号苍蝇馆子，招牌虾酱馒头片和各种烤串",
+      "evidence_text": "感谢济南本地人推荐的10家苍蝇馆子",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "招牌菜有虾酱馒头片、各种烤串",
+              "quote": "虾酱馒头片，各种烤串"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.717550+00:00",
+      "inputHash": "68045d63a635536a8ec0f833bbeb51f8f86fdcd25b70dabf65a3f48771f8fea1"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2602,
+      "city": "济南",
+      "title": "济南真的太好吃了吧！3天吃了18顿……",
+      "desc": "简单给大家整理了一下我个人感觉还不错的一些店，碍于篇幅原因图片中整理有限，我再在正文给大家补充一些不踩雷的\n一、牛肉烧饼\n①杨家牛肉烧饼（回民小区清真南大寺）\n②周记牛肉烧饼（经三路）\n③地瓜羊汤（回民小区北段）\n④黄老太牛肉烧饼（回民小区清真南大寺）\n⑤匡山公园牛肉烧饼（济齐路）\nps：鉴于党家庄离市区太远，对游客不友好，所以诸如赛赛 小芳 马姐等就不做推荐\n二、济南烧烤\n①一九黄家烧烤（纬九路）\n②七九刘家烧烤（纬九路）\n③艺林烧烤（花店街）\n④郑哥烧烤（北大槐树街）\n⑤金位烧烤（管鲍大街）\n⑥五嫂砂锅烧烤（青年西路）\n⑦阿东烧烤（新菜市街）\n⑧五福林林烧烤（羊头峪路）\n三、把子肉系列\n有正规门店：\n①清河老苏把子肉（生产路）\nps：比较老派的把子肉，就干早上中午，不要跑空\n②桥下把子肉（二环东路山大南路）\n③刘小忙把子肉（联四路）\n④粒粒香把子肉（东西丹凤街）\n⑤幸福居米粉铺（东工商河路）\n⑥老兵把子肉（经六路）\n⑦小林把子肉（二七南路）\n⑧福哥把子肉（菜市庄）\n摆摊卖\n①八一把子肉（八一立交桥南）\n②燕山把子肉（窑头路）\n③翟家把子肉（泺安路）\n④东仓把子肉（历山路）\n四、鲁菜\n①陈氏鲁菜（省府前街）\n②萃华楼（宽厚里）\n③至尊源菜馆（燕子山路）\n④肴源酒家（甸新北路）\n⑤金房子水饺（张庄路）\n⑥聚源饭庄（岔路街）\n⑦红星菜馆（东泺河路）\n⑧洪达鲁菜（花园路）\n五、早餐\n①商河老豆腐（纬三路）\n②孙家糖油条（按察司街）\n③秦记火烧（肉火烧去制锦市，其他去河边）\n④鸡腿汉堡（工人新村）\n六、炸串\n①二钢串叔麻辣烫（华龙路）\n②胖哥炸蛋（纬九路）\n③老一百油炸羊肉串（通惠街）\n④白老太油炸羊肉串（闵子骞路）\n七、朝鲜面\n①七公酸辣粉（山师东路）\n②重庆一绝殷记米线（棋盘街）\n③山体叶殷米线（南门大街）\n八、甜点\n①田田甜手作糖水（雪山路）\n②白猪猪＆黑熊（望平街）\n③台湾奶香脆皮麻花（洪家楼北路）\n九、面馆\n①亮亮拉面（经十一路）\n②西记拉面（经二路）\n③立信拉面（信义庄西街）\n#济南美食[话题]# #济南美食攻略[话题]# #济南美食打卡[话题]# #逛吃全攻略[话题]# #最强美食城市安利[话题]# #跟本地人吃就对了[话题]# #济南落地签[话题]# #落地签共建计划[话题]# #国庆旅游攻略[话题]# #济南旅游[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11635
+      ]
+    },
+    {
+      "id": 2603,
+      "city": "济南",
+      "title": "避雷济南鑫龙火锅",
+      "desc": "避雷！！！！！！！\n在网上看到想着去尝一下 ，到了以后锅底和四个素菜都在桌上摆着  ，服务员上来说锅底带的四个菜 ，不喜欢可以换 到这里 ，我还想一个锅底还带四个菜 ，这么便宜  ，后来结账的时候发现 ！锅底是49 。我就问怎么是49 老板的回答是锅底17，四个菜32。我说你们不是说四个菜是带的吗 老板的回答是 ，对呀 锅底17 带的菜32 。文字游戏也是被老板玩明白了。最后是糖蒜 在没有点的情况下上了两个糖蒜 因为一般吃涮肉都会带糖蒜，就没有多问 然后家人吃了一个中的两颗蒜瓣 后来结账的时候用了¥4，我说这个糖蒜我们没点呀，人家说都是上了，你们吃了就要付钱，我说那行吧，后来我发现菜单上一颗糖串是两块，我说呢，我们只吃了一个中的一颗，那另外一个给我们退了吧，人家老板又说一盘两个是三块，这两块的是两个不够吃了，以后再加一个是两块[抱拳R][抱拳R][抱拳R]实在是佩服#鑫龙火锅[话题]# #济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11708
+      ]
+    },
+    {
+      "id": 2604,
+      "city": "济南",
+      "title": "🥘如果来济南只吃一顿，就吃鑫龙火锅‼️",
+      "desc": "鑫龙真不用我多说，懂得都懂hhh\n从上学吃到结婚生子\n已经成为有感情的味道了哈哈[偷笑R]\n周围的家人朋友都被我们推荐去吃\n但一定要吃北园大街店‼️感觉最正宗\n\t\n锅底非常简单就是清水➕葱姜\n调料麻汁配特炸的辣椒油➕韭花酱\n到店 每一桌上四菜➕一盘羊肉\n就是这种原味感！！\n第一口香迷糊～一口爆汁✨谁懂！都去吃！！[哭惹R]\n\t\n#济南美食[话题]# #济南探店[话题]# #老北京火锅[话题]# #铜火锅[话题]# #周末吃什么[话题]# #羊肉火锅[话题]# #铜锅涮肉[话题]# #没有什么是一顿火锅解决不了[话题]# #巷子里的火锅[话题]# #济南攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11709
+      ]
+    },
+    {
+      "id": 2852,
+      "city": "济南",
+      "title": "本地人私藏！济南这18家店不吃白来！",
+      "desc": "全是本人一家家吃出来的真心推荐！路线图放最后啦，照着走刚好能安排一日Citywalk～那两家牛肉烧饼离趵突泉都不远，可以跟朋友买一个分着尝尝。鑫龙虽然是本土铜锅，但我觉得口味太单调，我老公倒是挺喜欢；聚宝源就是我们俩的共同心头好，麻酱特别对北方人的胃！\n#济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12846
+      ]
+    },
+    {
+      "id": 2854,
+      "city": "济南",
+      "title": "济南美食，10家必吃老字号苍蝇馆子，出发~",
+      "desc": "[一R].福利来酒店\n人均∶79\n泺源大街68号\n两吃虾仁，过桥米线\n\t\n[二R].三居鲁味坊黄焖鸡\n人均∶45\n山大路195号\n黄焖鸡，红烧带鱼\n\t\n[三R].泉城老董家(佛山苑店)\n人均∶54\n佛山街中段35号\n风味茄子，两吃里脊\n\t\n[四R].红辣椒韩国料理(山大北路店)\n人均∶47\n山大北路50号\n牛肉石锅拌饭，芝士炒年糕\n\t\n[五R].咱家王新国把子肉(县东巷店)\n人均∶24\n县东巷91号\n把子肉，土豆泥\n\t\n[六R].乐友川味家常菜馆\n人均∶90\n经三路纬六路197号\n工夫牛肉，孜然蘑菇\n\t\n[七R].米家牛肉(回民小区总店)\n人均∶19\n回民小区30号楼104室\n牛肉烧饼，牛肉汤\n\t\n[八R].七九刘家烧烤(纬九路店)\n人均∶102\n小经六路东首近纬九路\n虾酱馒头片，各种烤串\n\t\n[九R].卫巷菜馆(芙蓉总店)\n人均∶53\n芙蓉巷8号\n椒盐鱿鱼，爆炒腰花\n\t\n[一R][零R].老济南民间小吃(芙蓉街店)\n人均∶81\n芙蓉街60号\n九转大肠，老济南炒合菜\n\t\n感谢济南本地人推荐的10家苍蝇馆子～\n\t\n#灵感好店出道计划[话题]# #一口秋膘一家好店[话题]# #本地人美食清单[话题]# #济南美食[话题]# #济南旅游[话题]# #济南旅行[话题]# #济南旅游攻略[话题]# #国庆去哪儿玩[话题]# #旅途中的烟火气小店[话题]# #保持热爱奔赴山海[话题]# @吃货薯",
+      "unavailable": false,
+      "mentionIds": [
+        12886
+      ]
+    },
+    {
+      "id": 2856,
+      "city": "济南",
+      "title": "我的济南48h！！（附店名和景点）仅个人分享～",
+      "desc": "济南好吃的真多呀！！根本吃不完！恨自己只有一个胃🥺🥺\n1️⃣陈氏肥蛤\n2️⃣鑫龙火锅\n3️⃣太犇牛手作茶铺\n4️⃣秦记火烧\n5️⃣许记排骨\n6️⃣奶香脆皮麻花\n7️⃣柴氏鱿鱼夹饼\n-\n🚶景点：\n按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的！！\n有时间可以去洪家楼教堂和于家桥看看～\n#济南旅游[话题]# #济南美食[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南citywalk[话题]# #济南旅行[话题]# #济南吃喝玩乐[话题]# #大声安利本地美食[话题]# #逛吃全攻略[话题]# #济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12890
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

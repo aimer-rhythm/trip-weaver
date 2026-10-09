@@ -1,0 +1,401 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 3,
+ "activeCount": 3,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "9466c30b1b1c2ef00fdb6373bdc188df6125cff4e904ceaa743e1c9f6581efff",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "共青团路关帝庙",
+    "济南环城公园",
+    "四窟万象",
+    "关帝庙"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11492,
+     "noteId": 2551,
+     "inputHash": "e26f02da8aa706e38347b3884ef4e5b75248b4a46850d4ec5ab7ba76f5f29dbd",
+     "textHash": "ed2edd6e2a6b147901c01bcc44f668fdfc5153aa8d468fedf07037f43fd36492",
+     "textLength": 550,
+     "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12591,
+     "noteId": 2823,
+     "inputHash": "e1bf8aab378f2219cb0810d54d227ee1b2a033746226cd7c169ca3e34b59868f",
+     "textHash": "ddd4145ca38c815ed641bc2e8bcd4eca044934dd8f29e68e8d0a59c7f2b987ab",
+     "textLength": 571,
+     "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12777,
+     "noteId": 2797,
+     "inputHash": "84d06a33bcd8861eb8c1c59ee79dee3cfde1a94381c3d1ba7efc20a3fc513f59",
+     "textHash": "8dea1677404eff3326dcd80069c50197fe246492a9dc574fe34d42880a7f0a8b",
+     "textLength": 736,
+     "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12964,
+     "noteId": 2841,
+     "inputHash": "13eb1d18379cfa525e017c9436e3ead8f711be3b5879a486d4b1648c24253730",
+     "textHash": "bf103b2dbcadfd0a080ebc47b7c3f58f29f415f74288beb14633b88aace879f9",
+     "textLength": 364,
+     "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+     "revision": 4,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+     "revision": 2,
+     "canonicalName": "济南环城公园",
+     "aliases": [
+      "济南环城公园"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+     "revision": 3,
+     "canonicalName": "四窟万象",
+     "aliases": [
+      "四窟万象"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+     "revision": 4,
+     "canonicalName": "共青团路关帝庙",
+     "aliases": [
+      "共青团路关帝庙",
+      "关帝庙"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "7ac1b9fdfb96a01db695da65d8e81830",
+   "name": "四窟万象",
+   "category": "文化",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "千佛山景区内",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "仿制石窟，内部为四大石窟仿制品，值得一看"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "仿制石窟，内部为四大石窟的仿制品。",
+     "highlights": [
+      {
+       "text": "仿制石窟，内部为四大石窟的仿制品",
+       "quote": "一处仿制的石窟，内部为四大石窟的仿制品",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:02:50.114368+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:22:19.975998+00:00"
+    },
+    "originalName": "四窟万象",
+    "openHours": {
+     "version": 2,
+     "subject": "四窟万象",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11492,
+      "noteId": 2551,
+      "inputHash": "e26f02da8aa706e38347b3884ef4e5b75248b4a46850d4ec5ab7ba76f5f29dbd"
+     },
+     {
+      "mentionId": 12777,
+      "noteId": 2797,
+      "inputHash": "84d06a33bcd8861eb8c1c59ee79dee3cfde1a94381c3d1ba7efc20a3fc513f59"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+     "canonicalName": "四窟万象",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "四窟万象"
+     ],
+     "memberIds": [
+      "7ac1b9fdfb96a01db695da65d8e81830"
+     ]
+    },
+    "aliases": [
+     "四窟万象"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_warning",
+     "content": "仿制四大名窟，票价略贵",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a2575640000000006036470?xsec_token=ABDioCizBL_UDnrOQpwOUnCASYmh4W9ADlAfQCnCcQrMY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "仿制石窟，内部为四大石窟仿制品，值得一看",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "69ab8bb674e8f0eea31c34c936bddf23",
+   "name": "济南环城公园",
+   "category": "文化",
+   "lng": 117.01716,
+   "lat": 36.662423,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "山东省济南市历下区泉城路街道南门大街2-1号",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "沿护城河可看大小泉眼，接泉水，蔷薇花季景色美，治愈"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "沿护城河分布着包括黑虎泉在内的大大小小的泉眼。公园内设有接泉水的地方。",
+     "highlights": [
+      {
+       "text": "沿护城河分布着包括黑虎泉在内的大大小小的泉眼",
+       "quote": "顺着河走，不走回头路，可以看到包括黑虎泉在内的大大小小的泉眼",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69ec9314000000003502b369?xsec_token=ABdrP058gOUu1kVWQHrzbM58lCUk6gaQO7j28S1GiWUZM=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:04:06.452641+00:00"
+      },
+      {
+       "text": "公园内设有接泉水的地方",
+       "quote": "接泉水的地方也在这个公园里",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69ec9314000000003502b369?xsec_token=ABdrP058gOUu1kVWQHrzbM58lCUk6gaQO7j28S1GiWUZM=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:04:06.452641+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:22:19.975998+00:00"
+    },
+    "originalName": "济南环城公园",
+    "openHours": {
+     "version": 2,
+     "subject": "济南环城公园",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12591,
+      "noteId": 2823,
+      "inputHash": "e1bf8aab378f2219cb0810d54d227ee1b2a033746226cd7c169ca3e34b59868f"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+     "canonicalName": "济南环城公园",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "济南环城公园"
+     ],
+     "memberIds": [
+      "69ab8bb674e8f0eea31c34c936bddf23"
+     ]
+    },
+    "aliases": [
+     "济南环城公园"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "沿护城河可看大小泉眼，接泉水，蔷薇花季景色美，治愈",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69ec9314000000003502b369?xsec_token=ABdrP058gOUu1kVWQHrzbM58lCUk6gaQO7j28S1GiWUZM=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "c93e3216e2e3cc1b75d07097f2c78367",
+   "name": "共青团路关帝庙",
+   "category": "文化",
+   "lng": 117.01347483646703,
+   "lat": 36.664213467405865,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "筐市街18-3",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "院内西蜜脂泉。",
+     "highlights": [
+      {
+       "text": "院内西蜜脂泉",
+       "quote": "院内有西蜜脂泉",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6abed25e0000000018013f13?xsec_token=ABQCa-GG-zKK8uawe63EkMz1l68oe3AheagXd15l9aB38=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:04:31.261694+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:22:19.975998+00:00"
+    },
+    "originalName": "关帝庙",
+    "openHours": {
+     "version": 2,
+     "subject": "共青团路关帝庙",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12964,
+      "noteId": 2841,
+      "inputHash": "13eb1d18379cfa525e017c9436e3ead8f711be3b5879a486d4b1648c24253730"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+     "revision": 4,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+     "canonicalName": "共青团路关帝庙",
+     "revision": 4,
+     "kind": "same_entity",
+     "memberNames": [
+      "共青团路关帝庙",
+      "关帝庙"
+     ],
+     "memberIds": [
+      "c93e3216e2e3cc1b75d07097f2c78367",
+      "3fbe74bd55cc6058a163c93c7a75dcbc"
+     ]
+    },
+    "aliases": [
+     "共青团路关帝庙",
+     "关帝庙"
+    ],
+    "geoStatus": "resolved",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "免费，院内西蜜脂泉，对古建有兴趣可顺便看",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6abed25e0000000018013f13?xsec_token=ABQCa-GG-zKK8uawe63EkMz1l68oe3AheagXd15l9aB38=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

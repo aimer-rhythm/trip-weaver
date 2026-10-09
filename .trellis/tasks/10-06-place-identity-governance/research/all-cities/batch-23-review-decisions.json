@@ -1,0 +1,103 @@
+[
+  {
+    "key": "all-cities-20261006-batch-23-review-425",
+    "city": "西安",
+    "reviewFingerprint": "21ba52019ef660ed49de04a07978c3808ce7a33fea33223936d1b7ff96bb7851",
+    "expectedRevisions": {
+      "4a4505a1baed0f14c8a4fe6386bc5798": 2,
+      "cac7b5d4f244dad808626ba1590c38f2": 2
+    },
+    "verdict": "part_of",
+    "explanation": "原12551明确山顶潜龙寺红墙，是寺院本体；12455明确潜龙寺景区。现已抓取陕旅集团官网（来源少华山）与国际在线（来源渭南市委宣传部）正文，均列其为少华山五大景区之一。公开词条进一步明确景区因寺得名、范围约360公顷、内部以寺为中心含多处景点和游览轴，寺院不是整个分区的同义词。登记潜龙寺part_of潜龙寺景区，保留各自ID；两条西安高新错点同步清除。范围与行政区证据不用于生成精确坐标、开放时间或门票事实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          425
+        ],
+        "conclusion": "原12551明确山顶潜龙寺红墙，是寺院本体；12455明确潜龙寺景区。现已抓取陕旅集团官网（来源少华山）与国际在线（来源渭南市委宣传部）正文，均列其为少华山五大景区之一。公开词条进一步明确景区因寺得名、范围约360公顷、内部以寺为中心含多处景点和游览轴，寺院不是整个分区的同义词。登记潜龙寺part_of潜龙寺景区，保留各自ID；两条西安高新错点同步清除。范围与行政区证据不用于生成精确坐标、开放时间或门票事实。",
+        "sourcePlaceIds": [
+          "5806",
+          "5839"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12551,
+          12455,
+          12026
+        ],
+        "conclusion": "原12551明确山顶潜龙寺红墙，是寺院本体；12455明确潜龙寺景区。现已抓取陕旅集团官网（来源少华山）与国际在线（来源渭南市委宣传部）正文，均列其为少华山五大景区之一。公开词条进一步明确景区因寺得名、范围约360公顷、内部以寺为中心含多处景点和游览轴，寺院不是整个分区的同义词。登记潜龙寺part_of潜龙寺景区，保留各自ID；两条西安高新错点同步清除。范围与行政区证据不用于生成精确坐标、开放时间或门票事实。"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.sxtourgroup.com/home/guanzhonglishiwenhua/info/id/2596/catId/242.html",
+        "file": "all-cities/xian-qianlong-tourgroup-fetch.json",
+        "sha256": "a846b198f6ac4f1e9e41d42f6bd517263fc21d6c849b7211e1b35b95c1ae419e"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://sn.cri.cn/n/20190313/ea802a15-c21f-18e8-509e-39fe25d3c40e.html",
+        "file": "all-cities/xian-qianlong-cri-fetch.json",
+        "sha256": "97726ee6684772f529587ed19a77e3fc876581b149894d01d4d7e3d324d519c4"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://baike.baidu.com/item/%E6%BD%9C%E9%BE%99%E5%AF%BA%E6%99%AF%E5%8C%BA/6663579",
+        "file": "all-cities/xian-qianlong-baike-fetch.json",
+        "sha256": "6a15f0fa2d34ad2cf00a6103a5e0c08ba22e7fb8f930ea722872690dc7cf4d5c"
+      }
+    ],
+    "childEntityId": "4a4505a1baed0f14c8a4fe6386bc5798"
+  },
+  {
+    "key": "all-cities-20261006-batch-23-review-383",
+    "city": "西安",
+    "reviewFingerprint": "7c0522ae43b1ae8c37d983c35319d7b9b6b7f5d02cdf97eea2b0f46172e525a3",
+    "expectedRevisions": {
+      "202788eb4f60cff0ca71ae79e5709fa1": 2,
+      "a6d7ed4a215983bc39bd9a37bfe813f4": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "12099的开元商城观景台覆盖5至7楼，12224专指6楼。2721完整图文分列5楼两个平台、通往6至7楼的步梯及7楼平台，仍不能把泛称与六楼具体机位合并。本批已成对清空六楼旧108.912271远端点并保持ID，坐标纠错不等于实体边界已确认；继续待原图对应。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          383
+        ],
+        "conclusion": "12099的开元商城观景台覆盖5至7楼，12224专指6楼。2721完整图文分列5楼两个平台、通往6至7楼的步梯及7楼平台，仍不能把泛称与六楼具体机位合并。本批已成对清空六楼旧108.912271远端点并保持ID，坐标纠错不等于实体边界已确认；继续待原图对应。",
+        "sourcePlaceIds": [
+          "5831",
+          "5519"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12099,
+          12224
+        ],
+        "conclusion": "12099的开元商城观景台覆盖5至7楼，12224专指6楼。2721完整图文分列5楼两个平台、通往6至7楼的步梯及7楼平台，仍不能把泛称与六楼具体机位合并。本批已成对清空六楼旧108.912271远端点并保持ID，坐标纠错不等于实体边界已确认；继续待原图对应。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-variant-context.json",
+        "sha256": "6a5911ee28d554923b56df499d95c1130dc882c12def41ca5a09432a70b43bee",
+        "mentionIds": [
+          12354
+        ],
+        "conclusion": "12099的开元商城观景台覆盖5至7楼，12224专指6楼。2721完整图文分列5楼两个平台、通往6至7楼的步梯及7楼平台，仍不能把泛称与六楼具体机位合并。本批已成对清空六楼旧108.912271远端点并保持ID，坐标纠错不等于实体边界已确认；继续待原图对应。"
+      }
+    ]
+  }
+]

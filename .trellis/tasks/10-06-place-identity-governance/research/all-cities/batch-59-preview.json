@@ -1,0 +1,345 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "7950bfadd891932d01be8636aba8b51a",
+          "city": "济南",
+          "canonical_name": "环联夜市",
+          "primary_place_id": 5358,
+          "aliases": [
+            "环联夜市"
+          ],
+          "legacy_ids": [
+            "7950bfadd891932d01be8636aba8b51a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5358,
+          "entity_id": "7950bfadd891932d01be8636aba8b51a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5358,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 30.9,
+          "theme_tags": [
+            "购物",
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5358,
+          "mention_count_30d": 5,
+          "positive_count_30d": 2,
+          "source_count": 4,
+          "top_reasons": [
+            {
+              "reason": "夜市火爆，小吃种类丰富，推荐品尝烤冷面、鸡柳等",
+              "evidence": "济南环联夜市小吃街，良心推荐"
+            },
+            {
+              "reason": "人超级多，可能拥挤。",
+              "evidence": "人超级多"
+            },
+            {
+              "reason": "距离地铁站稍远，交通不便",
+              "evidence": "环联夜市距离地铁站稍微远一些"
+            },
+            {
+              "reason": "超级大的夜市，有时间可逛",
+              "evidence": "超级大的夜市！有时间可以去逛逛"
+            },
+            {
+              "reason": "人超级多，体验可能不佳。",
+              "evidence": "人超级多"
+            }
+          ],
+          "recommend_score": 14.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7784,
+          "canonical_place_id": 5358,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 环联夜市",
+          "evidence_summary": "人超级多，可能拥挤。"
+        },
+        {
+          "id": 7785,
+          "canonical_place_id": 5358,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 环联夜市",
+          "evidence_summary": "夜市火爆，小吃种类丰富，推荐品尝烤冷面、鸡柳等"
+        },
+        {
+          "id": 7786,
+          "canonical_place_id": 5358,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 环联夜市",
+          "evidence_summary": "距离地铁站稍远，交通不便"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5358,
+          "city": "济南",
+          "name_keys": [
+            "环联夜市"
+          ],
+          "entity_ids": [
+            "7950bfadd891932d01be8636aba8b51a"
+          ],
+          "source_hash": "a6dec5de5a7fc522eb631da9b0e8031eb547c5a786ef899f0e20fb26d140a310",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-59-source-5358-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/night-market-source-review-01.json",
+              "kind": "reviewed_relocated_market_scope",
+              "conclusion": "四条市场正负观点保留，11464旧导航事实整条待审；原始来源、评价与日期不改。",
+              "mentionIds": [
+                11464,
+                11571,
+                11607,
+                12647,
+                12825
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "7950bfadd891932d01be8636aba8b51a"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11464,
+          "scope_place_id": 5358,
+          "entity_id": null,
+          "input_hash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-59-source-5358-scope"
+        },
+        {
+          "mention_id": 11571,
+          "scope_place_id": 5358,
+          "entity_id": "7950bfadd891932d01be8636aba8b51a",
+          "input_hash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-59-source-5358-scope"
+        },
+        {
+          "mention_id": 11607,
+          "scope_place_id": 5358,
+          "entity_id": "7950bfadd891932d01be8636aba8b51a",
+          "input_hash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-59-source-5358-scope"
+        },
+        {
+          "mention_id": 12647,
+          "scope_place_id": 5358,
+          "entity_id": "7950bfadd891932d01be8636aba8b51a",
+          "input_hash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-59-source-5358-scope"
+        },
+        {
+          "mention_id": 12825,
+          "scope_place_id": 5358,
+          "entity_id": "7950bfadd891932d01be8636aba8b51a",
+          "input_hash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-59-source-5358-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "a6dec5de5a7fc522eb631da9b0e8031eb547c5a786ef899f0e20fb26d140a310",
+        "mentions": [
+          {
+            "mentionId": 11464,
+            "inputHash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1"
+          },
+          {
+            "mentionId": 11571,
+            "inputHash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761"
+          },
+          {
+            "mentionId": 11607,
+            "inputHash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604"
+          },
+          {
+            "mentionId": 12647,
+            "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3"
+          },
+          {
+            "mentionId": 12825,
+            "inputHash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 9578,
+          "fingerprint": "6e31ce6a9e1fad1331ec08f956c741f57053a8a991aee50b3332fb542a2fcf41",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1",
+            "mentionId": 11464,
+            "scopePlaceIds": [
+              5358
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "7950bfadd891932d01be8636aba8b51a",
+          "city": "济南",
+          "canonical_name": "环联1904火车夜市",
+          "primary_place_id": 5358,
+          "aliases": [
+            "环联1904火车夜市",
+            "环联夜市"
+          ],
+          "legacy_ids": [
+            "7950bfadd891932d01be8636aba8b51a",
+            "7e468ac77d040e3ce2acdc0e910a0248"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "祝舜路555号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "published_market_relocation_and_rename",
+              "file": "priority-cities/济南/night-market-web-review-02.json",
+              "conclusion": "2023迁址开业公告与2025回顾确认同一运营市场更名迁址；保留稳定ID与旧名别名，只补新名和新门牌，原坐标未证明错误则保留待核。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5358,
+          "entity_id": "7950bfadd891932d01be8636aba8b51a"
+        }
+      ]
+    }
+  ]
+}

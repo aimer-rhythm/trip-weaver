@@ -1,0 +1,55 @@
+{
+  "city": "西安",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "sourceRevision": 1,
+  "sourceHash": "200afb4e683f784ad2e39c5a13ac7d25087d92ff2d41c9f0778105d4a5aedeef",
+  "placesHash": "e1bf41dbace8ca4ad29a68c6b7b1fe87230990912ed41bcbbfc1ab3f37dd9355",
+  "relationsHash": "e8cf01dd6383eeae269b0168220787d27a1ab2a0c724aea47a3321905d35cea5",
+  "libraryHash": "aea5209421ce29f283f64930740413598cf87f4acdd0607fe0b2b9e108e8b0ae",
+  "counts": {
+    "places": 397,
+    "graph": 37,
+    "direct": 3,
+    "library": {
+      "canonical_places": 415,
+      "research_evidence": 599,
+      "place_relation": 0,
+      "data_import": 2,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "e1bf41dbace8ca4ad29a68c6b7b1fe87",
+      "row_count": 397
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "e8cf01dd6383eeae269b0168220787d2",
+      "row_count": 3
+    }
+  ],
+  "audits": [
+    {
+      "id": "8d431c7a-db6a-4b38-9924-901734645a96",
+      "content_hash": "e1bf41dbace8ca4ad29a68c6b7b1fe87"
+    },
+    {
+      "id": "6d8844b0-3b3e-4a29-9262-c49b20ec085b",
+      "content_hash": "e8cf01dd6383eeae269b0168220787d2"
+    }
+  ],
+  "importedAt": "2026-10-07T08:42:05.077Z"
+}

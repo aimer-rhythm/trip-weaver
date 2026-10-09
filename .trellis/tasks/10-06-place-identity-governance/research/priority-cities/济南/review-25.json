@@ -1,0 +1,5661 @@
+{
+  "city": "济南",
+  "createdAt": "2026-10-08T18:49:59.816Z",
+  "sourceFile": "priority-cities/济南/run-1791385235272324900/sources.json",
+  "sourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "scopeFile": "run-1791372788231/scope-06.json",
+  "scopeSha256": "73af20a5e458e6eb6cd55c630d0e553f7ae8d0522fdda21e9cdbbf49d8edf353",
+  "basis": "保留scope06入选集合；修错后缺位置者仍在本台账，不能移出后宣称完成。",
+  "summary": {
+    "primary": 98,
+    "fullyReviewed": 18,
+    "locationCorrectedAndSynced": 4,
+    "wrongPointClearedPositionPending": 8,
+    "reviewedNonPlaceExcluded": 4,
+    "remainingPrimaryToReview": 76,
+    "reviewedIdentityPairs": 2,
+    "fullyReviewedMeaning": "18原入选行对应16现行主体；第46批新增完整自查0，1行推进部分scope，用户未验收。",
+    "partiallyReviewedScopeRows": 18,
+    "governedScopeMentions": 391,
+    "confirmedParkMentions": 47,
+    "pendingScopeMentions": 108,
+    "otherPendingPrimaryRows": 58,
+    "scopeProgressMeaning": "98行保留：4非地点、18行AI自查、76未完成（18部分scope、58其余）；158正式范围审核、4必去缺口不变，红绿灯发现已处理，余2项文字发现未应用。",
+    "reviewedOrdinaryPrimaryRows": 10,
+    "reviewedIdentityMediaLocationPending": 1,
+    "reopenedIndependentMediaRows": 0,
+    "unappliedSemanticFindings": 2,
+    "confirmedSquareMentions": 30,
+    "confirmedSpringMentions": 10,
+    "imageComparisonPolicy": "deferred_by_user",
+    "confirmedDaminghuMentions": 48,
+    "reopenedFactReviewRows": 1,
+    "confirmedBlackTigerMentions": 36,
+    "confirmedQianfoshanMentions": 10,
+    "confirmedJiefangMentions": 34,
+    "confirmedQushuitingMentions": 44,
+    "confirmedBaihuazhouMentions": 12,
+    "confirmedCommercialMentions": 5,
+    "confirmedLightMentions": 1
+  },
+  "rows": [
+    {
+      "entityId": "033a692df5218d571ddd2cca8a8c91e3",
+      "name": "甜沫儿",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5383
+      ],
+      "relatedSourceIds": [
+        5383
+      ],
+      "mentionIds": [
+        11479,
+        12739
+      ],
+      "noteIds": [
+        2560
+      ],
+      "status": "reviewed_non_place_excluded",
+      "dimensions": {
+        "identity": "reviewed_non_place",
+        "category": "not_a_place",
+        "location": "not_applicable",
+        "media": "withdrawal_verified"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 31,
+      "followup": "note2560的两条提及均已确认仅为菜品/品类，已显式撤回地点候选。旧ID及原始资料保留，新提及或原文变化须重新核查。",
+      "evidenceFiles": [
+        "all-cities/batch-31-source.json",
+        "all-cities/batch-31-applied.json",
+        "all-cities/batch-31-upstream-check.json",
+        "all-cities/batch-31/sync-01/verification-vectors.json"
+      ]
+    },
+    {
+      "entityId": "065e077002130047feaadff4f607b480",
+      "name": "起凤泉",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5988
+      ],
+      "relatedSourceIds": [
+        5988
+      ],
+      "mentionIds": [
+        12943
+      ],
+      "noteIds": [
+        2837
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_spring",
+        "category": "reviewed_natural_spring_activity",
+        "location": "reviewed_named_spring_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "group_duration_excluded_valid_description_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 37,
+      "followup": "完整来源、实际同名泉体参考点及三类图库已核；类别修订自然已双同步，独立ID/有效描述/SQL和真实向量通过，错误时长未恢复。AI自查完成，待用户验收。",
+      "evidenceFiles": [
+        "priority-cities/济南/spring-source-packet-01.json",
+        "priority-cities/济南/spring-source-review-01.json",
+        "priority-cities/济南/spring-downstream-check-01.json",
+        "priority-cities/济南/spring-source-review-02.json",
+        "priority-cities/济南/spring-photo-sources-02.json",
+        "all-cities/batch-36-applied.json",
+        "all-cities/batch-36-upstream-check.json",
+        "all-cities/batch-36/sync-01/boundary-check.json",
+        "priority-cities/济南/spring-upstream-check-01.json",
+        "priority-cities/济南/spring-category-review-01.json",
+        "priority-cities/济南/spring-map-reference-check-01.json",
+        "priority-cities/济南/spring-photo-sources-03.json",
+        "all-cities/batch-37-applied.json",
+        "all-cities/batch-37-upstream-check.json",
+        "all-cities/batch-37/sync-01/boundary-check.json",
+        "all-cities/batch-37/sync-01/verification-vectors.json"
+      ],
+      "governedSourceIds": [
+        5988
+      ],
+      "scopeMentionIds": [
+        12943
+      ],
+      "currentMentionIds": [
+        12943
+      ],
+      "pendingScopeMentionIds": []
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5948
+      ],
+      "relatedSourceIds": [
+        5948
+      ],
+      "mentionIds": [
+        12584,
+        12942
+      ],
+      "noteIds": [
+        2813,
+        2837
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_spring",
+        "category": "reviewed_natural_spring_activity",
+        "location": "reviewed_named_spring_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "group_duration_excluded_valid_description_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 37,
+      "followup": "完整来源、实际同名泉体参考点及三类图库已核；类别修订自然已双同步，独立ID/有效描述/SQL和真实向量通过，错误时长未恢复。AI自查完成，待用户验收。",
+      "evidenceFiles": [
+        "priority-cities/济南/spring-source-packet-01.json",
+        "priority-cities/济南/spring-source-review-01.json",
+        "priority-cities/济南/spring-downstream-check-01.json",
+        "priority-cities/济南/spring-source-review-02.json",
+        "priority-cities/济南/spring-photo-sources-02.json",
+        "all-cities/batch-36-applied.json",
+        "all-cities/batch-36-upstream-check.json",
+        "all-cities/batch-36/sync-01/boundary-check.json",
+        "priority-cities/济南/spring-upstream-check-01.json",
+        "priority-cities/济南/spring-category-review-01.json",
+        "priority-cities/济南/spring-map-reference-check-01.json",
+        "priority-cities/济南/spring-photo-sources-03.json",
+        "all-cities/batch-37-applied.json",
+        "all-cities/batch-37-upstream-check.json",
+        "all-cities/batch-37/sync-01/boundary-check.json",
+        "all-cities/batch-37/sync-01/verification-vectors.json"
+      ],
+      "governedSourceIds": [
+        5948
+      ],
+      "scopeMentionIds": [
+        12584,
+        12942
+      ],
+      "currentMentionIds": [
+        12584,
+        12942
+      ],
+      "pendingScopeMentionIds": []
+    },
+    {
+      "entityId": "0d0968c2ca848678bcf24e2c0db83554",
+      "name": "月下观棠",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5955
+      ],
+      "relatedSourceIds": [
+        5955
+      ],
+      "mentionIds": [
+        12689
+      ],
+      "noteIds": [
+        2817
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "deferred_by_user"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "2817文字将其标为白底书法济南文字墙；店铺本体/外墙机位具体边界与位置继续，图片暂不比对。",
+      "evidenceFiles": [
+        "priority-cities/济南/shops-source-packet-01.json",
+        "text-followup-20261009.md"
+      ]
+    },
+    {
+      "entityId": "0f3bfc53c2a77e85d2c1699c7c90fd10",
+      "name": "山东美术馆",
+      "baselineRevision": 2,
+      "currentRevision": 2,
+      "sourceIds": [
+        5356,
+        5369
+      ],
+      "relatedSourceIds": [
+        5356,
+        5369
+      ],
+      "mentionIds": [
+        11418,
+        11496,
+        11569,
+        12684,
+        12749,
+        12797,
+        12805,
+        12823,
+        12865,
+        12877
+      ],
+      "noteIds": [
+        2550,
+        2554,
+        2564,
+        2789,
+        2811,
+        2830,
+        2834
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "complete_source_set_reviewed_same_institution",
+        "category": "reviewed_culture",
+        "location": "reviewed_current_museum_reference_point",
+        "media": "no_matching_managed_or_independent_images"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "10提及/两源完整核查，山东省美术馆别名与现行主体一致，与博物馆独立；经十路11777号本体参考点确认。上游图库及实际独立目录均无匹配图，SQL/真实向量/旧ID/行程消费通过。AI自查完成，待用户验收。",
+      "currentEntityId": "0f3bfc53c2a77e85d2c1699c7c90fd10",
+      "currentName": "山东美术馆",
+      "reviewAfterEntityBatch": 34,
+      "currentMentionIds": [
+        11418,
+        11496,
+        11569,
+        12684,
+        12749,
+        12797,
+        12805,
+        12823,
+        12865,
+        12877
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/cultural-upstream-check-01.json",
+        "priority-cities/济南/cultural-downstream-check-03.json",
+        "priority-cities/济南/geo-05.json",
+        "independent-photo-batch-02/visual-review.json",
+        "independent-photo-batch-02/applied.json",
+        "independent-photo-batch-02/verify-1791397735604.json"
+      ]
+    },
+    {
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "name": "黑虎泉",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5351
+      ],
+      "relatedSourceIds": [
+        5351
+      ],
+      "mentionIds": [
+        11336,
+        11373,
+        11394,
+        11405,
+        11409,
+        11433,
+        11439,
+        11444,
+        11454,
+        11474,
+        11490,
+        11514,
+        11518,
+        11542,
+        11575,
+        11584,
+        11590,
+        11620,
+        11687,
+        12564,
+        12576,
+        12614,
+        12635,
+        12657,
+        12668,
+        12675,
+        12701,
+        12711,
+        12716,
+        12720,
+        12734,
+        12760,
+        12784,
+        12790,
+        12809,
+        12829,
+        12838,
+        12849,
+        12857,
+        12869,
+        12898,
+        12905,
+        12914,
+        12929,
+        12939,
+        12953,
+        12969
+      ],
+      "noteIds": [
+        2545,
+        2546,
+        2548,
+        2569,
+        2550,
+        2567,
+        2618,
+        2553,
+        2570,
+        2560,
+        2551,
+        2607,
+        2563,
+        2582,
+        2564,
+        2583,
+        2622,
+        2624,
+        2609,
+        2803,
+        2782,
+        2816,
+        2786,
+        2807,
+        2808,
+        2798,
+        2789,
+        2810,
+        2851,
+        2829,
+        2830,
+        2834,
+        2856,
+        2853,
+        2835,
+        2837,
+        2839,
+        2840
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed_with_partial_pending",
+        "category": "nature_confirmed",
+        "location": "existing_coordinates_preserved_review_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "group_duration_and_boat_reservation_excluded_effective_50"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "图片比对依用户要求暂缓；空图库字段保持不等于完整独立原图核查。",
+      "changeBatch": 43,
+      "followup": "第43批36确认/11待审已双同步，原ID/坐标保持、自然类revision3。组合60分钟及错误reason、游船预约字段已排除，独立篇次时长50分钟。位置和媒体仍待复核，未完成自查。",
+      "currentName": "黑虎泉",
+      "reviewBatch": 43,
+      "governedSourceIds": [
+        5351
+      ],
+      "scopeMentionIds": [
+        11336,
+        11373,
+        11394,
+        11405,
+        11409,
+        11433,
+        11439,
+        11444,
+        11454,
+        11474,
+        11490,
+        11514,
+        11518,
+        11542,
+        11575,
+        11584,
+        11590,
+        11620,
+        11687,
+        12564,
+        12576,
+        12614,
+        12635,
+        12657,
+        12668,
+        12675,
+        12701,
+        12711,
+        12716,
+        12720,
+        12734,
+        12760,
+        12784,
+        12790,
+        12809,
+        12829,
+        12838,
+        12849,
+        12857,
+        12869,
+        12898,
+        12905,
+        12914,
+        12929,
+        12939,
+        12953,
+        12969
+      ],
+      "currentMentionIds": [
+        11336,
+        11373,
+        11394,
+        11405,
+        11409,
+        11433,
+        11444,
+        11454,
+        11474,
+        11490,
+        11514,
+        11518,
+        11575,
+        11590,
+        11620,
+        11687,
+        12564,
+        12614,
+        12635,
+        12675,
+        12711,
+        12720,
+        12734,
+        12760,
+        12784,
+        12790,
+        12829,
+        12838,
+        12849,
+        12857,
+        12869,
+        12898,
+        12914,
+        12929,
+        12953,
+        12969
+      ],
+      "pendingScopeMentionIds": [
+        11439,
+        11542,
+        11584,
+        12576,
+        12657,
+        12668,
+        12701,
+        12716,
+        12809,
+        12905,
+        12939
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/main-sights-source-review-01.json",
+        "priority-cities/济南/main-sights-downstream-check-01.json",
+        "all-cities/batch-43-applied.json",
+        "all-cities/batch-43-upstream-check.json",
+        "all-cities/batch-43/sync-01/verification-vectors.json",
+        "all-cities/batch-43/sync-01/main-sights-consumption-1791481250359.json"
+      ]
+    },
+    {
+      "entityId": "15ad3a8280476165635672cb0e43117a",
+      "name": "解放阁",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5360
+      ],
+      "relatedSourceIds": [
+        5360
+      ],
+      "mentionIds": [
+        11337,
+        11374,
+        11395,
+        11410,
+        11432,
+        11440,
+        11445,
+        11455,
+        11489,
+        11519,
+        11576,
+        11591,
+        11621,
+        12565,
+        12577,
+        12615,
+        12623,
+        12636,
+        12676,
+        12710,
+        12717,
+        12721,
+        12775,
+        12791,
+        12811,
+        12830,
+        12858,
+        12870,
+        12899,
+        12906,
+        12915,
+        12930,
+        12954,
+        12970,
+        12985
+      ],
+      "noteIds": [
+        2545,
+        2546,
+        2548,
+        2550,
+        2567,
+        2618,
+        2553,
+        2570,
+        2551,
+        2563,
+        2564,
+        2622,
+        2624,
+        2803,
+        2793,
+        2782,
+        2797,
+        2789,
+        2810,
+        2830,
+        2834,
+        2856,
+        2853,
+        2835,
+        2839,
+        2840,
+        2846
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed_with_partial_pending",
+        "category": "cultural_subject_confirmed",
+        "location": "reviewed_reference_point",
+        "media": "deferred_by_user",
+        "consumedFacts": "group_duration_excluded_independent_30"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "本轮仅验证既有图片数据和绑定保留，未查看或比对原图，不计为完整视觉核查。",
+      "changeBatch": 44,
+      "followup": "第44批34确认/1待审已双同步，原ID/坐标保持，文化类revision3；有效时长30分钟。共享时长和提前量错误停止消费；保留待审，图片暂缓，尚未完成整项自查。",
+      "currentEntityId": "15ad3a8280476165635672cb0e43117a",
+      "currentName": "解放阁",
+      "evidenceFiles": [
+        "priority-cities/济南/landmark-source-review-01.json",
+        "priority-cities/济南/landmark-upstream-check-01.json",
+        "priority-cities/济南/landmark-downstream-check-01.json",
+        "priority-cities/济南/landmark-photo-sources-01.json",
+        "priority-cities/济南/geo-06.json",
+        "priority-cities/济南/shared-route-duration-findings-01.json",
+        "priority-cities/济南/shared-routes-source-review-01.json",
+        "priority-cities/济南/shared-routes-downstream-check-01.json",
+        "priority-cities/济南/shared-routes-duration-provenance-01.json",
+        "priority-cities/济南/shared-routes-relation-check-01.json",
+        "all-cities/batch-44-applied.json",
+        "all-cities/batch-44-upstream-check.json",
+        "all-cities/batch-44/sync-01/verification-vectors.json",
+        "all-cities/batch-44/sync-01/shared-routes-consumption-1791482561713.json"
+      ],
+      "reopenedFrom": {
+        "status": "reviewed_identity",
+        "ledger": "priority-cities/济南/review-21.json",
+        "reason": "共同一小时被提取为单点，事实未完整治理"
+      },
+      "reviewBatch": 44,
+      "governedSourceIds": [
+        5360
+      ],
+      "scopeMentionIds": [
+        11337,
+        11374,
+        11395,
+        11410,
+        11432,
+        11440,
+        11445,
+        11455,
+        11489,
+        11519,
+        11576,
+        11591,
+        11621,
+        12565,
+        12577,
+        12615,
+        12623,
+        12636,
+        12676,
+        12710,
+        12717,
+        12721,
+        12775,
+        12791,
+        12811,
+        12830,
+        12858,
+        12870,
+        12899,
+        12906,
+        12915,
+        12930,
+        12954,
+        12970,
+        12985
+      ],
+      "currentMentionIds": [
+        11337,
+        11374,
+        11395,
+        11410,
+        11432,
+        11440,
+        11445,
+        11455,
+        11489,
+        11519,
+        11576,
+        11591,
+        11621,
+        12565,
+        12577,
+        12615,
+        12623,
+        12636,
+        12676,
+        12710,
+        12717,
+        12721,
+        12775,
+        12791,
+        12811,
+        12830,
+        12858,
+        12870,
+        12899,
+        12915,
+        12930,
+        12954,
+        12970,
+        12985
+      ],
+      "pendingScopeMentionIds": [
+        12906
+      ]
+    },
+    {
+      "entityId": "1b4ef2692e22efa0e8d765a93fc5b54c",
+      "name": "中山公园",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5395
+      ],
+      "relatedSourceIds": [
+        5395
+      ],
+      "mentionIds": [
+        11531
+      ],
+      "noteIds": [
+        2573
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "完整提及及事实来源已核查，保留公园本体稳定ID、自然类别及地图参考点；入口/设施独立，SQL/真实向量/旧ID通过，三类图库均无匹配。AI自查完成，待用户验收。",
+      "currentEntityId": "1b4ef2692e22efa0e8d765a93fc5b54c",
+      "currentName": "中山公园",
+      "evidenceFiles": [
+        "priority-cities/济南/park-source-review-01.json",
+        "priority-cities/济南/park-source-packet-01.json",
+        "priority-cities/济南/park-upstream-check-01.json",
+        "priority-cities/济南/park-downstream-check-01.json",
+        "priority-cities/济南/park-photo-sources-01.json",
+        "priority-cities/济南/geo-07.json"
+      ]
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5378
+      ],
+      "relatedSourceIds": [
+        5378
+      ],
+      "mentionIds": [
+        11391,
+        11477,
+        11524,
+        12737
+      ],
+      "noteIds": [
+        2548,
+        2560,
+        2563
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "name": "千佛山",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5357
+      ],
+      "relatedSourceIds": [
+        5357
+      ],
+      "mentionIds": [
+        11392,
+        11476,
+        11570,
+        11605,
+        11684,
+        11706,
+        12631,
+        12642,
+        12736,
+        12768,
+        12824,
+        12851,
+        12862
+      ],
+      "noteIds": [
+        2548,
+        2560,
+        2564,
+        2608,
+        2609,
+        2613,
+        2793,
+        2782,
+        2797,
+        2829,
+        2830
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed_with_partial_pending",
+        "category": "nature_confirmed",
+        "location": "existing_coordinates_preserved_review_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "ascent_duration_excluded_visit_unknown"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "图片比对依用户要求暂缓；空图库字段保持不等于完整独立原图核查。",
+      "changeBatch": 43,
+      "followup": "第43批10确认/3待审已双同步，原ID/坐标保持、自然类revision3。仅登顶的30分钟已排除，整次游览时长未知。位置和媒体仍待复核，未完成自查。",
+      "currentName": "千佛山",
+      "reviewBatch": 43,
+      "governedSourceIds": [
+        5357
+      ],
+      "scopeMentionIds": [
+        11392,
+        11476,
+        11570,
+        11605,
+        11684,
+        11706,
+        12631,
+        12642,
+        12736,
+        12768,
+        12824,
+        12851,
+        12862
+      ],
+      "currentMentionIds": [
+        11392,
+        11476,
+        11570,
+        11684,
+        12631,
+        12642,
+        12736,
+        12824,
+        12851,
+        12862
+      ],
+      "pendingScopeMentionIds": [
+        11605,
+        11706,
+        12768
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/main-sights-source-review-01.json",
+        "priority-cities/济南/main-sights-downstream-check-01.json",
+        "all-cities/batch-43-applied.json",
+        "all-cities/batch-43-upstream-check.json",
+        "all-cities/batch-43/sync-01/verification-vectors.json",
+        "all-cities/batch-43/sync-01/main-sights-consumption-1791481250359.json"
+      ]
+    },
+    {
+      "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+      "name": "灵岩寺",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5475
+      ],
+      "relatedSourceIds": [
+        5475
+      ],
+      "mentionIds": [
+        11686
+      ],
+      "noteIds": [
+        2609
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_temple",
+        "category": "reviewed_cultural_temple",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_duration_budget_rejected_valid_mention_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 39,
+      "followup": "原文及第5页原图已核；半天是时间不足劝退条件。第39批完整scope保留11686，文化与同名寺庙参考点保持，下游错误180分钟清除。有效彩塑看点、SQL/真实向量及图库已核，AI自查通过；原canonical缓存保留追溯但不再消费。",
+      "evidenceFiles": [
+        "priority-cities/济南/outer-source-review-01.json",
+        "priority-cities/济南/outer-findings-check-01.json",
+        "priority-cities/济南/outer-photo-sources-01.json",
+        "priority-cities/济南/geo-13.json",
+        "priority-cities/济南/lingyan-duration-review-01.json",
+        "priority-cities/济南/lingyan-downstream-check-01.json",
+        "priority-cities/济南/lingyan-photo-sources-01.json",
+        "all-cities/batch-39-applied.json",
+        "all-cities/batch-39-upstream-check.json",
+        "all-cities/batch-39/sync-01/verification-vectors.json"
+      ],
+      "reviewBatch": 39
+    },
+    {
+      "entityId": "2c8372d3a47dbcb68abd998af495436d",
+      "name": "尚泉尚水茶馆",
+      "baselineRevision": 1,
+      "currentRevision": 4,
+      "sourceIds": [
+        5945
+      ],
+      "relatedSourceIds": [
+        5945
+      ],
+      "mentionIds": [
+        12653
+      ],
+      "noteIds": [
+        2795
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "platform_scope_confirmed_bare_cafe_excluded",
+        "category": "photo_spot_nature_confirmed",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "photo_spot_type_and_valid_photography_description_confirmed"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "图片比对依用户要求暂缓；数据库空图库与字段不变不代表视觉核查。",
+      "changeBatch": 41,
+      "followup": "第41批完整scope及主名/细分类修订已双同步，原ID/revision4、唯一12653及摄影描述保留；裸茶馆名即使带旧ID也不绑定平台，餐饮筛选排除。精确机位仍未知，图片比对暂缓，完整自查未通过。",
+      "evidenceFiles": [
+        "priority-cities/济南/shops-source-packet-01.json",
+        "text-followup-20261009.md",
+        "priority-cities/济南/platform-source-review-01.json",
+        "priority-cities/济南/platform-downstream-check-01.json",
+        "all-cities/batch-41-applied.json",
+        "all-cities/batch-41-upstream-check.json",
+        "all-cities/batch-41/sync-01/verification-vectors.json",
+        "all-cities/batch-41/sync-01/platform-consumption-1791478328214.json"
+      ],
+      "currentName": "尚泉尚水茶馆前平台",
+      "reviewBatch": 41,
+      "governedSourceIds": [
+        5945
+      ],
+      "scopeMentionIds": [
+        12653
+      ],
+      "currentMentionIds": [
+        12653
+      ],
+      "pendingScopeMentionIds": []
+    },
+    {
+      "entityId": "2caab5c5038a94f91657ae16110dd56e",
+      "name": "洪家楼天主教堂",
+      "baselineRevision": 2,
+      "currentRevision": 2,
+      "sourceIds": [
+        5379,
+        5946
+      ],
+      "relatedSourceIds": [
+        5379,
+        5946
+      ],
+      "mentionIds": [
+        11416,
+        12578,
+        12682,
+        12774,
+        12795,
+        12803,
+        12875,
+        12902
+      ],
+      "noteIds": [
+        2550,
+        2803,
+        2797,
+        2789,
+        2811,
+        2834,
+        2856
+      ],
+      "status": "reviewed_identity_media_location_pending",
+      "dimensions": {
+        "identity": "8_mentions_same_institution_confirmed",
+        "category": "reviewed_culture",
+        "location": "reference_point_pending",
+        "media": "9_sources_reviewed_3_bound_1_wrong_positive_withdrawn_5_rejected"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "8提及/两源主体与别名已核查，9张独立图逐图核实，3图绑定、1张旧模型错误正例已撤销、5张原拒绝保留。现参考点与新地图候选约57米差异尚待判定，不据距离自动改点；此行仍未完成自查。",
+      "reviewAfterEntityBatch": 34,
+      "evidenceFiles": [
+        "priority-cities/济南/cultural-upstream-check-01.json",
+        "priority-cities/济南/cultural-downstream-check-03.json",
+        "priority-cities/济南/geo-05.json",
+        "independent-photo-batch-02/visual-review.json",
+        "independent-photo-batch-02/applied.json",
+        "independent-photo-batch-02/verify-1791397735604.json"
+      ]
+    },
+    {
+      "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+      "name": "VILLASHAKA",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5399
+      ],
+      "relatedSourceIds": [
+        5399
+      ],
+      "mentionIds": [
+        11535
+      ],
+      "noteIds": [
+        2573
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "text_supports_separate_store",
+        "category": "pending",
+        "location": "pending",
+        "media": "deferred_by_user"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "2573正文分别介绍咖啡店和vintage杂货铺；同坐标不合并。位置、真实检索及其他维度继续，图片暂不比对，完整自查未通过。",
+      "evidenceFiles": [
+        "priority-cities/济南/shops-source-packet-01.json",
+        "text-followup-20261009.md"
+      ]
+    },
+    {
+      "entityId": "2d23e8cc46a8090235388297dff2279c",
+      "name": "济南森林公园",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5402
+      ],
+      "relatedSourceIds": [
+        5402
+      ],
+      "mentionIds": [
+        11376
+      ],
+      "noteIds": [
+        2576
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "完整提及及事实来源已核查，保留公园本体稳定ID、自然类别及地图参考点；入口/设施独立，SQL/真实向量/旧ID通过，三类图库均无匹配。AI自查完成，待用户验收。",
+      "currentEntityId": "2d23e8cc46a8090235388297dff2279c",
+      "currentName": "济南森林公园",
+      "evidenceFiles": [
+        "priority-cities/济南/park-source-review-01.json",
+        "priority-cities/济南/park-source-packet-01.json",
+        "priority-cities/济南/park-upstream-check-01.json",
+        "priority-cities/济南/park-downstream-check-01.json",
+        "priority-cities/济南/park-photo-sources-01.json",
+        "priority-cities/济南/geo-07.json"
+      ]
+    },
+    {
+      "entityId": "2f5f0095f24c189ebf61109638172394",
+      "name": "邻家羊肉面饸饹面",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5341
+      ],
+      "relatedSourceIds": [
+        5341
+      ],
+      "mentionIds": [
+        11363,
+        12604
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "3290af7793dea0fd22138e561900775f",
+      "name": "李山记铁板炒鸡",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5332
+      ],
+      "relatedSourceIds": [
+        5332
+      ],
+      "mentionIds": [
+        11354,
+        12595
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "34fec8eb89e06bf897e7ed869a42d6a1",
+      "name": "泉城公园",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5972
+      ],
+      "relatedSourceIds": [
+        5972
+      ],
+      "mentionIds": [
+        12782
+      ],
+      "noteIds": [
+        2798
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "完整提及及事实来源已核查，保留公园本体稳定ID、自然类别及地图参考点；入口/设施独立，SQL/真实向量/旧ID通过，三类图库均无匹配。AI自查完成，待用户验收。",
+      "currentEntityId": "34fec8eb89e06bf897e7ed869a42d6a1",
+      "currentName": "泉城公园",
+      "evidenceFiles": [
+        "priority-cities/济南/park-source-review-01.json",
+        "priority-cities/济南/park-source-packet-01.json",
+        "priority-cities/济南/park-upstream-check-01.json",
+        "priority-cities/济南/park-downstream-check-01.json",
+        "priority-cities/济南/park-photo-sources-01.json",
+        "priority-cities/济南/geo-07.json"
+      ]
+    },
+    {
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "name": "春水锅贴",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5377
+      ],
+      "relatedSourceIds": [
+        5377
+      ],
+      "mentionIds": [
+        11384,
+        11526
+      ],
+      "noteIds": [
+        2548,
+        2563
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "3f6a2dce847940205f501690e2548e88",
+      "name": "草包包子",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5384
+      ],
+      "relatedSourceIds": [
+        5384
+      ],
+      "mentionIds": [
+        11480,
+        12740
+      ],
+      "noteIds": [
+        2560
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5343
+      ],
+      "relatedSourceIds": [
+        5343
+      ],
+      "mentionIds": [
+        11365,
+        11643,
+        12606
+      ],
+      "noteIds": [
+        2585,
+        2602
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+      "name": "BLUEDUCK骨董屋",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5398
+      ],
+      "relatedSourceIds": [
+        5398
+      ],
+      "mentionIds": [
+        11534
+      ],
+      "noteIds": [
+        2573
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "text_supports_separate_store",
+        "category": "pending",
+        "location": "pending",
+        "media": "deferred_by_user"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "2573正文分别介绍咖啡店和vintage杂货铺；同坐标不合并。位置、真实检索及其他维度继续，图片暂不比对，完整自查未通过。",
+      "evidenceFiles": [
+        "priority-cities/济南/shops-source-packet-01.json",
+        "text-followup-20261009.md"
+      ]
+    },
+    {
+      "entityId": "46bf462d545dc6435d6de296ba099d0f",
+      "name": "融汇老商埠",
+      "baselineRevision": 2,
+      "currentRevision": 2,
+      "sourceIds": [
+        5371,
+        5380,
+        5962
+      ],
+      "relatedSourceIds": [
+        5371,
+        5380,
+        5962
+      ],
+      "mentionIds": [
+        11419,
+        11424,
+        11498,
+        11530,
+        12616,
+        12645,
+        12685,
+        12702,
+        12751,
+        12785,
+        12799,
+        12866,
+        12878
+      ],
+      "noteIds": [
+        2550,
+        2567,
+        2554,
+        2573,
+        2793,
+        2782,
+        2798,
+        2789,
+        2830,
+        2834
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "deferred_by_user"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "附近未具名咖啡店、混合红绿灯及旧大商埠简介范围仍需完整scope；当前实际3图，直接scope会阻断旧路由，图片暂缓时不自动绑定。",
+      "reviewBatch": 45,
+      "unappliedFinding": {
+        "entityId": "46bf462d545dc6435d6de296ba099d0f",
+        "name": "融汇老商埠",
+        "sourceIds": [
+          5371,
+          5380,
+          5962
+        ],
+        "mentionIds": [
+          12785,
+          12799
+        ],
+        "status": "unapplied_text_scope_preserve_existing_photo_consumption",
+        "reason": "附近未具名咖啡店、混合红绿灯及旧大商埠简介范围仍需完整scope；当前实际3图，直接scope会阻断旧路由，图片暂缓时不自动绑定。",
+        "discoveredDuringEntityBatch": 45,
+        "evidence": "../priority-cities/济南/commercial-source-review-01.json",
+        "fullReviewPassed": false
+      },
+      "reviewEvidence": [
+        "priority-cities/济南/commercial-source-review-01.json"
+      ]
+    },
+    {
+      "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+      "name": "民族大街",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5372
+      ],
+      "relatedSourceIds": [
+        5372
+      ],
+      "mentionIds": [
+        11501,
+        11608,
+        12754
+      ],
+      "noteIds": [
+        2554,
+        2608
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5477
+      ],
+      "relatedSourceIds": [
+        5477
+      ],
+      "mentionIds": [
+        11404,
+        12901
+      ],
+      "noteIds": [
+        2569,
+        2856
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5342
+      ],
+      "relatedSourceIds": [
+        5342
+      ],
+      "mentionIds": [
+        11364,
+        11664,
+        12605,
+        12892
+      ],
+      "noteIds": [
+        2585,
+        2602,
+        2856
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "name": "大明湖",
+      "baselineRevision": 2,
+      "currentRevision": 3,
+      "sourceIds": [
+        5348,
+        5953,
+        5968
+      ],
+      "relatedSourceIds": [
+        5348,
+        5953,
+        5968
+      ],
+      "mentionIds": [
+        11342,
+        11379,
+        11387,
+        11402,
+        11411,
+        11421,
+        11429,
+        11434,
+        11450,
+        11462,
+        11473,
+        11494,
+        11507,
+        11522,
+        11539,
+        11578,
+        11581,
+        11594,
+        11598,
+        11601,
+        11604,
+        11611,
+        11627,
+        11683,
+        11693,
+        11695,
+        11703,
+        11705,
+        12570,
+        12575,
+        12629,
+        12641,
+        12649,
+        12654,
+        12661,
+        12664,
+        12671,
+        12677,
+        12687,
+        12700,
+        12707,
+        12712,
+        12728,
+        12733,
+        12748,
+        12764,
+        12772,
+        12779,
+        12794,
+        12802,
+        12814,
+        12832,
+        12839,
+        12853,
+        12860,
+        12873,
+        12900,
+        12908,
+        12921,
+        12923,
+        12926,
+        12947,
+        12959,
+        12973,
+        12979
+      ],
+      "noteIds": [
+        2545,
+        2547,
+        2548,
+        2569,
+        2550,
+        2567,
+        2618,
+        2553,
+        2570,
+        2560,
+        2554,
+        2619,
+        2563,
+        2582,
+        2564,
+        2583,
+        2622,
+        2589,
+        2620,
+        2608,
+        2584,
+        2624,
+        2609,
+        2623,
+        2611,
+        2614,
+        2613,
+        2803,
+        2793,
+        2782,
+        2795,
+        2816,
+        2806,
+        2786,
+        2817,
+        2807,
+        2808,
+        2797,
+        2798,
+        2789,
+        2811,
+        2810,
+        2800,
+        2829,
+        2830,
+        2834,
+        2856,
+        2853,
+        2801,
+        2835,
+        2837,
+        2839,
+        2840,
+        2843
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "three_aliases_preserved_48_confirmed_17_pending",
+        "category": "nature_confirmed",
+        "location": "existing_coordinates_preserved_review_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "boat_30_minutes_excluded_effective_120_confirmed"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "本批未查看或比对图片；导入前无图片字段和独立绑定，不代表独立原图目录不存在或视觉验收通过。",
+      "changeBatch": 42,
+      "followup": "第42批完整三源scope已双同步，三名及历史ID保持，48确认/17待审；船上30分钟排除，实际时长120分钟。两条关系因正文位置绑定不足降为weak。精确位置和媒体仍未完成自查，不计验收通过。",
+      "currentName": "大明湖",
+      "reviewBatch": 42,
+      "governedSourceIds": [
+        5348,
+        5953,
+        5968
+      ],
+      "scopeMentionIds": [
+        11342,
+        11379,
+        11387,
+        11402,
+        11411,
+        11421,
+        11429,
+        11434,
+        11450,
+        11462,
+        11473,
+        11494,
+        11507,
+        11522,
+        11539,
+        11578,
+        11581,
+        11594,
+        11598,
+        11601,
+        11604,
+        11611,
+        11627,
+        11683,
+        11693,
+        11695,
+        11703,
+        11705,
+        12570,
+        12575,
+        12629,
+        12641,
+        12649,
+        12654,
+        12661,
+        12664,
+        12671,
+        12677,
+        12687,
+        12700,
+        12707,
+        12712,
+        12728,
+        12733,
+        12748,
+        12764,
+        12772,
+        12779,
+        12794,
+        12802,
+        12814,
+        12832,
+        12839,
+        12853,
+        12860,
+        12873,
+        12900,
+        12908,
+        12921,
+        12923,
+        12926,
+        12947,
+        12959,
+        12973,
+        12979
+      ],
+      "currentMentionIds": [
+        11342,
+        11387,
+        11402,
+        11411,
+        11429,
+        11434,
+        11450,
+        11462,
+        11473,
+        11494,
+        11507,
+        11522,
+        11578,
+        11594,
+        11627,
+        11683,
+        11693,
+        12570,
+        12629,
+        12641,
+        12661,
+        12664,
+        12671,
+        12677,
+        12700,
+        12707,
+        12712,
+        12728,
+        12733,
+        12748,
+        12764,
+        12772,
+        12779,
+        12794,
+        12802,
+        12814,
+        12832,
+        12853,
+        12860,
+        12873,
+        12900,
+        12921,
+        12923,
+        12926,
+        12947,
+        12959,
+        12973,
+        12979
+      ],
+      "pendingScopeMentionIds": [
+        11379,
+        11421,
+        11539,
+        11581,
+        11598,
+        11601,
+        11604,
+        11611,
+        11695,
+        11703,
+        11705,
+        12575,
+        12649,
+        12654,
+        12687,
+        12839,
+        12908
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/daminghu-source-review-01.json",
+        "priority-cities/济南/daminghu-downstream-check-01.json",
+        "priority-cities/济南/daminghu-fact-projection-check-01.json",
+        "all-cities/batch-42-applied.json",
+        "all-cities/batch-42-upstream-check.json",
+        "all-cities/batch-42/sync-01/verification-vectors.json",
+        "all-cities/batch-42/sync-01/daminghu-consumption-1791480045281.json"
+      ]
+    },
+    {
+      "entityId": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5331
+      ],
+      "relatedSourceIds": [
+        5331
+      ],
+      "mentionIds": [
+        11353,
+        12594,
+        12893
+      ],
+      "noteIds": [
+        2585,
+        2856
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5441
+      ],
+      "relatedSourceIds": [
+        5441
+      ],
+      "mentionIds": [
+        11525,
+        11644
+      ],
+      "noteIds": [
+        2563,
+        2602
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "5e67e8211c98d3e0e94c08114917c628",
+      "name": "东更道",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5491
+      ],
+      "relatedSourceIds": [
+        5491
+      ],
+      "mentionIds": [
+        11563,
+        12817
+      ],
+      "noteIds": [
+        2574
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "636406ca3bce1e8189be38c73b4e8ae4",
+      "name": "泉源之眼",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        6002
+      ],
+      "relatedSourceIds": [
+        6002
+      ],
+      "mentionIds": [
+        12960
+      ],
+      "noteIds": [
+        2839
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "note2839原文确实如此拼写；不可直接套泉城之眼名称，准确位置与同体证据待核。"
+    },
+    {
+      "entityId": "6580c2664a98b2aef1203dc3459157e6",
+      "name": "乐乎哉刘家菜",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5337
+      ],
+      "relatedSourceIds": [
+        5337
+      ],
+      "mentionIds": [
+        11359,
+        12600
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "name": "济南文字墙",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5954
+      ],
+      "relatedSourceIds": [
+        5954
+      ],
+      "mentionIds": [
+        12688
+      ],
+      "noteIds": [
+        2817
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "note2817可定老城区路线，具体墙面尚未定位；错误远端坐标已清空。"
+    },
+    {
+      "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+      "name": "济南环城公园",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5952
+      ],
+      "relatedSourceIds": [
+        5952
+      ],
+      "mentionIds": [
+        12591
+      ],
+      "noteIds": [
+        2823
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5481
+      ],
+      "relatedSourceIds": [
+        5481
+      ],
+      "mentionIds": [
+        11508,
+        12581,
+        12786
+      ],
+      "noteIds": [
+        2616,
+        2803,
+        2798
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "text_mention_scope_confirmed_boundary_review_continues",
+        "category": "retained_pending_review",
+        "location": "pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "subject_mismatch_fields_excluded_other_fields_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "用户本轮明确暂不对图片进行比对；数据库图片字段保留不代表视觉核查。",
+      "changeBatch": 40,
+      "followup": "第40批排除12581整城概述3字段，3有效提及及12786拍照语境保留；原娱乐类别/位置保持待核，图片比对暂缓。完整自查未通过。",
+      "evidenceFiles": [
+        "priority-cities/济南/outer-source-review-01.json",
+        "priority-cities/济南/outer-findings-check-01.json",
+        "priority-cities/济南/outer-photo-sources-01.json",
+        "priority-cities/济南/geo-13.json",
+        "priority-cities/济南/description-source-review-01.json",
+        "priority-cities/济南/description-downstream-check-01.json",
+        "all-cities/batch-40-applied.json",
+        "all-cities/batch-40-upstream-check.json",
+        "all-cities/batch-40/sync-01/verification-vectors.json"
+      ],
+      "reviewBatch": 40,
+      "governedSourceIds": [
+        5481
+      ],
+      "scopeMentionIds": [
+        11508,
+        12581,
+        12786
+      ],
+      "currentMentionIds": [
+        11508,
+        12581,
+        12786
+      ],
+      "pendingScopeMentionIds": []
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5498
+      ],
+      "relatedSourceIds": [
+        5498
+      ],
+      "mentionIds": [
+        11619,
+        12807,
+        12912
+      ],
+      "noteIds": [
+        2624,
+        2810
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+      "name": "山东博物馆",
+      "baselineRevision": 2,
+      "currentRevision": 2,
+      "sourceIds": [
+        5355,
+        5370
+      ],
+      "relatedSourceIds": [
+        5355,
+        5370
+      ],
+      "mentionIds": [
+        11393,
+        11417,
+        11487,
+        11497,
+        11568,
+        11606,
+        11685,
+        12683,
+        12750,
+        12796,
+        12804,
+        12822,
+        12852,
+        12864,
+        12876
+      ],
+      "noteIds": [
+        2548,
+        2550,
+        2551,
+        2554,
+        2564,
+        2608,
+        2609,
+        2789,
+        2811,
+        2829,
+        2830,
+        2834
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "complete_source_set_reviewed_same_institution",
+        "category": "reviewed_culture",
+        "location": "reviewed_current_museum_reference_point",
+        "media": "13_sources_reviewed_1_bound_12_rejected"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "15提及/两源完整核查，主名及山东省博物馆同体、与美术馆和旧址/设施分开；经十路11899号新馆参考点确认，独立图库13图逐图核查，1张正门图已绑定、12张原拒绝保留。SQL/真实向量/旧ID/行程消费通过，AI自查完成，待用户验收。",
+      "currentEntityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+      "currentName": "山东博物馆",
+      "reviewAfterEntityBatch": 34,
+      "currentMentionIds": [
+        11393,
+        11417,
+        11487,
+        11497,
+        11568,
+        11606,
+        11685,
+        12683,
+        12750,
+        12796,
+        12804,
+        12822,
+        12852,
+        12864,
+        12876
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/cultural-upstream-check-01.json",
+        "priority-cities/济南/cultural-downstream-check-03.json",
+        "priority-cities/济南/geo-05.json",
+        "independent-photo-batch-02/visual-review.json",
+        "independent-photo-batch-02/applied.json",
+        "independent-photo-batch-02/verify-1791397735604.json"
+      ]
+    },
+    {
+      "entityId": "747792d1b5834255f5feaa6c2dc62925",
+      "name": "芙蓉街",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5353
+      ],
+      "relatedSourceIds": [
+        5353
+      ],
+      "mentionIds": [
+        11339,
+        11389,
+        11415,
+        11431,
+        11447,
+        11499,
+        11506,
+        11579,
+        11586,
+        11613,
+        11623,
+        11689,
+        11699,
+        12567,
+        12573,
+        12625,
+        12638,
+        12659,
+        12681,
+        12709,
+        12752,
+        12816,
+        12833,
+        12835,
+        12836,
+        12904,
+        12917,
+        12932,
+        12948,
+        12956
+      ],
+      "noteIds": [
+        2545,
+        2548,
+        2550,
+        2567,
+        2553,
+        2554,
+        2619,
+        2564,
+        2583,
+        2584,
+        2624,
+        2609,
+        2611,
+        2803,
+        2793,
+        2782,
+        2816,
+        2810,
+        2851,
+        2853,
+        2835,
+        2857,
+        2839
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "corrected_and_synced",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "78d5eff53c3692218e93a142d69021cf",
+      "name": "山东大厦",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5971
+      ],
+      "relatedSourceIds": [
+        5971
+      ],
+      "mentionIds": [
+        12778
+      ],
+      "noteIds": [
+        2797
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "原文为酒店中庭摄影，酒店整体与中庭边界仍待核。"
+    },
+    {
+      "entityId": "7950bfadd891932d01be8636aba8b51a",
+      "name": "环联夜市",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5358
+      ],
+      "relatedSourceIds": [
+        5358
+      ],
+      "mentionIds": [
+        11464,
+        11571,
+        11607,
+        12647,
+        12825
+      ],
+      "noteIds": [
+        2588,
+        2564,
+        2608,
+        2782
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "79e713e197315afb0440835502699789",
+      "name": "民族大街市场",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5961
+      ],
+      "relatedSourceIds": [
+        5961
+      ],
+      "mentionIds": [
+        12643
+      ],
+      "noteIds": [
+        2782
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "name": "四窟万象",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5480
+      ],
+      "relatedSourceIds": [
+        5480
+      ],
+      "mentionIds": [
+        11492,
+        12777
+      ],
+      "noteIds": [
+        2551,
+        2797
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "80a33955c3f8381171f8493ae1ec0c4d",
+      "name": "华山湖公园",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5973
+      ],
+      "relatedSourceIds": [
+        5973
+      ],
+      "mentionIds": [
+        12783
+      ],
+      "noteIds": [
+        2798
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "name": "燕喜堂",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5404
+      ],
+      "relatedSourceIds": [
+        5404
+      ],
+      "mentionIds": [
+        11537,
+        12798,
+        12863
+      ],
+      "noteIds": [
+        2579,
+        2789,
+        2830
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "8618b70ccf17cd1522c5bf27cbe16361",
+      "name": "珍池街",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5492
+      ],
+      "relatedSourceIds": [
+        5492
+      ],
+      "mentionIds": [
+        11564,
+        12818
+      ],
+      "noteIds": [
+        2574
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "8808e16f1472d0df17bed729a2e54e83",
+      "name": "趵突泉",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5349
+      ],
+      "relatedSourceIds": [
+        5349
+      ],
+      "mentionIds": [
+        11333,
+        11378,
+        11382,
+        11397,
+        11407,
+        11428,
+        11452,
+        11470,
+        11486,
+        11493,
+        11511,
+        11516,
+        11543,
+        11573,
+        11582,
+        11589,
+        11597,
+        11603,
+        11612,
+        11618,
+        11682,
+        11692,
+        11700,
+        11702,
+        11704,
+        12561,
+        12571,
+        12609,
+        12633,
+        12648,
+        12656,
+        12667,
+        12673,
+        12698,
+        12706,
+        12718,
+        12730,
+        12746,
+        12758,
+        12780,
+        12789,
+        12800,
+        12808,
+        12827,
+        12844,
+        12845,
+        12848,
+        12856,
+        12868,
+        12897,
+        12911,
+        12928,
+        12937,
+        12951,
+        12962,
+        12966,
+        12976
+      ],
+      "noteIds": [
+        2545,
+        2547,
+        2548,
+        2569,
+        2550,
+        2567,
+        2570,
+        2560,
+        2551,
+        2554,
+        2607,
+        2563,
+        2582,
+        2564,
+        2583,
+        2622,
+        2589,
+        2608,
+        2584,
+        2624,
+        2609,
+        2623,
+        2611,
+        2614,
+        2613,
+        2803,
+        2825,
+        2782,
+        2816,
+        2786,
+        2807,
+        2808,
+        2798,
+        2789,
+        2811,
+        2810,
+        2809,
+        2852,
+        2829,
+        2830,
+        2834,
+        2856,
+        2835,
+        2837,
+        2839,
+        2841,
+        2840,
+        2843
+      ],
+      "status": "mixed_source_withdrawn_assignment_pending",
+      "dimensions": {
+        "identity": "mixed_id_withdrawn_without_redirect",
+        "category": "withdrawn",
+        "location": "withdrawn_not_a_core_point",
+        "media": "reviewed_empty_managed_gallery"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 34,
+      "followup": "旧混合裸名ID显式撤回、不重定向，错误酒店坐标保持清空；22条已确认公园提及逐条归公园，38条保留null。不伪造主泉实体或删除原入选行。",
+      "currentEntityId": "8808e16f1472d0df17bed729a2e54e83",
+      "currentName": "趵突泉",
+      "governedSourceIds": [
+        5349,
+        5366
+      ],
+      "scopeMentionIds": [
+        11333,
+        11378,
+        11382,
+        11397,
+        11407,
+        11428,
+        11442,
+        11452,
+        11470,
+        11486,
+        11493,
+        11511,
+        11516,
+        11543,
+        11573,
+        11582,
+        11589,
+        11597,
+        11603,
+        11612,
+        11618,
+        11682,
+        11692,
+        11700,
+        11702,
+        11704,
+        12561,
+        12571,
+        12609,
+        12621,
+        12633,
+        12648,
+        12656,
+        12662,
+        12667,
+        12673,
+        12698,
+        12706,
+        12718,
+        12730,
+        12746,
+        12758,
+        12780,
+        12789,
+        12800,
+        12808,
+        12827,
+        12844,
+        12845,
+        12848,
+        12856,
+        12868,
+        12897,
+        12911,
+        12928,
+        12937,
+        12951,
+        12962,
+        12966,
+        12976
+      ],
+      "pendingScopeMentionIds": [
+        11378,
+        11407,
+        11428,
+        11452,
+        11470,
+        11486,
+        11511,
+        11516,
+        11543,
+        11582,
+        11589,
+        11597,
+        11603,
+        11612,
+        11618,
+        11692,
+        11700,
+        11702,
+        11704,
+        12571,
+        12609,
+        12633,
+        12648,
+        12656,
+        12673,
+        12706,
+        12718,
+        12730,
+        12780,
+        12800,
+        12808,
+        12845,
+        12848,
+        12897,
+        12911,
+        12951,
+        12966,
+        12976
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/baotu-source-review-01.json",
+        "all-cities/batch-34-applied.json",
+        "all-cities/batch-34-upstream-check.json",
+        "all-cities/batch-34/sync-01/boundary-check.json",
+        "all-cities/batch-34/sync-01/verification-vectors.json"
+      ],
+      "currentMentionIds": []
+    },
+    {
+      "entityId": "88a3e4b4f75459daacfe23ed6ca4157d",
+      "name": "济南墙",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5969
+      ],
+      "relatedSourceIds": [
+        5969
+      ],
+      "mentionIds": [
+        12773
+      ],
+      "noteIds": [
+        2797
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "note2797定位为百花洲西月下观棠旁街巷，具体墙面待核。"
+    },
+    {
+      "entityId": "8cc25e536e67519c958ee54248ead04f",
+      "name": "泉城广场",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5354
+      ],
+      "relatedSourceIds": [
+        5354
+      ],
+      "mentionIds": [
+        11334,
+        11390,
+        11398,
+        11408,
+        11420,
+        11427,
+        11438,
+        11443,
+        11504,
+        11513,
+        11517,
+        11574,
+        11587,
+        11697,
+        12562,
+        12580,
+        12634,
+        12674,
+        12697,
+        12705,
+        12715,
+        12759,
+        12770,
+        12828,
+        12909,
+        12913,
+        12952,
+        12968,
+        12981,
+        12982,
+        12983,
+        12984,
+        12987
+      ],
+      "noteIds": [
+        2545,
+        2548,
+        2569,
+        2550,
+        2567,
+        2618,
+        2553,
+        2554,
+        2607,
+        2563,
+        2564,
+        2583,
+        2611,
+        2803,
+        2782,
+        2807,
+        2808,
+        2797,
+        2853,
+        2624,
+        2839,
+        2840,
+        2843,
+        2844,
+        2845,
+        2846,
+        2847
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "30_square_mentions_confirmed_3_scope_or_fact_issues_pending",
+        "category": "reviewed_entertainment",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 35,
+      "followup": "33提及/27原文复核，30条归广场，11420住宿区域、12580混入住宿性价比、12913错写五龙潭东门出发点已隔离待审。稳定ID/坐标/娱乐类别保留；双同步、SQL/真实向量、30条语料与旧ID/图片/历史行程通过。三条尚未解决，不计作全部自查完成。",
+      "currentEntityId": "8cc25e536e67519c958ee54248ead04f",
+      "currentName": "泉城广场",
+      "evidenceFiles": [
+        "priority-cities/济南/landmark-source-review-01.json",
+        "priority-cities/济南/landmark-upstream-check-01.json",
+        "priority-cities/济南/landmark-downstream-check-01.json",
+        "priority-cities/济南/landmark-photo-sources-01.json",
+        "priority-cities/济南/geo-06.json",
+        "priority-cities/济南/square-source-review-02.json",
+        "all-cities/batch-35-applied.json",
+        "all-cities/batch-35-upstream-check.json",
+        "all-cities/batch-35/sync-01/verification-vectors.json",
+        "all-cities/batch-35/sync-01/boundary-check.json"
+      ],
+      "governedSourceIds": [
+        5354
+      ],
+      "scopeMentionIds": [
+        11334,
+        11390,
+        11398,
+        11408,
+        11420,
+        11427,
+        11438,
+        11443,
+        11504,
+        11513,
+        11517,
+        11574,
+        11587,
+        11697,
+        12562,
+        12580,
+        12634,
+        12674,
+        12697,
+        12705,
+        12715,
+        12759,
+        12770,
+        12828,
+        12909,
+        12913,
+        12952,
+        12968,
+        12981,
+        12982,
+        12983,
+        12984,
+        12987
+      ],
+      "pendingScopeMentionIds": [
+        11420,
+        12580,
+        12913
+      ],
+      "currentMentionIds": [
+        11334,
+        11390,
+        11398,
+        11408,
+        11427,
+        11438,
+        11443,
+        11504,
+        11513,
+        11517,
+        11574,
+        11587,
+        11697,
+        12562,
+        12634,
+        12674,
+        12697,
+        12705,
+        12715,
+        12759,
+        12770,
+        12828,
+        12909,
+        12952,
+        12968,
+        12981,
+        12982,
+        12983,
+        12984,
+        12987
+      ],
+      "reviewIds": [
+        2771,
+        2799,
+        2820
+      ]
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5479
+      ],
+      "relatedSourceIds": [
+        5479
+      ],
+      "mentionIds": [
+        11437,
+        11626,
+        12585,
+        12693,
+        12714,
+        12841,
+        12920
+      ],
+      "noteIds": [
+        2618,
+        2624,
+        2813,
+        2817,
+        2800
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "bridge_gate_courtyard_boundary_pending",
+        "category": "subject_pending",
+        "location": "current_point_is_street_poi_bridge_point_pending",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "bridge_gate_attribution_pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "六篇直接来源原图已补齐门洞场景，8号门牌和起凤桥介绍牌可见；桥面、门洞、八号院不能整组判等。保持现行身份，后续逐提及明确摄影对象与桥体归属；未完成自查。",
+      "reviewBatch": 38,
+      "evidenceFiles": [
+        "priority-cities/济南/streets-source-packet-01.json",
+        "priority-cities/济南/streets-visual-review-01.json",
+        "priority-cities/济南/streets-downstream-check-02.json",
+        "priority-cities/济南/geo-09.json",
+        "priority-cities/济南/geo-11.json",
+        "priority-cities/济南/streets-location-review-01.json",
+        "priority-cities/济南/streets-photo-sources-01.json",
+        "all-cities/batch-38-applied.json",
+        "all-cities/batch-38-upstream-check.json",
+        "all-cities/batch-38/sync-01/verification-vectors.json",
+        "all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json",
+        "priority-cities/济南/bridge-source-review-01.json",
+        "priority-cities/济南/bridge-visual-review-01.json",
+        "priority-cities/济南/bridge-photo-sources-01.json",
+        "priority-cities/济南/geo-12.json"
+      ]
+    },
+    {
+      "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "name": "大观园",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5478
+      ],
+      "relatedSourceIds": [
+        5478
+      ],
+      "mentionIds": [
+        11425,
+        12619,
+        12644,
+        12703
+      ],
+      "noteIds": [
+        2567,
+        2793,
+        2782
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed",
+        "category": "cultural_subject_confirmed",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "commercial_cultural_subject_confirmed_wrong_geo_cleared"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "仅检查旧图片字段、上游与独立图库元数据；本主体匹配0，图片暂缓不等于视觉验收。",
+      "changeBatch": 45,
+      "followup": "第45批4提及完整scope已双同步，原ID与文化类别保持，revision3；经二路728西侧错点已清空，保留经四路与纬二路概略地址，精确点待核。图片比对暂缓，未整项自查通过。",
+      "currentName": "大观园",
+      "currentEntityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "reviewBatch": 45,
+      "governedSourceIds": [
+        5478
+      ],
+      "scopeMentionIds": [
+        11425,
+        12619,
+        12644,
+        12703
+      ],
+      "currentMentionIds": [
+        11425,
+        12619,
+        12644,
+        12703
+      ],
+      "pendingScopeMentionIds": [],
+      "reviewEvidence": [
+        "priority-cities/济南/commercial-source-review-01.json",
+        "priority-cities/济南/commercial-downstream-check-01.json"
+      ]
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5385
+      ],
+      "relatedSourceIds": [
+        5385
+      ],
+      "mentionIds": [
+        11481,
+        11676,
+        12741
+      ],
+      "noteIds": [
+        2560,
+        2602
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "name": "刘氏泉",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5950
+      ],
+      "relatedSourceIds": [
+        5950
+      ],
+      "mentionIds": [
+        12587,
+        12692,
+        12944
+      ],
+      "noteIds": [
+        2813,
+        2817,
+        2837
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "2_spring_mentions_confirmed_1_photo_subject_pending",
+        "category": "reviewed_natural_spring_activity",
+        "location": "reviewed_named_spring_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "group_duration_excluded_valid_description_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 37,
+      "followup": "2条泉体提及与自然类别、位置、媒体已核，12692簪花少女摄影主体仍待补证并保持null。第36批字段排除未恢复；不计整组自查完成。",
+      "evidenceFiles": [
+        "priority-cities/济南/spring-source-packet-01.json",
+        "priority-cities/济南/spring-source-review-01.json",
+        "priority-cities/济南/spring-downstream-check-01.json",
+        "priority-cities/济南/spring-source-review-02.json",
+        "priority-cities/济南/spring-photo-sources-02.json",
+        "all-cities/batch-36-applied.json",
+        "all-cities/batch-36-upstream-check.json",
+        "all-cities/batch-36/sync-01/boundary-check.json",
+        "priority-cities/济南/spring-upstream-check-01.json",
+        "priority-cities/济南/spring-category-review-01.json",
+        "priority-cities/济南/spring-map-reference-check-01.json",
+        "priority-cities/济南/spring-photo-sources-03.json",
+        "all-cities/batch-37-applied.json",
+        "all-cities/batch-37-upstream-check.json",
+        "all-cities/batch-37/sync-01/boundary-check.json",
+        "all-cities/batch-37/sync-01/verification-vectors.json"
+      ],
+      "governedSourceIds": [
+        5950
+      ],
+      "scopeMentionIds": [
+        12587,
+        12692,
+        12944
+      ],
+      "currentMentionIds": [
+        12587,
+        12944
+      ],
+      "pendingScopeMentionIds": [
+        12692
+      ],
+      "reviewIds": [
+        3221
+      ]
+    },
+    {
+      "entityId": "9626de365121d40b3565b4a7dbc5be1a",
+      "name": "喜茶",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5322
+      ],
+      "relatedSourceIds": [
+        5322
+      ],
+      "mentionIds": [
+        11344
+      ],
+      "noteIds": [
+        2566
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "9664ac094b1fc9e794ccaaa4e77aa9fa",
+      "name": "起凤桥街",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5960
+      ],
+      "relatedSourceIds": [
+        5960
+      ],
+      "mentionIds": [
+        12626
+      ],
+      "noteIds": [
+        2793
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_subject",
+        "category": "reviewed_cultural_street_or_bridge",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "2793明确以街道为条目；实物路牌、媒体报道及同名地图参考点互证。与起凤桥、八号门洞、起凤泉分别保留；实际来源/图库/SQL和向量通过，AI自查完成。",
+      "reviewBatch": 38,
+      "evidenceFiles": [
+        "priority-cities/济南/streets-source-packet-01.json",
+        "priority-cities/济南/streets-visual-review-01.json",
+        "priority-cities/济南/streets-downstream-check-02.json",
+        "priority-cities/济南/geo-09.json",
+        "priority-cities/济南/geo-11.json",
+        "priority-cities/济南/streets-location-review-01.json",
+        "priority-cities/济南/streets-photo-sources-01.json",
+        "all-cities/batch-38-applied.json",
+        "all-cities/batch-38-upstream-check.json",
+        "all-cities/batch-38/sync-01/verification-vectors.json",
+        "all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+      ]
+    },
+    {
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "name": "七九刘家烧烤",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5433
+      ],
+      "relatedSourceIds": [
+        5433
+      ],
+      "mentionIds": [
+        11635,
+        12886
+      ],
+      "noteIds": [
+        2602,
+        2854
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "98265a1a55707d558accb6c2def8ec46",
+      "name": "济南府学文庙",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5367
+      ],
+      "relatedSourceIds": [
+        5367
+      ],
+      "mentionIds": [
+        11449
+      ],
+      "noteIds": [
+        2553
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "1条提及及完整原文已核查，主体与设施边界明确；当前类别、本体参考点、旧ID、SQL首位及真实向量通过，三类图库均无匹配图。AI自查完成，待用户验收。",
+      "currentEntityId": "98265a1a55707d558accb6c2def8ec46",
+      "currentName": "济南府学文庙",
+      "evidenceFiles": [
+        "priority-cities/济南/landmark-source-review-01.json",
+        "priority-cities/济南/landmark-upstream-check-01.json",
+        "priority-cities/济南/landmark-downstream-check-01.json",
+        "priority-cities/济南/landmark-photo-sources-01.json",
+        "priority-cities/济南/geo-06.json"
+      ]
+    },
+    {
+      "entityId": "99ddd31eba85db1d2ed58d7e60507f27",
+      "name": "双忠祠街",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5494
+      ],
+      "relatedSourceIds": [
+        5494
+      ],
+      "mentionIds": [
+        11566,
+        12820
+      ],
+      "noteIds": [
+        2574
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "9dbf8ef94ec1777461c9d486973ce0c7",
+      "name": "后宰门街",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5393
+      ],
+      "relatedSourceIds": [
+        5393
+      ],
+      "mentionIds": [
+        11460,
+        12690,
+        12726
+      ],
+      "noteIds": [
+        2570,
+        2817
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "9ffce5f7ef87be0f7ac37aa2a74ed417",
+      "name": "九转大肠",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5387
+      ],
+      "relatedSourceIds": [
+        5387
+      ],
+      "mentionIds": [
+        11483,
+        12743
+      ],
+      "noteIds": [
+        2560
+      ],
+      "status": "reviewed_non_place_excluded",
+      "dimensions": {
+        "identity": "reviewed_non_place",
+        "category": "not_a_place",
+        "location": "not_applicable",
+        "media": "withdrawal_verified"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 31,
+      "followup": "note2560的两条提及均已确认仅为菜品/品类，已显式撤回地点候选。旧ID及原始资料保留，新提及或原文变化须重新核查。",
+      "evidenceFiles": [
+        "all-cities/batch-31-source.json",
+        "all-cities/batch-31-applied.json",
+        "all-cities/batch-31-upstream-check.json",
+        "all-cities/batch-31/sync-01/verification-vectors.json"
+      ]
+    },
+    {
+      "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+      "name": "腊山河廊道",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5403
+      ],
+      "relatedSourceIds": [
+        5403
+      ],
+      "mentionIds": [
+        11377
+      ],
+      "noteIds": [
+        2576
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "a4e2cf834fef59d81531b82e42296fa1",
+      "name": "玛瑙泉",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5967
+      ],
+      "relatedSourceIds": [
+        5967
+      ],
+      "mentionIds": [
+        12771
+      ],
+      "noteIds": [
+        2797
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_spring",
+        "category": "reviewed_natural_spring_activity",
+        "location": "reviewed_named_spring_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 37,
+      "followup": "完整来源、实际同名泉体参考点及三类图库已核；类别修订自然已双同步，独立ID/有效描述/SQL和真实向量通过，错误时长未恢复。AI自查完成，待用户验收。",
+      "evidenceFiles": [
+        "priority-cities/济南/spring-source-packet-01.json",
+        "priority-cities/济南/spring-source-review-01.json",
+        "priority-cities/济南/spring-downstream-check-01.json",
+        "priority-cities/济南/spring-upstream-check-01.json",
+        "priority-cities/济南/spring-category-review-01.json",
+        "priority-cities/济南/spring-map-reference-check-01.json",
+        "priority-cities/济南/spring-photo-sources-03.json",
+        "all-cities/batch-37-applied.json",
+        "all-cities/batch-37-upstream-check.json",
+        "all-cities/batch-37/sync-01/boundary-check.json",
+        "all-cities/batch-37/sync-01/verification-vectors.json"
+      ]
+    },
+    {
+      "entityId": "a72490fe56f5990e94cccd78ec58824b",
+      "name": "济南锅贴",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5389
+      ],
+      "relatedSourceIds": [
+        5389
+      ],
+      "mentionIds": [
+        11485,
+        12745
+      ],
+      "noteIds": [
+        2560
+      ],
+      "status": "reviewed_non_place_excluded",
+      "dimensions": {
+        "identity": "reviewed_non_place",
+        "category": "not_a_place",
+        "location": "not_applicable",
+        "media": "withdrawal_verified"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 31,
+      "followup": "note2560的两条提及均已确认仅为菜品/品类，已显式撤回地点候选。旧ID及原始资料保留，新提及或原文变化须重新核查。",
+      "evidenceFiles": [
+        "all-cities/batch-31-source.json",
+        "all-cities/batch-31-applied.json",
+        "all-cities/batch-31-upstream-check.json",
+        "all-cities/batch-31/sync-01/verification-vectors.json"
+      ]
+    },
+    {
+      "entityId": "a75779b7778aa9751bcfa97528fc877f",
+      "name": "老济南烧烤",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5386
+      ],
+      "relatedSourceIds": [
+        5386
+      ],
+      "mentionIds": [
+        11482,
+        12742
+      ],
+      "noteIds": [
+        2560
+      ],
+      "status": "reviewed_non_place_excluded",
+      "dimensions": {
+        "identity": "reviewed_non_place",
+        "category": "not_a_place",
+        "location": "not_applicable",
+        "media": "withdrawal_verified"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 31,
+      "followup": "note2560的两条提及均已确认仅为菜品/品类，已显式撤回地点候选。旧ID及原始资料保留，新提及或原文变化须重新核查。",
+      "evidenceFiles": [
+        "all-cities/batch-31-source.json",
+        "all-cities/batch-31-applied.json",
+        "all-cities/batch-31-upstream-check.json",
+        "all-cities/batch-31/sync-01/verification-vectors.json"
+      ]
+    },
+    {
+      "entityId": "a76a124615e676af06c7a75968519280",
+      "name": "西更道街",
+      "baselineRevision": 2,
+      "currentRevision": 3,
+      "sourceIds": [
+        5391,
+        5949
+      ],
+      "relatedSourceIds": [
+        5391,
+        5949
+      ],
+      "mentionIds": [
+        11457,
+        12586,
+        12723,
+        12762
+      ],
+      "noteIds": [
+        2570,
+        2813,
+        2808
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_subject",
+        "category": "reviewed_cultural_street_or_bridge",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 38,
+      "followup": "完整4提及/3原文及补充图片事实已核，独立60分钟保留；第38批从源泉错点改为同名街道参考点并双同步。两名/旧ID、真实向量、图库与边界通过，AI自查完成。",
+      "reviewBatch": 38,
+      "evidenceFiles": [
+        "priority-cities/济南/streets-source-packet-01.json",
+        "priority-cities/济南/streets-visual-review-01.json",
+        "priority-cities/济南/streets-downstream-check-02.json",
+        "priority-cities/济南/geo-09.json",
+        "priority-cities/济南/geo-11.json",
+        "priority-cities/济南/streets-location-review-01.json",
+        "priority-cities/济南/streets-photo-sources-01.json",
+        "all-cities/batch-38-applied.json",
+        "all-cities/batch-38-upstream-check.json",
+        "all-cities/batch-38/sync-01/verification-vectors.json",
+        "all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+      ]
+    },
+    {
+      "entityId": "abc624edea07111dc19aa79dfbb18289",
+      "name": "济南野生动物园",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5974
+      ],
+      "relatedSourceIds": [
+        5974
+      ],
+      "mentionIds": [
+        12787
+      ],
+      "noteIds": [
+        2798
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "text_mention_scope_confirmed_boundary_review_continues",
+        "category": "retained_pending_review",
+        "location": "pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "subject_mismatch_fields_excluded_other_fields_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "用户本轮明确暂不对图片进行比对；数据库图片字段保留不代表视觉核查。",
+      "changeBatch": 40,
+      "followup": "第40批排除12787误称济南动物园的reason，唯一有效提及及evidence_text保留；旧坐标精确对应geo14公厕候选，接续园区本体定位与类别，图片比对暂缓。",
+      "evidenceFiles": [
+        "priority-cities/济南/outer-source-review-01.json",
+        "priority-cities/济南/outer-findings-check-01.json",
+        "priority-cities/济南/outer-photo-sources-01.json",
+        "priority-cities/济南/geo-13.json",
+        "priority-cities/济南/description-source-review-01.json",
+        "priority-cities/济南/description-downstream-check-01.json",
+        "all-cities/batch-40-applied.json",
+        "all-cities/batch-40-upstream-check.json",
+        "all-cities/batch-40/sync-01/verification-vectors.json"
+      ],
+      "reviewBatch": 40,
+      "governedSourceIds": [
+        5974
+      ],
+      "scopeMentionIds": [
+        12787
+      ],
+      "currentMentionIds": [
+        12787
+      ],
+      "pendingScopeMentionIds": []
+    },
+    {
+      "entityId": "af9116d87efcdf105915ca6303cb6274",
+      "name": "珍珠泉",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5363
+      ],
+      "relatedSourceIds": [
+        5363
+      ],
+      "mentionIds": [
+        11338,
+        11400,
+        11414,
+        12566,
+        12592,
+        12669,
+        12680,
+        12696,
+        12940
+      ],
+      "noteIds": [
+        2545,
+        2569,
+        2550,
+        2823,
+        2786,
+        2817,
+        2837
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "b58d15060ff3828b071f950487e487db",
+      "name": "百花洲",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5364
+      ],
+      "relatedSourceIds": [
+        5364
+      ],
+      "mentionIds": [
+        11341,
+        11370,
+        11386,
+        11413,
+        11461,
+        11541,
+        12569,
+        12589,
+        12611,
+        12627,
+        12640,
+        12679,
+        12727,
+        12934,
+        12946,
+        12978
+      ],
+      "noteIds": [
+        2545,
+        2546,
+        2548,
+        2550,
+        2570,
+        2582,
+        2813,
+        2793,
+        2782,
+        2835,
+        2837,
+        2843
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed_with_partial_pending",
+        "category": "cultural_subject_confirmed",
+        "location": "existing_coordinates_preserved_review_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "group_duration_excluded_photo_subject_pending_visit_unknown"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "本轮仅验证既有图片数据和绑定保留，未查看或比对原图，不计为完整视觉核查。",
+      "changeBatch": 44,
+      "followup": "第44批12确认/4待审已双同步，原ID/坐标保持，文化类revision3；有效时长未知。共享时长和提前量错误停止消费；保留待审，图片暂缓，尚未完成整项自查。",
+      "reviewBatch": 44,
+      "evidenceFiles": [
+        "priority-cities/济南/shared-route-duration-findings-01.json",
+        "priority-cities/济南/shared-routes-source-review-01.json",
+        "priority-cities/济南/shared-routes-downstream-check-01.json",
+        "priority-cities/济南/shared-routes-duration-provenance-01.json",
+        "priority-cities/济南/shared-routes-relation-check-01.json",
+        "all-cities/batch-44-applied.json",
+        "all-cities/batch-44-upstream-check.json",
+        "all-cities/batch-44/sync-01/verification-vectors.json",
+        "all-cities/batch-44/sync-01/shared-routes-consumption-1791482561713.json"
+      ],
+      "currentName": "百花洲",
+      "currentEntityId": "b58d15060ff3828b071f950487e487db",
+      "governedSourceIds": [
+        5364
+      ],
+      "scopeMentionIds": [
+        11341,
+        11370,
+        11386,
+        11413,
+        11461,
+        11541,
+        12569,
+        12589,
+        12611,
+        12627,
+        12640,
+        12679,
+        12727,
+        12934,
+        12946,
+        12978
+      ],
+      "currentMentionIds": [
+        11341,
+        11370,
+        11386,
+        11413,
+        12569,
+        12589,
+        12611,
+        12627,
+        12640,
+        12679,
+        12934,
+        12978
+      ],
+      "pendingScopeMentionIds": [
+        11461,
+        11541,
+        12727,
+        12946
+      ]
+    },
+    {
+      "entityId": "b6898fcd137cd506753c47a4a2b16693",
+      "name": "百花桥",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5956
+      ],
+      "relatedSourceIds": [
+        5956
+      ],
+      "mentionIds": [
+        12691
+      ],
+      "noteIds": [
+        2817
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_subject",
+        "category": "reviewed_cultural_street_or_bridge",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "2817第1/9页定位后宰门街向西至曲水亭街的水道桥，匹配老城同名地图点，排除大明湖园内另一候选。唯一提及、现行描述/图库/SQL和向量通过，AI自查完成。",
+      "reviewBatch": 38,
+      "evidenceFiles": [
+        "priority-cities/济南/streets-source-packet-01.json",
+        "priority-cities/济南/streets-visual-review-01.json",
+        "priority-cities/济南/streets-downstream-check-02.json",
+        "priority-cities/济南/geo-09.json",
+        "priority-cities/济南/geo-11.json",
+        "priority-cities/济南/streets-location-review-01.json",
+        "priority-cities/济南/streets-photo-sources-01.json",
+        "all-cities/batch-38-applied.json",
+        "all-cities/batch-38-upstream-check.json",
+        "all-cities/batch-38/sync-01/verification-vectors.json",
+        "all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+      ]
+    },
+    {
+      "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+      "name": "天天过年",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5401
+      ],
+      "relatedSourceIds": [
+        5401
+      ],
+      "mentionIds": [
+        11375,
+        12806
+      ],
+      "noteIds": [
+        2576,
+        2811
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "name": "宽厚里",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5361
+      ],
+      "relatedSourceIds": [
+        5361
+      ],
+      "mentionIds": [
+        11372,
+        11426,
+        11446,
+        11475,
+        11491,
+        11500,
+        11520,
+        11577,
+        11592,
+        11622,
+        11690,
+        11696,
+        12579,
+        12613,
+        12624,
+        12637,
+        12658,
+        12704,
+        12735,
+        12753,
+        12761,
+        12792,
+        12810,
+        12831,
+        12837,
+        12871,
+        12916,
+        12931,
+        12955,
+        12971
+      ],
+      "noteIds": [
+        2546,
+        2567,
+        2553,
+        2560,
+        2551,
+        2554,
+        2563,
+        2564,
+        2622,
+        2624,
+        2609,
+        2611,
+        2803,
+        2793,
+        2782,
+        2816,
+        2808,
+        2789,
+        2810,
+        2851,
+        2834,
+        2835,
+        2839,
+        2840
+      ],
+      "status": "reviewed_same_entity",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "no_current_images_and_no_matching_independent_catalog"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 32,
+      "followup": "已核对完整来源并归入“宽厚里”稳定ID；主实体保留。坐标为地图本体参考点；错误地址文字已清空，按原文商业街区类别保留。仍待用户验收。",
+      "currentEntityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "currentName": "宽厚里",
+      "evidenceFiles": [
+        "all-cities/batch-32-decisions.json",
+        "all-cities/batch-32-applied.json",
+        "all-cities/batch-32-upstream-check.json",
+        "all-cities/batch-32/sync-01/verification-vectors.json",
+        "all-cities/batch-32/sync-01/boundary-check.json",
+        "priority-cities/济南/cultural-downstream-check-03.json"
+      ]
+    },
+    {
+      "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+      "name": "珍珠泉大院",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5947
+      ],
+      "relatedSourceIds": [
+        5947
+      ],
+      "mentionIds": [
+        12582
+      ],
+      "noteIds": [
+        2813
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "c057999eba2876818984ed6c93375936",
+      "name": "华祥糕点",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5345
+      ],
+      "relatedSourceIds": [
+        5345
+      ],
+      "mentionIds": [
+        11367,
+        12608
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "c11648e477180d1b3f97da06808da5e7",
+      "name": "经三路",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5394
+      ],
+      "relatedSourceIds": [
+        5394
+      ],
+      "mentionIds": [
+        11529,
+        12617
+      ],
+      "noteIds": [
+        2573,
+        2793
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "corrected_and_synced",
+        "media": "deferred_by_user"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "reason遗漏纬三路红绿灯限定，placeContent保留限定；当前实际1图，需同时处理文字治理后的旧图库保全。",
+      "reviewBatch": 45,
+      "unappliedFinding": {
+        "entityId": "c11648e477180d1b3f97da06808da5e7",
+        "name": "经三路",
+        "sourceIds": [
+          5394
+        ],
+        "mentionIds": [
+          12617
+        ],
+        "status": "unapplied_reason_exclusion_preserve_existing_photo_consumption",
+        "reason": "reason遗漏纬三路红绿灯限定，placeContent保留限定；当前实际1图，需同时处理文字治理后的旧图库保全。",
+        "discoveredDuringEntityBatch": 45,
+        "evidence": "../priority-cities/济南/commercial-source-review-01.json",
+        "fullReviewPassed": false
+      },
+      "reviewEvidence": [
+        "priority-cities/济南/commercial-source-review-01.json"
+      ]
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "name": "老舍笔下的济南",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5957
+      ],
+      "relatedSourceIds": [
+        5957
+      ],
+      "mentionIds": [
+        12694
+      ],
+      "noteIds": [
+        2817
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "note2817将其列为路线机位，不能按文学概念直接丢弃；核对西更道街墙面。"
+    },
+    {
+      "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+      "name": "关帝庙",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5994
+      ],
+      "relatedSourceIds": [
+        5994
+      ],
+      "mentionIds": [
+        12964
+      ],
+      "noteIds": [
+        2841
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "corrected_and_synced",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "name": "曲水亭街",
+      "baselineRevision": 2,
+      "currentRevision": 3,
+      "sourceIds": [
+        5352,
+        5493
+      ],
+      "relatedSourceIds": [
+        5352,
+        5493
+      ],
+      "mentionIds": [
+        11340,
+        11369,
+        11385,
+        11401,
+        11412,
+        11423,
+        11430,
+        11436,
+        11448,
+        11459,
+        11472,
+        11495,
+        11505,
+        11521,
+        11540,
+        11565,
+        11585,
+        11593,
+        11614,
+        11624,
+        11691,
+        11694,
+        11698,
+        12568,
+        12574,
+        12588,
+        12610,
+        12628,
+        12639,
+        12660,
+        12665,
+        12670,
+        12678,
+        12708,
+        12713,
+        12725,
+        12732,
+        12747,
+        12763,
+        12781,
+        12793,
+        12801,
+        12813,
+        12819,
+        12834,
+        12840,
+        12850,
+        12859,
+        12872,
+        12907,
+        12918,
+        12925,
+        12933,
+        12945,
+        12957,
+        12972
+      ],
+      "noteIds": [
+        2545,
+        2546,
+        2548,
+        2569,
+        2550,
+        2567,
+        2618,
+        2553,
+        2570,
+        2560,
+        2554,
+        2619,
+        2563,
+        2582,
+        2574,
+        2583,
+        2622,
+        2584,
+        2624,
+        2609,
+        2623,
+        2611,
+        2803,
+        2813,
+        2793,
+        2782,
+        2816,
+        2806,
+        2786,
+        2808,
+        2798,
+        2789,
+        2811,
+        2810,
+        2851,
+        2800,
+        2829,
+        2830,
+        2834,
+        2853,
+        2801,
+        2835,
+        2837,
+        2839,
+        2840
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed_with_partial_pending",
+        "category": "cultural_subject_confirmed",
+        "location": "existing_coordinates_preserved_review_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "lead_time_and_group_duration_excluded_independent_50"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "本轮仅验证既有图片数据和绑定保留，未查看或比对原图，不计为完整视觉核查。",
+      "changeBatch": 44,
+      "followup": "第44批44确认/12待审已双同步，原ID/坐标保持，文化类revision3；有效时长50分钟。共享时长和提前量错误停止消费；保留待审，图片暂缓，尚未完成整项自查。",
+      "reviewBatch": 44,
+      "evidenceFiles": [
+        "priority-cities/济南/shared-route-duration-findings-01.json",
+        "priority-cities/济南/shared-routes-source-review-01.json",
+        "priority-cities/济南/shared-routes-downstream-check-01.json",
+        "priority-cities/济南/shared-routes-duration-provenance-01.json",
+        "priority-cities/济南/shared-routes-relation-check-01.json",
+        "all-cities/batch-44-applied.json",
+        "all-cities/batch-44-upstream-check.json",
+        "all-cities/batch-44/sync-01/verification-vectors.json",
+        "all-cities/batch-44/sync-01/shared-routes-consumption-1791482561713.json"
+      ],
+      "currentName": "曲水亭街",
+      "currentEntityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "governedSourceIds": [
+        5352,
+        5493
+      ],
+      "scopeMentionIds": [
+        11340,
+        11369,
+        11385,
+        11401,
+        11412,
+        11423,
+        11430,
+        11436,
+        11448,
+        11459,
+        11472,
+        11495,
+        11505,
+        11521,
+        11540,
+        11565,
+        11585,
+        11593,
+        11614,
+        11624,
+        11691,
+        11694,
+        11698,
+        12568,
+        12574,
+        12588,
+        12610,
+        12628,
+        12639,
+        12660,
+        12665,
+        12670,
+        12678,
+        12708,
+        12713,
+        12725,
+        12732,
+        12747,
+        12763,
+        12781,
+        12793,
+        12801,
+        12813,
+        12819,
+        12834,
+        12840,
+        12850,
+        12859,
+        12872,
+        12907,
+        12918,
+        12925,
+        12933,
+        12945,
+        12957,
+        12972
+      ],
+      "currentMentionIds": [
+        11340,
+        11385,
+        11401,
+        11412,
+        11430,
+        11448,
+        11459,
+        11472,
+        11495,
+        11505,
+        11521,
+        11565,
+        11593,
+        11624,
+        11691,
+        11694,
+        12568,
+        12574,
+        12588,
+        12628,
+        12639,
+        12665,
+        12670,
+        12678,
+        12708,
+        12725,
+        12732,
+        12747,
+        12763,
+        12781,
+        12793,
+        12801,
+        12813,
+        12819,
+        12834,
+        12850,
+        12859,
+        12872,
+        12918,
+        12925,
+        12933,
+        12945,
+        12957,
+        12972
+      ],
+      "pendingScopeMentionIds": [
+        11369,
+        11423,
+        11436,
+        11540,
+        11585,
+        11614,
+        11698,
+        12610,
+        12660,
+        12713,
+        12840,
+        12907
+      ]
+    },
+    {
+      "entityId": "ca1b5db55316182cf144e13eab8e402d",
+      "name": "明珠天地C",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5966
+      ],
+      "relatedSourceIds": [
+        5966
+      ],
+      "mentionIds": [
+        12766
+      ],
+      "noteIds": [
+        2797
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "name": "鑫龙火锅",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5474
+      ],
+      "relatedSourceIds": [
+        5474
+      ],
+      "mentionIds": [
+        11708,
+        11709,
+        12846,
+        12890
+      ],
+      "noteIds": [
+        2603,
+        2604,
+        2852,
+        2856
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "cd8dfd49f13c9cbbd9d02c9d4c72defb",
+      "name": "西公界街",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5495
+      ],
+      "relatedSourceIds": [
+        5495
+      ],
+      "mentionIds": [
+        11567,
+        12821
+      ],
+      "noteIds": [
+        2574
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+      "name": "经三路爱心红绿灯",
+      "baselineRevision": 1,
+      "currentRevision": 4,
+      "sourceIds": [
+        5970
+      ],
+      "relatedSourceIds": [
+        5970
+      ],
+      "mentionIds": [
+        12776
+      ],
+      "noteIds": [
+        2797
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed",
+        "category": "cultural_photo_spot_confirmed",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "qualified_heading_subject_mismatch_descriptions_excluded"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "本主体无匹配上游/独立图片及绑定；只检查元数据与原字节保全，不作视觉验收。",
+      "changeBatch": 46,
+      "followup": "第46批限定标题引用与完整scope已双同步，12776身份和原名保留，三错误胡同描述清除，revision4；原NULL坐标保持，精确位置与图片比对待核，未整项自查通过。",
+      "reviewBatch": 46,
+      "reviewEvidence": [
+        "priority-cities/济南/commercial-source-review-01.json",
+        "priority-cities/济南/light-source-review-01.json",
+        "priority-cities/济南/light-downstream-check-01.json"
+      ],
+      "currentName": "经三路爱心红绿灯",
+      "currentEntityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+      "governedSourceIds": [
+        5970
+      ],
+      "scopeMentionIds": [
+        12776
+      ],
+      "currentMentionIds": [
+        12776
+      ],
+      "pendingScopeMentionIds": [],
+      "resolvedFinding": {
+        "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+        "name": "经三路爱心红绿灯",
+        "sourceIds": [
+          5970
+        ],
+        "mentionIds": [
+          12776
+        ],
+        "status": "resolved_qualified_heading_description_batch46",
+        "reason": "三描述字段混入独立夹心胡同；拼接原名在正文不连续，现有字段排除摘录校验拒绝。须设计可靠主体引用，不伪造摘录、不改原文。",
+        "discoveredDuringEntityBatch": 45,
+        "evidence": "../priority-cities/济南/light-downstream-check-01.json",
+        "fullReviewPassed": false,
+        "resolvedByEntityBatch": 46
+      }
+    },
+    {
+      "entityId": "d14cc0c8a631defad91e60d475b7aedd",
+      "name": "趵突泉公园",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5366
+      ],
+      "relatedSourceIds": [
+        5366
+      ],
+      "mentionIds": [
+        11442,
+        12621,
+        12662
+      ],
+      "noteIds": [
+        2553,
+        2793,
+        2806
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "22_park_mentions_confirmed_38_scope_mentions_pending",
+        "category": "reviewed_nature",
+        "location": "reviewed_reference_point",
+        "media": "reviewed_empty_managed_gallery"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 34,
+      "followup": "两源60提及/51原文已逐条核对，22条归公园，38条主体或语境不明确仍待补证。自然类别及本体参考点已核实；裸名、主泉、门口和码头不自动认领为公园。审核364未关闭。",
+      "currentEntityId": "d14cc0c8a631defad91e60d475b7aedd",
+      "currentName": "趵突泉公园",
+      "governedSourceIds": [
+        5349,
+        5366
+      ],
+      "scopeMentionIds": [
+        11333,
+        11378,
+        11382,
+        11397,
+        11407,
+        11428,
+        11442,
+        11452,
+        11470,
+        11486,
+        11493,
+        11511,
+        11516,
+        11543,
+        11573,
+        11582,
+        11589,
+        11597,
+        11603,
+        11612,
+        11618,
+        11682,
+        11692,
+        11700,
+        11702,
+        11704,
+        12561,
+        12571,
+        12609,
+        12621,
+        12633,
+        12648,
+        12656,
+        12662,
+        12667,
+        12673,
+        12698,
+        12706,
+        12718,
+        12730,
+        12746,
+        12758,
+        12780,
+        12789,
+        12800,
+        12808,
+        12827,
+        12844,
+        12845,
+        12848,
+        12856,
+        12868,
+        12897,
+        12911,
+        12928,
+        12937,
+        12951,
+        12962,
+        12966,
+        12976
+      ],
+      "pendingScopeMentionIds": [
+        11378,
+        11407,
+        11428,
+        11452,
+        11470,
+        11486,
+        11511,
+        11516,
+        11543,
+        11582,
+        11589,
+        11597,
+        11603,
+        11612,
+        11618,
+        11692,
+        11700,
+        11702,
+        11704,
+        12571,
+        12609,
+        12633,
+        12648,
+        12656,
+        12673,
+        12706,
+        12718,
+        12730,
+        12780,
+        12800,
+        12808,
+        12845,
+        12848,
+        12897,
+        12911,
+        12951,
+        12966,
+        12976
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/baotu-source-review-01.json",
+        "all-cities/batch-34-applied.json",
+        "all-cities/batch-34-upstream-check.json",
+        "all-cities/batch-34/sync-01/boundary-check.json",
+        "all-cities/batch-34/sync-01/verification-vectors.json"
+      ],
+      "currentMentionIds": [
+        11333,
+        11382,
+        11397,
+        11442,
+        11493,
+        11573,
+        11682,
+        12561,
+        12621,
+        12662,
+        12667,
+        12698,
+        12746,
+        12758,
+        12789,
+        12827,
+        12844,
+        12856,
+        12868,
+        12928,
+        12937,
+        12962
+      ]
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5499
+      ],
+      "relatedSourceIds": [
+        5499
+      ],
+      "mentionIds": [
+        11625,
+        12583,
+        12695,
+        12919,
+        12941
+      ],
+      "noteIds": [
+        2624,
+        2813,
+        2817,
+        2837
+      ],
+      "status": "reviewed_identity",
+      "dimensions": {
+        "identity": "reviewed_independent_spring",
+        "category": "reviewed_natural_spring_activity",
+        "location": "reviewed_named_spring_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "group_duration_excluded_valid_description_preserved"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 37,
+      "followup": "完整来源、实际同名泉体参考点及三类图库已核；类别修订自然已双同步，独立ID/有效描述/SQL和真实向量通过，错误时长未恢复。AI自查完成，待用户验收。",
+      "evidenceFiles": [
+        "priority-cities/济南/spring-source-packet-01.json",
+        "priority-cities/济南/spring-source-review-01.json",
+        "priority-cities/济南/spring-downstream-check-01.json",
+        "priority-cities/济南/spring-source-review-02.json",
+        "priority-cities/济南/spring-photo-sources-02.json",
+        "all-cities/batch-36-applied.json",
+        "all-cities/batch-36-upstream-check.json",
+        "all-cities/batch-36/sync-01/boundary-check.json",
+        "priority-cities/济南/spring-upstream-check-01.json",
+        "priority-cities/济南/spring-category-review-01.json",
+        "priority-cities/济南/spring-map-reference-check-01.json",
+        "priority-cities/济南/spring-photo-sources-03.json",
+        "all-cities/batch-37-applied.json",
+        "all-cities/batch-37-upstream-check.json",
+        "all-cities/batch-37/sync-01/boundary-check.json",
+        "all-cities/batch-37/sync-01/verification-vectors.json"
+      ],
+      "governedSourceIds": [
+        5499
+      ],
+      "scopeMentionIds": [
+        11625,
+        12583,
+        12695,
+        12919,
+        12941
+      ],
+      "currentMentionIds": [
+        11625,
+        12583,
+        12695,
+        12919,
+        12941
+      ],
+      "pendingScopeMentionIds": []
+    },
+    {
+      "entityId": "d342ff3eb8d541f17253786d0dd148fa",
+      "name": "陈氏肥蛤",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5485
+      ],
+      "relatedSourceIds": [
+        5485
+      ],
+      "mentionIds": [
+        11557,
+        12889
+      ],
+      "noteIds": [
+        2581,
+        2856
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+      "name": "新秀炸鸡",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5336
+      ],
+      "relatedSourceIds": [
+        5336
+      ],
+      "mentionIds": [
+        11358,
+        12599
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "d4292fdc91029db1a1714b00686787ff",
+      "name": "夹心胡同",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5328
+      ],
+      "relatedSourceIds": [
+        5328
+      ],
+      "mentionIds": [
+        11350
+      ],
+      "noteIds": [
+        2566
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "wrong_point_cleared_position_pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": "batch-30",
+      "followup": "note2566原名含融汇济南老商埠店，实际打卡爱心天桥；主体粒度及精确点待核。"
+    },
+    {
+      "entityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+      "name": "超然楼",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5368
+      ],
+      "relatedSourceIds": [
+        5368
+      ],
+      "mentionIds": [
+        11380,
+        11388,
+        11403,
+        11435,
+        11451,
+        11463,
+        11523,
+        11595,
+        11602,
+        11628,
+        12630,
+        12650,
+        12651,
+        12729,
+        12769,
+        12815,
+        12842,
+        12861,
+        12874,
+        12922,
+        12924,
+        12974
+      ],
+      "noteIds": [
+        2547,
+        2548,
+        2569,
+        2618,
+        2553,
+        2570,
+        2563,
+        2622,
+        2620,
+        2624,
+        2793,
+        2795,
+        2797,
+        2810,
+        2800,
+        2830,
+        2834,
+        2801,
+        2840
+      ],
+      "status": "reviewed_same_entity",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "10_reviewed_4_independent_bindings_3_displayed_6_existing_rejections"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 32,
+      "followup": "两源24提及及完整原文指纹复核通过，保留超然楼稳定ID及大明湖超然楼旧ID重定向；楼体与大明湖、码头、茶馆机位独立。10张独立图逐图核查，4图已绑定、6原拒绝保留；其中1图明确为登楼俯瞰视角。主名/别名展示相同3图，四绑定逐张可用，SQL/真实向量及位置精度核验通过。AI自查完成，待用户验收。",
+      "currentEntityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+      "currentName": "超然楼",
+      "evidenceFiles": [
+        "all-cities/batch-32-decisions.json",
+        "all-cities/batch-32-applied.json",
+        "all-cities/batch-32-upstream-check.json",
+        "all-cities/batch-32/sync-01/verification-vectors.json",
+        "all-cities/batch-32/sync-01/boundary-check.json",
+        "priority-cities/济南/cultural-downstream-check-03.json",
+        "priority-cities/济南/tower-upstream-check-01.json",
+        "priority-cities/济南/tower-downstream-check-02.json",
+        "independent-photo-batch-03/visual-review.json",
+        "independent-photo-batch-03/preview.json",
+        "independent-photo-batch-03/applied.json",
+        "independent-photo-batch-03/verify-1791400235470.json"
+      ],
+      "independentPhotoBatch": 3
+    },
+    {
+      "entityId": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+      "name": "五龙潭公园",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5359
+      ],
+      "relatedSourceIds": [
+        5359
+      ],
+      "mentionIds": [
+        11441,
+        11471,
+        11572,
+        11701,
+        12620,
+        12663,
+        12731,
+        12757,
+        12767,
+        12826,
+        12927,
+        12938,
+        12963,
+        12975
+      ],
+      "noteIds": [
+        2553,
+        2560,
+        2564,
+        2611,
+        2793,
+        2806,
+        2808,
+        2797,
+        2835,
+        2837,
+        2841,
+        2843
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "25_park_mentions_confirmed_18_scope_mentions_pending",
+        "category": "reviewed_nature",
+        "location": "reviewed_reference_point",
+        "media": "reviewed_empty_managed_gallery"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 33,
+      "followup": "两源43提及/37原文已逐条核对，25提及归公园，18仍待补证。保留自然类别和公园本体参考点；不授予五龙潭裸名别名，不把主潭或门口并入园区。审核365未关闭，整组未验收。",
+      "currentEntityId": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+      "currentName": "五龙潭公园",
+      "governedSourceIds": [
+        5350,
+        5359
+      ],
+      "scopeMentionIds": [
+        11332,
+        11383,
+        11396,
+        11406,
+        11441,
+        11453,
+        11471,
+        11488,
+        11512,
+        11515,
+        11544,
+        11572,
+        11583,
+        11588,
+        11599,
+        11617,
+        11688,
+        11701,
+        12560,
+        12572,
+        12620,
+        12632,
+        12655,
+        12663,
+        12666,
+        12672,
+        12699,
+        12719,
+        12731,
+        12757,
+        12767,
+        12788,
+        12826,
+        12855,
+        12867,
+        12896,
+        12910,
+        12927,
+        12938,
+        12950,
+        12963,
+        12965,
+        12975
+      ],
+      "pendingScopeMentionIds": [
+        11383,
+        11396,
+        11406,
+        11453,
+        11512,
+        11515,
+        11544,
+        11583,
+        11588,
+        11599,
+        11701,
+        12572,
+        12672,
+        12699,
+        12719,
+        12855,
+        12896,
+        12975
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/wulongtan-source-review-01.json",
+        "all-cities/batch-33-applied.json",
+        "all-cities/batch-33-upstream-check.json",
+        "all-cities/batch-33/sync-01/boundary-check.json",
+        "all-cities/batch-33/sync-01/verification-vectors.json"
+      ],
+      "currentMentionIds": [
+        11332,
+        11441,
+        11471,
+        11488,
+        11572,
+        11617,
+        11688,
+        12560,
+        12620,
+        12632,
+        12655,
+        12663,
+        12666,
+        12731,
+        12757,
+        12767,
+        12788,
+        12826,
+        12867,
+        12910,
+        12927,
+        12938,
+        12950,
+        12963,
+        12965
+      ]
+    },
+    {
+      "entityId": "dc445410375df79cab73ba2b18448910",
+      "name": "淘子外单",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5400
+      ],
+      "relatedSourceIds": [
+        5400
+      ],
+      "mentionIds": [
+        11536
+      ],
+      "noteIds": [
+        2573
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "name": "油旋张",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5382
+      ],
+      "relatedSourceIds": [
+        5382
+      ],
+      "mentionIds": [
+        11478,
+        11528,
+        12738
+      ],
+      "noteIds": [
+        2560,
+        2563
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+      "name": "蜗牛叔叔的食堂",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5340
+      ],
+      "relatedSourceIds": [
+        5340
+      ],
+      "mentionIds": [
+        11362,
+        12603
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "eb75294ebee7a37c374a3f5cd374d4ac",
+      "name": "山耶云耶",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5324
+      ],
+      "relatedSourceIds": [
+        5324
+      ],
+      "mentionIds": [
+        11346
+      ],
+      "noteIds": [
+        2566
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "ec447b923b04fcefb80f15c27392e452",
+      "name": "凉皮嫂子",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5338
+      ],
+      "relatedSourceIds": [
+        5338
+      ],
+      "mentionIds": [
+        11360,
+        12601
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "ef9937ce2185cc51d0870a6c8ce9feaa",
+      "name": "大明湖超然楼",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5365
+      ],
+      "relatedSourceIds": [
+        5365
+      ],
+      "mentionIds": [
+        11371,
+        12612
+      ],
+      "noteIds": [
+        2546
+      ],
+      "status": "reviewed_alias_redirect",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "10_reviewed_4_independent_bindings_3_displayed_6_existing_rejections"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 32,
+      "followup": "两源24提及及完整原文指纹复核通过，保留超然楼稳定ID及大明湖超然楼旧ID重定向；楼体与大明湖、码头、茶馆机位独立。10张独立图逐图核查，4图已绑定、6原拒绝保留；其中1图明确为登楼俯瞰视角。主名/别名展示相同3图，四绑定逐张可用，SQL/真实向量及位置精度核验通过。AI自查完成，待用户验收。",
+      "currentEntityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+      "currentName": "超然楼",
+      "evidenceFiles": [
+        "all-cities/batch-32-decisions.json",
+        "all-cities/batch-32-applied.json",
+        "all-cities/batch-32-upstream-check.json",
+        "all-cities/batch-32/sync-01/verification-vectors.json",
+        "all-cities/batch-32/sync-01/boundary-check.json",
+        "priority-cities/济南/cultural-downstream-check-03.json",
+        "priority-cities/济南/tower-upstream-check-01.json",
+        "priority-cities/济南/tower-downstream-check-02.json",
+        "independent-photo-batch-03/visual-review.json",
+        "independent-photo-batch-03/preview.json",
+        "independent-photo-batch-03/applied.json",
+        "independent-photo-batch-03/verify-1791400235470.json"
+      ],
+      "independentPhotoBatch": 3
+    },
+    {
+      "entityId": "f65621879204866b17b645554f9848db",
+      "name": "五龙潭",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5350
+      ],
+      "relatedSourceIds": [
+        5350
+      ],
+      "mentionIds": [
+        11332,
+        11383,
+        11396,
+        11406,
+        11453,
+        11488,
+        11512,
+        11515,
+        11544,
+        11583,
+        11588,
+        11599,
+        11617,
+        11688,
+        12560,
+        12572,
+        12632,
+        12655,
+        12666,
+        12672,
+        12699,
+        12719,
+        12788,
+        12855,
+        12867,
+        12896,
+        12910,
+        12950,
+        12965
+      ],
+      "noteIds": [
+        2545,
+        2548,
+        2569,
+        2550,
+        2570,
+        2551,
+        2607,
+        2563,
+        2582,
+        2583,
+        2622,
+        2589,
+        2624,
+        2609,
+        2803,
+        2782,
+        2816,
+        2786,
+        2807,
+        2789,
+        2830,
+        2834,
+        2856,
+        2839,
+        2840
+      ],
+      "status": "mixed_source_withdrawn_assignment_pending",
+      "dimensions": {
+        "identity": "mixed_id_withdrawn_without_redirect",
+        "category": "withdrawn",
+        "location": "withdrawn_not_a_core_point",
+        "media": "reviewed_empty_managed_gallery"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 33,
+      "followup": "旧裸名ID已显式撤回、未重定向；确认的公园提及逐条归入公园，18条范围/照片/酒店主语疑问仍待补证。不据旧源ID创建或认领主潭，不移出原98项台账。",
+      "currentEntityId": "f65621879204866b17b645554f9848db",
+      "currentName": "五龙潭",
+      "governedSourceIds": [
+        5350,
+        5359
+      ],
+      "scopeMentionIds": [
+        11332,
+        11383,
+        11396,
+        11406,
+        11441,
+        11453,
+        11471,
+        11488,
+        11512,
+        11515,
+        11544,
+        11572,
+        11583,
+        11588,
+        11599,
+        11617,
+        11688,
+        11701,
+        12560,
+        12572,
+        12620,
+        12632,
+        12655,
+        12663,
+        12666,
+        12672,
+        12699,
+        12719,
+        12731,
+        12757,
+        12767,
+        12788,
+        12826,
+        12855,
+        12867,
+        12896,
+        12910,
+        12927,
+        12938,
+        12950,
+        12963,
+        12965,
+        12975
+      ],
+      "pendingScopeMentionIds": [
+        11383,
+        11396,
+        11406,
+        11453,
+        11512,
+        11515,
+        11544,
+        11583,
+        11588,
+        11599,
+        11701,
+        12572,
+        12672,
+        12699,
+        12719,
+        12855,
+        12896,
+        12975
+      ],
+      "evidenceFiles": [
+        "priority-cities/济南/wulongtan-source-review-01.json",
+        "all-cities/batch-33-applied.json",
+        "all-cities/batch-33-upstream-check.json",
+        "all-cities/batch-33/sync-01/boundary-check.json",
+        "all-cities/batch-33/sync-01/verification-vectors.json"
+      ],
+      "currentMentionIds": []
+    },
+    {
+      "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+      "name": "杨氏泉水茶汤",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5344
+      ],
+      "relatedSourceIds": [
+        5344
+      ],
+      "mentionIds": [
+        11366,
+        12607
+      ],
+      "noteIds": [
+        2585
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "pending",
+        "category": "pending",
+        "location": "pending",
+        "media": "pending"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "按完整重点清单核查主体边界、类别、位置、历史引用和图片。"
+    },
+    {
+      "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+      "name": "起凤桥八号",
+      "baselineRevision": 1,
+      "currentRevision": 1,
+      "sourceIds": [
+        5392
+      ],
+      "relatedSourceIds": [
+        5392
+      ],
+      "mentionIds": [
+        11458,
+        12724
+      ],
+      "noteIds": [
+        2570
+      ],
+      "status": "pending",
+      "dimensions": {
+        "identity": "bridge_gate_courtyard_boundary_pending",
+        "category": "pending",
+        "location": "gate_at_number8_visually_confirmed_reference_only",
+        "media": "no_upstream_imported_or_independent_images"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": null,
+      "followup": "六篇直接来源原图已补齐门洞场景，8号门牌和起凤桥介绍牌可见；桥面、门洞、八号院不能整组判等。保持现行身份，后续逐提及明确摄影对象与桥体归属；未完成自查。",
+      "evidenceFiles": [
+        "priority-cities/济南/bridge-source-review-01.json",
+        "priority-cities/济南/bridge-visual-review-01.json",
+        "priority-cities/济南/bridge-photo-sources-01.json",
+        "priority-cities/济南/geo-12.json"
+      ]
+    },
+    {
+      "entityId": "fda8cc53ff6acf76aeefe23e61b75427",
+      "name": "宽厚里美食街",
+      "baselineRevision": 1,
+      "currentRevision": 2,
+      "sourceIds": [
+        5362
+      ],
+      "relatedSourceIds": [
+        5362
+      ],
+      "mentionIds": [
+        11335,
+        12563
+      ],
+      "noteIds": [
+        2545
+      ],
+      "status": "reviewed_alias_redirect",
+      "dimensions": {
+        "identity": "reviewed_same_entity",
+        "category": "reviewed_source_category",
+        "location": "reviewed_reference_point",
+        "media": "no_current_images_and_no_matching_independent_catalog"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "上游冻结无图片；下游和独立图库须另行核验，不据0图判验收。",
+      "changeBatch": 32,
+      "followup": "已核对完整来源并归入“宽厚里”稳定ID；旧ID保留重定向。坐标为地图本体参考点；错误地址文字已清空，按原文商业街区类别保留。仍待用户验收。",
+      "currentEntityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "currentName": "宽厚里",
+      "evidenceFiles": [
+        "all-cities/batch-32-decisions.json",
+        "all-cities/batch-32-applied.json",
+        "all-cities/batch-32-upstream-check.json",
+        "all-cities/batch-32/sync-01/verification-vectors.json",
+        "all-cities/batch-32/sync-01/boundary-check.json",
+        "priority-cities/济南/cultural-downstream-check-03.json"
+      ]
+    },
+    {
+      "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+      "name": "纬三路与经三路交叉口",
+      "baselineRevision": 1,
+      "currentRevision": 3,
+      "sourceIds": [
+        5321
+      ],
+      "relatedSourceIds": [
+        5321
+      ],
+      "mentionIds": [
+        11343
+      ],
+      "noteIds": [
+        2566
+      ],
+      "status": "reviewed_scope_partial",
+      "dimensions": {
+        "identity": "main_subject_confirmed",
+        "category": "cultural_subject_confirmed",
+        "location": "existing_coordinates_preserved_review_pending",
+        "media": "deferred_by_user",
+        "consumedFacts": "crosswalk_subject_separate_from_light_route_duration_not_inherited"
+      },
+      "upstreamImageCount": 0,
+      "mediaBoundary": "仅检查旧图片字段、上游与独立图库元数据；本主体匹配0，图片暂缓不等于视觉验收。",
+      "changeBatch": 45,
+      "followup": "第45批1提及完整scope已双同步，爱心斑马线路口与红绿灯/道路/街区独立，原坐标和ID保持，revision3；整线路时长不继承，精确机位与图片比对仍待核。",
+      "currentName": "纬三路与经三路交叉口",
+      "currentEntityId": "fef9784ad510099ad3bd150eee3fbf5c",
+      "reviewBatch": 45,
+      "governedSourceIds": [
+        5321
+      ],
+      "scopeMentionIds": [
+        11343
+      ],
+      "currentMentionIds": [
+        11343
+      ],
+      "pendingScopeMentionIds": [],
+      "reviewEvidence": [
+        "priority-cities/济南/commercial-source-review-01.json",
+        "priority-cities/济南/commercial-downstream-check-01.json"
+      ]
+    }
+  ],
+  "previousLedger": "priority-cities/济南/review-24.json"
+}

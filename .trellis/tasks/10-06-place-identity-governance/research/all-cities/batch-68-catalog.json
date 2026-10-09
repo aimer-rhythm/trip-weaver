@@ -1,0 +1,62 @@
+{
+  "entities": [
+    {
+      "entity_id": "c59fb8b0967139fdc1bbf231b57283b1",
+      "city": "成都",
+      "canonical_name": "人民公园",
+      "primary_place_id": 1687,
+      "aliases": [
+        "人民公园",
+        "成都人民公园",
+        "祠堂街人民公园"
+      ],
+      "legacy_ids": [
+        "c59fb8b0967139fdc1bbf231b57283b1"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+      "city": "成都",
+      "canonical_name": "鹤鸣茶社",
+      "primary_place_id": 1847,
+      "aliases": [
+        "人民公园鹤鸣茶社",
+        "鹤鸣茶社"
+      ],
+      "legacy_ids": [
+        "726ded184fe71d5b6ad1642e0e60d3f1"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 1687,
+      "entity_id": "c59fb8b0967139fdc1bbf231b57283b1"
+    },
+    {
+      "place_id": 1847,
+      "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1"
+    }
+  ],
+  "reviews": []
+}

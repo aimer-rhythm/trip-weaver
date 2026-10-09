@@ -1,0 +1,357 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T21:56:06.048963+00:00",
+  "city": "济南",
+  "entityBatch": 58,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "7950bfadd891932d01be8636aba8b51a",
+        "city": "济南",
+        "canonical_name": "环联夜市",
+        "primary_place_id": 5358,
+        "aliases": [
+          "环联夜市"
+        ],
+        "legacy_ids": [
+          "7950bfadd891932d01be8636aba8b51a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5358,
+            "city": "济南",
+            "name": "环联夜市",
+            "normalized_name": "环联夜市",
+            "address": "环联汽配城南区2-015号正东方向110米",
+            "latitude": 36.69924120396534,
+            "longitude": 117.08562333000282,
+            "place_type": "market",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 30.9
+          },
+          "sourceHash": "a6dec5de5a7fc522eb631da9b0e8031eb547c5a786ef899f0e20fb26d140a310",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "购物",
+              "美食"
+            ],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5358,
+            "mention_count_30d": 5,
+            "recommend_score": 14.0,
+            "top_reasons": [
+              {
+                "reason": "夜市火爆，小吃种类丰富，推荐品尝烤冷面、鸡柳等",
+                "evidence": "济南环联夜市小吃街，良心推荐"
+              },
+              {
+                "reason": "人超级多，可能拥挤。",
+                "evidence": "人超级多"
+              },
+              {
+                "reason": "距离地铁站稍远，交通不便",
+                "evidence": "环联夜市距离地铁站稍微远一些"
+              },
+              {
+                "reason": "超级大的夜市，有时间可逛",
+                "evidence": "超级大的夜市！有时间可以去逛逛"
+              },
+              {
+                "reason": "人超级多，体验可能不佳。",
+                "evidence": "人超级多"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "环联夜市"
+      ],
+      "mentionIds": [
+        11464,
+        11571,
+        11607,
+        12647,
+        12825
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "7950bfadd891932d01be8636aba8b51a",
+        "city": "济南",
+        "canonical_name": "环联夜市",
+        "primary_place_id": 5358,
+        "aliases": [
+          "环联夜市"
+        ],
+        "legacy_ids": [
+          "7950bfadd891932d01be8636aba8b51a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5358,
+        "entity_id": "7950bfadd891932d01be8636aba8b51a"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11464,
+      "raw_note_id": 2588,
+      "name": "环联夜市",
+      "normalized_name": "环联夜市",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "夜市火爆，小吃种类丰富，推荐品尝烤冷面、鸡柳等",
+      "evidence_text": "济南环联夜市小吃街，良心推荐",
+      "route_order": 1,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "夜市位于济南市历城区祝舜路1469号",
+              "quote": "济南市历城区祝舜路1469号"
+            },
+            {
+              "text": "地铁2号线祝甸站B口可达",
+              "quote": "地铁：2号线祝甸站B口"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:10.421487+00:00",
+      "inputHash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1"
+    },
+    {
+      "id": 11571,
+      "raw_note_id": 2564,
+      "name": "环联夜市",
+      "normalized_name": "环联夜市",
+      "place_type": "market",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "人超级多，可能拥挤。",
+      "evidence_text": "人超级多",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.614650+00:00",
+      "inputHash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761"
+    },
+    {
+      "id": 11607,
+      "raw_note_id": 2608,
+      "name": "环联夜市",
+      "normalized_name": "环联夜市",
+      "place_type": "market",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "距离地铁站稍远，交通不便",
+      "evidence_text": "环联夜市距离地铁站稍微远一些",
+      "route_order": null,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.170285+00:00",
+      "inputHash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604"
+    },
+    {
+      "id": 12647,
+      "raw_note_id": 2782,
+      "name": "环联夜市",
+      "normalized_name": "环联夜市",
+      "place_type": "market",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "超级大的夜市，有时间可逛",
+      "evidence_text": "超级大的夜市！有时间可以去逛逛",
+      "route_order": 16,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:22.855979+00:00",
+      "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3"
+    },
+    {
+      "id": 12825,
+      "raw_note_id": 2564,
+      "name": "环联夜市",
+      "normalized_name": "环联夜市",
+      "place_type": "market",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "人超级多，体验可能不佳。",
+      "evidence_text": "人超级多",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.614650+00:00",
+      "inputHash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2564,
+      "city": "济南",
+      "title": "大学生济南两日游｜来看看老舍笔下的济南📝",
+      "desc": "🌷Day1\n第一站：山东博物馆➕山东美术馆\n两个就隔一条街 非常之近\n——博物馆旁边有一个万象城 可以去那里吃中饭\n\t\n第二站：千佛山 美院门进 先往左看大佛 再往右上山\n上山可以乘坐缆车 也可以步行\n\t\n第三站：环联夜市 人超级多\n\t\n🌷Day2\n第一站：五龙潭公园 西门进 南门出\n\t\n第二站：趵突泉 北门进 东门出\n⭐️尽量在九点之前到达 人较少\n\t\n第三站：泉城广场 打卡地标\n\t\n第四站：黑虎泉➕解放阁 沿护城河走\n——吃中饭\n\t\n第五站：宽厚里 就是一个步行街 可以选择不去\n——下午回酒店休息\n\t\n第六站：大明湖 傍晚六点左右去 可以看落日和夜景\n\t\n——吃晚饭\n第七站：芙蓉街 吃完晚饭大概十点左右去 人不多\n\t\n济南真的是大学生友好城市\n公共交通和景点都不需要钱\n而且人都很善良且有素质\n唯一的感觉不足的就是吃的没什么特色\n但是景真的很好看\n春天来了公园里花都开了 很美\n不愧是被称作北方小江南的地方\n\t\n⭐️酒店尽量选在中山公园附近\n离景点都很近\n景点之间距离都不远\n从哪个门进出都是有考虑的\n完全顺路 不走回头路 不走重复景点\n#济南[话题]# #济南攻略[话题]#\n#济南旅游[话题]# #济南旅游打卡[话题]#\n#大学生周末游[话题]#\n#出游大学生[话题]#\n#泉城[话题]# #趵突泉[话题]# #大明湖[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11571,
+        12825
+      ]
+    },
+    {
+      "id": 2588,
+      "city": "济南",
+      "title": "济南环联夜市美食合集（附点单攻略）",
+      "desc": "#夜宵好去处[话题]#  #五一请来我的城市吃[话题]# @吃货薯\n带着你😋365G的中国胃来济南旅游不可错过的济南环联夜市小吃街‼️\n📍：济南市历城区祝舜路1469号\n🕐营业时间：晚7:00-02:00\n🚉地铁：2号线祝甸站B口（最晚22:00）\n🚌公交：K113、K118、k30、K80、K56、B84\n一般公交车9点左右！！夜市门口停了出租车方便\n环夜市现在太火爆了，越晚人越多的🤫\n下面进入点评推荐⬇️⬇️⬇️请码住、🫡良心推荐‼️\n1️⃣花糖家烤冷面&车轮饼（D口103号）\n鲜切的芒果、蜜瓜、蓝莓搭配奶酪＋爆爆珠~~馅料塞的满满当当，口感丰富吼吼吃啊。。。。。\n招牌芝士火鸡面烤冷面、用料太扎实了！！！！！！视觉上也蛮震撼的！！！一份沉甸甸的，可选择火鸡面的辣度，芝士🧀给的也不少，趁热吃拉丝儿～～\n2️⃣霸王鸡柳（D口70号）\n鸡柳15r、甘梅地瓜条15r\n4周年店庆第二份半价！！！！\n鸡柳炸的焦香酥脆、有种小时候的老式炸鸡的味道、越嚼越香！！！跟搭子分享吃了甜滋滋的甘梅地瓜条，分量足边走边吃。。。。\n3️⃣左右芋泥脑袋（D口75号）\n他家给的料很足，芋泥都是现蒸现打滴～搭配着糯叽叽麻薯、新鲜大块的芒果，浓郁的椰奶混在一起，来上这么一碗很满足！！！\n4️⃣一品生煎（D口65号）\n每一个生煎和锅贴都是手工现包现卖滴、一口爆汁建议点混合口味滴~蘸着秘制辣椒、醋是灵魂！老好吃了！！！！\n5️⃣郭大红鸡架（A区37号）\n正宗沈阳铁板鸡架、30多年滴祖传秘方！！！\n外焦里嫩，撒上白糖喷上祖传自酿香醋，无敌！！好吃到舔手指！！！\n#济南[话题]##笔记灵感[话题]##环联夜市[话题]# #济南夜市[话题]# #济南美食[话题]# #逛吃攻略[话题]# #夜市打卡[话题]##甜品治愈一切[话题]##夜市里的烟火气街头美食[话题]##环联夜市必吃[话题]# #环联夜市攻略[话题]# #旅行中的地道美食[话题]##寻味夜市美食[话题]# #夜市烟火气[话题]# #街边摊小吃[话题]##压箱底的宝藏小店[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11464
+      ]
+    },
+    {
+      "id": 2608,
+      "city": "济南",
+      "title": "济南旅行攻略（简单实用版）-住宿篇",
+      "desc": "刚整理完济南超接地气住宿攻略\n主打一个简单实用！不绕弯子！\n第一次去济南的姐妹直接抄作业✅\n先给宝子们科普几个关键知识点！📝\n真的很重要！别到时候买错票、住错地方！😭\n\t\n🚄 关于济南火车站、机场（千万别搞混！）\n・济南站 / 大明湖站：市中心！离趵突泉大明湖超近🚶‍♀️\n・济南西站：济南正西方，离市区远但有地铁🚇\n・济南东站：济南东北方，离市区最远\n・机场：在济南东站北边，比济南东站还远十几公里✈️\n⚠️ 往返尽量选同一个站！济南东西站隔超远！跑断腿！\n\t\n🚌 关于济南市内交通\n・有地铁！支付宝领乘车码就能坐💳\n・西客站 / 东客站 / 机场都通地铁\n・济南站 / 大明湖站 / 趵突泉大明湖没有地铁！只能打车 / 公交\n・共享电车几乎没有！别指望！🚫\n・打车就是正常省会价格，不算便宜💸\n\t\n结合交通和景点，直接推荐 3 个住宿区\n对应图上 ABC，按需选择👇\n\t\n📍 A 区\n✅ 适合：到济南西 / 济南站 / 大明湖站的宝子\n✨ 优点：酒店价格相较于趵突泉附近的市中心要低一些💰\n💣 缺点：离千佛山、山东博物馆、环联夜市远一点（前两个景区都有地铁站，环联夜市距离地铁站稍微远一些）\n\t\n📍 B 区（景区核心区）\n✨ 优点：距离趵突泉大明湖最近！玩着超方便😎\n💣 缺点：酒店价格是三个区域里最高的💸\n\t\n📍 C 区\n✅ 适合：到济南东站 / 坐飞机的宝子\n✨ 优点：酒店价格是三个区域里最低的、距离千佛山和山东博物馆都比较近\n💣 缺点：离民族大街稍远\n\t\n💡在打算好住宿的区域后，酒店怎么选择呢👇\n・自驾：考虑酒店品牌和价格即可\n・非自驾：想省钱就住地铁 / 公交站附近！省打车费！\n\t\n✨写在最后（真心建议！）\n去看趵突泉的宝子，一定要避开四月杨柳絮纷飞的日子！\n我 4 月初和 9 月底都去过，差别真的太大了！\n4 月杨柳絮飘满湖面，潭水上飘一层白毛，清澈见底的感觉完全没了\n上面的图都是我 9 月底拍的，水超级清！\n\t\n#济南[话题]# #济南旅游[话题]##济南攻略[话题]# #济南旅行[话题]# #对我友好的旅行[话题]# #济南住宿[话题]# #山东旅游[话题]# #趵突泉[话题]# #RED新生代创作大赛[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11607
+      ]
+    },
+    {
+      "id": 2782,
+      "city": "济南",
+      "title": "📍济南3️⃣天2️⃣晚｜保姆级攻略‼️人均500💰",
+      "desc": "篇幅有限，济南“景点拍照打卡机位”在下一篇，喜欢拍照的姐妹不要放过哦‼️\n\t\n🗺️路线\n📍Day1：\n1️⃣五龙潭：\n其实五龙潭并不大，每个景点离得也都很近，真的很美！\n2️⃣趵突泉：\n如果不想逛，只想去趵突泉，可以从南门或者东门进，很快就到了！\n3️⃣泉城广场：从趵突泉东门出来就直接可以看到泉城广场的地标建筑！\n4️⃣黑虎泉：\n❣️定位到南二门，进门右转下去就是黑虎泉，接泉水也在这里，⚠️注意从莲花水台盆接的水才能直饮！\n5️⃣解放阁：过桥从黑虎泉九女亭后面上去就是解放阁\n6️⃣宽厚里：解放阁马路对过就是宽厚里，一条小吃街\n7️⃣芙蓉街：也是一条小吃街，从芙蓉街32号拐进去就是起凤桥街，可以打卡起凤桥，然后穿过胡同就到曲水亭街了\n8️⃣曲水亭街：\n两边是小茶馆小酒馆，拍照超级出片，涌泉胡同机位也在这条街\n9️⃣百花洲：\n很多人导航“百花洲”，搜出来的是“百花洲历史文化街区”，其实曲水亭街和百花洲都属于“百花洲历史文化街区”。\n❣️大家说的百花洲的景点，是围着百花洲湖的街区，有很多小摊位，可以在这里逛逛（如图4红色⭕️所示）\n🔟大明湖：\n曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼\n\t\n📍Day2：\n1️⃣千佛山：\n这里我真的很想说一句，我恐高，所以对于我来说从历山院去山顶的路真的很难走！但是也有姐妹带着小朋友登顶！所以根据自身情况选择吧！\n2️⃣民族大街市场：当地居民去买菜的菜市场，整条街前面是各种小吃，后面是卖菜的，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆\n3️⃣大观园：可去可不去\n4️⃣老商埠•经三路：街区网红打卡点，很出片\n5️⃣泉城之眼：喜欢拍照的可以去机位打卡，只是为了看风景的话没太有必要\n9️⃣环联夜市：超级大的夜市！有时间可以去逛逛\n\t\n🥘美食：老周家牛肉烧饼（推荐👍）、杨家甜沫、孙家糖油条、油旋张、超意兴\n\t\n🚗出行：共享单车➕打车\n\t\n🏠住宿：我们住在火车站附近，到景点很方便\n#深度游攻略[话题]##济南旅游[话题]# #济南美食[话题]# #济南旅游攻略[话题]# #趵突泉[话题]# #大明湖[话题]# #千佛山[话题]##济南一日游[话题]##经三路[话题]# #老商埠[话题]# #每天写一篇旅游攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12647
+      ]
+    }
+  ],
+  "noteTimes": [
+    {
+      "noteId": 2564,
+      "publishTime": "2026-03-28T03:18:54+00:00",
+      "collectedAt": "2026-10-04T11:17:57.614650+00:00",
+      "rawJsonSha256": "cbfc1e8ccb30f822dbec1b0558303acaf30f389fd94ac3807ca4897eb855e5a9",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1774667934000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1774667934000
+        }
+      ]
+    },
+    {
+      "noteId": 2588,
+      "publishTime": "2026-04-22T09:23:34+00:00",
+      "collectedAt": "2026-10-04T11:19:10.421487+00:00",
+      "rawJsonSha256": "c1d369ec30bdec4795e68229064ef75af061aa168e561dbb99e5f5c3d6a5661e",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1776849814000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1776849814000
+        }
+      ]
+    },
+    {
+      "noteId": 2608,
+      "publishTime": "2026-04-12T13:18:26+00:00",
+      "collectedAt": "2026-10-04T11:19:58.170285+00:00",
+      "rawJsonSha256": "caa478e7ca7d8b3b7f2eeb7137d844d8b1b6a0ad70e48627cd23f7a8d83ed267",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1775999906000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1775999906000
+        }
+      ]
+    },
+    {
+      "noteId": 2782,
+      "publishTime": "2025-05-25T13:35:24+00:00",
+      "collectedAt": "2026-10-06T02:02:22.855979+00:00",
+      "rawJsonSha256": "0b73cda2bcac7a369d35ea3c5d74975f51d7d0df653713da3952b2ca2f296cb5",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1748180124000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1777700545000
+        }
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

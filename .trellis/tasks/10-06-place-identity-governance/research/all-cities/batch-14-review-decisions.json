@@ -1,0 +1,868 @@
+[
+  {
+    "key": "all-cities-20261006-batch-14-review-434",
+    "city": "重庆",
+    "reviewFingerprint": "f0c0b0348e7e2ca887ab7feb3ec0e5adcdf04e0eee8afb9b52279a1de53e146d",
+    "expectedRevisions": {
+      "13ac0750f85a7f3471f63b6b551c1a36": 1,
+      "b411d8f84b784c06445dbdf2c4e42c3a": 1
+    },
+    "verdict": "distinct",
+    "explanation": "855是临江门地铁站附近的住宿区域建议，被抽成hotel；另一主体为轨道站。区域住宿事实不能归到车站设施，名称含附近不能忽略。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          434
+        ],
+        "conclusion": "855是临江门地铁站附近的住宿区域建议，被抽成hotel；另一主体为轨道站。区域住宿事实不能归到车站设施，名称含附近不能忽略。",
+        "sourcePlaceIds": [
+          "299",
+          "24"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          855
+        ],
+        "conclusion": "855是临江门地铁站附近的住宿区域建议，被抽成hotel；另一主体为轨道站。区域住宿事实不能归到车站设施，名称含附近不能忽略。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-435",
+    "city": "重庆",
+    "reviewFingerprint": "39ff704f254576f67295e77427f43a9c752c42f94f7ad816d0f4039ada56f5fe",
+    "expectedRevisions": {
+      "ad7effec11e0e6f94e2d12709ebedb79": 1,
+      "f91357d310a658a38f0631ba6742a0e0": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "918佛图关站原文实际是1口出来导航飞虎江景火锅拍轻轨，1048佛图关也是轻轨口机位，但774仅图12佛图关，没有图12分析可确定站体或公园。不能以同地铁坐标将混合粒度源全部当站名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          435
+        ],
+        "conclusion": "918佛图关站原文实际是1口出来导航飞虎江景火锅拍轻轨，1048佛图关也是轻轨口机位，但774仅图12佛图关，没有图12分析可确定站体或公园。不能以同地铁坐标将混合粒度源全部当站名。",
+        "sourcePlaceIds": [
+          "312",
+          "33"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          918,
+          1048,
+          774
+        ],
+        "conclusion": "918佛图关站原文实际是1口出来导航飞虎江景火锅拍轻轨，1048佛图关也是轻轨口机位，但774仅图12佛图关，没有图12分析可确定站体或公园。不能以同地铁坐标将混合粒度源全部当站名。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-442",
+    "city": "重庆",
+    "reviewFingerprint": "a6634c943ae08be5ca09ef91791b7737d7b8326df24cd69226b9b9e3d234d899",
+    "expectedRevisions": {
+      "d3af371184e549d3b3b0eaf887eb9036": 1,
+      "fe9468812f76d513dd31d4f2042d4dab": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "533、1117、1613的南滨路钟楼既用于路线站名，又在照片定位中写钟楼对面；1080、1264为钟楼广场及旁坡、重庆之圆。尚未厘清建筑本体、广场和对面摄影点，地图同点不能判等，也暂不武断设定包含关系。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          442
+        ],
+        "conclusion": "533、1117、1613的南滨路钟楼既用于路线站名，又在照片定位中写钟楼对面；1080、1264为钟楼广场及旁坡、重庆之圆。尚未厘清建筑本体、广场和对面摄影点，地图同点不能判等，也暂不武断设定包含关系。",
+        "sourcePlaceIds": [
+          "47",
+          "174"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          533,
+          1117,
+          1613,
+          1080,
+          1264
+        ],
+        "conclusion": "533、1117、1613的南滨路钟楼既用于路线站名，又在照片定位中写钟楼对面；1080、1264为钟楼广场及旁坡、重庆之圆。尚未厘清建筑本体、广场和对面摄影点，地图同点不能判等，也暂不武断设定包含关系。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-448",
+    "city": "重庆",
+    "reviewFingerprint": "fb3861a1a0484fcda6cd7cd5c072f84d93fdfe53c0facde7aab91560bc6f256b",
+    "expectedRevisions": {
+      "97429e2bf679921a88f8f882b28634c7": 1,
+      "d90742187e386ed286d74417ae1b1076": 1
+    },
+    "verdict": "part_of",
+    "explanation": "372原文将爱情小巷与这很山城红砖墙合为一组，具体描述小巷里的打卡墙。墙是组合地点中的一个组成对象，组合名不能作为单墙同义；旧单墙记录缺独立提及，不补造其坐标。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          448
+        ],
+        "conclusion": "372原文将爱情小巷与这很山城红砖墙合为一组，具体描述小巷里的打卡墙。墙是组合地点中的一个组成对象，组合名不能作为单墙同义；旧单墙记录缺独立提及，不补造其坐标。",
+        "sourcePlaceIds": [
+          "72",
+          "202"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          372
+        ],
+        "conclusion": "372原文将爱情小巷与这很山城红砖墙合为一组，具体描述小巷里的打卡墙。墙是组合地点中的一个组成对象，组合名不能作为单墙同义；旧单墙记录缺独立提及，不补造其坐标。"
+      }
+    ],
+    "childEntityId": "97429e2bf679921a88f8f882b28634c7"
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-451",
+    "city": "重庆",
+    "reviewFingerprint": "e29aa90930cca2b8b18557c742b3f939afdf6a27493b35154043d2c97c8415ea",
+    "expectedRevisions": {
+      "1cdf93734e803b63c2ac7c4bf9948f53": 2,
+      "989b79578f1747da15d2fa697abde4ef": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1495江北机场出现在住宿篇的机场周边选址建议，旧地图却为机场轨道线。已合并的450为机场整体，不能把住宿区或轨道站事实自动归入机场；需重审1495提及归属。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          451
+        ],
+        "conclusion": "1495江北机场出现在住宿篇的机场周边选址建议，旧地图却为机场轨道线。已合并的450为机场整体，不能把住宿区或轨道站事实自动归入机场；需重审1495提及归属。",
+        "sourcePlaceIds": [
+          "85",
+          "523"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1495,
+          686
+        ],
+        "conclusion": "1495江北机场出现在住宿篇的机场周边选址建议，旧地图却为机场轨道线。已合并的450为机场整体，不能把住宿区或轨道站事实自动归入机场；需重审1495提及归属。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-453",
+    "city": "重庆",
+    "reviewFingerprint": "b55ffd031f752eb43e717559849da3b179d1b5db3171c5267e012000c3b300a4",
+    "expectedRevisions": {
+      "881d5a2004366fad8408312898244037": 1,
+      "f3568e59fefd6975056c4da0f18a9c52": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "746抽取名范嬢嬋与原文范嬢嬢不一致，但原文明确春森路；839泛名早餐后步行三峡博物馆，可能为学田湾店，410、816、1337也未写分店。不能仅纠错一字就把不同门店混为同体，两泛名旧点还错误落在远郊，须分店及地理单独处理。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          453
+        ],
+        "conclusion": "746抽取名范嬢嬋与原文范嬢嬢不一致，但原文明确春森路；839泛名早餐后步行三峡博物馆，可能为学田湾店，410、816、1337也未写分店。不能仅纠错一字就把不同门店混为同体，两泛名旧点还错误落在远郊，须分店及地理单独处理。",
+        "sourcePlaceIds": [
+          "263",
+          "105"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          746,
+          839,
+          410,
+          816,
+          1337
+        ],
+        "conclusion": "746抽取名范嬢嬋与原文范嬢嬢不一致，但原文明确春森路；839泛名早餐后步行三峡博物馆，可能为学田湾店，410、816、1337也未写分店。不能仅纠错一字就把不同门店混为同体，两泛名旧点还错误落在远郊，须分店及地理单独处理。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-454",
+    "city": "重庆",
+    "reviewFingerprint": "10ca2fab6fcefdf94af36c03dd0c55c6c7e6dcd9a0ad7d8845449c0c47af31f6",
+    "expectedRevisions": {
+      "89370f25d1c281bc8b8bda6f4eb3deb2": 1,
+      "f3568e59fefd6975056c4da0f18a9c52": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "507、1065明确春森路店，但旧地图是学田湾正街59号；839早餐后步行三峡博物馆，泛名其他来源也缺分店。原文与地图存在门店冲突，应先拆清泛名提及，不直接吞入春森路门店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          454
+        ],
+        "conclusion": "507、1065明确春森路店，但旧地图是学田湾正街59号；839早餐后步行三峡博物馆，泛名其他来源也缺分店。原文与地图存在门店冲突，应先拆清泛名提及，不直接吞入春森路门店。",
+        "sourcePlaceIds": [
+          "168",
+          "105"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          507,
+          1065,
+          839,
+          410
+        ],
+        "conclusion": "507、1065明确春森路店，但旧地图是学田湾正街59号；839早餐后步行三峡博物馆，泛名其他来源也缺分店。原文与地图存在门店冲突，应先拆清泛名提及，不直接吞入春森路门店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-455",
+    "city": "重庆",
+    "reviewFingerprint": "febb7b2fd96b0e2f5d53f4070345d95c1c52392aea6c66ae604e80a2f6144289",
+    "expectedRevisions": {
+      "1ebbaf0f4e34971b6896f9a8dfa9b3f0": 1,
+      "860fae4c5866d45bb8ce8ed120f56520": 1
+    },
+    "verdict": "distinct",
+    "explanation": "881与1317在原文均写丁孃孃，945、1004等明确秋孃孃，两个不同品牌字，既有地址沧白路与较场口也不同。丁孃孃自身尚混观音桥、洪崖洞分店，需要后续拆分，但不能因此与秋孃孃合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          455
+        ],
+        "conclusion": "881与1317在原文均写丁孃孃，945、1004等明确秋孃孃，两个不同品牌字，既有地址沧白路与较场口也不同。丁孃孃自身尚混观音桥、洪崖洞分店，需要后续拆分，但不能因此与秋孃孃合并。",
+        "sourcePlaceIds": [
+          "308",
+          "111"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          881,
+          1317,
+          945,
+          1004
+        ],
+        "conclusion": "881与1317在原文均写丁孃孃，945、1004等明确秋孃孃，两个不同品牌字，既有地址沧白路与较场口也不同。丁孃孃自身尚混观音桥、洪崖洞分店，需要后续拆分，但不能因此与秋孃孃合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-458",
+    "city": "重庆",
+    "reviewFingerprint": "f533e0387273d7d3d18ad0d851993091d8f9ac3ba226f326e5beb201b231635b",
+    "expectedRevisions": {
+      "b76eb547ba7a8ccad3f44bef3c5dc222": 1,
+      "c273b6780c41ba39fe9368fa45763eba": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "535、1118、1614用于南滨路无人机观赏点，1741长嘉汇广场为弹子石老街酒店对面的广场。完整目录另有购物公园338、1204及观景平台1266，可能分别指商场整体、滨江广场、平台。未查清设施边界，不直接把三个层级同义化；购物广场旧城市中心点也待纠错。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          458
+        ],
+        "conclusion": "535、1118、1614用于南滨路无人机观赏点，1741长嘉汇广场为弹子石老街酒店对面的广场。完整目录另有购物公园338、1204及观景平台1266，可能分别指商场整体、滨江广场、平台。未查清设施边界，不直接把三个层级同义化；购物广场旧城市中心点也待纠错。",
+        "sourcePlaceIds": [
+          "175",
+          "629"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          535,
+          1118,
+          1614,
+          1741
+        ],
+        "conclusion": "535、1118、1614用于南滨路无人机观赏点，1741长嘉汇广场为弹子石老街酒店对面的广场。完整目录另有购物公园338、1204及观景平台1266，可能分别指商场整体、滨江广场、平台。未查清设施边界，不直接把三个层级同义化；购物广场旧城市中心点也待纠错。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-variant-context.json",
+        "sha256": "cb43ad8288f8eaad9bcac187645c60c2d0e40f1af529422a989d6a36ed3f7402",
+        "mentionIds": [
+          338,
+          1204,
+          1266
+        ],
+        "conclusion": "535、1118、1614用于南滨路无人机观赏点，1741长嘉汇广场为弹子石老街酒店对面的广场。完整目录另有购物公园338、1204及观景平台1266，可能分别指商场整体、滨江广场、平台。未查清设施边界，不直接把三个层级同义化；购物广场旧城市中心点也待纠错。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-459",
+    "city": "重庆",
+    "reviewFingerprint": "9774cedd8e76ed0fdb1f8fb9e4f842659d3cbb055f441251e7b6d72ed785fac5",
+    "expectedRevisions": {
+      "2f6c627fdf341bf54b049f3c0ae84d74": 1,
+      "79afbf6edf8899c29d2eb71edf8c3c81": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "534、1119、1615均来自note7同一机位，正文写呼归石公交站对面。原抽取丢失对面导致公交站主体混入站外摄影事实；应修提及归属，不能建立公交站等于对面的永久别名，旧坐标又都为公交站点。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          459
+        ],
+        "conclusion": "534、1119、1615均来自note7同一机位，正文写呼归石公交站对面。原抽取丢失对面导致公交站主体混入站外摄影事实；应修提及归属，不能建立公交站等于对面的永久别名，旧坐标又都为公交站点。",
+        "sourcePlaceIds": [
+          "176",
+          "215"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          534,
+          1119,
+          1615
+        ],
+        "conclusion": "534、1119、1615均来自note7同一机位，正文写呼归石公交站对面。原抽取丢失对面导致公交站主体混入站外摄影事实；应修提及归属，不能建立公交站等于对面的永久别名，旧坐标又都为公交站点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-465",
+    "city": "重庆",
+    "reviewFingerprint": "e399518c9a88db8130e91b6d7be09104287e06b7d764f721bc7eba7d71bf18aa",
+    "expectedRevisions": {
+      "0a8711e5ae81aea7b474f94354d80a2e": 1,
+      "d502efd8f9dd6c558aec0866483743f9": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "705的爱乐之城在原文及路线图均为下浩里后步行8分钟，1255重庆爱乐之城则明确大剧院站4号口看洪崖洞，明显存在隔江摄影昵称歧义。旧点一在沙坪坝店铺、一在大足，均不可信；需原图具体机位，不能按昵称相同合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          465
+        ],
+        "conclusion": "705的爱乐之城在原文及路线图均为下浩里后步行8分钟，1255重庆爱乐之城则明确大剧院站4号口看洪崖洞，明显存在隔江摄影昵称歧义。旧点一在沙坪坝店铺、一在大足，均不可信；需原图具体机位，不能按昵称相同合并。",
+        "sourcePlaceIds": [
+          "250",
+          "418"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          705,
+          1255,
+          1261
+        ],
+        "conclusion": "705的爱乐之城在原文及路线图均为下浩里后步行8分钟，1255重庆爱乐之城则明确大剧院站4号口看洪崖洞，明显存在隔江摄影昵称歧义。旧点一在沙坪坝店铺、一在大足，均不可信；需原图具体机位，不能按昵称相同合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-466",
+    "city": "重庆",
+    "reviewFingerprint": "2b778e5d31865ee9c00f6bc9229a082e63919399bfd3264ccdcd02b7cb57e925",
+    "expectedRevisions": {
+      "7653bb0fcb6ba1f42ec0f4c61ceb6a71": 1,
+      "e017e9124d283a80d3ddee3f0a66eea3": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "729北仓&塔坪及1052北仓塔坪均是组合游览区域，1714补查又以塔坪社区/北仓文创园组合表达；两地在路线中是独立连续站点。尚未定义组合实体边界与成员契约，不能把组合当单一同义地点，亦不吞已核实北仓主体或塔坪。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          466
+        ],
+        "conclusion": "729北仓&塔坪及1052北仓塔坪均是组合游览区域，1714补查又以塔坪社区/北仓文创园组合表达；两地在路线中是独立连续站点。尚未定义组合实体边界与成员契约，不能把组合当单一同义地点，亦不吞已核实北仓主体或塔坪。",
+        "sourcePlaceIds": [
+          "371",
+          "254"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          729,
+          1052
+        ],
+        "conclusion": "729北仓&塔坪及1052北仓塔坪均是组合游览区域，1714补查又以塔坪社区/北仓文创园组合表达；两地在路线中是独立连续站点。尚未定义组合实体边界与成员契约，不能把组合当单一同义地点，亦不吞已核实北仓主体或塔坪。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-variant-context.json",
+        "sha256": "cb43ad8288f8eaad9bcac187645c60c2d0e40f1af529422a989d6a36ed3f7402",
+        "mentionIds": [
+          1714
+        ],
+        "conclusion": "729北仓&塔坪及1052北仓塔坪均是组合游览区域，1714补查又以塔坪社区/北仓文创园组合表达；两地在路线中是独立连续站点。尚未定义组合实体边界与成员契约，不能把组合当单一同义地点，亦不吞已核实北仓主体或塔坪。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-469",
+    "city": "重庆",
+    "reviewFingerprint": "d2f2877946abc970f2078ad94e5daac61728e2eb71e9b202027b80805c3c08fc",
+    "expectedRevisions": {
+      "5182712e5db259877da46a3d91814ccd": 1,
+      "e1d2d810b7591a1d82bb342a200e9639": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "773金海湾公园仅指图11，而冻结分析只有0至5号图；1549、1690滨江公园为嘉陵江草坪露营地。两旧点相距约7公里，可能是长线公园不同岸段。公开搜索发现专门讨论两个地点区别的候选页但两次抓取无正文，不能以摘要证明同体或不同，待分段边界与原图。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          469
+        ],
+        "conclusion": "773金海湾公园仅指图11，而冻结分析只有0至5号图；1549、1690滨江公园为嘉陵江草坪露营地。两旧点相距约7公里，可能是长线公园不同岸段。公开搜索发现专门讨论两个地点区别的候选页但两次抓取无正文，不能以摘要证明同体或不同，待分段边界与原图。",
+        "sourcePlaceIds": [
+          "284",
+          "554"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          773,
+          1549,
+          1690
+        ],
+        "conclusion": "773金海湾公园仅指图11，而冻结分析只有0至5号图；1549、1690滨江公园为嘉陵江草坪露营地。两旧点相距约7公里，可能是长线公园不同岸段。公开搜索发现专门讨论两个地点区别的候选页但两次抓取无正文，不能以摘要证明同体或不同，待分段边界与原图。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-470",
+    "city": "重庆",
+    "reviewFingerprint": "f92c223dcd94b5fe906268c03b8f1ec89b4a3d00554444e37eec344a361f2643",
+    "expectedRevisions": {
+      "21f55226e58c3df24d86e522de819889": 1,
+      "ad7effec11e0e6f94e2d12709ebedb79": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "918佛图关站的原文为出站导航火锅店后拍轻轨；1262佛图关地铁站仅笼统列动漫列车机位。站体名称相似不代表源照片实际摄影位置相同，需区分车站与站外步道后再归并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          470
+        ],
+        "conclusion": "918佛图关站的原文为出站导航火锅店后拍轻轨；1262佛图关地铁站仅笼统列动漫列车机位。站体名称相似不代表源照片实际摄影位置相同，需区分车站与站外步道后再归并。",
+        "sourcePlaceIds": [
+          "421",
+          "312"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          918,
+          1262
+        ],
+        "conclusion": "918佛图关站的原文为出站导航火锅店后拍轻轨；1262佛图关地铁站仅笼统列动漫列车机位。站体名称相似不代表源照片实际摄影位置相同，需区分车站与站外步道后再归并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-471",
+    "city": "重庆",
+    "reviewFingerprint": "a9b1349a90f87f7fc1ff26a3fb140cef8656f7d4dd22fd625ebe24e58c1459b2",
+    "expectedRevisions": {
+      "5e85fdf1a20def21337e5ba0757d5f3c": 1,
+      "d3a4b4c0505ccaaf3b07566a0697cf2d": 1
+    },
+    "verdict": "distinct",
+    "explanation": "960与969在同一篇note160中分别位于洪崖洞早餐和观音桥小吃栏目，原文明确不同商圈售卖点。品牌省略汤圆二字不允许跨分店合并；两个旧地图地址都不符相应商圈，地理需另核。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          471
+        ],
+        "conclusion": "960与969在同一篇note160中分别位于洪崖洞早餐和观音桥小吃栏目，原文明确不同商圈售卖点。品牌省略汤圆二字不允许跨分店合并；两个旧地图地址都不符相应商圈，地理需另核。",
+        "sourcePlaceIds": [
+          "329",
+          "337"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          960,
+          969
+        ],
+        "conclusion": "960与969在同一篇note160中分别位于洪崖洞早餐和观音桥小吃栏目，原文明确不同商圈售卖点。品牌省略汤圆二字不允许跨分店合并；两个旧地图地址都不符相应商圈，地理需另核。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-472",
+    "city": "重庆",
+    "reviewFingerprint": "eccf8c198d766dc1b23ade88ba8303416b73f520ad774e8910f5f33e821ea9ca",
+    "expectedRevisions": {
+      "2c392cdad069dcbf3a42979ca33dcf5a": 1,
+      "75929fec1284f91aebe090e8badd2c42": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1022董眼镜在解放碑/洪崖洞附近，1722刘眼镜在观音桥居民区，品牌姓氏、商圈及源店址都不同。不能以眼镜火锅共同字样合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          472
+        ],
+        "conclusion": "1022董眼镜在解放碑/洪崖洞附近，1722刘眼镜在观音桥居民区，品牌姓氏、商圈及源店址都不同。不能以眼镜火锅共同字样合并。",
+        "sourcePlaceIds": [
+          "363",
+          "618"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1022,
+          1722
+        ],
+        "conclusion": "1022董眼镜在解放碑/洪崖洞附近，1722刘眼镜在观音桥居民区，品牌姓氏、商圈及源店址都不同。不能以眼镜火锅共同字样合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-473",
+    "city": "重庆",
+    "reviewFingerprint": "53e79efcdbe8fd5502d42e5a8f47f26cc6b11aea3efa6227607831fe16535267",
+    "expectedRevisions": {
+      "5ec3fd7ef72bd0696d0971ee1d73db5a": 1,
+      "c8501aee78bf4a6abede20fa46ea4a44": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1053为大剧院站1号口重庆曼哈顿机位，1663为4号口机位。出口编号和站位明确不同，即使同属一站也不是同义点。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          473
+        ],
+        "conclusion": "1053为大剧院站1号口重庆曼哈顿机位，1663为4号口机位。出口编号和站位明确不同，即使同属一站也不是同义点。",
+        "sourcePlaceIds": [
+          "588",
+          "372"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1053,
+          1663
+        ],
+        "conclusion": "1053为大剧院站1号口重庆曼哈顿机位，1663为4号口机位。出口编号和站位明确不同，即使同属一站也不是同义点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-474",
+    "city": "重庆",
+    "reviewFingerprint": "53cc010bc1141a39ad813219c1bdecabd7ba70fbea3710880e7311bce6c2db9f",
+    "expectedRevisions": {
+      "c8501aee78bf4a6abede20fa46ea4a44": 1,
+      "cfd30e1c6b49ac16018538c4c6e7f65e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1053明确1号口机位，1261泛站名的正文实际为3号出口直达爱乐之城，其他源又写4号口。泛名记录混入出口与摄影点，尚不能简单设为整个站体并把1号口列为其子项；保留独立身份等待核实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          474
+        ],
+        "conclusion": "1053明确1号口机位，1261泛站名的正文实际为3号出口直达爱乐之城，其他源又写4号口。泛名记录混入出口与摄影点，尚不能简单设为整个站体并把1号口列为其子项；保留独立身份等待核实。",
+        "sourcePlaceIds": [
+          "372",
+          "420"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1053,
+          1261,
+          1255
+        ],
+        "conclusion": "1053明确1号口机位，1261泛站名的正文实际为3号出口直达爱乐之城，其他源又写4号口。泛名记录混入出口与摄影点，尚不能简单设为整个站体并把1号口列为其子项；保留独立身份等待核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-477",
+    "city": "重庆",
+    "reviewFingerprint": "a40c596f12a557204c3ac885882ba05f974afd841d60191dc0c39a87711f5194",
+    "expectedRevisions": {
+      "23c8596c0244f707a619a65d3827ed70": 2,
+      "ccdba2b7e041a64fb2684baceef91948": 1
+    },
+    "verdict": "part_of",
+    "explanation": "1151、1758同篇明确呼归石花阶花园往上几十米到八角亭，亭是花阶公园内具体设施。475合并公园/花园后仍将亭作为独立组成实体，不把公园全部事实赋给亭。亭的旧南山坐标错误，留地理纠错待办。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          477
+        ],
+        "conclusion": "1151、1758同篇明确呼归石花阶花园往上几十米到八角亭，亭是花阶公园内具体设施。475合并公园/花园后仍将亭作为独立组成实体，不把公园全部事实赋给亭。亭的旧南山坐标错误，留地理纠错待办。",
+        "sourcePlaceIds": [
+          "395",
+          "638"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1151,
+          1758,
+          1073
+        ],
+        "conclusion": "1151、1758同篇明确呼归石花阶花园往上几十米到八角亭，亭是花阶公园内具体设施。475合并公园/花园后仍将亭作为独立组成实体，不把公园全部事实赋给亭。亭的旧南山坐标错误，留地理纠错待办。"
+      }
+    ],
+    "childEntityId": "ccdba2b7e041a64fb2684baceef91948"
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-478",
+    "city": "重庆",
+    "reviewFingerprint": "c6560c97c736a21ce82fb42e463582d43d13b618eb20955a76a5ac1a3c6e24ba",
+    "expectedRevisions": {
+      "a4f0085af957a6414d4cd70ce46c45b8": 2,
+      "43e4634f9553431129778efeb95c7268": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1222我爱重庆明确北城天街东南1门的屏幕，本批归入观音桥大屏；1655我爱重庆夜景明确大剧院站4号口，地理与摄影对象不同。相同城市宣传字样不是同义证明。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          478
+        ],
+        "conclusion": "1222我爱重庆明确北城天街东南1门的屏幕，本批归入观音桥大屏；1655我爱重庆夜景明确大剧院站4号口，地理与摄影对象不同。相同城市宣传字样不是同义证明。",
+        "sourcePlaceIds": [
+          "410",
+          "583"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1222,
+          1655
+        ],
+        "conclusion": "1222我爱重庆明确北城天街东南1门的屏幕，本批归入观音桥大屏；1655我爱重庆夜景明确大剧院站4号口，地理与摄影对象不同。相同城市宣传字样不是同义证明。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-479",
+    "city": "重庆",
+    "reviewFingerprint": "f01ae07b003bc714f0b6a7a1c495e34cd7f46af9830464b13e9c4bfe237fe037",
+    "expectedRevisions": {
+      "5ec3fd7ef72bd0696d0971ee1d73db5a": 1,
+      "cfd30e1c6b49ac16018538c4c6e7f65e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1663为大剧院4号口摄影点，1261泛站名原文却指3号出口直达爱乐之城，不能为消除编号冲突直接合并或假定站体包含。需要原图与站口定位厘清。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          479
+        ],
+        "conclusion": "1663为大剧院4号口摄影点，1261泛站名原文却指3号出口直达爱乐之城，不能为消除编号冲突直接合并或假定站体包含。需要原图与站口定位厘清。",
+        "sourcePlaceIds": [
+          "588",
+          "420"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1663,
+          1261
+        ],
+        "conclusion": "1663为大剧院4号口摄影点，1261泛站名原文却指3号出口直达爱乐之城，不能为消除编号冲突直接合并或假定站体包含。需要原图与站口定位厘清。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-480",
+    "city": "重庆",
+    "reviewFingerprint": "4e2470a48d668d03a964d6124920f8d41df9038ddcc4f3a12c9f4ce0ce67cdf9",
+    "expectedRevisions": {
+      "10f56151e5805136a77e1b287f7f091b": 1,
+      "f4591f5302c355469dbbd4bc813785c5": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1725原文明确七星岗宝藏社区，游线涵盖临华、枣子岚垭、枇杷正街；1346为1/10号线七星岗站4B出口。社区范围与轨道设施不同，同地图落点是区域误配，不合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          480
+        ],
+        "conclusion": "1725原文明确七星岗宝藏社区，游线涵盖临华、枣子岚垭、枇杷正街；1346为1/10号线七星岗站4B出口。社区范围与轨道设施不同，同地图落点是区域误配，不合并。",
+        "sourcePlaceIds": [
+          "621",
+          "447"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1725,
+          1346
+        ],
+        "conclusion": "1725原文明确七星岗宝藏社区，游线涵盖临华、枣子岚垭、枇杷正街；1346为1/10号线七星岗站4B出口。社区范围与轨道设施不同，同地图落点是区域误配，不合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-review-481",
+    "city": "重庆",
+    "reviewFingerprint": "dfc46dfcdb13b0337dd1efb10b825f0dff321791999eccb041bea73989a4b318",
+    "expectedRevisions": {
+      "49cc3f54d9ef0898800591de12acedcc": 1,
+      "f7f140b361f62dab94f3db3f7aa5a14e": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1457、1458同篇按胜天湖环湖顺序分列第一户和第二户农家，前者湖边小树机位，后者土墙房与桌椅休息地。两处独立对象，不能按农家公共字样合并；旧巴南区农家点与北碚胜天湖冲突，需另行清理。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          481
+        ],
+        "conclusion": "1457、1458同篇按胜天湖环湖顺序分列第一户和第二户农家，前者湖边小树机位，后者土墙房与桌椅休息地。两处独立对象，不能按农家公共字样合并；旧巴南区农家点与北碚胜天湖冲突，需另行清理。",
+        "sourcePlaceIds": [
+          "501",
+          "502"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1457,
+          1458
+        ],
+        "conclusion": "1457、1458同篇按胜天湖环湖顺序分列第一户和第二户农家，前者湖边小树机位，后者土墙房与桌椅休息地。两处独立对象，不能按农家公共字样合并；旧巴南区农家点与北碚胜天湖冲突，需另行清理。"
+      }
+    ]
+  }
+]

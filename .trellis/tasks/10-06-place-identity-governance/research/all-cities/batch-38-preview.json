@@ -1,0 +1,209 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "a76a124615e676af06c7a75968519280",
+          "city": "济南",
+          "canonical_name": "西更道街",
+          "primary_place_id": 5391,
+          "aliases": [
+            "西更道",
+            "西更道街"
+          ],
+          "legacy_ids": [
+            "404621ad6aef2a8247de6a28acdfb2e7",
+            "a76a124615e676af06c7a75968519280"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.667095839368386,
+            "lng": 117.0245279809005,
+            "address": "山东省济南市历下区大明湖街道西更道街",
+            "category": "文化",
+            "geoStatus": "resolved"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "12586",
+                  "name": "西更道",
+                  "quote": "连接泉城路和曲水亭街的老街道",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314"
+                },
+                {
+                  "id": "12762",
+                  "name": "西更道街",
+                  "quote": "济南古城区，一路向北，路上有一些小景点",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21"
+                },
+                {
+                  "id": "12723",
+                  "name": "西更道街",
+                  "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+                },
+                {
+                  "id": "11457",
+                  "name": "西更道街",
+                  "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+                }
+              ],
+              "reviewIds": [
+                373
+              ],
+              "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+              "sourcePlaceIds": [
+                "5949",
+                "5391"
+              ]
+            },
+            {
+              "lat": 36.666317,
+              "lng": 117.024442,
+              "kind": "primary_source_geometry",
+              "address": "",
+              "category": "文化",
+              "original": {
+                "lat": 36.666317,
+                "lng": 117.024442,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "5391",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/jinan-batch09-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+              "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+              "mentionIds": [
+                12586,
+                12762
+              ]
+            },
+            {
+              "kind": "reviewed_street_reference_point",
+              "file": "priority-cities/济南/streets-location-review-01.json",
+              "sha256": "56c05f5cd94d5fb545745d85e3fecf4b48f75af33e248b8eb2af8025a9962aca",
+              "sourcePlaceIds": [
+                5391,
+                5949
+              ],
+              "mentionIds": [
+                11457,
+                12586,
+                12723,
+                12762
+              ],
+              "noteId": 2813,
+              "quote": "西更道（连接泉城路和曲水亭街的老街道）",
+              "conclusion": "从源泉POI改为同名西更道街参考点，保留街道独立身份和原60分钟来源。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5391,
+          "entity_id": "a76a124615e676af06c7a75968519280"
+        },
+        {
+          "place_id": 5949,
+          "entity_id": "a76a124615e676af06c7a75968519280"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "verifiedAt": "2026-10-07T04:49:08.011Z",
+  "batch": "batch-26",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "北京",
+      "exported": 1272,
+      "total": 1350,
+      "active": 1306,
+      "embedded": 1306,
+      "probes": [
+        {
+          "name": "国家博物馆",
+          "id": "9848af6527dee0b6806678da781b39bf"
+        },
+        {
+          "name": "中国国家博物馆",
+          "id": "9848af6527dee0b6806678da781b39bf"
+        },
+        {
+          "name": "国博",
+          "id": "9848af6527dee0b6806678da781b39bf"
+        },
+        {
+          "name": "景山公园",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5"
+        },
+        {
+          "name": "景山",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5"
+        },
+        {
+          "name": "石景山公园",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "中国国家博物馆",
+          "id": "9848af6527dee0b6806678da781b39bf",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "景山",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5",
+          "diagnostics": {
+            "keywordHits": 4,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "withdrawals": [],
+      "photosChecked": 31,
+      "audits": [
+        "bd4c735c-7c8d-4d60-a403-328f61253bfd"
+      ]
+    }
+  ],
+  "failures": []
+}

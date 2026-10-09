@@ -1,0 +1,49 @@
+{
+  "isolated": true,
+  "synthetic": true,
+  "city": "联合来源链路测试",
+  "oldIds": [
+    "a00532a8bcad503726e0b5bc4b38ce18",
+    "0bbfa5deeed19c9020a99484f49c0c27"
+  ],
+  "targetIds": [
+    "ad57f2dd3767d4a02d6bde8f807f1e33",
+    "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+  ],
+  "files": {
+    "before": {
+      "file": "xhs-places-before.json",
+      "sha256": "4061618f4a123009ebe51b960ef1e1a5f2f2ac9bb539475b0a7ecb7bf1b8a66e",
+      "active": [
+        "0bbfa5deeed19c9020a99484f49c0c27",
+        "a00532a8bcad503726e0b5bc4b38ce18",
+        "ad57f2dd3767d4a02d6bde8f807f1e33",
+        "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+      ]
+    },
+    "assigned": {
+      "file": "xhs-places-assigned.json",
+      "sha256": "1853ad024e6009fe302934dc8e6285040485fa0ff141759bb71948fbd1f1ad7c",
+      "active": [
+        "ad57f2dd3767d4a02d6bde8f807f1e33",
+        "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+      ]
+    },
+    "empty": {
+      "file": "xhs-places-empty.json",
+      "sha256": "befe14b5c973977c119034041ba1d9e9b16ad87882cdc40d28bb95831a9bfaeb",
+      "active": []
+    },
+    "restored": {
+      "file": "xhs-places-restored.json",
+      "sha256": "359959c3519ec4b56aaddb6dc22cdafbc1f94a02efc6aefe01541349d326b412",
+      "active": [
+        "ad57f2dd3767d4a02d6bde8f807f1e33",
+        "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+      ]
+    }
+  },
+  "idempotency": true,
+  "reverseRollback": true,
+  "sourceTextUnchanged": true
+}

@@ -1,0 +1,68 @@
+{
+  "batch": 68,
+  "at": "2026-10-09T01:13:00.873Z",
+  "stats": {
+    "positive": 337,
+    "boundaries": 113,
+    "withdrawals": 52,
+    "pending": 313
+  },
+  "rootTypecheck": true,
+  "extendedTypecheck": true,
+  "installedManifestHashesVerified": 64,
+  "productionCodeChanged": false,
+  "isolatedSqlAndExport": true,
+  "reverseRollback": true,
+  "actualConsumptionTestPassed": true,
+  "sourceFile": "all-cities/batch-68-source.json",
+  "consumptionFile": "all-cities/batch-68/sync-01/renmin-category-consumption-1791508211378.json",
+  "postFile": "all-cities/batch-68/sync-01/post-import-check-1791508038540.json",
+  "dualFile": "all-cities/batch-68/sync-01/preview-成都/preview-1791507949726.json",
+  "isolatedFile": "all-cities/batch-68/category-preview-1791507316976663600/report.json",
+  "inputsFile": "priority-cities/成都/renmin-category-inputs-check-01.json",
+  "scopesAdded": 0,
+  "assignmentsAdded": 0,
+  "pendingAdded": 0,
+  "categoryChanges": 1,
+  "coordinatesCleared": 0,
+  "preciseLocationsResolved": 0,
+  "existingAliasLegacyIdsAdded": 2,
+  "chengdu": {
+    "primary": 113,
+    "dependencies": 3,
+    "fullyReviewed": 0,
+    "remaining": 113,
+    "partialScope": 2,
+    "partialLocation": 4,
+    "partialCategory": 1,
+    "otherPending": 106,
+    "clearedPointPending": 6,
+    "cityWideAssignments": 41
+  },
+  "jinanLedgerPreserved": "review-45",
+  "unappliedFindings": 5,
+  "oldCanonicalMediaProbes": 372,
+  "targetFactMedia": [
+    {
+      "name": "人民公园",
+      "galleryCount": 1,
+      "hasCover": true,
+      "actualLookupPhotos": 0
+    },
+    {
+      "name": "鹤鸣茶社",
+      "galleryCount": 0,
+      "hasCover": false,
+      "actualLookupPhotos": 0
+    }
+  ],
+  "oldNameMockEnqueues": {
+    "before": 359,
+    "after": 359
+  },
+  "actualEnqueues": 0,
+  "imageComparison": "deferred_by_user",
+  "mapCredentialStatus": "rotation_required",
+  "userAcceptance": false,
+  "failures": []
+}

@@ -1,0 +1,38 @@
+{
+  "readOnly": true,
+  "batch": "batch-38",
+  "productionTimeoutUnchanged": true,
+  "at": "2026-10-08T04:40:25.174Z",
+  "probes": [
+    {
+      "id": "8808e16f1472d0df17bed729a2e54e83",
+      "city": "济南",
+      "name": "趵突泉",
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "unavailable",
+        "vectorHits": 0
+      },
+      "excluded": true
+    }
+  ],
+  "requests": [
+    {
+      "error": "TimeoutError",
+      "elapsedMs": 2512
+    }
+  ],
+  "failures": [
+    {
+      "id": "8808e16f1472d0df17bed729a2e54e83",
+      "city": "济南",
+      "name": "趵突泉",
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "unavailable",
+        "vectorHits": 0
+      },
+      "excluded": true
+    }
+  ]
+}

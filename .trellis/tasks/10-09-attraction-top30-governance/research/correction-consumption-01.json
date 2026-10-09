@@ -1,0 +1,505 @@
+{
+  "readOnly": true,
+  "tiananmen": {
+    "checks": {
+      "resolve:天安门:nameOnly": true,
+      "resolve:天安门:298e600416cbc4f85119932e8a3c966c": true,
+      "resolve:天安门:21152db5b05aff609cffa2bee47f16b4": true,
+      "resolve:天安门广场:nameOnly": true,
+      "resolve:天安门广场:298e600416cbc4f85119932e8a3c966c": true,
+      "resolve:天安门广场:21152db5b05aff609cffa2bee47f16b4": true,
+      "independentRowsUnchanged": true,
+      "onlyOneExportedRoot": true,
+      "noInheritedComplexComponents": true,
+      "relationEndpointsValid": true,
+      "noSelfLoops": true,
+      "noAbsorbedEndpoint": true,
+      "liveFactsUnified": true,
+      "noTowerMondayClosure": true
+    },
+    "passed": true,
+    "independentNames": [
+      "天安门升旗",
+      "天安门城楼",
+      "天安门广场西广场01安检口",
+      "天安门城楼外金水桥",
+      "内金水桥",
+      "天安门广场地下通道",
+      "天安门东地铁口",
+      "天安门降旗"
+    ],
+    "relationCount": 140,
+    "facts": {
+      "id": "21152db5b05aff609cffa2bee47f16b4",
+      "openTime": "00:00-23:59"
+    }
+  },
+  "jingshan": {
+    "expected": "石景山公园不能全局解析成景山公园",
+    "actual": {
+      "status": "resolved",
+      "place": {
+        "id": "981bfe8125feb36e052dcfee1e0df8b5",
+        "city": "北京",
+        "name": "景山公园",
+        "category": "自然",
+        "source": "goldset",
+        "verified": true,
+        "lat": 39.925875,
+        "lng": 116.396551,
+        "payload": {
+          "tips": [
+            "北海公园：穿舒服的鞋、租船游湖体验最佳；恭王府：旺季建议早去、穿舒服的鞋（青石板路不好走）、建议请讲解；景山公园：一定要",
+            "地铁8号线13min到前门大街；各景点间骑行10-15min；前门大街美食以老字号为主；景山公园附近推荐YUMMYLiC"
+          ],
+          "price": "景山公园2元",
+          "adcode": "110102",
+          "caseId": "beijing-5d-family",
+          "themes": [
+            "自然风光"
+          ],
+          "address": "景山西街44号",
+          "aliases": [
+            "景山",
+            "景山公园",
+            "石景山公园"
+          ],
+          "content": {
+            "intro": "景山位于北京城中心。这座始建于辽金时期的宫苑园林，曾是皇宫的重要组成部分，保留了深厚的历史背景。山上五亭横列，中峰为万春亭，东西两侧分布观妙亭、周赏亭、辑芳亭和富览亭。登高后可俯瞰北京，在亭阁间欣赏古都风貌。",
+            "method": "source_grounded_editor",
+            "review": {
+              "at": "2026-10-02T07:17:48.874534+00:00",
+              "by": "codex",
+              "kind": "source_and_copy_review"
+            },
+            "version": 1,
+            "compiledAt": "2026-10-02T07:17:48.874534+00:00",
+            "highlights": [
+              {
+                "text": "景山位于北京城中心。",
+                "quote": "景山位于北京城的中心",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              },
+              {
+                "text": "这座始建于辽金时期的宫苑园林，曾是皇宫的重要组成部分，保留了深厚的历史背景。",
+                "quote": "景山始建于辽金时期，距今已有近千年的历史。景山是我国历史最悠久、保存最完整的宫苑园林之一，曾经是皇宫的重要组成部分。",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              },
+              {
+                "text": "山上五亭横列，中峰为万春亭，东西两侧分布观妙亭、周赏亭、辑芳亭和富览亭。",
+                "quote": "景山山上五亭横列，中峰建有万春亭；东侧依次建有观妙亭和周赏亭；西侧依次建有辑芳亭和富览亭。",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              },
+              {
+                "text": "登高后可俯瞰北京，在亭阁间欣赏古都风貌。",
+                "quote": "登上景山，俯瞰北京，古都风貌尽收眼底",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              }
+            ],
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "activity": {
+            "id": "36080784-3d27-4ff1-88d0-1780e4c3e176",
+            "lat": 39.92586044404271,
+            "lng": 116.39664015055057,
+            "cost": 10,
+            "name": "景山公园",
+            "endTime": "14:00",
+            "category": "自然",
+            "startTime": "13:00",
+            "coordSource": "geocoded",
+            "coordSystem": "gcj02",
+            "description": "登万春亭俯瞰故宫全景与北京中轴线，是拍照经典机位。公园牡丹花季（4-5月）尤其美丽。",
+            "sourceNotes": []
+          },
+          "identity": {
+            "kind": "same_entity",
+            "version": 2,
+            "entityId": "981bfe8125feb36e052dcfee1e0df8b5",
+            "nameKeys": [
+              "景山公园",
+              "景山",
+              "石景山公园"
+            ],
+            "revision": 4,
+            "memberIds": [
+              "981bfe8125feb36e052dcfee1e0df8b5",
+              "a94865355cdbf6fccfda6fc748b9e9fe",
+              "bfcd828439fa9f1f7ff85ab8b155f934"
+            ],
+            "memberNames": [
+              "景山公园",
+              "景山",
+              "石景山公园"
+            ],
+            "canonicalName": "景山公园"
+          },
+          "geoStatus": "reviewed_source",
+          "openHours": {
+            "note": "",
+            "text": "06:00-21:00",
+            "scope": "place",
+            "review": [
+              {
+                "scope": "unattributed",
+                "clause": "天安门城楼8:30-17:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "天安门城楼",
+                "sentence": "天安门城楼8:30-17:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "人民大会堂7:30-15:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "人民大会堂",
+                "sentence": "人民大会堂7:30-15:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "故宫8:30-17:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "故宫",
+                "sentence": "故宫8:30-17:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "国家博物馆9:00-17:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "国家博物馆",
+                "sentence": "国家博物馆9:00-17:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "天坛公园6:00-22:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "天坛公园",
+                "sentence": "天坛公园6:00-22:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "雍和宫9:00-17:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "雍和宫",
+                "sentence": "雍和宫9:00-17:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "清华北大8:00-16:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "清华北大",
+                "sentence": "清华北大8:00-16:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "恭王府8:30-17:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "恭王府",
+                "sentence": "恭王府8:30-17:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "圆明园6:00-21:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "圆明园",
+                "sentence": "圆明园6:00-21:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "颐和园6:00-20:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "颐和园",
+                "sentence": "颐和园6:00-20:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "水立方10:30-20:30",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "水立方",
+                "sentence": "水立方10:30-20:30",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "鸟巢10:00-22:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "鸟巢",
+                "sentence": "鸟巢10:00-22:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "八达岭长城6:30-16:30",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "八达岭长城",
+                "sentence": "八达岭长城6:30-16:30",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "环球影城9:30-20:30",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "环球影城",
+                "sentence": "环球影城9:30-20:30",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "颐和园：6:00-19:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "颐和园",
+                "sentence": "颐和园：6:00-19:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "恭王府：9:00-16:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "恭王府",
+                "sentence": "恭王府：9:00-16:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "八达岭长城：6:30-16:30",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "八达岭长城",
+                "sentence": "八达岭长城：6:30-16:30",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "雍和宫：9:30-16:30",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "雍和宫",
+                "sentence": "雍和宫：9:30-16:30",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "环球影城：9:30-19:30",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "环球影城",
+                "sentence": "环球影城：9:30-19:30",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "圆明园：6:00-21:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "圆明园",
+                "sentence": "圆明园：6:00-21:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "天坛公园：6:00-22:00",
+                "reason": "other_entity",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "天坛公园",
+                "sentence": "天坛公园：6:00-22:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              }
+            ],
+            "status": "attributed",
+            "subject": "景山公园",
+            "version": 2,
+            "evidence": [
+              "景山公园6:00-21:00"
+            ],
+            "openTime": "06:00",
+            "closeTime": "21:00",
+            "attributions": [
+              {
+                "scope": "unattributed",
+                "clause": "景山公园6:00-21:00",
+                "target": "景山公园",
+                "rawText": "天安门广场升旗时至22:30；天安门城楼8:30-17:00；人民大会堂7:30-15:00；故宫8:30-17:00；国家博物馆9:00-17:00；天坛公园6:00-22:00；雍和宫9:00-17:00；清华北大8:00-16:00；恭王府8:30-17:00；景山公园6:00-21:00；圆明园6:00-21:00；颐和园6:00-20:00；水立方10:30-20:30；鸟巢10:00-22:00；八达岭长城6:30-16:30；环球影城9:30-20:30",
+                "subject": "景山公园",
+                "sentence": "景山公园6:00-21:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9b6a000000002601e87c",
+                "sourceKind": "image"
+              },
+              {
+                "scope": "unattributed",
+                "clause": "景山公园：6:30-20:00",
+                "target": "景山公园",
+                "rawText": "故宫：20:00放票；国家博物馆：17:00放票；伟人纪念堂：12:30放票；天安门升旗：12:00放票；人民大会堂：17:00放票；天安门城楼：17:00放票；清华大学、北京大学：8:00放票；军事博物馆：8:00/17:00/20:00放票；颐和园：6:00-19:00；恭王府：9:00-16:00；八达岭长城：6:30-16:30；雍和宫：9:30-16:30；环球影城：9:30-19:30；圆明园：6:00-21:00；景山公园：6:30-20:00；天坛公园：6:00-22:00",
+                "subject": "景山公园",
+                "sentence": "景山公园：6:30-20:00",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6a919045000000000a00aaa6",
+                "sourceKind": "image"
+              }
+            ],
+            "closedWeekdays": []
+          },
+          "components": [],
+          "coverImage": "xhs/photography/981bfe8125feb36e052dcfee1e0df8b5/400fb339ede3ec8b8e7d1eb271ec5ff163b46f6dc2a29a2a7e997338aeebf7f9.webp",
+          "topReasons": [
+            "俯瞰紫禁城全景视野绝佳",
+            "登顶可看故宫全景，春节有庙会",
+            "俯瞰故宫全景的绝佳高点"
+          ],
+          "reservation": "unknown",
+          "embeddedText": "北京 景山公园 景山 石景山公园 自然",
+          "imageGallery": [
+            {
+              "key": "xhs/photography/981bfe8125feb36e052dcfee1e0df8b5/400fb339ede3ec8b8e7d1eb271ec5ff163b46f6dc2a29a2a7e997338aeebf7f9.webp",
+              "provenance": {
+                "key": "xhs/photography/981bfe8125feb36e052dcfee1e0df8b5/400fb339ede3ec8b8e7d1eb271ec5ff163b46f6dc2a29a2a7e997338aeebf7f9.webp",
+                "bytes": 400438,
+                "model": "agnes-2.5-flash",
+                "width": 1440,
+                "author": "是嘻嘻妈呀🌞～",
+                "height": 1080,
+                "noteId": "6aae007b0000000029010389",
+                "review": {
+                  "view": "正面全景，从山脚广场仰视拍摄，前景为菊花展花坛装饰与'景山'标识，中景为传统建筑及石栏，背景为树木环绕的山顶亭阁",
+                  "reason": "照片明确展示了景山公园的标志特征，'景山'文字标识清晰可辨，主体建筑完整呈现，无游客干扰，画面整洁，符合景点图库收录标准",
+                  "scores": {
+                    "light": 7,
+                    "sharpness": 8,
+                    "atmosphere": 7,
+                    "cleanliness": 9,
+                    "composition": 8
+                  },
+                  "status": "eligible",
+                  "quality": 7.8,
+                  "evidence": "照片中建筑前方的装饰花坛上清晰可见'景山'二字标识，背景为景山万春亭区域建筑，具有典型的中式宫殿建筑风格",
+                  "identity": "match",
+                  "image_kind": "single_photo",
+                  "subject_audit": {
+                    "evidence": "画面中央花艺造型上清晰可见'景山'二字，背景为景山公园内传统建筑（万春亭区域），场景整体属于景山公园范围内。",
+                    "main_subject": "landscape",
+                    "posed_portrait": false,
+                    "viewpoint_only": false,
+                    "target_depicted": true
+                  }
+                },
+                "rights": "permission-needed",
+                "sha256": "400fb339ede3ec8b8e7d1eb271ec5ff163b46f6dc2a29a2a7e997338aeebf7f9",
+                "placeId": "981bfe8125feb36e052dcfee1e0df8b5",
+                "authorId": "5c553243000000001803c171",
+                "placeName": "景山公园",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aae007b0000000029010389",
+                "imageIndex": 7,
+                "reviewMethod": "model",
+                "sourceSha256": "e6f05fc286815a85884a528effac6e9a9aae562204ae6bf1eddcbcab6f9edf94",
+                "reviewVersion": "ranked-photography-v2"
+              },
+              "attribution": {
+                "source": "xhs",
+                "changes": "等比缩放、转码；模型审核",
+                "license": "未确认授权",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/6aae007b0000000029010389",
+                "licenseUrl": "https://www.xiaohongshu.com/explore/6aae007b0000000029010389",
+                "photographer": "是嘻嘻妈呀🌞～"
+              }
+            }
+          ],
+          "mentionCount": 37,
+          "originalName": "景山公园",
+          "xhsPlaceType": "attraction",
+          "recommendScore": 95.36,
+          "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+          "reservationConflict": false,
+          "reservationEvidence": [],
+          "typicalVisitMinutes": 30,
+          "recommendationIdentity": {
+            "policy": "resolved_attraction_mentions_v1",
+            "version": 1,
+            "entityId": "981bfe8125feb36e052dcfee1e0df8b5",
+            "revision": 4,
+            "inputHash": "b6b058f4fdf2350bb4de18e2ffecf3331fa0104a6d929af79c8a11f9353cb1ee",
+            "mentionCount": 37,
+            "recommendScore": 95.36
+          }
+        },
+        "has_embedding": true
+      },
+      "canonicalPlaceId": "981bfe8125feb36e052dcfee1e0df8b5"
+    },
+    "defectReproduced": true,
+    "fixed": false
+  }
+}

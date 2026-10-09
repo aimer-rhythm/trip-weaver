@@ -1,0 +1,107 @@
+{
+  "entities": [
+    {
+      "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a",
+      "city": "济南",
+      "canonical_name": "民族大街",
+      "primary_place_id": 5372,
+      "aliases": [
+        "民族大街"
+      ],
+      "legacy_ids": [
+        "48bbca08dc8a0fd00189dbe41cfa127a"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "79e713e197315afb0440835502699789",
+      "city": "济南",
+      "canonical_name": "民族大街市场",
+      "primary_place_id": 5961,
+      "aliases": [
+        "民族大街市场"
+      ],
+      "legacy_ids": [
+        "79e713e197315afb0440835502699789"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5372,
+      "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a"
+    },
+    {
+      "place_id": 5961,
+      "entity_id": "79e713e197315afb0440835502699789"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 369,
+      "city": "济南",
+      "fingerprint": "f70bf44d39d737f3d2f1777058993e960533d4497d2eac1a32d70f10c46218f2",
+      "status": "REJECTED",
+      "detail": {
+        "names": [
+          "民族大街",
+          "民族大街市场"
+        ],
+        "reason": "similar_name",
+        "entityIds": [
+          "48bbca08dc8a0fd00189dbe41cfa127a",
+          "79e713e197315afb0440835502699789"
+        ],
+        "assessment": {
+          "key": "all-cities-20261006-batch-09-review-369",
+          "verdict": "part_of",
+          "evidence": [
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                369
+              ],
+              "conclusion": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+              "sourcePlaceIds": [
+                "5372",
+                "5961"
+              ]
+            },
+            {
+              "file": "all-cities/jinan-batch09-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+              "conclusion": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+              "mentionIds": [
+                12643
+              ]
+            }
+          ],
+          "explanation": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+          "childEntityId": "79e713e197315afb0440835502699789"
+        }
+      }
+    }
+  ]
+}

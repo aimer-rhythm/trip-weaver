@@ -1,0 +1,308 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T20:59:09.082352+00:00",
+  "city": "济南",
+  "entityBatch": 54,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "6a111b28c08cc7853140187bfd852b16",
+        "city": "济南",
+        "canonical_name": "老舍故居",
+        "primary_place_id": 5498,
+        "aliases": [
+          "老舍故居"
+        ],
+        "legacy_ids": [
+          "6a111b28c08cc7853140187bfd852b16"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5498,
+            "city": "济南",
+            "name": "老舍故居",
+            "normalized_name": "老舍故居",
+            "address": "",
+            "latitude": 36.65664471443252,
+            "longitude": 117.0154323942991,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 20.0
+          },
+          "sourceHash": "ae0ddcc45be6240f8efc939c0417b930781cf69f26009f8ee612053feb87fd5e",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "历史人文"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5498,
+            "mention_count_30d": 3,
+            "recommend_score": 12.0
+          }
+        }
+      ],
+      "nameKeys": [
+        "老舍故居"
+      ],
+      "mentionIds": [
+        11619,
+        12807,
+        12912
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "c5a3fae3d839ec359cb0521d957e56df",
+        "city": "济南",
+        "canonical_name": "老舍笔下的济南",
+        "primary_place_id": 5957,
+        "aliases": [
+          "老舍笔下的济南"
+        ],
+        "legacy_ids": [
+          "c5a3fae3d839ec359cb0521d957e56df"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5957,
+            "city": "济南",
+            "name": "老舍笔下的济南",
+            "normalized_name": "老舍笔下的济南",
+            "address": "",
+            "latitude": 36.65664471443252,
+            "longitude": 117.0154323942991,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "1b058ad0c664ec372f080aad20126ad0039b3deb0d64ec11c0df4b01c3f7b060",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "历史人文"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5957,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "老舍笔下的济南"
+      ],
+      "mentionIds": [
+        12694
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "6a111b28c08cc7853140187bfd852b16",
+        "city": "济南",
+        "canonical_name": "老舍故居",
+        "primary_place_id": 5498,
+        "aliases": [
+          "老舍故居"
+        ],
+        "legacy_ids": [
+          "6a111b28c08cc7853140187bfd852b16"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "c5a3fae3d839ec359cb0521d957e56df",
+        "city": "济南",
+        "canonical_name": "老舍笔下的济南",
+        "primary_place_id": 5957,
+        "aliases": [
+          "老舍笔下的济南"
+        ],
+        "legacy_ids": [
+          "c5a3fae3d839ec359cb0521d957e56df"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5498,
+        "entity_id": "6a111b28c08cc7853140187bfd852b16"
+      },
+      {
+        "place_id": 5957,
+        "entity_id": "c5a3fae3d839ec359cb0521d957e56df"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11619,
+      "raw_note_id": 2624,
+      "name": "老舍故居",
+      "normalized_name": "老舍故居",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "从五龙潭南门出500米即到，可顺路参观。",
+      "evidence_text": "500米就是老舍故居",
+      "route_order": 3,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "f0993e7d8ffbe2d09ea5423c09a2905c72a75d5ea5be9ddc8312d5c45742a767"
+    },
+    {
+      "id": 12807,
+      "raw_note_id": 2810,
+      "name": "老舍故居",
+      "normalized_name": "老舍故居",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "citywalk路线起点，文化景点",
+      "evidence_text": "老舍故居→趵突泉",
+      "route_order": 1,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:19.111155+00:00",
+      "inputHash": "23cbd682082c6dee97acd085b07bb748635b081cc64f99e9b8f1a185c3e7c6d0"
+    },
+    {
+      "id": 12912,
+      "raw_note_id": 2624,
+      "name": "老舍故居",
+      "normalized_name": "老舍故居",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "从五龙潭南门出500米即到，可选择性参观。",
+      "evidence_text": "500米就是老舍故居",
+      "route_order": 3,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "886655c2daa5efe164559fc90b2b80ec71d23b8157d2a4218e11f8177223937a"
+    },
+    {
+      "id": 12694,
+      "raw_note_id": 2817,
+      "name": "老舍笔下的济南",
+      "normalized_name": "老舍笔下的济南",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "文化打卡点，与老舍相关",
+      "evidence_text": "⑧老舍笔下的济南",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:42.369552+00:00",
+      "inputHash": "49640ec2b910fb725c553d5c9167dd24cd066fd84258abfa01eed6f593e12df1"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2624,
+      "city": "济南",
+      "title": "济南一日游，跟我走👍",
+      "desc": "时间有限的小伙伴们，出发济南一日游，不迷路，拿捏拿捏[微笑R]\n我们是周六晚上做的卧铺北京出发，周日早上六点多到达大明湖站，吃喝就看自己的选择啦，，，\n第一站五龙潭，七点开园，一个小时就能逛完，西门进南门出，斜对过就是趵突泉啦，，，园子不小，里面有点东西，可以仔细逛一下呢。\n接着想去老舍故居就从南门出，500米就是老舍故居，不去的从东门出，马路对面就是泉城广场，走旁边的林荫小路，沿着护城河，就能看到黑虎泉，可以接泉水，能够直接喝的。\n尽头就是解放阁，可以进去参观一下。下来就是宽厚里，一整条街可以逛吃逛喝[吧唧R]，午饭可以在这里解决。接着逛芙蓉街，也都是小吃，走着走着到曲水亭街，很优美，然后去看有名的王府池子、起风桥。\n重点来到了大明湖，吹吹风太舒服了，等到快天黑的时候去找好位置看超然楼亮灯，然后去看看夏雨荷，非常充实的一天，晚上八点多从离得很近的济南西站打道回京。",
+      "unavailable": false,
+      "mentionIds": [
+        11619,
+        12912
+      ]
+    },
+    {
+      "id": 2810,
+      "city": "济南",
+      "title": "济南📍一日游 超舒服的citywalk逛吃住攻略",
+      "desc": "路线行程🚗\n老舍故居→趵突泉→黑虎泉→宽厚里→解放阁→白石泉→曲水亭街→大明湖→超然楼\n\t\n🏠住宿\n住泉城广场/大明湖附近，步行看超然楼亮灯，周边吃喝便利，经济型酒店200左右\n\t\n🚇交通\n景点间骑车/步行就行，打车起步价不贵\n\t\n🍜必吃美食\n牛肉烧饼、羊汤、锅贴、把子肉、泉水包子\n\t\n✨小建议\n1. 趵突泉8点前去，人少好拍照\n2. 黑虎泉茶摊喝泉水茶，超惬意\n3. 曲水亭街工作日去更清净\n\t\n❌避坑\n1. 趵突泉枯水期别去，雨季后去更出片\n2. 芙蓉街、宽厚里小吃逛逛就行\n3. 超然楼亮灯前人多，提前占位\n\t\n#济南旅游[话题]# #济南一日游[话题]# #济南攻略[话题]# #济南美食[话题]# #济南打卡[话题]# #超然楼[话题]# #趵突泉[话题]# #大明湖[话题]# #济南旅行[话题]# #山东旅游[话题]# #打卡济南[话题]# #山东博物馆[话题]# #济南旅游攻略[话题]# #京津冀周边游[话题]# #周末旅游[话题]# #假期旅游[话题]# #济南旅行[话题]# #济南拍照[话题]# #济南美食[话题]# #曲水亭[话题]# #宽厚里[话题]#  #济南一日游[话题]# #济南特种兵旅游攻略[话题]# #济南旅游[话题]# #山东周边游[话题]# #不为打卡的旅游[话题]# #本地人做的攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12807
+      ]
+    },
+    {
+      "id": 2817,
+      "city": "济南",
+      "title": "1小时打卡济南曲水亭街！附详细路线攻略",
+      "desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12694
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "dc7bb7592bac",
+  "query": "\"月下观棠\" 济南 汉服 地址",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来帮你查找济南“月下观棠”汉服相关店铺的地址。正在搜索最新信息。",
+  "sources": [
+    {
+      "url": "https://i.ifeng.com/c/8qxAvXEQC9w",
+      "provider": "tavily",
+      "title": "逛济南，穿汉服，最出片",
+      "description": "大明湖、趵突泉、曲水亭街是汉服爱好者们重要的沉浸式体验场景，首批“济南文旅主理人”康秋彩的大喜汉服体验馆是济南最早一批做簪花体验的汉服店。"
+    },
+    {
+      "url": "http://sd.xinhuanet.com/20250807/f01a374bc80e492e92f51b32881fb892/c.html",
+      "provider": "tavily",
+      "title": "汉服漫游古巷济南老街韵味“出圈”",
+      "description": "作为“老济南后花园”，起凤桥街以“一桥担两泉”的特色景观承载着市井烟火与历史沉淀。如今，汉服文化的兴起让老街焕发新生，众多汉服爱好者纷至沓来，于"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://i.ifeng.com/c/8qxAvXEQC9w",
+      "provider": "tavily",
+      "title": "逛济南，穿汉服，最出片",
+      "description": "大明湖、趵突泉、曲水亭街是汉服爱好者们重要的沉浸式体验场景，首批“济南文旅主理人”康秋彩的大喜汉服体验馆是济南最早一批做簪花体验的汉服店。"
+    },
+    {
+      "url": "http://sd.xinhuanet.com/20250807/f01a374bc80e492e92f51b32881fb892/c.html",
+      "provider": "tavily",
+      "title": "汉服漫游古巷济南老街韵味“出圈”",
+      "description": "作为“老济南后花园”，起凤桥街以“一桥担两泉”的特色景观承载着市井烟火与历史沉淀。如今，汉服文化的兴起让老街焕发新生，众多汉服爱好者纷至沓来，于"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 5681.48,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 14514.39,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 14514.42
+}

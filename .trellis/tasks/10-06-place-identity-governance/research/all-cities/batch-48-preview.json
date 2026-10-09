@@ -1,0 +1,657 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "city": "济南",
+          "canonical_name": "珍珠泉",
+          "primary_place_id": 5363,
+          "aliases": [
+            "珍珠泉"
+          ],
+          "legacy_ids": [
+            "af9116d87efcdf105915ca6303cb6274"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5363,
+          "content_profile": {
+            "intro": "珍珠泉位于济南市历下区珍珠泉大院内，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名。泉池呈长方形，四周设汉白玉栏杆，池中矗立“珍珠泉”石碑，池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗。明代德王建府时将珍珠泉圈入府内，清代改为巡抚署院，现为山东省人大常委会办公地，院内保留清代巡抚衙门旧址。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-06T02:58:18.242868+00:00",
+            "highlights": [
+              {
+                "text": "珍珠泉位于济南市历下区珍珠泉大院内，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名。",
+                "basis": "web",
+                "quote": "珍珠泉景区位于山东省济南市历下区[泉城路](https://baike.baidu.com/item/%E6%B3%89%E5%9F%8E%E8%B7%AF/1831468?fromModule=lemma_inlink)中段路北的[珍珠泉大院](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%A4%A7%E9%99%A2/22920314?fromModule=lemma_inlink)内西北侧，占地面积约1240平方米，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名，泉水溢水标高26.28米。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "珍珠泉景区位于山东省济南市历下区[泉城路](https://baike.baidu.com/item/%E6%B3%89%E5%9F%8E%E8%B7%AF/1831468?fromModule=lemma_inlink)中段路北的[珍珠泉大院](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%A4%A7%E9%99%A2/22920314?fromModule=lemma_inlink)内西北侧，占地面积约1240平方米，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名，泉水溢水标高26.28米。",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  },
+                  {
+                    "quote": "珍珠泉景区位于山东省济南市历下区泉城路中段路北的珍珠泉大院内西北侧，占地面积约1240平方米。",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  }
+                ],
+                "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                "observedAt": "2026-10-06T02:58:07Z"
+              },
+              {
+                "text": "泉池呈长方形，四周设汉白玉栏杆，池中矗立“珍珠泉”石碑，池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗。",
+                "basis": "web",
+                "quote": "泉池呈长方形，长42米、宽29米，四周设汉白玉栏杆，池中矗立[高启云](https://baike.baidu.com/item/%E9%AB%98%E5%90%AF%E4%BA%91/5727105?fromModule=lemma_inlink)题写的“珍珠泉”石碑。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "泉池呈长方形，长42米、宽29米，四周设汉白玉栏杆，池中矗立[高启云](https://baike.baidu.com/item/%E9%AB%98%E5%90%AF%E4%BA%91/5727105?fromModule=lemma_inlink)题写的“珍珠泉”石碑。",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  },
+                  {
+                    "quote": "池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗；",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  },
+                  {
+                    "quote": "池中矗立高启云题写的“珍珠泉”石碑 [3] [5]。",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  }
+                ],
+                "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                "observedAt": "2026-10-06T02:58:07Z"
+              },
+              {
+                "text": "明代德王建府时将珍珠泉圈入府内，清代改为巡抚署院，现为山东省人大常委会办公地，院内保留清代巡抚衙门旧址。",
+                "basis": "web",
+                "quote": "明代成化二年（1466年），德王朱见潾建德王府时将珍珠泉圈入府内，清代改为巡抚署院。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "明代成化二年（1466年），德王朱见潾建德王府时将珍珠泉圈入府内，清代改为巡抚署院。",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  },
+                  {
+                    "quote": "景区现存清代巡抚衙门旧址，现为山东省人大常委会办公地，[珍珠泉宾馆](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%AE%BE%E9%A6%86/2225540?fromModule=lemma_inlink)曾为省级接待单位 [2] [5]。",
+                    "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                    "observedAt": "2026-10-06T02:58:07Z"
+                  }
+                ],
+                "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                "observedAt": "2026-10-06T02:58:07Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": 60,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 47.7,
+          "theme_tags": [
+            "历史人文"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5363,
+          "mention_count_30d": 9,
+          "positive_count_30d": 9,
+          "source_count": 7,
+          "top_reasons": [
+            {
+              "reason": "免费，游玩1小时",
+              "evidence": "游玩1h｜免费"
+            },
+            {
+              "reason": "免费景点，位于推荐路线上",
+              "evidence": "珍珠泉——曲水亭街"
+            },
+            {
+              "reason": "济南名泉，列入推荐路线第二天。",
+              "evidence": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街"
+            },
+            {
+              "reason": "热门打卡点，路线终点",
+              "evidence": "⑩珍珠泉"
+            },
+            {
+              "reason": "免费，游玩1小时",
+              "evidence": "免费"
+            }
+          ],
+          "recommend_score": 26.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7797,
+          "canonical_place_id": 5363,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 珍珠泉",
+          "evidence_summary": "免费，游玩1小时"
+        },
+        {
+          "id": 7798,
+          "canonical_place_id": 5363,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 珍珠泉",
+          "evidence_summary": "济南名泉，列入推荐路线第二天。"
+        },
+        {
+          "id": 7799,
+          "canonical_place_id": 5363,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 珍珠泉",
+          "evidence_summary": "免费景点，位于推荐路线上"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5363,
+          "city": "济南",
+          "name_keys": [
+            "珍珠泉"
+          ],
+          "entity_ids": [
+            "af9116d87efcdf105915ca6303cb6274"
+          ],
+          "source_hash": "74a53934fa833d1fd0125efe84cc13d2af1456f46ac0178175ecf060a0a62aba",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/pearl-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "conclusion": "全文区分泉池与容纳多泉的大院；两条混合看点逐项删错留真，完整提及身份保持，不扩展到整个珍珠泉泉群。",
+              "mentionIds": [
+                11338,
+                11400,
+                11414,
+                12566,
+                12592,
+                12669,
+                12680,
+                12696,
+                12940
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "af9116d87efcdf105915ca6303cb6274"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11338,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "b3efeac122b102d00ab44730fdeef61f3a2712205a0a14f78e66417ba7715d5a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 11400,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "2429b0bef4e53aec0246f4b8ed5648c8474c29c23f148a1c283df11a4fbc0286",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 11414,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "a0bc4c09b3f7bdf01ff2b81c51e7f9ca3d33ac6e8787f0956cdfebcbe9fa89cc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 12566,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "699de5a7d2560b93a4c476151bb27a706523816c63e59215e0ffd7f84918d8d9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 12592,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "b8031d24d7467f7d74556faa5cf19f8d5a1d060192d4c0ee73620d52ea835021",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。",
+              "reason": "subject_mismatch"
+            },
+            "place_content": {
+              "quote": "顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。",
+              "reason": "subject_mismatch",
+              "highlightIndexes": [
+                1
+              ]
+            }
+          }
+        },
+        {
+          "mention_id": 12669,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "824e7dbf4cdf60096af92aa7b6fd17a3dd385cec2116647a407c483ca5a4d340",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 12680,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "da18d48ab8069a50d038d8fcfafa9b4fff150592881c8d85575d593037b19908",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 12696,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        },
+        {
+          "mention_id": 12940,
+          "scope_place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "input_hash": "98179ec13659bbfd76d3d70e7c75955c2af419a3e8e5b5c11578b49d43a44e2e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5363-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "74a53934fa833d1fd0125efe84cc13d2af1456f46ac0178175ecf060a0a62aba",
+        "mentions": [
+          {
+            "mentionId": 11338,
+            "inputHash": "b3efeac122b102d00ab44730fdeef61f3a2712205a0a14f78e66417ba7715d5a"
+          },
+          {
+            "mentionId": 11400,
+            "inputHash": "2429b0bef4e53aec0246f4b8ed5648c8474c29c23f148a1c283df11a4fbc0286"
+          },
+          {
+            "mentionId": 11414,
+            "inputHash": "a0bc4c09b3f7bdf01ff2b81c51e7f9ca3d33ac6e8787f0956cdfebcbe9fa89cc"
+          },
+          {
+            "mentionId": 12566,
+            "inputHash": "699de5a7d2560b93a4c476151bb27a706523816c63e59215e0ffd7f84918d8d9"
+          },
+          {
+            "mentionId": 12592,
+            "inputHash": "b8031d24d7467f7d74556faa5cf19f8d5a1d060192d4c0ee73620d52ea835021"
+          },
+          {
+            "mentionId": 12669,
+            "inputHash": "824e7dbf4cdf60096af92aa7b6fd17a3dd385cec2116647a407c483ca5a4d340"
+          },
+          {
+            "mentionId": 12680,
+            "inputHash": "da18d48ab8069a50d038d8fcfafa9b4fff150592881c8d85575d593037b19908"
+          },
+          {
+            "mentionId": 12696,
+            "inputHash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe"
+          },
+          {
+            "mentionId": 12940,
+            "inputHash": "98179ec13659bbfd76d3d70e7c75955c2af419a3e8e5b5c11578b49d43a44e2e"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6",
+          "city": "济南",
+          "canonical_name": "珍珠泉大院",
+          "primary_place_id": 5947,
+          "aliases": [
+            "珍珠泉大院"
+          ],
+          "legacy_ids": [
+            "bdf4a854f642c85b65ed4d0760de0bd6"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5947,
+          "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5947,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.5,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5947,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "济南三大名泉之一，泉水碧色清澈，院内多泉可赏",
+              "evidence": "济南三大名泉之一，泉水碧色清澈"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8677,
+          "canonical_place_id": 5947,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 珍珠泉大院",
+          "evidence_summary": "济南三大名泉之一，泉水碧色清澈，院内多泉可赏"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5947,
+          "city": "济南",
+          "name_keys": [
+            "珍珠泉大院"
+          ],
+          "entity_ids": [
+            "bdf4a854f642c85b65ed4d0760de0bd6"
+          ],
+          "source_hash": "4058a4fcedfe9fc274bd461a162e4f6b3282af1c377c14a5608496ca2e8d0f0a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5947-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/pearl-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "conclusion": "全文区分泉池与容纳多泉的大院；两条混合看点逐项删错留真，完整提及身份保持，不扩展到整个珍珠泉泉群。",
+              "mentionIds": [
+                12582
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "bdf4a854f642c85b65ed4d0760de0bd6"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12582,
+          "scope_place_id": 5947,
+          "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6",
+          "input_hash": "c8c3164979d978ab3f125e0123e02340f3c1ccb99b587b5f75a6e85b89759b56",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-48-source-5947-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）",
+              "reason": "subject_mismatch"
+            },
+            "place_content": {
+              "quote": "珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）",
+              "reason": "subject_mismatch",
+              "highlightIndexes": [
+                0
+              ]
+            }
+          }
+        }
+      ],
+      "inputs": {
+        "sourceHash": "4058a4fcedfe9fc274bd461a162e4f6b3282af1c377c14a5608496ca2e8d0f0a",
+        "mentions": [
+          {
+            "mentionId": 12582,
+            "inputHash": "c8c3164979d978ab3f125e0123e02340f3c1ccb99b587b5f75a6e85b89759b56"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "af9116d87efcdf105915ca6303cb6274",
+          "city": "济南",
+          "canonical_name": "珍珠泉",
+          "primary_place_id": 5363,
+          "aliases": [
+            "珍珠泉"
+          ],
+          "legacy_ids": [
+            "af9116d87efcdf105915ca6303cb6274"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然",
+            "xhsPlaceType": "attraction"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/pearl-source-review-01.json",
+              "conclusion": "珍珠泉为自然泉池，大院为容纳多泉的庭院景观；两者独立保留原ID、名称、坐标。大院不是泉本体，也不是餐饮店；未新验精确位置。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5363,
+          "entity_id": "af9116d87efcdf105915ca6303cb6274"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6",
+          "city": "济南",
+          "canonical_name": "珍珠泉大院",
+          "primary_place_id": 5947,
+          "aliases": [
+            "珍珠泉大院"
+          ],
+          "legacy_ids": [
+            "bdf4a854f642c85b65ed4d0760de0bd6"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化",
+            "xhsPlaceType": "attraction"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/pearl-source-review-01.json",
+              "conclusion": "珍珠泉为自然泉池，大院为容纳多泉的庭院景观；两者独立保留原ID、名称、坐标。大院不是泉本体，也不是餐饮店；未新验精确位置。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5947,
+          "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6"
+        }
+      ]
+    }
+  ]
+}

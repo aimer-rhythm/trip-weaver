@@ -1,0 +1,96 @@
+{
+  "city": "济南",
+  "before": 20,
+  "after": 20,
+  "directBefore": 9,
+  "directAfter": 7,
+  "changed": [
+    {
+      "from": "大明湖",
+      "to": "曲水亭街",
+      "fromEntityId": "550d6810857b4487aae8ce39c9ee093b",
+      "toEntityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "fromRevision": 3,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2622,
+          "textHash": "428b2ed826c931c732f2f636a85909125f77e78cc5fcaf0aec72ebf9bee4d06e",
+          "from": {
+            "entityId": "550d6810857b4487aae8ce39c9ee093b",
+            "revision": 3,
+            "start": 109,
+            "end": 112,
+            "surface": "大明湖",
+            "mentions": [
+              {
+                "mentionId": 11594,
+                "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+            "revision": 2,
+            "start": 104,
+            "end": 108,
+            "surface": "曲水亭街",
+            "mentions": [
+              {
+                "mentionId": 11593,
+                "inputHash": "939f7d3d20233cb06dc2d2aba2ccb5fccc82aa3a4575ac2ed10b1e6e3552a498"
+              }
+            ]
+          },
+          "quote": "曲水亭街→大明湖"
+        }
+      ]
+    },
+    {
+      "from": "大明湖",
+      "to": "超然楼",
+      "fromEntityId": "550d6810857b4487aae8ce39c9ee093b",
+      "toEntityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+      "fromRevision": 3,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2622,
+          "textHash": "428b2ed826c931c732f2f636a85909125f77e78cc5fcaf0aec72ebf9bee4d06e",
+          "from": {
+            "entityId": "550d6810857b4487aae8ce39c9ee093b",
+            "revision": 3,
+            "start": 109,
+            "end": 112,
+            "surface": "大明湖",
+            "mentions": [
+              {
+                "mentionId": 11594,
+                "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+            "revision": 2,
+            "start": 113,
+            "end": 116,
+            "surface": "超然楼",
+            "mentions": [
+              {
+                "mentionId": 11595,
+                "inputHash": "134f978094de3c7c1fead76204b3f2c9797140f98f8f3e991ff3ded0f2427d6d"
+              }
+            ]
+          },
+          "quote": "大明湖→超然楼"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

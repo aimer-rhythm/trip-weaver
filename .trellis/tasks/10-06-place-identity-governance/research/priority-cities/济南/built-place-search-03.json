@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "9c0ac4d2369d",
+  "query": "济南 明珠天地 C座 大明湖 超然楼 摄影 具体地址",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先查济南明珠天地 C 座、大明湖和超然楼的具体位置与常见拍摄点。",
+  "sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E8%B6%85%E7%84%B6%E6%A5%BC/2987934",
+      "provider": "tavily",
+      "title": "超然楼",
+      "description": "超然楼在山东省济南市历下区大明湖路271号大明湖景区内。 3. 门票. 40元，学生半价。60岁以上老人、退役士兵"
+    },
+    {
+      "url": "https://www.wingontravel.com/discovery/scenic-chaoran-pavilion-20664922",
+      "provider": "tavily",
+      "title": "【大明湖風景名勝區-超然樓參觀攻略2026】門票優惠",
+      "description": "地址: 濟南市曆下區大明湖路271號大明湖景區內大明湖風景名勝區-超然樓… 面積5673平方米, CONSULT +86 0531-96676"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E8%B6%85%E7%84%B6%E6%A5%BC/2987934",
+      "provider": "tavily",
+      "title": "超然楼",
+      "description": "超然楼在山东省济南市历下区大明湖路271号大明湖景区内。 3. 门票. 40元，学生半价。60岁以上老人、退役士兵"
+    },
+    {
+      "url": "https://www.wingontravel.com/discovery/scenic-chaoran-pavilion-20664922",
+      "provider": "tavily",
+      "title": "【大明湖風景名勝區-超然樓參觀攻略2026】門票優惠",
+      "description": "地址: 濟南市曆下區大明湖路271號大明湖景區內大明湖風景名勝區-超然樓… 面積5673平方米, CONSULT +86 0531-96676"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 5779.77,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 9375.91,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 9375.94
+}

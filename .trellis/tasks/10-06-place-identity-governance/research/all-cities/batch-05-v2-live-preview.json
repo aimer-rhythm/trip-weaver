@@ -1,0 +1,1645 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "云南",
+      "entities": 258,
+      "members": 258,
+      "reviewCount": 4,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3ba0e9c019344982561aa2cfd2078be0",
+            "f01c01b1f44c7063dbe1a12d0ee9ba51"
+          ],
+          "names": [
+            "八种野菌南华野生菌火锅",
+            "8种野菌南华野生菌火锅"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "4ffd073265f4193c5490c5ea666c29ee",
+            "f01c01b1f44c7063dbe1a12d0ee9ba51"
+          ],
+          "names": [
+            "八种野菌野生菌火锅",
+            "8种野菌南华野生菌火锅"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3ba0e9c019344982561aa2cfd2078be0",
+            "4ffd073265f4193c5490c5ea666c29ee"
+          ],
+          "names": [
+            "八种野菌南华野生菌火锅",
+            "八种野菌野生菌火锅"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "9b181364771b97b8fb2e9482c88d812b",
+            "e489ce9144a67fbbdadd1c5d78e4fdba"
+          ],
+          "names": [
+            "大理古城北门集市",
+            "大理古城北门菜市场"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "55d328d2a24b79da51de58b238ab47bb",
+          "city": "云南",
+          "canonical_name": "磻溪村S湾",
+          "primary_place_id": 4922,
+          "aliases": [
+            "磻溪村S湾"
+          ],
+          "legacy_ids": [
+            "55d328d2a24b79da51de58b238ab47bb"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "f79f40cf287afec766936644930c62cb",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f79f40cf287afec766936644930c62cb",
+          "city": "云南",
+          "canonical_name": "磻溪村S弯",
+          "primary_place_id": 4968,
+          "aliases": [
+            "磻溪村S弯",
+            "磻溪村S湾"
+          ],
+          "legacy_ids": [
+            "55d328d2a24b79da51de58b238ab47bb",
+            "f79f40cf287afec766936644930c62cb"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "大理市磻溪村洱海生态廊道",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                42
+              ],
+              "conclusion": "10498的洱海西线将网红S弯与磻溪村联系，10858、10541的海西路线在才村与廊桥/喜洲间列S湾，指同一磻溪村网红弯道，湾/弯为书写变体。",
+              "sourcePlaceIds": [
+                "4922",
+                "4968"
+              ],
+              "mentions": [
+                {
+                  "id": "10858",
+                  "name": "磻溪村S湾",
+                  "quote": "其他几个地方拍照都挺出片",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/67f00fe7000000001202e9d2"
+                },
+                {
+                  "id": "10541",
+                  "name": "磻溪村S湾",
+                  "quote": "本次游玩包括s湾",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69607256000000002200ba6b"
+                },
+                {
+                  "id": "10498",
+                  "name": "磻溪村S弯",
+                  "quote": "网红S弯～磻溪谷村",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/696ddd44000000000e00c4bc"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "4968",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "原坐标24.25/104.12远离大理洱海，不能使用；原文只确认磻溪村，不生成精确坐标。",
+              "original": {
+                "lat": 24.250199,
+                "lng": 104.125245,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "大理市磻溪村洱海生态廊道",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/yunnan-batch03-context.json",
+              "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+              "mentionIds": [
+                10498,
+                10541,
+                10858
+              ],
+              "conclusion": "10498的洱海西线将网红S弯与磻溪村联系，10858、10541的海西路线在才村与廊桥/喜洲间列S湾，指同一磻溪村网红弯道，湾/弯为书写变体。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4922,
+          "entity_id": "f79f40cf287afec766936644930c62cb"
+        },
+        {
+          "place_id": 4968,
+          "entity_id": "f79f40cf287afec766936644930c62cb"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "c9042a807ad6b7238d1645964094c391",
+          "city": "云南",
+          "canonical_name": "南强街",
+          "primary_place_id": 5102,
+          "aliases": [
+            "南强街"
+          ],
+          "legacy_ids": [
+            "c9042a807ad6b7238d1645964094c391"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "d697316134d7b924323f77c8a33ed60b",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "d697316134d7b924323f77c8a33ed60b",
+          "city": "云南",
+          "canonical_name": "南强街巷",
+          "primary_place_id": 4949,
+          "aliases": [
+            "南强街",
+            "南强街巷"
+          ],
+          "legacy_ids": [
+            "c9042a807ad6b7238d1645964094c391",
+            "d697316134d7b924323f77c8a33ed60b"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 25.034887,
+            "lng": 102.713912,
+            "address": "南强街90",
+            "geoStatus": "reviewed_source",
+            "category": "购物"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                46
+              ],
+              "conclusion": "南强街记录10519的完整原文实际写的是南强街巷夜市，10749也描述同一小吃夜市；本批是抽取缩写，不将任意南强街道路记录自动归入商业街区。",
+              "sourcePlaceIds": [
+                "5102",
+                "4949"
+              ],
+              "mentions": [
+                {
+                  "id": "10519",
+                  "name": "南强街",
+                  "quote": "泡鲁达+包浆豆腐+烤猪蹄",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a2ebf4d0000000007020cfb"
+                },
+                {
+                  "id": "10749",
+                  "name": "南强街巷",
+                  "quote": "地道小吃夜市",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a5a1cc9000000000503bfcd"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "4949",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 25.034887,
+                "lng": 102.713912,
+                "address": "南强街90",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 25.034887,
+              "lng": 102.713912,
+              "address": "南强街90",
+              "geoStatus": "reviewed_source",
+              "category": "购物"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/yunnan-batch03-context.json",
+              "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+              "mentionIds": [
+                10519,
+                10749
+              ],
+              "conclusion": "南强街记录10519的完整原文实际写的是南强街巷夜市，10749也描述同一小吃夜市；本批是抽取缩写，不将任意南强街道路记录自动归入商业街区。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4949,
+          "entity_id": "d697316134d7b924323f77c8a33ed60b"
+        },
+        {
+          "place_id": 5102,
+          "entity_id": "d697316134d7b924323f77c8a33ed60b"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "4e9015cdf8cc7beed410143d06d68a29",
+          "city": "云南",
+          "canonical_name": "凤阳邑村",
+          "primary_place_id": 4972,
+          "aliases": [
+            "凤阳邑",
+            "凤阳邑村"
+          ],
+          "legacy_ids": [
+            "4e9015cdf8cc7beed410143d06d68a29",
+            "60baa8602a62ee969febea0658fdc456"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "address": "大理市凤阳邑村",
+            "exportApproved": true
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                49
+              ],
+              "conclusion": "10508大理路线列凤阳邑村，10692的大理住宿攻略把凤阳邑作为有风小院所在村落整体介绍；后者未指单一有风小院，村名简写可合并。",
+              "sourcePlaceIds": [
+                "4972",
+                "5142"
+              ],
+              "mentions": [
+                {
+                  "id": "10508",
+                  "name": "凤阳邑村",
+                  "quote": "凤阳邑村",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/696ddd44000000000e00c4bc"
+                },
+                {
+                  "id": "10692",
+                  "name": "凤阳邑",
+                  "quote": "整体打卡感比较强，性价比一般",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a3b96d30000000008000bd6"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "4972",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "两源因缺坐标停用，身份已按大理村落核实，明确批准无坐标导出；不借用村内小院坐标。",
+              "original": {
+                "lat": null,
+                "lng": null,
+                "geoStatus": "unresolvable"
+              },
+              "lat": null,
+              "lng": null,
+              "geoStatus": "unresolvable",
+              "address": "大理市凤阳邑村",
+              "exportApproved": true
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/yunnan-batch03-context.json",
+              "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+              "mentionIds": [
+                10508,
+                10692
+              ],
+              "conclusion": "10508大理路线列凤阳邑村，10692的大理住宿攻略把凤阳邑作为有风小院所在村落整体介绍；后者未指单一有风小院，村名简写可合并。"
+            }
+          ]
+        },
+        {
+          "entity_id": "60baa8602a62ee969febea0658fdc456",
+          "city": "云南",
+          "canonical_name": "凤阳邑",
+          "primary_place_id": 5142,
+          "aliases": [
+            "凤阳邑"
+          ],
+          "legacy_ids": [
+            "60baa8602a62ee969febea0658fdc456"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "4e9015cdf8cc7beed410143d06d68a29",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4972,
+          "entity_id": "4e9015cdf8cc7beed410143d06d68a29"
+        },
+        {
+          "place_id": 5142,
+          "entity_id": "4e9015cdf8cc7beed410143d06d68a29"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "7319f1259977158cd884f9a747bc02f9",
+          "city": "云南",
+          "canonical_name": "吉祥饵块",
+          "primary_place_id": 5001,
+          "aliases": [
+            "吉祥饵块"
+          ],
+          "legacy_ids": [
+            "7319f1259977158cd884f9a747bc02f9"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "f673a9f201076e1fb8810d33c5d2265c",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f673a9f201076e1fb8810d33c5d2265c",
+          "city": "云南",
+          "canonical_name": "吉祥烤饵块",
+          "primary_place_id": 5090,
+          "aliases": [
+            "吉祥烤饵块",
+            "吉祥饵块"
+          ],
+          "legacy_ids": [
+            "7319f1259977158cd884f9a747bc02f9",
+            "f673a9f201076e1fb8810d33c5d2265c"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "丽江市忠义市场",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                52
+              ],
+              "conclusion": "10474和10712均在丽江忠义市场逛吃原文中指名吉祥饵块，烤为产品做法补全，合并本批同一市场摊店；不并入同篇另列的吉祥烤乳扇。",
+              "sourcePlaceIds": [
+                "5001",
+                "5090"
+              ],
+              "mentions": [
+                {
+                  "id": "10712",
+                  "name": "吉祥饵块",
+                  "quote": "值得尝试一次，但不会买第二次",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1657e00000000007021030"
+                },
+                {
+                  "id": "10474",
+                  "name": "吉祥烤饵块",
+                  "quote": "真的是大排长队",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69aa3cec000000001b01e1ae"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5090",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "两源坐标分别落昆明及昆明以北，不属于原文丽江忠义市场，清空错误定位。",
+              "original": {
+                "lat": 25.767932,
+                "lng": 102.924951,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "丽江市忠义市场",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/yunnan-batch03-context.json",
+              "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+              "mentionIds": [
+                10474,
+                10712
+              ],
+              "conclusion": "10474和10712均在丽江忠义市场逛吃原文中指名吉祥饵块，烤为产品做法补全，合并本批同一市场摊店；不并入同篇另列的吉祥烤乳扇。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5001,
+          "entity_id": "f673a9f201076e1fb8810d33c5d2265c"
+        },
+        {
+          "place_id": 5090,
+          "entity_id": "f673a9f201076e1fb8810d33c5d2265c"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2e79728bbfd73787cb686d7817408fac",
+          "city": "云南",
+          "canonical_name": "丽江黑龙潭公园",
+          "primary_place_id": 5080,
+          "aliases": [
+            "丽江黑龙潭公园",
+            "黑龙潭",
+            "黑龙潭公园"
+          ],
+          "legacy_ids": [
+            "2e79728bbfd73787cb686d7817408fac",
+            "dde2b2718d54fab8b024b948de52cafc",
+            "e6dc40a7f4dffc809f595b9b4091f482"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "云南省丽江市",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                57
+              ],
+              "conclusion": "10525丽江三天攻略第一天列黑龙潭公园，10682完整原文在Day4丽江把黑龙潭列为雪山停运备选，均明确丽江；不与昆明同名景点合并。",
+              "sourcePlaceIds": [
+                "5080",
+                "5137"
+              ],
+              "mentions": [
+                {
+                  "id": "10525",
+                  "name": "黑龙潭公园",
+                  "quote": "湖面倒影超美",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69805eb0000000000a02b9ee"
+                },
+                {
+                  "id": "10682",
+                  "name": "黑龙潭",
+                  "quote": "大雨大风或停运改黑龙潭",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a521d8b0000000017028237"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5080",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "原两条地图分别落昆明盘龙/呈贡，均与完整原文冲突；清空坐标及昆明地址，主名补丽江以明确实体边界。",
+              "original": {
+                "lat": 25.139613,
+                "lng": 102.749961,
+                "address": "云南省盘龙区茨坝街道龙泉路612号",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": null,
+              "lng": null,
+              "address": "云南省丽江市",
+              "geoStatus": "unresolvable"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/yunnan-batch03-context.json",
+              "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+              "mentionIds": [
+                10525,
+                10682
+              ],
+              "conclusion": "10525丽江三天攻略第一天列黑龙潭公园，10682完整原文在Day4丽江把黑龙潭列为雪山停运备选，均明确丽江；不与昆明同名景点合并。"
+            }
+          ]
+        },
+        {
+          "entity_id": "dde2b2718d54fab8b024b948de52cafc",
+          "city": "云南",
+          "canonical_name": "黑龙潭",
+          "primary_place_id": 5137,
+          "aliases": [
+            "黑龙潭"
+          ],
+          "legacy_ids": [
+            "dde2b2718d54fab8b024b948de52cafc"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "2e79728bbfd73787cb686d7817408fac",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5080,
+          "entity_id": "2e79728bbfd73787cb686d7817408fac"
+        },
+        {
+          "place_id": 5137,
+          "entity_id": "2e79728bbfd73787cb686d7817408fac"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "409cbb5e2f026aa44bb3dd16f58e6d80",
+          "city": "云南",
+          "canonical_name": "滇池海埂公园",
+          "primary_place_id": 5163,
+          "aliases": [
+            "滇池海埂公园"
+          ],
+          "legacy_ids": [
+            "409cbb5e2f026aa44bb3dd16f58e6d80"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "e548ccd139cc5a47b57ab2c3f3aefa46",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "e548ccd139cc5a47b57ab2c3f3aefa46",
+          "city": "云南",
+          "canonical_name": "海埂公园",
+          "primary_place_id": 5155,
+          "aliases": [
+            "海埂公园",
+            "滇池海埂公园"
+          ],
+          "legacy_ids": [
+            "409cbb5e2f026aa44bb3dd16f58e6d80",
+            "e548ccd139cc5a47b57ab2c3f3aefa46"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 24.961029,
+            "lng": 102.665306,
+            "address": "海埂公园",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                62
+              ],
+              "conclusion": "10834滇池海埂公园与10776海埂公园都指滇池北岸同一公园，滇池是地理限定。原文正门只是到达方式，游览对象仍是公园整体。",
+              "sourcePlaceIds": [
+                "5163",
+                "5155"
+              ],
+              "mentions": [
+                {
+                  "id": "10834",
+                  "name": "滇池海埂公园",
+                  "quote": "沿途吹吹风拍拍照看日落",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a98ef2c0000000011031653"
+                },
+                {
+                  "id": "10776",
+                  "name": "海埂公园",
+                  "quote": "海埂公园也必打卡",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a6bc54200000000050325f5"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5155",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 24.961029,
+                "lng": 102.665306,
+                "address": "海埂公园",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 24.961029,
+              "lng": 102.665306,
+              "address": "海埂公园",
+              "geoStatus": "reviewed_source"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/yunnan-batch03-context.json",
+              "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+              "mentionIds": [
+                10834,
+                10776
+              ],
+              "conclusion": "10834滇池海埂公园与10776海埂公园都指滇池北岸同一公园，滇池是地理限定。原文正门只是到达方式，游览对象仍是公园整体。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5155,
+          "entity_id": "e548ccd139cc5a47b57ab2c3f3aefa46"
+        },
+        {
+          "place_id": 5163,
+          "entity_id": "e548ccd139cc5a47b57ab2c3f3aefa46"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1abaebc641871b9cbfaaa3f1ec57e605",
+          "city": "云南",
+          "canonical_name": "翠湖",
+          "primary_place_id": 4980,
+          "aliases": [
+            "翠湖"
+          ],
+          "legacy_ids": [
+            "1abaebc641871b9cbfaaa3f1ec57e605"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "6f53c81a9cfc3ed8615db3be8d69aa17",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "6f53c81a9cfc3ed8615db3be8d69aa17",
+          "city": "云南",
+          "canonical_name": "翠湖公园",
+          "primary_place_id": 4946,
+          "aliases": [
+            "翠湖",
+            "翠湖公园"
+          ],
+          "legacy_ids": [
+            "1abaebc641871b9cbfaaa3f1ec57e605",
+            "6f53c81a9cfc3ed8615db3be8d69aa17"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 25.049365,
+            "lng": 102.704263,
+            "address": "云南省五华区华山街道翠湖南路67号",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                45
+              ],
+              "conclusion": "10716在昆明市内住宿推荐中简称翠湖，10868、10746等明确同一昆明翠湖公园；均在五华区华山街道且游览对象为公园整体，不含其他城市翠湖。",
+              "sourcePlaceIds": [
+                "4980",
+                "4946"
+              ],
+              "mentions": [
+                {
+                  "id": "10716",
+                  "name": "翠湖",
+                  "quote": "首选翠湖 / 昆明老街 / 南屏街",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a86e894000000003a020b85"
+                },
+                {
+                  "id": "10868",
+                  "name": "翠湖公园",
+                  "quote": "昆明市内高能量场，满眼翠绿，很悠闲的氛围，还可以坐船游湖",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69eab752000000001901e000"
+                },
+                {
+                  "id": "10844",
+                  "name": "翠湖公园",
+                  "quote": "昆明老街翠湖各种景区转一圈",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a9ed4bb0000000029011628"
+                },
+                {
+                  "id": "10808",
+                  "name": "翠湖公园",
+                  "quote": "翠湖公园",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a981895000000002900d2b5"
+                },
+                {
+                  "id": "10746",
+                  "name": "翠湖公园",
+                  "quote": "柳树环湖、湖水清澈",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a5a1cc9000000000503bfcd"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "4946",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 25.049365,
+                "lng": 102.704263,
+                "address": "云南省五华区华山街道翠湖南路67号",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 25.049365,
+              "lng": 102.704263,
+              "address": "云南省五华区华山街道翠湖南路67号",
+              "geoStatus": "reviewed_source"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4946,
+          "entity_id": "6f53c81a9cfc3ed8615db3be8d69aa17"
+        },
+        {
+          "place_id": 4980,
+          "entity_id": "6f53c81a9cfc3ed8615db3be8d69aa17"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2649764a503c0414f5ffc07caee3b637",
+          "city": "云南",
+          "canonical_name": "大理古城民宿",
+          "primary_place_id": 5054,
+          "aliases": [
+            "大理古城民宿"
+          ],
+          "legacy_ids": [
+            "2649764a503c0414f5ffc07caee3b637"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "6917bb1c3fdc732d8fe2529f18e6b701",
+          "city": "云南",
+          "canonical_name": "大理古城",
+          "primary_place_id": 4924,
+          "aliases": [
+            "大理古城"
+          ],
+          "legacy_ids": [
+            "6917bb1c3fdc732d8fe2529f18e6b701"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4924,
+          "entity_id": "6917bb1c3fdc732d8fe2529f18e6b701"
+        },
+        {
+          "place_id": 5054,
+          "entity_id": "2649764a503c0414f5ffc07caee3b637"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 43,
+          "fingerprint": "de8e546c4611eab5e7aaa35104747cd324f3eaff4c8535533ec317edb21502b9",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "大理古城民宿",
+              "大理古城"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "2649764a503c0414f5ffc07caee3b637",
+              "6917bb1c3fdc732d8fe2529f18e6b701"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-43",
+              "verdict": "distinct",
+              "explanation": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    43
+                  ],
+                  "conclusion": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。",
+                  "sourcePlaceIds": [
+                    "5054",
+                    "4924"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10763
+                  ],
+                  "conclusion": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "538ca1ae0c137812b40b42728c0eedc8",
+          "city": "云南",
+          "canonical_name": "双廊古镇民宿",
+          "primary_place_id": 5053,
+          "aliases": [
+            "双廊古镇民宿"
+          ],
+          "legacy_ids": [
+            "538ca1ae0c137812b40b42728c0eedc8"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "e6e0180444f75cdebb4f45a6d519e0c0",
+          "city": "云南",
+          "canonical_name": "双廊古镇",
+          "primary_place_id": 4927,
+          "aliases": [
+            "双廊古镇"
+          ],
+          "legacy_ids": [
+            "e6e0180444f75cdebb4f45a6d519e0c0"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4927,
+          "entity_id": "e6e0180444f75cdebb4f45a6d519e0c0"
+        },
+        {
+          "place_id": 5053,
+          "entity_id": "538ca1ae0c137812b40b42728c0eedc8"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 44,
+          "fingerprint": "1be532dd85bfba248dcd35843dbc71eb4b0c0d1281779961f02807f8236830e1",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "双廊古镇民宿",
+              "双廊古镇"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "538ca1ae0c137812b40b42728c0eedc8",
+              "e6e0180444f75cdebb4f45a6d519e0c0"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-44",
+              "verdict": "distinct",
+              "explanation": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    44
+                  ],
+                  "conclusion": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。",
+                  "sourcePlaceIds": [
+                    "5053",
+                    "4927"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10762
+                  ],
+                  "conclusion": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "29445fe501c07369fb84abcc5714ce28",
+          "city": "云南",
+          "canonical_name": "小黑包浆豆腐",
+          "primary_place_id": 4993,
+          "aliases": [
+            "小黑包浆豆腐"
+          ],
+          "legacy_ids": [
+            "29445fe501c07369fb84abcc5714ce28"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "7e2d5d215ce2c353c7751dc5b44aab39",
+          "city": "云南",
+          "canonical_name": "包浆豆腐",
+          "primary_place_id": 5040,
+          "aliases": [
+            "包浆豆腐"
+          ],
+          "legacy_ids": [
+            "7e2d5d215ce2c353c7751dc5b44aab39"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 4993,
+          "entity_id": "29445fe501c07369fb84abcc5714ce28"
+        },
+        {
+          "place_id": 5040,
+          "entity_id": "7e2d5d215ce2c353c7751dc5b44aab39"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 51,
+          "fingerprint": "9b1c7edd9b9693272d5acb503ae2c4bbfc8565a05e10728efee3a43b329103da",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "小黑包浆豆腐",
+              "包浆豆腐"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "29445fe501c07369fb84abcc5714ce28",
+              "7e2d5d215ce2c353c7751dc5b44aab39"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-51",
+              "verdict": "distinct",
+              "explanation": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    51
+                  ],
+                  "conclusion": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。",
+                  "sourcePlaceIds": [
+                    "4993",
+                    "5040"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10704,
+                    10787
+                  ],
+                  "conclusion": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "3ba0e9c019344982561aa2cfd2078be0",
+          "city": "云南",
+          "canonical_name": "八种野菌南华野生菌火锅",
+          "primary_place_id": 5048,
+          "aliases": [
+            "八种野菌南华野生菌火锅"
+          ],
+          "legacy_ids": [
+            "3ba0e9c019344982561aa2cfd2078be0"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f01c01b1f44c7063dbe1a12d0ee9ba51",
+          "city": "云南",
+          "canonical_name": "8种野菌南华野生菌火锅",
+          "primary_place_id": 5044,
+          "aliases": [
+            "8种野菌南华野生菌火锅"
+          ],
+          "legacy_ids": [
+            "f01c01b1f44c7063dbe1a12d0ee9ba51"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5044,
+          "entity_id": "f01c01b1f44c7063dbe1a12d0ee9ba51"
+        },
+        {
+          "place_id": 5048,
+          "entity_id": "3ba0e9c019344982561aa2cfd2078be0"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 53,
+          "fingerprint": "aa0149fa372e437a2b9280b977ac8e3e962c0af56e32349c99150cd3d5450c98",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "八种野菌南华野生菌火锅",
+              "8种野菌南华野生菌火锅"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "3ba0e9c019344982561aa2cfd2078be0",
+              "f01c01b1f44c7063dbe1a12d0ee9ba51"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-53",
+              "verdict": "uncertain",
+              "explanation": "10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    53
+                  ],
+                  "conclusion": "10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。",
+                  "sourcePlaceIds": [
+                    "5048",
+                    "5044"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10758,
+                    10668
+                  ],
+                  "conclusion": "10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "4ffd073265f4193c5490c5ea666c29ee",
+          "city": "云南",
+          "canonical_name": "八种野菌野生菌火锅",
+          "primary_place_id": 5159,
+          "aliases": [
+            "八种野菌野生菌火锅"
+          ],
+          "legacy_ids": [
+            "4ffd073265f4193c5490c5ea666c29ee"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f01c01b1f44c7063dbe1a12d0ee9ba51",
+          "city": "云南",
+          "canonical_name": "8种野菌南华野生菌火锅",
+          "primary_place_id": 5044,
+          "aliases": [
+            "8种野菌南华野生菌火锅"
+          ],
+          "legacy_ids": [
+            "f01c01b1f44c7063dbe1a12d0ee9ba51"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5044,
+          "entity_id": "f01c01b1f44c7063dbe1a12d0ee9ba51"
+        },
+        {
+          "place_id": 5159,
+          "entity_id": "4ffd073265f4193c5490c5ea666c29ee"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 54,
+          "fingerprint": "4a0c0b09f3eb32d053f5c5898a9d59f43d72f8e62a0f76d7e41319b7f36a4523",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "八种野菌野生菌火锅",
+              "8种野菌南华野生菌火锅"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "4ffd073265f4193c5490c5ea666c29ee",
+              "f01c01b1f44c7063dbe1a12d0ee9ba51"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-54",
+              "verdict": "uncertain",
+              "explanation": "10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    54
+                  ],
+                  "conclusion": "10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。",
+                  "sourcePlaceIds": [
+                    "5159",
+                    "5044"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10788,
+                    10668
+                  ],
+                  "conclusion": "10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "3ba0e9c019344982561aa2cfd2078be0",
+          "city": "云南",
+          "canonical_name": "八种野菌南华野生菌火锅",
+          "primary_place_id": 5048,
+          "aliases": [
+            "八种野菌南华野生菌火锅"
+          ],
+          "legacy_ids": [
+            "3ba0e9c019344982561aa2cfd2078be0"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "4ffd073265f4193c5490c5ea666c29ee",
+          "city": "云南",
+          "canonical_name": "八种野菌野生菌火锅",
+          "primary_place_id": 5159,
+          "aliases": [
+            "八种野菌野生菌火锅"
+          ],
+          "legacy_ids": [
+            "4ffd073265f4193c5490c5ea666c29ee"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5048,
+          "entity_id": "3ba0e9c019344982561aa2cfd2078be0"
+        },
+        {
+          "place_id": 5159,
+          "entity_id": "4ffd073265f4193c5490c5ea666c29ee"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 55,
+          "fingerprint": "428844aea6051c1a677cdafd4191fd908dd83b8a606567113e32ab3c9c092908",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "八种野菌南华野生菌火锅",
+              "八种野菌野生菌火锅"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "3ba0e9c019344982561aa2cfd2078be0",
+              "4ffd073265f4193c5490c5ea666c29ee"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-55",
+              "verdict": "uncertain",
+              "explanation": "10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    55
+                  ],
+                  "conclusion": "10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。",
+                  "sourcePlaceIds": [
+                    "5048",
+                    "5159"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10758,
+                    10788
+                  ],
+                  "conclusion": "10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "9b181364771b97b8fb2e9482c88d812b",
+          "city": "云南",
+          "canonical_name": "大理古城北门集市",
+          "primary_place_id": 5120,
+          "aliases": [
+            "大理古城北门集市"
+          ],
+          "legacy_ids": [
+            "9b181364771b97b8fb2e9482c88d812b"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "e489ce9144a67fbbdadd1c5d78e4fdba",
+          "city": "云南",
+          "canonical_name": "大理古城北门菜市场",
+          "primary_place_id": 5055,
+          "aliases": [
+            "大理古城北门菜市场"
+          ],
+          "legacy_ids": [
+            "e489ce9144a67fbbdadd1c5d78e4fdba"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5055,
+          "entity_id": "e489ce9144a67fbbdadd1c5d78e4fdba"
+        },
+        {
+          "place_id": 5120,
+          "entity_id": "9b181364771b97b8fb2e9482c88d812b"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 56,
+          "fingerprint": "6eaa5731c8235ec9934ad6f71fa0243e024d71c259bf050b34a94a5ca7ca704c",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "大理古城北门集市",
+              "大理古城北门菜市场"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "9b181364771b97b8fb2e9482c88d812b",
+              "e489ce9144a67fbbdadd1c5d78e4fdba"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-05-v2-review-56",
+              "verdict": "uncertain",
+              "explanation": "10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    56
+                  ],
+                  "conclusion": "10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。",
+                  "sourcePlaceIds": [
+                    "5120",
+                    "5055"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/yunnan-batch03-context.json",
+                  "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+                  "mentionIds": [
+                    10643,
+                    10797
+                  ],
+                  "conclusion": "10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

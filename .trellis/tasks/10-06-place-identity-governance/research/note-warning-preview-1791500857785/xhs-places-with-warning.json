@@ -1,0 +1,146 @@
+{
+ "_comment": "文字警告115f3ccb42社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "文字警告115f3ccb42",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "d95ec2d818cabe071c44bdb2ae849ed743cddf3636c50a732b826db74ce63435",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "文字警告115f3ccb42",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "甲街"
+   ],
+   "mentions": [
+    {
+     "mentionId": 1,
+     "noteId": 1,
+     "inputHash": "54cd4106a979b0e38300ad57ecc47892e2e2bdab526f92ba6ebfb551630ccb06",
+     "textHash": "7defa44eeccb8350fb80e7ad4b3eba0c41bf15b54bf1c5698c5a841109becd84",
+     "textLength": 19,
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "revision": 2,
+     "canonicalName": "甲街",
+     "aliases": [
+      "甲街"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ],
+   "supplementalSources": [
+    {
+     "scopePlaceId": 1,
+     "assignmentHash": "0cae18143f43d4b24fa0bdc00b7e0e421dc5c44c3d6f52531e4d84156c848eb9",
+     "inputHash": "4cad73e2cd6b60fc628ad4e14ff2443518b384ecc97365dcc7c0af136cb4b462"
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "3daca6b7b2b8e341d60929dcfb19fe0b",
+   "name": "甲街",
+   "category": "其他",
+   "lng": 117.02,
+   "lat": 36.66,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "other",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-08T23:07:41.184423+00:00"
+    },
+    "originalName": "甲街",
+    "openHours": {
+     "version": 2,
+     "subject": "甲街",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 1,
+      "noteId": 1,
+      "inputHash": "54cd4106a979b0e38300ad57ecc47892e2e2bdab526f92ba6ebfb551630ccb06"
+     }
+    ],
+    "typicalVisitMinutes": 30,
+    "tips": [
+     "美食：别在甲街买小吃，又贵又不正宗！"
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "canonicalName": "甲街",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "甲街"
+     ],
+     "memberIds": [
+      "3daca6b7b2b8e341d60929dcfb19fe0b"
+     ]
+    },
+    "aliases": [
+     "甲街"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "甲街老房子适合漫步，游玩30分钟。",
+     "sourceUrl": "https://example.com/street"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "美食：别在甲街买小吃，又贵又不正宗！",
+     "sourceUrl": "https://example.com/warning"
+    }
+   ]
+  }
+ ]
+}

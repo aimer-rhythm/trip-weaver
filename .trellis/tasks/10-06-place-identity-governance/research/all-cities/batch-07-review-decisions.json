@@ -1,0 +1,789 @@
+[
+  {
+    "key": "all-cities-20261006-batch-07-review-63",
+    "city": "北京",
+    "reviewFingerprint": "869e0e2ac6c918316321cae4f8bd9b8cb558beecedff526ab5de09a2a961b013",
+    "expectedRevisions": {
+      "2e268c124eec71fea1e1c6285423ad83": 1,
+      "9dfe676b8bb7a8af8c02cf0e354fa52a": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "5065明说方砖厂已遍布北京，4814无门牌且同时带南锣/前门标签，4764只是拿方砖厂作口味对比；不能把品牌泛称按地图归到南锣或方砖厂胡同门店。需按原提及补具体分店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          63
+        ],
+        "conclusion": "5065明说方砖厂已遍布北京，4814无门牌且同时带南锣/前门标签，4764只是拿方砖厂作口味对比；不能把品牌泛称按地图归到南锣或方砖厂胡同门店。需按原提及补具体分店。",
+        "sourcePlaceIds": [
+          "654",
+          "2302"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          5065,
+          4814,
+          4764
+        ],
+        "conclusion": "5065明说方砖厂已遍布北京，4814无门牌且同时带南锣/前门标签，4764只是拿方砖厂作口味对比；不能把品牌泛称按地图归到南锣或方砖厂胡同门店。需按原提及补具体分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-67",
+    "city": "北京",
+    "reviewFingerprint": "7c99911e2c8e44a7d8bd40fda4af41d43a2c350c301da7cd016504baa6ecfe40",
+    "expectedRevisions": {
+      "0a114d0a1226b9264b5c021af8c2607f": 1,
+      "9fe5a09f4ed1fe06002bd8efb5734d70": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "西北角楼2308方向明确，但故宫角楼实体混有5025明确西北与5173等不带方向的提及，不能把全部泛称都认作西北角楼；需要逐提及核对机位。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          67
+        ],
+        "conclusion": "西北角楼2308方向明确，但故宫角楼实体混有5025明确西北与5173等不带方向的提及，不能把全部泛称都认作西北角楼；需要逐提及核对机位。",
+        "sourcePlaceIds": [
+          "1033",
+          "672"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2308
+        ],
+        "conclusion": "西北角楼2308方向明确，但故宫角楼实体混有5025明确西北与5173等不带方向的提及，不能把全部泛称都认作西北角楼；需要逐提及核对机位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-68",
+    "city": "北京",
+    "reviewFingerprint": "39e8810e8747198b6a60e11e53be6be58d02a2fb8afd92bfddba5d79d8ccd002",
+    "expectedRevisions": {
+      "954286d875d66af32da091bc2327ea96": 1,
+      "9fe5a09f4ed1fe06002bd8efb5734d70": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "2540原文只写故宫西角楼，未给西南或西北；故宫角楼实体亦有未定方向的来源。北京市中心兜底坐标不构成同一塔楼证据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          68
+        ],
+        "conclusion": "2540原文只写故宫西角楼，未给西南或西北；故宫角楼实体亦有未定方向的来源。北京市中心兜底坐标不构成同一塔楼证据。",
+        "sourcePlaceIds": [
+          "1185",
+          "672"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2540
+        ],
+        "conclusion": "2540原文只写故宫西角楼，未给西南或西北；故宫角楼实体亦有未定方向的来源。北京市中心兜底坐标不构成同一塔楼证据。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-72",
+    "city": "北京",
+    "reviewFingerprint": "d5459b67011caa852fd0010e28895931f3678cab3ad4c91b91df7c414d479805",
+    "expectedRevisions": {
+      "21a6d7cc0e7f722c2dc79254506f4f02": 1,
+      "87d92832a81a1d4871413eff9fc698c8": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "2562原路线只写鼓楼大街，从烟袋斜街到南锣鼓巷，地图却匹配2/8号线车站；原文没有明确东大街，尚不能判为该道路别名或地铁站。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          72
+        ],
+        "conclusion": "2562原路线只写鼓楼大街，从烟袋斜街到南锣鼓巷，地图却匹配2/8号线车站；原文没有明确东大街，尚不能判为该道路别名或地铁站。",
+        "sourcePlaceIds": [
+          "1196",
+          "737"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2562
+        ],
+        "conclusion": "2562原路线只写鼓楼大街，从烟袋斜街到南锣鼓巷，地图却匹配2/8号线车站；原文没有明确东大街，尚不能判为该道路别名或地铁站。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-103",
+    "city": "北京",
+    "reviewFingerprint": "98c0315c82b214f92da3166855cf68be03aba71699976e1e1b1e9cc15197e472",
+    "expectedRevisions": {
+      "16286423afc5988be8469fddf552fbd6": 1,
+      "7fded09083fa3c99df563ac272c3d7af": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "2222和4591都说牛街白记但未写具体柜台，4558同一实体另一来源明确聚宝源旁与马路对面两家白记分店；不能在同一条街内把不同分店合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          103
+        ],
+        "conclusion": "2222和4591都说牛街白记但未写具体柜台，4558同一实体另一来源明确聚宝源旁与马路对面两家白记分店；不能在同一条街内把不同分店合并。",
+        "sourcePlaceIds": [
+          "2148",
+          "964"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2222,
+          4591
+        ],
+        "conclusion": "2222和4591都说牛街白记但未写具体柜台，4558同一实体另一来源明确聚宝源旁与马路对面两家白记分店；不能在同一条街内把不同分店合并。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4558
+        ],
+        "conclusion": "2222和4591都说牛街白记但未写具体柜台，4558同一实体另一来源明确聚宝源旁与马路对面两家白记分店；不能在同一条街内把不同分店合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-108",
+    "city": "北京",
+    "reviewFingerprint": "2c07cb8d8b4bede0793e93a2f66a3a7543af5743234e526e7dc5dadbf87d993a",
+    "expectedRevisions": {
+      "0a114d0a1226b9264b5c021af8c2607f": 1,
+      "1d3158fe45b509eaff310b4139e7112b": 1
+    },
+    "verdict": "part_of",
+    "explanation": "4875原文明确合列东南/西北角楼，2308单指西北角楼；组合拍摄清单包含两个塔楼，不能把两栋都作为西北角楼别名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          108
+        ],
+        "conclusion": "4875原文明确合列东南/西北角楼，2308单指西北角楼；组合拍摄清单包含两个塔楼，不能把两栋都作为西北角楼别名。",
+        "sourcePlaceIds": [
+          "1033",
+          "2378"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          4875,
+          2308
+        ],
+        "conclusion": "4875原文明确合列东南/西北角楼，2308单指西北角楼；组合拍摄清单包含两个塔楼，不能把两栋都作为西北角楼别名。"
+      }
+    ],
+    "childEntityId": "0a114d0a1226b9264b5c021af8c2607f"
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-109",
+    "city": "北京",
+    "reviewFingerprint": "4e63ce1faafe74e75a5fc7bf09c2fcc26c695b9721067e0249efd0a19d44735e",
+    "expectedRevisions": {
+      "0a114d0a1226b9264b5c021af8c2607f": 1,
+      "954286d875d66af32da091bc2327ea96": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "2308是西北角楼，2540仅西角楼且没有方向补充，照片尚未核到西北/西南；保留待审，不能省掉决定实体边界的北字。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          109
+        ],
+        "conclusion": "2308是西北角楼，2540仅西角楼且没有方向补充，照片尚未核到西北/西南；保留待审，不能省掉决定实体边界的北字。",
+        "sourcePlaceIds": [
+          "1033",
+          "1185"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2308,
+          2540
+        ],
+        "conclusion": "2308是西北角楼，2540仅西角楼且没有方向补充，照片尚未核到西北/西南；保留待审，不能省掉决定实体边界的北字。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-112",
+    "city": "北京",
+    "reviewFingerprint": "5c0db0b2d4ca9340503119a631b2cafa78d08dfc9f24fc7e74ad0675f2bb5d7e",
+    "expectedRevisions": {
+      "981bfe8125feb36e052dcfee1e0df8b5": 1,
+      "a94865355cdbf6fccfda6fc748b9e9fe": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "3148说天安门、故宫、石景山公园一下午逛完，疑将景山误写石景山；地图首钢园无法解释原文。缺照片/路线确认，不能按字面或推测直接合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          112
+        ],
+        "conclusion": "3148说天安门、故宫、石景山公园一下午逛完，疑将景山误写石景山；地图首钢园无法解释原文。缺照片/路线确认，不能按字面或推测直接合并。",
+        "sourcePlaceIds": [
+          "1063",
+          "1508"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          3148
+        ],
+        "conclusion": "3148说天安门、故宫、石景山公园一下午逛完，疑将景山误写石景山；地图首钢园无法解释原文。缺照片/路线确认，不能按字面或推测直接合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-115",
+    "city": "北京",
+    "reviewFingerprint": "8be52e463563dcca91bf8b2c4e39755dce2db74115d71f7244f93ea0a6d2bda5",
+    "expectedRevisions": {
+      "21a6d7cc0e7f722c2dc79254506f4f02": 1,
+      "6b6bd1b7d6ad51e2f37001999e425699": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "2562鼓楼大街原路线未区分东西大街，地图又误落地铁站；不能凭沿途接近鼓楼就归为西大街，需查路线图。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          115
+        ],
+        "conclusion": "2562鼓楼大街原路线未区分东西大街，地图又误落地铁站；不能凭沿途接近鼓楼就归为西大街，需查路线图。",
+        "sourcePlaceIds": [
+          "1196",
+          "1088"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2562
+        ],
+        "conclusion": "2562鼓楼大街原路线未区分东西大街，地图又误落地铁站；不能凭沿途接近鼓楼就归为西大街，需查路线图。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-119",
+    "city": "北京",
+    "reviewFingerprint": "220d8f8e14be88aa8240f9978d953e2c2fa772e810daedbeda42e48723d7d59d",
+    "expectedRevisions": {
+      "589493fd66c9376b95a8398dc51d5a60": 1,
+      "bfc6f044f727898eb2121576084f7ee4": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "4319主项在古稀门透拍祈年殿，3411/2483仅写祈年殿门缝机位；拍摄对象与站位可能不同，未确认是否同一门点，不能用同一母景区坐标判等。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          119
+        ],
+        "conclusion": "4319主项在古稀门透拍祈年殿，3411/2483仅写祈年殿门缝机位；拍摄对象与站位可能不同，未确认是否同一门点，不能用同一母景区坐标判等。",
+        "sourcePlaceIds": [
+          "2085",
+          "1155"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          4319
+        ],
+        "conclusion": "4319主项在古稀门透拍祈年殿，3411/2483仅写祈年殿门缝机位；拍摄对象与站位可能不同，未确认是否同一门点，不能用同一母景区坐标判等。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          3411,
+          2483
+        ],
+        "conclusion": "4319主项在古稀门透拍祈年殿，3411/2483仅写祈年殿门缝机位；拍摄对象与站位可能不同，未确认是否同一门点，不能用同一母景区坐标判等。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-121",
+    "city": "北京",
+    "reviewFingerprint": "fa1fb592cce2d1a86f1201b77f3df94fcf00e4411567b1e74796ef2ecb2d7d27",
+    "expectedRevisions": {
+      "33297aff7fde3ac374465da6b65c2885": 1,
+      "d0f099242d41b744653af9c8e0234d64": 1
+    },
+    "verdict": "part_of",
+    "explanation": "4875同篇机位列表把奥林匹克塔底部公园单列为局部赏银杏区域，奥林匹克公园原实体涵盖鸟巢水立方等全域；塔底区域属于整体中的局部，不作为全域别名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          121
+        ],
+        "conclusion": "4875同篇机位列表把奥林匹克塔底部公园单列为局部赏银杏区域，奥林匹克公园原实体涵盖鸟巢水立方等全域；塔底区域属于整体中的局部，不作为全域别名。",
+        "sourcePlaceIds": [
+          "2376",
+          "1165"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          4875
+        ],
+        "conclusion": "4875同篇机位列表把奥林匹克塔底部公园单列为局部赏银杏区域，奥林匹克公园原实体涵盖鸟巢水立方等全域；塔底区域属于整体中的局部，不作为全域别名。"
+      }
+    ],
+    "childEntityId": "33297aff7fde3ac374465da6b65c2885"
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-126",
+    "city": "北京",
+    "reviewFingerprint": "e81ad6daf2ba2e095aa585c230208322f396866f4964401610af1dd59edc2c85",
+    "expectedRevisions": {
+      "960dbe62e9584ae19f737fd43d1d7f86": 1,
+      "a2350e1e2aee008db675ea92c9ee4217": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "2544全文将红墙美术馆放在798路线，红砖美术馆源地址在何各庄；红墙是否误写或另一空间尚未核实，不能依据墙/砖形近作同义或虚构独立机构结论。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          126
+        ],
+        "conclusion": "2544全文将红墙美术馆放在798路线，红砖美术馆源地址在何各庄；红墙是否误写或另一空间尚未核实，不能依据墙/砖形近作同义或虚构独立机构结论。",
+        "sourcePlaceIds": [
+          "1215",
+          "1514"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2544
+        ],
+        "conclusion": "2544全文将红墙美术馆放在798路线，红砖美术馆源地址在何各庄；红墙是否误写或另一空间尚未核实，不能依据墙/砖形近作同义或虚构独立机构结论。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-134",
+    "city": "北京",
+    "reviewFingerprint": "bb448eb607f2d471870342305832756d2137600f119403e5335c04b0909058b2",
+    "expectedRevisions": {
+      "0fff8b54ca0d464bc0489922802271f1": 1,
+      "198ae688ff672a669adf2a234fc8684e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "4558指牛街聚宝源爆肚粉窗口，3103也写牛街聚宝源但未给具体门牌/柜台。两者地图同5-2号不足以排除连锁或窗口错配，需现场/门头证据再合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          134
+        ],
+        "conclusion": "4558指牛街聚宝源爆肚粉窗口，3103也写牛街聚宝源但未给具体门牌/柜台。两者地图同5-2号不足以排除连锁或窗口错配，需现场/门头证据再合并。",
+        "sourcePlaceIds": [
+          "2184",
+          "1487"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4558
+        ],
+        "conclusion": "4558指牛街聚宝源爆肚粉窗口，3103也写牛街聚宝源但未给具体门牌/柜台。两者地图同5-2号不足以排除连锁或窗口错配，需现场/门头证据再合并。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          3103
+        ],
+        "conclusion": "4558指牛街聚宝源爆肚粉窗口，3103也写牛街聚宝源但未给具体门牌/柜台。两者地图同5-2号不足以排除连锁或窗口错配，需现场/门头证据再合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-135",
+    "city": "北京",
+    "reviewFingerprint": "31e598bca88655c12925abf21e2f3fe7bad955d6ddcf86761cc1d20bb544d751",
+    "expectedRevisions": {
+      "a94865355cdbf6fccfda6fc748b9e9fe": 1,
+      "5ca99b918e295ff21519992c6b8df59a": 2
+    },
+    "verdict": "uncertain",
+    "explanation": "石景山乐园已归到游乐园；3148石景山公园语境却在故宫天安门附近，可能是景山误写，不足以确认首钢公园或石景山游乐园，保留原审核继续核图。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          135
+        ],
+        "conclusion": "石景山乐园已归到游乐园；3148石景山公园语境却在故宫天安门附近，可能是景山误写，不足以确认首钢公园或石景山游乐园，保留原审核继续核图。",
+        "sourcePlaceIds": [
+          "1508",
+          "1545"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          3148
+        ],
+        "conclusion": "石景山乐园已归到游乐园；3148石景山公园语境却在故宫天安门附近，可能是景山误写，不足以确认首钢公园或石景山游乐园，保留原审核继续核图。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          3211
+        ],
+        "conclusion": "石景山乐园已归到游乐园；3148石景山公园语境却在故宫天安门附近，可能是景山误写，不足以确认首钢公园或石景山游乐园，保留原审核继续核图。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-136",
+    "city": "北京",
+    "reviewFingerprint": "f5e1e8d519a8395e7ddb2e4ccf02e6a98087ed319fff4716314cdeffeb1b4bf0",
+    "expectedRevisions": {
+      "9d370560d0fdce277077e41926aedbe3": 1,
+      "cc64fdb6d886fb126d668f683d35407d": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "4383与3185都把鸟巢水立方合列，属于两个独立场馆组合推荐；当前模型尚未拆开组合源提及，不能为清队列将组合记录宣称为单一场馆。需核实组合范围及分别归属。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          136
+        ],
+        "conclusion": "4383与3185都把鸟巢水立方合列，属于两个独立场馆组合推荐；当前模型尚未拆开组合源提及，不能为清队列将组合记录宣称为单一场馆。需核实组合范围及分别归属。",
+        "sourcePlaceIds": [
+          "2105",
+          "1527"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          4383,
+          3185
+        ],
+        "conclusion": "4383与3185都把鸟巢水立方合列，属于两个独立场馆组合推荐；当前模型尚未拆开组合源提及，不能为清队列将组合记录宣称为单一场馆。需核实组合范围及分别归属。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-149",
+    "city": "北京",
+    "reviewFingerprint": "e2dde8199e580b83a7fcca6ad43dd2806563c5396d09b0fb9b2815c0420f6118",
+    "expectedRevisions": {
+      "58f870f88ed8828465c63b0f96ee4b7f": 1,
+      "debf3e75bdc328a425f1d1f76273112e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "4506写老北京炸酱面大王，5070只写老北京炸酱面，均无原文门牌；现地图东兴隆街与翠花胡同冲突，无法从通用食品名确定店铺，需门头或地址。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          149
+        ],
+        "conclusion": "4506写老北京炸酱面大王，5070只写老北京炸酱面，均无原文门牌；现地图东兴隆街与翠花胡同冲突，无法从通用食品名确定店铺，需门头或地址。",
+        "sourcePlaceIds": [
+          "2160",
+          "2454"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4506,
+          5070
+        ],
+        "conclusion": "4506写老北京炸酱面大王，5070只写老北京炸酱面，均无原文门牌；现地图东兴隆街与翠花胡同冲突，无法从通用食品名确定店铺，需门头或地址。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-150",
+    "city": "北京",
+    "reviewFingerprint": "f85d90ede4fd2f58b7d0faf61db66c9865641b6c3c05a19e230c39a0ec6b2d5d",
+    "expectedRevisions": {
+      "2942ddd560f2f412ba51fc3f8662a411": 1,
+      "ab3d3d0854839a2964ed3b45a8a2b887": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "4511把postpost列在幸福三村，5283路线又经过西五街院落，4636只称三里屯店；现图太古里北区亭子与原文不一致，需核实是否同店/迁址，不能只按三里屯片区合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          150
+        ],
+        "conclusion": "4511把postpost列在幸福三村，5283路线又经过西五街院落，4636只称三里屯店；现图太古里北区亭子与原文不一致，需核实是否同店/迁址，不能只按三里屯片区合并。",
+        "sourcePlaceIds": [
+          "2235",
+          "2165"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4511,
+          5283,
+          4636
+        ],
+        "conclusion": "4511把postpost列在幸福三村，5283路线又经过西五街院落，4636只称三里屯店；现图太古里北区亭子与原文不一致，需核实是否同店/迁址，不能只按三里屯片区合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-154",
+    "city": "北京",
+    "reviewFingerprint": "c9481acacd16fd4146f81c1932495c9c18b5160152b6ccc2c04ee5812636b268",
+    "expectedRevisions": {
+      "9f877ba375bc3d365aa2188c486aadf7": 1,
+      "ccf34ce09a8e3dca7bfd45cbafc33b2c": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "4558仅泛称牛街门钉肉饼，4894只列肉饼品类且未给门店；地图分别落地安门及体育馆西路，不能判断两者具体店铺同异，留待门头/地址核实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          154
+        ],
+        "conclusion": "4558仅泛称牛街门钉肉饼，4894只列肉饼品类且未给门店；地图分别落地安门及体育馆西路，不能判断两者具体店铺同异，留待门头/地址核实。",
+        "sourcePlaceIds": [
+          "2188",
+          "2382"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4558,
+          4894
+        ],
+        "conclusion": "4558仅泛称牛街门钉肉饼，4894只列肉饼品类且未给门店；地图分别落地安门及体育馆西路，不能判断两者具体店铺同异，留待门头/地址核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-157",
+    "city": "北京",
+    "reviewFingerprint": "9bab5ae6b05cf1964f08dd343cad042d1fc46703bb94cd3637d8ff473d541748",
+    "expectedRevisions": {
+      "04d870e41b659012ec469aab7b94e8a5": 1,
+      "095b65cb9f99ae858ac9aa436e58f8c7": 1
+    },
+    "verdict": "distinct",
+    "explanation": "4658明确北八楼，5095明确北四楼，敌楼编号是独立位置，不能因都附好汉坡而合并；北四楼现地图误落怀柔书画山也不能吞并八达岭编号。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          157
+        ],
+        "conclusion": "4658明确北八楼，5095明确北四楼，敌楼编号是独立位置，不能因都附好汉坡而合并；北四楼现地图误落怀柔书画山也不能吞并八达岭编号。",
+        "sourcePlaceIds": [
+          "2244",
+          "2461"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4658,
+          5095
+        ],
+        "conclusion": "4658明确北八楼，5095明确北四楼，敌楼编号是独立位置，不能因都附好汉坡而合并；北四楼现地图误落怀柔书画山也不能吞并八达岭编号。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-158",
+    "city": "北京",
+    "reviewFingerprint": "687d8efe69c61acf444595de5fcdc0b3351ca6b1cd910509a6034aca414cee41",
+    "expectedRevisions": {
+      "7e402ce5d6d77e7ea79319ef7b7544ea": 1,
+      "9f7693287df7b69442625c95669ae3f1": 1
+    },
+    "verdict": "distinct",
+    "explanation": "5134标题虽称王府井但正文明确紧邻国贸、乘地铁到王府井；4849正文称王府井正中心。两条住宿位置描述不同，均未给店名，拒绝同义但不认定具体酒店已核实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          158
+        ],
+        "conclusion": "5134标题虽称王府井但正文明确紧邻国贸、乘地铁到王府井；4849正文称王府井正中心。两条住宿位置描述不同，均未给店名，拒绝同义但不认定具体酒店已核实。",
+        "sourcePlaceIds": [
+          "2483",
+          "2361"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          5134,
+          4849
+        ],
+        "conclusion": "5134标题虽称王府井但正文明确紧邻国贸、乘地铁到王府井；4849正文称王府井正中心。两条住宿位置描述不同，均未给店名，拒绝同义但不认定具体酒店已核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-07-review-159",
+    "city": "北京",
+    "reviewFingerprint": "e4d435b42efbf0160150fb1ec114f0cbfda481fd18a5ee86c0736237ce56a2f5",
+    "expectedRevisions": {
+      "4f4051a4b08d26c5c57b877bb815ac09": 1,
+      "7e402ce5d6d77e7ea79319ef7b7544ea": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "5108只说市中心和院内咖啡厅，5134正文实为紧邻国贸的智能酒店，两者都无具体店名；共同王府井标题和片区兜底坐标不能确认同一酒店，需补名称/门牌。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          159
+        ],
+        "conclusion": "5108只说市中心和院内咖啡厅，5134正文实为紧邻国贸的智能酒店，两者都无具体店名；共同王府井标题和片区兜底坐标不能确认同一酒店，需补名称/门牌。",
+        "sourcePlaceIds": [
+          "2472",
+          "2483"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          5108,
+          5134
+        ],
+        "conclusion": "5108只说市中心和院内咖啡厅，5134正文实为紧邻国贸的智能酒店，两者都无具体店名；共同王府井标题和片区兜底坐标不能确认同一酒店，需补名称/门牌。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "entity_id": "9626de365121d40b3565b4a7dbc5be1a",
+      "city": "济南",
+      "canonical_name": "喜茶",
+      "primary_place_id": 5322,
+      "aliases": [
+        "喜茶"
+      ],
+      "legacy_ids": [
+        "9626de365121d40b3565b4a7dbc5be1a"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac",
+      "city": "济南",
+      "canonical_name": "山耶云耶",
+      "primary_place_id": 5324,
+      "aliases": [
+        "山耶云耶"
+      ],
+      "legacy_ids": [
+        "eb75294ebee7a37c374a3f5cd374d4ac"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5322,
+      "entity_id": "9626de365121d40b3565b4a7dbc5be1a"
+    },
+    {
+      "place_id": 5324,
+      "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac"
+    }
+  ],
+  "reviews": []
+}

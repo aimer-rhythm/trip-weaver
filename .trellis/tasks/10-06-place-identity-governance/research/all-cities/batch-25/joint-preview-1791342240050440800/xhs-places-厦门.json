@@ -1,0 +1,99 @@
+{
+ "_comment": "厦门社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-07）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "厦门",
+ "generatedAt": "2026-10-07",
+ "count": 2,
+ "activeCount": 0,
+ "places": [
+  {
+   "id": "7b4cfbf5bd4b449036abe4ee41b21210",
+   "name": "CUIDA",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "7b4cfbf5bd4b449036abe4ee41b21210",
+     "canonicalName": "CUIDA",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "CUIDA"
+     ],
+     "memberIds": [
+      "7b4cfbf5bd4b449036abe4ee41b21210"
+     ]
+    },
+    "aliases": [
+     "CUIDA"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "unavailable_source",
+     "candidateIds": []
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "7b4cfbf5bd4b449036abe4ee41b21210",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  },
+  {
+   "id": "7e341fd0ee9e8647bd9766bfac2f05e6",
+   "name": "cuida",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "7e341fd0ee9e8647bd9766bfac2f05e6",
+     "canonicalName": "cuida",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "cuida"
+     ],
+     "memberIds": [
+      "7e341fd0ee9e8647bd9766bfac2f05e6"
+     ]
+    },
+    "aliases": [
+     "cuida"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "unavailable_source",
+     "candidateIds": []
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "7e341fd0ee9e8647bd9766bfac2f05e6",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+  "batch": 48,
+  "readOnly": true,
+  "at": "2026-10-08T19:15:51.190Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus"
+  ],
+  "results": [
+    {
+      "entityId": "af9116d87efcdf105915ca6303cb6274",
+      "name": "珍珠泉",
+      "revision": 3,
+      "category": "自然",
+      "type": "attraction",
+      "minutes": 60,
+      "boundaries": [
+        "珍珠泉大院",
+        "珍珠泉泉群",
+        "珍珠泉宾馆",
+        "珍珠泉大院南门"
+      ]
+    },
+    {
+      "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+      "name": "珍珠泉大院",
+      "revision": 3,
+      "category": "文化",
+      "type": "attraction",
+      "minutes": null,
+      "boundaries": [
+        "珍珠泉",
+        "珍珠泉泉群",
+        "珍珠泉礼堂",
+        "珍珠泉大院南门"
+      ]
+    }
+  ],
+  "confirmed": 10,
+  "pendingAdded": 0,
+  "assignmentRows": 268,
+  "pendingMentions": 109,
+  "sqlProbes": 2,
+  "realVectorProbes": 2,
+  "graph": 18,
+  "directEdges": 3,
+  "partialHighlightExclusions": 2,
+  "descriptionFieldExclusions": 4,
+  "relationsUnchanged": true,
+  "rawDerivedCachesPreserved": true,
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

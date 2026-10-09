@@ -1,0 +1,42 @@
+{
+  "batch": 54,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 2,
+  "notes": 1,
+  "confirmed": 2,
+  "pendingAdded": 0,
+  "factExclusions": 6,
+  "coordinatesCleared": 2,
+  "historicalReviewPreserved": true,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "9626de365121d40b3565b4a7dbc5be1a",
+      "name": "喜茶(济南融汇老商埠店)",
+      "mentions": 1,
+      "category": "美食",
+      "type": "cafe",
+      "wrongPointClearedPreciseLocationPending": true
+    },
+    {
+      "entityId": "eb75294ebee7a37c374a3f5cd374d4ac",
+      "name": "山耶云耶(融汇济南老商埠店)",
+      "mentions": 1,
+      "category": "美食",
+      "type": "cafe",
+      "wrongPointClearedPreciseLocationPending": true
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "3618f541003dd1edb2171b479de833643e07eb286f68ba31084aaf91ef6e6a09"
+}

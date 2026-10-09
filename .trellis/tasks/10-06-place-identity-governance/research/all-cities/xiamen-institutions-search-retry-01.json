@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "4113ebcf924a",
+  "query": "厦门 鼓浪屿风琴博物馆 管风琴艺术中心 诚毅科技探索中心 请给出官方网站地址和页面链接",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先检索这三处的官方站点与对应页面。",
+  "sources": [
+    {
+      "url": "https://www.organtube.com/xm_01",
+      "provider": "tavily",
+      "title": "鼓浪屿管风琴艺术中心的管风琴",
+      "description": "鼓浪屿管风琴艺术中心位于福建省厦门市鼓浪屿三明路1-4号，厦门市政府出资为波士顿-灵光堂Casavant Oput 700管风琴量身定制。该琴由澳籍华侨胡友义先生购"
+    },
+    {
+      "url": "https://xm.bendibao.com/jingdian/guanfengqinyishuzhongxin",
+      "provider": "tavily",
+      "title": "管风琴艺术中心",
+      "description": "厦门市思明区三明路4号【导航去这里】. 开放时间. 8:15-18:15（6月1日-9月30日） 8:15-17:45（10月1日-次年5月31日）. 门票信息. 免费. 预约入口. 小程序码."
+    },
+    {
+      "url": "https://www.qianggen.net/2009/tuan113934",
+      "provider": "tavily",
+      "title": "2026诚毅科技探索中心门票预约入口(附游玩场馆+攻略+ ...",
+      "description": "诚毅科技探索中心，位于厦门集美区杏林湾路339号，共有5层，地上4层，地下1层，由主展馆和2个特种影院组成，是一个寓教于乐的游玩场馆! 在这里，游客可以通过了解各种自然"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.organtube.com/xm_01",
+      "provider": "tavily",
+      "title": "鼓浪屿管风琴艺术中心的管风琴",
+      "description": "鼓浪屿管风琴艺术中心位于福建省厦门市鼓浪屿三明路1-4号，厦门市政府出资为波士顿-灵光堂Casavant Oput 700管风琴量身定制。该琴由澳籍华侨胡友义先生购"
+    },
+    {
+      "url": "https://xm.bendibao.com/jingdian/guanfengqinyishuzhongxin",
+      "provider": "tavily",
+      "title": "管风琴艺术中心",
+      "description": "厦门市思明区三明路4号【导航去这里】. 开放时间. 8:15-18:15（6月1日-9月30日） 8:15-17:45（10月1日-次年5月31日）. 门票信息. 免费. 预约入口. 小程序码."
+    },
+    {
+      "url": "https://www.qianggen.net/2009/tuan113934",
+      "provider": "tavily",
+      "title": "2026诚毅科技探索中心门票预约入口(附游玩场馆+攻略+ ...",
+      "description": "诚毅科技探索中心，位于厦门集美区杏林湾路339号，共有5层，地上4层，地下1层，由主展馆和2个特种影院组成，是一个寓教于乐的游玩场馆! 在这里，游客可以通过了解各种自然"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 18870.28,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 30343.0,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 30343.03
+}

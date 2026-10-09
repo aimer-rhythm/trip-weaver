@@ -1,0 +1,674 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "5781e650f27ad011986a13e12281e79f",
+          "city": "济南",
+          "canonical_name": "许记排骨",
+          "primary_place_id": 5331,
+          "aliases": [
+            "许记排骨"
+          ],
+          "legacy_ids": [
+            "5781e650f27ad011986a13e12281e79f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5331,
+          "entity_id": "5781e650f27ad011986a13e12281e79f"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5331,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 19.7,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5331,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            },
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            },
+            {
+              "reason": "济南美食推荐，具体菜品未详述",
+              "evidence": "5️⃣许记排骨"
+            }
+          ],
+          "recommend_score": 12.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7736,
+          "canonical_place_id": 5331,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 许记排骨",
+          "evidence_summary": "本地人推荐，有特色且味道好"
+        },
+        {
+          "id": 8627,
+          "canonical_place_id": 5331,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 许记排骨",
+          "evidence_summary": "济南美食推荐，具体菜品未详述"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5331,
+          "city": "济南",
+          "name_keys": [
+            "许记排骨"
+          ],
+          "entity_ids": [
+            "5781e650f27ad011986a13e12281e79f"
+          ],
+          "source_hash": "1b3d8e643d2be74602b9c619b9a250bbce04cfd7d3ce53736dfdb866eaf80e5a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5331-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/last-restaurants-source-review-01.json",
+              "kind": "full_original_and_fetched_branch_evidence",
+              "conclusion": "完整提及审核；保留真实作者观点，未来新提及须复核。无图片查看。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "5781e650f27ad011986a13e12281e79f"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11353,
+          "scope_place_id": 5331,
+          "entity_id": "5781e650f27ad011986a13e12281e79f",
+          "input_hash": "a755919e245c491e112b26a591d8d6bcd3a88ab3af63c390605ef3e7d0e27f84",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5331-scope"
+        },
+        {
+          "mention_id": 12594,
+          "scope_place_id": 5331,
+          "entity_id": "5781e650f27ad011986a13e12281e79f",
+          "input_hash": "8a245cc464b69b5d8faf627efd0912eeba32c606ea8b602a64778e66f6f01773",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5331-scope"
+        },
+        {
+          "mention_id": 12893,
+          "scope_place_id": 5331,
+          "entity_id": null,
+          "input_hash": "1f28ae5bbd1770c2c4743a3ea822630d14051d5f7205bf0b741511db73919621",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5331-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "1b3d8e643d2be74602b9c619b9a250bbce04cfd7d3ce53736dfdb866eaf80e5a",
+        "mentions": [
+          {
+            "mentionId": 11353,
+            "inputHash": "a755919e245c491e112b26a591d8d6bcd3a88ab3af63c390605ef3e7d0e27f84"
+          },
+          {
+            "mentionId": 12594,
+            "inputHash": "8a245cc464b69b5d8faf627efd0912eeba32c606ea8b602a64778e66f6f01773"
+          },
+          {
+            "mentionId": 12893,
+            "inputHash": "1f28ae5bbd1770c2c4743a3ea822630d14051d5f7205bf0b741511db73919621"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 12586,
+          "fingerprint": "4b96aba80df0f305945e1f7783bf0d7c8cf89adba819926b18300d1dc4d216ed",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "1f28ae5bbd1770c2c4743a3ea822630d14051d5f7205bf0b741511db73919621",
+            "mentionId": 12893,
+            "scopePlaceIds": [
+              5331
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "4486ee493729467741a9428ba67b1b80",
+          "city": "济南",
+          "canonical_name": "桥下把子肉",
+          "primary_place_id": 5343,
+          "aliases": [
+            "桥下把子肉"
+          ],
+          "legacy_ids": [
+            "4486ee493729467741a9428ba67b1b80"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5343,
+          "entity_id": "4486ee493729467741a9428ba67b1b80"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5343,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 20.0,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5343,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            },
+            {
+              "reason": "二环东路山大南路，把子肉推荐",
+              "evidence": "我个人感觉还不错的一些店"
+            },
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            }
+          ],
+          "recommend_score": 12.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7749,
+          "canonical_place_id": 5343,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 桥下把子肉",
+          "evidence_summary": "本地人推荐，有特色且味道好"
+        },
+        {
+          "id": 7750,
+          "canonical_place_id": 5343,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 桥下把子肉",
+          "evidence_summary": "二环东路山大南路，把子肉推荐"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5343,
+          "city": "济南",
+          "name_keys": [
+            "桥下把子肉"
+          ],
+          "entity_ids": [
+            "4486ee493729467741a9428ba67b1b80"
+          ],
+          "source_hash": "fd55432da4380de08cf2ee1535e2f5af4718ab7ce37a6acb36714a93f2415b1f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5343-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/last-restaurants-source-review-01.json",
+              "kind": "full_original_and_fetched_branch_evidence",
+              "conclusion": "完整提及审核；保留真实作者观点，未来新提及须复核。无图片查看。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "4486ee493729467741a9428ba67b1b80"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11365,
+          "scope_place_id": 5343,
+          "entity_id": "4486ee493729467741a9428ba67b1b80",
+          "input_hash": "8acd9ef31823f7d993303da42bbb48542961cfe7672208341233d6bb0aa0e2b3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5343-scope"
+        },
+        {
+          "mention_id": 11643,
+          "scope_place_id": 5343,
+          "entity_id": "4486ee493729467741a9428ba67b1b80",
+          "input_hash": "d3e164685cbe0456933450b35c8526e9253a218addb9dd68fe2e7f9003438e93",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5343-scope"
+        },
+        {
+          "mention_id": 12606,
+          "scope_place_id": 5343,
+          "entity_id": "4486ee493729467741a9428ba67b1b80",
+          "input_hash": "834dce7d70ad3a85fa35f35a9ab8068a785fb84b0d023aa5753fe4b443baebec",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5343-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "fd55432da4380de08cf2ee1535e2f5af4718ab7ce37a6acb36714a93f2415b1f",
+        "mentions": [
+          {
+            "mentionId": 11365,
+            "inputHash": "8acd9ef31823f7d993303da42bbb48542961cfe7672208341233d6bb0aa0e2b3"
+          },
+          {
+            "mentionId": 11643,
+            "inputHash": "d3e164685cbe0456933450b35c8526e9253a218addb9dd68fe2e7f9003438e93"
+          },
+          {
+            "mentionId": 12606,
+            "inputHash": "834dce7d70ad3a85fa35f35a9ab8068a785fb84b0d023aa5753fe4b443baebec"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e2740e4ad547f99f5ff9311f7d5359b8",
+          "city": "济南",
+          "canonical_name": "蜗牛叔叔的食堂",
+          "primary_place_id": 5340,
+          "aliases": [
+            "蜗牛叔叔的食堂"
+          ],
+          "legacy_ids": [
+            "e2740e4ad547f99f5ff9311f7d5359b8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5340,
+          "entity_id": "e2740e4ad547f99f5ff9311f7d5359b8"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5340,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 15.0,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5340,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            },
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            }
+          ],
+          "recommend_score": 9.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7745,
+          "canonical_place_id": 5340,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 蜗牛叔叔的食堂",
+          "evidence_summary": "本地人推荐，有特色且味道好"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5340,
+          "city": "济南",
+          "name_keys": [
+            "蜗牛叔叔的食堂"
+          ],
+          "entity_ids": [
+            "e2740e4ad547f99f5ff9311f7d5359b8"
+          ],
+          "source_hash": "b7d01bbded48ce015b8edc846ba7559b3a36f63019a4df341a1aa8f06ba0d505",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5340-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/last-restaurants-source-review-01.json",
+              "kind": "full_original_and_fetched_branch_evidence",
+              "conclusion": "完整提及审核；保留真实作者观点，未来新提及须复核。无图片查看。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "e2740e4ad547f99f5ff9311f7d5359b8"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11362,
+          "scope_place_id": 5340,
+          "entity_id": "e2740e4ad547f99f5ff9311f7d5359b8",
+          "input_hash": "89d2616f266a3b033f6fd61aa6bdcac93931d2dbe9d1ecde058d6e715f6d664c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5340-scope"
+        },
+        {
+          "mention_id": 12603,
+          "scope_place_id": 5340,
+          "entity_id": "e2740e4ad547f99f5ff9311f7d5359b8",
+          "input_hash": "0e9872605fd235ab3021ace3ccb1030678c71c5e50c6ab01294d4f3bc6e9f3d3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-64-source-5340-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "b7d01bbded48ce015b8edc846ba7559b3a36f63019a4df341a1aa8f06ba0d505",
+        "mentions": [
+          {
+            "mentionId": 11362,
+            "inputHash": "89d2616f266a3b033f6fd61aa6bdcac93931d2dbe9d1ecde058d6e715f6d664c"
+          },
+          {
+            "mentionId": 12603,
+            "inputHash": "0e9872605fd235ab3021ace3ccb1030678c71c5e50c6ab01294d4f3bc6e9f3d3"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "5781e650f27ad011986a13e12281e79f",
+          "city": "济南",
+          "canonical_name": "许记排骨（县东巷71号）",
+          "primary_place_id": 5331,
+          "aliases": [
+            "许记排骨",
+            "许记排骨（县东巷71号）"
+          ],
+          "legacy_ids": [
+            "32ae2728418bd69bb354480d49901a2b",
+            "5781e650f27ad011986a13e12281e79f"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "县东巷71号",
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_address_and_fetched_branch_name",
+              "file": "priority-cities/济南/last-restaurants-web-review-01.json",
+              "conclusion": "许记为地址限定展示名，不冒充官方分店名；桥下/蜗牛分店名有抓取正文。许记明显偏离老城旧点清空待核，其余两点未新验证，保持。蜗牛旧狮子口街地址保持，不将历史评论证明为2026营业。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5331,
+          "entity_id": "5781e650f27ad011986a13e12281e79f"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "4486ee493729467741a9428ba67b1b80",
+          "city": "济南",
+          "canonical_name": "桥下把子肉（山大南路店）",
+          "primary_place_id": 5343,
+          "aliases": [
+            "桥下把子肉",
+            "桥下把子肉（山大南路店）"
+          ],
+          "legacy_ids": [
+            "4486ee493729467741a9428ba67b1b80",
+            "4bdc1cb87a68a759d31d7eb7d3203af9"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "山大南路蜀易火锅隔壁"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_address_and_fetched_branch_name",
+              "file": "priority-cities/济南/last-restaurants-web-review-01.json",
+              "conclusion": "许记为地址限定展示名，不冒充官方分店名；桥下/蜗牛分店名有抓取正文。许记明显偏离老城旧点清空待核，其余两点未新验证，保持。蜗牛旧狮子口街地址保持，不将历史评论证明为2026营业。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5343,
+          "entity_id": "4486ee493729467741a9428ba67b1b80"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e2740e4ad547f99f5ff9311f7d5359b8",
+          "city": "济南",
+          "canonical_name": "蜗牛叔叔的食堂（泉城路店）",
+          "primary_place_id": 5340,
+          "aliases": [
+            "蜗牛叔叔的食堂",
+            "蜗牛叔叔的食堂（泉城路店）"
+          ],
+          "legacy_ids": [
+            "493c8878c1b73af61944fdc7a28c1323",
+            "e2740e4ad547f99f5ff9311f7d5359b8"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_address_and_fetched_branch_name",
+              "file": "priority-cities/济南/last-restaurants-web-review-01.json",
+              "conclusion": "许记为地址限定展示名，不冒充官方分店名；桥下/蜗牛分店名有抓取正文。许记明显偏离老城旧点清空待核，其余两点未新验证，保持。蜗牛旧狮子口街地址保持，不将历史评论证明为2026营业。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5340,
+          "entity_id": "e2740e4ad547f99f5ff9311f7d5359b8"
+        }
+      ]
+    }
+  ]
+}

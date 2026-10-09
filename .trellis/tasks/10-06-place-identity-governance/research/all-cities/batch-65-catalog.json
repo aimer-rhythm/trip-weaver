@@ -1,0 +1,108 @@
+{
+  "entities": [
+    {
+      "entity_id": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+      "city": "济南",
+      "canonical_name": "起凤桥八号",
+      "primary_place_id": 5392,
+      "aliases": [
+        "起凤桥八号"
+      ],
+      "legacy_ids": [
+        "fd7c5d9a0af5a1ec9515743d6f05bce5"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "908b0aec5ee27f58554a8442f8eef1de",
+      "city": "济南",
+      "canonical_name": "起凤桥",
+      "primary_place_id": 5479,
+      "aliases": [
+        "起凤桥"
+      ],
+      "legacy_ids": [
+        "908b0aec5ee27f58554a8442f8eef1de"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5392,
+      "entity_id": "fd7c5d9a0af5a1ec9515743d6f05bce5"
+    },
+    {
+      "place_id": 5479,
+      "entity_id": "908b0aec5ee27f58554a8442f8eef1de"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 375,
+      "city": "济南",
+      "fingerprint": "28bad7b9e13ff3031d8bbd1ce788da869c582b1ddaa438c9443a7616888d4343",
+      "status": "REJECTED",
+      "detail": {
+        "names": [
+          "起凤桥",
+          "起凤桥街"
+        ],
+        "reason": "similar_name",
+        "entityIds": [
+          "908b0aec5ee27f58554a8442f8eef1de",
+          "9664ac094b1fc9e794ccaaa4e77aa9fa"
+        ],
+        "assessment": {
+          "key": "all-cities-20261006-batch-09-review-375",
+          "verdict": "part_of",
+          "evidence": [
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                375
+              ],
+              "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+              "sourcePlaceIds": [
+                "5479",
+                "5960"
+              ]
+            },
+            {
+              "file": "all-cities/jinan-batch09-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+              "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+              "mentionIds": [
+                12643,
+                12626
+              ]
+            }
+          ],
+          "explanation": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+          "childEntityId": "908b0aec5ee27f58554a8442f8eef1de"
+        }
+      }
+    }
+  ]
+}

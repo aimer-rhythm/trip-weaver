@@ -1,0 +1,85 @@
+{
+  "batch": 45,
+  "readOnly": true,
+  "at": "2026-10-08T18:30:57.556Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus"
+  ],
+  "results": [
+    {
+      "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+      "name": "纬三路与经三路交叉口",
+      "confirmed": 1,
+      "pending": 0,
+      "boundaries": [
+        "经三路爱心红绿灯",
+        "经三路",
+        "纬三路",
+        "融汇老商埠",
+        "夹心胡同"
+      ],
+      "category": "文化",
+      "lat": 36.661722,
+      "lng": 116.993629
+    },
+    {
+      "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "name": "大观园",
+      "confirmed": 4,
+      "pending": 0,
+      "boundaries": [
+        "融汇老商埠",
+        "经三路",
+        "大观园街道",
+        "欧亚大观园商场",
+        "大观园入口"
+      ],
+      "category": "文化",
+      "lat": null,
+      "lng": null
+    }
+  ],
+  "assignmentRows": 253,
+  "pendingMentions": 108,
+  "sqlProbes": 2,
+  "realVectorProbes": 2,
+  "graph": 18,
+  "directEdges": 3,
+  "relationsUnchanged": true,
+  "deferredRootsUnchanged": 3,
+  "regeneratedContentTimestamps": [
+    {
+      "name": "经三路",
+      "before": "2026-10-08T17:59:28.666038+00:00",
+      "after": "2026-10-08T18:25:43.347061+00:00"
+    },
+    {
+      "name": "经三路爱心红绿灯",
+      "before": "2026-10-08T17:59:28.666038+00:00",
+      "after": "2026-10-08T18:25:43.347061+00:00"
+    }
+  ],
+  "rawDerivedCachesPreserved": true,
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

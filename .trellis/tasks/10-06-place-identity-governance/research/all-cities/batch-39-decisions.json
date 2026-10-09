@@ -1,0 +1,27 @@
+[
+  {
+    "key": "all-cities-20261008-batch-39-lingyan-category",
+    "city": "济南",
+    "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+    "mergeEntityIds": [],
+    "canonicalName": "灵岩寺",
+    "expectedRevisions": {
+      "29f4a4b260878eb8d9143b15b8fca54f": 2
+    },
+    "overrides": {
+      "category": "文化"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_duration_budget_not_visit",
+        "file": "priority-cities/济南/lingyan-duration-review-01.json",
+        "sha256": "7404593250117f91869b4a1bee682f5ffc67837828d62872b236d368b072ca54",
+        "conclusion": "原图明确劝退时间不足者；180不是建议停留。保留寺庙身份、宋代彩塑看点及唯一11686，不伪造字段排除；完整scope重建派生事实。"
+      },
+      {
+        "kind": "retain_reviewed_temple_category",
+        "conclusion": "寺庙及宋代彩塑看点为文化；scope清除包含住宿/美食的旧主题后显式保留文化类别。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,175 @@
+{
+  "verifiedAt": "2026-10-06T07:47:48.632Z",
+  "upstream": {
+    "cities": [
+      {
+        "city": "上海",
+        "entities": 414,
+        "active": 414,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "云南",
+        "entities": 258,
+        "active": 258,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "北京",
+        "entities": 1333,
+        "active": 1333,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "厦门",
+        "entities": 701,
+        "active": 701,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "广州",
+        "entities": 733,
+        "active": 733,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "成都",
+        "entities": 415,
+        "active": 415,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "杭州",
+        "entities": 678,
+        "active": 678,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "济南",
+        "entities": 242,
+        "active": 238,
+        "redirected": 4,
+        "withheld": 0
+      },
+      {
+        "city": "西安",
+        "entities": 441,
+        "active": 441,
+        "redirected": 0,
+        "withheld": 0
+      },
+      {
+        "city": "重庆",
+        "entities": 650,
+        "active": 650,
+        "redirected": 0,
+        "withheld": 0
+      }
+    ],
+    "members": 5870,
+    "reviews": [
+      {
+        "city": "上海",
+        "status": "PENDING",
+        "count": 41
+      },
+      {
+        "city": "云南",
+        "status": "PENDING",
+        "count": 21
+      },
+      {
+        "city": "北京",
+        "status": "PENDING",
+        "count": 99
+      },
+      {
+        "city": "厦门",
+        "status": "PENDING",
+        "count": 87
+      },
+      {
+        "city": "广州",
+        "status": "PENDING",
+        "count": 48
+      },
+      {
+        "city": "成都",
+        "status": "PENDING",
+        "count": 22
+      },
+      {
+        "city": "杭州",
+        "status": "PENDING",
+        "count": 43
+      },
+      {
+        "city": "济南",
+        "status": "PENDING",
+        "count": 16
+      },
+      {
+        "city": "济南",
+        "status": "RESOLVED",
+        "count": 3
+      },
+      {
+        "city": "西安",
+        "status": "PENDING",
+        "count": 50
+      },
+      {
+        "city": "重庆",
+        "status": "PENDING",
+        "count": 54
+      }
+    ],
+    "changes": [
+      {
+        "change_key": "jinan-20261006-daminghu-v2",
+        "city": "济南",
+        "rolled_back": false
+      },
+      {
+        "change_key": "jinan-20261006-shangbu-v2",
+        "city": "济南",
+        "rolled_back": false
+      }
+    ]
+  },
+  "downstream": {
+    "city": "济南",
+    "counts": {
+      "total": 238,
+      "active": 237,
+      "redirected": 1,
+      "embedded": 237
+    },
+    "imports": [
+      {
+        "id": "1a46f329-a24b-4cce-8163-211fb5f2d282",
+        "created_at": "2026-10-06T06:46:03.767Z",
+        "rolled_back_at": null,
+        "before_places": 180,
+        "after_places": 238,
+        "after_evidence": 325
+      },
+      {
+        "id": "8a16d1e2-b251-4de8-b8e1-08987dc75ab7",
+        "created_at": "2026-10-06T06:51:36.609Z",
+        "rolled_back_at": null,
+        "before_places": 238,
+        "after_places": 238,
+        "after_evidence": 325
+      }
+    ],
+    "originalPhotoDifferences": []
+  }
+}

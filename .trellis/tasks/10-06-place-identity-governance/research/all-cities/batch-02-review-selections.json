@@ -1,0 +1,11 @@
+[
+  {"review":9,"verdict":"distinct","explanation":"徐家汇原文10147是按城区分组的美食推荐，徐家汇公园是有独立园址的城市公园；商圈泛称不能吞并公园。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[10147]}]},
+  {"review":10,"verdict":"distinct","explanation":"人民大道201号的上海博物馆与天潼路395号的邮政博物馆是不同机构；源笔记分别描述人民广场博物馆和苏州河畔邮政建筑，不因博物馆后缀相似而归并。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[11037,11182]}]},
+  {"review":12,"verdict":"distinct","explanation":"同一原文明确说东金线（东昌路至金陵东路）或东复线，两条航线互为选择。相同错误地图坐标不构成同义证据，航线不能合并。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[11228,11229]}]},
+  {"review":20,"verdict":"distinct","explanation":"11182明确指2/10号线南京东路地铁站；南京东路记录是住宿与街区范围。交通站点与道路是独立身份，不能因站名包含路名而合并。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[11182]}]},
+  {"review":25,"verdict":"distinct","explanation":"上海博物馆东馆源地址为浦东世纪大道1952号，上海博物馆现有主记录位于人民大道201号且原路线经人民广场到馆。两馆分处不同游览地点，不能把机构简称当作馆区同义。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[11037]}]},
+  {"review":31,"verdict":"distinct","explanation":"同一原文分别标P5-9国航中心、P13-14国客中心，路线也经公平路渡口连接两处；源地址分别是杨树浦路100号、东大名路500号。两处拍摄地保持独立。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[10109,10112]}]},
+  {"review":30,"verdict":"uncertain","explanation":"源地图均给浙江中路120号，但11308原文明确给舒蔡记生煎淮海中路462弄口，10305/10325是南京路附近推荐。原文与地图冲突，尚不能确定是分店还是攻略误标；继续核实店方门店信息，不合并。","contexts":[{"file":"shanghai-batch02-context.json","mentionIds":[11308,10305,10325]}]},
+  {"review":33,"verdict":"uncertain","explanation":"10229明确是南京路新世界大丸中心B2分店，11071明确为淮海中路光明邨对面的现烤总店，原地图同落凌云路212号明显不能证明同店；另有11108泛称提及待核实。须先澄清泛称聚合和分店归属，不把品牌别名直接合并。","contexts":[{"file":"shanghai-independent-context.json","mentionIds":[10229,11071]}]},
+  {"review":40,"verdict":"uncertain","explanation":"白玉兰观景台经10934/11025确认是The Stage高空观景台；10982的SMP白玉兰观景台仅列为免费机位。同楼另有3楼露台和5楼活动平台，不能以建筑地址相同判等。需原图或具体楼层证据，保留独立候选。","contexts":[{"file":"shanghai-batch02-context.json","mentionIds":[10934,11025,10982,11119]}]}
+]

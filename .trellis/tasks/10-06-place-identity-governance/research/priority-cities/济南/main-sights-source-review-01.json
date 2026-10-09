@@ -1,0 +1,592 @@
+{
+  "city": "济南",
+  "batch": "batch-43",
+  "sourcePacket": "priority-cities/济南/main-sights-source-packet-01.json",
+  "sourcePacketSha256": "ae67cf18f0146e54467576269b40ac0b2cfe3b222b56ea4885332dd37dd3faef",
+  "summary": {
+    "sources": 2,
+    "mentions": 60,
+    "notes": 42,
+    "confirmed": 46,
+    "pending": 14,
+    "durationFieldsExcluded": 3,
+    "reasonFieldsExcluded": 2,
+    "reservationFieldsExcluded": 1
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "rows": [
+    {
+      "mentionId": 11336,
+      "noteId": 2545,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "875815856a969e3a247abf498ca91fee99d9d18ad6669b4a0f6712d43149dbc8",
+      "status": "reviewed_target",
+      "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+      "reason": "明确包含黑虎泉，原60分钟是与解放阁合计，排除数值及错误单点时长reason，保留接水证据。",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "group_duration",
+          "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水"
+        },
+        "reason": {
+          "reason": "subject_mismatch",
+          "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水"
+        }
+      }
+    },
+    {
+      "mentionId": 11373,
+      "noteId": 2546,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "e358083eb74eb08def8a1d07f0e373147a2e097109a1da643c31cb98327d43c8",
+      "status": "reviewed_target",
+      "quote": "泉水从三个石雕虎首中喷涌而出",
+      "reason": "明确虎首泉池本体，旁边接水为有界语境；整段夜游三小时不是单点时长。"
+    },
+    {
+      "mentionId": 11394,
+      "noteId": 2548,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "64f77a34270de6ba7991e2523f1d6ac6ab2e60facab5533f17e2d26b9a7d7238",
+      "status": "reviewed_target",
+      "quote": "交给城中心剩下的黑虎泉等地",
+      "reason": "第二日明确安排黑虎泉，游船价格/时刻在另段且不当作泉池政策。"
+    },
+    {
+      "mentionId": 11405,
+      "noteId": 2569,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "077abe91e7e5cc4c6a8399a7aa13a02dee3ca01462efcb84213d4d059f795631",
+      "status": "reviewed_target",
+      "quote": "黑虎泉接的免费泉水",
+      "reason": "正文明确路线及黑虎泉接水提示，商场是另一个主体。"
+    },
+    {
+      "mentionId": 11409,
+      "noteId": 2550,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "f6cfd54cf2feee3dfeb68b60e4da9ac8bf1797070fb2b6b65044bdc73b9be4d1",
+      "status": "reviewed_target",
+      "quote": "五龙潭—趵突泉—泉城广场—黑虎泉—解放阁",
+      "reason": "提及来自实际景点路线，两次抽取均保留，不借住宿段补充属性。"
+    },
+    {
+      "mentionId": 11433,
+      "noteId": 2567,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "038487a4cb9c5b7ba3701e49af79920fa17a5f25912ba9abdbb50bf50bed4783",
+      "status": "reviewed_target",
+      "quote": "🐯 黑虎泉：本地人打水的地方",
+      "reason": "独立黑虎泉条目，后文淄博景点不混入济南实体。"
+    },
+    {
+      "mentionId": 11439,
+      "noteId": 2618,
+      "entityId": null,
+      "inputHash": "8344e5a067087c0eaaf41ecb524bd3308b742576c2c9d292a129a9fc794ca281",
+      "status": "needs_evidence",
+      "quote": "这里是环城水系公园，不止有黑虎泉",
+      "reason": "旧reason将整个环城公园当黑虎泉；同段景色未逐一绑定泉池，两个混合提及暂待分配。"
+    },
+    {
+      "mentionId": 11444,
+      "noteId": 2553,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "d806658a94cf0eea1b8417d9a5f91599a9a612602491720185ea8ec397ccb949",
+      "status": "reviewed_target",
+      "quote": "以其独特的“黑虎吐水”景观闻名",
+      "reason": "明确虎首泉池，独立游览约30分钟保留。"
+    },
+    {
+      "mentionId": 11454,
+      "noteId": 2570,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "a91aabfb066506f7541f59a979b01bd7e88a5850e7a2762fe8bd545a673d4ae9",
+      "status": "reviewed_target",
+      "quote": "🕘10:30-11:30📍黑虎泉（p11）",
+      "reason": "明确一小时泉池访问安排，两次抽取不应当作两个独立时长样本；本轮未看P11。"
+    },
+    {
+      "mentionId": 11474,
+      "noteId": 2560,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "ca23e8b15d9f9e7f166948d020d872a64ecfb255ec06840502c59a2b8af6b9f9",
+      "status": "reviewed_target",
+      "quote": "黑虎泉可以接直饮水",
+      "reason": "独立路线及接水描述支持原主体，两次抽取保留；不据文字核实饮用水卫生政策。"
+    },
+    {
+      "mentionId": 11490,
+      "noteId": 2551,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "3d814fd89c56cf93e49f0912fdc05d290360ea4d3a98e55a5acc55848cafd3a2",
+      "status": "reviewed_target",
+      "quote": "5️⃣黑虎泉：泉水荡漾，有很多小鱼，沿着河堤走一圈很舒服",
+      "reason": "黑虎泉独立条目，沿河步行是访问语境，不将护城河作为同义名。"
+    },
+    {
+      "mentionId": 11514,
+      "noteId": 2607,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "f63240910ea3227c528bc2f14578443763e30acdbbde0256616570580f38737f",
+      "status": "reviewed_target",
+      "quote": "去泉城广场，再去黑虎泉",
+      "reason": "原文给出明确景点访问线路，酒店评价不作为泉池事实。"
+    },
+    {
+      "mentionId": 11518,
+      "noteId": 2563,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "1aeaa155fadd0b0fc6edb8fe65d06cc5e4f20cf5edfbb69b409d2768d5f79e26",
+      "status": "reviewed_target",
+      "quote": "三虎头喷涌气势足",
+      "reason": "明确泉池虎首特征，后文酒店便利不纳入本提及。"
+    },
+    {
+      "mentionId": 11542,
+      "noteId": 2582,
+      "entityId": null,
+      "inputHash": "9367d03fe6cda63d0cc6e5e089d51b594e3d1f46900d2f1091154e33640ac011",
+      "status": "needs_evidence",
+      "quote": "距离大明湖、曲水亭街、百花洲、黑虎泉、趵突泉、五龙潭",
+      "reason": "未具名餐馆附近宣传，不支持泉池具体游览主体与消费事实。"
+    },
+    {
+      "mentionId": 11575,
+      "noteId": 2564,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "0ec4adc9c74878e0d50f80b22664a08413e36c991194c2e89c58caa628cb1dc3",
+      "status": "reviewed_target",
+      "quote": "第四站：黑虎泉➕解放阁 沿护城河走",
+      "reason": "明确合并游览路线中的两地点，未给单点分钟，不新增时长或合并身份。"
+    },
+    {
+      "mentionId": 11584,
+      "noteId": 2583,
+      "entityId": null,
+      "inputHash": "a31fbad0b895a1f12514fb71459b9a39c53691cac8a1bd8e16f3bac86d6d258f",
+      "status": "needs_evidence",
+      "quote": "附近离着趵突泉、五龙潭、黑虎泉",
+      "reason": "餐厅广告附近参照，原提及未形成独立泉池访问。"
+    },
+    {
+      "mentionId": 11590,
+      "noteId": 2622,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "6714aba12e87e1ed74cbfee1de51da7721a5424fc1966ad7fca67d936dfa2344",
+      "status": "reviewed_target",
+      "quote": "趵突泉→黑虎泉→解放阁",
+      "reason": "明确实际游览景点路线，原提及不含错配周边商铺事实。"
+    },
+    {
+      "mentionId": 11620,
+      "noteId": 2624,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "f544b1b12a1145deeebe8fd320585319a43d901b1a27add5e687b359bc0e213b",
+      "status": "reviewed_target",
+      "quote": "沿着护城河，就能看到黑虎泉",
+      "reason": "正文明确到黑虎泉接水，护城河及末段车站是独立语境。"
+    },
+    {
+      "mentionId": 11687,
+      "noteId": 2609,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "2447bca9f0b7008d6c4cef34a510f0bd5e4331bc0c1dba2f23a8e125c3cdf56d",
+      "status": "reviewed_target",
+      "quote": "泉水从三兽头喷射",
+      "reason": "明确泉池本体，社区接水描述保留来源，不冒称官方卫生结论。"
+    },
+    {
+      "mentionId": 12564,
+      "noteId": 2545,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "e12a1c289fd6cc9f4cd105b272fbcb0e3804264e4e78aa8a424775ef840a3d3d",
+      "status": "reviewed_target",
+      "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+      "reason": "明确包含黑虎泉，原60分钟是与解放阁合计，排除数值及错误单点时长reason，保留接水证据。",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "group_duration",
+          "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水"
+        },
+        "reason": {
+          "reason": "subject_mismatch",
+          "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水"
+        }
+      }
+    },
+    {
+      "mentionId": 12576,
+      "noteId": 2803,
+      "entityId": null,
+      "inputHash": "e4f9fbf65af9bffbc8391360e89b63a8939c1265f059a53616dfc067dbefc909",
+      "status": "needs_evidence",
+      "quote": "步行即可抵达黑虎泉",
+      "reason": "抽取证据来自宽厚里住宿片区便利说明，不能用同篇路线替该字段背书。"
+    },
+    {
+      "mentionId": 12614,
+      "noteId": 2546,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "87f4050d5a7c4a5f0948ed0755439393c0f4aa83de51c0c68ce2059a30ea26eb",
+      "status": "reviewed_target",
+      "quote": "泉水从三个石雕虎首中喷涌而出",
+      "reason": "明确虎首泉池本体，旁边接水为有界语境；整段夜游三小时不是单点时长。"
+    },
+    {
+      "mentionId": 12635,
+      "noteId": 2782,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "95a18ffba958c5ea88d12ce5fd4fb0cffd5555e597a32da5684903b4a9bd5d54",
+      "status": "reviewed_target",
+      "quote": "进门右转下去就是黑虎泉",
+      "reason": "明确从公园入口到泉池，莲花接水台只是具名附属语境，不把入口或台盆当别名。"
+    },
+    {
+      "mentionId": 12657,
+      "noteId": 2816,
+      "entityId": null,
+      "inputHash": "8b2a33eb4b9e04ed079308de1ee83dcfd1870554320c4d6e69df01f3ee443463",
+      "status": "needs_evidence",
+      "quote": "旁边还有个游泳池，好像是免费的",
+      "reason": "旧提及混有取水管、游船与不确定免费游泳池，正文未清楚绑定泉池本体，不能输出确定免费设施。"
+    },
+    {
+      "mentionId": 12668,
+      "noteId": 2786,
+      "entityId": null,
+      "inputHash": "6a23797fa1fd75f67d2ea265e0b86e73253d5f5f54fac91198e7f9ada1b48a05",
+      "status": "needs_evidence",
+      "quote": "尤其是玛瑙泉",
+      "reason": "旧黑虎泉提及的实际看点为玛瑙泉水色；不能将泉群/玛瑙泉描述推广到虎首泉池。"
+    },
+    {
+      "mentionId": 12675,
+      "noteId": 2550,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "04071d03782778471fefc8d08414ec88e4c079be786a5ae2defbeb97ae846e37",
+      "status": "reviewed_target",
+      "quote": "五龙潭—趵突泉—泉城广场—黑虎泉—解放阁",
+      "reason": "提及来自实际景点路线，两次抽取均保留，不借住宿段补充属性。"
+    },
+    {
+      "mentionId": 12701,
+      "noteId": 2807,
+      "entityId": null,
+      "inputHash": "de155ea83dac9eb322701fb20d200e18b2174331be469c56cf2c439a39440dff",
+      "status": "needs_evidence",
+      "quote": "坐大明湖走护城河到黑虎泉的船",
+      "reason": "提及主体为航线终点/码头，全文没有独立泉池游览事实，保留待审而非把船程当泉池时长。"
+    },
+    {
+      "mentionId": 12711,
+      "noteId": 2567,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "bd80d55fb8e69d47b3a4a8ed961306e1ba0970085c740b98fb44b484be0d221c",
+      "status": "reviewed_target",
+      "quote": "🐯 黑虎泉：本地人打水的地方",
+      "reason": "独立黑虎泉条目，后文淄博景点不混入济南实体。"
+    },
+    {
+      "mentionId": 12716,
+      "noteId": 2618,
+      "entityId": null,
+      "inputHash": "a4519af7f10eaca5f14724256b784ee8d477cae5cd78b996c894a1ecc1ec1321",
+      "status": "needs_evidence",
+      "quote": "这里是环城水系公园，不止有黑虎泉",
+      "reason": "旧reason将整个环城公园当黑虎泉；同段景色未逐一绑定泉池，两个混合提及暂待分配。"
+    },
+    {
+      "mentionId": 12720,
+      "noteId": 2570,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "c3ba149b078bcd2c098421f42bd5e5e8b1f09ceecaa45e1b8f3f41b412fde87d",
+      "status": "reviewed_target",
+      "quote": "🕘10:30-11:30📍黑虎泉（p11）",
+      "reason": "明确一小时泉池访问安排，两次抽取不应当作两个独立时长样本；本轮未看P11。"
+    },
+    {
+      "mentionId": 12734,
+      "noteId": 2560,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "c1bfe9fe3610e99e19af579aaa6c42de2c8262c22a736dfda21fbdb70ef2e4b2",
+      "status": "reviewed_target",
+      "quote": "黑虎泉可以接直饮水",
+      "reason": "独立路线及接水描述支持原主体，两次抽取保留；不据文字核实饮用水卫生政策。"
+    },
+    {
+      "mentionId": 12760,
+      "noteId": 2808,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "8f94ef52c113eec3c51c6848b7b804e6f7cb92eb0fe1518bba594ad527a93a51",
+      "status": "reviewed_target",
+      "quote": "一直走到黑虎泉取水点，可以远观解放阁",
+      "reason": "明确黑虎泉访问，阁楼是隔河可见的独立主体。"
+    },
+    {
+      "mentionId": 12784,
+      "noteId": 2798,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "dea823be08f02b3eb48f4868597c45c47eb3bd5d2028cfb28849ca3f31b82348",
+      "status": "reviewed_target",
+      "quote": "6️⃣黑虎泉",
+      "reason": "正文独立列为游览景点，只支持名称提及，不等于照片主体已确认。"
+    },
+    {
+      "mentionId": 12790,
+      "noteId": 2789,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "3bad5bfdbc849b7deff384051ce55d2d6dee583f044f74961b2b0124831ea317",
+      "status": "reviewed_target",
+      "quote": "三处兽头喷涌泉水",
+      "reason": "明确泉池本体，沿河闲逛为其周边活动，不合并护城河。"
+    },
+    {
+      "mentionId": 12809,
+      "noteId": 2810,
+      "entityId": null,
+      "inputHash": "f5b6115d44efef85d8dcd391054ebae57e95bed98366b036cd0e7604bfdf732d",
+      "status": "needs_evidence",
+      "quote": "黑虎泉茶摊喝泉水茶",
+      "reason": "原提及消费事实只针对未具名茶摊；同篇泉池路线不能给茶摊事实背书，待分配。"
+    },
+    {
+      "mentionId": 12829,
+      "noteId": 2564,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "c70aa403c730ea576d3e92832d65cf89792eb223cf70b6ce989037d56385d404",
+      "status": "reviewed_target",
+      "quote": "第四站：黑虎泉➕解放阁 沿护城河走",
+      "reason": "明确合并游览路线中的两地点，未给单点分钟，不新增时长或合并身份。"
+    },
+    {
+      "mentionId": 12838,
+      "noteId": 2851,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "1f16470fff06cff0029e3bd2478db37abae7ad9f4ccaea9b1dd9c3a0d7d4591b",
+      "status": "reviewed_target",
+      "quote": "逛完正好接黑虎泉喝口泉水",
+      "reason": "明确建议黑虎泉为下一游览点，与前述三条街及茶摊分开。"
+    },
+    {
+      "mentionId": 12849,
+      "noteId": 2829,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "3e949a9c48c8697aec38b26467dad0e33a14d4db9cb8c7573db29abbb4c037e9",
+      "status": "reviewed_target",
+      "quote": "是本地人爱去的泉",
+      "reason": "独立泉池条目和接水说明成立，不与住宿片区混合。"
+    },
+    {
+      "mentionId": 12857,
+      "noteId": 2830,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "e2a5c5e3e21745b4123a11b9c5286a1c6077733322baada59ff1b17bc60c2766",
+      "status": "reviewed_target",
+      "quote": "三虎头喷水，看着很壮观",
+      "reason": "明确虎首泉池；全篇交通和其他景区政策不移植。"
+    },
+    {
+      "mentionId": 12869,
+      "noteId": 2834,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "31dab7f1489085698f2b55581eddf6999d4b8028794167404f3d1d7f6b8c84cb",
+      "status": "reviewed_target",
+      "quote": "潭水清澈见底，本地市民常到此取水",
+      "reason": "独立泉池条目，明确泉流和城墙的周边关系。"
+    },
+    {
+      "mentionId": 12898,
+      "noteId": 2856,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "8f7fe8c6b784b03ba7e971ea9c7aa90d23b1232f5c770f0cceaacdab008a1138",
+      "status": "reviewed_target",
+      "quote": "按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的",
+      "reason": "明确实际游览顺序，黑虎泉与护城河分别保留。"
+    },
+    {
+      "mentionId": 12905,
+      "noteId": 2853,
+      "entityId": null,
+      "inputHash": "1f913a003f78c6d70a5e0f2dc3d33b26d2b9f7557eba038e0bf1024b483b1d15",
+      "status": "needs_evidence",
+      "quote": "距离黑虎泉、解放阁、曲水亭街",
+      "reason": "未具名餐馆位置宣传，不作已确认泉池访问事实。"
+    },
+    {
+      "mentionId": 12914,
+      "noteId": 2624,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "2340f343406955e328c192eea43c58059174d851017abafbba21992b42a9fa02",
+      "status": "reviewed_target",
+      "quote": "沿着护城河，就能看到黑虎泉",
+      "reason": "正文明确到黑虎泉接水，护城河及末段车站是独立语境。"
+    },
+    {
+      "mentionId": 12929,
+      "noteId": 2835,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "9ea67423f452f939650351e185482b4c4438c6730ae162aa2e28d9831925ff82",
+      "status": "reviewed_target",
+      "quote": "★黑虎泉：❗️坐船需要提前买票选座",
+      "reason": "正文明确到泉池、区分途经诸泉及对面黑虎阁。预约事实实际为坐船选座，单独排除reservation字段，不删除有效具名语境。",
+      "factExclusions": {
+        "reservation": {
+          "reason": "subject_mismatch",
+          "quote": "★黑虎泉：❗️坐船需要提前买票选座"
+        }
+      }
+    },
+    {
+      "mentionId": 12939,
+      "noteId": 2837,
+      "entityId": null,
+      "inputHash": "2dbf4188cdafbb31bfd0df8a9a2259a2a454ad5194b1b8cf8e859cd06260320a",
+      "status": "needs_evidence",
+      "quote": "环城公园南门➠玛瑙泉➠黑虎泉➠琵琶泉➠五莲泉➠一虎泉➠金虎泉",
+      "reason": "旧提及整体为多个泉池的90分钟线路，并以玛瑙泉作看点，主体与事实范围均混合，继续待审。"
+    },
+    {
+      "mentionId": 12953,
+      "noteId": 2839,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "806bc4dadb2045b3c9d64e5eab883c9db87e3814e4d13b0d5f0aa50cefe4fd61",
+      "status": "reviewed_target",
+      "quote": "④黑虎泉🥤可以直接接泉水尝一尝",
+      "reason": "明确实际到访顺序与接水活动，酒店休整时间不属于此地。"
+    },
+    {
+      "mentionId": 12969,
+      "noteId": 2840,
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "inputHash": "d6c2805229132bad1d40c4cea87cd2929a45522ae444eea5b27e1b7ff5eb2f0f",
+      "status": "reviewed_target",
+      "quote": "✨14:30到黑虎泉",
+      "reason": "14:30至15:20下一站是实际访问时段，50分钟保留；此数并非游船时长，不能因同段出现船字就排除。"
+    },
+    {
+      "mentionId": 11392,
+      "noteId": 2548,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "b8847dacca276207c86180f295e9a609c064dcd136e695ca75093e3abe28c29c",
+      "status": "reviewed_target",
+      "quote": "早起爬千佛山",
+      "reason": "明确到千佛山爬山，景区与后续博物馆分开。"
+    },
+    {
+      "mentionId": 11476,
+      "noteId": 2560,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "880a0104d7b4e1068cbd7913c22453193c1363f67f4863fc5308d3176f06ffe6",
+      "status": "reviewed_target",
+      "quote": "或打车10min到千佛山",
+      "reason": "有条件的可选游览推荐仍可认领主体；10分钟是交通时间，没有写入单点分钟。"
+    },
+    {
+      "mentionId": 11570,
+      "noteId": 2564,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "1e21dd87a8fe89c07048737c56722e6f7134939f3bb5b6b8ed813a6428f2d9a3",
+      "status": "reviewed_target",
+      "quote": "第二站：千佛山 美院门进 先往左看大佛 再往右上山",
+      "reason": "入园后访问大佛并登山，支持整体景区；门、大佛不作别名。"
+    },
+    {
+      "mentionId": 11605,
+      "noteId": 2608,
+      "entityId": null,
+      "inputHash": "216022cd7e01d527730bbb4db984d48ed5ed55ea4e535c575b8f12603ac5006c",
+      "status": "needs_evidence",
+      "quote": "前两个景区都有地铁站",
+      "reason": "住宿区域交通宣传，原reason推导交通便利，缺少独立景区游览事实。"
+    },
+    {
+      "mentionId": 11684,
+      "noteId": 2609,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "41616a7a2a028887fb06c172f78b63a01d90213a87ff2ce560df0a774813e23a",
+      "status": "reviewed_target",
+      "quote": "千佛山 – 登顶俯瞰泉城全景",
+      "reason": "独立景区登山与兴国禅寺描述，寺庙不是景区同义名。"
+    },
+    {
+      "mentionId": 11706,
+      "noteId": 2613,
+      "entityId": null,
+      "inputHash": "8848c0c30b08f6dae0624a405ea52f482bb358822789aeaa8644079c70970a47",
+      "status": "needs_evidence",
+      "quote": "可以直达趵突泉、大明湖、千佛山",
+      "reason": "未具名酒店广告的交通宣传，不能给景区赋酒店附近直达属性。"
+    },
+    {
+      "mentionId": 12631,
+      "noteId": 2793,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "708ac34333e30bfbff5ec7eabf96bb24ef86922ead4dbb761dd6441b8983ae70",
+      "status": "reviewed_target",
+      "quote": "时间充裕的，可以安排济南千佛山",
+      "reason": "有条件游览建议，主体为景区，不据此造访记录或造时长。"
+    },
+    {
+      "mentionId": 12642,
+      "noteId": 2782,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "e72c2329e42cab1d14fd21922f1ef954657589bd6e2d4e410e70415deba8fb07",
+      "status": "reviewed_target",
+      "quote": "从历山院去山顶的路真的很难走",
+      "reason": "原文明确景区登山经历及恐高者主观评价，不泛化为客观安全评级。"
+    },
+    {
+      "mentionId": 12736,
+      "noteId": 2560,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "82030de97eadf3d98c9e130351ff7843be080f1f0fa9bd5adf12eff7da92f3f2",
+      "status": "reviewed_target",
+      "quote": "或打车10min到千佛山",
+      "reason": "有条件的可选游览推荐仍可认领主体；10分钟是交通时间，没有写入单点分钟。"
+    },
+    {
+      "mentionId": 12768,
+      "noteId": 2797,
+      "entityId": null,
+      "inputHash": "a6e49d805f8d63e3ebc382a835be7af82e78f773657d705759db7e76c0d0670f",
+      "status": "needs_evidence",
+      "quote": "5️⃣-6️⃣千佛山山顶",
+      "reason": "原明确主体为山顶摄影机位，旧抽取省略山顶；不能将最佳日落点与时刻不加限定地扩为整个景区。"
+    },
+    {
+      "mentionId": 12824,
+      "noteId": 2564,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "498d1342dcbbd4b79c1c2acbf6bd46618009cb5483e0871e7f56bf4ac2e1e197",
+      "status": "reviewed_target",
+      "quote": "第二站：千佛山 美院门进 先往左看大佛 再往右上山",
+      "reason": "入园后访问大佛并登山，支持整体景区；门、大佛不作别名。"
+    },
+    {
+      "mentionId": 12851,
+      "noteId": 2829,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "c68fd9a1fd65595cbf34d4c6199aa9c3c26342e6e634b22baf6d3d71e9f4d87a",
+      "status": "reviewed_target",
+      "quote": "📍千佛山（景区票30R+洞窟票25R）\n🔜是济南三大名胜之一，山不高，20-40分钟就能登顶",
+      "reason": "明确景区独立条目；30分钟是登顶路段，不是含下山/寺庙/洞窟的整次游览，排除单点分钟而保留原登山说明。",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "subject_mismatch",
+          "quote": "📍千佛山（景区票30R+洞窟票25R）\n🔜是济南三大名胜之一，山不高，20-40分钟就能登顶"
+        }
+      }
+    },
+    {
+      "mentionId": 12862,
+      "noteId": 2830,
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "inputHash": "c3d05fe209c37cd7f518bcea8846aec951a9b00f03990e9e01cd72055991ba28",
+      "status": "reviewed_target",
+      "quote": "千佛山：济南名山，爬山祈福，登顶俯瞰全城视野好",
+      "reason": "明确整体景区爬山活动，寺庙/山顶不作同义名。"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "key": "all-cities-20261009-batch-45-source-5321-scope",
+    "city": "济南",
+    "sourcePlaceId": 5321,
+    "expectedSourceHash": "258e058d02d84ebe10c2ef31a36d1bac6ab4c30c251b086c17692f1bb1782150",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "fef9784ad510099ad3bd150eee3fbf5c": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11343,
+        "inputHash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28",
+        "entityId": "fef9784ad510099ad3bd150eee3fbf5c"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_scope",
+        "file": "priority-cities/济南/commercial-source-review-01.json",
+        "mentionIds": [
+          11343
+        ],
+        "conclusion": "完整原文确认独立路口/商业文化街区，原提及不改写，原图库无匹配数据；非本批三主体保持原状。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-45-source-5478-scope",
+    "city": "济南",
+    "sourcePlaceId": 5478,
+    "expectedSourceHash": "d43cbb0ee62d7190e0f0eae54a6b1ed4b8dc91a6504d896d5820b45630860c94",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "910ac4e3fee34da1dd5f4378c7319ba5": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11425,
+        "inputHash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e",
+        "entityId": "910ac4e3fee34da1dd5f4378c7319ba5"
+      },
+      {
+        "mentionId": 12619,
+        "inputHash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529",
+        "entityId": "910ac4e3fee34da1dd5f4378c7319ba5"
+      },
+      {
+        "mentionId": 12644,
+        "inputHash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350",
+        "entityId": "910ac4e3fee34da1dd5f4378c7319ba5"
+      },
+      {
+        "mentionId": 12703,
+        "inputHash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434",
+        "entityId": "910ac4e3fee34da1dd5f4378c7319ba5"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_scope",
+        "file": "priority-cities/济南/commercial-source-review-01.json",
+        "mentionIds": [
+          11425,
+          12619,
+          12644,
+          12703
+        ],
+        "conclusion": "完整原文确认独立路口/商业文化街区，原提及不改写，原图库无匹配数据；非本批三主体保持原状。"
+      }
+    ]
+  }
+]

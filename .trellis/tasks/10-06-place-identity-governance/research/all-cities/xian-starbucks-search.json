@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "e3d166366984",
+  "query": "西安 星巴克 中大国际店 臻选 南大街 商场 楼梯 咖啡豆墙 地址 两家",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先查西安星巴克“中大国际店”、南大街臻选以及带楼梯、咖啡豆墙相关门店的地址与区别。",
+  "sources": [
+    {
+      "url": "https://gs.ctrip.com/html5/you/foods/fooddetail/7/90681711.html",
+      "provider": "tavily",
+      "title": "星巴克臻选(西安合生汇店)",
+      "description": "楼梯旁的墙9图小语5分超棒我就是冲着拍照墙来打卡的,地址:中大国际一楼二楼,甄选店的豆子和别家的不一样,点了拿铁,换了燕麦奶,口感非常好"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/393775872",
+      "provider": "tavily",
+      "title": "西安拍照| 两大城市名片的地标性网红打卡处都集中在这家商场",
+      "description": "⃣星巴克楼梯2 … 地址:碑林区南大街30号中大国际A座 ⏰营业时间:07:00-23:00"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://gs.ctrip.com/html5/you/foods/fooddetail/7/90681711.html",
+      "provider": "tavily",
+      "title": "星巴克臻选(西安合生汇店)",
+      "description": "楼梯旁的墙9图小语5分超棒我就是冲着拍照墙来打卡的,地址:中大国际一楼二楼,甄选店的豆子和别家的不一样,点了拿铁,换了燕麦奶,口感非常好"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/393775872",
+      "provider": "tavily",
+      "title": "西安拍照| 两大城市名片的地标性网红打卡处都集中在这家商场",
+      "description": "⃣星巴克楼梯2 … 地址:碑林区南大街30号中大国际A座 ⏰营业时间:07:00-23:00"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 5281.56,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 9747.07,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 9747.1
+}

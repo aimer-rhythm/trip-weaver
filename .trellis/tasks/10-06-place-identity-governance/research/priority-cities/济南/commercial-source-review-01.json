@@ -1,0 +1,242 @@
+{
+  "city": "济南",
+  "batch": 45,
+  "sourcePacket": "priority-cities/济南/commercial-source-packet-01.json",
+  "sourcePacketSha256": "b238f038008e23be87e945b3f669782aea85f8c0f9b0b808e43d1b618bf43834",
+  "investigated": {
+    "roots": 5,
+    "sources": 7,
+    "mentions": 21,
+    "fullNotes": 12
+  },
+  "batchScope": {
+    "roots": 2,
+    "sources": 2,
+    "mentions": 5,
+    "fullNotes": 4,
+    "confirmed": 5,
+    "pending": 0
+  },
+  "deferredEntityIds": [
+    "46bf462d545dc6435d6de296ba099d0f",
+    "c11648e477180d1b3f97da06808da5e7",
+    "ce733b67e45f0d657e53ff9bff8cbbce"
+  ],
+  "deferredImageReason": "老商埠/经三路有18个旧目录记录，4个旧元数据eligible；新增mentionSources也阻断名称图库回退，不能无视觉核查自动绑定或静默丢弃。",
+  "deferredTextReason": "红绿灯拼接抽取名在原文不连续，当前字段排除引用校验拒绝，未修改数据或弱化校验。",
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false,
+  "rows": [
+    {
+      "mentionId": 11419,
+      "noteId": 2550,
+      "inputHash": "0c944e4b24529f03f37ab30d63694d994c11962d36d2573cb0c7294f94b76aaa",
+      "originalName": "经三路老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+      "reason": "第三日路线明确老商埠商业街区，保留既有同义关系。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 11424,
+      "noteId": 2567,
+      "inputHash": "fca088b4f6fa3dd8c82030c22a1f4eceed8ec6947d19b9e50ce7c969318047b6",
+      "originalName": "老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "复古建筑超出片！文艺青年必冲！",
+      "reason": "独立老商埠条目描述复古建筑与咖啡馆。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 11498,
+      "noteId": 2554,
+      "inputHash": "1790af6d219a000fa3c6d97142752797c59c21d04c446a41c944aa4f61839072",
+      "originalName": "老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离",
+      "reason": "条件推荐去老商埠拍照是明确主体，非路途时长。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 11530,
+      "noteId": 2573,
+      "inputHash": "6d1c16919ba265113c1c2563f4b0a9af5dd25d0ceb9b19faa8d047e9504bb165",
+      "originalName": "老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "老商埠→经三路→中山公园",
+      "reason": "老商埠→经三路→中山公园明确区分商业体、道路和公园。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12616,
+      "noteId": 2793,
+      "inputHash": "1b8e80b6f5717b3aba0b47e5d0b1a6c15d8794ced369ed069ec2adf14c71af15",
+      "originalName": "老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "建议早上去，人少更好拍",
+      "reason": "济南文字装置、花墙、老爷车与彩墙为街区看点，不移给道路。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12645,
+      "noteId": 2782,
+      "inputHash": "887030711ca451c681a5b246601a5bcae848c7f2be33cec414cac05da4aeedf0",
+      "originalName": "老商埠·经三路",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "街区网红打卡点，很出片",
+      "reason": "老商埠·经三路沿用已确认的商业街区名称；不据名称包含道路而合并道路。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12685,
+      "noteId": 2550,
+      "inputHash": "397e1d3adbbb4d9672f23cda507b2177c023079b95f089799666bf7fb8fc1c47",
+      "originalName": "经三路老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+      "reason": "同篇路线重复提及，仍为商业街区；不合并经三路道路。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12702,
+      "noteId": 2567,
+      "inputHash": "27694d1b26ce13ed34acc5b4d8c18233b62b069561cefe607697026e87a172a1",
+      "originalName": "老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "复古建筑超出片！文艺青年必冲！",
+      "reason": "独立条目及红砖墙咖啡馆看点支持商业街区。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12751,
+      "noteId": 2554,
+      "inputHash": "a6bc9b6f06b90a4f77cbe157910cb97ce1cf8a871d328a06010b59fc79925cf8",
+      "originalName": "老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离",
+      "reason": "条件推荐与劝退仍为明确街区对象。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12785,
+      "noteId": 2798,
+      "inputHash": "cf8e49c979b1dc11c3ba24af92628271d5ebec569f3c0a82f9616d042ccda40c",
+      "originalName": "经三路老商埠",
+      "proposedEntityId": null,
+      "quote": "7️⃣经三路-老商埠附近很多好看的咖啡店",
+      "reason": "实际主语是经三路-老商埠附近未具名咖啡店，不是商业体本身的独立提及，建议待审。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12799,
+      "noteId": 2789,
+      "inputHash": "69892942666a2bf599da51fc6da942bd7c1105b88bd3564c4118fc2c4f3cd8f4",
+      "originalName": "经三路老商埠",
+      "proposedEntityId": null,
+      "quote": "民国复古洋楼街区，打卡爱心红绿灯、夹心胡同",
+      "reason": "整块placeContent混合商业体有效洋楼/咖啡店与范围未明的爱心红绿灯，不删除全部有效看点以掩盖混合范围，建议待审。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12866,
+      "noteId": 2830,
+      "inputHash": "b1f0ffd8a3f6a788bcf2525ea8516b159f39a3d2cd108d04275d19e79054cc26",
+      "originalName": "经三路老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "复古洋楼街区，网红店多",
+      "reason": "明确复古洋楼与店铺的商业街区描述。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12878,
+      "noteId": 2834,
+      "inputHash": "d60aba9b8c007078147ec31d2c4e9fdf0c712a78e43913fb61cf2d3345aa53a9",
+      "originalName": "经三路老商埠",
+      "proposedEntityId": "46bf462d545dc6435d6de296ba099d0f",
+      "quote": "既有老济南的百年记忆，又充满新潮烟火",
+      "reason": "明确老城记忆与新潮商业街区描述。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 11529,
+      "noteId": 2573,
+      "inputHash": "58be5c58f7114c030467ca5c9a3b1c93ea90a624c6279d0861b24e8d4b77fba8",
+      "originalName": "经三路",
+      "proposedEntityId": "c11648e477180d1b3f97da06808da5e7",
+      "quote": "经三路真的是浪漫天花板",
+      "reason": "独立道路咖啡/古着店描述，全文将商业体另列。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12617,
+      "noteId": 2793,
+      "inputHash": "234288b3e4cdbad838a4321d8a5d34ba187e65274821ee8caaf9ea52244377e2",
+      "originalName": "经三路",
+      "proposedEntityId": "c11648e477180d1b3f97da06808da5e7",
+      "quote": "洋气又浪漫，藏着不少宝藏店铺",
+      "reason": "完整正文将心形红绿灯限定纬三路；现reason遗漏限定，建议排除reason，保留具有纬三路限定的placeContent及道路主体。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 12776,
+      "noteId": 2797,
+      "inputHash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a",
+      "originalName": "经三路爱心红绿灯",
+      "proposedEntityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+      "quote": "爱心红绿灯和夹心胡同都在这里",
+      "reason": "红绿灯主体明确，但这里指经三路周边，夹心胡同不能成为红绿灯自身所包含的景观；三描述字段建议排除。拼接抽取名在原文不连续，现字段排除校验拒绝该引用，保留未应用发现，不改原文或放宽校验。",
+      "includedInBatch": false
+    },
+    {
+      "mentionId": 11343,
+      "noteId": 2566,
+      "inputHash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28",
+      "originalName": "纬三路与经三路交叉口",
+      "proposedEntityId": "fef9784ad510099ad3bd150eee3fbf5c",
+      "quote": "打卡爱心斑马线",
+      "reason": "全文路线首站明确路口爱心斑马线，后续商店/夹心胡同独立；全线路1至2小时不能分给路口，原提及无minutes不伪造排除。",
+      "includedInBatch": true
+    },
+    {
+      "mentionId": 11425,
+      "noteId": 2567,
+      "inputHash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e",
+      "originalName": "大观园",
+      "proposedEntityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "quote": "市井烟火气十足，夜景更有味道！",
+      "reason": "独立大观园条目描述古城风貌与市井夜景，非具体餐馆。",
+      "includedInBatch": true
+    },
+    {
+      "mentionId": 12619,
+      "noteId": 2793,
+      "inputHash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529",
+      "originalName": "大观园",
+      "proposedEntityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "quote": "汇聚了很多济南当地美食小吃",
+      "reason": "古色古香及汇聚本地小吃指商业文化街区，不是单家餐厅；以文化主体分类。",
+      "includedInBatch": true
+    },
+    {
+      "mentionId": 12644,
+      "noteId": 2782,
+      "inputHash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350",
+      "originalName": "大观园",
+      "proposedEntityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "quote": "可去可不去",
+      "reason": "可去可不去为大观园本身评价，保留明确主体与来源判断。",
+      "includedInBatch": true
+    },
+    {
+      "mentionId": 12703,
+      "noteId": 2567,
+      "inputHash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434",
+      "originalName": "大观园",
+      "proposedEntityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "quote": "市井烟火气十足，夜景更有味道",
+      "reason": "同篇重复提及仍为大观园整体游览，夜景描述不转为营业政策。",
+      "includedInBatch": true
+    }
+  ]
+}

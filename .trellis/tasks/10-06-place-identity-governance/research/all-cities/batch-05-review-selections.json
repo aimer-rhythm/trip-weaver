@@ -1,0 +1,9 @@
+[
+  {"review":43,"verdict":"distinct","explanation":"10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10763]}]},
+  {"review":44,"verdict":"distinct","explanation":"10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10762]}]},
+  {"review":51,"verdict":"distinct","explanation":"10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10704,10787]}]},
+  {"review":53,"verdict":"uncertain","explanation":"10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10758,10668]}]},
+  {"review":54,"verdict":"uncertain","explanation":"10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10788,10668]}]},
+  {"review":55,"verdict":"uncertain","explanation":"10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10758,10788]}]},
+  {"review":56,"verdict":"uncertain","explanation":"10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。","contexts":[{"file":"yunnan-batch03-context.json","mentionIds":[10643,10797]}]}
+]

@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "15a3a6e461cd",
+  "query": "济南 山东大厦 官网 马鞍山路 中庭 明珠天地 C座 大明湖 摄影 地址；请分别寻找原始网页链接，不将两个建筑混同。",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先分别检索「山东大厦」和「中庭明珠天地」的官网与地址，避免把两处建筑混在一起。",
+  "sources": [
+    {
+      "url": "https://www.sdhotel.com.cn/contact.html",
+      "provider": "tavily",
+      "title": "山东大厦官方网站- 在线预订- 济南",
+      "description": "地址：中国山东济南马鞍山路2-1号邮编：250002 电话：（86-531）82958888/82508888 传真：（86-531）82958886 地图及路线指南. 山东大厦版权所有网站ICP：鲁ICP备14037993"
+    },
+    {
+      "url": "https://shandong.hoteljinan.cn",
+      "provider": "tavily",
+      "title": "山东大厦(Jinan Shandong Hotel)-主页-优惠预订",
+      "description": "山东大厦酒店位于马鞍山路，距济南西客站约14公里。由此出发到五岳之首泰山、孔子 ... 山东大厦酒店拥有各式中西餐厅12处，49个不同风格的豪华包间，可提供鲁菜"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.sdhotel.com.cn/contact.html",
+      "provider": "tavily",
+      "title": "山东大厦官方网站- 在线预订- 济南",
+      "description": "地址：中国山东济南马鞍山路2-1号邮编：250002 电话：（86-531）82958888/82508888 传真：（86-531）82958886 地图及路线指南. 山东大厦版权所有网站ICP：鲁ICP备14037993"
+    },
+    {
+      "url": "https://shandong.hoteljinan.cn",
+      "provider": "tavily",
+      "title": "山东大厦(Jinan Shandong Hotel)-主页-优惠预订",
+      "description": "山东大厦酒店位于马鞍山路，距济南西客站约14公里。由此出发到五岳之首泰山、孔子 ... 山东大厦酒店拥有各式中西餐厅12处，49个不同风格的豪华包间，可提供鲁菜"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4754.35,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 11969.4,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 11969.42
+}

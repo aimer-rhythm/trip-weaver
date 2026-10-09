@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "940008b8a71a",
+  "query": "草包包子铺 济南 普利街 总店",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先查一下济南普利街“草包包子铺”总店的公开信息。",
+  "sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E8%8D%89%E5%8C%85%E5%8C%85%E5%AD%90%E9%93%BA%EF%BC%88%E6%99%AE%E5%88%A9%E8%A1%97%E6%80%BB%E5%BA%97%EF%BC%89/14262837",
+      "provider": "tavily",
+      "title": "草包包子铺（普利街总店）",
+      "description": "草包包子铺（普利街总店）是位于济南市历下区普利街15号（近趵突泉）的一家餐馆。它创立于1937年，是中华老字号和济南市级非物质文化遗产。创始人张文汉因性格憨厚得"
+    },
+    {
+      "url": "https://www.shxtravel.com/destguide/destguide_info.php?id=121&pid=49846",
+      "provider": "tavily",
+      "title": "草包包子铺(普利街总店) -济南旅游指南",
+      "description": "森海行旅游网是专业的私人旅游定制平台。草包包子铺(普利街总店) -济南咨询热线:400-678-5667. 济南住宿草包包子铺(普利街总店) 包子铺是济南最著名的老字号之一"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E8%8D%89%E5%8C%85%E5%8C%85%E5%AD%90%E9%93%BA%EF%BC%88%E6%99%AE%E5%88%A9%E8%A1%97%E6%80%BB%E5%BA%97%EF%BC%89/14262837",
+      "provider": "tavily",
+      "title": "草包包子铺（普利街总店）",
+      "description": "草包包子铺（普利街总店）是位于济南市历下区普利街15号（近趵突泉）的一家餐馆。它创立于1937年，是中华老字号和济南市级非物质文化遗产。创始人张文汉因性格憨厚得"
+    },
+    {
+      "url": "https://www.shxtravel.com/destguide/destguide_info.php?id=121&pid=49846",
+      "provider": "tavily",
+      "title": "草包包子铺(普利街总店) -济南旅游指南",
+      "description": "森海行旅游网是专业的私人旅游定制平台。草包包子铺(普利街总店) -济南咨询热线:400-678-5667. 济南住宿草包包子铺(普利街总店) 包子铺是济南最著名的老字号之一"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4857.61,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 10499.9,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 10499.93
+}

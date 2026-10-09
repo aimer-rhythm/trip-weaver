@@ -1,0 +1,78 @@
+{
+  "batch": 69,
+  "at": "2026-10-09T01:33:25.498Z",
+  "stats": {
+    "positive": 338,
+    "boundaries": 113,
+    "withdrawals": 52,
+    "pending": 313
+  },
+  "rootTypecheck": true,
+  "extendedTypecheck": true,
+  "installedManifestHashesVerified": 65,
+  "installedFilesChanged": 3,
+  "productionCodeChanged": true,
+  "newMigration": false,
+  "upstreamTests": {
+    "passed": 716,
+    "deselected": 1
+  },
+  "installedWarningTests": 27,
+  "isolatedSqlAndExport": true,
+  "reverseRollback": true,
+  "actualConsumptionTestPassed": true,
+  "sourceFile": "all-cities/batch-69-source.json",
+  "consumptionFile": "all-cities/batch-69/sync-01/heming-consumption-1791509124287.json",
+  "postFile": "all-cities/batch-69/sync-01/post-import-check-1791509134557.json",
+  "dualFile": "all-cities/batch-69/sync-01/preview-成都/preview-1791508997836.json",
+  "isolatedFile": "all-cities/batch-69/scope-preview-1791508905691570400/report.json",
+  "protocolFile": "note-warning-preview-1791508576352/multiline/downstream-verification-1791508640784.json",
+  "inputsFile": "priority-cities/成都/heming-inputs-check-01.json",
+  "scopesAdded": 1,
+  "assignmentsAdded": 6,
+  "pendingAdded": 0,
+  "categoryChanges": 0,
+  "coordinatesCleared": 0,
+  "preciseLocationsResolved": 0,
+  "chengdu": {
+    "primary": 113,
+    "dependencies": 3,
+    "fullyReviewed": 0,
+    "remaining": 113,
+    "partialScope": 3,
+    "partialLocation": 4,
+    "partialCategory": 1,
+    "otherPending": 105,
+    "clearedPointPending": 6,
+    "governedScopeMentions": 8,
+    "cityWideAssignments": 47
+  },
+  "jinanLedgerPreserved": "review-45",
+  "unappliedFindings": 4,
+  "oldCanonicalMediaProbes": 372,
+  "targetFactMedia": [
+    {
+      "name": "人民公园",
+      "galleryCount": 1,
+      "hasCover": true,
+      "actualLookupPhotos": 0
+    },
+    {
+      "name": "鹤鸣茶社",
+      "galleryCount": 0,
+      "hasCover": false,
+      "actualLookupPhotos": 0
+    }
+  ],
+  "checkedTargetFactsKeys": 2,
+  "allFactsUnchanged": true,
+  "oldNameMockEnqueues": {
+    "before": 359,
+    "after": 358
+  },
+  "actualEnqueues": 0,
+  "imageComparison": "deferred_by_user",
+  "mapCredentialStatus": "rotation_required",
+  "userAcceptance": false,
+  "failures": []
+}

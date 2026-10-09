@@ -1,0 +1,766 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 7,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "city": "成都",
+          "canonical_name": "武侯祠",
+          "primary_place_id": 1688,
+          "aliases": [
+            "武侯祠",
+            "武侯祠博物馆"
+          ],
+          "legacy_ids": [
+            "300d2ae16b4e2787a84d7661a06f580e"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1688,
+          "content_profile": {
+            "intro": "成都武侯祠位于武侯祠大街，肇始于公元222年修建刘备惠陵时，是中国唯一的君臣合祀祠庙。博物馆分为文物区、园林区和锦里民俗休闲街三部分，文物区由惠陵、汉昭烈庙、武侯祠等组成。祠内供奉刘备、诸葛亮等蜀汉人物塑像50尊，有匾额楹联70余块，其中唐碑“三绝碑”尤为知名。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-02T10:02:18.490879+00:00",
+            "highlights": [
+              {
+                "text": "成都武侯祠位于武侯祠大街，肇始于公元222年修建刘备惠陵时，是中国唯一的君臣合祀祠庙。",
+                "basis": "web",
+                "quote": "成都武侯祠位于武侯祠大街 231 号，肇始于公元 222 年修建刘备惠陵时，同时修建汉昭烈庙。",
+                "strength": "strong",
+                "citations": [
+                  {
+                    "quote": "成都武侯祠位于武侯祠大街 231 号，肇始于公元 222 年修建刘备惠陵时，同时修建汉昭烈庙。",
+                    "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                    "observedAt": "2026-10-02T10:02:03Z"
+                  },
+                  {
+                    "quote": "**成都武侯祠**，位于[中华人民共和国](/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD \"中华人民共和国\")[四川省](/wiki/%E5%9B%9B%E5%B7%9D%E7%9C%81 \"四川省\")[成都市](/wiki/%E6%88%90%E9%83%BD%E5%B8%82 \"成都市\")[武侯区](/wiki/%E6%AD%A6%E4%BE%AF%E5%8C%BA \"武侯区\")[浆洗街街道](/wiki/%E6%B5%86%E6%B4%97%E8%A1%97%E8%A1%97%E9%81%93 \"浆洗街街道\")武侯祠大街231号，是中国唯一的君臣合祀祠庙，由**武侯祠**、**汉昭烈庙**及**惠陵**组成，人们习惯将三者统称为武侯祠。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E6%88%90%E9%83%BD%E6%AD%A6%E4%BE%AF%E7%A5%A0",
+                    "observedAt": "2026-10-02T10:02:10Z"
+                  }
+                ],
+                "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                "observedAt": "2026-10-02T10:02:03Z"
+              },
+              {
+                "text": "博物馆分为文物区、园林区和锦里民俗休闲街三部分，文物区由惠陵、汉昭烈庙、武侯祠等组成。",
+                "basis": "web",
+                "quote": "武侯祠又称武侯祠博物馆，它分为文物区、园林区和锦里民俗休闲街三部分，总占地面积 13.99 万平方米。",
+                "strength": "strong",
+                "citations": [
+                  {
+                    "quote": "武侯祠又称武侯祠博物馆，它分为文物区、园林区和锦里民俗休闲街三部分，总占地面积 13.99 万平方米。",
+                    "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                    "observedAt": "2026-10-02T10:02:03Z"
+                  },
+                  {
+                    "quote": "文物区由惠陵、汉昭烈庙、武侯祠等建筑和部分绿化地组成。",
+                    "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                    "observedAt": "2026-10-02T10:02:03Z"
+                  }
+                ],
+                "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                "observedAt": "2026-10-02T10:02:03Z"
+              },
+              {
+                "text": "祠内供奉刘备、诸葛亮等蜀汉人物塑像50尊，有匾额楹联70余块，其中唐碑“三绝碑”尤为知名。",
+                "basis": "web",
+                "quote": "碑刻 50 余通，尤以唐《蜀丞相诸葛武侯祠堂碑》最为知名，人称“三绝碑”。",
+                "strength": "strong",
+                "citations": [
+                  {
+                    "quote": "碑刻 50 余通，尤以唐《蜀丞相诸葛武侯祠堂碑》最为知名，人称“三绝碑”。",
+                    "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                    "observedAt": "2026-10-02T10:02:03Z"
+                  },
+                  {
+                    "quote": "武侯祠内供奉着刘备、诸葛亮、关羽、张飞等蜀汉人物塑像 50 尊，有匾额楹联 70 余块（副），其中清人赵藩撰书“能攻心则反侧自消，从古知兵非好战；",
+                    "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                    "observedAt": "2026-10-02T10:02:03Z"
+                  }
+                ],
+                "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+                "observedAt": "2026-10-02T10:02:03Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2,
+            "identityBinding": {
+              "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+              "revision": 2,
+              "mentionHash": "0e97527db0df394b007d7a9c248ec243305c9e3bc7ca2a71b494e90e810fe81f"
+            }
+          },
+          "typical_visit_minutes": 150,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 138.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1688,
+          "mention_count_30d": 26,
+          "positive_count_30d": 22,
+          "source_count": 26,
+          "top_reasons": [
+            {
+              "reason": "到后已关门，需提前注意开放时间",
+              "evidence": "武侯祠吃了闭门羹"
+            },
+            {
+              "reason": "三国文化景点，适合新中式拍照",
+              "evidence": "武侯祠适合穿新中式"
+            },
+            {
+              "reason": "三国文化地标，红墙竹影适合拍照",
+              "evidence": "武侯祠"
+            },
+            {
+              "reason": "红墙拍照很出片",
+              "evidence": "武侯祠红墙拍照"
+            },
+            {
+              "reason": "红墙夹道适合拍照，三国文化地标",
+              "evidence": "打卡红墙夹道"
+            }
+          ],
+          "recommend_score": 69.23
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2567,
+          "canonical_place_id": 1688,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 武侯祠",
+          "evidence_summary": "到后已关门，需提前注意开放时间"
+        },
+        {
+          "id": 2568,
+          "canonical_place_id": 1688,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 武侯祠",
+          "evidence_summary": "三国文化景点，适合新中式拍照"
+        },
+        {
+          "id": 2569,
+          "canonical_place_id": 1688,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 武侯祠",
+          "evidence_summary": "三国文化地标，红墙竹影适合拍照"
+        },
+        {
+          "id": 2965,
+          "canonical_place_id": 1688,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 武侯祠博物馆",
+          "evidence_summary": "门票50元，地铁方便，但17:00停止检票需注意时间"
+        },
+        {
+          "id": 2966,
+          "canonical_place_id": 1688,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 武侯祠博物馆",
+          "evidence_summary": "三国文化圣地，了解诸葛亮和蜀汉历史"
+        },
+        {
+          "id": 2967,
+          "canonical_place_id": 1688,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 武侯祠博物馆",
+          "evidence_summary": "教师节免费，红墙竹影、三国古建，人文底蕴浓厚，亲友半价。"
+        }
+      ],
+      "relations": [
+        {
+          "id": 2839,
+          "from_name": "武侯祠",
+          "to_name": "锦里",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 5,
+          "evidence": "人民公园→宽窄巷子→武侯祠→锦里古街 DAY2：熊猫基地",
+          "source_url": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b?xsec_token=AB7xe3BIHAXdv8pNz0TdDTB4GGkXm6vQy0MVpOQSE1GNw=&xsec_source=pc_search"
+        },
+        {
+          "id": 2840,
+          "from_name": "杜甫草堂",
+          "to_name": "武侯祠",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 5,
+          "evidence": "四川科技馆→青羊宫→杜甫草堂→武侯祠→锦里古街 - 🚇成",
+          "source_url": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b?xsec_token=AB7xe3BIHAXdv8pNz0TdDTB4GGkXm6vQy0MVpOQSE1GNw=&xsec_source=pc_search"
+        },
+        {
+          "id": 2855,
+          "from_name": "武侯祠",
+          "to_name": "玉林路",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 2,
+          "evidence": "宽窄巷子→杜甫草堂→武侯祠→玉林路 \t 🥘美食推荐 ✔",
+          "source_url": "https://www.xiaohongshu.com/explore/699f978a000000001a02e2b4?xsec_token=ABUyaf2FpWguaCZjrYZqUMuBkFO7RLZyK5ymn1Tou3J30=&xsec_source=pc_search"
+        },
+        {
+          "id": 2863,
+          "from_name": "宽窄巷子",
+          "to_name": "武侯祠",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "都博物馆→人民公园→宽窄巷子→武侯祠→锦里古街 DAY2",
+          "source_url": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b?xsec_token=AB7xe3BIHAXdv8pNz0TdDTB4GGkXm6vQy0MVpOQSE1GNw=&xsec_source=pc_search"
+        },
+        {
+          "id": 2875,
+          "from_name": "九眼桥",
+          "to_name": "武侯祠",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "早上7点冲！）→午后武侯祠红墙拍照→晚上九眼桥小酒馆听民谣🎸 Da",
+          "source_url": "https://www.xiaohongshu.com/explore/6a5489950000000016026df9?xsec_token=ABp05SJ3hnmxgI59A7R6C-TGErQX9g72bsonLGDyxtI94=&xsec_source=pc_search"
+        },
+        {
+          "id": 2894,
+          "from_name": "奎星楼街",
+          "to_name": "武侯祠",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "民公园→成都博物馆→奎星楼街→武侯祠→锦里→安顺廊桥 📸",
+          "source_url": "https://www.xiaohongshu.com/explore/6a69f9f7000000000402a0d8?xsec_token=ABVvnIthpG262R41By1mtDSVLC02J9QZzkMNEmMIJY0hc=&xsec_source=pc_search"
+        },
+        {
+          "id": 2907,
+          "from_name": "人民公园",
+          "to_name": "武侯祠",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "：青羊宫→宽窄巷子→人民公园→武侯祠博物馆→玉林街 \t 😋成都",
+          "source_url": "https://www.xiaohongshu.com/explore/6a56f2d600000000150260a2?xsec_token=ABbytXkAiMeM5k56PdMqJISVkZBGm_JeMOneIdzcQA9XU=&xsec_source=pc_search"
+        },
+        {
+          "id": 2908,
+          "from_name": "武侯祠",
+          "to_name": "玉林",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "宽窄巷子→人民公园→武侯祠博物馆→玉林街 \t 😋成都美食 1",
+          "source_url": "https://www.xiaohongshu.com/explore/6a56f2d600000000150260a2?xsec_token=ABbytXkAiMeM5k56PdMqJISVkZBGm_JeMOneIdzcQA9XU=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1688,
+          "city": "成都",
+          "name_keys": [
+            "武侯祠"
+          ],
+          "entity_ids": [
+            "300d2ae16b4e2787a84d7661a06f580e"
+          ],
+          "source_hash": "cfff93117e3c471d12ff303f6ce4dcdaa316eb90b07e808bbc431715750baf7f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/成都/wuhou-source-review-02.json",
+              "kind": "reviewed_full_text_and_original_opinions",
+              "conclusion": "26条均确认；住宿片区2字段及含锦里的150分钟排除。原4项负面意见与历史教师节条件保留；948编号标题和完整原评价逐字承接；旧网页profile按原主体审阅并绑定，不改旧点或当前营业政策。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "300d2ae16b4e2787a84d7661a06f580e"
+          ],
+          "text_warnings": [
+            {
+              "end": 227,
+              "quote": "6、武侯祠 8.3\n可以去。三国迷很加分，刘备、诸葛亮相关历史脉络很完整，红墙竹影也是很经典的拍照机位，历史基础比较少的话建议蹭讲解或租导览，不然容易走马观花觉得没啥意思。出来就是锦里，可以一起安排。",
+              "start": 127,
+              "noteId": 948,
+              "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+              "inputHash": "7e4e45b77436a8d4393eb5fad90115e8c7c7f715d477b4ce22b01860333e89df",
+              "imageIndex": 1
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3500,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "be13bfac4a90727ce3dd9fc24e0f001e3dd9927d67fbd85f093c6ff9404250f5",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3520,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "a2965d000e275bdf7eed0f7e25dc8f9dbe8556008115d92a739fc45a57f3de05",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3547,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "a4bf41cc7139e21c8ad9783d27d2df109e12e210687bac2e37897d26ff180406",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3568,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "2ab1ad3743d63cb8f3667f3ddd678f06b243066c657f46239789f7d68797613e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3579,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "6d3154e04fa6e3045c3e14b563038b7032b7375bd2c2739a5d9035b43d31f5b2",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3601,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "be4254cd2e8d8ba87153e123cd3bda4676eb20eb7f0ab9bd95e4f57ffd3b6ebf",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3626,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "e7e3881899d24029d185273c02f3c00c97f2e2c4fa0a3d852ffb3381dd0a71cc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3662,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "4b7319661144363c18fd5cc10c2e332099d0a99ccbbb55b451510a5d7de41b39",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3684,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "5ccbfb84d10ee603d1289ce9ee6ae8b4a536943b82fe1f9a4f0a1a057e5296c9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3708,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "5b441d13a4be829cf3c1c23f42cdcafb63185a62c8e0cbb52c8c51e00c8e6586",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3755,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "37b11358d3aba1c9594a8f811678cb5389aa7ffdf73c6e9eed3cf40e93f57457",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3818,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "f1805c7cfafe981549bc622f6f3485e73698eedf80bd9271ff610f0adf8ef35a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "2. 第二天可换住武侯祠/宽窄巷子附近\n靠近人文古迹片区，去草堂、锦里、玉林路不用长途赶路，周边烟火小店多，生活氛围浓厚",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "2. 第二天可换住武侯祠/宽窄巷子附近\n靠近人文古迹片区，去草堂、锦里、玉林路不用长途赶路，周边烟火小店多，生活氛围浓厚",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 3883,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "22625c4276b8de955f5ba52c831933ebe8085daea49d4bfbc4b31679b58bd826",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3938,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "671050f03551186600d8e01c39eaf2df8dea7358da876e89dd5bedeaa04eb1d2",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3960,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "a8552965204a61195526454ae99fdfb9b46862fa97c0386bb4281509be16f8aa",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 3991,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "3d67d96fa5c64d9dd0eb440870ce13b8b2df74b9928960d4962778a23a9f38a5",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4017,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "3a70e1b0967a8ea0320deeca2a1b2196bc8da3809a0bdafe76eb86c338f825c1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4031,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "5cd8c8bc831726ed1aa7b3d8547ae62b7a208a77ace1b297147da2e7efa4aabe",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope",
+          "fact_exclusions": {
+            "visit_duration": {
+              "quote": "武侯祠精简游览路线（2‑2.5小时，不走回头路）\n\t\n入口 → 大门 → 二门 → 刘备殿 → 诸葛亮殿（正殿核心）\n👉 出诸葛亮殿右转，去 孔明苑（就是拍的出师表玻璃墙、圆窗取景地，必打卡）\n👉 孔明苑出来步行到 惠陵（刘备墓）\n👉 惠陵出来进入 锦里古街（免费，不用再次买票），逛吃收尾",
+              "reason": "group_duration"
+            }
+          }
+        },
+        {
+          "mention_id": 4044,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "3eaebe73e686cfb4ac01c4d9f85c4e97480ec692cd91507742af51d7702fbc80",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4062,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "76c371cc162eb7728804dcb3ee1e42418be2d950f6c791d142bdfd6b1a635f2e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4083,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "431984f62cf9c7c396f7d19c426f2ed022f379ce064877bb6f34756eecbbfa21",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4108,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "c0d7a52c37f2ca69ca8bffdacb5e886703d13709093ae86f70851a9d2d10eae1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4117,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "c2d179af002f4fdff1b14f8dbf00bebf296e168083fe2262ed2d6286cab2a238",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4149,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "6cf57f2481b83e163ac64786a0b3e45b44d983c8f89a9eb1d47dc1effac72e5b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4172,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "e834e7d52d9f9fb1b5bf8740ff02ae479479a1f4adeb60d62d6a45d7b2c54ba7",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        },
+        {
+          "mention_id": 4208,
+          "scope_place_id": 1688,
+          "entity_id": "300d2ae16b4e2787a84d7661a06f580e",
+          "input_hash": "b90d9d6513a6153b6f9582da972def0cd74f235b4d5a21e78e0c7b7e1ae5824d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-71-wuhou-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "cfff93117e3c471d12ff303f6ce4dcdaa316eb90b07e808bbc431715750baf7f",
+        "mentions": [
+          {
+            "mentionId": 3500,
+            "inputHash": "be13bfac4a90727ce3dd9fc24e0f001e3dd9927d67fbd85f093c6ff9404250f5"
+          },
+          {
+            "mentionId": 3520,
+            "inputHash": "a2965d000e275bdf7eed0f7e25dc8f9dbe8556008115d92a739fc45a57f3de05"
+          },
+          {
+            "mentionId": 3547,
+            "inputHash": "a4bf41cc7139e21c8ad9783d27d2df109e12e210687bac2e37897d26ff180406"
+          },
+          {
+            "mentionId": 3568,
+            "inputHash": "2ab1ad3743d63cb8f3667f3ddd678f06b243066c657f46239789f7d68797613e"
+          },
+          {
+            "mentionId": 3579,
+            "inputHash": "6d3154e04fa6e3045c3e14b563038b7032b7375bd2c2739a5d9035b43d31f5b2"
+          },
+          {
+            "mentionId": 3601,
+            "inputHash": "be4254cd2e8d8ba87153e123cd3bda4676eb20eb7f0ab9bd95e4f57ffd3b6ebf"
+          },
+          {
+            "mentionId": 3626,
+            "inputHash": "e7e3881899d24029d185273c02f3c00c97f2e2c4fa0a3d852ffb3381dd0a71cc"
+          },
+          {
+            "mentionId": 3662,
+            "inputHash": "4b7319661144363c18fd5cc10c2e332099d0a99ccbbb55b451510a5d7de41b39"
+          },
+          {
+            "mentionId": 3684,
+            "inputHash": "5ccbfb84d10ee603d1289ce9ee6ae8b4a536943b82fe1f9a4f0a1a057e5296c9"
+          },
+          {
+            "mentionId": 3708,
+            "inputHash": "5b441d13a4be829cf3c1c23f42cdcafb63185a62c8e0cbb52c8c51e00c8e6586"
+          },
+          {
+            "mentionId": 3755,
+            "inputHash": "37b11358d3aba1c9594a8f811678cb5389aa7ffdf73c6e9eed3cf40e93f57457"
+          },
+          {
+            "mentionId": 3818,
+            "inputHash": "f1805c7cfafe981549bc622f6f3485e73698eedf80bd9271ff610f0adf8ef35a"
+          },
+          {
+            "mentionId": 3883,
+            "inputHash": "22625c4276b8de955f5ba52c831933ebe8085daea49d4bfbc4b31679b58bd826"
+          },
+          {
+            "mentionId": 3938,
+            "inputHash": "671050f03551186600d8e01c39eaf2df8dea7358da876e89dd5bedeaa04eb1d2"
+          },
+          {
+            "mentionId": 3960,
+            "inputHash": "a8552965204a61195526454ae99fdfb9b46862fa97c0386bb4281509be16f8aa"
+          },
+          {
+            "mentionId": 3991,
+            "inputHash": "3d67d96fa5c64d9dd0eb440870ce13b8b2df74b9928960d4962778a23a9f38a5"
+          },
+          {
+            "mentionId": 4017,
+            "inputHash": "3a70e1b0967a8ea0320deeca2a1b2196bc8da3809a0bdafe76eb86c338f825c1"
+          },
+          {
+            "mentionId": 4031,
+            "inputHash": "5cd8c8bc831726ed1aa7b3d8547ae62b7a208a77ace1b297147da2e7efa4aabe"
+          },
+          {
+            "mentionId": 4044,
+            "inputHash": "3eaebe73e686cfb4ac01c4d9f85c4e97480ec692cd91507742af51d7702fbc80"
+          },
+          {
+            "mentionId": 4062,
+            "inputHash": "76c371cc162eb7728804dcb3ee1e42418be2d950f6c791d142bdfd6b1a635f2e"
+          },
+          {
+            "mentionId": 4083,
+            "inputHash": "431984f62cf9c7c396f7d19c426f2ed022f379ce064877bb6f34756eecbbfa21"
+          },
+          {
+            "mentionId": 4108,
+            "inputHash": "c0d7a52c37f2ca69ca8bffdacb5e886703d13709093ae86f70851a9d2d10eae1"
+          },
+          {
+            "mentionId": 4117,
+            "inputHash": "c2d179af002f4fdff1b14f8dbf00bebf296e168083fe2262ed2d6286cab2a238"
+          },
+          {
+            "mentionId": 4149,
+            "inputHash": "6cf57f2481b83e163ac64786a0b3e45b44d983c8f89a9eb1d47dc1effac72e5b"
+          },
+          {
+            "mentionId": 4172,
+            "inputHash": "e834e7d52d9f9fb1b5bf8740ff02ae479479a1f4adeb60d62d6a45d7b2c54ba7"
+          },
+          {
+            "mentionId": 4208,
+            "inputHash": "b90d9d6513a6153b6f9582da972def0cd74f235b4d5a21e78e0c7b7e1ae5824d"
+          }
+        ],
+        "textWarnings": [
+          {
+            "noteId": 948,
+            "imageIndex": 1,
+            "inputHash": "7e4e45b77436a8d4393eb5fad90115e8c7c7f715d477b4ce22b01860333e89df"
+          }
+        ]
+      },
+      "scopeReviews": []
+    }
+  ]
+}

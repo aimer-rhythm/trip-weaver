@@ -1,0 +1,62 @@
+[
+  {
+    "key": "all-cities-20261009-batch-54-source-5322-branch-name-and-location",
+    "city": "济南",
+    "entityId": "9626de365121d40b3565b4a7dbc5be1a",
+    "expectedRevisions": {
+      "9626de365121d40b3565b4a7dbc5be1a": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "喜茶(济南融汇老商埠店)",
+    "aliases": [
+      "喜茶",
+      "喜茶(济南融汇老商埠店)"
+    ],
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "融汇济南老商埠",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "restore_original_branch_and_remove_incompatible_location",
+        "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+        "originalMentionIds": [
+          11344
+        ],
+        "conclusion": "原提及明确老商埠店；喜茶旧地址恒隆广场与之冲突，两旧点均不在原路线街区。只写原文支持的街区范围，不借商埠中心点、经四路333号或其他门店坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-54-source-5324-branch-name-and-location",
+    "city": "济南",
+    "entityId": "eb75294ebee7a37c374a3f5cd374d4ac",
+    "expectedRevisions": {
+      "eb75294ebee7a37c374a3f5cd374d4ac": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "山耶云耶(融汇济南老商埠店)",
+    "aliases": [
+      "山耶云耶",
+      "山耶云耶(融汇济南老商埠店)"
+    ],
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "融汇济南老商埠",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "restore_original_branch_and_remove_incompatible_location",
+        "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+        "originalMentionIds": [
+          11346
+        ],
+        "conclusion": "原提及明确老商埠店；喜茶旧地址恒隆广场与之冲突，两旧点均不在原路线街区。只写原文支持的街区范围，不借商埠中心点、经四路333号或其他门店坐标。"
+      }
+    ]
+  }
+]

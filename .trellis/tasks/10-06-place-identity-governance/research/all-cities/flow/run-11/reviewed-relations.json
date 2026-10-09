@@ -1,0 +1,835 @@
+{
+  "capturedAt": "2026-10-06T16:35:35.590Z",
+  "relations": [
+    {
+      "reviewId": "9",
+      "city": "上海",
+      "entityIds": [
+        "c4adaf1178b13ff442b7820db8a8c3d7",
+        "f512cb0d36cb5a6160011c1363d94126"
+      ],
+      "verdict": "distinct",
+      "explanation": "徐家汇原文10147是按城区分组的美食推荐，徐家汇公园是有独立园址的城市公园；商圈泛称不能吞并公园。"
+    },
+    {
+      "reviewId": "10",
+      "city": "上海",
+      "entityIds": [
+        "dae9b546b544955a5a9b6ce45134799f",
+        "f65068877a53f3ae7907f94bd9f9c8a5"
+      ],
+      "verdict": "distinct",
+      "explanation": "人民大道201号的上海博物馆与天潼路395号的邮政博物馆是不同机构；源笔记分别描述人民广场博物馆和苏州河畔邮政建筑，不因博物馆后缀相似而归并。"
+    },
+    {
+      "reviewId": "12",
+      "city": "上海",
+      "entityIds": [
+        "bedf7762bea76c534462f800bd8b5e1b",
+        "dbdd2d56af538232efb19ea4af4cb297"
+      ],
+      "verdict": "distinct",
+      "explanation": "同一原文明确说东金线（东昌路至金陵东路）或东复线，两条航线互为选择。相同错误地图坐标不构成同义证据，航线不能合并。"
+    },
+    {
+      "reviewId": "14",
+      "city": "上海",
+      "entityIds": [
+        "48dea6fa88439c4ce10310b43b92990f",
+        "829e1520a3b6142eebd5d3f06360c613"
+      ],
+      "verdict": "distinct",
+      "explanation": "10389的外滩观景平台在外滩钟楼与新天安堂步行段；10939滨江观景平台在世界会客厅之后、Manner和小巨蛋之前的北外滩游线。两处分别在苏州河口两侧，不是同一机位。本批外滩三名合并后仍保留北外滩独立。"
+    },
+    {
+      "reviewId": "20",
+      "city": "上海",
+      "entityIds": [
+        "8e59155c0f34eb453cfdd2166701b2d0",
+        "a0387f167c5cc7756b73223284ea385c"
+      ],
+      "verdict": "distinct",
+      "explanation": "11182明确指2/10号线南京东路地铁站；南京东路记录是住宿与街区范围。交通站点与道路是独立身份，不能因站名包含路名而合并。"
+    },
+    {
+      "reviewId": "22",
+      "city": "上海",
+      "entityIds": [
+        "903514f5b5569655d752062409c23292",
+        "effc9bbd0e80256864e76b182ae97a5e"
+      ],
+      "verdict": "part_of",
+      "explanation": "10942将滨江绿地列为北外滩漫步线路中的P15-16机位，11220指公平路渡口附近绿地；11139北外滩滨江为外白渡桥之后的整体沿江区域。绿地属于滨江区域，不把其他观景平台和步道吞成同义成员。"
+    },
+    {
+      "reviewId": "25",
+      "city": "上海",
+      "entityIds": [
+        "da76d90b1fcef81c1d141a639414d8b0",
+        "dae9b546b544955a5a9b6ce45134799f"
+      ],
+      "verdict": "distinct",
+      "explanation": "上海博物馆东馆源地址为浦东世纪大道1952号，上海博物馆现有主记录位于人民大道201号且原路线经人民广场到馆。两馆分处不同游览地点，不能把机构简称当作馆区同义。"
+    },
+    {
+      "reviewId": "31",
+      "city": "上海",
+      "entityIds": [
+        "387c47b30402823adf2d7ddfb027e9c4",
+        "a4ff18d4c9ac00333caf5e38d8cd087f"
+      ],
+      "verdict": "distinct",
+      "explanation": "同一原文分别标P5-9国航中心、P13-14国客中心，路线也经公平路渡口连接两处；源地址分别是杨树浦路100号、东大名路500号。两处拍摄地保持独立。"
+    },
+    {
+      "reviewId": "41",
+      "city": "上海",
+      "entityIds": [
+        "79ca546e85960732eba25403aa8c1689",
+        "ffaa26d85fb16bb636a40c3d16b05694"
+      ],
+      "verdict": "distinct",
+      "explanation": "11241陆家嘴中心对应源记录market及浦东南路899号商业体；11037中心绿地位于东方明珠之后的绿地公园游线，性质不同。绿地旧坐标也落商业体附近，是待纠正定位，不构成同一实体证据。"
+    },
+    {
+      "reviewId": "43",
+      "city": "云南",
+      "entityIds": [
+        "2649764a503c0414f5ffc07caee3b637",
+        "6917bb1c3fdc732d8fe2529f18e6b701"
+      ],
+      "verdict": "distinct",
+      "explanation": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。"
+    },
+    {
+      "reviewId": "44",
+      "city": "云南",
+      "entityIds": [
+        "538ca1ae0c137812b40b42728c0eedc8",
+        "e6e0180444f75cdebb4f45a6d519e0c0"
+      ],
+      "verdict": "distinct",
+      "explanation": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。"
+    },
+    {
+      "reviewId": "51",
+      "city": "云南",
+      "entityIds": [
+        "29445fe501c07369fb84abcc5714ce28",
+        "7e2d5d215ce2c353c7751dc5b44aab39"
+      ],
+      "verdict": "distinct",
+      "explanation": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。"
+    },
+    {
+      "reviewId": "64",
+      "city": "北京",
+      "entityIds": [
+        "0854db5911778c6722637d896e9c2904",
+        "1405884c419eb09eb99f8489b7044278"
+      ],
+      "verdict": "distinct",
+      "explanation": "国子监是国子监街13-15号古学府建筑群，国子监街是其外的道路；5181讲古建，4948描述从雍和宫出来到街上打卡。道路与机构主体不合并。"
+    },
+    {
+      "reviewId": "65",
+      "city": "北京",
+      "entityIds": [
+        "45712014697126c93493061eef87a9e7",
+        "5a7032e41c7f71c7391ac428540c1f47"
+      ],
+      "verdict": "distinct",
+      "explanation": "5187明确八号线什刹海站，湖区什刹海另有环湖、银锭桥等游览提及；交通站点不作为湖区同义。"
+    },
+    {
+      "reviewId": "66",
+      "city": "北京",
+      "entityIds": [
+        "11febac8d7a4a246719b10914001c3e7",
+        "b8672584b36a492386ab1c7b5299d9f0"
+      ],
+      "verdict": "distinct",
+      "explanation": "1837明确voyage coffee杨梅竹店，4621完整原文是798园内Voyage Coffee；分店不同。两条地图都落杨梅竹是错配，不能作为合并证据。"
+    },
+    {
+      "reviewId": "69",
+      "city": "北京",
+      "entityIds": [
+        "53388275c2fa846e3c8417d4f47daf72",
+        "e661f529173a61e30a6472e494f26353"
+      ],
+      "verdict": "part_of",
+      "explanation": "1951原路线将南北锣鼓巷合写，包含北锣鼓巷与南锣鼓巷两条独立胡同，不能把组合路线名只归到北锣鼓巷。"
+    },
+    {
+      "reviewId": "70",
+      "city": "北京",
+      "entityIds": [
+        "3b604770d828206bdbac7d0b3540a367",
+        "9848af6527dee0b6806678da781b39bf"
+      ],
+      "verdict": "distinct",
+      "explanation": "国家自然博物馆位于天桥南大街126号，国家博物馆位于天安门广场东侧；前者亲子自然主题，后者华夏文物，机构与地址独立。"
+    },
+    {
+      "reviewId": "71",
+      "city": "北京",
+      "entityIds": [
+        "8c02a5695ffc014e0c8e4a8ba401f75f",
+        "9a84d089b1588ed97118038b7061ae24"
+      ],
+      "verdict": "part_of",
+      "explanation": "朝阳公园冰场为公园内季节性项目，源地址明确公园内北侧，1874独立列冰场开放与项目价格；不能把冰场政策套到公园全域或归成同义。"
+    },
+    {
+      "reviewId": "73",
+      "city": "北京",
+      "entityIds": [
+        "6b6bd1b7d6ad51e2f37001999e425699",
+        "87d92832a81a1d4871413eff9fc698c8"
+      ],
+      "verdict": "distinct",
+      "explanation": "鼓楼东大街和鼓楼西大街是鼓楼两侧独立道路；东大街原文明确一路往东，西大街有自己路牌机位及地址，方向词不能剥离。"
+    },
+    {
+      "reviewId": "74",
+      "city": "北京",
+      "entityIds": [
+        "6c074be2e2ac66caabec9435e3c42328",
+        "d7a85b70e2fee74467aa9ea656c50e25"
+      ],
+      "verdict": "part_of",
+      "explanation": "3256同一原文分别列荷花市场吃喝区域和荷花市场码头划船，码头是沿市场的登船设施，不等于市场整体。"
+    },
+    {
+      "reviewId": "77",
+      "city": "北京",
+      "entityIds": [
+        "4086e134974e6a0903698f30f25a2850",
+        "d4eff597f06c2d59207fc41a8511bf10"
+      ],
+      "verdict": "distinct",
+      "explanation": "宫门口二条与头条是不同胡同编号，源地址和机位分别独立；原文3316指定二条拍白塔，1925路线指定头条，不能忽略编号。"
+    },
+    {
+      "reviewId": "81",
+      "city": "北京",
+      "entityIds": [
+        "3ea0e95d52c33d849ac3e82657a13ec9",
+        "e661f529173a61e30a6472e494f26353"
+      ],
+      "verdict": "part_of",
+      "explanation": "1951南北锣鼓巷是组合路线名称，南锣鼓巷是其中独立胡同；不能把组合条目当南巷全称。"
+    },
+    {
+      "reviewId": "82",
+      "city": "北京",
+      "entityIds": [
+        "21e896cb6540c39c0d2c717f116e2ec3",
+        "7b5cdb325723dc52113c8ec29c473d41"
+      ],
+      "verdict": "distinct",
+      "explanation": "中国美术馆在五四大街1号，中国工艺美术馆在湖景东路16号；2839对应工艺美术玉雕牙雕漆器，不是同馆的简称。"
+    },
+    {
+      "reviewId": "84",
+      "city": "北京",
+      "entityIds": [
+        "35a250f514f41873387509cf133637b1",
+        "f6bb0663cac2775477dd5c6c2901df24"
+      ],
+      "verdict": "part_of",
+      "explanation": "太古里南区是太古里整体的组成区域。原文4639将南北区分站介绍，整体地址涵盖11和19号院，不能把南区名称当全域别名。"
+    },
+    {
+      "reviewId": "85",
+      "city": "北京",
+      "entityIds": [
+        "b8729ea5ab6120424aaec9f4d1db2381",
+        "f6bb0663cac2775477dd5c6c2901df24"
+      ],
+      "verdict": "part_of",
+      "explanation": "太古里北区为11号院区域，是太古里组成部分；原文4637与南区分别列站，建筑机位和南区大屏各有边界。"
+    },
+    {
+      "reviewId": "87",
+      "city": "北京",
+      "entityIds": [
+        "3ea0e95d52c33d849ac3e82657a13ec9",
+        "e7fabf6697bc2afd79caf1ef7f2d03db"
+      ],
+      "verdict": "part_of",
+      "explanation": "4924明确建议绕开主街小吃并逛雨儿等支巷；南锣鼓巷整体游览范围含支巷，主街为其中路段，不吞并具体路段身份。"
+    },
+    {
+      "reviewId": "88",
+      "city": "北京",
+      "entityIds": [
+        "381ecbda9ef75408f596e7e851b707fa",
+        "f340c882ac6080d8251a4ffe455435bf"
+      ],
+      "verdict": "distinct",
+      "explanation": "2665明确看不了升旗可看降旗，两者是同地不同时段的独立仪式，不能让同一坐标消除活动差异。"
+    },
+    {
+      "reviewId": "90",
+      "city": "北京",
+      "entityIds": [
+        "38b4fb14f760e33e43a00c4ec9fed6c5",
+        "3f22238c0413637cc050849fba6a2816"
+      ],
+      "verdict": "distinct",
+      "explanation": "北京植物园是植物园景区，北京动物园是西直门外的动物园；地址分离，原文分别赏秋和看萌兰，不能因园名相似归并。"
+    },
+    {
+      "reviewId": "91",
+      "city": "北京",
+      "entityIds": [
+        "3f22238c0413637cc050849fba6a2816",
+        "5856813dc8830f4915085267f4828b1f"
+      ],
+      "verdict": "distinct",
+      "explanation": "西直门外北京动物园和大兴榆垡北京野生动物园是两个独立园区，原文分别看萌兰与野生动物园遛娃，不能跨园借用身份、门票和路线。"
+    },
+    {
+      "reviewId": "94",
+      "city": "北京",
+      "entityIds": [
+        "14ab2f8de0269058da481749d14dec01",
+        "7e7e0223aa6b3bc5faf410caa8a61e73"
+      ],
+      "verdict": "distinct",
+      "explanation": "4319的古建筑博物馆星空藻井与中国历史研究院内考古博物馆为不同机构；旧地图错误匹配检测中心并不能构成合并依据。"
+    },
+    {
+      "reviewId": "95",
+      "city": "北京",
+      "entityIds": [
+        "aa6a316ae71a76554d1fa52a0b954e5a",
+        "e89913b503baa0e90b0c292c6c6b0e1e"
+      ],
+      "verdict": "distinct",
+      "explanation": "同一什刹海攻略分别介绍宋庆龄故居参观和宋庆龄故居码头上船，码头以邻近故居命名，不是故居建筑。码头原北京市中心坐标不作为判等依据。"
+    },
+    {
+      "reviewId": "96",
+      "city": "北京",
+      "entityIds": [
+        "684456eb7f3df8f9e4832c166ab6f6f6",
+        "d0f099242d41b744653af9c8e0234d64"
+      ],
+      "verdict": "part_of",
+      "explanation": "奥林匹克森林公园为奥林匹克公园北部园区，后者原文含鸟巢水立方整体游览，前者赏林和亲子，园区层级不能判同义。"
+    },
+    {
+      "reviewId": "97",
+      "city": "北京",
+      "entityIds": [
+        "0210a1e3450398815deb25b563e791e5",
+        "2c5057c64553cc206a3b66efdaa79dd4"
+      ],
+      "verdict": "distinct",
+      "explanation": "2271温榆河原文明确金盏乡东村的野外露营点，且说明只有黑桥是公园露营；不是京承高速附近温榆河公园。"
+    },
+    {
+      "reviewId": "98",
+      "city": "北京",
+      "entityIds": [
+        "0306ed32c1989ef834cb4e8baa875c96",
+        "b59658dd742eed9f3211fabc2110bd65"
+      ],
+      "verdict": "part_of",
+      "explanation": "2118原路线合称宫门口东西岔，西岔只是其中一条胡同；组合游览条目与单条道路分别保留，不按相似名吞并东西两侧。"
+    },
+    {
+      "reviewId": "99",
+      "city": "北京",
+      "entityIds": [
+        "b40dfae5e6f8bc0e82523392b83ad24e",
+        "e923c2c7c9979a00115ca226a0374f91"
+      ],
+      "verdict": "part_of",
+      "explanation": "天坛公园西门是公园入口，4432明确讨论从西门入园的选择；门点与整体园区分别保留身份和坐标。"
+    },
+    {
+      "reviewId": "104",
+      "city": "北京",
+      "entityIds": [
+        "4d453b43bd9156f2b638278e661c924f",
+        "6c97a4714c0f7d8308aab4738eeb56d7"
+      ],
+      "verdict": "part_of",
+      "explanation": "5100在八达岭整体攻略单列夜长城开放时段，夜游是部分区域及运营项目，不把日间和夜间政策混为一个条目。"
+    },
+    {
+      "reviewId": "106",
+      "city": "北京",
+      "entityIds": [
+        "2c5057c64553cc206a3b66efdaa79dd4",
+        "62ca99314d73f98dd282742a88fa1cbd"
+      ],
+      "verdict": "distinct",
+      "explanation": "2271为金盏乡东村露营点，4408温榆河堤为骑行路线且未指定同一点；一个游憩点与河堤骑行线粒度不同，不能因同河名同地图点合并。"
+    },
+    {
+      "reviewId": "107",
+      "city": "北京",
+      "entityIds": [
+        "0bde12825b27c7adafd5680f002be459",
+        "6c97a4714c0f7d8308aab4738eeb56d7"
+      ],
+      "verdict": "part_of",
+      "explanation": "2297夜长城非遗节为春节剪纸皮影京绣活动，5100为夜长城日常夜游；限期活动从属于场地夜游，不归成同义。"
+    },
+    {
+      "reviewId": "108",
+      "city": "北京",
+      "entityIds": [
+        "0a114d0a1226b9264b5c021af8c2607f",
+        "1d3158fe45b509eaff310b4139e7112b"
+      ],
+      "verdict": "part_of",
+      "explanation": "4875原文明确合列东南/西北角楼，2308单指西北角楼；组合拍摄清单包含两个塔楼，不能把两栋都作为西北角楼别名。"
+    },
+    {
+      "reviewId": "110",
+      "city": "北京",
+      "entityIds": [
+        "112b313098de8bb71203bc445db3c8ff",
+        "4c43da4bfc3095a1bd5b60ed08a0b15d"
+      ],
+      "verdict": "part_of",
+      "explanation": "北海公园南门是入园门点，5273明确南门进、之后看荷花登白塔；入口不可替代整个公园身份。"
+    },
+    {
+      "reviewId": "116",
+      "city": "北京",
+      "entityIds": [
+        "684456eb7f3df8f9e4832c166ab6f6f6",
+        "ab8b04c0f8bc96a1138beb1be7ac027c"
+      ],
+      "verdict": "distinct",
+      "explanation": "科荟路的奥林匹克森林公园与中东路的奥北森林公园是独立公园；奥北不是本批奥森的简称，3056明确奥北端午活动。"
+    },
+    {
+      "reviewId": "117",
+      "city": "北京",
+      "entityIds": [
+        "2791f45e5d5b9429d560cafbfbb09a4b",
+        "83ac7a20e5e2403f11704ef5382a8e33"
+      ],
+      "verdict": "distinct",
+      "explanation": "2409原文为永定公园无动力设施，源地址大兴永华路31号，与永定门内大街156号中轴线公园不同，不能剥掉门字归并。"
+    },
+    {
+      "reviewId": "121",
+      "city": "北京",
+      "entityIds": [
+        "33297aff7fde3ac374465da6b65c2885",
+        "d0f099242d41b744653af9c8e0234d64"
+      ],
+      "verdict": "part_of",
+      "explanation": "4875同篇机位列表把奥林匹克塔底部公园单列为局部赏银杏区域，奥林匹克公园原实体涵盖鸟巢水立方等全域；塔底区域属于整体中的局部，不作为全域别名。"
+    },
+    {
+      "reviewId": "129",
+      "city": "北京",
+      "entityIds": [
+        "e6b6cfcf4ec5f271ebfeaf21b84a49fc",
+        "f557b891b2d527655117b350be8ee8ea"
+      ],
+      "verdict": "distinct",
+      "explanation": "雁栖湖游览景区与雁栖湖路的环湖公路分别为景区和道路，源3040明确13.9公里环湖公路。不能把路段政策或骑行身份归入湖体景区。"
+    },
+    {
+      "reviewId": "130",
+      "city": "北京",
+      "entityIds": [
+        "016d9be9cab8fc6876cbe5f5d1f41195",
+        "ec75f8b0d3c9f43533e736b977d24576"
+      ],
+      "verdict": "distinct",
+      "explanation": "同一原文2917/2918按1飞跃侏罗纪、2侏罗纪大冒险列两个相邻但独立的项目及排队时间；地图共同误落环球公交站不能证明是同一游乐设施。"
+    },
+    {
+      "reviewId": "145",
+      "city": "北京",
+      "entityIds": [
+        "004650817a09d4e91e7ce8b8dc5118f2",
+        "492f075f7f99d58b23f94009b082dd81"
+      ],
+      "verdict": "distinct",
+      "explanation": "同一原文P11中左门、P12左翼门是两个独立拍摄门点，各有取景说明；相同北京市中心兜底坐标不能吞掉不同宫门。"
+    },
+    {
+      "reviewId": "146",
+      "city": "北京",
+      "entityIds": [
+        "0810abb5f23a545ecd9bd777f69f88fd",
+        "11868f613270679ddb4b3bd9621ea60f"
+      ],
+      "verdict": "distinct",
+      "explanation": "4418中的大兴机场线是骑行攻略的一条路线，不是机场航站楼；4325单独描述机场建筑摄影。不得把骑行线与机场主体归为同义，也不误标成地铁机场线。"
+    },
+    {
+      "reviewId": "147",
+      "city": "北京",
+      "entityIds": [
+        "0b7faa28fef73aca180ca0fde8fd770e",
+        "f8d25933eed04f667f0201eff89e36f8"
+      ],
+      "verdict": "distinct",
+      "explanation": "三里屯东五街与西五街分别在使馆区东/西侧，4517明确西五街玉兰，源地址独立；方向词决定不同道路。"
+    },
+    {
+      "reviewId": "151",
+      "city": "北京",
+      "entityIds": [
+        "09be9b9313ffcb33aa93d364c6e55271",
+        "f8d25933eed04f667f0201eff89e36f8"
+      ],
+      "verdict": "distinct",
+      "explanation": "5283明确指定西五街五号院，与4517西五街整条街的玉兰游览不是同一实体；院落地址不等于道路整体。"
+    },
+    {
+      "reviewId": "155",
+      "city": "北京",
+      "entityIds": [
+        "3f22238c0413637cc050849fba6a2816",
+        "ad40075af6942bf86ee33c8f9e481419"
+      ],
+      "verdict": "distinct",
+      "explanation": "4621完整原文中动物的园是798的小动物互动店，有猫和狐獴，与西直门外北京动物园看萌兰的实体无关。"
+    },
+    {
+      "reviewId": "156",
+      "city": "北京",
+      "entityIds": [
+        "35a250f514f41873387509cf133637b1",
+        "b8729ea5ab6120424aaec9f4d1db2381"
+      ],
+      "verdict": "distinct",
+      "explanation": "4637/4639同一篇分别列北区建筑与南区大屏，三里屯太古里两个组成区之间保持独立；两区与全域的part_of已另留审计。"
+    },
+    {
+      "reviewId": "157",
+      "city": "北京",
+      "entityIds": [
+        "04d870e41b659012ec469aab7b94e8a5",
+        "095b65cb9f99ae858ac9aa436e58f8c7"
+      ],
+      "verdict": "distinct",
+      "explanation": "4658明确北八楼，5095明确北四楼，敌楼编号是独立位置，不能因都附好汉坡而合并；北四楼现地图误落怀柔书画山也不能吞并八达岭编号。"
+    },
+    {
+      "reviewId": "158",
+      "city": "北京",
+      "entityIds": [
+        "7e402ce5d6d77e7ea79319ef7b7544ea",
+        "9f7693287df7b69442625c95669ae3f1"
+      ],
+      "verdict": "distinct",
+      "explanation": "5134标题虽称王府井但正文明确紧邻国贸、乘地铁到王府井；4849正文称王府井正中心。两条住宿位置描述不同，均未给店名，拒绝同义但不认定具体酒店已核实。"
+    },
+    {
+      "reviewId": "160",
+      "city": "北京",
+      "entityIds": [
+        "34ad38e1b68ca259d7fdbd330e3aa994",
+        "bd3e4dcee158917102b773c2af9ca075"
+      ],
+      "verdict": "distinct",
+      "explanation": "5162/5166同一原文按图1 aF、图5 Gap分别列两品牌折扣，不同店铺，不能按王府井店后缀相似判同义。"
+    },
+    {
+      "reviewId": "161",
+      "city": "北京",
+      "entityIds": [
+        "11f71186cd44ede1432b17979c8a8d20",
+        "c7e3b60901dd3f11329d5582bb2687f1"
+      ],
+      "verdict": "distinct",
+      "explanation": "同一赏秋清单分别写蟒山登山彩林与西山鬼笑石，昌平蟒山与北京西山森林公园地址、山体独立。"
+    },
+    {
+      "reviewId": "249",
+      "city": "广州",
+      "entityIds": [
+        "3d6ceab6587c98011e8c884d3aa4e72a",
+        "e494ac137c6f74e0357f5784fd2acba6"
+      ],
+      "verdict": "distinct",
+      "explanation": "7335北京路清单为佩记小食店，7774西华路明确芳记布拉肠粉老店，两个不同名称店铺；7798虽标题泛称北京路攻略，但全文另含客村餐厅，不能用标题把芳记与佩记视同。"
+    },
+    {
+      "reviewId": "251",
+      "city": "广州",
+      "entityIds": [
+        "2bff7bbd61a1d2d1cce799d54678ca58",
+        "a0ae4c31277b11fd2a1b5849fade4f13"
+      ],
+      "verdict": "distinct",
+      "explanation": "7081原文明确因为民记排长队，选择排队较少的超记，直接证明两家独立店铺。7349民记北京路语境与其现江南西地图有冲突，另待地理纠错，不影响两店独立结论。"
+    },
+    {
+      "reviewId": "255",
+      "city": "广州",
+      "entityIds": [
+        "4664ce4cce83a399f1cbaed908785b8b",
+        "c626d628d8cdec42573c8e72d86ae372"
+      ],
+      "verdict": "distinct",
+      "explanation": "7598路线将广州塔与最后的广州塔B口分别列出，站体/出口与游览塔楼是不同对象。现源地图为有轨电车站而原文B口更像地铁出口，站记录尚需纠正，但不能归并为塔楼。"
+    },
+    {
+      "reviewId": "257",
+      "city": "广州",
+      "entityIds": [
+        "cb1f935149953fda7a9c6ad4d8e89438",
+        "ea8d69df16c22dcc4105b31ba915562d"
+      ],
+      "verdict": "distinct",
+      "explanation": "8035省博对应城市中轴线的综合博物馆、白切鸡藏品；8067外事博物馆明确沙面历史建筑群中的场馆，两机构和地点均独立，不因省/博物馆共有字归并。"
+    },
+    {
+      "reviewId": "262",
+      "city": "广州",
+      "entityIds": [
+        "9e6e4a5fca0974d4dbb14c5b32d77e3a",
+        "ee8352ea886f6ab9cf551dbcc369e0d6"
+      ],
+      "verdict": "part_of",
+      "explanation": "7585在沙面岛欧陆建筑游览下单独建议傍晚去沙面公园看珠江日落；公园是岛上江边子项，不等同岛上所有建筑街道。"
+    },
+    {
+      "reviewId": "277",
+      "city": "广州",
+      "entityIds": [
+        "dd7101ffb92db2776cfb9c0a2fff1efe",
+        "e2854ff8a4097636eec0fbee175126b1"
+      ],
+      "verdict": "part_of",
+      "explanation": "7173白天鹅宾馆是黄沙附近酒店建筑，7623白天鹅宾馆餐厅明确用餐等位，餐厅属于宾馆的餐饮子项，不作为酒店同义名。具体餐厅名称仍未提供，不能替换成某个已命名分厅。"
+    },
+    {
+      "reviewId": "279",
+      "city": "广州",
+      "entityIds": [
+        "2d7a501ef822f5932ab730407b652815",
+        "d1ada1335dcb4bcefb43d55ad804bf52"
+      ],
+      "verdict": "distinct",
+      "explanation": "7871十三行明确与APM、汇美、UUS并列的服装批发购物市场；7257十三行博物馆展示外销工艺品，两地点独立。博物馆已在首批并入广州十三行博物馆，本批依赖该现行根。"
+    },
+    {
+      "reviewId": "284",
+      "city": "广州",
+      "entityIds": [
+        "c26ed1397de2a92bf1df0cc0949a8744",
+        "e55197b55a7db38d4021e35c4009eb22"
+      ],
+      "verdict": "part_of",
+      "explanation": "7784明确荔枝湾路为街道路段，7362/7961荔枝湾则为水岸、亭台和街区游览区域。道路是区域内子项，不以路字后缀消除区别。"
+    },
+    {
+      "reviewId": "290",
+      "city": "广州",
+      "entityIds": [
+        "53c6f90ad70baa9777b2eaebe8a841da",
+        "b53fd3476d59af77f0a32e008295f281"
+      ],
+      "verdict": "distinct",
+      "explanation": "7604/7605同篇先说树屋咖啡，再明确不远处还有一家河畔树屋咖啡，两个独立店；地图都落天河植物园树屋，但全文导航从化流溪河畔营地，错误同点不能推翻原文两店证据。"
+    },
+    {
+      "reviewId": "297",
+      "city": "成都",
+      "entityIds": [
+        "7c458c586b810855c5f419d71166218b",
+        "e35dd8c5d493408a525edee193c816d4"
+      ],
+      "verdict": "distinct",
+      "explanation": "4079/4082同篇分别列天府广场成都博物馆和十里店成都自然博物馆，地址、机构、票务独立，不能省略自然二字。"
+    },
+    {
+      "reviewId": "298",
+      "city": "成都",
+      "entityIds": [
+        "5b8468db2991870d74ebfb110b518624",
+        "f95bf59577dc009f411df33ac53bb62f"
+      ],
+      "verdict": "part_of",
+      "explanation": "4066明确玉林西路小酒馆，3819的玉林路为随意逛小巷的玉林片区泛称；西路只是其中道路，不能把片区所有提及归成西路或南街。"
+    },
+    {
+      "reviewId": "312",
+      "city": "成都",
+      "entityIds": [
+        "158823e73d49619475aa595299f5ef3c",
+        "905fec24f1cf1539e9805727eca0b557"
+      ],
+      "verdict": "part_of",
+      "explanation": "3942/4002的永陵指王建五代陵墓，4079明确永陵博物馆包含收费地宫和免费综合馆，3678也区分陵墓与馆藏；保留陵墓子项，不把不同票务范围归为一个同义条目。"
+    },
+    {
+      "reviewId": "315",
+      "city": "成都",
+      "entityIds": [
+        "aab6c058e910744f854056e64512f18f",
+        "e1da73dd54cacb9b7e612022726b2f05"
+      ],
+      "verdict": "distinct",
+      "explanation": "四川博物馆已由第一批核实归四川博物院，3682的永乐宫特展对应川博；4090建川博物馆在大邑安仁，机构和地域独立。"
+    },
+    {
+      "reviewId": "322",
+      "city": "杭州",
+      "entityIds": [
+        "a7f8b55fe97baed0da96f7542a1a2b40",
+        "be06d72b88e1f5e13b79ce549a0cdab2"
+      ],
+      "verdict": "part_of",
+      "explanation": "8448在同篇分列西溪湿地曲水寻梅和西溪湿地洪园，洪园为西溪湿地具体园区，9877的周家村福堤行程也不能全部套入洪园。保留子园区身份。"
+    },
+    {
+      "reviewId": "323",
+      "city": "杭州",
+      "entityIds": [
+        "20b74e974a69141eca64457700adb5cb",
+        "e6e61c9e9a1bc7d4d8ccb258e982d97a"
+      ],
+      "verdict": "distinct",
+      "explanation": "9097/9099同篇把杭州中心面包节和奥体中心吉市驾到分别列出；9771杭州中心在中山北路屏风街逛吃线，奥体为钱塘江南岸体育场馆，中心二字不能判等。"
+    },
+    {
+      "reviewId": "326",
+      "city": "杭州",
+      "entityIds": [
+        "4fa49f803fcaeda0a452d5ba85e09863",
+        "e14271836ea4852ac1387d40be6eb691"
+      ],
+      "verdict": "part_of",
+      "explanation": "8594的长桥明确雷峰塔后看日落的桥体机位，9007对应长桥公园整体；桥是公园内子项，不等于公园所有区域。长桥现临安坐标不符合西湖原文，须另核实，不能借误坐标归并。"
+    },
+    {
+      "reviewId": "334",
+      "city": "杭州",
+      "entityIds": [
+        "63da99ffcf75b4a333e4b1ea9413ae91",
+        "e0f76152992d42b3a68e3352d282fec7"
+      ],
+      "verdict": "distinct",
+      "explanation": "9177植物园为玉泉锦鲤睡莲和植物游览，8546动物园为虎跑路动物园；两个独立机构和位置，不因动/植字相近而归并。"
+    },
+    {
+      "reviewId": "335",
+      "city": "杭州",
+      "entityIds": [
+        "6ceef5814d5d92e17a94a8ead10d6947",
+        "a7bb2724ee489ef357a824c5d7cc3302"
+      ],
+      "verdict": "part_of",
+      "explanation": "8485明确满觉陇路道路散步，9545满觉陇为桂树林与村落片区，9601又分上下满觉陇；道路不是整个区域的同义名。"
+    },
+    {
+      "reviewId": "338",
+      "city": "杭州",
+      "entityIds": [
+        "200b746a5520f9d8bbb8c2aa07ddeda9",
+        "7e2c8a96acc030a9a49656df1ea8ff1b"
+      ],
+      "verdict": "distinct",
+      "explanation": "8496/8497同篇分别列中国伞博物馆和中国扇博物馆，展陈对象和场馆独立；同音及邻近博物馆群不构成同义。"
+    },
+    {
+      "reviewId": "342",
+      "city": "杭州",
+      "entityIds": [
+        "4274b89486650b29bcec943e131bb689",
+        "eb23494ae65e72e74fbab895d8018627"
+      ],
+      "verdict": "part_of",
+      "explanation": "9111飞来峰明确登山看宋代石刻，9220景区原文另分飞来峰、灵隐、永福与韬光寺；山体石刻子项不等于整个灵隐飞来峰景区。景区四名本批同义归并后仍保持该子项独立。"
+    },
+    {
+      "reviewId": "343",
+      "city": "杭州",
+      "entityIds": [
+        "5e0346fa8d0aebe466e875405603f573",
+        "6ceef5814d5d92e17a94a8ead10d6947"
+      ],
+      "verdict": "part_of",
+      "explanation": "9601明确从下满觉陇出发、经过上下满觉陇起伏路段再到杨梅岭，9545满觉陇为整体赏桂区域。下片区不能吞并上片区和整个满觉陇。"
+    },
+    {
+      "reviewId": "346",
+      "city": "杭州",
+      "entityIds": [
+        "3fb73be9f7632b80b7df7a3bee88e91c",
+        "7951329bc1cf9f061177616329ef9fde"
+      ],
+      "verdict": "distinct",
+      "explanation": "8638同篇分别推荐西子国宾馆和西湖国宾馆，两个独立酒店；不是西子/西湖文字别名，且西子现城东北坐标与西湖语境矛盾不能作为归并依据。"
+    },
+    {
+      "reviewId": "347",
+      "city": "杭州",
+      "entityIds": [
+        "6a525b1a7412b41129b4b2c40cf5206e",
+        "8203530cf967da0365efcbb891b6574e"
+      ],
+      "verdict": "distinct",
+      "explanation": "8630山顶观景台在安溪村康门水库上方良渚文明探索步道，9673雉山观景台在良渚古城遗址公园南门游线，所属场地独立；不能把山顶通名当雉山别名。"
+    },
+    {
+      "reviewId": "350",
+      "city": "杭州",
+      "entityIds": [
+        "0af8e05ff07562a4ec6a4ad80ace8adb",
+        "1d4d49612739567f2b29c3c8156455f2"
+      ],
+      "verdict": "distinct",
+      "explanation": "8938长河老街是滨江长河历史街区，9427小河直街在运河拱宸桥附近，跨江不同街区，不能由长/小河和历史文化后缀判等。"
+    },
+    {
+      "reviewId": "359",
+      "city": "杭州",
+      "entityIds": [
+        "60d7d29af5532723f9d0c652cb9e6231",
+        "6413025ea86027139b8955294d11e546"
+      ],
+      "verdict": "distinct",
+      "explanation": "9469说明杭州东站住宿位置，9439明确建议杭州站离西湖近；8954同篇区分东站和杭州站，属于不同铁路站房。"
+    },
+    {
+      "reviewId": "369",
+      "city": "济南",
+      "entityIds": [
+        "48bbca08dc8a0fd00189dbe41cfa127a",
+        "79e713e197315afb0440835502699789"
+      ],
+      "verdict": "part_of",
+      "explanation": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。"
+    },
+    {
+      "reviewId": "372",
+      "city": "济南",
+      "entityIds": [
+        "665e9903d644a1b41ce76e27467fb353",
+        "e394dd2fefdf968a0bbea165941a8652"
+      ],
+      "verdict": "distinct",
+      "explanation": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。"
+    },
+    {
+      "reviewId": "375",
+      "city": "济南",
+      "entityIds": [
+        "908b0aec5ee27f58554a8442f8eef1de",
+        "9664ac094b1fc9e794ccaaa4e77aa9fa"
+      ],
+      "verdict": "part_of",
+      "explanation": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。"
+    }
+  ]
+}

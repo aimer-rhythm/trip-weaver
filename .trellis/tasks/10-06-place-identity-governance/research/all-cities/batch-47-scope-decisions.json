@@ -1,0 +1,68 @@
+[
+  {
+    "key": "all-cities-20261009-batch-47-source-5372-scope",
+    "city": "济南",
+    "sourcePlaceId": 5372,
+    "expectedSourceHash": "917faef34cec331756cd8879c3be9b8de339aacbe34e0db9cece24346f1b3905",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "48bbca08dc8a0fd00189dbe41cfa127a": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11501,
+        "inputHash": "3cd3fd864b22fe41c434aa806ded6372655a3274a2bced426fdbe1cc5b29a610",
+        "entityId": "48bbca08dc8a0fd00189dbe41cfa127a"
+      },
+      {
+        "mentionId": 11608,
+        "inputHash": "7f372acdd8daae842ca6ad0a3657932202722e1a45cb061fa1929045f11556c9",
+        "entityId": null
+      },
+      {
+        "mentionId": 12754,
+        "inputHash": "7dd23a697b46ea98e423ef99b07235dbf499042a4e06c22ac6533b75a2920923",
+        "entityId": "48bbca08dc8a0fd00189dbe41cfa127a"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_scope",
+        "file": "priority-cities/济南/minzu-source-review-01.json",
+        "mentionIds": [
+          11501,
+          11608,
+          12754
+        ],
+        "conclusion": "完整正文区分街道早餐目的地、具体市场与图示住宿区域评价；沿用审核369的part_of边界，不合并或创建别名。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-47-source-5961-scope",
+    "city": "济南",
+    "sourcePlaceId": 5961,
+    "expectedSourceHash": "cf39541bd7b5126f34438016ac3a7c8c7d4efaef9ba6b7cfc215e9bb7dd7b66e",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "79e713e197315afb0440835502699789": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 12643,
+        "inputHash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5",
+        "entityId": "79e713e197315afb0440835502699789"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_scope",
+        "file": "priority-cities/济南/minzu-source-review-01.json",
+        "mentionIds": [
+          12643
+        ],
+        "conclusion": "完整正文区分街道早餐目的地、具体市场与图示住宿区域评价；沿用审核369的part_of边界，不合并或创建别名。"
+      }
+    ]
+  }
+]

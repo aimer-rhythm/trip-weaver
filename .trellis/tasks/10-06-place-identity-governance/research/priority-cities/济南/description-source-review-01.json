@@ -1,0 +1,50 @@
+{
+  "city": "济南",
+  "batch": "batch-40",
+  "sourceFile": "priority-cities/济南/run-1791385235272324900/sources.json",
+  "sourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "textReviewedNoteIds": [
+    2616,
+    2798,
+    2803
+  ],
+  "mentionIds": [
+    11508,
+    12581,
+    12786,
+    12787
+  ],
+  "fieldDecisions": [
+    {
+      "mentionId": 12581,
+      "fields": [
+        "reason",
+        "evidence_text",
+        "place_content"
+      ],
+      "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。"
+    },
+    {
+      "mentionId": 12787,
+      "fields": [
+        "reason"
+      ],
+      "quote": "9️⃣济南野生动物园"
+    }
+  ],
+  "conclusions": [
+    "12581正文先点名明水古城，再明确改以济南为主语；仅后面的全市概述被错提为古城看点，保留地点提及。",
+    "12787正文和证据均为济南野生动物园；reason却丢失野生，不能作为另一个园区名称的介绍。保留唯一有效提及和evidence_text。",
+    "11508无具体理由的占位描述和12786拍照语境仍保留，后续内容质量另核；本批不扩大到新字段判断。"
+  ],
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "pending": [
+    "图片比对",
+    "类别复核",
+    "位置及园区边界复核"
+  ],
+  "rawSourcesUnchanged": 107,
+  "originalMentionsUnchanged": 662,
+  "appliedAtFreeze": false
+}

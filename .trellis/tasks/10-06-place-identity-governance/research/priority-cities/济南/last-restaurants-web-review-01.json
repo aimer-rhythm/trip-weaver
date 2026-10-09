@@ -1,0 +1,126 @@
+{
+  "batch": 64,
+  "fetchedEvidenceChecked": true,
+  "references": [
+    {
+      "file": "priority-cities/济南/last-restaurants-reference-04.json",
+      "sha256": "13baf4b3d28193c4fa496887771db40c7af0fc2776bfff565dfe8ac62f613679",
+      "url": "https://my.trip.com/restaurant/china/jinan/detail/restaurant-26222272",
+      "checkedText": [
+        "泉城路店",
+        "龙泉商城西南角"
+      ]
+    },
+    {
+      "file": "priority-cities/济南/last-restaurants-reference-05.json",
+      "sha256": "847f0b6848116398973cd3667ce06eb7044778c8a2d5d80c6f3cd1333af87dfc",
+      "url": "https://m.sohu.com/a/5715744_114957",
+      "checkedText": [
+        "华祥",
+        "经五路东首"
+      ]
+    },
+    {
+      "file": "priority-cities/济南/last-restaurants-reference-06.json",
+      "sha256": "7df06536207c5849ac9dd8d2aaebedcf58ac3efa57dac37f66a2f7df46edc45e",
+      "url": "https://m.thepaper.cn/newsDetail_forward_32973262",
+      "checkedText": [
+        "山大南路店",
+        "山大南路蜀易火锅隔壁"
+      ]
+    },
+    {
+      "file": "priority-cities/济南/last-restaurants-reference-07.json",
+      "sha256": "1e99abcfc1d585df87f1a912378f75ac393f248a9d1210c7014ad41c03571760",
+      "url": "https://hk.trip.com/restaurant/china/jinan/detail/restaurant-44252743",
+      "checkedText": [
+        "经五路店",
+        "24"
+      ]
+    },
+    {
+      "file": "priority-cities/济南/last-restaurants-reference-08.json",
+      "sha256": "491818db48a7c0a3ce1ac2d5f87678f71e14e687f44aaa4950f13d3f37e95a2c",
+      "url": "https://uk.trip.com/restaurant/china/jinan/detail/restaurant-15905685",
+      "checkedText": [
+        "许记排骨",
+        "县东巷71号"
+      ]
+    }
+  ],
+  "adopted": {
+    "许记排骨": "原文和Trip正文均县东巷71号；只用地址限定展示名，不宣称官方县东巷店或已证实多分店。",
+    "桥下把子肉": "2026-04-15济南文旅正文明确山大南路店/山大南路蜀易火锅隔壁，与两篇原文一致；不继承其他店地址营业信息。",
+    "蜗牛叔叔的食堂": "Trip泉城路店/狮子口街参照支持门店限定；原源地址保持，旧评论不证明2026营业。"
+  },
+  "huaXiang": {
+    "action": "no_mutation",
+    "original": "大观园南门西行100米路北",
+    "oldSourceAddress": "永长街23号正东方向200米",
+    "publicCandidates": [
+      "华祥清真糕点/经五路东首（历史文章）",
+      "清真华祥糕点(经五路店)/饮虎池街回民小区24号楼"
+    ],
+    "conclusion": "缺同店连续性或明确分店对应，不能把它们合并或认定迁址；搜狐永长街25是另一个穆香斋商号。"
+  },
+  "xuWrongPointEvidence": {
+    "basis": "原文明确县东巷71号（近大明湖/泉城路），抓取商户正文同门牌；旧点在所述老城参照西侧约4–5公里且源地址为空，缺同门牌位置证据。清除不适用于已限定门店的旧点，精确点仍待核。",
+    "beforeExportFile": "all-cities/batch-63/sync-01/xhs-places-济南.json",
+    "beforeExportSha256": "759019be55738bda2f79eb5ab02ed4ac4f96038c3213f9de8195a805c46f6fc4",
+    "oldPoint": {
+      "lat": 36.67141083088484,
+      "lng": 116.98064625924545
+    },
+    "referenceDistances": [
+      {
+        "name": "大明湖",
+        "id": "550d6810857b4487aae8ce39c9ee093b",
+        "lat": 36.677524,
+        "lng": 117.031652,
+        "distanceKm": 4.599
+      },
+      {
+        "name": "泉城路",
+        "id": "3d28555e6b570412c88e32a3fe17fd64",
+        "lat": 36.666192,
+        "lng": 117.03383,
+        "distanceKm": 4.779
+      },
+      {
+        "name": "芙蓉街",
+        "id": "747792d1b5834255f5feaa6c2dc62925",
+        "lat": 36.6669643677903,
+        "lng": 117.02301064448173,
+        "distanceKm": 3.811
+      }
+    ],
+    "distanceLimitation": "参照点距离仅说明与原文近邻范围明显偏离，不证明县东巷精确边界；未据此生成或采用新点。",
+    "newPreciseLocationResolved": false
+  },
+  "rejected": [
+    "搜索主回答中的虚构分店/电话/门牌/坐标全部弃用",
+    "高德和知乎空正文抓取的摘要不作定位证据",
+    "历史评论日期不当作当前营业确认",
+    "近邻与同路线不认领裸名分店"
+  ],
+  "retrievalLimits": {
+    "searchTimeouts": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "exaSearch12": "未配置，未获取证据",
+    "emptyFetches": [
+      1,
+      2,
+      3,
+      9
+    ]
+  },
+  "mapCredentialStatus": "rotation_required",
+  "mapRequests": 0,
+  "newCoordinates": 0,
+  "imageComparison": "deferred_by_user",
+  "userAcceptance": false
+}

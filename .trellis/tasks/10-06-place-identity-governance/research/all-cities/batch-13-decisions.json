@@ -1,0 +1,696 @@
+[
+  {
+    "key": "all-cities-20261006-batch-13-001",
+    "city": "西安",
+    "entityId": "f70edc46cb1259d0531d513eb45a3240",
+    "mergeEntityIds": [
+      "7dea780ba69eee7c0dae15fc2fe626a1",
+      "dfcf040ed8499d27ca7d97caee38151a",
+      "8bacf7cfbc7d8a3de1f76470397ac8fd"
+    ],
+    "canonicalName": "秦始皇兵马俑博物馆",
+    "expectedRevisions": {
+      "7dea780ba69eee7c0dae15fc2fe626a1": 1,
+      "f70edc46cb1259d0531d513eb45a3240": 1,
+      "dfcf040ed8499d27ca7d97caee38151a": 1,
+      "8bacf7cfbc7d8a3de1f76470397ac8fd": 1
+    },
+    "overrides": {
+      "lat": 34.383502,
+      "lng": 109.27943,
+      "address": "陕西省西安市临潼区秦陵街道临潼区秦始皇陵东1.5公里处",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          381,
+          398,
+          427
+        ],
+        "conclusion": "11807、12181、12328、12486及12505均指临潼兵马俑展馆游览，四名为该馆简称与全称。12263及12315明确将骊山园作为另外的摆渡/游览目的地，陵园不纳入同义成员；兵马俑巨像和商业街也不纳入。",
+        "sourcePlaceIds": [
+          "5559",
+          "5511",
+          "5827",
+          "5934"
+        ],
+        "mentions": [
+          {
+            "id": "11807",
+            "name": "秦始皇兵马俑",
+            "quote": "秦始皇兵马俑（120r）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7868ce000000002c007393"
+          },
+          {
+            "id": "12505",
+            "name": "秦始皇兵马俑博物馆",
+            "quote": "兵马俑、陕西历史博物馆等热门景点需要提前预约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6abe0fc0000000001b021f76"
+          },
+          {
+            "id": "12328",
+            "name": "秦始皇兵马俑博物馆",
+            "quote": "可以坐直通车去兵马俑，包来回很方便～还附赠免费讲解",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f3293d000000002301fa8a"
+          },
+          {
+            "id": "12256",
+            "name": "秦始皇兵马俑博物馆",
+            "quote": "门票120/人，需要导游的话到达门口现找导游就行性价比高",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a100abe000000000702bf19"
+          },
+          {
+            "id": "12201",
+            "name": "秦始皇兵马俑博物馆",
+            "quote": "兵马俑攻略",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3405680000000007022ebb"
+          },
+          {
+            "id": "12181",
+            "name": "秦兵马俑",
+            "quote": "第一次去西安秦兵马俑必须看看",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4a37b00000000011011663"
+          },
+          {
+            "id": "12486",
+            "name": "兵马俑",
+            "quote": "兵马俑别信路边野导游，正规讲解/讲解器更靠谱",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6abc809900000000150025a2"
+          },
+          {
+            "id": "12439",
+            "name": "兵马俑",
+            "quote": "必打卡点位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab12fde000000003302d233"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5511",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 34.383502,
+          "lng": 109.27943,
+          "address": "陕西省西安市临潼区秦陵街道临潼区秦始皇陵东1.5公里处",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 34.383502,
+        "lng": 109.27943,
+        "address": "陕西省西安市临潼区秦陵街道临潼区秦始皇陵东1.5公里处",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          11807,
+          12181,
+          12328,
+          12486,
+          12505,
+          12263,
+          12315
+        ],
+        "conclusion": "11807、12181、12328、12486及12505均指临潼兵马俑展馆游览，四名为该馆简称与全称。12263及12315明确将骊山园作为另外的摆渡/游览目的地，陵园不纳入同义成员；兵马俑巨像和商业街也不纳入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-13-002",
+    "city": "西安",
+    "entityId": "79a5a456995b3a2d9621a35bb555ac34",
+    "mergeEntityIds": [
+      "852081179dc6249baea1c445a6f94f15",
+      "faa193fd0d94630368c8419fb7655ff7"
+    ],
+    "canonicalName": "少华山国家森林公园",
+    "expectedRevisions": {
+      "79a5a456995b3a2d9621a35bb555ac34": 1,
+      "852081179dc6249baea1c445a6f94f15": 1,
+      "faa193fd0d94630368c8419fb7655ff7": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "陕西省渭南市华州区少华山",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          403
+        ],
+        "conclusion": "12026少华山森林公园、12549国家森林公园及补查12454少华山均以同一索道、潜龙寺、龙首阁、石门峡构成游线，12454明确毗邻华山。合并公园简称与全称，不合并这些独立子景区。旧点108.4637在西安西侧且补充主体地图是邮局附近，明显不在渭南少华山，成对清空等待可信园区坐标。",
+        "sourcePlaceIds": [
+          "5804",
+          "5588",
+          "5838"
+        ],
+        "mentions": [
+          {
+            "id": "12549",
+            "name": "少华山国家森林公园",
+            "quote": "从西安自驾一小时左右，来到藏在山间的避世桃源",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5f16a9000000000503bda0"
+          },
+          {
+            "id": "12345",
+            "name": "少华山森林公园",
+            "quote": "雨后天晴早一点去，看到的云海概率更高",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68ccd9b5000000000e025f38"
+          },
+          {
+            "id": "12026",
+            "name": "少华山森林公园",
+            "quote": "雨后天晴早一点去，看到的云海概率更高",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68ccd9b5000000000e025f38"
+          },
+          {
+            "id": "12454",
+            "name": "少华山",
+            "quote": "毗邻华山的少华山，藏着陕西最绝的红叶盛景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/690034c200000000050326f7"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5804",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 34.154712,
+          "lng": 108.463687,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "陕西省渭南市华州区少华山",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xian-batch13-supplement.json",
+        "sha256": "2c01709cb5ade149becce8ef9016c9004d734e6bde695598fda3db05539a9f83",
+        "conclusion": "12026少华山森林公园、12549国家森林公园及补查12454少华山均以同一索道、潜龙寺、龙首阁、石门峡构成游线，12454明确毗邻华山。合并公园简称与全称，不合并这些独立子景区。旧点108.4637在西安西侧且补充主体地图是邮局附近，明显不在渭南少华山，成对清空等待可信园区坐标。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12026,
+          12549,
+          12458
+        ],
+        "conclusion": "12026少华山森林公园、12549国家森林公园及补查12454少华山均以同一索道、潜龙寺、龙首阁、石门峡构成游线，12454明确毗邻华山。合并公园简称与全称，不合并这些独立子景区。旧点108.4637在西安西侧且补充主体地图是邮局附近，明显不在渭南少华山，成对清空等待可信园区坐标。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-variant-context.json",
+        "sha256": "6a5911ee28d554923b56df499d95c1130dc882c12def41ca5a09432a70b43bee",
+        "mentionIds": [
+          12454
+        ],
+        "conclusion": "12026少华山森林公园、12549国家森林公园及补查12454少华山均以同一索道、潜龙寺、龙首阁、石门峡构成游线，12454明确毗邻华山。合并公园简称与全称，不合并这些独立子景区。旧点108.4637在西安西侧且补充主体地图是邮局附近，明显不在渭南少华山，成对清空等待可信园区坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-13-003",
+    "city": "西安",
+    "entityId": "9c89304fe49630d580cd5bfa9510254d",
+    "mergeEntityIds": [
+      "230334add0975d4935aa77430cb6fc2f",
+      "37e9a44022e61cff6b522ff9cc095317"
+    ],
+    "canonicalName": "回坊马二饺子馆",
+    "expectedRevisions": {
+      "230334add0975d4935aa77430cb6fc2f": 1,
+      "9c89304fe49630d580cd5bfa9510254d": 1,
+      "37e9a44022e61cff6b522ff9cc095317": 1
+    },
+    "overrides": {
+      "lat": 34.266575,
+      "lng": 108.932772,
+      "address": "洒金桥131",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          416
+        ],
+        "conclusion": "12278原文及图中文字明确回坊马二饺子馆在洒金桥131号，12397正文和图片的马二饺子馆同在洒金桥，牛肉韭黄馅酸汤描述一致；12121原文明写马二酸汤水饺（洒金桥），11711图片也称回坊马二酸汤水饺。三条本批源指同一洒金桥老店；采用有门牌原图支持的131号主源定位，替换简称错误偏东地图，不合并马峰。",
+        "sourcePlaceIds": [
+          "5914",
+          "5719",
+          "5536"
+        ],
+        "mentions": [
+          {
+            "id": "12397",
+            "name": "马二饺子馆",
+            "quote": "吃不腻的小店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69df7e9000000000220259d6"
+          },
+          {
+            "id": "12278",
+            "name": "回坊马二饺子馆",
+            "quote": "饭点去人多排队，但上餐速度快",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698c88d4000000001a020747"
+          },
+          {
+            "id": "11842",
+            "name": "回坊马二饺子馆",
+            "quote": "饺子：回坊马二饺子馆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68ef0966000000000700db2d"
+          },
+          {
+            "id": "12518",
+            "name": "马二酸汤水饺",
+            "quote": "几十年老店，只卖牛肉韭黄一种馅",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6abe0fc0000000001b021f76"
+          },
+          {
+            "id": "12121",
+            "name": "马二酸汤水饺",
+            "quote": "几十年老店，只卖牛肉韭黄一种馅",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6abe0fc0000000001b021f76"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5719",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 34.266575,
+          "lng": 108.932772,
+          "address": "洒金桥131",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 34.266575,
+        "lng": 108.932772,
+        "address": "洒金桥131",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12278,
+          12397,
+          12121,
+          11711
+        ],
+        "conclusion": "12278原文及图中文字明确回坊马二饺子馆在洒金桥131号，12397正文和图片的马二饺子馆同在洒金桥，牛肉韭黄馅酸汤描述一致；12121原文明写马二酸汤水饺（洒金桥），11711图片也称回坊马二酸汤水饺。三条本批源指同一洒金桥老店；采用有门牌原图支持的131号主源定位，替换简称错误偏东地图，不合并马峰。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-13-004",
+    "city": "西安",
+    "entityId": "eb66385eb8f133ffd4f8d85c1a7570c1",
+    "mergeEntityIds": [
+      "cdb47d8da2301c2f7799eb1bd88af213"
+    ],
+    "canonicalName": "兴盛楼牛羊肉泡馍小炒（钟楼店）",
+    "expectedRevisions": {
+      "cdb47d8da2301c2f7799eb1bd88af213": 1,
+      "eb66385eb8f133ffd4f8d85c1a7570c1": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "西安钟楼附近东木头市安居巷",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          418
+        ],
+        "conclusion": "12046的图中文字明确东木头市、钟楼店、安居巷；12381原文及图片也明确钟楼附近的社区泡馍店，小炒是店名服务补语。两源合并为有分店限定的钟楼店。11958的截断名图文标回民街，仍未明确同一店，暂不纳入。旧坐标34.1901在南郊，不符合原文钟楼区域，清空而不借钟楼坐标。",
+        "sourcePlaceIds": [
+          "5903",
+          "5740"
+        ],
+        "mentions": [
+          {
+            "id": "12046",
+            "name": "兴盛楼牛羊肉泡馍",
+            "quote": "都是本地人都吃的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696e2d9d000000001a031ad2"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5740",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 34.190144,
+          "lng": 108.944794,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "西安钟楼附近东木头市安居巷",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12046,
+          11958
+        ],
+        "conclusion": "12046的图中文字明确东木头市、钟楼店、安居巷；12381原文及图片也明确钟楼附近的社区泡馍店，小炒是店名服务补语。两源合并为有分店限定的钟楼店。11958的截断名图文标回民街，仍未明确同一店，暂不纳入。旧坐标34.1901在南郊，不符合原文钟楼区域，清空而不借钟楼坐标。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-variant-context.json",
+        "sha256": "6a5911ee28d554923b56df499d95c1130dc882c12def41ca5a09432a70b43bee",
+        "mentionIds": [
+          12381
+        ],
+        "conclusion": "12046的图中文字明确东木头市、钟楼店、安居巷；12381原文及图片也明确钟楼附近的社区泡馍店，小炒是店名服务补语。两源合并为有分店限定的钟楼店。11958的截断名图文标回民街，仍未明确同一店，暂不纳入。旧坐标34.1901在南郊，不符合原文钟楼区域，清空而不借钟楼坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-13-005",
+    "city": "西安",
+    "entityId": "9f0732b9cbe41a6dd26482d7613fbf67",
+    "mergeEntityIds": [
+      "7642b36c0819e1104c13ef518a9b6b1e",
+      "3c4ed89e25458f13be0d98bfd408fef1"
+    ],
+    "canonicalName": "霸王茶姬钟楼超级旗舰店",
+    "expectedRevisions": {
+      "7642b36c0819e1104c13ef518a9b6b1e": 1,
+      "9f0732b9cbe41a6dd26482d7613fbf67": 1,
+      "3c4ed89e25458f13be0d98bfd408fef1": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "西安钟楼地铁站C口、地下通道8号口附近",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          420
+        ],
+        "conclusion": "12170、12186、12276和12354都明确钟楼旗舰店二三层观景，同为C口附近店。补充主体霸王茶姬对应12354的旧正规化名称，原名实际为霸王茶姬（钟楼超级旗舰店），有明确分店证据才并入。旧点108.9916远离钟楼，成对清空，不用地铁口冒充店铺定位。",
+        "sourcePlaceIds": [
+          "5777",
+          "5823",
+          "5893"
+        ],
+        "mentions": [
+          {
+            "id": "12412",
+            "name": "霸王茶姬钟楼旗舰店",
+            "quote": "霸王茶姬钟楼旗舰店2楼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68d90a22000000001101d164"
+          },
+          {
+            "id": "12276",
+            "name": "霸王茶姬钟楼旗舰店",
+            "quote": "霸王茶姬钟楼旗舰店2楼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/688597e5000000002400c0d8"
+          },
+          {
+            "id": "12186",
+            "name": "霸王茶姬钟楼旗舰店",
+            "quote": "霸王🍵姬钟楼旗舰店3层窗景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6898252e00000000220232e5"
+          },
+          {
+            "id": "12170",
+            "name": "霸王茶姬钟楼超级旗舰店",
+            "quote": "钟楼C位同框，2-3楼都能拍",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4a37b00000000011011663"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5823",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 34.267416,
+          "lng": 108.991598,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "西安钟楼地铁站C口、地下通道8号口附近",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xian-batch13-supplement.json",
+        "sha256": "2c01709cb5ade149becce8ef9016c9004d734e6bde695598fda3db05539a9f83",
+        "conclusion": "12170、12186、12276和12354都明确钟楼旗舰店二三层观景，同为C口附近店。补充主体霸王茶姬对应12354的旧正规化名称，原名实际为霸王茶姬（钟楼超级旗舰店），有明确分店证据才并入。旧点108.9916远离钟楼，成对清空，不用地铁口冒充店铺定位。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12170,
+          12276
+        ],
+        "conclusion": "12170、12186、12276和12354都明确钟楼旗舰店二三层观景，同为C口附近店。补充主体霸王茶姬对应12354的旧正规化名称，原名实际为霸王茶姬（钟楼超级旗舰店），有明确分店证据才并入。旧点108.9916远离钟楼，成对清空，不用地铁口冒充店铺定位。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-variant-context.json",
+        "sha256": "6a5911ee28d554923b56df499d95c1130dc882c12def41ca5a09432a70b43bee",
+        "mentionIds": [
+          12186,
+          12354
+        ],
+        "conclusion": "12170、12186、12276和12354都明确钟楼旗舰店二三层观景，同为C口附近店。补充主体霸王茶姬对应12354的旧正规化名称，原名实际为霸王茶姬（钟楼超级旗舰店），有明确分店证据才并入。旧点108.9916远离钟楼，成对清空，不用地铁口冒充店铺定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-13-006",
+    "city": "西安",
+    "entityId": "40a75a6c0bbeb284db58f3a5f0c2da89",
+    "mergeEntityIds": [
+      "4c92bf14031fc06d5c5215c0ef340d61"
+    ],
+    "canonicalName": "太阳庙门",
+    "expectedRevisions": {
+      "40a75a6c0bbeb284db58f3a5f0c2da89": 1,
+      "4c92bf14031fc06d5c5215c0ef340d61": 1
+    },
+    "overrides": {
+      "lat": 34.252485,
+      "lng": 108.938693,
+      "address": "陕西省西安市碑林区南院门街道太阳庙门",
+      "geoStatus": "reviewed_source",
+      "category": "文化"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          404
+        ],
+        "conclusion": "11917的太阳庙位于湘子庙至五星街散步线，11992的太阳庙门在同一线段；11896明确为老街市井空间。补充街名资料记载太阳庙已消失，现太阳庙门为小南门与朱雀门之间短街。本批源无寺内游览，太阳庙是该街道的省略说法；不将历史寺院定义为同义对象。沿用已落在该街段的源定位。",
+        "sourcePlaceIds": [
+          "5599",
+          "5604"
+        ],
+        "mentions": [
+          {
+            "id": "11992",
+            "name": "太阳庙门",
+            "quote": "五星街-太阳庙门-湘子庙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696907ae000000000a030596"
+          },
+          {
+            "id": "11907",
+            "name": "太阳庙门",
+            "quote": "非常地道的闲逛路线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a785853000000002c002b52"
+          },
+          {
+            "id": "11896",
+            "name": "太阳庙门",
+            "quote": "充满烟火气，很适合感受老西安的日常市井生活",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f36c25000000003601cca8"
+          },
+          {
+            "id": "11917",
+            "name": "太阳庙",
+            "quote": "太阳庙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6853fbd5000000001703031c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5599",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 34.252485,
+          "lng": 108.938693,
+          "address": "陕西省西安市碑林区南院门街道太阳庙门",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 34.252485,
+        "lng": 108.938693,
+        "address": "陕西省西安市碑林区南院门街道太阳庙门",
+        "geoStatus": "reviewed_source",
+        "category": "文化"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.sohu.com/a/484438254_100054434",
+        "file": "all-cities/xian-sun-street-fetch.json",
+        "sha256": "630506a4595664c3548525e35e9a4f257c070125dddf27f1956d756005a9a07e"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          11917,
+          11992
+        ],
+        "conclusion": "11917的太阳庙位于湘子庙至五星街散步线，11992的太阳庙门在同一线段；11896明确为老街市井空间。补充街名资料记载太阳庙已消失，现太阳庙门为小南门与朱雀门之间短街。本批源无寺内游览，太阳庙是该街道的省略说法；不将历史寺院定义为同义对象。沿用已落在该街段的源定位。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-street-context.json",
+        "sha256": "da601e660cce7e883bbf15359867e0207953b56c4652598f1a952159edda8d42",
+        "mentionIds": [
+          11896
+        ],
+        "conclusion": "11917的太阳庙位于湘子庙至五星街散步线，11992的太阳庙门在同一线段；11896明确为老街市井空间。补充街名资料记载太阳庙已消失，现太阳庙门为小南门与朱雀门之间短街。本批源无寺内游览，太阳庙是该街道的省略说法；不将历史寺院定义为同义对象。沿用已落在该街段的源定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-13-007",
+    "city": "西安",
+    "entityId": "3ff69da2262584427b436220e6cba2af",
+    "mergeEntityIds": [
+      "770aa8f641b1654f774e3fa7b79e16ff"
+    ],
+    "canonicalName": "石门峡景区",
+    "expectedRevisions": {
+      "3ff69da2262584427b436220e6cba2af": 1,
+      "770aa8f641b1654f774e3fa7b79e16ff": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "陕西省渭南市华州区少华山国家森林公园石门峡景区",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          424
+        ],
+        "conclusion": "12458明确少华山游线中的石门峡景区及九龙飞瀑、天仙瀑布，12550在少华山国家森林公园原文用石门峡简称描述同一溪谷瀑布游览区域。只并该子景区两名，不与少华山母园同义合并。旧点108.6570在西安西南侧，不符合渭南少华山，清空待核。",
+        "sourcePlaceIds": [
+          "5842",
+          "5805"
+        ],
+        "mentions": [
+          {
+            "id": "12458",
+            "name": "石门峡景区",
+            "quote": "平缓步道一路伴着九龙飞瀑、天仙瀑布，山涧溪水潺潺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/690034c200000000050326f7"
+          },
+          {
+            "id": "12550",
+            "name": "石门峡",
+            "quote": "沿着溪流一路可以戏水",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5f16a9000000000503bda0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5842",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 33.916713,
+          "lng": 108.657004,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "陕西省渭南市华州区少华山国家森林公园石门峡景区",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12458,
+          12550,
+          12549,
+          12026
+        ],
+        "conclusion": "12458明确少华山游线中的石门峡景区及九龙飞瀑、天仙瀑布，12550在少华山国家森林公园原文用石门峡简称描述同一溪谷瀑布游览区域。只并该子景区两名，不与少华山母园同义合并。旧点108.6570在西安西南侧，不符合渭南少华山，清空待核。"
+      }
+    ]
+  }
+]

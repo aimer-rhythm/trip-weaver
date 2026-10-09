@@ -1,0 +1,311 @@
+{
+  "reviewedAt": "2026-10-07T19:48:04.246Z",
+  "sourceFile": "priority-cities/济南/run-1791385235272324900/sources.json",
+  "sourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "sourcePacketFile": "priority-cities/济南/park-source-packet-01.json",
+  "exportFile": "all-cities/batch-35/sync-01/xhs-places-济南.json",
+  "exportSha256": "f1439258ec32ee12bed27cbd711c3a8c820374ac763e81c48d7a8b4726a31edf",
+  "mentionsRead": 3,
+  "fullNotesRead": 6,
+  "fullNoteIds": [
+    2547,
+    2549,
+    2568,
+    2573,
+    2576,
+    2798
+  ],
+  "groups": [
+    {
+      "entityId": "1b4ef2692e22efa0e8d765a93fc5b54c",
+      "name": "中山公园",
+      "revision": 1,
+      "mentions": [
+        {
+          "mentionId": 11531,
+          "rawNoteId": 2573,
+          "inputHash": "2da34b794fee3311daf4e31f0dfb6012876ff734ad234e842348d3b735d89390",
+          "originalName": "中山公园",
+          "reason": "超安静，还能淘二手货",
+          "evidenceText": "中山公园里超安静，还能淘二手货",
+          "factValue": {
+            "placeContent": {
+              "version": 1,
+              "highlights": [
+                {
+                  "text": "公园里超安静，还能淘二手货",
+                  "quote": "中山公园里超安静，还能淘二手货"
+                }
+              ]
+            }
+          },
+          "conclusion": "subject_and_consumed_fields_supported_by_source",
+          "explanation": "note2573明确经三路→中山公园→纬四路，并直接写中山公园里安静、可淘二手货。没有把古着店、图书馆或园内摊位认领为公园同义名；原始reason/evidence_text与看点的主语一致。"
+        }
+      ],
+      "mapReference": {
+        "sourceFile": "priority-cities/济南/geo-07.json",
+        "sourceSha256": "97fc4525f41ba131dd61190483e65cffcece1a45d6d956e6928fa12ad4ab5084",
+        "name": "中山公园",
+        "address": "山东省济南市市中区大观园街道经三路132号",
+        "coordinateSystem": "CGCS2000",
+        "originalLonLat": "116.98357,36.66109",
+        "gcj02": {
+          "longitude": 116.98934086299036,
+          "latitude": 36.661299365988484,
+          "adcode": "",
+          "address": "山东省济南市市中区大观园街道经三路132号",
+          "formatted_address": "山东省济南市市中区大观园街道经三路132号",
+          "poi_id": "",
+          "amap_type": ""
+        }
+      },
+      "currentFacts": {
+        "topReasons": [
+          "超安静，还能淘二手货"
+        ],
+        "content": {
+          "version": 1,
+          "intro": "公园里超安静，还能淘二手货。",
+          "highlights": [
+            {
+              "text": "公园里超安静，还能淘二手货",
+              "quote": "中山公园里超安静，还能淘二手货",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search",
+              "strength": "weak",
+              "observedAt": "2026-10-04T11:18:21.299746+00:00"
+            }
+          ],
+          "compiledAt": "2026-10-07T19:28:44.529540+00:00"
+        },
+        "openHours": {
+          "version": 2,
+          "subject": "中山公园",
+          "scope": "place",
+          "status": "unknown",
+          "text": "",
+          "openTime": null,
+          "closeTime": null,
+          "closedWeekdays": [],
+          "note": "",
+          "evidence": [],
+          "attributions": [],
+          "review": []
+        },
+        "price": null,
+        "reservation": "unknown"
+      },
+      "policyAssessment": "没有从其他地点或全城无主语图片提示获得费用、开放时间或预约政策；当前openHours/reservation保持unknown。",
+      "mediaAssessment": "上游管理图库、下游当前及旧ID图片字段、实际独立图库均无匹配；没有新增图片分配。",
+      "fullReviewPassed": true,
+      "userAccepted": false
+    },
+    {
+      "entityId": "2d23e8cc46a8090235388297dff2279c",
+      "name": "济南森林公园",
+      "revision": 1,
+      "mentions": [
+        {
+          "mentionId": 11376,
+          "rawNoteId": 2576,
+          "inputHash": "2b7d4f87b3634fe6099a2fd6a77d5a6583cbb8863212f5bdc8dd57d575ab2f80",
+          "originalName": "济南森林公园",
+          "reason": "可逛林赏湖，走环湖木栈道看水景，登观景台看日落",
+          "evidenceText": "去济南森林公园逛林赏湖",
+          "factValue": {
+            "placeContent": {
+              "version": 1,
+              "highlights": [
+                {
+                  "text": "有环湖木栈道可徒步看林间水景",
+                  "quote": "走环湖木栈道徒步看林间水景"
+                },
+                {
+                  "text": "有观景台可看橘子海日落",
+                  "quote": "登观景台看橘子海日落"
+                }
+              ]
+            }
+          },
+          "conclusion": "subject_and_consumed_fields_supported_by_source",
+          "explanation": "note2576在天天过年之后明确去济南森林公园逛林赏湖，随后写环湖木栈道及观景台，最后另列腊山河廊道。保留原文体验为弱证据，不把餐厅鲁菜评价或腊山河归公园，不凭路线创建栈道/观景台别名。"
+        }
+      ],
+      "mapReference": {
+        "sourceFile": "priority-cities/济南/geo-07.json",
+        "sourceSha256": "97fc4525f41ba131dd61190483e65cffcece1a45d6d956e6928fa12ad4ab5084",
+        "name": "济南森林公园",
+        "address": "山东省济南市槐荫区匡山街道张庄路321号",
+        "coordinateSystem": "CGCS2000",
+        "originalLonLat": "116.93517,36.66718",
+        "gcj02": {
+          "longitude": 116.94077422413872,
+          "latitude": 36.66728062848335,
+          "adcode": "",
+          "address": "山东省济南市槐荫区匡山街道张庄路321号",
+          "formatted_address": "山东省济南市槐荫区匡山街道张庄路321号",
+          "poi_id": "",
+          "amap_type": ""
+        }
+      },
+      "currentFacts": {
+        "topReasons": [
+          "可逛林赏湖，走环湖木栈道看水景，登观景台看日落"
+        ],
+        "content": {
+          "version": 1,
+          "intro": "有环湖木栈道可徒步看林间水景。有观景台可看橘子海日落。",
+          "highlights": [
+            {
+              "text": "有环湖木栈道可徒步看林间水景",
+              "quote": "走环湖木栈道徒步看林间水景",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69df761a000000001a0339c4?xsec_token=ABMrvwKSqn2yqB283A-DXodBWI6rFTfwm3dvwvzzNMl4A=&xsec_source=pc_search",
+              "strength": "weak",
+              "observedAt": "2026-10-04T11:18:45.105402+00:00"
+            },
+            {
+              "text": "有观景台可看橘子海日落",
+              "quote": "登观景台看橘子海日落",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69df761a000000001a0339c4?xsec_token=ABMrvwKSqn2yqB283A-DXodBWI6rFTfwm3dvwvzzNMl4A=&xsec_source=pc_search",
+              "strength": "weak",
+              "observedAt": "2026-10-04T11:18:45.105402+00:00"
+            }
+          ],
+          "compiledAt": "2026-10-07T19:28:44.529540+00:00"
+        },
+        "openHours": {
+          "version": 2,
+          "subject": "济南森林公园",
+          "scope": "place",
+          "status": "unknown",
+          "text": "",
+          "openTime": null,
+          "closeTime": null,
+          "closedWeekdays": [],
+          "note": "",
+          "evidence": [],
+          "attributions": [],
+          "review": []
+        },
+        "price": null,
+        "reservation": "unknown"
+      },
+      "policyAssessment": "没有从其他地点或全城无主语图片提示获得费用、开放时间或预约政策；当前openHours/reservation保持unknown。",
+      "mediaAssessment": "上游管理图库、下游当前及旧ID图片字段、实际独立图库均无匹配；没有新增图片分配。",
+      "fullReviewPassed": true,
+      "userAccepted": false
+    },
+    {
+      "entityId": "34fec8eb89e06bf897e7ed869a42d6a1",
+      "name": "泉城公园",
+      "revision": 1,
+      "mentions": [
+        {
+          "mentionId": 12782,
+          "rawNoteId": 2798,
+          "inputHash": "bf6a18f0d244beab7866dd340c7901d31a57cb9e5f429bd3d4a10e53a0f92ef3",
+          "originalName": "泉城公园",
+          "reason": "济南公园，适合拍照",
+          "evidenceText": "4️⃣泉城公园",
+          "factValue": null,
+          "conclusion": "subject_and_consumed_fields_supported_by_source",
+          "explanation": "note2798在济南9景点拍照清单中明确列泉城公园；reason“济南公园，适合拍照”是对应语境的概述，fact_value为空。泉城广场、泉城公园站和其他八处景点均不认领为同一主体。"
+        }
+      ],
+      "mapReference": {
+        "sourceFile": "priority-cities/济南/geo-07.json",
+        "sourceSha256": "97fc4525f41ba131dd61190483e65cffcece1a45d6d956e6928fa12ad4ab5084",
+        "name": "泉城公园",
+        "address": "山东省济南市历下区趵突泉街道经十路18762号",
+        "coordinateSystem": "CGCS2000",
+        "originalLonLat": "117.0146,36.64489",
+        "gcj02": {
+          "longitude": 117.02050267866652,
+          "latitude": 36.64518283619285,
+          "adcode": "",
+          "address": "山东省济南市历下区趵突泉街道经十路18762号",
+          "formatted_address": "山东省济南市历下区趵突泉街道经十路18762号",
+          "poi_id": "",
+          "amap_type": ""
+        }
+      },
+      "currentFacts": {
+        "topReasons": [
+          "济南公园，适合拍照"
+        ],
+        "content": {
+          "version": 1,
+          "intro": "济南公园，适合拍照。",
+          "highlights": [
+            {
+              "text": "济南公园，适合拍照",
+              "quote": "济南公园，适合拍照",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a799fc90000000005030228?xsec_token=ABIdwy9QS8no2-FqpllUvZOgdt0cPnDF7Pf345e7xBMPw=&xsec_source=pc_search",
+              "strength": "weak",
+              "observedAt": "2026-10-07T19:28:44.529540+00:00"
+            }
+          ],
+          "compiledAt": "2026-10-07T19:28:44.529540+00:00"
+        },
+        "openHours": {
+          "text": "00:00-23:59",
+          "openTime": "00:00",
+          "closeTime": "23:59",
+          "closedWeekdays": [],
+          "note": "",
+          "evidence": [
+            "泉城公园全天开放"
+          ],
+          "version": 2,
+          "subject": "泉城公园",
+          "scope": "place",
+          "status": "attributed",
+          "attributions": [
+            {
+              "target": "泉城公园",
+              "subject": "泉城公园",
+              "scope": "unattributed",
+              "sentence": "泉城公园全天开放",
+              "clause": "泉城公园全天开放",
+              "rawText": "山东省博物馆 9:00-17:00；山东省美术馆 9:00-17:00；千佛山白天至傍晚；泉城公园全天开放",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6db11e0000000026035f44",
+              "sourceKind": "image"
+            }
+          ],
+          "review": [
+            {
+              "target": "泉城公园",
+              "subject": "山东省博物馆",
+              "scope": "unattributed",
+              "sentence": "山东省博物馆 9:00-17:00",
+              "clause": "山东省博物馆 9:00-17:00",
+              "rawText": "山东省博物馆 9:00-17:00；山东省美术馆 9:00-17:00；千佛山白天至傍晚；泉城公园全天开放",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6db11e0000000026035f44",
+              "sourceKind": "image",
+              "reason": "other_entity"
+            },
+            {
+              "target": "泉城公园",
+              "subject": "山东省美术馆",
+              "scope": "unattributed",
+              "sentence": "山东省美术馆 9:00-17:00",
+              "clause": "山东省美术馆 9:00-17:00",
+              "rawText": "山东省博物馆 9:00-17:00；山东省美术馆 9:00-17:00；千佛山白天至傍晚；泉城公园全天开放",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6db11e0000000026035f44",
+              "sourceKind": "image",
+              "reason": "other_entity"
+            }
+          ]
+        },
+        "price": "泉城公园免费",
+        "reservation": "unknown"
+      },
+      "policyAssessment": "note2549图片2的text_content与key_info均明确标注泉城公园免费、全天开放；note2568图片2/3另有免费记录。博物馆9:00-17:00在openHours.review标other_entity，预约保持unknown。note2547的泉城公园站是交通位置，不作为公园政策来源。仅确认来源主体归属，未认定社区攻略为当前官方政策。",
+      "mediaAssessment": "上游管理图库、下游当前及旧ID图片字段、实际独立图库均无匹配；没有新增图片分配。",
+      "fullReviewPassed": true,
+      "userAccepted": false
+    }
+  ],
+  "applied": false,
+  "conclusion": "三项完成当前版本的身份/类别/参考位置/事实归属/图库自查；未新增治理决定、未确认最新政策或用户验收。"
+}

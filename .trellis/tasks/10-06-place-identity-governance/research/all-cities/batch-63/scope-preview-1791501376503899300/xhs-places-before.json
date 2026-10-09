@@ -1,0 +1,509 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "c352b288704855a2c2884c2732bbeaef131051d43a2704d6dab7d01ccf552e49",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "芙蓉街"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11339,
+     "noteId": 2545,
+     "inputHash": "abfee3a7d1542a7254ff7a2224e73d56604b30e01acf4b9da57e9e56fb531f90",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11389,
+     "noteId": 2548,
+     "inputHash": "be5b801ffe262ab14b8ce4fc42bb86d948e3625671a75f42c33dcacc6c2a41bf",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11415,
+     "noteId": 2550,
+     "inputHash": "cefc7755ff13314437459d52a3ed50cd0026517d59a36a556f46f5d1a7fd240c",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11431,
+     "noteId": 2567,
+     "inputHash": "5a4730280c9fa7fb26c2c9d8c40d2b46e3043bc22b867a5edbd9c84318041629",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11447,
+     "noteId": 2553,
+     "inputHash": "57bd9a8ab7123894158a4cb9fd695764799dc99bcb652e97e33024227137d364",
+     "textHash": "237d15917021e78754aa89cfe5553e593877938f739d8bb78e94b15ba64e22c3",
+     "textLength": 1001,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11499,
+     "noteId": 2554,
+     "inputHash": "724b2d6991c95f799383fb737b54528eb35029792d05072132eabf0fae9c9806",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11506,
+     "noteId": 2619,
+     "inputHash": "6e44ef42cf02a5a8c1b1f3b5d8b94664cc8d2e4156d2e6aec30a13e25904f1ce",
+     "textHash": "86d27eef6c5c7c00f37320618c396610c01fd6ac93212e2f6b596593f51d2fbd",
+     "textLength": 257,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11579,
+     "noteId": 2564,
+     "inputHash": "396d1a39c67c514cbe56ba9a9514ded4d358c8f2b9666f877dd7e814716a047c",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11586,
+     "noteId": 2583,
+     "inputHash": "aef71b7817c75f13895f8ef3fd827297a45aa35c25ab77177ae0151f1bd70ac3",
+     "textHash": "0f30dad8531471b80b6ef4319c5353cd2841a1e62fbaa00b48b64294ae170707",
+     "textLength": 637,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11613,
+     "noteId": 2584,
+     "inputHash": "ef5f798da2fd2c05ac7a1368fcbf747cabd4178780d3b613162ed92789f8afed",
+     "textHash": "5099f704c06236615b5d0128ebceb7bbb4fc2c4a11ed8e4863102c3f0f483fbf",
+     "textLength": 355,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11623,
+     "noteId": 2624,
+     "inputHash": "516335f25ebdfe736b2f72a8e4801449c954d05c7a345cd62fdc0f779cb29051",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11689,
+     "noteId": 2609,
+     "inputHash": "14c73b076c626bf6ff33c983ab7499d808bae9392a50f68a09e7d9ee3fe0602c",
+     "textHash": "90e42025de21784b9f76ab9847189df0e8a4ab5c4b9cc819be1e0e219b30c6bb",
+     "textLength": 518,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11699,
+     "noteId": 2611,
+     "inputHash": "c4168c7c3cc56b89f94e302b8fb42ee6dd1c16cd27aea688f8050ae78d85263c",
+     "textHash": "db9c60a31ee95775e6cef00101dfb1ee954b5cb178442b1d7495cf21fc173510",
+     "textLength": 592,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12567,
+     "noteId": 2545,
+     "inputHash": "371d27ef75a630d94bfe24aa5accbce397d3574536d2f4adef02eeac568d33a1",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12573,
+     "noteId": 2803,
+     "inputHash": "295b59ca185aa8ace5d612000fdfbc733491dc03991bd5509541e1405b797ff7",
+     "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9",
+     "textLength": 661,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12625,
+     "noteId": 2793,
+     "inputHash": "9844ec387077feca715485dd396f0eeaeb52100a7bef5b11203184c0d58a5f37",
+     "textHash": "e08c8f750bb29c4fa9be9d06e88f5a1b837fbe50e2f8dc693179b3bc2952865d",
+     "textLength": 979,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12638,
+     "noteId": 2782,
+     "inputHash": "7bfa873b5312e2f55b6ded1c8d79e41851282a948ab20044a05137f72b017c25",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12659,
+     "noteId": 2816,
+     "inputHash": "84d672577986dfb4cf36404b5414d2a4744c76d3c5766e9bb0401e089b6d954a",
+     "textHash": "582744d8a66d1abe24524bf28fa9fc3089c23da256a9be41f7d7839f641e44ec",
+     "textLength": 521,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12681,
+     "noteId": 2550,
+     "inputHash": "d840988297172242512fc5ab9fc3510af74c252d747aaa45308995eca60f6073",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12709,
+     "noteId": 2567,
+     "inputHash": "820194004e0cb8aba2a46fa55bf03614b59fff79ed9903cd513ec6a17f7737b2",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12752,
+     "noteId": 2554,
+     "inputHash": "f873b431b50f15d54c754f8f59436387629f020727301ec01ada8e65191652d7",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12816,
+     "noteId": 2810,
+     "inputHash": "558aba2b925c1e7f04e095c634e0e9fc914355f5d71c4e939b90019a8864910c",
+     "textHash": "1ea2139ca1ef950016ebd6711495b2dbf0971a3585a9ed195c03a9c32b54a8c2",
+     "textLength": 596,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12833,
+     "noteId": 2564,
+     "inputHash": "2b86478fbc90e56969f96d0f97467c1ef50dffab9ea97326eb6ea357ca119ba3",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12835,
+     "noteId": 2851,
+     "inputHash": "d7a614e6132c2a59fb9dfa3ec2b693fde59b0ac611685909b4afe993f86ed2cc",
+     "textHash": "8284962de3b8ff701ff8e727f6317d8e153f1f49d31add2c2c7f327304d917ef",
+     "textLength": 541,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12836,
+     "noteId": 2851,
+     "inputHash": "1203229d70d607369234f296929140a8533893ee1ea12100d8c7b11646210a22",
+     "textHash": "8284962de3b8ff701ff8e727f6317d8e153f1f49d31add2c2c7f327304d917ef",
+     "textLength": 541,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12904,
+     "noteId": 2853,
+     "inputHash": "5f7050bc7f576461a4f3afc5425ba582b08efef3e90ef60e7de8080348130515",
+     "textHash": "50d6ae04ef47f4847c3da2f4336d0b0b1ceb673d7d096ac70390d0229239b18f",
+     "textLength": 530,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12917,
+     "noteId": 2624,
+     "inputHash": "14fdc0aaaca8ca435d72677ea1b71cfb0a526f8803e5ad2dd26cb5ff59d3e43e",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12932,
+     "noteId": 2835,
+     "inputHash": "a624a0ddc8c4b53639b38d876dc7818f26be2dd609eb6ba2eca52ebaf4432ff8",
+     "textHash": "c4fbd094482a30231c8aa5fb83d03e8cb6df162cde27e9ca4fcd287fc2290aff",
+     "textLength": 1031,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12948,
+     "noteId": 2857,
+     "inputHash": "d3b391da028b1e3b5c0180b20a600331b41ffdc1bd766f48fce740b40ad5aa07",
+     "textHash": "ee0656e7e4adf5815ed148482c612f4dd671bc54903d65fb173c0fe048732ddb",
+     "textLength": 409,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12956,
+     "noteId": 2839,
+     "inputHash": "f856aee472120fb66ae6e7a05d19fa18edb546273e7a2812926ee8845adb8ed3",
+     "textHash": "d84fcfd04d7d41967af06aa8cc26d032eb3aba2025e1ae31e3b6afbe076e523f",
+     "textLength": 885,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "revision": 3,
+     "canonicalName": "芙蓉街",
+     "aliases": [
+      "芙蓉街"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "747792d1b5834255f5feaa6c2dc62925",
+   "name": "芙蓉街",
+   "category": "文化",
+   "lng": 117.02301064448173,
+   "lat": 36.6669643677903,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "other",
+    "themes": [
+     "美食",
+     "住宿",
+     "夜景"
+    ],
+    "address": "山东省济南市历下区泉城路街道芙蓉街",
+    "adcode": "",
+    "mentionCount": 30,
+    "recommendScore": 76.17,
+    "topReasons": [
+     "吃喝休整，游玩半小时",
+     "晚上有空可前往看夜景",
+     "济南美食街，列入推荐路线第二天。"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "济南的美食街，汇聚各种地道小吃。百年小吃街。油旋是济南特色，外酥里软，刚出炉咸香。有甜沫、烤猪蹄等小吃。",
+     "highlights": [
+      {
+       "text": "济南的美食街，汇聚各种地道小吃",
+       "quote": "芙蓉街是济南的美食街，这里汇聚了各种地道的小吃",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:17:32.939024+00:00"
+      },
+      {
+       "text": "百年小吃街",
+       "quote": "百年小吃街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:58.217557+00:00"
+      },
+      {
+       "text": "油旋是济南特色，外酥里软，刚出炉咸香",
+       "quote": "油旋（济南特色，外酥里软，刚出炉咸香）",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a95346700000000210334e5?xsec_token=ABp9V80Coia5QUBoIv7rmegP8jLRR4cX8331S_bgCg60k=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:05:11.625775+00:00"
+      },
+      {
+       "text": "有甜沫、烤猪蹄等小吃",
+       "quote": "甜沫、烤猪蹄",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a95346700000000210334e5?xsec_token=ABp9V80Coia5QUBoIv7rmegP8jLRR4cX8331S_bgCg60k=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:05:11.625775+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:16:16.823017+00:00"
+    },
+    "originalName": "芙蓉街",
+    "typicalVisitMinutes": 30,
+    "openHours": {
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "version": 2,
+     "subject": "芙蓉街",
+     "scope": "place",
+     "status": "unknown",
+     "attributions": [],
+     "review": [
+      {
+       "target": "芙蓉街",
+       "subject": "山东博物馆",
+       "scope": "unattributed",
+       "sentence": "山东博物馆周一闭馆",
+       "clause": "山东博物馆周一闭馆",
+       "rawText": "别在芙蓉街买小吃；山东博物馆周一闭馆；建议自带空瓶接黑虎泉泉水；注意防晒，穿舒适鞋子",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a41daf300000000220088b3",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      }
+     ]
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "tips": [
+     "别在芙蓉街买小吃；山东博物馆周一闭馆；建议自带空瓶接黑虎泉泉水；注意防晒，穿舒适鞋子"
+    ],
+    "identity": {
+     "version": 2,
+     "entityId": "747792d1b5834255f5feaa6c2dc62925",
+     "canonicalName": "芙蓉街",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "芙蓉街"
+     ],
+     "memberIds": [
+      "747792d1b5834255f5feaa6c2dc62925"
+     ]
+    },
+    "aliases": [
+     "芙蓉街"
+    ],
+    "geoStatus": "resolved",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "济南美食街，汇聚地道小吃，可品尝济南风味",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "百年小吃街，有油旋、甜沫、把子肉等美食",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "吃喝休整，游玩0.5小时",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "人最多，拥挤，不宜推婴儿车",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a95346700000000210334e5?xsec_token=ABp9V80Coia5QUBoIv7rmegP8jLRR4cX8331S_bgCg60k=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "小吃逛逛就行，不必特意吃",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

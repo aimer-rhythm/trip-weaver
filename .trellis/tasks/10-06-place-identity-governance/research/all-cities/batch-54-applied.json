@@ -1,0 +1,447 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "9626de365121d40b3565b4a7dbc5be1a",
+          "city": "济南",
+          "canonical_name": "喜茶",
+          "primary_place_id": 5322,
+          "aliases": [
+            "喜茶"
+          ],
+          "legacy_ids": [
+            "9626de365121d40b3565b4a7dbc5be1a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5322,
+          "entity_id": "9626de365121d40b3565b4a7dbc5be1a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5322,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "文艺"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5322,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "打卡爱心雕塑和老爷车",
+              "evidence": "打卡爱心雕塑和老爷车"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7727,
+          "canonical_place_id": 5322,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 喜茶",
+          "evidence_summary": "打卡爱心雕塑和老爷车"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5322,
+          "city": "济南",
+          "name_keys": [
+            "喜茶"
+          ],
+          "entity_ids": [
+            "9626de365121d40b3565b4a7dbc5be1a"
+          ],
+          "source_hash": "725b796d812c6dcddcd0cd8478675cea87f67fa42beb3bc5b69b947657a2350b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-54-source-5322-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+              "kind": "reviewed_branch_navigation_anchor",
+              "conclusion": "原文明确商店分店名称，但全部描述均为独立雕塑/车/天桥的摄影动作，不作为饮品店自身体验或设施事实；原摄影线索保留，装置位置和归属继续待核。",
+              "mentionIds": [
+                11344
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "9626de365121d40b3565b4a7dbc5be1a"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11344,
+          "scope_place_id": 5322,
+          "entity_id": "9626de365121d40b3565b4a7dbc5be1a",
+          "input_hash": "800f8260cd01de115af2af5f6be3cc45f01f35b245c9fea93ca0b850f22f5128",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-54-source-5322-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】",
+              "reason": "subject_mismatch"
+            },
+            "place_content": {
+              "quote": "喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】",
+              "reason": "subject_mismatch"
+            }
+          }
+        }
+      ],
+      "inputs": {
+        "sourceHash": "725b796d812c6dcddcd0cd8478675cea87f67fa42beb3bc5b69b947657a2350b",
+        "mentions": [
+          {
+            "mentionId": 11344,
+            "inputHash": "800f8260cd01de115af2af5f6be3cc45f01f35b245c9fea93ca0b850f22f5128"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac",
+          "city": "济南",
+          "canonical_name": "山耶云耶",
+          "primary_place_id": 5324,
+          "aliases": [
+            "山耶云耶"
+          ],
+          "legacy_ids": [
+            "eb75294ebee7a37c374a3f5cd374d4ac"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5324,
+          "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5324,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "文艺"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5324,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "打卡马力欧像素天桥",
+              "evidence": "打卡马力欧像素天桥"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7729,
+          "canonical_place_id": 5324,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 山耶云耶",
+          "evidence_summary": "打卡马力欧像素天桥"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5324,
+          "city": "济南",
+          "name_keys": [
+            "山耶云耶"
+          ],
+          "entity_ids": [
+            "eb75294ebee7a37c374a3f5cd374d4ac"
+          ],
+          "source_hash": "4e28ab8d506fdd5c07c8f04d959424995f324ed2c5372fa18a0bc7ee57580cea",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-54-source-5324-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+              "kind": "reviewed_branch_navigation_anchor",
+              "conclusion": "原文明确商店分店名称，但全部描述均为独立雕塑/车/天桥的摄影动作，不作为饮品店自身体验或设施事实；原摄影线索保留，装置位置和归属继续待核。",
+              "mentionIds": [
+                11346
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "eb75294ebee7a37c374a3f5cd374d4ac"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11346,
+          "scope_place_id": 5324,
+          "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac",
+          "input_hash": "d0b07ea17b97ec0aa55d662d6b1d5952cb2910593fc941531ade8012258f3ea5",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-54-source-5324-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】",
+              "reason": "subject_mismatch"
+            },
+            "place_content": {
+              "quote": "山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】",
+              "reason": "subject_mismatch"
+            }
+          }
+        }
+      ],
+      "inputs": {
+        "sourceHash": "4e28ab8d506fdd5c07c8f04d959424995f324ed2c5372fa18a0bc7ee57580cea",
+        "mentions": [
+          {
+            "mentionId": 11346,
+            "inputHash": "d0b07ea17b97ec0aa55d662d6b1d5952cb2910593fc941531ade8012258f3ea5"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "9626de365121d40b3565b4a7dbc5be1a",
+          "city": "济南",
+          "canonical_name": "喜茶(济南融汇老商埠店)",
+          "primary_place_id": 5322,
+          "aliases": [
+            "喜茶",
+            "喜茶(济南融汇老商埠店)"
+          ],
+          "legacy_ids": [
+            "9626de365121d40b3565b4a7dbc5be1a",
+            "eb7bfa4ccff6e4a7f0bdba4c9164cfc8"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "融汇济南老商埠",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "restore_original_branch_and_remove_incompatible_location",
+              "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+              "originalMentionIds": [
+                11344
+              ],
+              "conclusion": "原提及明确老商埠店；喜茶旧地址恒隆广场与之冲突，两旧点均不在原路线街区。只写原文支持的街区范围，不借商埠中心点、经四路333号或其他门店坐标。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5322,
+          "entity_id": "9626de365121d40b3565b4a7dbc5be1a"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac",
+          "city": "济南",
+          "canonical_name": "山耶云耶(融汇济南老商埠店)",
+          "primary_place_id": 5324,
+          "aliases": [
+            "山耶云耶",
+            "山耶云耶(融汇济南老商埠店)"
+          ],
+          "legacy_ids": [
+            "06e735274b05fa8b397e6fb385319bb5",
+            "eb75294ebee7a37c374a3f5cd374d4ac"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "融汇济南老商埠",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "restore_original_branch_and_remove_incompatible_location",
+              "file": "priority-cities/济南/beverage-branches-source-review-01.json",
+              "originalMentionIds": [
+                11346
+              ],
+              "conclusion": "原提及明确老商埠店；喜茶旧地址恒隆广场与之冲突，两旧点均不在原路线街区。只写原文支持的街区范围，不借商埠中心点、经四路333号或其他门店坐标。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5324,
+          "entity_id": "eb75294ebee7a37c374a3f5cd374d4ac"
+        }
+      ]
+    }
+  ]
+}

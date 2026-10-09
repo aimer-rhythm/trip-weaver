@@ -1,0 +1,125 @@
+{
+  "city": "济南",
+  "batch": 62,
+  "sourcePacket": "priority-cities/济南/remaining-streets-source-packet-01.json",
+  "reviewedSources": 5,
+  "reviewedMentions": 38,
+  "fullNotes": 28,
+  "supplementalFullNotes": 1,
+  "appliedSources": 4,
+  "appliedMentions": 6,
+  "frozenMentions": 37,
+  "frozenNotes": 28,
+  "confirmed": 3,
+  "pending": 3,
+  "withdrawals": 1,
+  "categoryDecisions": 3,
+  "newEntities": 0,
+  "rows": [
+    {
+      "entityId": "747792d1b5834255f5feaa6c2dc62925",
+      "sourceId": 5353,
+      "name": "芙蓉街",
+      "mentionIds": [
+        11339,
+        11389,
+        11415,
+        11431,
+        11447,
+        11499,
+        11506,
+        11579,
+        11586,
+        11613,
+        11623,
+        11689,
+        11699,
+        12567,
+        12573,
+        12625,
+        12638,
+        12659,
+        12681,
+        12709,
+        12752,
+        12816,
+        12833,
+        12835,
+        12836,
+        12904,
+        12917,
+        12932,
+        12948,
+        12956
+      ],
+      "action": "category_only",
+      "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。"
+    },
+    {
+      "entityId": "9dbf8ef94ec1777461c9d486973ce0c7",
+      "sourceId": 5393,
+      "name": "后宰门街",
+      "mentionIds": [
+        11460,
+        12690,
+        12726
+      ],
+      "action": "scope_and_category",
+      "conclusion": "两篇正文明确以后宰门街为路线停留主体，拍墙是该次街道活动。note2570的16:00–16:30是独立街道停留，不是与曲水亭或百花洲合计时长，11460/12726同篇30分钟只算一个独立样本；12690保留第二篇簪花文字墙的限定看点。确认3条完整scope，改文化/other，不把街道改名墙面、不合并济南文字墙/济南墙；原点保持但未新定位。"
+    },
+    {
+      "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+      "sourceId": 5403,
+      "name": "腊山河廊道",
+      "mentionIds": [
+        11377
+      ],
+      "action": "category_only",
+      "conclusion": "原文独立写逛腊山河廊道吹晚风，公开全文支持腊山河城市滨河生态景观。只将文化改自然、保留attraction，保留原理由、名称/ID和原点，未确定具体廊道段或精确位置；不采用仅标题可见的南延工程内容，不合并整条河流。无需建立scope。"
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "sourceId": 5382,
+      "name": "油旋张",
+      "mentionIds": [
+        11478,
+        11528,
+        12738
+      ],
+      "action": "branch_withdrawal",
+      "conclusion": "两篇全文三次提及只有裸名油旋张；公开2024食记分别写纬三路79号和另一个大观园店，现有note2548地图文字是宝鸡扯面检索中的顺带候选，不能证明本次到访分店。3条均待审，显式撤回旧单店消费，不创建候选、不标not_a_place，不采用营业时间/价格/传承人。"
+    },
+    {
+      "entityId": "636406ca3bce1e8189be38c73b4e8ae4",
+      "sourceId": 6002,
+      "name": "泉源之眼",
+      "mentionIds": [
+        12960
+      ],
+      "action": "read_only_boundary_pending",
+      "conclusion": "原文确写泉源之眼，不能凭另一笔记的泉城之眼或相似名字认定同体。搜索未取得同体正文；保持revision2及既有空点，不重命名、不合并、不重复清点。"
+    }
+  ],
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "noNotAPlaceExclusions": true,
+  "furongUnapplied": {
+    "sourceId": 5353,
+    "mentionIds": [
+      12904,
+      12948
+    ],
+    "notes": [
+      2853,
+      2857
+    ],
+    "mixedTipNoteId": 2568,
+    "reason": "完整scope将同时丢失已定位原文的有效作者负面意见，当前协议无已确认图片文字事实承接；本批保留现有消费，不作scope完成声明。"
+  },
+  "coordinatesExplicitlyCleared": 0,
+  "withdrawnCoordinatesRemoved": 1,
+  "newPreciseLocations": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

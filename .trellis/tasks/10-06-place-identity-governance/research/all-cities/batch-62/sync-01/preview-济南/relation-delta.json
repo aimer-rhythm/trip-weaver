@@ -1,0 +1,100 @@
+{
+  "city": "济南",
+  "before": 19,
+  "after": 19,
+  "directBefore": 3,
+  "directAfter": 3,
+  "changed": [
+    {
+      "from": "芙蓉街",
+      "to": "宽厚里",
+      "fromEntityId": "747792d1b5834255f5feaa6c2dc62925",
+      "toEntityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "fromRevision": 3,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2851,
+          "textHash": "8284962de3b8ff701ff8e727f6317d8e153f1f49d31add2c2c7f327304d917ef",
+          "from": {
+            "entityId": "747792d1b5834255f5feaa6c2dc62925",
+            "revision": 3,
+            "start": 74,
+            "end": 77,
+            "surface": "芙蓉街",
+            "mentions": [
+              {
+                "mentionId": 12835,
+                "inputHash": "d7a614e6132c2a59fb9dfa3ec2b693fde59b0ac611685909b4afe993f86ed2cc"
+              },
+              {
+                "mentionId": 12836,
+                "inputHash": "1203229d70d607369234f296929140a8533893ee1ea12100d8c7b11646210a22"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "bc2769d509f6d8d42166e81b8db8131b",
+            "revision": 2,
+            "start": 80,
+            "end": 83,
+            "surface": "宽厚里",
+            "mentions": [
+              {
+                "mentionId": 12837,
+                "inputHash": "91778be131b9add37fd68ad12330863717b21beafc46748412456830a6846f30"
+              }
+            ]
+          },
+          "quote": "芙蓉街 → 宽厚里"
+        }
+      ]
+    },
+    {
+      "from": "芙蓉街",
+      "to": "曲水亭街",
+      "fromEntityId": "747792d1b5834255f5feaa6c2dc62925",
+      "toEntityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "fromRevision": 3,
+      "toRevision": 4,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2803,
+          "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9",
+          "from": {
+            "entityId": "747792d1b5834255f5feaa6c2dc62925",
+            "revision": 3,
+            "start": 131,
+            "end": 134,
+            "surface": "芙蓉街",
+            "mentions": [
+              {
+                "mentionId": 12573,
+                "inputHash": "295b59ca185aa8ace5d612000fdfbc733491dc03991bd5509541e1405b797ff7"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+            "revision": 4,
+            "start": 136,
+            "end": 140,
+            "surface": "曲水亭街",
+            "mentions": [
+              {
+                "mentionId": 12574,
+                "inputHash": "f2f89c1e49d776df9e3511ba6173ebc6304e978869df1884cb7cf49d740d11cf"
+              }
+            ]
+          },
+          "quote": "芙蓉街➡️曲水亭街"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

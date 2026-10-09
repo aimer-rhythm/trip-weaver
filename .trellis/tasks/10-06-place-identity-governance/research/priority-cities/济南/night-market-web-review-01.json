@@ -1,0 +1,21 @@
+{
+  "entityId": "7950bfadd891932d01be8636aba8b51a",
+  "name": "环联夜市",
+  "sourceId": 5358,
+  "status": "historical_location_requires_followup_not_applied",
+  "sourceMentionsRead": [11464, 11571, 11607, 12647, 12825],
+  "fullNotesRead": [2588, 2564, 2608, 2782],
+  "searchFile": "night-market-search-01.json",
+  "searchAnswerRejected": "主回答称截至2026年未搬迁、原址不变；已抓取正文明确2023年东迁，主回答未得到支持。",
+  "references": [
+    {"file": "night-market-reference-01.json", "url": "http://ccpd.china.com.cn/2025-07/08/content_43167050.html", "date": "2025-07-08", "quote": "真正的转折发生在2023年。因洪楼北片区升级改造，环联夜市二次东迁至西周社区。", "adopted": "2023年迁址事实及西周社区范围；不采用客流、门票或精确坐标。"},
+    {"file": "night-market-reference-02.json", "url": "https://jinan.dzwww.com/qcxw/202207/t20220707_10498222.htm", "date": "2022-07-07", "adopted": "仅标题保留将向东搬迁、时间未定；提取无正文，不能补足地址。"},
+    {"file": "night-market-reference-03.json", "url": "https://sd.ifeng.com/c/8IOF3UQbPc9", "dateContext": "正文2022年第二次集中供地及8月11日采访", "quote": "环联夜市位于济南市历城区祝舜路1469号", "adopted": "1469号确为迁址前历史报道地址；网页频道推荐中的2026年时间不是文章日期。"}
+  ],
+  "sourceBoundary": "note2588明确祝舜路1469号、地铁祝甸站B口及具体摊位；这些含旧址信息，不能直接用作迁址后市场导航。另三篇仅夜市裸名及拥挤/交通描述，须继续核对时点和位置，不能以2026采集时间代替实际发布或到访时间。",
+  "currentPoint": {"lat": 36.699241, "lng": 117.085623, "address": "环联汽配城南区2-015号正东方向110米", "status": "not_verified_as_old_or_new_site"},
+  "next": "核实迁址前后地理边界、五条来源对应时点与当前点位，再决定完整scope和位置策略。保留正负评价，不据迁址自动拆造主体或借中心点。",
+  "businessMutations": false,
+  "mapApiRequests": 0,
+  "imageComparison": "deferred_by_user"
+}

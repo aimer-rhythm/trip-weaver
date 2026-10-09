@@ -1,0 +1,1436 @@
+[
+  {
+    "key": "all-cities-20261006-batch-15-review-164",
+    "city": "厦门",
+    "reviewFingerprint": "0bc3c41573e3c7eeec52d8a9e0f963a7b3716dc1088e42b632f9fb4df954a890",
+    "expectedRevisions": {
+      "1b79c4d72d59fdc950989e02c74bacfa": 1,
+      "9ee902998de6d4a2c23222ef2d1fe7eb": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "双子塔A座源6749是未具名酒店住宿广告，泛双子塔6544亦混入同类广告和6290建筑观烟花。建筑群、A座与楼内酒店三种粒度未拆清，不能同义合并或直接写固定包含关系。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          164
+        ],
+        "conclusion": "双子塔A座源6749是未具名酒店住宿广告，泛双子塔6544亦混入同类广告和6290建筑观烟花。建筑群、A座与楼内酒店三种粒度未拆清，不能同义合并或直接写固定包含关系。",
+        "sourcePlaceIds": [
+          "3183",
+          "2558"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6290,
+          6544,
+          6749
+        ],
+        "conclusion": "双子塔A座源6749是未具名酒店住宿广告，泛双子塔6544亦混入同类广告和6290建筑观烟花。建筑群、A座与楼内酒店三种粒度未拆清，不能同义合并或直接写固定包含关系。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-165",
+    "city": "厦门",
+    "reviewFingerprint": "c5156a645bb94c4245ef7fba5ac8070322bbb0ce07f2df75a8b842ae0fb30f25",
+    "expectedRevisions": {
+      "10b9c8b67abe7586342c2f769661d7d5": 1,
+      "c0e7671f0000b45a7022f0219f0fe6cc": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1351明确别在曾厝垵站下车、曾山站直达海边，站点与曾厝垵旅游街区独立。旧曾厝垵站点误落鼓浪屿，坐标另需版本化纠错，不因同名合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          165
+        ],
+        "conclusion": "1351明确别在曾厝垵站下车、曾山站直达海边，站点与曾厝垵旅游街区独立。旧曾厝垵站点误落鼓浪屿，坐标另需版本化纠错，不因同名合并。",
+        "sourcePlaceIds": [
+          "2559",
+          "2823"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5546,
+          5632,
+          5654,
+          5667,
+          5732,
+          5744,
+          5769,
+          5897,
+          5959,
+          6009,
+          6065,
+          6078,
+          6100,
+          6127,
+          6203,
+          6228,
+          6390,
+          6433,
+          6708,
+          6795,
+          6849
+        ],
+        "conclusion": "1351明确别在曾厝垵站下车、曾山站直达海边，站点与曾厝垵旅游街区独立。旧曾厝垵站点误落鼓浪屿，坐标另需版本化纠错，不因同名合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-167",
+    "city": "厦门",
+    "reviewFingerprint": "4c3e923aecaa546a2d3db703e48916257edc7120c351330bd539316f1db32acc",
+    "expectedRevisions": {
+      "17628aa2112e13be217e41a7eb123996": 1,
+      "c4a9ac9c6882a99c86e06f9421b3bc37": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1421八市阿杰五香显式大元路分店，但旧图开禾路111号；泛名阿杰五香来自多篇八市清单，地图虽为大元路19号，不能证明各提及是同分店。保留并补门牌/分店归属。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          167
+        ],
+        "conclusion": "1421八市阿杰五香显式大元路分店，但旧图开禾路111号；泛名阿杰五香来自多篇八市清单，地图虽为大元路19号，不能证明各提及是同分店。保留并补门牌/分店归属。",
+        "sourcePlaceIds": [
+          "2689",
+          "2565"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5400,
+          5455,
+          5824,
+          5907,
+          6150,
+          6254,
+          6439,
+          6779,
+          6828
+        ],
+        "conclusion": "1421八市阿杰五香显式大元路分店，但旧图开禾路111号；泛名阿杰五香来自多篇八市清单，地图虽为大元路19号，不能证明各提及是同分店。保留并补门牌/分店归属。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-168",
+    "city": "厦门",
+    "reviewFingerprint": "e4cbffef1276ee5155a1cb48016a0908bdca4685772c3ab1d3fb0602424795cb",
+    "expectedRevisions": {
+      "3c8b4769e05ad6c2cfed6d2af724c411": 1,
+      "c4a9ac9c6882a99c86e06f9421b3bc37": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "阿杰五香卷5717、6038、6449只有八市现炸或味道描述，泛名主体亦混多个源；已有1421显式大元路分店，不能省略分店后将开禾路与大元路全并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          168
+        ],
+        "conclusion": "阿杰五香卷5717、6038、6449只有八市现炸或味道描述，泛名主体亦混多个源；已有1421显式大元路分店，不能省略分店后将开禾路与大元路全并。",
+        "sourcePlaceIds": [
+          "2574",
+          "2565"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5455,
+          5717,
+          5907,
+          6038,
+          6150,
+          6254,
+          6439,
+          6449,
+          6779,
+          6828
+        ],
+        "conclusion": "阿杰五香卷5717、6038、6449只有八市现炸或味道描述，泛名主体亦混多个源；已有1421显式大元路分店，不能省略分店后将开禾路与大元路全并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-169",
+    "city": "厦门",
+    "reviewFingerprint": "d198569efeff2afb051ae74940c35ed1b93161033bffe59bb31c3aead6a0248c",
+    "expectedRevisions": {
+      "2f6c55b50014cbc7b27da1b699d2a012": 1,
+      "f202ca367cf9ffcbae0bf5be57982066": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "西门土笋冻6408仅泛称小吃，天河西门土笋冻6441也未给分店；只有一方地图斗西路33号，另一方为城市中心默认点。缺品牌/门牌互证，不按相似名推同体。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          169
+        ],
+        "conclusion": "西门土笋冻6408仅泛称小吃，天河西门土笋冻6441也未给分店；只有一方地图斗西路33号，另一方为城市中心默认点。缺品牌/门牌互证，不按相似名推同体。",
+        "sourcePlaceIds": [
+          "3085",
+          "2567"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6408,
+          6441
+        ],
+        "conclusion": "西门土笋冻6408仅泛称小吃，天河西门土笋冻6441也未给分店；只有一方地图斗西路33号，另一方为城市中心默认点。缺品牌/门牌互证，不按相似名推同体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-170",
+    "city": "厦门",
+    "reviewFingerprint": "f312f55ef4f601e2f7e83a2bc8ffbef5f9d5f5b49d0fe630c584cc4d9d584948",
+    "expectedRevisions": {
+      "77f81748e0e3a3deb11ce47278d6e8e9": 1,
+      "9ec12fadaee4d6e0a4271c4a8ced0e96": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1507明确中山路豪香里脊，其他源为八市至中山路路线；尚缺每篇分店门牌。豪香里脊肉串旧地址同时写禾祥西路和南中广场，存在冲突，不能直接用地图认定全为同店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          170
+        ],
+        "conclusion": "1507明确中山路豪香里脊，其他源为八市至中山路路线；尚缺每篇分店门牌。豪香里脊肉串旧地址同时写禾祥西路和南中广场，存在冲突，不能直接用地图认定全为同店。",
+        "sourcePlaceIds": [
+          "3194",
+          "2570"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5911,
+          6444,
+          6458,
+          6781,
+          6831,
+          6837
+        ],
+        "conclusion": "1507明确中山路豪香里脊，其他源为八市至中山路路线；尚缺每篇分店门牌。豪香里脊肉串旧地址同时写禾祥西路和南中广场，存在冲突，不能直接用地图认定全为同店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-171",
+    "city": "厦门",
+    "reviewFingerprint": "5222e17e429370b34c17cf6ea6fc8b171c625dc5d8dcdd2d1b44e948edf7b366",
+    "expectedRevisions": {
+      "4c02d062aa96a9178fccc4e1343100ed": 1,
+      "6eba01eaee13195e8f4ce673eb66d5c4": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1421阿吉仔饼铺明确中山路店，旧图后江埭路店错误；馅饼源1430仅八市美食清单，地图大元路37号。连锁品牌泛称不等于一个分店，补充阿吉仔实体也先保留。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          171
+        ],
+        "conclusion": "1421阿吉仔饼铺明确中山路店，旧图后江埭路店错误；馅饼源1430仅八市美食清单，地图大元路37号。连锁品牌泛称不等于一个分店，补充阿吉仔实体也先保留。",
+        "sourcePlaceIds": [
+          "2694",
+          "2571"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5405,
+          5479,
+          6445
+        ],
+        "conclusion": "1421阿吉仔饼铺明确中山路店，旧图后江埭路店错误；馅饼源1430仅八市美食清单，地图大元路37号。连锁品牌泛称不等于一个分店，补充阿吉仔实体也先保留。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-175",
+    "city": "厦门",
+    "reviewFingerprint": "1323c32ccdaafd1f0bd137fbe58501d6c17172aa9e1b04ef2f5037341380c3fd",
+    "expectedRevisions": {
+      "79430af52e86d2c23acffdef3c42fccb": 1,
+      "7e99c00813c8c450c16841b7c072f97f": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "山海步道5368明确天泉段，其他源指D18至海边；厦门山海步道6370仅海边长廊夜景。母步道、林海线、天泉段和摄影机位粒度混用，先厘清提及范围，不按前缀归一。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          175
+        ],
+        "conclusion": "山海步道5368明确天泉段，其他源指D18至海边；厦门山海步道6370仅海边长廊夜景。母步道、林海线、天泉段和摄影机位粒度混用，先厘清提及范围，不按前缀归一。",
+        "sourcePlaceIds": [
+          "2600",
+          "3082"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5368,
+          5492,
+          5514,
+          5985,
+          6008,
+          6370,
+          6479,
+          6602,
+          6614,
+          6774
+        ],
+        "conclusion": "山海步道5368明确天泉段，其他源指D18至海边；厦门山海步道6370仅海边长廊夜景。母步道、林海线、天泉段和摄影机位粒度混用，先厘清提及范围，不按前缀归一。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-176",
+    "city": "厦门",
+    "reviewFingerprint": "23fb58f392389fa357f39ae6d22aa2ed1a6f1fb30d115783598e3b3a58d00c3b",
+    "expectedRevisions": {
+      "79430af52e86d2c23acffdef3c42fccb": 1,
+      "fe01b52c50acf5a67d040f2e56108c89": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "山海健康步道5291从东芳山庄出发，5520定位林海线7号入口；山海步道多源指天泉段。旧邮轮码头坐标不证明同一线路，需拆清总步道与路线段。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          176
+        ],
+        "conclusion": "山海健康步道5291从东芳山庄出发，5520定位林海线7号入口；山海步道多源指天泉段。旧邮轮码头坐标不证明同一线路，需拆清总步道与路线段。",
+        "sourcePlaceIds": [
+          "2600",
+          "2636"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5291,
+          5368,
+          5381,
+          5492,
+          5514,
+          5520,
+          5916,
+          5985,
+          6008,
+          6479,
+          6602,
+          6614
+        ],
+        "conclusion": "山海健康步道5291从东芳山庄出发，5520定位林海线7号入口；山海步道多源指天泉段。旧邮轮码头坐标不证明同一线路，需拆清总步道与路线段。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-179",
+    "city": "厦门",
+    "reviewFingerprint": "eab0c93f1b29fa745c3c92af201d8e865441be629c986a8420cac00e08978b1a",
+    "expectedRevisions": {
+      "49812b3cc789a0e04dd3671bd39b5659": 1,
+      "a267b3ed83b91b7f47bf10eeacf17db4": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "厦门轮渡5630实际购票公众号，6511为往返游船体验；厦门轮渡码头5545才是住宿附近码头。服务、公众号和码头混合，不能沿相同地图点设永久同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          179
+        ],
+        "conclusion": "厦门轮渡5630实际购票公众号，6511为往返游船体验；厦门轮渡码头5545才是住宿附近码头。服务、公众号和码头混合，不能沿相同地图点设永久同义。",
+        "sourcePlaceIds": [
+          "2747",
+          "2621"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5545,
+          5630,
+          6511
+        ],
+        "conclusion": "厦门轮渡5630实际购票公众号，6511为往返游船体验；厦门轮渡码头5545才是住宿附近码头。服务、公众号和码头混合，不能沿相同地图点设永久同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-181",
+    "city": "厦门",
+    "reviewFingerprint": "b69f26e4e1ec2ac2f59ae34202410eaf16c7e401774eb93dcb151217eb76fd66",
+    "expectedRevisions": {
+      "278c17fb0fee09c5ce3405ec9b2ce4fe": 1,
+      "fafc436ea2d86a00688a77b2d401f3fd": 1
+    },
+    "verdict": "distinct",
+    "explanation": "海湾公园在岛内西堤海岸，1580海沧湾公园在海沧区露营分区，主源分别西堤东路与海沧湾，跨海两独立公园。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          181
+        ],
+        "conclusion": "海湾公园在岛内西堤海岸，1580海沧湾公园在海沧区露营分区，主源分别西堤东路与海沧湾，跨海两独立公园。",
+        "sourcePlaceIds": [
+          "2634",
+          "3059"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5298,
+          5975,
+          5996,
+          6043,
+          6073,
+          6331,
+          6526,
+          6823
+        ],
+        "conclusion": "海湾公园在岛内西堤海岸，1580海沧湾公园在海沧区露营分区，主源分别西堤东路与海沧湾，跨海两独立公园。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-182",
+    "city": "厦门",
+    "reviewFingerprint": "29a14a47af21cd2eba6289a54927221bdc92c4273f3e9e46a6c45a567c2dec20",
+    "expectedRevisions": {
+      "4f205c7b5df2135ca3b1dca9c904f26e": 1,
+      "fe01b52c50acf5a67d040f2e56108c89": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "带厦门前缀的健康步道既有母路线推荐林海线，也有D18上李水库和海边观景台提及；无前缀源含东芳山庄和林海线7号入口。应先决定线路和提及归属，邮轮码头旧点不能证明同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          182
+        ],
+        "conclusion": "带厦门前缀的健康步道既有母路线推荐林海线，也有D18上李水库和海边观景台提及；无前缀源含东芳山庄和林海线7号入口。应先决定线路和提及归属，邮轮码头旧点不能证明同义。",
+        "sourcePlaceIds": [
+          "2676",
+          "2636"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5291,
+          5374,
+          5381,
+          5520,
+          5790,
+          5894,
+          5916,
+          6062,
+          6369,
+          6822
+        ],
+        "conclusion": "带厦门前缀的健康步道既有母路线推荐林海线，也有D18上李水库和海边观景台提及；无前缀源含东芳山庄和林海线7号入口。应先决定线路和提及归属，邮轮码头旧点不能证明同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-183",
+    "city": "厦门",
+    "reviewFingerprint": "9fd2cf34ee3297dd8f7f4291ff58a45d7e8b3842a3018daf7d873e60986bef50",
+    "expectedRevisions": {
+      "85ffcc3e70366aa8666ceb7c2c06d60c": 1,
+      "f4930cc9a086a47c7dfa16718a4d203c": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "鸿山源1569为99.2米山峰，鸿山公园为思明南路游园和拍双子塔场景；自然山体与公园管理范围尚未核实，不能仅省略公园后缀合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          183
+        ],
+        "conclusion": "鸿山源1569为99.2米山峰，鸿山公园为思明南路游园和拍双子塔场景；自然山体与公园管理范围尚未核实，不能仅省略公园后缀合并。",
+        "sourcePlaceIds": [
+          "2892",
+          "2646"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5304,
+          5565,
+          5875,
+          6609
+        ],
+        "conclusion": "鸿山源1569为99.2米山峰，鸿山公园为思明南路游园和拍双子塔场景；自然山体与公园管理范围尚未核实，不能仅省略公园后缀合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-192",
+    "city": "厦门",
+    "reviewFingerprint": "616a0860ddf08c848f85319c2be9fde5533a06818fde431a1ddf37cc7e458e2f",
+    "expectedRevisions": {
+      "4f205c7b5df2135ca3b1dca9c904f26e": 1,
+      "7e99c00813c8c450c16841b7c072f97f": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "厦门山海健康步道多源混D18、水库、母步道推荐林海线；厦门山海步道源1378仅夜间海边长廊。没有完整路线边界，保留待拆分/补证。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          192
+        ],
+        "conclusion": "厦门山海健康步道多源混D18、水库、母步道推荐林海线；厦门山海步道源1378仅夜间海边长廊。没有完整路线边界，保留待拆分/补证。",
+        "sourcePlaceIds": [
+          "2676",
+          "3082"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5374,
+          5790,
+          5894,
+          6062,
+          6369,
+          6370,
+          6774,
+          6822
+        ],
+        "conclusion": "厦门山海健康步道多源混D18、水库、母步道推荐林海线；厦门山海步道源1378仅夜间海边长廊。没有完整路线边界，保留待拆分/补证。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-193",
+    "city": "厦门",
+    "reviewFingerprint": "925c66927fd22a5d7c3d75c8a2b788c169bb19424e50f12f2ded38069358876d",
+    "expectedRevisions": {
+      "0bab8a56019c5fcc1b7112a118b48250": 1,
+      "2491b8bef00e633bb78813705057e70c": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "林记老思西鸡蛋汉堡1421有完整店名；1507只写老思西和口味，无门牌或店面图。后者地图为思西公交站，不能证实属于林记同店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          193
+        ],
+        "conclusion": "林记老思西鸡蛋汉堡1421有完整店名；1507只写老思西和口味，无门牌或店面图。后者地图为思西公交站，不能证实属于林记同店。",
+        "sourcePlaceIds": [
+          "3212",
+          "2687"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5397,
+          6836
+        ],
+        "conclusion": "林记老思西鸡蛋汉堡1421有完整店名；1507只写老思西和口味，无门牌或店面图。后者地图为思西公交站，不能证实属于林记同店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-194",
+    "city": "厦门",
+    "reviewFingerprint": "3cf54e4faec446ada13011f805a7b1d35f96ffbb036ebd3343f8d8c4948be41f",
+    "expectedRevisions": {
+      "606b711730258683eab0eff5cc660379": 1,
+      "fd4db99895278399ec429be74fe79ffe": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "丹香烘焙坊1421与丹香烘焙1506有同类车轮饼推荐，但另一源缺分店门牌，城市中心点不能作为匹配依据。暂不为同品牌泛称绑定固定分店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          194
+        ],
+        "conclusion": "丹香烘焙坊1421与丹香烘焙1506有同类车轮饼推荐，但另一源缺分店门牌，城市中心点不能作为匹配依据。暂不为同品牌泛称绑定固定分店。",
+        "sourcePlaceIds": [
+          "2688",
+          "3211"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5399,
+          6829
+        ],
+        "conclusion": "丹香烘焙坊1421与丹香烘焙1506有同类车轮饼推荐，但另一源缺分店门牌，城市中心点不能作为匹配依据。暂不为同品牌泛称绑定固定分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-199",
+    "city": "厦门",
+    "reviewFingerprint": "c80b3102a30ed29adb199f29384980d33428f2d35f2680981086fb9f81e9625a",
+    "expectedRevisions": {
+      "69c85e156f8bb2e0805e04af900de2f9": 1,
+      "a16aa53168ad09e4417096f447fc5e24": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "酒店6870原文是艾尼壹水湾度假酒店旁边停车场内摄影，酒店主体身份混入机位。另一实体已为停车场；需将源提及和酒店/摄影机位分开修复，不能酒店等同停车场。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          199
+        ],
+        "conclusion": "酒店6870原文是艾尼壹水湾度假酒店旁边停车场内摄影，酒店主体身份混入机位。另一实体已为停车场；需将源提及和酒店/摄影机位分开修复，不能酒店等同停车场。",
+        "sourcePlaceIds": [
+          "3223",
+          "2710"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5440,
+          6870
+        ],
+        "conclusion": "酒店6870原文是艾尼壹水湾度假酒店旁边停车场内摄影，酒店主体身份混入机位。另一实体已为停车场；需将源提及和酒店/摄影机位分开修复，不能酒店等同停车场。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-201",
+    "city": "厦门",
+    "reviewFingerprint": "28aac2d1ae2ec22f5cebebc6747c98f894ce06e13eac406feef8fa7a4be2c5a0",
+    "expectedRevisions": {
+      "b92acd45b74d2190bef966b198b7ce86": 2,
+      "eb7efe677409213ec69704149b4c427c": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "5665对应1260原文为不在书店旁奶黄色海边巴士、营地及Amoy标牌，其他OFF WORK在海边源明确椰风寨环岛路店。尚无搬迁或同一营地范围证据，不能把沿岸不同机位并为门店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          201
+        ],
+        "conclusion": "5665对应1260原文为不在书店旁奶黄色海边巴士、营地及Amoy标牌，其他OFF WORK在海边源明确椰风寨环岛路店。尚无搬迁或同一营地范围证据，不能把沿岸不同机位并为门店。",
+        "sourcePlaceIds": [
+          "2712",
+          "2785"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5443,
+          5590,
+          5665,
+          5930
+        ],
+        "conclusion": "5665对应1260原文为不在书店旁奶黄色海边巴士、营地及Amoy标牌，其他OFF WORK在海边源明确椰风寨环岛路店。尚无搬迁或同一营地范围证据，不能把沿岸不同机位并为门店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-202",
+    "city": "厦门",
+    "reviewFingerprint": "d5205cf4cc35606639a58da1428e12ffd76b3844e24b73db6e88d2bf3d8c8d06",
+    "expectedRevisions": {
+      "3b8ce6df093c0ca40de107874b9022b5": 1,
+      "c43e99d653866373c2cc1d23c1635e8b": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "阿忠腌水果1355包含外卖和多店消费且没有地址；阿忠水果1418只说在阿忠忠福楼隔壁，地图金榜路店未获原文支持。泛品牌与具体分店须分开补证。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          202
+        ],
+        "conclusion": "阿忠腌水果1355包含外卖和多店消费且没有地址；阿忠水果1418只说在阿忠忠福楼隔壁，地图金榜路店未获原文支持。泛品牌与具体分店须分开补证。",
+        "sourcePlaceIds": [
+          "2718",
+          "2928"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5458,
+          6034
+        ],
+        "conclusion": "阿忠腌水果1355包含外卖和多店消费且没有地址；阿忠水果1418只说在阿忠忠福楼隔壁，地图金榜路店未获原文支持。泛品牌与具体分店须分开补证。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-203",
+    "city": "厦门",
+    "reviewFingerprint": "3ce546bbcbf60dc9adc842c115735751fe87c3bbb7f2453092b58b8eac5cdbdd",
+    "expectedRevisions": {
+      "7b4cfbf5bd4b449036abe4ee41b21210": 1,
+      "7e341fd0ee9e8647bd9766bfac2f05e6": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1355 CUIDA只饮品黑糖碎碎冰且包含外卖，1507 cuida只口味评价；两原文均无门牌。地图分别厦禾路296号和禾祥西店，仍不能确定同一分店。保留目录名称歧义及指定ID防护。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          203
+        ],
+        "conclusion": "1355 CUIDA只饮品黑糖碎碎冰且包含外卖，1507 cuida只口味评价；两原文均无门牌。地图分别厦禾路296号和禾祥西店，仍不能确定同一分店。保留目录名称歧义及指定ID防护。",
+        "sourcePlaceIds": [
+          "2720",
+          "3213"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5461,
+          6841
+        ],
+        "conclusion": "1355 CUIDA只饮品黑糖碎碎冰且包含外卖，1507 cuida只口味评价；两原文均无门牌。地图分别厦禾路296号和禾祥西店，仍不能确定同一分店。保留目录名称歧义及指定ID防护。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-205",
+    "city": "厦门",
+    "reviewFingerprint": "6bcb7bd6700b390ae1227b693697dbd2dcba87d825715be732dfa92f3aebe2f7",
+    "expectedRevisions": {
+      "0d78e900d6ef7e4cbc0c81bd123f722a": 1,
+      "9c11efb4d3c7d31eda7b0f8673ac28fc": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1316管风琴博物馆只说零点预约，可能误称艺术中心；1248风琴博物馆在菽庄花园之后但没有馆址/展品。其他原文已明确风琴馆与艺术中心独立，不能由近似名称替这两条混称源判等。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          205
+        ],
+        "conclusion": "1316管风琴博物馆只说零点预约，可能误称艺术中心；1248风琴博物馆在菽庄花园之后但没有馆址/展品。其他原文已明确风琴馆与艺术中心独立，不能由近似名称替这两条混称源判等。",
+        "sourcePlaceIds": [
+          "2824",
+          "2732"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5483,
+          5762
+        ],
+        "conclusion": "1316管风琴博物馆只说零点预约，可能误称艺术中心；1248风琴博物馆在菽庄花园之后但没有馆址/展品。其他原文已明确风琴馆与艺术中心独立，不能由近似名称替这两条混称源判等。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-206",
+    "city": "厦门",
+    "reviewFingerprint": "30f8d41a89faff52a8570f1b9980fe03aba6a86774f5b2fd0186872d8794bcf2",
+    "expectedRevisions": {
+      "500c71601d85f359d85e3ae3752ddc66": 2,
+      "9c11efb4d3c7d31eda7b0f8673ac28fc": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "钢琴馆已由1324、1445确认菽庄花园内；1248风琴博物馆没有馆址且路线相邻，可能误抽取钢琴馆。物理场馆独立不等于该模糊源已定位，需先核原图再确定实体归属。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          206
+        ],
+        "conclusion": "钢琴馆已由1324、1445确认菽庄花园内；1248风琴博物馆没有馆址且路线相邻，可能误抽取钢琴馆。物理场馆独立不等于该模糊源已定位，需先核原图再确定实体归属。",
+        "sourcePlaceIds": [
+          "2775",
+          "2732"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5483,
+          5622
+        ],
+        "conclusion": "钢琴馆已由1324、1445确认菽庄花园内；1248风琴博物馆没有馆址且路线相邻，可能误抽取钢琴馆。物理场馆独立不等于该模糊源已定位，需先核原图再确定实体归属。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-207",
+    "city": "厦门",
+    "reviewFingerprint": "87e0d2b05cf4b75d590df91df1d506f552638fc03c276174fd2ccb85a99abfba",
+    "expectedRevisions": {
+      "c2f0df60bef3612fec9ed56021ac090f": 1,
+      "fe4d6b9273ff41d117c67640a8a71b7e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "天泉步道广场多源为路线终点，但6876原文明确广场上面的步道；天泉步道5652为盼归塔到海边的线段。广场与步道不同粒度且源混合，不能强并或未经边界核实写包含关系。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          207
+        ],
+        "conclusion": "天泉步道广场多源为路线终点，但6876原文明确广场上面的步道；天泉步道5652为盼归塔到海边的线段。广场与步道不同粒度且源混合，不能强并或未经边界核实写包含关系。",
+        "sourcePlaceIds": [
+          "2735",
+          "2784"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5506,
+          5525,
+          5652,
+          5698,
+          5972,
+          5989,
+          6097,
+          6876
+        ],
+        "conclusion": "天泉步道广场多源为路线终点，但6876原文明确广场上面的步道；天泉步道5652为盼归塔到海边的线段。广场与步道不同粒度且源混合，不能强并或未经边界核实写包含关系。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-208",
+    "city": "厦门",
+    "reviewFingerprint": "7287f2241b210a63f9ed88d1b950d76ce97356d4e909e933a992f960c562332f",
+    "expectedRevisions": {
+      "6b19d8fab0bd4ba0a9a7a55aa4e6e571": 1,
+      "c7b76a1eb24d78e23b64e629341004ca": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1464同篇分别列林海线D18与云海线观音寺入口，两个命名线路独立。林海线旧点误匹配湖里林海，单独坐标纠错待办，不以无坐标为理由同义合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          208
+        ],
+        "conclusion": "1464同篇分别列林海线D18与云海线观音寺入口，两个命名线路独立。林海线旧点误匹配湖里林海，单独坐标纠错待办，不以无坐标为理由同义合并。",
+        "sourcePlaceIds": [
+          "2752",
+          "2748"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5564,
+          5572,
+          6356
+        ],
+        "conclusion": "1464同篇分别列林海线D18与云海线观音寺入口，两个命名线路独立。林海线旧点误匹配湖里林海，单独坐标纠错待办，不以无坐标为理由同义合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-209",
+    "city": "厦门",
+    "reviewFingerprint": "2e4de6d02e6f140566638248bcf0cdb3786a4c0a281e27e1731ee2545a94b079",
+    "expectedRevisions": {
+      "a4513ec7e1619879615f2ec2f44f760a": 1,
+      "c284d368aec3aabd8ae8ae42b6c07f5a": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "金榜山源1569为80米山峰，金榜山公园源1464为游园拍摄地点；自然山体和公园范围需核实。不能只因山/公园常共称直接同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          209
+        ],
+        "conclusion": "金榜山源1569为80米山峰，金榜山公园源1464为游园拍摄地点；自然山体和公园范围需核实。不能只因山/公园常共称直接同义。",
+        "sourcePlaceIds": [
+          "2750",
+          "2893"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5568,
+          5877
+        ],
+        "conclusion": "金榜山源1569为80米山峰，金榜山公园源1464为游园拍摄地点；自然山体和公园范围需核实。不能只因山/公园常共称直接同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-212",
+    "city": "厦门",
+    "reviewFingerprint": "9b1f590346053588a04b58145c67d14eb8a4d99b2157f2fe8cf187f1a43fea7b",
+    "expectedRevisions": {
+      "5e955aea929bb4e1660f5d91910bf9d4": 1,
+      "a64d2d7720f22facad5342bf64a93e3b": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "浮屿大同鸭肉粥与浮屿鸭肉粥原文只有味道或早餐推荐，地图只到浮屿地名。尚缺门牌和门店招牌，不能把相似老字号/泛小吃名称直接绑定一家店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          212
+        ],
+        "conclusion": "浮屿大同鸭肉粥与浮屿鸭肉粥原文只有味道或早餐推荐，地图只到浮屿地名。尚缺门牌和门店招牌，不能把相似老字号/泛小吃名称直接绑定一家店。",
+        "sourcePlaceIds": [
+          "2769",
+          "3086"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5611,
+          5950,
+          6409
+        ],
+        "conclusion": "浮屿大同鸭肉粥与浮屿鸭肉粥原文只有味道或早餐推荐，地图只到浮屿地名。尚缺门牌和门店招牌，不能把相似老字号/泛小吃名称直接绑定一家店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-214",
+    "city": "厦门",
+    "reviewFingerprint": "da8064e69e77dece19f8401d359b56833643f443bdb668928608e343dfdc98b4",
+    "expectedRevisions": {
+      "500d01eac2d265794d2b82f6277fd154": 1,
+      "bc09bae8ec85ccf9620c708309193fe1": 1
+    },
+    "verdict": "distinct",
+    "explanation": "镇海路5675为住宿片区，镇海路站6585为酒店附近地铁站。道路和轨道设施独立，地图同点不等同实体身份。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          214
+        ],
+        "conclusion": "镇海路5675为住宿片区，镇海路站6585为酒店附近地铁站。道路和轨道设施独立，地图同点不等同实体身份。",
+        "sourcePlaceIds": [
+          "2788",
+          "3107"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5675,
+          6585
+        ],
+        "conclusion": "镇海路5675为住宿片区，镇海路站6585为酒店附近地铁站。道路和轨道设施独立，地图同点不等同实体身份。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-218",
+    "city": "厦门",
+    "reviewFingerprint": "83e7a09b3347271bfc9bf869249004545e05ba373611e363df69d30b5f58b618",
+    "expectedRevisions": {
+      "c61a6f91b2b6c823d4ae1d8129ff4157": 1,
+      "d37750afaa959b2a4dc3a5e79899fa2e": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1402乌糖为思明演武大桥一带沙茶面；1419贡糖显式八市店。品牌及位置均不同，不是乌/贡同义写法。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          218
+        ],
+        "conclusion": "1402乌糖为思明演武大桥一带沙茶面；1419贡糖显式八市店。品牌及位置均不同，不是乌/贡同义写法。",
+        "sourcePlaceIds": [
+          "2837",
+          "2967"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5805,
+          6148
+        ],
+        "conclusion": "1402乌糖为思明演武大桥一带沙茶面；1419贡糖显式八市店。品牌及位置均不同，不是乌/贡同义写法。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-219",
+    "city": "厦门",
+    "reviewFingerprint": "332341eccc58500481700c7353602579d7f10fbe006f4b462b0e97f8c87b23f3",
+    "expectedRevisions": {
+      "33ad4b71dea810f4ff40867afcc2af92": 1,
+      "dd6c599cdda1af6a3fdcab3f852c897e": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1280大中沙茶面与1402、1453集美大社沙茶面为不同品牌，后者明确集美大社。大社旧图误落湖里荟盈星街，不能用错图抹平独立身份。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          219
+        ],
+        "conclusion": "1280大中沙茶面与1402、1453集美大社沙茶面为不同品牌，后者明确集美大社。大社旧图误落湖里荟盈星街，不能用错图抹平独立身份。",
+        "sourcePlaceIds": [
+          "2935",
+          "2846"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5815,
+          6056,
+          6258
+        ],
+        "conclusion": "1280大中沙茶面与1402、1453集美大社沙茶面为不同品牌，后者明确集美大社。大社旧图误落湖里荟盈星街，不能用错图抹平独立身份。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-220",
+    "city": "厦门",
+    "reviewFingerprint": "110955c0f0042f626ab1b7acda6ed04f9b44bac0691637fdcc81d6b1843a7f15",
+    "expectedRevisions": {
+      "d5339ff3ab9b7865b633c20dbc4ae993": 1,
+      "f9dfd02cd7d985731332b662284387ac": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1398郑有财海鲜砂锅粥与1401郑有财海鲜粥同品牌可能性高，但均无门牌/分店。旧图错到海沧漳浦海鲜，与八市中山路场景冲突；需核门店后再合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          220
+        ],
+        "conclusion": "1398郑有财海鲜砂锅粥与1401郑有财海鲜粥同品牌可能性高，但均无门牌/分店。旧图错到海沧漳浦海鲜，与八市中山路场景冲突；需核门店后再合并。",
+        "sourcePlaceIds": [
+          "2850",
+          "2924"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5821,
+          6026
+        ],
+        "conclusion": "1398郑有财海鲜砂锅粥与1401郑有财海鲜粥同品牌可能性高，但均无门牌/分店。旧图错到海沧漳浦海鲜，与八市中山路场景冲突；需核门店后再合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-223",
+    "city": "厦门",
+    "reviewFingerprint": "035296da7f4579b3dae04872c92df8c6b60818a39451ece87290f23ff7a2ea20",
+    "expectedRevisions": {
+      "44b57b95a111c84a38bd41cd35e8a9a9": 1,
+      "c43e99d653866373c2cc1d23c1635e8b": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "东渡阿忠水果1288为外卖、1481只中山路一带推荐，阿忠水果1418为忠福楼隔壁。两旧图万达店与金榜路店均缺原文支持，不能把品牌前缀当同店证明。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          223
+        ],
+        "conclusion": "东渡阿忠水果1288为外卖、1481只中山路一带推荐，阿忠水果1418为忠福楼隔壁。两旧图万达店与金榜路店均缺原文支持，不能把品牌前缀当同店证明。",
+        "sourcePlaceIds": [
+          "2904",
+          "2928"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5926,
+          6034,
+          6743
+        ],
+        "conclusion": "东渡阿忠水果1288为外卖、1481只中山路一带推荐，阿忠水果1418为忠福楼隔壁。两旧图万达店与金榜路店均缺原文支持，不能把品牌前缀当同店证明。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-226",
+    "city": "厦门",
+    "reviewFingerprint": "4ee298305a14411da9a2e8273cb07cf184cae2c704f4be09369ef6d5b38b7e92",
+    "expectedRevisions": {
+      "6b09ec8b35d16361cc07e392752324ee": 1,
+      "b5251f09e60a656008f382722316ca19": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1426老蔡牛肉面与1428老蔡牛肉拉面馆均只有菜品清单，没有地址/招牌；一方旧点集美、一方城市中心。分店和具体店名尚待核实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          226
+        ],
+        "conclusion": "1426老蔡牛肉面与1428老蔡牛肉拉面馆均只有菜品清单，没有地址/招牌；一方旧点集美、一方城市中心。分店和具体店名尚待核实。",
+        "sourcePlaceIds": [
+          "2958",
+          "2997"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6111,
+          6211
+        ],
+        "conclusion": "1426老蔡牛肉面与1428老蔡牛肉拉面馆均只有菜品清单，没有地址/招牌；一方旧点集美、一方城市中心。分店和具体店名尚待核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-227",
+    "city": "厦门",
+    "reviewFingerprint": "ea83912f88d4176eca32f3650f24fa403c2fa82f7cb45ea8b399f5380424ead8",
+    "expectedRevisions": {
+      "9fe56095294f7d445a817e67ea5162cb": 1,
+      "deedb6d2171b6b4494549dbb56a5ff3d": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1495、1380及1505明确厦门站岛内市中心与厦门北站集美两个铁路枢纽，不能按城市同名合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          227
+        ],
+        "conclusion": "1495、1380及1505明确厦门站岛内市中心与厦门北站集美两个铁路枢纽，不能按城市同名合并。",
+        "sourcePlaceIds": [
+          "2973",
+          "2972"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6158,
+          6159,
+          6286,
+          6287,
+          6763,
+          6764,
+          6810
+        ],
+        "conclusion": "1495、1380及1505明确厦门站岛内市中心与厦门北站集美两个铁路枢纽，不能按城市同名合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-230",
+    "city": "厦门",
+    "reviewFingerprint": "570b7ba1f0982b4ae65f1c0eadbc2134d8adfaa6ffd1aa9a258f284921f48ea4",
+    "expectedRevisions": {
+      "c5af2929e77ff6984593c6cc942275bd": 2,
+      "dddef45799215ce1fe210f5b04b0d540": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1522海沧SM城市广场与1528湖里SM一期二期为两独立商业体。海沧两种语序已另作显式实体合并，此候选只记录海沧与岛内主体的独立边界。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          230,
+          231
+        ],
+        "conclusion": "1522海沧SM城市广场与1528湖里SM一期二期为两独立商业体。海沧两种语序已另作显式实体合并，此候选只记录海沧与岛内主体的独立边界。",
+        "sourcePlaceIds": [
+          "3050",
+          "2979",
+          "3152"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6305,
+          6689,
+          6854
+        ],
+        "conclusion": "1522海沧SM城市广场与1528湖里SM一期二期为两独立商业体。海沧两种语序已另作显式实体合并，此候选只记录海沧与岛内主体的独立边界。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-237",
+    "city": "厦门",
+    "reviewFingerprint": "add6aeba5dcc0a02c54f48cc32566d9433f14cf94e5cb7d6f33bf0a50db3249a",
+    "expectedRevisions": {
+      "39d2b5033f7a22358cbba1340e899963": 1,
+      "fcc9e2107ca53a85c1a03e6c977e270e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "1505、1506明确龙阳牌子，但1453泛林氏源只鼓浪屿清单，未给具体门店。两地图都错到曾厝垵台湾印象美食城，不能用同一错点或同品牌判同分店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          237
+        ],
+        "conclusion": "1505、1506明确龙阳牌子，但1453泛林氏源只鼓浪屿清单，未给具体门店。两地图都错到曾厝垵台湾印象美食城，不能用同一错点或同品牌判同分店。",
+        "sourcePlaceIds": [
+          "3018",
+          "3197"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6261,
+          6784,
+          6835
+        ],
+        "conclusion": "1505、1506明确龙阳牌子，但1453泛林氏源只鼓浪屿清单，未给具体门店。两地图都错到曾厝垵台湾印象美食城，不能用同一错点或同品牌判同分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-238",
+    "city": "厦门",
+    "reviewFingerprint": "a739c7ecb2aed363319a1d3cc22fb5cf76bdb74330227c6c99298b29a1648f87",
+    "expectedRevisions": {
+      "76ac745d405a9f8cedde61b784033cea": 1,
+      "8a58be2bfd0894ba3dacf5892df79c41": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1572同篇明确岛内五山8公里与七山16公里不同徒步路线，不能省略山数后并为一条；旧城市中心点不是路线定位。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          238
+        ],
+        "conclusion": "1572同篇明确岛内五山8公里与七山16公里不同徒步路线，不能省略山数后并为一条；旧城市中心点不是路线定位。",
+        "sourcePlaceIds": [
+          "3027",
+          "3028"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6275,
+          6276
+        ],
+        "conclusion": "1572同篇明确岛内五山8公里与七山16公里不同徒步路线，不能省略山数后并为一条；旧城市中心点不是路线定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-15-review-248",
+    "city": "厦门",
+    "reviewFingerprint": "dc2ef1371b883c3fb141055ecb237e3ebfeacdd276e449f539d65c6f0b41c170",
+    "expectedRevisions": {
+      "54b34497f61e4d8e83e88b261aa15b70": 1,
+      "798429f21e92429937d8536e442a3866": 1
+    },
+    "verdict": "distinct",
+    "explanation": "1557明确日月谷温泉酒店与马路对面的度假村泡池为两个区域，有天桥/接驳车相连。1554日月谷温泉指4A泡池景区，不是酒店，两者保持独立。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          248
+        ],
+        "conclusion": "1557明确日月谷温泉酒店与马路对面的度假村泡池为两个区域，有天桥/接驳车相连。1554日月谷温泉指4A泡池景区，不是酒店，两者保持独立。",
+        "sourcePlaceIds": [
+          "3221",
+          "3184"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6751,
+          6868
+        ],
+        "conclusion": "1557明确日月谷温泉酒店与马路对面的度假村泡池为两个区域，有天桥/接驳车相连。1554日月谷温泉指4A泡池景区，不是酒店，两者保持独立。"
+      }
+    ]
+  }
+]

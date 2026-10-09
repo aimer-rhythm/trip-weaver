@@ -1,0 +1,72 @@
+{
+  "city": "济南",
+  "batch": 56,
+  "sourcePacket": "priority-cities/济南/park-culture-source-packet-01.json",
+  "sources": 3,
+  "mentions": 4,
+  "fullNotes": 4,
+  "scopedMentions": 4,
+  "pendingAdded": 0,
+  "appliedAtFreeze": false,
+  "rows": [
+    {
+      "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+      "sourceId": 5952,
+      "mentionIds": [
+        12591
+      ],
+      "quote": "是济南环城公园(黑虎泉所在）和珍珠泉\n路线放在最后一图，是这次去济南之行中最快乐的两个小时",
+      "conclusion": "120分钟是环城公园与珍珠泉共同路线，不属于环城公园独立停留；排除分钟，保留观泉/接水/蔷薇描述，现行位置不改。",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "sourceId": 5480,
+      "mentionIds": [
+        11492,
+        12777
+      ],
+      "quote": "千佛山（四窟万象）",
+      "conclusion": "两篇原文明确仿制石窟，正负评价均归原主体，不合并四大原址或千佛山；城西旧点不符，只补千佛山景区内并清点，精确洞口待核。",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+      "sourceId": 5994,
+      "mentionIds": [
+        12964
+      ],
+      "quote": "五龙潭南门西侧的关帝庙可以顺便看看（免费，院内有西蜜脂泉）",
+      "conclusion": "特指共青团路关帝庙；第30批已纠正位置，保持其点位/地址。本批补主名、旧裸名兼容和完整scope，不合并芙蓉街/县西巷/仲宫庙或西蜜脂泉。",
+      "fullReviewPassed": false
+    }
+  ],
+  "ledgerCorrection": {
+    "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+    "ledgerRevision": 1,
+    "actualBeforeRevision": 2,
+    "positionCorrectedByBatch": 30,
+    "meaning": "台账未同步显示历史已应用版本；不得拿原始源仲宫坐标覆盖现行正确点位。"
+  },
+  "externalReferences": [
+    {
+      "file": "priority-cities/济南/park-culture-reference-01.json",
+      "sha256": "ed49e6477c6e714ad4d13a270b6481e3814467e681996a84de89fbab1a1a0606",
+      "url": "https://hk.trip.com/moments/poi-ten-thousand-buddha-cave-20895332"
+    },
+    {
+      "file": "priority-cities/济南/park-culture-reference-02.json",
+      "sha256": "0c004ad7597daf25e746ad0cd586f75fc2c9d4453fe031f284039f98306c7b03",
+      "url": "https://zh.wikipedia.org/zh-hans/%E5%85%B1%E9%9D%92%E5%9B%A2%E8%B7%AF%E5%85%B3%E5%B8%9D%E5%BA%99"
+    }
+  ],
+  "webCaveat": "search01/02/03主回答均为计划文字，补充来源经fetch后才使用；官方园林页reference03提取为空，不计为官方验证。Trip页面万像/万象及万佛洞沿革不在本批新增别名，开放时间/票价不扩入。",
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "mapRequests": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "variant": "v2",
+  "supersedesUnappliedVariant": "batch-56",
+  "previewFinding": "完整scope后公园失去旧自然主题推导而默认为文化；显式category=自然保持原分类。初次预演误假定mentionSources含sentiment，实际只含提及/笔记ID和hash，改验证原提及及语料负评。初案未应用。"
+}

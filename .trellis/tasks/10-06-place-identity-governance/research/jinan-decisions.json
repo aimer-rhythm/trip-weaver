@@ -1,0 +1,87 @@
+[
+  {
+    "key": "jinan-20261006-daminghu-v2",
+    "city": "济南",
+    "entityId": "550d6810857b4487aae8ce39c9ee093b",
+    "mergeEntityIds": [
+      "39c1c314e86091e13d382c2c716cc2ad",
+      "1e1c6d4109dc6a10c959a817de9ed799"
+    ],
+    "canonicalName": "大明湖",
+    "aliases": [],
+    "expectedRevisions": {
+      "550d6810857b4487aae8ce39c9ee093b": 1,
+      "39c1c314e86091e13d382c2c716cc2ad": 1,
+      "1e1c6d4109dc6a10c959a817de9ed799": 1
+    },
+    "overrides": {
+      "category": "自然"
+    },
+    "evidence": [
+      {
+        "kind": "source_mentions",
+        "ids": [
+          12687,
+          12926,
+          12959,
+          12772
+        ],
+        "conclusion": "同一湖泊景区的游览称呼；超然楼与南门不属于同义词"
+      }
+    ]
+  },
+  {
+    "key": "jinan-20261006-shangbu-v2",
+    "city": "济南",
+    "entityId": "46bf462d545dc6435d6de296ba099d0f",
+    "mergeEntityIds": [
+      "4dd3530aa4bb1a615b12f5b19efef8e8",
+      "ddd11def37286b278f4dcdf87e2ca91f"
+    ],
+    "canonicalName": "融汇老商埠",
+    "aliases": [
+      "老商埠·经三路",
+      "济南老商埠",
+      "融汇济南老商埠"
+    ],
+    "expectedRevisions": {
+      "46bf462d545dc6435d6de296ba099d0f": 1,
+      "4dd3530aa4bb1a615b12f5b19efef8e8": 1,
+      "ddd11def37286b278f4dcdf87e2ca91f": 1
+    },
+    "overrides": {
+      "category": "文化",
+      "lat": 36.662082,
+      "lng": 116.992757,
+      "address": "山东省济南市市中区大观园街道经四路333号",
+      "geoStatus": "verified_poi"
+    },
+    "evidence": [
+      {
+        "kind": "source_mentions",
+        "ids": [
+          12799,
+          12866,
+          12616,
+          12645
+        ],
+        "conclusion": "源记录为夹心胡同、复古洋楼等商业街区游览；历史老商埠片区不并入"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://news.iqilu.com/shandong/shandonggedi/20211006/4968896.shtml"
+      },
+      {
+        "kind": "boundary_source",
+        "url": "http://sd.xinhuanet.com/20260904/3f7ee94228e04d72af79999d9fce6a15/c.html"
+      },
+      {
+        "kind": "tianditu_poi",
+        "name": "济南老商埠",
+        "address": "山东省济南市市中区大观园街道经四路333号",
+        "lonlat": "116.986972,36.661862",
+        "coordinateSystem": "CGCS2000"
+      }
+    ]
+  }
+]

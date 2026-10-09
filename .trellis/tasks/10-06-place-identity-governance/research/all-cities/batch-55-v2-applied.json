@@ -1,0 +1,288 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "c5a3fae3d839ec359cb0521d957e56df",
+          "city": "济南",
+          "canonical_name": "老舍笔下的济南",
+          "primary_place_id": 5957,
+          "aliases": [
+            "老舍笔下的济南"
+          ],
+          "legacy_ids": [
+            "c5a3fae3d839ec359cb0521d957e56df"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5957,
+          "entity_id": "c5a3fae3d839ec359cb0521d957e56df"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5957,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "历史人文"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5957,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "文化打卡点，与老舍相关",
+              "evidence": "⑧老舍笔下的济南"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8692,
+          "canonical_place_id": 5957,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 老舍笔下的济南",
+          "evidence_summary": "文化打卡点，与老舍相关"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5957,
+          "city": "济南",
+          "name_keys": [
+            "老舍笔下的济南"
+          ],
+          "entity_ids": [
+            "c5a3fae3d839ec359cb0521d957e56df"
+          ],
+          "source_hash": "1b058ad0c664ec372f080aad20126ad0039b3deb0d64ec11c0df4b01c3f7b060",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-55-source-5957-scope-v2",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/laoshe-source-review-02.json",
+              "kind": "reviewed_named_theme_wall",
+              "conclusion": "2817为可打卡的实体主题墙，与2570西更道街5号正文及既有文字分析相互支持，不是文学概念或南新街纪念馆。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "c5a3fae3d839ec359cb0521d957e56df"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12694,
+          "scope_place_id": 5957,
+          "entity_id": "c5a3fae3d839ec359cb0521d957e56df",
+          "input_hash": "49640ec2b910fb725c553d5c9167dd24cd066fd84258abfa01eed6f593e12df1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-55-source-5957-scope-v2"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "1b058ad0c664ec372f080aad20126ad0039b3deb0d64ec11c0df4b01c3f7b060",
+        "mentions": [
+          {
+            "mentionId": 12694,
+            "inputHash": "49640ec2b910fb725c553d5c9167dd24cd066fd84258abfa01eed6f593e12df1"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6a111b28c08cc7853140187bfd852b16",
+          "city": "济南",
+          "canonical_name": "老舍故居",
+          "primary_place_id": 5498,
+          "aliases": [
+            "济南老舍纪念馆",
+            "老舍故居",
+            "老舍纪念馆"
+          ],
+          "legacy_ids": [
+            "6a111b28c08cc7853140187bfd852b16",
+            "b4d037bc5efddaee1780a7d944f67af6",
+            "e8111d62a1433884e7fd359488b4aafd"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "南新街58号"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "museum_name_and_documented_address_only",
+              "file": "priority-cities/济南/laoshe-source-review-02.json",
+              "conclusion": "保留原主名、增加已证实纪念馆别名和南新街58号；不加scope。生成通过规范名使用既有2图，精确坐标和距离描述仍待核。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5498,
+          "entity_id": "6a111b28c08cc7853140187bfd852b16"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "c5a3fae3d839ec359cb0521d957e56df",
+          "city": "济南",
+          "canonical_name": "老舍笔下的济南主题墙",
+          "primary_place_id": 5957,
+          "aliases": [
+            "老舍笔下的济南",
+            "老舍笔下的济南主题墙"
+          ],
+          "legacy_ids": [
+            "053bef166fa54287ccbf4028b985985e",
+            "c5a3fae3d839ec359cb0521d957e56df"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "西更道街5号",
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable",
+            "xhsPlaceType": "photo_spot"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "separate_wall_from_museum",
+              "file": "priority-cities/济南/laoshe-source-review-02.json",
+              "conclusion": "用明确原文墙面补主体后缀与地址；清除与南新街故居完全相同的旧点，不借街道或门店坐标。分类文化保持，细类型改photo_spot。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5957,
+          "entity_id": "c5a3fae3d839ec359cb0521d957e56df"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,390 @@
+{
+  "readOnly": true,
+  "city": "重庆",
+  "review": {
+    "id": 459,
+    "status": "PENDING",
+    "detail": {
+      "names": [
+        "呼归石公交站对面",
+        "呼归石公交站"
+      ],
+      "reason": "similar_name",
+      "entityIds": [
+        "2f6c627fdf341bf54b049f3c0ae84d74",
+        "79afbf6edf8899c29d2eb71edf8c3c81"
+      ],
+      "assessment": {
+        "key": "all-cities-20261006-batch-14-review-459",
+        "verdict": "uncertain",
+        "evidence": [
+          {
+            "file": "all-cities/source-snapshot.json",
+            "kind": "reviewed_source_snapshot",
+            "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+            "reviewIds": [
+              459
+            ],
+            "conclusion": "534、1119、1615均来自note7同一机位，正文写呼归石公交站对面。原抽取丢失对面导致公交站主体混入站外摄影事实；应修提及归属，不能建立公交站等于对面的永久别名，旧坐标又都为公交站点。",
+            "sourcePlaceIds": [
+              "176",
+              "215"
+            ]
+          },
+          {
+            "file": "all-cities/chongqing-batch14-context.json",
+            "kind": "reviewed_full_note_context",
+            "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+            "conclusion": "534、1119、1615均来自note7同一机位，正文写呼归石公交站对面。原抽取丢失对面导致公交站主体混入站外摄影事实；应修提及归属，不能建立公交站等于对面的永久别名，旧坐标又都为公交站点。",
+            "mentionIds": [
+              534,
+              1119,
+              1615
+            ]
+          }
+        ],
+        "explanation": "534、1119、1615均来自note7同一机位，正文写呼归石公交站对面。原抽取丢失对面导致公交站主体混入站外摄影事实；应修提及归属，不能建立公交站等于对面的永久别名，旧坐标又都为公交站点。"
+      }
+    }
+  },
+  "scopeTableCounts": {
+    "place_identity_scope": 0,
+    "place_mention_assignment": 0,
+    "place_image_assignment": 0
+  },
+  "sources": [
+    {
+      "id": 176,
+      "city": "重庆",
+      "name": "呼归石公交站对面",
+      "normalized_name": "呼归石公交站对面",
+      "is_active": true,
+      "geo_status": "resolved",
+      "longitude": 106.589452,
+      "latitude": 29.574274,
+      "address": "重庆市373路",
+      "place_type": "attraction",
+      "sourceHash": "e208ac4d874bc2cdc96c2517b15f24abaeb6ab764944de13c6933c8998b325ef",
+      "entity": {
+        "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+        "city": "重庆",
+        "canonical_name": "呼归石公交站对面",
+        "primary_place_id": 176,
+        "aliases": [
+          "呼归石公交站对面"
+        ],
+        "legacy_ids": [
+          "2f6c627fdf341bf54b049f3c0ae84d74"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": null,
+          "lng": null,
+          "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+          "category": "景点",
+          "geoStatus": "unresolvable"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "all-cities/source-snapshot.json",
+            "kind": "reviewed_source_snapshot",
+            "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+            "mentions": [
+              {
+                "id": "1119",
+                "name": "呼归石公交站对面",
+                "quote": "呼归石公交站对面",
+                "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+              }
+            ],
+            "reviewIds": [],
+            "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+            "sourcePlaceIds": [
+              "176"
+            ]
+          },
+          {
+            "lat": null,
+            "lng": null,
+            "kind": "primary_source_geometry",
+            "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+            "category": "景点",
+            "original": {
+              "lat": 29.574274,
+              "lng": 106.589452,
+              "address": "重庆市373路",
+              "geoStatus": "reviewed_source"
+            },
+            "geoStatus": "unresolvable",
+            "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+            "sourcePlaceId": "176",
+            "coordinateSystem": "GCJ-02"
+          },
+          {
+            "file": "all-cities/chongqing-batch14-context.json",
+            "kind": "reviewed_full_note_context",
+            "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+            "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+            "mentionIds": [
+              1119
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 215,
+      "city": "重庆",
+      "name": "呼归石公交站",
+      "normalized_name": "呼归石公交站",
+      "is_active": true,
+      "geo_status": "resolved",
+      "longitude": 106.589452,
+      "latitude": 29.574274,
+      "address": "重庆市373路",
+      "place_type": "attraction",
+      "sourceHash": "a6641d5ae779ddac40555c04530831bf9da2950b576d29b6c817e36c1ac1246d",
+      "entity": {
+        "entity_id": "79afbf6edf8899c29d2eb71edf8c3c81",
+        "city": "重庆",
+        "canonical_name": "呼归石公交站",
+        "primary_place_id": 215,
+        "aliases": [
+          "呼归石公交站"
+        ],
+        "legacy_ids": [
+          "79afbf6edf8899c29d2eb71edf8c3c81"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    }
+  ],
+  "mentions": [
+    {
+      "id": 534,
+      "raw_note_id": 7,
+      "name": "呼归石公交站",
+      "normalized_name": "呼归石公交站",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "公交站对面是拍照点，可拍南滨路",
+      "evidence_text": "呼归石公交站对面",
+      "route_order": 16,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "重庆",
+      "note_title": "往返重庆N次，还是最爱南滨路（附路线）",
+      "note_desc": "一个人去了重庆好多次，\n洪崖洞人挤人真的怕了😅\n这次来重庆都只想在南滨路泡两天。\n白天爬古道、逛老街；\n晚上看夜景、吹江风 ；\n这份两天一夜不绕路玩法请收好👇\n\t\nD1  黄桷垭老街➠ 老君洞西门 ➠返回黄桷垭老街➠黄葛古道 ➠ 开埠遗址公园（夜景）➠非白ORBLACK（住）\nD2 上新街 ➠ 社会主义学院➠龙门浩老街➠下浩里  ➠南滨路钟楼 ➠长嘉汇购物广场（周六无人机表演）\n\t\n【机位分享】\nP1 下浩里（穿过“浩阅书店”到达最佳观景点）\nP2 开埠遗址公园（长焦拍东水门大桥）\nP3 长嘉汇购物广场（周六无人机表演）\nP4 呼归石公交站对面\nP5 黄葛古道（“中余·草木间”观景台）\nP6-7 黄葛古道（“清风雅舍”外）\nP8 龙门浩（“半山草堂茶舍”外面用长焦拍长江索道）\nP9 南滨路钟楼对面\nP10-13 非白ORBLACK江景民宿（重庆老民居改造，在旧巷子里，很有特色，风景一级棒）\nP14 开埠遗址公园（透过竹编拍长江索道）\nP15 龙门浩（“既下山”旁边）\nP16 老君洞西门\nP17 下浩里（“雾都周末”旁边）\nP18 社会主义学院（进大门走左边到尽头）\n\t\n小tips\n❶D1顺序不要反：一定是先黄桷垭老街，再黄葛古道，这样黄葛古道全程下坡不累（黄葛古道最近很多🐛，做好心理准备）\n❷穿舒服的平底鞋：黄葛古道是下坡但石板不平，南滨路来回走步数也不少\n❸周六一定去长嘉汇：无人机表演真的很值得，记得提前半小时占位\n❹一定要住下来：吹吹江风看看夜景，这才是重庆旅游的精华\n\t\n南滨路的好，是那种可以反复去、每次都有新发现的好。\n不想再去洪崖洞人挤人？那下次来重庆，时间就留给南滨路吧！\n\t\n#旅游编辑部[话题]# #重庆旅游[话题]# #重庆citywalk[话题]# #重庆小众打卡地[话题]# #城市里的私藏秘境[话题]# #南滨路[话题]# #下浩里[话题]# #龙门浩老街[话题]# #重庆夜景[话题]# #探索城市隐秘角落[话题]#\n@薯队长 @生活薯",
+      "note_images": [
+        {
+          "summary": "山城夜景与特色建筑群",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": "夜间营业",
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "SEGONIA"
+        },
+        {
+          "summary": "重庆夜景与无人机编队表演",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 2,
+          "text_content": ""
+        },
+        {
+          "summary": "透过圆形石框拍摄的重庆来福士广场建筑群",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": ""
+        },
+        {
+          "summary": "被绿树环绕的木质民宿建筑，背景可见城市天际线",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "木与别·院\n与你一起森呼吸"
+        }
+      ],
+      "note_unavailable": false,
+      "inputHash": "85f0f678414cce0ca5724cef48877d2624a708572d6d8c50ca780643848849c0"
+    },
+    {
+      "id": 1119,
+      "raw_note_id": 7,
+      "name": "呼归石公交站对面",
+      "normalized_name": "呼归石公交站对面",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "拍摄南滨路夜景的好机位",
+      "evidence_text": "呼归石公交站对面",
+      "route_order": 12,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "重庆",
+      "note_title": "往返重庆N次，还是最爱南滨路（附路线）",
+      "note_desc": "一个人去了重庆好多次，\n洪崖洞人挤人真的怕了😅\n这次来重庆都只想在南滨路泡两天。\n白天爬古道、逛老街；\n晚上看夜景、吹江风 ；\n这份两天一夜不绕路玩法请收好👇\n\t\nD1  黄桷垭老街➠ 老君洞西门 ➠返回黄桷垭老街➠黄葛古道 ➠ 开埠遗址公园（夜景）➠非白ORBLACK（住）\nD2 上新街 ➠ 社会主义学院➠龙门浩老街➠下浩里  ➠南滨路钟楼 ➠长嘉汇购物广场（周六无人机表演）\n\t\n【机位分享】\nP1 下浩里（穿过“浩阅书店”到达最佳观景点）\nP2 开埠遗址公园（长焦拍东水门大桥）\nP3 长嘉汇购物广场（周六无人机表演）\nP4 呼归石公交站对面\nP5 黄葛古道（“中余·草木间”观景台）\nP6-7 黄葛古道（“清风雅舍”外）\nP8 龙门浩（“半山草堂茶舍”外面用长焦拍长江索道）\nP9 南滨路钟楼对面\nP10-13 非白ORBLACK江景民宿（重庆老民居改造，在旧巷子里，很有特色，风景一级棒）\nP14 开埠遗址公园（透过竹编拍长江索道）\nP15 龙门浩（“既下山”旁边）\nP16 老君洞西门\nP17 下浩里（“雾都周末”旁边）\nP18 社会主义学院（进大门走左边到尽头）\n\t\n小tips\n❶D1顺序不要反：一定是先黄桷垭老街，再黄葛古道，这样黄葛古道全程下坡不累（黄葛古道最近很多🐛，做好心理准备）\n❷穿舒服的平底鞋：黄葛古道是下坡但石板不平，南滨路来回走步数也不少\n❸周六一定去长嘉汇：无人机表演真的很值得，记得提前半小时占位\n❹一定要住下来：吹吹江风看看夜景，这才是重庆旅游的精华\n\t\n南滨路的好，是那种可以反复去、每次都有新发现的好。\n不想再去洪崖洞人挤人？那下次来重庆，时间就留给南滨路吧！\n\t\n#旅游编辑部[话题]# #重庆旅游[话题]# #重庆citywalk[话题]# #重庆小众打卡地[话题]# #城市里的私藏秘境[话题]# #南滨路[话题]# #下浩里[话题]# #龙门浩老街[话题]# #重庆夜景[话题]# #探索城市隐秘角落[话题]#\n@薯队长 @生活薯",
+      "note_images": [
+        {
+          "summary": "山城夜景与特色建筑群",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": "夜间营业",
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "SEGONIA"
+        },
+        {
+          "summary": "重庆夜景与无人机编队表演",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 2,
+          "text_content": ""
+        },
+        {
+          "summary": "透过圆形石框拍摄的重庆来福士广场建筑群",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": ""
+        },
+        {
+          "summary": "被绿树环绕的木质民宿建筑，背景可见城市天际线",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "木与别·院\n与你一起森呼吸"
+        }
+      ],
+      "note_unavailable": false,
+      "inputHash": "fdd99f29aca56095459cbc47dfa8ed5117116bcb843030a737daeb23a46b85ad"
+    },
+    {
+      "id": 1615,
+      "raw_note_id": 7,
+      "name": "呼归石公交站",
+      "normalized_name": "呼归石公交站",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "对面是拍照机位",
+      "evidence_text": "呼归石公交站对面",
+      "route_order": 11,
+      "confidence": 0.85,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "重庆",
+      "note_title": "往返重庆N次，还是最爱南滨路（附路线）",
+      "note_desc": "一个人去了重庆好多次，\n洪崖洞人挤人真的怕了😅\n这次来重庆都只想在南滨路泡两天。\n白天爬古道、逛老街；\n晚上看夜景、吹江风 ；\n这份两天一夜不绕路玩法请收好👇\n\t\nD1  黄桷垭老街➠ 老君洞西门 ➠返回黄桷垭老街➠黄葛古道 ➠ 开埠遗址公园（夜景）➠非白ORBLACK（住）\nD2 上新街 ➠ 社会主义学院➠龙门浩老街➠下浩里  ➠南滨路钟楼 ➠长嘉汇购物广场（周六无人机表演）\n\t\n【机位分享】\nP1 下浩里（穿过“浩阅书店”到达最佳观景点）\nP2 开埠遗址公园（长焦拍东水门大桥）\nP3 长嘉汇购物广场（周六无人机表演）\nP4 呼归石公交站对面\nP5 黄葛古道（“中余·草木间”观景台）\nP6-7 黄葛古道（“清风雅舍”外）\nP8 龙门浩（“半山草堂茶舍”外面用长焦拍长江索道）\nP9 南滨路钟楼对面\nP10-13 非白ORBLACK江景民宿（重庆老民居改造，在旧巷子里，很有特色，风景一级棒）\nP14 开埠遗址公园（透过竹编拍长江索道）\nP15 龙门浩（“既下山”旁边）\nP16 老君洞西门\nP17 下浩里（“雾都周末”旁边）\nP18 社会主义学院（进大门走左边到尽头）\n\t\n小tips\n❶D1顺序不要反：一定是先黄桷垭老街，再黄葛古道，这样黄葛古道全程下坡不累（黄葛古道最近很多🐛，做好心理准备）\n❷穿舒服的平底鞋：黄葛古道是下坡但石板不平，南滨路来回走步数也不少\n❸周六一定去长嘉汇：无人机表演真的很值得，记得提前半小时占位\n❹一定要住下来：吹吹江风看看夜景，这才是重庆旅游的精华\n\t\n南滨路的好，是那种可以反复去、每次都有新发现的好。\n不想再去洪崖洞人挤人？那下次来重庆，时间就留给南滨路吧！\n\t\n#旅游编辑部[话题]# #重庆旅游[话题]# #重庆citywalk[话题]# #重庆小众打卡地[话题]# #城市里的私藏秘境[话题]# #南滨路[话题]# #下浩里[话题]# #龙门浩老街[话题]# #重庆夜景[话题]# #探索城市隐秘角落[话题]#\n@薯队长 @生活薯",
+      "note_images": [
+        {
+          "summary": "山城夜景与特色建筑群",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": "夜间营业",
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "SEGONIA"
+        },
+        {
+          "summary": "重庆夜景与无人机编队表演",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 2,
+          "text_content": ""
+        },
+        {
+          "summary": "透过圆形石框拍摄的重庆来福士广场建筑群",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": ""
+        },
+        {
+          "summary": "被绿树环绕的木质民宿建筑，背景可见城市天际线",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "木与别·院\n与你一起森呼吸"
+        }
+      ],
+      "note_unavailable": false,
+      "inputHash": "e4dfc226fbea803c535fe9eb8006ec9858a5cde9ba63c1430b59123dc1567cf3"
+    }
+  ],
+  "images": []
+}

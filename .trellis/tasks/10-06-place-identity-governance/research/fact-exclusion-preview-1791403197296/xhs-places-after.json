@@ -1,0 +1,558 @@
+{
+ "_comment": "字段时长30e8c8e19d社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-08）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "字段时长30e8c8e19d",
+ "generatedAt": "2026-10-08",
+ "count": 5,
+ "activeCount": 5,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "4388633ecbfda477cb567c3cc2c5e6ad205564d3d4d0d3ebbef76ec66254685a",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "字段时长30e8c8e19d",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "丁泉",
+    "丙泉",
+    "乙泉",
+    "戊泉",
+    "甲泉"
+   ],
+   "mentions": [
+    {
+     "mentionId": 97,
+     "noteId": 33,
+     "inputHash": "cff150c5925893039ffe8412fc6752ae8c041ba7f5fec15bc86a86f3f40e4941",
+     "textHash": "61967f21e96b4e563a463fe3b7f728602a5e6fc772a3165b0b4872c500412bb9",
+     "textLength": 46,
+     "entityId": "ee3bd5f4c4908c00e7248ba63d4b57e6",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 98,
+     "noteId": 33,
+     "inputHash": "ce1c93568b48c3dedc1535cba914e50e67c0fb3886e216613a8570fc444a556b",
+     "textHash": "61967f21e96b4e563a463fe3b7f728602a5e6fc772a3165b0b4872c500412bb9",
+     "textLength": 46,
+     "entityId": "41073b2e797341c7228b4ee1d8af85c4",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 99,
+     "noteId": 33,
+     "inputHash": "7ca8dfa38f8be0e57fd0c9a618cccd45e8b873ab2c9d32d3b3d2d9f0872de2c7",
+     "textHash": "61967f21e96b4e563a463fe3b7f728602a5e6fc772a3165b0b4872c500412bb9",
+     "textLength": 46,
+     "entityId": "fc51845f747740668e6e2b9863522e9b",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 100,
+     "noteId": 33,
+     "inputHash": "222f16f892fc4e6acfd5a9f487143faf3480e73ca7efe56370af26be00081725",
+     "textHash": "61967f21e96b4e563a463fe3b7f728602a5e6fc772a3165b0b4872c500412bb9",
+     "textLength": 46,
+     "entityId": "509aee65ccbedf069a9b5a84454e3761",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 101,
+     "noteId": 33,
+     "inputHash": "0b0d6a916f452dfb70a72c55eb8998adf4dc679880ad61bc40ea28b7bc43d810",
+     "textHash": "61967f21e96b4e563a463fe3b7f728602a5e6fc772a3165b0b4872c500412bb9",
+     "textLength": 46,
+     "entityId": "4341611d9ef5b617b6d922e83ef67d7e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 102,
+     "noteId": 34,
+     "inputHash": "811cb485d49f51319cf3f82e1e347d77ba7d18cff23c2b8593826bf3c9a5121d",
+     "textHash": "f9c553a001e3a07ba4c8691c8501876aa0c5fb9c1f49578450c6a68ce9e3d151",
+     "textLength": 18,
+     "entityId": "ee3bd5f4c4908c00e7248ba63d4b57e6",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "41073b2e797341c7228b4ee1d8af85c4",
+     "revision": 2,
+     "canonicalName": "乙泉",
+     "aliases": [
+      "乙泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "4341611d9ef5b617b6d922e83ef67d7e",
+     "revision": 1,
+     "canonicalName": "戊泉",
+     "aliases": [
+      "戊泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "509aee65ccbedf069a9b5a84454e3761",
+     "revision": 2,
+     "canonicalName": "丁泉",
+     "aliases": [
+      "丁泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "ee3bd5f4c4908c00e7248ba63d4b57e6",
+     "revision": 2,
+     "canonicalName": "甲泉",
+     "aliases": [
+      "甲泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "fc51845f747740668e6e2b9863522e9b",
+     "revision": 2,
+     "canonicalName": "丙泉",
+     "aliases": [
+      "丙泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "ee3bd5f4c4908c00e7248ba63d4b57e6",
+   "name": "甲泉",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.66,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "甲泉泉水清澈",
+     "甲泉独立游览"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T20:00:03.909235+00:00"
+    },
+    "originalName": "甲泉",
+    "openHours": {
+     "version": 2,
+     "subject": "甲泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 97,
+      "noteId": 33,
+      "inputHash": "cff150c5925893039ffe8412fc6752ae8c041ba7f5fec15bc86a86f3f40e4941"
+     },
+     {
+      "mentionId": 102,
+      "noteId": 34,
+      "inputHash": "811cb485d49f51319cf3f82e1e347d77ba7d18cff23c2b8593826bf3c9a5121d"
+     }
+    ],
+    "typicalVisitMinutes": 45,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "ee3bd5f4c4908c00e7248ba63d4b57e6",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "ee3bd5f4c4908c00e7248ba63d4b57e6",
+     "canonicalName": "甲泉",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "甲泉"
+     ],
+     "memberIds": [
+      "ee3bd5f4c4908c00e7248ba63d4b57e6"
+     ]
+    },
+    "aliases": [
+     "甲泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "甲泉泉水清澈",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "甲泉独立游览",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "41073b2e797341c7228b4ee1d8af85c4",
+   "name": "乙泉",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.661,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "乙泉泉水清澈"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T20:00:03.909235+00:00"
+    },
+    "originalName": "乙泉",
+    "openHours": {
+     "version": 2,
+     "subject": "乙泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 98,
+      "noteId": 33,
+      "inputHash": "ce1c93568b48c3dedc1535cba914e50e67c0fb3886e216613a8570fc444a556b"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "41073b2e797341c7228b4ee1d8af85c4",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "41073b2e797341c7228b4ee1d8af85c4",
+     "canonicalName": "乙泉",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "乙泉"
+     ],
+     "memberIds": [
+      "41073b2e797341c7228b4ee1d8af85c4"
+     ]
+    },
+    "aliases": [
+     "乙泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "乙泉泉水清澈",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "fc51845f747740668e6e2b9863522e9b",
+   "name": "丙泉",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.662,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "丙泉泉水清澈"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T20:00:03.909235+00:00"
+    },
+    "originalName": "丙泉",
+    "openHours": {
+     "version": 2,
+     "subject": "丙泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 99,
+      "noteId": 33,
+      "inputHash": "7ca8dfa38f8be0e57fd0c9a618cccd45e8b873ab2c9d32d3b3d2d9f0872de2c7"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "fc51845f747740668e6e2b9863522e9b",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "fc51845f747740668e6e2b9863522e9b",
+     "canonicalName": "丙泉",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "丙泉"
+     ],
+     "memberIds": [
+      "fc51845f747740668e6e2b9863522e9b"
+     ]
+    },
+    "aliases": [
+     "丙泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "丙泉泉水清澈",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "509aee65ccbedf069a9b5a84454e3761",
+   "name": "丁泉",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.663,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "丁泉泉水清澈"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T20:00:03.909235+00:00"
+    },
+    "originalName": "丁泉",
+    "openHours": {
+     "version": 2,
+     "subject": "丁泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 100,
+      "noteId": 33,
+      "inputHash": "222f16f892fc4e6acfd5a9f487143faf3480e73ca7efe56370af26be00081725"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "509aee65ccbedf069a9b5a84454e3761",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "509aee65ccbedf069a9b5a84454e3761",
+     "canonicalName": "丁泉",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "丁泉"
+     ],
+     "memberIds": [
+      "509aee65ccbedf069a9b5a84454e3761"
+     ]
+    },
+    "aliases": [
+     "丁泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "丁泉泉水清澈",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "4341611d9ef5b617b6d922e83ef67d7e",
+   "name": "戊泉",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.664,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 10.0,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T20:00:03.909235+00:00"
+    },
+    "originalName": "戊泉",
+    "typicalVisitMinutes": 75,
+    "openHours": {
+     "version": 2,
+     "subject": "戊泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "4341611d9ef5b617b6d922e83ef67d7e",
+     "canonicalName": "戊泉",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "戊泉"
+     ],
+     "memberIds": [
+      "4341611d9ef5b617b6d922e83ef67d7e"
+     ]
+    },
+    "aliases": [
+     "戊泉"
+    ],
+    "components": []
+   },
+   "evidence": []
+  }
+ ]
+}

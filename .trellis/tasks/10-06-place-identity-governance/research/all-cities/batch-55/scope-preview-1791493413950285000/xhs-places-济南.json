@@ -1,0 +1,302 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "2e30c6c0cb0c99c8847db921fd227ea631f02c819b65052fb08a404ee3f3d023",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "老舍笔下的济南主题墙",
+    "济南老舍纪念馆",
+    "老舍笔下的济南",
+    "老舍纪念馆",
+    "老舍故居"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11619,
+     "noteId": 2624,
+     "inputHash": "f0993e7d8ffbe2d09ea5423c09a2905c72a75d5ea5be9ddc8312d5c45742a767",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "6a111b28c08cc7853140187bfd852b16",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12694,
+     "noteId": 2817,
+     "inputHash": "49640ec2b910fb725c553d5c9167dd24cd066fd84258abfa01eed6f593e12df1",
+     "textHash": "2655f9422962f151baa9c012324f5eaf6fb1b5ce42a1e28664c21a08333a520b",
+     "textLength": 273,
+     "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12807,
+     "noteId": 2810,
+     "inputHash": "23cbd682082c6dee97acd085b07bb748635b081cc64f99e9b8f1a185c3e7c6d0",
+     "textHash": "1ea2139ca1ef950016ebd6711495b2dbf0971a3585a9ed195c03a9c32b54a8c2",
+     "textLength": 596,
+     "entityId": "6a111b28c08cc7853140187bfd852b16",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12912,
+     "noteId": 2624,
+     "inputHash": "886655c2daa5efe164559fc90b2b80ec71d23b8157d2a4218e11f8177223937a",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "6a111b28c08cc7853140187bfd852b16",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "6a111b28c08cc7853140187bfd852b16",
+     "revision": 2,
+     "canonicalName": "济南老舍纪念馆",
+     "aliases": [
+      "济南老舍纪念馆",
+      "老舍故居",
+      "老舍纪念馆"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+     "revision": 3,
+     "canonicalName": "老舍笔下的济南主题墙",
+     "aliases": [
+      "老舍笔下的济南",
+      "老舍笔下的济南主题墙"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "6a111b28c08cc7853140187bfd852b16",
+   "name": "济南老舍纪念馆",
+   "category": "文化",
+   "lng": 117.015432,
+   "lat": 36.656645,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [
+     "历史人文"
+    ],
+    "address": "南新街58号",
+    "adcode": "",
+    "mentionCount": 3,
+    "recommendScore": 12.0,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "从五龙潭南门出500米即到，可顺路参观。citywalk路线起点，文化景点。从五龙潭南门出500米即到，可选择性参观。",
+     "highlights": [
+      {
+       "text": "从五龙潭南门出500米即到，可顺路参观",
+       "quote": "从五龙潭南门出500米即到，可顺路参观。",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:20:23.062328+00:00"
+      },
+      {
+       "text": "citywalk路线起点，文化景点",
+       "quote": "citywalk路线起点，文化景点",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:03:19.111155+00:00"
+      },
+      {
+       "text": "从五龙潭南门出500米即到，可选择性参观",
+       "quote": "从五龙潭南门出500米即到，可选择性参观。",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:20:23.062328+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:03:34.359707+00:00"
+    },
+    "originalName": "老舍故居",
+    "openHours": {
+     "version": 2,
+     "subject": "老舍故居",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "6a111b28c08cc7853140187bfd852b16",
+     "canonicalName": "济南老舍纪念馆",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "济南老舍纪念馆",
+      "老舍故居",
+      "老舍纪念馆"
+     ],
+     "memberIds": [
+      "6a111b28c08cc7853140187bfd852b16",
+      "b4d037bc5efddaee1780a7d944f67af6",
+      "e8111d62a1433884e7fd359488b4aafd"
+     ]
+    },
+    "aliases": [
+     "济南老舍纪念馆",
+     "老舍故居",
+     "老舍纪念馆"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "从五龙潭南门出500米即到，可顺路参观。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "citywalk路线起点，文化景点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从五龙潭南门出500米即到，可选择性参观。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "c5a3fae3d839ec359cb0521d957e56df",
+   "name": "老舍笔下的济南主题墙",
+   "category": "文化",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "photo_spot",
+    "themes": [],
+    "address": "西更道街5号",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "文化打卡点，与老舍相关"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "文化打卡点，与老舍相关。",
+     "highlights": [
+      {
+       "text": "文化打卡点，与老舍相关",
+       "quote": "文化打卡点，与老舍相关",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:03:42.369552+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:03:34.359707+00:00"
+    },
+    "originalName": "老舍笔下的济南",
+    "openHours": {
+     "version": 2,
+     "subject": "老舍笔下的济南主题墙",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12694,
+      "noteId": 2817,
+      "inputHash": "49640ec2b910fb725c553d5c9167dd24cd066fd84258abfa01eed6f593e12df1"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+     "canonicalName": "老舍笔下的济南主题墙",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "老舍笔下的济南主题墙",
+      "老舍笔下的济南"
+     ],
+     "memberIds": [
+      "c5a3fae3d839ec359cb0521d957e56df",
+      "053bef166fa54287ccbf4028b985985e"
+     ]
+    },
+    "aliases": [
+     "老舍笔下的济南",
+     "老舍笔下的济南主题墙"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "文化打卡点，与老舍相关",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

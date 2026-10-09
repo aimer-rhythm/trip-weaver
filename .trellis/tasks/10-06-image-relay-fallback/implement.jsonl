@@ -1,0 +1,6 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "服务器后端入口与开发前 checklist：出站调用的超时/SSRF/Null 降级/配额约定"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "外部源适配、顺序降级、熔断与 IMAGE_ 生图配置在 spec 中已记录，改动需同步该文件"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "集成失败的暴露边界与错误文案/状态码约定，降级循环的报错语义需遵守"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "SSRF allowlist、密钥边界与敏感信息不外泄，多站降级循环必须逐个沿用"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "改动后需要运行的验证命令矩阵"}
+{"file": ".trellis/spec/guides/index.md", "reason": "跨包通用思考指南，收尾前自检用"}

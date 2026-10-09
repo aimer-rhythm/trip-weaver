@@ -1,0 +1,83 @@
+{
+  "batch": 69,
+  "city": "成都",
+  "state": "prepared_not_applied",
+  "sourceFile": "all-cities/batch-69-source.json",
+  "sourcesRead": 1,
+  "sourcesGoverned": 1,
+  "mentionsRead": 6,
+  "fullNotes": 5,
+  "supplementalFullNotes": 1,
+  "confirmed": 6,
+  "pendingAdded": 0,
+  "scopeChanges": 1,
+  "assignmentChanges": 6,
+  "newEntities": 0,
+  "merges": 0,
+  "withdrawals": 0,
+  "rows": [
+    {
+      "mentionId": 3564,
+      "noteId": 955,
+      "conclusion": "下午公园鹤鸣喝茶嗑瓜子；茶社身份明确。",
+      "scopeActionApplied": false,
+      "decision": "confirm"
+    },
+    {
+      "mentionId": 3772,
+      "noteId": 957,
+      "conclusion": "茶社采耳体验，不继承同段含博物馆的合计时长。",
+      "scopeActionApplied": false,
+      "decision": "confirm"
+    },
+    {
+      "mentionId": 4059,
+      "noteId": 895,
+      "conclusion": "原路线公园站内茶社体验，缺独立茶社时长。",
+      "scopeActionApplied": false,
+      "decision": "confirm"
+    },
+    {
+      "mentionId": 4162,
+      "noteId": 929,
+      "conclusion": "周末无位、吵热、10点前到是有效负面体验及建议，保持。",
+      "scopeActionApplied": false,
+      "decision": "confirm"
+    },
+    {
+      "mentionId": 4199,
+      "noteId": 932,
+      "conclusion": "夜景灯光正面评价保持，不据其判断当前夜间营业。",
+      "scopeActionApplied": false,
+      "decision": "confirm"
+    },
+    {
+      "mentionId": 4200,
+      "noteId": 932,
+      "conclusion": "餐食普通且不推荐正餐的负面评价保持。",
+      "scopeActionApplied": false,
+      "decision": "confirm"
+    }
+  ],
+  "textWarnings": [
+    {
+      "noteId": 877,
+      "imageIndex": 0,
+      "inputHash": "316fafa5e7f1ebe3b8ad070cd27be96c2ee7e40e3c1f0a5aef7d8ef172676357",
+      "start": 108,
+      "end": 117,
+      "quote": "可以不去\n鹤鸣茶社",
+      "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+    }
+  ],
+  "opinionPolicy": "四条正面看点、两条原警示及原日期保持；note877跨行意见仅作为该作者观点，不视为官方结论，也不以note936另篇批评替换。",
+  "durationPolicy": "独立茶社分钟数未知；note957的公园/茶社/博物馆合计2小时、note895的公园站90分钟均不复制。",
+  "hoursPolicy": "旧unknown保持，note929社区08:30–18:00尚未有当前运营依据，本批不据夜景评价推定延长营业。",
+  "categoryAndPositionPolicy": "美食/cafe保持；原坐标、地址及adcode未新核，不以完整scope宣称精确定位已通过。",
+  "parentPolicy": "人民公园在68批的自然类别、网页简介、旧图片及原消费只读保持，公园自身scope仍未应用。",
+  "publicEvidenceRevalidated": false,
+  "imageComparison": "deferred_by_user",
+  "newImageViews": 0,
+  "fullReviewPassed": false,
+  "userAcceptance": false
+}

@@ -1,0 +1,108 @@
+{
+  "verifiedAt": "2026-10-08T18:46:01.247Z",
+  "batch": "batch-46",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "济南",
+      "exported": 228,
+      "total": 238,
+      "active": 222,
+      "embedded": 222,
+      "probes": [
+        {
+          "name": "经三路爱心红绿灯",
+          "id": "ce733b67e45f0d657e53ff9bff8cbbce"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "经三路爱心红绿灯",
+          "id": "ce733b67e45f0d657e53ff9bff8cbbce",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "withdrawals": [
+        {
+          "id": "033a692df5218d571ddd2cca8a8c91e3",
+          "name": "甜沫儿",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "8808e16f1472d0df17bed729a2e54e83",
+          "name": "趵突泉",
+          "status": "ambiguous",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "9ffce5f7ef87be0f7ac37aa2a74ed417",
+          "name": "九转大肠",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "a72490fe56f5990e94cccd78ec58824b",
+          "name": "济南锅贴",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "a75779b7778aa9751bcfa97528fc877f",
+          "name": "老济南烧烤",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "f65621879204866b17b645554f9848db",
+          "name": "五龙潭",
+          "status": "ambiguous",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "895dc23b-0277-4f5a-873a-c6035fa66e0d"
+      ]
+    }
+  ],
+  "failures": []
+}

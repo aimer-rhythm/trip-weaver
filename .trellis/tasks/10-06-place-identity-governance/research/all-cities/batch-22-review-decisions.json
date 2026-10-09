@@ -1,0 +1,110 @@
+[
+  {
+    "key": "all-cities-20261006-batch-22-review-376",
+    "city": "济南",
+    "reviewFingerprint": "147b14f6b2374dddc62e4dfbf5532f1bd0fb4f9fba576d31d7597ec905345646",
+    "expectedRevisions": {
+      "6f0051f4dcf714df1a9700bc2fb993d9": 1,
+      "d025994fc1b1449de922fa97abdd96f8": 2
+    },
+    "verdict": "uncertain",
+    "explanation": "已恢复11527原名穆得·老周家牛肉烧饼，之前精确同名查不到是中间点被规范化去掉，不再称无原始来源。2563仅列品牌，无分店地址；2607明确连锁各店就近选择，不能确定同一门店。品牌泛称本批撤销单一分店点，继续待分店证据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          376
+        ],
+        "conclusion": "已恢复11527原名穆得·老周家牛肉烧饼，之前精确同名查不到是中间点被规范化去掉，不再称无原始来源。2563仅列品牌，无分店地址；2607明确连锁各店就近选择，不能确定同一门店。品牌泛称本批撤销单一分店点，继续待分店证据。",
+        "sourcePlaceIds": [
+          "5484",
+          "5483"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-food-variants-01.json",
+        "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+        "mentionIds": [
+          11527,
+          11510
+        ],
+        "conclusion": "已恢复11527原名穆得·老周家牛肉烧饼，之前精确同名查不到是中间点被规范化去掉，不再称无原始来源。2563仅列品牌，无分店地址；2607明确连锁各店就近选择，不能确定同一门店。品牌泛称本批撤销单一分店点，继续待分店证据。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-22-review-377",
+    "city": "济南",
+    "reviewFingerprint": "247e069b0890e2756e49f8d7b1b5750063afae7dbc6ee3cb262737bd532b125a",
+    "expectedRevisions": {
+      "bb53ff904464fb67e2ddf46d7ed0d2b8": 2,
+      "d025994fc1b1449de922fa97abdd96f8": 2
+    },
+    "verdict": "uncertain",
+    "explanation": "2607明确老周家连锁就近选店；2839只说明夜游泉源之眼后吃饭再步行回五龙潭旁酒店，不能唯一确定分店。两条本批分别清除品牌泛称绑定点和远南侧错点，不把地理清理当成身份合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          377
+        ],
+        "conclusion": "2607明确老周家连锁就近选店；2839只说明夜游泉源之眼后吃饭再步行回五龙潭旁酒店，不能唯一确定分店。两条本批分别清除品牌泛称绑定点和远南侧错点，不把地理清理当成身份合并。",
+        "sourcePlaceIds": [
+          "6003",
+          "5483"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-food-variants-01.json",
+        "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+        "mentionIds": [
+          11510,
+          12961
+        ],
+        "conclusion": "2607明确老周家连锁就近选店；2839只说明夜游泉源之眼后吃饭再步行回五龙潭旁酒店，不能唯一确定分店。两条本批分别清除品牌泛称绑定点和远南侧错点，不把地理清理当成身份合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-22-review-378",
+    "city": "济南",
+    "reviewFingerprint": "bd9b9fe6a4ce5eea4bc08f864f1dabdb31eda1ec499d1c01cfe9429c5bbc4890",
+    "expectedRevisions": {
+      "6f0051f4dcf714df1a9700bc2fb993d9": 1,
+      "bb53ff904464fb67e2ddf46d7ed0d2b8": 2
+    },
+    "verdict": "uncertain",
+    "explanation": "已找回11527穆得·老周家原始提及，撤销缺原始生成来源的旧理由。但2563是沿线美食品牌名单，2839仅有老城区夜游与酒店相对位置；两者仍无对应门牌，不能仅凭穆得/穆德字形相近跨连锁分店合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          378
+        ],
+        "conclusion": "已找回11527穆得·老周家原始提及，撤销缺原始生成来源的旧理由。但2563是沿线美食品牌名单，2839仅有老城区夜游与酒店相对位置；两者仍无对应门牌，不能仅凭穆得/穆德字形相近跨连锁分店合并。",
+        "sourcePlaceIds": [
+          "5484",
+          "6003"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/jinan-food-variants-01.json",
+        "sha256": "bbc60d30cf4fa817ec5e446e7b21ea6918d92698023bb473d89d414643bd0637",
+        "mentionIds": [
+          11527,
+          12961
+        ],
+        "conclusion": "已找回11527穆得·老周家原始提及，撤销缺原始生成来源的旧理由。但2563是沿线美食品牌名单，2839仅有老城区夜游与酒店相对位置；两者仍无对应门牌，不能仅凭穆得/穆德字形相近跨连锁分店合并。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,290 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "53fc7a0204959595c1277e9c76915534",
+          "city": "济南",
+          "canonical_name": "秦记火烧",
+          "primary_place_id": 5342,
+          "aliases": [
+            "秦记火烧"
+          ],
+          "legacy_ids": [
+            "53fc7a0204959595c1277e9c76915534"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5342,
+          "entity_id": "53fc7a0204959595c1277e9c76915534"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5342,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 24.8,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5342,
+          "mention_count_30d": 4,
+          "positive_count_30d": 4,
+          "source_count": 3,
+          "top_reasons": [
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            },
+            {
+              "reason": "肉火烧去制锦市，其他去河边",
+              "evidence": "肉火烧去制锦市，其他去河边"
+            },
+            {
+              "reason": "本地人推荐，有特色且味道好",
+              "evidence": "作为济南土著这些都是个人感觉比较有特色而且味道好的"
+            },
+            {
+              "reason": "济南美食推荐，具体菜品未详述",
+              "evidence": "4️⃣秦记火烧"
+            }
+          ],
+          "recommend_score": 14.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7747,
+          "canonical_place_id": 5342,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 秦记火烧",
+          "evidence_summary": "本地人推荐，有特色且味道好"
+        },
+        {
+          "id": 7748,
+          "canonical_place_id": 5342,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 秦记火烧",
+          "evidence_summary": "肉火烧去制锦市，其他去河边"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5342,
+          "city": "济南",
+          "name_keys": [
+            "秦记火烧"
+          ],
+          "entity_ids": [
+            "53fc7a0204959595c1277e9c76915534"
+          ],
+          "source_hash": "c472408920f314eef5708b85ae208c7071b4af1e1f56850499c471676fc34fb8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-52-source-5342-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/qinji-source-review-01.json",
+              "kind": "reviewed_full_text_branch_scope",
+              "conclusion": "明确铜元局前街两同篇提及保留；多位置推荐和无分店裸名留待审。保留原名/ID、原坐标与地址但不宣称新定位通过；不创建分店或别名。",
+              "mentionIds": [
+                11364,
+                11664,
+                12605,
+                12892
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "53fc7a0204959595c1277e9c76915534"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11364,
+          "scope_place_id": 5342,
+          "entity_id": "53fc7a0204959595c1277e9c76915534",
+          "input_hash": "9a1accef11c992568fc90b6d0c2f50b1e627aef328b392003198a7c2f5ba25bf",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-52-source-5342-scope"
+        },
+        {
+          "mention_id": 11664,
+          "scope_place_id": 5342,
+          "entity_id": null,
+          "input_hash": "8398d229f3c24901e48b8ee2500c1576593eda927c62ec7b1bfd52bed0209309",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-52-source-5342-scope"
+        },
+        {
+          "mention_id": 12605,
+          "scope_place_id": 5342,
+          "entity_id": "53fc7a0204959595c1277e9c76915534",
+          "input_hash": "abfa234e3b452810dbc65218b6551bde66cd7704063c8c84a2ead7ec40da0b16",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-52-source-5342-scope"
+        },
+        {
+          "mention_id": 12892,
+          "scope_place_id": 5342,
+          "entity_id": null,
+          "input_hash": "86bebb9e8c05d91ac6386dc327d52853321d566542149a98c16d23320c21fd9b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-52-source-5342-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "c472408920f314eef5708b85ae208c7071b4af1e1f56850499c471676fc34fb8",
+        "mentions": [
+          {
+            "mentionId": 11364,
+            "inputHash": "9a1accef11c992568fc90b6d0c2f50b1e627aef328b392003198a7c2f5ba25bf"
+          },
+          {
+            "mentionId": 11664,
+            "inputHash": "8398d229f3c24901e48b8ee2500c1576593eda927c62ec7b1bfd52bed0209309"
+          },
+          {
+            "mentionId": 12605,
+            "inputHash": "abfa234e3b452810dbc65218b6551bde66cd7704063c8c84a2ead7ec40da0b16"
+          },
+          {
+            "mentionId": 12892,
+            "inputHash": "86bebb9e8c05d91ac6386dc327d52853321d566542149a98c16d23320c21fd9b"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 6681,
+          "fingerprint": "ecce0834bfbefc5cf689b095f308892162f9cf14b800f8f5ac719a62b7b6533e",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8398d229f3c24901e48b8ee2500c1576593eda927c62ec7b1bfd52bed0209309",
+            "mentionId": 11664,
+            "scopePlaceIds": [
+              5342
+            ]
+          }
+        },
+        {
+          "id": 6729,
+          "fingerprint": "8e97513cd162bfb7197d29bdb25564e5c17bd6470dc25519b0d9d931c23089f1",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "86bebb9e8c05d91ac6386dc327d52853321d566542149a98c16d23320c21fd9b",
+            "mentionId": 12892,
+            "scopePlaceIds": [
+              5342
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

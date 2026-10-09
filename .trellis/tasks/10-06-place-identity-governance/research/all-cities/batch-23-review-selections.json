@@ -1,0 +1,43 @@
+[
+  {
+    "review": 425,
+    "verdict": "part_of",
+    "childEntityId": "4a4505a1baed0f14c8a4fe6386bc5798",
+    "explanation": "原12551明确山顶潜龙寺红墙，是寺院本体；12455明确潜龙寺景区。现已抓取陕旅集团官网（来源少华山）与国际在线（来源渭南市委宣传部）正文，均列其为少华山五大景区之一。公开词条进一步明确景区因寺得名、范围约360公顷、内部以寺为中心含多处景点和游览轴，寺院不是整个分区的同义词。登记潜龙寺part_of潜龙寺景区，保留各自ID；两条西安高新错点同步清除。范围与行政区证据不用于生成精确坐标、开放时间或门票事实。",
+    "sources": [
+      "xian-qianlong-tourgroup-fetch.json",
+      "xian-qianlong-cri-fetch.json",
+      "xian-qianlong-baike-fetch.json"
+    ],
+    "contexts": [
+      {
+        "file": "xian-batch13-context.json",
+        "mentionIds": [
+          12551,
+          12455,
+          12026
+        ]
+      }
+    ]
+  },
+  {
+    "review": 383,
+    "verdict": "uncertain",
+    "explanation": "12099的开元商城观景台覆盖5至7楼，12224专指6楼。2721完整图文分列5楼两个平台、通往6至7楼的步梯及7楼平台，仍不能把泛称与六楼具体机位合并。本批已成对清空六楼旧108.912271远端点并保持ID，坐标纠错不等于实体边界已确认；继续待原图对应。",
+    "contexts": [
+      {
+        "file": "xian-batch13-context.json",
+        "mentionIds": [
+          12099,
+          12224
+        ]
+      },
+      {
+        "file": "xian-batch13-variant-context.json",
+        "mentionIds": [
+          12354
+        ]
+      }
+    ]
+  }
+]

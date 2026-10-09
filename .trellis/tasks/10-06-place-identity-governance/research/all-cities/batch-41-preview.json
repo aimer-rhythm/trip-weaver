@@ -1,0 +1,316 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "2c8372d3a47dbcb68abd998af495436d",
+          "city": "济南",
+          "canonical_name": "尚泉尚水茶馆",
+          "primary_place_id": 5945,
+          "aliases": [
+            "尚泉尚水茶馆"
+          ],
+          "legacy_ids": [
+            "2c8372d3a47dbcb68abd998af495436d"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+              "noteId": 2795,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5945,
+                  "lat": 36.979124598255346,
+                  "lng": 117.19443405552043,
+                  "address": "",
+                  "sourceHash": "18c07ab8ad381f2f524864e0ea00153e5809c07d543dff551ccf964b9e5e1b89"
+                }
+              ],
+              "conclusion": "唯一原文介绍大明湖超然楼拍摄机位，实际对象为茶馆前平台，旧点落济阳约39公里外。先清空错误位置，随后逐提及纠正茶馆与平台身份；本批不把茶馆认定为已核实餐饮主体。",
+              "mentionIds": [
+                12653
+              ],
+              "sourcePlaceIds": [
+                5945
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5945,
+          "entity_id": "2c8372d3a47dbcb68abd998af495436d"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5945,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "美食",
+            "夜景"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5945,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "前面平台可拍摄湖面与楼阁全景",
+              "evidence": "其前面平台即可拍摄湖面与楼阁全景"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8673,
+          "canonical_place_id": 5945,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 尚泉尚水茶馆",
+          "evidence_summary": "前面平台可拍摄湖面与楼阁全景"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5945,
+          "city": "济南",
+          "name_keys": [
+            "尚泉尚水茶馆"
+          ],
+          "entity_ids": [
+            "2c8372d3a47dbcb68abd998af495436d"
+          ],
+          "source_hash": "18c07ab8ad381f2f524864e0ea00153e5809c07d543dff551ccf964b9e5e1b89",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-41-platform-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/platform-source-review-01.json",
+              "kind": "reviewed_text_platform_scope",
+              "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+              "sha256": "2bec436ed2b57d4a916fbc7ada9de21fadc50c01a473909093d319048d9c1689",
+              "conclusion": "茶馆仅为导航参照，推荐主体为茶馆前平台；保留原稳定ID及有效摄影描述，排除茶馆裸名同义，细分类改photo_spot。",
+              "mentionIds": [
+                12653
+              ],
+              "sourcePlaceIds": [
+                5945
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "2c8372d3a47dbcb68abd998af495436d"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12653,
+          "scope_place_id": 5945,
+          "entity_id": "2c8372d3a47dbcb68abd998af495436d",
+          "input_hash": "f2f6ce1bb4c9f0e69a8c33d33cc99226fd92918f3251ce56d0a589e196e0b955",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-41-platform-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "18c07ab8ad381f2f524864e0ea00153e5809c07d543dff551ccf964b9e5e1b89",
+        "mentions": [
+          {
+            "mentionId": 12653,
+            "inputHash": "f2f6ce1bb4c9f0e69a8c33d33cc99226fd92918f3251ce56d0a589e196e0b955"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2c8372d3a47dbcb68abd998af495436d",
+          "city": "济南",
+          "canonical_name": "尚泉尚水茶馆前平台",
+          "primary_place_id": 5945,
+          "aliases": [
+            "尚泉尚水茶馆前平台"
+          ],
+          "legacy_ids": [
+            "2c8372d3a47dbcb68abd998af495436d",
+            "ce45edfa0da27fc37f6ac8eefbaa8954"
+          ],
+          "revision": 4,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "济南大明湖畔尚泉尚水茶馆前平台，精确机位待核",
+            "geoStatus": "unresolvable",
+            "category": "自然",
+            "xhsPlaceType": "photo_spot",
+            "identityExcludedNames": [
+              "尚泉尚水茶馆"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+              "noteId": 2795,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5945,
+                  "lat": 36.979124598255346,
+                  "lng": 117.19443405552043,
+                  "address": "",
+                  "sourceHash": "18c07ab8ad381f2f524864e0ea00153e5809c07d543dff551ccf964b9e5e1b89"
+                }
+              ],
+              "conclusion": "唯一原文介绍大明湖超然楼拍摄机位，实际对象为茶馆前平台，旧点落济阳约39公里外。先清空错误位置，随后逐提及纠正茶馆与平台身份；本批不把茶馆认定为已核实餐饮主体。",
+              "mentionIds": [
+                12653
+              ],
+              "sourcePlaceIds": [
+                5945
+              ]
+            },
+            {
+              "kind": "reviewed_text_platform_scope",
+              "file": "priority-cities/济南/platform-source-review-01.json",
+              "sha256": "2bec436ed2b57d4a916fbc7ada9de21fadc50c01a473909093d319048d9c1689",
+              "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+              "mentionIds": [
+                12653
+              ],
+              "sourcePlaceIds": [
+                5945
+              ],
+              "conclusion": "茶馆仅为导航参照，推荐主体为茶馆前平台；保留原稳定ID及有效摄影描述，排除茶馆裸名同义，细分类改photo_spot。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5945,
+          "entity_id": "2c8372d3a47dbcb68abd998af495436d"
+        }
+      ]
+    }
+  ]
+}

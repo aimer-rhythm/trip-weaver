@@ -1,0 +1,15 @@
+[
+  {"reviews":[320],"primary":"太子湾公园","reason":"9866以太子湾称浴鹄湾后步行到达的公园，9232指园内桥边红枫与湖水，9492也作为南山线同一游览点；两源地址均为南山路1-1号，简称未指另一设施。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9866,9232,9492]}]},
+  {"reviews":[328],"primary":"马岭天观景区","reason":"8391和8569逐项描述同一建德景区佛手桥、金龙桥、云梯、漂流，8569还明确导航马岭天观；带景区后缀不改变主体。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[8391,8569]}]},
+  {"reviews":[332],"primary":"江湖汇观亭","overrides":{"category":"文化"},"reason":"8716的江湖汇关亭为杭州机位清单中观字误写，9623明确吴山能望西湖和城隍阁的江湖汇观亭，两源同一位置；不是根据邻近关系合并吴山其他亭台。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[8716,9623]}]},
+  {"reviews":[336,337],"primary":"桥西历史文化街区","reason":"9370明确过拱宸桥后的拱宸桥西历史文化街区，配图写桥西·拱宸桥；9432和9894的桥西历史街区也均在拱宸桥同一岸、含同一博物馆群。三名指同一街区，不把拱宸桥桥体或馆群单馆并入。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9370,9432,9894]}]},
+  {"reviews":[339],"primary":"大兜路历史文化街区","reason":"9373和9458均在香积寺旁沿运河漫步的大兜路街区，9458明确寺外右拐可达；差异仅省略文化二字，采用现有主体定位且保留旧地址轨迹。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9373,9458]}]},
+  {"reviews":[340],"primary":"五柳巷历史文化街区","reason":"9618与8531均从江城路站开始五柳巷、十五奎巷、晓霞弄的街区步行路线；两称同一沿河老街范围，文化为名称补全。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9618,8531]}]},
+  {"reviews":[345],"primary":"白蛇飞渡桥","overrides":{"lat":null,"lng":null,"address":"","geoStatus":"unresolvable","category":"文化"},"reason":"9847明确万松书院到白蛇飞渡桥再到柳浪闻莺，9108明确万松岭书院旁的空中长廊，指同一桥。两旧坐标经度118.904777明显远离吴山/西湖南线，不能因两源一致而沿用；尚无精确桥位，成对清空待重新核实。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9847,9108,9623]}]},
+  {"reviews":[348],"primary":"永福禅寺","reason":"9667把永福禅寺列在灵隐、韬光寺之间的独立寺院，9308用永福寺指同一灵隐西侧上山寺院；禅字为寺名补全，保留其独立于灵隐寺的身份与政策。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9667,9308]}]},
+  {"reviews":[351],"primary":"天屿山景区","reason":"9539标题与提及用天屿山景区、正文用天屿山并描述登山电梯、千岛湖全景和水滑梯；9349同一千岛湖目的地提及该门票景区，两个源同一登山游览区。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9539,9349]}]},
+  {"reviews":[352],"primary":"羽和铃咖啡店","overrides":{"lat":null,"lng":null,"address":"","geoStatus":"unresolvable","category":"美食"},"reason":"8918明确晓霞弄附近半坡、环翠楼附近的羽和铃咖啡，9892位于同一吴山老城散步支线。两条是同一小院咖啡馆的有无店字写法；旧坐标30.400396,119.834459远离原文老城，清空而不借相邻景点坐标。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[8918,9892]}]},
+  {"reviews":[356],"primary":"西湖音乐喷泉","reason":"9217从西湖边酒馆出门游览音乐喷泉、集贤亭、长桥公园，9332明确西湖湖滨三公园音乐喷泉；此处泛名可由西湖语境消歧，不与钱江新城或杭州大剧院喷泉合并。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9217,9332]}]},
+  {"reviews":[357,360,361],"primary":"杭州灵隐飞来峰景区","reason":"9220、9502、9657和9825均把灵隐飞来峰作为实名预约的整个景区，杭州和景区为地名/后缀差异，9481另列灵隐寺。合并这四种景区名称，不把飞来峰石刻山体或灵隐寺当同义成员。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9220,9502,9657,9825,9476]}]},
+  {"reviews":[358],"primary":"千岛湖喜来登度假酒店","reason":"9347明确千岛湖镇绿城附近临湖的喜来登度假酒店，9406在千岛湖喜来登住宿并提及采悦轩中餐厅和湖景，两源位置近市心中路818号。简称省略度假二字，未跨其他城市喜来登分店。","contexts":[{"file":"hangzhou-batch10-context.json","mentionIds":[9347,9406]}]}
+]

@@ -1,0 +1,1162 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T19:12:52.992259+00:00",
+  "city": "济南",
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "af9116d87efcdf105915ca6303cb6274",
+        "city": "济南",
+        "canonical_name": "珍珠泉",
+        "primary_place_id": 5363,
+        "aliases": [
+          "珍珠泉"
+        ],
+        "legacy_ids": [
+          "af9116d87efcdf105915ca6303cb6274"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5363,
+            "city": "济南",
+            "name": "珍珠泉",
+            "normalized_name": "珍珠泉",
+            "address": "院前街1号",
+            "latitude": 36.66741874379398,
+            "longitude": 117.02477303404355,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 47.7
+          },
+          "sourceHash": "74a53934fa833d1fd0125efe84cc13d2af1456f46ac0178175ecf060a0a62aba",
+          "derivedBefore": {
+            "typical_visit_minutes": 60,
+            "typical_visit_source": "xhs_median",
+            "theme_tags": [
+              "历史人文"
+            ],
+            "content_profile": {
+              "intro": "珍珠泉位于济南市历下区珍珠泉大院内，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名。泉池呈长方形，四周设汉白玉栏杆，池中矗立“珍珠泉”石碑，池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗。明代德王建府时将珍珠泉圈入府内，清代改为巡抚署院，现为山东省人大常委会办公地，院内保留清代巡抚衙门旧址。",
+              "method": "web_research_with_model_knowledge",
+              "version": 1,
+              "compiledAt": "2026-10-06T02:58:18.242868+00:00",
+              "highlights": [
+                {
+                  "text": "珍珠泉位于济南市历下区珍珠泉大院内，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名。",
+                  "basis": "web",
+                  "quote": "珍珠泉景区位于山东省济南市历下区[泉城路](https://baike.baidu.com/item/%E6%B3%89%E5%9F%8E%E8%B7%AF/1831468?fromModule=lemma_inlink)中段路北的[珍珠泉大院](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%A4%A7%E9%99%A2/22920314?fromModule=lemma_inlink)内西北侧，占地面积约1240平方米，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名，泉水溢水标高26.28米。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "珍珠泉景区位于山东省济南市历下区[泉城路](https://baike.baidu.com/item/%E6%B3%89%E5%9F%8E%E8%B7%AF/1831468?fromModule=lemma_inlink)中段路北的[珍珠泉大院](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%A4%A7%E9%99%A2/22920314?fromModule=lemma_inlink)内西北侧，占地面积约1240平方米，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名，泉水溢水标高26.28米。",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    },
+                    {
+                      "quote": "珍珠泉景区位于山东省济南市历下区泉城路中段路北的珍珠泉大院内西北侧，占地面积约1240平方米。",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    }
+                  ],
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                },
+                {
+                  "text": "泉池呈长方形，四周设汉白玉栏杆，池中矗立“珍珠泉”石碑，池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗。",
+                  "basis": "web",
+                  "quote": "泉池呈长方形，长42米、宽29米，四周设汉白玉栏杆，池中矗立[高启云](https://baike.baidu.com/item/%E9%AB%98%E5%90%AF%E4%BA%91/5727105?fromModule=lemma_inlink)题写的“珍珠泉”石碑。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "泉池呈长方形，长42米、宽29米，四周设汉白玉栏杆，池中矗立[高启云](https://baike.baidu.com/item/%E9%AB%98%E5%90%AF%E4%BA%91/5727105?fromModule=lemma_inlink)题写的“珍珠泉”石碑。",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    },
+                    {
+                      "quote": "池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗；",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    },
+                    {
+                      "quote": "池中矗立高启云题写的“珍珠泉”石碑 [3] [5]。",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    }
+                  ],
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                },
+                {
+                  "text": "明代德王建府时将珍珠泉圈入府内，清代改为巡抚署院，现为山东省人大常委会办公地，院内保留清代巡抚衙门旧址。",
+                  "basis": "web",
+                  "quote": "明代成化二年（1466年），德王朱见潾建德王府时将珍珠泉圈入府内，清代改为巡抚署院。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "明代成化二年（1466年），德王朱见潾建德王府时将珍珠泉圈入府内，清代改为巡抚署院。",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    },
+                    {
+                      "quote": "景区现存清代巡抚衙门旧址，现为山东省人大常委会办公地，[珍珠泉宾馆](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%AE%BE%E9%A6%86/2225540?fromModule=lemma_inlink)曾为省级接待单位 [2] [5]。",
+                      "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                      "observedAt": "2026-10-06T02:58:07Z"
+                    }
+                  ],
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                }
+              ],
+              "sourcePolicy": "web_primary_model_background_xhs_separate",
+              "machineReview": {
+                "model": "deepseek-v4-flash",
+                "status": "passed",
+                "version": 1
+              },
+              "profileVersion": 1,
+              "qualityVersion": 2
+            }
+          },
+          "summary": {
+            "canonical_place_id": 5363,
+            "mention_count_30d": 9,
+            "recommend_score": 26.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "珍珠泉"
+      ],
+      "mentionIds": [
+        11338,
+        11400,
+        11414,
+        12566,
+        12592,
+        12669,
+        12680,
+        12696,
+        12940
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "bdf4a854f642c85b65ed4d0760de0bd6",
+        "city": "济南",
+        "canonical_name": "珍珠泉大院",
+        "primary_place_id": 5947,
+        "aliases": [
+          "珍珠泉大院"
+        ],
+        "legacy_ids": [
+          "bdf4a854f642c85b65ed4d0760de0bd6"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5947,
+            "city": "济南",
+            "name": "珍珠泉大院",
+            "normalized_name": "珍珠泉大院",
+            "address": "",
+            "latitude": 36.666033499490624,
+            "longitude": 117.02673096243349,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.5
+          },
+          "sourceHash": "4058a4fcedfe9fc274bd461a162e4f6b3282af1c377c14a5608496ca2e8d0f0a",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "美食"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5947,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "珍珠泉大院"
+      ],
+      "mentionIds": [
+        12582
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source": {
+        "id": 5363,
+        "city": "济南",
+        "name": "珍珠泉",
+        "normalized_name": "珍珠泉",
+        "address": "院前街1号",
+        "latitude": 36.66741874379398,
+        "longitude": 117.02477303404355,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 47.7
+      },
+      "sourceHash": "74a53934fa833d1fd0125efe84cc13d2af1456f46ac0178175ecf060a0a62aba",
+      "derivedBefore": {
+        "typical_visit_minutes": 60,
+        "typical_visit_source": "xhs_median",
+        "theme_tags": [
+          "历史人文"
+        ],
+        "content_profile": {
+          "intro": "珍珠泉位于济南市历下区珍珠泉大院内，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名。泉池呈长方形，四周设汉白玉栏杆，池中矗立“珍珠泉”石碑，池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗。明代德王建府时将珍珠泉圈入府内，清代改为巡抚署院，现为山东省人大常委会办公地，院内保留清代巡抚衙门旧址。",
+          "method": "web_research_with_model_knowledge",
+          "version": 1,
+          "compiledAt": "2026-10-06T02:58:18.242868+00:00",
+          "highlights": [
+            {
+              "text": "珍珠泉位于济南市历下区珍珠泉大院内，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名。",
+              "basis": "web",
+              "quote": "珍珠泉景区位于山东省济南市历下区[泉城路](https://baike.baidu.com/item/%E6%B3%89%E5%9F%8E%E8%B7%AF/1831468?fromModule=lemma_inlink)中段路北的[珍珠泉大院](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%A4%A7%E9%99%A2/22920314?fromModule=lemma_inlink)内西北侧，占地面积约1240平方米，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名，泉水溢水标高26.28米。",
+              "strength": "weak",
+              "citations": [
+                {
+                  "quote": "珍珠泉景区位于山东省济南市历下区[泉城路](https://baike.baidu.com/item/%E6%B3%89%E5%9F%8E%E8%B7%AF/1831468?fromModule=lemma_inlink)中段路北的[珍珠泉大院](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%A4%A7%E9%99%A2/22920314?fromModule=lemma_inlink)内西北侧，占地面积约1240平方米，属济南七十二名泉之一，因泉水自池底涌出状如珠玑得名，泉水溢水标高26.28米。",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                },
+                {
+                  "quote": "珍珠泉景区位于山东省济南市历下区泉城路中段路北的珍珠泉大院内西北侧，占地面积约1240平方米。",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                }
+              ],
+              "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+              "observedAt": "2026-10-06T02:58:07Z"
+            },
+            {
+              "text": "泉池呈长方形，四周设汉白玉栏杆，池中矗立“珍珠泉”石碑，池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗。",
+              "basis": "web",
+              "quote": "泉池呈长方形，长42米、宽29米，四周设汉白玉栏杆，池中矗立[高启云](https://baike.baidu.com/item/%E9%AB%98%E5%90%AF%E4%BA%91/5727105?fromModule=lemma_inlink)题写的“珍珠泉”石碑。",
+              "strength": "weak",
+              "citations": [
+                {
+                  "quote": "泉池呈长方形，长42米、宽29米，四周设汉白玉栏杆，池中矗立[高启云](https://baike.baidu.com/item/%E9%AB%98%E5%90%AF%E4%BA%91/5727105?fromModule=lemma_inlink)题写的“珍珠泉”石碑。",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                },
+                {
+                  "quote": "池北岸立有清乾隆帝御碑，镌刻其题咏珍珠泉诗；",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                },
+                {
+                  "quote": "池中矗立高启云题写的“珍珠泉”石碑 [3] [5]。",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                }
+              ],
+              "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+              "observedAt": "2026-10-06T02:58:07Z"
+            },
+            {
+              "text": "明代德王建府时将珍珠泉圈入府内，清代改为巡抚署院，现为山东省人大常委会办公地，院内保留清代巡抚衙门旧址。",
+              "basis": "web",
+              "quote": "明代成化二年（1466年），德王朱见潾建德王府时将珍珠泉圈入府内，清代改为巡抚署院。",
+              "strength": "weak",
+              "citations": [
+                {
+                  "quote": "明代成化二年（1466年），德王朱见潾建德王府时将珍珠泉圈入府内，清代改为巡抚署院。",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                },
+                {
+                  "quote": "景区现存清代巡抚衙门旧址，现为山东省人大常委会办公地，[珍珠泉宾馆](https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E5%AE%BE%E9%A6%86/2225540?fromModule=lemma_inlink)曾为省级接待单位 [2] [5]。",
+                  "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+                  "observedAt": "2026-10-06T02:58:07Z"
+                }
+              ],
+              "sourceUrl": "https://baike.baidu.com/item/%E7%8F%8D%E7%8F%A0%E6%B3%89%E6%99%AF%E5%8C%BA/4216467",
+              "observedAt": "2026-10-06T02:58:07Z"
+            }
+          ],
+          "sourcePolicy": "web_primary_model_background_xhs_separate",
+          "machineReview": {
+            "model": "deepseek-v4-flash",
+            "status": "passed",
+            "version": 1
+          },
+          "profileVersion": 1,
+          "qualityVersion": 2
+        }
+      },
+      "summary": {
+        "canonical_place_id": 5363,
+        "mention_count_30d": 9,
+        "recommend_score": 26.5
+      }
+    },
+    {
+      "source": {
+        "id": 5947,
+        "city": "济南",
+        "name": "珍珠泉大院",
+        "normalized_name": "珍珠泉大院",
+        "address": "",
+        "latitude": 36.666033499490624,
+        "longitude": 117.02673096243349,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 14.5
+      },
+      "sourceHash": "4058a4fcedfe9fc274bd461a162e4f6b3282af1c377c14a5608496ca2e8d0f0a",
+      "derivedBefore": {
+        "typical_visit_minutes": null,
+        "typical_visit_source": null,
+        "theme_tags": [
+          "美食"
+        ],
+        "content_profile": null
+      },
+      "summary": {
+        "canonical_place_id": 5947,
+        "mention_count_30d": 1,
+        "recommend_score": 7.5
+      }
+    }
+  ],
+  "mentions": [
+    {
+      "id": 11338,
+      "raw_note_id": 2545,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费，游玩1小时",
+      "evidence_text": "游玩1h｜免费",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60
+      },
+      "note_city": "济南",
+      "note_title": "济南citywalk🍃1-2日经典游玩路线live",
+      "note_desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#",
+      "note_images": [
+        {
+          "summary": "济南趵突泉景区风景拼贴图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "趵突泉"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search",
+      "observed_at": "2026-10-04T11:17:32.826069+00:00",
+      "inputHash": "b3efeac122b102d00ab44730fdeef61f3a2712205a0a14f78e66417ba7715d5a"
+    },
+    {
+      "id": 11400,
+      "raw_note_id": 2569,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费景点，位于推荐路线上",
+      "evidence_text": "珍珠泉——曲水亭街",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_title": "说句实在的，恒隆里外有点东西",
+      "note_desc": "分享一个五一来济南玩超级舒适的隐藏游玩攻略！\n那就是把恒隆当做泉城citywalk中转站！！\n\t\n✅恒隆距离济南必玩景区都超近！[派对R]\n趵突泉、泉城广场、大明湖、曲水亭街等溜达着就能到！\n\t\n✅恒隆里面是品牌首店、餐饮、小甜市集等。\n饿了来恒隆吃个饭，比路边摊吃的安心！\n小甜市集有甜品、甜水、香气、文创等，也超值得逛！这里还有被称为济南第一的厕所，总得来见识一下吧[暗中观察R]\n\t\n✅游玩路线可以参考这个，轻松舒适不走冤枉路！\n\t\n五龙潭——趵突泉——泉城广场——恒隆广场——珍珠泉——曲水亭街——大明湖——超然楼——护城河——黑虎泉——恒隆广场——泉城广场喷泉\n\t\n✅景点攻略：\n1、以上只有趵突泉需要门票，其他景点都免费\n2、泉城广场可以去打卡泉标，现在还有超好看的月季，不要错过呀！\n3、超然楼亮灯时间：19：10—22：00\n4、黑虎泉接的免费泉水，肠胃虚弱的朋友不要直接喝哦\n5、泉城广场晚上喷泉时间为20:00—20:30\n6、恒隆广场五一专属活动：小甜市集！甜品、甜水、香气、文创等，超值得逛！\n\t\n#济南旅游攻略[话题]##济南五一攻略[话题]# #济南游玩攻略[话题]# #济南小众旅游[话题]# #趵突泉景区[话题]#  #恒隆广场[话题]# #济南恒隆广场[话题]# #市集[话题]#",
+      "note_images": [
+        {
+          "summary": "济南趵突泉-大明湖旅游路线示意图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "大明湖站\n铁公祠\n明湖北路\n大明湖\n小东湖\n老东门\n超然楼广场\n老舍纪念馆\n大明湖景区\n龙泉池\n趵突泉北路\n曲水亭街\n百花洲历史文化街区\n珍珠泉\n五龙潭公园\n济南恒隆广场\n泉城路商业街\n趵突泉景区\n天下第一泉景区\n泉城广场\n黑虎泉\n济南市环城公园-黑虎泉\n泺源大街\n山东大学齐鲁医院\n朝山街\n佛山苑小区"
+        },
+        {
+          "summary": "济南九大景点风景拼图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "五龙潭\n趵突泉\n珍珠泉\n曲水亭街\n大明湖\n超然楼\n黑虎泉\n解放阁\n泉城广场"
+        },
+        {
+          "summary": "商场餐饮店与品牌门店拼图",
+          "has_text": true,
+          "key_info": {
+            "tips": "全聚德为非物质文化遗产",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 2,
+          "text_content": "南城十里 潮汕鲜牛\n一头牛仅精选36%\nOTF 加州餐厅 PIZZA & BRUNCH\nJordan\n老板恋上鱼\n板烧鱼\n阅府\n非物质文化遗产-全聚\nMICHELIN GUIDE"
+        },
+        {
+          "summary": "灵感小市市集活动，展示手工艺品、饰品、甜品等摊位",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": "乐享Handmade\n生津止渴 抗氧化\n健脾 清爽解腻\n灵感小市\n小甜一下过春天\n脑子进水啦"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/69f339c4000000001e00c640?xsec_token=ABPvdzyX8DSY-ngnoVq-rgPAFTJ6nxsAPgvnJwcxK5SxE=&xsec_source=pc_search",
+      "observed_at": "2026-10-04T11:18:21.148869+00:00",
+      "inputHash": "2429b0bef4e53aec0246f4b8ed5648c8474c29c23f148a1c283df11a4fbc0286"
+    },
+    {
+      "id": 11414,
+      "raw_note_id": 2550,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南名泉，列入推荐路线第二天。",
+      "evidence_text": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "route_order": 4,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_title": "愿每一个去济南的人都能刷到这篇！！！",
+      "note_desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "note_images": [
+        {
+          "summary": "济南三大景点游览攻略与避坑提示",
+          "has_text": true,
+          "key_info": {
+            "tips": "周一闭馆；趵突泉建议早上7点入园；山东博物馆可与美术馆串联游览",
+            "hours": "千佛山：早上6点前、晚上18:30后免费入园",
+            "price": "趵突泉40元、千佛山30元（早上6点前/晚上18:30后免费）",
+            "reservation": "山东博物馆需提前7天预约"
+          },
+          "image_index": 0,
+          "text_content": "去济南一定要避雷：\n1 趵突泉 一定要去 98分\n门票40r，建议早上7点入园，人少游玩体验好也方便拍照，除了最出名的泉眼，观澜庭、濯缨池、李清照纪念堂、万竹园这些也很值得一逛。\n2 千佛山 一定要去 90分\n门票30r，早上6点前，晚上18.30之后免费入园，登顶后可以俯瞰全城，也适合傍晚看日落。\n3 山东博物馆 一定要去 95分\n周一闭馆，提前7天预约，镇馆之宝红陶兽形壶、东平汉墓壁画等等很震撼，美术馆挨着很近，时间充裕的话可以串联一起逛逛。"
+        },
+        {
+          "summary": "济南三个必去景点推荐及避坑指南",
+          "has_text": true,
+          "key_info": {
+            "tips": "大明湖不要做小船；洪家楼天主教堂拍照建议下午两三点，光影效果最佳",
+            "hours": "洪家楼天主教堂：周一闭馆，周日10:00-16:00不对外开放；建议下午14:00-15:00前往",
+            "price": "超然楼门票40r",
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "4 大明湖 一定要去 92分\n大明湖畔夏雨荷的出处，泉水汇集成湖很漂亮，可以坐船游玩很惬意，不要做小船，晚上可以在这里看超然楼夜景，超然楼门票40r，个人感觉湖边拍夜景即可，不用特意进去。\n\n5 曲水亭街&百花洲 一定要去 88分\n很适合citywalk，青石板、石桥、流水很有氛围感，也很适合穿汉服拍照。\n\n6 洪家楼天主教堂 一定要去 92分\n哥特式建筑超级漂亮，建议下午两三点过来，照在彩窗上光影很绝，周一闭馆，周日10-16点不对外开放。"
+        },
+        {
+          "summary": "济南景区游玩贴士与建议",
+          "has_text": true,
+          "key_info": {
+            "tips": "济南初秋较热适合上午游户外；黑虎泉直饮点接水；超然楼亮灯提前线上确认，建议18:30前占位；省博美术馆周一闭馆；老城区石板路不平防滑；大明湖游湖提前问清票价和时长",
+            "hours": null,
+            "price": null,
+            "reservation": "省博和美术馆都需要提前且分开预约"
+          },
+          "image_index": 4,
+          "text_content": "游玩贴士\n1 济南初秋依然比较热，可以把户外景点安排在上午，下午安排室内景点。\n2 黑虎泉去直饮点接水，不要接护城河、泉池里的水，容易拉肚子。\n3 超然楼亮灯时间需要提前线上看，可能会有变动，建议18.30之前占位。\n4 省博和美术馆都需要提前且分开预约，周一闭馆千万别跑空。\n5 老城区大部分是石板路，不平易打滑，务必穿舒适的鞋。\n6 大明湖游湖一定要提前问清票价和时长，是单程还是环湖，避免纠纷。"
+        },
+        {
+          "summary": "济南第二天旅游路线攻略图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "济南Day2路线\n大明湖\n步行3分钟\n枕湖私宴(大明湖店)\n入选打卡榜\n曲水亭街\n步行3分钟\n曲水亭街民俗文化市场\n百花洲\n步行18分钟\n珍珠泉\n芙蓉街\n步行8分钟\n山东省人大常委会\n四喜居老济南把子\n山东政协大酒店\n万海商街\n县西巷\n大明湖路\n省府西街\n省府东街\n芙蓉街\n舜井街\n院上墙根街\n翠柳屏岛\n辛稼轩纪念祠\n历下亭\n秋柳诗社\n老舍纪念馆\n玉涵桥\n吕祖庙\n雪泉\n大喜汉服(大明湖店)\nTHANK Bar\n漫心府\n光明体验馆\n山东手造展示体验中心\n西更道历史"
+        },
+        {
+          "summary": "超然楼夜景亮灯震撼美",
+          "has_text": true,
+          "key_info": {
+            "tips": "蓝调时刻亮灯瞬间很震撼，全场'哇塞'",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 10,
+          "text_content": "超燃楼\n蓝调时刻美疯了，亮灯瞬间\n全场\"哇塞\"不断\n超然楼\n超然楼"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search",
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "a0bc4c09b3f7bdf01ff2b81c51e7f9ca3d33ac6e8787f0956cdfebcbe9fa89cc"
+    },
+    {
+      "id": 12566,
+      "raw_note_id": 2545,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费，游玩1小时",
+      "evidence_text": "免费",
+      "route_order": 6,
+      "confidence": 0.95,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60
+      },
+      "note_city": "济南",
+      "note_title": "济南citywalk🍃1-2日经典游玩路线live",
+      "note_desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#",
+      "note_images": [
+        {
+          "summary": "济南趵突泉景区风景拼贴图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "趵突泉"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search",
+      "observed_at": "2026-10-04T11:17:32.826069+00:00",
+      "inputHash": "699de5a7d2560b93a4c476151bb27a706523816c63e59215e0ffd7f84918d8d9"
+    },
+    {
+      "id": 12592,
+      "raw_note_id": 2823,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "人少，公园造景美，树木搭配有层次有审美",
+      "evidence_text": "人少！而且公园造景非常美",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "水面下可以看到很多一小串串的水泡泡",
+              "quote": "可以看到水面下很多一小串串的水泡泡"
+            },
+            {
+              "text": "公园造景非常美，树木搭配有层次有审美",
+              "quote": "公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "济南最不容错过的 不是趵突泉",
+      "note_desc": "是济南环城公园(黑虎泉所在）和珍珠泉\n路线放在最后一图，是这次去济南之行中最快乐的两个小时\n导航到济南市环城公园-黑虎泉(南1门)，就进入到护城河旁的环城公园了，顺着河走，不走回头路，可以看到包括黑虎泉在内的大大小小的泉眼，虽然现在不是丰水期，但是看不知名小泉咕噜咕噜冒泡泡真的太治愈了。接泉水的地方也在这个公园里。好喜欢这种不期而遇 没有计划 但是很合心意的地方。而且现在正是蔷薇花季，很多茂盛的蔷薇花，济南的枫叶也好漂亮，怎么春天就这么漂亮了！而且现在的柳树还是青绿青绿的，好嫩好嫩！\n顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。\n珍珠泉只能从大门原路出来，出门右拐就到西更道街，再向北走就是曲水亭街，走到尽头就是大明湖。\n在我心里，以上路线是济南city walk最棒的路线没有之一。太舒服，太好玩了，适合喜欢水 喜欢自然的人。感受到了幸福的能量。\n#黑虎泉[话题]# #珍珠泉[话题]#",
+      "note_images": [
+        {
+          "summary": "济南黑虎泉景点导航地图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 9,
+          "text_content": "济南市环城公园-黑虎泉(南1门)\n珍珠泉\n山东省政协\n百花洲历史文化街区\n济南市环城公园\n即停即走 仅行人通行 11评价\n直线1285.7公里\n山东省济南市历下区济南市环城公园-黑虎泉内(东侧)"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/69ec9314000000003502b369?xsec_token=ABdrP058gOUu1kVWQHrzbM58lCUk6gaQO7j28S1GiWUZM=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:04:06.452641+00:00",
+      "inputHash": "b8031d24d7467f7d74556faa5cf19f8d5a1d060192d4c0ee73620d52ea835021"
+    },
+    {
+      "id": 12669,
+      "raw_note_id": 2786,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "温婉低调，泉水冒细碎气泡如珍珠",
+      "evidence_text": "珍珠泉会显得温婉低调很多",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "泉水不断冒出细碎小气泡，像散落的珍珠",
+              "quote": "泉水不断冒出细碎小气泡，像散落的珍珠"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "1.5天逛遍济南✨济你太美！",
+      "note_desc": "真心建议大家别节假日来济南挤人了！！\n错峰逛济南真的幸福感翻倍😭\n花了1.5天打卡济南经典老城路线\n景点超级密集、全程不绕路、走路就能逛\n第一天直接刷完天下第一泉整片景区\n沉浸式感受济南“家家泉水，户户垂杨”的温柔\n\t\n#五龙潭[话题]# P2—P3\n强烈推荐早上来！！\n完全是城市里的宝藏小众园林公园\n清晨的空气清新又湿润，没有喧闹的人流，安静又治愈\n潭水超级清澈，绿树环绕，慢悠悠散步太舒服\n相比于热门景点，这里真的适合静心放松\n\t\n#趵突泉[话题]# P4—P6\n济南的招牌景点！\n整趟逛下来我最偏爱濯缨池\n相比于三股水的热闹，濯缨池自带静谧氛围\n池中的鱼肥肥的超可爱\n\t\n#黑虎泉[话题]# P7—P10\n全程最惊艳我的地方！！[赞R]\n真的美到失语\n尤其是玛瑙泉！！[赞R]\n泉水是清透的碧绿色，像打磨好的翡翠玛瑙\n阳光照下来泉水通透发亮，灵动又治愈\n还可以接纯天然泉水喝，清甜爽口\n这才是济南泉水的灵魂所在！\n\t\n#珍珠泉[话题]# P11—P12\n相比趵突泉、黑虎泉的惊艳\n珍珠泉会显得温婉低调很多\n泉水不断冒出细碎小气泡，像散落的珍珠\n\t\n#曲水亭街[话题]# P13—P14\n一边是青砖灰瓦老民居，一边是潺潺流水\n随手拍都是温柔治愈的老城画面\n但是不建议在街上的公厕上厕所[偷笑R]\n\t\n#大明湖[话题]# P15—P18\n终于亲眼见到课本里的大明湖！\n湖水辽阔，杨柳依依，湖风超舒服\n在超然楼前拍下了特别满意的照片[哇R]\n\t\n想轻松逛济南的姐妹！直接抄这条路线！\n不赶行程、不累人、沉浸式感受泉城温柔\n#济南旅游[话题]# #济南旅行[话题]# #济南攻略[话题]#",
+      "note_images": [
+        {
+          "summary": "济南景区步行路线攻略图，涵盖大明湖、趵突泉等景点",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "巴黎花园\n顺河高架路\n大明湖\n大明湖景区-超然楼\n855m 约9分钟\n大明湖景区\n1.4km 约16分钟\n曲水亭街\n366m 约4分钟\n珍珠泉\n895m 约10分钟\n护城河\n五龙潭公园\n183m 约2分钟\n趵突泉景区\n556m 约6分钟\n济南环城公园-黑虎泉\n1km 约11分钟"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6a084bde000000003503a888?xsec_token=ABVy_LdXk7xRIR3JahDg9hM09wvdM9Tp6ilwXaxSuKejo=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:02:22.978540+00:00",
+      "inputHash": "824e7dbf4cdf60096af92aa7b6fd17a3dd385cec2116647a407c483ca5a4d340"
+    },
+    {
+      "id": 12680,
+      "raw_note_id": 2550,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南名泉，列入推荐路线第二日行程。",
+      "evidence_text": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "route_order": 9,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_title": "愿每一个去济南的人都能刷到这篇！！！",
+      "note_desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "note_images": [
+        {
+          "summary": "济南三大景点游览攻略与避坑提示",
+          "has_text": true,
+          "key_info": {
+            "tips": "周一闭馆；趵突泉建议早上7点入园；山东博物馆可与美术馆串联游览",
+            "hours": "千佛山：早上6点前、晚上18:30后免费入园",
+            "price": "趵突泉40元、千佛山30元（早上6点前/晚上18:30后免费）",
+            "reservation": "山东博物馆需提前7天预约"
+          },
+          "image_index": 0,
+          "text_content": "去济南一定要避雷：\n1 趵突泉 一定要去 98分\n门票40r，建议早上7点入园，人少游玩体验好也方便拍照，除了最出名的泉眼，观澜庭、濯缨池、李清照纪念堂、万竹园这些也很值得一逛。\n2 千佛山 一定要去 90分\n门票30r，早上6点前，晚上18.30之后免费入园，登顶后可以俯瞰全城，也适合傍晚看日落。\n3 山东博物馆 一定要去 95分\n周一闭馆，提前7天预约，镇馆之宝红陶兽形壶、东平汉墓壁画等等很震撼，美术馆挨着很近，时间充裕的话可以串联一起逛逛。"
+        },
+        {
+          "summary": "济南三个必去景点推荐及避坑指南",
+          "has_text": true,
+          "key_info": {
+            "tips": "大明湖不要做小船；洪家楼天主教堂拍照建议下午两三点，光影效果最佳",
+            "hours": "洪家楼天主教堂：周一闭馆，周日10:00-16:00不对外开放；建议下午14:00-15:00前往",
+            "price": "超然楼门票40r",
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "4 大明湖 一定要去 92分\n大明湖畔夏雨荷的出处，泉水汇集成湖很漂亮，可以坐船游玩很惬意，不要做小船，晚上可以在这里看超然楼夜景，超然楼门票40r，个人感觉湖边拍夜景即可，不用特意进去。\n\n5 曲水亭街&百花洲 一定要去 88分\n很适合citywalk，青石板、石桥、流水很有氛围感，也很适合穿汉服拍照。\n\n6 洪家楼天主教堂 一定要去 92分\n哥特式建筑超级漂亮，建议下午两三点过来，照在彩窗上光影很绝，周一闭馆，周日10-16点不对外开放。"
+        },
+        {
+          "summary": "济南景区游玩贴士与建议",
+          "has_text": true,
+          "key_info": {
+            "tips": "济南初秋较热适合上午游户外；黑虎泉直饮点接水；超然楼亮灯提前线上确认，建议18:30前占位；省博美术馆周一闭馆；老城区石板路不平防滑；大明湖游湖提前问清票价和时长",
+            "hours": null,
+            "price": null,
+            "reservation": "省博和美术馆都需要提前且分开预约"
+          },
+          "image_index": 4,
+          "text_content": "游玩贴士\n1 济南初秋依然比较热，可以把户外景点安排在上午，下午安排室内景点。\n2 黑虎泉去直饮点接水，不要接护城河、泉池里的水，容易拉肚子。\n3 超然楼亮灯时间需要提前线上看，可能会有变动，建议18.30之前占位。\n4 省博和美术馆都需要提前且分开预约，周一闭馆千万别跑空。\n5 老城区大部分是石板路，不平易打滑，务必穿舒适的鞋。\n6 大明湖游湖一定要提前问清票价和时长，是单程还是环湖，避免纠纷。"
+        },
+        {
+          "summary": "济南第二天旅游路线攻略图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "济南Day2路线\n大明湖\n步行3分钟\n枕湖私宴(大明湖店)\n入选打卡榜\n曲水亭街\n步行3分钟\n曲水亭街民俗文化市场\n百花洲\n步行18分钟\n珍珠泉\n芙蓉街\n步行8分钟\n山东省人大常委会\n四喜居老济南把子\n山东政协大酒店\n万海商街\n县西巷\n大明湖路\n省府西街\n省府东街\n芙蓉街\n舜井街\n院上墙根街\n翠柳屏岛\n辛稼轩纪念祠\n历下亭\n秋柳诗社\n老舍纪念馆\n玉涵桥\n吕祖庙\n雪泉\n大喜汉服(大明湖店)\nTHANK Bar\n漫心府\n光明体验馆\n山东手造展示体验中心\n西更道历史"
+        },
+        {
+          "summary": "超然楼夜景亮灯震撼美",
+          "has_text": true,
+          "key_info": {
+            "tips": "蓝调时刻亮灯瞬间很震撼，全场'哇塞'",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 10,
+          "text_content": "超燃楼\n蓝调时刻美疯了，亮灯瞬间\n全场\"哇塞\"不断\n超然楼\n超然楼"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search",
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "da18d48ab8069a50d038d8fcfafa9b4fff150592881c8d85575d593037b19908"
+    },
+    {
+      "id": 12696,
+      "raw_note_id": 2817,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "热门打卡点，路线终点",
+      "evidence_text": "⑩珍珠泉",
+      "route_order": 10,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_title": "1小时打卡济南曲水亭街！附详细路线攻略",
+      "note_desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+      "note_images": [
+        {
+          "summary": "济南曲水亭街1小时打卡攻略路线图",
+          "has_text": true,
+          "key_info": {
+            "tips": "路线：百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "曲水亭街\n1小时打卡攻略\n百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉\n大明湖景区(南门)\n春日宴国风旅拍 200m约3分钟\n百花桥\n刘氏泉 151m约3分钟\n起凤桥八号 141m约3分钟\n芙蓉街-王府池子 149m约3分钟\n山东省人大常委会(南门) 371m约6分钟\n总得来趟老舍笔下的济南\n珍珠泉"
+        },
+        {
+          "summary": "济南胡同拍照打卡点指引，含书法文字墙位置说明",
+          "has_text": true,
+          "key_info": {
+            "tips": "继续往前走出胡同后右拐，月下观棠附近可以看到白底书法济南文字墙",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "汉服妆造\n月下观棠\n濟南\n悠閒品味生活\n最濟南\nJiNAN\nCOURAGE\n继续往前走\n出胡同后右拐【月下观棠】附近能看到\n这几个白底书法济南文字墙"
+        },
+        {
+          "summary": "济南老舍主题网红打卡墙，含爱心拍照装置与城市标语",
+          "has_text": true,
+          "key_info": {
+            "tips": "网红打卡点，位于老舍笔下的济南主题区域，墙面有红色爱心拍照装置及励志标语贴纸",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": "总得来趟 老舍笔下的济南\n返回继续往南走\n打卡【老舍笔下的济南】\n奋斗有我\n济南 榜样 扬帆\n一颗红心向太阳\n路虽远 行则必至\nGO! 行则必至\n爱生活 懂前方\n认真 living\n我们如此热爱这城市\n清澈的爱 只为中国\n最青春 最有活力\n一座彩色的城市"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:03:42.369552+00:00",
+      "inputHash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe"
+    },
+    {
+      "id": 12940,
+      "raw_note_id": 2837,
+      "name": "珍珠泉",
+      "normalized_name": "珍珠泉",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "泉边人少，池底气泡如散落珍珠，阳光照耀下灵动耀眼",
+      "evidence_text": "泉边人很少，池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼",
+              "quote": "池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "live直出🌊济南泉水citywalk一日攻略",
+      "note_desc": "早就听闻济南 “泉城” 的大名，真正来到这座城市，才感受到家家泉水，户户垂杨的悠哉惬意🍃\n除了趵突泉，街头巷尾还有很多泉水值得探索，随便一拍就是满溢出屏幕的生命力[哇R]\n到处都是绿绿的、蓝蓝的，整个人都被治愈，能感受到满满的能量！\n.\n🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖\n📸拍摄于2026.5月底，这个时候已经没有柳絮了，天气很舒服～\n.\n1️⃣趵突泉（p3-8,13）\n📌南门进➠无忧泉➠趵突泉➠漱玉泉➠濯缨池➠北门出\n🕐游玩2h 🎫门票40\n▪️早上7点就开门，周末7:40进景区一点也不排队～ 八点之后人开始多起来，这个时候只要不在趵突泉主泉，人流量也还好\n▪️清晨的趵突泉蓝蓝的很透亮，水里的锦鲤水草都清晰可见💧濯缨池也非常美，像是来到了绿野仙踪  景区里还有大大小小很多泉，感觉很值得一来[派对R]\n.\n2️⃣五龙潭公园（p9/10/15）\n📌南门进➠东门出\n🕐游玩0.5h 🆓\n▪️从趵突泉北门出来，过街就是五龙潭，公园不大，很快就能逛完~ 公园里有很多小鸭子，可爱可爱🥰\n.\n3️⃣黑虎泉（p1/2/14）\n📌环城公园南门➠玛瑙泉➠黑虎泉➠琵琶泉➠五莲泉➠一虎泉➠金虎泉\n🕐游玩1.5h 🆓\n▪️超出预期的美！沿着护城河慢慢走，一路上有各式各样咕噜咕噜冒泡的泉🫧\n▪️最最震撼的是玛瑙泉，锦鲤在蓝绿色的泉水中慢慢游，真是课本里的“皆若空游无所依”\n▪️泉边绿树成荫，吹着风听着鸟鸣看着泉水，这样的日子好惬意\n.\n4️⃣珍珠泉（p11/12）\n🕐游玩0.5h 🆓\n▪️从环城公园出来后，走个十来分钟就到珍珠泉，是在省人大院内，直接走进大院就可以\n▪️泉边人很少，池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼✨\n.\n5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓\n▪️这几个地方挨得特别近，都藏在老街里，走路几分钟就到，串联起了西更道街和芙蓉街\n.\n6️⃣曲水亭街、百花洲（p17）\n▪️这两个地方也是紧邻着，有很多文创小店、临水茶座。泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好🌿\n.\n7️⃣大明湖（p18）\n▪️在大明湖等待日落、超然楼亮灯，一日泉水citywalk完结撒花\n.\n#济南[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #济南泉水[话题]# #济南citywalk[话题]#  #趵突泉[话题]#  #去有水的地方[话题]# #howto旅行[话题]#  #我的色彩之旅[话题]# #被色彩击中的瞬间[话题]#",
+      "note_images": null,
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:04:31.077704+00:00",
+      "inputHash": "98179ec13659bbfd76d3d70e7c75955c2af419a3e8e5b5c11578b49d43a44e2e"
+    },
+    {
+      "id": 12582,
+      "raw_note_id": 2813,
+      "name": "珍珠泉大院",
+      "normalized_name": "珍珠泉大院",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南三大名泉之一，泉水碧色清澈，院内多泉可赏",
+      "evidence_text": "济南三大名泉之一，泉水碧色清澈",
+      "route_order": 1,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "济南三大名泉之一，泉水碧色清澈",
+              "quote": "济南三大名泉之一，泉水碧色清澈"
+            },
+            {
+              "text": "院内还有珍珠泉、散水泉、溪亭泉、濋泉",
+              "quote": "院里还有珍珠泉、散水泉、溪亭泉、濋泉"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "在济南走一种很新的city泉水walk(附路线)",
+      "note_desc": "💦泉水作为济南的特色当然不能错过\n💛济南的老城老街巷也相当迷人\n总结了一条在济南 人不多但是可以感受泉水感受老街的citywalk一日游路线建议收藏⬇️\n\t\n🌟一日游路线：\n珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）\n↓\n王府池子（隐藏在老城区的宝藏泉水濯缨泉）\n↓\n腾蛟泉（王府池子出来往北走的一个岔路口）\n↓\n起凤桥（拍照很好看，电影电视剧取景地）\n↓\n西更道（连接泉城路和曲水亭街的老街道）\n↓\n刘氏泉（西更道走到头就能看到一条细长的水流）\n↓\n曲水亭街（济南“小江南”恬静闲适非常好逛）\n↓\n百花洲（池塘/天鹅/鸳鸯/荷花/碧水独属于济南的浪漫）\n↓\n松果（逛完百花洲可以直接串过后宰门街到县西巷尝尝济南人从小吃到大的平价西餐！真是吃了好多好多年了！无论是味道还是颜值都非常在线！环境也很好！可以直接看到大明湖！边看着窗外郁郁葱葱边吃太舒服了！)\n🆓这些地方都距离不远，而且全都是免费的\n这个路线是能体会到济南人真正生活气息的路线，逛下来你会发现济南真的很浪漫，更是不乏一些低调的小确幸！松弛又自在的幸福感，真的好爱济南❤\n\t\n#周末去哪儿[话题]# #济南美食[话题]# #济南吃喝玩乐[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #济南曲水亭街[话题]# #珍珠泉[话题]# #百花洲[话题]# #济南西餐[话题]# #暑期旅游[话题]#",
+      "note_images": null,
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:03:42.226798+00:00",
+      "inputHash": "c8c3164979d978ab3f125e0123e02340f3c1ccb99b587b5f75a6e85b89759b56"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2545,
+      "note_city": "济南",
+      "note_title": "济南citywalk🍃1-2日经典游玩路线live",
+      "note_desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#",
+      "note_images": [
+        {
+          "summary": "济南趵突泉景区风景拼贴图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "趵突泉"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2569,
+      "note_city": "济南",
+      "note_title": "说句实在的，恒隆里外有点东西",
+      "note_desc": "分享一个五一来济南玩超级舒适的隐藏游玩攻略！\n那就是把恒隆当做泉城citywalk中转站！！\n\t\n✅恒隆距离济南必玩景区都超近！[派对R]\n趵突泉、泉城广场、大明湖、曲水亭街等溜达着就能到！\n\t\n✅恒隆里面是品牌首店、餐饮、小甜市集等。\n饿了来恒隆吃个饭，比路边摊吃的安心！\n小甜市集有甜品、甜水、香气、文创等，也超值得逛！这里还有被称为济南第一的厕所，总得来见识一下吧[暗中观察R]\n\t\n✅游玩路线可以参考这个，轻松舒适不走冤枉路！\n\t\n五龙潭——趵突泉——泉城广场——恒隆广场——珍珠泉——曲水亭街——大明湖——超然楼——护城河——黑虎泉——恒隆广场——泉城广场喷泉\n\t\n✅景点攻略：\n1、以上只有趵突泉需要门票，其他景点都免费\n2、泉城广场可以去打卡泉标，现在还有超好看的月季，不要错过呀！\n3、超然楼亮灯时间：19：10—22：00\n4、黑虎泉接的免费泉水，肠胃虚弱的朋友不要直接喝哦\n5、泉城广场晚上喷泉时间为20:00—20:30\n6、恒隆广场五一专属活动：小甜市集！甜品、甜水、香气、文创等，超值得逛！\n\t\n#济南旅游攻略[话题]##济南五一攻略[话题]# #济南游玩攻略[话题]# #济南小众旅游[话题]# #趵突泉景区[话题]#  #恒隆广场[话题]# #济南恒隆广场[话题]# #市集[话题]#",
+      "note_images": [
+        {
+          "summary": "济南趵突泉-大明湖旅游路线示意图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "大明湖站\n铁公祠\n明湖北路\n大明湖\n小东湖\n老东门\n超然楼广场\n老舍纪念馆\n大明湖景区\n龙泉池\n趵突泉北路\n曲水亭街\n百花洲历史文化街区\n珍珠泉\n五龙潭公园\n济南恒隆广场\n泉城路商业街\n趵突泉景区\n天下第一泉景区\n泉城广场\n黑虎泉\n济南市环城公园-黑虎泉\n泺源大街\n山东大学齐鲁医院\n朝山街\n佛山苑小区"
+        },
+        {
+          "summary": "济南九大景点风景拼图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "五龙潭\n趵突泉\n珍珠泉\n曲水亭街\n大明湖\n超然楼\n黑虎泉\n解放阁\n泉城广场"
+        },
+        {
+          "summary": "商场餐饮店与品牌门店拼图",
+          "has_text": true,
+          "key_info": {
+            "tips": "全聚德为非物质文化遗产",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 2,
+          "text_content": "南城十里 潮汕鲜牛\n一头牛仅精选36%\nOTF 加州餐厅 PIZZA & BRUNCH\nJordan\n老板恋上鱼\n板烧鱼\n阅府\n非物质文化遗产-全聚\nMICHELIN GUIDE"
+        },
+        {
+          "summary": "灵感小市市集活动，展示手工艺品、饰品、甜品等摊位",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": "乐享Handmade\n生津止渴 抗氧化\n健脾 清爽解腻\n灵感小市\n小甜一下过春天\n脑子进水啦"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2550,
+      "note_city": "济南",
+      "note_title": "愿每一个去济南的人都能刷到这篇！！！",
+      "note_desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "note_images": [
+        {
+          "summary": "济南三大景点游览攻略与避坑提示",
+          "has_text": true,
+          "key_info": {
+            "tips": "周一闭馆；趵突泉建议早上7点入园；山东博物馆可与美术馆串联游览",
+            "hours": "千佛山：早上6点前、晚上18:30后免费入园",
+            "price": "趵突泉40元、千佛山30元（早上6点前/晚上18:30后免费）",
+            "reservation": "山东博物馆需提前7天预约"
+          },
+          "image_index": 0,
+          "text_content": "去济南一定要避雷：\n1 趵突泉 一定要去 98分\n门票40r，建议早上7点入园，人少游玩体验好也方便拍照，除了最出名的泉眼，观澜庭、濯缨池、李清照纪念堂、万竹园这些也很值得一逛。\n2 千佛山 一定要去 90分\n门票30r，早上6点前，晚上18.30之后免费入园，登顶后可以俯瞰全城，也适合傍晚看日落。\n3 山东博物馆 一定要去 95分\n周一闭馆，提前7天预约，镇馆之宝红陶兽形壶、东平汉墓壁画等等很震撼，美术馆挨着很近，时间充裕的话可以串联一起逛逛。"
+        },
+        {
+          "summary": "济南三个必去景点推荐及避坑指南",
+          "has_text": true,
+          "key_info": {
+            "tips": "大明湖不要做小船；洪家楼天主教堂拍照建议下午两三点，光影效果最佳",
+            "hours": "洪家楼天主教堂：周一闭馆，周日10:00-16:00不对外开放；建议下午14:00-15:00前往",
+            "price": "超然楼门票40r",
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "4 大明湖 一定要去 92分\n大明湖畔夏雨荷的出处，泉水汇集成湖很漂亮，可以坐船游玩很惬意，不要做小船，晚上可以在这里看超然楼夜景，超然楼门票40r，个人感觉湖边拍夜景即可，不用特意进去。\n\n5 曲水亭街&百花洲 一定要去 88分\n很适合citywalk，青石板、石桥、流水很有氛围感，也很适合穿汉服拍照。\n\n6 洪家楼天主教堂 一定要去 92分\n哥特式建筑超级漂亮，建议下午两三点过来，照在彩窗上光影很绝，周一闭馆，周日10-16点不对外开放。"
+        },
+        {
+          "summary": "济南景区游玩贴士与建议",
+          "has_text": true,
+          "key_info": {
+            "tips": "济南初秋较热适合上午游户外；黑虎泉直饮点接水；超然楼亮灯提前线上确认，建议18:30前占位；省博美术馆周一闭馆；老城区石板路不平防滑；大明湖游湖提前问清票价和时长",
+            "hours": null,
+            "price": null,
+            "reservation": "省博和美术馆都需要提前且分开预约"
+          },
+          "image_index": 4,
+          "text_content": "游玩贴士\n1 济南初秋依然比较热，可以把户外景点安排在上午，下午安排室内景点。\n2 黑虎泉去直饮点接水，不要接护城河、泉池里的水，容易拉肚子。\n3 超然楼亮灯时间需要提前线上看，可能会有变动，建议18.30之前占位。\n4 省博和美术馆都需要提前且分开预约，周一闭馆千万别跑空。\n5 老城区大部分是石板路，不平易打滑，务必穿舒适的鞋。\n6 大明湖游湖一定要提前问清票价和时长，是单程还是环湖，避免纠纷。"
+        },
+        {
+          "summary": "济南第二天旅游路线攻略图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "济南Day2路线\n大明湖\n步行3分钟\n枕湖私宴(大明湖店)\n入选打卡榜\n曲水亭街\n步行3分钟\n曲水亭街民俗文化市场\n百花洲\n步行18分钟\n珍珠泉\n芙蓉街\n步行8分钟\n山东省人大常委会\n四喜居老济南把子\n山东政协大酒店\n万海商街\n县西巷\n大明湖路\n省府西街\n省府东街\n芙蓉街\n舜井街\n院上墙根街\n翠柳屏岛\n辛稼轩纪念祠\n历下亭\n秋柳诗社\n老舍纪念馆\n玉涵桥\n吕祖庙\n雪泉\n大喜汉服(大明湖店)\nTHANK Bar\n漫心府\n光明体验馆\n山东手造展示体验中心\n西更道历史"
+        },
+        {
+          "summary": "超然楼夜景亮灯震撼美",
+          "has_text": true,
+          "key_info": {
+            "tips": "蓝调时刻亮灯瞬间很震撼，全场'哇塞'",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 10,
+          "text_content": "超燃楼\n蓝调时刻美疯了，亮灯瞬间\n全场\"哇塞\"不断\n超然楼\n超然楼"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2813,
+      "note_city": "济南",
+      "note_title": "在济南走一种很新的city泉水walk(附路线)",
+      "note_desc": "💦泉水作为济南的特色当然不能错过\n💛济南的老城老街巷也相当迷人\n总结了一条在济南 人不多但是可以感受泉水感受老街的citywalk一日游路线建议收藏⬇️\n\t\n🌟一日游路线：\n珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）\n↓\n王府池子（隐藏在老城区的宝藏泉水濯缨泉）\n↓\n腾蛟泉（王府池子出来往北走的一个岔路口）\n↓\n起凤桥（拍照很好看，电影电视剧取景地）\n↓\n西更道（连接泉城路和曲水亭街的老街道）\n↓\n刘氏泉（西更道走到头就能看到一条细长的水流）\n↓\n曲水亭街（济南“小江南”恬静闲适非常好逛）\n↓\n百花洲（池塘/天鹅/鸳鸯/荷花/碧水独属于济南的浪漫）\n↓\n松果（逛完百花洲可以直接串过后宰门街到县西巷尝尝济南人从小吃到大的平价西餐！真是吃了好多好多年了！无论是味道还是颜值都非常在线！环境也很好！可以直接看到大明湖！边看着窗外郁郁葱葱边吃太舒服了！)\n🆓这些地方都距离不远，而且全都是免费的\n这个路线是能体会到济南人真正生活气息的路线，逛下来你会发现济南真的很浪漫，更是不乏一些低调的小确幸！松弛又自在的幸福感，真的好爱济南❤\n\t\n#周末去哪儿[话题]# #济南美食[话题]# #济南吃喝玩乐[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #济南曲水亭街[话题]# #珍珠泉[话题]# #百花洲[话题]# #济南西餐[话题]# #暑期旅游[话题]#",
+      "note_images": null,
+      "note_unavailable": false
+    },
+    {
+      "id": 2823,
+      "note_city": "济南",
+      "note_title": "济南最不容错过的 不是趵突泉",
+      "note_desc": "是济南环城公园(黑虎泉所在）和珍珠泉\n路线放在最后一图，是这次去济南之行中最快乐的两个小时\n导航到济南市环城公园-黑虎泉(南1门)，就进入到护城河旁的环城公园了，顺着河走，不走回头路，可以看到包括黑虎泉在内的大大小小的泉眼，虽然现在不是丰水期，但是看不知名小泉咕噜咕噜冒泡泡真的太治愈了。接泉水的地方也在这个公园里。好喜欢这种不期而遇 没有计划 但是很合心意的地方。而且现在正是蔷薇花季，很多茂盛的蔷薇花，济南的枫叶也好漂亮，怎么春天就这么漂亮了！而且现在的柳树还是青绿青绿的，好嫩好嫩！\n顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。\n珍珠泉只能从大门原路出来，出门右拐就到西更道街，再向北走就是曲水亭街，走到尽头就是大明湖。\n在我心里，以上路线是济南city walk最棒的路线没有之一。太舒服，太好玩了，适合喜欢水 喜欢自然的人。感受到了幸福的能量。\n#黑虎泉[话题]# #珍珠泉[话题]#",
+      "note_images": [
+        {
+          "summary": "济南黑虎泉景点导航地图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 9,
+          "text_content": "济南市环城公园-黑虎泉(南1门)\n珍珠泉\n山东省政协\n百花洲历史文化街区\n济南市环城公园\n即停即走 仅行人通行 11评价\n直线1285.7公里\n山东省济南市历下区济南市环城公园-黑虎泉内(东侧)"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2786,
+      "note_city": "济南",
+      "note_title": "1.5天逛遍济南✨济你太美！",
+      "note_desc": "真心建议大家别节假日来济南挤人了！！\n错峰逛济南真的幸福感翻倍😭\n花了1.5天打卡济南经典老城路线\n景点超级密集、全程不绕路、走路就能逛\n第一天直接刷完天下第一泉整片景区\n沉浸式感受济南“家家泉水，户户垂杨”的温柔\n\t\n#五龙潭[话题]# P2—P3\n强烈推荐早上来！！\n完全是城市里的宝藏小众园林公园\n清晨的空气清新又湿润，没有喧闹的人流，安静又治愈\n潭水超级清澈，绿树环绕，慢悠悠散步太舒服\n相比于热门景点，这里真的适合静心放松\n\t\n#趵突泉[话题]# P4—P6\n济南的招牌景点！\n整趟逛下来我最偏爱濯缨池\n相比于三股水的热闹，濯缨池自带静谧氛围\n池中的鱼肥肥的超可爱\n\t\n#黑虎泉[话题]# P7—P10\n全程最惊艳我的地方！！[赞R]\n真的美到失语\n尤其是玛瑙泉！！[赞R]\n泉水是清透的碧绿色，像打磨好的翡翠玛瑙\n阳光照下来泉水通透发亮，灵动又治愈\n还可以接纯天然泉水喝，清甜爽口\n这才是济南泉水的灵魂所在！\n\t\n#珍珠泉[话题]# P11—P12\n相比趵突泉、黑虎泉的惊艳\n珍珠泉会显得温婉低调很多\n泉水不断冒出细碎小气泡，像散落的珍珠\n\t\n#曲水亭街[话题]# P13—P14\n一边是青砖灰瓦老民居，一边是潺潺流水\n随手拍都是温柔治愈的老城画面\n但是不建议在街上的公厕上厕所[偷笑R]\n\t\n#大明湖[话题]# P15—P18\n终于亲眼见到课本里的大明湖！\n湖水辽阔，杨柳依依，湖风超舒服\n在超然楼前拍下了特别满意的照片[哇R]\n\t\n想轻松逛济南的姐妹！直接抄这条路线！\n不赶行程、不累人、沉浸式感受泉城温柔\n#济南旅游[话题]# #济南旅行[话题]# #济南攻略[话题]#",
+      "note_images": [
+        {
+          "summary": "济南景区步行路线攻略图，涵盖大明湖、趵突泉等景点",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "巴黎花园\n顺河高架路\n大明湖\n大明湖景区-超然楼\n855m 约9分钟\n大明湖景区\n1.4km 约16分钟\n曲水亭街\n366m 约4分钟\n珍珠泉\n895m 约10分钟\n护城河\n五龙潭公园\n183m 约2分钟\n趵突泉景区\n556m 约6分钟\n济南环城公园-黑虎泉\n1km 约11分钟"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2817,
+      "note_city": "济南",
+      "note_title": "1小时打卡济南曲水亭街！附详细路线攻略",
+      "note_desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+      "note_images": [
+        {
+          "summary": "济南曲水亭街1小时打卡攻略路线图",
+          "has_text": true,
+          "key_info": {
+            "tips": "路线：百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "曲水亭街\n1小时打卡攻略\n百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉\n大明湖景区(南门)\n春日宴国风旅拍 200m约3分钟\n百花桥\n刘氏泉 151m约3分钟\n起凤桥八号 141m约3分钟\n芙蓉街-王府池子 149m约3分钟\n山东省人大常委会(南门) 371m约6分钟\n总得来趟老舍笔下的济南\n珍珠泉"
+        },
+        {
+          "summary": "济南胡同拍照打卡点指引，含书法文字墙位置说明",
+          "has_text": true,
+          "key_info": {
+            "tips": "继续往前走出胡同后右拐，月下观棠附近可以看到白底书法济南文字墙",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "汉服妆造\n月下观棠\n濟南\n悠閒品味生活\n最濟南\nJiNAN\nCOURAGE\n继续往前走\n出胡同后右拐【月下观棠】附近能看到\n这几个白底书法济南文字墙"
+        },
+        {
+          "summary": "济南老舍主题网红打卡墙，含爱心拍照装置与城市标语",
+          "has_text": true,
+          "key_info": {
+            "tips": "网红打卡点，位于老舍笔下的济南主题区域，墙面有红色爱心拍照装置及励志标语贴纸",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": "总得来趟 老舍笔下的济南\n返回继续往南走\n打卡【老舍笔下的济南】\n奋斗有我\n济南 榜样 扬帆\n一颗红心向太阳\n路虽远 行则必至\nGO! 行则必至\n爱生活 懂前方\n认真 living\n我们如此热爱这城市\n清澈的爱 只为中国\n最青春 最有活力\n一座彩色的城市"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2837,
+      "note_city": "济南",
+      "note_title": "live直出🌊济南泉水citywalk一日攻略",
+      "note_desc": "早就听闻济南 “泉城” 的大名，真正来到这座城市，才感受到家家泉水，户户垂杨的悠哉惬意🍃\n除了趵突泉，街头巷尾还有很多泉水值得探索，随便一拍就是满溢出屏幕的生命力[哇R]\n到处都是绿绿的、蓝蓝的，整个人都被治愈，能感受到满满的能量！\n.\n🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖\n📸拍摄于2026.5月底，这个时候已经没有柳絮了，天气很舒服～\n.\n1️⃣趵突泉（p3-8,13）\n📌南门进➠无忧泉➠趵突泉➠漱玉泉➠濯缨池➠北门出\n🕐游玩2h 🎫门票40\n▪️早上7点就开门，周末7:40进景区一点也不排队～ 八点之后人开始多起来，这个时候只要不在趵突泉主泉，人流量也还好\n▪️清晨的趵突泉蓝蓝的很透亮，水里的锦鲤水草都清晰可见💧濯缨池也非常美，像是来到了绿野仙踪  景区里还有大大小小很多泉，感觉很值得一来[派对R]\n.\n2️⃣五龙潭公园（p9/10/15）\n📌南门进➠东门出\n🕐游玩0.5h 🆓\n▪️从趵突泉北门出来，过街就是五龙潭，公园不大，很快就能逛完~ 公园里有很多小鸭子，可爱可爱🥰\n.\n3️⃣黑虎泉（p1/2/14）\n📌环城公园南门➠玛瑙泉➠黑虎泉➠琵琶泉➠五莲泉➠一虎泉➠金虎泉\n🕐游玩1.5h 🆓\n▪️超出预期的美！沿着护城河慢慢走，一路上有各式各样咕噜咕噜冒泡的泉🫧\n▪️最最震撼的是玛瑙泉，锦鲤在蓝绿色的泉水中慢慢游，真是课本里的“皆若空游无所依”\n▪️泉边绿树成荫，吹着风听着鸟鸣看着泉水，这样的日子好惬意\n.\n4️⃣珍珠泉（p11/12）\n🕐游玩0.5h 🆓\n▪️从环城公园出来后，走个十来分钟就到珍珠泉，是在省人大院内，直接走进大院就可以\n▪️泉边人很少，池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼✨\n.\n5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓\n▪️这几个地方挨得特别近，都藏在老街里，走路几分钟就到，串联起了西更道街和芙蓉街\n.\n6️⃣曲水亭街、百花洲（p17）\n▪️这两个地方也是紧邻着，有很多文创小店、临水茶座。泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好🌿\n.\n7️⃣大明湖（p18）\n▪️在大明湖等待日落、超然楼亮灯，一日泉水citywalk完结撒花\n.\n#济南[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #济南泉水[话题]# #济南citywalk[话题]#  #趵突泉[话题]#  #去有水的地方[话题]# #howto旅行[话题]#  #我的色彩之旅[话题]# #被色彩击中的瞬间[话题]#",
+      "note_images": null,
+      "note_unavailable": false
+    }
+  ],
+  "images": [],
+  "reviews": [],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b"
+}

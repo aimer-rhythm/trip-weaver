@@ -1,0 +1,53 @@
+{
+  "city": "济南",
+  "before": 18,
+  "after": 19,
+  "directBefore": 3,
+  "directAfter": 3,
+  "changed": [
+    {
+      "from": "山东博物馆",
+      "to": "燕喜堂（CBD店）",
+      "fromEntityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+      "toEntityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "fromRevision": 2,
+      "toRevision": 3,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2830,
+          "textHash": "d5ebf44cc1b2477dc2e5d060da85337930d52c99eeea88b41bc824f4812cd47f",
+          "from": {
+            "entityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+            "revision": 2,
+            "start": 80,
+            "end": 85,
+            "surface": "山东博物馆",
+            "mentions": [
+              {
+                "mentionId": 12864,
+                "inputHash": "1b42a562aeb9bd639e1954d8d264a5fccc0bcf1f8ba92f544a5296c3b256b6c1"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+            "revision": 3,
+            "start": 70,
+            "end": 79,
+            "surface": "燕喜堂（CBD店）",
+            "mentions": [
+              {
+                "mentionId": 12863,
+                "inputHash": "40e526d9bf8e5cc322e7a105b529374979ec831e2aee1382ec46ed373beb638f"
+              }
+            ]
+          },
+          "quote": "燕喜堂（CBD店）→山东博物馆"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

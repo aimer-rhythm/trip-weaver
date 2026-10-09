@@ -1,0 +1,44 @@
+{
+  "batch": 44,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 4,
+  "historicalEntities": 4,
+  "mentions": 107,
+  "notes": 51,
+  "confirmed": 90,
+  "pendingAdded": 17,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "name": "曲水亭街",
+      "mentions": 44,
+      "effectiveMinutes": 50,
+      "category": "文化"
+    },
+    {
+      "name": "解放阁",
+      "mentions": 34,
+      "effectiveMinutes": 30,
+      "category": "文化"
+    },
+    {
+      "name": "百花洲",
+      "mentions": 12,
+      "effectiveMinutes": null,
+      "category": "文化"
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "existingReview366Preserved": true,
+  "duplicateDurationSamplesNotWeighted": true,
+  "leadTimeFalsePositiveRejected": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "2ba64d81de593dc1a724b441a94244309469aba81834b252e9300ce4bf8840dc"
+}

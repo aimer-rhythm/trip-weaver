@@ -1,0 +1,8 @@
+{
+  "batch": 59,
+  "check": "verify-night-market-data.mts",
+  "initialFailure": "目标openHours整体比较未考虑规范名称更新，subject由环联夜市更新为环联1904火车夜市。",
+  "correction": "只允许目标openHours.subject跟随规范名称，其余营业字段逐项保持；其他地点仍要求完全一致。",
+  "businessDataChangedForCorrection": false,
+  "successfulArtifactsReplayed": false
+}

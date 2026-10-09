@@ -1,0 +1,1699 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T18:10:15.862823+00:00",
+  "city": "济南",
+  "entityBatch": 44,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "46bf462d545dc6435d6de296ba099d0f",
+        "city": "济南",
+        "canonical_name": "融汇老商埠",
+        "primary_place_id": 5371,
+        "aliases": [
+          "济南老商埠",
+          "经三路老商埠",
+          "老商埠",
+          "老商埠·经三路",
+          "老商埠经三路",
+          "融汇济南老商埠",
+          "融汇老商埠"
+        ],
+        "legacy_ids": [
+          "46bf462d545dc6435d6de296ba099d0f",
+          "4b9803715c2c4c49d9f8bbde3b53a34f",
+          "4dd3530aa4bb1a615b12f5b19efef8e8",
+          "8938c5287c8e485e587e951e69b5ccb9",
+          "c51be8e43cf0b3687cb1ccbd069ed358",
+          "ddd11def37286b278f4dcdf87e2ca91f",
+          "eaa2d2785770cd20fcd7f56e40d926c5"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.662082,
+          "lng": 116.992757,
+          "address": "山东省济南市市中区大观园街道经四路333号",
+          "category": "文化",
+          "geoStatus": "verified_poi"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "ids": [
+              12799,
+              12866,
+              12616,
+              12645
+            ],
+            "kind": "source_mentions",
+            "conclusion": "源记录为夹心胡同、复古洋楼等商业街区游览；历史老商埠片区不并入"
+          },
+          {
+            "url": "https://news.iqilu.com/shandong/shandonggedi/20211006/4968896.shtml",
+            "kind": "published_source"
+          },
+          {
+            "url": "http://sd.xinhuanet.com/20260904/3f7ee94228e04d72af79999d9fce6a15/c.html",
+            "kind": "boundary_source"
+          },
+          {
+            "kind": "tianditu_poi",
+            "name": "济南老商埠",
+            "lonlat": "116.986972,36.661862",
+            "address": "山东省济南市市中区大观园街道经四路333号",
+            "coordinateSystem": "CGCS2000"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5371,
+            "city": "济南",
+            "name": "老商埠",
+            "normalized_name": "老商埠",
+            "address": "山东省济南市市中区大观园街道经四路333号",
+            "latitude": 36.66208187078392,
+            "longitude": 116.99275735987153,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 32.8
+          },
+          "sourceHash": "023f9b89c79b42c7b3af783f209931b63aa0964f5421de2148b0654d7b229450",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "文艺"
+            ],
+            "content_profile": {
+              "intro": "济南老商埠区位于市中区经三路，是拥有约120年历史的百年商埠，现完好留存32处文保单位和历史优秀建筑。街区以中西结合的建筑风格和错落有致的老建筑为特色，核心区域融汇济南老商埠已作为商业街区运营，融合历史与潮流生活。小广寒电影院旧址曾是山东省第一家电影院，如今修缮为电影博物馆和电影艺术餐厅，是街区内的特色看点。",
+              "method": "web_research_with_model_knowledge",
+              "version": 1,
+              "compiledAt": "2026-10-06T03:01:02.962012+00:00",
+              "highlights": [
+                {
+                  "text": "济南老商埠区位于市中区经三路，是拥有约120年历史的百年商埠，现完好留存32处文保单位和历史优秀建筑。",
+                  "basis": "web",
+                  "quote": "这处街区是位于济南市市中区经三路的老商埠区。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "这处街区是位于济南市市中区经三路的老商埠区。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    },
+                    {
+                      "quote": "”济南中央商埠区发展促进中心相关负责人介绍，老商埠区现完好留存着32处文保单位和历史优秀建筑，其中国家级文保单位9处、省市级17处。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    },
+                    {
+                      "quote": "于振宇告诉记者，针对“00后”的喜好，融汇济南老商埠会定期策划线上和线下创意营销活动，通过对老建筑的活化利用，实现“旧瓶装新酒”，让有120年历史的老商埠区逐渐成为年轻人钟爱的时尚“打卡”地。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    }
+                  ],
+                  "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                  "observedAt": "2026-10-06T03:00:59Z"
+                },
+                {
+                  "text": "街区以中西结合的建筑风格和错落有致的老建筑为特色，核心区域融汇济南老商埠已作为商业街区运营，融合历史与潮流生活。",
+                  "basis": "web",
+                  "quote": "老商埠区的核心区域融汇济南老商埠，也作为商业街区投入运营。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "老商埠区的核心区域融汇济南老商埠，也作为商业街区投入运营。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    },
+                    {
+                      "quote": "饰品店、咖啡馆、酒吧、茶舍、小剧场……这个春节，山东省济南市一处老建筑错落有致的商业街，将历史与当下的潮流生活恰到好处地融合在一起，受到不少年轻人的青睐，每天到此“打卡”的游人络绎不绝。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    },
+                    {
+                      "quote": "山东建筑大学齐鲁建筑文化研究中心主任姜波说，中西结合的建筑风格、各具特色的店铺、老建筑背后的历史底蕴、充满活力的街区布景，让济南老商埠区成为人们追寻老济南记忆的休闲之地，实现了古今碰撞的“华丽转身”。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    }
+                  ],
+                  "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                  "observedAt": "2026-10-06T03:00:59Z"
+                },
+                {
+                  "text": "小广寒电影院旧址曾是山东省第一家电影院，如今修缮为电影博物馆和电影艺术餐厅，是街区内的特色看点。",
+                  "basis": "web",
+                  "quote": "位于商埠区内的小广寒电影院旧址，这里曾是山东省第一家电影院，如今经过修缮成为电影博物馆和电影艺术餐厅。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "位于商埠区内的小广寒电影院旧址，这里曾是山东省第一家电影院，如今经过修缮成为电影博物馆和电影艺术餐厅。",
+                      "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                      "observedAt": "2026-10-06T03:00:59Z"
+                    }
+                  ],
+                  "sourceUrl": "http://www.news.cn/local/20240219/a43f6fc970744216bbec33871155ab70/c.html",
+                  "observedAt": "2026-10-06T03:00:59Z"
+                }
+              ],
+              "sourcePolicy": "web_primary_model_background_xhs_separate",
+              "machineReview": {
+                "model": "deepseek-v4-flash",
+                "status": "passed",
+                "version": 1
+              },
+              "profileVersion": 1,
+              "qualityVersion": 2
+            }
+          },
+          "summary": {
+            "canonical_place_id": 5371,
+            "mention_count_30d": 6,
+            "recommend_score": 17.33
+          }
+        },
+        {
+          "source": {
+            "id": 5962,
+            "city": "济南",
+            "name": "老商埠经三路",
+            "normalized_name": "老商埠经三路",
+            "address": "",
+            "latitude": 36.66088126072875,
+            "longitude": 116.98311508230685,
+            "place_type": "photo_spot",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "79e24980ca0d759a41017ef83933fe5ff699f6522b6d9bbf239c56ad64fde4d4",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "美食"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5962,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        },
+        {
+          "source": {
+            "id": 5380,
+            "city": "济南",
+            "name": "经三路老商埠",
+            "normalized_name": "经三路老商埠",
+            "address": "山东省济南市济阳区济阳街道经三路",
+            "latitude": 36.974469274712526,
+            "longitude": 117.20568128188651,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 35.6
+          },
+          "sourceHash": "d2001e8cd79ce3a136ed1a7e776dc7fe3113980aa084b8c13b18c8c153e3f568",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "美食"
+            ],
+            "content_profile": {
+              "intro": "经三路老商埠位于济南市槐荫区，是近代济南商业繁华的见证，如今转型为复古潮流打卡地。老洋房与涂鸦墙碰撞出复古潮流，转角能遇见浪漫的“爱心红绿灯”，两栋楼间的“夹心胡同”自带电影滤镜。逛累了可在此喝杯本地特色奶茶，或去古着店淘件花衬衫，感受老商埠的休闲氛围。",
+              "method": "web_research_with_model_knowledge",
+              "version": 1,
+              "compiledAt": "2026-10-06T02:59:15.564927+00:00",
+              "highlights": [
+                {
+                  "text": "经三路老商埠位于济南市槐荫区，是近代济南商业繁华的见证，如今转型为复古潮流打卡地。",
+                  "basis": "web",
+                  "quote": "山东省济南市槐荫区经三路197号2号楼1单元",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "山东省济南市槐荫区经三路197号2号楼1单元",
+                      "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                      "observedAt": "2026-10-06T02:59:04Z"
+                    }
+                  ],
+                  "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                  "observedAt": "2026-10-06T02:59:04Z"
+                },
+                {
+                  "text": "老洋房与涂鸦墙碰撞出复古潮流，转角能遇见浪漫的“爱心红绿灯”，两栋楼间的“夹心胡同”自带电影滤镜。",
+                  "basis": "web",
+                  "quote": "老洋房与涂鸦墙碰撞出复古潮流，转角就能遇见浪漫的“爱心红绿灯”。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "老洋房与涂鸦墙碰撞出复古潮流，转角就能遇见浪漫的“爱心红绿灯”。",
+                      "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                      "observedAt": "2026-10-06T02:59:04Z"
+                    },
+                    {
+                      "quote": "必拍“夹心胡同”，两栋楼间的小巷自带电影滤镜。",
+                      "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                      "observedAt": "2026-10-06T02:59:04Z"
+                    }
+                  ],
+                  "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                  "observedAt": "2026-10-06T02:59:04Z"
+                },
+                {
+                  "text": "逛累了可在此喝杯本地特色奶茶，或去古着店淘件花衬衫，感受老商埠的休闲氛围。",
+                  "basis": "web",
+                  "quote": "逛累了去老商埠喝杯“济南版茶颜悦色”，顺便在古着店淘件花衬衫。",
+                  "strength": "weak",
+                  "citations": [
+                    {
+                      "quote": "逛累了去老商埠喝杯“济南版茶颜悦色”，顺便在古着店淘件花衬衫。",
+                      "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                      "observedAt": "2026-10-06T02:59:04Z"
+                    }
+                  ],
+                  "sourceUrl": "https://gs.ctrip.com/html5/you/sight/jinan128/131149174.html",
+                  "observedAt": "2026-10-06T02:59:04Z"
+                }
+              ],
+              "sourcePolicy": "web_primary_model_background_xhs_separate",
+              "machineReview": {
+                "model": "deepseek-v4-flash",
+                "status": "passed",
+                "version": 1
+              },
+              "profileVersion": 1,
+              "qualityVersion": 2
+            }
+          },
+          "summary": {
+            "canonical_place_id": 5380,
+            "mention_count_30d": 6,
+            "recommend_score": 19.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "济南老商埠",
+        "经三路老商埠",
+        "老商埠",
+        "老商埠·经三路",
+        "老商埠经三路",
+        "融汇济南老商埠",
+        "融汇老商埠"
+      ],
+      "mentionIds": [
+        11419,
+        11424,
+        11498,
+        11530,
+        12616,
+        12645,
+        12685,
+        12702,
+        12751,
+        12785,
+        12799,
+        12866,
+        12878
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "c11648e477180d1b3f97da06808da5e7",
+        "city": "济南",
+        "canonical_name": "经三路",
+        "primary_place_id": 5394,
+        "aliases": [
+          "经三路"
+        ],
+        "legacy_ids": [
+          "c11648e477180d1b3f97da06808da5e7"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.66172763288482,
+          "lng": 116.98727328058241,
+          "address": "山东省济南市槐荫区五里沟街道经三路",
+          "geoStatus": "resolved"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单",
+            "noteId": 2573,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5394,
+                "lat": 36.974469274712526,
+                "lng": 117.20568128188651,
+                "address": "山东省济南市济阳区济阳街道经三路",
+                "sourceHash": "febdf14a233b9cb0d93a35a5105b0e700cd8929a205453384ea5f40166837dc1"
+              }
+            ],
+            "conclusion": "两篇原文将经三路与老商埠、纬三路、中山公园相连。旧点精确等于济阳同名道路，改为市区经三路道路条目；不是具体红绿灯、商户或融汇老商埠实体。",
+            "mentionIds": [
+              11529,
+              12617
+            ],
+            "sourcePlaceIds": [
+              5394
+            ]
+          },
+          {
+            "file": "priority-cities/济南/geo-02.json",
+            "kind": "reviewed_exact_poi",
+            "query": "经三路",
+            "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+            "address": "山东省济南市槐荫区五里沟街道经三路",
+            "poiName": "经三路",
+            "rawLonLat": "116.981511,36.661524",
+            "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+            "sourceCoordinateSystem": "CGCS2000",
+            "storedCoordinateSystem": "GCJ-02"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5394,
+            "city": "济南",
+            "name": "经三路",
+            "normalized_name": "经三路",
+            "address": "山东省济南市济阳区济阳街道经三路",
+            "latitude": 36.974469274712526,
+            "longitude": 117.20568128188651,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 19.0
+          },
+          "sourceHash": "febdf14a233b9cb0d93a35a5105b0e700cd8929a205453384ea5f40166837dc1",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "文艺"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5394,
+            "mention_count_30d": 2,
+            "recommend_score": 10.0
+          }
+        }
+      ],
+      "nameKeys": [
+        "经三路"
+      ],
+      "mentionIds": [
+        11529,
+        12617
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce",
+        "city": "济南",
+        "canonical_name": "经三路爱心红绿灯",
+        "primary_place_id": 5970,
+        "aliases": [
+          "经三路爱心红绿灯"
+        ],
+        "legacy_ids": [
+          "ce733b67e45f0d657e53ff9bff8cbbce"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": null,
+          "lng": null,
+          "address": "",
+          "geoStatus": "unresolvable"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里",
+            "noteId": 2797,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5970,
+                "lat": 36.974469274712526,
+                "lng": 117.20568128188651,
+                "address": "山东省济南市济阳区济阳街道经三路",
+                "sourceHash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86"
+              }
+            ],
+            "conclusion": "唯一原文指市区经三路机位；旧点为济阳区同名道路，与同篇及2793/2566街区位置不符。无精确红绿灯地图条目，清空而不借整条道路坐标。",
+            "mentionIds": [
+              12776
+            ],
+            "sourcePlaceIds": [
+              5970
+            ]
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5970,
+            "city": "济南",
+            "name": "经三路爱心红绿灯",
+            "normalized_name": "经三路爱心红绿灯",
+            "address": "山东省济南市济阳区济阳街道经三路",
+            "latitude": 36.974469274712526,
+            "longitude": 117.20568128188651,
+            "place_type": "photo_spot",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5970,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "经三路爱心红绿灯"
+      ],
+      "mentionIds": [
+        12776
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "fef9784ad510099ad3bd150eee3fbf5c",
+        "city": "济南",
+        "canonical_name": "纬三路与经三路交叉口",
+        "primary_place_id": 5321,
+        "aliases": [
+          "纬三路与经三路交叉口"
+        ],
+        "legacy_ids": [
+          "fef9784ad510099ad3bd150eee3fbf5c"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5321,
+            "city": "济南",
+            "name": "纬三路与经三路交叉口",
+            "normalized_name": "纬三路与经三路交叉口",
+            "address": "",
+            "latitude": 36.66172223048416,
+            "longitude": 116.99362902327587,
+            "place_type": "photo_spot",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "258e058d02d84ebe10c2ef31a36d1bac6ab4c30c251b086c17692f1bb1782150",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5321,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "纬三路与经三路交叉口"
+      ],
+      "mentionIds": [
+        11343
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+        "city": "济南",
+        "canonical_name": "大观园",
+        "primary_place_id": 5478,
+        "aliases": [
+          "大观园"
+        ],
+        "legacy_ids": [
+          "910ac4e3fee34da1dd5f4378c7319ba5"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5478,
+            "city": "济南",
+            "name": "大观园",
+            "normalized_name": "大观园",
+            "address": "经二路728",
+            "latitude": 36.65993099565112,
+            "longitude": 116.96815713815073,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 26.0
+          },
+          "sourceHash": "d43cbb0ee62d7190e0f0eae54a6b1ed4b8dc91a6504d896d5820b45630860c94",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "文艺",
+              "美食"
+            ],
+            "content_profile": {
+              "intro": "济南大观园是1931年中秋开业的大型娱乐场所，名称取自《红楼梦》中的大观园，寓意美好吉祥。园内曾店铺林立，鼎盛时大小商店与摊贩多达四百余家，涵盖绸布、百货、餐饮、照相等多种行业。1943年创办的晨光茶社以相声闻名，马三立等名角曾来献艺，使大观园兼具商业繁荣与文化韵味。",
+              "method": "web_research_with_model_knowledge",
+              "version": 1,
+              "compiledAt": "2026-10-06T03:07:04.932857+00:00",
+              "highlights": [
+                {
+                  "text": "济南大观园是1931年中秋开业的大型娱乐场所，名称取自《红楼梦》中的大观园，寓意美好吉祥。",
+                  "basis": "web",
+                  "quote": "大观园的正式开业时间为1931年农历八月十五（公历9月20日，恰好又是周末），距今已有70多年。",
+                  "strength": "strong",
+                  "citations": [
+                    {
+                      "quote": "大观园的正式开业时间为1931年农历八月十五（公历9月20日，恰好又是周末），距今已有70多年。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    },
+                    {
+                      "quote": "大观园的名称来自清代著名小说《红楼梦》，书中的大观园景色优美、人物风流。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    },
+                    {
+                      "quote": "那么，济南大观园的命名和开业日期显然图的是它名字美好和中秋佳节的吉祥含义。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    }
+                  ],
+                  "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                  "observedAt": "2026-10-06T03:06:51Z"
+                },
+                {
+                  "text": "园内曾店铺林立，鼎盛时大小商店与摊贩多达四百余家，涵盖绸布、百货、餐饮、照相等多种行业。",
+                  "basis": "web",
+                  "quote": "鼎盛时期的大观园外市场有绸布、百货、鞋帽、图书、饭馆、照相、理发、镶牙等大小商店200余家，加上各种摊贩共计有400多家。",
+                  "strength": "strong",
+                  "citations": [
+                    {
+                      "quote": "鼎盛时期的大观园外市场有绸布、百货、鞋帽、图书、饭馆、照相、理发、镶牙等大小商店200余家，加上各种摊贩共计有400多家。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    },
+                    {
+                      "quote": "它拥有店铺约200家、摊贩200来家，行业共20多种，包括布匹绸缎、洋广杂货、钟表、眼镜、南纸、文具、电器、瓷器、工艺品、书籍、烟酒糖茶、干鲜果、糕点、冷食店、酒吧、咖啡馆、国药、镶牙、台球房、照相馆以及修鞋的、擦皮鞋的、算命的……一时大观园里店铺林立、人头攒动，各种买卖真是“洋洋大观”。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    }
+                  ],
+                  "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                  "observedAt": "2026-10-06T03:06:51Z"
+                },
+                {
+                  "text": "1943年创办的晨光茶社以相声闻名，马三立等名角曾来献艺，使大观园兼具商业繁荣与文化韵味。",
+                  "basis": "web",
+                  "quote": "1943年创办的晨光茶社，更是提高了大观园的“文化味”。",
+                  "strength": "strong",
+                  "citations": [
+                    {
+                      "quote": "1943年创办的晨光茶社，更是提高了大观园的“文化味”。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    },
+                    {
+                      "quote": "1943年大观园东侧增加了一家专演相声的晨光茶社，马三立、刘宝瑞、白全福、郭全宝等名角曾来此献艺。",
+                      "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                      "observedAt": "2026-10-06T03:06:51Z"
+                    }
+                  ],
+                  "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                  "observedAt": "2026-10-06T03:06:51Z"
+                }
+              ],
+              "sourcePolicy": "web_primary_model_background_xhs_separate",
+              "machineReview": {
+                "model": "deepseek-v4-flash",
+                "status": "passed",
+                "version": 1
+              },
+              "profileVersion": 1,
+              "qualityVersion": 2
+            }
+          },
+          "summary": {
+            "canonical_place_id": 5478,
+            "mention_count_30d": 4,
+            "recommend_score": 14.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "大观园"
+      ],
+      "mentionIds": [
+        11425,
+        12619,
+        12644,
+        12703
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "fef9784ad510099ad3bd150eee3fbf5c",
+        "city": "济南",
+        "canonical_name": "纬三路与经三路交叉口",
+        "primary_place_id": 5321,
+        "aliases": [
+          "纬三路与经三路交叉口"
+        ],
+        "legacy_ids": [
+          "fef9784ad510099ad3bd150eee3fbf5c"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+        "city": "济南",
+        "canonical_name": "大观园",
+        "primary_place_id": 5478,
+        "aliases": [
+          "大观园"
+        ],
+        "legacy_ids": [
+          "910ac4e3fee34da1dd5f4378c7319ba5"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "4dd3530aa4bb1a615b12f5b19efef8e8",
+        "city": "济南",
+        "canonical_name": "经三路老商埠",
+        "primary_place_id": 5380,
+        "aliases": [
+          "经三路老商埠"
+        ],
+        "legacy_ids": [
+          "4dd3530aa4bb1a615b12f5b19efef8e8"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": "46bf462d545dc6435d6de296ba099d0f",
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "ddd11def37286b278f4dcdf87e2ca91f",
+        "city": "济南",
+        "canonical_name": "老商埠经三路",
+        "primary_place_id": 5962,
+        "aliases": [
+          "老商埠经三路"
+        ],
+        "legacy_ids": [
+          "ddd11def37286b278f4dcdf87e2ca91f"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": "46bf462d545dc6435d6de296ba099d0f",
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "46bf462d545dc6435d6de296ba099d0f",
+        "city": "济南",
+        "canonical_name": "融汇老商埠",
+        "primary_place_id": 5371,
+        "aliases": [
+          "济南老商埠",
+          "经三路老商埠",
+          "老商埠",
+          "老商埠·经三路",
+          "老商埠经三路",
+          "融汇济南老商埠",
+          "融汇老商埠"
+        ],
+        "legacy_ids": [
+          "46bf462d545dc6435d6de296ba099d0f",
+          "4b9803715c2c4c49d9f8bbde3b53a34f",
+          "4dd3530aa4bb1a615b12f5b19efef8e8",
+          "8938c5287c8e485e587e951e69b5ccb9",
+          "c51be8e43cf0b3687cb1ccbd069ed358",
+          "ddd11def37286b278f4dcdf87e2ca91f",
+          "eaa2d2785770cd20fcd7f56e40d926c5"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.662082,
+          "lng": 116.992757,
+          "address": "山东省济南市市中区大观园街道经四路333号",
+          "category": "文化",
+          "geoStatus": "verified_poi"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "ids": [
+              12799,
+              12866,
+              12616,
+              12645
+            ],
+            "kind": "source_mentions",
+            "conclusion": "源记录为夹心胡同、复古洋楼等商业街区游览；历史老商埠片区不并入"
+          },
+          {
+            "url": "https://news.iqilu.com/shandong/shandonggedi/20211006/4968896.shtml",
+            "kind": "published_source"
+          },
+          {
+            "url": "http://sd.xinhuanet.com/20260904/3f7ee94228e04d72af79999d9fce6a15/c.html",
+            "kind": "boundary_source"
+          },
+          {
+            "kind": "tianditu_poi",
+            "name": "济南老商埠",
+            "lonlat": "116.986972,36.661862",
+            "address": "山东省济南市市中区大观园街道经四路333号",
+            "coordinateSystem": "CGCS2000"
+          }
+        ]
+      },
+      {
+        "entity_id": "c11648e477180d1b3f97da06808da5e7",
+        "city": "济南",
+        "canonical_name": "经三路",
+        "primary_place_id": 5394,
+        "aliases": [
+          "经三路"
+        ],
+        "legacy_ids": [
+          "c11648e477180d1b3f97da06808da5e7"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.66172763288482,
+          "lng": 116.98727328058241,
+          "address": "山东省济南市槐荫区五里沟街道经三路",
+          "geoStatus": "resolved"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单",
+            "noteId": 2573,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5394,
+                "lat": 36.974469274712526,
+                "lng": 117.20568128188651,
+                "address": "山东省济南市济阳区济阳街道经三路",
+                "sourceHash": "febdf14a233b9cb0d93a35a5105b0e700cd8929a205453384ea5f40166837dc1"
+              }
+            ],
+            "conclusion": "两篇原文将经三路与老商埠、纬三路、中山公园相连。旧点精确等于济阳同名道路，改为市区经三路道路条目；不是具体红绿灯、商户或融汇老商埠实体。",
+            "mentionIds": [
+              11529,
+              12617
+            ],
+            "sourcePlaceIds": [
+              5394
+            ]
+          },
+          {
+            "file": "priority-cities/济南/geo-02.json",
+            "kind": "reviewed_exact_poi",
+            "query": "经三路",
+            "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+            "address": "山东省济南市槐荫区五里沟街道经三路",
+            "poiName": "经三路",
+            "rawLonLat": "116.981511,36.661524",
+            "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+            "sourceCoordinateSystem": "CGCS2000",
+            "storedCoordinateSystem": "GCJ-02"
+          }
+        ]
+      },
+      {
+        "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce",
+        "city": "济南",
+        "canonical_name": "经三路爱心红绿灯",
+        "primary_place_id": 5970,
+        "aliases": [
+          "经三路爱心红绿灯"
+        ],
+        "legacy_ids": [
+          "ce733b67e45f0d657e53ff9bff8cbbce"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": null,
+          "lng": null,
+          "address": "",
+          "geoStatus": "unresolvable"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里",
+            "noteId": 2797,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5970,
+                "lat": 36.974469274712526,
+                "lng": 117.20568128188651,
+                "address": "山东省济南市济阳区济阳街道经三路",
+                "sourceHash": "caab257f39dfd0a41e81fcff792aabf7c33942568eab2de8b11d30be3f8cad86"
+              }
+            ],
+            "conclusion": "唯一原文指市区经三路机位；旧点为济阳区同名道路，与同篇及2793/2566街区位置不符。无精确红绿灯地图条目，清空而不借整条道路坐标。",
+            "mentionIds": [
+              12776
+            ],
+            "sourcePlaceIds": [
+              5970
+            ]
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5321,
+        "entity_id": "fef9784ad510099ad3bd150eee3fbf5c"
+      },
+      {
+        "place_id": 5371,
+        "entity_id": "46bf462d545dc6435d6de296ba099d0f"
+      },
+      {
+        "place_id": 5394,
+        "entity_id": "c11648e477180d1b3f97da06808da5e7"
+      },
+      {
+        "place_id": 5478,
+        "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5"
+      },
+      {
+        "place_id": 5970,
+        "entity_id": "ce733b67e45f0d657e53ff9bff8cbbce"
+      },
+      {
+        "place_id": 5380,
+        "entity_id": "46bf462d545dc6435d6de296ba099d0f"
+      },
+      {
+        "place_id": 5962,
+        "entity_id": "46bf462d545dc6435d6de296ba099d0f"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11419,
+      "raw_note_id": 2550,
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南老商埠街区，列入推荐路线第三天。",
+      "evidence_text": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+      "route_order": 4,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "0c944e4b24529f03f37ab30d63694d994c11962d36d2573cb0c7294f94b76aaa"
+    },
+    {
+      "id": 11424,
+      "raw_note_id": 2567,
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "复古建筑超出片，红砖墙配咖啡馆，文艺氛围浓。",
+      "evidence_text": "复古建筑超出片！文艺青年必冲！",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "fca088b4f6fa3dd8c82030c22a1f4eceed8ec6947d19b9e50ce7c969318047b6"
+    },
+    {
+      "id": 11498,
+      "raw_note_id": 2554,
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "photo_spot",
+      "mention_type": "warning",
+      "sentiment": "neutral",
+      "reason": "适合浪漫拍照打卡，但距离核心景区较远，不喜欢拍照不建议去",
+      "evidence_text": "如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离",
+      "route_order": null,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.985456+00:00",
+      "inputHash": "1790af6d219a000fa3c6d97142752797c59c21d04c446a41c944aa4f61839072"
+    },
+    {
+      "id": 11530,
+      "raw_note_id": 2573,
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "Citywalk路线起点，历史街区",
+      "evidence_text": "老商埠→经三路→中山公园",
+      "route_order": 1,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.299746+00:00",
+      "inputHash": "6d1c16919ba265113c1c2563f4b0a9af5dd25d0ceb9b19faa8d047e9504bb165"
+    },
+    {
+      "id": 12616,
+      "raw_note_id": 2793,
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "有济南地标、玫瑰花墙、复古老爷车等，建议早上去人少好拍",
+      "evidence_text": "建议早上去，人少更好拍",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有超大济南地标、玫瑰花墙、复古老爷车、多巴胺彩色墙面",
+              "quote": "超大 “济南” 地标、玫瑰花墙、复古老爷车、多巴胺彩色墙面都很出片"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:49.499466+00:00",
+      "inputHash": "1b8e80b6f5717b3aba0b47e5d0b1a6c15d8794ced369ed069ec2adf14c71af15"
+    },
+    {
+      "id": 12645,
+      "raw_note_id": 2782,
+      "name": "老商埠·经三路",
+      "normalized_name": "老商埠经三路",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "网红打卡点，很出片",
+      "evidence_text": "街区网红打卡点，很出片",
+      "route_order": 14,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:22.855979+00:00",
+      "inputHash": "887030711ca451c681a5b246601a5bcae848c7f2be33cec414cac05da4aeedf0"
+    },
+    {
+      "id": 12685,
+      "raw_note_id": 2550,
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南老商埠街区，列入推荐路线第三日行程。",
+      "evidence_text": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+      "route_order": 14,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "397e1d3adbbb4d9672f23cda507b2177c023079b95f089799666bf7fb8fc1c47"
+    },
+    {
+      "id": 12702,
+      "raw_note_id": 2567,
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "复古建筑超出片，红砖墙配咖啡馆，文艺氛围浓厚",
+      "evidence_text": "复古建筑超出片！文艺青年必冲！",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "复古建筑，红砖墙配咖啡馆，氛围感拉满",
+              "quote": "红砖墙+咖啡馆，氛围感拉满"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "27694d1b26ce13ed34acc5b4d8c18233b62b069561cefe607697026e87a172a1"
+    },
+    {
+      "id": 12751,
+      "raw_note_id": 2554,
+      "name": "老商埠",
+      "normalized_name": "老商埠",
+      "place_type": "photo_spot",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "距离核心景区较远，如果不是很喜欢拍照不太建议",
+      "evidence_text": "如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离",
+      "route_order": 6,
+      "confidence": 0.85,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.985456+00:00",
+      "inputHash": "a6bc9b6f06b90a4f77cbe157910cb97ce1cf8a871d328a06010b59fc79925cf8"
+    },
+    {
+      "id": 12785,
+      "raw_note_id": 2798,
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "cafe",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "附近很多好看的咖啡店，适合拍照",
+      "evidence_text": "7️⃣经三路-老商埠附近很多好看的咖啡店",
+      "route_order": 7,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.264172+00:00",
+      "inputHash": "cf8e49c979b1dc11c3ba24af92628271d5ebec569f3c0a82f9616d042ccda40c"
+    },
+    {
+      "id": 12799,
+      "raw_note_id": 2789,
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "民国复古洋楼街区，打卡爱心红绿灯、夹心胡同，有咖啡店文创可逛",
+      "evidence_text": "民国复古洋楼街区，打卡爱心红绿灯、夹心胡同",
+      "route_order": 12,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "民国复古洋楼街区",
+              "quote": "民国复古洋楼街区"
+            },
+            {
+              "text": "有爱心红绿灯、夹心胡同、复古砖墙",
+              "quote": "打卡爱心红绿灯、夹心胡同、复古砖墙"
+            },
+            {
+              "text": "有很多咖啡店、文创可以逛逛看看",
+              "quote": "有很多咖啡店、文创可以逛逛看看休息一下"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:23.118173+00:00",
+      "inputHash": "69892942666a2bf599da51fc6da942bd7c1105b88bd3564c4118fc2c4f3cd8f4"
+    },
+    {
+      "id": 12866,
+      "raw_note_id": 2830,
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "复古洋楼街区，网红店多，逛吃拍照两不误",
+      "evidence_text": "复古洋楼街区，网红店多",
+      "route_order": 12,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "复古洋楼街区，网红店多",
+              "quote": "复古洋楼街区，网红店多"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:06.710475+00:00",
+      "inputHash": "b1f0ffd8a3f6a788bcf2525ea8516b159f39a3d2cd108d04275d19e79054cc26"
+    },
+    {
+      "id": 12878,
+      "raw_note_id": 2834,
+      "name": "经三路老商埠",
+      "normalized_name": "经三路老商埠",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "既有老济南百年记忆，又充满新潮烟火，感受老城另一面风情",
+      "evidence_text": "既有老济南的百年记忆，又充满新潮烟火",
+      "route_order": 12,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "这里既有老济南的百年记忆，又充满新潮烟火，是感受济南老城另一面风情的好去处",
+              "quote": "这里既有老济南的百年记忆，又充满新潮烟火，是感受济南老城另一面风情的好去处"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:30.941615+00:00",
+      "inputHash": "d60aba9b8c007078147ec31d2c4e9fdf0c712a78e43913fb61cf2d3345aa53a9"
+    },
+    {
+      "id": 11529,
+      "raw_note_id": 2573,
+      "name": "经三路",
+      "normalized_name": "经三路",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "浪漫天花板，咖啡美食古着店多，隐藏小店丰富",
+      "evidence_text": "经三路真的是浪漫天花板",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "今年多了好多咖啡、美食和古着店，还有超多隐藏小店",
+              "quote": "今年又多了好多咖啡、美食和古着店，还有超多隐藏小店"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.299746+00:00",
+      "inputHash": "58be5c58f7114c030467ca5c9a3b1c93ea90a624c6279d0861b24e8d4b77fba8"
+    },
+    {
+      "id": 12617,
+      "raw_note_id": 2793,
+      "name": "经三路",
+      "normalized_name": "经三路",
+      "place_type": "other",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "洋气浪漫，有宝藏店铺和心形红绿灯，适合拍照",
+      "evidence_text": "洋气又浪漫，藏着不少宝藏店铺",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有美食、咖啡等宝藏店铺，纬三路有心形红绿灯",
+              "quote": "藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:49.499466+00:00",
+      "inputHash": "234288b3e4cdbad838a4321d8a5d34ba187e65274821ee8caaf9ea52244377e2"
+    },
+    {
+      "id": 12776,
+      "raw_note_id": 2797,
+      "name": "经三路爱心红绿灯",
+      "normalized_name": "经三路爱心红绿灯",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "爱心红绿灯和夹心胡同都在这里，适合拍照",
+      "evidence_text": "爱心红绿灯和夹心胡同都在这里",
+      "route_order": 12,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有爱心红绿灯和夹心胡同",
+              "quote": "爱心红绿灯和夹心胡同都在这里"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.114368+00:00",
+      "inputHash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a"
+    },
+    {
+      "id": 11343,
+      "raw_note_id": 2566,
+      "name": "纬三路与经三路交叉口",
+      "normalized_name": "纬三路与经三路交叉口",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "打卡爱心斑马线，多巴胺配色拍照好看",
+      "evidence_text": "打卡爱心斑马线",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "爱心斑马线是打卡点",
+              "quote": "打卡爱心斑马线"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.016919+00:00",
+      "inputHash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28"
+    },
+    {
+      "id": 11425,
+      "raw_note_id": 2567,
+      "name": "大观园",
+      "normalized_name": "大观园",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "市井烟火气十足，夜景更有味道。",
+      "evidence_text": "市井烟火气十足，夜景更有味道！",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "穿越老济南，市井烟火气十足。",
+              "quote": "穿越老济南！市井烟火气十足"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e"
+    },
+    {
+      "id": 12619,
+      "raw_note_id": 2793,
+      "name": "大观园",
+      "normalized_name": "大观园",
+      "place_type": "food",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "古色古香，汇聚济南当地美食小吃，适合边走边尝",
+      "evidence_text": "汇聚了很多济南当地美食小吃",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "古色古香，汇聚济南当地美食小吃",
+              "quote": "古色古香的，汇聚了很多济南当地美食小吃"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:49.499466+00:00",
+      "inputHash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529"
+    },
+    {
+      "id": 12644,
+      "raw_note_id": 2782,
+      "name": "大观园",
+      "normalized_name": "大观园",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "可去可不去",
+      "evidence_text": "可去可不去",
+      "route_order": 13,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:22.855979+00:00",
+      "inputHash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350"
+    },
+    {
+      "id": 12703,
+      "raw_note_id": 2567,
+      "name": "大观园",
+      "normalized_name": "大观园",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "市井烟火气十足，夜景更有味道",
+      "evidence_text": "市井烟火气十足，夜景更有味道",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "穿越老济南，市井烟火气十足",
+              "quote": "穿越老济南！市井烟火气十足"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2550,
+      "city": "济南",
+      "title": "愿每一个去济南的人都能刷到这篇！！！",
+      "desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11419,
+        12685
+      ]
+    },
+    {
+      "id": 2554,
+      "city": "济南",
+      "title": "大学生暑假旅行📍济南citywalk两日游路线",
+      "desc": "如果你周末想换种方式逛城市，\n那就来济南citywalk吧！\n从趵突泉的泉眼到曲水亭街的石板路，\n听泉水叮咚，寻老城烟火。\n收好这份济南一日游citywalk路线\n一起感受老舍笔下的济南！\n\t\n📕济南旅游省心建议\n‼️趵突泉早上7点就开放，如果想不拥挤的就能在各个不错角度拍到照片，建议早上九点前就要去，越早越好!大学生领“畅游卡”可以mian门票哦！\n‼️高铁站可以选择大明湖站或者济南站，这两个站离景区更近些，而且大明湖站出站步行十分钟就可以到达大明湖南门!\n‼️不要再济南万象城地下停车场停车!标识很乱找不到自己的车在哪里，气流不畅停车费还很贵\n‼️去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入\n‼️可能会有朋友选择汉服妆造，不太推荐曲水亭街的店建议提前一天找好，避免浪费时间\n‼️如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离，如果不是很喜欢拍照不太建议\n‼️游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街\n‼️来玩的宝子们建议选择大明湖附近的酒店，步行十分钟即可到达景区，让你身临其境的感受湖光山色\n‼️吃饭的话，在泉城广场里面有很多，如果想吃小吃的友友们可以去泉城广场背面的芙蓉街，里面有很多特色小吃\n\t\n✅济南交通:\n济南的景点大部分都在一起，其实步行就可以到达，部分远的景点可以骑单车或者打车\n\t\n✅济南住宿:\n建议住在大明湖或者泉城广场附近，比较热闹，距离其他景点都比较方便\n\t\n✅济南美食\n早餐在民族大街吃的人均💰20\n午餐在恒隆广场一家面馆吃的 味道一般\n晚餐可以去芙蓉街宽厚里吃一些小吃\n#济南citywalk[话题]# #济南旅游攻略[话题]# #济南打卡[话题]# #济南两日游[话题]# #济南景点[话题]# #济南两天一晚[话题]# #老舍笔下的济南[话题]# #泉城[话题]# #济南[话题]# #暑假旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11498,
+        12751
+      ]
+    },
+    {
+      "id": 2566,
+      "city": "济南",
+      "title": "济南经三路citywalk全机位图文打卡路线攻略",
+      "desc": "济南经三路真的是很有意思的街区，各种涂鸦墙，可爱的打卡装置都很有趣。旁边又挨着非常文艺的咖啡文创小街道，只要一两个小时就能寄拍到多巴胺配色的照片，也能逛到文艺硬核的咖啡店。特整理打卡路线图文攻略，希望帮到大家。\n\t\n🗺️推荐路线，见图2:\n①纬三路与经三路交叉口【打卡爱心斑马线】→②喜茶(济南融汇老商埠店)【打卡爱心雕塑和老爷车】→③1903 MIX淘醉济南(老商埠店)【打卡济南路牌】→④山耶云耶(融汇济南老商埠店)【打卡马力欧像素天桥】→⑤品忆香炒货工坊(老商埠店)【打卡超大济南文字墙和紫色涂鸦墙】→⑥fufuland生乳舒芙蕾(济南老商埠店)【打卡小熊涂鸦】→⑦喜艾gelato(老商埠店)【打卡济南文字墙、泉城文字墙和爱心转角】→⑧夹心胡同(融汇济南老商埠店)【打卡爱心天桥】→然后走经四路→⑨上优超市烟酒超市，走到这家超市基本就逛完了\n\t\n🌞整条路线一点都不累，因为非常的密集，所以一个小时左右就可以。\n\t\n#济南旅游[话题]# #济南旅行[话题]# #济南一日游[话题]# #老商埠[话题]# #经三路[话题]# #济南citywalk[话题]# #济南拍照[话题]# #济南约拍[话题]# #大学生旅游[话题]# #济南周末去哪儿[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11343
+      ]
+    },
+    {
+      "id": 2567,
+      "city": "济南",
+      "title": "📍𝐉𝐢 𝐍𝐚𝐧  |  老舍笔下的泉城",
+      "desc": "济南City Walk Day1️⃣老商埠+大观园+宽厚里+泉城广场⛲\n📍 老商埠：复古建筑超出片！文艺青年必冲！红砖墙+咖啡馆，氛围感拉满~ ☕️\n📍 大观园：穿越老济南！市井烟火气十足，夜景更有味道！🌆\n📍 宽厚里：吃货天堂名不虚传！把子肉、油旋、奶茶...空着肚子来就对了！🍢🥤\n📍 泉城广场：地标打卡！看喷泉⛲️、喂鸽子🕊️，感受泉城心跳！💙\n\t\n济南City Walk Day2️⃣趵突泉+大明湖+曲水亭街+芙蓉街+解放阁+黑虎泉，日行3万步玩遍济南古城！\n💧 趵突泉：天下第一泉名不虚传！三股水翻腾太治愈~课本照进现实！📖\n🏞️ 大明湖：“皇上，您还记得大明湖畔的夏雨荷吗？”泛舟游湖，超惬意！荷花🪷快开啦~\n🍶 曲水亭街：济南版“小江南”！青砖小瓦，泉水穿流，茶馆超有韵味~必喝大碗茶！🍵\n🍜 芙蓉街：比宽厚里更老牌！爆肚、煎饼卷大葱...小吃多到挑花眼！人从众𠈌~ 😋\n🏯 解放阁：俯瞰老城&黑虎泉！登高怀古，夜景超震撼！✨\n🐯 黑虎泉：本地人打水的地方！泉水清甜直饮，接一杯尝尝济南味道！🚰\n\t\nDay3️⃣淄博City Walk | 进淄赶烤🔥 暴走3件套：烧烤+文创+琉璃，爽到飞起！\n\t\n🍢 【八大局市场】\n终于吃到正宗淄博烧烤！小饼蘸酱+炭火小炉🔥卷葱撸串香迷糊了～人均50撑到扶墙出！\n✅必点：带皮五花肉、小饼、甘蓝菜！本地人蹲小马扎的烟火气绝了！\n\t\n📸 【唐库文创园】\n宝藏打卡地！科比墙、彩虹楼梯、复古咖啡店…随手拍都像在加州！文艺青年狂喜✨\n☕️ Tips：下午茶选露台位置，夕阳滤镜美哭！\n\t\n💎 【琉璃博物馆】\n震撼！看千年琉璃工艺在发光✨ 梦幻吊灯、琉璃白菜…像闯进水晶宫！\n🔥 伴手礼强推：琉璃手串！精致不贵～\n\t\n#济南旅游[话题]# #济南攻略[话题]# #老商埠[话题]# #趵突泉[话题]# #大明湖[话题]# #曲水亭街[话题]# #淄博烧烤[话题]# #进淄赶考[话题]# #淄博陶瓷琉璃馆[话题]# #唐库文创园[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11424,
+        12702,
+        11425,
+        12703
+      ]
+    },
+    {
+      "id": 2573,
+      "city": "济南",
+      "title": "济南必逛Citywalk路线！这条街太宝藏了！",
+      "desc": "经三路真的是浪漫天花板，今年又多了好多咖啡、美食和古着店，还有超多隐藏小店！🚶‍♀️路线直接抄作业：老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单，一路逛吃不停。必打卡的小店：BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道；VILLA SHAKA的墙超好拍，咖啡也很赞；中山公园里超安静，还能淘二手货；淘子外单简直是购物天堂，两层楼逛到腿软，木质风设计超舒服，从床品到配饰款式多到挑花眼！济南有三家店：经四万达店、高新店、西市场店，每个都值得去逛逛～\n#城市的一百种玩法[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11530,
+        11529
+      ]
+    },
+    {
+      "id": 2782,
+      "city": "济南",
+      "title": "📍济南3️⃣天2️⃣晚｜保姆级攻略‼️人均500💰",
+      "desc": "篇幅有限，济南“景点拍照打卡机位”在下一篇，喜欢拍照的姐妹不要放过哦‼️\n\t\n🗺️路线\n📍Day1：\n1️⃣五龙潭：\n其实五龙潭并不大，每个景点离得也都很近，真的很美！\n2️⃣趵突泉：\n如果不想逛，只想去趵突泉，可以从南门或者东门进，很快就到了！\n3️⃣泉城广场：从趵突泉东门出来就直接可以看到泉城广场的地标建筑！\n4️⃣黑虎泉：\n❣️定位到南二门，进门右转下去就是黑虎泉，接泉水也在这里，⚠️注意从莲花水台盆接的水才能直饮！\n5️⃣解放阁：过桥从黑虎泉九女亭后面上去就是解放阁\n6️⃣宽厚里：解放阁马路对过就是宽厚里，一条小吃街\n7️⃣芙蓉街：也是一条小吃街，从芙蓉街32号拐进去就是起凤桥街，可以打卡起凤桥，然后穿过胡同就到曲水亭街了\n8️⃣曲水亭街：\n两边是小茶馆小酒馆，拍照超级出片，涌泉胡同机位也在这条街\n9️⃣百花洲：\n很多人导航“百花洲”，搜出来的是“百花洲历史文化街区”，其实曲水亭街和百花洲都属于“百花洲历史文化街区”。\n❣️大家说的百花洲的景点，是围着百花洲湖的街区，有很多小摊位，可以在这里逛逛（如图4红色⭕️所示）\n🔟大明湖：\n曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼\n\t\n📍Day2：\n1️⃣千佛山：\n这里我真的很想说一句，我恐高，所以对于我来说从历山院去山顶的路真的很难走！但是也有姐妹带着小朋友登顶！所以根据自身情况选择吧！\n2️⃣民族大街市场：当地居民去买菜的菜市场，整条街前面是各种小吃，后面是卖菜的，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆\n3️⃣大观园：可去可不去\n4️⃣老商埠•经三路：街区网红打卡点，很出片\n5️⃣泉城之眼：喜欢拍照的可以去机位打卡，只是为了看风景的话没太有必要\n9️⃣环联夜市：超级大的夜市！有时间可以去逛逛\n\t\n🥘美食：老周家牛肉烧饼（推荐👍）、杨家甜沫、孙家糖油条、油旋张、超意兴\n\t\n🚗出行：共享单车➕打车\n\t\n🏠住宿：我们住在火车站附近，到景点很方便\n#深度游攻略[话题]##济南旅游[话题]# #济南美食[话题]# #济南旅游攻略[话题]# #趵突泉[话题]# #大明湖[话题]# #千佛山[话题]##济南一日游[话题]##经三路[话题]# #老商埠[话题]# #每天写一篇旅游攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12645,
+        12644
+      ]
+    },
+    {
+      "id": 2789,
+      "city": "济南",
+      "title": "济南📍两天一夜，懒人版保姆级逛吃攻略‼",
+      "desc": "两日游路线👇\nDay1：五龙潭➡️趵突泉➡️黑虎泉/解放阁➡️宽厚里➡️曲水亭街➡️大明湖（超然楼亮灯）\nDay2：洪家楼天主教堂➡️山东博物馆➡️山东美术馆➡️燕喜堂➡️经三路老商埠\n\t\n关于住宿🏨\n✔️泉城路&泉城广场附近：步行直达趵突泉、五龙潭、宽厚里等知名景点，周边商超小吃密集，逛吃选择性多\n✔️大明湖周边：依山傍水环境清幽，临近曲水亭、芙蓉街，短途骑行即可穿梭老城街巷，适合偏爱静谧湖景的\n\t\n关于交通🚆\n👉到达交通\n✈️遥墙机场：搭乘地铁进主城，机场专线大巴直达泉城广场、济南火车站，赶时间也能直接打车入城\n🚆济南站坐落市中心，位置最优，去趵突泉、大明湖等景点都比较近\n🚄济南西站以高铁车次居多，换乘地铁进城；\n济南东站地处城东，地理位置偏远，前往青岛、烟台、威海等胶东半岛城市非常方便\n👉游玩交通\n🚇地铁覆盖多处热门景区，没有堵车的烦恼；\n🚲老城游览首选步行或共享单车，趵突泉、黑虎泉、宽厚里、大明湖等景点扎堆连片，短途代步很合适\n🚕日常打车便捷，早晚高峰容易拥堵\n\t\n关于景点🏯\n📍五龙潭：泉群密集（月牙泉、古温泉），池水碧绿，沿潭边散步喂锦鲤，打卡秦琼祠，浅滩可伸手碰泉水\n📍趵突泉：核心看三股水喷涌，园内必逛：李清照纪念堂、万竹园，早上9点前入园人流最少\n📍黑虎泉：四大名泉之一，三处兽头喷涌泉水，可以自带空水瓶接直饮泉水（济南必体验），沿护城河绿荫步道闲逛，临水乘凉\n📍解放阁：黑虎泉上坡即到，红色仿古楼阁，登阁远眺整条护城河、黑虎泉全景；展馆介绍济南解放历史，不想登楼楼下拍照即可\n📍曲水亭街：济南原版「家家泉水、户户垂杨」，青石板小路，门前流泉水，两侧老民居、手作小摊，拍照出片，白天文艺，夜景更美\n📍大明湖：环湖步行，看看历下亭、铁公祠，也可选游船环湖。超然楼在大明湖东岸，开灯瞬间氛围感拉满，江北第一楼，登楼40r\n📍山东博物馆：馆藏丰富，镇馆之宝有亚醜钺、鲁国青铜器、明代鲁荒王陪葬品、甲骨文、东平汉墓壁画\n📍经三路老商埠：民国复古洋楼街区，打卡爱心红绿灯、夹心胡同、复古砖墙；有很多咖啡店、文创可以逛逛看看休息一下，适合慢慢地逛逛拍拍\n#济南旅游[话题]# #济南[话题]# #济南旅游攻略[话题]# #济南美食[话题]# #济南历下区美食[话题]# #济南鲁菜[话题]# #济南本地人推荐[话题]# #旅游攻略[话题]# #周末去哪儿[话题]# #假期去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12799
+      ]
+    },
+    {
+      "id": 2793,
+      "city": "济南",
+      "title": "为了这❶❽张照片，特意🚄去了趟济南❗️附攻略",
+      "desc": "“四面荷花三面柳，一城山色半城湖”\n一座被泉水包围的城市\n有江南的温润也有北方的豪情 春暖花开，可以带着家人朋友一起漫步济南\n感受这座城市的浪漫和松弛～\n\t\n北京出发🚄1.5h即可达，周末两天刚刚好，轻松不赶路\n\t\n🗺️两天悠闲游玩路线\nDAY①:经三路➠纬三路➠老商埠➠大观园➠五龙潭➠趵突泉➠洪家楼\nDAY②:解放阁➠宽厚里➠芙蓉街➠起凤桥➠曲水亭街➠百花洲➠大明湖超然楼\n\t\n📷必玩打卡点\n❶老商埠：超大 “济南” 地标、玫瑰花墙、复古老爷车、多巴胺彩色墙面都很出片， 建议早上去，人少更好拍\n❷经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯，随手拍都很有氛围感\n❸大观园：古色古香的，汇聚了很多济南当地美食小吃，适合边走边尝鲜\n❹五龙潭公园：北方少有的清泉园林，泉水潺潺，景致清幽\n❺趵突泉公园：看三股泉水喷涌，泉池幽深波光粼粼，氛围感拉满\n❻洪家楼：哥特式建筑外观很有特色，内部彩色玻璃精致好看！有固定开放时间，建议提前规划，避免跑空\n❼解放阁：济南标志建筑，站在远处拍全景，很有纪念意义\n❽宽厚里&芙蓉街：两处相邻，遍布济南特色小吃和美食，也有不少“济南”大字打卡点，适合拍照逛吃\n❾起凤桥街：藏在巷子里的小桥流水，青砖黛瓦，满是江南韵味\n❶⓿百花洲&曲水亭街：自带江南氛围感，慢悠悠散步，就能感受老济南的慢生活\n❶❶大明湖&超然楼：蓝调时刻在大明湖可以拍到超然楼亮灯，氛围感十足！也可以登楼俯瞰大明湖全景\n❶❷时间充裕的，可以安排济南千佛山\n\t\n🏨住宿：住在泉水广场附近，出行、逛吃都方便\n\t\n🥣美食：油旋、甜麻辣肥蛤超好吃，把子肉配米饭，香而不腻，很下饭\n#新年旅行第一站[话题]##我是春节主理人[话题]##带着父母去旅行[话题]##长辈友好旅行地[话题]##过年就来小红书[话题]##北京周末去哪儿[话题]##北京出发旅游[话题]##我的私藏旅行路线[话题]##我的小众旅行攻略[话题]##周末去哪儿[话题]##本地人才知道的好地方[话题]##我和我的春节[话题]##咔嚓一张新年照[话题]##济南旅游[话题]# #济南拍照[话题]# #济南攻略[话题]# #济南周末游[话题]##济南两日游[话题]##大明湖[话题]##趵突泉[话题]#@生活薯",
+      "unavailable": false,
+      "mentionIds": [
+        12616,
+        12617,
+        12619
+      ]
+    },
+    {
+      "id": 2797,
+      "city": "济南",
+      "title": "为了这18张照片📷特意去了趟济南（附机位）",
+      "desc": "Hi！我是裸辞后环游中国的 @王小草又出门了\n用18张照片打卡一座城市，这一次是济南！\n\t\n四面荷花三面柳，一城山色半城湖❗️\n济南绝对就是北方的“江南水乡”\n这次用3天时间了解了这座泉水中的城市🌆\n下面也把这次打卡的机位分享给大家❤️⭐️➕\n\t\n📷机位分享：\n1️⃣琵琶泉：可以把远处的解放阁和泉水下的锦鲤融合在一起！\n2️⃣-3️⃣明珠天地C：超然楼和绿地普利中心的古今同框；\n4️⃣五龙潭公园：利用假山的框架式构图，也是拍绿地中心古今同框的机位；\n5️⃣-6️⃣千佛山山顶：济南看日落的最佳地点，6点后可以免费进入；\n7️⃣-8️⃣超然楼：大明湖东的石桥上拍日落，湖西茶舍拍日出；\n9️⃣泉城广场：音乐喷泉开始时间为10点，15点和20点，推荐这几个时间去；\n1️⃣0️⃣玛瑙泉：小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动；\n1️⃣1️⃣-1️⃣2️⃣大明湖公园：四面荷花三面柳说的应该就是这里了；\n1️⃣3️⃣济南墙：在百花洲西的月下观棠旁的街巷内；\n1️⃣4️⃣洪家楼天主教堂：哥特式建筑风格，教堂的天花板真的超美；\n1️⃣5️⃣解放阁：也是济南解放纪念馆，珍藏了很多历史文物和照片；\n1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；\n1️⃣7️⃣四窟万象：一处仿制的石窟，内部为四大石窟的仿制品；\n1️⃣8️⃣山东大厦：大厦内的中庭真的超级震撼。\n\t\n#旅游编辑部[话题]# #旅游万粉扶持计划[话题]# #济南[话题]# #济南旅游[话题]# #济南旅行[话题]# #济南打卡[话题]# #济南拍照[话题]# #趵突泉[话题]# #王小草城市打卡机位[话题]# #山东旅游[话题]# @摄影薯",
+      "unavailable": false,
+      "mentionIds": [
+        12776
+      ]
+    },
+    {
+      "id": 2798,
+      "city": "济南",
+      "title": "济南9个景点36个姿势 直接抄作业！（存图版）",
+      "desc": "来济南旅游 别只会傻傻比耶了！\n我整理了济南9个景点的出片姿势👇🏻\n1️⃣大明湖\n2️⃣趵突泉\n3️⃣曲水亭街\n4️⃣泉城公园\n5️⃣华山湖公园\n6️⃣黑虎泉\n7️⃣经三路-老商埠附近很多好看的咖啡店\n8️⃣章丘明水古城\n9️⃣济南野生动物园\n\t\n#济南旅游[话题]# #拍照动作不重样[话题]# #穿搭攻略[话题]# #大明湖[话题]# #趵突泉[话题]# #明水古城[话题]# #拍照姿势[话题]# #旅行拍照[话题]# #小众出片地[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12785
+      ]
+    },
+    {
+      "id": 2830,
+      "city": "济南",
+      "title": "济南📍两日游丨懒人版不走回头路逛吃攻略",
+      "desc": "✅两日游路线\nDay1：五龙潭→趵突泉→黑虎泉→解放阁→曲水亭街→大明湖/超然楼\nDay2：千佛山→燕喜堂（CBD店）→山东博物馆→山东美术馆→经三路老商埠\n\t\n🏠住宿\n🉑泉城广场/趵突泉周边：步行可达Day1景点，地铁+打车都方便，逛吃便利\n🉑大明湖/曲水亭街附近：老城氛围浓，晚上适合慢游；到趵突泉步行15分钟\n🉑济南站/经三路老商埠周边：近高铁站，Day2路线顺路，复古街区多，出行不绕路\n\t\n🚘交通\n✈️飞机（遥墙机场）：地铁3号线转4号线到市区；机场大巴直达泉城广场；打车约50r\n🚄高铁/火车：济南站，步行15分钟到趵突泉；济南西站地铁1号线转4号线；济南东站偏东，地铁3号线可达\n🚇地铁：趵突泉、大明湖、山东省博物馆都有站点，避开堵车\n🚶步行+骑行：老城区（Day1）景点密集，全程步行/共享单车，轻松不累\n🚕打车：景点间打车多在15r内，高峰期避开泉城路、经十路\n\t\n✅景点介绍\n📍五龙潭：免费泉群，潭水清澈，锦鲤多，本地人常来遛弯\n📍趵突泉：天下第一泉，三股水常年喷涌，园林雅致，有李清照纪念堂\n📍黑虎泉：三虎头喷水，看着很壮观，本地人接泉水，氛围感足\n📍解放阁：黑虎泉旁红色地标，登阁俯瞰护城河，夜景亮灯很美\n📍曲水亭街：家家泉水户户垂杨，青石板路，老济南烟火气十足\n📍大明湖：免费大湖，风光治愈，可散步划船，傍晚看超然楼亮灯\n📍超然楼：大明湖地标，白天古朴，晚上亮灯绝美，夜景必打卡\n📍千佛山：济南名山，爬山祈福，登顶俯瞰全城视野好\n📍经三路老商埠：复古洋楼街区，网红店多，逛吃拍照两不误\n\t\n🚫注意事项\n1️⃣趵突泉、超然楼、千佛山建议提前予约，旺季可直接免排队省时\n2️⃣黑虎泉接泉水用空瓶，直接饮用，别浪费水资源，泉水清甜干净可直饮\n3️⃣解放阁周一闭馆，别跑空；开放时间9:00-17:00，傍晚观景视野很好\n4️⃣曲水亭街路窄人多，慢慢走，别踩泉水弄湿鞋，石板路湿滑注意脚下\n5️⃣超然楼亮灯19:00-21:00，提前占位拍倒影，夜景出片率特别高\n6️⃣千佛山早6:30前、晚18:00后免费入园，省钱省力，错峰游玩游客更少\n7️⃣山东省博物馆/美术馆周一闭馆，别带大件行李，安检入园更快捷\n8️⃣老商埠拍照避开正午，傍晚光线好，复古感拉满，氛围感不错，拍照出片\n#济南旅游[话题]# #济南旅游攻略[话题]# #旅游攻略[话题]# #济南美食[话题]# #济南鲁菜[话题]# #燕喜堂鲁菜馆[话题]# #济南本地人推荐[话题]# #假期去哪玩[话题]# #济南[话题]# #不为打卡的旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12866
+      ]
+    },
+    {
+      "id": 2834,
+      "city": "济南",
+      "title": "济南📍📍两天一夜不走回头路游玩攻略！",
+      "desc": "两日游路线👇\nDay1：五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里➡️曲水亭街➡️大明湖➡️超然楼亮灯\nDay2：洪家楼天主教堂➡️山东博物馆➡️山东美术馆➡️经三路老商埠\n\t\n住宿🏨\n✔️泉城广场附近：步行可以到趵突泉、五龙潭、宽厚里这些景点，周边小吃也很多\n✔️大明湖周边：依山傍水环境清幽，喜欢夜晚宁静的可以选择在此住宿\n\t\n交通🚆\n👉到达交通\n✈️遥墙机场：搭乘地铁进主城，机场专线大巴直达泉城广场、济南火车站\n🚆济南站坐落市中心，位置最优，去趵突泉、大明湖等景点都比较近\n🚄济南西站以高铁车次居多，换乘地铁进城；\n👉游玩交通\n🚇地铁覆盖很多热门景区\n🚲老城游玩推荐步行或共享单车，趵突泉、黑虎泉、宽厚里、大明湖等景点相离很近\n🚕打车也很方便，就是早晚高峰容易拥堵些\n\t\n景点🏯\n📍五龙潭：园内泉潭相连，石桥古亭、绿树成荫，自然景色与历史人文相并，安静又治愈！\n📍趵突泉：语文书里的“天下第一泉”，园内泉群密布，一步一景，兼具自然景观与深厚人文底蕴\n📍黑虎泉：潭水清澈见底，本地市民常到此取水，还有泉水直饮点，可品尝天然泉水。一边是奔涌泉流，一边是古朴城墙，藏着最鲜活的泉城烟火。\n📍解放阁：阁内陈列着济南战役珍贵史料，历史与现代景色在此交汇，是感受济南红色历史的必到之处。\n📍宽厚里：紧邻解放阁，白日古巷清幽，入夜灯火摇曳，古韵烟火相融，漫步其间，感受老城慢时光 。\n📍曲水亭街：泉水顺着街巷缓缓流淌，岸边杨柳飘飘，完美还原家家泉水户户垂杨的画面，安静又治愈！\n📍大明湖：“四面荷花三面柳，一城山色半城湖”，说的便是这里。这里也是《还珠格格》里“大明湖畔夏雨荷”所在地，尽显泉城独有的温婉诗意。\n📍洪家楼教堂：哥特式建筑，双塔顶部造型精美，石雕、彩绘窗极具特色，是济南极具代表性的欧式历史建筑。\n📍山东博物馆:馆藏文物丰富，商周、汉魏等历代珍品，在这里能看到齐鲁悠久历史与地域文化，是了解山东文明的重要窗口。\n📍山东美术馆：馆内有绘画、雕塑、现代艺术等作品，艺术观赏陶冶情操，紧邻山东博物馆\n📍经三路老商埠：这里既有老济南的百年记忆，又充满新潮烟火，是感受济南老城另一面风情的好去处。\n#济南美食[话题]# #济南旅游攻略[话题]# #周末去哪玩[话题]# #历史人文旅游[话题]# #济南旅游景点[话题]# #看世界[话题]# #济南旅游推荐[话题]# #带孩子旅行[话题]##放假去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12878
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

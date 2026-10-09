@@ -1,0 +1,576 @@
+{
+  "readOnly": true,
+  "city": "济南",
+  "capturedAt": "2026-10-07T18:49:31.726Z",
+  "inputDigest": "3c8f676cfb5c79332da4c6de007971ba7d30d4f9de1094436f330b25a9f60d52",
+  "sourceImages": 123,
+  "reviewedCatalogs": 12,
+  "sourceCatalogs": [
+    {
+      "name": "五龙潭公园",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "环联夜市",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "大明湖",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "超然楼",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "经三路",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "趵突泉",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "洪家楼天主教堂",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老商埠",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老舍故居",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "千佛山",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "山东博物馆",
+      "aliases": [],
+      "images": 13
+    },
+    {
+      "name": "黑虎泉",
+      "aliases": [],
+      "images": 10
+    }
+  ],
+  "cityAssignments": 5,
+  "entities": [
+    {
+      "entityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+      "name": "超然楼",
+      "revision": 2,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+        "nameKeys": [
+          "超然楼",
+          "大明湖超然楼"
+        ],
+        "revision": 2,
+        "memberIds": [
+          "d4a51a5df56f78c9de0713d86ea8c00c",
+          "ef9937ce2185cc51d0870a6c8ce9feaa"
+        ],
+        "memberNames": [
+          "超然楼",
+          "大明湖超然楼"
+        ],
+        "canonicalName": "超然楼"
+      },
+      "aliases": [
+        "超然楼",
+        "大明湖超然楼"
+      ],
+      "lat": 36.675236,
+      "lng": 117.032078,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "e64f7dac073d1efe4cb023a888073c29e4509a482d16586ea6a557a7f11fc1c1",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/6b002f336f8576464c4f3f821451c7ce7a6852e5895a1a4987d0b8fcb5c2d8a1.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Cheng Shi Song",
+                "sourceUrl": "https://www.pexels.com/photo/traditional-chinese-archway-in-nanjing-china-33871754/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "A detailed view of a traditional wooden Chinese archway in Nanjing, showcasing intricate carvings.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:11:58.059Z",
+            "sha256": "6b002f336f8576464c4f3f821451c7ce7a6852e5895a1a4987d0b8fcb5c2d8a1",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示南京传统木制牌坊，可见'恩荣''探花'牌匾，为南京明孝陵或夫子庙区域牌坊建筑；来源URL明确标注Nanjing，与目标城市济南及超然楼无关",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "牌坊局部特写-日景",
+              "reason": "图片主体为南京传统木制牌坊（含'恩荣''探花'牌匾），非济南超然楼；来源城市与目标城市明显不符"
+            }
+          },
+          "imageKey": "reviewed:1541965b7c71afd5e4ee9e19c3df1268defb5c7d66a9e164973d44b261598de4",
+          "assetKey": "local_bytes:6b002f336f8576464c4f3f821451c7ce7a6852e5895a1a4987d0b8fcb5c2d8a1",
+          "eligible": false,
+          "inputHash": "56cd895eb3db4d2cec657f3614e51d4d28eb7cc5d72675c413a5e726f9048f88"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/5127b47ddda47dd8c39ea70d7d997309407d428c2df9acc66d219ff0151aed00.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "RUINS",
+                "sourceUrl": "https://pixabay.com/photos/suwon-hwaseong-967999/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "suwon hwaseong, world cultural heritage, mars, joseon dynasty fortress, poru, suwon hwaseong, suwon hwaseong, suwon hwaseong, suwon hwaseong, suwon hwaseong",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:12:09.057Z",
+            "sha256": "5127b47ddda47dd8c39ea70d7d997309407d428c2df9acc66d219ff0151aed00",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示的是韩国水原华城（Suwon Hwaseong）的城墙角楼，具有朝鲜王朝风格的砖石城墙与韩式屋顶，来源URL明确标注为suwon hwaseong。超然楼是位于中国济南大明湖畔的中国传统楼阁建筑，两者完全不同。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "城墙角楼-侧面中景-日景",
+              "reason": "照片主体为韩国水原华城的朝鲜时代城堡建筑，而非济南超然楼。城市、建筑形制、建筑风格均与目标景点不符，为明显错配。"
+            }
+          },
+          "imageKey": "reviewed:8284a8c92bb4a94cfad05e064dd15fd6dd7bfb0050c3517fa2253cc34236e424",
+          "assetKey": "local_bytes:5127b47ddda47dd8c39ea70d7d997309407d428c2df9acc66d219ff0151aed00",
+          "eligible": false,
+          "inputHash": "b01ee2b7c38e5f7030ca9d1aed9f648feb08cadbf4c1f8ff8b9fbbef4cd4173a"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/a51830db64e8f469e52a83c43fb9980a491d6ec7ead48513613a961b5fa1b3f8.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "KangTyngrwey",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E8%B6%85%E7%84%B6%E6%A5%BC%E5%A4%9C%E6%99%AF.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南超然楼夜景.jpg Chao Ran Building, Jinan",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:12:18.177Z",
+            "sha256": "a51830db64e8f469e52a83c43fb9980a491d6ec7ead48513613a961b5fa1b3f8",
+            "review": {
+              "identity": "match",
+              "evidence": "照片显示多层中式楼阁，正面牌匾可见'超然楼'字样，建筑为济南大明湖畔标志性建筑特征，与来源标注一致。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "正面仰视-夜景",
+              "reason": "牌匾明确标识'超然楼'，建筑形制与济南大明湖超然楼吻合，夜景灯光层次丰富，主体突出无遮挡。"
+            }
+          },
+          "imageKey": "reviewed:641523fe2da88ecca10d6b647628e021c709fad74db69ed2a37b0deedca01cf6",
+          "assetKey": "local_bytes:a51830db64e8f469e52a83c43fb9980a491d6ec7ead48513613a961b5fa1b3f8",
+          "eligible": true,
+          "inputHash": "f9a7620a668e4148db008de1baa4f78b048ecb22e23640eab75e86957f5620a7"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://store.is.autonavi.com/showpic/5b3ea6152262074cf03ac2d61a3578d8"
+            },
+            "provider": "amap",
+            "evidence": "济南 超然楼 高德POI关联图；关联不是主体身份保证，必须独立核对画面",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:12:31.252Z",
+            "sha256": "95bc511c2c133991358b94fd759392cc6703eba75f1460d0b9f1f82bb43e8104",
+            "review": {
+              "identity": "match",
+              "evidence": "画面主体为多层传统楼阁式建筑，黑色重檐屋顶，临水而建，周边有大片水域与园林绿地，符合济南大明湖超然楼的建筑特征与地理环境",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "航拍俯视全景-日景-春夏",
+              "reason": "主体建筑为超然楼典型多层楼阁形制，黑色琉璃瓦重檐结构，位于大明湖水畔，航拍角度完整呈现建筑与周边环境关系，光线充足，层次分明"
+            }
+          },
+          "imageKey": "reviewed:0b93f27d59c6dd5989abfa6c8129aedb8ef9df59e7b58c1fbddb1d661a249ba2",
+          "assetKey": "official_url:95bc511c2c133991358b94fd759392cc6703eba75f1460d0b9f1f82bb43e8104",
+          "eligible": true,
+          "inputHash": "285d1f3ece44609736eb760d59829580814c338816dea9bc11e08a50a11d8e9a"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/871831a8e6c89c884a627db666de0fbc10a108bc4f90276e8fb096688486d489.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Cheng Shi Song",
+                "sourceUrl": "https://www.pexels.com/photo/qinhuai-river-in-nanjing-with-modern-and-traditional-architecture-37278720/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Scenic view of Qinhuai River with a blend of modern skyscrapers and traditional Chinese architecture.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:12:43.926Z",
+            "sha256": "871831a8e6c89c884a627db666de0fbc10a108bc4f90276e8fb096688486d489",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "源URL明确标注'Qinhuai River in Nanjing'，图为南京秦淮河沿岸景观（左侧传统亭廊、远处尖顶高楼倒影），与济南超然楼无任何关联。超然楼位于济南大明湖景区，为独立楼阁式古建，与此图场景完全不同。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "河岸亭廊-侧面-日景",
+              "reason": "图片来源标注为南京秦淮河，主体为秦淮河沿岸亭廊与现代高楼倒影，无法证明济南超然楼。城市与景点均不匹配，属明显错配。"
+            }
+          },
+          "imageKey": "reviewed:52beaaa77a2d913403f9b62d4ab9f93b3899f94ea40249fe26b18a3eee188cf7",
+          "assetKey": "local_bytes:871831a8e6c89c884a627db666de0fbc10a108bc4f90276e8fb096688486d489",
+          "eligible": false,
+          "inputHash": "0ad55110cfef2109a3721e55fb570a0273139b6d32e1403d622b3e0e2e221685"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/733da312d892f244b99c7ff1cac60282004c5ccb5d308f569a9114769b6130d8.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "RUINS",
+                "sourceUrl": "https://pixabay.com/photos/suwon-hwaseong-968001/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "suwon hwaseong, world cultural heritage, mars, joseon dynasty fortress, poru",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:12:54.288Z",
+            "sha256": "733da312d892f244b99c7ff1cac60282004c5ccb5d308f569a9114769b6130d8",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "标题和城市标注为济南超然楼，但图片实际为韩国水原华城（수원 화성）的角楼建筑，石砌弧形城墙基座配彩绘歇山顶楼阁，属朝鲜王朝时期军事防御工事。evidence字段已注明suwon hwaseong、joseon dynasty fortress、world cultural heritage，来源URL亦指向水原华城，与济南超然楼无任何关联。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "正面仰视-日景-韩风古建角楼",
+              "reason": "照片主体为韩国水原华城角楼，非济南超然楼，属明显错配"
+            }
+          },
+          "imageKey": "reviewed:2a2f56acd3dc60a67a8670820c63f39e517a2251bbf0f5d0262e47ece857a0d6",
+          "assetKey": "local_bytes:733da312d892f244b99c7ff1cac60282004c5ccb5d308f569a9114769b6130d8",
+          "eligible": false,
+          "inputHash": "815f3f5817e6e7830c4fd5a8dad0863a510f45c1faa3a417f5e8b8e1378012ff"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/07be187f937bbde87cb17263ec21093ecc9dd0bec6c6e567d03447169eebaf91.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "Sprt98",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E5%A4%A7%E6%98%8E%E6%B9%96%E6%99%AF%E5%8C%BA%E2%80%94%E2%80%94%E8%B6%85%E7%84%B6%E6%A5%BC.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南大明湖景区——超然楼.jpg ​济南大明湖景区——超然楼",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:13:07.565Z",
+            "sha256": "07be187f937bbde87cb17263ec21093ecc9dd0bec6c6e567d03447169eebaf91",
+            "review": {
+              "identity": "match",
+              "evidence": "照片中清晰呈现一座多层重檐中国传统楼阁建筑，正中匾额可见\"超然楼\"三字，前方为开阔广场，背景有绿树环绕，与济南大明湖景区超然楼实景一致。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "正面全景-日景-多云",
+              "reason": "照片主体为济南大明湖超然楼正立面，匾额可辨，建筑特征明确，前广场开阔无遮挡，光线虽多云但主体清晰，构图层次分明，为该地区地标性建筑。"
+            }
+          },
+          "imageKey": "reviewed:a43a509326d44df3a61eb735b072b4184ed77995f1a13634ea0cf15ad1d7bea0",
+          "assetKey": "local_bytes:07be187f937bbde87cb17263ec21093ecc9dd0bec6c6e567d03447169eebaf91",
+          "eligible": true,
+          "inputHash": "38dcd8a53c406f189622a303a39758892385a207536e34952a637294b587e228"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/2cb82120c8f29c3b636d50cb971ec9da97050de2f502b30eadf9aae8c3da7c48.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Cheng Shi Song",
+                "sourceUrl": "https://www.pexels.com/photo/linggu-temple-entrance-surrounded-by-lush-greenery-33792333/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "The serene entrance to Linggu Temple with towering trees and ancient architecture in Nanjing, China.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:13:14.039Z",
+            "sha256": "2cb82120c8f29c3b636d50cb971ec9da97050de2f502b30eadf9aae8c3da7c48",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片显示南京灵谷寺入口（石牌坊、台阶、绿树掩映的古建），与济南超然楼（大明湖畔地标性楼阁）完全不符。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "古建入口-林荫道-日景",
+              "reason": "照片主体为南京灵谷寺入口，证据描述已明确标注，与济南超然楼无关联，属明显错配。"
+            }
+          },
+          "imageKey": "reviewed:85096c5adc168a5330509107f46372ca374eb26afd7177f5f2e4ab10506f8304",
+          "assetKey": "local_bytes:2cb82120c8f29c3b636d50cb971ec9da97050de2f502b30eadf9aae8c3da7c48",
+          "eligible": false,
+          "inputHash": "5e0d993b5d2386afb1eb3cf476af9e66dc3077fe0d557c7abc482e569d8394ed"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/b90ee5f7d9a078b3c8584d34edb1fad909f895fd3a62c3d54cbed95868cb6172.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "yyyoe",
+                "sourceUrl": "https://pixabay.com/photos/fujian-tulou-antiquity-2556373/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "fujian, tulou, antiquity, fujian, fujian, fujian, fujian, fujian",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:13:23.943Z",
+            "sha256": "b90ee5f7d9a078b3c8584d34edb1fad909f895fd3a62c3d54cbed95868cb6172",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "URL及搜索词均指向福建土楼（fujian-tulou），与济南超然楼无关；图中可见木构建筑、牌匾（'步云初'）及石柱，风格符合传统园林建筑，但来源证据表明为福建地区景点，非济南超然楼",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "建筑局部-日景-前景有枝叶遮挡",
+              "reason": "照片来源为福建土楼相关内容，与济南超然楼不匹配，identity=mismatch"
+            }
+          },
+          "imageKey": "reviewed:f784c95e1037be212ea82190f88aa017b29d2ea9bd961cf37f14b8b626f2ef6e",
+          "assetKey": "local_bytes:b90ee5f7d9a078b3c8584d34edb1fad909f895fd3a62c3d54cbed95868cb6172",
+          "eligible": false,
+          "inputHash": "241c4dceea07c90b56ccf07382af244353fad6da874282728816e07b2eb24f29"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "超然楼",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/cfa046a6e68a13fb659d7c6ae697cce5f60536a04625484591e0d81f49de2be0.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "Sprt98",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E4%BB%8E%E8%B6%85%E7%84%B6%E6%A5%BC%E6%9C%9B%E6%B5%8E%E5%8D%9701.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:从超然楼望济南01.jpg ​从超然楼望济南01",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-05T05:13:32.158Z",
+            "sha256": "cfa046a6e68a13fb659d7c6ae697cce5f60536a04625484591e0d81f49de2be0",
+            "review": {
+              "identity": "match",
+              "evidence": "照片为从超然楼高处俯瞰济南的视角，可见大明湖一带绿树环绕的水域与远处济南城市天际线，符合超然楼作为大明湖畔制高点的观景特征。标题与图片文件名一致，来源为Wikimedia Commons。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "俯瞰全景-日景-夏",
+              "reason": "主体为从超然楼眺望济南大明湖区域的开阔景观，建筑本身未入镜但机位可信，前中后景层次分明，光线自然。"
+            }
+          },
+          "imageKey": "reviewed:ce3b5caf034adf179612a2aa657511390698ce9b4671617c623fc1e205e95108",
+          "assetKey": "local_bytes:cfa046a6e68a13fb659d7c6ae697cce5f60536a04625484591e0d81f49de2be0",
+          "eligible": true,
+          "inputHash": "569e5779cce80539f102a3fe506c00b856777ef31f4835b1e8077d31af33af5e"
+        }
+      ],
+      "relatedAssetSources": [
+        {
+          "imageKey": "reviewed:1541965b7c71afd5e4ee9e19c3df1268defb5c7d66a9e164973d44b261598de4",
+          "assetKey": "local_bytes:6b002f336f8576464c4f3f821451c7ce7a6852e5895a1a4987d0b8fcb5c2d8a1",
+          "catalogName": "超然楼",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:8284a8c92bb4a94cfad05e064dd15fd6dd7bfb0050c3517fa2253cc34236e424",
+          "assetKey": "local_bytes:5127b47ddda47dd8c39ea70d7d997309407d428c2df9acc66d219ff0151aed00",
+          "catalogName": "超然楼",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:641523fe2da88ecca10d6b647628e021c709fad74db69ed2a37b0deedca01cf6",
+          "assetKey": "local_bytes:a51830db64e8f469e52a83c43fb9980a491d6ec7ead48513613a961b5fa1b3f8",
+          "catalogName": "超然楼",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:0b93f27d59c6dd5989abfa6c8129aedb8ef9df59e7b58c1fbddb1d661a249ba2",
+          "assetKey": "official_url:95bc511c2c133991358b94fd759392cc6703eba75f1460d0b9f1f82bb43e8104",
+          "catalogName": "超然楼",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:52beaaa77a2d913403f9b62d4ab9f93b3899f94ea40249fe26b18a3eee188cf7",
+          "assetKey": "local_bytes:871831a8e6c89c884a627db666de0fbc10a108bc4f90276e8fb096688486d489",
+          "catalogName": "超然楼",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:2a2f56acd3dc60a67a8670820c63f39e517a2251bbf0f5d0262e47ece857a0d6",
+          "assetKey": "local_bytes:733da312d892f244b99c7ff1cac60282004c5ccb5d308f569a9114769b6130d8",
+          "catalogName": "超然楼",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:a43a509326d44df3a61eb735b072b4184ed77995f1a13634ea0cf15ad1d7bea0",
+          "assetKey": "local_bytes:07be187f937bbde87cb17263ec21093ecc9dd0bec6c6e567d03447169eebaf91",
+          "catalogName": "超然楼",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:85096c5adc168a5330509107f46372ca374eb26afd7177f5f2e4ab10506f8304",
+          "assetKey": "local_bytes:2cb82120c8f29c3b636d50cb971ec9da97050de2f502b30eadf9aae8c3da7c48",
+          "catalogName": "超然楼",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:f784c95e1037be212ea82190f88aa017b29d2ea9bd961cf37f14b8b626f2ef6e",
+          "assetKey": "local_bytes:b90ee5f7d9a078b3c8584d34edb1fad909f895fd3a62c3d54cbed95868cb6172",
+          "catalogName": "超然楼",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:ce3b5caf034adf179612a2aa657511390698ce9b4671617c623fc1e205e95108",
+          "assetKey": "local_bytes:cfa046a6e68a13fb659d7c6ae697cce5f60536a04625484591e0d81f49de2be0",
+          "catalogName": "超然楼",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:23e14b2c6b6f7802d8c7a9f330577d99f5ff82e699139781e699115c256db475",
+          "assetKey": "local_bytes:6b002f336f8576464c4f3f821451c7ce7a6852e5895a1a4987d0b8fcb5c2d8a1",
+          "catalogName": "趵突泉",
+          "eligible": false
+        }
+      ],
+      "assignments": []
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,326 @@
+[
+  {
+    "key": "all-cities-20261006-batch-02-review-9",
+    "city": "上海",
+    "reviewFingerprint": "005eb9ab7ac3d3ff6eb29d9d52347dbf8e0b44f7fa2117a85e0a410c4adb8e93",
+    "expectedRevisions": {
+      "c4adaf1178b13ff442b7820db8a8c3d7": 1,
+      "f512cb0d36cb5a6160011c1363d94126": 1
+    },
+    "verdict": "distinct",
+    "explanation": "徐家汇原文10147是按城区分组的美食推荐，徐家汇公园是有独立园址的城市公园；商圈泛称不能吞并公园。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          9
+        ],
+        "conclusion": "徐家汇原文10147是按城区分组的美食推荐，徐家汇公园是有独立园址的城市公园；商圈泛称不能吞并公园。",
+        "sourcePlaceIds": [
+          "4875",
+          "4708"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          10147
+        ],
+        "conclusion": "徐家汇原文10147是按城区分组的美食推荐，徐家汇公园是有独立园址的城市公园；商圈泛称不能吞并公园。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-10",
+    "city": "上海",
+    "reviewFingerprint": "eae9355edb5ec57d63657d6bbf12e54de5595a0812a550bbe3b51a896406227e",
+    "expectedRevisions": {
+      "dae9b546b544955a5a9b6ce45134799f": 1,
+      "f65068877a53f3ae7907f94bd9f9c8a5": 1
+    },
+    "verdict": "distinct",
+    "explanation": "人民大道201号的上海博物馆与天潼路395号的邮政博物馆是不同机构；源笔记分别描述人民广场博物馆和苏州河畔邮政建筑，不因博物馆后缀相似而归并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          10
+        ],
+        "conclusion": "人民大道201号的上海博物馆与天潼路395号的邮政博物馆是不同机构；源笔记分别描述人民广场博物馆和苏州河畔邮政建筑，不因博物馆后缀相似而归并。",
+        "sourcePlaceIds": [
+          "4790",
+          "4712"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          11037,
+          11182
+        ],
+        "conclusion": "人民大道201号的上海博物馆与天潼路395号的邮政博物馆是不同机构；源笔记分别描述人民广场博物馆和苏州河畔邮政建筑，不因博物馆后缀相似而归并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-12",
+    "city": "上海",
+    "reviewFingerprint": "3436b76c53931994aee584ef78f72bf32f0b64216db0b81be349d72e31d37108",
+    "expectedRevisions": {
+      "bedf7762bea76c534462f800bd8b5e1b": 1,
+      "dbdd2d56af538232efb19ea4af4cb297": 1
+    },
+    "verdict": "distinct",
+    "explanation": "同一原文明确说东金线（东昌路至金陵东路）或东复线，两条航线互为选择。相同错误地图坐标不构成同义证据，航线不能合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          12
+        ],
+        "conclusion": "同一原文明确说东金线（东昌路至金陵东路）或东复线，两条航线互为选择。相同错误地图坐标不构成同义证据，航线不能合并。",
+        "sourcePlaceIds": [
+          "5296",
+          "4715"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          11228,
+          11229
+        ],
+        "conclusion": "同一原文明确说东金线（东昌路至金陵东路）或东复线，两条航线互为选择。相同错误地图坐标不构成同义证据，航线不能合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-20",
+    "city": "上海",
+    "reviewFingerprint": "6c2c595a6a93be8bb41615656e0716be1e3c6b8ed265909d0612adcd62bbd9fd",
+    "expectedRevisions": {
+      "8e59155c0f34eb453cfdd2166701b2d0": 1,
+      "a0387f167c5cc7756b73223284ea385c": 1
+    },
+    "verdict": "distinct",
+    "explanation": "11182明确指2/10号线南京东路地铁站；南京东路记录是住宿与街区范围。交通站点与道路是独立身份，不能因站名包含路名而合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          20
+        ],
+        "conclusion": "11182明确指2/10号线南京东路地铁站；南京东路记录是住宿与街区范围。交通站点与道路是独立身份，不能因站名包含路名而合并。",
+        "sourcePlaceIds": [
+          "5277",
+          "4747"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          11182
+        ],
+        "conclusion": "11182明确指2/10号线南京东路地铁站；南京东路记录是住宿与街区范围。交通站点与道路是独立身份，不能因站名包含路名而合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-25",
+    "city": "上海",
+    "reviewFingerprint": "41c6fdc09b941049fcebcddbe51107e3f2ce267ba329cf6abf70ce6829625af6",
+    "expectedRevisions": {
+      "da76d90b1fcef81c1d141a639414d8b0": 1,
+      "dae9b546b544955a5a9b6ce45134799f": 1
+    },
+    "verdict": "distinct",
+    "explanation": "上海博物馆东馆源地址为浦东世纪大道1952号，上海博物馆现有主记录位于人民大道201号且原路线经人民广场到馆。两馆分处不同游览地点，不能把机构简称当作馆区同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          25
+        ],
+        "conclusion": "上海博物馆东馆源地址为浦东世纪大道1952号，上海博物馆现有主记录位于人民大道201号且原路线经人民广场到馆。两馆分处不同游览地点，不能把机构简称当作馆区同义。",
+        "sourcePlaceIds": [
+          "4762",
+          "4790"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          11037
+        ],
+        "conclusion": "上海博物馆东馆源地址为浦东世纪大道1952号，上海博物馆现有主记录位于人民大道201号且原路线经人民广场到馆。两馆分处不同游览地点，不能把机构简称当作馆区同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-31",
+    "city": "上海",
+    "reviewFingerprint": "65dead7b81c1dbb7da442eb2ce46afdd0d622410c3e648850f5268a6b35f0055",
+    "expectedRevisions": {
+      "387c47b30402823adf2d7ddfb027e9c4": 1,
+      "a4ff18d4c9ac00333caf5e38d8cd087f": 1
+    },
+    "verdict": "distinct",
+    "explanation": "同一原文分别标P5-9国航中心、P13-14国客中心，路线也经公平路渡口连接两处；源地址分别是杨树浦路100号、东大名路500号。两处拍摄地保持独立。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          31
+        ],
+        "conclusion": "同一原文分别标P5-9国航中心、P13-14国客中心，路线也经公平路渡口连接两处；源地址分别是杨树浦路100号、东大名路500号。两处拍摄地保持独立。",
+        "sourcePlaceIds": [
+          "4850",
+          "4847"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          10109,
+          10112
+        ],
+        "conclusion": "同一原文分别标P5-9国航中心、P13-14国客中心，路线也经公平路渡口连接两处；源地址分别是杨树浦路100号、东大名路500号。两处拍摄地保持独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-30",
+    "city": "上海",
+    "reviewFingerprint": "70d31ec39448de12b8c3d9ada55e817a955eab235d63f0070aa32f94d9dc567f",
+    "expectedRevisions": {
+      "8ebc33454dade55fe979d5c9b3e7ed5d": 1,
+      "c3d888dcf00a9dfa2c12913a5fcdec79": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "源地图均给浙江中路120号，但11308原文明确给舒蔡记生煎淮海中路462弄口，10305/10325是南京路附近推荐。原文与地图冲突，尚不能确定是分店还是攻略误标；继续核实店方门店信息，不合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          30
+        ],
+        "conclusion": "源地图均给浙江中路120号，但11308原文明确给舒蔡记生煎淮海中路462弄口，10305/10325是南京路附近推荐。原文与地图冲突，尚不能确定是分店还是攻略误标；继续核实店方门店信息，不合并。",
+        "sourcePlaceIds": [
+          "5315",
+          "4799"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          11308,
+          10305,
+          10325
+        ],
+        "conclusion": "源地图均给浙江中路120号，但11308原文明确给舒蔡记生煎淮海中路462弄口，10305/10325是南京路附近推荐。原文与地图冲突，尚不能确定是分店还是攻略误标；继续核实店方门店信息，不合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-33",
+    "city": "上海",
+    "reviewFingerprint": "0110737c7f8896db0d1e2440139c0221f9405318865cb15f433d16bb0989132c",
+    "expectedRevisions": {
+      "4c3a86a49bc021c39207d32ba8e514a9": 1,
+      "81dc7a44a974720f4babea4ff6e1f4cc": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10229明确是南京路新世界大丸中心B2分店，11071明确为淮海中路光明邨对面的现烤总店，原地图同落凌云路212号明显不能证明同店；另有11108泛称提及待核实。须先澄清泛称聚合和分店归属，不把品牌别名直接合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          33
+        ],
+        "conclusion": "10229明确是南京路新世界大丸中心B2分店，11071明确为淮海中路光明邨对面的现烤总店，原地图同落凌云路212号明显不能证明同店；另有11108泛称提及待核实。须先澄清泛称聚合和分店归属，不把品牌别名直接合并。",
+        "sourcePlaceIds": [
+          "4863",
+          "5227"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          10229,
+          11071
+        ],
+        "conclusion": "10229明确是南京路新世界大丸中心B2分店，11071明确为淮海中路光明邨对面的现烤总店，原地图同落凌云路212号明显不能证明同店；另有11108泛称提及待核实。须先澄清泛称聚合和分店归属，不把品牌别名直接合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-review-40",
+    "city": "上海",
+    "reviewFingerprint": "6284214852b98b823b7976fffe7951e93d7427ae3a09718370da1a8d1a474430",
+    "expectedRevisions": {
+      "d4a291993f56fc8f715afc31b2a85633": 2,
+      "28ba3f2a3ed5b7dc4c1619bc91223c65": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "白玉兰观景台经10934/11025确认是The Stage高空观景台；10982的SMP白玉兰观景台仅列为免费机位。同楼另有3楼露台和5楼活动平台，不能以建筑地址相同判等。需原图或具体楼层证据，保留独立候选。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          40
+        ],
+        "conclusion": "白玉兰观景台经10934/11025确认是The Stage高空观景台；10982的SMP白玉兰观景台仅列为免费机位。同楼另有3楼露台和5楼活动平台，不能以建筑地址相同判等。需原图或具体楼层证据，保留独立候选。",
+        "sourcePlaceIds": [
+          "5216",
+          "5205"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10934,
+          11025,
+          10982,
+          11119
+        ],
+        "conclusion": "白玉兰观景台经10934/11025确认是The Stage高空观景台；10982的SMP白玉兰观景台仅列为免费机位。同楼另有3楼露台和5楼活动平台，不能以建筑地址相同判等。需原图或具体楼层证据，保留独立候选。"
+      }
+    ]
+  }
+]

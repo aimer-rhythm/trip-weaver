@@ -1,0 +1,5 @@
+[
+  {"review":203,"verdict":"uncertain","explanation":"CUIDA/cuida两篇原文只写饮品品牌，没有门店地址，地图分别匹配厦禾路与禾祥西分店。两者同名键必须要求明确ID；品牌大小写一致不足以判定为同一店，不能自动合并。","contexts":[{"file":"case-collision-context.json","mentionIds":[5461,6841]}]},
+  {"review":304,"verdict":"uncertain","explanation":"两篇咖啡店合集仅列HANDBELL名称及图片编号，无门店地址；虽地图均匹配芳华街玉林店，但已解析图片不包含对应P9/P14门店证据。须核对原图或店方门店资料，不能仅凭同一地图落点合并。","contexts":[{"file":"case-collision-context.json","mentionIds":[3722,3532]}]},
+  {"review":305,"verdict":"uncertain","explanation":"Mondoli/MONDOLI两条地图分别匹配合江亭与大源中央公园，原文只有咖啡店合集和图片编号，已解析图片缺少对应P9/P10的地点说明，不能辨明分店。保留各自ID并要求明确选择，继续查门店证据。","contexts":[{"file":"case-collision-context.json","mentionIds":[3533,3719]}]}
+]

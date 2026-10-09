@@ -1,0 +1,9 @@
+{
+  "batch": 61,
+  "businessReplay": false,
+  "isolatedFirstAttempt": "all-cities/batch-61/scope-preview-1791498584276451000",
+  "finding": "测试误以为scope导出和普通导出对短reason使用相同语料过滤。原普通导出无济南文字墙语料；完整scope导出保留已确认原reason热门拍照打卡点为一条xhs_reason。",
+  "correction": "分别验证旧语料为空、新语料精确等于原reason；没有修改生产过滤器、原文、治理决定或重放正式应用。原看点及其来源日期继续逐值比较。",
+  "successfulAttempt": "all-cities/batch-61/scope-preview-1791498615444625500/report.json",
+  "preRunReview": "日期校验器在运行前将继承的batch60/notes7常量改为batch61及冻结noteTimes实际数量4，未产生错误结果文件。"
+}

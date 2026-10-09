@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "3cbce7c64233",
+  "query": "鹅岭 悬空栈道 鹅岭栈桥 佛图关 连接 site:gov.cn",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先在政府网站上检索鹅岭、悬空栈道、鹅岭栈桥与佛图关之间的连接信息。",
+  "sources": [
+    {
+      "url": "https://zfcxjw.cq.gov.cn/zwxx_166/zwyw/202512/t20251212_15241108_jlb.html",
+      "provider": "tavily",
+      "title": "重庆市住房和城乡建设委员会-住建要闻",
+      "description": "“栈桥开通后，人流和过去完全不是一个量级。”老陈对此感触颇深。这条悬于山脊的空中走廊，将佛图关、鹅岭公园等景点串联成环，形成一条完整的游览动线。游客无需折返，便可"
+    },
+    {
+      "url": "https://cgj.cq.gov.cn/zwxx_173/bmdt/mtkd/202511/t20251114_15163576.html",
+      "provider": "tavily",
+      "title": "中国建设新闻网：重庆半山崖线鹅岭栈桥正式开放立体山城再添新 ...",
+      "description": "鹅岭栈桥坐落于半山崖线鹅岭段，核心功能是连接佛图关公园与鹅岭公园。栈桥全长460米，宽3米，采用钢结构打造，最大高度达28米，最长跨度26米，整体沿山脊线蜿蜒伸展，从"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://zfcxjw.cq.gov.cn/zwxx_166/zwyw/202512/t20251212_15241108_jlb.html",
+      "provider": "tavily",
+      "title": "重庆市住房和城乡建设委员会-住建要闻",
+      "description": "“栈桥开通后，人流和过去完全不是一个量级。”老陈对此感触颇深。这条悬于山脊的空中走廊，将佛图关、鹅岭公园等景点串联成环，形成一条完整的游览动线。游客无需折返，便可"
+    },
+    {
+      "url": "https://cgj.cq.gov.cn/zwxx_173/bmdt/mtkd/202511/t20251114_15163576.html",
+      "provider": "tavily",
+      "title": "中国建设新闻网：重庆半山崖线鹅岭栈桥正式开放立体山城再添新 ...",
+      "description": "鹅岭栈桥坐落于半山崖线鹅岭段，核心功能是连接佛图关公园与鹅岭公园。栈桥全长460米，宽3米，采用钢结构打造，最大高度达28米，最长跨度26米，整体沿山脊线蜿蜒伸展，从"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4566.83,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 10489.32,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 10489.34
+}

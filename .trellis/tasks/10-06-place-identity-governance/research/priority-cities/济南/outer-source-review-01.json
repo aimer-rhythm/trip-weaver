@@ -1,0 +1,53 @@
+{
+  "readOnly": true,
+  "sourceFile": "priority-cities/济南/outer-source-packet-01.json",
+  "sourceSha256": "a7addd5c9275acdc5d57c37f847ec44893ff5de9a48b873ad0df229f038252c9",
+  "fullNoteIdsRead": [
+    2609,
+    2616,
+    2798,
+    2803
+  ],
+  "mentionsRead": 5,
+  "findings": [
+    {
+      "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+      "name": "灵岩寺",
+      "sourceId": 5475,
+      "mentionIds": [
+        11686
+      ],
+      "status": "confirmed_bad_derived_duration_unapplied",
+      "quote": "避雷5：灵岩寺距离市区较远，来回路程长，如果只有半天时间不建议安排，容易太赶",
+      "conclusion": "唯一提及无时长，但旧图片正文和摘要各把半天不够/不建议安排提炼为180分钟。上下游实库均为180，须清理派生时长并保护有效主体；不能把劝退条件解释成推荐游览时长。",
+      "next": "修复build_visit_duration在截窗前丢失否定/行程预算语义的问题，保留阳性时长回归；存量可按完整scope保留11686并仅消费已确认提及，清旧180分钟。需隔离幂等/倒序回滚、正式应用与完整双同步。"
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "sourceId": 5481,
+      "mentionIds": [
+        11508,
+        12581,
+        12786
+      ],
+      "status": "consumed_fact_attribution_needs_review",
+      "quote": "济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。",
+      "conclusion": "2616标题和2798章丘条目明确主体；12581取整座济南的概述作单点看点，已进入下游intro。需复核字段范围，不能只确认提及了古城就宣布事实正确；地图裸名暂无结果，不能直接判定地点不存在。"
+    },
+    {
+      "entityId": "abc624edea07111dc19aa79dfbb18289",
+      "name": "济南野生动物园",
+      "sourceId": 5974,
+      "mentionIds": [
+        12787
+      ],
+      "status": "location_and_shortened_description_pending",
+      "conclusion": "2798原文明写野生动物园，现行intro却简称济南动物园；地图同时返回章丘野生动物世界与天桥区济南动物园，不能授予彼此别名。现坐标与野生动物世界候选不同，尚未证明错点，不按差距自动修改。"
+    }
+  ],
+  "actualCheck": "priority-cities/济南/outer-findings-check-01.json",
+  "fullReviewPassed": false,
+  "applied": false,
+  "userAcceptance": false
+}

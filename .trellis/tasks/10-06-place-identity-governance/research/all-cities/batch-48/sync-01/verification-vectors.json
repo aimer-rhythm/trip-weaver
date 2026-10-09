@@ -1,0 +1,124 @@
+{
+  "verifiedAt": "2026-10-08T19:15:24.974Z",
+  "batch": "batch-48",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": [
+    "af9116d87efcdf105915ca6303cb6274",
+    "bdf4a854f642c85b65ed4d0760de0bd6"
+  ],
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "济南",
+      "exported": 228,
+      "total": 238,
+      "active": 222,
+      "embedded": 222,
+      "probes": [
+        {
+          "name": "珍珠泉",
+          "id": "af9116d87efcdf105915ca6303cb6274"
+        },
+        {
+          "name": "珍珠泉大院",
+          "id": "bdf4a854f642c85b65ed4d0760de0bd6"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "珍珠泉",
+          "id": "af9116d87efcdf105915ca6303cb6274",
+          "diagnostics": {
+            "keywordHits": 2,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "珍珠泉大院",
+          "id": "bdf4a854f642c85b65ed4d0760de0bd6",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "withdrawals": [
+        {
+          "id": "033a692df5218d571ddd2cca8a8c91e3",
+          "name": "甜沫儿",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "8808e16f1472d0df17bed729a2e54e83",
+          "name": "趵突泉",
+          "status": "ambiguous",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "9ffce5f7ef87be0f7ac37aa2a74ed417",
+          "name": "九转大肠",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "a72490fe56f5990e94cccd78ec58824b",
+          "name": "济南锅贴",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "a75779b7778aa9751bcfa97528fc877f",
+          "name": "老济南烧烤",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "f65621879204866b17b645554f9848db",
+          "name": "五龙潭",
+          "status": "ambiguous",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "9449ba0e-96a2-4005-a7d2-b3364152d4fe"
+      ]
+    }
+  ],
+  "failures": []
+}

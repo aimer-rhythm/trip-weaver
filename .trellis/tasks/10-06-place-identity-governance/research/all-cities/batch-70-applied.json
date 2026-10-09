@@ -1,0 +1,621 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 7,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "city": "成都",
+          "canonical_name": "锦里",
+          "primary_place_id": 1689,
+          "aliases": [
+            "锦里",
+            "锦里古街"
+          ],
+          "legacy_ids": [
+            "8a433260acdd259716088f8009e0fbdc"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1689,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 93.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1689,
+          "mention_count_30d": 17,
+          "positive_count_30d": 10,
+          "source_count": 17,
+          "top_reasons": [
+            {
+              "reason": "顺路走一圈打卡即可，不必专门游玩",
+              "evidence": "顺路走一圈打卡就行"
+            },
+            {
+              "reason": "商业街没意思，不太推荐",
+              "evidence": "就是商业街没意思"
+            },
+            {
+              "reason": "与武侯祠紧邻，古街风貌适合打卡",
+              "evidence": "武侯祠—锦里"
+            },
+            {
+              "reason": "仿古商业街，夜景热闹适合夜游",
+              "evidence": "锦里"
+            },
+            {
+              "reason": "时间紧可跳过，非首次必去",
+              "evidence": "时间紧可跳过"
+            }
+          ],
+          "recommend_score": 45.44
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2570,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里",
+          "evidence_summary": "商业街没意思，不太推荐"
+        },
+        {
+          "id": 2571,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里",
+          "evidence_summary": "与武侯祠紧邻，古街风貌适合打卡"
+        },
+        {
+          "id": 2572,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里",
+          "evidence_summary": "仿古商业街，夜景热闹适合夜游"
+        },
+        {
+          "id": 2749,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里古街主巷",
+          "evidence_summary": "夜晚灯笼暖光映石板路，老成都故事氛围浓。"
+        },
+        {
+          "id": 2783,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里古街",
+          "evidence_summary": "商业化严重，人挤人氛围差"
+        },
+        {
+          "id": 2784,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里古街",
+          "evidence_summary": "古街夜景美，小吃多"
+        },
+        {
+          "id": 2785,
+          "canonical_place_id": 1689,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 锦里古街",
+          "evidence_summary": "与武侯祠相连，可顺路逛古街"
+        }
+      ],
+      "relations": [
+        {
+          "id": 2839,
+          "from_name": "武侯祠",
+          "to_name": "锦里",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 5,
+          "evidence": "人民公园→宽窄巷子→武侯祠→锦里古街 DAY2：熊猫基地",
+          "source_url": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b?xsec_token=AB7xe3BIHAXdv8pNz0TdDTB4GGkXm6vQy0MVpOQSE1GNw=&xsec_source=pc_search"
+        },
+        {
+          "id": 2895,
+          "from_name": "安顺廊桥",
+          "to_name": "锦里",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "→奎星楼街→武侯祠→锦里→安顺廊桥 📸打卡小Tips ",
+          "source_url": "https://www.xiaohongshu.com/explore/6a69f9f7000000000402a0d8?xsec_token=ABVvnIthpG262R41By1mtDSVLC02J9QZzkMNEmMIJY0hc=&xsec_source=pc_search"
+        },
+        {
+          "id": 2900,
+          "from_name": "人民公园",
+          "to_name": "锦里",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "‍♀️‍➡️5分钟→锦里古街🚗8分钟→人民公园🚶‍♀️‍➡️10分",
+          "source_url": "https://www.xiaohongshu.com/explore/6a8da081000000001f003dfc?xsec_token=ABW2ZRMvQ5bDngHEkKY5UPRGivpEcaZN2MVeWguuFFcjc=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1689,
+          "city": "成都",
+          "name_keys": [
+            "锦里"
+          ],
+          "entity_ids": [
+            "8a433260acdd259716088f8009e0fbdc"
+          ],
+          "source_hash": "1c03e287c318c8fdddcbab33f85c3aa9d2e25c1dc8502d032381257630bc92bf",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/成都/jinli-source-review-01.json",
+              "kind": "reviewed_full_text_and_original_opinions",
+              "conclusion": "锦里主巷为路线子项待审，其余16条身份确认；住宿片区字段和含交通75分钟排除，3条原评价逐字承接。完整scope只使用已审核名称合同，文化粗类保持、细类修正market，原名称/ID/日期/观点不改写。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "8a433260acdd259716088f8009e0fbdc"
+          ],
+          "text_warnings": [
+            {
+              "end": 225,
+              "quote": "4. 武侯祠毗邻锦里，看完三国古迹，傍晚逛古街夜景，不建议在锦里吃小吃，移步奎星楼街品尝地道川味美食。",
+              "start": 174,
+              "noteId": 910,
+              "entityId": "8a433260acdd259716088f8009e0fbdc",
+              "inputHash": "101c0cbbd924fc64c537b78ee160935b0eb5d1dcf51c37a1009bb4f5f2a83514",
+              "imageIndex": 5
+            },
+            {
+              "end": 242,
+              "quote": "❤️注意4：锦里晚上看着热闹但物价虚高，同款文创、糖油果子比市区贵很多，单纯拍照就行，吃东西别在这条街消费。",
+              "start": 188,
+              "noteId": 902,
+              "entityId": "8a433260acdd259716088f8009e0fbdc",
+              "inputHash": "c2bdbbca97543db8f0592dfc93e46948611ed4cbb502af9f25851d5980beb458",
+              "imageIndex": 5
+            },
+            {
+              "end": 364,
+              "quote": "11、锦里古街🏮 7.2\n不太推荐专程去。夜景灯笼亮起来确实好看，和武侯祠连着，所以“顺便逛”比“专门来”合理很多。里面游客密度高，餐饮、小商品偏旅游街模式，价格下单前先看清。建议武侯祠出来走一圈，拍完夜景就撤。※",
+              "start": 257,
+              "noteId": 948,
+              "entityId": "8a433260acdd259716088f8009e0fbdc",
+              "inputHash": "348a09b2f2261bc752bdb2fa0879f983c8bb0da86b1f88f92bf223bb699185b3",
+              "imageIndex": 2
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3501,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "6ef282d562818bd483ee66b1c72831154e5cfbd1761b1a75ed36ff8c515da96d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3602,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "9c259ba603b9afcbabacc32dacaccbd064fe0d018161a373cc4b822a176e9a09",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3627,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "f13e1d2368d37c1d6206826f2b591a075938f89176151deafd18b716ae8a608e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3664,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "b149c623a2f7779ca38fcf390dec4d0102b9abeb90e8acc1c85a737b2ad8490a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3685,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "c86a2086a0fe585849edb8283b9832335be6e336894c3dba62e41b5b7c4d300b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3702,
+          "scope_place_id": 1689,
+          "entity_id": null,
+          "input_hash": "cd0d380d197bbcd3543dafa1c15eea2c4b5e89bc7de745d913332380fabedaca",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3760,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "2c43e544b9819be7e9cadb93e2ea9c222326e5e13e62dc965025cfb2c236a67a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3822,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "a1bb4d64be8464031551ed4988e915875d5afd537fcc8523780cc650972ccf7d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "2. 第二天可换住武侯祠/宽窄巷子附近\n靠近人文古迹片区，去草堂、锦里、玉林路不用长途赶路，周边烟火小店多，生活氛围浓厚",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "2. 第二天可换住武侯祠/宽窄巷子附近\n靠近人文古迹片区，去草堂、锦里、玉林路不用长途赶路，周边烟火小店多，生活氛围浓厚",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 3884,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "b0565d22472d39379db7fd0829e21494c100447638f3a5d21a7bf35ebca4e0f7",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3961,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "d499e28a2725603ab3f6de693d24ad5435c2e66d156b3652b75e3cb473899ebb",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 3992,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "43dfddd77376c1f5faaac06196773fc89f642138e57ad655619dbf7a092e6550",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 4018,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "732ce052f2d3e9669ba558d135e9d9e79ac87ac8c48504d458da64dba49a8fec",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 4034,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "07ec321a2991137efae3d6db29ec0fe4c05b047a10429ac70943e0d1ae641c25",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 4061,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "55455ba595ac866bfa8380e1ce61cd9ff26419765e491e1a7640968644b85a62",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope",
+          "fact_exclusions": {
+            "visit_duration": {
+              "quote": "13:00-14:15打车到锦里古街，武侯祠就紧邻着（图7-11）",
+              "reason": "group_duration"
+            }
+          }
+        },
+        {
+          "mention_id": 4155,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "ab52f244f438d0c09ca879ca3a7a9662d12aa0dc0ee8d66b9a09f695ced455ea",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 4168,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "ca920c624fd69a83958c64de055a4034381c7b0fe7ea9cc99974a9716592672e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        },
+        {
+          "mention_id": 4209,
+          "scope_place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "input_hash": "1840b7463afc5af14395d3809a9e0acfad3f9f019c8e8bae1313c21f0cfa2f30",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-70-jinli-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "1c03e287c318c8fdddcbab33f85c3aa9d2e25c1dc8502d032381257630bc92bf",
+        "mentions": [
+          {
+            "mentionId": 3501,
+            "inputHash": "6ef282d562818bd483ee66b1c72831154e5cfbd1761b1a75ed36ff8c515da96d"
+          },
+          {
+            "mentionId": 3602,
+            "inputHash": "9c259ba603b9afcbabacc32dacaccbd064fe0d018161a373cc4b822a176e9a09"
+          },
+          {
+            "mentionId": 3627,
+            "inputHash": "f13e1d2368d37c1d6206826f2b591a075938f89176151deafd18b716ae8a608e"
+          },
+          {
+            "mentionId": 3664,
+            "inputHash": "b149c623a2f7779ca38fcf390dec4d0102b9abeb90e8acc1c85a737b2ad8490a"
+          },
+          {
+            "mentionId": 3685,
+            "inputHash": "c86a2086a0fe585849edb8283b9832335be6e336894c3dba62e41b5b7c4d300b"
+          },
+          {
+            "mentionId": 3702,
+            "inputHash": "cd0d380d197bbcd3543dafa1c15eea2c4b5e89bc7de745d913332380fabedaca"
+          },
+          {
+            "mentionId": 3760,
+            "inputHash": "2c43e544b9819be7e9cadb93e2ea9c222326e5e13e62dc965025cfb2c236a67a"
+          },
+          {
+            "mentionId": 3822,
+            "inputHash": "a1bb4d64be8464031551ed4988e915875d5afd537fcc8523780cc650972ccf7d"
+          },
+          {
+            "mentionId": 3884,
+            "inputHash": "b0565d22472d39379db7fd0829e21494c100447638f3a5d21a7bf35ebca4e0f7"
+          },
+          {
+            "mentionId": 3961,
+            "inputHash": "d499e28a2725603ab3f6de693d24ad5435c2e66d156b3652b75e3cb473899ebb"
+          },
+          {
+            "mentionId": 3992,
+            "inputHash": "43dfddd77376c1f5faaac06196773fc89f642138e57ad655619dbf7a092e6550"
+          },
+          {
+            "mentionId": 4018,
+            "inputHash": "732ce052f2d3e9669ba558d135e9d9e79ac87ac8c48504d458da64dba49a8fec"
+          },
+          {
+            "mentionId": 4034,
+            "inputHash": "07ec321a2991137efae3d6db29ec0fe4c05b047a10429ac70943e0d1ae641c25"
+          },
+          {
+            "mentionId": 4061,
+            "inputHash": "55455ba595ac866bfa8380e1ce61cd9ff26419765e491e1a7640968644b85a62"
+          },
+          {
+            "mentionId": 4155,
+            "inputHash": "ab52f244f438d0c09ca879ca3a7a9662d12aa0dc0ee8d66b9a09f695ced455ea"
+          },
+          {
+            "mentionId": 4168,
+            "inputHash": "ca920c624fd69a83958c64de055a4034381c7b0fe7ea9cc99974a9716592672e"
+          },
+          {
+            "mentionId": 4209,
+            "inputHash": "1840b7463afc5af14395d3809a9e0acfad3f9f019c8e8bae1313c21f0cfa2f30"
+          }
+        ],
+        "textWarnings": [
+          {
+            "noteId": 902,
+            "imageIndex": 5,
+            "inputHash": "c2bdbbca97543db8f0592dfc93e46948611ed4cbb502af9f25851d5980beb458"
+          },
+          {
+            "noteId": 910,
+            "imageIndex": 5,
+            "inputHash": "101c0cbbd924fc64c537b78ee160935b0eb5d1dcf51c37a1009bb4f5f2a83514"
+          },
+          {
+            "noteId": 948,
+            "imageIndex": 2,
+            "inputHash": "348a09b2f2261bc752bdb2fa0879f983c8bb0da86b1f88f92bf223bb699185b3"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 13447,
+          "fingerprint": "8d21e02d5ed51a1f1cd68a145ca41b1a3059e993973a313c4b8c0dafe6555a39",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "cd0d380d197bbcd3543dafa1c15eea2c4b5e89bc7de745d913332380fabedaca",
+            "mentionId": 3702,
+            "scopePlaceIds": [
+              1689
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "8a433260acdd259716088f8009e0fbdc",
+          "city": "成都",
+          "canonical_name": "锦里",
+          "primary_place_id": 1689,
+          "aliases": [
+            "锦里",
+            "锦里古街"
+          ],
+          "legacy_ids": [
+            "2deb74c8cc483989f49319872eacada0",
+            "8a433260acdd259716088f8009e0fbdc"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化",
+            "xhsPlaceType": "market"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_full_text_and_original_opinions",
+              "file": "priority-cities/成都/jinli-source-review-01.json",
+              "conclusion": "锦里主巷为路线子项待审，其余16条身份确认；住宿片区字段和含交通75分钟排除，3条原评价逐字承接。完整scope只使用已审核名称合同，文化粗类保持、细类修正market，原名称/ID/日期/观点不改写。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1689,
+          "entity_id": "8a433260acdd259716088f8009e0fbdc"
+        }
+      ]
+    }
+  ]
+}

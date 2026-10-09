@@ -1,0 +1,303 @@
+[
+  {
+    "key": "all-cities-20261006-batch-20-001",
+    "city": "上海",
+    "entityId": "d4a291993f56fc8f715afc31b2a85633",
+    "mergeEntityIds": [
+      "28ba3f2a3ed5b7dc4c1619bc91223c65"
+    ],
+    "canonicalName": "The Stage上海白玉兰观景台",
+    "expectedRevisions": {
+      "d4a291993f56fc8f715afc31b2a85633": 2,
+      "28ba3f2a3ed5b7dc4c1619bc91223c65": 1
+    },
+    "overrides": {
+      "lat": 31.249151,
+      "lng": 121.498046,
+      "address": "上海市虹口区北外滩街道东长治路588号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          40
+        ],
+        "conclusion": "2497 P13补足此前未看的原图：海关钟楼、穹顶与威斯汀楼冠、后方楼群排列遮挡和屋顶可见程度，与明确写The Stage的2495 P4及2498 P6吻合。结合SMP白玉兰名称及官方高空视角，确认同一The Stage观景台，撤销仅凭免费文案猜测低层平台的疑虑。保留现有稳定主ID和历史成员，不将广场3层露台或楼宇本体并入；免费文案不采信为门票事实。",
+        "sourcePlaceIds": [
+          "5216",
+          "5205",
+          "5192"
+        ],
+        "mentions": [
+          {
+            "id": "11025",
+            "name": "白玉兰观景台",
+            "quote": "360度露天观景台, 真的美到失语",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ef303e000000001b0228f4"
+          },
+          {
+            "id": "10982",
+            "name": "SMP白玉兰观景台",
+            "quote": "免费又出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1aa571000000003700fb88"
+          },
+          {
+            "id": "10934",
+            "name": "上海白玉兰观景台",
+            "quote": "上海高空观景天花板",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a07f230000000000802563c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5192",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "继续使用batch-02已核实的主源建筑GCJ-02点31.249151/121.498046，精度仍为建筑参考点；SMP旧北郊坐标不参与平均。",
+        "original": {
+          "lat": 31.249151,
+          "lng": 121.498046,
+          "address": "上海市虹口区北外滩街道东长治路588号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 31.249151,
+        "lng": 121.498046,
+        "address": "上海市虹口区北外滩街道东长治路588号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://thestageshanghai.com/zh-Hans/views",
+        "file": "all-cities/shanghai-magnolia-official-fetch.json",
+        "sha256": "f27776659894dbe50829b99d19c54363a7c886294765a32154c7bcab9c2be616"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.kkday.com/zh-cn/product/284634",
+        "file": "all-cities/shanghai-stage-kkday-fetch.json",
+        "sha256": "729159a2fbec2f1bf8a1826fe8cbd54ffe3734f48191d12f977c7eb956f1e684"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-20-image-context.json",
+        "sha256": "d5c24fefa5387ad3dc49a49f00c728b257d59949f73c414f0a53c767063f3726",
+        "mentionIds": [
+          10982,
+          10934,
+          11025
+        ],
+        "conclusion": "2497 P13补足此前未看的原图：海关钟楼、穹顶与威斯汀楼冠、后方楼群排列遮挡和屋顶可见程度，与明确写The Stage的2495 P4及2498 P6吻合。结合SMP白玉兰名称及官方高空视角，确认同一The Stage观景台，撤销仅凭免费文案猜测低层平台的疑虑。保留现有稳定主ID和历史成员，不将广场3层露台或楼宇本体并入；免费文案不采信为门票事实。"
+      },
+      {
+        "kind": "reviewed_current_identity_snapshot",
+        "file": "all-cities/audit/run-14/snapshot.json",
+        "sha256": "304e7d3e0a4c2123576342a6b5a494489b8443a54c33abc0f610f7b94553223e",
+        "conclusion": "请求根与revision来自冻结实库审计，不重放已合并旧成员；前序batch-02、11在隔离库重建后验证相同版本。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-20-002",
+    "city": "上海",
+    "entityId": "10d3fb61125f3b83e496360c9ef7824e",
+    "mergeEntityIds": [],
+    "canonicalName": "苏州路",
+    "expectedRevisions": {
+      "10d3fb61125f3b83e496360c9ef7824e": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市苏州河沿岸，原文苏州路具体路段待核",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "原文P5位于苏州河漫步线路，原图为The Riverside沿街门面；旧兆丰路18号办公楼地址与图文冲突，具体河岸仍缺证据。",
+        "sourcePlaceIds": [
+          "4695"
+        ],
+        "mentions": [
+          {
+            "id": "9924",
+            "name": "苏州路",
+            "quote": "人少景美的小众路线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0f1b3f0000000038037818"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4695",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "旧点与原文中心城区苏州河范围矛盾，未取得可靠精确点，经纬度成对清空；ID不变。",
+        "original": {
+          "lat": 31.284758,
+          "lng": 121.152845,
+          "address": "兆丰路18号亚太广场5号楼20层",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "上海市苏州河沿岸，原文苏州路具体路段待核",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-20-image-context.json",
+        "sha256": "d5c24fefa5387ad3dc49a49f00c728b257d59949f73c414f0a53c767063f3726",
+        "mentionIds": [
+          9924
+        ],
+        "conclusion": "原文P5位于苏州河漫步线路，原图为The Riverside沿街门面；旧兆丰路18号办公楼地址与图文冲突，具体河岸仍缺证据。"
+      },
+      {
+        "kind": "reviewed_current_identity_snapshot",
+        "file": "all-cities/audit/run-14/snapshot.json",
+        "sha256": "304e7d3e0a4c2123576342a6b5a494489b8443a54c33abc0f610f7b94553223e",
+        "conclusion": "请求根与revision来自冻结实库审计，不重放已合并旧成员；前序batch-02、11在隔离库重建后验证相同版本。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-20-003",
+    "city": "上海",
+    "entityId": "2db9dd317f84c8e10dcd4f576cbe8f3a",
+    "mergeEntityIds": [],
+    "canonicalName": "北苏州路",
+    "expectedRevisions": {
+      "2db9dd317f84c8e10dcd4f576cbe8f3a": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市苏州河北岸，原文北苏州路漫步路段",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "原文及P2乍浦路桥、陆家嘴天际线支持中心城区苏州河畔；旧31.557167/121.214662远端点没有地址或POI支持。",
+        "sourcePlaceIds": [
+          "4692"
+        ],
+        "mentions": [
+          {
+            "id": "9921",
+            "name": "北苏州路",
+            "quote": "避开人群，是苏州河畔一日游！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0f1b3f0000000038037818"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4692",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "旧点与原文中心城区苏州河范围矛盾，未取得可靠精确点，经纬度成对清空；ID不变。",
+        "original": {
+          "lat": 31.557167,
+          "lng": 121.214662,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "上海市苏州河北岸，原文北苏州路漫步路段",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-20-image-context.json",
+        "sha256": "d5c24fefa5387ad3dc49a49f00c728b257d59949f73c414f0a53c767063f3726",
+        "mentionIds": [
+          9921
+        ],
+        "conclusion": "原文及P2乍浦路桥、陆家嘴天际线支持中心城区苏州河畔；旧31.557167/121.214662远端点没有地址或POI支持。"
+      },
+      {
+        "kind": "reviewed_current_identity_snapshot",
+        "file": "all-cities/audit/run-14/snapshot.json",
+        "sha256": "304e7d3e0a4c2123576342a6b5a494489b8443a54c33abc0f610f7b94553223e",
+        "conclusion": "请求根与revision来自冻结实库审计，不重放已合并旧成员；前序batch-02、11在隔离库重建后验证相同版本。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-20-004",
+    "city": "上海",
+    "entityId": "ffa308a26ffdce1b639b8104b005b5ca",
+    "mergeEntityIds": [],
+    "canonicalName": "南苏州路",
+    "expectedRevisions": {
+      "ffa308a26ffdce1b639b8104b005b5ca": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市苏州河沿岸，原文南苏州路具体机位待核",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "原文P4列南苏州路、原图沿街咖啡店，旧经度120.402989显然不支持上海中心苏州河路线；不据未核门店推造坐标。",
+        "sourcePlaceIds": [
+          "4694"
+        ],
+        "mentions": [
+          {
+            "id": "9923",
+            "name": "南苏州路",
+            "quote": "人少景美的小众路线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0f1b3f0000000038037818"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4694",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "旧点与原文中心城区苏州河范围矛盾，未取得可靠精确点，经纬度成对清空；ID不变。",
+        "original": {
+          "lat": 31.228122,
+          "lng": 120.402989,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "上海市苏州河沿岸，原文南苏州路具体机位待核",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-20-image-context.json",
+        "sha256": "d5c24fefa5387ad3dc49a49f00c728b257d59949f73c414f0a53c767063f3726",
+        "mentionIds": [
+          9923
+        ],
+        "conclusion": "原文P4列南苏州路、原图沿街咖啡店，旧经度120.402989显然不支持上海中心苏州河路线；不据未核门店推造坐标。"
+      },
+      {
+        "kind": "reviewed_current_identity_snapshot",
+        "file": "all-cities/audit/run-14/snapshot.json",
+        "sha256": "304e7d3e0a4c2123576342a6b5a494489b8443a54c33abc0f610f7b94553223e",
+        "conclusion": "请求根与revision来自冻结实库审计，不重放已合并旧成员；前序batch-02、11在隔离库重建后验证相同版本。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "key": "all-cities-20261009-batch-50-source-5399-location",
+    "city": "济南",
+    "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+    "expectedRevisions": {
+      "2ccb52ac3eeda4ca713a2b7bd975b566": 1
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "VILLASHAKA",
+    "aliases": [
+      "VILLASHAKA"
+    ],
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_distinct_shop_subject",
+        "file": "priority-cities/济南/vintage-source-review-01.json",
+        "mentionId": 11535,
+        "quote": "VILLA SHAKA的墙超好拍，咖啡也很赞",
+        "conclusion": "同篇分别介绍的古着杂货铺和咖啡店保持独立，名称空格仅按现行键归一；不互借看点或同义合并。"
+      },
+      {
+        "kind": "unsupported_geocoder_point_cleared",
+        "file": "priority-cities/济南/vintage-geocode-provenance-01.json",
+        "conclusion": "两个不同名称均复现同一无POI猜测点，且命名检索无门店命中；清空消费坐标，原源保持，不能当作精确定位。"
+      },
+      {
+        "kind": "public_place_reference",
+        "file": "priority-cities/济南/vintage-reference-09.json",
+        "url": "https://m.map.360.cn?new=1&src=pc_shenbian&pid=e5ad4681923ba3db",
+        "conclusion": "纬四路店公开页面仅为分店候选；另有上新街文字记录，原笔记无明确店址，不将候选名、门牌或坐标加成当前实体身份。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-50-source-5398-location",
+    "city": "济南",
+    "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+    "expectedRevisions": {
+      "46bf3d4bc9d5aa019dd4a3184329e58a": 1
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "BLUEDUCK骨董屋",
+    "aliases": [
+      "BLUEDUCK骨董屋"
+    ],
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "category": "购物",
+      "address": "山东省济南市市中区经三路120号"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_distinct_shop_subject",
+        "file": "priority-cities/济南/vintage-source-review-01.json",
+        "mentionId": 11534,
+        "quote": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道",
+        "conclusion": "同篇分别介绍的古着杂货铺和咖啡店保持独立，名称空格仅按现行键归一；不互借看点或同义合并。"
+      },
+      {
+        "kind": "unsupported_geocoder_point_cleared",
+        "file": "priority-cities/济南/vintage-geocode-provenance-01.json",
+        "conclusion": "两个不同名称均复现同一无POI猜测点，且命名检索无门店命中；清空消费坐标，原源保持，不能当作精确定位。"
+      },
+      {
+        "kind": "public_place_reference",
+        "file": "priority-cities/济南/vintage-reference-05.json",
+        "url": "https://maps.apple.com/place?auid=1118368912447206&lsp=57879",
+        "conclusion": "地图中文全名及地址字段支持经三路120号，仅补文字地址，不用附近地点替代精确坐标。"
+      }
+    ]
+  }
+]

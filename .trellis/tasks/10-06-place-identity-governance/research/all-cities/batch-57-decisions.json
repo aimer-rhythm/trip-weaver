@@ -1,0 +1,93 @@
+[
+  {
+    "key": "all-cities-20261009-batch-57-source-5404-branch-name",
+    "city": "济南",
+    "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+    "expectedRevisions": {
+      "84929fb3085880c48c0cebb71aae3ad4": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "燕喜堂（CBD店）",
+    "aliases": [
+      "燕喜堂",
+      "燕喜堂（CBD店）"
+    ],
+    "overrides": {
+      "address": "CBD",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "qualify_branch_from_full_original",
+        "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+        "originalMentionIds": [
+          11537,
+          12863
+        ],
+        "conclusion": "原文完整名称和位置限定保留稳定ID/旧裸名；旧点不足以支持明确分店，燕喜堂旧金菊巷地址与CBD店冲突。位置清空待核，地址仅用原文范围，不发明门牌或借其他分店点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-57-source-5441-branch-name",
+    "city": "济南",
+    "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+    "expectedRevisions": {
+      "58d542ebe18a1dd3505b7cdc60db030c": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "刘小忙把子肉（联四路）",
+    "aliases": [
+      "刘小忙把子肉",
+      "刘小忙把子肉（联四路）"
+    ],
+    "overrides": {
+      "address": "联四路",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "qualify_branch_from_full_original",
+        "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+        "originalMentionIds": [
+          11644
+        ],
+        "conclusion": "原文完整名称和位置限定保留稳定ID/旧裸名；旧点不足以支持明确分店，燕喜堂旧金菊巷地址与CBD店冲突。位置清空待核，地址仅用原文范围，不发明门牌或借其他分店点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-57-source-5385-branch-name",
+    "city": "济南",
+    "entityId": "92a39f8f2d95070cc627828807686bac",
+    "expectedRevisions": {
+      "92a39f8f2d95070cc627828807686bac": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "亮亮拉面（经十一路）",
+    "aliases": [
+      "亮亮拉面",
+      "亮亮拉面（经十一路）"
+    ],
+    "overrides": {
+      "address": "经十一路",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "qualify_branch_from_full_original",
+        "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+        "originalMentionIds": [
+          11676
+        ],
+        "conclusion": "原文完整名称和位置限定保留稳定ID/旧裸名；旧点不足以支持明确分店，燕喜堂旧金菊巷地址与CBD店冲突。位置清空待核，地址仅用原文范围，不发明门牌或借其他分店点。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "key": "all-cities-20261009-batch-60-west-restaurant-location",
+    "city": "济南",
+    "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+    "expectedRevisions": {
+      "b8880b34d9a4e56942c76ea7a4e5555c": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "天天过年",
+    "aliases": [
+      "天天过年"
+    ],
+    "overrides": {
+      "address": "济南西周边",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "original_note_location_boundary",
+        "file": "priority-cities/济南/remaining-food-source-review-01.json",
+        "quote": "就在济南西旁边",
+        "conclusion": "保留原文西部位置限定，旧梁庄门牌与点位不继承；不伪造官方分店名，精确位置继续待核。"
+      }
+    ]
+  }
+]

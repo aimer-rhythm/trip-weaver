@@ -1,0 +1,43 @@
+[
+  {
+    "reviews": [1], "primary": "南京东路步行街", "canonicalName": "南京路步行街",
+    "reason": "本组两个名称均指南京东路上的步行街，原文10951明确从外滩向西经南京东路站至人民广场，并描述步行街小火车；不是南京西路或整条南京路。",
+    "geometryReason": "保留源4811明确落在南京东路步行街的定位；舍弃源4649凤阳路283号的错误匹配。",
+    "contexts": [{"file":"shanghai-batch02-context.json","mentionIds":[10951]}]
+  },
+  {
+    "reviews": [3,4,5,11], "primary": "外滩万国建筑博览群",
+    "reason": "四个名称均为外滩沿中山东一路历史建筑群的整体称呼。10960原文明示外滩沿路的租界时期建筑，10993原文描述外滩江景与建筑群亮灯；不并入单体建筑或北外滩。",
+    "geometryReason": "原定位31.248724/121.496482落在北外滩，另一成员落在更南部，均不能代表该建筑群；清空错误精确坐标，地址保留到中山东一路。",
+    "overrides": {"lat":null,"lng":null,"geoStatus":"unresolvable","address":"上海市黄浦区中山东一路"},
+    "contexts": [{"file":"shanghai-batch02-context.json","mentionIds":[10960,10993]}]
+  },
+  {
+    "reviews": [16], "primary": "新天安堂",
+    "reason": "新天安堂与新天安教堂均指苏州河口南岸同一红砖教堂，百科馆址与拍摄路线原文相符；不与天安堂混淆。",
+    "geometryReason": "原坐标31.221952/121.475342不在苏州河口；清空错误坐标，按已抓取资料修订为南苏州路103号。",
+    "overrides": {"lat":null,"lng":null,"geoStatus":"unresolvable","address":"上海市黄浦区南苏州路103号"},
+    "sources": ["shanghai-new-union-fetch.json"],
+    "contexts": [{"file":"shanghai-batch02-context.json","mentionIds":[10396,11119]}]
+  },
+  {
+    "reviews": [17], "primary": "北外滩小巨蛋",
+    "reason": "巨蛋和小巨蛋均为北外滩国客中心滨江的同一镜面装置简称，11135给出国客中心上楼到达路线，10396描述镜面效果，10403列举该免费机位。原始提及确认可独立游览，批准缺坐标实体导出。",
+    "geometryReason": "两条源记录均无可靠坐标，保持null，不借用国客中心主体或其他机位坐标。",
+    "overrides": {"lat":null,"lng":null,"geoStatus":"unresolvable","address":"上海市虹口区北外滩滨江国客中心附近","exportApproved":true},
+    "contexts": [{"file":"shanghai-batch02-context.json","mentionIds":[10403,11135,10396]}]
+  },
+  {
+    "reviews": [18], "primary": "东长治路旅顺路", "canonicalName": "东长治路与旅顺路交口",
+    "reason": "两个名称都明确指定同一对道路的交叉口，10398与10975分别在原始拍摄机位列表列出该路口；不并入整条道路或相邻交叉口。",
+    "geometryReason": "保留源4736明确道路交叉口地址及现有定位，不用另一条无坐标记录覆盖。",
+    "contexts": [{"file":"shanghai-batch02-context.json","mentionIds":[10396,10982]}]
+  },
+  {
+    "reviews": [38], "primary": "上海白玉兰观景台", "canonicalName": "The Stage上海白玉兰观景台",
+    "reason": "10934明确写The Stage；11025原文同样包含玻璃围栏、出口楼梯、红色旋梯和入场灯光走廊这一整套高空观景设施，确认同一观景台。SMP白玉兰观景台(审核40)只写免费，可能指低层露台，未并入。",
+    "geometryReason": "保留两条源记录一致的东长治路588号建筑定位，定位只代表建筑，不声称具体楼层坐标。",
+    "sources": ["shanghai-magnolia-official-fetch.json"],
+    "contexts": [{"file":"shanghai-batch02-context.json","mentionIds":[10934,11025,10982]}]
+  }
+]

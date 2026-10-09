@@ -1,0 +1,53 @@
+{
+  "city": "成都",
+  "before": 49,
+  "after": 49,
+  "directBefore": 15,
+  "directAfter": 14,
+  "changed": [
+    {
+      "from": "武侯祠",
+      "to": "锦里",
+      "fromEntityId": "300d2ae16b4e2787a84d7661a06f580e",
+      "toEntityId": "8a433260acdd259716088f8009e0fbdc",
+      "fromRevision": 1,
+      "toRevision": 3,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 945,
+          "textHash": "1ab69ae2e4e95f63a17d01a07cb9b1ffb7018f543debd3a714bb8834d7454257",
+          "from": {
+            "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+            "revision": 1,
+            "start": 175,
+            "end": 178,
+            "surface": "武侯祠",
+            "mentions": [
+              {
+                "mentionId": 3883,
+                "inputHash": "22625c4276b8de955f5ba52c831933ebe8085daea49d4bfbc4b31679b58bd826"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "8a433260acdd259716088f8009e0fbdc",
+            "revision": 3,
+            "start": 179,
+            "end": 183,
+            "surface": "锦里古街",
+            "mentions": [
+              {
+                "mentionId": 3884,
+                "inputHash": "b0565d22472d39379db7fd0829e21494c100447638f3a5d21a7bf35ebca4e0f7"
+              }
+            ]
+          },
+          "quote": "武侯祠→锦里古街"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

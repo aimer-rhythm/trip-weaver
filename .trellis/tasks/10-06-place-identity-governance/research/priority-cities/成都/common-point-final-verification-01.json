@@ -1,0 +1,49 @@
+{
+  "batch": 67,
+  "at": "2026-10-09T00:45:26.554Z",
+  "stats": {
+    "positive": 336,
+    "boundaries": 113,
+    "withdrawals": 52,
+    "pending": 313
+  },
+  "rootTypecheck": true,
+  "extendedTypecheck": true,
+  "installedManifestHashesVerified": 64,
+  "productionCodeChanged": false,
+  "isolatedSqlAndExport": true,
+  "reverseRollback": true,
+  "actualConsumptionTestPassed": true,
+  "sourceFile": "all-cities/batch-67-source.json",
+  "consumptionFile": "all-cities/batch-67/sync-01/common-point-consumption-1791506505899.json",
+  "postFile": "all-cities/batch-67/sync-01/post-import-check-1791506544646.json",
+  "dualFile": "all-cities/batch-67/sync-01/preview-成都/preview-1791506407109.json",
+  "inputsFile": "priority-cities/成都/common-point-inputs-check-01.json",
+  "scopesAdded": 0,
+  "assignmentsAdded": 0,
+  "pendingAdded": 0,
+  "coordinatesCleared": 4,
+  "preciseLocationsResolved": 0,
+  "chengdu": {
+    "primary": 113,
+    "dependencies": 3,
+    "fullyReviewed": 0,
+    "remaining": 113,
+    "partialScope": 2,
+    "partialLocation": 4,
+    "otherPending": 107,
+    "clearedPointPending": 6,
+    "cityWideAssignments": 41
+  },
+  "jinanLedgerPreserved": "review-45",
+  "oldCanonicalMediaProbes": 372,
+  "oldNameMockEnqueues": {
+    "before": 359,
+    "after": 359
+  },
+  "actualEnqueues": 0,
+  "imageComparison": "deferred_by_user",
+  "mapCredentialStatus": "rotation_required",
+  "userAcceptance": false,
+  "failures": []
+}

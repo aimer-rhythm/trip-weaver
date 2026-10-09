@@ -1,0 +1,34 @@
+[
+  {
+    "key": "all-cities-20261009-batch-41-platform-scope",
+    "city": "济南",
+    "sourcePlaceId": 5945,
+    "expectedSourceHash": "18c07ab8ad381f2f524864e0ea00153e5809c07d543dff551ccf964b9e5e1b89",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "2c8372d3a47dbcb68abd998af495436d": 2
+    },
+    "assignments": [
+      {
+        "mentionId": 12653,
+        "inputHash": "f2f6ce1bb4c9f0e69a8c33d33cc99226fd92918f3251ce56d0a589e196e0b955",
+        "entityId": "2c8372d3a47dbcb68abd998af495436d"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_text_platform_scope",
+        "file": "priority-cities/济南/platform-source-review-01.json",
+        "sha256": "2bec436ed2b57d4a916fbc7ada9de21fadc50c01a473909093d319048d9c1689",
+        "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+        "mentionIds": [
+          12653
+        ],
+        "sourcePlaceIds": [
+          5945
+        ],
+        "conclusion": "茶馆仅为导航参照，推荐主体为茶馆前平台；保留原稳定ID及有效摄影描述，排除茶馆裸名同义，细分类改photo_spot。"
+      }
+    ]
+  }
+]

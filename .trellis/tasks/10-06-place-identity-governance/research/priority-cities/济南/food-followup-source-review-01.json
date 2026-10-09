@@ -1,0 +1,47 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T20:28:56.966Z",
+  "sourcePacket": "priority-cities/济南/food-followup-source-packet-01.json",
+  "sourcePacketSha256": "10b28673fc9d28fb9d51b5f4a89e2860b48df16f2b5624fdaf520c239ece95f3",
+  "sources": 5,
+  "mentions": 14,
+  "fullNotes": 3,
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "rows": [
+    {
+      "sourceId": 5343,
+      "name": "桥下把子肉",
+      "status": "text_reviewed_location_pending",
+      "conclusion": "note2585山大南路蜀易火锅隔壁与note2602二环东路山大南路街区描述相容，三提及两全文的餐饮推荐均有效；现有山大南路东段5-12门牌/坐标未新增验证，不改写。"
+    },
+    {
+      "sourceId": 5342,
+      "name": "秦记火烧",
+      "status": "resolved_scope_batch52_partial",
+      "conclusion": "4提及3全文，铜元局前街两同篇提及确认；混合多位置和裸名分别待审，详见qinji-source-review-01.json。"
+    },
+    {
+      "sourceId": 5331,
+      "name": "许记排骨",
+      "status": "text_reviewed_location_pending",
+      "conclusion": "note2585明确县东巷71号，note2856仅裸名。当前地址空，旧坐标未新核；需核对具体门店和位置，不自动把裸名当新分店或多个独立坐标证据。"
+    },
+    {
+      "sourceId": 5345,
+      "name": "华祥糕点",
+      "status": "text_reviewed_location_pending",
+      "conclusion": "note2585明确大观园南门西行100米路北，现有永长街23号正东方向200米与原文不同，需核门店。既有第16图文字分析支持糕点/糖葫芦，但不提供额外门牌；未查看原图，不确认图像主体。"
+    },
+    {
+      "sourceId": 5340,
+      "name": "蜗牛叔叔的食堂",
+      "status": "text_reviewed_location_pending",
+      "conclusion": "note2585仅写泉城路，现有地址细化至西首狮子口街牛阵烧烤斜对面，原文不足以新增确认该细节；推荐事实保留，位置待核。"
+    }
+  ],
+  "nonTargetProductionMutations": false,
+  "fullReviewsAdded": 0,
+  "imageComparison": "deferred_by_user",
+  "mapNetworkRequests": 0
+}

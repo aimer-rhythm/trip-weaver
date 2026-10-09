@@ -1,0 +1,5980 @@
+{
+  "taskCompleted": false,
+  "userAcceptance": false,
+  "ranking": "ranking-07.json",
+  "newAppliedBatches": [
+    72,
+    73,
+    74,
+    75,
+    76
+  ],
+  "scoreRepairSync": "batch-76/sync-01",
+  "knownIncorrectAliases": [
+    {
+      "name": "石景山公园",
+      "wrongTarget": "景山公园",
+      "fixed": false
+    }
+  ],
+  "newAppliedEntities": [
+    "00ce68d2675b99bab94be58c313cecd2",
+    "0854db5911778c6722637d896e9c2904",
+    "095c9ad1154f22e3f250b90b970cc064",
+    "0f3bfc53c2a77e85d2c1699c7c90fd10",
+    "21152db5b05aff609cffa2bee47f16b4",
+    "2caab5c5038a94f91657ae16110dd56e",
+    "3ea0e95d52c33d849ac3e82657a13ec9",
+    "46bf462d545dc6435d6de296ba099d0f",
+    "4c43da4bfc3095a1bd5b60ed08a0b15d",
+    "4d453b43bd9156f2b638278e661c924f",
+    "5a7032e41c7f71c7391ac428540c1f47",
+    "6ed737543bd4e4f550f0fd357c9e8c71",
+    "8b0d6cedb415cab8ca0c54e5103b8107",
+    "981bfe8125feb36e052dcfee1e0df8b5",
+    "9848af6527dee0b6806678da781b39bf",
+    "9ba25c15e2bf6a684e4e981e196bc0d6",
+    "a76a124615e676af06c7a75968519280",
+    "c5250326550bc954a0a07f41679bf87f",
+    "d4a51a5df56f78c9de0713d86ea8c00c",
+    "fde55b90529621c6f3ba9a237046a7ee"
+  ],
+  "rows": [
+    {
+      "entityId": "b6ec2465aa41e71e52ccc69159af4d21",
+      "city": "北京",
+      "name": "故宫博物院",
+      "revision": 1,
+      "aliases": [
+        "故宫",
+        "故宫博物馆"
+      ],
+      "sourceIds": [
+        1316,
+        2075
+      ],
+      "sourceNames": [
+        "故宫博物院",
+        "故宫博物馆"
+      ],
+      "effectiveType": "attraction",
+      "score": 137.64,
+      "downstreamScore": 137.64,
+      "mentionCount": 55,
+      "noteCount": 48,
+      "uncertainMentionIds": [
+        3407
+      ],
+      "allAssignedScore": 140.16,
+      "potentialScore": 141.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1987,
+        2029,
+        2082,
+        2162,
+        2228,
+        2344,
+        2390,
+        2495,
+        2613,
+        2615,
+        2619,
+        2646,
+        2656,
+        2794,
+        2814,
+        2846,
+        2853,
+        3017,
+        3119,
+        3147,
+        3169,
+        3181,
+        3288,
+        3312,
+        3333,
+        3347,
+        3360,
+        3372,
+        3379,
+        4283,
+        4333,
+        4334,
+        4368,
+        4400,
+        4436,
+        4470,
+        4524,
+        4534,
+        4535,
+        4568,
+        4595,
+        4596,
+        4694,
+        4766,
+        4767,
+        4880,
+        4884,
+        4951,
+        4954,
+        5035,
+        5138,
+        5157,
+        5206,
+        5212,
+        5226
+      ],
+      "legacyIds": [
+        "b6ec2465aa41e71e52ccc69159af4d21",
+        "bff8ab19fc09063469bc423a8b529535"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 1,
+      "catalogChecksPassed": true,
+      "reviewNote": "故宫与故宫博物馆为现有别名；角楼、御花园、门和藻井不能按子串归为同义名。3407为藻井名称，须辨认真实主体。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "e923c2c7c9979a00115ca226a0374f91",
+      "city": "北京",
+      "name": "天坛公园",
+      "revision": 1,
+      "aliases": [
+        "天坛"
+      ],
+      "sourceIds": [
+        929
+      ],
+      "sourceNames": [
+        "天坛公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 110.53,
+      "downstreamScore": 110.53,
+      "mentionCount": 43,
+      "noteCount": 40,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 110.53,
+      "potentialScore": 110.53,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2163,
+        2366,
+        2367,
+        2535,
+        2592,
+        2629,
+        2652,
+        2664,
+        2700,
+        2801,
+        2825,
+        2847,
+        2938,
+        3014,
+        3050,
+        3183,
+        3293,
+        3348,
+        3366,
+        3384,
+        4379,
+        4392,
+        4435,
+        4442,
+        4467,
+        4474,
+        4498,
+        4522,
+        4569,
+        4594,
+        4650,
+        4696,
+        4852,
+        4888,
+        4959,
+        5008,
+        5044,
+        5083,
+        5109,
+        5167,
+        5205,
+        5233,
+        5265
+      ],
+      "legacyIds": [
+        "e923c2c7c9979a00115ca226a0374f91"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 2,
+      "catalogChecksPassed": true,
+      "reviewNote": "天坛为现有别名；祈年殿、东门、西门和摄影机位仍需保持粒度区别。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "981bfe8125feb36e052dcfee1e0df8b5",
+      "city": "北京",
+      "name": "景山公园",
+      "revision": 4,
+      "aliases": [
+        "景山",
+        "石景山公园"
+      ],
+      "sourceIds": [
+        1063,
+        1508
+      ],
+      "sourceNames": [
+        "景山公园",
+        "石景山公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 95.36,
+      "downstreamScore": 95.36,
+      "mentionCount": 37,
+      "noteCount": 33,
+      "uncertainMentionIds": [
+        2478,
+        3406
+      ],
+      "allAssignedScore": 100.37,
+      "potentialScore": 100.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2345,
+        2445,
+        2496,
+        2614,
+        2620,
+        2654,
+        2795,
+        2827,
+        2854,
+        3015,
+        3148,
+        3177,
+        3188,
+        3301,
+        3400,
+        4317,
+        4335,
+        4369,
+        4444,
+        4475,
+        4523,
+        4536,
+        4578,
+        4605,
+        4779,
+        4808,
+        4960,
+        5024,
+        5036,
+        5154,
+        5169,
+        5188,
+        5197,
+        5209,
+        5215,
+        5236,
+        5278
+      ],
+      "legacyIds": [
+        "981bfe8125feb36e052dcfee1e0df8b5",
+        "a94865355cdbf6fccfda6fc748b9e9fe",
+        "bfcd828439fa9f1f7ff85ab8b155f934"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "5278",
+              "name": "景山公园",
+              "quote": "步行到景山公园，无缝衔接",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9e040000000025035308"
+            },
+            {
+              "id": "5236",
+              "name": "景山公园",
+              "quote": "万春亭俯瞰紫禁城秋色",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+            },
+            {
+              "id": "5215",
+              "name": "景山公园",
+              "quote": "不能错过的机位",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fcc0c0000000029017b0d"
+            },
+            {
+              "id": "5209",
+              "name": "景山公园",
+              "quote": "门票仅2r，登顶直接把整座故宫框进视野",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a361add000000000702ce19"
+            },
+            {
+              "id": "3148",
+              "name": "石景山公园",
+              "quote": "一定要提前预约",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a8266f40000000022014e34"
+            }
+          ],
+          "reviewIds": [
+            112
+          ],
+          "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+          "sourcePlaceIds": [
+            "1063",
+            "1508"
+          ]
+        },
+        {
+          "lat": 39.925875,
+          "lng": 116.396551,
+          "kind": "primary_source_geometry",
+          "address": "景山西街44号",
+          "original": {
+            "lat": 39.925875,
+            "lng": 116.396551,
+            "address": "景山西街44号",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "沿用景山公园主源1063的GCJ-02公园参考点39.925875/116.396551、景山西街44号，符合原图故宫对面及主源多篇俯瞰故宫描述。误匹配首钢园的1508旧点不参与平均。",
+          "sourcePlaceId": "1063",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/batch-21-image-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "02841873a3ab4d7749c1e4866708713cb29929c139b2123fe53fc859fc042226",
+          "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+          "mentionIds": [
+            3148
+          ]
+        },
+        {
+          "file": "all-cities/audit/run-15/snapshot.json",
+          "kind": "reviewed_current_identity_snapshot",
+          "sha256": "2d0dc88f92642eb23eec377cbcc7c664b310bba9ad99378d8f5c30eaad15d626",
+          "conclusion": "两主体当前仍为各自稳定根且revision=1，与冻结原源一致；现行游乐园根通过batch-06依赖重建。"
+        },
+        {
+          "file": "photo-catalog-identity-audit-1791347549032.json",
+          "kind": "reviewed_full_source_and_downstream_snapshot",
+          "sha256": "1eb7a0b033a1ff9d890cd98788bd43c32ce59503ed44894de16ea269a3cf6e08",
+          "conclusion": "3015/note503与4475/note1087的原名景山已归一到景山公园，归属源1063。下游遗留xhs记录bfcd828439fa9f1f7ff85ab8b155f934无v2身份，地址景山西街44号和坐标与1063完全相同。补已核实简称并由正式别名ID认领机制纳入该历史ID，不另造实体、不合并万春亭/前街/崇祯自缢处，不改已核实公园坐标。"
+        },
+        {
+          "kind": "reviewed_legacy_alias",
+          "legacyId": "bfcd828439fa9f1f7ff85ab8b155f934",
+          "mentionIds": [
+            3015,
+            4475
+          ],
+          "originalNames": [
+            "景山",
+            "景山"
+          ],
+          "sourcePlaceId": 1063,
+          "normalizedNames": [
+            "景山公园",
+            "景山公园"
+          ]
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            2345,
+            2445,
+            2496,
+            2614,
+            2620,
+            2654,
+            2795,
+            2827,
+            2854,
+            3015,
+            3148,
+            3177,
+            3188,
+            3301,
+            3400,
+            4317,
+            4335,
+            4369,
+            4444,
+            4475,
+            4523,
+            4536,
+            4578,
+            4605,
+            4779,
+            4808,
+            4960,
+            5024,
+            5036,
+            5154,
+            5169,
+            5188,
+            5197,
+            5209,
+            5215,
+            5236,
+            5278
+          ],
+          "scoreAfter": 95.36,
+          "scoreBefore": 98,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 3,
+      "catalogChecksPassed": true,
+      "reviewNote": "明确缺陷、尚未修复：石景山公园不是全局同义名。第21批把504笔记中3148的一次误写纠正扩大成实体合并，新同名提及仍会误归景山；详见《景山误归并原因排查.md》。景山为正常别名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "60c5489433b6a9cc1dbcc7d5e402d418",
+      "city": "北京",
+      "name": "雍和宫",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        724
+      ],
+      "sourceNames": [
+        "雍和宫"
+      ],
+      "effectiveType": "attraction",
+      "score": 93.31,
+      "downstreamScore": 93.31,
+      "mentionCount": 36,
+      "noteCount": 34,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 93.31,
+      "potentialScore": 93.31,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1887,
+        1936,
+        1949,
+        1989,
+        2101,
+        2190,
+        2274,
+        2302,
+        2451,
+        2498,
+        2555,
+        2625,
+        2715,
+        2732,
+        2824,
+        2907,
+        3175,
+        3292,
+        3392,
+        4266,
+        4374,
+        4476,
+        4544,
+        4571,
+        4588,
+        4753,
+        4765,
+        4946,
+        4950,
+        4961,
+        4984,
+        5032,
+        5064,
+        5078,
+        5180,
+        5230
+      ],
+      "legacyIds": [
+        "60c5489433b6a9cc1dbcc7d5e402d418"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 4,
+      "catalogChecksPassed": true,
+      "reviewNote": "与雍和宫大街、法物流通处及周边店铺有明确主体区别。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "21152db5b05aff609cffa2bee47f16b4",
+      "city": "北京",
+      "name": "天安门广场",
+      "revision": 3,
+      "aliases": [
+        "天安门"
+      ],
+      "sourceIds": [
+        690,
+        1163
+      ],
+      "sourceNames": [
+        "天安门",
+        "天安门广场"
+      ],
+      "effectiveType": "attraction",
+      "score": 82.09,
+      "downstreamScore": 82.09,
+      "mentionCount": 32,
+      "noteCount": 29,
+      "uncertainMentionIds": [
+        3377
+      ],
+      "allAssignedScore": 84.48,
+      "potentialScore": 86.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1854,
+        2343,
+        2391,
+        2494,
+        2618,
+        2658,
+        2793,
+        2852,
+        2956,
+        3019,
+        3076,
+        3122,
+        3146,
+        3170,
+        3180,
+        3290,
+        3349,
+        3359,
+        4251,
+        4332,
+        4367,
+        4468,
+        4533,
+        4560,
+        4851,
+        4955,
+        5031,
+        5034,
+        5136,
+        5168,
+        5204,
+        5264
+      ],
+      "legacyIds": [
+        "21152db5b05aff609cffa2bee47f16b4",
+        "298e600416cbc4f85119932e8a3c966c"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            2494,
+            2618,
+            2658,
+            2793,
+            2852,
+            2956,
+            3170,
+            3180,
+            3290,
+            4367,
+            4533,
+            4955,
+            5031,
+            5034,
+            5136,
+            5168
+          ],
+          "scoreAfter": 42.44,
+          "scoreBefore": 44.74,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        },
+        {
+          "date": "2026-10-09",
+          "kind": "explicit_user_identity_review",
+          "quote": "天安门与天安门广场合并为一个地点",
+          "conclusion": "依用户明确审核按行程地点合并两条现行根，主名天安门广场，天安门为检索别名；不是地理上宣称城楼建筑等于广场。仅合并指定两根，城楼、升降旗、金水桥、安检口、地下通道与地铁口不并入。"
+        },
+        {
+          "kind": "frozen_live_state",
+          "conclusion": "原始来源、提及与历史引用保留，重算唯一提及与笔记分数，不相加两个旧分数；原主源1163的坐标及网页介绍继续优先。",
+          "mentionIds": [
+            1854,
+            2343,
+            2391,
+            2494,
+            2618,
+            2658,
+            2793,
+            2852,
+            2956,
+            3019,
+            3076,
+            3122,
+            3146,
+            3170,
+            3180,
+            3290,
+            3349,
+            3359,
+            4251,
+            4332,
+            4367,
+            4468,
+            4533,
+            4560,
+            4851,
+            4955,
+            5031,
+            5034,
+            5136,
+            5168,
+            5204,
+            5264
+          ],
+          "snapshotSha256": "ff6e8f0d7a6f4e4d4969a990a8d929550ff9e65141b0d502d7ff86027d719853",
+          "sourcePlaceIds": [
+            690,
+            1163
+          ]
+        }
+      ],
+      "rank": 5,
+      "catalogChecksPassed": true,
+      "reviewNote": "第75批按用户明确决定将天安门合并为同一行程地点；两名与旧ID均指向本ID，32提及/82.09分。城楼、升降旗、安检口等仍独立，城楼周一闭馆未引入广场。此决定不等于所有提及的事实均已复核。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "095c9ad1154f22e3f250b90b970cc064",
+      "city": "北京",
+      "name": "颐和园",
+      "revision": 2,
+      "aliases": [],
+      "sourceIds": [
+        661
+      ],
+      "sourceNames": [
+        "颐和园"
+      ],
+      "effectiveType": "attraction",
+      "score": 75.31,
+      "downstreamScore": 75.31,
+      "mentionCount": 29,
+      "noteCount": 26,
+      "uncertainMentionIds": [
+        1878,
+        3295
+      ],
+      "allAssignedScore": 80.19,
+      "potentialScore": 81.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1824,
+        2350,
+        2502,
+        2630,
+        2662,
+        2698,
+        2799,
+        2822,
+        2970,
+        3049,
+        3120,
+        3145,
+        3171,
+        3179,
+        3205,
+        3320,
+        3334,
+        4340,
+        4341,
+        4380,
+        4472,
+        4572,
+        4692,
+        4723,
+        4958,
+        5012,
+        5050,
+        5140,
+        5238
+      ],
+      "legacyIds": [
+        "095c9ad1154f22e3f250b90b970cc064"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1824,
+            2350,
+            2502,
+            2630,
+            2662,
+            2698,
+            2799,
+            2822,
+            2970,
+            3049,
+            3120,
+            3145,
+            3171,
+            3179,
+            3205,
+            3320,
+            3334,
+            4340,
+            4341,
+            4380,
+            4472,
+            4572,
+            4692,
+            4723,
+            4958,
+            5012,
+            5050,
+            5140,
+            5238
+          ],
+          "scoreAfter": 75.31,
+          "scoreBefore": 80.19,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 6,
+      "catalogChecksPassed": true,
+      "reviewNote": "1878/3295实际为冰场语境，本轮不治理活动或设施；其旧分数不能直接继承为景点推荐分。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "5a7032e41c7f71c7391ac428540c1f47",
+      "city": "北京",
+      "name": "什刹海",
+      "revision": 2,
+      "aliases": [],
+      "sourceIds": [
+        668
+      ],
+      "sourceNames": [
+        "什刹海"
+      ],
+      "effectiveType": "attraction",
+      "score": 74.0,
+      "downstreamScore": 74,
+      "mentionCount": 28,
+      "noteCount": 26,
+      "uncertainMentionIds": [
+        2075,
+        2312,
+        2798,
+        2807,
+        3239,
+        4462,
+        5040,
+        5093,
+        5131
+      ],
+      "allAssignedScore": 95.5,
+      "potentialScore": 95.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1831,
+        1905,
+        1954,
+        1985,
+        2100,
+        2196,
+        2249,
+        2347,
+        2387,
+        2501,
+        2559,
+        2622,
+        2859,
+        2939,
+        3143,
+        3178,
+        3362,
+        4337,
+        4371,
+        4479,
+        4575,
+        4651,
+        4733,
+        4755,
+        5027,
+        5084,
+        5110,
+        5244
+      ],
+      "legacyIds": [
+        "5a7032e41c7f71c7391ac428540c1f47"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1831,
+            1905,
+            1954,
+            1985,
+            2100,
+            2196,
+            2249,
+            2347,
+            2387,
+            2501,
+            2559,
+            2622,
+            2859,
+            2939,
+            3143,
+            3178,
+            3362,
+            4337,
+            4371,
+            4479,
+            4575,
+            4651,
+            4733,
+            4755,
+            5027,
+            5084,
+            5110,
+            5244
+          ],
+          "scoreAfter": 74.0,
+          "scoreBefore": 95.5,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 7,
+      "catalogChecksPassed": true,
+      "reviewNote": "原来源混有后海、西海湿地；目前既未逐提及拆分，也不能把湖区子项统一当什刹海同义词。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "4d453b43bd9156f2b638278e661c924f",
+      "city": "北京",
+      "name": "八达岭长城",
+      "revision": 2,
+      "aliases": [
+        "八达岭"
+      ],
+      "sourceIds": [
+        982
+      ],
+      "sourceNames": [
+        "八达岭长城"
+      ],
+      "effectiveType": "attraction",
+      "score": 71.25,
+      "downstreamScore": 71.25,
+      "mentionCount": 28,
+      "noteCount": 23,
+      "uncertainMentionIds": [
+        3144,
+        3390,
+        5098
+      ],
+      "allAssignedScore": 78.05,
+      "potentialScore": 79.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2823,
+        2969,
+        3021,
+        3172,
+        3184,
+        3294,
+        3302,
+        3311,
+        3343,
+        3370,
+        4473,
+        4580,
+        4656,
+        4657,
+        4921,
+        4922,
+        4957,
+        5007,
+        5057,
+        5094,
+        5103,
+        5129,
+        5151,
+        5214,
+        5216,
+        5253,
+        5271,
+        5272
+      ],
+      "legacyIds": [
+        "360eed12bb97fb2e664deac11e6ab065",
+        "4d453b43bd9156f2b638278e661c924f"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            2823,
+            2969,
+            3021,
+            3172,
+            3184,
+            3294,
+            3302,
+            3311,
+            3343,
+            3370,
+            4473,
+            4580,
+            4656,
+            4657,
+            4921,
+            4922,
+            4957,
+            5007,
+            5057,
+            5094,
+            5103,
+            5129,
+            5151,
+            5214,
+            5216,
+            5253,
+            5271,
+            5272
+          ],
+          "scoreAfter": 71.25,
+          "scoreBefore": 78.05,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 8,
+      "catalogChecksPassed": true,
+      "reviewNote": "八达岭为现有别名；长城泛称、南线与活动不能都凭 normalized_name 自动认领。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "9848af6527dee0b6806678da781b39bf",
+      "city": "北京",
+      "name": "国家博物馆",
+      "revision": 3,
+      "aliases": [
+        "中国国家博物馆",
+        "国博"
+      ],
+      "sourceIds": [
+        686,
+        1300
+      ],
+      "sourceNames": [
+        "国博",
+        "国家博物馆"
+      ],
+      "effectiveType": "attraction",
+      "score": 66.88,
+      "downstreamScore": 66.88,
+      "mentionCount": 26,
+      "noteCount": 24,
+      "uncertainMentionIds": [
+        4375
+      ],
+      "allAssignedScore": 69.46,
+      "potentialScore": 71.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1850,
+        1995,
+        2030,
+        2125,
+        2368,
+        2369,
+        2489,
+        2657,
+        2802,
+        2815,
+        3018,
+        3118,
+        3174,
+        3182,
+        3289,
+        3363,
+        3373,
+        3380,
+        3417,
+        4288,
+        4450,
+        4469,
+        4762,
+        4885,
+        4956,
+        5033
+      ],
+      "legacyIds": [
+        "105e6caccc4d1de89542c455a2b205e7",
+        "764be63cecf6047b3b691d1cb0210441",
+        "9848af6527dee0b6806678da781b39bf"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "photo-catalog-identity-audit-1791347549032.json",
+          "kind": "reviewed_full_source_and_downstream_snapshot",
+          "sha256": "1eb7a0b033a1ff9d890cd98788bd43c32ce59503ed44894de16ea269a3cf6e08",
+          "conclusion": "1300国博的4条原始提及3174/3363/4469/4885分别为展厅参观或北京景点/交通清单，没有西门设施语义。641明确国博「古代中国」展厅和入馆游览；395原文同一段先称国家博物馆后称国博，503同篇也交替使用。归并到主源686现有身份及场馆坐标，不沿用1300西门外北侧的地图匹配，不并入国博马年展或附近未具名面店。"
+        },
+        {
+          "kind": "reviewed_mentions",
+          "quotes": [
+            "09:30-11:30📍国家博物馆（提前预约！！！）\n文化历史的熏陶，国博还是很有趣。",
+            "必看：「古代中国」展厅，16:00停止入馆，预留3h以上游览时间"
+          ],
+          "noteIds": [
+            395,
+            503,
+            641,
+            691,
+            1087,
+            1122
+          ],
+          "mentionIds": [
+            1995,
+            3018,
+            3174,
+            3363,
+            4469,
+            4885
+          ]
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1850,
+            1995,
+            2030,
+            2125,
+            2368,
+            2369,
+            2489,
+            2657,
+            2802,
+            2815,
+            3018,
+            3118,
+            3174,
+            3182,
+            3289,
+            3363,
+            3373,
+            3380,
+            3417,
+            4288,
+            4450,
+            4469,
+            4762,
+            4885,
+            4956,
+            5033
+          ],
+          "scoreAfter": 66.88,
+          "scoreBefore": 59.33,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 9,
+      "catalogChecksPassed": true,
+      "reviewNote": "已合并中国国家博物馆/国博；4375为带抽取说明的装饰名称，需依据原文处理，不能把说明文字直接当正式别名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "4c43da4bfc3095a1bd5b60ed08a0b15d",
+      "city": "北京",
+      "name": "北海公园",
+      "revision": 3,
+      "aliases": [
+        "北海"
+      ],
+      "sourceIds": [
+        1036,
+        1425
+      ],
+      "sourceNames": [
+        "北海",
+        "北海公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 63.79,
+      "downstreamScore": 63.79,
+      "mentionCount": 24,
+      "noteCount": 22,
+      "uncertainMentionIds": [
+        1883
+      ],
+      "allAssignedScore": 66.1,
+      "potentialScore": 66.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2311,
+        2446,
+        2572,
+        2730,
+        2813,
+        3012,
+        3016,
+        3047,
+        3087,
+        4362,
+        4477,
+        4501,
+        4573,
+        4629,
+        4887,
+        4907,
+        4908,
+        5014,
+        5026,
+        5039,
+        5158,
+        5160,
+        5225,
+        5237
+      ],
+      "legacyIds": [
+        "4c43da4bfc3095a1bd5b60ed08a0b15d",
+        "f103c33b078ff95fb40a119f15ddaecb"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "5237",
+              "name": "北海公园",
+              "quote": "白塔映衬秋叶",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+            },
+            {
+              "id": "5225",
+              "name": "北海公园",
+              "quote": "白塔配秋叶 惬意感拉满",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a942f2200000000070057c7"
+            },
+            {
+              "id": "5160",
+              "name": "北海公园",
+              "quote": "下车就是北海公园南门",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aadf21d0000000012026b6f"
+            },
+            {
+              "id": "5158",
+              "name": "北海公园",
+              "quote": "可顺路连逛故宫、北海公园",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a99890700000000270149ba"
+            },
+            {
+              "id": "4573",
+              "name": "北海",
+              "quote": "北海、中山公园、什刹海",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/693a42c2000000001e0049d6"
+            },
+            {
+              "id": "3016",
+              "name": "北海",
+              "quote": "不用预约，直接冲",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aaca4fb0000000028003642"
+            }
+          ],
+          "reviewIds": [
+            111
+          ],
+          "conclusion": "3016以天坛、景山、北海并列介绍北京公园预约，4573同样为北京下雪公园清单，北海在本批指公园整体。",
+          "sourcePlaceIds": [
+            "1036",
+            "1425"
+          ]
+        },
+        {
+          "lat": 39.928775,
+          "lng": 116.391802,
+          "kind": "primary_source_geometry",
+          "address": "文津街1号",
+          "original": {
+            "lat": 39.928775,
+            "lng": 116.391802,
+            "address": "文津街1号",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "1036",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/beijing-batch06-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+          "conclusion": "3016以天坛、景山、北海并列介绍北京公园预约，4573同样为北京下雪公园清单，北海在本批指公园整体。",
+          "mentionIds": [
+            3016
+          ]
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            2311,
+            2446,
+            2572,
+            2730,
+            2813,
+            3012,
+            3016,
+            3047,
+            3087,
+            4362,
+            4477,
+            4501,
+            4573,
+            4629,
+            4887,
+            4907,
+            4908,
+            5014,
+            5026,
+            5039,
+            5158,
+            5160,
+            5225,
+            5237
+          ],
+          "scoreAfter": 63.79,
+          "scoreBefore": 61.07,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 10,
+      "catalogChecksPassed": true,
+      "reviewNote": "北海为现有别名；1883是冰场语境，活动不属于本轮写入范围。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "c1ebfebe6530b66b5ea493a890e6ad57",
+      "city": "北京",
+      "name": "鼓楼",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        662
+      ],
+      "sourceNames": [
+        "鼓楼"
+      ],
+      "effectiveType": "attraction",
+      "score": 63.29,
+      "downstreamScore": 63.29,
+      "mentionCount": 24,
+      "noteCount": 21,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 63.29,
+      "potentialScore": 63.29,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1825,
+        1903,
+        1983,
+        2097,
+        2194,
+        2244,
+        2275,
+        2276,
+        2349,
+        2449,
+        2624,
+        2756,
+        2857,
+        3299,
+        4339,
+        4373,
+        4486,
+        4734,
+        4926,
+        4932,
+        5029,
+        5042,
+        5112,
+        5113
+      ],
+      "legacyIds": [
+        "c1ebfebe6530b66b5ea493a890e6ad57"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 11,
+      "catalogChecksPassed": true,
+      "reviewNote": "鼓楼、钟楼、钟鼓楼组合及鼓楼大街须分别处理；源2419等仍需补查归属。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "45d586d0ed66597b8eb001ca0e52a883",
+      "city": "北京",
+      "name": "圆明园",
+      "revision": 2,
+      "aliases": [
+        "圆明园遗址公园"
+      ],
+      "sourceIds": [
+        989
+      ],
+      "sourceNames": [
+        "圆明园"
+      ],
+      "effectiveType": "attraction",
+      "score": 63.08,
+      "downstreamScore": 63.08,
+      "mentionCount": 24,
+      "noteCount": 21,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 63.08,
+      "potentialScore": 63.08,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2256,
+        2351,
+        2503,
+        2631,
+        2653,
+        2663,
+        2800,
+        2826,
+        3140,
+        3186,
+        3225,
+        4342,
+        4381,
+        4443,
+        4471,
+        4693,
+        4699,
+        4720,
+        4810,
+        4962,
+        5016,
+        5049,
+        5141,
+        5239
+      ],
+      "legacyIds": [
+        "45d586d0ed66597b8eb001ca0e52a883",
+        "6db73c56997f6d65ea8cc79a3ae85c35"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "retained-place-sources-1791366327590.json",
+          "kind": "reviewed_full_source_and_downstream_snapshot",
+          "sha256": "c23dde55d7f0176d3f91b57cb0a8cb197da879dbb323c19183bbee525629433f",
+          "conclusion": "同一篇标题和地点字段交替称圆明园/圆明园遗址公园，正文另分西洋楼遗址收费区和花海；补全园正式名，不吸收子项。"
+        },
+        {
+          "kind": "reviewed_legacy_alias",
+          "quotes": [
+            {
+              "quote": "去圆明园，不赏无人花海等于白玩了",
+              "noteId": 1051
+            },
+            {
+              "quote": "📍地点：圆明园遗址公园",
+              "noteId": 1051
+            }
+          ],
+          "goldset": [],
+          "noteIds": [
+            1051,
+            1051
+          ],
+          "legacyId": "6db73c56997f6d65ea8cc79a3ae85c35",
+          "mentionIds": [
+            4810,
+            5016
+          ],
+          "sourcePlaceId": 989
+        }
+      ],
+      "rank": 12,
+      "catalogChecksPassed": true,
+      "reviewNote": "圆明园遗址公园为现有别名；冰场、灯夜游、园门保持独立粒度。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "8b0d6cedb415cab8ca0c54e5103b8107",
+      "city": "北京",
+      "name": "地坛公园",
+      "revision": 2,
+      "aliases": [
+        "地坛"
+      ],
+      "sourceIds": [
+        763
+      ],
+      "sourceNames": [
+        "地坛公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 62.58,
+      "downstreamScore": 62.58,
+      "mentionCount": 24,
+      "noteCount": 20,
+      "uncertainMentionIds": [
+        2875
+      ],
+      "allAssignedScore": 65.1,
+      "potentialScore": 65.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1935,
+        1948,
+        2528,
+        2529,
+        2536,
+        2648,
+        2714,
+        2912,
+        2989,
+        3004,
+        3138,
+        3338,
+        4265,
+        4393,
+        4438,
+        4478,
+        4518,
+        4648,
+        4964,
+        4969,
+        5063,
+        5170,
+        5222,
+        5234
+      ],
+      "legacyIds": [
+        "8a8fcdcdbe358d521b293e8edfc203d7",
+        "8b0d6cedb415cab8ca0c54e5103b8107"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1935,
+            1948,
+            2528,
+            2529,
+            2536,
+            2648,
+            2714,
+            2912,
+            2989,
+            3004,
+            3138,
+            3338,
+            4265,
+            4393,
+            4438,
+            4478,
+            4518,
+            4648,
+            4964,
+            4969,
+            5063,
+            5170,
+            5222,
+            5234
+          ],
+          "scoreAfter": 62.58,
+          "scoreBefore": 65.1,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 13,
+      "catalogChecksPassed": true,
+      "reviewNote": "地坛为现有别名；2875北京地坛公园的内容涉及书市，需区分景点和活动事实。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "3ea0e95d52c33d849ac3e82657a13ec9",
+      "city": "北京",
+      "name": "南锣鼓巷",
+      "revision": 2,
+      "aliases": [],
+      "sourceIds": [
+        793
+      ],
+      "sourceNames": [
+        "南锣鼓巷"
+      ],
+      "effectiveType": "attraction",
+      "score": 62.38,
+      "downstreamScore": 62.38,
+      "mentionCount": 24,
+      "noteCount": 20,
+      "uncertainMentionIds": [
+        3189,
+        4453
+      ],
+      "allAssignedScore": 66.92,
+      "potentialScore": 67.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1982,
+        2248,
+        2346,
+        2375,
+        2500,
+        2563,
+        2621,
+        2797,
+        2810,
+        3141,
+        3361,
+        4336,
+        4370,
+        4452,
+        4465,
+        4480,
+        4589,
+        4739,
+        4758,
+        5030,
+        5043,
+        5116,
+        5117,
+        5175
+      ],
+      "legacyIds": [
+        "3ea0e95d52c33d849ac3e82657a13ec9"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1982,
+            2248,
+            2346,
+            2375,
+            2500,
+            2563,
+            2621,
+            2797,
+            2810,
+            3141,
+            3361,
+            4336,
+            4370,
+            4452,
+            4465,
+            4480,
+            4589,
+            4739,
+            4758,
+            5030,
+            5043,
+            5116,
+            5117,
+            5175
+          ],
+          "scoreAfter": 62.38,
+          "scoreBefore": 66.92,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 14,
+      "catalogChecksPassed": true,
+      "reviewNote": "与北锣鼓巷不同；两侧老胡同、鼓楼南锣鼓巷组合及主街记录需要界定范围。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "776fab58541a584cbcec16f191b529ad",
+      "city": "北京",
+      "name": "烟袋斜街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        736
+      ],
+      "sourceNames": [
+        "烟袋斜街"
+      ],
+      "effectiveType": "attraction",
+      "score": 58.5,
+      "downstreamScore": 58.5,
+      "mentionCount": 22,
+      "noteCount": 19,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 58.5,
+      "potentialScore": 58.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1904,
+        1908,
+        1984,
+        2099,
+        2348,
+        2561,
+        2623,
+        2757,
+        2806,
+        2858,
+        4338,
+        4372,
+        4461,
+        4653,
+        4704,
+        4738,
+        4756,
+        4931,
+        5028,
+        5041,
+        5086,
+        5133
+      ],
+      "legacyIds": [
+        "776fab58541a584cbcec16f191b529ad"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 15,
+      "catalogChecksPassed": true,
+      "reviewNote": "现有主体为街道；同游的鼓楼、银锭桥不构成同义关系。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "9e2083f1a246703d0827e8962a070f4f",
+      "city": "北京",
+      "name": "杨梅竹斜街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        667
+      ],
+      "sourceNames": [
+        "杨梅竹斜街"
+      ],
+      "effectiveType": "attraction",
+      "score": 49.0,
+      "downstreamScore": 49,
+      "mentionCount": 18,
+      "noteCount": 16,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 49.0,
+      "potentialScore": 49.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1830,
+        1917,
+        2003,
+        2111,
+        2152,
+        2175,
+        2234,
+        2253,
+        2439,
+        2553,
+        2727,
+        2755,
+        3423,
+        3426,
+        4257,
+        4295,
+        4645,
+        5046
+      ],
+      "legacyIds": [
+        "9e2083f1a246703d0827e8962a070f4f"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 16,
+      "catalogChecksPassed": true,
+      "reviewNote": "现有主体为街道；沿街书店、商户保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "b79f2141f3360f9b728d3b7777a29016",
+      "city": "北京",
+      "name": "前门大街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        745
+      ],
+      "sourceNames": [
+        "前门大街"
+      ],
+      "effectiveType": "attraction",
+      "score": 44.19,
+      "downstreamScore": 44.19,
+      "mentionCount": 16,
+      "noteCount": 15,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 44.19,
+      "potentialScore": 44.19,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1916,
+        2005,
+        2131,
+        2177,
+        2252,
+        2441,
+        2627,
+        2706,
+        2752,
+        2803,
+        2935,
+        3077,
+        3345,
+        3424,
+        4377,
+        4963
+      ],
+      "legacyIds": [
+        "b79f2141f3360f9b728d3b7777a29016"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 17,
+      "catalogChecksPassed": true,
+      "reviewNote": "前门泛称源895含片区和出行语境，不能直接整源归入前门大街。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "7fa4e63e1293630dd5555036283a638c",
+      "city": "北京",
+      "name": "慕田峪长城",
+      "revision": 2,
+      "aliases": [
+        "慕田峪"
+      ],
+      "sourceIds": [
+        1062
+      ],
+      "sourceNames": [
+        "慕田峪长城"
+      ],
+      "effectiveType": "attraction",
+      "score": 41.33,
+      "downstreamScore": 41.33,
+      "mentionCount": 15,
+      "noteCount": 14,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 41.33,
+      "potentialScore": 41.33,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2342,
+        2538,
+        2670,
+        3022,
+        3086,
+        3173,
+        3303,
+        3375,
+        4491,
+        4631,
+        4883,
+        5071,
+        5159,
+        5213,
+        5252
+      ],
+      "legacyIds": [
+        "7fa4e63e1293630dd5555036283a638c",
+        "8a9b43b4c4366617fb484b2cd1a91a7e"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "retained-place-sources-1791366327590.json",
+          "kind": "reviewed_full_source_and_downstream_snapshot",
+          "sha256": "c23dde55d7f0176d3f91b57cb0a8cb197da879dbb323c19183bbee525629433f",
+          "conclusion": "原提及4491景点清单的慕田峪指长城游览，与长城源1062及其他赏秋正文互证；不把慕田峪村登记为别名。"
+        },
+        {
+          "kind": "reviewed_legacy_alias",
+          "quotes": [
+            {
+              "quote": "五塔寺、慕田峪、动物园",
+              "noteId": 1087
+            },
+            {
+              "quote": "慕田峪长城：长城蜿蜒红叶山脊",
+              "noteId": 1128
+            }
+          ],
+          "goldset": [],
+          "noteIds": [
+            1087,
+            1128
+          ],
+          "legacyId": "8a9b43b4c4366617fb484b2cd1a91a7e",
+          "mentionIds": [
+            4491
+          ],
+          "sourcePlaceId": 1062
+        }
+      ],
+      "rank": 18,
+      "catalogChecksPassed": true,
+      "reviewNote": "慕田峪为现有别名；与八达岭长城保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "53388275c2fa846e3c8417d4f47daf72",
+      "city": "北京",
+      "name": "北锣鼓巷",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        675
+      ],
+      "sourceNames": [
+        "北锣鼓巷"
+      ],
+      "effectiveType": "attraction",
+      "score": 39.5,
+      "downstreamScore": 39.5,
+      "mentionCount": 14,
+      "noteCount": 13,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 39.5,
+      "potentialScore": 39.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1839,
+        1902,
+        1906,
+        2098,
+        2246,
+        2380,
+        2564,
+        2812,
+        3005,
+        3126,
+        3296,
+        3328,
+        4466,
+        5217
+      ],
+      "legacyIds": [
+        "53388275c2fa846e3c8417d4f47daf72"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 19,
+      "catalogChecksPassed": true,
+      "reviewNote": "与南锣鼓巷保持独立；南北锣鼓巷组合不是任一条街的别名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+      "city": "北京",
+      "name": "五道营胡同",
+      "revision": 2,
+      "aliases": [
+        "五道营"
+      ],
+      "sourceIds": [
+        725,
+        2448
+      ],
+      "sourceNames": [
+        "五道营",
+        "五道营胡同"
+      ],
+      "effectiveType": "attraction",
+      "score": 37.0,
+      "downstreamScore": 37,
+      "mentionCount": 13,
+      "noteCount": 12,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 37.0,
+      "potentialScore": 37.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1888,
+        1937,
+        1950,
+        2102,
+        2243,
+        2304,
+        2452,
+        2558,
+        2733,
+        2911,
+        4267,
+        5055,
+        5185
+      ],
+      "legacyIds": [
+        "bd35189ca9afcb8364b760d5c9279247",
+        "fde55b90529621c6f3ba9a237046a7ee"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\wudaoying-source-review.json",
+          "kind": "reviewed_same_hutong_sources",
+          "conclusion": "十三提及均指雍和宫/国子监周边五道营胡同；1052同篇使用短名和全名，1073的五道营段指整条街内多家店，school另有独立条目，不是把店铺并入胡同。2448旧market是同一胡同的类型误分，本批不处理街内商户或其它购物实体。",
+          "sourcePlaceIds": [
+            725,
+            2448
+          ]
+        }
+      ],
+      "rank": 20,
+      "catalogChecksPassed": true,
+      "reviewNote": "第74批已将源2448五道营归入源725五道营胡同，旧实体ID重定向；13条提及来自12篇笔记，分数37。原market是同一胡同类型误分，未合并街内商店。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "9ba25c15e2bf6a684e4e981e196bc0d6",
+      "city": "北京",
+      "name": "三里河公园",
+      "revision": 3,
+      "aliases": [
+        "三里河"
+      ],
+      "sourceIds": [
+        743,
+        1620
+      ],
+      "sourceNames": [
+        "三里河",
+        "三里河公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 35.0,
+      "downstreamScore": 35,
+      "mentionCount": 12,
+      "noteCount": 12,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 35.0,
+      "potentialScore": 35.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1914,
+        1947,
+        2107,
+        2231,
+        2251,
+        2443,
+        2550,
+        2724,
+        2894,
+        3422,
+        3430,
+        4649
+      ],
+      "legacyIds": [
+        "0f60a6ad77a4d518332d3dbf0d50ebfe",
+        "9ba25c15e2bf6a684e4e981e196bc0d6"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "3422",
+              "name": "三里河",
+              "quote": "走在河边会有一种城市突然安静下来的感觉",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/696ba454000000000a02c63d"
+            },
+            {
+              "id": "4649",
+              "name": "三里河公园",
+              "quote": "7️⃣三里河公园",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a98376500000000250354e9"
+            },
+            {
+              "id": "3430",
+              "name": "三里河公园",
+              "quote": "闹中取静的‘首都小江南’",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69bde0a5000000001a03076d"
+            },
+            {
+              "id": "2894",
+              "name": "三里河公园",
+              "quote": "北京本地人都不一定去过的小众秘境",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6839834b0000000012004f3e"
+            },
+            {
+              "id": "2724",
+              "name": "三里河公园",
+              "quote": "免费！就在前门脚下",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69bd6ee20000000023007be3"
+            }
+          ],
+          "reviewIds": [
+            76
+          ],
+          "conclusion": "3422完整原文从西兴隆街走到三里河再去杨梅竹斜街，明确前门河畔公园；不是西城三里河片区。采用公园主体定位。",
+          "sourcePlaceIds": [
+            "1620",
+            "743"
+          ]
+        },
+        {
+          "lat": 39.894304,
+          "lng": 116.40547,
+          "kind": "primary_source_geometry",
+          "address": "北京前门街道中芦草园胡同与草厂三条交叉口西40米",
+          "original": {
+            "lat": 39.894304,
+            "lng": 116.40547,
+            "address": "北京前门街道中芦草园胡同与草厂三条交叉口西40米",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "743",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/beijing-batch06-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+          "conclusion": "3422完整原文从西兴隆街走到三里河再去杨梅竹斜街，明确前门河畔公园；不是西城三里河片区。采用公园主体定位。",
+          "mentionIds": [
+            3422
+          ]
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1914,
+            1947,
+            2107,
+            2231,
+            2251,
+            2443,
+            2550,
+            2724,
+            2894,
+            3422,
+            3430,
+            4649
+          ],
+          "scoreAfter": 35.0,
+          "scoreBefore": 32.5,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 21,
+      "catalogChecksPassed": true,
+      "reviewNote": "三里河为现有别名，已合并两条来源；不等于三里河路钓鱼台银杏林。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "1b4da176d40c3a09cb1cbeb395e23149",
+      "city": "北京",
+      "name": "中山公园",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        831
+      ],
+      "sourceNames": [
+        "中山公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 34.5,
+      "downstreamScore": 34.5,
+      "mentionCount": 12,
+      "noteCount": 11,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 34.5,
+      "potentialScore": 34.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2534,
+        2647,
+        3314,
+        3339,
+        4391,
+        4437,
+        4485,
+        4574,
+        4695,
+        4865,
+        5220,
+        5227
+      ],
+      "legacyIds": [
+        "1b4da176d40c3a09cb1cbeb395e23149"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 22,
+      "catalogChecksPassed": true,
+      "reviewNote": "仅指本城实体；同名跨城公园不得互相归并。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "c5250326550bc954a0a07f41679bf87f",
+      "city": "北京",
+      "name": "恭王府",
+      "revision": 2,
+      "aliases": [
+        "恭王府博物馆"
+      ],
+      "sourceIds": [
+        1299
+      ],
+      "sourceNames": [
+        "恭王府"
+      ],
+      "effectiveType": "attraction",
+      "score": 33.33,
+      "downstreamScore": 33.33,
+      "mentionCount": 12,
+      "noteCount": 12,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 33.33,
+      "potentialScore": 33.33,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2034,
+        2796,
+        2821,
+        3020,
+        3240,
+        3291,
+        3382,
+        4740,
+        4754,
+        4834,
+        4886,
+        5085
+      ],
+      "legacyIds": [
+        "331da7586fc817261ce3ddb615736545",
+        "c5250326550bc954a0a07f41679bf87f"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": ".trellis/tasks/10-09-attraction-top30-governance/research/snapshot-20261009T081112091980Z/input.json",
+          "kind": "reviewed_attraction_alias",
+          "quote": "6. 恭王府博物馆",
+          "noteId": 408,
+          "inputHash": "d1b21fb4fb84eebc0a5a10a844194817e8728d4eba334069aa47dcd783343485",
+          "mentionId": 2034,
+          "conclusion": "原文明确博物馆全名，现行源1299为北京前海西街恭王府；补充同一景点的机构全名，不把府内建筑或花园单点并为别名。全城目录无另一同名实体。"
+        }
+      ],
+      "rank": 23,
+      "catalogChecksPassed": true,
+      "reviewNote": "本批72已应用：新增恭王府博物馆同义名，2034提及现可解析；主ID不变，SQL、真实向量及隔离消费链路通过。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "015e05c8be38ffb42eaf4238904907ce",
+      "city": "北京",
+      "name": "人民大会堂",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        799
+      ],
+      "sourceNames": [
+        "人民大会堂"
+      ],
+      "effectiveType": "attraction",
+      "score": 32.42,
+      "downstreamScore": 32.42,
+      "mentionCount": 12,
+      "noteCount": 11,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 32.42,
+      "potentialScore": 32.42,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1994,
+        2488,
+        2626,
+        2661,
+        2820,
+        3121,
+        3206,
+        3381,
+        3416,
+        4376,
+        4449,
+        5135
+      ],
+      "legacyIds": [
+        "015e05c8be38ffb42eaf4238904907ce"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 24,
+      "catalogChecksPassed": true,
+      "reviewNote": "建筑主体，与天安门广场、国博保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "1db494f9951cd3680159cdecf99f8223",
+      "city": "北京",
+      "name": "银锭桥",
+      "revision": 1,
+      "aliases": [
+        "什刹海银锭桥",
+        "金锭桥/银锭桥"
+      ],
+      "sourceIds": [
+        1562
+      ],
+      "sourceNames": [
+        "银锭桥"
+      ],
+      "effectiveType": "attraction",
+      "score": 32.0,
+      "downstreamScore": 32,
+      "mentionCount": 11,
+      "noteCount": 10,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 32.0,
+      "potentialScore": 32.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1910,
+        3235,
+        4253,
+        4655,
+        4705,
+        4735,
+        4759,
+        4936,
+        5087,
+        5132,
+        5139
+      ],
+      "legacyIds": [
+        "1db494f9951cd3680159cdecf99f8223"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 25,
+      "catalogChecksPassed": true,
+      "reviewNote": "现有别名含金锭桥/银锭桥组合写法；此次保留历史结果，需人工重点核实是否把相邻桥混作同一主体。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "3996a4a8ad647dbd59ebf72045116f7e",
+      "city": "北京",
+      "name": "西兴隆街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        742
+      ],
+      "sourceNames": [
+        "西兴隆街"
+      ],
+      "effectiveType": "attraction",
+      "score": 32.0,
+      "downstreamScore": 32,
+      "mentionCount": 11,
+      "noteCount": 10,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 32.0,
+      "potentialScore": 32.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1913,
+        1946,
+        2008,
+        2106,
+        2178,
+        2229,
+        2250,
+        2444,
+        2549,
+        3421,
+        4255
+      ],
+      "legacyIds": [
+        "3996a4a8ad647dbd59ebf72045116f7e"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 26,
+      "catalogChecksPassed": true,
+      "reviewNote": "与草厂三条及组合线路有边界区别，不能按同游关系合并。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "1405884c419eb09eb99f8489b7044278",
+      "city": "北京",
+      "name": "国子监街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        663
+      ],
+      "sourceNames": [
+        "国子监街"
+      ],
+      "effectiveType": "attraction",
+      "score": 30.0,
+      "downstreamScore": 30,
+      "mentionCount": 10,
+      "noteCount": 10,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 30.0,
+      "potentialScore": 30.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1826,
+        1889,
+        2192,
+        2303,
+        2453,
+        2556,
+        2734,
+        2856,
+        4948,
+        5229
+      ],
+      "legacyIds": [
+        "1405884c419eb09eb99f8489b7044278"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 27,
+      "catalogChecksPassed": true,
+      "reviewNote": "街道与国子监建筑、孔庙和国子监博物馆不是同一粒度。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "0e2fce4aa4955b89ceb9c8b6f2dbe734",
+      "city": "北京",
+      "name": "香山公园",
+      "revision": 2,
+      "aliases": [
+        "香山"
+      ],
+      "sourceIds": [
+        1484
+      ],
+      "sourceNames": [
+        "香山公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 28.5,
+      "downstreamScore": 28.5,
+      "mentionCount": 10,
+      "noteCount": 9,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 28.5,
+      "potentialScore": 28.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        2649,
+        3098,
+        3127,
+        3228,
+        4439,
+        4484,
+        4732,
+        5011,
+        5072,
+        5246
+      ],
+      "legacyIds": [
+        "0e2fce4aa4955b89ceb9c8b6f2dbe734",
+        "a16f93647f436fb6606a308127991788"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "retained-place-sources-1791366327590.json",
+          "kind": "reviewed_full_source_and_downstream_snapshot",
+          "sha256": "c23dde55d7f0176d3f91b57cb0a8cb197da879dbb323c19183bbee525629433f",
+          "conclusion": "香山原文说明检票入园和园内勤政殿、双清别墅、香炉峰路线，现有旧行来自公园源1484；补公园简称，寺、东门和地铁站保持独立。"
+        },
+        {
+          "kind": "reviewed_legacy_alias",
+          "quotes": [
+            {
+              "quote": "📍香山（P2,P3,P10,P11）：勤政殿拍红叶",
+              "noteId": 702
+            },
+            {
+              "quote": "检票进东门，迎面就是勤政殿",
+              "noteId": 1126
+            },
+            {
+              "quote": "🍁 香山公园",
+              "noteId": 1125
+            }
+          ],
+          "goldset": [],
+          "noteIds": [
+            702,
+            1126,
+            1125
+          ],
+          "legacyId": "a16f93647f436fb6606a308127991788",
+          "mentionIds": [
+            2649,
+            4439,
+            4484,
+            5072
+          ],
+          "sourcePlaceId": 1484
+        }
+      ],
+      "rank": 28,
+      "catalogChecksPassed": true,
+      "reviewNote": "香山为现有别名；香山寺、双清别墅、碧云寺仍为不同主体。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "00ce68d2675b99bab94be58c313cecd2",
+      "city": "北京",
+      "name": "北京环球影城",
+      "revision": 3,
+      "aliases": [
+        "环球影城"
+      ],
+      "sourceIds": [
+        800,
+        820
+      ],
+      "sourceNames": [
+        "北京环球影城",
+        "环球影城"
+      ],
+      "effectiveType": "attraction",
+      "score": 26.94,
+      "downstreamScore": 26.94,
+      "mentionCount": 9,
+      "noteCount": 9,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 26.94,
+      "potentialScore": 26.94,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1996,
+        2028,
+        2593,
+        2607,
+        2676,
+        2997,
+        3277,
+        4481,
+        5062
+      ],
+      "legacyIds": [
+        "00ce68d2675b99bab94be58c313cecd2",
+        "136af858274895a216d09930a5ace814"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "3277",
+              "name": "北京环球影城",
+              "quote": "冬天20:00就闭园了",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/695903e9000000001e00c174"
+            },
+            {
+              "id": "2676",
+              "name": "北京环球影城",
+              "quote": "哈利波特灯光秀必看",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a739b0b000000000e03f000"
+            },
+            {
+              "id": "2607",
+              "name": "北京环球影城",
+              "quote": "拒绝瞎逛绕路",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a969df80000000029012454"
+            },
+            {
+              "id": "2593",
+              "name": "北京环球影城",
+              "quote": "哈利波特魔法世界→变形金刚基地",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69f1faec000000003601e18b"
+            },
+            {
+              "id": "5062",
+              "name": "环球影城",
+              "quote": "沉浸式玩乐园",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aaba28d0000000011032190"
+            },
+            {
+              "id": "4481",
+              "name": "环球影城",
+              "quote": "铂金级｜看兴趣冲！",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a44c5bd000000002103c69b"
+            },
+            {
+              "id": "2997",
+              "name": "环球影城",
+              "quote": "花车巡游、烟花、飘雪、灯光",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69462667000000000d03f62c"
+            },
+            {
+              "id": "1996",
+              "name": "环球影城",
+              "quote": "每个园区都很有特色",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69c0e2d4000000002102c0d2"
+            }
+          ],
+          "reviewIds": [
+            89
+          ],
+          "conclusion": "原文均明确北京环球主题乐园及其哈利波特等园区，同为通州环球度假区内乐园。",
+          "sourcePlaceIds": [
+            "820",
+            "800"
+          ]
+        },
+        {
+          "lat": 39.853381,
+          "lng": 116.679373,
+          "kind": "primary_source_geometry",
+          "address": "北京环球度假区",
+          "original": {
+            "lat": 39.853381,
+            "lng": 116.679373,
+            "address": "北京环球度假区",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "820",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1996,
+            2028,
+            2593,
+            2607,
+            2676,
+            2997,
+            3277,
+            4481,
+            5062
+          ],
+          "scoreAfter": 26.94,
+          "scoreBefore": 16.5,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 29,
+      "catalogChecksPassed": true,
+      "reviewNote": "已有两源合并；第73批已将旧分16.5修正为实体重算26.94并核实落库。内部游乐项目不作为整个乐园的同义名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "0854db5911778c6722637d896e9c2904",
+      "city": "北京",
+      "name": "国子监",
+      "revision": 2,
+      "aliases": [],
+      "sourceIds": [
+        764
+      ],
+      "sourceNames": [
+        "国子监"
+      ],
+      "effectiveType": "attraction",
+      "score": 26.44,
+      "downstreamScore": 26.44,
+      "mentionCount": 9,
+      "noteCount": 8,
+      "uncertainMentionIds": [
+        2557,
+        4985
+      ],
+      "allAssignedScore": 31.55,
+      "potentialScore": 32.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        1938,
+        2103,
+        2242,
+        2716,
+        2909,
+        4268,
+        4487,
+        4570,
+        5181
+      ],
+      "legacyIds": [
+        "0854db5911778c6722637d896e9c2904"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-06.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            1938,
+            2103,
+            2242,
+            2716,
+            2909,
+            4268,
+            4487,
+            4570,
+            5181
+          ],
+          "scoreAfter": 26.44,
+          "scoreBefore": 31.55,
+          "snapshotSha256": "85cb52a70a463e8f4d558d7bb6d8c093e037a0fc0fdef64a873467235d64272e"
+        }
+      ],
+      "rank": 30,
+      "catalogChecksPassed": true,
+      "reviewNote": "天安门合并后补入第30名；第76批将旧31.55分修正为9条已解析提及/8篇笔记的26.44分。孔庙国子监2557、北京孔庙国子监4985为组合名称，保持未归属，不注册同义名；与国子监街、孔庙独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "city": "济南",
+      "name": "大明湖",
+      "revision": 3,
+      "aliases": [
+        "大明湖公园",
+        "大明湖景区"
+      ],
+      "sourceIds": [
+        5348,
+        5953,
+        5968
+      ],
+      "sourceNames": [
+        "大明湖",
+        "大明湖公园",
+        "大明湖景区"
+      ],
+      "effectiveType": "attraction",
+      "score": 120.5,
+      "downstreamScore": 120.5,
+      "mentionCount": 48,
+      "noteCount": 39,
+      "uncertainMentionIds": [
+        11379,
+        11421,
+        11539,
+        11581,
+        11598,
+        11601,
+        11604,
+        11611,
+        11695,
+        11703,
+        11705,
+        12575,
+        12649,
+        12654,
+        12687,
+        12839,
+        12908
+      ],
+      "allAssignedScore": 162.0,
+      "potentialScore": 162.0,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5348
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11342,
+        11387,
+        11402,
+        11411,
+        11429,
+        11434,
+        11450,
+        11462,
+        11473,
+        11494,
+        11507,
+        11522,
+        11578,
+        11594,
+        11627,
+        11683,
+        11693,
+        12570,
+        12629,
+        12641,
+        12661,
+        12664,
+        12671,
+        12677,
+        12700,
+        12707,
+        12712,
+        12728,
+        12733,
+        12748,
+        12764,
+        12772,
+        12779,
+        12794,
+        12802,
+        12814,
+        12832,
+        12853,
+        12860,
+        12873,
+        12900,
+        12921,
+        12923,
+        12926,
+        12947,
+        12959,
+        12973,
+        12979
+      ],
+      "legacyIds": [
+        "1e1c6d4109dc6a10c959a817de9ed799",
+        "39c1c314e86091e13d382c2c716cc2ad",
+        "550d6810857b4487aae8ce39c9ee093b"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "ids": [
+            12687,
+            12926,
+            12959,
+            12772
+          ],
+          "kind": "source_mentions",
+          "conclusion": "同一湖泊景区的游览称呼；超然楼与南门不属于同义词"
+        }
+      ],
+      "rank": 1,
+      "catalogChecksPassed": true,
+      "reviewNote": "已有大明湖公园/景区归一；17条提及仍待审，超然楼保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "city": "济南",
+      "name": "曲水亭街",
+      "revision": 4,
+      "aliases": [
+        "曲水亭"
+      ],
+      "sourceIds": [
+        5352,
+        5493
+      ],
+      "sourceNames": [
+        "曲水亭",
+        "曲水亭街"
+      ],
+      "effectiveType": "attraction",
+      "score": 115.5,
+      "downstreamScore": 115.5,
+      "mentionCount": 46,
+      "noteCount": 37,
+      "uncertainMentionIds": [
+        11423,
+        11436,
+        11540,
+        11585,
+        11614,
+        11698,
+        12660,
+        12713,
+        12840,
+        12907
+      ],
+      "allAssignedScore": 139.5,
+      "potentialScore": 139.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5352
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11340,
+        11369,
+        11385,
+        11401,
+        11412,
+        11430,
+        11448,
+        11459,
+        11472,
+        11495,
+        11505,
+        11521,
+        11565,
+        11593,
+        11624,
+        11691,
+        11694,
+        12568,
+        12574,
+        12588,
+        12610,
+        12628,
+        12639,
+        12665,
+        12670,
+        12678,
+        12708,
+        12725,
+        12732,
+        12747,
+        12763,
+        12781,
+        12793,
+        12801,
+        12813,
+        12819,
+        12834,
+        12850,
+        12859,
+        12872,
+        12918,
+        12925,
+        12933,
+        12945,
+        12957,
+        12972
+      ],
+      "legacyIds": [
+        "2ee2f25ecdeac28e3edf7a5296a3bfed",
+        "c9c9ce7c33c95b71b859f0ab30bf7136"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12819",
+              "name": "曲水亭",
+              "quote": "没有浓重的商业味儿",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd"
+            },
+            {
+              "id": "11565",
+              "name": "曲水亭",
+              "quote": "没有浓重的商业味儿，在旧旧的巷子里散步",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd"
+            },
+            {
+              "id": "12972",
+              "name": "曲水亭街",
+              "quote": "“家家泉水，户户垂杨”的精华",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a64569c000000000402b9b4"
+            },
+            {
+              "id": "12957",
+              "name": "曲水亭街",
+              "quote": "超多网红拍照机位，随手拍都好看",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0"
+            },
+            {
+              "id": "12945",
+              "name": "曲水亭街",
+              "quote": "泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079"
+            },
+            {
+              "id": "12933",
+              "name": "曲水亭街",
+              "quote": "曲水亭街",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f"
+            }
+          ],
+          "reviewIds": [
+            366
+          ],
+          "conclusion": "12819/11565同篇明确列出东更道、珍池街、曲水亭、双忠祠街的老街散步路线，曲水亭在本批是曲水亭街简称而非单独亭子；采用现有街道主体定位，保留原成员坐标追溯。",
+          "sourcePlaceIds": [
+            "5493",
+            "5352"
+          ]
+        },
+        {
+          "lat": 36.669299,
+          "lng": 117.024303,
+          "kind": "primary_source_geometry",
+          "address": "山东省济南市历下区大明湖街道曲水亭街",
+          "category": "文化",
+          "original": {
+            "lat": 36.669299,
+            "lng": 117.024303,
+            "address": "山东省济南市历下区大明湖街道曲水亭街",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5352",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/jinan-batch09-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+          "conclusion": "12819/11565同篇明确列出东更道、珍池街、曲水亭、双忠祠街的老街散步路线，曲水亭在本批是曲水亭街简称而非单独亭子；采用现有街道主体定位，保留原成员坐标追溯。",
+          "mentionIds": [
+            11565
+          ]
+        }
+      ],
+      "rank": 2,
+      "catalogChecksPassed": true,
+      "reviewNote": "曲水亭为现有别名；10条提及仍待审，不能借附近店铺宣传确定地点事实。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "city": "济南",
+      "name": "黑虎泉",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5351
+      ],
+      "sourceNames": [
+        "黑虎泉"
+      ],
+      "effectiveType": "attraction",
+      "score": 90.72,
+      "downstreamScore": 90.72,
+      "mentionCount": 36,
+      "noteCount": 28,
+      "uncertainMentionIds": [
+        11439,
+        11542,
+        11584,
+        12576,
+        12657,
+        12668,
+        12701,
+        12716,
+        12809,
+        12905,
+        12939
+      ],
+      "allAssignedScore": 117.79,
+      "potentialScore": 118.0,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5351
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11336,
+        11373,
+        11394,
+        11405,
+        11409,
+        11433,
+        11444,
+        11454,
+        11474,
+        11490,
+        11514,
+        11518,
+        11575,
+        11590,
+        11620,
+        11687,
+        12564,
+        12614,
+        12635,
+        12675,
+        12711,
+        12720,
+        12734,
+        12760,
+        12784,
+        12790,
+        12829,
+        12838,
+        12849,
+        12857,
+        12869,
+        12898,
+        12914,
+        12929,
+        12953,
+        12969
+      ],
+      "legacyIds": [
+        "136719df189e0dd70cd34be75f6faef4"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/main-sights-source-review-01.json",
+          "kind": "reviewed_primary_subject",
+          "sha256": "c6b7cc8114a3f3a4f82035fadcf5bf64f342f1c5b082d97ce344b7fb1cabb8bd",
+          "conclusion": "泉池自然景观或整体山岳景区为主要主体；不沿用旧住宿/美食主题，不把内含文化点当同义名。"
+        }
+      ],
+      "rank": 3,
+      "catalogChecksPassed": true,
+      "reviewNote": "11条提及仍待审，泉池、护城河及环城公园需分别确认。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "15ad3a8280476165635672cb0e43117a",
+      "city": "济南",
+      "name": "解放阁",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5360
+      ],
+      "sourceNames": [
+        "解放阁"
+      ],
+      "effectiveType": "attraction",
+      "score": 85.71,
+      "downstreamScore": 85.71,
+      "mentionCount": 34,
+      "noteCount": 26,
+      "uncertainMentionIds": [
+        12906
+      ],
+      "allAssignedScore": 88.21,
+      "potentialScore": 88.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5360
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11337,
+        11374,
+        11395,
+        11410,
+        11432,
+        11440,
+        11445,
+        11455,
+        11489,
+        11519,
+        11576,
+        11591,
+        11621,
+        12565,
+        12577,
+        12615,
+        12623,
+        12636,
+        12676,
+        12710,
+        12717,
+        12721,
+        12775,
+        12791,
+        12811,
+        12830,
+        12858,
+        12870,
+        12899,
+        12915,
+        12930,
+        12954,
+        12970,
+        12985
+      ],
+      "legacyIds": [
+        "15ad3a8280476165635672cb0e43117a"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/shared-routes-source-review-01.json",
+          "kind": "reviewed_primary_subject",
+          "conclusion": "纪念建筑或百花洲环湖历史小街区为游览主体；不沿用餐饮主题，不将整个百花洲历史文化街区设为别名。"
+        }
+      ],
+      "rank": 4,
+      "catalogChecksPassed": true,
+      "reviewNote": "1条提及仍待审；与黑虎泉同游不构成同一实体。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "8cc25e536e67519c958ee54248ead04f",
+      "city": "济南",
+      "name": "泉城广场",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5354
+      ],
+      "sourceNames": [
+        "泉城广场"
+      ],
+      "effectiveType": "attraction",
+      "score": 77.5,
+      "downstreamScore": 77.5,
+      "mentionCount": 30,
+      "noteCount": 25,
+      "uncertainMentionIds": [
+        11420,
+        12580,
+        12913
+      ],
+      "allAssignedScore": 84.5,
+      "potentialScore": 84.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5354
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11334,
+        11390,
+        11398,
+        11408,
+        11427,
+        11438,
+        11443,
+        11504,
+        11513,
+        11517,
+        11574,
+        11587,
+        11697,
+        12562,
+        12634,
+        12674,
+        12697,
+        12705,
+        12715,
+        12759,
+        12770,
+        12828,
+        12909,
+        12952,
+        12968,
+        12981,
+        12982,
+        12983,
+        12984,
+        12987
+      ],
+      "legacyIds": [
+        "8cc25e536e67519c958ee54248ead04f"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/square-source-review-02.json",
+          "kind": "reviewed_square_complete_source",
+          "sha256": "8043ae6262fbe421e54bb77caf4d9fd7c5b4dcee8c6b9a94fc6ebec4aadacd4f",
+          "conclusion": "30提及归广场，3条因住宿语境/错路线保留null待审；保留广场稳定ID、无新酒店或摄影点。"
+        },
+        {
+          "file": "priority-cities/济南/geo-06.json",
+          "kind": "reviewed_public_square_category",
+          "sha256": "bba8a2e6110b2b54f54fc3c424eb79c8c08ad710453f6d32d8782a2f9652845e",
+          "conclusion": "原类别娱乐与已确认的喷泉、休闲及夜景打卡一致。scope清旧themes后显式保留，防止默认退为文化或继承住宿类型；不是音乐喷泉本身与广场判等。"
+        }
+      ],
+      "rank": 5,
+      "catalogChecksPassed": true,
+      "reviewNote": "3条提及仍待审；广场和内部演出/音乐喷泉不直接互作同义名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+      "city": "济南",
+      "name": "五龙潭公园",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5359
+      ],
+      "sourceNames": [
+        "五龙潭公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 65.5,
+      "downstreamScore": 65.5,
+      "mentionCount": 25,
+      "noteCount": 21,
+      "uncertainMentionIds": [
+        11383,
+        11396,
+        11406,
+        11453,
+        11512,
+        11515,
+        11544,
+        11583,
+        11588,
+        11599,
+        11701,
+        12572,
+        12672,
+        12699,
+        12719,
+        12855,
+        12896,
+        12975
+      ],
+      "allAssignedScore": 109.5,
+      "potentialScore": 109.5,
+      "pendingReviewIds": [
+        365
+      ],
+      "scopeIds": [
+        5350
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及",
+        "存在未结实体对审核"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11332,
+        11441,
+        11471,
+        11488,
+        11572,
+        11617,
+        11688,
+        12560,
+        12620,
+        12632,
+        12655,
+        12663,
+        12666,
+        12731,
+        12757,
+        12767,
+        12788,
+        12826,
+        12867,
+        12910,
+        12927,
+        12938,
+        12950,
+        12963,
+        12965
+      ],
+      "legacyIds": [
+        "d7dfe7ae5196779e613b8fa0d9bacf5a"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "batch33-category-adjustment-20261008.md",
+          "kind": "reviewed_park_category",
+          "sha256": "9d72897b38b65a4ef01167da4a3b08148ab33c94415b7c4b73eca78e69d9da99",
+          "noteIds": [
+            2786,
+            2793,
+            2834
+          ],
+          "conclusion": "原文明确园林公园、清泉园林及园内泉潭。以显式自然类别替代混合旧themes，不把旧住宿美食主题带入受控公园。"
+        }
+      ],
+      "rank": 6,
+      "catalogChecksPassed": true,
+      "reviewNote": "25条已确认，18条待审；旧五龙潭泛称ID已撤回，审核365未结，不能算整组完成。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "d4a51a5df56f78c9de0713d86ea8c00c",
+      "city": "济南",
+      "name": "超然楼",
+      "revision": 3,
+      "aliases": [
+        "大明湖超然楼"
+      ],
+      "sourceIds": [
+        5365,
+        5368
+      ],
+      "sourceNames": [
+        "大明湖超然楼",
+        "超然楼"
+      ],
+      "effectiveType": "attraction",
+      "score": 62.58,
+      "downstreamScore": 62.58,
+      "mentionCount": 24,
+      "noteCount": 20,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 62.58,
+      "potentialScore": 62.58,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11371,
+        11380,
+        11388,
+        11403,
+        11435,
+        11451,
+        11463,
+        11523,
+        11595,
+        11602,
+        11628,
+        12612,
+        12630,
+        12650,
+        12651,
+        12729,
+        12769,
+        12815,
+        12842,
+        12861,
+        12874,
+        12922,
+        12924,
+        12974
+      ],
+      "legacyIds": [
+        "d4a51a5df56f78c9de0713d86ea8c00c",
+        "ef9937ce2185cc51d0870a6c8ce9feaa"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+          "kind": "reviewed_full_note_context",
+          "quotes": [
+            {
+              "quote": "3.大明湖超然楼：出了百花洲，沿着大明湖畔而行到超然楼",
+              "noteId": 2546
+            },
+            {
+              "quote": "超然楼是济南的地标建筑之一，登楼俯瞰大明湖和整个济南市区",
+              "noteId": 2553
+            },
+            {
+              "quote": "📍超然楼：大明湖地标",
+              "noteId": 2830
+            }
+          ],
+          "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+          "noteIds": [
+            2546,
+            2547,
+            2548,
+            2553,
+            2563,
+            2569,
+            2570,
+            2618,
+            2620,
+            2622,
+            2624,
+            2793,
+            2795,
+            2797,
+            2800,
+            2801,
+            2810,
+            2830,
+            2834,
+            2840
+          ],
+          "conclusion": "完整24条提及均以超然楼建筑或其亮灯为描述对象。2546同一段用大明湖超然楼和超然楼指向同一楼体。2620、2795、2797的远处机位是拍摄位置说明，不把码头、茶馆平台、桥或大明湖整体并成楼体；只合并两个楼体名称。保留主源5368地图楼体参考点，不使用5365的西侧旧点。",
+          "mentionIds": [
+            11371,
+            11380,
+            11388,
+            11403,
+            11435,
+            11451,
+            11463,
+            11523,
+            11595,
+            11602,
+            11628,
+            12612,
+            12630,
+            12650,
+            12651,
+            12729,
+            12769,
+            12815,
+            12842,
+            12861,
+            12874,
+            12922,
+            12924,
+            12974
+          ],
+          "sourcePlaceIds": [
+            5365,
+            5368
+          ]
+        },
+        {
+          "file": "priority-cities/济南/geo-03.json",
+          "kind": "map_candidates",
+          "sha256": "26d072a520a1c513bbefcf455a0d279b1c0986efe849415925909ebd851f9261",
+          "conclusion": "原始CGCS2000与转换GCJ02全部候选保留；仅用本体结果辅助位置核查，不以同点、码头、停车场或门店点证明同体。"
+        },
+        {
+          "file": "priority-cities/济南/geo-04.json",
+          "kind": "map_candidates",
+          "sha256": "0bad687a12213ab493e50e4f750c97a52d4b9fb87c26b68626651d067e823855",
+          "conclusion": "原始CGCS2000与转换GCJ02全部候选保留；仅用本体结果辅助位置核查，不以同点、码头、停车场或门店点证明同体。"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            11371,
+            11380,
+            11388,
+            11403,
+            11435,
+            11451,
+            11463,
+            11523,
+            11595,
+            11602,
+            11628,
+            12612,
+            12630,
+            12650,
+            12651,
+            12729,
+            12769,
+            12815,
+            12842,
+            12861,
+            12874,
+            12922,
+            12924,
+            12974
+          ],
+          "scoreAfter": 62.58,
+          "scoreBefore": 58.05,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 7,
+      "catalogChecksPassed": true,
+      "reviewNote": "大明湖超然楼为现有别名；楼体独立于大明湖，亮灯活动不能另算景点或同义名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "d14cc0c8a631defad91e60d475b7aedd",
+      "city": "济南",
+      "name": "趵突泉公园",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5366
+      ],
+      "sourceNames": [
+        "趵突泉公园"
+      ],
+      "effectiveType": "attraction",
+      "score": 58.5,
+      "downstreamScore": 58.5,
+      "mentionCount": 22,
+      "noteCount": 19,
+      "uncertainMentionIds": [
+        11378,
+        11407,
+        11428,
+        11452,
+        11470,
+        11486,
+        11511,
+        11516,
+        11543,
+        11582,
+        11589,
+        11597,
+        11603,
+        11612,
+        11618,
+        11692,
+        11700,
+        11702,
+        11704,
+        12571,
+        12609,
+        12633,
+        12648,
+        12656,
+        12673,
+        12706,
+        12718,
+        12730,
+        12780,
+        12800,
+        12808,
+        12845,
+        12848,
+        12897,
+        12911,
+        12951,
+        12966,
+        12976
+      ],
+      "allAssignedScore": 150.33,
+      "potentialScore": 150.5,
+      "pendingReviewIds": [
+        364
+      ],
+      "scopeIds": [
+        5349
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及",
+        "存在未结实体对审核"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11333,
+        11382,
+        11397,
+        11442,
+        11493,
+        11573,
+        11682,
+        12561,
+        12621,
+        12662,
+        12667,
+        12698,
+        12746,
+        12758,
+        12789,
+        12827,
+        12844,
+        12856,
+        12868,
+        12928,
+        12937,
+        12962
+      ],
+      "legacyIds": [
+        "d14cc0c8a631defad91e60d475b7aedd"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/baotu-source-review-01.json",
+          "kind": "reviewed_park_category",
+          "sha256": "4c077cdde71eea202919b13218f877476b878b6fae9cff0cd3f864cf9ab91dfe",
+          "reviewIds": [
+            364
+          ],
+          "conclusion": "公园整体包含自然泉水园林及纪念建筑，以自然为活动类别；显式override避免受控清旧themes后的默认文化分类。",
+          "mentionIds": [
+            11333,
+            11378,
+            11382,
+            11397,
+            11407,
+            11428,
+            11442,
+            11452,
+            11470,
+            11486,
+            11493,
+            11511,
+            11516,
+            11543,
+            11573,
+            11582,
+            11589,
+            11597,
+            11603,
+            11612,
+            11618,
+            11682,
+            11692,
+            11700,
+            11702,
+            11704,
+            12561,
+            12571,
+            12609,
+            12621,
+            12633,
+            12648,
+            12656,
+            12662,
+            12667,
+            12673,
+            12698,
+            12706,
+            12718,
+            12730,
+            12746,
+            12758,
+            12780,
+            12789,
+            12800,
+            12808,
+            12827,
+            12844,
+            12845,
+            12848,
+            12856,
+            12868,
+            12897,
+            12911,
+            12928,
+            12937,
+            12951,
+            12962,
+            12966,
+            12976
+          ],
+          "sourcePlaceIds": [
+            5349,
+            5366
+          ]
+        }
+      ],
+      "rank": 8,
+      "catalogChecksPassed": true,
+      "reviewNote": "22条已确认，38条待审；旧趵突泉泛称ID已撤回，审核364未结，主泉和公园范围仍需明确。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+      "city": "济南",
+      "name": "山东博物馆",
+      "revision": 3,
+      "aliases": [
+        "山东省博物馆"
+      ],
+      "sourceIds": [
+        5355,
+        5370
+      ],
+      "sourceNames": [
+        "山东博物馆",
+        "山东省博物馆"
+      ],
+      "effectiveType": "attraction",
+      "score": 40.33,
+      "downstreamScore": 40.33,
+      "mentionCount": 15,
+      "noteCount": 12,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 40.33,
+      "potentialScore": 40.33,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11393,
+        11417,
+        11487,
+        11497,
+        11568,
+        11606,
+        11685,
+        12683,
+        12750,
+        12796,
+        12804,
+        12822,
+        12852,
+        12864,
+        12876
+      ],
+      "legacyIds": [
+        "1a060853b777277a6b313243f7b13d0f",
+        "6ed737543bd4e4f550f0fd357c9e8c71"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12750",
+              "name": "山东省博物馆",
+              "quote": "去山东省美术馆和山东省博物馆记得提前yue!",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+            },
+            {
+              "id": "12683",
+              "name": "山东省博物馆",
+              "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4"
+            },
+            {
+              "id": "11497",
+              "name": "山东省博物馆",
+              "quote": "去山东省美术馆和山东省博物馆记得提前yue!",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+            },
+            {
+              "id": "11417",
+              "name": "山东省博物馆",
+              "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4"
+            },
+            {
+              "id": "12876",
+              "name": "山东博物馆",
+              "quote": "馆藏文物丰富，商周、汉魏等历代珍品",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19"
+            },
+            {
+              "id": "12864",
+              "name": "山东博物馆",
+              "quote": "山东省博物馆/美术馆周一闭馆",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a"
+            },
+            {
+              "id": "12852",
+              "name": "山东博物馆",
+              "quote": "亚醜钺、鲁王之宝都是必看的",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e"
+            },
+            {
+              "id": "12822",
+              "name": "山东博物馆",
+              "quote": "两个就隔一条街 非常之近",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4"
+            }
+          ],
+          "reviewIds": [
+            367
+          ],
+          "conclusion": "山东省博物馆为旧称；原文与山东美术馆同游，保留经十路11899号新馆，剔除错误远郊坐标。",
+          "sourcePlaceIds": [
+            "5370",
+            "5355"
+          ]
+        },
+        {
+          "lat": 36.658602,
+          "lng": 117.095698,
+          "kind": "primary_source_geometry",
+          "address": "山东省济南市历下区姚家街道经十路11899号",
+          "original": {
+            "lat": 36.658602,
+            "lng": 117.095698,
+            "address": "山东省济南市历下区姚家街道经十路11899号",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5355",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "url": "https://zh.wikipedia.org/wiki/山东博物馆",
+          "file": "all-cities/jinan-museum-fetch.json",
+          "kind": "published_source",
+          "sha256": "2696c2f738ca0ed37475ade2c7edf8e8076f529cac141ff6716acc53d343418d"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            11393,
+            11417,
+            11487,
+            11497,
+            11568,
+            11606,
+            11685,
+            12683,
+            12750,
+            12796,
+            12804,
+            12822,
+            12852,
+            12864,
+            12876
+          ],
+          "scoreAfter": 40.33,
+          "scoreBefore": 32,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 9,
+      "catalogChecksPassed": true,
+      "reviewNote": "山东省博物馆为现有别名；两源已归一，第73批推荐分已按当前实体提及重算并核实落库。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "46bf462d545dc6435d6de296ba099d0f",
+      "city": "济南",
+      "name": "融汇老商埠",
+      "revision": 3,
+      "aliases": [
+        "济南老商埠",
+        "经三路老商埠",
+        "老商埠",
+        "老商埠·经三路",
+        "老商埠经三路",
+        "融汇济南老商埠"
+      ],
+      "sourceIds": [
+        5371,
+        5380,
+        5962
+      ],
+      "sourceNames": [
+        "经三路老商埠",
+        "老商埠",
+        "老商埠经三路"
+      ],
+      "effectiveType": "attraction",
+      "score": 35.23,
+      "downstreamScore": 35.23,
+      "mentionCount": 13,
+      "noteCount": 10,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 35.23,
+      "potentialScore": 35.23,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11419,
+        11424,
+        11498,
+        11530,
+        12616,
+        12645,
+        12685,
+        12702,
+        12751,
+        12785,
+        12799,
+        12866,
+        12878
+      ],
+      "legacyIds": [
+        "46bf462d545dc6435d6de296ba099d0f",
+        "4b9803715c2c4c49d9f8bbde3b53a34f",
+        "4dd3530aa4bb1a615b12f5b19efef8e8",
+        "8938c5287c8e485e587e951e69b5ccb9",
+        "c51be8e43cf0b3687cb1ccbd069ed358",
+        "ddd11def37286b278f4dcdf87e2ca91f",
+        "eaa2d2785770cd20fcd7f56e40d926c5"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "ids": [
+            12799,
+            12866,
+            12616,
+            12645
+          ],
+          "kind": "source_mentions",
+          "conclusion": "源记录为夹心胡同、复古洋楼等商业街区游览；历史老商埠片区不并入"
+        },
+        {
+          "url": "https://news.iqilu.com/shandong/shandonggedi/20211006/4968896.shtml",
+          "kind": "published_source"
+        },
+        {
+          "url": "http://sd.xinhuanet.com/20260904/3f7ee94228e04d72af79999d9fce6a15/c.html",
+          "kind": "boundary_source"
+        },
+        {
+          "kind": "tianditu_poi",
+          "name": "济南老商埠",
+          "lonlat": "116.986972,36.661862",
+          "address": "山东省济南市市中区大观园街道经四路333号",
+          "coordinateSystem": "CGCS2000"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            11419,
+            11424,
+            11498,
+            11530,
+            12616,
+            12645,
+            12685,
+            12702,
+            12751,
+            12785,
+            12799,
+            12866,
+            12878
+          ],
+          "scoreAfter": 35.23,
+          "scoreBefore": 19.5,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 10,
+      "catalogChecksPassed": true,
+      "reviewNote": "沿用旧归一；历史片区与现行商业街区需辨别，本轮应人工复核其是否符合“仅景点”范围。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "b58d15060ff3828b071f950487e487db",
+      "city": "济南",
+      "name": "百花洲",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5364
+      ],
+      "sourceNames": [
+        "百花洲"
+      ],
+      "effectiveType": "attraction",
+      "score": 33.5,
+      "downstreamScore": 33.5,
+      "mentionCount": 12,
+      "noteCount": 9,
+      "uncertainMentionIds": [
+        11461,
+        11541,
+        12727,
+        12946
+      ],
+      "allAssignedScore": 43.0,
+      "potentialScore": 43.0,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5364
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11341,
+        11370,
+        11386,
+        11413,
+        12569,
+        12589,
+        12611,
+        12627,
+        12640,
+        12679,
+        12934,
+        12978
+      ],
+      "legacyIds": [
+        "b58d15060ff3828b071f950487e487db"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/shared-routes-source-review-01.json",
+          "kind": "reviewed_primary_subject",
+          "conclusion": "纪念建筑或百花洲环湖历史小街区为游览主体；不沿用餐饮主题，不将整个百花洲历史文化街区设为别名。"
+        }
+      ],
+      "rank": 11,
+      "catalogChecksPassed": true,
+      "reviewNote": "4条提及仍待审；不能根据与曲水亭街相邻直接合并。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "city": "济南",
+      "name": "千佛山",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5357
+      ],
+      "sourceNames": [
+        "千佛山"
+      ],
+      "effectiveType": "attraction",
+      "score": 28.5,
+      "downstreamScore": 28.5,
+      "mentionCount": 10,
+      "noteCount": 8,
+      "uncertainMentionIds": [
+        11605,
+        11706,
+        12768
+      ],
+      "allAssignedScore": 36.12,
+      "potentialScore": 36.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5357
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11392,
+        11476,
+        11570,
+        11684,
+        12631,
+        12642,
+        12736,
+        12824,
+        12851,
+        12862
+      ],
+      "legacyIds": [
+        "290bf0287b4fc3936cb552acd37abca4"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/main-sights-source-review-01.json",
+          "kind": "reviewed_primary_subject",
+          "sha256": "c6b7cc8114a3f3a4f82035fadcf5bf64f342f1c5b082d97ce344b7fb1cabb8bd",
+          "conclusion": "泉池自然景观或整体山岳景区为主要主体；不沿用旧住宿/美食主题，不把内含文化点当同义名。"
+        }
+      ],
+      "rank": 12,
+      "catalogChecksPassed": true,
+      "reviewNote": "3条提及仍待审；寺庙、洞窟和山顶不作为整个山岳景区同义名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "0f3bfc53c2a77e85d2c1699c7c90fd10",
+      "city": "济南",
+      "name": "山东美术馆",
+      "revision": 3,
+      "aliases": [
+        "山东省美术馆"
+      ],
+      "sourceIds": [
+        5356,
+        5369
+      ],
+      "sourceNames": [
+        "山东省美术馆",
+        "山东美术馆"
+      ],
+      "effectiveType": "attraction",
+      "score": 27.5,
+      "downstreamScore": 27.5,
+      "mentionCount": 10,
+      "noteCount": 7,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 27.5,
+      "potentialScore": 27.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11418,
+        11496,
+        11569,
+        12684,
+        12749,
+        12797,
+        12805,
+        12823,
+        12865,
+        12877
+      ],
+      "legacyIds": [
+        "0f3bfc53c2a77e85d2c1699c7c90fd10",
+        "ce78d90e345061b913c30ce1b4296d2f"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12877",
+              "name": "山东美术馆",
+              "quote": "馆内有绘画、雕塑、现代艺术等作品",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19"
+            },
+            {
+              "id": "12865",
+              "name": "山东美术馆",
+              "quote": "山东省博物馆/美术馆周一闭馆",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a"
+            },
+            {
+              "id": "12823",
+              "name": "山东美术馆",
+              "quote": "两个就隔一条街 非常之近",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4"
+            },
+            {
+              "id": "12805",
+              "name": "山东美术馆",
+              "quote": "文艺青年必打卡，定期展出优质美术作品",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f"
+            },
+            {
+              "id": "12749",
+              "name": "山东省美术馆",
+              "quote": "去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+            },
+            {
+              "id": "11496",
+              "name": "山东省美术馆",
+              "quote": "去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665"
+            }
+          ],
+          "reviewIds": [
+            368
+          ],
+          "conclusion": "原文均与现山东博物馆相邻参观，保留经十路11777号新馆，另一别名误到泉城路的坐标不沿用。",
+          "sourcePlaceIds": [
+            "5356",
+            "5369"
+          ]
+        },
+        {
+          "lat": 36.657688,
+          "lng": 117.097928,
+          "kind": "primary_source_geometry",
+          "address": "山东省济南市历下区姚家街道经十路11777号",
+          "original": {
+            "lat": 36.657688,
+            "lng": 117.097928,
+            "address": "山东省济南市历下区姚家街道经十路11777号",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5356",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            11418,
+            11496,
+            11569,
+            12684,
+            12749,
+            12797,
+            12805,
+            12823,
+            12865,
+            12877
+          ],
+          "scoreAfter": 27.5,
+          "scoreBefore": 24,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 13,
+      "catalogChecksPassed": true,
+      "reviewNote": "山东省美术馆为现有别名，与相邻山东博物馆保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "af9116d87efcdf105915ca6303cb6274",
+      "city": "济南",
+      "name": "珍珠泉",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5363
+      ],
+      "sourceNames": [
+        "珍珠泉"
+      ],
+      "effectiveType": "attraction",
+      "score": 26.5,
+      "downstreamScore": 26.5,
+      "mentionCount": 9,
+      "noteCount": 7,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 26.5,
+      "potentialScore": 26.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5363
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11338,
+        11400,
+        11414,
+        12566,
+        12592,
+        12669,
+        12680,
+        12696,
+        12940
+      ],
+      "legacyIds": [
+        "af9116d87efcdf105915ca6303cb6274"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/pearl-source-review-01.json",
+          "kind": "reviewed_primary_subject",
+          "conclusion": "珍珠泉为自然泉池，大院为容纳多泉的庭院景观；两者独立保留原ID、名称、坐标。大院不是泉本体，也不是餐饮店；未新验精确位置。"
+        }
+      ],
+      "rank": 14,
+      "catalogChecksPassed": true,
+      "reviewNote": "泉池与珍珠泉大院已区分；不把院落作为泉池同义名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "2caab5c5038a94f91657ae16110dd56e",
+      "city": "济南",
+      "name": "洪家楼天主教堂",
+      "revision": 3,
+      "aliases": [
+        "洪家楼教堂"
+      ],
+      "sourceIds": [
+        5379,
+        5946
+      ],
+      "sourceNames": [
+        "洪家楼天主教堂",
+        "洪家楼教堂"
+      ],
+      "effectiveType": "attraction",
+      "score": 24.5,
+      "downstreamScore": 24.5,
+      "mentionCount": 8,
+      "noteCount": 7,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 24.5,
+      "potentialScore": 24.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11416,
+        12578,
+        12682,
+        12774,
+        12795,
+        12803,
+        12875,
+        12902
+      ],
+      "legacyIds": [
+        "2caab5c5038a94f91657ae16110dd56e",
+        "c639ca33bd3d893f11f072f3c81d193a"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12875",
+              "name": "洪家楼天主教堂",
+              "quote": "哥特式建筑，双塔顶部造型精美",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19"
+            },
+            {
+              "id": "12795",
+              "name": "洪家楼天主教堂",
+              "quote": "洪家楼天主教堂",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948"
+            },
+            {
+              "id": "12774",
+              "name": "洪家楼天主教堂",
+              "quote": "哥特式建筑风格，教堂的天花板真的超美",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6"
+            },
+            {
+              "id": "12682",
+              "name": "洪家楼天主教堂",
+              "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4"
+            },
+            {
+              "id": "12902",
+              "name": "洪家楼教堂",
+              "quote": "有时间可以去洪家楼教堂和于家桥看看",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3"
+            },
+            {
+              "id": "12803",
+              "name": "洪家楼教堂",
+              "quote": "哥特式复古建筑，尖顶彩绘超出片",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f"
+            },
+            {
+              "id": "12578",
+              "name": "洪家楼教堂",
+              "quote": "出片的景点真的不要太多",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6856c487000000001202dfa1"
+            }
+          ],
+          "reviewIds": [
+            370
+          ],
+          "conclusion": "12875同一篇路线写洪家楼天主教堂，景点介绍写洪家楼教堂并描述哥特式双塔；12803同样指该建筑，证明是同一机构全称和简称，不与其他济南教堂混同。",
+          "sourcePlaceIds": [
+            "5379",
+            "5946"
+          ]
+        },
+        {
+          "lat": 36.686459,
+          "lng": 117.066241,
+          "kind": "primary_source_geometry",
+          "address": "",
+          "category": "文化",
+          "original": {
+            "lat": 36.686459,
+            "lng": 117.066241,
+            "address": "",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5379",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/jinan-batch09-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+          "conclusion": "12875同一篇路线写洪家楼天主教堂，景点介绍写洪家楼教堂并描述哥特式双塔；12803同样指该建筑，证明是同一机构全称和简称，不与其他济南教堂混同。",
+          "mentionIds": [
+            12875,
+            12803
+          ]
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            11416,
+            12578,
+            12682,
+            12774,
+            12795,
+            12803,
+            12875,
+            12902
+          ],
+          "scoreAfter": 24.5,
+          "scoreBefore": 17,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 15,
+      "catalogChecksPassed": true,
+      "reviewNote": "洪家楼教堂为现有别名；裸名洪家楼仍可能指片区，不直接合并。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "city": "济南",
+      "name": "王府池子",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5499
+      ],
+      "sourceNames": [
+        "王府池子"
+      ],
+      "effectiveType": "attraction",
+      "score": 17.0,
+      "downstreamScore": 17,
+      "mentionCount": 5,
+      "noteCount": 4,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 17.0,
+      "potentialScore": 17.0,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5499
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11625,
+        12583,
+        12695,
+        12919,
+        12941
+      ],
+      "legacyIds": [
+        "d275db4ab60aaa28bfdf9fb75c7a5196"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/spring-category-review-01.json",
+          "kind": "reviewed_spring_activity_category",
+          "quote": "王府池子（隐藏在老城区的宝藏泉水濯缨泉）",
+          "noteId": 2813,
+          "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+          "conclusion": "以池中泉水为当前游览对象；街道、院落及小王府池子不进入身份范围。",
+          "mentionIds": [
+            12583
+          ],
+          "sourcePlaceId": 5499
+        }
+      ],
+      "rank": 16,
+      "catalogChecksPassed": true,
+      "reviewNote": "与相邻腾蛟泉、起凤泉、刘氏泉保持不同主体。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "city": "济南",
+      "name": "大观园",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5478
+      ],
+      "sourceNames": [
+        "大观园"
+      ],
+      "effectiveType": "attraction",
+      "score": 14.5,
+      "downstreamScore": 14.5,
+      "mentionCount": 4,
+      "noteCount": 3,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 14.5,
+      "potentialScore": 14.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5478
+      ],
+      "hasCoordinates": false,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11425,
+        12619,
+        12644,
+        12703
+      ],
+      "legacyIds": [
+        "910ac4e3fee34da1dd5f4378c7319ba5"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/commercial-source-review-01.json",
+          "kind": "reviewed_primary_subject",
+          "conclusion": "城市路口公共彩绘摄影点或大观园商业文化游览主体，不沿用餐饮主题。"
+        },
+        {
+          "kind": "wrong_point_cleared",
+          "files": [
+            "priority-cities/济南/commercial-reference-01.json",
+            "priority-cities/济南/commercial-reference-03.json",
+            "priority-cities/济南/commercial-geo-01.json"
+          ],
+          "conclusion": "百科地理位置明确经四路与纬二路，省地名网说明整体文化商业旅游主体；地图大观园及欧亚商场均在相同片区。旧经二路728及西侧约2.5公里点不符。候选点涉及整体、商场及入口粒度，暂清精确点不借入口坐标。"
+        }
+      ],
+      "rank": 17,
+      "catalogChecksPassed": true,
+      "reviewNote": "现有文化类城市游览主体，商业属性需人工复核；错误点已清空，无有效坐标，行程可用性待解决。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "a76a124615e676af06c7a75968519280",
+      "city": "济南",
+      "name": "西更道街",
+      "revision": 4,
+      "aliases": [
+        "西更道"
+      ],
+      "sourceIds": [
+        5391,
+        5949
+      ],
+      "sourceNames": [
+        "西更道",
+        "西更道街"
+      ],
+      "effectiveType": "attraction",
+      "score": 14.5,
+      "downstreamScore": 14.5,
+      "mentionCount": 4,
+      "noteCount": 3,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 14.5,
+      "potentialScore": 14.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11457,
+        12586,
+        12723,
+        12762
+      ],
+      "legacyIds": [
+        "404621ad6aef2a8247de6a28acdfb2e7",
+        "a76a124615e676af06c7a75968519280"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12586",
+              "name": "西更道",
+              "quote": "连接泉城路和曲水亭街的老街道",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314"
+            },
+            {
+              "id": "12762",
+              "name": "西更道街",
+              "quote": "济南古城区，一路向北，路上有一些小景点",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21"
+            },
+            {
+              "id": "12723",
+              "name": "西更道街",
+              "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+            },
+            {
+              "id": "11457",
+              "name": "西更道街",
+              "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+            }
+          ],
+          "reviewIds": [
+            373
+          ],
+          "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+          "sourcePlaceIds": [
+            "5949",
+            "5391"
+          ]
+        },
+        {
+          "lat": 36.666317,
+          "lng": 117.024442,
+          "kind": "primary_source_geometry",
+          "address": "",
+          "category": "文化",
+          "original": {
+            "lat": 36.666317,
+            "lng": 117.024442,
+            "address": "",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5391",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/jinan-batch09-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+          "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+          "mentionIds": [
+            12586,
+            12762
+          ]
+        },
+        {
+          "file": "priority-cities/济南/streets-location-review-01.json",
+          "kind": "reviewed_street_reference_point",
+          "quote": "西更道（连接泉城路和曲水亭街的老街道）",
+          "noteId": 2813,
+          "sha256": "56c05f5cd94d5fb545745d85e3fecf4b48f75af33e248b8eb2af8025a9962aca",
+          "conclusion": "从源泉POI改为同名西更道街参考点，保留街道独立身份和原60分钟来源。",
+          "mentionIds": [
+            11457,
+            12586,
+            12723,
+            12762
+          ],
+          "sourcePlaceIds": [
+            5391,
+            5949
+          ]
+        },
+        {
+          "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+          "kind": "resolved_identity_recommendation_score",
+          "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+          "mentionIds": [
+            11457,
+            12586,
+            12723,
+            12762
+          ],
+          "scoreAfter": 14.5,
+          "scoreBefore": 12,
+          "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+        }
+      ],
+      "rank": 18,
+      "catalogChecksPassed": true,
+      "reviewNote": "西更道为现有别名；不等于老舍主题墙等机位。",
+      "humanReview": "未审",
+      "newAppliedThisRound": true,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "city": "济南",
+      "name": "明水古城",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5481
+      ],
+      "sourceNames": [
+        "明水古城"
+      ],
+      "effectiveType": "attraction",
+      "score": 12.5,
+      "downstreamScore": 12.5,
+      "mentionCount": 3,
+      "noteCount": 3,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 12.5,
+      "potentialScore": 12.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5481
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11508,
+        12581,
+        12786
+      ],
+      "legacyIds": [
+        "69b816cda273f29ed9296314fbe6f52d"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/description-source-review-01.json",
+          "kind": "reviewed_text_subject_mismatch",
+          "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+          "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+        }
+      ],
+      "rank": 19,
+      "catalogChecksPassed": true,
+      "reviewNote": "整体古城实体，内部街区和活动不自动归为同义名。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "city": "济南",
+      "name": "老舍故居",
+      "revision": 2,
+      "aliases": [
+        "济南老舍纪念馆",
+        "老舍纪念馆"
+      ],
+      "sourceIds": [
+        5498
+      ],
+      "sourceNames": [
+        "老舍故居"
+      ],
+      "effectiveType": "attraction",
+      "score": 12.0,
+      "downstreamScore": 12,
+      "mentionCount": 3,
+      "noteCount": 2,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 12.0,
+      "potentialScore": 12.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11619,
+        12807,
+        12912
+      ],
+      "legacyIds": [
+        "6a111b28c08cc7853140187bfd852b16",
+        "b4d037bc5efddaee1780a7d944f67af6",
+        "e8111d62a1433884e7fd359488b4aafd"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/laoshe-source-review-02.json",
+          "kind": "museum_name_and_documented_address_only",
+          "conclusion": "保留原主名、增加已证实纪念馆别名和南新街58号；不加scope。生成通过规范名使用既有2图，精确坐标和距离描述仍待核。"
+        }
+      ],
+      "rank": 20,
+      "catalogChecksPassed": true,
+      "reviewNote": "沿用济南老舍纪念馆/老舍纪念馆别名；与西更道主题墙保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "city": "济南",
+      "name": "腾蛟泉",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5948
+      ],
+      "sourceNames": [
+        "腾蛟泉"
+      ],
+      "effectiveType": "attraction",
+      "score": 10.0,
+      "downstreamScore": 10,
+      "mentionCount": 2,
+      "noteCount": 2,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 10.0,
+      "potentialScore": 10.0,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5948
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        12584,
+        12942
+      ],
+      "legacyIds": [
+        "06ecc5ddb78dc622997f9947a414e77c"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/spring-category-review-01.json",
+          "kind": "reviewed_spring_activity_category",
+          "quote": "腾蛟泉（王府池子出来往北走的一个岔路口）",
+          "noteId": 2813,
+          "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+          "conclusion": "全文以泉水walk串联明确泉体；原美食主题来自整篇标签，不属于该泉体活动类别。",
+          "mentionIds": [
+            12584
+          ],
+          "sourcePlaceId": 5948
+        }
+      ],
+      "rank": 21,
+      "catalogChecksPassed": true,
+      "reviewNote": "与周边其它泉池独立；原文合游时长不能变成单点时长。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "city": "济南",
+      "name": "护城河",
+      "revision": 2,
+      "aliases": [],
+      "sourceIds": [
+        5477
+      ],
+      "sourceNames": [
+        "护城河"
+      ],
+      "effectiveType": "attraction",
+      "score": 10.0,
+      "downstreamScore": 10,
+      "mentionCount": 2,
+      "noteCount": 2,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 10.0,
+      "potentialScore": 10.0,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5477
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11404,
+        12901
+      ],
+      "legacyIds": [
+        "4dfda3371793b69de15122bb7e330eac"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 22,
+      "catalogChecksPassed": true,
+      "reviewNote": "河流与环城公园、沿岸泉池为不同粒度，不直接整体合并。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "city": "济南",
+      "name": "刘氏泉",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5950
+      ],
+      "sourceNames": [
+        "刘氏泉"
+      ],
+      "effectiveType": "attraction",
+      "score": 10.0,
+      "downstreamScore": 10,
+      "mentionCount": 2,
+      "noteCount": 2,
+      "uncertainMentionIds": [
+        12692
+      ],
+      "allAssignedScore": 12.5,
+      "potentialScore": 12.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5950
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [
+        "存在未确认归属提及"
+      ],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        12587,
+        12944
+      ],
+      "legacyIds": [
+        "95513a0ce9f9a81486fbb865e7bc8466"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/spring-category-review-01.json",
+          "kind": "reviewed_spring_activity_category",
+          "quote": "刘氏泉（西更道走到头就能看到一条细长的水流）",
+          "noteId": 2813,
+          "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+          "conclusion": "当前确认提及指泉体及水流，按自然体验分类；12692的簪花摄影主体继续null，未完成整组身份自查。",
+          "mentionIds": [
+            12587
+          ],
+          "sourcePlaceId": 5950
+        }
+      ],
+      "rank": 23,
+      "catalogChecksPassed": true,
+      "reviewNote": "仍有1条待分配提及；与相邻泉池保持独立。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "c11648e477180d1b3f97da06808da5e7",
+      "city": "济南",
+      "name": "经三路",
+      "revision": 2,
+      "aliases": [],
+      "sourceIds": [
+        5394
+      ],
+      "sourceNames": [
+        "经三路"
+      ],
+      "effectiveType": "attraction",
+      "score": 10.0,
+      "downstreamScore": 10,
+      "mentionCount": 2,
+      "noteCount": 2,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 10.0,
+      "potentialScore": 10.0,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11529,
+        12617
+      ],
+      "legacyIds": [
+        "c11648e477180d1b3f97da06808da5e7"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+          "kind": "reviewed_priority_original",
+          "quote": "老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单",
+          "noteId": 2573,
+          "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+          "original": [
+            {
+              "id": 5394,
+              "lat": 36.974469274712526,
+              "lng": 117.20568128188651,
+              "address": "山东省济南市济阳区济阳街道经三路",
+              "sourceHash": "febdf14a233b9cb0d93a35a5105b0e700cd8929a205453384ea5f40166837dc1"
+            }
+          ],
+          "conclusion": "两篇原文将经三路与老商埠、纬三路、中山公园相连。旧点精确等于济阳同名道路，改为市区经三路道路条目；不是具体红绿灯、商户或融汇老商埠实体。",
+          "mentionIds": [
+            11529,
+            12617
+          ],
+          "sourcePlaceIds": [
+            5394
+          ]
+        },
+        {
+          "file": "priority-cities/济南/geo-02.json",
+          "kind": "reviewed_exact_poi",
+          "query": "经三路",
+          "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+          "address": "山东省济南市槐荫区五里沟街道经三路",
+          "poiName": "经三路",
+          "rawLonLat": "116.981511,36.661524",
+          "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+          "sourceCoordinateSystem": "CGCS2000",
+          "storedCoordinateSystem": "GCJ-02"
+        }
+      ],
+      "rank": 24,
+      "catalogChecksPassed": true,
+      "reviewNote": "道路整体与融汇老商埠商业街区、爱心红绿灯机位不直接合并。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "5e67e8211c98d3e0e94c08114917c628",
+      "city": "济南",
+      "name": "东更道",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        5491
+      ],
+      "sourceNames": [
+        "东更道"
+      ],
+      "effectiveType": "attraction",
+      "score": 9.5,
+      "downstreamScore": 9.5,
+      "mentionCount": 2,
+      "noteCount": 1,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 9.5,
+      "potentialScore": 9.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11563,
+        12817
+      ],
+      "legacyIds": [
+        "5e67e8211c98d3e0e94c08114917c628"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 25,
+      "catalogChecksPassed": true,
+      "reviewNote": "两次提取来自同一篇note2574；当前评分按现有规则保留两mention，一篇笔记不等于两独立来源。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "8618b70ccf17cd1522c5bf27cbe16361",
+      "city": "济南",
+      "name": "珍池街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        5492
+      ],
+      "sourceNames": [
+        "珍池街"
+      ],
+      "effectiveType": "attraction",
+      "score": 9.5,
+      "downstreamScore": 9.5,
+      "mentionCount": 2,
+      "noteCount": 1,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 9.5,
+      "potentialScore": 9.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11564,
+        12818
+      ],
+      "legacyIds": [
+        "8618b70ccf17cd1522c5bf27cbe16361"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 26,
+      "catalogChecksPassed": true,
+      "reviewNote": "与东更道、曲水亭、双忠祠街是不同街道；两条提及来自同一篇note2574。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "99ddd31eba85db1d2ed58d7e60507f27",
+      "city": "济南",
+      "name": "双忠祠街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        5494
+      ],
+      "sourceNames": [
+        "双忠祠街"
+      ],
+      "effectiveType": "attraction",
+      "score": 9.5,
+      "downstreamScore": 9.5,
+      "mentionCount": 2,
+      "noteCount": 1,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 9.5,
+      "potentialScore": 9.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11566,
+        12820
+      ],
+      "legacyIds": [
+        "99ddd31eba85db1d2ed58d7e60507f27"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 27,
+      "catalogChecksPassed": true,
+      "reviewNote": "独立街道，不能因同一citywalk路线归并；两条提及来自同一篇note2574。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "cd8dfd49f13c9cbbd9d02c9d4c72defb",
+      "city": "济南",
+      "name": "西公界街",
+      "revision": 1,
+      "aliases": [],
+      "sourceIds": [
+        5495
+      ],
+      "sourceNames": [
+        "西公界街"
+      ],
+      "effectiveType": "attraction",
+      "score": 9.5,
+      "downstreamScore": 9.5,
+      "mentionCount": 2,
+      "noteCount": 1,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 9.5,
+      "potentialScore": 9.5,
+      "pendingReviewIds": [],
+      "scopeIds": [],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11567,
+        12821
+      ],
+      "legacyIds": [
+        "cd8dfd49f13c9cbbd9d02c9d4c72defb"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "rank": 28,
+      "catalogChecksPassed": true,
+      "reviewNote": "独立街道；两条提及来自同一篇note2574。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "city": "济南",
+      "name": "四窟万象",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5480
+      ],
+      "sourceNames": [
+        "四窟万象"
+      ],
+      "effectiveType": "attraction",
+      "score": 7.5,
+      "downstreamScore": 7.5,
+      "mentionCount": 2,
+      "noteCount": 2,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 7.5,
+      "potentialScore": 7.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5480
+      ],
+      "hasCoordinates": false,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        11492,
+        12777
+      ],
+      "legacyIds": [
+        "7ac1b9fdfb96a01db695da65d8e81830"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/park-culture-source-review-02.json",
+          "kind": "wrong_point_and_original_area",
+          "conclusion": "原2551明确千佛山（四窟万象），抓取文字互证景区北麓；旧点在城西不匹配。仅写景区内，精确洞口待核，不借千佛山中心点。"
+        }
+      ],
+      "rank": 29,
+      "catalogChecksPassed": true,
+      "reviewNote": "原文描述千佛山内仿制石窟，保留独立主体；无有效坐标，需核实正式名称与地点。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    },
+    {
+      "entityId": "065e077002130047feaadff4f607b480",
+      "city": "济南",
+      "name": "起凤泉",
+      "revision": 3,
+      "aliases": [],
+      "sourceIds": [
+        5988
+      ],
+      "sourceNames": [
+        "起凤泉"
+      ],
+      "effectiveType": "attraction",
+      "score": 7.5,
+      "downstreamScore": 7.5,
+      "mentionCount": 1,
+      "noteCount": 1,
+      "uncertainMentionIds": [],
+      "allAssignedScore": 7.5,
+      "potentialScore": 7.5,
+      "pendingReviewIds": [],
+      "scopeIds": [
+        5988
+      ],
+      "hasCoordinates": true,
+      "hasEmbedding": true,
+      "issues": [],
+      "identityReviewStatus": "pending_semantic_review",
+      "mentionIds": [
+        12943
+      ],
+      "legacyIds": [
+        "065e077002130047feaadff4f607b480"
+      ],
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/spring-category-review-01.json",
+          "kind": "reviewed_spring_activity_category",
+          "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）",
+          "noteId": 2837,
+          "sha256": "ffea83f582c1a38f3d422502a7976e6acc6798ce0deebbaf8e79ba51e22a936b",
+          "conclusion": "泉水citywalk全文明确街巷泉水为游览对象；保留起凤泉独立主体与唯一来源，不认领起凤桥或院内商户。",
+          "mentionIds": [
+            12943
+          ],
+          "sourcePlaceId": 5988
+        }
+      ],
+      "rank": 30,
+      "catalogChecksPassed": true,
+      "reviewNote": "与腾蛟泉、王府池子等独立；仅1篇笔记，处在7.5分并列边界。",
+      "humanReview": "未审",
+      "newAppliedThisRound": false,
+      "sqlAndMixedVectorPassed": true,
+      "isolatedFlowPassed": true,
+      "scoreMatchesDatabase": true
+    }
+  ]
+}

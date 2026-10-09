@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "scopeFile": "run-1791372788231/scope-06.json",
+  "scopeSha256": "73af20a5e458e6eb6cd55c630d0e553f7ae8d0522fdda21e9cdbbf49d8edf353",
+  "inputSha256": "47f35a083f7354959810eaab5dbf6433da37b13ae00561e4d62edc022e9fc70f",
+  "reportFile": "run-1791372788231/scope-06.md",
+  "policy": {
+    "quotas": {
+      "attraction": 50,
+      "food": 30,
+      "cafe": 10,
+      "photo_spot": 10,
+      "market": 10
+    },
+    "excludedCities": [
+      "云南"
+    ],
+    "quotaUnit": "每city桶内每类型的稳定实体",
+    "tieBreak": "推荐分、独立来源数、质量分；均相同后优先较少覆盖的约2km网格，再用稳定ID固定顺序",
+    "deferredMeaning": "不在本轮主动清洗范围，原始数据/待审状态及现有身份防护保留"
+  },
+  "summary": {
+    "inputQualified": 4919,
+    "eligible": 4374,
+    "manuallyExcluded": 37,
+    "quotaSelected": 967,
+    "referenceAdded": 11,
+    "primary": 978,
+    "dependencies": 56,
+    "sourceRows": 1135,
+    "pendingInScope": 50,
+    "pendingDeferred": 126,
+    "quarantinedReviewRows": 37,
+    "deferredOtherRows": 89,
+    "inScopeReviews": {
+      "rows": 50,
+      "entityPairs": 50,
+      "mentions": 0,
+      "images": 0
+    },
+    "deferredReviews": {
+      "rows": 126,
+      "entityPairs": 84,
+      "mentions": 41,
+      "images": 0
+    },
+    "referenceNeedsReview": 4,
+    "preservedReferences": 49
+  },
+  "latestAppliedEntityBatch": 35,
+  "latestFlow": "../all-cities/flow/run-37",
+  "latestAudit": "../all-cities/audit/run-33",
+  "userAcceptance": false,
+  "taskStatus": "in_progress",
+  "activatedAt": "2026-10-07T14:59:32.000Z",
+  "selectionFrozenAfterEntityBatch": 29,
+  "cityReviewLedgers": {
+    "济南": "../priority-cities/济南/review-11.json"
+  },
+  "progressNote": "三个公园（中山公园、泉城公园、济南森林公园）完成AI自查：3条完整提及及图片事实补充来源去重6篇已核，保留revision1、自然类别与本体位置；三类图库无匹配，SQL/真实向量/12边界负例及201历史行程通过。review-11保留98行：4非地点、11行AI自查（9现行主体）、83未完成，其中5行部分治理，其余78继续。原7待定位及教堂位置不变。实体截至35、图片截至03，无batch36或待同步步骤；flow37/audit33仍是最新全城回归。scope06固定978主体+56依赖/1135源，50实体对+59提及=109待审及4必去缺口保持。云南不处理，未验收，不提交归档。",
+  "progressUpdatedAt": "2026-10-07T19:48:04.246Z",
+  "summaryMeaning": "summary为scope06固定入选时统计；后续逐提及待审增量见currentScopeReviews，不重排或静默删除原入选行。",
+  "currentScopeReviews": {
+    "frozenEntityPairs": 50,
+    "addedPendingMentions": 59,
+    "currentReviewRows": 109,
+    "referenceNeedsReview": 4,
+    "evidence": [
+      "../priority-cities/济南/wulongtan-source-review-01.json",
+      "../priority-cities/济南/baotu-source-review-01.json",
+      "../priority-cities/济南/square-source-review-02.json"
+    ],
+    "meaning": "原50重点实体对仍待审；五龙潭18、趵突泉38、泉城广场3条已读但范围或事实主语待清，scope保持null。固定scope06统计不作实时队列。"
+  },
+  "latestIndependentPhotoBatch": 3,
+  "unappliedFindings": []
+}

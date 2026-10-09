@@ -1,0 +1,70 @@
+{
+ "_comment": "新分店-83a2dc7150f84326827017bfbbd5d0f2社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-07）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "新分店-83a2dc7150f84326827017bfbbd5d0f2",
+ "generatedAt": "2026-10-07",
+ "count": 1,
+ "activeCount": 1,
+ "places": [
+  {
+   "id": "4700c15413b85c9ad1bbd5e28f3f40c4",
+   "name": "沐咖啡",
+   "category": "美食",
+   "lng": 120.0,
+   "lat": 30.0,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "泛名旧匹配",
+    "adcode": "",
+    "mentionCount": 99,
+    "recommendScore": 999.0,
+    "topReasons": [],
+    "content": {
+     "intro": "不能转给新分店的旧缓存",
+     "profileVersion": 1,
+     "qualityVersion": 2
+    },
+    "originalName": "沐咖啡",
+    "typicalVisitMinutes": 180,
+    "openHours": {
+     "version": 2,
+     "subject": "沐咖啡",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "4700c15413b85c9ad1bbd5e28f3f40c4",
+     "canonicalName": "沐咖啡",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "沐咖啡"
+     ],
+     "memberIds": [
+      "4700c15413b85c9ad1bbd5e28f3f40c4"
+     ]
+    },
+    "aliases": [
+     "沐咖啡"
+    ],
+    "components": []
+   },
+   "evidence": []
+  }
+ ]
+}

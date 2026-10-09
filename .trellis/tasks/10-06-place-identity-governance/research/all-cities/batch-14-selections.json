@@ -1,0 +1,112 @@
+[
+  {
+    "reviews": [431], "primary": "黄桷垭老街",
+    "reason": "1153原文在同一条上新街至黄葛古道路线中交替写黄桷垭古街、黄桷垭老街，1252、1761同指三毛故居附近的商业老街。简称地图误落合川，不采信；沿用南岸崇文路12号主源，不吞黄葛古道或三毛故居。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[1153,1252,1761]}]
+  },
+  {
+    "reviews": [432], "primary": "重庆开埠遗址公园",
+    "reason": "1077、1200、732及1112均指马鞍山、南滨路一带的开埠遗址公园，特征为竹编长廊拍索道；仅差城市前缀。两主源地址同为马鞍山56号，保留该主体定位，独立楼梯机位不归入同义成员。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[1077,1200,732,1112]}]
+  },
+  {
+    "reviews": [433], "entityIds": ["abbe2ab7eac6a5a3e979bdab339cc873"], "primary": "下浩里",
+    "reason": "1079描述上新街1号口进入的下浩老街夜景，1625、1769、1807的下浩里老街明确为龙门浩隔壁的同一街区；全目录下浩里主体的336、530、1211、1557、1784也均为浩阅书店、瀑布及老街游览。三名为本批同一现行街区，不把所有历史下浩地区、独立瀑布、出口火锅店或上新街出口纳为同义。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[1079,1625,1769,1807]},{"file":"chongqing-batch14-extra-context.json","mentionIds":[336,530,1211,1557,1784]}]
+  },
+  {
+    "reviews": [439], "entityIds": ["fc68b67fe81e9938f6821be1f77aa980"], "primary": "十八梯传统风貌区",
+    "reason": "1565指花间府林公馆所在十八梯景区，1278、1368描述较场口下方传统街区，与549、1633正式风貌区源一致。合并三名，保留中兴路1号主源，剔除简称误匹配的永川坐标；不合并景区内酒店及防空洞等设施。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[1565,1278,1368]},{"file":"chongqing-batch14-extra-context.json","mentionIds":[549]}]
+  },
+  {
+    "reviews": [441], "entityIds": ["aba429f79b60a0306aaf03682c7efa52","b40195e3d8ad8a380b130f892efb6516","30f96f1a1c8c5e485c9d7cd2b1dc8864"], "primary": "我在重庆大屏",
+    "reason": "543、1627、1191均明确观音桥北城天街东南1门大屏；补充360、1667同为观音桥打卡大屏。1222原文也明确北城天街东南1号门、天桥对面的滚动屏幕，虽写我爱重庆，实际指同一装置。五源合并，保留北城天街6号主源定位，修正补充源误落巴南或城市中心点；1655我爱重庆夜景位于大剧院站4号口，绝不并入。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[543,1627,1191,1222,1655]},{"file":"chongqing-batch14-extra-context.json","mentionIds":[360,1667]}]
+  },
+  {
+    "reviews": [443,444], "primary": "鹅岭栈桥",
+    "overrides": {"lat":null,"lng":null,"address":"重庆市渝中区佛图关公园与鹅岭公园之间的鹅岭栈桥","geoStatus":"unresolvable","category":"景点"},
+    "reason": "341、590、1512明确佛图关公园南门至鹅岭公园的悬空栈道，1716直接把鹅岭栈桥解释为悬空栈道；354及798也处于鹅岭、李子坝游线。市城管局转载建设新闻网说明鹅岭栈桥连接两园，支持四名同体。武隆鹅岭、地铁站及鹅颈巷旧点无法作为桥体精确坐标，成对清空待核；不合并两端公园或半山崖线全线。",
+    "sources":["chongqing-eling-fetch.json"],
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[341,590,1512,1716,354,798]}]
+  },
+  {
+    "reviews": [446,447], "entityIds": ["fedc16e1ec84004f4c1ae2069c83ff3b"], "primary": "北仓文创街区",
+    "reason": "362、655、923、1535和1256均为观音桥附近旧仓库改造的文创街区；北仓泛名329、1192的路线及图片北仓标牌亦指此街区。四名合并，采用兴塔路与建北一支路交叉口东50米主源，公开攻略也给同地址。塔坪在原文与公开来源中单独列出，不合并；北仓里当前仅有站口及照片昵称，街区范围仍待核，本批不吞。",
+    "sources":["chongqing-beicang-fetch.json"],
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[362,655,923,1535,1256]},{"file":"chongqing-batch14-variant-context.json","mentionIds":[329,1192,1653]}]
+  },
+  {
+    "reviews": [449], "primary": "八一好吃街",
+    "reason": "481、995与781、910、1231都指解放碑步行可达的八一路小吃街，八一/八一路为道路名省略，不是两家餐饮门店。保留步行街与八一路交叉口主源定位，不将街内连锁店归为同一实体。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[481,995,781,910,1231]}]
+  },
+  {
+    "reviews": [450], "primary": "重庆江北国际机场",
+    "reason": "686明确作为飞抵重庆的机场，247原笔记图片的江北国际机场明确同时包含T2与T3。旧江北国际机场主体虽无独立精确提及且已停用，但名称、机场路地址、定位及未限定航站楼的主体范围均一致，仅省城市前缀，可合并此历史重复主体。机场周边住宿区1495、各航站楼出口和轨道站均不并入。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[686,866,1495]}]
+  },
+  {
+    "reviews": [452,463,464], "primary": "江滩公园", "canonicalName":"大剧院江滩公园",
+    "overrides":{"category":"景点"},
+    "reason": "1375明确从洪崖洞沿千厮门大桥到江北嘴大剧院江滩，673、1668同指大剧院旁对岸摄影公园；332、838、1072及1548均明确洪崖洞对面的江滩而非其他岸段。公开攻略把大剧院江滩公园地址写为金沙门路与桂花街交叉口东南120米，与通名主源一致，因此五名在本批指同园。采用该江滩定位，不采用大剧院建筑点或涪陵江北街道误点；剧院、地铁出口、钻石广场各自独立。",
+    "sources":["chongqing-beicang-fetch.json"],
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[1375,673,1668,332,838,1072,1548]}]
+  },
+  {
+    "reviews": [456], "primary": "3号线铜元局轻轨站", "canonicalName":"铜元局轻轨站",
+    "reason": "421原文明示3号线铜元局轻轨站内江北机场方向摄影。无线路前缀的旧主体已停用但地址同为3号线、坐标同站，未带不同出口或独立设施限定，是同一站点的重复目录行。合并站名，保留有原始提及的主源身份及该站参考点；江北机场方向是站内乘车方向，不作为新实体或机场同义。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[421]}]
+  },
+  {
+    "reviews": [457], "primary": "曾家岩临崖步道",
+    "reason": "1573同篇先写曾家岩步道、随后直接解释为曾家岩临崖步道；1509、1135也明确中山四路旁临崖观嘉陵江及轻轨的步道。采用现行主源临崖位置，替换泛名误落江津的远端坐标；不合并曾家岩地铁站或中山四路全街。",
+    "contexts": [{"file":"chongqing-batch14-context.json","mentionIds":[1573,1509,1135,431]}]
+  },
+  {
+    "reviews": [460,461], "entityIds":["058c1355d1ccc9253afd18bf30fd5e84"], "primary":"金刚碑温泉老村",
+    "reason":"1125为北碚缙云山下嘉陵江边的金刚碑温泉老村，547、1717的村庄/老村名指同一改造古村。740补充古镇源描述北碚江岸线上金刚碑老屋、古树、茶馆，图片标牌金刚碑绿野仙踪，亦为同村。合并四名，保留北泉路502号主源；村内各温泉池、酒店及附近温泉寺不并入。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[1125,547,1717]},{"file":"chongqing-batch14-extra-context.json","mentionIds":[740]}]
+  },
+  {
+    "reviews":[462], "primary":"东水门大桥",
+    "overrides":{"lat":null,"lng":null,"address":"重庆市连接渝中区与南岸区的东水门长江大桥","geoStatus":"unresolvable","category":"景点"},
+    "reason":"1649水门大桥以轨道上新街2号口定位，1214和1631的东水门大桥也在龙门浩、下浩里与湖广会馆游线，指跨江的同桥，水门为省略东字。桥体身份一致，但旧点分别为公交站及渝中岸侧机位，无法证实桥体参考点，清空坐标等待核实；东水门城门遗址、公交站、桥下机位不作为同义成员。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[1649,1214,1631,1229]}]
+  },
+  {
+    "reviews":[467], "primary":"临华路22号楼", "canonicalName":"临华路小区22号楼",
+    "overrides":{"lat":null,"lng":null,"address":"重庆市渝中区临华路小区22号楼","geoStatus":"unresolvable","category":"景点"},
+    "reason":"749明确刺杀小说家取景居民楼，1660为临华路22号机位；1135、1346、1725所在原文均明确导航临华路小区22号楼，支持同一建筑两写法。主源旧地址捍卫路22-26号不是该楼，另一点未精确到楼体，成对清空，不能借整条临华路的坐标或把整条路并入。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[749,1660,1135,1346,1725]}]
+  },
+  {
+    "reviews":[468], "primary":"彩云湖国家湿地公园",
+    "reason":"762、1298以国家湿地公园介绍湖边芦苇及秋景，并在同篇导航中使用简称；1032、1442景点清单的彩云湖湿地公园为同园。保留科城路166号公园主源参考点，两个旧点在不同侧不作为园区身份不同的依据，但独立入口不会作为同义成员。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[762,1298,1032,1442]}]
+  },
+  {
+    "reviews":[475], "primary":"呼归石花阶公园",
+    "reason":"1073公园原文明确南滨路、看两江汇合与亭子门框，1151花园原文明确向上几十米到八角亭，均为呼归石同一花阶公园，花园/公园为称呼变化。保留南滨路与野猫溪正街一带主源，替换误落石花村的旧点；亭子是园内独立设施，1758保留组成关系而非同义。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[1073,1151,1758]}]
+  },
+  {
+    "reviews":[476], "primary":"枇杷山正街公交站对面天台",
+    "overrides":{"lat":null,"lng":null,"address":"重庆市渝中区枇杷山正街公交站对面的天台，具体楼栋待核","geoStatus":"unresolvable","category":"景点"},
+    "reason":"1140、1747来自同一篇同一彩虹天梯机位，仅有无的字区别。合并重复抽取，旧点匹配成梁平对面镇天台村与原文完全冲突，成对清空；不把公交站或天梯本体并为天台，具体楼栋与坐标另待核。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[1140,1747]}]
+  },
+  {
+    "reviews":[482], "primary":"杉树湾公园",
+    "overrides":{"lat":null,"lng":null,"address":"重庆市沙坪坝区凤凰镇菁云湖周边杉树湾公园","geoStatus":"unresolvable","category":"景点"},
+    "reason":"1516明确沙坪坝凤凰镇、菁云湖、水杉林和环湖草坪的开放式公园；1677、1678也为沙坪坝杉树湾公园的草坪树林。两源为同园简称，旧二零四省道点不能证明实际环湖范围，暂清空精确坐标。另查1554杉树湾露营地含具体露营导航，不能仅因同坐标将营地边界直接吞入，保留独立补证。",
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[1516,1677,1678]},{"file":"chongqing-batch14-extra-context.json","mentionIds":[1554]}]
+  },
+  {
+    "reviews":[483], "primary":"三板溪鹿野公园",
+    "reason":"1685、1686三板溪公园与1556鹿野公园均指两江新区的开放草坪亲子公园。已抓取人民网资讯精选2026-01-12报道，明确原三板溪公园将以三板溪鹿野公园新形象开放，支持更名前后同体；梅花鹿互动乐园为园内新增设施，不是整个新园的别名。保留现代大道旁主源，不采用简称匹配到966/983路公交站的坐标。",
+    "sources":["chongqing-sanbanxi-fetch.json"],
+    "contexts":[{"file":"chongqing-batch14-context.json","mentionIds":[1685,1686,1556]}]
+  }
+]

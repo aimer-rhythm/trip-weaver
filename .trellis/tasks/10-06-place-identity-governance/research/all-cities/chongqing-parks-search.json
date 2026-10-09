@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "c59d99bca57c",
+  "query": "重庆 金海湾公园 金海湾滨江公园 三板溪公园 鹿野公园 是否同一个 范围",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先查这几个公园的官方名称、位置和相互包含关系，确认是不是同一片区域。",
+  "sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E4%B8%89%E6%9D%BF%E6%BA%AA%E9%B9%BF%E9%87%8E%E5%85%AC%E5%9B%AD/67385782",
+      "provider": "tavily",
+      "title": "三板溪鹿野公园",
+      "description": "三板溪鹿野公园（原三板溪公园）位于重庆市两江新区龙盛新城鱼复片区，占地面积45万平方米（截至2025年已建成35万平方米），是以自然溪水景观为核心的开放式生态公园。"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E9%87%91%E6%B5%B7%E6%B9%BE%E6%BB%A8%E6%B1%9F%E5%85%AC%E5%9B%AD/22528936",
+      "provider": "tavily",
+      "title": "金海湾滨江公园",
+      "description": "金海湾滨江公园位于重庆市两江新区嘉陵江“几”字形岸线，北起礼嘉，南至大竹林，全长约17公里，规划总面积4200亩（不含消落带区域）。公园沿江分布峡江风貌展示区、"
+    },
+    {
+      "url": "https://www2.cqcb.com/hot/2020-07-15/2691981.html",
+      "provider": "tavily",
+      "title": "最重庆的约会！你在金海湾滨江公园 - 上游",
+      "description": "实际上，未来的金海湾公园是一个沿嘉陵江边，从现在的金海湾公园开始，到现在的金海湾滨江公园为止，长17公里，面积约4800亩的超大型公园。但在今后很长的"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E4%B8%89%E6%9D%BF%E6%BA%AA%E9%B9%BF%E9%87%8E%E5%85%AC%E5%9B%AD/67385782",
+      "provider": "tavily",
+      "title": "三板溪鹿野公园",
+      "description": "三板溪鹿野公园（原三板溪公园）位于重庆市两江新区龙盛新城鱼复片区，占地面积45万平方米（截至2025年已建成35万平方米），是以自然溪水景观为核心的开放式生态公园。"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E9%87%91%E6%B5%B7%E6%B9%BE%E6%BB%A8%E6%B1%9F%E5%85%AC%E5%9B%AD/22528936",
+      "provider": "tavily",
+      "title": "金海湾滨江公园",
+      "description": "金海湾滨江公园位于重庆市两江新区嘉陵江“几”字形岸线，北起礼嘉，南至大竹林，全长约17公里，规划总面积4200亩（不含消落带区域）。公园沿江分布峡江风貌展示区、"
+    },
+    {
+      "url": "https://www2.cqcb.com/hot/2020-07-15/2691981.html",
+      "provider": "tavily",
+      "title": "最重庆的约会！你在金海湾滨江公园 - 上游",
+      "description": "实际上，未来的金海湾公园是一个沿嘉陵江边，从现在的金海湾公园开始，到现在的金海湾滨江公园为止，长17公里，面积约4800亩的超大型公园。但在今后很长的"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 11216.57,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 17877.96,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 17877.98
+}

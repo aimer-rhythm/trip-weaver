@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "210681298739",
+  "query": "\"明湖天地\" \"C座\"",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查一下“明湖天地 C座”的相关信息。",
+  "sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E5%8D%81%E5%85%AB%E6%A5%BCC%E5%BA%A7/9011806",
+      "provider": "tavily",
+      "title": "十八楼C座",
+      "description": "十八楼C座(18/F Block C),经典对白深入民心。是一个历史悠久、首播于1968年7月3日的社会广播剧,为纪念播音员林彬而开,与时并进,利用嬉笑怒骂的手法及剧"
+    },
+    {
+      "url": "https://www.youtube.com/playlist?list=PLC27DAA3152041A02",
+      "provider": "tavily",
+      "title": "十八樓C座",
+      "description": "十八樓C座是一個社會諷刺劇，與時並進，利用嬉笑怒罵的手法及劇中一群你、我都熟悉的小人物，演繹社會大小事，不平則鳴，引起大眾共鳴。 ...more 十八樓C座是一個社會"
+    },
+    {
+      "url": "https://www.art-mate.net/doc/30133",
+      "provider": "tavily",
+      "title": "十八樓C座",
+      "description": "首播於1968年的商台廣播劇《十八樓C座》，為華語世界最長壽的廣播劇，歷時四十五載，仍然在熱播中。 每集故事內容貼近市民生活，一眾角色形象鮮明，對白抵死幽默，包括"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E5%8D%81%E5%85%AB%E6%A5%BCC%E5%BA%A7/9011806",
+      "provider": "tavily",
+      "title": "十八楼C座",
+      "description": "十八楼C座(18/F Block C),经典对白深入民心。是一个历史悠久、首播于1968年7月3日的社会广播剧,为纪念播音员林彬而开,与时并进,利用嬉笑怒骂的手法及剧"
+    },
+    {
+      "url": "https://www.youtube.com/playlist?list=PLC27DAA3152041A02",
+      "provider": "tavily",
+      "title": "十八樓C座",
+      "description": "十八樓C座是一個社會諷刺劇，與時並進，利用嬉笑怒罵的手法及劇中一群你、我都熟悉的小人物，演繹社會大小事，不平則鳴，引起大眾共鳴。 ...more 十八樓C座是一個社會"
+    },
+    {
+      "url": "https://www.art-mate.net/doc/30133",
+      "provider": "tavily",
+      "title": "十八樓C座",
+      "description": "首播於1968年的商台廣播劇《十八樓C座》，為華語世界最長壽的廣播劇，歷時四十五載，仍然在熱播中。 每集故事內容貼近市民生活，一眾角色形象鮮明，對白抵死幽默，包括"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 3756.22,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 10111.7,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 10111.73
+}

@@ -1,0 +1,242 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "4dfda3371793b69de15122bb7e330eac",
+          "city": "济南",
+          "canonical_name": "护城河",
+          "primary_place_id": 5477,
+          "aliases": [
+            "护城河"
+          ],
+          "legacy_ids": [
+            "4dfda3371793b69de15122bb7e330eac"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5477,
+          "entity_id": "4dfda3371793b69de15122bb7e330eac"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5477,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 18.0,
+          "theme_tags": [
+            "文艺",
+            "美食",
+            "购物"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5477,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "位于推荐路线上，适合citywalk",
+              "evidence": "护城河——黑虎泉"
+            },
+            {
+              "reason": "推荐游览，位于推荐路线第六站",
+              "evidence": "按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序"
+            }
+          ],
+          "recommend_score": 10.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7929,
+          "canonical_place_id": 5477,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 护城河",
+          "evidence_summary": "位于推荐路线上，适合citywalk"
+        },
+        {
+          "id": 8633,
+          "canonical_place_id": 5477,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 护城河",
+          "evidence_summary": "推荐游览，位于推荐路线第六站"
+        }
+      ],
+      "relations": [
+        {
+          "id": 5008,
+          "from_name": "护城河",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "氛围感足 📍解放阁：黑虎泉旁红色地标，登阁俯瞰护城河，夜景亮灯很美 📍曲",
+          "source_url": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5477,
+          "city": "济南",
+          "name_keys": [
+            "护城河"
+          ],
+          "entity_ids": [
+            "4dfda3371793b69de15122bb7e330eac"
+          ],
+          "source_hash": "9dec40e002fcdf76ec5ce641e9c386c89656ab0c80574ac3b0e7868bd26159ac",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-58-source-5477-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/river-source-review-01.json",
+              "kind": "reviewed_river_scope_excludes_unrelated_image_tips",
+              "conclusion": "两条原文河道提及全部保留；不再按全城图片文字包含护城河而借入解放阁提示。不改原始图文、旧名/ID/类别/位置，不创建游船主体。",
+              "mentionIds": [
+                11404,
+                12901
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "4dfda3371793b69de15122bb7e330eac"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11404,
+          "scope_place_id": 5477,
+          "entity_id": "4dfda3371793b69de15122bb7e330eac",
+          "input_hash": "f6fae9f146d207c1bef563cd6eb1337d2e7c5f6067170823b9f2dc1ccb98d72a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-58-source-5477-scope"
+        },
+        {
+          "mention_id": 12901,
+          "scope_place_id": 5477,
+          "entity_id": "4dfda3371793b69de15122bb7e330eac",
+          "input_hash": "4d2f1aba8523bad18d2c1b2e07d57daf33b731a54e7276f6cda54df65def7a19",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-58-source-5477-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "9dec40e002fcdf76ec5ce641e9c386c89656ab0c80574ac3b0e7868bd26159ac",
+        "mentions": [
+          {
+            "mentionId": 11404,
+            "inputHash": "f6fae9f146d207c1bef563cd6eb1337d2e7c5f6067170823b9f2dc1ccb98d72a"
+          },
+          {
+            "mentionId": 12901,
+            "inputHash": "4d2f1aba8523bad18d2c1b2e07d57daf33b731a54e7276f6cda54df65def7a19"
+          }
+        ]
+      },
+      "scopeReviews": []
+    }
+  ]
+}

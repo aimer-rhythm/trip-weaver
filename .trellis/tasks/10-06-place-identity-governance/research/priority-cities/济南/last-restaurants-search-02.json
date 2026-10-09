@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "0669fab76635",
+  "query": "济南 华祥糕点 大观园南门 西行100米 永长街 地址",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查一下济南华祥糕点在大观园南门、永长街附近的具体地址。",
+  "sources": [
+    {
+      "url": "https://www.sohu.com/a/5715744_114957",
+      "provider": "tavily",
+      "title": "济南那些老式点心铺，吃一口让你回到20年前",
+      "description": "(大观园店) 地址:市中区纬二经四路33号电话:18607010298 推荐:繁华的路口、华祥清真糕点图片人均:10元地址:市中区经五路东首电话:0531-86850497"
+    },
+    {
+      "url": "https://you.ctrip.com/food/128/163870.html",
+      "provider": "tavily",
+      "title": "一大糕点(纬六路店)",
+      "description": "济南一大糕点，总店，经三纬六路191号，济南糕点老店，成立于1912年，接近一百年的历史了，每次路过，都会捎带买点儿，送老人，情怀更甚于食物本身的味道。炒糖，蜜食，"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.sohu.com/a/5715744_114957",
+      "provider": "tavily",
+      "title": "济南那些老式点心铺，吃一口让你回到20年前",
+      "description": "(大观园店) 地址:市中区纬二经四路33号电话:18607010298 推荐:繁华的路口、华祥清真糕点图片人均:10元地址:市中区经五路东首电话:0531-86850497"
+    },
+    {
+      "url": "https://you.ctrip.com/food/128/163870.html",
+      "provider": "tavily",
+      "title": "一大糕点(纬六路店)",
+      "description": "济南一大糕点，总店，经三纬六路191号，济南糕点老店，成立于1912年，接近一百年的历史了，每次路过，都会捎带买点儿，送老人，情怀更甚于食物本身的味道。炒糖，蜜食，"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4635.83,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 10188.13,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 10188.16
+}

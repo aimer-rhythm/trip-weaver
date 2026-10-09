@@ -1,0 +1,131 @@
+{
+ "_comment": "文字警告115f3ccb42社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "文字警告115f3ccb42",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 3,
+  "sourceHash": "8ad0d6df3ae9c5f19d6d22d8fc68e1e03f4d432ea5a7ab9c53c7a3475a02d3dc",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "文字警告115f3ccb42",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "甲街"
+   ],
+   "mentions": [
+    {
+     "mentionId": 1,
+     "noteId": 1,
+     "inputHash": "54cd4106a979b0e38300ad57ecc47892e2e2bdab526f92ba6ebfb551630ccb06",
+     "textHash": "7defa44eeccb8350fb80e7ad4b3eba0c41bf15b54bf1c5698c5a841109becd84",
+     "textLength": 19,
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "revision": 3,
+     "canonicalName": "甲街",
+     "aliases": [
+      "甲街"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "3daca6b7b2b8e341d60929dcfb19fe0b",
+   "name": "甲街",
+   "category": "其他",
+   "lng": 117.02,
+   "lat": 36.66,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "other",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-08T23:07:41.261564+00:00"
+    },
+    "originalName": "甲街",
+    "openHours": {
+     "version": 2,
+     "subject": "甲街",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 1,
+      "noteId": 1,
+      "inputHash": "54cd4106a979b0e38300ad57ecc47892e2e2bdab526f92ba6ebfb551630ccb06"
+     }
+    ],
+    "typicalVisitMinutes": 30,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "3daca6b7b2b8e341d60929dcfb19fe0b",
+     "canonicalName": "甲街",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "甲街"
+     ],
+     "memberIds": [
+      "3daca6b7b2b8e341d60929dcfb19fe0b"
+     ]
+    },
+    "aliases": [
+     "甲街"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "甲街老房子适合漫步，游玩30分钟。",
+     "sourceUrl": "https://example.com/street"
+    }
+   ]
+  }
+ ]
+}

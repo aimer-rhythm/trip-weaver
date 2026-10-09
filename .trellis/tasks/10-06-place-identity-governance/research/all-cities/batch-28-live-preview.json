@@ -1,0 +1,719 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "重庆",
+      "entities": 650,
+      "members": 650,
+      "reviewCount": 12,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "ad7effec11e0e6f94e2d12709ebedb79",
+            "f91357d310a658a38f0631ba6742a0e0"
+          ],
+          "names": [
+            "佛图关站",
+            "佛图关"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d3af371184e549d3b3b0eaf887eb9036",
+            "fe9468812f76d513dd31d4f2042d4dab"
+          ],
+          "names": [
+            "南滨路钟楼广场",
+            "南滨路钟楼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "b76eb547ba7a8ccad3f44bef3c5dc222",
+            "c273b6780c41ba39fe9368fa45763eba"
+          ],
+          "names": [
+            "长嘉汇购物广场",
+            "长嘉汇广场"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "7653bb0fcb6ba1f42ec0f4c61ceb6a71",
+            "e017e9124d283a80d3ddee3f0a66eea3"
+          ],
+          "names": [
+            "北仓塔坪",
+            "北仓&塔坪"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "5182712e5db259877da46a3d91814ccd",
+            "e1d2d810b7591a1d82bb342a200e9639"
+          ],
+          "names": [
+            "金海湾公园",
+            "金海湾滨江公园"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "21f55226e58c3df24d86e522de819889",
+            "ad7effec11e0e6f94e2d12709ebedb79"
+          ],
+          "names": [
+            "佛图关地铁站",
+            "佛图关站"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c8501aee78bf4a6abede20fa46ea4a44",
+            "cfd30e1c6b49ac16018538c4c6e7f65e"
+          ],
+          "names": [
+            "大剧院地铁站1号口",
+            "大剧院地铁站"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "5ec3fd7ef72bd0696d0971ee1d73db5a",
+            "cfd30e1c6b49ac16018538c4c6e7f65e"
+          ],
+          "names": [
+            "大剧院地铁站4号口",
+            "大剧院地铁站"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "1cdf93734e803b63c2ac7c4bf9948f53",
+            "989b79578f1747da15d2fa697abde4ef"
+          ],
+          "names": [
+            "重庆江北国际机场",
+            "江北机场"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "0a8711e5ae81aea7b474f94354d80a2e",
+            "d502efd8f9dd6c558aec0866483743f9"
+          ],
+          "names": [
+            "爱乐之城",
+            "重庆爱乐之城"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "881d5a2004366fad8408312898244037",
+            "f3568e59fefd6975056c4da0f18a9c52"
+          ],
+          "names": [
+            "范嬢嬋糯米团",
+            "范嬢嬢糯米团"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "89370f25d1c281bc8b8bda6f4eb3deb2",
+            "f3568e59fefd6975056c4da0f18a9c52"
+          ],
+          "names": [
+            "范嬢嬢春森路糯米团",
+            "范嬢嬢糯米团"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "23a4459d6f3030e9d5ed068dc533780e",
+          "city": "重庆",
+          "canonical_name": "天棒老火锅（老店）",
+          "primary_place_id": 108,
+          "aliases": [
+            "天棒老火锅（老店）"
+          ],
+          "legacy_ids": [
+            "23a4459d6f3030e9d5ed068dc533780e"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 108,
+              "noteId": 30,
+              "quote": "🔥天棒老火锅（老店）：解放碑巷子里面的重庆火锅，天棒三宝很推荐！",
+              "mentionIds": [
+                485,
+                999,
+                1387
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 108,
+          "entity_id": "23a4459d6f3030e9d5ed068dc533780e"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "417b138d72bc8cfdc7a5eb8317c11774",
+          "city": "重庆",
+          "canonical_name": "绍友老火锅",
+          "primary_place_id": 107,
+          "aliases": [
+            "绍友老火锅"
+          ],
+          "legacy_ids": [
+            "417b138d72bc8cfdc7a5eb8317c11774"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 107,
+              "noteId": 30,
+              "quote": "🔥绍友老火锅：本地朋友带来吃的解放碑社区火锅！卤肥肠我的最爱！",
+              "mentionIds": [
+                488,
+                1002,
+                1390
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 107,
+          "entity_id": "417b138d72bc8cfdc7a5eb8317c11774"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f845f7a6b36b541e3fa3989bd7b81106",
+          "city": "重庆",
+          "canonical_name": "王胖娃面",
+          "primary_place_id": 104,
+          "aliases": [
+            "王胖娃面"
+          ],
+          "legacy_ids": [
+            "f845f7a6b36b541e3fa3989bd7b81106"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 104,
+              "noteId": 30,
+              "quote": "🔥王胖娃面：性价比巨巴适的重庆小面，豌杂黏糊糊的！",
+              "mentionIds": [
+                487,
+                1001,
+                1389
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 104,
+          "entity_id": "f845f7a6b36b541e3fa3989bd7b81106"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "799e11e8bf497ab82273a34df37df7ed",
+          "city": "重庆",
+          "canonical_name": "唐红英火锅（临江门店）",
+          "primary_place_id": 109,
+          "aliases": [
+            "唐红英火锅（临江门店）"
+          ],
+          "legacy_ids": [
+            "799e11e8bf497ab82273a34df37df7ed"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 109,
+              "noteId": 30,
+              "quote": "🔥唐红英火锅（临江门店）：大井巷里面开了好多年的重庆居民楼火锅，素菜才2.8 r起耶",
+              "mentionIds": [
+                486,
+                1000,
+                1388
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 109,
+          "entity_id": "799e11e8bf497ab82273a34df37df7ed"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "860fae4c5866d45bb8ce8ed120f56520",
+          "city": "重庆",
+          "canonical_name": "秋孃孃火锅",
+          "primary_place_id": 111,
+          "aliases": [
+            "秋孃孃火锅"
+          ],
+          "legacy_ids": [
+            "860fae4c5866d45bb8ce8ed120f56520"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 111,
+              "noteId": 30,
+              "quote": "🔥秋孃孃火锅：就是巷子里面的重庆火锅，收手工菜都很新鲜哦！",
+              "mentionIds": [
+                490,
+                1004,
+                1392
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 111,
+          "entity_id": "860fae4c5866d45bb8ce8ed120f56520"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "cd3363759380cecb97319ca187b89052",
+          "city": "重庆",
+          "canonical_name": "惠火锅（解放碑店）",
+          "primary_place_id": 110,
+          "aliases": [
+            "惠火锅（解放碑店）"
+          ],
+          "legacy_ids": [
+            "cd3363759380cecb97319ca187b89052"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 110,
+              "noteId": 30,
+              "quote": "🔥惠火锅（解放碑店）：重庆社区火锅哦，现炒的锅底很香！！",
+              "mentionIds": [
+                489,
+                1003,
+                1391
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 110,
+          "entity_id": "cd3363759380cecb97319ca187b89052"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f4d65203538b402dcacabb0027e2bc0a",
+          "city": "重庆",
+          "canonical_name": "秋姐三样菜",
+          "primary_place_id": 113,
+          "aliases": [
+            "秋姐三样菜"
+          ],
+          "legacy_ids": [
+            "f4d65203538b402dcacabb0027e2bc0a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 113,
+              "noteId": 30,
+              "quote": "🔥秋姐三样菜：超级下饭的重庆江湖菜哦，毛血旺特别好吃，好爱！",
+              "mentionIds": [
+                491,
+                1005,
+                1393
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 113,
+          "entity_id": "f4d65203538b402dcacabb0027e2bc0a"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "598497b023fd71edd8c9db03a576c49d",
+          "city": "重庆",
+          "canonical_name": "烤匠麻辣烤鱼（观音桥大融城店）",
+          "primary_place_id": 112,
+          "aliases": [
+            "烤匠麻辣烤鱼（观音桥大融城店）"
+          ],
+          "legacy_ids": [
+            "598497b023fd71edd8c9db03a576c49d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 112,
+              "noteId": 174,
+              "quote": "✅烤匠麻辣烤鱼（观音桥大融城店）：重庆火了十多年的烤鱼店，经典麻辣烤鱼鱼皮酥嫩、鱼肉入味，配现磨手工黑豆花刚好。餐后赠猫头花椒冰淇淋麻香上头，包浆豆腐外焦里嫩",
+              "mentionIds": [
+                1033,
+                1443
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 112,
+          "entity_id": "598497b023fd71edd8c9db03a576c49d"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "4b0488a9d4b05b137b7d2142f3e9c673",
+          "city": "重庆",
+          "canonical_name": "莲藕抄手",
+          "primary_place_id": 130,
+          "aliases": [
+            "莲藕抄手"
+          ],
+          "legacy_ids": [
+            "4b0488a9d4b05b137b7d2142f3e9c673"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 130,
+              "noteId": 174,
+              "quote": "✅莲藕抄手：文化街老面馆，莲藕抄手现包现煮，皮薄馅大，藕丁脆甜混着肉香。碗杂面豌豆翻砂、烧椒猪肝面嫩，小面还能续",
+              "mentionIds": [
+                1035,
+                1445
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 130,
+          "entity_id": "4b0488a9d4b05b137b7d2142f3e9c673"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "fcafa45227fe9c9450d9def3ec16100c",
+          "city": "重庆",
+          "canonical_name": "李若桃",
+          "primary_place_id": 94,
+          "aliases": [
+            "李若桃"
+          ],
+          "legacy_ids": [
+            "fcafa45227fe9c9450d9def3ec16100c"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 94,
+              "noteId": 28,
+              "quote": "📍李若桃：草莓桃，玫珑，开心果都很好喝！",
+              "mentionIds": [
+                399,
+                805,
+                1326
+              ],
+              "conclusion": "原文明确奶茶/酸奶饮品；产品类别纠正为美食，清洗桶为cafe。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 94,
+          "entity_id": "fcafa45227fe9c9450d9def3ec16100c"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "0af9a79b856547dde4820d0f0fb950ff",
+          "city": "重庆",
+          "canonical_name": "一只酸奶牛",
+          "primary_place_id": 96,
+          "aliases": [
+            "一只酸奶牛"
+          ],
+          "legacy_ids": [
+            "0af9a79b856547dde4820d0f0fb950ff"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 96,
+              "noteId": 28,
+              "quote": "📍一只酸奶牛：葡萄酸酪酸奶昔，牛油果酸奶紫米露",
+              "mentionIds": [
+                401,
+                807,
+                1328
+              ],
+              "conclusion": "原文明确奶茶/酸奶饮品；产品类别纠正为美食，清洗桶为cafe。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 96,
+          "entity_id": "0af9a79b856547dde4820d0f0fb950ff"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "87c3fd260202f9d4c4450e77eda8dcee",
+          "city": "重庆",
+          "canonical_name": "孔二火锅",
+          "primary_place_id": 16,
+          "aliases": [
+            "孔二火锅"
+          ],
+          "legacy_ids": [
+            "87c3fd260202f9d4c4450e77eda8dcee"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "美食"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_food_category",
+              "file": "cleaning-scope/run-1791371057197/priority-evidence-01.json",
+              "sha256": "11ab88baf96107c4b8f321fefeaa3721b5b463815aa37caaa60407626208d371",
+              "sourcePlaceId": 16,
+              "noteId": 291,
+              "quote": "孔二火锅（观音桥）🌟🌟🌟🌟🌟",
+              "mentionIds": [
+                1418
+              ],
+              "conclusion": "原文明确餐饮；产品类别纠正为美食，清洗桶为food。本批不认领新别名、不改变分店归属和原始提及。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 16,
+          "entity_id": "87c3fd260202f9d4c4450e77eda8dcee"
+        }
+      ]
+    }
+  ]
+}

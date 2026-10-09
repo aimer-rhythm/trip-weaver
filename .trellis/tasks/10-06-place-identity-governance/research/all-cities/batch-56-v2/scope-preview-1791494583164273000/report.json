@@ -1,0 +1,58 @@
+{
+  "batch": 56,
+  "variant": "v2",
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 3,
+  "historicalEntities": 3,
+  "mentions": 4,
+  "notes": 4,
+  "confirmedScoped": 4,
+  "pendingAdded": 0,
+  "historicalReviewPreserved": true,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "name": "四窟万象",
+      "mentions": 2,
+      "category": "文化",
+      "type": "attraction",
+      "coordinatesCleared": true,
+      "historicLocationPreserved": false,
+      "groupDurationExcluded": false
+    },
+    {
+      "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+      "name": "济南环城公园",
+      "mentions": 1,
+      "category": "自然",
+      "type": "attraction",
+      "coordinatesCleared": false,
+      "historicLocationPreserved": false,
+      "groupDurationExcluded": true
+    },
+    {
+      "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+      "name": "共青团路关帝庙",
+      "mentions": 1,
+      "category": "文化",
+      "type": "attraction",
+      "coordinatesCleared": false,
+      "historicLocationPreserved": true,
+      "groupDurationExcluded": false
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "factExclusions": 1,
+  "negativeMentionPreserved": true,
+  "historicLocationPreserved": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "00bd562e6cf5a65805a1c0d27468b91ff5bb5ba552392165896ab787205adbd6"
+}

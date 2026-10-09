@@ -1,0 +1,40 @@
+{
+  "verifiedAt": "2026-10-07T01:17:28.963Z",
+  "batch": "batch-24",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "重庆",
+      "exported": 567,
+      "total": 620,
+      "active": 581,
+      "embedded": 581,
+      "probes": [
+        {
+          "name": "呼归石公交站对面",
+          "id": "2f6c627fdf341bf54b049f3c0ae84d74"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "呼归石公交站对面",
+          "id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "c8cf0e04-2067-4c1d-9f16-0ef3fd12a3d2"
+      ]
+    }
+  ],
+  "failures": []
+}

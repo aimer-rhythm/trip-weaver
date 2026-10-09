@@ -1,0 +1,1560 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 8,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "765d12cf332a7a8596e6bfae194cc36e",
+            "ec50ce1141b9419d030e4931cb4999d5"
+          ],
+          "names": [
+            "HANDBELL",
+            "handbell"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "1b93567a71a81d2a0929c921179d5fff",
+          "city": "成都",
+          "canonical_name": "成都大熊猫繁育研究基地",
+          "primary_place_id": 1693,
+          "aliases": [
+            "大熊猫基地",
+            "大熊猫繁育研究基地",
+            "成都大熊猫繁育研究基地",
+            "熊猫基地"
+          ],
+          "legacy_ids": [
+            "1b93567a71a81d2a0929c921179d5fff",
+            "2b81c84d895583317ba703656f9d97c7",
+            "a7959e5f83c9eb75c28ce2f0110e9704",
+            "e57cb4dc3529d4e1575619d47cd3ac47"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 30.740573,
+            "lng": 104.138176,
+            "address": "熊猫大道1375号",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                309
+              ],
+              "conclusion": "3598、4101等大熊猫基地/熊猫基地为成都市内看花花并联游东郊记忆的同一基地，3896、4023、4085对应完整名称，原文也明确基地南门。额外纳入初始相似名队列漏掉的正式主体，采用熊猫大道1375号主体定位，不与熊猫谷或都江堰中华大熊猫苑合并。",
+              "sourcePlaceIds": [
+                "1760",
+                "1743",
+                "1693"
+              ],
+              "mentions": [
+                {
+                  "id": "3598",
+                  "name": "大熊猫基地",
+                  "quote": "Day2：大熊猫基地—东郊记忆",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a9b9035000000002802c083"
+                },
+                {
+                  "id": "4210",
+                  "name": "熊猫基地",
+                  "quote": "熊猫基地→文殊院",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b"
+                },
+                {
+                  "id": "4101",
+                  "name": "熊猫基地",
+                  "quote": "DAY2：熊猫基地→东郊记忆",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a56f2d600000000150260a2"
+                },
+                {
+                  "id": "4039",
+                  "name": "熊猫基地",
+                  "quote": "热门景点需要提前予约",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aa7e995000000002700b1b3"
+                },
+                {
+                  "id": "3993",
+                  "name": "熊猫基地",
+                  "quote": "熊猫基地",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a58f4e6000000001c012192"
+                },
+                {
+                  "id": "3506",
+                  "name": "成都大熊猫繁育研究基地",
+                  "quote": "园区很大 七点半开园 尽量早点来看花花",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/693ea17e000000001f00556c"
+                },
+                {
+                  "id": "3590",
+                  "name": "成都大熊猫繁育研究基地",
+                  "quote": "大熊猫基地一定要早！9点后花花可能就睡了",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69b56542000000002003b71d"
+                },
+                {
+                  "id": "3706",
+                  "name": "成都大熊猫繁育研究基地",
+                  "quote": "早冲熊猫基地看滚滚干饭",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74"
+                },
+                {
+                  "id": "3896",
+                  "name": "成都大熊猫繁育研究基地",
+                  "quote": "尽量约上午场",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3cf2d0000000012037a1a"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "1693",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 30.740573,
+                "lng": 104.138176,
+                "address": "熊猫大道1375号",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 30.740573,
+              "lng": 104.138176,
+              "address": "熊猫大道1375号",
+              "geoStatus": "reviewed_source"
+            },
+            {
+              "kind": "reviewed_supplemental_entity",
+              "file": "all-cities/chengdu-panda-entity.json",
+              "sha256": "28b9da3c5c4366b513e4b96b8264b8535d6ea828b9baa7e1380b72b1f7d5bacd",
+              "conclusion": "3598、4101等大熊猫基地/熊猫基地为成都市内看花花并联游东郊记忆的同一基地，3896、4023、4085对应完整名称，原文也明确基地南门。额外纳入初始相似名队列漏掉的正式主体，采用熊猫大道1375号主体定位，不与熊猫谷或都江堰中华大熊猫苑合并。"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/chengdu-batch08-context.json",
+              "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+              "mentionIds": [
+                3903,
+                4079,
+                4028
+              ],
+              "conclusion": "3598、4101等大熊猫基地/熊猫基地为成都市内看花花并联游东郊记忆的同一基地，3896、4023、4085对应完整名称，原文也明确基地南门。额外纳入初始相似名队列漏掉的正式主体，采用熊猫大道1375号主体定位，不与熊猫谷或都江堰中华大熊猫苑合并。"
+            }
+          ]
+        },
+        {
+          "entity_id": "2b81c84d895583317ba703656f9d97c7",
+          "city": "成都",
+          "canonical_name": "大熊猫基地",
+          "primary_place_id": 1760,
+          "aliases": [
+            "大熊猫基地"
+          ],
+          "legacy_ids": [
+            "2b81c84d895583317ba703656f9d97c7"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "1b93567a71a81d2a0929c921179d5fff",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "e57cb4dc3529d4e1575619d47cd3ac47",
+          "city": "成都",
+          "canonical_name": "熊猫基地",
+          "primary_place_id": 1743,
+          "aliases": [
+            "熊猫基地"
+          ],
+          "legacy_ids": [
+            "e57cb4dc3529d4e1575619d47cd3ac47"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "1b93567a71a81d2a0929c921179d5fff",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1693,
+          "entity_id": "1b93567a71a81d2a0929c921179d5fff"
+        },
+        {
+          "place_id": 1743,
+          "entity_id": "1b93567a71a81d2a0929c921179d5fff"
+        },
+        {
+          "place_id": 1760,
+          "entity_id": "1b93567a71a81d2a0929c921179d5fff"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1cfbdf530ddee236da62885f44ee2ef8",
+          "city": "成都",
+          "canonical_name": "青城山前山景区",
+          "primary_place_id": 1997,
+          "aliases": [
+            "青城山前山",
+            "青城山前山景区"
+          ],
+          "legacy_ids": [
+            "1cfbdf530ddee236da62885f44ee2ef8",
+            "4e7716d32157e10be49aa02466c48a3e"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 30.892467,
+            "lng": 103.605132,
+            "address": "青城山镇青城山路168号青城山景区",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                318
+              ],
+              "conclusion": "3929与4120均明确青城山前山，后者举建福宫天师洞，与道教前山主体一致，景区为名称补全；不并入后山或整个青城山地区。",
+              "sourcePlaceIds": [
+                "1997",
+                "1921"
+              ],
+              "mentions": [
+                {
+                  "id": "4120",
+                  "name": "青城山前山景区",
+                  "quote": "9.10‑9.20教师免票入园",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb"
+                },
+                {
+                  "id": "3929",
+                  "name": "青城山前山",
+                  "quote": "青城山前山",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69550945000000001f007c88"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "1997",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 30.892467,
+                "lng": 103.605132,
+                "address": "青城山镇青城山路168号青城山景区",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 30.892467,
+              "lng": 103.605132,
+              "address": "青城山镇青城山路168号青城山景区",
+              "geoStatus": "reviewed_source"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/chengdu-batch08-context.json",
+              "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+              "mentionIds": [
+                3929,
+                4120
+              ],
+              "conclusion": "3929与4120均明确青城山前山，后者举建福宫天师洞，与道教前山主体一致，景区为名称补全；不并入后山或整个青城山地区。"
+            }
+          ]
+        },
+        {
+          "entity_id": "4e7716d32157e10be49aa02466c48a3e",
+          "city": "成都",
+          "canonical_name": "青城山前山",
+          "primary_place_id": 1921,
+          "aliases": [
+            "青城山前山"
+          ],
+          "legacy_ids": [
+            "4e7716d32157e10be49aa02466c48a3e"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "1cfbdf530ddee236da62885f44ee2ef8",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1921,
+          "entity_id": "1cfbdf530ddee236da62885f44ee2ef8"
+        },
+        {
+          "place_id": 1997,
+          "entity_id": "1cfbdf530ddee236da62885f44ee2ef8"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "7c458c586b810855c5f419d71166218b",
+          "city": "成都",
+          "canonical_name": "成都自然博物馆",
+          "primary_place_id": 1982,
+          "aliases": [
+            "成都自然博物馆"
+          ],
+          "legacy_ids": [
+            "7c458c586b810855c5f419d71166218b"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "e35dd8c5d493408a525edee193c816d4",
+          "city": "成都",
+          "canonical_name": "成都博物馆",
+          "primary_place_id": 1686,
+          "aliases": [
+            "成都博物馆"
+          ],
+          "legacy_ids": [
+            "e35dd8c5d493408a525edee193c816d4"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1686,
+          "entity_id": "e35dd8c5d493408a525edee193c816d4"
+        },
+        {
+          "place_id": 1982,
+          "entity_id": "7c458c586b810855c5f419d71166218b"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 297,
+          "fingerprint": "bdeeab813b80b094f280f4603c0057874be9cbad3999980ce2af175d4db42c6b",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "成都自然博物馆",
+              "成都博物馆"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "7c458c586b810855c5f419d71166218b",
+              "e35dd8c5d493408a525edee193c816d4"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-297",
+              "verdict": "distinct",
+              "explanation": "4079/4082同篇分别列天府广场成都博物馆和十里店成都自然博物馆，地址、机构、票务独立，不能省略自然二字。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    297
+                  ],
+                  "conclusion": "4079/4082同篇分别列天府广场成都博物馆和十里店成都自然博物馆，地址、机构、票务独立，不能省略自然二字。",
+                  "sourcePlaceIds": [
+                    "1982",
+                    "1686"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    4079,
+                    4082
+                  ],
+                  "conclusion": "4079/4082同篇分别列天府广场成都博物馆和十里店成都自然博物馆，地址、机构、票务独立，不能省略自然二字。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "5b8468db2991870d74ebfb110b518624",
+          "city": "成都",
+          "canonical_name": "玉林西路",
+          "primary_place_id": 1970,
+          "aliases": [
+            "玉林西路"
+          ],
+          "legacy_ids": [
+            "5b8468db2991870d74ebfb110b518624"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f95bf59577dc009f411df33ac53bb62f",
+          "city": "成都",
+          "canonical_name": "玉林路",
+          "primary_place_id": 1690,
+          "aliases": [
+            "玉林路"
+          ],
+          "legacy_ids": [
+            "f95bf59577dc009f411df33ac53bb62f"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1690,
+          "entity_id": "f95bf59577dc009f411df33ac53bb62f"
+        },
+        {
+          "place_id": 1970,
+          "entity_id": "5b8468db2991870d74ebfb110b518624"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 298,
+          "fingerprint": "533848003233399918cdadcfcacb0fa35c19700fde5454e683033404a1de78a4",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "玉林西路",
+              "玉林路"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "5b8468db2991870d74ebfb110b518624",
+              "f95bf59577dc009f411df33ac53bb62f"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-298",
+              "verdict": "part_of",
+              "explanation": "4066明确玉林西路小酒馆，3819的玉林路为随意逛小巷的玉林片区泛称；西路只是其中道路，不能把片区所有提及归成西路或南街。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    298
+                  ],
+                  "conclusion": "4066明确玉林西路小酒馆，3819的玉林路为随意逛小巷的玉林片区泛称；西路只是其中道路，不能把片区所有提及归成西路或南街。",
+                  "sourcePlaceIds": [
+                    "1970",
+                    "1690"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    4066,
+                    3819
+                  ],
+                  "conclusion": "4066明确玉林西路小酒馆，3819的玉林路为随意逛小巷的玉林片区泛称；西路只是其中道路，不能把片区所有提及归成西路或南街。"
+                }
+              ],
+              "childEntityId": "5b8468db2991870d74ebfb110b518624"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "328e7316f234f24b5278fc6251993d70",
+          "city": "成都",
+          "canonical_name": "春熙路太古里",
+          "primary_place_id": 1691,
+          "aliases": [
+            "春熙路太古里"
+          ],
+          "legacy_ids": [
+            "328e7316f234f24b5278fc6251993d70"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "65e678425adf8c381f2941c06f196bca",
+          "city": "成都",
+          "canonical_name": "春熙路/太古里",
+          "primary_place_id": 1909,
+          "aliases": [
+            "春熙路/太古里"
+          ],
+          "legacy_ids": [
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1691,
+          "entity_id": "328e7316f234f24b5278fc6251993d70"
+        },
+        {
+          "place_id": 1909,
+          "entity_id": "65e678425adf8c381f2941c06f196bca"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 299,
+          "fingerprint": "54e12119ab7471acc762a2912e0de5cc8f067a7c4a101ebf45f7aa80ec0fa8a5",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "春熙路太古里",
+              "春熙路/太古里"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "328e7316f234f24b5278fc6251993d70",
+              "65e678425adf8c381f2941c06f196bca"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-299",
+              "verdict": "uncertain",
+              "explanation": "3503合列春熙路和太古里游览，4028/3906则推荐商圈住宿选址。两条源都不是单一建筑，范围边界未定义且地图落不同楼宇，需要先处理组合区域模型，不能宣称单一POI已核实。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    299
+                  ],
+                  "conclusion": "3503合列春熙路和太古里游览，4028/3906则推荐商圈住宿选址。两条源都不是单一建筑，范围边界未定义且地图落不同楼宇，需要先处理组合区域模型，不能宣称单一POI已核实。",
+                  "sourcePlaceIds": [
+                    "1691",
+                    "1909"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3503,
+                    4028,
+                    3906
+                  ],
+                  "conclusion": "3503合列春熙路和太古里游览，4028/3906则推荐商圈住宿选址。两条源都不是单一建筑，范围边界未定义且地图落不同楼宇，需要先处理组合区域模型，不能宣称单一POI已核实。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "328e7316f234f24b5278fc6251993d70",
+          "city": "成都",
+          "canonical_name": "春熙路太古里",
+          "primary_place_id": 1691,
+          "aliases": [
+            "春熙路太古里"
+          ],
+          "legacy_ids": [
+            "328e7316f234f24b5278fc6251993d70"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f53babd52318aa728b19184b8fada1e3",
+          "city": "成都",
+          "canonical_name": "春熙路/太古里周边",
+          "primary_place_id": 1726,
+          "aliases": [
+            "春熙路/太古里周边"
+          ],
+          "legacy_ids": [
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1691,
+          "entity_id": "328e7316f234f24b5278fc6251993d70"
+        },
+        {
+          "place_id": 1726,
+          "entity_id": "f53babd52318aa728b19184b8fada1e3"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 300,
+          "fingerprint": "6f092043f35ff6360777d0fabb64d6a33c7dc77a3e7ee9878f2f59ae878810a9",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "春熙路太古里",
+              "春熙路/太古里周边"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "328e7316f234f24b5278fc6251993d70",
+              "f53babd52318aa728b19184b8fada1e3"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-300",
+              "verdict": "uncertain",
+              "explanation": "3503为春熙路与太古里组合游览，3820/3543为周边住宿选址且并无酒店名；周边不是严格同一范围，现hotel类别也无法证明具体酒店。保留待审，待区域/推荐信息分解。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    300
+                  ],
+                  "conclusion": "3503为春熙路与太古里组合游览，3820/3543为周边住宿选址且并无酒店名；周边不是严格同一范围，现hotel类别也无法证明具体酒店。保留待审，待区域/推荐信息分解。",
+                  "sourcePlaceIds": [
+                    "1691",
+                    "1726"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3503,
+                    3820,
+                    3543
+                  ],
+                  "conclusion": "3503为春熙路与太古里组合游览，3820/3543为周边住宿选址且并无酒店名；周边不是严格同一范围，现hotel类别也无法证明具体酒店。保留待审，待区域/推荐信息分解。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "3b817ea013e4a1b4e296c29aba866ab2",
+          "city": "成都",
+          "canonical_name": "Little travel",
+          "primary_place_id": 1708,
+          "aliases": [
+            "Little travel"
+          ],
+          "legacy_ids": [
+            "3b817ea013e4a1b4e296c29aba866ab2"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "6ea111e5b2547542a5ed7629618fcad0",
+          "city": "成都",
+          "canonical_name": "LittleTravel 3.0",
+          "primary_place_id": 1820,
+          "aliases": [
+            "LittleTravel 3.0"
+          ],
+          "legacy_ids": [
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1708,
+          "entity_id": "3b817ea013e4a1b4e296c29aba866ab2"
+        },
+        {
+          "place_id": 1820,
+          "entity_id": "6ea111e5b2547542a5ed7629618fcad0"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 303,
+          "fingerprint": "4d61154435beaf4be4df6ea008eb894f704d426787c153038152f4e1ab6e91d2",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "Little travel",
+              "LittleTravel 3.0"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "3b817ea013e4a1b4e296c29aba866ab2",
+              "6ea111e5b2547542a5ed7629618fcad0"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-303",
+              "verdict": "uncertain",
+              "explanation": "3525咖啡合集只写Little travel，3718写LittleTravel 3.0，未给可相互核对的分店地址；3.0可能指分店代次，不能直接剥离。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    303
+                  ],
+                  "conclusion": "3525咖啡合集只写Little travel，3718写LittleTravel 3.0，未给可相互核对的分店地址；3.0可能指分店代次，不能直接剥离。",
+                  "sourcePlaceIds": [
+                    "1708",
+                    "1820"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3525,
+                    3718
+                  ],
+                  "conclusion": "3525咖啡合集只写Little travel，3718写LittleTravel 3.0，未给可相互核对的分店地址；3.0可能指分店代次，不能直接剥离。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "76557ba50985738dd692b195d2b93efd",
+          "city": "成都",
+          "canonical_name": "Lost 2hours",
+          "primary_place_id": 1818,
+          "aliases": [
+            "Lost 2hours"
+          ],
+          "legacy_ids": [
+            "76557ba50985738dd692b195d2b93efd"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "811dd1e7fff3c275035643eb720a8532",
+          "city": "成都",
+          "canonical_name": "lost 2 hour",
+          "primary_place_id": 1723,
+          "aliases": [
+            "lost 2 hour"
+          ],
+          "legacy_ids": [
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1723,
+          "entity_id": "811dd1e7fff3c275035643eb720a8532"
+        },
+        {
+          "place_id": 1818,
+          "entity_id": "76557ba50985738dd692b195d2b93efd"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 306,
+          "fingerprint": "7148af5728830bb832a5936a6dc55d6be90ec283917d6b262ecf10375fb22a70",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "Lost 2hours",
+              "lost 2 hour"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "76557ba50985738dd692b195d2b93efd",
+              "811dd1e7fff3c275035643eb720a8532"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-306",
+              "verdict": "uncertain",
+              "explanation": "3540咖啡合集只写lost 2 hour，3716另一合集写Lost 2hours，无正文门牌；其中一条地图未解析，需对应门头/分店资料才可确认同一店。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    306
+                  ],
+                  "conclusion": "3540咖啡合集只写lost 2 hour，3716另一合集写Lost 2hours，无正文门牌；其中一条地图未解析，需对应门头/分店资料才可确认同一店。",
+                  "sourcePlaceIds": [
+                    "1818",
+                    "1723"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3540,
+                    3716
+                  ],
+                  "conclusion": "3540咖啡合集只写lost 2 hour，3716另一合集写Lost 2hours，无正文门牌；其中一条地图未解析，需对应门头/分店资料才可确认同一店。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "65e678425adf8c381f2941c06f196bca",
+          "city": "成都",
+          "canonical_name": "春熙路/太古里",
+          "primary_place_id": 1909,
+          "aliases": [
+            "春熙路/太古里"
+          ],
+          "legacy_ids": [
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f53babd52318aa728b19184b8fada1e3",
+          "city": "成都",
+          "canonical_name": "春熙路/太古里周边",
+          "primary_place_id": 1726,
+          "aliases": [
+            "春熙路/太古里周边"
+          ],
+          "legacy_ids": [
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1726,
+          "entity_id": "f53babd52318aa728b19184b8fada1e3"
+        },
+        {
+          "place_id": 1909,
+          "entity_id": "65e678425adf8c381f2941c06f196bca"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 307,
+          "fingerprint": "ad220f45eb5b3001e4a6930fd30d17c14b2da56b80a1c0c4d6cfdc3cd36de81f",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "春熙路/太古里",
+              "春熙路/太古里周边"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "65e678425adf8c381f2941c06f196bca",
+              "f53babd52318aa728b19184b8fada1e3"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-307",
+              "verdict": "uncertain",
+              "explanation": "4028/3906与3820/3543都谈春熙路太古里周边住宿选址，未给具体酒店；属于区域建议而非已核实住宿实体，需要先明确区域边界和内容类型，不能把两条当某家酒店同义。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    307
+                  ],
+                  "conclusion": "4028/3906与3820/3543都谈春熙路太古里周边住宿选址，未给具体酒店；属于区域建议而非已核实住宿实体，需要先明确区域边界和内容类型，不能把两条当某家酒店同义。",
+                  "sourcePlaceIds": [
+                    "1909",
+                    "1726"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    4028,
+                    3906,
+                    3820,
+                    3543
+                  ],
+                  "conclusion": "4028/3906与3820/3543都谈春熙路太古里周边住宿选址，未给具体酒店；属于区域建议而非已核实住宿实体，需要先明确区域边界和内容类型，不能把两条当某家酒店同义。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "158823e73d49619475aa595299f5ef3c",
+          "city": "成都",
+          "canonical_name": "永陵",
+          "primary_place_id": 1926,
+          "aliases": [
+            "永陵"
+          ],
+          "legacy_ids": [
+            "158823e73d49619475aa595299f5ef3c"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "905fec24f1cf1539e9805727eca0b557",
+          "city": "成都",
+          "canonical_name": "永陵博物馆",
+          "primary_place_id": 1792,
+          "aliases": [
+            "永陵博物馆"
+          ],
+          "legacy_ids": [
+            "905fec24f1cf1539e9805727eca0b557"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1792,
+          "entity_id": "905fec24f1cf1539e9805727eca0b557"
+        },
+        {
+          "place_id": 1926,
+          "entity_id": "158823e73d49619475aa595299f5ef3c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 312,
+          "fingerprint": "538d0339d14c87830f1725f9f77e5f01cc8d42ed04cf64f3a6102c144b40aa36",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "永陵",
+              "永陵博物馆"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "158823e73d49619475aa595299f5ef3c",
+              "905fec24f1cf1539e9805727eca0b557"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-312",
+              "verdict": "part_of",
+              "explanation": "3942/4002的永陵指王建五代陵墓，4079明确永陵博物馆包含收费地宫和免费综合馆，3678也区分陵墓与馆藏；保留陵墓子项，不把不同票务范围归为一个同义条目。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    312
+                  ],
+                  "conclusion": "3942/4002的永陵指王建五代陵墓，4079明确永陵博物馆包含收费地宫和免费综合馆，3678也区分陵墓与馆藏；保留陵墓子项，不把不同票务范围归为一个同义条目。",
+                  "sourcePlaceIds": [
+                    "1926",
+                    "1792"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3942,
+                    4002,
+                    4079,
+                    3678
+                  ],
+                  "conclusion": "3942/4002的永陵指王建五代陵墓，4079明确永陵博物馆包含收费地宫和免费综合馆，3678也区分陵墓与馆藏；保留陵墓子项，不把不同票务范围归为一个同义条目。"
+                }
+              ],
+              "childEntityId": "158823e73d49619475aa595299f5ef3c"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "c2a43122260237a73fc4fcbb0e68c160",
+          "city": "成都",
+          "canonical_name": "蜀锦博物馆",
+          "primary_place_id": 1793,
+          "aliases": [
+            "蜀锦博物馆"
+          ],
+          "legacy_ids": [
+            "c2a43122260237a73fc4fcbb0e68c160"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f50a815f66c6e9a0935a3c682a0a9b62",
+          "city": "成都",
+          "canonical_name": "蜀锦织绣博物馆",
+          "primary_place_id": 1985,
+          "aliases": [
+            "蜀锦织绣博物馆"
+          ],
+          "legacy_ids": [
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1793,
+          "entity_id": "c2a43122260237a73fc4fcbb0e68c160"
+        },
+        {
+          "place_id": 1985,
+          "entity_id": "f50a815f66c6e9a0935a3c682a0a9b62"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 313,
+          "fingerprint": "9e1011e280cc2dd269af5a20e2c3c7ecab5ca82594e2ce0ef2346e3e228a1497",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "蜀锦博物馆",
+              "蜀锦织绣博物馆"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "c2a43122260237a73fc4fcbb0e68c160",
+              "f50a815f66c6e9a0935a3c682a0a9b62"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-313",
+              "verdict": "uncertain",
+              "explanation": "3679只说蜀锦博物馆免费、精美、小、可买礼品，没有地址；4088明确青羊宫站附近蜀锦织绣博物馆。前者地图落官塘路，与后者草堂东路冲突，原文不足以选择其中一馆，需补门头/位置。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    313
+                  ],
+                  "conclusion": "3679只说蜀锦博物馆免费、精美、小、可买礼品，没有地址；4088明确青羊宫站附近蜀锦织绣博物馆。前者地图落官塘路，与后者草堂东路冲突，原文不足以选择其中一馆，需补门头/位置。",
+                  "sourcePlaceIds": [
+                    "1793",
+                    "1985"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3679,
+                    4088
+                  ],
+                  "conclusion": "3679只说蜀锦博物馆免费、精美、小、可买礼品，没有地址；4088明确青羊宫站附近蜀锦织绣博物馆。前者地图落官塘路，与后者草堂东路冲突，原文不足以选择其中一馆，需补门头/位置。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "971539fddb70ccb08d4e1acee1ee3f8a",
+          "city": "成都",
+          "canonical_name": "四川博物院",
+          "primary_place_id": 1950,
+          "aliases": [
+            "四川博物院",
+            "四川博物馆"
+          ],
+          "legacy_ids": [
+            "971539fddb70ccb08d4e1acee1ee3f8a",
+            "e1da73dd54cacb9b7e612022726b2f05"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 30.660792,
+            "lng": 104.034127,
+            "address": "青华路5号",
+            "geoStatus": "reviewed_source"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "4080",
+                  "name": "四川博物院",
+                  "quote": "四川博物院在青羊区，提前7天放票",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2"
+                },
+                {
+                  "id": "4052",
+                  "name": "四川博物院",
+                  "quote": "很值得去看看！",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aa9e715000000002601fecb"
+                },
+                {
+                  "id": "4001",
+                  "name": "四川博物院",
+                  "quote": "免费，但需要预约",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a32209b0000000016025fda"
+                },
+                {
+                  "id": "3682",
+                  "name": "四川博物馆",
+                  "quote": "场馆老旧交通也没成博方便",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a75e3790000000022012fa0"
+                }
+              ],
+              "reviewIds": [
+                314
+              ],
+              "conclusion": "四川博物馆是四川博物院历史名称，原文区分川博与成都博物馆；保留青华路5号馆址。",
+              "sourcePlaceIds": [
+                "1950",
+                "1794"
+              ]
+            },
+            {
+              "lat": 30.660792,
+              "lng": 104.034127,
+              "kind": "primary_source_geometry",
+              "address": "青华路5号",
+              "original": {
+                "lat": 30.660792,
+                "lng": 104.034127,
+                "address": "青华路5号",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "1950",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/四川博物院",
+              "file": "all-cities/chengdu-museum-fetch.json",
+              "kind": "published_source",
+              "sha256": "3656469ecb66b5e38f9b37f777c3950381aa6f246bd47ddc099e80479da5ea7d"
+            }
+          ]
+        },
+        {
+          "entity_id": "aab6c058e910744f854056e64512f18f",
+          "city": "成都",
+          "canonical_name": "建川博物馆",
+          "primary_place_id": 1987,
+          "aliases": [
+            "建川博物馆"
+          ],
+          "legacy_ids": [
+            "aab6c058e910744f854056e64512f18f"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1794,
+          "entity_id": "971539fddb70ccb08d4e1acee1ee3f8a"
+        },
+        {
+          "place_id": 1950,
+          "entity_id": "971539fddb70ccb08d4e1acee1ee3f8a"
+        },
+        {
+          "place_id": 1987,
+          "entity_id": "aab6c058e910744f854056e64512f18f"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 315,
+          "fingerprint": "6be90837d9a310a09d3c73ff550044cb6ea8448cad3170bc18e8057c015be447",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "建川博物馆",
+              "四川博物馆"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "aab6c058e910744f854056e64512f18f",
+              "e1da73dd54cacb9b7e612022726b2f05"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-08-review-315",
+              "verdict": "distinct",
+              "explanation": "四川博物馆已由第一批核实归四川博物院，3682的永乐宫特展对应川博；4090建川博物馆在大邑安仁，机构和地域独立。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    315
+                  ],
+                  "conclusion": "四川博物馆已由第一批核实归四川博物院，3682的永乐宫特展对应川博；4090建川博物馆在大邑安仁，机构和地域独立。",
+                  "sourcePlaceIds": [
+                    "1987",
+                    "1794"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/chengdu-batch08-context.json",
+                  "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+                  "mentionIds": [
+                    3682,
+                    4080,
+                    4090
+                  ],
+                  "conclusion": "四川博物馆已由第一批核实归四川博物院，3682的永乐宫特展对应川博；4090建川博物馆在大邑安仁，机构和地域独立。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

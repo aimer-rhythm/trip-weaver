@@ -1,0 +1,88 @@
+{
+  "verifiedAt": "2026-10-07T02:29:32.711Z",
+  "batch": "batch-25",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "厦门",
+      "exported": 617,
+      "total": 669,
+      "active": 615,
+      "embedded": 615,
+      "probes": [],
+      "vectorProbes": [],
+      "withdrawals": [
+        {
+          "id": "7b4cfbf5bd4b449036abe4ee41b21210",
+          "name": "CUIDA",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "7e341fd0ee9e8647bd9766bfac2f05e6",
+          "name": "cuida",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 6,
+      "audits": [
+        "f35e3431-a53d-49c5-a15c-a0b66286a02b",
+        "71b62fff-8fe0-449b-bff8-9f44f4e46754"
+      ]
+    },
+    {
+      "city": "成都",
+      "exported": 392,
+      "total": 411,
+      "active": 396,
+      "embedded": 396,
+      "probes": [],
+      "vectorProbes": [],
+      "withdrawals": [
+        {
+          "id": "e61d76f3b1440ac59582f9b344be4fd4",
+          "name": "Mondoli",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e63e38711dce61183e0e77ef3e2260bf",
+          "name": "MONDOLI",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 4,
+      "audits": [
+        "df9ec89e-49c5-477f-aedb-6d9cf6c1d143",
+        "69b40148-c344-4680-ae4e-5f81dd8ff15e"
+      ]
+    }
+  ],
+  "failures": []
+}

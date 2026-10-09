@@ -1,0 +1,69 @@
+{
+  "city": "重庆",
+  "before": 93,
+  "after": 93,
+  "directBefore": 31,
+  "directAfter": 31,
+  "changed": [
+    {
+      "from": "孔二火锅",
+      "to": "塔坪",
+      "fromEntityId": "87c3fd260202f9d4c4450e77eda8dcee",
+      "toEntityId": "e52c59c501200edd7bb1dc95b5ef117e",
+      "fromRevision": 2,
+      "toRevision": 1,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 19,
+          "textHash": "0c2ba26efe588169062f98492a27a5c0fbb5b9e148426f085e745d558098c627",
+          "from": {
+            "entityId": "87c3fd260202f9d4c4450e77eda8dcee",
+            "revision": 2,
+            "start": 801,
+            "end": 805,
+            "surface": "孔二火锅",
+            "mentions": [
+              {
+                "mentionId": 305,
+                "inputHash": "903dbf83dddb2b67bf20b883c6370ee9db2ad0b5b0e7408c47eb97fff8965fae"
+              },
+              {
+                "mentionId": 570,
+                "inputHash": "336f7643494503ecd5030aae67d0936031603e7e86c5292e67ba62a8152f8537"
+              },
+              {
+                "mentionId": 1775,
+                "inputHash": "45c53b2708f630671dceb88af768245dfba8d852712fb0ace40324b00412a563"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "e52c59c501200edd7bb1dc95b5ef117e",
+            "revision": 1,
+            "start": 794,
+            "end": 796,
+            "surface": "塔坪",
+            "mentions": [
+              {
+                "mentionId": 303,
+                "inputHash": "a7319b1e89aa75ffb25da7a3f0572faf1c59363a842a869f364f3f02ed5c6410"
+              },
+              {
+                "mentionId": 569,
+                "inputHash": "ad5708d783d611134de7e09a8791fd43b29f4577e422c45779670833edc6425a"
+              },
+              {
+                "mentionId": 1774,
+                "inputHash": "5c093a006922f51c674a2cd87ec84a85813d4f937f81d931e5b9c0f2584eb7a6"
+              }
+            ]
+          },
+          "quote": "塔坪后顺路吃吃孔二火锅"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

@@ -1,0 +1,428 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "6f6878ef7676a1fb78a141736210672f3538ec568bcb3f72b23b85bdb1cd3dca",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "珍珠泉大院",
+    "珍珠泉"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11338,
+     "noteId": 2545,
+     "inputHash": "b3efeac122b102d00ab44730fdeef61f3a2712205a0a14f78e66417ba7715d5a",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11400,
+     "noteId": 2569,
+     "inputHash": "2429b0bef4e53aec0246f4b8ed5648c8474c29c23f148a1c283df11a4fbc0286",
+     "textHash": "33939ae95e63a7d8a09a532b8f66a813aa999ae5f8d9f907fd2e0b3b220b4c67",
+     "textLength": 572,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11414,
+     "noteId": 2550,
+     "inputHash": "a0bc4c09b3f7bdf01ff2b81c51e7f9ca3d33ac6e8787f0956cdfebcbe9fa89cc",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12566,
+     "noteId": 2545,
+     "inputHash": "699de5a7d2560b93a4c476151bb27a706523816c63e59215e0ffd7f84918d8d9",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12582,
+     "noteId": 2813,
+     "inputHash": "c8c3164979d978ab3f125e0123e02340f3c1ccb99b587b5f75a6e85b89759b56",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12592,
+     "noteId": 2823,
+     "inputHash": "b8031d24d7467f7d74556faa5cf19f8d5a1d060192d4c0ee73620d52ea835021",
+     "textHash": "ddd4145ca38c815ed641bc2e8bcd4eca044934dd8f29e68e8d0a59c7f2b987ab",
+     "textLength": 571,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12669,
+     "noteId": 2786,
+     "inputHash": "824e7dbf4cdf60096af92aa7b6fd17a3dd385cec2116647a407c483ca5a4d340",
+     "textHash": "eba79d2eac0c5f89b23868b91c8e1fefe538f2ca48cadd56cebfbf4c769b98e8",
+     "textLength": 709,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12680,
+     "noteId": 2550,
+     "inputHash": "da18d48ab8069a50d038d8fcfafa9b4fff150592881c8d85575d593037b19908",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12696,
+     "noteId": 2817,
+     "inputHash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe",
+     "textHash": "2655f9422962f151baa9c012324f5eaf6fb1b5ce42a1e28664c21a08333a520b",
+     "textLength": 273,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12940,
+     "noteId": 2837,
+     "inputHash": "98179ec13659bbfd76d3d70e7c75955c2af419a3e8e5b5c11578b49d43a44e2e",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "canonicalName": "珍珠泉",
+     "aliases": [
+      "珍珠泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+     "revision": 3,
+     "canonicalName": "珍珠泉大院",
+     "aliases": [
+      "珍珠泉大院"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "af9116d87efcdf105915ca6303cb6274",
+   "name": "珍珠泉",
+   "category": "自然",
+   "lng": 117.024773,
+   "lat": 36.667419,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "院前街1号",
+    "adcode": "",
+    "mentionCount": 9,
+    "recommendScore": 26.5,
+    "topReasons": [
+     "温婉低调，泉水冒细碎气泡如珍珠",
+     "热门打卡点，路线终点",
+     "济南名泉，列入推荐路线第二天。"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "水面下可以看到很多一小串串的水泡泡。泉水不断冒出细碎小气泡，像散落的珍珠。热门打卡点，路线终点。池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼。",
+     "highlights": [
+      {
+       "text": "水面下可以看到很多一小串串的水泡泡",
+       "quote": "可以看到水面下很多一小串串的水泡泡",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69ec9314000000003502b369?xsec_token=ABdrP058gOUu1kVWQHrzbM58lCUk6gaQO7j28S1GiWUZM=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T19:13:26.055748+00:00"
+      },
+      {
+       "text": "泉水不断冒出细碎小气泡，像散落的珍珠",
+       "quote": "泉水不断冒出细碎小气泡，像散落的珍珠",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a084bde000000003503a888?xsec_token=ABVy_LdXk7xRIR3JahDg9hM09wvdM9Tp6ilwXaxSuKejo=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T19:13:26.055749+00:00"
+      },
+      {
+       "text": "热门打卡点，路线终点",
+       "quote": "热门打卡点，路线终点",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T19:13:26.326132+00:00"
+      },
+      {
+       "text": "池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼",
+       "quote": "池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T19:13:26.055750+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T19:13:26.326132+00:00"
+    },
+    "originalName": "珍珠泉",
+    "openHours": {
+     "version": 2,
+     "subject": "珍珠泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12566,
+      "noteId": 2545,
+      "inputHash": "699de5a7d2560b93a4c476151bb27a706523816c63e59215e0ffd7f84918d8d9"
+     },
+     {
+      "mentionId": 11338,
+      "noteId": 2545,
+      "inputHash": "b3efeac122b102d00ab44730fdeef61f3a2712205a0a14f78e66417ba7715d5a"
+     },
+     {
+      "mentionId": 12592,
+      "noteId": 2823,
+      "inputHash": "b8031d24d7467f7d74556faa5cf19f8d5a1d060192d4c0ee73620d52ea835021"
+     },
+     {
+      "mentionId": 12669,
+      "noteId": 2786,
+      "inputHash": "824e7dbf4cdf60096af92aa7b6fd17a3dd385cec2116647a407c483ca5a4d340"
+     },
+     {
+      "mentionId": 12696,
+      "noteId": 2817,
+      "inputHash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe"
+     },
+     {
+      "mentionId": 12940,
+      "noteId": 2837,
+      "inputHash": "98179ec13659bbfd76d3d70e7c75955c2af419a3e8e5b5c11578b49d43a44e2e"
+     },
+     {
+      "mentionId": 11400,
+      "noteId": 2569,
+      "inputHash": "2429b0bef4e53aec0246f4b8ed5648c8474c29c23f148a1c283df11a4fbc0286"
+     },
+     {
+      "mentionId": 11414,
+      "noteId": 2550,
+      "inputHash": "a0bc4c09b3f7bdf01ff2b81c51e7f9ca3d33ac6e8787f0956cdfebcbe9fa89cc"
+     },
+     {
+      "mentionId": 12680,
+      "noteId": 2550,
+      "inputHash": "da18d48ab8069a50d038d8fcfafa9b4fff150592881c8d85575d593037b19908"
+     }
+    ],
+    "typicalVisitMinutes": 60,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "af9116d87efcdf105915ca6303cb6274",
+     "canonicalName": "珍珠泉",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "珍珠泉"
+     ],
+     "memberIds": [
+      "af9116d87efcdf105915ca6303cb6274"
+     ]
+    },
+    "aliases": [
+     "珍珠泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "免费，游玩1小时",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a255e830000000016025cd0?xsec_token=ABDioCizBL_UDnrOQpwOUnCPZgjk6e42WXSfUfiwZDE1U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "温婉低调，泉水冒细碎气泡如珍珠",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a084bde000000003503a888?xsec_token=ABVy_LdXk7xRIR3JahDg9hM09wvdM9Tp6ilwXaxSuKejo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "热门打卡点，路线终点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "泉边人少，池底气泡如散落珍珠，阳光照耀下灵动耀眼",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费景点，位于推荐路线上",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69f339c4000000001e00c640?xsec_token=ABPvdzyX8DSY-ngnoVq-rgPAFTJ6nxsAPgvnJwcxK5SxE=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南名泉，列入推荐路线第二天。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南名泉，列入推荐路线第二日行程。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "bdf4a854f642c85b65ed4d0760de0bd6",
+   "name": "珍珠泉大院",
+   "category": "文化",
+   "lng": 117.026731,
+   "lat": 36.666033,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "院内还有珍珠泉、散水泉、溪亭泉、濋泉。",
+     "highlights": [
+      {
+       "text": "院内还有珍珠泉、散水泉、溪亭泉、濋泉",
+       "quote": "院里还有珍珠泉、散水泉、溪亭泉、濋泉",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T19:13:26.055747+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T19:13:26.326132+00:00"
+    },
+    "originalName": "珍珠泉大院",
+    "openHours": {
+     "version": 2,
+     "subject": "珍珠泉大院",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12582,
+      "noteId": 2813,
+      "inputHash": "c8c3164979d978ab3f125e0123e02340f3c1ccb99b587b5f75a6e85b89759b56"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+     "canonicalName": "珍珠泉大院",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "珍珠泉大院"
+     ],
+     "memberIds": [
+      "bdf4a854f642c85b65ed4d0760de0bd6"
+     ]
+    },
+    "aliases": [
+     "珍珠泉大院"
+    ],
+    "components": []
+   },
+   "evidence": []
+  }
+ ]
+}

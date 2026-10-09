@@ -1,0 +1,56 @@
+{
+  "city": "济南",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "supersedes": "run-01",
+  "sourceRevision": 2,
+  "sourceHash": "93a3d035cbccf1ab3779ec1cd6abcd6166f467fc2cf738feb285ec3e9e0a091e",
+  "placesHash": "a45f41390cd4e023259e86840d5bb7461bc6f605a59a1f3e9de19a5488dd41bd",
+  "relationsHash": "f684d3cd6294239f887e7a608111211ad166e521cbdb8f09bcf7b9ebcfc6cedc",
+  "libraryHash": "e51e9ab71663f916f2da52adcf000857b8f57ae5e926d3ce7ae40f5c5fe3e89f",
+  "counts": {
+    "places": 230,
+    "graph": 26,
+    "direct": 13,
+    "library": {
+      "canonical_places": 238,
+      "research_evidence": 340,
+      "place_relation": 0,
+      "data_import": 2,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "a45f41390cd4e023259e86840d5bb746",
+      "row_count": 230
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "f684d3cd6294239f887e7a608111211a",
+      "row_count": 13
+    }
+  ],
+  "audits": [
+    {
+      "id": "e587d4e6-5c37-486b-b1f1-58271cf1ff4e",
+      "content_hash": "a45f41390cd4e023259e86840d5bb746"
+    },
+    {
+      "id": "24d44e44-079c-4f22-946e-edb423380e76",
+      "content_hash": "f684d3cd6294239f887e7a608111211a"
+    }
+  ],
+  "importedAt": "2026-10-07T08:36:05.445Z"
+}

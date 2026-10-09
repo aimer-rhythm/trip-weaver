@@ -1,0 +1,5272 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 7,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "50e0ea4eb7dbf22182679d0535ed93f0",
+          "city": "成都",
+          "canonical_name": "杨梅竹斜街",
+          "primary_place_id": 1630,
+          "aliases": [
+            "杨梅竹斜街"
+          ],
+          "legacy_ids": [
+            "50e0ea4eb7dbf22182679d0535ed93f0"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1630,
+          "entity_id": "50e0ea4eb7dbf22182679d0535ed93f0"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1630,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1630,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "文艺气息拉满，超适合citywalk",
+              "evidence": "文艺气息拉满"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2492,
+          "canonical_place_id": 1630,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 杨梅竹斜街",
+          "evidence_summary": "文艺气息拉满，超适合citywalk"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1630,
+          "city": "成都",
+          "name_keys": [
+            "杨梅竹斜街"
+          ],
+          "entity_ids": [
+            "50e0ea4eb7dbf22182679d0535ed93f0"
+          ],
+          "source_hash": "0d39a4d79b19c261ebdc9693c5b19f15decbe9d7bcecde1eaf23421f8a90c23c",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1630",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3478
+              ],
+              "sourcePlaceIds": [
+                1630
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "50e0ea4eb7dbf22182679d0535ed93f0"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3478,
+          "scope_place_id": 1630,
+          "entity_id": null,
+          "input_hash": "247d3f1d8019c38735f8ea9f833cade6d4df949179cc28a7cf0bcbe64c80f31f",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1630"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "0d39a4d79b19c261ebdc9693c5b19f15decbe9d7bcecde1eaf23421f8a90c23c",
+        "mentions": [
+          {
+            "mentionId": 3478,
+            "inputHash": "247d3f1d8019c38735f8ea9f833cade6d4df949179cc28a7cf0bcbe64c80f31f"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1782,
+          "fingerprint": "b27c4dc34348de923c58ea211d2bd9ed0372aa2d163642e95e4278c8bfa96708",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "247d3f1d8019c38735f8ea9f833cade6d4df949179cc28a7cf0bcbe64c80f31f",
+            "mentionId": 3478,
+            "scopePlaceIds": [
+              1630
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "9c188c9ef1d997b1786fad442845f407",
+          "city": "成都",
+          "canonical_name": "北京坊",
+          "primary_place_id": 1631,
+          "aliases": [
+            "北京坊"
+          ],
+          "legacy_ids": [
+            "9c188c9ef1d997b1786fad442845f407"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1631,
+          "entity_id": "9c188c9ef1d997b1786fad442845f407"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1631,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1631,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "新兴商业文化区，可逛吃",
+              "evidence": "北京坊挨个逛吃"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2493,
+          "canonical_place_id": 1631,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 北京坊",
+          "evidence_summary": "新兴商业文化区，可逛吃"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1631,
+          "city": "成都",
+          "name_keys": [
+            "北京坊"
+          ],
+          "entity_ids": [
+            "9c188c9ef1d997b1786fad442845f407"
+          ],
+          "source_hash": "d2e9a8b0951c8ee186b83bf177c459e261b089144ae11cbf8959b13afd60605f",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1631",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3479
+              ],
+              "sourcePlaceIds": [
+                1631
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "9c188c9ef1d997b1786fad442845f407"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3479,
+          "scope_place_id": 1631,
+          "entity_id": null,
+          "input_hash": "0560f3befa0258afcde0a25ea0172e42e2ee977df72513ebd6189430936b7bd4",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1631"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "d2e9a8b0951c8ee186b83bf177c459e261b089144ae11cbf8959b13afd60605f",
+        "mentions": [
+          {
+            "mentionId": 3479,
+            "inputHash": "0560f3befa0258afcde0a25ea0172e42e2ee977df72513ebd6189430936b7bd4"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1786,
+          "fingerprint": "42dcac70e3796ee5a68e4e0cb01836df1a2271c4134b7485abefc90c74cd746a",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "0560f3befa0258afcde0a25ea0172e42e2ee977df72513ebd6189430936b7bd4",
+            "mentionId": 3479,
+            "scopePlaceIds": [
+              1631
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e33dab78a4a110118d00e3872896fba9",
+          "city": "成都",
+          "canonical_name": "芦灰",
+          "primary_place_id": 1632,
+          "aliases": [
+            "芦灰"
+          ],
+          "legacy_ids": [
+            "e33dab78a4a110118d00e3872896fba9"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1632,
+          "entity_id": "e33dab78a4a110118d00e3872896fba9"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1632,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1632,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "复古风面包店，适合打卡",
+              "evidence": "复古风面包店"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2494,
+          "canonical_place_id": 1632,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 芦灰",
+          "evidence_summary": "复古风面包店，适合打卡"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1632,
+          "city": "成都",
+          "name_keys": [
+            "芦灰"
+          ],
+          "entity_ids": [
+            "e33dab78a4a110118d00e3872896fba9"
+          ],
+          "source_hash": "7750354bc3f07b178ad110082b77be1d58303b9715d00975b0d8ad4a113e8dd4",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1632",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3480
+              ],
+              "sourcePlaceIds": [
+                1632
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "e33dab78a4a110118d00e3872896fba9"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3480,
+          "scope_place_id": 1632,
+          "entity_id": null,
+          "input_hash": "cec402530cb1f60ef365006f89b0e87cba314cc2f8d555d5407f1049c619588e",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1632"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "7750354bc3f07b178ad110082b77be1d58303b9715d00975b0d8ad4a113e8dd4",
+        "mentions": [
+          {
+            "mentionId": 3480,
+            "inputHash": "cec402530cb1f60ef365006f89b0e87cba314cc2f8d555d5407f1049c619588e"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1791,
+          "fingerprint": "57f4a64588ac63ea22f11b27ea8b3e1087b5449f524e674ab39d70ab74ca63e6",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "cec402530cb1f60ef365006f89b0e87cba314cc2f8d555d5407f1049c619588e",
+            "mentionId": 3480,
+            "scopePlaceIds": [
+              1632
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "11faed62c6b85552be61ca12e5ea9c69",
+          "city": "成都",
+          "canonical_name": "可能有书",
+          "primary_place_id": 1633,
+          "aliases": [
+            "可能有书"
+          ],
+          "legacy_ids": [
+            "11faed62c6b85552be61ca12e5ea9c69"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1633,
+          "entity_id": "11faed62c6b85552be61ca12e5ea9c69"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1633,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 13.5,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1633,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "特色书店，文艺打卡点",
+              "evidence": "可能有书"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2495,
+          "canonical_place_id": 1633,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 可能有书",
+          "evidence_summary": "特色书店，文艺打卡点"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1633,
+          "city": "成都",
+          "name_keys": [
+            "可能有书"
+          ],
+          "entity_ids": [
+            "11faed62c6b85552be61ca12e5ea9c69"
+          ],
+          "source_hash": "0cdd69c25f21b090f186d759ed58e6d47e45ae7250fda17a11d31cf321135e98",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1633",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3481
+              ],
+              "sourcePlaceIds": [
+                1633
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "11faed62c6b85552be61ca12e5ea9c69"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3481,
+          "scope_place_id": 1633,
+          "entity_id": null,
+          "input_hash": "2816c5c0b823b121d8ddb50254ad4756d550d3c4674ffc602c6c348c160f4c30",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1633"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "0cdd69c25f21b090f186d759ed58e6d47e45ae7250fda17a11d31cf321135e98",
+        "mentions": [
+          {
+            "mentionId": 3481,
+            "inputHash": "2816c5c0b823b121d8ddb50254ad4756d550d3c4674ffc602c6c348c160f4c30"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1797,
+          "fingerprint": "fd1b937de775f1b3ac2f2d31c54b1ed379fa9531446bf01c4603e61fd111747b",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "2816c5c0b823b121d8ddb50254ad4756d550d3c4674ffc602c6c348c160f4c30",
+            "mentionId": 3481,
+            "scopePlaceIds": [
+              1633
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1a4d37eee69e4c0556291ec936edd6da",
+          "city": "成都",
+          "canonical_name": "北海公园",
+          "primary_place_id": 1652,
+          "aliases": [
+            "北海公园"
+          ],
+          "legacy_ids": [
+            "1a4d37eee69e4c0556291ec936edd6da"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1652,
+          "entity_id": "1a4d37eee69e4c0556291ec936edd6da"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1652,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1652,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "皇家园林，夏日citywalk起点必打卡",
+              "evidence": "打卡皇家园林"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2525,
+          "canonical_place_id": 1652,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 北海公园",
+          "evidence_summary": "皇家园林，夏日citywalk起点必打卡"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1652,
+          "city": "成都",
+          "name_keys": [
+            "北海公园"
+          ],
+          "entity_ids": [
+            "1a4d37eee69e4c0556291ec936edd6da"
+          ],
+          "source_hash": "2eed5482ee17ff46c37c7b309b7319e687f72a1a2bd820239e4e916a43c90d18",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1652",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3460
+              ],
+              "sourcePlaceIds": [
+                1652
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "1a4d37eee69e4c0556291ec936edd6da"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3460,
+          "scope_place_id": 1652,
+          "entity_id": null,
+          "input_hash": "877f63ff21237867aaae514ef722ba5762e88f82c59585dca3f7ef3a938334d6",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1652"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "2eed5482ee17ff46c37c7b309b7319e687f72a1a2bd820239e4e916a43c90d18",
+        "mentions": [
+          {
+            "mentionId": 3460,
+            "inputHash": "877f63ff21237867aaae514ef722ba5762e88f82c59585dca3f7ef3a938334d6"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1800,
+          "fingerprint": "7156b25db04f4e862dcd8a52add4311c61736151be04c551ff5aeae5c315851d",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "877f63ff21237867aaae514ef722ba5762e88f82c59585dca3f7ef3a938334d6",
+            "mentionId": 3460,
+            "scopePlaceIds": [
+              1652
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "396552746bad1768aa64ca81ad0e4d17",
+          "city": "成都",
+          "canonical_name": "什刹海",
+          "primary_place_id": 1653,
+          "aliases": [
+            "什刹海"
+          ],
+          "legacy_ids": [
+            "396552746bad1768aa64ca81ad0e4d17"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1653,
+          "entity_id": "396552746bad1768aa64ca81ad0e4d17"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1653,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1653,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "体验老北京胡同文化，夏日漫步经典",
+              "evidence": "体验老北京胡同文化"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2526,
+          "canonical_place_id": 1653,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 什刹海",
+          "evidence_summary": "体验老北京胡同文化，夏日漫步经典"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1653,
+          "city": "成都",
+          "name_keys": [
+            "什刹海"
+          ],
+          "entity_ids": [
+            "396552746bad1768aa64ca81ad0e4d17"
+          ],
+          "source_hash": "0762e68212e94fb186ef0f4651e5f4e696af5aae207f8abe5947c6a0f20d70d5",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1653",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3461
+              ],
+              "sourcePlaceIds": [
+                1653
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "396552746bad1768aa64ca81ad0e4d17"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3461,
+          "scope_place_id": 1653,
+          "entity_id": null,
+          "input_hash": "1ec08ad552f793e1c659fee899cef22029a09ed82d3f348141f9f5656d658c6b",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1653"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "0762e68212e94fb186ef0f4651e5f4e696af5aae207f8abe5947c6a0f20d70d5",
+        "mentions": [
+          {
+            "mentionId": 3461,
+            "inputHash": "1ec08ad552f793e1c659fee899cef22029a09ed82d3f348141f9f5656d658c6b"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1808,
+          "fingerprint": "3db0401b77c86eba537a02126fbdb8b788d4420b7a318d039d499068a49b4096",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "1ec08ad552f793e1c659fee899cef22029a09ed82d3f348141f9f5656d658c6b",
+            "mentionId": 3461,
+            "scopePlaceIds": [
+              1653
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "dbb7dce92ba65a8639337ae60d17b9aa",
+          "city": "成都",
+          "canonical_name": "烟袋斜街",
+          "primary_place_id": 1654,
+          "aliases": [
+            "烟袋斜街"
+          ],
+          "legacy_ids": [
+            "dbb7dce92ba65a8639337ae60d17b9aa"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1654,
+          "entity_id": "dbb7dce92ba65a8639337ae60d17b9aa"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1654,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1654,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "老北京特色斜街，适合逛吃打卡",
+              "evidence": "逛烟袋斜街"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2527,
+          "canonical_place_id": 1654,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 烟袋斜街",
+          "evidence_summary": "老北京特色斜街，适合逛吃打卡"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1654,
+          "city": "成都",
+          "name_keys": [
+            "烟袋斜街"
+          ],
+          "entity_ids": [
+            "dbb7dce92ba65a8639337ae60d17b9aa"
+          ],
+          "source_hash": "62d969c43f1591a1b0171807a600aaef220704bfba9ea9a67abd92c39bb7519f",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1654",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3462
+              ],
+              "sourcePlaceIds": [
+                1654
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "dbb7dce92ba65a8639337ae60d17b9aa"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3462,
+          "scope_place_id": 1654,
+          "entity_id": null,
+          "input_hash": "bf449429d809503c504681339158030e8ec737633edb36b8c0071c3508c0cd57",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1654"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "62d969c43f1591a1b0171807a600aaef220704bfba9ea9a67abd92c39bb7519f",
+        "mentions": [
+          {
+            "mentionId": 3462,
+            "inputHash": "bf449429d809503c504681339158030e8ec737633edb36b8c0071c3508c0cd57"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1817,
+          "fingerprint": "db85f574dbf0259516e7c6511b015d420ea88971550097d88a06b66eee0263a5",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "bf449429d809503c504681339158030e8ec737633edb36b8c0071c3508c0cd57",
+            "mentionId": 3462,
+            "scopePlaceIds": [
+              1654
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "53ecdf5bc8bed790744897fba0255ab8",
+          "city": "成都",
+          "canonical_name": "鼓楼",
+          "primary_place_id": 1655,
+          "aliases": [
+            "鼓楼"
+          ],
+          "legacy_ids": [
+            "53ecdf5bc8bed790744897fba0255ab8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1655,
+          "entity_id": "53ecdf5bc8bed790744897fba0255ab8"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1655,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1655,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "地标打卡，可寻赵雷歌里的107路公交",
+              "evidence": "打卡鼓楼"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2528,
+          "canonical_place_id": 1655,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鼓楼",
+          "evidence_summary": "地标打卡，可寻赵雷歌里的107路公交"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1655,
+          "city": "成都",
+          "name_keys": [
+            "鼓楼"
+          ],
+          "entity_ids": [
+            "53ecdf5bc8bed790744897fba0255ab8"
+          ],
+          "source_hash": "98282738a27ba830802cf061a317f3e4b89f981475c57f74d7fa1ebd3e0e338b",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1655",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3463
+              ],
+              "sourcePlaceIds": [
+                1655
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "53ecdf5bc8bed790744897fba0255ab8"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3463,
+          "scope_place_id": 1655,
+          "entity_id": null,
+          "input_hash": "c130ead75c24c91475ced94bdd485420785b5d1872ee3fb6a49c8193a72a7122",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1655"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "98282738a27ba830802cf061a317f3e4b89f981475c57f74d7fa1ebd3e0e338b",
+        "mentions": [
+          {
+            "mentionId": 3463,
+            "inputHash": "c130ead75c24c91475ced94bdd485420785b5d1872ee3fb6a49c8193a72a7122"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1827,
+          "fingerprint": "1e4239685b7d90a7062ba9ac470380a370a5eb9b15478ac70c19de39f3efea00",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "c130ead75c24c91475ced94bdd485420785b5d1872ee3fb6a49c8193a72a7122",
+            "mentionId": 3463,
+            "scopePlaceIds": [
+              1655
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "c06b0fda61860fe9d878a522f65b6036",
+          "city": "成都",
+          "canonical_name": "北锣鼓巷",
+          "primary_place_id": 1656,
+          "aliases": [
+            "北锣鼓巷"
+          ],
+          "legacy_ids": [
+            "c06b0fda61860fe9d878a522f65b6036"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1656,
+          "entity_id": "c06b0fda61860fe9d878a522f65b6036"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1656,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.6,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1656,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "文艺胡同，适合慢慢溜达",
+              "evidence": "慢慢溜达"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2529,
+          "canonical_place_id": 1656,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 北锣鼓巷",
+          "evidence_summary": "文艺胡同，适合慢慢溜达"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1656,
+          "city": "成都",
+          "name_keys": [
+            "北锣鼓巷"
+          ],
+          "entity_ids": [
+            "c06b0fda61860fe9d878a522f65b6036"
+          ],
+          "source_hash": "f23867acd072df0ddf778df5fda7ffb4c63649c2e8713d299027fcb2a4d923be",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1656",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3464
+              ],
+              "sourcePlaceIds": [
+                1656
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "c06b0fda61860fe9d878a522f65b6036"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3464,
+          "scope_place_id": 1656,
+          "entity_id": null,
+          "input_hash": "227f99a9d416eb8deba27046f7e5e02faca662d9f7cd822be31e6ca7659b9f04",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1656"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "f23867acd072df0ddf778df5fda7ffb4c63649c2e8713d299027fcb2a4d923be",
+        "mentions": [
+          {
+            "mentionId": 3464,
+            "inputHash": "227f99a9d416eb8deba27046f7e5e02faca662d9f7cd822be31e6ca7659b9f04"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1838,
+          "fingerprint": "9a8e4db5326419b37e975bf5e9346c53337232ebe32b50613436db358b8c7bdc",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "227f99a9d416eb8deba27046f7e5e02faca662d9f7cd822be31e6ca7659b9f04",
+            "mentionId": 3464,
+            "scopePlaceIds": [
+              1656
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "911f2a37aa239bb5c0ad520c8dfbd24a",
+          "city": "成都",
+          "canonical_name": "南锣鼓巷",
+          "primary_place_id": 1657,
+          "aliases": [
+            "南锣鼓巷"
+          ],
+          "legacy_ids": [
+            "911f2a37aa239bb5c0ad520c8dfbd24a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1657,
+          "entity_id": "911f2a37aa239bb5c0ad520c8dfbd24a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1657,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1657,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "热门胡同，适合慢慢逛",
+              "evidence": "慢慢溜达"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2530,
+          "canonical_place_id": 1657,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 南锣鼓巷",
+          "evidence_summary": "热门胡同，适合慢慢逛"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1657,
+          "city": "成都",
+          "name_keys": [
+            "南锣鼓巷"
+          ],
+          "entity_ids": [
+            "911f2a37aa239bb5c0ad520c8dfbd24a"
+          ],
+          "source_hash": "9a36d142565228ef615a4917af795a45bd6380b4f132c9e9be6c009e7dcc3aa9",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1657",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3465
+              ],
+              "sourcePlaceIds": [
+                1657
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "911f2a37aa239bb5c0ad520c8dfbd24a"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3465,
+          "scope_place_id": 1657,
+          "entity_id": null,
+          "input_hash": "2dfe3cdbad52516573475d95cbdf40b6e24eb52e81024897a325fc5cd3eebd3a",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1657"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "9a36d142565228ef615a4917af795a45bd6380b4f132c9e9be6c009e7dcc3aa9",
+        "mentions": [
+          {
+            "mentionId": 3465,
+            "inputHash": "2dfe3cdbad52516573475d95cbdf40b6e24eb52e81024897a325fc5cd3eebd3a"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1850,
+          "fingerprint": "594c0b3ec8bd8121cc7c3afb318e959229e68d7c7b41cac2e2deb831a5c7c519",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "2dfe3cdbad52516573475d95cbdf40b6e24eb52e81024897a325fc5cd3eebd3a",
+            "mentionId": 3465,
+            "scopePlaceIds": [
+              1657
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "09a6428491f2484b62c5ebc1ee02a30d",
+          "city": "成都",
+          "canonical_name": "地坛公园",
+          "primary_place_id": 1658,
+          "aliases": [
+            "地坛公园"
+          ],
+          "legacy_ids": [
+            "09a6428491f2484b62c5ebc1ee02a30d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1658,
+          "entity_id": "09a6428491f2484b62c5ebc1ee02a30d"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1658,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1658,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "可找“地坛的海”，夏日静谧好逛",
+              "evidence": "找“地坛的海”"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2531,
+          "canonical_place_id": 1658,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 地坛公园",
+          "evidence_summary": "可找“地坛的海”，夏日静谧好逛"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1658,
+          "city": "成都",
+          "name_keys": [
+            "地坛公园"
+          ],
+          "entity_ids": [
+            "09a6428491f2484b62c5ebc1ee02a30d"
+          ],
+          "source_hash": "86750bb3b0460135d4382ab21934d4427812610e852659e4b2e082362d91f763",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1658",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3466
+              ],
+              "sourcePlaceIds": [
+                1658
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "09a6428491f2484b62c5ebc1ee02a30d"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3466,
+          "scope_place_id": 1658,
+          "entity_id": null,
+          "input_hash": "f10f4ad1f96bdaa3ea43c9ff1f5c4b041c96a044f896e5558702990fae573f75",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1658"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "86750bb3b0460135d4382ab21934d4427812610e852659e4b2e082362d91f763",
+        "mentions": [
+          {
+            "mentionId": 3466,
+            "inputHash": "f10f4ad1f96bdaa3ea43c9ff1f5c4b041c96a044f896e5558702990fae573f75"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1863,
+          "fingerprint": "8eb351e4ac9c933bd2229f18f348bc033d0b1ccd45470e86bb94366db60ef1e5",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "f10f4ad1f96bdaa3ea43c9ff1f5c4b041c96a044f896e5558702990fae573f75",
+            "mentionId": 3466,
+            "scopePlaceIds": [
+              1658
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "5dcf708f6083fa9c65c7f9c764e76a16",
+          "city": "成都",
+          "canonical_name": "雍和宫",
+          "primary_place_id": 1659,
+          "aliases": [
+            "雍和宫"
+          ],
+          "legacy_ids": [
+            "5dcf708f6083fa9c65c7f9c764e76a16"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1659,
+          "entity_id": "5dcf708f6083fa9c65c7f9c764e76a16"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1659,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1659,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "祈福+选手串，人气打卡地",
+              "evidence": "祈福+选手串"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2532,
+          "canonical_place_id": 1659,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 雍和宫",
+          "evidence_summary": "祈福+选手串，人气打卡地"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1659,
+          "city": "成都",
+          "name_keys": [
+            "雍和宫"
+          ],
+          "entity_ids": [
+            "5dcf708f6083fa9c65c7f9c764e76a16"
+          ],
+          "source_hash": "a9833019d341e020aff1c429caf3bd719a8bbd7a74a3340a7ca4d302780c10cf",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1659",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3467
+              ],
+              "sourcePlaceIds": [
+                1659
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "5dcf708f6083fa9c65c7f9c764e76a16"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3467,
+          "scope_place_id": 1659,
+          "entity_id": null,
+          "input_hash": "69ffe11d45dd250dbe2937a9ca91e073bfc0dc668e605c9b1898a79be2274043",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1659"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "a9833019d341e020aff1c429caf3bd719a8bbd7a74a3340a7ca4d302780c10cf",
+        "mentions": [
+          {
+            "mentionId": 3467,
+            "inputHash": "69ffe11d45dd250dbe2937a9ca91e073bfc0dc668e605c9b1898a79be2274043"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1877,
+          "fingerprint": "6cd5665da7f8347ace2a730da241939318546bd9aeedd48bb0403a730c03d807",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "69ffe11d45dd250dbe2937a9ca91e073bfc0dc668e605c9b1898a79be2274043",
+            "mentionId": 3467,
+            "scopePlaceIds": [
+              1659
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1a2acc23cdd05c52e3a080ab87c8b69d",
+          "city": "成都",
+          "canonical_name": "国子监",
+          "primary_place_id": 1660,
+          "aliases": [
+            "国子监"
+          ],
+          "legacy_ids": [
+            "1a2acc23cdd05c52e3a080ab87c8b69d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1660,
+          "entity_id": "1a2acc23cdd05c52e3a080ab87c8b69d"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1660,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1660,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "古建人文，可逛孔庙",
+              "evidence": "逛国子监孔庙"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2533,
+          "canonical_place_id": 1660,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 国子监",
+          "evidence_summary": "古建人文，可逛孔庙"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1660,
+          "city": "成都",
+          "name_keys": [
+            "国子监"
+          ],
+          "entity_ids": [
+            "1a2acc23cdd05c52e3a080ab87c8b69d"
+          ],
+          "source_hash": "fb7f1ea30c70e6f44fa440d75ca8bf7bc2fa88d6384c72b2783065451a94703d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1660",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3468
+              ],
+              "sourcePlaceIds": [
+                1660
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "1a2acc23cdd05c52e3a080ab87c8b69d"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3468,
+          "scope_place_id": 1660,
+          "entity_id": null,
+          "input_hash": "e591989e7dc37f059df6fce68a0dadca11759fc7c40201c456e5f6e3ff606c13",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1660"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "fb7f1ea30c70e6f44fa440d75ca8bf7bc2fa88d6384c72b2783065451a94703d",
+        "mentions": [
+          {
+            "mentionId": 3468,
+            "inputHash": "e591989e7dc37f059df6fce68a0dadca11759fc7c40201c456e5f6e3ff606c13"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1892,
+          "fingerprint": "cfd12f4faae0abe6a3da7860a889e94f919edc72e2f5941311f230c8b161989f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "e591989e7dc37f059df6fce68a0dadca11759fc7c40201c456e5f6e3ff606c13",
+            "mentionId": 3468,
+            "scopePlaceIds": [
+              1660
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "5f660858cc70ca0a9584e4dddea338a7",
+          "city": "成都",
+          "canonical_name": "五道营胡同",
+          "primary_place_id": 1661,
+          "aliases": [
+            "五道营胡同"
+          ],
+          "legacy_ids": [
+            "5f660858cc70ca0a9584e4dddea338a7"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1661,
+          "entity_id": "5f660858cc70ca0a9584e4dddea338a7"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1661,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1661,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "文艺小店多，很适合citywalk",
+              "evidence": "文艺小店多到逛不完"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2534,
+          "canonical_place_id": 1661,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 五道营胡同",
+          "evidence_summary": "文艺小店多，很适合citywalk"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1661,
+          "city": "成都",
+          "name_keys": [
+            "五道营胡同"
+          ],
+          "entity_ids": [
+            "5f660858cc70ca0a9584e4dddea338a7"
+          ],
+          "source_hash": "13e3f22a08240613fe5fd6391abcec0fd1d95a46f19395674f6a3f81dc9d04e4",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1661",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3469
+              ],
+              "sourcePlaceIds": [
+                1661
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "5f660858cc70ca0a9584e4dddea338a7"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3469,
+          "scope_place_id": 1661,
+          "entity_id": null,
+          "input_hash": "f3412fa6c6a471942e28312e9508f87c884660524dd519e125c8b1cc1b73f74d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1661"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "13e3f22a08240613fe5fd6391abcec0fd1d95a46f19395674f6a3f81dc9d04e4",
+        "mentions": [
+          {
+            "mentionId": 3469,
+            "inputHash": "f3412fa6c6a471942e28312e9508f87c884660524dd519e125c8b1cc1b73f74d"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1908,
+          "fingerprint": "214a06e3aa8435af5843afd2a516b6189058701d6e802c81d3f44a07f05d741a",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "f3412fa6c6a471942e28312e9508f87c884660524dd519e125c8b1cc1b73f74d",
+            "mentionId": 3469,
+            "scopePlaceIds": [
+              1661
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f7911b50eb1c61037c79160865d8e630",
+          "city": "成都",
+          "canonical_name": "鲁迅博物馆",
+          "primary_place_id": 1662,
+          "aliases": [
+            "鲁迅博物馆"
+          ],
+          "legacy_ids": [
+            "f7911b50eb1c61037c79160865d8e630"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1662,
+          "entity_id": "f7911b50eb1c61037c79160865d8e630"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1662,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1662,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "感受文人风骨，文化氛围浓",
+              "evidence": "感受文人风骨"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2535,
+          "canonical_place_id": 1662,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鲁迅博物馆",
+          "evidence_summary": "感受文人风骨，文化氛围浓"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1662,
+          "city": "成都",
+          "name_keys": [
+            "鲁迅博物馆"
+          ],
+          "entity_ids": [
+            "f7911b50eb1c61037c79160865d8e630"
+          ],
+          "source_hash": "0c0bcdab017e105080ab811f4e41fab6c4c10f3c68fd08e5265a45cd60248d35",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1662",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3470
+              ],
+              "sourcePlaceIds": [
+                1662
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "f7911b50eb1c61037c79160865d8e630"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3470,
+          "scope_place_id": 1662,
+          "entity_id": null,
+          "input_hash": "467a336d96cda12810689adb8a330e303b99090779b609457bbdc681ecc6bfd6",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1662"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "0c0bcdab017e105080ab811f4e41fab6c4c10f3c68fd08e5265a45cd60248d35",
+        "mentions": [
+          {
+            "mentionId": 3470,
+            "inputHash": "467a336d96cda12810689adb8a330e303b99090779b609457bbdc681ecc6bfd6"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1925,
+          "fingerprint": "09a21f1a763a7a06ab26105145d2aa379c6eb9c6dfd24ed3ea2309a9c564a32f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "467a336d96cda12810689adb8a330e303b99090779b609457bbdc681ecc6bfd6",
+            "mentionId": 3470,
+            "scopePlaceIds": [
+              1662
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f0045ae244df6a021f039e64637f111d",
+          "city": "成都",
+          "canonical_name": "白塔寺",
+          "primary_place_id": 1663,
+          "aliases": [
+            "白塔寺"
+          ],
+          "legacy_ids": [
+            "f0045ae244df6a021f039e64637f111d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1663,
+          "entity_id": "f0045ae244df6a021f039e64637f111d"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1663,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1663,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "打卡地标，东夹道胡同很出片",
+              "evidence": "东夹道胡同很出片"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2536,
+          "canonical_place_id": 1663,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 白塔寺",
+          "evidence_summary": "打卡地标，东夹道胡同很出片"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1663,
+          "city": "成都",
+          "name_keys": [
+            "白塔寺"
+          ],
+          "entity_ids": [
+            "f0045ae244df6a021f039e64637f111d"
+          ],
+          "source_hash": "2ecab78ff1ad13b64bd620b94679dfdaadfb570818743477758543da4f7c107d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1663",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3471
+              ],
+              "sourcePlaceIds": [
+                1663
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "f0045ae244df6a021f039e64637f111d"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3471,
+          "scope_place_id": 1663,
+          "entity_id": null,
+          "input_hash": "ce60fa6f50b24fa87885acf977718ce50388d34d6cf2030c52d9d7696a9e1097",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1663"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "2ecab78ff1ad13b64bd620b94679dfdaadfb570818743477758543da4f7c107d",
+        "mentions": [
+          {
+            "mentionId": 3471,
+            "inputHash": "ce60fa6f50b24fa87885acf977718ce50388d34d6cf2030c52d9d7696a9e1097"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1943,
+          "fingerprint": "1fc468626f415b16497c7152ec47e189b8d4ee3f741b0cf28a2e74838d6b5d28",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "ce60fa6f50b24fa87885acf977718ce50388d34d6cf2030c52d9d7696a9e1097",
+            "mentionId": 3471,
+            "scopePlaceIds": [
+              1663
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "0688a8f4c0a461bc43c033b034f2c8e7",
+          "city": "成都",
+          "canonical_name": "历代帝王庙",
+          "primary_place_id": 1664,
+          "aliases": [
+            "历代帝王庙"
+          ],
+          "legacy_ids": [
+            "0688a8f4c0a461bc43c033b034f2c8e7"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1664,
+          "entity_id": "0688a8f4c0a461bc43c033b034f2c8e7"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1664,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1664,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "历史古迹，值得一看",
+              "evidence": "历代帝王庙"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2537,
+          "canonical_place_id": 1664,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 历代帝王庙",
+          "evidence_summary": "历史古迹，值得一看"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1664,
+          "city": "成都",
+          "name_keys": [
+            "历代帝王庙"
+          ],
+          "entity_ids": [
+            "0688a8f4c0a461bc43c033b034f2c8e7"
+          ],
+          "source_hash": "e71ae57ea00105578b9b6dd16603fd038715db9df678c1c717516e5c428d9ddc",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1664",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3472
+              ],
+              "sourcePlaceIds": [
+                1664
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "0688a8f4c0a461bc43c033b034f2c8e7"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3472,
+          "scope_place_id": 1664,
+          "entity_id": null,
+          "input_hash": "92b288e0c03d5076413e505ae20e92a0b0a024bd95ae5afcbd11e162ee59befc",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1664"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "e71ae57ea00105578b9b6dd16603fd038715db9df678c1c717516e5c428d9ddc",
+        "mentions": [
+          {
+            "mentionId": 3472,
+            "inputHash": "92b288e0c03d5076413e505ae20e92a0b0a024bd95ae5afcbd11e162ee59befc"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1962,
+          "fingerprint": "958b088f988d0378352025381d140bd5b3135a3f1c3dfe4d51b06f3ec96c8044",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "92b288e0c03d5076413e505ae20e92a0b0a024bd95ae5afcbd11e162ee59befc",
+            "mentionId": 3472,
+            "scopePlaceIds": [
+              1664
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "aab5a9ad7a79cf5eac629f4800414a4f",
+          "city": "成都",
+          "canonical_name": "正阳书局",
+          "primary_place_id": 1665,
+          "aliases": [
+            "正阳书局"
+          ],
+          "legacy_ids": [
+            "aab5a9ad7a79cf5eac629f4800414a4f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1665,
+          "entity_id": "aab5a9ad7a79cf5eac629f4800414a4f"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1665,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1665,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "特色书局，沿途文化打卡点",
+              "evidence": "正阳书局"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2538,
+          "canonical_place_id": 1665,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 正阳书局",
+          "evidence_summary": "特色书局，沿途文化打卡点"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1665,
+          "city": "成都",
+          "name_keys": [
+            "正阳书局"
+          ],
+          "entity_ids": [
+            "aab5a9ad7a79cf5eac629f4800414a4f"
+          ],
+          "source_hash": "9a51bc4229715001637266865f45809ce845dd5897eb60cfebd9b87f4f0b65ea",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1665",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3473
+              ],
+              "sourcePlaceIds": [
+                1665
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "aab5a9ad7a79cf5eac629f4800414a4f"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3473,
+          "scope_place_id": 1665,
+          "entity_id": null,
+          "input_hash": "4f84a88e41820d8f461478ac3a48f2369b13bdb3882e99e965ed34bba6ce426e",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1665"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "9a51bc4229715001637266865f45809ce845dd5897eb60cfebd9b87f4f0b65ea",
+        "mentions": [
+          {
+            "mentionId": 3473,
+            "inputHash": "4f84a88e41820d8f461478ac3a48f2369b13bdb3882e99e965ed34bba6ce426e"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 1982,
+          "fingerprint": "4387a9ccac2b130836b443fe750199b4682b922551b89343271ea373ba4e7595",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "4f84a88e41820d8f461478ac3a48f2369b13bdb3882e99e965ed34bba6ce426e",
+            "mentionId": 3473,
+            "scopePlaceIds": [
+              1665
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "c9bf0b8d87e7e63afa200d2bf5b7dc9b",
+          "city": "成都",
+          "canonical_name": "西单",
+          "primary_place_id": 1666,
+          "aliases": [
+            "西单"
+          ],
+          "legacy_ids": [
+            "c9bf0b8d87e7e63afa200d2bf5b7dc9b"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1666,
+          "entity_id": "c9bf0b8d87e7e63afa200d2bf5b7dc9b"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1666,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.5,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1666,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "逛吃到西单，商业区好逛",
+              "evidence": "一路逛吃到西单"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2539,
+          "canonical_place_id": 1666,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 西单",
+          "evidence_summary": "逛吃到西单，商业区好逛"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1666,
+          "city": "成都",
+          "name_keys": [
+            "西单"
+          ],
+          "entity_ids": [
+            "c9bf0b8d87e7e63afa200d2bf5b7dc9b"
+          ],
+          "source_hash": "f2db64246a070ef45cfcfe460077c4bede1eb4c37a153c67ba0a70612caa0cc3",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1666",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3474
+              ],
+              "sourcePlaceIds": [
+                1666
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "c9bf0b8d87e7e63afa200d2bf5b7dc9b"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3474,
+          "scope_place_id": 1666,
+          "entity_id": null,
+          "input_hash": "2e62b2dc41e7044df91bb21ccc6f352d0fcd9996741df60a4aec75c84274affa",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1666"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "f2db64246a070ef45cfcfe460077c4bede1eb4c37a153c67ba0a70612caa0cc3",
+        "mentions": [
+          {
+            "mentionId": 3474,
+            "inputHash": "2e62b2dc41e7044df91bb21ccc6f352d0fcd9996741df60a4aec75c84274affa"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2003,
+          "fingerprint": "b02cf4054dfc7a71185df5f9d64103e15a6d71e43c709967a37473f5ebe43bda",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "2e62b2dc41e7044df91bb21ccc6f352d0fcd9996741df60a4aec75c84274affa",
+            "mentionId": 3474,
+            "scopePlaceIds": [
+              1666
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e1c087f2522d126a2de7fe78849ab445",
+          "city": "成都",
+          "canonical_name": "天坛",
+          "primary_place_id": 1667,
+          "aliases": [
+            "天坛"
+          ],
+          "legacy_ids": [
+            "e1c087f2522d126a2de7fe78849ab445"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1667,
+          "entity_id": "e1c087f2522d126a2de7fe78849ab445"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1667,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1667,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "感受超强能量场，经典地标",
+              "evidence": "感受超强能量场"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2540,
+          "canonical_place_id": 1667,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 天坛",
+          "evidence_summary": "感受超强能量场，经典地标"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1667,
+          "city": "成都",
+          "name_keys": [
+            "天坛"
+          ],
+          "entity_ids": [
+            "e1c087f2522d126a2de7fe78849ab445"
+          ],
+          "source_hash": "42c40e9cf26b3dd1490156ceb44b2d793a9dde597e9acf178a6aded01e4f70f0",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1667",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3475
+              ],
+              "sourcePlaceIds": [
+                1667
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "e1c087f2522d126a2de7fe78849ab445"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3475,
+          "scope_place_id": 1667,
+          "entity_id": null,
+          "input_hash": "40d186fa6cc89542717274d4ecc08f3dbf183e51605a083a0068aedd49c0f7b4",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1667"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "42c40e9cf26b3dd1490156ceb44b2d793a9dde597e9acf178a6aded01e4f70f0",
+        "mentions": [
+          {
+            "mentionId": 3475,
+            "inputHash": "40d186fa6cc89542717274d4ecc08f3dbf183e51605a083a0068aedd49c0f7b4"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2025,
+          "fingerprint": "817afaa1d020499b5018b1399ed22552354a1915f87b59c4c444f0e89e404b7e",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "40d186fa6cc89542717274d4ecc08f3dbf183e51605a083a0068aedd49c0f7b4",
+            "mentionId": 3475,
+            "scopePlaceIds": [
+              1667
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1193c0a076b71c933f2c7c67b4570f7a",
+          "city": "成都",
+          "canonical_name": "前门",
+          "primary_place_id": 1668,
+          "aliases": [
+            "前门"
+          ],
+          "legacy_ids": [
+            "1193c0a076b71c933f2c7c67b4570f7a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1668,
+          "entity_id": "1193c0a076b71c933f2c7c67b4570f7a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1668,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1668,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "经典地标，可逛吃鲜鱼口、大栅栏",
+              "evidence": "一路走到前门"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2541,
+          "canonical_place_id": 1668,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 前门",
+          "evidence_summary": "经典地标，可逛吃鲜鱼口、大栅栏"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1668,
+          "city": "成都",
+          "name_keys": [
+            "前门"
+          ],
+          "entity_ids": [
+            "1193c0a076b71c933f2c7c67b4570f7a"
+          ],
+          "source_hash": "ce5179f8dbac1413c13fbfd95ce654cadb997667c78ed58d37895d757f6ecf8a",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1668",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3476
+              ],
+              "sourcePlaceIds": [
+                1668
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "1193c0a076b71c933f2c7c67b4570f7a"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3476,
+          "scope_place_id": 1668,
+          "entity_id": null,
+          "input_hash": "9e372ecb9ebc0d13da86f50942caa3a3d30e471db8d452742b8dfa5b6ae4931d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1668"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "ce5179f8dbac1413c13fbfd95ce654cadb997667c78ed58d37895d757f6ecf8a",
+        "mentions": [
+          {
+            "mentionId": 3476,
+            "inputHash": "9e372ecb9ebc0d13da86f50942caa3a3d30e471db8d452742b8dfa5b6ae4931d"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2048,
+          "fingerprint": "1be1cff265770e51223d7ae4b9d214e1952932bc1a53291b76a1e8a166c0a88f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "9e372ecb9ebc0d13da86f50942caa3a3d30e471db8d452742b8dfa5b6ae4931d",
+            "mentionId": 3476,
+            "scopePlaceIds": [
+              1668
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "70c4238a37efdfc92bd77cf131de49f6",
+          "city": "成都",
+          "canonical_name": "大栅栏",
+          "primary_place_id": 1669,
+          "aliases": [
+            "大栅栏"
+          ],
+          "legacy_ids": [
+            "70c4238a37efdfc92bd77cf131de49f6"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1669,
+          "entity_id": "70c4238a37efdfc92bd77cf131de49f6"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1669,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.6,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1669,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "老北京商业街，适合逛吃",
+              "evidence": "大栅栏挨个逛吃"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2542,
+          "canonical_place_id": 1669,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大栅栏",
+          "evidence_summary": "老北京商业街，适合逛吃"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1669,
+          "city": "成都",
+          "name_keys": [
+            "大栅栏"
+          ],
+          "entity_ids": [
+            "70c4238a37efdfc92bd77cf131de49f6"
+          ],
+          "source_hash": "bf30544748c57860d67235372c3b5e8e7d5fd87aa5c22dd508e07f388859c352",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1669",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3477
+              ],
+              "sourcePlaceIds": [
+                1669
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "70c4238a37efdfc92bd77cf131de49f6"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3477,
+          "scope_place_id": 1669,
+          "entity_id": null,
+          "input_hash": "eda76babf6c22430e6da2cf956e218521f8d485046ecc9e2084a6b664ca6e5fc",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1669"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "bf30544748c57860d67235372c3b5e8e7d5fd87aa5c22dd508e07f388859c352",
+        "mentions": [
+          {
+            "mentionId": 3477,
+            "inputHash": "eda76babf6c22430e6da2cf956e218521f8d485046ecc9e2084a6b664ca6e5fc"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2072,
+          "fingerprint": "063f2685e7bb00ed5649c7317b3c52f74a6329f4e985ac6ca3f35c7a07ab31da",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "eda76babf6c22430e6da2cf956e218521f8d485046ecc9e2084a6b664ca6e5fc",
+            "mentionId": 3477,
+            "scopePlaceIds": [
+              1669
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "93121d8c212e7cb2b1f0008080a7c7ec",
+          "city": "成都",
+          "canonical_name": "隆福寺商业区",
+          "primary_place_id": 1670,
+          "aliases": [
+            "隆福寺商业区"
+          ],
+          "legacy_ids": [
+            "93121d8c212e7cb2b1f0008080a7c7ec"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1670,
+          "entity_id": "93121d8c212e7cb2b1f0008080a7c7ec"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1670,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.2,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1670,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "老城烟火与新潮商业交融",
+              "evidence": "老城烟火与新潮商业交融"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2543,
+          "canonical_place_id": 1670,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 隆福寺商业区",
+          "evidence_summary": "老城烟火与新潮商业交融"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1670,
+          "city": "成都",
+          "name_keys": [
+            "隆福寺商业区"
+          ],
+          "entity_ids": [
+            "93121d8c212e7cb2b1f0008080a7c7ec"
+          ],
+          "source_hash": "5831e602dc9f06429436dd1fa5e1c975f3cead2903c76f71779f88c08cd15302",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1670",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3482
+              ],
+              "sourcePlaceIds": [
+                1670
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "93121d8c212e7cb2b1f0008080a7c7ec"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3482,
+          "scope_place_id": 1670,
+          "entity_id": null,
+          "input_hash": "13affdb1bb36ac549171cea8cf3d15f33dea0bf73ff1d3c880907526e2e02d3d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1670"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "5831e602dc9f06429436dd1fa5e1c975f3cead2903c76f71779f88c08cd15302",
+        "mentions": [
+          {
+            "mentionId": 3482,
+            "inputHash": "13affdb1bb36ac549171cea8cf3d15f33dea0bf73ff1d3c880907526e2e02d3d"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2101,
+          "fingerprint": "8f299b2b4c215919af6cfba7bb2a014cd84651ae39c5d4c13517f025ea81e666",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "13affdb1bb36ac549171cea8cf3d15f33dea0bf73ff1d3c880907526e2e02d3d",
+            "mentionId": 3482,
+            "scopePlaceIds": [
+              1670
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f3983f0d0cd1f1dae18352e043749238",
+          "city": "成都",
+          "canonical_name": "三联书店",
+          "primary_place_id": 1671,
+          "aliases": [
+            "三联书店"
+          ],
+          "legacy_ids": [
+            "f3983f0d0cd1f1dae18352e043749238"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1671,
+          "entity_id": "f3983f0d0cd1f1dae18352e043749238"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1671,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.3,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1671,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "知名书店，文化氛围好",
+              "evidence": "三联书店"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2544,
+          "canonical_place_id": 1671,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 三联书店",
+          "evidence_summary": "知名书店，文化氛围好"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1671,
+          "city": "成都",
+          "name_keys": [
+            "三联书店"
+          ],
+          "entity_ids": [
+            "f3983f0d0cd1f1dae18352e043749238"
+          ],
+          "source_hash": "e81e4c8e7bbd353525f687cf1aac79d7d138be9107951d2064fa34d92256e211",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1671",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3483
+              ],
+              "sourcePlaceIds": [
+                1671
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "f3983f0d0cd1f1dae18352e043749238"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3483,
+          "scope_place_id": 1671,
+          "entity_id": null,
+          "input_hash": "bc778fd702b6a4aa16d51d004a185de574f3fd1398af8c98e567030ed5f886e3",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1671"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "e81e4c8e7bbd353525f687cf1aac79d7d138be9107951d2064fa34d92256e211",
+        "mentions": [
+          {
+            "mentionId": 3483,
+            "inputHash": "bc778fd702b6a4aa16d51d004a185de574f3fd1398af8c98e567030ed5f886e3"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2127,
+          "fingerprint": "74e106364d6c3aec68cd96e6ef017e181eceae1ae9f0114b5885d820e07cd03d",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "bc778fd702b6a4aa16d51d004a185de574f3fd1398af8c98e567030ed5f886e3",
+            "mentionId": 3483,
+            "scopePlaceIds": [
+              1671
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "b1b3f62e951a637390e024655bf3a609",
+          "city": "成都",
+          "canonical_name": "中国美术馆",
+          "primary_place_id": 1672,
+          "aliases": [
+            "中国美术馆"
+          ],
+          "legacy_ids": [
+            "b1b3f62e951a637390e024655bf3a609"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1672,
+          "entity_id": "b1b3f62e951a637390e024655bf3a609"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1672,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1672,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "艺术殿堂，适合看展",
+              "evidence": "抵达中国美术馆"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2545,
+          "canonical_place_id": 1672,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 中国美术馆",
+          "evidence_summary": "艺术殿堂，适合看展"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1672,
+          "city": "成都",
+          "name_keys": [
+            "中国美术馆"
+          ],
+          "entity_ids": [
+            "b1b3f62e951a637390e024655bf3a609"
+          ],
+          "source_hash": "3d8a5f9aae54245c253147c5bf00ed66107da552ac4a1bc5595c7458d0fb48e4",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1672",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3484
+              ],
+              "sourcePlaceIds": [
+                1672
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "b1b3f62e951a637390e024655bf3a609"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3484,
+          "scope_place_id": 1672,
+          "entity_id": null,
+          "input_hash": "067e48ec786ddd8b03af92a608c6299b3ea5b67351607fd47faf4bcb4c5d8870",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1672"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "3d8a5f9aae54245c253147c5bf00ed66107da552ac4a1bc5595c7458d0fb48e4",
+        "mentions": [
+          {
+            "mentionId": 3484,
+            "inputHash": "067e48ec786ddd8b03af92a608c6299b3ea5b67351607fd47faf4bcb4c5d8870"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2154,
+          "fingerprint": "92728b3d9538363be37c9fc4107e7e6d7464378a64de6aab01fc5bfa34d4ce16",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "067e48ec786ddd8b03af92a608c6299b3ea5b67351607fd47faf4bcb4c5d8870",
+            "mentionId": 3484,
+            "scopePlaceIds": [
+              1672
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6685b2a3ebf7f1856a3cac018402d793",
+          "city": "成都",
+          "canonical_name": "广阳谷森林公园",
+          "primary_place_id": 1673,
+          "aliases": [
+            "广阳谷森林公园"
+          ],
+          "legacy_ids": [
+            "6685b2a3ebf7f1856a3cac018402d793"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1673,
+          "entity_id": "6685b2a3ebf7f1856a3cac018402d793"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1673,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.4,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1673,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "城市森林可吸氧，适合散步",
+              "evidence": "广阳谷吸氧"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2546,
+          "canonical_place_id": 1673,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 广阳谷森林公园",
+          "evidence_summary": "城市森林可吸氧，适合散步"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1673,
+          "city": "成都",
+          "name_keys": [
+            "广阳谷森林公园"
+          ],
+          "entity_ids": [
+            "6685b2a3ebf7f1856a3cac018402d793"
+          ],
+          "source_hash": "91f0f01b2c2268e1be8d917c5e21351662f3290783dcce4350e281a9e5660ff5",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1673",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3485
+              ],
+              "sourcePlaceIds": [
+                1673
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "6685b2a3ebf7f1856a3cac018402d793"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3485,
+          "scope_place_id": 1673,
+          "entity_id": null,
+          "input_hash": "373fcdef41d210a74cad9264be2fe59ed626a1a4fff5df2ebb733c39cecf5795",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1673"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "91f0f01b2c2268e1be8d917c5e21351662f3290783dcce4350e281a9e5660ff5",
+        "mentions": [
+          {
+            "mentionId": 3485,
+            "inputHash": "373fcdef41d210a74cad9264be2fe59ed626a1a4fff5df2ebb733c39cecf5795"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2182,
+          "fingerprint": "39358c3ba3df755f1e17708e78430358a23df313fb3d5139859b5f147b8ab81f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "373fcdef41d210a74cad9264be2fe59ed626a1a4fff5df2ebb733c39cecf5795",
+            "mentionId": 3485,
+            "scopePlaceIds": [
+              1673
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "a59e02c0c7c598fe642cb56ecb9d195c",
+          "city": "成都",
+          "canonical_name": "大吉巷",
+          "primary_place_id": 1674,
+          "aliases": [
+            "大吉巷"
+          ],
+          "legacy_ids": [
+            "a59e02c0c7c598fe642cb56ecb9d195c"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1674,
+          "entity_id": "a59e02c0c7c598fe642cb56ecb9d195c"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1674,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1674,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "潮流街区，适合打卡",
+              "evidence": "潮流街区"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2547,
+          "canonical_place_id": 1674,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大吉巷",
+          "evidence_summary": "潮流街区，适合打卡"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1674,
+          "city": "成都",
+          "name_keys": [
+            "大吉巷"
+          ],
+          "entity_ids": [
+            "a59e02c0c7c598fe642cb56ecb9d195c"
+          ],
+          "source_hash": "26fbdd2e1dbc97e8e0ad59a890275679a43a32c62845e1c4bc4a8fd1f346881c",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1674",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3486
+              ],
+              "sourcePlaceIds": [
+                1674
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "a59e02c0c7c598fe642cb56ecb9d195c"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3486,
+          "scope_place_id": 1674,
+          "entity_id": null,
+          "input_hash": "75353631dc9ac155b4a3fefdc8f02f7e9b7c35b8692cc8153d9cc2a21a290c2e",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1674"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "26fbdd2e1dbc97e8e0ad59a890275679a43a32c62845e1c4bc4a8fd1f346881c",
+        "mentions": [
+          {
+            "mentionId": 3486,
+            "inputHash": "75353631dc9ac155b4a3fefdc8f02f7e9b7c35b8692cc8153d9cc2a21a290c2e"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2211,
+          "fingerprint": "337c97098cb6af16ae1f054954743d8888cb5649b9fa401fce9f11205fdf4b1b",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "75353631dc9ac155b4a3fefdc8f02f7e9b7c35b8692cc8153d9cc2a21a290c2e",
+            "mentionId": 3486,
+            "scopePlaceIds": [
+              1674
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "fcaeae794947e6e10cef8870dca8d075",
+          "city": "成都",
+          "canonical_name": "烂漫胡同",
+          "primary_place_id": 1675,
+          "aliases": [
+            "烂漫胡同"
+          ],
+          "legacy_ids": [
+            "fcaeae794947e6e10cef8870dca8d075"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1675,
+          "entity_id": "fcaeae794947e6e10cef8870dca8d075"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1675,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1675,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "老北京胡同，适合感受胡同文化",
+              "evidence": "穿行烂漫胡同"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2548,
+          "canonical_place_id": 1675,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 烂漫胡同",
+          "evidence_summary": "老北京胡同，适合感受胡同文化"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1675,
+          "city": "成都",
+          "name_keys": [
+            "烂漫胡同"
+          ],
+          "entity_ids": [
+            "fcaeae794947e6e10cef8870dca8d075"
+          ],
+          "source_hash": "7269a51f30b7c0997806d15e53cfab2af68a10e963cf1c655b3eaed43e0cdebd",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1675",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3487
+              ],
+              "sourcePlaceIds": [
+                1675
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "fcaeae794947e6e10cef8870dca8d075"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3487,
+          "scope_place_id": 1675,
+          "entity_id": null,
+          "input_hash": "a30a36bc2be00fbafda8e22a14424f10a01436df4ac85eb5fc9f94f522328d88",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1675"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "7269a51f30b7c0997806d15e53cfab2af68a10e963cf1c655b3eaed43e0cdebd",
+        "mentions": [
+          {
+            "mentionId": 3487,
+            "inputHash": "a30a36bc2be00fbafda8e22a14424f10a01436df4ac85eb5fc9f94f522328d88"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2241,
+          "fingerprint": "1f56135362200b0007e95fecee1ad291a38c440015e4beb17726017cfacda7f5",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a30a36bc2be00fbafda8e22a14424f10a01436df4ac85eb5fc9f94f522328d88",
+            "mentionId": 3487,
+            "scopePlaceIds": [
+              1675
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e2d3a03e7d7513f088c3c0efb383611b",
+          "city": "成都",
+          "canonical_name": "法源寺",
+          "primary_place_id": 1676,
+          "aliases": [
+            "法源寺"
+          ],
+          "legacy_ids": [
+            "e2d3a03e7d7513f088c3c0efb383611b"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1676,
+          "entity_id": "e2d3a03e7d7513f088c3c0efb383611b"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1676,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.6,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1676,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "古刹探访，静谧有底蕴",
+              "evidence": "探访法源寺古刹"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2549,
+          "canonical_place_id": 1676,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 法源寺",
+          "evidence_summary": "古刹探访，静谧有底蕴"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1676,
+          "city": "成都",
+          "name_keys": [
+            "法源寺"
+          ],
+          "entity_ids": [
+            "e2d3a03e7d7513f088c3c0efb383611b"
+          ],
+          "source_hash": "8b1164fe1ad2d7e554994ac076e8c2d6a3f6756ff1feee0eb4cd13c1fa495664",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1676",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3488
+              ],
+              "sourcePlaceIds": [
+                1676
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "e2d3a03e7d7513f088c3c0efb383611b"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3488,
+          "scope_place_id": 1676,
+          "entity_id": null,
+          "input_hash": "6e2fe70dd8cc6746dd049b0807ec47a0aee89359240af60e258e7d574f37377d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1676"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "8b1164fe1ad2d7e554994ac076e8c2d6a3f6756ff1feee0eb4cd13c1fa495664",
+        "mentions": [
+          {
+            "mentionId": 3488,
+            "inputHash": "6e2fe70dd8cc6746dd049b0807ec47a0aee89359240af60e258e7d574f37377d"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2272,
+          "fingerprint": "3e82d82f9bf7618633aeaa83bbafecd8dc4434999197018bf29f29e31fca9fb2",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "6e2fe70dd8cc6746dd049b0807ec47a0aee89359240af60e258e7d574f37377d",
+            "mentionId": 3488,
+            "scopePlaceIds": [
+              1676
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "662571c43a4dc9aa607602d935c2677f",
+          "city": "成都",
+          "canonical_name": "牛街",
+          "primary_place_id": 1677,
+          "aliases": [
+            "牛街"
+          ],
+          "legacy_ids": [
+            "662571c43a4dc9aa607602d935c2677f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1677,
+          "entity_id": "662571c43a4dc9aa607602d935c2677f"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1677,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1677,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "地道特色小吃聚集地",
+              "evidence": "品尝地道特色小吃"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2550,
+          "canonical_place_id": 1677,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 牛街",
+          "evidence_summary": "地道特色小吃聚集地"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1677,
+          "city": "成都",
+          "name_keys": [
+            "牛街"
+          ],
+          "entity_ids": [
+            "662571c43a4dc9aa607602d935c2677f"
+          ],
+          "source_hash": "ab90ed6090e551a8efafcb781aec6a7cb681b268c8c200287c3f450e99fc65e7",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1677",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3489
+              ],
+              "sourcePlaceIds": [
+                1677
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "662571c43a4dc9aa607602d935c2677f"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3489,
+          "scope_place_id": 1677,
+          "entity_id": null,
+          "input_hash": "348810a6e88988ff1961efc7b6b6b155cbada023d0eddda5edb92d14bece698b",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1677"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "ab90ed6090e551a8efafcb781aec6a7cb681b268c8c200287c3f450e99fc65e7",
+        "mentions": [
+          {
+            "mentionId": 3489,
+            "inputHash": "348810a6e88988ff1961efc7b6b6b155cbada023d0eddda5edb92d14bece698b"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2304,
+          "fingerprint": "b076f1c79994e169b30ae89f958246af11297a43b9bc29afeb52481081bc18ae",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "348810a6e88988ff1961efc7b6b6b155cbada023d0eddda5edb92d14bece698b",
+            "mentionId": 3489,
+            "scopePlaceIds": [
+              1677
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "b7e71f3148f83c1ad70881f5e43c56de",
+          "city": "成都",
+          "canonical_name": "友谊花园",
+          "primary_place_id": 1678,
+          "aliases": [
+            "友谊花园"
+          ],
+          "legacy_ids": [
+            "b7e71f3148f83c1ad70881f5e43c56de"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1678,
+          "entity_id": "b7e71f3148f83c1ad70881f5e43c56de"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1678,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 13.5,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1678,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "复古潮流风情，适合打卡",
+              "evidence": "复古潮流风情"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2551,
+          "canonical_place_id": 1678,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 友谊花园",
+          "evidence_summary": "复古潮流风情，适合打卡"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1678,
+          "city": "成都",
+          "name_keys": [
+            "友谊花园"
+          ],
+          "entity_ids": [
+            "b7e71f3148f83c1ad70881f5e43c56de"
+          ],
+          "source_hash": "ea567a2398277e43ba27324b86d2c9093f06cfbd99d77658f933807ffad5d6b4",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1678",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3490
+              ],
+              "sourcePlaceIds": [
+                1678
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "b7e71f3148f83c1ad70881f5e43c56de"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3490,
+          "scope_place_id": 1678,
+          "entity_id": null,
+          "input_hash": "dd2c380ecc9c681d3ef21e6a74e55005887fa9e24275bd1b46bdc7e0a3a25f08",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1678"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "ea567a2398277e43ba27324b86d2c9093f06cfbd99d77658f933807ffad5d6b4",
+        "mentions": [
+          {
+            "mentionId": 3490,
+            "inputHash": "dd2c380ecc9c681d3ef21e6a74e55005887fa9e24275bd1b46bdc7e0a3a25f08"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2337,
+          "fingerprint": "856fc699ab92c3dc5291ff7be0de3d32aad41e03165b7be7f51803be380a68e0",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "dd2c380ecc9c681d3ef21e6a74e55005887fa9e24275bd1b46bdc7e0a3a25f08",
+            "mentionId": 3490,
+            "scopePlaceIds": [
+              1678
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "fe5ff6f17f7e03bbf8b5e4bf285bf4c0",
+          "city": "成都",
+          "canonical_name": "日坛公园",
+          "primary_place_id": 1679,
+          "aliases": [
+            "日坛公园"
+          ],
+          "legacy_ids": [
+            "fe5ff6f17f7e03bbf8b5e4bf285bf4c0"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1679,
+          "entity_id": "fe5ff6f17f7e03bbf8b5e4bf285bf4c0"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1679,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.5,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1679,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "城市静谧绿意，适合闲享漫步",
+              "evidence": "享受城市静谧绿意"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2552,
+          "canonical_place_id": 1679,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 日坛公园",
+          "evidence_summary": "城市静谧绿意，适合闲享漫步"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1679,
+          "city": "成都",
+          "name_keys": [
+            "日坛公园"
+          ],
+          "entity_ids": [
+            "fe5ff6f17f7e03bbf8b5e4bf285bf4c0"
+          ],
+          "source_hash": "fdc9e232fc39408489200e5ede77403c3170b5caca676b044e1c5e9b1c4a6868",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1679",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3491
+              ],
+              "sourcePlaceIds": [
+                1679
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "fe5ff6f17f7e03bbf8b5e4bf285bf4c0"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3491,
+          "scope_place_id": 1679,
+          "entity_id": null,
+          "input_hash": "bc2fd9e9c44573a39a124019c8586021a722879a43b78c87a405b347e6c5c317",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1679"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "fdc9e232fc39408489200e5ede77403c3170b5caca676b044e1c5e9b1c4a6868",
+        "mentions": [
+          {
+            "mentionId": 3491,
+            "inputHash": "bc2fd9e9c44573a39a124019c8586021a722879a43b78c87a405b347e6c5c317"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2371,
+          "fingerprint": "bb4e1fd653110c270ae09aece917aa57cadffbcd66a666e4b185fb54897e79ca",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "bc2fd9e9c44573a39a124019c8586021a722879a43b78c87a405b347e6c5c317",
+            "mentionId": 3491,
+            "scopePlaceIds": [
+              1679
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e5a0aeb130ff27f3f6ab97d70a8470d6",
+          "city": "成都",
+          "canonical_name": "朝外thebox",
+          "primary_place_id": 1680,
+          "aliases": [
+            "朝外thebox"
+          ],
+          "legacy_ids": [
+            "e5a0aeb130ff27f3f6ab97d70a8470d6"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1680,
+          "entity_id": "e5a0aeb130ff27f3f6ab97d70a8470d6"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1680,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1680,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "潮趣文艺街区，适合年轻人",
+              "evidence": "潮趣文艺街区"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2553,
+          "canonical_place_id": 1680,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 朝外thebox",
+          "evidence_summary": "潮趣文艺街区，适合年轻人"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1680,
+          "city": "成都",
+          "name_keys": [
+            "朝外thebox"
+          ],
+          "entity_ids": [
+            "e5a0aeb130ff27f3f6ab97d70a8470d6"
+          ],
+          "source_hash": "f591c84fd176affdfac3387a80d6aa30bf9445ffcb555ee46a2269d0757c5527",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1680",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3492
+              ],
+              "sourcePlaceIds": [
+                1680
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "e5a0aeb130ff27f3f6ab97d70a8470d6"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3492,
+          "scope_place_id": 1680,
+          "entity_id": null,
+          "input_hash": "bb4de764e5dc37aca0bc4c0a61b84c9ca64bc27f407a941aca9678de2fbfee6f",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1680"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "f591c84fd176affdfac3387a80d6aa30bf9445ffcb555ee46a2269d0757c5527",
+        "mentions": [
+          {
+            "mentionId": 3492,
+            "inputHash": "bb4de764e5dc37aca0bc4c0a61b84c9ca64bc27f407a941aca9678de2fbfee6f"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2406,
+          "fingerprint": "8db58aab518914991c8fd73c26d65b15c28bf5b15a9030f77868536cdde91ed8",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "bb4de764e5dc37aca0bc4c0a61b84c9ca64bc27f407a941aca9678de2fbfee6f",
+            "mentionId": 3492,
+            "scopePlaceIds": [
+              1680
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "0add067c3020c556399e33dc88602176",
+          "city": "成都",
+          "canonical_name": "朝阳公园",
+          "primary_place_id": 1681,
+          "aliases": [
+            "朝阳公园"
+          ],
+          "legacy_ids": [
+            "0add067c3020c556399e33dc88602176"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1681,
+          "entity_id": "0add067c3020c556399e33dc88602176"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1681,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.7,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1681,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "都市森野秘境，适合漫步",
+              "evidence": "都市森野秘境"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2554,
+          "canonical_place_id": 1681,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 朝阳公园",
+          "evidence_summary": "都市森野秘境，适合漫步"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1681,
+          "city": "成都",
+          "name_keys": [
+            "朝阳公园"
+          ],
+          "entity_ids": [
+            "0add067c3020c556399e33dc88602176"
+          ],
+          "source_hash": "da2f7433bd513e30b58025842c89a216ee376471f09c8611186b786e506ec799",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1681",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3493
+              ],
+              "sourcePlaceIds": [
+                1681
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "0add067c3020c556399e33dc88602176"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3493,
+          "scope_place_id": 1681,
+          "entity_id": null,
+          "input_hash": "0a0bd467fbaa14962e4d7f7ee17cadde28b8b553dd0bc2041155bbb6f5bed662",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1681"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "da2f7433bd513e30b58025842c89a216ee376471f09c8611186b786e506ec799",
+        "mentions": [
+          {
+            "mentionId": 3493,
+            "inputHash": "0a0bd467fbaa14962e4d7f7ee17cadde28b8b553dd0bc2041155bbb6f5bed662"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2442,
+          "fingerprint": "50b1e08e34b2f098cb97a5cb8ed14c7c0e1a7ce1d2b8bfa91d25c3baa15110a5",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "0a0bd467fbaa14962e4d7f7ee17cadde28b8b553dd0bc2041155bbb6f5bed662",
+            "mentionId": 3493,
+            "scopePlaceIds": [
+              1681
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "f0ebebda2c11e93de3edb10d59ee9566",
+          "city": "成都",
+          "canonical_name": "蓝色港湾",
+          "primary_place_id": 1682,
+          "aliases": [
+            "蓝色港湾"
+          ],
+          "legacy_ids": [
+            "f0ebebda2c11e93de3edb10d59ee9566"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1682,
+          "entity_id": "f0ebebda2c11e93de3edb10d59ee9566"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1682,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.5,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1682,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "欧式水岸风情，适合逛街拍照",
+              "evidence": "欧式水岸风情"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2555,
+          "canonical_place_id": 1682,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 蓝色港湾",
+          "evidence_summary": "欧式水岸风情，适合逛街拍照"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1682,
+          "city": "成都",
+          "name_keys": [
+            "蓝色港湾"
+          ],
+          "entity_ids": [
+            "f0ebebda2c11e93de3edb10d59ee9566"
+          ],
+          "source_hash": "b12fcb11db15acf20fb565fd0683c3d89c8a2d3e1daf5702736d0d01c357144b",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1682",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3494
+              ],
+              "sourcePlaceIds": [
+                1682
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "f0ebebda2c11e93de3edb10d59ee9566"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3494,
+          "scope_place_id": 1682,
+          "entity_id": null,
+          "input_hash": "d1c8fbc089254346a002ec762f2c59d78b963c42bd3a0a8ceae6db769520b86a",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1682"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "b12fcb11db15acf20fb565fd0683c3d89c8a2d3e1daf5702736d0d01c357144b",
+        "mentions": [
+          {
+            "mentionId": 3494,
+            "inputHash": "d1c8fbc089254346a002ec762f2c59d78b963c42bd3a0a8ceae6db769520b86a"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2479,
+          "fingerprint": "865f61b4b1132bc45a1feefb67a78419f6b72b4cf39a38ff662ebdc5fd5368ea",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "d1c8fbc089254346a002ec762f2c59d78b963c42bd3a0a8ceae6db769520b86a",
+            "mentionId": 3494,
+            "scopePlaceIds": [
+              1682
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "b5e241e515a5ac5b6af4a42bf66d9ec3",
+          "city": "成都",
+          "canonical_name": "亮马河",
+          "primary_place_id": 1683,
+          "aliases": [
+            "亮马河"
+          ],
+          "legacy_ids": [
+            "b5e241e515a5ac5b6af4a42bf66d9ec3"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1683,
+          "entity_id": "b5e241e515a5ac5b6af4a42bf66d9ec3"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1683,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.6,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1683,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "河畔风光优美，适合慢行",
+              "evidence": "沿亮马河慢行"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2556,
+          "canonical_place_id": 1683,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 亮马河",
+          "evidence_summary": "河畔风光优美，适合慢行"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1683,
+          "city": "成都",
+          "name_keys": [
+            "亮马河"
+          ],
+          "entity_ids": [
+            "b5e241e515a5ac5b6af4a42bf66d9ec3"
+          ],
+          "source_hash": "dd3a20c77c93240879fd79a764b4b1914b0953414d682ba075df3047bd9f2d70",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1683",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3495
+              ],
+              "sourcePlaceIds": [
+                1683
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "b5e241e515a5ac5b6af4a42bf66d9ec3"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3495,
+          "scope_place_id": 1683,
+          "entity_id": null,
+          "input_hash": "5b15a40c882efa6dffac15565765cc21ed5309b20f2a8fb1596aeecf57258cd1",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1683"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "dd3a20c77c93240879fd79a764b4b1914b0953414d682ba075df3047bd9f2d70",
+        "mentions": [
+          {
+            "mentionId": 3495,
+            "inputHash": "5b15a40c882efa6dffac15565765cc21ed5309b20f2a8fb1596aeecf57258cd1"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2517,
+          "fingerprint": "52a660b77958ea49e306b68758b8b10238e6d13bbac83abd21221ad6a89ac731",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "5b15a40c882efa6dffac15565765cc21ed5309b20f2a8fb1596aeecf57258cd1",
+            "mentionId": 3495,
+            "scopePlaceIds": [
+              1683
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "7c813cbbecf76ac993626a60efe3ce5f",
+          "city": "成都",
+          "canonical_name": "三里屯",
+          "primary_place_id": 1684,
+          "aliases": [
+            "三里屯"
+          ],
+          "legacy_ids": [
+            "7c813cbbecf76ac993626a60efe3ce5f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1684,
+          "entity_id": "7c813cbbecf76ac993626a60efe3ce5f"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1684,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.8,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1684,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "时尚潮流地标，适合打卡",
+              "evidence": "解锁时尚潮流地标"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2557,
+          "canonical_place_id": 1684,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 三里屯",
+          "evidence_summary": "时尚潮流地标，适合打卡"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1684,
+          "city": "成都",
+          "name_keys": [
+            "三里屯"
+          ],
+          "entity_ids": [
+            "7c813cbbecf76ac993626a60efe3ce5f"
+          ],
+          "source_hash": "fe540efbd31630b81307e519d581113e502949751e1c20d01002936a79acc7c5",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1684",
+          "evidence": [
+            {
+              "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+              "kind": "reviewed_wrong_city_source",
+              "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+              "noteId": 759,
+              "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+              "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+              "mentionIds": [
+                3496
+              ],
+              "sourcePlaceIds": [
+                1684
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "7c813cbbecf76ac993626a60efe3ce5f"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3496,
+          "scope_place_id": 1684,
+          "entity_id": null,
+          "input_hash": "b54a451e50a9499e48f67aa64507503e19aad08aae4da1acb493f58acf7c3e23",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-29-wrongcity-1684"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "fe540efbd31630b81307e519d581113e502949751e1c20d01002936a79acc7c5",
+        "mentions": [
+          {
+            "mentionId": 3496,
+            "inputHash": "b54a451e50a9499e48f67aa64507503e19aad08aae4da1acb493f58acf7c3e23"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 2556,
+          "fingerprint": "27604ab1e6b98332d01cf9052a1eecf4dd87cad4be8a58e99d8123c0c1509aa9",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "b54a451e50a9499e48f67aa64507503e19aad08aae4da1acb493f58acf7c3e23",
+            "mentionId": 3496,
+            "scopePlaceIds": [
+              1684
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

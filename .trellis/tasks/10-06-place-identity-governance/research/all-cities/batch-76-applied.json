@@ -1,0 +1,68 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "北京"
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "0854db5911778c6722637d896e9c2904",
+          "city": "北京",
+          "canonical_name": "国子监",
+          "primary_place_id": 764,
+          "aliases": [
+            "国子监"
+          ],
+          "legacy_ids": [
+            "0854db5911778c6722637d896e9c2904"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "recommendationPolicy": "resolved_attraction_mentions_v1"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "resolved_identity_recommendation_score",
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-06.json",
+              "snapshotSha256": "85cb52a70a463e8f4d558d7bb6d8c093e037a0fc0fdef64a873467235d64272e",
+              "mentionIds": [
+                1938,
+                2103,
+                2242,
+                2716,
+                2909,
+                4268,
+                4487,
+                4570,
+                5181
+              ],
+              "scoreBefore": 31.55,
+              "scoreAfter": 26.44,
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 764,
+          "entity_id": "0854db5911778c6722637d896e9c2904"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "only1SelectedAttractionsChanged": true,
+    "rawSourcesPreserved": true,
+    "resolvedMentionInputsUnchanged": true
+  }
+}

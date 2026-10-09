@@ -1,0 +1,125 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "bdfc00ec5b07091307d16cbc82ac7657249680a1e3b40bf69dbb482f387965a2",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "经三路爱心红绿灯"
+   ],
+   "mentions": [
+    {
+     "mentionId": 12776,
+     "noteId": 2797,
+     "inputHash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a",
+     "textHash": "8dea1677404eff3326dcd80069c50197fe246492a9dc574fe34d42880a7f0a8b",
+     "textLength": 736,
+     "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+     "revision": 4,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+     "revision": 4,
+     "canonicalName": "经三路爱心红绿灯",
+     "aliases": [
+      "经三路爱心红绿灯"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "ce733b67e45f0d657e53ff9bff8cbbce",
+   "name": "经三路爱心红绿灯",
+   "category": "文化",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "photo_spot",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-08T18:43:54.440161+00:00"
+    },
+    "originalName": "经三路爱心红绿灯",
+    "openHours": {
+     "version": 2,
+     "subject": "经三路爱心红绿灯",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12776,
+      "noteId": 2797,
+      "inputHash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+     "revision": 4,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+     "canonicalName": "经三路爱心红绿灯",
+     "revision": 4,
+     "kind": "same_entity",
+     "memberNames": [
+      "经三路爱心红绿灯"
+     ],
+     "memberIds": [
+      "ce733b67e45f0d657e53ff9bff8cbbce"
+     ]
+    },
+    "aliases": [
+     "经三路爱心红绿灯"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": []
+  }
+ ]
+}

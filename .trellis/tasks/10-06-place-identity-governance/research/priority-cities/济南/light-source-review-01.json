@@ -1,0 +1,63 @@
+{
+  "city": "济南",
+  "batch": 46,
+  "sourcePacket": "priority-cities/济南/commercial-source-packet-01.json",
+  "sourceId": 5970,
+  "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+  "mentionId": 12776,
+  "noteId": 2797,
+  "inputHash": "0678fe14ef5aae1dd8a2367cdd65d783c0eb247f20adc5d6f20ea303fea2602a",
+  "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+  "subjectAnchor": {
+    "kind": "qualified_heading",
+    "subject": "爱心红绿灯",
+    "qualifier": "经三路"
+  },
+  "factExclusions": {
+    "reason": {
+      "reason": "subject_mismatch",
+      "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+      "subjectAnchor": {
+        "kind": "qualified_heading",
+        "subject": "爱心红绿灯",
+        "qualifier": "经三路"
+      }
+    },
+    "evidence_text": {
+      "reason": "subject_mismatch",
+      "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+      "subjectAnchor": {
+        "kind": "qualified_heading",
+        "subject": "爱心红绿灯",
+        "qualifier": "经三路"
+      }
+    },
+    "place_content": {
+      "reason": "subject_mismatch",
+      "quote": "1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；",
+      "subjectAnchor": {
+        "kind": "qualified_heading",
+        "subject": "爱心红绿灯",
+        "qualifier": "经三路"
+      }
+    }
+  },
+  "conclusion": "明确红绿灯主体与稳定名保持，删除把周边夹心胡同投到灯本体的三描述字段；空内容不回填街区或道路资料。",
+  "rawFactValue": {
+    "placeContent": {
+      "version": 1,
+      "highlights": [
+        {
+          "text": "有爱心红绿灯和夹心胡同",
+          "quote": "爱心红绿灯和夹心胡同都在这里"
+        }
+      ]
+    }
+  },
+  "originalNoteReadInFull": true,
+  "identityConfirmed": true,
+  "locationPending": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

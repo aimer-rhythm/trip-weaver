@@ -1,0 +1,23 @@
+{
+  "batch": 61,
+  "readOnly": true,
+  "businessMutations": false,
+  "adoptedReferences": ["built-place-reference-01.json"],
+  "findings": {
+    "山东大厦": "已抓取官网https://www.sdhotel.com.cn/contact.html正文，明确中国山东济南马鞍山路2-1号及酒店服务。仅补证现有酒店地址，不证明中庭独立主体、游客开放许可或精确坐标；本批只读保留。",
+    "月下观棠": "搜索05主回答只返回准备搜索，补充来源是其他汉服店及街区报道，没有同店地址正文。现有note2817图片文字分析含汉服妆造及店名，但本批不据此猜具体店型或门牌；店与附近墙边界待核。",
+    "夹心胡同": "搜索04和08超时；搜索02百科/日报摘要提创意场景，未fetch不能据此裁定店铺与胡同/装置关系。既有note2566路线文字及note2856旧图片文字的DIY仍不足证明某店完整边界；不改shop。",
+    "明珠天地C": "搜索01/03/06/07主要返回准备搜索文本或不相干候选。明湖天地是检索假设，不是纠错证据；明珠国际商务港、明珠小区、十八楼C座不采用。原始名称未擅改，旧点仍未验证。",
+    "济南文字墙": "修订仅依赖完整原笔记2817路线与现有图文分析，非公开网页的同名字串。note2566喜艾旁墙及note2817第③站月下观棠附近几面墙均不自动绑定到第②站。",
+    "淘子外单": "原文明确列三分店但未给到访分店，无需以公开候选替代原文。全部原始文字保持，只将唯一提及待审。"
+  },
+  "searchFiles": ["built-place-search-01.json", "built-place-search-02.json", "built-place-search-03.json", "built-place-search-04.json", "built-place-search-05.json", "built-place-search-06.json", "built-place-search-07.json", "built-place-search-08.json"],
+  "failedSearches": ["built-place-search-04.json", "built-place-search-08.json"],
+  "searchLimitation": "其余六次ok返回不等于语义证据完成；主回答只是搜索意向，补充链接仍需fetch。仅官网已fetch文本用于历史地址补证。",
+  "commands": [
+    "smart-search search <各工件query> --extra-sources 2或3 --timeout 90 --format json --output <工件路径>；03/04/05另带--stream",
+    "smart-search fetch https://www.sdhotel.com.cn/contact.html --format json --output priority-cities/济南/built-place-reference-01.json"
+  ],
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false
+}

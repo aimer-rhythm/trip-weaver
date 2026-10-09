@@ -1,0 +1,116 @@
+{
+ "_comment": "重庆社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-07）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "重庆",
+ "generatedAt": "2026-10-07",
+ "count": 1,
+ "activeCount": 1,
+ "places": [
+  {
+   "id": "2f6c627fdf341bf54b049f3c0ae84d74",
+   "name": "呼归石公交站对面",
+   "category": "景点",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+    "adcode": "",
+    "mentionCount": 3,
+    "recommendScore": 11.5,
+    "topReasons": [
+     "对面是拍照机位",
+     "公交站对面是拍照点，可拍南滨路",
+     "拍摄南滨路夜景的好机位"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T01:10:27.400897+00:00"
+    },
+    "originalName": "呼归石公交站对面",
+    "openHours": {
+     "version": 2,
+     "subject": "呼归石公交站对面",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 1615,
+      "noteId": 7,
+      "inputHash": "e4dfc226fbea803c535fe9eb8006ec9858a5cde9ba63c1430b59123dc1567cf3"
+     },
+     {
+      "mentionId": 534,
+      "noteId": 7,
+      "inputHash": "85f0f678414cce0ca5724cef48877d2624a708572d6d8c50ca780643848849c0"
+     },
+     {
+      "mentionId": 1119,
+      "noteId": 7,
+      "inputHash": "fdd99f29aca56095459cbc47dfa8ed5117116bcb843030a737daeb23a46b85ad"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "2f6c627fdf341bf54b049f3c0ae84d74",
+     "revision": 5,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "2f6c627fdf341bf54b049f3c0ae84d74",
+     "canonicalName": "呼归石公交站对面",
+     "revision": 5,
+     "kind": "same_entity",
+     "memberNames": [
+      "呼归石公交站对面"
+     ],
+     "memberIds": [
+      "2f6c627fdf341bf54b049f3c0ae84d74",
+      "79afbf6edf8899c29d2eb71edf8c3c81"
+     ]
+    },
+    "aliases": [
+     "呼归石公交站对面"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "对面是拍照机位",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "公交站对面是拍照点，可拍南滨路",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "拍摄南滨路夜景的好机位",
+     "sourceUrl": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "key": "top30-20261009-batch-75-user-tiananmen-square",
+    "city": "北京",
+    "entityId": "21152db5b05aff609cffa2bee47f16b4",
+    "mergeEntityIds": [
+      "298e600416cbc4f85119932e8a3c966c"
+    ],
+    "canonicalName": "天安门广场",
+    "aliases": [
+      "天安门",
+      "天安门广场"
+    ],
+    "expectedRevisions": {
+      "21152db5b05aff609cffa2bee47f16b4": 2,
+      "298e600416cbc4f85119932e8a3c966c": 2
+    },
+    "overrides": {
+      "recommendationPolicy": "resolved_attraction_mentions_v1"
+    },
+    "evidence": [
+      {
+        "kind": "explicit_user_identity_review",
+        "date": "2026-10-09",
+        "quote": "天安门与天安门广场合并为一个地点",
+        "conclusion": "依用户明确审核按行程地点合并两条现行根，主名天安门广场，天安门为检索别名；不是地理上宣称城楼建筑等于广场。仅合并指定两根，城楼、升降旗、金水桥、安检口、地下通道与地铁口不并入。"
+      },
+      {
+        "kind": "frozen_live_state",
+        "snapshotSha256": "ff6e8f0d7a6f4e4d4969a990a8d929550ff9e65141b0d502d7ff86027d719853",
+        "sourcePlaceIds": [
+          690,
+          1163
+        ],
+        "mentionIds": [
+          1854,
+          2343,
+          2391,
+          2494,
+          2618,
+          2658,
+          2793,
+          2852,
+          2956,
+          3019,
+          3076,
+          3122,
+          3146,
+          3170,
+          3180,
+          3290,
+          3349,
+          3359,
+          4251,
+          4332,
+          4367,
+          4468,
+          4533,
+          4560,
+          4851,
+          4955,
+          5031,
+          5034,
+          5136,
+          5168,
+          5204,
+          5264
+        ],
+        "conclusion": "原始来源、提及与历史引用保留，重算唯一提及与笔记分数，不相加两个旧分数；原主源1163的坐标及网页介绍继续优先。"
+      }
+    ]
+  }
+]

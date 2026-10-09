@@ -1,0 +1,52 @@
+[
+  {
+    "key": "all-cities-20261009-batch-53-source-5474-branch-name",
+    "city": "济南",
+    "entityId": "cc3ebff96b9f814d82ef808324a42400",
+    "expectedRevisions": {
+      "cc3ebff96b9f814d82ef808324a42400": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "鑫龙火锅（北园大街店）",
+    "aliases": [
+      "鑫龙火锅",
+      "鑫龙火锅（北园大街店）"
+    ],
+    "overrides": {},
+    "evidence": [
+      {
+        "kind": "restore_original_branch_name",
+        "file": "priority-cities/济南/food-branches-source-review-01.json",
+        "originalMentionIds": [
+          11709
+        ],
+        "conclusion": "恢复原提及完整分店名并保留稳定ID/旧裸名兼容；不修改原地址坐标，也不将保留旧值称为本次位置核验通过。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-53-source-5433-branch-name",
+    "city": "济南",
+    "entityId": "97c845bd4afbe220afe8545ed5030c95",
+    "expectedRevisions": {
+      "97c845bd4afbe220afe8545ed5030c95": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "七九刘家烧烤(纬九路店)",
+    "aliases": [
+      "七九刘家烧烤",
+      "七九刘家烧烤(纬九路店)"
+    ],
+    "overrides": {},
+    "evidence": [
+      {
+        "kind": "restore_original_branch_name",
+        "file": "priority-cities/济南/food-branches-source-review-01.json",
+        "originalMentionIds": [
+          12886
+        ],
+        "conclusion": "恢复原提及完整分店名并保留稳定ID/旧裸名兼容；不修改原地址坐标，也不将保留旧值称为本次位置核验通过。"
+      }
+    ]
+  }
+]

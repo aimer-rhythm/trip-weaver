@@ -1,0 +1,47 @@
+{
+  "readOnly": true,
+  "tiananmen": {
+    "checks": {
+      "resolve:天安门:nameOnly": true,
+      "resolve:天安门:298e600416cbc4f85119932e8a3c966c": true,
+      "resolve:天安门:21152db5b05aff609cffa2bee47f16b4": true,
+      "resolve:天安门广场:nameOnly": true,
+      "resolve:天安门广场:298e600416cbc4f85119932e8a3c966c": true,
+      "resolve:天安门广场:21152db5b05aff609cffa2bee47f16b4": true,
+      "independentRowsUnchanged": true,
+      "onlyOneExportedRoot": true,
+      "noInheritedComplexComponents": true,
+      "noTowerStructuredMondayClosure": true,
+      "relationEndpointsValid": true,
+      "noSelfLoops": true,
+      "noAbsorbedEndpoint": true,
+      "liveFactsUnified": true,
+      "noTowerMondayClosure": true
+    },
+    "passed": true,
+    "independentNames": [
+      "天安门升旗",
+      "天安门城楼",
+      "天安门广场西广场01安检口",
+      "天安门城楼外金水桥",
+      "内金水桥",
+      "天安门广场地下通道",
+      "天安门东地铁口",
+      "天安门降旗"
+    ],
+    "relationCount": 140,
+    "facts": {
+      "id": "21152db5b05aff609cffa2bee47f16b4",
+      "openTime": "00:00-23:59"
+    }
+  },
+  "jingshan": {
+    "expected": "石景山公园不能全局解析成景山公园",
+    "actual": {
+      "status": "resolved",
+      "canonicalPlaceId": "981bfe8125feb36e052dcfee1e0df8b5"
+    },
+    "defectReproduced": true,
+    "fixed": false
+  }
+}

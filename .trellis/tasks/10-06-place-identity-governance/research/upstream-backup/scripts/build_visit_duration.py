@@ -1,0 +1,156 @@
+"""从笔记正文抽取游览时长事实，聚合写入 canonical_place.typical_visit_minutes。
+
+策略（对齐 Yuntu xhs_median）：
+1. 笔记正文切句
+2. 句子须含时长提示词（逛/玩/停留/打卡…）且能抽出时长
+3. 句中出现的地点名 → 建立 (地点, 分钟) 关联
+4. 按 normalized_name 聚合取中位数 → 写 canonical_place
+
+用法:
+  python scripts/build_visit_duration.py --dry-run            # 只看结果不写库
+  python scripts/build_visit_duration.py --city 杭州
+  python scripts/build_visit_duration.py                      # 不加 --city 则处理全库
+"""
+
+import argparse
+import asyncio
+import re
+import sys
+from collections import defaultdict
+
+sys.path.insert(0, ".")
+sys.path.insert(0, "vendor/spider_xhs")
+
+from sqlalchemy import select
+
+from app.clean.duration import aggregate_minutes, has_duration_hint, normalize_visit_duration
+from app.db import SessionFactory
+from app.models import CanonicalPlace, PlaceMention, RawNote
+
+_SENT_SPLIT = re.compile(r"[。！？!?；;\n]+")
+
+# 通勤/交通语境：句里的时长常是路程时间，不是游览时间
+_COMMUTE_WORDS = (
+    "步行", "走路", "不行", "打车", "地铁", "公交", "开车", "驾车",
+    "车程", "骑行", "轻轨", "自驾", "坐车", "换乘", "导航",
+)
+
+# 地点名前后多少字符内出现时长表达才认为相关
+_WINDOW = 20
+
+
+async def main() -> None:
+    ap = argparse.ArgumentParser(description="从笔记正文/图片文字抽游览时长，聚合写入 canonical_place")
+    ap.add_argument("--city", default=None, help="只处理该城市（默认全库）")
+    ap.add_argument("--dry-run", action="store_true", help="只看结果不写库")
+    args = ap.parse_args()
+    city = args.city
+    if not city:
+        print("[警告] 未指定 --city，将处理全部城市")
+
+    async with SessionFactory() as s:
+        note_cond = [(RawNote.desc.is_not(None)) | (RawNote.img_analysis.is_not(None))]
+        if city:
+            note_cond.append(RawNote.city == city)
+        notes = (await s.execute(select(RawNote.id, RawNote.desc, RawNote.img_analysis).where(*note_cond))).all()
+        mention_stmt = select(
+            PlaceMention.raw_note_id,
+            PlaceMention.name,
+            PlaceMention.normalized_name,
+            PlaceMention.place_type,
+        ).join(RawNote, RawNote.id == PlaceMention.raw_note_id)
+        if city:
+            mention_stmt = mention_stmt.where(RawNote.city == city)
+        mentions = (await s.execute(mention_stmt)).all()
+        place_stmt = select(
+            CanonicalPlace.id, CanonicalPlace.name, CanonicalPlace.normalized_name, CanonicalPlace.place_type
+        )
+        if city:
+            place_stmt = place_stmt.where(CanonicalPlace.city == city)
+        places = (await s.execute(place_stmt)).all()
+
+    by_note: dict[int, list[tuple[str, str, str]]] = defaultdict(list)
+    for nid, name, norm, ptype in mentions:
+        by_note[nid].append((name, norm, ptype))
+
+    facts: dict[str, list[int]] = defaultdict(list)
+    samples: list[str] = []
+
+    for nid, desc, img_analysis in notes:
+        note_mentions = by_note.get(nid) or []
+        if not note_mentions:
+            continue
+        # 文本源：正文 + 图片提取的 tips/文字（图片常有「建议游玩X小时」）
+        texts: list[str] = [desc or ""]
+        for item in img_analysis or []:
+            if item.get("has_text"):
+                texts.append(str(item.get("text_content") or ""))
+                ki = item.get("key_info") or {}
+                texts.extend(str(v) for v in ki.values() if v)
+        for text in texts:
+            for sent in _SENT_SPLIT.split(text):
+                sent = sent.strip()
+                if not sent or not has_duration_hint(sent):
+                    continue
+                # 逐个地点在局部窗口内找时长（避免一句话多个地点互相污染）
+                for name, norm, ptype in note_mentions:
+                    if not name or name not in sent:
+                        continue
+                    idx = sent.find(name)
+                    window = sent[max(0, idx - _WINDOW) : idx + len(name) + _WINDOW]
+                    if any(w in window for w in _COMMUTE_WORDS):
+                        continue
+                    # 窗口内出现其他地点名 → 时长可能是整段行程的，不可信
+                    if any(o and o != name and o in window for o, _n, _p in note_mentions):
+                        continue
+                    minutes = normalize_visit_duration(window, place_name=name, place_type=ptype)
+                    if minutes is None:
+                        continue
+                    facts[norm].append(minutes)
+                    if len(samples) < 15:
+                        samples.append(f"{name} = {minutes}分  ←  「{window}」")
+
+    print(f"命中地点 {len(facts)} 个，事实 {sum(len(v) for v in facts.values())} 条\n")
+    print("样例:")
+    for s in samples:
+        print(f"  {s}")
+
+    # 聚合
+    ptype_by_norm = {norm: ptype for _pid, _name, norm, ptype in places}
+    name_by_norm = {norm: name for _pid, name, norm, _ptype in places}
+    results: dict[str, tuple[int, int]] = {}
+    for norm, minutes_list in facts.items():
+        agg = aggregate_minutes(
+            minutes_list,
+            place_name=name_by_norm.get(norm, ""),
+            place_type=ptype_by_norm.get(norm),
+        )
+        if agg:
+            results[norm] = agg
+
+    print(f"\n可写入 canonical 的地点: {len(results)} 个")
+    for norm, (minutes, count) in sorted(results.items(), key=lambda x: -x[1][1])[:20]:
+        print(f"  {name_by_norm.get(norm, norm)}: {minutes} 分（{count} 条事实）")
+
+    if args.dry_run:
+        print("\n[dry-run] 未写库")
+        return
+
+    written = 0
+    async with SessionFactory() as s:
+        for norm, (minutes, _count) in results.items():
+            cond = [CanonicalPlace.normalized_name == norm]
+            if city:
+                cond.append(CanonicalPlace.city == city)
+            place = await s.scalar(select(CanonicalPlace).where(*cond))
+            if place is None:
+                continue
+            place.typical_visit_minutes = minutes
+            place.typical_visit_source = "xhs_median"
+            written += 1
+        await s.commit()
+    print(f"\n已写入 {written} 个地点的 typical_visit_minutes（source=xhs_median）")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

@@ -1,0 +1,99 @@
+{
+  "batch": 70,
+  "at": "2026-10-09T03:21:37.380Z",
+  "stats": {
+    "positive": 339,
+    "boundaries": 113,
+    "withdrawals": 52,
+    "pending": 314
+  },
+  "rootTypecheck": {
+    "passed": true,
+    "terminalSession": 47545,
+    "provenance": "前一连续会话实际命令退出0，本次未重复运行"
+  },
+  "extendedTypecheck": {
+    "passed": true,
+    "terminalSession": 6931,
+    "provenance": "最终consumer修正后实际命令退出0，本次未重复运行"
+  },
+  "installedManifestHashesVerified": 66,
+  "installedFilesChanged": 3,
+  "upstreamTests": {
+    "passed": 752,
+    "deselected": 1
+  },
+  "stagedPlanningTests": 2,
+  "installedPlanningTests": 2,
+  "newMigration": false,
+  "sourceFile": "all-cities/batch-70-source.json",
+  "sourceSha256": "21f57b6b992060060171b5f474872c968443148fc616e62ba79e155386b2c597",
+  "exportSha256": "1aa2c7b74c7e64868511ec8f0a614857a52c11d38a5cd81a41cfe74058f3010f",
+  "relationSha256": "b96811192f45ccbe6efddf38685777ba0cda2beaa66ecf74f9f83ef5715f01e9",
+  "consumptionFile": "all-cities/batch-70/sync-01/jinli-consumption-1791515645917.json",
+  "postFile": "all-cities/batch-70/sync-01/post-import-check-1791512691144.json",
+  "dualFile": "all-cities/batch-70/sync-01/preview-成都/preview-1791512338639.json",
+  "isolatedFile": "all-cities/batch-70/scope-preview-1791512008187072400/report.json",
+  "inputsFile": "priority-cities/成都/jinli-inputs-check-01.json",
+  "actualConsumptionTestPassed": true,
+  "reverseRollback": true,
+  "scopesAdded": 1,
+  "assignmentsAdded": 17,
+  "confirmedAdded": 16,
+  "pendingAdded": 1,
+  "categoryChanges": 1,
+  "coordinatesCleared": 0,
+  "preciseLocationsResolved": 0,
+  "chengdu": {
+    "primary": 113,
+    "dependencies": 3,
+    "fullyReviewed": 0,
+    "remaining": 113,
+    "partialScope": 4,
+    "partialLocation": 4,
+    "partialCategory": 1,
+    "otherPending": 104,
+    "governedScopeMentions": 25,
+    "pendingScopeMentions": 1,
+    "cityWideAssignments": 64
+  },
+  "jinanLedgerPreserved": "review-45",
+  "currentScopeReviewRows": 184,
+  "unappliedFindings": 5,
+  "oldCanonicalMediaProbes": 372,
+  "targetFactMedia": [
+    {
+      "name": "武侯祠",
+      "galleryCount": 0,
+      "hasCover": false,
+      "actualLookupPhotos": 0
+    },
+    {
+      "name": "锦里",
+      "galleryCount": 0,
+      "hasCover": false,
+      "actualLookupPhotos": 0
+    },
+    {
+      "name": "人民公园",
+      "galleryCount": 1,
+      "hasCover": true,
+      "actualLookupPhotos": 0
+    }
+  ],
+  "removedFactNameKeys": [],
+  "removedComponentIntentNameKeys": [
+    "锦里古街主巷"
+  ],
+  "oldNameMockEnqueues": {
+    "before": 358,
+    "after": 357
+  },
+  "subareaUnknownNameMockEnqueues": 1,
+  "actualEnqueues": 0,
+  "fullReviewPassed": false,
+  "imageComparison": "deferred_by_user",
+  "mapCredentialStatus": "rotation_required",
+  "userAcceptance": false,
+  "failures": []
+}

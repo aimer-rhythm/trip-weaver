@@ -1,0 +1,252 @@
+[
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-43",
+    "city": "云南",
+    "reviewFingerprint": "de8e546c4611eab5e7aaa35104747cd324f3eaff4c8535533ec317edb21502b9",
+    "expectedRevisions": {
+      "2649764a503c0414f5ffc07caee3b637": 1,
+      "6917bb1c3fdc732d8fe2529f18e6b701": 1
+    },
+    "verdict": "distinct",
+    "explanation": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          43
+        ],
+        "conclusion": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。",
+        "sourcePlaceIds": [
+          "5054",
+          "4924"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10763
+        ],
+        "conclusion": "10763是未给店名的第四家民宿推荐，写步行6分钟抵达大理古城；住宿推荐不是古城整体。此结论只拒绝同义，不表示已核实该民宿的具体店名或位置。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-44",
+    "city": "云南",
+    "reviewFingerprint": "1be532dd85bfba248dcd35843dbc71eb4b0c0d1281779961f02807f8236830e1",
+    "expectedRevisions": {
+      "538ca1ae0c137812b40b42728c0eedc8": 1,
+      "e6e0180444f75cdebb4f45a6d519e0c0": 1
+    },
+    "verdict": "distinct",
+    "explanation": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          44
+        ],
+        "conclusion": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。",
+        "sourcePlaceIds": [
+          "5053",
+          "4927"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10762
+        ],
+        "conclusion": "10762是未给店名的第三家民宿推荐，写步行200米抵达双廊古镇，不能作为古镇全域别名。原地图官渡古镇地址与大理双廊冲突，不能用它推断店铺身份；具体住宿仍未核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-51",
+    "city": "云南",
+    "reviewFingerprint": "9b1c7edd9b9693272d5acb503ae2c4bbfc8565a05e10728efee3a43b329103da",
+    "expectedRevisions": {
+      "29445fe501c07369fb84abcc5714ce28": 1,
+      "7e2d5d215ce2c353c7751dc5b44aab39": 1
+    },
+    "verdict": "distinct",
+    "explanation": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          51
+        ],
+        "conclusion": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。",
+        "sourcePlaceIds": [
+          "4993",
+          "5040"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10704,
+          10787
+        ],
+        "conclusion": "10704明确丽江忠义市场的小黑包浆豆腐摊，10787的大理清单只写包浆豆腐小吃且无店名；跨城市且对象粒度不同，不得按食物名吞并具体摊店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-53",
+    "city": "云南",
+    "reviewFingerprint": "aa0149fa372e437a2b9280b977ac8e3e962c0af56e32349c99150cd3d5450c98",
+    "expectedRevisions": {
+      "3ba0e9c019344982561aa2cfd2078be0": 1,
+      "f01c01b1f44c7063dbe1a12d0ee9ba51": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          53
+        ],
+        "conclusion": "10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。",
+        "sourcePlaceIds": [
+          "5048",
+          "5044"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10758,
+          10668
+        ],
+        "conclusion": "10758正文只说落地昆明、标签昆明老街；10668只给市区和品牌名称。八/8是名称变体，但两篇未给门牌或分店，缺同一门店证据，保留待审。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-54",
+    "city": "云南",
+    "reviewFingerprint": "4a0c0b09f3eb32d053f5c5898a9d59f43d72f8e62a0f76d7e41319b7f36a4523",
+    "expectedRevisions": {
+      "4ffd073265f4193c5490c5ea666c29ee": 1,
+      "f01c01b1f44c7063dbe1a12d0ee9ba51": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          54
+        ],
+        "conclusion": "10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。",
+        "sourcePlaceIds": [
+          "5159",
+          "5044"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10788,
+          10668
+        ],
+        "conclusion": "10788写8种野菌在昆明老街，10668只说市区门店；品牌和菜单相似不足以核实同一分店，需门牌或可核对的门头图。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-55",
+    "city": "云南",
+    "reviewFingerprint": "428844aea6051c1a677cdafd4191fd908dd83b8a606567113e32ab3c9c092908",
+    "expectedRevisions": {
+      "3ba0e9c019344982561aa2cfd2078be0": 1,
+      "4ffd073265f4193c5490c5ea666c29ee": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          55
+        ],
+        "conclusion": "10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。",
+        "sourcePlaceIds": [
+          "5048",
+          "5159"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10758,
+          10788
+        ],
+        "conclusion": "10758有八种野菌南华/八种野菌两标签，10788说昆明老街，但均缺分店门牌；品牌名称同义不直接推出地点实体同义，继续待审。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-05-v2-review-56",
+    "city": "云南",
+    "reviewFingerprint": "6eaa5731c8235ec9934ad6f71fa0243e024d71c259bf050b34a94a5ca7ca704c",
+    "expectedRevisions": {
+      "9b181364771b97b8fb2e9482c88d812b": 1,
+      "e489ce9144a67fbbdadd1c5d78e4fdba": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          56
+        ],
+        "conclusion": "10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。",
+        "sourcePlaceIds": [
+          "5120",
+          "5055"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/yunnan-batch03-context.json",
+        "sha256": "ee8954a4a193307b9a289252957b64985ef0dcdcbb6c107f660fb3852152e288",
+        "mentionIds": [
+          10643,
+          10797
+        ],
+        "conclusion": "10643把古城北门集市和出巷右侧三月街同时描述，10797只写北门菜场且步行洱海叙述不精确；不能确认前者是北门菜市场还是其他赶集点，需可靠位置证据。"
+      }
+    ]
+  }
+]

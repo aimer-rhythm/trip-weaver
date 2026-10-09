@@ -1,0 +1,113 @@
+[
+  {
+    "key": "all-cities-20261009-batch-57-source-5404-scope",
+    "city": "济南",
+    "sourcePlaceId": 5404,
+    "expectedSourceHash": "43302c903632a142ec023803ed6929e2afcad9c2fa7827a8084bbb6c12a70b94",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "84929fb3085880c48c0cebb71aae3ad4": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11537,
+        "inputHash": "f8171c9947dd682af71ead1c8ffde2a1331bd26dcb19a7aecfc247898b9b3399",
+        "entityId": "84929fb3085880c48c0cebb71aae3ad4"
+      },
+      {
+        "mentionId": 12798,
+        "inputHash": "a213fa5b54ddb7e2519dae51992b9f84894779eb2e87879c92914ba5505245b7",
+        "entityId": null
+      },
+      {
+        "mentionId": 12863,
+        "inputHash": "40e526d9bf8e5cc322e7a105b529374979ec831e2aee1382ec46ed373beb638f",
+        "entityId": "84929fb3085880c48c0cebb71aae3ad4"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_branch_scope",
+        "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+        "mentionIds": [
+          11537,
+          12798,
+          12863
+        ],
+        "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-57-source-5441-scope",
+    "city": "济南",
+    "sourcePlaceId": 5441,
+    "expectedSourceHash": "ed9bc21166311176df3f423b7db6af19f869ce62bf91a9c9d8b19969ead1efce",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "58d542ebe18a1dd3505b7cdc60db030c": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11525,
+        "inputHash": "1aef838b61a723e801e1b4fd5c65114bcdffb5d47a8062aa3754fa210d2d6408",
+        "entityId": null
+      },
+      {
+        "mentionId": 11644,
+        "inputHash": "8e1a2d9642ffb30a0bd5ed3da59239edc76dd2facab45718dbecb4673829a40c",
+        "entityId": "58d542ebe18a1dd3505b7cdc60db030c"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_branch_scope",
+        "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+        "mentionIds": [
+          11525,
+          11644
+        ],
+        "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-57-source-5385-scope",
+    "city": "济南",
+    "sourcePlaceId": 5385,
+    "expectedSourceHash": "d7ec8eaf09a21f0171ef4311aa3bd7ad8f0bdb134901eed5b60fc32677efe7fa",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "92a39f8f2d95070cc627828807686bac": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11481,
+        "inputHash": "8a13cda0d8a59b2bb55b9dc1f889f6bce22e43fabfdcadcf7402c26295179b07",
+        "entityId": null
+      },
+      {
+        "mentionId": 11676,
+        "inputHash": "659b6fc27a4cef6bb4962907160f3f9131308ac70f3efd928fdc4073a96679b8",
+        "entityId": "92a39f8f2d95070cc627828807686bac"
+      },
+      {
+        "mentionId": 12741,
+        "inputHash": "68d76af3edaf53533eaa418c7114fff5c48c383733ed797ba58763fae90a95e9",
+        "entityId": null
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_branch_scope",
+        "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+        "mentionIds": [
+          11481,
+          11676,
+          12741
+        ],
+        "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。"
+      }
+    ]
+  }
+]

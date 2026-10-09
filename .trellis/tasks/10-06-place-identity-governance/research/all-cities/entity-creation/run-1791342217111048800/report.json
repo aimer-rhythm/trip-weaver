@@ -1,0 +1,46 @@
+{
+  "isolated": true,
+  "synthetic": true,
+  "createdEntities": true,
+  "city": "新分店-83a2dc7150f84326827017bfbbd5d0f2",
+  "oldIds": [
+    "4700c15413b85c9ad1bbd5e28f3f40c4"
+  ],
+  "targetIds": [
+    "946ecd387a5a472e9f4faa32ec2df798",
+    "eb73f54219b54fa69c5c2bea02fe4265"
+  ],
+  "files": {
+    "before": {
+      "file": "xhs-places-before.json",
+      "sha256": "aa7fd1fa037f99ea6cb5cf0a5e05c19a04a4d8c7cfe1228c5348eed39d9bd031",
+      "active": [
+        "4700c15413b85c9ad1bbd5e28f3f40c4"
+      ]
+    },
+    "assigned": {
+      "file": "xhs-places-assigned.json",
+      "sha256": "e4f9c9506bdcd7197ca1c28d6fbb5cfd1ce62a67c3dd0ce8dfc3dd164081c412",
+      "active": [
+        "946ecd387a5a472e9f4faa32ec2df798",
+        "eb73f54219b54fa69c5c2bea02fe4265"
+      ]
+    },
+    "empty": {
+      "file": "xhs-places-empty.json",
+      "sha256": "b0ccedc4ae5911a92e2a2ba722a5ca651ce881641f1230e385abfa930d15e2a4",
+      "active": []
+    },
+    "restored": {
+      "file": "xhs-places-restored.json",
+      "sha256": "b7d39b01bdbf95538b877f6e23cd8714962aefa5629a98407a71f01ce7b1cedc",
+      "active": [
+        "946ecd387a5a472e9f4faa32ec2df798",
+        "eb73f54219b54fa69c5c2bea02fe4265"
+      ]
+    }
+  },
+  "idempotency": true,
+  "reverseRollback": true,
+  "sourceTextUnchanged": true
+}

@@ -1,0 +1,72 @@
+{
+  "batch": 53,
+  "readOnly": true,
+  "at": "2026-10-08T20:41:33.440Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus"
+  ],
+  "results": [
+    {
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "name": "鑫龙火锅（北园大街店）",
+      "oldName": "鑫龙火锅",
+      "category": "美食",
+      "type": "food",
+      "confirmed": 1,
+      "pending": 3,
+      "locationPreservedNotNewlyVerified": true
+    },
+    {
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "name": "七九刘家烧烤(纬九路店)",
+      "oldName": "七九刘家烧烤",
+      "category": "美食",
+      "type": "food",
+      "confirmed": 2,
+      "pending": 0,
+      "locationPreservedNotNewlyVerified": true
+    }
+  ],
+  "assignmentRows": 278,
+  "pendingMentions": 112,
+  "scopesAdded": 2,
+  "confirmed": 3,
+  "pendingAdded": 3,
+  "coordinatesCleared": 0,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 0,
+  "addressesAdded": 0,
+  "sqlProbes": 4,
+  "boundaryProbes": 18,
+  "realVectorProbes": 2,
+  "graph": 18,
+  "directEdges": 3,
+  "relationEvidenceAndStrengthPreserved": true,
+  "priorReviewRowsPreserved": true,
+  "rawDerivedCachesPreserved": true,
+  "confirmedFactsPreserved": true,
+  "fallbackObservedAtChanges": [],
+  "fallbackObservedAtMeaning": "保留看点的来源日期保持；本批隔离三条未确认分店提及的内容，compiledAt随导出更新。",
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

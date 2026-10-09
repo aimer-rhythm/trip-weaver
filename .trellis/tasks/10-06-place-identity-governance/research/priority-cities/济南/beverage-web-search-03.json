@@ -1,0 +1,74 @@
+{
+  "ok": false,
+  "error_type": "config_error",
+  "error": "No configured main_search provider matches --providers.",
+  "session_id": "9d07bd0920fc",
+  "query": "联网搜索：济南 喜茶 融汇老商埠店 经四路 地址，山耶云耶 马力欧天桥 店内 店外 原始报道",
+  "primary_api_mode": "",
+  "content": "",
+  "sources": [],
+  "sources_count": 0,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [],
+  "extra_sources_count": 0,
+  "source_warning": "",
+  "routing_decision": {},
+  "providers_used": [],
+  "provider_attempts": [],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "elapsed_ms": 2.39,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "minimum_profile_ok": true
+}

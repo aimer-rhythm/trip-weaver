@@ -1,0 +1,219 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "c4a79add36acc872ec97a65e56eb81e6160a30b1bb9e021e190eaceadd10e25a",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "环联1904火车夜市",
+    "环联夜市"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11464,
+     "noteId": 2588,
+     "inputHash": "f59a6ee01b390c97427e38d03c3e3c07754213d34f3d77c62f490c454db24de1",
+     "textHash": "ddbaa7379983ba091a605ee93268df70d7e21d8e5d06da14e2ee7757d33d95b5",
+     "textLength": 882,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11571,
+     "noteId": 2564,
+     "inputHash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11607,
+     "noteId": 2608,
+     "inputHash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604",
+     "textHash": "5195c49e5483cb4b7daf1d1eab77927af2cc36513eabd727abe9492081242e05",
+     "textLength": 940,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12647,
+     "noteId": 2782,
+     "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12825,
+     "noteId": 2564,
+     "inputHash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 3,
+     "canonicalName": "环联1904火车夜市",
+     "aliases": [
+      "环联1904火车夜市",
+      "环联夜市"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "7950bfadd891932d01be8636aba8b51a",
+   "name": "环联1904火车夜市",
+   "category": "购物",
+   "lng": 117.085623,
+   "lat": 36.699241,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "market",
+    "themes": [],
+    "address": "祝舜路555号",
+    "adcode": "",
+    "mentionCount": 4,
+    "recommendScore": 10.75,
+    "topReasons": [
+     "超级大的夜市，有时间可逛"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "超级大的夜市，有时间可逛。",
+     "highlights": [
+      {
+       "text": "超级大的夜市，有时间可逛",
+       "quote": "超级大的夜市，有时间可逛",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:02:22.855979+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T22:01:53.525309+00:00"
+    },
+    "originalName": "环联夜市",
+    "openHours": {
+     "version": 2,
+     "subject": "环联1904火车夜市",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11571,
+      "noteId": 2564,
+      "inputHash": "7f418a2c20fe069d3d7eb7055c2d50fb082905e56766de00804ac1007d9f5761"
+     },
+     {
+      "mentionId": 12647,
+      "noteId": 2782,
+      "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3"
+     },
+     {
+      "mentionId": 12825,
+      "noteId": 2564,
+      "inputHash": "7ac93ec694f867b666ae44fdd726ffb4365cfc5c7ab13ffc1ccf161a57bb725c"
+     },
+     {
+      "mentionId": 11607,
+      "noteId": 2608,
+      "inputHash": "d5a9225aa4feebcf95f8810e34df1e2497849f65f1bfd60c38ce5a370c014604"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "7950bfadd891932d01be8636aba8b51a",
+     "canonicalName": "环联1904火车夜市",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "环联1904火车夜市",
+      "环联夜市"
+     ],
+     "memberIds": [
+      "7950bfadd891932d01be8636aba8b51a",
+      "7e468ac77d040e3ce2acdc0e910a0248"
+     ]
+    },
+    "aliases": [
+     "环联1904火车夜市",
+     "环联夜市"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_warning",
+     "content": "人超级多，可能拥挤。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "超级大的夜市，有时间可逛",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "人超级多，体验可能不佳。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "距离地铁站稍远，交通不便",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69db9ba2000000001b0223c4?xsec_token=ABg3Lch8x4dluI-86PLh77NP7093FbQu1DSxLgc9QuADs=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

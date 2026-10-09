@@ -1,0 +1,61 @@
+{
+  "city": "北京",
+  "before": 140,
+  "after": 140,
+  "directBefore": 36,
+  "directAfter": 36,
+  "changed": [
+    {
+      "from": "国子监",
+      "to": "五道营胡同",
+      "fromEntityId": "0854db5911778c6722637d896e9c2904",
+      "toEntityId": "fde55b90529621c6f3ba9a237046a7ee",
+      "fromRevision": 2,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 417,
+          "textHash": "bd0184f3e28f8231b1d00412729ee0c149539bd59c6c77face6b1549c68d8853",
+          "from": {
+            "entityId": "0854db5911778c6722637d896e9c2904",
+            "revision": 2,
+            "start": 729,
+            "end": 732,
+            "surface": "国子监",
+            "mentions": [
+              {
+                "mentionId": 1938,
+                "inputHash": "78467ef8643a9a09380eea247732e802dfbc5fea31cca2aa41bfc2fed4af5061"
+              },
+              {
+                "mentionId": 4268,
+                "inputHash": "6e4e989db5259bf34d402417428cf5d75d59da6e1d0afab5c0f48423b7aef706"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 723,
+            "end": 728,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 1937,
+                "inputHash": "81bf83c8d877ab123876319ee0e09357b05335b53084355edf58301619875961"
+              },
+              {
+                "mentionId": 4267,
+                "inputHash": "10e93a0ed65245a13c6169c0c0bdb4c1ea9bc49f70d024b98b021024f81700ad"
+              }
+            ]
+          },
+          "quote": "五道营胡同→国子监"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

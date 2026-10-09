@@ -1,0 +1,21 @@
+{
+  "batch": 57,
+  "provider": "smart-search CLI",
+  "searchFiles": ["restaurant-branches-search-01.json", "restaurant-branches-search-02.json", "restaurant-branches-search-03.json", "restaurant-branches-search-04.json"],
+  "searchLimitations": "01/02超时；03/04主回答只有计划文字。补充来源仅用于寻找候选，不直接作为分店或坐标证明。",
+  "fetchFiles": ["restaurant-branches-reference-03.json", "restaurant-branches-reference-04.json", "restaurant-branches-reference-05.json", "restaurant-branches-reference-06.json", "restaurant-branches-reference-07.json"],
+  "fetchResult": "百科、高德、大众点评正文均为空；高德及点评在沙箱外重试仍为空。保留全部失败记录，不采用摘要坐标。",
+  "candidates": [
+    {"url": "https://ditu.amap.com/place/B0L0JSFS1I", "name": "燕喜堂·中华老字号(CBD店)", "status": "unverified_candidate_fetch_empty"},
+    {"url": "http://m.dianping.com/shop/1534739355?msource=applemaps", "name": "燕喜堂CBD店", "status": "unverified_candidate_fetch_empty"},
+    {"url": "https://j.map.baidu.com/f8/sV1i", "name": "刘小忙把子肉(馆驿街店)", "status": "different_branch_candidate_not_fetched_not_adopted"}
+  ],
+  "roadBoundary": "亮亮拉面摘要中的小纬十一路善德里1号或经六路，不等于原文经十一路；不采用其他分店的位置。",
+  "adoptedWebFacts": [],
+  "decisionBasis": "分店和道路限定仅采用六篇已冻结完整原文。旧点缺乏对应明确分店的支持，燕喜堂金菊巷地址另与CBD店冲突；清空三店坐标并置unresolvable，保留原文CBD/联四路/经十一路概略地址。不能宣称已证明三个旧点都属于已知其他店。",
+  "preciseLocationsVerified": 0,
+  "mapApiRequests": 0,
+  "tiandituCredentialGate": "rotation_required",
+  "imagesViewed": 0,
+  "imageComparison": "deferred_by_user"
+}

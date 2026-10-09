@@ -1,0 +1,491 @@
+{
+  "verifiedAt": "2026-10-09T00:20:20.923Z",
+  "batch": "batch-66",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": [
+    "300be0691119032dc7bc5e825a192c6a",
+    "de1ab1b76f5de5a5ff8089016c9d93f6"
+  ],
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "成都",
+      "exported": 392,
+      "total": 411,
+      "active": 358,
+      "embedded": 358,
+      "probes": [
+        {
+          "name": "萌宠片区（黄龙溪欢乐田园）",
+          "id": "300be0691119032dc7bc5e825a192c6a"
+        },
+        {
+          "name": "龙溪谷大型野趣戏水区（黄龙溪欢乐田园）",
+          "id": "de1ab1b76f5de5a5ff8089016c9d93f6"
+        },
+        {
+          "name": "龙溪谷大型野趣戏水区",
+          "id": "de1ab1b76f5de5a5ff8089016c9d93f6"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "萌宠片区（黄龙溪欢乐田园）",
+          "id": "300be0691119032dc7bc5e825a192c6a",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "龙溪谷大型野趣戏水区",
+          "id": "de1ab1b76f5de5a5ff8089016c9d93f6",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "withdrawals": [
+        {
+          "id": "0688a8f4c0a461bc43c033b034f2c8e7",
+          "name": "历代帝王庙",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "09a6428491f2484b62c5ebc1ee02a30d",
+          "name": "地坛公园",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "0add067c3020c556399e33dc88602176",
+          "name": "朝阳公园",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "1193c0a076b71c933f2c7c67b4570f7a",
+          "name": "前门",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "11faed62c6b85552be61ca12e5ea9c69",
+          "name": "可能有书",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "1a2acc23cdd05c52e3a080ab87c8b69d",
+          "name": "国子监",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "1a4d37eee69e4c0556291ec936edd6da",
+          "name": "北海公园",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "396552746bad1768aa64ca81ad0e4d17",
+          "name": "什刹海",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "50e0ea4eb7dbf22182679d0535ed93f0",
+          "name": "杨梅竹斜街",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "53ecdf5bc8bed790744897fba0255ab8",
+          "name": "鼓楼",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "5dcf708f6083fa9c65c7f9c764e76a16",
+          "name": "雍和宫",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "5f660858cc70ca0a9584e4dddea338a7",
+          "name": "五道营胡同",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "662571c43a4dc9aa607602d935c2677f",
+          "name": "牛街",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "6685b2a3ebf7f1856a3cac018402d793",
+          "name": "广阳谷森林公园",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "70c4238a37efdfc92bd77cf131de49f6",
+          "name": "大栅栏",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "7c813cbbecf76ac993626a60efe3ce5f",
+          "name": "三里屯",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "911f2a37aa239bb5c0ad520c8dfbd24a",
+          "name": "南锣鼓巷",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "93121d8c212e7cb2b1f0008080a7c7ec",
+          "name": "隆福寺商业区",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "9c188c9ef1d997b1786fad442845f407",
+          "name": "北京坊",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "a59e02c0c7c598fe642cb56ecb9d195c",
+          "name": "大吉巷",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "aab5a9ad7a79cf5eac629f4800414a4f",
+          "name": "正阳书局",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "b1b3f62e951a637390e024655bf3a609",
+          "name": "中国美术馆",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "b5e241e515a5ac5b6af4a42bf66d9ec3",
+          "name": "亮马河",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "b7e71f3148f83c1ad70881f5e43c56de",
+          "name": "友谊花园",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "c06b0fda61860fe9d878a522f65b6036",
+          "name": "北锣鼓巷",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "c9bf0b8d87e7e63afa200d2bf5b7dc9b",
+          "name": "西单",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "dbb7dce92ba65a8639337ae60d17b9aa",
+          "name": "烟袋斜街",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e1c087f2522d126a2de7fe78849ab445",
+          "name": "天坛",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e2d3a03e7d7513f088c3c0efb383611b",
+          "name": "法源寺",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e33dab78a4a110118d00e3872896fba9",
+          "name": "芦灰",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e5a0aeb130ff27f3f6ab97d70a8470d6",
+          "name": "朝外thebox",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e61d76f3b1440ac59582f9b344be4fd4",
+          "name": "Mondoli",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "e63e38711dce61183e0e77ef3e2260bf",
+          "name": "MONDOLI",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "f0045ae244df6a021f039e64637f111d",
+          "name": "白塔寺",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "f0ebebda2c11e93de3edb10d59ee9566",
+          "name": "蓝色港湾",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "f3983f0d0cd1f1dae18352e043749238",
+          "name": "三联书店",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "f7911b50eb1c61037c79160865d8e630",
+          "name": "鲁迅博物馆",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "fcaeae794947e6e10cef8870dca8d075",
+          "name": "烂漫胡同",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "id": "fe5ff6f17f7e03bbf8b5e4bf285bf4c0",
+          "name": "日坛公园",
+          "status": "unresolved",
+          "sqlExcluded": true,
+          "diagnostics": {
+            "keywordHits": 0,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 4,
+      "audits": [
+        "63d29123-92be-4446-a742-50eb35f3fabc"
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "f00b340d6d43",
+  "query": "济南 陈氏肥蛤 经七路 423 分店 地址",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查一下济南陈氏肥蛤经七路423分店的地址。",
+  "sources": [
+    {
+      "url": "https://www.sina.cn/news/detail/4302232147258207.html",
+      "provider": "tavily",
+      "title": "推荐甜麻辣,清汤原味。BY:@萌芯酱美食坐标:经七路423-2号 ...",
+      "description": "美食温暖你##济南美食#【济南最好吃的肥蛤】蛤肥鲜嫩多汁，推荐甜麻辣,清汤原味。BY:@萌芯酱美食坐标:经七路423-2号陈氏肥蛤～ ​"
+    },
+    {
+      "url": "https://www.sohu.com/a/107961756_140554",
+      "provider": "tavily",
+      "title": "济南这几家不起眼的小店，把肥蛤做绝了！",
+      "description": "1陈氏肥蛤 ; 人均：71元 ; 地址：市中区化工宾馆东70米路南胡同南行70米路西陈氏肥蛤 ; 电话：0531-66955300 ; 2老船长小海鲜."
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.sina.cn/news/detail/4302232147258207.html",
+      "provider": "tavily",
+      "title": "推荐甜麻辣,清汤原味。BY:@萌芯酱美食坐标:经七路423-2号 ...",
+      "description": "美食温暖你##济南美食#【济南最好吃的肥蛤】蛤肥鲜嫩多汁，推荐甜麻辣,清汤原味。BY:@萌芯酱美食坐标:经七路423-2号陈氏肥蛤～ ​"
+    },
+    {
+      "url": "https://www.sohu.com/a/107961756_140554",
+      "provider": "tavily",
+      "title": "济南这几家不起眼的小店，把肥蛤做绝了！",
+      "description": "1陈氏肥蛤 ; 人均：71元 ; 地址：市中区化工宾馆东70米路南胡同南行70米路西陈氏肥蛤 ; 电话：0531-66955300 ; 2老船长小海鲜."
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 6168.06,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 10633.06,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 10633.08
+}

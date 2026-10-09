@@ -1,0 +1,73 @@
+{
+  "batch": 66,
+  "city": "成都",
+  "state": "prepared_not_applied",
+  "sourceFile": "all-cities/batch-66-source.json",
+  "sourcesRead": 3,
+  "sourcesGoverned": 2,
+  "mentionsRead": 3,
+  "fullNotes": 2,
+  "confirmed": 2,
+  "pendingAdded": 0,
+  "newEntities": 0,
+  "merges": 0,
+  "withdrawals": 0,
+  "coordinatesToClear": 2,
+  "preciseLocationsResolved": 0,
+  "rows": [
+    {
+      "mentionId": 4139,
+      "noteId": 1013,
+      "sourceId": 2011,
+      "action": "confirm_park_scoped_zone",
+      "conclusion": "黄龙溪欢乐田园内萌宠片区；园区限定展示名，不宣称官方分区名。新都区萌宠商户地址/坐标/adcode不支持原文，清除；不借用园区点或直接改名鹿溪牧场。"
+    },
+    {
+      "mentionId": 4141,
+      "noteId": 1013,
+      "sourceId": 2013,
+      "action": "confirm_park_scoped_zone",
+      "conclusion": "黄龙溪欢乐田园内龙溪谷大型野趣戏水区；清除都江堰龙溪的旧地址/点/adcode。原特定长名称可保留别名，不把短名龙溪或龙溪谷认作别名。"
+    },
+    {
+      "mentionId": 4121,
+      "noteId": 910,
+      "sourceId": 1998,
+      "action": "read_only_parent",
+      "conclusion": "园区主体及其教师节原文只读保留，9.10–9.20的有条件免票不代表当前普遍免票；本批不验证旧票价/营业时间。"
+    }
+  ],
+  "publicEvidence": [
+    {
+      "file": "priority-cities/成都/park-zones-reference-02.json",
+      "sha256": "517271a0b0f9fbe1e10d06e3afc4a9279ce365e1a4316987897a832a0c6b9ac0",
+      "url": "https://www.ly.com/travels/1133684.html",
+      "kind": "historical_user_travelogue",
+      "published": "2022-05-06",
+      "adopted": "园区双流区农博路1号及萌宠互动背景",
+      "limits": "非官方当前运营公告，不证明精确机位；不把鹿溪牧场直接认作现有萌宠片区的严格同义名。"
+    }
+  ],
+  "unusedEvidence": [
+    {
+      "file": "priority-cities/成都/park-zones-search-01.json",
+      "reason": "60秒超时，终态保留；沙箱外重试search02成功"
+    },
+    {
+      "file": "priority-cities/成都/park-zones-reference-01.json",
+      "reason": "去哪儿提取失败，摘要中的龙溪谷介绍不作为正文证据"
+    },
+    {
+      "file": "priority-cities/成都/park-zones-reference-03.json",
+      "reason": "本地宝提取失败，摘要不作为正文证据"
+    }
+  ],
+  "originalOpinionsPolicy": "动物互动与戏水体验字面值保留；水浅安全是原作者意见，不能升级为安全保证。",
+  "durationPolicy": "太阳鸟剧场约半小时只归剧场，两个目标原无独立分钟数，继续未知。",
+  "categoryPolicy": "本批保持文化/attraction兼容值，园内分区类别与完整媒体验收另核，不将保持类别说成已核实。",
+  "dateRefreshBoundary": "成都旧库245主体314看点仍用旧导出时刻；当前生产导出已按原来源日期修复。须独立验证日期变化及全部非日期内容不变，再同步本批。",
+  "imageComparison": "deferred_by_user",
+  "newImageViews": 0,
+  "fullReviewPassed": false,
+  "userAcceptance": false
+}

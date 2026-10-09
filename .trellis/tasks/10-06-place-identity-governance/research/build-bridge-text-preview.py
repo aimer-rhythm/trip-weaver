@@ -1,0 +1,21 @@
+from pathlib import Path
+root=Path(__file__).resolve().parent
+s=(root/'preview-last-restaurants.py').read_text(encoding='utf-8')
+s=s.replace('第64批真实四源/三全文','第65批真实两源/六全文').replace('batch-64','batch-65').replace("'batch':64","'batch':65")
+s=s.replace('fb7cce88b581233469111ea03cc4842c01ff36ec5afb9caece3247b0e456aef9','ce6f15d58a65edea700548c0cc8d2da477147dcbe1a5f6bdb23c4eea1b02bd4f')
+s=s.replace("len(before_export['places'])==4","len(before_export['places'])==2").replace("len(after['places'])==4","len(after['places'])==2")
+s=s.replace('len(cat.assignments)==8 and len(cat.scopes)==3','len(cat.assignments)==2 and len(cat.scopes)==1')
+s=s.replace("if m['id']==12893:assert result['status']=='review'", "if False:assert result['status']=='review'")
+s=s.replace("assert len(pending)==1 and pending[0]['detail']['mentionId']==12893",'assert pending==[]')
+s=s.replace('if sid==5345:','if sid==5479:')
+s=s.replace("=='美食' and p['payload']['xhsPlaceType']==old['payload']['xhsPlaceType']=='food'","=='文化' and p['payload']['xhsPlaceType']==old['payload']['xhsPlaceType']=='photo_spot'")
+a=s.index('            if sid==5331:');b=s.index("            assert p['payload']['address']",a)
+s=s[:a]+"            assert p['lat']==old['lat'] and p['lng']==old['lng'] and p['payload'].get('geoStatus')==old['payload'].get('geoStatus')\n"+s[b:]
+s=s.replace("assert highlights==[h for h in old_highlights if h['text']!='济南美食推荐，具体菜品未详述']", "assert highlights==old_highlights and p['payload']['typicalVisitMinutes']==30\n            assert p['payload']['aliases']==['起凤桥八号门洞'] and p['payload']['identity']['memberNames']==['起凤桥八号门洞']\n            assert old['id'] in p['payload']['identity']['memberIds']")
+s=s.replace("{5331:1,5343:2,5340:1}[sid]",'2')
+s=s.replace("            assert '济南美食推荐，具体菜品未详述' not in json.dumps(p,ensure_ascii=False)\n",'')
+s=s.replace("'coordinatesCleared':sid==5331","'coordinatesCleared':False")
+s=s.replace("'sources':4,'governedSources':3,'mentions':10,'fullNotes':3", "'sources':2,'governedSources':1,'mentions':9,'fullNotes':6")
+s=s.replace("'assignments':8,'confirmed':7,'pendingAdded':1", "'assignments':2,'confirmed':2,'pendingAdded':0")
+s=s.replace('readOnlyHuaXiangPreserved','readOnlyBridgePreserved')
+with (root/'preview-bridge-text.py').open('x',encoding='utf-8') as f:f.write(s)

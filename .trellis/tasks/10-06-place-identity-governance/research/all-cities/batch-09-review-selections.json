@@ -1,0 +1,13 @@
+[
+  {"review":364,"verdict":"uncertain","explanation":"趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[12662,12762,12643]}]},
+  {"review":365,"verdict":"uncertain","explanation":"五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[12662]}]},
+  {"review":369,"verdict":"part_of","childEntityId":"79e713e197315afb0440835502699789","explanation":"12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[12643]}]},
+  {"review":371,"verdict":"uncertain","explanation":"泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[11629]}]},
+  {"review":372,"verdict":"distinct","explanation":"牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[11630]}]},
+  {"review":374,"verdict":"uncertain","explanation":"11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[11675,12894]}]},
+  {"review":375,"verdict":"part_of","childEntityId":"908b0aec5ee27f58554a8442f8eef1de","explanation":"12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[12643,12626]}]},
+  {"review":376,"verdict":"uncertain","explanation":"11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[11510]}]},
+  {"review":377,"verdict":"uncertain","explanation":"11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[11510,12961]}]},
+  {"review":378,"verdict":"uncertain","explanation":"穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[12961]}]},
+  {"review":380,"verdict":"uncertain","explanation":"芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。","contexts":[{"file":"jinan-batch09-context.json","mentionIds":[12854]}]}
+]

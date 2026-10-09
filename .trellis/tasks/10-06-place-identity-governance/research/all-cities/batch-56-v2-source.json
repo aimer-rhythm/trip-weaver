@@ -1,0 +1,721 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T21:21:45.116397+00:00",
+  "city": "济南",
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "69ab8bb674e8f0eea31c34c936bddf23",
+        "city": "济南",
+        "canonical_name": "济南环城公园",
+        "primary_place_id": 5952,
+        "aliases": [
+          "济南环城公园"
+        ],
+        "legacy_ids": [
+          "69ab8bb674e8f0eea31c34c936bddf23"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5952,
+            "city": "济南",
+            "name": "济南环城公园",
+            "normalized_name": "济南环城公园",
+            "address": "山东省济南市历下区泉城路街道南门大街2-1号",
+            "latitude": 36.66242338212056,
+            "longitude": 117.01716042220598,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "7e3953c8beb4ef0a280e4e7d944b1a358a1ba04cad07a0faf2990afe9055d577",
+          "derivedBefore": {
+            "typical_visit_minutes": 120,
+            "typical_visit_source": "xhs_median",
+            "theme_tags": [
+              "自然风光"
+            ],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5952,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5,
+            "top_reasons": [
+              {
+                "reason": "沿护城河可看大小泉眼，接泉水，蔷薇花季景色美，治愈",
+                "evidence": "顺着河走，可以看到包括黑虎泉在内的大大小小的泉眼"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "济南环城公园"
+      ],
+      "mentionIds": [
+        12591
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "7ac1b9fdfb96a01db695da65d8e81830",
+        "city": "济南",
+        "canonical_name": "四窟万象",
+        "primary_place_id": 5480,
+        "aliases": [
+          "四窟万象"
+        ],
+        "legacy_ids": [
+          "7ac1b9fdfb96a01db695da65d8e81830"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5480,
+            "city": "济南",
+            "name": "四窟万象",
+            "normalized_name": "四窟万象",
+            "address": "",
+            "latitude": 36.675710867313974,
+            "longitude": 116.90966667262833,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 19.0
+          },
+          "sourceHash": "2117e0a1296741e73cb29227134a78d29eda0f6d92ce17de11c01ef05be2f84e",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5480,
+            "mention_count_30d": 2,
+            "recommend_score": 7.5,
+            "top_reasons": [
+              {
+                "reason": "仿制四大名窟，票价略贵",
+                "evidence": "仿制四大名窟，票价略贵"
+              },
+              {
+                "reason": "仿制石窟，内部为四大石窟仿制品，值得一看",
+                "evidence": "一处仿制的石窟，内部为四大石窟的仿制品"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "四窟万象"
+      ],
+      "mentionIds": [
+        11492,
+        12777
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "c93e3216e2e3cc1b75d07097f2c78367",
+        "city": "济南",
+        "canonical_name": "关帝庙",
+        "primary_place_id": 5994,
+        "aliases": [
+          "关帝庙"
+        ],
+        "legacy_ids": [
+          "c93e3216e2e3cc1b75d07097f2c78367"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": 36.664213467405865,
+          "lng": 117.01347483646703,
+          "address": "筐市街18-3",
+          "geoStatus": "resolved"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "五龙潭南门西侧的关帝庙可以顺便看看（免费，院内有西蜜脂泉）",
+            "noteId": 2841,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5994,
+                "lat": 36.53193105540761,
+                "lng": 117.09450620466468,
+                "address": "山东省济南市历城区仲宫街道关帝庙",
+                "sourceHash": "b2da2efc04dd69fd89c3e5af50afec7732678663f658a6ec27ad692351b19ca0"
+              }
+            ],
+            "conclusion": "唯一原文明确五龙潭南门西侧、西蜜脂泉所在关帝庙。地图筐市街18-3号与蜜脂园条目互证，旧点是仲宫同名庙；芙蓉街38号的另一关帝庙也不能采用。",
+            "mentionIds": [
+              12964
+            ],
+            "sourcePlaceIds": [
+              5994
+            ]
+          },
+          {
+            "file": "priority-cities/济南/geo-02.json",
+            "kind": "reviewed_exact_poi",
+            "query": "关帝庙",
+            "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+            "address": "筐市街18-3",
+            "poiName": "关帝庙",
+            "rawLonLat": "117.0076,36.66393",
+            "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+            "sourceCoordinateSystem": "CGCS2000",
+            "storedCoordinateSystem": "GCJ-02"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5994,
+            "city": "济南",
+            "name": "关帝庙",
+            "normalized_name": "关帝庙",
+            "address": "山东省济南市历城区仲宫街道关帝庙",
+            "latitude": 36.53193105540761,
+            "longitude": 117.09450620466468,
+            "place_type": "attraction",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "b2da2efc04dd69fd89c3e5af50afec7732678663f658a6ec27ad692351b19ca0",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5994,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5,
+            "top_reasons": [
+              {
+                "reason": "免费，院内西蜜脂泉，对古建有兴趣可顺便看",
+                "evidence": "免费，院内有西蜜脂泉"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "关帝庙"
+      ],
+      "mentionIds": [
+        12964
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source": {
+        "id": 5952,
+        "city": "济南",
+        "name": "济南环城公园",
+        "normalized_name": "济南环城公园",
+        "address": "山东省济南市历下区泉城路街道南门大街2-1号",
+        "latitude": 36.66242338212056,
+        "longitude": 117.01716042220598,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 14.0
+      },
+      "sourceHash": "7e3953c8beb4ef0a280e4e7d944b1a358a1ba04cad07a0faf2990afe9055d577",
+      "derivedBefore": {
+        "typical_visit_minutes": 120,
+        "typical_visit_source": "xhs_median",
+        "theme_tags": [
+          "自然风光"
+        ],
+        "content_profile": null
+      },
+      "supplement": {
+        "adcode": ""
+      },
+      "summary": {
+        "canonical_place_id": 5952,
+        "mention_count_30d": 1,
+        "recommend_score": 7.5,
+        "top_reasons": [
+          {
+            "reason": "沿护城河可看大小泉眼，接泉水，蔷薇花季景色美，治愈",
+            "evidence": "顺着河走，可以看到包括黑虎泉在内的大大小小的泉眼"
+          }
+        ]
+      }
+    },
+    {
+      "source": {
+        "id": 5480,
+        "city": "济南",
+        "name": "四窟万象",
+        "normalized_name": "四窟万象",
+        "address": "",
+        "latitude": 36.675710867313974,
+        "longitude": 116.90966667262833,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 19.0
+      },
+      "sourceHash": "2117e0a1296741e73cb29227134a78d29eda0f6d92ce17de11c01ef05be2f84e",
+      "derivedBefore": {
+        "typical_visit_minutes": null,
+        "typical_visit_source": null,
+        "theme_tags": [],
+        "content_profile": null
+      },
+      "supplement": {
+        "adcode": ""
+      },
+      "summary": {
+        "canonical_place_id": 5480,
+        "mention_count_30d": 2,
+        "recommend_score": 7.5,
+        "top_reasons": [
+          {
+            "reason": "仿制四大名窟，票价略贵",
+            "evidence": "仿制四大名窟，票价略贵"
+          },
+          {
+            "reason": "仿制石窟，内部为四大石窟仿制品，值得一看",
+            "evidence": "一处仿制的石窟，内部为四大石窟的仿制品"
+          }
+        ]
+      }
+    },
+    {
+      "source": {
+        "id": 5994,
+        "city": "济南",
+        "name": "关帝庙",
+        "normalized_name": "关帝庙",
+        "address": "山东省济南市历城区仲宫街道关帝庙",
+        "latitude": 36.53193105540761,
+        "longitude": 117.09450620466468,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 14.0
+      },
+      "sourceHash": "b2da2efc04dd69fd89c3e5af50afec7732678663f658a6ec27ad692351b19ca0",
+      "derivedBefore": {
+        "typical_visit_minutes": null,
+        "typical_visit_source": null,
+        "theme_tags": [],
+        "content_profile": null
+      },
+      "supplement": {
+        "adcode": ""
+      },
+      "summary": {
+        "canonical_place_id": 5994,
+        "mention_count_30d": 1,
+        "recommend_score": 7.5,
+        "top_reasons": [
+          {
+            "reason": "免费，院内西蜜脂泉，对古建有兴趣可顺便看",
+            "evidence": "免费，院内有西蜜脂泉"
+          }
+        ]
+      }
+    }
+  ],
+  "mentions": [
+    {
+      "id": 12591,
+      "raw_note_id": 2823,
+      "name": "济南环城公园",
+      "normalized_name": "济南环城公园",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "沿护城河可看大小泉眼，接泉水，蔷薇花季景色美，治愈",
+      "evidence_text": "顺着河走，可以看到包括黑虎泉在内的大大小小的泉眼",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 120,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "沿护城河分布着包括黑虎泉在内的大大小小的泉眼",
+              "quote": "顺着河走，不走回头路，可以看到包括黑虎泉在内的大大小小的泉眼"
+            },
+            {
+              "text": "公园内设有接泉水的地方",
+              "quote": "接泉水的地方也在这个公园里"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "济南最不容错过的 不是趵突泉",
+      "note_desc": "是济南环城公园(黑虎泉所在）和珍珠泉\n路线放在最后一图，是这次去济南之行中最快乐的两个小时\n导航到济南市环城公园-黑虎泉(南1门)，就进入到护城河旁的环城公园了，顺着河走，不走回头路，可以看到包括黑虎泉在内的大大小小的泉眼，虽然现在不是丰水期，但是看不知名小泉咕噜咕噜冒泡泡真的太治愈了。接泉水的地方也在这个公园里。好喜欢这种不期而遇 没有计划 但是很合心意的地方。而且现在正是蔷薇花季，很多茂盛的蔷薇花，济南的枫叶也好漂亮，怎么春天就这么漂亮了！而且现在的柳树还是青绿青绿的，好嫩好嫩！\n顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。\n珍珠泉只能从大门原路出来，出门右拐就到西更道街，再向北走就是曲水亭街，走到尽头就是大明湖。\n在我心里，以上路线是济南city walk最棒的路线没有之一。太舒服，太好玩了，适合喜欢水 喜欢自然的人。感受到了幸福的能量。\n#黑虎泉[话题]# #珍珠泉[话题]#",
+      "note_images": [
+        {
+          "summary": "济南黑虎泉景点导航地图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 9,
+          "text_content": "济南市环城公园-黑虎泉(南1门)\n珍珠泉\n山东省政协\n百花洲历史文化街区\n济南市环城公园\n即停即走 仅行人通行 11评价\n直线1285.7公里\n山东省济南市历下区济南市环城公园-黑虎泉内(东侧)"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/69ec9314000000003502b369?xsec_token=ABdrP058gOUu1kVWQHrzbM58lCUk6gaQO7j28S1GiWUZM=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:04:06.452641+00:00",
+      "inputHash": "e1bf8aab378f2219cb0810d54d227ee1b2a033746226cd7c169ca3e34b59868f"
+    },
+    {
+      "id": 11492,
+      "raw_note_id": 2551,
+      "name": "四窟万象",
+      "normalized_name": "四窟万象",
+      "place_type": "attraction",
+      "mention_type": "warning",
+      "sentiment": "negative",
+      "reason": "仿制四大名窟，票价略贵",
+      "evidence_text": "仿制四大名窟，票价略贵",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_title": "济南两日游结束，全网最全打卡攻略奉上🔥🔥",
+      "note_desc": "老舍笔下的泉城，是一座很舒服松弛的城市。每个季节都有不同的美，同时济南景区集中，游玩起来很便捷！👍\n济南两日游刚回来，全网最全打卡攻略🐎住！🔥\n\t\n✅路线安排📅（不走回头路）\nDay1️⃣：济南西站-山东省博物馆-山东省美术馆\nDay2️⃣：泉城广场-趵突泉-解放阁-宽厚里-大明湖-超然楼-五龙潭-千佛山（四窟万象）\n\t\n✅景区简介（含避雷）\n红榜❤️\n1️⃣趵突泉：泉水清澈见底，泉水潺潺很美很出片。\n2️⃣山东博物馆：馆藏丰富，历史厚重，有很多有趣有深度的文物。\n3️⃣五龙潭：免费景区，不需要预约，有很多大锦鲤\n4️⃣解放阁：蓝调下红星闪耀，柳叶飘荡下很漂亮\n5️⃣黑虎泉：泉水荡漾，有很多小鱼，沿着河堤走一圈很舒服\n黑榜🖤\n1️⃣宽厚里：网红小吃街，商家故意放慢制作排队，味道一般\n2️⃣四窟万象：仿制四大名窟，票价略贵。\n\t\n济南天气多变，景区内部交通较为不便，多为步行🚶和自行车🚲，推荐运动轻装上阵！注意‼️防晒\n㊗️大家在济南玩的开心🥳\n#济南旅游[话题]# #济南旅游攻略[话题]# #济南打卡[话题]##济南[话题]# #J人旅行[话题]# #旅游必逛打卡[话题]# #假期去哪儿[话题]# #旅游避雷[话题]# #济南景点推荐[话题]#",
+      "note_images": [
+        {
+          "summary": "济南旅游必去景点推荐攻略",
+          "has_text": true,
+          "key_info": {
+            "tips": "强烈推荐趵突泉/黑虎泉/山东省博物馆/五龙潭/解放阁；大明湖/四窟万象/超然楼/宽厚里可选去",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "山东省博物馆\n一定要去\n大明湖\n可以不去\n四窟万象\n可以不去\n黑虎泉\n一定要去\n趵突泉\n一定要去\n解放阁\n一定要去\n超然楼\n可以不去\n五龙潭\n一定要去\n宽厚里\n可以不去"
+        },
+        {
+          "summary": "山东省美术馆参观攻略",
+          "has_text": true,
+          "key_info": {
+            "tips": "需有一定的积累和兴趣",
+            "hours": null,
+            "price": null,
+            "reservation": "预约进入"
+          },
+          "image_index": 3,
+          "text_content": "山东省美术馆\n博物馆旁边，预约进入\n展示了齐白石大师和其他大师的作品\n但需有一定的积累和兴趣\n山东美术馆"
+        },
+        {
+          "summary": "四窟万象仿制石窟景点介绍与参观建议",
+          "has_text": true,
+          "key_info": {
+            "tips": "对于去过原址的不建议去",
+            "hours": "8:30-18:00",
+            "price": "需另购票（未标注具体金额）",
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "四窟万象\n四窟万象 8:30-18:00\n集成仿制了国内四大名窟\n很震撼，需要重新买票\n但对于去过原址的不建议去\n非宗教场所"
+        },
+        {
+          "summary": "济南宽厚里网红小吃街避雷提示",
+          "has_text": true,
+          "key_info": {
+            "tips": "商家会故意放慢制作速度吸引客流；味道一般般，排队半小时起",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 6,
+          "text_content": "宽厚里\n泉盛\n厚里\n万世流芳\n...莓泉\n烤鸡爪\n解放阁旁边的网红小吃街\n商家会故意放慢制作速度吸引客流\n味道一般般，排队半小时起"
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6a2575640000000006036470?xsec_token=ABDioCizBL_UDnrOQpwOUnCASYmh4W9ADlAfQCnCcQrMY=&xsec_source=pc_search",
+      "observed_at": "2026-10-04T11:17:32.933649+00:00",
+      "inputHash": "e26f02da8aa706e38347b3884ef4e5b75248b4a46850d4ec5ab7ba76f5f29dbd"
+    },
+    {
+      "id": 12777,
+      "raw_note_id": 2797,
+      "name": "四窟万象",
+      "normalized_name": "四窟万象",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "仿制石窟，内部为四大石窟仿制品，值得一看",
+      "evidence_text": "一处仿制的石窟，内部为四大石窟的仿制品",
+      "route_order": 13,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "仿制石窟，内部为四大石窟的仿制品",
+              "quote": "一处仿制的石窟，内部为四大石窟的仿制品"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "为了这18张照片📷特意去了趟济南（附机位）",
+      "note_desc": "Hi！我是裸辞后环游中国的 @王小草又出门了\n用18张照片打卡一座城市，这一次是济南！\n\t\n四面荷花三面柳，一城山色半城湖❗️\n济南绝对就是北方的“江南水乡”\n这次用3天时间了解了这座泉水中的城市🌆\n下面也把这次打卡的机位分享给大家❤️⭐️➕\n\t\n📷机位分享：\n1️⃣琵琶泉：可以把远处的解放阁和泉水下的锦鲤融合在一起！\n2️⃣-3️⃣明珠天地C：超然楼和绿地普利中心的古今同框；\n4️⃣五龙潭公园：利用假山的框架式构图，也是拍绿地中心古今同框的机位；\n5️⃣-6️⃣千佛山山顶：济南看日落的最佳地点，6点后可以免费进入；\n7️⃣-8️⃣超然楼：大明湖东的石桥上拍日落，湖西茶舍拍日出；\n9️⃣泉城广场：音乐喷泉开始时间为10点，15点和20点，推荐这几个时间去；\n1️⃣0️⃣玛瑙泉：小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动；\n1️⃣1️⃣-1️⃣2️⃣大明湖公园：四面荷花三面柳说的应该就是这里了；\n1️⃣3️⃣济南墙：在百花洲西的月下观棠旁的街巷内；\n1️⃣4️⃣洪家楼天主教堂：哥特式建筑风格，教堂的天花板真的超美；\n1️⃣5️⃣解放阁：也是济南解放纪念馆，珍藏了很多历史文物和照片；\n1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；\n1️⃣7️⃣四窟万象：一处仿制的石窟，内部为四大石窟的仿制品；\n1️⃣8️⃣山东大厦：大厦内的中庭真的超级震撼。\n\t\n#旅游编辑部[话题]# #旅游万粉扶持计划[话题]# #济南[话题]# #济南旅游[话题]# #济南旅行[话题]# #济南打卡[话题]# #济南拍照[话题]# #趵突泉[话题]# #王小草城市打卡机位[话题]# #山东旅游[话题]# @摄影薯",
+      "note_images": [
+        {
+          "summary": "济南超然楼夜景，古建筑与现代城市灯光交相辉映",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "贵和购物中心\n（背景高楼LED显示爱心图案及文字，内容模糊无法准确辨认）"
+        },
+        {
+          "summary": "教堂内部彩绘拱顶天花板",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": ""
+        }
+      ],
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:02:50.114368+00:00",
+      "inputHash": "84d06a33bcd8861eb8c1c59ee79dee3cfde1a94381c3d1ba7efc20a3fc513f59"
+    },
+    {
+      "id": 12964,
+      "raw_note_id": 2841,
+      "name": "关帝庙",
+      "normalized_name": "关帝庙",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费，院内西蜜脂泉，对古建有兴趣可顺便看",
+      "evidence_text": "免费，院内有西蜜脂泉",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "院内西蜜脂泉",
+              "quote": "院内有西蜜脂泉"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_title": "国庆｜趵突泉+五龙潭 清晨人少路线",
+      "note_desc": "✅重点（10.1号）：早起6:30就能入园，不用等到7点（应该是国庆可以早入园原因）；东门、南门均可入园，两个门离主泉都很近\n\t\n1. 趵突泉东门入园（6:30）\n2. 激湍碑、观澜亭（趵突主泉）\n3. 万竹园（望水泉，李苦禅纪念馆）\n4. 无忧泉+白雪楼\n5. 沧园（王雪涛纪念馆）\n6. 漱玉泉+李清照纪念堂\n7. 濯缨池 → 柳絮泉、金线泉 → 泺苑\n8. 五三惨案纪念堂\n9. 趵突泉北门出，过马路进入五龙潭南门（正对趵突北门）\n10. 五龙潭：五龙壁→五龙潭主潭→名仕阁→古温泉/月牙泉 →东门（五龙雕塑）出\n\t\nPS：如果对古建有兴趣、时间充足，五龙潭南门西侧的关帝庙可以顺便看看（免费，院内有西蜜脂泉）。\n\t\n#国庆节趵突泉[话题]# #趵突泉[话题]# #五龙潭公园[话题]#",
+      "note_images": null,
+      "note_unavailable": false,
+      "source_url": "https://www.xiaohongshu.com/explore/6abed25e0000000018013f13?xsec_token=ABQCa-GG-zKK8uawe63EkMz1l68oe3AheagXd15l9aB38=&xsec_source=pc_search",
+      "observed_at": "2026-10-06T02:04:31.261694+00:00",
+      "inputHash": "13eb1d18379cfa525e017c9436e3ead8f711be3b5879a486d4b1648c24253730"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2551,
+      "note_city": "济南",
+      "note_title": "济南两日游结束，全网最全打卡攻略奉上🔥🔥",
+      "note_desc": "老舍笔下的泉城，是一座很舒服松弛的城市。每个季节都有不同的美，同时济南景区集中，游玩起来很便捷！👍\n济南两日游刚回来，全网最全打卡攻略🐎住！🔥\n\t\n✅路线安排📅（不走回头路）\nDay1️⃣：济南西站-山东省博物馆-山东省美术馆\nDay2️⃣：泉城广场-趵突泉-解放阁-宽厚里-大明湖-超然楼-五龙潭-千佛山（四窟万象）\n\t\n✅景区简介（含避雷）\n红榜❤️\n1️⃣趵突泉：泉水清澈见底，泉水潺潺很美很出片。\n2️⃣山东博物馆：馆藏丰富，历史厚重，有很多有趣有深度的文物。\n3️⃣五龙潭：免费景区，不需要预约，有很多大锦鲤\n4️⃣解放阁：蓝调下红星闪耀，柳叶飘荡下很漂亮\n5️⃣黑虎泉：泉水荡漾，有很多小鱼，沿着河堤走一圈很舒服\n黑榜🖤\n1️⃣宽厚里：网红小吃街，商家故意放慢制作排队，味道一般\n2️⃣四窟万象：仿制四大名窟，票价略贵。\n\t\n济南天气多变，景区内部交通较为不便，多为步行🚶和自行车🚲，推荐运动轻装上阵！注意‼️防晒\n㊗️大家在济南玩的开心🥳\n#济南旅游[话题]# #济南旅游攻略[话题]# #济南打卡[话题]##济南[话题]# #J人旅行[话题]# #旅游必逛打卡[话题]# #假期去哪儿[话题]# #旅游避雷[话题]# #济南景点推荐[话题]#",
+      "note_images": [
+        {
+          "summary": "济南旅游必去景点推荐攻略",
+          "has_text": true,
+          "key_info": {
+            "tips": "强烈推荐趵突泉/黑虎泉/山东省博物馆/五龙潭/解放阁；大明湖/四窟万象/超然楼/宽厚里可选去",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "山东省博物馆\n一定要去\n大明湖\n可以不去\n四窟万象\n可以不去\n黑虎泉\n一定要去\n趵突泉\n一定要去\n解放阁\n一定要去\n超然楼\n可以不去\n五龙潭\n一定要去\n宽厚里\n可以不去"
+        },
+        {
+          "summary": "山东省美术馆参观攻略",
+          "has_text": true,
+          "key_info": {
+            "tips": "需有一定的积累和兴趣",
+            "hours": null,
+            "price": null,
+            "reservation": "预约进入"
+          },
+          "image_index": 3,
+          "text_content": "山东省美术馆\n博物馆旁边，预约进入\n展示了齐白石大师和其他大师的作品\n但需有一定的积累和兴趣\n山东美术馆"
+        },
+        {
+          "summary": "四窟万象仿制石窟景点介绍与参观建议",
+          "has_text": true,
+          "key_info": {
+            "tips": "对于去过原址的不建议去",
+            "hours": "8:30-18:00",
+            "price": "需另购票（未标注具体金额）",
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "四窟万象\n四窟万象 8:30-18:00\n集成仿制了国内四大名窟\n很震撼，需要重新买票\n但对于去过原址的不建议去\n非宗教场所"
+        },
+        {
+          "summary": "济南宽厚里网红小吃街避雷提示",
+          "has_text": true,
+          "key_info": {
+            "tips": "商家会故意放慢制作速度吸引客流；味道一般般，排队半小时起",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 6,
+          "text_content": "宽厚里\n泉盛\n厚里\n万世流芳\n...莓泉\n烤鸡爪\n解放阁旁边的网红小吃街\n商家会故意放慢制作速度吸引客流\n味道一般般，排队半小时起"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2823,
+      "note_city": "济南",
+      "note_title": "济南最不容错过的 不是趵突泉",
+      "note_desc": "是济南环城公园(黑虎泉所在）和珍珠泉\n路线放在最后一图，是这次去济南之行中最快乐的两个小时\n导航到济南市环城公园-黑虎泉(南1门)，就进入到护城河旁的环城公园了，顺着河走，不走回头路，可以看到包括黑虎泉在内的大大小小的泉眼，虽然现在不是丰水期，但是看不知名小泉咕噜咕噜冒泡泡真的太治愈了。接泉水的地方也在这个公园里。好喜欢这种不期而遇 没有计划 但是很合心意的地方。而且现在正是蔷薇花季，很多茂盛的蔷薇花，济南的枫叶也好漂亮，怎么春天就这么漂亮了！而且现在的柳树还是青绿青绿的，好嫩好嫩！\n顺着护城河边看各种泉边走到吾韧咖啡店附近，就可以看到一个向上走的楼梯，上到桥上后，导航 珍珠泉，穿过一条街，就可以看到省人大的大门，不要犹豫！珍珠泉就在这里面，进大门向左走，就可以看到珍珠泉的指示牌。虽然珍珠泉没有趵突泉那样大的涌动，但是可以看到水面下很多一小串串的水泡泡。最重要的是，人少！而且公园造景非常美，算是我在济南看到树木搭配最有层次，最有审美的一处。\n珍珠泉只能从大门原路出来，出门右拐就到西更道街，再向北走就是曲水亭街，走到尽头就是大明湖。\n在我心里，以上路线是济南city walk最棒的路线没有之一。太舒服，太好玩了，适合喜欢水 喜欢自然的人。感受到了幸福的能量。\n#黑虎泉[话题]# #珍珠泉[话题]#",
+      "note_images": [
+        {
+          "summary": "济南黑虎泉景点导航地图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 9,
+          "text_content": "济南市环城公园-黑虎泉(南1门)\n珍珠泉\n山东省政协\n百花洲历史文化街区\n济南市环城公园\n即停即走 仅行人通行 11评价\n直线1285.7公里\n山东省济南市历下区济南市环城公园-黑虎泉内(东侧)"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2797,
+      "note_city": "济南",
+      "note_title": "为了这18张照片📷特意去了趟济南（附机位）",
+      "note_desc": "Hi！我是裸辞后环游中国的 @王小草又出门了\n用18张照片打卡一座城市，这一次是济南！\n\t\n四面荷花三面柳，一城山色半城湖❗️\n济南绝对就是北方的“江南水乡”\n这次用3天时间了解了这座泉水中的城市🌆\n下面也把这次打卡的机位分享给大家❤️⭐️➕\n\t\n📷机位分享：\n1️⃣琵琶泉：可以把远处的解放阁和泉水下的锦鲤融合在一起！\n2️⃣-3️⃣明珠天地C：超然楼和绿地普利中心的古今同框；\n4️⃣五龙潭公园：利用假山的框架式构图，也是拍绿地中心古今同框的机位；\n5️⃣-6️⃣千佛山山顶：济南看日落的最佳地点，6点后可以免费进入；\n7️⃣-8️⃣超然楼：大明湖东的石桥上拍日落，湖西茶舍拍日出；\n9️⃣泉城广场：音乐喷泉开始时间为10点，15点和20点，推荐这几个时间去；\n1️⃣0️⃣玛瑙泉：小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动；\n1️⃣1️⃣-1️⃣2️⃣大明湖公园：四面荷花三面柳说的应该就是这里了；\n1️⃣3️⃣济南墙：在百花洲西的月下观棠旁的街巷内；\n1️⃣4️⃣洪家楼天主教堂：哥特式建筑风格，教堂的天花板真的超美；\n1️⃣5️⃣解放阁：也是济南解放纪念馆，珍藏了很多历史文物和照片；\n1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；\n1️⃣7️⃣四窟万象：一处仿制的石窟，内部为四大石窟的仿制品；\n1️⃣8️⃣山东大厦：大厦内的中庭真的超级震撼。\n\t\n#旅游编辑部[话题]# #旅游万粉扶持计划[话题]# #济南[话题]# #济南旅游[话题]# #济南旅行[话题]# #济南打卡[话题]# #济南拍照[话题]# #趵突泉[话题]# #王小草城市打卡机位[话题]# #山东旅游[话题]# @摄影薯",
+      "note_images": [
+        {
+          "summary": "济南超然楼夜景，古建筑与现代城市灯光交相辉映",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 1,
+          "text_content": "贵和购物中心\n（背景高楼LED显示爱心图案及文字，内容模糊无法准确辨认）"
+        },
+        {
+          "summary": "教堂内部彩绘拱顶天花板",
+          "has_text": false,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": ""
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2841,
+      "note_city": "济南",
+      "note_title": "国庆｜趵突泉+五龙潭 清晨人少路线",
+      "note_desc": "✅重点（10.1号）：早起6:30就能入园，不用等到7点（应该是国庆可以早入园原因）；东门、南门均可入园，两个门离主泉都很近\n\t\n1. 趵突泉东门入园（6:30）\n2. 激湍碑、观澜亭（趵突主泉）\n3. 万竹园（望水泉，李苦禅纪念馆）\n4. 无忧泉+白雪楼\n5. 沧园（王雪涛纪念馆）\n6. 漱玉泉+李清照纪念堂\n7. 濯缨池 → 柳絮泉、金线泉 → 泺苑\n8. 五三惨案纪念堂\n9. 趵突泉北门出，过马路进入五龙潭南门（正对趵突北门）\n10. 五龙潭：五龙壁→五龙潭主潭→名仕阁→古温泉/月牙泉 →东门（五龙雕塑）出\n\t\nPS：如果对古建有兴趣、时间充足，五龙潭南门西侧的关帝庙可以顺便看看（免费，院内有西蜜脂泉）。\n\t\n#国庆节趵突泉[话题]# #趵突泉[话题]# #五龙潭公园[话题]#",
+      "note_images": null,
+      "note_unavailable": false
+    }
+  ],
+  "images": [],
+  "reviews": [],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b"
+}

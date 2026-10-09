@@ -1,0 +1,2349 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T16:57:53.548427+00:00",
+  "city": "济南",
+  "entity": {
+    "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+    "city": "济南",
+    "canonical_name": "大明湖",
+    "primary_place_id": 5348,
+    "aliases": [
+      "大明湖",
+      "大明湖公园",
+      "大明湖景区"
+    ],
+    "legacy_ids": [
+      "1e1c6d4109dc6a10c959a817de9ed799",
+      "39c1c314e86091e13d382c2c716cc2ad",
+      "550d6810857b4487aae8ce39c9ee093b"
+    ],
+    "revision": 2,
+    "status": "ACTIVE",
+    "redirect_to": null,
+    "overrides": {
+      "category": "自然"
+    },
+    "evidence": [
+      {
+        "kind": "bootstrap",
+        "source": "canonical_place + explicit alias configuration"
+      },
+      {
+        "ids": [
+          12687,
+          12926,
+          12959,
+          12772
+        ],
+        "kind": "source_mentions",
+        "conclusion": "同一湖泊景区的游览称呼；超然楼与南门不属于同义词"
+      }
+    ]
+  },
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "sources": [
+    {
+      "source": {
+        "id": 5968,
+        "city": "济南",
+        "name": "大明湖公园",
+        "normalized_name": "大明湖公园",
+        "address": "大明湖路271号大明湖风景名胜区",
+        "latitude": 36.67406050523545,
+        "longitude": 117.03468380261435,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 14.0
+      },
+      "sourceHash": "0b4dfa4c76c1e87764c21a0c4d1f1f3fedd83a2d1d39fa10a99893f69077a136",
+      "derivedBefore": {
+        "typical_visit_minutes": null,
+        "typical_visit_source": null,
+        "theme_tags": [
+          "自然风光"
+        ],
+        "content_profile": null
+      },
+      "summary": {
+        "canonical_place_id": 5968,
+        "mention_count_30d": 1,
+        "recommend_score": 7.5
+      }
+    },
+    {
+      "source": {
+        "id": 5348,
+        "city": "济南",
+        "name": "大明湖",
+        "normalized_name": "大明湖",
+        "address": "大明湖路271号大明湖风景名胜区",
+        "latitude": 36.67752439711543,
+        "longitude": 117.03165220153181,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 280.9
+      },
+      "sourceHash": "267d0a8807bf0ac3238379edb4d2d88709ada8afca8b0d5825d9c855d2e17b3d",
+      "derivedBefore": {
+        "typical_visit_minutes": 120,
+        "typical_visit_source": "xhs_median",
+        "theme_tags": [
+          "亲子",
+          "住宿",
+          "历史人文"
+        ],
+        "content_profile": null
+      },
+      "summary": {
+        "canonical_place_id": 5348,
+        "mention_count_30d": 61,
+        "recommend_score": 152.0
+      }
+    },
+    {
+      "source": {
+        "id": 5953,
+        "city": "济南",
+        "name": "大明湖景区",
+        "normalized_name": "大明湖景区",
+        "address": "",
+        "latitude": 36.676092446523626,
+        "longitude": 117.03493702134887,
+        "place_type": "attraction",
+        "geo_status": "resolved",
+        "amap_poi_id": "",
+        "is_active": true,
+        "quality_score": 24.0
+      },
+      "sourceHash": "b18bbbd3b06c32c2ebe5ef21ec342171edc40492e44a093bb355db9d2fcdd874",
+      "derivedBefore": {
+        "typical_visit_minutes": null,
+        "typical_visit_source": null,
+        "theme_tags": [
+          "历史人文"
+        ],
+        "content_profile": {
+          "intro": "大明湖位于济南市历下区，是济南三大历史名胜之一，也是山东省文物保护单位。湖畔分布着历下亭、铁公祠、北极阁、南丰祠等众多纪念古人政绩行踪的建筑，人文景观十分著名。湖东北岸的超然楼为仿木结构高楼，楼内设展厅介绍济南历史文化和木雕文化，可登高览湖景。",
+          "method": "web_research_with_model_knowledge",
+          "version": 1,
+          "compiledAt": "2026-10-06T03:07:34.481087+00:00",
+          "highlights": [
+            {
+              "text": "大明湖位于济南市历下区，是济南三大历史名胜之一，也是山东省文物保护单位。",
+              "basis": "web",
+              "quote": "**大明湖**位于中国[山东省](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81 \"山东省\")[济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[历下区](/wiki/%E5%8E%86%E4%B8%8B%E5%8C%BA \"历下区\")，是济南三大历史名胜之一。",
+              "strength": "weak",
+              "citations": [
+                {
+                  "quote": "**大明湖**位于中国[山东省](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81 \"山东省\")[济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[历下区](/wiki/%E5%8E%86%E4%B8%8B%E5%8C%BA \"历下区\")，是济南三大历史名胜之一。",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                },
+                {
+                  "quote": "| [山东省文物保护单位](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81%E6%96%87%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D \"山东省文物保护单位\") |",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                }
+              ],
+              "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+              "observedAt": "2026-10-06T03:07:30Z"
+            },
+            {
+              "text": "湖畔分布着历下亭、铁公祠、北极阁、南丰祠等众多纪念古人政绩行踪的建筑，人文景观十分著名。",
+              "basis": "web",
+              "quote": "历史悠久的大明湖的人文景观也是极为著名。",
+              "strength": "weak",
+              "citations": [
+                {
+                  "quote": "历史悠久的大明湖的人文景观也是极为著名。",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                },
+                {
+                  "quote": "多处建筑景观是为纪念古人政绩、行踪而修建，如历下亭、月下亭、铁公祠、小沧浪、北极阁、汇波楼、南丰祠、遐园、稼轩祠等，引得历代文人前来凭吊、吟咏。",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                },
+                {
+                  "quote": "北极阁位于北岸，是一所初建于元代的道观，供奉[玄天上帝](/wiki/%E7%8E%84%E5%A4%A9%E4%B8%8A%E5%B8%9D \"玄天上帝\")；",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                },
+                {
+                  "quote": "南丰祠位于东北岸，是纪念[宋朝](/wiki/%E5%AE%8B%E6%9C%9D \"宋朝\")学者[曾巩](/wiki/%E6%9B%BE%E9%9E%8F \"曾巩\")的祠堂，1829年重建[[10]](#cite_note-10)。",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                }
+              ],
+              "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+              "observedAt": "2026-10-06T03:07:30Z"
+            },
+            {
+              "text": "湖东北岸的超然楼为仿木结构高楼，楼内设展厅介绍济南历史文化和木雕文化，可登高览湖景。",
+              "basis": "web",
+              "quote": "超然楼位于湖东北岸，是一座仿木结构钢筋混凝土建筑，建于2009年，高51.7米、共7层。",
+              "strength": "weak",
+              "citations": [
+                {
+                  "quote": "超然楼位于湖东北岸，是一座仿木结构钢筋混凝土建筑，建于2009年，高51.7米、共7层。",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                },
+                {
+                  "quote": "楼内设置展厅，主题是济南当地历史文化和木雕文化。",
+                  "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                  "observedAt": "2026-10-06T03:07:30Z"
+                }
+              ],
+              "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+              "observedAt": "2026-10-06T03:07:30Z"
+            }
+          ],
+          "sourcePolicy": "web_primary_model_background_xhs_separate",
+          "machineReview": {
+            "model": "deepseek-v4-flash",
+            "status": "passed",
+            "version": 1
+          },
+          "profileVersion": 1,
+          "qualityVersion": 2
+        }
+      },
+      "summary": {
+        "canonical_place_id": 5953,
+        "mention_count_30d": 3,
+        "recommend_score": 12.5
+      }
+    }
+  ],
+  "mentions": [
+    {
+      "id": 11342,
+      "raw_note_id": 2545,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费，傍晚可看超然楼亮灯夜景，游玩2小时",
+      "evidence_text": "傍晚看超然楼亮灯夜景",
+      "route_order": 9,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 120
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.826069+00:00",
+      "inputHash": "dc203578b322711271205094caac47d9e5582ffee95a9886df121a09fcfbeade"
+    },
+    {
+      "id": 11379,
+      "raw_note_id": 2547,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南核心景点，可赏荷花",
+      "evidence_text": "大明湖荷花",
+      "route_order": 2,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有荷花景观",
+              "quote": "大明湖荷花"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.838255+00:00",
+      "inputHash": "a215000598ce9f16b0ea018427fff9a7ac4e9649a6049bc0088351b5bed57c7b"
+    },
+    {
+      "id": 11387,
+      "raw_note_id": 2548,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "可看超然楼亮灯，有游船项目",
+      "evidence_text": "想看超然楼亮灯，那就凑好时间玩到晚上",
+      "route_order": 7,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "大明湖畔夏雨荷是夏天的限定",
+              "quote": "大明湖畔夏雨荷是夏天的限定哦"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.841133+00:00",
+      "inputHash": "d80bb75de95b550142fdea5ee197fda33511edbba6bea3748286e294ef40edb6"
+    },
+    {
+      "id": 11402,
+      "raw_note_id": 2569,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南必玩景区，免费",
+      "evidence_text": "趵突泉、泉城广场、大明湖等溜达着就能到",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.148869+00:00",
+      "inputHash": "3bd2e34f75bfd9908944a8ab12fa3c5c5b5b172fc14b93ecd6c896786c6758c8"
+    },
+    {
+      "id": 11411,
+      "raw_note_id": 2550,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南著名湖泊，列入推荐路线第二天。",
+      "evidence_text": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "0871e20cbac7dff387436c86e369e38bcc2a20b48bbb42f588d22d3b0803109f"
+    },
+    {
+      "id": 11421,
+      "raw_note_id": 2550,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "hotel",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "住宿推荐区域，靠近超然楼和曲水亭街，夜景方便。",
+      "evidence_text": "大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。",
+      "route_order": null,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "ca04fe8d23bd0ca2c7a049ae792931869420d5538bef1d7124683ce8286755b9"
+    },
+    {
+      "id": 11429,
+      "raw_note_id": 2567,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "可泛舟游湖，荷花即将开放。",
+      "evidence_text": "泛舟游湖，超惬意！荷花快开啦~",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "可泛舟游湖，有荷花。",
+              "quote": "泛舟游湖，超惬意！荷花🪷快开啦~"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "dcd326260fe92004a681f309d8697e6f04e4b91be36d48b769ab6e393defa9f5"
+    },
+    {
+      "id": 11434,
+      "raw_note_id": 2618,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "全网最火雨荷花灯在北门入口附近，夜景好看",
+      "evidence_text": "全网最火的花灯，就在北门入口不远处",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "湖畔雨荷花灯位于北门入口不远处，靠近湖边",
+              "quote": "全网最火的花灯，就在北门入口不远处（靠近湖边）"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:22.949678+00:00",
+      "inputHash": "09f59ae74137f1a0d6fc90589e6ca9397ce8dc567bad037fb21b4441e2edad44"
+    },
+    {
+      "id": 11450,
+      "raw_note_id": 2553,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南最著名景点，可乘船环湖漫步，欣赏湖景",
+      "evidence_text": "可以乘坐游船，环湖漫步，欣赏美丽的湖景",
+      "route_order": 10,
+      "confidence": 0.95,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 120,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "济南最著名的景点之一",
+              "quote": "大明湖是济南最著名的景点之一"
+            },
+            {
+              "text": "可乘坐游船，环湖漫步，欣赏湖景",
+              "quote": "在这里可以乘坐游船，环湖漫步，欣赏美丽的湖景"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.939024+00:00",
+      "inputHash": "bfdb28ca6b70c52604f3d7e87630dd0729d62aaef0c065323c711f4ca6848b7e"
+    },
+    {
+      "id": 11462,
+      "raw_note_id": 2570,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "小桥流水，氛围感强，适合拍照",
+      "evidence_text": "拍小桥流水 氛围感拉满",
+      "route_order": 11,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有小桥流水，氛围感强",
+              "quote": "拍小桥流水 氛围感拉满"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.151862+00:00",
+      "inputHash": "3df68fb1319e22a3696e033a26573b9a76b996c0b91cd0cde313a76813fb8999"
+    },
+    {
+      "id": 11473,
+      "raw_note_id": 2560,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费开放，值得一逛",
+      "evidence_text": "大明湖免费逛",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.429709+00:00",
+      "inputHash": "42587bbf74a56e90ae6cb0fbba55d5d49d2c7eed56c15c93a1498940c9c63ac6"
+    },
+    {
+      "id": 11494,
+      "raw_note_id": 2554,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "建议从北门进，先看荷花再看超然楼，南门出即曲水亭街，路线顺畅",
+      "evidence_text": "游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街",
+      "route_order": 2,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "大明湖有荷花和超然楼等景观",
+              "quote": "可以先看荷花再看超然楼"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.985456+00:00",
+      "inputHash": "743da95ae04c0f44093edf349da62130dcb9afe66b7e40ed3652e5ddf2c23c4a"
+    },
+    {
+      "id": 11507,
+      "raw_note_id": 2619,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "与曲水亭街、芙蓉街相邻，可串联游览",
+      "evidence_text": "周边就是芙蓉街、大明湖，走路几分钟就到",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:22.996602+00:00",
+      "inputHash": "122a8bee077c8d36209a19b2c6597c707b1dfeb26d7554aa1388eeca9e7fd44c"
+    },
+    {
+      "id": 11522,
+      "raw_note_id": 2563,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "四面荷花三面柳，一城山色半城湖",
+      "evidence_text": "四面荷花三面柳，一城山色半城湖",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "四面荷花三面柳，一城山色半城湖",
+              "quote": "四面荷花三面柳，一城山色半城湖"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.566249+00:00",
+      "inputHash": "3a72a9c55676e18ad414587b1a38995e42dfe15944b4ba44f10f0f52d1c2d248"
+    },
+    {
+      "id": 11539,
+      "raw_note_id": 2582,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "作为地标景点，附近美食众多，游玩后方便就餐",
+      "evidence_text": "就在大明湖西南对面",
+      "route_order": 1,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:45.287588+00:00",
+      "inputHash": "ff5fc550134890e3702e7aa270731f90feb758781b04debfb972688a4ca93b21"
+    },
+    {
+      "id": 11578,
+      "raw_note_id": 2564,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "傍晚六点左右去可看落日和夜景。",
+      "evidence_text": "傍晚六点左右去 可以看落日和夜景",
+      "route_order": 11,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.614650+00:00",
+      "inputHash": "bc75d09b09cc43ff1f405a9496e4ec996dd724cb7737bd79916bac9b2095bac6"
+    },
+    {
+      "id": 11581,
+      "raw_note_id": 2583,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "吃完饭过马路即到，附近景点集中，适合游览",
+      "evidence_text": "吃完饭过马路就是大明湖",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:45.334180+00:00",
+      "inputHash": "ae883c3c1a540e9298cb167bb202da3d15f3ab734296b97f8a7b475a11b0b52e"
+    },
+    {
+      "id": 11594,
+      "raw_note_id": 2622,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "湖景核心，可歇脚吃特色煎饼并等超然楼亮灯",
+      "evidence_text": "大明湖→超然楼",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.011615+00:00",
+      "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d"
+    },
+    {
+      "id": 11598,
+      "raw_note_id": 2589,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "作为地理位置参照，附近有美食老店，方便游览",
+      "evidence_text": "店里离着大明湖、五龙潭、趵突泉、泉城路都挺近",
+      "route_order": null,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:10.467928+00:00",
+      "inputHash": "8c21af9414b5a9573d3043a4a62b45977fa36dde821c8a795e6d3110b24a1dc3"
+    },
+    {
+      "id": 11601,
+      "raw_note_id": 2620,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "南丰祠附近游船码头旁机位人少安静，可拍超然楼与南丰桥最佳构图",
+      "evidence_text": "这个机位可以拍到超然楼和南丰桥的最佳构图",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "超然楼和南丰桥的最佳构图",
+              "quote": "这个机位可以拍到超然楼和南丰桥的最佳构图"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.005437+00:00",
+      "inputHash": "d59dda51e4ed5ca21ebfae1b728b0aa64826672c9897a27a0453af48ffcef5ad"
+    },
+    {
+      "id": 11604,
+      "raw_note_id": 2608,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "位于市中心，离趵突泉近，交通便利",
+      "evidence_text": "离趵突泉大明湖超近",
+      "route_order": null,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.170285+00:00",
+      "inputHash": "9756f825487b148759959c940c5ea7965b9ff0839a2a46b7643638137d6467f3"
+    },
+    {
+      "id": 11611,
+      "raw_note_id": 2584,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "饭后建议直奔，距离小馆子不远",
+      "evidence_text": "吃完建议直奔大明湖、趵突泉",
+      "route_order": 2,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:45.377346+00:00",
+      "inputHash": "91cf304c9cde9c73b3832edc0baa6d7a78de455c2e3bc28cf6c6ab3f7acfbc50"
+    },
+    {
+      "id": 11627,
+      "raw_note_id": 2624,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "重点景点，吹风舒服，可看超然楼亮灯和夏雨荷。",
+      "evidence_text": "重点来到了大明湖，吹吹风太舒服了",
+      "route_order": 11,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "可以吹风，非常舒服。",
+              "quote": "吹吹风太舒服了"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "c8e808bb521e406967eeb1a747d653a481d69e3cb95b2be93b644ec7f9d4610d"
+    },
+    {
+      "id": 11683,
+      "raw_note_id": 2609,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "泉城明珠，超然楼亮灯瞬间绝美，四季皆景",
+      "evidence_text": "超然楼亮灯瞬间绝美",
+      "route_order": 2,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.217557+00:00",
+      "inputHash": "0c3e9d5d261f2225d0cf9855d01e44c9ba12de9b7f81d31b117b72e7d677fdbb"
+    },
+    {
+      "id": 11693,
+      "raw_note_id": 2623,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "夜景和白天景色均值得观赏。",
+      "evidence_text": "p5-12是大明湖的夜景和白天的景色",
+      "route_order": 2,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.014361+00:00",
+      "inputHash": "74d818a21b749c5492e3ecee25ec6eb73712bdbbfd0ef2c63e17a83dad150627"
+    },
+    {
+      "id": 11695,
+      "raw_note_id": 2611,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南核心景区，周边商圈网红美食打卡点遍布",
+      "evidence_text": "就在济南核心景区大明湖附近",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "济南核心景区",
+              "quote": "就在济南核心景区大明湖附近"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.260073+00:00",
+      "inputHash": "c9eab08ccd30803cfd8046d051c5b4c21cf91193ad1ad8bcab21faa379903db4"
+    },
+    {
+      "id": 11703,
+      "raw_note_id": 2614,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "酒店位置便利，去大明湖等景点出行方便，打车起步价。",
+      "evidence_text": "去趵突泉、大明湖景点出行很方便",
+      "route_order": 2,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.352247+00:00",
+      "inputHash": "8f64e6bad28c6144fba6dec9072c684a7f7c3482f1fff7386983297621c6087b"
+    },
+    {
+      "id": 11705,
+      "raw_note_id": 2613,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "酒店附近可直达，交通便利",
+      "evidence_text": "可以直达大明湖",
+      "route_order": 2,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:19:58.332897+00:00",
+      "inputHash": "4c53bfdf97f3987402cd77fe4544dc6056067a79703300fdeffd62bcdeca9064"
+    },
+    {
+      "id": 12570,
+      "raw_note_id": 2545,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费，傍晚看超然楼亮灯夜景，游玩2小时",
+      "evidence_text": "傍晚看超然楼亮灯夜景",
+      "route_order": 9,
+      "confidence": 0.95,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 120
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.826069+00:00",
+      "inputHash": "a0f074a67c08be49ad2275f4c84fbed16393e28af1671da6f5e0b5b98f31057e"
+    },
+    {
+      "id": 12575,
+      "raw_note_id": 2803,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南标志性景点，附近住宿交通便利，可步行至超然楼和百花洲",
+      "evidence_text": "靠近济南站和大明湖景区，交通便利",
+      "route_order": 5,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:18.547973+00:00",
+      "inputHash": "984603851eb5b0860ef757d1de846de56b5f6973ba40092b7361ab2360c57764"
+    },
+    {
+      "id": 12629,
+      "raw_note_id": 2793,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "蓝调时刻可拍到超然楼亮灯，氛围感十足",
+      "evidence_text": "蓝调时刻在大明湖可以拍到超然楼亮灯",
+      "route_order": 14,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:49.499466+00:00",
+      "inputHash": "3d791c021a49e342e72e6b5edc6bef5e8922cb3270bb03ca712b6bd5b51024dc"
+    },
+    {
+      "id": 12641,
+      "raw_note_id": 2782,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "从南门进可依次打卡夏雨荷和超然楼",
+      "evidence_text": "曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼",
+      "route_order": 10,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "进门右转就能依次打卡到夏雨荷和超然楼",
+              "quote": "进门右转就能依次打卡到夏雨荷和超然楼"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:22.855979+00:00",
+      "inputHash": "c9d00f8cb81aa2ece1ec95293adcbac79807dedcaa8d2ba76b0f4fbe80aa6f7a"
+    },
+    {
+      "id": 12649,
+      "raw_note_id": 2547,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南核心景点，可逛老街赏荷花",
+      "evidence_text": "逛老街、蹲超然楼亮灯",
+      "route_order": 2,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.838255+00:00",
+      "inputHash": "d45eacbf5dea84a467b5e1a6f70f809bc83a241bca620cae3818ad3979c16a7e"
+    },
+    {
+      "id": 12654,
+      "raw_note_id": 2795,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "湖畔雨荷灯塑位于北岸钢琴广场，亮灯时间与超然楼同为19:30",
+      "evidence_text": "湖畔雨荷点亮时间与超然楼亮灯时间同为19:30",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "湖畔雨荷灯塑位于大明湖北岸钢琴广场",
+              "quote": "湖畔雨荷灯塑位置在大明湖北岸钢琴广场"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:49.942881+00:00",
+      "inputHash": "fb2a678a1c7464ee9cdc155b56e42a83ce0ebc4ab205a5d4087443af3b3a14f8"
+    },
+    {
+      "id": 12661,
+      "raw_note_id": 2816,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "从曲水亭街对面入口进入，可逛到湖北门附近",
+      "evidence_text": "曲水亭街对面就是大明湖入口",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:42.325142+00:00",
+      "inputHash": "f4446fa3337afb0edc1a649aa9a484a0c944542e4a3138093f9ef488442afe95"
+    },
+    {
+      "id": 12664,
+      "raw_note_id": 2806,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "从五龙潭东门沿河边步行10分钟到西南门，可坐电瓶车游湖",
+      "evidence_text": "顺着河边走路10分钟到大明湖西南门，坐电瓶车游湖南门下车",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "可乘坐电瓶车游览",
+              "quote": "坐电瓶车游湖南门下车"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:18.696780+00:00",
+      "inputHash": "ad00acebb700cf56d3cf74f83be4a8cbabac6b0b1ea92e24f1d21c578f11d2b8"
+    },
+    {
+      "id": 12671,
+      "raw_note_id": 2786,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "湖水辽阔，杨柳依依，超然楼前拍照满意",
+      "evidence_text": "终于亲眼见到课本里的大明湖！",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "湖水辽阔，杨柳依依，湖风超舒服",
+              "quote": "湖水辽阔，杨柳依依，湖风超舒服"
+            },
+            {
+              "text": "超然楼前拍下了特别满意的照片",
+              "quote": "在超然楼前拍下了特别满意的照片"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:22.978540+00:00",
+      "inputHash": "c3517409147067b56ea23750afc3aeef6e2e61207a67a116f8ed7056bbded0dc"
+    },
+    {
+      "id": 12677,
+      "raw_note_id": 2550,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南著名景点，列入推荐路线第二日行程。",
+      "evidence_text": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.888035+00:00",
+      "inputHash": "274b598d4124b55e4c14b0687ff26298a23b2999efcc091d5e217cd96c3e3b97"
+    },
+    {
+      "id": 12687,
+      "raw_note_id": 2817,
+      "name": "大明湖景区",
+      "normalized_name": "大明湖景区",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "路线起点，热门打卡点之一",
+      "evidence_text": "①大明湖景区(南门)",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:42.369552+00:00",
+      "inputHash": "967481a159b506d8e4c8a816a24c2a1b47295a5e0c0bc1d90ecea2da04b7812c"
+    },
+    {
+      "id": 12700,
+      "raw_note_id": 2807,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "西南门进，可坐船上岛看中心，船程约30分钟",
+      "evidence_text": "大明湖西南门进去往北走400米",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:18.820916+00:00",
+      "inputHash": "951dbe71fc36c897f9fd0810406cabdb20d065a02a436d76416b98934858d0f5"
+    },
+    {
+      "id": 12707,
+      "raw_note_id": 2567,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "可泛舟游湖，荷花将开，景色惬意",
+      "evidence_text": "泛舟游湖，超惬意！荷花快开啦",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.068468+00:00",
+      "inputHash": "2172d878c917464cb6ef29a048caebee00bfc347343f2b2ae24d801de3a2d552"
+    },
+    {
+      "id": 12712,
+      "raw_note_id": 2618,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "湖畔雨荷花灯全网最火，超然楼亮灯有古风表演，夜景值得打卡",
+      "evidence_text": "全网最火的花灯，就在北门入口不远处",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "湖畔雨荷花灯全网最火，位于北门入口不远处靠近湖边",
+              "quote": "全网最火的花灯，就在北门入口不远处（靠近湖边）"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:22.949678+00:00",
+      "inputHash": "83597abf5c60e2955eddcfcf5e02f8e3cc22533fb3f9f7aeb387ff09978bce04"
+    },
+    {
+      "id": 12728,
+      "raw_note_id": 2570,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "可拍小桥流水，氛围感拉满",
+      "evidence_text": "拍小桥流水 氛围感拉满",
+      "route_order": 11,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有小桥流水",
+              "quote": "拍小桥流水"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.151862+00:00",
+      "inputHash": "f826c538905d5552ad227240d6db541064556ada979314e39700e62cee96a377"
+    },
+    {
+      "id": 12733,
+      "raw_note_id": 2560,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费开放，值得一逛",
+      "evidence_text": "大明湖免费逛",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.429709+00:00",
+      "inputHash": "796195042dd9892e8f7f77fdca07b23a67ef46b63565e9cdf222a52d1f769f3c"
+    },
+    {
+      "id": 12748,
+      "raw_note_id": 2554,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "建议从北门进，先看荷花再看超然楼，从南门出即到曲水亭街",
+      "evidence_text": "游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街",
+      "route_order": 3,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "大明湖可看荷花和超然楼",
+              "quote": "可以先看荷花再看超然楼"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:32.985456+00:00",
+      "inputHash": "ce20717b44535ca4163279dc3239a4c0c3123a4e5c8adfd256beddb3cb8b6946"
+    },
+    {
+      "id": 12764,
+      "raw_note_id": 2808,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费开放，最值得看超然楼，白天壮观，晚上灯光不逊色",
+      "evidence_text": "最值得看的是超然楼，白天很壮观，晚上有灯光照起来也不逊色",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:18.839749+00:00",
+      "inputHash": "db97f650504bba744e7a1bdadf61eb4cedf996c25fa091ddc0b656a069c04102"
+    },
+    {
+      "id": 12772,
+      "raw_note_id": 2797,
+      "name": "大明湖公园",
+      "normalized_name": "大明湖公园",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "四面荷花三面柳的典型景观，体现济南水乡特色",
+      "evidence_text": "四面荷花三面柳说的应该就是这里了",
+      "route_order": 8,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "有四面荷花三面柳的景观",
+              "quote": "四面荷花三面柳说的应该就是这里了"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.114368+00:00",
+      "inputHash": "dbe953277c384143ed529d0669c1e9afeddc278482eea4fca8b1b59c3499d948"
+    },
+    {
+      "id": 12779,
+      "raw_note_id": 2798,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南经典景点，适合拍照出片",
+      "evidence_text": "1️⃣大明湖",
+      "route_order": 1,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.264172+00:00",
+      "inputHash": "c43a2d64becd10fcf732b83209e5a60178ad3008e5244d0fbfee83715891647e"
+    },
+    {
+      "id": 12794,
+      "raw_note_id": 2789,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "环湖步行看历下亭、铁公祠，可游船，超然楼开灯氛围感拉满",
+      "evidence_text": "环湖步行，看看历下亭、铁公祠，也可选游船环湖",
+      "route_order": 7,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "环湖步行，可看历下亭、铁公祠",
+              "quote": "环湖步行，看看历下亭、铁公祠"
+            },
+            {
+              "text": "可选游船环湖",
+              "quote": "也可选游船环湖"
+            },
+            {
+              "text": "超然楼在大明湖东岸，开灯瞬间氛围感拉满，江北第一楼",
+              "quote": "超然楼在大明湖东岸，开灯瞬间氛围感拉满，江北第一楼"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:23.118173+00:00",
+      "inputHash": "d3a5c7b8142c66e3a864ec90ab7246a0e26e10b78029aa7d209b59b09a5e219e"
+    },
+    {
+      "id": 12802,
+      "raw_note_id": 2811,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "一城山色半城湖，夏日荷风拂面，傍晚超然楼亮灯湖面光影绝美",
+      "evidence_text": "一城山色半城湖，夏日荷风拂面",
+      "route_order": 3,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "一城山色半城湖，夏日荷风拂面",
+              "quote": "一城山色半城湖，夏日荷风拂面"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:19.124180+00:00",
+      "inputHash": "6f1b43d5fceeb2d6764614d352724e1fa1e9f836c84dc1e5e3eeed8e91982f7a"
+    },
+    {
+      "id": 12814,
+      "raw_note_id": 2810,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "citywalk路线途经景点",
+      "evidence_text": "大明湖",
+      "route_order": 8,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:19.111155+00:00",
+      "inputHash": "85075a990e2dca08541fb1b673cb67d948420c20bc93c89775a0e05433140b5f"
+    },
+    {
+      "id": 12832,
+      "raw_note_id": 2564,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "傍晚六点左右去可看落日和夜景。",
+      "evidence_text": "傍晚六点左右去 可以看落日和夜景",
+      "route_order": 11,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "傍晚六点左右去，可以看落日和夜景。",
+              "quote": "傍晚六点左右去 可以看落日和夜景"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:17:57.614650+00:00",
+      "inputHash": "bf481bc69588ebc6c83f2b49673500e4d488a567ece69d707cb8a4b55849ac97"
+    },
+    {
+      "id": 12839,
+      "raw_note_id": 2800,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费开放，精华路线起点，适合拍照",
+      "evidence_text": "大明湖、曲水亭街免费",
+      "route_order": 1,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "大明湖南门是精华路线起点",
+              "quote": "起点大明湖南门"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.966517+00:00",
+      "inputHash": "3154e8c27bca40bcb9d4896d5327b00f3ac90b8eef1b1febb72ec857f378af3e"
+    },
+    {
+      "id": 12853,
+      "raw_note_id": 2829,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "四面荷花三面柳，景色优美",
+      "evidence_text": "四面荷花三面柳，一城山色半城湖",
+      "route_order": 5,
+      "confidence": 0.95,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "四面荷花三面柳，一城山色半城湖",
+              "quote": "四面荷花三面柳，一城山色半城湖"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:06.662516+00:00",
+      "inputHash": "dca7ec2aefa3852ee412d47ff8c5e26ba4c6dde9776c8873fbfec0f50a23cf75"
+    },
+    {
+      "id": 12860,
+      "raw_note_id": 2830,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "免费大湖，风光治愈，可散步划船，傍晚看超然楼亮灯",
+      "evidence_text": "免费大湖，风光治愈，可散步划船",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:06.710475+00:00",
+      "inputHash": "1b47910f97beaad8787a3ecb9c8fb9cd36c10eafa306d18074564f22625d1fd3"
+    },
+    {
+      "id": 12873,
+      "raw_note_id": 2834,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "“四面荷花三面柳，一城山色半城湖”，《还珠格格》夏雨荷所在地",
+      "evidence_text": "“四面荷花三面柳，一城山色半城湖”",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "“四面荷花三面柳，一城山色半城湖”，说的便是这里",
+              "quote": "“四面荷花三面柳，一城山色半城湖”，说的便是这里"
+            },
+            {
+              "text": "这里也是《还珠格格》里“大明湖畔夏雨荷”所在地",
+              "quote": "这里也是《还珠格格》里“大明湖畔夏雨荷”所在地"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:30.941615+00:00",
+      "inputHash": "1502fe4cef025f7686e7c1489a63beb25b899826f687081ce9d8920b9cccc40b"
+    },
+    {
+      "id": 12900,
+      "raw_note_id": 2856,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "推荐游览，位于推荐路线第五站",
+      "evidence_text": "按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.805290+00:00",
+      "inputHash": "7ccecb25db584ef56ceb02b0064fdc7e32fea2cbd619c610a7bcc52ba2ee9d5c"
+    },
+    {
+      "id": 12908,
+      "raw_note_id": 2853,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "距离芙蓉街步行可达，适合游览",
+      "evidence_text": "距离…大明湖…都是步行就可以到的！！",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:05:11.673466+00:00",
+      "inputHash": "7967ca1bc02796fad4ad8ed6099f70373703977d385b29f76e29cd25ea077a2e"
+    },
+    {
+      "id": 12921,
+      "raw_note_id": 2624,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "吹风舒服，可看超然楼亮灯和夏雨荷。",
+      "evidence_text": "吹吹风太舒服了",
+      "route_order": 12,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "吹吹风太舒服了。",
+              "quote": "吹吹风太舒服了"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "8002827debd63aef1711e1a2c20d7dabae9df1d6b7666e15ade6ccd0cfb0f560"
+    },
+    {
+      "id": 12923,
+      "raw_note_id": 2801,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "白天游览，但未详细描述，仅作为行程起点。",
+      "evidence_text": "白天就只逛了个大明湖差不多就天黑了",
+      "route_order": 1,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.978986+00:00",
+      "inputHash": "f65c68ab18097ac4b7a696c1f9118d705290011176ab34d3c9c0a490a2715615"
+    },
+    {
+      "id": 12926,
+      "raw_note_id": 2835,
+      "name": "大明湖景区",
+      "normalized_name": "大明湖景区",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "南门进沿路有卖荷花和超然楼手串，景色优美",
+      "evidence_text": "南门进，沿路有卖荷花的",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "南门进，沿路有卖荷花，会帮忙开花",
+              "quote": "南门进，沿路有卖荷花的，会帮忙开花"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:30.986231+00:00",
+      "inputHash": "04875833136e2bcb0e273d017115157fda13f53b8eb687a4e13b93676ca57edc"
+    },
+    {
+      "id": 12947,
+      "raw_note_id": 2837,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "可等待日落和超然楼亮灯，结束一日行程",
+      "evidence_text": "在大明湖等待日落、超然楼亮灯",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:31.077704+00:00",
+      "inputHash": "e7e8cad295a76a03ba8e8a92e17154214d2d37e96f9fa98dc2751e937a8cfdac"
+    },
+    {
+      "id": 12959,
+      "raw_note_id": 2839,
+      "name": "大明湖景区",
+      "normalized_name": "大明湖景区",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "打卡超然楼、夏雨荷同款点位，沿湖风景绝美",
+      "evidence_text": "打卡超然楼、夏雨荷同款点位，沿湖吹吹风，风景绝美",
+      "route_order": 11,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "超然楼",
+              "quote": "打卡超然楼"
+            },
+            {
+              "text": "夏雨荷同款点位",
+              "quote": "夏雨荷同款点位"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:31.165217+00:00",
+      "inputHash": "2bad3e4eb854ed62d4b958dc154479c4fccc3e7db2be60bd5b95884242b55ef3"
+    },
+    {
+      "id": 12973,
+      "raw_note_id": 2840,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "超大湖泊，可坐游船到历下亭，傍晚湖风舒服，垂柳依依，有古迹可看",
+      "evidence_text": "超大湖泊，绕湖一圈要两小时可以坐游船",
+      "route_order": 9,
+      "confidence": 0.95,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 120,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "超大湖泊，绕湖一圈要两小时",
+              "quote": "超大湖泊，绕湖一圈要两小时"
+            },
+            {
+              "text": "可坐游船到历下亭",
+              "quote": "可以坐游船（10r/人）到历下亭"
+            },
+            {
+              "text": "铁公祠、北极阁等古迹可顺路看",
+              "quote": "铁公祠、北极阁等古迹可顺路看"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:31.214700+00:00",
+      "inputHash": "db535aedfb0b22ac29adbf61d3a93a11e7e8f49e276e75f6d9d7c60c60270894"
+    },
+    {
+      "id": 12979,
+      "raw_note_id": 2843,
+      "name": "大明湖",
+      "normalized_name": "大明湖",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "夜景静谧唯美，适合打卡",
+      "evidence_text": "P7—P9：大明湖",
+      "route_order": 5,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:04:47.025194+00:00",
+      "inputHash": "647a0a6a44d34b58d421155a234ee7d83918bef01a7bafedc2ad3581da485ce1"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2545,
+      "city": "济南",
+      "title": "济南citywalk🍃1-2日经典游玩路线live",
+      "desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11342,
+        12570
+      ]
+    },
+    {
+      "id": 2547,
+      "city": "济南",
+      "title": "济南 3 天 2 夜保姆级攻略😘新手闭眼冲",
+      "desc": "耗时整理📍济南 3 天 2 夜完整行程，打卡济南核心景点，避开人流与弯路。📍赏名泉、逛老街、蹲超然楼亮灯，美食点位一并整理好，计划就绪出发🌊\n.#山东济南[话题]##济南[话题]##济南旅游[话题]##济南旅行[话题]##济南旅游攻略[话题]##济南美食[话题]##济南探店[话题]##济南景点[话题]##假期去哪玩[话题]##济南攻略[话题]##济南吃喝玩乐[话题]##趵突泉[话题]##大明湖[话题]##济南美食推荐[话题]##周末去哪儿[话题]##暑假旅游[话题]##济南漂亮饭[话题]##济南美食必吃榜[话题]##济南亲子游[话题]##穷游攻略[话题]##毕业季[话题]##吕氏疙瘩汤[话题]##济南荷花[话题]##大明湖荷花[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11379,
+        12649
+      ]
+    },
+    {
+      "id": 2548,
+      "city": "济南",
+      "title": "山东——济南",
+      "desc": "一日游线路如图所示\n济南的四季，各有各的风采\n春天的花朵，夏天的绿荫\n秋天的果实，冬天的雪景\n\t\n到达济南站已是早晨\n下了火车立刻步行前往赵家甜沫\n会路过一条路\n路旁长满了高大的梧桐树\n分不清品种\n在春夏之交只觉得清凉\n\t\n吃了两次甜沫\n感觉还可以\n再配上炸物\n妥妥充满碳水的早晨\n吃饱喝足毕竟要走一天路\n按照一日游的地图\n首先赶早去趵突泉\n\t\n景区内还有很多大大小小的泉眼\n每个都咕噜咕噜咕噜\n还有小鱼嬉戏其中\n皆若空游无所依\n\t\n赶在大部队到来之前游览完趵突泉景区\n随后步行前往五龙潭\n\t\n夏季的五龙潭\n是孩童玩水的好地方\n拥有一个强有力的水枪\n是不是可以称霸水池\n\t\n看时间已过中午\n前往最近的春水锅贴吃午饭\n顺路买杯阿水大杯茶\n量大，好吃\n\t\n饭饱后\n找个小巷子钻进去\n沿着弯曲的小巷子\n前往曲水亭街和百花洲\n\t\n小巷子里也有很多泉眼\n开发前的曲水亭街很安静\n溪水潺潺\n垂柳依依\n顺路往北走\n便到了大明湖\n\t\n大明湖畔夏雨荷是夏天的限定哦\n想看超然楼亮灯\n那就凑好时间玩到晚上\n关于超然楼的亮灯时间还是提前看景区公众号\n最新时间如图所示\n\t\n五龙潭，趵突泉，大明湖均有游船可乘\n大明湖景区内\n南门码头：\n日间票价50/人\n航线：绕大明湖老区、新区一周\n夜间票价35/人（17:30-21:00）\n航线：绕大明湖老区一周\n稼轩祠码头：\n票价10/人\n航线一：稼轩祠-历下亭-稼轩祠（往返）\n航线二：稼轩祠-历下亭-铁公祠（单程）\n湖西码头：\n票价35/人（豪华游舫含导游讲解）\n路线：湖西码头-历下亭-湖西码头\n有夜航18:00-21:00\n铁公祠码头：\n票价10/人\n航线一：铁公祠-历下亭-铁公祠（往返）\n航线二：铁公祠-历下亭-稼轩祠（单程）\n超然楼码头：\n票价50/人\n航线：绕大明湖老区、新区一周\n自驾电瓶船\n海底世界小船站（2-6座）\n150/小时，每超过10分钟加收20元\n铁公祠小船站（2-4座）\n100/小时，每超过10分钟加收20元\n护城河游船\n黑虎泉-趵突泉60/人（含趵突泉门票）\n黑虎泉-大明湖湖西50/人\n黑虎泉-大明湖超然楼80/人\n黑虎泉-黑虎泉（环线）100/人\n营业时间9:00-17:30\n夜航18:00-20:00\n\t\n按照我个人的行程\n第一天的安排差不多到此\n晚上有空余时间\n可以前往芙蓉街\n泉城广场看看夜景\n想吃把子肉作为晚餐的话\n也可以选择超意兴\n\t\n第二天的早晨\n吃扎实的山东煎饼\n配上一碗豆腐脑\n\t\n早起爬千佛山\n爬的不是很累\n挺热的\n后可以坐地铁前往山东博物馆\n剩下的小半天\n交给城中心剩下的黑虎泉等地\n顺带看一眼解放阁\n离开之前\n带上泉水\n#济南旅游[话题]# #山东旅游[话题]##趵突泉[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11387
+      ]
+    },
+    {
+      "id": 2550,
+      "city": "济南",
+      "title": "愿每一个去济南的人都能刷到这篇！！！",
+      "desc": "真心羡慕大家去济南之前可以刷到这个，\n来过济南N次总结出的旅游攻略最全版👇\n请查收~~~\n\t\n👉济南游玩路线（三天两夜版）\n✅day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁\n✅day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街\n✅day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠\n\t\n👉必吃美食\n油旋、甜沫、把子肉、宝勤临沂炒鸡、牛肉烧饼、锅贴、肆意鸭脖、阿水大杯茶\n\t\n👉住宿\n✅泉城广场附近：步行就可以到达趵突泉、黑虎泉景点，挨着商场吃饭很方便，周围地铁公交多。\n✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。\n✅济南站附近：交通方便，去各个景点都方便，对于第二天赶火车人群比较友好。\n✅曲水亭街附近：中式庭院、泉水庭院之类的民宿比较多，适合年轻人。\n\t\n#学生党旅游[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南美食[话题]##趵突泉[话题]##山东旅游攻略[话题]##国庆旅游[话题]##十一旅游[话题]##宝勤临沂炒鸡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11411,
+        11421,
+        12677
+      ]
+    },
+    {
+      "id": 2553,
+      "city": "济南",
+      "title": "济南特种兵一日游",
+      "desc": "1.【五龙潭】 早上9:00\n第一站是五龙潭公园。清晨的五龙潭，空气清新，水波荡漾，宁静的环境非常适合散步和拍照。免费。从东门进南门出，南门有龙潭观鱼、中共山东省委旧址。游览时间：约1小时，\n2.【趵突泉】 上午10：00\n从五龙潭步行约10分钟即可到达趵突泉。在这里可以看到泉水从地下喷涌而出，场面十分壮观。趵突泉公园内还有许多历史建筑和纪念碑，非常值得一看。五龙潭公园南门对面就是趵突泉北门，北门进，东门出。成人门票40元/人。\n游览时间：约1.5小时\n3.【泉城广场】 上午11:30\n游览完趵突泉后，步行至泉城广场。泉城广场是济南市中心的标志性广场，广场上有音乐喷泉和各种雕塑，是拍照打卡的好地方。游览时间：约20分钟\n4.【黑虎泉】 中午12:00\n从泉城广场步行前往黑虎泉，黑虎泉是济南四大名泉之一，以其独特的“黑虎吐水”景观闻名。这里的泉水特别清凉甘甜，游客可以尝试饮用，感受纯净的泉水滋味。游览时间：约30分钟\n5. 【解放阁】 下午12:30\n从黑虎泉步行至解放阁，大约10分钟。解放阁是济南市的重要历史纪念建筑，登上解放阁，可以俯瞰整个济南市区\n游览时间：约30分钟\n6. 【宽厚里】 下午12:30\n接下来前往宽厚里，这是济南的一条古色古香的商业街，充满了传统的风味。在这里可以品尝到各种济南特色小吃，还可以购买一些纪念品带回家。\n午餐和游览时间：约1.5小时\n7. 【芙蓉街】 或【恒隆广场】休息一下 下午2:00\n从宽厚里步行至芙蓉街，约10分钟。芙蓉街是济南的美食街，这里汇聚了各种地道的小吃，可以继续品尝更多的美食，感受济南的风味。\n游览时间：约30分钟\n8. 【曲水亭街】 下午2:30\n游览完芙蓉街后，步行至曲水亭街。曲水亭街是济南保存最完好的明清古街之一，两旁是古老的建筑，很有特色。\n游览时间：约30分钟\n9.【文庙】免费。南门进，北门出，北门出去就是大明湖。\n10.【大明湖】 下午3:30\n从曲水亭街步行前往大明湖，大明湖是济南最著名的景点之一，在这里可以乘坐游船，环湖漫步，欣赏美丽的湖景。南门进，东北门出。\n游览时间：约2小时\n11. 【超然楼】 晚上5:30\n最后一站是超然楼，从大明湖步行前往，超然楼是济南的地标建筑之一，登楼俯瞰大明湖和整个济南市区，夜晚的超然楼灯光璀璨，景色非常迷人。\n游览时间：约30分钟#旅游式特种兵[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11450
+      ]
+    },
+    {
+      "id": 2554,
+      "city": "济南",
+      "title": "大学生暑假旅行📍济南citywalk两日游路线",
+      "desc": "如果你周末想换种方式逛城市，\n那就来济南citywalk吧！\n从趵突泉的泉眼到曲水亭街的石板路，\n听泉水叮咚，寻老城烟火。\n收好这份济南一日游citywalk路线\n一起感受老舍笔下的济南！\n\t\n📕济南旅游省心建议\n‼️趵突泉早上7点就开放，如果想不拥挤的就能在各个不错角度拍到照片，建议早上九点前就要去，越早越好!大学生领“畅游卡”可以mian门票哦！\n‼️高铁站可以选择大明湖站或者济南站，这两个站离景区更近些，而且大明湖站出站步行十分钟就可以到达大明湖南门!\n‼️不要再济南万象城地下停车场停车!标识很乱找不到自己的车在哪里，气流不畅停车费还很贵\n‼️去山东省美术馆和山东省博物馆记得提前yue!实在没有抢到美术馆的票可以当天刷身份证进入\n‼️可能会有朋友选择汉服妆造，不太推荐曲水亭街的店建议提前一天找好，避免浪费时间\n‼️如果想要浪漫的拍照打卡，可以选择老商埠，但这里距离核心景区还有一段距离，如果不是很喜欢拍照不太建议\n‼️游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街\n‼️来玩的宝子们建议选择大明湖附近的酒店，步行十分钟即可到达景区，让你身临其境的感受湖光山色\n‼️吃饭的话，在泉城广场里面有很多，如果想吃小吃的友友们可以去泉城广场背面的芙蓉街，里面有很多特色小吃\n\t\n✅济南交通:\n济南的景点大部分都在一起，其实步行就可以到达，部分远的景点可以骑单车或者打车\n\t\n✅济南住宿:\n建议住在大明湖或者泉城广场附近，比较热闹，距离其他景点都比较方便\n\t\n✅济南美食\n早餐在民族大街吃的人均💰20\n午餐在恒隆广场一家面馆吃的 味道一般\n晚餐可以去芙蓉街宽厚里吃一些小吃\n#济南citywalk[话题]# #济南旅游攻略[话题]# #济南打卡[话题]# #济南两日游[话题]# #济南景点[话题]# #济南两天一晚[话题]# #老舍笔下的济南[话题]# #泉城[话题]# #济南[话题]# #暑假旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11494,
+        12748
+      ]
+    },
+    {
+      "id": 2560,
+      "city": "济南",
+      "title": "济南一日Citywalk🚶‍♀️‍➡️超详细逛吃",
+      "desc": "2026.5.13济南已回，真的好好逛好好吃✌️整理了这条citywalk路线分享给你们~路线很顺，不费腿🦵\n-\n🚶济南一日citywalk路线\n趵突泉 → 步行5min → 五龙潭公园 → 步行8min → 曲水亭街 → 大明湖 → 黑虎泉 → 宽厚里（或打车10min到千佛山）\n-\n🍛济南吃了什么美食\n✔️超意兴把子肉（肥而不腻，浇肉汤拌饭香到跺脚）\n✔️油旋张油旋（非遗名吃，外酥里软葱香足）\n✔️甜沫儿（名字甜实际咸香，小米面熬的暖乎乎）\n✔️草包包子（百年老店，猪肉灌汤包爆汁不腻）\n✔️亮亮拉面（骨汤浓郁，拉面劲道牛肉大块）\n✔️老济南烧烤（羊肉串配扎啤，深夜烟火气）\n✔️九转大肠（鲁菜经典，酸甜咸辣香五味俱全）\n✔️牛肉烧饼（回民小区排队王，肉香饼酥）\n✔️济南锅贴（底部焦脆，三鲜馅爆汁）\n-\n💡小贴士\n趵突泉早上去人少，大明湖免费逛，黑虎泉可以接直饮水～学生证带好，部分景点半价！\n一天下来腿不累胃超满足，济南真好，下次还来😭\n#街头美食[话题]# #济南美食[话题]# #济南美食攻略[话题]##济南美食[话题]##济南[话题]##济南旅行[话题]# #济南拍照[话题]##特种兵旅游[话题]##路边摊[话题]# #探索世界进行时[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11473,
+        12733
+      ]
+    },
+    {
+      "id": 2563,
+      "city": "济南",
+      "title": "✨济南一日 citywalk｜逛吃不走回头路！",
+      "desc": "来济南玩，这一条路线就够了✅亲测好走不绕路，景点密集、逛吃方便、一天打卡核心景点，收藏这篇直接出发！\n\t\n✍️行程安排：\n五龙潭→趵突泉→泉城广场→黑虎泉→解放阁→宽厚里→曲水亭街→大明湖→超然楼\n\t\n🗺️景点介绍：\n📍五龙潭：\n四大泉群之一，水清潭幽。（免费，7:00–22:00）\n📍趵突泉：\n天下第一泉，泉水终年喷涌。（40元，7:00–19:00）\n📍泉城广场：\n济南城市客厅，泉标 + 音乐喷泉（免费，全天）\n📍黑虎泉：\n三虎头喷涌气势足，可接泉水直饮（免费，全天）\n📍解放阁：\n黑虎泉旁仿古阁楼，登阁俯瞰老城（免费，9:00–16:00，周一闭馆）\n📍宽厚里：\n青石板路配仿古建筑，小吃文创集中（免费，全天）\n📍曲水亭街：\n“家家泉水，户户垂杨”，有老济南最原始的生活风貌（免费，全天）\n📍大明湖：\n四面荷花三面柳，一城山色半城湖（免费，全天）\n📍超然楼：\n夜晚亮灯很漂亮，登楼可赏湖光山色（登楼40元，08:00 - 22:00）\n\t\n🚗 交通指南：\n详见图P3。\n\t\n🏨 住宿推荐：\n🌿泉城广场/趵突泉周边：\n核心景区中心，步行可达各景点，逛吃方便。\n🏞️大明湖/超然楼周边：\n环境优美，湖边散步舒服，夜晚看超然楼亮灯、去曲水亭街方便。\n🚄济南站周边：\n交通枢纽，预算友好，连锁酒店多，入住方便。\n\t\n🌟 美食推荐：\n🍜特色美食：\n📍把子肉：酱香浓郁，肥而不腻，用麻绳捆扎的济南灵魂美食。\n📍九转大肠：鲁菜经典，酸甜咸香，口感软糯层次丰富。\n📍爆炒腰花：刀工精细，急火快炒，脆嫩爽口。\n📍糖醋鲤鱼：外酥里嫩，酸甜适口，鲁菜头牌。\n📍牛肉烧饼：卤肉塞满酥脆烧饼，肉汁丰盈。\n📍油旋 + 甜沫：螺旋焦脆油旋，配咸香暖胃甜沫，老济南早餐绝配。\n🏠美食店铺：\n超意兴、刘小忙把子肉、春水锅贴、穆得・老周家牛肉烧饼、油旋张。\n\t\n📜旅行tips：\n详见图P4。\n\t\n#旅游攻略[话题]# #对我友好的旅行[话题]# #济南[话题]# #济南旅游[话题]# #济南美食[话题]# #济南吃喝玩乐[话题]# #周末去哪儿[话题]# #济南一日游[话题]# #大明湖[话题]# #济南旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11522
+      ]
+    },
+    {
+      "id": 2564,
+      "city": "济南",
+      "title": "大学生济南两日游｜来看看老舍笔下的济南📝",
+      "desc": "🌷Day1\n第一站：山东博物馆➕山东美术馆\n两个就隔一条街 非常之近\n——博物馆旁边有一个万象城 可以去那里吃中饭\n\t\n第二站：千佛山 美院门进 先往左看大佛 再往右上山\n上山可以乘坐缆车 也可以步行\n\t\n第三站：环联夜市 人超级多\n\t\n🌷Day2\n第一站：五龙潭公园 西门进 南门出\n\t\n第二站：趵突泉 北门进 东门出\n⭐️尽量在九点之前到达 人较少\n\t\n第三站：泉城广场 打卡地标\n\t\n第四站：黑虎泉➕解放阁 沿护城河走\n——吃中饭\n\t\n第五站：宽厚里 就是一个步行街 可以选择不去\n——下午回酒店休息\n\t\n第六站：大明湖 傍晚六点左右去 可以看落日和夜景\n\t\n——吃晚饭\n第七站：芙蓉街 吃完晚饭大概十点左右去 人不多\n\t\n济南真的是大学生友好城市\n公共交通和景点都不需要钱\n而且人都很善良且有素质\n唯一的感觉不足的就是吃的没什么特色\n但是景真的很好看\n春天来了公园里花都开了 很美\n不愧是被称作北方小江南的地方\n\t\n⭐️酒店尽量选在中山公园附近\n离景点都很近\n景点之间距离都不远\n从哪个门进出都是有考虑的\n完全顺路 不走回头路 不走重复景点\n#济南[话题]# #济南攻略[话题]#\n#济南旅游[话题]# #济南旅游打卡[话题]#\n#大学生周末游[话题]#\n#出游大学生[话题]#\n#泉城[话题]# #趵突泉[话题]# #大明湖[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11578,
+        12832
+      ]
+    },
+    {
+      "id": 2567,
+      "city": "济南",
+      "title": "📍𝐉𝐢 𝐍𝐚𝐧  |  老舍笔下的泉城",
+      "desc": "济南City Walk Day1️⃣老商埠+大观园+宽厚里+泉城广场⛲\n📍 老商埠：复古建筑超出片！文艺青年必冲！红砖墙+咖啡馆，氛围感拉满~ ☕️\n📍 大观园：穿越老济南！市井烟火气十足，夜景更有味道！🌆\n📍 宽厚里：吃货天堂名不虚传！把子肉、油旋、奶茶...空着肚子来就对了！🍢🥤\n📍 泉城广场：地标打卡！看喷泉⛲️、喂鸽子🕊️，感受泉城心跳！💙\n\t\n济南City Walk Day2️⃣趵突泉+大明湖+曲水亭街+芙蓉街+解放阁+黑虎泉，日行3万步玩遍济南古城！\n💧 趵突泉：天下第一泉名不虚传！三股水翻腾太治愈~课本照进现实！📖\n🏞️ 大明湖：“皇上，您还记得大明湖畔的夏雨荷吗？”泛舟游湖，超惬意！荷花🪷快开啦~\n🍶 曲水亭街：济南版“小江南”！青砖小瓦，泉水穿流，茶馆超有韵味~必喝大碗茶！🍵\n🍜 芙蓉街：比宽厚里更老牌！爆肚、煎饼卷大葱...小吃多到挑花眼！人从众𠈌~ 😋\n🏯 解放阁：俯瞰老城&黑虎泉！登高怀古，夜景超震撼！✨\n🐯 黑虎泉：本地人打水的地方！泉水清甜直饮，接一杯尝尝济南味道！🚰\n\t\nDay3️⃣淄博City Walk | 进淄赶烤🔥 暴走3件套：烧烤+文创+琉璃，爽到飞起！\n\t\n🍢 【八大局市场】\n终于吃到正宗淄博烧烤！小饼蘸酱+炭火小炉🔥卷葱撸串香迷糊了～人均50撑到扶墙出！\n✅必点：带皮五花肉、小饼、甘蓝菜！本地人蹲小马扎的烟火气绝了！\n\t\n📸 【唐库文创园】\n宝藏打卡地！科比墙、彩虹楼梯、复古咖啡店…随手拍都像在加州！文艺青年狂喜✨\n☕️ Tips：下午茶选露台位置，夕阳滤镜美哭！\n\t\n💎 【琉璃博物馆】\n震撼！看千年琉璃工艺在发光✨ 梦幻吊灯、琉璃白菜…像闯进水晶宫！\n🔥 伴手礼强推：琉璃手串！精致不贵～\n\t\n#济南旅游[话题]# #济南攻略[话题]# #老商埠[话题]# #趵突泉[话题]# #大明湖[话题]# #曲水亭街[话题]# #淄博烧烤[话题]# #进淄赶考[话题]# #淄博陶瓷琉璃馆[话题]# #唐库文创园[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11429,
+        12707
+      ]
+    },
+    {
+      "id": 2569,
+      "city": "济南",
+      "title": "说句实在的，恒隆里外有点东西",
+      "desc": "分享一个五一来济南玩超级舒适的隐藏游玩攻略！\n那就是把恒隆当做泉城citywalk中转站！！\n\t\n✅恒隆距离济南必玩景区都超近！[派对R]\n趵突泉、泉城广场、大明湖、曲水亭街等溜达着就能到！\n\t\n✅恒隆里面是品牌首店、餐饮、小甜市集等。\n饿了来恒隆吃个饭，比路边摊吃的安心！\n小甜市集有甜品、甜水、香气、文创等，也超值得逛！这里还有被称为济南第一的厕所，总得来见识一下吧[暗中观察R]\n\t\n✅游玩路线可以参考这个，轻松舒适不走冤枉路！\n\t\n五龙潭——趵突泉——泉城广场——恒隆广场——珍珠泉——曲水亭街——大明湖——超然楼——护城河——黑虎泉——恒隆广场——泉城广场喷泉\n\t\n✅景点攻略：\n1、以上只有趵突泉需要门票，其他景点都免费\n2、泉城广场可以去打卡泉标，现在还有超好看的月季，不要错过呀！\n3、超然楼亮灯时间：19：10—22：00\n4、黑虎泉接的免费泉水，肠胃虚弱的朋友不要直接喝哦\n5、泉城广场晚上喷泉时间为20:00—20:30\n6、恒隆广场五一专属活动：小甜市集！甜品、甜水、香气、文创等，超值得逛！\n\t\n#济南旅游攻略[话题]##济南五一攻略[话题]# #济南游玩攻略[话题]# #济南小众旅游[话题]# #趵突泉景区[话题]#  #恒隆广场[话题]# #济南恒隆广场[话题]# #市集[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11402
+      ]
+    },
+    {
+      "id": 2570,
+      "city": "济南",
+      "title": "济南📍一日citywalk路线｜必拍的18张live图",
+      "desc": "如果只有一天时间玩济南\n建议直接复制这条路线‼️\n不走回头路 分分钟拍出人生照片\n-\n🚩【路线】\n趵突泉➠五龙潭➠黑虎泉➠解放阁➠银座➠西更道街➠起凤桥八号➠曲水亭街➠后宰门街➠百花洲➠大明湖➠超然楼\n⇩\n🕗8:00-9:30📍趵突泉（p3.15）\n📷早起冲人少 拍喷涌的泉眼和大可爱鸭\n🕣9:30-10:30📍五龙潭（p6）\n📷对面假山拍框镜机位\n🕘10:30-11:30📍黑虎泉（p11）\n📷拍清澈见底的泉水 还可以喝哦\n🕤11:30-12:00📍解放阁（p18）\n📷拍济南标志性建筑\n🕤12:00-13:30📍银座商城（p5.7.9.12）\n📷拍若来Nanci静谧花园 超出片\n🕥13:30-14:30📍西更道街（p4.10）\n📷5号拍老舍笔下的济南墙 1号拍簪花少女墙\n🕦14:30-15:00📍起凤桥八号（p8）\n📷古香古色的门洞 烟雨江南即视感\n🕐15:00-16:00📍曲水亭街（p17）\n📷吃一串酸蘸儿 拍老济南涌泉胡同\n🕜16:00-16:30📍后宰门街（p13）\n📷拍济南府大字墙\n🕑16:30-17:30📍百花洲（p1.2）\n📷导航书香胡同 拍黑色济南大字\n🕒17:30-18:30📍大明湖（p16）\n📷拍小桥流水 氛围感拉满\n🕒18:30-19:30📍超然楼（p14）\n📷七点半亮灯 一瞬间很壮观\n-\n路过银座商城（泺源大街）居然偶遇了「若来Nanci静谧花园」森系治愈感简直拉满啦🍃布满绿植和漂亮的花 还有超可爱巨型Nanci 超出片 随手一拍都好看📸\n现场打卡发小红书还能领盲盒/香卡/书签～还有DIY手作 沉浸式玩遍一整个夏天🌿\n5.30-7.31都有活动噢～宝子们快拉上姐妹赴一场花园之约吧❤️\n\t\n#济南[话题]# #济南旅游[话题]# #济南拍照[话题]# #济南旅行[话题]# #济南旅游攻略[话题]# #济南机位[话题]# #济南攻略[话题]# #济南一日游[话题]# #对我友好的旅行[话题]# #友好旅行计划[话题]# #出片友好旅行[话题]# #Nanci静谧花园[话题]# #若来Nanci济南银座快闪[话题]# #0元出片机位[话题]# #一万种旅行howto[话题]# #周末去哪儿[话题]# #假日citywalk[话题]# #假期去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11462,
+        12728
+      ]
+    },
+    {
+      "id": 2582,
+      "city": "济南",
+      "title": "济南）逛完大明湖直奔的！！！！好好吃啊啊啊…😭",
+      "desc": "就在大明湖西南对面！位置hin好找，吼吃又平价！\n烧饼夹虾球、锅巴鸡翅、茶香排骨、薯片牛胸口、鱿鱼年糕、牛胸口卷烙馍、拉丝番茄炒蛋、柠檬虾仁…太多美食了！\n店里还有各种鲁菜特色美食，随便点都不踩雷～\n人均五六十，喜欢这种便宜又好吃的菜馆子！！\n距离大明湖、曲水亭街、百花洲、黑虎泉、趵突泉、五龙潭..都很近去哪儿也都很方便！\n#济南美食[话题]##济南美食推荐[话题]##济南旅游攻略[话题]# #趵突泉附近美食[话题]# #趵突泉附近的美食[话题]# #济南特色美食[话题]##大明湖附近美食[话题]# #周末去哪儿[话题]# #灵感好店出道计划[话题]# #济南吃喝玩乐[话题]# #济南好吃的美食[话题]# #济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11539
+      ]
+    },
+    {
+      "id": 2583,
+      "city": "济南",
+      "title": "济南，吃完会用一生怀念的。。。。🥹🥹",
+      "desc": "就在济南大明湖附近，跟朋友经常吃他家的老店，这才是我们本地人爱吃的鲁菜馆子！新开这家味道也是没的说👍🏻饭点来基本座无虚席…很多本地回头客和游客都来吃。。\n\t\n他家的👉🏻肘蹄拌饭、烧饼夹虾球、番茄拉丝炒蛋、干煸鱿鱼须、芥末虾球、茶香排骨、烙馍卷牛胸口…这些特色菜都能吃到🤤也有经典的鲁菜家常菜，像是糖醋鲤鱼、爆炒腰花、风味茄子、爆三样、九转大肠等等都是随便点不出错，现点现做！好好吃！！\n\t\n吃完饭过马路就是大明湖，附近离着趵突泉、五龙潭、黑虎泉、曲水亭街、芙蓉街、泉城广场都很近。。来旅游的姐妹们，真心建议和家里人还有朋友来吃一顿！！好吃实惠！！\n\t\n📍鲁宴·八不食味道(大明湖总店)\n\t\n#济南[话题]# #济南美食[话题]# #济南鲁菜[话题]# #济南美食推荐[话题]# #趵突泉附近美食[话题]# #曲水亭街[话题]# #济南特色美食[话题]# #趵突泉[话题]# #济南美食必吃榜[话题]# #济南旅游攻略[话题]#  #济南本地人推荐[话题]# #济南旅游[话题]# #济南美食攻略[话题]# #济南鲁菜推荐[话题]# #济南鲁菜馆推荐[话题]# #济南老馆子[话题]# #周末去哪儿[话题]# #济南攻略[话题]# #鲁菜[话题]# #走街串巷找美食[话题]# #街头巷尾的苍蝇馆子[话题]# #大明湖附近美食[话题]# #济南大明湖附近美食[话题]# #济南好吃的美食[话题]# #大明湖[话题]# #泉城广场[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11581
+      ]
+    },
+    {
+      "id": 2584,
+      "city": "济南",
+      "title": "济南！好吃的小馆子总是默默无闻。。（好吃不贵",
+      "desc": "济南趵突泉附近！街边默默无闻的小馆子！\n就是济南家常菜的味道。。点的几道菜都不错！\n\t\n脱骨大肘子、椒麻黄喉鱼、芥末虾球、烧饼夹虾球、锅包肉大虾、番茄拉丝炒蛋、茶香排骨…\n•\n鲁菜做的也不错，糖醋鲤鱼、风味茄子、糖醋里脊、炒鸡…盲点不踩雷～不点硬菜的话差不多人均五六十\n\t\n吃完建议直奔大明湖、趵突泉！距离芙蓉街，曲水亭街也不远～\n\t\n📍李长久萃华楼\n#适合父母辈的宝藏餐厅[话题]# #本地人安利的美食[话题]# #大声安利本地美食[话题]# #条条小路有好吃[话题]# #济南美食[话题]# #老城区美食[话题]# #老巷子美食[话题]# #本地人爱吃的店[话题]# #小城暴走吃喝路线[话题]##济南[话题]#  @吃货薯@吃货薯@生活薯@生活薯@城市情报官",
+      "unavailable": false,
+      "mentionIds": [
+        11611
+      ]
+    },
+    {
+      "id": 2589,
+      "city": "济南",
+      "title": "谁能帮我从济南打包一份这个🥹🥹",
+      "desc": "在趵突泉北门！！很多年的老店了，经常和朋友来吃⋯别小瞧不起眼的街边小店，一到饭点就坐满了人！！！\n\t\n他家的锅贴、老济南炒合菜、腰花都好好吃，每次去我都会点！\n\t\n最近还上新了年糕炒鱿鱼、咸蛋黄鸡翅玉米、牛胸口卷烙馍！还有爆炒腰花，我们卷着小饼真的太香了！！\n\t\n店里离着大明湖、五龙潭、趵突泉、泉城路都挺近，吃完附近逛逛真的很方便！路过一定要去吃一顿！\n\t\n#济南美食[话题]##济南美食推荐[话题]##济南旅游攻略[话题]# #大明湖附近美食[话题]# #济南攻略[话题]##济南特色美食[话题]##趵突泉附近美食[话题]##济南旅游[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11598
+      ]
+    },
+    {
+      "id": 2608,
+      "city": "济南",
+      "title": "济南旅行攻略（简单实用版）-住宿篇",
+      "desc": "刚整理完济南超接地气住宿攻略\n主打一个简单实用！不绕弯子！\n第一次去济南的姐妹直接抄作业✅\n先给宝子们科普几个关键知识点！📝\n真的很重要！别到时候买错票、住错地方！😭\n\t\n🚄 关于济南火车站、机场（千万别搞混！）\n・济南站 / 大明湖站：市中心！离趵突泉大明湖超近🚶‍♀️\n・济南西站：济南正西方，离市区远但有地铁🚇\n・济南东站：济南东北方，离市区最远\n・机场：在济南东站北边，比济南东站还远十几公里✈️\n⚠️ 往返尽量选同一个站！济南东西站隔超远！跑断腿！\n\t\n🚌 关于济南市内交通\n・有地铁！支付宝领乘车码就能坐💳\n・西客站 / 东客站 / 机场都通地铁\n・济南站 / 大明湖站 / 趵突泉大明湖没有地铁！只能打车 / 公交\n・共享电车几乎没有！别指望！🚫\n・打车就是正常省会价格，不算便宜💸\n\t\n结合交通和景点，直接推荐 3 个住宿区\n对应图上 ABC，按需选择👇\n\t\n📍 A 区\n✅ 适合：到济南西 / 济南站 / 大明湖站的宝子\n✨ 优点：酒店价格相较于趵突泉附近的市中心要低一些💰\n💣 缺点：离千佛山、山东博物馆、环联夜市远一点（前两个景区都有地铁站，环联夜市距离地铁站稍微远一些）\n\t\n📍 B 区（景区核心区）\n✨ 优点：距离趵突泉大明湖最近！玩着超方便😎\n💣 缺点：酒店价格是三个区域里最高的💸\n\t\n📍 C 区\n✅ 适合：到济南东站 / 坐飞机的宝子\n✨ 优点：酒店价格是三个区域里最低的、距离千佛山和山东博物馆都比较近\n💣 缺点：离民族大街稍远\n\t\n💡在打算好住宿的区域后，酒店怎么选择呢👇\n・自驾：考虑酒店品牌和价格即可\n・非自驾：想省钱就住地铁 / 公交站附近！省打车费！\n\t\n✨写在最后（真心建议！）\n去看趵突泉的宝子，一定要避开四月杨柳絮纷飞的日子！\n我 4 月初和 9 月底都去过，差别真的太大了！\n4 月杨柳絮飘满湖面，潭水上飘一层白毛，清澈见底的感觉完全没了\n上面的图都是我 9 月底拍的，水超级清！\n\t\n#济南[话题]# #济南旅游[话题]##济南攻略[话题]# #济南旅行[话题]# #对我友好的旅行[话题]# #济南住宿[话题]# #山东旅游[话题]# #趵突泉[话题]# #RED新生代创作大赛[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11604
+      ]
+    },
+    {
+      "id": 2609,
+      "city": "济南",
+      "title": "事实证明！在济南只有看地图才能玩明白",
+      "desc": "太实用了不愧是济南本地人‼来济南只有看地图攻略才靠谱真心是这样的！20多年济南人给大家熬夜做了份济南行程攻略，吃住行都是写全了✍希望大家能够来济南派上用场哦\n-\n✅必去九大景点\n1️⃣ 趵突泉 – 天下第①泉，三股水昼夜喷涌，李清照纪念堂藏身园中2️⃣ 大明湖 – 泉城明珠，超然楼亮灯瞬间绝美，四季皆景3️⃣ 千佛山 – 登顶俯瞰泉城全景，兴国禅寺香火千年4️⃣ 山东博物馆 – 齐鲁文化殿堂，亚醜钺等21万件藏品免费预约5️⃣ 灵岩寺 – 海内四大名刹之首，宋代彩塑罗汉像被誉为“海内第 一名塑”6️⃣ 黑虎泉 – 免费开放，泉水从三兽头喷射，可自带杯子接水品尝7️⃣ 五龙潭 – 26处古泉藏身园中，秦琼祠所在地，潭水湛蓝如玉8️⃣ 芙蓉街/宽厚里 – 百年小吃街，油旋、甜沫、把子肉满足舌尖狂欢9️⃣ 曲水亭街 – 家家泉水，户户垂杨，老济南水墨长卷漫步好去处\n#济南旅游攻略[话题]##济南美食[话题]##济南旅游住宿[话题]##济南旅游路线图[话题]##济南[话题]##济南旅游[话题]##济南旅游景点[话题]##济南旅游景点攻略[话题]##假期去哪玩[话题]##济南吃喝玩乐[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11683
+      ]
+    },
+    {
+      "id": 2611,
+      "city": "济南",
+      "title": "五一来济南住这3家吧！人均120💰！",
+      "desc": "📍第一家（大明湖）\n就在济南核心景区大明湖附近，周边商圈网红美食打卡点遍布\n步行就能到达#宽厚里[话题]# #泉城广场[话题]# #大明湖[话题]# 等景点\n轻奢商务风设计简约又高级，房间全部都是智能家居\n躺在床上就能完成开关灯窗帘等。就连卫生间都有两个洗手台\n-\n📍第二家（大明湖）\n离大明湖、曲水亭街很近，步行十分钟就到\n晚上去芙蓉街宽厚里小吃街也很方便\n装修设计也很复古和现代元素结合\nLoft设计每层都不小，上下都有卫生间\n有浴缸累了可以边赏景边泡澡，很舒服\n-\n📍第三家（趵突泉）\n步行可达大明湖和趵突泉\n五龙潭公园 出门就是小吃街\n酒店位于趵突泉内被周围的花草树木环抱其中🥰\n坐在房间内的飘窗上🕊\n窗外就是护城河，春赏花，夏赏荷，秋听婵，冬观雪🌨无论四季，无论晴雨，皆有欢喜\n-\n🚩作为经常出游的“老司机”，出游酒店建议一定要提早订！我看过了，去哪儿旅行很靠谱！\n-\n#济南[话题]# #济南酒店[话题]# #济南民宿[话题]# #济南住宿[话题]# #济南平价酒店[话题]# #济南平价民宿[话题]# #济南平价住宿[话题]# #济南旅行[话题]# #大明湖[话题]# #泉城路步行街[话题]##五一假期[话题]# #五一节[话题]# #五一出游[话题]# #五一去哪玩[话题]# #假期去哪玩[话题]# #五一假期去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11695
+      ]
+    },
+    {
+      "id": 2613,
+      "city": "济南",
+      "title": "济南！！趵突泉！！70💰！平价酒店值哭了",
+      "desc": "做了3天济南攻略挖到的宝藏酒店\n✔在趵突泉附近 ✔复式loft ✔设施齐全\n最近来济南旅游的姐妹都冲这家！！\n-\n📍离老城区很近，溜达着到地铁站，可以直达趵突泉、大明湖、千佛山， 附近有万象城、万达、天街；楼下橙子便利店、外卖餐厅都有很方便~\n🏠房间空间很大，loft结构布局合理，大床很舒适，设施齐全，全屋智能，投影追剧点电影很爽，落地窗景色好感觉视野开阔，还有全身镜，拍照搭衣服都方便！\n#济南[话题]# #济南民宿[话题]# #济南酒店[话题]# #酒店[话题]# #济南平价酒店[话题]# #发现宝藏酒店[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #亲子酒店[话题]# #暑期[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11705
+      ]
+    },
+    {
+      "id": 2614,
+      "city": "济南",
+      "title": "济南！趵突泉！87💰不想退房😭",
+      "desc": "准备中秋国庆来济南旅行的宝子！\n来看看这家！\n·\n🏠位置\n酒店坐落和谐广场核心商圈，去趵突泉、大明湖景点出行很方便，完全不用绕路折腾。打车去各大热门景点基本都是起步价，省下路费和赶路时间！\n·\n🩵房间\n间宽敞不拥挤，简约干净的装修超级耐看，床品软糯亲肤，玩累了回来躺下。采光通风超棒，视野开阔，遮光窗帘巨好用，一觉安稳睡到天亮🌞\n-\n🐾细节也超贴心！\n卫生间干湿分离，洗漱用品质感也不错。重要的是宠物友好+免费停车场，细节真的做的不错。\n\t\n#济南[话题]##济南酒店[话题]##济南酒店推荐[话题]##济南旅行[话题]##济南旅游[话题]##济南平价酒店[话题]##济南攻略[话题]##济南住宿[话题]##宝藏酒店推荐[话题]##济南探店[话题]##国庆[话题]# #中秋[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11703
+      ]
+    },
+    {
+      "id": 2618,
+      "city": "济南",
+      "title": "济南夜游保姆级攻略｜免费景点附地图",
+      "desc": "路线：大明湖北门➡️超然楼➡️曲水亭（百花洲）➡️起凤桥八号➡️泉城广场➡️黑虎泉➡️解放阁\n\t\n🌈大明湖（湖畔雨荷）：全网最火的花灯，就在北门入口不远处（靠近湖边），我去的时候还看到一些Q版的雨荷花灯，都在这条路线上～\n\t\n🌈大明湖（超然楼）：亮灯⏰18:20-22:30\n去的时候刚好遇见有古风小姐姐的表演\n（登楼需要40r，不登楼拍照打卡也很好看）\n\t\n🌈曲水亭：从大明湖南门出来就是百花洲，再往里走可以看到蓝色银河🌌\n\t\n🌈起凤桥：导航📍起凤桥八号\n（位置有点隐秘，容易走过）\n\t\n🌈泉城广场：泉标的位置\n🉑️蹲音乐喷泉（⏰19:00/20:00）\n注意雨天☔️可能不演哦，我就错过了[哭惹R]\n\t\n🌈黑虎泉：这里是环城水系公园，不止有黑虎泉\n泉水清澈见底，晚上看能见度都很高！夜景绝美！\n（本地人都会带桶装水来这接泉水）\n\t\n🌈解放阁：就在黑虎泉旁，晚上这里光线也很好，适合拍照📷人多的话可以去马路对面的机位～\n亮灯⏰17:50-22:00\n（登楼40r，学生半价）\n\t\n💡小Tips：\n1⃣️时间充足可安排两天游玩，按照这条路线步行即可，可以根据酒店位置安排～\n2⃣️不要在大明湖北门打滴滴回去，基本打不到，我们是从南门进北门出，回酒店实在走不动了，想打车结果出门走了一段路才打上的士🚕而且那天下雨，门口全是旅游团的人[哭惹R]\n3⃣️起凤桥旁边就是芙蓉街，是小吃街，感觉没必要去，直奔起凤桥即可，景区这种地方都差不多\n4⃣️宽厚里在解放阁的对面，想吃饭的可以去看看\n#山东旅游[话题]# #济南旅游攻略[话题]# ，#济南夜游[话题]# #大明湖[话题]# #超然楼[话题]# #曲水亭街[话题]# #解放阁[话题]# #黑虎泉[话题]# #泉城广场[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11434,
+        12712
+      ]
+    },
+    {
+      "id": 2619,
+      "city": "济南",
+      "title": "曲水亭街｜晚上逛才是正确打开方式🌙",
+      "desc": "晚上来逛曲水亭街，氛围感直接拉满✨\n\t\n巷子不宽，人不少，但很有烟火气。\n两边的小店亮着灯，泉水在脚下静静流。\n\t\n最惊喜的是买了一条手链，才5块钱！\n好看不廉价，景区这个价格真的良心\n\t\n📍周边就是芙蓉街、大明湖，走路几分钟就到，可以串在一起逛。\n#济南[话题]# #曲水亭街[话题]# #济南夜景[话题]# #济南小众景点[话题]# #5块钱的快乐[话题]##山东旅游[话题]# #灯会[话题]# #巷子里的烟火气[话题]# #小城夜生活[话题]# #相约古城夜景[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11507
+      ]
+    },
+    {
+      "id": 2620,
+      "city": "济南",
+      "title": "大明湖超然楼绝佳机位",
+      "desc": "路过超然楼本想给自己留个合照，结果正面也太多人了，而且都是同样人机模式。不太适合 I 人(┬＿┬)\n跟着大神们学拍照，机位在大明湖南丰祠附近的游船码头旁（最后有定位）。这个机位可以拍到超然楼和南丰桥的最佳构图，而且这个位置晚上人很少，远离景区主路，很安静也不怕打扰他人\n超然楼用的是🍎 5倍拍摄，拉低曝光即可。人像用 GR3X 用闪光灯\n#超然楼[话题]#\n#大明湖[话题]#\n#大明湖超然楼[话题]#\n#超然楼夜景[话题]#\n#超然楼拍照[话题]#\n#超然楼机位[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11601
+      ]
+    },
+    {
+      "id": 2622,
+      "city": "济南",
+      "title": "济南一日游✨逛遍老舍笔下「一城山色半城湖",
+      "desc": "谁懂啊！终于踩完老舍先生笔下的泉城济南所有核心景点了😭 整理了零绕路的一日游路线，新手跟着走完全不踩雷！\n🗺️超顺路线安排：\n五龙潭→趵突泉→黑虎泉→解放阁→宽厚里→曲水亭街→大明湖→超然楼\n从泉眼逛到老巷再到湖景，老济南的韵味一步到位，完全不用走回头路~\n🚗交通Tips：\n直接租辆小电驴！景点之间离得都很近，骑小电驴随走随停，吹着风逛老城不要太舒服，比打车挤公交方便太多！\n🍚逛到大明湖附近刚好可以歇脚吃顿地道本地味，有印着济南、大明湖、趵突泉地标的特色煎饼，配馓子、卤味肉片、葱段、甜面酱，还有热乎乎的砂锅菜，吃饱刚好等超然楼亮灯，幸福感拉满~\n\t\n#济南旅游 #济南一日游攻略 #泉城济南 #大明湖打卡 #趵突泉游玩 #济南美食 #济南出行指南 #攻略图",
+      "unavailable": false,
+      "mentionIds": [
+        11594
+      ]
+    },
+    {
+      "id": 2623,
+      "city": "济南",
+      "title": "“济南的冬天是响晴的”",
+      "desc": "p1.2.3.4趵突泉\np5-12是大明湖的夜景和白天的景色\np13.14曲水亭街#济南[话题]# #趵突泉[话题]# #济南的冬天[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11693
+      ]
+    },
+    {
+      "id": 2624,
+      "city": "济南",
+      "title": "济南一日游，跟我走👍",
+      "desc": "时间有限的小伙伴们，出发济南一日游，不迷路，拿捏拿捏[微笑R]\n我们是周六晚上做的卧铺北京出发，周日早上六点多到达大明湖站，吃喝就看自己的选择啦，，，\n第一站五龙潭，七点开园，一个小时就能逛完，西门进南门出，斜对过就是趵突泉啦，，，园子不小，里面有点东西，可以仔细逛一下呢。\n接着想去老舍故居就从南门出，500米就是老舍故居，不去的从东门出，马路对面就是泉城广场，走旁边的林荫小路，沿着护城河，就能看到黑虎泉，可以接泉水，能够直接喝的。\n尽头就是解放阁，可以进去参观一下。下来就是宽厚里，一整条街可以逛吃逛喝[吧唧R]，午饭可以在这里解决。接着逛芙蓉街，也都是小吃，走着走着到曲水亭街，很优美，然后去看有名的王府池子、起风桥。\n重点来到了大明湖，吹吹风太舒服了，等到快天黑的时候去找好位置看超然楼亮灯，然后去看看夏雨荷，非常充实的一天，晚上八点多从离得很近的济南西站打道回京。",
+      "unavailable": false,
+      "mentionIds": [
+        11627,
+        12921
+      ]
+    },
+    {
+      "id": 2782,
+      "city": "济南",
+      "title": "📍济南3️⃣天2️⃣晚｜保姆级攻略‼️人均500💰",
+      "desc": "篇幅有限，济南“景点拍照打卡机位”在下一篇，喜欢拍照的姐妹不要放过哦‼️\n\t\n🗺️路线\n📍Day1：\n1️⃣五龙潭：\n其实五龙潭并不大，每个景点离得也都很近，真的很美！\n2️⃣趵突泉：\n如果不想逛，只想去趵突泉，可以从南门或者东门进，很快就到了！\n3️⃣泉城广场：从趵突泉东门出来就直接可以看到泉城广场的地标建筑！\n4️⃣黑虎泉：\n❣️定位到南二门，进门右转下去就是黑虎泉，接泉水也在这里，⚠️注意从莲花水台盆接的水才能直饮！\n5️⃣解放阁：过桥从黑虎泉九女亭后面上去就是解放阁\n6️⃣宽厚里：解放阁马路对过就是宽厚里，一条小吃街\n7️⃣芙蓉街：也是一条小吃街，从芙蓉街32号拐进去就是起凤桥街，可以打卡起凤桥，然后穿过胡同就到曲水亭街了\n8️⃣曲水亭街：\n两边是小茶馆小酒馆，拍照超级出片，涌泉胡同机位也在这条街\n9️⃣百花洲：\n很多人导航“百花洲”，搜出来的是“百花洲历史文化街区”，其实曲水亭街和百花洲都属于“百花洲历史文化街区”。\n❣️大家说的百花洲的景点，是围着百花洲湖的街区，有很多小摊位，可以在这里逛逛（如图4红色⭕️所示）\n🔟大明湖：\n曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼\n\t\n📍Day2：\n1️⃣千佛山：\n这里我真的很想说一句，我恐高，所以对于我来说从历山院去山顶的路真的很难走！但是也有姐妹带着小朋友登顶！所以根据自身情况选择吧！\n2️⃣民族大街市场：当地居民去买菜的菜市场，整条街前面是各种小吃，后面是卖菜的，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆\n3️⃣大观园：可去可不去\n4️⃣老商埠•经三路：街区网红打卡点，很出片\n5️⃣泉城之眼：喜欢拍照的可以去机位打卡，只是为了看风景的话没太有必要\n9️⃣环联夜市：超级大的夜市！有时间可以去逛逛\n\t\n🥘美食：老周家牛肉烧饼（推荐👍）、杨家甜沫、孙家糖油条、油旋张、超意兴\n\t\n🚗出行：共享单车➕打车\n\t\n🏠住宿：我们住在火车站附近，到景点很方便\n#深度游攻略[话题]##济南旅游[话题]# #济南美食[话题]# #济南旅游攻略[话题]# #趵突泉[话题]# #大明湖[话题]# #千佛山[话题]##济南一日游[话题]##经三路[话题]# #老商埠[话题]# #每天写一篇旅游攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12641
+      ]
+    },
+    {
+      "id": 2786,
+      "city": "济南",
+      "title": "1.5天逛遍济南✨济你太美！",
+      "desc": "真心建议大家别节假日来济南挤人了！！\n错峰逛济南真的幸福感翻倍😭\n花了1.5天打卡济南经典老城路线\n景点超级密集、全程不绕路、走路就能逛\n第一天直接刷完天下第一泉整片景区\n沉浸式感受济南“家家泉水，户户垂杨”的温柔\n\t\n#五龙潭[话题]# P2—P3\n强烈推荐早上来！！\n完全是城市里的宝藏小众园林公园\n清晨的空气清新又湿润，没有喧闹的人流，安静又治愈\n潭水超级清澈，绿树环绕，慢悠悠散步太舒服\n相比于热门景点，这里真的适合静心放松\n\t\n#趵突泉[话题]# P4—P6\n济南的招牌景点！\n整趟逛下来我最偏爱濯缨池\n相比于三股水的热闹，濯缨池自带静谧氛围\n池中的鱼肥肥的超可爱\n\t\n#黑虎泉[话题]# P7—P10\n全程最惊艳我的地方！！[赞R]\n真的美到失语\n尤其是玛瑙泉！！[赞R]\n泉水是清透的碧绿色，像打磨好的翡翠玛瑙\n阳光照下来泉水通透发亮，灵动又治愈\n还可以接纯天然泉水喝，清甜爽口\n这才是济南泉水的灵魂所在！\n\t\n#珍珠泉[话题]# P11—P12\n相比趵突泉、黑虎泉的惊艳\n珍珠泉会显得温婉低调很多\n泉水不断冒出细碎小气泡，像散落的珍珠\n\t\n#曲水亭街[话题]# P13—P14\n一边是青砖灰瓦老民居，一边是潺潺流水\n随手拍都是温柔治愈的老城画面\n但是不建议在街上的公厕上厕所[偷笑R]\n\t\n#大明湖[话题]# P15—P18\n终于亲眼见到课本里的大明湖！\n湖水辽阔，杨柳依依，湖风超舒服\n在超然楼前拍下了特别满意的照片[哇R]\n\t\n想轻松逛济南的姐妹！直接抄这条路线！\n不赶行程、不累人、沉浸式感受泉城温柔\n#济南旅游[话题]# #济南旅行[话题]# #济南攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12671
+      ]
+    },
+    {
+      "id": 2789,
+      "city": "济南",
+      "title": "济南📍两天一夜，懒人版保姆级逛吃攻略‼",
+      "desc": "两日游路线👇\nDay1：五龙潭➡️趵突泉➡️黑虎泉/解放阁➡️宽厚里➡️曲水亭街➡️大明湖（超然楼亮灯）\nDay2：洪家楼天主教堂➡️山东博物馆➡️山东美术馆➡️燕喜堂➡️经三路老商埠\n\t\n关于住宿🏨\n✔️泉城路&泉城广场附近：步行直达趵突泉、五龙潭、宽厚里等知名景点，周边商超小吃密集，逛吃选择性多\n✔️大明湖周边：依山傍水环境清幽，临近曲水亭、芙蓉街，短途骑行即可穿梭老城街巷，适合偏爱静谧湖景的\n\t\n关于交通🚆\n👉到达交通\n✈️遥墙机场：搭乘地铁进主城，机场专线大巴直达泉城广场、济南火车站，赶时间也能直接打车入城\n🚆济南站坐落市中心，位置最优，去趵突泉、大明湖等景点都比较近\n🚄济南西站以高铁车次居多，换乘地铁进城；\n济南东站地处城东，地理位置偏远，前往青岛、烟台、威海等胶东半岛城市非常方便\n👉游玩交通\n🚇地铁覆盖多处热门景区，没有堵车的烦恼；\n🚲老城游览首选步行或共享单车，趵突泉、黑虎泉、宽厚里、大明湖等景点扎堆连片，短途代步很合适\n🚕日常打车便捷，早晚高峰容易拥堵\n\t\n关于景点🏯\n📍五龙潭：泉群密集（月牙泉、古温泉），池水碧绿，沿潭边散步喂锦鲤，打卡秦琼祠，浅滩可伸手碰泉水\n📍趵突泉：核心看三股水喷涌，园内必逛：李清照纪念堂、万竹园，早上9点前入园人流最少\n📍黑虎泉：四大名泉之一，三处兽头喷涌泉水，可以自带空水瓶接直饮泉水（济南必体验），沿护城河绿荫步道闲逛，临水乘凉\n📍解放阁：黑虎泉上坡即到，红色仿古楼阁，登阁远眺整条护城河、黑虎泉全景；展馆介绍济南解放历史，不想登楼楼下拍照即可\n📍曲水亭街：济南原版「家家泉水、户户垂杨」，青石板小路，门前流泉水，两侧老民居、手作小摊，拍照出片，白天文艺，夜景更美\n📍大明湖：环湖步行，看看历下亭、铁公祠，也可选游船环湖。超然楼在大明湖东岸，开灯瞬间氛围感拉满，江北第一楼，登楼40r\n📍山东博物馆：馆藏丰富，镇馆之宝有亚醜钺、鲁国青铜器、明代鲁荒王陪葬品、甲骨文、东平汉墓壁画\n📍经三路老商埠：民国复古洋楼街区，打卡爱心红绿灯、夹心胡同、复古砖墙；有很多咖啡店、文创可以逛逛看看休息一下，适合慢慢地逛逛拍拍\n#济南旅游[话题]# #济南[话题]# #济南旅游攻略[话题]# #济南美食[话题]# #济南历下区美食[话题]# #济南鲁菜[话题]# #济南本地人推荐[话题]# #旅游攻略[话题]# #周末去哪儿[话题]# #假期去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12794
+      ]
+    },
+    {
+      "id": 2793,
+      "city": "济南",
+      "title": "为了这❶❽张照片，特意🚄去了趟济南❗️附攻略",
+      "desc": "“四面荷花三面柳，一城山色半城湖”\n一座被泉水包围的城市\n有江南的温润也有北方的豪情 春暖花开，可以带着家人朋友一起漫步济南\n感受这座城市的浪漫和松弛～\n\t\n北京出发🚄1.5h即可达，周末两天刚刚好，轻松不赶路\n\t\n🗺️两天悠闲游玩路线\nDAY①:经三路➠纬三路➠老商埠➠大观园➠五龙潭➠趵突泉➠洪家楼\nDAY②:解放阁➠宽厚里➠芙蓉街➠起凤桥➠曲水亭街➠百花洲➠大明湖超然楼\n\t\n📷必玩打卡点\n❶老商埠：超大 “济南” 地标、玫瑰花墙、复古老爷车、多巴胺彩色墙面都很出片， 建议早上去，人少更好拍\n❷经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯，随手拍都很有氛围感\n❸大观园：古色古香的，汇聚了很多济南当地美食小吃，适合边走边尝鲜\n❹五龙潭公园：北方少有的清泉园林，泉水潺潺，景致清幽\n❺趵突泉公园：看三股泉水喷涌，泉池幽深波光粼粼，氛围感拉满\n❻洪家楼：哥特式建筑外观很有特色，内部彩色玻璃精致好看！有固定开放时间，建议提前规划，避免跑空\n❼解放阁：济南标志建筑，站在远处拍全景，很有纪念意义\n❽宽厚里&芙蓉街：两处相邻，遍布济南特色小吃和美食，也有不少“济南”大字打卡点，适合拍照逛吃\n❾起凤桥街：藏在巷子里的小桥流水，青砖黛瓦，满是江南韵味\n❶⓿百花洲&曲水亭街：自带江南氛围感，慢悠悠散步，就能感受老济南的慢生活\n❶❶大明湖&超然楼：蓝调时刻在大明湖可以拍到超然楼亮灯，氛围感十足！也可以登楼俯瞰大明湖全景\n❶❷时间充裕的，可以安排济南千佛山\n\t\n🏨住宿：住在泉水广场附近，出行、逛吃都方便\n\t\n🥣美食：油旋、甜麻辣肥蛤超好吃，把子肉配米饭，香而不腻，很下饭\n#新年旅行第一站[话题]##我是春节主理人[话题]##带着父母去旅行[话题]##长辈友好旅行地[话题]##过年就来小红书[话题]##北京周末去哪儿[话题]##北京出发旅游[话题]##我的私藏旅行路线[话题]##我的小众旅行攻略[话题]##周末去哪儿[话题]##本地人才知道的好地方[话题]##我和我的春节[话题]##咔嚓一张新年照[话题]##济南旅游[话题]# #济南拍照[话题]# #济南攻略[话题]# #济南周末游[话题]##济南两日游[话题]##大明湖[话题]##趵突泉[话题]#@生活薯",
+      "unavailable": false,
+      "mentionIds": [
+        12629
+      ]
+    },
+    {
+      "id": 2795,
+      "city": "济南",
+      "title": "大明湖超然楼打卡机位+最新亮灯时间",
+      "desc": "超然楼最新亮灯时间为每天19:30，关灯时间为22:00，宝子们不要跑空[拔草R]\n日落时间为19:17，每往后一天大概早1分钟，蓝调时刻为日落后的半小时内，但此时超然楼灯光的起始亮度比较低，需要等它烧一会儿会越来越亮[偷笑R]\n📍两大绝美拍摄机位第一个搜索“南丰戏楼”，于西侧游船码头处（图4位置）可拍到南丰桥与超然楼同框；\n📍第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景。\n\t\n手机拍摄建议使用专业模式，相机拍摄📸选择RAW格式，搭配三脚架拍摄20s以上长曝光，可柔化水面及云彩，光圈选择f8-11可拍出灯光星芒。\n\t\n📍湖畔雨荷灯塑位置在大明湖北岸钢琴广场，导航搜索“夏雨荷雕塑”或“北极阁码头”即可到达，湖畔雨荷点亮时间与超然楼亮灯时间同为19:30。\n\t\n觉得有用的话点个关注叭，主页持续更新拍照技巧，粉丝抽奖福利不停[哇R][玫瑰R]\n\t\n#大明湖[话题]# #超然楼[话题]# #超然楼亮灯[话题]# #济南[话题]# #打卡机位[话题]# #夏雨荷[话题]# #济南约拍[话题]# #泰安约拍[话题]# #互勉约拍[话题]# #富士[话题]# #遇见富士[话题]# #大明湖夜景[话题]# #超然楼亮灯时间[话题]# #湖畔雨荷[话题]# #济南旅游[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12654
+      ]
+    },
+    {
+      "id": 2797,
+      "city": "济南",
+      "title": "为了这18张照片📷特意去了趟济南（附机位）",
+      "desc": "Hi！我是裸辞后环游中国的 @王小草又出门了\n用18张照片打卡一座城市，这一次是济南！\n\t\n四面荷花三面柳，一城山色半城湖❗️\n济南绝对就是北方的“江南水乡”\n这次用3天时间了解了这座泉水中的城市🌆\n下面也把这次打卡的机位分享给大家❤️⭐️➕\n\t\n📷机位分享：\n1️⃣琵琶泉：可以把远处的解放阁和泉水下的锦鲤融合在一起！\n2️⃣-3️⃣明珠天地C：超然楼和绿地普利中心的古今同框；\n4️⃣五龙潭公园：利用假山的框架式构图，也是拍绿地中心古今同框的机位；\n5️⃣-6️⃣千佛山山顶：济南看日落的最佳地点，6点后可以免费进入；\n7️⃣-8️⃣超然楼：大明湖东的石桥上拍日落，湖西茶舍拍日出；\n9️⃣泉城广场：音乐喷泉开始时间为10点，15点和20点，推荐这几个时间去；\n1️⃣0️⃣玛瑙泉：小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动；\n1️⃣1️⃣-1️⃣2️⃣大明湖公园：四面荷花三面柳说的应该就是这里了；\n1️⃣3️⃣济南墙：在百花洲西的月下观棠旁的街巷内；\n1️⃣4️⃣洪家楼天主教堂：哥特式建筑风格，教堂的天花板真的超美；\n1️⃣5️⃣解放阁：也是济南解放纪念馆，珍藏了很多历史文物和照片；\n1️⃣6️⃣爱心红绿灯：经三路，爱心红绿灯和夹心胡同都在这里；\n1️⃣7️⃣四窟万象：一处仿制的石窟，内部为四大石窟的仿制品；\n1️⃣8️⃣山东大厦：大厦内的中庭真的超级震撼。\n\t\n#旅游编辑部[话题]# #旅游万粉扶持计划[话题]# #济南[话题]# #济南旅游[话题]# #济南旅行[话题]# #济南打卡[话题]# #济南拍照[话题]# #趵突泉[话题]# #王小草城市打卡机位[话题]# #山东旅游[话题]# @摄影薯",
+      "unavailable": false,
+      "mentionIds": [
+        12772
+      ]
+    },
+    {
+      "id": 2798,
+      "city": "济南",
+      "title": "济南9个景点36个姿势 直接抄作业！（存图版）",
+      "desc": "来济南旅游 别只会傻傻比耶了！\n我整理了济南9个景点的出片姿势👇🏻\n1️⃣大明湖\n2️⃣趵突泉\n3️⃣曲水亭街\n4️⃣泉城公园\n5️⃣华山湖公园\n6️⃣黑虎泉\n7️⃣经三路-老商埠附近很多好看的咖啡店\n8️⃣章丘明水古城\n9️⃣济南野生动物园\n\t\n#济南旅游[话题]# #拍照动作不重样[话题]# #穿搭攻略[话题]# #大明湖[话题]# #趵突泉[话题]# #明水古城[话题]# #拍照姿势[话题]# #旅行拍照[话题]# #小众出片地[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12779
+      ]
+    },
+    {
+      "id": 2800,
+      "city": "济南",
+      "title": "大明湖＆曲水亭街不绕路打卡路线",
+      "desc": "精华路线：1小时步行打卡，全程不绕路\n起点大明湖南门，一路串联曲水亭街各热门景点：\n大明湖南门、月下观棠、后宰门街、涌泉胡同、起凤桥、老舍文字墙、王府池子、百花桥&遐园。\n起凤桥人多，可改拍西侧灯笼亭子。\n隐藏机位：刘氏泉、西更道街、桥头路牌墙、来闲小院、一尺花园。\n游玩小贴士\n1. 拍照最佳时间：15:00-17:00；夜景18点后亮灯。\n2. 节假日人流量大，建议早到或错峰游玩。\n3. 街区仅限步行，车辆无法通行。\n4. 大明湖、曲水亭街免费；超然楼夜景需40元门票。\n#四面荷花三面柳[话题]# #大明湖拍照[话题]# #曲水亭街[话题]# #起风桥拍照[话题]# #济南拍照[话题]# #济南旅行[话题]# #济南拍照打卡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12839
+      ]
+    },
+    {
+      "id": 2801,
+      "city": "济南",
+      "title": "济南夜景机位分享🌃一个人citywalk被治愈了",
+      "desc": "低精力人旅游实在是早起不来\n白天就只逛了个大明湖差不多就天黑了…\n原本还在沮丧北方天黑得太早感觉一整天的时间好短暂\n结果超然楼亮灯的瞬间被惊艳到了[心心眼R]\n于是立马打满鸡血继续逛了逛曲水亭街\n（图1的超然楼和这个桥是分开的，我是之前刷到过有个博主这样拼图的我学习了一下[棒R]）\n建议18:00-20:00逛， 21:00后灯光会暗下来\n\t\n#济南[话题]# #夜游的快乐我知道[话题]# #我爱的城市自带BGM[话题]# #夜游好去处[话题]# #夜色下的城市夜景[话题]# #大明湖[话题]# #趵突泉[话题]# #城市夜景[话题]# #城市夜游这么玩[话题]# #夜景[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12923
+      ]
+    },
+    {
+      "id": 2803,
+      "city": "济南",
+      "title": "济南会惩罚每一个不做攻略的P人🏃🏻‍♂️",
+      "desc": "济南city walk路线｜2天1晚超全攻略来了✅\n刚从济南回来，济南真的别太好玩了，出片的景点真的不要太多🥹🥹这份旅游攻略大家快码住！希望能够帮助暑假即将去玩的宝宝们🫶🏻\n🟢路线安排\nDay1️⃣：趵突泉➡️五龙潭➡️芙蓉街➡️曲水亭街➡️大明湖\nDay2️⃣：黑虎泉➡️解放阁➡️洪家楼教堂➡️宽厚里➡️泉城广场\n🟢住宿建议\n1、一定要提前预约好酒店！！临时订房极有可能床位紧张，价格也会上涨很多倍，临走前不要遗忘自己的行李哦😙\n2、对住宿没有过多要求的宝宝，可以选择 民宿或青旅，注意对比评论区图片，以防“照骗”\n💡大明湖景区附近\n靠近济南站和大明湖景区，交通 便利，赶车超方便，步行几分钟即可抵达超然楼和百花洲打卡！！\n💡泉城广场附近\n有济南地标性建筑，性价比高，周边小吃较多，步行可抵达趵突泉景区\n💡历下区\n济南中心地区，周边景点多，交通 便利，大名鼎鼎的芙蓉美食街也在这里哦\n💡宽厚里附近\n地理位置优越，喜欢汉服和旗袍拍照的姐妹闭眼冲，氛围感超好，步行即可抵达黑虎泉\n明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。来这里，做一日“泉边人家”，便懂了老舍笔下“理想的境界”。\n#济南[话题]##济南旅游攻略[话题]##济南打卡[话题]# #学生党旅游[话题]# #攻略[话题]# #大学生暑假旅游[话题]# #老舍笔下的济南[话题]##趵突泉[话题]##大明湖[话题]##放假去哪玩⚡️⚡️[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12575
+      ]
+    },
+    {
+      "id": 2806,
+      "city": "济南",
+      "title": "济南慢走三小时不走回头路",
+      "desc": "最近济南高温，快快分享一下我在济南一早上三小时不紧不慢打卡了4个主要景点不走回头路是怎么走的\n早上7点半从山东大厦出门打车到趵突泉南门➡️约10分钟\n趵突泉➡️南门进北门出，人少好进，去得早的话一定先奔趵突泉，越晚人越多…园子里其他地方可以后面慢慢看（我就是先看了一处别的导致8点半才到趵突泉处人多的呀[失望R]）\n趵突泉公园北门出来走路五分钟过个马路进五龙潭➡️南门进东门出\n顺着河边走路10分钟到大明湖西南门，坐电瓶车游湖南门下车，南门出来马路对面就是曲水亭街，走走停停感觉要晒化了的时候果断打车回酒店\n#济南[话题]##趵突泉[话题]# #济南景点[话题]# #济南半日游[话题]# #山东旅游[话题]#\n#不走回头路[话题]# #随便走走的旅行[话题]# #济南旅游[话题]# #济南旅游攻略🔥[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12664
+      ]
+    },
+    {
+      "id": 2807,
+      "city": "济南",
+      "title": "济南攻略，泉城广场，趵突泉，五龙潭，大明湖",
+      "desc": "1：可以先去泉城广场\n2：然后趵突泉南门进，北门出，出来后对面就是五龙潭，附近有吃的。\n3：两公里距离然后到大明湖西南门进去往北走400米，想看大明湖中心就可以买前面码头的票，可以上岛十五分钟，50一位，整个船上时间30分钟内（但是有时候要等船，30分钟内会等到船）\n4：然后就可以坐大明湖走护城河到黑虎泉的船了，\n坐船50分钟。坐大明湖到黑虎泉这个票要提前一天预定不然买不到，并且确定好发船的时间，买几点的船就要几点上，错过了时间就坐不上了）\n5：如果从黑虎泉坐船到黑虎泉的话就要坐70分钟，如果想下船就得分段买票。\n我想自己逛逛，所以没有买全程坐船#济南旅游攻略[话题]# #趵突泉[话题]# #大明湖[话题]##济南攻略[话题]# #黑虎泉[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12700
+      ]
+    },
+    {
+      "id": 2808,
+      "city": "济南",
+      "title": "济南市内景区一日速通Plog丨40元2w步的一天",
+      "desc": "济南市内的交通出乎意料的难走，非机动车在街上乱飞，机动车开车十分迅猛，喇叭声不断，而且景区周边不好停车，因此我们选择9点出门避开早高峰打车出行。\n\t\n第一站：#五龙潭公园[话题]# （免费）\n西门进南门出，马路对面就是趵突泉北门\n\t\n第二站：#趵突泉[话题]# （正价票40元/人）\n北门进东门出（趵突泉景区比较大，里面除了趵突泉外有很多泉、纪念馆、故居等）\n\t\n第三站：#泉城广场[话题]# （免费）\n一路向东直行，走出广场后马上下楼梯，可以走到护城河边\n\t\n第四站：#黑虎泉[话题]# （免费）\n继续一路向东，沿着护城河河沿前行，一直走到黑虎泉取水点，可以远观解放阁\n\t\n第五站：#宽厚里[话题]# （免费）\n小吃街，门口有牌楼可以拍照打卡\n\t\n第六站：#西更道街[话题]# （免费）\n济南古城区，一路向北（可以导航曲水亭街确定方向），路上有一些小景点（#王府池子[话题]# 、珍珠泉、起凤桥街等），沿路也有一些小店可以逛（特产店有手把肉酸奶、荷花芙蓉李酸奶可以尝试，我觉得都是很特别的味道）\n\t\n第七站：#曲水亭街[话题]# （免费）\n一路向北，一条小河贯穿整条街，小桥流水人家的古镇感，走到头就可以看到大明湖南门。\n\t\n第八站：#大明湖[话题]# （免费）\n个人觉得大明湖除了湖边的风景外，最值得看的是#超然楼[话题]# ，如果不想整个走一圈的话可以导航超然楼，白天很壮观，晚上有灯光照起来也不逊色。\n\t\n我们9点半左右到达五龙潭，走走停停大约下午4点结束一整天的旅行。因为温度很舒服，全程走下来并没有很累~济南刚刚连续下了很多天的雨，最近天气放晴，泉水旺盛，正是出片的好日子！[赞R]",
+      "unavailable": false,
+      "mentionIds": [
+        12764
+      ]
+    },
+    {
+      "id": 2810,
+      "city": "济南",
+      "title": "济南📍一日游 超舒服的citywalk逛吃住攻略",
+      "desc": "路线行程🚗\n老舍故居→趵突泉→黑虎泉→宽厚里→解放阁→白石泉→曲水亭街→大明湖→超然楼\n\t\n🏠住宿\n住泉城广场/大明湖附近，步行看超然楼亮灯，周边吃喝便利，经济型酒店200左右\n\t\n🚇交通\n景点间骑车/步行就行，打车起步价不贵\n\t\n🍜必吃美食\n牛肉烧饼、羊汤、锅贴、把子肉、泉水包子\n\t\n✨小建议\n1. 趵突泉8点前去，人少好拍照\n2. 黑虎泉茶摊喝泉水茶，超惬意\n3. 曲水亭街工作日去更清净\n\t\n❌避坑\n1. 趵突泉枯水期别去，雨季后去更出片\n2. 芙蓉街、宽厚里小吃逛逛就行\n3. 超然楼亮灯前人多，提前占位\n\t\n#济南旅游[话题]# #济南一日游[话题]# #济南攻略[话题]# #济南美食[话题]# #济南打卡[话题]# #超然楼[话题]# #趵突泉[话题]# #大明湖[话题]# #济南旅行[话题]# #山东旅游[话题]# #打卡济南[话题]# #山东博物馆[话题]# #济南旅游攻略[话题]# #京津冀周边游[话题]# #周末旅游[话题]# #假期旅游[话题]# #济南旅行[话题]# #济南拍照[话题]# #济南美食[话题]# #曲水亭[话题]# #宽厚里[话题]#  #济南一日游[话题]# #济南特种兵旅游攻略[话题]# #济南旅游[话题]# #山东周边游[话题]# #不为打卡的旅游[话题]# #本地人做的攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12814
+      ]
+    },
+    {
+      "id": 2811,
+      "city": "济南",
+      "title": "济南2日游📍Citywalk路线攻略（附景点图",
+      "desc": "不必远赴江南，也能邂逅清泉古城与湖光灯火🌊泉水潺潺、亭台古建、文艺街巷、地道鲁味，夏日正是泛舟赏荷好时节！\n特地安排一趟济南之旅，给你们整理两天懒人闭环路线直接抄👇\n\t\n🖼D1 泉水老城人文线\n济南站→泉城广场→趵突泉→五龙潭→曲水亭街→解放阁→芙蓉街→大明湖→超然楼\n🖼Day2 文艺风光休闲线\n黑虎泉→宽厚里→经三路→洪家楼教堂→山东博物馆→山东美术馆\n\t\n🏞️趵突泉｜天下第1⃣泉，三股泉涌终年不息，亭台临水，感受老舍笔下灵动泉城\n🌿曲水亭街｜家家泉水、户户垂杨，青石板溪流蜿蜒，老城原生态慢生活氛围感拉满\n🌊大明湖｜一城山色半城湖，夏日荷风拂面，傍晚静待超然楼亮灯，湖面光影绝美\n⛪洪家楼教堂｜哥特式复古建筑，尖顶彩绘超出片，济南欧式地标打卡点\n🏛️山东博物馆｜齐鲁文化宝库，馆藏文物丰厚，读懂绵延千年的海岱文明\n🎨山东美术馆｜文艺青年必打卡，定期展出优质美术作品，适合安静闲逛拍照\n\t\n🍢济南必尝特色小吃\n🉑油旋🉑甜沫🉑把子肉🉑泉水茶汤🉑酸蘸儿🉑草包包子🉑煎饼卷大葱🉑炸耦合🉑泉水大碗茶🉑荷香酥鱼\n\t\n来济南怎么能少地道鲁菜！本地人私藏开了20年老牌鲁菜馆📍天天过年，烟火气十足，家常菜地道入味，分量实在，性价比在线。\n🔥必点清单\n1⃣香辣龙须卷饼｜饼皮劲道裹满鲜香配菜，一口超满足\n2⃣茶香排骨｜茶香融入肉香，咸香不腻，风味独特\n3⃣蛋黄贝贝瓜｜绵密南瓜裹咸香蛋黄，老少皆宜\n4⃣香辣蒜爆鲤鱼｜鱼肉鲜嫩入味，蒜香浓郁，鲁菜经典风味\n5⃣鸡胗爆黄喉｜火候恰到好处，双脆口感，下酒下饭神器\n6⃣炖公鸡｜肉质紧实入味，汤汁浓郁，妥妥硬菜\n7⃣那群狼吃肉｜大口吃肉超过瘾，肉食爱好者必点\n想要品尝正宗鲁菜的小伙伴别错过！店内家常菜选择丰富，朋友结伴、家庭聚餐都合适，沉浸式感受地道齐鲁烟火味\n\t\n💙出行\n🚗老城景点距离很近，步行、共享单车游玩最舒服；博物馆、教堂片区建议打车\n🚄济南西站/济南站抵达，建议入住泉城广场、大明湖周边，出行便利\n\t\n🏨住宿\n👉泉城广场/大明湖周边：景点集中，夜市餐馆多，出行游览首选\n👉经三路附近：文艺街区，咖啡馆云集，喜欢安静休闲可以选择\n\t\n#济南旅游[话题]##济南两日游[话题]##趵突泉[话题]# #大学生旅游[话题]# #超然楼亮灯[话题]#  #济南攻略[话题]##济南citywalk[话题]# #济南吃喝玩乐[话题]# #济南旅游攻略[话题]##济南美食[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12802
+      ]
+    },
+    {
+      "id": 2816,
+      "city": "济南",
+      "title": "2025年11月29日济南一日游",
+      "desc": "我可太喜欢济南了，济南的秋天和冬天真的封神，那些泉水太清澈了，连护城河都那么好看，我喜欢看这么清澈透亮的水，好纯净好健康好治愈！坐火车到济南站，然后直接去五龙潭，从这里开始逛起。坐公交车才发现老周家牛肉火烧就在上一站，离这不远，下次可以去尝尝。五龙潭对面就是趵突泉，以前我去过了因为有门票所以这次就不去了，五龙潭是没有门票的，听说是因为今年雨水多所以里面那个泉才喷水了。从五龙潭出去做公交车去黑虎泉，公交站旁边就是护城河，太好看了，我要是生活在这我愿意每周都出来看泉水。黑虎泉是济南市接泉水喝的地方，居然是像个水管子不停在流，旁边还有个游泳池，好像是免费的，应该也是这个泉水的吧。黑虎泉这里可以做游船，水好清像玻璃。黑虎泉对面就是宽厚里，从宽厚里往回走就是恒隆广场，今天的午饭是麻六记。穿过恒隆马路对面就是芙蓉街，反正每个城市都得有个这种热闹的卖小吃的步行街。芙蓉街走到头继续顺着胡同走就是曲水亭街，这一路胡同都好逛，里面有好几个网红拍照地。曲水亭街对面就是大明湖入口。从这个入口进去逛到湖北门附近就是夏雨荷。该说不说这版确实没有上版好看。从北门出来坐公交车到济南站结束一天行程。济南太好看了，明年秋天再来。",
+      "unavailable": false,
+      "mentionIds": [
+        12661
+      ]
+    },
+    {
+      "id": 2817,
+      "city": "济南",
+      "title": "1小时打卡济南曲水亭街！附详细路线攻略",
+      "desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12687
+      ]
+    },
+    {
+      "id": 2829,
+      "city": "济南",
+      "title": "02女大 | 周末独创济南2天1晚游玩攻略嗨~",
+      "desc": "嗨~我是肥猪💛我又出发啦\n自己一个人出去玩也很舒服，这次找了个周末去了趟📍济南，分享我的济南游玩攻略~\n✅游玩路线：\n✔️D1：趵突泉→五龙潭→芙蓉街→曲水亭街→大明湖→超然楼→宽厚里→解放阁→黑虎泉→泉城广场\n✔️D2：山东省博物馆→燕喜堂(CBD店)→千佛山→济南老商埠→经三路→返程\n-\n🏠住宿\n🎈泉城广场🎈大明湖🎈宽厚里附近都是不错的，交通出行和美食吃喝都很方便～\n-\n✅交通：\n✈️飞机：济南遥墙国际机场，距离市区30km\n🚄高铁/火车：济南站、济南西站、济南东站都是很不错的选择\n🚗在济南市区就打车出行就行~\n-\n✅景点介绍：\n📍趵突泉（40R）\n🔜济南七十二名泉之首，来济南不去打卡就算白来了\n📍黑虎泉（免费）\n🔜是本地人爱去的泉，很多本地人来这里接水回家喝~\n📍曲水亭街（免费）\n🔜这里的夜景还是很好看的，晚上去逛起来氛围感很绝~\n📍千佛山（景区票30R+洞窟票25R）\n🔜是济南三大名胜之一，山不高，20-40分钟就能登顶~\n📍山东博物馆（免费，记得预约）\n🔜馆藏丰富，亚醜钺、鲁王之宝都是必看的~\n📍大明湖（免费）\n🔜\"你还记得大明湖畔的夏雨荷吗\"，这里四面荷花三面柳，一城山色半城湖~\n-\n#济南美食[话题]##济南鲁菜打卡[话题]##济南拍照[话题]##济南一日游[话题]##济南旅行[话题]##济南住宿[话题]##济南交通[话题]##济南2天1夜[话题]##济南旅行攻略[话题]##济南[话题]##济南[话题]##历下区美食推荐[话题]##燕喜堂鲁菜馆[话题]##济南鲁菜推荐[话题]##济南本地人推荐[话题]##济南历下区美食[话题]# #大学生穷游[话题]# #大学生周末去哪玩[话题]# #高考完去哪玩[话题]# #毕业旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12853
+      ]
+    },
+    {
+      "id": 2830,
+      "city": "济南",
+      "title": "济南📍两日游丨懒人版不走回头路逛吃攻略",
+      "desc": "✅两日游路线\nDay1：五龙潭→趵突泉→黑虎泉→解放阁→曲水亭街→大明湖/超然楼\nDay2：千佛山→燕喜堂（CBD店）→山东博物馆→山东美术馆→经三路老商埠\n\t\n🏠住宿\n🉑泉城广场/趵突泉周边：步行可达Day1景点，地铁+打车都方便，逛吃便利\n🉑大明湖/曲水亭街附近：老城氛围浓，晚上适合慢游；到趵突泉步行15分钟\n🉑济南站/经三路老商埠周边：近高铁站，Day2路线顺路，复古街区多，出行不绕路\n\t\n🚘交通\n✈️飞机（遥墙机场）：地铁3号线转4号线到市区；机场大巴直达泉城广场；打车约50r\n🚄高铁/火车：济南站，步行15分钟到趵突泉；济南西站地铁1号线转4号线；济南东站偏东，地铁3号线可达\n🚇地铁：趵突泉、大明湖、山东省博物馆都有站点，避开堵车\n🚶步行+骑行：老城区（Day1）景点密集，全程步行/共享单车，轻松不累\n🚕打车：景点间打车多在15r内，高峰期避开泉城路、经十路\n\t\n✅景点介绍\n📍五龙潭：免费泉群，潭水清澈，锦鲤多，本地人常来遛弯\n📍趵突泉：天下第一泉，三股水常年喷涌，园林雅致，有李清照纪念堂\n📍黑虎泉：三虎头喷水，看着很壮观，本地人接泉水，氛围感足\n📍解放阁：黑虎泉旁红色地标，登阁俯瞰护城河，夜景亮灯很美\n📍曲水亭街：家家泉水户户垂杨，青石板路，老济南烟火气十足\n📍大明湖：免费大湖，风光治愈，可散步划船，傍晚看超然楼亮灯\n📍超然楼：大明湖地标，白天古朴，晚上亮灯绝美，夜景必打卡\n📍千佛山：济南名山，爬山祈福，登顶俯瞰全城视野好\n📍经三路老商埠：复古洋楼街区，网红店多，逛吃拍照两不误\n\t\n🚫注意事项\n1️⃣趵突泉、超然楼、千佛山建议提前予约，旺季可直接免排队省时\n2️⃣黑虎泉接泉水用空瓶，直接饮用，别浪费水资源，泉水清甜干净可直饮\n3️⃣解放阁周一闭馆，别跑空；开放时间9:00-17:00，傍晚观景视野很好\n4️⃣曲水亭街路窄人多，慢慢走，别踩泉水弄湿鞋，石板路湿滑注意脚下\n5️⃣超然楼亮灯19:00-21:00，提前占位拍倒影，夜景出片率特别高\n6️⃣千佛山早6:30前、晚18:00后免费入园，省钱省力，错峰游玩游客更少\n7️⃣山东省博物馆/美术馆周一闭馆，别带大件行李，安检入园更快捷\n8️⃣老商埠拍照避开正午，傍晚光线好，复古感拉满，氛围感不错，拍照出片\n#济南旅游[话题]# #济南旅游攻略[话题]# #旅游攻略[话题]# #济南美食[话题]# #济南鲁菜[话题]# #燕喜堂鲁菜馆[话题]# #济南本地人推荐[话题]# #假期去哪玩[话题]# #济南[话题]# #不为打卡的旅行[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12860
+      ]
+    },
+    {
+      "id": 2834,
+      "city": "济南",
+      "title": "济南📍📍两天一夜不走回头路游玩攻略！",
+      "desc": "两日游路线👇\nDay1：五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里➡️曲水亭街➡️大明湖➡️超然楼亮灯\nDay2：洪家楼天主教堂➡️山东博物馆➡️山东美术馆➡️经三路老商埠\n\t\n住宿🏨\n✔️泉城广场附近：步行可以到趵突泉、五龙潭、宽厚里这些景点，周边小吃也很多\n✔️大明湖周边：依山傍水环境清幽，喜欢夜晚宁静的可以选择在此住宿\n\t\n交通🚆\n👉到达交通\n✈️遥墙机场：搭乘地铁进主城，机场专线大巴直达泉城广场、济南火车站\n🚆济南站坐落市中心，位置最优，去趵突泉、大明湖等景点都比较近\n🚄济南西站以高铁车次居多，换乘地铁进城；\n👉游玩交通\n🚇地铁覆盖很多热门景区\n🚲老城游玩推荐步行或共享单车，趵突泉、黑虎泉、宽厚里、大明湖等景点相离很近\n🚕打车也很方便，就是早晚高峰容易拥堵些\n\t\n景点🏯\n📍五龙潭：园内泉潭相连，石桥古亭、绿树成荫，自然景色与历史人文相并，安静又治愈！\n📍趵突泉：语文书里的“天下第一泉”，园内泉群密布，一步一景，兼具自然景观与深厚人文底蕴\n📍黑虎泉：潭水清澈见底，本地市民常到此取水，还有泉水直饮点，可品尝天然泉水。一边是奔涌泉流，一边是古朴城墙，藏着最鲜活的泉城烟火。\n📍解放阁：阁内陈列着济南战役珍贵史料，历史与现代景色在此交汇，是感受济南红色历史的必到之处。\n📍宽厚里：紧邻解放阁，白日古巷清幽，入夜灯火摇曳，古韵烟火相融，漫步其间，感受老城慢时光 。\n📍曲水亭街：泉水顺着街巷缓缓流淌，岸边杨柳飘飘，完美还原家家泉水户户垂杨的画面，安静又治愈！\n📍大明湖：“四面荷花三面柳，一城山色半城湖”，说的便是这里。这里也是《还珠格格》里“大明湖畔夏雨荷”所在地，尽显泉城独有的温婉诗意。\n📍洪家楼教堂：哥特式建筑，双塔顶部造型精美，石雕、彩绘窗极具特色，是济南极具代表性的欧式历史建筑。\n📍山东博物馆:馆藏文物丰富，商周、汉魏等历代珍品，在这里能看到齐鲁悠久历史与地域文化，是了解山东文明的重要窗口。\n📍山东美术馆：馆内有绘画、雕塑、现代艺术等作品，艺术观赏陶冶情操，紧邻山东博物馆\n📍经三路老商埠：这里既有老济南的百年记忆，又充满新潮烟火，是感受济南老城另一面风情的好去处。\n#济南美食[话题]# #济南旅游攻略[话题]# #周末去哪玩[话题]# #历史人文旅游[话题]# #济南旅游景点[话题]# #看世界[话题]# #济南旅游推荐[话题]# #带孩子旅行[话题]##放假去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12873
+      ]
+    },
+    {
+      "id": 2835,
+      "city": "济南",
+      "title": "济南精华版攻略（！含特色盖章项目）",
+      "desc": "7月底从炎热的西安➡️看似低5-8度的济南，实际一点也不比西安凉快🥲如果要来建议还是在其他季节来玩，以下为本次出行游玩项目！\n注：其他帖子还提到很多具体的项目，就我自己做攻略情况来看补充一些内容，其他不多作赘述\n\t\n⭐️游玩路线：最多一天半\nD1：🚝14点到济南西站➡️酒店➡️世茂广场（饭）➡️曲水亭街➡️大明湖➡️百花洲➡️芙蓉街\nD2：10点出门，五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里（大概在15点已逛完）➡️济南站\n\t\n⭐️具体建议\n【酒店】建议住大明湖景区周围，我住在泉城广场附近汉庭，实际去哪里都需要走10分钟➕，大明湖景区离各个景点都不远\n【景点】\n★大明湖景区：南门进，沿路有卖荷花的，会帮忙开花，还有老婆婆叫卖银色可以亮灯的超然楼手串，非常漂亮（准备回去再买结果下暴雨再没碰到🥲）\n★五龙潭公园：南门进，进门就是文创店，五龙潭离门口很近，其他景点为五龙柱子、秦琼祠，南门出（离趵突泉很近）\n★趵突泉（门票40）：北门进，沿路能看到很多漂亮的小潭，能看到趵突泉石碑的那一边是游客最多的地方，其余三边人都相对少一点（可以坐），东门出（离黑虎潭步行15分钟左右）\n★黑虎泉：❗️坐船需要提前买票选座（p10），大约提前两小时买，导航黑虎泉会路过金虎泉、一虎泉等等，黑虎泉对面的台阶上去黑虎阁是文创店（p8-9）❗️接水点是扫码出水，一个人最多3次扫码，所以别人在接的时候可以提前关注公众号但不要点扫码接水！（桥通着解放阁）\n★解放阁：没上楼，远远看了一眼\n\t\n【文创】如果你是冰箱贴/盖章爱好者，以下官方文创店值得拥有：\n★盖章本（推荐x2）：\n百花洲/芙蓉街：大明湖内文创店本子同款，价格略低\n五龙潭：南门一进门的猫的天空城，本子精美漂亮，价格略高\n★盖章\n大明湖超然楼+文创店、五龙潭猫的天空城（付费）、趵突泉天下第一泉文创、黑虎泉黑虎阁\n★冰箱贴/其他文创\n✭大明湖：超然楼旁边的文创店，原创正版趵突泉、黑虎泉冰箱贴（p1）@Heron 禾恩 ，这个冰箱贴只有官方景区卖正版（还有趵突泉，见下），还有一个透明可亮灯超然楼冰箱贴，其他地方没有卖\n✭五龙潭：猫的天空城，有很多精美的冰箱贴，价格也略高，40+\n✭趵突泉：天下第一泉文创中心（正版半透冰箱贴p1、4）\n\t\n写在最后：济南城市观感很难相信是一座省会城市，反而更像发展不错的县城，如果想来看看泉水可以作为一个短暂的中转旅游地\n#济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12926
+      ]
+    },
+    {
+      "id": 2837,
+      "city": "济南",
+      "title": "live直出🌊济南泉水citywalk一日攻略",
+      "desc": "早就听闻济南 “泉城” 的大名，真正来到这座城市，才感受到家家泉水，户户垂杨的悠哉惬意🍃\n除了趵突泉，街头巷尾还有很多泉水值得探索，随便一拍就是满溢出屏幕的生命力[哇R]\n到处都是绿绿的、蓝蓝的，整个人都被治愈，能感受到满满的能量！\n.\n🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖\n📸拍摄于2026.5月底，这个时候已经没有柳絮了，天气很舒服～\n.\n1️⃣趵突泉（p3-8,13）\n📌南门进➠无忧泉➠趵突泉➠漱玉泉➠濯缨池➠北门出\n🕐游玩2h 🎫门票40\n▪️早上7点就开门，周末7:40进景区一点也不排队～ 八点之后人开始多起来，这个时候只要不在趵突泉主泉，人流量也还好\n▪️清晨的趵突泉蓝蓝的很透亮，水里的锦鲤水草都清晰可见💧濯缨池也非常美，像是来到了绿野仙踪  景区里还有大大小小很多泉，感觉很值得一来[派对R]\n.\n2️⃣五龙潭公园（p9/10/15）\n📌南门进➠东门出\n🕐游玩0.5h 🆓\n▪️从趵突泉北门出来，过街就是五龙潭，公园不大，很快就能逛完~ 公园里有很多小鸭子，可爱可爱🥰\n.\n3️⃣黑虎泉（p1/2/14）\n📌环城公园南门➠玛瑙泉➠黑虎泉➠琵琶泉➠五莲泉➠一虎泉➠金虎泉\n🕐游玩1.5h 🆓\n▪️超出预期的美！沿着护城河慢慢走，一路上有各式各样咕噜咕噜冒泡的泉🫧\n▪️最最震撼的是玛瑙泉，锦鲤在蓝绿色的泉水中慢慢游，真是课本里的“皆若空游无所依”\n▪️泉边绿树成荫，吹着风听着鸟鸣看着泉水，这样的日子好惬意\n.\n4️⃣珍珠泉（p11/12）\n🕐游玩0.5h 🆓\n▪️从环城公园出来后，走个十来分钟就到珍珠泉，是在省人大院内，直接走进大院就可以\n▪️泉边人很少，池底不断升起串串气泡，阳光真是像散落的珍珠一样灵动耀眼✨\n.\n5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓\n▪️这几个地方挨得特别近，都藏在老街里，走路几分钟就到，串联起了西更道街和芙蓉街\n.\n6️⃣曲水亭街、百花洲（p17）\n▪️这两个地方也是紧邻着，有很多文创小店、临水茶座。泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好🌿\n.\n7️⃣大明湖（p18）\n▪️在大明湖等待日落、超然楼亮灯，一日泉水citywalk完结撒花\n.\n#济南[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #济南泉水[话题]# #济南citywalk[话题]#  #趵突泉[话题]#  #去有水的地方[话题]# #howto旅行[话题]#  #我的色彩之旅[话题]# #被色彩击中的瞬间[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12947
+      ]
+    },
+    {
+      "id": 2839,
+      "city": "济南",
+      "title": "自驾第一站✨｜济南一日全攻略👍",
+      "desc": "沈阳出发自驾第一站👉济南我来啦🚗\n27号中午沈阳出发，夜里睡在理想小车车里😴\n28号一早就抵达济南！\n🏨住宿｜沃德酒店（趵突泉大明湖店）\n性价比直接拉满💯位置真的绝绝子！\n出门就是五龙潭公园，景点离得都很近，停车也方便，来济南住这超省心👍\n📅28号全天打卡路线👇\n▫️【上午｜全程步行🚶‍♀️】\n①五龙潭✨酒店出门即到！人少清幽，泉水潺潺，慢悠悠散步超治愈\n②趵突泉💧五龙潭南门出来就是趵突泉北门！打卡课本里的天下第一泉\n③泉城广场⛲顺路打卡济南地标\n④黑虎泉🥤可以直接接泉水尝一尝，氛围感狠狠拿捏\n⑤解放阁🏯紧挨着黑虎泉，登高拍照巨出片！\n⑥宽厚里🍢出了解放阁就是，边走边炫各种小吃\n⑦芙蓉街🍡继续逛吃模式，小吃种类超多\n⑧曲水亭街🌿家家泉水户户垂杨！超多网红拍照机位，随手拍都好看\n▫️【中午🍚干饭时间】\n⑨大明湖附近炫午饭👉就是上一篇分享的「大滋味·大师鲁菜」🔥\n爆炒腰花香迷糊啦！想看美食的宝子直接翻我上一篇笔记～\n▫️【下午｜继续步行🚶】\n⑩大明湖景区🌊吃完饭逛大明湖！打卡超然楼、夏雨荷同款点位，沿湖吹吹风，风景绝美✨\n逛完从大明湖北门打车回酒店，美美休整2小时，蓄力晚上夜游！\n▫️【晚上｜骑行出发🚲】\n⑪泉源之眼🌃天黑骑车出发！到泉源之眼路程十多分钟，打卡绝美夜景，骑车完全不堵车，太舒服啦\n⑫穆德老周家牛肉烧饼🥞【强力推荐！！】\n看完夜景顺路过来干饭！真的巨好吃😭！烧饼外酥里软，吸满肉汁，咬一口满嘴香；羊汤奶白醇厚，热乎乎下肚，直接治愈一整天暴走的疲惫✨。来济南一定要试一试！\n吃完离酒店不远，慢悠悠步行溜溜达达就回酒店啦，完美收官济南这一天🥳\n✅白天步行逛老城感受泉城烟火，晚上骑车看夜景，饭后散步消食，节奏刚刚好，不会很累！\n下一站准备出发青岛🌊继续蹲我的自驾连载🚗\n#济南一日游[话题]# #济南旅游攻略[话题]# #沈阳自驾山东[话题]# #济南打卡[话题]# #大明湖超然楼[话题]# #济南住宿推荐[话题]# #自驾连载[话题]# #济南骑行[话题]# #圆周旅记[话题]# #国庆旅游howto[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12959
+      ]
+    },
+    {
+      "id": 2840,
+      "city": "济南",
+      "title": "济南一日游行程表&景点测评（不特种兵版",
+      "desc": "五龙谭 ➡ 趵突泉 ➡ 泉城广场 ➡ 黑虎泉 ➡ 解放阁 ➡ 宽厚里 ➡ 曲水亭街 ➡ 大明湖 ➡ 超然楼\n早上10:00到达济南站\n✨10:20到五龙潭推荐指数：不需要预约，现场买票5r打车或公交前往（距济南站约2公里），逛了大概一个小时泉水清澈见底，锦鲤成群，潭边有“龙潭观鱼”胜景夏天可以踩水玩，非常清凉\n✨11:20到趵突泉推荐指数：从五龙潭南门出来，走路几分钟就到淡季不需要预约，现场买票40r“天下第一泉”名不虚传，三股水昼夜喷涌可以买一支趵突泉文创雪糕打卡\n✨12:30到附近吃鲁菜（推荐“老济南地道济南菜”）推荐指数：点了九转大肠、糖醋鲤鱼、爆炒腰花、甜沫味道很地道，分量实在人均60r吃到撑\n✨13:40到泉城广场推荐指数：从餐厅步行5分钟标志性蓝色泉标，适合拍照下午有音乐喷泉（具体场次需查）逛了半小时，广场很大但内容不多路过打卡即可\n✨14:30到黑虎泉推荐指数：从泉城广场沿护城河步行10分钟免费！济南人的“天然水厂”很多本地人拿桶打泉水，可以接一瓶尝尝还能坐护城河游船（船票另算）\n✨15:20到解放阁推荐指数：黑虎泉对面就是，过桥即达免费，需刷身份证纪念济南战役的遗址阁内展览很有教育意义\n✨15:50到宽厚里推荐指数：解放阁下来直接进入宽厚里跟各地的仿古小吃街复制粘贴草草逛了半小时就撤了\n✨16:40到曲水亭街推荐指数：从宽厚里走路或共享单车15分钟“家家泉水，户户垂杨”的精华有老济南酸蘸儿（糖葫芦）、把子肉、茶汤\n✨17:30到大明湖推荐指数：曲水亭街北头直通大明湖南门免费！超大湖泊，绕湖一圈要两小时可以坐游船（10r/人）到历下亭傍晚湖风很舒服，垂柳依依铁公祠、北极阁等古迹可顺路看\n✨18:40到超然楼（大明湖内）推荐指数：从南门走到超然楼约20分钟，或坐观光车超然楼亮灯是济南一绝！亮灯时间随季节变化，一般日落之后（建议提前查，约19:00左右）亮灯瞬间全场欢呼，非常震撼楼前广场最佳观赏位，建议18:30前占位看完亮灯可以登楼（票价40r，但只看亮灯不花钱）\n20:00打车或地铁到济南站/济南西站\n#济南[话题]##济南旅游[话题]##济南旅游攻略[话题]##济南游玩攻略[话题]##济南攻略[话题]##济南吃喝玩乐[话题]##济南美食[话题]##假期去哪玩[话题]##济南旅行攻略[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12973
+      ]
+    },
+    {
+      "id": 2843,
+      "city": "济南",
+      "title": "济南夜景打卡  附具体地点",
+      "desc": "济南的夜景静谧而唯美\n即使阴天也可以打卡\n景点比较集中\n转起来很方便\n\t\nP1：五龙潭\nP2：趵突泉\nP3—P4：西更巷\nP5-P6：百花洲\nP7—P9：大明湖\nP10：悦荟广场\nP11—P12：泉城广场\n#济南旅游[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南吃喝玩乐[话题]# #五龙潭公园[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12979
+      ]
+    },
+    {
+      "id": 2853,
+      "city": "济南",
+      "title": "济南芙蓉街！！最怕倒闭的鲁菜小馆子。。没踩雷",
+      "desc": "不得不说芙蓉街也是有好吃的小馆子的！！\n茶香排骨、松子桂花排骨、口袋虾球、芥末虾球、炸鲜奶酥、拉丝番茄炒蛋。。。\n\t\n茶香排骨是有淡淡茶香味，排骨是酱香味多一点！番茄拉丝鸡蛋也是甜咸口的！！搭配蒜瓣很下饭～糖醋鲤鱼每桌都有！！还有爆炒腰花、风味茄子、糖醋里脊。。\n\t\n济南旅行小tips：\n距离黑虎泉、解放阁、曲水亭街、大明湖、泉城广场…都是步行就可以到的！！\n\t\n#济南[话题]##济南美食[话题]##济南旅游攻略[话题]##济南必吃[话题]##济南特色美食[话题]##济南芙蓉街美食[话题]##济南芙蓉街小吃[话题]##小众旅行地[话题]##周末去哪儿[话题]##第一波春菜已经占领[话题]##春天开幕式[话题]# #大学特种兵[话题]##济南旅游[话题]##济南旅行攻略[话题]# #旅行随手拍[话题]# #小城里的好味道[话题]##记录旅途中的美食[话题]##大声安利本地美食[话题]# #条条小路有好吃[话题]# #本地人推荐美食[话题]# #条条大路都好吃[话题]# #本地人推荐小吃[话题]# #本地人爱吃的店[话题]# #为宵夜而生的美食安利[话题]#@吃货薯@吃货薯@生活薯@生活薯 @城市情报官",
+      "unavailable": false,
+      "mentionIds": [
+        12908
+      ]
+    },
+    {
+      "id": 2856,
+      "city": "济南",
+      "title": "我的济南48h！！（附店名和景点）仅个人分享～",
+      "desc": "济南好吃的真多呀！！根本吃不完！恨自己只有一个胃🥺🥺\n1️⃣陈氏肥蛤\n2️⃣鑫龙火锅\n3️⃣太犇牛手作茶铺\n4️⃣秦记火烧\n5️⃣许记排骨\n6️⃣奶香脆皮麻花\n7️⃣柴氏鱿鱼夹饼\n-\n🚶景点：\n按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的！！\n有时间可以去洪家楼教堂和于家桥看看～\n#济南旅游[话题]# #济南美食[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南citywalk[话题]# #济南旅行[话题]# #济南吃喝玩乐[话题]# #大声安利本地美食[话题]# #逛吃全攻略[话题]# #济南[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12900
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

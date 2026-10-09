@@ -1,0 +1,253 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T06:02:23.018873+00:00",
+  "entityBatch": 38,
+  "sourcePackets": [
+    {
+      "file": "priority-cities/济南/bridge-source-packet-01.json",
+      "sha256": "921f5b6438af1bb8f0957b2239647c15e61dbf87ceee20d1bfa21b0ed1c4c5fc"
+    },
+    {
+      "file": "priority-cities/济南/outer-source-packet-01.json",
+      "sha256": "a7addd5c9275acdc5d57c37f847ec44893ff5de9a48b873ad0df229f038252c9"
+    }
+  ],
+  "durationBuilder": {
+    "file": "D:\\Project\\xhs-travel-pipeline\\scripts\\build_visit_duration.py",
+    "sha256": "10c11392015c00cd68a4d7b189a247b02d51ab6a29a2204c1e873ede6a38c075"
+  },
+  "failures": [],
+  "verifiedMentionCount": 14,
+  "upstreamDerived": [
+    {
+      "id": 5392,
+      "name": "起凤桥八号",
+      "typical_visit_minutes": 30,
+      "typical_visit_source": "xhs_median",
+      "latitude": 36.66820694664672,
+      "longitude": 117.02363639555728
+    },
+    {
+      "id": 5475,
+      "name": "灵岩寺",
+      "typical_visit_minutes": 180,
+      "typical_visit_source": "xhs_median",
+      "latitude": 36.36162830666727,
+      "longitude": 116.98372497180192
+    },
+    {
+      "id": 5479,
+      "name": "起凤桥",
+      "typical_visit_minutes": null,
+      "typical_visit_source": null,
+      "latitude": 36.66834411542893,
+      "longitude": 117.02366553235973
+    },
+    {
+      "id": 5481,
+      "name": "明水古城",
+      "typical_visit_minutes": null,
+      "typical_visit_source": null,
+      "latitude": 36.71112001642879,
+      "longitude": 117.53355480348722
+    },
+    {
+      "id": 5974,
+      "name": "济南野生动物园",
+      "typical_visit_minutes": null,
+      "typical_visit_source": null,
+      "latitude": 36.61773496869032,
+      "longitude": 117.46135997559173
+    }
+  ],
+  "durationReproduction": [
+    {
+      "noteId": 2609,
+      "mentionId": 11686,
+      "textSource": "img_analysis[3].text_content",
+      "sentence": "避雷5：灵岩寺距离市区较远，来回路程长，如果只有半天时间不建议安排，容易太赶",
+      "window": "避雷5：灵岩寺距离市区较远，来回路程长，如果只有半天时",
+      "minutes": 180
+    },
+    {
+      "noteId": 2609,
+      "mentionId": 11686,
+      "textSource": "img_analysis[3].key_info.tips",
+      "sentence": "灵岩寺距离远半天不够",
+      "window": "灵岩寺距离远半天不够",
+      "minutes": 180
+    }
+  ],
+  "templeExistingScope": null,
+  "downstream": [
+    {
+      "id": "29f4a4b260878eb8d9143b15b8fca54f",
+      "name": "灵岩寺",
+      "category": "文化",
+      "lat": 36.361628,
+      "lng": 116.983725,
+      "verified": true,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+        "nameKeys": [
+          "灵岩寺"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "29f4a4b260878eb8d9143b15b8fca54f"
+        ],
+        "memberNames": [
+          "灵岩寺"
+        ],
+        "canonicalName": "灵岩寺"
+      },
+      "typicalVisitMinutes": 180,
+      "intro": "海内四大名刹之首。宋代彩塑罗汉像被誉为海内第一名塑。",
+      "openHoursStatus": "unknown",
+      "reservation": "unknown",
+      "topReasons": [
+        "海内四大名刹之首，宋代彩塑罗汉像被誉为海内第一名塑"
+      ],
+      "imageFieldsEmpty": true
+    },
+    {
+      "id": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "category": "文化",
+      "lat": 36.668344,
+      "lng": 117.023666,
+      "verified": true,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+        "nameKeys": [
+          "起凤桥"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "908b0aec5ee27f58554a8442f8eef1de"
+        ],
+        "memberNames": [
+          "起凤桥"
+        ],
+        "canonicalName": "起凤桥"
+      },
+      "typicalVisitMinutes": null,
+      "intro": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去。拍照很好看，电影电视剧取景地。热门打卡点，路线必经。位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街。",
+      "openHoursStatus": "unknown",
+      "reservation": "unknown",
+      "topReasons": [
+        "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+        "济南古桥，与王府池子相邻，顺路游览。",
+        "拍照好看，电影电视剧取景地"
+      ],
+      "imageFieldsEmpty": true
+    },
+    {
+      "id": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "category": "娱乐",
+      "lat": 36.71112,
+      "lng": 117.533555,
+      "verified": true,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "69b816cda273f29ed9296314fbe6f52d",
+        "nameKeys": [
+          "明水古城"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "69b816cda273f29ed9296314fbe6f52d"
+        ],
+        "memberNames": [
+          "明水古城"
+        ],
+        "canonicalName": "明水古城"
+      },
+      "typicalVisitMinutes": null,
+      "intro": "可品泉水茶、登高怀古，市井烟火中藏着千年文脉。济南章丘古城，适合拍照。笔记仅提及地点，未给出具体推荐理由。",
+      "openHoursStatus": "unknown",
+      "reservation": "unknown",
+      "topReasons": [
+        "笔记仅提及地点，未给出具体推荐理由。",
+        "济南慢生活体验，可品泉水茶、登高怀古",
+        "济南章丘古城，适合拍照"
+      ],
+      "imageFieldsEmpty": true
+    },
+    {
+      "id": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+      "name": "起凤桥八号",
+      "category": "文化",
+      "lat": 36.668207,
+      "lng": 117.023636,
+      "verified": true,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+        "nameKeys": [
+          "起凤桥八号"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "fd7c5d9a0af5a1ec9515743d6f05bce5"
+        ],
+        "memberNames": [
+          "起凤桥八号"
+        ],
+        "canonicalName": "起凤桥八号"
+      },
+      "typicalVisitMinutes": 30,
+      "intro": "古香古色的门洞，有烟雨江南即视感。",
+      "openHoursStatus": "unknown",
+      "reservation": "unknown",
+      "topReasons": [
+        "古香古色门洞，有烟雨江南即视感",
+        "古香古色的门洞，有烟雨江南即视感"
+      ],
+      "imageFieldsEmpty": true
+    },
+    {
+      "id": "abc624edea07111dc19aa79dfbb18289",
+      "name": "济南野生动物园",
+      "category": "娱乐",
+      "lat": 36.617735,
+      "lng": 117.46136,
+      "verified": true,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "abc624edea07111dc19aa79dfbb18289",
+        "nameKeys": [
+          "济南野生动物园"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "abc624edea07111dc19aa79dfbb18289"
+        ],
+        "memberNames": [
+          "济南野生动物园"
+        ],
+        "canonicalName": "济南野生动物园"
+      },
+      "typicalVisitMinutes": null,
+      "intro": "济南动物园，适合拍照。",
+      "openHoursStatus": "unknown",
+      "reservation": "unknown",
+      "topReasons": [
+        "济南动物园，适合拍照"
+      ],
+      "imageFieldsEmpty": true
+    }
+  ],
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  }
+}

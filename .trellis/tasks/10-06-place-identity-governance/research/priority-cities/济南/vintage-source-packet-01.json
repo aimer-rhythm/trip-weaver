@@ -1,0 +1,266 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T19:35:00.977041+00:00",
+  "city": "济南",
+  "entityBatch": 49,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566",
+        "city": "济南",
+        "canonical_name": "VILLASHAKA",
+        "primary_place_id": 5399,
+        "aliases": [
+          "VILLASHAKA"
+        ],
+        "legacy_ids": [
+          "2ccb52ac3eeda4ca713a2b7bd975b566"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5399,
+            "city": "济南",
+            "name": "VILLASHAKA",
+            "normalized_name": "VILLASHAKA",
+            "address": "",
+            "latitude": 36.664939125453756,
+            "longitude": 117.02543550006231,
+            "place_type": "cafe",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "131f490344eff5793ce27c201558d8b2019e5b9651c5861c527aea38abd8b7ea",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "文艺"
+            ],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5399,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "villashaka"
+      ],
+      "mentionIds": [
+        11535
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a",
+        "city": "济南",
+        "canonical_name": "BLUEDUCK骨董屋",
+        "primary_place_id": 5398,
+        "aliases": [
+          "BLUEDUCK骨董屋"
+        ],
+        "legacy_ids": [
+          "46bf3d4bc9d5aa019dd4a3184329e58a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5398,
+            "city": "济南",
+            "name": "BLUEDUCK骨董屋",
+            "normalized_name": "BLUEDUCK骨董屋",
+            "address": "",
+            "latitude": 36.664939125453756,
+            "longitude": 117.02543550006231,
+            "place_type": "shop",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 14.0
+          },
+          "sourceHash": "085cc91c95cd71053a34fc4ed23ca7dae7b1d6d2c853a05b2791b83e9ebfa6ef",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [],
+            "content_profile": null
+          },
+          "summary": {
+            "canonical_place_id": 5398,
+            "mention_count_30d": 1,
+            "recommend_score": 7.5
+          }
+        }
+      ],
+      "nameKeys": [
+        "blueduck骨董屋"
+      ],
+      "mentionIds": [
+        11534
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a",
+        "city": "济南",
+        "canonical_name": "BLUEDUCK骨董屋",
+        "primary_place_id": 5398,
+        "aliases": [
+          "BLUEDUCK骨董屋"
+        ],
+        "legacy_ids": [
+          "46bf3d4bc9d5aa019dd4a3184329e58a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566",
+        "city": "济南",
+        "canonical_name": "VILLASHAKA",
+        "primary_place_id": 5399,
+        "aliases": [
+          "VILLASHAKA"
+        ],
+        "legacy_ids": [
+          "2ccb52ac3eeda4ca713a2b7bd975b566"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5398,
+        "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a"
+      },
+      {
+        "place_id": 5399,
+        "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566"
+      }
+    ],
+    "reviews": []
+  },
+  "mentions": [
+    {
+      "id": 11535,
+      "raw_note_id": 2573,
+      "name": "VILLA SHAKA",
+      "normalized_name": "VILLASHAKA",
+      "place_type": "cafe",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "墙超好拍，咖啡也很赞",
+      "evidence_text": "VILLA SHAKA的墙超好拍，咖啡也很赞",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "墙超好拍，咖啡也很赞",
+              "quote": "VILLA SHAKA的墙超好拍，咖啡也很赞"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.299746+00:00",
+      "inputHash": "d053f0fc84612f26bc599a18cc0de2a9ef343655157c5651d4c80be6a2f673ed"
+    },
+    {
+      "id": 11534,
+      "raw_note_id": 2573,
+      "name": "BLUE DUCK骨董屋",
+      "normalized_name": "BLUEDUCK骨董屋",
+      "place_type": "shop",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "自助式vintage杂货铺，超有味道",
+      "evidence_text": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "自助式vintage杂货铺，超有味道",
+              "quote": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.299746+00:00",
+      "inputHash": "e793b163301323a479a15e7af044953994f2915842fa047244c221f942af80e9"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2573,
+      "city": "济南",
+      "title": "济南必逛Citywalk路线！这条街太宝藏了！",
+      "desc": "经三路真的是浪漫天花板，今年又多了好多咖啡、美食和古着店，还有超多隐藏小店！🚶‍♀️路线直接抄作业：老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单，一路逛吃不停。必打卡的小店：BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道；VILLA SHAKA的墙超好拍，咖啡也很赞；中山公园里超安静，还能淘二手货；淘子外单简直是购物天堂，两层楼逛到腿软，木质风设计超舒服，从床品到配饰款式多到挑花眼！济南有三家店：经四万达店、高新店、西市场店，每个都值得去逛逛～\n#城市的一百种玩法[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11535,
+        11534
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

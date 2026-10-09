@@ -1,0 +1,38 @@
+{
+  "batch": 47,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 4,
+  "notes": 3,
+  "confirmed": 3,
+  "pendingAdded": 1,
+  "historicalReviewPreserved": 369,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+      "name": "民族大街",
+      "mentions": 2,
+      "category": "文化",
+      "type": "other"
+    },
+    {
+      "entityId": "79e713e197315afb0440835502699789",
+      "name": "民族大街市场",
+      "mentions": 1,
+      "category": "购物",
+      "type": "market"
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "3e5fa7c03f42733552dc8a8ae4bf72578fd2972d0a82ff6c3a90a6d6ed16ce7c"
+}

@@ -1,0 +1,141 @@
+[
+  {
+    "reviews": [
+      380
+    ],
+    "primary": "芙蓉楼百年鲁菜馆",
+    "canonicalName": "芙蓉楼百年鲁菜馆（芙蓉街店）",
+    "reason": "已恢复12843原始名称芙蓉楼百年鲁菜馆(芙蓉街店)，原记录缺提及仅因括号被规范化去掉。2850正文同样明确芙蓉街老街，P11直接展示芙蓉楼鲁菜馆与百年鲁菜门头，餐厅环境互相吻合；确认同一芙蓉街门店，保持主ID并恢复分店限定。不是仅凭同地图点或同菜品合并。",
+    "geometryReason": "保留主源5983已有GCJ-02参考点36.665964/117.023158，范围与原文明示芙蓉街一致；不采用广告同时距三景点100m的夸张距离，也不从其他餐厅地址推造新点。",
+    "contexts": [
+      {
+        "file": "batch-22-image-context.json",
+        "mentionIds": [
+          12843,
+          12854
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [
+      374
+    ],
+    "primary": "台湾奶香脆皮麻花",
+    "reason": "2602原文明确台湾奶香脆皮麻花在洪家楼北路；此前2856只读正文未明确分店，现原图P7明确洪家楼教堂旁边并展示该处奶香脆皮麻花小门面。已抓取2023公开视频标题独立称洪楼教堂旁台湾奶香脆皮麻花，连接两种叫法，确认此两条来源是同一教堂旁门店。",
+    "geometryReason": "沿用主源5471已有GCJ-02点36.685957/117.065448、洪家楼1正北方向20米，与洪家楼北路教堂旁原图文相合。360抓取实际是另一家紫菜包饭，不借其坐标或地址替代本店。",
+    "sources": [
+      "jinan-mahua-video-fetch.json"
+    ],
+    "contexts": [
+      {
+        "file": "batch-22-image-context.json",
+        "mentionIds": [
+          12894
+        ]
+      },
+      {
+        "file": "jinan-food-variants-01.json",
+        "mentionIds": [
+          11675
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "济南",
+    "entityIds": [
+      "326cd34165dd905d31af6cd929a0deda"
+    ],
+    "primary": "杨家牛肉烧饼",
+    "reason": "2602明确杨家在回民小区清真南大寺，且特别排除远郊党家庄门店；旧36.204366/117.688582远离中心回民小区，不能用于这家店。",
+    "geometryReason": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "济南市回民小区清真南大寺附近，具体门牌待核",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "jinan-food-variants-01.json",
+        "mentionIds": [
+          11629
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "济南",
+    "entityIds": [
+      "665e9903d644a1b41ce76e27467fb353"
+    ],
+    "primary": "牛肉烧饼",
+    "reason": "2560明确回民小区排队王，旧福泰路623号附近、经度117.533862在远东侧，与中心回民小区冲突；泛称尚不能指定杨家或其他店。",
+    "geometryReason": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "济南市回民小区，原笔记未明确店名",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "jinan-food-variants-01.json",
+        "mentionIds": [
+          11484
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "济南",
+    "entityIds": [
+      "bb53ff904464fb67e2ddf46d7ed0d2b8"
+    ],
+    "primary": "穆德老周家牛肉烧饼",
+    "reason": "2839明确看完泉源之眼后吃饭、饭后步行回五龙潭旁沃德酒店，旧纬度36.463688在远南侧，与原文夜间骑行/饭后步行范围冲突；不据路线猜具体分店。",
+    "geometryReason": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "济南市五龙潭周边原文夜游路线，老周家具体分店待核",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "jinan-food-variants-01.json",
+        "mentionIds": [
+          12961
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "济南",
+    "entityIds": [
+      "d025994fc1b1449de922fa97abdd96f8"
+    ],
+    "primary": "老周家牛肉烧饼",
+    "reason": "2607明确老周家为连锁、各店差不多、趵突泉周边就近即可，未将此条品牌泛称限定到普利街77号；撤销单一分店精确点，待拆分实际门店归属。",
+    "geometryReason": "经纬度成对清空并同步unresolvable，保留稳定ID；没有可靠门店定位时不借附近景点或同品牌分店的坐标。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "济南市趵突泉周边老周家连锁门店，具体分店待核",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "jinan-food-variants-01.json",
+        "mentionIds": [
+          11510
+        ]
+      }
+    ]
+  }
+]

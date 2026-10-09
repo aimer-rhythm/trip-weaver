@@ -1,0 +1,109 @@
+[
+  {
+    "key": "independent-photo-batch-02-jinan-20261008",
+    "city": "济南",
+    "expectedEntityRevisions": {
+      "6ed737543bd4e4f550f0fd357c9e8c71": 2,
+      "2caab5c5038a94f91657ae16110dd56e": 2
+    },
+    "images": [
+      {
+        "imageKey": "reviewed:8a1f5539516d5e0a168712e4bb3ca49254f2b6854543cbe78d2aa7e5c843fe23",
+        "inputHash": "e8f73a2a9cb040e7b1d1dd7cb6e0ecc3dd4264d6c809f317d626f0a7f7bee7dd",
+        "entityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+        "expectedRevision": 0
+      },
+      {
+        "imageKey": "reviewed:9df9e3ff2e51e29143f5f1c24c534be5bcdc2d3758fff265a909f99158001f3b",
+        "inputHash": "75c0be52c492a6e924cada62eb9cd4e2a426ec7fa8a6594e698fd3c36636ec9d",
+        "entityId": "2caab5c5038a94f91657ae16110dd56e",
+        "expectedRevision": 0
+      },
+      {
+        "imageKey": "reviewed:1a522d7ff19425b3fa7c041d988186c4e44c9a229c74da08296c79971433382e",
+        "inputHash": "68c7435272b2487e8075f651f5112c60c836df7b7799aeed48b3a9fcd408cd1a",
+        "entityId": "2caab5c5038a94f91657ae16110dd56e",
+        "expectedRevision": 0
+      },
+      {
+        "imageKey": "reviewed:b631c6c1da1dc4a01d9df1028303fa0a5191d1f958fbf2376f1d98f11b5655d9",
+        "inputHash": "2678c00a77226d611811323cbcbc5d2438d4e5dba23908cd7610acc0d709291b",
+        "entityId": null,
+        "expectedRevision": 0
+      },
+      {
+        "imageKey": "reviewed:699d6bcb2c99b67c1752b7fbe3e7764c5ceb56f107cbc915cdfc1636552e70e5",
+        "inputHash": "0e12002404a0b212d3cd91369c89179397b1b6b50e9d05142e7f37a48abb8bed",
+        "entityId": "2caab5c5038a94f91657ae16110dd56e",
+        "expectedRevision": 0
+      }
+    ],
+    "evidence": [
+      {
+        "label": "M05",
+        "imageKey": "reviewed:8a1f5539516d5e0a168712e4bb3ca49254f2b6854543cbe78d2aa7e5c843fe23",
+        "inputHash": "e8f73a2a9cb040e7b1d1dd7cb6e0ecc3dd4264d6c809f317d626f0a7f7bee7dd",
+        "assetKey": "official_url:ecff9d7c96cb0578051845d585c5480b9f4c7de21a927350d9f8f2aacb1320b2",
+        "entityId": "6ed737543bd4e4f550f0fd357c9e8c71",
+        "outcome": "confirmed_subject",
+        "originalEligible": true,
+        "observation": "现代灰色馆舍、顶端弧形采光结构、正面金色山东博物馆馆名可读，与当前经十路新馆相符；来源高德关联经画面独立复核。",
+        "originalEvidence": "济南 山东博物馆 高德POI关联图；关联不是主体身份保证，必须独立核对画面",
+        "visualFile": "priority-cities/济南/cultural-photos-01/M05.jpg",
+        "bytesSha256": "1e41fd6e7ea1743d0ab1d7b95a7876dfd6c94d1169973fd18084c164808e46f8"
+      },
+      {
+        "label": "C03",
+        "imageKey": "reviewed:9df9e3ff2e51e29143f5f1c24c534be5bcdc2d3758fff265a909f99158001f3b",
+        "inputHash": "75c0be52c492a6e924cada62eb9cd4e2a426ec7fa8a6594e698fd3c36636ec9d",
+        "assetKey": "local_bytes:2d2422581b7935ca9a78200ca8bcd5a5f6e0d24f4d65442b31bfef2a589962c8",
+        "entityId": "2caab5c5038a94f91657ae16110dd56e",
+        "outcome": "confirmed_subject",
+        "originalEligible": true,
+        "observation": "雪景教堂侧立面，双塔、带叶饰尖顶、侧面扶壁与相连院落建筑可辨；Commons作品明确Hongjialou Cathedral Jinan，与C09本体互证。",
+        "originalEvidence": "File:Hongjialou Cathedral Jinan after snow.jpg Photograph of Hongjialou Cathedral in Jinan, Shandong, China after snow fall.",
+        "visualFile": "priority-cities/济南/cultural-photos-01/C03.jpg",
+        "bytesSha256": "2d2422581b7935ca9a78200ca8bcd5a5f6e0d24f4d65442b31bfef2a589962c8"
+      },
+      {
+        "label": "C06",
+        "imageKey": "reviewed:1a522d7ff19425b3fa7c041d988186c4e44c9a229c74da08296c79971433382e",
+        "inputHash": "68c7435272b2487e8075f651f5112c60c836df7b7799aeed48b3a9fcd408cd1a",
+        "assetKey": "local_bytes:b262bb440ec3a86833f901a7f8cf0ccfcf750338c7d4f392df51665f502841b3",
+        "entityId": "2caab5c5038a94f91657ae16110dd56e",
+        "outcome": "confirmed_subject",
+        "originalEligible": true,
+        "observation": "花园前教堂长侧立面及相连附属院落，不是正门全景；Commons作品明确济南山东大学旁Sacred Heart Cathedral，侧墙、窗及院落与C03互证。纠正旧模型将此视为双塔正面的说明，但不改原目录。",
+        "originalEvidence": "File:Sacred heart cathedral jinan front 2007.jpg Photograph of the Sacred Heart Cathedral at the Shandong University, in Jinan , Shandong , China .",
+        "visualFile": "priority-cities/济南/cultural-photos-01/C06.jpg",
+        "bytesSha256": "b262bb440ec3a86833f901a7f8cf0ccfcf750338c7d4f392df51665f502841b3"
+      },
+      {
+        "label": "C07",
+        "imageKey": "reviewed:b631c6c1da1dc4a01d9df1028303fa0a5191d1f958fbf2376f1d98f11b5655d9",
+        "inputHash": "2678c00a77226d611811323cbcbc5d2438d4e5dba23908cd7610acc0d709291b",
+        "assetKey": "local_bytes:738d85d2c88d706ab78da984cc8bf4081c0af4b47282f4311ee102d6e1551cca",
+        "entityId": null,
+        "outcome": "withdraw_wrong_positive",
+        "originalEligible": true,
+        "observation": "夜景主入口右侧为单座高塔，中央尖拱窗及左侧低塔布局与洪家楼对称双塔正立面不同；来源只是泛称Gothic cathedral，没有济南证据。旧模型match不能成立，撤销可用归属，不猜其他城市。",
+        "originalEvidence": "A breathtaking view of a Gothic cathedral glowing warmly against a twilight sky, inviting exploration.",
+        "visualFile": "priority-cities/济南/cultural-photos-01/C07.jpg",
+        "bytesSha256": "738d85d2c88d706ab78da984cc8bf4081c0af4b47282f4311ee102d6e1551cca"
+      },
+      {
+        "label": "C09",
+        "imageKey": "reviewed:699d6bcb2c99b67c1752b7fbe3e7764c5ceb56f107cbc915cdfc1636552e70e5",
+        "inputHash": "0e12002404a0b212d3cd91369c89179397b1b6b50e9d05142e7f37a48abb8bed",
+        "assetKey": "local_bytes:8ad752a77983ed8ed489aece8c19bb36623e1ad6f2a1275e57177515469b95b5",
+        "entityId": "2caab5c5038a94f91657ae16110dd56e",
+        "outcome": "confirmed_subject",
+        "originalEligible": true,
+        "observation": "双塔正立面，叶饰尖顶、玫瑰窗、三尖拱门、塔楼窗与精细石构件清楚；Commons作品明确Sacred-Heart-Cathedral-Jinan及Hongjialou名称，认领现行教堂主体。",
+        "originalEvidence": "File:Sacred-Heart-Cathedral-Jinan.JPG The Sacred Heart Cathedral at Shandong University in Jinan, also known as Hongjialou Cathedral.",
+        "visualFile": "priority-cities/济南/cultural-photos-01/C09.jpg",
+        "bytesSha256": "8ad752a77983ed8ed489aece8c19bb36623e1ad6f2a1275e57177515469b95b5"
+      }
+    ]
+  }
+]

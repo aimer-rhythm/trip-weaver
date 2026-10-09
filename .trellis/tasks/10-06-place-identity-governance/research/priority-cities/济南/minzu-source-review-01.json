@@ -1,0 +1,57 @@
+{
+  "city": "济南",
+  "batch": 47,
+  "sourcePacket": "priority-cities/济南/minzu-source-packet-01.json",
+  "sourcePacketSha256": "2841d8ba3394ae84f48ed6a875fccf3b1312a0333907680d297075853bbdf8ff",
+  "roots": 2,
+  "sources": 2,
+  "mentions": 4,
+  "fullNotes": 3,
+  "confirmed": 3,
+  "pending": 1,
+  "historicalReview": 369,
+  "historicalVerdict": "part_of",
+  "originalNotesReadInFull": true,
+  "locationStatus": "existing_points_preserved_not_newly_verified",
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false,
+  "rows": [
+    {
+      "mentionId": 11501,
+      "noteId": 2554,
+      "inputHash": "3cd3fd864b22fe41c434aa806ded6372655a3274a2bced426fdbe1cc5b29a610",
+      "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+      "quote": "早餐在民族大街吃的人均💰20",
+      "reason": "明确在民族大街吃早餐的个人经历，保留街道目的地；人均20是该次早餐费用，不是街道收费或整个市场均价，不能据此认领具体餐馆。",
+      "status": "reviewed_target"
+    },
+    {
+      "mentionId": 11608,
+      "noteId": 2608,
+      "inputHash": "7f372acdd8daae842ca6ad0a3657932202722e1a45cb061fa1929045f11556c9",
+      "entityId": null,
+      "quote": "💣 缺点：离民族大街稍远",
+      "reason": "全文主语是图示住宿C区，缺点为离民族大街稍远；原warning/negative不是对道路的独立评价，正文不能定位C区，转待审，不据图示猜范围。",
+      "status": "needs_evidence"
+    },
+    {
+      "mentionId": 12754,
+      "noteId": 2554,
+      "inputHash": "7dd23a697b46ea98e423ef99b07235dbf499042a4e06c22ac6533b75a2920923",
+      "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+      "quote": "早餐在民族大街吃的人均💰20",
+      "reason": "同篇重复早餐抽取保留原提及与街道范围，不将其当第二篇独立样本，也不分给民族大街市场。",
+      "status": "reviewed_target"
+    },
+    {
+      "mentionId": 12643,
+      "noteId": 2782,
+      "inputHash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5",
+      "entityId": "79e713e197315afb0440835502699789",
+      "quote": "2️⃣民族大街市场：当地居民去买菜的菜市场，整条街前面是各种小吃，后面是卖菜的，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+      "reason": "独立民族大街市场条目明确当地菜市场、前段小吃后段蔬菜，食物推荐属于市场逛吃；不借街道其他提及合并两主体。",
+      "status": "reviewed_target"
+    }
+  ]
+}

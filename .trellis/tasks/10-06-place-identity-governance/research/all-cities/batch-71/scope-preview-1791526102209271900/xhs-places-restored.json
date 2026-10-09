@@ -1,0 +1,844 @@
+{
+ "_comment": "成都社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "成都",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 3,
+  "sourceHash": "1698423d41738b671f7302f3f9631f0681cdd2fff39ee87f0fb59d8742fa105f",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "成都",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "大熊猫繁育研究基地",
+    "人民公园鹤鸣茶社",
+    "杜甫草堂博物馆",
+    "祠堂街人民公园",
+    "成都人民公园",
+    "武侯祠博物馆",
+    "都江堰景区",
+    "大慈寺庙",
+    "锦里古街",
+    "太古里",
+    "奎星楼",
+    "武侯祠",
+    "玉林街"
+   ],
+   "mentions": [
+    {
+     "mentionId": 3500,
+     "noteId": 876,
+     "inputHash": "be13bfac4a90727ce3dd9fc24e0f001e3dd9927d67fbd85f093c6ff9404250f5",
+     "textHash": "ada91171c6a4fd4c575acdba2baceb515382f2c7fff0099fce85fbad9dadcac4",
+     "textLength": 285,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3520,
+     "noteId": 953,
+     "inputHash": "a2965d000e275bdf7eed0f7e25dc8f9dbe8556008115d92a739fc45a57f3de05",
+     "textHash": "fd7f463daff4da9ebe10a063ba2edbd02c8d26f228b228961709bfaff3ad507d",
+     "textLength": 651,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3547,
+     "noteId": 935,
+     "inputHash": "a4bf41cc7139e21c8ad9783d27d2df109e12e210687bac2e37897d26ff180406",
+     "textHash": "b6840d9bebcfaa18bdd07deb992beb35dfbb8fb2c362ab5696212233be15bd0d",
+     "textLength": 994,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3568,
+     "noteId": 955,
+     "inputHash": "2ab1ad3743d63cb8f3667f3ddd678f06b243066c657f46239789f7d68797613e",
+     "textHash": "5a50ecfb32e8dafbe8ddce205351020c1566c5c88cab1b72e108c4801118d75d",
+     "textLength": 448,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3579,
+     "noteId": 936,
+     "inputHash": "6d3154e04fa6e3045c3e14b563038b7032b7375bd2c2739a5d9035b43d31f5b2",
+     "textHash": "3361666f57364518861e89d3eceb3f0a86f742c58b8323bbbff18cc71305ad03",
+     "textLength": 494,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3601,
+     "noteId": 878,
+     "inputHash": "be4254cd2e8d8ba87153e123cd3bda4676eb20eb7f0ab9bd95e4f57ffd3b6ebf",
+     "textHash": "c14ac30036620fc7e24bce99152b87027261ebee0b5c1f310e33459f8a5689cc",
+     "textLength": 285,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3626,
+     "noteId": 890,
+     "inputHash": "e7e3881899d24029d185273c02f3c00c97f2e2c4fa0a3d852ffb3381dd0a71cc",
+     "textHash": "25d2595c90f403cebf45d25ced36532fdd36a1a21e24d9af50c14f42d4af90d3",
+     "textLength": 609,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3662,
+     "noteId": 889,
+     "inputHash": "4b7319661144363c18fd5cc10c2e332099d0a99ccbbb55b451510a5d7de41b39",
+     "textHash": "c60442d93f79d68159c34e7400d0671fe74a5b8e0518d8fee97a764ee38ef1f1",
+     "textLength": 376,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3684,
+     "noteId": 891,
+     "inputHash": "5ccbfb84d10ee603d1289ce9ee6ae8b4a536943b82fe1f9a4f0a1a057e5296c9",
+     "textHash": "2149be61e125d4ed352ef6b6863047e25ae7fff59b6c244710d64044bdd8c49f",
+     "textLength": 908,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3708,
+     "noteId": 879,
+     "inputHash": "5b441d13a4be829cf3c1c23f42cdcafb63185a62c8e0cbb52c8c51e00c8e6586",
+     "textHash": "7c8bd28849ac34de923286398b6616741c5819b45e0d46894be27f2f0551656c",
+     "textLength": 161,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3755,
+     "noteId": 892,
+     "inputHash": "37b11358d3aba1c9594a8f811678cb5389aa7ffdf73c6e9eed3cf40e93f57457",
+     "textHash": "cdbf0380483447154c534c4bde8854ea542e256f874c93dcca6d77c4739f7178",
+     "textLength": 478,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3818,
+     "noteId": 882,
+     "inputHash": "f1805c7cfafe981549bc622f6f3485e73698eedf80bd9271ff610f0adf8ef35a",
+     "textHash": "20af63768d67940dc63e96f1780e3053eeb1a23292080abd1e2aed4114c55b26",
+     "textLength": 569,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3883,
+     "noteId": 945,
+     "inputHash": "22625c4276b8de955f5ba52c831933ebe8085daea49d4bfbc4b31679b58bd826",
+     "textHash": "1ab69ae2e4e95f63a17d01a07cb9b1ffb7018f543debd3a714bb8834d7454257",
+     "textLength": 526,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3938,
+     "noteId": 900,
+     "inputHash": "671050f03551186600d8e01c39eaf2df8dea7358da876e89dd5bedeaa04eb1d2",
+     "textHash": "e3963db907efe086f724ebfc1ce32cee13caf24af9fc2528c9a32fb5bd18c335",
+     "textLength": 863,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3960,
+     "noteId": 884,
+     "inputHash": "a8552965204a61195526454ae99fdfb9b46862fa97c0386bb4281509be16f8aa",
+     "textHash": "614b0af3a4ae28147d658ca717d24069ccf5289d82f5833fdd2007587c81a1b7",
+     "textLength": 607,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 3991,
+     "noteId": 902,
+     "inputHash": "3d67d96fa5c64d9dd0eb440870ce13b8b2df74b9928960d4962778a23a9f38a5",
+     "textHash": "b7ed6226eeeb862b9a852b1d181f779e050f3283d91935837ccbfa5f6c724fb3",
+     "textLength": 527,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4017,
+     "noteId": 894,
+     "inputHash": "3a70e1b0967a8ea0320deeca2a1b2196bc8da3809a0bdafe76eb86c338f825c1",
+     "textHash": "628f64f48545c76a434f0d3978cf34a591432c419f1265ff4b32ef8deb2ab86e",
+     "textLength": 1017,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4031,
+     "noteId": 903,
+     "inputHash": "5cd8c8bc831726ed1aa7b3d8547ae62b7a208a77ace1b297147da2e7efa4aabe",
+     "textHash": "853ed475f2cfea45fde962bc070c652c83de80f519d223e2ba66a0bff62118c4",
+     "textLength": 263,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4044,
+     "noteId": 904,
+     "inputHash": "3eaebe73e686cfb4ac01c4d9f85c4e97480ec692cd91507742af51d7702fbc80",
+     "textHash": "405d6a12b295bd5d7655f2e8f907ab47707eb36da21258d811d8599ab6c0ac82",
+     "textLength": 591,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4062,
+     "noteId": 895,
+     "inputHash": "76c371cc162eb7728804dcb3ee1e42418be2d950f6c791d142bdfd6b1a635f2e",
+     "textHash": "4339f40e9bbff6f8a3eb8640ede9a77dc28f32d350a0492c68de4b0d92aff0e7",
+     "textLength": 622,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4083,
+     "noteId": 947,
+     "inputHash": "431984f62cf9c7c396f7d19c426f2ed022f379ce064877bb6f34756eecbbfa21",
+     "textHash": "0ebb9cef4bca1fc4a79a6c21d4de5d5ffaa0bde886832e28b4b84c8a04acee3a",
+     "textLength": 1035,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4108,
+     "noteId": 928,
+     "inputHash": "c0d7a52c37f2ca69ca8bffdacb5e886703d13709093ae86f70851a9d2d10eae1",
+     "textHash": "4e3339ca7e123fde823a18b131d451b8a7cbfc7dc7337efe8d32d29ffd5ff1f2",
+     "textLength": 347,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4117,
+     "noteId": 910,
+     "inputHash": "c2d179af002f4fdff1b14f8dbf00bebf296e168083fe2262ed2d6286cab2a238",
+     "textHash": "9064b6fc60830cc0338b99b87cd15a14a4688eb5c1448332a793ff5e5ba4f188",
+     "textLength": 977,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4149,
+     "noteId": 912,
+     "inputHash": "6cf57f2481b83e163ac64786a0b3e45b44d983c8f89a9eb1d47dc1effac72e5b",
+     "textHash": "6526aab107e4b96ac0bc6f40763c41adf12853287983f7796047b8594225f911",
+     "textLength": 757,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4172,
+     "noteId": 913,
+     "inputHash": "e834e7d52d9f9fb1b5bf8740ff02ae479479a1f4adeb60d62d6a45d7b2c54ba7",
+     "textHash": "7b0fefd5959f2a521f36c972da452ae2270833016bebd2e091dda952d0d9f01c",
+     "textLength": 950,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 4208,
+     "noteId": 950,
+     "inputHash": "b90d9d6513a6153b6f9582da972def0cd74f235b4d5a21e78e0c7b7e1ae5824d",
+     "textHash": "552c91ece2a279c2d1431cbe3c763dde05ee7647137a790dc201b9206f44457d",
+     "textLength": 673,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "revision": 1,
+     "canonicalName": "武侯祠",
+     "aliases": [
+      "武侯祠",
+      "武侯祠博物馆"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "300d2ae16b4e2787a84d7661a06f580e",
+   "name": "武侯祠",
+   "category": "文化",
+   "lng": 104.047992,
+   "lat": 30.646168,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "武侯祠大街231号",
+    "adcode": "510107",
+    "mentionCount": 26,
+    "recommendScore": 69.23,
+    "topReasons": [
+     "三国文化景点，适合新中式拍照",
+     "三国文化地标，红墙竹影适合拍照",
+     "红墙拍照很出片"
+    ],
+    "content": {
+     "intro": "成都武侯祠位于武侯祠大街，肇始于公元222年修建刘备惠陵时，是中国唯一的君臣合祀祠庙。博物馆分为文物区、园林区和锦里民俗休闲街三部分，文物区由惠陵、汉昭烈庙、武侯祠等组成。祠内供奉刘备、诸葛亮等蜀汉人物塑像50尊，有匾额楹联70余块，其中唐碑“三绝碑”尤为知名。",
+     "method": "web_research_with_model_knowledge",
+     "version": 1,
+     "compiledAt": "2026-10-02T10:02:18.490879+00:00",
+     "highlights": [
+      {
+       "text": "成都武侯祠位于武侯祠大街，肇始于公元222年修建刘备惠陵时，是中国唯一的君臣合祀祠庙。",
+       "basis": "web",
+       "quote": "成都武侯祠位于武侯祠大街 231 号，肇始于公元 222 年修建刘备惠陵时，同时修建汉昭烈庙。",
+       "strength": "strong",
+       "citations": [
+        {
+         "quote": "成都武侯祠位于武侯祠大街 231 号，肇始于公元 222 年修建刘备惠陵时，同时修建汉昭烈庙。",
+         "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+         "observedAt": "2026-10-02T10:02:03Z"
+        },
+        {
+         "quote": "**成都武侯祠**，位于[中华人民共和国](/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD \"中华人民共和国\")[四川省](/wiki/%E5%9B%9B%E5%B7%9D%E7%9C%81 \"四川省\")[成都市](/wiki/%E6%88%90%E9%83%BD%E5%B8%82 \"成都市\")[武侯区](/wiki/%E6%AD%A6%E4%BE%AF%E5%8C%BA \"武侯区\")[浆洗街街道](/wiki/%E6%B5%86%E6%B4%97%E8%A1%97%E8%A1%97%E9%81%93 \"浆洗街街道\")武侯祠大街231号，是中国唯一的君臣合祀祠庙，由**武侯祠**、**汉昭烈庙**及**惠陵**组成，人们习惯将三者统称为武侯祠。",
+         "sourceUrl": "https://zh.wikipedia.org/wiki/%E6%88%90%E9%83%BD%E6%AD%A6%E4%BE%AF%E7%A5%A0",
+         "observedAt": "2026-10-02T10:02:10Z"
+        }
+       ],
+       "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+       "observedAt": "2026-10-02T10:02:03Z"
+      },
+      {
+       "text": "博物馆分为文物区、园林区和锦里民俗休闲街三部分，文物区由惠陵、汉昭烈庙、武侯祠等组成。",
+       "basis": "web",
+       "quote": "武侯祠又称武侯祠博物馆，它分为文物区、园林区和锦里民俗休闲街三部分，总占地面积 13.99 万平方米。",
+       "strength": "strong",
+       "citations": [
+        {
+         "quote": "武侯祠又称武侯祠博物馆，它分为文物区、园林区和锦里民俗休闲街三部分，总占地面积 13.99 万平方米。",
+         "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+         "observedAt": "2026-10-02T10:02:03Z"
+        },
+        {
+         "quote": "文物区由惠陵、汉昭烈庙、武侯祠等建筑和部分绿化地组成。",
+         "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+         "observedAt": "2026-10-02T10:02:03Z"
+        }
+       ],
+       "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+       "observedAt": "2026-10-02T10:02:03Z"
+      },
+      {
+       "text": "祠内供奉刘备、诸葛亮等蜀汉人物塑像50尊，有匾额楹联70余块，其中唐碑“三绝碑”尤为知名。",
+       "basis": "web",
+       "quote": "碑刻 50 余通，尤以唐《蜀丞相诸葛武侯祠堂碑》最为知名，人称“三绝碑”。",
+       "strength": "strong",
+       "citations": [
+        {
+         "quote": "碑刻 50 余通，尤以唐《蜀丞相诸葛武侯祠堂碑》最为知名，人称“三绝碑”。",
+         "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+         "observedAt": "2026-10-02T10:02:03Z"
+        },
+        {
+         "quote": "武侯祠内供奉着刘备、诸葛亮、关羽、张飞等蜀汉人物塑像 50 尊，有匾额楹联 70 余块（副），其中清人赵藩撰书“能攻心则反侧自消，从古知兵非好战；",
+         "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+         "observedAt": "2026-10-02T10:02:03Z"
+        }
+       ],
+       "sourceUrl": "https://www.cdwh.gov.cn/wuhou/c106368/cont.shtml",
+       "observedAt": "2026-10-02T10:02:03Z"
+      }
+     ],
+     "sourcePolicy": "web_primary_model_background_xhs_separate",
+     "machineReview": {
+      "model": "deepseek-v4-flash",
+      "status": "passed",
+      "version": 1
+     },
+     "profileVersion": 1,
+     "qualityVersion": 2
+    },
+    "originalName": "武侯祠",
+    "typicalVisitMinutes": 150,
+    "price": "武侯祠50元",
+    "openHours": {
+     "text": "09:00-18:00；17:00停止检票",
+     "openTime": "09:00",
+     "closeTime": "18:00",
+     "closedWeekdays": [],
+     "note": "17:00停止检票",
+     "evidence": [
+      "武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、"
+     ],
+     "version": 2,
+     "subject": "武侯祠",
+     "scope": "place",
+     "status": "attributed",
+     "attributions": [
+      {
+       "target": "武侯祠",
+       "subject": "武侯祠博物馆",
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "武侯祠博物馆",
+       "scope": "unattributed",
+       "sentence": "武侯祠博物馆：9:00-18:00",
+       "clause": "武侯祠博物馆：9:00-18:00",
+       "rawText": "大熊猫繁育研究基地：7:30-18:00；武侯祠博物馆：9:00-18:00；杜甫草堂：9:00-18:00；成都博物馆：周二-周日 9:00-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "武侯祠",
+       "scope": "unattributed",
+       "sentence": "武侯祠9:00-18:30",
+       "clause": "武侯祠9:00-18:30",
+       "rawText": "武侯祠9:00-18:30；杜甫草堂9:00-18:00；麓湖CPI、人民公园全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9eb96e0000000028031628",
+       "sourceKind": "image"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "武侯祠博物馆",
+       "scope": "unattributed",
+       "sentence": "武侯祠博物馆：8:30-18:30（17:00停止检票）",
+       "clause": "武侯祠博物馆：8:30-18:30（17:00停止检票）",
+       "rawText": "成都自然博物馆：周二至周日9:00-17:00（周一闭馆）；三星堆博物馆：8:30-18:00（17:00停止入馆）；武侯祠博物馆：8:30-18:30（17:00停止检票）",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2",
+       "sourceKind": "image"
+      }
+     ],
+     "review": [
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "门票50元，地铁方便，但17:00停止检票需注意时间",
+       "clause": "门票50元，地铁方便，但17:00停止检票需注意时间",
+       "rawText": "门票50元，地铁方便，但17:00停止检票需注意时间",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2",
+       "sourceKind": "reason",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "17:00停止检票需要注意时间",
+       "clause": "17:00停止检票需要注意时间",
+       "rawText": "17:00停止检票需要注意时间",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2",
+       "sourceKind": "evidence",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "开放时间：大熊猫繁育研究基地7:30-18:00、",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "成都博物馆",
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "锦里古街",
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "锦里古街全天开放、",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "三星堆博物馆",
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "大慈寺",
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "大慈寺全天开放、",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "人民公园",
+       "scope": "unattributed",
+       "sentence": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "clause": "人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "rawText": "开放时间：大熊猫繁育研究基地7:30-18:00、武侯祠博物馆9:00-18:00、杜甫草堂9:00-18:00、成都博物馆周二-周日9:00-17:00、成都动物园8:00-17:30、锦里古街全天开放、三星堆博物馆8:30-18:00、东郊记忆全天开放、太古里/大慈寺全天开放、人民公园6:30-22:00、都江堰8:00-18:00、青城山8:00-17:00、宽窄巷子全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "大熊猫繁育研究基地：7:30-18:00",
+       "clause": "大熊猫繁育研究基地：7:30-18:00",
+       "rawText": "大熊猫繁育研究基地：7:30-18:00；武侯祠博物馆：9:00-18:00；杜甫草堂：9:00-18:00；成都博物馆：周二-周日 9:00-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "杜甫草堂：9:00-18:00",
+       "clause": "杜甫草堂：9:00-18:00",
+       "rawText": "大熊猫繁育研究基地：7:30-18:00；武侯祠博物馆：9:00-18:00；杜甫草堂：9:00-18:00；成都博物馆：周二-周日 9:00-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "成都博物馆",
+       "scope": "unattributed",
+       "sentence": "成都博物馆：周二-周日 9:00-17:00",
+       "clause": "成都博物馆：周二-周日 9:00-17:00",
+       "rawText": "大熊猫繁育研究基地：7:30-18:00；武侯祠博物馆：9:00-18:00；杜甫草堂：9:00-18:00；成都博物馆：周二-周日 9:00-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "杜甫草堂9:00-18:00",
+       "clause": "杜甫草堂9:00-18:00",
+       "rawText": "武侯祠9:00-18:30；杜甫草堂9:00-18:00；麓湖CPI、人民公园全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9eb96e0000000028031628",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "人民公园",
+       "scope": "unattributed",
+       "sentence": "麓湖CPI、人民公园全天开放",
+       "clause": "人民公园全天开放",
+       "rawText": "武侯祠9:00-18:30；杜甫草堂9:00-18:00；麓湖CPI、人民公园全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9eb96e0000000028031628",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "武侯祠博物馆",
+       "scope": "unattributed",
+       "sentence": "武侯祠博物馆、杜甫草堂9:00-18:00",
+       "clause": "武侯祠博物馆、杜甫草堂9:00-18:00",
+       "rawText": "武侯祠博物馆、杜甫草堂9:00-18:00；都江堰8:00-18:00；青城山前山8:00-17:30；黄龙溪欢乐田园09:00-18:00；都江堰中华大熊猫苑08:30-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb",
+       "sourceKind": "image",
+       "reason": "ambiguous_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "都江堰8:00-18:00",
+       "clause": "都江堰8:00-18:00",
+       "rawText": "武侯祠博物馆、杜甫草堂9:00-18:00；都江堰8:00-18:00；青城山前山8:00-17:30；黄龙溪欢乐田园09:00-18:00；都江堰中华大熊猫苑08:30-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "青城山前山8:00-17:30",
+       "clause": "青城山前山8:00-17:30",
+       "rawText": "武侯祠博物馆、杜甫草堂9:00-18:00；都江堰8:00-18:00；青城山前山8:00-17:30；黄龙溪欢乐田园09:00-18:00；都江堰中华大熊猫苑08:30-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "黄龙溪欢乐田园09:00-18:00",
+       "clause": "黄龙溪欢乐田园09:00-18:00",
+       "rawText": "武侯祠博物馆、杜甫草堂9:00-18:00；都江堰8:00-18:00；青城山前山8:00-17:30；黄龙溪欢乐田园09:00-18:00；都江堰中华大熊猫苑08:30-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "都江堰中华大熊猫苑08:30-17:00",
+       "clause": "都江堰中华大熊猫苑08:30-17:00",
+       "rawText": "武侯祠博物馆、杜甫草堂9:00-18:00；都江堰8:00-18:00；青城山前山8:00-17:30；黄龙溪欢乐田园09:00-18:00；都江堰中华大熊猫苑08:30-17:00",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "17:00停止入场",
+       "clause": "17:00停止入场",
+       "rawText": "17:00停止入场；武侯祠地址：成都市武侯区武侯祠大街231号；杜甫草堂地址：成都市青羊区青华路37号",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": null,
+       "scope": "unattributed",
+       "sentence": "熊猫基地/杜甫草堂/都江堰/熊猫谷：08:00-18:00",
+       "clause": "熊猫基地/杜甫草堂/都江堰/熊猫谷：08:00-18:00",
+       "rawText": "熊猫基地/杜甫草堂/都江堰/熊猫谷：08:00-18:00；三星堆/武侯祠/成都博物馆/四川博物馆/成都动物园/青羊宫：08:30-18:00 或 09:00-17:00 或 09:00-17:30；人民公园/锦里/宽窄巷子/玉林街道/东郊记忆：全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fd8d1000000000b00dbf9",
+       "sourceKind": "image",
+       "reason": "unknown_subject"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "四川博物馆",
+       "scope": "unattributed",
+       "sentence": "三星堆/武侯祠/成都博物馆/四川博物馆/成都动物园/青羊宫：08:30-18:00 或 09:00-17:00 或 09:00-17:30",
+       "clause": "四川博物馆/成都动物园/青羊宫：08:30-18:00 或 09:00-17:00 或 09:00-17:30",
+       "rawText": "熊猫基地/杜甫草堂/都江堰/熊猫谷：08:00-18:00；三星堆/武侯祠/成都博物馆/四川博物馆/成都动物园/青羊宫：08:30-18:00 或 09:00-17:00 或 09:00-17:30；人民公园/锦里/宽窄巷子/玉林街道/东郊记忆：全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fd8d1000000000b00dbf9",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "玉林街",
+       "scope": "unattributed",
+       "sentence": "人民公园/锦里/宽窄巷子/玉林街道/东郊记忆：全天开放",
+       "clause": "玉林街道/东郊记忆：全天开放",
+       "rawText": "熊猫基地/杜甫草堂/都江堰/熊猫谷：08:00-18:00；三星堆/武侯祠/成都博物馆/四川博物馆/成都动物园/青羊宫：08:30-18:00 或 09:00-17:00 或 09:00-17:30；人民公园/锦里/宽窄巷子/玉林街道/东郊记忆：全天开放",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fd8d1000000000b00dbf9",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "成都自然博物馆",
+       "scope": "unattributed",
+       "sentence": "成都自然博物馆：周二至周日9:00-17:00（周一闭馆）",
+       "clause": "成都自然博物馆：周二至周日9:00-17:00（周一闭馆）",
+       "rawText": "成都自然博物馆：周二至周日9:00-17:00（周一闭馆）；三星堆博物馆：8:30-18:00（17:00停止入馆）；武侯祠博物馆：8:30-18:30（17:00停止检票）",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "三星堆博物馆",
+       "scope": "unattributed",
+       "sentence": "三星堆博物馆：8:30-18:00（17:00停止入馆）",
+       "clause": "三星堆博物馆：8:30-18:00（17:00停止入馆）",
+       "rawText": "成都自然博物馆：周二至周日9:00-17:00（周一闭馆）；三星堆博物馆：8:30-18:00（17:00停止入馆）；武侯祠博物馆：8:30-18:30（17:00停止检票）",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      },
+      {
+       "target": "武侯祠",
+       "subject": "自然博物馆",
+       "scope": "unattributed",
+       "sentence": "自然博物馆周一闭馆",
+       "clause": "自然博物馆周一闭馆",
+       "rawText": "三馆均需提前抢票/预约；自然博物馆周一闭馆；三星堆与武侯祠17:00停止入馆/检票；武侯祠可乘地铁3/5号线高升桥站D口或10号线武侯祠站A2口",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ff202000000002903ffb2",
+       "sourceKind": "image",
+       "reason": "other_entity"
+      }
+     ]
+    },
+    "aliases": [
+     "武侯祠",
+     "武侯祠博物馆"
+    ],
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [
+     "武侯祠博物馆需提前1-3天",
+     "武侯祠需gzh提前购票",
+     "武侯祠博物馆：提前14天预售"
+    ],
+    "reservationConflict": false,
+    "tips": [
+     "交通方式：大熊猫繁育研究基地乘3号线熊猫大道站、武侯祠博物馆乘3/5号线高升桥站、杜甫草堂乘4号线草堂北路站、成都博物馆",
+     "杜甫草堂：园林竹林清幽，适合慢逛拍照；成都博物馆：建议租讲解器；武侯祠红墙竹影是网红拍照点"
+    ],
+    "identity": {
+     "version": 2,
+     "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+     "canonicalName": "武侯祠",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "武侯祠",
+      "武侯祠博物馆"
+     ],
+     "memberIds": [
+      "300d2ae16b4e2787a84d7661a06f580e"
+     ]
+    },
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "三国文化必逛景点，历史氛围浓厚",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a159c52000000003501ffec?xsec_token=ABtCvbe-PGjREogWMWikT2bt7AQ2kkDliwlvE0PE1XOG0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "精简路线不走回头路，顺序合理省时",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a929437000000000b02545d?xsec_token=ABgDzkMyUpPr_TRlbtYbokREORnCLw1ar2dZA7iZ5Ld0M=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "三国文化胜地，门票开放时间明确，可安排游览",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a8cfa2700000000100233e5?xsec_token=AB7xe3BIHAXdv8pNz0TdDTBwD9M7ytNX97Shrpj5U75hk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "到后已关门，需提前注意开放时间",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/693ea17e000000001f00556c?xsec_token=ABor3XXw2u4JvbTehOPioZloNm_OlFQLOQ_7epf27U1MM=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "造景比较一般，适合三国狂热爱好者",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a8dc5430000000037032f93?xsec_token=ABW2ZRMvQ5bDngHEkKY5UPRAl88JfoVW0w5s3huZ_8GIU=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "讲解太深，景点小人多，体验差",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aaa49ac000000002900dfb2?xsec_token=AB38ZaG41BY5PeQZP-tJKdEXIOkWfGPD88WwL6tQxuj20=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_price",
+     "content": "武侯祠50元",
+     "sourceUrl": ""
+    },
+    {
+     "kind": "xhs_reservation",
+     "content": "武侯祠博物馆需提前1-3天；武侯祠需gzh提前购票；武侯祠博物馆：提前14天预售",
+     "sourceUrl": ""
+    }
+   ]
+  }
+ ]
+}

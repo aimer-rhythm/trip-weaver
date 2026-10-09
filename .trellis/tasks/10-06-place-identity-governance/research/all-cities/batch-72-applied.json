@@ -1,0 +1,58 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "北京"
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "c5250326550bc954a0a07f41679bf87f",
+          "city": "北京",
+          "canonical_name": "恭王府",
+          "primary_place_id": 1299,
+          "aliases": [
+            "恭王府",
+            "恭王府博物馆"
+          ],
+          "legacy_ids": [
+            "331da7586fc817261ce3ddb615736545",
+            "c5250326550bc954a0a07f41679bf87f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_attraction_alias",
+              "file": ".trellis/tasks/10-09-attraction-top30-governance/research/snapshot-20261009T081112091980Z/input.json",
+              "noteId": 408,
+              "mentionId": 2034,
+              "inputHash": "d1b21fb4fb84eebc0a5a10a844194817e8728d4eba334069aa47dcd783343485",
+              "quote": "6. 恭王府博物馆",
+              "conclusion": "原文明确博物馆全名，现行源1299为北京前海西街恭王府；补充同一景点的机构全名，不把府内建筑或花园单点并为别名。全城目录无另一同名实体。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1299,
+          "entity_id": "c5250326550bc954a0a07f41679bf87f"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "onlyTargetEntityChanged": true,
+    "allRawSourcesPreserved": true,
+    "newAliasResolvesExistingMention": true
+  }
+}

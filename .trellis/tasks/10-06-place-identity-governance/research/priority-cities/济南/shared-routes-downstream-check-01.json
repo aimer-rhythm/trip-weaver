@@ -1,0 +1,81 @@
+{
+  "batch": 44,
+  "readOnly": true,
+  "at": "2026-10-08T18:03:02.289Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes"
+  ],
+  "results": [
+    {
+      "entityId": "15ad3a8280476165635672cb0e43117a",
+      "name": "解放阁",
+      "confirmed": 34,
+      "pending": 1,
+      "effectiveMinutes": 30,
+      "boundaries": [
+        "黑虎泉",
+        "黑虎阁",
+        "九女亭",
+        "泉城广场"
+      ]
+    },
+    {
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "name": "曲水亭街",
+      "confirmed": 44,
+      "pending": 12,
+      "effectiveMinutes": 50,
+      "boundaries": [
+        "百花洲",
+        "百花洲历史文化街区",
+        "起凤桥",
+        "涌泉胡同",
+        "书香胡同"
+      ]
+    },
+    {
+      "entityId": "b58d15060ff3828b071f950487e487db",
+      "name": "百花洲",
+      "confirmed": 12,
+      "pending": 4,
+      "effectiveMinutes": null,
+      "boundaries": [
+        "曲水亭街",
+        "百花洲历史文化街区",
+        "书香胡同",
+        "月下观棠",
+        "大明湖"
+      ]
+    }
+  ],
+  "assignmentRows": 248,
+  "priorPendingPreserved": 91,
+  "pendingMentions": 108,
+  "previousOtherDurationAndReservationFieldsPreserved": true,
+  "sqlProbes": 4,
+  "realVectorProbes": 3,
+  "graph": 18,
+  "directEdges": 3,
+  "existingReview366Preserved": true,
+  "rawDerivedCachesPreserved": true,
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

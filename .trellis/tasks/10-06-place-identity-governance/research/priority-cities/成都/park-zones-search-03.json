@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "3b910555554d",
+  "query": "黄龙溪欢乐田园 龙溪谷 戏水区",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先检索黄龙溪欢乐田园、龙溪谷戏水区的相关信息。",
+  "sources": [
+    {
+      "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?sightId=472193&channel=touch",
+      "provider": "tavily",
+      "title": "黄龙溪欢乐田园",
+      "description": "黄龙溪欢乐田园有近万平米的龙溪谷大型野趣戏水区，集游乐戏水、网红项目、悠闲娱乐、沉浸体验为一体，涵盖紫薇叠溪、榕树池、水杉林、桃花潭四大主题戏水区域，这里是"
+    },
+    {
+      "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?channel=touch&sightId=472193&cat=from_area%3Dspu_sightintroduce",
+      "provider": "tavily",
+      "title": "黄龙溪欢乐田园",
+      "description": "黄龙溪欢乐田园有近万平米的龙溪谷大型野趣戏水区，集游乐戏水、网红项目、悠闲娱乐、沉浸体验为一体，涵盖紫薇叠溪、榕树池、水杉林、桃花潭四大主题戏水区域，这里是"
+    },
+    {
+      "url": "https://m.cd.bendibao.com/jingdian/huanglongxihuanletianyuan",
+      "provider": "tavily",
+      "title": "【成都黄龙溪欢乐田园】攻略2026",
+      "description": "黄龙溪欢乐田园详情. 地址：. 四川省成都市双流区黄龙溪镇农博路1号. 导航到此 ... 超级儿童节活动、龙溪谷野趣戏水区清凉开放！ 跳转中. 小程序码. 微信扫描二维码"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?sightId=472193&channel=touch",
+      "provider": "tavily",
+      "title": "黄龙溪欢乐田园",
+      "description": "黄龙溪欢乐田园有近万平米的龙溪谷大型野趣戏水区，集游乐戏水、网红项目、悠闲娱乐、沉浸体验为一体，涵盖紫薇叠溪、榕树池、水杉林、桃花潭四大主题戏水区域，这里是"
+    },
+    {
+      "url": "https://m.flight.qunar.com/shark/active/cc16868c594f193f4d7f198d810db018?channel=touch&sightId=472193&cat=from_area%3Dspu_sightintroduce",
+      "provider": "tavily",
+      "title": "黄龙溪欢乐田园",
+      "description": "黄龙溪欢乐田园有近万平米的龙溪谷大型野趣戏水区，集游乐戏水、网红项目、悠闲娱乐、沉浸体验为一体，涵盖紫薇叠溪、榕树池、水杉林、桃花潭四大主题戏水区域，这里是"
+    },
+    {
+      "url": "https://m.cd.bendibao.com/jingdian/huanglongxihuanletianyuan",
+      "provider": "tavily",
+      "title": "【成都黄龙溪欢乐田园】攻略2026",
+      "description": "黄龙溪欢乐田园详情. 地址：. 四川省成都市双流区黄龙溪镇农博路1号. 导航到此 ... 超级儿童节活动、龙溪谷野趣戏水区清凉开放！ 跳转中. 小程序码. 微信扫描二维码"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 7105.51,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 13468.22,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 13468.24
+}

@@ -1,0 +1,871 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "25c9903816f03d4aed350c11c1e44b24",
+          "city": "济南",
+          "canonical_name": "超意兴",
+          "primary_place_id": 5378,
+          "aliases": [
+            "超意兴"
+          ],
+          "legacy_ids": [
+            "25c9903816f03d4aed350c11c1e44b24"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5378,
+          "entity_id": "25c9903816f03d4aed350c11c1e44b24"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5378,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 25.5,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5378,
+          "mention_count_30d": 4,
+          "positive_count_30d": 4,
+          "source_count": 3,
+          "top_reasons": [
+            {
+              "reason": "晚餐可选，吃把子肉",
+              "evidence": "想吃把子肉作为晚餐的话，也可以选择超意兴"
+            },
+            {
+              "reason": "把子肉肥而不腻，肉汤拌饭香",
+              "evidence": "肥而不腻，浇肉汤拌饭香到跺脚"
+            },
+            {
+              "reason": "济南特色美食店铺推荐",
+              "evidence": "超意兴"
+            },
+            {
+              "reason": "把子肉肥而不腻，浇肉汤拌饭香",
+              "evidence": "肥而不腻，浇肉汤拌饭香到跺脚"
+            }
+          ],
+          "recommend_score": 14.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7824,
+          "canonical_place_id": 5378,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 超意兴",
+          "evidence_summary": "晚餐可选，吃把子肉"
+        },
+        {
+          "id": 7825,
+          "canonical_place_id": 5378,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 超意兴",
+          "evidence_summary": "把子肉肥而不腻，肉汤拌饭香"
+        },
+        {
+          "id": 7826,
+          "canonical_place_id": 5378,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 超意兴",
+          "evidence_summary": "济南特色美食店铺推荐"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5378,
+          "city": "济南",
+          "name_keys": [
+            "超意兴"
+          ],
+          "entity_ids": [
+            "25c9903816f03d4aed350c11c1e44b24"
+          ],
+          "source_hash": "d0bcef5e3be4da2000e0646045bb6298e1556cfb71ffa36e95aaa162793c68f1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5378-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/remaining-food-source-review-01.json",
+              "kind": "reviewed_restaurant_branch_scope",
+              "conclusion": "三篇全文仅推荐连锁品牌/把子肉，无黑虎泉西路门店限定。公开正文证实济南多门店；不能按旧点选择分店，4条待审。",
+              "mentionIds": [
+                11391,
+                11477,
+                11524,
+                12737
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "25c9903816f03d4aed350c11c1e44b24"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11391,
+          "scope_place_id": 5378,
+          "entity_id": null,
+          "input_hash": "3aef70fcdbc1a794214d639e6c54170eb9dc4e887f71613d4c4e26da95b1d439",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5378-scope"
+        },
+        {
+          "mention_id": 11477,
+          "scope_place_id": 5378,
+          "entity_id": null,
+          "input_hash": "28b41d6039b92b532cd7834242e14aba6fa23d5ccc4c824ae05101e64a4d8e08",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5378-scope"
+        },
+        {
+          "mention_id": 11524,
+          "scope_place_id": 5378,
+          "entity_id": null,
+          "input_hash": "46cb8278fd30d1d3e75ce136d972ee681f99d0c88d6fb7166e2e5cd65cbeaf68",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5378-scope"
+        },
+        {
+          "mention_id": 12737,
+          "scope_place_id": 5378,
+          "entity_id": null,
+          "input_hash": "c238a48bf7a597d9d6856b22b0012c2d92177674b147bbfa8a4a7a608827d488",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5378-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "d0bcef5e3be4da2000e0646045bb6298e1556cfb71ffa36e95aaa162793c68f1",
+        "mentions": [
+          {
+            "mentionId": 11391,
+            "inputHash": "3aef70fcdbc1a794214d639e6c54170eb9dc4e887f71613d4c4e26da95b1d439"
+          },
+          {
+            "mentionId": 11477,
+            "inputHash": "28b41d6039b92b532cd7834242e14aba6fa23d5ccc4c824ae05101e64a4d8e08"
+          },
+          {
+            "mentionId": 11524,
+            "inputHash": "46cb8278fd30d1d3e75ce136d972ee681f99d0c88d6fb7166e2e5cd65cbeaf68"
+          },
+          {
+            "mentionId": 12737,
+            "inputHash": "c238a48bf7a597d9d6856b22b0012c2d92177674b147bbfa8a4a7a608827d488"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 9800,
+          "fingerprint": "6fb401a69bacb8d7c12c00292055f4cd5c4e154dfb9dc195b26b584aaffa9c77",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "3aef70fcdbc1a794214d639e6c54170eb9dc4e887f71613d4c4e26da95b1d439",
+            "mentionId": 11391,
+            "scopePlaceIds": [
+              5378
+            ]
+          }
+        },
+        {
+          "id": 9815,
+          "fingerprint": "ec32dc9ecd62b9e485e57bc485c87db94abf3d5a04df3e65e4648617a4c1b752",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "28b41d6039b92b532cd7834242e14aba6fa23d5ccc4c824ae05101e64a4d8e08",
+            "mentionId": 11477,
+            "scopePlaceIds": [
+              5378
+            ]
+          }
+        },
+        {
+          "id": 9822,
+          "fingerprint": "c7b0c4d1368fbaf61deb0703b9b76d85b98b2bb082aba0d62050e9f2d89544a8",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "46cb8278fd30d1d3e75ce136d972ee681f99d0c88d6fb7166e2e5cd65cbeaf68",
+            "mentionId": 11524,
+            "scopePlaceIds": [
+              5378
+            ]
+          }
+        },
+        {
+          "id": 9888,
+          "fingerprint": "53462ca2541077cdecb99542a79561c8321a5014b3ccbcd25bc03d2536556179",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "c238a48bf7a597d9d6856b22b0012c2d92177674b147bbfa8a4a7a608827d488",
+            "mentionId": 12737,
+            "scopePlaceIds": [
+              5378
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "3a06f30f2d9d492d8892d793a839bdb8",
+          "city": "济南",
+          "canonical_name": "春水锅贴",
+          "primary_place_id": 5377,
+          "aliases": [
+            "春水锅贴"
+          ],
+          "legacy_ids": [
+            "3a06f30f2d9d492d8892d793a839bdb8"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5377,
+          "entity_id": "3a06f30f2d9d492d8892d793a839bdb8"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5377,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 18.5,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5377,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "量大好吃，午餐选择",
+              "evidence": "量大，好吃"
+            },
+            {
+              "reason": "济南特色美食店铺推荐",
+              "evidence": "春水锅贴"
+            }
+          ],
+          "recommend_score": 10.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7822,
+          "canonical_place_id": 5377,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 春水锅贴",
+          "evidence_summary": "量大好吃，午餐选择"
+        },
+        {
+          "id": 7823,
+          "canonical_place_id": 5377,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 春水锅贴",
+          "evidence_summary": "济南特色美食店铺推荐"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5377,
+          "city": "济南",
+          "name_keys": [
+            "春水锅贴"
+          ],
+          "entity_ids": [
+            "3a06f30f2d9d492d8892d793a839bdb8"
+          ],
+          "source_hash": "95b3317e4711ff60278d60a97e11d38fcae6f8e8afeb31b197ccb0496b288674",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5377-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/remaining-food-source-review-01.json",
+              "kind": "reviewed_restaurant_branch_scope",
+              "conclusion": "两篇均未给完整分店名；最近一家不唯一，图片文字是宝鸡扯面搜索地图，露出大明湖标签但未指明就餐目的地。公开正文证实大明湖与五龙潭公园两店，不能按邻近代选。",
+              "mentionIds": [
+                11384,
+                11526
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "3a06f30f2d9d492d8892d793a839bdb8"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11384,
+          "scope_place_id": 5377,
+          "entity_id": null,
+          "input_hash": "e5877028d7fe5d99b3325bef7fd9e449bc4682afc8b1187cbd6b35e02d50b739",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5377-scope"
+        },
+        {
+          "mention_id": 11526,
+          "scope_place_id": 5377,
+          "entity_id": null,
+          "input_hash": "16d1a513c47ccf9937e6eed20fb5ea534f2c1b4b72f95e770313a5f73113e4a9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5377-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "95b3317e4711ff60278d60a97e11d38fcae6f8e8afeb31b197ccb0496b288674",
+        "mentions": [
+          {
+            "mentionId": 11384,
+            "inputHash": "e5877028d7fe5d99b3325bef7fd9e449bc4682afc8b1187cbd6b35e02d50b739"
+          },
+          {
+            "mentionId": 11526,
+            "inputHash": "16d1a513c47ccf9937e6eed20fb5ea534f2c1b4b72f95e770313a5f73113e4a9"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 9921,
+          "fingerprint": "d8b83f51a20b7c88ce76981f59f9056ebc3b45a6f126e583033210c9fe6af51d",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "e5877028d7fe5d99b3325bef7fd9e449bc4682afc8b1187cbd6b35e02d50b739",
+            "mentionId": 11384,
+            "scopePlaceIds": [
+              5377
+            ]
+          }
+        },
+        {
+          "id": 9946,
+          "fingerprint": "77638985d30285a30e89d12a8d9df81e4a8c6d152f4be51de876944007c42a69",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "16d1a513c47ccf9937e6eed20fb5ea534f2c1b4b72f95e770313a5f73113e4a9",
+            "mentionId": 11526,
+            "scopePlaceIds": [
+              5377
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "3f6a2dce847940205f501690e2548e88",
+          "city": "济南",
+          "canonical_name": "草包包子",
+          "primary_place_id": 5384,
+          "aliases": [
+            "草包包子"
+          ],
+          "legacy_ids": [
+            "3f6a2dce847940205f501690e2548e88"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5384,
+          "entity_id": "3f6a2dce847940205f501690e2548e88"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5384,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 16.0,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5384,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "百年老店，猪肉灌汤包爆汁不腻",
+              "evidence": "百年老店，猪肉灌汤包爆汁不腻"
+            },
+            {
+              "reason": "百年老店，猪肉灌汤包爆汁不腻",
+              "evidence": "百年老店，猪肉灌汤包爆汁不腻"
+            }
+          ],
+          "recommend_score": 9.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7833,
+          "canonical_place_id": 5384,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 草包包子",
+          "evidence_summary": "百年老店，猪肉灌汤包爆汁不腻"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5384,
+          "city": "济南",
+          "name_keys": [
+            "草包包子"
+          ],
+          "entity_ids": [
+            "3f6a2dce847940205f501690e2548e88"
+          ],
+          "source_hash": "80c11c03e83a22a124541b5b4fcc2366ea2fc1dd732287318e687bce020eb877",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5384-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/remaining-food-source-review-01.json",
+              "kind": "reviewed_restaurant_branch_scope",
+              "conclusion": "同篇重复抽取仅说草包包子与口味，未给分店；公开普利街总店与旧千佛山东路地址不能据裸名判等。全条待审，品牌/食品存在不等于非地点。",
+              "mentionIds": [
+                11480,
+                12740
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "3f6a2dce847940205f501690e2548e88"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11480,
+          "scope_place_id": 5384,
+          "entity_id": null,
+          "input_hash": "db55e8010a39607f4abe8b29c6ed8da8d8c26a98febacda5352e722e3c1bc3af",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5384-scope"
+        },
+        {
+          "mention_id": 12740,
+          "scope_place_id": 5384,
+          "entity_id": null,
+          "input_hash": "3f080cb2826578c0ee29b96822c1129ad7a978fed78613449e651a4383993dff",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5384-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "80c11c03e83a22a124541b5b4fcc2366ea2fc1dd732287318e687bce020eb877",
+        "mentions": [
+          {
+            "mentionId": 11480,
+            "inputHash": "db55e8010a39607f4abe8b29c6ed8da8d8c26a98febacda5352e722e3c1bc3af"
+          },
+          {
+            "mentionId": 12740,
+            "inputHash": "3f080cb2826578c0ee29b96822c1129ad7a978fed78613449e651a4383993dff"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 10061,
+          "fingerprint": "f0246edfd5be8f5535a55e7c14674d301bc295fdddc9046b780295c20c9164eb",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "db55e8010a39607f4abe8b29c6ed8da8d8c26a98febacda5352e722e3c1bc3af",
+            "mentionId": 11480,
+            "scopePlaceIds": [
+              5384
+            ]
+          }
+        },
+        {
+          "id": 10136,
+          "fingerprint": "d663ab95dcd4e8fcfa293c0370642fd6eecf4b7a7d30fceddd774b8ef9a0af1a",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "3f080cb2826578c0ee29b96822c1129ad7a978fed78613449e651a4383993dff",
+            "mentionId": 12740,
+            "scopePlaceIds": [
+              5384
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "b8880b34d9a4e56942c76ea7a4e5555c",
+          "city": "济南",
+          "canonical_name": "天天过年",
+          "primary_place_id": 5401,
+          "aliases": [
+            "天天过年"
+          ],
+          "legacy_ids": [
+            "b8880b34d9a4e56942c76ea7a4e5555c"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5401,
+          "entity_id": "b8880b34d9a4e56942c76ea7a4e5555c"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5401,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 19.0,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5401,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "20年老店，本地人推荐，菜品美味分量足",
+              "evidence": "本地朋友推荐的20年老店果然不踩雷"
+            },
+            {
+              "reason": "本地人私藏20年老牌鲁菜馆，家常菜地道入味，分量实在性价比高",
+              "evidence": "本地人私藏开了20年老牌鲁菜馆"
+            }
+          ],
+          "recommend_score": 10.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7851,
+          "canonical_place_id": 5401,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 天天过年",
+          "evidence_summary": "20年老店，本地人推荐，菜品美味分量足"
+        },
+        {
+          "id": 8631,
+          "canonical_place_id": 5401,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 天天过年",
+          "evidence_summary": "本地人私藏20年老牌鲁菜馆，家常菜地道入味，分量实在性价比高"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5401,
+          "city": "济南",
+          "name_keys": [
+            "天天过年"
+          ],
+          "entity_ids": [
+            "b8880b34d9a4e56942c76ea7a4e5555c"
+          ],
+          "source_hash": "6e2b87863179e9d819de11a50e485c5b26a13dbc519fdb3adf8533065d10cf0b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5401-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/remaining-food-source-review-01.json",
+              "kind": "reviewed_restaurant_branch_scope",
+              "conclusion": "11375全文明确济南西旁边并给菜品，可归该西部店铺主体；12806只有裸名和同类菜单，菜单相似不证明同店，继续待审。旧梁庄地址/点无原文支持，改原文概略济南西周边、清坐标，不指定潍坊路门牌。",
+              "mentionIds": [
+                11375,
+                12806
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "b8880b34d9a4e56942c76ea7a4e5555c"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11375,
+          "scope_place_id": 5401,
+          "entity_id": "b8880b34d9a4e56942c76ea7a4e5555c",
+          "input_hash": "9c5423a46169252ee8b350de4958017c7a662b563737e1851dee3212a42a078c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5401-scope"
+        },
+        {
+          "mention_id": 12806,
+          "scope_place_id": 5401,
+          "entity_id": null,
+          "input_hash": "fa7039b322f891bbb7fc8d6caa1fa30d47a6cd336fc624c08c2f77b1f00462a8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-60-source-5401-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "6e2b87863179e9d819de11a50e485c5b26a13dbc519fdb3adf8533065d10cf0b",
+        "mentions": [
+          {
+            "mentionId": 11375,
+            "inputHash": "9c5423a46169252ee8b350de4958017c7a662b563737e1851dee3212a42a078c"
+          },
+          {
+            "mentionId": 12806,
+            "inputHash": "fa7039b322f891bbb7fc8d6caa1fa30d47a6cd336fc624c08c2f77b1f00462a8"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 10267,
+          "fingerprint": "d6d13a9f596e4f11ed8b0b35e47ffbae6e3b3553014f2f1e26b35694290759de",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "fa7039b322f891bbb7fc8d6caa1fa30d47a6cd336fc624c08c2f77b1f00462a8",
+            "mentionId": 12806,
+            "scopePlaceIds": [
+              5401
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "b8880b34d9a4e56942c76ea7a4e5555c",
+          "city": "济南",
+          "canonical_name": "天天过年",
+          "primary_place_id": 5401,
+          "aliases": [
+            "天天过年"
+          ],
+          "legacy_ids": [
+            "b8880b34d9a4e56942c76ea7a4e5555c"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "济南西周边",
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "original_note_location_boundary",
+              "file": "priority-cities/济南/remaining-food-source-review-01.json",
+              "quote": "就在济南西旁边",
+              "conclusion": "保留原文西部位置限定，旧梁庄门牌与点位不继承；不伪造官方分店名，精确位置继续待核。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5401,
+          "entity_id": "b8880b34d9a4e56942c76ea7a4e5555c"
+        }
+      ]
+    }
+  ]
+}

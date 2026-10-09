@@ -1,0 +1,91 @@
+{
+  "verifiedAt": "2026-10-06T19:55:18.656Z",
+  "batch": "batch-20",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "上海",
+      "exported": 229,
+      "total": 238,
+      "active": 231,
+      "embedded": 231,
+      "probes": [
+        {
+          "name": "The Stage上海白玉兰观景台",
+          "id": "d4a291993f56fc8f715afc31b2a85633"
+        },
+        {
+          "name": "SMP白玉兰观景台",
+          "id": "d4a291993f56fc8f715afc31b2a85633"
+        },
+        {
+          "name": "上海白玉兰观景台",
+          "id": "d4a291993f56fc8f715afc31b2a85633"
+        },
+        {
+          "name": "白玉兰观景台",
+          "id": "d4a291993f56fc8f715afc31b2a85633"
+        },
+        {
+          "name": "苏州路",
+          "id": "10d3fb61125f3b83e496360c9ef7824e"
+        },
+        {
+          "name": "北苏州路",
+          "id": "2db9dd317f84c8e10dcd4f576cbe8f3a"
+        },
+        {
+          "name": "南苏州路",
+          "id": "ffa308a26ffdce1b639b8104b005b5ca"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "SMP白玉兰观景台",
+          "id": "d4a291993f56fc8f715afc31b2a85633",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "苏州路",
+          "id": "10d3fb61125f3b83e496360c9ef7824e",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "北苏州路",
+          "id": "2db9dd317f84c8e10dcd4f576cbe8f3a",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "南苏州路",
+          "id": "ffa308a26ffdce1b639b8104b005b5ca",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "f5283d2d-562b-4c38-a48b-71bf29ef02f4"
+      ]
+    }
+  ],
+  "failures": []
+}

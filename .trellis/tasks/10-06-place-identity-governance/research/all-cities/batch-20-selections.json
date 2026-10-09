@@ -1,0 +1,106 @@
+[
+  {
+    "reviews": [
+      40
+    ],
+    "entityIds": [
+      "d4a291993f56fc8f715afc31b2a85633"
+    ],
+    "primary": "上海白玉兰观景台",
+    "canonicalName": "The Stage上海白玉兰观景台",
+    "reason": "2497 P13补足此前未看的原图：海关钟楼、穹顶与威斯汀楼冠、后方楼群排列遮挡和屋顶可见程度，与明确写The Stage的2495 P4及2498 P6吻合。结合SMP白玉兰名称及官方高空视角，确认同一The Stage观景台，撤销仅凭免费文案猜测低层平台的疑虑。保留现有稳定主ID和历史成员，不将广场3层露台或楼宇本体并入；免费文案不采信为门票事实。",
+    "geometryReason": "继续使用batch-02已核实的主源建筑GCJ-02点31.249151/121.498046，精度仍为建筑参考点；SMP旧北郊坐标不参与平均。",
+    "overrides": {
+      "lat": 31.249151,
+      "lng": 121.498046,
+      "address": "上海市虹口区北外滩街道东长治路588号",
+      "geoStatus": "reviewed_source"
+    },
+    "sources": [
+      "shanghai-magnolia-official-fetch.json",
+      "shanghai-stage-kkday-fetch.json"
+    ],
+    "contexts": [
+      {
+        "file": "batch-20-image-context.json",
+        "mentionIds": [
+          10982,
+          10934,
+          11025
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "上海",
+    "entityIds": [
+      "10d3fb61125f3b83e496360c9ef7824e"
+    ],
+    "primary": "苏州路",
+    "reason": "原文P5位于苏州河漫步线路，原图为The Riverside沿街门面；旧兆丰路18号办公楼地址与图文冲突，具体河岸仍缺证据。",
+    "geometryReason": "旧点与原文中心城区苏州河范围矛盾，未取得可靠精确点，经纬度成对清空；ID不变。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市苏州河沿岸，原文苏州路具体路段待核",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "batch-20-image-context.json",
+        "mentionIds": [
+          9924
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "上海",
+    "entityIds": [
+      "2db9dd317f84c8e10dcd4f576cbe8f3a"
+    ],
+    "primary": "北苏州路",
+    "reason": "原文及P2乍浦路桥、陆家嘴天际线支持中心城区苏州河畔；旧31.557167/121.214662远端点没有地址或POI支持。",
+    "geometryReason": "旧点与原文中心城区苏州河范围矛盾，未取得可靠精确点，经纬度成对清空；ID不变。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市苏州河北岸，原文北苏州路漫步路段",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "batch-20-image-context.json",
+        "mentionIds": [
+          9921
+        ]
+      }
+    ]
+  },
+  {
+    "reviews": [],
+    "city": "上海",
+    "entityIds": [
+      "ffa308a26ffdce1b639b8104b005b5ca"
+    ],
+    "primary": "南苏州路",
+    "reason": "原文P4列南苏州路、原图沿街咖啡店，旧经度120.402989显然不支持上海中心苏州河路线；不据未核门店推造坐标。",
+    "geometryReason": "旧点与原文中心城区苏州河范围矛盾，未取得可靠精确点，经纬度成对清空；ID不变。",
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市苏州河沿岸，原文南苏州路具体机位待核",
+      "geoStatus": "unresolvable"
+    },
+    "contexts": [
+      {
+        "file": "batch-20-image-context.json",
+        "mentionIds": [
+          9923
+        ]
+      }
+    ]
+  }
+]

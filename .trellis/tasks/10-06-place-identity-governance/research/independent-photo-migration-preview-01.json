@@ -1,0 +1,174 @@
+{
+  "apply": false,
+  "statementsHash": "6a5f08e78d8c21fb4bdcbac94a18a2f52ff6208e6e31e2a9121a4e5954ccbe13",
+  "existed": [
+    "independent_photo_assignments",
+    "independent_photo_changes"
+  ],
+  "before": {
+    "canonical_places": {
+      "count": 5495,
+      "digest": "25743697dcf1989ba9c190dbbdf3705a"
+    },
+    "research_evidence": {
+      "count": 7802,
+      "digest": "4c4073fe820f403fa28b36c5ff3d9726"
+    },
+    "place_relation": {
+      "count": 270,
+      "digest": "3f210cb524cc75c510ff666637bf0038"
+    },
+    "data_import": {
+      "count": 24,
+      "digest": "6f54363a337ceb47061abe54fe7e95b7"
+    },
+    "place_identity_imports": {
+      "count": 41,
+      "digest": "13a961311c8108238177d582026a61b3"
+    },
+    "trips": {
+      "count": 201,
+      "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+    }
+  },
+  "after": {
+    "canonical_places": {
+      "count": 5495,
+      "digest": "25743697dcf1989ba9c190dbbdf3705a"
+    },
+    "research_evidence": {
+      "count": 7802,
+      "digest": "4c4073fe820f403fa28b36c5ff3d9726"
+    },
+    "place_relation": {
+      "count": 270,
+      "digest": "3f210cb524cc75c510ff666637bf0038"
+    },
+    "data_import": {
+      "count": 24,
+      "digest": "6f54363a337ceb47061abe54fe7e95b7"
+    },
+    "place_identity_imports": {
+      "count": 41,
+      "digest": "13a961311c8108238177d582026a61b3"
+    },
+    "trips": {
+      "count": 201,
+      "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+    }
+  },
+  "first": {
+    "independent_photo_assignments": {
+      "count": 0,
+      "digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "independent_photo_changes": {
+      "count": 0,
+      "digest": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "second": {
+    "independent_photo_assignments": {
+      "count": 0,
+      "digest": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "independent_photo_changes": {
+      "count": 0,
+      "digest": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "columns": [
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "city",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "image_key",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "input_hash",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "asset_key",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "entity_id",
+      "data_type": "text",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "entity_revision",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "revision",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_assignments",
+      "column_name": "change_key",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "change_key",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "city",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "request",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "before_state",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "after_state",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "independent_photo_changes",
+      "column_name": "rolled_back_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    }
+  ],
+  "unchanged": true,
+  "idempotent": true
+}

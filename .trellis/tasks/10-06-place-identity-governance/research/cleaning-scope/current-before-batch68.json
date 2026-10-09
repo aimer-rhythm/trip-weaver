@@ -1,0 +1,955 @@
+{
+  "version": 1,
+  "scopeFile": "run-1791372788231/scope-06.json",
+  "scopeSha256": "73af20a5e458e6eb6cd55c630d0e553f7ae8d0522fdda21e9cdbbf49d8edf353",
+  "inputSha256": "47f35a083f7354959810eaab5dbf6433da37b13ae00561e4d62edc022e9fc70f",
+  "reportFile": "run-1791372788231/scope-06.md",
+  "policy": {
+    "quotas": {
+      "attraction": 50,
+      "food": 30,
+      "cafe": 10,
+      "photo_spot": 10,
+      "market": 10
+    },
+    "excludedCities": [
+      "云南"
+    ],
+    "quotaUnit": "每city桶内每类型的稳定实体",
+    "tieBreak": "推荐分、独立来源数、质量分；均相同后优先较少覆盖的约2km网格，再用稳定ID固定顺序",
+    "deferredMeaning": "不在本轮主动清洗范围，原始数据/待审状态及现有身份防护保留"
+  },
+  "summary": {
+    "inputQualified": 4919,
+    "eligible": 4374,
+    "manuallyExcluded": 37,
+    "quotaSelected": 967,
+    "referenceAdded": 11,
+    "primary": 978,
+    "dependencies": 56,
+    "sourceRows": 1135,
+    "pendingInScope": 50,
+    "pendingDeferred": 126,
+    "quarantinedReviewRows": 37,
+    "deferredOtherRows": 89,
+    "inScopeReviews": {
+      "rows": 50,
+      "entityPairs": 50,
+      "mentions": 0,
+      "images": 0
+    },
+    "deferredReviews": {
+      "rows": 126,
+      "entityPairs": 84,
+      "mentions": 41,
+      "images": 0
+    },
+    "referenceNeedsReview": 4,
+    "preservedReferences": 49
+  },
+  "latestAppliedEntityBatch": 67,
+  "latestFlow": "../all-cities/flow/run-69",
+  "latestAudit": "../all-cities/audit/run-66",
+  "userAcceptance": false,
+  "taskStatus": "in_progress",
+  "activatedAt": "2026-10-07T14:59:32.000Z",
+  "selectionFrozenAfterEntityBatch": 29,
+  "cityReviewLedgers": {
+    "济南": "../priority-cities/济南/review-45.json",
+    "成都": "../priority-cities/成都/review-03.json"
+  },
+  "progressNote": "第67批核对成都6源12提及/5全文，清除四大会馆、一街七巷、真茶屋（天府广场店）、麻布食堂四个无具体地点依据的共同通用点及adcode；两洛带对象地址仅洛带古镇，两店无可靠门牌则清泛地址。名称/别名/成员ID/类别和全部非位置消费保持，revision1→2；不新增scope、分配、待审、实体或合并。古镇本体与博客楼只读，主街聚合、240分钟路线边界、周一提醒及门牌仍待核；不凭万象城标签指定麻布分店。公开主搜索两次超时、中文补充源未配置，未取得新公共正文，不确定旧地理编码错误过程。隔离幂等/倒序回滚、392地点/49关系/direct15同版本7双导入、4SQL/4真实向量/40边界、实际facts通过。127原源/490提及/85笔记及日期/raw_json/分析/41旧分配保持；411旧行/127旧图片字段（123空）/0绑定/201行程保持。372现行主名图库返回一致，11处各1图，mock359→359、真实队列0。全仓与扩展typecheck通过，flow69为336正例/113边界/52撤回零失败，audit66仍313PENDING。成都review03仍113未完成（2部分scope、4位置部分、107其余）；济南review45仍76未完成、133提及待审，183范围待审和4必去缺口及原3媒体相关文字发现不变。实体67/元数据01/图片03，无待同步验证；不看图、地图凭据待轮换、云南及普通长尾不扩入，未验收不提交归档。",
+  "progressUpdatedAt": "2026-10-09T00:45:26.554Z",
+  "summaryMeaning": "summary为scope06固定入选时统计；后续逐提及待审增量见currentScopeReviews，不重排或静默删除原入选行。",
+  "currentScopeReviews": {
+    "frozenEntityPairs": 50,
+    "addedPendingMentions": 133,
+    "currentReviewRows": 183,
+    "referenceNeedsReview": 4,
+    "evidence": [
+      "../priority-cities/济南/wulongtan-source-review-01.json",
+      "../priority-cities/济南/baotu-source-review-01.json",
+      "../priority-cities/济南/square-source-review-02.json",
+      "../priority-cities/济南/spring-source-review-02.json",
+      "../priority-cities/济南/daminghu-source-review-01.json",
+      "../priority-cities/济南/main-sights-source-review-01.json",
+      "../priority-cities/济南/shared-routes-source-review-01.json",
+      "../priority-cities/济南/commercial-source-review-01.json",
+      "../priority-cities/济南/light-source-review-01.json",
+      "../priority-cities/济南/minzu-source-review-01.json",
+      "../priority-cities/济南/pearl-source-review-01.json",
+      "../priority-cities/济南/qushui-source-review-01.json",
+      "../priority-cities/济南/qinji-source-review-01.json",
+      "../priority-cities/济南/food-branches-source-review-01.json",
+      "../priority-cities/济南/beverage-branches-source-review-01.json",
+      "../priority-cities/济南/laoshe-source-review-02.json",
+      "../priority-cities/济南/park-culture-source-review-03.json",
+      "../priority-cities/济南/restaurant-branches-source-review-01.json",
+      "../priority-cities/济南/river-source-review-01.json",
+      "../priority-cities/济南/night-market-source-review-01.json",
+      "../priority-cities/济南/remaining-food-source-review-01.json",
+      "../priority-cities/济南/built-place-source-review-01.json",
+      "../priority-cities/济南/remaining-streets-source-review-01.json",
+      "../priority-cities/济南/furong-source-review-01.json",
+      "../priority-cities/济南/last-restaurants-source-review-01.json",
+      "../priority-cities/济南/bridge-text-source-review-01.json",
+      "../priority-cities/成都/park-zones-source-review-01.json"
+    ],
+    "meaning": "50固定重点实体对加济南133提及待审；第66批成都分区2确认、0新增待审，成都既有39提及待审仍在原台账归类。183范围待审及4必去缺口保持；原3媒体相关文字发现未应用。"
+  },
+  "latestIndependentPhotoBatch": 3,
+  "unappliedFindings": [
+    {
+      "entityId": "46bf462d545dc6435d6de296ba099d0f",
+      "name": "融汇老商埠",
+      "sourceIds": [
+        5371,
+        5380,
+        5962
+      ],
+      "mentionIds": [
+        12785,
+        12799
+      ],
+      "status": "unapplied_text_scope_preserve_existing_photo_consumption",
+      "reason": "附近未具名咖啡店、混合红绿灯及旧大商埠简介范围仍需完整scope；当前实际3图，直接scope会阻断旧路由，图片暂缓时不自动绑定。",
+      "discoveredDuringEntityBatch": 45,
+      "evidence": "../priority-cities/济南/commercial-source-review-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "c11648e477180d1b3f97da06808da5e7",
+      "name": "经三路",
+      "sourceIds": [
+        5394
+      ],
+      "mentionIds": [
+        12617
+      ],
+      "status": "unapplied_reason_exclusion_preserve_existing_photo_consumption",
+      "reason": "reason遗漏纬三路红绿灯限定，placeContent保留限定；当前实际1图，需同时处理文字治理后的旧图库保全。",
+      "discoveredDuringEntityBatch": 45,
+      "evidence": "../priority-cities/济南/commercial-source-review-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "sourceIds": [
+        5498
+      ],
+      "mentionIds": [
+        11619,
+        12912
+      ],
+      "noteId": 2624,
+      "status": "unapplied_description_scope_preserve_existing_photo_consumption",
+      "reason": "抽取把含歧义南门固化为五龙潭南门500米；现有2图使直接新增scope失图，保留原描述待后续治理，不伪造新起点或距离。",
+      "discoveredDuringEntityBatch": 55,
+      "evidence": "../priority-cities/济南/laoshe-source-review-02.json",
+      "fullReviewPassed": false
+    }
+  ],
+  "pendingVerification": [],
+  "latestReadOnlyFindings": {
+    "file": "../priority-cities/济南/bridge-source-review-01.json",
+    "outerFile": "../priority-cities/济南/outer-source-review-01.json",
+    "bridgeGateBoundaryPending": true,
+    "liuPhotoMentionPending": 12692,
+    "noteRefresh": "../all-cities/jinan-bridge-note-refresh-01.json",
+    "downloadedOriginalImages": 51,
+    "webSearchStatus": "search07_stream_returned_links_and_sina_fetched;search05_06_08_timed_out;reference04_12_fetch_failed",
+    "textFollowup": "../text-followup-20261009.md",
+    "shopsPacket": "../priority-cities/济南/shops-source-packet-01.json",
+    "zooOldPointMatchesToilet": true,
+    "zooNameLinkUnverified": true,
+    "imagesCompared": false,
+    "foodFollowup": "../priority-cities/济南/food-followup-source-review-01.json",
+    "beverageFollowup": "../priority-cities/济南/beverage-followup-source-review-01.json",
+    "beverageFollowupStatus": "branch_and_wrong_point_resolved_batch54_installation_granularity_pending",
+    "laosheFollowup": "priority-cities/济南/laoshe-source-review-02.json",
+    "laosheFollowupStatus": "museum_alias_address_wall_identity_wrong_point_resolved_batch55_v2_description_media_location_pending",
+    "parkCultureFollowup": "../priority-cities/济南/park-culture-source-review-03.json",
+    "restaurantBranchesFollowup": "../priority-cities/济南/restaurant-branches-source-review-01.json",
+    "ordinaryOutdoorsFollowup": "../priority-cities/济南/ordinary-outdoors-source-review-01.json",
+    "nightMarketRelocationFollowup": "../priority-cities/济南/night-market-web-review-02.json",
+    "nightMarketRelocationFollowupStatus": "resolved_name_address_and_stale_navigation_batch59_precise_location_media_pending",
+    "remainingFoodFollowup": "../priority-cities/济南/remaining-food-source-review-01.json",
+    "builtPlaceFollowup": "../priority-cities/济南/built-place-source-review-01.json",
+    "remainingStreetsFollowup": "../priority-cities/济南/remaining-streets-source-review-01.json",
+    "furongFollowup": "../priority-cities/济南/furong-source-review-01.json",
+    "lastRestaurantsFollowup": "../priority-cities/济南/last-restaurants-web-review-01.json",
+    "bridgeTextFollowup": "../priority-cities/济南/bridge-text-source-review-01.json",
+    "chengduParkParentFollowup": "../priority-cities/成都/park-zones-source-review-01.json",
+    "chengduCommonPointAndLuodaiFollowup": "../priority-cities/成都/common-point-source-review-01.json"
+  },
+  "resolvedVerification": [
+    {
+      "batch": 36,
+      "city": "济南",
+      "entityId": "033a692df5218d571ddd2cca8a8c91e3",
+      "name": "甜沫儿",
+      "kind": "withdrawal_live_vector",
+      "reason": "production_timeout",
+      "evidence": "../all-cities/batch-37/sync-01/verification-vectors.json",
+      "verifiedByEntityBatch": 37
+    },
+    {
+      "batch": 38,
+      "city": "济南",
+      "entityId": "8808e16f1472d0df17bed729a2e54e83",
+      "name": "趵突泉",
+      "kind": "withdrawal_live_vector",
+      "reason": "production_timeout",
+      "verifiedByEntityBatch": 38,
+      "evidence": "../all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+    }
+  ],
+  "latestReviewEvidence": {
+    "city": "成都",
+    "file": "../priority-cities/成都/common-point-downstream-check-01.json",
+    "supplement": "../priority-cities/成都/common-point-source-review-01.json",
+    "fullReviewsAdded": 0,
+    "partiallyReviewedLocation": 4,
+    "readOnlyPending": 2,
+    "fullReviewsReopened": 0
+  },
+  "resolvedFindings": [
+    {
+      "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+      "name": "灵岩寺",
+      "sourceId": 5475,
+      "mentionIds": [
+        11686
+      ],
+      "status": "resolved_effective_duration_batch39",
+      "quote": "避雷5：灵岩寺距离市区较远，来回路程长，如果只有半天时间不建议安排，容易太赶",
+      "conclusion": "错误180分钟已从有效导出与下游消费移除；原始源与旧派生缓存保留追溯，唯一有效提及不撤回。",
+      "next": "本项AI自查通过；继续其他重点主体。",
+      "evidence": "../priority-cities/济南/lingyan-downstream-check-01.json",
+      "resolvedByEntityBatch": 39
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "sourceId": 5481,
+      "mentionIds": [
+        12581
+      ],
+      "status": "resolved_description_fields_batch40",
+      "resolvedByEntityBatch": 40,
+      "evidence": "../priority-cities/济南/description-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "abc624edea07111dc19aa79dfbb18289",
+      "sourceId": 5974,
+      "mentionIds": [
+        12787
+      ],
+      "status": "resolved_description_fields_batch40",
+      "resolvedByEntityBatch": 40,
+      "evidence": "../priority-cities/济南/description-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "2c8372d3a47dbcb68abd998af495436d",
+      "name": "尚泉尚水茶馆前平台",
+      "sourceId": 5945,
+      "mentionIds": [
+        12653
+      ],
+      "status": "resolved_platform_identity_and_type_batch41",
+      "resolvedByEntityBatch": 41,
+      "evidence": "../priority-cities/济南/platform-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "locationPending": true
+    },
+    {
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "name": "大明湖",
+      "sourceIds": [
+        5348,
+        5953,
+        5968
+      ],
+      "mentionIds": [
+        11342,
+        11387,
+        11402,
+        11411,
+        11429,
+        11434,
+        11450,
+        11462,
+        11473,
+        11494,
+        11507,
+        11522,
+        11578,
+        11594,
+        11627,
+        11683,
+        11693,
+        12570,
+        12629,
+        12641,
+        12661,
+        12664,
+        12671,
+        12677,
+        12700,
+        12707,
+        12712,
+        12728,
+        12733,
+        12748,
+        12764,
+        12772,
+        12779,
+        12794,
+        12802,
+        12814,
+        12832,
+        12853,
+        12860,
+        12873,
+        12900,
+        12921,
+        12923,
+        12926,
+        12947,
+        12959,
+        12973,
+        12979
+      ],
+      "pendingMentionIds": [
+        11379,
+        11421,
+        11539,
+        11581,
+        11598,
+        11601,
+        11604,
+        11611,
+        11695,
+        11703,
+        11705,
+        12575,
+        12649,
+        12654,
+        12687,
+        12839,
+        12908
+      ],
+      "status": "resolved_scenic_scope_and_boat_duration_batch42",
+      "resolvedByEntityBatch": 42,
+      "evidence": "../priority-cities/济南/daminghu-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "locationPending": true
+    },
+    {
+      "entityId": "136719df189e0dd70cd34be75f6faef4",
+      "name": "黑虎泉",
+      "resolvedByEntityBatch": 43,
+      "status": "resolved_main_sight_scope_and_fact_projection_batch43",
+      "confirmed": 36,
+      "pending": 11,
+      "evidence": "../priority-cities/济南/main-sights-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "name": "千佛山",
+      "resolvedByEntityBatch": 43,
+      "status": "resolved_main_sight_scope_and_fact_projection_batch43",
+      "confirmed": 10,
+      "pending": 3,
+      "evidence": "../priority-cities/济南/main-sights-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "15ad3a8280476165635672cb0e43117a",
+      "name": "解放阁",
+      "sourceId": 5360,
+      "mentionIds": [
+        11337,
+        12565
+      ],
+      "noteId": 2545,
+      "status": "resolved_shared_duration_and_lead_time_batch44",
+      "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+      "originalMinutes": 60,
+      "currentTypicalMinutes": 30,
+      "additionalConcern": null,
+      "evidence": "../priority-cities/济南/shared-routes-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "resolvedByEntityBatch": 44,
+      "confirmed": 34,
+      "pending": 1
+    },
+    {
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "name": "曲水亭街",
+      "sourceId": 5352,
+      "mentionIds": [
+        11340,
+        12568
+      ],
+      "noteId": 2545,
+      "status": "resolved_shared_duration_and_lead_time_batch44",
+      "quote": "▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店",
+      "originalMinutes": 90,
+      "currentTypicalMinutes": 50,
+      "additionalConcern": null,
+      "evidence": "../priority-cities/济南/shared-routes-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "resolvedByEntityBatch": 44,
+      "confirmed": 44,
+      "pending": 12
+    },
+    {
+      "entityId": "b58d15060ff3828b071f950487e487db",
+      "name": "百花洲",
+      "sourceId": 5364,
+      "mentionIds": [
+        11341,
+        12569
+      ],
+      "noteId": 2545,
+      "status": "resolved_shared_duration_and_lead_time_batch44",
+      "quote": "▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店",
+      "originalMinutes": 90,
+      "currentTypicalMinutes": null,
+      "additionalConcern": null,
+      "evidence": "../priority-cities/济南/shared-routes-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "resolvedByEntityBatch": 44,
+      "confirmed": 12,
+      "pending": 4
+    },
+    {
+      "entityId": "ce733b67e45f0d657e53ff9bff8cbbce",
+      "name": "经三路爱心红绿灯",
+      "sourceIds": [
+        5970
+      ],
+      "mentionIds": [
+        12776
+      ],
+      "status": "resolved_qualified_heading_description_batch46",
+      "reason": "三描述字段混入独立夹心胡同；拼接原名在正文不连续，现有字段排除摘录校验拒绝。须设计可靠主体引用，不伪造摘录、不改原文。",
+      "discoveredDuringEntityBatch": 45,
+      "evidence": "../priority-cities/济南/light-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "resolvedByEntityBatch": 46
+    },
+    {
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "name": "曲水亭街",
+      "sourceIds": [
+        5352,
+        5493
+      ],
+      "mentionIds": [
+        11369,
+        12610
+      ],
+      "noteId": 2546,
+      "status": "resolved_partial_highlights_batch49",
+      "resolvedByEntityBatch": 49,
+      "confirmed": 46,
+      "pending": 10,
+      "evidence": "../priority-cities/济南/qushui-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+      "name": "VILLASHAKA",
+      "status": "resolved_unsupported_point_and_category_batch50_precise_location_pending",
+      "resolvedByEntityBatch": 50,
+      "evidence": "../priority-cities/济南/vintage-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+      "name": "BLUEDUCK骨董屋",
+      "status": "resolved_unsupported_point_and_category_batch50_precise_location_pending",
+      "resolvedByEntityBatch": 50,
+      "evidence": "../priority-cities/济南/vintage-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "3290af7793dea0fd22138e561900775f",
+      "name": "李山记铁板炒鸡",
+      "status": "resolved_unsupported_point_and_original_address_batch51_precise_location_pending",
+      "resolvedByEntityBatch": 51,
+      "evidence": "../priority-cities/济南/food-address-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+      "name": "新秀炸鸡",
+      "status": "resolved_unsupported_point_and_original_address_batch51_precise_location_pending",
+      "resolvedByEntityBatch": 51,
+      "evidence": "../priority-cities/济南/food-address-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "6580c2664a98b2aef1203dc3459157e6",
+      "name": "乐乎哉刘家菜",
+      "status": "resolved_unsupported_point_and_original_address_batch51_precise_location_pending",
+      "resolvedByEntityBatch": 51,
+      "evidence": "../priority-cities/济南/food-address-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "ec447b923b04fcefb80f15c27392e452",
+      "name": "凉皮嫂子",
+      "status": "resolved_unsupported_point_and_original_address_batch51_precise_location_pending",
+      "resolvedByEntityBatch": 51,
+      "evidence": "../priority-cities/济南/food-address-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "2f5f0095f24c189ebf61109638172394",
+      "name": "邻家羊肉面饸饹面",
+      "status": "resolved_unsupported_point_and_original_address_batch51_precise_location_pending",
+      "resolvedByEntityBatch": 51,
+      "evidence": "../priority-cities/济南/food-address-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+      "name": "杨氏泉水茶汤",
+      "status": "resolved_unsupported_point_and_original_address_batch51_precise_location_pending",
+      "resolvedByEntityBatch": 51,
+      "evidence": "../priority-cities/济南/food-address-downstream-check-01.json",
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "status": "resolved_partial_branch_scope_batch52",
+      "resolvedByEntityBatch": 52,
+      "confirmed": 2,
+      "pending": 2,
+      "evidence": "../priority-cities/济南/qinji-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "name": "鑫龙火锅（北园大街店）",
+      "status": "resolved_original_branch_name_and_scope_batch53",
+      "resolvedByEntityBatch": 53,
+      "confirmed": 1,
+      "pending": 3,
+      "evidence": "../priority-cities/济南/food-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "name": "七九刘家烧烤(纬九路店)",
+      "status": "resolved_original_branch_name_and_scope_batch53",
+      "resolvedByEntityBatch": 53,
+      "confirmed": 2,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/food-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "9626de365121d40b3565b4a7dbc5be1a",
+      "name": "喜茶(济南融汇老商埠店)",
+      "status": "resolved_branch_navigation_facts_and_wrong_point_batch54",
+      "resolvedByEntityBatch": 54,
+      "confirmed": 1,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/beverage-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "installationGranularityPending": true
+    },
+    {
+      "entityId": "eb75294ebee7a37c374a3f5cd374d4ac",
+      "name": "山耶云耶(融汇济南老商埠店)",
+      "status": "resolved_branch_navigation_facts_and_wrong_point_batch54",
+      "resolvedByEntityBatch": 54,
+      "confirmed": 1,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/beverage-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "installationGranularityPending": true
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "name": "老舍笔下的济南主题墙",
+      "status": "resolved_theme_wall_identity_type_and_wrong_point_batch55_v2",
+      "resolvedByEntityBatch": 55,
+      "variant": "v2",
+      "confirmed": 1,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/laoshe-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "69ab8bb674e8f0eea31c34c936bddf23",
+      "name": "济南环城公园",
+      "status": "resolved_group_duration_batch56_v2",
+      "resolvedByEntityBatch": 56,
+      "variant": "v2",
+      "confirmed": 1,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/park-culture-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false,
+      "historicLocationPreserved": false
+    },
+    {
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "name": "四窟万象",
+      "status": "resolved_cave_wrong_point_scope_batch56_v2",
+      "resolvedByEntityBatch": 56,
+      "variant": "v2",
+      "confirmed": 2,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/park-culture-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "historicLocationPreserved": false
+    },
+    {
+      "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+      "name": "共青团路关帝庙",
+      "status": "resolved_specific_temple_name_scope_batch56_v2",
+      "resolvedByEntityBatch": 56,
+      "variant": "v2",
+      "confirmed": 1,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/park-culture-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false,
+      "historicLocationPreserved": true
+    },
+    {
+      "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "name": "燕喜堂（CBD店）",
+      "status": "resolved_partial_branch_scope_and_unsupported_point_batch57",
+      "resolvedByEntityBatch": 57,
+      "confirmed": 2,
+      "pending": 1,
+      "evidence": "../priority-cities/济南/restaurant-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉（联四路）",
+      "status": "resolved_partial_branch_scope_and_unsupported_point_batch57",
+      "resolvedByEntityBatch": 57,
+      "confirmed": 1,
+      "pending": 1,
+      "evidence": "../priority-cities/济南/restaurant-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面（经十一路）",
+      "status": "resolved_partial_branch_scope_and_unsupported_point_batch57",
+      "resolvedByEntityBatch": 57,
+      "confirmed": 1,
+      "pending": 2,
+      "evidence": "../priority-cities/济南/restaurant-branches-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "status": "resolved_memorial_image_tip_contamination_batch58",
+      "resolvedByEntityBatch": 58,
+      "confirmed": 2,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/river-outdoors-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "7950bfadd891932d01be8636aba8b51a",
+      "name": "环联1904火车夜市",
+      "status": "resolved_relocated_market_name_address_and_stale_navigation_batch59",
+      "resolvedByEntityBatch": 59,
+      "confirmed": 4,
+      "pending": 1,
+      "evidence": "../priority-cities/济南/night-market-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+      "name": "天天过年",
+      "status": "resolved_partial_west_jinan_scope_and_unsupported_point_batch60",
+      "resolvedByEntityBatch": 60,
+      "confirmed": 1,
+      "pending": 1,
+      "evidence": "../priority-cities/济南/remaining-food-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "name": "济南文字墙",
+      "status": "resolved_foreign_wall_tips_batch61_specific_wall_location_pending",
+      "resolvedByEntityBatch": 61,
+      "confirmed": 1,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/built-place-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "9dbf8ef94ec1777461c9d486973ce0c7",
+      "name": "后宰门街",
+      "status": "resolved_street_category_and_independent_duration_scope_batch62",
+      "resolvedByEntityBatch": 62,
+      "confirmed": 3,
+      "pending": 0,
+      "evidence": "../priority-cities/济南/remaining-streets-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "747792d1b5834255f5feaa6c2dc62925",
+      "name": "芙蓉街",
+      "sourceIds": [
+        5353
+      ],
+      "mentionIds": [
+        12904,
+        12948
+      ],
+      "supplementalNoteId": 2568,
+      "status": "resolved_consumption_scope_with_original_text_warning_batch63",
+      "reason": "混合提示净化已应用，既有分析作者警示原句保全；两餐馆归属转正式PENDING，未解决具体门店。",
+      "discoveredDuringEntityBatch": 62,
+      "evidence": "../priority-cities/济南/furong-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "resolvedByEntityBatch": 63,
+      "confirmed": 28,
+      "pending": 2,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨（县东巷71号）",
+      "status": "resolved_address_qualified_restaurant_scope_batch64",
+      "resolvedByEntityBatch": 64,
+      "evidence": "../priority-cities/济南/last-restaurants-downstream-check-01.json",
+      "confirmed": 2,
+      "pending": 1,
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉（山大南路店）",
+      "status": "resolved_address_qualified_restaurant_scope_batch64",
+      "resolvedByEntityBatch": 64,
+      "evidence": "../priority-cities/济南/last-restaurants-downstream-check-01.json",
+      "confirmed": 3,
+      "pending": 0,
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+      "name": "蜗牛叔叔的食堂（泉城路店）",
+      "status": "resolved_address_qualified_restaurant_scope_batch64",
+      "resolvedByEntityBatch": 64,
+      "evidence": "../priority-cities/济南/last-restaurants-downstream-check-01.json",
+      "confirmed": 2,
+      "pending": 0,
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false
+    },
+    {
+      "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+      "name": "起凤桥八号门洞",
+      "status": "resolved_explicit_gate_scope_batch65",
+      "resolvedByEntityBatch": 65,
+      "evidence": "../priority-cities/济南/bridge-text-downstream-check-01.json",
+      "confirmed": 2,
+      "pending": 0,
+      "fullReviewPassed": false,
+      "coordinatesCleared": false,
+      "preciseLocationResolved": false,
+      "bareVenueNameExcluded": true
+    },
+    {
+      "entityId": "300be0691119032dc7bc5e825a192c6a",
+      "name": "萌宠片区（黄龙溪欢乐田园）",
+      "status": "resolved_park_zone_scope_and_wrong_district_point_batch66",
+      "resolvedByEntityBatch": 66,
+      "evidence": "../priority-cities/成都/park-zones-downstream-check-01.json",
+      "confirmed": 1,
+      "pending": 0,
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "categoryReviewPassed": false
+    },
+    {
+      "entityId": "de1ab1b76f5de5a5ff8089016c9d93f6",
+      "name": "龙溪谷大型野趣戏水区（黄龙溪欢乐田园）",
+      "status": "resolved_park_zone_scope_and_wrong_district_point_batch66",
+      "resolvedByEntityBatch": 66,
+      "evidence": "../priority-cities/成都/park-zones-downstream-check-01.json",
+      "confirmed": 1,
+      "pending": 0,
+      "fullReviewPassed": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "categoryReviewPassed": false
+    },
+    {
+      "entityId": "1400be5b30fc208635ddd6e39dc26cb8",
+      "name": "麻布食堂",
+      "status": "resolved_unsupported_common_point_batch67_identity_and_precise_location_pending",
+      "resolvedByEntityBatch": 67,
+      "evidence": "../priority-cities/成都/common-point-downstream-check-01.json",
+      "scopeChanged": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "417cb731eabc94c663cda20060b48c4e",
+      "name": "四大会馆",
+      "status": "resolved_unsupported_common_point_batch67_identity_and_precise_location_pending",
+      "resolvedByEntityBatch": 67,
+      "evidence": "../priority-cities/成都/common-point-downstream-check-01.json",
+      "scopeChanged": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "723b7a943ad5082bc683d54c777e9cb6",
+      "name": "真茶屋（天府广场店）",
+      "status": "resolved_unsupported_common_point_batch67_identity_and_precise_location_pending",
+      "resolvedByEntityBatch": 67,
+      "evidence": "../priority-cities/成都/common-point-downstream-check-01.json",
+      "scopeChanged": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "09748ed3db0b30dea1569ec719524496",
+      "name": "一街七巷",
+      "status": "resolved_unsupported_common_point_batch67_identity_and_precise_location_pending",
+      "resolvedByEntityBatch": 67,
+      "evidence": "../priority-cities/成都/common-point-downstream-check-01.json",
+      "scopeChanged": false,
+      "coordinatesCleared": true,
+      "preciseLocationResolved": false,
+      "fullReviewPassed": false
+    }
+  ],
+  "imageComparisonPolicy": {
+    "status": "deferred_by_user",
+    "instruction": "图片触发安全审查，暂不对图片进行比对",
+    "appliesTo": "本任务后续图片比对，恢复须有用户新指令",
+    "acceptedAsPassed": false
+  },
+  "unappliedMetadataFindings": [],
+  "resolvedMetadataFindings": [
+    {
+      "kind": "legacy_highlight_observed_at_fallback",
+      "status": "resolved_metadata01",
+      "discoveredDuringEntityBatch": 50,
+      "highlights": 148,
+      "entities": 127,
+      "matchedMentions": 165,
+      "matchedNotes": 32,
+      "reason": "旧reason分支已传递原来源日期，济南148看点已双同步且重复导出稳定；原始来源日期不改写。",
+      "evidence": "../priority-cities/济南/vintage-timestamp-provenance-01.json",
+      "productionFixApplied": true,
+      "resolvedAt": "2026-10-08T20:04:59.876Z",
+      "resolvedEvidence": "../metadata/content-dates-01/sync-01/live-check.json",
+      "repeatExportEvidence": "../metadata/content-dates-01/preview/report.json"
+    }
+  ],
+  "latestMetadataRefresh": {
+    "run": 1,
+    "kind": "legacy_content_dates",
+    "afterEntityBatch": 50,
+    "city": "济南",
+    "sourceRevision": 24,
+    "state": "../metadata/content-dates-01/sync-01/state.json",
+    "evidence": "../metadata/content-dates-01/sync-01/live-check.json",
+    "verifiedAt": "2026-10-08T20:04:59.876Z"
+  },
+  "mapCredentialGate": {
+    "file": "../map-credential-rotation-required.json",
+    "status": "rotation_required",
+    "provider": "tianditu",
+    "automaticRotationPerformed": false
+  },
+  "latestNoteTextWarningProtocol": {
+    "entityBatch": 63,
+    "installedFiles": 64,
+    "changedFiles": 9,
+    "migration": "../note-text-warning-migration-1791501270629751100.json",
+    "design": "../note-text-warning-design-20261009.md",
+    "textWarnings": 1
+  },
+  "cityMetadataRefreshes": {
+    "成都": {
+      "entityBatch": 66,
+      "sourceRevision": 6,
+      "existingProtocol": "legacy_content_dates",
+      "entities": 245,
+      "highlights": 314,
+      "evidence": "../priority-cities/成都/run-1791504271958861000/producer-baseline-check.json",
+      "productionFixAdded": false
+    }
+  }
+}

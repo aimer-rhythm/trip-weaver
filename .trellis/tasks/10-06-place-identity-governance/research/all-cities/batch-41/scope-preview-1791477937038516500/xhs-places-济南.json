@@ -1,0 +1,143 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "fcc52b3ba5e3576f99ec0ade846d8dfd1493d305a550967eaaf455a69b8c35ba",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "尚泉尚水茶馆前平台",
+    "尚泉尚水茶馆"
+   ],
+   "mentions": [
+    {
+     "mentionId": 12653,
+     "noteId": 2795,
+     "inputHash": "f2f6ce1bb4c9f0e69a8c33d33cc99226fd92918f3251ce56d0a589e196e0b955",
+     "textHash": "0249c2f45a9fb388e6feb43485de54ecf3c786a1ef47bd4dbf550a0e487f8ae9",
+     "textLength": 572,
+     "entityId": "2c8372d3a47dbcb68abd998af495436d",
+     "revision": 4,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "2c8372d3a47dbcb68abd998af495436d",
+     "revision": 4,
+     "canonicalName": "尚泉尚水茶馆前平台",
+     "aliases": [
+      "尚泉尚水茶馆前平台"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "2c8372d3a47dbcb68abd998af495436d",
+   "name": "尚泉尚水茶馆前平台",
+   "category": "自然",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "photo_spot",
+    "themes": [],
+    "address": "济南大明湖畔尚泉尚水茶馆前平台，精确机位待核",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "前面平台可拍摄湖面与楼阁全景"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "前面平台可拍摄湖面与楼阁全景。",
+     "highlights": [
+      {
+       "text": "前面平台可拍摄湖面与楼阁全景",
+       "quote": "其前面平台即可拍摄湖面与楼阁全景",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/687762340000000010027974?xsec_token=ABBx-EttI03LKpQ0hLWfIO_rRlvWpiW0LmZUBwVW3CrhI=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T16:45:37.329443+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T16:45:37.583192+00:00"
+    },
+    "originalName": "尚泉尚水茶馆",
+    "openHours": {
+     "version": 2,
+     "subject": "尚泉尚水茶馆前平台",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12653,
+      "noteId": 2795,
+      "inputHash": "f2f6ce1bb4c9f0e69a8c33d33cc99226fd92918f3251ce56d0a589e196e0b955"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "2c8372d3a47dbcb68abd998af495436d",
+     "revision": 4,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "2c8372d3a47dbcb68abd998af495436d",
+     "canonicalName": "尚泉尚水茶馆前平台",
+     "revision": 4,
+     "kind": "same_entity",
+     "memberNames": [
+      "尚泉尚水茶馆前平台"
+     ],
+     "memberIds": [
+      "2c8372d3a47dbcb68abd998af495436d",
+      "ce45edfa0da27fc37f6ac8eefbaa8954"
+     ]
+    },
+    "aliases": [
+     "尚泉尚水茶馆前平台"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "前面平台可拍摄湖面与楼阁全景",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/687762340000000010027974?xsec_token=ABBx-EttI03LKpQ0hLWfIO_rRlvWpiW0LmZUBwVW3CrhI=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

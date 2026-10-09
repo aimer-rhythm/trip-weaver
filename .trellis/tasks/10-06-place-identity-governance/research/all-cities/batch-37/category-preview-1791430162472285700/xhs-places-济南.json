@@ -1,0 +1,756 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-08）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-08",
+ "count": 5,
+ "activeCount": 5,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "0a38b3ad30852955ac12dea516782e6fe1e2b477951ac7b58c52e5aea37c460f",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "王府池子",
+    "刘氏泉",
+    "玛瑙泉",
+    "腾蛟泉",
+    "起凤泉"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11625,
+     "noteId": 2624,
+     "inputHash": "c91355aa289dee679d83eb6d966a9613ed04817eaf6cdff8a4fbe1925db76053",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12583,
+     "noteId": 2813,
+     "inputHash": "8b3d19732c5c579b9c995a9a23c8cde6a1ba6799286dcdf6b48ad4c612eec56d",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12584,
+     "noteId": 2813,
+     "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12587,
+     "noteId": 2813,
+     "inputHash": "77496d13ce4f16b49d6b77d98b9849cd02ebb60320e53bc71db57f127f5758e4",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12692,
+     "noteId": 2817,
+     "inputHash": "a7a2eab6f400c8b21582ae35776863710d609ffb97bebcbcf8d80252a74bfc49",
+     "textHash": "2655f9422962f151baa9c012324f5eaf6fb1b5ce42a1e28664c21a08333a520b",
+     "textLength": 273,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12695,
+     "noteId": 2817,
+     "inputHash": "e69290580bd8b90978090b0ec38471ae8974f5ab3645b80bffe5c211e2e1b9ac",
+     "textHash": "2655f9422962f151baa9c012324f5eaf6fb1b5ce42a1e28664c21a08333a520b",
+     "textLength": 273,
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12771,
+     "noteId": 2797,
+     "inputHash": "b83824632b4b614672658ffa4324b6eaf82f521a177002c158f4d1127df70571",
+     "textHash": "8dea1677404eff3326dcd80069c50197fe246492a9dc574fe34d42880a7f0a8b",
+     "textLength": 736,
+     "entityId": "a4e2cf834fef59d81531b82e42296fa1",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12919,
+     "noteId": 2624,
+     "inputHash": "08d90e9e8f940e8992c7bb57a6d346b594d9d610758c1d5e80da6d66053282b8",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12941,
+     "noteId": 2837,
+     "inputHash": "70d329713c73e8f9cac53c15fb3037ef97236488a9751b4ad0648a1d692f9cd0",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12942,
+     "noteId": 2837,
+     "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12943,
+     "noteId": 2837,
+     "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "065e077002130047feaadff4f607b480",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12944,
+     "noteId": 2837,
+     "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "065e077002130047feaadff4f607b480",
+     "revision": 3,
+     "canonicalName": "起凤泉",
+     "aliases": [
+      "起凤泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+     "revision": 3,
+     "canonicalName": "腾蛟泉",
+     "aliases": [
+      "腾蛟泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+     "revision": 3,
+     "canonicalName": "刘氏泉",
+     "aliases": [
+      "刘氏泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "a4e2cf834fef59d81531b82e42296fa1",
+     "revision": 2,
+     "canonicalName": "玛瑙泉",
+     "aliases": [
+      "玛瑙泉"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "canonicalName": "王府池子",
+     "aliases": [
+      "王府池子"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "d275db4ab60aaa28bfdf9fb75c7a5196",
+   "name": "王府池子",
+   "category": "自然",
+   "lng": 117.023719,
+   "lat": 36.667456,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "王府池子街中段",
+    "adcode": "",
+    "mentionCount": 5,
+    "recommendScore": 17.0,
+    "topReasons": [
+     "隐藏在老城区的宝藏泉水濯缨泉",
+     "热门打卡点",
+     "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "隐藏在老城区的宝藏泉水濯缨泉。与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街。济南著名泉水景点，值得一看。济南有名景点，可顺路参观。",
+     "highlights": [
+      {
+       "text": "隐藏在老城区的宝藏泉水濯缨泉",
+       "quote": "隐藏在老城区的宝藏泉水濯缨泉",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:22.829523+00:00"
+      },
+      {
+       "text": "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "quote": "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      },
+      {
+       "text": "济南著名泉水景点，值得一看",
+       "quote": "济南著名泉水景点，值得一看。",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      },
+      {
+       "text": "济南有名景点，可顺路参观",
+       "quote": "济南有名景点，可顺路参观。",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T03:29:23.235978+00:00"
+    },
+    "originalName": "王府池子",
+    "openHours": {
+     "version": 2,
+     "subject": "王府池子",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12583,
+      "noteId": 2813,
+      "inputHash": "8b3d19732c5c579b9c995a9a23c8cde6a1ba6799286dcdf6b48ad4c612eec56d"
+     },
+     {
+      "mentionId": 12695,
+      "noteId": 2817,
+      "inputHash": "e69290580bd8b90978090b0ec38471ae8974f5ab3645b80bffe5c211e2e1b9ac"
+     },
+     {
+      "mentionId": 12941,
+      "noteId": 2837,
+      "inputHash": "70d329713c73e8f9cac53c15fb3037ef97236488a9751b4ad0648a1d692f9cd0"
+     },
+     {
+      "mentionId": 11625,
+      "noteId": 2624,
+      "inputHash": "c91355aa289dee679d83eb6d966a9613ed04817eaf6cdff8a4fbe1925db76053"
+     },
+     {
+      "mentionId": 12919,
+      "noteId": 2624,
+      "inputHash": "08d90e9e8f940e8992c7bb57a6d346b594d9d610758c1d5e80da6d66053282b8"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+     "canonicalName": "王府池子",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "王府池子"
+     ],
+     "memberIds": [
+      "d275db4ab60aaa28bfdf9fb75c7a5196"
+     ]
+    },
+    "aliases": [
+     "王府池子"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "隐藏在老城区的宝藏泉水濯缨泉",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "热门打卡点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南著名泉水景点，值得一看。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南有名景点，可顺路参观。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "95513a0ce9f9a81486fbb865e7bc8466",
+   "name": "刘氏泉",
+   "category": "自然",
+   "lng": 117.024161,
+   "lat": 36.669038,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "曲水亭街南首",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "西更道走到头可见细长水流",
+     "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "西更道走到头就能看到一条细长的水流。与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街。",
+     "highlights": [
+      {
+       "text": "西更道走到头就能看到一条细长的水流",
+       "quote": "西更道走到头就能看到一条细长的水流",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:22.829523+00:00"
+      },
+      {
+       "text": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "quote": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T03:29:23.235978+00:00"
+    },
+    "originalName": "刘氏泉",
+    "openHours": {
+     "version": 2,
+     "subject": "刘氏泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12587,
+      "noteId": 2813,
+      "inputHash": "77496d13ce4f16b49d6b77d98b9849cd02ebb60320e53bc71db57f127f5758e4"
+     },
+     {
+      "mentionId": 12944,
+      "noteId": 2837,
+      "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+     "canonicalName": "刘氏泉",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "刘氏泉"
+     ],
+     "memberIds": [
+      "95513a0ce9f9a81486fbb865e7bc8466"
+     ]
+    },
+    "aliases": [
+     "刘氏泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "西更道走到头可见细长水流",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "06ecc5ddb78dc622997f9947a414e77c",
+   "name": "腾蛟泉",
+   "category": "自然",
+   "lng": 117.024181,
+   "lat": 36.668318,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "王府池子街北端路东",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "王府池子出来往北走的岔路口可见",
+     "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "王府池子出来往北走的岔路口可见。与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街。",
+     "highlights": [
+      {
+       "text": "王府池子出来往北走的岔路口可见",
+       "quote": "王府池子出来往北走的岔路口可见",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      },
+      {
+       "text": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "quote": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T03:29:23.235978+00:00"
+    },
+    "originalName": "腾蛟泉",
+    "openHours": {
+     "version": 2,
+     "subject": "腾蛟泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12584,
+      "noteId": 2813,
+      "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5"
+     },
+     {
+      "mentionId": 12942,
+      "noteId": 2837,
+      "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+     "canonicalName": "腾蛟泉",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "腾蛟泉"
+     ],
+     "memberIds": [
+      "06ecc5ddb78dc622997f9947a414e77c"
+     ]
+    },
+    "aliases": [
+     "腾蛟泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "王府池子出来往北走的岔路口可见",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "a4e2cf834fef59d81531b82e42296fa1",
+   "name": "玛瑙泉",
+   "category": "自然",
+   "lng": 117.03392,
+   "lat": 36.662561,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "解放阁南护城河南岸",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "泉水清澈，鱼儿像在空中游动，小石潭记具象化。",
+     "highlights": [
+      {
+       "text": "泉水清澈，鱼儿像在空中游动，小石潭记具象化",
+       "quote": "小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:22.829525+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T03:29:23.235978+00:00"
+    },
+    "originalName": "玛瑙泉",
+    "openHours": {
+     "version": 2,
+     "subject": "玛瑙泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "a4e2cf834fef59d81531b82e42296fa1",
+     "canonicalName": "玛瑙泉",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "玛瑙泉"
+     ],
+     "memberIds": [
+      "a4e2cf834fef59d81531b82e42296fa1"
+     ]
+    },
+    "aliases": [
+     "玛瑙泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "泉水清澈，鱼儿像在空中游动，小石潭记具象化",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "065e077002130047feaadff4f607b480",
+   "name": "起凤泉",
+   "category": "自然",
+   "lng": 117.023669,
+   "lat": 36.668556,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "起凤桥街9号院内",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街。",
+     "highlights": [
+      {
+       "text": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "quote": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T03:29:23.235978+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T03:29:23.235978+00:00"
+    },
+    "originalName": "起凤泉",
+    "openHours": {
+     "version": 2,
+     "subject": "起凤泉",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12943,
+      "noteId": 2837,
+      "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "065e077002130047feaadff4f607b480",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "065e077002130047feaadff4f607b480",
+     "canonicalName": "起凤泉",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "起凤泉"
+     ],
+     "memberIds": [
+      "065e077002130047feaadff4f607b480"
+     ]
+    },
+    "aliases": [
+     "起凤泉"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

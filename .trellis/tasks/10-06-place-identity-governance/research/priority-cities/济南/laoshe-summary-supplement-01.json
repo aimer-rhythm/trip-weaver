@@ -1,0 +1,35 @@
+{
+  "readOnly": true,
+  "beforeEntityBatch": 55,
+  "reason": "普通来源仍使用PlaceSummary.top_reasons；原隔离夹具仅冻结计数分数，遗漏该字段导致空topReasons。",
+  "rows": [
+    {
+      "sourceId": 5498,
+      "adcode": "",
+      "top_reasons": [
+        {
+          "reason": "从五龙潭南门出500米即到，可顺路参观。",
+          "evidence": "500米就是老舍故居"
+        },
+        {
+          "reason": "citywalk路线起点，文化景点",
+          "evidence": "老舍故居→趵突泉"
+        },
+        {
+          "reason": "从五龙潭南门出500米即到，可选择性参观。",
+          "evidence": "500米就是老舍故居"
+        }
+      ]
+    },
+    {
+      "sourceId": 5957,
+      "adcode": "",
+      "top_reasons": [
+        {
+          "reason": "文化打卡点，与老舍相关",
+          "evidence": "⑧老舍笔下的济南"
+        }
+      ]
+    }
+  ]
+}

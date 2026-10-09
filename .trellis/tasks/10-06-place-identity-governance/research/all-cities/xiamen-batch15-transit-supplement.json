@@ -1,0 +1,57 @@
+{
+  "capturedAt": "2026-10-06T17:38:22.029Z",
+  "entities": [
+    {
+      "entity_id": "e8d12f20f7daba2e6c3f2a7688580efc",
+      "city": "厦门",
+      "canonical_name": "厦门地铁1号线",
+      "aliases": [
+        "厦门地铁1号线"
+      ],
+      "legacy_ids": [
+        "e8d12f20f7daba2e6c3f2a7688580efc"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "primary_place_id": "2899",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ],
+      "places": [
+        {
+          "entity_id": "e8d12f20f7daba2e6c3f2a7688580efc",
+          "id": "2899",
+          "name": "厦门地铁1号线",
+          "normalized_name": "厦门地铁1号线",
+          "city": "厦门",
+          "address": "福建省厦门市",
+          "latitude": 24.479627,
+          "longitude": 118.08891,
+          "place_type": "other",
+          "geo_status": "resolved",
+          "amap_poi_id": "",
+          "is_active": true
+        }
+      ],
+      "mentions": [
+        {
+          "id": "5900",
+          "city": "厦门",
+          "name": "厦门地铁1号线",
+          "normalized_name": "厦门地铁1号线",
+          "place_type": "other",
+          "reason": "海上行驶可看海景，交通兼具观光",
+          "evidence_text": "海上地铁1号线",
+          "note_id": "1467",
+          "title": "三天两夜，厦门CityWalk 全攻略",
+          "source_url": "https://www.xiaohongshu.com/explore/69e9c421000000002202bd97"
+        }
+      ]
+    }
+  ]
+}

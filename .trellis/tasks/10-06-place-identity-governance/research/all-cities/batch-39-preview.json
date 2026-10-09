@@ -1,0 +1,247 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "29f4a4b260878eb8d9143b15b8fca54f",
+          "city": "济南",
+          "canonical_name": "灵岩寺",
+          "primary_place_id": 5475,
+          "aliases": [
+            "灵岩寺"
+          ],
+          "legacy_ids": [
+            "29f4a4b260878eb8d9143b15b8fca54f"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5475,
+          "entity_id": "29f4a4b260878eb8d9143b15b8fca54f"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5475,
+          "content_profile": null,
+          "typical_visit_minutes": 180,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 14.5,
+          "theme_tags": [
+            "历史人文",
+            "住宿",
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5475,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "海内四大名刹之首，宋代彩塑罗汉像被誉为海内第一名塑",
+              "evidence": "海内四大名刹之首"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7927,
+          "canonical_place_id": 5475,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 灵岩寺",
+          "evidence_summary": "海内四大名刹之首，宋代彩塑罗汉像被誉为海内第一名塑"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5475,
+          "city": "济南",
+          "name_keys": [
+            "灵岩寺"
+          ],
+          "entity_ids": [
+            "29f4a4b260878eb8d9143b15b8fca54f"
+          ],
+          "source_hash": "8bf45454e56655a8c3fa6aac6d8fae7bbb4b009e3ba140aecc098ef12c7d4e27",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-39-lingyan-5475",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/lingyan-duration-review-01.json",
+              "kind": "reviewed_duration_budget_not_visit",
+              "sha256": "7404593250117f91869b4a1bee682f5ffc67837828d62872b236d368b072ca54",
+              "conclusion": "原图明确劝退时间不足者；180不是建议停留。保留寺庙身份、宋代彩塑看点及唯一11686，不伪造字段排除；完整scope重建派生事实。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "29f4a4b260878eb8d9143b15b8fca54f"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11686,
+          "scope_place_id": 5475,
+          "entity_id": "29f4a4b260878eb8d9143b15b8fca54f",
+          "input_hash": "247cae165600adec5aa136ff162dfe9cb700f611f9833f369c6549ca88884411",
+          "revision": 1,
+          "change_key": "all-cities-20261008-batch-39-lingyan-5475"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "8bf45454e56655a8c3fa6aac6d8fae7bbb4b009e3ba140aecc098ef12c7d4e27",
+        "mentions": [
+          {
+            "mentionId": 11686,
+            "inputHash": "247cae165600adec5aa136ff162dfe9cb700f611f9833f369c6549ca88884411"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "29f4a4b260878eb8d9143b15b8fca54f",
+          "city": "济南",
+          "canonical_name": "灵岩寺",
+          "primary_place_id": 5475,
+          "aliases": [
+            "灵岩寺"
+          ],
+          "legacy_ids": [
+            "29f4a4b260878eb8d9143b15b8fca54f"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_duration_budget_not_visit",
+              "file": "priority-cities/济南/lingyan-duration-review-01.json",
+              "sha256": "7404593250117f91869b4a1bee682f5ffc67837828d62872b236d368b072ca54",
+              "conclusion": "原图明确劝退时间不足者；180不是建议停留。保留寺庙身份、宋代彩塑看点及唯一11686，不伪造字段排除；完整scope重建派生事实。"
+            },
+            {
+              "kind": "retain_reviewed_temple_category",
+              "conclusion": "寺庙及宋代彩塑看点为文化；scope清除包含住宿/美食的旧主题后显式保留文化类别。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5475,
+          "entity_id": "29f4a4b260878eb8d9143b15b8fca54f"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "fef9784ad510099ad3bd150eee3fbf5c",
+          "city": "济南",
+          "canonical_name": "纬三路与经三路交叉口",
+          "primary_place_id": 5321,
+          "aliases": [
+            "纬三路与经三路交叉口"
+          ],
+          "legacy_ids": [
+            "fef9784ad510099ad3bd150eee3fbf5c"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5321,
+          "entity_id": "fef9784ad510099ad3bd150eee3fbf5c"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5321,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5321,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "打卡爱心斑马线，多巴胺配色拍照好看",
+              "evidence": "打卡爱心斑马线"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7726,
+          "canonical_place_id": 5321,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 纬三路与经三路交叉口",
+          "evidence_summary": "打卡爱心斑马线，多巴胺配色拍照好看"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5321,
+          "city": "济南",
+          "name_keys": [
+            "纬三路与经三路交叉口"
+          ],
+          "entity_ids": [
+            "fef9784ad510099ad3bd150eee3fbf5c"
+          ],
+          "source_hash": "258e058d02d84ebe10c2ef31a36d1bac6ab4c30c251b086c17692f1bb1782150",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5321-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/commercial-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "conclusion": "完整原文确认独立路口/商业文化街区，原提及不改写，原图库无匹配数据；非本批三主体保持原状。",
+              "mentionIds": [
+                11343
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "fef9784ad510099ad3bd150eee3fbf5c"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11343,
+          "scope_place_id": 5321,
+          "entity_id": "fef9784ad510099ad3bd150eee3fbf5c",
+          "input_hash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5321-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "258e058d02d84ebe10c2ef31a36d1bac6ab4c30c251b086c17692f1bb1782150",
+        "mentions": [
+          {
+            "mentionId": 11343,
+            "inputHash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+          "city": "济南",
+          "canonical_name": "大观园",
+          "primary_place_id": 5478,
+          "aliases": [
+            "大观园"
+          ],
+          "legacy_ids": [
+            "910ac4e3fee34da1dd5f4378c7319ba5"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5478,
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5478,
+          "content_profile": {
+            "intro": "济南大观园是1931年中秋开业的大型娱乐场所，名称取自《红楼梦》中的大观园，寓意美好吉祥。园内曾店铺林立，鼎盛时大小商店与摊贩多达四百余家，涵盖绸布、百货、餐饮、照相等多种行业。1943年创办的晨光茶社以相声闻名，马三立等名角曾来献艺，使大观园兼具商业繁荣与文化韵味。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-06T03:07:04.932857+00:00",
+            "highlights": [
+              {
+                "text": "济南大观园是1931年中秋开业的大型娱乐场所，名称取自《红楼梦》中的大观园，寓意美好吉祥。",
+                "basis": "web",
+                "quote": "大观园的正式开业时间为1931年农历八月十五（公历9月20日，恰好又是周末），距今已有70多年。",
+                "strength": "strong",
+                "citations": [
+                  {
+                    "quote": "大观园的正式开业时间为1931年农历八月十五（公历9月20日，恰好又是周末），距今已有70多年。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  },
+                  {
+                    "quote": "大观园的名称来自清代著名小说《红楼梦》，书中的大观园景色优美、人物风流。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  },
+                  {
+                    "quote": "那么，济南大观园的命名和开业日期显然图的是它名字美好和中秋佳节的吉祥含义。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  }
+                ],
+                "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                "observedAt": "2026-10-06T03:06:51Z"
+              },
+              {
+                "text": "园内曾店铺林立，鼎盛时大小商店与摊贩多达四百余家，涵盖绸布、百货、餐饮、照相等多种行业。",
+                "basis": "web",
+                "quote": "鼎盛时期的大观园外市场有绸布、百货、鞋帽、图书、饭馆、照相、理发、镶牙等大小商店200余家，加上各种摊贩共计有400多家。",
+                "strength": "strong",
+                "citations": [
+                  {
+                    "quote": "鼎盛时期的大观园外市场有绸布、百货、鞋帽、图书、饭馆、照相、理发、镶牙等大小商店200余家，加上各种摊贩共计有400多家。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  },
+                  {
+                    "quote": "它拥有店铺约200家、摊贩200来家，行业共20多种，包括布匹绸缎、洋广杂货、钟表、眼镜、南纸、文具、电器、瓷器、工艺品、书籍、烟酒糖茶、干鲜果、糕点、冷食店、酒吧、咖啡馆、国药、镶牙、台球房、照相馆以及修鞋的、擦皮鞋的、算命的……一时大观园里店铺林立、人头攒动，各种买卖真是“洋洋大观”。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  }
+                ],
+                "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                "observedAt": "2026-10-06T03:06:51Z"
+              },
+              {
+                "text": "1943年创办的晨光茶社以相声闻名，马三立等名角曾来献艺，使大观园兼具商业繁荣与文化韵味。",
+                "basis": "web",
+                "quote": "1943年创办的晨光茶社，更是提高了大观园的“文化味”。",
+                "strength": "strong",
+                "citations": [
+                  {
+                    "quote": "1943年创办的晨光茶社，更是提高了大观园的“文化味”。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  },
+                  {
+                    "quote": "1943年大观园东侧增加了一家专演相声的晨光茶社，马三立、刘宝瑞、白全福、郭全宝等名角曾来此献艺。",
+                    "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                    "observedAt": "2026-10-06T03:06:51Z"
+                  }
+                ],
+                "sourceUrl": "http://mzt.shandong.gov.cn/art/2014/9/11/art_92442_7204955.html",
+                "observedAt": "2026-10-06T03:06:51Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 26.0,
+          "theme_tags": [
+            "文艺",
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5478,
+          "mention_count_30d": 4,
+          "positive_count_30d": 4,
+          "source_count": 3,
+          "top_reasons": [
+            {
+              "reason": "市井烟火气十足，夜景更有味道。",
+              "evidence": "市井烟火气十足，夜景更有味道！"
+            },
+            {
+              "reason": "古色古香，汇聚济南当地美食小吃，适合边走边尝",
+              "evidence": "汇聚了很多济南当地美食小吃"
+            },
+            {
+              "reason": "可去可不去",
+              "evidence": "可去可不去"
+            },
+            {
+              "reason": "市井烟火气十足，夜景更有味道",
+              "evidence": "市井烟火气十足，夜景更有味道"
+            }
+          ],
+          "recommend_score": 14.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7930,
+          "canonical_place_id": 5478,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大观园",
+          "evidence_summary": "市井烟火气十足，夜景更有味道。"
+        },
+        {
+          "id": 8639,
+          "canonical_place_id": 5478,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大观园",
+          "evidence_summary": "古色古香，汇聚济南当地美食小吃，适合边走边尝"
+        },
+        {
+          "id": 8640,
+          "canonical_place_id": 5478,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大观园",
+          "evidence_summary": "可去可不去"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5478,
+          "city": "济南",
+          "name_keys": [
+            "大观园"
+          ],
+          "entity_ids": [
+            "910ac4e3fee34da1dd5f4378c7319ba5"
+          ],
+          "source_hash": "d43cbb0ee62d7190e0f0eae54a6b1ed4b8dc91a6504d896d5820b45630860c94",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5478-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/commercial-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "conclusion": "完整原文确认独立路口/商业文化街区，原提及不改写，原图库无匹配数据；非本批三主体保持原状。",
+              "mentionIds": [
+                11425,
+                12619,
+                12644,
+                12703
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "910ac4e3fee34da1dd5f4378c7319ba5"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11425,
+          "scope_place_id": 5478,
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+          "input_hash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5478-scope"
+        },
+        {
+          "mention_id": 12619,
+          "scope_place_id": 5478,
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+          "input_hash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5478-scope"
+        },
+        {
+          "mention_id": 12644,
+          "scope_place_id": 5478,
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+          "input_hash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5478-scope"
+        },
+        {
+          "mention_id": 12703,
+          "scope_place_id": 5478,
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+          "input_hash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-45-source-5478-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "d43cbb0ee62d7190e0f0eae54a6b1ed4b8dc91a6504d896d5820b45630860c94",
+        "mentions": [
+          {
+            "mentionId": 11425,
+            "inputHash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e"
+          },
+          {
+            "mentionId": 12619,
+            "inputHash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529"
+          },
+          {
+            "mentionId": 12644,
+            "inputHash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350"
+          },
+          {
+            "mentionId": 12703,
+            "inputHash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "fef9784ad510099ad3bd150eee3fbf5c",
+          "city": "济南",
+          "canonical_name": "纬三路与经三路交叉口",
+          "primary_place_id": 5321,
+          "aliases": [
+            "纬三路与经三路交叉口"
+          ],
+          "legacy_ids": [
+            "fef9784ad510099ad3bd150eee3fbf5c"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/commercial-source-review-01.json",
+              "conclusion": "城市路口公共彩绘摄影点或大观园商业文化游览主体，不沿用餐饮主题。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5321,
+          "entity_id": "fef9784ad510099ad3bd150eee3fbf5c"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5",
+          "city": "济南",
+          "canonical_name": "大观园",
+          "primary_place_id": 5478,
+          "aliases": [
+            "大观园"
+          ],
+          "legacy_ids": [
+            "910ac4e3fee34da1dd5f4378c7319ba5"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化",
+            "lat": null,
+            "lng": null,
+            "address": "山东省济南市市中区经四路与纬二路交汇处",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/commercial-source-review-01.json",
+              "conclusion": "城市路口公共彩绘摄影点或大观园商业文化游览主体，不沿用餐饮主题。"
+            },
+            {
+              "kind": "wrong_point_cleared",
+              "files": [
+                "priority-cities/济南/commercial-reference-01.json",
+                "priority-cities/济南/commercial-reference-03.json",
+                "priority-cities/济南/commercial-geo-01.json"
+              ],
+              "conclusion": "百科地理位置明确经四路与纬二路，省地名网说明整体文化商业旅游主体；地图大观园及欧亚商场均在相同片区。旧经二路728及西侧约2.5公里点不符。候选点涉及整体、商场及入口粒度，暂清精确点不借入口坐标。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5478,
+          "entity_id": "910ac4e3fee34da1dd5f4378c7319ba5"
+        }
+      ]
+    }
+  ]
+}

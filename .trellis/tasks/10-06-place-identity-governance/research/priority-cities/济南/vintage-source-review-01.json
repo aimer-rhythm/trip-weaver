@@ -1,0 +1,69 @@
+{
+  "city": "济南",
+  "batch": 50,
+  "roots": 2,
+  "sources": 2,
+  "mentions": 2,
+  "fullNotes": 1,
+  "rows": [
+    {
+      "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+      "sourceId": 5399,
+      "mentionId": 11535,
+      "noteId": 2573,
+      "inputHash": "d053f0fc84612f26bc599a18cc0de2a9ef343655157c5651d4c80be6a2f673ed",
+      "quote": "VILLA SHAKA的墙超好拍，咖啡也很赞",
+      "status": "text_subject_distinct_location_unresolved",
+      "category": "美食",
+      "xhsPlaceType": "cafe",
+      "coordinateAction": "clear_unidentified_geocoder_point",
+      "addressAction": "retain_empty_branch_unresolved"
+    },
+    {
+      "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+      "sourceId": 5398,
+      "mentionId": 11534,
+      "noteId": 2573,
+      "inputHash": "e793b163301323a479a15e7af044953994f2915842fa047244c221f942af80e9",
+      "quote": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道",
+      "status": "text_subject_distinct_location_unresolved",
+      "category": "购物",
+      "xhsPlaceType": "shop",
+      "coordinateAction": "clear_unidentified_geocoder_point",
+      "addressAction": "add_named_map_address"
+    }
+  ],
+  "fullOriginalTextRead": true,
+  "noNewScopeNeeded": true,
+  "originalMentionFactsPreserved": true,
+  "coordinatesCleared": 2,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 1,
+  "branchCandidateNotAdopted": "VILLA SHAKA为了沙卡(纬四路店)",
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false,
+  "webEvidence": {
+    "accepted": [
+      "vintage-reference-05.json",
+      "vintage-reference-09.json"
+    ],
+    "limited": [
+      "vintage-reference-08.json"
+    ],
+    "rejectedGeneratedClaim": "shops-search-03经七路189号无引用支持且与地图地址冲突，不采用；无关佛教网页排除。",
+    "unavailable": [
+      "vintage-reference-01.json",
+      "vintage-reference-02.json",
+      "vintage-reference-03.json",
+      "vintage-reference-04.json",
+      "vintage-reference-06.json",
+      "vintage-reference-07.json"
+    ],
+    "namedMapsNoResults": [
+      "vintage-geo-01.json",
+      "vintage-geo-02.json"
+    ],
+    "streetOnlyNotStorePins": "vintage-geo-03.json"
+  }
+}

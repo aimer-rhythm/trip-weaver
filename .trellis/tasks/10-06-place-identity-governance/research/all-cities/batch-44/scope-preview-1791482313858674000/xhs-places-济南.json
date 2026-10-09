@@ -1,0 +1,2405 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 3,
+ "activeCount": 3,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "d4cf5e7546b753097f9d50f167174e240ae3972c816a933edc5a0a960b64cb88",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "曲水亭街",
+    "曲水亭",
+    "百花洲",
+    "解放阁"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11337,
+     "noteId": 2545,
+     "inputHash": "b446fa60865563c9fd19037ed7ae13fcb112be0cd6059bb028f2138be1ab3047",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11340,
+     "noteId": 2545,
+     "inputHash": "e24c92ba7fd4d64cf76abbdc5044bdc0c4572d5d9f8aabdd79936009271f560f",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11341,
+     "noteId": 2545,
+     "inputHash": "6c800a95a47bc955948c4ccea5d19ccd1dbdee1d168ac945f13f5a77beec3d18",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11369,
+     "noteId": 2546,
+     "inputHash": "b7c1abde7bdf2d96c45b5ba3671fa99bfdaa052346f9be0917597b1ac026672d",
+     "textHash": "5144a67c2fdf6c305295197e2618011b444dbad8fa2d75ae7a0bf21f0bf27fc2",
+     "textLength": 627,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11370,
+     "noteId": 2546,
+     "inputHash": "6d06787fa0a71f9fed92ff5d8dfd254c5da7d7332debb508fdc2e4c223a7ba04",
+     "textHash": "5144a67c2fdf6c305295197e2618011b444dbad8fa2d75ae7a0bf21f0bf27fc2",
+     "textLength": 627,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11374,
+     "noteId": 2546,
+     "inputHash": "f2ff15c47ed774952a22c8d8ca858344779837a8bd271d884bd3df888dea9cf3",
+     "textHash": "5144a67c2fdf6c305295197e2618011b444dbad8fa2d75ae7a0bf21f0bf27fc2",
+     "textLength": 627,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11385,
+     "noteId": 2548,
+     "inputHash": "208c025488ef32749f42f0af3a9f050c19e1bd7519c3cfdb1321afc875a0a3f5",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11386,
+     "noteId": 2548,
+     "inputHash": "d68d383678635cae1abd4ae19694873c8346a0e6764be82ee6b5b28149deec64",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11395,
+     "noteId": 2548,
+     "inputHash": "0eb49a4cda76b3c809e8657efa5a2102808291e3e5bfdb80edfff281a9c81579",
+     "textHash": "f0cecace26e0af7196610b9b511a2d9c903d4962c538e537d5b9e36f5840cfb2",
+     "textLength": 1137,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11401,
+     "noteId": 2569,
+     "inputHash": "f6f5e8d15291cfab252399576777da286611cd6259b3ec31888d25230d98b1e0",
+     "textHash": "33939ae95e63a7d8a09a532b8f66a813aa999ae5f8d9f907fd2e0b3b220b4c67",
+     "textLength": 572,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11410,
+     "noteId": 2550,
+     "inputHash": "629c599fde265b0929d35edae1e1c381e04b8cbcb97b63735997d3b7a4d3ad36",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11412,
+     "noteId": 2550,
+     "inputHash": "a26db5f5fd687da499a153f05ba0311922098e3cd06b6be4bfbe73d2ef8a19f8",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11413,
+     "noteId": 2550,
+     "inputHash": "f48c795167508d01fccb00070d878aa2a43f8fc58b1b627cfb456317c8e403bc",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11423,
+     "noteId": 2550,
+     "inputHash": "d165d5abc2a397d1016d4fee36eb489a5416a7fd1df15e4fa3aa5d522acb3ca6",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11430,
+     "noteId": 2567,
+     "inputHash": "bd36b411a827a55a155af19f53913185f2fc0123ec7b4e88585456ab8a5a4868",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11432,
+     "noteId": 2567,
+     "inputHash": "bf858c7e30ecbbb299f8c072f2d81e9dd66041ba92b5978efacc3da7e0d574da",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11436,
+     "noteId": 2618,
+     "inputHash": "a934e05b4d7bd303e459c503af25f93e5a996709aa43c0198010b609db25f709",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11440,
+     "noteId": 2618,
+     "inputHash": "e192da537ec23c0146410970ef84ba287f8f1eaeca3dff1e091f077738b8a212",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11445,
+     "noteId": 2553,
+     "inputHash": "4c5cda3ade46b7a1371a15693b4ce2b95f829189a50b96490332bda5eef39cf4",
+     "textHash": "237d15917021e78754aa89cfe5553e593877938f739d8bb78e94b15ba64e22c3",
+     "textLength": 1001,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11448,
+     "noteId": 2553,
+     "inputHash": "ee1578e39acb449ca01a51904e60bc73f43981787ee2cdb8a744eb0200df4d54",
+     "textHash": "237d15917021e78754aa89cfe5553e593877938f739d8bb78e94b15ba64e22c3",
+     "textLength": 1001,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11455,
+     "noteId": 2570,
+     "inputHash": "cddefd6209e1e6181fdf7e5ee7aa208ba33850cf3ceb42a94a08e3962b5bbcca",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11459,
+     "noteId": 2570,
+     "inputHash": "0946d847afc5024266a87d50e8ac052ba3b21bf9de30235aaf3c0086ba812153",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11461,
+     "noteId": 2570,
+     "inputHash": "4cdd7bcf905778ca357b96ef6d6214eecf88a59523db72342197d8870700720e",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11472,
+     "noteId": 2560,
+     "inputHash": "2f495385d6552897f63d9af93203cc430252d6bbb690b02f80ecc174a4ba5230",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11489,
+     "noteId": 2551,
+     "inputHash": "43bcf311fa1e39d5a1adbec382fa7a9681a1c4811a8649147b935d10f2f7f870",
+     "textHash": "ed2edd6e2a6b147901c01bcc44f668fdfc5153aa8d468fedf07037f43fd36492",
+     "textLength": 550,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11495,
+     "noteId": 2554,
+     "inputHash": "3148e25d3218bf96ac8ac51db85d1ffc1a71bbc41a63fd20848a236ae0e93eca",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11505,
+     "noteId": 2619,
+     "inputHash": "bb262ac85640499f633ab1bf04727f0be1dbdb9d698af8d9302491274201cb3e",
+     "textHash": "86d27eef6c5c7c00f37320618c396610c01fd6ac93212e2f6b596593f51d2fbd",
+     "textLength": 257,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11519,
+     "noteId": 2563,
+     "inputHash": "3d0330f4b0f1714201eb391cbff6c8b58ca9797132d91e5d7f9934bd05637143",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11521,
+     "noteId": 2563,
+     "inputHash": "8ca1e947dc18e6fc240f2c0d9b51c2da696051969e5543288df1e70128022b14",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11540,
+     "noteId": 2582,
+     "inputHash": "69ad0dc82a72f214a8c93a72100ed7ba5144739bf0158956910e660abfdb02ef",
+     "textHash": "fe52f8c98f958decdcb029c38e9bcb533b02098063a088c1184b98368660abe8",
+     "textLength": 339,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11541,
+     "noteId": 2582,
+     "inputHash": "a7732bd7fe3085e5b70c4e711b5a622c9dfa7203bde361612c2fe51ed37adbb2",
+     "textHash": "fe52f8c98f958decdcb029c38e9bcb533b02098063a088c1184b98368660abe8",
+     "textLength": 339,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11565,
+     "noteId": 2574,
+     "inputHash": "a82c0478c3f01c8c4d89677870681e542eda3c78b822c6e6042c8b268f9915af",
+     "textHash": "bec8133bd873f9bd44ad87c87df0113e81c2937f4114f9c503379ea995073504",
+     "textLength": 214,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11576,
+     "noteId": 2564,
+     "inputHash": "01bfeb6fd6ecda3ea75b90d43d9ff36025661880810fbc21ad217bda1ec1358d",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11585,
+     "noteId": 2583,
+     "inputHash": "7df02ea72bb8ba87c409a26326ac1d4ec8cd7c7d929ac253520a3ae1242cd943",
+     "textHash": "0f30dad8531471b80b6ef4319c5353cd2841a1e62fbaa00b48b64294ae170707",
+     "textLength": 637,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11591,
+     "noteId": 2622,
+     "inputHash": "ff4675b7f2cf306de0e0e90e81b01dff27be002497b40fa5f2a8707087e2ff65",
+     "textHash": "428b2ed826c931c732f2f636a85909125f77e78cc5fcaf0aec72ebf9bee4d06e",
+     "textLength": 352,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11593,
+     "noteId": 2622,
+     "inputHash": "939f7d3d20233cb06dc2d2aba2ccb5fccc82aa3a4575ac2ed10b1e6e3552a498",
+     "textHash": "428b2ed826c931c732f2f636a85909125f77e78cc5fcaf0aec72ebf9bee4d06e",
+     "textLength": 352,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11614,
+     "noteId": 2584,
+     "inputHash": "334d423b291068a646f0ce7412dad03180e1f76d6d49516d2407ce648faf18f3",
+     "textHash": "5099f704c06236615b5d0128ebceb7bbb4fc2c4a11ed8e4863102c3f0f483fbf",
+     "textLength": 355,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11621,
+     "noteId": 2624,
+     "inputHash": "71df62669b1b2c53877a3ff9d5703193938044fa0fbaabea84e4b92e0f73464a",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11624,
+     "noteId": 2624,
+     "inputHash": "73b5360108643c1bc2c6de8b7bfd89c221b3899c0d6899afe0ed06fb1d56ea12",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11691,
+     "noteId": 2609,
+     "inputHash": "a93d714f370c7243a3ac2fe2591c122b418e3632abb8c4f13ee3a6cf95302883",
+     "textHash": "90e42025de21784b9f76ab9847189df0e8a4ab5c4b9cc819be1e0e219b30c6bb",
+     "textLength": 518,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11694,
+     "noteId": 2623,
+     "inputHash": "352b58d35952109d0b28c6a1a2be5f9849bb476b3480f82493000fc8bc1c22e6",
+     "textHash": "68f2fd3d244871bbe44a38049de6bf2975a4e5f7cd3496c29fa254caf668f404",
+     "textLength": 83,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11698,
+     "noteId": 2611,
+     "inputHash": "5f0dcd52afcd668d68b393ae708adc67e1d8059dfbcd070682f4f23a7852f969",
+     "textHash": "db9c60a31ee95775e6cef00101dfb1ee954b5cb178442b1d7495cf21fc173510",
+     "textLength": 592,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12565,
+     "noteId": 2545,
+     "inputHash": "1eee3a898224407b5c29c9fe2dbbbbb6fbc573395d3a43cf431d0f33182474b8",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12568,
+     "noteId": 2545,
+     "inputHash": "f4b8a5f59c4f73caa69ec21e09d5f1bee26f2e4fb008f5f6e2ca11fb30dae4da",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12569,
+     "noteId": 2545,
+     "inputHash": "dead72de816afc632c2d69763468838b425d49efec05111d03cd3968f34f1e33",
+     "textHash": "8bfe3f2430b319eb0a007a91203bea2380a9abce8258755daa9d932f5bb816c2",
+     "textLength": 420,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12574,
+     "noteId": 2803,
+     "inputHash": "f2f89c1e49d776df9e3511ba6173ebc6304e978869df1884cb7cf49d740d11cf",
+     "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9",
+     "textLength": 661,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12577,
+     "noteId": 2803,
+     "inputHash": "35282286c675527e91f8ee9800082ec4864a37bf2fd0e0ffe0f4e1e78f1e9bad",
+     "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9",
+     "textLength": 661,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12588,
+     "noteId": 2813,
+     "inputHash": "97f67af5691dcc76671fe189c880c5047ef5f35cbd18a19ea8e2cd9cda728f0b",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12589,
+     "noteId": 2813,
+     "inputHash": "cf97d16600ffe71c6f0de1b11970fdfbbac6a79ebcc93fd1759929548f55a010",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12610,
+     "noteId": 2546,
+     "inputHash": "9b22f4df731ac96d845fdb3e19d21b40107fa5a7310fa79f2a8c7f1c30155d4b",
+     "textHash": "5144a67c2fdf6c305295197e2618011b444dbad8fa2d75ae7a0bf21f0bf27fc2",
+     "textLength": 627,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12611,
+     "noteId": 2546,
+     "inputHash": "cac1929f64fcd62005e1e65937f1798eec5551228ecda48a65626206134c0ba5",
+     "textHash": "5144a67c2fdf6c305295197e2618011b444dbad8fa2d75ae7a0bf21f0bf27fc2",
+     "textLength": 627,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12615,
+     "noteId": 2546,
+     "inputHash": "f85314ee3044769e2c34b96a3da12f70332d84d3404943a71e2912e76a4795e8",
+     "textHash": "5144a67c2fdf6c305295197e2618011b444dbad8fa2d75ae7a0bf21f0bf27fc2",
+     "textLength": 627,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12623,
+     "noteId": 2793,
+     "inputHash": "81dd1af2208d79c70c947af167180b6a25233f920a2c8e79846f384ce8dc214c",
+     "textHash": "e08c8f750bb29c4fa9be9d06e88f5a1b837fbe50e2f8dc693179b3bc2952865d",
+     "textLength": 979,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12627,
+     "noteId": 2793,
+     "inputHash": "c6031e1d2fa36374a35311a50a3e135959fda6ba271027430a16390c96ba9a20",
+     "textHash": "e08c8f750bb29c4fa9be9d06e88f5a1b837fbe50e2f8dc693179b3bc2952865d",
+     "textLength": 979,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12628,
+     "noteId": 2793,
+     "inputHash": "6d1f0c1adc9af1cfa13fad6d119208ff886fb50582179da32769b6039d29bd61",
+     "textHash": "e08c8f750bb29c4fa9be9d06e88f5a1b837fbe50e2f8dc693179b3bc2952865d",
+     "textLength": 979,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12636,
+     "noteId": 2782,
+     "inputHash": "ae67caf0d764f6448d7bbac123675113951acf4e8e545097d9454c749f22a8c8",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12639,
+     "noteId": 2782,
+     "inputHash": "87585206b3db83e28231c062e4ead91c4cc5ea0629e52a8927a02d3dee1bbce6",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12640,
+     "noteId": 2782,
+     "inputHash": "61ace34205a25a4c31b5b5d3bff40e0daa8281b55100e0c4a494189a405b9e07",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12660,
+     "noteId": 2816,
+     "inputHash": "bd20865f32eb3e0e617a917988ad21e2ed72f27144d3a92301682b7b6f75c91e",
+     "textHash": "582744d8a66d1abe24524bf28fa9fc3089c23da256a9be41f7d7839f641e44ec",
+     "textLength": 521,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12665,
+     "noteId": 2806,
+     "inputHash": "65d56dad9c232933676fa7248cb79f9d865b58a57b5cdbbe323c10ee34c7e6a4",
+     "textHash": "519e9d65f3008a774241c0029d4031b0c781b789c1ef1ad58d82ac65783cc7dc",
+     "textLength": 369,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12670,
+     "noteId": 2786,
+     "inputHash": "1f21c6b09d7748a0728be47215807b0df2131ae09ef158522ae25e4b6c3996ac",
+     "textHash": "eba79d2eac0c5f89b23868b91c8e1fefe538f2ca48cadd56cebfbf4c769b98e8",
+     "textLength": 709,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12676,
+     "noteId": 2550,
+     "inputHash": "87f8f885a2336ab45af080cd18e17abd61e4bc192e79355ede68730c3998337f",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12678,
+     "noteId": 2550,
+     "inputHash": "f5422c504496eead57efad057d9c90873876ae630b644edf8dcdfecc5667816f",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12679,
+     "noteId": 2550,
+     "inputHash": "aa7c7ad3fd4fcec2d450cbb7bfc7b7eae0422cb96786b3b7c0f442eaaffa3a41",
+     "textHash": "39c257bac9155f734b3dc9b42a943d3b4c5118dfbeaa88ed38e82d26b6add32d",
+     "textLength": 473,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12708,
+     "noteId": 2567,
+     "inputHash": "52dd5476555458597a52883aa37407f5bcc345b0dafda5e0f62333e01d06348a",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12710,
+     "noteId": 2567,
+     "inputHash": "045b66c908f89b30f35729fd3d6123f3d1ddc9c650a8766aa368b64d9a6b86ad",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12713,
+     "noteId": 2618,
+     "inputHash": "753eb24df4eca875c5a17181c297cab4e350d70c95224f4d2caba92cc600532f",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12717,
+     "noteId": 2618,
+     "inputHash": "3e61b207a4ba91a9ec8342b37cca8940b9c408916237c69fa06c828f7d69fd6f",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12721,
+     "noteId": 2570,
+     "inputHash": "c156cd4bd06b4342e73758715ba7b00d4cbfa653bca28c4d3465ca277eca3a10",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12725,
+     "noteId": 2570,
+     "inputHash": "dfceb2f5a25e9b4c023f4cad56d51804cf93fe23b584ad7e31100f369310251a",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12727,
+     "noteId": 2570,
+     "inputHash": "03628721b94a27818016c65bb3979b2108100c72f129e567742cea45787e1412",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12732,
+     "noteId": 2560,
+     "inputHash": "5fa79d19e75210f8dfac563d54cf31087e5228ac991d505c98a1ff56c4b36350",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12747,
+     "noteId": 2554,
+     "inputHash": "c20e22af3ae1e49261e7de8c1abd2cc339cfe757b926f262bcec56dd553ec0b7",
+     "textHash": "e19a521e58afe546f8293de5e010ecccc0deb460172cb124f32bb92c38508faf",
+     "textLength": 843,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12763,
+     "noteId": 2808,
+     "inputHash": "06807725ed035707c834b8d4b6e030d3d63c8c2a0beb4a431811423fbb2cab86",
+     "textHash": "2fc7d6413650eaed93c857f6f4631d386450fbd80af9a0f058bc1cd7c5ecc1e5",
+     "textLength": 722,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12775,
+     "noteId": 2797,
+     "inputHash": "c27ffa3da4daf462b5f58b1924acb1483c0ee3d4ab08c785f856c0cd05cfef84",
+     "textHash": "8dea1677404eff3326dcd80069c50197fe246492a9dc574fe34d42880a7f0a8b",
+     "textLength": 736,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12781,
+     "noteId": 2798,
+     "inputHash": "eb75614cd455b53462712e61623fb40474711f06407178a0ebd35c6760873703",
+     "textHash": "25d67cb703abfa478de8f9ee7245af6d47100f5eb9bd739279e2031207248ab9",
+     "textLength": 248,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12791,
+     "noteId": 2789,
+     "inputHash": "f1c87ffeab8fc7a910c33087096aacc9b55332d0d1cf9646836b7f5cd437dc8b",
+     "textHash": "8917e9483198fff61bf54b7ea15fca2b2bbddd2a50c8e548af6bb2cd029dfafd",
+     "textLength": 1023,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12793,
+     "noteId": 2789,
+     "inputHash": "c1adff899acab1940db69cf883e27fcf252f0f5c885a3654c40b31ed823d928d",
+     "textHash": "8917e9483198fff61bf54b7ea15fca2b2bbddd2a50c8e548af6bb2cd029dfafd",
+     "textLength": 1023,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12801,
+     "noteId": 2811,
+     "inputHash": "40fb29c78c6bcbf886762ed8e9b7a8f4edab6b305bad4192e5820ad9d904c37a",
+     "textHash": "bef4db58db8ae1cb68809c1f8a5cd13f4fbc5463367139e66dd75d11468ae5c6",
+     "textLength": 1031,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12811,
+     "noteId": 2810,
+     "inputHash": "3f6cbc5ecbae405433257a61ed19bf2e6c40d99de473c218b7dd5ef5111f95df",
+     "textHash": "1ea2139ca1ef950016ebd6711495b2dbf0971a3585a9ed195c03a9c32b54a8c2",
+     "textLength": 596,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12813,
+     "noteId": 2810,
+     "inputHash": "07a60d8f462e0737f4e4e211c0610cdbda96281e2f72d6f59158501d197923dc",
+     "textHash": "1ea2139ca1ef950016ebd6711495b2dbf0971a3585a9ed195c03a9c32b54a8c2",
+     "textLength": 596,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12819,
+     "noteId": 2574,
+     "inputHash": "9a2d40819440a765db018ba45542d1b7e461443a43b80f0c8f1f0f2d2611a2f5",
+     "textHash": "bec8133bd873f9bd44ad87c87df0113e81c2937f4114f9c503379ea995073504",
+     "textLength": 214,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12830,
+     "noteId": 2564,
+     "inputHash": "365d27ab2d3ce98b634b6c85208fd50f76083263735b0a36d5a3e2605f2f6af1",
+     "textHash": "ae453d1cea804e981e19cf33a06db6ea17e2885b9924c1102ed8c5cb2f65e6bc",
+     "textLength": 593,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12834,
+     "noteId": 2851,
+     "inputHash": "37cbfed1d83cd6373c7771ff7ea40d1a3ddc0935de1857df1243cc5cd08db2a3",
+     "textHash": "8284962de3b8ff701ff8e727f6317d8e153f1f49d31add2c2c7f327304d917ef",
+     "textLength": 541,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12840,
+     "noteId": 2800,
+     "inputHash": "749979523dd809fef648a6744090cf4134ad6df0ee0af385ab110f979d5995ae",
+     "textHash": "0c34aaf41feea9c1605722eea9f220c7a397e18ea4e4f95df6f163e9f535fb91",
+     "textLength": 338,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12850,
+     "noteId": 2829,
+     "inputHash": "323fb59bb0f5c765e57295774bcd80de7cfaaa8e2707543ced008cdb4a884b33",
+     "textHash": "cf3fe51e0296bbc5937a6a61b404fd45d778df0017057454db75a5f5c069ceec",
+     "textLength": 757,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12858,
+     "noteId": 2830,
+     "inputHash": "c409391657eb6c81cb3e40960890c623258787eccf91d8a90ae483cc55ab265f",
+     "textHash": "d5ebf44cc1b2477dc2e5d060da85337930d52c99eeea88b41bc824f4812cd47f",
+     "textLength": 1087,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12859,
+     "noteId": 2830,
+     "inputHash": "bb56f89f8c9c87ea802a30c1431e5a674c8eeab821e9ac888b246e844d751527",
+     "textHash": "d5ebf44cc1b2477dc2e5d060da85337930d52c99eeea88b41bc824f4812cd47f",
+     "textLength": 1087,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12870,
+     "noteId": 2834,
+     "inputHash": "8efded284df940440106ab127e6231da5599dd99ebfc9a13217b726f3f0134b5",
+     "textHash": "2d4d39f8b2116269c11fcc469da9b3cfa7b03533236086256a929c67c20f03e9",
+     "textLength": 1026,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12872,
+     "noteId": 2834,
+     "inputHash": "a29432fcad857d575594af495dafe812bafa67a0f5f81ac3daeb38cc5d89e21c",
+     "textHash": "2d4d39f8b2116269c11fcc469da9b3cfa7b03533236086256a929c67c20f03e9",
+     "textLength": 1026,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12899,
+     "noteId": 2856,
+     "inputHash": "3e3d3b8c39589247d4f18f0f3b529663133cfc92e45edb695e3706ec8d883149",
+     "textHash": "3c70fe62cd037e3d1963af1204716c73f2e40c2fcd12dd3b9b325fc1de5e2caa",
+     "textLength": 297,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12906,
+     "noteId": 2853,
+     "inputHash": "2462cb73f8ce8c4e591e910bf59d74c19131b3c184af58fbf8714fe95b5993ec",
+     "textHash": "50d6ae04ef47f4847c3da2f4336d0b0b1ceb673d7d096ac70390d0229239b18f",
+     "textLength": 530,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12907,
+     "noteId": 2853,
+     "inputHash": "817a1bffc5069ee1f7ff87e46ed9ff9f9e0ca2707e403012f10b02e97ed1b447",
+     "textHash": "50d6ae04ef47f4847c3da2f4336d0b0b1ceb673d7d096ac70390d0229239b18f",
+     "textLength": 530,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12915,
+     "noteId": 2624,
+     "inputHash": "c604ee3dc1d8147b0fbb3635f2df2949c3157147f26ce671a0869baa84e60f16",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12918,
+     "noteId": 2624,
+     "inputHash": "2981ba5b840e6890c51850804d49085bd9e3804e2a1adfceb0aaf2a648792b9f",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12925,
+     "noteId": 2801,
+     "inputHash": "0cd616fee228f2b1d1aa621c38cc9bf2bac41e4e4d97de26b0a0d3981b355d4b",
+     "textHash": "79789ef4a1274e5748fbe0bb42eee85b43491bacefa550a816f6d25e4d85805e",
+     "textLength": 319,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12930,
+     "noteId": 2835,
+     "inputHash": "baa03914ea500cfd667fd0457b951e706d9fd3eab7efbcac8b8472b679fedeca",
+     "textHash": "c4fbd094482a30231c8aa5fb83d03e8cb6df162cde27e9ca4fcd287fc2290aff",
+     "textLength": 1031,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12933,
+     "noteId": 2835,
+     "inputHash": "64bbbd2f4ecc153044e3333d47297a9a9f4daa19684ec83fd87bc76d9fa0a404",
+     "textHash": "c4fbd094482a30231c8aa5fb83d03e8cb6df162cde27e9ca4fcd287fc2290aff",
+     "textLength": 1031,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12934,
+     "noteId": 2835,
+     "inputHash": "78b0340fe0a351ff84bf11b2b0e6d1f965cf36ce421372c705f6c4a0f7751e9a",
+     "textHash": "c4fbd094482a30231c8aa5fb83d03e8cb6df162cde27e9ca4fcd287fc2290aff",
+     "textLength": 1031,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12945,
+     "noteId": 2837,
+     "inputHash": "23dc04fe15fd539b6bc510e26a0ed089f415974bdff0946d6c212aa14a746343",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12946,
+     "noteId": 2837,
+     "inputHash": "a9ffa95d6492cd65b28c5f98ac9b91a9bfa8ec3e69bdf967e541b1358ec9e85d",
+     "textHash": "976523402dca0cee0be989a63ec2f5cc03ffe68b9f4804df7802c2017584236b",
+     "textLength": 1104,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12954,
+     "noteId": 2839,
+     "inputHash": "cb9e6300448dae4ff318db5eef75a7a3e15bee271a706c717a993e9e9fb0f119",
+     "textHash": "d84fcfd04d7d41967af06aa8cc26d032eb3aba2025e1ae31e3b6afbe076e523f",
+     "textLength": 885,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12957,
+     "noteId": 2839,
+     "inputHash": "f9b397f09263c200ce6e648803d8e3ed624d5c94c11cf040d86a0a37a58f55fb",
+     "textHash": "d84fcfd04d7d41967af06aa8cc26d032eb3aba2025e1ae31e3b6afbe076e523f",
+     "textLength": 885,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12970,
+     "noteId": 2840,
+     "inputHash": "836ba71822a20a419497567aa7141d08d00eaf0e817cf1ac1df3c54c03a01e84",
+     "textHash": "897c5778c9fe8aefa2ef55560f2e5fa29987f4aff551f015232fdaf68d779f9c",
+     "textLength": 990,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12972,
+     "noteId": 2840,
+     "inputHash": "05b4d36a1e3115144db9a71a4d3f658adcc6702cca39be1e324d123c689ec226",
+     "textHash": "897c5778c9fe8aefa2ef55560f2e5fa29987f4aff551f015232fdaf68d779f9c",
+     "textLength": 990,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12978,
+     "noteId": 2843,
+     "inputHash": "9a7fd265a792c270fce4302112cf675fd266f0fdc11266e9bdbe1f1bf0297226",
+     "textHash": "e136a67463472a124f49c64a4a3b1a27eec68bc429c06b10d0d6fa0ddde12cf2",
+     "textLength": 176,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12985,
+     "noteId": 2846,
+     "inputHash": "910834f31133d2dc0c8ca932f9eca2f5a863f05ff0fec3d6e5c3f19a5e6fa85c",
+     "textHash": "5468fa47cecbc70b7951770879432d889875565d2d1a8d836880e865ee6ecd31",
+     "textLength": 188,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "canonicalName": "解放阁",
+     "aliases": [
+      "解放阁"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "2ee2f25ecdeac28e3edf7a5296a3bfed",
+     "revision": 2,
+     "canonicalName": "曲水亭",
+     "aliases": [
+      "曲水亭"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "managed": false
+    },
+    {
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "canonicalName": "百花洲",
+     "aliases": [
+      "百花洲"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "canonicalName": "曲水亭街",
+     "aliases": [
+      "曲水亭",
+      "曲水亭街"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "c9c9ce7c33c95b71b859f0ab30bf7136",
+   "name": "曲水亭街",
+   "category": "文化",
+   "lng": 117.024303,
+   "lat": 36.669299,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "山东省济南市历下区大明湖街道曲水亭街",
+    "adcode": "",
+    "mentionCount": 44,
+    "recommendScore": 111.0,
+    "topReasons": [
+     "济南保存最完好的明清古街之一，古建筑有特色",
+     "家家泉水，户户垂杨，老济南水墨长卷漫步好去处",
+     "济南原版家家泉水户户垂杨，青石板路，拍照出片，夜景更美"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "济南保存最完好的明清古街之一。两旁是古老的建筑，很有特色。巷子不宽，人不少，但很有烟火气。两边的小店亮着灯，泉水在脚下静静流。",
+     "highlights": [
+      {
+       "text": "济南保存最完好的明清古街之一",
+       "quote": "曲水亭街是济南保存最完好的明清古街之一",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103900+00:00"
+      },
+      {
+       "text": "两旁是古老的建筑，很有特色",
+       "quote": "两旁是古老的建筑，很有特色",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103900+00:00"
+      },
+      {
+       "text": "巷子不宽，人不少，但很有烟火气",
+       "quote": "巷子不宽，人不少，但很有烟火气",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69dce6d90000000021011235?xsec_token=ABG-QGMzILIfWGl1wDGJYbJhr1cyPunsPatLPf4ANB3TU=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103903+00:00"
+      },
+      {
+       "text": "两边的小店亮着灯，泉水在脚下静静流",
+       "quote": "两边的小店亮着灯，泉水在脚下静静流",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69dce6d90000000021011235?xsec_token=ABG-QGMzILIfWGl1wDGJYbJhr1cyPunsPatLPf4ANB3TU=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103903+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T17:58:34.785847+00:00"
+    },
+    "originalName": "曲水亭街",
+    "openHours": {
+     "version": 2,
+     "subject": "曲水亭街",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11448,
+      "noteId": 2553,
+      "inputHash": "ee1578e39acb449ca01a51904e60bc73f43981787ee2cdb8a744eb0200df4d54"
+     },
+     {
+      "mentionId": 11505,
+      "noteId": 2619,
+      "inputHash": "bb262ac85640499f633ab1bf04727f0be1dbdb9d698af8d9302491274201cb3e"
+     },
+     {
+      "mentionId": 11691,
+      "noteId": 2609,
+      "inputHash": "a93d714f370c7243a3ac2fe2591c122b418e3632abb8c4f13ee3a6cf95302883"
+     },
+     {
+      "mentionId": 12568,
+      "noteId": 2545,
+      "inputHash": "f4b8a5f59c4f73caa69ec21e09d5f1bee26f2e4fb008f5f6e2ca11fb30dae4da"
+     },
+     {
+      "mentionId": 12793,
+      "noteId": 2789,
+      "inputHash": "c1adff899acab1940db69cf883e27fcf252f0f5c885a3654c40b31ed823d928d"
+     },
+     {
+      "mentionId": 12801,
+      "noteId": 2811,
+      "inputHash": "40fb29c78c6bcbf886762ed8e9b7a8f4edab6b305bad4192e5820ad9d904c37a"
+     },
+     {
+      "mentionId": 12834,
+      "noteId": 2851,
+      "inputHash": "37cbfed1d83cd6373c7771ff7ea40d1a3ddc0935de1857df1243cc5cd08db2a3"
+     },
+     {
+      "mentionId": 11340,
+      "noteId": 2545,
+      "inputHash": "e24c92ba7fd4d64cf76abbdc5044bdc0c4572d5d9f8aabdd79936009271f560f"
+     },
+     {
+      "mentionId": 11385,
+      "noteId": 2548,
+      "inputHash": "208c025488ef32749f42f0af3a9f050c19e1bd7519c3cfdb1321afc875a0a3f5"
+     },
+     {
+      "mentionId": 11430,
+      "noteId": 2567,
+      "inputHash": "bd36b411a827a55a155af19f53913185f2fc0123ec7b4e88585456ab8a5a4868"
+     },
+     {
+      "mentionId": 11459,
+      "noteId": 2570,
+      "inputHash": "0946d847afc5024266a87d50e8ac052ba3b21bf9de30235aaf3c0086ba812153"
+     },
+     {
+      "mentionId": 11495,
+      "noteId": 2554,
+      "inputHash": "3148e25d3218bf96ac8ac51db85d1ffc1a71bbc41a63fd20848a236ae0e93eca"
+     },
+     {
+      "mentionId": 11521,
+      "noteId": 2563,
+      "inputHash": "8ca1e947dc18e6fc240f2c0d9b51c2da696051969e5543288df1e70128022b14"
+     },
+     {
+      "mentionId": 12588,
+      "noteId": 2813,
+      "inputHash": "97f67af5691dcc76671fe189c880c5047ef5f35cbd18a19ea8e2cd9cda728f0b"
+     },
+     {
+      "mentionId": 12628,
+      "noteId": 2793,
+      "inputHash": "6d1f0c1adc9af1cfa13fad6d119208ff886fb50582179da32769b6039d29bd61"
+     },
+     {
+      "mentionId": 12639,
+      "noteId": 2782,
+      "inputHash": "87585206b3db83e28231c062e4ead91c4cc5ea0629e52a8927a02d3dee1bbce6"
+     },
+     {
+      "mentionId": 12665,
+      "noteId": 2806,
+      "inputHash": "65d56dad9c232933676fa7248cb79f9d865b58a57b5cdbbe323c10ee34c7e6a4"
+     },
+     {
+      "mentionId": 12670,
+      "noteId": 2786,
+      "inputHash": "1f21c6b09d7748a0728be47215807b0df2131ae09ef158522ae25e4b6c3996ac"
+     },
+     {
+      "mentionId": 12708,
+      "noteId": 2567,
+      "inputHash": "52dd5476555458597a52883aa37407f5bcc345b0dafda5e0f62333e01d06348a"
+     },
+     {
+      "mentionId": 12725,
+      "noteId": 2570,
+      "inputHash": "dfceb2f5a25e9b4c023f4cad56d51804cf93fe23b584ad7e31100f369310251a"
+     },
+     {
+      "mentionId": 12747,
+      "noteId": 2554,
+      "inputHash": "c20e22af3ae1e49261e7de8c1abd2cc339cfe757b926f262bcec56dd553ec0b7"
+     },
+     {
+      "mentionId": 12763,
+      "noteId": 2808,
+      "inputHash": "06807725ed035707c834b8d4b6e030d3d63c8c2a0beb4a431811423fbb2cab86"
+     },
+     {
+      "mentionId": 12819,
+      "noteId": 2574,
+      "inputHash": "9a2d40819440a765db018ba45542d1b7e461443a43b80f0c8f1f0f2d2611a2f5"
+     },
+     {
+      "mentionId": 12850,
+      "noteId": 2829,
+      "inputHash": "323fb59bb0f5c765e57295774bcd80de7cfaaa8e2707543ced008cdb4a884b33"
+     },
+     {
+      "mentionId": 12859,
+      "noteId": 2830,
+      "inputHash": "bb56f89f8c9c87ea802a30c1431e5a674c8eeab821e9ac888b246e844d751527"
+     },
+     {
+      "mentionId": 12872,
+      "noteId": 2834,
+      "inputHash": "a29432fcad857d575594af495dafe812bafa67a0f5f81ac3daeb38cc5d89e21c"
+     },
+     {
+      "mentionId": 12945,
+      "noteId": 2837,
+      "inputHash": "23dc04fe15fd539b6bc510e26a0ed089f415974bdff0946d6c212aa14a746343"
+     },
+     {
+      "mentionId": 12957,
+      "noteId": 2839,
+      "inputHash": "f9b397f09263c200ce6e648803d8e3ed624d5c94c11cf040d86a0a37a58f55fb"
+     },
+     {
+      "mentionId": 12972,
+      "noteId": 2840,
+      "inputHash": "05b4d36a1e3115144db9a71a4d3f658adcc6702cca39be1e324d123c689ec226"
+     },
+     {
+      "mentionId": 11401,
+      "noteId": 2569,
+      "inputHash": "f6f5e8d15291cfab252399576777da286611cd6259b3ec31888d25230d98b1e0"
+     },
+     {
+      "mentionId": 11412,
+      "noteId": 2550,
+      "inputHash": "a26db5f5fd687da499a153f05ba0311922098e3cd06b6be4bfbe73d2ef8a19f8"
+     },
+     {
+      "mentionId": 11472,
+      "noteId": 2560,
+      "inputHash": "2f495385d6552897f63d9af93203cc430252d6bbb690b02f80ecc174a4ba5230"
+     },
+     {
+      "mentionId": 11565,
+      "noteId": 2574,
+      "inputHash": "a82c0478c3f01c8c4d89677870681e542eda3c78b822c6e6042c8b268f9915af"
+     },
+     {
+      "mentionId": 11593,
+      "noteId": 2622,
+      "inputHash": "939f7d3d20233cb06dc2d2aba2ccb5fccc82aa3a4575ac2ed10b1e6e3552a498"
+     },
+     {
+      "mentionId": 11624,
+      "noteId": 2624,
+      "inputHash": "73b5360108643c1bc2c6de8b7bfd89c221b3899c0d6899afe0ed06fb1d56ea12"
+     },
+     {
+      "mentionId": 11694,
+      "noteId": 2623,
+      "inputHash": "352b58d35952109d0b28c6a1a2be5f9849bb476b3480f82493000fc8bc1c22e6"
+     },
+     {
+      "mentionId": 12574,
+      "noteId": 2803,
+      "inputHash": "f2f89c1e49d776df9e3511ba6173ebc6304e978869df1884cb7cf49d740d11cf"
+     },
+     {
+      "mentionId": 12678,
+      "noteId": 2550,
+      "inputHash": "f5422c504496eead57efad057d9c90873876ae630b644edf8dcdfecc5667816f"
+     },
+     {
+      "mentionId": 12732,
+      "noteId": 2560,
+      "inputHash": "5fa79d19e75210f8dfac563d54cf31087e5228ac991d505c98a1ff56c4b36350"
+     },
+     {
+      "mentionId": 12781,
+      "noteId": 2798,
+      "inputHash": "eb75614cd455b53462712e61623fb40474711f06407178a0ebd35c6760873703"
+     },
+     {
+      "mentionId": 12813,
+      "noteId": 2810,
+      "inputHash": "07a60d8f462e0737f4e4e211c0610cdbda96281e2f72d6f59158501d197923dc"
+     },
+     {
+      "mentionId": 12918,
+      "noteId": 2624,
+      "inputHash": "2981ba5b840e6890c51850804d49085bd9e3804e2a1adfceb0aaf2a648792b9f"
+     },
+     {
+      "mentionId": 12925,
+      "noteId": 2801,
+      "inputHash": "0cd616fee228f2b1d1aa621c38cc9bf2bac41e4e4d97de26b0a0d3981b355d4b"
+     },
+     {
+      "mentionId": 12933,
+      "noteId": 2835,
+      "inputHash": "64bbbd2f4ecc153044e3333d47297a9a9f4daa19684ec83fd87bc76d9fa0a404"
+     }
+    ],
+    "typicalVisitMinutes": 50,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+     "canonicalName": "曲水亭街",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "曲水亭街",
+      "曲水亭"
+     ],
+     "memberIds": [
+      "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "2ee2f25ecdeac28e3edf7a5296a3bfed"
+     ]
+    },
+    "aliases": [
+     "曲水亭",
+     "曲水亭街"
+    ],
+    "geoStatus": "reviewed_source",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "济南保存最完好的明清古街之一，古建筑有特色",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "晚上氛围感强，有烟火气，泉水在脚下流，小店亮灯",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69dce6d90000000021011235?xsec_token=ABG-QGMzILIfWGl1wDGJYbJhr1cyPunsPatLPf4ANB3TU=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "家家泉水，户户垂杨，老济南水墨长卷漫步好去处",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南原版家家泉水户户垂杨，青石板路，拍照出片，夜景更美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948?xsec_token=ABzCUuyjT5dnc4Ql3csxoOwtZxkH3aIcDgdiReojDNLO4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "家家泉水、户户垂杨，青石板溪流蜿蜒，老城原生态慢生活",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "文艺担当，青石板溪水配老民居，出片且具老济南韵味",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a95346700000000210334e5?xsec_token=ABp9V80Coia5QUBoIv7rmegP8jLRR4cX8331S_bgCg60k=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "小巷安静，溪水垂柳，有泉眼",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南版小江南，青砖小瓦，泉水穿流，茶馆有韵味。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可吃酸蘸儿，拍老济南涌泉胡同",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "石板路老城烟火，可感受济南特色，但汉服妆造店不推荐",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a561da80000000011014665?xsec_token=ABbytXkAiMeM5k56PdMqJISc7ZEayJFpeC3RB1hK16724=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "家家泉水户户垂杨，有老济南原始生活风貌",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南小江南，恬静闲适非常好逛",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "自带江南氛围感，适合散步感受老济南慢生活",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "两边小茶馆小酒馆，拍照出片，涌泉胡同机位在此",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "大明湖南门马路对面即到，走走停停，但高温下易晒",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a71f150000000002702297e?xsec_token=AB1ck8vN1wfWsMiWttlLe3EHmiPFvk55rvRXjUooFhCLs=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "老民居与流水相映，随手拍出温柔老城画面",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a084bde000000003503a888?xsec_token=ABVy_LdXk7xRIR3JahDg9hM09wvdM9Tp6ilwXaxSuKejo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南版小江南，青砖小瓦泉水穿流，茶馆有韵味",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费开放，小桥流水人家，走到头即大明湖南门",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21?xsec_token=ABMGyy4eiM81bJbOQ5Iln3wNL3vavyZtic9IOAgO1ihdE=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "老街无商业味，适合散步感受老城氛围",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd?xsec_token=ABn0QRLJvR3xf1ErMqLujUvZsw_sCegx7GtSuKKyGi5Dk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "夜景好看，氛围感绝佳",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "家家泉水户户垂杨，青石板路，老济南烟火气十足",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "泉水顺街流淌，杨柳飘飘，还原家家泉水户户垂杨的画面",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19?xsec_token=ABuRgOP8Me4mp1MSDbBSCRuNnDyNti5Abu5mhj6eJZHkc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "泉水穿街而过，水草摇曳，柳树低垂，岁月静好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "家家泉水户户垂杨，网红拍照机位多",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0?xsec_token=ABufILSqDZN2_5MVzAQdFTtsyPtk2xmUl7aW-FLFEP3rI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "家家泉水户户垂杨的精华，有老济南酸蘸儿、把子肉、茶汤",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a64569c000000000402b9b4?xsec_token=AB44w96U_1pa6hAFcNgEvGfi5OIH33xORRWx7MdtbEvok=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "免费景点，位于推荐路线上，适合citywalk",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69f339c4000000001e00c640?xsec_token=ABPvdzyX8DSY-ngnoVq-rgPAFTJ6nxsAPgvnJwcxK5SxE=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南特色老街，列入推荐路线第二天。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "路线顺路，步行可达",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "旧巷子，无商业味，适合散步感受老城",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd?xsec_token=ABn0QRLJvR3xf1ErMqLujUvZsw_sCegx7GtSuKKyGi5Dk=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "老巷代表，体验老济南韵味",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a439b81000000001700aa5e?xsec_token=ABUPjz-iLinK5sPFu7VkKq7oXQPWAyLW3mv6pYIRKTtA0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "很优美，是济南特色老街。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南特色街区，值得一游。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69891468000000000b009e16?xsec_token=ABJK6rRioCYEgWnU1Y8Kzg2gJStnM0tSX4hIqQxHiAN58=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南特色老街，列入推荐路线第二日行程。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南特色街区，适合拍照",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a799fc90000000005030228?xsec_token=ABIdwy9QS8no2-FqpllUvZOgdt0cPnDF7Pf345e7xBMPw=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "工作日去更清净",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "街道优美，值得一逛。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "夜景适合继续逛，与超然楼搭配游览。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/691c421d000000001b0336ac?xsec_token=ABnl8eaCSL3K_-5D1l-4rmel8oq29xKCsW31GsyYHZcos=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "行程中提及，作为游玩地点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "15ad3a8280476165635672cb0e43117a",
+   "name": "解放阁",
+   "category": "文化",
+   "lng": 117.033659,
+   "lat": 36.663111,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "黑虎泉西路2",
+    "adcode": "",
+    "mentionCount": 34,
+    "recommendScore": 85.71,
+    "topReasons": [
+     "济南重要历史纪念建筑，可俯瞰济南市区",
+     "红色仿古楼阁，登阁可远眺护城河、黑虎泉全景，展馆介绍济南解放历史",
+     "可俯瞰老城和黑虎泉，夜景震撼。"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "纪念济南战役胜利的标志性建筑。济南市的重要历史纪念建筑。登阁可俯瞰济南市区。是纪念济南战役胜利的标志性建筑。",
+     "highlights": [
+      {
+       "text": "纪念济南战役胜利的标志性建筑",
+       "quote": "是纪念济南战役胜利的标志性建筑",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103895+00:00"
+      },
+      {
+       "text": "济南市的重要历史纪念建筑",
+       "quote": "解放阁是济南市的重要历史纪念建筑",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103900+00:00"
+      },
+      {
+       "text": "登阁可俯瞰济南市区",
+       "quote": "登上解放阁，可以俯瞰整个济南市区",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103900+00:00"
+      },
+      {
+       "text": "是纪念济南战役胜利的标志性建筑。",
+       "quote": "是纪念济南战役胜利的标志性建筑",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103895+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T17:58:34.785847+00:00"
+    },
+    "originalName": "解放阁",
+    "openHours": {
+     "version": 2,
+     "subject": "解放阁",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11374,
+      "noteId": 2546,
+      "inputHash": "f2ff15c47ed774952a22c8d8ca858344779837a8bd271d884bd3df888dea9cf3"
+     },
+     {
+      "mentionId": 11445,
+      "noteId": 2553,
+      "inputHash": "4c5cda3ade46b7a1371a15693b4ce2b95f829189a50b96490332bda5eef39cf4"
+     },
+     {
+      "mentionId": 12615,
+      "noteId": 2546,
+      "inputHash": "f85314ee3044769e2c34b96a3da12f70332d84d3404943a71e2912e76a4795e8"
+     },
+     {
+      "mentionId": 12791,
+      "noteId": 2789,
+      "inputHash": "f1c87ffeab8fc7a910c33087096aacc9b55332d0d1cf9646836b7f5cd437dc8b"
+     },
+     {
+      "mentionId": 11432,
+      "noteId": 2567,
+      "inputHash": "bf858c7e30ecbbb299f8c072f2d81e9dd66041ba92b5978efacc3da7e0d574da"
+     },
+     {
+      "mentionId": 11440,
+      "noteId": 2618,
+      "inputHash": "e192da537ec23c0146410970ef84ba287f8f1eaeca3dff1e091f077738b8a212"
+     },
+     {
+      "mentionId": 11455,
+      "noteId": 2570,
+      "inputHash": "cddefd6209e1e6181fdf7e5ee7aa208ba33850cf3ceb42a94a08e3962b5bbcca"
+     },
+     {
+      "mentionId": 11489,
+      "noteId": 2551,
+      "inputHash": "43bcf311fa1e39d5a1adbec382fa7a9681a1c4811a8649147b935d10f2f7f870"
+     },
+     {
+      "mentionId": 11519,
+      "noteId": 2563,
+      "inputHash": "3d0330f4b0f1714201eb391cbff6c8b58ca9797132d91e5d7f9934bd05637143"
+     },
+     {
+      "mentionId": 11576,
+      "noteId": 2564,
+      "inputHash": "01bfeb6fd6ecda3ea75b90d43d9ff36025661880810fbc21ad217bda1ec1358d"
+     },
+     {
+      "mentionId": 12565,
+      "noteId": 2545,
+      "inputHash": "1eee3a898224407b5c29c9fe2dbbbbb6fbc573395d3a43cf431d0f33182474b8"
+     },
+     {
+      "mentionId": 12623,
+      "noteId": 2793,
+      "inputHash": "81dd1af2208d79c70c947af167180b6a25233f920a2c8e79846f384ce8dc214c"
+     },
+     {
+      "mentionId": 12636,
+      "noteId": 2782,
+      "inputHash": "ae67caf0d764f6448d7bbac123675113951acf4e8e545097d9454c749f22a8c8"
+     },
+     {
+      "mentionId": 12710,
+      "noteId": 2567,
+      "inputHash": "045b66c908f89b30f35729fd3d6123f3d1ddc9c650a8766aa368b64d9a6b86ad"
+     },
+     {
+      "mentionId": 12717,
+      "noteId": 2618,
+      "inputHash": "3e61b207a4ba91a9ec8342b37cca8940b9c408916237c69fa06c828f7d69fd6f"
+     },
+     {
+      "mentionId": 12721,
+      "noteId": 2570,
+      "inputHash": "c156cd4bd06b4342e73758715ba7b00d4cbfa653bca28c4d3465ca277eca3a10"
+     },
+     {
+      "mentionId": 12775,
+      "noteId": 2797,
+      "inputHash": "c27ffa3da4daf462b5f58b1924acb1483c0ee3d4ab08c785f856c0cd05cfef84"
+     },
+     {
+      "mentionId": 12858,
+      "noteId": 2830,
+      "inputHash": "c409391657eb6c81cb3e40960890c623258787eccf91d8a90ae483cc55ab265f"
+     },
+     {
+      "mentionId": 12870,
+      "noteId": 2834,
+      "inputHash": "8efded284df940440106ab127e6231da5599dd99ebfc9a13217b726f3f0134b5"
+     },
+     {
+      "mentionId": 12970,
+      "noteId": 2840,
+      "inputHash": "836ba71822a20a419497567aa7141d08d00eaf0e817cf1ac1df3c54c03a01e84"
+     },
+     {
+      "mentionId": 12985,
+      "noteId": 2846,
+      "inputHash": "910834f31133d2dc0c8ca932f9eca2f5a863f05ff0fec3d6e5c3f19a5e6fa85c"
+     },
+     {
+      "mentionId": 11337,
+      "noteId": 2545,
+      "inputHash": "b446fa60865563c9fd19037ed7ae13fcb112be0cd6059bb028f2138be1ab3047"
+     },
+     {
+      "mentionId": 11395,
+      "noteId": 2548,
+      "inputHash": "0eb49a4cda76b3c809e8657efa5a2102808291e3e5bfdb80edfff281a9c81579"
+     },
+     {
+      "mentionId": 11410,
+      "noteId": 2550,
+      "inputHash": "629c599fde265b0929d35edae1e1c381e04b8cbcb97b63735997d3b7a4d3ad36"
+     },
+     {
+      "mentionId": 11591,
+      "noteId": 2622,
+      "inputHash": "ff4675b7f2cf306de0e0e90e81b01dff27be002497b40fa5f2a8707087e2ff65"
+     },
+     {
+      "mentionId": 11621,
+      "noteId": 2624,
+      "inputHash": "71df62669b1b2c53877a3ff9d5703193938044fa0fbaabea84e4b92e0f73464a"
+     },
+     {
+      "mentionId": 12577,
+      "noteId": 2803,
+      "inputHash": "35282286c675527e91f8ee9800082ec4864a37bf2fd0e0ffe0f4e1e78f1e9bad"
+     },
+     {
+      "mentionId": 12676,
+      "noteId": 2550,
+      "inputHash": "87f8f885a2336ab45af080cd18e17abd61e4bc192e79355ede68730c3998337f"
+     },
+     {
+      "mentionId": 12830,
+      "noteId": 2564,
+      "inputHash": "365d27ab2d3ce98b634b6c85208fd50f76083263735b0a36d5a3e2605f2f6af1"
+     },
+     {
+      "mentionId": 12899,
+      "noteId": 2856,
+      "inputHash": "3e3d3b8c39589247d4f18f0f3b529663133cfc92e45edb695e3706ec8d883149"
+     },
+     {
+      "mentionId": 12915,
+      "noteId": 2624,
+      "inputHash": "c604ee3dc1d8147b0fbb3635f2df2949c3157147f26ce671a0869baa84e60f16"
+     },
+     {
+      "mentionId": 12930,
+      "noteId": 2835,
+      "inputHash": "baa03914ea500cfd667fd0457b951e706d9fd3eab7efbcac8b8472b679fedeca"
+     },
+     {
+      "mentionId": 12954,
+      "noteId": 2839,
+      "inputHash": "cb9e6300448dae4ff318db5eef75a7a3e15bee271a706c717a993e9e9fb0f119"
+     },
+     {
+      "mentionId": 12811,
+      "noteId": 2810,
+      "inputHash": "3f6cbc5ecbae405433257a61ed19bf2e6c40d99de473c218b7dd5ef5111f95df"
+     }
+    ],
+    "typicalVisitMinutes": 30,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "15ad3a8280476165635672cb0e43117a",
+     "canonicalName": "解放阁",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "解放阁"
+     ],
+     "memberIds": [
+      "15ad3a8280476165635672cb0e43117a"
+     ]
+    },
+    "aliases": [
+     "解放阁"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_warning",
+     "content": "晚上已关闭，不能参观",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南重要历史纪念建筑，可俯瞰济南市区",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69553710000000001e028d7c?xsec_token=ABewuS3iMXCzxuuHCy9bYZxeTZujJroPKjE7Soevm7xc0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "晚上已经关闭，不能参观。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "红色仿古楼阁，登阁可远眺护城河、黑虎泉全景，展馆介绍济南解放历史",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948?xsec_token=ABzCUuyjT5dnc4Ql3csxoOwtZxkH3aIcDgdiReojDNLO4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可俯瞰老城和黑虎泉，夜景震撼。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "在黑虎泉旁，晚上光线好适合拍照，人多可去马路对面机位",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南标志性建筑，适合拍照",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "蓝调下红星闪耀，柳叶飘荡，景色漂亮",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a2575640000000006036470?xsec_token=ABDioCizBL_UDnrOQpwOUnCASYmh4W9ADlAfQCnCcQrMY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "黑虎泉旁仿古阁楼，登阁俯瞰老城",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与黑虎泉沿护城河游览，顺路。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南标志建筑，远处拍全景有纪念意义",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "从黑虎泉九女亭后面上去即可到达",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "登高可俯瞰老城和黑虎泉，夜景震撼",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南解放纪念馆，珍藏历史文物和照片",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "红色地标，登阁俯瞰护城河，夜景亮灯很美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "阁内陈列济南战役珍贵史料，感受济南红色历史的必到之处",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19?xsec_token=ABuRgOP8Me4mp1MSDbBSCRuNnDyNti5Abu5mhj6eJZHkc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "纪念济南战役的遗址，阁内展览有教育意义，免费需刷身份证",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a64569c000000000402b9b4?xsec_token=AB44w96U_1pa6hAFcNgEvGfi5OIH33xORRWx7MdtbEvok=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "屹立泉城广场与CBD之间，见证济南变迁",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68591028000000001203274e?xsec_token=ABgZ8rFrmBa19x3i9gpHTqi6gt9FWyiXCQ3N48BrpK8H4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "顺带看一眼",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南历史地标，列入推荐路线第一天。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "路线中历史地标，顺路游览",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a439b81000000001700aa5e?xsec_token=ABUPjz-iLinK5sPFu7VkKq7oXQPWAyLW3mv6pYIRKTtA0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "黑虎泉尽头就是，可以进去参观。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南历史地标，列入推荐路线首日行程。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与黑虎泉相邻，沿护城河可一并游览。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c7489e000000002102f2e4?xsec_token=ABfmTukd9tyzb6hB4W7LwyQlcTjzuFK-olMtbbdhojmF8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "推荐游览，位于推荐路线第四站",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "黑虎泉尽头即是，可进去参观。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "远远看了一眼，未上楼",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "紧挨黑虎泉，登高拍照出片",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0?xsec_token=ABufILSqDZN2_5MVzAQdFTtsyPtk2xmUl7aW-FLFEP3rI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "citywalk路线途经景点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "b58d15060ff3828b071f950487e487db",
+   "name": "百花洲",
+   "category": "文化",
+   "lng": 117.024349,
+   "lat": 36.671163,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "山东省济南市历下区大明湖街道百花洲",
+    "adcode": "",
+    "mentionCount": 12,
+    "recommendScore": 33.5,
+    "topReasons": [
+     "与大明湖隔街，隔河拍照很美",
+     "池塘、天鹅、鸳鸯、荷花、碧水，独属济南的浪漫",
+     "与大明湖隔街相望，隔河拍照很美。"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "又名百花汀、百花池、小南湖，与大明湖隔着一条街。池塘/天鹅/鸳鸯/荷花/碧水独属于济南的浪漫。又名百花汀、百花池、小南湖，与大明湖隔着一条街。自带江南氛围感，慢悠悠散步感受老济南慢生活。",
+     "highlights": [
+      {
+       "text": "又名百花汀、百花池、小南湖，与大明湖隔着一条街",
+       "quote": "名百花汀、百花池、小南湖，与大明湖隔着一条街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103895+00:00"
+      },
+      {
+       "text": "池塘/天鹅/鸳鸯/荷花/碧水独属于济南的浪漫",
+       "quote": "池塘/天鹅/鸳鸯/荷花/碧水独属于济南的浪漫",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103911+00:00"
+      },
+      {
+       "text": "又名百花汀、百花池、小南湖，与大明湖隔着一条街。",
+       "quote": "名百花汀、百花池、小南湖，与大明湖隔着一条街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103895+00:00"
+      },
+      {
+       "text": "自带江南氛围感，慢悠悠散步感受老济南慢生活",
+       "quote": "自带江南氛围感，慢悠悠散步，就能感受老济南的慢生活",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T17:58:34.103912+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T17:58:34.785847+00:00"
+    },
+    "originalName": "百花洲",
+    "openHours": {
+     "version": 2,
+     "subject": "百花洲",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11370,
+      "noteId": 2546,
+      "inputHash": "6d06787fa0a71f9fed92ff5d8dfd254c5da7d7332debb508fdc2e4c223a7ba04"
+     },
+     {
+      "mentionId": 12569,
+      "noteId": 2545,
+      "inputHash": "dead72de816afc632c2d69763468838b425d49efec05111d03cd3968f34f1e33"
+     },
+     {
+      "mentionId": 12589,
+      "noteId": 2813,
+      "inputHash": "cf97d16600ffe71c6f0de1b11970fdfbbac6a79ebcc93fd1759929548f55a010"
+     },
+     {
+      "mentionId": 12611,
+      "noteId": 2546,
+      "inputHash": "cac1929f64fcd62005e1e65937f1798eec5551228ecda48a65626206134c0ba5"
+     },
+     {
+      "mentionId": 12627,
+      "noteId": 2793,
+      "inputHash": "c6031e1d2fa36374a35311a50a3e135959fda6ba271027430a16390c96ba9a20"
+     },
+     {
+      "mentionId": 12640,
+      "noteId": 2782,
+      "inputHash": "61ace34205a25a4c31b5b5d3bff40e0daa8281b55100e0c4a494189a405b9e07"
+     },
+     {
+      "mentionId": 11341,
+      "noteId": 2545,
+      "inputHash": "6c800a95a47bc955948c4ccea5d19ccd1dbdee1d168ac945f13f5a77beec3d18"
+     },
+     {
+      "mentionId": 11386,
+      "noteId": 2548,
+      "inputHash": "d68d383678635cae1abd4ae19694873c8346a0e6764be82ee6b5b28149deec64"
+     },
+     {
+      "mentionId": 11413,
+      "noteId": 2550,
+      "inputHash": "f48c795167508d01fccb00070d878aa2a43f8fc58b1b627cfb456317c8e403bc"
+     },
+     {
+      "mentionId": 12679,
+      "noteId": 2550,
+      "inputHash": "aa7c7ad3fd4fcec2d450cbb7bfc7b7eae0422cb96786b3b7c0f442eaaffa3a41"
+     },
+     {
+      "mentionId": 12934,
+      "noteId": 2835,
+      "inputHash": "78b0340fe0a351ff84bf11b2b0e6d1f965cf36ce421372c705f6c4a0f7751e9a"
+     },
+     {
+      "mentionId": 12978,
+      "noteId": 2843,
+      "inputHash": "9a7fd265a792c270fce4302112cf675fd266f0fdc11266e9bdbe1f1bf0297226"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "b58d15060ff3828b071f950487e487db",
+     "canonicalName": "百花洲",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "百花洲"
+     ],
+     "memberIds": [
+      "b58d15060ff3828b071f950487e487db"
+     ]
+    },
+    "aliases": [
+     "百花洲"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "与大明湖隔街，隔河拍照很美",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "池塘、天鹅、鸳鸯、荷花、碧水，独属济南的浪漫",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与大明湖隔街相望，隔河拍照很美。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/696b9923000000001a0304a2?xsec_token=ABx37BxDbK3N-huP5pcwojTN5CH7qvfIjer9qa8TrjkjY=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "自带江南氛围感，慢悠悠散步感受老济南慢生活",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "属于百花洲历史文化街区，围着湖有摊位可逛",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "与曲水亭街相邻，顺路游览",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南历史街区，列入推荐路线第二天。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "济南历史街区，列入推荐路线第二日行程。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "行程中提及，作为游玩地点",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "夜景静谧唯美，适合打卡",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69aa5fac000000001a023b9e?xsec_token=AByVQQqMwhN8neWf1E2LIyyywDcmR_FDmBL00VvS23HzQ=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

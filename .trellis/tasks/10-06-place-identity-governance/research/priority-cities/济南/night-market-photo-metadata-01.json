@@ -1,0 +1,596 @@
+{
+  "readOnly": true,
+  "city": "济南",
+  "capturedAt": "2026-10-08T21:56:08.888Z",
+  "inputDigest": "3c8f676cfb5c79332da4c6de007971ba7d30d4f9de1094436f330b25a9f60d52",
+  "sourceImages": 123,
+  "reviewedCatalogs": 12,
+  "sourceCatalogs": [
+    {
+      "name": "五龙潭公园",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "环联夜市",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "大明湖",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "超然楼",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "经三路",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "趵突泉",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "洪家楼天主教堂",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老商埠",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老舍故居",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "千佛山",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "山东博物馆",
+      "aliases": [],
+      "images": 13
+    },
+    {
+      "name": "黑虎泉",
+      "aliases": [],
+      "images": 10
+    }
+  ],
+  "cityAssignments": 9,
+  "entities": [
+    {
+      "entityId": "7950bfadd891932d01be8636aba8b51a",
+      "name": "环联夜市",
+      "revision": 1,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "7950bfadd891932d01be8636aba8b51a",
+        "nameKeys": [
+          "环联夜市"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "7950bfadd891932d01be8636aba8b51a"
+        ],
+        "memberNames": [
+          "环联夜市"
+        ],
+        "canonicalName": "环联夜市"
+      },
+      "aliases": [
+        "环联夜市"
+      ],
+      "lat": 36.699241,
+      "lng": 117.085623,
+      "category": "购物",
+      "verified": true,
+      "payloadDigest": "b79ad9065b3875a1ef91e773b910e4fb753fc9f7374dec5f3d301b85cb1a9b0f",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/d8675096ed81bf1b6df06c49bd6abf22714f06b8ad7eba4ca8c43cff0abae4d6.jpg",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Jimmy Liao",
+                "sourceUrl": "https://www.pexels.com/photo/vibrant-nightlife-in-taipei-s-night-market-35398728/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Explore the bustling night market in Taipei, Taiwan, with vibrant street signs and a lively atmosphere.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:16.491Z",
+            "sha256": "d8675096ed81bf1b6df06c49bd6abf22714f06b8ad7eba4ca8c43cff0abae4d6",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为台北临江街观光夜市，霓虹招牌清晰显示'臨江街 觀光夜市'繁体字，与目标济南环联夜市完全不符。证据来自Pexels台北夜市摄影，同名夜市不能替代实地拍摄证据。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜市街景-仰拍-夜景",
+              "reason": "照片为台北临江街观光夜市，非济南环联夜市，明显错配"
+            }
+          },
+          "imageKey": "reviewed:f92a99f8558da4fc451297a25b7f4956f6ed86e1533a679d09de8bef51b0051d",
+          "assetKey": "local_bytes:d8675096ed81bf1b6df06c49bd6abf22714f06b8ad7eba4ca8c43cff0abae4d6",
+          "eligible": false,
+          "inputHash": "30811e89a1efa5fd9bc8bcf75c91b8ed7ad872a8a610392a8a33e609ba5f915e"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "gongdo",
+                "sourceUrl": "https://pixabay.com/photos/nature-travel-exploration-autumn-6740244/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "nature, travel, exploration, autumn, fall, season, bugwisan, maisan, korea, jinan, nature, nature, korea, korea, korea, korea, korea, jinan, jinan, jinan",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:16.523Z",
+            "sha256": "4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示层峦叠嶂的山脉与晨雾环绕的自然秋景，无夜市摊位、招牌或人工建筑痕迹，属于山野风光而非城市街区场景",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "远景山峦-晨雾秋景",
+              "reason": "画面主体为自然山景，无环联夜市任何可识别元素，与济南夜市地点明显不符"
+            }
+          },
+          "imageKey": "reviewed:5e64761a69d68f1e125749e4edcf59d1d439b4ae11234586a18cd8703bf40577",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "eligible": false,
+          "inputHash": "62621ae37836d492b09ee1ac974130cc39bc78771f826af8de49705f40bcdeac"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://images.unsplash.com/photo-1654348568716-ccf743d4aa10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8MXx8JUU3JThFJUFGJUU4JTgxJTk0JUU1JUE0JTlDJUU1JUI4JTgyJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+              "attribution": {
+                "source": "unsplash",
+                "photographer": "Ivan Wend",
+                "sourceUrl": "https://unsplash.com/photos/a-group-of-people-walking-across-a-bridge-over-water-kOSVBAOAli0?utm_source=tripweaver&utm_medium=referral",
+                "photographerUrl": "https://unsplash.com/@ivanwend?utm_source=tripweaver&utm_medium=referral",
+                "license": "Unsplash License",
+                "licenseUrl": "https://unsplash.com/license?utm_source=tripweaver&utm_medium=referral",
+                "changes": "官方hotlink，未裁切"
+              }
+            },
+            "evidence": "People crossing the bridge and taking photos. a group of people walking across a bridge over water",
+            "downloadLocation": "https://api.unsplash.com/photos/kOSVBAOAli0/download?ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8MXx8JUU3JThFJUFGJUU4JTgxJTk0JUU1JUE0JTlDJUU1JUI4JTgyJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MzgxfDA",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:16.541Z",
+            "sha256": "de2b5d845826dd5d2c1d03ee8bdb36806167d64cc7e44cc236205d95d45fc0f7",
+            "review": {
+              "identity": "unknown",
+              "evidence": "照片显示夜晚的石拱桥及桥上行人，有暖色灯带照明，背景可见现代建筑与桥梁轮廓。图片来源为Unsplash通用图库，URL无明确济南地标标识。画面中无环联夜市标志性摊位、招牌或街区特征，无法确认该桥位于济南环联夜市区域内，与目标景点缺乏可验证的关联证据。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜景石拱桥-斜侧角度",
+              "reason": "桥体灯光与构图优良，但画面仅呈现普通桥梁夜景，无环联夜市摊位、摊贩区或街区标识等可识别特征，无法证实与济南环联夜市的对应关系。"
+            }
+          },
+          "imageKey": "reviewed:479b5d96ac30d8bd260ba7f1c6d7c8ffdf016eb46285a063159bed49fc316086",
+          "assetKey": "official_url:de2b5d845826dd5d2c1d03ee8bdb36806167d64cc7e44cc236205d95d45fc0f7",
+          "eligible": false,
+          "inputHash": "2ad173777e7d660248e5b9a42aa111306dbde75c4955b1f36c28b31b271d2029"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://store.is.autonavi.com/showpic/ecfbcdf0821941660000007634938948?type=pic"
+            },
+            "provider": "amap",
+            "evidence": "济南 环联夜市 高德POI关联图；关联不是主体身份保证，必须独立核对画面",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:25.669Z",
+            "sha256": "9cf00e7f2f90044a8650b4481fb0fee8ff48190410aa274cf4b87ce677d842a6",
+            "review": {
+              "identity": "unknown",
+              "evidence": "6张拼贴美食图，均为手持食物特写（香肠、华夫饼、薯条等），无夜市环境、招牌、场景或地理标识可辨认地点。叠加文字'环联夜市'属用户标注，非画面内证据。无法确认具体为济南环联夜市或任意特定夜市",
+              "singlePhoto": false,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "美食特写-拼图-室内/棚拍",
+              "reason": "拼图非singlePhoto；画面无环境/招牌/地理标识，仅靠叠加文字无法核验身份"
+            }
+          },
+          "imageKey": "reviewed:832ded8874d58760e4cef2114fbefd31ddb97dfe01b3e2ad7a9e7fd6a85883e3",
+          "assetKey": "official_url:9cf00e7f2f90044a8650b4481fb0fee8ff48190410aa274cf4b87ce677d842a6",
+          "eligible": false,
+          "inputHash": "5f16fdf84dd7399a04ad4169705ee678c0d1815bbe5b2b025c47d357db490fe7"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/86512fd8a96eac77dc6b56868ceff3cab5aec8f12be7dc8d9258b4dc642e500e.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Bryanken",
+                "sourceUrl": "https://www.pexels.com/photo/man-walking-with-backpack-on-street-at-night-18058843/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "A man with a backpack walks through the lively streets of Xiamen at night.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:25.696Z",
+            "sha256": "86512fd8a96eac77dc6b56868ceff3cab5aec8f12be7dc8d9258b4dc642e500e",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片文字证据明确指向厦门（Xiamen），与标题济南环联夜市存在直接地点冲突；图片仅展示夜间街景人物背影，无济南环联夜市可识别特征（如标志性摊位、街区布局或地标）",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "夜间街道人物背影-夜景",
+              "reason": "照片来源证据为厦门，标题济南环联夜市与内容无视觉对应；图片主体为泛化夜间街景，无法确认具体景点"
+            }
+          },
+          "imageKey": "reviewed:9169cb528696a8610c5b587e4acc77ded371863b71ad102805c71933007737d6",
+          "assetKey": "local_bytes:86512fd8a96eac77dc6b56868ceff3cab5aec8f12be7dc8d9258b4dc642e500e",
+          "eligible": false,
+          "inputHash": "a0085f0552ffc69340693430d243813f30d685beadbcfb9865315ea643009820"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "lshhweb",
+                "sourceUrl": "https://pixabay.com/photos/lotus-jinan-baotu-spring-natural-4302615/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "lotus, jinan, baotu spring, natural, the scenery, lotus pond, jinan, jinan, jinan, jinan, jinan",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:26.442Z",
+            "sha256": "3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为单朵粉色荷花特写，背景虚化无 identifiable 地标或夜市元素。环联夜市是济南知名夜市街区，应有摊位、小吃摊、人流、招牌等特征，但图中未出现任何相关证据。搜索词中的'jinan, lotus'仅为主观标签，不能作为景点身份证明。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "荷花近景-白天",
+              "reason": "照片内容为荷花特写，与目标景点'环联夜市'完全不符，属于明显错配"
+            }
+          },
+          "imageKey": "reviewed:4069ad78d8d909faa45c836cc5ad8a8fed1545842fb8e89af727154f9ac58757",
+          "assetKey": "local_bytes:3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+          "eligible": false,
+          "inputHash": "1be1b69356a49c3ab978d4d17b0268773f97f24ab671b5e97716cc0e1d31e284"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://images.unsplash.com/photo-1717809184671-a1e16f7fba8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8JUU3JThFJUFGJUU4JTgxJTk0JUU1JUE0JTlDJUU1JUI4JTgyJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+              "attribution": {
+                "source": "unsplash",
+                "photographer": "Green Liu",
+                "sourceUrl": "https://unsplash.com/photos/a-man-sweeping-up-the-street-with-a-broom-jbldt7eHkCE?utm_source=tripweaver&utm_medium=referral",
+                "photographerUrl": "https://unsplash.com/@greenliustudio?utm_source=tripweaver&utm_medium=referral",
+                "license": "Unsplash License",
+                "licenseUrl": "https://unsplash.com/license?utm_source=tripweaver&utm_medium=referral",
+                "changes": "官方hotlink，未裁切"
+              }
+            },
+            "evidence": "A street cleaner sweeping a pathway decorated with red lanterns in a park. a man sweeping up the street with a broom",
+            "downloadLocation": "https://api.unsplash.com/photos/jbldt7eHkCE/download?ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8JUU3JThFJUFGJUU4JTgxJTk0JUU1JUE0JTlDJUU1JUI4JTgyJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MzgxfDA",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:26.870Z",
+            "sha256": "01926cbfc7de4087a5ea124437e9966312b4246f9f0bbbfdc798bfc920f97171",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片显示环卫工人清扫装饰红灯笼的公园/景区步道，冬季有残雪，石桥栏杆与传统建筑。无夜市摊位、餐饮设施、人流等环联夜市特征证据。红灯笼可用于多种节庆装饰，不能替代夜市主体证据。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": true,
+              "view": "公园步道-日景-冬季",
+              "reason": "照片为公园/景区日间清洁场景，与环联夜市（夜市摊位、餐饮、人流）无主体关联。无关人物（环卫工人）成为视觉中心，无法验证目标景点。"
+            }
+          },
+          "imageKey": "reviewed:cc4cc75afe432ae8979161fb5dcb561da390468316783ce8dc7fb79f1fd8d0d1",
+          "assetKey": "official_url:01926cbfc7de4087a5ea124437e9966312b4246f9f0bbbfdc798bfc920f97171",
+          "eligible": false,
+          "inputHash": "11ad26266483540433cb6d0dc7129dd3e3a755368ae2d6459eec247ba3bc4c89"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/9babbefe473525195e8f216b68dbc8977a46b569c592730b1d72de12d8ee9cdd.jpg",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "zhang kaiyv",
+                "sourceUrl": "https://www.pexels.com/photo/vibrant-night-street-scene-in-beijing-alley-3603448/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "A bustling night scene in a lively Beijing alleyway with street vendors and colorful lanterns illuminating the path.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:26.894Z",
+            "sha256": "9babbefe473525195e8f216b68dbc8977a46b569c592730b1d72de12d8ee9cdd",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "证据文本明确描述为'Beijing alleyway'，来源链接指向北京胡同夜景图，而非济南环联夜市。图中摊位车上的中文字符无法确认与济南夜市关联，北京与济南为不同城市，不能以同城/同类场景替代。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "窄巷夜市场景-摊位车特写",
+              "reason": "照片证据文本明确标注北京胡同场景，与济南环联夜市无直接关联，且Pexels图源为北京素材库图片，城市错配明显。"
+            }
+          },
+          "imageKey": "reviewed:6b5bc9ae54cd3ee23454ed7bc379ed041ce0a00a8e54afd33516d53b2fd327f7",
+          "assetKey": "local_bytes:9babbefe473525195e8f216b68dbc8977a46b569c592730b1d72de12d8ee9cdd",
+          "eligible": false,
+          "inputHash": "b138f14e62fa998d8ad156059b32ee8a3fddc309ed425b222c76c645806274a6"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "binkenny",
+                "sourceUrl": "https://pixabay.com/photos/golden-wind-suzuki-jinan-university-2418642/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "golden wind suzuki, jinan university, campus",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:26.935Z",
+            "sha256": "e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为金风铃木与校园小径，背景为草地与建筑，无夜市摊位、招牌或人流特征；搜索词'jinan university'指向大学校园，与'济南环联夜市'完全不符。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "侧景-日景-校园黄花风铃木与小径",
+              "reason": "目标为济南环联夜市（商业夜市景点），但照片内容为金风铃木校园景观，无任何夜市元素或摊位标识，明显错配。"
+            }
+          },
+          "imageKey": "reviewed:7f7299c838cbae7a56882101478c65a71de1c854d4f84239b73431553e2f2434",
+          "assetKey": "local_bytes:e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+          "eligible": false,
+          "inputHash": "a9f6da7113a37088c95c9f5ae1aa57c6104e11ac4ca89acec31fc9636c6675b0"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "环联夜市",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://images.unsplash.com/photo-1641090330861-b2e4b0a1b18c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8M3x8JUU3JThFJUFGJUU4JTgxJTk0JUU1JUE0JTlDJUU1JUI4JTgyJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+              "attribution": {
+                "source": "unsplash",
+                "photographer": "Ivan Wend",
+                "sourceUrl": "https://unsplash.com/photos/a-tall-building-with-a-clock-on-the-top-of-it-yc7V82CHyvA?utm_source=tripweaver&utm_medium=referral",
+                "photographerUrl": "https://unsplash.com/@ivanwend?utm_source=tripweaver&utm_medium=referral",
+                "license": "Unsplash License",
+                "licenseUrl": "https://unsplash.com/license?utm_source=tripweaver&utm_medium=referral",
+                "changes": "官方hotlink，未裁切"
+              }
+            },
+            "evidence": "Chinese Temple a tall building with a clock on the top of it",
+            "downloadLocation": "https://api.unsplash.com/photos/yc7V82CHyvA/download?ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8M3x8JUU3JThFJUFGJUU4JTgxJTk0JUU1JUE0JTlDJUU1JUI4JTgyJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MzgxfDA",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:55:26.950Z",
+            "sha256": "a4d720560572b3c58f10a2f7ca47adf2e0b19772733d7409c5c6349fd89ae52a",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片显示中国传统寺庙或宫殿建筑局部，可见精美斗拱、彩绘梁枋、白色栏杆和飞檐翘角。济南环联夜市是露天商业集市，以摊位、商铺、餐饮街为主，与此类古典宗教/宫殿建筑不符。证据与目标景点无关联。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "仰视局部-日景",
+              "reason": "图片为中国古典寺庙/宫殿建筑细节，非夜市场景，与济南环联夜市特征明显不符"
+            }
+          },
+          "imageKey": "reviewed:bdae3d50cc2cdd702330410ced7ff2d262534127a5419697655dc99538b2813b",
+          "assetKey": "official_url:a4d720560572b3c58f10a2f7ca47adf2e0b19772733d7409c5c6349fd89ae52a",
+          "eligible": false,
+          "inputHash": "86eee511761a69558cd40a15544b84b20f07b8727c82d38a2b128a424feb8162"
+        }
+      ],
+      "relatedAssetSources": [
+        {
+          "imageKey": "reviewed:f92a99f8558da4fc451297a25b7f4956f6ed86e1533a679d09de8bef51b0051d",
+          "assetKey": "local_bytes:d8675096ed81bf1b6df06c49bd6abf22714f06b8ad7eba4ca8c43cff0abae4d6",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:5e64761a69d68f1e125749e4edcf59d1d439b4ae11234586a18cd8703bf40577",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:479b5d96ac30d8bd260ba7f1c6d7c8ffdf016eb46285a063159bed49fc316086",
+          "assetKey": "official_url:de2b5d845826dd5d2c1d03ee8bdb36806167d64cc7e44cc236205d95d45fc0f7",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:832ded8874d58760e4cef2114fbefd31ddb97dfe01b3e2ad7a9e7fd6a85883e3",
+          "assetKey": "official_url:9cf00e7f2f90044a8650b4481fb0fee8ff48190410aa274cf4b87ce677d842a6",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:9169cb528696a8610c5b587e4acc77ded371863b71ad102805c71933007737d6",
+          "assetKey": "local_bytes:86512fd8a96eac77dc6b56868ceff3cab5aec8f12be7dc8d9258b4dc642e500e",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:4069ad78d8d909faa45c836cc5ad8a8fed1545842fb8e89af727154f9ac58757",
+          "assetKey": "local_bytes:3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:cc4cc75afe432ae8979161fb5dcb561da390468316783ce8dc7fb79f1fd8d0d1",
+          "assetKey": "official_url:01926cbfc7de4087a5ea124437e9966312b4246f9f0bbbfdc798bfc920f97171",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:6b5bc9ae54cd3ee23454ed7bc379ed041ce0a00a8e54afd33516d53b2fd327f7",
+          "assetKey": "local_bytes:9babbefe473525195e8f216b68dbc8977a46b569c592730b1d72de12d8ee9cdd",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:7f7299c838cbae7a56882101478c65a71de1c854d4f84239b73431553e2f2434",
+          "assetKey": "local_bytes:e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:bdae3d50cc2cdd702330410ced7ff2d262534127a5419697655dc99538b2813b",
+          "assetKey": "official_url:a4d720560572b3c58f10a2f7ca47adf2e0b19772733d7409c5c6349fd89ae52a",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:ac61de27a4defca69aaffcc22faf05fa48ae3eaabbfbd0e086893f6441efb629",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "catalogName": "洪家楼天主教堂",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:6b944f028d9a62ba067171a8827eda6479a5169ad2a0ade33f7094568227e5d0",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:4dcdb3ce5686222b9d70693b3f9d0220e8143f44602f731ec2afc7089284ad1d",
+          "assetKey": "local_bytes:3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:883547c194d3df2ed58390445821e3195fd5e607364b1d10d302d1febb1b941e",
+          "assetKey": "local_bytes:e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+          "catalogName": "老舍故居",
+          "eligible": false
+        }
+      ],
+      "assignments": []
+    }
+  ],
+  "warnings": []
+}

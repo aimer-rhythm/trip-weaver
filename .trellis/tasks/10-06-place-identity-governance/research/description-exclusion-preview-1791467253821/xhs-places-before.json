@@ -1,0 +1,281 @@
+{
+ "_comment": "描述字段9fb91ed8e0社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-08）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "描述字段9fb91ed8e0",
+ "generatedAt": "2026-10-08",
+ "count": 3,
+ "activeCount": 3,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "4921be31d29dec0002e0143866ab741b9df72046d9919e1e395becbf2511c764",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "描述字段9fb91ed8e0",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "乙野生动物园",
+    "丙古城",
+    "甲古城"
+   ],
+   "mentions": [
+    {
+     "mentionId": 43,
+     "noteId": 15,
+     "inputHash": "172ae2e1669105f7aa88324f6a93ea56701534aa1ea2a747899a694d9491c795",
+     "textHash": "f27e8adfa0440f033f38de007eac2d47b7d8b780db1745fc99abe4080ad40895",
+     "textLength": 60,
+     "entityId": "a05e1e99f3b171a0fb78502cfedb78dd",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 44,
+     "noteId": 15,
+     "inputHash": "c7c59844bc6776e5f7eb9c9c71df14d7c2bcc860c9e5f6551903db1600b4bd4e",
+     "textHash": "f27e8adfa0440f033f38de007eac2d47b7d8b780db1745fc99abe4080ad40895",
+     "textLength": 60,
+     "entityId": "40a387daffd73e83e47e20f1a6fb7d5a",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 45,
+     "noteId": 15,
+     "inputHash": "5decb9105cb94e52b36c32b6dc21a0f736dcf4890fb9576ac50db09ce6ed4283",
+     "textHash": "f27e8adfa0440f033f38de007eac2d47b7d8b780db1745fc99abe4080ad40895",
+     "textLength": 60,
+     "entityId": "15949daf6a4dc1106afa675ab70af22b",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "15949daf6a4dc1106afa675ab70af22b",
+     "revision": 1,
+     "canonicalName": "丙古城",
+     "aliases": [
+      "丙古城"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "40a387daffd73e83e47e20f1a6fb7d5a",
+     "revision": 1,
+     "canonicalName": "乙野生动物园",
+     "aliases": [
+      "乙野生动物园"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "a05e1e99f3b171a0fb78502cfedb78dd",
+     "revision": 1,
+     "canonicalName": "甲古城",
+     "aliases": [
+      "甲古城"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "a05e1e99f3b171a0fb78502cfedb78dd",
+   "name": "甲古城",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.6,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "整座城市泉水泡茶的旧聚合"
+    ],
+    "content": {
+     "intro": "整座城市泉水泡茶的旧介绍",
+     "profileVersion": 1,
+     "qualityVersion": 2
+    },
+    "originalName": "甲古城",
+    "openHours": {
+     "version": 2,
+     "subject": "甲古城",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "a05e1e99f3b171a0fb78502cfedb78dd",
+     "canonicalName": "甲古城",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "甲古城"
+     ],
+     "memberIds": [
+      "a05e1e99f3b171a0fb78502cfedb78dd"
+     ]
+    },
+    "aliases": [
+     "甲古城"
+    ],
+    "components": []
+   },
+   "evidence": []
+  },
+  {
+   "id": "40a387daffd73e83e47e20f1a6fb7d5a",
+   "name": "乙野生动物园",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.601,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "整座城市泉水泡茶的旧聚合"
+    ],
+    "content": {
+     "intro": "整座城市泉水泡茶的旧介绍",
+     "profileVersion": 1,
+     "qualityVersion": 2
+    },
+    "originalName": "乙野生动物园",
+    "openHours": {
+     "version": 2,
+     "subject": "乙野生动物园",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "40a387daffd73e83e47e20f1a6fb7d5a",
+     "canonicalName": "乙野生动物园",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "乙野生动物园"
+     ],
+     "memberIds": [
+      "40a387daffd73e83e47e20f1a6fb7d5a"
+     ]
+    },
+    "aliases": [
+     "乙野生动物园"
+    ],
+    "components": []
+   },
+   "evidence": []
+  },
+  {
+   "id": "15949daf6a4dc1106afa675ab70af22b",
+   "name": "丙古城",
+   "category": "文化",
+   "lng": 117.02,
+   "lat": 36.602,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "整座城市泉水泡茶的旧聚合"
+    ],
+    "content": {
+     "intro": "整座城市泉水泡茶的旧介绍",
+     "profileVersion": 1,
+     "qualityVersion": 2
+    },
+    "originalName": "丙古城",
+    "openHours": {
+     "version": 2,
+     "subject": "丙古城",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "15949daf6a4dc1106afa675ab70af22b",
+     "canonicalName": "丙古城",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "丙古城"
+     ],
+     "memberIds": [
+      "15949daf6a4dc1106afa675ab70af22b"
+     ]
+    },
+    "aliases": [
+     "丙古城"
+    ],
+    "components": []
+   },
+   "evidence": []
+  }
+ ]
+}

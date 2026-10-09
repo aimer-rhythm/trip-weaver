@@ -1,0 +1,28 @@
+[
+  {
+    "key": "all-cities-20261008-batch-33-park-category",
+    "city": "济南",
+    "entityId": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+    "mergeEntityIds": [],
+    "canonicalName": "五龙潭公园",
+    "expectedRevisions": {
+      "d7dfe7ae5196779e613b8fa0d9bacf5a": 2
+    },
+    "overrides": {
+      "category": "自然"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_park_category",
+        "file": "batch33-category-adjustment-20261008.md",
+        "sha256": "9d72897b38b65a4ef01167da4a3b08148ab33c94415b7c4b73eca78e69d9da99",
+        "noteIds": [
+          2786,
+          2793,
+          2834
+        ],
+        "conclusion": "原文明确园林公园、清泉园林及园内泉潭。以显式自然类别替代混合旧themes，不把旧住宿美食主题带入受控公园。"
+      }
+    ]
+  }
+]

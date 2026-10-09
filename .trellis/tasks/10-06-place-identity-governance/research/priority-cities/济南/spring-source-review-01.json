@@ -1,0 +1,204 @@
+{
+  "reviewedAt": "2026-10-07T19:54:36.920Z",
+  "sourcePacket": "priority-cities/济南/spring-source-packet-01.json",
+  "sourcePacketSha256": "2570901af26a2ccafa3b0e0863f2aae12ceecf68f2aa6ecefbfcd2caed471348",
+  "downstreamFile": "priority-cities/济南/spring-downstream-check-01.json",
+  "mentionsRead": 12,
+  "fullNotesRead": 5,
+  "applied": false,
+  "fullReviewPassed": false,
+  "mentions": [
+    {
+      "mentionId": 12943,
+      "rawNoteId": 2837,
+      "entityId": "065e077002130047feaadff4f607b480",
+      "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07",
+      "name": "起凤泉",
+      "reason": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "evidenceText": "这几个地方挨得特别近，都藏在老街里",
+      "factValue": {
+        "minutes": 30
+      },
+      "conclusion": "incorrect_individual_duration_from_group",
+      "explanation": "原文四处合计0.5h，不支持每处30分钟；保留独立身份和原始事实，须实施字段级治理。"
+    },
+    {
+      "mentionId": 12584,
+      "rawNoteId": 2813,
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5",
+      "name": "腾蛟泉",
+      "reason": "王府池子出来往北走的岔路口可见",
+      "evidenceText": "王府池子出来往北走的一个岔路口",
+      "factValue": null,
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "名称及当前描述有完整原文支持；类别、位置、图库等尚未完成，保持待核。"
+    },
+    {
+      "mentionId": 12942,
+      "rawNoteId": 2837,
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51",
+      "name": "腾蛟泉",
+      "reason": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "evidenceText": "这几个地方挨得特别近，都藏在老街里",
+      "factValue": {
+        "minutes": 30
+      },
+      "conclusion": "incorrect_individual_duration_from_group",
+      "explanation": "原文四处合计0.5h，不支持每处30分钟；保留独立身份和原始事实，须实施字段级治理。"
+    },
+    {
+      "mentionId": 12587,
+      "rawNoteId": 2813,
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "inputHash": "77496d13ce4f16b49d6b77d98b9849cd02ebb60320e53bc71db57f127f5758e4",
+      "name": "刘氏泉",
+      "reason": "西更道走到头可见细长水流",
+      "evidenceText": "西更道走到头就能看到一条细长的水流",
+      "factValue": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "西更道走到头就能看到一条细长的水流",
+              "quote": "西更道走到头就能看到一条细长的水流"
+            }
+          ]
+        }
+      },
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "名称及当前描述有完整原文支持；类别、位置、图库等尚未完成，保持待核。"
+    },
+    {
+      "mentionId": 12692,
+      "rawNoteId": 2817,
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "inputHash": "a7a2eab6f400c8b21582ae35776863710d609ffb97bebcbcf8d80252a74bfc49",
+      "name": "刘氏泉",
+      "reason": "有簪花少女景观，热门打卡点",
+      "evidenceText": "⑥刘氏泉（簪花少女)",
+      "factValue": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "簪花少女",
+              "quote": "簪花少女"
+            }
+          ]
+        }
+      },
+      "conclusion": "photo_subject_boundary_pending",
+      "explanation": "摄影路线将刘氏泉括注为簪花少女；后续核实泉体与附近拍照主体，不自动合并或排除。"
+    },
+    {
+      "mentionId": 12944,
+      "rawNoteId": 2837,
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347",
+      "name": "刘氏泉",
+      "reason": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "evidenceText": "这几个地方挨得特别近，都藏在老街里",
+      "factValue": {
+        "minutes": 30
+      },
+      "conclusion": "incorrect_individual_duration_from_group",
+      "explanation": "原文四处合计0.5h，不支持每处30分钟；保留独立身份和原始事实，须实施字段级治理。"
+    },
+    {
+      "mentionId": 12771,
+      "rawNoteId": 2797,
+      "entityId": "a4e2cf834fef59d81531b82e42296fa1",
+      "inputHash": "b83824632b4b614672658ffa4324b6eaf82f521a177002c158f4d1127df70571",
+      "name": "玛瑙泉",
+      "reason": "泉水清澈，鱼儿像在空中游动，小石潭记具象化",
+      "evidenceText": "泉水清澈，鱼儿就像在空中游动",
+      "factValue": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "泉水清澈，鱼儿像在空中游动，小石潭记具象化",
+              "quote": "小石潭记在这里具象化，泉水清澈，鱼儿就像在空中游动"
+            }
+          ]
+        }
+      },
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "名称及当前描述有完整原文支持；类别、位置、图库等尚未完成，保持待核。"
+    },
+    {
+      "mentionId": 11625,
+      "rawNoteId": 2624,
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "inputHash": "c91355aa289dee679d83eb6d966a9613ed04817eaf6cdff8a4fbe1925db76053",
+      "name": "王府池子",
+      "reason": "济南著名泉水景点，值得一看。",
+      "evidenceText": "去看有名的王府池子",
+      "factValue": null,
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "名称及当前描述有完整原文支持；类别、位置、图库等尚未完成，保持待核。"
+    },
+    {
+      "mentionId": 12583,
+      "rawNoteId": 2813,
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "inputHash": "8b3d19732c5c579b9c995a9a23c8cde6a1ba6799286dcdf6b48ad4c612eec56d",
+      "name": "王府池子",
+      "reason": "隐藏在老城区的宝藏泉水濯缨泉",
+      "evidenceText": "隐藏在老城区的宝藏泉水濯缨泉",
+      "factValue": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "隐藏在老城区的宝藏泉水濯缨泉",
+              "quote": "隐藏在老城区的宝藏泉水濯缨泉"
+            }
+          ]
+        }
+      },
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "原文明确王府池子并写濯缨泉；不自动增加别名，不据此认领趵突泉园内濯缨池。"
+    },
+    {
+      "mentionId": 12695,
+      "rawNoteId": 2817,
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "inputHash": "e69290580bd8b90978090b0ec38471ae8974f5ab3645b80bffe5c211e2e1b9ac",
+      "name": "王府池子",
+      "reason": "热门打卡点",
+      "evidenceText": "⑨王府池子",
+      "factValue": null,
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "名称及当前描述有完整原文支持；类别、位置、图库等尚未完成，保持待核。"
+    },
+    {
+      "mentionId": 12919,
+      "rawNoteId": 2624,
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "inputHash": "08d90e9e8f940e8992c7bb57a6d346b594d9d610758c1d5e80da6d66053282b8",
+      "name": "王府池子",
+      "reason": "济南有名景点，可顺路参观。",
+      "evidenceText": "去看有名的王府池子",
+      "factValue": null,
+      "conclusion": "source_subject_supported_remaining_dimensions_pending",
+      "explanation": "名称及当前描述有完整原文支持；类别、位置、图库等尚未完成，保持待核。"
+    },
+    {
+      "mentionId": 12941,
+      "rawNoteId": 2837,
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "inputHash": "70d329713c73e8f9cac53c15fb3037ef97236488a9751b4ad0648a1d692f9cd0",
+      "name": "王府池子",
+      "reason": "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "evidenceText": "这几个地方挨得特别近，都藏在老街里",
+      "factValue": {
+        "minutes": 30
+      },
+      "conclusion": "incorrect_individual_duration_from_group",
+      "explanation": "原文四处合计0.5h，不支持每处30分钟；保留独立身份和原始事实，须实施字段级治理。"
+    }
+  ]
+}

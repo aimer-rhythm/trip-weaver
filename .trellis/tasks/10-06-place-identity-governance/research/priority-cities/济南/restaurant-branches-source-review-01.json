@@ -1,0 +1,101 @@
+{
+  "city": "济南",
+  "batch": 57,
+  "sourcePacket": "priority-cities/济南/restaurant-branches-source-packet-01.json",
+  "sources": 3,
+  "mentions": 8,
+  "fullNotes": 6,
+  "confirmed": 4,
+  "pending": 4,
+  "rows": [
+    {
+      "mentionId": 11537,
+      "noteId": 2579,
+      "originalName": "燕喜堂（CBD店）",
+      "quote": "就在燕喜堂（CBD店）去山东博物馆、趵突泉、泉城公园都很方便",
+      "reason": "明确CBD店，保留菜品描述与评价。",
+      "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "status": "reviewed_branch"
+    },
+    {
+      "mentionId": 12798,
+      "noteId": 2789,
+      "originalName": "燕喜堂",
+      "quote": "Day2：洪家楼天主教堂➡️山东博物馆➡️山东美术馆➡️燕喜堂➡️经三路老商埠",
+      "reason": "仅裸名，虽与另一篇路线相似仍不能确认同分店，保留待审。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 12863,
+      "noteId": 2830,
+      "originalName": "燕喜堂（CBD店）",
+      "quote": "Day2：千佛山→燕喜堂（CBD店）→山东博物馆→山东美术馆→经三路老商埠",
+      "reason": "明确CBD店，保留路线推荐。",
+      "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "status": "reviewed_branch"
+    },
+    {
+      "mentionId": 11525,
+      "noteId": 2563,
+      "originalName": "刘小忙把子肉",
+      "quote": "超意兴、刘小忙把子肉、春水锅贴、穆得・老周家牛肉烧饼、油旋张。",
+      "reason": "仅品牌列举，不能确认联四路门店，保留待审。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 11644,
+      "noteId": 2602,
+      "originalName": "刘小忙把子肉",
+      "quote": "③刘小忙把子肉（联四路）",
+      "reason": "正文明确联四路，主名使用原文位置限定，不发明官方分店后缀。",
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "status": "reviewed_branch"
+    },
+    {
+      "mentionId": 11481,
+      "noteId": 2560,
+      "originalName": "亮亮拉面",
+      "quote": "✔️亮亮拉面（骨汤浓郁，拉面劲道牛肉大块）",
+      "reason": "原文只有品牌和口味描述，未给分店，不将其归经十一路，保留待审。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 11676,
+      "noteId": 2602,
+      "originalName": "亮亮拉面",
+      "quote": "①亮亮拉面（经十一路）",
+      "reason": "正文明确经十一路，主名使用原文位置限定，不改为经六路或小纬十一路。",
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "status": "reviewed_branch"
+    },
+    {
+      "mentionId": 12741,
+      "noteId": 2560,
+      "originalName": "亮亮拉面",
+      "quote": "✔️亮亮拉面（骨汤浓郁，拉面劲道牛肉大块）",
+      "reason": "同篇再次抽取不增加独立分店证据；与11481同等待审。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    }
+  ],
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "imageTextCaveat": "六篇既有文字分析均未为4条裸名补充分店；未查看原图。",
+  "sentimentPolicy": "只以原文分店线索判定，不以好评或路线相近补足归属；原评价及重复提及不删改。",
+  "locationStatus": "old_points_unsupported_for_qualified_branches_cleared_precise_locations_pending",
+  "addressesFromOriginal": {
+    "5404": "CBD",
+    "5441": "联四路",
+    "5385": "经十一路"
+  },
+  "nameMeaning": "燕喜堂CBD店在原提及和正文均存在；刘小忙/亮亮使用正文的括号道路限定，不增加店字，不声明该格式是官方店名。",
+  "webEvidenceBoundary": "公开检索未用于新增精确坐标；最终成功/失败与可采用文字见restaurant-branches-web-review-01.json。",
+  "newEntities": 0,
+  "mapRequests": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

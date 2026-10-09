@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a",
+      "city": "济南",
+      "canonical_name": "BLUEDUCK骨董屋",
+      "primary_place_id": 5398,
+      "aliases": [
+        "BLUEDUCK骨董屋"
+      ],
+      "legacy_ids": [
+        "46bf3d4bc9d5aa019dd4a3184329e58a"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566",
+      "city": "济南",
+      "canonical_name": "VILLASHAKA",
+      "primary_place_id": 5399,
+      "aliases": [
+        "VILLASHAKA"
+      ],
+      "legacy_ids": [
+        "2ccb52ac3eeda4ca713a2b7bd975b566"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5398,
+      "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a"
+    },
+    {
+      "place_id": 5399,
+      "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566"
+    }
+  ],
+  "reviews": []
+}

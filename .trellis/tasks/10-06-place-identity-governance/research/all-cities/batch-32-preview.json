@@ -1,0 +1,384 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "d4a51a5df56f78c9de0713d86ea8c00c",
+          "city": "济南",
+          "canonical_name": "超然楼",
+          "primary_place_id": 5368,
+          "aliases": [
+            "大明湖超然楼",
+            "超然楼"
+          ],
+          "legacy_ids": [
+            "d4a51a5df56f78c9de0713d86ea8c00c",
+            "ef9937ce2185cc51d0870a6c8ce9feaa"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "sourcePlaceIds": [
+                5365,
+                5368
+              ],
+              "mentionIds": [
+                11371,
+                11380,
+                11388,
+                11403,
+                11435,
+                11451,
+                11463,
+                11523,
+                11595,
+                11602,
+                11628,
+                12612,
+                12630,
+                12650,
+                12651,
+                12729,
+                12769,
+                12815,
+                12842,
+                12861,
+                12874,
+                12922,
+                12924,
+                12974
+              ],
+              "noteIds": [
+                2546,
+                2547,
+                2548,
+                2553,
+                2563,
+                2569,
+                2570,
+                2618,
+                2620,
+                2622,
+                2624,
+                2793,
+                2795,
+                2797,
+                2800,
+                2801,
+                2810,
+                2830,
+                2834,
+                2840
+              ],
+              "quotes": [
+                {
+                  "noteId": 2546,
+                  "quote": "3.大明湖超然楼：出了百花洲，沿着大明湖畔而行到超然楼"
+                },
+                {
+                  "noteId": 2553,
+                  "quote": "超然楼是济南的地标建筑之一，登楼俯瞰大明湖和整个济南市区"
+                },
+                {
+                  "noteId": 2830,
+                  "quote": "📍超然楼：大明湖地标"
+                }
+              ],
+              "conclusion": "完整24条提及均以超然楼建筑或其亮灯为描述对象。2546同一段用大明湖超然楼和超然楼指向同一楼体。2620、2795、2797的远处机位是拍摄位置说明，不把码头、茶馆平台、桥或大明湖整体并成楼体；只合并两个楼体名称。保留主源5368地图楼体参考点，不使用5365的西侧旧点。"
+            },
+            {
+              "kind": "map_candidates",
+              "file": "priority-cities/济南/geo-03.json",
+              "sha256": "26d072a520a1c513bbefcf455a0d279b1c0986efe849415925909ebd851f9261",
+              "conclusion": "原始CGCS2000与转换GCJ02全部候选保留；仅用本体结果辅助位置核查，不以同点、码头、停车场或门店点证明同体。"
+            },
+            {
+              "kind": "map_candidates",
+              "file": "priority-cities/济南/geo-04.json",
+              "sha256": "0bad687a12213ab493e50e4f750c97a52d4b9fb87c26b68626651d067e823855",
+              "conclusion": "原始CGCS2000与转换GCJ02全部候选保留；仅用本体结果辅助位置核查，不以同点、码头、停车场或门店点证明同体。"
+            }
+          ]
+        },
+        {
+          "entity_id": "ef9937ce2185cc51d0870a6c8ce9feaa",
+          "city": "济南",
+          "canonical_name": "大明湖超然楼",
+          "primary_place_id": 5365,
+          "aliases": [
+            "大明湖超然楼"
+          ],
+          "legacy_ids": [
+            "ef9937ce2185cc51d0870a6c8ce9feaa"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "d4a51a5df56f78c9de0713d86ea8c00c",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5365,
+          "entity_id": "d4a51a5df56f78c9de0713d86ea8c00c"
+        },
+        {
+          "place_id": 5368,
+          "entity_id": "d4a51a5df56f78c9de0713d86ea8c00c"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "bc2769d509f6d8d42166e81b8db8131b",
+          "city": "济南",
+          "canonical_name": "宽厚里",
+          "primary_place_id": 5361,
+          "aliases": [
+            "宽厚里",
+            "宽厚里美食街"
+          ],
+          "legacy_ids": [
+            "bc2769d509f6d8d42166e81b8db8131b",
+            "fda8cc53ff6acf76aeefe23e61b75427"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": ""
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "sourcePlaceIds": [
+                5361,
+                5362
+              ],
+              "mentionIds": [
+                11335,
+                11372,
+                11426,
+                11446,
+                11475,
+                11491,
+                11500,
+                11520,
+                11577,
+                11592,
+                11622,
+                11690,
+                11696,
+                12563,
+                12579,
+                12613,
+                12624,
+                12637,
+                12658,
+                12704,
+                12735,
+                12753,
+                12761,
+                12792,
+                12810,
+                12831,
+                12837,
+                12871,
+                12916,
+                12931,
+                12955,
+                12971
+              ],
+              "noteIds": [
+                2545,
+                2546,
+                2551,
+                2553,
+                2554,
+                2560,
+                2563,
+                2564,
+                2567,
+                2609,
+                2611,
+                2622,
+                2624,
+                2782,
+                2789,
+                2793,
+                2803,
+                2808,
+                2810,
+                2816,
+                2834,
+                2835,
+                2839,
+                2840,
+                2851
+              ],
+              "quotes": [
+                {
+                  "noteId": 2545,
+                  "quote": "▪️宽厚里美食街\n游玩1h｜吃喝休整"
+                },
+                {
+                  "noteId": 2782,
+                  "quote": "解放阁马路对过就是宽厚里，一条小吃街"
+                },
+                {
+                  "noteId": 2851,
+                  "quote": "3. 宽厚里：仿古街区，比芙蓉街新也大"
+                }
+              ],
+              "conclusion": "完整32条提及均指解放阁与黑虎泉旁的宽厚里商业街区。2545美食街用法为泉城广场与黑虎泉之间整段逛吃目的地，其他来源交叉确认同一小吃商业街，不存在另一独立店铺或另名路段。保留已匹配济南宽厚里本体的原坐标；清空地图异常返回的趵突泉南路1地址，不把周边具体门店或公交站替代街区。芙蓉街、解放阁、黑虎泉仍独立。"
+            },
+            {
+              "kind": "map_candidates",
+              "file": "priority-cities/济南/geo-03.json",
+              "sha256": "26d072a520a1c513bbefcf455a0d279b1c0986efe849415925909ebd851f9261",
+              "conclusion": "原始CGCS2000与转换GCJ02全部候选保留；仅用本体结果辅助位置核查，不以同点、码头、停车场或门店点证明同体。"
+            },
+            {
+              "kind": "map_candidates",
+              "file": "priority-cities/济南/geo-04.json",
+              "sha256": "0bad687a12213ab493e50e4f750c97a52d4b9fb87c26b68626651d067e823855",
+              "conclusion": "原始CGCS2000与转换GCJ02全部候选保留；仅用本体结果辅助位置核查，不以同点、码头、停车场或门店点证明同体。"
+            }
+          ]
+        },
+        {
+          "entity_id": "fda8cc53ff6acf76aeefe23e61b75427",
+          "city": "济南",
+          "canonical_name": "宽厚里美食街",
+          "primary_place_id": 5362,
+          "aliases": [
+            "宽厚里美食街"
+          ],
+          "legacy_ids": [
+            "fda8cc53ff6acf76aeefe23e61b75427"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "bc2769d509f6d8d42166e81b8db8131b",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5361,
+          "entity_id": "bc2769d509f6d8d42166e81b8db8131b"
+        },
+        {
+          "place_id": 5362,
+          "entity_id": "bc2769d509f6d8d42166e81b8db8131b"
+        }
+      ]
+    }
+  ]
+}

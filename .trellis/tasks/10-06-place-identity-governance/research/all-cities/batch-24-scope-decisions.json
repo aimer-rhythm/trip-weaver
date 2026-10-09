@@ -1,0 +1,82 @@
+[
+  {
+    "key": "all-cities-20261007-batch-24-scope-215",
+    "city": "重庆",
+    "sourcePlaceId": 215,
+    "expectedSourceHash": "a6641d5ae779ddac40555c04530831bf9da2950b576d29b6c817e36c1ac1246d",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "2f6c627fdf341bf54b049f3c0ae84d74": 2,
+      "79afbf6edf8899c29d2eb71edf8c3c81": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 534,
+        "inputHash": "85f0f678414cce0ca5724cef48877d2624a708572d6d8c50ca780643848849c0",
+        "entityId": "2f6c627fdf341bf54b049f3c0ae84d74"
+      },
+      {
+        "mentionId": 1615,
+        "inputHash": "e4dfc226fbea803c535fe9eb8006ec9858a5cde9ba63c1430b59123dc1567cf3",
+        "entityId": "2f6c627fdf341bf54b049f3c0ae84d74"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_mention_scope",
+        "file": "scope-source-459-1791335308979279800.json",
+        "sha256": "8e9e7b914506e690bb146cfc3324cc78692a5539b89784848e2d01ea15d77f4d",
+        "mentionIds": [
+          534,
+          1119,
+          1615
+        ],
+        "reviewIds": [
+          459
+        ],
+        "sourcePlaceIds": [
+          176,
+          215
+        ],
+        "conclusion": "三条原提及来自同一篇note7，原始证据均为呼归石公交站对面；534/1615错抽取丢失对面。逐条分给站外机位，排除公交站裸名，不声明公交站与站外机位永久同义。保留旧ID兼容正确名称，未来真实公交站提及仍须独立审核。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261007-batch-24-scope-176",
+    "city": "重庆",
+    "sourcePlaceId": 176,
+    "expectedSourceHash": "e208ac4d874bc2cdc96c2517b15f24abaeb6ab764944de13c6933c8998b325ef",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "2f6c627fdf341bf54b049f3c0ae84d74": 3
+    },
+    "assignments": [
+      {
+        "mentionId": 1119,
+        "inputHash": "fdd99f29aca56095459cbc47dfa8ed5117116bcb843030a737daeb23a46b85ad",
+        "entityId": "2f6c627fdf341bf54b049f3c0ae84d74"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_mention_scope",
+        "file": "scope-source-459-1791335308979279800.json",
+        "sha256": "8e9e7b914506e690bb146cfc3324cc78692a5539b89784848e2d01ea15d77f4d",
+        "mentionIds": [
+          534,
+          1119,
+          1615
+        ],
+        "reviewIds": [
+          459
+        ],
+        "sourcePlaceIds": [
+          176,
+          215
+        ],
+        "conclusion": "三条原提及来自同一篇note7，原始证据均为呼归石公交站对面；534/1615错抽取丢失对面。逐条分给站外机位，排除公交站裸名，不声明公交站与站外机位永久同义。保留旧ID兼容正确名称，未来真实公交站提及仍须独立审核。"
+      }
+    ]
+  }
+]

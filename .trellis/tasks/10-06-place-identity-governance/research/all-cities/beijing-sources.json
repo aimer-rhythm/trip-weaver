@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "15f825167e16",
+  "query": "查找北京官方景点介绍和来源链接：北京古代建筑博物馆与北京建筑博物馆、北京古建筑博物馆；北海与北海公园；石景山乐园与石景山游乐园；百里画廊与百里山水画廊；环球影城与北京环球影城。区分地名泛称与机构，勿猜坐标。",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先核对这几组名称的官方称谓与权威介绍来源，区分机构全称和地名泛称，不推断坐标。正在检索官方站点与权威介绍。",
+  "sources": [
+    {
+      "url": "https://whlyj.beijing.gov.cn/ggfw/ly/202511/t20251119_4287815.html",
+      "provider": "tavily",
+      "title": "北京市文化和旅游局_旅游_北京旅游网景点链接列表",
+      "description": "复制链接 新浪微博{window.open(' \"分享到新浪微博\") [...] |  |  |  |  |  |\n ---  --- \n| 序号 | 名称 | 等级 | 区域 | 详情 |\n| 1 | 天坛公园景区 | 5A | 东城区 | 详情 |\n| 2 | 故宫博物院 | 5A | 东城区 | 详情 |\n| 3 | 恭王府景区 | 5A | 西城区 | 详情 |\n| 4 | 北京奥林匹克公园景区 | 5A | 朝阳区 | 详情 |\n| 5 | 圆明园遗址公园景区 | 5A | 海淀区 | 详情 |\n| 6 | 颐和园景区 | 5A | 海淀区 | 详情 |\n| 7 | 北京（通州）大运河文化旅游景区 | 5A | 通州区 | 详情 |\n| 8 | 明十三陵景区 | 5A | 昌平区 | 详情 |\n| 9 | 慕田峪长城景区 | 5A | 怀柔区 | 详情 |\n| 10 | 八达岭长城景区 | 5A | 延庆区 | 详情 |\n| 11 | 北京市东城区地坛公园景区 | 4A | 东城区 | 详情 |\n| 12 | 孔庙和国子监博物馆景区 | 4A | 东城区 | 详情 |\n| 13 | 北京市中山公园景区 | 4A | 东城区 | 详情 |\n| 14 | 明城墙遗址公园 | 4A | 东城区 | 详情 |\n| 15 | 东城区龙潭公园景区 | 4A | 东城区 | 详情 |\n| 16 | 北京海洋馆 | 4A | 西城区 | 详情 |\n| 17 | 首都博物馆 | 4A | 西城区 | 详情 |\n| 18 | 北京市陶然亭公园景区 | 4A | 西城区 | 详情 |\n| 19 | 北京市北海公园旅游区 | 4A | 西城区 | 详情 |\n| 20 | 北京天文馆景区 | 4A | 西城区 | 详情 |\n| 21 | 北京市景山公园景区 | 4A | 西城区 | 详情 |\n| 22 | 北京动物园景区 | 4A | 西城区 | 详情 | [...] | 22 | 北京动物园景区 | 4A | 西城区 | 详情 |\n| 23 | 中国紫檀博物馆 | 4A | 朝阳区 | 详情 |\n| 24 | 朝阳公园景区 | 4A | 朝阳区 | 详情 |\n| 25 | 北京市欢乐谷景区 | 4A | 朝阳区 | 详情 |\n| 26 | 中国人民抗日战争纪念馆景区 | 4A | 丰台区 | 详情 |\n| 27 | 北京园博园景区 | 4A | 丰台区 | 详情 |\n| 28 | 北京汽车博物馆景区 | 4A | 丰台区 | 详情 |\n| 29 | 丰台区北宫森林公园景区 | 4A | 丰台区 | 详情 |\n| 30 | 世界公园30景区 | 4A | 丰台区 | 详情 |\n| 31 | 世界花卉大观园景区 | 4A | 丰台区 | 详情 |\n| 32 | 南宫旅游景区 | 4A | 丰台区 | 详情 |\n| 33 | 丰台区中国园林博物馆景区 | 4A | 丰台区 | 详情 |\n| 34 | 八大处公园 | 4A | 石景山区 | 详情 |\n| 35 | 北京石景山游乐园景区 | 4A | 石景山区 | 详情 |\n| 36 | 北京市玉渊潭公园景区 | 4A | 海淀区 | 详情 |\n| 37 | 国家植物园景区 | 4A | 海淀区 | 详情 |\n| 38 | 北京凤凰岭景区 | 4A | 海淀区 | 详情 |\n| 39 | 北京市香山公园景区 | 4A | 海淀区 | 详情 |\n| 40 | 紫竹院公园景区 | 4A | 海淀区 | 详情 |\n| 41 | 中央电视塔景区 | 4A | 海淀区 | 详情 |\n| 42 | 北京市门头沟区戒台寺景区 | 4A | 门头沟区 | 详情 |\n| 43 | 潭柘寺景区 | 4A | 门头沟区 | 详情 |\n| 44 | 八奇洞景区 | 4A | 门头沟区 | 详情 |"
+    },
+    {
+      "url": "https://s.visitbeijing.com.cn/map",
+      "provider": "tavily",
+      "title": "北京景区地图|北京景点介绍",
+      "description": "故宫博物院AAAAA · 天坛公园AAAAA · 八达岭长城景区AAAAA · 慕田峪长城景区AAAAA · 明十三陵景区AAAAA · 北京奥林匹克公园AAAAA · 北京市奥林匹克公园AAAAA · 圆明园遗址公园景区"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://whlyj.beijing.gov.cn/ggfw/ly/202511/t20251119_4287815.html",
+      "provider": "tavily",
+      "title": "北京市文化和旅游局_旅游_北京旅游网景点链接列表",
+      "description": "复制链接 新浪微博{window.open(' \"分享到新浪微博\") [...] |  |  |  |  |  |\n ---  --- \n| 序号 | 名称 | 等级 | 区域 | 详情 |\n| 1 | 天坛公园景区 | 5A | 东城区 | 详情 |\n| 2 | 故宫博物院 | 5A | 东城区 | 详情 |\n| 3 | 恭王府景区 | 5A | 西城区 | 详情 |\n| 4 | 北京奥林匹克公园景区 | 5A | 朝阳区 | 详情 |\n| 5 | 圆明园遗址公园景区 | 5A | 海淀区 | 详情 |\n| 6 | 颐和园景区 | 5A | 海淀区 | 详情 |\n| 7 | 北京（通州）大运河文化旅游景区 | 5A | 通州区 | 详情 |\n| 8 | 明十三陵景区 | 5A | 昌平区 | 详情 |\n| 9 | 慕田峪长城景区 | 5A | 怀柔区 | 详情 |\n| 10 | 八达岭长城景区 | 5A | 延庆区 | 详情 |\n| 11 | 北京市东城区地坛公园景区 | 4A | 东城区 | 详情 |\n| 12 | 孔庙和国子监博物馆景区 | 4A | 东城区 | 详情 |\n| 13 | 北京市中山公园景区 | 4A | 东城区 | 详情 |\n| 14 | 明城墙遗址公园 | 4A | 东城区 | 详情 |\n| 15 | 东城区龙潭公园景区 | 4A | 东城区 | 详情 |\n| 16 | 北京海洋馆 | 4A | 西城区 | 详情 |\n| 17 | 首都博物馆 | 4A | 西城区 | 详情 |\n| 18 | 北京市陶然亭公园景区 | 4A | 西城区 | 详情 |\n| 19 | 北京市北海公园旅游区 | 4A | 西城区 | 详情 |\n| 20 | 北京天文馆景区 | 4A | 西城区 | 详情 |\n| 21 | 北京市景山公园景区 | 4A | 西城区 | 详情 |\n| 22 | 北京动物园景区 | 4A | 西城区 | 详情 | [...] | 22 | 北京动物园景区 | 4A | 西城区 | 详情 |\n| 23 | 中国紫檀博物馆 | 4A | 朝阳区 | 详情 |\n| 24 | 朝阳公园景区 | 4A | 朝阳区 | 详情 |\n| 25 | 北京市欢乐谷景区 | 4A | 朝阳区 | 详情 |\n| 26 | 中国人民抗日战争纪念馆景区 | 4A | 丰台区 | 详情 |\n| 27 | 北京园博园景区 | 4A | 丰台区 | 详情 |\n| 28 | 北京汽车博物馆景区 | 4A | 丰台区 | 详情 |\n| 29 | 丰台区北宫森林公园景区 | 4A | 丰台区 | 详情 |\n| 30 | 世界公园30景区 | 4A | 丰台区 | 详情 |\n| 31 | 世界花卉大观园景区 | 4A | 丰台区 | 详情 |\n| 32 | 南宫旅游景区 | 4A | 丰台区 | 详情 |\n| 33 | 丰台区中国园林博物馆景区 | 4A | 丰台区 | 详情 |\n| 34 | 八大处公园 | 4A | 石景山区 | 详情 |\n| 35 | 北京石景山游乐园景区 | 4A | 石景山区 | 详情 |\n| 36 | 北京市玉渊潭公园景区 | 4A | 海淀区 | 详情 |\n| 37 | 国家植物园景区 | 4A | 海淀区 | 详情 |\n| 38 | 北京凤凰岭景区 | 4A | 海淀区 | 详情 |\n| 39 | 北京市香山公园景区 | 4A | 海淀区 | 详情 |\n| 40 | 紫竹院公园景区 | 4A | 海淀区 | 详情 |\n| 41 | 中央电视塔景区 | 4A | 海淀区 | 详情 |\n| 42 | 北京市门头沟区戒台寺景区 | 4A | 门头沟区 | 详情 |\n| 43 | 潭柘寺景区 | 4A | 门头沟区 | 详情 |\n| 44 | 八奇洞景区 | 4A | 门头沟区 | 详情 |"
+    },
+    {
+      "url": "https://s.visitbeijing.com.cn/map",
+      "provider": "tavily",
+      "title": "北京景区地图|北京景点介绍",
+      "description": "故宫博物院AAAAA · 天坛公园AAAAA · 八达岭长城景区AAAAA · 慕田峪长城景区AAAAA · 明十三陵景区AAAAA · 北京奥林匹克公园AAAAA · 北京市奥林匹克公园AAAAA · 圆明园遗址公园景区"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4772.06,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 8381.48,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 8381.5
+}

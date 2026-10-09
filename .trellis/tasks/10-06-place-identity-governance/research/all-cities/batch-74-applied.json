@@ -1,0 +1,86 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "北京"
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "bd35189ca9afcb8364b760d5c9279247",
+          "city": "北京",
+          "canonical_name": "五道营",
+          "primary_place_id": 2448,
+          "aliases": [
+            "五道营"
+          ],
+          "legacy_ids": [
+            "bd35189ca9afcb8364b760d5c9279247"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "fde55b90529621c6f3ba9a237046a7ee",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "fde55b90529621c6f3ba9a237046a7ee",
+          "city": "北京",
+          "canonical_name": "五道营胡同",
+          "primary_place_id": 725,
+          "aliases": [
+            "五道营",
+            "五道营胡同"
+          ],
+          "legacy_ids": [
+            "bd35189ca9afcb8364b760d5c9279247",
+            "fde55b90529621c6f3ba9a237046a7ee"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "recommendationPolicy": "resolved_attraction_mentions_v1"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_same_hutong_sources",
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\wudaoying-source-review.json",
+              "sourcePlaceIds": [
+                725,
+                2448
+              ],
+              "conclusion": "十三提及均指雍和宫/国子监周边五道营胡同；1052同篇使用短名和全名，1073的五道营段指整条街内多家店，school另有独立条目，不是把店铺并入胡同。2448旧market是同一胡同的类型误分，本批不处理街内商户或其它购物实体。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 725,
+          "entity_id": "fde55b90529621c6f3ba9a237046a7ee"
+        },
+        {
+          "place_id": 2448,
+          "entity_id": "fde55b90529621c6f3ba9a237046a7ee"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "onlyTwoSameHutongEntitiesChanged": true,
+    "all13MentionsResolveSameEntity": true,
+    "rawSourcesAndProfilesPreserved": true
+  }
+}

@@ -1,0 +1,372 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "ab929794c3efabe69db20f7476a0b739bc4dc44510733649959b4464d83c6eae",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "起凤桥八号门洞",
+    "起凤桥八号",
+    "起凤桥"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11437,
+     "noteId": 2618,
+     "inputHash": "ac557a36a27000b15bfbc1ff0b9ce1761f4f957f5bc12750b044cb86a8141c1f",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11458,
+     "noteId": 2570,
+     "inputHash": "25d4a79d55e694eb45a2d385e1f58be9a0068f29fcbcfc62c4a293416a7aef44",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11626,
+     "noteId": 2624,
+     "inputHash": "d442d006970fb74fb1f5d0db24a5f7e060cabae25265034b4b1d26b687639c9b",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12585,
+     "noteId": 2813,
+     "inputHash": "322c30449e8c9a08c14f1d59580e94953e736d14d6fb27ccaad00f567f90765b",
+     "textHash": "04ba3f59fefc6d3013a25bed901a18c27986a3374d792e7f501e7dc94f03195d",
+     "textLength": 628,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12693,
+     "noteId": 2817,
+     "inputHash": "746f626ce1b4c066d84862d46a8e5ed740e5886621408bc35e0bc6ecb338ddb4",
+     "textHash": "2655f9422962f151baa9c012324f5eaf6fb1b5ce42a1e28664c21a08333a520b",
+     "textLength": 273,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12714,
+     "noteId": 2618,
+     "inputHash": "d4c72c7880cb439e1e55beb66ac4faa8337618708a63ac86ac67ca3f50d45916",
+     "textHash": "37242a38e82576afbf92033528323bb66fb23658e45afc3a14ba0f3f838cfb4a",
+     "textLength": 755,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12724,
+     "noteId": 2570,
+     "inputHash": "713fb997a884afa659d2eed67e27eb29e997d3e6fec49c26f1f840e830e93a6e",
+     "textHash": "00338964b8ebb1e1835e53c0d09e68af9b5c4444c69f6467180d4ff980e8a3be",
+     "textLength": 979,
+     "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12841,
+     "noteId": 2800,
+     "inputHash": "ec0850c22ba7ebc4e4095a45914dd6b3a5d869158f740559345fc8aafa57170f",
+     "textHash": "0c34aaf41feea9c1605722eea9f220c7a397e18ea4e4f95df6f163e9f535fb91",
+     "textLength": 338,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12920,
+     "noteId": 2624,
+     "inputHash": "5367aa66a9d7ea44c39c955adcce11df4c0b95a67ff84cf056283c3f8788a62c",
+     "textHash": "d513bb36b3c7329385598e9f105237b541b4846379bf49482f3fd0d2610ce8f1",
+     "textLength": 399,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "revision": 1,
+     "canonicalName": "起凤桥",
+     "aliases": [
+      "起凤桥"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+     "revision": 3,
+     "canonicalName": "起凤桥八号门洞",
+     "aliases": [
+      "起凤桥八号门洞"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "908b0aec5ee27f58554a8442f8eef1de",
+   "name": "起凤桥",
+   "category": "文化",
+   "lng": 117.023666,
+   "lat": 36.668344,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "photo_spot",
+    "themes": [
+     "历史人文",
+     "美食"
+    ],
+    "address": "山东省济南市历下区泉城路街道起凤桥街",
+    "adcode": "",
+    "mentionCount": 7,
+    "recommendScore": 20.79,
+    "topReasons": [
+     "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+     "济南古桥，与王府池子相邻，顺路游览。",
+     "拍照好看，电影电视剧取景地"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去。拍照很好看，电影电视剧取景地。热门打卡点，路线必经。位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街。",
+     "highlights": [
+      {
+       "text": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+       "quote": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:20:22.949678+00:00"
+      },
+      {
+       "text": "拍照很好看，电影电视剧取景地",
+       "quote": "拍照很好看，电影电视剧取景地",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:03:42.226798+00:00"
+      },
+      {
+       "text": "热门打卡点，路线必经",
+       "quote": "热门打卡点，路线必经",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:03:42.369552+00:00"
+      },
+      {
+       "text": "位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街",
+       "quote": "位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:20:22.949678+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:54:11.069901+00:00"
+    },
+    "originalName": "起凤桥",
+    "openHours": {
+     "version": 2,
+     "subject": "起凤桥",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+     "canonicalName": "起凤桥",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "起凤桥"
+     ],
+     "memberIds": [
+      "908b0aec5ee27f58554a8442f8eef1de"
+     ]
+    },
+    "aliases": [
+     "起凤桥"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "拍照好看，电影电视剧取景地",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "热门打卡点，路线必经",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_warning",
+     "content": "人多，可改拍西侧灯笼亭子",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69e8cb4e000000001a020599?xsec_token=AB-TCNGQHc7ozqR5O-enQqZeYi3t-yxbueG5Tb76TvbCs=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+   "name": "起凤桥八号门洞",
+   "category": "文化",
+   "lng": 117.023636,
+   "lat": 36.668207,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "photo_spot",
+    "themes": [],
+    "address": "起凤桥街8",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [
+     "古香古色门洞，有烟雨江南即视感",
+     "古香古色的门洞，有烟雨江南即视感"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "古香古色的门洞，有烟雨江南即视感。",
+     "highlights": [
+      {
+       "text": "古香古色的门洞，有烟雨江南即视感",
+       "quote": "古香古色的门洞 烟雨江南即视感",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:18:21.151862+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:54:11.069901+00:00"
+    },
+    "originalName": "起凤桥八号",
+    "openHours": {
+     "version": 2,
+     "subject": "起凤桥八号门洞",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11458,
+      "noteId": 2570,
+      "inputHash": "25d4a79d55e694eb45a2d385e1f58be9a0068f29fcbcfc62c4a293416a7aef44"
+     },
+     {
+      "mentionId": 12724,
+      "noteId": 2570,
+      "inputHash": "713fb997a884afa659d2eed67e27eb29e997d3e6fec49c26f1f840e830e93a6e"
+     }
+    ],
+    "typicalVisitMinutes": 30,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+     "canonicalName": "起凤桥八号门洞",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "起凤桥八号门洞"
+     ],
+     "memberIds": [
+      "fd7c5d9a0af5a1ec9515743d6f05bce5",
+      "7bd332a0e69258d59a8f1f531d36cb22"
+     ]
+    },
+    "aliases": [
+     "起凤桥八号门洞"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "古香古色门洞，有烟雨江南即视感",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "古香古色的门洞，有烟雨江南即视感",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713?xsec_token=ABn2UEGVaNjTN9SsOhOsLBix_1j0oLEQomtnhN_wkcJk8=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

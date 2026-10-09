@@ -1,0 +1,68 @@
+{
+  "city": "济南",
+  "batch": 55,
+  "sourcePacket": "priority-cities/济南/laoshe-source-packet-01.json",
+  "sources": 2,
+  "mentions": 4,
+  "fullNotes": 3,
+  "supplementalFullNotes": 1,
+  "scopedMentions": 1,
+  "pendingAdded": 0,
+  "museumScopeApplied": false,
+  "wallScopeApplied": true,
+  "appliedAtFreeze": false,
+  "rows": [
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "sourceId": 5498,
+      "mentionIds": [
+        11619,
+        12807,
+        12912
+      ],
+      "identityConclusion": "12807同篇既有文字分析明确老舍纪念馆；公开文字支持南新街58号故居与纪念馆同体，不等于主题墙。",
+      "locationConclusion": "补文字地址，原坐标保持但尚未新验证，不以和主题墙旧点相同推断纪念馆旧点也错。",
+      "pendingFactFinding": {
+        "mentionIds": [
+          11619,
+          12912
+        ],
+        "noteId": 2624,
+        "originalReason": "从五龙潭南门出500米即到，可顺路参观。",
+        "quote": "第一站五龙潭，七点开园，一个小时就能逛完，西门进南门出，斜对过就是趵突泉啦，，，园子不小，里面有点东西，可以仔细逛一下呢。\n接着想去老舍故居就从南门出，500米就是老舍故居",
+        "conclusion": "原文南门前已引入趵突泉，抽取直接固化为五龙潭南门，起点并未可靠定位。只记录两描述待修，不伪造原文或补新距离。",
+        "status": "unapplied_description_scope_preserve_existing_photo_consumption"
+      },
+      "actualPhotos": 2,
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "sourceId": 5957,
+      "mentionIds": [
+        12694
+      ],
+      "identityConclusion": "2817及既有文字分析为实体主题墙；2570正文明确西更道街5号，与南新街58号纪念馆不同。",
+      "supplementalNoteId": 2570,
+      "quote": "🕥13:30-14:30📍西更道街（p4.10）\n📷5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+      "newName": "老舍笔下的济南主题墙",
+      "address": "西更道街5号",
+      "locationConclusion": "清不匹配旧点，文字门牌不等于精确墙面坐标；不把西更道街1号簪花少女墙合并。",
+      "actualPhotos": 0,
+      "fullReviewPassed": false
+    }
+  ],
+  "externalReference": {
+    "file": "priority-cities/济南/laoshe-reference-01.json",
+    "sha256": "433c7251d5920fec0f632e971ac93b11f4260a60ac89351e057779fb5f538e1f",
+    "url": "https://zh.wikipedia.org/zh-hans/%E6%B5%8E%E5%8D%97%E8%80%81%E8%88%8D%E7%BA%AA%E5%BF%B5%E9%A6%86",
+    "use": "故居/纪念馆名称与地址互证；不采纳其中同名展陈为室外主题墙。"
+  },
+  "primaryReferenceCaveat": "laoshe-reference-02济南日报成功抓取但无58号门牌；地址依据为已抓取百科正文，不能标记为官方门牌核验。",
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "mapRequests": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "scopeBoundary": "1903 MIX/品忆香/fufuland/喜艾不在原济南107源重点冻结包；本轮不扩入主动治理。"
+}

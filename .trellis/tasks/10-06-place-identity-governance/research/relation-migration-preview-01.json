@@ -1,0 +1,115 @@
+{
+  "apply": false,
+  "statementsHash": "818d4d03d5cfb525d2e2b45f2cc0a215b17c7324f856b6c01ef5c99413d13475",
+  "existed": [
+    "place_relation_snapshots"
+  ],
+  "before": {
+    "canonical_places": {
+      "count": 5495,
+      "digest": "1b14a5125acfae9f8c53737d69ab66ce"
+    },
+    "research_evidence": {
+      "count": 7808,
+      "digest": "8d739237ed853f070da4c373f656c246"
+    },
+    "place_relation": {
+      "count": 270,
+      "digest": "3f210cb524cc75c510ff666637bf0038"
+    },
+    "data_import": {
+      "count": 24,
+      "digest": "a5d8b671d3bd152d8c4ec53d7dcb3ec0"
+    },
+    "place_identity_imports": {
+      "count": 42,
+      "digest": "c244040f461dac51cb7c5be8ca412de6"
+    },
+    "trips": {
+      "count": 201,
+      "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+    },
+    "independent_photo_assignments": {
+      "count": 8,
+      "digest": "0c3556df4af9fc2772bd77c08e52343e"
+    },
+    "independent_photo_changes": {
+      "count": 1,
+      "digest": "b17f80d10f0f506aa6561558058b5d6f"
+    }
+  },
+  "after": {
+    "canonical_places": {
+      "count": 5495,
+      "digest": "1b14a5125acfae9f8c53737d69ab66ce"
+    },
+    "research_evidence": {
+      "count": 7808,
+      "digest": "8d739237ed853f070da4c373f656c246"
+    },
+    "place_relation": {
+      "count": 270,
+      "digest": "3f210cb524cc75c510ff666637bf0038"
+    },
+    "data_import": {
+      "count": 24,
+      "digest": "a5d8b671d3bd152d8c4ec53d7dcb3ec0"
+    },
+    "place_identity_imports": {
+      "count": 42,
+      "digest": "c244040f461dac51cb7c5be8ca412de6"
+    },
+    "trips": {
+      "count": 201,
+      "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+    },
+    "independent_photo_assignments": {
+      "count": 8,
+      "digest": "0c3556df4af9fc2772bd77c08e52343e"
+    },
+    "independent_photo_changes": {
+      "count": 1,
+      "digest": "b17f80d10f0f506aa6561558058b5d6f"
+    }
+  },
+  "first": {
+    "place_relation_snapshots": {
+      "count": 0,
+      "digest": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "second": {
+    "place_relation_snapshots": {
+      "count": 0,
+      "digest": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "columns": [
+    {
+      "table_name": "place_relation_snapshots",
+      "column_name": "city",
+      "data_type": "text",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "place_relation_snapshots",
+      "column_name": "manifest",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "place_relation_snapshots",
+      "column_name": "relations",
+      "data_type": "jsonb",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "place_relation_snapshots",
+      "column_name": "available_ids",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    }
+  ],
+  "unchanged": true,
+  "idempotent": true
+}

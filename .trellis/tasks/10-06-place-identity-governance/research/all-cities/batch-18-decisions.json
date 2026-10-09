@@ -1,0 +1,78 @@
+[
+  {
+    "key": "all-cities-20261006-batch-18-001",
+    "city": "成都",
+    "entityId": "765d12cf332a7a8596e6bfae194cc36e",
+    "mergeEntityIds": [
+      "ec50ce1141b9419d030e4931cb4999d5"
+    ],
+    "canonicalName": "HANDBELL（玉林店）",
+    "expectedRevisions": {
+      "765d12cf332a7a8596e6bfae194cc36e": 1,
+      "ec50ce1141b9419d030e4931cb4999d5": 1
+    },
+    "overrides": {
+      "lat": 30.623402,
+      "lng": 104.056389,
+      "address": "成都高新区芳华街9号、芳华街9号附1号",
+      "geoStatus": "reviewed_source",
+      "category": "咖啡"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          304
+        ],
+        "conclusion": "两篇原文分别明确handbell P9和HANDBELL P14；刷新后标题正文未变，已逐图核实是同一栋楼同一门面：品牌招牌、左拱窗吧台、右拱门、外墙损纹/线脚/灯具、楼上防盗窗均对应。现有地图同落芳华街，主体1824保存明确POI B0KGOCIJZD及芳华街9号/附1号地址。以独立原图互证归一两条大小写变体，保留玉林分店边界和稳定主ID。",
+        "sourcePlaceIds": [
+          "1824",
+          "1715"
+        ],
+        "mentions": [
+          {
+            "id": "3722",
+            "name": "HANDBELL",
+            "quote": "30💰就能坐一下午",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a65bf1d000000000601287d"
+          },
+          {
+            "id": "3532",
+            "name": "handbell",
+            "quote": "✔️handbell. P9",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695c6859000000000e03c46a"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1824",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原图证明两源为同一实体，保留已有明确POI主源的GCJ-02坐标；不平均坐标，也不从照片自行推算经纬度。",
+        "original": {
+          "lat": 30.623402,
+          "lng": 104.056389,
+          "address": "成都高新区芳华街9号、芳华街9号附1号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.623402,
+        "lng": 104.056389,
+        "address": "成都高新区芳华街9号、芳华街9号附1号",
+        "geoStatus": "reviewed_source",
+        "category": "咖啡"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chengdu-handbell-image-context.json",
+        "sha256": "d6f12b36dfb1f1b000a398523b1b650cda04604fc26c8e40e8904c346c5ef1a8",
+        "mentionIds": [
+          3532,
+          3722
+        ],
+        "conclusion": "两篇原文分别明确handbell P9和HANDBELL P14；刷新后标题正文未变，已逐图核实是同一栋楼同一门面：品牌招牌、左拱窗吧台、右拱门、外墙损纹/线脚/灯具、楼上防盗窗均对应。现有地图同落芳华街，主体1824保存明确POI B0KGOCIJZD及芳华街9号/附1号地址。以独立原图互证归一两条大小写变体，保留玉林分店边界和稳定主ID。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,647 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T16:33:59.151736+00:00",
+  "city": "济南",
+  "entityBatch": 40,
+  "ledger": "../priority-cities/济南/review-18.json",
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "0d0968c2ca848678bcf24e2c0db83554",
+        "city": "济南",
+        "canonical_name": "月下观棠",
+        "primary_place_id": 5955,
+        "aliases": [
+          "月下观棠"
+        ],
+        "legacy_ids": [
+          "0d0968c2ca848678bcf24e2c0db83554"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sourceIds": [
+        5955
+      ],
+      "relatedSourceIds": [
+        5955
+      ],
+      "mentionIds": [
+        12689
+      ],
+      "noteIds": [
+        2817
+      ],
+      "sources": [
+        {
+          "id": 5955,
+          "name": "月下观棠",
+          "placeType": "photo_spot",
+          "themes": [
+            "历史人文"
+          ],
+          "lat": 36.67761353892693,
+          "lng": 117.02774642184411,
+          "address": ""
+        }
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "2c8372d3a47dbcb68abd998af495436d",
+        "city": "济南",
+        "canonical_name": "尚泉尚水茶馆",
+        "primary_place_id": 5945,
+        "aliases": [
+          "尚泉尚水茶馆"
+        ],
+        "legacy_ids": [
+          "2c8372d3a47dbcb68abd998af495436d"
+        ],
+        "revision": 2,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {
+          "lat": null,
+          "lng": null,
+          "address": "",
+          "geoStatus": "unresolvable"
+        },
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          },
+          {
+            "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+            "kind": "reviewed_priority_original",
+            "quote": "第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景",
+            "noteId": 2795,
+            "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+            "original": [
+              {
+                "id": 5945,
+                "lat": 36.979124598255346,
+                "lng": 117.19443405552043,
+                "address": "",
+                "sourceHash": "18c07ab8ad381f2f524864e0ea00153e5809c07d543dff551ccf964b9e5e1b89"
+              }
+            ],
+            "conclusion": "唯一原文介绍大明湖超然楼拍摄机位，实际对象为茶馆前平台，旧点落济阳约39公里外。先清空错误位置，随后逐提及纠正茶馆与平台身份；本批不把茶馆认定为已核实餐饮主体。",
+            "mentionIds": [
+              12653
+            ],
+            "sourcePlaceIds": [
+              5945
+            ]
+          }
+        ]
+      },
+      "sourceIds": [
+        5945
+      ],
+      "relatedSourceIds": [
+        5945
+      ],
+      "mentionIds": [
+        12653
+      ],
+      "noteIds": [
+        2795
+      ],
+      "sources": [
+        {
+          "id": 5945,
+          "name": "尚泉尚水茶馆",
+          "placeType": "cafe",
+          "themes": [
+            "美食",
+            "夜景"
+          ],
+          "lat": 36.979124598255346,
+          "lng": 117.19443405552043,
+          "address": ""
+        }
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "2ccb52ac3eeda4ca713a2b7bd975b566",
+        "city": "济南",
+        "canonical_name": "VILLASHAKA",
+        "primary_place_id": 5399,
+        "aliases": [
+          "VILLASHAKA"
+        ],
+        "legacy_ids": [
+          "2ccb52ac3eeda4ca713a2b7bd975b566"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sourceIds": [
+        5399
+      ],
+      "relatedSourceIds": [
+        5399
+      ],
+      "mentionIds": [
+        11535
+      ],
+      "noteIds": [
+        2573
+      ],
+      "sources": [
+        {
+          "id": 5399,
+          "name": "VILLASHAKA",
+          "placeType": "cafe",
+          "themes": [
+            "文艺"
+          ],
+          "lat": 36.664939125453756,
+          "lng": 117.02543550006231,
+          "address": ""
+        }
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "46bf3d4bc9d5aa019dd4a3184329e58a",
+        "city": "济南",
+        "canonical_name": "BLUEDUCK骨董屋",
+        "primary_place_id": 5398,
+        "aliases": [
+          "BLUEDUCK骨董屋"
+        ],
+        "legacy_ids": [
+          "46bf3d4bc9d5aa019dd4a3184329e58a"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sourceIds": [
+        5398
+      ],
+      "relatedSourceIds": [
+        5398
+      ],
+      "mentionIds": [
+        11534
+      ],
+      "noteIds": [
+        2573
+      ],
+      "sources": [
+        {
+          "id": 5398,
+          "name": "BLUEDUCK骨董屋",
+          "placeType": "shop",
+          "themes": [],
+          "lat": 36.664939125453756,
+          "lng": 117.02543550006231,
+          "address": ""
+        }
+      ]
+    }
+  ],
+  "mentions": [
+    {
+      "id": 12689,
+      "raw_note_id": 2817,
+      "name": "月下观棠",
+      "normalized_name": "月下观棠",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "白底书法济南文字墙，拍照好看",
+      "evidence_text": "③月下观棠(白底书法济南文字墙)",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "白底书法济南文字墙",
+              "quote": "白底书法济南文字墙"
+            }
+          ]
+        }
+      },
+      "inputHash": "a535f6a837f51c88d67c0a9de5ac0330e5a94eab73ec804117170208b6ec9594",
+      "resolution": {
+        "status": "resolved",
+        "reason": "confirmed_name",
+        "entityId": "0d0968c2ca848678bcf24e2c0db83554",
+        "factExclusions": null
+      }
+    },
+    {
+      "id": 12653,
+      "raw_note_id": 2795,
+      "name": "尚泉尚水茶馆",
+      "normalized_name": "尚泉尚水茶馆",
+      "place_type": "cafe",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "前面平台可拍摄湖面与楼阁全景",
+      "evidence_text": "其前面平台即可拍摄湖面与楼阁全景",
+      "route_order": 3,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "前面平台可拍摄湖面与楼阁全景",
+              "quote": "其前面平台即可拍摄湖面与楼阁全景"
+            }
+          ]
+        }
+      },
+      "inputHash": "f2f6ce1bb4c9f0e69a8c33d33cc99226fd92918f3251ce56d0a589e196e0b955",
+      "resolution": {
+        "status": "resolved",
+        "reason": "confirmed_name",
+        "entityId": "2c8372d3a47dbcb68abd998af495436d",
+        "factExclusions": null
+      }
+    },
+    {
+      "id": 11535,
+      "raw_note_id": 2573,
+      "name": "VILLA SHAKA",
+      "normalized_name": "VILLASHAKA",
+      "place_type": "cafe",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "墙超好拍，咖啡也很赞",
+      "evidence_text": "VILLA SHAKA的墙超好拍，咖啡也很赞",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "墙超好拍，咖啡也很赞",
+              "quote": "VILLA SHAKA的墙超好拍，咖啡也很赞"
+            }
+          ]
+        }
+      },
+      "inputHash": "d053f0fc84612f26bc599a18cc0de2a9ef343655157c5651d4c80be6a2f673ed",
+      "resolution": {
+        "status": "resolved",
+        "reason": "confirmed_name",
+        "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+        "factExclusions": null
+      }
+    },
+    {
+      "id": 11534,
+      "raw_note_id": 2573,
+      "name": "BLUE DUCK骨董屋",
+      "normalized_name": "BLUEDUCK骨董屋",
+      "place_type": "shop",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "自助式vintage杂货铺，超有味道",
+      "evidence_text": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道",
+      "route_order": 6,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "自助式vintage杂货铺，超有味道",
+              "quote": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道"
+            }
+          ]
+        }
+      },
+      "inputHash": "e793b163301323a479a15e7af044953994f2915842fa047244c221f942af80e9",
+      "resolution": {
+        "status": "resolved",
+        "reason": "confirmed_name",
+        "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+        "factExclusions": null
+      }
+    }
+  ],
+  "notes": [
+    {
+      "id": 2573,
+      "note_city": "济南",
+      "note_title": "济南必逛Citywalk路线！这条街太宝藏了！",
+      "note_desc": "经三路真的是浪漫天花板，今年又多了好多咖啡、美食和古着店，还有超多隐藏小店！🚶‍♀️路线直接抄作业：老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单，一路逛吃不停。必打卡的小店：BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道；VILLA SHAKA的墙超好拍，咖啡也很赞；中山公园里超安静，还能淘二手货；淘子外单简直是购物天堂，两层楼逛到腿软，木质风设计超舒服，从床品到配饰款式多到挑花眼！济南有三家店：经四万达店、高新店、西市场店，每个都值得去逛逛～\n#城市的一百种玩法[话题]#",
+      "note_images": [
+        {
+          "summary": "堆满书籍的仓库/旧书店",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": "1-8卷\n山东美术出版社"
+        },
+        {
+          "summary": "旧书摊摆满各类书籍",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 17,
+          "text_content": "辞海\n中国侠义小说\n现代汉语词典\n会说话的故事书\n历史词典"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2795,
+      "note_city": "济南",
+      "note_title": "大明湖超然楼打卡机位+最新亮灯时间",
+      "note_desc": "超然楼最新亮灯时间为每天19:30，关灯时间为22:00，宝子们不要跑空[拔草R]\n日落时间为19:17，每往后一天大概早1分钟，蓝调时刻为日落后的半小时内，但此时超然楼灯光的起始亮度比较低，需要等它烧一会儿会越来越亮[偷笑R]\n📍两大绝美拍摄机位第一个搜索“南丰戏楼”，于西侧游船码头处（图4位置）可拍到南丰桥与超然楼同框；\n📍第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景。\n\t\n手机拍摄建议使用专业模式，相机拍摄📸选择RAW格式，搭配三脚架拍摄20s以上长曝光，可柔化水面及云彩，光圈选择f8-11可拍出灯光星芒。\n\t\n📍湖畔雨荷灯塑位置在大明湖北岸钢琴广场，导航搜索“夏雨荷雕塑”或“北极阁码头”即可到达，湖畔雨荷点亮时间与超然楼亮灯时间同为19:30。\n\t\n觉得有用的话点个关注叭，主页持续更新拍照技巧，粉丝抽奖福利不停[哇R][玫瑰R]\n\t\n#大明湖[话题]# #超然楼[话题]# #超然楼亮灯[话题]# #济南[话题]# #打卡机位[话题]# #夏雨荷[话题]# #济南约拍[话题]# #泰安约拍[话题]# #互勉约拍[话题]# #富士[话题]# #遇见富士[话题]# #大明湖夜景[话题]# #超然楼亮灯时间[话题]# #湖畔雨荷[话题]# #济南旅游[话题]#",
+      "note_images": [
+        {
+          "summary": "夜景古塔建筑，标注打卡机位与亮灯时间",
+          "has_text": true,
+          "key_info": {
+            "tips": "打卡机位+亮灯时间",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "打卡机位+亮灯时间"
+        },
+        {
+          "summary": "大明湖景区南丰祠新区游船码头位置图",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 3,
+          "text_content": "南丰祠新区游船码头\n图层\n反馈\n大明湖景区-\n南丰祠\n南丰戏楼\n大明湖-雨荷\n南丰祠新区\n游船码头\n已收藏\n广场\n发送\n高德地图"
+        },
+        {
+          "summary": "济南大明湖景区附近地图，显示酒店与茶馆位置",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 4,
+          "text_content": "解放阁北路\n尚泉历舍(济南\n大明湖景区店)\n尚泉尚水茶馆\n更多\n图层\n3D\n发送\n查找地点"
+        },
+        {
+          "summary": "济南市今日日出日落时间查询",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": "05:19-19:17",
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 6,
+          "text_content": "济南市\n日出日落\n昨天 今天 明天 周二 周三 周四 周五\n1 2 3 4 5 6 7\n日出日落\n05:19 - 19:17\n更新于10:11\n05:19\n21:32\n10:46\n19:17"
+        },
+        {
+          "summary": "夏雨荷雕塑景点位置信息",
+          "has_text": true,
+          "key_info": {
+            "tips": null,
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 7,
+          "text_content": "夏雨荷雕塑 最近浏览\n大明湖景区-明湖泛舟\n北极阁码头\n泉城夜宴\n济南盆景奇石园\n大明湖景区-战役国民党守军指挥部\n景区-壁\n发送\n高德地图\n夏雨荷雕塑 景点 最近浏览\n距大明湖景区步行277米 4分钟\n山东省济南市历下区大明湖路271号大明湖风景名胜区北极阁奇石馆西侧钢琴广场"
+        }
+      ],
+      "note_unavailable": false
+    },
+    {
+      "id": 2817,
+      "note_city": "济南",
+      "note_title": "1小时打卡济南曲水亭街！附详细路线攻略",
+      "note_desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+      "note_images": [
+        {
+          "summary": "济南曲水亭街1小时打卡攻略路线图",
+          "has_text": true,
+          "key_info": {
+            "tips": "路线：百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 0,
+          "text_content": "曲水亭街\n1小时打卡攻略\n百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉\n大明湖景区(南门)\n春日宴国风旅拍 200m约3分钟\n百花桥\n刘氏泉 151m约3分钟\n起凤桥八号 141m约3分钟\n芙蓉街-王府池子 149m约3分钟\n山东省人大常委会(南门) 371m约6分钟\n总得来趟老舍笔下的济南\n珍珠泉"
+        },
+        {
+          "summary": "济南胡同拍照打卡点指引，含书法文字墙位置说明",
+          "has_text": true,
+          "key_info": {
+            "tips": "继续往前走出胡同后右拐，月下观棠附近可以看到白底书法济南文字墙",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 5,
+          "text_content": "汉服妆造\n月下观棠\n濟南\n悠閒品味生活\n最濟南\nJiNAN\nCOURAGE\n继续往前走\n出胡同后右拐【月下观棠】附近能看到\n这几个白底书法济南文字墙"
+        },
+        {
+          "summary": "济南老舍主题网红打卡墙，含爱心拍照装置与城市标语",
+          "has_text": true,
+          "key_info": {
+            "tips": "网红打卡点，位于老舍笔下的济南主题区域，墙面有红色爱心拍照装置及励志标语贴纸",
+            "hours": null,
+            "price": null,
+            "reservation": null
+          },
+          "image_index": 13,
+          "text_content": "总得来趟 老舍笔下的济南\n返回继续往南走\n打卡【老舍笔下的济南】\n奋斗有我\n济南 榜样 扬帆\n一颗红心向太阳\n路虽远 行则必至\nGO! 行则必至\n爱生活 懂前方\n认真 living\n我们如此热爱这城市\n清澈的爱 只为中国\n最青春 最有活力\n一座彩色的城市"
+        }
+      ],
+      "note_unavailable": false
+    }
+  ],
+  "images": [],
+  "supplementalImageFactNotes": [
+    {
+      "matchedNames": [
+        "尚泉尚水茶馆"
+      ],
+      "note": {
+        "id": 2795,
+        "city": "济南",
+        "title": "大明湖超然楼打卡机位+最新亮灯时间",
+        "desc": "超然楼最新亮灯时间为每天19:30，关灯时间为22:00，宝子们不要跑空[拔草R]\n日落时间为19:17，每往后一天大概早1分钟，蓝调时刻为日落后的半小时内，但此时超然楼灯光的起始亮度比较低，需要等它烧一会儿会越来越亮[偷笑R]\n📍两大绝美拍摄机位第一个搜索“南丰戏楼”，于西侧游船码头处（图4位置）可拍到南丰桥与超然楼同框；\n📍第二个机位搜索“尚泉尚水茶馆”（图5位置），其前面平台即可拍摄湖面与楼阁全景。\n\t\n手机拍摄建议使用专业模式，相机拍摄📸选择RAW格式，搭配三脚架拍摄20s以上长曝光，可柔化水面及云彩，光圈选择f8-11可拍出灯光星芒。\n\t\n📍湖畔雨荷灯塑位置在大明湖北岸钢琴广场，导航搜索“夏雨荷雕塑”或“北极阁码头”即可到达，湖畔雨荷点亮时间与超然楼亮灯时间同为19:30。\n\t\n觉得有用的话点个关注叭，主页持续更新拍照技巧，粉丝抽奖福利不停[哇R][玫瑰R]\n\t\n#大明湖[话题]# #超然楼[话题]# #超然楼亮灯[话题]# #济南[话题]# #打卡机位[话题]# #夏雨荷[话题]# #济南约拍[话题]# #泰安约拍[话题]# #互勉约拍[话题]# #富士[话题]# #遇见富士[话题]# #大明湖夜景[话题]# #超然楼亮灯时间[话题]# #湖畔雨荷[话题]# #济南旅游[话题]#",
+        "img_analysis": [
+          {
+            "summary": "夜景古塔建筑，标注打卡机位与亮灯时间",
+            "has_text": true,
+            "key_info": {
+              "tips": "打卡机位+亮灯时间",
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 0,
+            "text_content": "打卡机位+亮灯时间"
+          },
+          {
+            "summary": "大明湖景区南丰祠新区游船码头位置图",
+            "has_text": true,
+            "key_info": {
+              "tips": null,
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 3,
+            "text_content": "南丰祠新区游船码头\n图层\n反馈\n大明湖景区-\n南丰祠\n南丰戏楼\n大明湖-雨荷\n南丰祠新区\n游船码头\n已收藏\n广场\n发送\n高德地图"
+          },
+          {
+            "summary": "济南大明湖景区附近地图，显示酒店与茶馆位置",
+            "has_text": true,
+            "key_info": {
+              "tips": null,
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 4,
+            "text_content": "解放阁北路\n尚泉历舍(济南\n大明湖景区店)\n尚泉尚水茶馆\n更多\n图层\n3D\n发送\n查找地点"
+          },
+          {
+            "summary": "济南市今日日出日落时间查询",
+            "has_text": true,
+            "key_info": {
+              "tips": null,
+              "hours": "05:19-19:17",
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 6,
+            "text_content": "济南市\n日出日落\n昨天 今天 明天 周二 周三 周四 周五\n1 2 3 4 5 6 7\n日出日落\n05:19 - 19:17\n更新于10:11\n05:19\n21:32\n10:46\n19:17"
+          },
+          {
+            "summary": "夏雨荷雕塑景点位置信息",
+            "has_text": true,
+            "key_info": {
+              "tips": null,
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 7,
+            "text_content": "夏雨荷雕塑 最近浏览\n大明湖景区-明湖泛舟\n北极阁码头\n泉城夜宴\n济南盆景奇石园\n大明湖景区-战役国民党守军指挥部\n景区-壁\n发送\n高德地图\n夏雨荷雕塑 景点 最近浏览\n距大明湖景区步行277米 4分钟\n山东省济南市历下区大明湖路271号大明湖风景名胜区北极阁奇石馆西侧钢琴广场"
+          }
+        ],
+        "status": "EXTRACTED",
+        "source_url": "https://www.xiaohongshu.com/explore/687762340000000010027974?xsec_token=ABBx-EttI03LKpQ0hLWfIO_rRlvWpiW0LmZUBwVW3CrhI=&xsec_source=pc_search"
+      },
+      "inputHash": "8d11e64f0b3a0d24ceb7e692029cd3450d50545963785cf2926e74e7527b67de"
+    },
+    {
+      "matchedNames": [
+        "月下观棠"
+      ],
+      "note": {
+        "id": 2817,
+        "city": "济南",
+        "title": "1小时打卡济南曲水亭街！附详细路线攻略",
+        "desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+        "img_analysis": [
+          {
+            "summary": "济南曲水亭街1小时打卡攻略路线图",
+            "has_text": true,
+            "key_info": {
+              "tips": "路线：百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉",
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 0,
+            "text_content": "曲水亭街\n1小时打卡攻略\n百花洲→百花桥→簪花少女→起凤桥→老舍笔下的济南→王府池子→珍珠泉\n大明湖景区(南门)\n春日宴国风旅拍 200m约3分钟\n百花桥\n刘氏泉 151m约3分钟\n起凤桥八号 141m约3分钟\n芙蓉街-王府池子 149m约3分钟\n山东省人大常委会(南门) 371m约6分钟\n总得来趟老舍笔下的济南\n珍珠泉"
+          },
+          {
+            "summary": "济南胡同拍照打卡点指引，含书法文字墙位置说明",
+            "has_text": true,
+            "key_info": {
+              "tips": "继续往前走出胡同后右拐，月下观棠附近可以看到白底书法济南文字墙",
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 5,
+            "text_content": "汉服妆造\n月下观棠\n濟南\n悠閒品味生活\n最濟南\nJiNAN\nCOURAGE\n继续往前走\n出胡同后右拐【月下观棠】附近能看到\n这几个白底书法济南文字墙"
+          },
+          {
+            "summary": "济南老舍主题网红打卡墙，含爱心拍照装置与城市标语",
+            "has_text": true,
+            "key_info": {
+              "tips": "网红打卡点，位于老舍笔下的济南主题区域，墙面有红色爱心拍照装置及励志标语贴纸",
+              "hours": null,
+              "price": null,
+              "reservation": null
+            },
+            "image_index": 13,
+            "text_content": "总得来趟 老舍笔下的济南\n返回继续往南走\n打卡【老舍笔下的济南】\n奋斗有我\n济南 榜样 扬帆\n一颗红心向太阳\n路虽远 行则必至\nGO! 行则必至\n爱生活 懂前方\n认真 living\n我们如此热爱这城市\n清澈的爱 只为中国\n最青春 最有活力\n一座彩色的城市"
+          }
+        ],
+        "status": "EXTRACTED",
+        "source_url": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search"
+      },
+      "inputHash": "455924bcb8816e2ee4f29b4acba9b78305b6a1a177083631b219c05460dbb3c6"
+    }
+  ],
+  "rawSourcesUnchanged": 107,
+  "originalMentionsUnchanged": 662,
+  "originalNotesCovered": 82,
+  "fullReviewPassed": false,
+  "failures": []
+}

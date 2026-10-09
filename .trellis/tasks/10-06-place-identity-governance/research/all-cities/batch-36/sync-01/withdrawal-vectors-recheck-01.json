@@ -1,0 +1,59 @@
+{
+  "readOnly": true,
+  "productionTimeoutUnchanged": true,
+  "at": "2026-10-08T00:32:39.626Z",
+  "probes": [
+    {
+      "id": "033a692df5218d571ddd2cca8a8c91e3",
+      "name": "甜沫儿",
+      "diagnostics": {
+        "keywordHits": 0,
+        "vector": "unavailable",
+        "vectorHits": 0
+      },
+      "excluded": true
+    },
+    {
+      "id": "8808e16f1472d0df17bed729a2e54e83",
+      "name": "趵突泉",
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "unavailable",
+        "vectorHits": 0
+      },
+      "excluded": true
+    }
+  ],
+  "requests": [
+    {
+      "error": "TimeoutError",
+      "elapsedMs": 2517
+    },
+    {
+      "error": "TimeoutError",
+      "elapsedMs": 2513
+    }
+  ],
+  "failures": [
+    {
+      "id": "033a692df5218d571ddd2cca8a8c91e3",
+      "name": "甜沫儿",
+      "diagnostics": {
+        "keywordHits": 0,
+        "vector": "unavailable",
+        "vectorHits": 0
+      },
+      "excluded": true
+    },
+    {
+      "id": "8808e16f1472d0df17bed729a2e54e83",
+      "name": "趵突泉",
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "unavailable",
+        "vectorHits": 0
+      },
+      "excluded": true
+    }
+  ]
+}

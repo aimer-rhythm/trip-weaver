@@ -1,0 +1,11 @@
+{
+  "extends": "../../../../apps/server/tsconfig.json",
+  "compilerOptions": { "noEmit": true },
+  "include": [
+    "*.mts",
+    "../../10-06-place-identity-governance/research/all-cities/check-batch-state.mts",
+    "../../10-06-place-identity-governance/research/all-cities/verify-flow.mts",
+    "../../10-06-place-identity-governance/research/verify-relation-city.test.mts",
+    "../../../../apps/server/scripts/seed-xhs-places.ts"
+  ]
+}

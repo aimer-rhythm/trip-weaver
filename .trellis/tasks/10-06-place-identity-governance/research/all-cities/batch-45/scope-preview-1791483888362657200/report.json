@@ -1,0 +1,39 @@
+{
+  "batch": 45,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 5,
+  "notes": 4,
+  "confirmed": 5,
+  "pendingAdded": 0,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+      "name": "大观园",
+      "mentions": 4,
+      "category": "文化",
+      "lat": null,
+      "lng": null
+    },
+    {
+      "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+      "name": "纬三路与经三路交叉口",
+      "mentions": 1,
+      "category": "文化",
+      "lat": 36.661722,
+      "lng": 116.993629
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "ce271378ea5e5630fab2cadd520034afe0ecd91639c3ba3055ff1c744d3c1f09"
+}

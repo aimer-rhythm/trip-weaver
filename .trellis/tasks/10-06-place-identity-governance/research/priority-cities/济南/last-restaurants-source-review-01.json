@@ -1,0 +1,90 @@
+{
+  "city": "济南",
+  "batch": 64,
+  "sourcePacket": "priority-cities/济南/last-restaurants-source-packet-01.json",
+  "sourcePacketSha256": "f3c5abdc029e349763d90476baf9bcba5fb4156a663d068985ba521dfea591c0",
+  "sourcesRead": 4,
+  "sourcesGoverned": 3,
+  "mentionsRead": 10,
+  "assignments": 8,
+  "confirmed": 7,
+  "pending": 1,
+  "readOnlyMentions": 2,
+  "fullNotes": 3,
+  "rows": [
+    {
+      "mentionId": 11353,
+      "noteId": 2585,
+      "conclusion": "原文明确县东巷71号，保留整篇清单的作者正评。",
+      "action": "confirm"
+    },
+    {
+      "mentionId": 12594,
+      "noteId": 2585,
+      "conclusion": "同篇再次抽取，身份明确，不算额外独立来源。",
+      "action": "confirm"
+    },
+    {
+      "mentionId": 12893,
+      "noteId": 2856,
+      "conclusion": "裸名在美食清单中，另一景点路线不能给餐馆定位；待核县东巷71号归属，不声称已经证明有多分店。",
+      "action": "pending_location_qualifier"
+    },
+    {
+      "mentionId": 11367,
+      "noteId": 2585,
+      "conclusion": "原文大观园南门附近，公开经五路/饮虎池街地址不能证明同店连续性，维持原始消费待核。",
+      "action": "unchanged_address_identity_pending"
+    },
+    {
+      "mentionId": 12608,
+      "noteId": 2585,
+      "conclusion": "同篇重复抽取，门店对应仍待核，不强行改为公开经五路店。",
+      "action": "unchanged_address_identity_pending"
+    },
+    {
+      "mentionId": 11365,
+      "noteId": 2585,
+      "conclusion": "原文明确山大南路蜀易火锅隔壁，公开文旅正文同址且明确山大南路店。",
+      "action": "confirm"
+    },
+    {
+      "mentionId": 11643,
+      "noteId": 2602,
+      "conclusion": "另一篇明确二环东路山大南路，与山大南路东段门店支持一致；不继承上一条老苏只有早午餐的时段。",
+      "action": "confirm"
+    },
+    {
+      "mentionId": 12606,
+      "noteId": 2585,
+      "conclusion": "同篇重复抽取地址明确，保留原正评。",
+      "action": "confirm"
+    },
+    {
+      "mentionId": 11362,
+      "noteId": 2585,
+      "conclusion": "原文泉城路，公开餐馆正文明确泉城路店及狮子口街参照，与当前源街区一致。",
+      "action": "confirm"
+    },
+    {
+      "mentionId": 12603,
+      "noteId": 2585,
+      "conclusion": "同篇重复提及，保留清单作者正评，不增加独立来源。",
+      "action": "confirm"
+    }
+  ],
+  "newEntities": 0,
+  "withdrawals": 0,
+  "coordinatesCleared": 1,
+  "newPreciseLocations": 0,
+  "otherTwoCoordinatesPreserved": true,
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "factExclusions": 0,
+  "validOriginalOpinionsPreservedForConfirmedMentions": true,
+  "huaXiangUnchangedReason": "大观园南门、经五路东首与饮虎池街地址之间没有足够同店连续性证据，旧ID/名字/点/消费保持待核，不合并也不猜官方店名。",
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "userAcceptance": false,
+  "appliedAtFreeze": false
+}

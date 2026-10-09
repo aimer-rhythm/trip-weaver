@@ -1,0 +1,188 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "北京"
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "21152db5b05aff609cffa2bee47f16b4",
+          "city": "北京",
+          "canonical_name": "天安门广场",
+          "primary_place_id": 1163,
+          "aliases": [
+            "天安门",
+            "天安门广场"
+          ],
+          "legacy_ids": [
+            "21152db5b05aff609cffa2bee47f16b4",
+            "298e600416cbc4f85119932e8a3c966c"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "recommendationPolicy": "resolved_attraction_mentions_v1"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                2494,
+                2618,
+                2658,
+                2793,
+                2852,
+                2956,
+                3170,
+                3180,
+                3290,
+                4367,
+                4533,
+                4955,
+                5031,
+                5034,
+                5136,
+                5168
+              ],
+              "scoreAfter": 42.44,
+              "scoreBefore": 44.74,
+              "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+            },
+            {
+              "kind": "explicit_user_identity_review",
+              "date": "2026-10-09",
+              "quote": "天安门与天安门广场合并为一个地点",
+              "conclusion": "依用户明确审核按行程地点合并两条现行根，主名天安门广场，天安门为检索别名；不是地理上宣称城楼建筑等于广场。仅合并指定两根，城楼、升降旗、金水桥、安检口、地下通道与地铁口不并入。"
+            },
+            {
+              "kind": "frozen_live_state",
+              "snapshotSha256": "ff6e8f0d7a6f4e4d4969a990a8d929550ff9e65141b0d502d7ff86027d719853",
+              "sourcePlaceIds": [
+                690,
+                1163
+              ],
+              "mentionIds": [
+                1854,
+                2343,
+                2391,
+                2494,
+                2618,
+                2658,
+                2793,
+                2852,
+                2956,
+                3019,
+                3076,
+                3122,
+                3146,
+                3170,
+                3180,
+                3290,
+                3349,
+                3359,
+                4251,
+                4332,
+                4367,
+                4468,
+                4533,
+                4560,
+                4851,
+                4955,
+                5031,
+                5034,
+                5136,
+                5168,
+                5204,
+                5264
+              ],
+              "conclusion": "原始来源、提及与历史引用保留，重算唯一提及与笔记分数，不相加两个旧分数；原主源1163的坐标及网页介绍继续优先。"
+            }
+          ]
+        },
+        {
+          "entity_id": "298e600416cbc4f85119932e8a3c966c",
+          "city": "北京",
+          "canonical_name": "天安门",
+          "primary_place_id": 690,
+          "aliases": [
+            "天安门"
+          ],
+          "legacy_ids": [
+            "298e600416cbc4f85119932e8a3c966c"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": "21152db5b05aff609cffa2bee47f16b4",
+          "overrides": {
+            "recommendationPolicy": "resolved_attraction_mentions_v1"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                1854,
+                2343,
+                2391,
+                3019,
+                3076,
+                3122,
+                3146,
+                3349,
+                3359,
+                4251,
+                4332,
+                4468,
+                4560,
+                4851,
+                5204,
+                5264
+              ],
+              "scoreAfter": 43.25,
+              "scoreBefore": 44.74,
+              "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 690,
+          "entity_id": "21152db5b05aff609cffa2bee47f16b4"
+        },
+        {
+          "place_id": 1163,
+          "entity_id": "21152db5b05aff609cffa2bee47f16b4"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "onlyTwoEntitiesChanged": true,
+    "allOriginalSourcesPreserved": true,
+    "exactUnionOfCurrentMentions": true,
+    "primarySourcePreserved": true,
+    "otherTiananmenEntitiesIndependent": true,
+    "idempotency": true,
+    "reverseRollback": true
+  },
+  "metrics": {
+    "mentionCount": 32,
+    "recommendScore": 82.09
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "b98de2744b1c",
+  "query": "重庆 范嬢嬢 春森路糯米团 学田湾正街59号 地址 搬迁",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我先查重庆“范嬢嬢”春森路糯米团和学田湾正街59号是否已搬迁。",
+  "sources": [
+    {
+      "url": "https://www.amap.com/place/B0FFL2QM8X",
+      "provider": "tavily",
+      "title": "范嬢嬢春森路糯米团- 重庆市渝中区",
+      "description": "春森路糯米团是一家中餐厅,地址为重庆市渝中区学田湾正街59号。电话:15723026183。地理坐标:29.559117,106.550366。"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/81394057",
+      "provider": "tavily",
+      "title": "糯米团| 学田湾的风景，是这一口糯米汇聚的四方街邻",
+      "description": "范嬢嬢的糯米团小摊，至今已经14个年头了。 2004年，随着化龙桥的拆迁，范嬢嬢搬迁至如今的春森路社区。同年，夫妻双双下岗，娃儿在"
+    },
+    {
+      "url": "https://www.trip.com/restaurant/china/chongqing/detail/restaurant-30983810",
+      "provider": "tavily",
+      "title": "范嬢嬢春森路糯米团- Chongqing",
+      "description": "No. 59 Xuetianwan Zheng Street, at the entrance to Chunsen Road CommunityOriginal. View on map. Address card. Save this restaurant"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.amap.com/place/B0FFL2QM8X",
+      "provider": "tavily",
+      "title": "范嬢嬢春森路糯米团- 重庆市渝中区",
+      "description": "春森路糯米团是一家中餐厅,地址为重庆市渝中区学田湾正街59号。电话:15723026183。地理坐标:29.559117,106.550366。"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/81394057",
+      "provider": "tavily",
+      "title": "糯米团| 学田湾的风景，是这一口糯米汇聚的四方街邻",
+      "description": "范嬢嬢的糯米团小摊，至今已经14个年头了。 2004年，随着化龙桥的拆迁，范嬢嬢搬迁至如今的春森路社区。同年，夫妻双双下岗，娃儿在"
+    },
+    {
+      "url": "https://www.trip.com/restaurant/china/chongqing/detail/restaurant-30983810",
+      "provider": "tavily",
+      "title": "范嬢嬢春森路糯米团- Chongqing",
+      "description": "No. 59 Xuetianwan Zheng Street, at the entrance to Chunsen Road CommunityOriginal. View on map. Address card. Save this restaurant"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 20056.55,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 26121.77,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 26121.79
+}

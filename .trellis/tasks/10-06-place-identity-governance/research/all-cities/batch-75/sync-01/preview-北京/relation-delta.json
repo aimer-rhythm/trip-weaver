@@ -1,0 +1,265 @@
+{
+  "city": "北京",
+  "before": 141,
+  "after": 140,
+  "directBefore": 36,
+  "directAfter": 36,
+  "changed": [
+    {
+      "from": "人民大会堂",
+      "to": "天安门广场",
+      "fromEntityId": "015e05c8be38ffb42eaf4238904907ce",
+      "toEntityId": "21152db5b05aff609cffa2bee47f16b4",
+      "fromRevision": 1,
+      "toRevision": 3,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 1037,
+          "textHash": "c1098c99b7009bd11669c648c5185ba948ffc1cf70c4b146e7ec1cee013d9175",
+          "from": {
+            "entityId": "015e05c8be38ffb42eaf4238904907ce",
+            "revision": 1,
+            "start": 262,
+            "end": 267,
+            "surface": "人民大会堂",
+            "mentions": [
+              {
+                "mentionId": 5135,
+                "inputHash": "5a3dac82e7c27468478c0d0c5d6d5f621304f3d326cf06eae12b5f4336ab1f88"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "21152db5b05aff609cffa2bee47f16b4",
+            "revision": 3,
+            "start": 295,
+            "end": 300,
+            "surface": "天安门广场",
+            "mentions": [
+              {
+                "mentionId": 5136,
+                "inputHash": "1475374924e57a10a23ee54786d16806d99d88d98ebb5a14f5395bc34d84917d"
+              }
+            ]
+          },
+          "quote": "人民大会堂。\n\t\n大会堂游览+休息大概一个小时多一点，之后出来就是天安门广场"
+        }
+      ]
+    },
+    {
+      "from": "天安门广场",
+      "to": "故宫博物院",
+      "fromEntityId": "21152db5b05aff609cffa2bee47f16b4",
+      "toEntityId": "b6ec2465aa41e71e52ccc69159af4d21",
+      "fromRevision": 3,
+      "toRevision": 1,
+      "strength": "direct",
+      "noteCount": 4,
+      "evidence": [
+        {
+          "noteId": 412,
+          "textHash": "73e7e87921cc60d3cbe2140e3d0b5499bf1856d9bf7a4e56681578a66b539e29",
+          "from": {
+            "entityId": "21152db5b05aff609cffa2bee47f16b4",
+            "revision": 3,
+            "start": 35,
+            "end": 38,
+            "surface": "天安门",
+            "mentions": [
+              {
+                "mentionId": 2343,
+                "inputHash": "237e28b651999851077edf353ddbad75243bc6e5aff3391f061ee6242b9a18b7"
+              },
+              {
+                "mentionId": 4332,
+                "inputHash": "7c28835a1e1d864f4cba26962647d14fa2bf23b00e5b1fe88b5568973ea5c4d0"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "b6ec2465aa41e71e52ccc69159af4d21",
+            "revision": 1,
+            "start": 40,
+            "end": 42,
+            "surface": "故宫",
+            "mentions": [
+              {
+                "mentionId": 2344,
+                "inputHash": "119979f3f125a3f1a6684b4578772ec4f46aa7abd8bcf0f9b9e352eae5a80852"
+              },
+              {
+                "mentionId": 4333,
+                "inputHash": "f570d3e807db76fd74a8ff3b4eb75a1777afa3d245a1ca5d7f18d5b9b6bbafe4"
+              },
+              {
+                "mentionId": 4334,
+                "inputHash": "f2d348f443f140ab76d936626cd71f46ee9b03fb942b4ba12707f7a1f7a3aa33"
+              }
+            ]
+          },
+          "quote": "天安门→ 故宫"
+        },
+        {
+          "noteId": 442,
+          "textHash": "8dcf6da6b3653bd2f81a54d1fa4813e386702fc24b81c9160b7ff7228eca1227",
+          "from": {
+            "entityId": "21152db5b05aff609cffa2bee47f16b4",
+            "revision": 3,
+            "start": 67,
+            "end": 72,
+            "surface": "天安门广场",
+            "mentions": [
+              {
+                "mentionId": 2618,
+                "inputHash": "b7c6a16703d42b9e4e4fd405f2ea44c10e2326c8019f24a20241b075141aed08"
+              },
+              {
+                "mentionId": 4367,
+                "inputHash": "9ea76fbf6028dd1967419efc1e74371a8d447644d764742a737a8f2b0cd7277d"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "b6ec2465aa41e71e52ccc69159af4d21",
+            "revision": 1,
+            "start": 75,
+            "end": 80,
+            "surface": "故宫博物院",
+            "mentions": [
+              {
+                "mentionId": 2619,
+                "inputHash": "5ce9eb019df70cb551b63b21faddc8f6f09e3c76c5a2f6b1e3794edb9a0cdfa3"
+              },
+              {
+                "mentionId": 4368,
+                "inputHash": "adecaab309a45d1ade14124cf22d9b57d840c572c379cf701008385cb4aea29d"
+              }
+            ]
+          },
+          "quote": "天安门广场 → 故宫博物院"
+        },
+        {
+          "noteId": 501,
+          "textHash": "a509c79c83c4a56a5f6ee407eb41b26df8f57a8d17b88c066370706b73441d6e",
+          "from": {
+            "entityId": "21152db5b05aff609cffa2bee47f16b4",
+            "revision": 3,
+            "start": 30,
+            "end": 35,
+            "surface": "天安门广场",
+            "mentions": [
+              {
+                "mentionId": 2793,
+                "inputHash": "6fcbeec165639fe773d6efc93a869f20ec8182642f322f5972c327a757e11e0d"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "b6ec2465aa41e71e52ccc69159af4d21",
+            "revision": 1,
+            "start": 36,
+            "end": 41,
+            "surface": "故宫博物院",
+            "mentions": [
+              {
+                "mentionId": 2794,
+                "inputHash": "fde522fbd32b633cfedff9c5306e1d65b34ec62d8136903e6a0a5d265ec07a24"
+              }
+            ]
+          },
+          "quote": "天安门广场→故宫博物院"
+        },
+        {
+          "noteId": 661,
+          "textHash": "1514da3ca3f4e6be148160a02ffe4d2957315032e515f4c421d8476ef8cfab6a",
+          "from": {
+            "entityId": "21152db5b05aff609cffa2bee47f16b4",
+            "revision": 3,
+            "start": 328,
+            "end": 333,
+            "surface": "天安门广场",
+            "mentions": [
+              {
+                "mentionId": 3180,
+                "inputHash": "7b04ae82d98eebb79052fe32ea155652463f668c19ca486018615e6f44aa08d3"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "b6ec2465aa41e71e52ccc69159af4d21",
+            "revision": 1,
+            "start": 334,
+            "end": 336,
+            "surface": "故宫",
+            "mentions": [
+              {
+                "mentionId": 3181,
+                "inputHash": "37384b83f9d253618f2217638712c676953b2f33020035590a662a72ed452040"
+              }
+            ]
+          },
+          "quote": "天安门广场→故宫"
+        }
+      ]
+    }
+  ],
+  "removed": [
+    {
+      "to": "故宫博物院",
+      "from": "天安门",
+      "evidence": [
+        {
+          "to": {
+            "end": 42,
+            "start": 40,
+            "surface": "故宫",
+            "entityId": "b6ec2465aa41e71e52ccc69159af4d21",
+            "mentions": [
+              {
+                "inputHash": "119979f3f125a3f1a6684b4578772ec4f46aa7abd8bcf0f9b9e352eae5a80852",
+                "mentionId": 2344
+              },
+              {
+                "inputHash": "f570d3e807db76fd74a8ff3b4eb75a1777afa3d245a1ca5d7f18d5b9b6bbafe4",
+                "mentionId": 4333
+              },
+              {
+                "inputHash": "f2d348f443f140ab76d936626cd71f46ee9b03fb942b4ba12707f7a1f7a3aa33",
+                "mentionId": 4334
+              }
+            ],
+            "revision": 1
+          },
+          "from": {
+            "end": 38,
+            "start": 35,
+            "surface": "天安门",
+            "entityId": "298e600416cbc4f85119932e8a3c966c",
+            "mentions": [
+              {
+                "inputHash": "237e28b651999851077edf353ddbad75243bc6e5aff3391f061ee6242b9a18b7",
+                "mentionId": 2343
+              },
+              {
+                "inputHash": "7c28835a1e1d864f4cba26962647d14fa2bf23b00e5b1fe88b5568973ea5c4d0",
+                "mentionId": 4332
+              }
+            ],
+            "revision": 2
+          },
+          "quote": "天安门→ 故宫",
+          "noteId": 412,
+          "textHash": "73e7e87921cc60d3cbe2140e3d0b5499bf1856d9bf7a4e56681578a66b539e29"
+        }
+      ],
+      "strength": "weak",
+      "noteCount": 1,
+      "toEntityId": "b6ec2465aa41e71e52ccc69159af4d21",
+      "toRevision": 1,
+      "fromEntityId": "298e600416cbc4f85119932e8a3c966c",
+      "fromRevision": 2
+    }
+  ]
+}

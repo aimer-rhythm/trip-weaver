@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "8ab6ce0193b8",
+  "query": "济南 \"VILLA SHAKA\" \"BLUE DUCK\" 骨董屋 地址 经三路",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来帮你查济南经三路附近 “VILLA SHAKA”“BLUE DUCK” 和骨董屋的地址。先从公开信息里核对这几处店名和位置。",
+  "sources": [
+    {
+      "url": "https://map.baidu.com/place/jinan_1825/1/8",
+      "provider": "tavily",
+      "title": "百度地图",
+      "description": "Title: 百度地图\n#### 瑞幸咖啡(祥泰广场店). #### PD咖啡(上新街店). #### VILLA SHAKA(纬四路店). #### 戈多咖啡Godot cafe(经三路店). #### 聿见咖啡工作室. #### 瑞幸咖啡(伟东新都店). #### 真锅咖啡(经十路店). #### 量子咖啡茶社. #### Ponyo Coffee. #### 下先一平·Jewelry&Coffee(上新街店)."
+    },
+    {
+      "url": "http://m.dianping.com/shop/726358105?msource=applemaps",
+      "provider": "tavily",
+      "title": "VILLA SHAKA 为了沙卡(纬四路店)",
+      "description": "为您提供[VILLA SHAKA 为了沙卡(纬四路店)]的人均消费、品牌简介、店铺图片、折扣优惠、用户口碑等信息，[VILLA SHAKA 为了沙卡(纬四路店)]好不好，"
+    },
+    {
+      "url": "https://www.sina.cn/news/detail/5291901383082172.html",
+      "provider": "tavily",
+      "title": "VILLA SHAKA空间呈现_新浪新闻",
+      "description": "Title: VILLA SHAKA空间呈现_新浪新闻\n汽车 本地生活 旅游 数码 娱乐 影视 体育 财经 国际 军事. 重新勾勒着城市第三空间的模样 http://t.cn/AXLiitOX ​."
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://map.baidu.com/place/jinan_1825/1/8",
+      "provider": "tavily",
+      "title": "百度地图",
+      "description": "Title: 百度地图\n#### 瑞幸咖啡(祥泰广场店). #### PD咖啡(上新街店). #### VILLA SHAKA(纬四路店). #### 戈多咖啡Godot cafe(经三路店). #### 聿见咖啡工作室. #### 瑞幸咖啡(伟东新都店). #### 真锅咖啡(经十路店). #### 量子咖啡茶社. #### Ponyo Coffee. #### 下先一平·Jewelry&Coffee(上新街店)."
+    },
+    {
+      "url": "http://m.dianping.com/shop/726358105?msource=applemaps",
+      "provider": "tavily",
+      "title": "VILLA SHAKA 为了沙卡(纬四路店)",
+      "description": "为您提供[VILLA SHAKA 为了沙卡(纬四路店)]的人均消费、品牌简介、店铺图片、折扣优惠、用户口碑等信息，[VILLA SHAKA 为了沙卡(纬四路店)]好不好，"
+    },
+    {
+      "url": "https://www.sina.cn/news/detail/5291901383082172.html",
+      "provider": "tavily",
+      "title": "VILLA SHAKA空间呈现_新浪新闻",
+      "description": "Title: VILLA SHAKA空间呈现_新浪新闻\n汽车 本地生活 旅游 数码 娱乐 影视 体育 财经 国际 军事. 重新勾勒着城市第三空间的模样 http://t.cn/AXLiitOX ​."
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4309.08,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 10132.11,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 10132.14
+}

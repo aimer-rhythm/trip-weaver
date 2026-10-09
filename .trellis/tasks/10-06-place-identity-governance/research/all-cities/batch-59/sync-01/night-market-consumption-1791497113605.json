@@ -1,0 +1,63 @@
+{
+  "batch": 59,
+  "isolated": true,
+  "synthetic": false,
+  "fullCityPlaces": 228,
+  "actualPlaceFacts": true,
+  "priorGovernedFactsPreserved": true,
+  "confirmedIdentityPreserved": true,
+  "confirmedContentAndEvidencePreserved": true,
+  "negativeConfirmed": 3,
+  "positiveConfirmed": 1,
+  "staleNavigationRemoved": true,
+  "coordinatesCleared": 0,
+  "coordinatesPreservedNotNewlyVerified": true,
+  "categoriesCorrected": 0,
+  "addressesCorrected": 1,
+  "independentIdentityPreserved": true,
+  "media": [
+    {
+      "name": "老商埠",
+      "count": 3,
+      "digest": "2c29d7b93a412f38eb21d6ce3ece4f175e0576dee87bee3a179d5bb095868603"
+    },
+    {
+      "name": "经三路",
+      "count": 1,
+      "digest": "2143dbc77997beeaf461e337c7f018783583096ae8e60dac777fba41cdbefddd"
+    },
+    {
+      "name": "老舍故居",
+      "count": 2,
+      "digest": "5b29595c5b0ea1e07d65dc896d5f79992af0e3a406b6ebe06a67289a9ed96b9c"
+    }
+  ],
+  "canonicalized": [
+    {
+      "input": "老舍故居",
+      "canonicalName": "老舍故居",
+      "photos": 2
+    },
+    {
+      "input": "济南老舍纪念馆",
+      "canonicalName": "老舍故居",
+      "photos": 2
+    },
+    {
+      "input": "老舍纪念馆",
+      "canonicalName": "老舍故居",
+      "photos": 2
+    }
+  ],
+  "independentSourceDigestUnchanged": true,
+  "independentSources": 10,
+  "eligibleIndependentSources": 0,
+  "mockEnqueueCalls": {
+    "before": 1,
+    "after": 0
+  },
+  "actualEnqueues": 0,
+  "enqueueMeaning": "市场新旧名称实际返回null，scope抑制旧补图回退，mock1→0；10个独立来源均不eligible，未认领图片。旧3/1/2图库保持，真实队列未写入。",
+  "imageComparison": "deferred_by_user",
+  "failures": []
+}

@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "fc04672c087a",
+  "query": "亮亮拉面 经十一路 地址 济南 老店",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查济南经十一路“亮亮拉面”老店的地址。",
+  "sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E4%BA%AE%E4%BA%AE%E6%8B%89%E9%9D%A2",
+      "provider": "tavily",
+      "title": "亮亮拉面",
+      "description": "创始人罗亮1971年生于济南，1986年初中毕业后赴兰州学习拉面技术。1987年11月17日，他在济南市西市场小纬十一路善德里1号开设了名为“亮亮小吃店”的拉面摊，面积15平方"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E4%BA%AE%E4%BA%AE%E9%9D%A2%E9%A6%86%EF%BC%88%E7%BB%8F%E5%85%AD%E8%B7%AF%E5%BA%97%EF%BC%89/14255157",
+      "provider": "tavily",
+      "title": "亮亮面馆（经六路店）",
+      "description": "1987年11月17日，罗亮在济南西市场小纬11路善德里1号开设首家门店“亮亮小吃店”，主营肘汤拉面。 4. 1989年，因原址经营困难，“亮亮小吃店”搬迁至英雄山早市设摊。为应对"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E4%BA%AE%E4%BA%AE%E6%8B%89%E9%9D%A2",
+      "provider": "tavily",
+      "title": "亮亮拉面",
+      "description": "创始人罗亮1971年生于济南，1986年初中毕业后赴兰州学习拉面技术。1987年11月17日，他在济南市西市场小纬十一路善德里1号开设了名为“亮亮小吃店”的拉面摊，面积15平方"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E4%BA%AE%E4%BA%AE%E9%9D%A2%E9%A6%86%EF%BC%88%E7%BB%8F%E5%85%AD%E8%B7%AF%E5%BA%97%EF%BC%89/14255157",
+      "provider": "tavily",
+      "title": "亮亮面馆（经六路店）",
+      "description": "1987年11月17日，罗亮在济南西市场小纬11路善德里1号开设首家门店“亮亮小吃店”，主营肘汤拉面。 4. 1989年，因原址经营困难，“亮亮小吃店”搬迁至英雄山早市设摊。为应对"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 5140.05,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 9368.97,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 9368.99
+}

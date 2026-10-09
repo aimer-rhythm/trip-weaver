@@ -1,0 +1,170 @@
+{
+  "readOnly": true,
+  "at": "2026-10-08T17:47:56.820Z",
+  "foundAfterBatch": 43,
+  "applied": false,
+  "originalSourceFile": "priority-cities/济南/run-1791385235272324900/sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "currentExport": "all-cities/batch-43/sync-01/xhs-places-济南.json",
+  "currentExportSha256": "bcdc0fa3122e46ed984eab5947901f0812346df6156eede9aa0c450c85d2679e",
+  "findings": [
+    {
+      "entityId": "15ad3a8280476165635672cb0e43117a",
+      "name": "解放阁",
+      "sourceId": 5360,
+      "mentionIds": [
+        11337,
+        12565
+      ],
+      "noteId": 2545,
+      "status": "unapplied_shared_duration_findings",
+      "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+      "originalMinutes": 60,
+      "currentTypicalMinutes": 30,
+      "additionalConcern": null,
+      "evidence": "../priority-cities/济南/shared-route-duration-findings-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "name": "曲水亭街",
+      "sourceId": 5352,
+      "mentionIds": [
+        11340,
+        12568
+      ],
+      "noteId": 2545,
+      "status": "unapplied_shared_duration_findings",
+      "quote": "▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店",
+      "originalMinutes": 90,
+      "currentTypicalMinutes": 360,
+      "additionalConcern": "当前360分钟旧缓存尚须全量追溯",
+      "evidence": "../priority-cities/济南/shared-route-duration-findings-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "b58d15060ff3828b071f950487e487db",
+      "name": "百花洲",
+      "sourceId": 5364,
+      "mentionIds": [
+        11341,
+        12569
+      ],
+      "noteId": 2545,
+      "status": "unapplied_shared_duration_findings",
+      "quote": "▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店",
+      "originalMinutes": 90,
+      "currentTypicalMinutes": 60,
+      "additionalConcern": null,
+      "evidence": "../priority-cities/济南/shared-route-duration-findings-01.json",
+      "fullReviewPassed": false
+    }
+  ],
+  "mentions": [
+    {
+      "id": 11337,
+      "raw_note_id": 2545,
+      "name": "解放阁",
+      "reason": "与黑虎泉相邻，免费，游玩1小时",
+      "evidence_text": "黑虎泉+解放阁",
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60
+      },
+      "inputHash": "b446fa60865563c9fd19037ed7ae13fcb112be0cd6059bb028f2138be1ab3047"
+    },
+    {
+      "id": 11340,
+      "raw_note_id": 2545,
+      "name": "曲水亭街",
+      "reason": "老济南街巷，有很多有意思的小店，游玩1.5小时",
+      "evidence_text": "老济南街巷，有很多有意思的小店",
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 90,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "老济南街巷",
+              "quote": "老济南街巷"
+            }
+          ]
+        }
+      },
+      "inputHash": "e24c92ba7fd4d64cf76abbdc5044bdc0c4572d5d9f8aabdd79936009271f560f"
+    },
+    {
+      "id": 11341,
+      "raw_note_id": 2545,
+      "name": "百花洲",
+      "reason": "老济南街巷，有很多有意思的小店，游玩1.5小时",
+      "evidence_text": "老济南街巷，有很多有意思的小店",
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 90,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "老济南街巷",
+              "quote": "老济南街巷"
+            }
+          ]
+        }
+      },
+      "inputHash": "6c800a95a47bc955948c4ccea5d19ccd1dbdee1d168ac945f13f5a77beec3d18"
+    },
+    {
+      "id": 12565,
+      "raw_note_id": 2545,
+      "name": "解放阁",
+      "reason": "与黑虎泉相邻，免费，游玩1小时",
+      "evidence_text": "黑虎泉+解放阁",
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 60
+      },
+      "inputHash": "1eee3a898224407b5c29c9fe2dbbbbb6fbc573395d3a43cf431d0f33182474b8"
+    },
+    {
+      "id": 12568,
+      "raw_note_id": 2545,
+      "name": "曲水亭街",
+      "reason": "老济南街巷，有很多有意思的小店，游玩1.5小时",
+      "evidence_text": "老济南街巷，有很多有意思的小店",
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 90,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "老济南街巷，有很多有意思的小店",
+              "quote": "老济南街巷，有很多有意思的小店"
+            }
+          ]
+        }
+      },
+      "inputHash": "f4b8a5f59c4f73caa69ec21e09d5f1bee26f2e4fb008f5f6e2ca11fb30dae4da"
+    },
+    {
+      "id": 12569,
+      "raw_note_id": 2545,
+      "name": "百花洲",
+      "reason": "与曲水亭街相连，老济南街巷，游玩1.5小时",
+      "evidence_text": "曲水亭街+百花洲",
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 90
+      },
+      "inputHash": "dead72de816afc632c2d69763468838b425d49efec05111d03cd3968f34f1e33"
+    }
+  ],
+  "note": {
+    "id": 2545,
+    "title": "济南citywalk🍃1-2日经典游玩路线live",
+    "desc": "▪️五龙潭\n游玩1.5h｜免费，建议从东门进，南门出\n▪️趵突泉\n游玩2h｜门票40元 ，半价20元，学生免费\n五龙潭南门出可以直接从趵突泉北门进\n▪️泉城广场\n游玩0.5h｜免费\n▪️宽厚里美食街\n游玩1h｜吃喝休整\n▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水\n▪️珍珠泉\n游玩1h｜免费\n▪️芙蓉街\n游玩0.5h｜吃喝休整\n▪️曲水亭街+百花洲\n游玩1.5h｜老济南街巷，有很多有意思的小店\n▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景\n-\n这是我走下来很舒服的一条线\n可以选择任意一个地点作为开头\n路线可以根据行程增减\n这一圈不走回头路\n欢迎随时提问～\n#毕业旅行第一站[话题]##济南[话题]# #济南旅游[话题]# #趵突泉[话题]# #大明湖[话题]# #旅游攻略[话题]# #城市情报员[话题]# #济南拍照[话题]# #iPhone[话题]# #live图[话题]#"
+  },
+  "imageComparison": "deferred_by_user"
+}

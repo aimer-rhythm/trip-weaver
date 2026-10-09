@@ -1,0 +1,1483 @@
+[
+  {
+    "key": "all-cities-20261006-batch-12-001",
+    "city": "广州",
+    "entityId": "1e2096d3f4c1a5b8e6cad44e3cda80ef",
+    "mergeEntityIds": [
+      "f7ac449876a51264e23fec0a5ecd38bf"
+    ],
+    "canonicalName": "荔湾湖公园",
+    "expectedRevisions": {
+      "1e2096d3f4c1a5b8e6cad44e3cda80ef": 1,
+      "f7ac449876a51264e23fec0a5ecd38bf": 1
+    },
+    "overrides": {
+      "lat": 23.121297,
+      "lng": 113.231472,
+      "address": "广东省广州市荔湾区荔湾湖公园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          253
+        ],
+        "conclusion": "7242荔湾湖描述亭台倒影、摇橹船的夜游，8128以荔湾湖公园介绍同一园林并在费用处简称荔湾湖；两者是该游览公园的简称与全称，不另将水上花市活动主体并入。",
+        "sourcePlaceIds": [
+          "3270",
+          "3434"
+        ],
+        "mentions": [
+          {
+            "id": "8128",
+            "name": "荔湾湖公园",
+            "quote": "荔湾渔唱",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab342ba000000001303ebd6"
+          },
+          {
+            "id": "7951",
+            "name": "荔湾湖公园",
+            "quote": "最好早起8点前冲",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a297877000000001700b8e1"
+          },
+          {
+            "id": "7641",
+            "name": "荔湾湖公园",
+            "quote": "感受广州慢生活",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0ae4ce0000000036000d41"
+          },
+          {
+            "id": "7550",
+            "name": "荔湾湖公园",
+            "quote": "旁边荔湾湖公园湖景也超绝",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f72bbe000000003701f298"
+          },
+          {
+            "id": "7242",
+            "name": "荔湾湖",
+            "quote": "岭南亭台楼阁倒映在碧波上",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a66c9b10000000001003fe0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3270",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.121297,
+          "lng": 113.231472,
+          "address": "广东省广州市荔湾区荔湾湖公园",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.121297,
+        "lng": 113.231472,
+        "address": "广东省广州市荔湾区荔湾湖公园",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7242,
+          8128,
+          7951
+        ],
+        "conclusion": "7242荔湾湖描述亭台倒影、摇橹船的夜游，8128以荔湾湖公园介绍同一园林并在费用处简称荔湾湖；两者是该游览公园的简称与全称，不另将水上花市活动主体并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-002",
+    "city": "广州",
+    "entityId": "a5c9fa9ff56611c74cfbde8e1a4c7b35",
+    "mergeEntityIds": [
+      "0f4c52dc411edd47559c70038446098c",
+      "55bd3b38fb56b0d7db96f7efdbb36d31"
+    ],
+    "canonicalName": "海心沙亚运公园",
+    "expectedRevisions": {
+      "0f4c52dc411edd47559c70038446098c": 1,
+      "55bd3b38fb56b0d7db96f7efdbb36d31": 1,
+      "a5c9fa9ff56611c74cfbde8e1a4c7b35": 1
+    },
+    "overrides": {
+      "lat": 23.111694,
+      "lng": 113.325151,
+      "address": "广东省广州市天河区海心沙亚运公园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          259,
+          274
+        ],
+        "conclusion": "7648的海心沙明确花城广场至广州塔中轴游线，8026海心沙公园明确APM海心沙站、亚运会馆及江边，8145亚运公园同为亚运开幕式舞台旁海心沙西区。三个主体均是天河海心沙公园；排除同名南沙岛及地铁站。泛名旧定位在南沙、公园简称旧点为公交站，均由已明确亚运公园主体定位替代；8131自身把北岸公园与南岸阅江西路混写，不采信其地址。",
+        "sourcePlaceIds": [
+          "3297",
+          "3593",
+          "3384"
+        ],
+        "mentions": [
+          {
+            "id": "7919",
+            "name": "海心沙",
+            "quote": "海心沙看灯光秀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a073a870000000035038354"
+          },
+          {
+            "id": "7648",
+            "name": "海心沙",
+            "quote": "广州塔最佳拍摄机位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a0ae4ce0000000036000d41"
+          },
+          {
+            "id": "7367",
+            "name": "海心沙",
+            "quote": "新中轴上的城市尺度",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fed30000000000803e644"
+          },
+          {
+            "id": "7236",
+            "name": "海心沙",
+            "quote": "绝佳机位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e6c8a200000000220279f8"
+          },
+          {
+            "id": "8148",
+            "name": "海心沙公园",
+            "quote": "观赏跨年灯光秀的黄金C位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69489d8f000000001e039ac0"
+          },
+          {
+            "id": "8026",
+            "name": "海心沙公园",
+            "quote": "打车到海心沙公园西门",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ee566b000000003501ecab"
+          },
+          {
+            "id": "7588",
+            "name": "海心沙公园",
+            "quote": "拍摄广州塔全貌的绝佳地点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/683859450000000022034b5c"
+          },
+          {
+            "id": "8145",
+            "name": "海心沙亚运公园",
+            "quote": "直接导航海心沙西区码头",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68dfed74000000000302fe8f"
+          },
+          {
+            "id": "8131",
+            "name": "海心沙亚运公园",
+            "quote": "打车到海心沙亚运公园（西北门）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69af117b000000001a0277fa"
+          },
+          {
+            "id": "7541",
+            "name": "海心沙亚运公园",
+            "quote": "广州城市中轴线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3b7820000000026022b0c"
+          },
+          {
+            "id": "7429",
+            "name": "海心沙亚运公园",
+            "quote": "海心沙亚运公园→广州塔",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8797b0000000002a011514"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3384",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.111694,
+          "lng": 113.325151,
+          "address": "广东省广州市天河区海心沙亚运公园",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.111694,
+        "lng": 113.325151,
+        "address": "广东省广州市天河区海心沙亚运公园",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7648,
+          7919,
+          8026,
+          8145,
+          8148,
+          8131
+        ],
+        "conclusion": "7648的海心沙明确花城广场至广州塔中轴游线，8026海心沙公园明确APM海心沙站、亚运会馆及江边，8145亚运公园同为亚运开幕式舞台旁海心沙西区。三个主体均是天河海心沙公园；排除同名南沙岛及地铁站。泛名旧定位在南沙、公园简称旧点为公交站，均由已明确亚运公园主体定位替代；8131自身把北岸公园与南岸阅江西路混写，不采信其地址。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-003",
+    "city": "广州",
+    "entityId": "52f2f9f46361dc25696e2653b120734f",
+    "mergeEntityIds": [
+      "3b4f8ba25d514bc6132097fbb1982e6b"
+    ],
+    "canonicalName": "兰圃公园",
+    "expectedRevisions": {
+      "3b4f8ba25d514bc6132097fbb1982e6b": 1,
+      "52f2f9f46361dc25696e2653b120734f": 1
+    },
+    "overrides": {
+      "lat": 23.143736,
+      "lng": 113.260101,
+      "address": "广东省广州市兰圃",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          263
+        ],
+        "conclusion": "7130明确越秀区解放北路兰圃公园、越秀公园站，8239的兰圃也在越秀公园旁并与象岗山组成一段路线；7811同指种植兰花的岭南园林，简称与公园全称同体。",
+        "sourcePlaceIds": [
+          "3314",
+          "3382"
+        ],
+        "mentions": [
+          {
+            "id": "8239",
+            "name": "兰圃",
+            "quote": "绿野仙踪",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ba91db000000001a02c86a"
+          },
+          {
+            "id": "7811",
+            "name": "兰圃",
+            "quote": "强烈安利的小众景点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eee4d7000000001f004b8c"
+          },
+          {
+            "id": "7469",
+            "name": "兰圃",
+            "quote": "一到下雨天，这里一下子变成了烟雨江南",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f1d01b00000000380349bd"
+          },
+          {
+            "id": "7391",
+            "name": "兰圃",
+            "quote": "曲径通幽，走在石板桥上仿佛穿越时光",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6954eb80000000001e0361da"
+          },
+          {
+            "id": "7130",
+            "name": "兰圃公园",
+            "quote": "人少静谧，氛围感直接拉满",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a104a7200000000080027b2"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3382",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.143736,
+          "lng": 113.260101,
+          "address": "广东省广州市兰圃",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.143736,
+        "lng": 113.260101,
+        "address": "广东省广州市兰圃",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7130,
+          8239,
+          7811
+        ],
+        "conclusion": "7130明确越秀区解放北路兰圃公园、越秀公园站，8239的兰圃也在越秀公园旁并与象岗山组成一段路线；7811同指种植兰花的岭南园林，简称与公园全称同体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-004",
+    "city": "广州",
+    "entityId": "deac20c574cedd75732cd245698311eb",
+    "mergeEntityIds": [
+      "02b452c436159786c175b96b59bbb2ce"
+    ],
+    "canonicalName": "黄埔军校旧址纪念馆",
+    "expectedRevisions": {
+      "02b452c436159786c175b96b59bbb2ce": 1,
+      "deac20c574cedd75732cd245698311eb": 1
+    },
+    "overrides": {
+      "lat": 23.085187,
+      "lng": 113.426898,
+      "address": "广东省广州市黄埔区黄埔军校旧址纪念馆(东南门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          267
+        ],
+        "conclusion": "7058把黄埔军校旧址与长洲岛、辛亥革命纪念馆串联，8040使用黄埔军校旧址纪念馆全称；两条指长洲岛旧校址游览主体，没有另指独立子建筑。旧简称坐标落黄埔北部远端，采用岛上现纪念馆入口参考定位，不平均坐标。",
+        "sourcePlaceIds": [
+          "3330",
+          "3854"
+        ],
+        "mentions": [
+          {
+            "id": "7058",
+            "name": "黄埔军校旧址",
+            "quote": "云台花园 → 黄埔军校旧址",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4a0b950000000008025827"
+          },
+          {
+            "id": "8040",
+            "name": "黄埔军校旧址纪念馆",
+            "quote": "黄埔军校旧址纪念馆（推荐）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8b231c000000001602b763"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3854",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.085187,
+          "lng": 113.426898,
+          "address": "广东省广州市黄埔区黄埔军校旧址纪念馆(东南门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.085187,
+        "lng": 113.426898,
+        "address": "广东省广州市黄埔区黄埔军校旧址纪念馆(东南门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7058,
+          8040
+        ],
+        "conclusion": "7058把黄埔军校旧址与长洲岛、辛亥革命纪念馆串联，8040使用黄埔军校旧址纪念馆全称；两条指长洲岛旧校址游览主体，没有另指独立子建筑。旧简称坐标落黄埔北部远端，采用岛上现纪念馆入口参考定位，不平均坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-005",
+    "city": "广州",
+    "entityId": "2529bae08f1b47a58a365e5bed9456a4",
+    "mergeEntityIds": [
+      "4c73c78f9b0daab3f3773306f9f2df65",
+      "60574cd04ad7eddb68c8d887a06ea304"
+    ],
+    "canonicalName": "长隆野生动物世界",
+    "expectedRevisions": {
+      "2529bae08f1b47a58a365e5bed9456a4": 1,
+      "4c73c78f9b0daab3f3773306f9f2df65": 1,
+      "60574cd04ad7eddb68c8d887a06ea304": 1
+    },
+    "overrides": {
+      "lat": 23.008183,
+      "lng": 113.313239,
+      "address": "广东省广州市番禺区长隆野生动物世界(北门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          268,
+          287
+        ],
+        "conclusion": "8058、8121及7753均描述同一番禺动物园的小火车、透明缆车、青龙山、百虎山和熊猫园。广州前缀和动物园/动物世界称法不改变园区；不合并欢乐世界、停车场或整个度假区。",
+        "sourcePlaceIds": [
+          "3334",
+          "3561",
+          "3700"
+        ],
+        "mentions": [
+          {
+            "id": "8146",
+            "name": "长隆野生动物世界",
+            "quote": "去之前看完少踩坑！！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3122aa000000000702be51"
+          },
+          {
+            "id": "8058",
+            "name": "长隆野生动物世界",
+            "quote": "北门直冲免费小火车，坐右侧，动物更多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a60bf5b000000001101c0e9"
+          },
+          {
+            "id": "8038",
+            "name": "长隆野生动物世界",
+            "quote": "缆车看到的动物不如坐小火车的多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8b231c000000001602b763"
+          },
+          {
+            "id": "7901",
+            "name": "长隆野生动物世界",
+            "quote": "小火车—熊猫园—大象园—喂长颈鹿",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d23e62000000001a0291ff"
+          },
+          {
+            "id": "8121",
+            "name": "广州长隆野生动物世界",
+            "quote": "绝对是国内动物园的天花板",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c215d0000000002003c00"
+          },
+          {
+            "id": "8117",
+            "name": "广州长隆野生动物世界",
+            "quote": "没有代步车租，全程靠🦵",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a74b17b000000003400e6e7"
+          },
+          {
+            "id": "7619",
+            "name": "广州长隆野生动物世界",
+            "quote": "长颈鹿会把头伸进车窗，斑马就在身边散步",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695f81b7000000000b012ed8"
+          },
+          {
+            "id": "7608",
+            "name": "广州长隆野生动物世界",
+            "quote": "精华是小火车和缆车",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9bbc29000000000d024345"
+          },
+          {
+            "id": "7753",
+            "name": "广州长隆野生动物园",
+            "quote": "北门进，南门出！全程不走回头路",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a582646000000001302f493"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3334",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "主源北门位于目标动物园边界，可作该园参考入口定位；另外两源的长隆公交站不代表动物园。不把北门改为同义实体，也不沿用度假区公交点。",
+        "original": {
+          "lat": 23.008183,
+          "lng": 113.313239,
+          "address": "广东省广州市番禺区长隆野生动物世界(北门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.008183,
+        "lng": 113.313239,
+        "address": "广东省广州市番禺区长隆野生动物世界(北门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          8058,
+          8121,
+          8117,
+          7753
+        ],
+        "conclusion": "8058、8121及7753均描述同一番禺动物园的小火车、透明缆车、青龙山、百虎山和熊猫园。广州前缀和动物园/动物世界称法不改变园区；不合并欢乐世界、停车场或整个度假区。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-006",
+    "city": "广州",
+    "entityId": "f0a8e83eb6747bd4294e5af5ba9958e5",
+    "mergeEntityIds": [
+      "36793de60f8a0a669553512293bd0a00"
+    ],
+    "canonicalName": "长隆欢乐世界",
+    "expectedRevisions": {
+      "36793de60f8a0a669553512293bd0a00": 1,
+      "f0a8e83eb6747bd4294e5af5ba9958e5": 1
+    },
+    "overrides": {
+      "lat": 22.999065,
+      "lng": 113.329601,
+      "address": "广东省广州市番禺区长隆欢乐世界",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          269
+        ],
+        "conclusion": "7575明确汉溪长隆站的欢乐世界，8060列同园超级海盗船、激流、弹射过山车，广州前缀仅消歧城市；与野生动物世界和水上乐园分别保持独立。",
+        "sourcePlaceIds": [
+          "3584",
+          "3335"
+        ],
+        "mentions": [
+          {
+            "id": "7576",
+            "name": "广州长隆欢乐世界",
+            "quote": "垂直/十环过山车已拆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a55e69000000001a026dfd"
+          },
+          {
+            "id": "7575",
+            "name": "广州长隆欢乐世界",
+            "quote": "工作日双人票仅380元，性价比拉满",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a55e69000000001a026dfd"
+          },
+          {
+            "id": "8152",
+            "name": "长隆欢乐世界",
+            "quote": "整点会有绚烂烟花",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69489d8f000000001e039ac0"
+          },
+          {
+            "id": "8060",
+            "name": "长隆欢乐世界",
+            "quote": "开园直冲长隆欢乐世界！超级海盗船→超级激流→弹射过山车",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a60bf5b000000001101c0e9"
+          },
+          {
+            "id": "7935",
+            "name": "长隆欢乐世界",
+            "quote": "跨年宝地都能满足你",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693ead6c000000000d038de5"
+          },
+          {
+            "id": "7819",
+            "name": "长隆欢乐世界",
+            "quote": "亲身体验者，几个刺激好玩的项目真的让我忍不住二刷！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69af772c000000001a02931c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3335",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 22.999065,
+          "lng": 113.329601,
+          "address": "广东省广州市番禺区长隆欢乐世界",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 22.999065,
+        "lng": 113.329601,
+        "address": "广东省广州市番禺区长隆欢乐世界",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7575,
+          8060
+        ],
+        "conclusion": "7575明确汉溪长隆站的欢乐世界，8060列同园超级海盗船、激流、弹射过山车，广州前缀仅消歧城市；与野生动物世界和水上乐园分别保持独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-007",
+    "city": "广州",
+    "entityId": "b737b4e02b4263e79fa7b98d8bea16f4",
+    "mergeEntityIds": [
+      "aef0e4c632730acdaafa26297bb630b3"
+    ],
+    "canonicalName": "中山大学广州南校区",
+    "expectedRevisions": {
+      "aef0e4c632730acdaafa26297bb630b3": 1,
+      "b737b4e02b4263e79fa7b98d8bea16f4": 1
+    },
+    "overrides": {
+      "lat": 23.094742,
+      "lng": 113.303943,
+      "address": "广东省广州市海珠区中山大学",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          271
+        ],
+        "conclusion": "7120正文用中山大学广州南校区，路线又简称中山大学南校区；7929同为红砖古树、南北门贯通的海珠校园。只并这两个明确校区名称，不把没有明确校区的中山大学泛称或学一食堂并入。",
+        "sourcePlaceIds": [
+          "3780",
+          "3376"
+        ],
+        "mentions": [
+          {
+            "id": "7929",
+            "name": "中山大学南校区",
+            "quote": "中山大学最需要提前预约才能进校门哦",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699272eb000000000c036991"
+          },
+          {
+            "id": "7120",
+            "name": "中山大学广州南校区",
+            "quote": "百年学府的书香，是古树与红砖写成的诗",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7008920000000005032bc5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3376",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.094742,
+          "lng": 113.303943,
+          "address": "广东省广州市海珠区中山大学",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.094742,
+        "lng": 113.303943,
+        "address": "广东省广州市海珠区中山大学",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7120,
+          7929
+        ],
+        "conclusion": "7120正文用中山大学广州南校区，路线又简称中山大学南校区；7929同为红砖古树、南北门贯通的海珠校园。只并这两个明确校区名称，不把没有明确校区的中山大学泛称或学一食堂并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-008",
+    "city": "广州",
+    "entityId": "d7fa3311c5c8c2e70cdffe29062bedfc",
+    "mergeEntityIds": [
+      "5504e7902c4038a3f539a7701ff516b3"
+    ],
+    "canonicalName": "白鹅潭大湾区艺术中心",
+    "expectedRevisions": {
+      "5504e7902c4038a3f539a7701ff516b3": 1,
+      "d7fa3311c5c8c2e70cdffe29062bedfc": 1
+    },
+    "overrides": {
+      "lat": 23.100662,
+      "lng": 113.24023,
+      "address": "广东省广州市荔湾区白鹅潭大湾区艺术中心",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          275
+        ],
+        "conclusion": "7141湾区艺术中心明确芳村江边巨轮建筑、广东美术馆和岭南非遗馆三馆合一，7452及7928大湾区名称同是三馆和白鹅潭轮渡旁建筑。少大字是名称变体；不吞并码头、单馆或二楼观景平台。",
+        "sourcePlaceIds": [
+          "3392",
+          "3527"
+        ],
+        "mentions": [
+          {
+            "id": "7141",
+            "name": "白鹅潭湾区艺术中心",
+            "quote": "免费免预约！认真逛可以逛一天！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b2cd000000000015021242"
+          },
+          {
+            "id": "7928",
+            "name": "白鹅潭大湾区艺术中心",
+            "quote": "下船就是新开的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699272eb000000000c036991"
+          },
+          {
+            "id": "7452",
+            "name": "白鹅潭大湾区艺术中心",
+            "quote": "安安静静看展",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a79cff1000000000503046a"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3527",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.100662,
+          "lng": 113.24023,
+          "address": "广东省广州市荔湾区白鹅潭大湾区艺术中心",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.100662,
+        "lng": 113.24023,
+        "address": "广东省广州市荔湾区白鹅潭大湾区艺术中心",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7141,
+          7452,
+          7928
+        ],
+        "conclusion": "7141湾区艺术中心明确芳村江边巨轮建筑、广东美术馆和岭南非遗馆三馆合一，7452及7928大湾区名称同是三馆和白鹅潭轮渡旁建筑。少大字是名称变体；不吞并码头、单馆或二楼观景平台。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-009",
+    "city": "广州",
+    "entityId": "4d9587153c79f3e9a465841617ce1260",
+    "mergeEntityIds": [
+      "d2b6e79d067aa4527d74d0ac5686a4ec"
+    ],
+    "canonicalName": "阿里中心北塔",
+    "expectedRevisions": {
+      "4d9587153c79f3e9a465841617ce1260": 1,
+      "d2b6e79d067aa4527d74d0ac5686a4ec": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "磨碟沙至琶醍江边步行段",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          281
+        ],
+        "conclusion": "7311和7594两篇均给磨碟沙H口、阿里北塔、琶醍、猎德大桥、广州塔的完全一致路线，两个抽取名称指同一北塔。两旧地图却落南沙北塔，明确错区，成对清空，待可信建筑坐标，不借磨碟沙站定位。",
+        "sourcePlaceIds": [
+          "3468",
+          "3597"
+        ],
+        "mentions": [
+          {
+            "id": "7311",
+            "name": "阿里中心北塔",
+            "quote": "阿里北塔",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3be378000000000702a49e"
+          },
+          {
+            "id": "7594",
+            "name": "阿里北塔",
+            "quote": "阿里北塔",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6969aaaf000000000b00a257"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3468",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 22.802618,
+          "lng": 113.546122,
+          "address": "广东省广州市南沙区北塔",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "磨碟沙至琶醍江边步行段",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7311,
+          7594
+        ],
+        "conclusion": "7311和7594两篇均给磨碟沙H口、阿里北塔、琶醍、猎德大桥、广州塔的完全一致路线，两个抽取名称指同一北塔。两旧地图却落南沙北塔，明确错区，成对清空，待可信建筑坐标，不借磨碟沙站定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-010",
+    "city": "广州",
+    "entityId": "c8172ac127d6e4f72462644ce46997b4",
+    "mergeEntityIds": [
+      "cd4df60ca5aaa3d2dce29f9e12198143",
+      "546b73602ab49cbb7040ecd2b7cb7a98"
+    ],
+    "canonicalName": "珠江琶醍啤酒文化创意艺术区",
+    "expectedRevisions": {
+      "c8172ac127d6e4f72462644ce46997b4": 1,
+      "cd4df60ca5aaa3d2dce29f9e12198143": 1,
+      "546b73602ab49cbb7040ecd2b7cb7a98": 1
+    },
+    "overrides": {
+      "lat": 23.107713,
+      "lng": 113.338555,
+      "address": "广东省广州市海珠区珠江琶醍啤酒文化创意艺术区(西门)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          282
+        ],
+        "conclusion": "7312在磨碟沙至猎德大桥夜游线称琶醍，8153明确琶醍啤酒文化创意区聚会游览；补查琶醍原主体6998也明确啤酒厂改造艺术区。三名同指该园区。另一个food主体珠江琶醍7932只见鸡尾酒餐厅语境，没有店名，不纳入。",
+        "sourcePlaceIds": [
+          "3469",
+          "3785",
+          "3299"
+        ],
+        "mentions": [
+          {
+            "id": "7312",
+            "name": "珠江琶醍啤酒文化创意艺术区",
+            "quote": "琶醍",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3be378000000000702a49e"
+          },
+          {
+            "id": "8153",
+            "name": "琶醍啤酒文化创意区",
+            "quote": "举办各种主题派对、灯光秀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69489d8f000000001e039ac0"
+          },
+          {
+            "id": "7936",
+            "name": "琶醍啤酒文化创意区",
+            "quote": "跨年宝地都能满足你",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693ead6c000000000d038de5"
+          },
+          {
+            "id": "6998",
+            "name": "琶醍",
+            "quote": "啤酒厂改造艺术区，逛吃看夜景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68d2887d000000001003c6ec"
+          },
+          {
+            "id": "7397",
+            "name": "琶醍",
+            "quote": "江边日落和有轨电车同框，好浪漫",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6954eb80000000001e0361da"
+          },
+          {
+            "id": "7595",
+            "name": "琶醍",
+            "quote": "琶醍",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6969aaaf000000000b00a257"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3469",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "采用创意区西门的参考入口点，两个简称原有轨电车站点不作为园区中心；不把站体列为同义成员。",
+        "original": {
+          "lat": 23.107713,
+          "lng": 113.338555,
+          "address": "广东省广州市海珠区珠江琶醍啤酒文化创意艺术区(西门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.107713,
+        "lng": 113.338555,
+        "address": "广东省广州市海珠区珠江琶醍啤酒文化创意艺术区(西门)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/guangzhou-batch12-supplement.json",
+        "sha256": "289a8e0c4e4519bba0f2a76056599601f20d3e5d45f83ecc82af7fcfa25d5ca3",
+        "conclusion": "7312在磨碟沙至猎德大桥夜游线称琶醍，8153明确琶醍啤酒文化创意区聚会游览；补查琶醍原主体6998也明确啤酒厂改造艺术区。三名同指该园区。另一个food主体珠江琶醍7932只见鸡尾酒餐厅语境，没有店名，不纳入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7312,
+          8153,
+          7936
+        ],
+        "conclusion": "7312在磨碟沙至猎德大桥夜游线称琶醍，8153明确琶醍啤酒文化创意区聚会游览；补查琶醍原主体6998也明确啤酒厂改造艺术区。三名同指该园区。另一个food主体珠江琶醍7932只见鸡尾酒餐厅语境，没有店名，不纳入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-extra-context.json",
+        "sha256": "2ce9396541a2a43c73a74e013eb136f6aa2ee51582944d1416df8c84fb6eefb5",
+        "mentionIds": [
+          6998,
+          7397,
+          7595,
+          7932
+        ],
+        "conclusion": "7312在磨碟沙至猎德大桥夜游线称琶醍，8153明确琶醍啤酒文化创意区聚会游览；补查琶醍原主体6998也明确啤酒厂改造艺术区。三名同指该园区。另一个food主体珠江琶醍7932只见鸡尾酒餐厅语境，没有店名，不纳入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-011",
+    "city": "广州",
+    "entityId": "570749e7dbeba47c5da7194281f040b1",
+    "mergeEntityIds": [
+      "e5e1df6d3c205c0ed2127c4206e6b1f2"
+    ],
+    "canonicalName": "广州文化公园",
+    "expectedRevisions": {
+      "570749e7dbeba47c5da7194281f040b1": 1,
+      "e5e1df6d3c205c0ed2127c4206e6b1f2": 1
+    },
+    "overrides": {
+      "lat": 23.109669,
+      "lng": 113.251401,
+      "address": "广东省广州市荔湾区广州文化公园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          283
+        ],
+        "conclusion": "8119明确广州文化公园灯会、文化公园地铁站，8216在粤海关钟楼后顺道去文化公园看花灯；8090同篇交替使用广州文化公园与文化公园，简称与全称同体。",
+        "sourcePlaceIds": [
+          "3473",
+          "3927"
+        ],
+        "mentions": [
+          {
+            "id": "8119",
+            "name": "广州文化公园",
+            "quote": "免费，直接入园！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab27e1400000000310111e5"
+          },
+          {
+            "id": "8090",
+            "name": "广州文化公园",
+            "quote": "30+组大型彩灯、千盏灯笼",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab386ad0000000012037dc4"
+          },
+          {
+            "id": "8047",
+            "name": "广州文化公园",
+            "quote": "文化公园中秋灯会",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4a7cf000000001802c890"
+          },
+          {
+            "id": "7924",
+            "name": "广州文化公园",
+            "quote": "人流分散，逛着很舒服",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699272eb000000000c036991"
+          },
+          {
+            "id": "8216",
+            "name": "文化公园",
+            "quote": "顺道去文化公园看花灯",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0f082000000003303b537"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3473",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.109669,
+          "lng": 113.251401,
+          "address": "广东省广州市荔湾区广州文化公园",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.109669,
+        "lng": 113.251401,
+        "address": "广东省广州市荔湾区广州文化公园",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          8119,
+          8216,
+          8090
+        ],
+        "conclusion": "8119明确广州文化公园灯会、文化公园地铁站，8216在粤海关钟楼后顺道去文化公园看花灯；8090同篇交替使用广州文化公园与文化公园，简称与全称同体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-012",
+    "city": "广州",
+    "entityId": "8bd0778d591a149290f8f4d12478b9f7",
+    "mergeEntityIds": [
+      "21995a63899a5a9a259378894c810d88"
+    ],
+    "canonicalName": "五仙古观",
+    "expectedRevisions": {
+      "21995a63899a5a9a259378894c810d88": 1,
+      "8bd0778d591a149290f8f4d12478b9f7": 1
+    },
+    "overrides": {
+      "lat": 23.120649,
+      "lng": 113.25991,
+      "address": "广东省广州市越秀区五仙古观",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          285
+        ],
+        "conclusion": "7726五仙观原文直接说明这里就是五仙古观，7392明确同一越秀道观。采用古观主源定位替换简称的广州市泛化中心坐标，不并入观内茶室或文创店。",
+        "sourcePlaceIds": [
+          "3687",
+          "3495"
+        ],
+        "mentions": [
+          {
+            "id": "7726",
+            "name": "五仙观",
+            "quote": "门票：免费！",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a76eeb7000000002402c821"
+          },
+          {
+            "id": "7392",
+            "name": "五仙古观",
+            "quote": "红墙绿瓦，古色古香",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6954eb80000000001e0361da"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3495",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.120649,
+          "lng": 113.25991,
+          "address": "广东省广州市越秀区五仙古观",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.120649,
+        "lng": 113.25991,
+        "address": "广东省广州市越秀区五仙古观",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7726,
+          7392
+        ],
+        "conclusion": "7726五仙观原文直接说明这里就是五仙古观，7392明确同一越秀道观。采用古观主源定位替换简称的广州市泛化中心坐标，不并入观内茶室或文创店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-013",
+    "city": "广州",
+    "entityId": "0b98e65799f78232c56326334910f44a",
+    "mergeEntityIds": [
+      "6f108deedb84555822a8713ba803fedd"
+    ],
+    "canonicalName": "二沙岛艺术公园",
+    "expectedRevisions": {
+      "0b98e65799f78232c56326334910f44a": 1,
+      "6f108deedb84555822a8713ba803fedd": 1
+    },
+    "overrides": {
+      "lat": 23.110215,
+      "lng": 113.319436,
+      "address": "广东省广州市越秀区二沙岛艺术公园",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          286
+        ],
+        "conclusion": "7432为广州塔之后的二沙岛艺术公园，8003在按行政区列营地时写越秀二沙岛艺术公园；越秀是所在行政区，不是另一同名公园，两个主源定位也相符。",
+        "sourcePlaceIds": [
+          "3519",
+          "3831"
+        ],
+        "mentions": [
+          {
+            "id": "7432",
+            "name": "二沙岛艺术公园",
+            "quote": "二沙岛艺术公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8797b0000000002a011514"
+          },
+          {
+            "id": "8003",
+            "name": "越秀二沙岛艺术公园",
+            "quote": "越秀二沙岛艺术公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f71358000000002202a8fc"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3519",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.110215,
+          "lng": 113.319436,
+          "address": "广东省广州市越秀区二沙岛艺术公园",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.110215,
+        "lng": 113.319436,
+        "address": "广东省广州市越秀区二沙岛艺术公园",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          7432,
+          8003
+        ],
+        "conclusion": "7432为广州塔之后的二沙岛艺术公园，8003在按行政区列营地时写越秀二沙岛艺术公园；越秀是所在行政区，不是另一同名公园，两个主源定位也相符。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-014",
+    "city": "广州",
+    "entityId": "4c9b10d42e698cd658dc366120496bcb",
+    "mergeEntityIds": [
+      "c0603068d06039f4cd5322fa7d6b5cb4"
+    ],
+    "canonicalName": "长隆国际大马戏",
+    "expectedRevisions": {
+      "4c9b10d42e698cd658dc366120496bcb": 1,
+      "c0603068d06039f4cd5322fa7d6b5cb4": 1
+    },
+    "overrides": {
+      "lat": 23.00342,
+      "lng": 113.331398,
+      "address": "广东省广州市番禺区长隆国际大马戏",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          288
+        ],
+        "conclusion": "8059广州长隆三日游与7900长隆酒店旁大马戏均是同一90分钟剧场演出；7522在清远/广州/横琴三地行程中将国际大马戏明确放在广州段，不跨城市并马戏。",
+        "sourcePlaceIds": [
+          "3562",
+          "3772"
+        ],
+        "mentions": [
+          {
+            "id": "8059",
+            "name": "长隆国际大马戏",
+            "quote": "高空特技、摩托飞车、小丑互动、空中飞人特技炸裂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a60bf5b000000001101c0e9"
+          },
+          {
+            "id": "7522",
+            "name": "长隆国际大马戏",
+            "quote": "晚上：长隆国际大马戏",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a448a430000000006020283"
+          },
+          {
+            "id": "8037",
+            "name": "长隆大马戏",
+            "quote": "时长一个半小时",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8b231c000000001602b763"
+          },
+          {
+            "id": "7900",
+            "name": "长隆大马戏",
+            "quote": "大马戏建议VIP门票",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d23e62000000001a0291ff"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3562",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.00342,
+          "lng": 113.331398,
+          "address": "广东省广州市番禺区长隆国际大马戏",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 23.00342,
+        "lng": 113.331398,
+        "address": "广东省广州市番禺区长隆国际大马戏",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          8059,
+          7900,
+          8037,
+          7522
+        ],
+        "conclusion": "8059广州长隆三日游与7900长隆酒店旁大马戏均是同一90分钟剧场演出；7522在清远/广州/横琴三地行程中将国际大马戏明确放在广州段，不跨城市并马戏。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-015",
+    "city": "广州",
+    "entityId": "b6ffdde44677c3d83252474824e22888",
+    "mergeEntityIds": [
+      "a5c744a490db6726d6e282b616cc8abf"
+    ],
+    "canonicalName": "中旅阿那亚九龙湖",
+    "expectedRevisions": {
+      "a5c744a490db6726d6e282b616cc8abf": 1,
+      "b6ffdde44677c3d83252474824e22888": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "广州市花都区九龙湖度假区域",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          293
+        ],
+        "conclusion": "8017阿那亚九龙湖描述须预约的湖区三条步道与小镇，8157中旅阿那亚九龙湖同指50元入园的童话小镇目的地，7936也并列中旅、阿那亚、九龙湖全称。两个地图都是九龙湖公交站，不能直接视为度假区域精确坐标，清空待核；不并入黄埔九龙湖或区内餐厅。",
+        "sourcePlaceIds": [
+          "3845",
+          "3787"
+        ],
+        "mentions": [
+          {
+            "id": "8018",
+            "name": "阿那亚九龙湖",
+            "quote": "要在小程序预约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a981e94000000002802dd43"
+          },
+          {
+            "id": "8017",
+            "name": "阿那亚九龙湖",
+            "quote": "整体景观不错",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a981e94000000002802dd43"
+          },
+          {
+            "id": "8157",
+            "name": "中旅阿那亚九龙湖",
+            "quote": "巡游音乐剧+南国童话点灯仪式+跨年倒数",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69489d8f000000001e039ac0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3787",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.451021,
+          "lng": 113.422152,
+          "address": "广东省广州市花都区九龙湖(公交站)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "广州市花都区九龙湖度假区域",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          8017,
+          8157,
+          7936,
+          6943
+        ],
+        "conclusion": "8017阿那亚九龙湖描述须预约的湖区三条步道与小镇，8157中旅阿那亚九龙湖同指50元入园的童话小镇目的地，7936也并列中旅、阿那亚、九龙湖全称。两个地图都是九龙湖公交站，不能直接视为度假区域精确坐标，清空待核；不并入黄埔九龙湖或区内餐厅。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-12-016",
+    "city": "广州",
+    "entityId": "89b535c39ef019352467bacb9b6fbb22",
+    "mergeEntityIds": [
+      "04c840d3e0d6b206ac654790f3affcb8",
+      "0a66b878289da9c6b8b5221a7da0e817"
+    ],
+    "canonicalName": "光孝路灯笼街",
+    "expectedRevisions": {
+      "04c840d3e0d6b206ac654790f3affcb8": 1,
+      "0a66b878289da9c6b8b5221a7da0e817": 1,
+      "89b535c39ef019352467bacb9b6fbb22": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "越秀区光孝路灯笼店铺沿街段",
+      "geoStatus": "unresolvable",
+      "category": "文化"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          294
+        ],
+        "conclusion": "8092鱼灯老街明确西门口站C口，8142鱼灯一条街为同一手工鱼灯墙打卡，7824明确该C口步行鱼灯老街为光孝路、列福临工艺行和天就行；7963补充主体也指天就行所在光孝路手工灯笼街。统一这一沿街灯笼游览段，不吞并整条光孝路；原图坐标分别落从化与西门口站，均不是店铺段精确点，清空待核。",
+        "sourcePlaceIds": [
+          "3896",
+          "3877",
+          "3793"
+        ],
+        "mentions": [
+          {
+            "id": "8142",
+            "name": "西门口鱼灯一条街",
+            "quote": "纯手工鱼灯墙也太有节日氛围感啦",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aabec160000000012027e38"
+          },
+          {
+            "id": "8092",
+            "name": "西门口鱼灯老街",
+            "quote": "古街鱼灯+骑楼街景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab386ad0000000012037dc4"
+          },
+          {
+            "id": "7963",
+            "name": "光孝路灯笼街",
+            "quote": "以手工灯笼红遍大街小巷",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aae77150000000011033d54"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3793",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 23.425803,
+          "lng": 113.491938,
+          "address": "广东省广州市从化区灯笼街",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "越秀区光孝路灯笼店铺沿街段",
+        "geoStatus": "unresolvable",
+        "category": "文化"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/guangzhou-batch12-supplement.json",
+        "sha256": "289a8e0c4e4519bba0f2a76056599601f20d3e5d45f83ecc82af7fcfa25d5ca3",
+        "conclusion": "8092鱼灯老街明确西门口站C口，8142鱼灯一条街为同一手工鱼灯墙打卡，7824明确该C口步行鱼灯老街为光孝路、列福临工艺行和天就行；7963补充主体也指天就行所在光孝路手工灯笼街。统一这一沿街灯笼游览段，不吞并整条光孝路；原图坐标分别落从化与西门口站，均不是店铺段精确点，清空待核。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-context.json",
+        "sha256": "68ac67b2beeaa0a3ab93104f0af0b60c311440d4dd1aaa5a00659c0d27970f70",
+        "mentionIds": [
+          8092,
+          8142,
+          7824
+        ],
+        "conclusion": "8092鱼灯老街明确西门口站C口，8142鱼灯一条街为同一手工鱼灯墙打卡，7824明确该C口步行鱼灯老街为光孝路、列福临工艺行和天就行；7963补充主体也指天就行所在光孝路手工灯笼街。统一这一沿街灯笼游览段，不吞并整条光孝路；原图坐标分别落从化与西门口站，均不是店铺段精确点，清空待核。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/guangzhou-batch12-extra-context.json",
+        "sha256": "2ce9396541a2a43c73a74e013eb136f6aa2ee51582944d1416df8c84fb6eefb5",
+        "mentionIds": [
+          7963
+        ],
+        "conclusion": "8092鱼灯老街明确西门口站C口，8142鱼灯一条街为同一手工鱼灯墙打卡，7824明确该C口步行鱼灯老街为光孝路、列福临工艺行和天就行；7963补充主体也指天就行所在光孝路手工灯笼街。统一这一沿街灯笼游览段，不吞并整条光孝路；原图坐标分别落从化与西门口站，均不是店铺段精确点，清空待核。"
+      }
+    ]
+  }
+]

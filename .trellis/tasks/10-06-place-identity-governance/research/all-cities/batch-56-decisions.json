@@ -1,0 +1,50 @@
+[
+  {
+    "key": "all-cities-20261009-batch-56-cave-location",
+    "city": "济南",
+    "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+    "expectedRevisions": {
+      "7ac1b9fdfb96a01db695da65d8e81830": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "四窟万象",
+    "aliases": [
+      "四窟万象"
+    ],
+    "overrides": {
+      "address": "千佛山景区内",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "wrong_point_and_original_area",
+        "file": "priority-cities/济南/park-culture-source-review-01.json",
+        "conclusion": "原2551明确千佛山（四窟万象），抓取文字互证景区北麓；旧点在城西不匹配。仅写景区内，精确洞口待核，不借千佛山中心点。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-56-temple-qualified-name",
+    "city": "济南",
+    "entityId": "c93e3216e2e3cc1b75d07097f2c78367",
+    "expectedRevisions": {
+      "c93e3216e2e3cc1b75d07097f2c78367": 3
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "共青团路关帝庙",
+    "aliases": [
+      "关帝庙",
+      "共青团路关帝庙"
+    ],
+    "overrides": {},
+    "evidence": [
+      {
+        "kind": "specific_temple_name",
+        "file": "priority-cities/济南/park-culture-source-review-01.json",
+        "conclusion": "2841五龙潭南门西侧/西蜜脂泉与已抓取共青团路关帝庙正文互证；保留第30批已纠正的筐市街18-3地址及点位，不计为本批定位。"
+      }
+    ]
+  }
+]

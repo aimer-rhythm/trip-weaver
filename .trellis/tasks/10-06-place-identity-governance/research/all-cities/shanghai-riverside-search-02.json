@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "d73eb975c365",
+  "query": "上海 The Riverside 苏州河 北苏州路 南苏州路 餐厅",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查找上海苏州河沿岸、北苏州路/南苏州路附近名为 The Riverside 的餐厅信息。",
+  "sources": [
+    {
+      "url": "https://cn.tripadvisor.com/RestaurantsNear-g308272-d1979457-Suzhou_River-Shanghai.html",
+      "provider": "tavily",
+      "title": "苏州河附近的10 大餐厅",
+      "description": "苏州河附近的餐厅 · 1. 珍珠轩(上海新发展亚太JW万豪酒店). 4.4. 4.4 分，共5 分. (18 条点评). 中餐, 粤菜¥¥¥¥ · 2. 福苑西餐厅(上海新发展亚太JW万豪酒店). 3.9. 3.9 分，"
+    },
+    {
+      "url": "http://sh.people.com.cn/n2/2023/0315/c176737-40337895.html",
+      "provider": "tavily",
+      "title": "2公里9个点位，探秘上海静安苏河湾特色水岸",
+      "description": "地址:北苏州路912号 06浙江路桥全苏州河上… 跨苏州河,南北走向。位于静安、黄浦两区交界处,南接浙江中路,北接浙江北路。"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E8%8B%8F%E5%B7%9E%E6%B2%B3%E7%95%94%E5%9B%BD%E9%99%85%E9%9D%92%E5%B9%B4%E6%97%85%E8%88%8D/2966326",
+      "provider": "tavily",
+      "title": "苏州河畔国际青年旅舍",
+      "description": "该建筑为上海近代工业建筑代表，位于黄浦区南苏州路1307号。 旅舍于2010年5月正式开业，紧邻苏州河与九子公园，步行可达地铁一号线新闸路站及黄河路美食街。周边规划建设"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://cn.tripadvisor.com/RestaurantsNear-g308272-d1979457-Suzhou_River-Shanghai.html",
+      "provider": "tavily",
+      "title": "苏州河附近的10 大餐厅",
+      "description": "苏州河附近的餐厅 · 1. 珍珠轩(上海新发展亚太JW万豪酒店). 4.4. 4.4 分，共5 分. (18 条点评). 中餐, 粤菜¥¥¥¥ · 2. 福苑西餐厅(上海新发展亚太JW万豪酒店). 3.9. 3.9 分，"
+    },
+    {
+      "url": "http://sh.people.com.cn/n2/2023/0315/c176737-40337895.html",
+      "provider": "tavily",
+      "title": "2公里9个点位，探秘上海静安苏河湾特色水岸",
+      "description": "地址:北苏州路912号 06浙江路桥全苏州河上… 跨苏州河,南北走向。位于静安、黄浦两区交界处,南接浙江中路,北接浙江北路。"
+    },
+    {
+      "url": "https://baike.baidu.com/item/%E8%8B%8F%E5%B7%9E%E6%B2%B3%E7%95%94%E5%9B%BD%E9%99%85%E9%9D%92%E5%B9%B4%E6%97%85%E8%88%8D/2966326",
+      "provider": "tavily",
+      "title": "苏州河畔国际青年旅舍",
+      "description": "该建筑为上海近代工业建筑代表，位于黄浦区南苏州路1307号。 旅舍于2010年5月正式开业，紧邻苏州河与九子公园，步行可达地铁一号线新闸路站及黄河路美食街。周边规划建设"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 5453.17,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 11666.6,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 11666.62
+}

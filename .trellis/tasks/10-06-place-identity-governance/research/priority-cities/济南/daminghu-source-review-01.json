@@ -1,0 +1,682 @@
+{
+  "city": "济南",
+  "batch": "batch-42",
+  "entityId": "550d6810857b4487aae8ce39c9ee093b",
+  "sourcePlaceIds": [
+    5348,
+    5953,
+    5968
+  ],
+  "sourcePacket": "priority-cities/济南/daminghu-source-packet-01.json",
+  "sourcePacketSha256": "4d124af1f559730bc253a7ac94d908e71b6b363c8b454e960b1062c7d3b89582",
+  "summary": {
+    "mentions": 65,
+    "fullNotes": 54,
+    "confirmed": 48,
+    "pending": 17,
+    "durationFieldsExcluded": 1
+  },
+  "identityPolicy": "保留用户最初点名及已有正文互证的湖泊景区三名同义、旧稳定ID与自然类别；不把门、灯塑、摄影点、餐馆或酒店合并成景区。",
+  "durationPolicy": "12700船上30分钟不作景区时长；其他独立环湖时长保留。12839同时误取南门及整条街区线路60分钟，目标继续待审。",
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false,
+  "rows": [
+    {
+      "mentionId": 11342,
+      "inputHash": "dc203578b322711271205094caac47d9e5582ffee95a9886df121a09fcfbeade",
+      "noteId": 2545,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景",
+      "reason": "路线中独立游览大明湖，2小时属于景区；同篇两次抽取保留追溯。"
+    },
+    {
+      "mentionId": 11379,
+      "inputHash": "a215000598ce9f16b0ea018427fff9a7ac4e9649a6049bc0088351b5bed57c7b",
+      "noteId": 2547,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "打卡济南核心景点",
+      "reason": "正文是全城概括，大明湖只在话题中；荷花和老街描述未与具体推荐逐条绑定，继续待审。"
+    },
+    {
+      "mentionId": 11387,
+      "inputHash": "d80bb75de95b550142fdea5ee197fda33511edbba6bea3748286e294ef40edb6",
+      "noteId": 2548,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "大明湖景区内",
+      "reason": "完整段落明确到湖、看灯和多个景区内码头，支持既有湖泊景区主体；各船线费用不当作景区门票。"
+    },
+    {
+      "mentionId": 11402,
+      "inputHash": "3bd2e34f75bfd9908944a8ab12fa3c5c5b5b172fc14b93ecd6c896786c6758c8",
+      "noteId": 2569,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "恒隆距离济南必玩景区都超近",
+      "reason": "同时给出完整游玩路线与门票说明，大明湖为独立一站，不将商场与景区合并。"
+    },
+    {
+      "mentionId": 11411,
+      "inputHash": "0871e20cbac7dff387436c86e369e38bcc2a20b48bbb42f588d22d3b0803109f",
+      "noteId": 2550,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "reason": "两条景点路线提及归现行景区；同篇另一个住宿区域提及单独待审。"
+    },
+    {
+      "mentionId": 11421,
+      "inputHash": "ca04fe8d23bd0ca2c7a049ae792931869420d5538bef1d7124683ce8286755b9",
+      "noteId": 2550,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "✅大明湖附近：超然楼和曲水亭街附近，晚上看完超然楼夜景回去比较方便，周边环境不错。",
+      "reason": "原文明确住宿区域，原提及type为hotel；不能当作景区或虚构具体酒店。"
+    },
+    {
+      "mentionId": 11429,
+      "inputHash": "dcd326260fe92004a681f309d8697e6f04e4b91be36d48b769ab6e393defa9f5",
+      "noteId": 2567,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "泛舟游湖，超惬意！",
+      "reason": "大明湖条目明确游湖赏荷，湖水景观是景区卖点。"
+    },
+    {
+      "mentionId": 11434,
+      "inputHash": "09f59ae74137f1a0d6fc90589e6ca9397ce8dc567bad037fb21b4441e2edad44",
+      "noteId": 2618,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "我们是从南门进北门出",
+      "reason": "完整夜游明确穿行大明湖，并列湖畔雨荷、超然楼为其中所看景观；保留有名称限定的景观描述，不把灯时当整湖营业时间。"
+    },
+    {
+      "mentionId": 11450,
+      "inputHash": "bfdb28ca6b70c52604f3d7e87630dd0729d62aaef0c065323c711f4ca6848b7e",
+      "noteId": 2553,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "大明湖是济南最著名的景点之一",
+      "reason": "南门进东北门出、环湖漫步与2小时游览支持完整景区，后文登楼单列。"
+    },
+    {
+      "mentionId": 11462,
+      "inputHash": "3df68fb1319e22a3696e033a26573b9a76b996c0b91cd0cde313a76813fb8999",
+      "noteId": 2570,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "🕒17:30-18:30📍大明湖（p16）",
+      "reason": "明确安排一小时景区游览，与随后超然楼分段；只核正文，不证明图16实际机位。"
+    },
+    {
+      "mentionId": 11473,
+      "inputHash": "42587bbf74a56e90ae6cb0fbba55d5d49d2c7eed56c15c93a1498940c9c63ac6",
+      "noteId": 2560,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "大明湖免费逛",
+      "reason": "路线与免费逛的正文支持景区访问，原有两次抽取均保留。"
+    },
+    {
+      "mentionId": 11494,
+      "inputHash": "743da95ae04c0f44093edf349da62130dcb9afe66b7e40ed3652e5ddf2c23c4a",
+      "noteId": 2554,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街",
+      "reason": "明确园区穿行及多个景观；不把同篇周边酒店作为景区住宿属性。"
+    },
+    {
+      "mentionId": 11507,
+      "inputHash": "122a8bee077c8d36209a19b2c6597c707b1dfeb26d7554aa1388eeca9e7fd44c",
+      "noteId": 2619,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "周边就是芙蓉街、大明湖，走路几分钟就到，可以串在一起逛",
+      "reason": "正文明确建议把两个景点串联游览，主体分别保留；距离仅为社区来源。"
+    },
+    {
+      "mentionId": 11522,
+      "inputHash": "3a72a9c55676e18ad414587b1a38995e42dfe15944b4ba44f10f0f52d1c2d248",
+      "noteId": 2563,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "📍大明湖：\n四面荷花三面柳，一城山色半城湖",
+      "reason": "独立景点段落描述湖柳景观，超然楼另列，不作同义合并。"
+    },
+    {
+      "mentionId": 11539,
+      "inputHash": "ff5fc550134890e3702e7aa270731f90feb758781b04debfb972688a4ca93b21",
+      "noteId": 2582,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "就在大明湖西南对面",
+      "reason": "餐厅广告的位置参照，未明确具体店点到哪一侧入口，也无独立景区游览事实；不作为已确认推荐。"
+    },
+    {
+      "mentionId": 11578,
+      "inputHash": "bc75d09b09cc43ff1f405a9496e4ec996dd724cb7737bd79916bac9b2095bac6",
+      "noteId": 2564,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "第六站：大明湖 傍晚六点左右去 可以看落日和夜景",
+      "reason": "明确行程中的景区访问；六点是到达时刻，不新增停留分钟。"
+    },
+    {
+      "mentionId": 11581,
+      "inputHash": "ae883c3c1a540e9298cb167bb202da3d15f3ab734296b97f8a7b475a11b0b52e",
+      "noteId": 2583,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "吃完饭过马路就是大明湖",
+      "reason": "鲁宴餐厅位置宣传，不借道路相邻证明原提及的游览主体与事实范围，保留待审。"
+    },
+    {
+      "mentionId": 11594,
+      "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d",
+      "noteId": 2622,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "从泉眼逛到老巷再到湖景",
+      "reason": "正文明确整日路线已游览核心景点，大明湖为湖景一站；附近煎饼商铺不当同义。"
+    },
+    {
+      "mentionId": 11598,
+      "inputHash": "8c21af9414b5a9573d3043a4a62b45977fa36dde821c8a795e6d3110b24a1dc3",
+      "noteId": 2589,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "店里离着大明湖、五龙潭、趵突泉、泉城路都挺近",
+      "reason": "整条是未点明店名的餐饮附近参照，不导出为已核实大明湖推荐事实。"
+    },
+    {
+      "mentionId": 11601,
+      "inputHash": "d59dda51e4ed5ca21ebfae1b728b0aa64826672c9897a27a0453af48ffcef5ad",
+      "noteId": 2620,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "机位在大明湖南丰祠附近的游船码头旁",
+      "reason": "仅为具体拍摄机位，远离景区主路、人少和最佳构图不能推广到全湖；待核具体主体。"
+    },
+    {
+      "mentionId": 11604,
+      "inputHash": "9756f825487b148759959c940c5ea7965b9ff0839a2a46b7643638137d6467f3",
+      "noteId": 2608,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "济南站 / 大明湖站：市中心！离趵突泉大明湖超近",
+      "reason": "原主语为火车站及住宿片区；旧reason把市中心/交通便利归给景区，暂不认领。"
+    },
+    {
+      "mentionId": 11611,
+      "inputHash": "91cf304c9cde9c73b3832edc0baa6d7a78de455c2e3bc28cf6c6ab3f7acfbc50",
+      "noteId": 2584,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "吃完建议直奔大明湖、趵突泉",
+      "reason": "餐厅宣传中的顺路参照，无独立景区叙述，继续补证。"
+    },
+    {
+      "mentionId": 11627,
+      "inputHash": "c8e808bb521e406967eeb1a747d653a481d69e3cb95b2be93b644ec7f9d4610d",
+      "noteId": 2624,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "重点来到了大明湖，吹吹风太舒服了",
+      "reason": "明确实际到湖观景、等待灯亮，支持景区访问；文末车站远近不纳入景区事实。"
+    },
+    {
+      "mentionId": 11683,
+      "inputHash": "0c3e9d5d261f2225d0cf9855d01e44c9ba12de9b7f81d31b117b72e7d677fdbb",
+      "noteId": 2609,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "2️⃣ 大明湖 – 泉城明珠，超然楼亮灯瞬间绝美，四季皆景",
+      "reason": "独立景点条目，以湖泊景区和可见地标为推荐；不扩为楼体同义。"
+    },
+    {
+      "mentionId": 11693,
+      "inputHash": "74d818a21b749c5492e3ecee25ec6eb73712bdbbfd0ef2c63e17a83dad150627",
+      "noteId": 2623,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "p5-12是大明湖的夜景和白天的景色",
+      "reason": "文字明确整组景色所称地点，可保留景区提及；照片主体和质量仍暂缓核查。"
+    },
+    {
+      "mentionId": 11695,
+      "inputHash": "c9eab08ccd30803cfd8046d051c5b4c21cf91193ad1ad8bcab21faa379903db4",
+      "noteId": 2611,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "就在济南核心景区大明湖附近",
+      "reason": "三家未命名酒店广告，附近商圈与步行可达属于酒店，不作为景区事实。"
+    },
+    {
+      "mentionId": 11703,
+      "inputHash": "8f64e6bad28c6144fba6dec9072c684a7f7c3482f1fff7386983297621c6087b",
+      "noteId": 2614,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "酒店坐落和谐广场核心商圈，去趵突泉、大明湖景点出行很方便",
+      "reason": "旧reason的酒店便利与起步价属于广告酒店，不可归景区。"
+    },
+    {
+      "mentionId": 11705,
+      "inputHash": "4c53bfdf97f3987402cd77fe4544dc6056067a79703300fdeffd62bcdeca9064",
+      "noteId": 2613,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "可以直达趵突泉、大明湖、千佛山",
+      "reason": "未命名酒店的交通宣传，不证实景区具有地铁直达等属性。"
+    },
+    {
+      "mentionId": 12570,
+      "inputHash": "a0f074a67c08be49ad2275f4c84fbed16393e28af1671da6f5e0b5b98f31057e",
+      "noteId": 2545,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "▪️大明湖\n游玩2h｜免费｜傍晚看超然楼亮灯夜景",
+      "reason": "路线中独立游览大明湖，2小时属于景区；同篇两次抽取保留追溯。"
+    },
+    {
+      "mentionId": 12575,
+      "inputHash": "984603851eb5b0860ef757d1de846de56b5f6973ba40092b7361ab2360c57764",
+      "noteId": 2803,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "💡大明湖景区附近\n靠近济南站和大明湖景区，交通 便利",
+      "reason": "本条抽取来自住宿区域段，交通便利及步行至两景点不是全湖属性；同篇路线不替错误字段背书。"
+    },
+    {
+      "mentionId": 12629,
+      "inputHash": "3d791c021a49e342e72e6b5edc6bef5e8922cb3270bb03ca712b6bd5b51024dc",
+      "noteId": 2793,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "蓝调时刻在大明湖可以拍到超然楼亮灯",
+      "reason": "明确从湖畔观景，并用与号区分景区和楼体，继续保持两主体。"
+    },
+    {
+      "mentionId": 12641,
+      "inputHash": "c9d00f8cb81aa2ece1ec95293adcbac79807dedcaa8d2ba76b0f4fbe80aa6f7a",
+      "noteId": 2782,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "🔟大明湖：\n曲水亭街尽头就是大明湖南门，进门右转就能依次打卡到夏雨荷和超然楼",
+      "reason": "进入景区并依次访问多个景观，不只是门口位置。"
+    },
+    {
+      "mentionId": 12649,
+      "inputHash": "d45eacbf5dea84a467b5e1a6f70f809bc83a241bca620cae3818ad3979c16a7e",
+      "noteId": 2547,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "打卡济南核心景点",
+      "reason": "正文是全城概括，大明湖只在话题中；荷花和老街描述未与具体推荐逐条绑定，继续待审。"
+    },
+    {
+      "mentionId": 12654,
+      "inputHash": "fb2a678a1c7464ee9cdc155b56e42a83ce0ebc4ab205a5d4087443af3b3a14f8",
+      "noteId": 2795,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "湖畔雨荷灯塑位置在大明湖北岸钢琴广场",
+      "reason": "提及主要为湖畔雨荷灯塑的位置与亮灯时间，不是全湖属性；待核独立灯塑/广场主体。"
+    },
+    {
+      "mentionId": 12661,
+      "inputHash": "f4446fa3337afb0edc1a649aa9a484a0c944542e4a3138093f9ef488442afe95",
+      "noteId": 2816,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "从这个入口进去逛到湖北门附近就是夏雨荷",
+      "reason": "原文实际从入口逛到北门，支持完整景区访问，灯塑是途经子项。"
+    },
+    {
+      "mentionId": 12664,
+      "inputHash": "ad00acebb700cf56d3cf74f83be4a8cbabac6b0b1ea92e24f1d21c578f11d2b8",
+      "noteId": 2806,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "坐电瓶车游湖南门下车",
+      "reason": "进西南门后坐车游湖至南门，支持景区访问；全程三小时未分配给单点。"
+    },
+    {
+      "mentionId": 12671,
+      "inputHash": "c3517409147067b56ea23750afc3aeef6e2e61207a67a116f8ed7056bbded0dc",
+      "noteId": 2786,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "终于亲眼见到课本里的大明湖！",
+      "reason": "正文独立描述湖景与柳树湖风，支持景区；在楼前拍照不把楼变别名。"
+    },
+    {
+      "mentionId": 12677,
+      "inputHash": "274b598d4124b55e4c14b0687ff26298a23b2999efcc091d5e217cd96c3e3b97",
+      "noteId": 2550,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街",
+      "reason": "两条景点路线提及归现行景区；同篇另一个住宿区域提及单独待审。"
+    },
+    {
+      "mentionId": 12687,
+      "inputHash": "967481a159b506d8e4c8a816a24c2a1b47295a5e0c0bc1d90ecea2da04b7812c",
+      "noteId": 2817,
+      "originalName": "大明湖景区",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "①大明湖景区(南门)",
+      "reason": "一小时曲水亭街路线只点名南门起点；旧抽取省略南门，不能把门等同全湖。既有三名同义不因此取消。"
+    },
+    {
+      "mentionId": 12700,
+      "inputHash": "951dbe71fc36c897f9fd0810406cabdb20d065a02a436d76416b98934858d0f5",
+      "noteId": 2807,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "大明湖西南门进去往北走400米",
+      "reason": "进入景区到码头并看湖中心，主体有效；原30分钟明确是船上时间，单独排除时长字段。",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "subject_mismatch",
+          "quote": "3：两公里距离然后到大明湖西南门进去往北走400米，想看大明湖中心就可以买前面码头的票，可以上岛十五分钟，50一位，整个船上时间30分钟内（但是有时候要等船，30分钟内会等到船）"
+        }
+      }
+    },
+    {
+      "mentionId": 12707,
+      "inputHash": "2172d878c917464cb6ef29a048caebee00bfc347343f2b2ae24d801de3a2d552",
+      "noteId": 2567,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "泛舟游湖，超惬意！",
+      "reason": "大明湖条目明确游湖赏荷，湖水景观是景区卖点。"
+    },
+    {
+      "mentionId": 12712,
+      "inputHash": "83597abf5c60e2955eddcfcf5e02f8e3cc22533fb3f9f7aeb387ff09978bce04",
+      "noteId": 2618,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "我们是从南门进北门出",
+      "reason": "完整夜游明确穿行大明湖，并列湖畔雨荷、超然楼为其中所看景观；保留有名称限定的景观描述，不把灯时当整湖营业时间。"
+    },
+    {
+      "mentionId": 12728,
+      "inputHash": "f826c538905d5552ad227240d6db541064556ada979314e39700e62cee96a377",
+      "noteId": 2570,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "🕒17:30-18:30📍大明湖（p16）",
+      "reason": "明确安排一小时景区游览，与随后超然楼分段；只核正文，不证明图16实际机位。"
+    },
+    {
+      "mentionId": 12733,
+      "inputHash": "796195042dd9892e8f7f77fdca07b23a67ef46b63565e9cdf222a52d1f769f3c",
+      "noteId": 2560,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "大明湖免费逛",
+      "reason": "路线与免费逛的正文支持景区访问，原有两次抽取均保留。"
+    },
+    {
+      "mentionId": 12748,
+      "inputHash": "ce20717b44535ca4163279dc3239a4c0c3123a4e5c8adfd256beddb3cb8b6946",
+      "noteId": 2554,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "游览大明湖建议从北门进，可以先看荷花再看超然楼从南门出来就是曲水亭街",
+      "reason": "明确园区穿行及多个景观；不把同篇周边酒店作为景区住宿属性。"
+    },
+    {
+      "mentionId": 12764,
+      "inputHash": "db97f650504bba744e7a1bdadf61eb4cedf996c25fa091ddc0b656a069c04102",
+      "noteId": 2808,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "个人觉得大明湖除了湖边的风景外",
+      "reason": "明确将湖边风景与超然楼并列，景区为整体访问，楼不作同义。"
+    },
+    {
+      "mentionId": 12772,
+      "inputHash": "dbe953277c384143ed529d0669c1e9afeddc278482eea4fca8b1b59c3499d948",
+      "noteId": 2797,
+      "originalName": "大明湖公园",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "1️⃣1️⃣-1️⃣2️⃣大明湖公园：四面荷花三面柳说的应该就是这里了",
+      "reason": "明确公园全名与湖柳景观，是既有同义关系依据；图片未比对。"
+    },
+    {
+      "mentionId": 12779,
+      "inputHash": "c43a2d64becd10fcf732b83209e5a60178ad3008e5244d0fbfee83715891647e",
+      "noteId": 2798,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "1️⃣大明湖",
+      "reason": "正文明确列为九个景点之一，可保留地点提及；photo_spot是原抽取类型，不改整个景区细分类或声称图像验证。"
+    },
+    {
+      "mentionId": 12794,
+      "inputHash": "d3a5c7b8142c66e3a864ec90ab7246a0e26e10b78029aa7d209b59b09a5e219e",
+      "noteId": 2789,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "📍大明湖：环湖步行，看看历下亭、铁公祠，也可选游船环湖",
+      "reason": "明确环湖多个景观组成景区访问；保留有名称限定的子景观说明。"
+    },
+    {
+      "mentionId": 12802,
+      "inputHash": "6f1b43d5fceeb2d6764614d352724e1fa1e9f836c84dc1e5e3eeed8e91982f7a",
+      "noteId": 2811,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "🌊大明湖｜一城山色半城湖，夏日荷风拂面",
+      "reason": "独立景区段落，湖面光影属于湖景，其他交通宣传不纳入此提及。"
+    },
+    {
+      "mentionId": 12814,
+      "inputHash": "85075a990e2dca08541fb1b673cb67d948420c20bc93c89775a0e05433140b5f",
+      "noteId": 2810,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "老舍故居→趵突泉→黑虎泉→宽厚里→解放阁→白石泉→曲水亭街→大明湖→超然楼",
+      "reason": "原提及是游玩路线景点，不混用同篇住宿周边段。"
+    },
+    {
+      "mentionId": 12832,
+      "inputHash": "bf481bc69588ebc6c83f2b49673500e4d488a567ece69d707cb8a4b55849ac97",
+      "noteId": 2564,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "第六站：大明湖 傍晚六点左右去 可以看落日和夜景",
+      "reason": "明确行程中的景区访问；六点是到达时刻，不新增停留分钟。"
+    },
+    {
+      "mentionId": 12839,
+      "inputHash": "3154e8c27bca40bcb9d4896d5327b00f3ac90b8eef1b1febb72ec857f378af3e",
+      "noteId": 2800,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "精华路线：1小时步行打卡，全程不绕路\n起点大明湖南门",
+      "reason": "实际为南门起点到曲水亭街多个点的一小时线路；旧60分钟不是大明湖单点时长，原提及目标也未准确到门，暂待分配。"
+    },
+    {
+      "mentionId": 12853,
+      "inputHash": "dca7ec2aefa3852ee412d47ff8c5e26ba4c6dde9776c8873fbfec0f50a23cf75",
+      "noteId": 2829,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "📍大明湖（免费）",
+      "reason": "独立条目描述四面荷花三面柳，与住宿章节分开，景区主体明确。"
+    },
+    {
+      "mentionId": 12860,
+      "inputHash": "1b47910f97beaad8787a3ecb9c8fb9cd36c10eafa306d18074564f22625d1fd3",
+      "noteId": 2830,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "📍大明湖：免费大湖，风光治愈，可散步划船",
+      "reason": "独立景区段，散步划船与湖景有效；全文关于地铁覆盖的其他说法不导出成该提及属性。"
+    },
+    {
+      "mentionId": 12873,
+      "inputHash": "1502fe4cef025f7686e7c1489a63beb25b899826f687081ce9d8920b9cccc40b",
+      "noteId": 2834,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "📍大明湖：“四面荷花三面柳，一城山色半城湖”",
+      "reason": "明确独立景点条目，以湖柳和文化典故描述景区。"
+    },
+    {
+      "mentionId": 12900,
+      "inputHash": "7ccecb25db584ef56ceb02b0064fdc7e32fea2cbd619c610a7bcc52ba2ee9d5c",
+      "noteId": 2856,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的",
+      "reason": "正文明确实际游览顺序，景区和护城河分别保留。"
+    },
+    {
+      "mentionId": 12908,
+      "inputHash": "7967ca1bc02796fad4ad8ed6099f70373703977d385b29f76e29cd25ea077a2e",
+      "noteId": 2853,
+      "originalName": "大明湖",
+      "entityId": null,
+      "status": "needs_evidence",
+      "quote": "距离黑虎泉、解放阁、曲水亭街、大明湖、泉城广场",
+      "reason": "餐厅位置宣传，原文没有命名餐馆或大明湖独立景区访问，继续待审。"
+    },
+    {
+      "mentionId": 12921,
+      "inputHash": "8002827debd63aef1711e1a2c20d7dabae9df1d6b7666e15ade6ccd0cfb0f560",
+      "noteId": 2624,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "重点来到了大明湖，吹吹风太舒服了",
+      "reason": "明确实际到湖观景、等待灯亮，支持景区访问；文末车站远近不纳入景区事实。"
+    },
+    {
+      "mentionId": 12923,
+      "inputHash": "f65c68ab18097ac4b7a696c1f9118d705290011176ab34d3c9c0a490a2715615",
+      "noteId": 2801,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "白天就只逛了个大明湖差不多就天黑了",
+      "reason": "明确到景区游览；随后拼图与晚间时间建议不作为大明湖整体事实。"
+    },
+    {
+      "mentionId": 12926,
+      "inputHash": "04875833136e2bcb0e273d017115157fda13f53b8eb687a4e13b93676ca57edc",
+      "noteId": 2835,
+      "originalName": "大明湖景区",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "★大明湖景区：南门进，沿路有卖荷花的",
+      "reason": "明确从南门进入景区沿路访问；门和文创店作为子项，不作同义。"
+    },
+    {
+      "mentionId": 12947,
+      "inputHash": "e7e8cad295a76a03ba8e8a92e17154214d2d37e96f9fa98dc2751e937a8cfdac",
+      "noteId": 2837,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "在大明湖等待日落、超然楼亮灯",
+      "reason": "明确一日线路末站到湖等待观景，未将其他泉群半小时传播到大明湖。"
+    },
+    {
+      "mentionId": 12959,
+      "inputHash": "2bad3e4eb854ed62d4b958dc154479c4fccc3e7db2be60bd5b95884242b55ef3",
+      "noteId": 2839,
+      "originalName": "大明湖景区",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "⑩大明湖景区🌊吃完饭逛大明湖！",
+      "reason": "明确饭后进入景区沿湖观景、北门离开，支持景区同义；酒店休整2小时不作为景区时长。"
+    },
+    {
+      "mentionId": 12973,
+      "inputHash": "db535aedfb0b22ac29adbf61d3a93a11e7e8f49e276e75f6d9d7c60c60270894",
+      "noteId": 2840,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "超大湖泊，绕湖一圈要两小时",
+      "reason": "整段环湖与多处古迹访问，120分钟是独立环湖建议，不是后文船费或步行到楼时长。"
+    },
+    {
+      "mentionId": 12979,
+      "inputHash": "647a0a6a44d34b58d421155a234ee7d83918bef01a7bafedc2ad3581da485ce1",
+      "noteId": 2843,
+      "originalName": "大明湖",
+      "entityId": "550d6810857b4487aae8ce39c9ee093b",
+      "status": "reviewed_scenic_area",
+      "quote": "P7—P9：大明湖",
+      "reason": "文字将该组照片归名大明湖，可保留景点提及；未证明照片内容、机位或视觉质量。"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "entities": [
+    {
+      "entity_id": "15ad3a8280476165635672cb0e43117a",
+      "city": "济南",
+      "canonical_name": "解放阁",
+      "primary_place_id": 5360,
+      "aliases": [
+        "解放阁"
+      ],
+      "legacy_ids": [
+        "15ad3a8280476165635672cb0e43117a"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "b58d15060ff3828b071f950487e487db",
+      "city": "济南",
+      "canonical_name": "百花洲",
+      "primary_place_id": 5364,
+      "aliases": [
+        "百花洲"
+      ],
+      "legacy_ids": [
+        "b58d15060ff3828b071f950487e487db"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "2ee2f25ecdeac28e3edf7a5296a3bfed",
+      "city": "济南",
+      "canonical_name": "曲水亭",
+      "primary_place_id": 5493,
+      "aliases": [
+        "曲水亭"
+      ],
+      "legacy_ids": [
+        "2ee2f25ecdeac28e3edf7a5296a3bfed"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "c9c9ce7c33c95b71b859f0ab30bf7136",
+      "city": "济南",
+      "canonical_name": "曲水亭街",
+      "primary_place_id": 5352,
+      "aliases": [
+        "曲水亭",
+        "曲水亭街"
+      ],
+      "legacy_ids": [
+        "2ee2f25ecdeac28e3edf7a5296a3bfed",
+        "c9c9ce7c33c95b71b859f0ab30bf7136"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {
+        "lat": 36.669299,
+        "lng": 117.024303,
+        "address": "山东省济南市历下区大明湖街道曲水亭街",
+        "category": "文化",
+        "geoStatus": "reviewed_source"
+      },
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "all-cities/source-snapshot.json",
+          "kind": "reviewed_source_snapshot",
+          "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+          "mentions": [
+            {
+              "id": "12819",
+              "name": "曲水亭",
+              "quote": "没有浓重的商业味儿",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd"
+            },
+            {
+              "id": "11565",
+              "name": "曲水亭",
+              "quote": "没有浓重的商业味儿，在旧旧的巷子里散步",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd"
+            },
+            {
+              "id": "12972",
+              "name": "曲水亭街",
+              "quote": "“家家泉水，户户垂杨”的精华",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a64569c000000000402b9b4"
+            },
+            {
+              "id": "12957",
+              "name": "曲水亭街",
+              "quote": "超多网红拍照机位，随手拍都好看",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0"
+            },
+            {
+              "id": "12945",
+              "name": "曲水亭街",
+              "quote": "泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079"
+            },
+            {
+              "id": "12933",
+              "name": "曲水亭街",
+              "quote": "曲水亭街",
+              "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f"
+            }
+          ],
+          "reviewIds": [
+            366
+          ],
+          "conclusion": "12819/11565同篇明确列出东更道、珍池街、曲水亭、双忠祠街的老街散步路线，曲水亭在本批是曲水亭街简称而非单独亭子；采用现有街道主体定位，保留原成员坐标追溯。",
+          "sourcePlaceIds": [
+            "5493",
+            "5352"
+          ]
+        },
+        {
+          "lat": 36.669299,
+          "lng": 117.024303,
+          "kind": "primary_source_geometry",
+          "address": "山东省济南市历下区大明湖街道曲水亭街",
+          "category": "文化",
+          "original": {
+            "lat": 36.669299,
+            "lng": 117.024303,
+            "address": "山东省济南市历下区大明湖街道曲水亭街",
+            "geoStatus": "reviewed_source"
+          },
+          "geoStatus": "reviewed_source",
+          "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+          "sourcePlaceId": "5352",
+          "coordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "all-cities/jinan-batch09-context.json",
+          "kind": "reviewed_full_note_context",
+          "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+          "conclusion": "12819/11565同篇明确列出东更道、珍池街、曲水亭、双忠祠街的老街散步路线，曲水亭在本批是曲水亭街简称而非单独亭子；采用现有街道主体定位，保留原成员坐标追溯。",
+          "mentionIds": [
+            11565
+          ]
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5352,
+      "entity_id": "c9c9ce7c33c95b71b859f0ab30bf7136"
+    },
+    {
+      "place_id": 5360,
+      "entity_id": "15ad3a8280476165635672cb0e43117a"
+    },
+    {
+      "place_id": 5364,
+      "entity_id": "b58d15060ff3828b071f950487e487db"
+    },
+    {
+      "place_id": 5493,
+      "entity_id": "c9c9ce7c33c95b71b859f0ab30bf7136"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 366,
+      "city": "济南",
+      "fingerprint": "48d5c5d6e04fbcf20c965187211ec47e06acf32e334ed31929d6f247e003d5c3",
+      "status": "RESOLVED",
+      "detail": {
+        "names": [
+          "曲水亭",
+          "曲水亭街"
+        ],
+        "reason": "similar_name",
+        "entityIds": [
+          "2ee2f25ecdeac28e3edf7a5296a3bfed",
+          "c9c9ce7c33c95b71b859f0ab30bf7136"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "84929fb3085880c48c0cebb71aae3ad4",
+          "city": "济南",
+          "canonical_name": "燕喜堂",
+          "primary_place_id": 5404,
+          "aliases": [
+            "燕喜堂"
+          ],
+          "legacy_ids": [
+            "84929fb3085880c48c0cebb71aae3ad4"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5404,
+          "entity_id": "84929fb3085880c48c0cebb71aae3ad4"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5404,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 22.8,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5404,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 3,
+          "top_reasons": [
+            {
+              "reason": "本地人推荐，菜品惊艳，性价比高，人均几十，盲点不踩雷",
+              "evidence": "确实是济南top好吃的！明码标价性价比很高"
+            },
+            {
+              "reason": "位于Day2路线中，是济南鲁菜代表",
+              "evidence": "燕喜堂"
+            },
+            {
+              "reason": "鲁菜馆，Day2路线顺路",
+              "evidence": "燕喜堂（CBD店）"
+            }
+          ],
+          "recommend_score": 12.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7854,
+          "canonical_place_id": 5404,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 燕喜堂",
+          "evidence_summary": "本地人推荐，菜品惊艳，性价比高，人均几十，盲点不踩雷"
+        },
+        {
+          "id": 8656,
+          "canonical_place_id": 5404,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 燕喜堂",
+          "evidence_summary": "位于Day2路线中，是济南鲁菜代表"
+        },
+        {
+          "id": 8657,
+          "canonical_place_id": 5404,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 燕喜堂",
+          "evidence_summary": "鲁菜馆，Day2路线顺路"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4976,
+          "from_name": "千佛山",
+          "to_name": "燕喜堂",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 2,
+          "evidence": "D2：山东省博物馆→燕喜堂(CBD店)→千佛山→济南老商埠→经三路",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        },
+        {
+          "id": 4989,
+          "from_name": "山东美术馆",
+          "to_name": "燕喜堂",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "堂➡️山东博物馆➡️山东美术馆➡️燕喜堂➡️经三路老商埠 \t",
+          "source_url": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948?xsec_token=ABzCUuyjT5dnc4Ql3csxoOwtZxkH3aIcDgdiReojDNLO4=&xsec_source=pc_search"
+        },
+        {
+          "id": 4990,
+          "from_name": "燕喜堂",
+          "to_name": "经三路老商埠",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "馆➡️山东美术馆➡️燕喜堂➡️经三路老商埠 \t 关于住宿🏨 ✔",
+          "source_url": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948?xsec_token=ABzCUuyjT5dnc4Ql3csxoOwtZxkH3aIcDgdiReojDNLO4=&xsec_source=pc_search"
+        },
+        {
+          "id": 4993,
+          "from_name": "山东省博物馆",
+          "to_name": "燕喜堂",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "泉城广场 ✔️D2：山东省博物馆→燕喜堂(CBD店)→千佛山",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        },
+        {
+          "id": 5007,
+          "from_name": "山东博物馆",
+          "to_name": "燕喜堂",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": " Day2：千佛山→燕喜堂（CBD店）→山东博物馆→山东美术馆→经三路",
+          "source_url": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5404,
+          "city": "济南",
+          "name_keys": [
+            "燕喜堂"
+          ],
+          "entity_ids": [
+            "84929fb3085880c48c0cebb71aae3ad4"
+          ],
+          "source_hash": "43302c903632a142ec023803ed6929e2afcad9c2fa7827a8084bbb6c12a70b94",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5404-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+              "kind": "reviewed_full_branch_scope",
+              "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。",
+              "mentionIds": [
+                11537,
+                12798,
+                12863
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "84929fb3085880c48c0cebb71aae3ad4"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11537,
+          "scope_place_id": 5404,
+          "entity_id": "84929fb3085880c48c0cebb71aae3ad4",
+          "input_hash": "f8171c9947dd682af71ead1c8ffde2a1331bd26dcb19a7aecfc247898b9b3399",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5404-scope"
+        },
+        {
+          "mention_id": 12798,
+          "scope_place_id": 5404,
+          "entity_id": null,
+          "input_hash": "a213fa5b54ddb7e2519dae51992b9f84894779eb2e87879c92914ba5505245b7",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5404-scope"
+        },
+        {
+          "mention_id": 12863,
+          "scope_place_id": 5404,
+          "entity_id": "84929fb3085880c48c0cebb71aae3ad4",
+          "input_hash": "40e526d9bf8e5cc322e7a105b529374979ec831e2aee1382ec46ed373beb638f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5404-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "43302c903632a142ec023803ed6929e2afcad9c2fa7827a8084bbb6c12a70b94",
+        "mentions": [
+          {
+            "mentionId": 11537,
+            "inputHash": "f8171c9947dd682af71ead1c8ffde2a1331bd26dcb19a7aecfc247898b9b3399"
+          },
+          {
+            "mentionId": 12798,
+            "inputHash": "a213fa5b54ddb7e2519dae51992b9f84894779eb2e87879c92914ba5505245b7"
+          },
+          {
+            "mentionId": 12863,
+            "inputHash": "40e526d9bf8e5cc322e7a105b529374979ec831e2aee1382ec46ed373beb638f"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 9075,
+          "fingerprint": "282bd323b9a6a96ea152b542f15bfd511d9855cbf55bf9abbe60d864d6e9c283",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a213fa5b54ddb7e2519dae51992b9f84894779eb2e87879c92914ba5505245b7",
+            "mentionId": 12798,
+            "scopePlaceIds": [
+              5404
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "58d542ebe18a1dd3505b7cdc60db030c",
+          "city": "济南",
+          "canonical_name": "刘小忙把子肉",
+          "primary_place_id": 5441,
+          "aliases": [
+            "刘小忙把子肉"
+          ],
+          "legacy_ids": [
+            "58d542ebe18a1dd3505b7cdc60db030c"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5441,
+          "entity_id": "58d542ebe18a1dd3505b7cdc60db030c"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5441,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 18.0,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5441,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "济南特色美食店铺推荐",
+              "evidence": "刘小忙把子肉"
+            },
+            {
+              "reason": "联四路，把子肉不错",
+              "evidence": "我个人感觉还不错的一些店"
+            }
+          ],
+          "recommend_score": 10.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7891,
+          "canonical_place_id": 5441,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 刘小忙把子肉",
+          "evidence_summary": "联四路，把子肉不错"
+        },
+        {
+          "id": 7892,
+          "canonical_place_id": 5441,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 刘小忙把子肉",
+          "evidence_summary": "济南特色美食店铺推荐"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5441,
+          "city": "济南",
+          "name_keys": [
+            "刘小忙把子肉"
+          ],
+          "entity_ids": [
+            "58d542ebe18a1dd3505b7cdc60db030c"
+          ],
+          "source_hash": "ed9bc21166311176df3f423b7db6af19f869ce62bf91a9c9d8b19969ead1efce",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5441-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+              "kind": "reviewed_full_branch_scope",
+              "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。",
+              "mentionIds": [
+                11525,
+                11644
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "58d542ebe18a1dd3505b7cdc60db030c"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11525,
+          "scope_place_id": 5441,
+          "entity_id": null,
+          "input_hash": "1aef838b61a723e801e1b4fd5c65114bcdffb5d47a8062aa3754fa210d2d6408",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5441-scope"
+        },
+        {
+          "mention_id": 11644,
+          "scope_place_id": 5441,
+          "entity_id": "58d542ebe18a1dd3505b7cdc60db030c",
+          "input_hash": "8e1a2d9642ffb30a0bd5ed3da59239edc76dd2facab45718dbecb4673829a40c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5441-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "ed9bc21166311176df3f423b7db6af19f869ce62bf91a9c9d8b19969ead1efce",
+        "mentions": [
+          {
+            "mentionId": 11525,
+            "inputHash": "1aef838b61a723e801e1b4fd5c65114bcdffb5d47a8062aa3754fa210d2d6408"
+          },
+          {
+            "mentionId": 11644,
+            "inputHash": "8e1a2d9642ffb30a0bd5ed3da59239edc76dd2facab45718dbecb4673829a40c"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 9122,
+          "fingerprint": "28001da7062a0a3483d9adb2a998815bc4c7bc6f58ffbd7baba8b1d067fa0669",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "1aef838b61a723e801e1b4fd5c65114bcdffb5d47a8062aa3754fa210d2d6408",
+            "mentionId": 11525,
+            "scopePlaceIds": [
+              5441
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "92a39f8f2d95070cc627828807686bac",
+          "city": "济南",
+          "canonical_name": "亮亮拉面",
+          "primary_place_id": 5385,
+          "aliases": [
+            "亮亮拉面"
+          ],
+          "legacy_ids": [
+            "92a39f8f2d95070cc627828807686bac"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5385,
+          "entity_id": "92a39f8f2d95070cc627828807686bac"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5385,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 20.7,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5385,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "骨汤浓郁，拉面劲道牛肉大块",
+              "evidence": "骨汤浓郁，拉面劲道牛肉大块"
+            },
+            {
+              "reason": "经十一路面馆，拉面推荐",
+              "evidence": "我个人感觉还不错的一些店"
+            },
+            {
+              "reason": "骨汤浓郁，拉面劲道牛肉大块",
+              "evidence": "骨汤浓郁，拉面劲道牛肉大块"
+            }
+          ],
+          "recommend_score": 12.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7834,
+          "canonical_place_id": 5385,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 亮亮拉面",
+          "evidence_summary": "骨汤浓郁，拉面劲道牛肉大块"
+        },
+        {
+          "id": 7835,
+          "canonical_place_id": 5385,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 亮亮拉面",
+          "evidence_summary": "经十一路面馆，拉面推荐"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5385,
+          "city": "济南",
+          "name_keys": [
+            "亮亮拉面"
+          ],
+          "entity_ids": [
+            "92a39f8f2d95070cc627828807686bac"
+          ],
+          "source_hash": "d7ec8eaf09a21f0171ef4311aa3bd7ad8f0bdb134901eed5b60fc32677efe7fa",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5385-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+              "kind": "reviewed_full_branch_scope",
+              "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。",
+              "mentionIds": [
+                11481,
+                11676,
+                12741
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "92a39f8f2d95070cc627828807686bac"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11481,
+          "scope_place_id": 5385,
+          "entity_id": null,
+          "input_hash": "8a13cda0d8a59b2bb55b9dc1f889f6bce22e43fabfdcadcf7402c26295179b07",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5385-scope"
+        },
+        {
+          "mention_id": 11676,
+          "scope_place_id": 5385,
+          "entity_id": "92a39f8f2d95070cc627828807686bac",
+          "input_hash": "659b6fc27a4cef6bb4962907160f3f9131308ac70f3efd928fdc4073a96679b8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5385-scope"
+        },
+        {
+          "mention_id": 12741,
+          "scope_place_id": 5385,
+          "entity_id": null,
+          "input_hash": "68d76af3edaf53533eaa418c7114fff5c48c383733ed797ba58763fae90a95e9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-57-source-5385-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "d7ec8eaf09a21f0171ef4311aa3bd7ad8f0bdb134901eed5b60fc32677efe7fa",
+        "mentions": [
+          {
+            "mentionId": 11481,
+            "inputHash": "8a13cda0d8a59b2bb55b9dc1f889f6bce22e43fabfdcadcf7402c26295179b07"
+          },
+          {
+            "mentionId": 11676,
+            "inputHash": "659b6fc27a4cef6bb4962907160f3f9131308ac70f3efd928fdc4073a96679b8"
+          },
+          {
+            "mentionId": 12741,
+            "inputHash": "68d76af3edaf53533eaa418c7114fff5c48c383733ed797ba58763fae90a95e9"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 9231,
+          "fingerprint": "ce02cf18605fa5b249e445cb0f5b9b61658b114d83b7debb0a6a363c6e889476",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8a13cda0d8a59b2bb55b9dc1f889f6bce22e43fabfdcadcf7402c26295179b07",
+            "mentionId": 11481,
+            "scopePlaceIds": [
+              5385
+            ]
+          }
+        },
+        {
+          "id": 9302,
+          "fingerprint": "0a22d56a86fc99b0344b489384da23904819cfee637c3debf9b63f4dd1cee5c3",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "68d76af3edaf53533eaa418c7114fff5c48c383733ed797ba58763fae90a95e9",
+            "mentionId": 12741,
+            "scopePlaceIds": [
+              5385
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "84929fb3085880c48c0cebb71aae3ad4",
+          "city": "济南",
+          "canonical_name": "燕喜堂（CBD店）",
+          "primary_place_id": 5404,
+          "aliases": [
+            "燕喜堂",
+            "燕喜堂（CBD店）"
+          ],
+          "legacy_ids": [
+            "6b10e233d45b9219abfa81b59967fe3f",
+            "84929fb3085880c48c0cebb71aae3ad4"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "CBD",
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "qualify_branch_from_full_original",
+              "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+              "originalMentionIds": [
+                11537,
+                12863
+              ],
+              "conclusion": "原文完整名称和位置限定保留稳定ID/旧裸名；旧点不足以支持明确分店，燕喜堂旧金菊巷地址与CBD店冲突。位置清空待核，地址仅用原文范围，不发明门牌或借其他分店点。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5404,
+          "entity_id": "84929fb3085880c48c0cebb71aae3ad4"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "58d542ebe18a1dd3505b7cdc60db030c",
+          "city": "济南",
+          "canonical_name": "刘小忙把子肉（联四路）",
+          "primary_place_id": 5441,
+          "aliases": [
+            "刘小忙把子肉",
+            "刘小忙把子肉（联四路）"
+          ],
+          "legacy_ids": [
+            "58d542ebe18a1dd3505b7cdc60db030c",
+            "b02d2f89874a68fa89396a713241830f"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "联四路",
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "qualify_branch_from_full_original",
+              "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+              "originalMentionIds": [
+                11644
+              ],
+              "conclusion": "原文完整名称和位置限定保留稳定ID/旧裸名；旧点不足以支持明确分店，燕喜堂旧金菊巷地址与CBD店冲突。位置清空待核，地址仅用原文范围，不发明门牌或借其他分店点。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5441,
+          "entity_id": "58d542ebe18a1dd3505b7cdc60db030c"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "92a39f8f2d95070cc627828807686bac",
+          "city": "济南",
+          "canonical_name": "亮亮拉面（经十一路）",
+          "primary_place_id": 5385,
+          "aliases": [
+            "亮亮拉面",
+            "亮亮拉面（经十一路）"
+          ],
+          "legacy_ids": [
+            "37baaeeaca6f91aa57188b40261583e3",
+            "92a39f8f2d95070cc627828807686bac"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "address": "经十一路",
+            "lat": null,
+            "lng": null,
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "qualify_branch_from_full_original",
+              "file": "priority-cities/济南/restaurant-branches-source-review-01.json",
+              "originalMentionIds": [
+                11676
+              ],
+              "conclusion": "原文完整名称和位置限定保留稳定ID/旧裸名；旧点不足以支持明确分店，燕喜堂旧金菊巷地址与CBD店冲突。位置清空待核，地址仅用原文范围，不发明门牌或借其他分店点。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5385,
+          "entity_id": "92a39f8f2d95070cc627828807686bac"
+        }
+      ]
+    }
+  ]
+}

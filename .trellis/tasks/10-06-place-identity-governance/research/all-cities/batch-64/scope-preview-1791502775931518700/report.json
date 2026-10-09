@@ -1,0 +1,57 @@
+{
+  "batch": 64,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 4,
+  "governedSources": 3,
+  "mentions": 10,
+  "fullNotes": 3,
+  "assignments": 8,
+  "confirmed": 7,
+  "pendingAdded": 1,
+  "readOnlySources": 1,
+  "readOnlyHuaXiangPreserved": true,
+  "results": [
+    {
+      "id": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨（县东巷71号）",
+      "confirmed": 2,
+      "highlightsBefore": 2,
+      "highlightsAfter": 1,
+      "evidenceBefore": 2,
+      "evidenceAfter": 1,
+      "coordinatesCleared": true
+    },
+    {
+      "id": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉（山大南路店）",
+      "confirmed": 3,
+      "highlightsBefore": 2,
+      "highlightsAfter": 2,
+      "evidenceBefore": 2,
+      "evidenceAfter": 2,
+      "coordinatesCleared": false
+    },
+    {
+      "id": "e2740e4ad547f99f5ff9311f7d5359b8",
+      "name": "蜗牛叔叔的食堂（泉城路店）",
+      "confirmed": 2,
+      "highlightsBefore": 1,
+      "highlightsAfter": 1,
+      "evidenceBefore": 1,
+      "evidenceAfter": 1,
+      "coordinatesCleared": false
+    }
+  ],
+  "newEntities": 0,
+  "withdrawals": 0,
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "sourceDatesAndAnalysisUnchanged": true,
+  "confirmedOpinionsAndDatesPreserved": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

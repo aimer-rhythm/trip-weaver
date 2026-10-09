@@ -1,0 +1,47 @@
+[
+  {
+    "key": "all-cities-20261009-batch-52-source-5342-scope",
+    "city": "济南",
+    "sourcePlaceId": 5342,
+    "expectedSourceHash": "c472408920f314eef5708b85ae208c7071b4af1e1f56850499c471676fc34fb8",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "53fc7a0204959595c1277e9c76915534": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11364,
+        "inputHash": "9a1accef11c992568fc90b6d0c2f50b1e627aef328b392003198a7c2f5ba25bf",
+        "entityId": "53fc7a0204959595c1277e9c76915534"
+      },
+      {
+        "mentionId": 11664,
+        "inputHash": "8398d229f3c24901e48b8ee2500c1576593eda927c62ec7b1bfd52bed0209309",
+        "entityId": null
+      },
+      {
+        "mentionId": 12605,
+        "inputHash": "abfa234e3b452810dbc65218b6551bde66cd7704063c8c84a2ead7ec40da0b16",
+        "entityId": "53fc7a0204959595c1277e9c76915534"
+      },
+      {
+        "mentionId": 12892,
+        "inputHash": "86bebb9e8c05d91ac6386dc327d52853321d566542149a98c16d23320c21fd9b",
+        "entityId": null
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_branch_scope",
+        "file": "priority-cities/济南/qinji-source-review-01.json",
+        "mentionIds": [
+          11364,
+          11664,
+          12605,
+          12892
+        ],
+        "conclusion": "明确铜元局前街两同篇提及保留；多位置推荐和无分店裸名留待审。保留原名/ID、原坐标与地址但不宣称新定位通过；不创建分店或别名。"
+      }
+    ]
+  }
+]

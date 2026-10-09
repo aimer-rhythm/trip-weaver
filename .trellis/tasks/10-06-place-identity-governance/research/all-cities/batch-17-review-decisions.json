@@ -1,0 +1,93 @@
+[
+  {
+    "key": "all-cities-20261006-batch-17-review-453",
+    "city": "重庆",
+    "reviewFingerprint": "b55ffd031f752eb43e717559849da3b179d1b5db3171c5267e012000c3b300a4",
+    "expectedRevisions": {
+      "881d5a2004366fad8408312898244037": 2,
+      "f3568e59fefd6975056c4da0f18a9c52": 2
+    },
+    "verdict": "uncertain",
+    "explanation": "补充门店正文确认范嬢嬢春森路糯米团位于学田湾正街59号春森路社区入口，原先将春森路与学田湾视作不同分店的推断没有依据。746原文确有抽取错字；839早餐后步行三峡博物馆与该店相容，但note28泛品牌推荐仍缺具体门店，尚不据此把全部源合并。本批仅撤销两泛名远郊错点，保留边界待核。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          453
+        ],
+        "conclusion": "补充门店正文确认范嬢嬢春森路糯米团位于学田湾正街59号春森路社区入口，原先将春森路与学田湾视作不同分店的推断没有依据。746原文确有抽取错字；839早餐后步行三峡博物馆与该店相容，但note28泛品牌推荐仍缺具体门店，尚不据此把全部源合并。本批仅撤销两泛名远郊错点，保留边界待核。",
+        "sourcePlaceIds": [
+          "263",
+          "105"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          746,
+          410,
+          816,
+          839,
+          1337
+        ],
+        "conclusion": "补充门店正文确认范嬢嬢春森路糯米团位于学田湾正街59号春森路社区入口，原先将春森路与学田湾视作不同分店的推断没有依据。746原文确有抽取错字；839早餐后步行三峡博物馆与该店相容，但note28泛品牌推荐仍缺具体门店，尚不据此把全部源合并。本批仅撤销两泛名远郊错点，保留边界待核。"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.trip.com/restaurant/china/chongqing/detail/restaurant-30983810",
+        "file": "all-cities/chongqing-fan-trip-fetch.json",
+        "sha256": "77d09818ee2894632d50214dbc0bb402bb3e4f6d3eceb98814d7ac0d41de4323"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-17-review-454",
+    "city": "重庆",
+    "reviewFingerprint": "10ca2fab6fcefdf94af36c03dd0c55c6c7e6dcd9a0ad7d8845449c0c47af31f6",
+    "expectedRevisions": {
+      "89370f25d1c281bc8b8bda6f4eb3deb2": 2,
+      "f3568e59fefd6975056c4da0f18a9c52": 2
+    },
+    "verdict": "uncertain",
+    "explanation": "新抓取Trip门店正文直接写明学田湾正街59号春森路社区入口，507/1065只提供店名，未写所在街道。旧评估所称春森路店与学田湾地址冲突不成立，现保留该店坐标并纠正美食类别。839行程与该店相容，但410/816/1337泛名源仍未明确分店，暂不把所有范嬢嬢提及归为一个门店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          454
+        ],
+        "conclusion": "新抓取Trip门店正文直接写明学田湾正街59号春森路社区入口，507/1065只提供店名，未写所在街道。旧评估所称春森路店与学田湾地址冲突不成立，现保留该店坐标并纠正美食类别。839行程与该店相容，但410/816/1337泛名源仍未明确分店，暂不把所有范嬢嬢提及归为一个门店。",
+        "sourcePlaceIds": [
+          "168",
+          "105"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          507,
+          1065,
+          410,
+          816,
+          839,
+          1337
+        ],
+        "conclusion": "新抓取Trip门店正文直接写明学田湾正街59号春森路社区入口，507/1065只提供店名，未写所在街道。旧评估所称春森路店与学田湾地址冲突不成立，现保留该店坐标并纠正美食类别。839行程与该店相容，但410/816/1337泛名源仍未明确分店，暂不把所有范嬢嬢提及归为一个门店。"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.trip.com/restaurant/china/chongqing/detail/restaurant-30983810",
+        "file": "all-cities/chongqing-fan-trip-fetch.json",
+        "sha256": "77d09818ee2894632d50214dbc0bb402bb3e4f6d3eceb98814d7ac0d41de4323"
+      }
+    ]
+  }
+]

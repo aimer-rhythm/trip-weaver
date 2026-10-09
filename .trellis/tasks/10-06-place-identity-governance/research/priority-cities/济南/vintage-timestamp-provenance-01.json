@@ -1,0 +1,3306 @@
+{
+  "batch": 50,
+  "readOnly": true,
+  "at": "2026-10-08T19:49:25.727418+00:00",
+  "stats": {
+    "highlights": 148,
+    "entities": 127,
+    "matchedMentions": 165,
+    "matchedNotes": 32,
+    "highlightsWithSourceDate": 148,
+    "matchesWithoutSourceDate": 0,
+    "paths": {
+      "scoped_legacy_reason": 13,
+      "ordinary_legacy_reason": 152
+    }
+  },
+  "correctsExplanationIn": "priority-cities/济南/vintage-downstream-check-01.json#/fallbackObservedAtMeaning",
+  "cause": "未携带observedAt的旧reason看点以编译时间回填；不能解释为原始来源日期缺失。",
+  "dateSemantics": "load_mention_rows.observed_at读取RawNote.created_at；本次不将其进一步解释为游览时间或发布时间。",
+  "reproduction": "按现行目录、原提及、有效字段和普通/受控路径匹配text/quote/sourceUrl，再以两次compiledAt调用原build_place_content逐项重现。不是历史写库日志证明。",
+  "productionFixApplied": false,
+  "separateMetadataFinding": true,
+  "sourceCode": [
+    {
+      "path": "app/clean/place_content.py",
+      "sha256": "bf770cf9274ceec1b48f9af75e1fcc1980c431d1280f0c69dad6fb2f222891fa"
+    },
+    {
+      "path": "app/aggregate/mention_identity.py",
+      "sha256": "fceaf587dcbc10dea32d9ad4825297dfbb4c6eaa93008a88fc2b1ba8be902bc1"
+    },
+    {
+      "path": "app/clean/scoped_place_export.py",
+      "sha256": "42da075dac1981e7426f4cf7c86b3a2ac293324a143ce3291803b72fefed2583"
+    },
+    {
+      "path": "scripts/export_to_tripweaver.py",
+      "sha256": "69d7122a5f5b4c714a3b45b2feacb602cf5de5bf72d3a9c8d02cb8b27e2da61f"
+    }
+  ],
+  "rows": [
+    {
+      "entityId": "065e077002130047feaadff4f607b480",
+      "name": "起凤泉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "quote": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12943,
+          "noteId": 2837,
+          "name": "起凤泉",
+          "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07",
+          "rawNoteCreatedAt": "2026-10-06T02:04:31.077704+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "王府池子出来往北走的岔路口可见",
+      "quote": "王府池子出来往北走的岔路口可见",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314?xsec_token=ABWQsm72v70MBvs2W_NMGaDJwsYqiEZ3NlT_8sKg9GUQ4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12584,
+          "noteId": 2813,
+          "name": "腾蛟泉",
+          "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5",
+          "rawNoteCreatedAt": "2026-10-06T02:03:42.226798+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "quote": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12942,
+          "noteId": 2837,
+          "name": "腾蛟泉",
+          "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51",
+          "rawNoteCreatedAt": "2026-10-06T02:04:31.077704+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "0fb7100869b099451d4f64c5b8ca8886",
+      "name": "老兵把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "经六路，把子肉推荐",
+      "quote": "经六路，把子肉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11647,
+          "noteId": 2602,
+          "name": "老兵把子肉",
+          "inputHash": "d8f98606232b49df1301d681c29a9fce78973df16ebcc15894db97194c79bf07",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "106f5a29ddb905e7b7cba79d49c2f2be",
+      "name": "板凳面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11551,
+          "noteId": 2592,
+          "name": "板凳面",
+          "inputHash": "db3978fc78291af5b9a8a2177401aadca31cffcbdcdcc29f942ae55ce03ba272",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "1c37774f673afed61066011e157e544d",
+      "name": "台湾奶香脆皮麻花",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "洪家楼北路甜品，麻花推荐",
+      "quote": "洪家楼北路甜品，麻花推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11675,
+          "noteId": 2602,
+          "name": "台湾奶香脆皮麻花",
+          "inputHash": "b800d9cb937f0ba9dfd10c6b9ee000306bc05dc21c268cf26978645d989cea90",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "1c37774f673afed61066011e157e544d",
+      "name": "台湾奶香脆皮麻花",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12894,
+          "noteId": 2856,
+          "name": "奶香脆皮麻花",
+          "inputHash": "bb973c12dd89f756168d2c1b8ec39bc57f75b99bb2858b7cde773a6779b33670",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "1f17a220f33decfd9ff32b68ffecf83e",
+      "name": "白猪猪&黑熊",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "望平街甜品，推荐",
+      "quote": "望平街甜品，推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11674,
+          "noteId": 2602,
+          "name": "白猪猪＆黑熊",
+          "inputHash": "da5a961c6523d9b539e76d6c8e594b7a5dd9c4ae3f66090d5f31a0f65b92058c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "1fd9d4a019e1ea7b33e38e0ed36f1cea",
+      "name": "西记拉面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "经二路面馆，拉面不错",
+      "quote": "经二路面馆，拉面不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11677,
+          "noteId": 2602,
+          "name": "西记拉面",
+          "inputHash": "d0787f91c65854b2196c349a98be3288f7b344070794fee8a356604b61e54fcb",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "把子肉肥而不腻，肉汤拌饭香",
+      "quote": "把子肉肥而不腻，肉汤拌饭香",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11477,
+          "noteId": 2560,
+          "name": "超意兴",
+          "inputHash": "28b41d6039b92b532cd7834242e14aba6fa23d5ccc4c824ae05101e64a4d8e08",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "把子肉肥而不腻，浇肉汤拌饭香",
+      "quote": "把子肉肥而不腻，浇肉汤拌饭香",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12737,
+          "noteId": 2560,
+          "name": "超意兴",
+          "inputHash": "c238a48bf7a597d9d6856b22b0012c2d92177674b147bbfa8a4a7a608827d488",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "晚餐可选，吃把子肉",
+      "quote": "晚餐可选，吃把子肉",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11391,
+          "noteId": 2548,
+          "name": "超意兴",
+          "inputHash": "3aef70fcdbc1a794214d639e6c54170eb9dc4e887f71613d4c4e26da95b1d439",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.841133+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 3,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南特色美食店铺推荐",
+      "quote": "济南特色美食店铺推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11524,
+          "noteId": 2563,
+          "name": "超意兴",
+          "inputHash": "46cb8278fd30d1d3e75ce136d972ee681f99d0c88d6fb7166e2e5cd65cbeaf68",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.566249+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "25d406fb3dc0c7375b30fc605c43d81c",
+      "name": "萃华楼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "宽厚里，鲁菜老字号",
+      "quote": "宽厚里，鲁菜老字号",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11655,
+          "noteId": 2602,
+          "name": "萃华楼",
+          "inputHash": "259c1351074e2863a2281df3f4eae737e907d94b093b482f98750fbfb5b77660",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "name": "千佛山",
+      "highlightIndex": 3,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "早起爬山，不算累但热",
+      "quote": "早起爬山，不算累但热",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11392,
+          "noteId": 2548,
+          "name": "千佛山",
+          "inputHash": "b8847dacca276207c86180f295e9a609c064dcd136e695ca75093e3abe28c29c",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.841133+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2a024ac368c6ae885e1e0e541f9eb49c",
+      "name": "山体叶殷米线",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "南门大街米线，推荐",
+      "quote": "南门大街米线，推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11672,
+          "noteId": 2602,
+          "name": "山体叶殷米线",
+          "inputHash": "685cac48ca5737673ec9c3d43b9feeac41813a7f947037f4c52808d74dbb0561",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2a6e8d7d8b1baac17f2a4f226bc0d1b8",
+      "name": "宝勤临沂炒鸡",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南必吃美食之一，被明确推荐",
+      "quote": "济南必吃美食之一，被明确推荐。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12686,
+          "noteId": 2550,
+          "name": "宝勤临沂炒鸡",
+          "inputHash": "9952e0ea27cfd6aacaff9a009d313f468a0dafa9013c2f82c54b9cd5b7ac81de",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.888035+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2a94775dad345188f249f3d5124a06eb",
+      "name": "燕山把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "窑头路摆摊，把子肉推荐",
+      "quote": "窑头路摆摊，把子肉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11651,
+          "noteId": 2602,
+          "name": "燕山把子肉",
+          "inputHash": "f7e8a9030e5b10ad306355d1940574429072e7f3be0e830ef57c227e811f60b2",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2bbb77b1923a5fbb1d763f25e368b6ef",
+      "name": "黄老太牛肉烧饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "清真南大寺附近，老字号烧饼",
+      "quote": "清真南大寺附近，老字号烧饼",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11632,
+          "noteId": 2602,
+          "name": "黄老太牛肉烧饼",
+          "inputHash": "15e8e37dfbe017a7f8f34ab43e3c5bbacc3fb992040b2b314a608bf6a8c49429",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2e0dceaccafda3b389cb3f77db1bf235",
+      "name": "李长久萃华楼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "家常菜味道好，盲点不踩雷，人均五六十性价比高",
+      "quote": "家常菜味道好，盲点不踩雷，人均五六十性价比高",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a8fafd8000000002c03e6ae?xsec_token=ABHXnWFVX8dyQvY67-RW9kxYTy3LcxZB05PRUCMYTQPLM=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11610,
+          "noteId": 2584,
+          "name": "李长久萃华楼",
+          "inputHash": "cf0ddb1fca13874da8eaea5e59468f2f6213ada9ba1001e0efe6155f53093b33",
+          "rawNoteCreatedAt": "2026-10-04T11:18:45.377346+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2e8170d0a8316b0e2494853f7f51cf42",
+      "name": "世茂广场",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "行程中提及，作为吃饭地点",
+      "quote": "行程中提及，作为吃饭地点",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12935,
+          "noteId": 2835,
+          "name": "世茂广场",
+          "inputHash": "9ee8892e9307a7c8c0a717580d4d8da79673620247a00cf9993cc6e488be2259",
+          "rawNoteCreatedAt": "2026-10-06T02:04:30.986231+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "2f5f0095f24c189ebf61109638172394",
+      "name": "邻家羊肉面饸饹面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11363,
+          "noteId": 2585,
+          "name": "邻家羊肉面饸饹面",
+          "inputHash": "9aa1e766c682a7aef193e7fbcbfe9b77ffaf23097e1b01c4cc3d73e216e3844b",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12604,
+          "noteId": 2585,
+          "name": "邻家羊肉面饸饹面",
+          "inputHash": "346b6d6a967cf13c3a50771a9db8fc506b39a97c7f7f3f0d0f4f4f0d0672ea58",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "31b3882d23aedc980fcd21d5bca3a100",
+      "name": "陈氏鲁菜",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "省府前街，鲁菜推荐",
+      "quote": "省府前街，鲁菜推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11654,
+          "noteId": 2602,
+          "name": "陈氏鲁菜",
+          "inputHash": "e6001590a8e413790383e7e2ed992236927ba8b12bf9f7049f146249acee058d",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "321dced6121f5536867e729a47f94ecf",
+      "name": "悦荟广场",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "夜景静谧唯美，适合打卡",
+      "quote": "夜景静谧唯美，适合打卡",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69aa5fac000000001a023b9e?xsec_token=AByVQQqMwhN8neWf1E2LIyyywDcmR_FDmBL00VvS23HzQ=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12980,
+          "noteId": 2843,
+          "name": "悦荟广场",
+          "inputHash": "caca30f3302d3813fa35f63226bcdb1469a8f46ffe2bd3fd6f6398d73826a3fb",
+          "rawNoteCreatedAt": "2026-10-06T02:04:47.025194+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "326cd34165dd905d31af6cd929a0deda",
+      "name": "杨家牛肉烧饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，清真南大寺附近，味道不错",
+      "quote": "本地人推荐，清真南大寺附近，味道不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11629,
+          "noteId": 2602,
+          "name": "杨家牛肉烧饼",
+          "inputHash": "4e62dbfc5e43ca241c10b9c752c6a8ee9334128416c0f7c5d2e354e4e3f5db4f",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3290af7793dea0fd22138e561900775f",
+      "name": "李山记铁板炒鸡",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11354,
+          "noteId": 2585,
+          "name": "李山记铁板炒鸡",
+          "inputHash": "df8abd6ebe85a4c0afa46c438c2cddd4212b6b6f5b3f0352d3badd7a14fbd4f2",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12595,
+          "noteId": 2585,
+          "name": "李山记铁板炒鸡",
+          "inputHash": "daefdcc44a69bfc20eeaf0836ae217050c771b619faa571a0f286913296bdb68",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "34fec8eb89e06bf897e7ed869a42d6a1",
+      "name": "泉城公园",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南公园，适合拍照",
+      "quote": "济南公园，适合拍照",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a799fc90000000005030228?xsec_token=ABIdwy9QS8no2-FqpllUvZOgdt0cPnDF7Pf345e7xBMPw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12782,
+          "noteId": 2798,
+          "name": "泉城公园",
+          "inputHash": "bf6a18f0d244beab7866dd340c7901d31a57cb9e5f429bd3d4a10e53a0f92ef3",
+          "rawNoteCreatedAt": "2026-10-06T02:02:50.264172+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "36f9aa53756884832c688760e6febce3",
+      "name": "粒粒香把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "东西丹凤街，把子肉推荐",
+      "quote": "东西丹凤街，把子肉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11645,
+          "noteId": 2602,
+          "name": "粒粒香把子肉",
+          "inputHash": "bd3ff79431ecde0e9fde3c18c0e90bc7c369c16bdc0877e06278beebcdd8b292",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "38c5707a6d6f7d2ea1b45903481bc3ef",
+      "name": "聚源饭庄",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "岔路街，鲁菜推荐",
+      "quote": "岔路街，鲁菜推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11659,
+          "noteId": 2602,
+          "name": "聚源饭庄",
+          "inputHash": "69096d1347599f2882fc673b96499fdfdfe4f70b3182d44d704d022583506e39",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "name": "春水锅贴",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "量大好吃，午餐选择",
+      "quote": "量大好吃，午餐选择",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11384,
+          "noteId": 2548,
+          "name": "春水锅贴",
+          "inputHash": "e5877028d7fe5d99b3325bef7fd9e449bc4682afc8b1187cbd6b35e02d50b739",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.841133+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "name": "春水锅贴",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南特色美食店铺推荐",
+      "quote": "济南特色美食店铺推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11526,
+          "noteId": 2563,
+          "name": "春水锅贴",
+          "inputHash": "16d1a513c47ccf9937e6eed20fb5ea534f2c1b4b72f95e770313a5f73113e4a9",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.566249+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3b73bac1cb3054581c6bde160d8a4a00",
+      "name": "苓记鸭血粉丝",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11356,
+          "noteId": 2585,
+          "name": "苓记鸭血粉丝",
+          "inputHash": "cc82ee1bd007cfebf640ffb53570e9f6d361fa0cc4ea0054b28f47bac1be8b3f",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12597,
+          "noteId": 2585,
+          "name": "苓记鸭血粉丝",
+          "inputHash": "ed631035e77b4cfb72f33c760d04ccb58a47e56b6ab187e53f6f7dd3679346ae",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3d28555e6b570412c88e32a3fe17fd64",
+      "name": "泉城路",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作为地理位置参照，附近有美食老店，方便游览",
+      "quote": "作为地理位置参照，附近有美食老店，方便游览",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a6dbb5a0000000008010e84?xsec_token=ABvg2pEDg-SuhOfFiXvXAcc1ze7k49Fyku_hlwgvi-KS8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11600,
+          "noteId": 2589,
+          "name": "泉城路",
+          "inputHash": "03c9c13370fd45beb36dff6501f1b287786b9feb442fc9fac2d1097da168397d",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.467928+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3f6a2dce847940205f501690e2548e88",
+      "name": "草包包子",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "百年老店，猪肉灌汤包爆汁不腻",
+      "quote": "百年老店，猪肉灌汤包爆汁不腻",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11480,
+          "noteId": 2560,
+          "name": "草包包子",
+          "inputHash": "db55e8010a39607f4abe8b29c6ed8da8d8c26a98febacda5352e722e3c1bc3af",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12740,
+          "noteId": 2560,
+          "name": "草包包子",
+          "inputHash": "3f080cb2826578c0ee29b96822c1129ad7a978fed78613449e651a4383993dff",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "3f6c05ac0f09bc256ce73af1b0cbd55e",
+      "name": "匡山公园牛肉烧饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济齐路，烧饼配羊汤不错",
+      "quote": "济齐路，烧饼配羊汤不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11633,
+          "noteId": 2602,
+          "name": "匡山公园牛肉烧饼",
+          "inputHash": "72f5afb429d966327b461b3f708719c0c0a4cd87f96b8062382cfcd32a2c2ada",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "40d5d6cd06e785a12fa14a6a8b0ab046",
+      "name": "济南站",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "住宿推荐区域，交通方便，适合赶火车人群",
+      "quote": "住宿推荐区域，交通方便，适合赶火车人群。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4?xsec_token=ABvSUgYev4ChlyamnXtiJrq2EqL7VF1V4-0pA2BceOug0=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11422,
+          "noteId": 2550,
+          "name": "济南站",
+          "inputHash": "9f9e8686e1b36bbce9c4578ae0ba3a499e2d8ded8ba27385df88dc22628f8f9e",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.888035+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "41f4a68d54eb459ddefbd9efa87aeb0c",
+      "name": "红星菜馆",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "东泺河路，鲁菜不错",
+      "quote": "东泺河路，鲁菜不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11660,
+          "noteId": 2602,
+          "name": "红星菜馆",
+          "inputHash": "823276ca5e4be1574b658284b001d8d842cf9947b14b29134bf400a8e737bc89",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "42aaf77742eaf014918d93c4ceabb9e4",
+      "name": "武岳庙把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11355,
+          "noteId": 2585,
+          "name": "武岳庙把子肉",
+          "inputHash": "33a1ccbcae1a700e1ab3d907c7cdad4f4e94331e79ad8196cde224a08aba6d13",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11365,
+          "noteId": 2585,
+          "name": "桥下把子肉",
+          "inputHash": "8acd9ef31823f7d993303da42bbb48542961cfe7672208341233d6bb0aa0e2b3",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12606,
+          "noteId": 2585,
+          "name": "桥下把子肉",
+          "inputHash": "834dce7d70ad3a85fa35f35a9ab8068a785fb84b0d023aa5753fe4b443baebec",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "二环东路山大南路，把子肉推荐",
+      "quote": "二环东路山大南路，把子肉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11643,
+          "noteId": 2602,
+          "name": "桥下把子肉",
+          "inputHash": "d3e164685cbe0456933450b35c8526e9253a218addb9dd68fe2e7f9003438e93",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4b00a6de0385cea910495e6224b2ebd4",
+      "name": "城南往事",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11357,
+          "noteId": 2585,
+          "name": "城南往事",
+          "inputHash": "6b00d4d374a470a7dd6cb657d4e31cd431a8f2c0bfe7ac468d408d52b13054c5",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4d3cb1cde3e585f0ff8bca6cf1b87ba7",
+      "name": "福哥把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "菜市庄，把子肉推荐",
+      "quote": "菜市庄，把子肉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11649,
+          "noteId": 2602,
+          "name": "福哥把子肉",
+          "inputHash": "133d54b46d7303ca0941e6b1e003109dbf3a19fce8088617e97e7d248dbe89fa",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "位于推荐路线上，适合citywalk",
+      "quote": "位于推荐路线上，适合citywalk",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69f339c4000000001e00c640?xsec_token=ABPvdzyX8DSY-ngnoVq-rgPAFTJ6nxsAPgvnJwcxK5SxE=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11404,
+          "noteId": 2569,
+          "name": "护城河",
+          "inputHash": "f6fae9f146d207c1bef563cd6eb1337d2e7c5f6067170823b9f2dc1ccb98d72a",
+          "rawNoteCreatedAt": "2026-10-04T11:18:21.148869+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "推荐游览，位于推荐路线第六站",
+      "quote": "推荐游览，位于推荐路线第六站",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12901,
+          "noteId": 2856,
+          "name": "护城河",
+          "inputHash": "4d2f1aba8523bad18d2c1b2e07d57daf33b731a54e7276f6cda54df65def7a19",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "4fb66f05d89985017ece60e2125be105",
+      "name": "清河老苏把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "老派把子肉，只干早上中午，别跑空",
+      "quote": "老派把子肉，只干早上中午，别跑空",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11642,
+          "noteId": 2602,
+          "name": "清河老苏把子肉",
+          "inputHash": "bd76a5a0b45bd11f3cf82efbebe1d8e861cc0a0910c7e8fdb22b1acec98dbeaf",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "51ed39b8b5f36ae30151b46c6d81d350",
+      "name": "田田甜手作糖水",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "雪山路甜品，糖水推荐",
+      "quote": "雪山路甜品，糖水推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11673,
+          "noteId": 2602,
+          "name": "田田甜手作糖水",
+          "inputHash": "82b262ed9effd5828c158834d7eec9efcb356f15dff42b488261cd55842ec65c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11364,
+          "noteId": 2585,
+          "name": "秦记火烧",
+          "inputHash": "9a1accef11c992568fc90b6d0c2f50b1e627aef328b392003198a7c2f5ba25bf",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12605,
+          "noteId": 2585,
+          "name": "秦记火烧",
+          "inputHash": "abfa234e3b452810dbc65218b6551bde66cd7704063c8c84a2ead7ec40da0b16",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "肉火烧去制锦市，其他去河边",
+      "quote": "肉火烧去制锦市，其他去河边",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11664,
+          "noteId": 2602,
+          "name": "秦记火烧",
+          "inputHash": "8398d229f3c24901e48b8ee2500c1576593eda927c62ec7b1bfd52bed0209309",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12892,
+          "noteId": 2856,
+          "name": "秦记火烧",
+          "inputHash": "86bebb9e8c05d91ac6386dc327d52853321d566542149a98c16d23320c21fd9b",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "5772c79dc6c431d7acf237842ba57c9b",
+      "name": "五福林林烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "羊头峪路烧烤，味道不错",
+      "quote": "羊头峪路烧烤，味道不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11641,
+          "noteId": 2602,
+          "name": "五福林林烧烤",
+          "inputHash": "ac124cfb67e3b35c0a9016822b6e4b3fccbb00e46559b7f132526f7442ed8401",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11353,
+          "noteId": 2585,
+          "name": "许记排骨",
+          "inputHash": "a755919e245c491e112b26a591d8d6bcd3a88ab3af63c390605ef3e7d0e27f84",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12594,
+          "noteId": 2585,
+          "name": "许记排骨",
+          "inputHash": "8a245cc464b69b5d8faf627efd0912eeba32c606ea8b602a64778e66f6f01773",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12893,
+          "noteId": 2856,
+          "name": "许记排骨",
+          "inputHash": "1f28ae5bbd1770c2c4743a3ea822630d14051d5f7205bf0b741511db73919621",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南特色美食店铺推荐",
+      "quote": "济南特色美食店铺推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11525,
+          "noteId": 2563,
+          "name": "刘小忙把子肉",
+          "inputHash": "1aef838b61a723e801e1b4fd5c65114bcdffb5d47a8062aa3754fa210d2d6408",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.566249+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "联四路，把子肉不错",
+      "quote": "联四路，把子肉不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11644,
+          "noteId": 2602,
+          "name": "刘小忙把子肉",
+          "inputHash": "8e1a2d9642ffb30a0bd5ed3da59239edc76dd2facab45718dbecb4673829a40c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "5b4617f123c9b413edd5da21d5fd695e",
+      "name": "福利来",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11352,
+          "noteId": 2585,
+          "name": "福利来",
+          "inputHash": "58ac7cdd4041c46d8363bbfa01624f71f63c8eb8604bb237345c1111dfd4575e",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12593,
+          "noteId": 2585,
+          "name": "福利来",
+          "inputHash": "df76c56f14a1698d977865b27c004c0f11195948e292294c2dba335d1153500c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "5fdeaaae927e29f160128934f56541ca",
+      "name": "于家桥",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "有时间可去，推荐游览",
+      "quote": "有时间可去，推荐游览",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12903,
+          "noteId": 2856,
+          "name": "于家桥",
+          "inputHash": "9e13f644c422164dbd11d6c92e70d2a708ce28a6b0ad2f4f74b6c1014675f575",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "60683207c4072ba20eb079eefd730127",
+      "name": "胖哥炸蛋",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "纬九路炸串，炸蛋特色",
+      "quote": "纬九路炸串，炸蛋特色",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11667,
+          "noteId": 2602,
+          "name": "胖哥炸蛋",
+          "inputHash": "e506f574e82d084a8b8d86310c74421c2c1ffeb0cf6b80f899040eaf5d0d282e",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "61b40c20f3693553ccc9ba4bd1248309",
+      "name": "老张馄饨面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11550,
+          "noteId": 2592,
+          "name": "老张馄饨面",
+          "inputHash": "49b313fc4366dccdc9eae363a1d120a720eb10c97f15cf03c05765b91ce0bfc7",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "636406ca3bce1e8189be38c73b4e8ae4",
+      "name": "泉源之眼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "夜景绝美，骑行不堵车",
+      "quote": "夜景绝美，骑行不堵车",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0?xsec_token=ABufILSqDZN2_5MVzAQdFTtsyPtk2xmUl7aW-FLFEP3rI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12960,
+          "noteId": 2839,
+          "name": "泉源之眼",
+          "inputHash": "ea9d7136fc4f71b943b41628277870f87dbabb5635c051ffecd862228695fe0e",
+          "rawNoteCreatedAt": "2026-10-06T02:04:31.165217+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "656dfc98c616b22ccec2cbbb25bb0ddf",
+      "name": "金猪面馆",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11555,
+          "noteId": 2592,
+          "name": "金猪面馆",
+          "inputHash": "bbd4fdc3930a5fdc1aa52667959202dde9910aa60e20246748a5648ea6dc21a1",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "656e81b9782be5a983f77e050e87e1d4",
+      "name": "洪达鲁菜",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "花园路，鲁菜推荐",
+      "quote": "花园路，鲁菜推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11661,
+          "noteId": 2602,
+          "name": "洪达鲁菜",
+          "inputHash": "ab78ac7cf2f462567db4d9a043a896bc5acae187c5552c3371e78f8a41b50f55",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "6580c2664a98b2aef1203dc3459157e6",
+      "name": "乐乎哉刘家菜",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11359,
+          "noteId": 2585,
+          "name": "乐乎哉刘家菜",
+          "inputHash": "1a0340a5ccb8ee35e6929f53b62afb13e04bea62a731823e1f18bb49a25ae21e",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12600,
+          "noteId": 2585,
+          "name": "乐乎哉刘家菜",
+          "inputHash": "c6d784038cf4f37dca85e03a7f659d6849195f749fa44bd805047dbb2a69fe73",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "name": "济南文字墙",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "热门拍照打卡点",
+      "quote": "热门拍照打卡点",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12688,
+          "noteId": 2817,
+          "name": "济南文字墙",
+          "inputHash": "7cb642dfa4fbd1c103a078b0c2adbcd609ffb3e68de7f278752929fef077d942",
+          "rawNoteCreatedAt": "2026-10-06T02:03:42.369552+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "67ccdef0f2492a706452cf6d08f4d221",
+      "name": "永和面馆",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11546,
+          "noteId": 2592,
+          "name": "永和面馆",
+          "inputHash": "ace38e629cc8b595cc4145ae622ea8197eb8f2a1bce6f35add4f457463c47dd3",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南章丘古城，适合拍照",
+      "quote": "济南章丘古城，适合拍照",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a799fc90000000005030228?xsec_token=ABIdwy9QS8no2-FqpllUvZOgdt0cPnDF7Pf345e7xBMPw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12786,
+          "noteId": 2798,
+          "name": "明水古城",
+          "inputHash": "896c2475a31ba69b6ddadcc0310b177a68b0baad020a23b6090a1c46ebd6f2fc",
+          "rawNoteCreatedAt": "2026-10-06T02:02:50.264172+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "笔记仅提及地点，未给出具体推荐理由",
+      "quote": "笔记仅提及地点，未给出具体推荐理由。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69d25a61000000002202a282?xsec_token=ABNcSE6JbgS7_vjLw7IufNCBlbHfV_UeRHQeDtm3nS8NA=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11508,
+          "noteId": 2616,
+          "name": "明水古城",
+          "inputHash": "1426a377f8360021ffbc550b53851f8b76421de681d2754aca56b18008e7db40",
+          "rawNoteCreatedAt": "2026-10-04T11:20:22.853474+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "从五龙潭南门出500米即到，可顺路参观",
+      "quote": "从五龙潭南门出500米即到，可顺路参观。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11619,
+          "noteId": 2624,
+          "name": "老舍故居",
+          "inputHash": "f0993e7d8ffbe2d09ea5423c09a2905c72a75d5ea5be9ddc8312d5c45742a767",
+          "rawNoteCreatedAt": "2026-10-04T11:20:23.062328+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "citywalk路线起点，文化景点",
+      "quote": "citywalk路线起点，文化景点",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12807,
+          "noteId": 2810,
+          "name": "老舍故居",
+          "inputHash": "23cbd682082c6dee97acd085b07bb748635b081cc64f99e9b8f1a185c3e7c6d0",
+          "rawNoteCreatedAt": "2026-10-06T02:03:19.111155+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "从五龙潭南门出500米即到，可选择性参观",
+      "quote": "从五龙潭南门出500米即到，可选择性参观。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12912,
+          "noteId": 2624,
+          "name": "老舍故居",
+          "inputHash": "886655c2daa5efe164559fc90b2b80ec71d23b8157d2a4218e11f8177223937a",
+          "rawNoteCreatedAt": "2026-10-04T11:20:23.062328+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "6b65cdde75581e6879686f819028e182",
+      "name": "大嘴米线",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11547,
+          "noteId": 2592,
+          "name": "大嘴米线",
+          "inputHash": "0b97ec81a509893e59d1c177ebb783d2df0efa55a48a410fba8b6ae10facf015",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "755dd0b8f4fdc2c26be98ec33bf0d2cb",
+      "name": "文芳面馆",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11545,
+          "noteId": 2592,
+          "name": "文芳面馆",
+          "inputHash": "b705c14635c557c15d102efc9be802c914ac8b234711fa931f7858c2a0e51c10",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "761cfbad1b27263ff29c658a9c68d5dd",
+      "name": "七公酸辣粉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "山师东路朝鲜面，酸辣粉推荐",
+      "quote": "山师东路朝鲜面，酸辣粉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11670,
+          "noteId": 2602,
+          "name": "七公酸辣粉",
+          "inputHash": "d1973e9de5fe6c31c2d2a689a0845d8c6ce626d1ad1dd34edef5dd624e812db6",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "7950bfadd891932d01be8636aba8b51a",
+      "name": "环联夜市",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "超级大的夜市，有时间可逛",
+      "quote": "超级大的夜市，有时间可逛",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12647,
+          "noteId": 2782,
+          "name": "环联夜市",
+          "inputHash": "c67b9f259f616464cd239b60fe96abf9aed5016aa91dfce8a47b55ad12b362e3",
+          "rawNoteCreatedAt": "2026-10-06T02:02:22.855979+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "7961853f7569c7a76604dd58cbb91a7a",
+      "name": "城南往事世茂店",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12598,
+          "noteId": 2585,
+          "name": "城南往事世茂店",
+          "inputHash": "5b99c7dfce13621eddfa01ed15fe7be6b6f919549cde86da136083a4ff5ff35a",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "79e713e197315afb0440835502699789",
+      "name": "民族大街市场",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+      "quote": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12643,
+          "noteId": 2782,
+          "name": "民族大街市场",
+          "inputHash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5",
+          "rawNoteCreatedAt": "2026-10-06T02:02:22.855979+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "7af28441e18afc64d6d4c0fe2505581a",
+      "name": "小林把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "二七南路，把子肉不错",
+      "quote": "二七南路，把子肉不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11648,
+          "noteId": 2602,
+          "name": "小林把子肉",
+          "inputHash": "94b18e99980e49e9892b10bd71936e1c9c0cf0938b24043c2254292350a4f511",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "7bbb45b1fe3355753ae38e2a81e7cbf1",
+      "name": "白石泉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "citywalk路线途经景点",
+      "quote": "citywalk路线途经景点",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69c8ef73000000002200cc40?xsec_token=ABDQNtE1G1pO5kB0wGdiXk-uANajzk8qtagEmBlFfMwfc=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12812,
+          "noteId": 2810,
+          "name": "白石泉",
+          "inputHash": "bd20ba756183f0d29a86befeffce56cd3085acdead3d515548d14280de0caaa7",
+          "rawNoteCreatedAt": "2026-10-06T02:03:19.111155+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "803f9b1ac6c7d41a38c6c80f6c0eb305",
+      "name": "兵哥炸蛋",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11554,
+          "noteId": 2592,
+          "name": "兵哥炸蛋",
+          "inputHash": "98eb78709122bb13259b1af1d0c8fb617ec24de17dc02026f211cccbe5b3feb0",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "80a33955c3f8381171f8493ae1ec0c4d",
+      "name": "华山湖公园",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南公园，适合拍照",
+      "quote": "济南公园，适合拍照",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a799fc90000000005030228?xsec_token=ABIdwy9QS8no2-FqpllUvZOgdt0cPnDF7Pf345e7xBMPw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12783,
+          "noteId": 2798,
+          "name": "华山湖公园",
+          "inputHash": "63381606d1b8ee8634780249a49c2b1ed081deedcd43b9e17b553a19a2a4b65c",
+          "rawNoteCreatedAt": "2026-10-06T02:02:50.264172+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "874f5919e44f4f73fa52268f4c911274",
+      "name": "太犇牛手作茶铺",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12891,
+          "noteId": 2856,
+          "name": "太犇牛手作茶铺",
+          "inputHash": "bab8e95116ba8c8e5169678a75422aadcdbdee65fa820e932de47cc6cc5b0402",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "88a3e4b4f75459daacfe23ed6ca4157d",
+      "name": "济南墙",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "位于百花洲西月下观棠旁街巷内，适合打卡",
+      "quote": "位于百花洲西月下观棠旁街巷内，适合打卡",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6?xsec_token=AByehLt5wtmjzK6Nkbx7TkfurkfcaTU5VUjkcS3uPJog4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12773,
+          "noteId": 2797,
+          "name": "济南墙",
+          "inputHash": "cedc74e57c648d40f9ba9114820407aebad11966111d09c4ace7e621bbaa5bba",
+          "rawNoteCreatedAt": "2026-10-06T02:02:50.114368+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+      "quote": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11437,
+          "noteId": 2618,
+          "name": "起凤桥",
+          "inputHash": "ac557a36a27000b15bfbc1ff0b9ce1761f4f957f5bc12750b044cb86a8141c1f",
+          "rawNoteCreatedAt": "2026-10-04T11:20:22.949678+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "热门打卡点，路线必经",
+      "quote": "热门打卡点，路线必经",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12693,
+          "noteId": 2817,
+          "name": "起凤桥",
+          "inputHash": "746f626ce1b4c066d84862d46a8e5ed740e5886621408bc35e0bc6ecb338ddb4",
+          "rawNoteCreatedAt": "2026-10-06T02:03:42.369552+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "highlightIndex": 3,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街",
+      "quote": "位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12714,
+          "noteId": 2618,
+          "name": "起凤桥",
+          "inputHash": "d4c72c7880cb439e1e55beb66ac4faa8337618708a63ac86ac67ca3f50d45916",
+          "rawNoteCreatedAt": "2026-10-04T11:20:22.949678+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "91761f25fddfb54e43f90618788fe4c5",
+      "name": "重庆一绝殷记米线",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "棋盘街米线，推荐",
+      "quote": "棋盘街米线，推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11671,
+          "noteId": 2602,
+          "name": "重庆一绝殷记米线",
+          "inputHash": "2021071c1ac0b9104e862e0f7f40bc0ee2687781c258ef72f92c079118e4c675",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "骨汤浓郁，拉面劲道牛肉大块",
+      "quote": "骨汤浓郁，拉面劲道牛肉大块",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11481,
+          "noteId": 2560,
+          "name": "亮亮拉面",
+          "inputHash": "8a13cda0d8a59b2bb55b9dc1f889f6bce22e43fabfdcadcf7402c26295179b07",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12741,
+          "noteId": 2560,
+          "name": "亮亮拉面",
+          "inputHash": "68d76af3edaf53533eaa418c7114fff5c48c383733ed797ba58763fae90a95e9",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "经十一路面馆，拉面推荐",
+      "quote": "经十一路面馆，拉面推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11676,
+          "noteId": 2602,
+          "name": "亮亮拉面",
+          "inputHash": "659b6fc27a4cef6bb4962907160f3f9131308ac70f3efd928fdc4073a96679b8",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "name": "刘氏泉",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "quote": "与王府池子等紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12944,
+          "noteId": 2837,
+          "name": "刘氏泉",
+          "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347",
+          "rawNoteCreatedAt": "2026-10-06T02:04:31.077704+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "95d445d08b1a93c02d9d29ade23e7bd4",
+      "name": "聚宝源",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "麻酱对北方人的胃，两人共同心头好",
+      "quote": "麻酱对北方人的胃，两人共同心头好。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a7327d3000000000f03a800?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrkudGWZCwjgwax_VKBy3G5k=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12847,
+          "noteId": 2852,
+          "name": "聚宝源",
+          "inputHash": "d9b07d63044cd3f693926d33c56fb9a0f49a40f13f3c5a0626543ab59340385d",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.628299+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "name": "七九刘家烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "纬九路烧烤，口碑好",
+      "quote": "纬九路烧烤，口碑好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11635,
+          "noteId": 2602,
+          "name": "七九刘家烧烤",
+          "inputHash": "afd98f5faf65d40faa07a3aae3824094e93acebe846cf9ffc76292ed378a4c8b",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "998b0d8b007720af1fb131c032427c49",
+      "name": "蹄花面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11553,
+          "noteId": 2592,
+          "name": "蹄花面",
+          "inputHash": "ec89ead57aa4f67cdee611ddc4717aa6f222ab9338c24d899442d32a96127e30",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "9d8bacc53419d82155f949fdcd179dcd",
+      "name": "柴氏鱿鱼夹饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12895,
+          "noteId": 2856,
+          "name": "柴氏鱿鱼夹饼",
+          "inputHash": "42744b74f0ec00f81178e97e4967d53fac153f6e8d27d7aa6076797936d9c65a",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "9f4626857b06f6b70077809fa0a0bfab",
+      "name": "小锅米线",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11549,
+          "noteId": 2592,
+          "name": "小锅米线",
+          "inputHash": "1b16277c2f59487332ef894b258d34af100b23ddd3bb2796612b054e5b93da33",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+      "name": "腊山河廊道",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "适合傍晚吹晚风散步",
+      "quote": "适合傍晚吹晚风散步",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69df761a000000001a0339c4?xsec_token=ABMrvwKSqn2yqB283A-DXodBWI6rFTfwm3dvwvzzNMl4A=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11377,
+          "noteId": 2576,
+          "name": "腊山河廊道",
+          "inputHash": "41c57c4593be379582bc32f96b2d924c2201d60e40a9a546b17226ea70bfbcea",
+          "rawNoteCreatedAt": "2026-10-04T11:18:45.105402+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "a17012cb02c492ea9a0669addfc588d3",
+      "name": "五嫂砂锅烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "青年西路，砂锅烧烤特色",
+      "quote": "青年西路，砂锅烧烤特色",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11639,
+          "noteId": 2602,
+          "name": "五嫂砂锅烧烤",
+          "inputHash": "a3d660f89bc47de7f94cd43c405a9343e6dfd55ded6583a4c2cf7ac11fb349fa",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "a2951b242ae68c08a394dd056d2ac0f5",
+      "name": "西更巷",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "夜景静谧唯美，适合打卡",
+      "quote": "夜景静谧唯美，适合打卡",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/69aa5fac000000001a023b9e?xsec_token=AByVQQqMwhN8neWf1E2LIyyywDcmR_FDmBL00VvS23HzQ=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12977,
+          "noteId": 2843,
+          "name": "西更巷",
+          "inputHash": "1be6d035d484a136ce821cf37bdf5fd48991667446db4b56ef4af39d42e402d1",
+          "rawNoteCreatedAt": "2026-10-06T02:04:47.025194+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "a76a124615e676af06c7a75968519280",
+      "name": "西更道街",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南古城区，沿途有小景点和特色小店，可尝试手把肉酸奶等",
+      "quote": "济南古城区，沿途有小景点和特色小店，可尝试手把肉酸奶等",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21?xsec_token=ABMGyy4eiM81bJbOQ5Iln3wNL3vavyZtic9IOAgO1ihdE=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12762,
+          "noteId": 2808,
+          "name": "西更道街",
+          "inputHash": "5d57ef09b3da696833c6ceaf1c69ac0f88b7cee7bfc1086c06dedb57dc9a5c93",
+          "rawNoteCreatedAt": "2026-10-06T02:03:18.839749+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "abf21f048f44f4642560c90f05be6e34",
+      "name": "阿东烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "新菜市街烧烤，推荐",
+      "quote": "新菜市街烧烤，推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11640,
+          "noteId": 2602,
+          "name": "阿东烧烤",
+          "inputHash": "18b36c9b77a3d44534ab40fee3d962d555e93babb9c6be2d535a9aa109293a5a",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "af9116d87efcdf105915ca6303cb6274",
+      "name": "珍珠泉",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "热门打卡点，路线终点",
+      "quote": "热门打卡点，路线终点",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12696,
+          "noteId": 2817,
+          "name": "珍珠泉",
+          "inputHash": "7a844c43cf1fd4b68d2653b7067d1b0d84f7e777d283d7929b30ab5014bcbbbe",
+          "rawNoteCreatedAt": "2026-10-06T02:03:42.369552+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "b5b97ba0e6ae8ab7054c0f7b470698f1",
+      "name": "八一把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "八一立交桥南摆摊，把子肉不错",
+      "quote": "八一立交桥南摆摊，把子肉不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11650,
+          "noteId": 2602,
+          "name": "八一把子肉",
+          "inputHash": "ba82351fe8e782607df686377ee4625e111e8926b648c29a4e35a54539647ddd",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "b644ce8203589cb41766982b9ca90c1c",
+      "name": "爆辣面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11556,
+          "noteId": 2592,
+          "name": "爆辣面",
+          "inputHash": "90af664570ebcf76d4a519e2bc1af01fecfd30e0b0f84baadb20f8bf2ae5687c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "b6898fcd137cd506753c47a4a2b16693",
+      "name": "百花桥",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "路线中的热门打卡点",
+      "quote": "路线中的热门打卡点",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12691,
+          "noteId": 2817,
+          "name": "百花桥",
+          "inputHash": "10de2d7ada13dea96309ab3d5785c2a76ab581b4cfadf736750ffdee33732f3c",
+          "rawNoteCreatedAt": "2026-10-06T02:03:42.369552+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+      "name": "天天过年",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人私藏20年老牌鲁菜馆，家常菜地道入味，分量实在性价比高",
+      "quote": "本地人私藏20年老牌鲁菜馆，家常菜地道入味，分量实在性价比高",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12806,
+          "noteId": 2811,
+          "name": "天天过年",
+          "inputHash": "fa7039b322f891bbb7fc8d6caa1fa30d47a6cd336fc624c08c2f77b1f00462a8",
+          "rawNoteCreatedAt": "2026-10-06T02:03:19.124180+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+      "name": "穆德老周家牛肉烧饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "烧饼外酥里软吸满肉汁，羊汤奶白醇厚，强烈推荐",
+      "quote": "烧饼外酥里软吸满肉汁，羊汤奶白醇厚，强烈推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0?xsec_token=ABufILSqDZN2_5MVzAQdFTtsyPtk2xmUl7aW-FLFEP3rI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12961,
+          "noteId": 2839,
+          "name": "穆德老周家牛肉烧饼",
+          "inputHash": "ddc0b4932c542843f708fbc57a47d1205c744a1fb7e9e0fae7d12443b4ff847a",
+          "rawNoteCreatedAt": "2026-10-06T02:04:31.165217+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "bc11d1dfa478598fc27cc6119e8589ff",
+      "name": "孙家糖油条",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "按察司街早餐，糖油条特色",
+      "quote": "按察司街早餐，糖油条特色",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11663,
+          "noteId": 2602,
+          "name": "孙家糖油条",
+          "inputHash": "7f8849ecde7f41f42838be9f1d27e07be1cac5129ef8af26d292d29daa51767d",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "name": "宽厚里",
+      "highlightIndex": 3,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "小吃种类多，把子肉、油旋等，建议空肚前往",
+      "quote": "小吃种类多，把子肉、油旋等，建议空肚前往。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11426,
+          "noteId": 2567,
+          "name": "宽厚里",
+          "inputHash": "18e93f14c2814032eded128ff52ffc17a7c3c5adc61e2a4ee0e6fa442711dc6d",
+          "rawNoteCreatedAt": "2026-10-04T11:18:21.068468+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "be07824e4f7d5d968e08476ebef11ffe",
+      "name": "赵家甜沫",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "甜沫配炸物，碳水早餐，味道不错",
+      "quote": "甜沫配炸物，碳水早餐，味道不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11381,
+          "noteId": 2548,
+          "name": "赵家甜沫",
+          "inputHash": "f9301ddfc2b659b8661af4e02947aa10b1dcaa2f96cfbd770bfe95c204eca82f",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.841133+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "be1030ddd77ab917b509bac4ea40b5e2",
+      "name": "老一百油炸羊肉串",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "通惠街炸串，羊肉串推荐",
+      "quote": "通惠街炸串，羊肉串推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11668,
+          "noteId": 2602,
+          "name": "老一百油炸羊肉串",
+          "inputHash": "60a8316cd7ec2ac91f083fbb450e8a4cd07f9ce9097fac528c26aab0255728e2",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c057999eba2876818984ed6c93375936",
+      "name": "华祥糕点",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11367,
+          "noteId": 2585,
+          "name": "华祥糕点",
+          "inputHash": "4bc42863d22db9ac1eba6d0e17526b23f836896825570b376b50911d00e75e29",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12608,
+          "noteId": 2585,
+          "name": "华祥糕点",
+          "inputHash": "de380c4a12f729537745991eb97e5188c737f029cc890a5e05d05e322fcf548a",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c28c2566886f2a15025e15fb1b5e8308",
+      "name": "二钢串叔麻辣烫",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "华龙路炸串麻辣烫，推荐",
+      "quote": "华龙路炸串麻辣烫，推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11666,
+          "noteId": 2602,
+          "name": "二钢串叔麻辣烫",
+          "inputHash": "19e3ec35094921fe0fe76da85e506aab6c557ecdad2569a4db92ae53680b710f",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c4540e2772378520d8c84356bedea1ce",
+      "name": "东仓把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "历山路摆摊，把子肉推荐",
+      "quote": "历山路摆摊，把子肉推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11653,
+          "noteId": 2602,
+          "name": "东仓把子肉",
+          "inputHash": "8fa98acc71deadff29dbf765770cf919b736af6764f093ce4162f836cdda70fd",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c57edbc30b8a4b210e9f353d800f7866",
+      "name": "武岳庙把子肉济南总店",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12596,
+          "noteId": 2585,
+          "name": "武岳庙把子肉济南总店",
+          "inputHash": "b4eb75b366faebaa5fca899cb2283ded12600ff996a83f27860ed75066d5435b",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c58b14eaf88c9b7a0de4f2849e1e179c",
+      "name": "小青岛米线",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11548,
+          "noteId": 2592,
+          "name": "小青岛米线",
+          "inputHash": "c120d7b38c5c9a74e234b332b892694e010d711a33ca63d17680d5dc7a08a78b",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "name": "老舍笔下的济南",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "文化打卡点，与老舍相关",
+      "quote": "文化打卡点，与老舍相关",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6952382900000000210306fa?xsec_token=AB_2bw2hJrSp7OtiKO9cvz3eNWiKmGeqc2MdeoRLGY_P8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12694,
+          "noteId": 2817,
+          "name": "老舍笔下的济南",
+          "inputHash": "49640ec2b910fb725c553d5c9167dd24cd066fd84258abfa01eed6f593e12df1",
+          "rawNoteCreatedAt": "2026-10-06T02:03:42.369552+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c5d63a0d87ddc1476a1b2fdccd1282c8",
+      "name": "白老太油炸羊肉串",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "闵子骞路炸串，羊肉串不错",
+      "quote": "闵子骞路炸串，羊肉串不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11669,
+          "noteId": 2602,
+          "name": "白老太油炸羊肉串",
+          "inputHash": "b5538cf6f24ce684ae01595cb07946266c924c3bad7fff90177283578723392a",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "c8439ac30a5ab65d59dd98fdf5bd8ed2",
+      "name": "商河老豆腐",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "纬三路早餐，老豆腐推荐",
+      "quote": "纬三路早餐，老豆腐推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11662,
+          "noteId": 2602,
+          "name": "商河老豆腐",
+          "inputHash": "094afbee99f541895c105aaaa749cb49856485dd6dc8b84c587ca0ce8f4b7148",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "name": "鑫龙火锅",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12890,
+          "noteId": 2856,
+          "name": "鑫龙火锅",
+          "inputHash": "43be79682b5bc5ee909167e1082949f6f31443b3aecd5690744557ea61d4a1b7",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "cebf8a7efbcf2ad1757bc57897c9c524",
+      "name": "粤味轩",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11361,
+          "noteId": 2585,
+          "name": "粤味轩",
+          "inputHash": "662ca2a74a1133c6a3f7d8932aabbad3d80056d512ac0d65067b389ccd05b736",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12602,
+          "noteId": 2585,
+          "name": "粤味轩",
+          "inputHash": "bf5048f90abd8af42f4c143acd50f93de77ce6f18b5b96a85cc337c98e5f0df0",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "ced0ffcce4072bbe8bf0942437d125a2",
+      "name": "好一家米线",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作者年度最爱面馆之一，值得尝试",
+      "quote": "作者年度最爱面馆之一，值得尝试",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/697dcdb800000000220396c7?xsec_token=ABFMW2J8kl4u7jOKnCBN3IZQrg0LQf2dIRLwflfvwqGYw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11552,
+          "noteId": 2592,
+          "name": "好一家米线",
+          "inputHash": "31b6d25b82f368fde3bb2fb4d0a1a616212b50353f51fdff43da4888ea868b8d",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.561611+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d025994fc1b1449de922fa97abdd96f8",
+      "name": "老周家牛肉烧饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南连锁，味道稳定，适合就近吃早餐",
+      "quote": "济南连锁，味道稳定，适合就近吃早餐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a29f1750000000007024b80?xsec_token=ABMYiEmFOEYW1WCAYptUHwPEBDEqb4iqfGV6P6zenzvTU=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11510,
+          "noteId": 2607,
+          "name": "老周家牛肉烧饼",
+          "inputHash": "e167fa33d6f7d3ca20625bed59a654a5964bf015fb24b3042baba54b86e025d6",
+          "rawNoteCreatedAt": "2026-10-04T11:19:58.125309+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d0d367b70dcb93fc3fd355b59bc6dad2",
+      "name": "郑哥烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "北大槐树街烧烤，推荐",
+      "quote": "北大槐树街烧烤，推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11637,
+          "noteId": 2602,
+          "name": "郑哥烧烤",
+          "inputHash": "761183f44459ebc1e7a69bccddc6a82c4a5a3f2263d248ff2365929dd35f922b",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d1187410c371933a7e37f4a533f10a61",
+      "name": "艺林烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "花店街烧烤，味道不错",
+      "quote": "花店街烧烤，味道不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11636,
+          "noteId": 2602,
+          "name": "艺林烧烤",
+          "inputHash": "a14ef6b1a131340cb8fb450435b38aed5743d13681a5ab658fc5ded5f0109615",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d14cc0c8a631defad91e60d475b7aedd",
+      "name": "趵突泉公园",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "泉眼众多，小鱼嬉戏，需赶早避开人流",
+      "quote": "泉眼众多，小鱼嬉戏，需赶早避开人流",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a28136f000000001700bf91?xsec_token=ABUwUyc3FxWU2kTVd5xK5DDllT_Ux10T_BD-VZCXYNnrI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11382,
+          "noteId": 2548,
+          "name": "趵突泉",
+          "inputHash": "613a5c3c0a13937962d60879f76e786109ea10abb819b0b92ebf99f36ea3203a",
+          "rawNoteCreatedAt": "2026-10-04T11:17:32.841133+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "quote": "与腾蛟泉、起凤泉、刘氏泉紧邻，藏在老街里，串联西更道街和芙蓉街",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079?xsec_token=ABKNT0pgEDSqaGe6qrrvb47cNVaAY7qtuS22L33hsTumk=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12941,
+          "noteId": 2837,
+          "name": "王府池子",
+          "inputHash": "70d329713c73e8f9cac53c15fb3037ef97236488a9751b4ad0648a1d692f9cd0",
+          "rawNoteCreatedAt": "2026-10-06T02:04:31.077704+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "highlightIndex": 2,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南著名泉水景点，值得一看",
+      "quote": "济南著名泉水景点，值得一看。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11625,
+          "noteId": 2624,
+          "name": "王府池子",
+          "inputHash": "c91355aa289dee679d83eb6d966a9613ed04817eaf6cdff8a4fbe1925db76053",
+          "rawNoteCreatedAt": "2026-10-04T11:20:23.062328+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "highlightIndex": 3,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南有名景点，可顺路参观",
+      "quote": "济南有名景点，可顺路参观。",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a068f0000000000350267a9?xsec_token=ABx1LYwwREdX7uB286D7UBVM91nygKQC4FHUnXxRGgpW4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12919,
+          "noteId": 2624,
+          "name": "王府池子",
+          "inputHash": "08d90e9e8f940e8992c7bb57a6d346b594d9d610758c1d5e80da6d66053282b8",
+          "rawNoteCreatedAt": "2026-10-04T11:20:23.062328+00:00",
+          "path": "scoped_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d2821e4f843de99191a79dde62e279f2",
+      "name": "金房子水饺",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "张庄路，水饺配鲁菜",
+      "quote": "张庄路，水饺配鲁菜",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11658,
+          "noteId": 2602,
+          "name": "金房子水饺",
+          "inputHash": "334fed327c1b4b9a236a29c9a3f493f3c7687657445acbe773ff12bb2335e742",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d282f2d8178143226dc2abe8a53b82fa",
+      "name": "幸福居米粉铺",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "东工商河路，米粉配把子肉",
+      "quote": "东工商河路，米粉配把子肉",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11646,
+          "noteId": 2602,
+          "name": "幸福居米粉铺",
+          "inputHash": "9966c539e1ce58d55867d4300e104097ebaa490ca6c2df607cc2113d59d8f906",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d342ff3eb8d541f17253786d0dd148fa",
+      "name": "陈氏肥蛤",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南美食推荐，具体菜品未详述",
+      "quote": "济南美食推荐，具体菜品未详述",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3?xsec_token=ABAvuqXEUddzv6MObkawmW-1oqk67yVR8S34jbLW6dBu4=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12889,
+          "noteId": 2856,
+          "name": "陈氏肥蛤",
+          "inputHash": "95b9c2395e1ab563f0686b0d6fb5ac99cf3601cb671aa6ae9a12d4e8ca51a5e0",
+          "rawNoteCreatedAt": "2026-10-06T02:05:11.805290+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+      "name": "新秀炸鸡",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11358,
+          "noteId": 2585,
+          "name": "新秀炸鸡",
+          "inputHash": "c75215dfe9dda43b788626e77b0e2afc5334558acb7083075dd046862b33da7e",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12599,
+          "noteId": 2585,
+          "name": "新秀炸鸡",
+          "inputHash": "edf3b1ca277ac6c09bf60f89f3e7271d9aa991eba812c4a3f433f8e13efde1d1",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d4952101b0c531b326b202c50aae0f9b",
+      "name": "地瓜羊汤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "回民小区北段，羊汤配烧饼经典",
+      "quote": "回民小区北段，羊汤配烧饼经典",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11631,
+          "noteId": 2602,
+          "name": "地瓜羊汤",
+          "inputHash": "c1c7c1b287e4ad08302b422043080d5434ba6f0bf84a5d8b65277d2035c432d9",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "d4d46ae9de6ce17073e7c20bd6caa1c7",
+      "name": "立信拉面",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "信义庄西街面馆，拉面推荐",
+      "quote": "信义庄西街面馆，拉面推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11678,
+          "noteId": 2602,
+          "name": "立信拉面",
+          "inputHash": "2697583c6d923920a0da18b785df4894d243c8b448658facd4c5e55082133be7",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "df01bb0ef4e5c48d92caf6f53136c4e8",
+      "name": "鸡腿汉堡",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "工人新村早餐，鸡腿汉堡推荐",
+      "quote": "工人新村早餐，鸡腿汉堡推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11665,
+          "noteId": 2602,
+          "name": "鸡腿汉堡",
+          "inputHash": "79b5acef67ef46697177031a443700fd05244f2057fded61b46cd227d147f52e",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "df9867124f6f44168f18af5b8edf10a3",
+      "name": "一九黄家烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "纬九路烧烤，本地人常去",
+      "quote": "纬九路烧烤，本地人常去",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11634,
+          "noteId": 2602,
+          "name": "一九黄家烧烤",
+          "inputHash": "55deb67f28cb02a895e3264cbc494c137bbec13dd0462f5afd109497cee9043c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e021f92afdd2fbd263f1ffc609bf198f",
+      "name": "金位烧烤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "管鲍大街烧烤，味道好",
+      "quote": "管鲍大街烧烤，味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11638,
+          "noteId": 2602,
+          "name": "金位烧烤",
+          "inputHash": "c414d401e7ffca7f8c73675d3892bdf91781b0bfd6a1205877dce4f6139fe11c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "name": "油旋张",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "非遗名吃，外酥里软葱香足",
+      "quote": "非遗名吃，外酥里软葱香足",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11478,
+          "noteId": 2560,
+          "name": "油旋张",
+          "inputHash": "d90b224a9cf1cc04dcb47221a32c2e25adc75d8e4fbcb68e4c133084a9b4bcb9",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12738,
+          "noteId": 2560,
+          "name": "油旋张",
+          "inputHash": "53d2a53e0d7250bfcc33ce63ef847b7e60c1e447a278cdf99b3ca63ec624b5c8",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.429709+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "name": "油旋张",
+      "highlightIndex": 1,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "济南特色美食店铺推荐",
+      "quote": "济南特色美食店铺推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a080849000000003503853b?xsec_token=ABVy_LdXk7xRIR3JahDg9hM9FakmlSKHwR7TL-vsJ2KQU=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11528,
+          "noteId": 2563,
+          "name": "油旋张",
+          "inputHash": "bba4f961d01641f65326a56c080c9971b327d7a50fd10a1d40c26b12bd59d8e1",
+          "rawNoteCreatedAt": "2026-10-04T11:17:57.566249+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+      "name": "蜗牛叔叔的食堂",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11362,
+          "noteId": 2585,
+          "name": "蜗牛叔叔的食堂",
+          "inputHash": "89d2616f266a3b033f6fd61aa6bdcac93931d2dbe9d1ecde058d6e715f6d664c",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12603,
+          "noteId": 2585,
+          "name": "蜗牛叔叔的食堂",
+          "inputHash": "0e9872605fd235ab3021ace3ccb1030678c71c5e50c6ab01294d4f3bc6e9f3d3",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e394dd2fefdf968a0bbea165941a8652",
+      "name": "周记牛肉烧饼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "经三路老店，牛肉烧饼口碑好",
+      "quote": "经三路老店，牛肉烧饼口碑好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11630,
+          "noteId": 2602,
+          "name": "周记牛肉烧饼",
+          "inputHash": "791c89a8f3216c3d482aceac083bb0254cd9e3c1ed2e4a4f393e82e9103790a6",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e883903c129463466c745043f4e59964",
+      "name": "泉城之眼",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "适合拍照打卡，看风景没必要",
+      "quote": "适合拍照打卡，看风景没必要",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 12646,
+          "noteId": 2782,
+          "name": "泉城之眼",
+          "inputHash": "2de81d9dcbbaae8f0064fd9e4ca409964c5f1c652036e11ea8f91066a631b7b6",
+          "rawNoteCreatedAt": "2026-10-06T02:02:22.855979+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "e92465f48edd3af82b008371a9db8167",
+      "name": "上优超市烟酒超市",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "作为路线终点标志",
+      "quote": "作为路线终点标志",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68dfc8a50000000004010c1e?xsec_token=ABYVGeZGfX1-iLMF3L_QkTQ96N7YarV8ZJqks4OSTqUk8=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11351,
+          "noteId": 2566,
+          "name": "上优超市烟酒超市",
+          "inputHash": "c109242aab52003104934e90706552cd65cc94737c3c5eba4f0b0b26357f7c38",
+          "rawNoteCreatedAt": "2026-10-04T11:18:21.016919+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "ec447b923b04fcefb80f15c27392e452",
+      "name": "凉皮嫂子",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11360,
+          "noteId": 2585,
+          "name": "凉皮嫂子",
+          "inputHash": "e43b63d1c5a591386d5e7307a63b43aad36b98992a626deabafe515c783e8335",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12601,
+          "noteId": 2585,
+          "name": "凉皮嫂子",
+          "inputHash": "dfdeb79b92ed4fd44cccac8174fb0a9f40d01bbe9c86bb863e68799fe0afcaa1",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "f4548be1c47b7b72142066265b2c2393",
+      "name": "至尊源菜馆",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "燕子山路，鲁菜推荐",
+      "quote": "燕子山路，鲁菜推荐",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11656,
+          "noteId": 2602,
+          "name": "至尊源菜馆",
+          "inputHash": "fa4b7ff4a932d02409d7369a8092585c756610e00d107e48c3b3ffd0bcd698e5",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+      "name": "杨氏泉水茶汤",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "本地人推荐，有特色且味道好",
+      "quote": "本地人推荐，有特色且味道好",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11366,
+          "noteId": 2585,
+          "name": "杨氏泉水茶汤",
+          "inputHash": "d7e131bd0d79a948a7a6e1cf6d1c839bc2f08cd7677c49eed18b267a577e6c02",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        },
+        {
+          "mentionId": 12607,
+          "noteId": 2585,
+          "name": "杨氏泉水茶汤",
+          "inputHash": "2631f824f191a81f3ded37ba7fc609d418e166b655fed535bd1fa2f90ca199eb",
+          "rawNoteCreatedAt": "2026-10-04T11:19:10.262192+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "fc2fdfc289e8cb12c32d6784aef8f575",
+      "name": "万紫巷",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "Citywalk路线途经街道",
+      "quote": "Citywalk路线途经街道",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11533,
+          "noteId": 2573,
+          "name": "万紫巷",
+          "inputHash": "49b458938921a83b77e6c9d02890ae22f54281e1e900738aeee629571a7a4f03",
+          "rawNoteCreatedAt": "2026-10-04T11:18:21.299746+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "fc932bd7c80349e1272d6214370adefe",
+      "name": "纬四路",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "Citywalk路线途经街道",
+      "quote": "Citywalk路线途经街道",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11532,
+          "noteId": 2573,
+          "name": "纬四路",
+          "inputHash": "8aa4ba742c3cfb03c1176c97caa13dd4d5f408febceabed4509f69d7d8973b2b",
+          "rawNoteCreatedAt": "2026-10-04T11:18:21.299746+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "fd656bc48a32282c1c5be8d91e234648",
+      "name": "肴源酒家",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "甸新北路，鲁菜不错",
+      "quote": "甸新北路，鲁菜不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11657,
+          "noteId": 2602,
+          "name": "肴源酒家",
+          "inputHash": "cd9026a15e97c7a55845418e15bff463b11f6b6ede51079cb832e47c34a78def",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    },
+    {
+      "entityId": "ff0354a80d9bfdb2e1a0ec6c0d670390",
+      "name": "翟家把子肉",
+      "highlightIndex": 0,
+      "beforeObservedAt": "2026-10-08T19:25:50.370146+00:00",
+      "afterObservedAt": "2026-10-08T19:40:21.602302+00:00",
+      "text": "泺安路摆摊，把子肉不错",
+      "quote": "泺安路摆摊，把子肉不错",
+      "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+      "matches": [
+        {
+          "mentionId": 11652,
+          "noteId": 2602,
+          "name": "翟家把子肉",
+          "inputHash": "d76d05dd06d21796a34f303dc7214624bc35c6bb133bbfaa31d016946f4bfdea",
+          "rawNoteCreatedAt": "2026-10-04T11:19:33.571044+00:00",
+          "path": "ordinary_legacy_reason",
+          "legacyItemHasObservedAt": false
+        }
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "failures": []
+}

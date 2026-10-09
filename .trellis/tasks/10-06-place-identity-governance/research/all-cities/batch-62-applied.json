@@ -1,0 +1,651 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7",
+          "city": "济南",
+          "canonical_name": "后宰门街",
+          "primary_place_id": 5393,
+          "aliases": [
+            "后宰门街"
+          ],
+          "legacy_ids": [
+            "9dbf8ef94ec1777461c9d486973ce0c7"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5393,
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5393,
+          "content_profile": null,
+          "typical_visit_minutes": 30,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 21.0,
+          "theme_tags": [
+            "历史人文"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5393,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "有济南府大字墙，适合拍照",
+              "evidence": "拍济南府大字墙"
+            },
+            {
+              "reason": "有簪花济南文字墙，热门打卡点",
+              "evidence": "④后宰门街（簪花济南文字墙）"
+            },
+            {
+              "reason": "可拍济南府大字墙",
+              "evidence": "拍济南府大字墙"
+            }
+          ],
+          "recommend_score": 12.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7843,
+          "canonical_place_id": 5393,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 后宰门街",
+          "evidence_summary": "有济南府大字墙，适合拍照"
+        },
+        {
+          "id": 8648,
+          "canonical_place_id": 5393,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 后宰门街",
+          "evidence_summary": "有簪花济南文字墙，热门打卡点"
+        },
+        {
+          "id": 8649,
+          "canonical_place_id": 5393,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 后宰门街",
+          "evidence_summary": "可拍济南府大字墙"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5393,
+          "city": "济南",
+          "name_keys": [
+            "后宰门街"
+          ],
+          "entity_ids": [
+            "9dbf8ef94ec1777461c9d486973ce0c7"
+          ],
+          "source_hash": "4eb9e3aaa15f2020cc611289785ad9fbb2c68fd409ed7b61ff921a542f345dbd",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5393-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+              "kind": "reviewed_full_text_street_and_branch_scope",
+              "conclusion": "两篇正文明确以后宰门街为路线停留主体，拍墙是该次街道活动。note2570的16:00–16:30是独立街道停留，不是与曲水亭或百花洲合计时长，11460/12726同篇30分钟只算一个独立样本；12690保留第二篇簪花文字墙的限定看点。确认3条完整scope，改文化/other，不把街道改名墙面、不合并济南文字墙/济南墙；原点保持但未新定位。",
+              "mentionIds": [
+                11460,
+                12690,
+                12726
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "9dbf8ef94ec1777461c9d486973ce0c7"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11460,
+          "scope_place_id": 5393,
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7",
+          "input_hash": "997857fc28eb9a22958bbe4041a76f33b70d8672d4238ca25b895520b4c09c48",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5393-scope"
+        },
+        {
+          "mention_id": 12690,
+          "scope_place_id": 5393,
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7",
+          "input_hash": "fce202ffd44415d65e71c603aae6ffa7951f63e205fb1e6a7fb55a8cbf8e94ed",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5393-scope"
+        },
+        {
+          "mention_id": 12726,
+          "scope_place_id": 5393,
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7",
+          "input_hash": "533514f848094e4bee8bc40522556495635c0d7ac14f3fbe337e02cd9165afaf",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5393-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "4eb9e3aaa15f2020cc611289785ad9fbb2c68fd409ed7b61ff921a542f345dbd",
+        "mentions": [
+          {
+            "mentionId": 11460,
+            "inputHash": "997857fc28eb9a22958bbe4041a76f33b70d8672d4238ca25b895520b4c09c48"
+          },
+          {
+            "mentionId": 12690,
+            "inputHash": "fce202ffd44415d65e71c603aae6ffa7951f63e205fb1e6a7fb55a8cbf8e94ed"
+          },
+          {
+            "mentionId": 12726,
+            "inputHash": "533514f848094e4bee8bc40522556495635c0d7ac14f3fbe337e02cd9165afaf"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "e1cfa0121a1455efea5324938742d4f4",
+          "city": "济南",
+          "canonical_name": "油旋张",
+          "primary_place_id": 5382,
+          "aliases": [
+            "油旋张"
+          ],
+          "legacy_ids": [
+            "e1cfa0121a1455efea5324938742d4f4"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5382,
+          "entity_id": "e1cfa0121a1455efea5324938742d4f4"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5382,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 20.7,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5382,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "非遗名吃，外酥里软葱香足",
+              "evidence": "非遗名吃，外酥里软葱香足"
+            },
+            {
+              "reason": "济南特色美食店铺推荐",
+              "evidence": "油旋张"
+            },
+            {
+              "reason": "非遗名吃，外酥里软葱香足",
+              "evidence": "非遗名吃，外酥里软葱香足"
+            }
+          ],
+          "recommend_score": 12.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7830,
+          "canonical_place_id": 5382,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 油旋张",
+          "evidence_summary": "非遗名吃，外酥里软葱香足"
+        },
+        {
+          "id": 7831,
+          "canonical_place_id": 5382,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 油旋张",
+          "evidence_summary": "济南特色美食店铺推荐"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5382,
+          "city": "济南",
+          "name_keys": [
+            "油旋张"
+          ],
+          "entity_ids": [
+            "e1cfa0121a1455efea5324938742d4f4"
+          ],
+          "source_hash": "30641e84df69f12b9b085839830ba35188adb3830b5c65993feae565a7563408",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5382-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+              "kind": "reviewed_full_text_street_and_branch_scope",
+              "conclusion": "两篇全文三次提及只有裸名油旋张；公开2024食记分别写纬三路79号和另一个大观园店，现有note2548地图文字是宝鸡扯面检索中的顺带候选，不能证明本次到访分店。3条均待审，显式撤回旧单店消费，不创建候选、不标not_a_place，不采用营业时间/价格/传承人。",
+              "mentionIds": [
+                11478,
+                11528,
+                12738
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "e1cfa0121a1455efea5324938742d4f4"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11478,
+          "scope_place_id": 5382,
+          "entity_id": null,
+          "input_hash": "d90b224a9cf1cc04dcb47221a32c2e25adc75d8e4fbcb68e4c133084a9b4bcb9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5382-scope"
+        },
+        {
+          "mention_id": 11528,
+          "scope_place_id": 5382,
+          "entity_id": null,
+          "input_hash": "bba4f961d01641f65326a56c080c9971b327d7a50fd10a1d40c26b12bd59d8e1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5382-scope"
+        },
+        {
+          "mention_id": 12738,
+          "scope_place_id": 5382,
+          "entity_id": null,
+          "input_hash": "53d2a53e0d7250bfcc33ce63ef847b7e60c1e447a278cdf99b3ca63ec624b5c8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-62-source-5382-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "30641e84df69f12b9b085839830ba35188adb3830b5c65993feae565a7563408",
+        "mentions": [
+          {
+            "mentionId": 11478,
+            "inputHash": "d90b224a9cf1cc04dcb47221a32c2e25adc75d8e4fbcb68e4c133084a9b4bcb9"
+          },
+          {
+            "mentionId": 11528,
+            "inputHash": "bba4f961d01641f65326a56c080c9971b327d7a50fd10a1d40c26b12bd59d8e1"
+          },
+          {
+            "mentionId": 12738,
+            "inputHash": "53d2a53e0d7250bfcc33ce63ef847b7e60c1e447a278cdf99b3ca63ec624b5c8"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 11697,
+          "fingerprint": "8370a915cfdd08e0dbc4d49fdae65720f8ff69284dfd5031f1baa81da9bfdbe1",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "d90b224a9cf1cc04dcb47221a32c2e25adc75d8e4fbcb68e4c133084a9b4bcb9",
+            "mentionId": 11478,
+            "scopePlaceIds": [
+              5382
+            ]
+          }
+        },
+        {
+          "id": 11708,
+          "fingerprint": "65998f1363356d47a67e313a81aee2e6ff64cce7f3a5e8196094f55a14468e80",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "bba4f961d01641f65326a56c080c9971b327d7a50fd10a1d40c26b12bd59d8e1",
+            "mentionId": 11528,
+            "scopePlaceIds": [
+              5382
+            ]
+          }
+        },
+        {
+          "id": 11775,
+          "fingerprint": "26bfbbcc7dbe7465511758f38aba5e58df7888fcf31e03aee9c11228e3738aee",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "53d2a53e0d7250bfcc33ce63ef847b7e60c1e447a278cdf99b3ca63ec624b5c8",
+            "mentionId": 12738,
+            "scopePlaceIds": [
+              5382
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+          "city": "济南",
+          "canonical_name": "芙蓉街",
+          "primary_place_id": 5353,
+          "aliases": [
+            "芙蓉街"
+          ],
+          "legacy_ids": [
+            "747792d1b5834255f5feaa6c2dc62925"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.6669643677903,
+            "lng": 117.02301064448173,
+            "address": "山东省济南市历下区泉城路街道芙蓉街",
+            "geoStatus": "resolved",
+            "category": "文化",
+            "xhsPlaceType": "other"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "从芙蓉街32号拐进去就是起凤桥街",
+              "noteId": 2782,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5353,
+                  "lat": 36.7298661925534,
+                  "lng": 117.46540911355349,
+                  "address": "山东省济南市章丘区枣园街道芙蓉街",
+                  "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1"
+                }
+              ],
+              "conclusion": "30条提及/23篇原文所述为大明湖、曲水亭街与泉城路附近小吃街。地图同时返回章丘枣园和历下泉城路同名道路；原坐标精确等于章丘条目，应改为历下道路条目。只修正位置，街区与沿街商户不合并。",
+              "mentionIds": [
+                11339,
+                11389,
+                11415,
+                11431,
+                11447,
+                11499,
+                11506,
+                11579,
+                11586,
+                11613,
+                11623,
+                11689,
+                11699,
+                12567,
+                12573,
+                12625,
+                12638,
+                12659,
+                12681,
+                12709,
+                12752,
+                12816,
+                12833,
+                12835,
+                12836,
+                12904,
+                12917,
+                12932,
+                12948,
+                12956
+              ],
+              "sourcePlaceIds": [
+                5353
+              ]
+            },
+            {
+              "file": "priority-cities/济南/geo-02.json",
+              "kind": "reviewed_exact_poi",
+              "query": "芙蓉街",
+              "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+              "address": "山东省济南市历下区泉城路街道芙蓉街",
+              "poiName": "芙蓉街",
+              "rawLonLat": "117.017095,36.666651",
+              "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+              "sourceCoordinateSystem": "CGCS2000",
+              "storedCoordinateSystem": "GCJ-02"
+            },
+            {
+              "kind": "reviewed_street_or_river_corridor_subject",
+              "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+              "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json",
+              "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5353,
+          "entity_id": "747792d1b5834255f5feaa6c2dc62925"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7",
+          "city": "济南",
+          "canonical_name": "后宰门街",
+          "primary_place_id": 5393,
+          "aliases": [
+            "后宰门街"
+          ],
+          "legacy_ids": [
+            "9dbf8ef94ec1777461c9d486973ce0c7"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化",
+            "xhsPlaceType": "other"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_street_or_river_corridor_subject",
+              "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+              "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json",
+              "conclusion": "两篇正文明确以后宰门街为路线停留主体，拍墙是该次街道活动。note2570的16:00–16:30是独立街道停留，不是与曲水亭或百花洲合计时长，11460/12726同篇30分钟只算一个独立样本；12690保留第二篇簪花文字墙的限定看点。确认3条完整scope，改文化/other，不把街道改名墙面、不合并济南文字墙/济南墙；原点保持但未新定位。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5393,
+          "entity_id": "9dbf8ef94ec1777461c9d486973ce0c7"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "a16d03423b6c350d1d3526a2a1c4280d",
+          "city": "济南",
+          "canonical_name": "腊山河廊道",
+          "primary_place_id": 5403,
+          "aliases": [
+            "腊山河廊道"
+          ],
+          "legacy_ids": [
+            "a16d03423b6c350d1d3526a2a1c4280d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然",
+            "xhsPlaceType": "attraction"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_street_or_river_corridor_subject",
+              "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+              "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json",
+              "conclusion": "原文独立写逛腊山河廊道吹晚风，公开全文支持腊山河城市滨河生态景观。只将文化改自然、保留attraction，保留原理由、名称/ID和原点，未确定具体廊道段或精确位置；不采用仅标题可见的南延工程内容，不合并整条河流。无需建立scope。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5403,
+          "entity_id": "a16d03423b6c350d1d3526a2a1c4280d"
+        }
+      ]
+    }
+  ]
+}

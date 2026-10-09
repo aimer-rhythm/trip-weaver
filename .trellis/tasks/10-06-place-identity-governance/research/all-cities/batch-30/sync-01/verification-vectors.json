@@ -1,0 +1,171 @@
+{
+  "verifiedAt": "2026-10-07T16:11:55.442Z",
+  "batch": "batch-30",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "济南",
+      "exported": 230,
+      "total": 238,
+      "active": 230,
+      "embedded": 230,
+      "probes": [
+        {
+          "name": "芙蓉街",
+          "id": "747792d1b5834255f5feaa6c2dc62925"
+        },
+        {
+          "name": "经三路",
+          "id": "c11648e477180d1b3f97da06808da5e7"
+        },
+        {
+          "name": "关帝庙",
+          "id": "c93e3216e2e3cc1b75d07097f2c78367"
+        },
+        {
+          "name": "趵突泉",
+          "id": "8808e16f1472d0df17bed729a2e54e83"
+        },
+        {
+          "name": "经三路爱心红绿灯",
+          "id": "ce733b67e45f0d657e53ff9bff8cbbce"
+        },
+        {
+          "name": "济南文字墙",
+          "id": "66c835ba565f34cbd12206d7169c8da1"
+        },
+        {
+          "name": "济南墙",
+          "id": "88a3e4b4f75459daacfe23ed6ca4157d"
+        },
+        {
+          "name": "夹心胡同",
+          "id": "d4292fdc91029db1a1714b00686787ff"
+        },
+        {
+          "name": "尚泉尚水茶馆",
+          "id": "2c8372d3a47dbcb68abd998af495436d"
+        },
+        {
+          "name": "泉源之眼",
+          "id": "636406ca3bce1e8189be38c73b4e8ae4"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "芙蓉街",
+          "id": "747792d1b5834255f5feaa6c2dc62925",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "unavailable",
+            "vectorHits": 0
+          }
+        },
+        {
+          "name": "经三路",
+          "id": "c11648e477180d1b3f97da06808da5e7",
+          "diagnostics": {
+            "keywordHits": 3,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "关帝庙",
+          "id": "c93e3216e2e3cc1b75d07097f2c78367",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "趵突泉",
+          "id": "8808e16f1472d0df17bed729a2e54e83",
+          "diagnostics": {
+            "keywordHits": 2,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "经三路爱心红绿灯",
+          "id": "ce733b67e45f0d657e53ff9bff8cbbce",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "济南文字墙",
+          "id": "66c835ba565f34cbd12206d7169c8da1",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "济南墙",
+          "id": "88a3e4b4f75459daacfe23ed6ca4157d",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "夹心胡同",
+          "id": "d4292fdc91029db1a1714b00686787ff",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "尚泉尚水茶馆",
+          "id": "2c8372d3a47dbcb68abd998af495436d",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "泉源之眼",
+          "id": "636406ca3bce1e8189be38c73b4e8ae4",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "withdrawals": [],
+      "photosChecked": 0,
+      "audits": [
+        "04f61183-779a-4a3e-8d72-af7601362d1e"
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "city": "济南",
+      "kind": "vector_unused",
+      "detail": {
+        "name": "芙蓉街",
+        "diagnostics": {
+          "keywordHits": 1,
+          "vector": "unavailable",
+          "vectorHits": 0
+        }
+      }
+    }
+  ]
+}

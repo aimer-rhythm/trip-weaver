@@ -1,0 +1,344 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 7,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "city": "成都",
+          "canonical_name": "鹤鸣茶社",
+          "primary_place_id": 1847,
+          "aliases": [
+            "人民公园鹤鸣茶社",
+            "鹤鸣茶社"
+          ],
+          "legacy_ids": [
+            "726ded184fe71d5b6ad1642e0e60d3f1"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1847,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 36.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1847,
+          "mention_count_30d": 6,
+          "positive_count_30d": 4,
+          "source_count": 5,
+          "top_reasons": [
+            {
+              "reason": "老茶馆体验采耳",
+              "evidence": "鹤鸣茶社体验采耳"
+            },
+            {
+              "reason": "网红盖碗茶，体验本地人休闲氛围",
+              "evidence": "直奔网红——鹤鸣茶社"
+            },
+            {
+              "reason": "周末人满为患且吵热，需10点前到抢位",
+              "evidence": "根本没有位置"
+            },
+            {
+              "reason": "夜景灯光布景适合打卡，是拍照亮点",
+              "evidence": "夜景拍摄是亮点，灯光布景很适合打卡"
+            },
+            {
+              "reason": "餐食口味普通，想吃地道成都吃食不建议在此解决正餐",
+              "evidence": "餐食口味普通，不建议在这里解决正餐"
+            }
+          ],
+          "recommend_score": 17.83
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2657,
+          "canonical_place_id": 1847,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 人民公园鹤鸣茶社",
+          "evidence_summary": "体验成都慢生活，喝茶嗑瓜子"
+        },
+        {
+          "id": 2794,
+          "canonical_place_id": 1847,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鹤鸣茶社",
+          "evidence_summary": "老茶馆体验采耳"
+        },
+        {
+          "id": 2795,
+          "canonical_place_id": 1847,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鹤鸣茶社",
+          "evidence_summary": "网红盖碗茶，体验本地人休闲氛围"
+        },
+        {
+          "id": 2796,
+          "canonical_place_id": 1847,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鹤鸣茶社",
+          "evidence_summary": "周末人满为患且吵热，需10点前到抢位"
+        }
+      ],
+      "relations": [
+        {
+          "id": 2874,
+          "from_name": "成都太古里",
+          "to_name": "鹤鸣茶社",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "熙路IFS熊猫屁股→太古里裸眼3D→下午人民公园鹤鸣茶社嗑瓜子🍵→晚上建设路",
+          "source_url": "https://www.xiaohongshu.com/explore/6a5489950000000016026df9?xsec_token=ABp05SJ3hnmxgI59A7R6C-TGErQX9g72bsonLGDyxtI94=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1847,
+          "city": "成都",
+          "name_keys": [
+            "鹤鸣茶社"
+          ],
+          "entity_ids": [
+            "726ded184fe71d5b6ad1642e0e60d3f1"
+          ],
+          "source_hash": "41df2f839e164c34496e0a5c46f594391c14b3da4e3b667577da8d1fa51738b4",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/成都/heming-source-review-01.json",
+              "kind": "reviewed_full_original_and_exact_multiline_opinion",
+              "quote": "可以不去\n鹤鸣茶社",
+              "noteId": 877,
+              "conclusion": "茶社六条提及身份明确，四条正面、两条负面保留；跨行可不去意见逐字保全，停止其他景点混合提示。公园与茶社独立，不继承合游时长、免费门票或公园营业。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "726ded184fe71d5b6ad1642e0e60d3f1"
+          ],
+          "text_warnings": [
+            {
+              "end": 117,
+              "quote": "可以不去\n鹤鸣茶社",
+              "start": 108,
+              "noteId": 877,
+              "entityId": "726ded184fe71d5b6ad1642e0e60d3f1",
+              "inputHash": "316fafa5e7f1ebe3b8ad070cd27be96c2ee7e40e3c1f0a5aef7d8ef172676357",
+              "imageIndex": 0
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3564,
+          "scope_place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "input_hash": "c03a5865236d0f29327be6632e30459e6fbe29ab62fe1284ac93368012e8bf8b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope"
+        },
+        {
+          "mention_id": 3772,
+          "scope_place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "input_hash": "0e2b4c279356d36d5b85ebc6cac89f7d50f82924ea07edd3730e309bb7cf3997",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope"
+        },
+        {
+          "mention_id": 4059,
+          "scope_place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "input_hash": "53ca5cb9418dcdfcd73cf1b1deba900f95fe77a245dbf2c0a090639c9b7bedf3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope"
+        },
+        {
+          "mention_id": 4162,
+          "scope_place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "input_hash": "21b86d66d15b74799586d8715eaa7fe170cfca94c0ca9302d512345fe43d11e3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope"
+        },
+        {
+          "mention_id": 4199,
+          "scope_place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "input_hash": "3887e20cdb5e93c07524068875a0ab9dd7b11b2f149c996b4fb68d8eeaefe997",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope"
+        },
+        {
+          "mention_id": 4200,
+          "scope_place_id": 1847,
+          "entity_id": "726ded184fe71d5b6ad1642e0e60d3f1",
+          "input_hash": "e0d87a7a103bd20b2b9e8a0b4b743fabd72e9d24119969247c10002fab73650a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-69-heming-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "41df2f839e164c34496e0a5c46f594391c14b3da4e3b667577da8d1fa51738b4",
+        "mentions": [
+          {
+            "mentionId": 3564,
+            "inputHash": "c03a5865236d0f29327be6632e30459e6fbe29ab62fe1284ac93368012e8bf8b"
+          },
+          {
+            "mentionId": 3772,
+            "inputHash": "0e2b4c279356d36d5b85ebc6cac89f7d50f82924ea07edd3730e309bb7cf3997"
+          },
+          {
+            "mentionId": 4059,
+            "inputHash": "53ca5cb9418dcdfcd73cf1b1deba900f95fe77a245dbf2c0a090639c9b7bedf3"
+          },
+          {
+            "mentionId": 4162,
+            "inputHash": "21b86d66d15b74799586d8715eaa7fe170cfca94c0ca9302d512345fe43d11e3"
+          },
+          {
+            "mentionId": 4199,
+            "inputHash": "3887e20cdb5e93c07524068875a0ab9dd7b11b2f149c996b4fb68d8eeaefe997"
+          },
+          {
+            "mentionId": 4200,
+            "inputHash": "e0d87a7a103bd20b2b9e8a0b4b743fabd72e9d24119969247c10002fab73650a"
+          }
+        ],
+        "textWarnings": [
+          {
+            "noteId": 877,
+            "imageIndex": 0,
+            "inputHash": "316fafa5e7f1ebe3b8ad070cd27be96c2ee7e40e3c1f0a5aef7d8ef172676357"
+          }
+        ]
+      },
+      "scopeReviews": []
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "batch": 58,
+  "stage": "read_only_live_data_check",
+  "failedAt": "verify-river-outdoors-data.mts:108",
+  "error": "116 !== 112",
+  "reason": "适配旧批次验证器时遗漏更新待审数量常量；第57批已新增4条，实库和当前基线均为116。",
+  "fixedVerification": "断言116条且与导入前完整待审声明逐项相等；旧审核行与当前审计逐项相等。",
+  "passedEvidence": "river-outdoors-downstream-check-01.json",
+  "businessDecisionsChanged": false,
+  "businessApplyReplayed": false,
+  "productionCodeChanged": false
+}

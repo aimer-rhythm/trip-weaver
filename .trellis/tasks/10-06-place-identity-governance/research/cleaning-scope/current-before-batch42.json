@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "scopeFile": "run-1791372788231/scope-06.json",
+  "scopeSha256": "73af20a5e458e6eb6cd55c630d0e553f7ae8d0522fdda21e9cdbbf49d8edf353",
+  "inputSha256": "47f35a083f7354959810eaab5dbf6433da37b13ae00561e4d62edc022e9fc70f",
+  "reportFile": "run-1791372788231/scope-06.md",
+  "policy": {
+    "quotas": {
+      "attraction": 50,
+      "food": 30,
+      "cafe": 10,
+      "photo_spot": 10,
+      "market": 10
+    },
+    "excludedCities": [
+      "云南"
+    ],
+    "quotaUnit": "每city桶内每类型的稳定实体",
+    "tieBreak": "推荐分、独立来源数、质量分；均相同后优先较少覆盖的约2km网格，再用稳定ID固定顺序",
+    "deferredMeaning": "不在本轮主动清洗范围，原始数据/待审状态及现有身份防护保留"
+  },
+  "summary": {
+    "inputQualified": 4919,
+    "eligible": 4374,
+    "manuallyExcluded": 37,
+    "quotaSelected": 967,
+    "referenceAdded": 11,
+    "primary": 978,
+    "dependencies": 56,
+    "sourceRows": 1135,
+    "pendingInScope": 50,
+    "pendingDeferred": 126,
+    "quarantinedReviewRows": 37,
+    "deferredOtherRows": 89,
+    "inScopeReviews": {
+      "rows": 50,
+      "entityPairs": 50,
+      "mentions": 0,
+      "images": 0
+    },
+    "deferredReviews": {
+      "rows": 126,
+      "entityPairs": 84,
+      "mentions": 41,
+      "images": 0
+    },
+    "referenceNeedsReview": 4,
+    "preservedReferences": 49
+  },
+  "latestAppliedEntityBatch": 41,
+  "latestFlow": "../all-cities/flow/run-43",
+  "latestAudit": "../all-cities/audit/run-39",
+  "userAcceptance": false,
+  "taskStatus": "in_progress",
+  "activatedAt": "2026-10-07T14:59:32.000Z",
+  "selectionFrozenAfterEntityBatch": 29,
+  "cityReviewLedgers": {
+    "济南": "../priority-cities/济南/review-20.json"
+  },
+  "progressNote": "第41批尚泉尚水茶馆前平台已完成完整scope、主名及photo_spot/自然细分类修订与228地点/20关系双同步，保留原ID、12653提及与摄影描述，revision4、精确坐标仍null。实际餐饮筛选排除、平台名SQL/真实向量、茶馆裸名+旧ID拒绝及排程细分类消费通过。587上游全套、真实上下游导入/回滚、全仓及扩展typecheck通过；107原源/662提及/82原文、238旧行/48既有图片字段/9绑定与201历史行程保持。flow43为291正例/113边界/47撤回0失败，audit39为240PENDING。review20仍98行：4非地点、19行AI自查、75未完成，其中9行部分scope治理；110正式待审及4必去缺口保持。实体41/独立图片03，无未同步或向量待复核。图片暂不比对、云南不处理；位置与剩余重点继续。未验收，不提交归档。",
+  "progressUpdatedAt": "2026-10-08T16:55:02.883Z",
+  "summaryMeaning": "summary为scope06固定入选时统计；后续逐提及待审增量见currentScopeReviews，不重排或静默删除原入选行。",
+  "currentScopeReviews": {
+    "frozenEntityPairs": 50,
+    "addedPendingMentions": 60,
+    "currentReviewRows": 110,
+    "referenceNeedsReview": 4,
+    "evidence": [
+      "../priority-cities/济南/wulongtan-source-review-01.json",
+      "../priority-cities/济南/baotu-source-review-01.json",
+      "../priority-cities/济南/square-source-review-02.json",
+      "../priority-cities/济南/spring-source-review-02.json"
+    ],
+    "meaning": "50重点实体对仍待审；五龙潭18、趵突泉38、泉城广场3及刘氏泉摄影主体1条scope保持null，固定scope06统计不作实时队列。"
+  },
+  "latestIndependentPhotoBatch": 3,
+  "unappliedFindings": [],
+  "pendingVerification": [],
+  "latestReadOnlyFindings": {
+    "file": "../priority-cities/济南/bridge-source-review-01.json",
+    "outerFile": "../priority-cities/济南/outer-source-review-01.json",
+    "bridgeGateBoundaryPending": true,
+    "liuPhotoMentionPending": 12692,
+    "noteRefresh": "../all-cities/jinan-bridge-note-refresh-01.json",
+    "downloadedOriginalImages": 51,
+    "webSearchStatus": "search07_stream_returned_links_and_sina_fetched;search05_06_08_timed_out;reference04_12_fetch_failed",
+    "textFollowup": "../text-followup-20261009.md",
+    "shopsPacket": "../priority-cities/济南/shops-source-packet-01.json",
+    "zooOldPointMatchesToilet": true,
+    "zooNameLinkUnverified": true,
+    "imagesCompared": false
+  },
+  "resolvedVerification": [
+    {
+      "batch": 36,
+      "city": "济南",
+      "entityId": "033a692df5218d571ddd2cca8a8c91e3",
+      "name": "甜沫儿",
+      "kind": "withdrawal_live_vector",
+      "reason": "production_timeout",
+      "evidence": "../all-cities/batch-37/sync-01/verification-vectors.json",
+      "verifiedByEntityBatch": 37
+    },
+    {
+      "batch": 38,
+      "city": "济南",
+      "entityId": "8808e16f1472d0df17bed729a2e54e83",
+      "name": "趵突泉",
+      "kind": "withdrawal_live_vector",
+      "reason": "production_timeout",
+      "verifiedByEntityBatch": 38,
+      "evidence": "../all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+    }
+  ],
+  "latestReviewEvidence": {
+    "file": "../priority-cities/济南/platform-downstream-check-01.json",
+    "fullReviewsAdded": 0,
+    "partiallyReviewed": 1
+  },
+  "resolvedFindings": [
+    {
+      "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+      "name": "灵岩寺",
+      "sourceId": 5475,
+      "mentionIds": [
+        11686
+      ],
+      "status": "resolved_effective_duration_batch39",
+      "quote": "避雷5：灵岩寺距离市区较远，来回路程长，如果只有半天时间不建议安排，容易太赶",
+      "conclusion": "错误180分钟已从有效导出与下游消费移除；原始源与旧派生缓存保留追溯，唯一有效提及不撤回。",
+      "next": "本项AI自查通过；继续其他重点主体。",
+      "evidence": "../priority-cities/济南/lingyan-downstream-check-01.json",
+      "resolvedByEntityBatch": 39
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "sourceId": 5481,
+      "mentionIds": [
+        12581
+      ],
+      "status": "resolved_description_fields_batch40",
+      "resolvedByEntityBatch": 40,
+      "evidence": "../priority-cities/济南/description-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "abc624edea07111dc19aa79dfbb18289",
+      "sourceId": 5974,
+      "mentionIds": [
+        12787
+      ],
+      "status": "resolved_description_fields_batch40",
+      "resolvedByEntityBatch": 40,
+      "evidence": "../priority-cities/济南/description-downstream-check-01.json",
+      "fullReviewPassed": false
+    },
+    {
+      "entityId": "2c8372d3a47dbcb68abd998af495436d",
+      "name": "尚泉尚水茶馆前平台",
+      "sourceId": 5945,
+      "mentionIds": [
+        12653
+      ],
+      "status": "resolved_platform_identity_and_type_batch41",
+      "resolvedByEntityBatch": 41,
+      "evidence": "../priority-cities/济南/platform-downstream-check-01.json",
+      "fullReviewPassed": false,
+      "locationPending": true
+    }
+  ],
+  "imageComparisonPolicy": {
+    "status": "deferred_by_user",
+    "instruction": "图片触发安全审查，暂不对图片进行比对",
+    "appliesTo": "本任务后续图片比对，恢复须有用户新指令",
+    "acceptedAsPassed": false
+  }
+}

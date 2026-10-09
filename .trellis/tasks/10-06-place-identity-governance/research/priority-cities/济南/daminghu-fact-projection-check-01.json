@@ -1,0 +1,176 @@
+{
+  "batch": 42,
+  "readOnly": true,
+  "confirmed": 48,
+  "pendingProjectionEmpty": [
+    11379,
+    11421,
+    11539,
+    11581,
+    11598,
+    11601,
+    11604,
+    11611,
+    11695,
+    11703,
+    11705,
+    12575,
+    12649,
+    12654,
+    12687,
+    12839,
+    12908
+  ],
+  "boatMinutesExcluded": 30,
+  "boatDescriptionRetained": true,
+  "validDurationRows": [
+    {
+      "mentionId": 11342,
+      "noteId": 2545,
+      "minutes": 120
+    },
+    {
+      "mentionId": 11450,
+      "noteId": 2553,
+      "minutes": 120
+    },
+    {
+      "mentionId": 11462,
+      "noteId": 2570,
+      "minutes": 60
+    },
+    {
+      "mentionId": 12570,
+      "noteId": 2545,
+      "minutes": 120
+    },
+    {
+      "mentionId": 12728,
+      "noteId": 2570,
+      "minutes": 60
+    },
+    {
+      "mentionId": 12973,
+      "noteId": 2840,
+      "minutes": 120
+    }
+  ],
+  "relationDowngrades": [
+    {
+      "from": "大明湖",
+      "to": "曲水亭街",
+      "beforeStrength": "direct",
+      "afterStrength": "weak",
+      "retainedNoteIds": [
+        2622
+      ],
+      "lostEvidence": [
+        {
+          "noteId": 2563,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2789,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2803,
+          "reasons": [
+            "ambiguous_text_occurrence",
+            "no_mention_binding"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2829,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2830,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2834,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2840,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        }
+      ]
+    },
+    {
+      "from": "大明湖",
+      "to": "超然楼",
+      "beforeStrength": "direct",
+      "afterStrength": "weak",
+      "retainedNoteIds": [
+        2622
+      ],
+      "lostEvidence": [
+        {
+          "noteId": 2563,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2834,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        },
+        {
+          "noteId": 2840,
+          "reasons": [
+            "ambiguous_text_occurrence"
+          ],
+          "formerEndpointReasons": [
+            "ambiguous_text_occurrence"
+          ]
+        }
+      ]
+    }
+  ],
+  "reasonMeaning": "多次同名出现且旧提及引用无法定位具体正文位置、目标待审或该名称表层无提及绑定，均不能认领关系端点；身份resolved不等于任一同名位置已确认。",
+  "imageComparison": "deferred_by_user",
+  "failures": []
+}

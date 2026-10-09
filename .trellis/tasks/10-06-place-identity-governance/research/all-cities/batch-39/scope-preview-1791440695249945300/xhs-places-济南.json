@@ -1,0 +1,147 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-08）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-08",
+ "count": 1,
+ "activeCount": 1,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "7f553c2936334db56d51ca4ce8cd26e9bb2aa0c813ebab146b7bcd47f480b7da",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "灵岩寺"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11686,
+     "noteId": 2609,
+     "inputHash": "247cae165600adec5aa136ff162dfe9cb700f611f9833f369c6549ca88884411",
+     "textHash": "90e42025de21784b9f76ab9847189df0e8a4ab5c4b9cc819be1e0e219b30c6bb",
+     "textLength": 518,
+     "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+     "revision": 3,
+     "canonicalName": "灵岩寺",
+     "aliases": [
+      "灵岩寺"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "29f4a4b260878eb8d9143b15b8fca54f",
+   "name": "灵岩寺",
+   "category": "文化",
+   "lng": 116.983725,
+   "lat": 36.361628,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "万德镇",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "海内四大名刹之首，宋代彩塑罗汉像被誉为海内第一名塑"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "海内四大名刹之首。宋代彩塑罗汉像被誉为海内第一名塑。",
+     "highlights": [
+      {
+       "text": "海内四大名刹之首",
+       "quote": "海内四大名刹之首",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T06:24:55.489755+00:00"
+      },
+      {
+       "text": "宋代彩塑罗汉像被誉为海内第一名塑",
+       "quote": "宋代彩塑罗汉像被誉为“海内第 一名塑”",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T06:24:55.489755+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T06:24:55.681072+00:00"
+    },
+    "originalName": "灵岩寺",
+    "openHours": {
+     "version": 2,
+     "subject": "灵岩寺",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11686,
+      "noteId": 2609,
+      "inputHash": "247cae165600adec5aa136ff162dfe9cb700f611f9833f369c6549ca88884411"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "29f4a4b260878eb8d9143b15b8fca54f",
+     "canonicalName": "灵岩寺",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "灵岩寺"
+     ],
+     "memberIds": [
+      "29f4a4b260878eb8d9143b15b8fca54f"
+     ]
+    },
+    "aliases": [
+     "灵岩寺"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "海内四大名刹之首，宋代彩塑罗汉像被誉为海内第一名塑",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a71b2990000000035015f01?xsec_token=AB1ck8vN1wfWsMiWttlLe3EGkYiE6cWDoKbG9gz8sjplI=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,423 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a",
+          "city": "济南",
+          "canonical_name": "民族大街",
+          "primary_place_id": 5372,
+          "aliases": [
+            "民族大街"
+          ],
+          "legacy_ids": [
+            "48bbca08dc8a0fd00189dbe41cfa127a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5372,
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5372,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 20.2,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5372,
+          "mention_count_30d": 3,
+          "positive_count_30d": 2,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "早餐人均20元，性价比高",
+              "evidence": "早餐在民族大街吃的人均💰20"
+            },
+            {
+              "reason": "距离C区较远，住宿选择时需考虑",
+              "evidence": "离民族大街稍远"
+            },
+            {
+              "reason": "早餐人均20元，性价比高",
+              "evidence": "早餐在民族大街吃的人均💰20"
+            }
+          ],
+          "recommend_score": 10.33
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7815,
+          "canonical_place_id": 5372,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 民族大街",
+          "evidence_summary": "早餐人均20元，性价比高"
+        },
+        {
+          "id": 7816,
+          "canonical_place_id": 5372,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 民族大街",
+          "evidence_summary": "距离C区较远，住宿选择时需考虑"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5372,
+          "city": "济南",
+          "name_keys": [
+            "民族大街"
+          ],
+          "entity_ids": [
+            "48bbca08dc8a0fd00189dbe41cfa127a"
+          ],
+          "source_hash": "917faef34cec331756cd8879c3be9b8de339aacbe34e0db9cece24346f1b3905",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-47-source-5372-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/minzu-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "conclusion": "完整正文区分街道早餐目的地、具体市场与图示住宿区域评价；沿用审核369的part_of边界，不合并或创建别名。",
+              "mentionIds": [
+                11501,
+                11608,
+                12754
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "48bbca08dc8a0fd00189dbe41cfa127a"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11501,
+          "scope_place_id": 5372,
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a",
+          "input_hash": "3cd3fd864b22fe41c434aa806ded6372655a3274a2bced426fdbe1cc5b29a610",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-47-source-5372-scope"
+        },
+        {
+          "mention_id": 11608,
+          "scope_place_id": 5372,
+          "entity_id": null,
+          "input_hash": "7f372acdd8daae842ca6ad0a3657932202722e1a45cb061fa1929045f11556c9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-47-source-5372-scope"
+        },
+        {
+          "mention_id": 12754,
+          "scope_place_id": 5372,
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a",
+          "input_hash": "7dd23a697b46ea98e423ef99b07235dbf499042a4e06c22ac6533b75a2920923",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-47-source-5372-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "917faef34cec331756cd8879c3be9b8de339aacbe34e0db9cece24346f1b3905",
+        "mentions": [
+          {
+            "mentionId": 11501,
+            "inputHash": "3cd3fd864b22fe41c434aa806ded6372655a3274a2bced426fdbe1cc5b29a610"
+          },
+          {
+            "mentionId": 11608,
+            "inputHash": "7f372acdd8daae842ca6ad0a3657932202722e1a45cb061fa1929045f11556c9"
+          },
+          {
+            "mentionId": 12754,
+            "inputHash": "7dd23a697b46ea98e423ef99b07235dbf499042a4e06c22ac6533b75a2920923"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 5809,
+          "fingerprint": "9b9ba586b683034c23a5d0411ae56d2753265b44cbb9a643135dab2c0b72d557",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "7f372acdd8daae842ca6ad0a3657932202722e1a45cb061fa1929045f11556c9",
+            "mentionId": 11608,
+            "scopePlaceIds": [
+              5372
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "79e713e197315afb0440835502699789",
+          "city": "济南",
+          "canonical_name": "民族大街市场",
+          "primary_place_id": 5961,
+          "aliases": [
+            "民族大街市场"
+          ],
+          "legacy_ids": [
+            "79e713e197315afb0440835502699789"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5961,
+          "entity_id": "79e713e197315afb0440835502699789"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5961,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "购物",
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5961,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆",
+              "evidence": "推荐烤鸡腿、清真绿豆饼、茉莉花豆浆"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8696,
+          "canonical_place_id": 5961,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 民族大街市场",
+          "evidence_summary": "当地菜市场，推荐烤鸡腿、清真绿豆饼、茉莉花豆浆"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5961,
+          "city": "济南",
+          "name_keys": [
+            "民族大街市场"
+          ],
+          "entity_ids": [
+            "79e713e197315afb0440835502699789"
+          ],
+          "source_hash": "cf39541bd7b5126f34438016ac3a7c8c7d4efaef9ba6b7cfc215e9bb7dd7b66e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-47-source-5961-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/minzu-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "conclusion": "完整正文区分街道早餐目的地、具体市场与图示住宿区域评价；沿用审核369的part_of边界，不合并或创建别名。",
+              "mentionIds": [
+                12643
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "79e713e197315afb0440835502699789"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12643,
+          "scope_place_id": 5961,
+          "entity_id": "79e713e197315afb0440835502699789",
+          "input_hash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-47-source-5961-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "cf39541bd7b5126f34438016ac3a7c8c7d4efaef9ba6b7cfc215e9bb7dd7b66e",
+        "mentions": [
+          {
+            "mentionId": 12643,
+            "inputHash": "322147f25fb10b345c1dd2d2dfe5256eb92ddaa8a238b994aba38cf67d3a8ee5"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a",
+          "city": "济南",
+          "canonical_name": "民族大街",
+          "primary_place_id": 5372,
+          "aliases": [
+            "民族大街"
+          ],
+          "legacy_ids": [
+            "48bbca08dc8a0fd00189dbe41cfa127a"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "文化",
+            "xhsPlaceType": "other"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/minzu-source-review-01.json",
+              "conclusion": "民族大街为公共街道，早餐是街上活动，不是名为民族大街的单一餐饮店；纠正food细类为other，保留美食主题和原名/坐标。具体市场仍独立购物/market。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5372,
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a"
+        }
+      ]
+    }
+  ]
+}

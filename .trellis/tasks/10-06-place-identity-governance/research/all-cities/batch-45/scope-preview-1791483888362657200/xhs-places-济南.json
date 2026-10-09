@@ -1,0 +1,334 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "77a3ed42c64265b638116a8ddfbd9a15a47629b62f49f48b7a1a311f9128cb26",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "纬三路与经三路交叉口",
+    "大观园"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11343,
+     "noteId": 2566,
+     "inputHash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28",
+     "textHash": "4dd6e7e1cfee1f5172ac91d8f6369c3830635040d03603d643e4ad527f4b6266",
+     "textLength": 554,
+     "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11425,
+     "noteId": 2567,
+     "inputHash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12619,
+     "noteId": 2793,
+     "inputHash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529",
+     "textHash": "e08c8f750bb29c4fa9be9d06e88f5a1b837fbe50e2f8dc693179b3bc2952865d",
+     "textLength": 979,
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12644,
+     "noteId": 2782,
+     "inputHash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350",
+     "textHash": "16063f410d79ec17912689f551785d803256aaae96aa0fbaa44e401190a1e1a2",
+     "textLength": 966,
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12703,
+     "noteId": 2567,
+     "inputHash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434",
+     "textHash": "636765faa896575db8460489ac1611c88c4e02b8f0380382e0fcb1220322b64e",
+     "textLength": 860,
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "revision": 3,
+     "canonicalName": "大观园",
+     "aliases": [
+      "大观园"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+     "revision": 3,
+     "canonicalName": "纬三路与经三路交叉口",
+     "aliases": [
+      "纬三路与经三路交叉口"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "910ac4e3fee34da1dd5f4378c7319ba5",
+   "name": "大观园",
+   "category": "文化",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "attraction",
+    "themes": [],
+    "address": "山东省济南市市中区经四路与纬二路交汇处",
+    "adcode": "",
+    "mentionCount": 4,
+    "recommendScore": 14.5,
+    "topReasons": [
+     "市井烟火气十足，夜景更有味道。",
+     "古色古香，汇聚济南当地美食小吃，适合边走边尝",
+     "可去可不去"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "穿越老济南，市井烟火气十足。古色古香，汇聚济南当地美食小吃。穿越老济南，市井烟火气十足。",
+     "highlights": [
+      {
+       "text": "穿越老济南，市井烟火气十足。",
+       "quote": "穿越老济南！市井烟火气十足",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T18:24:48.653429+00:00"
+      },
+      {
+       "text": "古色古香，汇聚济南当地美食小吃",
+       "quote": "古色古香的，汇聚了很多济南当地美食小吃",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T18:24:48.653430+00:00"
+      },
+      {
+       "text": "穿越老济南，市井烟火气十足",
+       "quote": "穿越老济南！市井烟火气十足",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T18:24:48.653429+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T18:24:48.941873+00:00"
+    },
+    "originalName": "大观园",
+    "openHours": {
+     "version": 2,
+     "subject": "大观园",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11425,
+      "noteId": 2567,
+      "inputHash": "bbf1b29a359ff073e486b712bad48bb9370121c958773a5c0bace2974181083e"
+     },
+     {
+      "mentionId": 12619,
+      "noteId": 2793,
+      "inputHash": "08eeb2f9d2913afa262e4e2a529c8aaa362305320f28ac67238270ba36070529"
+     },
+     {
+      "mentionId": 12644,
+      "noteId": 2782,
+      "inputHash": "6ae9fe15564be71865c4d36df2779d58964fac118ff2a08c8195490fee688350"
+     },
+     {
+      "mentionId": 12703,
+      "noteId": 2567,
+      "inputHash": "fe6c14334e2e167546dcb7b7847a75c2fef4ee87169c5a802e29439a04956434"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+     "canonicalName": "大观园",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "大观园"
+     ],
+     "memberIds": [
+      "910ac4e3fee34da1dd5f4378c7319ba5"
+     ]
+    },
+    "aliases": [
+     "大观园"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "市井烟火气十足，夜景更有味道。",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "古色古香，汇聚济南当地美食小吃，适合边走边尝",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/699fea29000000002603cf8c?xsec_token=ABUyaf2FpWguaCZjrYZqUMuD6uB8FoGBeT957Om76GBNc=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "可去可不去",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68331c9c00000000230020e4?xsec_token=ABGl0ll0AoJNwuOB-F5KJqB-H68_1qjniv57Ag2eK8o9U=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "市井烟火气十足，夜景更有味道",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68416dee000000002301d36d?xsec_token=ABvTFSP8vP2jUHQrj8S_KuoNlanCtMp2k9GBpy9wFuMm8=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "fef9784ad510099ad3bd150eee3fbf5c",
+   "name": "纬三路与经三路交叉口",
+   "category": "文化",
+   "lng": 116.993629,
+   "lat": 36.661722,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "photo_spot",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "打卡爱心斑马线，多巴胺配色拍照好看"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "爱心斑马线是打卡点。",
+     "highlights": [
+      {
+       "text": "爱心斑马线是打卡点",
+       "quote": "打卡爱心斑马线",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68dfc8a50000000004010c1e?xsec_token=ABYVGeZGfX1-iLMF3L_QkTQ96N7YarV8ZJqks4OSTqUk8=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-08T18:24:48.653425+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T18:24:48.941873+00:00"
+    },
+    "originalName": "纬三路与经三路交叉口",
+    "openHours": {
+     "version": 2,
+     "subject": "纬三路与经三路交叉口",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11343,
+      "noteId": 2566,
+      "inputHash": "d68ed11d16c5d3170341cdd4feeae99cedc5efc405192bb69b71bceeca352e28"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+     "canonicalName": "纬三路与经三路交叉口",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "纬三路与经三路交叉口"
+     ],
+     "memberIds": [
+      "fef9784ad510099ad3bd150eee3fbf5c"
+     ]
+    },
+    "aliases": [
+     "纬三路与经三路交叉口"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "打卡爱心斑马线，多巴胺配色拍照好看",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68dfc8a50000000004010c1e?xsec_token=ABYVGeZGfX1-iLMF3L_QkTQ96N7YarV8ZJqks4OSTqUk8=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

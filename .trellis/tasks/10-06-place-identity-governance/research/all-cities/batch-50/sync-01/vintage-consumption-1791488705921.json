@@ -1,0 +1,33 @@
+{
+  "batch": 50,
+  "isolated": true,
+  "synthetic": false,
+  "fullCityPlaces": 228,
+  "actualPlaceFacts": true,
+  "priorGovernedFactsPreserved": true,
+  "sourceContentPreserved": true,
+  "coordinatesCleared": 2,
+  "categoriesCorrected": 1,
+  "independentIdentityPreserved": true,
+  "media": [
+    {
+      "name": "老商埠",
+      "count": 3,
+      "digest": "2c29d7b93a412f38eb21d6ce3ece4f175e0576dee87bee3a179d5bb095868603"
+    },
+    {
+      "name": "经三路",
+      "count": 1,
+      "digest": "2143dbc77997beeaf461e337c7f018783583096ae8e60dac777fba41cdbefddd"
+    }
+  ],
+  "independentSourceDigestUnchanged": true,
+  "mockEnqueueCalls": {
+    "before": 2,
+    "after": 2
+  },
+  "actualEnqueues": 0,
+  "enqueueMeaning": "未新增scope的两无图主体按既有规则请求补图；前后各2次均被隔离测试回调截获，不写真实队列。",
+  "imageComparison": "deferred_by_user",
+  "failures": []
+}

@@ -1,0 +1,63 @@
+{
+  "capturedAt": "2026-10-09T01:50:58.768384+00:00",
+  "readOnly": true,
+  "installedValidator": "D:\\Project\\xhs-travel-pipeline\\app\\clean\\note_text_warnings.py",
+  "validatorSha256": "c93eda8b179be1052eb270f5d52d406375cad9bf8cb16d3e50b08b6c5a4b7ab5",
+  "sourceFile": "priority-cities\\成都\\wuhou-jinli-source-01.json",
+  "sourceSha256": "d49aa33671cdf873ed879c9f93e2849e05db4a673fc4d3f0dfa506dd0d6191d6",
+  "noteId": 948,
+  "observedAt": "2026-09-21T10:57:55.721740+00:00",
+  "publishedAt": "2026-08-24T14:16:39+00:00",
+  "rawJsonSha256": "8b58e26e28d5f5025ade80f1a779fef0467ddd833478d5ffffa345be6a662418",
+  "analysisSha256": "0f5b2de91d19d76e95425001b241c26baf5beaa4901a59736c436bd63395f381",
+  "noteUnchanged": true,
+  "cases": [
+    {
+      "noteId": 948,
+      "imageIndex": 1,
+      "inputHash": "7e4e45b77436a8d4393eb5fad90115e8c7c7f715d477b4ce22b01860333e89df",
+      "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+      "start": 127,
+      "end": 227,
+      "quote": "6、武侯祠 8.3\n可以去。三国迷很加分，刘备、诸葛亮相关历史脉络很完整，红墙竹影也是很经典的拍照机位，历史基础比较少的话建议蹭讲解或租导览，不然容易走马观花觉得没啥意思。出来就是锦里，可以一起安排。",
+      "name": "武侯祠",
+      "revision": 1,
+      "quoteSha256": "8565ebb9670d0ed09a3deb721e96465a5dcd8d6246d5eaeafcaa0cdce31368fa",
+      "rejectedCases": [
+        "clipped_heading",
+        "clipped_opinion",
+        "changed_text",
+        "stale_date",
+        "unconfirmed_subject"
+      ],
+      "originalQuotePreserved": true
+    },
+    {
+      "noteId": 948,
+      "imageIndex": 2,
+      "inputHash": "348a09b2f2261bc752bdb2fa0879f983c8bb0da86b1f88f92bf223bb699185b3",
+      "entityId": "8a433260acdd259716088f8009e0fbdc",
+      "start": 257,
+      "end": 364,
+      "quote": "11、锦里古街🏮 7.2\n不太推荐专程去。夜景灯笼亮起来确实好看，和武侯祠连着，所以“顺便逛”比“专门来”合理很多。里面游客密度高，餐饮、小商品偏旅游街模式，价格下单前先看清。建议武侯祠出来走一圈，拍完夜景就撤。※",
+      "name": "锦里",
+      "revision": 1,
+      "quoteSha256": "1139d01fe5982824a27963e42bdbcbcecab5f1fb4facbd61d5743df528bb6bf5",
+      "rejectedCases": [
+        "clipped_heading",
+        "clipped_opinion",
+        "changed_text",
+        "stale_date",
+        "unconfirmed_subject"
+      ],
+      "originalQuotePreserved": true
+    }
+  ],
+  "validatedQuotes": 2,
+  "rejectedMutations": 10,
+  "confirmedIdsAreValidatorInputsOnly": true,
+  "businessScopeApplied": false,
+  "assignmentsBeforeAndAfter": 47,
+  "imagesViewed": 0,
+  "failures": []
+}

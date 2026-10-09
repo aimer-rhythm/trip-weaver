@@ -1,0 +1,55 @@
+{
+  "city": "杭州",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "sourceRevision": 2,
+  "sourceHash": "09492ae69bc150d3f60c66ee73cb4eae5196391fd94d365a67eec159a26d52c0",
+  "placesHash": "502c66009edac52a738805e0505ed089678d185fcaf4bd8154a19a5a77de256d",
+  "relationsHash": "d16e338294a69269866d895347325e45f2015a198c20e193daffcf8183232091",
+  "libraryHash": "b54bd2d7deeb6393dba53241a10dd4af64c0b2d1017d791ce3b2ffc8ba3c1779",
+  "counts": {
+    "places": 646,
+    "graph": 140,
+    "direct": 41,
+    "library": {
+      "canonical_places": 670,
+      "research_evidence": 969,
+      "place_relation": 72,
+      "data_import": 3,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "502c66009edac52a738805e0505ed089",
+      "row_count": 646
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "d16e338294a69269866d895347325e45",
+      "row_count": 41
+    }
+  ],
+  "audits": [
+    {
+      "id": "a90f41e3-9d62-49ed-8f7b-92a3f600ac5f",
+      "content_hash": "502c66009edac52a738805e0505ed089"
+    },
+    {
+      "id": "7d3d9605-5e94-453c-b326-e6ac5c4f0f1d",
+      "content_hash": "d16e338294a69269866d895347325e45"
+    }
+  ],
+  "importedAt": "2026-10-07T09:05:29.810Z"
+}

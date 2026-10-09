@@ -1,0 +1,50 @@
+{
+  "readOnly": true,
+  "batch": 40,
+  "capturedAt": "2026-10-08T16:26:27.578Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes"
+  ],
+  "probes": [
+    {
+      "id": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "mentionCount": 3,
+      "evidenceCount": 2,
+      "embeddingText": "济南 明水古城 娱乐"
+    },
+    {
+      "id": "abc624edea07111dc19aa79dfbb18289",
+      "name": "济南野生动物园",
+      "mentionCount": 1,
+      "evidenceCount": 0,
+      "embeddingText": "济南 济南野生动物园 娱乐"
+    }
+  ],
+  "badDescriptionsRemoved": true,
+  "oldEvidenceActuallyRemoved": true,
+  "independentFieldsPreserved": true,
+  "priorAssignments": 11,
+  "newAssignments": 4,
+  "excludedDescriptionFields": 4,
+  "priorDurationExclusions": 4,
+  "pendingMentions": 60,
+  "boundaryChecks": 18,
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "vectorReport": "all-cities/batch-40/sync-01/verification-vectors.json",
+  "failures": []
+}

@@ -1,0 +1,86 @@
+{
+  "verifiedAt": "2026-10-06T16:11:37.987Z",
+  "batch": "batch-11",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "上海",
+      "exported": 229,
+      "total": 238,
+      "active": 231,
+      "embedded": 231,
+      "probes": [
+        {
+          "name": "外滩观景台",
+          "id": "b2e6fd0440f0172d50ddd4f4a10bea07"
+        },
+        {
+          "name": "上海外滩观景台",
+          "id": "b2e6fd0440f0172d50ddd4f4a10bea07"
+        },
+        {
+          "name": "外滩观景平台",
+          "id": "b2e6fd0440f0172d50ddd4f4a10bea07"
+        },
+        {
+          "name": "陆家嘴环形天桥",
+          "id": "d281130d89da6d1c0403c3e02a54c397"
+        },
+        {
+          "name": "陆家嘴天桥",
+          "id": "d281130d89da6d1c0403c3e02a54c397"
+        },
+        {
+          "name": "南翔馒头店",
+          "id": "b5b15ab3bbacdacee33051d7b3172751"
+        },
+        {
+          "name": "南翔小笼",
+          "id": "b5b15ab3bbacdacee33051d7b3172751"
+        },
+        {
+          "name": "南翔小笼包",
+          "id": "b5b15ab3bbacdacee33051d7b3172751"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "上海外滩观景台",
+          "id": "b2e6fd0440f0172d50ddd4f4a10bea07",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "陆家嘴天桥",
+          "id": "d281130d89da6d1c0403c3e02a54c397",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "南翔小笼",
+          "id": "b5b15ab3bbacdacee33051d7b3172751",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "125463ef-dbc1-4bca-81f9-0505a35fb8e3"
+      ]
+    }
+  ],
+  "failures": []
+}

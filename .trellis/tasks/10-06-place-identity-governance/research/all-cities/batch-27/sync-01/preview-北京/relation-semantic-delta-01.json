@@ -1,0 +1,168 @@
+{
+  "city": "北京",
+  "added": [
+    {
+      "from": "DULTON（798艺术区）",
+      "to": "五十六朵花",
+      "fromEntityId": "009ab8a799da8d7e804798e6d3a191da",
+      "toEntityId": "3f9fbbf8941298bc9b2e47f544f6ab1b",
+      "fromRevision": 2,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 1145,
+          "textHash": "b8eaf242cb624662b81510c1895105ac8367fc7b24e41e8747648568bfee3a73",
+          "from": {
+            "entityId": "009ab8a799da8d7e804798e6d3a191da",
+            "revision": 2,
+            "start": 151,
+            "end": 157,
+            "surface": "DULTON",
+            "mentions": [
+              {
+                "mentionId": 4274,
+                "inputHash": "86e46c31932079f6080f410c32070a29ca2e402ba46b3d5a15992df7002dc66d"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "3f9fbbf8941298bc9b2e47f544f6ab1b",
+            "revision": 2,
+            "start": 144,
+            "end": 149,
+            "surface": "五十六朵花",
+            "mentions": [
+              {
+                "mentionId": 4273,
+                "inputHash": "0af0dba64f97a3b64ffcdd03bd6e7b6ddb5ad8071378cfb60fed89c64c833ef7"
+              }
+            ]
+          },
+          "quote": "五十六朵花➡️DULTON"
+        }
+      ]
+    },
+    {
+      "from": "广济寺",
+      "to": "历代帝王庙",
+      "fromEntityId": "00c224bae7a8b798d36a3fa24995d077",
+      "toEntityId": "aadaf8ada5e2ae94aa1e7a912d7e17c3",
+      "fromRevision": 1,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 604,
+          "textHash": "a77b829eed5331ae95d4e545d67e276b1328349372f7534a8fd16569dfd22ba2",
+          "from": {
+            "entityId": "00c224bae7a8b798d36a3fa24995d077",
+            "revision": 1,
+            "start": 391,
+            "end": 394,
+            "surface": "广济寺",
+            "mentions": [
+              {
+                "mentionId": 2200,
+                "inputHash": "5d45a4bbfb2a58ea110090a3c9bbf45b62014bb4c6588b82b98bcab2e459fe98"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "aadaf8ada5e2ae94aa1e7a912d7e17c3",
+            "revision": 2,
+            "start": 383,
+            "end": 390,
+            "surface": "北京历代帝王庙",
+            "mentions": [
+              {
+                "mentionId": 2199,
+                "inputHash": "96c9bfe53982e3d18d82b6b5daa37b773b4e90c96edfb973e3b50452c7c89820"
+              }
+            ]
+          },
+          "quote": "北京历代帝王庙➡广济寺"
+        }
+      ]
+    },
+    {
+      "from": "五十六朵花",
+      "to": "TIGER（798艺术区）",
+      "fromEntityId": "3f9fbbf8941298bc9b2e47f544f6ab1b",
+      "toEntityId": "889ddf8153db22882b097d505a1fda0d",
+      "fromRevision": 2,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 1145,
+          "textHash": "b8eaf242cb624662b81510c1895105ac8367fc7b24e41e8747648568bfee3a73",
+          "from": {
+            "entityId": "3f9fbbf8941298bc9b2e47f544f6ab1b",
+            "revision": 2,
+            "start": 144,
+            "end": 149,
+            "surface": "五十六朵花",
+            "mentions": [
+              {
+                "mentionId": 4273,
+                "inputHash": "0af0dba64f97a3b64ffcdd03bd6e7b6ddb5ad8071378cfb60fed89c64c833ef7"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "889ddf8153db22882b097d505a1fda0d",
+            "revision": 2,
+            "start": 137,
+            "end": 142,
+            "surface": "TIGER",
+            "mentions": [
+              {
+                "mentionId": 4272,
+                "inputHash": "15a0df917e1e704f33a00687568b869608ca5feb855cfde1de897a3abd63d8be"
+              }
+            ]
+          },
+          "quote": "TIGER➡️五十六朵花"
+        }
+      ]
+    }
+  ],
+  "removed": [],
+  "changedEvidence": [],
+  "versionOnly": [
+    {
+      "from": "颐和园",
+      "to": "圆明园",
+      "fromRevision": 1,
+      "toRevision": 2
+    },
+    {
+      "from": "香山双清别墅",
+      "to": "碧云寺",
+      "fromRevision": 1,
+      "toRevision": 2
+    },
+    {
+      "from": "圆明园",
+      "to": "天坛公园",
+      "fromRevision": 2,
+      "toRevision": 1
+    },
+    {
+      "from": "白塔寺东夹道",
+      "to": "历代帝王庙",
+      "fromRevision": 2,
+      "toRevision": 2
+    },
+    {
+      "from": "西岸码头",
+      "to": "万佛楼遗址",
+      "fromRevision": 1,
+      "toRevision": 2
+    }
+  ]
+}

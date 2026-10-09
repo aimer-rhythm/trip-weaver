@@ -1,0 +1,136 @@
+{
+  "batch": 62,
+  "readOnly": true,
+  "at": "2026-10-08T22:53:55.897Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus",
+    "price",
+    "tips"
+  ],
+  "results": [
+    {
+      "entityId": "747792d1b5834255f5feaa6c2dc62925",
+      "name": "芙蓉街",
+      "withdrawn": false,
+      "ordinaryFactsPreserved": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "9dbf8ef94ec1777461c9d486973ce0c7",
+      "name": "后宰门街",
+      "withdrawn": false,
+      "ordinaryFactsPreserved": false,
+      "confirmed": 3,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+      "name": "腊山河廊道",
+      "withdrawn": false,
+      "ordinaryFactsPreserved": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "name": "油旋张",
+      "withdrawn": true,
+      "ordinaryFactsPreserved": false,
+      "confirmed": 0,
+      "pending": 3,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "636406ca3bce1e8189be38c73b4e8ae4",
+      "name": "泉源之眼",
+      "withdrawn": false,
+      "ordinaryFactsPreserved": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    }
+  ],
+  "assignmentRows": 318,
+  "pendingMentions": 130,
+  "scopesAdded": 2,
+  "confirmed": 3,
+  "pendingAdded": 3,
+  "coordinatesCleared": 0,
+  "withdrawals": 1,
+  "withdrawnCoordinatesRemoved": 1,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 3,
+  "readOnlyBoundaryPending": 1,
+  "sqlProbes": 5,
+  "boundaryProbes": 30,
+  "realVectorProbes": 5,
+  "realVectors": [
+    {
+      "name": "芙蓉街",
+      "entityId": "747792d1b5834255f5feaa6c2dc62925",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "后宰门街",
+      "entityId": "9dbf8ef94ec1777461c9d486973ce0c7",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "腊山河廊道",
+      "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "油旋张",
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "vector": "used",
+      "withdrawn": true
+    },
+    {
+      "name": "泉源之眼",
+      "entityId": "636406ca3bce1e8189be38c73b4e8ae4",
+      "vector": "used",
+      "withdrawn": false
+    }
+  ],
+  "graph": 19,
+  "directEdges": 3,
+  "relationEvidenceAndStrengthPreserved": true,
+  "relationEndpointRevisionsUpdated": 2,
+  "priorReviewRowsPreserved": true,
+  "rawDerivedCachesPreserved": true,
+  "confirmedFactsAndDatesPreserved": true,
+  "unresolvedBranchFactsRemoved": true,
+  "furongNegativeOpinionsPreserved": true,
+  "furongDescriptionGovernanceDeferred": true,
+  "fallbackObservedAtChanges": [],
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

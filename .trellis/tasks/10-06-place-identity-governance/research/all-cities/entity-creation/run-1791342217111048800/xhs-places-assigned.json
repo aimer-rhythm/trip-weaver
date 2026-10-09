@@ -1,0 +1,219 @@
+{
+ "_comment": "新分店-83a2dc7150f84326827017bfbbd5d0f2社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-07）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "新分店-83a2dc7150f84326827017bfbbd5d0f2",
+ "generatedAt": "2026-10-07",
+ "count": 3,
+ "activeCount": 2,
+ "places": [
+  {
+   "id": "946ecd387a5a472e9f4faa32ec2df798",
+   "name": "沐咖啡（南街店）",
+   "source": "xhs",
+   "verified": true,
+   "category": "美食",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T03:03:37.548455+00:00"
+    },
+    "themes": [],
+    "topReasons": [
+     "本条提及0"
+    ],
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "openHours": {
+     "version": 2,
+     "subject": "沐咖啡（南街店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "mentionSources": [
+     {
+      "mentionId": 1,
+      "noteId": 1,
+      "inputHash": "d670e7139d99745bdaf06b44ec5230005a04693ad8d33f506b8e3f60241037b8"
+     }
+    ],
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "typicalVisitMinutes": 30,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "946ecd387a5a472e9f4faa32ec2df798",
+     "revision": 1,
+     "approved": []
+    },
+    "geoStatus": "unresolved",
+    "identity": {
+     "version": 2,
+     "entityId": "946ecd387a5a472e9f4faa32ec2df798",
+     "canonicalName": "沐咖啡（南街店）",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "沐咖啡（南街店）"
+     ],
+     "memberIds": [
+      "946ecd387a5a472e9f4faa32ec2df798"
+     ]
+    },
+    "aliases": [
+     "沐咖啡（南街店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本条提及0",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "eb73f54219b54fa69c5c2bea02fe4265",
+   "name": "沐咖啡（北街店）",
+   "source": "xhs",
+   "verified": true,
+   "category": "美食",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "content": {
+     "version": 1,
+     "intro": "",
+     "highlights": [],
+     "compiledAt": "2026-10-07T03:03:37.548455+00:00"
+    },
+    "themes": [],
+    "topReasons": [
+     "本条提及1"
+    ],
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "openHours": {
+     "version": 2,
+     "subject": "沐咖啡（北街店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "mentionSources": [
+     {
+      "mentionId": 2,
+      "noteId": 1,
+      "inputHash": "ebab9468099a9e9fc784c2d833e952c1034478d259908134e4c788cc913b4f25"
+     }
+    ],
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "typicalVisitMinutes": 60,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "eb73f54219b54fa69c5c2bea02fe4265",
+     "revision": 1,
+     "approved": []
+    },
+    "geoStatus": "unresolved",
+    "identity": {
+     "version": 2,
+     "entityId": "eb73f54219b54fa69c5c2bea02fe4265",
+     "canonicalName": "沐咖啡（北街店）",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "沐咖啡（北街店）"
+     ],
+     "memberIds": [
+      "eb73f54219b54fa69c5c2bea02fe4265"
+     ]
+    },
+    "aliases": [
+     "沐咖啡（北街店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本条提及1",
+     "sourceUrl": ""
+    }
+   ]
+  },
+  {
+   "id": "4700c15413b85c9ad1bbd5e28f3f40c4",
+   "name": "沐咖啡",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "4700c15413b85c9ad1bbd5e28f3f40c4",
+     "canonicalName": "沐咖啡",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "沐咖啡"
+     ],
+     "memberIds": [
+      "4700c15413b85c9ad1bbd5e28f3f40c4"
+     ]
+    },
+    "aliases": [
+     "沐咖啡"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "split_source",
+     "candidateIds": [
+      "946ecd387a5a472e9f4faa32ec2df798",
+      "eb73f54219b54fa69c5c2bea02fe4265"
+     ]
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "4700c15413b85c9ad1bbd5e28f3f40c4",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  }
+ ]
+}

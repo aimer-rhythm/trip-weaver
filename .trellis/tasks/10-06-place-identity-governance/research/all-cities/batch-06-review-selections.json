@@ -1,0 +1,22 @@
+[
+  {"review":66,"verdict":"distinct","explanation":"1837明确voyage coffee杨梅竹店，4621完整原文是798园内Voyage Coffee；分店不同。两条地图都落杨梅竹是错配，不能作为合并证据。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[1837,4621]}]},
+  {"review":69,"verdict":"part_of","childEntityId":"53388275c2fa846e3c8417d4f47daf72","explanation":"1951原路线将南北锣鼓巷合写，包含北锣鼓巷与南锣鼓巷两条独立胡同，不能把组合路线名只归到北锣鼓巷。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[1951]}]},
+  {"review":74,"verdict":"part_of","childEntityId":"6c074be2e2ac66caabec9435e3c42328","explanation":"3256同一原文分别列荷花市场吃喝区域和荷花市场码头划船，码头是沿市场的登船设施，不等于市场整体。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[3256]}]},
+  {"review":81,"verdict":"part_of","childEntityId":"3ea0e95d52c33d849ac3e82657a13ec9","explanation":"1951南北锣鼓巷是组合路线名称，南锣鼓巷是其中独立胡同；不能把组合条目当南巷全称。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[1951]}]},
+  {"review":87,"verdict":"part_of","childEntityId":"e7fabf6697bc2afd79caf1ef7f2d03db","explanation":"4924明确建议绕开主街小吃并逛雨儿等支巷；南锣鼓巷整体游览范围含支巷，主街为其中路段，不吞并具体路段身份。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[4924]}]},
+  {"review":88,"verdict":"distinct","explanation":"2665明确看不了升旗可看降旗，两者是同地不同时段的独立仪式，不能让同一坐标消除活动差异。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2665]}]},
+  {"review":94,"verdict":"distinct","explanation":"4319的古建筑博物馆星空藻井与中国历史研究院内考古博物馆为不同机构；旧地图错误匹配检测中心并不能构成合并依据。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[4319]}]},
+  {"review":96,"verdict":"part_of","childEntityId":"684456eb7f3df8f9e4832c166ab6f6f6","explanation":"奥林匹克森林公园为奥林匹克公园北部园区，后者原文含鸟巢水立方整体游览，前者赏林和亲子，园区层级不能判同义。","contexts":[]},
+  {"review":97,"verdict":"distinct","explanation":"2271温榆河原文明确金盏乡东村的野外露营点，且说明只有黑桥是公园露营；不是京承高速附近温榆河公园。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2271]}]},
+  {"review":98,"verdict":"part_of","childEntityId":"0306ed32c1989ef834cb4e8baa875c96","explanation":"2118原路线合称宫门口东西岔，西岔只是其中一条胡同；组合游览条目与单条道路分别保留，不按相似名吞并东西两侧。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2118]}]},
+  {"review":104,"verdict":"part_of","childEntityId":"6c97a4714c0f7d8308aab4738eeb56d7","explanation":"5100在八达岭整体攻略单列夜长城开放时段，夜游是部分区域及运营项目，不把日间和夜间政策混为一个条目。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[5100]}]},
+  {"review":106,"verdict":"distinct","explanation":"2271为金盏乡东村露营点，4408温榆河堤为骑行路线且未指定同一点；一个游憩点与河堤骑行线粒度不同，不能因同河名同地图点合并。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2271]},{"file":"beijing-batch08-context.json","mentionIds":[4408]}]},
+  {"review":107,"verdict":"part_of","childEntityId":"0bde12825b27c7adafd5680f002be459","explanation":"2297夜长城非遗节为春节剪纸皮影京绣活动，5100为夜长城日常夜游；限期活动从属于场地夜游，不归成同义。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[2297,5100]}]},
+  {"review":117,"verdict":"distinct","explanation":"2409原文为永定公园无动力设施，源地址大兴永华路31号，与永定门内大街156号中轴线公园不同，不能剥掉门字归并。","contexts":[{"file":"beijing-batch08-context.json","mentionIds":[2409]}]},
+  {"review":147,"verdict":"distinct","explanation":"三里屯东五街与西五街分别在使馆区东/西侧，4517明确西五街玉兰，源地址独立；方向词决定不同道路。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4517]}]},
+  {"review":151,"verdict":"distinct","explanation":"5283明确指定西五街五号院，与4517西五街整条街的玉兰游览不是同一实体；院落地址不等于道路整体。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[5283,4517]}]},
+  {"review":155,"verdict":"distinct","explanation":"4621完整原文中动物的园是798的小动物互动店，有猫和狐獴，与西直门外北京动物园看萌兰的实体无关。","contexts":[{"file":"beijing-batch06-context.json","mentionIds":[4621]}]},
+  {"review":156,"verdict":"distinct","explanation":"4637/4639同一篇分别列北区建筑与南区大屏，三里屯太古里两个组成区之间保持独立；两区与全域的part_of已另留审计。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[4637,4639]}]},
+  {"review":160,"verdict":"distinct","explanation":"5162/5166同一原文按图1 aF、图5 Gap分别列两品牌折扣，不同店铺，不能按王府井店后缀相似判同义。","contexts":[{"file":"beijing-batch07-context.json","mentionIds":[5162,5166]}]},
+  {"review":161,"verdict":"distinct","explanation":"同一赏秋清单分别写蟒山登山彩林与西山鬼笑石，昌平蟒山与北京西山森林公园地址、山体独立。","contexts":[]}
+]

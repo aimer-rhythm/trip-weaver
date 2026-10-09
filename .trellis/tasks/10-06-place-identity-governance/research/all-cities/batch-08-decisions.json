@@ -1,0 +1,202 @@
+[
+  {
+    "key": "all-cities-20261006-batch-08-001",
+    "city": "成都",
+    "entityId": "1b93567a71a81d2a0929c921179d5fff",
+    "mergeEntityIds": [
+      "2b81c84d895583317ba703656f9d97c7",
+      "e57cb4dc3529d4e1575619d47cd3ac47"
+    ],
+    "canonicalName": "成都大熊猫繁育研究基地",
+    "expectedRevisions": {
+      "2b81c84d895583317ba703656f9d97c7": 1,
+      "e57cb4dc3529d4e1575619d47cd3ac47": 1,
+      "1b93567a71a81d2a0929c921179d5fff": 1
+    },
+    "overrides": {
+      "lat": 30.740573,
+      "lng": 104.138176,
+      "address": "熊猫大道1375号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          309
+        ],
+        "conclusion": "3598、4101等大熊猫基地/熊猫基地为成都市内看花花并联游东郊记忆的同一基地，3896、4023、4085对应完整名称，原文也明确基地南门。额外纳入初始相似名队列漏掉的正式主体，采用熊猫大道1375号主体定位，不与熊猫谷或都江堰中华大熊猫苑合并。",
+        "sourcePlaceIds": [
+          "1760",
+          "1743",
+          "1693"
+        ],
+        "mentions": [
+          {
+            "id": "3598",
+            "name": "大熊猫基地",
+            "quote": "Day2：大熊猫基地—东郊记忆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9b9035000000002802c083"
+          },
+          {
+            "id": "4210",
+            "name": "熊猫基地",
+            "quote": "熊猫基地→文殊院",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8c1cb4000000002500569b"
+          },
+          {
+            "id": "4101",
+            "name": "熊猫基地",
+            "quote": "DAY2：熊猫基地→东郊记忆",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a56f2d600000000150260a2"
+          },
+          {
+            "id": "4039",
+            "name": "熊猫基地",
+            "quote": "热门景点需要提前予约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa7e995000000002700b1b3"
+          },
+          {
+            "id": "3993",
+            "name": "熊猫基地",
+            "quote": "熊猫基地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a58f4e6000000001c012192"
+          },
+          {
+            "id": "3506",
+            "name": "成都大熊猫繁育研究基地",
+            "quote": "园区很大 七点半开园 尽量早点来看花花",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693ea17e000000001f00556c"
+          },
+          {
+            "id": "3590",
+            "name": "成都大熊猫繁育研究基地",
+            "quote": "大熊猫基地一定要早！9点后花花可能就睡了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b56542000000002003b71d"
+          },
+          {
+            "id": "3706",
+            "name": "成都大熊猫繁育研究基地",
+            "quote": "早冲熊猫基地看滚滚干饭",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9104e80000000024006e74"
+          },
+          {
+            "id": "3896",
+            "name": "成都大熊猫繁育研究基地",
+            "quote": "尽量约上午场",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3cf2d0000000012037a1a"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1693",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.740573,
+          "lng": 104.138176,
+          "address": "熊猫大道1375号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.740573,
+        "lng": 104.138176,
+        "address": "熊猫大道1375号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/chengdu-panda-entity.json",
+        "sha256": "28b9da3c5c4366b513e4b96b8264b8535d6ea828b9baa7e1380b72b1f7d5bacd",
+        "conclusion": "3598、4101等大熊猫基地/熊猫基地为成都市内看花花并联游东郊记忆的同一基地，3896、4023、4085对应完整名称，原文也明确基地南门。额外纳入初始相似名队列漏掉的正式主体，采用熊猫大道1375号主体定位，不与熊猫谷或都江堰中华大熊猫苑合并。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chengdu-batch08-context.json",
+        "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+        "mentionIds": [
+          3903,
+          4079,
+          4028
+        ],
+        "conclusion": "3598、4101等大熊猫基地/熊猫基地为成都市内看花花并联游东郊记忆的同一基地，3896、4023、4085对应完整名称，原文也明确基地南门。额外纳入初始相似名队列漏掉的正式主体，采用熊猫大道1375号主体定位，不与熊猫谷或都江堰中华大熊猫苑合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-08-002",
+    "city": "成都",
+    "entityId": "1cfbdf530ddee236da62885f44ee2ef8",
+    "mergeEntityIds": [
+      "4e7716d32157e10be49aa02466c48a3e"
+    ],
+    "canonicalName": "青城山前山景区",
+    "expectedRevisions": {
+      "1cfbdf530ddee236da62885f44ee2ef8": 1,
+      "4e7716d32157e10be49aa02466c48a3e": 1
+    },
+    "overrides": {
+      "lat": 30.892467,
+      "lng": 103.605132,
+      "address": "青城山镇青城山路168号青城山景区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          318
+        ],
+        "conclusion": "3929与4120均明确青城山前山，后者举建福宫天师洞，与道教前山主体一致，景区为名称补全；不并入后山或整个青城山地区。",
+        "sourcePlaceIds": [
+          "1997",
+          "1921"
+        ],
+        "mentions": [
+          {
+            "id": "4120",
+            "name": "青城山前山景区",
+            "quote": "9.10‑9.20教师免票入园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa0cc45000000002b0109cb"
+          },
+          {
+            "id": "3929",
+            "name": "青城山前山",
+            "quote": "青城山前山",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69550945000000001f007c88"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1997",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.892467,
+          "lng": 103.605132,
+          "address": "青城山镇青城山路168号青城山景区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 30.892467,
+        "lng": 103.605132,
+        "address": "青城山镇青城山路168号青城山景区",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chengdu-batch08-context.json",
+        "sha256": "7453853ef870ae8901164e190147556b80854e9e629745fec77f1ba3fe0131dc",
+        "mentionIds": [
+          3929,
+          4120
+        ],
+        "conclusion": "3929与4120均明确青城山前山，后者举建福宫天师洞，与道教前山主体一致，景区为名称补全；不并入后山或整个青城山地区。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,125 @@
+{
+  "city": "济南",
+  "batch": 38,
+  "sourceFile": "priority-cities/济南/streets-source-packet-01.json",
+  "sourceSha256": "eae0b5c18a6a283714483f4b613b984f711352a2fed22d8e0e83f03b54de0efc",
+  "fullNotesRead": [
+    2618,
+    2570,
+    2624,
+    2813,
+    2793,
+    2817,
+    2808,
+    2800,
+    2549,
+    2550,
+    2568,
+    2553,
+    2801,
+    2852
+  ],
+  "mentionsRead": 13,
+  "fullyReviewed": 3,
+  "partiallyReviewed": 1,
+  "rows": [
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "revision": 1,
+      "fullReviewPassed": false,
+      "mentionIds": [
+        11437,
+        11626,
+        12585,
+        12693,
+        12714,
+        12841,
+        12920
+      ],
+      "conclusion": "7提及已读，原图确认至少部分摄影构图包含八号门洞及水道；街道与桥不是同义，现用点对应街道POI。继续核实桥本体与门洞机位及提及分配，不自动采用八号店点或合并街道，未完成自查。",
+      "dimensions": {
+        "identity": "bridge_gate_subject_pending",
+        "category": "subject_pending",
+        "location": "bridge_vs_gate_location_pending",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "bridge_gate_attribution_pending"
+      }
+    },
+    {
+      "entityId": "9664ac094b1fc9e794ccaaa4e77aa9fa",
+      "name": "起凤桥街",
+      "revision": 1,
+      "fullReviewPassed": true,
+      "mentionIds": [
+        12626
+      ],
+      "conclusion": "2793明确以街道为条目；实物路牌、媒体报道及同名地图参考点互证。与起凤桥、八号门洞、起凤泉分别保留；实际来源/图库/SQL和向量通过，AI自查完成。",
+      "dimensions": {
+        "identity": "reviewed_independent_subject",
+        "category": "reviewed_cultural_street_or_bridge",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      }
+    },
+    {
+      "entityId": "a76a124615e676af06c7a75968519280",
+      "name": "西更道街",
+      "revision": 3,
+      "fullReviewPassed": true,
+      "mentionIds": [
+        11457,
+        12586,
+        12723,
+        12762
+      ],
+      "conclusion": "完整4提及/3原文及补充图片事实已核，独立60分钟保留；第38批从源泉错点改为同名街道参考点并双同步。两名/旧ID、真实向量、图库与边界通过，AI自查完成。",
+      "dimensions": {
+        "identity": "reviewed_independent_subject",
+        "category": "reviewed_cultural_street_or_bridge",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      }
+    },
+    {
+      "entityId": "b6898fcd137cd506753c47a4a2b16693",
+      "name": "百花桥",
+      "revision": 1,
+      "fullReviewPassed": true,
+      "mentionIds": [
+        12691
+      ],
+      "conclusion": "2817第1/9页定位后宰门街向西至曲水亭街的水道桥，匹配老城同名地图点，排除大明湖园内另一候选。唯一提及、现行描述/图库/SQL和向量通过，AI自查完成。",
+      "dimensions": {
+        "identity": "reviewed_independent_subject",
+        "category": "reviewed_cultural_street_or_bridge",
+        "location": "reviewed_reference_point",
+        "media": "no_upstream_imported_or_independent_images",
+        "consumedFacts": "reviewed_source_subject_attribution"
+      }
+    }
+  ],
+  "evidenceFiles": [
+    "priority-cities/济南/streets-source-packet-01.json",
+    "priority-cities/济南/streets-visual-review-01.json",
+    "priority-cities/济南/streets-downstream-check-02.json",
+    "priority-cities/济南/geo-09.json",
+    "priority-cities/济南/geo-11.json",
+    "priority-cities/济南/streets-location-review-01.json",
+    "priority-cities/济南/streets-photo-sources-01.json",
+    "all-cities/batch-38-applied.json",
+    "all-cities/batch-38-upstream-check.json",
+    "all-cities/batch-38/sync-01/verification-vectors.json",
+    "all-cities/batch-38/sync-01/withdrawal-vectors-recheck-02.json"
+  ],
+  "supplementalFinding": {
+    "entityName": "刘氏泉",
+    "mentionId": 12692,
+    "status": "remain_pending",
+    "evidence": "priority-cities/济南/streets-visual-review-01.json",
+    "conclusion": "原图同时有泉体标石与餐厅墙；簪花少女可确认是餐厅墙的摄影主体，保持null待审，不将该混合提及整条归泉或猜测新门店实体。"
+  },
+  "userAcceptance": false
+}

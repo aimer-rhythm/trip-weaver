@@ -1,0 +1,692 @@
+{
+  "readOnly": true,
+  "city": "济南",
+  "capturedAt": "2026-10-08T20:59:09.907Z",
+  "inputDigest": "3c8f676cfb5c79332da4c6de007971ba7d30d4f9de1094436f330b25a9f60d52",
+  "sourceImages": 123,
+  "reviewedCatalogs": 12,
+  "sourceCatalogs": [
+    {
+      "name": "五龙潭公园",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "环联夜市",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "大明湖",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "超然楼",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "经三路",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "趵突泉",
+      "aliases": [],
+      "images": 10
+    },
+    {
+      "name": "洪家楼天主教堂",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老商埠",
+      "aliases": [],
+      "images": 9
+    },
+    {
+      "name": "老舍故居",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "千佛山",
+      "aliases": [],
+      "images": 11
+    },
+    {
+      "name": "山东博物馆",
+      "aliases": [],
+      "images": 13
+    },
+    {
+      "name": "黑虎泉",
+      "aliases": [],
+      "images": 10
+    }
+  ],
+  "cityAssignments": 9,
+  "entities": [
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "revision": 1,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "6a111b28c08cc7853140187bfd852b16",
+        "nameKeys": [
+          "老舍故居"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "6a111b28c08cc7853140187bfd852b16"
+        ],
+        "memberNames": [
+          "老舍故居"
+        ],
+        "canonicalName": "老舍故居"
+      },
+      "aliases": [
+        "老舍故居"
+      ],
+      "lat": 36.656645,
+      "lng": 117.015432,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "ae59a97e9fb27f7af0bfb27d764019c962d9e38dfe3a6742a2cc5ca7f3767367",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/182d5396a694545dbe76fa2e23c9056d33ef9d5c7a48cf55c9c1904aa6af94f7.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Alex Seb",
+                "sourceUrl": "https://www.pexels.com/photo/charming-old-building-with-warm-facade-34686224/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Vintage building exterior with red roof under a clear blue sky, showcasing historical architecture.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T03:59:47.582Z",
+            "sha256": "182d5396a694545dbe76fa2e23c9056d33ef9d5c7a48cf55c9c1904aa6af94f7",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片展示的是典型的青岛德式建筑（黄色外墙、红色坡屋顶），济南老舍故居（大明湖路58号）虽同为德式风格但外观明显不同，此图与济南老舍故居不符",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "正面全景-日景",
+              "reason": "照片为青岛风格建筑，非济南老舍故居，属于明显错配"
+            }
+          },
+          "imageKey": "reviewed:4f974debff28006f857466f24e22254340ff903f5bcb199656c5f20e21254354",
+          "assetKey": "local_bytes:182d5396a694545dbe76fa2e23c9056d33ef9d5c7a48cf55c9c1904aa6af94f7",
+          "eligible": false,
+          "inputHash": "a04e1362ce88929fe5522c55298796d2170a11a7b747a0b796eb00c7e3741bfe"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "gongdo",
+                "sourceUrl": "https://pixabay.com/photos/nature-travel-exploration-autumn-6740244/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "nature, travel, exploration, autumn, fall, season, bugwisan, maisan, korea, jinan, nature, nature, korea, korea, korea, korea, korea, jinan, jinan, jinan",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:00:07.663Z",
+            "sha256": "4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片为秋季山区自然风光，可见连绵山脉、云海/薄雾、秋叶林木，无任何建筑物或人文遗迹。济南老舍故居位于济南市历下区南新街，为近代民居建筑（现老舍纪念馆）。图中完全无故居建筑主体，且从地貌特征判断应为韩国山区（标签含bugwisan、maisan等韩文地名），与目标景点无关联。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "远山层叠-晨雾秋景",
+              "reason": "图片为纯自然山景，无任何老舍故居建筑元素，明显错配"
+            }
+          },
+          "imageKey": "reviewed:6b944f028d9a62ba067171a8827eda6479a5169ad2a0ade33f7094568227e5d0",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "eligible": false,
+          "inputHash": "a6dab24614c88e3e583aadd7c8ef1c7b34b8da706bfddff737223d4ca9fa1fe9"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://images.unsplash.com/photo-1665217238468-8b321c84413e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8MXx8JUU4JTgwJTgxJUU4JTg4JThEJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+              "attribution": {
+                "source": "unsplash",
+                "photographer": "Amo Journey",
+                "sourceUrl": "https://unsplash.com/photos/a-row-of-houses-with-flowers-iIqENVbSaOY?utm_source=tripweaver&utm_medium=referral",
+                "photographerUrl": "https://unsplash.com/@amojourney?utm_source=tripweaver&utm_medium=referral",
+                "license": "Unsplash License",
+                "licenseUrl": "https://unsplash.com/license?utm_source=tripweaver&utm_medium=referral",
+                "changes": "官方hotlink，未裁切"
+              }
+            },
+            "evidence": "云南大理沙溪古镇民俗酒店人家 a row of houses with flowers",
+            "downloadLocation": "https://api.unsplash.com/photos/iIqENVbSaOY/download?ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8MXx8JUU4JTgwJTgxJUU4JTg4JThEJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MTg2fDA",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:00:26.693Z",
+            "sha256": "5bc96196a55f04da0e894f83f8a01d98fe64b750dd69e0f58dd120d4778df188",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为云南大理沙溪古镇的白族风格民俗酒店建筑，可见黄色墙面、飞檐屋顶、红灯笼装饰，背景为苍山山脉，与济南老舍故居（济南市大明湖畔北方民居建筑）完全不符",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "沙溪古镇建筑-正面-日间",
+              "reason": "图片显示云南大理沙溪古镇建筑，与标题济南老舍故居地点不匹配，证据明显错配"
+            }
+          },
+          "imageKey": "reviewed:1d036131b25fc50eeb5c7feedad0ef0e8c5b237ddb9d1c7e198fe1e37917848f",
+          "assetKey": "official_url:5bc96196a55f04da0e894f83f8a01d98fe64b750dd69e0f58dd120d4778df188",
+          "eligible": false,
+          "inputHash": "9caf7888fc99e7d9e9efb65977510e6627c7752dd3c6c0a2f9df74cec6464e37"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/ceef2c5ce94994650c43192bfebc4cb366afe51e84afaef25a3963a7f90df629.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "猫猫的日记本",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:Former_Residence_of_Laoshe_in_Jinan_2010-06.JPG",
+                "license": "CC BY-SA 3.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:Former Residence of Laoshe in Jinan 2010-06.JPG Former residence of the writer Lao She in Jinan China, address: 南新街58号.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:00:35.640Z",
+            "sha256": "ceef2c5ce94994650c43192bfebc4cb366afe51e84afaef25a3963a7f90df629",
+            "review": {
+              "identity": "match",
+              "evidence": "Photo shows a two-story brick building entrance with light green/teal perimeter wall and black gate with red 福 diamond decorations. Address plate visible near gate. Consistent with a preserved residential heritage site in Jinan.",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "adequate",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "正面门楼-日景",
+              "reason": "建筑入口与门楼结构清晰，红砖二层主体明确，门楣地址牌与装饰符符传统特色符合故居类景点特征"
+            }
+          },
+          "imageKey": "reviewed:f3f3b43aefffd999a9be8bf05c4a673858c7a32ac148c2b5d39e99b96a031b50",
+          "assetKey": "local_bytes:ceef2c5ce94994650c43192bfebc4cb366afe51e84afaef25a3963a7f90df629",
+          "eligible": true,
+          "inputHash": "117ba161d0ec4eee391fe19ba557a9d4244557779cc741c6c4c1fc638fb2661f"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/c59f305a9ea0607e12d725082b57cd6d539b33d7150ee6290e281d1aa98b52c8.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Liuuu _61",
+                "sourceUrl": "https://www.pexels.com/photo/charming-asian-courtyard-with-glass-windows-30321911/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Inviting courtyard with glass doors, stone walls, and potted plants in a quaint Asian setting.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:00:44.744Z",
+            "sha256": "c59f305a9ea0607e12d725082b57cd6d539b33d7150ee6290e281d1aa98b52c8",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片呈现青砖墙、玻璃门窗、瓦顶与‘山云’招牌的中式庭院，建筑风格与植被布置更接近云南大理/丽江民宿场景，非济南老舍故居（位于大明湖畔、具明确历史标识的北方民居）。搜索词‘老舍故居’不能替代主体证据，画面与目标景点存在明显风格冲突。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "strong",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "庭院局部-日景",
+              "reason": "画面为云南风格民宿庭院，与济南老舍故居实际建筑特征不符，证据冲突"
+            }
+          },
+          "imageKey": "reviewed:bd4bf5e0ed5744ffa5c941b85d7b8b62c70200f136f32e46339b25e5dbe7390c",
+          "assetKey": "local_bytes:c59f305a9ea0607e12d725082b57cd6d539b33d7150ee6290e281d1aa98b52c8",
+          "eligible": false,
+          "inputHash": "120fcb5640128723a3bfadde055334891a246eb2ea02f9f296537b394c1faa77"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "lshhweb",
+                "sourceUrl": "https://pixabay.com/photos/lotus-jinan-baotu-spring-natural-4302615/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "lotus, jinan, baotu spring, natural, the scenery, lotus pond, jinan, jinan, jinan, jinan, jinan",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:00:56.203Z",
+            "sha256": "3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+            "review": {
+              "identity": "unknown",
+              "evidence": "照片仅展示一朵粉色荷花特写，背景虚化，无任何老舍故居建筑、遗址、标识或济南地标元素。搜索词中提及'jinan baotu spring'仅为平台标签，不能替代照片主体证据。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "荷花特写-近景",
+              "reason": "照片主体为单一荷花，无法确认拍摄地点为济南老舍故居，无建筑、标识或可识别环境证据"
+            }
+          },
+          "imageKey": "reviewed:4dcdb3ce5686222b9d70693b3f9d0220e8143f44602f731ec2afc7089284ad1d",
+          "assetKey": "local_bytes:3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+          "eligible": false,
+          "inputHash": "7715547a257762fad01bd814bb8b707406d0a20aadb88f418c0e0d1ddf4f1e7a"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://images.unsplash.com/photo-1516545595035-b494dd0161e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8JUU4JTgwJTgxJUU4JTg4JThEJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+              "attribution": {
+                "source": "unsplash",
+                "photographer": "Denny Ryanto",
+                "sourceUrl": "https://unsplash.com/photos/gray-and-green-wooden-building-naOfJ3DlfPM?utm_source=tripweaver&utm_medium=referral",
+                "photographerUrl": "https://unsplash.com/@runninghead?utm_source=tripweaver&utm_medium=referral",
+                "license": "Unsplash License",
+                "licenseUrl": "https://unsplash.com/license?utm_source=tripweaver&utm_medium=referral",
+                "changes": "官方hotlink，未裁切"
+              }
+            },
+            "evidence": "Movie Town gray and green wooden building",
+            "downloadLocation": "https://api.unsplash.com/photos/naOfJ3DlfPM/download?ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8Mnx8JUU4JTgwJTgxJUU4JTg4JThEJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MTg2fDA",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:01:10.986Z",
+            "sha256": "a3936677371239c9a96ea683f2f299b984daa4cc1cd49f3bff1dcc9fea07c226",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片显示民国风格仿古商业街，有木质建筑、红灯笼、中式招牌，背景可见石阶和类似重庆鸿宾坊的建筑群特征。济南老舍故居位于历下区起凤桥街，是一座普通民居院落，与此景明显不符。来源标注'Movie Town'也暗示为影视基地场景，非济南老舍故居实地。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "民国风格仿古街道-平视",
+              "reason": "照片为影视基地/仿古街区场景（疑似重庆鸿宾坊或类似景点），与济南老舍故居实际外观严重不符，属于明显错配"
+            }
+          },
+          "imageKey": "reviewed:8d71fff88bf84e24c52755ab30a3bf814195f38c17efeb81ef40d09086aedcea",
+          "assetKey": "official_url:a3936677371239c9a96ea683f2f299b984daa4cc1cd49f3bff1dcc9fea07c226",
+          "eligible": false,
+          "inputHash": "bce485d621fed832c94c3010d05fa48aa188a33b07431463274a75784c5c0c04"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/036e8ccdc2a734d724fb0665a4b314e1709a6f49e0f547d180be9812fba16771.jpg",
+              "attribution": {
+                "source": "commons",
+                "photographer": "StefanTsingtauer",
+                "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B5%8E%E5%8D%97%E8%80%81%E8%88%8D%E7%BA%AA%E5%BF%B5%E9%A6%86_2016-07-17.jpg",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+                "changes": "Wikimedia缩略图版本"
+              }
+            },
+            "evidence": "File:济南老舍纪念馆 2016-07-17.jpg Lao She Memorial, Jinan",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:01:24.645Z",
+            "sha256": "036e8ccdc2a734d724fb0665a4b314e1709a6f49e0f547d180be9812fba16771",
+            "review": {
+              "identity": "match",
+              "evidence": "照片主体为传统中式民居式建筑，白墙灰瓦砖石基座，墙上可见老舍纪念馆铭牌。门旁路牌显示文化西路方向，与济南老舍故居实际地址（文化西路72号）一致。文件名标注为老舍纪念馆。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "strong",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "正面街景-日景",
+              "reason": "建筑风貌、铭牌文字、路牌位置三重证据均指向济南老舍故居"
+            }
+          },
+          "imageKey": "reviewed:c502b67e94cde06b8fb0e8ee7155e592b5c7b85cf8d4334c07ae1dffc5c23d88",
+          "assetKey": "local_bytes:036e8ccdc2a734d724fb0665a4b314e1709a6f49e0f547d180be9812fba16771",
+          "eligible": true,
+          "inputHash": "7014d93dfb438085e525e414be84833bb7a2aa5dd2db7ebe48c4677ec38ed151"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/d83a7c76097c2de6b55dc0231c19ed5ec530256ff1cde3ecbccb1ec2019350e0.webp",
+              "attribution": {
+                "source": "pexels",
+                "photographer": "Jakob Jin",
+                "sourceUrl": "https://www.pexels.com/photo/tapsa-temple-in-jinan-county-south-korea-14170508/",
+                "license": "Pexels License",
+                "licenseUrl": "https://www.pexels.com/license/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "Scenic view of Tapsa Temple nestled in Jinan County, South Korea, surrounded by lush greenery.",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:01:49.417Z",
+            "sha256": "d83a7c76097c2de6b55dc0231c19ed5ec530256ff1cde3ecbccb1ec2019350e0",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "图片URL标注为'韩国锦津郡Tapsa寺'，视觉内容显示为韩国传统寺庙建筑，与济南老舍故居（位于大明湖畔）无关。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "adequate",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "斜侧面-日景",
+              "reason": "图片主体为韩国寺庙，与济南老舍故居完全不符，属于错配。"
+            }
+          },
+          "imageKey": "reviewed:658ba094c9ee351528cd576c5db6331412a6422c8df27e618708b3527645fc53",
+          "assetKey": "local_bytes:d83a7c76097c2de6b55dc0231c19ed5ec530256ff1cde3ecbccb1ec2019350e0",
+          "eligible": false,
+          "inputHash": "3f70c837d6628584aa2eef3382077b306dd0f38f05dd669b44679e16b10f5e7e"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "/media/remote-photos/e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd.jpg",
+              "attribution": {
+                "source": "pixabay",
+                "photographer": "binkenny",
+                "sourceUrl": "https://pixabay.com/photos/golden-wind-suzuki-jinan-university-2418642/",
+                "license": "Pixabay Content License",
+                "licenseUrl": "https://pixabay.com/service/license-summary/",
+                "changes": "图源尺寸版本"
+              }
+            },
+            "evidence": "golden wind suzuki, jinan university, campus",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:02:01.166Z",
+            "sha256": "e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+            "review": {
+              "identity": "unknown",
+              "evidence": "图片主体为一棵黄花风铃木与校园小路，背景模糊，无任何可识别的老舍故居建筑、牌匾、门牌号或相关标志。标题与搜索词提及'jinan university'，但目标景点为'济南老舍故居'，两者无视觉对应。图片未提供老舍故居的地点证据。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "strong",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "黄花香桉特写-斜侧-日间",
+              "reason": "图片展示黄花风铃木与校园道路，无老舍故居建筑或标识证据，无法确认地点"
+            }
+          },
+          "imageKey": "reviewed:883547c194d3df2ed58390445821e3195fd5e607364b1d10d302d1febb1b941e",
+          "assetKey": "local_bytes:e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+          "eligible": false,
+          "inputHash": "12a99de3570db2af97f400158126059cca21446836a743f99867236444357452"
+        },
+        {
+          "kind": "reviewed",
+          "city": "济南",
+          "catalogName": "老舍故居",
+          "aliases": [],
+          "entry": {
+            "photo": {
+              "url": "https://images.unsplash.com/photo-1697439300759-a6b1795e4188?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8M3x8JUU4JTgwJTgxJUU4JTg4JThEJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+              "attribution": {
+                "source": "unsplash",
+                "photographer": "Joan W",
+                "sourceUrl": "https://unsplash.com/photos/a-row-of-vases-in-front-of-a-building-ocAJJJ9cwgY?utm_source=tripweaver&utm_medium=referral",
+                "photographerUrl": "https://unsplash.com/@joan9307?utm_source=tripweaver&utm_medium=referral",
+                "license": "Unsplash License",
+                "licenseUrl": "https://unsplash.com/license?utm_source=tripweaver&utm_medium=referral",
+                "changes": "官方hotlink，未裁切"
+              }
+            },
+            "evidence": "a row of vases in front of a building",
+            "downloadLocation": "https://api.unsplash.com/photos/ocAJJJ9cwgY/download?ixid=M3wxMDg4Mjg4fDB8MXxzZWFyY2h8M3x8JUU4JTgwJTgxJUU4JTg4JThEJTIwSmluYW58ZW58MXx8fHwxNzkxMjU5MTg2fDA",
+            "model": "agnes-2.5-flash",
+            "reviewedAt": "2026-10-06T04:02:16.153Z",
+            "sha256": "69c6bdc4dc762fdd7331fd07d90fd351bf9fc3d2dbdc479b5db5b3c4bca63ac9",
+            "review": {
+              "identity": "mismatch",
+              "evidence": "照片主体为大量排列整齐的陶罐/陶瓮陈列，背景为白墙花窗与传统瓦顶建筑，整体呈现陶瓷遗址/窑址/陶瓷博物馆的特征。济南老舍故居（位于历下区环堤路三眼井）是普通传统民居院落，以院落、竹木与简朴生活陈设著称，并无此类大量陶器陈列场景，建筑特征与证据均不符。该照片明显来自景德镇御窑厂遗址或类似陶瓷文化场所，非济南老舍故居。",
+              "singlePhoto": true,
+              "clear": true,
+              "representative": "weak",
+              "composition": "adequate",
+              "light": "adequate",
+              "obstruction": false,
+              "unrelatedPortrait": false,
+              "view": "庭院走廊-中景-日景",
+              "reason": "大量陶罐陈列与白墙花窗建筑为典型陶瓷遗址/窑址场景，与济南老舍故居（三眼井民居院落）无视觉关联，属明显错配。"
+            }
+          },
+          "imageKey": "reviewed:7808b5ce20a2a023aefe03216c8760adbfcfd738fa5d4402eaaaa0c2bedd13a5",
+          "assetKey": "official_url:69c6bdc4dc762fdd7331fd07d90fd351bf9fc3d2dbdc479b5db5b3c4bca63ac9",
+          "eligible": false,
+          "inputHash": "6641ea65d6f31c9bc7fac8758ed671147eb8cb8d229329233c9b958996e0fb44"
+        }
+      ],
+      "relatedAssetSources": [
+        {
+          "imageKey": "reviewed:5e64761a69d68f1e125749e4edcf59d1d439b4ae11234586a18cd8703bf40577",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:4069ad78d8d909faa45c836cc5ad8a8fed1545842fb8e89af727154f9ac58757",
+          "assetKey": "local_bytes:3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:7f7299c838cbae7a56882101478c65a71de1c854d4f84239b73431553e2f2434",
+          "assetKey": "local_bytes:e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+          "catalogName": "环联夜市",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:0e23b4deee1fee95ddb668f73d4b49d8f88aeb1931d3e912593f68c280f2c0ce",
+          "assetKey": "local_bytes:d83a7c76097c2de6b55dc0231c19ed5ec530256ff1cde3ecbccb1ec2019350e0",
+          "catalogName": "洪家楼天主教堂",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:ac61de27a4defca69aaffcc22faf05fa48ae3eaabbfbd0e086893f6441efb629",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "catalogName": "洪家楼天主教堂",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:4f974debff28006f857466f24e22254340ff903f5bcb199656c5f20e21254354",
+          "assetKey": "local_bytes:182d5396a694545dbe76fa2e23c9056d33ef9d5c7a48cf55c9c1904aa6af94f7",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:6b944f028d9a62ba067171a8827eda6479a5169ad2a0ade33f7094568227e5d0",
+          "assetKey": "local_bytes:4057431020ee942959737435f0f1d149698a7f56c9dc80b6ff29cfa2a8a6e274",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:1d036131b25fc50eeb5c7feedad0ef0e8c5b237ddb9d1c7e198fe1e37917848f",
+          "assetKey": "official_url:5bc96196a55f04da0e894f83f8a01d98fe64b750dd69e0f58dd120d4778df188",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:f3f3b43aefffd999a9be8bf05c4a673858c7a32ac148c2b5d39e99b96a031b50",
+          "assetKey": "local_bytes:ceef2c5ce94994650c43192bfebc4cb366afe51e84afaef25a3963a7f90df629",
+          "catalogName": "老舍故居",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:bd4bf5e0ed5744ffa5c941b85d7b8b62c70200f136f32e46339b25e5dbe7390c",
+          "assetKey": "local_bytes:c59f305a9ea0607e12d725082b57cd6d539b33d7150ee6290e281d1aa98b52c8",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:4dcdb3ce5686222b9d70693b3f9d0220e8143f44602f731ec2afc7089284ad1d",
+          "assetKey": "local_bytes:3b23197c95cc960d20d65f27356e139a1417f36ca04cc04d15efac9bf350beaa",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:8d71fff88bf84e24c52755ab30a3bf814195f38c17efeb81ef40d09086aedcea",
+          "assetKey": "official_url:a3936677371239c9a96ea683f2f299b984daa4cc1cd49f3bff1dcc9fea07c226",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:c502b67e94cde06b8fb0e8ee7155e592b5c7b85cf8d4334c07ae1dffc5c23d88",
+          "assetKey": "local_bytes:036e8ccdc2a734d724fb0665a4b314e1709a6f49e0f547d180be9812fba16771",
+          "catalogName": "老舍故居",
+          "eligible": true
+        },
+        {
+          "imageKey": "reviewed:658ba094c9ee351528cd576c5db6331412a6422c8df27e618708b3527645fc53",
+          "assetKey": "local_bytes:d83a7c76097c2de6b55dc0231c19ed5ec530256ff1cde3ecbccb1ec2019350e0",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:883547c194d3df2ed58390445821e3195fd5e607364b1d10d302d1febb1b941e",
+          "assetKey": "local_bytes:e7a5bed4bdf912a85cba1e99dd6281c8d1e48e64d0bffc687786a907074c1bbd",
+          "catalogName": "老舍故居",
+          "eligible": false
+        },
+        {
+          "imageKey": "reviewed:7808b5ce20a2a023aefe03216c8760adbfcfd738fa5d4402eaaaa0c2bedd13a5",
+          "assetKey": "official_url:69c6bdc4dc762fdd7331fd07d90fd351bf9fc3d2dbdc479b5db5b3c4bca63ac9",
+          "catalogName": "老舍故居",
+          "eligible": false
+        }
+      ],
+      "assignments": []
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "name": "老舍笔下的济南",
+      "revision": 1,
+      "identity": {
+        "kind": "same_entity",
+        "version": 2,
+        "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+        "nameKeys": [
+          "老舍笔下的济南"
+        ],
+        "revision": 1,
+        "memberIds": [
+          "c5a3fae3d839ec359cb0521d957e56df"
+        ],
+        "memberNames": [
+          "老舍笔下的济南"
+        ],
+        "canonicalName": "老舍笔下的济南"
+      },
+      "aliases": [
+        "老舍笔下的济南"
+      ],
+      "lat": 36.656645,
+      "lng": 117.015432,
+      "category": "文化",
+      "verified": true,
+      "payloadDigest": "b7fe4720bcba4477159ac9ceb8ce8ff8b21216f5942d64a69644ba837d3ed100",
+      "currentImageFields": {
+        "coverImage": null,
+        "amapPhoto": null,
+        "imageGallery": null
+      },
+      "independentSources": [],
+      "relatedAssetSources": [],
+      "assignments": []
+    }
+  ],
+  "warnings": []
+}

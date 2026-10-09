@@ -1,0 +1,1807 @@
+[
+  {
+    "key": "all-cities-20261006-batch-06-001",
+    "city": "北京",
+    "entityId": "29b8b025fadc7556eb81f4c9380c03eb",
+    "mergeEntityIds": [
+      "e01875bc9de370b6da22778690828a74"
+    ],
+    "canonicalName": "东交民巷",
+    "expectedRevisions": {
+      "29b8b025fadc7556eb81f4c9380c03eb": 1,
+      "e01875bc9de370b6da22778690828a74": 1
+    },
+    "overrides": {
+      "lat": 39.902463,
+      "lng": 116.407941,
+      "address": "东城区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          75
+        ],
+        "conclusion": "2544的东交民巷街区是沿教堂、法国邮局、使馆旧址行走的同一东交民巷历史街区，与4254等原文对象一致。",
+        "sourcePlaceIds": [
+          "741",
+          "1188"
+        ],
+        "mentions": [
+          {
+            "id": "4254",
+            "name": "东交民巷",
+            "quote": "百年使馆旧址建筑群，哥特式复古教堂超出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5e00f1000000000401e213"
+          },
+          {
+            "id": "3432",
+            "name": "东交民巷",
+            "quote": "西式建筑与胡同混搭",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68fa2ef7000000000301f643"
+          },
+          {
+            "id": "2105",
+            "name": "东交民巷",
+            "quote": "东交民巷位于使馆旧址，欧式建筑群超出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a929d640000000003028f26"
+          },
+          {
+            "id": "2009",
+            "name": "东交民巷",
+            "quote": "欧式老建筑连片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69deddda0000000023020f54"
+          },
+          {
+            "id": "2544",
+            "name": "东交民巷街区",
+            "quote": "东交民巷复古赏秋路线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fe5540000000011034483"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "741",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.902463,
+          "lng": 116.407941,
+          "address": "东城区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.902463,
+        "lng": 116.407941,
+        "address": "东城区",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2544
+        ],
+        "conclusion": "2544的东交民巷街区是沿教堂、法国邮局、使馆旧址行走的同一东交民巷历史街区，与4254等原文对象一致。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-002",
+    "city": "北京",
+    "entityId": "9ba25c15e2bf6a684e4e981e196bc0d6",
+    "mergeEntityIds": [
+      "0f60a6ad77a4d518332d3dbf0d50ebfe"
+    ],
+    "canonicalName": "三里河公园",
+    "expectedRevisions": {
+      "0f60a6ad77a4d518332d3dbf0d50ebfe": 1,
+      "9ba25c15e2bf6a684e4e981e196bc0d6": 1
+    },
+    "overrides": {
+      "lat": 39.894304,
+      "lng": 116.40547,
+      "address": "北京前门街道中芦草园胡同与草厂三条交叉口西40米",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          76
+        ],
+        "conclusion": "3422完整原文从西兴隆街走到三里河再去杨梅竹斜街，明确前门河畔公园；不是西城三里河片区。采用公园主体定位。",
+        "sourcePlaceIds": [
+          "1620",
+          "743"
+        ],
+        "mentions": [
+          {
+            "id": "3422",
+            "name": "三里河",
+            "quote": "走在河边会有一种城市突然安静下来的感觉",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/696ba454000000000a02c63d"
+          },
+          {
+            "id": "4649",
+            "name": "三里河公园",
+            "quote": "7️⃣三里河公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a98376500000000250354e9"
+          },
+          {
+            "id": "3430",
+            "name": "三里河公园",
+            "quote": "闹中取静的‘首都小江南’",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bde0a5000000001a03076d"
+          },
+          {
+            "id": "2894",
+            "name": "三里河公园",
+            "quote": "北京本地人都不一定去过的小众秘境",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6839834b0000000012004f3e"
+          },
+          {
+            "id": "2724",
+            "name": "三里河公园",
+            "quote": "免费！就在前门脚下",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bd6ee20000000023007be3"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "743",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.894304,
+          "lng": 116.40547,
+          "address": "北京前门街道中芦草园胡同与草厂三条交叉口西40米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.894304,
+        "lng": 116.40547,
+        "address": "北京前门街道中芦草园胡同与草厂三条交叉口西40米",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          3422
+        ],
+        "conclusion": "3422完整原文从西兴隆街走到三里河再去杨梅竹斜街，明确前门河畔公园；不是西城三里河片区。采用公园主体定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-003",
+    "city": "北京",
+    "entityId": "4bcdef31ebd48b3810a2679ed4ddb9c7",
+    "mergeEntityIds": [
+      "8b382bf29d6a5d800a8f03256ae37dd5"
+    ],
+    "canonicalName": "白塔寺东夹道",
+    "expectedRevisions": {
+      "4bcdef31ebd48b3810a2679ed4ddb9c7": 1,
+      "8b382bf29d6a5d800a8f03256ae37dd5": 1
+    },
+    "overrides": {
+      "lat": 39.926574,
+      "lng": 116.364382,
+      "address": "西城区",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          78
+        ],
+        "conclusion": "1975完整原文在妙应白塔寺与帝王庙之间写白塔东夹道，4261等写白塔寺朱红围墙，均为白塔寺东侧同一夹道；另一源东城区东夹道定位错误。",
+        "sourcePlaceIds": [
+          "755",
+          "787"
+        ],
+        "mentions": [
+          {
+            "id": "4261",
+            "name": "白塔寺东夹道",
+            "quote": "白塔寺朱红围墙是全网热门打卡点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5e00f1000000000401e213"
+          },
+          {
+            "id": "2469",
+            "name": "白塔寺东夹道",
+            "quote": "白塔寺东夹道➡️帝王庙",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69832e89000000000a02a047"
+          },
+          {
+            "id": "2119",
+            "name": "白塔寺东夹道",
+            "quote": "再去跟白塔红墙合影",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a929d640000000003028f26"
+          },
+          {
+            "id": "1927",
+            "name": "白塔寺东夹道",
+            "quote": "白塔寺朱红围墙是全网热门打卡点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5e00f1000000000401e213"
+          },
+          {
+            "id": "2742",
+            "name": "白塔东夹道",
+            "quote": "白塔东夹道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6964d5220000000021028fbd"
+          },
+          {
+            "id": "1975",
+            "name": "白塔东夹道",
+            "quote": "白塔东夹道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b130dd0000000008032a02"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "755",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.926574,
+          "lng": 116.364382,
+          "address": "西城区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.926574,
+        "lng": 116.364382,
+        "address": "西城区",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          1975,
+          2118
+        ],
+        "conclusion": "1975完整原文在妙应白塔寺与帝王庙之间写白塔东夹道，4261等写白塔寺朱红围墙，均为白塔寺东侧同一夹道；另一源东城区东夹道定位错误。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-004",
+    "city": "北京",
+    "entityId": "487c57cd77da3cc5656dbf294df29951",
+    "mergeEntityIds": [
+      "3e390ff78abf14575bcff572e3f00bf8",
+      "85cd1221ee866562e6047d7bc4df825d",
+      "ea33b7fdb6c6a8902506f117ae7f1e8b"
+    ],
+    "canonicalName": "圣弥厄尔天主堂",
+    "expectedRevisions": {
+      "3e390ff78abf14575bcff572e3f00bf8": 1,
+      "487c57cd77da3cc5656dbf294df29951": 1,
+      "85cd1221ee866562e6047d7bc4df825d": 1,
+      "ea33b7fdb6c6a8902506f117ae7f1e8b": 1
+    },
+    "overrides": {
+      "lat": 39.903012,
+      "lng": 116.412118,
+      "address": "东交民巷甲13号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          79,
+          123
+        ],
+        "conclusion": "1943、2180、2544、2897四篇路线均把各写法置于东交民巷法国邮局/法院博物馆附近，同指东交民巷甲13号教堂；厄/额/米及天主堂/教堂为本批同一建筑写法。",
+        "sourcePlaceIds": [
+          "769",
+          "935",
+          "1353",
+          "1189"
+        ],
+        "mentions": [
+          {
+            "id": "1943",
+            "name": "圣弥额尔天主教堂",
+            "quote": "圣弥额尔天主教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b130dd0000000008032a02"
+          },
+          {
+            "id": "2180",
+            "name": "圣弥厄尔天主堂",
+            "quote": "圣弥厄尔天主堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698619140000000015030695"
+          },
+          {
+            "id": "2898",
+            "name": "圣米厄尔教堂",
+            "quote": "北京最洋气的东交民巷",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6839834b0000000012004f3e"
+          },
+          {
+            "id": "2545",
+            "name": "圣弥厄尔教堂",
+            "quote": "圣弥厄尔教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fe5540000000011034483"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "935",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.903012,
+          "lng": 116.412118,
+          "address": "东交民巷甲13号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.903012,
+        "lng": 116.412118,
+        "address": "东交民巷甲13号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          1943,
+          2180,
+          2544,
+          2897
+        ],
+        "conclusion": "1943、2180、2544、2897四篇路线均把各写法置于东交民巷法国邮局/法院博物馆附近，同指东交民巷甲13号教堂；厄/额/米及天主堂/教堂为本批同一建筑写法。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-005",
+    "city": "北京",
+    "entityId": "65eb76b017743cfbc1c427f6ffdfa58d",
+    "mergeEntityIds": [
+      "d86a6ef406eab1445370bf30495fbcb7"
+    ],
+    "canonicalName": "法国邮政局旧址",
+    "expectedRevisions": {
+      "65eb76b017743cfbc1c427f6ffdfa58d": 1,
+      "d86a6ef406eab1445370bf30495fbcb7": 1
+    },
+    "overrides": {
+      "lat": 39.902798,
+      "lng": 116.409287,
+      "address": "东华门街道东华门街道东交民巷19-1号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          80
+        ],
+        "conclusion": "1943、2544、2897原文均指东交民巷教堂与法院博物馆之间法国邮局旧址，邮政局/邮局为同一历史建筑简称。",
+        "sourcePlaceIds": [
+          "1352",
+          "770"
+        ],
+        "mentions": [
+          {
+            "id": "2897",
+            "name": "法国邮政局旧址",
+            "quote": "北京最洋气的东交民巷",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6839834b0000000012004f3e"
+          },
+          {
+            "id": "2546",
+            "name": "法国邮局旧址",
+            "quote": "法国邮局旧址",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fe5540000000011034483"
+          },
+          {
+            "id": "1944",
+            "name": "法国邮局旧址",
+            "quote": "法国邮局旧址",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b130dd0000000008032a02"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1352",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.902798,
+          "lng": 116.409287,
+          "address": "东华门街道东华门街道东交民巷19-1号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.902798,
+        "lng": 116.409287,
+        "address": "东华门街道东华门街道东交民巷19-1号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          1943,
+          2544,
+          2897
+        ],
+        "conclusion": "1943、2544、2897原文均指东交民巷教堂与法院博物馆之间法国邮局旧址，邮政局/邮局为同一历史建筑简称。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-006",
+    "city": "北京",
+    "entityId": "db960b727fe0a7de8760b6cdf1383466",
+    "mergeEntityIds": [
+      "d991d02a17050f9956cbb5f3f3e7e9c5"
+    ],
+    "canonicalName": "THE BOX朝外",
+    "expectedRevisions": {
+      "d991d02a17050f9956cbb5f3f3e7e9c5": 1,
+      "db960b727fe0a7de8760b6cdf1383466": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "北京市朝阳区朝外",
+      "geoStatus": "unresolvable",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          102
+        ],
+        "conclusion": "2211与2568均将TheBOX列在东岳庙/美克洞学馆/日坛周边，明确同一朝外商业体；不是泛称盒子建筑。",
+        "sourcePlaceIds": [
+          "954",
+          "1200"
+        ],
+        "mentions": [
+          {
+            "id": "2211",
+            "name": "TheBOX",
+            "quote": "TheBOX",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/698619140000000015030695"
+          },
+          {
+            "id": "2568",
+            "name": "朝外thebox",
+            "quote": "朝外thebox",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fe5540000000011034483"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1200",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原定位分别为北京市中心及朝外片区，均未精确定位商业体；保留已核实朝外地址范围并清空坐标。",
+        "original": {
+          "lat": 39.923495,
+          "lng": 116.444814,
+          "address": "北京市朝阳区朝外",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "北京市朝阳区朝外",
+        "geoStatus": "unresolvable",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2211,
+          2568
+        ],
+        "conclusion": "2211与2568均将TheBOX列在东岳庙/美克洞学馆/日坛周边，明确同一朝外商业体；不是泛称盒子建筑。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-007",
+    "city": "北京",
+    "entityId": "b2b11273db1c7f71764d4dbab8ae17d8",
+    "mergeEntityIds": [
+      "3314a01b73a3baacc31202777ea59f9b"
+    ],
+    "canonicalName": "西洋楼遗址",
+    "expectedRevisions": {
+      "3314a01b73a3baacc31202777ea59f9b": 1,
+      "b2b11273db1c7f71764d4dbab8ae17d8": 1
+    },
+    "overrides": {
+      "lat": 40.012797,
+      "lng": 116.307815,
+      "address": "清华西路28号圆明园遗址内",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          105
+        ],
+        "conclusion": "4813完整原文明确圆明园东侧西洋楼遗址区、寻访大水法远瀛观，与2258主体一致；遗址区/遗址同义，不合并圆明园全域。",
+        "sourcePlaceIds": [
+          "2336",
+          "991"
+        ],
+        "mentions": [
+          {
+            "id": "4813",
+            "name": "西洋楼遗址区",
+            "quote": "断壁残垣是岁月留下的印记",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa3fae20000000011034199"
+          },
+          {
+            "id": "5143",
+            "name": "西洋楼遗址",
+            "quote": "第一次来别错过",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aad549d000000000d0277bb"
+          },
+          {
+            "id": "2258",
+            "name": "西洋楼遗址",
+            "quote": "西洋楼遗址是整座园子最核心的打卡地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5f72af000000001f01d3d0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "991",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 40.012797,
+          "lng": 116.307815,
+          "address": "清华西路28号圆明园遗址内",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 40.012797,
+        "lng": 116.307815,
+        "address": "清华西路28号圆明园遗址内",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          4813
+        ],
+        "conclusion": "4813完整原文明确圆明园东侧西洋楼遗址区、寻访大水法远瀛观，与2258主体一致；遗址区/遗址同义，不合并圆明园全域。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-008",
+    "city": "北京",
+    "entityId": "4c43da4bfc3095a1bd5b60ed08a0b15d",
+    "mergeEntityIds": [
+      "f103c33b078ff95fb40a119f15ddaecb"
+    ],
+    "canonicalName": "北海公园",
+    "expectedRevisions": {
+      "4c43da4bfc3095a1bd5b60ed08a0b15d": 1,
+      "f103c33b078ff95fb40a119f15ddaecb": 1
+    },
+    "overrides": {
+      "lat": 39.928775,
+      "lng": 116.391802,
+      "address": "文津街1号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          111
+        ],
+        "conclusion": "3016以天坛、景山、北海并列介绍北京公园预约，4573同样为北京下雪公园清单，北海在本批指公园整体。",
+        "sourcePlaceIds": [
+          "1036",
+          "1425"
+        ],
+        "mentions": [
+          {
+            "id": "5237",
+            "name": "北海公园",
+            "quote": "白塔映衬秋叶",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+          },
+          {
+            "id": "5225",
+            "name": "北海公园",
+            "quote": "白塔配秋叶 惬意感拉满",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a942f2200000000070057c7"
+          },
+          {
+            "id": "5160",
+            "name": "北海公园",
+            "quote": "下车就是北海公园南门",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aadf21d0000000012026b6f"
+          },
+          {
+            "id": "5158",
+            "name": "北海公园",
+            "quote": "可顺路连逛故宫、北海公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a99890700000000270149ba"
+          },
+          {
+            "id": "4573",
+            "name": "北海",
+            "quote": "北海、中山公园、什刹海",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693a42c2000000001e0049d6"
+          },
+          {
+            "id": "3016",
+            "name": "北海",
+            "quote": "不用预约，直接冲",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aaca4fb0000000028003642"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1036",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.928775,
+          "lng": 116.391802,
+          "address": "文津街1号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.928775,
+        "lng": 116.391802,
+        "address": "文津街1号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          3016
+        ],
+        "conclusion": "3016以天坛、景山、北海并列介绍北京公园预约，4573同样为北京下雪公园清单，北海在本批指公园整体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-009",
+    "city": "北京",
+    "entityId": "c9d5ec1d2992e4ce7228a504b2caa061",
+    "mergeEntityIds": [
+      "dd1e02a3bf15e19c8efdfeb786385646"
+    ],
+    "canonicalName": "微澜山谷室外无动力设施",
+    "expectedRevisions": {
+      "c9d5ec1d2992e4ce7228a504b2caa061": 1,
+      "dd1e02a3bf15e19c8efdfeb786385646": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "微澜山谷室外设施区",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          113
+        ],
+        "conclusion": "2362与4351来自同一原笔记613的同一句室外无动力设施，是微澜山谷游览路线内同一设施区的重复抽取；主名补足场所，保留与山谷整体分离。",
+        "sourcePlaceIds": [
+          "1072",
+          "2098"
+        ],
+        "mentions": [
+          {
+            "id": "2362",
+            "name": "无动力设施",
+            "quote": "室外无动力设施很适合遛娃",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f160fd0000000022028332"
+          },
+          {
+            "id": "4351",
+            "name": "室外无动力设施",
+            "quote": "很适合遛娃",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f160fd0000000022028332"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1072",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原北京市中心坐标为兜底，清空；正文只确认微澜山谷设施区，不编造精确地址。",
+        "original": {
+          "lat": 39.904179,
+          "lng": 116.407387,
+          "address": "北京市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "微澜山谷室外设施区",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2362,
+          4351
+        ],
+        "conclusion": "2362与4351来自同一原笔记613的同一句室外无动力设施，是微澜山谷游览路线内同一设施区的重复抽取；主名补足场所，保留与山谷整体分离。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-010",
+    "city": "北京",
+    "entityId": "307f1f52c38138aa7d25dfa569fd4dbe",
+    "mergeEntityIds": [
+      "53f50409118eac1f5f8f4bcbe1a76555"
+    ],
+    "canonicalName": "16毫米咖啡",
+    "expectedRevisions": {
+      "307f1f52c38138aa7d25dfa569fd4dbe": 1,
+      "53f50409118eac1f5f8f4bcbe1a76555": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "北京市东城区黑芝麻胡同",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          114
+        ],
+        "conclusion": "2378与4673在南锣鼓巷路线明确相同的金鱼屋顶咖啡馆，名称为16毫米/16毫米咖啡。",
+        "sourcePlaceIds": [
+          "1082",
+          "2255"
+        ],
+        "mentions": [
+          {
+            "id": "2378",
+            "name": "16毫米",
+            "quote": "“金鱼屋顶”",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a94f26e000000000601161b"
+          },
+          {
+            "id": "4673",
+            "name": "16毫米咖啡",
+            "quote": "金鱼屋顶拍照相当漂亮",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a44fc4c0000000016024e10"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1082",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "4673具体指黑芝麻胡同，而主源地图为南锣鼓巷57号，另一源北京市中心；不保留冲突门牌和坐标，只保留原文街巷。",
+        "original": {
+          "lat": 39.93835,
+          "lng": 116.403099,
+          "address": "南锣鼓巷57号(近中央戏剧学院)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "北京市东城区黑芝麻胡同",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch06-context.json",
+        "sha256": "6532310836c141a532e3606374d7482c46d1a2cec283873fa588ec263ede6d3e",
+        "mentionIds": [
+          2378,
+          4673
+        ],
+        "conclusion": "2378与4673在南锣鼓巷路线明确相同的金鱼屋顶咖啡馆，名称为16毫米/16毫米咖啡。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-011",
+    "city": "北京",
+    "entityId": "d2f50f0a1d1db8e91729a0e40f419c26",
+    "mergeEntityIds": [
+      "ba84e4e3722eb2a92369878f9a6052da"
+    ],
+    "canonicalName": "北京奥林匹克塔西侧中轴线景观大道",
+    "expectedRevisions": {
+      "ba84e4e3722eb2a92369878f9a6052da": 1,
+      "d2f50f0a1d1db8e91729a0e40f419c26": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "北京奥林匹克塔西侧中轴线景观大道",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          122
+        ],
+        "conclusion": "2530和2882均将该大道列为2026中秋国庆同一奥园国际碳水节场地，完整名称补西侧，身份是场地而非一种美食。",
+        "sourcePlaceIds": [
+          "1341",
+          "1182"
+        ],
+        "mentions": [
+          {
+            "id": "2882",
+            "name": "奥林匹克塔中轴线观景大道",
+            "quote": "碳水美食，咖啡精酿",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa9f952000000002900d567"
+          },
+          {
+            "id": "2530",
+            "name": "北京奥林匹克塔西侧中轴线景观大道",
+            "quote": "100+明星碳水品牌集结",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa7acf1000000001001d9e3"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1182",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原地图是奥林匹克塔南1门，不能代表西侧大道；清空门点坐标，保留经原文确认的场地地址。",
+        "original": {
+          "lat": 40.007154,
+          "lng": 116.394747,
+          "address": "北京市朝阳区北京奥林匹克塔(南1门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "北京奥林匹克塔西侧中轴线景观大道",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          2530,
+          2882
+        ],
+        "conclusion": "2530和2882均将该大道列为2026中秋国庆同一奥园国际碳水节场地，完整名称补西侧，身份是场地而非一种美食。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-012",
+    "city": "北京",
+    "entityId": "5ca99b918e295ff21519992c6b8df59a",
+    "mergeEntityIds": [
+      "e3cc2904fe97a58371d04b86f3ed0239"
+    ],
+    "canonicalName": "石景山游乐园",
+    "expectedRevisions": {
+      "5ca99b918e295ff21519992c6b8df59a": 1,
+      "e3cc2904fe97a58371d04b86f3ed0239": 1
+    },
+    "overrides": {
+      "lat": 39.911986,
+      "lng": 116.208645,
+      "address": "石景山路25号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          127
+        ],
+        "conclusion": "3211把石景山乐园列为北京老牌主题乐园，与2678石景山游乐园灯光秀相符，是同一游乐园简称；不并入首钢石景山公园。",
+        "sourcePlaceIds": [
+          "1246",
+          "1545"
+        ],
+        "mentions": [
+          {
+            "id": "2993",
+            "name": "石景山游乐园",
+            "quote": "设备稍显老旧，热门项目记得提前排队",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69462667000000000d03f62c"
+          },
+          {
+            "id": "2678",
+            "name": "石景山游乐园",
+            "quote": "晚上九点有灯光秀",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a739b0b000000000e03f000"
+          },
+          {
+            "id": "3211",
+            "name": "石景山乐园",
+            "quote": "类似798、首钢园、石景山乐园等",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693b81a4000000001e00ad94"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1246",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.911986,
+          "lng": 116.208645,
+          "address": "石景山路25号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.911986,
+        "lng": 116.208645,
+        "address": "石景山路25号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          3211
+        ],
+        "conclusion": "3211把石景山乐园列为北京老牌主题乐园，与2678石景山游乐园灯光秀相符，是同一游乐园简称；不并入首钢石景山公园。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-013",
+    "city": "北京",
+    "entityId": "1120ac009f8bdb27e514c2cc7f13e55e",
+    "mergeEntityIds": [
+      "35b4c851c8c1814be132ad101e17c4e4"
+    ],
+    "canonicalName": "百里山水画廊",
+    "expectedRevisions": {
+      "1120ac009f8bdb27e514c2cc7f13e55e": 1,
+      "35b4c851c8c1814be132ad101e17c4e4": 1
+    },
+    "overrides": {
+      "lat": 40.70053,
+      "lng": 116.31974,
+      "address": "滦赤路",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          128
+        ],
+        "conclusion": "2721原文同一段标题百里画廊、导航延庆百里山水画廊风景区，直接说明两个写法指同一景区。",
+        "sourcePlaceIds": [
+          "1289",
+          "1270"
+        ],
+        "mentions": [
+          {
+            "id": "5254",
+            "name": "百里山水画廊",
+            "quote": "山谷秋色如画",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+          },
+          {
+            "id": "2783",
+            "name": "百里山水画廊",
+            "quote": "沿途浅溪遍布，木栈道漫步",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fca5c0000000025035054"
+          },
+          {
+            "id": "2721",
+            "name": "百里画廊",
+            "quote": "峡谷溪流，超多玩水区域",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2bc7c10000000008033924"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1289",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 40.70053,
+          "lng": 116.31974,
+          "address": "滦赤路",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 40.70053,
+        "lng": 116.31974,
+        "address": "滦赤路",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          2721
+        ],
+        "conclusion": "2721原文同一段标题百里画廊、导航延庆百里山水画廊风景区，直接说明两个写法指同一景区。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-014",
+    "city": "北京",
+    "entityId": "cba76a904c376bbbeaa5f63132e74176",
+    "mergeEntityIds": [
+      "1edbe0b89c63d006ba9d8a2da24d56a3"
+    ],
+    "canonicalName": "陶然亭公园",
+    "expectedRevisions": {
+      "1edbe0b89c63d006ba9d8a2da24d56a3": 1,
+      "cba76a904c376bbbeaa5f63132e74176": 1
+    },
+    "overrides": {
+      "lat": 39.874496,
+      "lng": 116.381921,
+      "address": "太平街19号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          133
+        ],
+        "conclusion": "本批陶然亭提及均为赏秋、下雪游园及艺术季活动，3137也是公园赏秋清单，指公园整体；原地铁站坐标不作为主体。",
+        "sourcePlaceIds": [
+          "1506",
+          "1447"
+        ],
+        "mentions": [
+          {
+            "id": "5241",
+            "name": "陶然亭",
+            "quote": "亭台临水老树含秋",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+          },
+          {
+            "id": "4854",
+            "name": "陶然亭",
+            "quote": "陶然亭紫竹院都有活动",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a982ed8000000002502ca73"
+          },
+          {
+            "id": "4577",
+            "name": "陶然亭",
+            "quote": "陶然亭等",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/693a42c2000000001e0049d6"
+          },
+          {
+            "id": "3137",
+            "name": "陶然亭",
+            "quote": "诗意得不像话",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a928326000000000502939e"
+          },
+          {
+            "id": "5266",
+            "name": "陶然亭公园",
+            "quote": "陶然亭艺术季通勤也ok",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa7ae200000000011033106"
+          },
+          {
+            "id": "3048",
+            "name": "陶然亭公园",
+            "quote": "粽香端午趣满陶然",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a33be15000000000f01f5db"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1447",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.874496,
+          "lng": 116.381921,
+          "address": "太平街19号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.874496,
+        "lng": 116.381921,
+        "address": "太平街19号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          3137,
+          4849
+        ],
+        "conclusion": "本批陶然亭提及均为赏秋、下雪游园及艺术季活动，3137也是公园赏秋清单，指公园整体；原地铁站坐标不作为主体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-015",
+    "city": "北京",
+    "entityId": "cb1f6bc3bb2027c666f499ccdc83a3a2",
+    "mergeEntityIds": [
+      "a72283f47eef4017c5cd9089d98824ed"
+    ],
+    "canonicalName": "哈利波特·禁忌之旅",
+    "expectedRevisions": {
+      "a72283f47eef4017c5cd9089d98824ed": 1,
+      "cb1f6bc3bb2027c666f499ccdc83a3a2": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "address": "北京环球影城哈利波特园区",
+      "exportApproved": true
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          137
+        ],
+        "conclusion": "3265明确到哈利波特园区玩第一个项目禁忌之旅，3197也把它与鹰马飞行等分别列项，均为同一游乐设施，不是哈利波特园区全域。",
+        "sourcePlaceIds": [
+          "1584",
+          "1536"
+        ],
+        "mentions": [
+          {
+            "id": "3265",
+            "name": "哈利波特园区·禁忌之旅",
+            "quote": "排了不到半小时就玩上了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7396c6000000000e03f000"
+          },
+          {
+            "id": "3197",
+            "name": "哈利波特·禁忌之旅",
+            "quote": "整体3D感比较重",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a98391d000000002b00041d"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1536",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "两源缺坐标停用，但项目身份已确认，批准无坐标导出；不借用园区或安检口坐标。",
+        "original": {
+          "lat": null,
+          "lng": null,
+          "geoStatus": "unresolvable"
+        },
+        "lat": null,
+        "lng": null,
+        "geoStatus": "unresolvable",
+        "address": "北京环球影城哈利波特园区",
+        "exportApproved": true
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          3265,
+          3197
+        ],
+        "conclusion": "3265明确到哈利波特园区玩第一个项目禁忌之旅，3197也把它与鹰马飞行等分别列项，均为同一游乐设施，不是哈利波特园区全域。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-016",
+    "city": "北京",
+    "entityId": "6850ff23cd817415b82976eaa09db235",
+    "mergeEntityIds": [
+      "d5bb69bf91c2f1bc770c4fb24efe28d8"
+    ],
+    "canonicalName": "景山崇祯自缢处",
+    "expectedRevisions": {
+      "6850ff23cd817415b82976eaa09db235": 1,
+      "d5bb69bf91c2f1bc770c4fb24efe28d8": 1
+    },
+    "overrides": {
+      "lat": 39.925421,
+      "lng": 116.398402,
+      "address": "景山西街44号景山公园内(东侧)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          138
+        ],
+        "conclusion": "3402明确为景山东侧崇祯自缢旧址、现树非原树，5211景山攻略也指该历史点；以历史点命名，避免宣称原树仍存。",
+        "sourcePlaceIds": [
+          "1615",
+          "2511"
+        ],
+        "mentions": [
+          {
+            "id": "3402",
+            "name": "歪脖子树",
+            "quote": "树不是原来那棵树",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695baaae0000000022038786"
+          },
+          {
+            "id": "5211",
+            "name": "崇祯歪脖子树",
+            "quote": "历史感满满",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a361add000000000702ce19"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1615",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.925421,
+          "lng": 116.398402,
+          "address": "景山西街44号景山公园内(东侧)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.925421,
+        "lng": 116.398402,
+        "address": "景山西街44号景山公园内(东侧)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch08-context.json",
+        "sha256": "a3a407407342171ceff1118fa85b9ac45de87fb0cab0bb8f54ea9610e2c10c73",
+        "mentionIds": [
+          3402,
+          5211
+        ],
+        "conclusion": "3402明确为景山东侧崇祯自缢旧址、现树非原树，5211景山攻略也指该历史点；以历史点命名，避免宣称原树仍存。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-017",
+    "city": "北京",
+    "entityId": "17bb118daffcd1b2913276d099eb1be4",
+    "mergeEntityIds": [
+      "0d719904c91a2e4ca3fd9cbddc151a98"
+    ],
+    "canonicalName": "Venchi闻绮快闪店（三里屯太古里南区南庭广场）",
+    "expectedRevisions": {
+      "0d719904c91a2e4ca3fd9cbddc151a98": 1,
+      "17bb118daffcd1b2913276d099eb1be4": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "三里屯太古里南区南庭广场（Apple店门口）",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          142
+        ],
+        "conclusion": "4308/4966同指南庭广场芒果黄装置、鱼子酱巧克力、三枚印章路线的同一期快闪，4966明确9月16-27日；保留与Venchi常设门店独立。",
+        "sourcePlaceIds": [
+          "2079",
+          "2408"
+        ],
+        "mentions": [
+          {
+            "id": "4308",
+            "name": "Venchi闻绮快闪（太古里南区南庭广场）",
+            "quote": "Venchi闻绮限时快闪空降太古里",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab85550000000028035972"
+          },
+          {
+            "id": "4966",
+            "name": "Venchi闻绮快闪店（三里屯太古里南区南庭广场）",
+            "quote": "氛围感直接拉满，巨出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab91aa000000000b000b3f"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2408",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原坐标地址S8-15为常设店铺，不是原文Apple店前南庭广场快闪；清空精确坐标。",
+        "original": {
+          "lat": 39.934532,
+          "lng": 116.454993,
+          "address": "三里屯路19号三里屯太古里南区1层S8-15",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "三里屯太古里南区南庭广场（Apple店门口）",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4308,
+          4966
+        ],
+        "conclusion": "4308/4966同指南庭广场芒果黄装置、鱼子酱巧克力、三枚印章路线的同一期快闪，4966明确9月16-27日；保留与Venchi常设门店独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-018",
+    "city": "北京",
+    "entityId": "e74456ae85c05e29d67b90785d30ab76",
+    "mergeEntityIds": [
+      "18210459b3149101dc50db914d4392d4"
+    ],
+    "canonicalName": "Venchi三里屯店",
+    "expectedRevisions": {
+      "18210459b3149101dc50db914d4392d4": 1,
+      "e74456ae85c05e29d67b90785d30ab76": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "三里屯太古里南区Venchi门店",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          143
+        ],
+        "conclusion": "4308/4966的同一集章路线第四站均去Venchi三里屯常设店换Nougatine巧克力，门店/店为同义；与快闪安装区保持分离。",
+        "sourcePlaceIds": [
+          "2409",
+          "2081"
+        ],
+        "mentions": [
+          {
+            "id": "4967",
+            "name": "Venchi三里屯门店",
+            "quote": "拿着三枚印章到Venchi三里屯门店还能免费兑换",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab91aa000000000b000b3f"
+          },
+          {
+            "id": "4310",
+            "name": "Venchi三里屯店",
+            "quote": "兑Nougatine巧克力",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab85550000000028035972"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2081",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原地图只落三里屯片区，尚无精确门牌核实，清空坐标。",
+        "original": {
+          "lat": 39.935589,
+          "lng": 116.454118,
+          "address": "北京市朝阳区三里屯",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "三里屯太古里南区Venchi门店",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4308,
+          4966
+        ],
+        "conclusion": "4308/4966的同一集章路线第四站均去Venchi三里屯常设店换Nougatine巧克力，门店/店为同义；与快闪安装区保持分离。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-019",
+    "city": "北京",
+    "entityId": "48966f2d58221d9342825643d3b9ba2e",
+    "mergeEntityIds": [
+      "221db73e0343a5581da339d52788a247"
+    ],
+    "canonicalName": "Nespresso三里屯店",
+    "expectedRevisions": {
+      "221db73e0343a5581da339d52788a247": 1,
+      "48966f2d58221d9342825643d3b9ba2e": 1
+    },
+    "overrides": {
+      "lat": 39.937652,
+      "lng": 116.453504,
+      "address": "北京市朝阳区NESPRESSO(三里屯太古里南区店)三里屯",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          144
+        ],
+        "conclusion": "4311/4968同一期Venchi集章路线的第五站，均为Nespresso三里屯门店领取shine咖啡及印章，名称变体指同一门店。",
+        "sourcePlaceIds": [
+          "2082",
+          "2410"
+        ],
+        "mentions": [
+          {
+            "id": "4311",
+            "name": "Nespresso三里屯门店",
+            "quote": "凭印章领取咖啡和第五枚印章",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab85550000000028035972"
+          },
+          {
+            "id": "4968",
+            "name": "Nespresso三里屯店",
+            "quote": "凭印章也可以领1颗shine晶澄即溶咖啡",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab91aa000000000b000b3f"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2410",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.937652,
+          "lng": 116.453504,
+          "address": "北京市朝阳区NESPRESSO(三里屯太古里南区店)三里屯",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.937652,
+        "lng": 116.453504,
+        "address": "北京市朝阳区NESPRESSO(三里屯太古里南区店)三里屯",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4311,
+          4968
+        ],
+        "conclusion": "4311/4968同一期Venchi集章路线的第五站，均为Nespresso三里屯门店领取shine咖啡及印章，名称变体指同一门店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-020",
+    "city": "北京",
+    "entityId": "b40dfae5e6f8bc0e82523392b83ad24e",
+    "mergeEntityIds": [
+      "234f3f18b36e9d1adeba1b253c2915b7"
+    ],
+    "canonicalName": "天坛公园西门",
+    "expectedRevisions": {
+      "234f3f18b36e9d1adeba1b253c2915b7": 1,
+      "b40dfae5e6f8bc0e82523392b83ad24e": 1
+    },
+    "overrides": {
+      "lat": 39.881086,
+      "lng": 116.400408,
+      "address": "天坛路甲1号天坛公园内(天桥地铁站C东南口步行60米)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          148
+        ],
+        "conclusion": "4567明确沿园内路线从天坛西门出园到天桥站，4432讨论从公园西门入园，均指同一入口，非同名公交站。",
+        "sourcePlaceIds": [
+          "2195",
+          "2141"
+        ],
+        "mentions": [
+          {
+            "id": "4567",
+            "name": "天坛西门",
+            "quote": "出门就直接到天桥站C口了，超方便",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7dd8a40000000005022387"
+          },
+          {
+            "id": "4432",
+            "name": "天坛公园西门",
+            "quote": "有带老人小孩的不推荐从西门进",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7151120000000032020260"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2141",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.881086,
+          "lng": 116.400408,
+          "address": "天坛路甲1号天坛公园内(天桥地铁站C东南口步行60米)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.881086,
+        "lng": 116.400408,
+        "address": "天坛路甲1号天坛公园内(天桥地铁站C东南口步行60米)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4567
+        ],
+        "conclusion": "4567明确沿园内路线从天坛西门出园到天桥站，4432讨论从公园西门入园，均指同一入口，非同名公交站。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4432
+        ],
+        "conclusion": "4567明确沿园内路线从天坛西门出园到天桥站，4432讨论从公园西门入园，均指同一入口，非同名公交站。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-021",
+    "city": "北京",
+    "entityId": "87e158d27fb3e208b414b23aee462f32",
+    "mergeEntityIds": [
+      "c933e976a23a10bcede8effba9bf15e9"
+    ],
+    "canonicalName": "T+Mall",
+    "expectedRevisions": {
+      "87e158d27fb3e208b414b23aee462f32": 1,
+      "c933e976a23a10bcede8effba9bf15e9": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "北京三里屯T+MALL",
+      "geoStatus": "unresolvable",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          152
+        ],
+        "conclusion": "4636明确三里屯综合性潮流商场，5288路线在壶茶馆火锅与BM之间列T+mall店，未指商场内某一租户；是同一商场名称变体。",
+        "sourcePlaceIds": [
+          "2176",
+          "2530"
+        ],
+        "mentions": [
+          {
+            "id": "4641",
+            "name": "T+Mall",
+            "quote": "可以在此淘好物",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8513ca000000002702060b"
+          },
+          {
+            "id": "4538",
+            "name": "T+Mall",
+            "quote": "也是比较适合女生的",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2cc8f40000000022008940"
+          },
+          {
+            "id": "5288",
+            "name": "T+mall店",
+            "quote": "步行不回头路线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d9100c000000002102d5f2"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2176",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原图匹配东北门而非商场主体，清空门点坐标，只保留商场位置描述。",
+        "original": {
+          "lat": 39.933189,
+          "lng": 116.454934,
+          "address": "北京市朝阳区T+MALL(东北门)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "北京三里屯T+MALL",
+        "geoStatus": "unresolvable",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          4636,
+          5288
+        ],
+        "conclusion": "4636明确三里屯综合性潮流商场，5288路线在壶茶馆火锅与BM之间列T+mall店，未指商场内某一租户；是同一商场名称变体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-06-022",
+    "city": "北京",
+    "entityId": "2295af05d415a953bd58961b597f26e3",
+    "mergeEntityIds": [
+      "bd9b8b786766692da012189e2f8c2d7a"
+    ],
+    "canonicalName": "3·3大厦",
+    "expectedRevisions": {
+      "2295af05d415a953bd58961b597f26e3": 1,
+      "bd9b8b786766692da012189e2f8c2d7a": 1
+    },
+    "overrides": {
+      "lat": 39.936839,
+      "lng": 116.45477,
+      "address": "三里屯路33号",
+      "geoStatus": "reviewed_source",
+      "category": "购物"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          153
+        ],
+        "conclusion": "5283路线与4636逐站描述同一三里屯潮流商厦，3·3/3.3仅标点不同，采用三里屯路33号主体定位。",
+        "sourcePlaceIds": [
+          "2529",
+          "2179"
+        ],
+        "mentions": [
+          {
+            "id": "5286",
+            "name": "3·3大厦",
+            "quote": "步行不回头路线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d9100c000000002102d5f2"
+          },
+          {
+            "id": "4638",
+            "name": "3.3大厦",
+            "quote": "能淘到很多独特好物",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8513ca000000002702060b"
+          },
+          {
+            "id": "4542",
+            "name": "3.3大厦",
+            "quote": "喜欢潮玩不错的选择",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a2cc8f40000000022008940"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2529",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 39.936839,
+          "lng": 116.45477,
+          "address": "三里屯路33号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.936839,
+        "lng": 116.45477,
+        "address": "三里屯路33号",
+        "geoStatus": "reviewed_source",
+        "category": "购物"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-batch07-context.json",
+        "sha256": "649bf217db3b3a780ebe6550cb848ef38b80d145b78cf3e4748b8b63a31aa459",
+        "mentionIds": [
+          5283,
+          4636
+        ],
+        "conclusion": "5283路线与4636逐站描述同一三里屯潮流商厦，3·3/3.3仅标点不同，采用三里屯路33号主体定位。"
+      }
+    ]
+  }
+]

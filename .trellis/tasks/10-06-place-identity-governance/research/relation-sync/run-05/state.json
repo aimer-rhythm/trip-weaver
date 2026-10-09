@@ -1,0 +1,55 @@
+{
+  "city": "广州",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "sourceRevision": 1,
+  "sourceHash": "375590110c53c2e13afe739c500957d9fa8479b5778a3525cfcb9bb6b4609906",
+  "placesHash": "e958fb58fc44f5461b004406bd82ae145cb6dac9e6afd92bf503e02f0e12537c",
+  "relationsHash": "8cf43737b93fde2f3fa55d0d06fb21a34328d853e8a4eafbce7b8c07e252415a",
+  "libraryHash": "9073d1d8ac4376a42bb772869b0417c5faabe5cd795b913b0e8ee6b44ce9fa6d",
+  "counts": {
+    "places": 689,
+    "graph": 79,
+    "direct": 14,
+    "library": {
+      "canonical_places": 714,
+      "research_evidence": 937,
+      "place_relation": 22,
+      "data_import": 3,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "e958fb58fc44f5461b004406bd82ae14",
+      "row_count": 689
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "8cf43737b93fde2f3fa55d0d06fb21a3",
+      "row_count": 14
+    }
+  ],
+  "audits": [
+    {
+      "id": "365de5ae-627f-4be7-9dea-aa94b55f3659",
+      "content_hash": "e958fb58fc44f5461b004406bd82ae14"
+    },
+    {
+      "id": "e3ad8a92-406b-4237-9837-47976762cac9",
+      "content_hash": "8cf43737b93fde2f3fa55d0d06fb21a3"
+    }
+  ],
+  "importedAt": "2026-10-07T08:43:12.268Z"
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "key": "all-cities-20261009-batch-45-source-5321-subject",
+    "city": "济南",
+    "entityId": "fef9784ad510099ad3bd150eee3fbf5c",
+    "expectedRevisions": {
+      "fef9784ad510099ad3bd150eee3fbf5c": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "纬三路与经三路交叉口",
+    "aliases": [
+      "纬三路与经三路交叉口"
+    ],
+    "overrides": {
+      "category": "文化"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_primary_subject",
+        "file": "priority-cities/济南/commercial-source-review-01.json",
+        "conclusion": "城市路口公共彩绘摄影点或大观园商业文化游览主体，不沿用餐饮主题。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-45-source-5478-subject",
+    "city": "济南",
+    "entityId": "910ac4e3fee34da1dd5f4378c7319ba5",
+    "expectedRevisions": {
+      "910ac4e3fee34da1dd5f4378c7319ba5": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "大观园",
+    "aliases": [
+      "大观园"
+    ],
+    "overrides": {
+      "category": "文化",
+      "lat": null,
+      "lng": null,
+      "address": "山东省济南市市中区经四路与纬二路交汇处",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_primary_subject",
+        "file": "priority-cities/济南/commercial-source-review-01.json",
+        "conclusion": "城市路口公共彩绘摄影点或大观园商业文化游览主体，不沿用餐饮主题。"
+      },
+      {
+        "kind": "wrong_point_cleared",
+        "files": [
+          "priority-cities/济南/commercial-reference-01.json",
+          "priority-cities/济南/commercial-reference-03.json",
+          "priority-cities/济南/commercial-geo-01.json"
+        ],
+        "conclusion": "百科地理位置明确经四路与纬二路，省地名网说明整体文化商业旅游主体；地图大观园及欧亚商场均在相同片区。旧经二路728及西侧约2.5公里点不符。候选点涉及整体、商场及入口粒度，暂清精确点不借入口坐标。"
+      }
+    ]
+  }
+]

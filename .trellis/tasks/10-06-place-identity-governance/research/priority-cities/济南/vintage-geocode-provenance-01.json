@@ -1,0 +1,66 @@
+{
+  "readOnly": true,
+  "kind": "current_geocoder_reproduction_not_historical_write_log",
+  "rows": [
+    {
+      "query": "济南",
+      "rawPoint": [
+        117.113776,
+        36.651833
+      ],
+      "converted": {
+        "longitude": 117.11990645904223,
+        "latitude": 36.65226798125929,
+        "adcode": "",
+        "address": "",
+        "formatted_address": "",
+        "poi_id": "",
+        "amap_type": ""
+      },
+      "equalsFrozenSources": []
+    },
+    {
+      "query": "济南VILLASHAKA",
+      "rawPoint": [
+        117.01951,
+        36.66462
+      ],
+      "converted": {
+        "longitude": 117.02543550006231,
+        "latitude": 36.664939125453756,
+        "adcode": "",
+        "address": "",
+        "formatted_address": "",
+        "poi_id": "",
+        "amap_type": ""
+      },
+      "equalsFrozenSources": [
+        "VILLASHAKA",
+        "BLUEDUCK骨董屋"
+      ]
+    },
+    {
+      "query": "济南BLUEDUCK骨董屋",
+      "rawPoint": [
+        117.01951,
+        36.66462
+      ],
+      "converted": {
+        "longitude": 117.02543550006231,
+        "latitude": 36.664939125453756,
+        "adcode": "",
+        "address": "",
+        "formatted_address": "",
+        "poi_id": "",
+        "amap_type": ""
+      },
+      "equalsFrozenSources": [
+        "VILLASHAKA",
+        "BLUEDUCK骨董屋"
+      ]
+    }
+  ],
+  "namedPoiEvidence": false,
+  "businessMutations": false,
+  "imageComparison": "deferred_by_user"
+}

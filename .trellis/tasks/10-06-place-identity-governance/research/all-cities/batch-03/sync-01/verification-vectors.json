@@ -1,0 +1,157 @@
+{
+  "verifiedAt": "2026-10-06T13:05:24.306Z",
+  "batch": "batch-03",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "北京",
+      "exported": 1284,
+      "total": 1349,
+      "active": 1319,
+      "embedded": 1319,
+      "probes": [
+        {
+          "name": "Jolly Jolly礼物商店",
+          "id": "703e64179387ed526dfd6644c760badc"
+        },
+        {
+          "name": "jolly jolly",
+          "id": "703e64179387ed526dfd6644c760badc"
+        },
+        {
+          "name": "jolly jolly礼物商店",
+          "id": "703e64179387ed526dfd6644c760badc"
+        },
+        {
+          "name": "TIGER（798艺术区）",
+          "id": "889ddf8153db22882b097d505a1fda0d"
+        },
+        {
+          "name": "TIGER",
+          "id": "889ddf8153db22882b097d505a1fda0d"
+        },
+        {
+          "name": "Tiger",
+          "id": "889ddf8153db22882b097d505a1fda0d"
+        },
+        {
+          "name": "DULTON（798艺术区）",
+          "id": "009ab8a799da8d7e804798e6d3a191da"
+        },
+        {
+          "name": "DULTON",
+          "id": "009ab8a799da8d7e804798e6d3a191da"
+        },
+        {
+          "name": "Dulton",
+          "id": "009ab8a799da8d7e804798e6d3a191da"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "jolly jolly",
+          "id": "703e64179387ed526dfd6644c760badc",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "TIGER",
+          "id": "889ddf8153db22882b097d505a1fda0d",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "DULTON",
+          "id": "009ab8a799da8d7e804798e6d3a191da",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 31,
+      "audits": [
+        "af4393d6-80ef-439c-9135-a50adae1700c"
+      ]
+    },
+    {
+      "city": "厦门",
+      "exported": 659,
+      "total": 667,
+      "active": 659,
+      "embedded": 659,
+      "probes": [
+        {
+          "name": "集美IOI MALL",
+          "id": "0a9cda9cef7869e896677a013dcea4c2"
+        },
+        {
+          "name": "IOI MALL",
+          "id": "0a9cda9cef7869e896677a013dcea4c2"
+        },
+        {
+          "name": "IOI mall",
+          "id": "0a9cda9cef7869e896677a013dcea4c2"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "IOI MALL",
+          "id": "0a9cda9cef7869e896677a013dcea4c2",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 6,
+      "audits": [
+        "96a1838f-cc2e-4717-9129-469bb38b234e"
+      ]
+    },
+    {
+      "city": "成都",
+      "exported": 396,
+      "total": 411,
+      "active": 402,
+      "embedded": 402,
+      "probes": [
+        {
+          "name": "麓湖CPI",
+          "id": "2fa5249189e48255eab59d0ecbae4c62"
+        },
+        {
+          "name": "麓湖cpi",
+          "id": "2fa5249189e48255eab59d0ecbae4c62"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "麓湖cpi",
+          "id": "2fa5249189e48255eab59d0ecbae4c62",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 4,
+      "audits": [
+        "703a0918-28bf-4217-8105-e62a9709cda6"
+      ]
+    }
+  ],
+  "failures": []
+}

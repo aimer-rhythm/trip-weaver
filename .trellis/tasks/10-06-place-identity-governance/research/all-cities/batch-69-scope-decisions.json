@@ -1,0 +1,64 @@
+[
+  {
+    "key": "all-cities-20261009-batch-69-heming-scope",
+    "city": "成都",
+    "sourcePlaceId": 1847,
+    "expectedSourceHash": "41df2f839e164c34496e0a5c46f594391c14b3da4e3b667577da8d1fa51738b4",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "726ded184fe71d5b6ad1642e0e60d3f1": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 3564,
+        "inputHash": "c03a5865236d0f29327be6632e30459e6fbe29ab62fe1284ac93368012e8bf8b",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      },
+      {
+        "mentionId": 3772,
+        "inputHash": "0e2b4c279356d36d5b85ebc6cac89f7d50f82924ea07edd3730e309bb7cf3997",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      },
+      {
+        "mentionId": 4059,
+        "inputHash": "53ca5cb9418dcdfcd73cf1b1deba900f95fe77a245dbf2c0a090639c9b7bedf3",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      },
+      {
+        "mentionId": 4162,
+        "inputHash": "21b86d66d15b74799586d8715eaa7fe170cfca94c0ca9302d512345fe43d11e3",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      },
+      {
+        "mentionId": 4199,
+        "inputHash": "3887e20cdb5e93c07524068875a0ab9dd7b11b2f149c996b4fb68d8eeaefe997",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      },
+      {
+        "mentionId": 4200,
+        "inputHash": "e0d87a7a103bd20b2b9e8a0b4b743fabd72e9d24119969247c10002fab73650a",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      }
+    ],
+    "textWarnings": [
+      {
+        "noteId": 877,
+        "imageIndex": 0,
+        "inputHash": "316fafa5e7f1ebe3b8ad070cd27be96c2ee7e40e3c1f0a5aef7d8ef172676357",
+        "start": 108,
+        "end": 117,
+        "quote": "可以不去\n鹤鸣茶社",
+        "entityId": "726ded184fe71d5b6ad1642e0e60d3f1"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_original_and_exact_multiline_opinion",
+        "file": "priority-cities/成都/heming-source-review-01.json",
+        "noteId": 877,
+        "quote": "可以不去\n鹤鸣茶社",
+        "conclusion": "茶社六条提及身份明确，四条正面、两条负面保留；跨行可不去意见逐字保全，停止其他景点混合提示。公园与茶社独立，不继承合游时长、免费门票或公园营业。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,738 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "重庆",
+      "entities": 650,
+      "members": 650,
+      "reviewCount": 12,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "ad7effec11e0e6f94e2d12709ebedb79",
+            "f91357d310a658a38f0631ba6742a0e0"
+          ],
+          "names": [
+            "佛图关站",
+            "佛图关"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d3af371184e549d3b3b0eaf887eb9036",
+            "fe9468812f76d513dd31d4f2042d4dab"
+          ],
+          "names": [
+            "南滨路钟楼广场",
+            "南滨路钟楼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "b76eb547ba7a8ccad3f44bef3c5dc222",
+            "c273b6780c41ba39fe9368fa45763eba"
+          ],
+          "names": [
+            "长嘉汇购物广场",
+            "长嘉汇广场"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "7653bb0fcb6ba1f42ec0f4c61ceb6a71",
+            "e017e9124d283a80d3ddee3f0a66eea3"
+          ],
+          "names": [
+            "北仓塔坪",
+            "北仓&塔坪"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "5182712e5db259877da46a3d91814ccd",
+            "e1d2d810b7591a1d82bb342a200e9639"
+          ],
+          "names": [
+            "金海湾公园",
+            "金海湾滨江公园"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "21f55226e58c3df24d86e522de819889",
+            "ad7effec11e0e6f94e2d12709ebedb79"
+          ],
+          "names": [
+            "佛图关地铁站",
+            "佛图关站"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c8501aee78bf4a6abede20fa46ea4a44",
+            "cfd30e1c6b49ac16018538c4c6e7f65e"
+          ],
+          "names": [
+            "大剧院地铁站1号口",
+            "大剧院地铁站"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "5ec3fd7ef72bd0696d0971ee1d73db5a",
+            "cfd30e1c6b49ac16018538c4c6e7f65e"
+          ],
+          "names": [
+            "大剧院地铁站4号口",
+            "大剧院地铁站"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "1cdf93734e803b63c2ac7c4bf9948f53",
+            "989b79578f1747da15d2fa697abde4ef"
+          ],
+          "names": [
+            "重庆江北国际机场",
+            "江北机场"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "0a8711e5ae81aea7b474f94354d80a2e",
+            "d502efd8f9dd6c558aec0866483743f9"
+          ],
+          "names": [
+            "爱乐之城",
+            "重庆爱乐之城"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "881d5a2004366fad8408312898244037",
+            "f3568e59fefd6975056c4da0f18a9c52"
+          ],
+          "names": [
+            "范嬢嬋糯米团",
+            "范嬢嬢糯米团"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "89370f25d1c281bc8b8bda6f4eb3deb2",
+            "f3568e59fefd6975056c4da0f18a9c52"
+          ],
+          "names": [
+            "范嬢嬢春森路糯米团",
+            "范嬢嬢糯米团"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "city": "重庆",
+          "canonical_name": "呼归石公交站对面",
+          "primary_place_id": 176,
+          "aliases": [
+            "呼归石公交站对面"
+          ],
+          "legacy_ids": [
+            "2f6c627fdf341bf54b049f3c0ae84d74"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+            "category": "景点",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "1119",
+                  "name": "呼归石公交站对面",
+                  "quote": "呼归石公交站对面",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "sourcePlaceIds": [
+                "176"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+              "category": "景点",
+              "original": {
+                "lat": 29.574274,
+                "lng": 106.589452,
+                "address": "重庆市373路",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "sourcePlaceId": "176",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/chongqing-batch14-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "mentionIds": [
+                1119
+              ]
+            }
+          ]
+        },
+        {
+          "entity_id": "79afbf6edf8899c29d2eb71edf8c3c81",
+          "city": "重庆",
+          "canonical_name": "呼归石公交站",
+          "primary_place_id": 215,
+          "aliases": [
+            "呼归石公交站"
+          ],
+          "legacy_ids": [
+            "79afbf6edf8899c29d2eb71edf8c3c81"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 176,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74"
+        },
+        {
+          "place_id": 215,
+          "entity_id": "79afbf6edf8899c29d2eb71edf8c3c81"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 176,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 13.0,
+          "theme_tags": [
+            "都市地标"
+          ],
+          "is_active": true
+        },
+        {
+          "id": 215,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 15.2,
+          "theme_tags": [
+            "都市地标"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 176,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "拍摄南滨路夜景的好机位",
+              "evidence": "呼归石公交站对面"
+            }
+          ],
+          "recommend_score": 7.5
+        },
+        {
+          "canonical_place_id": 215,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "公交站对面是拍照点，可拍南滨路",
+              "evidence": "呼归石公交站对面"
+            },
+            {
+              "reason": "对面是拍照机位",
+              "evidence": "呼归石公交站对面"
+            }
+          ],
+          "recommend_score": 9.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 239,
+          "canonical_place_id": 176,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 呼归石公交站对面",
+          "evidence_summary": "拍照机位，可拍夜景"
+        },
+        {
+          "id": 456,
+          "canonical_place_id": 215,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 呼归石公交站",
+          "evidence_summary": "公交站对面是拍照点，可拍南滨路"
+        },
+        {
+          "id": 793,
+          "canonical_place_id": 176,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 呼归石公交站对面",
+          "evidence_summary": "拍摄南滨路夜景的好机位"
+        },
+        {
+          "id": 867,
+          "canonical_place_id": 215,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 呼归石公交站",
+          "evidence_summary": "对面是拍照机位"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 215,
+          "city": "重庆",
+          "name_keys": [
+            "呼归石公交站"
+          ],
+          "entity_ids": [
+            "2f6c627fdf341bf54b049f3c0ae84d74",
+            "79afbf6edf8899c29d2eb71edf8c3c81"
+          ],
+          "source_hash": "a6641d5ae779ddac40555c04530831bf9da2950b576d29b6c817e36c1ac1246d",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-24-scope-215",
+          "evidence": [
+            {
+              "file": "scope-source-459-1791335308979279800.json",
+              "kind": "reviewed_mention_scope",
+              "sha256": "8e9e7b914506e690bb146cfc3324cc78692a5539b89784848e2d01ea15d77f4d",
+              "reviewIds": [
+                459
+              ],
+              "conclusion": "三条原提及来自同一篇note7，原始证据均为呼归石公交站对面；534/1615错抽取丢失对面。逐条分给站外机位，排除公交站裸名，不声明公交站与站外机位永久同义。保留旧ID兼容正确名称，未来真实公交站提及仍须独立审核。",
+              "mentionIds": [
+                534,
+                1119,
+                1615
+              ],
+              "sourcePlaceIds": [
+                176,
+                215
+              ]
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 534,
+          "scope_place_id": 215,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "input_hash": "85f0f678414cce0ca5724cef48877d2624a708572d6d8c50ca780643848849c0",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-24-scope-215"
+        },
+        {
+          "mention_id": 1615,
+          "scope_place_id": 215,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "input_hash": "e4dfc226fbea803c535fe9eb8006ec9858a5cde9ba63c1430b59123dc1567cf3",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-24-scope-215"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "a6641d5ae779ddac40555c04530831bf9da2950b576d29b6c817e36c1ac1246d",
+        "mentions": [
+          {
+            "mentionId": 534,
+            "inputHash": "85f0f678414cce0ca5724cef48877d2624a708572d6d8c50ca780643848849c0"
+          },
+          {
+            "mentionId": 1615,
+            "inputHash": "e4dfc226fbea803c535fe9eb8006ec9858a5cde9ba63c1430b59123dc1567cf3"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "city": "重庆",
+          "canonical_name": "呼归石公交站对面",
+          "primary_place_id": 176,
+          "aliases": [
+            "呼归石公交站对面"
+          ],
+          "legacy_ids": [
+            "2f6c627fdf341bf54b049f3c0ae84d74"
+          ],
+          "revision": 4,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+            "category": "景点",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "1119",
+                  "name": "呼归石公交站对面",
+                  "quote": "呼归石公交站对面",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "sourcePlaceIds": [
+                "176"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+              "category": "景点",
+              "original": {
+                "lat": 29.574274,
+                "lng": 106.589452,
+                "address": "重庆市373路",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "sourcePlaceId": "176",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/chongqing-batch14-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "mentionIds": [
+                1119
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 176,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 176,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 13.0,
+          "theme_tags": [
+            "都市地标"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 176,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "拍摄南滨路夜景的好机位",
+              "evidence": "呼归石公交站对面"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 239,
+          "canonical_place_id": 176,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 呼归石公交站对面",
+          "evidence_summary": "拍照机位，可拍夜景"
+        },
+        {
+          "id": 793,
+          "canonical_place_id": 176,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 呼归石公交站对面",
+          "evidence_summary": "拍摄南滨路夜景的好机位"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 176,
+          "city": "重庆",
+          "name_keys": [
+            "呼归石公交站对面"
+          ],
+          "entity_ids": [
+            "2f6c627fdf341bf54b049f3c0ae84d74"
+          ],
+          "source_hash": "e208ac4d874bc2cdc96c2517b15f24abaeb6ab764944de13c6933c8998b325ef",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-24-scope-176",
+          "evidence": [
+            {
+              "file": "scope-source-459-1791335308979279800.json",
+              "kind": "reviewed_mention_scope",
+              "sha256": "8e9e7b914506e690bb146cfc3324cc78692a5539b89784848e2d01ea15d77f4d",
+              "reviewIds": [
+                459
+              ],
+              "conclusion": "三条原提及来自同一篇note7，原始证据均为呼归石公交站对面；534/1615错抽取丢失对面。逐条分给站外机位，排除公交站裸名，不声明公交站与站外机位永久同义。保留旧ID兼容正确名称，未来真实公交站提及仍须独立审核。",
+              "mentionIds": [
+                534,
+                1119,
+                1615
+              ],
+              "sourcePlaceIds": [
+                176,
+                215
+              ]
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 1119,
+          "scope_place_id": 176,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "input_hash": "fdd99f29aca56095459cbc47dfa8ed5117116bcb843030a737daeb23a46b85ad",
+          "revision": 1,
+          "change_key": "all-cities-20261007-batch-24-scope-176"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "e208ac4d874bc2cdc96c2517b15f24abaeb6ab764944de13c6933c8998b325ef",
+        "mentions": [
+          {
+            "mentionId": 1119,
+            "inputHash": "fdd99f29aca56095459cbc47dfa8ed5117116bcb843030a737daeb23a46b85ad"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "city": "重庆",
+          "canonical_name": "呼归石公交站对面",
+          "primary_place_id": 176,
+          "aliases": [
+            "呼归石公交站对面"
+          ],
+          "legacy_ids": [
+            "2f6c627fdf341bf54b049f3c0ae84d74",
+            "79afbf6edf8899c29d2eb71edf8c3c81"
+          ],
+          "revision": 5,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+            "category": "景点",
+            "geoStatus": "unresolvable",
+            "identityExcludedNames": [
+              "呼归石公交站"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "1119",
+                  "name": "呼归石公交站对面",
+                  "quote": "呼归石公交站对面",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+                }
+              ],
+              "reviewIds": [],
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "sourcePlaceIds": [
+                "176"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "重庆市南岸区南滨路呼归石公交站对面摄影点，精确机位待核",
+              "category": "景点",
+              "original": {
+                "lat": 29.574274,
+                "lng": 106.589452,
+                "address": "重庆市373路",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "sourcePlaceId": "176",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/chongqing-batch14-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+              "conclusion": "note7的P4明确呼归石公交站对面，旧地图地址373路、坐标为公交站本身。撤销借用站体的精确点，保持站外机位独立；未把对面定义为车站永久别名。",
+              "mentionIds": [
+                1119
+              ]
+            },
+            {
+              "kind": "reviewed_mention_scope",
+              "file": "scope-source-459-1791335308979279800.json",
+              "sha256": "8e9e7b914506e690bb146cfc3324cc78692a5539b89784848e2d01ea15d77f4d",
+              "mentionIds": [
+                534,
+                1119,
+                1615
+              ],
+              "reviewIds": [
+                459
+              ],
+              "sourcePlaceIds": [
+                176,
+                215
+              ],
+              "conclusion": "三条原提及来自同一篇note7，原始证据均为呼归石公交站对面；534/1615错抽取丢失对面。逐条分给站外机位，排除公交站裸名，不声明公交站与站外机位永久同义。保留旧ID兼容正确名称，未来真实公交站提及仍须独立审核。"
+            }
+          ]
+        },
+        {
+          "entity_id": "79afbf6edf8899c29d2eb71edf8c3c81",
+          "city": "重庆",
+          "canonical_name": "呼归石公交站",
+          "primary_place_id": 215,
+          "aliases": [
+            "呼归石公交站"
+          ],
+          "legacy_ids": [
+            "79afbf6edf8899c29d2eb71edf8c3c81"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": "2f6c627fdf341bf54b049f3c0ae84d74",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 176,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74"
+        },
+        {
+          "place_id": 215,
+          "entity_id": "2f6c627fdf341bf54b049f3c0ae84d74"
+        }
+      ]
+    }
+  ]
+}

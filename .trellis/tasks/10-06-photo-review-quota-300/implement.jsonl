@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 后端入口：Pre-Development Checklist 要求识别 integrations 层的配额/记账边界，Quality Check Checklist 给出 typecheck 与文档校验命令"}
+{"file": ".trellis/spec/server/backend/preference-photo-pipeline.md", "reason": "审核队列与额度的权威契约：Signatures 列出 createPhotoReviewQueue 的可注入参数，Contracts 段含『默认滚动24h最多50个地点（显式配置可降低，上限50）』需同步为新上限，另有 countedAt 记账语义与饱和 warn 行为"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "图源预算与队列约定（Unsplash 45/h、Pixabay 90/min、24h 搜索缓存、createSerialQueue 单并发），确认抬高额度不绕过图源闸门"}
+{"file": ".trellis/spec/guides/index.md", "reason": "改常量前必须全局搜索该值的引用点，避免漏改 env / .env.example / spec / 测试断言"}
+{"file": ".trellis/tasks/10-06-photo-review-quota-300/research/photo-quota-baseline.md", "reason": "本次决策的全部实测依据：队列状态、单地点耗时上界、每地点 VLM 请求数、日新增速度、档位换算、5 个死任务清单、5 个改动点"}

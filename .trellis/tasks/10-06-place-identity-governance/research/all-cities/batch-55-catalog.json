@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "entity_id": "6a111b28c08cc7853140187bfd852b16",
+      "city": "济南",
+      "canonical_name": "老舍故居",
+      "primary_place_id": 5498,
+      "aliases": [
+        "老舍故居"
+      ],
+      "legacy_ids": [
+        "6a111b28c08cc7853140187bfd852b16"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "c5a3fae3d839ec359cb0521d957e56df",
+      "city": "济南",
+      "canonical_name": "老舍笔下的济南",
+      "primary_place_id": 5957,
+      "aliases": [
+        "老舍笔下的济南"
+      ],
+      "legacy_ids": [
+        "c5a3fae3d839ec359cb0521d957e56df"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5498,
+      "entity_id": "6a111b28c08cc7853140187bfd852b16"
+    },
+    {
+      "place_id": 5957,
+      "entity_id": "c5a3fae3d839ec359cb0521d957e56df"
+    }
+  ],
+  "reviews": []
+}

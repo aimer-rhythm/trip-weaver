@@ -1,0 +1,55 @@
+[
+  {
+    "key": "all-cities-20261009-batch-55-museum-name-address",
+    "city": "济南",
+    "entityId": "6a111b28c08cc7853140187bfd852b16",
+    "expectedRevisions": {
+      "6a111b28c08cc7853140187bfd852b16": 1
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "济南老舍纪念馆",
+    "aliases": [
+      "老舍故居",
+      "老舍纪念馆",
+      "济南老舍纪念馆"
+    ],
+    "overrides": {
+      "address": "南新街58号"
+    },
+    "evidence": [
+      {
+        "kind": "museum_name_and_documented_address_only",
+        "file": "priority-cities/济南/laoshe-source-review-01.json",
+        "conclusion": "2810既有文字分析为老舍纪念馆，公开条目互证故居同体及南新街58号。保留原坐标但不新增定位结论；不加scope以保留实际2图，距离描述另记待处理。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-55-wall-identity-location",
+    "city": "济南",
+    "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+    "expectedRevisions": {
+      "c5a3fae3d839ec359cb0521d957e56df": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "老舍笔下的济南主题墙",
+    "aliases": [
+      "老舍笔下的济南",
+      "老舍笔下的济南主题墙"
+    ],
+    "overrides": {
+      "address": "西更道街5号",
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "xhsPlaceType": "photo_spot"
+    },
+    "evidence": [
+      {
+        "kind": "separate_wall_from_museum",
+        "file": "priority-cities/济南/laoshe-source-review-01.json",
+        "conclusion": "用明确原文墙面补主体后缀与地址；清除与南新街故居完全相同的旧点，不借街道或门店坐标。分类文化保持，细类型改photo_spot。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,656 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-08T23:48:36.950683+00:00",
+  "city": "济南",
+  "entityBatch": 64,
+  "groups": [
+    {
+      "entity": {
+        "entity_id": "908b0aec5ee27f58554a8442f8eef1de",
+        "city": "济南",
+        "canonical_name": "起凤桥",
+        "primary_place_id": 5479,
+        "aliases": [
+          "起凤桥"
+        ],
+        "legacy_ids": [
+          "908b0aec5ee27f58554a8442f8eef1de"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5479,
+            "city": "济南",
+            "name": "起凤桥",
+            "normalized_name": "起凤桥",
+            "address": "山东省济南市历下区泉城路街道起凤桥街",
+            "latitude": 36.66834411542893,
+            "longitude": 117.02366553235973,
+            "place_type": "photo_spot",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 37.7
+          },
+          "sourceHash": "bd3d89664d594e082dca8acbfca2b7e562145e039a15d7fa217a828106b530b9",
+          "derivedBefore": {
+            "typical_visit_minutes": null,
+            "typical_visit_source": null,
+            "theme_tags": [
+              "历史人文",
+              "美食"
+            ],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5479,
+            "mention_count_30d": 7,
+            "recommend_score": 20.79,
+            "top_reasons": [
+              {
+                "reason": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+                "evidence": "位置有点隐秘，容易走过"
+              },
+              {
+                "reason": "济南古桥，与王府池子相邻，顺路游览。",
+                "evidence": "起风桥"
+              },
+              {
+                "reason": "拍照好看，电影电视剧取景地",
+                "evidence": "拍照很好看，电影电视剧取景地"
+              },
+              {
+                "reason": "热门打卡点，路线必经",
+                "evidence": "⑦起凤桥"
+              },
+              {
+                "reason": "位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街",
+                "evidence": "位置有点隐秘，容易走过"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "起凤桥"
+      ],
+      "mentionIds": [
+        11437,
+        11626,
+        12585,
+        12693,
+        12714,
+        12841,
+        12920
+      ]
+    },
+    {
+      "entity": {
+        "entity_id": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+        "city": "济南",
+        "canonical_name": "起凤桥八号",
+        "primary_place_id": 5392,
+        "aliases": [
+          "起凤桥八号"
+        ],
+        "legacy_ids": [
+          "fd7c5d9a0af5a1ec9515743d6f05bce5"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source": {
+            "id": 5392,
+            "city": "济南",
+            "name": "起凤桥八号",
+            "normalized_name": "起凤桥八号",
+            "address": "起凤桥街8",
+            "latitude": 36.66820694664672,
+            "longitude": 117.02363639555728,
+            "place_type": "photo_spot",
+            "geo_status": "resolved",
+            "amap_poi_id": "",
+            "is_active": true,
+            "quality_score": 16.0
+          },
+          "sourceHash": "c93b95be431e07c6e595e2407d497264705893664f67306d42da76bbc2d4d477",
+          "derivedBefore": {
+            "typical_visit_minutes": 30,
+            "typical_visit_source": "xhs_median",
+            "theme_tags": [],
+            "content_profile": null
+          },
+          "supplement": {
+            "adcode": ""
+          },
+          "summary": {
+            "canonical_place_id": 5392,
+            "mention_count_30d": 2,
+            "recommend_score": 9.5,
+            "top_reasons": [
+              {
+                "reason": "古香古色门洞，有烟雨江南即视感",
+                "evidence": "古香古色的门洞 烟雨江南即视感"
+              },
+              {
+                "reason": "古香古色的门洞，有烟雨江南即视感",
+                "evidence": "古香古色的门洞 烟雨江南即视感"
+              }
+            ]
+          }
+        }
+      ],
+      "nameKeys": [
+        "起凤桥八号"
+      ],
+      "mentionIds": [
+        11458,
+        12724
+      ]
+    }
+  ],
+  "originalSourceFile": "priority-cities\\济南\\run-1791385235272324900\\sources.json",
+  "originalSourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "catalog": {
+    "entities": [
+      {
+        "entity_id": "fd7c5d9a0af5a1ec9515743d6f05bce5",
+        "city": "济南",
+        "canonical_name": "起凤桥八号",
+        "primary_place_id": 5392,
+        "aliases": [
+          "起凤桥八号"
+        ],
+        "legacy_ids": [
+          "fd7c5d9a0af5a1ec9515743d6f05bce5"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      },
+      {
+        "entity_id": "908b0aec5ee27f58554a8442f8eef1de",
+        "city": "济南",
+        "canonical_name": "起凤桥",
+        "primary_place_id": 5479,
+        "aliases": [
+          "起凤桥"
+        ],
+        "legacy_ids": [
+          "908b0aec5ee27f58554a8442f8eef1de"
+        ],
+        "revision": 1,
+        "status": "ACTIVE",
+        "redirect_to": null,
+        "overrides": {},
+        "evidence": [
+          {
+            "kind": "bootstrap",
+            "source": "canonical_place + explicit alias configuration"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "place_id": 5392,
+        "entity_id": "fd7c5d9a0af5a1ec9515743d6f05bce5"
+      },
+      {
+        "place_id": 5479,
+        "entity_id": "908b0aec5ee27f58554a8442f8eef1de"
+      }
+    ],
+    "reviews": [
+      {
+        "id": 375,
+        "city": "济南",
+        "fingerprint": "28bad7b9e13ff3031d8bbd1ce788da869c582b1ddaa438c9443a7616888d4343",
+        "status": "REJECTED",
+        "detail": {
+          "names": [
+            "起凤桥",
+            "起凤桥街"
+          ],
+          "reason": "similar_name",
+          "entityIds": [
+            "908b0aec5ee27f58554a8442f8eef1de",
+            "9664ac094b1fc9e794ccaaa4e77aa9fa"
+          ],
+          "assessment": {
+            "key": "all-cities-20261006-batch-09-review-375",
+            "verdict": "part_of",
+            "evidence": [
+              {
+                "file": "all-cities/source-snapshot.json",
+                "kind": "reviewed_source_snapshot",
+                "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                "reviewIds": [
+                  375
+                ],
+                "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+                "sourcePlaceIds": [
+                  "5479",
+                  "5960"
+                ]
+              },
+              {
+                "file": "all-cities/jinan-batch09-context.json",
+                "kind": "reviewed_full_note_context",
+                "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+                "mentionIds": [
+                  12643,
+                  12626
+                ]
+              }
+            ],
+            "explanation": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+            "childEntityId": "908b0aec5ee27f58554a8442f8eef1de"
+          }
+        }
+      }
+    ]
+  },
+  "mentions": [
+    {
+      "id": 11437,
+      "raw_note_id": 2618,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "位置隐秘容易走过，导航起凤桥八号，旁边芙蓉街没必要去",
+      "evidence_text": "位置有点隐秘，容易走过",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:22.949678+00:00",
+      "inputHash": "ac557a36a27000b15bfbc1ff0b9ce1761f4f957f5bc12750b044cb86a8141c1f"
+    },
+    {
+      "id": 11626,
+      "raw_note_id": 2624,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "济南古桥，与王府池子相邻，顺路游览。",
+      "evidence_text": "起风桥",
+      "route_order": 10,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "d442d006970fb74fb1f5d0db24a5f7e060cabae25265034b4b1d26b687639c9b"
+    },
+    {
+      "id": 12585,
+      "raw_note_id": 2813,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "拍照好看，电影电视剧取景地",
+      "evidence_text": "拍照很好看，电影电视剧取景地",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": {
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "拍照很好看，电影电视剧取景地",
+              "quote": "拍照很好看，电影电视剧取景地"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:42.226798+00:00",
+      "inputHash": "322c30449e8c9a08c14f1d59580e94953e736d14d6fb27ccaad00f567f90765b"
+    },
+    {
+      "id": 12693,
+      "raw_note_id": 2817,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "热门打卡点，路线必经",
+      "evidence_text": "⑦起凤桥",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:03:42.369552+00:00",
+      "inputHash": "746f626ce1b4c066d84862d46a8e5ed740e5886621408bc35e0bc6ecb338ddb4"
+    },
+    {
+      "id": 12714,
+      "raw_note_id": 2618,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "位置隐秘容易走过，但值得前往，旁边就是芙蓉街小吃街",
+      "evidence_text": "位置有点隐秘，容易走过",
+      "route_order": 4,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:22.949678+00:00",
+      "inputHash": "d4c72c7880cb439e1e55beb66ac4faa8337618708a63ac86ac67ca3f50d45916"
+    },
+    {
+      "id": 12841,
+      "raw_note_id": 2800,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "photo_spot",
+      "mention_type": "warning",
+      "sentiment": "neutral",
+      "reason": "人多，可改拍西侧灯笼亭子",
+      "evidence_text": "起凤桥人多，可改拍西侧灯笼亭子",
+      "route_order": 5,
+      "confidence": 0.9,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-06T02:02:50.966517+00:00",
+      "inputHash": "ec0850c22ba7ebc4e4095a45914dd6b3a5d869158f740559345fc8aafa57170f"
+    },
+    {
+      "id": 12920,
+      "raw_note_id": 2624,
+      "name": "起凤桥",
+      "normalized_name": "起凤桥",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "neutral",
+      "reason": "济南有名景点，可顺路参观。",
+      "evidence_text": "起风桥",
+      "route_order": 11,
+      "confidence": 0.8,
+      "fact_type": null,
+      "fact_value": null,
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:20:23.062328+00:00",
+      "inputHash": "5367aa66a9d7ea44c39c955adcce11df4c0b95a67ff84cf056283c3f8788a62c"
+    },
+    {
+      "id": 11458,
+      "raw_note_id": 2570,
+      "name": "起凤桥八号",
+      "normalized_name": "起凤桥八号",
+      "place_type": "photo_spot",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "古香古色门洞，有烟雨江南即视感",
+      "evidence_text": "古香古色的门洞 烟雨江南即视感",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "古香古色的门洞，有烟雨江南即视感",
+              "quote": "古香古色的门洞 烟雨江南即视感"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.151862+00:00",
+      "inputHash": "25d4a79d55e694eb45a2d385e1f58be9a0068f29fcbcfc62c4a293416a7aef44"
+    },
+    {
+      "id": 12724,
+      "raw_note_id": 2570,
+      "name": "起凤桥八号",
+      "normalized_name": "起凤桥八号",
+      "place_type": "attraction",
+      "mention_type": "recommend",
+      "sentiment": "positive",
+      "reason": "古香古色的门洞，有烟雨江南即视感",
+      "evidence_text": "古香古色的门洞 烟雨江南即视感",
+      "route_order": 7,
+      "confidence": 0.9,
+      "fact_type": "visit_duration",
+      "fact_value": {
+        "minutes": 30,
+        "placeContent": {
+          "version": 1,
+          "highlights": [
+            {
+              "text": "古香古色的门洞，有烟雨江南即视感",
+              "quote": "古香古色的门洞 烟雨江南即视感"
+            }
+          ]
+        }
+      },
+      "note_city": "济南",
+      "note_unavailable": false,
+      "observed_at": "2026-10-04T11:18:21.151862+00:00",
+      "inputHash": "713fb997a884afa659d2eed67e27eb29e997d3e6fec49c26f1f840e830e93a6e"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2570,
+      "city": "济南",
+      "title": "济南📍一日citywalk路线｜必拍的18张live图",
+      "desc": "如果只有一天时间玩济南\n建议直接复制这条路线‼️\n不走回头路 分分钟拍出人生照片\n-\n🚩【路线】\n趵突泉➠五龙潭➠黑虎泉➠解放阁➠银座➠西更道街➠起凤桥八号➠曲水亭街➠后宰门街➠百花洲➠大明湖➠超然楼\n⇩\n🕗8:00-9:30📍趵突泉（p3.15）\n📷早起冲人少 拍喷涌的泉眼和大可爱鸭\n🕣9:30-10:30📍五龙潭（p6）\n📷对面假山拍框镜机位\n🕘10:30-11:30📍黑虎泉（p11）\n📷拍清澈见底的泉水 还可以喝哦\n🕤11:30-12:00📍解放阁（p18）\n📷拍济南标志性建筑\n🕤12:00-13:30📍银座商城（p5.7.9.12）\n📷拍若来Nanci静谧花园 超出片\n🕥13:30-14:30📍西更道街（p4.10）\n📷5号拍老舍笔下的济南墙 1号拍簪花少女墙\n🕦14:30-15:00📍起凤桥八号（p8）\n📷古香古色的门洞 烟雨江南即视感\n🕐15:00-16:00📍曲水亭街（p17）\n📷吃一串酸蘸儿 拍老济南涌泉胡同\n🕜16:00-16:30📍后宰门街（p13）\n📷拍济南府大字墙\n🕑16:30-17:30📍百花洲（p1.2）\n📷导航书香胡同 拍黑色济南大字\n🕒17:30-18:30📍大明湖（p16）\n📷拍小桥流水 氛围感拉满\n🕒18:30-19:30📍超然楼（p14）\n📷七点半亮灯 一瞬间很壮观\n-\n路过银座商城（泺源大街）居然偶遇了「若来Nanci静谧花园」森系治愈感简直拉满啦🍃布满绿植和漂亮的花 还有超可爱巨型Nanci 超出片 随手一拍都好看📸\n现场打卡发小红书还能领盲盒/香卡/书签～还有DIY手作 沉浸式玩遍一整个夏天🌿\n5.30-7.31都有活动噢～宝子们快拉上姐妹赴一场花园之约吧❤️\n\t\n#济南[话题]# #济南旅游[话题]# #济南拍照[话题]# #济南旅行[话题]# #济南旅游攻略[话题]# #济南机位[话题]# #济南攻略[话题]# #济南一日游[话题]# #对我友好的旅行[话题]# #友好旅行计划[话题]# #出片友好旅行[话题]# #Nanci静谧花园[话题]# #若来Nanci济南银座快闪[话题]# #0元出片机位[话题]# #一万种旅行howto[话题]# #周末去哪儿[话题]# #假日citywalk[话题]# #假期去哪玩[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11458,
+        12724
+      ]
+    },
+    {
+      "id": 2618,
+      "city": "济南",
+      "title": "济南夜游保姆级攻略｜免费景点附地图",
+      "desc": "路线：大明湖北门➡️超然楼➡️曲水亭（百花洲）➡️起凤桥八号➡️泉城广场➡️黑虎泉➡️解放阁\n\t\n🌈大明湖（湖畔雨荷）：全网最火的花灯，就在北门入口不远处（靠近湖边），我去的时候还看到一些Q版的雨荷花灯，都在这条路线上～\n\t\n🌈大明湖（超然楼）：亮灯⏰18:20-22:30\n去的时候刚好遇见有古风小姐姐的表演\n（登楼需要40r，不登楼拍照打卡也很好看）\n\t\n🌈曲水亭：从大明湖南门出来就是百花洲，再往里走可以看到蓝色银河🌌\n\t\n🌈起凤桥：导航📍起凤桥八号\n（位置有点隐秘，容易走过）\n\t\n🌈泉城广场：泉标的位置\n🉑️蹲音乐喷泉（⏰19:00/20:00）\n注意雨天☔️可能不演哦，我就错过了[哭惹R]\n\t\n🌈黑虎泉：这里是环城水系公园，不止有黑虎泉\n泉水清澈见底，晚上看能见度都很高！夜景绝美！\n（本地人都会带桶装水来这接泉水）\n\t\n🌈解放阁：就在黑虎泉旁，晚上这里光线也很好，适合拍照📷人多的话可以去马路对面的机位～\n亮灯⏰17:50-22:00\n（登楼40r，学生半价）\n\t\n💡小Tips：\n1⃣️时间充足可安排两天游玩，按照这条路线步行即可，可以根据酒店位置安排～\n2⃣️不要在大明湖北门打滴滴回去，基本打不到，我们是从南门进北门出，回酒店实在走不动了，想打车结果出门走了一段路才打上的士🚕而且那天下雨，门口全是旅游团的人[哭惹R]\n3⃣️起凤桥旁边就是芙蓉街，是小吃街，感觉没必要去，直奔起凤桥即可，景区这种地方都差不多\n4⃣️宽厚里在解放阁的对面，想吃饭的可以去看看\n#山东旅游[话题]# #济南旅游攻略[话题]# ，#济南夜游[话题]# #大明湖[话题]# #超然楼[话题]# #曲水亭街[话题]# #解放阁[话题]# #黑虎泉[话题]# #泉城广场[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        11437,
+        12714
+      ]
+    },
+    {
+      "id": 2624,
+      "city": "济南",
+      "title": "济南一日游，跟我走👍",
+      "desc": "时间有限的小伙伴们，出发济南一日游，不迷路，拿捏拿捏[微笑R]\n我们是周六晚上做的卧铺北京出发，周日早上六点多到达大明湖站，吃喝就看自己的选择啦，，，\n第一站五龙潭，七点开园，一个小时就能逛完，西门进南门出，斜对过就是趵突泉啦，，，园子不小，里面有点东西，可以仔细逛一下呢。\n接着想去老舍故居就从南门出，500米就是老舍故居，不去的从东门出，马路对面就是泉城广场，走旁边的林荫小路，沿着护城河，就能看到黑虎泉，可以接泉水，能够直接喝的。\n尽头就是解放阁，可以进去参观一下。下来就是宽厚里，一整条街可以逛吃逛喝[吧唧R]，午饭可以在这里解决。接着逛芙蓉街，也都是小吃，走着走着到曲水亭街，很优美，然后去看有名的王府池子、起风桥。\n重点来到了大明湖，吹吹风太舒服了，等到快天黑的时候去找好位置看超然楼亮灯，然后去看看夏雨荷，非常充实的一天，晚上八点多从离得很近的济南西站打道回京。",
+      "unavailable": false,
+      "mentionIds": [
+        11626,
+        12920
+      ]
+    },
+    {
+      "id": 2800,
+      "city": "济南",
+      "title": "大明湖＆曲水亭街不绕路打卡路线",
+      "desc": "精华路线：1小时步行打卡，全程不绕路\n起点大明湖南门，一路串联曲水亭街各热门景点：\n大明湖南门、月下观棠、后宰门街、涌泉胡同、起凤桥、老舍文字墙、王府池子、百花桥&遐园。\n起凤桥人多，可改拍西侧灯笼亭子。\n隐藏机位：刘氏泉、西更道街、桥头路牌墙、来闲小院、一尺花园。\n游玩小贴士\n1. 拍照最佳时间：15:00-17:00；夜景18点后亮灯。\n2. 节假日人流量大，建议早到或错峰游玩。\n3. 街区仅限步行，车辆无法通行。\n4. 大明湖、曲水亭街免费；超然楼夜景需40元门票。\n#四面荷花三面柳[话题]# #大明湖拍照[话题]# #曲水亭街[话题]# #起风桥拍照[话题]# #济南拍照[话题]# #济南旅行[话题]# #济南拍照打卡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12841
+      ]
+    },
+    {
+      "id": 2813,
+      "city": "济南",
+      "title": "在济南走一种很新的city泉水walk(附路线)",
+      "desc": "💦泉水作为济南的特色当然不能错过\n💛济南的老城老街巷也相当迷人\n总结了一条在济南 人不多但是可以感受泉水感受老街的citywalk一日游路线建议收藏⬇️\n\t\n🌟一日游路线：\n珍珠泉大院（济南三大名泉之一，泉水碧色清澈，院里还有珍珠泉、散水泉、溪亭泉、濋泉…）\n↓\n王府池子（隐藏在老城区的宝藏泉水濯缨泉）\n↓\n腾蛟泉（王府池子出来往北走的一个岔路口）\n↓\n起凤桥（拍照很好看，电影电视剧取景地）\n↓\n西更道（连接泉城路和曲水亭街的老街道）\n↓\n刘氏泉（西更道走到头就能看到一条细长的水流）\n↓\n曲水亭街（济南“小江南”恬静闲适非常好逛）\n↓\n百花洲（池塘/天鹅/鸳鸯/荷花/碧水独属于济南的浪漫）\n↓\n松果（逛完百花洲可以直接串过后宰门街到县西巷尝尝济南人从小吃到大的平价西餐！真是吃了好多好多年了！无论是味道还是颜值都非常在线！环境也很好！可以直接看到大明湖！边看着窗外郁郁葱葱边吃太舒服了！)\n🆓这些地方都距离不远，而且全都是免费的\n这个路线是能体会到济南人真正生活气息的路线，逛下来你会发现济南真的很浪漫，更是不乏一些低调的小确幸！松弛又自在的幸福感，真的好爱济南❤\n\t\n#周末去哪儿[话题]# #济南美食[话题]# #济南吃喝玩乐[话题]# #济南旅游[话题]# #济南旅游攻略[话题]# #济南曲水亭街[话题]# #珍珠泉[话题]# #百花洲[话题]# #济南西餐[话题]# #暑期旅游[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12585
+      ]
+    },
+    {
+      "id": 2817,
+      "city": "济南",
+      "title": "1小时打卡济南曲水亭街！附详细路线攻略",
+      "desc": "去过很多次终于想起来写写路线了\n这条线基本涵盖了所有热门打卡点\n1小时就能逛完，机位紧凑 一点都不累\n祝大家玩的开心啊～\n\t\n【游玩路线】\n①大明湖景区(南门)\n②济南文字墙\n③月下观棠(白底书法济南文字墙)\n④后宰门街（簪花济南文字墙）\n⑤百花桥\n⑥刘氏泉（簪花少女)\n⑦起凤桥\n⑧老舍笔下的济南\n⑨王府池子\n⑩珍珠泉#老街慢生活[话题]# #城市里的老街[话题]# #一城山色半城湖[话题]# #济南[话题]# #济南攻略[话题]# #济南旅游攻略[话题]# #济南拍照[话题]# #济南打卡[话题]#",
+      "unavailable": false,
+      "mentionIds": [
+        12693
+      ]
+    }
+  ],
+  "noteTimes": [
+    {
+      "noteId": 2570,
+      "publishTime": "2026-06-02T11:23:27+00:00",
+      "collectedAt": "2026-10-04T11:18:21.151862+00:00",
+      "rawJsonSha256": "422a04dd61b9746608a0b005a5c835a35fb526be90eaab69e4aa2975c834c7fa",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1780399407000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1780572013000
+        }
+      ]
+    },
+    {
+      "noteId": 2618,
+      "publishTime": "2026-03-21T09:30:25+00:00",
+      "collectedAt": "2026-10-04T11:20:22.949678+00:00",
+      "rawJsonSha256": "d950a4f6ca70f58db46434989ac1cbeed53a1df050d5bbcd228a874ceb979b62",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1774085425000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1774071938000
+        }
+      ]
+    },
+    {
+      "noteId": 2624,
+      "publishTime": "2026-05-15T03:12:00+00:00",
+      "collectedAt": "2026-10-04T11:20:23.062328+00:00",
+      "rawJsonSha256": "9f009642fea4b68b9a5f64a76c69c0eb08fcf86dc3dcd7e6dfe191fd912b85d2",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1778814720000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1778815978000
+        }
+      ]
+    },
+    {
+      "noteId": 2800,
+      "publishTime": "2026-04-22T13:21:18+00:00",
+      "collectedAt": "2026-10-06T02:02:50.966517+00:00",
+      "rawJsonSha256": "6ffa34842744a6f105e60db5b98ef00c730eae5e9133628a505a6357ffc977de",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1776864078000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1776864078000
+        }
+      ]
+    },
+    {
+      "noteId": 2813,
+      "publishTime": "2025-07-04T09:00:03+00:00",
+      "collectedAt": "2026-10-06T02:03:42.226798+00:00",
+      "rawJsonSha256": "468e802c314dbc4135849796920d0ee310aebb082dcd43d890e999a3416b4084",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1751619603000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1751676288000
+        }
+      ]
+    },
+    {
+      "noteId": 2817,
+      "publishTime": "2025-12-29T12:01:10+00:00",
+      "collectedAt": "2026-10-06T02:03:42.369552+00:00",
+      "rawJsonSha256": "a4b078ad4b0dde2e20687c1064884c155ebbd349f5de915016c32ba65a49e159",
+      "rawTimeFields": [
+        {
+          "path": ".note_card.time",
+          "value": 1767009670000
+        },
+        {
+          "path": ".note_card.last_update_time",
+          "value": 1766996010000
+        }
+      ]
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "businessMutations": false
+}

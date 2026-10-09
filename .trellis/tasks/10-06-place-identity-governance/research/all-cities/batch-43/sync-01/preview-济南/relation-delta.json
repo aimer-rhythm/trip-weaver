@@ -1,0 +1,96 @@
+{
+  "city": "济南",
+  "before": 20,
+  "after": 20,
+  "directBefore": 7,
+  "directAfter": 6,
+  "changed": [
+    {
+      "from": "黑虎泉",
+      "to": "解放阁",
+      "fromEntityId": "136719df189e0dd70cd34be75f6faef4",
+      "toEntityId": "15ad3a8280476165635672cb0e43117a",
+      "fromRevision": 3,
+      "toRevision": 1,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2622,
+          "textHash": "428b2ed826c931c732f2f636a85909125f77e78cc5fcaf0aec72ebf9bee4d06e",
+          "from": {
+            "entityId": "136719df189e0dd70cd34be75f6faef4",
+            "revision": 3,
+            "start": 92,
+            "end": 95,
+            "surface": "黑虎泉",
+            "mentions": [
+              {
+                "mentionId": 11590,
+                "inputHash": "6714aba12e87e1ed74cbfee1de51da7721a5424fc1966ad7fca67d936dfa2344"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "15ad3a8280476165635672cb0e43117a",
+            "revision": 1,
+            "start": 96,
+            "end": 99,
+            "surface": "解放阁",
+            "mentions": [
+              {
+                "mentionId": 11591,
+                "inputHash": "ff4675b7f2cf306de0e0e90e81b01dff27be002497b40fa5f2a8707087e2ff65"
+              }
+            ]
+          },
+          "quote": "黑虎泉→解放阁"
+        }
+      ]
+    },
+    {
+      "from": "黑虎泉",
+      "to": "泉城广场",
+      "fromEntityId": "136719df189e0dd70cd34be75f6faef4",
+      "toEntityId": "8cc25e536e67519c958ee54248ead04f",
+      "fromRevision": 3,
+      "toRevision": 3,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2607,
+          "textHash": "1c29b16e30b9f2a451b1e111b2d17d1fe9dc6a8ffc5bed8d1d1cf507c45ad6c8",
+          "from": {
+            "entityId": "136719df189e0dd70cd34be75f6faef4",
+            "revision": 3,
+            "start": 800,
+            "end": 803,
+            "surface": "黑虎泉",
+            "mentions": [
+              {
+                "mentionId": 11514,
+                "inputHash": "f63240910ea3227c528bc2f14578443763e30acdbbde0256616570580f38737f"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "8cc25e536e67519c958ee54248ead04f",
+            "revision": 3,
+            "start": 793,
+            "end": 797,
+            "surface": "泉城广场",
+            "mentions": [
+              {
+                "mentionId": 11513,
+                "inputHash": "5dc6be77c3057492ddca2c92ecf723dc73d857ab9fd7f77b892154ac2733b0f6"
+              }
+            ]
+          },
+          "quote": "泉城广场，再去黑虎泉"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

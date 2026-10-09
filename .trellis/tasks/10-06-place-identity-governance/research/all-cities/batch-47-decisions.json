@@ -1,0 +1,26 @@
+[
+  {
+    "key": "all-cities-20261009-batch-47-source-5372-subject",
+    "city": "济南",
+    "entityId": "48bbca08dc8a0fd00189dbe41cfa127a",
+    "expectedRevisions": {
+      "48bbca08dc8a0fd00189dbe41cfa127a": 2
+    },
+    "mergeEntityIds": [],
+    "canonicalName": "民族大街",
+    "aliases": [
+      "民族大街"
+    ],
+    "overrides": {
+      "category": "文化",
+      "xhsPlaceType": "other"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_primary_subject",
+        "file": "priority-cities/济南/minzu-source-review-01.json",
+        "conclusion": "民族大街为公共街道，早餐是街上活动，不是名为民族大街的单一餐饮店；纠正food细类为other，保留美食主题和原名/坐标。具体市场仍独立购物/market。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "key": "top30-20261009-batch-76-score-0854db5911778c6722637d896e9c2904",
+    "city": "北京",
+    "entityId": "0854db5911778c6722637d896e9c2904",
+    "canonicalName": "国子监",
+    "aliases": [
+      "国子监"
+    ],
+    "mergeEntityIds": [],
+    "expectedRevisions": {
+      "0854db5911778c6722637d896e9c2904": 1
+    },
+    "overrides": {
+      "recommendationPolicy": "resolved_attraction_mentions_v1"
+    },
+    "evidence": [
+      {
+        "kind": "resolved_identity_recommendation_score",
+        "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-06.json",
+        "snapshotSha256": "85cb52a70a463e8f4d558d7bb6d8c093e037a0fc0fdef64a873467235d64272e",
+        "mentionIds": [
+          1938,
+          2103,
+          2242,
+          2716,
+          2909,
+          4268,
+          4487,
+          4570,
+          5181
+        ],
+        "scoreBefore": 31.55,
+        "scoreAfter": 26.44,
+        "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。"
+      }
+    ]
+  }
+]

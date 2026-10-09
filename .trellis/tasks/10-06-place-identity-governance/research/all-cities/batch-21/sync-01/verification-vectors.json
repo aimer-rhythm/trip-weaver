@@ -1,0 +1,44 @@
+{
+  "verifiedAt": "2026-10-06T21:52:59.218Z",
+  "batch": "batch-21",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "北京",
+      "exported": 1273,
+      "total": 1350,
+      "active": 1308,
+      "embedded": 1308,
+      "probes": [
+        {
+          "name": "景山公园",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5"
+        },
+        {
+          "name": "石景山公园",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "石景山公园",
+          "id": "981bfe8125feb36e052dcfee1e0df8b5",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 31,
+      "audits": [
+        "9ee49909-f32d-4d08-b516-93dcda24154e"
+      ]
+    }
+  ],
+  "failures": []
+}

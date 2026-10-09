@@ -1,0 +1,2131 @@
+[
+  {
+    "key": "all-cities-20261006-batch-14-001",
+    "city": "重庆",
+    "entityId": "80da0080bd637b0edabe651134e54372",
+    "mergeEntityIds": [
+      "92792954a107d62e87c2612a6aa39c56"
+    ],
+    "canonicalName": "黄桷垭老街",
+    "expectedRevisions": {
+      "80da0080bd637b0edabe651134e54372": 1,
+      "92792954a107d62e87c2612a6aa39c56": 1
+    },
+    "overrides": {
+      "lat": 29.537306,
+      "lng": 106.602521,
+      "address": "重庆市崇文路12号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          431
+        ],
+        "conclusion": "1153原文在同一条上新街至黄葛古道路线中交替写黄桷垭古街、黄桷垭老街，1252、1761同指三毛故居附近的商业老街。简称地图误落合川，不采信；沿用南岸崇文路12号主源，不吞黄葛古道或三毛故居。",
+        "sourcePlaceIds": [
+          "2",
+          "397"
+        ],
+        "mentions": [
+          {
+            "id": "1761",
+            "name": "黄桷垭老街",
+            "quote": "拍照也很出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f72f5c0000000003037790"
+          },
+          {
+            "id": "1605",
+            "name": "黄桷垭老街",
+            "quote": "先黄桷垭老街，再黄葛古道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+          },
+          {
+            "id": "1252",
+            "name": "黄桷垭老街",
+            "quote": "导航到「黄桷垭老街」入口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68623161000000000b02fbb2"
+          },
+          {
+            "id": "1109",
+            "name": "黄桷垭老街",
+            "quote": "黄桷垭老街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+          },
+          {
+            "id": "1153",
+            "name": "黄桷垭古街",
+            "quote": "明清老建筑+文艺小店混搭，关键是人少",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68d11b82000000001300d379"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.537306,
+          "lng": 106.602521,
+          "address": "重庆市崇文路12号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.537306,
+        "lng": 106.602521,
+        "address": "重庆市崇文路12号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1153,
+          1252,
+          1761
+        ],
+        "conclusion": "1153原文在同一条上新街至黄葛古道路线中交替写黄桷垭古街、黄桷垭老街，1252、1761同指三毛故居附近的商业老街。简称地图误落合川，不采信；沿用南岸崇文路12号主源，不吞黄葛古道或三毛故居。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-002",
+    "city": "重庆",
+    "entityId": "82b414116a01ef21136402eb8d9f10a8",
+    "mergeEntityIds": [
+      "5ca90337940d5da8ae103f0208456ee7"
+    ],
+    "canonicalName": "重庆开埠遗址公园",
+    "expectedRevisions": {
+      "5ca90337940d5da8ae103f0208456ee7": 1,
+      "82b414116a01ef21136402eb8d9f10a8": 1
+    },
+    "overrides": {
+      "lat": 29.551026,
+      "lng": 106.593058,
+      "address": "重庆市马鞍山56号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          432
+        ],
+        "conclusion": "1077、1200、732及1112均指马鞍山、南滨路一带的开埠遗址公园，特征为竹编长廊拍索道；仅差城市前缀。两主源地址同为马鞍山56号，保留该主体定位，独立楼梯机位不归入同义成员。",
+        "sourcePlaceIds": [
+          "7",
+          "255"
+        ],
+        "mentions": [
+          {
+            "id": "1766",
+            "name": "开埠遗址公园",
+            "quote": "欣赏重庆夜景，人也更少",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f72f5c0000000003037790"
+          },
+          {
+            "id": "1608",
+            "name": "开埠遗址公园",
+            "quote": "开埠遗址公园（夜景）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+          },
+          {
+            "id": "1112",
+            "name": "开埠遗址公园",
+            "quote": "开埠遗址公园（夜景）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+          },
+          {
+            "id": "1077",
+            "name": "开埠遗址公园",
+            "quote": "透过椭圆拍索道非常好看",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa12f48000000002902fa10"
+          },
+          {
+            "id": "1200",
+            "name": "重庆开埠遗址公园",
+            "quote": "透过竹编楼梯拍长江索道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68fb4b0f000000000703a8ef"
+          },
+          {
+            "id": "1017",
+            "name": "重庆开埠遗址公园",
+            "quote": "透过竹编楼梯拍长江索道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6913fad0000000000703b674"
+          },
+          {
+            "id": "732",
+            "name": "重庆开埠遗址公园",
+            "quote": "重庆开埠遗址公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a4233eb0000000006031535"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "255",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.551026,
+          "lng": 106.593058,
+          "address": "重庆市马鞍山56号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.551026,
+        "lng": 106.593058,
+        "address": "重庆市马鞍山56号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1077,
+          1200,
+          732,
+          1112
+        ],
+        "conclusion": "1077、1200、732及1112均指马鞍山、南滨路一带的开埠遗址公园，特征为竹编长廊拍索道；仅差城市前缀。两主源地址同为马鞍山56号，保留该主体定位，独立楼梯机位不归入同义成员。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-003",
+    "city": "重庆",
+    "entityId": "abbe2ab7eac6a5a3e979bdab339cc873",
+    "mergeEntityIds": [
+      "1d86423c1070cea71a0230c53ff2e7c3",
+      "648291a24d01ba956abbeae33763eb10"
+    ],
+    "canonicalName": "下浩里",
+    "expectedRevisions": {
+      "1d86423c1070cea71a0230c53ff2e7c3": 1,
+      "648291a24d01ba956abbeae33763eb10": 1,
+      "abbe2ab7eac6a5a3e979bdab339cc873": 1
+    },
+    "overrides": {
+      "lat": 29.557588,
+      "lng": 106.595746,
+      "address": "重庆市南滨路与东水门长江大桥交叉口东北角",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          433
+        ],
+        "conclusion": "1079描述上新街1号口进入的下浩老街夜景，1625、1769、1807的下浩里老街明确为龙门浩隔壁的同一街区；全目录下浩里主体的336、530、1211、1557、1784也均为浩阅书店、瀑布及老街游览。三名为本批同一现行街区，不把所有历史下浩地区、独立瀑布、出口火锅店或上新街出口纳为同义。",
+        "sourcePlaceIds": [
+          "377",
+          "10",
+          "46"
+        ],
+        "mentions": [
+          {
+            "id": "1079",
+            "name": "下浩老街",
+            "quote": "蓝调时刻绝美",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa12f48000000002902fa10"
+          },
+          {
+            "id": "1807",
+            "name": "下浩里老街",
+            "quote": "很文艺值得慢慢逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e1ed5f0000000023015bef"
+          },
+          {
+            "id": "1769",
+            "name": "下浩里老街",
+            "quote": "瀑布机位，开灯后绝美",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f72f5c0000000003037790"
+          },
+          {
+            "id": "1625",
+            "name": "下浩里老街",
+            "quote": "龙门浩老街隔壁",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69157932000000000503879c"
+          },
+          {
+            "id": "1588",
+            "name": "下浩里老街",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "336",
+            "name": "下浩里",
+            "quote": "浩阅书店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "361",
+            "name": "下浩里",
+            "quote": "感觉都差不多就放弃了",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/697ec94300000000210283ac"
+          },
+          {
+            "id": "422",
+            "name": "下浩里",
+            "quote": "下浩里、南滨路、洪崖洞晚间易拥堵",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e88213000000002200e904"
+          },
+          {
+            "id": "530",
+            "name": "下浩里",
+            "quote": "穿过浩阅书店到达最佳观景点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69de3dc0000000001a034428"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "46",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.557588,
+          "lng": 106.595746,
+          "address": "重庆市南滨路与东水门长江大桥交叉口东北角",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.557588,
+        "lng": 106.595746,
+        "address": "重庆市南滨路与东水门长江大桥交叉口东北角",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/chongqing-batch14-supplement.json",
+        "sha256": "94018a7a9537d2276fa6b40a4d104bce47af9b847b877bf8ecacd258e4ada4da",
+        "conclusion": "1079描述上新街1号口进入的下浩老街夜景，1625、1769、1807的下浩里老街明确为龙门浩隔壁的同一街区；全目录下浩里主体的336、530、1211、1557、1784也均为浩阅书店、瀑布及老街游览。三名为本批同一现行街区，不把所有历史下浩地区、独立瀑布、出口火锅店或上新街出口纳为同义。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1079,
+          1625,
+          1769,
+          1807
+        ],
+        "conclusion": "1079描述上新街1号口进入的下浩老街夜景，1625、1769、1807的下浩里老街明确为龙门浩隔壁的同一街区；全目录下浩里主体的336、530、1211、1557、1784也均为浩阅书店、瀑布及老街游览。三名为本批同一现行街区，不把所有历史下浩地区、独立瀑布、出口火锅店或上新街出口纳为同义。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-extra-context.json",
+        "sha256": "a1c4e07105c510f1f87c506e1f89704349fd0406a7dde5ac89de12f4fc216a27",
+        "mentionIds": [
+          336,
+          530,
+          1211,
+          1557,
+          1784
+        ],
+        "conclusion": "1079描述上新街1号口进入的下浩老街夜景，1625、1769、1807的下浩里老街明确为龙门浩隔壁的同一街区；全目录下浩里主体的336、530、1211、1557、1784也均为浩阅书店、瀑布及老街游览。三名为本批同一现行街区，不把所有历史下浩地区、独立瀑布、出口火锅店或上新街出口纳为同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-004",
+    "city": "重庆",
+    "entityId": "fc68b67fe81e9938f6821be1f77aa980",
+    "mergeEntityIds": [
+      "40e8e1939e8c0a20729ae904bfd14384",
+      "44b20333ce43df19bcd7efaed5937112"
+    ],
+    "canonicalName": "十八梯传统风貌区",
+    "expectedRevisions": {
+      "40e8e1939e8c0a20729ae904bfd14384": 1,
+      "44b20333ce43df19bcd7efaed5937112": 1,
+      "fc68b67fe81e9938f6821be1f77aa980": 1
+    },
+    "overrides": {
+      "lat": 29.551015,
+      "lng": 106.573042,
+      "address": "重庆市中兴路1号(较场口地铁站出入口旁)",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          439
+        ],
+        "conclusion": "1565指花间府林公馆所在十八梯景区，1278、1368描述较场口下方传统街区，与549、1633正式风貌区源一致。合并三名，保留中兴路1号主源，剔除简称误匹配的永川坐标；不合并景区内酒店及防空洞等设施。",
+        "sourcePlaceIds": [
+          "39",
+          "566",
+          "192"
+        ],
+        "mentions": [
+          {
+            "id": "1709",
+            "name": "十八梯",
+            "quote": "一路下坡就是山城步道，十八梯",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c3833c0000000023013bf4"
+          },
+          {
+            "id": "1541",
+            "name": "十八梯",
+            "quote": "山城巷、十八梯、凯旋路电梯",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6b20bc000000003400fa00"
+          },
+          {
+            "id": "1368",
+            "name": "十八梯",
+            "quote": "解放碑、十八梯热门点全覆盖",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7070f9000000003202393f"
+          },
+          {
+            "id": "1278",
+            "name": "十八梯",
+            "quote": "防空洞博物馆必去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e67d3500000000030397bf"
+          },
+          {
+            "id": "1565",
+            "name": "十八梯景区",
+            "quote": "位置在十八梯景区里面",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a60946b000000000f032aab"
+          },
+          {
+            "id": "549",
+            "name": "十八梯传统风貌区",
+            "quote": "轨道较场口站11号出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1172",
+            "name": "十八梯传统风貌区",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1598",
+            "name": "十八梯传统风貌区",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1633",
+            "name": "十八梯传统风貌区",
+            "quote": "轨道较场口站11号出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69157932000000000503879c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "192",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.551015,
+          "lng": 106.573042,
+          "address": "重庆市中兴路1号(较场口地铁站出入口旁)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.551015,
+        "lng": 106.573042,
+        "address": "重庆市中兴路1号(较场口地铁站出入口旁)",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/chongqing-batch14-supplement.json",
+        "sha256": "94018a7a9537d2276fa6b40a4d104bce47af9b847b877bf8ecacd258e4ada4da",
+        "conclusion": "1565指花间府林公馆所在十八梯景区，1278、1368描述较场口下方传统街区，与549、1633正式风貌区源一致。合并三名，保留中兴路1号主源，剔除简称误匹配的永川坐标；不合并景区内酒店及防空洞等设施。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1565,
+          1278,
+          1368
+        ],
+        "conclusion": "1565指花间府林公馆所在十八梯景区，1278、1368描述较场口下方传统街区，与549、1633正式风貌区源一致。合并三名，保留中兴路1号主源，剔除简称误匹配的永川坐标；不合并景区内酒店及防空洞等设施。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-extra-context.json",
+        "sha256": "a1c4e07105c510f1f87c506e1f89704349fd0406a7dde5ac89de12f4fc216a27",
+        "mentionIds": [
+          549
+        ],
+        "conclusion": "1565指花间府林公馆所在十八梯景区，1278、1368描述较场口下方传统街区，与549、1633正式风貌区源一致。合并三名，保留中兴路1号主源，剔除简称误匹配的永川坐标；不合并景区内酒店及防空洞等设施。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-005",
+    "city": "重庆",
+    "entityId": "a4f0085af957a6414d4cd70ce46c45b8",
+    "mergeEntityIds": [
+      "3febd4b6f82cc64f9ec002fb8285b5d6",
+      "aba429f79b60a0306aaf03682c7efa52",
+      "b40195e3d8ad8a380b130f892efb6516",
+      "30f96f1a1c8c5e485c9d7cd2b1dc8864"
+    ],
+    "canonicalName": "我在重庆大屏",
+    "expectedRevisions": {
+      "3febd4b6f82cc64f9ec002fb8285b5d6": 1,
+      "a4f0085af957a6414d4cd70ce46c45b8": 1,
+      "aba429f79b60a0306aaf03682c7efa52": 1,
+      "b40195e3d8ad8a380b130f892efb6516": 1,
+      "30f96f1a1c8c5e485c9d7cd2b1dc8864": 1
+    },
+    "overrides": {
+      "lat": 29.576559,
+      "lng": 106.533071,
+      "address": "重庆市北城天街6号北城天街A馆1F层",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          441
+        ],
+        "conclusion": "543、1627、1191均明确观音桥北城天街东南1门大屏；补充360、1667同为观音桥打卡大屏。1222原文也明确北城天街东南1号门、天桥对面的滚动屏幕，虽写我爱重庆，实际指同一装置。五源合并，保留北城天街6号主源定位，修正补充源误落巴南或城市中心点；1655我爱重庆夜景位于大剧院站4号口，绝不并入。",
+        "sourcePlaceIds": [
+          "187",
+          "42",
+          "591",
+          "199",
+          "410"
+        ],
+        "mentions": [
+          {
+            "id": "1627",
+            "name": "我在重庆",
+            "quote": "龙湖重庆北城天街东南1门",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69157932000000000503879c"
+          },
+          {
+            "id": "1592",
+            "name": "我在重庆",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1166",
+            "name": "我在重庆",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "543",
+            "name": "我在重庆",
+            "quote": "轨道观音桥站4号出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1641",
+            "name": "我在重庆大屏",
+            "quote": "我在重庆大屏",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a7d8f900000000260316f5"
+          },
+          {
+            "id": "1191",
+            "name": "我在重庆大屏",
+            "quote": "我在重庆大屏",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68fb4b0f000000000703a8ef"
+          },
+          {
+            "id": "1006",
+            "name": "我在重庆大屏",
+            "quote": "我在重庆大屏",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6913fad0000000000703b674"
+          },
+          {
+            "id": "636",
+            "name": "我在重庆大屏",
+            "quote": "我在重庆大屏",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "1667",
+            "name": "观音桥我在重庆打卡点",
+            "quote": "观音桥我在重庆打卡点",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1d28450000000036033447"
+          },
+          {
+            "id": "360",
+            "name": "观音桥“我在重庆”大屏幕",
+            "quote": "观音桥“我在重庆”大屏幕",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/697ec94300000000210283ac"
+          },
+          {
+            "id": "1222",
+            "name": "我爱重庆",
+            "quote": "大屏幕滚动播放“我爱重庆”",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e605070000000007009ad5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "42",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.576559,
+          "lng": 106.533071,
+          "address": "重庆市北城天街6号北城天街A馆1F层",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.576559,
+        "lng": 106.533071,
+        "address": "重庆市北城天街6号北城天街A馆1F层",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/chongqing-batch14-supplement.json",
+        "sha256": "94018a7a9537d2276fa6b40a4d104bce47af9b847b877bf8ecacd258e4ada4da",
+        "conclusion": "543、1627、1191均明确观音桥北城天街东南1门大屏；补充360、1667同为观音桥打卡大屏。1222原文也明确北城天街东南1号门、天桥对面的滚动屏幕，虽写我爱重庆，实际指同一装置。五源合并，保留北城天街6号主源定位，修正补充源误落巴南或城市中心点；1655我爱重庆夜景位于大剧院站4号口，绝不并入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          543,
+          1627,
+          1191,
+          1222,
+          1655
+        ],
+        "conclusion": "543、1627、1191均明确观音桥北城天街东南1门大屏；补充360、1667同为观音桥打卡大屏。1222原文也明确北城天街东南1号门、天桥对面的滚动屏幕，虽写我爱重庆，实际指同一装置。五源合并，保留北城天街6号主源定位，修正补充源误落巴南或城市中心点；1655我爱重庆夜景位于大剧院站4号口，绝不并入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-extra-context.json",
+        "sha256": "a1c4e07105c510f1f87c506e1f89704349fd0406a7dde5ac89de12f4fc216a27",
+        "mentionIds": [
+          360,
+          1667
+        ],
+        "conclusion": "543、1627、1191均明确观音桥北城天街东南1门大屏；补充360、1667同为观音桥打卡大屏。1222原文也明确北城天街东南1号门、天桥对面的滚动屏幕，虽写我爱重庆，实际指同一装置。五源合并，保留北城天街6号主源定位，修正补充源误落巴南或城市中心点；1655我爱重庆夜景位于大剧院站4号口，绝不并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-006",
+    "city": "重庆",
+    "entityId": "a3c0f200bd1594976809975920f55cc2",
+    "mergeEntityIds": [
+      "3eb4e8911d8b1c19c4261e5b4e61d494",
+      "da106041d27f7edf153a5fdb220d4573",
+      "9b7e6236c1feb2e504a83e8eaeebd9c1"
+    ],
+    "canonicalName": "鹅岭栈桥",
+    "expectedRevisions": {
+      "3eb4e8911d8b1c19c4261e5b4e61d494": 1,
+      "da106041d27f7edf153a5fdb220d4573": 1,
+      "9b7e6236c1feb2e504a83e8eaeebd9c1": 1,
+      "a3c0f200bd1594976809975920f55cc2": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "重庆市渝中区佛图关公园与鹅岭公园之间的鹅岭栈桥",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          443,
+          444
+        ],
+        "conclusion": "341、590、1512明确佛图关公园南门至鹅岭公园的悬空栈道，1716直接把鹅岭栈桥解释为悬空栈道；354及798也处于鹅岭、李子坝游线。市城管局转载建设新闻网说明鹅岭栈桥连接两园，支持四名同体。武隆鹅岭、地铁站及鹅颈巷旧点无法作为桥体精确坐标，成对清空待核；不合并两端公园或半山崖线全线。",
+        "sourcePlaceIds": [
+          "530",
+          "51",
+          "93",
+          "60"
+        ],
+        "mentions": [
+          {
+            "id": "1512",
+            "name": "鹅岭栈道",
+            "quote": "栈道上视野开阔，景色很棒",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa4ccc80000000011037c4c"
+          },
+          {
+            "id": "1618",
+            "name": "鹅岭悬空栈道",
+            "quote": "该步道是单循环步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b4b756000000001e00c6cc"
+          },
+          {
+            "id": "648",
+            "name": "鹅岭悬空栈道",
+            "quote": "该步道是单循环步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b4b756000000001e00c6cc"
+          },
+          {
+            "id": "590",
+            "name": "鹅岭悬空栈道",
+            "quote": "鹅岭悬空栈道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6933a4f1000000001e0305c1"
+          },
+          {
+            "id": "341",
+            "name": "鹅岭悬空栈道",
+            "quote": "该步道是单循环步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b4b756000000001e00c6cc"
+          },
+          {
+            "id": "798",
+            "name": "鹅岭高空栈桥",
+            "quote": "李子坝→鹅岭高空栈桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ded2f7000000001e00f360"
+          },
+          {
+            "id": "1716",
+            "name": "鹅岭栈桥",
+            "quote": "悬空栈道，旁边就是鹅岭公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d45c1000000002201cd54"
+          },
+          {
+            "id": "354",
+            "name": "鹅岭栈桥",
+            "quote": "鹅岭栈桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/697ec94300000000210283ac"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "60",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.548425,
+          "lng": 106.528225,
+          "address": "重庆市化龙桥街道长江一路鹅颈巷8号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "重庆市渝中区佛图关公园与鹅岭公园之间的鹅岭栈桥",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://cgj.cq.gov.cn/zwxx_173/bmdt/mtkd/202511/t20251114_15163576.html",
+        "file": "all-cities/chongqing-eling-fetch.json",
+        "sha256": "8c7f36578b5a019785e19493f0fb644c9b05a5fb191695615a67ae02bf7be1f2"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          341,
+          590,
+          1512,
+          1716,
+          354,
+          798
+        ],
+        "conclusion": "341、590、1512明确佛图关公园南门至鹅岭公园的悬空栈道，1716直接把鹅岭栈桥解释为悬空栈道；354及798也处于鹅岭、李子坝游线。市城管局转载建设新闻网说明鹅岭栈桥连接两园，支持四名同体。武隆鹅岭、地铁站及鹅颈巷旧点无法作为桥体精确坐标，成对清空待核；不合并两端公园或半山崖线全线。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-007",
+    "city": "重庆",
+    "entityId": "63df442704fa9f56a9919a52da72c457",
+    "mergeEntityIds": [
+      "c78dc6aa35035eac82937da4ad0c445e",
+      "6495819f80441a0de54e5100162eb321",
+      "fedc16e1ec84004f4c1ae2069c83ff3b"
+    ],
+    "canonicalName": "北仓文创街区",
+    "expectedRevisions": {
+      "63df442704fa9f56a9919a52da72c457": 1,
+      "c78dc6aa35035eac82937da4ad0c445e": 1,
+      "6495819f80441a0de54e5100162eb321": 1,
+      "fedc16e1ec84004f4c1ae2069c83ff3b": 1
+    },
+    "overrides": {
+      "lat": 29.578539,
+      "lng": 106.538685,
+      "address": "重庆市兴塔路与建北一支路交叉口东50米",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          446,
+          447
+        ],
+        "conclusion": "362、655、923、1535和1256均为观音桥附近旧仓库改造的文创街区；北仓泛名329、1192的路线及图片北仓标牌亦指此街区。四名合并，采用兴塔路与建北一支路交叉口东50米主源，公开攻略也给同地址。塔坪在原文与公开来源中单独列出，不合并；北仓里当前仅有站口及照片昵称，街区范围仍待核，本批不吞。",
+        "sourcePlaceIds": [
+          "188",
+          "64",
+          "239",
+          "14"
+        ],
+        "mentions": [
+          {
+            "id": "1626",
+            "name": "北仓文创街区",
+            "quote": "轨道观音桥站4号出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69157932000000000503879c"
+          },
+          {
+            "id": "1593",
+            "name": "北仓文创街区",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1535",
+            "name": "北仓文创街区",
+            "quote": "人少清净还好拍，很适合日常citywalk",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a941ed30000000007007048"
+          },
+          {
+            "id": "1256",
+            "name": "北仓文创街区",
+            "quote": "随手拍都好出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f31f2d000000000703977f"
+          },
+          {
+            "id": "714",
+            "name": "北仓文创街",
+            "quote": "每个地方都很好拍照",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e89c510000000021007b8a"
+          },
+          {
+            "id": "362",
+            "name": "北仓文创街",
+            "quote": "路边有很多韩里韩气的小店",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e89c510000000021007b8a"
+          },
+          {
+            "id": "1094",
+            "name": "北仓文创园",
+            "quote": "DAY2：北仓文创园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a635ac9000000001101a1b1"
+          },
+          {
+            "id": "923",
+            "name": "北仓文创园",
+            "quote": "很小清新、文艺得街区可以边走边逛遍拍照",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6895929a000000002502918f"
+          },
+          {
+            "id": "866",
+            "name": "北仓文创园",
+            "quote": "北仓文创园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5f77ca000000000f03f88e"
+          },
+          {
+            "id": "655",
+            "name": "北仓文创园",
+            "quote": "北仓文创园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695a39ca0000000022021cef"
+          },
+          {
+            "id": "302",
+            "name": "北仓",
+            "quote": "打卡北仓",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f72f5c0000000003037790"
+          },
+          {
+            "id": "329",
+            "name": "北仓",
+            "quote": "北仓",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "568",
+            "name": "北仓",
+            "quote": "打卡北仓、塔坪后顺路吃吃孔二火锅",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68f72f5c0000000003037790"
+          },
+          {
+            "id": "637",
+            "name": "北仓",
+            "quote": "拍'我在重庆大屏'的天桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "188",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.578539,
+          "lng": 106.538685,
+          "address": "重庆市兴塔路与建北一支路交叉口东50米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.578539,
+        "lng": 106.538685,
+        "address": "重庆市兴塔路与建北一支路交叉口东50米",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "http://cq.bendibao.com/tour/2025414/151801.shtm",
+        "file": "all-cities/chongqing-beicang-fetch.json",
+        "sha256": "3cd3bbf6deaf1ffe29102f0214508cbe0f0b8fc7a8b76ef20eaa925ec96f0703"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/chongqing-batch14-supplement.json",
+        "sha256": "94018a7a9537d2276fa6b40a4d104bce47af9b847b877bf8ecacd258e4ada4da",
+        "conclusion": "362、655、923、1535和1256均为观音桥附近旧仓库改造的文创街区；北仓泛名329、1192的路线及图片北仓标牌亦指此街区。四名合并，采用兴塔路与建北一支路交叉口东50米主源，公开攻略也给同地址。塔坪在原文与公开来源中单独列出，不合并；北仓里当前仅有站口及照片昵称，街区范围仍待核，本批不吞。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          362,
+          655,
+          923,
+          1535,
+          1256
+        ],
+        "conclusion": "362、655、923、1535和1256均为观音桥附近旧仓库改造的文创街区；北仓泛名329、1192的路线及图片北仓标牌亦指此街区。四名合并，采用兴塔路与建北一支路交叉口东50米主源，公开攻略也给同地址。塔坪在原文与公开来源中单独列出，不合并；北仓里当前仅有站口及照片昵称，街区范围仍待核，本批不吞。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-variant-context.json",
+        "sha256": "cb43ad8288f8eaad9bcac187645c60c2d0e40f1af529422a989d6a36ed3f7402",
+        "mentionIds": [
+          329,
+          1192,
+          1653
+        ],
+        "conclusion": "362、655、923、1535和1256均为观音桥附近旧仓库改造的文创街区；北仓泛名329、1192的路线及图片北仓标牌亦指此街区。四名合并，采用兴塔路与建北一支路交叉口东50米主源，公开攻略也给同地址。塔坪在原文与公开来源中单独列出，不合并；北仓里当前仅有站口及照片昵称，街区范围仍待核，本批不吞。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-008",
+    "city": "重庆",
+    "entityId": "d66cfabfa58cb3e8a8f2150f43c9249a",
+    "mergeEntityIds": [
+      "4e26117375063ca243d031d68852beeb"
+    ],
+    "canonicalName": "八一好吃街",
+    "expectedRevisions": {
+      "4e26117375063ca243d031d68852beeb": 1,
+      "d66cfabfa58cb3e8a8f2150f43c9249a": 1
+    },
+    "overrides": {
+      "lat": 29.5564,
+      "lng": 106.577433,
+      "address": "重庆市步行街与八一路交叉口西40米",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          449
+        ],
+        "conclusion": "481、995与781、910、1231都指解放碑步行可达的八一路小吃街，八一/八一路为道路名省略，不是两家餐饮门店。保留步行街与八一路交叉口主源定位，不将街内连锁店归为同一实体。",
+        "sourcePlaceIds": [
+          "147",
+          "76"
+        ],
+        "mentions": [
+          {
+            "id": "1383",
+            "name": "八一路好吃街",
+            "quote": "游客+本地人都爱逛的美食街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c54dd1000000001a0321a0"
+          },
+          {
+            "id": "995",
+            "name": "八一路好吃街",
+            "quote": "游客+本地人都爱逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c54dd1000000001a0321a0"
+          },
+          {
+            "id": "481",
+            "name": "八一路好吃街",
+            "quote": "酸辣粉、山城小汤圆、鬼包子样样齐全",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c54dd1000000001a0321a0"
+          },
+          {
+            "id": "1231",
+            "name": "八一好吃街",
+            "quote": "八一好吃街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e605070000000007009ad5"
+          },
+          {
+            "id": "910",
+            "name": "八一好吃街",
+            "quote": "重庆超级火的小吃街各种川渝特色美食",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6895929a000000002502918f"
+          },
+          {
+            "id": "886",
+            "name": "八一好吃街",
+            "quote": "八一好吃街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69eafaf3000000002202a971"
+          },
+          {
+            "id": "781",
+            "name": "八一好吃街",
+            "quote": "八一好吃街就在旁边",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ded2f7000000001e00f360"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "76",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.5564,
+          "lng": 106.577433,
+          "address": "重庆市步行街与八一路交叉口西40米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.5564,
+        "lng": 106.577433,
+        "address": "重庆市步行街与八一路交叉口西40米",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          481,
+          995,
+          781,
+          910,
+          1231
+        ],
+        "conclusion": "481、995与781、910、1231都指解放碑步行可达的八一路小吃街，八一/八一路为道路名省略，不是两家餐饮门店。保留步行街与八一路交叉口主源定位，不将街内连锁店归为同一实体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-009",
+    "city": "重庆",
+    "entityId": "1cdf93734e803b63c2ac7c4bf9948f53",
+    "mergeEntityIds": [
+      "4dc20121a14479aa262d5c07b8ea96df"
+    ],
+    "canonicalName": "重庆江北国际机场",
+    "expectedRevisions": {
+      "1cdf93734e803b63c2ac7c4bf9948f53": 1,
+      "4dc20121a14479aa262d5c07b8ea96df": 1
+    },
+    "overrides": {
+      "lat": 29.722563,
+      "lng": 106.657653,
+      "address": "重庆市两路街道机场路",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          450
+        ],
+        "conclusion": "686明确作为飞抵重庆的机场，247原笔记图片的江北国际机场明确同时包含T2与T3。旧江北国际机场主体虽无独立精确提及且已停用，但名称、机场路地址、定位及未限定航站楼的主体范围均一致，仅省城市前缀，可合并此历史重复主体。机场周边住宿区1495、各航站楼出口和轨道站均不并入。",
+        "sourcePlaceIds": [
+          "248",
+          "85"
+        ],
+        "mentions": [
+          {
+            "id": "686",
+            "name": "重庆江北国际机场",
+            "quote": "有机场巴士，1小时到解放碑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6863a9e50000000013010586"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "248",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.722563,
+          "lng": 106.657653,
+          "address": "重庆市两路街道机场路",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.722563,
+        "lng": 106.657653,
+        "address": "重庆市两路街道机场路",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          686,
+          866,
+          1495
+        ],
+        "conclusion": "686明确作为飞抵重庆的机场，247原笔记图片的江北国际机场明确同时包含T2与T3。旧江北国际机场主体虽无独立精确提及且已停用，但名称、机场路地址、定位及未限定航站楼的主体范围均一致，仅省城市前缀，可合并此历史重复主体。机场周边住宿区1495、各航站楼出口和轨道站均不并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-010",
+    "city": "重庆",
+    "entityId": "e6c8377215236b09c389e9a950079b67",
+    "mergeEntityIds": [
+      "39cb14675ac70a0b2818cc8d60743327",
+      "622baeb1ced185c3da434b1f9fefe023",
+      "626ccf58e3c61f9278b9d8cd0e8e1ed8",
+      "c1cd89ab4878c7c6e528200e860404f6"
+    ],
+    "canonicalName": "大剧院江滩公园",
+    "expectedRevisions": {
+      "39cb14675ac70a0b2818cc8d60743327": 1,
+      "622baeb1ced185c3da434b1f9fefe023": 1,
+      "626ccf58e3c61f9278b9d8cd0e8e1ed8": 1,
+      "e6c8377215236b09c389e9a950079b67": 1,
+      "c1cd89ab4878c7c6e528200e860404f6": 1
+    },
+    "overrides": {
+      "lat": 29.567497,
+      "lng": 106.57564,
+      "address": "重庆市金沙门路与桂花街交叉口东南120米",
+      "geoStatus": "reviewed_source",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          452,
+          463,
+          464
+        ],
+        "conclusion": "1375明确从洪崖洞沿千厮门大桥到江北嘴大剧院江滩，673、1668同指大剧院旁对岸摄影公园；332、838、1072及1548均明确洪崖洞对面的江滩而非其他岸段。公开攻略把大剧院江滩公园地址写为金沙门路与桂花街交叉口东南120米，与通名主源一致，因此五名在本批指同园。采用该江滩定位，不采用大剧院建筑点或涪陵江北街道误点；剧院、地铁出口、钻石广场各自独立。",
+        "sourcePlaceIds": [
+          "92",
+          "592",
+          "553",
+          "198",
+          "242"
+        ],
+        "mentions": [
+          {
+            "id": "1375",
+            "name": "大剧院江滩",
+            "quote": "大剧院江滩作为打卡终点非常合适",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a32a741000000000f01fdce"
+          },
+          {
+            "id": "797",
+            "name": "大剧院江滩",
+            "quote": "洪崖洞→大剧院江滩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ded2f7000000001e00f360"
+          },
+          {
+            "id": "1668",
+            "name": "大剧院江滩公园",
+            "quote": "大剧院江滩公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1d28450000000036033447"
+          },
+          {
+            "id": "1548",
+            "name": "江北江滩公园",
+            "quote": "最后到江北江滩公园拍洪崖洞全景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6b20bc000000003400fa00"
+          },
+          {
+            "id": "1072",
+            "name": "江滩公园",
+            "quote": "还不如去对面的江滩公园拍呢",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ff52ea0000000020039a88"
+          },
+          {
+            "id": "838",
+            "name": "江滩公园",
+            "quote": "千厮门大桥、洪崖洞同框",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a185c31000000000803340f"
+          },
+          {
+            "id": "332",
+            "name": "江滩公园",
+            "quote": "江滩公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7480ff000000002500178b"
+          },
+          {
+            "id": "673",
+            "name": "重庆大剧院江滩公园",
+            "quote": "可以拍到洪崖洞、千厮门大桥同款",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6907882a000000000700064f"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "198",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.567497,
+          "lng": 106.57564,
+          "address": "重庆市金沙门路与桂花街交叉口东南120米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.567497,
+        "lng": 106.57564,
+        "address": "重庆市金沙门路与桂花街交叉口东南120米",
+        "geoStatus": "reviewed_source",
+        "category": "景点"
+      },
+      {
+        "kind": "published_source",
+        "url": "http://cq.bendibao.com/tour/2025414/151801.shtm",
+        "file": "all-cities/chongqing-beicang-fetch.json",
+        "sha256": "3cd3bbf6deaf1ffe29102f0214508cbe0f0b8fc7a8b76ef20eaa925ec96f0703"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1375,
+          673,
+          1668,
+          332,
+          838,
+          1072,
+          1548
+        ],
+        "conclusion": "1375明确从洪崖洞沿千厮门大桥到江北嘴大剧院江滩，673、1668同指大剧院旁对岸摄影公园；332、838、1072及1548均明确洪崖洞对面的江滩而非其他岸段。公开攻略把大剧院江滩公园地址写为金沙门路与桂花街交叉口东南120米，与通名主源一致，因此五名在本批指同园。采用该江滩定位，不采用大剧院建筑点或涪陵江北街道误点；剧院、地铁出口、钻石广场各自独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-011",
+    "city": "重庆",
+    "entityId": "753eb9ba16ed7053609e9cadb5e70919",
+    "mergeEntityIds": [
+      "60d5713788066a3b919b4bfe12bff0e5"
+    ],
+    "canonicalName": "铜元局轻轨站",
+    "expectedRevisions": {
+      "60d5713788066a3b919b4bfe12bff0e5": 1,
+      "753eb9ba16ed7053609e9cadb5e70919": 1
+    },
+    "overrides": {
+      "lat": 29.536006,
+      "lng": 106.551562,
+      "address": "重庆市3号线",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          456
+        ],
+        "conclusion": "421原文明示3号线铜元局轻轨站内江北机场方向摄影。无线路前缀的旧主体已停用但地址同为3号线、坐标同站，未带不同出口或独立设施限定，是同一站点的重复目录行。合并站名，保留有原始提及的主源身份及该站参考点；江北机场方向是站内乘车方向，不作为新实体或机场同义。",
+        "sourcePlaceIds": [
+          "116",
+          "205"
+        ],
+        "mentions": [
+          {
+            "id": "421",
+            "name": "3号线铜元局轻轨站",
+            "quote": "3号线铜元局轻轨站",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e88213000000002200e904"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "205",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.536006,
+          "lng": 106.551562,
+          "address": "重庆市3号线",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.536006,
+        "lng": 106.551562,
+        "address": "重庆市3号线",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          421
+        ],
+        "conclusion": "421原文明示3号线铜元局轻轨站内江北机场方向摄影。无线路前缀的旧主体已停用但地址同为3号线、坐标同站，未带不同出口或独立设施限定，是同一站点的重复目录行。合并站名，保留有原始提及的主源身份及该站参考点；江北机场方向是站内乘车方向，不作为新实体或机场同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-012",
+    "city": "重庆",
+    "entityId": "66c77b63875000efdd8ec9979c5772d4",
+    "mergeEntityIds": [
+      "5c1e23aa4b96b5f6367e291ca761445c"
+    ],
+    "canonicalName": "曾家岩临崖步道",
+    "expectedRevisions": {
+      "5c1e23aa4b96b5f6367e291ca761445c": 1,
+      "66c77b63875000efdd8ec9979c5772d4": 1
+    },
+    "overrides": {
+      "lat": 29.56526,
+      "lng": 106.546826,
+      "address": "重庆市曾家岩隧道与曾家岩嘉陵江大桥交叉口西300米",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          457
+        ],
+        "conclusion": "1573同篇先写曾家岩步道、随后直接解释为曾家岩临崖步道；1509、1135也明确中山四路旁临崖观嘉陵江及轻轨的步道。采用现行主源临崖位置，替换泛名误落江津的远端坐标；不合并曾家岩地铁站或中山四路全街。",
+        "sourcePlaceIds": [
+          "183",
+          "120"
+        ],
+        "mentions": [
+          {
+            "id": "1733",
+            "name": "曾家岩步道",
+            "quote": "曾家岩步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89abc800000000140282f9"
+          },
+          {
+            "id": "1585",
+            "name": "曾家岩步道",
+            "quote": "和曾家岩步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e650fd0000000005031fec"
+          },
+          {
+            "id": "1573",
+            "name": "曾家岩步道",
+            "quote": "江风穿过黄葛树林降温显著，人少安静",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5452b9000000001702fafd"
+          },
+          {
+            "id": "1135",
+            "name": "曾家岩步道",
+            "quote": "去中山四路和曾家岩步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e650fd0000000005031fec"
+          },
+          {
+            "id": "1509",
+            "name": "曾家岩临崖步道",
+            "quote": "临崖观江视野👍🏻",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa4ccc80000000011037c4c"
+          },
+          {
+            "id": "431",
+            "name": "曾家岩临崖步道",
+            "quote": "曾家岩临崖步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e88213000000002200e904"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "120",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.56526,
+          "lng": 106.546826,
+          "address": "重庆市曾家岩隧道与曾家岩嘉陵江大桥交叉口西300米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.56526,
+        "lng": 106.546826,
+        "address": "重庆市曾家岩隧道与曾家岩嘉陵江大桥交叉口西300米",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1573,
+          1509,
+          1135,
+          431
+        ],
+        "conclusion": "1573同篇先写曾家岩步道、随后直接解释为曾家岩临崖步道；1509、1135也明确中山四路旁临崖观嘉陵江及轻轨的步道。采用现行主源临崖位置，替换泛名误落江津的远端坐标；不合并曾家岩地铁站或中山四路全街。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-013",
+    "city": "重庆",
+    "entityId": "cf53a91eef627a2987c4d4a22a3eb18a",
+    "mergeEntityIds": [
+      "010c52a2e9227ceba292ce993c95dcb4",
+      "31c9ed40d5fbbe3cca44d68fc02d0246",
+      "058c1355d1ccc9253afd18bf30fd5e84"
+    ],
+    "canonicalName": "金刚碑温泉老村",
+    "expectedRevisions": {
+      "010c52a2e9227ceba292ce993c95dcb4": 1,
+      "cf53a91eef627a2987c4d4a22a3eb18a": 1,
+      "31c9ed40d5fbbe3cca44d68fc02d0246": 1,
+      "058c1355d1ccc9253afd18bf30fd5e84": 1
+    },
+    "overrides": {
+      "lat": 29.840176,
+      "lng": 106.419087,
+      "address": "重庆市北泉路502号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          460,
+          461
+        ],
+        "conclusion": "1125为北碚缙云山下嘉陵江边的金刚碑温泉老村，547、1717的村庄/老村名指同一改造古村。740补充古镇源描述北碚江岸线上金刚碑老屋、古树、茶馆，图片标牌金刚碑绿野仙踪，亦为同村。合并四名，保留北泉路502号主源；村内各温泉池、酒店及附近温泉寺不并入。",
+        "sourcePlaceIds": [
+          "616",
+          "190",
+          "383",
+          "257"
+        ],
+        "mentions": [
+          {
+            "id": "1717",
+            "name": "金刚碑温泉村庄",
+            "quote": "依山傍水村庄，温泉流过",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d45c1000000002201cd54"
+          },
+          {
+            "id": "1596",
+            "name": "金刚碑温泉老村",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1170",
+            "name": "金刚碑温泉老村",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "547",
+            "name": "金刚碑温泉老村",
+            "quote": "轻轨6号线北碚站4b出口",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1125",
+            "name": "重庆金刚碑温泉老村",
+            "quote": "强烈认真的推荐你坐上轻轨6号线来到北碚逛逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6887237e000000001203cc2a"
+          },
+          {
+            "id": "740",
+            "name": "金刚碑古镇",
+            "quote": "保留老重庆山村落貌",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6979c7b1000000002203b931"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "190",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.840176,
+          "lng": 106.419087,
+          "address": "重庆市北泉路502号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.840176,
+        "lng": 106.419087,
+        "address": "重庆市北泉路502号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/chongqing-batch14-supplement.json",
+        "sha256": "94018a7a9537d2276fa6b40a4d104bce47af9b847b877bf8ecacd258e4ada4da",
+        "conclusion": "1125为北碚缙云山下嘉陵江边的金刚碑温泉老村，547、1717的村庄/老村名指同一改造古村。740补充古镇源描述北碚江岸线上金刚碑老屋、古树、茶馆，图片标牌金刚碑绿野仙踪，亦为同村。合并四名，保留北泉路502号主源；村内各温泉池、酒店及附近温泉寺不并入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1125,
+          547,
+          1717
+        ],
+        "conclusion": "1125为北碚缙云山下嘉陵江边的金刚碑温泉老村，547、1717的村庄/老村名指同一改造古村。740补充古镇源描述北碚江岸线上金刚碑老屋、古树、茶馆，图片标牌金刚碑绿野仙踪，亦为同村。合并四名，保留北泉路502号主源；村内各温泉池、酒店及附近温泉寺不并入。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-extra-context.json",
+        "sha256": "a1c4e07105c510f1f87c506e1f89704349fd0406a7dde5ac89de12f4fc216a27",
+        "mentionIds": [
+          740
+        ],
+        "conclusion": "1125为北碚缙云山下嘉陵江边的金刚碑温泉老村，547、1717的村庄/老村名指同一改造古村。740补充古镇源描述北碚江岸线上金刚碑老屋、古树、茶馆，图片标牌金刚碑绿野仙踪，亦为同村。合并四名，保留北泉路502号主源；村内各温泉池、酒店及附近温泉寺不并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-014",
+    "city": "重庆",
+    "entityId": "8de144d6c6d01f0d8e2b601616c9ee5f",
+    "mergeEntityIds": [
+      "8c9bfcc6721a651b9dd42ad07e6bdccd"
+    ],
+    "canonicalName": "东水门大桥",
+    "expectedRevisions": {
+      "8c9bfcc6721a651b9dd42ad07e6bdccd": 1,
+      "8de144d6c6d01f0d8e2b601616c9ee5f": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "重庆市连接渝中区与南岸区的东水门长江大桥",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          462
+        ],
+        "conclusion": "1649水门大桥以轨道上新街2号口定位，1214和1631的东水门大桥也在龙门浩、下浩里与湖广会馆游线，指跨江的同桥，水门为省略东字。桥体身份一致，但旧点分别为公交站及渝中岸侧机位，无法证实桥体参考点，清空坐标等待核实；东水门城门遗址、公交站、桥下机位不作为同义成员。",
+        "sourcePlaceIds": [
+          "580",
+          "193"
+        ],
+        "mentions": [
+          {
+            "id": "1649",
+            "name": "水门大桥",
+            "quote": "水门大桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69a7d8f900000000260316f5"
+          },
+          {
+            "id": "1631",
+            "name": "东水门大桥",
+            "quote": "轨道小什字站8号出口，步行导航东水门",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69157932000000000503879c"
+          },
+          {
+            "id": "1600",
+            "name": "东水门大桥",
+            "quote": "免费又好玩",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6905c5f10000000005013d68"
+          },
+          {
+            "id": "1229",
+            "name": "东水门大桥",
+            "quote": "机位在旁边的东水门大桥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e605070000000007009ad5"
+          },
+          {
+            "id": "1214",
+            "name": "东水门大桥",
+            "quote": "轻轨、大桥、江景同框",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/691fd2fc000000001e035841"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "193",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.558315,
+          "lng": 106.58525,
+          "address": "重庆市渝中区",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "重庆市连接渝中区与南岸区的东水门长江大桥",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1649,
+          1214,
+          1631,
+          1229
+        ],
+        "conclusion": "1649水门大桥以轨道上新街2号口定位，1214和1631的东水门大桥也在龙门浩、下浩里与湖广会馆游线，指跨江的同桥，水门为省略东字。桥体身份一致，但旧点分别为公交站及渝中岸侧机位，无法证实桥体参考点，清空坐标等待核实；东水门城门遗址、公交站、桥下机位不作为同义成员。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-015",
+    "city": "重庆",
+    "entityId": "2581a9caa583eacd254515362e375333",
+    "mergeEntityIds": [
+      "15cb0a67bf4bf95168236a163b0d55c6"
+    ],
+    "canonicalName": "临华路小区22号楼",
+    "expectedRevisions": {
+      "15cb0a67bf4bf95168236a163b0d55c6": 1,
+      "2581a9caa583eacd254515362e375333": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "重庆市渝中区临华路小区22号楼",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          467
+        ],
+        "conclusion": "749明确刺杀小说家取景居民楼，1660为临华路22号机位；1135、1346、1725所在原文均明确导航临华路小区22号楼，支持同一建筑两写法。主源旧地址捍卫路22-26号不是该楼，另一点未精确到楼体，成对清空，不能借整条临华路的坐标或把整条路并入。",
+        "sourcePlaceIds": [
+          "586",
+          "266"
+        ],
+        "mentions": [
+          {
+            "id": "1660",
+            "name": "临华路22号",
+            "quote": "临华路22号",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1d28450000000036033447"
+          },
+          {
+            "id": "749",
+            "name": "临华路22号楼",
+            "quote": "《刺杀小说家》电影取景地",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9fc80000000001a037791"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "266",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.555118,
+          "lng": 106.562368,
+          "address": "重庆市渝中区捍卫路22-26号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "重庆市渝中区临华路小区22号楼",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          749,
+          1660,
+          1135,
+          1346,
+          1725
+        ],
+        "conclusion": "749明确刺杀小说家取景居民楼，1660为临华路22号机位；1135、1346、1725所在原文均明确导航临华路小区22号楼，支持同一建筑两写法。主源旧地址捍卫路22-26号不是该楼，另一点未精确到楼体，成对清空，不能借整条临华路的坐标或把整条路并入。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-016",
+    "city": "重庆",
+    "entityId": "78bb27ab40d8b0190da297c4fb951f41",
+    "mergeEntityIds": [
+      "f94df9453cb3896b8e75a67287e87025"
+    ],
+    "canonicalName": "彩云湖国家湿地公园",
+    "expectedRevisions": {
+      "78bb27ab40d8b0190da297c4fb951f41": 1,
+      "f94df9453cb3896b8e75a67287e87025": 1
+    },
+    "overrides": {
+      "lat": 29.509946,
+      "lng": 106.478309,
+      "address": "重庆市九龙街道科城路166号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          468
+        ],
+        "conclusion": "762、1298以国家湿地公园介绍湖边芦苇及秋景，并在同篇导航中使用简称；1032、1442景点清单的彩云湖湿地公园为同园。保留科城路166号公园主源参考点，两个旧点在不同侧不作为园区身份不同的依据，但独立入口不会作为同义成员。",
+        "sourcePlaceIds": [
+          "277",
+          "366"
+        ],
+        "mentions": [
+          {
+            "id": "1298",
+            "name": "彩云湖国家湿地公园",
+            "quote": "建议早上9点前去",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68ceb72e0000000012021930"
+          },
+          {
+            "id": "762",
+            "name": "彩云湖国家湿地公园",
+            "quote": "湖边的芦苇荡和秋树倒映在水中",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68ceb72e0000000012021930"
+          },
+          {
+            "id": "1442",
+            "name": "彩云湖湿地公园",
+            "quote": "彩云湖湿地公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ead4e0000000008010265"
+          },
+          {
+            "id": "1032",
+            "name": "彩云湖湿地公园",
+            "quote": "彩云湖湿地公园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8ead4e0000000008010265"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "277",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.509946,
+          "lng": 106.478309,
+          "address": "重庆市九龙街道科城路166号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.509946,
+        "lng": 106.478309,
+        "address": "重庆市九龙街道科城路166号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          762,
+          1298,
+          1032,
+          1442
+        ],
+        "conclusion": "762、1298以国家湿地公园介绍湖边芦苇及秋景，并在同篇导航中使用简称；1032、1442景点清单的彩云湖湿地公园为同园。保留科城路166号公园主源参考点，两个旧点在不同侧不作为园区身份不同的依据，但独立入口不会作为同义成员。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-017",
+    "city": "重庆",
+    "entityId": "23c8596c0244f707a619a65d3827ed70",
+    "mergeEntityIds": [
+      "63ecb46552961738594d34b22252ac07"
+    ],
+    "canonicalName": "呼归石花阶公园",
+    "expectedRevisions": {
+      "23c8596c0244f707a619a65d3827ed70": 1,
+      "63ecb46552961738594d34b22252ac07": 1
+    },
+    "overrides": {
+      "lat": 29.574883,
+      "lng": 106.589754,
+      "address": "重庆市南滨路与野猫溪正街交叉口西北150米",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          475
+        ],
+        "conclusion": "1073公园原文明确南滨路、看两江汇合与亭子门框，1151花园原文明确向上几十米到八角亭，均为呼归石同一花阶公园，花园/公园为称呼变化。保留南滨路与野猫溪正街一带主源，替换误落石花村的旧点；亭子是园内独立设施，1758保留组成关系而非同义。",
+        "sourcePlaceIds": [
+          "374",
+          "395"
+        ],
+        "mentions": [
+          {
+            "id": "1073",
+            "name": "呼归石花阶公园",
+            "quote": "可以清晰看见两江汇合",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa12f48000000002902fa10"
+          },
+          {
+            "id": "1151",
+            "name": "呼归石花阶花园",
+            "quote": "呼归石花阶花园",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/684684f0000000002301ce0b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "374",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.574883,
+          "lng": 106.589754,
+          "address": "重庆市南滨路与野猫溪正街交叉口西北150米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.574883,
+        "lng": 106.589754,
+        "address": "重庆市南滨路与野猫溪正街交叉口西北150米",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1073,
+          1151,
+          1758
+        ],
+        "conclusion": "1073公园原文明确南滨路、看两江汇合与亭子门框，1151花园原文明确向上几十米到八角亭，均为呼归石同一花阶公园，花园/公园为称呼变化。保留南滨路与野猫溪正街一带主源，替换误落石花村的旧点；亭子是园内独立设施，1758保留组成关系而非同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-018",
+    "city": "重庆",
+    "entityId": "9d5c47808e06de0a2ae1ee5225c1c68c",
+    "mergeEntityIds": [
+      "25b54db63ed7a705ed62c7f96b2c1be8"
+    ],
+    "canonicalName": "枇杷山正街公交站对面天台",
+    "expectedRevisions": {
+      "25b54db63ed7a705ed62c7f96b2c1be8": 1,
+      "9d5c47808e06de0a2ae1ee5225c1c68c": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "重庆市渝中区枇杷山正街公交站对面的天台，具体楼栋待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          476
+        ],
+        "conclusion": "1140、1747来自同一篇同一彩虹天梯机位，仅有无的字区别。合并重复抽取，旧点匹配成梁平对面镇天台村与原文完全冲突，成对清空；不把公交站或天梯本体并为天台，具体楼栋与坐标另待核。",
+        "sourcePlaceIds": [
+          "388",
+          "632"
+        ],
+        "mentions": [
+          {
+            "id": "1140",
+            "name": "枇杷山正街公交站对面的天台",
+            "quote": "彩虹天梯",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/684684f0000000002301ce0b"
+          },
+          {
+            "id": "1747",
+            "name": "枇杷山正街公交站对面天台",
+            "quote": "彩虹天梯",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/684684f0000000002301ce0b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "632",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 30.746247,
+          "lng": 107.659532,
+          "address": "重庆市梁平区对面镇天台村",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "重庆市渝中区枇杷山正街公交站对面的天台，具体楼栋待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1140,
+          1747
+        ],
+        "conclusion": "1140、1747来自同一篇同一彩虹天梯机位，仅有无的字区别。合并重复抽取，旧点匹配成梁平对面镇天台村与原文完全冲突，成对清空；不把公交站或天梯本体并为天台，具体楼栋与坐标另待核。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-019",
+    "city": "重庆",
+    "entityId": "cc0c087c06f4be003774ff185f7c8989",
+    "mergeEntityIds": [
+      "05942e74faa57ce2368297236cc47aad"
+    ],
+    "canonicalName": "杉树湾公园",
+    "expectedRevisions": {
+      "05942e74faa57ce2368297236cc47aad": 1,
+      "cc0c087c06f4be003774ff185f7c8989": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "重庆市沙坪坝区凤凰镇菁云湖周边杉树湾公园",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          482
+        ],
+        "conclusion": "1516明确沙坪坝凤凰镇、菁云湖、水杉林和环湖草坪的开放式公园；1677、1678也为沙坪坝杉树湾公园的草坪树林。两源为同园简称，旧二零四省道点不能证明实际环湖范围，暂清空精确坐标。另查1554杉树湾露营地含具体露营导航，不能仅因同坐标将营地边界直接吞入，保留独立补证。",
+        "sourcePlaceIds": [
+          "532",
+          "597"
+        ],
+        "mentions": [
+          {
+            "id": "1516",
+            "name": "杉树湾",
+            "quote": "重庆版小阿勒泰",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89814c000000002800ad60"
+          },
+          {
+            "id": "1678",
+            "name": "杉树湾公园",
+            "quote": "附近吃饭不太方便",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b220280000000006033aa1"
+          },
+          {
+            "id": "1677",
+            "name": "杉树湾公园",
+            "quote": "大片草坪配树林氛围感十足",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b220280000000006033aa1"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "597",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.708817,
+          "lng": 106.328103,
+          "address": "重庆市二零四省道",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "重庆市沙坪坝区凤凰镇菁云湖周边杉树湾公园",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1516,
+          1677,
+          1678
+        ],
+        "conclusion": "1516明确沙坪坝凤凰镇、菁云湖、水杉林和环湖草坪的开放式公园；1677、1678也为沙坪坝杉树湾公园的草坪树林。两源为同园简称，旧二零四省道点不能证明实际环湖范围，暂清空精确坐标。另查1554杉树湾露营地含具体露营导航，不能仅因同坐标将营地边界直接吞入，保留独立补证。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-extra-context.json",
+        "sha256": "a1c4e07105c510f1f87c506e1f89704349fd0406a7dde5ac89de12f4fc216a27",
+        "mentionIds": [
+          1554
+        ],
+        "conclusion": "1516明确沙坪坝凤凰镇、菁云湖、水杉林和环湖草坪的开放式公园；1677、1678也为沙坪坝杉树湾公园的草坪树林。两源为同园简称，旧二零四省道点不能证明实际环湖范围，暂清空精确坐标。另查1554杉树湾露营地含具体露营导航，不能仅因同坐标将营地边界直接吞入，保留独立补证。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-14-020",
+    "city": "重庆",
+    "entityId": "fa798c9dc0220f5c6b87b06364ec0654",
+    "mergeEntityIds": [
+      "f43fbdb7dfdcdc487935bdba9cab26e2"
+    ],
+    "canonicalName": "三板溪鹿野公园",
+    "expectedRevisions": {
+      "f43fbdb7dfdcdc487935bdba9cab26e2": 1,
+      "fa798c9dc0220f5c6b87b06364ec0654": 1
+    },
+    "overrides": {
+      "lat": 29.661011,
+      "lng": 106.807067,
+      "address": "重庆市复盛镇101省道与现代大道交叉口东南260米",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          483
+        ],
+        "conclusion": "1685、1686三板溪公园与1556鹿野公园均指两江新区的开放草坪亲子公园。已抓取人民网资讯精选2026-01-12报道，明确原三板溪公园将以三板溪鹿野公园新形象开放，支持更名前后同体；梅花鹿互动乐园为园内新增设施，不是整个新园的别名。保留现代大道旁主源，不采用简称匹配到966/983路公交站的坐标。",
+        "sourcePlaceIds": [
+          "603",
+          "560"
+        ],
+        "mentions": [
+          {
+            "id": "1686",
+            "name": "三板溪公园",
+            "quote": "周末人比较多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b220280000000006033aa1"
+          },
+          {
+            "id": "1685",
+            "name": "三板溪公园",
+            "quote": "自带儿童乐园配套完善",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b220280000000006033aa1"
+          },
+          {
+            "id": "1556",
+            "name": "三板溪鹿野公园",
+            "quote": "免费入园+喂梅花鹿，还有烧烤区",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69da6ebf000000001b020617"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "560",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 29.661011,
+          "lng": 106.807067,
+          "address": "重庆市复盛镇101省道与现代大道交叉口东南260米",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 29.661011,
+        "lng": 106.807067,
+        "address": "重庆市复盛镇101省道与现代大道交叉口东南260米",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://news.qq.com/rain/a/20260112A02VX200",
+        "file": "all-cities/chongqing-sanbanxi-fetch.json",
+        "sha256": "bdf12ae563467c65f084231976c0e557b2685983c0635e46c83ee5a733ffacf4"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/chongqing-batch14-context.json",
+        "sha256": "ce10845cb66db662adf24ca43866c847930bbc9f9e5fb50b43f60573875c9950",
+        "mentionIds": [
+          1685,
+          1686,
+          1556
+        ],
+        "conclusion": "1685、1686三板溪公园与1556鹿野公园均指两江新区的开放草坪亲子公园。已抓取人民网资讯精选2026-01-12报道，明确原三板溪公园将以三板溪鹿野公园新形象开放，支持更名前后同体；梅花鹿互动乐园为园内新增设施，不是整个新园的别名。保留现代大道旁主源，不采用简称匹配到966/983路公交站的坐标。"
+      }
+    ]
+  }
+]

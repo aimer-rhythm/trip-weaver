@@ -1,0 +1,646 @@
+[
+  {
+    "key": "all-cities-20261006-batch-11-review-6",
+    "city": "上海",
+    "reviewFingerprint": "047002a077270d73f59c6d528ecc72851be930268a151b285fb3368d81d0cc71",
+    "expectedRevisions": {
+      "20ace137140e5dde601ace45bbfe6bef": 1,
+      "73ce6d33d1fb9b6416e2be727f940a76": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "11275的苏州河畔是沿河泛指，10357苏州河为酒店邻近水系，9925又是多条道路组成的散步线。没有统一河岸段边界，不能把所有河畔机位直接并为整条河流；需原图位置与片段范围。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          6
+        ],
+        "conclusion": "11275的苏州河畔是沿河泛指，10357苏州河为酒店邻近水系，9925又是多条道路组成的散步线。没有统一河岸段边界，不能把所有河畔机位直接并为整条河流；需原图位置与片段范围。",
+        "sourcePlaceIds": [
+          "5303",
+          "4670"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          11275,
+          10357,
+          9925
+        ],
+        "conclusion": "11275的苏州河畔是沿河泛指，10357苏州河为酒店邻近水系，9925又是多条道路组成的散步线。没有统一河岸段边界，不能把所有河畔机位直接并为整条河流；需原图位置与片段范围。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-7",
+    "city": "上海",
+    "reviewFingerprint": "89a7903091f037d8a2c752ede4717e2b3b4839225d19c5b1f8d8fb0f34a49339",
+    "expectedRevisions": {
+      "10d3fb61125f3b83e496360c9ef7824e": 1,
+      "2db9dd317f84c8e10dcd4f576cbe8f3a": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9924同篇将苏州路P5与北苏州路P2、南苏州路P4分别列出，但未给P5具体路段；苏州路旧地址落兆丰路办公楼，北苏州路旧定位也不在原文河畔段。缺原图路牌，不能选择北岸作为泛名唯一归属。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          7
+        ],
+        "conclusion": "9924同篇将苏州路P5与北苏州路P2、南苏州路P4分别列出，但未给P5具体路段；苏州路旧地址落兆丰路办公楼，北苏州路旧定位也不在原文河畔段。缺原图路牌，不能选择北岸作为泛名唯一归属。",
+        "sourcePlaceIds": [
+          "4695",
+          "4692"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          9921,
+          9923,
+          9924
+        ],
+        "conclusion": "9924同篇将苏州路P5与北苏州路P2、南苏州路P4分别列出，但未给P5具体路段；苏州路旧地址落兆丰路办公楼，北苏州路旧定位也不在原文河畔段。缺原图路牌，不能选择北岸作为泛名唯一归属。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-8",
+    "city": "上海",
+    "reviewFingerprint": "324c5dca47c8428bdd73ebdcc38e18c5c6a9afac1f95ad65b40e5c26d4a6d5ff",
+    "expectedRevisions": {
+      "10d3fb61125f3b83e496360c9ef7824e": 1,
+      "ffa308a26ffdce1b639b8104b005b5ca": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9924同篇苏州路P5与南苏州路P4分列，没有明确P5就是南岸；南苏州路旧经度120.402989明显不支持上海中心河畔定位。须核对原图路牌，不能因后缀相似改归南岸。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          8
+        ],
+        "conclusion": "9924同篇苏州路P5与南苏州路P4分列，没有明确P5就是南岸；南苏州路旧经度120.402989明显不支持上海中心河畔定位。须核对原图路牌，不能因后缀相似改归南岸。",
+        "sourcePlaceIds": [
+          "4695",
+          "4694"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          9921,
+          9923,
+          9924
+        ],
+        "conclusion": "9924同篇苏州路P5与南苏州路P4分列，没有明确P5就是南岸；南苏州路旧经度120.402989明显不支持上海中心河畔定位。须核对原图路牌，不能因后缀相似改归南岸。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-14",
+    "city": "上海",
+    "reviewFingerprint": "2ba5ae9e4c0c6e6e2a07c2a22720abb8b9e93739d06e15df6a9a12f4434ba841",
+    "expectedRevisions": {
+      "b2e6fd0440f0172d50ddd4f4a10bea07": 2,
+      "829e1520a3b6142eebd5d3f06360c613": 1
+    },
+    "verdict": "distinct",
+    "explanation": "10389的外滩观景平台在外滩钟楼与新天安堂步行段；10939滨江观景平台在世界会客厅之后、Manner和小巨蛋之前的北外滩游线。两处分别在苏州河口两侧，不是同一机位。本批外滩三名合并后仍保留北外滩独立。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          14
+        ],
+        "conclusion": "10389的外滩观景平台在外滩钟楼与新天安堂步行段；10939滨江观景平台在世界会客厅之后、Manner和小巨蛋之前的北外滩游线。两处分别在苏州河口两侧，不是同一机位。本批外滩三名合并后仍保留北外滩独立。",
+        "sourcePlaceIds": [
+          "4728",
+          "5194"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          10389
+        ],
+        "conclusion": "10389的外滩观景平台在外滩钟楼与新天安堂步行段；10939滨江观景平台在世界会客厅之后、Manner和小巨蛋之前的北外滩游线。两处分别在苏州河口两侧，不是同一机位。本批外滩三名合并后仍保留北外滩独立。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          10899,
+          10939
+        ],
+        "conclusion": "10389的外滩观景平台在外滩钟楼与新天安堂步行段；10939滨江观景平台在世界会客厅之后、Manner和小巨蛋之前的北外滩游线。两处分别在苏州河口两侧，不是同一机位。本批外滩三名合并后仍保留北外滩独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-19",
+    "city": "上海",
+    "reviewFingerprint": "1cde74f60a017fe69a1f1bed44612cf8091a3a44765aaea83c44adec950c9c64",
+    "expectedRevisions": {
+      "31d07bd84135d3d6d732255ef3244f1c": 1,
+      "a0387f167c5cc7756b73223284ea385c": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9979南京路为住宿区域建议，10050南京东路也为周边住宿；11161又用南京路指拥挤商业街。源记录混有道路、商圈、住宿区域，不能把南京路全体压成东段；需明确泛称提及的区域粒度。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          19
+        ],
+        "conclusion": "9979南京路为住宿区域建议，10050南京东路也为周边住宿；11161又用南京路指拥挤商业街。源记录混有道路、商圈、住宿区域，不能把南京路全体压成东段；需明确泛称提及的区域粒度。",
+        "sourcePlaceIds": [
+          "4780",
+          "4747"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          9979,
+          10050,
+          11161
+        ],
+        "conclusion": "9979南京路为住宿区域建议，10050南京东路也为周边住宿；11161又用南京路指拥挤商业街。源记录混有道路、商圈、住宿区域，不能把南京路全体压成东段；需明确泛称提及的区域粒度。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-21",
+    "city": "上海",
+    "reviewFingerprint": "1479342f391b3891f7dafbc1a8197bebec3a3761cdf30671eb0efb36fb652792",
+    "expectedRevisions": {
+      "a0387f167c5cc7756b73223284ea385c": 1,
+      "f745b96accc2957151aa9a973f8d0a3f": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10977仅以外滩南京东路命名免费摄影机位，没有路口或楼层；10050南京东路是住宿区域。缺原图位置，不能将一个摄影点并为整条道路或住宿区，也尚不能确定组成边界。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          21
+        ],
+        "conclusion": "10977仅以外滩南京东路命名免费摄影机位，没有路口或楼层；10050南京东路是住宿区域。缺原图位置，不能将一个摄影点并为整条道路或住宿区，也尚不能确定组成边界。",
+        "sourcePlaceIds": [
+          "4747",
+          "5202"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          10977
+        ],
+        "conclusion": "10977仅以外滩南京东路命名免费摄影机位，没有路口或楼层；10050南京东路是住宿区域。缺原图位置，不能将一个摄影点并为整条道路或住宿区，也尚不能确定组成边界。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          10050
+        ],
+        "conclusion": "10977仅以外滩南京东路命名免费摄影机位，没有路口或楼层；10050南京东路是住宿区域。缺原图位置，不能将一个摄影点并为整条道路或住宿区，也尚不能确定组成边界。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-22",
+    "city": "上海",
+    "reviewFingerprint": "13ad0a44da530bb721055b2b4d8aa96903d9ec4523d37edcf796ddae21361ee5",
+    "expectedRevisions": {
+      "903514f5b5569655d752062409c23292": 1,
+      "effc9bbd0e80256864e76b182ae97a5e": 1
+    },
+    "verdict": "part_of",
+    "explanation": "10942将滨江绿地列为北外滩漫步线路中的P15-16机位，11220指公平路渡口附近绿地；11139北外滩滨江为外白渡桥之后的整体沿江区域。绿地属于滨江区域，不把其他观景平台和步道吞成同义成员。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          22
+        ],
+        "conclusion": "10942将滨江绿地列为北外滩漫步线路中的P15-16机位，11220指公平路渡口附近绿地；11139北外滩滨江为外白渡桥之后的整体沿江区域。绿地属于滨江区域，不把其他观景平台和步道吞成同义成员。",
+        "sourcePlaceIds": [
+          "4749",
+          "5260"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          10942,
+          11220,
+          11139
+        ],
+        "conclusion": "10942将滨江绿地列为北外滩漫步线路中的P15-16机位，11220指公平路渡口附近绿地；11139北外滩滨江为外白渡桥之后的整体沿江区域。绿地属于滨江区域，不把其他观景平台和步道吞成同义成员。"
+      }
+    ],
+    "childEntityId": "903514f5b5569655d752062409c23292"
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-26",
+    "city": "上海",
+    "reviewFingerprint": "ca3ce7b19b38251f95d32aa9ecc0e1a38d0a1a84d8fc8747b065590d398863a9",
+    "expectedRevisions": {
+      "07e38434f9a3e4b68258bf2bd4c533bb": 1,
+      "8a984f753ac7ef6c520b403183cc9982": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10190和11321大酒店写法明确淮海路店，10091/11107大酒家为品牌熟食推荐、未指门店；旧地图又分别落田林东路和南昌路。需先厘清品牌泛称与淮海路分店，不能仅字差归并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          26
+        ],
+        "conclusion": "10190和11321大酒店写法明确淮海路店，10091/11107大酒家为品牌熟食推荐、未指门店；旧地图又分别落田林东路和南昌路。需先厘清品牌泛称与淮海路分店，不能仅字差归并。",
+        "sourcePlaceIds": [
+          "4764",
+          "4809"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          10091,
+          10190
+        ],
+        "conclusion": "10190和11321大酒店写法明确淮海路店，10091/11107大酒家为品牌熟食推荐、未指门店；旧地图又分别落田林东路和南昌路。需先厘清品牌泛称与淮海路分店，不能仅字差归并。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          11107,
+          11321
+        ],
+        "conclusion": "10190和11321大酒店写法明确淮海路店，10091/11107大酒家为品牌熟食推荐、未指门店；旧地图又分别落田林东路和南昌路。需先厘清品牌泛称与淮海路分店，不能仅字差归并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-27",
+    "city": "上海",
+    "reviewFingerprint": "ef6cde7b2d22947594fde555ecfc9399cebe3e6401935e86ec7c360afc3d2782",
+    "expectedRevisions": {
+      "20eaca4eed40b158c25f064319b5db4d": 1,
+      "41d140377506beba3efd7d8f6aae2cbb": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10324上海国际饭店虽然被抽成hotel，原文只说国际饭店蝴蝶酥；其他国际饭店提及也在糕点语境。补查发现独立的国际饭店西饼屋及国际饭店蝴蝶酥主体，11306又给黄河路28号。须厘清酒店本体与附属糕点店及入口，不能用同一南京西路地址把两种主体或未来酒店提及全部绑定同一食品门店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          27
+        ],
+        "conclusion": "10324上海国际饭店虽然被抽成hotel，原文只说国际饭店蝴蝶酥；其他国际饭店提及也在糕点语境。补查发现独立的国际饭店西饼屋及国际饭店蝴蝶酥主体，11306又给黄河路28号。须厘清酒店本体与附属糕点店及入口，不能用同一南京西路地址把两种主体或未来酒店提及全部绑定同一食品门店。",
+        "sourcePlaceIds": [
+          "4798",
+          "4777"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          10324,
+          11165
+        ],
+        "conclusion": "10324上海国际饭店虽然被抽成hotel，原文只说国际饭店蝴蝶酥；其他国际饭店提及也在糕点语境。补查发现独立的国际饭店西饼屋及国际饭店蝴蝶酥主体，11306又给黄河路28号。须厘清酒店本体与附属糕点店及入口，不能用同一南京西路地址把两种主体或未来酒店提及全部绑定同一食品门店。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-extra-context.json",
+        "sha256": "7e5fb4f5afb39b0b108a0ba60ab3e596057fc75047268732f9eb4416802364e3",
+        "mentionIds": [
+          11067,
+          11306,
+          10230,
+          10138
+        ],
+        "conclusion": "10324上海国际饭店虽然被抽成hotel，原文只说国际饭店蝴蝶酥；其他国际饭店提及也在糕点语境。补查发现独立的国际饭店西饼屋及国际饭店蝴蝶酥主体，11306又给黄河路28号。须厘清酒店本体与附属糕点店及入口，不能用同一南京西路地址把两种主体或未来酒店提及全部绑定同一食品门店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-28",
+    "city": "上海",
+    "reviewFingerprint": "d6ed9c3b06946f98f5da49aa569651e2395aac06bb9316d11654ecfea28c816d",
+    "expectedRevisions": {
+      "19564ce736eb343b014fc746280bcade": 1,
+      "f35f3da1821e7dc67ba4dfab1c57f9ca": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10371将城隍庙描述为道教寺观，11000则用城隍庙代指含小吃、九曲桥的商业区；10986城隍庙豫园只是组合机位名。源内混合寺庙、商圈与双地点组合，不能凭同一地图落点把豫园园林并入寺观。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          28
+        ],
+        "conclusion": "10371将城隍庙描述为道教寺观，11000则用城隍庙代指含小吃、九曲桥的商业区；10986城隍庙豫园只是组合机位名。源内混合寺庙、商圈与双地点组合，不能凭同一地图落点把豫园园林并入寺观。",
+        "sourcePlaceIds": [
+          "4779",
+          "5208"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          10371,
+          11000,
+          10986
+        ],
+        "conclusion": "10371将城隍庙描述为道教寺观，11000则用城隍庙代指含小吃、九曲桥的商业区；10986城隍庙豫园只是组合机位名。源内混合寺庙、商圈与双地点组合，不能凭同一地图落点把豫园园林并入寺观。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-29",
+    "city": "上海",
+    "reviewFingerprint": "eac283d368527d6d33bcdf9281f8e71b7775d4b1a527eac601c20c746e9e83aa",
+    "expectedRevisions": {
+      "31d07bd84135d3d6d732255ef3244f1c": 1,
+      "b7d5966a0da452b4421edd7b65edc38a": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "9979南京路为住宿区域，南京西路10275/11023实际在介绍附近未命名日料店和面馆，food类别把区域当门店。需修正提及粒度再确定道路组成关系，不能把这些餐饮事实合入南京路整体。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          29
+        ],
+        "conclusion": "9979南京路为住宿区域，南京西路10275/11023实际在介绍附近未命名日料店和面馆，food类别把区域当门店。需修正提及粒度再确定道路组成关系，不能把这些餐饮事实合入南京路整体。",
+        "sourcePlaceIds": [
+          "4780",
+          "4876"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          9979,
+          10275,
+          11023
+        ],
+        "conclusion": "9979南京路为住宿区域，南京西路10275/11023实际在介绍附近未命名日料店和面馆，food类别把区域当门店。需修正提及粒度再确定道路组成关系，不能把这些餐饮事实合入南京路整体。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-34",
+    "city": "上海",
+    "reviewFingerprint": "6d1852b00c97bfa727d622a1bcd9974e2c450c84182975c1c9982fd607bda9ca",
+    "expectedRevisions": {
+      "4682abb51c5c3acfaa9f813965f8a0d3": 1,
+      "f7a39a629c5e1b806116da9b4693b730": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10967的大壶春生煎明确四川中路136号，10420还指云南南路等多家分店；10912大壶春生煎包只介绍菜品，没有地址。两旧地图均邯郸路不能证明同店，保留待分店证据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          34
+        ],
+        "conclusion": "10967的大壶春生煎明确四川中路136号，10420还指云南南路等多家分店；10912大壶春生煎包只介绍菜品，没有地址。两旧地图均邯郸路不能证明同店，保留待分店证据。",
+        "sourcePlaceIds": [
+          "4877",
+          "5186"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          10967,
+          10421
+        ],
+        "conclusion": "10967的大壶春生煎明确四川中路136号，10420还指云南南路等多家分店；10912大壶春生煎包只介绍菜品，没有地址。两旧地图均邯郸路不能证明同店，保留待分店证据。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          10420,
+          10912
+        ],
+        "conclusion": "10967的大壶春生煎明确四川中路136号，10420还指云南南路等多家分店；10912大壶春生煎包只介绍菜品，没有地址。两旧地图均邯郸路不能证明同店，保留待分店证据。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-35",
+    "city": "上海",
+    "reviewFingerprint": "c82c90675305a1d8bce6ed2ed82a2b193ed44f52d8aa5b37af23d5704a7d9504",
+    "expectedRevisions": {
+      "040a32dae1b9bffd0acd9430f22afb12": 1,
+      "9537cd059d265a1f4b7c760685bd732b": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10421归蜀第成都串串明确梅花路总店并提示浦东多家分店，11086归蜀第串串仅说家附近和优先离住宿近的店，没有门牌。相同地理匹配不能取代分店证据，暂不合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          35
+        ],
+        "conclusion": "10421归蜀第成都串串明确梅花路总店并提示浦东多家分店，11086归蜀第串串仅说家附近和优先离住宿近的店，没有门牌。相同地理匹配不能取代分店证据，暂不合并。",
+        "sourcePlaceIds": [
+          "4878",
+          "5238"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          10421,
+          11086
+        ],
+        "conclusion": "10421归蜀第成都串串明确梅花路总店并提示浦东多家分店，11086归蜀第串串仅说家附近和优先离住宿近的店，没有门牌。相同地理匹配不能取代分店证据，暂不合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-36",
+    "city": "上海",
+    "reviewFingerprint": "d1c7850c01e38db9641c46521570ba74d0ce012a724335dc3c967d484d4d0bb6",
+    "expectedRevisions": {
+      "97c8fdc80115153baa2888ddd45c04be": 1,
+      "d8b7f785d4390a59f2b47da705ac0072": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "11058与11319面馆明确定西路，10428又列定西路/广东路；11093简称只推荐就近面馆，未指分店。现有地图落普陀远端，缺原图店址，不能将品牌推荐全并入定西路店。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          36
+        ],
+        "conclusion": "11058与11319面馆明确定西路，10428又列定西路/广东路；11093简称只推荐就近面馆，未指分店。现有地图落普陀远端，缺原图店址，不能将品牌推荐全并入定西路店。",
+        "sourcePlaceIds": [
+          "5245",
+          "4883"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-full-context.json",
+        "sha256": "e02e1523ace3c85674f1c60df3b41ecdb52155569da0e9a068130e5a2e25499e",
+        "mentionIds": [
+          11058,
+          11086
+        ],
+        "conclusion": "11058与11319面馆明确定西路，10428又列定西路/广东路；11093简称只推荐就近面馆，未指分店。现有地图落普陀远端，缺原图店址，不能将品牌推荐全并入定西路店。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          11319,
+          10428,
+          11093
+        ],
+        "conclusion": "11058与11319面馆明确定西路，10428又列定西路/广东路；11093简称只推荐就近面馆，未指分店。现有地图落普陀远端，缺原图店址，不能将品牌推荐全并入定西路店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-39",
+    "city": "上海",
+    "reviewFingerprint": "f821940c416d9d797871aae20dadbca02cf17d405470fba47b18c87232fa8eb5",
+    "expectedRevisions": {
+      "58867f122792c1d6f41bf43d88d64cba": 1,
+      "effc9bbd0e80256864e76b182ae97a5e": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "10935北外滩滨江步道是从天潼路、邮政博物馆、乍浦路桥到国客中心的约3公里完整路线，跨苏州河岸与北外滩；11139滨江为其中沿江区域。需先区分路线与实体步道边界，不能把完整游线与其中区域视同。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          39
+        ],
+        "conclusion": "10935北外滩滨江步道是从天潼路、邮政博物馆、乍浦路桥到国客中心的约3公里完整路线，跨苏州河岸与北外滩；11139滨江为其中沿江区域。需先区分路线与实体步道边界，不能把完整游线与其中区域视同。",
+        "sourcePlaceIds": [
+          "5193",
+          "5260"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch11-context.json",
+        "sha256": "482d1e28b7592065787fc70e921dbd0b489e515e659bf77b8b4d215870ac73ca",
+        "mentionIds": [
+          10935,
+          11139
+        ],
+        "conclusion": "10935北外滩滨江步道是从天潼路、邮政博物馆、乍浦路桥到国客中心的约3公里完整路线，跨苏州河岸与北外滩；11139滨江为其中沿江区域。需先区分路线与实体步道边界，不能把完整游线与其中区域视同。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-11-review-41",
+    "city": "上海",
+    "reviewFingerprint": "bee3a3abc934602ec4b6cc2dbb061759d270463fc656fa28a90268061bb5d97b",
+    "expectedRevisions": {
+      "79ca546e85960732eba25403aa8c1689": 1,
+      "ffaa26d85fb16bb636a40c3d16b05694": 1
+    },
+    "verdict": "distinct",
+    "explanation": "11241陆家嘴中心对应源记录market及浦东南路899号商业体；11037中心绿地位于东方明珠之后的绿地公园游线，性质不同。绿地旧坐标也落商业体附近，是待纠正定位，不构成同一实体证据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          41
+        ],
+        "conclusion": "11241陆家嘴中心对应源记录market及浦东南路899号商业体；11037中心绿地位于东方明珠之后的绿地公园游线，性质不同。绿地旧坐标也落商业体附近，是待纠正定位，不构成同一实体证据。",
+        "sourcePlaceIds": [
+          "5299",
+          "5218"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-independent-context.json",
+        "sha256": "836927cf1ea80b885ba9f8ee4c43632449a8ac39ca0e88df9bc4f2d455104616",
+        "mentionIds": [
+          11241,
+          11037
+        ],
+        "conclusion": "11241陆家嘴中心对应源记录market及浦东南路899号商业体；11037中心绿地位于东方明珠之后的绿地公园游线，性质不同。绿地旧坐标也落商业体附近，是待纠正定位，不构成同一实体证据。"
+      }
+    ]
+  }
+]

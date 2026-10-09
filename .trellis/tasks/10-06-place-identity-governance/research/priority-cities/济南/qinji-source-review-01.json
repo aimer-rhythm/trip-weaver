@@ -1,0 +1,53 @@
+{
+  "city": "济南",
+  "batch": 52,
+  "sourcePacket": "priority-cities/济南/food-followup-source-packet-01.json",
+  "sources": 1,
+  "mentions": 4,
+  "fullNotes": 3,
+  "confirmed": 2,
+  "pending": 2,
+  "independentConfirmedNotes": 1,
+  "rows": [
+    {
+      "mentionId": 11364,
+      "noteId": 2585,
+      "quote": "🔸秦记火烧📍铜元局前街（近大明湖/五龙潭）",
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "reason": "原文逐店明确铜元局前街，支持当前来源所在街道门店；同篇重复抽取仅一独立来源，保留原推荐。",
+      "status": "reviewed_target"
+    },
+    {
+      "mentionId": 11664,
+      "noteId": 2602,
+      "quote": "③秦记火烧（肉火烧去制锦市，其他去河边）",
+      "entityId": null,
+      "reason": "同一句推荐制锦市和河边，不能把多个位置的菜品建议全归铜元局前街；不推断两个文字地点相同，也不拆造新提及或新实体。",
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 12605,
+      "noteId": 2585,
+      "quote": "🔸秦记火烧📍铜元局前街（近大明湖/五龙潭）",
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "reason": "原文逐店明确铜元局前街，支持当前来源所在街道门店；同篇重复抽取仅一独立来源，保留原推荐。",
+      "status": "reviewed_target"
+    },
+    {
+      "mentionId": 12892,
+      "noteId": 2856,
+      "quote": "4️⃣秦记火烧",
+      "entityId": null,
+      "reason": "只有裸名无分店地址，既有图片分析亦未补门店；面对明确多位置证据不能按同名自动认领，保留待审。",
+      "status": "needs_branch_evidence"
+    }
+  ],
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "existingImageAnalysisAddsBranchEvidence": false,
+  "locationStatus": "existing_point_and_address_preserved_not_newly_verified",
+  "newEntities": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

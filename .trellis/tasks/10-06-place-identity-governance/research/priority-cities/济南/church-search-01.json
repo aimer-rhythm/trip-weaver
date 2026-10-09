@@ -1,0 +1,97 @@
+{
+  "ok": false,
+  "error_type": "network_error",
+  "error": "OpenAI-compatible HTTP 503: {\"error\":{\"code\":\"model_not_found\",\"message\":\"No available channel for model grok-4.7 under group level3 (distributor) (request id: 202610071847122972792708268d9d6Sv3OMBPB)\",\"type\":\"new_api_error\"}}",
+  "session_id": "d76a06d11c99",
+  "query": "济南 洪家楼天主教堂 本体 洪家楼1号 坐标 建筑 平面 山东大学 东西 朝向 官方",
+  "primary_api_mode": "chat-completions",
+  "content": "",
+  "sources": [],
+  "sources_count": 0,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [],
+  "extra_sources_count": 0,
+  "source_warning": "",
+  "elapsed_ms": 5480.14,
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "error",
+      "error_type": "network_error",
+      "error": "OpenAI-compatible HTTP 503: {\"error\":{\"code\":\"model_not_found\",\"message\":\"No available channel for model grok-4.7 under group level3 (distributor) (request id: 202610071847122972792708268d9d6Sv3OMBPB)\",\"type\":\"new_api_error\"}}",
+      "elapsed_ms": 5477.76,
+      "result_count": 0
+    }
+  ],
+  "providers_used": [],
+  "fallback_used": false,
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  }
+}

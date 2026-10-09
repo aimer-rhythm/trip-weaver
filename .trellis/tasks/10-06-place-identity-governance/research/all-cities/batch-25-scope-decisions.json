@@ -1,0 +1,118 @@
+[
+  {
+    "key": "all-cities-20261007-batch-25-joint-2720",
+    "city": "厦门",
+    "sourcePlaceId": 2720,
+    "expectedSourceHash": "d25c352b493df072b1243ab5b8b2084dd20e1f0375c9f3b191362cf4af36a227",
+    "expectedScopeRevision": 0,
+    "sources": [
+      {
+        "sourcePlaceId": 2720,
+        "sourceHash": "d25c352b493df072b1243ab5b8b2084dd20e1f0375c9f3b191362cf4af36a227"
+      },
+      {
+        "sourcePlaceId": 3213,
+        "sourceHash": "3e1bd9f930eac284154c1725c14f35c36420088d3e014b9c4282d741ec284b13"
+      }
+    ],
+    "expectedRevisions": {
+      "7b4cfbf5bd4b449036abe4ee41b21210": 1,
+      "7e341fd0ee9e8647bd9766bfac2f05e6": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 5461,
+        "inputHash": "551125830d5238994a1dfed2e64b0fe52c022d9e4aec835171d63a2e1d68b678",
+        "entityId": null
+      },
+      {
+        "mentionId": 6841,
+        "inputHash": "0b833f57e6a77edb20cdfe9d68c44f999efc686fd48aee0506afffc021951094",
+        "entityId": null
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_joint_mention_scope",
+        "file": "joint-coffee-source-1791338728505852300.json",
+        "sha256": "ac26ef58428ccdd29464fbe1172da802f858c26d40b047b60125b6a8e1400b1e",
+        "reviewIds": [
+          203
+        ],
+        "sourcePlaceIds": [
+          2720,
+          3213
+        ],
+        "mentionIds": [
+          5461,
+          6841
+        ],
+        "conclusion": "两条原始提及均未确认具体分店；原图及评论补证仍不足，旧地图匹配不作为分店证据。联合纳管全部同名来源，每条提及显式未分配，四条旧泛名记录仅作撤回引用保留，不再作为具体门店候选。本决策不判断两实体同义或独立，不创建分店，不改原文；实体对与提及继续待审。"
+      },
+      {
+        "kind": "evidence_review_record",
+        "file": "scope-collision-and-audit-20261007.md",
+        "sha256": "38347a8a2231487ba961a1e2261e49fbe7e3567aaa46b9fe84ff5c87553a3510",
+        "conclusion": "四篇顶层评论扫描至末页，嵌套有限抽查；公开门店档案不能证明原提及归属。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261007-batch-25-joint-1716",
+    "city": "成都",
+    "sourcePlaceId": 1716,
+    "expectedSourceHash": "c826d259ca09b936e93bfa0c1facf05006ddec97968e848e4440e087f3bf6e2f",
+    "expectedScopeRevision": 0,
+    "sources": [
+      {
+        "sourcePlaceId": 1716,
+        "sourceHash": "c826d259ca09b936e93bfa0c1facf05006ddec97968e848e4440e087f3bf6e2f"
+      },
+      {
+        "sourcePlaceId": 1821,
+        "sourceHash": "aea1f9147eb358c7147ca988e534417bf833699c6750aa2496fc6231d03e0a62"
+      }
+    ],
+    "expectedRevisions": {
+      "e61d76f3b1440ac59582f9b344be4fd4": 1,
+      "e63e38711dce61183e0e77ef3e2260bf": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 3533,
+        "inputHash": "f1f6f80f9bdbf7d1ee5cd1ee4603a34f94e029b3187b5591ad20ac82eed2295e",
+        "entityId": null
+      },
+      {
+        "mentionId": 3719,
+        "inputHash": "729cefde687f04b437b2a43a8cce72fb0d7f0220bbe9b30845e221be76ce13e6",
+        "entityId": null
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_joint_mention_scope",
+        "file": "joint-coffee-source-1791338728505852300.json",
+        "sha256": "ac26ef58428ccdd29464fbe1172da802f858c26d40b047b60125b6a8e1400b1e",
+        "reviewIds": [
+          305
+        ],
+        "sourcePlaceIds": [
+          1716,
+          1821
+        ],
+        "mentionIds": [
+          3533,
+          3719
+        ],
+        "conclusion": "两条原始提及均未确认具体分店；原图及评论补证仍不足，旧地图匹配不作为分店证据。联合纳管全部同名来源，每条提及显式未分配，四条旧泛名记录仅作撤回引用保留，不再作为具体门店候选。本决策不判断两实体同义或独立，不创建分店，不改原文；实体对与提及继续待审。"
+      },
+      {
+        "kind": "evidence_review_record",
+        "file": "scope-collision-and-audit-20261007.md",
+        "sha256": "38347a8a2231487ba961a1e2261e49fbe7e3567aaa46b9fe84ff5c87553a3510",
+        "conclusion": "四篇顶层评论扫描至末页，嵌套有限抽查；公开门店档案不能证明原提及归属。"
+      }
+    ]
+  }
+]

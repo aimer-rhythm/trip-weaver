@@ -1,0 +1,240 @@
+{
+  "city": "北京",
+  "before": 141,
+  "after": 141,
+  "directBefore": 36,
+  "directAfter": 36,
+  "changed": [
+    {
+      "from": "国子监",
+      "to": "五道营胡同",
+      "fromEntityId": "0854db5911778c6722637d896e9c2904",
+      "toEntityId": "fde55b90529621c6f3ba9a237046a7ee",
+      "fromRevision": 1,
+      "toRevision": 2,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 417,
+          "textHash": "bd0184f3e28f8231b1d00412729ee0c149539bd59c6c77face6b1549c68d8853",
+          "from": {
+            "entityId": "0854db5911778c6722637d896e9c2904",
+            "revision": 1,
+            "start": 729,
+            "end": 732,
+            "surface": "国子监",
+            "mentions": [
+              {
+                "mentionId": 1938,
+                "inputHash": "78467ef8643a9a09380eea247732e802dfbc5fea31cca2aa41bfc2fed4af5061"
+              },
+              {
+                "mentionId": 4268,
+                "inputHash": "6e4e989db5259bf34d402417428cf5d75d59da6e1d0afab5c0f48423b7aef706"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 723,
+            "end": 728,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 1937,
+                "inputHash": "81bf83c8d877ab123876319ee0e09357b05335b53084355edf58301619875961"
+              },
+              {
+                "mentionId": 4267,
+                "inputHash": "10e93a0ed65245a13c6169c0c0bdb4c1ea9bc49f70d024b98b021024f81700ad"
+              }
+            ]
+          },
+          "quote": "五道营胡同→国子监"
+        }
+      ]
+    },
+    {
+      "from": "国子监街",
+      "to": "五道营胡同",
+      "fromEntityId": "1405884c419eb09eb99f8489b7044278",
+      "toEntityId": "fde55b90529621c6f3ba9a237046a7ee",
+      "fromRevision": 1,
+      "toRevision": 2,
+      "strength": "direct",
+      "noteCount": 3,
+      "evidence": [
+        {
+          "noteId": 401,
+          "textHash": "52e7ac03afcb1c24198cea546b5a819dba63bb68a9c022a6aa8d376462400312",
+          "from": {
+            "entityId": "1405884c419eb09eb99f8489b7044278",
+            "revision": 1,
+            "start": 160,
+            "end": 164,
+            "surface": "国子监街",
+            "mentions": [
+              {
+                "mentionId": 2303,
+                "inputHash": "a238d3a5da4c9383d768a8add168be1ca9afa8711b128f814683e4b36b03bf69"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 167,
+            "end": 172,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 2304,
+                "inputHash": "66a995cf7c2f382355b614774e9dc4e42ab18c6524f2cc8c7f4846881025660e"
+              }
+            ]
+          },
+          "quote": "国子监街 ➡️五道营胡同"
+        },
+        {
+          "noteId": 608,
+          "textHash": "9dae60830383104c752210b7b54c12f7c3fe767691a4340cfad41bc5bca7cdd1",
+          "from": {
+            "entityId": "1405884c419eb09eb99f8489b7044278",
+            "revision": 1,
+            "start": 227,
+            "end": 231,
+            "surface": "国子监街",
+            "mentions": [
+              {
+                "mentionId": 2453,
+                "inputHash": "785b4f38c60f47a88a25a818f73d43e18522abf3e39223ed012457af4fd61ec3"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 220,
+            "end": 225,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 2452,
+                "inputHash": "bd039de4fb5ad9b78bf4fbb0b068065ecaf7610c8a1b44800ffda4208016ae63"
+              }
+            ]
+          },
+          "quote": "五道营胡同➡️国子监街"
+        },
+        {
+          "noteId": 612,
+          "textHash": "32e3d4ed0993ac72852f522be659a073b71badafabc43dfee5093ec29a3574c8",
+          "from": {
+            "entityId": "1405884c419eb09eb99f8489b7044278",
+            "revision": 1,
+            "start": 138,
+            "end": 142,
+            "surface": "国子监街",
+            "mentions": [
+              {
+                "mentionId": 2734,
+                "inputHash": "ede9c23e9f237346921377fe37e53f8961b2274ef56c2db46d8cb34dc332ea27"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 131,
+            "end": 136,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 2733,
+                "inputHash": "0ec6abe91c12716ef3790e4e2c5ff4f75971018b98e3e4b78088e1f52c17471d"
+              }
+            ]
+          },
+          "quote": "五道营胡同➡️国子监街"
+        }
+      ]
+    },
+    {
+      "from": "雍和宫",
+      "to": "五道营胡同",
+      "fromEntityId": "60c5489433b6a9cc1dbcc7d5e402d418",
+      "toEntityId": "fde55b90529621c6f3ba9a237046a7ee",
+      "fromRevision": 1,
+      "toRevision": 2,
+      "strength": "direct",
+      "noteCount": 2,
+      "evidence": [
+        {
+          "noteId": 418,
+          "textHash": "2ede722dbcfac6a6117fa08d407bdc23abe71d8537bd2e579a7c9812f9c8c147",
+          "from": {
+            "entityId": "60c5489433b6a9cc1dbcc7d5e402d418",
+            "revision": 1,
+            "start": 232,
+            "end": 235,
+            "surface": "雍和宫",
+            "mentions": [
+              {
+                "mentionId": 1949,
+                "inputHash": "d6e6bd46aa4573f5636176cf70bb98a61b44fd8771483d37b873bf45b4359ed8"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 236,
+            "end": 241,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 1950,
+                "inputHash": "7fbd112a0854d88466e2ce47b62939d1129d4accd3fc70e60bf3441b43c7192f"
+              }
+            ]
+          },
+          "quote": "雍和宫→五道营胡同"
+        },
+        {
+          "noteId": 608,
+          "textHash": "9dae60830383104c752210b7b54c12f7c3fe767691a4340cfad41bc5bca7cdd1",
+          "from": {
+            "entityId": "60c5489433b6a9cc1dbcc7d5e402d418",
+            "revision": 1,
+            "start": 215,
+            "end": 218,
+            "surface": "雍和宫",
+            "mentions": [
+              {
+                "mentionId": 2451,
+                "inputHash": "4c8cfd6a94ccb30047c3418f0304fc7e2232d6b8e15892e01a30790423a13ac8"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+            "revision": 2,
+            "start": 220,
+            "end": 225,
+            "surface": "五道营胡同",
+            "mentions": [
+              {
+                "mentionId": 2452,
+                "inputHash": "bd039de4fb5ad9b78bf4fbb0b068065ecaf7610c8a1b44800ffda4208016ae63"
+              }
+            ]
+          },
+          "quote": "雍和宫➡️五道营胡同"
+        }
+      ]
+    }
+  ],
+  "removed": []
+}

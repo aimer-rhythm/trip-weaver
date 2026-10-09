@@ -1,0 +1,149 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "3e37ff6a7824",
+  "query": "济南 腊山河 廊道 生态 景观 位置",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查找济南腊山河廊道生态景观的具体位置与相关信息。",
+  "sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E8%85%8A%E5%B1%B1%E6%B2%B3/12913229",
+      "provider": "tavily",
+      "title": "腊山河",
+      "description": "地理位置. 山东省济南市槐荫区. 流经地区. 槐荫区兴福街道. 发源地. 腊山. 面积 ... 作为济南西部的重要生态廊道，腊山河提升了城市功能品质. 8 。它还是连接腊山分洪"
+    },
+    {
+      "url": "https://jinan.dzwww.com/qcxw/202601/t20260107_17276652.htm",
+      "provider": "tavily",
+      "title": "项目强省会｜腊山河西路南延打造滨河生态休闲新廊道 - 济南",
+      "description": "工程全面完工后，腊山河南段将形成集防洪排涝与生态景观于一体的城市新景点，为周边居民增添一处休闲娱乐的好去处。"
+    },
+    {
+      "url": "https://i.ifeng.com/c/8v4SJ34k1IS",
+      "provider": "tavily",
+      "title": "济南经十路南滨河绸带公园700米长河道打造滨水生态景观带",
+      "description": "7月25日，位于济南市经十路南侧的腊山河河道升级改造工程取得阶段性进展。长约700米的河道完成疏浚清淤，沿线新添假山石景观，形成激流飞瀑效果，两岸大面积草坪铺设"
+    }
+  ],
+  "sources_count": 3,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://baike.baidu.com/item/%E8%85%8A%E5%B1%B1%E6%B2%B3/12913229",
+      "provider": "tavily",
+      "title": "腊山河",
+      "description": "地理位置. 山东省济南市槐荫区. 流经地区. 槐荫区兴福街道. 发源地. 腊山. 面积 ... 作为济南西部的重要生态廊道，腊山河提升了城市功能品质. 8 。它还是连接腊山分洪"
+    },
+    {
+      "url": "https://jinan.dzwww.com/qcxw/202601/t20260107_17276652.htm",
+      "provider": "tavily",
+      "title": "项目强省会｜腊山河西路南延打造滨河生态休闲新廊道 - 济南",
+      "description": "工程全面完工后，腊山河南段将形成集防洪排涝与生态景观于一体的城市新景点，为周边居民增添一处休闲娱乐的好去处。"
+    },
+    {
+      "url": "https://i.ifeng.com/c/8v4SJ34k1IS",
+      "provider": "tavily",
+      "title": "济南经十路南滨河绸带公园700米长河道打造滨水生态景观带",
+      "description": "7月25日，位于济南市经十路南侧的腊山河河道升级改造工程取得阶段性进展。长约700米的河道完成疏浚清淤，沿线新添假山石景观，形成激流飞瀑效果，两岸大面积草坪铺设"
+    }
+  ],
+  "extra_sources_count": 3,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 4310.32,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 16693.3,
+      "result_count": 3
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 16693.32
+}

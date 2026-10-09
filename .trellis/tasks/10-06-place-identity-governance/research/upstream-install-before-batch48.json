@@ -1,0 +1,359 @@
+{
+  "apply": true,
+  "files": [
+    {
+      "path": "app/aggregate/grade.py",
+      "before": "8e343fe1737a822f976d90a569f9b478abf97f425deb0269122383c000941d09",
+      "after": "8e343fe1737a822f976d90a569f9b478abf97f425deb0269122383c000941d09",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/image_identity.py",
+      "before": "4f3508c8c05d99a324e88b804fa8bc20287a51237c5b756df9d2e1a1a9f806aa",
+      "after": "4f3508c8c05d99a324e88b804fa8bc20287a51237c5b756df9d2e1a1a9f806aa",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/mention_identity.py",
+      "before": "fceaf587dcbc10dea32d9ad4825297dfbb4c6eaa93008a88fc2b1ba8be902bc1",
+      "after": "fceaf587dcbc10dea32d9ad4825297dfbb4c6eaa93008a88fc2b1ba8be902bc1",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/place_identity.py",
+      "before": "5e3c9e6f989c8c1b0321679fcb4ee7649fea73f4d068055089314099adf8ba00",
+      "after": "5e3c9e6f989c8c1b0321679fcb4ee7649fea73f4d068055089314099adf8ba00",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/relation_snapshot.py",
+      "before": "bc874f5c2eb6bc1630de2f10f7b9d9a3c9144d50bc58aea74f3f43a3354ef2a8",
+      "after": "bc874f5c2eb6bc1630de2f10f7b9d9a3c9144d50bc58aea74f3f43a3354ef2a8",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/summary.py",
+      "before": "c19fa4f95370bea808048875ea004d9c2c3afe8f4f652493e90a4159357cfe5f",
+      "after": "c19fa4f95370bea808048875ea004d9c2c3afe8f4f652493e90a4159357cfe5f",
+      "changed": false
+    },
+    {
+      "path": "app/clean/alias.py",
+      "before": "22569cd2a91051b9c41f5699cd108bdc7cd4eafc8e2cc8b30d83255262002964",
+      "after": "22569cd2a91051b9c41f5699cd108bdc7cd4eafc8e2cc8b30d83255262002964",
+      "changed": false
+    },
+    {
+      "path": "app/clean/entity_creation.py",
+      "before": "e8573ff771befaa8bb57ed386cd7bc9d7473eecd84123b8585053bd375d8426f",
+      "after": "e8573ff771befaa8bb57ed386cd7bc9d7473eecd84123b8585053bd375d8426f",
+      "changed": false
+    },
+    {
+      "path": "app/clean/identity.py",
+      "before": "3c870c9ac20f8e4e77026f25c6918a18c35ff086420679ffe5ad90d6a9657fd3",
+      "after": "3c870c9ac20f8e4e77026f25c6918a18c35ff086420679ffe5ad90d6a9657fd3",
+      "changed": false
+    },
+    {
+      "path": "app/clean/image_identity.py",
+      "before": "d859c1935704f79c681ff43ec6bbdb1d4dcd874d3ecc026bf1bd9432697a5429",
+      "after": "d859c1935704f79c681ff43ec6bbdb1d4dcd874d3ecc026bf1bd9432697a5429",
+      "changed": false
+    },
+    {
+      "path": "app/clean/mention_identity.py",
+      "before": "4833ae52b85b3a333a267d4f1c98456b7cdf07ec3e1a2695ec14183006fe9886",
+      "after": "9b24bbe69bdfdfb6f4f560587a478d9751289db8dd930b0a51f9ecca90f972f2",
+      "changed": true
+    },
+    {
+      "path": "app/clean/mention_relations.py",
+      "before": "d4cd596d1ceffeeee5bfa4f3277f029d91b4125b139ff2c2fe807228a56c774c",
+      "after": "d4cd596d1ceffeeee5bfa4f3277f029d91b4125b139ff2c2fe807228a56c774c",
+      "changed": false
+    },
+    {
+      "path": "app/clean/place_export.py",
+      "before": "eb82b6e43745d4dae63e96227621bd352f40d89f549f58d641b432b24bda89d4",
+      "after": "eb82b6e43745d4dae63e96227621bd352f40d89f549f58d641b432b24bda89d4",
+      "changed": false
+    },
+    {
+      "path": "app/clean/relation_snapshot.py",
+      "before": "ae4d3ca71ef7942c03fea558367f702cd1754b4cdda558e9252fa9e134101a62",
+      "after": "ae4d3ca71ef7942c03fea558367f702cd1754b4cdda558e9252fa9e134101a62",
+      "changed": false
+    },
+    {
+      "path": "app/clean/relation_text.py",
+      "before": "2f761acb63e7239823b877de8d097c91e35bee50c676521fd21d6c596489d45d",
+      "after": "2f761acb63e7239823b877de8d097c91e35bee50c676521fd21d6c596489d45d",
+      "changed": false
+    },
+    {
+      "path": "app/clean/scoped_place_export.py",
+      "before": "42da075dac1981e7426f4cf7c86b3a2ac293324a143ce3291803b72fefed2583",
+      "after": "42da075dac1981e7426f4cf7c86b3a2ac293324a143ce3291803b72fefed2583",
+      "changed": false
+    },
+    {
+      "path": "app/extract/llm_extract.py",
+      "before": "dd9ec70af5a75cc48ad52dc8186297d1552b1fd8d1b7932921b5f0f56e703729",
+      "after": "dd9ec70af5a75cc48ad52dc8186297d1552b1fd8d1b7932921b5f0f56e703729",
+      "changed": false
+    },
+    {
+      "path": "app/extract/place_profiles.py",
+      "before": "c28c4db4127dc0676e814e15739bb71fdffc08b5021af04c042a2f2438ffde17",
+      "after": "c28c4db4127dc0676e814e15739bb71fdffc08b5021af04c042a2f2438ffde17",
+      "changed": false
+    },
+    {
+      "path": "app/models.py",
+      "before": "ddf6268335488433ba7b9d26173473dbdd6e11e6119106363963e91a7c2f16bb",
+      "after": "ddf6268335488433ba7b9d26173473dbdd6e11e6119106363963e91a7c2f16bb",
+      "changed": false
+    },
+    {
+      "path": "app/photography/export.py",
+      "before": "09ada1e06873c39d9968c5edbe9b8743679ca4ebdf0f5533677f581b2c85e6d6",
+      "after": "09ada1e06873c39d9968c5edbe9b8743679ca4ebdf0f5533677f581b2c85e6d6",
+      "changed": false
+    },
+    {
+      "path": "app/qa/ask.py",
+      "before": "4ce7807de4a2b68f997f2a34f571bdd71f989a9abdf170419581d60f952b35f0",
+      "after": "4ce7807de4a2b68f997f2a34f571bdd71f989a9abdf170419581d60f952b35f0",
+      "changed": false
+    },
+    {
+      "path": "app/resolve/amap.py",
+      "before": "80b591b826d2ff11b094e3e90eef7b39fbf55eed64c844c111ee92242dd0a5a4",
+      "after": "80b591b826d2ff11b094e3e90eef7b39fbf55eed64c844c111ee92242dd0a5a4",
+      "changed": false
+    },
+    {
+      "path": "app/web/api.py",
+      "before": "ed476d6f73ba78647fba5bbf5bb55a4d67f7fde09b1586443b8cbd024a2997b1",
+      "after": "ed476d6f73ba78647fba5bbf5bb55a4d67f7fde09b1586443b8cbd024a2997b1",
+      "changed": false
+    },
+    {
+      "path": "app/web/jobs.py",
+      "before": "3027d07e7e89d2a1a8fc9241641dac88f3a8b44a9ab97885eac0740c5aa08ca7",
+      "after": "3027d07e7e89d2a1a8fc9241641dac88f3a8b44a9ab97885eac0740c5aa08ca7",
+      "changed": false
+    },
+    {
+      "path": "scripts/apply_aliases.py",
+      "before": "348dd0e856fe7b516ddaeafedcc971364381712f0063a6ec2d9a9771120e9857",
+      "after": "348dd0e856fe7b516ddaeafedcc971364381712f0063a6ec2d9a9771120e9857",
+      "changed": false
+    },
+    {
+      "path": "scripts/build_tag_topics.py",
+      "before": "7ef449b7e3541d9e1c588473fa72a96a865667548357dd980bca8fc710602e1f",
+      "after": "7ef449b7e3541d9e1c588473fa72a96a865667548357dd980bca8fc710602e1f",
+      "changed": false
+    },
+    {
+      "path": "scripts/build_theme_tags.py",
+      "before": "8f323e35b3947c71a033bf8f66f805204c4b54f9cde731dc6b99d6d28e3832fb",
+      "after": "8f323e35b3947c71a033bf8f66f805204c4b54f9cde731dc6b99d6d28e3832fb",
+      "changed": false
+    },
+    {
+      "path": "scripts/build_visit_duration.py",
+      "before": "2f866d9ab40b6fdd4bffdf44e0e9cdbbf3fe2550660781004d840e130818d058",
+      "after": "2f866d9ab40b6fdd4bffdf44e0e9cdbbf3fe2550660781004d840e130818d058",
+      "changed": false
+    },
+    {
+      "path": "scripts/export_and_embed.ps1",
+      "before": "7db92cd66b7ad025b0dbf8c16afc63f66ae2d8eccf71510d20a9e6b1ae2d31bb",
+      "after": "7db92cd66b7ad025b0dbf8c16afc63f66ae2d8eccf71510d20a9e6b1ae2d31bb",
+      "changed": false
+    },
+    {
+      "path": "scripts/export_place_images.py",
+      "before": "dc4da94f398ed8139aaa04f7e026294dac0873768d83c43e7ddef882851d3b96",
+      "after": "dc4da94f398ed8139aaa04f7e026294dac0873768d83c43e7ddef882851d3b96",
+      "changed": false
+    },
+    {
+      "path": "scripts/export_to_tripweaver.py",
+      "before": "69d7122a5f5b4c714a3b45b2feacb602cf5de5bf72d3a9c8d02cb8b27e2da61f",
+      "after": "69d7122a5f5b4c714a3b45b2feacb602cf5de5bf72d3a9c8d02cb8b27e2da61f",
+      "changed": false
+    },
+    {
+      "path": "scripts/govern_place_identity.py",
+      "before": "c7ad592afdb4968fd4deffbe8a48f68ffffbed801db7213af85006cbff7cae2d",
+      "after": "c7ad592afdb4968fd4deffbe8a48f68ffffbed801db7213af85006cbff7cae2d",
+      "changed": false
+    },
+    {
+      "path": "scripts/migrate_place_identity.py",
+      "before": "2f2598a17d64376719a0af77b268f3fba59b47895ccb4ef572277e46156873ee",
+      "after": "2f2598a17d64376719a0af77b268f3fba59b47895ccb4ef572277e46156873ee",
+      "changed": false
+    },
+    {
+      "path": "scripts/mine_place_relations.py",
+      "before": "e81172e66540455ba5d317c7eb8578f97a167f415f2522bcef9530e47c8a490f",
+      "after": "e81172e66540455ba5d317c7eb8578f97a167f415f2522bcef9530e47c8a490f",
+      "changed": false
+    },
+    {
+      "path": "scripts/refine_place_content.py",
+      "before": "80bd7642e9210445b43ec345f1d17383f085c4231ae170b59c882a6dfe5a4ce1",
+      "after": "80bd7642e9210445b43ec345f1d17383f085c4231ae170b59c882a6dfe5a4ce1",
+      "changed": false
+    },
+    {
+      "path": "scripts/repair_place_aliases.py",
+      "before": "c084d455319fcda5a392e8fd2ca568ebcfe8419ef4d09c75130e32d58efa74ad",
+      "after": "c084d455319fcda5a392e8fd2ca568ebcfe8419ef4d09c75130e32d58efa74ad",
+      "changed": false
+    },
+    {
+      "path": "tests/test_alias.py",
+      "before": "9ac5df9cf27f09d61caf1ebed6eb943ed55c864c0ad2afc10ef216ff2d01dd75",
+      "after": "9ac5df9cf27f09d61caf1ebed6eb943ed55c864c0ad2afc10ef216ff2d01dd75",
+      "changed": false
+    },
+    {
+      "path": "tests/test_build_visit_duration.py",
+      "before": "eaf1e2af0d62638ddd67c6259f32586dd81c50ad89249b7a13aa2bea54b38f06",
+      "after": "eaf1e2af0d62638ddd67c6259f32586dd81c50ad89249b7a13aa2bea54b38f06",
+      "changed": false
+    },
+    {
+      "path": "tests/test_entity_creation_db.py",
+      "before": "df97de4ff8ab35f4ae29459266c721e579032cdf9bd263b1c36199d43c914eb2",
+      "after": "df97de4ff8ab35f4ae29459266c721e579032cdf9bd263b1c36199d43c914eb2",
+      "changed": false
+    },
+    {
+      "path": "tests/test_geo.py",
+      "before": "6361fe2b3c5b7ee0046422ab9fd4c6658cc48a101be5d3ac74d97a7ff2cf49ee",
+      "after": "6361fe2b3c5b7ee0046422ab9fd4c6658cc48a101be5d3ac74d97a7ff2cf49ee",
+      "changed": false
+    },
+    {
+      "path": "tests/test_identity_geo.py",
+      "before": "523331f8c89a8dffb42c028e68b4e068dc3401b30c02ec1dc6c68dc993e8f6c6",
+      "after": "523331f8c89a8dffb42c028e68b4e068dc3401b30c02ec1dc6c68dc993e8f6c6",
+      "changed": false
+    },
+    {
+      "path": "tests/test_image_export.py",
+      "before": "d99c3158cd9321a251a46b4b412ef2728b1fab0628a9df6c675fd5e0526c0500",
+      "after": "d99c3158cd9321a251a46b4b412ef2728b1fab0628a9df6c675fd5e0526c0500",
+      "changed": false
+    },
+    {
+      "path": "tests/test_image_identity_db.py",
+      "before": "194e0d181dc1f9b03ddcd7871f1c9b409210f49c3026f23ac82a3017ae8cb68b",
+      "after": "194e0d181dc1f9b03ddcd7871f1c9b409210f49c3026f23ac82a3017ae8cb68b",
+      "changed": false
+    },
+    {
+      "path": "tests/test_joint_mention_identity_db.py",
+      "before": "e2e89dedddac4d60d2d70e02da718ad93637c872ef1a5d2683606c4cf2685198",
+      "after": "e2e89dedddac4d60d2d70e02da718ad93637c872ef1a5d2683606c4cf2685198",
+      "changed": false
+    },
+    {
+      "path": "tests/test_mention_description_exclusion_db.py",
+      "before": "a3bb28ef08fd318aa7b2e911cf410d81df54349bedaa0e313b41e49411d0a83a",
+      "after": "a3bb28ef08fd318aa7b2e911cf410d81df54349bedaa0e313b41e49411d0a83a",
+      "changed": false
+    },
+    {
+      "path": "tests/test_mention_fact_exclusion_db.py",
+      "before": "66e181e4b01a20a527a5c82fe2915a72b69b9020cd31234af154ca94342f66f0",
+      "after": "66e181e4b01a20a527a5c82fe2915a72b69b9020cd31234af154ca94342f66f0",
+      "changed": false
+    },
+    {
+      "path": "tests/test_mention_identity_db.py",
+      "before": "50d06f5257d091a196a5324c5281765d7a3456bd3e2b7b7d0f8bd412990203f4",
+      "after": "50d06f5257d091a196a5324c5281765d7a3456bd3e2b7b7d0f8bd412990203f4",
+      "changed": false
+    },
+    {
+      "path": "tests/test_mention_relations.py",
+      "before": "8b469502753022e9bfd3a115a714446ecd208d6abd652169bf65175581d7fd6c",
+      "after": "8b469502753022e9bfd3a115a714446ecd208d6abd652169bf65175581d7fd6c",
+      "changed": false
+    },
+    {
+      "path": "tests/test_non_place_exclusion_db.py",
+      "before": "ddda8c174e2492539fdac8e1108ac4cfb0ce26dc07a1f873b1172a91b7a7d63c",
+      "after": "ddda8c174e2492539fdac8e1108ac4cfb0ce26dc07a1f873b1172a91b7a7d63c",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_content.py",
+      "before": "b619c347edb4c02436a40501ee0f26781aae28c01d7745211c015e0ea7d5a9a6",
+      "after": "b619c347edb4c02436a40501ee0f26781aae28c01d7745211c015e0ea7d5a9a6",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_identity.py",
+      "before": "363350c1062def433e15936773df132256b7fa7cfdf1ff7e912c2c6c9d913746",
+      "after": "363350c1062def433e15936773df132256b7fa7cfdf1ff7e912c2c6c9d913746",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_identity_db.py",
+      "before": "7247042d0f6d13c4047824bf78d6bda4ad0eacc177b5720ada888a5236d943e1",
+      "after": "7247042d0f6d13c4047824bf78d6bda4ad0eacc177b5720ada888a5236d943e1",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_profiles.py",
+      "before": "c5dabe8c2d1ba328a3f1ce02286f28615484f10af0ef4afb878a817cc2b86cc3",
+      "after": "c5dabe8c2d1ba328a3f1ce02286f28615484f10af0ef4afb878a817cc2b86cc3",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_type_override_db.py",
+      "before": "e9a73d23db9d133c0e6eb1318d3f9c61302dcc8279d634785ca6754f642bf275",
+      "after": "e9a73d23db9d133c0e6eb1318d3f9c61302dcc8279d634785ca6754f642bf275",
+      "changed": false
+    },
+    {
+      "path": "tests/test_qualified_heading_fact_exclusion_db.py",
+      "before": null,
+      "after": "2a2ef9de4d83908a7517b76dd5e0a1c34c590c79717a4b753969b18f2fb84068",
+      "changed": true
+    },
+    {
+      "path": "tests/test_relation_snapshot_db.py",
+      "before": "99f9024df8c9303030707d6edcdc39ba4d0217288f3eb917ec8d74fb994f65cc",
+      "after": "99f9024df8c9303030707d6edcdc39ba4d0217288f3eb917ec8d74fb994f65cc",
+      "changed": false
+    },
+    {
+      "path": "tests/test_reservation_fact_exclusion_db.py",
+      "before": "730aad850bbade846ce787056b04d6e723bbcb2c25c5c35ab0dcb3c65a46efbd",
+      "after": "730aad850bbade846ce787056b04d6e723bbcb2c25c5c35ab0dcb3c65a46efbd",
+      "changed": false
+    },
+    {
+      "path": "tests/test_scoped_duration_samples_db.py",
+      "before": "0b14973e6ff44d49c6cecc5ff7661fb6d2a7175f18d9a85fb37b92c648147a02",
+      "after": "0b14973e6ff44d49c6cecc5ff7661fb6d2a7175f18d9a85fb37b92c648147a02",
+      "changed": false
+    },
+    {
+      "path": "tests/test_subject_duration_exclusion_db.py",
+      "before": "b7fea005bf704bbba4e7e590bcdfcd33554c3d4b2bc9f4371b0af2ab694f4876",
+      "after": "b7fea005bf704bbba4e7e590bcdfcd33554c3d4b2bc9f4371b0af2ab694f4876",
+      "changed": false
+    }
+  ]
+}

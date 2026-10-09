@@ -1,0 +1,585 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 4,
+ "activeCount": 4,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "77bb92c65b29cc543964d46e4f8fc64d2496e832dca3157bc42b2afc3f90f730",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "蜗牛叔叔的食堂（泉城路店）",
+    "桥下把子肉（山大南路店）",
+    "许记排骨（县东巷71号）",
+    "蜗牛叔叔的食堂",
+    "桥下把子肉",
+    "华祥糕点",
+    "许记排骨"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11353,
+     "noteId": 2585,
+     "inputHash": "a755919e245c491e112b26a591d8d6bcd3a88ab3af63c390605ef3e7d0e27f84",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "5781e650f27ad011986a13e12281e79f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11362,
+     "noteId": 2585,
+     "inputHash": "89d2616f266a3b033f6fd61aa6bdcac93931d2dbe9d1ecde058d6e715f6d664c",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11365,
+     "noteId": 2585,
+     "inputHash": "8acd9ef31823f7d993303da42bbb48542961cfe7672208341233d6bb0aa0e2b3",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "4486ee493729467741a9428ba67b1b80",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11367,
+     "noteId": 2585,
+     "inputHash": "4bc42863d22db9ac1eba6d0e17526b23f836896825570b376b50911d00e75e29",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "c057999eba2876818984ed6c93375936",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11643,
+     "noteId": 2602,
+     "inputHash": "d3e164685cbe0456933450b35c8526e9253a218addb9dd68fe2e7f9003438e93",
+     "textHash": "a388d10e7c12f8baf826a2b6634e357de0bfe3af326313446c36a4b8aef72430",
+     "textLength": 1004,
+     "entityId": "4486ee493729467741a9428ba67b1b80",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12594,
+     "noteId": 2585,
+     "inputHash": "8a245cc464b69b5d8faf627efd0912eeba32c606ea8b602a64778e66f6f01773",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "5781e650f27ad011986a13e12281e79f",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12603,
+     "noteId": 2585,
+     "inputHash": "0e9872605fd235ab3021ace3ccb1030678c71c5e50c6ab01294d4f3bc6e9f3d3",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12606,
+     "noteId": 2585,
+     "inputHash": "834dce7d70ad3a85fa35f35a9ab8068a785fb84b0d023aa5753fe4b443baebec",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "4486ee493729467741a9428ba67b1b80",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12608,
+     "noteId": 2585,
+     "inputHash": "de380c4a12f729537745991eb97e5188c737f029cc890a5e05d05e322fcf548a",
+     "textHash": "384f628775cb8f79ef3f4dbad1f7ed5bebf8c27386b6af3f4b89c00ca52f0659",
+     "textLength": 622,
+     "entityId": "c057999eba2876818984ed6c93375936",
+     "revision": 1,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 12893,
+     "noteId": 2856,
+     "inputHash": "1f28ae5bbd1770c2c4743a3ea822630d14051d5f7205bf0b741511db73919621",
+     "textHash": "3c70fe62cd037e3d1963af1204716c73f2e40c2fcd12dd3b9b325fc1de5e2caa",
+     "textLength": 297,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "4486ee493729467741a9428ba67b1b80",
+     "revision": 3,
+     "canonicalName": "桥下把子肉（山大南路店）",
+     "aliases": [
+      "桥下把子肉",
+      "桥下把子肉（山大南路店）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "5781e650f27ad011986a13e12281e79f",
+     "revision": 3,
+     "canonicalName": "许记排骨（县东巷71号）",
+     "aliases": [
+      "许记排骨",
+      "许记排骨（县东巷71号）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "c057999eba2876818984ed6c93375936",
+     "revision": 1,
+     "canonicalName": "华祥糕点",
+     "aliases": [
+      "华祥糕点"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+     "revision": 3,
+     "canonicalName": "蜗牛叔叔的食堂（泉城路店）",
+     "aliases": [
+      "蜗牛叔叔的食堂",
+      "蜗牛叔叔的食堂（泉城路店）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "5781e650f27ad011986a13e12281e79f",
+   "name": "许记排骨（县东巷71号）",
+   "category": "美食",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "县东巷71号",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [
+     "本地人推荐，有特色且味道好"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:39:36.507077+00:00"
+    },
+    "originalName": "许记排骨",
+    "openHours": {
+     "version": 2,
+     "subject": "许记排骨（县东巷71号）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11353,
+      "noteId": 2585,
+      "inputHash": "a755919e245c491e112b26a591d8d6bcd3a88ab3af63c390605ef3e7d0e27f84"
+     },
+     {
+      "mentionId": 12594,
+      "noteId": 2585,
+      "inputHash": "8a245cc464b69b5d8faf627efd0912eeba32c606ea8b602a64778e66f6f01773"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "5781e650f27ad011986a13e12281e79f",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "5781e650f27ad011986a13e12281e79f",
+     "canonicalName": "许记排骨（县东巷71号）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "许记排骨（县东巷71号）",
+      "许记排骨"
+     ],
+     "memberIds": [
+      "5781e650f27ad011986a13e12281e79f",
+      "32ae2728418bd69bb354480d49901a2b"
+     ]
+    },
+    "aliases": [
+     "许记排骨",
+     "许记排骨（县东巷71号）"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "4486ee493729467741a9428ba67b1b80",
+   "name": "桥下把子肉（山大南路店）",
+   "category": "美食",
+   "lng": 117.074579,
+   "lat": 36.672032,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "山大南路蜀易火锅隔壁",
+    "adcode": "",
+    "mentionCount": 3,
+    "recommendScore": 12.0,
+    "topReasons": [
+     "本地人推荐，有特色且味道好",
+     "二环东路山大南路，把子肉推荐"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。二环东路山大南路，把子肉推荐。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      },
+      {
+       "text": "二环东路山大南路，把子肉推荐",
+       "quote": "二环东路山大南路，把子肉推荐",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.571044+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:39:36.507077+00:00"
+    },
+    "originalName": "桥下把子肉",
+    "openHours": {
+     "version": 2,
+     "subject": "桥下把子肉（山大南路店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11365,
+      "noteId": 2585,
+      "inputHash": "8acd9ef31823f7d993303da42bbb48542961cfe7672208341233d6bb0aa0e2b3"
+     },
+     {
+      "mentionId": 11643,
+      "noteId": 2602,
+      "inputHash": "d3e164685cbe0456933450b35c8526e9253a218addb9dd68fe2e7f9003438e93"
+     },
+     {
+      "mentionId": 12606,
+      "noteId": 2585,
+      "inputHash": "834dce7d70ad3a85fa35f35a9ab8068a785fb84b0d023aa5753fe4b443baebec"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "4486ee493729467741a9428ba67b1b80",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "4486ee493729467741a9428ba67b1b80",
+     "canonicalName": "桥下把子肉（山大南路店）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "桥下把子肉（山大南路店）",
+      "桥下把子肉"
+     ],
+     "memberIds": [
+      "4486ee493729467741a9428ba67b1b80",
+      "4bdc1cb87a68a759d31d7eb7d3203af9"
+     ]
+    },
+    "aliases": [
+     "桥下把子肉",
+     "桥下把子肉（山大南路店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "二环东路山大南路，把子肉推荐",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "e2740e4ad547f99f5ff9311f7d5359b8",
+   "name": "蜗牛叔叔的食堂（泉城路店）",
+   "category": "美食",
+   "lng": 117.018265,
+   "lat": 36.663217,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "泉城路西首狮子口街牛阵烧烤斜对面",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [
+     "本地人推荐，有特色且味道好"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:39:36.507077+00:00"
+    },
+    "originalName": "蜗牛叔叔的食堂",
+    "openHours": {
+     "version": 2,
+     "subject": "蜗牛叔叔的食堂（泉城路店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11362,
+      "noteId": 2585,
+      "inputHash": "89d2616f266a3b033f6fd61aa6bdcac93931d2dbe9d1ecde058d6e715f6d664c"
+     },
+     {
+      "mentionId": 12603,
+      "noteId": 2585,
+      "inputHash": "0e9872605fd235ab3021ace3ccb1030678c71c5e50c6ab01294d4f3bc6e9f3d3"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+     "canonicalName": "蜗牛叔叔的食堂（泉城路店）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "蜗牛叔叔的食堂（泉城路店）",
+      "蜗牛叔叔的食堂"
+     ],
+     "memberIds": [
+      "e2740e4ad547f99f5ff9311f7d5359b8",
+      "493c8878c1b73af61944fdc7a28c1323"
+     ]
+    },
+    "aliases": [
+     "蜗牛叔叔的食堂",
+     "蜗牛叔叔的食堂（泉城路店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "c057999eba2876818984ed6c93375936",
+   "name": "华祥糕点",
+   "category": "美食",
+   "lng": 117.012378,
+   "lat": 36.661438,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [
+     "美食"
+    ],
+    "address": "永长街23号正东方向200米",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 9.5,
+    "topReasons": [
+     "本地人推荐，有特色且味道好"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "本地人推荐，有特色且味道好。",
+     "highlights": [
+      {
+       "text": "本地人推荐，有特色且味道好",
+       "quote": "本地人推荐，有特色且味道好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:10.262192+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T23:39:36.507077+00:00"
+    },
+    "originalName": "华祥糕点",
+    "openHours": {
+     "version": 2,
+     "subject": "华祥糕点",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "c057999eba2876818984ed6c93375936",
+     "canonicalName": "华祥糕点",
+     "revision": 1,
+     "kind": "same_entity",
+     "memberNames": [
+      "华祥糕点"
+     ],
+     "memberIds": [
+      "c057999eba2876818984ed6c93375936"
+     ]
+    },
+    "aliases": [
+     "华祥糕点"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，有特色且味道好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68c6380d000000001c03e8ad?xsec_token=AB7PCSY_WMl8aSB6RuPaDppuj3dBiChGezwG04hyajM0o=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

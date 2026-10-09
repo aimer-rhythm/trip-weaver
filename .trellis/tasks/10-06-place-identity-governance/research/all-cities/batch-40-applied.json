@@ -1,0 +1,472 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d",
+          "city": "济南",
+          "canonical_name": "明水古城",
+          "primary_place_id": 5481,
+          "aliases": [
+            "明水古城"
+          ],
+          "legacy_ids": [
+            "69b816cda273f29ed9296314fbe6f52d"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5481,
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5481,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 22.0,
+          "theme_tags": [
+            "夜景"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5481,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 3,
+          "top_reasons": [
+            {
+              "reason": "笔记仅提及地点，未给出具体推荐理由。",
+              "evidence": "明水古城"
+            },
+            {
+              "reason": "济南慢生活体验，可品泉水茶、登高怀古",
+              "evidence": "济南是一座“慢得恰好”的城市"
+            },
+            {
+              "reason": "济南章丘古城，适合拍照",
+              "evidence": "8️⃣章丘明水古城"
+            }
+          ],
+          "recommend_score": 12.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7934,
+          "canonical_place_id": 5481,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 明水古城",
+          "evidence_summary": "笔记仅提及地点，未给出具体推荐理由。"
+        },
+        {
+          "id": 8653,
+          "canonical_place_id": 5481,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 明水古城",
+          "evidence_summary": "济南慢生活体验，可品泉水茶、登高怀古"
+        },
+        {
+          "id": 8654,
+          "canonical_place_id": 5481,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 明水古城",
+          "evidence_summary": "济南章丘古城，适合拍照"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5481,
+          "city": "济南",
+          "name_keys": [
+            "明水古城"
+          ],
+          "entity_ids": [
+            "69b816cda273f29ed9296314fbe6f52d"
+          ],
+          "source_hash": "7caaee8c6a43555fca7bc2d55d4899a5aa0c859eb1ac178743dc1f92c7a4dd48",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-40-description-5481",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/description-source-review-01.json",
+              "kind": "reviewed_text_subject_mismatch",
+              "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+              "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "69b816cda273f29ed9296314fbe6f52d"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11508,
+          "scope_place_id": 5481,
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d",
+          "input_hash": "1426a377f8360021ffbc550b53851f8b76421de681d2754aca56b18008e7db40",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-40-description-5481"
+        },
+        {
+          "mention_id": 12581,
+          "scope_place_id": 5481,
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d",
+          "input_hash": "889fb1a889d0149f0db85c52976a9d8826604db70fbb53d2091cf4a561b04921",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-40-description-5481",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。",
+              "reason": "subject_mismatch"
+            },
+            "evidence_text": {
+              "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。",
+              "reason": "subject_mismatch"
+            },
+            "place_content": {
+              "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 12786,
+          "scope_place_id": 5481,
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d",
+          "input_hash": "896c2475a31ba69b6ddadcc0310b177a68b0baad020a23b6090a1c46ebd6f2fc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-40-description-5481"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "7caaee8c6a43555fca7bc2d55d4899a5aa0c859eb1ac178743dc1f92c7a4dd48",
+        "mentions": [
+          {
+            "mentionId": 11508,
+            "inputHash": "1426a377f8360021ffbc550b53851f8b76421de681d2754aca56b18008e7db40"
+          },
+          {
+            "mentionId": 12581,
+            "inputHash": "889fb1a889d0149f0db85c52976a9d8826604db70fbb53d2091cf4a561b04921"
+          },
+          {
+            "mentionId": 12786,
+            "inputHash": "896c2475a31ba69b6ddadcc0310b177a68b0baad020a23b6090a1c46ebd6f2fc"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "abc624edea07111dc19aa79dfbb18289",
+          "city": "济南",
+          "canonical_name": "济南野生动物园",
+          "primary_place_id": 5974,
+          "aliases": [
+            "济南野生动物园"
+          ],
+          "legacy_ids": [
+            "abc624edea07111dc19aa79dfbb18289"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5974,
+          "entity_id": "abc624edea07111dc19aa79dfbb18289"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5974,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 13.0,
+          "theme_tags": [
+            "亲子",
+            "文艺"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5974,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "济南动物园，适合拍照",
+              "evidence": "9️⃣济南野生动物园"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8709,
+          "canonical_place_id": 5974,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 济南野生动物园",
+          "evidence_summary": "济南动物园，适合拍照"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5974,
+          "city": "济南",
+          "name_keys": [
+            "济南野生动物园"
+          ],
+          "entity_ids": [
+            "abc624edea07111dc19aa79dfbb18289"
+          ],
+          "source_hash": "45ae7bd2bcae50ec30989eb65b716e0abcb1d007b64848058bc4369d159860e3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-40-description-5974",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/description-source-review-01.json",
+              "kind": "reviewed_text_subject_mismatch",
+              "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+              "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "abc624edea07111dc19aa79dfbb18289"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12787,
+          "scope_place_id": 5974,
+          "entity_id": "abc624edea07111dc19aa79dfbb18289",
+          "input_hash": "f7491ceaf28dfe54b91be2882779a422c99b8a7917557f3813548c66d59f14c3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-40-description-5974",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "9️⃣济南野生动物园",
+              "reason": "subject_mismatch"
+            }
+          }
+        }
+      ],
+      "inputs": {
+        "sourceHash": "45ae7bd2bcae50ec30989eb65b716e0abcb1d007b64848058bc4369d159860e3",
+        "mentions": [
+          {
+            "mentionId": 12787,
+            "inputHash": "f7491ceaf28dfe54b91be2882779a422c99b8a7917557f3813548c66d59f14c3"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d",
+          "city": "济南",
+          "canonical_name": "明水古城",
+          "primary_place_id": 5481,
+          "aliases": [
+            "明水古城"
+          ],
+          "legacy_ids": [
+            "69b816cda273f29ed9296314fbe6f52d"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "娱乐"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_text_subject_mismatch",
+              "file": "priority-cities/济南/description-source-review-01.json",
+              "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+              "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5481,
+          "entity_id": "69b816cda273f29ed9296314fbe6f52d"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "abc624edea07111dc19aa79dfbb18289",
+          "city": "济南",
+          "canonical_name": "济南野生动物园",
+          "primary_place_id": 5974,
+          "aliases": [
+            "济南野生动物园"
+          ],
+          "legacy_ids": [
+            "abc624edea07111dc19aa79dfbb18289"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "娱乐"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_text_subject_mismatch",
+              "file": "priority-cities/济南/description-source-review-01.json",
+              "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+              "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5974,
+          "entity_id": "abc624edea07111dc19aa79dfbb18289"
+        }
+      ]
+    }
+  ]
+}

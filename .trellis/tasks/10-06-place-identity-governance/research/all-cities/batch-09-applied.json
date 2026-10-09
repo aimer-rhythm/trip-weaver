@@ -1,0 +1,1690 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 8,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "1c37774f673afed61066011e157e544d",
+            "8fc58c8c72a37525b8574ac798393a58"
+          ],
+          "names": [
+            "台湾奶香脆皮麻花",
+            "奶香脆皮麻花"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "083e3c3dacac00065603cff6b51ec0de",
+            "31d1664e1fcd59b5abe1689bfd5addd7"
+          ],
+          "names": [
+            "芙蓉楼百年鲁菜馆",
+            "芙蓉楼鲁菜馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "2ee2f25ecdeac28e3edf7a5296a3bfed",
+          "city": "济南",
+          "canonical_name": "曲水亭",
+          "primary_place_id": 5493,
+          "aliases": [
+            "曲水亭"
+          ],
+          "legacy_ids": [
+            "2ee2f25ecdeac28e3edf7a5296a3bfed"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "c9c9ce7c33c95b71b859f0ab30bf7136",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "c9c9ce7c33c95b71b859f0ab30bf7136",
+          "city": "济南",
+          "canonical_name": "曲水亭街",
+          "primary_place_id": 5352,
+          "aliases": [
+            "曲水亭",
+            "曲水亭街"
+          ],
+          "legacy_ids": [
+            "2ee2f25ecdeac28e3edf7a5296a3bfed",
+            "c9c9ce7c33c95b71b859f0ab30bf7136"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.669299,
+            "lng": 117.024303,
+            "address": "山东省济南市历下区大明湖街道曲水亭街",
+            "geoStatus": "reviewed_source",
+            "category": "文化"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                366
+              ],
+              "conclusion": "12819/11565同篇明确列出东更道、珍池街、曲水亭、双忠祠街的老街散步路线，曲水亭在本批是曲水亭街简称而非单独亭子；采用现有街道主体定位，保留原成员坐标追溯。",
+              "sourcePlaceIds": [
+                "5493",
+                "5352"
+              ],
+              "mentions": [
+                {
+                  "id": "12819",
+                  "name": "曲水亭",
+                  "quote": "没有浓重的商业味儿",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd"
+                },
+                {
+                  "id": "11565",
+                  "name": "曲水亭",
+                  "quote": "没有浓重的商业味儿，在旧旧的巷子里散步",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6975ac6f000000001a02b8dd"
+                },
+                {
+                  "id": "12972",
+                  "name": "曲水亭街",
+                  "quote": "“家家泉水，户户垂杨”的精华",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a64569c000000000402b9b4"
+                },
+                {
+                  "id": "12957",
+                  "name": "曲水亭街",
+                  "quote": "超多网红拍照机位，随手拍都好看",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6abbd1ba000000001c00f7a0"
+                },
+                {
+                  "id": "12945",
+                  "name": "曲水亭街",
+                  "quote": "泉水穿街而过，水底是水草摇曳，岸上是柳树低垂，很岁月静好",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0aac60000000012027079"
+                },
+                {
+                  "id": "12933",
+                  "name": "曲水亭街",
+                  "quote": "曲水亭街",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5352",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 36.669299,
+                "lng": 117.024303,
+                "address": "山东省济南市历下区大明湖街道曲水亭街",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 36.669299,
+              "lng": 117.024303,
+              "address": "山东省济南市历下区大明湖街道曲水亭街",
+              "geoStatus": "reviewed_source",
+              "category": "文化"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-batch09-context.json",
+              "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+              "mentionIds": [
+                11565
+              ],
+              "conclusion": "12819/11565同篇明确列出东更道、珍池街、曲水亭、双忠祠街的老街散步路线，曲水亭在本批是曲水亭街简称而非单独亭子；采用现有街道主体定位，保留原成员坐标追溯。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5352,
+          "entity_id": "c9c9ce7c33c95b71b859f0ab30bf7136"
+        },
+        {
+          "place_id": 5493,
+          "entity_id": "c9c9ce7c33c95b71b859f0ab30bf7136"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "2caab5c5038a94f91657ae16110dd56e",
+          "city": "济南",
+          "canonical_name": "洪家楼天主教堂",
+          "primary_place_id": 5379,
+          "aliases": [
+            "洪家楼天主教堂",
+            "洪家楼教堂"
+          ],
+          "legacy_ids": [
+            "2caab5c5038a94f91657ae16110dd56e",
+            "c639ca33bd3d893f11f072f3c81d193a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.686459,
+            "lng": 117.066241,
+            "address": "",
+            "geoStatus": "reviewed_source",
+            "category": "文化"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                370
+              ],
+              "conclusion": "12875同一篇路线写洪家楼天主教堂，景点介绍写洪家楼教堂并描述哥特式双塔；12803同样指该建筑，证明是同一机构全称和简称，不与其他济南教堂混同。",
+              "sourcePlaceIds": [
+                "5379",
+                "5946"
+              ],
+              "mentions": [
+                {
+                  "id": "12875",
+                  "name": "洪家楼天主教堂",
+                  "quote": "哥特式建筑，双塔顶部造型精美",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8577520000000028006d19"
+                },
+                {
+                  "id": "12795",
+                  "name": "洪家楼天主教堂",
+                  "quote": "洪家楼天主教堂",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1fde47000000002200a948"
+                },
+                {
+                  "id": "12774",
+                  "name": "洪家楼天主教堂",
+                  "quote": "哥特式建筑风格，教堂的天花板真的超美",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/68ad5ac9000000001d01b0f6"
+                },
+                {
+                  "id": "12682",
+                  "name": "洪家楼天主教堂",
+                  "quote": "day3：洪家楼天主教堂—山东省博物馆—山东美术馆—经三路老商埠",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aac3a64000000001203e0f4"
+                },
+                {
+                  "id": "12902",
+                  "name": "洪家楼教堂",
+                  "quote": "有时间可以去洪家楼教堂和于家桥看看",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aafa63900000000120274e3"
+                },
+                {
+                  "id": "12803",
+                  "name": "洪家楼教堂",
+                  "quote": "哥特式复古建筑，尖顶彩绘超出片",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f"
+                },
+                {
+                  "id": "12578",
+                  "name": "洪家楼教堂",
+                  "quote": "出片的景点真的不要太多",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6856c487000000001202dfa1"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5379",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 36.686459,
+                "lng": 117.066241,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 36.686459,
+              "lng": 117.066241,
+              "address": "",
+              "geoStatus": "reviewed_source",
+              "category": "文化"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-batch09-context.json",
+              "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+              "mentionIds": [
+                12875,
+                12803
+              ],
+              "conclusion": "12875同一篇路线写洪家楼天主教堂，景点介绍写洪家楼教堂并描述哥特式双塔；12803同样指该建筑，证明是同一机构全称和简称，不与其他济南教堂混同。"
+            }
+          ]
+        },
+        {
+          "entity_id": "c639ca33bd3d893f11f072f3c81d193a",
+          "city": "济南",
+          "canonical_name": "洪家楼教堂",
+          "primary_place_id": 5946,
+          "aliases": [
+            "洪家楼教堂"
+          ],
+          "legacy_ids": [
+            "c639ca33bd3d893f11f072f3c81d193a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "2caab5c5038a94f91657ae16110dd56e",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5379,
+          "entity_id": "2caab5c5038a94f91657ae16110dd56e"
+        },
+        {
+          "place_id": 5946,
+          "entity_id": "2caab5c5038a94f91657ae16110dd56e"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "404621ad6aef2a8247de6a28acdfb2e7",
+          "city": "济南",
+          "canonical_name": "西更道",
+          "primary_place_id": 5949,
+          "aliases": [
+            "西更道"
+          ],
+          "legacy_ids": [
+            "404621ad6aef2a8247de6a28acdfb2e7"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": "a76a124615e676af06c7a75968519280",
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "a76a124615e676af06c7a75968519280",
+          "city": "济南",
+          "canonical_name": "西更道街",
+          "primary_place_id": 5391,
+          "aliases": [
+            "西更道",
+            "西更道街"
+          ],
+          "legacy_ids": [
+            "404621ad6aef2a8247de6a28acdfb2e7",
+            "a76a124615e676af06c7a75968519280"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 36.666317,
+            "lng": 117.024442,
+            "address": "",
+            "geoStatus": "reviewed_source",
+            "category": "文化"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_source_snapshot",
+              "file": "all-cities/source-snapshot.json",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "reviewIds": [
+                373
+              ],
+              "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。",
+              "sourcePlaceIds": [
+                "5949",
+                "5391"
+              ],
+              "mentions": [
+                {
+                  "id": "12586",
+                  "name": "西更道",
+                  "quote": "连接泉城路和曲水亭街的老街道",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/686798130000000010026314"
+                },
+                {
+                  "id": "12762",
+                  "name": "西更道街",
+                  "quote": "济南古城区，一路向北，路上有一些小景点",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6908c82e0000000007033c21"
+                },
+                {
+                  "id": "12723",
+                  "name": "西更道街",
+                  "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+                },
+                {
+                  "id": "11457",
+                  "name": "西更道街",
+                  "quote": "5号拍老舍笔下的济南墙 1号拍簪花少女墙",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ea789000000002103d713"
+                }
+              ]
+            },
+            {
+              "kind": "primary_source_geometry",
+              "sourcePlaceId": "5391",
+              "coordinateSystem": "GCJ-02",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "original": {
+                "lat": 36.666317,
+                "lng": 117.024442,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "lat": 36.666317,
+              "lng": 117.024442,
+              "address": "",
+              "geoStatus": "reviewed_source",
+              "category": "文化"
+            },
+            {
+              "kind": "reviewed_full_note_context",
+              "file": "all-cities/jinan-batch09-context.json",
+              "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+              "mentionIds": [
+                12586,
+                12762
+              ],
+              "conclusion": "12586明确西更道是连接泉城路与曲水亭街的老街，12762/12723以西更道街称同一路段并描述路边门牌，两源坐标一致；补全街字而不扩大到周边古城区。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5391,
+          "entity_id": "a76a124615e676af06c7a75968519280"
+        },
+        {
+          "place_id": 5949,
+          "entity_id": "a76a124615e676af06c7a75968519280"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "8808e16f1472d0df17bed729a2e54e83",
+          "city": "济南",
+          "canonical_name": "趵突泉",
+          "primary_place_id": 5349,
+          "aliases": [
+            "趵突泉"
+          ],
+          "legacy_ids": [
+            "8808e16f1472d0df17bed729a2e54e83"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "d14cc0c8a631defad91e60d475b7aedd",
+          "city": "济南",
+          "canonical_name": "趵突泉公园",
+          "primary_place_id": 5366,
+          "aliases": [
+            "趵突泉公园"
+          ],
+          "legacy_ids": [
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5349,
+          "entity_id": "8808e16f1472d0df17bed729a2e54e83"
+        },
+        {
+          "place_id": 5366,
+          "entity_id": "d14cc0c8a631defad91e60d475b7aedd"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 364,
+          "fingerprint": "ccbf85f5080d6505ec7cb401e1336478f2ed47c28e5e43f2bf98a49f13bfaa0d",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "趵突泉",
+              "趵突泉公园"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "8808e16f1472d0df17bed729a2e54e83",
+              "d14cc0c8a631defad91e60d475b7aedd"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-364",
+              "verdict": "uncertain",
+              "explanation": "趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    364
+                  ],
+                  "conclusion": "趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。",
+                  "sourcePlaceIds": [
+                    "5349",
+                    "5366"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    12662,
+                    12762,
+                    12643
+                  ],
+                  "conclusion": "趵突泉源同时混用公园游览和核心泉池：12662明确先奔趵突泉、再逛园子，12758明确景区里面除了趵突泉外有其他泉和纪念馆；不能把全部提及与公园直接同义归并。须先按原文拆分核心泉池与景区语境，并核对普利街29号错误定位。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a",
+          "city": "济南",
+          "canonical_name": "五龙潭公园",
+          "primary_place_id": 5359,
+          "aliases": [
+            "五龙潭公园"
+          ],
+          "legacy_ids": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "f65621879204866b17b645554f9848db",
+          "city": "济南",
+          "canonical_name": "五龙潭",
+          "primary_place_id": 5350,
+          "aliases": [
+            "五龙潭"
+          ],
+          "legacy_ids": [
+            "f65621879204866b17b645554f9848db"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5350,
+          "entity_id": "f65621879204866b17b645554f9848db"
+        },
+        {
+          "place_id": 5359,
+          "entity_id": "d7dfe7ae5196779e613b8fa0d9bacf5a"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 365,
+          "fingerprint": "0b59ea7086161412a7f05a1f0a7acc090952545d3f4d0058a675565f9d07816c",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "五龙潭公园",
+              "五龙潭"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "d7dfe7ae5196779e613b8fa0d9bacf5a",
+              "f65621879204866b17b645554f9848db"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-365",
+              "verdict": "uncertain",
+              "explanation": "五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    365
+                  ],
+                  "conclusion": "五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。",
+                  "sourcePlaceIds": [
+                    "5359",
+                    "5350"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    12662
+                  ],
+                  "conclusion": "五龙潭源多指公园整体，但12927在公园提及中明确五龙潭离门口很近，原文存在潭体与公园两种粒度；12663的园区进出路线不能证明所有潭体提及同义。需分配源提及到公园与主潭后治理，暂不按去公园后缀强并。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a",
+          "city": "济南",
+          "canonical_name": "民族大街",
+          "primary_place_id": 5372,
+          "aliases": [
+            "民族大街"
+          ],
+          "legacy_ids": [
+            "48bbca08dc8a0fd00189dbe41cfa127a"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "79e713e197315afb0440835502699789",
+          "city": "济南",
+          "canonical_name": "民族大街市场",
+          "primary_place_id": 5961,
+          "aliases": [
+            "民族大街市场"
+          ],
+          "legacy_ids": [
+            "79e713e197315afb0440835502699789"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5372,
+          "entity_id": "48bbca08dc8a0fd00189dbe41cfa127a"
+        },
+        {
+          "place_id": 5961,
+          "entity_id": "79e713e197315afb0440835502699789"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 369,
+          "fingerprint": "f70bf44d39d737f3d2f1777058993e960533d4497d2eac1a32d70f10c46218f2",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "民族大街",
+              "民族大街市场"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "48bbca08dc8a0fd00189dbe41cfa127a",
+              "79e713e197315afb0440835502699789"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-369",
+              "verdict": "part_of",
+              "explanation": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    369
+                  ],
+                  "conclusion": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。",
+                  "sourcePlaceIds": [
+                    "5372",
+                    "5961"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    12643
+                  ],
+                  "conclusion": "12754只说在民族大街吃早餐，12643明确民族大街市场是当地菜市场、前段小吃后段卖菜；市场是街道内的具体经营区域，街道其他提及不能全部归市场。"
+                }
+              ],
+              "childEntityId": "79e713e197315afb0440835502699789"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "326cd34165dd905d31af6cd929a0deda",
+          "city": "济南",
+          "canonical_name": "杨家牛肉烧饼",
+          "primary_place_id": 5427,
+          "aliases": [
+            "杨家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "326cd34165dd905d31af6cd929a0deda"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "665e9903d644a1b41ce76e27467fb353",
+          "city": "济南",
+          "canonical_name": "牛肉烧饼",
+          "primary_place_id": 5388,
+          "aliases": [
+            "牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5388,
+          "entity_id": "665e9903d644a1b41ce76e27467fb353"
+        },
+        {
+          "place_id": 5427,
+          "entity_id": "326cd34165dd905d31af6cd929a0deda"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 371,
+          "fingerprint": "ef2e2091804fb1a46cd11b8d324466bcc49ef213c5c14dbce688c234ce1b26fd",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "杨家牛肉烧饼",
+              "牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "326cd34165dd905d31af6cd929a0deda",
+              "665e9903d644a1b41ce76e27467fb353"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-371",
+              "verdict": "uncertain",
+              "explanation": "泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    371
+                  ],
+                  "conclusion": "泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。",
+                  "sourcePlaceIds": [
+                    "5427",
+                    "5388"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    11629
+                  ],
+                  "conclusion": "泛称牛肉烧饼只定位回民小区排队王；11629同一篇在清真南大寺同时推荐杨家与黄老太，故回民小区信息不足以指定杨家。两实体旧地图位置还远离原文区域，需门头与门牌佐证。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "665e9903d644a1b41ce76e27467fb353",
+          "city": "济南",
+          "canonical_name": "牛肉烧饼",
+          "primary_place_id": 5388,
+          "aliases": [
+            "牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "e394dd2fefdf968a0bbea165941a8652",
+          "city": "济南",
+          "canonical_name": "周记牛肉烧饼",
+          "primary_place_id": 5428,
+          "aliases": [
+            "周记牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "e394dd2fefdf968a0bbea165941a8652"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5388,
+          "entity_id": "665e9903d644a1b41ce76e27467fb353"
+        },
+        {
+          "place_id": 5428,
+          "entity_id": "e394dd2fefdf968a0bbea165941a8652"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 372,
+          "fingerprint": "22be5001045ed36c2139ec176b4b05ffaf84c71891fb73743532771aae52224b",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "牛肉烧饼",
+              "周记牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "665e9903d644a1b41ce76e27467fb353",
+              "e394dd2fefdf968a0bbea165941a8652"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-372",
+              "verdict": "distinct",
+              "explanation": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    372
+                  ],
+                  "conclusion": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。",
+                  "sourcePlaceIds": [
+                    "5388",
+                    "5428"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    11630
+                  ],
+                  "conclusion": "牛肉烧饼泛称的两条源都明确回民小区；11630明确周记在经三路，并和回民小区杨家/黄老太分列，不能将两处门店认成同一实体。地图误定位不作为归并依据。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "1c37774f673afed61066011e157e544d",
+          "city": "济南",
+          "canonical_name": "台湾奶香脆皮麻花",
+          "primary_place_id": 5471,
+          "aliases": [
+            "台湾奶香脆皮麻花"
+          ],
+          "legacy_ids": [
+            "1c37774f673afed61066011e157e544d"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "8fc58c8c72a37525b8574ac798393a58",
+          "city": "济南",
+          "canonical_name": "奶香脆皮麻花",
+          "primary_place_id": 5985,
+          "aliases": [
+            "奶香脆皮麻花"
+          ],
+          "legacy_ids": [
+            "8fc58c8c72a37525b8574ac798393a58"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5471,
+          "entity_id": "1c37774f673afed61066011e157e544d"
+        },
+        {
+          "place_id": 5985,
+          "entity_id": "8fc58c8c72a37525b8574ac798393a58"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 374,
+          "fingerprint": "a8582ff65eb49ddd7b95bea3b636d569d23f3fae520f9e36bec6b67f60f062f6",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "台湾奶香脆皮麻花",
+              "奶香脆皮麻花"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "1c37774f673afed61066011e157e544d",
+              "8fc58c8c72a37525b8574ac798393a58"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-374",
+              "verdict": "uncertain",
+              "explanation": "11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    374
+                  ],
+                  "conclusion": "11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。",
+                  "sourcePlaceIds": [
+                    "5471",
+                    "5985"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    11675,
+                    12894
+                  ],
+                  "conclusion": "11675明确台湾奶香脆皮麻花在洪家楼北路，12894只列奶香脆皮麻花、无门牌且仅建议有时间再去洪家楼；相同地图落点不能证明作者吃的是同家店，需对应门头或定位。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "908b0aec5ee27f58554a8442f8eef1de",
+          "city": "济南",
+          "canonical_name": "起凤桥",
+          "primary_place_id": 5479,
+          "aliases": [
+            "起凤桥"
+          ],
+          "legacy_ids": [
+            "908b0aec5ee27f58554a8442f8eef1de"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "9664ac094b1fc9e794ccaaa4e77aa9fa",
+          "city": "济南",
+          "canonical_name": "起凤桥街",
+          "primary_place_id": 5960,
+          "aliases": [
+            "起凤桥街"
+          ],
+          "legacy_ids": [
+            "9664ac094b1fc9e794ccaaa4e77aa9fa"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5479,
+          "entity_id": "908b0aec5ee27f58554a8442f8eef1de"
+        },
+        {
+          "place_id": 5960,
+          "entity_id": "9664ac094b1fc9e794ccaaa4e77aa9fa"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 375,
+          "fingerprint": "28bad7b9e13ff3031d8bbd1ce788da869c582b1ddaa438c9443a7616888d4343",
+          "status": "REJECTED",
+          "detail": {
+            "names": [
+              "起凤桥",
+              "起凤桥街"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "908b0aec5ee27f58554a8442f8eef1de",
+              "9664ac094b1fc9e794ccaaa4e77aa9fa"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-375",
+              "verdict": "part_of",
+              "explanation": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    375
+                  ],
+                  "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。",
+                  "sourcePlaceIds": [
+                    "5479",
+                    "5960"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    12643,
+                    12626
+                  ],
+                  "conclusion": "12643明确从芙蓉街32号拐进起凤桥街后可以打卡起凤桥，桥是街上的具体子项；12626虽以街名介绍小桥流水，也不能把整个街和桥当作同义。"
+                }
+              ],
+              "childEntityId": "908b0aec5ee27f58554a8442f8eef1de"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9",
+          "city": "济南",
+          "canonical_name": "穆得老周家牛肉烧饼",
+          "primary_place_id": 5484,
+          "aliases": [
+            "穆得老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "6f0051f4dcf714df1a9700bc2fb993d9"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8",
+          "city": "济南",
+          "canonical_name": "老周家牛肉烧饼",
+          "primary_place_id": 5483,
+          "aliases": [
+            "老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5483,
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8"
+        },
+        {
+          "place_id": 5484,
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 376,
+          "fingerprint": "147b14f6b2374dddc62e4dfbf5532f1bd0fb4f9fba576d31d7597ec905345646",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "穆得老周家牛肉烧饼",
+              "老周家牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "6f0051f4dcf714df1a9700bc2fb993d9",
+              "d025994fc1b1449de922fa97abdd96f8"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-376",
+              "verdict": "uncertain",
+              "explanation": "11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    376
+                  ],
+                  "conclusion": "11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。",
+                  "sourcePlaceIds": [
+                    "5484",
+                    "5483"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    11510
+                  ],
+                  "conclusion": "11510明确老周家为连锁、就近选择；穆得老周家源在冻结快照没有精确同名提及。两地图分别在普利街与老城东侧，缺少同店分支证据，须补原始生成来源及门牌。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+          "city": "济南",
+          "canonical_name": "穆德老周家牛肉烧饼",
+          "primary_place_id": 6003,
+          "aliases": [
+            "穆德老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8",
+          "city": "济南",
+          "canonical_name": "老周家牛肉烧饼",
+          "primary_place_id": 5483,
+          "aliases": [
+            "老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5483,
+          "entity_id": "d025994fc1b1449de922fa97abdd96f8"
+        },
+        {
+          "place_id": 6003,
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 377,
+          "fingerprint": "247e069b0890e2756e49f8d7b1b5750063afae7dbc6ee3cb262737bd532b125a",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "穆德老周家牛肉烧饼",
+              "老周家牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "bb53ff904464fb67e2ddf46d7ed0d2b8",
+              "d025994fc1b1449de922fa97abdd96f8"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-377",
+              "verdict": "uncertain",
+              "explanation": "11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    377
+                  ],
+                  "conclusion": "11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。",
+                  "sourcePlaceIds": [
+                    "6003",
+                    "5483"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    11510,
+                    12961
+                  ],
+                  "conclusion": "11510为老周家连锁泛称；12961穆德老周家只说泉源之眼夜游后顺路、离五龙潭附近酒店不远，不能从游览顺序唯一确定分店，也与当前远郊坐标矛盾。需实际分店地址和坐标核实。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9",
+          "city": "济南",
+          "canonical_name": "穆得老周家牛肉烧饼",
+          "primary_place_id": 5484,
+          "aliases": [
+            "穆得老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "6f0051f4dcf714df1a9700bc2fb993d9"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+          "city": "济南",
+          "canonical_name": "穆德老周家牛肉烧饼",
+          "primary_place_id": 6003,
+          "aliases": [
+            "穆德老周家牛肉烧饼"
+          ],
+          "legacy_ids": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5484,
+          "entity_id": "6f0051f4dcf714df1a9700bc2fb993d9"
+        },
+        {
+          "place_id": 6003,
+          "entity_id": "bb53ff904464fb67e2ddf46d7ed0d2b8"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 378,
+          "fingerprint": "bd9b9fe6a4ce5eea4bc08f864f1dabdb31eda1ec499d1c01cfe9429c5bbc4890",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "穆得老周家牛肉烧饼",
+              "穆德老周家牛肉烧饼"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "6f0051f4dcf714df1a9700bc2fb993d9",
+              "bb53ff904464fb67e2ddf46d7ed0d2b8"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-378",
+              "verdict": "uncertain",
+              "explanation": "穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    378
+                  ],
+                  "conclusion": "穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。",
+                  "sourcePlaceIds": [
+                    "5484",
+                    "6003"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    12961
+                  ],
+                  "conclusion": "穆得/穆德可能是错字，但穆得源缺精确同名原始提及，12961穆德源又未指定分店；字形与品牌接近不能跨连锁分店合并。须补穆得源的原始生成依据和双方门牌。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "083e3c3dacac00065603cff6b51ec0de",
+          "city": "济南",
+          "canonical_name": "芙蓉楼百年鲁菜馆",
+          "primary_place_id": 5983,
+          "aliases": [
+            "芙蓉楼百年鲁菜馆"
+          ],
+          "legacy_ids": [
+            "083e3c3dacac00065603cff6b51ec0de"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        },
+        {
+          "entity_id": "31d1664e1fcd59b5abe1689bfd5addd7",
+          "city": "济南",
+          "canonical_name": "芙蓉楼鲁菜馆",
+          "primary_place_id": 5987,
+          "aliases": [
+            "芙蓉楼鲁菜馆"
+          ],
+          "legacy_ids": [
+            "31d1664e1fcd59b5abe1689bfd5addd7"
+          ],
+          "revision": 1,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5983,
+          "entity_id": "083e3c3dacac00065603cff6b51ec0de"
+        },
+        {
+          "place_id": 5987,
+          "entity_id": "31d1664e1fcd59b5abe1689bfd5addd7"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 380,
+          "fingerprint": "e90a2651114a4e7f76ee609b950fb26916845a397908a7a2b307f00e93f7e797",
+          "status": "PENDING",
+          "detail": {
+            "names": [
+              "芙蓉楼百年鲁菜馆",
+              "芙蓉楼鲁菜馆"
+            ],
+            "reason": "similar_name",
+            "entityIds": [
+              "083e3c3dacac00065603cff6b51ec0de",
+              "31d1664e1fcd59b5abe1689bfd5addd7"
+            ],
+            "assessment": {
+              "key": "all-cities-20261006-batch-09-review-380",
+              "verdict": "uncertain",
+              "explanation": "芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。",
+              "evidence": [
+                {
+                  "kind": "reviewed_source_snapshot",
+                  "file": "all-cities/source-snapshot.json",
+                  "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+                  "reviewIds": [
+                    380
+                  ],
+                  "conclusion": "芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。",
+                  "sourcePlaceIds": [
+                    "5983",
+                    "5987"
+                  ]
+                },
+                {
+                  "kind": "reviewed_full_note_context",
+                  "file": "all-cities/jinan-batch09-context.json",
+                  "sha256": "86e4068994384bb62cda9cf5fbae935dc3079c36d4fce2db8449243db5260b15",
+                  "mentionIds": [
+                    12854
+                  ],
+                  "conclusion": "芙蓉楼百年鲁菜馆在冻结源没有精确同名提及，12854只给芙蓉街老街餐馆描述和芙蓉楼鲁菜馆标签，无具体门牌。两地图同点仅是解析结果，需核对百年名称的原始门头/店铺资料，不能推定同店。"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

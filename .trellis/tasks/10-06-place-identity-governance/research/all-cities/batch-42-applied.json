@@ -1,0 +1,1622 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "city": "济南",
+          "canonical_name": "大明湖",
+          "primary_place_id": 5348,
+          "aliases": [
+            "大明湖",
+            "大明湖公园",
+            "大明湖景区"
+          ],
+          "legacy_ids": [
+            "1e1c6d4109dc6a10c959a817de9ed799",
+            "39c1c314e86091e13d382c2c716cc2ad",
+            "550d6810857b4487aae8ce39c9ee093b"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "ids": [
+                12687,
+                12926,
+                12959,
+                12772
+              ],
+              "kind": "source_mentions",
+              "conclusion": "同一湖泊景区的游览称呼；超然楼与南门不属于同义词"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b"
+        },
+        {
+          "place_id": 5953,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b"
+        },
+        {
+          "place_id": 5968,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5348,
+          "content_profile": null,
+          "typical_visit_minutes": 120,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 280.9,
+          "theme_tags": [
+            "亲子",
+            "住宿",
+            "历史人文"
+          ],
+          "is_active": true
+        },
+        {
+          "id": 5953,
+          "content_profile": {
+            "intro": "大明湖位于济南市历下区，是济南三大历史名胜之一，也是山东省文物保护单位。湖畔分布着历下亭、铁公祠、北极阁、南丰祠等众多纪念古人政绩行踪的建筑，人文景观十分著名。湖东北岸的超然楼为仿木结构高楼，楼内设展厅介绍济南历史文化和木雕文化，可登高览湖景。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-06T03:07:34.481087+00:00",
+            "highlights": [
+              {
+                "text": "大明湖位于济南市历下区，是济南三大历史名胜之一，也是山东省文物保护单位。",
+                "basis": "web",
+                "quote": "**大明湖**位于中国[山东省](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81 \"山东省\")[济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[历下区](/wiki/%E5%8E%86%E4%B8%8B%E5%8C%BA \"历下区\")，是济南三大历史名胜之一。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "**大明湖**位于中国[山东省](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81 \"山东省\")[济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[历下区](/wiki/%E5%8E%86%E4%B8%8B%E5%8C%BA \"历下区\")，是济南三大历史名胜之一。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  },
+                  {
+                    "quote": "| [山东省文物保护单位](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81%E6%96%87%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D \"山东省文物保护单位\") |",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                "observedAt": "2026-10-06T03:07:30Z"
+              },
+              {
+                "text": "湖畔分布着历下亭、铁公祠、北极阁、南丰祠等众多纪念古人政绩行踪的建筑，人文景观十分著名。",
+                "basis": "web",
+                "quote": "历史悠久的大明湖的人文景观也是极为著名。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "历史悠久的大明湖的人文景观也是极为著名。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  },
+                  {
+                    "quote": "多处建筑景观是为纪念古人政绩、行踪而修建，如历下亭、月下亭、铁公祠、小沧浪、北极阁、汇波楼、南丰祠、遐园、稼轩祠等，引得历代文人前来凭吊、吟咏。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  },
+                  {
+                    "quote": "北极阁位于北岸，是一所初建于元代的道观，供奉[玄天上帝](/wiki/%E7%8E%84%E5%A4%A9%E4%B8%8A%E5%B8%9D \"玄天上帝\")；",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  },
+                  {
+                    "quote": "南丰祠位于东北岸，是纪念[宋朝](/wiki/%E5%AE%8B%E6%9C%9D \"宋朝\")学者[曾巩](/wiki/%E6%9B%BE%E9%9E%8F \"曾巩\")的祠堂，1829年重建[[10]](#cite_note-10)。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                "observedAt": "2026-10-06T03:07:30Z"
+              },
+              {
+                "text": "湖东北岸的超然楼为仿木结构高楼，楼内设展厅介绍济南历史文化和木雕文化，可登高览湖景。",
+                "basis": "web",
+                "quote": "超然楼位于湖东北岸，是一座仿木结构钢筋混凝土建筑，建于2009年，高51.7米、共7层。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "超然楼位于湖东北岸，是一座仿木结构钢筋混凝土建筑，建于2009年，高51.7米、共7层。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  },
+                  {
+                    "quote": "楼内设置展厅，主题是济南当地历史文化和木雕文化。",
+                    "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                    "observedAt": "2026-10-06T03:07:30Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E6%98%8E%E6%B9%96",
+                "observedAt": "2026-10-06T03:07:30Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 24.0,
+          "theme_tags": [
+            "历史人文"
+          ],
+          "is_active": true
+        },
+        {
+          "id": 5968,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "自然风光"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5348,
+          "mention_count_30d": 61,
+          "positive_count_30d": 61,
+          "source_count": 50,
+          "top_reasons": [
+            {
+              "reason": "免费，傍晚可看超然楼亮灯夜景，游玩2小时",
+              "evidence": "傍晚看超然楼亮灯夜景"
+            },
+            {
+              "reason": "济南核心景点，可赏荷花",
+              "evidence": "大明湖荷花"
+            },
+            {
+              "reason": "可看超然楼亮灯，有游船项目",
+              "evidence": "想看超然楼亮灯，那就凑好时间玩到晚上"
+            },
+            {
+              "reason": "济南必玩景区，免费",
+              "evidence": "趵突泉、泉城广场、大明湖等溜达着就能到"
+            },
+            {
+              "reason": "济南著名湖泊，列入推荐路线第二天。",
+              "evidence": "day2：大明湖—曲水亭街—百花洲—珍珠泉—芙蓉街"
+            }
+          ],
+          "recommend_score": 152.0
+        },
+        {
+          "canonical_place_id": 5953,
+          "mention_count_30d": 3,
+          "positive_count_30d": 3,
+          "source_count": 3,
+          "top_reasons": [
+            {
+              "reason": "路线起点，热门打卡点之一",
+              "evidence": "①大明湖景区(南门)"
+            },
+            {
+              "reason": "南门进沿路有卖荷花和超然楼手串，景色优美",
+              "evidence": "南门进，沿路有卖荷花的"
+            },
+            {
+              "reason": "打卡超然楼、夏雨荷同款点位，沿湖风景绝美",
+              "evidence": "打卡超然楼、夏雨荷同款点位，沿湖吹吹风，风景绝美"
+            }
+          ],
+          "recommend_score": 12.5
+        },
+        {
+          "canonical_place_id": 5968,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "四面荷花三面柳的典型景观，体现济南水乡特色",
+              "evidence": "四面荷花三面柳说的应该就是这里了"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7755,
+          "canonical_place_id": 5348,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖",
+          "evidence_summary": "吃完饭过马路即到，附近景点集中，适合游览"
+        },
+        {
+          "id": 7756,
+          "canonical_place_id": 5348,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖",
+          "evidence_summary": "傍晚六点左右去可看落日和夜景。"
+        },
+        {
+          "id": 7757,
+          "canonical_place_id": 5348,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖",
+          "evidence_summary": "免费，傍晚可看超然楼亮灯夜景，游玩2小时"
+        },
+        {
+          "id": 8625,
+          "canonical_place_id": 5348,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖",
+          "evidence_summary": "济南核心景点，可赏荷花"
+        },
+        {
+          "id": 8626,
+          "canonical_place_id": 5348,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖",
+          "evidence_summary": "可看超然楼亮灯，有游船项目"
+        },
+        {
+          "id": 8686,
+          "canonical_place_id": 5953,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖景区",
+          "evidence_summary": "路线起点，热门打卡点之一"
+        },
+        {
+          "id": 8687,
+          "canonical_place_id": 5953,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖景区",
+          "evidence_summary": "南门进沿路有卖荷花和超然楼手串，景色优美"
+        },
+        {
+          "id": 8688,
+          "canonical_place_id": 5953,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖景区",
+          "evidence_summary": "打卡超然楼、夏雨荷同款点位，沿湖风景绝美"
+        },
+        {
+          "id": 8703,
+          "canonical_place_id": 5968,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 大明湖公园",
+          "evidence_summary": "四面荷花三面柳的典型景观，体现济南水乡特色"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4833,
+          "from_name": "大明湖",
+          "to_name": "超然楼",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 9,
+          "evidence": "费景点附地图 路线：大明湖北门➡️超然楼➡️曲水亭（百花洲）",
+          "source_url": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+        },
+        {
+          "id": 4834,
+          "from_name": "大明湖",
+          "to_name": "曲水亭街",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 11,
+          "evidence": "️世茂广场（饭）➡️曲水亭街➡️大明湖➡️百花洲➡️芙蓉街",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+        },
+        {
+          "id": 4841,
+          "from_name": "大明湖",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": " → 曲水亭街 → 大明湖 → 黑虎泉 → 宽厚里（或打车",
+          "source_url": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+        },
+        {
+          "id": 4846,
+          "from_name": "大明湖",
+          "to_name": "百花洲",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 2,
+          "evidence": "饭）➡️曲水亭街➡️大明湖➡️百花洲➡️芙蓉街 D2：1",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+        },
+        {
+          "id": 5003,
+          "from_name": "大明湖",
+          "to_name": "芙蓉街",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "→曲水亭街→解放阁→芙蓉街→大明湖→超然楼 🖼Day2",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6af6050000000010029b0f?xsec_token=ABBymvaQ5g7x3zh9QMR7IEPEDMFYGvAtrFTpmoi7Zz4Gk=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5348,
+          "city": "济南",
+          "name_keys": [
+            "大明湖",
+            "大明湖公园",
+            "大明湖景区"
+          ],
+          "entity_ids": [
+            "550d6810857b4487aae8ce39c9ee093b"
+          ],
+          "source_hash": "267d0a8807bf0ac3238379edb4d2d88709ada8afca8b0d5825d9c855d2e17b3d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/daminghu-source-review-01.json",
+              "kind": "reviewed_joint_lake_scope",
+              "sha256": "3f801059be6a80806aaf4b04d078e1802f3f2fe7bc68768047115302224f68a7",
+              "conclusion": "保留用户最初点名及已有正文互证的湖泊景区三名同义、旧稳定ID与自然类别；不把门、灯塑、摄影点、餐馆或酒店合并成景区。",
+              "mentionIds": [
+                11342,
+                11379,
+                11387,
+                11402,
+                11411,
+                11421,
+                11429,
+                11434,
+                11450,
+                11462,
+                11473,
+                11494,
+                11507,
+                11522,
+                11539,
+                11578,
+                11581,
+                11594,
+                11598,
+                11601,
+                11604,
+                11611,
+                11627,
+                11683,
+                11693,
+                11695,
+                11703,
+                11705,
+                12570,
+                12575,
+                12629,
+                12641,
+                12649,
+                12654,
+                12661,
+                12664,
+                12671,
+                12677,
+                12687,
+                12700,
+                12707,
+                12712,
+                12728,
+                12733,
+                12748,
+                12764,
+                12772,
+                12779,
+                12794,
+                12802,
+                12814,
+                12832,
+                12839,
+                12853,
+                12860,
+                12873,
+                12900,
+                12908,
+                12921,
+                12923,
+                12926,
+                12947,
+                12959,
+                12973,
+                12979
+              ],
+              "sourcePlaceIds": [
+                5348,
+                5953,
+                5968
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "550d6810857b4487aae8ce39c9ee093b"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11342,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "dc203578b322711271205094caac47d9e5582ffee95a9886df121a09fcfbeade",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11379,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "a215000598ce9f16b0ea018427fff9a7ac4e9649a6049bc0088351b5bed57c7b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11387,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "d80bb75de95b550142fdea5ee197fda33511edbba6bea3748286e294ef40edb6",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11402,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "3bd2e34f75bfd9908944a8ab12fa3c5c5b5b172fc14b93ecd6c896786c6758c8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11411,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "0871e20cbac7dff387436c86e369e38bcc2a20b48bbb42f588d22d3b0803109f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11421,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "ca04fe8d23bd0ca2c7a049ae792931869420d5538bef1d7124683ce8286755b9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11429,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "dcd326260fe92004a681f309d8697e6f04e4b91be36d48b769ab6e393defa9f5",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11434,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "09f59ae74137f1a0d6fc90589e6ca9397ce8dc567bad037fb21b4441e2edad44",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11450,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "bfdb28ca6b70c52604f3d7e87630dd0729d62aaef0c065323c711f4ca6848b7e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11462,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "3df68fb1319e22a3696e033a26573b9a76b996c0b91cd0cde313a76813fb8999",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11473,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "42587bbf74a56e90ae6cb0fbba55d5d49d2c7eed56c15c93a1498940c9c63ac6",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11494,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "743da95ae04c0f44093edf349da62130dcb9afe66b7e40ed3652e5ddf2c23c4a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11507,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "122a8bee077c8d36209a19b2c6597c707b1dfeb26d7554aa1388eeca9e7fd44c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11522,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "3a72a9c55676e18ad414587b1a38995e42dfe15944b4ba44f10f0f52d1c2d248",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11539,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "ff5fc550134890e3702e7aa270731f90feb758781b04debfb972688a4ca93b21",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11578,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "bc75d09b09cc43ff1f405a9496e4ec996dd724cb7737bd79916bac9b2095bac6",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11581,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "ae883c3c1a540e9298cb167bb202da3d15f3ab734296b97f8a7b475a11b0b52e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11594,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11598,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "8c21af9414b5a9573d3043a4a62b45977fa36dde821c8a795e6d3110b24a1dc3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11601,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "d59dda51e4ed5ca21ebfae1b728b0aa64826672c9897a27a0453af48ffcef5ad",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11604,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "9756f825487b148759959c940c5ea7965b9ff0839a2a46b7643638137d6467f3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11611,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "91cf304c9cde9c73b3832edc0baa6d7a78de455c2e3bc28cf6c6ab3f7acfbc50",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11627,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "c8e808bb521e406967eeb1a747d653a481d69e3cb95b2be93b644ec7f9d4610d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11683,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "0c3e9d5d261f2225d0cf9855d01e44c9ba12de9b7f81d31b117b72e7d677fdbb",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11693,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "74d818a21b749c5492e3ecee25ec6eb73712bdbbfd0ef2c63e17a83dad150627",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11695,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "c9eab08ccd30803cfd8046d051c5b4c21cf91193ad1ad8bcab21faa379903db4",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11703,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "8f64e6bad28c6144fba6dec9072c684a7f7c3482f1fff7386983297621c6087b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 11705,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "4c53bfdf97f3987402cd77fe4544dc6056067a79703300fdeffd62bcdeca9064",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12570,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "a0f074a67c08be49ad2275f4c84fbed16393e28af1671da6f5e0b5b98f31057e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12575,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "984603851eb5b0860ef757d1de846de56b5f6973ba40092b7361ab2360c57764",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12629,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "3d791c021a49e342e72e6b5edc6bef5e8922cb3270bb03ca712b6bd5b51024dc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12641,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "c9d00f8cb81aa2ece1ec95293adcbac79807dedcaa8d2ba76b0f4fbe80aa6f7a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12649,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "d45eacbf5dea84a467b5e1a6f70f809bc83a241bca620cae3818ad3979c16a7e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12654,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "fb2a678a1c7464ee9cdc155b56e42a83ce0ebc4ab205a5d4087443af3b3a14f8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12661,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "f4446fa3337afb0edc1a649aa9a484a0c944542e4a3138093f9ef488442afe95",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12664,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "ad00acebb700cf56d3cf74f83be4a8cbabac6b0b1ea92e24f1d21c578f11d2b8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12671,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "c3517409147067b56ea23750afc3aeef6e2e61207a67a116f8ed7056bbded0dc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12677,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "274b598d4124b55e4c14b0687ff26298a23b2999efcc091d5e217cd96c3e3b97",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12687,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "967481a159b506d8e4c8a816a24c2a1b47295a5e0c0bc1d90ecea2da04b7812c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12700,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "951dbe71fc36c897f9fd0810406cabdb20d065a02a436d76416b98934858d0f5",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope",
+          "fact_exclusions": {
+            "visit_duration": {
+              "quote": "3：两公里距离然后到大明湖西南门进去往北走400米，想看大明湖中心就可以买前面码头的票，可以上岛十五分钟，50一位，整个船上时间30分钟内（但是有时候要等船，30分钟内会等到船）",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 12707,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "2172d878c917464cb6ef29a048caebee00bfc347343f2b2ae24d801de3a2d552",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12712,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "83597abf5c60e2955eddcfcf5e02f8e3cc22533fb3f9f7aeb387ff09978bce04",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12728,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "f826c538905d5552ad227240d6db541064556ada979314e39700e62cee96a377",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12733,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "796195042dd9892e8f7f77fdca07b23a67ef46b63565e9cdf222a52d1f769f3c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12748,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "ce20717b44535ca4163279dc3239a4c0c3123a4e5c8adfd256beddb3cb8b6946",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12764,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "db97f650504bba744e7a1bdadf61eb4cedf996c25fa091ddc0b656a069c04102",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12772,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "dbe953277c384143ed529d0669c1e9afeddc278482eea4fca8b1b59c3499d948",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12779,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "c43a2d64becd10fcf732b83209e5a60178ad3008e5244d0fbfee83715891647e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12794,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "d3a5c7b8142c66e3a864ec90ab7246a0e26e10b78029aa7d209b59b09a5e219e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12802,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "6f1b43d5fceeb2d6764614d352724e1fa1e9f836c84dc1e5e3eeed8e91982f7a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12814,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "85075a990e2dca08541fb1b673cb67d948420c20bc93c89775a0e05433140b5f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12832,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "bf481bc69588ebc6c83f2b49673500e4d488a567ece69d707cb8a4b55849ac97",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12839,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "3154e8c27bca40bcb9d4896d5327b00f3ac90b8eef1b1febb72ec857f378af3e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12853,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "dca7ec2aefa3852ee412d47ff8c5e26ba4c6dde9776c8873fbfec0f50a23cf75",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12860,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "1b47910f97beaad8787a3ecb9c8fb9cd36c10eafa306d18074564f22625d1fd3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12873,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "1502fe4cef025f7686e7c1489a63beb25b899826f687081ce9d8920b9cccc40b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12900,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "7ccecb25db584ef56ceb02b0064fdc7e32fea2cbd619c610a7bcc52ba2ee9d5c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12908,
+          "scope_place_id": 5348,
+          "entity_id": null,
+          "input_hash": "7967ca1bc02796fad4ad8ed6099f70373703977d385b29f76e29cd25ea077a2e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12921,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "8002827debd63aef1711e1a2c20d7dabae9df1d6b7666e15ade6ccd0cfb0f560",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12923,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "f65c68ab18097ac4b7a696c1f9118d705290011176ab34d3c9c0a490a2715615",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12926,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "04875833136e2bcb0e273d017115157fda13f53b8eb687a4e13b93676ca57edc",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12947,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "e7e8cad295a76a03ba8e8a92e17154214d2d37e96f9fa98dc2751e937a8cfdac",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12959,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "2bad3e4eb854ed62d4b958dc154479c4fccc3e7db2be60bd5b95884242b55ef3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12973,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "db535aedfb0b22ac29adbf61d3a93a11e7e8f49e276e75f6d9d7c60c60270894",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        },
+        {
+          "mention_id": 12979,
+          "scope_place_id": 5348,
+          "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+          "input_hash": "647a0a6a44d34b58d421155a234ee7d83918bef01a7bafedc2ad3581da485ce1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-42-daminghu-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "267d0a8807bf0ac3238379edb4d2d88709ada8afca8b0d5825d9c855d2e17b3d",
+        "mentions": [
+          {
+            "mentionId": 11342,
+            "inputHash": "dc203578b322711271205094caac47d9e5582ffee95a9886df121a09fcfbeade"
+          },
+          {
+            "mentionId": 11379,
+            "inputHash": "a215000598ce9f16b0ea018427fff9a7ac4e9649a6049bc0088351b5bed57c7b"
+          },
+          {
+            "mentionId": 11387,
+            "inputHash": "d80bb75de95b550142fdea5ee197fda33511edbba6bea3748286e294ef40edb6"
+          },
+          {
+            "mentionId": 11402,
+            "inputHash": "3bd2e34f75bfd9908944a8ab12fa3c5c5b5b172fc14b93ecd6c896786c6758c8"
+          },
+          {
+            "mentionId": 11411,
+            "inputHash": "0871e20cbac7dff387436c86e369e38bcc2a20b48bbb42f588d22d3b0803109f"
+          },
+          {
+            "mentionId": 11421,
+            "inputHash": "ca04fe8d23bd0ca2c7a049ae792931869420d5538bef1d7124683ce8286755b9"
+          },
+          {
+            "mentionId": 11429,
+            "inputHash": "dcd326260fe92004a681f309d8697e6f04e4b91be36d48b769ab6e393defa9f5"
+          },
+          {
+            "mentionId": 11434,
+            "inputHash": "09f59ae74137f1a0d6fc90589e6ca9397ce8dc567bad037fb21b4441e2edad44"
+          },
+          {
+            "mentionId": 11450,
+            "inputHash": "bfdb28ca6b70c52604f3d7e87630dd0729d62aaef0c065323c711f4ca6848b7e"
+          },
+          {
+            "mentionId": 11462,
+            "inputHash": "3df68fb1319e22a3696e033a26573b9a76b996c0b91cd0cde313a76813fb8999"
+          },
+          {
+            "mentionId": 11473,
+            "inputHash": "42587bbf74a56e90ae6cb0fbba55d5d49d2c7eed56c15c93a1498940c9c63ac6"
+          },
+          {
+            "mentionId": 11494,
+            "inputHash": "743da95ae04c0f44093edf349da62130dcb9afe66b7e40ed3652e5ddf2c23c4a"
+          },
+          {
+            "mentionId": 11507,
+            "inputHash": "122a8bee077c8d36209a19b2c6597c707b1dfeb26d7554aa1388eeca9e7fd44c"
+          },
+          {
+            "mentionId": 11522,
+            "inputHash": "3a72a9c55676e18ad414587b1a38995e42dfe15944b4ba44f10f0f52d1c2d248"
+          },
+          {
+            "mentionId": 11539,
+            "inputHash": "ff5fc550134890e3702e7aa270731f90feb758781b04debfb972688a4ca93b21"
+          },
+          {
+            "mentionId": 11578,
+            "inputHash": "bc75d09b09cc43ff1f405a9496e4ec996dd724cb7737bd79916bac9b2095bac6"
+          },
+          {
+            "mentionId": 11581,
+            "inputHash": "ae883c3c1a540e9298cb167bb202da3d15f3ab734296b97f8a7b475a11b0b52e"
+          },
+          {
+            "mentionId": 11594,
+            "inputHash": "d91742922b22a11918249db44f5d0c0e5bd088c5da95c0cc88c5c639461bcd9d"
+          },
+          {
+            "mentionId": 11598,
+            "inputHash": "8c21af9414b5a9573d3043a4a62b45977fa36dde821c8a795e6d3110b24a1dc3"
+          },
+          {
+            "mentionId": 11601,
+            "inputHash": "d59dda51e4ed5ca21ebfae1b728b0aa64826672c9897a27a0453af48ffcef5ad"
+          },
+          {
+            "mentionId": 11604,
+            "inputHash": "9756f825487b148759959c940c5ea7965b9ff0839a2a46b7643638137d6467f3"
+          },
+          {
+            "mentionId": 11611,
+            "inputHash": "91cf304c9cde9c73b3832edc0baa6d7a78de455c2e3bc28cf6c6ab3f7acfbc50"
+          },
+          {
+            "mentionId": 11627,
+            "inputHash": "c8e808bb521e406967eeb1a747d653a481d69e3cb95b2be93b644ec7f9d4610d"
+          },
+          {
+            "mentionId": 11683,
+            "inputHash": "0c3e9d5d261f2225d0cf9855d01e44c9ba12de9b7f81d31b117b72e7d677fdbb"
+          },
+          {
+            "mentionId": 11693,
+            "inputHash": "74d818a21b749c5492e3ecee25ec6eb73712bdbbfd0ef2c63e17a83dad150627"
+          },
+          {
+            "mentionId": 11695,
+            "inputHash": "c9eab08ccd30803cfd8046d051c5b4c21cf91193ad1ad8bcab21faa379903db4"
+          },
+          {
+            "mentionId": 11703,
+            "inputHash": "8f64e6bad28c6144fba6dec9072c684a7f7c3482f1fff7386983297621c6087b"
+          },
+          {
+            "mentionId": 11705,
+            "inputHash": "4c53bfdf97f3987402cd77fe4544dc6056067a79703300fdeffd62bcdeca9064"
+          },
+          {
+            "mentionId": 12570,
+            "inputHash": "a0f074a67c08be49ad2275f4c84fbed16393e28af1671da6f5e0b5b98f31057e"
+          },
+          {
+            "mentionId": 12575,
+            "inputHash": "984603851eb5b0860ef757d1de846de56b5f6973ba40092b7361ab2360c57764"
+          },
+          {
+            "mentionId": 12629,
+            "inputHash": "3d791c021a49e342e72e6b5edc6bef5e8922cb3270bb03ca712b6bd5b51024dc"
+          },
+          {
+            "mentionId": 12641,
+            "inputHash": "c9d00f8cb81aa2ece1ec95293adcbac79807dedcaa8d2ba76b0f4fbe80aa6f7a"
+          },
+          {
+            "mentionId": 12649,
+            "inputHash": "d45eacbf5dea84a467b5e1a6f70f809bc83a241bca620cae3818ad3979c16a7e"
+          },
+          {
+            "mentionId": 12654,
+            "inputHash": "fb2a678a1c7464ee9cdc155b56e42a83ce0ebc4ab205a5d4087443af3b3a14f8"
+          },
+          {
+            "mentionId": 12661,
+            "inputHash": "f4446fa3337afb0edc1a649aa9a484a0c944542e4a3138093f9ef488442afe95"
+          },
+          {
+            "mentionId": 12664,
+            "inputHash": "ad00acebb700cf56d3cf74f83be4a8cbabac6b0b1ea92e24f1d21c578f11d2b8"
+          },
+          {
+            "mentionId": 12671,
+            "inputHash": "c3517409147067b56ea23750afc3aeef6e2e61207a67a116f8ed7056bbded0dc"
+          },
+          {
+            "mentionId": 12677,
+            "inputHash": "274b598d4124b55e4c14b0687ff26298a23b2999efcc091d5e217cd96c3e3b97"
+          },
+          {
+            "mentionId": 12687,
+            "inputHash": "967481a159b506d8e4c8a816a24c2a1b47295a5e0c0bc1d90ecea2da04b7812c"
+          },
+          {
+            "mentionId": 12700,
+            "inputHash": "951dbe71fc36c897f9fd0810406cabdb20d065a02a436d76416b98934858d0f5"
+          },
+          {
+            "mentionId": 12707,
+            "inputHash": "2172d878c917464cb6ef29a048caebee00bfc347343f2b2ae24d801de3a2d552"
+          },
+          {
+            "mentionId": 12712,
+            "inputHash": "83597abf5c60e2955eddcfcf5e02f8e3cc22533fb3f9f7aeb387ff09978bce04"
+          },
+          {
+            "mentionId": 12728,
+            "inputHash": "f826c538905d5552ad227240d6db541064556ada979314e39700e62cee96a377"
+          },
+          {
+            "mentionId": 12733,
+            "inputHash": "796195042dd9892e8f7f77fdca07b23a67ef46b63565e9cdf222a52d1f769f3c"
+          },
+          {
+            "mentionId": 12748,
+            "inputHash": "ce20717b44535ca4163279dc3239a4c0c3123a4e5c8adfd256beddb3cb8b6946"
+          },
+          {
+            "mentionId": 12764,
+            "inputHash": "db97f650504bba744e7a1bdadf61eb4cedf996c25fa091ddc0b656a069c04102"
+          },
+          {
+            "mentionId": 12772,
+            "inputHash": "dbe953277c384143ed529d0669c1e9afeddc278482eea4fca8b1b59c3499d948"
+          },
+          {
+            "mentionId": 12779,
+            "inputHash": "c43a2d64becd10fcf732b83209e5a60178ad3008e5244d0fbfee83715891647e"
+          },
+          {
+            "mentionId": 12794,
+            "inputHash": "d3a5c7b8142c66e3a864ec90ab7246a0e26e10b78029aa7d209b59b09a5e219e"
+          },
+          {
+            "mentionId": 12802,
+            "inputHash": "6f1b43d5fceeb2d6764614d352724e1fa1e9f836c84dc1e5e3eeed8e91982f7a"
+          },
+          {
+            "mentionId": 12814,
+            "inputHash": "85075a990e2dca08541fb1b673cb67d948420c20bc93c89775a0e05433140b5f"
+          },
+          {
+            "mentionId": 12832,
+            "inputHash": "bf481bc69588ebc6c83f2b49673500e4d488a567ece69d707cb8a4b55849ac97"
+          },
+          {
+            "mentionId": 12839,
+            "inputHash": "3154e8c27bca40bcb9d4896d5327b00f3ac90b8eef1b1febb72ec857f378af3e"
+          },
+          {
+            "mentionId": 12853,
+            "inputHash": "dca7ec2aefa3852ee412d47ff8c5e26ba4c6dde9776c8873fbfec0f50a23cf75"
+          },
+          {
+            "mentionId": 12860,
+            "inputHash": "1b47910f97beaad8787a3ecb9c8fb9cd36c10eafa306d18074564f22625d1fd3"
+          },
+          {
+            "mentionId": 12873,
+            "inputHash": "1502fe4cef025f7686e7c1489a63beb25b899826f687081ce9d8920b9cccc40b"
+          },
+          {
+            "mentionId": 12900,
+            "inputHash": "7ccecb25db584ef56ceb02b0064fdc7e32fea2cbd619c610a7bcc52ba2ee9d5c"
+          },
+          {
+            "mentionId": 12908,
+            "inputHash": "7967ca1bc02796fad4ad8ed6099f70373703977d385b29f76e29cd25ea077a2e"
+          },
+          {
+            "mentionId": 12921,
+            "inputHash": "8002827debd63aef1711e1a2c20d7dabae9df1d6b7666e15ade6ccd0cfb0f560"
+          },
+          {
+            "mentionId": 12923,
+            "inputHash": "f65c68ab18097ac4b7a696c1f9118d705290011176ab34d3c9c0a490a2715615"
+          },
+          {
+            "mentionId": 12926,
+            "inputHash": "04875833136e2bcb0e273d017115157fda13f53b8eb687a4e13b93676ca57edc"
+          },
+          {
+            "mentionId": 12947,
+            "inputHash": "e7e8cad295a76a03ba8e8a92e17154214d2d37e96f9fa98dc2751e937a8cfdac"
+          },
+          {
+            "mentionId": 12959,
+            "inputHash": "2bad3e4eb854ed62d4b958dc154479c4fccc3e7db2be60bd5b95884242b55ef3"
+          },
+          {
+            "mentionId": 12973,
+            "inputHash": "db535aedfb0b22ac29adbf61d3a93a11e7e8f49e276e75f6d9d7c60c60270894"
+          },
+          {
+            "mentionId": 12979,
+            "inputHash": "647a0a6a44d34b58d421155a234ee7d83918bef01a7bafedc2ad3581da485ce1"
+          }
+        ],
+        "sources": [
+          {
+            "sourcePlaceId": 5348,
+            "sourceHash": "267d0a8807bf0ac3238379edb4d2d88709ada8afca8b0d5825d9c855d2e17b3d"
+          },
+          {
+            "sourcePlaceId": 5953,
+            "sourceHash": "b18bbbd3b06c32c2ebe5ef21ec342171edc40492e44a093bb355db9d2fcdd874"
+          },
+          {
+            "sourcePlaceId": 5968,
+            "sourceHash": "0b4dfa4c76c1e87764c21a0c4d1f1f3fedd83a2d1d39fa10a99893f69077a136"
+          }
+        ],
+        "matchingSources": [
+          {
+            "sourcePlaceId": 5348,
+            "sourceHash": "267d0a8807bf0ac3238379edb4d2d88709ada8afca8b0d5825d9c855d2e17b3d"
+          },
+          {
+            "sourcePlaceId": 5953,
+            "sourceHash": "b18bbbd3b06c32c2ebe5ef21ec342171edc40492e44a093bb355db9d2fcdd874"
+          },
+          {
+            "sourcePlaceId": 5968,
+            "sourceHash": "0b4dfa4c76c1e87764c21a0c4d1f1f3fedd83a2d1d39fa10a99893f69077a136"
+          }
+        ]
+      },
+      "scopeSources": [
+        {
+          "place_id": 5348,
+          "scope_place_id": 5348,
+          "source_hash": "267d0a8807bf0ac3238379edb4d2d88709ada8afca8b0d5825d9c855d2e17b3d"
+        },
+        {
+          "place_id": 5953,
+          "scope_place_id": 5348,
+          "source_hash": "b18bbbd3b06c32c2ebe5ef21ec342171edc40492e44a093bb355db9d2fcdd874"
+        },
+        {
+          "place_id": 5968,
+          "scope_place_id": 5348,
+          "source_hash": "0b4dfa4c76c1e87764c21a0c4d1f1f3fedd83a2d1d39fa10a99893f69077a136"
+        }
+      ],
+      "scopeReviews": [
+        {
+          "id": 3859,
+          "fingerprint": "111062275e30d5eb7b2ec9dc94f90787c843d8e0f9a56e1f6366260a326fdd06",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a215000598ce9f16b0ea018427fff9a7ac4e9649a6049bc0088351b5bed57c7b",
+            "mentionId": 11379,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3865,
+          "fingerprint": "023967e1e4523d5b865d4ee8cc5ed401dcd110909d0213560be0953133dcff29",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "ca04fe8d23bd0ca2c7a049ae792931869420d5538bef1d7124683ce8286755b9",
+            "mentionId": 11421,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3875,
+          "fingerprint": "1898e008780fe77a640cb3ed5a71740c313d36d28b95aa0209a91cdb18f87cde",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "ff5fc550134890e3702e7aa270731f90feb758781b04debfb972688a4ca93b21",
+            "mentionId": 11539,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3878,
+          "fingerprint": "421599c51ed2151b8808f0304db1548115eda84248022f00a5139eab3672d198",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "ae883c3c1a540e9298cb167bb202da3d15f3ab734296b97f8a7b475a11b0b52e",
+            "mentionId": 11581,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3884,
+          "fingerprint": "8342a916f53c7c9b1aafb0ac7f65bf09d71a008c64dc29e58e0c87fb0dfef9cf",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8c21af9414b5a9573d3043a4a62b45977fa36dde821c8a795e6d3110b24a1dc3",
+            "mentionId": 11598,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3886,
+          "fingerprint": "ca6e9b24fa18b4c4595242b3a3e1f667a1425f135014ea2a462a01922e3d2a99",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "d59dda51e4ed5ca21ebfae1b728b0aa64826672c9897a27a0453af48ffcef5ad",
+            "mentionId": 11601,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3888,
+          "fingerprint": "176e1163bfb86d3f1dbc99acdfa7732e9169941207abb96b8d58739268f10a46",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "9756f825487b148759959c940c5ea7965b9ff0839a2a46b7643638137d6467f3",
+            "mentionId": 11604,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3889,
+          "fingerprint": "a4167e81190bff7d7a46f3c138ff252f62f3175c58cf0e7d07b642ec1e5aaed8",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "91cf304c9cde9c73b3832edc0baa6d7a78de455c2e3bc28cf6c6ab3f7acfbc50",
+            "mentionId": 11611,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3893,
+          "fingerprint": "e3d121147837557d6262b5e38095d78bf33435ab2d17929ffd19aba3e5a22163",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "c9eab08ccd30803cfd8046d051c5b4c21cf91193ad1ad8bcab21faa379903db4",
+            "mentionId": 11695,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3897,
+          "fingerprint": "2c9bdfbdef8ed11d4bdc2cd5fcfc82c97eae0bebbe1dd7f8c4ce6243be335337",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8f64e6bad28c6144fba6dec9072c684a7f7c3482f1fff7386983297621c6087b",
+            "mentionId": 11703,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3899,
+          "fingerprint": "ee76ffb6cf76e9d724de8b183523dbcb28fdd94527fecc15f44dd3f6b1ca33c1",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "4c53bfdf97f3987402cd77fe4544dc6056067a79703300fdeffd62bcdeca9064",
+            "mentionId": 11705,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3902,
+          "fingerprint": "01bdc4e1fab35194dab5f91af9790bbe70ff12c1b7e50bde141517ed630f266a",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "984603851eb5b0860ef757d1de846de56b5f6973ba40092b7361ab2360c57764",
+            "mentionId": 12575,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3907,
+          "fingerprint": "d73f3de9feb32980ec7ad232124818df55aa88f87bba03c7e79768d52ec97438",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "d45eacbf5dea84a467b5e1a6f70f809bc83a241bca620cae3818ad3979c16a7e",
+            "mentionId": 12649,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3908,
+          "fingerprint": "fec0ebb0f7e04ac87bf0813ba7d5d2d3e25e5079594891d42c0080d8c5d02800",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "fb2a678a1c7464ee9cdc155b56e42a83ce0ebc4ab205a5d4087443af3b3a14f8",
+            "mentionId": 12654,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3912,
+          "fingerprint": "64fc05aa2d509b08937e08d5a91136c44bc4347e1b617568cf8a07db68382210",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "967481a159b506d8e4c8a816a24c2a1b47295a5e0c0bc1d90ecea2da04b7812c",
+            "mentionId": 12687,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3922,
+          "fingerprint": "487906c1205bdc99f9fe8e3686bf7d8f045353c79c87b4f437dc46b4dff465a9",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "3154e8c27bca40bcb9d4896d5327b00f3ac90b8eef1b1febb72ec857f378af3e",
+            "mentionId": 12839,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        },
+        {
+          "id": 3928,
+          "fingerprint": "f68a91caefc5398e23fec7b40146c8f905f143427e270abacaca0be276859de1",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "7967ca1bc02796fad4ad8ed6099f70373703977d385b29f76e29cd25ea077a2e",
+            "mentionId": 12908,
+            "scopePlaceIds": [
+              5348
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

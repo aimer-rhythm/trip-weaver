@@ -1,0 +1,86 @@
+{
+  "readOnly": true,
+  "capturedAt": "2026-10-07T19:52:38.641Z",
+  "city": "济南",
+  "sourcePacketFile": "priority-cities/济南/spring-source-packet-01.json",
+  "sourcePacketSha256": "2570901af26a2ccafa3b0e0863f2aae12ceecf68f2aa6ecefbfcd2caed471348",
+  "exportFile": "all-cities/batch-35/sync-01/xhs-places-济南.json",
+  "exportHash": "f1439258ec32ee12bed27cbd711c3a8c820374ac763e81c48d7a8b4726a31edf",
+  "groups": [
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "revision": 1,
+      "category": "文化",
+      "lat": 36.667456,
+      "lng": 117.023719,
+      "currentVisitMinutes": 30,
+      "consumedBy": "apps/server/src/generation/scheduling/placeFacts.ts:toFacts → visitMinutes",
+      "affectedByCombinedDuration": true
+    },
+    {
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "name": "刘氏泉",
+      "revision": 1,
+      "category": "文化",
+      "lat": 36.669038,
+      "lng": 117.024161,
+      "currentVisitMinutes": 30,
+      "consumedBy": "apps/server/src/generation/scheduling/placeFacts.ts:toFacts → visitMinutes",
+      "affectedByCombinedDuration": true
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "revision": 1,
+      "category": "文化",
+      "lat": 36.668318,
+      "lng": 117.024181,
+      "currentVisitMinutes": 30,
+      "consumedBy": "apps/server/src/generation/scheduling/placeFacts.ts:toFacts → visitMinutes",
+      "affectedByCombinedDuration": true
+    },
+    {
+      "entityId": "a4e2cf834fef59d81531b82e42296fa1",
+      "name": "玛瑙泉",
+      "revision": 1,
+      "category": "文化",
+      "lat": 36.662561,
+      "lng": 117.03392,
+      "currentVisitMinutes": null,
+      "consumedBy": "apps/server/src/generation/scheduling/placeFacts.ts:toFacts → visitMinutes",
+      "affectedByCombinedDuration": false
+    },
+    {
+      "entityId": "065e077002130047feaadff4f607b480",
+      "name": "起凤泉",
+      "revision": 1,
+      "category": "文化",
+      "lat": 36.668556,
+      "lng": 117.023669,
+      "currentVisitMinutes": 30,
+      "consumedBy": "apps/server/src/generation/scheduling/placeFacts.ts:toFacts → visitMinutes",
+      "affectedByCombinedDuration": true
+    }
+  ],
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "findings": {
+    "rawNoteId": 2837,
+    "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+    "mentionIds": [
+      12941,
+      12942,
+      12943,
+      12944
+    ],
+    "scope": "four_places_together",
+    "combinedMinutes": 30,
+    "incorrectIndividualMinutes": 30,
+    "identityConclusion": "four_independent_places_named_explicitly",
+    "factConclusion": "组合总时长不能赋给每个独立地点，也不能无证据平分为每处7.5分钟。"
+  },
+  "failures": []
+}

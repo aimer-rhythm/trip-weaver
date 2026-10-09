@@ -1,0 +1,472 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "成都",
+      "entities": 415,
+      "members": 415,
+      "reviewCount": 7,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "65e678425adf8c381f2941c06f196bca"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "328e7316f234f24b5278fc6251993d70",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "3b817ea013e4a1b4e296c29aba866ab2",
+            "6ea111e5b2547542a5ed7629618fcad0"
+          ],
+          "names": [
+            "Little travel",
+            "LittleTravel 3.0"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "e61d76f3b1440ac59582f9b344be4fd4",
+            "e63e38711dce61183e0e77ef3e2260bf"
+          ],
+          "names": [
+            "Mondoli",
+            "MONDOLI"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "76557ba50985738dd692b195d2b93efd",
+            "811dd1e7fff3c275035643eb720a8532"
+          ],
+          "names": [
+            "Lost 2hours",
+            "lost 2 hour"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "65e678425adf8c381f2941c06f196bca",
+            "f53babd52318aa728b19184b8fada1e3"
+          ],
+          "names": [
+            "春熙路/太古里",
+            "春熙路/太古里周边"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "c2a43122260237a73fc4fcbb0e68c160",
+            "f50a815f66c6e9a0935a3c682a0a9b62"
+          ],
+          "names": [
+            "蜀锦博物馆",
+            "蜀锦织绣博物馆"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "300be0691119032dc7bc5e825a192c6a",
+          "city": "成都",
+          "canonical_name": "萌宠片区",
+          "primary_place_id": 2011,
+          "aliases": [
+            "萌宠片区"
+          ],
+          "legacy_ids": [
+            "300be0691119032dc7bc5e825a192c6a"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 2011,
+          "entity_id": "300be0691119032dc7bc5e825a192c6a"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 2011,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 2011,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "可亲手投喂长颈鹿、羊驼等温顺动物，适合亲子互动",
+              "evidence": "能亲手投喂"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2996,
+          "canonical_place_id": 2011,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 萌宠片区",
+          "evidence_summary": "可亲手投喂长颈鹿、羊驼等温顺动物，适合亲子互动"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 2011,
+          "city": "成都",
+          "name_keys": [
+            "萌宠片区"
+          ],
+          "entity_ids": [
+            "300be0691119032dc7bc5e825a192c6a"
+          ],
+          "source_hash": "7434d10ca7670d2b7960864bddfe19da0baca223bd555e7b02023a8d005fe578",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-66-source-2011-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/成都/park-zones-source-review-01.json",
+              "kind": "full_original_park_context",
+              "quote": "前前后后已经带娃来这边玩了三次，足以看出我们有多喜欢。\n成都夏天闷热难熬，想找个舒服遛娃的地方，这里一直是我的首选。\n\t\n上午天气没有那么热可以先逛萌宠🦒片区，\n长颈鹿、小鹿🦙还有羊驼性子温顺，能亲手投喂，\n小朋友总喜欢凑上去摸摸毛茸茸的小家伙。\n慢悠悠逛一圈，治愈又清闲，路上还能看见孔雀🦚闲逛。\n\t\n逛完萌宠刚好卡点赶太阳鸟剧场演出，整场大概半小时。\n有杂技还有巴蜀特色小节目，内容热闹有趣，孩子看得目不转睛，\n中场还有简单互动，休息看表演两不误，刚好躲开正午最晒的时段。\n\t\n此行重头戏依旧是玩水。大片树木遮着阳光，不用直面烈日。\n💦【专属玩法大公开】\n1️⃣ 龙溪谷大型野趣戏水区\n不是普通泳池！是那种可以划小船、打水仗、闯关的“水上乐园PLUS”！水很浅，\n小朋友也能放心嗨，大人直接开启“泼水节”模式，快乐到失声😂解暑又解压\n2️⃣ 水上麻将\n成都人专属浪漫——水里搓麻将！脚踩清凉，手摸“红中”，\n再来杯冰柠茶，这才是夏天的正确打开方式啊～\n\t\n整体行程节奏松弛不赶路，喂小动物、看表演、玩水挨个安排，\n去过三次依旧新鲜感满满，家长轻松不累，孩子每次都玩到舍不得走。\n#成都周边玩水[话题]# #黄龙溪[话题]# #夏天就要泡在水里[话题]# #成都人的快乐你想象不到[话题]##黄龙溪欢乐田园[话题]# #泼水节[话题]# #成都亲子游[话题]# #玩水的好去处[话题]#",
+              "noteId": 1013,
+              "conclusion": "同篇黄龙溪游记明示园内萌宠与龙溪谷戏水活动，标签具名黄龙溪欢乐田园；保留原作者体验，不将新都商户或都江堰龙溪点位认作该园区分区。",
+              "mentionIds": [
+                4139
+              ]
+            },
+            {
+              "url": "https://www.ly.com/travels/1133684.html",
+              "file": "priority-cities/成都/park-zones-reference-02.json",
+              "kind": "fetched_public_park_address_and_animal_context",
+              "quote": "地址：黄龙溪欢乐田园（双流区农博路1号）",
+              "sha256": "517271a0b0f9fbe1e10d06e3afc4a9279ce365e1a4316987897a832a0c6b9ac0",
+              "conclusion": "2022公开游记补证园区地址与长颈鹿等萌宠活动；不凭此将泛称萌宠片区直接改成鹿溪牧场，不用于精确坐标、营业、票价或开放状态。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "300be0691119032dc7bc5e825a192c6a"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 4139,
+          "scope_place_id": 2011,
+          "entity_id": "300be0691119032dc7bc5e825a192c6a",
+          "input_hash": "0af18a426893962237b6b9200be0ba8d064cacf182a57b6174d11dcefd72ed1c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-66-source-2011-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "7434d10ca7670d2b7960864bddfe19da0baca223bd555e7b02023a8d005fe578",
+        "mentions": [
+          {
+            "mentionId": 4139,
+            "inputHash": "0af18a426893962237b6b9200be0ba8d064cacf182a57b6174d11dcefd72ed1c"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "de1ab1b76f5de5a5ff8089016c9d93f6",
+          "city": "成都",
+          "canonical_name": "龙溪谷大型野趣戏水区",
+          "primary_place_id": 2013,
+          "aliases": [
+            "龙溪谷大型野趣戏水区"
+          ],
+          "legacy_ids": [
+            "de1ab1b76f5de5a5ff8089016c9d93f6"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 2013,
+          "entity_id": "de1ab1b76f5de5a5ff8089016c9d93f6"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 2013,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.5,
+          "theme_tags": null,
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 2013,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "水浅安全，能划船打水仗闯关，亲子玩水解暑",
+              "evidence": "水上乐园PLUS"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 2998,
+          "canonical_place_id": 2013,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 龙溪谷大型野趣戏水区",
+          "evidence_summary": "水浅安全，能划船打水仗闯关，亲子玩水解暑"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 2013,
+          "city": "成都",
+          "name_keys": [
+            "龙溪谷大型野趣戏水区"
+          ],
+          "entity_ids": [
+            "de1ab1b76f5de5a5ff8089016c9d93f6"
+          ],
+          "source_hash": "6353f8e0cbf49e18ef6222e808325113b5c96f5b868c72fc6f0f8b810d77a941",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-66-source-2013-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/成都/park-zones-source-review-01.json",
+              "kind": "full_original_park_context",
+              "quote": "前前后后已经带娃来这边玩了三次，足以看出我们有多喜欢。\n成都夏天闷热难熬，想找个舒服遛娃的地方，这里一直是我的首选。\n\t\n上午天气没有那么热可以先逛萌宠🦒片区，\n长颈鹿、小鹿🦙还有羊驼性子温顺，能亲手投喂，\n小朋友总喜欢凑上去摸摸毛茸茸的小家伙。\n慢悠悠逛一圈，治愈又清闲，路上还能看见孔雀🦚闲逛。\n\t\n逛完萌宠刚好卡点赶太阳鸟剧场演出，整场大概半小时。\n有杂技还有巴蜀特色小节目，内容热闹有趣，孩子看得目不转睛，\n中场还有简单互动，休息看表演两不误，刚好躲开正午最晒的时段。\n\t\n此行重头戏依旧是玩水。大片树木遮着阳光，不用直面烈日。\n💦【专属玩法大公开】\n1️⃣ 龙溪谷大型野趣戏水区\n不是普通泳池！是那种可以划小船、打水仗、闯关的“水上乐园PLUS”！水很浅，\n小朋友也能放心嗨，大人直接开启“泼水节”模式，快乐到失声😂解暑又解压\n2️⃣ 水上麻将\n成都人专属浪漫——水里搓麻将！脚踩清凉，手摸“红中”，\n再来杯冰柠茶，这才是夏天的正确打开方式啊～\n\t\n整体行程节奏松弛不赶路，喂小动物、看表演、玩水挨个安排，\n去过三次依旧新鲜感满满，家长轻松不累，孩子每次都玩到舍不得走。\n#成都周边玩水[话题]# #黄龙溪[话题]# #夏天就要泡在水里[话题]# #成都人的快乐你想象不到[话题]##黄龙溪欢乐田园[话题]# #泼水节[话题]# #成都亲子游[话题]# #玩水的好去处[话题]#",
+              "noteId": 1013,
+              "conclusion": "同篇黄龙溪游记明示园内萌宠与龙溪谷戏水活动，标签具名黄龙溪欢乐田园；保留原作者体验，不将新都商户或都江堰龙溪点位认作该园区分区。",
+              "mentionIds": [
+                4141
+              ]
+            },
+            {
+              "url": "https://www.ly.com/travels/1133684.html",
+              "file": "priority-cities/成都/park-zones-reference-02.json",
+              "kind": "fetched_public_park_address_and_animal_context",
+              "quote": "地址：黄龙溪欢乐田园（双流区农博路1号）",
+              "sha256": "517271a0b0f9fbe1e10d06e3afc4a9279ce365e1a4316987897a832a0c6b9ac0",
+              "conclusion": "2022公开游记补证园区地址与长颈鹿等萌宠活动；不凭此将泛称萌宠片区直接改成鹿溪牧场，不用于精确坐标、营业、票价或开放状态。"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "de1ab1b76f5de5a5ff8089016c9d93f6"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 4141,
+          "scope_place_id": 2013,
+          "entity_id": "de1ab1b76f5de5a5ff8089016c9d93f6",
+          "input_hash": "b88e6873cb6dbcf7da6d217ba3ee5cda29ebed243d58ea50da521f9fbebbb358",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-66-source-2013-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "6353f8e0cbf49e18ef6222e808325113b5c96f5b868c72fc6f0f8b810d77a941",
+        "mentions": [
+          {
+            "mentionId": 4141,
+            "inputHash": "b88e6873cb6dbcf7da6d217ba3ee5cda29ebed243d58ea50da521f9fbebbb358"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "300be0691119032dc7bc5e825a192c6a",
+          "city": "成都",
+          "canonical_name": "萌宠片区（黄龙溪欢乐田园）",
+          "primary_place_id": 2011,
+          "aliases": [
+            "萌宠片区（黄龙溪欢乐田园）"
+          ],
+          "legacy_ids": [
+            "0a1f4fadadc5d513c387e65638ca9b59",
+            "300be0691119032dc7bc5e825a192c6a"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "adcode": "",
+            "geoStatus": "unresolvable",
+            "address": "黄龙溪欢乐田园内",
+            "category": "文化",
+            "identityExcludedNames": [
+              "萌宠片区"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "full_original_park_context",
+              "file": "priority-cities/成都/park-zones-source-review-01.json",
+              "noteId": 1013,
+              "mentionIds": [
+                4139
+              ],
+              "quote": "前前后后已经带娃来这边玩了三次，足以看出我们有多喜欢。\n成都夏天闷热难熬，想找个舒服遛娃的地方，这里一直是我的首选。\n\t\n上午天气没有那么热可以先逛萌宠🦒片区，\n长颈鹿、小鹿🦙还有羊驼性子温顺，能亲手投喂，\n小朋友总喜欢凑上去摸摸毛茸茸的小家伙。\n慢悠悠逛一圈，治愈又清闲，路上还能看见孔雀🦚闲逛。\n\t\n逛完萌宠刚好卡点赶太阳鸟剧场演出，整场大概半小时。\n有杂技还有巴蜀特色小节目，内容热闹有趣，孩子看得目不转睛，\n中场还有简单互动，休息看表演两不误，刚好躲开正午最晒的时段。\n\t\n此行重头戏依旧是玩水。大片树木遮着阳光，不用直面烈日。\n💦【专属玩法大公开】\n1️⃣ 龙溪谷大型野趣戏水区\n不是普通泳池！是那种可以划小船、打水仗、闯关的“水上乐园PLUS”！水很浅，\n小朋友也能放心嗨，大人直接开启“泼水节”模式，快乐到失声😂解暑又解压\n2️⃣ 水上麻将\n成都人专属浪漫——水里搓麻将！脚踩清凉，手摸“红中”，\n再来杯冰柠茶，这才是夏天的正确打开方式啊～\n\t\n整体行程节奏松弛不赶路，喂小动物、看表演、玩水挨个安排，\n去过三次依旧新鲜感满满，家长轻松不累，孩子每次都玩到舍不得走。\n#成都周边玩水[话题]# #黄龙溪[话题]# #夏天就要泡在水里[话题]# #成都人的快乐你想象不到[话题]##黄龙溪欢乐田园[话题]# #泼水节[话题]# #成都亲子游[话题]# #玩水的好去处[话题]#",
+              "conclusion": "同篇黄龙溪游记明示园内萌宠与龙溪谷戏水活动，标签具名黄龙溪欢乐田园；保留原作者体验，不将新都商户或都江堰龙溪点位认作该园区分区。"
+            },
+            {
+              "kind": "fetched_public_park_address_and_animal_context",
+              "file": "priority-cities/成都/park-zones-reference-02.json",
+              "sha256": "517271a0b0f9fbe1e10d06e3afc4a9279ce365e1a4316987897a832a0c6b9ac0",
+              "url": "https://www.ly.com/travels/1133684.html",
+              "quote": "地址：黄龙溪欢乐田园（双流区农博路1号）",
+              "conclusion": "2022公开游记补证园区地址与长颈鹿等萌宠活动；不凭此将泛称萌宠片区直接改成鹿溪牧场，不用于精确坐标、营业、票价或开放状态。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 2011,
+          "entity_id": "300be0691119032dc7bc5e825a192c6a"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "de1ab1b76f5de5a5ff8089016c9d93f6",
+          "city": "成都",
+          "canonical_name": "龙溪谷大型野趣戏水区（黄龙溪欢乐田园）",
+          "primary_place_id": 2013,
+          "aliases": [
+            "龙溪谷大型野趣戏水区",
+            "龙溪谷大型野趣戏水区（黄龙溪欢乐田园）"
+          ],
+          "legacy_ids": [
+            "950aa700aa4627302e052804c16bc074",
+            "de1ab1b76f5de5a5ff8089016c9d93f6"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "adcode": "",
+            "geoStatus": "unresolvable",
+            "address": "黄龙溪欢乐田园内",
+            "category": "文化"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "full_original_park_context",
+              "file": "priority-cities/成都/park-zones-source-review-01.json",
+              "noteId": 1013,
+              "mentionIds": [
+                4141
+              ],
+              "quote": "前前后后已经带娃来这边玩了三次，足以看出我们有多喜欢。\n成都夏天闷热难熬，想找个舒服遛娃的地方，这里一直是我的首选。\n\t\n上午天气没有那么热可以先逛萌宠🦒片区，\n长颈鹿、小鹿🦙还有羊驼性子温顺，能亲手投喂，\n小朋友总喜欢凑上去摸摸毛茸茸的小家伙。\n慢悠悠逛一圈，治愈又清闲，路上还能看见孔雀🦚闲逛。\n\t\n逛完萌宠刚好卡点赶太阳鸟剧场演出，整场大概半小时。\n有杂技还有巴蜀特色小节目，内容热闹有趣，孩子看得目不转睛，\n中场还有简单互动，休息看表演两不误，刚好躲开正午最晒的时段。\n\t\n此行重头戏依旧是玩水。大片树木遮着阳光，不用直面烈日。\n💦【专属玩法大公开】\n1️⃣ 龙溪谷大型野趣戏水区\n不是普通泳池！是那种可以划小船、打水仗、闯关的“水上乐园PLUS”！水很浅，\n小朋友也能放心嗨，大人直接开启“泼水节”模式，快乐到失声😂解暑又解压\n2️⃣ 水上麻将\n成都人专属浪漫——水里搓麻将！脚踩清凉，手摸“红中”，\n再来杯冰柠茶，这才是夏天的正确打开方式啊～\n\t\n整体行程节奏松弛不赶路，喂小动物、看表演、玩水挨个安排，\n去过三次依旧新鲜感满满，家长轻松不累，孩子每次都玩到舍不得走。\n#成都周边玩水[话题]# #黄龙溪[话题]# #夏天就要泡在水里[话题]# #成都人的快乐你想象不到[话题]##黄龙溪欢乐田园[话题]# #泼水节[话题]# #成都亲子游[话题]# #玩水的好去处[话题]#",
+              "conclusion": "同篇黄龙溪游记明示园内萌宠与龙溪谷戏水活动，标签具名黄龙溪欢乐田园；保留原作者体验，不将新都商户或都江堰龙溪点位认作该园区分区。"
+            },
+            {
+              "kind": "fetched_public_park_address_and_animal_context",
+              "file": "priority-cities/成都/park-zones-reference-02.json",
+              "sha256": "517271a0b0f9fbe1e10d06e3afc4a9279ce365e1a4316987897a832a0c6b9ac0",
+              "url": "https://www.ly.com/travels/1133684.html",
+              "quote": "地址：黄龙溪欢乐田园（双流区农博路1号）",
+              "conclusion": "2022公开游记补证园区地址与长颈鹿等萌宠活动；不凭此将泛称萌宠片区直接改成鹿溪牧场，不用于精确坐标、营业、票价或开放状态。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 2013,
+          "entity_id": "de1ab1b76f5de5a5ff8089016c9d93f6"
+        }
+      ]
+    }
+  ]
+}

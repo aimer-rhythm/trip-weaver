@@ -1,0 +1,80 @@
+[
+  {
+    "key": "all-cities-20261009-batch-62-source-5393-scope",
+    "city": "济南",
+    "sourcePlaceId": 5393,
+    "expectedSourceHash": "4eb9e3aaa15f2020cc611289785ad9fbb2c68fd409ed7b61ff921a542f345dbd",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "9dbf8ef94ec1777461c9d486973ce0c7": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11460,
+        "inputHash": "997857fc28eb9a22958bbe4041a76f33b70d8672d4238ca25b895520b4c09c48",
+        "entityId": "9dbf8ef94ec1777461c9d486973ce0c7"
+      },
+      {
+        "mentionId": 12690,
+        "inputHash": "fce202ffd44415d65e71c603aae6ffa7951f63e205fb1e6a7fb55a8cbf8e94ed",
+        "entityId": "9dbf8ef94ec1777461c9d486973ce0c7"
+      },
+      {
+        "mentionId": 12726,
+        "inputHash": "533514f848094e4bee8bc40522556495635c0d7ac14f3fbe337e02cd9165afaf",
+        "entityId": "9dbf8ef94ec1777461c9d486973ce0c7"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_street_and_branch_scope",
+        "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+        "mentionIds": [
+          11460,
+          12690,
+          12726
+        ],
+        "conclusion": "两篇正文明确以后宰门街为路线停留主体，拍墙是该次街道活动。note2570的16:00–16:30是独立街道停留，不是与曲水亭或百花洲合计时长，11460/12726同篇30分钟只算一个独立样本；12690保留第二篇簪花文字墙的限定看点。确认3条完整scope，改文化/other，不把街道改名墙面、不合并济南文字墙/济南墙；原点保持但未新定位。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-62-source-5382-scope",
+    "city": "济南",
+    "sourcePlaceId": 5382,
+    "expectedSourceHash": "30641e84df69f12b9b085839830ba35188adb3830b5c65993feae565a7563408",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "e1cfa0121a1455efea5324938742d4f4": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11478,
+        "inputHash": "d90b224a9cf1cc04dcb47221a32c2e25adc75d8e4fbcb68e4c133084a9b4bcb9",
+        "entityId": null
+      },
+      {
+        "mentionId": 11528,
+        "inputHash": "bba4f961d01641f65326a56c080c9971b327d7a50fd10a1d40c26b12bd59d8e1",
+        "entityId": null
+      },
+      {
+        "mentionId": 12738,
+        "inputHash": "53d2a53e0d7250bfcc33ce63ef847b7e60c1e447a278cdf99b3ca63ec624b5c8",
+        "entityId": null
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_full_text_street_and_branch_scope",
+        "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+        "mentionIds": [
+          11478,
+          11528,
+          12738
+        ],
+        "conclusion": "两篇全文三次提及只有裸名油旋张；公开2024食记分别写纬三路79号和另一个大观园店，现有note2548地图文字是宝鸡扯面检索中的顺带候选，不能证明本次到访分店。3条均待审，显式撤回旧单店消费，不创建候选、不标not_a_place，不采用营业时间/价格/传承人。"
+      }
+    ]
+  }
+]

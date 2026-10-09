@@ -1,0 +1,41 @@
+{
+  "batch": 48,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 10,
+  "notes": 8,
+  "confirmed": 10,
+  "pendingAdded": 0,
+  "partialHighlightExclusions": 2,
+  "descriptionFieldExclusions": 4,
+  "newEntities": 0,
+  "withdrawals": 0,
+  "results": [
+    {
+      "entityId": "af9116d87efcdf105915ca6303cb6274",
+      "name": "珍珠泉",
+      "mentions": 9,
+      "category": "自然",
+      "type": "attraction",
+      "minutes": 60
+    },
+    {
+      "entityId": "bdf4a854f642c85b65ed4d0760de0bd6",
+      "name": "珍珠泉大院",
+      "mentions": 1,
+      "category": "文化",
+      "type": "attraction",
+      "minutes": null
+    }
+  ],
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": [],
+  "exportSha256": "d425ec6b81f239443dd814ac4aed454335d8ce255955c009132591f4e6fd85dc"
+}

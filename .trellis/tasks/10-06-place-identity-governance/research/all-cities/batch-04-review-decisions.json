@@ -1,0 +1,672 @@
+[
+  {
+    "key": "all-cities-20261006-batch-04-review-64",
+    "city": "北京",
+    "reviewFingerprint": "b15e0f8c4888703f87a4447e12b725fc61e97ec09a02b50ea7639f0bbccb4676",
+    "expectedRevisions": {
+      "0854db5911778c6722637d896e9c2904": 1,
+      "1405884c419eb09eb99f8489b7044278": 1
+    },
+    "verdict": "distinct",
+    "explanation": "国子监是国子监街13-15号古学府建筑群，国子监街是其外的道路；5181讲古建，4948描述从雍和宫出来到街上打卡。道路与机构主体不合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          64
+        ],
+        "conclusion": "国子监是国子监街13-15号古学府建筑群，国子监街是其外的道路；5181讲古建，4948描述从雍和宫出来到街上打卡。道路与机构主体不合并。",
+        "sourcePlaceIds": [
+          "764",
+          "663"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          5181,
+          4948
+        ],
+        "conclusion": "国子监是国子监街13-15号古学府建筑群，国子监街是其外的道路；5181讲古建，4948描述从雍和宫出来到街上打卡。道路与机构主体不合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-65",
+    "city": "北京",
+    "reviewFingerprint": "ab7df92084730fecff55f7528504157927c406a9ac7a0678c26c610aab912f55",
+    "expectedRevisions": {
+      "45712014697126c93493061eef87a9e7": 1,
+      "5a7032e41c7f71c7391ac428540c1f47": 1
+    },
+    "verdict": "distinct",
+    "explanation": "5187明确八号线什刹海站，湖区什刹海另有环湖、银锭桥等游览提及；交通站点不作为湖区同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          65
+        ],
+        "conclusion": "5187明确八号线什刹海站，湖区什刹海另有环湖、银锭桥等游览提及；交通站点不作为湖区同义。",
+        "sourcePlaceIds": [
+          "2501",
+          "668"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          5187
+        ],
+        "conclusion": "5187明确八号线什刹海站，湖区什刹海另有环湖、银锭桥等游览提及；交通站点不作为湖区同义。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-70",
+    "city": "北京",
+    "reviewFingerprint": "078734d69d1f7faaf9e18893bf7bd1b56907e458e2bb9cd9758638ac856f9336",
+    "expectedRevisions": {
+      "3b604770d828206bdbac7d0b3540a367": 1,
+      "9848af6527dee0b6806678da781b39bf": 1
+    },
+    "verdict": "distinct",
+    "explanation": "国家自然博物馆位于天桥南大街126号，国家博物馆位于天安门广场东侧；前者亲子自然主题，后者华夏文物，机构与地址独立。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          70
+        ],
+        "conclusion": "国家自然博物馆位于天桥南大街126号，国家博物馆位于天安门广场东侧；前者亲子自然主题，后者华夏文物，机构与地址独立。",
+        "sourcePlaceIds": [
+          "836",
+          "686"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          2694,
+          4956
+        ],
+        "conclusion": "国家自然博物馆位于天桥南大街126号，国家博物馆位于天安门广场东侧；前者亲子自然主题，后者华夏文物，机构与地址独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-71",
+    "city": "北京",
+    "reviewFingerprint": "3d3c15f373244a06d8154a7d5f46ebd9d36b02df7591bd5aeb5068c246a89949",
+    "expectedRevisions": {
+      "8c02a5695ffc014e0c8e4a8ba401f75f": 1,
+      "9a84d089b1588ed97118038b7061ae24": 1
+    },
+    "verdict": "part_of",
+    "explanation": "朝阳公园冰场为公园内季节性项目，源地址明确公园内北侧，1874独立列冰场开放与项目价格；不能把冰场政策套到公园全域或归成同义。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          71
+        ],
+        "conclusion": "朝阳公园冰场为公园内季节性项目，源地址明确公园内北侧，1874独立列冰场开放与项目价格；不能把冰场政策套到公园全域或归成同义。",
+        "sourcePlaceIds": [
+          "709",
+          "785"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          1874
+        ],
+        "conclusion": "朝阳公园冰场为公园内季节性项目，源地址明确公园内北侧，1874独立列冰场开放与项目价格；不能把冰场政策套到公园全域或归成同义。"
+      }
+    ],
+    "childEntityId": "8c02a5695ffc014e0c8e4a8ba401f75f"
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-73",
+    "city": "北京",
+    "reviewFingerprint": "73a00fd5140f7f254e825313eb412ccd1fa77e160089217fe022204fa70b1ca5",
+    "expectedRevisions": {
+      "6b6bd1b7d6ad51e2f37001999e425699": 1,
+      "87d92832a81a1d4871413eff9fc698c8": 1
+    },
+    "verdict": "distinct",
+    "explanation": "鼓楼东大街和鼓楼西大街是鼓楼两侧独立道路；东大街原文明确一路往东，西大街有自己路牌机位及地址，方向词不能剥离。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          73
+        ],
+        "conclusion": "鼓楼东大街和鼓楼西大街是鼓楼两侧独立道路；东大街原文明确一路往东，西大街有自己路牌机位及地址，方向词不能剥离。",
+        "sourcePlaceIds": [
+          "1088",
+          "737"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4933
+        ],
+        "conclusion": "鼓楼东大街和鼓楼西大街是鼓楼两侧独立道路；东大街原文明确一路往东，西大街有自己路牌机位及地址，方向词不能剥离。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-77",
+    "city": "北京",
+    "reviewFingerprint": "ea9ed427837dd268613df629c809aa56b254edd733e9e902185072fd4faaacbc",
+    "expectedRevisions": {
+      "4086e134974e6a0903698f30f25a2850": 1,
+      "d4eff597f06c2d59207fc41a8511bf10": 1
+    },
+    "verdict": "distinct",
+    "explanation": "宫门口二条与头条是不同胡同编号，源地址和机位分别独立；原文3316指定二条拍白塔，1925路线指定头条，不能忽略编号。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          77
+        ],
+        "conclusion": "宫门口二条与头条是不同胡同编号，源地址和机位分别独立；原文3316指定二条拍白塔，1925路线指定头条，不能忽略编号。",
+        "sourcePlaceIds": [
+          "1609",
+          "753"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          3316,
+          1925
+        ],
+        "conclusion": "宫门口二条与头条是不同胡同编号，源地址和机位分别独立；原文3316指定二条拍白塔，1925路线指定头条，不能忽略编号。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-82",
+    "city": "北京",
+    "reviewFingerprint": "6306da7cb30850803d13a488d8e6546044561487109f13fba663307cfcb84b37",
+    "expectedRevisions": {
+      "21e896cb6540c39c0d2c717f116e2ec3": 1,
+      "7b5cdb325723dc52113c8ec29c473d41": 1
+    },
+    "verdict": "distinct",
+    "explanation": "中国美术馆在五四大街1号，中国工艺美术馆在湖景东路16号；2839对应工艺美术玉雕牙雕漆器，不是同馆的简称。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          82
+        ],
+        "conclusion": "中国美术馆在五四大街1号，中国工艺美术馆在湖景东路16号；2839对应工艺美术玉雕牙雕漆器，不是同馆的简称。",
+        "sourcePlaceIds": [
+          "776",
+          "962"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          2839
+        ],
+        "conclusion": "中国美术馆在五四大街1号，中国工艺美术馆在湖景东路16号；2839对应工艺美术玉雕牙雕漆器，不是同馆的简称。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-84",
+    "city": "北京",
+    "reviewFingerprint": "1d1d49dab9e4334decdf0b4af0c708373f7d25c1f70b2bfeb2dee2a7c13e2976",
+    "expectedRevisions": {
+      "35a250f514f41873387509cf133637b1": 1,
+      "f6bb0663cac2775477dd5c6c2901df24": 1
+    },
+    "verdict": "part_of",
+    "explanation": "太古里南区是太古里整体的组成区域。原文4639将南北区分站介绍，整体地址涵盖11和19号院，不能把南区名称当全域别名。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          84
+        ],
+        "conclusion": "太古里南区是太古里整体的组成区域。原文4639将南北区分站介绍，整体地址涵盖11和19号院，不能把南区名称当全域别名。",
+        "sourcePlaceIds": [
+          "2237",
+          "781"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4639
+        ],
+        "conclusion": "太古里南区是太古里整体的组成区域。原文4639将南北区分站介绍，整体地址涵盖11和19号院，不能把南区名称当全域别名。"
+      }
+    ],
+    "childEntityId": "35a250f514f41873387509cf133637b1"
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-85",
+    "city": "北京",
+    "reviewFingerprint": "8aea6ca7c3404cddea0e0451416110f75493fa99b5f5be4d8827159f754525bf",
+    "expectedRevisions": {
+      "b8729ea5ab6120424aaec9f4d1db2381": 1,
+      "f6bb0663cac2775477dd5c6c2901df24": 1
+    },
+    "verdict": "part_of",
+    "explanation": "太古里北区为11号院区域，是太古里组成部分；原文4637与南区分别列站，建筑机位和南区大屏各有边界。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          85
+        ],
+        "conclusion": "太古里北区为11号院区域，是太古里组成部分；原文4637与南区分别列站，建筑机位和南区大屏各有边界。",
+        "sourcePlaceIds": [
+          "2236",
+          "781"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4637
+        ],
+        "conclusion": "太古里北区为11号院区域，是太古里组成部分；原文4637与南区分别列站，建筑机位和南区大屏各有边界。"
+      }
+    ],
+    "childEntityId": "b8729ea5ab6120424aaec9f4d1db2381"
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-90",
+    "city": "北京",
+    "reviewFingerprint": "73eed2d4b695629982d1c94c24350698f162f6185d44c3bf36e0fa329eb2f647",
+    "expectedRevisions": {
+      "38b4fb14f760e33e43a00c4ec9fed6c5": 1,
+      "3f22238c0413637cc050849fba6a2816": 1
+    },
+    "verdict": "distinct",
+    "explanation": "北京植物园是植物园景区，北京动物园是西直门外的动物园；地址分离，原文分别赏秋和看萌兰，不能因园名相似归并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          90
+        ],
+        "conclusion": "北京植物园是植物园景区，北京动物园是西直门外的动物园；地址分离，原文分别赏秋和看萌兰，不能因园名相似归并。",
+        "sourcePlaceIds": [
+          "2442",
+          "802"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          5017,
+          1998
+        ],
+        "conclusion": "北京植物园是植物园景区，北京动物园是西直门外的动物园；地址分离，原文分别赏秋和看萌兰，不能因园名相似归并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-91",
+    "city": "北京",
+    "reviewFingerprint": "0785ef505c1ba1f36f14dcb2ceac7721619adcce5f5b43c2c63cb1616a4a6253",
+    "expectedRevisions": {
+      "3f22238c0413637cc050849fba6a2816": 1,
+      "5856813dc8830f4915085267f4828b1f": 1
+    },
+    "verdict": "distinct",
+    "explanation": "西直门外北京动物园和大兴榆垡北京野生动物园是两个独立园区，原文分别看萌兰与野生动物园遛娃，不能跨园借用身份、门票和路线。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          91
+        ],
+        "conclusion": "西直门外北京动物园和大兴榆垡北京野生动物园是两个独立园区，原文分别看萌兰与野生动物园遛娃，不能跨园借用身份、门票和路线。",
+        "sourcePlaceIds": [
+          "802",
+          "2198"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          1998,
+          5126
+        ],
+        "conclusion": "西直门外北京动物园和大兴榆垡北京野生动物园是两个独立园区，原文分别看萌兰与野生动物园遛娃，不能跨园借用身份、门票和路线。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-95",
+    "city": "北京",
+    "reviewFingerprint": "dadbaadfd59b6e0723b01723d9e4b12dc26983b3d5c0fa6513a4ad7e8012eb48",
+    "expectedRevisions": {
+      "aa6a316ae71a76554d1fa52a0b954e5a": 1,
+      "e89913b503baa0e90b0c292c6c6b0e1e": 1
+    },
+    "verdict": "distinct",
+    "explanation": "同一什刹海攻略分别介绍宋庆龄故居参观和宋庆龄故居码头上船，码头以邻近故居命名，不是故居建筑。码头原北京市中心坐标不作为判等依据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          95
+        ],
+        "conclusion": "同一什刹海攻略分别介绍宋庆龄故居参观和宋庆龄故居码头上船，码头以邻近故居命名，不是故居建筑。码头原北京市中心坐标不作为判等依据。",
+        "sourcePlaceIds": [
+          "1579",
+          "865"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          3260,
+          3237
+        ],
+        "conclusion": "同一什刹海攻略分别介绍宋庆龄故居参观和宋庆龄故居码头上船，码头以邻近故居命名，不是故居建筑。码头原北京市中心坐标不作为判等依据。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-99",
+    "city": "北京",
+    "reviewFingerprint": "a28fa053fbc736d7f04a9286e7b056276b8122a670d66ebf91efee5e01efa690",
+    "expectedRevisions": {
+      "b40dfae5e6f8bc0e82523392b83ad24e": 1,
+      "e923c2c7c9979a00115ca226a0374f91": 1
+    },
+    "verdict": "part_of",
+    "explanation": "天坛公园西门是公园入口，4432明确讨论从西门入园的选择；门点与整体园区分别保留身份和坐标。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          99
+        ],
+        "conclusion": "天坛公园西门是公园入口，4432明确讨论从西门入园的选择；门点与整体园区分别保留身份和坐标。",
+        "sourcePlaceIds": [
+          "2141",
+          "929"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4432
+        ],
+        "conclusion": "天坛公园西门是公园入口，4432明确讨论从西门入园的选择；门点与整体园区分别保留身份和坐标。"
+      }
+    ],
+    "childEntityId": "b40dfae5e6f8bc0e82523392b83ad24e"
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-110",
+    "city": "北京",
+    "reviewFingerprint": "b0bdcf92da89ef9ca82dd328a9c8a20c0dc4882a050bddbe2fd9d7a5cb14d98e",
+    "expectedRevisions": {
+      "112b313098de8bb71203bc445db3c8ff": 1,
+      "4c43da4bfc3095a1bd5b60ed08a0b15d": 1
+    },
+    "verdict": "part_of",
+    "explanation": "北海公园南门是入园门点，5273明确南门进、之后看荷花登白塔；入口不可替代整个公园身份。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          110
+        ],
+        "conclusion": "北海公园南门是入园门点，5273明确南门进、之后看荷花登白塔；入口不可替代整个公园身份。",
+        "sourcePlaceIds": [
+          "2523",
+          "1036"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          5273
+        ],
+        "conclusion": "北海公园南门是入园门点，5273明确南门进、之后看荷花登白塔；入口不可替代整个公园身份。"
+      }
+    ],
+    "childEntityId": "112b313098de8bb71203bc445db3c8ff"
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-116",
+    "city": "北京",
+    "reviewFingerprint": "791bef7d12fa28fbd2cfa16424a867ce4fcdc72845571bc4354975a66cb06e1d",
+    "expectedRevisions": {
+      "684456eb7f3df8f9e4832c166ab6f6f6": 1,
+      "ab8b04c0f8bc96a1138beb1be7ac027c": 1
+    },
+    "verdict": "distinct",
+    "explanation": "科荟路的奥林匹克森林公园与中东路的奥北森林公园是独立公园；奥北不是本批奥森的简称，3056明确奥北端午活动。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          116
+        ],
+        "conclusion": "科荟路的奥林匹克森林公园与中东路的奥北森林公园是独立公园；奥北不是本批奥森的简称，3056明确奥北端午活动。",
+        "sourcePlaceIds": [
+          "876",
+          "1106"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          3056
+        ],
+        "conclusion": "科荟路的奥林匹克森林公园与中东路的奥北森林公园是独立公园；奥北不是本批奥森的简称，3056明确奥北端午活动。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-129",
+    "city": "北京",
+    "reviewFingerprint": "5a41dc021a48ede3a237c0a10e5100be92a47389852a39bac5c1be808068799f",
+    "expectedRevisions": {
+      "e6b6cfcf4ec5f271ebfeaf21b84a49fc": 1,
+      "f557b891b2d527655117b350be8ee8ea": 1
+    },
+    "verdict": "distinct",
+    "explanation": "雁栖湖游览景区与雁栖湖路的环湖公路分别为景区和道路，源3040明确13.9公里环湖公路。不能把路段政策或骑行身份归入湖体景区。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          129
+        ],
+        "conclusion": "雁栖湖游览景区与雁栖湖路的环湖公路分别为景区和道路，源3040明确13.9公里环湖公路。不能把路段政策或骑行身份归入湖体景区。",
+        "sourcePlaceIds": [
+          "1348",
+          "1442"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-130",
+    "city": "北京",
+    "reviewFingerprint": "9c1cc826a0f9fc4252c4320378deb6d60642a5b6c678324a58d1e9d4eff63090",
+    "expectedRevisions": {
+      "016d9be9cab8fc6876cbe5f5d1f41195": 1,
+      "ec75f8b0d3c9f43533e736b977d24576": 1
+    },
+    "verdict": "distinct",
+    "explanation": "同一原文2917/2918按1飞跃侏罗纪、2侏罗纪大冒险列两个相邻但独立的项目及排队时间；地图共同误落环球公交站不能证明是同一游乐设施。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          130
+        ],
+        "conclusion": "同一原文2917/2918按1飞跃侏罗纪、2侏罗纪大冒险列两个相邻但独立的项目及排队时间；地图共同误落环球公交站不能证明是同一游乐设施。",
+        "sourcePlaceIds": [
+          "1360",
+          "1359"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          2917,
+          2918
+        ],
+        "conclusion": "同一原文2917/2918按1飞跃侏罗纪、2侏罗纪大冒险列两个相邻但独立的项目及排队时间；地图共同误落环球公交站不能证明是同一游乐设施。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-145",
+    "city": "北京",
+    "reviewFingerprint": "b17ea402ab30e47efdb4c65677bcf0ef3864e376b128e3debb29f4934815f256",
+    "expectedRevisions": {
+      "004650817a09d4e91e7ce8b8dc5118f2": 1,
+      "492f075f7f99d58b23f94009b082dd81": 1
+    },
+    "verdict": "distinct",
+    "explanation": "同一原文P11中左门、P12左翼门是两个独立拍摄门点，各有取景说明；相同北京市中心兜底坐标不能吞掉不同宫门。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          145
+        ],
+        "conclusion": "同一原文P11中左门、P12左翼门是两个独立拍摄门点，各有取景说明；相同北京市中心兜底坐标不能吞掉不同宫门。",
+        "sourcePlaceIds": [
+          "2092",
+          "2093"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4322,
+          4323
+        ],
+        "conclusion": "同一原文P11中左门、P12左翼门是两个独立拍摄门点，各有取景说明；相同北京市中心兜底坐标不能吞掉不同宫门。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-04-review-146",
+    "city": "北京",
+    "reviewFingerprint": "c07877d7ae31e88f542409a3af56c1b265ecb57bda0f109b7c75f979e725bbcb",
+    "expectedRevisions": {
+      "0810abb5f23a545ecd9bd777f69f88fd": 1,
+      "11868f613270679ddb4b3bd9621ea60f": 1
+    },
+    "verdict": "distinct",
+    "explanation": "4418中的大兴机场线是骑行攻略的一条路线，不是机场航站楼；4325单独描述机场建筑摄影。不得把骑行线与机场主体归为同义，也不误标成地铁机场线。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          146
+        ],
+        "conclusion": "4418中的大兴机场线是骑行攻略的一条路线，不是机场航站楼；4325单独描述机场建筑摄影。不得把骑行线与机场主体归为同义，也不误标成地铁机场线。",
+        "sourcePlaceIds": [
+          "2130",
+          "2094"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/beijing-negative-context.json",
+        "sha256": "a2b95ac08733d3733d8105bdd2e15b553ca9f07f494fd37fc94b3537b125cb5e",
+        "mentionIds": [
+          4418,
+          4325
+        ],
+        "conclusion": "4418中的大兴机场线是骑行攻略的一条路线，不是机场航站楼；4325单独描述机场建筑摄影。不得把骑行线与机场主体归为同义，也不误标成地铁机场线。"
+      }
+    ]
+  }
+]

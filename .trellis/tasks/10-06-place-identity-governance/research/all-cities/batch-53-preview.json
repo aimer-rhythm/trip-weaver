@@ -1,0 +1,544 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "cc3ebff96b9f814d82ef808324a42400",
+          "city": "济南",
+          "canonical_name": "鑫龙火锅",
+          "primary_place_id": 5474,
+          "aliases": [
+            "鑫龙火锅"
+          ],
+          "legacy_ids": [
+            "cc3ebff96b9f814d82ef808324a42400"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5474,
+          "entity_id": "cc3ebff96b9f814d82ef808324a42400"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5474,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 28.8,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5474,
+          "mention_count_30d": 4,
+          "positive_count_30d": 2,
+          "source_count": 4,
+          "top_reasons": [
+            {
+              "reason": "锅底与素菜分开收费，糖蒜未点却强制收费，存在文字游戏。",
+              "evidence": "锅底17，带的菜32"
+            },
+            {
+              "reason": "最正宗，清水葱姜锅底配麻汁辣椒油，羊肉原味爆汁",
+              "evidence": "一定要吃北园大街店‼️感觉最正宗"
+            },
+            {
+              "reason": "本土铜锅但口味单调，作者不喜欢，但老公喜欢。",
+              "evidence": "口味太单调"
+            },
+            {
+              "reason": "济南美食推荐，具体菜品未详述",
+              "evidence": "2️⃣鑫龙火锅"
+            }
+          ],
+          "recommend_score": 12.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7925,
+          "canonical_place_id": 5474,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鑫龙火锅",
+          "evidence_summary": "最正宗，清水葱姜锅底配麻汁辣椒油，羊肉原味爆汁"
+        },
+        {
+          "id": 7926,
+          "canonical_place_id": 5474,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鑫龙火锅",
+          "evidence_summary": "锅底与素菜分开收费，糖蒜未点却强制收费，存在文字游戏。"
+        },
+        {
+          "id": 8669,
+          "canonical_place_id": 5474,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 鑫龙火锅",
+          "evidence_summary": "本土铜锅但口味单调，作者不喜欢，但老公喜欢。"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5474,
+          "city": "济南",
+          "name_keys": [
+            "鑫龙火锅"
+          ],
+          "entity_ids": [
+            "cc3ebff96b9f814d82ef808324a42400"
+          ],
+          "source_hash": "b1fababfa71fc440457625c1f9087a3143c548f76f932bc0c9d5893e1e66eef9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5474-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/food-branches-source-review-01.json",
+              "kind": "reviewed_full_branch_scope",
+              "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。",
+              "mentionIds": [
+                11708,
+                11709,
+                12846,
+                12890
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "cc3ebff96b9f814d82ef808324a42400"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11708,
+          "scope_place_id": 5474,
+          "entity_id": null,
+          "input_hash": "33c619a40256cb34b37732c6cd6430d240e84fa925a34f1eced5b4bf221a86dd",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5474-scope"
+        },
+        {
+          "mention_id": 11709,
+          "scope_place_id": 5474,
+          "entity_id": "cc3ebff96b9f814d82ef808324a42400",
+          "input_hash": "06c05d431925e384a548302225e87588f033c8e55722b9414b100f31523c0625",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5474-scope"
+        },
+        {
+          "mention_id": 12846,
+          "scope_place_id": 5474,
+          "entity_id": null,
+          "input_hash": "bfce72f70b00cb1226e1edf8aabe4346999b1c6c9e54c7f78778e322c28b4082",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5474-scope"
+        },
+        {
+          "mention_id": 12890,
+          "scope_place_id": 5474,
+          "entity_id": null,
+          "input_hash": "43be79682b5bc5ee909167e1082949f6f31443b3aecd5690744557ea61d4a1b7",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5474-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "b1fababfa71fc440457625c1f9087a3143c548f76f932bc0c9d5893e1e66eef9",
+        "mentions": [
+          {
+            "mentionId": 11708,
+            "inputHash": "33c619a40256cb34b37732c6cd6430d240e84fa925a34f1eced5b4bf221a86dd"
+          },
+          {
+            "mentionId": 11709,
+            "inputHash": "06c05d431925e384a548302225e87588f033c8e55722b9414b100f31523c0625"
+          },
+          {
+            "mentionId": 12846,
+            "inputHash": "bfce72f70b00cb1226e1edf8aabe4346999b1c6c9e54c7f78778e322c28b4082"
+          },
+          {
+            "mentionId": 12890,
+            "inputHash": "43be79682b5bc5ee909167e1082949f6f31443b3aecd5690744557ea61d4a1b7"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 6910,
+          "fingerprint": "49c3bcab9a5fa3defc9dba678f6456b5262aaadee20d3796c72993aa85713723",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "33c619a40256cb34b37732c6cd6430d240e84fa925a34f1eced5b4bf221a86dd",
+            "mentionId": 11708,
+            "scopePlaceIds": [
+              5474
+            ]
+          }
+        },
+        {
+          "id": 6946,
+          "fingerprint": "aeaa2c7834c6eefecd502b1734a212863965ce1964cf7f1f58f3055e9adbcab8",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "bfce72f70b00cb1226e1edf8aabe4346999b1c6c9e54c7f78778e322c28b4082",
+            "mentionId": 12846,
+            "scopePlaceIds": [
+              5474
+            ]
+          }
+        },
+        {
+          "id": 6949,
+          "fingerprint": "abc0afc9be02e8f173e18c69e3fc4496ba347c5229a6c23175db03b12d13fea5",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "43be79682b5bc5ee909167e1082949f6f31443b3aecd5690744557ea61d4a1b7",
+            "mentionId": 12890,
+            "scopePlaceIds": [
+              5474
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "97c845bd4afbe220afe8545ed5030c95",
+          "city": "济南",
+          "canonical_name": "七九刘家烧烤",
+          "primary_place_id": 5433,
+          "aliases": [
+            "七九刘家烧烤"
+          ],
+          "legacy_ids": [
+            "97c845bd4afbe220afe8545ed5030c95"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5433,
+          "entity_id": "97c845bd4afbe220afe8545ed5030c95"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5433,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 18.5,
+          "theme_tags": [
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5433,
+          "mention_count_30d": 2,
+          "positive_count_30d": 2,
+          "source_count": 2,
+          "top_reasons": [
+            {
+              "reason": "纬九路烧烤，口碑好",
+              "evidence": "我个人感觉还不错的一些店"
+            },
+            {
+              "reason": "本地人推荐的老字号苍蝇馆子，招牌虾酱馒头片和各种烤串",
+              "evidence": "感谢济南本地人推荐的10家苍蝇馆子"
+            }
+          ],
+          "recommend_score": 10.0
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7883,
+          "canonical_place_id": 5433,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 七九刘家烧烤",
+          "evidence_summary": "纬九路烧烤，口碑好"
+        },
+        {
+          "id": 8668,
+          "canonical_place_id": 5433,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 七九刘家烧烤",
+          "evidence_summary": "本地人推荐的老字号苍蝇馆子，招牌虾酱馒头片和各种烤串"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5433,
+          "city": "济南",
+          "name_keys": [
+            "七九刘家烧烤"
+          ],
+          "entity_ids": [
+            "97c845bd4afbe220afe8545ed5030c95"
+          ],
+          "source_hash": "00a0cd73927fd6ad2f432dd73d8a51cc1af76b8b732c6f22d3ab94cfc5911f9b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5433-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/food-branches-source-review-01.json",
+              "kind": "reviewed_full_branch_scope",
+              "conclusion": "完整原文确认分店；未给分店的正负评价都待审。原始评价不删改，不创建未证实分店。",
+              "mentionIds": [
+                11635,
+                12886
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "97c845bd4afbe220afe8545ed5030c95"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11635,
+          "scope_place_id": 5433,
+          "entity_id": "97c845bd4afbe220afe8545ed5030c95",
+          "input_hash": "afd98f5faf65d40faa07a3aae3824094e93acebe846cf9ffc76292ed378a4c8b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5433-scope"
+        },
+        {
+          "mention_id": 12886,
+          "scope_place_id": 5433,
+          "entity_id": "97c845bd4afbe220afe8545ed5030c95",
+          "input_hash": "68045d63a635536a8ec0f833bbeb51f8f86fdcd25b70dabf65a3f48771f8fea1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-53-source-5433-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "00a0cd73927fd6ad2f432dd73d8a51cc1af76b8b732c6f22d3ab94cfc5911f9b",
+        "mentions": [
+          {
+            "mentionId": 11635,
+            "inputHash": "afd98f5faf65d40faa07a3aae3824094e93acebe846cf9ffc76292ed378a4c8b"
+          },
+          {
+            "mentionId": 12886,
+            "inputHash": "68045d63a635536a8ec0f833bbeb51f8f86fdcd25b70dabf65a3f48771f8fea1"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "cc3ebff96b9f814d82ef808324a42400",
+          "city": "济南",
+          "canonical_name": "鑫龙火锅（北园大街店）",
+          "primary_place_id": 5474,
+          "aliases": [
+            "鑫龙火锅",
+            "鑫龙火锅（北园大街店）"
+          ],
+          "legacy_ids": [
+            "7cf02e4ed3c21dc4f34db4251a5fc936",
+            "cc3ebff96b9f814d82ef808324a42400"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "restore_original_branch_name",
+              "file": "priority-cities/济南/food-branches-source-review-01.json",
+              "originalMentionIds": [
+                11709
+              ],
+              "conclusion": "恢复原提及完整分店名并保留稳定ID/旧裸名兼容；不修改原地址坐标，也不将保留旧值称为本次位置核验通过。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5474,
+          "entity_id": "cc3ebff96b9f814d82ef808324a42400"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "97c845bd4afbe220afe8545ed5030c95",
+          "city": "济南",
+          "canonical_name": "七九刘家烧烤(纬九路店)",
+          "primary_place_id": 5433,
+          "aliases": [
+            "七九刘家烧烤",
+            "七九刘家烧烤(纬九路店)"
+          ],
+          "legacy_ids": [
+            "91498642f17283649478f50006238603",
+            "97c845bd4afbe220afe8545ed5030c95"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "restore_original_branch_name",
+              "file": "priority-cities/济南/food-branches-source-review-01.json",
+              "originalMentionIds": [
+                12886
+              ],
+              "conclusion": "恢复原提及完整分店名并保留稳定ID/旧裸名兼容；不修改原地址坐标，也不将保留旧值称为本次位置核验通过。"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5433,
+          "entity_id": "97c845bd4afbe220afe8545ed5030c95"
+        }
+      ]
+    }
+  ]
+}

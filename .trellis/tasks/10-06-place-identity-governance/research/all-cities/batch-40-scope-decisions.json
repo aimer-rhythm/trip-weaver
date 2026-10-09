@@ -1,0 +1,82 @@
+[
+  {
+    "key": "all-cities-20261009-batch-40-description-5481",
+    "city": "济南",
+    "sourcePlaceId": 5481,
+    "expectedSourceHash": "7caaee8c6a43555fca7bc2d55d4899a5aa0c859eb1ac178743dc1f92c7a4dd48",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "69b816cda273f29ed9296314fbe6f52d": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11508,
+        "inputHash": "1426a377f8360021ffbc550b53851f8b76421de681d2754aca56b18008e7db40",
+        "entityId": "69b816cda273f29ed9296314fbe6f52d"
+      },
+      {
+        "mentionId": 12581,
+        "inputHash": "889fb1a889d0149f0db85c52976a9d8826604db70fbb53d2091cf4a561b04921",
+        "entityId": "69b816cda273f29ed9296314fbe6f52d",
+        "factExclusions": {
+          "reason": {
+            "reason": "subject_mismatch",
+            "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。"
+          },
+          "evidence_text": {
+            "reason": "subject_mismatch",
+            "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。"
+          },
+          "place_content": {
+            "reason": "subject_mismatch",
+            "quote": "明水古城，沉醉不知归路。济南是一座“慢得恰好”的城市——泉水泡茶可品闲适，登高怀古可抒豪情，市井烟火中藏着千年文脉。"
+          }
+        }
+      },
+      {
+        "mentionId": 12786,
+        "inputHash": "896c2475a31ba69b6ddadcc0310b177a68b0baad020a23b6090a1c46ebd6f2fc",
+        "entityId": "69b816cda273f29ed9296314fbe6f52d"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_text_subject_mismatch",
+        "file": "priority-cities/济南/description-source-review-01.json",
+        "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+        "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-40-description-5974",
+    "city": "济南",
+    "sourcePlaceId": 5974,
+    "expectedSourceHash": "45ae7bd2bcae50ec30989eb65b716e0abcb1d007b64848058bc4369d159860e3",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "abc624edea07111dc19aa79dfbb18289": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 12787,
+        "inputHash": "f7491ceaf28dfe54b91be2882779a422c99b8a7917557f3813548c66d59f14c3",
+        "entityId": "abc624edea07111dc19aa79dfbb18289",
+        "factExclusions": {
+          "reason": {
+            "reason": "subject_mismatch",
+            "quote": "9️⃣济南野生动物园"
+          }
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_text_subject_mismatch",
+        "file": "priority-cities/济南/description-source-review-01.json",
+        "sha256": "32db56737c13072a17afbe6c2322e2e06361b4fb1edb3a75a0ce651e3efa7033",
+        "conclusion": "有效地点提及保留，只排除已确认主语错误字段；图片比对暂缓，完整自查未通过。"
+      }
+    ]
+  }
+]

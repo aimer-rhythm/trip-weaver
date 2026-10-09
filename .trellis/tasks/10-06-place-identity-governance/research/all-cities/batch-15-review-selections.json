@@ -1,0 +1,623 @@
+[
+  {
+    "review": 164,
+    "verdict": "uncertain",
+    "explanation": "双子塔A座源6749是未具名酒店住宿广告，泛双子塔6544亦混入同类广告和6290建筑观烟花。建筑群、A座与楼内酒店三种粒度未拆清，不能同义合并或直接写固定包含关系。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6290,
+          6544,
+          6749
+        ]
+      }
+    ]
+  },
+  {
+    "review": 165,
+    "verdict": "distinct",
+    "explanation": "1351明确别在曾厝垵站下车、曾山站直达海边，站点与曾厝垵旅游街区独立。旧曾厝垵站点误落鼓浪屿，坐标另需版本化纠错，不因同名合并。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5546,
+          5632,
+          5654,
+          5667,
+          5732,
+          5744,
+          5769,
+          5897,
+          5959,
+          6009,
+          6065,
+          6078,
+          6100,
+          6127,
+          6203,
+          6228,
+          6390,
+          6433,
+          6708,
+          6795,
+          6849
+        ]
+      }
+    ]
+  },
+  {
+    "review": 167,
+    "verdict": "uncertain",
+    "explanation": "1421八市阿杰五香显式大元路分店，但旧图开禾路111号；泛名阿杰五香来自多篇八市清单，地图虽为大元路19号，不能证明各提及是同分店。保留并补门牌/分店归属。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5400,
+          5455,
+          5824,
+          5907,
+          6150,
+          6254,
+          6439,
+          6779,
+          6828
+        ]
+      }
+    ]
+  },
+  {
+    "review": 168,
+    "verdict": "uncertain",
+    "explanation": "阿杰五香卷5717、6038、6449只有八市现炸或味道描述，泛名主体亦混多个源；已有1421显式大元路分店，不能省略分店后将开禾路与大元路全并。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5455,
+          5717,
+          5907,
+          6038,
+          6150,
+          6254,
+          6439,
+          6449,
+          6779,
+          6828
+        ]
+      }
+    ]
+  },
+  {
+    "review": 169,
+    "verdict": "uncertain",
+    "explanation": "西门土笋冻6408仅泛称小吃，天河西门土笋冻6441也未给分店；只有一方地图斗西路33号，另一方为城市中心默认点。缺品牌/门牌互证，不按相似名推同体。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6408,
+          6441
+        ]
+      }
+    ]
+  },
+  {
+    "review": 170,
+    "verdict": "uncertain",
+    "explanation": "1507明确中山路豪香里脊，其他源为八市至中山路路线；尚缺每篇分店门牌。豪香里脊肉串旧地址同时写禾祥西路和南中广场，存在冲突，不能直接用地图认定全为同店。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5911,
+          6444,
+          6458,
+          6781,
+          6831,
+          6837
+        ]
+      }
+    ]
+  },
+  {
+    "review": 171,
+    "verdict": "uncertain",
+    "explanation": "1421阿吉仔饼铺明确中山路店，旧图后江埭路店错误；馅饼源1430仅八市美食清单，地图大元路37号。连锁品牌泛称不等于一个分店，补充阿吉仔实体也先保留。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5405,
+          5479,
+          6445
+        ]
+      }
+    ]
+  },
+  {
+    "review": 175,
+    "verdict": "uncertain",
+    "explanation": "山海步道5368明确天泉段，其他源指D18至海边；厦门山海步道6370仅海边长廊夜景。母步道、林海线、天泉段和摄影机位粒度混用，先厘清提及范围，不按前缀归一。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5368,
+          5492,
+          5514,
+          5985,
+          6008,
+          6370,
+          6479,
+          6602,
+          6614,
+          6774
+        ]
+      }
+    ]
+  },
+  {
+    "review": 176,
+    "verdict": "uncertain",
+    "explanation": "山海健康步道5291从东芳山庄出发，5520定位林海线7号入口；山海步道多源指天泉段。旧邮轮码头坐标不证明同一线路，需拆清总步道与路线段。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5291,
+          5368,
+          5381,
+          5492,
+          5514,
+          5520,
+          5916,
+          5985,
+          6008,
+          6479,
+          6602,
+          6614
+        ]
+      }
+    ]
+  },
+  {
+    "review": 179,
+    "verdict": "uncertain",
+    "explanation": "厦门轮渡5630实际购票公众号，6511为往返游船体验；厦门轮渡码头5545才是住宿附近码头。服务、公众号和码头混合，不能沿相同地图点设永久同义。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5545,
+          5630,
+          6511
+        ]
+      }
+    ]
+  },
+  {
+    "review": 181,
+    "verdict": "distinct",
+    "explanation": "海湾公园在岛内西堤海岸，1580海沧湾公园在海沧区露营分区，主源分别西堤东路与海沧湾，跨海两独立公园。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5298,
+          5975,
+          5996,
+          6043,
+          6073,
+          6331,
+          6526,
+          6823
+        ]
+      }
+    ]
+  },
+  {
+    "review": 182,
+    "verdict": "uncertain",
+    "explanation": "带厦门前缀的健康步道既有母路线推荐林海线，也有D18上李水库和海边观景台提及；无前缀源含东芳山庄和林海线7号入口。应先决定线路和提及归属，邮轮码头旧点不能证明同义。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5291,
+          5374,
+          5381,
+          5520,
+          5790,
+          5894,
+          5916,
+          6062,
+          6369,
+          6822
+        ]
+      }
+    ]
+  },
+  {
+    "review": 183,
+    "verdict": "uncertain",
+    "explanation": "鸿山源1569为99.2米山峰，鸿山公园为思明南路游园和拍双子塔场景；自然山体与公园管理范围尚未核实，不能仅省略公园后缀合并。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5304,
+          5565,
+          5875,
+          6609
+        ]
+      }
+    ]
+  },
+  {
+    "review": 192,
+    "verdict": "uncertain",
+    "explanation": "厦门山海健康步道多源混D18、水库、母步道推荐林海线；厦门山海步道源1378仅夜间海边长廊。没有完整路线边界，保留待拆分/补证。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5374,
+          5790,
+          5894,
+          6062,
+          6369,
+          6370,
+          6774,
+          6822
+        ]
+      }
+    ]
+  },
+  {
+    "review": 193,
+    "verdict": "uncertain",
+    "explanation": "林记老思西鸡蛋汉堡1421有完整店名；1507只写老思西和口味，无门牌或店面图。后者地图为思西公交站，不能证实属于林记同店。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5397,
+          6836
+        ]
+      }
+    ]
+  },
+  {
+    "review": 194,
+    "verdict": "uncertain",
+    "explanation": "丹香烘焙坊1421与丹香烘焙1506有同类车轮饼推荐，但另一源缺分店门牌，城市中心点不能作为匹配依据。暂不为同品牌泛称绑定固定分店。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5399,
+          6829
+        ]
+      }
+    ]
+  },
+  {
+    "review": 199,
+    "verdict": "uncertain",
+    "explanation": "酒店6870原文是艾尼壹水湾度假酒店旁边停车场内摄影，酒店主体身份混入机位。另一实体已为停车场；需将源提及和酒店/摄影机位分开修复，不能酒店等同停车场。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5440,
+          6870
+        ]
+      }
+    ]
+  },
+  {
+    "review": 201,
+    "verdict": "uncertain",
+    "explanation": "5665对应1260原文为不在书店旁奶黄色海边巴士、营地及Amoy标牌，其他OFF WORK在海边源明确椰风寨环岛路店。尚无搬迁或同一营地范围证据，不能把沿岸不同机位并为门店。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5443,
+          5590,
+          5665,
+          5930
+        ]
+      }
+    ]
+  },
+  {
+    "review": 202,
+    "verdict": "uncertain",
+    "explanation": "阿忠腌水果1355包含外卖和多店消费且没有地址；阿忠水果1418只说在阿忠忠福楼隔壁，地图金榜路店未获原文支持。泛品牌与具体分店须分开补证。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5458,
+          6034
+        ]
+      }
+    ]
+  },
+  {
+    "review": 203,
+    "verdict": "uncertain",
+    "explanation": "1355 CUIDA只饮品黑糖碎碎冰且包含外卖，1507 cuida只口味评价；两原文均无门牌。地图分别厦禾路296号和禾祥西店，仍不能确定同一分店。保留目录名称歧义及指定ID防护。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5461,
+          6841
+        ]
+      }
+    ]
+  },
+  {
+    "review": 205,
+    "verdict": "uncertain",
+    "explanation": "1316管风琴博物馆只说零点预约，可能误称艺术中心；1248风琴博物馆在菽庄花园之后但没有馆址/展品。其他原文已明确风琴馆与艺术中心独立，不能由近似名称替这两条混称源判等。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5483,
+          5762
+        ]
+      }
+    ]
+  },
+  {
+    "review": 206,
+    "verdict": "uncertain",
+    "explanation": "钢琴馆已由1324、1445确认菽庄花园内；1248风琴博物馆没有馆址且路线相邻，可能误抽取钢琴馆。物理场馆独立不等于该模糊源已定位，需先核原图再确定实体归属。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5483,
+          5622
+        ]
+      }
+    ]
+  },
+  {
+    "review": 207,
+    "verdict": "uncertain",
+    "explanation": "天泉步道广场多源为路线终点，但6876原文明确广场上面的步道；天泉步道5652为盼归塔到海边的线段。广场与步道不同粒度且源混合，不能强并或未经边界核实写包含关系。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5506,
+          5525,
+          5652,
+          5698,
+          5972,
+          5989,
+          6097,
+          6876
+        ]
+      }
+    ]
+  },
+  {
+    "review": 208,
+    "verdict": "distinct",
+    "explanation": "1464同篇分别列林海线D18与云海线观音寺入口，两个命名线路独立。林海线旧点误匹配湖里林海，单独坐标纠错待办，不以无坐标为理由同义合并。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5564,
+          5572,
+          6356
+        ]
+      }
+    ]
+  },
+  {
+    "review": 209,
+    "verdict": "uncertain",
+    "explanation": "金榜山源1569为80米山峰，金榜山公园源1464为游园拍摄地点；自然山体和公园范围需核实。不能只因山/公园常共称直接同义。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5568,
+          5877
+        ]
+      }
+    ]
+  },
+  {
+    "review": 212,
+    "verdict": "uncertain",
+    "explanation": "浮屿大同鸭肉粥与浮屿鸭肉粥原文只有味道或早餐推荐，地图只到浮屿地名。尚缺门牌和门店招牌，不能把相似老字号/泛小吃名称直接绑定一家店。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5611,
+          5950,
+          6409
+        ]
+      }
+    ]
+  },
+  {
+    "review": 214,
+    "verdict": "distinct",
+    "explanation": "镇海路5675为住宿片区，镇海路站6585为酒店附近地铁站。道路和轨道设施独立，地图同点不等同实体身份。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5675,
+          6585
+        ]
+      }
+    ]
+  },
+  {
+    "review": 218,
+    "verdict": "distinct",
+    "explanation": "1402乌糖为思明演武大桥一带沙茶面；1419贡糖显式八市店。品牌及位置均不同，不是乌/贡同义写法。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5805,
+          6148
+        ]
+      }
+    ]
+  },
+  {
+    "review": 219,
+    "verdict": "distinct",
+    "explanation": "1280大中沙茶面与1402、1453集美大社沙茶面为不同品牌，后者明确集美大社。大社旧图误落湖里荟盈星街，不能用错图抹平独立身份。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5815,
+          6056,
+          6258
+        ]
+      }
+    ]
+  },
+  {
+    "review": 220,
+    "verdict": "uncertain",
+    "explanation": "1398郑有财海鲜砂锅粥与1401郑有财海鲜粥同品牌可能性高，但均无门牌/分店。旧图错到海沧漳浦海鲜，与八市中山路场景冲突；需核门店后再合并。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5821,
+          6026
+        ]
+      }
+    ]
+  },
+  {
+    "review": 223,
+    "verdict": "uncertain",
+    "explanation": "东渡阿忠水果1288为外卖、1481只中山路一带推荐，阿忠水果1418为忠福楼隔壁。两旧图万达店与金榜路店均缺原文支持，不能把品牌前缀当同店证明。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          5926,
+          6034,
+          6743
+        ]
+      }
+    ]
+  },
+  {
+    "review": 226,
+    "verdict": "uncertain",
+    "explanation": "1426老蔡牛肉面与1428老蔡牛肉拉面馆均只有菜品清单，没有地址/招牌；一方旧点集美、一方城市中心。分店和具体店名尚待核实。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6111,
+          6211
+        ]
+      }
+    ]
+  },
+  {
+    "review": 227,
+    "verdict": "distinct",
+    "explanation": "1495、1380及1505明确厦门站岛内市中心与厦门北站集美两个铁路枢纽，不能按城市同名合并。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6158,
+          6159,
+          6286,
+          6287,
+          6763,
+          6764,
+          6810
+        ]
+      }
+    ]
+  },
+  {
+    "review": 230,
+    "verdict": "distinct",
+    "explanation": "1522海沧SM城市广场与1528湖里SM一期二期为两独立商业体。海沧两种语序已另作显式实体合并，此候选只记录海沧与岛内主体的独立边界。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6305,
+          6689,
+          6854
+        ]
+      }
+    ],
+    "coveredReviews": [
+      231
+    ]
+  },
+  {
+    "review": 237,
+    "verdict": "uncertain",
+    "explanation": "1505、1506明确龙阳牌子，但1453泛林氏源只鼓浪屿清单，未给具体门店。两地图都错到曾厝垵台湾印象美食城，不能用同一错点或同品牌判同分店。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6261,
+          6784,
+          6835
+        ]
+      }
+    ]
+  },
+  {
+    "review": 238,
+    "verdict": "distinct",
+    "explanation": "1572同篇明确岛内五山8公里与七山16公里不同徒步路线，不能省略山数后并为一条；旧城市中心点不是路线定位。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6275,
+          6276
+        ]
+      }
+    ]
+  },
+  {
+    "review": 248,
+    "verdict": "distinct",
+    "explanation": "1557明确日月谷温泉酒店与马路对面的度假村泡池为两个区域，有天桥/接驳车相连。1554日月谷温泉指4A泡池景区，不是酒店，两者保持独立。",
+    "contexts": [
+      {
+        "file": "xiamen-batch15-context.json",
+        "mentionIds": [
+          6751,
+          6868
+        ]
+      }
+    ]
+  }
+]

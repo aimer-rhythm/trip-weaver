@@ -1,0 +1,142 @@
+{
+  "city": "济南",
+  "batch": "batch-36",
+  "previousReview": "priority-cities/济南/spring-source-review-01.json",
+  "sourceFile": "priority-cities/济南/run-1791385235272324900/sources.json",
+  "sourceSha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+  "summary": {
+    "sources": 4,
+    "mentions": 11,
+    "fullNotes": 4,
+    "resolved": 10,
+    "durationFieldExclusions": 4,
+    "pending": 1,
+    "upstreamImages": 0
+  },
+  "rows": [
+    {
+      "mentionId": 12943,
+      "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07",
+      "entityId": "065e077002130047feaadff4f607b480",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "group_duration",
+          "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓"
+        }
+      },
+      "sourceId": 5988,
+      "noteId": 2837,
+      "name": "起凤泉",
+      "reason": "四处合计半小时，保留独立主体和描述，仅排除单点minutes。"
+    },
+    {
+      "mentionId": 12584,
+      "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5",
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "sourceId": 5948,
+      "noteId": 2813,
+      "name": "腾蛟泉",
+      "reason": "完整原文对应本独立泉体；不将街巷、桥、其他泉池或别名语境无限扩张。"
+    },
+    {
+      "mentionId": 12942,
+      "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51",
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "group_duration",
+          "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓"
+        }
+      },
+      "sourceId": 5948,
+      "noteId": 2837,
+      "name": "腾蛟泉",
+      "reason": "四处合计半小时，保留独立主体和描述，仅排除单点minutes。"
+    },
+    {
+      "mentionId": 12587,
+      "inputHash": "77496d13ce4f16b49d6b77d98b9849cd02ebb60320e53bc71db57f127f5758e4",
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "sourceId": 5950,
+      "noteId": 2813,
+      "name": "刘氏泉",
+      "reason": "完整原文对应本独立泉体；不将街巷、桥、其他泉池或别名语境无限扩张。"
+    },
+    {
+      "mentionId": 12692,
+      "inputHash": "a7a2eab6f400c8b21582ae35776863710d609ffb97bebcbcf8d80252a74bfc49",
+      "entityId": null,
+      "sourceId": 5950,
+      "noteId": 2817,
+      "name": "刘氏泉",
+      "reason": "泉体与簪花少女摄影主体的范围尚待补证，先阻止描述混用；不判为非地点。"
+    },
+    {
+      "mentionId": 12944,
+      "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347",
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "group_duration",
+          "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓"
+        }
+      },
+      "sourceId": 5950,
+      "noteId": 2837,
+      "name": "刘氏泉",
+      "reason": "四处合计半小时，保留独立主体和描述，仅排除单点minutes。"
+    },
+    {
+      "mentionId": 11625,
+      "inputHash": "c91355aa289dee679d83eb6d966a9613ed04817eaf6cdff8a4fbe1925db76053",
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "sourceId": 5499,
+      "noteId": 2624,
+      "name": "王府池子",
+      "reason": "完整原文对应本独立泉体；不将街巷、桥、其他泉池或别名语境无限扩张。"
+    },
+    {
+      "mentionId": 12583,
+      "inputHash": "8b3d19732c5c579b9c995a9a23c8cde6a1ba6799286dcdf6b48ad4c612eec56d",
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "sourceId": 5499,
+      "noteId": 2813,
+      "name": "王府池子",
+      "reason": "完整原文对应本独立泉体；不将街巷、桥、其他泉池或别名语境无限扩张。"
+    },
+    {
+      "mentionId": 12695,
+      "inputHash": "e69290580bd8b90978090b0ec38471ae8974f5ab3645b80bffe5c211e2e1b9ac",
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "sourceId": 5499,
+      "noteId": 2817,
+      "name": "王府池子",
+      "reason": "完整原文对应本独立泉体；不将街巷、桥、其他泉池或别名语境无限扩张。"
+    },
+    {
+      "mentionId": 12919,
+      "inputHash": "08d90e9e8f940e8992c7bb57a6d346b594d9d610758c1d5e80da6d66053282b8",
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "sourceId": 5499,
+      "noteId": 2624,
+      "name": "王府池子",
+      "reason": "完整原文对应本独立泉体；不将街巷、桥、其他泉池或别名语境无限扩张。"
+    },
+    {
+      "mentionId": 12941,
+      "inputHash": "70d329713c73e8f9cac53c15fb3037ef97236488a9751b4ad0648a1d692f9cd0",
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "factExclusions": {
+        "visit_duration": {
+          "reason": "group_duration",
+          "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓"
+        }
+      },
+      "sourceId": 5499,
+      "noteId": 2837,
+      "name": "王府池子",
+      "reason": "四处合计半小时，保留独立主体和描述，仅排除单点minutes。"
+    }
+  ],
+  "note": "四泉稳定ID和坐标保留，起凤泉唯一提及仍resolved；刘氏泉12692主体粒度待补证，不为了保留全部计数而声明归属已核实。"
+}

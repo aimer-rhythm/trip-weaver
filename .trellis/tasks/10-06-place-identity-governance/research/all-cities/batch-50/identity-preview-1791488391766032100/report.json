@@ -1,0 +1,43 @@
+{
+  "batch": 50,
+  "isolated": true,
+  "synthetic": false,
+  "partialCityReconstruction": true,
+  "sources": 2,
+  "historicalEntities": 2,
+  "mentions": 2,
+  "notes": 1,
+  "scopesAdded": 0,
+  "coordinatesCleared": 2,
+  "categoriesCorrected": 1,
+  "newPreciseLocations": 0,
+  "factsPreserved": true,
+  "newAliases": 0,
+  "pendingAdded": 0,
+  "idempotent": true,
+  "reverseRollback": true,
+  "originalSourcesAndMentionsUnchanged": true,
+  "results": [
+    {
+      "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+      "name": "BLUEDUCK骨董屋",
+      "category": "购物",
+      "type": "shop",
+      "coordinates": null,
+      "address": "山东省济南市市中区经三路120号",
+      "factsPreserved": true
+    },
+    {
+      "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+      "name": "VILLASHAKA",
+      "category": "美食",
+      "type": "cafe",
+      "coordinates": null,
+      "address": "",
+      "factsPreserved": true
+    }
+  ],
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

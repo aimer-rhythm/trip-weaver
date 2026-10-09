@@ -1,0 +1,53 @@
+{
+  "readOnly": true,
+  "batches": [
+    75,
+    76
+  ],
+  "before": "snapshot-20261009T111626632432Z\\input.json",
+  "after": "snapshot-20261009T120916994082Z\\input.json",
+  "checks": {
+    "北京.sources": true,
+    "北京.notes": true,
+    "北京.scopes": true,
+    "北京.assignments": true,
+    "北京.summaries": true,
+    "北京.mentionFingerprints": true,
+    "北京.oldRowsPreserved": true,
+    "北京.mediaPreserved": true,
+    "squareCoordinatesPreserved": true,
+    "squareContentExactlyInheritedFromMergedTiananmen": true,
+    "primarySourceHadNoWebProfile": true,
+    "济南.sources": true,
+    "济南.notes": true,
+    "济南.scopes": true,
+    "济南.assignments": true,
+    "济南.summaries": true,
+    "济南.mentionFingerprints": true,
+    "济南.oldRowsPreserved": true,
+    "济南.mediaPreserved": true,
+    "onlyExpectedEntitiesChanged": true,
+    "tripsPreserved": true,
+    "all60ScoresMatch": true,
+    "rankingMatchesFinalSnapshot": true
+  },
+  "changedEntityIds": [
+    "0854db5911778c6722637d896e9c2904",
+    "298e600416cbc4f85119932e8a3c966c",
+    "21152db5b05aff609cffa2bee47f16b4"
+  ],
+  "oldDownstreamRows": 1588,
+  "rawSources": 1576,
+  "mentions": 3484,
+  "trips": 201,
+  "contentChange": {
+    "entityId": "21152db5b05aff609cffa2bee47f16b4",
+    "sourceId": 690,
+    "before": "广场的4条社区看点摘要",
+    "after": "原天安门已审核网页简介及3条引文，逐字段完全相同",
+    "primarySource": 1163,
+    "primaryWebProfileExisted": false,
+    "previousCheck": "followup-preservation-01.json保留：原广场消费内容不变的假设失败"
+  },
+  "passed": true
+}

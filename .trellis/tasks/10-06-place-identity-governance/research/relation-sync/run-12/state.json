@@ -1,0 +1,55 @@
+{
+  "city": "重庆",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "sourceRevision": 1,
+  "sourceHash": "8cbe5b91d9b64c52ed985b8f627c78fa9147beefa653103c6526f60ceab7c7ff",
+  "placesHash": "1e92ca429eb04aa3156369b466efc4dd5197e508bba803788a10813517e026c3",
+  "relationsHash": "1a4ef5fdafca383583886078d479d8f72e0e780854bf98e6dfcd2b0e289c62a8",
+  "libraryHash": "6e2628c590864ce52da3fabd30aa08fe826464fae1e1bf4836307ab73336db28",
+  "counts": {
+    "places": 567,
+    "graph": 93,
+    "direct": 31,
+    "library": {
+      "canonical_places": 620,
+      "research_evidence": 887,
+      "place_relation": 0,
+      "data_import": 2,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "1e92ca429eb04aa3156369b466efc4dd",
+      "row_count": 567
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "1a4ef5fdafca383583886078d479d8f7",
+      "row_count": 31
+    }
+  ],
+  "audits": [
+    {
+      "id": "490cf74e-969c-4f11-80d6-ac942e879b52",
+      "content_hash": "1e92ca429eb04aa3156369b466efc4dd"
+    },
+    {
+      "id": "3dcb0138-1c94-424a-b128-10cc5e81abb0",
+      "content_hash": "1a4ef5fdafca383583886078d479d8f7"
+    }
+  ],
+  "importedAt": "2026-10-07T09:06:36.728Z"
+}

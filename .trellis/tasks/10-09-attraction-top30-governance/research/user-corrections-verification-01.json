@@ -1,0 +1,66 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "85cb52a70a463e8f4d558d7bb6d8c093e037a0fc0fdef64a873467235d64272e",
+  "productionModuleSha256": {
+    "app/clean/identity.py": "3c870c9ac20f8e4e77026f25c6918a18c35ff086420679ffe5ad90d6a9657fd3",
+    "app/clean/mention_identity.py": "d967022d4f204a0dc2667b1456d0444768e744bf2f7d68b8cd63897cdc8dba3c",
+    "app/aggregate/place_identity.py": "0bd23d628949b33249b6df263b9481f6952d1f9cb366831cf48144a0655ff370"
+  },
+  "jingshan": {
+    "defectReproduced": true,
+    "fixed": false,
+    "globalAlias": "石景山公园",
+    "wrongTargetId": "981bfe8125feb36e052dcfee1e0df8b5",
+    "targetRevision": 4,
+    "oldIdResolvesToWrongGlobalTarget": "a94865355cdbf6fccfda6fc748b9e9fe",
+    "syntheticNewMention": {
+      "id": -1,
+      "name": "石景山公园",
+      "normalized_name": "石景山公园",
+      "note_city": "北京",
+      "note_unavailable": false,
+      "result": {
+        "status": "resolved",
+        "reason": "confirmed_name",
+        "scopePlaceIds": []
+      }
+    },
+    "existingAffectedMentions": [
+      {
+        "id": 3148,
+        "noteId": 504,
+        "entityId": "981bfe8125feb36e052dcfee1e0df8b5"
+      }
+    ],
+    "scopeCount": 0,
+    "interpretation": "3148可按图片纠正为景山；新同名提及仍被全局别名自动归入景山，不能把单篇纠错等同全局同义。"
+  },
+  "tiananmen": {
+    "changedEntityIds": [
+      "298e600416cbc4f85119932e8a3c966c",
+      "21152db5b05aff609cffa2bee47f16b4"
+    ],
+    "mentionCount": 32,
+    "recommendScore": 82.09,
+    "checks": {
+      "北京.sources": true,
+      "北京.notes": true,
+      "北京.assignments": true,
+      "北京.scopes": true,
+      "北京.summaries": true,
+      "北京.mentionFingerprints": true,
+      "济南.sources": true,
+      "济南.notes": true,
+      "济南.assignments": true,
+      "济南.scopes": true,
+      "济南.summaries": true,
+      "济南.mentionFingerprints": true,
+      "trips": true,
+      "onlyTwoEntitiesChanged": true,
+      "exactMentionUnion": true,
+      "squareCoordinatesPreserved": true,
+      "jingshanUnchanged": true
+    },
+    "passed": true
+  }
+}

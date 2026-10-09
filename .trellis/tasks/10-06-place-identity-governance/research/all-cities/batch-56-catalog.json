@@ -1,0 +1,125 @@
+{
+  "entities": [
+    {
+      "entity_id": "7ac1b9fdfb96a01db695da65d8e81830",
+      "city": "济南",
+      "canonical_name": "四窟万象",
+      "primary_place_id": 5480,
+      "aliases": [
+        "四窟万象"
+      ],
+      "legacy_ids": [
+        "7ac1b9fdfb96a01db695da65d8e81830"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "69ab8bb674e8f0eea31c34c936bddf23",
+      "city": "济南",
+      "canonical_name": "济南环城公园",
+      "primary_place_id": 5952,
+      "aliases": [
+        "济南环城公园"
+      ],
+      "legacy_ids": [
+        "69ab8bb674e8f0eea31c34c936bddf23"
+      ],
+      "revision": 1,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "c93e3216e2e3cc1b75d07097f2c78367",
+      "city": "济南",
+      "canonical_name": "关帝庙",
+      "primary_place_id": 5994,
+      "aliases": [
+        "关帝庙"
+      ],
+      "legacy_ids": [
+        "c93e3216e2e3cc1b75d07097f2c78367"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {
+        "lat": 36.664213467405865,
+        "lng": 117.01347483646703,
+        "address": "筐市街18-3",
+        "geoStatus": "resolved"
+      },
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+          "kind": "reviewed_priority_original",
+          "quote": "五龙潭南门西侧的关帝庙可以顺便看看（免费，院内有西蜜脂泉）",
+          "noteId": 2841,
+          "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+          "original": [
+            {
+              "id": 5994,
+              "lat": 36.53193105540761,
+              "lng": 117.09450620466468,
+              "address": "山东省济南市历城区仲宫街道关帝庙",
+              "sourceHash": "b2da2efc04dd69fd89c3e5af50afec7732678663f658a6ec27ad692351b19ca0"
+            }
+          ],
+          "conclusion": "唯一原文明确五龙潭南门西侧、西蜜脂泉所在关帝庙。地图筐市街18-3号与蜜脂园条目互证，旧点是仲宫同名庙；芙蓉街38号的另一关帝庙也不能采用。",
+          "mentionIds": [
+            12964
+          ],
+          "sourcePlaceIds": [
+            5994
+          ]
+        },
+        {
+          "file": "priority-cities/济南/geo-02.json",
+          "kind": "reviewed_exact_poi",
+          "query": "关帝庙",
+          "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+          "address": "筐市街18-3",
+          "poiName": "关帝庙",
+          "rawLonLat": "117.0076,36.66393",
+          "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+          "sourceCoordinateSystem": "CGCS2000",
+          "storedCoordinateSystem": "GCJ-02"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5480,
+      "entity_id": "7ac1b9fdfb96a01db695da65d8e81830"
+    },
+    {
+      "place_id": 5952,
+      "entity_id": "69ab8bb674e8f0eea31c34c936bddf23"
+    },
+    {
+      "place_id": 5994,
+      "entity_id": "c93e3216e2e3cc1b75d07097f2c78367"
+    }
+  ],
+  "reviews": []
+}

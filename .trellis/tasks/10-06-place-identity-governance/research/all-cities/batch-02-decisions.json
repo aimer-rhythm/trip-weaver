@@ -1,0 +1,559 @@
+[
+  {
+    "key": "all-cities-20261006-batch-02-001",
+    "city": "上海",
+    "entityId": "6dfd36ea63dfecb59b523d7212582311",
+    "mergeEntityIds": [
+      "285d34a450722ae0d264d1ca3e17b6d5"
+    ],
+    "canonicalName": "南京路步行街",
+    "expectedRevisions": {
+      "285d34a450722ae0d264d1ca3e17b6d5": 1,
+      "6dfd36ea63dfecb59b523d7212582311": 1
+    },
+    "overrides": {
+      "lat": 31.236171,
+      "lng": 121.481261,
+      "address": "上海市黄浦区外滩街道南京东路步行街",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          1
+        ],
+        "conclusion": "本组两个名称均指南京东路上的步行街，原文10951明确从外滩向西经南京东路站至人民广场，并描述步行街小火车；不是南京西路或整条南京路。",
+        "sourcePlaceIds": [
+          "4649",
+          "4811"
+        ],
+        "mentions": [
+          {
+            "id": "11299",
+            "name": "南京路步行街",
+            "quote": "南京路步行街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d61078000000001a033ddf"
+          },
+          {
+            "id": "11282",
+            "name": "南京路步行街",
+            "quote": "霓虹招牌+烟火街拍，出片率爆表",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ead28000000003502a301"
+          },
+          {
+            "id": "11251",
+            "name": "南京路步行街",
+            "quote": "百年老店建筑，老上海繁华感",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a915376000000001803fea8"
+          },
+          {
+            "id": "11235",
+            "name": "南京路步行街",
+            "quote": "按景点气质分成三条线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69be5dcd000000001a03784d"
+          },
+          {
+            "id": "10951",
+            "name": "南京东路步行街",
+            "quote": "沿东向西漫步南京东路步行街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d898f000000001f00210d"
+          },
+          {
+            "id": "10196",
+            "name": "南京东路步行街",
+            "quote": "商场、老建筑、街景都很有上海味道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a93a509000000001803d4e3"
+          },
+          {
+            "id": "10125",
+            "name": "南京东路步行街",
+            "quote": "沿东向西漫步南京东路步行街",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d898f000000001f00210d"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4811",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "保留源4811明确落在南京东路步行街的定位；舍弃源4649凤阳路283号的错误匹配。",
+        "original": {
+          "lat": 31.236171,
+          "lng": 121.481261,
+          "address": "上海市黄浦区外滩街道南京东路步行街",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 31.236171,
+        "lng": 121.481261,
+        "address": "上海市黄浦区外滩街道南京东路步行街",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10951
+        ],
+        "conclusion": "本组两个名称均指南京东路上的步行街，原文10951明确从外滩向西经南京东路站至人民广场，并描述步行街小火车；不是南京西路或整条南京路。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-002",
+    "city": "上海",
+    "entityId": "0700e088ebd6e984525c32fecc476cef",
+    "mergeEntityIds": [
+      "3378b32dc7fddf394da292da3785ab1e",
+      "42c4cb2c07e435e68b71dc7dd5d30779",
+      "7961810e10103fa838190987d044f3ba"
+    ],
+    "canonicalName": "外滩万国建筑博览群",
+    "expectedRevisions": {
+      "0700e088ebd6e984525c32fecc476cef": 1,
+      "3378b32dc7fddf394da292da3785ab1e": 1,
+      "42c4cb2c07e435e68b71dc7dd5d30779": 1,
+      "7961810e10103fa838190987d044f3ba": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市黄浦区中山东一路",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          3,
+          4,
+          5,
+          11
+        ],
+        "conclusion": "四个名称均为外滩沿中山东一路历史建筑群的整体称呼。10960原文明示外滩沿路的租界时期建筑，10993原文描述外滩江景与建筑群亮灯；不并入单体建筑或北外滩。",
+        "sourcePlaceIds": [
+          "4714",
+          "4668",
+          "5210",
+          "5201"
+        ],
+        "mentions": [
+          {
+            "id": "10960",
+            "name": "外滩万国建筑博览群",
+            "quote": "百年上海的一个影子",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68aab301000000001b0235b2"
+          },
+          {
+            "id": "10923",
+            "name": "外滩万国建筑博览群",
+            "quote": "万国建筑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a44ab45000000000800150c"
+          },
+          {
+            "id": "9946",
+            "name": "外滩万国建筑博览群",
+            "quote": "万国建筑博览群",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a3ca49a000000000f01724a"
+          },
+          {
+            "id": "11189",
+            "name": "外滩万国建筑群",
+            "quote": "外滩西侧一排历史老建筑",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68d28c25000000001101e46c"
+          },
+          {
+            "id": "10904",
+            "name": "外滩万国建筑群",
+            "quote": "背对黄浦江，百年建筑繁华",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d93eec000000001a0318c7"
+          },
+          {
+            "id": "10353",
+            "name": "外滩万国建筑群",
+            "quote": "金碧辉煌的万国建筑群",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7981690000000025017afb"
+          },
+          {
+            "id": "10993",
+            "name": "万国建筑群",
+            "quote": "晚上万国建筑群亮灯超有氛围",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b8c60c000000001a02aba0"
+          },
+          {
+            "id": "10976",
+            "name": "外滩万国建筑",
+            "quote": "免费又出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1aa571000000003700fb88"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4714",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原定位31.248724/121.496482落在北外滩，另一成员落在更南部，均不能代表该建筑群；清空错误精确坐标，地址保留到中山东一路。",
+        "original": {
+          "lat": 31.248724,
+          "lng": 121.496482,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "上海市黄浦区中山东一路",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10960,
+          10993
+        ],
+        "conclusion": "四个名称均为外滩沿中山东一路历史建筑群的整体称呼。10960原文明示外滩沿路的租界时期建筑，10993原文描述外滩江景与建筑群亮灯；不并入单体建筑或北外滩。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-003",
+    "city": "上海",
+    "entityId": "d29dd9247662d93af97a369400dd87f0",
+    "mergeEntityIds": [
+      "a1cec4d612f0bbbea5fc28ba005c0ae8"
+    ],
+    "canonicalName": "新天安堂",
+    "expectedRevisions": {
+      "a1cec4d612f0bbbea5fc28ba005c0ae8": 1,
+      "d29dd9247662d93af97a369400dd87f0": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "上海市黄浦区南苏州路103号",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          16
+        ],
+        "conclusion": "新天安堂与新天安教堂均指苏州河口南岸同一红砖教堂，百科馆址与拍摄路线原文相符；不与天安堂混淆。",
+        "sourcePlaceIds": [
+          "5254",
+          "4729"
+        ],
+        "mentions": [
+          {
+            "id": "11121",
+            "name": "新天安教堂",
+            "quote": "新天安教堂",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b62acf000000001a032aac"
+          },
+          {
+            "id": "10903",
+            "name": "新天安堂",
+            "quote": "哥特式教堂，小众安静",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69d93eec000000001a0318c7"
+          },
+          {
+            "id": "10390",
+            "name": "新天安堂",
+            "quote": "能与陆家嘴“三件套”同框",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e39fab0000000004023c2e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4729",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "原坐标31.221952/121.475342不在苏州河口；清空错误坐标，按已抓取资料修订为南苏州路103号。",
+        "original": {
+          "lat": 31.221952,
+          "lng": 121.475342,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "上海市黄浦区南苏州路103号",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://zh.wikipedia.org/wiki/新天安堂",
+        "file": "all-cities/shanghai-new-union-fetch.json",
+        "sha256": "46ddee137c94feb43191634ba9edddc4da40678dfda1c86f6eb583f9715f5196"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10396,
+          11119
+        ],
+        "conclusion": "新天安堂与新天安教堂均指苏州河口南岸同一红砖教堂，百科馆址与拍摄路线原文相符；不与天安堂混淆。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-004",
+    "city": "上海",
+    "entityId": "fbace7c1b51d8045fecf451635658171",
+    "mergeEntityIds": [
+      "d1277296c6323fb5386f80de05a9621d"
+    ],
+    "canonicalName": "北外滩小巨蛋",
+    "expectedRevisions": {
+      "d1277296c6323fb5386f80de05a9621d": 1,
+      "fbace7c1b51d8045fecf451635658171": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "geoStatus": "unresolvable",
+      "address": "上海市虹口区北外滩滨江国客中心附近",
+      "exportApproved": true
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          17
+        ],
+        "conclusion": "巨蛋和小巨蛋均为北外滩国客中心滨江的同一镜面装置简称，11135给出国客中心上楼到达路线，10396描述镜面效果，10403列举该免费机位。原始提及确认可独立游览，批准缺坐标实体导出。",
+        "sourcePlaceIds": [
+          "4822",
+          "4734"
+        ],
+        "mentions": [
+          {
+            "id": "10403",
+            "name": "北外滩巨蛋",
+            "quote": "全部🆓好好拍",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f5ddac00000000360036ad"
+          },
+          {
+            "id": "11176",
+            "name": "北外滩小巨蛋",
+            "quote": "北外滩小巨蛋",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6981d89f000000002200b241"
+          },
+          {
+            "id": "11135",
+            "name": "北外滩小巨蛋",
+            "quote": "可以拍到小巨蛋和外滩合影",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/688f5b6b000000002501ca16"
+          },
+          {
+            "id": "11119",
+            "name": "北外滩小巨蛋",
+            "quote": "北外滩小巨蛋",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b62acf000000001a032aac"
+          },
+          {
+            "id": "10396",
+            "name": "北外滩小巨蛋",
+            "quote": "利用彩虹桥下镜面效果",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e39fab0000000004023c2e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4734",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "两条源记录均无可靠坐标，保持null，不借用国客中心主体或其他机位坐标。",
+        "original": {
+          "lat": null,
+          "lng": null,
+          "geoStatus": "unresolvable"
+        },
+        "lat": null,
+        "lng": null,
+        "geoStatus": "unresolvable",
+        "address": "上海市虹口区北外滩滨江国客中心附近",
+        "exportApproved": true
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10403,
+          11135,
+          10396
+        ],
+        "conclusion": "巨蛋和小巨蛋均为北外滩国客中心滨江的同一镜面装置简称，11135给出国客中心上楼到达路线，10396描述镜面效果，10403列举该免费机位。原始提及确认可独立游览，批准缺坐标实体导出。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-005",
+    "city": "上海",
+    "entityId": "30f2b21957953c2084fcc579e324a449",
+    "mergeEntityIds": [
+      "ce5565ce6b1fd8b7da796399c7fe2566"
+    ],
+    "canonicalName": "东长治路与旅顺路交口",
+    "expectedRevisions": {
+      "30f2b21957953c2084fcc579e324a449": 1,
+      "ce5565ce6b1fd8b7da796399c7fe2566": 1
+    },
+    "overrides": {
+      "lat": 31.249818,
+      "lng": 121.496742,
+      "address": "东长治路旅顺路",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          18
+        ],
+        "conclusion": "两个名称都明确指定同一对道路的交叉口，10398与10975分别在原始拍摄机位列表列出该路口；不并入整条道路或相邻交叉口。",
+        "sourcePlaceIds": [
+          "4736",
+          "5200"
+        ],
+        "mentions": [
+          {
+            "id": "10398",
+            "name": "东长治路旅顺路",
+            "quote": "四件套错落有致排列眼前",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e39fab0000000004023c2e"
+          },
+          {
+            "id": "10975",
+            "name": "东长治路与旅顺路交口",
+            "quote": "免费又出片",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1aa571000000003700fb88"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "4736",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "保留源4736明确道路交叉口地址及现有定位，不用另一条无坐标记录覆盖。",
+        "original": {
+          "lat": 31.249818,
+          "lng": 121.496742,
+          "address": "东长治路旅顺路",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 31.249818,
+        "lng": 121.496742,
+        "address": "东长治路旅顺路",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10396,
+          10982
+        ],
+        "conclusion": "两个名称都明确指定同一对道路的交叉口，10398与10975分别在原始拍摄机位列表列出该路口；不并入整条道路或相邻交叉口。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-02-006",
+    "city": "上海",
+    "entityId": "d4a291993f56fc8f715afc31b2a85633",
+    "mergeEntityIds": [
+      "2012042385ebf4ba60dc5d4170e0a3bf"
+    ],
+    "canonicalName": "The Stage上海白玉兰观景台",
+    "expectedRevisions": {
+      "2012042385ebf4ba60dc5d4170e0a3bf": 1,
+      "d4a291993f56fc8f715afc31b2a85633": 1
+    },
+    "overrides": {
+      "lat": 31.249151,
+      "lng": 121.498046,
+      "address": "上海市虹口区北外滩街道东长治路588号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          38
+        ],
+        "conclusion": "10934明确写The Stage；11025原文同样包含玻璃围栏、出口楼梯、红色旋梯和入场灯光走廊这一整套高空观景设施，确认同一观景台。SMP白玉兰观景台(审核40)只写免费，可能指低层露台，未并入。",
+        "sourcePlaceIds": [
+          "5216",
+          "5192"
+        ],
+        "mentions": [
+          {
+            "id": "11025",
+            "name": "白玉兰观景台",
+            "quote": "360度露天观景台, 真的美到失语",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69ef303e000000001b0228f4"
+          },
+          {
+            "id": "10934",
+            "name": "上海白玉兰观景台",
+            "quote": "上海高空观景天花板",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a07f230000000000802563c"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5192",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "保留两条源记录一致的东长治路588号建筑定位，定位只代表建筑，不声称具体楼层坐标。",
+        "original": {
+          "lat": 31.249151,
+          "lng": 121.498046,
+          "address": "上海市虹口区北外滩街道东长治路588号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 31.249151,
+        "lng": 121.498046,
+        "address": "上海市虹口区北外滩街道东长治路588号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://thestageshanghai.com/zh-Hans/views",
+        "file": "all-cities/shanghai-magnolia-official-fetch.json",
+        "sha256": "f27776659894dbe50829b99d19c54363a7c886294765a32154c7bcab9c2be616"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/shanghai-batch02-context.json",
+        "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+        "mentionIds": [
+          10934,
+          11025,
+          10982
+        ],
+        "conclusion": "10934明确写The Stage；11025原文同样包含玻璃围栏、出口楼梯、红色旋梯和入场灯光走廊这一整套高空观景设施，确认同一观景台。SMP白玉兰观景台(审核40)只写免费，可能指低层露台，未并入。"
+      }
+    ]
+  }
+]

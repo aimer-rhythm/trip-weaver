@@ -1,0 +1,39 @@
+[
+  {
+    "key": "all-cities-20261008-batch-38-xigeng-street-location",
+    "city": "济南",
+    "entityId": "a76a124615e676af06c7a75968519280",
+    "canonicalName": "西更道街",
+    "aliases": [],
+    "mergeEntityIds": [],
+    "expectedRevisions": {
+      "a76a124615e676af06c7a75968519280": 2
+    },
+    "overrides": {
+      "lat": 36.667095839368386,
+      "lng": 117.0245279809005,
+      "address": "山东省济南市历下区大明湖街道西更道街",
+      "geoStatus": "resolved"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_street_reference_point",
+        "file": "priority-cities/济南/streets-location-review-01.json",
+        "sha256": "56c05f5cd94d5fb545745d85e3fecf4b48f75af33e248b8eb2af8025a9962aca",
+        "sourcePlaceIds": [
+          5391,
+          5949
+        ],
+        "mentionIds": [
+          11457,
+          12586,
+          12723,
+          12762
+        ],
+        "noteId": 2813,
+        "quote": "西更道（连接泉城路和曲水亭街的老街道）",
+        "conclusion": "从源泉POI改为同名西更道街参考点，保留街道独立身份和原60分钟来源。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "aaf7c71d07f0",
+  "query": "许记排骨 济南 位置 县东巷 门店 site:trip.com",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来帮你查济南“许记排骨”在县东巷相关门店的 Trip.com 信息。正在检索。\n\n**许记排骨（济南）· 县东巷相关门店（Trip.com）**\n\n根据 Trip.com 上的济南本地美食/餐厅页面，常见对应信息如下：\n\n- **店名**：许记排骨（县东巷店）/ 许记排骨  \n- **位置**：济南市历下区县东巷一带（老城商业街区，靠近宽厚里、芙蓉街周边）  \n- **Trip.com 收录**：在 Trip.com「济南美食」「济南餐厅」或相关攻略里有出现，多作为老济南风味排骨/家常菜推荐，页面会标注地址、人均、评分与用户点评。\n\n**怎么在 Trip.com 直接看到**  \n在 Trip.com 搜索框输入：  \n`许记排骨 济南` 或 `许记排骨 县东巷`  \n筛选城市为「济南」，即可看到门店卡片（地址、地图、营业信息、点评）。\n\n**补充说明**  \n- 县东巷是济南老城区小巷，门店具体门牌以 Trip.com 门店页或高德/百度地图实时标注为准，部分页面会写「历下区县东巷」。  \n- 若 Trip.com 上同时出现多家「许记排骨」，请核对地址是否含「县东巷」，避免去到其他分店。\n\n需要我根据 Trip.com 页面再整理评分、人均或用户评价要点的话，可以说明一下。",
+  "sources": [
+    {
+      "url": "https://tw.trip.com/moments/detail/jinan-128-139611144",
+      "provider": "tavily",
+      "title": "濟南|帶娃兩日遊的悠閒路線",
+      "description": "... 許記排骨吃晚飯~(圖12)一個超級小的店~但排隊人還是很多,大概等了半個多小時才排到~他們家菜品真的挺好吃的,喜歡那個鐵板豆腐,雖然很普通的鐵板豆腐"
+    },
+    {
+      "url": "https://hk.trip.com/moments/detail/jinan-128-139611144",
+      "provider": "tavily",
+      "title": "濟南|帶娃兩日遊的悠閒路線",
+      "description": "... 許記排骨吃晚飯~(圖12)一個超級小的店~但排隊人還是很多,大概等了半個多小時才排到~他們家菜品真的挺好吃的,喜歡那個鐵板豆腐,雖然很普通的鐵板豆腐"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://tw.trip.com/moments/detail/jinan-128-139611144",
+      "provider": "tavily",
+      "title": "濟南|帶娃兩日遊的悠閒路線",
+      "description": "... 許記排骨吃晚飯~(圖12)一個超級小的店~但排隊人還是很多,大概等了半個多小時才排到~他們家菜品真的挺好吃的,喜歡那個鐵板豆腐,雖然很普通的鐵板豆腐"
+    },
+    {
+      "url": "https://hk.trip.com/moments/detail/jinan-128-139611144",
+      "provider": "tavily",
+      "title": "濟南|帶娃兩日遊的悠閒路線",
+      "description": "... 許記排骨吃晚飯~(圖12)一個超級小的店~但排隊人還是很多,大概等了半個多小時才排到~他們家菜品真的挺好吃的,喜歡那個鐵板豆腐,雖然很普通的鐵板豆腐"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 11451.58,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 20398.82,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 20398.85
+}

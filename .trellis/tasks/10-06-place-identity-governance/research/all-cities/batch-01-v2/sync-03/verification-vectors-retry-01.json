@@ -1,0 +1,77 @@
+{
+  "verifiedAt": "2026-10-06T12:22:40.446Z",
+  "batch": "batch-01-v2",
+  "attempt": "sync-03",
+  "vectors": true,
+  "readOnly": true,
+  "scope": "杭州",
+  "cities": [
+    {
+      "city": "杭州",
+      "exported": 662,
+      "total": 670,
+      "active": 663,
+      "embedded": 663,
+      "probes": [
+        {
+          "name": "法喜寺",
+          "id": "e20edd33a6085a9108fa1a9d29bfbf08"
+        },
+        {
+          "name": "法喜讲寺",
+          "id": "e20edd33a6085a9108fa1a9d29bfbf08"
+        },
+        {
+          "name": "中国茶叶博物馆双峰馆区",
+          "id": "981dd00c9816e3af57569ceba3229a7f"
+        },
+        {
+          "name": "中国茶叶博物馆双峰馆",
+          "id": "981dd00c9816e3af57569ceba3229a7f"
+        },
+        {
+          "name": "龙翔桥地铁站",
+          "id": "7b7821c982ed80a6b8fd3ef6651b5f32"
+        },
+        {
+          "name": "龙翔桥站",
+          "id": "7b7821c982ed80a6b8fd3ef6651b5f32"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "法喜讲寺",
+          "id": "e20edd33a6085a9108fa1a9d29bfbf08",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "中国茶叶博物馆双峰馆",
+          "id": "981dd00c9816e3af57569ceba3229a7f",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "龙翔桥站",
+          "id": "7b7821c982ed80a6b8fd3ef6651b5f32",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 80,
+      "audits": [
+        "faaadf8d-d9f8-4857-9154-a94a964e8242"
+      ]
+    }
+  ],
+  "failures": []
+}

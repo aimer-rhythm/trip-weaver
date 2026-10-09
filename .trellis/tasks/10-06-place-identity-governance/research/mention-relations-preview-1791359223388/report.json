@@ -1,0 +1,48 @@
+{
+  "synthetic": true,
+  "city": "关系上下游合成城",
+  "targetIds": [
+    "e29dc42c280fc23df4e31a77167ee138",
+    "4d883692608e3cd8987c0af0cd4b500b"
+  ],
+  "oldId": "6d3d533db00c99e2b41b8efddbe30396",
+  "files": {
+    "initial": {
+      "places": {
+        "file": "xhs-places-initial.json",
+        "sha256": "22d6605dd81a4465b7f8ba726df20569da3a7e7f15c03540e13abaa82046227a"
+      },
+      "relations": {
+        "file": "xhs-place-relations-initial.json",
+        "sha256": "fc64f9de64a2cbceff131c6d3b79a0192549dd5b6790122a829b16fa7a655edb"
+      }
+    },
+    "withdrawn": {
+      "places": {
+        "file": "xhs-places-withdrawn.json",
+        "sha256": "78f4e9754df4cc524d777a29b43b79652b815f257517221c4272cee02fde13b6"
+      },
+      "relations": {
+        "file": "xhs-place-relations-withdrawn.json",
+        "sha256": "5cdb5012697bffb3b1ef227be466a26cf23fe90cbf933b54fdd55d1a6820e1c0"
+      }
+    },
+    "restored": {
+      "places": {
+        "file": "xhs-places-restored.json",
+        "sha256": "0e5d229fac503434e8700133d3b387b4f9bad8440d9a04c7f1e8f357660c84ae"
+      },
+      "relations": {
+        "file": "xhs-place-relations-restored.json",
+        "sha256": "294dcfe68d346523fa355bfbe366bf61168a246536c1d629419d6d9e082f58a8"
+      }
+    }
+  },
+  "revisions": [
+    1,
+    2,
+    3
+  ],
+  "restoredSameSourceHash": true,
+  "entityRevisionsUnchanged": true
+}

@@ -1,0 +1,1214 @@
+[
+  {
+    "key": "all-cities-20261006-batch-16-001",
+    "city": "厦门",
+    "entityId": "c0e7671f0000b45a7022f0219f0fe6cc",
+    "mergeEntityIds": [],
+    "canonicalName": "曾厝垵站",
+    "expectedRevisions": {
+      "c0e7671f0000b45a7022f0219f0fe6cc": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市思明区曾厝垵公交站，精确站位待核",
+      "geoStatus": "unresolvable",
+      "category": "交通"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "5744原文说别在曾厝垵站下车、曾山站到海边；旧点118.063212/24.447955落在鼓浪屿，显然不是思明环岛路公交站。保持站点ID，与曾厝垵街区独立。",
+        "sourcePlaceIds": [
+          "2823"
+        ],
+        "mentions": [
+          {
+            "id": "5744",
+            "name": "曾厝垵站",
+            "quote": "别在曾厝垵站下车，人真的很多",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69b93b1c000000001e00dbec"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2823",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.447955,
+          "lng": 118.063212,
+          "address": "福建省厦门市思明区曾厝垵",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市思明区曾厝垵公交站，精确站位待核",
+        "geoStatus": "unresolvable",
+        "category": "交通"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5744
+        ],
+        "conclusion": "5744原文说别在曾厝垵站下车、曾山站到海边；旧点118.063212/24.447955落在鼓浪屿，显然不是思明环岛路公交站。保持站点ID，与曾厝垵街区独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-002",
+    "city": "厦门",
+    "entityId": "4c02d062aa96a9178fccc4e1343100ed",
+    "mergeEntityIds": [],
+    "canonicalName": "阿吉仔饼铺",
+    "expectedRevisions": {
+      "4c02d062aa96a9178fccc4e1343100ed": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市思明区阿吉仔饼铺，原提及中山路店，分店归属待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1421原文明确中山路店，1267亦为中山路小吃路线；旧定位后江埭路店不能绑定到这组提及。清空精确点，不以改名或合并解决混合分店。",
+        "sourcePlaceIds": [
+          "2694"
+        ],
+        "mentions": [
+          {
+            "id": "5479",
+            "name": "阿吉仔饼铺",
+            "quote": "阿吉仔饼铺",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69f1edda000000001f005b57"
+          },
+          {
+            "id": "5405",
+            "name": "阿吉仔饼铺",
+            "quote": "厦门老字号",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ff57d0000000038023c13"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2694",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.466205,
+          "lng": 118.093783,
+          "address": "福建省厦门市思明区阿吉仔饼铺(后江埭路店)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市思明区阿吉仔饼铺，原提及中山路店，分店归属待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5405,
+          5479
+        ],
+        "conclusion": "1421原文明确中山路店，1267亦为中山路小吃路线；旧定位后江埭路店不能绑定到这组提及。清空精确点，不以改名或合并解决混合分店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-003",
+    "city": "厦门",
+    "entityId": "17628aa2112e13be217e41a7eb123996",
+    "mergeEntityIds": [],
+    "canonicalName": "八市阿杰五香",
+    "expectedRevisions": {
+      "17628aa2112e13be217e41a7eb123996": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市思明区八市阿杰五香，分店归属待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1421明确大元路分店，旧点却是开禾路111号；1398为品牌泛称，尚未全部定位。清空混合分店记录的固定坐标，保留167/168待审。",
+        "sourcePlaceIds": [
+          "2689"
+        ],
+        "mentions": [
+          {
+            "id": "5824",
+            "name": "八市阿杰五香",
+            "quote": "咬着脆甜爆汁",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e39fce000000000302ec8b"
+          },
+          {
+            "id": "5400",
+            "name": "八市阿杰五香",
+            "quote": "好吃不踩雷",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ff57d0000000038023c13"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2689",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.459096,
+          "lng": 118.074541,
+          "address": "开禾路111号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市思明区八市阿杰五香，分店归属待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5400,
+          5824
+        ],
+        "conclusion": "1421明确大元路分店，旧点却是开禾路111号；1398为品牌泛称，尚未全部定位。清空混合分店记录的固定坐标，保留167/168待审。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-004",
+    "city": "厦门",
+    "entityId": "d5339ff3ab9b7865b633c20dbc4ae993",
+    "mergeEntityIds": [],
+    "canonicalName": "郑有财海鲜砂锅粥",
+    "expectedRevisions": {
+      "d5339ff3ab9b7865b633c20dbc4ae993": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市郑有财海鲜砂锅粥，具体分店门牌待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1398是郑有财海鲜粥推荐，旧地图实际为海沧漳浦海鲜新阳居住区店，品牌不符。保留实体，不把另一餐厅坐标给郑有财。",
+        "sourcePlaceIds": [
+          "2850"
+        ],
+        "mentions": [
+          {
+            "id": "5821",
+            "name": "郑有财海鲜砂锅粥",
+            "quote": "每一勺都能吃到Q弹的鲜虾",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/68e39fce000000000302ec8b"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2850",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.529566,
+          "lng": 117.963721,
+          "address": "福建省厦门市海沧区漳浦海鲜(新阳居住区1期店)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市郑有财海鲜砂锅粥，具体分店门牌待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5821
+        ],
+        "conclusion": "1398是郑有财海鲜粥推荐，旧地图实际为海沧漳浦海鲜新阳居住区店，品牌不符。保留实体，不把另一餐厅坐标给郑有财。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-005",
+    "city": "厦门",
+    "entityId": "f9dfd02cd7d985731332b662284387ac",
+    "mergeEntityIds": [],
+    "canonicalName": "郑有财海鲜粥",
+    "expectedRevisions": {
+      "f9dfd02cd7d985731332b662284387ac": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市郑有财海鲜粥，具体分店门牌待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1401是八市中山路美食清单，旧点24.479627/118.088910为反复出现的城市中心默认点，不是门店证据。清空待核，保留与砂锅粥名的待审关系。",
+        "sourcePlaceIds": [
+          "2924"
+        ],
+        "mentions": [
+          {
+            "id": "6026",
+            "name": "郑有财海鲜粥",
+            "quote": "✅ 郑有财海鲜粥",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6349130000000001033509"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2924",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市郑有财海鲜粥，具体分店门牌待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6026
+        ],
+        "conclusion": "1401是八市中山路美食清单，旧点24.479627/118.088910为反复出现的城市中心默认点，不是门店证据。清空待核，保留与砂锅粥名的待审关系。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-006",
+    "city": "厦门",
+    "entityId": "dd6c599cdda1af6a3fdcab3f852c897e",
+    "mergeEntityIds": [],
+    "canonicalName": "大社沙茶面",
+    "expectedRevisions": {
+      "dd6c599cdda1af6a3fdcab3f852c897e": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市集美区大社沙茶面，具体门牌待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1402明确集美大社，1453亦在集美美食分区；旧地图湖里荟盈星街店与原始地域相冲突。仅撤销错误分店坐标，不合并大中沙茶面。",
+        "sourcePlaceIds": [
+          "2846"
+        ],
+        "mentions": [
+          {
+            "id": "6258",
+            "name": "大社沙茶面",
+            "quote": "集美：大社沙茶面",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69788102000000000a02b029"
+          },
+          {
+            "id": "5815",
+            "name": "大社沙茶面",
+            "quote": "不如集美食堂的好吃",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/67efe0e5000000001c0030cc"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2846",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.525325,
+          "lng": 118.144025,
+          "address": "福建省厦门市湖里区大社沙茶面(荟盈星街店)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市集美区大社沙茶面，具体门牌待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5815,
+          6258
+        ],
+        "conclusion": "1402明确集美大社，1453亦在集美美食分区；旧地图湖里荟盈星街店与原始地域相冲突。仅撤销错误分店坐标，不合并大中沙茶面。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-007",
+    "city": "厦门",
+    "entityId": "39d2b5033f7a22358cbba1340e899963",
+    "mergeEntityIds": [],
+    "canonicalName": "林氏海蛎煎",
+    "expectedRevisions": {
+      "39d2b5033f7a22358cbba1340e899963": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市林氏海蛎煎，龙阳品牌及具体分店待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1506说认准龙阳，1453泛名列于鼓浪屿；旧点是曾厝垵台湾印象美食城的海蛎煎泛店，与明确品牌/区域均缺乏匹配。清空，保留237分店待审。",
+        "sourcePlaceIds": [
+          "3018"
+        ],
+        "mentions": [
+          {
+            "id": "6835",
+            "name": "林氏海蛎煎",
+            "quote": "认准龙阳牌子，海蛎给很够",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "6261",
+            "name": "林氏海蛎煎",
+            "quote": "林氏海蛎煎",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69788102000000000a02b029"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3018",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.425875,
+          "lng": 118.123875,
+          "address": "福建省厦门市思明区海蛎煎(台湾印象美食城)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市林氏海蛎煎，龙阳品牌及具体分店待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6261,
+          6835
+        ],
+        "conclusion": "1506说认准龙阳，1453泛名列于鼓浪屿；旧点是曾厝垵台湾印象美食城的海蛎煎泛店，与明确品牌/区域均缺乏匹配。清空，保留237分店待审。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-008",
+    "city": "厦门",
+    "entityId": "fcc9e2107ca53a85c1a03e6c977e270e",
+    "mergeEntityIds": [],
+    "canonicalName": "龙阳林氏海蛎煎",
+    "expectedRevisions": {
+      "fcc9e2107ca53a85c1a03e6c977e270e": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市龙阳林氏海蛎煎，具体分店待核",
+      "geoStatus": "unresolvable",
+      "category": "美食"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1505明确龙阳品牌；旧点只匹配台湾印象美食城海蛎煎泛店，没有龙阳门店证据。成对清空，不能和泛林氏记录凭同一错点判等。",
+        "sourcePlaceIds": [
+          "3197"
+        ],
+        "mentions": [
+          {
+            "id": "6784",
+            "name": "龙阳林氏海蛎煎",
+            "quote": "龙阳林氏海蛎煎｜认准这个牌子",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3197",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.425875,
+          "lng": 118.123875,
+          "address": "福建省厦门市思明区海蛎煎(台湾印象美食城)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市龙阳林氏海蛎煎，具体分店待核",
+        "geoStatus": "unresolvable",
+        "category": "美食"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6784
+        ],
+        "conclusion": "1505明确龙阳品牌；旧点只匹配台湾印象美食城海蛎煎泛店，没有龙阳门店证据。成对清空，不能和泛林氏记录凭同一错点判等。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-009",
+    "city": "厦门",
+    "entityId": "eb7efe677409213ec69704149b4c427c",
+    "mergeEntityIds": [],
+    "canonicalName": "offwork海边营地",
+    "expectedRevisions": {
+      "eb7efe677409213ec69704149b4c427c": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市环岛路海边营地，具体范围待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1260正文是黄厝不在书店旁奶黄色巴士/营地摄影场景，旧点却匹配集美营地。撤销跨区点并将摄影场景从咖啡店类别纠回景点，不合并椰风寨环岛路OFF WORK门店。",
+        "sourcePlaceIds": [
+          "2785"
+        ],
+        "mentions": [
+          {
+            "id": "5665",
+            "name": "offwork海边营地",
+            "quote": "奶黄色海边巴士：offwork海边营地旁",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69dc76ab00000000220241ca"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2785",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.593181,
+          "lng": 118.102898,
+          "address": "福建省厦门市集美区营地",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市环岛路海边营地，具体范围待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5665
+        ],
+        "conclusion": "1260正文是黄厝不在书店旁奶黄色巴士/营地摄影场景，旧点却匹配集美营地。撤销跨区点并将摄影场景从咖啡店类别纠回景点，不合并椰风寨环岛路OFF WORK门店。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-010",
+    "city": "厦门",
+    "entityId": "c7b76a1eb24d78e23b64e629341004ca",
+    "mergeEntityIds": [],
+    "canonicalName": "山海步道林海线",
+    "expectedRevisions": {
+      "c7b76a1eb24d78e23b64e629341004ca": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市山海健康步道林海线，路线入口待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1464明确D18入口，1454为林海线轻徒步；旧点只匹配湖里林海地名，不能当南段路线入口。清空，保持与云海线独立。",
+        "sourcePlaceIds": [
+          "2748"
+        ],
+        "mentions": [
+          {
+            "id": "6356",
+            "name": "山海步道林海线",
+            "quote": "累了就能停",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/697c6c95000000000a02e1f9"
+          },
+          {
+            "id": "5564",
+            "name": "山海步道林海线",
+            "quote": "p1：山海步道林海线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e781ea000000001d01e774"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2748",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.49629,
+          "lng": 118.092246,
+          "address": "福建省厦门市湖里区林海",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市山海健康步道林海线，路线入口待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5564,
+          6356
+        ],
+        "conclusion": "1464明确D18入口，1454为林海线轻徒步；旧点只匹配湖里林海地名，不能当南段路线入口。清空，保持与云海线独立。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-011",
+    "city": "厦门",
+    "entityId": "4f205c7b5df2135ca3b1dca9c904f26e",
+    "mergeEntityIds": [],
+    "canonicalName": "厦门山海健康步道",
+    "expectedRevisions": {
+      "4f205c7b5df2135ca3b1dca9c904f26e": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市山海健康步道，具体线路与段落待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1365定位D18至上李水库，1467推荐林海线，1370为海岸观景台；旧地图邮轮码头不是这些源的共同游览点。撤销单一精确定位，不在母步道/线段待审结束前指定入口。",
+        "sourcePlaceIds": [
+          "2676"
+        ],
+        "mentions": [
+          {
+            "id": "6822",
+            "name": "厦门山海健康步道",
+            "quote": "山海步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+          },
+          {
+            "id": "6369",
+            "name": "厦门山海健康步道",
+            "quote": "山海步道观景台",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aadf36d000000002601d490"
+          },
+          {
+            "id": "6062",
+            "name": "厦门山海健康步道",
+            "quote": "来厦门不去这两个等于白来",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6b0ece0000000033013f37"
+          },
+          {
+            "id": "5894",
+            "name": "厦门山海健康步道",
+            "quote": "厦门山海健康步道（推荐林海线）",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9c421000000002202bd97"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2676",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.481175,
+          "lng": 118.078283,
+          "address": "邮轮码头(邮轮中心地铁站6号口步行470米)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市山海健康步道，具体线路与段落待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5374,
+          5790,
+          5894,
+          6062,
+          6369,
+          6822
+        ],
+        "conclusion": "1365定位D18至上李水库，1467推荐林海线，1370为海岸观景台；旧地图邮轮码头不是这些源的共同游览点。撤销单一精确定位，不在母步道/线段待审结束前指定入口。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-012",
+    "city": "厦门",
+    "entityId": "fe01b52c50acf5a67d040f2e56108c89",
+    "mergeEntityIds": [],
+    "canonicalName": "山海健康步道",
+    "expectedRevisions": {
+      "fe01b52c50acf5a67d040f2e56108c89": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市山海健康步道，具体线路与段落待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1244东芳山庄、1347林海线7号入口、1288 D18路线并存；邮轮码头旧点无法代表原始提及。清空坐标，保留不同线路粒度待审。",
+        "sourcePlaceIds": [
+          "2636"
+        ],
+        "mentions": [
+          {
+            "id": "5916",
+            "name": "山海健康步道",
+            "quote": "山海健康步道D18入口→万石沧海",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a706540000000002403e118"
+          },
+          {
+            "id": "5520",
+            "name": "山海健康步道",
+            "quote": "登高俯瞰整片大海",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a6333bc000000001302dd86"
+          },
+          {
+            "id": "5381",
+            "name": "山海健康步道",
+            "quote": "可以俯瞰海景",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6975c75f000000001a0245c3"
+          },
+          {
+            "id": "5291",
+            "name": "山海健康步道",
+            "quote": "P1 健康步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69bc01360000000023005d2f"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2636",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.481175,
+          "lng": 118.078283,
+          "address": "邮轮码头(邮轮中心地铁站6号口步行470米)",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市山海健康步道，具体线路与段落待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5291,
+          5381,
+          5520,
+          5916
+        ],
+        "conclusion": "1244东芳山庄、1347林海线7号入口、1288 D18路线并存；邮轮码头旧点无法代表原始提及。清空坐标，保留不同线路粒度待审。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-013",
+    "city": "厦门",
+    "entityId": "79430af52e86d2c23acffdef3c42fccb",
+    "mergeEntityIds": [],
+    "canonicalName": "山海步道",
+    "expectedRevisions": {
+      "79430af52e86d2c23acffdef3c42fccb": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市山海步道，具体线路与段落待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1342特指天泉段，1571为D18至天泉广场，旧点为城市中心默认值。撤销虚假精确点，保持ID，不强并母步道与线路。",
+        "sourcePlaceIds": [
+          "2600"
+        ],
+        "mentions": [
+          {
+            "id": "6614",
+            "name": "山海步道",
+            "quote": "山海步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695359ce000000001f007bb9"
+          },
+          {
+            "id": "6602",
+            "name": "山海步道",
+            "quote": "山海步道很值得一去，走到深处看大面筋要两个小时左右",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6988aca40000000015021516"
+          },
+          {
+            "id": "6479",
+            "name": "山海步道",
+            "quote": "自然风光最顶",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/695744cb000000001f006013"
+          },
+          {
+            "id": "6008",
+            "name": "山海步道",
+            "quote": "山海步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a86634300000000140201fa"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2600",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市山海步道，具体线路与段落待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5368,
+          5492,
+          5514,
+          5985,
+          6008,
+          6479,
+          6602,
+          6614
+        ],
+        "conclusion": "1342特指天泉段，1571为D18至天泉广场，旧点为城市中心默认值。撤销虚假精确点，保持ID，不强并母步道与线路。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-014",
+    "city": "厦门",
+    "entityId": "7e99c00813c8c450c16841b7c072f97f",
+    "mergeEntityIds": [],
+    "canonicalName": "厦门山海步道",
+    "expectedRevisions": {
+      "7e99c00813c8c450c16841b7c072f97f": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市山海步道，具体线路与段落待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1378仅海边长廊夜景，1505泛旅游清单；旧点为城市中心默认值，没有精确路段证据。清空，待机位和线路范围核实。",
+        "sourcePlaceIds": [
+          "3082"
+        ],
+        "mentions": [
+          {
+            "id": "6774",
+            "name": "厦门山海步道",
+            "quote": "山海步道…淡季人少随便逛",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+          },
+          {
+            "id": "6370",
+            "name": "厦门山海步道",
+            "quote": "夜里在海边散步好浪漫",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69c7e9a0000000002300570a"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "3082",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市山海步道，具体线路与段落待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          6370,
+          6774
+        ],
+        "conclusion": "1378仅海边长廊夜景，1505泛旅游清单；旧点为城市中心默认值，没有精确路段证据。清空，待机位和线路范围核实。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-015",
+    "city": "厦门",
+    "entityId": "c2f0df60bef3612fec9ed56021ac090f",
+    "mergeEntityIds": [],
+    "canonicalName": "天泉步道广场",
+    "expectedRevisions": {
+      "c2f0df60bef3612fec9ed56021ac090f": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市思明区天泉步道广场，精确广场点位待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1562、1571和1568将天泉步道广场列为海岸路线终点，1263又混入广场上方步道机位；旧点是城市中心默认值。仅清空无效点，广场/上方步道关系仍待核。",
+        "sourcePlaceIds": [
+          "2735"
+        ],
+        "mentions": [
+          {
+            "id": "6876",
+            "name": "天泉步道广场",
+            "quote": "天泉步道广场上面的步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+          },
+          {
+            "id": "6097",
+            "name": "天泉步道广场",
+            "quote": "全程3公里基本下坡且都是塑胶步道",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6966ed7e000000001a01f7e9"
+          },
+          {
+            "id": "5989",
+            "name": "天泉步道广场",
+            "quote": "是一天中最静谧的时刻",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a7b153e000000002202c38c"
+          },
+          {
+            "id": "5972",
+            "name": "天泉步道广场",
+            "quote": "免费拍照的地方",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aa66775000000000b00d9d5"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2735",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市思明区天泉步道广场，精确广场点位待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5506,
+          5525,
+          5698,
+          5972,
+          5989,
+          6097,
+          6876
+        ],
+        "conclusion": "1562、1571和1568将天泉步道广场列为海岸路线终点，1263又混入广场上方步道机位；旧点是城市中心默认值。仅清空无效点，广场/上方步道关系仍待核。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-016",
+    "city": "厦门",
+    "entityId": "fe4d6b9273ff41d117c67640a8a71b7e",
+    "mergeEntityIds": [],
+    "canonicalName": "天泉步道",
+    "expectedRevisions": {
+      "fe4d6b9273ff41d117c67640a8a71b7e": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市思明区天泉步道，精确路段待核",
+      "geoStatus": "unresolvable",
+      "category": "景点"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1271图片路线在盼归塔与音乐广场之间列天泉步道；旧城市中心点不在该沿海段。清空，保留与天泉广场的独立待审身份。",
+        "sourcePlaceIds": [
+          "2784"
+        ],
+        "mentions": [
+          {
+            "id": "5652",
+            "name": "天泉步道",
+            "quote": "俯瞰山海城同框",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a89c87e000000000b02470e"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2784",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市思明区天泉步道，精确路段待核",
+        "geoStatus": "unresolvable",
+        "category": "景点"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch15-context.json",
+        "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+        "mentionIds": [
+          5652
+        ],
+        "conclusion": "1271图片路线在盼归塔与音乐广场之间列天泉步道；旧城市中心点不在该沿海段。清空，保留与天泉广场的独立待审身份。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-16-017",
+    "city": "厦门",
+    "entityId": "e8d12f20f7daba2e6c3f2a7688580efc",
+    "mergeEntityIds": [],
+    "canonicalName": "厦门地铁1号线",
+    "expectedRevisions": {
+      "e8d12f20f7daba2e6c3f2a7688580efc": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "厦门市地铁1号线，线路不能用城市中心单点定位",
+      "geoStatus": "unresolvable",
+      "category": "交通"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "1467原文地铁1号线是交通线路，旧点24.479627/118.088910为城市中心默认点。保持全线ID与交通类别，清空单点，海上观光段另以组成关系表达。",
+        "sourcePlaceIds": [
+          "2899"
+        ],
+        "mentions": [
+          {
+            "id": "5900",
+            "name": "厦门地铁1号线",
+            "quote": "海上地铁1号线",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/69e9c421000000002202bd97"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "2899",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+        "original": {
+          "lat": 24.479627,
+          "lng": 118.08891,
+          "address": "福建省厦门市",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "厦门市地铁1号线，线路不能用城市中心单点定位",
+        "geoStatus": "unresolvable",
+        "category": "交通"
+      },
+      {
+        "kind": "reviewed_supplemental_entity",
+        "file": "all-cities/xiamen-batch15-transit-supplement.json",
+        "sha256": "c10b41c6fc7410cbe45124b69c66cdcb95060371f450139ab730c5d35c714cba",
+        "conclusion": "1467原文地铁1号线是交通线路，旧点24.479627/118.088910为城市中心默认点。保持全线ID与交通类别，清空单点，海上观光段另以组成关系表达。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xiamen-batch16-transit-context.json",
+        "sha256": "5c85150ef8e3014c6280892d982d341380cda37a284690267d74f920822c404a",
+        "mentionIds": [
+          5900
+        ],
+        "conclusion": "1467原文地铁1号线是交通线路，旧点24.479627/118.088910为城市中心默认点。保持全线ID与交通类别，清空单点，海上观光段另以组成关系表达。"
+      }
+    ]
+  }
+]

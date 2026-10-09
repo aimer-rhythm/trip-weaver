@@ -1,0 +1,97 @@
+{
+  "city": "济南",
+  "before": 21,
+  "after": 20,
+  "directBefore": 10,
+  "directAfter": 9,
+  "changed": [
+    {
+      "from": "黑虎泉",
+      "to": "泉城广场",
+      "fromEntityId": "136719df189e0dd70cd34be75f6faef4",
+      "toEntityId": "8cc25e536e67519c958ee54248ead04f",
+      "fromRevision": 1,
+      "toRevision": 3,
+      "strength": "weak",
+      "noteCount": 1,
+      "evidence": [
+        {
+          "noteId": 2607,
+          "textHash": "1c29b16e30b9f2a451b1e111b2d17d1fe9dc6a8ffc5bed8d1d1cf507c45ad6c8",
+          "from": {
+            "entityId": "136719df189e0dd70cd34be75f6faef4",
+            "revision": 1,
+            "start": 800,
+            "end": 803,
+            "surface": "黑虎泉",
+            "mentions": [
+              {
+                "mentionId": 11514,
+                "inputHash": "f63240910ea3227c528bc2f14578443763e30acdbbde0256616570580f38737f"
+              }
+            ]
+          },
+          "to": {
+            "entityId": "8cc25e536e67519c958ee54248ead04f",
+            "revision": 3,
+            "start": 793,
+            "end": 797,
+            "surface": "泉城广场",
+            "mentions": [
+              {
+                "mentionId": 11513,
+                "inputHash": "5dc6be77c3057492ddca2c92ecf723dc73d857ab9fd7f77b892154ac2733b0f6"
+              }
+            ]
+          },
+          "quote": "泉城广场，再去黑虎泉"
+        }
+      ]
+    }
+  ],
+  "removed": [
+    {
+      "to": "宽厚里",
+      "from": "泉城广场",
+      "evidence": [
+        {
+          "to": {
+            "end": 173,
+            "start": 170,
+            "surface": "宽厚里",
+            "entityId": "bc2769d509f6d8d42166e81b8db8131b",
+            "mentions": [
+              {
+                "inputHash": "7cdf72aecd7d355d3b99f373944b7bc0b978bc78e72be47935f21cda3b582132",
+                "mentionId": 12579
+              }
+            ],
+            "revision": 2
+          },
+          "from": {
+            "end": 179,
+            "start": 175,
+            "surface": "泉城广场",
+            "entityId": "8cc25e536e67519c958ee54248ead04f",
+            "mentions": [
+              {
+                "inputHash": "c22758c5c4229046342006f5978b76c5c20f40141ac919fc5b52f98d05c1077a",
+                "mentionId": 12580
+              }
+            ],
+            "revision": 1
+          },
+          "quote": "宽厚里➡️泉城广场",
+          "noteId": 2803,
+          "textHash": "3ec0b764815f47ad6a0518c8d16c0405ab0855bdcacb41fa28ca9586665c60e9"
+        }
+      ],
+      "strength": "weak",
+      "noteCount": 1,
+      "toEntityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "toRevision": 2,
+      "fromEntityId": "8cc25e536e67519c958ee54248ead04f",
+      "fromRevision": 1
+    }
+  ]
+}

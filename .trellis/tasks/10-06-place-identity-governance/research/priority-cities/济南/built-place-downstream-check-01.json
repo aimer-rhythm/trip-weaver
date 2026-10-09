@@ -1,0 +1,164 @@
+{
+  "batch": 61,
+  "readOnly": true,
+  "at": "2026-10-08T22:33:34.130Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus",
+    "price",
+    "tips"
+  ],
+  "results": [
+    {
+      "entityId": "0d0968c2ca848678bcf24e2c0db83554",
+      "name": "月下观棠",
+      "withdrawn": false,
+      "ordinaryUnchanged": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "name": "济南文字墙",
+      "withdrawn": false,
+      "ordinaryUnchanged": false,
+      "confirmed": 1,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "78d5eff53c3692218e93a142d69021cf",
+      "name": "山东大厦",
+      "withdrawn": false,
+      "ordinaryUnchanged": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "88a3e4b4f75459daacfe23ed6ca4157d",
+      "name": "济南墙",
+      "withdrawn": false,
+      "ordinaryUnchanged": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "ca1b5db55316182cf144e13eab8e402d",
+      "name": "明珠天地C",
+      "withdrawn": false,
+      "ordinaryUnchanged": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "d4292fdc91029db1a1714b00686787ff",
+      "name": "夹心胡同",
+      "withdrawn": false,
+      "ordinaryUnchanged": true,
+      "confirmed": 0,
+      "pending": 0,
+      "preciseLocationNewlyVerified": false
+    },
+    {
+      "entityId": "dc445410375df79cab73ba2b18448910",
+      "name": "淘子外单",
+      "withdrawn": true,
+      "ordinaryUnchanged": false,
+      "confirmed": 0,
+      "pending": 1,
+      "preciseLocationNewlyVerified": false
+    }
+  ],
+  "assignmentRows": 312,
+  "pendingMentions": 127,
+  "scopesAdded": 2,
+  "confirmed": 1,
+  "pendingAdded": 1,
+  "coordinatesCleared": 0,
+  "withdrawals": 1,
+  "withdrawnCoordinatesRemoved": 1,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 0,
+  "readOnlyBoundaryPending": 5,
+  "sqlProbes": 7,
+  "boundaryProbes": 42,
+  "realVectorProbes": 7,
+  "realVectors": [
+    {
+      "name": "月下观棠",
+      "entityId": "0d0968c2ca848678bcf24e2c0db83554",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "济南文字墙",
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "山东大厦",
+      "entityId": "78d5eff53c3692218e93a142d69021cf",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "济南墙",
+      "entityId": "88a3e4b4f75459daacfe23ed6ca4157d",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "明珠天地C",
+      "entityId": "ca1b5db55316182cf144e13eab8e402d",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "夹心胡同",
+      "entityId": "d4292fdc91029db1a1714b00686787ff",
+      "vector": "used",
+      "withdrawn": false
+    },
+    {
+      "name": "淘子外单",
+      "entityId": "dc445410375df79cab73ba2b18448910",
+      "vector": "used",
+      "withdrawn": true
+    }
+  ],
+  "graph": 19,
+  "directEdges": 3,
+  "relationEvidenceAndStrengthPreserved": true,
+  "priorReviewRowsPreserved": true,
+  "rawDerivedCachesPreserved": true,
+  "confirmedFactsAndDatesPreserved": true,
+  "unresolvedBranchFactsRemoved": true,
+  "foreignWallTipsRemoved": 2,
+  "fallbackObservedAtChanges": [],
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

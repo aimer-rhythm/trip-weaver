@@ -1,0 +1,12 @@
+[
+  {"review":297,"verdict":"distinct","explanation":"4079/4082同篇分别列天府广场成都博物馆和十里店成都自然博物馆，地址、机构、票务独立，不能省略自然二字。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[4079,4082]}]},
+  {"review":298,"verdict":"part_of","childEntityId":"5b8468db2991870d74ebfb110b518624","explanation":"4066明确玉林西路小酒馆，3819的玉林路为随意逛小巷的玉林片区泛称；西路只是其中道路，不能把片区所有提及归成西路或南街。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[4066,3819]}]},
+  {"review":299,"verdict":"uncertain","explanation":"3503合列春熙路和太古里游览，4028/3906则推荐商圈住宿选址。两条源都不是单一建筑，范围边界未定义且地图落不同楼宇，需要先处理组合区域模型，不能宣称单一POI已核实。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3503,4028,3906]}]},
+  {"review":300,"verdict":"uncertain","explanation":"3503为春熙路与太古里组合游览，3820/3543为周边住宿选址且并无酒店名；周边不是严格同一范围，现hotel类别也无法证明具体酒店。保留待审，待区域/推荐信息分解。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3503,3820,3543]}]},
+  {"review":303,"verdict":"uncertain","explanation":"3525咖啡合集只写Little travel，3718写LittleTravel 3.0，未给可相互核对的分店地址；3.0可能指分店代次，不能直接剥离。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3525,3718]}]},
+  {"review":306,"verdict":"uncertain","explanation":"3540咖啡合集只写lost 2 hour，3716另一合集写Lost 2hours，无正文门牌；其中一条地图未解析，需对应门头/分店资料才可确认同一店。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3540,3716]}]},
+  {"review":307,"verdict":"uncertain","explanation":"4028/3906与3820/3543都谈春熙路太古里周边住宿选址，未给具体酒店；属于区域建议而非已核实住宿实体，需要先明确区域边界和内容类型，不能把两条当某家酒店同义。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[4028,3906,3820,3543]}]},
+  {"review":312,"verdict":"part_of","childEntityId":"158823e73d49619475aa595299f5ef3c","explanation":"3942/4002的永陵指王建五代陵墓，4079明确永陵博物馆包含收费地宫和免费综合馆，3678也区分陵墓与馆藏；保留陵墓子项，不把不同票务范围归为一个同义条目。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3942,4002,4079,3678]}]},
+  {"review":313,"verdict":"uncertain","explanation":"3679只说蜀锦博物馆免费、精美、小、可买礼品，没有地址；4088明确青羊宫站附近蜀锦织绣博物馆。前者地图落官塘路，与后者草堂东路冲突，原文不足以选择其中一馆，需补门头/位置。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3679,4088]}]},
+  {"review":315,"verdict":"distinct","explanation":"四川博物馆已由第一批核实归四川博物院，3682的永乐宫特展对应川博；4090建川博物馆在大邑安仁，机构和地域独立。","contexts":[{"file":"chengdu-batch08-context.json","mentionIds":[3682,4080,4090]}]}
+]

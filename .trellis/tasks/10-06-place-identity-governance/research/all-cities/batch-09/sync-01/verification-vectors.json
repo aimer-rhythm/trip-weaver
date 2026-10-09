@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-10-06T15:50:04.354Z",
+  "batch": "batch-09",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "vectorIds": null,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "济南",
+      "exported": 232,
+      "total": 238,
+      "active": 232,
+      "embedded": 232,
+      "probes": [
+        {
+          "name": "曲水亭街",
+          "id": "c9c9ce7c33c95b71b859f0ab30bf7136"
+        },
+        {
+          "name": "曲水亭",
+          "id": "c9c9ce7c33c95b71b859f0ab30bf7136"
+        },
+        {
+          "name": "洪家楼天主教堂",
+          "id": "2caab5c5038a94f91657ae16110dd56e"
+        },
+        {
+          "name": "洪家楼教堂",
+          "id": "2caab5c5038a94f91657ae16110dd56e"
+        },
+        {
+          "name": "西更道街",
+          "id": "a76a124615e676af06c7a75968519280"
+        },
+        {
+          "name": "西更道",
+          "id": "a76a124615e676af06c7a75968519280"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "曲水亭",
+          "id": "c9c9ce7c33c95b71b859f0ab30bf7136",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "洪家楼教堂",
+          "id": "2caab5c5038a94f91657ae16110dd56e",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "西更道",
+          "id": "a76a124615e676af06c7a75968519280",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 0,
+      "audits": [
+        "11448f7f-4d12-4b8b-9fb8-600ba6fbfe82"
+      ]
+    }
+  ],
+  "failures": []
+}

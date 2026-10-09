@@ -1,0 +1,110 @@
+[
+  {
+    "key": "all-cities-20261006-batch-03-review-203",
+    "city": "厦门",
+    "reviewFingerprint": "3ce546bbcbf60dc9adc842c115735751fe87c3bbb7f2453092b58b8eac5cdbdd",
+    "expectedRevisions": {
+      "7b4cfbf5bd4b449036abe4ee41b21210": 1,
+      "7e341fd0ee9e8647bd9766bfac2f05e6": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "CUIDA/cuida两篇原文只写饮品品牌，没有门店地址，地图分别匹配厦禾路与禾祥西分店。两者同名键必须要求明确ID；品牌大小写一致不足以判定为同一店，不能自动合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          203
+        ],
+        "conclusion": "CUIDA/cuida两篇原文只写饮品品牌，没有门店地址，地图分别匹配厦禾路与禾祥西分店。两者同名键必须要求明确ID；品牌大小写一致不足以判定为同一店，不能自动合并。",
+        "sourcePlaceIds": [
+          "2720",
+          "3213"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/case-collision-context.json",
+        "sha256": "ac0a268f1dfd6e4b014cec653f46bc1cba9aad64286f855df54333e4977b9f52",
+        "mentionIds": [
+          5461,
+          6841
+        ],
+        "conclusion": "CUIDA/cuida两篇原文只写饮品品牌，没有门店地址，地图分别匹配厦禾路与禾祥西分店。两者同名键必须要求明确ID；品牌大小写一致不足以判定为同一店，不能自动合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-03-review-304",
+    "city": "成都",
+    "reviewFingerprint": "4362042f1214ecad20e0ee8b99ef0c70586a037133e2fb8bd9e36f15084cbd65",
+    "expectedRevisions": {
+      "765d12cf332a7a8596e6bfae194cc36e": 1,
+      "ec50ce1141b9419d030e4931cb4999d5": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "两篇咖啡店合集仅列HANDBELL名称及图片编号，无门店地址；虽地图均匹配芳华街玉林店，但已解析图片不包含对应P9/P14门店证据。须核对原图或店方门店资料，不能仅凭同一地图落点合并。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          304
+        ],
+        "conclusion": "两篇咖啡店合集仅列HANDBELL名称及图片编号，无门店地址；虽地图均匹配芳华街玉林店，但已解析图片不包含对应P9/P14门店证据。须核对原图或店方门店资料，不能仅凭同一地图落点合并。",
+        "sourcePlaceIds": [
+          "1824",
+          "1715"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/case-collision-context.json",
+        "sha256": "ac0a268f1dfd6e4b014cec653f46bc1cba9aad64286f855df54333e4977b9f52",
+        "mentionIds": [
+          3722,
+          3532
+        ],
+        "conclusion": "两篇咖啡店合集仅列HANDBELL名称及图片编号，无门店地址；虽地图均匹配芳华街玉林店，但已解析图片不包含对应P9/P14门店证据。须核对原图或店方门店资料，不能仅凭同一地图落点合并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-03-review-305",
+    "city": "成都",
+    "reviewFingerprint": "49d36bea6de8aa78317074438de9090e3a8a8878a07fe802d4d3d54d89e268ae",
+    "expectedRevisions": {
+      "e61d76f3b1440ac59582f9b344be4fd4": 1,
+      "e63e38711dce61183e0e77ef3e2260bf": 1
+    },
+    "verdict": "uncertain",
+    "explanation": "Mondoli/MONDOLI两条地图分别匹配合江亭与大源中央公园，原文只有咖啡店合集和图片编号，已解析图片缺少对应P9/P10的地点说明，不能辨明分店。保留各自ID并要求明确选择，继续查门店证据。",
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          305
+        ],
+        "conclusion": "Mondoli/MONDOLI两条地图分别匹配合江亭与大源中央公园，原文只有咖啡店合集和图片编号，已解析图片缺少对应P9/P10的地点说明，不能辨明分店。保留各自ID并要求明确选择，继续查门店证据。",
+        "sourcePlaceIds": [
+          "1716",
+          "1821"
+        ]
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/case-collision-context.json",
+        "sha256": "ac0a268f1dfd6e4b014cec653f46bc1cba9aad64286f855df54333e4977b9f52",
+        "mentionIds": [
+          3533,
+          3719
+        ],
+        "conclusion": "Mondoli/MONDOLI两条地图分别匹配合江亭与大源中央公园，原文只有咖啡店合集和图片编号，已解析图片缺少对应P9/P10的地点说明，不能辨明分店。保留各自ID并要求明确选择，继续查门店证据。"
+      }
+    ]
+  }
+]

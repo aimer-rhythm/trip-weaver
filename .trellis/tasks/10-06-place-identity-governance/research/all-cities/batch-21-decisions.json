@@ -1,0 +1,99 @@
+[
+  {
+    "key": "all-cities-20261006-batch-21-001",
+    "city": "北京",
+    "entityId": "981bfe8125feb36e052dcfee1e0df8b5",
+    "mergeEntityIds": [
+      "a94865355cdbf6fccfda6fc748b9e9fe"
+    ],
+    "canonicalName": "景山公园",
+    "expectedRevisions": {
+      "981bfe8125feb36e052dcfee1e0df8b5": 1,
+      "a94865355cdbf6fccfda6fc748b9e9fe": 1
+    },
+    "overrides": {
+      "lat": 39.925875,
+      "lng": 116.396551,
+      "address": "景山西街44号",
+      "geoStatus": "reviewed_source"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [
+          112
+        ],
+        "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+        "sourcePlaceIds": [
+          "1063",
+          "1508"
+        ],
+        "mentions": [
+          {
+            "id": "5278",
+            "name": "景山公园",
+            "quote": "步行到景山公园，无缝衔接",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9e040000000025035308"
+          },
+          {
+            "id": "5236",
+            "name": "景山公园",
+            "quote": "万春亭俯瞰紫禁城秋色",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+          },
+          {
+            "id": "5215",
+            "name": "景山公园",
+            "quote": "不能错过的机位",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fcc0c0000000029017b0d"
+          },
+          {
+            "id": "5209",
+            "name": "景山公园",
+            "quote": "门票仅2r，登顶直接把整座故宫框进视野",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a361add000000000702ce19"
+          },
+          {
+            "id": "3148",
+            "name": "石景山公园",
+            "quote": "一定要提前预约",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a8266f40000000022014e34"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "1063",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "沿用景山公园主源1063的GCJ-02公园参考点39.925875/116.396551、景山西街44号，符合原图故宫对面及主源多篇俯瞰故宫描述。误匹配首钢园的1508旧点不参与平均。",
+        "original": {
+          "lat": 39.925875,
+          "lng": 116.396551,
+          "address": "景山西街44号",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": 39.925875,
+        "lng": 116.396551,
+        "address": "景山西街44号",
+        "geoStatus": "reviewed_source"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/batch-21-image-context.json",
+        "sha256": "02841873a3ab4d7749c1e4866708713cb29929c139b2123fe53fc859fc042226",
+        "mentionIds": [
+          3148
+        ],
+        "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。"
+      },
+      {
+        "kind": "reviewed_current_identity_snapshot",
+        "file": "all-cities/audit/run-15/snapshot.json",
+        "sha256": "2d0dc88f92642eb23eec377cbcc7c664b310bba9ad99378d8f5c30eaad15d626",
+        "conclusion": "两主体当前仍为各自稳定根且revision=1，与冻结原源一致；现行游乐园根通过batch-06依赖重建。"
+      }
+    ]
+  }
+]

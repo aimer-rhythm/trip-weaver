@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "3aac4d161c5e",
+  "query": "\"VILLA SHAKA\" 济南 纬四路 地址",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "我来查一下济南纬四路附近 “VILLA SHAKA” 的具体地址。",
+  "sources": [
+    {
+      "url": "https://m.map.360.cn?new=1&src=pc_shenbian&pid=e5ad4681923ba3db",
+      "provider": "tavily",
+      "title": "【VILLA SHAKA为了沙卡(纬四路店)】地址,电话,路线,周边设施",
+      "description": "VILLA SHAKA为了沙卡(纬四路店). 济南市市中区纬四路66号 · 导航周边 · 今日阴13~25℃优; 明日晴14~27℃优. 推荐; 美食; 景点; 酒店. 福平冰室. 40m济南市市中区纬四"
+    },
+    {
+      "url": "https://www.douyin.com/video/7261938620292926776",
+      "provider": "tavily",
+      "title": "#探店VILLA SHAKA 为了沙卡📍济南市纬四路66号#手冲咖啡 ...",
+      "description": "探店VILLA SHAKA 为了沙卡 济南市纬四路66号#手冲咖啡#跟着抖音来探店#网红打卡地#好店推荐- 此间café于20230731发布在抖音，已经收获了576个喜欢，"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://m.map.360.cn?new=1&src=pc_shenbian&pid=e5ad4681923ba3db",
+      "provider": "tavily",
+      "title": "【VILLA SHAKA为了沙卡(纬四路店)】地址,电话,路线,周边设施",
+      "description": "VILLA SHAKA为了沙卡(纬四路店). 济南市市中区纬四路66号 · 导航周边 · 今日阴13~25℃优; 明日晴14~27℃优. 推荐; 美食; 景点; 酒店. 福平冰室. 40m济南市市中区纬四"
+    },
+    {
+      "url": "https://www.douyin.com/video/7261938620292926776",
+      "provider": "tavily",
+      "title": "#探店VILLA SHAKA 为了沙卡📍济南市纬四路66号#手冲咖啡 ...",
+      "description": "探店VILLA SHAKA 为了沙卡 济南市纬四路66号#手冲咖啡#跟着抖音来探店#网红打卡地#好店推荐- 此间café于20230731发布在抖音，已经收获了576个喜欢，"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": true
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 5727.92,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 12099.95,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 12099.97
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "key": "all-cities-20261009-batch-58-source-5477-scope",
+    "city": "济南",
+    "sourcePlaceId": 5477,
+    "expectedSourceHash": "9dec40e002fcdf76ec5ce641e9c386c89656ab0c80574ac3b0e7868bd26159ac",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "4dfda3371793b69de15122bb7e330eac": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11404,
+        "inputHash": "f6fae9f146d207c1bef563cd6eb1337d2e7c5f6067170823b9f2dc1ccb98d72a",
+        "entityId": "4dfda3371793b69de15122bb7e330eac"
+      },
+      {
+        "mentionId": 12901,
+        "inputHash": "4d2f1aba8523bad18d2c1b2e07d57daf33b731a54e7276f6cda54df65def7a19",
+        "entityId": "4dfda3371793b69de15122bb7e330eac"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_river_scope_excludes_unrelated_image_tips",
+        "file": "priority-cities/济南/river-source-review-01.json",
+        "mentionIds": [
+          11404,
+          12901
+        ],
+        "conclusion": "两条原文河道提及全部保留；不再按全城图片文字包含护城河而借入解放阁提示。不改原始图文、旧名/ID/类别/位置，不创建游船主体。"
+      }
+    ]
+  }
+]

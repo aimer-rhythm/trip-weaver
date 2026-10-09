@@ -1,0 +1,451 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 3,
+ "activeCount": 3,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "c9ad6f14aa5ee8e96ee559c7b39c63c67bf8159dc7d86d77107a2510e448a882",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "刘小忙把子肉（联四路）",
+    "亮亮拉面（经十一路）",
+    "燕喜堂（CBD店）",
+    "刘小忙把子肉",
+    "亮亮拉面",
+    "燕喜堂"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11481,
+     "noteId": 2560,
+     "inputHash": "8a13cda0d8a59b2bb55b9dc1f889f6bce22e43fabfdcadcf7402c26295179b07",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11525,
+     "noteId": 2563,
+     "inputHash": "1aef838b61a723e801e1b4fd5c65114bcdffb5d47a8062aa3754fa210d2d6408",
+     "textHash": "2aaab8048f547102169a02c760381cd48abf75d0a4511729f73c105abb6c5d07",
+     "textLength": 923,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11537,
+     "noteId": 2579,
+     "inputHash": "f8171c9947dd682af71ead1c8ffde2a1331bd26dcb19a7aecfc247898b9b3399",
+     "textHash": "5eef7766a33e58b4e4aa5a5d2ffc9fd42d297477523320a09b86ccc3afec4515",
+     "textLength": 397,
+     "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11644,
+     "noteId": 2602,
+     "inputHash": "8e1a2d9642ffb30a0bd5ed3da59239edc76dd2facab45718dbecb4673829a40c",
+     "textHash": "a388d10e7c12f8baf826a2b6634e357de0bfe3af326313446c36a4b8aef72430",
+     "textLength": 1004,
+     "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11676,
+     "noteId": 2602,
+     "inputHash": "659b6fc27a4cef6bb4962907160f3f9131308ac70f3efd928fdc4073a96679b8",
+     "textHash": "a388d10e7c12f8baf826a2b6634e357de0bfe3af326313446c36a4b8aef72430",
+     "textLength": 1004,
+     "entityId": "92a39f8f2d95070cc627828807686bac",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12741,
+     "noteId": 2560,
+     "inputHash": "68d76af3edaf53533eaa418c7114fff5c48c383733ed797ba58763fae90a95e9",
+     "textHash": "6ba578dee17eb472c3eb7043f66372c62a6838dd7890a977e730803fbbfa7e1d",
+     "textLength": 557,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12798,
+     "noteId": 2789,
+     "inputHash": "a213fa5b54ddb7e2519dae51992b9f84894779eb2e87879c92914ba5505245b7",
+     "textHash": "8917e9483198fff61bf54b7ea15fca2b2bbddd2a50c8e548af6bb2cd029dfafd",
+     "textLength": 1023,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12863,
+     "noteId": 2830,
+     "inputHash": "40e526d9bf8e5cc322e7a105b529374979ec831e2aee1382ec46ed373beb638f",
+     "textHash": "d5ebf44cc1b2477dc2e5d060da85337930d52c99eeea88b41bc824f4812cd47f",
+     "textLength": 1087,
+     "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+     "revision": 3,
+     "canonicalName": "刘小忙把子肉（联四路）",
+     "aliases": [
+      "刘小忙把子肉",
+      "刘小忙把子肉（联四路）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+     "revision": 3,
+     "canonicalName": "燕喜堂（CBD店）",
+     "aliases": [
+      "燕喜堂",
+      "燕喜堂（CBD店）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "92a39f8f2d95070cc627828807686bac",
+     "revision": 3,
+     "canonicalName": "亮亮拉面（经十一路）",
+     "aliases": [
+      "亮亮拉面",
+      "亮亮拉面（经十一路）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "84929fb3085880c48c0cebb71aae3ad4",
+   "name": "燕喜堂（CBD店）",
+   "category": "美食",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "CBD",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "本地人推荐，菜品惊艳，性价比高，人均几十，盲点不踩雷"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "老板专注研发菜品，有海肠捞饭、烤鸭、砂锅九转大肠等。",
+     "highlights": [
+      {
+       "text": "老板专注研发菜品，有海肠捞饭、烤鸭、砂锅九转大肠等",
+       "quote": "老板专注于研发菜品，海肠捞饭、烤鸭、砂锅九转大肠、山竹榴莲冰…都很鲜美",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a794cc00000000008011c21?xsec_token=ABIdwy9QS8no2-FqpllUvZOtejbUKxM6RfH37wK-QIUGI=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:18:45.196850+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:36:57.959437+00:00"
+    },
+    "originalName": "燕喜堂",
+    "openHours": {
+     "version": 2,
+     "subject": "燕喜堂（CBD店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11537,
+      "noteId": 2579,
+      "inputHash": "f8171c9947dd682af71ead1c8ffde2a1331bd26dcb19a7aecfc247898b9b3399"
+     },
+     {
+      "mentionId": 12863,
+      "noteId": 2830,
+      "inputHash": "40e526d9bf8e5cc322e7a105b529374979ec831e2aee1382ec46ed373beb638f"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+     "canonicalName": "燕喜堂（CBD店）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "燕喜堂（CBD店）",
+      "燕喜堂"
+     ],
+     "memberIds": [
+      "84929fb3085880c48c0cebb71aae3ad4",
+      "6b10e233d45b9219abfa81b59967fe3f"
+     ]
+    },
+    "aliases": [
+     "燕喜堂",
+     "燕喜堂（CBD店）"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐，菜品惊艳，性价比高，人均几十，盲点不踩雷",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a794cc00000000008011c21?xsec_token=ABIdwy9QS8no2-FqpllUvZOtejbUKxM6RfH37wK-QIUGI=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "鲁菜馆，Day2路线顺路",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "92a39f8f2d95070cc627828807686bac",
+   "name": "亮亮拉面（经十一路）",
+   "category": "美食",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "经十一路",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "经十一路面馆，拉面推荐"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "经十一路面馆，拉面推荐。",
+     "highlights": [
+      {
+       "text": "经十一路面馆，拉面推荐",
+       "quote": "经十一路面馆，拉面推荐",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.571044+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:36:57.959437+00:00"
+    },
+    "originalName": "亮亮拉面",
+    "openHours": {
+     "version": 2,
+     "subject": "亮亮拉面（经十一路）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11676,
+      "noteId": 2602,
+      "inputHash": "659b6fc27a4cef6bb4962907160f3f9131308ac70f3efd928fdc4073a96679b8"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "92a39f8f2d95070cc627828807686bac",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "92a39f8f2d95070cc627828807686bac",
+     "canonicalName": "亮亮拉面（经十一路）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "亮亮拉面（经十一路）",
+      "亮亮拉面"
+     ],
+     "memberIds": [
+      "92a39f8f2d95070cc627828807686bac",
+      "37baaeeaca6f91aa57188b40261583e3"
+     ]
+    },
+    "aliases": [
+     "亮亮拉面",
+     "亮亮拉面（经十一路）"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "经十一路面馆，拉面推荐",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "58d542ebe18a1dd3505b7cdc60db030c",
+   "name": "刘小忙把子肉（联四路）",
+   "category": "美食",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "联四路",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "联四路，把子肉不错"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "联四路，把子肉不错。",
+     "highlights": [
+      {
+       "text": "联四路，把子肉不错",
+       "quote": "联四路，把子肉不错",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.571044+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T21:36:57.959437+00:00"
+    },
+    "originalName": "刘小忙把子肉",
+    "openHours": {
+     "version": 2,
+     "subject": "刘小忙把子肉（联四路）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11644,
+      "noteId": 2602,
+      "inputHash": "8e1a2d9642ffb30a0bd5ed3da59239edc76dd2facab45718dbecb4673829a40c"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+     "canonicalName": "刘小忙把子肉（联四路）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "刘小忙把子肉（联四路）",
+      "刘小忙把子肉"
+     ],
+     "memberIds": [
+      "58d542ebe18a1dd3505b7cdc60db030c",
+      "b02d2f89874a68fa89396a713241830f"
+     ]
+    },
+    "aliases": [
+     "刘小忙把子肉",
+     "刘小忙把子肉（联四路）"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "联四路，把子肉不错",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,365 @@
+{
+  "apply": false,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "66c835ba565f34cbd12206d7169c8da1",
+          "city": "济南",
+          "canonical_name": "济南文字墙",
+          "primary_place_id": 5954,
+          "aliases": [
+            "济南文字墙"
+          ],
+          "legacy_ids": [
+            "66c835ba565f34cbd12206d7169c8da1"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": null,
+            "lng": null,
+            "address": "",
+            "geoStatus": "unresolvable"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+              "kind": "reviewed_priority_original",
+              "quote": "1小时打卡济南曲水亭街！附详细路线攻略",
+              "noteId": 2817,
+              "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+              "original": [
+                {
+                  "id": 5954,
+                  "lat": 36.327817669344064,
+                  "lng": 117.8712221743991,
+                  "address": "",
+                  "sourceHash": "4d0e23fcdf15784f9ce0e8118f6bc0193ce08d894fec457bdd02687eec950382"
+                }
+              ],
+              "conclusion": "唯一原文为大明湖南门、月下观棠、后宰门街到珍珠泉的一小时紧凑步行路线。旧点在老城数十公里外，与原路线冲突；具体墙面仍需图像或定位证据，不与其他济南墙合并。",
+              "mentionIds": [
+                12688
+              ],
+              "sourcePlaceIds": [
+                5954
+              ]
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5954,
+          "entity_id": "66c835ba565f34cbd12206d7169c8da1"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5954,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [
+            "历史人文"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5954,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "热门拍照打卡点",
+              "evidence": "②济南文字墙"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 8689,
+          "canonical_place_id": 5954,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 济南文字墙",
+          "evidence_summary": "热门拍照打卡点"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5954,
+          "city": "济南",
+          "name_keys": [
+            "济南文字墙"
+          ],
+          "entity_ids": [
+            "66c835ba565f34cbd12206d7169c8da1"
+          ],
+          "source_hash": "4d0e23fcdf15784f9ce0e8118f6bc0193ce08d894fec457bdd02687eec950382",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-61-source-5954-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/built-place-source-review-01.json",
+              "kind": "reviewed_original_route_and_branch_boundary",
+              "conclusion": "12688只确认note2817路线第②站所指文字墙，保留该原始主体/稳定ID，不宣称具体墙面已定位；第③站月下观棠附近是另外几面墙，老商埠喜艾旁的墙来自note2566，不能通过通用名称导入。完整scope保留原提及，停止两个未归属图片提示消费，不增加别名/实体/坐标。",
+              "mentionIds": [
+                12688
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "66c835ba565f34cbd12206d7169c8da1"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 12688,
+          "scope_place_id": 5954,
+          "entity_id": "66c835ba565f34cbd12206d7169c8da1",
+          "input_hash": "7cb642dfa4fbd1c103a078b0c2adbcd609ffb3e68de7f278752929fef077d942",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-61-source-5954-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "4d0e23fcdf15784f9ce0e8118f6bc0193ce08d894fec457bdd02687eec950382",
+        "mentions": [
+          {
+            "mentionId": 12688,
+            "inputHash": "7cb642dfa4fbd1c103a078b0c2adbcd609ffb3e68de7f278752929fef077d942"
+          }
+        ]
+      },
+      "scopeReviews": []
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "dc445410375df79cab73ba2b18448910",
+          "city": "济南",
+          "canonical_name": "淘子外单",
+          "primary_place_id": 5400,
+          "aliases": [
+            "淘子外单"
+          ],
+          "legacy_ids": [
+            "dc445410375df79cab73ba2b18448910"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5400,
+          "entity_id": "dc445410375df79cab73ba2b18448910"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5400,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.0,
+          "theme_tags": [],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5400,
+          "mention_count_30d": 1,
+          "positive_count_30d": 1,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "购物天堂，两层楼逛到腿软，款式多",
+              "evidence": "淘子外单简直是购物天堂，两层楼逛到腿软"
+            }
+          ],
+          "recommend_score": 7.5
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7850,
+          "canonical_place_id": 5400,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 淘子外单",
+          "evidence_summary": "购物天堂，两层楼逛到腿软，款式多"
+        }
+      ],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5400,
+          "city": "济南",
+          "name_keys": [
+            "淘子外单"
+          ],
+          "entity_ids": [
+            "dc445410375df79cab73ba2b18448910"
+          ],
+          "source_hash": "a3179c498d73e25b72375d8ceeac14733273c21dcad04f8a66243c9f7b36b1be",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-61-source-5400-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/built-place-source-review-01.json",
+              "kind": "reviewed_original_route_and_branch_boundary",
+              "conclusion": "全文列出经四万达店、高新店、西市场店，但实际到访描述只写裸名；路线邻近不能选择分店。唯一提及待审，完整scope显式撤回原单店消费，不创建候选门店或标为非地点。",
+              "mentionIds": [
+                11536
+              ]
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "dc445410375df79cab73ba2b18448910"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11536,
+          "scope_place_id": 5400,
+          "entity_id": null,
+          "input_hash": "015790e1c682991d612ce3503626edc9d14883d42204e5e838f5daf8c8bb5851",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-61-source-5400-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "a3179c498d73e25b72375d8ceeac14733273c21dcad04f8a66243c9f7b36b1be",
+        "mentions": [
+          {
+            "mentionId": 11536,
+            "inputHash": "015790e1c682991d612ce3503626edc9d14883d42204e5e838f5daf8c8bb5851"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 10943,
+          "fingerprint": "5655c28831a35a780850a76d24079c47316ebbfe3c7b918196d658440f3d0e69",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "015790e1c682991d612ce3503626edc9d14883d42204e5e838f5daf8c8bb5851",
+            "mentionId": 11536,
+            "scopePlaceIds": [
+              5400
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

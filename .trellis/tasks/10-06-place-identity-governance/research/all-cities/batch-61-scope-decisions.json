@@ -1,0 +1,56 @@
+[
+  {
+    "key": "all-cities-20261009-batch-61-source-5954-scope",
+    "city": "济南",
+    "sourcePlaceId": 5954,
+    "expectedSourceHash": "4d0e23fcdf15784f9ce0e8118f6bc0193ce08d894fec457bdd02687eec950382",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "66c835ba565f34cbd12206d7169c8da1": 2
+    },
+    "assignments": [
+      {
+        "mentionId": 12688,
+        "inputHash": "7cb642dfa4fbd1c103a078b0c2adbcd609ffb3e68de7f278752929fef077d942",
+        "entityId": "66c835ba565f34cbd12206d7169c8da1"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_original_route_and_branch_boundary",
+        "file": "priority-cities/济南/built-place-source-review-01.json",
+        "mentionIds": [
+          12688
+        ],
+        "conclusion": "12688只确认note2817路线第②站所指文字墙，保留该原始主体/稳定ID，不宣称具体墙面已定位；第③站月下观棠附近是另外几面墙，老商埠喜艾旁的墙来自note2566，不能通过通用名称导入。完整scope保留原提及，停止两个未归属图片提示消费，不增加别名/实体/坐标。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261009-batch-61-source-5400-scope",
+    "city": "济南",
+    "sourcePlaceId": 5400,
+    "expectedSourceHash": "a3179c498d73e25b72375d8ceeac14733273c21dcad04f8a66243c9f7b36b1be",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "dc445410375df79cab73ba2b18448910": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11536,
+        "inputHash": "015790e1c682991d612ce3503626edc9d14883d42204e5e838f5daf8c8bb5851",
+        "entityId": null
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "reviewed_original_route_and_branch_boundary",
+        "file": "priority-cities/济南/built-place-source-review-01.json",
+        "mentionIds": [
+          11536
+        ],
+        "conclusion": "全文列出经四万达店、高新店、西市场店，但实际到访描述只写裸名；路线邻近不能选择分店。唯一提及待审，完整scope显式撤回原单店消费，不创建候选门店或标为非地点。"
+      }
+    ]
+  }
+]

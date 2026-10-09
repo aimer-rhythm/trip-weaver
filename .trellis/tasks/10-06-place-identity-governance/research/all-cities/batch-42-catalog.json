@@ -1,0 +1,154 @@
+{
+  "readOnly": true,
+  "entities": [
+    {
+      "entity_id": "1e1c6d4109dc6a10c959a817de9ed799",
+      "city": "济南",
+      "canonical_name": "大明湖公园",
+      "primary_place_id": 5968,
+      "aliases": [
+        "大明湖公园"
+      ],
+      "legacy_ids": [
+        "1e1c6d4109dc6a10c959a817de9ed799"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": "550d6810857b4487aae8ce39c9ee093b",
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "39c1c314e86091e13d382c2c716cc2ad",
+      "city": "济南",
+      "canonical_name": "大明湖景区",
+      "primary_place_id": 5953,
+      "aliases": [
+        "大明湖景区"
+      ],
+      "legacy_ids": [
+        "39c1c314e86091e13d382c2c716cc2ad"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": "550d6810857b4487aae8ce39c9ee093b",
+      "overrides": {},
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        }
+      ]
+    },
+    {
+      "entity_id": "550d6810857b4487aae8ce39c9ee093b",
+      "city": "济南",
+      "canonical_name": "大明湖",
+      "primary_place_id": 5348,
+      "aliases": [
+        "大明湖",
+        "大明湖公园",
+        "大明湖景区"
+      ],
+      "legacy_ids": [
+        "1e1c6d4109dc6a10c959a817de9ed799",
+        "39c1c314e86091e13d382c2c716cc2ad",
+        "550d6810857b4487aae8ce39c9ee093b"
+      ],
+      "revision": 2,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {
+        "category": "自然"
+      },
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "ids": [
+            12687,
+            12926,
+            12959,
+            12772
+          ],
+          "kind": "source_mentions",
+          "conclusion": "同一湖泊景区的游览称呼；超然楼与南门不属于同义词"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5348,
+      "entity_id": "550d6810857b4487aae8ce39c9ee093b"
+    },
+    {
+      "place_id": 5953,
+      "entity_id": "550d6810857b4487aae8ce39c9ee093b"
+    },
+    {
+      "place_id": 5968,
+      "entity_id": "550d6810857b4487aae8ce39c9ee093b"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 362,
+      "city": "济南",
+      "fingerprint": "0d071c7b8a37f0456b30803b87b0931db0f859293f1d27dfcf96349c573c7726",
+      "status": "RESOLVED",
+      "detail": {
+        "names": [
+          "大明湖公园",
+          "大明湖"
+        ],
+        "reason": "similar_name",
+        "entityIds": [
+          "1e1c6d4109dc6a10c959a817de9ed799",
+          "550d6810857b4487aae8ce39c9ee093b"
+        ]
+      }
+    },
+    {
+      "id": 363,
+      "city": "济南",
+      "fingerprint": "cbffca0e2c92a48c5186fdb55e849c5ca4011083d6dffbe5e47dd8f509de2f5c",
+      "status": "RESOLVED",
+      "detail": {
+        "names": [
+          "大明湖景区",
+          "大明湖"
+        ],
+        "reason": "similar_name",
+        "entityIds": [
+          "39c1c314e86091e13d382c2c716cc2ad",
+          "550d6810857b4487aae8ce39c9ee093b"
+        ]
+      }
+    },
+    {
+      "id": 379,
+      "city": "济南",
+      "fingerprint": "18f7184e286d547627f0764399d2d92edf909cf1c20348101bc2c14f7e596200",
+      "status": "RESOLVED",
+      "detail": {
+        "names": [
+          "大明湖公园",
+          "大明湖景区"
+        ],
+        "reason": "similar_name",
+        "entityIds": [
+          "1e1c6d4109dc6a10c959a817de9ed799",
+          "39c1c314e86091e13d382c2c716cc2ad"
+        ]
+      }
+    }
+  ]
+}

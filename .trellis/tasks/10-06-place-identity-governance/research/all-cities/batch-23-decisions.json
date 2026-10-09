@@ -1,0 +1,233 @@
+[
+  {
+    "key": "all-cities-20261006-batch-23-001",
+    "city": "西安",
+    "entityId": "4a4505a1baed0f14c8a4fe6386bc5798",
+    "mergeEntityIds": [],
+    "canonicalName": "潜龙寺",
+    "expectedRevisions": {
+      "4a4505a1baed0f14c8a4fe6386bc5798": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "陕西省渭南市华州区少华山国家森林公园潜龙寺，具体定位待核",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "12551及note2760明确乘缆车到少华山山顶潜龙寺拍红墙，2641路线也分列索道、潜龙寺和玻璃栈道。陕旅集团及国际在线正文确认少华山在渭南华州，旧34.241770/108.902733在西安高新市区，不能作为该寺定位。寺院保留独立身份，不能因两名同一错误点归并。",
+        "sourcePlaceIds": [
+          "5806"
+        ],
+        "mentions": [
+          {
+            "id": "12551",
+            "name": "潜龙寺",
+            "quote": "潜龙寺德红墙在绿荫的包围下光影斑驳",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6a5f16a9000000000503bda0"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5806",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "成对撤销与原文明示地点冲突的旧坐标，保持稳定ID；公开资料只证明行政位置与实体范围，没有核实GCJ-02精确点，不据网页地名猜坐标。",
+        "original": {
+          "lat": 34.24177,
+          "lng": 108.902733,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "陕西省渭南市华州区少华山国家森林公园潜龙寺，具体定位待核",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.sxtourgroup.com/home/guanzhonglishiwenhua/info/id/2596/catId/242.html",
+        "file": "all-cities/xian-qianlong-tourgroup-fetch.json",
+        "sha256": "a846b198f6ac4f1e9e41d42f6bd517263fc21d6c849b7211e1b35b95c1ae419e"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://sn.cri.cn/n/20190313/ea802a15-c21f-18e8-509e-39fe25d3c40e.html",
+        "file": "all-cities/xian-qianlong-cri-fetch.json",
+        "sha256": "97726ee6684772f529587ed19a77e3fc876581b149894d01d4d7e3d324d519c4"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://baike.baidu.com/item/%E6%BD%9C%E9%BE%99%E5%AF%BA%E6%99%AF%E5%8C%BA/6663579",
+        "file": "all-cities/xian-qianlong-baike-fetch.json",
+        "sha256": "6a15f0fa2d34ad2cf00a6103a5e0c08ba22e7fb8f930ea722872690dc7cf4d5c"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12551,
+          12026
+        ],
+        "conclusion": "12551及note2760明确乘缆车到少华山山顶潜龙寺拍红墙，2641路线也分列索道、潜龙寺和玻璃栈道。陕旅集团及国际在线正文确认少华山在渭南华州，旧34.241770/108.902733在西安高新市区，不能作为该寺定位。寺院保留独立身份，不能因两名同一错误点归并。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-23-002",
+    "city": "西安",
+    "entityId": "cac7b5d4f244dad808626ba1590c38f2",
+    "mergeEntityIds": [],
+    "canonicalName": "潜龙寺景区",
+    "expectedRevisions": {
+      "cac7b5d4f244dad808626ba1590c38f2": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "陕西省渭南市华州区少华山国家森林公园潜龙寺景区，范围定位待核",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "12455及note2775在少华山攻略中明确使用潜龙寺景区名称。陕旅集团把它列为公园五大景区之一；公开词条区分景区与寺院并列出其范围、其他景点和游览轴。原34.241770/108.902733误在西安高新，清空后不把整个分区绑定寺门或索道口。",
+        "sourcePlaceIds": [
+          "5839"
+        ],
+        "mentions": [
+          {
+            "id": "12455",
+            "name": "潜龙寺景区",
+            "quote": "必冲千年古寺+金色银杏，还有神奇的“柏抱槐”奇观",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/690034c200000000050326f7"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5839",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "成对撤销与原文明示地点冲突的旧坐标，保持稳定ID；公开资料只证明行政位置与实体范围，没有核实GCJ-02精确点，不据网页地名猜坐标。",
+        "original": {
+          "lat": 34.24177,
+          "lng": 108.902733,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "陕西省渭南市华州区少华山国家森林公园潜龙寺景区，范围定位待核",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://www.sxtourgroup.com/home/guanzhonglishiwenhua/info/id/2596/catId/242.html",
+        "file": "all-cities/xian-qianlong-tourgroup-fetch.json",
+        "sha256": "a846b198f6ac4f1e9e41d42f6bd517263fc21d6c849b7211e1b35b95c1ae419e"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://sn.cri.cn/n/20190313/ea802a15-c21f-18e8-509e-39fe25d3c40e.html",
+        "file": "all-cities/xian-qianlong-cri-fetch.json",
+        "sha256": "97726ee6684772f529587ed19a77e3fc876581b149894d01d4d7e3d324d519c4"
+      },
+      {
+        "kind": "published_source",
+        "url": "https://baike.baidu.com/item/%E6%BD%9C%E9%BE%99%E5%AF%BA%E6%99%AF%E5%8C%BA/6663579",
+        "file": "all-cities/xian-qianlong-baike-fetch.json",
+        "sha256": "6a15f0fa2d34ad2cf00a6103a5e0c08ba22e7fb8f930ea722872690dc7cf4d5c"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12455,
+          12026
+        ],
+        "conclusion": "12455及note2775在少华山攻略中明确使用潜龙寺景区名称。陕旅集团把它列为公园五大景区之一；公开词条区分景区与寺院并列出其范围、其他景点和游览轴。原34.241770/108.902733误在西安高新，清空后不把整个分区绑定寺门或索道口。"
+      }
+    ]
+  },
+  {
+    "key": "all-cities-20261006-batch-23-003",
+    "city": "西安",
+    "entityId": "202788eb4f60cff0ca71ae79e5709fa1",
+    "mergeEntityIds": [],
+    "canonicalName": "开元商城6楼观景平台",
+    "expectedRevisions": {
+      "202788eb4f60cff0ca71ae79e5709fa1": 1
+    },
+    "overrides": {
+      "lat": null,
+      "lng": null,
+      "address": "西安市钟楼旁开元商城6楼观景平台，具体机位待核",
+      "geoStatus": "unresolvable"
+    },
+    "evidence": [
+      {
+        "kind": "reviewed_source_snapshot",
+        "file": "all-cities/source-snapshot.json",
+        "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+        "reviewIds": [],
+        "conclusion": "2725 P6明确开元商城6楼可拍钟楼与鼓楼同框；2721完整路线通过钟楼站E口进入商城北门，分列5楼两处平台和6至7楼步梯。旧经度108.912271偏离钟楼开元商城约3公里，不能用于该六楼机位。仍需原图确定具体平台，不借5楼或7楼机位的点。",
+        "sourcePlaceIds": [
+          "5831"
+        ],
+        "mentions": [
+          {
+            "id": "12224",
+            "name": "开元商城6楼观景平台",
+            "quote": "P6：钟楼鼓楼同框 📍开元商城6楼观景平台",
+            "sourceUrl": "https://www.xiaohongshu.com/explore/6810a3220000000021001d41"
+          }
+        ]
+      },
+      {
+        "kind": "primary_source_geometry",
+        "sourcePlaceId": "5831",
+        "coordinateSystem": "GCJ-02",
+        "conclusion": "成对撤销与原文明示地点冲突的旧坐标，保持稳定ID；公开资料只证明行政位置与实体范围，没有核实GCJ-02精确点，不据网页地名猜坐标。",
+        "original": {
+          "lat": 34.259037,
+          "lng": 108.912271,
+          "address": "",
+          "geoStatus": "reviewed_source"
+        },
+        "lat": null,
+        "lng": null,
+        "address": "西安市钟楼旁开元商城6楼观景平台，具体机位待核",
+        "geoStatus": "unresolvable"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-context.json",
+        "sha256": "e4e060ba2d96221d3dc8b1f963dad9054a63333cd3cbfc13535a4d6dfa986799",
+        "mentionIds": [
+          12224,
+          12099
+        ],
+        "conclusion": "2725 P6明确开元商城6楼可拍钟楼与鼓楼同框；2721完整路线通过钟楼站E口进入商城北门，分列5楼两处平台和6至7楼步梯。旧经度108.912271偏离钟楼开元商城约3公里，不能用于该六楼机位。仍需原图确定具体平台，不借5楼或7楼机位的点。"
+      },
+      {
+        "kind": "reviewed_full_note_context",
+        "file": "all-cities/xian-batch13-variant-context.json",
+        "sha256": "6a5911ee28d554923b56df499d95c1130dc882c12def41ca5a09432a70b43bee",
+        "mentionIds": [
+          12354
+        ],
+        "conclusion": "2725 P6明确开元商城6楼可拍钟楼与鼓楼同框；2721完整路线通过钟楼站E口进入商城北门，分列5楼两处平台和6至7楼步梯。旧经度108.912271偏离钟楼开元商城约3公里，不能用于该六楼机位。仍需原图确定具体平台，不借5楼或7楼机位的点。"
+      }
+    ]
+  }
+]

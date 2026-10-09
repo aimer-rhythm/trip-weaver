@@ -1,0 +1,75 @@
+{
+  "batch": 67,
+  "city": "成都",
+  "state": "prepared_not_applied",
+  "sourceFile": "all-cities/batch-67-source.json",
+  "sourcesRead": 6,
+  "sourcesGoverned": 4,
+  "mentionsRead": 12,
+  "fullNotes": 5,
+  "scopeChanges": 0,
+  "assignmentChanges": 0,
+  "coordinatesToClear": 4,
+  "preciseLocationsResolved": 0,
+  "newEntities": 0,
+  "merges": 0,
+  "withdrawals": 0,
+  "rows": [
+    {
+      "sourceId": 1829,
+      "entityId": "1400be5b30fc208635ddd6e39dc26cb8",
+      "action": "clear_unsupported_shared_point",
+      "conclusion": "原文为成都麻布食堂体验，只含成都万象城标签，没有门牌或可核对的分店位置；不得凭标签指定万象城店。旧坐标与另三处无关主体完全相同，地址仅四川省成都市且无POI ID，缺乏具体店址依据。清空点、泛地址和adcode；原名与体验保留，门店范围仍待核。"
+    },
+    {
+      "sourceId": 1873,
+      "entityId": "417cb731eabc94c663cda20060b48c4e",
+      "action": "clear_unsupported_shared_point",
+      "conclusion": "两篇原文的四大会馆为洛带古镇内湖广、江西、广东、川北四处会馆的合称，不是单栋建筑。旧点与市区商户共用、只有市级地址，不能定位这组会馆；清点和adcode，仅记洛带古镇概略地址。不拆分创建会馆，也不把其他会馆名新增为同义别名。"
+    },
+    {
+      "sourceId": 2017,
+      "entityId": "723b7a943ad5082bc683d54c777e9cb6",
+      "action": "clear_unsupported_shared_point",
+      "conclusion": "原文明确真茶屋（天府广场店），但无具体门牌。旧坐标与洛带会馆等三处无关主体完全一致、只有四川省成都市泛地址且无POI ID；清空点、泛地址和adcode，不借天府广场中心定位门店，原分店名称保留。"
+    },
+    {
+      "sourceId": 2030,
+      "entityId": "09748ed3db0b30dea1569ec719524496",
+      "action": "clear_unsupported_shared_point",
+      "conclusion": "一街七巷为洛带古镇街巷格局的集合称呼，原文没有单一街巷起点或门牌。旧点与市区商户共用、仅市级地址，不能定位该街巷范围；清点和adcode，仅记洛带古镇。主体范围和现有古镇主街消费边界仍待核，不拆分或合并。"
+    }
+  ],
+  "readOnly": [
+    {
+      "sourceId": 1868,
+      "conclusion": "洛带古镇3提及原正负体验保留。现行complex中memberNames含洛带古镇主街，但实际components为空，主街4178被聚合；母项与主街粒度仍待核。3836的240分钟来自半日整镇路线且含可选金龙长城，单点与组合边界未定，本批不改时长、不声明通过。"
+    },
+    {
+      "sourceId": 1869,
+      "conclusion": "博客楼4提及保留3条正向体验及周一闭馆负向提醒；openHours目前unknown，原门牌三峨街999号99未经公共正文核实。既有分析将同篇部分土楼图片描述为福建，不凭分析摘要断定图片身份，也不查看图片。"
+    }
+  ],
+  "searchEvidence": [
+    {
+      "file": "priority-cities/成都/luodai-search-01.json",
+      "adopted": false,
+      "reason": "沙箱内60秒超时"
+    },
+    {
+      "file": "priority-cities/成都/luodai-search-02.json",
+      "adopted": false,
+      "reason": "沙箱外同查询重试仍60秒超时"
+    },
+    {
+      "file": "priority-cities/成都/luodai-search-03.json",
+      "adopted": false,
+      "reason": "ZHIPU_API_KEY未配置；不以未执行的搜索当核验"
+    }
+  ],
+  "decisionBoundary": "四组原文与现有库字段足以否定把共同通用点当作已核实地点坐标，但未取得历史地理编码响应，不能确定原始错误产生过程。只修位置，不新增scope、不改变类别、名称、别名、原事实或评价；身份与事实后续继续核查。",
+  "imageComparison": "deferred_by_user",
+  "newImageViews": 0,
+  "fullReviewPassed": false,
+  "userAcceptance": false
+}

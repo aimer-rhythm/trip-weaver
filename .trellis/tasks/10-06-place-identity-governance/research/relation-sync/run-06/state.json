@@ -1,0 +1,55 @@
+{
+  "city": "成都",
+  "phase": "imported",
+  "placesImported": true,
+  "relationsImported": true,
+  "sourceRevision": 1,
+  "sourceHash": "f5c1f7aa921603118db8b3f9d055876ec17becb460016285be4a89072d5700f6",
+  "placesHash": "210f28e50bcc8925de5cde3d54d56e7afb3faac274b09ae549972da8fda9017a",
+  "relationsHash": "eae97f6024634939af2294110f0151afc974b4d65bca5664c83d54eab9ce8868",
+  "libraryHash": "1040e03c8b2844b29ce0b9435c66fd199216ffa143e28ca78a4e95ea8ec32ae5",
+  "counts": {
+    "places": 392,
+    "graph": 50,
+    "direct": 16,
+    "library": {
+      "canonical_places": 411,
+      "research_evidence": 573,
+      "place_relation": 22,
+      "data_import": 3,
+      "independent_photo_assignments": 0,
+      "place_relation_snapshots": 0
+    }
+  },
+  "beforeTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "afterTrips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imports": [
+    {
+      "source": "xhs_places",
+      "content_hash": "210f28e50bcc8925de5cde3d54d56e7a",
+      "row_count": 392
+    },
+    {
+      "source": "xhs_relations",
+      "content_hash": "eae97f6024634939af2294110f0151af",
+      "row_count": 16
+    }
+  ],
+  "audits": [
+    {
+      "id": "5e07655b-dec1-43b1-95f5-eaa8b9542a35",
+      "content_hash": "210f28e50bcc8925de5cde3d54d56e7a"
+    },
+    {
+      "id": "8a7f6d5b-6d26-4225-96a1-785bc22f0ce1",
+      "content_hash": "eae97f6024634939af2294110f0151af"
+    }
+  ],
+  "importedAt": "2026-10-07T08:45:21.766Z"
+}

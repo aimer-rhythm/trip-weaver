@@ -1,0 +1,340 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 1,
+  "sourceHash": "12e4f4344614f35b64277837d64b2abc09f9dae4207dedab280ecee88e51ad56",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "七九刘家烧烤(纬九路店)",
+    "鑫龙火锅（北园大街店）",
+    "七九刘家烧烤",
+    "鑫龙火锅"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11635,
+     "noteId": 2602,
+     "inputHash": "afd98f5faf65d40faa07a3aae3824094e93acebe846cf9ffc76292ed378a4c8b",
+     "textHash": "a388d10e7c12f8baf826a2b6634e357de0bfe3af326313446c36a4b8aef72430",
+     "textLength": 1004,
+     "entityId": "97c845bd4afbe220afe8545ed5030c95",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 11708,
+     "noteId": 2603,
+     "inputHash": "33c619a40256cb34b37732c6cd6430d240e84fa925a34f1eced5b4bf221a86dd",
+     "textHash": "4941ac4acc563a662d36028a4b9569c9a310eb09cee3a1cdf27d4ace37a44407",
+     "textLength": 416,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 11709,
+     "noteId": 2604,
+     "inputHash": "06c05d431925e384a548302225e87588f033c8e55722b9414b100f31523c0625",
+     "textHash": "86fa2f9392c8f0881014ccbbc89830b472b451aafe7b09418ebf20491e17240b",
+     "textLength": 306,
+     "entityId": "cc3ebff96b9f814d82ef808324a42400",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12846,
+     "noteId": 2852,
+     "inputHash": "bfce72f70b00cb1226e1edf8aabe4346999b1c6c9e54c7f78778e322c28b4082",
+     "textHash": "8ffce322758f1422cf918d3a9e36768ec0539a49ee2b41f68826008d775a7f93",
+     "textLength": 154,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    },
+    {
+     "mentionId": 12886,
+     "noteId": 2854,
+     "inputHash": "68045d63a635536a8ec0f833bbeb51f8f86fdcd25b70dabf65a3f48771f8fea1",
+     "textHash": "7b0864f547a8832b80abc937126f148c84581787e00bace8f5f665872a3c7274",
+     "textLength": 623,
+     "entityId": "97c845bd4afbe220afe8545ed5030c95",
+     "revision": 3,
+     "status": "resolved",
+     "reason": "reviewed_assignment"
+    },
+    {
+     "mentionId": 12890,
+     "noteId": 2856,
+     "inputHash": "43be79682b5bc5ee909167e1082949f6f31443b3aecd5690744557ea61d4a1b7",
+     "textHash": "3c70fe62cd037e3d1963af1204716c73f2e40c2fcd12dd3b9b325fc1de5e2caa",
+     "textLength": 297,
+     "entityId": null,
+     "revision": null,
+     "status": "review",
+     "reason": "unassigned_target"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "97c845bd4afbe220afe8545ed5030c95",
+     "revision": 3,
+     "canonicalName": "七九刘家烧烤(纬九路店)",
+     "aliases": [
+      "七九刘家烧烤",
+      "七九刘家烧烤(纬九路店)"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    },
+    {
+     "entityId": "cc3ebff96b9f814d82ef808324a42400",
+     "revision": 3,
+     "canonicalName": "鑫龙火锅（北园大街店）",
+     "aliases": [
+      "鑫龙火锅",
+      "鑫龙火锅（北园大街店）"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": true
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "cc3ebff96b9f814d82ef808324a42400",
+   "name": "鑫龙火锅（北园大街店）",
+   "category": "美食",
+   "lng": 117.011248,
+   "lat": 36.68529,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "北园大街445",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "最正宗，清水葱姜锅底配麻汁辣椒油，羊肉原味爆汁"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "锅底非常简单就是清水加葱姜。调料麻汁配特炸的辣椒油加韭花酱。到店每一桌上四菜加一盘羊肉。",
+     "highlights": [
+      {
+       "text": "锅底非常简单就是清水加葱姜",
+       "quote": "锅底非常简单就是清水➕葱姜",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69d8ddfe000000002202adeb?xsec_token=ABsR5_M6P_24rkmojRbjIgRm6tAEDHwzBt--hv9BEjZtw=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.623497+00:00"
+      },
+      {
+       "text": "调料麻汁配特炸的辣椒油加韭花酱",
+       "quote": "调料麻汁配特炸的辣椒油➕韭花酱",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69d8ddfe000000002202adeb?xsec_token=ABsR5_M6P_24rkmojRbjIgRm6tAEDHwzBt--hv9BEjZtw=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.623497+00:00"
+      },
+      {
+       "text": "到店每一桌上四菜加一盘羊肉",
+       "quote": "到店 每一桌上四菜➕一盘羊肉",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/69d8ddfe000000002202adeb?xsec_token=ABsR5_M6P_24rkmojRbjIgRm6tAEDHwzBt--hv9BEjZtw=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.623497+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:37:16.580872+00:00"
+    },
+    "originalName": "鑫龙火锅",
+    "openHours": {
+     "version": 2,
+     "subject": "鑫龙火锅（北园大街店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 11709,
+      "noteId": 2604,
+      "inputHash": "06c05d431925e384a548302225e87588f033c8e55722b9414b100f31523c0625"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "cc3ebff96b9f814d82ef808324a42400",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "cc3ebff96b9f814d82ef808324a42400",
+     "canonicalName": "鑫龙火锅（北园大街店）",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "鑫龙火锅（北园大街店）",
+      "鑫龙火锅"
+     ],
+     "memberIds": [
+      "cc3ebff96b9f814d82ef808324a42400",
+      "7cf02e4ed3c21dc4f34db4251a5fc936"
+     ]
+    },
+    "aliases": [
+     "鑫龙火锅",
+     "鑫龙火锅（北园大街店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "最正宗，清水葱姜锅底配麻汁辣椒油，羊肉原味爆汁",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/69d8ddfe000000002202adeb?xsec_token=ABsR5_M6P_24rkmojRbjIgRm6tAEDHwzBt--hv9BEjZtw=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "97c845bd4afbe220afe8545ed5030c95",
+   "name": "七九刘家烧烤(纬九路店)",
+   "category": "美食",
+   "lng": 116.979359,
+   "lat": 36.653967,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "food",
+    "themes": [],
+    "address": "小经六路东首",
+    "adcode": "",
+    "mentionCount": 2,
+    "recommendScore": 10.0,
+    "topReasons": [
+     "本地人推荐的老字号苍蝇馆子，招牌虾酱馒头片和各种烤串",
+     "纬九路烧烤，口碑好"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "招牌菜有虾酱馒头片、各种烤串。纬九路烧烤，口碑好。",
+     "highlights": [
+      {
+       "text": "招牌菜有虾酱馒头片、各种烤串",
+       "quote": "虾酱馒头片，各种烤串",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/68cbee7f000000001300533e?xsec_token=ABmeQ7o0gZG7SBfhFocZrc4zbspl3j1VME2D1Tyu6Zvp0=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-06T02:05:11.717550+00:00"
+      },
+      {
+       "text": "纬九路烧烤，口碑好",
+       "quote": "纬九路烧烤，口碑好",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:19:33.571044+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T20:37:16.580872+00:00"
+    },
+    "originalName": "七九刘家烧烤",
+    "openHours": {
+     "version": 2,
+     "subject": "七九刘家烧烤(纬九路店)",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 12886,
+      "noteId": 2854,
+      "inputHash": "68045d63a635536a8ec0f833bbeb51f8f86fdcd25b70dabf65a3f48771f8fea1"
+     },
+     {
+      "mentionId": 11635,
+      "noteId": 2602,
+      "inputHash": "afd98f5faf65d40faa07a3aae3824094e93acebe846cf9ffc76292ed378a4c8b"
+     }
+    ],
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "97c845bd4afbe220afe8545ed5030c95",
+     "revision": 3,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "97c845bd4afbe220afe8545ed5030c95",
+     "canonicalName": "七九刘家烧烤(纬九路店)",
+     "revision": 3,
+     "kind": "same_entity",
+     "memberNames": [
+      "七九刘家烧烤(纬九路店)",
+      "七九刘家烧烤"
+     ],
+     "memberIds": [
+      "97c845bd4afbe220afe8545ed5030c95",
+      "91498642f17283649478f50006238603"
+     ]
+    },
+    "aliases": [
+     "七九刘家烧烤",
+     "七九刘家烧烤(纬九路店)"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "本地人推荐的老字号苍蝇馆子，招牌虾酱馒头片和各种烤串",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/68cbee7f000000001300533e?xsec_token=ABmeQ7o0gZG7SBfhFocZrc4zbspl3j1VME2D1Tyu6Zvp0=&xsec_source=pc_search"
+    },
+    {
+     "kind": "xhs_reason",
+     "content": "纬九路烧烤，口碑好",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0e4450000000031004042?xsec_token=ABKNT0pgEDSqaGe6qrrvb47Ql5iylPOg1NSSpgZHtbpto=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

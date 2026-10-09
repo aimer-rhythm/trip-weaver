@@ -1,0 +1,228 @@
+{
+ "_comment": "济南社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-09）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "济南",
+ "generatedAt": "2026-10-09",
+ "count": 2,
+ "activeCount": 2,
+ "relationIdentity": {
+  "version": 1,
+  "revision": 2,
+  "sourceHash": "b00f92203c1c4d673f84092a2ae64c2048e1af3eac549041b9a442b9a883e3d4",
+  "relationHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sourceState": {
+   "city": "济南",
+   "algorithmVersion": 3,
+   "minMentions": 2,
+   "surfaces": [
+    "BLUE DUCK骨董屋",
+    "BLUEDUCK骨董屋",
+    "VILLA SHAKA",
+    "VILLASHAKA"
+   ],
+   "mentions": [
+    {
+     "mentionId": 11534,
+     "noteId": 2573,
+     "inputHash": "e793b163301323a479a15e7af044953994f2915842fa047244c221f942af80e9",
+     "textHash": "9bfef84948011b11141c52bb05f61df75c0d0c5c7ad2586ecdeab29d66ccb896",
+     "textLength": 274,
+     "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    },
+    {
+     "mentionId": 11535,
+     "noteId": 2573,
+     "inputHash": "d053f0fc84612f26bc599a18cc0de2a9ef343655157c5651d4c80be6a2f673ed",
+     "textHash": "9bfef84948011b11141c52bb05f61df75c0d0c5c7ad2586ecdeab29d66ccb896",
+     "textLength": 274,
+     "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+     "revision": 2,
+     "status": "resolved",
+     "reason": "confirmed_name"
+    }
+   ],
+   "entities": [
+    {
+     "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+     "revision": 2,
+     "canonicalName": "VILLASHAKA",
+     "aliases": [
+      "VILLASHAKA"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    },
+    {
+     "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+     "revision": 2,
+     "canonicalName": "BLUEDUCK骨董屋",
+     "aliases": [
+      "BLUEDUCK骨董屋"
+     ],
+     "status": "ACTIVE",
+     "redirectTo": null,
+     "managed": false
+    }
+   ]
+  }
+ },
+ "places": [
+  {
+   "id": "46bf3d4bc9d5aa019dd4a3184329e58a",
+   "name": "BLUEDUCK骨董屋",
+   "category": "购物",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "shop",
+    "themes": [],
+    "address": "山东省济南市市中区经三路120号",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "自助式vintage杂货铺，超有味道。",
+     "highlights": [
+      {
+       "text": "自助式vintage杂货铺，超有味道",
+       "quote": "BLUE DUCK骨董屋是自助式vintage杂货铺，超有味道",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:18:21.299746+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T19:39:52.148095+00:00"
+    },
+    "originalName": "BLUEDUCK骨董屋",
+    "openHours": {
+     "version": 2,
+     "subject": "BLUEDUCK骨董屋",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+     "canonicalName": "BLUEDUCK骨董屋",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "BLUEDUCK骨董屋"
+     ],
+     "memberIds": [
+      "46bf3d4bc9d5aa019dd4a3184329e58a"
+     ]
+    },
+    "aliases": [
+     "BLUEDUCK骨董屋"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "自助式vintage杂货铺，超有味道",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search"
+    }
+   ]
+  },
+  {
+   "id": "2ccb52ac3eeda4ca713a2b7bd975b566",
+   "name": "VILLASHAKA",
+   "category": "美食",
+   "lng": null,
+   "lat": null,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "cafe",
+    "themes": [
+     "文艺"
+    ],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [],
+    "content": {
+     "version": 1,
+     "intro": "墙超好拍，咖啡也很赞。",
+     "highlights": [
+      {
+       "text": "墙超好拍，咖啡也很赞",
+       "quote": "VILLA SHAKA的墙超好拍，咖啡也很赞",
+       "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search",
+       "strength": "weak",
+       "observedAt": "2026-10-04T11:18:21.299746+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-08T19:39:52.148095+00:00"
+    },
+    "originalName": "VILLASHAKA",
+    "openHours": {
+     "version": 2,
+     "subject": "VILLASHAKA",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "identity": {
+     "version": 2,
+     "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+     "canonicalName": "VILLASHAKA",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "VILLASHAKA"
+     ],
+     "memberIds": [
+      "2ccb52ac3eeda4ca713a2b7bd975b566"
+     ]
+    },
+    "aliases": [
+     "VILLASHAKA"
+    ],
+    "geoStatus": "unresolvable",
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "墙超好拍，咖啡也很赞",
+     "sourceUrl": "https://www.xiaohongshu.com/explore/6a7318f8000000000e03b400?xsec_token=ABsoC0IxgaMFbjTfpbMTWNrgTuJFxv0uH0E0Xj8i6sJvw=&xsec_source=pc_search"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1710 @@
+{
+  "apply": true,
+  "cities": [
+    {
+      "city": "济南",
+      "entities": 242,
+      "members": 242,
+      "reviewCount": 6,
+      "review": [
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "d7dfe7ae5196779e613b8fa0d9bacf5a",
+            "f65621879204866b17b645554f9848db"
+          ],
+          "names": [
+            "五龙潭公园",
+            "五龙潭"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "bb53ff904464fb67e2ddf46d7ed0d2b8",
+            "d025994fc1b1449de922fa97abdd96f8"
+          ],
+          "names": [
+            "穆德老周家牛肉烧饼",
+            "老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "6f0051f4dcf714df1a9700bc2fb993d9",
+            "bb53ff904464fb67e2ddf46d7ed0d2b8"
+          ],
+          "names": [
+            "穆得老周家牛肉烧饼",
+            "穆德老周家牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "326cd34165dd905d31af6cd929a0deda",
+            "665e9903d644a1b41ce76e27467fb353"
+          ],
+          "names": [
+            "杨家牛肉烧饼",
+            "牛肉烧饼"
+          ]
+        },
+        {
+          "reason": "similar_name",
+          "entityIds": [
+            "8808e16f1472d0df17bed729a2e54e83",
+            "d14cc0c8a631defad91e60d475b7aedd"
+          ],
+          "names": [
+            "趵突泉",
+            "趵突泉公园"
+          ]
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "city": "济南",
+          "canonical_name": "黑虎泉",
+          "primary_place_id": 5351,
+          "aliases": [
+            "黑虎泉"
+          ],
+          "legacy_ids": [
+            "136719df189e0dd70cd34be75f6faef4"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5351,
+          "content_profile": {
+            "intro": "黑虎泉位于济南市历下区护城河东端南岸，是济南第二大泉群，为山东省文物保护单位。泉水从三个并列石雕虎头喷入石砌方池，再泻入护城河，形成白色水帘，涌水量仅次于趵突泉。泉名最早见于金代《名泉碑》，相传因崖下洞穴中巨石状如猛虎、水声如虎啸而得名。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-04T12:02:58.460415+00:00",
+            "highlights": [
+              {
+                "text": "黑虎泉位于济南市历下区护城河东端南岸，是济南第二大泉群，为山东省文物保护单位。",
+                "basis": "web",
+                "quote": "| 地址 | [济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[历下区](/wiki/%E5%8E%86%E4%B8%8B%E5%8C%BA \"历下区\")护城河东端南岸 |",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "| 地址 | [济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")[历下区](/wiki/%E5%8E%86%E4%B8%8B%E5%8C%BA \"历下区\")护城河东端南岸 |",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  },
+                  {
+                    "quote": "该泉群沿南护城河两岸分布，东起解放阁，向西延伸约700米，共有14处泉池，为济南第二大泉群[[1]](#cite_note-multiple1-1)。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  },
+                  {
+                    "quote": "| [山东省文物保护单位](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81%E6%96%87%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D \"山东省文物保护单位\") |",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                "observedAt": "2026-10-04T12:02:42Z"
+              },
+              {
+                "text": "泉水从三个并列石雕虎头喷入石砌方池，再泻入护城河，形成白色水帘，涌水量仅次于趵突泉。",
+                "basis": "web",
+                "quote": "该泉泉水标高27.88米，泉水从高2米、宽1.5米、深3米的洞穴岩孔中涌出，继而从并列的三个石雕虎头中喷入长13米、宽9米的石砌方池，最后通过池北岸的水闸泻入护城河，形成一道蔚为壮观的白色水帘[[5]](#cite_note-5)。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "该泉泉水标高27.88米，泉水从高2米、宽1.5米、深3米的洞穴岩孔中涌出，继而从并列的三个石雕虎头中喷入长13米、宽9米的石砌方池，最后通过池北岸的水闸泻入护城河，形成一道蔚为壮观的白色水帘[[5]](#cite_note-5)。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  },
+                  {
+                    "quote": "在济南七十二名泉中其涌水量仅次于[趵突泉](/wiki/%E8%B6%B5%E7%AA%81%E6%B3%89 \"趵突泉\")[[4]](#cite_note-multiple2-4)，其喷涌状态与趵突泉同为反映济南地下水位变化的晴雨表[[6]](#cite_note-6)。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                "observedAt": "2026-10-04T12:02:42Z"
+              },
+              {
+                "text": "泉名最早见于金代《名泉碑》，相传因崖下洞穴中巨石状如猛虎、水声如虎啸而得名。",
+                "basis": "web",
+                "quote": "黑虎泉一名最早见于金代《名泉碑》，《[历乘](/w/index.php?title=%E5%8E%86%E4%B9%98&action=edit&redlink=1 \"历乘（页面不存在）\")》亦载黑虎泉自“崖下水出，汇为一池，汩汩有声，流入城壕，其清可鉴眉须。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "黑虎泉一名最早见于金代《名泉碑》，《[历乘](/w/index.php?title=%E5%8E%86%E4%B9%98&action=edit&redlink=1 \"历乘（页面不存在）\")》亦载黑虎泉自“崖下水出，汇为一池，汩汩有声，流入城壕，其清可鉴眉须。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  },
+                  {
+                    "quote": "”关于其名来源有多种说法，较为普遍的说法认为泉源出于悬崖下深凹的洞穴，中有一巨石盘曲伏卧，因遍生苔藓而显苍黑，状如猛虎深藏，泉水从巨石下涌出，激湍撞击，水声轰鸣，状若虎啸，再加上每逢夜半风扑洞中，伴随泉水喷涌更壮其声，故称黑虎泉[[1]](#cite_note-multiple1-1)。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                    "observedAt": "2026-10-04T12:02:42Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%99%8E%E6%B3%89",
+                "observedAt": "2026-10-04T12:02:42Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": 60,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 216.8,
+          "theme_tags": [
+            "住宿",
+            "历史人文",
+            "文艺"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5351,
+          "mention_count_30d": 47,
+          "positive_count_30d": 45,
+          "source_count": 38,
+          "top_reasons": [
+            {
+              "reason": "免费，可接泉水，游玩1小时",
+              "evidence": "可接泉水"
+            },
+            {
+              "reason": "夜色下泉水从石雕虎首喷涌，气势恢宏，可自带空瓶接泉水品尝",
+              "evidence": "泉水从三个石雕虎首中喷涌而出"
+            },
+            {
+              "reason": "城中心景点，可顺带游览",
+              "evidence": "剩下的小半天，交给城中心剩下的黑虎泉等地"
+            },
+            {
+              "reason": "免费泉水，但肠胃虚弱的朋友不要直接喝",
+              "evidence": "肠胃虚弱的朋友不要直接喝哦"
+            },
+            {
+              "reason": "济南名泉，列入推荐路线第一天。",
+              "evidence": "day1：五龙潭—趵突泉—泉城广场—黑虎泉—解放阁"
+            }
+          ],
+          "recommend_score": 117.79
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7764,
+          "canonical_place_id": 5351,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 黑虎泉",
+          "evidence_summary": "离餐厅很近，适合顺路游览"
+        },
+        {
+          "id": 7765,
+          "canonical_place_id": 5351,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 黑虎泉",
+          "evidence_summary": "与解放阁沿护城河游览，顺路。"
+        },
+        {
+          "id": 7766,
+          "canonical_place_id": 5351,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 黑虎泉",
+          "evidence_summary": "免费，可接泉水，游玩1小时"
+        },
+        {
+          "id": 8619,
+          "canonical_place_id": 5351,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 黑虎泉",
+          "evidence_summary": "夜色下泉水从石雕虎首喷涌，气势恢宏，可自带空瓶接泉水品尝"
+        },
+        {
+          "id": 8620,
+          "canonical_place_id": 5351,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 黑虎泉",
+          "evidence_summary": "城中心景点，可顺带游览"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4832,
+          "from_name": "解放阁",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 12,
+          "evidence": "五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里（大概在1",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+        },
+        {
+          "id": 4835,
+          "from_name": "泉城广场",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 5,
+          "evidence": "）➡️起凤桥八号➡️泉城广场➡️黑虎泉➡️解放阁 \t 🌈大",
+          "source_url": "https://www.xiaohongshu.com/explore/69be3081000000001b001f2e?xsec_token=ABI6MsITEs5X8GQD_fe-5pQXvki38nbMFtraRsE3zsQUo=&xsec_source=pc_search"
+        },
+        {
+          "id": 4841,
+          "from_name": "大明湖",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": " → 曲水亭街 → 大明湖 → 黑虎泉 → 宽厚里（或打车",
+          "source_url": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+        },
+        {
+          "id": 4842,
+          "from_name": "宽厚里",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 3,
+          "evidence": "街 → 大明湖 → 黑虎泉 → 宽厚里（或打车10min到",
+          "source_url": "https://www.xiaohongshu.com/explore/6a054e8d0000000036018133?xsec_token=ABn_jJMoAnaYGe07qCTtXX4b_5TkIOHW8Sg8dVQVrPWmI=&xsec_source=pc_search"
+        },
+        {
+          "id": 4847,
+          "from_name": "趵突泉",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 6,
+          "evidence": "0点出门，五龙潭➡️趵突泉➡️黑虎泉➡️解放阁➡️宽厚里",
+          "source_url": "https://www.xiaohongshu.com/explore/6a6c5d380000000022031a6f?xsec_token=ABszHWQm5VuUEvZrDrRQtV_ZyXkNsR2G1juu7ORG_WX7g=&xsec_source=pc_search"
+        },
+        {
+          "id": 5008,
+          "from_name": "护城河",
+          "to_name": "黑虎泉",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "氛围感足 📍解放阁：黑虎泉旁红色地标，登阁俯瞰护城河，夜景亮灯很美 📍曲",
+          "source_url": "https://www.xiaohongshu.com/explore/6a1ed061000000003701fb8a?xsec_token=ABn2UEGVaNjTN9SsOhOsLBizCHqnY-un0aeoiIn9_gvxo=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5351,
+          "city": "济南",
+          "name_keys": [
+            "黑虎泉"
+          ],
+          "entity_ids": [
+            "136719df189e0dd70cd34be75f6faef4"
+          ],
+          "source_hash": "bb01eb7bc2b564260c4507819316c1770b58f5e9b1c1739549d9800fb971c00f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/main-sights-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "sha256": "c6b7cc8114a3f3a4f82035fadcf5bf64f342f1c5b082d97ce344b7fb1cabb8bd",
+              "conclusion": "逐篇分开泉池/景区本体、组合线路、活动和周边主语；有效描述和原身份保持，未确认提及待审。",
+              "mentionIds": [
+                11336,
+                11373,
+                11394,
+                11405,
+                11409,
+                11433,
+                11439,
+                11444,
+                11454,
+                11474,
+                11490,
+                11514,
+                11518,
+                11542,
+                11575,
+                11584,
+                11590,
+                11620,
+                11687,
+                12564,
+                12576,
+                12614,
+                12635,
+                12657,
+                12668,
+                12675,
+                12701,
+                12711,
+                12716,
+                12720,
+                12734,
+                12760,
+                12784,
+                12790,
+                12809,
+                12829,
+                12838,
+                12849,
+                12857,
+                12869,
+                12898,
+                12905,
+                12914,
+                12929,
+                12939,
+                12953,
+                12969
+              ],
+              "sourcePlaceId": 5351
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "136719df189e0dd70cd34be75f6faef4"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11336,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "875815856a969e3a247abf498ca91fee99d9d18ad6669b4a0f6712d43149dbc8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+              "reason": "subject_mismatch"
+            },
+            "visit_duration": {
+              "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+              "reason": "group_duration"
+            }
+          }
+        },
+        {
+          "mention_id": 11373,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "e358083eb74eb08def8a1d07f0e373147a2e097109a1da643c31cb98327d43c8",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11394,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "64f77a34270de6ba7991e2523f1d6ac6ab2e60facab5533f17e2d26b9a7d7238",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11405,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "077abe91e7e5cc4c6a8399a7aa13a02dee3ca01462efcb84213d4d059f795631",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11409,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "f6cfd54cf2feee3dfeb68b60e4da9ac8bf1797070fb2b6b65044bdc73b9be4d1",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11433,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "038487a4cb9c5b7ba3701e49af79920fa17a5f25912ba9abdbb50bf50bed4783",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11439,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "8344e5a067087c0eaaf41ecb524bd3308b742576c2c9d292a129a9fc794ca281",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11444,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "d806658a94cf0eea1b8417d9a5f91599a9a612602491720185ea8ec397ccb949",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11454,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "a91aabfb066506f7541f59a979b01bd7e88a5850e7a2762fe8bd545a673d4ae9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11474,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "ca23e8b15d9f9e7f166948d020d872a64ecfb255ec06840502c59a2b8af6b9f9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11490,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "3d814fd89c56cf93e49f0912fdc05d290360ea4d3a98e55a5acc55848cafd3a2",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11514,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "f63240910ea3227c528bc2f14578443763e30acdbbde0256616570580f38737f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11518,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "1aeaa155fadd0b0fc6edb8fe65d06cc5e4f20cf5edfbb69b409d2768d5f79e26",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11542,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "9367d03fe6cda63d0cc6e5e089d51b594e3d1f46900d2f1091154e33640ac011",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11575,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "0ec4adc9c74878e0d50f80b22664a08413e36c991194c2e89c58caa628cb1dc3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11584,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "a31fbad0b895a1f12514fb71459b9a39c53691cac8a1bd8e16f3bac86d6d258f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11590,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "6714aba12e87e1ed74cbfee1de51da7721a5424fc1966ad7fca67d936dfa2344",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11620,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "f544b1b12a1145deeebe8fd320585319a43d901b1a27add5e687b359bc0e213b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 11687,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "2447bca9f0b7008d6c4cef34a510f0bd5e4331bc0c1dba2f23a8e125c3cdf56d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12564,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "e12a1c289fd6cc9f4cd105b272fbcb0e3804264e4e78aa8a424775ef840a3d3d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope",
+          "fact_exclusions": {
+            "reason": {
+              "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+              "reason": "subject_mismatch"
+            },
+            "visit_duration": {
+              "quote": "▪️黑虎泉+解放阁\n游玩1h｜免费｜可接泉水",
+              "reason": "group_duration"
+            }
+          }
+        },
+        {
+          "mention_id": 12576,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "e4f9fbf65af9bffbc8391360e89b63a8939c1265f059a53616dfc067dbefc909",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12614,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "87f4050d5a7c4a5f0948ed0755439393c0f4aa83de51c0c68ce2059a30ea26eb",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12635,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "95a18ffba958c5ea88d12ce5fd4fb0cffd5555e597a32da5684903b4a9bd5d54",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12657,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "8b2a33eb4b9e04ed079308de1ee83dcfd1870554320c4d6e69df01f3ee443463",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12668,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "6a23797fa1fd75f67d2ea265e0b86e73253d5f5f54fac91198e7f9ada1b48a05",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12675,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "04071d03782778471fefc8d08414ec88e4c079be786a5ae2defbeb97ae846e37",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12701,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "de155ea83dac9eb322701fb20d200e18b2174331be469c56cf2c439a39440dff",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12711,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "bd80d55fb8e69d47b3a4a8ed961306e1ba0970085c740b98fb44b484be0d221c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12716,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "a4519af7f10eaca5f14724256b784ee8d477cae5cd78b996c894a1ecc1ec1321",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12720,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "c3ba149b078bcd2c098421f42bd5e5e8b1f09ceecaa45e1b8f3f41b412fde87d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12734,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "c1bfe9fe3610e99e19af579aaa6c42de2c8262c22a736dfda21fbdb70ef2e4b2",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12760,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "8f94ef52c113eec3c51c6848b7b804e6f7cb92eb0fe1518bba594ad527a93a51",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12784,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "dea823be08f02b3eb48f4868597c45c47eb3bd5d2028cfb28849ca3f31b82348",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12790,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "3bad5bfdbc849b7deff384051ce55d2d6dee583f044f74961b2b0124831ea317",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12809,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "f5b6115d44efef85d8dcd391054ebae57e95bed98366b036cd0e7604bfdf732d",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12829,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "c70aa403c730ea576d3e92832d65cf89792eb223cf70b6ce989037d56385d404",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12838,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "1f16470fff06cff0029e3bd2478db37abae7ad9f4ccaea9b1dd9c3a0d7d4591b",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12849,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "3e949a9c48c8697aec38b26467dad0e33a14d4db9cb8c7573db29abbb4c037e9",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12857,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "e2a5c5e3e21745b4123a11b9c5286a1c6077733322baada59ff1b17bc60c2766",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12869,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "31dab7f1489085698f2b55581eddf6999d4b8028794167404f3d1d7f6b8c84cb",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12898,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "8f7fe8c6b784b03ba7e971ea9c7aa90d23b1232f5c770f0cceaacdab008a1138",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12905,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "1f913a003f78c6d70a5e0f2dc3d33b26d2b9f7557eba038e0bf1024b483b1d15",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12914,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "2340f343406955e328c192eea43c58059174d851017abafbba21992b42a9fa02",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12929,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "9ea67423f452f939650351e185482b4c4438c6730ae162aa2e28d9831925ff82",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope",
+          "fact_exclusions": {
+            "reservation": {
+              "quote": "★黑虎泉：❗️坐船需要提前买票选座",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 12939,
+          "scope_place_id": 5351,
+          "entity_id": null,
+          "input_hash": "2dbf4188cdafbb31bfd0df8a9a2259a2a454ad5194b1b8cf8e859cd06260320a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12953,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "806bc4dadb2045b3c9d64e5eab883c9db87e3814e4d13b0d5f0aa50cefe4fd61",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        },
+        {
+          "mention_id": 12969,
+          "scope_place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "input_hash": "d6c2805229132bad1d40c4cea87cd2929a45522ae444eea5b27e1b7ff5eb2f0f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5351-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "bb01eb7bc2b564260c4507819316c1770b58f5e9b1c1739549d9800fb971c00f",
+        "mentions": [
+          {
+            "mentionId": 11336,
+            "inputHash": "875815856a969e3a247abf498ca91fee99d9d18ad6669b4a0f6712d43149dbc8"
+          },
+          {
+            "mentionId": 11373,
+            "inputHash": "e358083eb74eb08def8a1d07f0e373147a2e097109a1da643c31cb98327d43c8"
+          },
+          {
+            "mentionId": 11394,
+            "inputHash": "64f77a34270de6ba7991e2523f1d6ac6ab2e60facab5533f17e2d26b9a7d7238"
+          },
+          {
+            "mentionId": 11405,
+            "inputHash": "077abe91e7e5cc4c6a8399a7aa13a02dee3ca01462efcb84213d4d059f795631"
+          },
+          {
+            "mentionId": 11409,
+            "inputHash": "f6cfd54cf2feee3dfeb68b60e4da9ac8bf1797070fb2b6b65044bdc73b9be4d1"
+          },
+          {
+            "mentionId": 11433,
+            "inputHash": "038487a4cb9c5b7ba3701e49af79920fa17a5f25912ba9abdbb50bf50bed4783"
+          },
+          {
+            "mentionId": 11439,
+            "inputHash": "8344e5a067087c0eaaf41ecb524bd3308b742576c2c9d292a129a9fc794ca281"
+          },
+          {
+            "mentionId": 11444,
+            "inputHash": "d806658a94cf0eea1b8417d9a5f91599a9a612602491720185ea8ec397ccb949"
+          },
+          {
+            "mentionId": 11454,
+            "inputHash": "a91aabfb066506f7541f59a979b01bd7e88a5850e7a2762fe8bd545a673d4ae9"
+          },
+          {
+            "mentionId": 11474,
+            "inputHash": "ca23e8b15d9f9e7f166948d020d872a64ecfb255ec06840502c59a2b8af6b9f9"
+          },
+          {
+            "mentionId": 11490,
+            "inputHash": "3d814fd89c56cf93e49f0912fdc05d290360ea4d3a98e55a5acc55848cafd3a2"
+          },
+          {
+            "mentionId": 11514,
+            "inputHash": "f63240910ea3227c528bc2f14578443763e30acdbbde0256616570580f38737f"
+          },
+          {
+            "mentionId": 11518,
+            "inputHash": "1aeaa155fadd0b0fc6edb8fe65d06cc5e4f20cf5edfbb69b409d2768d5f79e26"
+          },
+          {
+            "mentionId": 11542,
+            "inputHash": "9367d03fe6cda63d0cc6e5e089d51b594e3d1f46900d2f1091154e33640ac011"
+          },
+          {
+            "mentionId": 11575,
+            "inputHash": "0ec4adc9c74878e0d50f80b22664a08413e36c991194c2e89c58caa628cb1dc3"
+          },
+          {
+            "mentionId": 11584,
+            "inputHash": "a31fbad0b895a1f12514fb71459b9a39c53691cac8a1bd8e16f3bac86d6d258f"
+          },
+          {
+            "mentionId": 11590,
+            "inputHash": "6714aba12e87e1ed74cbfee1de51da7721a5424fc1966ad7fca67d936dfa2344"
+          },
+          {
+            "mentionId": 11620,
+            "inputHash": "f544b1b12a1145deeebe8fd320585319a43d901b1a27add5e687b359bc0e213b"
+          },
+          {
+            "mentionId": 11687,
+            "inputHash": "2447bca9f0b7008d6c4cef34a510f0bd5e4331bc0c1dba2f23a8e125c3cdf56d"
+          },
+          {
+            "mentionId": 12564,
+            "inputHash": "e12a1c289fd6cc9f4cd105b272fbcb0e3804264e4e78aa8a424775ef840a3d3d"
+          },
+          {
+            "mentionId": 12576,
+            "inputHash": "e4f9fbf65af9bffbc8391360e89b63a8939c1265f059a53616dfc067dbefc909"
+          },
+          {
+            "mentionId": 12614,
+            "inputHash": "87f4050d5a7c4a5f0948ed0755439393c0f4aa83de51c0c68ce2059a30ea26eb"
+          },
+          {
+            "mentionId": 12635,
+            "inputHash": "95a18ffba958c5ea88d12ce5fd4fb0cffd5555e597a32da5684903b4a9bd5d54"
+          },
+          {
+            "mentionId": 12657,
+            "inputHash": "8b2a33eb4b9e04ed079308de1ee83dcfd1870554320c4d6e69df01f3ee443463"
+          },
+          {
+            "mentionId": 12668,
+            "inputHash": "6a23797fa1fd75f67d2ea265e0b86e73253d5f5f54fac91198e7f9ada1b48a05"
+          },
+          {
+            "mentionId": 12675,
+            "inputHash": "04071d03782778471fefc8d08414ec88e4c079be786a5ae2defbeb97ae846e37"
+          },
+          {
+            "mentionId": 12701,
+            "inputHash": "de155ea83dac9eb322701fb20d200e18b2174331be469c56cf2c439a39440dff"
+          },
+          {
+            "mentionId": 12711,
+            "inputHash": "bd80d55fb8e69d47b3a4a8ed961306e1ba0970085c740b98fb44b484be0d221c"
+          },
+          {
+            "mentionId": 12716,
+            "inputHash": "a4519af7f10eaca5f14724256b784ee8d477cae5cd78b996c894a1ecc1ec1321"
+          },
+          {
+            "mentionId": 12720,
+            "inputHash": "c3ba149b078bcd2c098421f42bd5e5e8b1f09ceecaa45e1b8f3f41b412fde87d"
+          },
+          {
+            "mentionId": 12734,
+            "inputHash": "c1bfe9fe3610e99e19af579aaa6c42de2c8262c22a736dfda21fbdb70ef2e4b2"
+          },
+          {
+            "mentionId": 12760,
+            "inputHash": "8f94ef52c113eec3c51c6848b7b804e6f7cb92eb0fe1518bba594ad527a93a51"
+          },
+          {
+            "mentionId": 12784,
+            "inputHash": "dea823be08f02b3eb48f4868597c45c47eb3bd5d2028cfb28849ca3f31b82348"
+          },
+          {
+            "mentionId": 12790,
+            "inputHash": "3bad5bfdbc849b7deff384051ce55d2d6dee583f044f74961b2b0124831ea317"
+          },
+          {
+            "mentionId": 12809,
+            "inputHash": "f5b6115d44efef85d8dcd391054ebae57e95bed98366b036cd0e7604bfdf732d"
+          },
+          {
+            "mentionId": 12829,
+            "inputHash": "c70aa403c730ea576d3e92832d65cf89792eb223cf70b6ce989037d56385d404"
+          },
+          {
+            "mentionId": 12838,
+            "inputHash": "1f16470fff06cff0029e3bd2478db37abae7ad9f4ccaea9b1dd9c3a0d7d4591b"
+          },
+          {
+            "mentionId": 12849,
+            "inputHash": "3e949a9c48c8697aec38b26467dad0e33a14d4db9cb8c7573db29abbb4c037e9"
+          },
+          {
+            "mentionId": 12857,
+            "inputHash": "e2a5c5e3e21745b4123a11b9c5286a1c6077733322baada59ff1b17bc60c2766"
+          },
+          {
+            "mentionId": 12869,
+            "inputHash": "31dab7f1489085698f2b55581eddf6999d4b8028794167404f3d1d7f6b8c84cb"
+          },
+          {
+            "mentionId": 12898,
+            "inputHash": "8f7fe8c6b784b03ba7e971ea9c7aa90d23b1232f5c770f0cceaacdab008a1138"
+          },
+          {
+            "mentionId": 12905,
+            "inputHash": "1f913a003f78c6d70a5e0f2dc3d33b26d2b9f7557eba038e0bf1024b483b1d15"
+          },
+          {
+            "mentionId": 12914,
+            "inputHash": "2340f343406955e328c192eea43c58059174d851017abafbba21992b42a9fa02"
+          },
+          {
+            "mentionId": 12929,
+            "inputHash": "9ea67423f452f939650351e185482b4c4438c6730ae162aa2e28d9831925ff82"
+          },
+          {
+            "mentionId": 12939,
+            "inputHash": "2dbf4188cdafbb31bfd0df8a9a2259a2a454ad5194b1b8cf8e859cd06260320a"
+          },
+          {
+            "mentionId": 12953,
+            "inputHash": "806bc4dadb2045b3c9d64e5eab883c9db87e3814e4d13b0d5f0aa50cefe4fd61"
+          },
+          {
+            "mentionId": 12969,
+            "inputHash": "d6c2805229132bad1d40c4cea87cd2929a45522ae444eea5b27e1b7ff5eb2f0f"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 4123,
+          "fingerprint": "1663afac90d76fbaee5491615d99f42b6de37de246f46988e8e7300e31f4e85f",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8344e5a067087c0eaaf41ecb524bd3308b742576c2c9d292a129a9fc794ca281",
+            "mentionId": 11439,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4133,
+          "fingerprint": "22c9acf2e4132e123dbdcbf5e38d8b917e6cbdf74401180ffcbf7a29e281e15c",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "9367d03fe6cda63d0cc6e5e089d51b594e3d1f46900d2f1091154e33640ac011",
+            "mentionId": 11542,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4139,
+          "fingerprint": "4f511419d5986d730730f9a6ecfdbb30494be632cf588c081f49497f2ccddef6",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a31fbad0b895a1f12514fb71459b9a39c53691cac8a1bd8e16f3bac86d6d258f",
+            "mentionId": 11584,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4162,
+          "fingerprint": "90b1a266e91941dfdd42540309a4c60b2292294d8fdd4430aebef9fc0b322e15",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "e4f9fbf65af9bffbc8391360e89b63a8939c1265f059a53616dfc067dbefc909",
+            "mentionId": 12576,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4170,
+          "fingerprint": "89dbf9cb88ec1b38c4f77ba2587e7b5f5e1b00e7bbe99f805542a89270e66593",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8b2a33eb4b9e04ed079308de1ee83dcfd1870554320c4d6e69df01f3ee443463",
+            "mentionId": 12657,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4171,
+          "fingerprint": "80a67ee239fa5b5ce7a82dc75ff0a07a52a8473911ce0a78330f4c61484ca1c8",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "6a23797fa1fd75f67d2ea265e0b86e73253d5f5f54fac91198e7f9ada1b48a05",
+            "mentionId": 12668,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4177,
+          "fingerprint": "1a734f5cc8a2f1b160f2683c4048ad0fb17d20abe258889a11b3a9bd991af3e9",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "de155ea83dac9eb322701fb20d200e18b2174331be469c56cf2c439a39440dff",
+            "mentionId": 12701,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4179,
+          "fingerprint": "a8160fecf9d051c47bd1d320bdcb86751eae6ec8c7af52133ba473c96be1b399",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a4519af7f10eaca5f14724256b784ee8d477cae5cd78b996c894a1ecc1ec1321",
+            "mentionId": 12716,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4186,
+          "fingerprint": "dcb8048cda3e451f40cc7b1b40638cf5eb45934f88fa3fce58a9e30461d3863d",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "f5b6115d44efef85d8dcd391054ebae57e95bed98366b036cd0e7604bfdf732d",
+            "mentionId": 12809,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4193,
+          "fingerprint": "43be2071124db9ac3a611e9c1439a17cd1e57a111d908da41c56efc6de0767f6",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "1f913a003f78c6d70a5e0f2dc3d33b26d2b9f7557eba038e0bf1024b483b1d15",
+            "mentionId": 12905,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        },
+        {
+          "id": 4197,
+          "fingerprint": "8c962e419651c0beede6d81a4a0bf406d1a54fbdd3a939bdbf950236b1046956",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "2dbf4188cdafbb31bfd0df8a9a2259a2a454ad5194b1b8cf8e859cd06260320a",
+            "mentionId": 12939,
+            "scopePlaceIds": [
+              5351
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "city": "济南",
+          "canonical_name": "千佛山",
+          "primary_place_id": 5357,
+          "aliases": [
+            "千佛山"
+          ],
+          "legacy_ids": [
+            "290bf0287b4fc3936cb552acd37abca4"
+          ],
+          "revision": 2,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {},
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 5357,
+          "content_profile": {
+            "intro": "千佛山位于济南市南部偏东，是泰山余脉，海拔285米，为济南三大名胜之一，峰峦起伏如天然屏障。隋代开皇年间佛教盛行，信徒在崖壁镌刻佛像并建千佛寺，千佛山之名由此流传，山间现存兴国寺等古迹。登临山顶可北眺黄河及华不注山等，半山腰有“齐烟九点”牌坊，东麓还有辛亥革命烈士陵园。",
+            "method": "web_research_with_model_knowledge",
+            "version": 1,
+            "compiledAt": "2026-10-04T12:13:19.838618+00:00",
+            "highlights": [
+              {
+                "text": "千佛山位于济南市南部偏东，是泰山余脉，海拔285米，为济南三大名胜之一，峰峦起伏如天然屏障。",
+                "basis": "web",
+                "quote": "千佛山位于济南市南部偏东之处，是泰山的余脉，海拔285米，占地166.1公顷，距市中心2.5公里，千佛山峰峦起伏，林木森森，恰似济南的天然屏障，是济南三大名胜之一。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "千佛山位于济南市南部偏东之处，是泰山的余脉，海拔285米，占地166.1公顷，距市中心2.5公里，千佛山峰峦起伏，林木森森，恰似济南的天然屏障，是济南三大名胜之一。",
+                    "sourceUrl": "http://xn--xmq9m33hvqmprmt5o3hx.xn--ses554g",
+                    "observedAt": "2026-10-04T12:13:03Z"
+                  },
+                  {
+                    "quote": "**千佛山**位于[中国](/wiki/%E4%B8%AD%E5%9B%BD \"中国\")[山东省](/wiki/%E5%B1%B1%E4%B8%9C%E7%9C%81 \"山东省\")[济南市](/wiki/%E6%B5%8E%E5%8D%97%E5%B8%82 \"济南市\")南郊，是济南的名胜，是[泰山](/wiki/%E6%B3%B0%E5%B1%B1 \"泰山\")的北端余脉，海拔285米。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BD%9B%E5%B1%B1",
+                    "observedAt": "2026-10-04T12:13:16Z"
+                  }
+                ],
+                "sourceUrl": "http://xn--xmq9m33hvqmprmt5o3hx.xn--ses554g",
+                "observedAt": "2026-10-04T12:13:03Z"
+              },
+              {
+                "text": "隋代开皇年间佛教盛行，信徒在崖壁镌刻佛像并建千佛寺，千佛山之名由此流传，山间现存兴国寺等古迹。",
+                "basis": "web",
+                "quote": "隋代开皇年间，山东境内佛教盛行，虔诚的佛教徒在崖壁上镌刻了很多佛像，并在山腰处修建了“千佛寺”，香火鼎盛，也就是从那时起，“千佛山”这个名称便广为流传了。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "隋代开皇年间，山东境内佛教盛行，虔诚的佛教徒在崖壁上镌刻了很多佛像，并在山腰处修建了“千佛寺”，香火鼎盛，也就是从那时起，“千佛山”这个名称便广为流传了。",
+                    "sourceUrl": "http://xn--xmq9m33hvqmprmt5o3hx.xn--ses554g",
+                    "observedAt": "2026-10-04T12:13:03Z"
+                  },
+                  {
+                    "quote": "兴国寺又名千佛山寺，始建于唐代，后经历代增建，规模渐大。",
+                    "sourceUrl": "https://cn.tripadvisor.com/Attraction_Review-g297457-d507270-Reviews-Qianfoshan-Jinan_Shandong.html",
+                    "observedAt": "2026-10-04T12:13:11Z"
+                  }
+                ],
+                "sourceUrl": "http://xn--xmq9m33hvqmprmt5o3hx.xn--ses554g",
+                "observedAt": "2026-10-04T12:13:03Z"
+              },
+              {
+                "text": "登临山顶可北眺黄河及华不注山等，半山腰有“齐烟九点”牌坊，东麓还有辛亥革命烈士陵园。",
+                "basis": "web",
+                "quote": "由千佛山向北方眺望，可以看到[黄河](/wiki/%E9%BB%84%E6%B2%B3 \"黄河\")，以及[华不注山](/wiki/%E5%8D%8E%E4%B8%8D%E6%B3%A8%E5%B1%B1 \"华不注山\")（又称华山）、[鹊山](/wiki/%E9%B9%8A%E5%B1%B1 \"鹊山\")、[匡山](/w/index.php?title=%E5%8C%A1%E5%B1%B1_(%E6%B5%8E%E5%8D%97%E5%B8%82)&action=edit&redlink=1 \"匡山 (济南市)（页面不存在）\")、标山等几座小山。",
+                "strength": "weak",
+                "citations": [
+                  {
+                    "quote": "由千佛山向北方眺望，可以看到[黄河](/wiki/%E9%BB%84%E6%B2%B3 \"黄河\")，以及[华不注山](/wiki/%E5%8D%8E%E4%B8%8D%E6%B3%A8%E5%B1%B1 \"华不注山\")（又称华山）、[鹊山](/wiki/%E9%B9%8A%E5%B1%B1 \"鹊山\")、[匡山](/w/index.php?title=%E5%8C%A1%E5%B1%B1_(%E6%B5%8E%E5%8D%97%E5%B8%82)&action=edit&redlink=1 \"匡山 (济南市)（页面不存在）\")、标山等几座小山。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BD%9B%E5%B1%B1",
+                    "observedAt": "2026-10-04T12:13:16Z"
+                  },
+                  {
+                    "quote": "千佛山半山腰有一牌坊，上书“齐烟九点”四字。",
+                    "sourceUrl": "https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BD%9B%E5%B1%B1",
+                    "observedAt": "2026-10-04T12:13:16Z"
+                  },
+                  {
+                    "quote": "辛亥革命烈士陵园在千佛山东麓，安葬着辛亥革命中牺牲的23位烈士，是市级重点文物保护单位。",
+                    "sourceUrl": "http://xn--xmq9m33hvqmprmt5o3hx.xn--ses554g",
+                    "observedAt": "2026-10-04T12:13:03Z"
+                  }
+                ],
+                "sourceUrl": "https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BD%9B%E5%B1%B1",
+                "observedAt": "2026-10-04T12:13:16Z"
+              }
+            ],
+            "sourcePolicy": "web_primary_model_background_xhs_separate",
+            "machineReview": {
+              "model": "deepseek-v4-flash",
+              "status": "passed",
+              "version": 1
+            },
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": 30,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 67.6,
+          "theme_tags": [
+            "住宿",
+            "美食"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 5357,
+          "mention_count_30d": 13,
+          "positive_count_30d": 12,
+          "source_count": 11,
+          "top_reasons": [
+            {
+              "reason": "早起爬山，不算累但热",
+              "evidence": "早起爬千佛山，爬的不是很累，挺热的"
+            },
+            {
+              "reason": "可选景点，打车约10分钟",
+              "evidence": "打车10min到千佛山"
+            },
+            {
+              "reason": "可从美院门进，先看大佛再上山，可乘缆车或步行。",
+              "evidence": "先往左看大佛 再往右上山"
+            },
+            {
+              "reason": "有地铁站，交通便利",
+              "evidence": "前两个景区都有地铁站"
+            },
+            {
+              "reason": "登顶俯瞰泉城全景，兴国禅寺香火千年",
+              "evidence": "登顶俯瞰泉城全景"
+            }
+          ],
+          "recommend_score": 36.12
+        }
+      ],
+      "provenance": [
+        {
+          "id": 7781,
+          "canonical_place_id": 5357,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 千佛山",
+          "evidence_summary": "可从美院门进，先看大佛再上山，可乘缆车或步行。"
+        },
+        {
+          "id": 7782,
+          "canonical_place_id": 5357,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 千佛山",
+          "evidence_summary": "早起爬山，不算累但热"
+        },
+        {
+          "id": 7783,
+          "canonical_place_id": 5357,
+          "source_type": "xhs",
+          "source_note_id": null,
+          "source_url": null,
+          "source_name": "提及 千佛山",
+          "evidence_summary": "可选景点，打车约10分钟"
+        }
+      ],
+      "relations": [
+        {
+          "id": 4976,
+          "from_name": "千佛山",
+          "to_name": "燕喜堂",
+          "rel_type": "combo",
+          "strength": "direct",
+          "note_count": 2,
+          "evidence": "D2：山东省博物馆→燕喜堂(CBD店)→千佛山→济南老商埠→经三路",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        },
+        {
+          "id": 4994,
+          "from_name": "千佛山",
+          "to_name": "老商埠",
+          "rel_type": "combo",
+          "strength": "weak",
+          "note_count": 1,
+          "evidence": "燕喜堂(CBD店)→千佛山→济南老商埠→经三路→返程 - ",
+          "source_url": "https://www.xiaohongshu.com/explore/6a2bbb73000000001502645e?xsec_token=ABH_h7IFhrmeVQucDE6MbHVywPDz7VOJ_5dwMFYJu3cQY=&xsec_source=pc_search"
+        }
+      ],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 5357,
+          "city": "济南",
+          "name_keys": [
+            "千佛山"
+          ],
+          "entity_ids": [
+            "290bf0287b4fc3936cb552acd37abca4"
+          ],
+          "source_hash": "a5f3e67b87b0726ef44e1ffd79cf03a401550b8a645e293a6330b7894b22614e",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope",
+          "evidence": [
+            {
+              "file": "priority-cities/济南/main-sights-source-review-01.json",
+              "kind": "reviewed_full_text_scope",
+              "sha256": "c6b7cc8114a3f3a4f82035fadcf5bf64f342f1c5b082d97ce344b7fb1cabb8bd",
+              "conclusion": "逐篇分开泉池/景区本体、组合线路、活动和周边主语；有效描述和原身份保持，未确认提及待审。",
+              "mentionIds": [
+                11392,
+                11476,
+                11570,
+                11605,
+                11684,
+                11706,
+                12631,
+                12642,
+                12736,
+                12768,
+                12824,
+                12851,
+                12862
+              ],
+              "sourcePlaceId": 5357
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "290bf0287b4fc3936cb552acd37abca4"
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 11392,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "b8847dacca276207c86180f295e9a609c064dcd136e695ca75093e3abe28c29c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 11476,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "880a0104d7b4e1068cbd7913c22453193c1363f67f4863fc5308d3176f06ffe6",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 11570,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "1e21dd87a8fe89c07048737c56722e6f7134939f3bb5b6b8ed813a6428f2d9a3",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 11605,
+          "scope_place_id": 5357,
+          "entity_id": null,
+          "input_hash": "216022cd7e01d527730bbb4db984d48ed5ed55ea4e535c575b8f12603ac5006c",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 11684,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "41616a7a2a028887fb06c172f78b63a01d90213a87ff2ce560df0a774813e23a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 11706,
+          "scope_place_id": 5357,
+          "entity_id": null,
+          "input_hash": "8848c0c30b08f6dae0624a405ea52f482bb358822789aeaa8644079c70970a47",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 12631,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "708ac34333e30bfbff5ec7eabf96bb24ef86922ead4dbb761dd6441b8983ae70",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 12642,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "e72c2329e42cab1d14fd21922f1ef954657589bd6e2d4e410e70415deba8fb07",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 12736,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "82030de97eadf3d98c9e130351ff7843be080f1f0fa9bd5adf12eff7da92f3f2",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 12768,
+          "scope_place_id": 5357,
+          "entity_id": null,
+          "input_hash": "a6e49d805f8d63e3ebc382a835be7af82e78f773657d705759db7e76c0d0670f",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 12824,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "498d1342dcbbd4b79c1c2acbf6bd46618009cb5483e0871e7f56bf4ac2e1e197",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        },
+        {
+          "mention_id": 12851,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "c68fd9a1fd65595cbf34d4c6199aa9c3c26342e6e634b22baf6d3d71e9f4d87a",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope",
+          "fact_exclusions": {
+            "visit_duration": {
+              "quote": "📍千佛山（景区票30R+洞窟票25R）\n🔜是济南三大名胜之一，山不高，20-40分钟就能登顶",
+              "reason": "subject_mismatch"
+            }
+          }
+        },
+        {
+          "mention_id": 12862,
+          "scope_place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "input_hash": "c3d05fe209c37cd7f518bcea8846aec951a9b00f03990e9e01cd72055991ba28",
+          "revision": 1,
+          "change_key": "all-cities-20261009-batch-43-source-5357-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "a5f3e67b87b0726ef44e1ffd79cf03a401550b8a645e293a6330b7894b22614e",
+        "mentions": [
+          {
+            "mentionId": 11392,
+            "inputHash": "b8847dacca276207c86180f295e9a609c064dcd136e695ca75093e3abe28c29c"
+          },
+          {
+            "mentionId": 11476,
+            "inputHash": "880a0104d7b4e1068cbd7913c22453193c1363f67f4863fc5308d3176f06ffe6"
+          },
+          {
+            "mentionId": 11570,
+            "inputHash": "1e21dd87a8fe89c07048737c56722e6f7134939f3bb5b6b8ed813a6428f2d9a3"
+          },
+          {
+            "mentionId": 11605,
+            "inputHash": "216022cd7e01d527730bbb4db984d48ed5ed55ea4e535c575b8f12603ac5006c"
+          },
+          {
+            "mentionId": 11684,
+            "inputHash": "41616a7a2a028887fb06c172f78b63a01d90213a87ff2ce560df0a774813e23a"
+          },
+          {
+            "mentionId": 11706,
+            "inputHash": "8848c0c30b08f6dae0624a405ea52f482bb358822789aeaa8644079c70970a47"
+          },
+          {
+            "mentionId": 12631,
+            "inputHash": "708ac34333e30bfbff5ec7eabf96bb24ef86922ead4dbb761dd6441b8983ae70"
+          },
+          {
+            "mentionId": 12642,
+            "inputHash": "e72c2329e42cab1d14fd21922f1ef954657589bd6e2d4e410e70415deba8fb07"
+          },
+          {
+            "mentionId": 12736,
+            "inputHash": "82030de97eadf3d98c9e130351ff7843be080f1f0fa9bd5adf12eff7da92f3f2"
+          },
+          {
+            "mentionId": 12768,
+            "inputHash": "a6e49d805f8d63e3ebc382a835be7af82e78f773657d705759db7e76c0d0670f"
+          },
+          {
+            "mentionId": 12824,
+            "inputHash": "498d1342dcbbd4b79c1c2acbf6bd46618009cb5483e0871e7f56bf4ac2e1e197"
+          },
+          {
+            "mentionId": 12851,
+            "inputHash": "c68fd9a1fd65595cbf34d4c6199aa9c3c26342e6e634b22baf6d3d71e9f4d87a"
+          },
+          {
+            "mentionId": 12862,
+            "inputHash": "c3d05fe209c37cd7f518bcea8846aec951a9b00f03990e9e01cd72055991ba28"
+          }
+        ]
+      },
+      "scopeReviews": [
+        {
+          "id": 4236,
+          "fingerprint": "2ec9cf9fe1cf7cb63acd932b81b0bf257b972ef0ddced2ad9df2ec429e07153b",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "216022cd7e01d527730bbb4db984d48ed5ed55ea4e535c575b8f12603ac5006c",
+            "mentionId": 11605,
+            "scopePlaceIds": [
+              5357
+            ]
+          }
+        },
+        {
+          "id": 4248,
+          "fingerprint": "26ac00560cb3407fb66a244d067083d1d9991befcdcf44f7c31c67eb0b07bcf4",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "8848c0c30b08f6dae0624a405ea52f482bb358822789aeaa8644079c70970a47",
+            "mentionId": 11706,
+            "scopePlaceIds": [
+              5357
+            ]
+          }
+        },
+        {
+          "id": 4273,
+          "fingerprint": "2a4db04561dfc95eea58f0dd490426524117981199a8f68390206199396d942c",
+          "status": "PENDING",
+          "detail": {
+            "reason": "mention_scope",
+            "inputHash": "a6e49d805f8d63e3ebc382a835be7af82e78f773657d705759db7e76c0d0670f",
+            "mentionId": 12768,
+            "scopePlaceIds": [
+              5357
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "136719df189e0dd70cd34be75f6faef4",
+          "city": "济南",
+          "canonical_name": "黑虎泉",
+          "primary_place_id": 5351,
+          "aliases": [
+            "黑虎泉"
+          ],
+          "legacy_ids": [
+            "136719df189e0dd70cd34be75f6faef4"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/main-sights-source-review-01.json",
+              "conclusion": "泉池自然景观或整体山岳景区为主要主体；不沿用旧住宿/美食主题，不把内含文化点当同义名。",
+              "sha256": "c6b7cc8114a3f3a4f82035fadcf5bf64f342f1c5b082d97ce344b7fb1cabb8bd"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5351,
+          "entity_id": "136719df189e0dd70cd34be75f6faef4"
+        }
+      ]
+    },
+    {
+      "entities": [
+        {
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4",
+          "city": "济南",
+          "canonical_name": "千佛山",
+          "primary_place_id": 5357,
+          "aliases": [
+            "千佛山"
+          ],
+          "legacy_ids": [
+            "290bf0287b4fc3936cb552acd37abca4"
+          ],
+          "revision": 3,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "category": "自然"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_primary_subject",
+              "file": "priority-cities/济南/main-sights-source-review-01.json",
+              "conclusion": "泉池自然景观或整体山岳景区为主要主体；不沿用旧住宿/美食主题，不把内含文化点当同义名。",
+              "sha256": "c6b7cc8114a3f3a4f82035fadcf5bf64f342f1c5b082d97ce344b7fb1cabb8bd"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 5357,
+          "entity_id": "290bf0287b4fc3936cb552acd37abca4"
+        }
+      ]
+    }
+  ]
+}

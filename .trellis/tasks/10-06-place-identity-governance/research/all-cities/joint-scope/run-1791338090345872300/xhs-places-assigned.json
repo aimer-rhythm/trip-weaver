@@ -1,0 +1,289 @@
+{
+ "_comment": "联合来源链路测试社区验证地点库（xhs-travel-pipeline 离线提取，2026-10-07）。导入 tripweaver 的 canonical_places + research_evidence；id 来自持久实体注册表；改名保留旧 id 与成员重定向。",
+ "city": "联合来源链路测试",
+ "generatedAt": "2026-10-07",
+ "count": 4,
+ "activeCount": 2,
+ "places": [
+  {
+   "id": "ad57f2dd3767d4a02d6bde8f807f1e33",
+   "name": "CUIDA（一店）",
+   "category": "美食",
+   "lng": 117.002,
+   "lat": 36.602,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "cafe",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "一店适合喝茶休息"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "一店适合喝茶休息。",
+     "highlights": [
+      {
+       "text": "一店适合喝茶休息",
+       "quote": "一店适合喝茶休息",
+       "sourceUrl": "https://example.test/two-shops",
+       "strength": "weak",
+       "observedAt": "2026-10-07T01:54:50.712920+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-07T01:54:50.712920+00:00"
+    },
+    "originalName": "CUIDA（一店）",
+    "openHours": {
+     "version": 2,
+     "subject": "CUIDA（一店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 1,
+      "noteId": 1,
+      "inputHash": "76f3a735f2e8394409653d0c70e2115ea7ee8ac9c6f534adfbea8a1bb864a29a"
+     }
+    ],
+    "typicalVisitMinutes": 30,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "ad57f2dd3767d4a02d6bde8f807f1e33",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "ad57f2dd3767d4a02d6bde8f807f1e33",
+     "canonicalName": "CUIDA（一店）",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "CUIDA（一店）"
+     ],
+     "memberIds": [
+      "ad57f2dd3767d4a02d6bde8f807f1e33"
+     ]
+    },
+    "aliases": [
+     "CUIDA（一店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "一店适合喝茶休息",
+     "sourceUrl": "https://example.test/two-shops"
+    }
+   ]
+  },
+  {
+   "id": "ee59fb6f9bc4425f3df5ea1323d3c1ee",
+   "name": "CUIDA（二店）",
+   "category": "美食",
+   "lng": 117.003,
+   "lat": 36.603,
+   "source": "xhs",
+   "verified": true,
+   "payload": {
+    "xhsPlaceType": "cafe",
+    "themes": [],
+    "address": "",
+    "adcode": "",
+    "mentionCount": 1,
+    "recommendScore": 7.5,
+    "topReasons": [
+     "二店适合喝茶休息"
+    ],
+    "content": {
+     "version": 1,
+     "intro": "二店适合喝茶休息。",
+     "highlights": [
+      {
+       "text": "二店适合喝茶休息",
+       "quote": "二店适合喝茶休息",
+       "sourceUrl": "https://example.test/two-shops",
+       "strength": "weak",
+       "observedAt": "2026-10-07T01:54:50.712920+00:00"
+      }
+     ],
+     "compiledAt": "2026-10-07T01:54:50.712920+00:00"
+    },
+    "originalName": "CUIDA（二店）",
+    "openHours": {
+     "version": 2,
+     "subject": "CUIDA（二店）",
+     "scope": "place",
+     "status": "unknown",
+     "text": "",
+     "openTime": null,
+     "closeTime": null,
+     "closedWeekdays": [],
+     "note": "",
+     "evidence": [],
+     "attributions": [],
+     "review": []
+    },
+    "reservation": "unknown",
+    "reservationNote": "预约要求尚未核实，请以官方最新信息为准。",
+    "reservationEvidence": [],
+    "reservationConflict": false,
+    "mentionSources": [
+     {
+      "mentionId": 2,
+      "noteId": 1,
+      "inputHash": "1b0385053628117c7c406a36be65bea325fee7dacc0691ec03dbbaafb75dc0f4"
+     }
+    ],
+    "typicalVisitMinutes": 60,
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "ee59fb6f9bc4425f3df5ea1323d3c1ee",
+     "revision": 2,
+     "approved": []
+    },
+    "identity": {
+     "version": 2,
+     "entityId": "ee59fb6f9bc4425f3df5ea1323d3c1ee",
+     "canonicalName": "CUIDA（二店）",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "CUIDA（二店）"
+     ],
+     "memberIds": [
+      "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+     ]
+    },
+    "aliases": [
+     "CUIDA（二店）"
+    ],
+    "components": []
+   },
+   "evidence": [
+    {
+     "kind": "xhs_reason",
+     "content": "二店适合喝茶休息",
+     "sourceUrl": "https://example.test/two-shops"
+    }
+   ]
+  },
+  {
+   "id": "0bbfa5deeed19c9020a99484f49c0c27",
+   "name": "cuida",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "0bbfa5deeed19c9020a99484f49c0c27",
+     "canonicalName": "cuida",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "cuida"
+     ],
+     "memberIds": [
+      "0bbfa5deeed19c9020a99484f49c0c27"
+     ]
+    },
+    "aliases": [
+     "cuida"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "split_source",
+     "candidateIds": [
+      "ad57f2dd3767d4a02d6bde8f807f1e33",
+      "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+     ]
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "0bbfa5deeed19c9020a99484f49c0c27",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  },
+  {
+   "id": "a00532a8bcad503726e0b5bc4b38ce18",
+   "name": "CUIDA",
+   "source": "xhs",
+   "verified": false,
+   "category": "其他",
+   "lat": null,
+   "lng": null,
+   "payload": {
+    "identity": {
+     "version": 2,
+     "entityId": "a00532a8bcad503726e0b5bc4b38ce18",
+     "canonicalName": "CUIDA",
+     "revision": 2,
+     "kind": "same_entity",
+     "memberNames": [
+      "CUIDA"
+     ],
+     "memberIds": [
+      "a00532a8bcad503726e0b5bc4b38ce18"
+     ]
+    },
+    "aliases": [
+     "CUIDA"
+    ],
+    "identityWithdrawal": {
+     "version": 1,
+     "revision": 2,
+     "reason": "split_source",
+     "candidateIds": [
+      "ad57f2dd3767d4a02d6bde8f807f1e33",
+      "ee59fb6f9bc4425f3df5ea1323d3c1ee"
+     ]
+    },
+    "imageIdentity": {
+     "version": 1,
+     "mode": "reviewed",
+     "entityId": "a00532a8bcad503726e0b5bc4b38ce18",
+     "revision": 2,
+     "approved": []
+    },
+    "mentionSources": [],
+    "themes": [],
+    "mentionCount": 0,
+    "recommendScore": 0
+   },
+   "evidence": []
+  }
+ ]
+}

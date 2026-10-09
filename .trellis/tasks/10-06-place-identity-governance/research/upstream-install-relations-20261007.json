@@ -1,0 +1,305 @@
+{
+  "apply": true,
+  "files": [
+    {
+      "path": "app/aggregate/grade.py",
+      "before": "8e343fe1737a822f976d90a569f9b478abf97f425deb0269122383c000941d09",
+      "after": "8e343fe1737a822f976d90a569f9b478abf97f425deb0269122383c000941d09",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/image_identity.py",
+      "before": "4f3508c8c05d99a324e88b804fa8bc20287a51237c5b756df9d2e1a1a9f806aa",
+      "after": "4f3508c8c05d99a324e88b804fa8bc20287a51237c5b756df9d2e1a1a9f806aa",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/mention_identity.py",
+      "before": "370e8855b0f20a0679edda62b85484a2f277818b16f863144455d0d5222369a9",
+      "after": "370e8855b0f20a0679edda62b85484a2f277818b16f863144455d0d5222369a9",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/place_identity.py",
+      "before": "52878e490e59f93776a195ab7da2a237973f1848aebdb0c7da8f5c404895aee4",
+      "after": "52878e490e59f93776a195ab7da2a237973f1848aebdb0c7da8f5c404895aee4",
+      "changed": false
+    },
+    {
+      "path": "app/aggregate/relation_snapshot.py",
+      "before": null,
+      "after": "bc874f5c2eb6bc1630de2f10f7b9d9a3c9144d50bc58aea74f3f43a3354ef2a8",
+      "changed": true
+    },
+    {
+      "path": "app/aggregate/summary.py",
+      "before": "4b8ee5fb890467ae2c3ddfdc78dc7004b8c9d5f4322148e5d589c8cce5dd5922",
+      "after": "4b8ee5fb890467ae2c3ddfdc78dc7004b8c9d5f4322148e5d589c8cce5dd5922",
+      "changed": false
+    },
+    {
+      "path": "app/clean/alias.py",
+      "before": "22569cd2a91051b9c41f5699cd108bdc7cd4eafc8e2cc8b30d83255262002964",
+      "after": "22569cd2a91051b9c41f5699cd108bdc7cd4eafc8e2cc8b30d83255262002964",
+      "changed": false
+    },
+    {
+      "path": "app/clean/entity_creation.py",
+      "before": "ed1f8dfb3261329685a2e539af1bcc20962d0e031ad31f0eee1d5953231fa866",
+      "after": "ed1f8dfb3261329685a2e539af1bcc20962d0e031ad31f0eee1d5953231fa866",
+      "changed": false
+    },
+    {
+      "path": "app/clean/identity.py",
+      "before": "b3612bc1c8d137cf3c20c62d47d3f8fb5f18b576c097a680dca148e71a250a0c",
+      "after": "b3612bc1c8d137cf3c20c62d47d3f8fb5f18b576c097a680dca148e71a250a0c",
+      "changed": false
+    },
+    {
+      "path": "app/clean/image_identity.py",
+      "before": "d859c1935704f79c681ff43ec6bbdb1d4dcd874d3ecc026bf1bd9432697a5429",
+      "after": "d859c1935704f79c681ff43ec6bbdb1d4dcd874d3ecc026bf1bd9432697a5429",
+      "changed": false
+    },
+    {
+      "path": "app/clean/mention_identity.py",
+      "before": "2eb0f3b81c9f299e7bf458ab6ceab2285e9c2192e288e91fa094763216400bcf",
+      "after": "2eb0f3b81c9f299e7bf458ab6ceab2285e9c2192e288e91fa094763216400bcf",
+      "changed": false
+    },
+    {
+      "path": "app/clean/mention_relations.py",
+      "before": null,
+      "after": "fcbe9fd4db63523123c6874b82ba86ca91772f921e52f5672f66187caf5a0023",
+      "changed": true
+    },
+    {
+      "path": "app/clean/place_export.py",
+      "before": "eb82b6e43745d4dae63e96227621bd352f40d89f549f58d641b432b24bda89d4",
+      "after": "eb82b6e43745d4dae63e96227621bd352f40d89f549f58d641b432b24bda89d4",
+      "changed": false
+    },
+    {
+      "path": "app/clean/relation_snapshot.py",
+      "before": null,
+      "after": "a0a0a017f029d8b4f04d546d053ea31cf11c25200424ee7b5d55b59499eeb164",
+      "changed": true
+    },
+    {
+      "path": "app/clean/relation_text.py",
+      "before": null,
+      "after": "2f761acb63e7239823b877de8d097c91e35bee50c676521fd21d6c596489d45d",
+      "changed": true
+    },
+    {
+      "path": "app/clean/scoped_place_export.py",
+      "before": "999926696c9c0d40a8c32db4abed9969d0ee299fad29eb118bc14e0a61e5b7cf",
+      "after": "999926696c9c0d40a8c32db4abed9969d0ee299fad29eb118bc14e0a61e5b7cf",
+      "changed": false
+    },
+    {
+      "path": "app/extract/llm_extract.py",
+      "before": "dd9ec70af5a75cc48ad52dc8186297d1552b1fd8d1b7932921b5f0f56e703729",
+      "after": "dd9ec70af5a75cc48ad52dc8186297d1552b1fd8d1b7932921b5f0f56e703729",
+      "changed": false
+    },
+    {
+      "path": "app/extract/place_profiles.py",
+      "before": "5e6ff842910273d06f6d29f9b12dcfcafb0e852136b31d9457dd79ae518593bb",
+      "after": "5e6ff842910273d06f6d29f9b12dcfcafb0e852136b31d9457dd79ae518593bb",
+      "changed": false
+    },
+    {
+      "path": "app/models.py",
+      "before": "f5029d98ee4056c048526c9c5cb47b25c40aa0b8732f2645f8172e42273c69e4",
+      "after": "e281aa7393135f36c405afba0e5877c62d2acf92eadea4df9095bfa5b46d6161",
+      "changed": true
+    },
+    {
+      "path": "app/photography/export.py",
+      "before": "09ada1e06873c39d9968c5edbe9b8743679ca4ebdf0f5533677f581b2c85e6d6",
+      "after": "09ada1e06873c39d9968c5edbe9b8743679ca4ebdf0f5533677f581b2c85e6d6",
+      "changed": false
+    },
+    {
+      "path": "app/qa/ask.py",
+      "before": "c0c99d54d4e0de8427d541ff12f72e77e07dddf2807d5fcd180ea2b1b1cd9d37",
+      "after": "c0c99d54d4e0de8427d541ff12f72e77e07dddf2807d5fcd180ea2b1b1cd9d37",
+      "changed": false
+    },
+    {
+      "path": "app/resolve/amap.py",
+      "before": "80b591b826d2ff11b094e3e90eef7b39fbf55eed64c844c111ee92242dd0a5a4",
+      "after": "80b591b826d2ff11b094e3e90eef7b39fbf55eed64c844c111ee92242dd0a5a4",
+      "changed": false
+    },
+    {
+      "path": "app/web/api.py",
+      "before": "2dcf8582ad62495f6c9138cd0e513b8d505cc9bc4b42c3e7660d728170749a03",
+      "after": "ed476d6f73ba78647fba5bbf5bb55a4d67f7fde09b1586443b8cbd024a2997b1",
+      "changed": true
+    },
+    {
+      "path": "app/web/jobs.py",
+      "before": "469804f88ab7a8bd33e951a964a5cc373f2ee547f9de6a6b94e86cb5819d95fc",
+      "after": "3027d07e7e89d2a1a8fc9241641dac88f3a8b44a9ab97885eac0740c5aa08ca7",
+      "changed": true
+    },
+    {
+      "path": "scripts/apply_aliases.py",
+      "before": "348dd0e856fe7b516ddaeafedcc971364381712f0063a6ec2d9a9771120e9857",
+      "after": "348dd0e856fe7b516ddaeafedcc971364381712f0063a6ec2d9a9771120e9857",
+      "changed": false
+    },
+    {
+      "path": "scripts/build_tag_topics.py",
+      "before": "7ef449b7e3541d9e1c588473fa72a96a865667548357dd980bca8fc710602e1f",
+      "after": "7ef449b7e3541d9e1c588473fa72a96a865667548357dd980bca8fc710602e1f",
+      "changed": false
+    },
+    {
+      "path": "scripts/build_theme_tags.py",
+      "before": "8f323e35b3947c71a033bf8f66f805204c4b54f9cde731dc6b99d6d28e3832fb",
+      "after": "8f323e35b3947c71a033bf8f66f805204c4b54f9cde731dc6b99d6d28e3832fb",
+      "changed": false
+    },
+    {
+      "path": "scripts/build_visit_duration.py",
+      "before": "10c11392015c00cd68a4d7b189a247b02d51ab6a29a2204c1e873ede6a38c075",
+      "after": "10c11392015c00cd68a4d7b189a247b02d51ab6a29a2204c1e873ede6a38c075",
+      "changed": false
+    },
+    {
+      "path": "scripts/export_and_embed.ps1",
+      "before": "5ff8c181101dd568023fe40c756d12dddddc27099c1557ca8ced3949aacbb41c",
+      "after": "7db92cd66b7ad025b0dbf8c16afc63f66ae2d8eccf71510d20a9e6b1ae2d31bb",
+      "changed": true
+    },
+    {
+      "path": "scripts/export_place_images.py",
+      "before": "dc4da94f398ed8139aaa04f7e026294dac0873768d83c43e7ddef882851d3b96",
+      "after": "dc4da94f398ed8139aaa04f7e026294dac0873768d83c43e7ddef882851d3b96",
+      "changed": false
+    },
+    {
+      "path": "scripts/export_to_tripweaver.py",
+      "before": "fb54f518de7ecef1ee470ae1d5cf371224d45091d3dcfb23d6055d60a851abb3",
+      "after": "b599e503431f2c22ad674eea90d8bf704841f2fbb85db1b58162013f88cf10e8",
+      "changed": true
+    },
+    {
+      "path": "scripts/govern_place_identity.py",
+      "before": "c7ad592afdb4968fd4deffbe8a48f68ffffbed801db7213af85006cbff7cae2d",
+      "after": "c7ad592afdb4968fd4deffbe8a48f68ffffbed801db7213af85006cbff7cae2d",
+      "changed": false
+    },
+    {
+      "path": "scripts/migrate_place_identity.py",
+      "before": "d668491172e03483d7b110a50709f679acc37b44796e830b93c3aac12afd3936",
+      "after": "d668491172e03483d7b110a50709f679acc37b44796e830b93c3aac12afd3936",
+      "changed": false
+    },
+    {
+      "path": "scripts/mine_place_relations.py",
+      "before": "4f781f9f247f959ebb56cde4bb8ae32541a55187968af3ac6f36a6e50f02429f",
+      "after": "e81172e66540455ba5d317c7eb8578f97a167f415f2522bcef9530e47c8a490f",
+      "changed": true
+    },
+    {
+      "path": "scripts/refine_place_content.py",
+      "before": "80bd7642e9210445b43ec345f1d17383f085c4231ae170b59c882a6dfe5a4ce1",
+      "after": "80bd7642e9210445b43ec345f1d17383f085c4231ae170b59c882a6dfe5a4ce1",
+      "changed": false
+    },
+    {
+      "path": "scripts/repair_place_aliases.py",
+      "before": "c084d455319fcda5a392e8fd2ca568ebcfe8419ef4d09c75130e32d58efa74ad",
+      "after": "c084d455319fcda5a392e8fd2ca568ebcfe8419ef4d09c75130e32d58efa74ad",
+      "changed": false
+    },
+    {
+      "path": "tests/test_alias.py",
+      "before": "9ac5df9cf27f09d61caf1ebed6eb943ed55c864c0ad2afc10ef216ff2d01dd75",
+      "after": "9ac5df9cf27f09d61caf1ebed6eb943ed55c864c0ad2afc10ef216ff2d01dd75",
+      "changed": false
+    },
+    {
+      "path": "tests/test_entity_creation_db.py",
+      "before": "df97de4ff8ab35f4ae29459266c721e579032cdf9bd263b1c36199d43c914eb2",
+      "after": "df97de4ff8ab35f4ae29459266c721e579032cdf9bd263b1c36199d43c914eb2",
+      "changed": false
+    },
+    {
+      "path": "tests/test_geo.py",
+      "before": "6361fe2b3c5b7ee0046422ab9fd4c6658cc48a101be5d3ac74d97a7ff2cf49ee",
+      "after": "6361fe2b3c5b7ee0046422ab9fd4c6658cc48a101be5d3ac74d97a7ff2cf49ee",
+      "changed": false
+    },
+    {
+      "path": "tests/test_identity_geo.py",
+      "before": "523331f8c89a8dffb42c028e68b4e068dc3401b30c02ec1dc6c68dc993e8f6c6",
+      "after": "523331f8c89a8dffb42c028e68b4e068dc3401b30c02ec1dc6c68dc993e8f6c6",
+      "changed": false
+    },
+    {
+      "path": "tests/test_image_export.py",
+      "before": "d99c3158cd9321a251a46b4b412ef2728b1fab0628a9df6c675fd5e0526c0500",
+      "after": "d99c3158cd9321a251a46b4b412ef2728b1fab0628a9df6c675fd5e0526c0500",
+      "changed": false
+    },
+    {
+      "path": "tests/test_image_identity_db.py",
+      "before": "194e0d181dc1f9b03ddcd7871f1c9b409210f49c3026f23ac82a3017ae8cb68b",
+      "after": "194e0d181dc1f9b03ddcd7871f1c9b409210f49c3026f23ac82a3017ae8cb68b",
+      "changed": false
+    },
+    {
+      "path": "tests/test_joint_mention_identity_db.py",
+      "before": "e2e89dedddac4d60d2d70e02da718ad93637c872ef1a5d2683606c4cf2685198",
+      "after": "e2e89dedddac4d60d2d70e02da718ad93637c872ef1a5d2683606c4cf2685198",
+      "changed": false
+    },
+    {
+      "path": "tests/test_mention_identity_db.py",
+      "before": "50d06f5257d091a196a5324c5281765d7a3456bd3e2b7b7d0f8bd412990203f4",
+      "after": "50d06f5257d091a196a5324c5281765d7a3456bd3e2b7b7d0f8bd412990203f4",
+      "changed": false
+    },
+    {
+      "path": "tests/test_mention_relations.py",
+      "before": null,
+      "after": "b18feb140046864f8ce4d3d6fe4594d0e03c0ffed7f86fce616a87f14be80bff",
+      "changed": true
+    },
+    {
+      "path": "tests/test_place_content.py",
+      "before": "b619c347edb4c02436a40501ee0f26781aae28c01d7745211c015e0ea7d5a9a6",
+      "after": "b619c347edb4c02436a40501ee0f26781aae28c01d7745211c015e0ea7d5a9a6",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_identity.py",
+      "before": "363350c1062def433e15936773df132256b7fa7cfdf1ff7e912c2c6c9d913746",
+      "after": "363350c1062def433e15936773df132256b7fa7cfdf1ff7e912c2c6c9d913746",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_identity_db.py",
+      "before": "7247042d0f6d13c4047824bf78d6bda4ad0eacc177b5720ada888a5236d943e1",
+      "after": "7247042d0f6d13c4047824bf78d6bda4ad0eacc177b5720ada888a5236d943e1",
+      "changed": false
+    },
+    {
+      "path": "tests/test_place_profiles.py",
+      "before": "c5dabe8c2d1ba328a3f1ce02286f28615484f10af0ef4afb878a817cc2b86cc3",
+      "after": "c5dabe8c2d1ba328a3f1ce02286f28615484f10af0ef4afb878a817cc2b86cc3",
+      "changed": false
+    },
+    {
+      "path": "tests/test_relation_snapshot_db.py",
+      "before": null,
+      "after": "99f9024df8c9303030707d6edcdc39ba4d0217288f3eb917ec8d74fb994f65cc",
+      "changed": true
+    }
+  ]
+}

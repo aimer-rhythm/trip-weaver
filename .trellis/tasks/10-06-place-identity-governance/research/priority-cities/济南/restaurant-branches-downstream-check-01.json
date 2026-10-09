@@ -1,0 +1,83 @@
+{
+  "batch": 57,
+  "readOnly": true,
+  "at": "2026-10-08T21:40:14.206Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus"
+  ],
+  "results": [
+    {
+      "entityId": "84929fb3085880c48c0cebb71aae3ad4",
+      "name": "燕喜堂（CBD店）",
+      "oldName": "燕喜堂",
+      "category": "美食",
+      "type": "food",
+      "confirmed": 2,
+      "pending": 1,
+      "unsupportedBranchPointClearedPreciseLocationPending": true
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉（联四路）",
+      "oldName": "刘小忙把子肉",
+      "category": "美食",
+      "type": "food",
+      "confirmed": 1,
+      "pending": 1,
+      "unsupportedBranchPointClearedPreciseLocationPending": true
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面（经十一路）",
+      "oldName": "亮亮拉面",
+      "category": "美食",
+      "type": "food",
+      "confirmed": 1,
+      "pending": 2,
+      "unsupportedBranchPointClearedPreciseLocationPending": true
+    }
+  ],
+  "assignmentRows": 293,
+  "pendingMentions": 116,
+  "scopesAdded": 3,
+  "confirmed": 4,
+  "pendingAdded": 4,
+  "coordinatesCleared": 3,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 0,
+  "addressesCorrected": 3,
+  "sqlProbes": 6,
+  "boundaryProbes": 27,
+  "realVectorProbes": 3,
+  "graph": 19,
+  "directEdges": 3,
+  "priorRelationEvidenceAndStrengthPreserved": true,
+  "weakRelationAdded": 1,
+  "priorReviewRowsPreserved": true,
+  "rawDerivedCachesPreserved": true,
+  "confirmedFactsPreserved": true,
+  "fallbackObservedAtChanges": [],
+  "fallbackObservedAtMeaning": "保留看点的来源日期保持；本批隔离四条未确认分店提及的内容，compiledAt随导出更新。",
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

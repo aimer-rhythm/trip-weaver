@@ -1,0 +1,36 @@
+"""从已验证的第67批探针创建第68批专用断言；不执行业务变更。"""
+from pathlib import Path
+root=Path(__file__).resolve().parent
+def replace(s,a,b):
+    assert a in s, a
+    return s.replace(a,b)
+def write(name,s):
+    with (root/name).open('x',encoding='utf-8') as f:f.write(s)
+s=(root/'preview-chengdu-common-point.py').read_text(encoding='utf-8').replace('第67批','第68批').replace('batch-67','batch-68').replace("'batch':67","'batch':68").replace('position-preview-','category-preview-')
+s=replace(s,'f85b48254c11284f79314e1f88ffcfab5cbf321528d2a6535e0e7e8830c995bc','c78061c733a251c204053588d4c56a86639f3e01d79cf77b0f58a311d7755125')
+s=s.replace("len(before['places']) == 6","len(before['places']) == 2").replace("len(after['places']) == 6","len(after['places']) == 2")
+s=replace(s,"            expected.update(lat=None, lng=None)\n            expected['payload'].update(address=d['overrides']['address'], geoStatus='unresolvable', adcode='')","            expected['category'] = '自然'")
+s=replace(s,"'coordinatesCleared':True, 'adcodeCleared':True,\n                'allNonLocationConsumptionPreserved':True", "'categoryCorrected':True, 'allNonCategoryConsumptionPreserved':True")
+s=replace(s,"'sources':6, 'mentions':12, 'fullNotes':5, 'entityChanges':4", "'sources':2, 'mentions':25, 'fullNotes':22, 'entityChanges':1")
+s=s.replace('readOnlyParentAndBuildingPreserved','readOnlyTeahousePreserved')
+s=replace(s,'actual.publish_time.isoformat())', '(actual.publish_time.isoformat() if actual.publish_time else None))')
+s=replace(s,'仅四处位置字段变化，六源全文/评价/导出可回滚。','仅公园类别变化，两源全文/网页简介/评价/导出可回滚。')
+write('preview-chengdu-renmin-category.py',s)
+s=(root/'verify-chengdu-common-point-inputs.py').read_text(encoding='utf-8').replace('第67批','第68批').replace("'batch':67","'batch':68").replace('common-point-inputs-check','renmin-category-inputs-check')
+write('verify-chengdu-renmin-category-inputs.py',s)
+s=(root/'verify-chengdu-common-point-consumption.test.mts').read_text(encoding='utf-8').replace('batch-67','batch-68').replace('batch:67','batch:68').replace('common-point-consumption-','renmin-category-consumption-')
+s=replace(s,'四处仅移除未知位置，全部事实和旧图库返回保持','公园类别变更后全部实际facts及旧图库返回保持')
+s=replace(s,"    if(ids.includes(value.canonicalPlaceId)){delete expected.lat;delete expected.lng;delete expected.adcode;correctedKeys++;}","    if(ids.includes(value.canonicalPlaceId)){correctedKeys++;}")
+write('verify-chengdu-renmin-category-consumption.test.mts',s)
+s=(root/'verify-chengdu-common-point-data.mts').read_text(encoding='utf-8').replace('第67批','第68批').replace('batch-67','batch-68').replace('batch-66/sync-01','batch-67/sync-01').replace('batch:67','batch:68').replace('common-point-downstream-check','renmin-category-downstream-check')
+s=s.replace('除四项位置及实体版本外','除公园类别及实体版本外').replace('vectorProbes.length,4','vectorProbes.length,1')
+s=replace(s,"expected.lat=null;expected.lng=null;Object.assign(expected.payload,{address:decision.overrides.address,geoStatus:'unresolvable',adcode:''});", "expected.category='自然';")
+s=s.replace('仅位置字段和版本可变','仅类别字段和版本可变')
+s=replace(s,"    assert.equal(p.lat,null);assert.equal(p.lng,null);assert.equal(p.payload!.adcode,'');assert.equal(p.payload!.mentionSources,undefined);", "    assert.equal(p.category,'自然');assert.equal(p.payload!.mentionSources,undefined);")
+s=replace(s,"['洛带古镇','博客楼',...decisions.map((v:any)=>v.canonicalName)]", "['鹤鸣茶社','人民公园鹤鸣茶社','辛亥秋保路死事纪念碑','祠堂街',...decisions.map((v:any)=>v.canonicalName)]")
+s=replace(s,'graph.manifest.revision,7','graph.manifest.revision,8')
+s=s.replace('audit/run-66/snapshot.json','audit/run-67/snapshot.json').replace('audit/run-65/snapshot.json','audit/run-66/snapshot.json')
+s=s.replace('realVectorProbes:4','realVectorProbes:1').replace('allNonLocationConsumptionPreserved','allNonCategoryConsumptionPreserved').replace('coordinatesCleared:4','categoryChanges:1,coordinatesCleared:0')
+s=s.replace('位置改变只能刷新有关端点实体版本','类别改变只能刷新有关端点实体版本')
+write('verify-chengdu-renmin-category-data.mts',s)
+print('Created four batch68 probes')

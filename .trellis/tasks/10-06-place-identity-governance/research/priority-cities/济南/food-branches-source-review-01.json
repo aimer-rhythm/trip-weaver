@@ -1,0 +1,75 @@
+{
+  "city": "济南",
+  "batch": 53,
+  "sourcePacket": "priority-cities/济南/food-branches-source-packet-01.json",
+  "sources": 2,
+  "mentions": 6,
+  "fullNotes": 6,
+  "confirmed": 3,
+  "pending": 3,
+  "rows": [
+    {
+      "mentionId": 11708,
+      "noteId": 2603,
+      "originalName": "鑫龙火锅",
+      "quote": "避雷济南鑫龙火锅",
+      "reason": "消费争议原文没有门店，菜单既有文字列多店且收据文字没有可确认分店，不将负评归北园店，原评价保留待审。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 11709,
+      "noteId": 2604,
+      "originalName": "鑫龙火锅（北园大街店）",
+      "quote": "但一定要吃北园大街店‼️感觉最正宗",
+      "reason": "原提及全名及完整正文明确北园大街店，保留清汤锅底、调料和上菜描述；不把原文最正宗当客观排名。",
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "status": "reviewed_branch"
+    },
+    {
+      "mentionId": 12846,
+      "noteId": 2852,
+      "originalName": "鑫龙火锅",
+      "quote": "鑫龙虽然是本土铜锅，但我觉得口味太单调，我老公倒是挺喜欢",
+      "reason": "口味分歧原文未给分店，已有图文亦不补门店，保留待审；不按评价正负决定分配。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 12890,
+      "noteId": 2856,
+      "originalName": "鑫龙火锅",
+      "quote": "2️⃣鑫龙火锅",
+      "reason": "正向裸名推荐同样未给分店，保留待审，不自动归北园店。",
+      "entityId": null,
+      "status": "needs_branch_evidence"
+    },
+    {
+      "mentionId": 11635,
+      "noteId": 2602,
+      "originalName": "七九刘家烧烤",
+      "quote": "②七九刘家烧烤（纬九路）",
+      "reason": "原文明确纬九路，与另一篇具体门牌相容，保留此独立来源推荐。",
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "status": "reviewed_branch"
+    },
+    {
+      "mentionId": 12886,
+      "noteId": 2854,
+      "originalName": "七九刘家烧烤(纬九路店)",
+      "quote": "[八R].七九刘家烧烤(纬九路店)\n人均∶102\n小经六路东首近纬九路\n虾酱馒头片，各种烤串",
+      "reason": "原提及完整分店名和正文地址明确纬九路店，保留菜品；不把此次人均当固定价格。",
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "status": "reviewed_branch"
+    }
+  ],
+  "originalNotesReadInFull": true,
+  "existingImageAnalysesRead": true,
+  "imageTextCaveat": "2604既有门头分析文字不稳定，未查看原图或据OCR更改品牌；本轮只按全文与原提及确认北园分店。",
+  "sentimentPolicy": "两个负评和一个正向裸名均按缺分店证据待审；不按观点正负筛选，不删除原评价。",
+  "locationStatus": "existing_points_and_addresses_preserved_not_newly_verified",
+  "newEntities": 0,
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "appliedAtFreeze": false
+}

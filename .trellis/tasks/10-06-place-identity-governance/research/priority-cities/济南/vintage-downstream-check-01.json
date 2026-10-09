@@ -1,0 +1,808 @@
+{
+  "batch": 50,
+  "readOnly": true,
+  "at": "2026-10-08T19:43:00.682Z",
+  "consumedFieldsVerified": 228,
+  "fields": [
+    "identity",
+    "aliases",
+    "xhsPlaceType",
+    "content",
+    "topReasons",
+    "openHours",
+    "reservation",
+    "reservationNote",
+    "reservationEvidence",
+    "reservationConflict",
+    "typicalVisitMinutes",
+    "mentionSources",
+    "themes",
+    "address",
+    "geoStatus"
+  ],
+  "results": [
+    {
+      "entityId": "2ccb52ac3eeda4ca713a2b7bd975b566",
+      "name": "VILLASHAKA",
+      "category": "美食",
+      "type": "cafe",
+      "coordinates": null,
+      "address": "",
+      "sourceFactsPreserved": true
+    },
+    {
+      "entityId": "46bf3d4bc9d5aa019dd4a3184329e58a",
+      "name": "BLUEDUCK骨董屋",
+      "category": "购物",
+      "type": "shop",
+      "coordinates": null,
+      "address": "山东省济南市市中区经三路120号",
+      "sourceFactsPreserved": true
+    }
+  ],
+  "assignmentRows": 268,
+  "pendingMentions": 107,
+  "scopesAdded": 0,
+  "coordinatesCleared": 2,
+  "newPreciseLocations": 0,
+  "categoriesCorrected": 1,
+  "sqlProbes": 4,
+  "boundaryProbes": 40,
+  "realVectorProbes": 2,
+  "graph": 18,
+  "directEdges": 3,
+  "relationEvidenceAndStrengthPreserved": true,
+  "allReviewRowsPreserved": true,
+  "rawDerivedCachesPreserved": true,
+  "sourceFactsPreserved": true,
+  "fallbackObservedAtChanges": [
+    {
+      "entityId": "065e077002130047feaadff4f607b480",
+      "name": "起凤泉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "0fb7100869b099451d4f64c5b8ca8886",
+      "name": "老兵把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "106f5a29ddb905e7b7cba79d49c2f2be",
+      "name": "板凳面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "1c37774f673afed61066011e157e544d",
+      "name": "台湾奶香脆皮麻花",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "1c37774f673afed61066011e157e544d",
+      "name": "台湾奶香脆皮麻花",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "1f17a220f33decfd9ff32b68ffecf83e",
+      "name": "白猪猪&黑熊",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "1fd9d4a019e1ea7b33e38e0ed36f1cea",
+      "name": "西记拉面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "25c9903816f03d4aed350c11c1e44b24",
+      "name": "超意兴",
+      "highlightIndex": 3
+    },
+    {
+      "entityId": "25d406fb3dc0c7375b30fc605c43d81c",
+      "name": "萃华楼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "290bf0287b4fc3936cb552acd37abca4",
+      "name": "千佛山",
+      "highlightIndex": 3
+    },
+    {
+      "entityId": "2a024ac368c6ae885e1e0e541f9eb49c",
+      "name": "山体叶殷米线",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "2a6e8d7d8b1baac17f2a4f226bc0d1b8",
+      "name": "宝勤临沂炒鸡",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "2a94775dad345188f249f3d5124a06eb",
+      "name": "燕山把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "2bbb77b1923a5fbb1d763f25e368b6ef",
+      "name": "黄老太牛肉烧饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "2e0dceaccafda3b389cb3f77db1bf235",
+      "name": "李长久萃华楼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "2e8170d0a8316b0e2494853f7f51cf42",
+      "name": "世茂广场",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "2f5f0095f24c189ebf61109638172394",
+      "name": "邻家羊肉面饸饹面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "31b3882d23aedc980fcd21d5bca3a100",
+      "name": "陈氏鲁菜",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "321dced6121f5536867e729a47f94ecf",
+      "name": "悦荟广场",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "326cd34165dd905d31af6cd929a0deda",
+      "name": "杨家牛肉烧饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "3290af7793dea0fd22138e561900775f",
+      "name": "李山记铁板炒鸡",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "34fec8eb89e06bf897e7ed869a42d6a1",
+      "name": "泉城公园",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "36f9aa53756884832c688760e6febce3",
+      "name": "粒粒香把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "38c5707a6d6f7d2ea1b45903481bc3ef",
+      "name": "聚源饭庄",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "name": "春水锅贴",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "3a06f30f2d9d492d8892d793a839bdb8",
+      "name": "春水锅贴",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "3b73bac1cb3054581c6bde160d8a4a00",
+      "name": "苓记鸭血粉丝",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "3d28555e6b570412c88e32a3fe17fd64",
+      "name": "泉城路",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "3f6a2dce847940205f501690e2548e88",
+      "name": "草包包子",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "3f6c05ac0f09bc256ce73af1b0cbd55e",
+      "name": "匡山公园牛肉烧饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "40d5d6cd06e785a12fa14a6a8b0ab046",
+      "name": "济南站",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "41f4a68d54eb459ddefbd9efa87aeb0c",
+      "name": "红星菜馆",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "42aaf77742eaf014918d93c4ceabb9e4",
+      "name": "武岳庙把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "4486ee493729467741a9428ba67b1b80",
+      "name": "桥下把子肉",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "4b00a6de0385cea910495e6224b2ebd4",
+      "name": "城南往事",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "4d3cb1cde3e585f0ff8bca6cf1b87ba7",
+      "name": "福哥把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "4fb66f05d89985017ece60e2125be105",
+      "name": "清河老苏把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "51ed39b8b5f36ae30151b46c6d81d350",
+      "name": "田田甜手作糖水",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "53fc7a0204959595c1277e9c76915534",
+      "name": "秦记火烧",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "5772c79dc6c431d7acf237842ba57c9b",
+      "name": "五福林林烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "5781e650f27ad011986a13e12281e79f",
+      "name": "许记排骨",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "58d542ebe18a1dd3505b7cdc60db030c",
+      "name": "刘小忙把子肉",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "5b4617f123c9b413edd5da21d5fd695e",
+      "name": "福利来",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "5fdeaaae927e29f160128934f56541ca",
+      "name": "于家桥",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "60683207c4072ba20eb079eefd730127",
+      "name": "胖哥炸蛋",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "61b40c20f3693553ccc9ba4bd1248309",
+      "name": "老张馄饨面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "636406ca3bce1e8189be38c73b4e8ae4",
+      "name": "泉源之眼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "656dfc98c616b22ccec2cbbb25bb0ddf",
+      "name": "金猪面馆",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "656e81b9782be5a983f77e050e87e1d4",
+      "name": "洪达鲁菜",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "6580c2664a98b2aef1203dc3459157e6",
+      "name": "乐乎哉刘家菜",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "66c835ba565f34cbd12206d7169c8da1",
+      "name": "济南文字墙",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "67ccdef0f2492a706452cf6d08f4d221",
+      "name": "永和面馆",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "69b816cda273f29ed9296314fbe6f52d",
+      "name": "明水古城",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "6a111b28c08cc7853140187bfd852b16",
+      "name": "老舍故居",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "6b65cdde75581e6879686f819028e182",
+      "name": "大嘴米线",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "755dd0b8f4fdc2c26be98ec33bf0d2cb",
+      "name": "文芳面馆",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "761cfbad1b27263ff29c658a9c68d5dd",
+      "name": "七公酸辣粉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "7950bfadd891932d01be8636aba8b51a",
+      "name": "环联夜市",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "7961853f7569c7a76604dd58cbb91a7a",
+      "name": "城南往事世茂店",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "79e713e197315afb0440835502699789",
+      "name": "民族大街市场",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "7af28441e18afc64d6d4c0fe2505581a",
+      "name": "小林把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "7bbb45b1fe3355753ae38e2a81e7cbf1",
+      "name": "白石泉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "803f9b1ac6c7d41a38c6c80f6c0eb305",
+      "name": "兵哥炸蛋",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "80a33955c3f8381171f8493ae1ec0c4d",
+      "name": "华山湖公园",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "874f5919e44f4f73fa52268f4c911274",
+      "name": "太犇牛手作茶铺",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "88a3e4b4f75459daacfe23ed6ca4157d",
+      "name": "济南墙",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "908b0aec5ee27f58554a8442f8eef1de",
+      "name": "起凤桥",
+      "highlightIndex": 3
+    },
+    {
+      "entityId": "91761f25fddfb54e43f90618788fe4c5",
+      "name": "重庆一绝殷记米线",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "92a39f8f2d95070cc627828807686bac",
+      "name": "亮亮拉面",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "name": "刘氏泉",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "95d445d08b1a93c02d9d29ade23e7bd4",
+      "name": "聚宝源",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "97c845bd4afbe220afe8545ed5030c95",
+      "name": "七九刘家烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "998b0d8b007720af1fb131c032427c49",
+      "name": "蹄花面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "9d8bacc53419d82155f949fdcd179dcd",
+      "name": "柴氏鱿鱼夹饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "9f4626857b06f6b70077809fa0a0bfab",
+      "name": "小锅米线",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "a16d03423b6c350d1d3526a2a1c4280d",
+      "name": "腊山河廊道",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "a17012cb02c492ea9a0669addfc588d3",
+      "name": "五嫂砂锅烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "a2951b242ae68c08a394dd056d2ac0f5",
+      "name": "西更巷",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "a76a124615e676af06c7a75968519280",
+      "name": "西更道街",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "abf21f048f44f4642560c90f05be6e34",
+      "name": "阿东烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "af9116d87efcdf105915ca6303cb6274",
+      "name": "珍珠泉",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "b5b97ba0e6ae8ab7054c0f7b470698f1",
+      "name": "八一把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "b644ce8203589cb41766982b9ca90c1c",
+      "name": "爆辣面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "b6898fcd137cd506753c47a4a2b16693",
+      "name": "百花桥",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "b8880b34d9a4e56942c76ea7a4e5555c",
+      "name": "天天过年",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "bb53ff904464fb67e2ddf46d7ed0d2b8",
+      "name": "穆德老周家牛肉烧饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "bc11d1dfa478598fc27cc6119e8589ff",
+      "name": "孙家糖油条",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "bc2769d509f6d8d42166e81b8db8131b",
+      "name": "宽厚里",
+      "highlightIndex": 3
+    },
+    {
+      "entityId": "be07824e4f7d5d968e08476ebef11ffe",
+      "name": "赵家甜沫",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "be1030ddd77ab917b509bac4ea40b5e2",
+      "name": "老一百油炸羊肉串",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c057999eba2876818984ed6c93375936",
+      "name": "华祥糕点",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c28c2566886f2a15025e15fb1b5e8308",
+      "name": "二钢串叔麻辣烫",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c4540e2772378520d8c84356bedea1ce",
+      "name": "东仓把子肉",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c57edbc30b8a4b210e9f353d800f7866",
+      "name": "武岳庙把子肉济南总店",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c58b14eaf88c9b7a0de4f2849e1e179c",
+      "name": "小青岛米线",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c5a3fae3d839ec359cb0521d957e56df",
+      "name": "老舍笔下的济南",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c5d63a0d87ddc1476a1b2fdccd1282c8",
+      "name": "白老太油炸羊肉串",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "c8439ac30a5ab65d59dd98fdf5bd8ed2",
+      "name": "商河老豆腐",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "cc3ebff96b9f814d82ef808324a42400",
+      "name": "鑫龙火锅",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "cebf8a7efbcf2ad1757bc57897c9c524",
+      "name": "粤味轩",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "ced0ffcce4072bbe8bf0942437d125a2",
+      "name": "好一家米线",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d025994fc1b1449de922fa97abdd96f8",
+      "name": "老周家牛肉烧饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d0d367b70dcb93fc3fd355b59bc6dad2",
+      "name": "郑哥烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d1187410c371933a7e37f4a533f10a61",
+      "name": "艺林烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d14cc0c8a631defad91e60d475b7aedd",
+      "name": "趵突泉公园",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "highlightIndex": 2
+    },
+    {
+      "entityId": "d275db4ab60aaa28bfdf9fb75c7a5196",
+      "name": "王府池子",
+      "highlightIndex": 3
+    },
+    {
+      "entityId": "d2821e4f843de99191a79dde62e279f2",
+      "name": "金房子水饺",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d282f2d8178143226dc2abe8a53b82fa",
+      "name": "幸福居米粉铺",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d342ff3eb8d541f17253786d0dd148fa",
+      "name": "陈氏肥蛤",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "d3f593e4d3857459ee857a488a57fc7a",
+      "name": "新秀炸鸡",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d4952101b0c531b326b202c50aae0f9b",
+      "name": "地瓜羊汤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "d4d46ae9de6ce17073e7c20bd6caa1c7",
+      "name": "立信拉面",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "df01bb0ef4e5c48d92caf6f53136c4e8",
+      "name": "鸡腿汉堡",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "df9867124f6f44168f18af5b8edf10a3",
+      "name": "一九黄家烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "e021f92afdd2fbd263f1ffc609bf198f",
+      "name": "金位烧烤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "name": "油旋张",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "e1cfa0121a1455efea5324938742d4f4",
+      "name": "油旋张",
+      "highlightIndex": 1
+    },
+    {
+      "entityId": "e2740e4ad547f99f5ff9311f7d5359b8",
+      "name": "蜗牛叔叔的食堂",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "e394dd2fefdf968a0bbea165941a8652",
+      "name": "周记牛肉烧饼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "e883903c129463466c745043f4e59964",
+      "name": "泉城之眼",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "e92465f48edd3af82b008371a9db8167",
+      "name": "上优超市烟酒超市",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "ec447b923b04fcefb80f15c27392e452",
+      "name": "凉皮嫂子",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "f4548be1c47b7b72142066265b2c2393",
+      "name": "至尊源菜馆",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "f97da2f352fa1dd39ff4ce17f29d700d",
+      "name": "杨氏泉水茶汤",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "fc2fdfc289e8cb12c32d6784aef8f575",
+      "name": "万紫巷",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "fc932bd7c80349e1272d6214370adefe",
+      "name": "纬四路",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "fd656bc48a32282c1c5be8d91e234648",
+      "name": "肴源酒家",
+      "highlightIndex": 0
+    },
+    {
+      "entityId": "ff0354a80d9bfdb2e1a0ec6c0d670390",
+      "name": "翟家把子肉",
+      "highlightIndex": 0
+    }
+  ],
+  "fallbackObservedAtMeaning": "既有缺失采集日期的看点使用各自导出的compiledAt；仅此字段按同源编译时间变化，文字/引文/来源/顺序保持。",
+  "trips": {
+    "count": 201,
+    "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+  },
+  "imageComparison": "deferred_by_user",
+  "fullReviewPassed": false,
+  "failures": []
+}

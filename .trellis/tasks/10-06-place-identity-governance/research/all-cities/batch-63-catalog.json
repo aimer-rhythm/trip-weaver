@@ -1,0 +1,110 @@
+{
+  "entities": [
+    {
+      "entity_id": "747792d1b5834255f5feaa6c2dc62925",
+      "city": "济南",
+      "canonical_name": "芙蓉街",
+      "primary_place_id": 5353,
+      "aliases": [
+        "芙蓉街"
+      ],
+      "legacy_ids": [
+        "747792d1b5834255f5feaa6c2dc62925"
+      ],
+      "revision": 3,
+      "status": "ACTIVE",
+      "redirect_to": null,
+      "overrides": {
+        "lat": 36.6669643677903,
+        "lng": 117.02301064448173,
+        "address": "山东省济南市历下区泉城路街道芙蓉街",
+        "category": "文化",
+        "geoStatus": "resolved",
+        "xhsPlaceType": "other"
+      },
+      "evidence": [
+        {
+          "kind": "bootstrap",
+          "source": "canonical_place + explicit alias configuration"
+        },
+        {
+          "file": "priority-cities/济南/run-1791385235272324900/sources.json",
+          "kind": "reviewed_priority_original",
+          "quote": "从芙蓉街32号拐进去就是起凤桥街",
+          "noteId": 2782,
+          "sha256": "9aa559e894e1cfbcdf74db2214c8eeb6614739064a96967780c6b32af59a889b",
+          "original": [
+            {
+              "id": 5353,
+              "lat": 36.7298661925534,
+              "lng": 117.46540911355349,
+              "address": "山东省济南市章丘区枣园街道芙蓉街",
+              "sourceHash": "12c5136503ea0db45d1c8567f33e10de7852f05963b4289db9cff142eca370d1"
+            }
+          ],
+          "conclusion": "30条提及/23篇原文所述为大明湖、曲水亭街与泉城路附近小吃街。地图同时返回章丘枣园和历下泉城路同名道路；原坐标精确等于章丘条目，应改为历下道路条目。只修正位置，街区与沿街商户不合并。",
+          "mentionIds": [
+            11339,
+            11389,
+            11415,
+            11431,
+            11447,
+            11499,
+            11506,
+            11579,
+            11586,
+            11613,
+            11623,
+            11689,
+            11699,
+            12567,
+            12573,
+            12625,
+            12638,
+            12659,
+            12681,
+            12709,
+            12752,
+            12816,
+            12833,
+            12835,
+            12836,
+            12904,
+            12917,
+            12932,
+            12948,
+            12956
+          ],
+          "sourcePlaceIds": [
+            5353
+          ]
+        },
+        {
+          "file": "priority-cities/济南/geo-02.json",
+          "kind": "reviewed_exact_poi",
+          "query": "芙蓉街",
+          "sha256": "e1eb81fd845dd487e770b29661fb9119b31f424aeb4b0e61850ee7ebf4d9e8ab",
+          "address": "山东省济南市历下区泉城路街道芙蓉街",
+          "poiName": "芙蓉街",
+          "rawLonLat": "117.017095,36.666651",
+          "conclusion": "按原文具体街区/位置筛选同名候选，不采用第一条结果或地理编码猜测。",
+          "sourceCoordinateSystem": "CGCS2000",
+          "storedCoordinateSystem": "GCJ-02"
+        },
+        {
+          "file": "priority-cities/济南/remaining-streets-source-review-01.json",
+          "kind": "reviewed_street_or_river_corridor_subject",
+          "conclusion": "历史商业街是公共街道主体，美食是街内活动，不是单一餐饮店。改为文化/other，完整继承第30批历下区地址与已纠正点位，不重新定位。30条全文中12904/2853及12948/2857实际描述未具名餐馆；另note2568现有图片文字确含作者负面意见。现协议完整scope会删除整条混合tips且没有已确认提及承接该意见，故本批不加scope，原两条负面提及、混合提示、现有事实均保持；两餐馆归属与提示净化登记未应用，不冒充已完成。",
+          "publicEvidence": "priority-cities/济南/remaining-streets-web-review-01.json"
+        }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "place_id": 5353,
+      "entity_id": "747792d1b5834255f5feaa6c2dc62925"
+    }
+  ],
+  "reviews": []
+}

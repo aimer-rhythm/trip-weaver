@@ -1,0 +1,68 @@
+{
+  "verifiedAt": "2026-10-06T13:49:46.625Z",
+  "batch": "batch-08",
+  "attempt": "sync-01",
+  "vectors": true,
+  "readOnly": true,
+  "scope": "all-exported-cities",
+  "cities": [
+    {
+      "city": "成都",
+      "exported": 393,
+      "total": 411,
+      "active": 399,
+      "embedded": 399,
+      "probes": [
+        {
+          "name": "成都大熊猫繁育研究基地",
+          "id": "1b93567a71a81d2a0929c921179d5fff"
+        },
+        {
+          "name": "大熊猫基地",
+          "id": "1b93567a71a81d2a0929c921179d5fff"
+        },
+        {
+          "name": "大熊猫繁育研究基地",
+          "id": "1b93567a71a81d2a0929c921179d5fff"
+        },
+        {
+          "name": "熊猫基地",
+          "id": "1b93567a71a81d2a0929c921179d5fff"
+        },
+        {
+          "name": "青城山前山景区",
+          "id": "1cfbdf530ddee236da62885f44ee2ef8"
+        },
+        {
+          "name": "青城山前山",
+          "id": "1cfbdf530ddee236da62885f44ee2ef8"
+        }
+      ],
+      "vectorProbes": [
+        {
+          "name": "大熊猫基地",
+          "id": "1b93567a71a81d2a0929c921179d5fff",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        },
+        {
+          "name": "青城山前山",
+          "id": "1cfbdf530ddee236da62885f44ee2ef8",
+          "diagnostics": {
+            "keywordHits": 1,
+            "vector": "used",
+            "vectorHits": 48
+          }
+        }
+      ],
+      "photosChecked": 4,
+      "audits": [
+        "09207129-00b2-41bb-92b1-63caddd4d198"
+      ]
+    }
+  ],
+  "failures": []
+}

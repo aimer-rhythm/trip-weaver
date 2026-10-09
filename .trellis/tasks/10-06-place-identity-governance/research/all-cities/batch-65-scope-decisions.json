@@ -1,0 +1,36 @@
+[
+  {
+    "key": "all-cities-20261009-batch-65-source-5392-scope",
+    "city": "济南",
+    "sourcePlaceId": 5392,
+    "expectedSourceHash": "c93b95be431e07c6e595e2407d497264705893664f67306d42da76bbc2d4d477",
+    "expectedScopeRevision": 0,
+    "expectedRevisions": {
+      "fd7c5d9a0af5a1ec9515743d6f05bce5": 1
+    },
+    "assignments": [
+      {
+        "mentionId": 11458,
+        "inputHash": "25d4a79d55e694eb45a2d385e1f58be9a0068f29fcbcfc62c4a293416a7aef44",
+        "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5"
+      },
+      {
+        "mentionId": 12724,
+        "inputHash": "713fb997a884afa659d2eed67e27eb29e997d3e6fec49c26f1f840e830e93a6e",
+        "entityId": "fd7c5d9a0af5a1ec9515743d6f05bce5"
+      }
+    ],
+    "evidence": [
+      {
+        "kind": "explicit_gate_photography_full_original",
+        "file": "priority-cities/济南/bridge-text-source-review-01.json",
+        "quote": "🕦14:30-15:00📍起凤桥八号（p8）\n📷古香古色的门洞 烟雨江南即视感",
+        "mentionIds": [
+          11458,
+          12724
+        ],
+        "conclusion": "原文确指八号门洞摄影机位，保留稳定ID及30分钟，不将餐厅、院落、桥体或灯笼亭视为同义。"
+      }
+    ]
+  }
+]
