@@ -305,17 +305,9 @@ a { color: var(--color-primary); text-decoration: none }
   0%, 100% { opacity: 0.35; scale: 0.85; }
   50% { opacity: 1; scale: 1.05; }
 }
-@keyframes gen-breathe {
-  0%, 100% { opacity: 0.5; transform: scaleX(0.85); }
-  50% { opacity: 1; transform: scaleX(1); }
-}
 @keyframes gen-badge-breathe {
   0%, 100% { box-shadow: 0 0 0 calc(5 * var(--ui)) rgba(130,169,255,.18), 0 0 0 calc(11 * var(--ui)) rgba(174,205,255,.1), 0 0 calc(14 * var(--ui)) rgba(91,135,247,.2), inset 0 2px 6px rgba(255,255,255,.9); }
   50% { box-shadow: 0 0 0 calc(8 * var(--ui)) rgba(130,169,255,.36), 0 0 0 calc(18 * var(--ui)) rgba(174,205,255,.2), 0 0 calc(38 * var(--ui)) rgba(91,135,247,.55), inset 0 2px 6px rgba(255,255,255,.9); }
-}
-@keyframes gen-halo {
-  0%, 100% { transform: scale(1.08); opacity: 0.15; }
-  50% { transform: scale(1.55); opacity: 0.5; }
 }
 @keyframes gen-character-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes gen-caret-blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }

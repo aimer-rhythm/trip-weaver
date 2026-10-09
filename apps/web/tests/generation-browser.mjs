@@ -59,7 +59,6 @@ try {
       hiddenCharacters: [...document.querySelectorAll('.gen-typewriter-char')].filter(el => Number(getComputedStyle(el).opacity) < .5).length,
       badgeAnimation: getComputedStyle(document.querySelector('.is-active .gen-step-badge')).animationName,
       badgeShadow: getComputedStyle(document.querySelector('.is-active .gen-step-badge')).boxShadow,
-      haloTransform: getComputedStyle(document.querySelector('.gen-step-halo')).transform,
       reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
       runningAnimations: document.getAnimations().filter(a => a.playState === 'running').length,
       titleFont: getComputedStyle(document.querySelector('.gen-title')).fontFamily,
@@ -77,7 +76,6 @@ try {
     }
     assert.equal(timeline.at(-1).hiddenCharacters, 0);
     assert.ok(new Set(timeline.map(sample => sample.badgeShadow)).size > 1, 'breathing must visibly change shadow values');
-    assert.ok(new Set(timeline.map(sample => sample.haloTransform)).size > 1, 'halo must actually scale across frames');
     for (let i = 2; i < timeline.length; i++) assert.ok(timeline[i].ms - timeline[i - 1].ms > 800);
     // Same words from a new real event must type again; unrelated rerenders must not.
     await page.evaluate(() => window.renderGeneration(6, '北京', '查看颐和园的开放时间与附近交通信息', 'next-tool'));
@@ -92,14 +90,14 @@ try {
     // Production ends review before final route checks and saving: the job is still running.
     await page.evaluate(() => window.renderGeneration(6, '北京', '检查路线', 'final', '/home-bg.png', 'finishing'));
     await page.waitForTimeout(100);
-    assert.equal(await page.locator('.is-active .gen-step-halo').count(), 1, 'final route checks must retain a live halo');
+    assert.equal(await page.locator('.is-active .gen-step-badge').count(), 1, 'final route checks must keep the active step live');
     const finishBefore = await readMotion();
     await page.waitForTimeout(700);
     const finishAfter = await readMotion();
-    assert.notEqual(finishBefore.haloTransform, finishAfter.haloTransform, 'finishing halo must continue moving');
+    assert.notEqual(finishBefore.badgeShadow, finishAfter.badgeShadow, 'finishing badge must keep breathing');
     await page.evaluate(() => window.renderGeneration(0, '北京', '', 'queue', '/home-bg.png', 'queue'));
     await page.waitForTimeout(100);
-    assert.equal(await page.locator('.is-active .gen-step-halo').count(), 1, 'waiting for the first phase must retain a live halo');
+    assert.equal(await page.locator('.is-active .gen-step-badge').count(), 1, 'waiting for the first phase must keep the active step live');
     await page.evaluate(() => window.renderGeneration());
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.waitForTimeout(100);

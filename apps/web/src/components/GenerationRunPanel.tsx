@@ -223,11 +223,10 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
             <span>正在为你编织 <strong className={"gen-title-city [font-size:1.4em] [font-weight:inherit]"}>{titleCity}</strong> 的 {titleDays} 天旅程…</span>
             <SparkIcon className="gen-star gen-star-r" />
           </h1>
-          <svg className={"gen-title-arc block [width:calc(440_*_var(--ui))] [height:calc(32_*_var(--ui))] [max-width:85%] [margin-left:calc(80_*_var(--ui))] [animation:gen-breathe_3s_ease-in-out_infinite] [@media_(max-width:_900px)]:[margin-left:0] [@media_(prefers-reduced-motion:_reduce)]:[animation:none]"} viewBox="0 0 440 32" fill="none" aria-hidden="true">
+          <svg className={"gen-title-arc block [width:calc(440_*_var(--ui))] [height:calc(32_*_var(--ui))] [max-width:85%] [margin-left:calc(80_*_var(--ui))] [@media_(max-width:_900px)]:[margin-left:0]"} viewBox="0 0 440 32" fill="none" aria-hidden="true">
             <defs><linearGradient id={brushId}><stop stopColor="#eee5ff" stopOpacity="0" /><stop offset=".35" stopColor="#c9b1fc" /><stop offset=".7" stopColor="#99cfff" /><stop offset="1" stopColor="#c9b1fc" stopOpacity="0" /></linearGradient></defs>
             <path d="M4 29C88 7 183 1 245 6c16 2-10 12 5 9s63-11 70-7-8 7 5 6 65-7 109 3" stroke={`url(#${brushId})`} strokeWidth="4" strokeLinecap="round" />
           </svg>
-          <p className="mx-4 mb-2 mt-1 text-center text-[13px] leading-6 text-ink-muted">你可以先去看看其他行程，生成完成后会在站内通知你。</p>
           {banner && <p className="m-0 rounded-full bg-white/60 px-4 py-1 text-[0.8rem] text-ink-muted backdrop-blur-md">{banner}</p>}
         </header>
       )}
@@ -294,7 +293,6 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                   {i > 0 && <svg className={"gen-step-line absolute [left:calc(var(--gen-badge)_/_2_-_58_*_var(--ui))] [top:calc(-1_*_var(--gen-gap))] [height:calc(50%_+_var(--gen-gap)_-_var(--gen-badge)_/_2)] [width:calc(60_*_var(--ui))] [overflow:visible] [&_path]:[fill:none] [&_path]:[stroke:var(--color-gen-step-line-stroke-33)] [&_path]:[stroke-width:1.8] [&_path]:[stroke-dasharray:6_8] [&_path]:[stroke-linecap:round] [&_path]:[vector-effect:non-scaling-stroke]"} viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true"><path d="M58 0C54 20 8 24 16 54S45 82 58 100" /></svg>}
                   <span className={"gen-step-badge relative [z-index:1] shrink-0 flex items-center justify-center [width:var(--gen-badge)] [height:var(--gen-badge)] [border-radius:50%] [background:linear-gradient(145deg,_var(--color-gen-step-badge-background-34),_var(--color-gen-step-badge-background-35))] [border:calc(2_*_var(--ui))_solid_rgba(255,255,255,.8)] [color:var(--color-gen-step-badge-color-36)] [filter:grayscale(0.4)] [opacity:0.85] [box-shadow:0_0_0_calc(5_*_var(--ui))_rgba(205,216,237,.35),_inset_0_2px_5px_rgba(255,255,255,.85)] [&_>_svg]:relative [&_>_svg]:[z-index:2] [&_>_svg]:[width:calc(36_*_var(--ui))] [&_>_svg]:[height:calc(36_*_var(--ui))] [&::before]:[content:''] [&::before]:absolute [&::before]:[inset:calc(10_*_var(--ui))] [&::before]:[z-index:1] [&::before]:[border:calc(2_*_var(--ui))_solid_white] [&::before]:[border-radius:50%] [&::before]:[background:linear-gradient(145deg,_var(--color-btn-primary-color-3),_var(--color-gen-step-badge-background-37))] [&::before]:[box-shadow:0_2px_5px_rgba(60,88,150,.12)] [&::after]:[content:''] [&::after]:absolute [&::after]:[left:50%] [&::after]:[bottom:calc(-10_*_var(--ui))] [&::after]:[width:calc(24_*_var(--ui))] [&::after]:[height:calc(24_*_var(--ui))] [&::after]:[border-radius:calc(3_*_var(--ui))] [&::after]:[background:inherit] [&::after]:[transform:translateX(-50%)_rotate(45deg)]"} aria-hidden="true">
                     <MilestoneIcon phase={m.phase} />
-                    {state === 'active' && <span className={"gen-step-halo absolute [inset:-2px] [border-radius:50%] [border:2px_solid_var(--color-brand)] [animation:gen-halo_2.8s_ease-in-out_infinite] pointer-events-none [@media_(prefers-reduced-motion:_reduce)]:[animation:none]"} />}
                     {state === 'done' && (
                       <span className={"gen-step-check absolute [z-index:3] [right:calc(-9_*_var(--ui))] [bottom:calc(-5_*_var(--ui))] flex items-center justify-center [width:calc(34_*_var(--ui))] [height:calc(34_*_var(--ui))] [border-radius:50%] [background:var(--color-gen-step-check-background-38)] [color:var(--color-btn-primary-color-3)] [border:calc(3_*_var(--ui))_solid_var(--color-btn-primary-color-3)] [box-shadow:0_calc(3_*_var(--ui))_calc(8_*_var(--ui))_rgba(52,_199,_123,_0.35)] [&_svg]:[width:calc(20_*_var(--ui))] [&_svg]:[height:calc(20_*_var(--ui))]"}>
                         <CheckIcon />
@@ -303,7 +301,7 @@ export function GenerationRunPanel({ events, city, days, cancelling, cancellatio
                   </span>
                   <div className={"gen-step-body min-w-0"}>
                     <p className="gen-step-title">
-                      {i + 1}. {m.title}
+                      {m.title}
                     </p>
                     <p style={state === 'active' ? handwritingFallback(hint) : undefined} className={`gen-step-hint [margin:calc(8_*_var(--ui))_0_0] [font-size:calc(18_*_var(--ui))] [color:var(--color-gen-queue-hint-color-32)] [@media_(max-width:_900px)]:[overflow-wrap:anywhere] ${state === 'active' ? "gen-step-hint-live [font-family:'Youran_Handwriting',_var(--gen-serif)] [font-size:calc(34_*_var(--ui))] [letter-spacing:-0.075em] [@media_(max-width:_900px)]:[font-size:28px] [line-height:1.25] [color:var(--color-gen-step-hint-live-color-47)] [min-height:2.5em] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden [@media_(prefers-reduced-motion:_reduce)]:[animation:none]" : ""}`}>
                       {state === 'active' ? <TypedStatus key={liveStatus.key} text={hint} /> : hint}
