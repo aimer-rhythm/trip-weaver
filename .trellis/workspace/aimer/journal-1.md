@@ -1645,3 +1645,37 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 42: 详情页移动端工具栏验收归档
+
+**Date**: 2026-10-09
+**Task**: 详情页移动端工具栏验收归档
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+手机端标题栏收紧为一行、历史与导出改 44px 图标按钮；代码已随 feat(export) 6c0f620 落盘，本次跑通 editor-browser 与 trip-share-image-browser 回归后归档。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `aa4fb12` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
