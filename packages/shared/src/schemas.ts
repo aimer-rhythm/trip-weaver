@@ -1,5 +1,6 @@
 import { Type } from '@sinclair/typebox';
 import { TripWeatherSchema } from './weather';
+import { PersonalTripAdviceSchema } from './tripAdvice';
 import { StringEnum } from './typebox';
 import {
   ACTIVITY_CATEGORIES,
@@ -33,6 +34,7 @@ export const SourceNoteSchema = Type.Object({
 
 export const ActivitySchema = Type.Object({
   id: Type.String(),
+  canonicalPlaceId: Type.Optional(Type.String({ minLength: 1, maxLength: 128 })),
   poiKey: Type.Optional(Type.String({ maxLength: 200 })),
   name: Type.String({ minLength: 1, maxLength: 100 }),
   startTime: Type.String({ maxLength: 5 }),   // "09:00"，允许空串
@@ -113,6 +115,7 @@ export const PoiPhotoSchema = Type.Object({
 
 export const ResearchPoiSchema = Type.Object({
   id: Type.String(),
+  canonicalPlaceId: Type.Optional(Type.String({ minLength: 1, maxLength: 128 })),
   name: Type.String({ minLength: 1, maxLength: 100 }),
   category: StringEnum(POI_CATEGORIES),
   coverUrl: Type.Optional(Type.String({ maxLength: 300 })),        // 预览图热链，可能失效（前端 onerror 兜底）
@@ -128,6 +131,7 @@ export const ResearchPoiSchema = Type.Object({
 export const TripMetaSchema = Type.Object({
   usedXhs: Type.Boolean(),   // 历史兼容：小红书时代旧行程可为 true，新生成恒 false
   reviewNotes: Type.Array(Type.String({ maxLength: 200 })),
+  advice: Type.Optional(PersonalTripAdviceSchema),
   // 本次生成实际用到的外部数据源（可选：旧行程无此字段）
   dataSources: Type.Optional(Type.Array(StringEnum(DATA_SOURCE_KINDS), { maxItems: 2 })),
 });
@@ -159,10 +163,24 @@ export const TripExportSchema = Type.Object({
   trip: TripSchema,
 });
 
-export const TripShareImageRequestSchema = Type.Object({ trip: TripSchema });
+export const TripShareImageStyleSchema = StringEnum(['journal', 'ink'] as const);
+export const TripShareImageRequestSchema = Type.Object({
+  trip: TripSchema,
+  // 缺省 journal：旧前端/旧请求行为不变
+  style: Type.Optional(TripShareImageStyleSchema),
+  // 仅显式重新生成时绕过成品缓存，仍合并同一张图的进行中请求。
+  regenerate: Type.Optional(Type.Boolean()),
+});
+// 成品已落盘并由 /media/ 静态托管，因此返回站内路径而非 base64。
+// 文件名是图片内容的 sha256，浏览器可长期缓存，前端也能直接用 <img src> 与 a[download]。
+export const SHARE_POSTER_URL_PATTERN = '^/media/share-posters/[a-f0-9]{64}\\.(png|jpg|webp)$';
 export const TripShareImageResponseSchema = Type.Object({
-  dataUrl: Type.String({ maxLength: 15_000_000 }),
+  url: Type.String({ maxLength: 256, pattern: SHARE_POSTER_URL_PATTERN }),
   mimeType: StringEnum(['image/png', 'image/jpeg', 'image/webp'] as const),
+});
+// 缺省 journal：与 POST 生成请求的风格缺省保持一致
+export const TripShareImageQuerySchema = Type.Object({
+  style: Type.Optional(TripShareImageStyleSchema),
 });
 
 // ---------- 生成表单 ----------

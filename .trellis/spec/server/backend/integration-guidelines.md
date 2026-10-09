@@ -42,34 +42,39 @@ Explicit generation from the itinerary export dialog; never prefetch paid images
 
 ### 2. Signatures
 
-- `POST /api/trips/:id/share-image`, `TripShareImageRequestSchema {trip}` → `TripShareImageResponseSchema {dataUrl,mimeType}`.
-- `generateShareImage(config, prompt)` handles OpenAI Images-compatible transport; `createTripShareImageService(generate?)` handles bounded cache/admission.
+- `POST /api/trips/:id/share-image`, `TripShareImageRequestSchema {trip}` → `TripShareImageResponseSchema {url,mimeType}`; `GET /api/trips/:id/share-image?style=` returns the stored poster for the current trip content or 404.
+- `generateShareImage(providers, prompt)` handles OpenAI Images-compatible transport for an ordered relay list and returns image bytes; `createTripShareImageService(store, generate?)` owns admission (in-flight coalescing plus per-user/global limits) and delegates persistence to `SharePosterStore`: `services/sharePosterStore.ts` writes `data/media/share-posters/<sha256-of-bytes>.<ext>` and upserts `trip_share_images` keyed by `(trip_id, style)`; `buildTripSharePrompt(trip, style)` is the only prompt builder and splits a shared skeleton from a per-style sentence.
 - `buildTripSharePrompt(trip)` is a pure server-owned prompt builder.
 
 ### 3. Contracts
 
-- `IMAGE_API_BASE_URL=https://xjbh.lol/v1`, `IMAGE_MODEL=gpt-image2.5`, independent `IMAGE_API_KEY`; names are user-specified third-party identifiers, not silently normalized to official model names.
+- `IMAGE_API_BASE_URL=https://xjbh.lol/v1`, `IMAGE_MODEL=gpt-image2.5`, independent `IMAGE_API_KEY`; names are user-specified third-party identifiers, not silently normalized to official model names. Up to three relays are declared flat: station 1 uses the bare names, stations 2/3 append `_2` / `_3`. `readImageProviders` (in `env.ts`, not `integrations/` — `ssrfGuard` imports `env`, so the parser there would create an import cycle) stops at the first missing `IMAGE_API_BASE_URL_n`, skips stations without a key, inherits `IMAGE_MODEL` when `IMAGE_MODEL_n` is empty, and warns once about over-limit suffixes.
 - POST `/images/generations` with model/prompt/n=1/size=1024x1536. Accept base64 or safe HTTPS image URL, do not follow redirects or forward API authorization to image URLs. Reuse SSRF validation.
-- Prompt includes only destination, title and up to six non-lodging activity names per day. Exclude private notes, dates, coordinates, lodging, descriptions and links; distinguish itinerary data from instructions.
-- Authenticate and check trip ownership before provider work; snapshot ID must match route. Draft snapshots are allowed to avoid autosave races. Request body ≤1 MiB, upstream JSON ≤15 MiB, decoded PNG/JPEG/WebP ≤10 MiB, timeout180s.
-- Same-user/trip/prompt success cache30min/max8; pending identical requests coalesce; one active job/user and two/process. No automatic retry, monthly accounting, durable jobs or multi-instance locking implied.
+- Prompt includes only destination, title and up to six non-lodging activity names per day. Exclude private notes, dates, coordinates, lodging, descriptions and links; distinguish itinerary data from instructions. Two styles share one skeleton and differ only in the style sentence: `journal` (travel-journal illustration) and `ink` (Chinese ink wash). `TripShareImageRequestSchema.style` is optional and defaults to `journal`, so older clients keep their behaviour; the style is part of the storage key `(trip_id, style)`, and the request style travels to the provider unchanged.
+- Authenticate and check trip ownership before provider work; snapshot ID must match route. Draft snapshots are allowed to avoid autosave races. Request body ≤1 MiB, upstream JSON ≤15 MiB, decoded PNG/JPEG/WebP ≤10 MiB, whole-chain budget180s shared across relays (each attempt gets the remaining time).
+- `TripShareImageRequestSchema.regenerate?: boolean` defaults to false and is forwarded to `service.generate(userId, trip, style, regenerate)`. Only explicit regeneration bypasses an already stored poster; success replaces it and failure retains the previous one. Look up the identical pending job before the store so regeneration and ordinary requests coalesce. Reopening the dialog uses `GET /api/trips/:id/share-image?style=` (`service.find`); it returns 404 when nothing is stored or when the trip content no longer matches the stored prompt hash, so a changed itinerary never replays an outdated poster. Do not bypass ownership, schema validation, per-user/process concurrency or HTTP rate limits.
+- Stored posters live in `data/media/share-posters` (indexed by `trip_share_images`, primary key `trip_id + style`, so one poster per trip and style and the replaced file is deleted). A stored poster with a matching prompt hash is returned without calling the model and survives restarts, which is why no in-process result cache remains. Pending identical requests still coalesce; one active job/user and two/process. Docker mounts `data/media` read-only, so `data/media/share-posters` needs its own writable mount. No retry against the SAME relay (avoids duplicate billing), but a retryable failure falls through to the next configured relay in order: network error, timeout, HTTP5xx, 429, 401/403, missing/unparsable image, oversized image, unsafe returned URL. HTTP4xx other than 401/403/429 and an invalid local `baseUrl` (SSRF allowlist, credentials, query) fail immediately — they are request-side errors. Only the last real error surfaces; no monthly accounting, durable jobs or multi-instance locking implied.
 
 ### 4. Validation & Error Matrix
 
 - 401 unauthenticated; 404 missing/non-owned; 400 invalid schema or mismatched ID; 429 busy; 503 missing key; sanitized502 upstream/format/size/timeout errors.
-- Check image magic bytes before returning a data URL. Never send upstream bodies, keys, prompt, returned URLs or raw fetch exceptions to logs/errors.
+- Check image magic bytes before storing bytes. Never send upstream bodies, keys, prompt, returned URLs or raw fetch exceptions to logs/errors.
+- Invalid `regenerate` values fail request validation with 400. An explicit regeneration error leaves the previous downloadable result intact; the frontend displays the error and offers retry.
 
 ### 5. Good/Base/Bad Cases
 
 - Good: explicit generate uses given model, authenticates owner, reuses cached image on reopen.
+- Good: explicit regenerate creates fresh artwork while reopen and style selection never trigger paid calls. Bad: a button labelled “重新生成” unconditionally reads the old completed cache.
 - Base: missing key produces a recoverable503 and no upstream call.
 - Bad: use site LLM credentials automatically, fetch provider URL with authorization, or create a paid image on opening the menu.
 
 ### 6. Tests Required
 
-- `tripShareImage.test.ts`: prompt exclusions/order, exact protocol, base64/URL parsing, safe failures, concurrency/cache and retry lock cleanup.
+- `tripShareImage.test.ts`: prompt exclusions/order, style sentence swap with an unchanged skeleton, style in the cache key, exact protocol, base64/URL parsing, safe failures, concurrency/cache and retry lock cleanup, relay-list parsing (indexed suffixes, non-contiguous stop, missing key, overflow warn), fallback order, no-fallback on HTTP4xx, last-error surfacing.
+- `generate-share-style-samples.mts`: real paid generation of the two `apps/web/public/share-styles/*.png` thumbnails; manual only, never in CI.
 - `verify-trip-share-image.mts`: real ownership/session/API validation against disposable PG with mocked upstream.
 - `trip-share-image-browser.mjs`: explicit start, loading, close/reopen, retry, preview, download, mobile bounds.
+- Regeneration regression: service test covers bypass/replacement, pending coalescing and failed-refresh cache retention; `verify-trip-share-image.mts` checks the HTTP flag reaches the provider and invalid flag values fail validation; browser tests assert true only for explicit regeneration/retry and preserve the old image on failure.
 
 ### 7. Wrong vs Correct
 

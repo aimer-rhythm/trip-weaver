@@ -66,20 +66,16 @@ try {
  console.log('Map tiles loaded:',tilesLoaded);
  if (tilesLoaded) await page.waitForFunction(()=>[...document.querySelectorAll('.leaflet-tile-loaded')].every(img=>Number(getComputedStyle(img).opacity)===1),{},{timeout:3000}).catch(()=>{});
  if(!amapMode) {
-  await page.locator('.export-menu summary').click();
-  const jsonDownload=page.waitForEvent('download');
-  await page.getByRole('button',{name:'JSON 备份',exact:true}).click();
-  const jsonFile=await jsonDownload;
-  assert.equal(JSON.parse(await fs.readFile(await jsonFile.path(),'utf8')).trip.id,trip.id);
-  await page.locator('.export-menu summary').click();
-  await page.getByRole('button',{name:'AI 分享图',exact:true}).click();
-  await page.getByRole('dialog',{name:'AI 行程分享图'}).waitFor();
-  assert.equal(await page.getByRole('button',{name:'生成分享图',exact:true}).isEnabled(),true);
+  await page.locator('summary[aria-label="分享行程"]').click();
+  await page.getByRole('button',{name:'AI 生成海报',exact:true}).click();
+  await page.getByRole('dialog',{name:'AI 生成海报',exact:true}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'开始生成',exact:true}).isEnabled(),true);
+  assert.equal(await page.getByRole('button',{name:'JSON 备份',exact:true}).count(),0,'JSON 备份入口已移除');
   // Generation and download are covered with mocked upstream in trip-share-image-browser.mjs.
   await page.getByRole('dialog').getByRole('button',{name:'关闭',exact:true}).last().click();
   await page.evaluate(()=>{window.printCount=0;window.print=()=>{window.printCount++;}});
-  await page.locator('.export-menu summary').click();
-  await page.getByRole('button',{name:'打印 / PDF',exact:true}).click();
+  await page.locator('summary[aria-label="分享行程"]').click();
+  await page.getByRole('button',{name:/导出 PDF/}).click();
   assert.equal(await page.evaluate(()=>window.printCount),1);
   assert.ok(await page.locator('.print-host').evaluate(el=>el.parentElement===document.body));
   await page.emulateMedia({media:'print'});
@@ -183,6 +179,6 @@ try {
  assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'long export must not cause page scrolling');
  for(const width of [390,1280]) {await page.setViewportSize({width,height:844}); assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1 && document.documentElement.scrollWidth<=innerWidth+1),'long export: viewport stays bounded');}
  assert.deepEqual(errors,[]);
- await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',saves,errors,tilesLoaded,checks:['JSON/PNG/print export','long itinerary without document scrolling','four viewports','day tabs drive the map filter (no map day tabs)','add/delete day','details','edit and add activity','reorder','cross-day move','stale transit hiding','map marker jumps to the activity','map controls','save failure/retry','mobile panels','missing conversation and broken images']},null,2));
+ await fs.writeFile(path.join(out,'results.json'),JSON.stringify({status:'passed',saves,errors,tilesLoaded,checks:['export dialog/print export','long itinerary without document scrolling','four viewports','day tabs drive the map filter (no map day tabs)','add/delete day','details','edit and add activity','reorder','cross-day move','stale transit hiding','map marker jumps to the activity','map controls','save failure/retry','mobile panels','missing conversation and broken images']},null,2));
  console.log('Editor browser checks passed. Screenshots:',out);
 } finally {await browser.close();}

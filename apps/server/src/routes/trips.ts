@@ -2,8 +2,10 @@ import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
 import { RenameTripSchema, RouteOptionsRequestSchema, RouteOptionsResponseSchema, TripExportSchema, TripSchema, TRIP_LIST_PAGE_SIZE, TRIP_LIST_PAGE_SIZE_MAX } from '@tripweaver/shared';
 import { getRouteOptions } from '../services/routeOptionsService';
-import { TripShareImageRequestSchema, TripShareImageResponseSchema } from '@tripweaver/shared';
-import { getTripShareImage } from '../services/tripShareImageService';
+import { TripShareImageRequestSchema, TripShareImageQuerySchema, TripShareImageResponseSchema, TripShareImageGeneratedResponseSchema } from '@tripweaver/shared';
+import { recordShareImageNotification } from '../services/notificationService';
+import { createTripShareImageService } from '../services/tripShareImageService';
+import { sharePosterStore } from '../services/sharePosterStore';
 import { requireAuth } from '../auth/guard';
 import { createTrip, deleteTrip, getTrip, listTripsPage, listTripVersions, renameTrip, updateTrip } from '../services/tripService';
 import { findConversationForTrip } from '../services/conversationService';
@@ -16,6 +18,7 @@ import { getTripWeather } from '../services/tripWeatherService';
 
 const IdParams = Type.Object({ id: Type.String() });
 
+
 // 行程列表分页（10-03）：筛选/排序/计数都在服务端；Fastify 默认 coerce，query 里的字符串会转成 integer
 const TripListQuerySchema = Type.Object({
   offset: Type.Optional(Type.Integer({ minimum: 0 })),
@@ -26,6 +29,11 @@ const TripListQuerySchema = Type.Object({
 });
 
 export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
+  // 每个应用实例共用并发闸门；通知故障不丢弃已经落盘的成品。
+  const shareImages = createTripShareImageService(sharePosterStore, undefined, async (userId, trip, style) => {
+    try { return await recordShareImageNotification(userId, trip, style); }
+    catch { app.log.error({ tripId: trip.id }, 'share image notification write failed'); return undefined; }
+  });
   app.addHook('preHandler', requireAuth);
 
   app.get('/:id/weather', {
@@ -48,8 +56,19 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.post('/:id/restore', { schema: { params: IdParams, body: TripOperationRequestSchema } }, async (request) =>
     restoreTrip(request.user!.id, request.params.id, request.body));
 
+  // 打开弹窗直接回显已生成的成品；行程内容变更后 prompt hash 不匹配，按「尚无成品」处理
+  app.get('/:id/share-image', {
+    schema: { params: IdParams, querystring: TripShareImageQuerySchema, response: { 200: TripShareImageResponseSchema, 404: Type.Object({ error: Type.String() }) } },
+  }, async (request, reply) => {
+    const trip = await getTrip(request.user!.id, request.params.id);
+    if (!trip) return reply.code(404).send({ error: '行程不存在' });
+    const image = await shareImages.find(request.user!.id, trip, request.query.style ?? 'journal');
+    if (!image) return reply.code(404).send({ error: '该行程尚无已生成的海报' });
+    return reply.header('Cache-Control', 'no-store').send(image);
+  });
+
   app.post('/:id/share-image', {
-    schema: { params: IdParams, body: TripShareImageRequestSchema, response: { 200: TripShareImageResponseSchema, 400: Type.Object({ error: Type.String() }), 404: Type.Object({ error: Type.String() }) } },
+    schema: { params: IdParams, body: TripShareImageRequestSchema, response: { 200: TripShareImageGeneratedResponseSchema, 400: Type.Object({ error: Type.String() }), 404: Type.Object({ error: Type.String() }) } },
     bodyLimit: 1024 * 1024,
     config: { rateLimit: { max: 6, timeWindow: '1 minute' } },
   }, async (request, reply) => {
@@ -57,7 +76,7 @@ export const tripRoutes: FastifyPluginAsyncTypebox = async (app) => {
     if (request.body.trip.id !== request.params.id) return reply.code(400).send({ error: '行程标识不一致' });
     const started = Date.now();
     try {
-      const image = await getTripShareImage(request.user!.id, request.body.trip);
+      const image = await shareImages.generate(request.user!.id, request.body.trip, request.body.style, request.body.regenerate);
       request.log.info({ outcome: 'success', durationMs: Date.now() - started }, '[trip-share-image]');
       return reply.header('Cache-Control', 'no-store').send(image);
     } catch (error) {

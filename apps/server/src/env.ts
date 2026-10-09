@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { DEFAULT_PHOTO_REVIEW_DAILY_PLACES } from './integrations/photoReviewPolicy';
 import { readAmapServiceBudgets } from './integrations/amap/services';
+import type { ImageGenerationConfig } from './integrations/imageGeneration';
 import { looksLikeJwt, type QWeatherAuth } from './integrations/qweather/auth';
 
 export const DEFAULT_SEARCH_API_BASE_URL = 'https://api.langsearch.com';
@@ -13,6 +14,41 @@ function str(name: string, fallback = ''): string {
 function int(name: string, fallback: number): number {
   const v = Number.parseInt(str(name), 10);
   return Number.isFinite(v) && v > 0 ? v : fallback;
+}
+
+const MAX_IMAGE_PROVIDERS = 3;
+const DEFAULT_IMAGE_BASE_URL = 'https://xjbh.lol/v1';
+const DEFAULT_IMAGE_MODEL = 'gpt-image2.5';
+
+/**
+ * 解析多中转站生图配置：第 1 站用无后缀变量，第 2/3 站用 _2 / _3 后缀，书写顺序即优先级。
+ * 序号不连续即停止；缺 apiKey 的站不收录（对该站发请求必然是鉴权失败）。
+ * 注意：本模块被 ssrfGuard 反向依赖，不能放在 integrations 里调用（会形成循环导入）。
+ */
+export function readImageProviders(source: Record<string, string | undefined>): ImageGenerationConfig[] {
+  const read = (name: string): string => {
+    const value = source[name];
+    return value === undefined || value === '' ? '' : value;
+  };
+  const defaultModel = read('IMAGE_MODEL') || DEFAULT_IMAGE_MODEL;
+  const providers: ImageGenerationConfig[] = [];
+  for (let index = 1; index <= MAX_IMAGE_PROVIDERS; index++) {
+    const suffix = index === 1 ? '' : `_${index}`;
+    const fallback = index === 1 ? DEFAULT_IMAGE_BASE_URL : '';
+    const baseUrl = (read(`IMAGE_API_BASE_URL${suffix}`) || fallback).replace(/\/+$/, '');
+    if (!baseUrl) break;
+    const apiKey = read(`IMAGE_API_KEY${suffix}`);
+    if (!apiKey) continue;
+    providers.push({ baseUrl, apiKey, model: read(`IMAGE_MODEL${suffix}`) || defaultModel });
+  }
+  const overflow = Object.keys(source).filter((name) => {
+    const match = /^IMAGE_API_BASE_URL_(\d+)$/.exec(name);
+    return match !== null && Number(match[1]) > MAX_IMAGE_PROVIDERS;
+  });
+  if (overflow.length) {
+    console.warn(`[env] 生图中转站最多 ${MAX_IMAGE_PROVIDERS} 个，已忽略超出的配置：${overflow.sort().join('、')}`);
+  }
+  return providers;
 }
 
 const masterKey = str('MASTER_KEY');
@@ -122,11 +158,9 @@ export const env = {
     model: str('PHOTO_REVIEW_MODEL'),
     dailyLimit: Math.min(int('PHOTO_REVIEW_DAILY_PLACES', DEFAULT_PHOTO_REVIEW_DAILY_PLACES), DEFAULT_PHOTO_REVIEW_DAILY_PLACES),
   },
-  imageGeneration: {
-    baseUrl: str('IMAGE_API_BASE_URL', 'https://xjbh.lol/v1').replace(/\/+$/, ''),
-    apiKey: str('IMAGE_API_KEY'),
-    model: str('IMAGE_MODEL', 'gpt-image2.5'),
-  },
+  // AI 分享图多个中转站（10-06）：第 1 站无后缀，第 2/3 站加 _2 / _3 后缀，书写顺序即优先级；
+  // 中转站故障时按序降级（见 integrations/imageGeneration.ts），未配置时为 503 空数组。
+  imageProviders: readImageProviders(process.env),
   // Embedding（RAG 向量召回，可选）：缺省回落到站点 LLM 的 baseUrl/apiKey（OpenAI 兼容端点普遍同址提供 /embeddings）
   embedding: {
     baseUrl: str('EMBEDDING_BASE_URL') || str('SITE_LLM_BASE_URL'),

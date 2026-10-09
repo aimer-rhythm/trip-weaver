@@ -1,46 +1,29 @@
 import { Button, buttonClassName } from './ui/Button';
-import { Dropdown } from './ui/Dropdown';
-// 导出菜单：AI 分享图 / JSON 备份 / 打印
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Trip } from '@tripweaver/shared';
-import { exportTripJson, printTrip } from '../lib/export';
 import { PrintView } from './PrintView';
-import { TripShareImageDialog } from './TripShareImageDialog';
+import { ExportDialog } from './ExportDialog';
+import { Dropdown } from './ui/Dropdown';
+import { ShareIcon } from './ShareIcon';
+import { printTrip } from '../lib/export';
 
 export function ExportMenu({ trip }: { trip: Trip }) {
+  const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDetailsElement>(null);
-  const [shareOpen, setShareOpen] = useState(false);
-
-  const closeMenu = () => menuRef.current?.removeAttribute('open');
-
-  const onPng = () => {
-    closeMenu();
-    setShareOpen(true);
-  };
-
-  const onJson = () => {
-    closeMenu();
-    exportTripJson(trip);
-  };
-
-  const onPrint = () => {
-    closeMenu();
-    printTrip();
-  };
 
   return (
     <>
-      <Dropdown label="导出行程" menuRef={menuRef} className="export-menu z-[1100]" summaryClassName={buttonClassName('secondary')} panelClassName="export-menu-list [&_button]:justify-start" trigger="导出行程">
-          <Button variant="ghost" type="button" onClick={onPng}>
-            AI 分享图
-          </Button>
-          <Button variant="ghost" type="button" onClick={onJson}>
-            JSON 备份
-          </Button>
-          <Button variant="ghost" type="button" onClick={onPrint}>
-            打印 / PDF
-          </Button>
+      <Dropdown label="分享行程" menuRef={menuRef}
+        summaryClassName={`${buttonClassName('secondary')} box-border [@media_(max-width:_600px)]:h-11 [@media_(max-width:_600px)]:w-11 [@media_(max-width:_600px)]:p-0`}
+        panelClassName="min-w-36! rounded-xl! border-white/80! bg-white/95! p-1.5! text-[var(--color-text)] shadow-[0_8px_30px_var(--color-editor-menu-list-box-shadow-86)]! backdrop-blur-xl"
+        trigger={<><ShareIcon name="share" /><span className="[@media_(max-width:_600px)]:hidden">分享行程</span></>}>
+        <Button variant="plain" className="flex min-h-11 items-center gap-2.5 rounded-lg border-0 bg-transparent px-3 text-left text-sm text-[var(--color-text)] hover:bg-brand/5" onClick={printTrip}><ShareIcon name="pdf" />导出 PDF</Button>
+        <Button variant="plain" className="flex min-h-11 items-center gap-2.5 rounded-lg border-0 bg-transparent px-3 text-left text-sm text-[var(--color-text)] hover:bg-brand/5" onClick={() => {
+          // 菜单关闭前将焦点交回常驻入口，Modal 关闭后才能可靠恢复焦点。
+          menuRef.current?.querySelector('summary')?.focus();
+          setOpen(true);
+        }}><ShareIcon name="image" />AI 生成海报</Button>
       </Dropdown>
 
       {/* 常驻离屏：@media print 显示 */}
@@ -48,8 +31,7 @@ export function ExportMenu({ trip }: { trip: Trip }) {
         <PrintView trip={trip} />
       </div>, document.body)}
 
-      <TripShareImageDialog key={trip.id} trip={trip} open={shareOpen} onClose={() => setShareOpen(false)} />
-
+      <ExportDialog key={trip.id} trip={trip} open={open} onClose={() => setOpen(false)} />
     </>
   );
 }

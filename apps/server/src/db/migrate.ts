@@ -4,7 +4,39 @@
 import type { Pool } from 'pg';
 import { AMAP_SERVICES, amapDay } from '../integrations/amap/services';
 
+// 供受控运维仅迁移独立图库表；启动迁移复用同一组语句。
+export const INDEPENDENT_PHOTO_STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS independent_photo_assignments (
+    city TEXT NOT NULL, image_key TEXT NOT NULL, input_hash TEXT NOT NULL, asset_key TEXT NOT NULL,
+    entity_id TEXT, entity_revision INTEGER, revision INTEGER NOT NULL, change_key TEXT NOT NULL,
+    PRIMARY KEY(city,image_key), CHECK (revision > 0),
+    CHECK ((entity_id IS NULL AND entity_revision IS NULL) OR (entity_id IS NOT NULL AND entity_revision IS NOT NULL AND entity_revision > 0))
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_independent_photo_entity ON independent_photo_assignments(city,entity_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_independent_photo_asset ON independent_photo_assignments(city,asset_key)`,
+  `CREATE TABLE IF NOT EXISTS independent_photo_changes (
+    change_key TEXT PRIMARY KEY, city TEXT NOT NULL, request JSONB NOT NULL,
+    before_state JSONB NOT NULL, after_state JSONB NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL, rolled_back_at TIMESTAMPTZ
+  )`,
+];
+
+export const PLACE_RELATION_SNAPSHOT_STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS place_relation_snapshots (
+    city TEXT PRIMARY KEY, manifest JSONB NOT NULL, relations JSONB, available_ids JSONB NOT NULL DEFAULT '[]'::jsonb
+  )`,
+  `ALTER TABLE place_relation_snapshots ADD COLUMN IF NOT EXISTS available_ids JSONB NOT NULL DEFAULT '[]'::jsonb`,
+];
+
 const STATEMENTS = [
+  ...PLACE_RELATION_SNAPSHOT_STATEMENTS,
+  ...INDEPENDENT_PHOTO_STATEMENTS,
+  `CREATE TABLE IF NOT EXISTS place_identity_imports (
+    id TEXT PRIMARY KEY, city TEXT NOT NULL, content_hash TEXT NOT NULL,
+    before_state JSONB NOT NULL, after_state JSONB NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL, rolled_back_at TIMESTAMPTZ
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_place_identity_imports_city ON place_identity_imports(city, created_at)`,
   `CREATE TABLE IF NOT EXISTS generation_notifications (
     id TEXT PRIMARY KEY, sequence BIGSERIAL NOT NULL,
     user_id TEXT NOT NULL, job_id TEXT NOT NULL,
@@ -201,6 +233,18 @@ const STATEMENTS = [
     data JSONB NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL
   )`,
+  // ---------- 分享海报成品（10-08）：图片落盘 data/media/share-posters，本表只存索引 ----------
+  // 主键 (trip_id, style) 即「同一行程同一风格只留最新一张」。
+  `CREATE TABLE IF NOT EXISTS trip_share_images (
+    trip_id TEXT NOT NULL,
+    style TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    prompt_hash TEXT NOT NULL,
+    file_name TEXT NOT NULL,
+    mime_type TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    PRIMARY KEY (trip_id, style)
+  )`,
 ];
 
 export async function runMigrations(pool: Pool): Promise<void> {
@@ -211,6 +255,7 @@ export async function runMigrations(pool: Pool): Promise<void> {
     // PG 唯一索引下 NULL 互不冲突，未绑定 GitHub 的用户不受影响
     await client.query('CREATE UNIQUE INDEX IF NOT EXISTS idx_users_github ON users(github_id)');
     // 存量库补列（CREATE IF NOT EXISTS 无法给旧表补列）：PG 支持幂等 ADD COLUMN IF NOT EXISTS
+    await client.query(`ALTER TABLE generation_notifications ADD COLUMN IF NOT EXISTS share_image_style TEXT`);
     await client.query(`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS amap_api_key_ciphertext TEXT NOT NULL DEFAULT ''`);
     await client.query(`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS amap_api_key_last4 TEXT NOT NULL DEFAULT ''`);
     await client.query(`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS amap_key_revision INTEGER NOT NULL DEFAULT 0`);

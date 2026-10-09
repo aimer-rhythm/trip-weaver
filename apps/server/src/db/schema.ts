@@ -1,4 +1,5 @@
 import { bigserial, boolean, doublePrecision, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uniqueIndex, vector } from 'drizzle-orm/pg-core';
+import type { TripShareImageStyle } from '@tripweaver/shared';
 
 export const amapServiceUsage = pgTable('amap_service_usage', {
   day: text('day').notNull(),
@@ -86,6 +87,7 @@ export const generationNotifications = pgTable('generation_notifications', {
   jobCreatedAt: timestamp('job_created_at', { withTimezone: true }).notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
   readAt: timestamp('read_at', { withTimezone: true }),
+  shareImageStyle: text('share_image_style').$type<TripShareImageStyle>(),
 }, (table) => [
   uniqueIndex('idx_generation_notifications_job').on(table.userId, table.jobId),
   index('idx_generation_notifications_user').on(table.userId, table.sequence),
@@ -245,6 +247,34 @@ export const detailOperations = pgTable('detail_operations', {
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
 }, (table) => [primaryKey({ columns: [table.userId, table.id] })]);
 
+export const placeIdentityImports = pgTable('place_identity_imports', {
+  id: text('id').primaryKey(),
+  city: text('city').notNull(),
+  contentHash: text('content_hash').notNull(),
+  beforeState: jsonb('before_state').notNull(),
+  afterState: jsonb('after_state').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+  rolledBackAt: timestamp('rolled_back_at', { withTimezone: true }),
+}, table => [index('idx_place_identity_imports_city').on(table.city, table.createdAt)]);
+
+export const placeRelationSnapshots = pgTable('place_relation_snapshots', {
+  city: text('city').primaryKey(), manifest: jsonb('manifest').notNull(), relations: jsonb('relations'),
+  availableIds: jsonb('available_ids').notNull().default([]),
+});
+
+export const independentPhotoAssignments = pgTable('independent_photo_assignments', {
+  city: text('city').notNull(), imageKey: text('image_key').notNull(), inputHash: text('input_hash').notNull(),
+  assetKey: text('asset_key').notNull(), entityId: text('entity_id'), entityRevision: integer('entity_revision'),
+  revision: integer('revision').notNull(), changeKey: text('change_key').notNull(),
+}, table => [primaryKey({ columns: [table.city, table.imageKey] }),
+  index('idx_independent_photo_entity').on(table.city, table.entityId), index('idx_independent_photo_asset').on(table.city, table.assetKey)]);
+
+export const independentPhotoChanges = pgTable('independent_photo_changes', {
+  changeKey: text('change_key').primaryKey(), city: text('city').notNull(), request: jsonb('request').notNull(),
+  beforeState: jsonb('before_state').notNull(), afterState: jsonb('after_state').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(), rolledBackAt: timestamp('rolled_back_at', { withTimezone: true }),
+});
+
 // ---------- LLM 请求上下文快照（09-20）：生成流水线每次 API 请求的完整落库 ----------
 // 定位「模型不调工具/空响应」类问题的调试事实源；不含 API key（key 走 getApiKey 独立通道）。
 export const llmRequestLogs = pgTable(
@@ -268,3 +298,17 @@ export const llmRequestLogs = pgTable(
     index('idx_llm_request_logs_user_time').on(table.userId, table.createdAt),
   ],
 );
+
+// ---------- 分享海报成品（10-08）：图片落盘 data/media/share-posters，表只存索引 ----------
+// 主键 (trip_id, style) 即「同一行程同一风格只留最新一张」；重新生成覆盖同一行并删掉旧文件。
+// prompt_hash 变化说明行程内容已改，旧图不再回显，避免展示与当前行程不符的海报。
+// style 取值与 shared 的 TripShareImageStyleSchema 一致（journal | ink）。
+export const tripShareImages = pgTable('trip_share_images', {
+  tripId: text('trip_id').notNull(),
+  style: text('style').$type<'journal' | 'ink'>().notNull(),
+  userId: text('user_id').notNull(),
+  promptHash: text('prompt_hash').notNull(),
+  fileName: text('file_name').notNull(),
+  mimeType: text('mime_type').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+}, (table) => [primaryKey({ columns: [table.tripId, table.style] })]);

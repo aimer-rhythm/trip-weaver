@@ -1,9 +1,28 @@
 import { and, desc, eq, isNull, lt, lte } from 'drizzle-orm';
-import { uid, type GenerationJobView, type NotificationPage } from '@tripweaver/shared';
+import { uid, type GenerationJobView, type GenerationNotification, type NotificationPage, type Trip, type TripShareImageStyle } from '@tripweaver/shared';
 import { db } from '../db/client';
 import { generationNotifications as notifications } from '../db/schema';
 
 type NewNotification = Omit<typeof notifications.$inferInsert, 'id' | 'sequence' | 'createdAt' | 'readAt'>;
+function notificationView(row: typeof notifications.$inferSelect): GenerationNotification {
+  return {
+    id: row.id, sequence: row.sequence, jobId: row.jobId, kind: row.kind, tripId: row.tripId,
+    title: row.title, message: row.message, createdAt: row.createdAt.getTime(), readAt: row.readAt?.getTime() ?? null,
+    ...(row.shareImageStyle ? { shareImageStyle: row.shareImageStyle } : {}),
+  };
+}
+
+export async function recordShareImageNotification(userId: string, trip: Trip, style: TripShareImageStyle): Promise<GenerationNotification> {
+  const now = new Date();
+  const [row] = await db.insert(notifications).values({
+    id: uid(), userId, jobId: uid(), kind: 'success', tripId: trip.id,
+    destination: trip.destination, days: trip.days.length, shareImageStyle: style,
+    title: `${trip.title} · 图片已生成`, message: '旅行海报已生成，可随时下载图片。',
+    jobCreatedAt: now, createdAt: now,
+  }).returning();
+  if (!row) throw new Error('海报通知保存失败');
+  return notificationView(row);
+}
 export async function recordGenerationNotification(input: NewNotification, writer: Pick<typeof db, 'insert'> = db): Promise<void> {
   await writer.insert(notifications).values({ ...input, id: uid(), createdAt: new Date() })
     .onConflictDoNothing({ target: [notifications.userId, notifications.jobId] });
@@ -19,10 +38,7 @@ export async function listNotifications(userId: string, before?: number, limit =
     const newest = await tx.select({ sequence: notifications.sequence }).from(notifications).where(owner).orderBy(desc(notifications.sequence)).limit(1);
     const page = rows.slice(0, limit);
     return {
-      items: page.map((row) => ({
-        id: row.id, sequence: row.sequence, jobId: row.jobId, kind: row.kind, tripId: row.tripId,
-        title: row.title, message: row.message, createdAt: row.createdAt.getTime(), readAt: row.readAt?.getTime() ?? null,
-      })),
+      items: page.map(notificationView),
       hasUnread: unread.length > 0,
       readThrough: newest[0]?.sequence ?? 0,
       nextCursor: rows.length > limit ? page.at(-1)?.sequence ?? null : null,
@@ -44,7 +60,7 @@ export async function readAllNotifications(userId: string, through: number): Pro
 }
 
 export async function getGenerationResult(userId: string, jobId: string): Promise<GenerationJobView | null> {
-  const [row] = await db.select().from(notifications).where(and(eq(notifications.userId, userId), eq(notifications.jobId, jobId))).limit(1);
+  const [row] = await db.select().from(notifications).where(and(eq(notifications.userId, userId), eq(notifications.jobId, jobId), isNull(notifications.shareImageStyle))).limit(1);
   return row ? {
     jobId: row.jobId, status: row.kind === 'success' ? 'done' : 'error', tripId: row.tripId,
     createdAt: row.jobCreatedAt.getTime(), destination: row.destination, days: row.days, message: row.message,

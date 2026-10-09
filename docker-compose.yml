@@ -25,8 +25,10 @@ services:
     ports:
       - "127.0.0.1:${APP_PORT:-3001}:3001"
     # 库内景点封面（data/media 不进镜像）：只读挂载，图片由上游导出后同步到宿主机该目录
+    # 分享海报成品（10-08）需要写入：单独挂一个可写子目录，其余媒体目录保持只读
     volumes:
       - ./data/media:/app/data/media:ro
+      - ./data/media/share-posters:/app/data/media/share-posters
     depends_on:
       - db
 

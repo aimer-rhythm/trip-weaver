@@ -1,4 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox';
+import { TripShareImageResponseSchema, TripShareImageStyleSchema } from './schemas';
 
 const sequence = Type.Integer({ minimum: 0, maximum: Number.MAX_SAFE_INTEGER });
 export const GenerationNotificationSchema = Type.Object({
@@ -11,8 +12,15 @@ export const GenerationNotificationSchema = Type.Object({
   message: Type.String(),
   createdAt: Type.Number(),
   readAt: Type.Union([Type.Number(), Type.Null()]),
+  shareImageStyle: Type.Optional(TripShareImageStyleSchema),
 });
 export type GenerationNotification = Static<typeof GenerationNotificationSchema>;
+/** POST 生图时附带本次通知；GET 回显仍只返回图片。 */
+export const TripShareImageGeneratedResponseSchema = Type.Object({
+  ...TripShareImageResponseSchema.properties,
+  notification: Type.Optional(GenerationNotificationSchema),
+});
+export type TripShareImageGeneratedResponse = Static<typeof TripShareImageGeneratedResponseSchema>;
 export const NotificationPageSchema = Type.Object({
   items: Type.Array(GenerationNotificationSchema),
   hasUnread: Type.Boolean(),

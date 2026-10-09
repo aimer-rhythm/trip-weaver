@@ -3,10 +3,21 @@ import { assertSafeBaseUrl } from './ssrfGuard';
 
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const MAX_JSON_BYTES = 15 * 1024 * 1024;
+// 整条降级链共享的预算；单站时等价于原有的 180 秒单次超时
+const TOTAL_TIMEOUT_MS = 180_000;
+
+/** 生图结果在服务端只以字节流传手：落盘与对外 URL 由分享海报服务负责 */
+export type GeneratedShareImage = { bytes: Buffer; mimeType: TripShareImageResponse['mimeType'] };
+
 export interface ImageGenerationConfig { baseUrl: string; apiKey: string; model: string }
 
-export function imageError(message: string, statusCode = 502) {
-  return Object.assign(new Error(message), { statusCode });
+/** retryable=false 表示换站也不会成功（请求本身错了），调用方应直接失败而不是降级 */
+export function imageError(message: string, statusCode = 502, retryable = true) {
+  return Object.assign(new Error(message), { statusCode, retryable });
+}
+
+function isImageError(error: unknown): error is Error & { statusCode: number; retryable: boolean } {
+  return error instanceof Error && 'statusCode' in error;
 }
 
 async function readLimited(response: Response, limit: number): Promise<Buffer> {
@@ -30,23 +41,31 @@ async function readLimited(response: Response, limit: number): Promise<Buffer> {
   return Buffer.concat(chunks);
 }
 
-export function encodeShareImage(bytes: Buffer): TripShareImageResponse {
+export function encodeShareImage(bytes: Buffer): GeneratedShareImage {
   if (!bytes.length || bytes.length > MAX_IMAGE_BYTES) throw imageError('生成图片大小异常');
-  let mimeType: TripShareImageResponse['mimeType'];
+  let mimeType: GeneratedShareImage['mimeType'];
   if (bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) mimeType = 'image/png';
   else if (bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255) mimeType = 'image/jpeg';
   else if (bytes.toString('ascii', 0, 4) === 'RIFF' && bytes.toString('ascii', 8, 12) === 'WEBP') mimeType = 'image/webp';
   else throw imageError('生图服务未返回有效的 PNG、JPEG 或 WebP 图片');
-  return { dataUrl: `data:${mimeType};base64,${bytes.toString('base64')}`, mimeType };
+  return { bytes, mimeType };
 }
 
-export async function generateShareImage(config: ImageGenerationConfig, prompt: string): Promise<TripShareImageResponse> {
-  if (!config.apiKey) throw imageError('AI 生图尚未配置，请管理员设置 IMAGE_API_KEY', 503);
-  const signal = AbortSignal.timeout(180_000);
+/** HTTP 4xx 里除鉴权失败与限流外都是请求本身的问题：换站也不会成功 */
+function isRequestError(status: number): boolean {
+  return status >= 400 && status < 500 && status !== 401 && status !== 403 && status !== 429;
+}
+
+/** 单站尝试；失败抛 imageError，可降级性写在 retryable 上 */
+async function attemptImageGeneration(config: ImageGenerationConfig, prompt: string, signal: AbortSignal): Promise<GeneratedShareImage> {
   try {
-    await assertSafeBaseUrl(config.baseUrl);
+    try {
+      await assertSafeBaseUrl(config.baseUrl);
+    } catch {
+      throw imageError('生图接口地址配置不正确', 503, false);
+    }
     const base = new URL(config.baseUrl);
-    if (base.username || base.password || base.search || base.hash) throw imageError('生图接口地址配置不正确', 503);
+    if (base.username || base.password || base.search || base.hash) throw imageError('生图接口地址配置不正确', 503, false);
     const response = await fetch(`${config.baseUrl.replace(/\/+$/, '')}/images/generations`, {
       method: 'POST', signal, redirect: 'error',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiKey}` },
@@ -54,11 +73,15 @@ export async function generateShareImage(config: ImageGenerationConfig, prompt: 
     });
     if (!response.ok) {
       await response.body?.cancel();
-      throw imageError(response.status === 401 || response.status === 403 ? '生图服务鉴权失败，请管理员检查配置' : response.status === 429 ? '生图服务繁忙或额度不足，请稍后重试' : `生图服务暂不可用（HTTP ${response.status}）`);
+      throw imageError(
+        response.status === 401 || response.status === 403 ? '生图服务鉴权失败，请管理员检查配置' : response.status === 429 ? '生图服务繁忙或额度不足，请稍后重试' : `生图服务暂不可用（HTTP ${response.status}）`,
+        502,
+        !isRequestError(response.status),
+      );
     }
     let body: unknown;
     try { body = JSON.parse((await readLimited(response, MAX_JSON_BYTES)).toString('utf8')); }
-    catch (error) { if (error instanceof Error && 'statusCode' in error) throw error; throw imageError('生图服务响应格式异常'); }
+    catch (error) { if (isImageError(error)) throw error; throw imageError('生图服务响应格式异常'); }
     const first = body && typeof body === 'object' && 'data' in body && Array.isArray(body.data) ? body.data[0] as unknown : undefined;
     if (!first || typeof first !== 'object') throw imageError('生图服务没有返回图片');
     if ('b64_json' in first && typeof first.b64_json === 'string' && first.b64_json) {
@@ -76,7 +99,29 @@ export async function generateShareImage(config: ImageGenerationConfig, prompt: 
     }
     throw imageError('生图服务没有返回图片');
   } catch (error) {
-    if (error instanceof Error && 'statusCode' in error) throw error;
+    if (isImageError(error)) throw error;
     throw imageError(signal.aborted ? '图片生成超时，请稍后重试' : '无法连接生图服务，请稍后重试');
   }
+}
+
+/**
+ * 按配置顺序尝试中转站：可重试故障降级到下一站，首个成功即返回。
+ * 全部失败时抛出最后一次真实错误；请求本身出错（HTTP 4xx）与本站配置不合法则立即失败。
+ */
+export async function generateShareImage(providers: ImageGenerationConfig[], prompt: string): Promise<GeneratedShareImage> {
+  const usable = providers.filter(provider => provider.baseUrl && provider.apiKey);
+  if (!usable.length) throw imageError('AI 生图尚未配置，请管理员设置 IMAGE_API_KEY', 503);
+  const deadline = Date.now() + TOTAL_TIMEOUT_MS;
+  let lastError: Error | null = null;
+  for (const provider of usable) {
+    const remainingMs = deadline - Date.now();
+    if (remainingMs <= 0) break;
+    try {
+      return await attemptImageGeneration(provider, prompt, AbortSignal.timeout(remainingMs));
+    } catch (error) {
+      if (!isImageError(error) || !error.retryable) throw error;
+      lastError = error;
+    }
+  }
+  throw lastError ?? imageError('无法连接生图服务，请稍后重试');
 }

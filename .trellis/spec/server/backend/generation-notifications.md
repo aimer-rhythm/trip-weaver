@@ -72,3 +72,59 @@ onDone: (_tripId, jobId) => {
 // 全部已读使用已返回给客户端的边界，保留后续消息。
 where(and(eq(userIdColumn, userId), lte(sequenceColumn, through)));
 ```
+
+## 8. 海报完成通知（2026-10-09）
+
+### 适用范围
+
+AI 旅行海报生成完成后的账号通知、即时提醒与浏览器下载。复用站内通知，不请求系统推送权限。
+
+### 接口与存储
+
+- `generation_notifications.share_image_style TEXT NULL`：空值为原行程通知；非空为共享 `TripShareImageStyle`，schema 与幂等迁移同步。
+- `GenerationNotification.shareImageStyle?` 是可选判别字段，兼容旧通知。
+- `POST /api/trips/:id/share-image` 返回 `TripShareImageGeneratedResponse`：原 `url,mimeType` 加可选 `notification`。GET 仍返回纯 `TripShareImageResponse`。
+- `createTripShareImageService(store, generate?, notify?)` 在合并中的生成 promise 内，保存图片成功后调用一次 notify；缓存命中和 GET 不调用。
+
+### 契约
+
+每次真实生成（含 regenerate）新增通知；同行程同风格合并请求共享通知。通知不保存会被替换删除的旧图片 URL，点击「下载图片」通过鉴权 GET 获取对应风格当前有效成品。海报通知不能作为 `getGenerationResult` 的结果，也不能仅因打开行程详情而被标已读。手动下载发起成功或用户全部已读才更新已读。
+
+前端模块级任务在 AppLayout 账号生命周期内共享，使用账号与当前任务对象拒绝退出/切换账号后迟到的响应。成功 POST 每次发起一次下载；GET 回显从不下载。下载异常独立于生成状态，保持成品与手动恢复入口。即时事件刷新通知缓存并按通知 ID 与轮询去重；刷新页面只建立基线，不重放旧提醒。
+
+Toast 保留现有桌面右上角/手机底部样式。原生 dialog 打开时挂入当前弹窗，确保位于顶层且可交互；下载失败在 Toast 内显示。只在存在 Toast 时观察弹窗挂载，卸载清理 MutationObserver；隐藏/失焦窗口暂停自动消失计时。微信跳过自动下载，提醒提供成品预览及长按保存。文案只承诺「已发起自动下载」，不声称操作系统已保存文件。
+
+### 校验与错误矩阵
+
+| 场景 | 行为 |
+| --- | --- |
+| 图片生成或保存失败 | 不发布成功通知，不自动下载，保留上一成品 |
+| 图片保存成功但通知数据库写入失败 | 记录非敏感错误；返回图片，前端临时提醒与下载仍可用 |
+| 下载触发抛错 | 成品保持成功，清理临时链接，提示手动下载 |
+| 通知指向已删除/已修改行程或丢失图片 | GET 404；原页面保留，提示打开行程重新生成 |
+| 非法图片/通知响应 | TypeBox 校验失败，不发布成功或下载 |
+| 浏览器关闭后服务端完成 | 持久通知保留；下次可手动下载，不承诺关闭网站时自动下载 |
+| 微信 | 不声称自动保存，打开图片后长按保存 |
+
+### 正常、基线与反例
+
+- 正常：关闭弹窗或切到首页 → 图片生成 → Toast + 单次下载 + 铃铛未读点。
+- 基线：刷新再打开已有海报 → GET 回显，零新通知、零自动下载。
+- 反例：按行程与风格永久去重下载，导致重新生成的新图不交付；在组件卸载后丢掉完成提醒。
+
+### 必要验证
+
+- `tripShareImage.test.ts`：保存后通知、并发合并、缓存无通知、重新生成新通知、失败不通知。
+- `scripts/verify-trip-share-image.mts`：真实隔离 PostgreSQL 的旧表补列与幂等迁移、持久记录、账号隔离、已读边界、GET 无通知、通知写入故障不丢图片。可用 `SHARE_IMAGE_TEST_DATABASE_URL` 指定本地测试实例。
+- `trip-share-image-browser.mjs`：弹窗内提醒、轮询去重、每次重新生成下载、切页交付、刷新静默、通知手动下载、失败恢复、微信与退出后迟到响应。
+- `navigation-notifications-browser.mjs`：原行程通知、导航保存 guard、桌面/手机回归。
+
+### 错误与正确
+
+```ts
+// 错误：同风格首次后永久禁止下载，新成品也被跳过。
+if (delivered.has(`${trip.id}:${style}`)) return;
+// 正确：成功 POST 按本次任务交付，GET 回显不产生交付事件。
+if (currentUserId !== userId || jobs.get(trip.id) !== running) return;
+try { downloadShareImage(image, trip.title); } catch { /* 保留成功成品与手动入口 */ }
+```

@@ -19,6 +19,7 @@ import type {
   TripSchema,
   TripShareImageRequestSchema,
   TripShareImageResponseSchema,
+  TripShareImageStyleSchema,
   TransitLegSchema,
 } from './schemas';
 import type {
@@ -71,6 +72,7 @@ export type ResearchPoi = Static<typeof ResearchPoiSchema>;
 export type PoiPhoto = Static<typeof PoiPhotoSchema>;
 export type Trip = Static<typeof TripSchema>;
 export type TripShareImageRequest = Static<typeof TripShareImageRequestSchema>;
+export type TripShareImageStyle = Static<typeof TripShareImageStyleSchema>;
 export type TripShareImageResponse = Static<typeof TripShareImageResponseSchema>;
 export type TripExport = Static<typeof TripExportSchema>;
 export type GenerateForm = Static<typeof GenerateFormSchema>;

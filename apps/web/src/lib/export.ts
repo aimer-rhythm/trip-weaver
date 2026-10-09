@@ -14,8 +14,7 @@ function downloadUrl(url: string, filename: string): void {
   a.href = url;
   a.download = filename;
   document.body.appendChild(a);
-  a.click();
-  a.remove();
+  try { a.click(); } finally { a.remove(); }
 }
 
 /** JSON 备份：版本化完整数据（与导入成对，跨账号还原） */
@@ -30,7 +29,8 @@ export function exportTripJson(trip: Trip): void {
 /** 非微信环境直接触发下载；微信由调用方走「长按保存」引导（R12） */
 export function downloadShareImage(image: TripShareImageResponse, title: string): void {
   const extension = image.mimeType === 'image/jpeg' ? 'jpg' : image.mimeType === 'image/webp' ? 'webp' : 'png';
-  downloadUrl(image.dataUrl, `${safeFileName(title)}-AI分享图.${extension}`);
+  // 成品是同源静态文件：a[download] 直接下载，不需要再走一遍 base64
+  downloadUrl(image.url, `${safeFileName(title)}-AI分享图.${extension}`);
 }
 
 export function printTrip(): void {
