@@ -1610,3 +1610,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 41: 行程专属建议提交与归档
+
+**Date**: 2026-10-09
+**Task**: 行程专属建议提交与归档
+**Package**: server
+**Branch**: `master`
+
+### Summary
+
+第三阶段在最终路线稳定后撰写专属建议与注意事项，证据来自最终入选地点并回填来源，前端按输入快照检测过期；15 项单测、typecheck、构建与天气/建议浏览器回归通过后提交并归档。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `5aafa85` | (see git log) |
+| `ad86faa` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
