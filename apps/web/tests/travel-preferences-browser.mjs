@@ -13,6 +13,7 @@ page.on('pageerror', (error) => errors.push(error.message));
 const defaults = () => ({ preferences: [], transportMode: 'transit', pace: null, partySize: 2, extraNotes: '' });
 const saved = { a: defaults(), b: defaults() };
 let account = 'a';
+let authenticated = true;
 let failLoad = false;
 let failSave = false;
 let generationOk = false;
@@ -25,13 +26,15 @@ await page.route((url) => url.pathname.startsWith('/api/'), async (route) => {
   const req = route.request();
   const path = new URL(req.url()).pathname;
   const ok = (data) => route.fulfill({ json: apiSuccess(data) });
-  if (path === '/api/auth/me') return ok({ id: account, email: `${account}@example.test` });
+  if (path === '/api/auth/me') return authenticated ? ok({ id: account, email: `${account}@example.test` })
+    : route.fulfill({ status: 401, json: apiFailure(401, '请登录') });
   if (path === '/api/auth/config') return ok({ registrationMode: 'open', githubEnabled: false });
   if (path === '/api/auth/login') {
+    authenticated = true;
     account = req.postDataJSON().email.startsWith('b@') ? 'b' : 'a';
     return ok({ id: account, email: `${account}@example.test` });
   }
-  if (path === '/api/auth/logout') return ok({ ok: true });
+  if (path === '/api/auth/logout') { authenticated = false; return ok({ ok: true }); }
   if (path === '/api/trips') return ok({ items: [], total: 0, destinations: [] });
   if (path === '/api/notifications') return ok({ items: [], hasUnread: false, readThrough: 0, nextCursor: null });
   if (path === '/api/generations/current') return ok(null);
@@ -163,6 +166,8 @@ try {
   await checkBounds();
   await page.screenshot({ path: 'data/travel-preferences-review/home-mobile.png' });
   await page.setViewportSize({ width: 1440, height: 960 });
+  // 跨布局断点会关闭弹层，重新打开仍应保留同一份草稿。
+  await openMore();
 
   // 未提交草稿在账号切换后清理，账号 B 不继承 A 的记忆。
   await page.getByLabel('备注').fill('尚未生成的新草稿');
@@ -182,9 +187,10 @@ try {
 
   // 图标退出、同一 SPA 重新登录，恢复账号 A 上次生成成功时的偏好。
   await page.getByRole('button', { name: '退出登录', exact: true }).click();
+  await page.getByRole('button', { name: '登录', exact: true }).click();
   await page.getByLabel('邮箱').fill('a@example.test');
   await page.getByLabel('密码', { exact: true }).fill('fixture-password');
-  await page.getByRole('button', { name: '登录', exact: true }).click();
+  await page.getByRole('dialog', { name: '登录织程' }).getByRole('button', { name: '登录', exact: true }).click();
   await page.getByRole('link', { name: '返回首页', exact: true }).click();
   await openMore();
   assert.equal(await page.getByLabel('备注').inputValue(), submittedNotes);

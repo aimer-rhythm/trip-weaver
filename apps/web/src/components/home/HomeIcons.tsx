@@ -6,6 +6,10 @@ interface IconProps {
   className?: string;
 }
 
+export const PeopleIcon = ({ className }: IconProps) => <Icon className={className}><circle cx="9" cy="7" r="3" /><path d="M3 21v-4a6 6 0 0 1 12 0v4M16 4a3 3 0 0 1 0 6M18 13a5 5 0 0 1 3 5v3M7 17v4M11 17v4" /></Icon>;
+
+export const HouseIcon = ({ className }: IconProps) => <Icon className={className}><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></Icon>;
+
 function Icon({ className, children }: IconProps & { children: ReactNode }) {
   return (
     <svg
