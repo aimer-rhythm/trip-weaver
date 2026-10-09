@@ -1575,3 +1575,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 40: 统一移动端顶部导航
+
+**Date**: 2026-10-09
+**Task**: 统一移动端顶部导航
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+移除首页与行程列表的底部导航与留白，共用顶部胶囊，访客点我的行程仍走登录弹窗；home-mobile-browser 8 档视口回归通过并首次提交该回归脚本。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `269e614` | (see git log) |
+| `518d1b4` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
