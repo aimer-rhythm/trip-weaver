@@ -1540,3 +1540,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 39: 分享图线提交归档与审核额度排查
+
+**Date**: 2026-10-09
+**Task**: 分享图线提交归档与审核额度排查
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+分享图四项任务（导出弹窗双风格生图、生图多中转降级、海报落盘持久化、完成通知）一条提交落地并归档；此前排查确认 apps/server/.env 未同步 50 导致景点审核额度不生效，已改为 300。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `6c0f620` | (see git log) |
+| `f10faa3` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
