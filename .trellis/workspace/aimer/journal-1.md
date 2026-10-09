@@ -1750,3 +1750,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 45: 首页登录与偏好任务收尾归档
+
+**Date**: 2026-10-09
+**Task**: 首页登录与偏好任务收尾归档
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+补齐访客行程入口与焦点回归断言；归档首页访客登录、偏好记忆、日期面板去底栏、透明飞鸟标志四项已落地任务。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `c50e405` | (see git log) |
+| `22475ce` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
