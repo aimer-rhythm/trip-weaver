@@ -18,6 +18,7 @@ const trips = [
 let notes = [
   { id: 'note-2', sequence: 2, jobId: 'old-2', kind: 'success', tripId: 'trip-0', title: '杭州 3 天行程已生成', message: '路线与每日安排已准备好。', createdAt: now, readAt: null },
   { id: 'note-1', sequence: 1, jobId: 'old-1', kind: 'success', tripId: 'trip-1', title: '北京 4 天行程已生成', message: '路线与每日安排已准备好。', createdAt: now - 86400000, readAt: now - 80000000 },
+  { id: 'note-0', sequence: 0, jobId: 'old-0', kind: 'success', tripId: 'trip-1', title: '厦门 2 天行程已生成', message: '路线与每日安排已准备好。', createdAt: now - 4 * 86400000, readAt: now - 4 * 86400000 },
 ];
 let job = null;
 let starts = 0;
@@ -95,6 +96,13 @@ try {
   await page.getByLabel('通知，有未读消息',{exact:true}).click();
   await page.getByRole('region',{name:'通知面板'}).waitFor();
   assert.equal(await page.locator('[data-testid=notification-dot]').innerText(),'');
+  assert.equal(await page.locator('.notification-item',{hasText:'杭州 3 天行程已生成'}).locator('time').innerText(),'刚刚');
+  assert.match(await page.locator('.notification-item',{hasText:'北京 4 天行程已生成'}).locator('time').innerText(),/^昨天 \d{2}:\d{2}$/);
+  assert.match(await page.locator('.notification-item',{hasText:'厦门 2 天行程已生成'}).locator('time').innerText(),/^\d+\/\d+ \d{2}:\d{2}$/);
+  await page.locator('.notification-item',{hasText:'厦门 2 天行程已生成'}).locator('time').click();
+  await page.waitForTimeout(300);
+  assert.equal(new URL(page.url()).pathname,'/trips');
+  assert.equal(await page.locator('.notification-disclosure').getAttribute('open'),'');
   await page.mouse.move(700,140);
   await page.screenshot({path:path.join(output,'desktop-notifications.png')});
   await page.getByRole('button',{name:'全部已读',exact:true}).click();
@@ -108,7 +116,7 @@ try {
   notes[0].readAt=null;
   await page.reload();
   await page.getByLabel('通知，有未读消息',{exact:true}).click();
-  await page.getByRole('button',{name:/杭州 3 天行程已生成，未读/}).click();
+  await page.getByRole('button',{name:/查看行程：杭州 3 天行程已生成（未读）/}).click();
   await page.waitForURL('**/trips/trip-0');
   await page.locator('.editor-page').waitFor();
   assert.ok(notes[0].readAt);
@@ -131,11 +139,11 @@ try {
   await page.reload();
   await page.locator('.generation-nav:visible').click();
   await page.waitForURL('**/generations/active-job');
-  await page.getByText('2. 安排每日路线',{exact:true}).waitFor();
+  await page.getByText('安排每日路线',{exact:true}).waitFor();
   await page.getByRole('link',{name:'我的行程',exact:true}).click();
   await page.getByRole('heading',{name:'我的行程',exact:true}).waitFor();
   await page.locator('.generation-nav:visible').click();
-  await page.getByText('2. 安排每日路线',{exact:true}).waitFor();
+  await page.getByText('安排每日路线',{exact:true}).waitFor();
   assert.equal(starts,0);
   await page.getByRole('link',{name:'我的行程',exact:true}).click();
   await page.bringToFront();
@@ -155,7 +163,7 @@ try {
   await page.getByLabel('通知，有未读消息',{exact:true}).waitFor();
   assert.equal(await page.locator('.notification-toast').count(),0);
   await page.getByLabel('通知，有未读消息',{exact:true}).click();
-  await page.getByRole('button',{name:/杭州 3 天行程已生成，未读/}).click();
+  await page.getByRole('button',{name:/查看行程：杭州 3 天行程已生成（未读）/}).click();
   await page.waitForURL('**/trips/trip-2');
   console.log('PASS 关闭重开保留未读，旧通知不重放弹窗，点击打开完成行程');
 
