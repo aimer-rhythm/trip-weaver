@@ -94,17 +94,41 @@ try {
   console.log('PASS 成功审计 SQL 失败时行程事务回滚');
 
   const success = createJob('success');
+  await pool.query(`INSERT INTO canonical_places (id,city,name,category,verified,source,lat,lng,payload,created_at)
+    VALUES ('advice-palace','北京','故宫博物院','文化',TRUE,'goldset',39.9163,116.3972,
+      '{"reservation":"required","reservationNote":"需提前实名预约"}',NOW())`);
+  await pool.query(`INSERT INTO research_evidence (id,place_id,city,kind,strength,content,source_url,fetched_at)
+    VALUES ('advice-evidence','advice-palace','北京','xhs_warning','weak','有游客反馈院落之间步行较多','https://example.com/palace-evidence',NOW())`);
   await runGeneration(success, form, cfg, logger);
   assert.equal(success.status, 'done');
   assert.deepEqual(await counts(success.userId), { trips: 1, done: 1 });
   const saved = (await pool.query(`SELECT data FROM trips WHERE id=$1`, [success.tripId])).rows[0].data;
   assert.equal(saved.days.length, 3);
+  const { personalAdviceIsCurrent, TripSchema } = await import('@tripweaver/shared');
+  const { Value } = await import('@sinclair/typebox/value');
+  assert.ok(Value.Check(TripSchema, saved));
+  assert.ok(saved.meta.advice?.suggestions.length && saved.meta.advice?.cautions.length);
+  assert.ok(personalAdviceIsCurrent(saved), '建议基于最终路线，保存新版本ID后仍有效');
+  assert.ok(saved.meta.advice.suggestions.some((item: { sources: { url: string }[] }) =>
+    item.sources.some(s => s.url === 'https://example.com/palace-evidence')), '真实SQL知识库证据通过模型工具引用后持久化');
   for (const day of saved.days) {
     assert.ok(day.activities.length <= 8);
     assert.ok(day.activities.some((a: { name: string }) => a.name.startsWith('午餐')));
     assert.ok(day.activities.some((a: { name: string }) => a.name.startsWith('晚餐')));
   }
   console.log('PASS 候选不足的美食行程完整生成并同时记账');
+  await pool.query(`DELETE FROM research_evidence WHERE id='advice-evidence'`);
+  await pool.query(`DELETE FROM canonical_places WHERE id='advice-palace'`);
+
+  llm.setAdviceResponse('error');
+  const adviceFallback = createJob('advice-fallback');
+  try { await runGeneration(adviceFallback, form, cfg, logger); }
+  finally { llm.setAdviceResponse('tool'); }
+  assert.equal(adviceFallback.status, 'done');
+  const fallbackSaved = (await pool.query(`SELECT data FROM trips WHERE id=$1`, [adviceFallback.tripId])).rows[0].data;
+  assert.equal(fallbackSaved.meta.advice, undefined);
+  assert.deepEqual(await counts(adviceFallback.userId), { trips: 1, done: 1 });
+  console.log('PASS 专属建议模型失败仍交付行程，成功生成则持久化最终行程专属建议');
 
   const savedNotice = (await listNotifications(success.userId)).items[0]!;
   assert.equal(savedNotice.tripId, success.tripId);
