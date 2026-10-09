@@ -1714,3 +1714,39 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 44: 顶部导航任务收尾与归档
+
+**Date**: 2026-10-09
+**Task**: 顶部导航任务收尾与归档
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+生成页去掉离开提示与序号、移除步骤光环动效，补充 home/calendar 图标变体；generation-browser 与 navigation-notifications 回归通过后归档顶部导航任务。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `8dd0abb` | (see git log) |
+| `5313530` | (see git log) |
+| `1c661b0` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
