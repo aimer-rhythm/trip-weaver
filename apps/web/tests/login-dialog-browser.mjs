@@ -62,8 +62,15 @@ try {
   await page.goto(base);
   await page.getByRole('button', { name: '开始规划', exact: true }).waitFor();
   assert.equal(new URL(page.url()).pathname, '/');
-  assert.equal(await page.getByRole('link', { name: '我的行程', exact: true }).count(), 0);
+  const tripsLink = page.getByRole('navigation', { name: '主导航' }).getByRole('link', { name: '我的行程', exact: true });
+  assert.ok(await tripsLink.isVisible(), '访客也能从顶部进入我的行程');
   assert.equal(await page.getByRole('dialog').count(), 0);
+  await tripsLink.click();
+  await page.getByRole('dialog', { name: '登录织程' }).waitFor();
+  assert.equal(new URL(page.url()).pathname, '/', '登录前保留首页');
+  await page.keyboard.press('Escape');
+  await page.getByRole('dialog').waitFor({ state: 'hidden' });
+  assert.ok(await tripsLink.evaluate(el => el === document.activeElement), '关闭登录后焦点返回顶部入口');
   const plan = page.getByRole('button', { name: '开始规划', exact: true });
   assert.equal(await plan.isDisabled(), true, '访客未选目的地和节奏时不可规划');
   assert.equal(await plan.getAttribute('title'), '先选目的地与节奏');
@@ -134,7 +141,8 @@ try {
   expireTrips = true;
   await page.getByRole('link', { name: '我的行程', exact: true }).click();
   await dialog.waitFor();
-  assert.equal(await page.getByRole('link', { name: '我的行程', exact: true }).count(), 0);
+  assert.equal(await page.getByRole('button', { name: '退出登录', includeHidden: true }).count(), 0, '会话过期后移除账号操作');
+  assert.equal(await page.getByRole('link', { name: '我的行程', exact: true, includeHidden: true }).count(), 1, '会话过期后仍保留顶部行程入口');
   expireTrips = false;
   authenticated = false;
   await page.goto(`${base}/login?error=github_denied`);
