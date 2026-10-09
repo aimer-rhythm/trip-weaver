@@ -525,8 +525,9 @@ LLM planner/reviewer loop for the live pipeline.
   an area and never names a specific hotel. `verify-c2` asserts `trip.lodging === undefined` for
   the unspecified case; only a user-supplied `form.lodging` is persisted.
 - The writer phase reuses the `review` phase name on the SSE stream (frontend contract unchanged)
-  but is semantically "title the trip". Its tool surface is EXACTLY `update_titles` (10-02).
-  The complete draft is already in the initial prompt. A successful write terminates the phase;
+  and now includes title writing plus final-itinerary advice (10-05; see `trip-advice.md`).
+  The title agent's tool surface is EXACTLY `update_titles` (10-02).
+  The complete draft is already in the initial prompt. A successful write terminates the title agent;
   font/length/day-count errors leave the draft unchanged and allow at most two repairs (`maxTurns=3`).
   The tool cannot touch activities, order, times, or the activity copy.
   **No separate model pass writes activity descriptions (09-25, tightened 10-02)**:
@@ -540,11 +541,12 @@ LLM planner/reviewer loop for the live pipeline.
   cannot reintroduce them. Synthetic activities with no candidate source (empty-day placeholder, meal anchor
   without a food candidate) get a code-authored truthful sentence; when a candidate source exists
   but its intro is empty, the description stays EMPTY — never fabricate. Optional `notes` are
-  included in `update_titles`; do not expose the legacy `submit_review` tool to the writer.
+  included in `update_titles` for compatibility, but the prompt now asks for empty notes;
+  dedicated final-itinerary advice is written later. Do not expose the legacy `submit_review` tool to the writer.
 - **The writer runs CONCURRENTLY with geo/repair (09-25).** It starts right after
   `draft.validate()` passes and is `await`ed after `endPhase('plan')`. Measured effect: the writer's
   42–82s (reasoning-dominated, high variance) no longer queues behind geo, and `plan`'s ~4s leaves
-  the critical path. Total wall clock ≈ `research + max(plan, review) + tail`, NOT
+  the critical path. Total wall clock ≈ `research + max(plan, titles) + final advice + tail`, NOT
   `research + plan + review`. Do NOT re-serialize it: nothing in the copy path needs coordinates or
   legs. Concurrency is safe because the writer touches only `title`/`days[].title` while the fixers
   move activities between days — disjoint fields, and the fixers never delete activities.

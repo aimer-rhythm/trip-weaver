@@ -1,4 +1,4 @@
-// 生成主流程：调研 → 确定性排程 → 地理增强与标题文案 → 原子落库。
+// 生成主流程：调研 → 确定性排程 → 地理增强、标题与专属建议 → 原子落库。
 // 唯一入口 runGeneration —— 路由只见任务号与 SSE，Agent 细节全部封装在此（架构 §2 单入口隔离）
 import {
   feasibilityReviewNotes,
@@ -46,6 +46,7 @@ import { buildDraftTools } from './tools/draftTools';
 import type { ReviewOutcome } from './tools/reviewTools';
 import { retrieveContext } from './retrieveContext';
 import { prepareResearchContext } from './researchContext';
+import { prepareTripAdviceEvidence, runTripAdviceWriter } from './tripAdvice';
 import { applyDeterministicSchedule } from './scheduling/buildDraft';
 import { ScheduleDateConflictError } from './scheduling/schedule';
 import { scheduleClosureConflicts } from './scheduling/dateRepair';
@@ -315,9 +316,9 @@ export async function runGeneration(
       throw new GenerationFailure(`行程排程结果不完整（${shape}，候选 ${research.pool.length} 个）：${scheduleProblems.join('；')}。请重试`);
     }
 
-    // ---------- 阶段 3：文案（只写标题），与下面的地理/修复并发 ----------
+    // ---------- 阶段 3：标题与专属建议；标题先与下面的地理/修复并发 ----------
     // 文案只写行程和每天标题，不修改活动；与地理增强并发缩短关键路径。
-    // 沿用 review 阶段名（前端与时间线契约不变），语义是「给行程与每天起标题」；
+    // 沿用 review 阶段名（前端与时间线契约不变）；专属建议在最终路线稳定后追加撰写。
     // 活动说明不归它写：research 的候选 intro 已按同一标准写成并直接复用到活动上。
     // 工具面只给 update_titles，成功即结束；改不动活动/顺序/说明。
     // 文案属增强路径：模型没写完也不算失败，草稿里已有候选简介兜底。
@@ -383,13 +384,11 @@ export async function runGeneration(
     if (writerRun.errorMessage) {
       console.warn(`[writer] 文案阶段失败，按已有内容落库：${writerRun.errorMessage.slice(0, 200)}`);
       reviewNotes = ['文案生成未完成，活动说明沿用候选简介。'].slice(0, 5);
-      endPhase('review', 1, '文案降级（按已有内容落库）');
     } else {
       assertAlive(signal);
       reviewNotes = writerRun.turnLimitExceeded
         ? [...review.notes, '文案模型达到单阶段轮次上限，系统按已写内容落库。'].slice(0, 5)
         : review.notes;
-      endPhase('review', 1, writerRun.turnLimitExceeded ? '文案轮次已达上限' : review.submitted ? '文案已提交' : '文案未提交（按已有内容落库）');
     }
 
     const finalSink = sinkFor('review');
@@ -467,6 +466,25 @@ export async function runGeneration(
     // 修订（PR5）：targetTripId 存在时把新行程挂到同一版本链的下一版；否则就是全新行程
     const revisionOf = job.provenance.kind === 'revision' ? job.provenance.targetTripId : undefined;
     const completedDraft = draft.toTrip(reviewNotes, { overview: research.pool, dataSources });
+    // 第三阶段的专属建议使用最终结构，避免并行路线修复让建议中的天序失真。
+    try {
+      assertAlive(signal);
+      const evidence = await runSystemTask('review', 'prepare_trip_advice', '整理行程相关资料', () =>
+        prepareTripAdviceEvidence(completedDraft, retrieveContext, signal));
+      assertAlive(signal);
+      const adviceRun = await runTripAdviceWriter(completedDraft, evidence, {
+        model, apiKey: cfg.apiKey, signal, sink: finalSink,
+        recorder: createLlmRequestRecorder({ jobId: job.id, userId: job.userId, phase: 'review', round: 2 }),
+      });
+      usage.tokensIn += adviceRun.result.tokensIn;
+      usage.tokensOut += adviceRun.result.tokensOut;
+      assertAlive(signal);
+      if (adviceRun.advice) completedDraft.meta.advice = adviceRun.advice;
+    } catch (err) {
+      if (signal.aborted) throw err;
+      logger?.info({ jobId: job.id, errorType: err instanceof Error ? err.name : 'unknown' }, 'trip advice writing degraded');
+    }
+    endPhase('review', 1, completedDraft.meta.advice ? '旅行建议与注意事项已撰写' : '专属建议暂未生成，保留基础提醒');
     completedDraft.weather = await getTripWeather(completedDraft);
     assertAlive(signal);
     const trip = await db.transaction(async (tx) => {

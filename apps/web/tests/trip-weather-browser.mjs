@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
-import { makeSampleTrip, chinaDate, dateForDayIndex } from '@tripweaver/shared';
+import { makeSampleTrip, chinaDate, dateForDayIndex, tripAdviceInputSnapshot } from '@tripweaver/shared';
 import { apiSuccess, apiFailure } from '../../../scripts/lib/api-contract.mjs';
 
 const base = process.env.BASE ?? 'http://127.0.0.1:5173';
@@ -118,14 +118,14 @@ try {
   await page.reload();
   await page.getByRole('region', { name: '行程总览', exact: true }).waitFor();
   await page.getByText('天气服务未配置', { exact: true }).first().waitFor();
-  await page.getByText('本站未接入天气服务', { exact: true }).waitFor();
+  await page.getByText('天气未接入', { exact: true }).waitFor();
   assert.equal(await page.getByText('可稍后重试', { exact: false }).count(), 0, 'a missing data source is not offered as retryable');
   await page.screenshot({ path: `${out}/unconfigured-desktop.png` });
   trip = { ...trip, startDate: '2099-10-01' };
   weatherMode = 'not_needed';
   await page.reload();
   await page.getByRole('region', { name: '行程总览', exact: true }).waitFor();
-  assert.equal(await page.getByText('预报待更新', { exact: true }).count(), 3);
+  assert.equal(await page.locator('.day-weather').getByText('预报待更新', { exact: true }).count(), 3);
   assert.equal(await page.getByText(/\d+–\d+℃/).count(), 0);
   trip = { ...trip, startDate: '' };
   await page.reload();
@@ -149,9 +149,37 @@ try {
     await page.screenshot({ path: `${out}/day-${width}.png` });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
   }
+  const firstId = trip.days[0].activities[0].id;
+  const secondId = trip.days[1].activities[0].id;
+  trip.meta.advice = { version: 1, generatedAt: Date.now(), inputSnapshot: tripAdviceInputSnapshot(trip),
+    suggestions: [
+      { title: '宫苑与胡同分开慢游', text: '第1天按故宫、景山、北海到什刹海的安排逐站游览，把停留时间留给喜欢的院落；第2天再体验雍和宫周边胡同。', activityIds: [firstId, secondId], sources: [] },
+      { title: '园林日留足步行体力', text: '第3天安排了颐和园与圆明园，可按体力选择重点区域，避免为了走遍每一处压缩休息时间。', activityIds: [trip.days[2].activities[0].id], sources: [] },
+    ],
+    cautions: [{ title: '先核实故宫预约', text: '第1天的故宫参观涉及预约；入场与分项展馆要求请通过官方渠道核实后安排，知识库资料不代表实时余票。', activityIds: [firstId], sources: [{ title: '故宫资料来源', url: 'https://example.com/palace' }] }],
+  };
+  for (const width of [1600, 390]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.reload();
+    await page.getByText('宫苑与胡同分开慢游', { exact: true }).waitFor();
+    await page.getByText(/第 2 天有雨雪预报/).waitFor();
+    assert.equal(await page.getByRole('link', { name: '先核实故宫预约：故宫资料来源' }).getAttribute('href'), 'https://example.com/palace');
+    assert.equal(await page.getByText('随身物品', { exact: true }).count(), 0);
+    const suggestions = page.getByRole('region', { name: '旅行建议', exact: true });
+    assert.equal(await suggestions.locator('li').count(), 4, '默认显示全部条目');
+    assert.equal(await page.getByRole('button', { name: /展开完整内容|^收起$/ }).count(), 0);
+    assert.equal(await suggestions.locator('.line-clamp-3').count(), 0, '正文不截断');
+    assert.ok(await page.locator('.editor-left-scroll').evaluate(element => element.scrollWidth <= element.clientWidth + 1));
+    await page.locator('.editor-overview').screenshot({ path: `${out}/personal-advice-${width}.png` });
+  }
+  trip.days[0].activities.reverse();
+  await page.reload();
+  await page.getByRole('status').filter({ hasText: '专属旅行建议与注意事项待更新' }).waitFor();
+  assert.equal(await page.getByText('宫苑与胡同分开慢游', { exact: true }).count(), 0);
+  await page.locator('.editor-overview').screenshot({ path: `${out}/personal-advice-stale.png` });
   assert.equal(writes, 0);
   assert.deepEqual(errors, []);
-  console.log('PASS weather UI: default overview, daily forecasts, advice, unconfigured/error/pending/undated states, no writes, 390/768/1600px; mocked provider data');
+  console.log('PASS weather UI: default overview, daily forecasts, personal advice/sources/stale state, unconfigured/error/pending/undated states, no writes, 390/768/1600px; mocked provider data');
 } catch (error) {
   await page.screenshot({ path: `${out}/failure.png` });
   console.error((await page.locator('body').innerText()).slice(0, 5000));

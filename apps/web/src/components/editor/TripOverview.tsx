@@ -9,8 +9,11 @@ function AdviceList({ title, items, caution = false }: { title: string; items: T
   return <section aria-label={title}>
     <h3 className="mb-3 flex items-center gap-2 text-base font-semibold"><span className="text-[var(--color-brand)]"><EditorIcon name={caution ? 'alert' : 'bulb'} /></span>{title}</h3>
     <ul className="m-0 list-none space-y-2 p-0">
-      {items.map(item => <li key={item.id} className="relative pl-4 text-sm leading-7 text-[var(--editor-muted)] before:absolute before:left-0 before:top-[12px] before:size-1 before:rounded-full before:bg-[var(--color-brand)] before:content-['']">
-        <span className="font-medium text-[var(--editor-ink)]">{item.title}</span>：{item.text}
+      {items.map(item => <li key={item.id} className="relative pl-4 text-sm leading-6 text-[var(--editor-muted)] before:absolute before:left-0 before:top-[10px] before:size-1 before:rounded-full before:bg-[var(--color-brand)] before:content-['']">
+        <span className="block"><span className="font-medium text-[var(--editor-ink)]">{item.title}</span>：{item.text}</span>
+        {!!item.sources?.length && <span className="ml-2 inline-flex flex-wrap gap-x-2 text-xs">
+          {item.sources.filter(source => /^https?:\/\//.test(source.url)).map((source, index) => <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="text-[var(--color-brand)] underline underline-offset-2" aria-label={`${item.title}：${source.title}`}>来源{item.sources!.length > 1 ? index + 1 : ''}</a>)}
+        </span>}
       </li>)}
     </ul>
   </section>;
@@ -23,6 +26,7 @@ export function TripOverview({ trip, weather, loading, onSelectDay, onAddDay, re
   const advice = buildTripAdvice(trip, weather, pois);
   const stops = trip.days.reduce((sum, day) => sum + day.activities.length, 0);
   return <section className="editor-overview pb-2" aria-label="行程总览">
+    {advice.stale && <p role="status" className="mb-4 text-sm leading-6 text-[var(--editor-muted)]">专属旅行建议与注意事项待更新；暂显示基础提醒，重新规划后更新。</p>}
     <div className="mb-5 grid border-b border-[var(--color-border)] pb-5 pt-2 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] [gap:24px]">
       <AdviceList title="旅行建议" items={advice.suggestions} />
       <AdviceList title="注意事项" items={advice.cautions} caution />

@@ -84,6 +84,7 @@ export async function startMockLlm(
   // 调研阶段 system prompt 快照（按目的地记）：验证 search_web 上限随城市覆盖动态注入（09-25 R3）
   const seenResearchPrompts = [];
   let seenWriter = null;
+  let adviceResponse = 'tool';
   let reviewerOverrunAvailable = reviewerOverrunOnce;
   let reviewerOverrunActive = false;
   let reviewerRevisionAvailable = requestRevisionOnce;
@@ -181,6 +182,20 @@ export async function startMockLlm(
           : [{ name: 'update_activity', args: { dayIndex: 1, position: 1, startTime: '09:30', description: '局部修订：延后半小时参观，保留其他安排。' } }]);
       } else if (system.includes('行程规划师')) {
         respondWithToolCalls(res, payload.model, plannerCalls(days, toolResults > 0, { geocodedActivities, includeLodging }));
+      } else if (system.includes('旅行建议撰写员')) {
+        if (adviceResponse === 'error') {
+          res.writeHead(400, { 'content-type': 'application/json' });
+          res.end(JSON.stringify({ error: { message: 'mock advice failure', type: 'invalid_request_error' } }));
+          return;
+        }
+        const { finalItinerary, evidence } = JSON.parse(userText);
+        const day = finalItinerary.days.find(day => day.activities.length);
+        const activity = day.activities[0];
+        const evidenceIds = evidence.filter(e => e.activityIds.includes(activity.id)).slice(0, 2).map(e => e.id);
+        respondWithToolCalls(res, payload.model, [{ name: 'submit_trip_advice', args: {
+          suggestions: [{ title: '按当天体力慢游', text: `第${day.dayIndex}天游览${activity.name}时留出停留与休息时间。`, activityIds: [activity.id], evidenceIds }],
+          cautions: [{ title: '核实参观要求', text: `${activity.name}的预约与入场规则请以官方最新信息为准。`, activityIds: [activity.id], evidenceIds }],
+        } }]);
       } else if (system.includes('行程标题撰写员')) {
         // 09-25：文案阶段只写标题，活动说明直接复用候选 intro（不再经模型二次编写）
         if (toolResults === 0) {
@@ -218,5 +233,6 @@ export async function startMockLlm(
     });
   });
   await new Promise((r) => server.listen(port, '127.0.0.1', r));
-  return { server, seenAuthHeaders, seenRevisions, seenResearchPrompts, get seenWriter() { return seenWriter; }, close: () => server.close() };
+  return { server, seenAuthHeaders, seenRevisions, seenResearchPrompts, get seenWriter() { return seenWriter; },
+    setAdviceResponse(value) { adviceResponse = value; }, close: () => server.close() };
 }
