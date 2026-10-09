@@ -1679,3 +1679,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 43: 首页移动端布局提交与归档
+
+**Date**: 2026-10-09
+**Task**: 首页移动端布局提交与归档
+**Package**: web
+**Branch**: `master`
+
+### Summary
+
+首页手机端改为首屏规划 + 精选城市卡片，目的地换成全屏选择，日期/节奏/偏好共用底部弹层；home-mobile 8 档视口与偏好记忆回归通过后提交并归档。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `d90e1dd` | (see git log) |
+| `466a3e2` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

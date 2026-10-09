@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 42
+- **Total Sessions**: 43
 - **Last Active**: 2026-10-09
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1681 | Active |
+| `journal-1.md` | ~1716 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 43 | 2026-10-09 | 首页移动端布局提交与归档 | `d90e1dd`, `466a3e2` | `master` |
 | 42 | 2026-10-09 | 详情页移动端工具栏验收归档 | `aa4fb12` | `master` |
 | 41 | 2026-10-09 | 行程专属建议提交与归档 | `5aafa85`, `ad86faa` | `master` |
 | 40 | 2026-10-09 | 统一移动端顶部导航 | `269e614`, `518d1b4` | `master` |
