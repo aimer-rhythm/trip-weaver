@@ -16,7 +16,7 @@ import {
   fetchGithubIdentity,
 } from '../auth/github';
 import { SESSION_COOKIE, createSession, destroySession } from '../auth/session';
-import { requireAuth } from '../auth/guard';
+import { requireAuth, resolveUser } from '../auth/guard';
 import { env, hasGithubOauth } from '../env';
 
 const COOKIE_OPTS = {
@@ -153,7 +153,6 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
     return reply.clearCookie(SESSION_COOKIE, { path: '/' }).send({ ok: true });
   });
 
-  app.get('/me', { preHandler: requireAuth }, async (request) => {
-    return request.user!;
-  });
+  // 未登录返回 200 + data:null：访客态是正常状态，401 只会让浏览器在控制台打红字
+  app.get('/me', async (request) => resolveUser(request));
 };
