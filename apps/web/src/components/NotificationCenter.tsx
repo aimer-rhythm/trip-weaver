@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { skipToken, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Value } from '@sinclair/typebox/value';
 import { TripSchema, TripShareImageResponseSchema, type GenerationNotification, type Trip, type TripShareImageResponse } from '@tripweaver/shared';
 import { api, ApiError } from '../api/client';
@@ -51,7 +51,7 @@ export function NotificationCenter({ userId }: { userId: string }) {
   const rows = useMemo(() => query.data?.pages.flatMap((page) => page.items) ?? [], [query.data]);
   const hasUnread = first?.hasUnread ?? false;
   const routeTripId = /^\/trips\/([^/]+)$/.exec(location.pathname)?.[1] ?? '';
-  const displayedTrip = useQuery<Trip>({ queryKey: keys.trip(routeTripId), enabled: false });
+  const displayedTrip = useQuery<Trip>({ queryKey: keys.trip(routeTripId), queryFn: skipToken, enabled: false });
   const markRead = read.mutate;
   const hasToast = toast !== null;
 

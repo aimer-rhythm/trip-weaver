@@ -30,6 +30,8 @@ Evidence: `apps/web/src/api/hooks.ts`, `apps/web/src/pages/PlannerPage.tsx`, `ap
 
 Respect query-specific freshness and retry policy. `useMe` reads a 200/null guest snapshot instead of a 401, auth config is long-lived, and optional source status is disabled until requested and does not retry. Do not copy global defaults blindly when the endpoint has different semantics.
 
+React Query v5 rejects a query that has no `queryFn` regardless of `enabled` — the dev check only looks for the option itself (`useBaseQuery`). A cache-only query that must never fetch therefore passes `queryFn: skipToken`; v5's `defaultQueryOptions` then sets `enabled: false` internally, so the two are equivalent. Omitting it logs `No queryFn was passed as an option` on every render, once per mounted observer.
+
 ## Effects, Timers, and External Subscriptions
 
 Effects are for synchronization with external systems, not for routine derived values. Use `useMemo` for expensive or identity-sensitive derivation and event handlers for user actions.
