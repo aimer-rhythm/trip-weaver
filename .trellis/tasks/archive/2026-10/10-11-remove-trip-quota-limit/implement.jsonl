@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "server 后端入口：模块归属、保护数据的 userId 归属谓词与质量检查清单"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "Drizzle 删除/归属谓词约定、TripWriter 事务边界、索引与 schema/迁移双更新契约"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "真实命令矩阵、单测 MASTER_KEY 与 DATABASE_URL 前置条件、测试库不得指向应用数据"}
+{"file": ".trellis/spec/shared/backend/index.md", "reason": "shared 导出面的改动 checklist：删除导出前须确认服务器与前端消费方"}
+{"file": ".trellis/tasks/10-11-remove-trip-quota-limit/prd.md", "reason": "本任务需求、级联删除契约、残留关联数据影响与测试环境说明"}
