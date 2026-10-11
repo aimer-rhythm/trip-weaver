@@ -12,6 +12,7 @@ This is the operational harness; offline final-Trip replay does not execute the 
 - `npm run eval:knowledge:export -- --name new-version [--cities 北京,上海] [--without-vectors] [--out root]`
 - `npm run eval:knowledge:verify -- --snapshot dir [--skip-vectors]`; `npm run eval:knowledge:verify -- --self-test`
 - `loadKnowledge(mode, { snapshot?, skipVectors?, cities? })`; `seedFrozen(pool, snapshot, skipVectors)`
+- `npm run eval:retrieval [--out <dir>]` — literal-layer retrieval quality, standalone (see [RAG retrieval guidelines](./rag-guidelines.md))
 - `npm run eval:diff -- <baseline> <candidate> [output-dir]`
 - `npm run eval:accept -- <reviewed-run> <new-name>`
 - `npm run eval:test`; `EVAL_PG_ADMIN_URL=... npm run eval:verify`
@@ -41,6 +42,7 @@ This is the operational harness; offline final-Trip replay does not execute the 
 - Markdown identifies actual selected case count within smoke/full and mode-specific execution. Offline reports load saved Trips only; timing/token values come from those snapshots and knowledge rows=0 must not be displayed as evidence of an empty source knowledge base. PASS means current decidable gates only. Adoption ratio means scheduled names matching the candidate pool, not candidate utilization or location accuracy.
 - Accept only explicitly reviewed passing runs: validate report set, recheck current snapshots and hashes, refuse overwriting existing baseline names. Frozen runs must contain a valid matching knowledge file; check both snapshot and effective vector-condition hashes, then copy it into the baseline for independent retention. Baseline selection and Git acceptance are separate; never auto-accept/commit.
 - Per-run PostgreSQL counters reset on new runs; EVAL_* budgets do not enforce a shared cross-run daily cap. Live has local file mutual exclusion and bounded per-case time. CI live is workflow_dispatch only and currently offers golden/empty; frozen live is a local CLI path. CI frozen verification uses synthetic isolated data only.
+- Literal-layer retrieval quality is measured by `npm run eval:retrieval`, **not** by this harness: it reads the application database read-only, gates nothing, and its report is not an `eval/runs` report — `eval:diff` cannot consume it. Its name shares the `eval:` prefix but not the harness contract.
 
 ## 4. Validation & Error Matrix
 

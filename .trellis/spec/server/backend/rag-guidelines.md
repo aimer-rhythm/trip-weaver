@@ -118,6 +118,7 @@ candidates, or treating all phase-duration sums as wall clock.
 ranking, alias/city isolation, evidence ordering/reuse, vector fallback/cancellation and title
 termination. `--full` runs all server tests. `benchmark-place-retrieval.mts` is a read-only SQL
 probe with external vectors disabled; never report its vector-requesting cases as full RAG latency.
+`npm run eval:retrieval` is its quality-measuring counterpart — see *Retrieval Quality Baseline* below.
 `researchSubmission.test.ts` verifies batch atomic validation, evidence/photos/seed reuse and
 cancellation; `verify-c2.mjs` verifies initial candidate injection, one-request known-place
 research with per-candidate SSE, legacy fallback, and one-request titles; generation-flow
@@ -638,4 +639,90 @@ Photography entries require `reviewMethod=model`, `review.status=eligible`, `rev
 payload = { ...incoming, coverImage: old.coverImage };
 // Correct: retain both optional stored-image fields in the reimport merge.
 payload = { ...incoming, coverImage: old.coverImage, imageGallery: old.imageGallery };
+```
+
+## Scenario: Retrieval Quality Baseline (2026-10-11)
+
+### 1. Scope / Trigger
+
+Apply when changing the literal-layer quality probe (`eval/retrievalQuality.ts`,
+`scripts/retrieval-quality-baseline.mts`) or the metrics it reports. Motivation: retrieval quality
+was unmeasurable — `RetrieveOptions.onDiagnostics` was collected but had no consumer, and neither an
+annotation set nor a single assertion existed.
+
+### 2. Signatures
+
+- `npm run eval:retrieval [--out <dir>]` → `node --import tsx scripts/retrieval-quality-baseline.mts`
+- `realAliases(row: PlaceCoverageRow): string[]`
+- `literalCoverage(rows: readonly PlaceCoverageRow[]): LiteralCoverage`
+- `recallMetrics(cases: readonly RecallCase[], depth = 8): RecallMetrics`
+- `retrievalQualityReport(rows, cases, depth?)` / `renderRetrievalQuality(report, missLimit = 10)`
+- `PlaceCoverageRow = { id, city, name, category, source, payload, hasEvidence }` — payload carries
+  only `aliases` / `themes`, never `content`
+- `RecallCase = { city, query, expectId, expectName, hitGroups, actualNames }` — `hitGroups` is one
+  id set per returned entity, in result order
+- `--out <dir>` writes `<dir>/report.json` = `{ coverage, recall }`
+
+### 3. Contracts
+
+- Read-only by construction: `options: '-c default_transaction_read_only=on'`, never imports the
+  migrating `db/client`, never migrates, and wires `embed: async () => null` so no vector request can
+  escape. No LLM, embedding or map calls.
+- **Full execution, no sampling.** Queries are every `source='goldset'` name plus each place's first
+  real alias. 2026-10-11 baseline: 378 queries (111 active goldset + 267 real-alias places). A
+  `ORDER BY random()` sample makes two runs incomparable — do not reintroduce it.
+- **Real alias** = an element of `payload.aliases` whose trim differs from the trimmed place name. An
+  `aliases` array holding only the main name is a filled field, not alias coverage: 5181 active rows
+  carry the field (98.5%) but only 267 (5.2%) carry a real alias.
+- **Hit test uses `canonicalPlaceId`**, never member row ids — see Wrong vs Correct.
+- Reports are deterministic: no timestamp or duration is written, so `report.json` is byte-identical
+  across runs on the same knowledge base.
+- Boundary: this is NOT part of the `eval/` harness, gates nothing, and runs with vectors off. It
+  measures the literal layer only and does not prove semantic recall.
+
+### 4. Validation & Error Matrix
+
+| Condition | Behavior |
+| --- | --- |
+| `DATABASE_URL` missing | exit 2 with the config hint; no connection attempt |
+| Database unreachable or a query fails | message + exit 1; no partial report written |
+| `--out` without a directory | exit 2; report not written |
+| No place has a real alias | `recall.total = 0`; percentages render `—`, never 0% |
+| Place redirected or unverified | excluded by the active filter, same as retrieval |
+| Test-residue city (`金集新增-…`) present in the library | reported as-is; it is real database content |
+
+### 5. Good / Base / Bad Cases
+
+- Good: all 378 literal queries return the target at rank 1 while real-alias coverage stays at 5.2% —
+  the report shows the bottleneck is coverage, not ranking.
+- Base: a city with no real aliases contributes coverage rows but no recall queries.
+- Bad: reading `Recall@8 = 100%` as “retrieval is fine”. It only says the 267 registered aliases
+  resolve; 94.8% of places have no alias to resolve, and `themes` covers 30.5%.
+
+### 6. Tests Required
+
+`eval/tests/retrievalQuality.test.ts` (inside `npm run eval:test`): an `aliases` array holding only the
+main name yields no real alias; whitespace and non-string entries are dropped; coverage separates
+real-alias from field-fill and groups by city and same-city duplicate name; recall ranks by canonical
+id sets and honours `depth`; **the denominator is the executed query count, not the sampled row
+count**; `renderRetrievalQuality` shows coverage, recall and the miss list.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: RetrievedPlace has no `ids` — withEvidence() drops rankPlaces()'s member ids.
+// This throws "hit.ids is not iterable" the moment a hit is evaluated.
+const rank = hits.findIndex((hit) => hit.ids.includes(target.id));
+
+// Correct: the canonical entity id survives same-entity merging and is the only stable hit key.
+const rank = hits.findIndex((hit) => canonicalPlaceId(hit) === canonicalPlaceId(target));
+```
+
+```typescript
+// Wrong: samples skipped inside the loop still counted in the denominator — reported a fake 8%.
+for (const row of rows) { if (!realAliases(row).length) continue; if (hit) atDepth += 1; }
+return atDepth / rows.length;
+
+// Correct: the denominator is what actually ran.
+return atDepth / cases.length;
 ```
