@@ -12,6 +12,7 @@ import {
   MAX_EDIT_ACTIVITIES_PER_DAY,
   MAX_TRIP_DAYS,
   uid,
+  samePlaceReference,
   type Activity,
   type EditOpOutcome,
   type ItineraryEditOp,
@@ -22,6 +23,10 @@ import { asRecord, readString } from './models';
 
 /** 路由层解析后的新活动：在模型草稿基础上补上坐标（可能解析失败 → 无坐标，走 estimated 兜底） */
 export interface ResolvedNewActivity extends NewActivityDraft {
+  /** 服务端解析身份；不读取模型传入的 canonicalPlaceId。 */
+  canonicalPlaceId?: string;
+  /** 只有用户明确表达重访时，由服务端允许重复地点。 */
+  allowRevisit?: boolean;
   lat?: number;
   lng?: number;
   openTime?: string;
@@ -131,6 +136,7 @@ function toActivity(draft: ResolvedNewActivity): Activity {
   return {
     id: uid(),
     name: draft.name,
+    ...(draft.canonicalPlaceId ? { canonicalPlaceId: draft.canonicalPlaceId } : {}),
     startTime: '',
     endTime: '',
     description: draft.description ?? '',
@@ -173,6 +179,20 @@ export function applyItineraryEdits(current: Trip, ops: ResolvedEditOp[]): EditA
   let daysAdded = false;
 
   for (const op of ops) {
+    if (op.kind !== 'delete_activity') {
+      const drafts = editActivityDrafts([op]);
+      const scheduled = trip.days.flatMap(day => day.activities).filter(a => a.id !== op.activityId);
+      const batch: ResolvedNewActivity[] = [];
+      const duplicate = drafts.find(draft => {
+        const repeated = !draft.allowRevisit && draft.canonicalPlaceId
+          && [...scheduled, ...batch].some(other => other.canonicalPlaceId && samePlaceReference(draft, other));
+        batch.push(draft); return repeated;
+      });
+      if (duplicate) {
+        outcomes.push({ kind: op.kind, applied: false, summary: `「${duplicate.name}」已在行程中；如需再次游览，请明确说明` });
+        continue;
+      }
+    }
     if (op.kind === 'add_days') {
       const nextIndex = Math.max(0, ...trip.days.map((day) => day.dayIndex)) + 1;
       const days = op.days;

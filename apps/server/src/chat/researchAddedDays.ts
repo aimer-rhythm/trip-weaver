@@ -1,4 +1,4 @@
-import { briefToGenerateForm, dateForDayIndex, type PlanningBriefData, type Trip } from '@tripweaver/shared';
+import { briefToGenerateForm, dateForDayIndex, placeNameKey, type PlanningBriefData, type Trip } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
 import { buildModel } from '../generation/model';
 import { runResearchPhase } from '../generation/researchPhase';
@@ -6,7 +6,8 @@ import { prepareResearchContext } from '../generation/researchContext';
 import { retrieveContext } from '../generation/retrieveContext';
 import { DraftTrip } from '../generation/draft';
 import { applyDeterministicSchedule } from '../generation/scheduling/buildDraft';
-import { loadPlaceFacts, normalizePlaceKey } from '../generation/scheduling/placeFacts';
+import { loadPlaceFacts } from '../generation/scheduling/placeFacts';
+import { canonicalPlaceId } from '../lib/placeIdentity';
 import { loadPlaceRelations } from '../generation/scheduling/placeRelations';
 import { classifyLongHaulPois } from '../generation/longHaul';
 import { isFoodFocused } from '../generation/mealPlanning';
@@ -37,14 +38,17 @@ export async function researchAddedDays(input: {
   const oldNames = trip.days.flatMap((d) => d.activities.filter((a) => a.category !== '美食').map((a) => a.name));
   const oldFacts = await loadPlaceFacts(oldNames, trip.destination);
   signal.throwIfAborted();
-  const excluded = new Set([...oldNames, ...[...oldFacts.values()].flatMap((f) => f.aliases)].map(normalizePlaceKey));
-  const acceptPlace = (name: string, aliases: readonly string[] = []) => ![name, ...aliases].some((n) => excluded.has(normalizePlaceKey(n)));
+  const excludedIds = new Set([...trip.days.flatMap(d => d.activities.filter(a => a.category !== '美食').map(a => a.canonicalPlaceId)),
+    ...[...oldFacts.values()].map(f => f.canonicalPlaceId)].filter(Boolean));
+  const excluded = new Set([...oldNames, ...[...oldFacts.values()].flatMap((f) => f.aliases)].map(placeNameKey));
+  const acceptPlace = (name: string, aliases: readonly string[] = [], id?: string) => !(id && excludedIds.has(id))
+    && ![name, ...aliases].some((n) => excluded.has(placeNameKey(n)));
   let vectorUsed = false;
   const retrieve: DetailRetrieve = async (names, options) => {
     const places = await retrieveContext(names, { ...options, limit: 48, vector: 'force',
       onDiagnostics: (result) => { if (result.vector === 'used') vectorUsed = true; },
       semanticQuery: `${trip.destination} ${input.question} ${names.join(' ')} ${form.preferences.join(' ')}`, signal });
-    return places.filter((p) => acceptPlace(p.name, p.aliases)).slice(0, options?.limit ?? 8);
+    return places.filter((p) => acceptPlace(p.name, p.aliases, canonicalPlaceId(p))).slice(0, options?.limit ?? 8);
   };
   progress(`正在为新增的 ${requested.length} 天调研候选，避开已有景点。`);
   const verifiedPlaces = await prepareResearchContext(form, retrieve, signal);
@@ -98,6 +102,7 @@ export async function researchAddedDays(input: {
         const candidate = byName.get(a.name.replace(/^(午餐|晚餐)｜/, ''));
         if (candidate) scheduled.add(candidate.name);
         return { name: a.name, category: a.category, description: a.description, openTime: a.openTime, sourceNotes: a.sourceNotes,
+          ...(a.canonicalPlaceId ? { canonicalPlaceId: a.canonicalPlaceId } : {}),
           ...(candidate ? { placeName: candidate.name } : { skipGeocode: true }),
           ...(a.coordSource !== 'estimated' ? { lat: a.lat, lng: a.lng } : {}) };
       }) };

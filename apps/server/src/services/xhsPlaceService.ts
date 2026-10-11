@@ -5,11 +5,12 @@
 //   reservationSeeds = 全国热门预约景点（静态种子表，官方渠道链接）
 //   xhsPlaceService  = 单城社区口碑（PG，含图片 OCR 的价格/预约/营业时间 + 避坑 + 原笔记链接）
 import { pool } from '../db/client';
+import { createPlaceIdentityIndex } from '../lib/placeIdentity';
 
 const XHS_SOURCE = 'xhs';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 单次生成内数据不变，10 分钟足够
 
-export interface XhsPlacePayload {
+export interface XhsPlacePayload extends Record<string, unknown> {
   content?: unknown;
   xhsPlaceType?: string;
   themes?: string[];
@@ -65,14 +66,12 @@ function cacheSet<T>(map: Map<string, CacheEntry<T>>, key: string, value: T): vo
 }
 
 /**
- * 按名称查社区地点。匹配规则（同 reservationSeeds 精神）：
- * 名称全等优先；否则 ≥3 字做双向包含（「长江索道」命中「重庆长江索道」）。
- * city 用双向包含匹配（生成表单可能填「重庆 3日游」这类带修饰的目的地）。
+ * 按同城已确认的名称/别名解析；歧义与未命中返回空，不能按子串借用事实。
  * 任何异常回 null，不抛错到上层。
  */
 export async function findXhsPlace(name: string, city?: string): Promise<XhsPlace | null> {
   const trimmed = name.trim();
-  if (!trimmed) return null;
+  if (!trimmed || !city?.trim()) return null;
   const key = `${city ?? ''}|${trimmed}`;
   const cached = cacheGet(placeCache, key);
   if (cached !== undefined) return cached;
@@ -80,27 +79,22 @@ export async function findXhsPlace(name: string, city?: string): Promise<XhsPlac
   try {
     const { rows } = await pool.query<{
       id: string;
+      city: string;
       name: string;
       category: string;
       lat: number | null;
       lng: number | null;
       payload: XhsPlacePayload | null;
     }>(
-      `SELECT id, name, category, lat, lng, payload
+      `SELECT id, city, name, category, lat, lng, payload
          FROM canonical_places
-        WHERE source = $3
+        WHERE source = $2
           AND payload->>'canonicalRedirectTo' IS NULL
-          AND ($1::text IS NULL OR $1 LIKE '%' || city || '%')
-          AND (
-            name = $2
-            OR (char_length(name) >= 3 AND (name LIKE '%' || $2 || '%' OR $2 LIKE '%' || name || '%'))
-          )
-        ORDER BY (name = $2) DESC,
-                 COALESCE((payload->>'recommendScore')::numeric, 0) DESC
-        LIMIT 1`,
-      [city ?? null, trimmed, XHS_SOURCE],
+          AND city = $1`,
+      [city, XHS_SOURCE],
     );
-    const row = rows[0];
+    const resolution = createPlaceIdentityIndex(rows).resolve(city, trimmed);
+    const row = resolution.status === 'resolved' ? resolution.place : undefined;
     const result: XhsPlace | null = row
       ? {
           id: row.id,

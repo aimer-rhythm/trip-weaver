@@ -14,6 +14,8 @@ These files describe the backend-facing contract of `@tripweaver/shared`. They d
 
 ## Pre-Development Checklist
 
+- 地点判等使用 `placeNameKey` / `samePlaceReference`；实体字段 `canonicalPlaceId` 与活动实例 `id` 分离，详见 [地点身份契约](../../server/backend/place-identity.md)。
+
 - [ ] Read [Directory Structure](./directory-structure.md) before adding a file or export.
 - [ ] Read [Quality Guidelines](./quality-guidelines.md) before changing schemas, constants, types, or utilities.
 - [ ] Read [Error Handling](./error-handling.md) when data crosses an HTTP, JSON, storage, or third-party boundary.

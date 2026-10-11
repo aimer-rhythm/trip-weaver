@@ -9,6 +9,7 @@
 - `createGenerationPhotoLookup(city)(name)`：人工选图→审核补图→未命中异步入队，返回 null。
 - `createSelectedPhotoLibrary(city,{library?,dataRoot?,unsplashKey?,mediaBase?,adoptUnsplash?})`：`coverFor`、`canonicalName`、`acceptSupplement`。部署清单是`apps/server/src/data/photography/beijing-selected.json`，不是运行时读取研究快照。
 - `createPhotoAdopter(options)`：人工和模型目录共用署名、字节摘要、去重、三图上限及Unsplash采用规则；人工目录顺序保持稳定，不套用模型审美排序。
+- 独立图库逐图身份入口`govern-independent-photos.mts`与正式绑定读取见[地点身份第18节](./place-identity.md#18-独立人工与模型图库的逐图身份)。受控主体仅采用当前实体版本和来源指纹匹配的绑定；原人工顺序、排除和署名继续生效。
 - `createPhotoReviewQueue({run,dataRoot,dailyLimit})`：`enqueue`、`retryNow`、`tick`、`start`、`stop`、`jobs`。
 - `collectPhotoCandidates(city,name,config,{signal,supplemental})` 与 `reviewPhotoCandidates(...)`：后台采集及审图。
 - `node --import tsx apps/server/scripts/review-place-photos.mts --city 北京 --places 故宫博物院,天坛公园`：预热入队；`--status`查看状态；`--run --max-jobs 3`仅在没有正式worker运行时用于独立处理。

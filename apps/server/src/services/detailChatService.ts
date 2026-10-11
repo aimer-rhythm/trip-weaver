@@ -1,6 +1,8 @@
 import { and, eq } from 'drizzle-orm';
+import { loadPlaceIdentityIndex } from './placeIdentityService';
 import { Value } from '@sinclair/typebox/value';
 import { MAX_OVERVIEW_POIS, SendMessageResultSchema, briefToGenerateForm, requiredBriefFields, type ChatAttachment, type DetailChatRequest, type SendMessageResult } from '@tripweaver/shared';
+import { bindEditPlaceIdentities } from '../chat/placeIdentity';
 import { understandMessage } from '../chat/understanding';
 import { applyDialogueDecision, briefStatus, syncBriefTripDates } from '../chat/brief';
 import { applyItineraryEdits, editActivityDrafts, normalizeEditOps } from '../chat/editOps';
@@ -92,7 +94,10 @@ export async function runDetailChat(userId: string, conversationId: string, inpu
     const addedResearch = canAdd ? await researchAddedDays({ trip, brief: applyDialogueDecision(detail.conversation.brief.data, outcome.decision, (detail.messages.at(-1)?.sequence ?? 0) + 1), op: addedDays,
       question: input.text, cfg, sources, signal, progress }) : undefined;
     const geo = createGeoSession(userId, trip.destination, trip.transportMode ?? 'transit');
-    const drafts = editActivityDrafts(ops.filter((op) => op.kind !== 'add_days' || op === addedDays && canAdd)).filter((draft) => !draft.skipGeocode && (draft.lat === undefined || draft.lng === undefined));
+    const allDrafts = editActivityDrafts(ops.filter((op) => op.kind !== 'add_days' || op === addedDays && canAdd));
+    const identities = allDrafts.some(draft => !draft.skipGeocode) ? await loadPlaceIdentityIndex(trip.destination) : undefined;
+    const baseForEdits = bindEditPlaceIdentities(trip, allDrafts, identities, input.text);
+    const drafts = allDrafts.filter((draft) => !draft.skipGeocode && (draft.lat === undefined || draft.lng === undefined));
     let located = 0;
     if (drafts.length) { progress(`正在查询 ${drafts.length} 个新增或替换地点的位置，供后续检查交通衔接。`); await geo.init(); }
     for (const draft of drafts) {
@@ -100,7 +105,7 @@ export async function runDetailChat(userId: string, conversationId: string, inpu
       const point = await geo.resolvePlace(draft.placeName ?? draft.name);
       if (point) { draft.lat = point.lat; draft.lng = point.lng; located++; }
     }
-    applied = applyItineraryEdits(trip, ops);
+    applied = applyItineraryEdits(baseForEdits, ops);
     if (addedResearch && applied.changed) {
       applied.trip.overview = [...(trip.overview ?? []), ...addedResearch.overview].slice(0, MAX_OVERVIEW_POIS);
       knowledge.references = collectReferences(addedResearch.overview.flatMap((p) => p.sourceLinks.map((source) => ({ ...source, title: `${p.name} · ${source.title}` }))));

@@ -1,15 +1,19 @@
 // 排程所需的地点事实补全：候选池 ResearchPoi 只带 name/category/intro，
 // 排程要的停留时长 / 细粒度类型 / 主题 / 推荐分 都在 canonical_places.payload 里。
-// 一次全城拉取 + TS 侧归一合并（09-23 实体归一）：知识库存在「故宫 / 故宫博物院」式分裂条目，
-// 按名精确查会把分数与情报拆散——改为按归一键合并后服务候选。失败静默降级为空 Map，不阻断生成。
+// 一次读取同城已核实目录，按显式实体身份合并；名称仅用于精确主名/别名索引。
+// 查询失败降级为空 Map，不阻断生成。
 import { pool } from '../../db/client';
+import { placeNameKey } from '@tripweaver/shared';
+import { canonicalPlaceId, createPlaceIdentityIndex, placeNames, type IdentityPlace } from '../../lib/placeIdentity';
 import { normalizePlaceKey } from '../../lib/placeKey';
 import { readImageGallery, type StoredImage } from '../../lib/imageGallery';
+import { filterIdentityImages } from '../../services/placeImagePolicy';
 
 // 归一键已下沉到 lib/placeKey（09-27）；这里 re-export 保持既有导入路径不变
 export { normalizePlaceKey };
 
 export interface PlaceFacts {
+  canonicalPlaceId?: string;
   name: string;
   /** canonical_places.category：8 活动类目，作为停留时长的二级兜底 */
   category: string;
@@ -28,14 +32,14 @@ export interface PlaceFacts {
   themes: string[];
   /** 缺失保持未知；合并取已知值的 max，真实 0 不等于未知。 */
   recommendScore?: number;
-  /** 缺失保持未知；合并对已知值求和。 */
+  /** 缺失保持未知；同一来源的别名不可重复计数，取已知最大值。 */
   mentionCount?: number;
   /** 从 research_evidence 文本挖出的闭馆表述（如「周一闭馆」，截 60 字）：候选无高德 openTime 时的闭馆检测兜底（09-23） */
   closureText?: string;
   /** payload.openHours 渲染出的开闭馆文本（09-27，如「09:00-17:00；周一闭馆」）。
    *  上游给的是结构化数据（closedWeekdays 是明确的星期数字），排程能精确避让 —— 优先于自由文本的 closureText。 */
   openTime?: string;
-  /** payload.aliases：上游城市维度别名表（09-27）。只用于实体归一键扩展，不参与排程消费。 */
+  /** payload.aliases：已确认的同城同义名称，用于身份精确解析。 */
   aliases: string[];
   /** payload.coverImage：库内封面（09-27），形如 `xhs/杭州/{placeId}/00.webp` 的相对 key。
    *  绝对 URL 由 MEDIA_BASE_URL 拼出，见 generation/storedCover.ts。 */
@@ -46,13 +50,12 @@ export interface PlaceFacts {
   amapPhoto?: string;
 }
 
-interface FactRow {
+interface FactRow extends IdentityPlace {
   name: string;
   category: string;
   source: string;
   lng: number | null;
   lat: number | null;
-  payload: unknown;
 }
 
 // normalizePlaceKey（09-23）定义在 lib/placeKey.ts，上方已 re-export
@@ -103,6 +106,7 @@ export function renderOpenHours(raw: unknown): string | undefined {
 function toFacts(row: FactRow): PlaceFacts {
   const payload = row.payload && typeof row.payload === 'object' ? (row.payload as Record<string, unknown>) : {};
   const facts: PlaceFacts = {
+    canonicalPlaceId: canonicalPlaceId(row),
     name: row.name,
     category: row.category,
     source: row.source,
@@ -123,19 +127,19 @@ function toFacts(row: FactRow): PlaceFacts {
     facts.lat = row.lat;
   }
   if (typeof payload.adcode === 'string' && payload.adcode) facts.adcode = payload.adcode;
-  const cover = payload.coverImage;
+  const gallery = filterIdentityImages(row, readImageGallery(payload.imageGallery));
+  const cover = payload.imageIdentity === undefined ? payload.coverImage : gallery[0]?.key;
   if (typeof cover === 'string' && cover.trim()) facts.coverImage = cover.trim();
-  const gallery = readImageGallery(payload.imageGallery);
   if (gallery.length) facts.imageGallery = gallery;
   const amapPhoto = payload.amapPhoto;
-  if (typeof amapPhoto === 'string' && amapPhoto.startsWith('https://')) facts.amapPhoto = amapPhoto;
+  if (payload.imageIdentity === undefined && typeof amapPhoto === 'string' && amapPhoto.startsWith('https://')) facts.amapPhoto = amapPhoto;
   return facts;
 }
 
 /** source 优先级：金集 > 社区 > 高德 > 手工（合并时取最高优先来源的标签） */
 const SOURCE_RANK: Record<string, number> = { goldset: 0, xhs: 1, amap: 2, manual: 3 };
 
-/** 同键多行合并：质量取 max、热度求和、themes 并集、坐标取有值行、source 取高优先（导出供单测） */
+/** 同实体多行合并：质量与热度取 max，themes 并集，坐标取有值行；v2 调用方只传权威主行。 */
 export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
   const scores = members.map((f) => f.recommendScore).filter((n): n is number => n !== undefined);
   const mentions = members.map((f) => f.mentionCount).filter((n): n is number => n !== undefined);
@@ -145,7 +149,7 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
     name: base.name,
     themes: [...new Set(members.flatMap((f) => f.themes))],
     recommendScore: scores.length ? Math.max(...scores) : undefined,
-    mentionCount: mentions.length ? mentions.reduce((sum, n) => sum + n, 0) : undefined,
+    mentionCount: mentions.length ? Math.max(...mentions) : undefined,
     aliases: [...new Set(members.flatMap((f) => f.aliases))],
   };
   const visits = members.map((f) => f.visitMinutes).filter((v): v is number => v !== undefined);
@@ -157,10 +161,10 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
   }
   const placeType = members.find((f) => f.placeType)?.placeType;
   if (placeType) merged.placeType = placeType;
-  // 结构化开闭馆：任一成员有值即可用（闭馆日信息不会互相矛盾到需要仲裁）
-  const openTime = members.find((f) => f.openTime)?.openTime;
-  if (openTime) merged.openTime = openTime;
-  // 库内封面：同键分裂条目里任一有图即可用（图源同批导出，不会互相矛盾）
+  // 开闭馆事实冲突时保持未知，不能任取一个成员。
+  const openTimes = [...new Set(members.map(f => f.openTime).filter(Boolean))];
+  merged.openTime = openTimes.length === 1 ? openTimes[0] : undefined;
+  // 只在已经确认的同实体成员中复用照片。
   const cover = members.find((f) => f.coverImage)?.coverImage;
   if (cover) merged.coverImage = cover;
   const gallery = members.find((f) => f.imageGallery?.length)?.imageGallery;
@@ -174,7 +178,7 @@ export function mergeFacts(members: PlaceFacts[]): PlaceFacts {
 }
 
 /**
- * 全城事实索引：主名与别名均以归一键分组合并，适合生成期间按城市缓存。
+ * 全城事实索引：按实体 ID 分组，再将无歧义的主名与别名指向主事实。
  * 返回完整索引；需要按候选原名返回子集时使用 loadPlaceFacts。
  * 查询失败返回空 Map —— 调用方按「无事实」处理（类型表兜底）。
  * city 必传：跨城市同名地点会因缺 city 过滤而串味（同 retrieveContext 的 city 语义）。
@@ -183,30 +187,31 @@ export async function loadCityPlaceFacts(city: string): Promise<Map<string, Plac
   if (!city.trim()) return new Map();
   try {
     const { rows } = await pool.query<FactRow>(
-      `SELECT name, category, source, lng, lat, payload
+      `SELECT id, city, name, category, source, lng, lat, payload
        FROM canonical_places
-       WHERE city = $1 AND payload->>'canonicalRedirectTo' IS NULL`,
+       WHERE city = $1 AND verified = true AND payload->>'canonicalRedirectTo' IS NULL`,
       [city],
     );
-    // 归一键 → 合并事实。归一键来源（09-27）：主名 + payload.aliases ——
-    // 库内「紫禁城」带别名「故宫」时，候选「故宫」也能命中该行（上游城市别名表）。
-    const groups = new Map<string, PlaceFacts[]>();
-    for (const row of rows) {
-      const facts = toFacts(row);
-      const keys = new Set([normalizePlaceKey(row.name), ...facts.aliases.map((a) => normalizePlaceKey(a))]);
-      for (const key of keys) {
-        if (!key) continue;
-        const group = groups.get(key) ?? [];
-        group.push(facts);
-        groups.set(key, group);
+    // 名称可以索引同一个实体；不同实体共享别名时不暴露不确定的事实。
+    const index = createPlaceIdentityIndex(rows);
+    const byId = new Map(index.groups.map(members => {
+      const root = members.find(row => row.id === canonicalPlaceId(row)
+        && (row.payload?.identity as Record<string, unknown> | undefined)?.version === 2);
+      return [canonicalPlaceId(members[0]!), mergeFacts((root ? [root] : members).map(toFacts))];
+    }));
+    const mergedByKey = new Map<string, PlaceFacts>();
+    for (const row of rows) for (const name of placeNames(row)) {
+      const resolution = index.resolve(city, name);
+      if (resolution.status === 'resolved') {
+        const facts = byId.get(resolution.canonicalPlaceId);
+        if (facts) mergedByKey.set(placeNameKey(name), facts);
       }
     }
-    const mergedByKey = new Map([...groups.entries()].map(([key, members]) => [key, mergeFacts(members)]));
 
     // 闭馆文本挖掘（09-23）：evidence 里的「周X闭馆/不开放/休息」表述，补高德 openTime 的覆盖缺口
     // （只覆盖 search_pois 来源）。排除「不休息」误报；挖不到就不设字段，绝不编造。
-    const { rows: closureRows } = await pool.query<{ name: string; content: string }>(
-      `SELECT DISTINCT ON (p.name) p.name, left(e.content, 60) AS content
+    const { rows: closureRows } = await pool.query<{ id: string; content: string }>(
+      `SELECT DISTINCT ON (p.id) p.id, left(e.content, 60) AS content
        FROM research_evidence e JOIN canonical_places p ON p.id = e.place_id
        WHERE p.city = $1
          AND p.payload->>'canonicalRedirectTo' IS NULL
@@ -214,13 +219,13 @@ export async function loadCityPlaceFacts(city: string): Promise<Map<string, Plac
          AND (p.payload->'openHours'->>'version') IS DISTINCT FROM '2'
          AND e.content ~ '周[一二三四五六日天][^；;。]{0,8}(闭馆|不开放|休息)'
          AND e.content !~ '不休息'
-       ORDER BY p.name, e.fetched_at DESC`,
+       ORDER BY p.id, e.fetched_at DESC`,
       [city],
     );
-    const closureByKey = new Map(closureRows.map((row) => [normalizePlaceKey(row.name), row.content]));
+    const closureByKey = new Map(closureRows.map((row) => [row.id, row.content]));
 
-    for (const [key, facts] of mergedByKey) {
-      const closure = closureByKey.get(key);
+    for (const facts of mergedByKey.values()) {
+      const closure = facts.canonicalPlaceId ? closureByKey.get(facts.canonicalPlaceId) : undefined;
       if (closure) facts.closureText = closure;
     }
     return mergedByKey;
@@ -237,7 +242,7 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
   const index = await loadCityPlaceFacts(city);
   const result = new Map<string, PlaceFacts>();
   for (const name of unique) {
-    const facts = index.get(normalizePlaceKey(name));
+    const facts = index.get(placeNameKey(name));
     if (facts) result.set(name, facts);
   }
   return result;
@@ -246,24 +251,25 @@ export async function loadPlaceFacts(names: readonly string[], city: string): Pr
 /**
  * 高德图片命中后的回写（09-27）：`v5/place/text` 属稀缺的「基础搜索服务」配额（个人 5,000/月），
  * 写回 `payload.amapPhoto` 后同一地点终身只消耗一次。
- * 按归一键匹配库内行（候选名与库内名常有「博物院」之类的后缀差），已有值不覆盖；
+ * 按同城主名或已确认别名唯一解析到实体，已有值不覆盖；
  * 任何失败只 warn，绝不阻断生成（回写只是优化）。
  */
 export async function saveAmapPhoto(city: string, name: string, url: string): Promise<void> {
-  const key = normalizePlaceKey(name);
+  const key = placeNameKey(name);
   if (!key || !city.trim() || !url.startsWith('https://')) return;
   try {
-    const { rows } = await pool.query<{ id: string; name: string }>(
-      `SELECT id, name FROM canonical_places WHERE city = $1 AND NOT (payload ? 'amapPhoto')`,
+    const { rows } = await pool.query<IdentityPlace>(
+      `SELECT id, city, name, payload FROM canonical_places WHERE city = $1 AND payload->>'canonicalRedirectTo' IS NULL`,
       [city],
     );
-    const hit = rows.find((row) => normalizePlaceKey(row.name) === key);
-    if (!hit) return;
+    const result = createPlaceIdentityIndex(rows).resolve(city, name);
+    if (result.status !== 'resolved' || result.place.payload?.amapPhoto || result.place.payload?.imageIdentity !== undefined) return;
     await pool.query(
       `UPDATE canonical_places
           SET payload = coalesce(payload, '{}'::jsonb) || jsonb_build_object('amapPhoto', $2::text)
-        WHERE id = $1`,
-      [hit.id, url],
+        WHERE id = $1 AND NOT (coalesce(payload, '{}'::jsonb) ? 'amapPhoto')
+          AND NOT (coalesce(payload, '{}'::jsonb) ? 'imageIdentity')`,
+      [result.place.id, url],
     );
   } catch (err) {
     console.warn(

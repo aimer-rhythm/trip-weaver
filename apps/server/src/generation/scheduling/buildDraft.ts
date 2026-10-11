@@ -4,6 +4,7 @@
 import {
   ACTIVITY_CATEGORIES,
   MAX_SOURCE_NOTES,
+  uniquePlaceReferences,
   type ActivityCategory,
   type GenerateForm,
   type ResearchPoi,
@@ -66,7 +67,7 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
   const lookup = createResearchPlaceLookup(input.pool, input.locations);
   const located: LocatedPoi[] = [];
   let withoutCoord = 0;
-  for (const poi of input.pool) {
+  for (const poi of uniquePlaceReferences(input.pool)) {
     const { point } = lookup({ name: poi.name, poiId: poi.id });
     const facts = input.facts.get(poi.name.trim());
     // 坐标优先取调研阶段捕到的高德值；没有则用 canonical_places 的坐标兜底
@@ -124,7 +125,7 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
     // 顺序种子表（09-23）：出入口方向等固定先后（故宫→景山），两端都在候选池才生效
     orderConstraints: routeOrderConstraints(input.form.destination, input.pool.map((p) => p.name)),
     // 关联对（09-27）：只做同天聚类的距离折扣，不产出先后约束（上游数据无向，不表达顺序）
-    relatedPairs: resolveRelatedPairs(input.relations, input.pool.map((p) => p.name)),
+    relatedPairs: resolveRelatedPairs(input.relations, input.pool),
   });
 
   if (schedule.closureConflicts.length) {
@@ -153,6 +154,7 @@ export function applyDeterministicSchedule(input: ScheduleDraftInput): ScheduleD
         name: stop.meal ? `${mealLabel}｜${stop.poi.name}` : stop.poi.name,
         placeName,
         ...(source ? { poiId: stop.poi.id } : {}),
+        ...(source?.poi.canonicalPlaceId ? { canonicalPlaceId: source.poi.canonicalPlaceId } : {}),
         ...coord,
         // 有真实坐标（调研阶段旁路捕获的 GCJ-02）才标 geocoded；否则留给 geoPipeline 解析
         ...(stop.poi.lat !== undefined ? { coordSource: 'geocoded' as const, coordSystem: 'gcj02' as const } : {}),

@@ -18,6 +18,8 @@ import pg from 'pg';
 import { env } from '../src/env';
 import { IMPORT_DIR, latestExports, readExport, scanExports, type ExportFile } from './lib/exportFiles';
 import { imageGroups } from '../src/lib/imageGallery';
+import { resolveImageIdentities } from '../src/services/placeImageIdentity';
+import type { IdentityPlace } from '../src/lib/placeIdentity';
 
 const IMPORT_SOURCE = 'xhs_place_images';
 const BATCH_SIZE = 200;
@@ -72,7 +74,13 @@ async function importFile(
     throw new Error('图片清单城市或 images 字段无效');
   }
   // 上游按质量排序，同一地点保留第一张封面；多图导出不能让次选覆盖首选。
-  const entries = [...imageGroups(file.images)].map(([placeId, photos]) => ({ placeId, key: photos[0]!.key, photos }));
+  await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [`place-identity:${target.city}`]);
+  const { rows } = await client.query<IdentityPlace>('SELECT id,city,name,payload FROM canonical_places WHERE city=$1', [target.city]);
+  // 先校验逐图归属再取三张，旧图不能占掉已确认图片的名额。
+  const groups = imageGroups(file.images, Number.MAX_SAFE_INTEGER);
+  let unresolved = 0;
+  const entries = [...resolveImageIdentities(target.city, groups, rows, () => { unresolved++; })]
+    .map(([placeId, photos]) => ({ placeId, key: photos[0]!.key, photos }));
   console.log(
     `${LOG} 导入 ${path.basename(target.filePath)}｜城市 ${target.city}｜${entries.length} 张封面｜生成于 ${target.generatedAt}`,
   );
@@ -89,9 +97,9 @@ async function importFile(
     updated += res.rowCount ?? 0;
   }
 
-  const missing = entries.length - updated;
+  const missing = unresolved + entries.length - updated;
   if (missing > 0) {
-    console.warn(`${LOG} ${target.city} 有 ${missing} 个地点不在库里（未写 key）—— 先跑 seed-xhs-places.ts`);
+    console.warn(`${LOG} ${target.city} 有 ${missing} 个图片地点无法绑定现行主体（未写 key）—— 检查地点导入、身份歧义或组成地点边界`);
   }
 
   await client.query(
@@ -138,7 +146,7 @@ async function main(): Promise<void> {
   const covered = await pool.query(
     `SELECT count(*)::int AS n FROM canonical_places WHERE payload ? 'coverImage'`,
   );
-  console.log(`${LOG} 完成：写入 ${updated} 个地点${missing ? `｜跳过 ${missing} 个不在库` : ''}`);
+  console.log(`${LOG} 完成：写入 ${updated} 个地点${missing ? `｜跳过 ${missing} 个未绑定主体` : ''}`);
   console.log(`  canonical_places 含 coverImage 的行数：${covered.rows[0]?.n ?? 0}`);
   console.log(`  图片目录：${path.resolve(IMPORT_DIR, '../data/media')}`);
   await pool.end();

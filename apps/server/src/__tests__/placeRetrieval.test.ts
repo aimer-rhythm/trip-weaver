@@ -37,6 +37,9 @@ before(async () => {
     await pool.query(`INSERT INTO canonical_places(id,city,name,category,source,verified,payload,created_at)
       VALUES($1,$2,'隔离景点','文化','xhs',$3,'{}',now())`, [id, targetCity, verified]);
   }
+  // 两条来源记录必须明确声明同一实体；仅名称去后缀相同不再构成合并依据。
+  await pool.query(`UPDATE canonical_places SET payload=payload || $2::jsonb WHERE id=ANY($1::text[])`,
+    [[idByName.get('天坛'), idByName.get('天坛公园')], { aliases: ['天坛', '天坛公园'], identity: { entityId: idByName.get('天坛公园') } }]);
   for (const [kind, strength] of [['xhs_reason', 'weak'], ['xhs_warning', 'weak'], ['xhs_warning', 'direct'], ['xhs_reservation', 'risk_only']] as const) {
     await pool.query(`INSERT INTO research_evidence(id,place_id,city,kind,content,strength,source_url,fetched_at)
       VALUES($1,$2,$3,$4,$5,$6,'https://example.com/evidence',now())`,
@@ -99,6 +102,27 @@ test('共享泛称别名不合并不同地点，也不跨城归并同名地点',
   const row = (name: string, destination = city): PlaceRow => ({ id: name + destination, city: destination, name, category: '自然',
     source: 'xhs', verified: true, lat: null, lng: null, payload: { aliases: ['市民公园'] } });
   assert.equal(rankPlaces([row('中山公园'), row('滨江公园'), row('中山公园', otherCity)], [], [], 8).length, 3);
+});
+
+test('点名独立子项时优先于高热度父景区，父项仍能作为组合背景召回', async () => {
+  const testCity = `组成排序-${randomUUID()}`;
+  const parentId=randomUUID(),childId=randomUUID();
+  const client=await pool.connect();await client.query('BEGIN');
+  try {
+    for(const [id,name,payload] of [
+      [parentId,'天安门',{recommendScore:9999,identity:{version:2,entityId:parentId,kind:'complex',memberNames:['天安门','天安门升旗']}}],
+      [childId,'天安门升旗',{identity:{version:2,entityId:childId,kind:'same_entity',memberNames:['天安门升旗','广场升旗']}}],
+    ] as const) await client.query(`INSERT INTO canonical_places(id,city,name,category,source,verified,payload,created_at)
+      VALUES($1,$2,$3,'文化','xhs',true,$4,now())`,[id,testCity,name,payload]);
+    const search=createPlaceRetriever({query:(sql,args)=>client.query(sql,args),embed:async()=>null});
+    for(const name of ['天安门升旗','广场升旗']) {
+      const hits=await search([name],{city:testCity,vector:'off',limit:8});
+      assert.equal(hits[0]?.canonicalPlaceId,childId);
+    }
+    const hits=await search(['天安门升旗'],{city:testCity,vector:'off',limit:8});
+    assert.ok(hits.some(p=>p.canonicalPlaceId===parentId));
+    assert.equal((await search(['天安门'],{city:testCity,vector:'off',limit:8}))[0]?.canonicalPlaceId,parentId);
+  } finally {await client.query('ROLLBACK');client.release();}
 });
 
 test('预取无themes城市照常返回候选；非美食行程不查餐饮、不发embedding', async () => {

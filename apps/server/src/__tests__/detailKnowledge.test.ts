@@ -43,7 +43,7 @@ test('混合检索使用独立语义问题，保留精确实体、语义候选�
 test('同一实体不同来源融合时保留语义分，不覆盖优先的正式名称', () => {
   const results = rankPlaces([
     { ...place('gold', '故宫博物院'), source: 'goldset', payload: { aliases: ['故宫'] } },
-    { ...place('vector', '故宫'), distance: 0.1 },
+    { ...place('vector', '故宫'), payload: { identity: { entityId: 'gold' } }, distance: 0.1 },
   ], [], [], 8);
   assert.equal(results.length, 1);
   assert.equal(results[0]!.row.name, '故宫博物院');

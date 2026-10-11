@@ -34,6 +34,9 @@ test('人工选图优先，只有一张也不混入模型图；损坏图片补�
     assert.equal(enqueues, 0);
     assert.equal(await createSelectedPhotoLibrary('南京', { library: library([chosen]), dataRoot: root }).coverFor('天坛'), null);
     assert.equal(await selected.coverFor('天坛和故宫'), null);
+    const blocked = createSelectedPhotoLibrary('北京', { library: library([chosen]), dataRoot: root, acceptPlace: () => false });
+    assert.equal(await blocked.coverFor('天坛'), null, '命中旧别名也必须校验实际目录主体');
+    assert.equal(await blocked.coverFor('天坛公园（上午）'), null, '去括号回退不能绕过主体治理');
     await writeFile(path.join(root, chosen.photo.url.slice(1)), Buffer.from('changed'));
     const broken = createSelectedPhotoLibrary('北京', { library: library([chosen]), dataRoot: root });
     const seen: string[] = [];

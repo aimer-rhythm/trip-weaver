@@ -15,6 +15,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { env } from '../src/env';
+import { createPlaceIdentityIndex, isScopedPlace, type IdentityPlace } from '../src/lib/placeIdentity';
+import { captureIdentityImport, recordIdentityImport } from '../src/services/placeIdentityAudit';
+import { importRelationSnapshot } from '../src/services/placeRelationSnapshot';
 import { IMPORT_DIR, latestExports, readExport, scanExports, type ExportFile } from './lib/exportFiles';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -31,6 +34,7 @@ interface RelationItem {
 
 interface RelationsFile {
   city: string;
+  relationIdentity?: unknown;
   relations?: RelationItem[];
 }
 
@@ -86,20 +90,44 @@ async function main(): Promise<void> {
     await client.query('BEGIN');
     for (const target of targets) {
       const file = JSON.parse(fs.readFileSync(target.filePath, 'utf8')) as RelationsFile;
+      if (!Array.isArray(file.relations)) throw new Error(`关联对导出缺少完整 relations 列表：${target.city}`);
       const all = file.relations ?? [];
+      const before = await captureIdentityImport(client, target.city);
+      const bound = await importRelationSnapshot(client, target.city, file.relationIdentity, all);
+      if (bound !== null) {
+        await client.query('DELETE FROM place_relation WHERE city=$1', [target.city]);
+        await client.query(`INSERT INTO data_import (source,city,content_hash,file_path,row_count,imported_at)
+          VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(source,city) DO UPDATE SET
+          content_hash=EXCLUDED.content_hash,file_path=EXCLUDED.file_path,row_count=EXCLUDED.row_count,imported_at=EXCLUDED.imported_at`,
+        [IMPORT_SOURCE, target.city, target.contentHash, path.basename(target.filePath), bound.length, now]);
+        const auditId = await recordIdentityImport(client, target.city, target.contentHash, before);
+        inserted += bound.length;
+        filtered += all.length - bound.length;
+        console.log(`[xhs-relations] ${target.city}：完整身份快照 ${all.length} 条，当前可用 ${bound.length} 条，审计 ${auditId}`);
+        continue;
+      }
+      const directory = await client.query<IdentityPlace>(`SELECT id,city,name,payload FROM canonical_places
+        WHERE city=$1 AND (verified=TRUE OR payload ? 'identityWithdrawal')`, [target.city]);
+      const catalog = createPlaceIdentityIndex(directory.rows);
+      const existing = await client.query<{ id: string; from_name: string; to_name: string }>(
+        'SELECT id,from_name,to_name FROM place_relation WHERE city=$1', [target.city]);
+      const stale = existing.rows.filter(row => catalog.isScopedReference(target.city, row.from_name)
+        || catalog.isScopedReference(target.city, row.to_name));
+      if (stale.length) await client.query('DELETE FROM place_relation WHERE city=$1 AND id=ANY($2::text[])',
+        [target.city, stale.map(row => row.id)]);
       // 只收 direct，且两端都非空、不同名（自环无意义）。两端按字典序规范化后再写：
       // 上游已保证 from < to，但不依赖它 —— 顺序变了也必须幂等。
       const rows = all
         .filter((r) => r.strength === STRENGTH && r.from?.trim() && r.to?.trim() && r.from !== r.to)
+        .filter(r => [r.from, r.to].every(name => {
+          const resolved = catalog.resolve(target.city, name);
+          return resolved.status === 'resolved' && !isScopedPlace(resolved.place);
+        }))
         .map((r) => {
           const [from, to] = [r.from.trim(), r.to.trim()].sort();
           return [relationId(target.city, from!, to!), target.city, from!, to!, STRENGTH, r.noteCount ?? 0, now] as const;
         });
       filtered += all.length - rows.length;
-      if (!rows.length) {
-        console.log(`[xhs-relations] ${target.city}：无 direct 记录，跳过`);
-        continue;
-      }
       const res = await client.query(
         `INSERT INTO place_relation (id, city, from_name, to_name, strength, note_count, created_at)
          SELECT * FROM UNNEST($1::text[], $2::text[], $3::text[], $4::text[], $5::text[], $6::int[], $7::timestamptz[])
@@ -123,6 +151,8 @@ async function main(): Promise<void> {
            imported_at = EXCLUDED.imported_at`,
         [IMPORT_SOURCE, target.city, target.contentHash, path.basename(target.filePath), rows.length, now],
       );
+      const auditId = await recordIdentityImport(client, target.city, target.contentHash, before);
+      console.log(`[xhs-relations] ${target.city}：清理受控旧关系 ${stale.length} 条，审计 ${auditId}`);
     }
     await client.query('COMMIT');
   } catch (err) {

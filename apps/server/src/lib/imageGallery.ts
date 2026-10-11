@@ -29,7 +29,7 @@ const EntrySchema = Type.Object({
   review: Type.Optional(Type.Record(Type.String(), Type.Unknown())),
 });
 
-export function imageGroups(value: unknown): Map<string, StoredImage[]> {
+export function imageGroups(value: unknown, limit = 3): Map<string, StoredImage[]> {
   if (!Array.isArray(value)) throw new Error('图片清单 images 必须为数组');
   const groups = new Map<string, StoredImage[]>();
   for (const entry of value) {
@@ -46,7 +46,7 @@ export function imageGroups(value: unknown): Map<string, StoredImage[]> {
       };
     }
     const group = groups.get(entry.placeId) ?? [];
-    if (group.length < 3 && !group.some(old => old.key === image.key)) group.push(image);
+    if (group.length < limit && !group.some(old => old.key === image.key)) group.push(image);
     groups.set(entry.placeId, group);
   }
   return groups;

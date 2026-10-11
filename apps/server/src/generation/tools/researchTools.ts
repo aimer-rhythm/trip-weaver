@@ -21,6 +21,9 @@ import { renderRetrievedPlaces } from '../researchContext';
 import { placeCategory } from '../retrievalRanking';
 import { cleanResearchIntro, normalizeReservation, purifiedIntro, purifiedIntroSources } from '../researchQuality';
 import { renderOpenHours, normalizePlaceKey } from '../scheduling/placeFacts';
+import { createPlaceIdentityIndex, canonicalPlaceId } from '../../lib/placeIdentity';
+import { samePlaceReference, uniquePlaceReferences } from '@tripweaver/shared';
+import { loadPlaceIdentityIndex } from '../../services/placeIdentityService';
 import { type CoverLookup, type CoverQuery } from '../../integrations/wikimedia/cover';
 import type { PexelsCoverLookup } from '../../integrations/pexels/cover';
 import type { StockPhotoLookup } from '../../integrations/stockPhotoSupport';
@@ -45,7 +48,7 @@ export interface ResearchOutcome {
 export interface ResearchToolDeps {
   verifiedPlaces?: readonly RetrievedPlace[];
   retrieve?: typeof retrieveContext;
-  acceptPlace?: (name: string, aliases?: readonly string[]) => boolean;
+  acceptPlace?: (name: string, aliases?: readonly string[], canonicalPlaceId?: string) => boolean;
   /** 对话追加必须有库内实体或本轮地点搜索坐标，不能凭模型知识造新地点。 */
   groundedOnly?: boolean;
   signal?: AbortSignal;
@@ -183,6 +186,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
   // 不让模型转抄（转抄会失真）。仅 attraction 入排程检测，food/hotel 不消费。
   const openTimeByName = new Map<string, string>();
   const knownPlaces = new Map((deps.verifiedPlaces ?? []).map((place) => [place.id, place]));
+  let cityIdentityIndex: ReturnType<typeof loadPlaceIdentityIndex> | undefined;
   // 只共享本任务结果，取消和城市范围不跨任务串扰。
   const searches = new Map<string, Promise<RetrievedPlace[]>>();
 
@@ -323,16 +327,53 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       if (!(POI_CATEGORIES as readonly string[]).includes(category)) {
         return { content: text('错误：category 必须是 attraction / food / hotel 之一。'), details: { ok: false } };
       }
-      const matches = [...knownPlaces.values()].filter((place) => place.name === name || place.aliases.includes(name));
-      const known = params.placeId ? knownPlaces.get(params.placeId) : matches.length === 1 ? matches[0] : undefined;
-      if (params.placeId && (!known || (known.name !== name && !known.aliases.includes(name)))) {
+      const index = createPlaceIdentityIndex<RetrievedPlace>([...knownPlaces.values()].map(p => ({ ...p, payload: { ...p.payload, aliases: p.aliases } })));
+      let resolution = index.resolve(destination, name, params.placeId);
+      if (!params.placeId) {
+        // 预取 top-k 不足以证明别名无歧义；名称入池前读取完整同城目录。
+        try {
+          cityIdentityIndex ??= loadPlaceIdentityIndex(destination);
+          const fullIndex = await cityIdentityIndex;
+          const cityResolution = fullIndex.resolve(destination, name);
+          if (cityResolution.status === 'unresolved' && cityResolution.reason === 'withdrawn') {
+            return { content: text('该地点的具体归属待核实，请补充具体分店或选择其他已确认地点。'), details: { ok: false } };
+          }
+          if (cityResolution.status === 'unresolved' && !outcome.locations.has(name)) {
+            const suggestions = fullIndex.candidatesForReview(destination, name);
+            if (suggestions.length) return { content: text(`该名称尚未确认身份，可能涉及已有地点或子地点。请先检索并使用明确 placeId，或通过地点搜索核实独立地点：${suggestions.slice(0, 5).map(p => `${p.name}(${p.id})`).join('、')}`), details: { ok: false } };
+          }
+          if (cityResolution.status !== 'unresolved') {
+            resolution = cityResolution.status === 'resolved'
+              ? { ...cityResolution, place: knownPlaces.get(cityResolution.place.id) ?? cityResolution.place }
+              : cityResolution;
+          }
+        } catch {
+          cityIdentityIndex = undefined;
+          return { content: text('地点身份查询暂不可用，请使用已检索的 placeId 或稍后重试。'), details: { ok: false } };
+        }
+      }
+      if (resolution.status === 'ambiguous') {
+        return { content: text('存在多个同名地点，请检索并指定对应的 placeId。'), details: { ok: false } };
+      }
+      let known = resolution.status === 'resolved' ? resolution.place : undefined;
+      if (params.placeId && !known) {
         return { content: text('错误：placeId 与已检索的地点名称不一致，请使用候选原名和对应 id。'), details: { ok: false } };
+      }
+      // 当前检索批次之外的已知别名也必须绑定实体，不能作为自由名称再次入池。
+      if (!known) {
+        const retrieved = await (deps.retrieve ?? retrieveContext)([name], { city: destination, vector: 'off', limit: 48, signal: deps.signal });
+        const resolved = createPlaceIdentityIndex(retrieved).resolve(destination, name);
+        if (resolved.status === 'ambiguous') return { content: text('该名称对应多个地点，请先确认具体地点。'), details: { ok: false } };
+        if (resolved.status === 'resolved') {
+          known = { ...resolved.place, payload: { ...resolved.place.payload, aliases: resolved.place.aliases } };
+          knownPlaces.set(known.id, known);
+        }
       }
       if (known && (!known.verified || known.city !== destination || placeCategory(known.category) !== category)) {
         return { content: text('错误：候选城市或类目不一致。'), details: { ok: false } };
       }
       if (known) name = known.name;
-      if (deps.acceptPlace && !deps.acceptPlace(name, known?.aliases)) {
+      if (deps.acceptPlace && !deps.acceptPlace(name, known?.aliases, known ? canonicalPlaceId(known) : undefined)) {
         return { content: text('该地点已在原行程中，请选择不同地点。'), details: { ok: false } };
       }
       if (deps.groundedOnly && !known && !outcome.locations.has(name)) {
@@ -341,7 +382,8 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       if (outcome.pool.length >= MAX_OVERVIEW_POIS) {
         return { content: text(`候选池已满（${MAX_OVERVIEW_POIS} 条），请停止添加，调用 submit_research 收尾。`), details: { ok: false } };
       }
-      const dup = outcome.pool.find((p) => p.name === name);
+      const identityRef = { name, ...(known ? { canonicalPlaceId: canonicalPlaceId(known) } : {}) };
+      const dup = outcome.pool.find((p) => samePlaceReference(p, identityRef));
       if (dup) {
         return { content: text(`「${name}」已在候选池中（${CATEGORY_LABEL[dup.category]}类），无需重复添加。`), details: { ok: false } };
       }
@@ -352,6 +394,7 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
 
       const poi: ResearchPoi = {
         id: uid(),
+        ...identityRef,
         name,
         category,
         intro: purifiedIntro(known?.payload) ?? cleanResearchIntro(params.intro),
@@ -463,14 +506,17 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
       for (const item of params.candidates ?? []) {
         const place = knownPlaces.get(item.placeId);
         if (!place || !place.verified || place.city !== destination || placeCategory(place.category) === 'hotel'
-          || (deps.acceptPlace && !deps.acceptPlace(place.name, place.aliases))
+          || (deps.acceptPlace && !deps.acceptPlace(place.name, place.aliases, canonicalPlaceId(place)))
           || (placeCategory(place.category) === 'food' && deps.foodSearch === false)) {
           return { content: text(`错误：候选 id=${item.placeId} 不在本次可用地点中，请使用已检索的同城景点/美食 id。`), details: { ok: false } };
         }
         if (!item.intro.trim()) return { content: text(`错误：${place.name} 的 intro 不能为空。`), details: { ok: false } };
-        if (!selected.has(place.name)) selected.set(place.name, { place, intro: item.intro });
+        const key = canonicalPlaceId(place);
+        if (!selected.has(key)) selected.set(key, { place, intro: item.intro });
       }
-      const pending = [...selected.values()].filter(({ place }) => !outcome.pool.some((poi) => poi.name === place.name));
+      const pending = uniquePlaceReferences([...selected.values()].map(item => ({ ...item,
+        name: item.place.name, canonicalPlaceId: canonicalPlaceId(item.place) })))
+        .filter((item) => !outcome.pool.some((poi) => samePlaceReference(poi, item)));
       if (outcome.pool.length + pending.length > MAX_OVERVIEW_POIS) {
         return { content: text(`错误：候选总数超过 ${MAX_OVERVIEW_POIS}，请减少提交数量。`), details: { ok: false } };
       }

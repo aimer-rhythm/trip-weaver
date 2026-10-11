@@ -26,6 +26,8 @@ has a more specific convention.
 
 ## Pre-Development Checklist
 
+- 地点实体、别名、导入或去重变更先读 [地点稳定身份与治理](./place-identity.md)。
+
 - Identify the owning module under `apps/server/src` and reuse its existing route, service, integration, or generation boundary.
 - Read the relevant contracts in `packages/shared/src/schemas.ts` and `packages/shared/src/types.ts` before changing an API payload.
 - For protected data, plan both `requireAuth` and a `userId` ownership predicate; authentication alone is not authorization.

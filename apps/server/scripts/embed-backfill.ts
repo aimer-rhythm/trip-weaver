@@ -9,6 +9,7 @@
 import pg from 'pg';
 import { env, hasEmbedding } from '../src/env';
 import { embedTexts } from '../src/integrations/embedding';
+import { placeEmbeddingText } from '../src/lib/placeEmbeddingText';
 
 const BATCH_SIZE = 32;
 
@@ -23,7 +24,7 @@ type TableKey = keyof typeof TABLES;
 function parseTables(): TableKey[] {
   const raw = process.argv.find((a) => a.startsWith('--tables'));
   if (!raw) return Object.keys(TABLES) as TableKey[];
-  const value = raw.includes('=') ? raw.split('=')[1] : (process.argv[process.argv.indexOf(raw) + 1] ?? '');
+  const value = raw.includes('=') ? (raw.split('=')[1] ?? '') : (process.argv[process.argv.indexOf(raw) + 1] ?? '');
   const keys = value.split(',').map((s) => s.trim()).filter(Boolean);
   const invalid = keys.filter((k) => !(k in TABLES));
   if (keys.length === 0 || invalid.length > 0) {
@@ -35,19 +36,22 @@ function parseTables(): TableKey[] {
 
 interface Row {
   id: string;
-  text: string;
 }
+const cityFlag = process.argv.indexOf('--city');
+const city = cityFlag >= 0 ? process.argv[cityFlag + 1]?.trim() : undefined;
+if (cityFlag >= 0 && (!city || city.startsWith('--'))) throw new Error('--city 需要城市名');
 
-async function backfillTable(
+async function backfillTable<T extends Row>(
   pool: pg.Pool,
   table: 'canonical_places' | 'research_evidence',
-  buildText: (row: { [k: string]: string }) => string,
+  buildText: (row: T) => string,
   selectCols: string,
 ): Promise<void> {
-  let rows: (Row & { [k: string]: string })[];
+  let rows: T[];
   try {
-    const result = await pool.query<Row & { [k: string]: string }>(
-      `SELECT id, ${selectCols} FROM ${table} WHERE embedding IS NULL ORDER BY id`,
+    const result = await pool.query<T>(
+      `SELECT id, ${selectCols} FROM ${table} WHERE embedding IS NULL AND ($1::text IS NULL OR city=$1)
+        ${table === 'canonical_places' ? "AND verified=TRUE AND payload->>'canonicalRedirectTo' IS NULL AND NOT (coalesce(payload,'{}'::jsonb) ? 'identityWithdrawal')" : ''} ORDER BY id`, [city ?? null],
     );
     rows = result.rows;
   } catch (err) {
@@ -72,18 +76,28 @@ async function backfillTable(
     // 批量写入：一条 UPDATE 搞定一批（逐行 UPDATE 在远程库上是 N 次往返，慢几十倍）
     const ids: string[] = [];
     const vecStrs: string[] = [];
-    for (let j = 0; j < batch.length; j++) {
+    const embeddedTexts: string[] = [];
+    const snapshots: string[] = [];
+    for (const [j, row] of batch.entries()) {
       const vec = vecs[j];
       if (!vec) continue;
-      ids.push(batch[j].id);
+      ids.push(row.id);
       vecStrs.push(`[${vec.join(',')}]`);
+      embeddedTexts.push(texts[j]!);
+      // SELECT列正是写回时比较的输入快照；id只作连接键。
+      const {id: _id, ...snapshot} = row;
+      snapshots.push(JSON.stringify(snapshot));
     }
     if (ids.length > 0) {
       const res = await pool.query(
         `UPDATE ${table} AS t SET embedding = u.vec::vector
-         FROM UNNEST($1::text[], $2::text[]) AS u(id, vec)
-         WHERE t.id = u.id`,
-        [ids, vecStrs],
+         ${table === 'canonical_places' ? ", payload=coalesce(t.payload,'{}'::jsonb)||jsonb_build_object('embeddedText',u.input)" : ''}
+         FROM UNNEST($1::text[], $2::text[], $3::text[], $4::jsonb[]) AS u(id, vec, input, snapshot)
+         WHERE t.id = u.id AND ${table === 'canonical_places'
+           ? "jsonb_build_object('city',t.city,'name',t.name,'category',t.category,'payload',t.payload)"
+           : "jsonb_build_object('kind',t.kind,'content',t.content)"} = u.snapshot
+         ${table === 'canonical_places' ? "AND t.verified=TRUE AND t.payload->>'canonicalRedirectTo' IS NULL AND NOT (coalesce(t.payload,'{}'::jsonb) ? 'identityWithdrawal')" : ''}`,
+        [ids, vecStrs, embeddedTexts, snapshots],
       );
       updated += res.rowCount ?? 0;
     }
@@ -108,15 +122,15 @@ async function main(): Promise<void> {
   const pool = new pg.Pool({ connectionString: env.databaseUrl });
   try {
     if (tables.includes('places')) {
-      await backfillTable(
+      await backfillTable<Row & {city:string; name:string; category:string; payload:Record<string,unknown> | null}>(
         pool,
         TABLES.places,
-        (r) => `${r.city} ${r.name} ${r.category}`.trim(),
-        'city, name, category',
+        placeEmbeddingText,
+        'city, name, category, payload',
       );
     }
     if (tables.includes('evidence')) {
-      await backfillTable(pool, TABLES.evidence, (r) => `${r.kind} ${r.content}`.trim(), 'kind, content');
+      await backfillTable<Row & {kind:string; content:string}>(pool, TABLES.evidence, (r) => `${r.kind} ${r.content}`.trim(), 'kind, content');
     }
   } finally {
     await pool.end();

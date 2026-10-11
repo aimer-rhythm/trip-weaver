@@ -7,8 +7,8 @@
 //
 // 命中即跳过维基降级 —— upload.wikimedia.org 在国内被封锁，维基只能当海外/代理环境的兜底。
 import { env } from '../env';
-import type { ResearchPoi } from '@tripweaver/shared';
-import { loadCityPlaceFacts, normalizePlaceKey } from './scheduling/placeFacts';
+import { placeNameKey, type ResearchPoi } from '@tripweaver/shared';
+import { loadCityPlaceFacts } from './scheduling/placeFacts';
 
 /** 相对 key → 可展示 URL；空 key 返回 null。key 已含 `xhs/` 前缀，与上游导出脚本对齐。
  *  base 默认取 MEDIA_BASE_URL（可注入便于单测）。 */
@@ -25,12 +25,7 @@ export function createStoredPlaceLookups(city: string, loadFacts = loadCityPlace
     if (!city.trim() || !name.trim()) return null;
     pending ??= loadFacts(city);
     const index = await pending;
-    const exact = index.get(normalizePlaceKey(name));
-    if (exact) return exact;
-    // 候选常写作「九溪烟树（九溪十八涧）」。先匹配完整名字，再匹配括号前的主体；
-    // 不用括号内的父景区替代主体（「断桥（西湖）」仍不能取西湖封面）。
-    const annotated = name.normalize('NFKC').trim().match(/^([^()]+)\([^()]+\)$/);
-    return annotated ? index.get(normalizePlaceKey(annotated[1]!)) ?? null : null;
+    return index.get(placeNameKey(name)) ?? null;
   };
   return {
     async photosFor(name: string): Promise<NonNullable<ResearchPoi['photos']>> {

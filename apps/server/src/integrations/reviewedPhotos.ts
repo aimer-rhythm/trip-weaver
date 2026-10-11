@@ -33,12 +33,12 @@ const EntrySchema = Type.Object({
   model: text(), reviewedAt: text(), evidence: text(),
 });
 export type ReviewedPhoto = Static<typeof EntrySchema>;
-const CatalogSchema = Type.Object({
+export const ReviewedCatalogSchema = Type.Object({
   version: Type.Literal(PHOTO_REVIEW_VERSION), city: text(), name: text(),
   aliases: Type.Array(text(), { maxItems: 20 }),
   entries: Type.Array(EntrySchema, { maxItems: 500 }),
 });
-export type ReviewedCatalog = Static<typeof CatalogSchema>;
+export type ReviewedCatalog = Static<typeof ReviewedCatalogSchema>;
 export type ReviewedCover = Pick<ResearchPoi, 'coverUrl' | 'coverAttribution' | 'photos'>;
 /** 只等待本地查询；补图持久入队独立运行，不回填已经返回的本次候选。 */
 export function reviewFirstLookup(read: (name: string) => Promise<ReviewedCover | null>, enqueue: (name: string) => Promise<unknown>) {
@@ -54,7 +54,7 @@ export function reviewedCatalogFile(city: string, name: string, root = PHOTO_DAT
   return path.join(root, 'photo-store/reviewed', reviewDigest(reviewName(city)), reviewDigest(reviewName(name)) + '.json');
 }
 export async function writeReviewedCatalog(catalog: ReviewedCatalog, root = PHOTO_DATA): Promise<void> {
-  if (!Value.Check(CatalogSchema, catalog)) throw new Error('Invalid reviewed photo catalog');
+  if (!Value.Check(ReviewedCatalogSchema, catalog)) throw new Error('Invalid reviewed photo catalog');
   const file = reviewedCatalogFile(catalog.city, catalog.name, root);
   await mkdir(path.dirname(file), { recursive: true });
   const temporary = `${file}.${randomUUID()}.tmp`;
@@ -152,6 +152,7 @@ export function createPhotoAdopter(options: PhotoAdoptionOptions = {}) {
 export function createReviewedCoverLookup(city: string, options: PhotoAdoptionOptions & {
   load?: () => Promise<unknown[]>;
   acceptPhoto?: (name: string, entry: ReviewedPhoto) => boolean;
+  acceptPlace?: (name: string) => boolean;
 } = {}): (name: string) => Promise<ReviewedCover | null> {
   const root = options.dataRoot ?? PHOTO_DATA;
   const adopt = createPhotoAdopter(options);
@@ -163,7 +164,7 @@ export function createReviewedCoverLookup(city: string, options: PhotoAdoptionOp
       try { const file = path.join(dir, f); if ((await stat(file)).size > 4 * 1024 * 1024) return null; return JSON.parse(await readFile(file, 'utf8')) as unknown; }
       catch { return null; }
     }));
-    return rows.filter((row): row is ReviewedCatalog => Value.Check(CatalogSchema, row) && reviewName(row.city) === reviewName(city));
+    return rows.filter((row): row is ReviewedCatalog => Value.Check(ReviewedCatalogSchema, row) && reviewName(row.city) === reviewName(city));
   })().catch(() => []);
   const pending = new Map<string, Promise<ReviewedCover | null>>();
   return name => {
@@ -177,6 +178,7 @@ export function createReviewedCoverLookup(city: string, options: PhotoAdoptionOp
         const primary = /^([^()]+)\([^()]+\)$/.exec(wanted)?.[1];
         if (!matches.length && primary) matches = find(primary);
         if (matches.length !== 1) return null;
+        if (options.acceptPlace && !options.acceptPlace(matches[0]!.name)) return null;
         return adopt(rankReviewedPhotos(matches[0]!.entries)
           .filter(entry => !options.acceptPhoto || options.acceptPhoto(name, entry))
           .map(entry => ({ ...entry, view: entry.review.view })));

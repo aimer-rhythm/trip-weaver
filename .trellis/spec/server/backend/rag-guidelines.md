@@ -40,9 +40,10 @@ vector calls. This supersedes the historical concatenation-only ranking contract
   system browsing is explicitly enabled. All SQL uses parameters and `verified = TRUE`;
   both keyword and vector paths apply the same city/category filters. LIKE metacharacters escape.
 - SQL supplies at most 256 keyword/browse rows. Exact name/alias hits lead; structured category
-  mappings supplement missing themes. Code normalizes institution suffixes and unambiguous
-  name/alias links, favors exact matches, quality, main sights and modest spatial diversity.
-  Shared generic aliases and parent/child substring matches do not merge facts across places.
+  mappings supplement missing themes. Ranking groups explicit stable entity IDs and favors exact
+  matches, quality, main sights and modest spatial diversity. Name keys only normalize NFKC,
+  whitespace and case; suffixes, shared aliases and parent/child substrings never prove identity.
+  See [place-identity.md](place-identity.md) for the authoritative identity contract.
 - `prepareResearchContext(form, retrieve, signal)` browses attractions with zero vector requests,
   at `ceil(days * paceDensity * 1.4)`, clamped to 8–36. Food preference adds up to 12 food candidates;
   hotels are excluded. These are choices for the model, not automatically selected activities.
@@ -74,7 +75,7 @@ vector calls. This supersedes the historical concatenation-only ranking contract
 - `submit_research(candidates?: {placeId, intro}[], summary?)` is the normal known-place path:
   validate all IDs/city/verified/category, nonblank intros and total capacity before inserting.
   Each known place goes through the same sequential enrichment and candidate SSE path; deduplicate
-  by canonical name, including already inserted entries. Empty pools cannot terminate successfully.
+  by canonicalPlaceId, including already inserted entries. Empty pools cannot terminate successfully.
   `normalizeReservation(status, note)` validates both structured and model-supplied policies:
   conflicts (e.g. `required` + `无需预约`), uncertain text, name-only or missing notes become
   `unknown` with an explicit confirmation reminder. Consistent explicit `none`/`required` survive;
@@ -147,6 +148,12 @@ when changing the meaning of `source` / `verified` for those tables.
 - `apps/server/scripts/seed-xhs-relations.ts` — community POI association pairs
   (`import/xhs-place-relations-{city}.json`) → `place_relation`; imports `strength='direct'` only,
   upserts on `(city, from_name, to_name)`
+  for legacy cities. Files with `relationIdentity` use the complete, source-versioned
+  `place_relation_snapshots` graph instead; see [place-identity.md §19](./place-identity.md).
+  Once a city adopts that contract, old name-only files are rejected. Place imports advancing
+  the source snapshot invalidate the old graph and its `data_import` record until a matching
+  relations file arrives. Graph consumers use current entity IDs/revisions and the latest
+  place export's available IDs, including when older verified rows remain in the library.
 - `apps/server/scripts/lib/exportFiles.ts` — shared export scanner: `scanExports(dir)` /
   `latestExports(files)` / `readExport(path)`; version identity is `sha256(file bytes)[:32]`
 - `apps/server/scripts/check-data-freshness.ts` — read-only diff of the newest on-disk exports
@@ -409,9 +416,10 @@ wiki lookup (overseas/proxied environments only).
 
 - Manifest `import/xhs-place-images-{city}.json`:
   `{ city, generatedAt, count, images: [{ placeId, placeName, key, width, height, bytes, score, sourceUrl }] }`
-- `placeId` = `sha256(city + name)[:32]` — the SAME algorithm as `canonical_places.id`. Upstream's
-own auto-increment id must never be exported: it matches no row here and the import silently
-writes nothing.
+- `placeId` is the persisted `place_entity.entity_id`, shared with the places export. A city/name
+  hash initializes legacy identity only; renaming never recomputes it. Old manifests resolve via
+  explicit member IDs/redirects. Unresolved IDs and complex child images are skipped with a count.
+  Upstream's source-row auto-increment ID must never be exported as the entity ID.
 - `key` = `xhs/{city}/{placeId}/{index}.webp` — a RELATIVE key. No `/media` prefix, no host.
 - Upstream producer: `xhs-travel-pipeline/scripts/export_place_images.py [--city] [--out] [--media-root]
   [--max-per-place] [--dry-run]`; `export_and_embed.ps1 -WithImages` chains it after the places import.
@@ -550,7 +558,7 @@ Community extraction, canonical export, library import, SQL/vector retrieval and
 
 The complete-intro job now searches and fetches web pages, with model knowledge supplying stable background. XHS supplies experience, warnings and other practical fields, not the encyclopedia intro. A web sentence can have `basis:'web',citations:[{quote,sourceUrl,observedAt}]` for several real excerpts. The legacy `quote/sourceUrl` is the first citation. A model-background sentence has `basis:'model_knowledge',quote:null,sourceUrl:null,strength:'unverified'`; never invent a citation. `purifiedIntroSources` expands all nested citations, validates HTTP(S) URLs and deduplicates them; no source link is synthesized for model knowledge. Export/import preserves the entire profile and downstream still copies the intro unchanged.
 
-`identity:{version:1,canonicalName,memberNames,kind}` declares explicit city-scoped ownership. Synonyms go into `aliases`; constituent venues go into `components` with independent policy/evidence. Tiananmen uses a single planning entity, while square/tower policies retain their scope. Do not infer equivalence by distance or substring.
+`identity:{version:2,entityId,revision,canonicalName,memberNames,memberIds,kind}` declares explicit city-scoped ownership. The v1 format remains import-compatible but cannot overwrite governed v2 identities. Synonyms go into `aliases`; constituent venues go into `components` with independent policy/evidence. Tiananmen uses a single planning entity, while square/tower policies retain their scope. Do not infer equivalence by distance or substring. See [place-identity.md](place-identity.md).
 
 Import refreshes authoritative upstream content/policy fields even on golden-set rows. Old matching rows receive `canonicalRedirectTo`; retain IDs, provenance and all independently stored photo fields. Both SQL and vector retrieval, place-fact loaders and library browsing exclude redirected rows. Queries against `memberNames` still resolve to the root. Old saved trip snapshots remain unchanged.
 
@@ -599,7 +607,7 @@ The upstream photography manifest now supplies an ordered gallery. This contract
 
 ### 3. Contracts
 
-`imageGallery` holds at most three `{ key, attribution?, provenance? }` entries in selected order. The first key is `coverImage`; exported `placeId` still uses the shared city/name hash. `provenance` retains original source, author, note/image index, model review and rights. Keys are safe relative WebP paths, including immutable `xhs/photography/<placeId>/<contentHash>.webp` keys. Existing `MEDIA_BASE_URL` maps these keys to local or remote media.
+`imageGallery` holds at most three `{ key, attribution?, provenance? }` entries in selected order. The first key is `coverImage`; exported `placeId` uses the persisted entity ID shared with the places export. `provenance` retains original source, author, note/image index, model review and rights. Keys are safe relative WebP paths, including immutable `xhs/photography/<placeId>/<contentHash>.webp` keys. Existing `MEDIA_BASE_URL` maps these keys to local or remote media.
 
 Photography entries require `reviewMethod=model`, `review.status=eligible`, `review.identity=match` and an HTTPS `www.xiaohongshu.com/explore/<id>` source. Attribution uses `source=xhs`, `license=未确认授权`; model review never implies a copyright license or human approval. Place reimport must retain both cover and gallery. New generation snapshots copy ordered photos; historical trips never change merely because the library was refreshed.
 

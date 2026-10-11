@@ -42,6 +42,9 @@ test('读新版跨源图库，跳过损坏文件与重复视角；旧版和同�
     const lookup = createReviewedCoverLookup('北京', { dataRoot: root });
     assert.equal((await lookup('故宫博物院（午后参观）'))?.coverUrl, first.photo.url);
     assert.equal(await lookup('景山公园'), null);
+    const blocked = createReviewedCoverLookup('北京', { dataRoot: root, acceptPlace: () => false });
+    assert.equal(await blocked('故宫博物院'), null);
+    assert.equal(await blocked('故宫博物院（午后参观）'), null, '去括号后仍须校验实际审核目录主体');
     assert.equal(await createReviewedCoverLookup('南京', { dataRoot: root })('故宫'), null);
     const old = createReviewedCoverLookup('北京', { dataRoot: root, load: async () => [{ version: 'old', city: '北京', name: '故宫', entries: [first] }] });
     assert.equal(await old('故宫'), null);

@@ -9,6 +9,23 @@ import { getNullPoiSource } from '../integrations/nullPoiSource';
 import { getNullSearchSource } from '../integrations/websearch/searchSource';
 
 after(() => pool.end());
+
+test('无澄清候选的撤回名称不能作为自由地点复活，即使搜索位置已有同名坐标', async () => {
+  const retired = {id:'retired-coffee',city:'北京',name:'CUIDA',category:'美食',verified:false,source:'xhs',lat:null,lng:null,
+    payload:{identity:{version:2,entityId:'retired-coffee',revision:2,memberIds:['retired-coffee'],memberNames:['CUIDA']},
+      identityWithdrawal:{version:1,revision:2,reason:'unavailable_source',candidateIds:[]}}};
+  const query=mock.method(pool,'query',async()=>({rows:[retired]}));
+  let retrievals=0;
+  try {
+    for(const located of [false,true]) {
+      const {add,outcome}=setup([],{foodSearch:true,retrieve:async()=>{retrievals++;return [];}});
+      if(located) outcome.locations.set('cuida',{lat:39.9,lng:116.4,adcode:'110000'});
+      const result=await add.execute('withdrawal',{name:'cuida',category:'food',intro:'不能沿泛名补充门店'});
+      assert.equal(result.details.ok,false); assert.equal(outcome.pool.length,0);
+    }
+    assert.equal(retrievals,0,'确认撤回后不能走模型/外部补充回退');
+  } finally {query.mock.restore();}
+});
 const place = (id: string, overrides: Partial<RetrievedPlace> = {}): RetrievedPlace => ({
   id, name: `测试公园${id}`, city: '北京', category: '自然', verified: true, source: 'xhs',
   lat: 39.9, lng: 116.4, aliases: [], payload: {}, evidence: [], ...overrides,
@@ -123,9 +140,10 @@ test('批次入池与SSE优先复用上游完整介绍，冲突预约与官方�
   }
 });
 
-test('重复ID、同名与已入池候选幂等去重，空池不得提交', async () => {
+test('重复实体ID与已入池候选幂等去重，空池不得提交', async () => {
   const original = place('original');
-  const { submit, add, outcome, published } = setup([original, place('same-name', { name: original.name }), place('another')]);
+  const { submit, add, outcome, published } = setup([original, place('same-name', { name: original.name,
+    payload: { identity: { entityId: original.id } } }), place('another')]);
   assert.equal((await submit.execute('empty', {})).details.ok, false);
   await add.execute('legacy', { placeId: original.id, name: original.name, category: 'attraction', intro: '已写入的简介' });
   const params = { candidates: ['original', 'same-name', 'another', 'another'].map((placeId) => ({ placeId, intro: '新简介' })) };
@@ -135,6 +153,22 @@ test('重复ID、同名与已入池候选幂等去重，空池不得提交', asy
   assert.equal(published.length, 2);
   assert.equal(outcome.pool[0]?.intro, '已写入的简介');
   assert.equal((await submit.execute('legacy-submit', { summary: '兼容原有提交' })).terminate, true);
+});
+
+test('未确认的相似名先核实，有独立地点搜索坐标才可作为自由地点加入', async () => {
+  const lake = place('lake', { name: '测试湖', aliases: [] });
+  const query = mock.method(pool, 'query', async () => ({ rows: [lake] }));
+  try {
+    const { add, outcome } = setup([lake], { retrieve: async () => [],
+      storedCover: async () => null, storedPoint: async () => null });
+    const name = '测试湖观景台';
+    assert.equal((await add.execute('unconfirmed', { name, category: 'attraction', intro: '湖边观景平台' })).details.ok, false);
+    assert.equal(outcome.pool.length, 0);
+    outcome.locations.set(name, { lat: 39.91, lng: 116.42, adcode: '110000' });
+    assert.equal((await add.execute('independent', { name, category: 'attraction', intro: '湖边独立观景平台' })).details.ok, true);
+    assert.equal(outcome.pool[0]?.name, name);
+    assert.equal(outcome.pool[0]?.canonicalPlaceId, undefined, '不能把独立子地点绑定到母景区');
+  } finally { query.mock.restore(); }
 });
 
 test('容量按整个池校验，超量不半批写入；允许美食偏好候选', async () => {

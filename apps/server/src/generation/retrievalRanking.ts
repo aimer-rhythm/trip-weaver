@@ -1,5 +1,7 @@
 import type { PoiCategory } from '@tripweaver/shared';
 import { normalizePlaceKey } from '../lib/placeKey';
+import { canonicalPlaceId, placeNames } from '../lib/placeIdentity';
+import { placeNameKey } from '@tripweaver/shared';
 import { poiScore, scoreMaxima } from './scheduling/score';
 
 export interface PlaceRow {
@@ -59,22 +61,18 @@ export interface RankedPlace {
 /** 有界 SQL 结果内归并实体与排序，不把任意包含关系当作同一地点。 */
 export function rankPlaces(rows: readonly PlaceRow[], terms: readonly string[], preferences: readonly string[], limit: number): RankedPlace[] {
   const maxima = scoreMaxima(rows.map(scoreFacts));
-  const exactKeys = new Set(terms.map(normalizePlaceKey));
+  const exactKeys = new Set(terms.map(placeNameKey));
   const categories = preferenceCategories([...terms, ...preferences]);
   const groups: RankedPlace[] = [];
   for (const row of rows) {
-    const nameKey = normalizePlaceKey(row.name);
-    const aliasKeys = stringList(row.payload?.aliases).map(normalizePlaceKey);
-    // 两个不同主名仅共享一个泛称别名时不归并；歧义别名也不选第一个就合并。
-    const matching = groups.filter((group) => group.row.city === row.city && (
-      group.aliases.some((name) => normalizePlaceKey(name) === nameKey)
-      || aliasKeys.includes(normalizePlaceKey(group.row.name))));
-    const group = matching.length === 1 ? matching[0] : undefined;
+    // 只按持久身份归并；名称和别名用来召回，不能临时改变实体身份。
+    const entityId = canonicalPlaceId(row);
+    const group = groups.find((group) => group.row.city === row.city && canonicalPlaceId(group.row) === entityId);
     if (group) {
       group.ids.push(row.id);
-      group.aliases.push(row.name, ...stringList(row.payload?.aliases));
-      const preferred = (row.source === 'goldset' && group.row.source !== 'goldset')
-        || (row.source === group.row.source && poiScore(scoreFacts(row), maxima) > poiScore(scoreFacts(group.row), maxima));
+      group.aliases.push(...placeNames(row));
+      const preferred = row.id === entityId && group.row.id !== entityId
+        || (group.row.id !== entityId && row.source === 'goldset' && group.row.source !== 'goldset');
       const base = preferred ? row : group.row;
       const supplement = preferred ? group.row : row;
       const present = (value: Record<string, unknown> | null) => Object.fromEntries(Object.entries(value ?? {}).filter(([, v]) => v != null));
@@ -83,20 +81,20 @@ export function rankPlaces(rows: readonly PlaceRow[], terms: readonly string[], 
       group.row = { ...base, payload: { ...present(supplement.payload), ...present(base.payload),
         themes: [...new Set([...stringList(base.payload?.themes), ...stringList(supplement.payload?.themes)])],
         ...(scores.length ? { recommendScore: Math.max(...scores) } : {}),
-        ...(mentions.length ? { mentionCount: mentions.reduce((a, b) => a + b, 0) } : {}),
+        ...(mentions.length ? { mentionCount: Math.max(...mentions) } : {}),
       },
         ...([base.distance, supplement.distance].some((d) => typeof d === 'number')
           ? { distance: Math.min(...[base.distance, supplement.distance].filter((d): d is number => typeof d === 'number')) } : {}),
         ...(base.lat == null || base.lng == null ? { lat: supplement.lat, lng: supplement.lng } : {}) };
     } else {
-      const next = { row, ids: [row.id], aliases: [row.name, ...stringList(row.payload?.aliases)] };
+      const next = { row, ids: [row.id], aliases: placeNames(row) };
       groups.push(next);
     }
   }
   const candidates = groups.map((group) => {
     const row = group.row;
-    const identity = row.payload?.identity as { memberNames?: unknown } | undefined;
-    const exact = [...group.aliases, ...stringList(identity?.memberNames)].some((name) => exactKeys.has(normalizePlaceKey(name)));
+    // group.aliases 已排除 complex 子项名；组成名称只能召回父项，不能获得同义精确命中奖励。
+    const exact = group.aliases.some((name) => exactKeys.has(placeNameKey(name)));
     const prefix = terms.some((term) => group.aliases.some((name) => name.startsWith(term)));
     const themes = stringList(row.payload?.themes);
     const theme = [...terms, ...preferences].some((term) => themes.includes(term));

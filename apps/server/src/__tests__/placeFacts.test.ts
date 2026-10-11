@@ -26,13 +26,13 @@ const fx = (over: Partial<PlaceFacts> & { name: string }): PlaceFacts => ({
   category: '', source: 'xhs', themes: [], recommendScore: 0, mentionCount: 0, aliases: [], ...over,
 });
 
-test('合并：质量取 max、热度求和、themes 并集、source 优先金集', () => {
+test('合并：质量和热度取 max、themes 并集、source 优先金集', () => {
   const merged = mergeFacts([
     fx({ name: '故宫博物院', source: 'goldset', recommendScore: 17.33, mentionCount: 6, themes: ['历史古迹'] }),
     fx({ name: '故宫', source: 'xhs', recommendScore: 40, mentionCount: 12, themes: ['历史古迹', '赏雪'] }),
   ]);
   assert.equal(merged.recommendScore, 40, '质量取 max');
-  assert.equal(merged.mentionCount, 18, '热度求和');
+  assert.equal(merged.mentionCount, 12, '相同来源的别名不能重复累加热度');
   assert.deepEqual(merged.themes, ['历史古迹', '赏雪'], 'themes 并集去重');
   assert.equal(merged.source, 'goldset', 'source 取高优先');
 });

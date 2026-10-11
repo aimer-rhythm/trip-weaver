@@ -54,7 +54,7 @@ test('同城多候选共享完整索引：首项未命中也不吞掉后续图�
   const lookups = createStoredPlaceLookups('杭州', async (city) => {
     assert.equal(city, '杭州');
     loads++;
-    return new Map([['虎跑', facts], ['虎跑泉', facts]]);
+    return new Map([['虎跑公园', facts], ['虎跑泉', facts]]);
   });
   assert.equal(await lookups.coverFor('断桥残雪'), null);
   const [cover, point, amap] = await Promise.all([
@@ -79,14 +79,14 @@ test('空城市/空名字不加载；空索引与不同城市互不污染', asyn
   assert.equal(loads, 2);
 });
 
-test('展示括注不丢失主体图片，完整名优先，不把括号内父景区当主体', async () => {
+test('括注保留独立主体，未登记的括注不借用另一地点图片', async () => {
   const base: PlaceFacts = { name: '九溪烟树', category: '自然', source: 'xhs', themes: [], aliases: [], coverImage: 'xhs/jiuxi.webp' };
   const lookup = createStoredPlaceLookups('杭州', async () => new Map([
     ['九溪烟树', base], ['西湖', { ...base, name: '西湖', coverImage: 'xhs/lake.webp' }],
-    ['九溪烟树（特定入口）', { ...base, coverImage: 'xhs/entrance.webp' }],
+    ['九溪烟树(特定入口)', { ...base, coverImage: 'xhs/entrance.webp' }],
   ]));
-  assert.equal(await lookup.coverFor('九溪烟树（九溪十八涧）'), mediaUrl('xhs/jiuxi.webp'));
-  assert.equal(await lookup.coverFor('九溪烟树 (九溪十八涧)'), mediaUrl('xhs/jiuxi.webp'));
+  assert.equal(await lookup.coverFor('九溪烟树（九溪十八涧）'), null);
+  assert.equal(await lookup.coverFor('九溪烟树 (九溪十八涧)'), null);
   assert.equal(await lookup.coverFor('九溪烟树（特定入口）'), mediaUrl('xhs/entrance.webp'));
   assert.equal(await lookup.coverFor('断桥（西湖）'), null);
   assert.equal(await lookup.coverFor('九溪烟树与西湖'), null);
@@ -94,18 +94,20 @@ test('展示括注不丢失主体图片，完整名优先，不把括号内父�
 
 test('真实城市加载保留多地点与别名；批量 API 仍只返回所请求名称', async () => {
   const city = '封面回归测试城';
-  const ids = ['cover-regression-a', 'cover-regression-b', 'cover-regression-other'];
+  const ids = ['cover-regression-a', 'cover-regression-b', 'cover-regression-other', 'cover-regression-unverified'];
   try {
     await pool.query(
-      `INSERT INTO canonical_places (id, city, name, category, source, payload, created_at)
-       VALUES ($1, $4, '断桥残雪', '自然', 'xhs', '{}', now()),
-              ($2, $4, '虎跑公园', '自然', 'xhs', $5, now()),
-              ($3, '另一座测试城', '虎跑公园', '自然', 'xhs', $6, now())`,
+      `INSERT INTO canonical_places (id, city, name, category, source, verified, payload, created_at)
+       VALUES ($1, $5, '断桥残雪', '自然', 'xhs', TRUE, '{}', now()),
+              ($2, $5, '虎跑公园', '自然', 'xhs', TRUE, $6, now()),
+              ($3, '另一座测试城', '虎跑公园', '自然', 'xhs', TRUE, $7, now()),
+              ($4, $5, '待核实地点', '自然', 'xhs', FALSE, $7, now())`,
       [...ids, city, { aliases: ['虎跑泉'], coverImage: 'xhs/test/hupao.webp' }, { coverImage: 'wrong-city.webp' }],
     );
     const index = await loadCityPlaceFacts(city);
     assert.ok(index.has('断桥残雪'));
-    assert.equal(index.get('虎跑')?.coverImage, 'xhs/test/hupao.webp');
+    assert.equal(index.has('待核实地点'), false);
+    assert.equal(index.get('虎跑公园')?.coverImage, 'xhs/test/hupao.webp');
     assert.equal(index.get('虎跑泉')?.coverImage, 'xhs/test/hupao.webp');
     const subset = await loadPlaceFacts(['虎跑公园'], city);
     assert.deepEqual([...subset.keys()], ['虎跑公园']);

@@ -1,6 +1,8 @@
 import type { PoiCategory } from '@tripweaver/shared';
 import type { QueryResultRow } from 'pg';
 import { categoryValues, preferenceCategories, rankPlaces, type PlaceRow, type RankedPlace } from './retrievalRanking';
+import { canonicalPlaceId } from '../lib/placeIdentity';
+import { placeNameKey } from '@tripweaver/shared';
 
 export interface EvidenceItem {
   kind: string;
@@ -9,6 +11,7 @@ export interface EvidenceItem {
   sourceUrl?: string;
 }
 export interface RetrievedPlace extends PlaceRow {
+  canonicalPlaceId?: string;
   aliases: string[];
   evidence: EvidenceItem[];
 }
@@ -45,6 +48,7 @@ const COLUMNS = `id, city, name, category, verified, source, lat, lng,
     'topReasons', payload->'topReasons', 'identity', payload->'identity', 'components', payload->'components') AS payload`;
 const ALIASES = `CASE WHEN jsonb_typeof(payload->'aliases') = 'array' THEN payload->'aliases' ELSE '[]'::jsonb END`;
 const MEMBERS = `CASE WHEN jsonb_typeof(payload->'identity'->'memberNames') = 'array' THEN payload->'identity'->'memberNames' ELSE '[]'::jsonb END`;
+const NAME_KEYS = `CASE WHEN jsonb_typeof(payload->'identity'->'nameKeys') = 'array' THEN payload->'identity'->'nameKeys' ELSE '[]'::jsonb END`;
 const THEMES = `CASE WHEN jsonb_typeof(payload->'themes') = 'array' THEN payload->'themes' ELSE '[]'::jsonb END`;
 const SQL_SCORE = `CASE WHEN jsonb_typeof(payload->'recommendScore') = 'number' THEN (payload->>'recommendScore')::numeric END`;
 
@@ -67,7 +71,7 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
          WHERE verified = TRUE AND payload->>'canonicalRedirectTo' IS NULL AND ($1::text IS NULL OR city = $1)
            AND (cardinality($4::text[]) = 0 OR category = ANY($4))
            AND ($5::boolean OR name = ANY($2) OR name LIKE ANY($3)
-             OR ${ALIASES} ?| $2::text[] OR ${MEMBERS} ?| $2::text[]
+             OR ${ALIASES} ?| $2::text[] OR ${MEMBERS} ?| $2::text[] OR ${NAME_KEYS} ?| $9::text[]
              OR EXISTS (SELECT 1 FROM jsonb_array_elements_text(${ALIASES}) a(value) WHERE a.value LIKE ANY($3))
              OR ${THEMES} ?| $2::text[] OR category = ANY($6))
          ORDER BY (name = ANY($2) OR ${ALIASES} ?| $2::text[]) DESC,
@@ -75,7 +79,7 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
            ${SQL_SCORE} DESC NULLS LAST, name, id
          LIMIT 256`,
         [options.city ?? null, terms, terms.map((term) => `${escapeLike(term)}%`), categories,
-          Boolean(options.browse), preferenceCategories(terms), preferenceCategories(preferences), [...preferences]],
+          Boolean(options.browse), preferenceCategories(terms), preferenceCategories(preferences), [...preferences], terms.map(placeNameKey)],
       );
       if (options.signal?.aborted) return [];
       let selected = rankPlaces(rows, terms, preferences, limit);
@@ -132,7 +136,7 @@ async function withEvidence(places: RankedPlace[], deps: RetrievalDeps): Promise
   );
   const kindOrder: Record<string, number> = { xhs_warning: 0, xhs_reservation: 1, xhs_price: 2 };
   const strengthOrder: Record<string, number> = { direct: 0, risk_only: 1 };
-  return places.map(({ row, ids: memberIds, aliases }) => ({ ...row, aliases: [...new Set(aliases)],
+  return places.map(({ row, ids: memberIds, aliases }) => ({ ...row, canonicalPlaceId: canonicalPlaceId(row), aliases: [...new Set(aliases)],
     evidence: rows.filter((e) => memberIds.includes(e.place_id)).sort((a, b) =>
       (kindOrder[a.kind] ?? 3) - (kindOrder[b.kind] ?? 3)
       || (strengthOrder[a.strength] ?? 2) - (strengthOrder[b.strength] ?? 2)

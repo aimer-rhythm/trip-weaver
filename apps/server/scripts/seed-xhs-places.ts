@@ -22,8 +22,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
+import { captureIdentityImport, recordIdentityImport } from '../src/services/placeIdentityAudit';
 import { env } from '../src/env';
-import { reconcileImportedPlaces } from '../src/services/placeImportIdentity';
+import { prepareImportedPlaces, reconcileImportedPlaces } from '../src/services/placeImportIdentity';
+import { acceptRelationSource } from '../src/services/placeRelationSnapshot';
 import { evidenceStrength } from '../src/services/evidenceStrength';
 import { IMPORT_DIR, latestExports, readExport, scanExports, type ExportFile } from './lib/exportFiles';
 
@@ -53,6 +55,7 @@ interface XhsPlaceInput {
 }
 
 interface XhsPlacesFile {
+  relationIdentity?: unknown;
   city: string;
   generatedAt: string;
   count: number;
@@ -114,7 +117,14 @@ async function importFile(
   now: string,
 ): Promise<{ upserted: number; evidenceInserted: number; evidencePlanned: number }> {
   const file = JSON.parse(fs.readFileSync(target.filePath, 'utf8')) as XhsPlacesFile;
-  const places = (file.places ?? []).filter((p) => p.id && p.name);
+  const identityBefore = file.relationIdentity !== undefined || file.places?.some(p =>
+    (p.payload?.identity as Record<string, unknown> | undefined)?.version === 2)
+    ? await captureIdentityImport(client, target.city) : undefined;
+  await acceptRelationSource(client, target.city, file.relationIdentity, (file.places ?? []).map(p => ({
+    id: p.id, name: p.name, city: target.city, payload: p.payload ?? null, verified: p.verified,
+  })));
+  const places = await prepareImportedPlaces(client, target.city, (file.places ?? []).filter((p) => p.id && p.name));
+  if (!places.length && file.places?.length && file.relationIdentity === undefined) return { upserted: 0, evidenceInserted: 0, evidencePlanned: 0 };
   console.log(
     `[xhs-seed] 导入 ${path.basename(target.filePath)}｜城市 ${target.city}｜${places.length} 个地点｜生成于 ${target.generatedAt}`,
   );
@@ -163,6 +173,7 @@ async function importFile(
                   'coverImage', canonical_places.payload->'coverImage',
                   'imageGallery', canonical_places.payload->'imageGallery',
                   'amapPhoto', canonical_places.payload->'amapPhoto'))
+             || jsonb_strip_nulls(jsonb_build_object('embeddedText', canonical_places.payload->'embeddedText'))
              -- 同为金集：两份都可能有分数，取高者（不因重导回退旧值）
              || CASE
                   WHEN coalesce((canonical_places.payload->>'recommendScore')::float8, 0)
@@ -173,7 +184,8 @@ async function importFile(
                   ELSE '{}'::jsonb
                 END
            ELSE
-             EXCLUDED.payload || coalesce(canonical_places.payload, '{}'::jsonb)
+             -- prepareImportedPlaces 已验证旧组合子项可以独立导入；金集也须解除旧重定向。
+             EXCLUDED.payload || (coalesce(canonical_places.payload, '{}'::jsonb) - 'canonicalRedirectTo')
              || CASE
                   WHEN coalesce((canonical_places.payload->>'recommendScore')::float8, 0)
                      >= coalesce((EXCLUDED.payload->>'recommendScore')::float8, 0)
@@ -210,6 +222,7 @@ async function importFile(
 
     const evRows: string[][] = [];
     for (const place of batch) {
+      if (place.payload?.identityWithdrawal !== undefined) continue;
       for (const item of place.evidence ?? []) {
         if (!item.content) continue;
         evRows.push([
@@ -254,6 +267,10 @@ async function importFile(
     [IMPORT_SOURCE, target.city, target.contentHash, path.basename(target.filePath), places.length, now],
   );
 
+  if (identityBefore) {
+    const auditId = await recordIdentityImport(client, target.city, target.contentHash, identityBefore);
+    console.log(`[xhs-seed]   实体导入审计 ${auditId}（保留原行、图片、语料及向量快照）`);
+  }
   return { upserted, evidenceInserted, evidencePlanned };
 }
 
@@ -277,6 +294,9 @@ async function main(): Promise<void> {
     await client.query('BEGIN');
 
     if (purged) {
+      const governed = await client.query(`SELECT 1 FROM canonical_places
+        WHERE source='xhs' AND payload->'identity'->>'version'='2' LIMIT 1`);
+      if (governed.rows.length) throw new Error('已有稳定身份，不能通过 --purge 绕过治理；请使用有审计的身份回滚');
       const del = await client.query(`DELETE FROM canonical_places WHERE source = $1`, [SOURCE]);
       console.log(`[xhs-seed] --purge 清除旧地点 ${del.rowCount ?? 0} 条（语料随之由外键逻辑手动清）`);
       await client.query(

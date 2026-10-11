@@ -24,6 +24,7 @@ import { type DraftActivity, type PlaceHint } from './placeLookup';
 
 export interface DraftActivityInput extends PlaceHint {
   name: string;
+  canonicalPlaceId?: string;
   startTime?: string;
   endTime?: string;
   description?: string;
@@ -47,6 +48,7 @@ function toActivity(input: DraftActivityInput): DraftActivity {
   const hasCoord = typeof input.lat === 'number' && typeof input.lng === 'number' && (input.lat !== 0 || input.lng !== 0);
   return {
     id: uid(),
+    ...(input.canonicalPlaceId?.trim() ? { canonicalPlaceId: input.canonicalPlaceId.trim().slice(0, 128) } : {}),
     name: input.name.slice(0, 100),
     startTime: TIME_RE.test(input.startTime ?? '') ? input.startTime! : '',
     endTime: TIME_RE.test(input.endTime ?? '') ? input.endTime! : '',
@@ -138,6 +140,7 @@ export class DraftTrip {
       cost: patch.cost ?? existing.cost,
       placeName,
       poiId,
+      canonicalPlaceId: patch.canonicalPlaceId ?? (placeChanged ? undefined : existing.canonicalPlaceId),
       // Never let a replacement inherit the old place's verified coordinates or adcode.
       lat: needsResolution ? 0 : existing.lat,
       lng: needsResolution ? 0 : existing.lng,
@@ -221,6 +224,12 @@ export class DraftTrip {
       if (!day.activities.length) problems.push(`第 ${i + 1} 天没有任何活动`);
       if (day.activities.length > 8) problems.push(`第 ${i + 1} 天活动过多（${day.activities.length} 个，应 ≤8）`);
     });
+    const visited = new Set<string>();
+    for (const activity of this.days.flatMap(day => day.activities)) {
+      if (!activity.canonicalPlaceId || activity.category === '美食') continue;
+      if (visited.has(activity.canonicalPlaceId)) problems.push(`同一地点重复安排：${activity.name}`);
+      visited.add(activity.canonicalPlaceId);
+    }
     // 餐次要求改为偏好驱动（09-21 D3/D6）：仅偏好含「美食」时才算完整性问题
     problems.push(...mealCoverageProblems(this.days, { foodFocused: isFoodFocused(this.form.preferences) }));
     // v0.5：坐标覆盖不再作为完整性问题 —— 审校后由确定性 geoPipeline 统一解析全量坐标
