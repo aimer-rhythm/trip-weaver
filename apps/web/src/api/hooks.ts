@@ -23,7 +23,7 @@ import type {
 } from '@tripweaver/shared';
 import { TRIP_LIST_PAGE_SIZE, TravelPreferencesSchema, NotificationPageSchema, GenerationJobViewSchema } from '@tripweaver/shared';
 import { Value } from '@sinclair/typebox/value';
-import { api, ApiError, resetAuthState, shouldRetryQuery } from './client';
+import { api, resetAuthState, shouldRetryQuery } from './client';
 
 export interface MeView {
   id: string;
@@ -78,13 +78,8 @@ export function useAuthConfig() {
 export function useMe() {
   return useQuery({
     queryKey: keys.me,
-    queryFn: async ({ signal }) => {
-      try { return await api.get<MeView>('/api/auth/me', { auth: 'public', signal }); }
-      catch (error) {
-        if (error instanceof ApiError && error.status === 401) return null;
-        throw error;
-      }
-    },
+    // 服务端对未登录返回 200 + null，避免 401 在浏览器控制台留下报错
+    queryFn: ({ signal }) => api.get<MeView | null>('/api/auth/me', { auth: 'public', signal }),
     retry: shouldRetryQuery,
     staleTime: 5 * 60_000,
   });

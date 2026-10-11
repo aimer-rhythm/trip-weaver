@@ -44,7 +44,7 @@ try {
         generationBody = req.postDataJSON();
         return route.fulfill({ status: 503, json: apiFailure(503, '测试暂停生成') });
       }
-      if (p === '/api/auth/me' && width === 390) return route.fulfill({ status: 401, json: apiFailure(401, '请登录') });
+      if (p === '/api/auth/me' && width === 390) return route.fulfill({ json: apiSuccess(null) });
       if (p === '/api/destinations/covered' && cityMode === 'error') return route.fulfill({ status: 503, json: apiFailure(503, '暂不可用') });
       const fixtures = {
         '/api/auth/me': { id: 'home-mobile-fixture', email: 'home@example.test' },

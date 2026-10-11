@@ -26,7 +26,7 @@ try {
     }
     if (p === '/api/auth/me') {
       if (serviceError) return route.fulfill({ status: 503, json: apiFailure(503, '服务暂不可用') });
-      return route.fulfill({ status: authenticated ? 200 : 401, json: authenticated ? apiSuccess({ id: 'login-test', email: 'fixture@example.test' }) : apiFailure(401, '请登录') });
+      return route.fulfill({ json: apiSuccess(authenticated ? { id: 'login-test', email: 'fixture@example.test' } : null) });
     }
     if (p === '/api/auth/login') {
       if (request.postDataJSON().password === 'wrong') return route.fulfill({ status: 401, json: apiFailure(401, '邮箱或密码错误') });

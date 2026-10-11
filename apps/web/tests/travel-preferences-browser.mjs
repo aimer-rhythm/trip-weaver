@@ -26,8 +26,7 @@ await page.route((url) => url.pathname.startsWith('/api/'), async (route) => {
   const req = route.request();
   const path = new URL(req.url()).pathname;
   const ok = (data) => route.fulfill({ json: apiSuccess(data) });
-  if (path === '/api/auth/me') return authenticated ? ok({ id: account, email: `${account}@example.test` })
-    : route.fulfill({ status: 401, json: apiFailure(401, '请登录') });
+  if (path === '/api/auth/me') return ok(authenticated ? { id: account, email: `${account}@example.test` } : null);
   if (path === '/api/auth/config') return ok({ registrationMode: 'open', githubEnabled: false });
   if (path === '/api/auth/login') {
     authenticated = true;
