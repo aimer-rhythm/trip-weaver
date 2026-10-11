@@ -13,6 +13,7 @@ has a more specific convention.
 - [Security guidelines](./security-guidelines.md): authentication, sessions, OAuth, encryption, SSRF, and environment bootstrap.
 - [Integration guidelines](./integration-guidelines.md): external source adapters, Null implementations, caches, queues, limits, and accounting.
 - [行程天气](./trip-weather.md)：和风十五日预报、日期匹配、独立额度、生成快照与详情补查。
+- [行程专属建议](./trip-advice.md)：第三阶段基于最终行程与知识库撰写、来源校验、快照持久化及编辑过期提示。
 - [Generation guidelines](./generation-guidelines.md): background jobs, SSE, cancellation, persistence, task-local POI reuse, local revisions, and single-instance limitations.
 - [导航与生成通知](./generation-notifications.md)：全局生成恢复、账号通知、已读游标、事务边界与离开保存。
 - [RAG retrieval guidelines](./rag-guidelines.md): verified-place hybrid recall, prompt injection points, the embedding client, and offline knowledge ingestion scripts.
