@@ -70,6 +70,12 @@ See the terminal/persistence scenario in `generation-guidelines.md` and
 `updateTrip` 的时间戳至少增加 1ms。详情操作需原子写入 `detail_operations`，消息/Brief 服务接受
 同一 writer，禁止另开事务逃逸。迁移、幂等和恢复规则见 [详情对话流与版本恢复](./detail-chat-history.md)。
 
+行程身份是 `rootId`（一条行程 + 它的全部历史版本）。`deleteTrip(userId, 任一版本 id)` 在同一事务内
+先持 `users` 行锁再删除该 `rootId` 下的全部版本行，所以删除不可逆且范围是整条链；未命中或越权
+返回 `false`，由路由统一映射 404。删除不级联清理 `trip_share_images` 行与 `data/media/share-posters/`
+磁盘成品，这两类残留按个人使用量级暂不处理。单用户行程数量不设上限（`MAX_TRIPS_PER_USER` 已于
+10-11 移除，原因是版本链让它变成行数判据并误伤对话修订）。
+
 ## Common Mistakes
 
 - Updating only one half of the schema/migration contract.

@@ -2,7 +2,6 @@ import { and, asc, desc, eq, ilike, or, sql, type SQL } from 'drizzle-orm';
 import { isDeepStrictEqual } from 'node:util';
 import { Value } from '@sinclair/typebox/value';
 import {
-  MAX_TRIPS_PER_USER,
   TripSchema,
   uid,
   type Trip,
@@ -144,10 +143,6 @@ export async function getTrip(userId: string, id: string): Promise<Trip | null> 
 export async function createTrip(userId: string, source: Trip, revisionOf?: string, writer: TripWriter = db): Promise<Trip> {
   if (writer === db) return db.transaction((tx) => createTrip(userId, source, revisionOf, tx));
   await lockTripWriter(userId, writer);
-  const [count] = await writer.select({ n: sql<number>`count(*)` }).from(trips).where(eq(trips.userId, userId));
-  if (Number(count?.n ?? 0) >= MAX_TRIPS_PER_USER) {
-    throw Object.assign(new Error(`行程数量已达上限（${MAX_TRIPS_PER_USER} 条），请先清理历史行程`), { statusCode: 409 });
-  }
   const nowMs = Date.now();
   const now = new Date(nowMs);
   const trip: Trip = { ...source, id: uid(), createdAt: nowMs, updatedAt: nowMs };
@@ -208,7 +203,14 @@ export async function renameTrip(userId: string, id: string, title: string): Pro
   return (await updateTrip(userId, id, { ...trip, title })) !== null;
 }
 
+/** 删除整条版本链：列表与历史面板都按行程（rootId）工作，传链上任意版本 id 即删除该行程的全部版本。 */
 export async function deleteTrip(userId: string, id: string): Promise<boolean> {
-  const rows = await db.delete(trips).where(and(eq(trips.id, id), eq(trips.userId, userId))).returning({ id: trips.id });
-  return rows.length > 0;
+  return db.transaction(async (tx) => {
+    // 与其他创建路径共用用户行锁，避免删除整链时并发插入新版本
+    await lockTripWriter(userId, tx);
+    const [anchor] = await tx.select({ rootId: trips.rootId }).from(trips).where(and(eq(trips.id, id), eq(trips.userId, userId)));
+    if (!anchor) return false;
+    await tx.delete(trips).where(and(eq(trips.userId, userId), eq(trips.rootId, anchor.rootId)));
+    return true;
+  });
 }
