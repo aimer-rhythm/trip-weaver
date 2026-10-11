@@ -27,6 +27,7 @@
     "eval:campaign:audit": "tsx --tsconfig eval/tsconfig.json eval/audit-reviews.ts",
     "eval:knowledge:export": "tsx --tsconfig eval/tsconfig.json eval/export-knowledge.ts",
     "eval:knowledge:verify": "tsx --tsconfig eval/tsconfig.json eval/verify-knowledge.ts",
+    "eval:retrieval": "node --import tsx scripts/retrieval-quality-baseline.mts",
   "assets:transparent": "node scripts/to-transparent.mjs",
     "build": "npm run build -w apps/web",
     "start": "npm run start -w apps/server"
