@@ -1,0 +1,60 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "f60cdd43c8732a2b58e567531b8a6a04e6771c3e1eb40b8312fe2a118a9d6307",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "乍浦路桥",
+      "entityId": "1bd5394a328dfcddf66a31efc03c58ef",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "淮海中路",
+      "entityId": "1ad90072b41962955001d46a0060ecc1",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "新天地",
+      "entityId": "7c070ffa455db9978014329a6582a648",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "北外滩",
+      "entityId": "6fd07ebb97c1fdeeb2aa94f06e40b30f",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 4,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

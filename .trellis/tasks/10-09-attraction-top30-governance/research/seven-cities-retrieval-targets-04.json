@@ -1,0 +1,256 @@
+{
+  "snapshotSha256": "732421d96b73543303d566f315e1e9b965d08297d69a23d567343eb6617d6e31",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": [
+        {
+          "entityId": "28733e45b8ce6bdf8a96ed0a4beaa1d0",
+          "city": "重庆",
+          "name": "李子坝轻轨穿楼",
+          "revision": 3,
+          "aliases": [
+            "李子坝",
+            "李子坝轻轨站"
+          ],
+          "sourceIds": [
+            34,
+            62,
+            186
+          ],
+          "sourceNames": [
+            "李子坝",
+            "李子坝轻轨穿楼",
+            "李子坝轻轨站"
+          ],
+          "effectiveType": "attraction",
+          "score": 75.67,
+          "downstreamScore": 75.67,
+          "mentionCount": 30,
+          "noteCount": 23,
+          "uncertainMentionIds": [
+            575
+          ],
+          "allAssignedScore": 78.19,
+          "potentialScore": 79.0,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            34
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未确认归属提及"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            318,
+            357,
+            385,
+            437,
+            453,
+            541,
+            613,
+            626,
+            653,
+            676,
+            698,
+            727,
+            786,
+            825,
+            826,
+            864,
+            894,
+            920,
+            1008,
+            1026,
+            1044,
+            1091,
+            1164,
+            1178,
+            1236,
+            1281,
+            1436,
+            1590,
+            1628,
+            1792
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "28733e45b8ce6bdf8a96ed0a4beaa1d0",
+            "6f0a9d54e71dae55dac62b35c9511e6e",
+            "d32d4e4736a0d94b29389a87828a5f67"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\govern-chongqing-liziba.py",
+              "kind": "reviewed_attraction_identity_and_sources",
+              "conclusion": "note13/143/249的路线和正文交替使用李子坝、李子坝轻轨穿楼、李子坝轻轨站，均指本次穿楼景观游览主体。保留全名根34和旧主源位置；不吸收独立揽胜亭、观景台、付费拍照、餐厅及佛图关穿楼点。575只是徒步终点换乘，null待审。825的图文第6张有李子坝行程，身份保留，但封面城市泛化预约及第2至4张其他景点预约不属于李子坝，排除reservation/reason/evidence_text；保留原warning类型及全部原资料，不改写作者其他真实负评。位置与门票营业资料不据此全面核实。",
+              "mentionIds": [
+                318,
+                357,
+                385,
+                437,
+                453,
+                541,
+                575,
+                613,
+                626,
+                653,
+                676,
+                698,
+                727,
+                786,
+                825,
+                826,
+                864,
+                894,
+                920,
+                1008,
+                1026,
+                1044,
+                1091,
+                1164,
+                1178,
+                1236,
+                1281,
+                1436,
+                1590,
+                1628,
+                1792
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "👉 D2 李子坝轻轨穿楼→鹅岭二厂",
+                  "noteId": 13
+                },
+                {
+                  "quote": "✔️李子坝：轻轨穿楼奇观，2号线A口观景台，下午3-5点光线好",
+                  "noteId": 13
+                },
+                {
+                  "quote": "11:40李子坝轻轨站",
+                  "noteId": 143
+                },
+                {
+                  "quote": "📍李子坝：观景平台上很难找到角度拍吃轻轨，而且人很多。",
+                  "noteId": 143
+                },
+                {
+                  "quote": "📍李子坝轻轨站:重庆特有的地形景观，轻轨穿楼而过，打卡的人也多，来感受重庆的魔幻交通",
+                  "noteId": 249
+                },
+                {
+                  "quote": "走到李子坝再换乘其他地铁也很方便",
+                  "noteId": 64
+                },
+                {
+                  "quote": "想到自己为了这个打车，很不值",
+                  "noteId": 38
+                }
+              ],
+              "snapshotSha256": "75cd330e34cc4b266b55b39906008fffc7d1b48b6e9cefe50165edd5adb38072",
+              "imageTextEvidence": {
+                "quote": "3.耙洋芋 → 4.李子坝",
+                "noteId": 96,
+                "inputHash": "a0b9de27b4768b206c3ddfa4ecc161bf74591889e6b2f263a8b666ad92380b0c",
+                "imageIndex": 5
+              }
+            }
+          ],
+          "rank": 5
+        },
+        {
+          "entityId": "e52c59c501200edd7bb1dc95b5ef117e",
+          "city": "重庆",
+          "name": "塔坪",
+          "revision": 1,
+          "aliases": [],
+          "sourceIds": [
+            15
+          ],
+          "sourceNames": [
+            "塔坪"
+          ],
+          "effectiveType": "attraction",
+          "score": 23.0,
+          "downstreamScore": 23,
+          "mentionCount": 8,
+          "noteCount": 4,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 23.0,
+          "potentialScore": 23.0,
+          "pendingReviewIds": [],
+          "scopeIds": [],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            303,
+            330,
+            363,
+            569,
+            638,
+            715,
+            1193,
+            1774
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "e52c59c501200edd7bb1dc95b5ef117e"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 30
+        }
+      ]
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-04.json",
+    "count": 208,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

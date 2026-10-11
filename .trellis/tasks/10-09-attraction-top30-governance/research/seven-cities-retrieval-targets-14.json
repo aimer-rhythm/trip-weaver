@@ -1,0 +1,669 @@
+{
+  "snapshotSha256": "cdf02825765a23b82f38d54bf09d16009468b9eb9bb97a019c4203f6fc84c744",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+          "city": "厦门",
+          "name": "中山路步行街",
+          "revision": 4,
+          "aliases": [
+            "中山路",
+            "厦门中山路步行街"
+          ],
+          "sourceIds": [
+            2539,
+            2649,
+            2670
+          ],
+          "sourceNames": [
+            "中山路",
+            "中山路步行街",
+            "厦门中山路步行街"
+          ],
+          "effectiveType": "attraction",
+          "score": 89.71,
+          "downstreamScore": 89.71,
+          "mentionCount": 34,
+          "noteCount": 34,
+          "uncertainMentionIds": [
+            6808
+          ],
+          "allAssignedScore": 92.21,
+          "potentialScore": 92.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2670
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未确认归属提及"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5308,
+            5313,
+            5341,
+            5355,
+            5363,
+            5427,
+            5471,
+            5486,
+            5552,
+            5644,
+            5730,
+            5754,
+            5770,
+            5771,
+            5888,
+            5904,
+            5963,
+            5997,
+            6049,
+            6069,
+            6080,
+            6118,
+            6142,
+            6201,
+            6225,
+            6232,
+            6395,
+            6401,
+            6414,
+            6429,
+            6475,
+            6762,
+            6857,
+            6912
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 5437,
+              "inputHash": "a4f105f650c0a0a8af51dfa38f838f1797a1bc9391171749c59bcc060e3fd7a9",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1355,
+              "quote": "🏠我住在中山街去哪都还挺方便的",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 5543,
+              "inputHash": "5f7d059d13e27c7436b39cde29af9774c7f3790c2e90e47a445c301e31528bd9",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1298,
+              "quote": "关于住宿|选对地方少走800条街!首选：思明区(中山路/中华城附近)",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 5631,
+              "inputHash": "2e75a36856b81d998a62f2a7c258411b7590f20dd18347d327ed7d36d27677c8",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1324,
+              "quote": "性价比党直接住厦门本岛（中山路/曾厝垵），白天上岛玩一天足够啦",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 5966,
+              "inputHash": "f821240c1dceece429425868b764b97ba9f0265cb2cd1a2258c000db0d0aa312",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1423,
+              "quote": "都在老市区！思明区的中山路",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "正文只有中山路地域下小吃店推荐，标题明确12家，不是步行街整体游览。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6160,
+              "inputHash": "1ad3edbff7b9365d9e801bccbd8a2e4faf135a03fcb3f72af9fd36ff4261ccde",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1380,
+              "quote": "🛕中山路、八市、轮渡周边，靠近鼓浪屿码头，吃喝出行都方便",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6168,
+              "inputHash": "5765abd6d3fd057b4be2f283581a88af5cd023b571639eef330e76bc4ea560f7",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1451,
+              "quote": "🆕2026厦门中山路春节活动🔥",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "正文仅节庆活动；6240兼列食店但无独立街道游览，不把限时活动归为街道常设看点。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6240,
+              "inputHash": "5a43feb744541eba22b54a3f6cc339e438e0bf294e9e1137e23712241240145f",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1453,
+              "quote": "·中山路千年非遗秀（初一至初七）",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "正文仅节庆活动；6240兼列食店但无独立街道游览，不把限时活动归为街道常设看点。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6320,
+              "inputHash": "b5613420831ee7b1dbf02d485e7600d08ac8c9ad0dfcb9b24001811f18c9d922",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1514,
+              "quote": "首选中山路或厦门火车站附近",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6389,
+              "inputHash": "63b5a3531194739b5b7981b10df6d2a722111715321faae1445faf3ad29b6dfd",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1544,
+              "quote": "▪️中山路/八市：适合第一次来厦门，吃喝多，晚上也热闹",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6584,
+              "inputHash": "69e3d0a97b998be7e70c6923b8fabfdc9802e57430ab59a43d1e03610ccc259b",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1437,
+              "quote": "位置省心，离中山路步行街巨近，逛吃完全不慌。",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6597,
+              "inputHash": "14f7b321e250ac6623f4d11d51dc006e1fae3f7648f2712f0a4f946e63c0c83d",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1436,
+              "quote": "就在双子塔A座，出门直接连通大型商场",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6679,
+              "inputHash": "662141f73823214d955e12b5c9851fa5b245d7f0541bae997ffdd990cfd618cb",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1513,
+              "quote": "🆕中山路中秋活动🔥",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "正文仅节庆活动；6240兼列食店但无独立街道游览，不把限时活动归为街道常设看点。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6802,
+              "inputHash": "e9e198e841afae64a0a6b162306636e881dca37b7dbfac4ba20e6b4c5f5e74cc",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1440,
+              "quote": "在中山路住到人生海景房",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "正文仅住宿选择、酒店周边可达性或窗景，未独立推荐街道游览；不创建酒店。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+              "name": "中山路步行街",
+              "expectedRevision": 4,
+              "mentionId": 6852,
+              "inputHash": "551853b496b24b03788136b7c6a701ccbb697068619ff41a1ebf872561fbca86",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2670
+                ]
+              },
+              "noteId": 1528,
+              "quote": "🎉中华城中山路迎新嘉年华",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "正文仅节庆活动；6240兼列食店但无独立街道游览，不把限时活动归为街道常设看点。",
+              "businessMutation": false,
+              "limit": "原提及/正文/PENDING保留，不创建域外主体；只约束母项潜在分。"
+            }
+          ],
+          "legacyIds": [
+            "33d36d2ffcc454e4e6339335006dfdcd",
+            "5950d3c70e76f5682842a6726f2b1e92",
+            "6ac19b2cf03933d05ea4cfe6489af837"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "6808",
+                  "name": "厦门中山路步行街",
+                  "quote": "厦门中山路美食推荐",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8aa2f0000000003301aa1a"
+                },
+                {
+                  "id": "5308",
+                  "name": "厦门中山路步行街",
+                  "quote": "下午中山路步行街",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a027cd4000000003502511b"
+                },
+                {
+                  "id": "6802",
+                  "name": "中山路步行街",
+                  "quote": "在中山路住到人生海景房",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a7ae95b0000000026036e6c"
+                },
+                {
+                  "id": "6679",
+                  "name": "中山路步行街",
+                  "quote": "中秋博饼状元赛 侨批广场、汉服嘉年华",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+                },
+                {
+                  "id": "6584",
+                  "name": "中山路步行街",
+                  "quote": "离中山路步行街巨近",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aa75fc5000000002601f991"
+                },
+                {
+                  "id": "6401",
+                  "name": "中山路步行街",
+                  "quote": "中山路 + 八市",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a48c9fa000000001c027139"
+                },
+                {
+                  "id": "5313",
+                  "name": "中山路",
+                  "quote": "南洋复古骑楼傍晚亮灯氛围好",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a3a759d000000000803c474"
+                },
+                {
+                  "id": "5341",
+                  "name": "中山路",
+                  "quote": "买伴手礼很方便",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6892f9120000000023028ba3"
+                },
+                {
+                  "id": "5471",
+                  "name": "中山路",
+                  "quote": "中山路的小吃一定不能错过",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69f1edda000000001f005b57"
+                },
+                {
+                  "id": "5486",
+                  "name": "中山路",
+                  "quote": "中山路",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6978a690000000001a034cd4"
+                }
+              ],
+              "reviewIds": [
+                184
+              ],
+              "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。",
+              "sourcePlaceIds": [
+                "2649",
+                "2670",
+                "2539"
+              ]
+            },
+            {
+              "lat": 24.455453,
+              "lng": 118.079259,
+              "kind": "primary_source_geometry",
+              "address": "中山路56号",
+              "category": "景点",
+              "original": {
+                "lat": 24.455453,
+                "lng": 118.079259,
+                "address": "中山路56号",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "2670",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/xiamen-batch15-supplement.json",
+              "kind": "reviewed_supplemental_entity",
+              "sha256": "00f5b76037099b1d5e801e31ea4673666decd7ed2cb9679f4c521f840a571a63",
+              "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。"
+            },
+            {
+              "file": "all-cities/xiamen-batch15-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+              "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。",
+              "mentionIds": [
+                5308,
+                5552,
+                5644,
+                5770,
+                5771,
+                5888,
+                5904,
+                5963,
+                6049,
+                6069,
+                6080,
+                6118,
+                6142,
+                6225,
+                6232,
+                6389,
+                6395,
+                6401,
+                6584,
+                6679,
+                6802,
+                6808
+              ]
+            },
+            {
+              "file": "all-cities/xiamen-batch15-variant-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "31e5b82b688005ac662d6cce158967f7a463c873a58bbf17deb4a569af9231a6",
+              "conclusion": "1245、1246、1279、1316、1467及活动1513都明确思明老城中山路骑楼商业街。补充中山路主源同门牌中山路56号，三名同体；部分提及以附近酒店或街边餐厅为主题，不能把酒店或未具名餐厅吸入主体事实。仅有双子塔酒店广告的厦门中山路记录另留纠错，不加入。",
+              "mentionIds": [
+                5313,
+                5341,
+                5355,
+                5363,
+                5427,
+                5437,
+                5471,
+                5486,
+                5543,
+                5631,
+                5730,
+                5754,
+                5966,
+                5997,
+                6160,
+                6168,
+                6201,
+                6240,
+                6320,
+                6414,
+                6429,
+                6475,
+                6597,
+                6762,
+                6852,
+                6857,
+                6912
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                5308,
+                5313,
+                5341,
+                5355,
+                5363,
+                5427,
+                5437,
+                5471,
+                5486,
+                5543,
+                5552,
+                5631,
+                5644,
+                5730,
+                5754,
+                5770,
+                5771,
+                5888,
+                5904,
+                5963,
+                5966,
+                5997,
+                6049,
+                6069,
+                6080,
+                6118,
+                6142,
+                6160,
+                6168,
+                6201,
+                6225,
+                6232,
+                6240,
+                6320,
+                6389,
+                6395,
+                6401,
+                6414,
+                6429,
+                6475,
+                6584,
+                6597,
+                6679,
+                6762,
+                6802,
+                6808,
+                6852,
+                6857,
+                6912
+              ],
+              "scoreAfter": 127.3,
+              "scoreBefore": 67.1,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 5
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-14.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

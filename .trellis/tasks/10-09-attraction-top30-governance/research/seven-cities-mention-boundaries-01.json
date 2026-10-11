@@ -1,0 +1,208 @@
+[
+  {
+    "city": "厦门",
+    "entityId": "79430af52e86d2c23acffdef3c42fccb",
+    "name": "山海步道",
+    "expectedRevision": 3,
+    "mentionId": 6042,
+    "inputHash": "9ebbc68961c9f6e84a53059728e3199e0d7190d774dccb8355dccfa6c1e4f4ec",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 1280,
+    "quote": "傍晚走山海步道盼归塔段",
+    "relation": "not_same_entity",
+    "subjectType": "route_segment",
+    "conclusion": "原文为具名路线段；不能作为整个山海步道的全局同义名，也不能把盼归塔段与塔体合并。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "成都",
+    "entityId": "e43abd99a49ccca21dbecc07502c01e1",
+    "name": "东郊记忆",
+    "expectedRevision": 2,
+    "mentionId": 3459,
+    "inputHash": "d93e258843fb303d3e6f73343d1f04d2b2bd70cd99ef0a5a0e2f80d740a27d9b",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 934,
+    "quote": "东郊记忆(南大门)",
+    "relation": "not_same_entity",
+    "subjectType": "component",
+    "conclusion": "原文路线终点为南大门；不能给整个园区增加入口别名。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "成都",
+    "entityId": "99cafde5d39982daf23019eaa6e82032",
+    "name": "洛带古镇",
+    "expectedRevision": 2,
+    "mentionId": 4178,
+    "inputHash": "f60673fbe6a41e143d154d060e0e1d2020c4bcb164b5755fa7ed4cb9cf1b2835",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 1017,
+    "quote": "主街＝逛吃热闹区",
+    "relation": "not_same_entity",
+    "subjectType": "component",
+    "conclusion": "原文明确分出主街、一街七巷、四大会馆；主街是商业片段，当前继续未分配，不能按normalized_name算给古镇整体。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "78ee8175d84dfc4a82f83bc6cd922989",
+    "name": "秦始皇帝陵博物院",
+    "expectedRevision": 1,
+    "mentionId": 12305,
+    "inputHash": "6dec69811f09c287c3919b42163ab98e027d7be5b410f3bfb76e736eddc08b6a",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 2711,
+    "quote": "兵马俑门票包含骊山园",
+    "relation": "not_same_entity",
+    "subjectType": "component",
+    "conclusion": "原文区分兵马俑和骊山园，本条抽取名带博物院前缀；需逐提及明确与既有兵马俑根的关系，不能归入全博物院。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "a40646e958a38ba3c0bbbb1aa1ebf8f5",
+    "name": "洪崖洞",
+    "expectedRevision": 3,
+    "mentionId": 1147,
+    "inputHash": "18c43f561b88e3f71b4e1ea2aac69adbf75409e1f01eb88327d4465fdc84bfa3",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 182,
+    "quote": "📍祖父的阳台",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "本条为远观洪崖洞的具名机位；不能把机位名称登记为洪崖洞全局别名。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "198bfbbcd2d4d584af83577d74996c88",
+    "name": "黄葛古道",
+    "expectedRevision": 2,
+    "mentionId": 759,
+    "inputHash": "c2066739b13488e93e1ef678c1f22e3dddb62ddf61012a673f404bce6df7ebe5",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 59,
+    "quote": "[五R]黄葛古道（崇文门段）",
+    "relation": "not_same_entity",
+    "subjectType": "route_segment",
+    "conclusion": "明确路线段，往返2小时仅描述该段；不把分段名或分钟数扩展为全古道。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "198bfbbcd2d4d584af83577d74996c88",
+    "name": "黄葛古道",
+    "expectedRevision": 2,
+    "mentionId": 1295,
+    "inputHash": "6b10608985cdf51858ccfb223c57f00b58e01b55c07aa90bf2602eb57c72864a",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 59,
+    "quote": "[五R]黄葛古道（崇文门段）",
+    "relation": "not_same_entity",
+    "subjectType": "route_segment",
+    "conclusion": "与759同篇再次抽取，不是第二篇证据；分段范围及交通文字另核。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+    "name": "西安钟楼",
+    "expectedRevision": 3,
+    "mentionId": 11999,
+    "inputHash": "822bd6156ef006b9ff784def04fd9fef10d98d29569a7e732458227a96253dee",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        5558
+      ]
+    },
+    "noteId": 2654,
+    "quote": "钟楼周围最热闹，美食也多，但是价格偏贵。",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "本条主语为周围住宿片区，不等于塔体，不计入塔体排名上界；86批null待审保持。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+    "name": "西安钟楼",
+    "expectedRevision": 3,
+    "mentionId": 12132,
+    "inputHash": "3d005e03c4ff24e175180d0ca66b00dbfb45bc5fd433da0cf5607acbce4bd6f7",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        5558
+      ]
+    },
+    "noteId": 2694,
+    "quote": "干净又便宜！而且就在钟楼旁，步行地铁口十分钟",
+    "relation": "not_same_entity",
+    "subjectType": "hotel",
+    "conclusion": "原文标题和全文推荐未具名民宿，不是钟楼塔体，不计入塔体排名上界；86批null待审保持。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+    "name": "西安钟楼",
+    "expectedRevision": 3,
+    "mentionId": 12488,
+    "inputHash": "34c839d2252f53b58d446e7a377f84f3c1691356530a1da26c16d950c45de108",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        5558
+      ]
+    },
+    "noteId": 2732,
+    "quote": "P3-5 钟楼饭店门前广场",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "原文为饭店门前广场机位，不能因含钟楼二字归入塔体；86批null待审保持。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  }
+]

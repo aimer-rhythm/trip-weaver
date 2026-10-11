@@ -1,0 +1,73 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "9a75f6f17095454b26c74eef011c25c16b87ba4d2c8cdb3433311e7229dea888",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "南京路步行街",
+      "entityId": "6dfd36ea63dfecb59b523d7212582311",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "武康路",
+      "entityId": "e5928ccb4d07c2a73e80b798966bd531",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "陆家嘴",
+      "entityId": "23329a45b196a3d11b4c9a4475d0d9a3",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 4,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "武康大楼",
+      "entityId": "e0cdfdff135da12006c015389c492cf5",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "静安寺",
+      "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

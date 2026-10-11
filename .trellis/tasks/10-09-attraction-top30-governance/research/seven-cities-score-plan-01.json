@@ -1,0 +1,24 @@
+{
+  "batch": "batch-81",
+  "cities": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "snapshot": "snapshot-20261009T153346086779Z/input.json",
+  "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c",
+  "ranking": "seven-cities-ranking-04.json",
+  "rankingSha256": "7b6f2d15ed69fbd0fece53d947dd8222601bff466395e5b91e50bd1954ede256",
+  "expectedCount": 74,
+  "deferred": [
+    {
+      "entityId": "2fa5249189e48255eab59d0ecbae4c62",
+      "name": "麓湖CPI",
+      "reason": "商业及景点类型待补证，未确认前不主动写入本轮景点评分策略"
+    }
+  ]
+}

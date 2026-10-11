@@ -1,0 +1,1467 @@
+{
+  "kind": "beijing_jinan_semantic_readthrough",
+  "snapshotFile": "snapshot-20261009T134338341037Z/input.json",
+  "snapshotSha256": "abde1ea237465689b36fec2b70eed03927ec18e724d65511efa005d9244dac34",
+  "reviews": [
+    {
+      "city": "北京",
+      "entityId": "264b2e5e67a5886d4e10105ea20dfdbf",
+      "name": "法源寺",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 1930,
+          "inputHash": "78917d4539c9698873037f91ccf10bd852b6f5c389a203f120f006d68422dd8b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4263,
+          "inputHash": "85b61f7d251eb4636ac82fd01411432eaeefe9e30b64a87ce60d1349e6db429a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1960,
+          "inputHash": "b5c064723bf3e1d6966f4b9164fd55990069745665ea751a01b8127fa3523794",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2114,
+          "inputHash": "c21dd927a8c2e931e5160ae1ac71e9d1a65605ad3f170a68f729275255f4348b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2580,
+          "inputHash": "f2845d03935bc62207da9a6496321a3557e9ee2c3d3e08968ced611c60a86173",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2171,
+          "inputHash": "6d0f3beb03e7e906dcaf043ee435fb766355c76c93ab9000eb9cc5feba7b3384",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2750,
+          "inputHash": "3d134fd4b0255547db2eeada8624db6521d0569b5683e03f5e9041391fdd8006",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4489,
+          "inputHash": "df6a0ee98eac6e0e7d7eae321e3b228ac2f9554abbcd376c2c29fcc6fdfab430",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4304,
+          "inputHash": "107cf30ab60f754192c7c094049fc28713d5cdbbc0c215f1c906536d64883cd5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        1930,
+        4263,
+        1960,
+        2114,
+        2580,
+        2171,
+        2750,
+        4489,
+        4304
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 418,
+          "noteDescSha256": "5a1e5b5744c71a5de2c437412bd17983cc732e02ea8fddd6b0fcab1f98c9ffff",
+          "fullFrozenNoteSha256": "dddb2ff96c61a24ed643ea8a34daa0ed58a53030157a7bdda0c66f69a53dfbfc",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 423,
+          "noteDescSha256": "3adf6e16c3114f208f647c1ff2e9e4dd9baf30c316a7175687a85a53275ce680",
+          "fullFrozenNoteSha256": "842b47428eb4cfd2722065127247d2e98da46481246356fab2cd10bb010e6ca4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 462,
+          "noteDescSha256": "cf2aee56c756e00bfbb466907fd0c611750ac97c66bc7f6d590e8ec323a312fb",
+          "fullFrozenNoteSha256": "94fbc2b93ea8c21cc0c053dac15639d374e52e1a2d64a086877d9987b43f2500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 604,
+          "noteDescSha256": "91eb026d1cd4b37faaee784145e414380c20f91f1cced062fb9bce9a464e8e7e",
+          "fullFrozenNoteSha256": "bee52de56c86dc73a116261009387da861b2f2bc664f186d9842824a24f5ec5c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 612,
+          "noteDescSha256": "2e40608953ff056c7cf04c2b47548babc4096e7faa2f0b86abab823a345d767e",
+          "fullFrozenNoteSha256": "54f14e04bad7b0b5b47c083a6c124ae73e5d6831d05081c61000178fcee6151f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1175,
+          "noteDescSha256": "7ee7e200e9ce7e184e364e91f8f08f742536582ca98933a2cc35c382bc180ad0",
+          "fullFrozenNoteSha256": "f20af78e9c04f72e803c906ddc1deebfdf82549bf9966e82b47d27021945c960",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 418,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 423,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 462,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 604,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 612,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1175,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 417,
+          "quote": "千年古寺法源寺安静清幽"
+        },
+        {
+          "noteId": 418,
+          "quote": "在法源寺感受清幽"
+        },
+        {
+          "noteId": 423,
+          "quote": "法源寺春夏秋冬都很美"
+        },
+        {
+          "noteId": 462,
+          "quote": "牛街美食街"
+        },
+        {
+          "noteId": 604,
+          "quote": "法源寺"
+        },
+        {
+          "noteId": 612,
+          "quote": "法源寺也在这里"
+        },
+        {
+          "noteId": 1087,
+          "quote": "青铜级｜谨慎冲！"
+        },
+        {
+          "noteId": 1175,
+          "quote": "感受古刹的宁静"
+        }
+      ],
+      "conclusion": "9条提及/8篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：法源寺是北京西城（牛街—烂缦胡同一带）的寺院，rev=1、主位置758、别名仅「法源寺」。原文稳定事实：定性写「千年古寺法源寺安静清幽」「避开人潮的宝藏路线」「法源寺春夏秋冬都很美」「到了秋天满院的银杏黄叶氛围感更浓」；路线地位写「牛街→法源寺→宣南书店→七井胡同→烂缦胡同→大吉巷」「大吉巷➡️南半截胡同➡️宣南书店➡️烂漫胡同➡️七井胡同➡️法源寺➡️牛街」「牛街美食街➡️烂缦胡同➡️法源寺」「南半截胡同➡️宣南书店➡️烂缦胡同➡️西砖胡同➡️法源寺➡️牛街」；负评/分级写「青铜级｜谨慎冲！——法源寺…适合深度玩家」。边界单列：①牛街、烂缦胡同、七井胡同、西砖胡同、宣南书店、大吉巷、南半截胡同是相邻独立主体或点位，本轮不并入法源寺、不建组成关系、不改坐标；②原文有「烂缦胡同」「烂漫胡同」两种写法，本轮只记录、不新增别名；③「法源寺citywalk」为原文话题标签，不作为主体；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "0e2fce4aa4955b89ceb9c8b6f2dbe734",
+      "name": "香山公园",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 2649,
+          "inputHash": "161b70ef865cb1a7e2de5d058d4c6dd02539a1828d72e536b645b7483291e7cc",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4439,
+          "inputHash": "25725e39c86cb595df22226b667792032f9c987afb16e59db926f971460481b5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3098,
+          "inputHash": "7d775846898a4b5e6238b4b5351b92724ac12a09261062f5444721a88b5892c0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3127,
+          "inputHash": "1e638d007de23ef770f57b131adbb270a908555fce7d677c8000f6f0a2071020",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3228,
+          "inputHash": "f2c60f3670263d9d800a5da4a4785a5ae7d7293c2ea8153b4f4c42b84bd2cb56",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4484,
+          "inputHash": "0846359b67408186d38a6fe00bfcb92f19d6cb6534633a2d6cc3a12814a186d0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4732,
+          "inputHash": "bba3ce43a8c7594880e7b0dc6d61c6d0b5b7a34b9a11ed660ac2d017e001b7d1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5011,
+          "inputHash": "0ebcc67b63a10bf34cf824032a3a8cea34dbfe6900716e2acdeaf41a53d2d2f4",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5072,
+          "inputHash": "aafb94c4f1f1f9697ff0c10bbfb4fcb6150dc81658a03345ad4bdebd2a2a1a12",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5246,
+          "inputHash": "c4701a30284cc0d164719d9112b680cc1e0d2ed474522063332c98befdf23b98",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        2649,
+        4439,
+        3098,
+        3127,
+        3228,
+        4484,
+        4732,
+        5011,
+        5072,
+        5246
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 702,
+          "noteDescSha256": "c4d98ba24f92f13a3caa27b68798658d0ca9d65031ba28e5551f15b69ffa0b32",
+          "fullFrozenNoteSha256": "9175e1f2fc55b2c4f44f5f5f8f03c4704f7f7369996ad3cdf69b9d93fbf477c2",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 705,
+          "noteDescSha256": "3bae53c9008f71f2e0181502ed0b70df20623ed480609efa8ed6d21ac02caefd",
+          "fullFrozenNoteSha256": "9d4466409c0d7d92621da99a39fdc569bd376849aa55a61b8211866fe3a12ab9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 706,
+          "noteDescSha256": "6d4a43e5d74ab81d38d58fd979fce7ea30254727a2e7e9f928f706476ec46395",
+          "fullFrozenNoteSha256": "8fd8f3a6e62771ece0958b494b2799154a6fef3e5d02159fe6363880b145aa6c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 707,
+          "noteDescSha256": "39eac3f091866e78b4b31b343707b322d4fb9c82a3e2bb5068475e721c09441b",
+          "fullFrozenNoteSha256": "0ff13e638d4a2d5a05060f16797390f273c5a3333381a32b1a82ad3eb816e7fa",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1124,
+          "noteDescSha256": "0d9da48457a63ce3fe64c5665cda094b3a00a72c1ec4ffa2f17b355af5631b74",
+          "fullFrozenNoteSha256": "d58461b92f27248614d2b27c05d7b744742c2a57c3c91aed58fe3e90a6a5355c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1125,
+          "noteDescSha256": "6b7b1451dfec34be1cb9d86fdc8a27a7b3df0fe4bb4cc03fc470cc37404ffda5",
+          "fullFrozenNoteSha256": "22942f86fea43d437b3b8bb56287efbebcb5716fc48d079bd839d67896a690b9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1126,
+          "noteDescSha256": "044b22b572bf1be5c4890cc8edab743ce7e9dbe25100f5c25f7ba0e6be9b900c",
+          "fullFrozenNoteSha256": "c6c97a7f5c331cc8346ad4dc5c974ec4d9c3b01a7d8f0b390b40b48ca9d52d2e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1128,
+          "noteDescSha256": "2a4ff96686a8d77a25283b67cc5cbf64d7386aa1190f002bd7aa3c599fca14c8",
+          "fullFrozenNoteSha256": "d11db69604868342d9c5a00ad42cf1e95441248f05b01aa3ad22a5bb15e4c2a1",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 702,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 705,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 706,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 707,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1124,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1125,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1126,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1128,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 702,
+          "quote": "勤政殿拍红叶，香山饭店拍银杏"
+        },
+        {
+          "noteId": 705,
+          "quote": "香山周末别去凑热闹"
+        },
+        {
+          "noteId": 706,
+          "quote": "第一抹红晕染山间"
+        },
+        {
+          "noteId": 707,
+          "quote": "北京最有名的赏红叶胜地"
+        },
+        {
+          "noteId": 1087,
+          "quote": "黄金级｜看季节冲！"
+        },
+        {
+          "noteId": 1124,
+          "quote": "路标清晰明显"
+        },
+        {
+          "noteId": 1125,
+          "quote": "北京赏红叶经典地，漫山红叶很出片"
+        },
+        {
+          "noteId": 1126,
+          "quote": "香山东门居然真有电动自行车充电桩"
+        },
+        {
+          "noteId": 1128,
+          "quote": "香山公园：登高远眺首选"
+        }
+      ],
+      "conclusion": "10条提及/9篇正文已读（note702 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：香山公园是北京海淀的皇家园林式山林公园，rev=2、主位置1484、别名「香山」「香山公园」。原文稳定事实：看点写「勤政殿拍红叶，香山饭店拍银杏，湖边还有人造晨雾」「登上香炉峰俯瞰北京城」；门票与交通写「门票：10元（旺季）」「地铁：10号线巴沟站换乘西郊线香山站下」「东门有电动自行车充电桩」；路线与时长写「东门进→勤政殿→静翠湖→香炉峰（山顶）」「南线上、中线出，全程约7公里3.5小时」「Keep记录全程3小时12分」「东门进-勤政殿-左手边南线上山（双清别墅方向）-香炉峰方向上山-…-中线下山（东门方向）」，提及记录 visit_duration 210 分钟；时节写「最佳时间：10月中旬-11月中旬」「不要多说，但一定要赶在十月中旬看第一抹红晕染山间」；负评/提醒写「香山周末别去凑热闹…去年红叶节 85 万人次…真想去就开园 7 点进，或者下午 3 点以后再进」「现在香山要提前在『香山公园服务号』预约，没约白跑一趟」「人特别多，建议工作日去，或者早上 6 点就到」「别去香山挤」。边界单列：①香炉峰（鬼见愁）、勤政殿、双清别墅、静翠湖、东门、买卖街、西郊线香山站为园内点位或交通节点，本轮不单独建主体；②八大处、坡峰岭、妙峰山、百望山、喇叭沟门、西山森林公园等相邻或同类赏秋目的地是独立主体，不并入香山；③原文同时出现「香山」「香山公园」两种写法，与既有别名一致，本轮不改主名别名；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "00ce68d2675b99bab94be58c313cecd2",
+      "name": "北京环球影城",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 1996,
+          "inputHash": "192b52864301b86c70a7706907b37362fd802d8b04be8f2bb611bcd0d05a21aa",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2028,
+          "inputHash": "5c32b1d61508e17579ab210159cbc7c03b4b483b786a34a36aa0dbeef4e831cd",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2607,
+          "inputHash": "3c58d37e96f10dcc182cb1c673eb6efa6946aaa44e579825407097c0fa07dc6d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2676,
+          "inputHash": "25fd573a97cfd88efd78311b3e52957852b40a502e7e06cafee74143d92f8ca8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2593,
+          "inputHash": "8ddc84e3e5437ac54f452c2bf2b8cf8031d684a0aba75961566b4645f10d9e2a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2997,
+          "inputHash": "a39eb48272eb6e24732162edfe71de0a60cc66d0a16ad8640b2b88f797bc9a0b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3277,
+          "inputHash": "8d0e8aeef2153afd4607481573366457576cbd543e2bf27cb6082d7e39eb8f0b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5062,
+          "inputHash": "ac5994e784618e7913f0d78850ebf37be5e5c5e596620065b340b509d0001a44",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4481,
+          "inputHash": "0046f7b582f24e5f17535692082d1748680b15cb27c8c3e010d38ce196fcaa00",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        1996,
+        2028,
+        2607,
+        2676,
+        2593,
+        2997,
+        3277,
+        5062,
+        4481
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 395,
+          "noteDescSha256": "170b4971350306329113261c7643f3f0c88c1ff99ab59fdc68af51efdd80f49e",
+          "fullFrozenNoteSha256": "b5fb28b36cc0e155126ffbf110727e62dcac1f12b7d9d9dd3397880222b79814",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 509,
+          "noteDescSha256": "4b6ceaf1fec895710998b0c7b5b0e602b8c8e96546bb0da0f9768687b5a69b65",
+          "fullFrozenNoteSha256": "b595b344f2e02ba231ca02e3e21ccd4182456c1d2e4739748668667b88db1a37",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 510,
+          "noteDescSha256": "6135043fff9ac77f10bf9c3a0fd00bbbfbcdfdac4a453e285faee719ec7a55c5",
+          "fullFrozenNoteSha256": "0270571261dbaf18f9e603ec283cf636f79f6e8f0b9e27f7e425f28d92916cde",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 600,
+          "noteDescSha256": "00161361e5c981737e750ca06a5732387b0d615631933411d1f962b7facc9314",
+          "fullFrozenNoteSha256": "2619965951ac3b0a78ebbd768a597d6da76dc0d15809370ada55108e268e6be9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 618,
+          "noteDescSha256": "a5a61715e716d492b79c4bcf2807dba2beddabcfd598d42e2d964fbe20087ef1",
+          "fullFrozenNoteSha256": "7e5ca72f038e632ddc065b4322372065216fc199a0d7d04f1a49085ede083c54",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 635,
+          "noteDescSha256": "ce0e14be18fb2e42511f3aaf9f289eebd9dc82a06968396090a4f8844f73e662",
+          "fullFrozenNoteSha256": "0df2fcfad42f942a570538e18ef1cc15c587895a642f9417041ea71e26de9da2",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 638,
+          "noteDescSha256": "1491543448aa24752e8e044b4d2571ecb6f9967df94cb68f6d2d7caf057c3211",
+          "fullFrozenNoteSha256": "ea8405e8eade2f1614e60b2e59e1c0bb1b5f704c809c413429e3a50ec8934a62",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1052,
+          "noteDescSha256": "2a4ed9a0cf82ce03ee78ca1e35f0dee1b267c4cae627b885df6066d546bdaa30",
+          "fullFrozenNoteSha256": "78d2fc6c75b3a768887258dca23b51e8b0ff0d168c32f17aa1c76051cae1e557",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 395,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 509,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 510,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 600,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 618,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 635,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 638,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1052,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 395,
+          "quote": "每个园区都很有特色"
+        },
+        {
+          "noteId": 509,
+          "quote": "把环球影城和北京的攻略重新梳理了一遍"
+        },
+        {
+          "noteId": 510,
+          "quote": "拒绝瞎逛绕路"
+        },
+        {
+          "noteId": 600,
+          "quote": "哈利波特灯光秀必看"
+        },
+        {
+          "noteId": 618,
+          "quote": "哈利波特魔法世界→变形金刚基地"
+        },
+        {
+          "noteId": 635,
+          "quote": "花车巡游、烟花、飘雪、灯光"
+        },
+        {
+          "noteId": 638,
+          "quote": "冬天20:00就闭园了"
+        },
+        {
+          "noteId": 1052,
+          "quote": "刷项目、看花车巡游、看夜间灯光秀"
+        },
+        {
+          "noteId": 1087,
+          "quote": "铂金级｜看兴趣冲！"
+        }
+      ],
+      "conclusion": "9条提及/9篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：北京环球影城是通州的电影主题乐园，rev=3、主位置820、别名「北京环球影城」「环球影城」。原文稳定事实：园区与项目写「每个园区都很有特色，人最多是哈利波特，其次是小黄人～很多项目都是4d的」「七大电影主题区，哈利波特灯光秀必看，沉浸感直接拉满」；门票与时长写「门票395元，9:00-21:00」（跨年档另有「成人票527r，双人票788r，学生票475r」，如实并存）；路线写「上午：哈利波特魔法世界→变形金刚基地→未来水世界；下午：功夫熊猫盖世之地→侏罗纪世界→小黄人乐园；晚上：巡游➕灯光秀」；交通与季节提醒写「09:45到达」「冬天20:00就闭园了，但是晚上有灯光秀可以下载APP查看具体时间」「环球超级超级冷！！！！忘记带手套了」；分级写「铂金级｜看兴趣冲！——…环球影城…烟火气拉满」。边界单列：①三把扫帚、平先生面馆、东兴顺铜锅涮肉（环球影城店）为园内或邻近餐饮点位，本轮不并入主体、不新建餐饮主体；②石景山游乐园、北京欢乐谷、泡泡玛特城市乐园、古北水镇等为同文提到的其他乐园主体，不并入环球影城；③原文把门票与跨年票价两种口径并存，本轮只登记不合并；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "065e077002130047feaadff4f607b480",
+      "name": "起凤泉",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 12943,
+          "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5988
+            ],
+            "factExclusions": {
+              "visit_duration": {
+                "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+                "reason": "group_duration"
+              }
+            }
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        12943
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2837,
+          "noteDescSha256": "7e4d279b312b2b3ec9514cc591fd42307116085237252a322c39003123de26e7",
+          "fullFrozenNoteSha256": "e6ee26453230b6125ed0eff313750d6ed13540d382fdf94277c1eefa30ba7eac",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2837,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2837,
+          "quote": "这几个地方挨得特别近，都藏在老街里"
+        }
+      ],
+      "conclusion": "1条提及/1篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：起凤泉是济南老城区府学文庙一带的小泉，rev=3、主位置5988、别名仅「起凤泉」。原文稳定事实：走法写「🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖」；点位写「王府池子、腾蛟泉、起凤泉、刘氏泉：🕐游玩0.5h 🆓」「这几个地方挨得特别近，都藏在老街里，走路几分钟就到，串联起了西更道街和芙蓉街」；提及记录 visit_duration 30 分钟。边界单列：①王府池子、腾蛟泉、刘氏泉、曲水亭街、百花洲、西更道街、芙蓉街是同一 citywalk 路线上的相邻独立主体，本轮不并入起凤泉、不建组成关系、不改坐标；②原文把四个泉合并成一段描述，本轮只按主体分别登记，不据此改主名别名；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "name": "四窟万象",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11492,
+          "inputHash": "e26f02da8aa706e38347b3884ef4e5b75248b4a46850d4ec5ab7ba76f5f29dbd",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5480
+            ]
+          }
+        },
+        {
+          "mentionId": 12777,
+          "inputHash": "84d06a33bcd8861eb8c1c59ee79dee3cfde1a94381c3d1ba7efc20a3fc513f59",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5480
+            ]
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11492,
+        12777
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2551,
+          "noteDescSha256": "0b32af8c64eb1b5731c9391b8c145b988da20ae8c7d19235880988185284ab36",
+          "fullFrozenNoteSha256": "5ea2fa19cc42a598ea0ac543a745a0e2a0bf90432f51089e6e0e4f143c526a8b",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2797,
+          "noteDescSha256": "d0396bbcbc27dcd3a3d7538b9822d9680763151d09967600c06b004e0b169a67",
+          "fullFrozenNoteSha256": "8654e6c428cf0f11661e5228f4a1aff41e2fedbd8660f391018024c3461132c8",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2551,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2797,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2551,
+          "quote": "仿制四大名窟，票价略贵"
+        },
+        {
+          "noteId": 2797,
+          "quote": "一处仿制的石窟，内部为四大石窟的仿制品"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：四窟万象是济南（千佛山景区内）的仿制石窟景点，rev=3、主位置5480、别名仅「四窟万象」。原文稳定事实：定性写「一处仿制的石窟，内部为四大石窟的仿制品」；路线地位写「Day2：泉城广场-趵突泉-解放阁-宽厚里-大明湖-超然楼-五龙潭-千佛山（四窟万象）」；负评写「黑榜🖤 2️⃣四窟万象：仿制四大名窟，票价略贵。」（note2551，属负向提醒）；机位清单写「1️⃣7️⃣四窟万象：一处仿制的石窟，内部为四大石窟的仿制品」（note2797，正向登记）。边界单列：①千佛山为母山体主体，四窟万象是其中的仿制石窟点位，本轮不并入千佛山、不建组成关系、不改坐标；②原文对同一主体同时给出负向（票价略贵）与中性/正向（机位可取）两种口径，如实并存，不合并为单一评价；③「仿制」属性来自原文，本轮不外推为文物类主体；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "cd8dfd49f13c9cbbd9d02c9d4c72defb",
+      "name": "西公界街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11567,
+          "inputHash": "40b04c17997dc758095d87c30ae8a38180da68c1a91878eb3e15c59fce52bf25",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12821,
+          "inputHash": "8305ffd50dedbb68443fddc0bebca220475fe9bd8f9247f037e75f5cece252a8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11567,
+        12821
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：西公界街是济南老城区街巷，rev=1、主位置5495、别名仅「西公界街」。原文稳定事实：定性写「没有浓重的商业味儿，在旧旧的巷子里散步，好好感受老舍笔下的这座小城🍃」；路线地位写「🗺️citywalk路线：东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」。边界单列：①东更道、珍池街、曲水亭（街）、双忠祠街是同一条 citywalk 路线上的相邻独立主体，本轮不合并、不建组成关系、不改坐标；②原文路线写「曲水亭」，与既有主体「曲水亭街」的简称关系本轮只记录，待后续统一；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "99ddd31eba85db1d2ed58d7e60507f27",
+      "name": "双忠祠街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11566,
+          "inputHash": "01e2a3b3c380e241a420344c6f8b77edbfec2ef28d5cc5ea06f226092107bf15",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12820,
+          "inputHash": "1aa66f094fab288f24bbe63e5c4caa28c343fa13127fc2c96b24f0d184d2549b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11566,
+        12820
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：双忠祠街是济南老城区街巷，rev=1、主位置5494、别名仅「双忠祠街」。原文稳定事实：与前条同源，定性写「没有浓重的商业味儿，在旧旧的巷子里散步」；路线地位写「东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」。边界单列：①同篇路线上的东更道、珍池街、曲水亭、西公界街为相邻独立主体，不合并；②街名中的「双忠祠」指历史祠堂，原文未把祠堂作为独立主体提及，本轮不新建祠堂主体；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "8618b70ccf17cd1522c5bf27cbe16361",
+      "name": "珍池街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11564,
+          "inputHash": "4ed037b3af602778e9a5dedef789bd1d6a448a1a7e3f61c1eddc567fe4a34d38",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12818,
+          "inputHash": "73c6c34b67ce55c581d17d5cd2b126cb405170e1f840d7740b3ebf872e265639",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11564,
+        12818
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "没有浓重的商业味儿"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：珍池街是济南老城区街巷，rev=1、主位置5492、别名仅「珍池街」。原文稳定事实：定性写「没有浓重的商业味儿，在旧旧的巷子里散步，好好感受老舍笔下的这座小城」；路线地位写「东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」。边界单列：①「珍池」作为泉池名在原文未单独出现，本轮不新建泉池主体；②同路上的东更道、曲水亭、双忠祠街、西公界街为相邻独立主体，不合并；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "5e67e8211c98d3e0e94c08114917c628",
+      "name": "东更道",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11563,
+          "inputHash": "3ef4131ce14886b7d736ea976dec73bc6b86b0eb598637a1565d9e1f2ff0b8d1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12817,
+          "inputHash": "d605d22411a3e1af610738d0714cc0e16641e622d8de5cca42da50e9610a6389",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11563,
+        12817
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "好好感受老舍笔下的这座小城"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：东更道是济南老城区街巷，rev=1、主位置5491、别名仅「东更道」。原文稳定事实：作为该篇 citywalk 路线的起点出现——「🗺️citywalk路线：东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」，定性与其余四街共用「没有浓重的商业味儿，在旧旧的巷子里散步」。边界单列：①「东更道」与「东更道街」是否为同一主体的两种写法，原文只用「东更道」，本轮不新增别名、待后续统一；②同路上四街为相邻独立主体，不合并、不改坐标；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 12584,
+          "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5948
+            ]
+          }
+        },
+        {
+          "mentionId": 12942,
+          "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5948
+            ],
+            "factExclusions": {
+              "visit_duration": {
+                "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+                "reason": "group_duration"
+              }
+            }
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        12584,
+        12942
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2813,
+          "noteDescSha256": "be7e2c3fd73a2af31b19b5f9198a1a31349490d61a1476d610f08f3b117d9d06",
+          "fullFrozenNoteSha256": "2764e58abbbe369e18435ecfb1880d23289922b5ecb0e8c851c74e3e95ecff47",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2837,
+          "noteDescSha256": "7e4d279b312b2b3ec9514cc591fd42307116085237252a322c39003123de26e7",
+          "fullFrozenNoteSha256": "e6ee26453230b6125ed0eff313750d6ed13540d382fdf94277c1eefa30ba7eac",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2813,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2837,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2813,
+          "quote": "腾蛟泉（王府池子出来往北走的一个岔路口）"
+        },
+        {
+          "noteId": 2837,
+          "quote": "除了趵突泉，街头巷尾还有很多泉水值得探索"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：腾蛟泉是济南老城区王府池子北侧的小泉，rev=3、主位置5948、别名仅「腾蛟泉」。原文稳定事实：位置写「腾蛟泉（王府池子出来往北走的一个岔路口）」；路线地位写「珍珠泉大院…↓王府池子…↓腾蛟泉…↓起凤桥…↓西更道…↓刘氏泉…↓曲水亭街…↓百花洲」，另写「🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖」；费用写「🆓这些地方都距离不远，而且全都是免费的」；提及记录 visit_duration 30 分钟。边界单列：①王府池子、起凤泉、起凤桥、刘氏泉、西更道、曲水亭街、百花洲是同路上的相邻独立主体，本轮不并入腾蛟泉、不建组成关系、不改坐标；②原文有「西更道」与「西更道街」两种写法，只记录不新增别名；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "name": "刘氏泉",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 12587,
+          "inputHash": "77496d13ce4f16b49d6b77d98b9849cd02ebb60320e53bc71db57f127f5758e4",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5950
+            ]
+          }
+        },
+        {
+          "mentionId": 12944,
+          "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5950
+            ],
+            "factExclusions": {
+              "visit_duration": {
+                "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+                "reason": "group_duration"
+              }
+            }
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        12587,
+        12944
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2813,
+          "noteDescSha256": "be7e2c3fd73a2af31b19b5f9198a1a31349490d61a1476d610f08f3b117d9d06",
+          "fullFrozenNoteSha256": "2764e58abbbe369e18435ecfb1880d23289922b5ecb0e8c851c74e3e95ecff47",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2837,
+          "noteDescSha256": "7e4d279b312b2b3ec9514cc591fd42307116085237252a322c39003123de26e7",
+          "fullFrozenNoteSha256": "e6ee26453230b6125ed0eff313750d6ed13540d382fdf94277c1eefa30ba7eac",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2813,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2837,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2813,
+          "quote": "刘氏泉（西更道走到头就能看到一条细长的水流）"
+        },
+        {
+          "noteId": 2837,
+          "quote": "除了趵突泉，街头巷尾还有很多泉水值得探索"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：刘氏泉是济南老城区西更道尽头的小泉，rev=3、主位置5950、别名仅「刘氏泉」。原文稳定事实：位置写「刘氏泉（西更道走到头就能看到一条细长的水流）」；路线地位与腾蛟泉同篇相邻出现；费用写「这些都是免费的」；提及记录 visit_duration 30 分钟。边界单列：①西更道（街）、曲水亭街、王府池子、起凤泉、腾蛟泉为同路上的相邻独立主体，不合并、不改坐标；②原文把四泉合并成一段描述（王府池子、腾蛟泉、起凤泉、刘氏泉），本轮按主体分别登记，不据此改主名别名；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11404,
+          "inputHash": "f6fae9f146d207c1bef563cd6eb1337d2e7c5f6067170823b9f2dc1ccb98d72a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5477
+            ]
+          }
+        },
+        {
+          "mentionId": 12901,
+          "inputHash": "4d2f1aba8523bad18d2c1b2e07d57daf33b731a54e7276f6cda54df65def7a19",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5477
+            ]
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11404,
+        12901
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2569,
+          "noteDescSha256": "4c7dbcc6155146441319d3a0203dba5bba5e0c5279063988e043742d11c80293",
+          "fullFrozenNoteSha256": "bb80b5adf34bc0e4a4714f660452f956b4bac4701892c535bf2e16b4cf4eb18f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2856,
+          "noteDescSha256": "d967bf213108a8f0dcb1843cfe7f7e1a4de58b4140e5c8e06ba521aaf6d42879",
+          "fullFrozenNoteSha256": "3e8f08418107ff76b69aa898891963d5870c4670ef8ffdc82823a280a308df10",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2569,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2856,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2569,
+          "quote": "护城河——黑虎泉"
+        },
+        {
+          "noteId": 2856,
+          "quote": "按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的！！"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：护城河是济南环城水系（黑虎泉一带河段），rev=2、主位置5477、别名仅「护城河」。原文稳定事实：路线地位写「五龙潭——趵突泉——泉城广场——恒隆广场——珍珠泉——曲水亭街——大明湖——超然楼——护城河——黑虎泉——恒隆广场——泉城广场喷泉」「按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的！！」；费用写「以上只有趵突泉需要门票，其他景点都免费」。边界单列：①黑虎泉、五龙潭、趵突泉、泉城广场、大明湖、超然楼、解放阁为相邻独立主体，本轮不并入护城河、不建组成关系、不改坐标；②原文的「护城河」在济南语境下可能指环城公园河段整体，也可能指黑虎泉附近段落，本轮只登记不划定片段边界；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "c11648e477180d1b3f97da06808da5e7",
+      "name": "经三路",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11529,
+          "inputHash": "58be5c58f7114c030467ca5c9a3b1c93ea90a624c6279d0861b24e8d4b77fba8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12617,
+          "inputHash": "234288b3e4cdbad838a4321d8a5d34ba187e65274821ee8caaf9ea52244377e2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11529,
+        12617
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2573,
+          "noteDescSha256": "a31af36b171d4ed1f694bd722af7fe008e2abad99557867027160da59ca5a15d",
+          "fullFrozenNoteSha256": "740e30b3f3acd81fc9b8da169af502a738be8e49985a8a9a04a94fc260c3f338",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2793,
+          "noteDescSha256": "40896ba715c452914ad5ec48f45cf021799f8467a563e58b433a4e5e57dfdc74",
+          "fullFrozenNoteSha256": "4bec6d99364d8fa41936040755431a60c1e7da6869d2f162eaf5d4d1ee723868",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2573,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2793,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2573,
+          "quote": "经三路真的是浪漫天花板"
+        },
+        {
+          "noteId": 2793,
+          "quote": "❷经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：经三路是济南商埠区街道，rev=2、主位置5394、别名仅「经三路」。原文稳定事实：定性写「经三路真的是浪漫天花板，今年又多了好多咖啡、美食和古着店，还有超多隐藏小店」「经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯，随手拍都很有氛围感」；路线地位写「🚶‍♀️路线直接抄作业：老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单，一路逛吃不停」「DAY①:经三路➠纬三路➠老商埠➠大观园➠五龙潭➠趵突泉➠洪家楼」；点位写「BLUE DUCK骨董屋是自助式vintage杂货铺」「VILLA SHAKA的墙超好拍」「淘子外单」。边界单列：①老商埠、纬三路、纬四路、万紫巷、中山公园、大观园为相邻独立主体或点位，本轮不并入经三路、不建组成关系、不改坐标；②BLUE DUCK、VILLA SHAKA、淘子外单是店铺点位，不新建主体；③原文把「经三路&纬三路」并写，本轮不据此合并两路；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    }
+  ],
+  "limits": "13项/47当前有效提及已读；阅读不等于全来源、同体/组成/定位问题闭合，也不等于各城语义已完成。七城batch-120、北京济南run-79为各自最新完整验证；未验收、不提交、不归档。"
+}

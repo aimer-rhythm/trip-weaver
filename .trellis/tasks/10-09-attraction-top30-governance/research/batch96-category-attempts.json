@@ -1,0 +1,18 @@
+{
+  "first": {
+    "batch": "batch-96",
+    "applied": false,
+    "preview": "preview-01",
+    "reason": "完整scope清空未治理旧themes，产品类别由娱乐回落文化，类别保全断言拦截；业务未应用。"
+  },
+  "final": {
+    "batch": "batch-96-v2",
+    "applied": true,
+    "preview": "preview-01",
+    "scopeRevision": 2,
+    "finalEntityRevision": 3,
+    "category": "娱乐",
+    "resolution": "scope后以版本化实体API显式保留原类别，两个决定在同一事务；幂等、逆序回滚及整城恢复通过。"
+  },
+  "noOldArtifactsOverwritten": true
+}

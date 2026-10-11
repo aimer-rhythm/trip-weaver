@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "bf594e8b7cf086e839da8dcc1e9450a12e540298ebb3a980bfa3bd9f6ddfb016",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "厦门大学",
+      "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 3,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

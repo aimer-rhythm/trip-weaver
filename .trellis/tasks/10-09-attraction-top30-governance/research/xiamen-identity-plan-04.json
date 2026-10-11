@@ -1,0 +1,37 @@
+{
+  "batch": "batch-88",
+  "city": "厦门",
+  "snapshot": "snapshot-20261009T170741492046Z/input.json",
+  "snapshotSha256": "71f6aca6b8ac60757474bc4c5dab64057eacd47646db5d7c12effbda0948cae3",
+  "baselineExport": "batch-82-v3/sync-01/xhs-places-厦门.json",
+  "baselineExportSha256": "f36d5ba8cac9bb88f94e7eee8127d235dbba281f80aca7ba53ec93d0d46709db",
+  "merges": [
+    {
+      "primaryName": "日光岩",
+      "mergeNames": [],
+      "aliases": [
+        "日光岩",
+        "日光岩",
+        "日光岩（鼓浪屿）"
+      ],
+      "admitMentions": [
+        {
+          "mentionId": 5876,
+          "inputHash": "3bae077cc290d26921f3f56e861e232dabd8d10c8f3e452e5dab763eef35cbfd",
+          "noteId": 1569,
+          "quote": "日光岩（鼓浪屿）— 92.7 米"
+        }
+      ],
+      "evidenceMentions": [
+        5876
+      ],
+      "noteQuotes": [
+        {
+          "noteId": 1569,
+          "quote": "日光岩（鼓浪屿）— 92.7 米"
+        }
+      ],
+      "conclusion": "原文明示鼓浪屿上的日光岩，括号为地点地域限定，不是另一个出入口、组成景点或摄影机位。增加精确别名并纳入5876；保留鼓浪屿本体、菽庄花园等独立身份。海拔仅作为原文定位线索，不新增或核验海拔事实。"
+    }
+  ]
+}

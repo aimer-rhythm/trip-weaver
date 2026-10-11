@@ -1,0 +1,179 @@
+{
+  "snapshotSha256": "d7c04cbb2ae2d2a959a696df819e957f9ce63e06f4c666975ab3656b3c52a96f",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "13abadcd531dd9b70a031c9925f096f0",
+          "city": "厦门",
+          "name": "环岛路",
+          "revision": 2,
+          "aliases": [
+            "厦门环岛路"
+          ],
+          "sourceIds": [
+            2537,
+            2786
+          ],
+          "sourceNames": [
+            "厦门环岛路",
+            "环岛路"
+          ],
+          "effectiveType": "attraction",
+          "score": 71.44,
+          "downstreamScore": 71.44,
+          "mentionCount": 27,
+          "noteCount": 26,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 71.44,
+          "potentialScore": 71.44,
+          "pendingReviewIds": [],
+          "scopeIds": [],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5340,
+            5380,
+            5438,
+            5529,
+            5530,
+            5548,
+            5563,
+            5666,
+            5722,
+            5745,
+            5752,
+            5791,
+            5798,
+            5893,
+            5918,
+            6082,
+            6126,
+            6199,
+            6234,
+            6413,
+            6432,
+            6481,
+            6529,
+            6709,
+            6759,
+            6773,
+            6809
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "13abadcd531dd9b70a031c9925f096f0",
+            "6ed8ab805ffd7c46bdacd535030ab4f6"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\govern-ringroad-alias.py",
+              "kind": "reviewed_attraction_alias",
+              "conclusion": "26条/25全文已读，22篇与前序已读笔记哈希一致，另1346/1350/1456完整阅读，5666同体候选原文1260已复核。环岛路骑行/看海与步行身份保留；5530/5548/6082是针对路上骑行的租车避坑提醒，不是已确认独立商户服务，不机械隔离或删除负评。6529步行费脚保留，6759来自明确生成文案，不声称亲历。骑电动车可行与被查扣相互冲突，保留各作者旧说法，不在身份轮判定现行交通许可。6709虽有别墅住宿段，但下午独立推荐环岛路骑行；不因酒店话题整条移出。5666正文明确沿环岛路从黄厝到曾厝垵、白城，支持厦门环岛路同体合并，尚未应用。主根2537旧坐标位于湖里，另一源2786在思明南路段；本轮保留主根旧位置，地点是一条长道路，不能将点坐标当整条路线或宣称行程定位核准。沙滩、音乐广场、店铺与独立机位不合并，道路源自身旧免费资料保全后再落地。 本批仅合并同体：主根环岛路2537、旧根厦门环岛路2786重定向，27条/26笔记并集重算。主根旧位置、类别、价格、营业、预约、提示和内容严格保全，不用更具体的另一路段坐标替换。所有有效提及原观点保持，不新增完整scope或摄影/酒店/商户主体；长道路的路线点定位与骑行许可仍未核。",
+              "mentionIds": [
+                5340,
+                5380,
+                5438,
+                5529,
+                5530,
+                5548,
+                5563,
+                5666,
+                5722,
+                5745,
+                5752,
+                5791,
+                5798,
+                5893,
+                5918,
+                6082,
+                6126,
+                6199,
+                6234,
+                6413,
+                6432,
+                6481,
+                6529,
+                6709,
+                6759,
+                6773,
+                6809
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "沿着环岛路慢慢骑，从黄厝晃到曾厝垵，再往厦大白城走",
+                  "noteId": 1260
+                },
+                {
+                  "quote": "环岛路上面骑车真的好好玩呀，晚上吹着海风，骑着小车逛一路打卡一路",
+                  "noteId": 1350
+                },
+                {
+                  "quote": "下午：回住处休息，或者骑车沿环岛路慢慢走",
+                  "noteId": 1456
+                }
+              ],
+              "snapshotSha256": "419a474cf359ff78595c92e200af83f02a0df1c63250f251eecb0830e8d80993",
+              "sourcePlaceIds": [
+                2537,
+                2786
+              ],
+              "evidenceMentions": [
+                5666,
+                5745,
+                5791,
+                6709
+              ]
+            }
+          ],
+          "rank": 8
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-19.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

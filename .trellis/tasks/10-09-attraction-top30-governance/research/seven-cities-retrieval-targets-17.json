@@ -1,0 +1,284 @@
+{
+  "snapshotSha256": "6b5d87873f08d18df6243e3079e2fec28927cbe3f09c32f1765eed7bc04950f9",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "15f4085f90907345a822ac07663783c3",
+          "city": "厦门",
+          "name": "黄厝沙滩",
+          "revision": 3,
+          "aliases": [
+            "黄厝海滩"
+          ],
+          "sourceIds": [
+            2613,
+            2656
+          ],
+          "sourceNames": [
+            "黄厝沙滩",
+            "黄厝海滩"
+          ],
+          "effectiveType": "attraction",
+          "score": 79.83,
+          "downstreamScore": 79.83,
+          "mentionCount": 30,
+          "noteCount": 30,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 79.83,
+          "potentialScore": 79.83,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2613
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5326,
+            5361,
+            5366,
+            5372,
+            5501,
+            5510,
+            5516,
+            5531,
+            5557,
+            5633,
+            5647,
+            5662,
+            5678,
+            5741,
+            5764,
+            5803,
+            5892,
+            6004,
+            6053,
+            6083,
+            6128,
+            6323,
+            6365,
+            6498,
+            6525,
+            6590,
+            6601,
+            6615,
+            6865,
+            6878
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "15f4085f90907345a822ac07663783c3",
+              "name": "黄厝沙滩",
+              "expectedRevision": 3,
+              "mentionId": 6163,
+              "inputHash": "ad28e25e6656f1d7f463f737b14e73b49b50d307223effbadb629744eb7a0e14",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2613
+                ]
+              },
+              "noteId": 1380,
+              "quote": "🏡厦门住宿参考\n🛕中山路、八市、轮渡周边，靠近鼓浪屿码头，吃喝出行都方便\n🌅黄厝沙滩沿线安静，适合想看海上日出、偏爱慢节奏海边游玩的人",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "只有住宿选区建议，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建酒店、活动、营地或餐酒吧。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "15f4085f90907345a822ac07663783c3",
+              "name": "黄厝沙滩",
+              "expectedRevision": 3,
+              "mentionId": 6238,
+              "inputHash": "f25bf6bfae7aa2e1e6120a419fa8f822d3c66817beb5db572bef89ff1764c926",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2613
+                ]
+              },
+              "noteId": 1453,
+              "quote": "🎆海峡两岸春节焰火晚会\n⏰2月17日（大年初一）20:00\n📍思明区黄厝海滩\n✨两岸同庆超震撼！建议提前占位",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "仅春节焰火或营地/餐酒吧跨年活动，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建酒店、活动、营地或餐酒吧。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "15f4085f90907345a822ac07663783c3",
+              "name": "黄厝沙滩",
+              "expectedRevision": 3,
+              "mentionId": 6572,
+              "inputHash": "707a0f2db29b46ebec26b06562eb7404329e1aadd1609d9d6f71660436604fea",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2613
+                ]
+              },
+              "noteId": 1475,
+              "quote": "3️⃣黄厝沙滩跨年（海边跨年）\n松弛一点，开阔一点，来黄厝沙滩营地一起跨年",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "仅春节焰火或营地/餐酒吧跨年活动，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建酒店、活动、营地或餐酒吧。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "15f4085f90907345a822ac07663783c3",
+              "name": "黄厝沙滩",
+              "expectedRevision": 3,
+              "mentionId": 6853,
+              "inputHash": "40e64531031bd275b8845b87f2a64a5ca6f51cd50a7e41900303ce1c756139c9",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2613
+                ]
+              },
+              "noteId": 1528,
+              "quote": "🎉黄厝沙滩跨年派对\n📍地址：黄厝沙滩 左来右去海岛日记沙滩餐酒吧",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "仅春节焰火或营地/餐酒吧跨年活动，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建酒店、活动、营地或餐酒吧。"
+            }
+          ],
+          "legacyIds": [
+            "15f4085f90907345a822ac07663783c3",
+            "f5e6fb970dcc85892e7203e5aaf9fddd"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\xiamen-identity-plan-03.json",
+              "kind": "reviewed_attraction_alias",
+              "conclusion": "同篇note1261在路线中写黄厝海滩、对应详细段落写黄厝沙滩，其他原文的日出海岸和环岛路语境一致，确认两名为同一沙滩主体。保持黄厝沙滩主源2613的原点和地址，不把本次身份归一说成坐标已核准。黄厝片区、黄厝海滨泛称、石胄头、溪头下、玩月坡、商户与独立机位仍分开；海滩中举行的烟花和演出保留原文，不宣称现行政策或活动时刻已审核。既有联合scope、逐提及分配、原始图片记录均须完整保全。",
+              "mentionIds": [
+                5326,
+                5361,
+                5366,
+                5372,
+                5501,
+                5510,
+                5516,
+                5531,
+                5557,
+                5633,
+                5647,
+                5662,
+                5678,
+                5741,
+                5764,
+                5803,
+                5892,
+                6004,
+                6053,
+                6083,
+                6128,
+                6163,
+                6238,
+                6323,
+                6365,
+                6498,
+                6525,
+                6572,
+                6590,
+                6601,
+                6615,
+                6853,
+                6865,
+                6878
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "黄厝海滩→玩月坡→溪头下→音乐广场→珍珠湾→书法广场→山海步道盼归塔",
+                  "noteId": 1261
+                },
+                {
+                  "quote": "✔️黄厝沙滩\n（适合看日出，有孤独树、沙滩秋千",
+                  "noteId": 1261
+                },
+                {
+                  "quote": "黄厝海滩：厦门日出热门位置，沙滩干净",
+                  "noteId": 1246
+                },
+                {
+                  "quote": "黄厝沙滩→玩月坡→椰风寨→音乐广场→曾厝垵",
+                  "noteId": 1348
+                }
+              ],
+              "snapshotSha256": "f505aa0ff303fccc5375ec0bbcfb8f87962f313439e5f14d0aedeafcf997b716",
+              "sourcePlaceIds": [
+                2613,
+                2656
+              ],
+              "evidenceMentions": [
+                5326,
+                5531,
+                5633,
+                5662
+              ]
+            }
+          ],
+          "rank": 6
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-17.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

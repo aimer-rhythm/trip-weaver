@@ -1,0 +1,34 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "4f16e871fb938db9c2a7b247ad40f302848761e4225296a8d8cf0a58192de6c7",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "苏州河",
+      "entityId": "73ce6d33d1fb9b6416e2be727f940a76",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 2,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "西安",
+      "name": "大唐不夜城",
+      "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 2,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

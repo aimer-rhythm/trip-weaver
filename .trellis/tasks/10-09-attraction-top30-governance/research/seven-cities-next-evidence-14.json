@@ -1,0 +1,143 @@
+{
+  "snapshotFile": "snapshot-20261009T231058589044Z/input.json",
+  "snapshotSha256": "6b5d87873f08d18df6243e3079e2fec28927cbe3f09c32f1765eed7bc04950f9",
+  "latestAppliedBatches": [
+    "batch-108-v2",
+    "batch-109",
+    "batch-110",
+    "batch-111"
+  ],
+  "pendingSyncBatches": [],
+  "nextBatch": 112,
+  "semanticReadthrough": "seven-cities-semantic-readthrough-11.json",
+  "nextEvidence": [
+    {
+      "city": "成都",
+      "mentionId": 3763,
+      "inputHash": "87ea950212fa945d8bd1d792b15cdd610f0e2188fcd5fde417620dcc2bc1d0b4",
+      "entityId": "1d3663405f53f30f5a4ad0d1bf1891d4",
+      "noteId": 892,
+      "conclusion": "原文明确负评名单，但未写设施偏旧/趣味性一般；保留负评身份，具体reason待按正式事实排除契约审核，尚未应用。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10132,
+      "inputHash": "071b99ce0697d337d0dd6a29b72b95c643b1d464ee520309b3aeadc33a41d751",
+      "entityId": "2af1d8c8816a1645942015d16738c9fd",
+      "noteId": 2304,
+      "conclusion": "明确东方明珠路线身份保持，天桥reason/evidence_text未修改；原文简称与抽取全名不满足现行事实引文门禁。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11001,
+      "inputHash": "c14f486941b68bea01ce4631c0a9d8bfb285ee192613689a1fda441266b9b377",
+      "entityId": "c1488c5cbbffc329c51e5fb8ceb0c911",
+      "noteId": 2509,
+      "conclusion": "正文是豫园片区九曲桥，旧来源5213却用青浦朱家角地址；本轮只读，不接收豫园分出的机位描述。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11246,
+      "inputHash": "6116005c1c57694ea2581f6413369248362ab7cc3122afd43c65795c7040eefc",
+      "entityId": "6477361ffeeb9d9a80f3802333347d57",
+      "noteId": 2474,
+      "conclusion": "7条当前提及阅读。公馆建筑群、散步和路线身份保持；11246描述整份三日游且正文拼写思南公guan，事实摘录无法直接绑定抽取全名，保持待核，不改原文或隔离正确路线来规避。邻接新天地、田子坊不是同体；不称建筑群内经营场所已审。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10944,
+      "inputHash": "bc367db9fd257971c3d55341dabdaebb4001a95781fb4cfb096e049166032736",
+      "entityId": null,
+      "noteId": 2488,
+      "conclusion": "106批隔离为身份证据不足；原文只有混合地域/摄影标签，待原图补证，仍计北外滩潜在分，不作not_same_entity。",
+      "resolution": {
+        "status": "review",
+        "reason": "unassigned_target",
+        "scopePlaceIds": [
+          4709
+        ]
+      }
+    },
+    {
+      "city": "上海",
+      "mentionId": 11238,
+      "inputHash": "6ff618f20d73ea08c6a7c013979d6fb17ec3581eb4e85c12ce6f1f2dec384adf",
+      "entityId": "ca06af376c88d2f3ecd7e2333ca9c2ae",
+      "noteId": 2474,
+      "conclusion": "5条当前提及阅读，明确楼内118层观景与雾天慎去负评保持，不并入陆家嘴区域或三件套。11238描述整份路线且正文写上海Z心大厦，按既有全名引文门禁暂保留待核，不伪造全名或因此删除路线身份；建筑与独立收费观景产品边界未全面解决。"
+    },
+    {
+      "city": "厦门",
+      "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+      "mentionId": 5363,
+      "inputHash": "3259a1b94f8d51de174afd15a8924d8395cdf6b4e8fd12f0cdf3da71b27e9b19",
+      "resolution": {
+        "status": "resolved",
+        "reason": "reviewed_assignment",
+        "scopePlaceIds": [
+          2670
+        ]
+      },
+      "conclusion": "全简称事实引文门禁不支持，保留身份及原描述待核。"
+    },
+    {
+      "city": "厦门",
+      "entityId": "5950d3c70e76f5682842a6726f2b1e92",
+      "mentionId": 6808,
+      "inputHash": "4b005906c30d3bdb351132a3ece617ad2ecc3f3bdcc494f78c4c8708f44c441d",
+      "resolution": {
+        "status": "review",
+        "reason": "unassigned_target",
+        "scopePlaceIds": [
+          2670
+        ]
+      },
+      "conclusion": "仅标签，无原图主体证据，已隔离但仍计潜在分。"
+    },
+    {
+      "city": "厦门",
+      "entityId": "15f4085f90907345a822ac07663783c3",
+      "mentionId": 5372,
+      "inputHash": "e408257fc30290a197e7233b8f4cfb1de0c43f792bdc4081f0eed83dcd018190",
+      "resolution": {
+        "status": "resolved",
+        "reason": "reviewed_assignment",
+        "scopePlaceIds": [
+          2613
+        ]
+      },
+      "conclusion": "保留有限海边路线身份；玩月坡树/咖啡或鲸喜蓝眼泪具体设施与整片沙滩范围未闭合，原描述保持待核。"
+    },
+    {
+      "city": "厦门",
+      "entityId": "15f4085f90907345a822ac07663783c3",
+      "mentionId": 5516,
+      "inputHash": "d43dff012865b3b40b00800fe4cd6249b58767f8a9fad1dcb7e138efc549ed32",
+      "resolution": {
+        "status": "resolved",
+        "reason": "reviewed_assignment",
+        "scopePlaceIds": [
+          2613
+        ]
+      },
+      "conclusion": "保留有限海边路线身份；玩月坡树/咖啡或鲸喜蓝眼泪具体设施与整片沙滩范围未闭合，原描述保持待核。"
+    }
+  ],
+  "remainingReview": [
+    "112从厦门南普陀34条、植物园29条、厦大28条继续，广州成都杭州西安重庆未审主体仍需推进。鼓浪屿107已撤回，50全文结论待媒体保全方案，集美大社也有旧媒体。",
+    "上海当前30候选已有提及阅读；未决馆区/河岸/寺观组合、商业街区任务类型、旧位置与10132/11238/11246全简称或错字事实引文继续单列，不宣称上海已全部完成。",
+    "七城未逐项读原文的Top30及补位者",
+    "永宁门/城楼/城墙机位review426仅部分阅读",
+    "城隍庙10128及组合review28",
+    "苏州河河岸路线review6",
+    "厦门母步道/林海线/天泉175/176/192/207",
+    "成都蜀锦两馆review313缺裸名馆址",
+    "西安夜市review382域外只读",
+    "黄厝裸名5349/5723/6099/6707、海滨5408/6917混有看海/餐饮/住宿及沿岸路线，不自动并入沙滩；既有位置范围待核。"
+  ],
+  "taskCompleted": false,
+  "userAcceptance": false,
+  "rolledBackBatches": [
+    "batch-107"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "snapshotSha256": "15d0dead50b4115ca159d3120fae822c43276f189047f324c416021cfae0be88",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "78c1fde81fb990a665712a8547b66f4b",
+          "city": "厦门",
+          "name": "椰风寨",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            2557
+          ],
+          "sourceNames": [
+            "椰风寨"
+          ],
+          "effectiveType": "attraction",
+          "score": 50.0,
+          "downstreamScore": 50,
+          "mentionCount": 18,
+          "noteCount": 18,
+          "uncertainMentionIds": [
+            5663
+          ],
+          "allAssignedScore": 52.5,
+          "potentialScore": 52.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2557
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未确认归属提及"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5325,
+            5407,
+            5491,
+            5502,
+            5509,
+            5515,
+            5591,
+            5737,
+            5766,
+            5931,
+            6005,
+            6113,
+            6322,
+            6364,
+            6497,
+            6600,
+            6825,
+            6918
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "78c1fde81fb990a665712a8547b66f4b"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 14
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-26.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "3e169784fecf0bf887a237cfdda4d0f1e9d2f362a14c78c71d63330e2846e1c3",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "南普陀寺",
+      "entityId": "d0e0f1dff1caee95784a31c71d9ac46f",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

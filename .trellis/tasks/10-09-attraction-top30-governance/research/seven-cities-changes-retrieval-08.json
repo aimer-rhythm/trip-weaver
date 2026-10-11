@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "fb7d0e20f505e4e19700746bef204c7610cf375b63a3eecaebf1e2d44b5e2fa9",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "豫园",
+      "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 2,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

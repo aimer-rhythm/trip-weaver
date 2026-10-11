@@ -1,0 +1,14 @@
+{
+  "batch": "batch-119",
+  "stage": "inputs_before_decision_files_or_business_mutation",
+  "failed": true,
+  "errorType": "AssertionError",
+  "location": "govern-zengcuoan-preserved-scope.py:52",
+  "cause": "预演脚本把非空dict_values容器判为真，而不是逐一检查其全部为null的文字字段。",
+  "rawNotesCompared": [1298, 1324, 1544, 1456],
+  "rawNotesChangedFields": [],
+  "fix": "展开到每个文字字段的值再执行any；原完整笔记相等、补证和来源门禁保持。",
+  "businessMutation": false,
+  "decisionFilesCreated": false,
+  "accepted": false
+}

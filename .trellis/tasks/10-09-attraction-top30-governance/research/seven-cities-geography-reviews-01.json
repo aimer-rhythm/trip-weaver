@@ -1,0 +1,1718 @@
+[
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "50e0ea4eb7dbf22182679d0535ed93f0",
+    "name": "杨梅竹斜街",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1630
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1630,
+        "city": "成都",
+        "name_keys": [
+          "杨梅竹斜街"
+        ],
+        "entity_ids": [
+          "50e0ea4eb7dbf22182679d0535ed93f0"
+        ],
+        "source_hash": "0d39a4d79b19c261ebdc9693c5b19f15decbe9d7bcecde1eaf23421f8a90c23c",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1630",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3478
+            ],
+            "sourcePlaceIds": [
+              1630
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "50e0ea4eb7dbf22182679d0535ed93f0"
+        ],
+        "source_members": [
+          {
+            "place_id": 1630,
+            "scope_place_id": 1630,
+            "source_hash": "0d39a4d79b19c261ebdc9693c5b19f15decbe9d7bcecde1eaf23421f8a90c23c"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3478": "247d3f1d8019c38735f8ea9f833cade6d4df949179cc28a7cf0bcbe64c80f31f"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "b5e241e515a5ac5b6af4a42bf66d9ec3",
+    "name": "亮马河",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1683
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1683,
+        "city": "成都",
+        "name_keys": [
+          "亮马河"
+        ],
+        "entity_ids": [
+          "b5e241e515a5ac5b6af4a42bf66d9ec3"
+        ],
+        "source_hash": "dd3a20c77c93240879fd79a764b4b1914b0953414d682ba075df3047bd9f2d70",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1683",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3495
+            ],
+            "sourcePlaceIds": [
+              1683
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "b5e241e515a5ac5b6af4a42bf66d9ec3"
+        ],
+        "source_members": [
+          {
+            "place_id": 1683,
+            "scope_place_id": 1683,
+            "source_hash": "dd3a20c77c93240879fd79a764b4b1914b0953414d682ba075df3047bd9f2d70"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3495": "5b15a40c882efa6dffac15565765cc21ed5309b20f2a8fb1596aeecf57258cd1"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "0add067c3020c556399e33dc88602176",
+    "name": "朝阳公园",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1681
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1681,
+        "city": "成都",
+        "name_keys": [
+          "朝阳公园"
+        ],
+        "entity_ids": [
+          "0add067c3020c556399e33dc88602176"
+        ],
+        "source_hash": "da2f7433bd513e30b58025842c89a216ee376471f09c8611186b786e506ec799",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1681",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3493
+            ],
+            "sourcePlaceIds": [
+              1681
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "0add067c3020c556399e33dc88602176"
+        ],
+        "source_members": [
+          {
+            "place_id": 1681,
+            "scope_place_id": 1681,
+            "source_hash": "da2f7433bd513e30b58025842c89a216ee376471f09c8611186b786e506ec799"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3493": "0a0bd467fbaa14962e4d7f7ee17cadde28b8b553dd0bc2041155bbb6f5bed662"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "1a4d37eee69e4c0556291ec936edd6da",
+    "name": "北海公园",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1652
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1652,
+        "city": "成都",
+        "name_keys": [
+          "北海公园"
+        ],
+        "entity_ids": [
+          "1a4d37eee69e4c0556291ec936edd6da"
+        ],
+        "source_hash": "2eed5482ee17ff46c37c7b309b7319e687f72a1a2bd820239e4e916a43c90d18",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1652",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3460
+            ],
+            "sourcePlaceIds": [
+              1652
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "1a4d37eee69e4c0556291ec936edd6da"
+        ],
+        "source_members": [
+          {
+            "place_id": 1652,
+            "scope_place_id": 1652,
+            "source_hash": "2eed5482ee17ff46c37c7b309b7319e687f72a1a2bd820239e4e916a43c90d18"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3460": "877f63ff21237867aaae514ef722ba5762e88f82c59585dca3f7ef3a938334d6"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "396552746bad1768aa64ca81ad0e4d17",
+    "name": "什刹海",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1653
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1653,
+        "city": "成都",
+        "name_keys": [
+          "什刹海"
+        ],
+        "entity_ids": [
+          "396552746bad1768aa64ca81ad0e4d17"
+        ],
+        "source_hash": "0762e68212e94fb186ef0f4651e5f4e696af5aae207f8abe5947c6a0f20d70d5",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1653",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3461
+            ],
+            "sourcePlaceIds": [
+              1653
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "396552746bad1768aa64ca81ad0e4d17"
+        ],
+        "source_members": [
+          {
+            "place_id": 1653,
+            "scope_place_id": 1653,
+            "source_hash": "0762e68212e94fb186ef0f4651e5f4e696af5aae207f8abe5947c6a0f20d70d5"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3461": "1ec08ad552f793e1c659fee899cef22029a09ed82d3f348141f9f5656d658c6b"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "dbb7dce92ba65a8639337ae60d17b9aa",
+    "name": "烟袋斜街",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1654
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1654,
+        "city": "成都",
+        "name_keys": [
+          "烟袋斜街"
+        ],
+        "entity_ids": [
+          "dbb7dce92ba65a8639337ae60d17b9aa"
+        ],
+        "source_hash": "62d969c43f1591a1b0171807a600aaef220704bfba9ea9a67abd92c39bb7519f",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1654",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3462
+            ],
+            "sourcePlaceIds": [
+              1654
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "dbb7dce92ba65a8639337ae60d17b9aa"
+        ],
+        "source_members": [
+          {
+            "place_id": 1654,
+            "scope_place_id": 1654,
+            "source_hash": "62d969c43f1591a1b0171807a600aaef220704bfba9ea9a67abd92c39bb7519f"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3462": "bf449429d809503c504681339158030e8ec737633edb36b8c0071c3508c0cd57"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "53ecdf5bc8bed790744897fba0255ab8",
+    "name": "鼓楼",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1655
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1655,
+        "city": "成都",
+        "name_keys": [
+          "鼓楼"
+        ],
+        "entity_ids": [
+          "53ecdf5bc8bed790744897fba0255ab8"
+        ],
+        "source_hash": "98282738a27ba830802cf061a317f3e4b89f981475c57f74d7fa1ebd3e0e338b",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1655",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3463
+            ],
+            "sourcePlaceIds": [
+              1655
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "53ecdf5bc8bed790744897fba0255ab8"
+        ],
+        "source_members": [
+          {
+            "place_id": 1655,
+            "scope_place_id": 1655,
+            "source_hash": "98282738a27ba830802cf061a317f3e4b89f981475c57f74d7fa1ebd3e0e338b"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3463": "c130ead75c24c91475ced94bdd485420785b5d1872ee3fb6a49c8193a72a7122"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "c06b0fda61860fe9d878a522f65b6036",
+    "name": "北锣鼓巷",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1656
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1656,
+        "city": "成都",
+        "name_keys": [
+          "北锣鼓巷"
+        ],
+        "entity_ids": [
+          "c06b0fda61860fe9d878a522f65b6036"
+        ],
+        "source_hash": "f23867acd072df0ddf778df5fda7ffb4c63649c2e8713d299027fcb2a4d923be",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1656",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3464
+            ],
+            "sourcePlaceIds": [
+              1656
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "c06b0fda61860fe9d878a522f65b6036"
+        ],
+        "source_members": [
+          {
+            "place_id": 1656,
+            "scope_place_id": 1656,
+            "source_hash": "f23867acd072df0ddf778df5fda7ffb4c63649c2e8713d299027fcb2a4d923be"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3464": "227f99a9d416eb8deba27046f7e5e02faca662d9f7cd822be31e6ca7659b9f04"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "911f2a37aa239bb5c0ad520c8dfbd24a",
+    "name": "南锣鼓巷",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1657
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1657,
+        "city": "成都",
+        "name_keys": [
+          "南锣鼓巷"
+        ],
+        "entity_ids": [
+          "911f2a37aa239bb5c0ad520c8dfbd24a"
+        ],
+        "source_hash": "9a36d142565228ef615a4917af795a45bd6380b4f132c9e9be6c009e7dcc3aa9",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1657",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3465
+            ],
+            "sourcePlaceIds": [
+              1657
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "911f2a37aa239bb5c0ad520c8dfbd24a"
+        ],
+        "source_members": [
+          {
+            "place_id": 1657,
+            "scope_place_id": 1657,
+            "source_hash": "9a36d142565228ef615a4917af795a45bd6380b4f132c9e9be6c009e7dcc3aa9"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3465": "2dfe3cdbad52516573475d95cbdf40b6e24eb52e81024897a325fc5cd3eebd3a"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "09a6428491f2484b62c5ebc1ee02a30d",
+    "name": "地坛公园",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1658
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1658,
+        "city": "成都",
+        "name_keys": [
+          "地坛公园"
+        ],
+        "entity_ids": [
+          "09a6428491f2484b62c5ebc1ee02a30d"
+        ],
+        "source_hash": "86750bb3b0460135d4382ab21934d4427812610e852659e4b2e082362d91f763",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1658",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3466
+            ],
+            "sourcePlaceIds": [
+              1658
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "09a6428491f2484b62c5ebc1ee02a30d"
+        ],
+        "source_members": [
+          {
+            "place_id": 1658,
+            "scope_place_id": 1658,
+            "source_hash": "86750bb3b0460135d4382ab21934d4427812610e852659e4b2e082362d91f763"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3466": "f10f4ad1f96bdaa3ea43c9ff1f5c4b041c96a044f896e5558702990fae573f75"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "5dcf708f6083fa9c65c7f9c764e76a16",
+    "name": "雍和宫",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1659
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1659,
+        "city": "成都",
+        "name_keys": [
+          "雍和宫"
+        ],
+        "entity_ids": [
+          "5dcf708f6083fa9c65c7f9c764e76a16"
+        ],
+        "source_hash": "a9833019d341e020aff1c429caf3bd719a8bbd7a74a3340a7ca4d302780c10cf",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1659",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3467
+            ],
+            "sourcePlaceIds": [
+              1659
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "5dcf708f6083fa9c65c7f9c764e76a16"
+        ],
+        "source_members": [
+          {
+            "place_id": 1659,
+            "scope_place_id": 1659,
+            "source_hash": "a9833019d341e020aff1c429caf3bd719a8bbd7a74a3340a7ca4d302780c10cf"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3467": "69ffe11d45dd250dbe2937a9ca91e073bfc0dc668e605c9b1898a79be2274043"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "1a2acc23cdd05c52e3a080ab87c8b69d",
+    "name": "国子监",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1660
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1660,
+        "city": "成都",
+        "name_keys": [
+          "国子监"
+        ],
+        "entity_ids": [
+          "1a2acc23cdd05c52e3a080ab87c8b69d"
+        ],
+        "source_hash": "fb7f1ea30c70e6f44fa440d75ca8bf7bc2fa88d6384c72b2783065451a94703d",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1660",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3468
+            ],
+            "sourcePlaceIds": [
+              1660
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "1a2acc23cdd05c52e3a080ab87c8b69d"
+        ],
+        "source_members": [
+          {
+            "place_id": 1660,
+            "scope_place_id": 1660,
+            "source_hash": "fb7f1ea30c70e6f44fa440d75ca8bf7bc2fa88d6384c72b2783065451a94703d"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3468": "e591989e7dc37f059df6fce68a0dadca11759fc7c40201c456e5f6e3ff606c13"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "5f660858cc70ca0a9584e4dddea338a7",
+    "name": "五道营胡同",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1661
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1661,
+        "city": "成都",
+        "name_keys": [
+          "五道营胡同"
+        ],
+        "entity_ids": [
+          "5f660858cc70ca0a9584e4dddea338a7"
+        ],
+        "source_hash": "13e3f22a08240613fe5fd6391abcec0fd1d95a46f19395674f6a3f81dc9d04e4",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1661",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3469
+            ],
+            "sourcePlaceIds": [
+              1661
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "5f660858cc70ca0a9584e4dddea338a7"
+        ],
+        "source_members": [
+          {
+            "place_id": 1661,
+            "scope_place_id": 1661,
+            "source_hash": "13e3f22a08240613fe5fd6391abcec0fd1d95a46f19395674f6a3f81dc9d04e4"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3469": "f3412fa6c6a471942e28312e9508f87c884660524dd519e125c8b1cc1b73f74d"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "f7911b50eb1c61037c79160865d8e630",
+    "name": "鲁迅博物馆",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1662
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1662,
+        "city": "成都",
+        "name_keys": [
+          "鲁迅博物馆"
+        ],
+        "entity_ids": [
+          "f7911b50eb1c61037c79160865d8e630"
+        ],
+        "source_hash": "0c0bcdab017e105080ab811f4e41fab6c4c10f3c68fd08e5265a45cd60248d35",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1662",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3470
+            ],
+            "sourcePlaceIds": [
+              1662
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "f7911b50eb1c61037c79160865d8e630"
+        ],
+        "source_members": [
+          {
+            "place_id": 1662,
+            "scope_place_id": 1662,
+            "source_hash": "0c0bcdab017e105080ab811f4e41fab6c4c10f3c68fd08e5265a45cd60248d35"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3470": "467a336d96cda12810689adb8a330e303b99090779b609457bbdc681ecc6bfd6"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "f0045ae244df6a021f039e64637f111d",
+    "name": "白塔寺",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1663
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1663,
+        "city": "成都",
+        "name_keys": [
+          "白塔寺"
+        ],
+        "entity_ids": [
+          "f0045ae244df6a021f039e64637f111d"
+        ],
+        "source_hash": "2ecab78ff1ad13b64bd620b94679dfdaadfb570818743477758543da4f7c107d",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1663",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3471
+            ],
+            "sourcePlaceIds": [
+              1663
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "f0045ae244df6a021f039e64637f111d"
+        ],
+        "source_members": [
+          {
+            "place_id": 1663,
+            "scope_place_id": 1663,
+            "source_hash": "2ecab78ff1ad13b64bd620b94679dfdaadfb570818743477758543da4f7c107d"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3471": "ce60fa6f50b24fa87885acf977718ce50388d34d6cf2030c52d9d7696a9e1097"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "0688a8f4c0a461bc43c033b034f2c8e7",
+    "name": "历代帝王庙",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1664
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1664,
+        "city": "成都",
+        "name_keys": [
+          "历代帝王庙"
+        ],
+        "entity_ids": [
+          "0688a8f4c0a461bc43c033b034f2c8e7"
+        ],
+        "source_hash": "e71ae57ea00105578b9b6dd16603fd038715db9df678c1c717516e5c428d9ddc",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1664",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3472
+            ],
+            "sourcePlaceIds": [
+              1664
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "0688a8f4c0a461bc43c033b034f2c8e7"
+        ],
+        "source_members": [
+          {
+            "place_id": 1664,
+            "scope_place_id": 1664,
+            "source_hash": "e71ae57ea00105578b9b6dd16603fd038715db9df678c1c717516e5c428d9ddc"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3472": "92b288e0c03d5076413e505ae20e92a0b0a024bd95ae5afcbd11e162ee59befc"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "e1c087f2522d126a2de7fe78849ab445",
+    "name": "天坛",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1667
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1667,
+        "city": "成都",
+        "name_keys": [
+          "天坛"
+        ],
+        "entity_ids": [
+          "e1c087f2522d126a2de7fe78849ab445"
+        ],
+        "source_hash": "42c40e9cf26b3dd1490156ceb44b2d793a9dde597e9acf178a6aded01e4f70f0",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1667",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3475
+            ],
+            "sourcePlaceIds": [
+              1667
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "e1c087f2522d126a2de7fe78849ab445"
+        ],
+        "source_members": [
+          {
+            "place_id": 1667,
+            "scope_place_id": 1667,
+            "source_hash": "42c40e9cf26b3dd1490156ceb44b2d793a9dde597e9acf178a6aded01e4f70f0"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3475": "40d186fa6cc89542717274d4ecc08f3dbf183e51605a083a0068aedd49c0f7b4"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "1193c0a076b71c933f2c7c67b4570f7a",
+    "name": "前门",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1668
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1668,
+        "city": "成都",
+        "name_keys": [
+          "前门"
+        ],
+        "entity_ids": [
+          "1193c0a076b71c933f2c7c67b4570f7a"
+        ],
+        "source_hash": "ce5179f8dbac1413c13fbfd95ce654cadb997667c78ed58d37895d757f6ecf8a",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1668",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3476
+            ],
+            "sourcePlaceIds": [
+              1668
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "1193c0a076b71c933f2c7c67b4570f7a"
+        ],
+        "source_members": [
+          {
+            "place_id": 1668,
+            "scope_place_id": 1668,
+            "source_hash": "ce5179f8dbac1413c13fbfd95ce654cadb997667c78ed58d37895d757f6ecf8a"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3476": "9e372ecb9ebc0d13da86f50942caa3a3d30e471db8d452742b8dfa5b6ae4931d"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "70c4238a37efdfc92bd77cf131de49f6",
+    "name": "大栅栏",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1669
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1669,
+        "city": "成都",
+        "name_keys": [
+          "大栅栏"
+        ],
+        "entity_ids": [
+          "70c4238a37efdfc92bd77cf131de49f6"
+        ],
+        "source_hash": "bf30544748c57860d67235372c3b5e8e7d5fd87aa5c22dd508e07f388859c352",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1669",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3477
+            ],
+            "sourcePlaceIds": [
+              1669
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "70c4238a37efdfc92bd77cf131de49f6"
+        ],
+        "source_members": [
+          {
+            "place_id": 1669,
+            "scope_place_id": 1669,
+            "source_hash": "bf30544748c57860d67235372c3b5e8e7d5fd87aa5c22dd508e07f388859c352"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3477": "eda76babf6c22430e6da2cf956e218521f8d485046ecc9e2084a6b664ca6e5fc"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "b1b3f62e951a637390e024655bf3a609",
+    "name": "中国美术馆",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1672
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1672,
+        "city": "成都",
+        "name_keys": [
+          "中国美术馆"
+        ],
+        "entity_ids": [
+          "b1b3f62e951a637390e024655bf3a609"
+        ],
+        "source_hash": "3d8a5f9aae54245c253147c5bf00ed66107da552ac4a1bc5595c7458d0fb48e4",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1672",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3484
+            ],
+            "sourcePlaceIds": [
+              1672
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "b1b3f62e951a637390e024655bf3a609"
+        ],
+        "source_members": [
+          {
+            "place_id": 1672,
+            "scope_place_id": 1672,
+            "source_hash": "3d8a5f9aae54245c253147c5bf00ed66107da552ac4a1bc5595c7458d0fb48e4"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3484": "067e48ec786ddd8b03af92a608c6299b3ea5b67351607fd47faf4bcb4c5d8870"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "6685b2a3ebf7f1856a3cac018402d793",
+    "name": "广阳谷森林公园",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1673
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1673,
+        "city": "成都",
+        "name_keys": [
+          "广阳谷森林公园"
+        ],
+        "entity_ids": [
+          "6685b2a3ebf7f1856a3cac018402d793"
+        ],
+        "source_hash": "91f0f01b2c2268e1be8d917c5e21351662f3290783dcce4350e281a9e5660ff5",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1673",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3485
+            ],
+            "sourcePlaceIds": [
+              1673
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "6685b2a3ebf7f1856a3cac018402d793"
+        ],
+        "source_members": [
+          {
+            "place_id": 1673,
+            "scope_place_id": 1673,
+            "source_hash": "91f0f01b2c2268e1be8d917c5e21351662f3290783dcce4350e281a9e5660ff5"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3485": "373fcdef41d210a74cad9264be2fe59ed626a1a4fff5df2ebb733c39cecf5795"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "a59e02c0c7c598fe642cb56ecb9d195c",
+    "name": "大吉巷",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1674
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1674,
+        "city": "成都",
+        "name_keys": [
+          "大吉巷"
+        ],
+        "entity_ids": [
+          "a59e02c0c7c598fe642cb56ecb9d195c"
+        ],
+        "source_hash": "26fbdd2e1dbc97e8e0ad59a890275679a43a32c62845e1c4bc4a8fd1f346881c",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1674",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3486
+            ],
+            "sourcePlaceIds": [
+              1674
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "a59e02c0c7c598fe642cb56ecb9d195c"
+        ],
+        "source_members": [
+          {
+            "place_id": 1674,
+            "scope_place_id": 1674,
+            "source_hash": "26fbdd2e1dbc97e8e0ad59a890275679a43a32c62845e1c4bc4a8fd1f346881c"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3486": "75353631dc9ac155b4a3fefdc8f02f7e9b7c35b8692cc8153d9cc2a21a290c2e"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "fcaeae794947e6e10cef8870dca8d075",
+    "name": "烂漫胡同",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1675
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1675,
+        "city": "成都",
+        "name_keys": [
+          "烂漫胡同"
+        ],
+        "entity_ids": [
+          "fcaeae794947e6e10cef8870dca8d075"
+        ],
+        "source_hash": "7269a51f30b7c0997806d15e53cfab2af68a10e963cf1c655b3eaed43e0cdebd",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1675",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3487
+            ],
+            "sourcePlaceIds": [
+              1675
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "fcaeae794947e6e10cef8870dca8d075"
+        ],
+        "source_members": [
+          {
+            "place_id": 1675,
+            "scope_place_id": 1675,
+            "source_hash": "7269a51f30b7c0997806d15e53cfab2af68a10e963cf1c655b3eaed43e0cdebd"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3487": "a30a36bc2be00fbafda8e22a14424f10a01436df4ac85eb5fc9f94f522328d88"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "e2d3a03e7d7513f088c3c0efb383611b",
+    "name": "法源寺",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1676
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1676,
+        "city": "成都",
+        "name_keys": [
+          "法源寺"
+        ],
+        "entity_ids": [
+          "e2d3a03e7d7513f088c3c0efb383611b"
+        ],
+        "source_hash": "8b1164fe1ad2d7e554994ac076e8c2d6a3f6756ff1feee0eb4cd13c1fa495664",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1676",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3488
+            ],
+            "sourcePlaceIds": [
+              1676
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "e2d3a03e7d7513f088c3c0efb383611b"
+        ],
+        "source_members": [
+          {
+            "place_id": 1676,
+            "scope_place_id": 1676,
+            "source_hash": "8b1164fe1ad2d7e554994ac076e8c2d6a3f6756ff1feee0eb4cd13c1fa495664"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3488": "6e2fe70dd8cc6746dd049b0807ec47a0aee89359240af60e258e7d574f37377d"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "b7e71f3148f83c1ad70881f5e43c56de",
+    "name": "友谊花园",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1678
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1678,
+        "city": "成都",
+        "name_keys": [
+          "友谊花园"
+        ],
+        "entity_ids": [
+          "b7e71f3148f83c1ad70881f5e43c56de"
+        ],
+        "source_hash": "ea567a2398277e43ba27324b86d2c9093f06cfbd99d77658f933807ffad5d6b4",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1678",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3490
+            ],
+            "sourcePlaceIds": [
+              1678
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "b7e71f3148f83c1ad70881f5e43c56de"
+        ],
+        "source_members": [
+          {
+            "place_id": 1678,
+            "scope_place_id": 1678,
+            "source_hash": "ea567a2398277e43ba27324b86d2c9093f06cfbd99d77658f933807ffad5d6b4"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3490": "dd2c380ecc9c681d3ef21e6a74e55005887fa9e24275bd1b46bdc7e0a3a25f08"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  },
+  {
+    "city": "成都",
+    "actualCity": "北京",
+    "entityId": "fe5ff6f17f7e03bbf8b5e4bf285bf4c0",
+    "name": "日坛公园",
+    "expectedRevision": 2,
+    "sourceIds": [
+      1679
+    ],
+    "scopeSnapshot": [
+      {
+        "place_id": 1679,
+        "city": "成都",
+        "name_keys": [
+          "日坛公园"
+        ],
+        "entity_ids": [
+          "fe5ff6f17f7e03bbf8b5e4bf285bf4c0"
+        ],
+        "source_hash": "fdc9e232fc39408489200e5ede77403c3170b5caca676b044e1c5e9b1c4a6868",
+        "revision": 1,
+        "change_key": "all-cities-20261007-batch-29-wrongcity-1679",
+        "evidence": [
+          {
+            "file": "cleaning-scope/run-1791371057197/wrongcity-scope-source-01.json",
+            "kind": "reviewed_wrong_city_source",
+            "quote": "北京夏日必逛八条Citywalk路线，条条王炸❗️",
+            "noteId": 759,
+            "sha256": "addf1eeb08b00d1dec9874b4f492adc34a2375c18bd47ec24fe2f3477382da2c",
+            "conclusion": "原笔记标题及全文八条路线均在北京，被错误收录到成都。该源只有本篇一条提及，无成都归属证据；同名成都POI及中心兜底坐标不能作为证明。逐提及隔离并撤回成都候选，保留原文、旧ID和审计，不跨城合并。null归属按现有契约保留待审，不将隔离计为北京具体身份已经解决。",
+            "mentionIds": [
+              3491
+            ],
+            "sourcePlaceIds": [
+              1679
+            ]
+          }
+        ],
+        "withdrawal_entity_ids": [
+          "fe5ff6f17f7e03bbf8b5e4bf285bf4c0"
+        ],
+        "source_members": [
+          {
+            "place_id": 1679,
+            "scope_place_id": 1679,
+            "source_hash": "fdc9e232fc39408489200e5ede77403c3170b5caca676b044e1c5e9b1c4a6868"
+          }
+        ],
+        "source_conflicts": [],
+        "joint": false,
+        "source_valid": true
+      }
+    ],
+    "mentionHashes": {
+      "3491": "bc2fd9e9c44573a39a124019c8586021a722879a43b78c87a405b347e6c5c317"
+    },
+    "noteQuotes": [
+      {
+        "noteId": 759,
+        "quote": "#北京citywalk[话题]# #北京周末去哪儿[话题]# #北京旅游[话题]#"
+      }
+    ],
+    "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+    "conclusion": "完整正文为北京八条citywalk路线，原文明确老北京胡同及北京地域标签；该来源已隔离且无有效归属，不属于成都景点配额。保持原scope、null分配、历史PENDING与旧ID，不跨城搬移或新增业务决定。",
+    "businessMutation": false
+  }
+]

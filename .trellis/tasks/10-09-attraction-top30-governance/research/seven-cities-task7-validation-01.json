@@ -1,0 +1,103 @@
+{
+  "kind": "seven_cities_task7_chain_revalidation",
+  "at": "2026-10-10T15:40:00Z",
+  "readOnly": true,
+  "snapshotFile": "snapshot-20261010T031749976332Z/input.json",
+  "snapshotSha256": "15d0dead50b4115ca159d3120fae822c43276f189047f324c416021cfae0be88",
+  "ranking": {
+    "authoritative": "seven-cities-ranking-36.json",
+    "rederived": "seven-cities-ranking-37.json",
+    "rederiveCommand": "rank.py snapshot-20261010T031749976332Z/input.json --out seven-cities-ranking-37.json --classifications seven-cities-type-reviews-04.json --geography-reviews seven-cities-geography-reviews-01.json --mention-boundaries seven-cities-mention-boundaries-21.json",
+    "cities": 7,
+    "rows": 210,
+    "rowsEqualPrevious": true,
+    "diffOnRankNameScoreDownstream": [],
+    "scoreGapToLiveDatabase": 0,
+    "note": "分数与实库分差 0 由 rank.py 自身对冻结下游行的断言保证；重算仅证明未漂移，榜单仍以 ranking-36 为权威引用。"
+  },
+  "researchRegressions": {
+    "command": "D:\\Project\\xhs-travel-pipeline\\.venv\\Scripts\\python.exe -X utf8 -B -m unittest test_rank test_city_merge_plan",
+    "tests": 24,
+    "failed": 0
+  },
+  "syncContracts": {
+    "command": "node --test all-cities/sync-contract.test.mjs",
+    "tests": 12,
+    "fail": 0
+  },
+  "typecheck": {
+    "repo": {
+      "command": "npm run typecheck",
+      "passed": true
+    },
+    "research": {
+      "command": "npx tsc --noEmit -p tsconfig.verify-joint.json",
+      "passed": true
+    }
+  },
+  "dualSync": {
+    "command": "npx tsx .trellis/tasks/10-06-place-identity-governance/research/all-cities/check-batch-state.mts after batch-120 sync-01",
+    "exitCode": 0,
+    "mode": "after",
+    "at": "2026-10-10T15:39:27.807Z",
+    "failures": [],
+    "trips": {
+      "count": 201,
+      "digest": "e01d67cbf42a62fc595f4ef052f99e75"
+    },
+    "cities": [
+      {
+        "city": "厦门",
+        "sourceRevision": 20,
+        "graph": 95,
+        "strongUsable": 28,
+        "oldRowsPreserved": 669,
+        "photoFieldsPreserved": 45,
+        "independentPhotos": 0,
+        "untouchedRetained": 0,
+        "governedScores": 12
+      }
+    ],
+    "pendingBatches": 0,
+    "note": "batch-120 为最新已应用批次；export/import/关系/向量四个时间戳齐备，实库与已应用状态一致，无待同步批次。"
+  },
+  "catalog": {
+    "file": "seven-cities-catalog-29.json",
+    "passed": true,
+    "totalChecks": 6915,
+    "rows": 210,
+    "snapshotSha256": "15d0dead50b4115ca159d3120fae822c43276f189047f324c416021cfae0be88"
+  },
+  "retrieval": {
+    "file": "seven-cities-retrieval-27.json",
+    "passed": true,
+    "rows": 210,
+    "uncovered": 0,
+    "reused": 209,
+    "newRequests": 1,
+    "snapshotSha256": "15d0dead50b4115ca159d3120fae822c43276f189047f324c416021cfae0be88"
+  },
+  "preservation": {
+    "file": "seven-cities-preservation-28.json",
+    "passed": true,
+    "batches": 13,
+    "cities": 7,
+    "beforeSha256": "1c9215a4ad8aab925a0580b704038ff3563a7de86a56ae54f51db3decb27b2cc",
+    "afterSha256": "15d0dead50b4115ca159d3120fae822c43276f189047f324c416021cfae0be88"
+  },
+  "flow": {
+    "file": "seven-cities-flow-coverage-26.json",
+    "passed": true,
+    "run": "run-106",
+    "ranking": "seven-cities-ranking-36.json",
+    "rankingSha256": "5d51518cc0000853bb73e832ad2b54553d89cc7c18375c6f0da505af984b8dc1",
+    "failures": 0,
+    "temporaryDatabaseRemoved": true,
+    "cities": 7
+  },
+  "currentReadthrough": "seven-cities-semantic-readthrough-78.json",
+  "currentLedger": "seven-cities-review-ledger-71.json",
+  "limits": "本轮无新增或修改下游分数的批次，因此全链报告沿用同一冻结快照的 batch-120 工件并逐项核对快照哈希；阅读完成不等于同体、组成、定位与媒体未决项闭合；未取得用户验收前不提交、不归档、不标记完成。",
+  "passed": true,
+  "userAcceptance": false
+}

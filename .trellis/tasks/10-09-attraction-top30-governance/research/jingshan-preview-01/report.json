@@ -1,0 +1,584 @@
+{
+  "isolated": true,
+  "apply": false,
+  "snapshotSha256": "274448ba2567206a2da2ee00bce94a5f75c91947304165970b7918d710e3a764",
+  "scopeChanges": [
+    {
+      "entities": [
+        {
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5",
+          "city": "北京",
+          "canonical_name": "景山公园",
+          "primary_place_id": 1063,
+          "aliases": [
+            "景山",
+            "景山公园",
+            "石景山公园"
+          ],
+          "legacy_ids": [
+            "981bfe8125feb36e052dcfee1e0df8b5",
+            "a94865355cdbf6fccfda6fc748b9e9fe",
+            "bfcd828439fa9f1f7ff85ab8b155f934"
+          ],
+          "revision": 5,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 39.925875,
+            "lng": 116.396551,
+            "address": "景山西街44号",
+            "geoStatus": "reviewed_source",
+            "recommendationPolicy": "resolved_attraction_mentions_v1"
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "5278",
+                  "name": "景山公园",
+                  "quote": "步行到景山公园，无缝衔接",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9e040000000025035308"
+                },
+                {
+                  "id": "5236",
+                  "name": "景山公园",
+                  "quote": "万春亭俯瞰紫禁城秋色",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+                },
+                {
+                  "id": "5215",
+                  "name": "景山公园",
+                  "quote": "不能错过的机位",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fcc0c0000000029017b0d"
+                },
+                {
+                  "id": "5209",
+                  "name": "景山公园",
+                  "quote": "门票仅2r，登顶直接把整座故宫框进视野",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a361add000000000702ce19"
+                },
+                {
+                  "id": "3148",
+                  "name": "石景山公园",
+                  "quote": "一定要提前预约",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8266f40000000022014e34"
+                }
+              ],
+              "reviewIds": [
+                112
+              ],
+              "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+              "sourcePlaceIds": [
+                "1063",
+                "1508"
+              ]
+            },
+            {
+              "lat": 39.925875,
+              "lng": 116.396551,
+              "kind": "primary_source_geometry",
+              "address": "景山西街44号",
+              "original": {
+                "lat": 39.925875,
+                "lng": 116.396551,
+                "address": "景山西街44号",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "沿用景山公园主源1063的GCJ-02公园参考点39.925875/116.396551、景山西街44号，符合原图故宫对面及主源多篇俯瞰故宫描述。误匹配首钢园的1508旧点不参与平均。",
+              "sourcePlaceId": "1063",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/batch-21-image-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "02841873a3ab4d7749c1e4866708713cb29929c139b2123fe53fc859fc042226",
+              "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+              "mentionIds": [
+                3148
+              ]
+            },
+            {
+              "file": "all-cities/audit/run-15/snapshot.json",
+              "kind": "reviewed_current_identity_snapshot",
+              "sha256": "2d0dc88f92642eb23eec377cbcc7c664b310bba9ad99378d8f5c30eaad15d626",
+              "conclusion": "两主体当前仍为各自稳定根且revision=1，与冻结原源一致；现行游乐园根通过batch-06依赖重建。"
+            },
+            {
+              "file": "photo-catalog-identity-audit-1791347549032.json",
+              "kind": "reviewed_full_source_and_downstream_snapshot",
+              "sha256": "1eb7a0b033a1ff9d890cd98788bd43c32ce59503ed44894de16ea269a3cf6e08",
+              "conclusion": "3015/note503与4475/note1087的原名景山已归一到景山公园，归属源1063。下游遗留xhs记录bfcd828439fa9f1f7ff85ab8b155f934无v2身份，地址景山西街44号和坐标与1063完全相同。补已核实简称并由正式别名ID认领机制纳入该历史ID，不另造实体、不合并万春亭/前街/崇祯自缢处，不改已核实公园坐标。"
+            },
+            {
+              "kind": "reviewed_legacy_alias",
+              "legacyId": "bfcd828439fa9f1f7ff85ab8b155f934",
+              "mentionIds": [
+                3015,
+                4475
+              ],
+              "originalNames": [
+                "景山",
+                "景山"
+              ],
+              "sourcePlaceId": 1063,
+              "normalizedNames": [
+                "景山公园",
+                "景山公园"
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                2345,
+                2445,
+                2496,
+                2614,
+                2620,
+                2654,
+                2795,
+                2827,
+                2854,
+                3015,
+                3148,
+                3177,
+                3188,
+                3301,
+                3400,
+                4317,
+                4335,
+                4369,
+                4444,
+                4475,
+                4523,
+                4536,
+                4578,
+                4605,
+                4779,
+                4808,
+                4960,
+                5024,
+                5036,
+                5154,
+                5169,
+                5188,
+                5197,
+                5209,
+                5215,
+                5236,
+                5278
+              ],
+              "scoreAfter": 95.36,
+              "scoreBefore": 98,
+              "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1063,
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5"
+        },
+        {
+          "place_id": 1508,
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5"
+        }
+      ],
+      "derivedPlaces": [
+        {
+          "id": 1063,
+          "content_profile": {
+            "intro": "景山位于北京城中心。这座始建于辽金时期的宫苑园林，曾是皇宫的重要组成部分，保留了深厚的历史背景。山上五亭横列，中峰为万春亭，东西两侧分布观妙亭、周赏亭、辑芳亭和富览亭。登高后可俯瞰北京，在亭阁间欣赏古都风貌。",
+            "method": "source_grounded_editor",
+            "review": {
+              "at": "2026-10-02T07:17:48.874534+00:00",
+              "by": "codex",
+              "kind": "source_and_copy_review"
+            },
+            "version": 1,
+            "compiledAt": "2026-10-02T07:17:48.874534+00:00",
+            "highlights": [
+              {
+                "text": "景山位于北京城中心。",
+                "quote": "景山位于北京城的中心",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              },
+              {
+                "text": "这座始建于辽金时期的宫苑园林，曾是皇宫的重要组成部分，保留了深厚的历史背景。",
+                "quote": "景山始建于辽金时期，距今已有近千年的历史。景山是我国历史最悠久、保存最完整的宫苑园林之一，曾经是皇宫的重要组成部分。",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              },
+              {
+                "text": "山上五亭横列，中峰为万春亭，东西两侧分布观妙亭、周赏亭、辑芳亭和富览亭。",
+                "quote": "景山山上五亭横列，中峰建有万春亭；东侧依次建有观妙亭和周赏亭；西侧依次建有辑芳亭和富览亭。",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              },
+              {
+                "text": "登高后可俯瞰北京，在亭阁间欣赏古都风貌。",
+                "quote": "登上景山，俯瞰北京，古都风貌尽收眼底",
+                "strength": "strong",
+                "sourceUrl": "https://s.visitbeijing.com.cn/attraction/117811",
+                "observedAt": "2026-10-02T07:17:48.874534+00:00"
+              }
+            ],
+            "profileVersion": 1,
+            "qualityVersion": 2
+          },
+          "typical_visit_minutes": 60,
+          "typical_visit_source": "xhs_median",
+          "quality_score": 187.1,
+          "theme_tags": [
+            "自然风光"
+          ],
+          "is_active": true
+        },
+        {
+          "id": 1508,
+          "content_profile": null,
+          "typical_visit_minutes": null,
+          "typical_visit_source": null,
+          "quality_score": 14.5,
+          "theme_tags": [
+            "名胜古迹"
+          ],
+          "is_active": true
+        }
+      ],
+      "summaries": [
+        {
+          "canonical_place_id": 1063,
+          "mention_count_30d": 38,
+          "positive_count_30d": 38,
+          "source_count": 34,
+          "top_reasons": [
+            {
+              "reason": "俯瞰紫禁城全景视野绝佳",
+              "evidence": "俯瞰整个紫禁城绝了"
+            },
+            {
+              "reason": "登顶可看故宫全景，春节有庙会",
+              "evidence": "景山公园/北海公园➡️糖房"
+            },
+            {
+              "reason": "俯瞰故宫全景的绝佳高点",
+              "evidence": "图4：景山公园观景台"
+            },
+            {
+              "reason": "登万春亭俯瞰故宫全貌",
+              "evidence": "景山公园-前门/大栅栏"
+            },
+            {
+              "reason": "登顶可俯瞰整个紫禁城，上山有指引且不需走很久",
+              "evidence": "一定要上去俯瞰整个紫禁城"
+            }
+          ],
+          "recommend_score": 98.0
+        },
+        {
+          "canonical_place_id": 1508,
+          "mention_count_30d": 1,
+          "positive_count_30d": 0,
+          "source_count": 1,
+          "top_reasons": [
+            {
+              "reason": "一定要提前预约，不然无法参观",
+              "evidence": "一定要提前预约"
+            }
+          ],
+          "recommend_score": 2.5
+        }
+      ],
+      "provenance": [],
+      "relations": [],
+      "imageAssignments": [],
+      "imageReviews": [],
+      "scopes": [
+        {
+          "place_id": 1508,
+          "city": "北京",
+          "name_keys": [
+            "石景山公园"
+          ],
+          "entity_ids": [
+            "981bfe8125feb36e052dcfee1e0df8b5"
+          ],
+          "source_hash": "3bc13458c6b08d1dd36ac9be5b8d968e57b2b060d0b5d813550950021af13185",
+          "revision": 1,
+          "change_key": "top30-20261009-batch-78-jingshan-name-scope",
+          "evidence": [
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\景山误归并原因排查.md",
+              "kind": "mention_name_correction",
+              "mentionId": 3148,
+              "conclusion": "笔记504原图P1/P2明确景山公园、故宫对面及俯瞰故宫；只确认3148的误写意图。石景山公园不是全局别名，不审改预约、网页或图片事实。",
+              "snapshotSha256": "274448ba2567206a2da2ee00bce94a5f75c91947304165970b7918d710e3a764"
+            }
+          ],
+          "withdrawal_entity_ids": [
+            "981bfe8125feb36e052dcfee1e0df8b5"
+          ],
+          "mode": "name_correction"
+        }
+      ],
+      "assignments": [
+        {
+          "mention_id": 3148,
+          "scope_place_id": 1508,
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5",
+          "input_hash": "a797f430cf0b5a405f8a10b0dd9fc38469711c2ca8634cf70e5ab3d9b4b876b1",
+          "revision": 1,
+          "change_key": "top30-20261009-batch-78-jingshan-name-scope"
+        }
+      ],
+      "inputs": {
+        "sourceHash": "3bc13458c6b08d1dd36ac9be5b8d968e57b2b060d0b5d813550950021af13185",
+        "mentions": [
+          {
+            "mentionId": 3148,
+            "inputHash": "a797f430cf0b5a405f8a10b0dd9fc38469711c2ca8634cf70e5ab3d9b4b876b1"
+          }
+        ]
+      },
+      "scopeReviews": []
+    }
+  ],
+  "changes": [
+    {
+      "entities": [
+        {
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5",
+          "city": "北京",
+          "canonical_name": "景山公园",
+          "primary_place_id": 1063,
+          "aliases": [
+            "景山",
+            "景山公园"
+          ],
+          "legacy_ids": [
+            "981bfe8125feb36e052dcfee1e0df8b5",
+            "a94865355cdbf6fccfda6fc748b9e9fe",
+            "bfcd828439fa9f1f7ff85ab8b155f934"
+          ],
+          "revision": 6,
+          "status": "ACTIVE",
+          "redirect_to": null,
+          "overrides": {
+            "lat": 39.925875,
+            "lng": 116.396551,
+            "address": "景山西街44号",
+            "geoStatus": "reviewed_source",
+            "recommendationPolicy": "resolved_attraction_mentions_v1",
+            "identityExcludedNames": [
+              "石景山公园"
+            ]
+          },
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "5278",
+                  "name": "景山公园",
+                  "quote": "步行到景山公园，无缝衔接",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aab9e040000000025035308"
+                },
+                {
+                  "id": "5236",
+                  "name": "景山公园",
+                  "quote": "万春亭俯瞰紫禁城秋色",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab0c372000000003b010056"
+                },
+                {
+                  "id": "5215",
+                  "name": "景山公园",
+                  "quote": "不能错过的机位",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a9fcc0c0000000029017b0d"
+                },
+                {
+                  "id": "5209",
+                  "name": "景山公园",
+                  "quote": "门票仅2r，登顶直接把整座故宫框进视野",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a361add000000000702ce19"
+                },
+                {
+                  "id": "3148",
+                  "name": "石景山公园",
+                  "quote": "一定要提前预约",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8266f40000000022014e34"
+                }
+              ],
+              "reviewIds": [
+                112
+              ],
+              "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+              "sourcePlaceIds": [
+                "1063",
+                "1508"
+              ]
+            },
+            {
+              "lat": 39.925875,
+              "lng": 116.396551,
+              "kind": "primary_source_geometry",
+              "address": "景山西街44号",
+              "original": {
+                "lat": 39.925875,
+                "lng": 116.396551,
+                "address": "景山西街44号",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "沿用景山公园主源1063的GCJ-02公园参考点39.925875/116.396551、景山西街44号，符合原图故宫对面及主源多篇俯瞰故宫描述。误匹配首钢园的1508旧点不参与平均。",
+              "sourcePlaceId": "1063",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/batch-21-image-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "02841873a3ab4d7749c1e4866708713cb29929c139b2123fe53fc859fc042226",
+              "conclusion": "石景山公园源1508只有3148/note504这一条提及。正文第7点写天安门、故宫和石景山公园，但同篇原图P1和P2均明确写景山公园，P2另标故宫对面、俯瞰故宫全景。现已直接看图确认本条误写，归并到景山公园现有稳定ID；不把真实首钢园内山体或石景山游乐园当同义。",
+              "mentionIds": [
+                3148
+              ]
+            },
+            {
+              "file": "all-cities/audit/run-15/snapshot.json",
+              "kind": "reviewed_current_identity_snapshot",
+              "sha256": "2d0dc88f92642eb23eec377cbcc7c664b310bba9ad99378d8f5c30eaad15d626",
+              "conclusion": "两主体当前仍为各自稳定根且revision=1，与冻结原源一致；现行游乐园根通过batch-06依赖重建。"
+            },
+            {
+              "file": "photo-catalog-identity-audit-1791347549032.json",
+              "kind": "reviewed_full_source_and_downstream_snapshot",
+              "sha256": "1eb7a0b033a1ff9d890cd98788bd43c32ce59503ed44894de16ea269a3cf6e08",
+              "conclusion": "3015/note503与4475/note1087的原名景山已归一到景山公园，归属源1063。下游遗留xhs记录bfcd828439fa9f1f7ff85ab8b155f934无v2身份，地址景山西街44号和坐标与1063完全相同。补已核实简称并由正式别名ID认领机制纳入该历史ID，不另造实体、不合并万春亭/前街/崇祯自缢处，不改已核实公园坐标。"
+            },
+            {
+              "kind": "reviewed_legacy_alias",
+              "legacyId": "bfcd828439fa9f1f7ff85ab8b155f934",
+              "mentionIds": [
+                3015,
+                4475
+              ],
+              "originalNames": [
+                "景山",
+                "景山"
+              ],
+              "sourcePlaceId": 1063,
+              "normalizedNames": [
+                "景山公园",
+                "景山公园"
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\ranking-03.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                2345,
+                2445,
+                2496,
+                2614,
+                2620,
+                2654,
+                2795,
+                2827,
+                2854,
+                3015,
+                3148,
+                3177,
+                3188,
+                3301,
+                3400,
+                4317,
+                4335,
+                4369,
+                4444,
+                4475,
+                4523,
+                4536,
+                4578,
+                4605,
+                4779,
+                4808,
+                4960,
+                5024,
+                5036,
+                5154,
+                5169,
+                5188,
+                5197,
+                5209,
+                5215,
+                5236,
+                5278
+              ],
+              "scoreAfter": 95.36,
+              "scoreBefore": 98,
+              "snapshotSha256": "625788199a96dd006da6c9b6572d2172a0527dd0ce7a7ae5439018fd3a6764af"
+            },
+            {
+              "kind": "mention_name_correction",
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\景山误归并原因排查.md",
+              "conclusion": "笔记504原图P1/P2明确景山公园、故宫对面及俯瞰故宫；只确认3148的误写意图。石景山公园不是全局别名，不审改预约、网页或图片事实。",
+              "snapshotSha256": "274448ba2567206a2da2ee00bce94a5f75c91947304165970b7918d710e3a764",
+              "mentionId": 3148
+            }
+          ]
+        }
+      ],
+      "members": [
+        {
+          "place_id": 1063,
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5"
+        },
+        {
+          "place_id": 1508,
+          "entity_id": "981bfe8125feb36e052dcfee1e0df8b5"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "sameMentionOwners": true,
+    "onlyJingshanEntityChanged": true,
+    "rawSourcesAndMentionsUnchanged": true,
+    "knownTypoBound": true,
+    "futureTypoPending": true,
+    "changedInputPending": true,
+    "globalWrongAliasRemoved": true,
+    "legacyIdPreserved": true,
+    "noFactOrMediaScope": true,
+    "idempotency": true,
+    "allExportedPlacesPreservedExceptIdentityAndCompiledAt": true,
+    "originalWebProfilePreserved": true,
+    "actualScoreUnchanged": true,
+    "noMediaContractAdded": true
+  },
+  "placeCount": 1269,
+  "reverseRollback": true,
+  "passed": true,
+  "temporaryDatabaseRemoved": true
+}

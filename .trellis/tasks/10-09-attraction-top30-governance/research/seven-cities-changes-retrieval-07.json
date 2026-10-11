@@ -1,0 +1,47 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "886c029c12844de487b62dca4e21f530257366681e79397b652fb4843bbe59d0",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "外滩",
+      "entityId": "97930a0a0c32d968eeed64e754e58382",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 7,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "东方明珠广播电视塔",
+      "entityId": "2af1d8c8816a1645942015d16738c9fd",
+      "sqlNames": 3,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "外滩万国建筑博览群",
+      "entityId": "0700e088ebd6e984525c32fecc476cef",
+      "sqlNames": 4,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "708732375978dbe4673d65220e1815de97f5ec681a302afa0231263876e7b3b7",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "曾厝垵",
+      "entityId": "10b9c8b67abe7586342c2f769661d7d5",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 3,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

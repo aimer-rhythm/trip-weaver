@@ -1,0 +1,6 @@
+{
+  "flowRun": "run-81",
+  "flowPassed": true,
+  "projectionPassed": false,
+  "reason": "首次报告投影把requested=0的兼容城市也计入目标城市，12不等于7，输出前断言失败。改为按冻结cityScope逐城检查30个原ID后生成coverage02；没有重跑或改写flow报告。"
+}

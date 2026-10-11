@@ -1,0 +1,315 @@
+{
+  "snapshotSha256": "92bf7b1682da4093509221a88d28e2173642f481e14be10fe28863bcbba425a2",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "b5aafe8228f99dca3ab61421b4452cf4",
+          "city": "厦门",
+          "name": "十里长堤",
+          "revision": 4,
+          "aliases": [
+            "集美十里长堤"
+          ],
+          "sourceIds": [
+            2561,
+            2630
+          ],
+          "sourceNames": [
+            "十里长堤",
+            "集美十里长堤"
+          ],
+          "effectiveType": "attraction",
+          "score": 57.26,
+          "downstreamScore": 57.26,
+          "mentionCount": 21,
+          "noteCount": 21,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 57.26,
+          "potentialScore": 57.26,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2630
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5324,
+            5353,
+            5434,
+            5496,
+            5674,
+            5759,
+            5902,
+            5915,
+            5977,
+            6014,
+            6087,
+            6235,
+            6337,
+            6388,
+            6405,
+            6435,
+            6521,
+            6605,
+            6717,
+            6867,
+            6890
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "b5aafe8228f99dca3ab61421b4452cf4",
+              "name": "十里长堤",
+              "expectedRevision": 4,
+              "mentionId": 6180,
+              "inputHash": "f3d43d939c8058010ba03f0f0abe6f8a0388e63546b3cfdd46e8da8ea8e562ae",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2630
+                ]
+              },
+              "noteId": 1451,
+              "quote": "🆕十里长堤草坪音乐会🔥",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "batch-116已按全文正式隔离；该提及为住宿参照或限时活动，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "b5aafe8228f99dca3ab61421b4452cf4",
+              "name": "十里长堤",
+              "expectedRevision": 4,
+              "mentionId": 6244,
+              "inputHash": "81c5226e84fc419f1b95df98d665adedf67c90f7f94a4a6452b6f0209bfba33d",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2630
+                ]
+              },
+              "noteId": 1453,
+              "quote": "·十里长堤草坪音乐会（看日落版）",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "batch-116已按全文正式隔离；该提及为住宿参照或限时活动，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "b5aafe8228f99dca3ab61421b4452cf4",
+              "name": "十里长堤",
+              "expectedRevision": 4,
+              "mentionId": 6690,
+              "inputHash": "6a20b62f5ba5b3dfca2811fcaedf0f651eb240c68e7529acb44bdf2a43c98782",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2630
+                ]
+              },
+              "noteId": 1513,
+              "quote": "🆕集美十里长堤、集美大社中秋活动",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "batch-116已按全文正式隔离；该提及为住宿参照或限时活动，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            }
+          ],
+          "legacyIds": [
+            "6c9f04ec8847a7c001ee011147ea554b",
+            "b5aafe8228f99dca3ab61421b4452cf4"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "6690",
+                  "name": "集美十里长堤",
+                  "quote": "集美十里长堤中秋活动",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab4d8e600000000150109d1"
+                },
+                {
+                  "id": "6435",
+                  "name": "集美十里长堤",
+                  "quote": "傍晚还能偶遇海上地铁经过海面",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6aa8fc970000000028000c61"
+                },
+                {
+                  "id": "6890",
+                  "name": "十里长堤",
+                  "quote": "十里长堤",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+                },
+                {
+                  "id": "6867",
+                  "name": "十里长堤",
+                  "quote": "傍晚会有很多人来这里看日落",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+                },
+                {
+                  "id": "6717",
+                  "name": "十里长堤",
+                  "quote": "看日落就来这里，氛围超级好",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab23461000000003703a320"
+                },
+                {
+                  "id": "6605",
+                  "name": "十里长堤",
+                  "quote": "十里长堤夕阳",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6988aca40000000015021516"
+                }
+              ],
+              "reviewIds": [
+                166
+              ],
+              "conclusion": "6435及6690的集美十里长堤与十里长堤诸源均指集美学村海边、看跨海地铁和日落的草坪长堤；春节、中秋活动也明确集美。两名同体，婚登装置、南堤公园和集美学村保持独立。",
+              "sourcePlaceIds": [
+                "2561",
+                "2630"
+              ]
+            },
+            {
+              "lat": 24.563722,
+              "lng": 118.089475,
+              "kind": "primary_source_geometry",
+              "address": "厦门大桥南",
+              "category": "景点",
+              "original": {
+                "lat": 24.563722,
+                "lng": 118.089475,
+                "address": "厦门大桥南",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "2630",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/xiamen-batch15-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+              "conclusion": "6435及6690的集美十里长堤与十里长堤诸源均指集美学村海边、看跨海地铁和日落的草坪长堤；春节、中秋活动也明确集美。两名同体，婚登装置、南堤公园和集美学村保持独立。",
+              "mentionIds": [
+                5434,
+                5496,
+                5674,
+                5759,
+                5902,
+                5915,
+                5977,
+                6014,
+                6087,
+                6180,
+                6235,
+                6244,
+                6337,
+                6388,
+                6405,
+                6435,
+                6521,
+                6605,
+                6690,
+                6717,
+                6867,
+                6890
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                5324,
+                5353,
+                5434,
+                5496,
+                5674,
+                5759,
+                5902,
+                5915,
+                5977,
+                6014,
+                6087,
+                6180,
+                6235,
+                6244,
+                6337,
+                6388,
+                6405,
+                6435,
+                6521,
+                6605,
+                6690,
+                6717,
+                6867,
+                6890
+              ],
+              "scoreAfter": 64.79,
+              "scoreBefore": 59.77,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 12
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-22.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

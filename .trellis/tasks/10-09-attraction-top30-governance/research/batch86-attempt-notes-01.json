@@ -1,0 +1,15 @@
+{
+  "batch": "batch-86",
+  "successfulPreview": "preview-04",
+  "attempts": [
+    {"attempt": "preview-01", "passed": true, "limit": "尚未加入全部来源表与新增提及负例核对"},
+    {"attempt": "preview-02", "passed": false, "reason": "来源/摘要timestamp同一时点的时区表示不同；没有修改业务库"},
+    {"attempt": "preview-03", "passed": true, "limit": "来源表、摘要、新提及和原文变化门禁通过，但随后实库前置揭示历史溯源与原关系夹具遗漏"},
+    {"attempt": "apply-check-01", "committed": false, "reason": "新建scopeReviews数据库序列ID不同，整事务回滚"},
+    {"attempt": "apply-check-02", "committed": false, "reason": "排除新待审行序列ID后，scope审计仍有字段差异，整事务回滚"},
+    {"attempt": "apply-check-03", "committed": false, "reason": "仅输出差异路径/provenance和/relations，整事务回滚；补冻结659条来源链接及71条原关系"},
+    {"attempt": "preview-04", "passed": true, "temporaryDatabaseRemoved": true, "reason": "补完整历史溯源与原关系，全部保护门禁和逆序回滚通过；实库应用使用此版本"}
+  ],
+  "comparisonRule": "只忽略新建scopeReviews的数据库自增id，仍精确核对fingerprint、status、detail及全部其他审计字段。没有忽略原来源、关系或正文差异。",
+  "historyPreserved": true
+}

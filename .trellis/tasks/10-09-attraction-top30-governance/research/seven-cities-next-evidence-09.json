@@ -1,0 +1,113 @@
+{
+  "snapshotFile": "snapshot-20261009T212651757971Z/input.json",
+  "snapshotSha256": "1221fd31986d97da6787b673c07a8c0200a4a7e4460636c1aa7fcb8afd6c9b60",
+  "latestAppliedBatches": [
+    "batch-104",
+    "batch-105"
+  ],
+  "pendingSyncBatches": [],
+  "nextBatch": 106,
+  "semanticReadthrough": "seven-cities-semantic-readthrough-05.json",
+  "nextEvidence": [
+    {
+      "city": "成都",
+      "mentionId": 3763,
+      "inputHash": "87ea950212fa945d8bd1d792b15cdd610f0e2188fcd5fde417620dcc2bc1d0b4",
+      "entityId": "1d3663405f53f30f5a4ad0d1bf1891d4",
+      "noteId": 892,
+      "conclusion": "原文明确负评名单，但未写设施偏旧/趣味性一般；保留负评身份，具体reason待按正式事实排除契约审核，尚未应用。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10132,
+      "inputHash": "071b99ce0697d337d0dd6a29b72b95c643b1d464ee520309b3aeadc33a41d751",
+      "entityId": "2af1d8c8816a1645942015d16738c9fd",
+      "noteId": 2304,
+      "conclusion": "明确东方明珠路线身份保持，天桥reason/evidence_text未修改；原文简称与抽取全名不满足现行事实引文门禁。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11001,
+      "inputHash": "c14f486941b68bea01ce4631c0a9d8bfb285ee192613689a1fda441266b9b377",
+      "entityId": "c1488c5cbbffc329c51e5fb8ceb0c911",
+      "noteId": 2509,
+      "conclusion": "正文是豫园片区九曲桥，旧来源5213却用青浦朱家角地址；本轮只读，不接收豫园分出的机位描述。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10925,
+      "inputHash": "db3bcfd05fe6730a6151b6ef063bf9169f3e9ffd71d9b7dcee3f22e8c9b24f84",
+      "entityId": "1bd5394a328dfcddf66a31efc03c58ef",
+      "noteId": 2507,
+      "conclusion": "11条当前提及阅读。10925正文主语明确桥旁咖啡，路线也未列桥本体，应按正式scope隔离，当前未应用。其余桥上苏州河/陆家嘴观景保留；11129是桥上拍车语境，不把汽车性能归给桥，也不声称已验证车辆通行或停车。与外白渡桥、四川路桥独立。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 9989,
+      "inputHash": "bf2eac40409bc50c3de0f68e04fdb7af87fe8d16b390f4c6b4b32d0e95ec805f",
+      "entityId": "1ad90072b41962955001d46a0060ecc1",
+      "noteId": 2297,
+      "conclusion": "9条当前提及阅读。9989/10074明确列街道但混入巨人展，拟保留街道身份并按字段排除展览描述。11271仅沿路未具名洋房，不能确认等同整条道路，待正式来源隔离，不借靠近武康大楼而并楼。其余明确路线和沿街漫步保持，商业街/景观任务类型仍单独判断。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10074,
+      "inputHash": "770f9bb8f7a0e826dcfe9bc50157c65b67883a1c0c4ad13be7dd25d8761efa59",
+      "entityId": "1ad90072b41962955001d46a0060ecc1",
+      "noteId": 2317,
+      "conclusion": "9条当前提及阅读。9989/10074明确列街道但混入巨人展，拟保留街道身份并按字段排除展览描述。11271仅沿路未具名洋房，不能确认等同整条道路，待正式来源隔离，不借靠近武康大楼而并楼。其余明确路线和沿街漫步保持，商业街/景观任务类型仍单独判断。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11271,
+      "inputHash": "a7bc218b123bffccb62bb301ce93d25322f08595c42d3b087d31013463c52810",
+      "entityId": "1ad90072b41962955001d46a0060ecc1",
+      "noteId": 2441,
+      "conclusion": "9条当前提及阅读。9989/10074明确列街道但混入巨人展，拟保留街道身份并按字段排除展览描述。11271仅沿路未具名洋房，不能确认等同整条道路，待正式来源隔离，不借靠近武康大楼而并楼。其余明确路线和沿街漫步保持，商业街/景观任务类型仍单独判断。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11246,
+      "inputHash": "6116005c1c57694ea2581f6413369248362ab7cc3122afd43c65795c7040eefc",
+      "entityId": "6477361ffeeb9d9a80f3802333347d57",
+      "noteId": 2474,
+      "conclusion": "7条当前提及阅读。公馆建筑群、散步和路线身份保持；11246描述整份三日游且正文拼写思南公guan，事实摘录无法直接绑定抽取全名，保持待核，不改原文或隔离正确路线来规避。邻接新天地、田子坊不是同体；不称建筑群内经营场所已审。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11247,
+      "inputHash": "be73312df84efacf84ce670e92f8516c2b80975d4a1e374c007f20ee19e77cf7",
+      "entityId": "7c070ffa455db9978014329a6582a648",
+      "noteId": 2474,
+      "conclusion": "7条当前提及阅读。石库门建筑街区与商业消费混合，保留目前身份及浅逛即可原评价，不合并思南公馆、田子坊。11247整份路线规划描述需按字段排除，尚未应用；任务配额的文化街区/购物属性继续核查，不能仅凭源attraction或一条market裁决。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10944,
+      "inputHash": "bc367db9fd257971c3d55341dabdaebb4001a95781fb4cfb096e049166032736",
+      "entityId": "6fd07ebb97c1fdeeb2aa94f06e40b30f",
+      "noteId": 2488,
+      "conclusion": "6条当前提及阅读。10944全文只有标签，无法确认一个独立北外滩地点体验，拟正式隔离待原图补证；10874仍有明确北外滩夜景/江边风语境，仅标签附小巨蛋不足以转给子项。11133实际饭后散步保持，与外滩、滨江绿地、世界会客厅和小巨蛋各自边界不合并。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11238,
+      "inputHash": "6ff618f20d73ea08c6a7c013979d6fb17ec3581eb4e85c12ce6f1f2dec384adf",
+      "entityId": "ca06af376c88d2f3ecd7e2333ca9c2ae",
+      "noteId": 2474,
+      "conclusion": "5条当前提及阅读，明确楼内118层观景与雾天慎去负评保持，不并入陆家嘴区域或三件套。11238描述整份路线且正文写上海Z心大厦，按既有全名引文门禁暂保留待核，不伪造全名或因此删除路线身份；建筑与独立收费观景产品边界未全面解决。"
+    }
+  ],
+  "remainingReview": [
+    "上海当前30候选的提及阅读已留证，继续已识别错配来源的正式治理；其余六城175项及历史未决边界继续审核，不将阅读覆盖当完成。",
+    "七城未逐项读原文的Top30及补位者",
+    "永宁门/城楼/城墙机位review426仅部分阅读",
+    "城隍庙10128及组合review28",
+    "苏州河河岸路线review6",
+    "厦门母步道/林海线/天泉175/176/192/207",
+    "成都蜀锦两馆review313缺裸名馆址",
+    "西安夜市review382域外只读"
+  ],
+  "taskCompleted": false,
+  "userAcceptance": false
+}

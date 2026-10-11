@@ -1,0 +1,47 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "5fd208c142f694b01fe3a2be995c8561af5062ffd23959748075209709dd0b67",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "东方明珠广播电视塔",
+      "entityId": "2af1d8c8816a1645942015d16738c9fd",
+      "sqlNames": 3,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "武康路",
+      "entityId": "e5928ccb4d07c2a73e80b798966bd531",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "成都",
+      "name": "武侯祠",
+      "entityId": "300d2ae16b4e2787a84d7661a06f580e",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 3,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

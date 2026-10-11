@@ -1,0 +1,369 @@
+{
+  "snapshotSha256": "f60cdd43c8732a2b58e567531b8a6a04e6771c3e1eb40b8312fe2a118a9d6307",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "1bd5394a328dfcddf66a31efc03c58ef",
+          "city": "上海",
+          "name": "乍浦路桥",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4723
+          ],
+          "sourceNames": [
+            "乍浦路桥"
+          ],
+          "effectiveType": "attraction",
+          "score": 30.0,
+          "downstreamScore": 30,
+          "mentionCount": 10,
+          "noteCount": 10,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 30.0,
+          "potentialScore": 30.0,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4723
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            10161,
+            10244,
+            10384,
+            10937,
+            10985,
+            11129,
+            11138,
+            11171,
+            11185,
+            11263
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "1bd5394a328dfcddf66a31efc03c58ef",
+              "name": "乍浦路桥",
+              "expectedRevision": 3,
+              "mentionId": 10925,
+              "inputHash": "db3bcfd05fe6730a6151b6ef063bf9169f3e9ffd71d9b7dcee3f22e8c9b24f84",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4723
+                ]
+              },
+              "noteId": 2507,
+              "quote": "📷关于打卡拍照\n📍乍浦路桥旁边的咖啡",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "原文仅桥旁咖啡，路线没有独立桥体游览。",
+              "businessMutation": false,
+              "limit": "原业务待审保持，不新建经营场所、建筑或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "1bd5394a328dfcddf66a31efc03c58ef"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                10161,
+                10244,
+                10384,
+                10925,
+                10937,
+                10985,
+                11129,
+                11138,
+                11171,
+                11185,
+                11263
+              ],
+              "scoreAfter": 32.5,
+              "scoreBefore": 12.5,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 13
+        },
+        {
+          "entityId": "1ad90072b41962955001d46a0060ecc1",
+          "city": "上海",
+          "name": "淮海中路",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4658
+          ],
+          "sourceNames": [
+            "淮海中路"
+          ],
+          "effectiveType": "attraction",
+          "score": 25.0,
+          "downstreamScore": 25,
+          "mentionCount": 8,
+          "noteCount": 8,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 25.0,
+          "potentialScore": 25.0,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4658
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9960,
+            9989,
+            10074,
+            10152,
+            10240,
+            10267,
+            10316,
+            11259
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "1ad90072b41962955001d46a0060ecc1",
+              "name": "淮海中路",
+              "expectedRevision": 3,
+              "mentionId": 11271,
+              "inputHash": "a7bc218b123bffccb62bb301ce93d25322f08595c42d3b087d31013463c52810",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4658
+                ]
+              },
+              "noteId": 2441,
+              "quote": "2️⃣P2，📍淮海中路公主风格洋房，近武康大楼",
+              "relation": "not_same_entity",
+              "subjectType": "component",
+              "conclusion": "原文只列沿路未具名洋房，不是整条道路；不新建建筑或正式组成关系。",
+              "businessMutation": false,
+              "limit": "原业务待审保持，不新建经营场所、建筑或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "1ad90072b41962955001d46a0060ecc1"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9960,
+                9989,
+                10074,
+                10152,
+                10240,
+                10267,
+                10316,
+                11259,
+                11271
+              ],
+              "scoreAfter": 27.5,
+              "scoreBefore": 22.5,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 15
+        },
+        {
+          "entityId": "7c070ffa455db9978014329a6582a648",
+          "city": "上海",
+          "name": "新天地",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4738
+          ],
+          "sourceNames": [
+            "新天地"
+          ],
+          "effectiveType": "attraction",
+          "score": 22.5,
+          "downstreamScore": 22.5,
+          "mentionCount": 7,
+          "noteCount": 7,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 22.5,
+          "potentialScore": 22.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4738
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            10004,
+            10087,
+            10207,
+            10242,
+            10882,
+            11041,
+            11247
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "7c070ffa455db9978014329a6582a648"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                10004,
+                10087,
+                10207,
+                10242,
+                10882,
+                11041,
+                11247
+              ],
+              "scoreAfter": 22.5,
+              "scoreBefore": 15,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 17
+        },
+        {
+          "entityId": "6fd07ebb97c1fdeeb2aa94f06e40b30f",
+          "city": "上海",
+          "name": "北外滩",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4709
+          ],
+          "sourceNames": [
+            "北外滩"
+          ],
+          "effectiveType": "attraction",
+          "score": 17.5,
+          "downstreamScore": 17.5,
+          "mentionCount": 5,
+          "noteCount": 5,
+          "uncertainMentionIds": [
+            10944
+          ],
+          "allAssignedScore": 20.0,
+          "potentialScore": 20.0,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4709
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未确认归属提及"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9940,
+            10045,
+            10874,
+            10918,
+            11133
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "6fd07ebb97c1fdeeb2aa94f06e40b30f"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9940,
+                10045,
+                10874,
+                10918,
+                10944,
+                11133
+              ],
+              "scoreAfter": 20.0,
+              "scoreBefore": 10,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 20
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-13.json",
+    "count": 206,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

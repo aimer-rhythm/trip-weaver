@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "6b5d87873f08d18df6243e3079e2fec28927cbe3f09c32f1765eed7bc04950f9",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "黄厝沙滩",
+      "entityId": "15f4085f90907345a822ac07663783c3",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

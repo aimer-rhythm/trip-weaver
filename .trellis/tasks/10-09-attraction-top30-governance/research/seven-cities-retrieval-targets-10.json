@@ -1,0 +1,272 @@
+{
+  "snapshotSha256": "fb7d0e20f505e4e19700746bef204c7610cf375b63a3eecaebf1e2d44b5e2fa9",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+          "city": "上海",
+          "name": "豫园",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4660
+          ],
+          "sourceNames": [
+            "豫园"
+          ],
+          "effectiveType": "attraction",
+          "score": 73.29,
+          "downstreamScore": 73.29,
+          "mentionCount": 28,
+          "noteCount": 26,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 73.29,
+          "potentialScore": 73.29,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4660
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9963,
+            9974,
+            10007,
+            10021,
+            10075,
+            10088,
+            10129,
+            10140,
+            10186,
+            10199,
+            10232,
+            10270,
+            10286,
+            10318,
+            10369,
+            10370,
+            10884,
+            10921,
+            10957,
+            11005,
+            11019,
+            11026,
+            11034,
+            11156,
+            11199,
+            11234,
+            11261,
+            11297
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+              "name": "豫园",
+              "expectedRevision": 3,
+              "mentionId": 10355,
+              "inputHash": "bd2d292dac10baa1344498e93a03c991e242688eebabe3f6aac1ad9ff54cdd87",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4660
+                ]
+              },
+              "noteId": 2354,
+              "quote": "离城隍庙，豫园都很近的",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店邻近参照。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增活动、经营场所或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+              "name": "豫园",
+              "expectedRevision": 3,
+              "mentionId": 11116,
+              "inputHash": "49e8f4f83b020f72b249830cf36943e2410e5c68e6fbb3a930fc04fd71d4e63b",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4660
+                ]
+              },
+              "noteId": 2448,
+              "quote": "吃饭尽量避开南京路、豫园核心游客区，能大幅降低踩雷概率。",
+              "relation": "not_same_entity",
+              "subjectType": "area",
+              "conclusion": "餐饮游客片区负评，不作为园林负评；原立场保留。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增活动、经营场所或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+              "name": "豫园",
+              "expectedRevision": 3,
+              "mentionId": 11181,
+              "inputHash": "652d061593ac40ddef7d5eedc479237e6b4100c9eca552e0216df591b7fef642",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4660
+                ]
+              },
+              "noteId": 2514,
+              "quote": "7-8点抵达豫园，赏新春灯会夜景",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "明确新春灯会，不能自动外推园林夜间开放或园林推荐。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增活动、经营场所或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+              "name": "豫园",
+              "expectedRevision": 3,
+              "mentionId": 11283,
+              "inputHash": "1265e4998edc37e4b1f6daa760c7b4724417be37c6f80ac6677755bb065cd7ec",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4660
+                ]
+              },
+              "noteId": 2494,
+              "quote": "📍 豫园老街\n古风建筑 + 灯笼倒影",
+              "relation": "not_same_entity",
+              "subjectType": "area",
+              "conclusion": "正文主语明确老街，与园林独立；不跨范围强行并入旧街道根。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增活动、经营场所或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b507a4f0980e5d13106a169b7a0ad044",
+              "name": "豫园",
+              "expectedRevision": 3,
+              "mentionId": 11314,
+              "inputHash": "53543817b5b82bd55bbec8ecad74aeac07404d7cfd4ad2eebd1b15510b9f9020",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4660
+                ]
+              },
+              "noteId": 2482,
+              "quote": "距离豫园、城隍庙这些景点也很近",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅邻近参照，正文餐后只明确去外滩。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增活动、经营场所或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "b507a4f0980e5d13106a169b7a0ad044"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9963,
+                9974,
+                10007,
+                10021,
+                10075,
+                10088,
+                10129,
+                10140,
+                10186,
+                10199,
+                10232,
+                10270,
+                10286,
+                10318,
+                10355,
+                10369,
+                10370,
+                10884,
+                10921,
+                10957,
+                11005,
+                11019,
+                11026,
+                11034,
+                11116,
+                11156,
+                11181,
+                11199,
+                11234,
+                11261,
+                11283,
+                11297,
+                11314
+              ],
+              "scoreAfter": 85.74,
+              "scoreBefore": 46.12,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 4
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-10.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

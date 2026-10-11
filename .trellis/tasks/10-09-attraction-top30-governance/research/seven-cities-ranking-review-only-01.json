@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "businessMutation": false,
+  "ranking": "seven-cities-ranking-11.json",
+  "snapshotSha256": "bf85459c5e9f93f120c0291f6cd57ad091696f413f36041ae3da062a756f7361",
+  "previousRanking": "seven-cities-ranking-10.json",
+  "comparedFields": [
+    "entityId",
+    "name",
+    "revision",
+    "aliases",
+    "legacyIds",
+    "sourceIds",
+    "score",
+    "downstreamScore",
+    "mentionIds",
+    "effectiveType",
+    "hasCoordinates",
+    "rank"
+  ],
+  "top30IdentitiesScoresAndConsumptionInputsUnchanged": true,
+  "verifiedEntities": 210,
+  "nonEquivalentMentionReviews": 10,
+  "rankUncertaintyBefore": 15,
+  "rankUncertaintyAfter": 9,
+  "reusedTechnicalReports": [
+    "seven-cities-catalog-05.json",
+    "seven-cities-retrieval-04.json",
+    "seven-cities-flow-coverage-03.json"
+  ],
+  "limits": "不更改原提及和历史待审，只明确其不等同母项，故不构成母项潜在加分；技术消费目标保持，未重复运行全套。"
+}

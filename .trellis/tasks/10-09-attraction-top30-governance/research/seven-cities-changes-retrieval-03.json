@@ -1,0 +1,60 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "bde7ce8fc18ac890ae702665434a30910fa45f6f2e1ebec3dfb8ad2f1b37ce86",
+  "rows": [
+    {
+      "city": "上海",
+      "name": "上海城隍庙",
+      "entityId": "19564ce736eb343b014fc746280bcade",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "上海迪士尼乐园",
+      "entityId": "9974c8d245e9bcfcea7b631e4c4624c9",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "上海",
+      "name": "田子坊",
+      "entityId": "b886bee90f1d16aedf0768894658d286",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "广州",
+      "name": "白云山",
+      "entityId": "2495bc375ff6d1a499ff03145ea5cef4",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 3,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

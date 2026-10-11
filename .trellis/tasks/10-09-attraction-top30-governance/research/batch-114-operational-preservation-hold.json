@@ -1,0 +1,41 @@
+{
+  "batch": "batch-114",
+  "businessApplied": false,
+  "sourceSnapshot": "snapshot-20261009T233649612752Z/input.json",
+  "snapshotSha256": "419a474cf359ff78595c92e200af83f02a0df1c63250f251eecb0830e8d80993",
+  "preservationGatePassed": false,
+  "temporaryDatabaseRemoved": true,
+  "reverseRollbackPassed": true,
+  "differences": [
+    {
+      "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+      "field": "openHours"
+    },
+    {
+      "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+      "field": "price"
+    },
+    {
+      "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+      "field": "reservationNote"
+    },
+    {
+      "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+      "field": "reservationEvidence"
+    }
+  ],
+  "exportHashes": {
+    "before.json": "d9069c7ea09be6f7582de0449e365bcd786e4302184f76c7593b82be8573eb36",
+    "xhs-places-厦门.json": "49d8bf9e4820b8016533778b62fcacd7174c641fb296af30933f42cec1f64452",
+    "restored.json": "ae0967844925273ec9d6a0b68bf15f5d877e7557267227f283c7528d4fa5203a"
+  },
+  "operationalChanges": {
+    "oldHours": "08:00-17:00",
+    "newHoursStatus": "unknown",
+    "oldPrice": "厦门大学免费需预约",
+    "newPrice": null,
+    "reservationRequiredPreserved": true
+  },
+  "applyGateRejectionVerified": true,
+  "conclusion": "隔离酒店两条的提及与逆序回滚验证通过，但旧营业/票价退出，预约证据及备注变动；严格预演整体失败且应用入口已实测拒绝，实库仍28条/rev1。旧图文有营业冲突，此轮既不认定其现行正确，也不能无身份依据删除；须保全方案后新版本预演。"
+}

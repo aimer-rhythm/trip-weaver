@@ -1,0 +1,161 @@
+{
+  "snapshotSha256": "bf594e8b7cf086e839da8dcc1e9450a12e540298ebb3a980bfa3bd9f6ddfb016",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+          "city": "厦门",
+          "name": "厦门大学",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            2554
+          ],
+          "sourceNames": [
+            "厦门大学"
+          ],
+          "effectiveType": "attraction",
+          "score": 66.04,
+          "downstreamScore": 66.04,
+          "mentionCount": 26,
+          "noteCount": 25,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 66.04,
+          "potentialScore": 66.04,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2554
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5310,
+            5318,
+            5343,
+            5357,
+            5412,
+            5420,
+            5555,
+            5640,
+            5721,
+            5749,
+            5761,
+            5776,
+            5954,
+            5955,
+            6000,
+            6050,
+            6138,
+            6206,
+            6311,
+            6380,
+            6427,
+            6734,
+            6770,
+            6790,
+            6815,
+            6860
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+              "name": "厦门大学",
+              "expectedRevision": 2,
+              "mentionId": 6545,
+              "inputHash": "1eaef7f5aa34b05dc8ddc0ad784e16baeeb4b0f875de405a9783085fdc48c31b",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2554
+                ]
+              },
+              "noteId": 1435,
+              "quote": "酒店房间面积比较大，可以看到厦大，南普陀寺",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "batch-114-v2已按全文正式隔离；该提及为住宿参照或限时活动，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "cbe09e6c7cf0420523c91d5361069f6a",
+              "name": "厦门大学",
+              "expectedRevision": 2,
+              "mentionId": 6596,
+              "inputHash": "2e102c92873cfb0a2b724a6323aec1b2055f09a877dbc4f9235cf816eac59990",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2554
+                ]
+              },
+              "noteId": 1436,
+              "quote": "最惊喜的是视野！超大落地窗直面海景与鼓浪屿，厦大风光也尽收眼底，光是看景就回本",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "batch-114-v2已按全文正式隔离；该提及为住宿参照或限时活动，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            }
+          ],
+          "legacyIds": [
+            "cbe09e6c7cf0420523c91d5361069f6a"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 9
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-21.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

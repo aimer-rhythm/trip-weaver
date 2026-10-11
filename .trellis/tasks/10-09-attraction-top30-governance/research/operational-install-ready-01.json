@@ -1,0 +1,30 @@
+{
+  "stage": "ready_to_install",
+  "implementationFiles": {
+    "app/clean/legacy_operational_facts.py": "4179be4841751d4ff906815be45026407776e877efee6231f00e4ed21adde463",
+    "app/aggregate/operational_preservation.py": "ec632cb8099dab8f6ef5591b05f305a06ce4418a9c7b6be44117134ff13d4071",
+    "app/aggregate/place_export_inputs.py": "f5069e5a2a0ba42d3334af42e50779caf6e80d964d4c09f819e5662a486c6606",
+    "app/aggregate/mention_identity.py": "4a2c4a1673e58ad21e74125c7d64c7e0c4d699af70eade5ed33db3d189aa5ad0",
+    "app/clean/mention_identity.py": "73615d7a2f0b94b85a85f0e9a98eb73faa06d90245dd4091620d729ab6780e2a",
+    "app/clean/scoped_place_export.py": "517fe2408fb02182d2aa9ecdabb3890fd6c0885a5f13248f95fd8fd0b960921d",
+    "app/models.py": "83e583206c091e0b6996985df19607170710778a64fcc29f1cd31846382ee81a",
+    "scripts/export_to_tripweaver.py": "1dc4a61444f5054522a19df6382662e15bfc58b15129fc0caeaa4e98a8b8ef54",
+    "scripts/migrate_place_identity.py": "2d639f17e213cf0279a6e771ad3730ca5a23f7e1fc3fbcaf59c34dc1e7f9a8f1"
+  },
+  "upstreamTests": {
+    "passed": 807,
+    "deselected": 1
+  },
+  "operationalTests": 18,
+  "downstreamTests": 39,
+  "typecheck": true,
+  "stagedDownstreamPreview": ".trellis\\tasks\\10-06-place-identity-governance\\research\\all-cities\\batch-112-v2\\preview-01\\downstream-02\\preview-1791591830989.json",
+  "migrationPreview": {
+    "missing": [],
+    "missingColumns": [
+      "place_identity_scope.operational_facts"
+    ]
+  },
+  "actualBusinessApplied": false,
+  "accepted": false
+}

@@ -1,0 +1,863 @@
+{
+  "snapshotSha256": "9a75f6f17095454b26c74eef011c25c16b87ba4d2c8cdb3433311e7229dea888",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "6dfd36ea63dfecb59b523d7212582311",
+          "city": "上海",
+          "name": "南京路步行街",
+          "revision": 4,
+          "aliases": [
+            "南京东路步行街"
+          ],
+          "sourceIds": [
+            4649,
+            4811
+          ],
+          "sourceNames": [
+            "南京东路步行街",
+            "南京路步行街"
+          ],
+          "effectiveType": "attraction",
+          "score": 77.67,
+          "downstreamScore": 77.67,
+          "mentionCount": 30,
+          "noteCount": 26,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 77.67,
+          "potentialScore": 77.67,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4811
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9945,
+            9995,
+            9997,
+            10046,
+            10070,
+            10125,
+            10134,
+            10176,
+            10196,
+            10217,
+            10234,
+            10253,
+            10254,
+            10276,
+            10307,
+            10378,
+            10875,
+            10905,
+            10924,
+            10951,
+            10994,
+            11006,
+            11007,
+            11028,
+            11042,
+            11183,
+            11235,
+            11251,
+            11282,
+            11299
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "6dfd36ea63dfecb59b523d7212582311",
+              "name": "南京路步行街",
+              "expectedRevision": 4,
+              "mentionId": 10358,
+              "inputHash": "807513e15028c70de0c855c65428e43afa13da96e1944a33ca817fc09eba700c",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4811
+                ]
+              },
+              "noteId": 2354,
+              "quote": "直达外滩、东方明珠、南京路步行街，静安寺、玉佛寺步行可达",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店地铁可达性参照。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "6dfd36ea63dfecb59b523d7212582311",
+              "name": "南京路步行街",
+              "expectedRevision": 4,
+              "mentionId": 11115,
+              "inputHash": "23de205d49233cb3999b98bd67b3b9b18a86db0e61b462011b2d30e8e8a0a83d",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4811
+                ]
+              },
+              "noteId": 2448,
+              "quote": "吃饭尽量避开南京路、豫园核心游客区，能大幅降低踩雷概率。",
+              "relation": "not_same_entity",
+              "subjectType": "area",
+              "conclusion": "泛南京路游客餐饮区负评，不作为步行街自身评价；保留原立场。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "285d34a450722ae0d264d1ca3e17b6d5",
+            "6dfd36ea63dfecb59b523d7212582311"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "11299",
+                  "name": "南京路步行街",
+                  "quote": "南京路步行街",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69d61078000000001a033ddf"
+                },
+                {
+                  "id": "11282",
+                  "name": "南京路步行街",
+                  "quote": "霓虹招牌+烟火街拍，出片率爆表",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1ead28000000003502a301"
+                },
+                {
+                  "id": "11251",
+                  "name": "南京路步行街",
+                  "quote": "百年老店建筑，老上海繁华感",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a915376000000001803fea8"
+                },
+                {
+                  "id": "11235",
+                  "name": "南京路步行街",
+                  "quote": "按景点气质分成三条线",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69be5dcd000000001a03784d"
+                },
+                {
+                  "id": "10951",
+                  "name": "南京东路步行街",
+                  "quote": "沿东向西漫步南京东路步行街",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d898f000000001f00210d"
+                },
+                {
+                  "id": "10196",
+                  "name": "南京东路步行街",
+                  "quote": "商场、老建筑、街景都很有上海味道",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a93a509000000001803d4e3"
+                },
+                {
+                  "id": "10125",
+                  "name": "南京东路步行街",
+                  "quote": "沿东向西漫步南京东路步行街",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a8d898f000000001f00210d"
+                }
+              ],
+              "reviewIds": [
+                1
+              ],
+              "conclusion": "本组两个名称均指南京东路上的步行街，原文10951明确从外滩向西经南京东路站至人民广场，并描述步行街小火车；不是南京西路或整条南京路。",
+              "sourcePlaceIds": [
+                "4649",
+                "4811"
+              ]
+            },
+            {
+              "lat": 31.236171,
+              "lng": 121.481261,
+              "kind": "primary_source_geometry",
+              "address": "上海市黄浦区外滩街道南京东路步行街",
+              "original": {
+                "lat": 31.236171,
+                "lng": 121.481261,
+                "address": "上海市黄浦区外滩街道南京东路步行街",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "保留源4811明确落在南京东路步行街的定位；舍弃源4649凤阳路283号的错误匹配。",
+              "sourcePlaceId": "4811",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/shanghai-batch02-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+              "conclusion": "本组两个名称均指南京东路上的步行街，原文10951明确从外滩向西经南京东路站至人民广场，并描述步行街小火车；不是南京西路或整条南京路。",
+              "mentionIds": [
+                10951
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9945,
+                9995,
+                9997,
+                10046,
+                10070,
+                10125,
+                10134,
+                10176,
+                10196,
+                10217,
+                10234,
+                10253,
+                10254,
+                10276,
+                10307,
+                10358,
+                10378,
+                10875,
+                10905,
+                10924,
+                10951,
+                10994,
+                11006,
+                11007,
+                11028,
+                11042,
+                11115,
+                11183,
+                11235,
+                11251,
+                11282,
+                11299
+              ],
+              "scoreAfter": 82.53,
+              "scoreBefore": 41.67,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 2
+        },
+        {
+          "entityId": "e5928ccb4d07c2a73e80b798966bd531",
+          "city": "上海",
+          "name": "武康路",
+          "revision": 3,
+          "aliases": [
+            "武康路历史文化名街"
+          ],
+          "sourceIds": [
+            4655,
+            5301
+          ],
+          "sourceNames": [
+            "武康路",
+            "武康路历史文化名街"
+          ],
+          "effectiveType": "attraction",
+          "score": 62.07,
+          "downstreamScore": 62.07,
+          "mentionCount": 23,
+          "noteCount": 23,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 62.07,
+          "potentialScore": 62.07,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4655
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9908,
+            9939,
+            9959,
+            9973,
+            10003,
+            10029,
+            10040,
+            10072,
+            10084,
+            10126,
+            10150,
+            10182,
+            10203,
+            10226,
+            10238,
+            10262,
+            10282,
+            10313,
+            10368,
+            10881,
+            11155,
+            11244,
+            11257
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "6d00eeb169b1125a5700e460c22da1cc",
+            "e5928ccb4d07c2a73e80b798966bd531"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\shanghai-identity-plan-01.json",
+              "kind": "reviewed_attraction_alias",
+              "conclusion": "原文中的历史文化名街是同一条武康路的全称，不是另一段新建街区；同一行程中武康大楼单列，保持大楼及沿街商户各自身份。以现有武康路主源4655为主，保留全名与旧ID，重算合并提及分数。",
+              "mentionIds": [
+                9908,
+                9939,
+                9959,
+                9973,
+                10003,
+                10029,
+                10040,
+                10072,
+                10084,
+                10126,
+                10150,
+                10182,
+                10203,
+                10226,
+                10238,
+                10262,
+                10282,
+                10313,
+                10368,
+                10881,
+                11155,
+                11244,
+                11257
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "武康大楼→武康路历史文化名街→田子坊",
+                  "noteId": 2474
+                },
+                {
+                  "quote": "武康路：梧桐铺满小路，小店散步慢悠悠超舒服",
+                  "noteId": 2278
+                }
+              ],
+              "snapshotSha256": "981d8818902960049da0b49bd51d164296474a4537d68cbfdce1c0ac9980ecc0",
+              "sourcePlaceIds": [
+                4655,
+                5301
+              ],
+              "evidenceMentions": [
+                11244
+              ]
+            }
+          ],
+          "rank": 5
+        },
+        {
+          "entityId": "23329a45b196a3d11b4c9a4475d0d9a3",
+          "city": "上海",
+          "name": "陆家嘴",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4651
+          ],
+          "sourceNames": [
+            "陆家嘴"
+          ],
+          "effectiveType": "attraction",
+          "score": 54.25,
+          "downstreamScore": 54.25,
+          "mentionCount": 20,
+          "noteCount": 19,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 54.25,
+          "potentialScore": 54.25,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4651
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9949,
+            9965,
+            9999,
+            10022,
+            10043,
+            10077,
+            10154,
+            10178,
+            10220,
+            10257,
+            10278,
+            10309,
+            10373,
+            10374,
+            10879,
+            10920,
+            11030,
+            11158,
+            11253,
+            11281
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "23329a45b196a3d11b4c9a4475d0d9a3",
+              "name": "陆家嘴",
+              "expectedRevision": 3,
+              "mentionId": 10335,
+              "inputHash": "09b849c90af57a804d4f8b050e82f544ac59cb4dfe86e5adca06241706129a1f",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4651
+                ]
+              },
+              "noteId": 2351,
+              "quote": "从酒店出来就是地铁站🚇，去陆家嘴和外滩都很方便",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店地铁可达性参照。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "23329a45b196a3d11b4c9a4475d0d9a3"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9949,
+                9965,
+                9999,
+                10022,
+                10043,
+                10077,
+                10154,
+                10178,
+                10220,
+                10257,
+                10278,
+                10309,
+                10335,
+                10373,
+                10374,
+                10879,
+                10920,
+                11030,
+                11158,
+                11253,
+                11281
+              ],
+              "scoreAfter": 56.76,
+              "scoreBefore": 41.67,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 6
+        },
+        {
+          "entityId": "e0cdfdff135da12006c015389c492cf5",
+          "city": "上海",
+          "name": "武康大楼",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4656
+          ],
+          "sourceNames": [
+            "武康大楼"
+          ],
+          "effectiveType": "attraction",
+          "score": 52.25,
+          "downstreamScore": 52.25,
+          "mentionCount": 20,
+          "noteCount": 16,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 52.25,
+          "potentialScore": 52.25,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4656
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9958,
+            9972,
+            9985,
+            10039,
+            10085,
+            10149,
+            10202,
+            10237,
+            10263,
+            10264,
+            10366,
+            10367,
+            10997,
+            11013,
+            11014,
+            11039,
+            11154,
+            11243,
+            11264,
+            11270
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "e0cdfdff135da12006c015389c492cf5",
+              "name": "武康大楼",
+              "expectedRevision": 3,
+              "mentionId": 11221,
+              "inputHash": "c667f6897908cb2e628dae742559954845b11c7e86c28188da46cb8e858d925e",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4656
+                ]
+              },
+              "noteId": 2442,
+              "quote": "☀️拍武康大楼：转到兴国路拐角的人行道上，或者去对面的老麦咖啡馆二楼窗口拍",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "仅兴国路人行道或老麦咖啡馆二楼拍楼机位，没有独立楼体游览。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "e0cdfdff135da12006c015389c492cf5"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9958,
+                9972,
+                9985,
+                10039,
+                10085,
+                10149,
+                10202,
+                10237,
+                10263,
+                10264,
+                10366,
+                10367,
+                10997,
+                11013,
+                11014,
+                11039,
+                11154,
+                11221,
+                11243,
+                11264,
+                11270
+              ],
+              "scoreAfter": 54.79,
+              "scoreBefore": 33.17,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 7
+        },
+        {
+          "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+          "city": "上海",
+          "name": "静安寺",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4659
+          ],
+          "sourceNames": [
+            "静安寺"
+          ],
+          "effectiveType": "attraction",
+          "score": 37.79,
+          "downstreamScore": 37.79,
+          "mentionCount": 14,
+          "noteCount": 11,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 37.79,
+          "potentialScore": 37.79,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4659
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9961,
+            9987,
+            10042,
+            10073,
+            10127,
+            10268,
+            10269,
+            10315,
+            10406,
+            10883,
+            11017,
+            11018,
+            11043,
+            11260
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+              "name": "静安寺",
+              "expectedRevision": 3,
+              "mentionId": 9980,
+              "inputHash": "d3b6a509fe705c803783f0c6f218f6c08583a941e9a01e101e8e316d452f9b92",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4659
+                ]
+              },
+              "noteId": 2278,
+              "quote": "✅静安寺 人民广场 江苏路地铁口附近 性价比高",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "住宿地铁口片区性价比。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+              "name": "静安寺",
+              "expectedRevision": 3,
+              "mentionId": 10018,
+              "inputHash": "80b49bdf79d015dc5b04f086a5903d3641c504aad283d0702b7793a92f1d4aa7",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4659
+                ]
+              },
+              "noteId": 2347,
+              "quote": "静安寺（吃喝方便）",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "住宿片区吃喝方便。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+              "name": "静安寺",
+              "expectedRevision": 3,
+              "mentionId": 10146,
+              "inputHash": "4b58c020b331a1932dcbc2e765eaa09152099d9abcf036d990a222cfd7066c85",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4659
+                ]
+              },
+              "noteId": 2319,
+              "quote": "4️⃣静安寺\n📍卞姐蛋饼\n📍红宝石奶油小方",
+              "relation": "not_same_entity",
+              "subjectType": "area",
+              "conclusion": "美食分区标题，下列都是商户。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+              "name": "静安寺",
+              "expectedRevision": 3,
+              "mentionId": 10340,
+              "inputHash": "d918172302b82eff652d7899bb3c73117c69d6fe72e03db17149befe7ad69be9",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4659
+                ]
+              },
+              "noteId": 2352,
+              "quote": "3️⃣就在静安寺附近，虽然房间比较小，但性价比极高",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店邻近寺庙与房间性价比。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+              "name": "静安寺",
+              "expectedRevision": 3,
+              "mentionId": 10343,
+              "inputHash": "a6f9bbb73892945988d9b253ae403c7b2e105b81299571b7aabb5c97f5d0171a",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4659
+                ]
+              },
+              "noteId": 2350,
+              "quote": "🏯窗外就能看到静安寺，附近地铁站走路十分钟内都能到",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "青旅窗景及地铁可达性。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "b6d79e437f924e798c9c36f13cd468e7",
+              "name": "静安寺",
+              "expectedRevision": 3,
+              "mentionId": 10359,
+              "inputHash": "a7e1a4892620893cb6de3717f64c99d07e6737e756d6f7190fa6d3f02a4ece7e",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4659
+                ]
+              },
+              "noteId": 2354,
+              "quote": "直达外滩、东方明珠、南京路步行街，静安寺、玉佛寺步行可达",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店到寺庙步行可达性。",
+              "businessMutation": false,
+              "limit": "保留业务待审，不新增酒店、商户、机位或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "b6d79e437f924e798c9c36f13cd468e7"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9961,
+                9980,
+                9987,
+                10018,
+                10042,
+                10073,
+                10127,
+                10146,
+                10268,
+                10269,
+                10315,
+                10340,
+                10343,
+                10359,
+                10406,
+                10883,
+                11017,
+                11018,
+                11043,
+                11260
+              ],
+              "scoreAfter": 53.0,
+              "scoreBefore": 41.67,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 10
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-11.json",
+    "count": 205,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

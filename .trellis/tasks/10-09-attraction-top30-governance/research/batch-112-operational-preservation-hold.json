@@ -1,0 +1,36 @@
+{
+  "batch": "batch-112",
+  "businessApplied": false,
+  "sourceSnapshot": "snapshot-20261009T231058589044Z/input.json",
+  "snapshotSha256": "6b5d87873f08d18df6243e3079e2fec28927cbe3f09c32f1765eed7bc04950f9",
+  "existingPreviewPassed": true,
+  "existingPreviewLimitation": "原检查覆盖提及字段、分类位置、媒体和其他实体；未要求目标旧运营字段保持。",
+  "preservationGatePassed": false,
+  "temporaryDatabaseRemoved": true,
+  "exportHashes": {
+    "before.json": "6d44afca29cc0203a86c7b73e9831365b34b382d8f7bcb9bb2fcca1d040c4b1b",
+    "xhs-places-厦门.json": "43c3a750bfd2095ab5fc3e8d14e0ed4d971010d6172c292d5f033a92dce7c3e8",
+    "restored.json": "f94aa239712e47bf1b9fd14f8cb2383c04a4430872b8d04a0815516873f63e47"
+  },
+  "changes": [
+    {
+      "field": "openHours",
+      "beforeText": "08:00-17:30",
+      "afterStatus": "unknown",
+      "oldAttributedClauses": [
+        "南普陀寺8:00-17:30",
+        "南普陀寺8:00-18:00"
+      ],
+      "sourceKind": "image",
+      "conclusion": "旧图文分别给出17:30/18:00结束时间；身份复核不能直接裁定删除，也不宣称当前官方运营已核。"
+    },
+    {
+      "field": "price",
+      "before": "南普陀寺免费",
+      "after": null,
+      "conclusion": "旧免费字段在scope后不再消费，尚无本批删除依据。"
+    }
+  ],
+  "profilePreservedIgnoringCompiledAt": true,
+  "resolution": "暂停应用112，保留实库旧消费及审核证据；需合法保全旧已归属资料，或在明确的资料治理范围内核定。不得伪造图片已审核、改原文或借名称纠错绕过来源治理。"
+}

@@ -1,0 +1,60 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "bf85459c5e9f93f120c0291f6cd57ad091696f413f36041ae3da062a756f7361",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "日光岩",
+      "entityId": "c819d655bed408562a9b1d3767ae332d",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "成都",
+      "name": "洛带古镇",
+      "entityId": "99cafde5d39982daf23019eaa6e82032",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "西安",
+      "name": "西安钟楼",
+      "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "西安",
+      "name": "樊川公园",
+      "entityId": "1e9e752916264f8a32d791edfc0e201f",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

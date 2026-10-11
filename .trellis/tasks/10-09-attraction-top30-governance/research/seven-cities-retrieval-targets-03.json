@@ -1,0 +1,411 @@
+{
+  "snapshotSha256": "bf85459c5e9f93f120c0291f6cd57ad091696f413f36041ae3da062a756f7361",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "c819d655bed408562a9b1d3767ae332d",
+          "city": "厦门",
+          "name": "日光岩",
+          "revision": 3,
+          "aliases": [
+            "日光岩（鼓浪屿）"
+          ],
+          "sourceIds": [
+            2702
+          ],
+          "sourceNames": [
+            "日光岩"
+          ],
+          "effectiveType": "attraction",
+          "score": 47.21,
+          "downstreamScore": 47.21,
+          "mentionCount": 17,
+          "noteCount": 17,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 47.21,
+          "potentialScore": 47.21,
+          "pendingReviewIds": [],
+          "scopeIds": [],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5424,
+            5484,
+            5602,
+            5620,
+            5657,
+            5876,
+            5884,
+            5942,
+            6046,
+            6123,
+            6196,
+            6373,
+            6393,
+            6562,
+            6617,
+            6649,
+            6893
+          ],
+          "legacyIds": [
+            "c819d655bed408562a9b1d3767ae332d",
+            "febb31c0b94f8294ef721934cc429bb9"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                5424,
+                5484,
+                5602,
+                5620,
+                5657,
+                5884,
+                5942,
+                6046,
+                6123,
+                6196,
+                6373,
+                6393,
+                6562,
+                6617,
+                6649,
+                6893
+              ],
+              "scoreAfter": 44.69,
+              "scoreBefore": 47.21,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\xiamen-identity-plan-04.json",
+              "kind": "reviewed_attraction_alias",
+              "conclusion": "原文明示鼓浪屿上的日光岩，括号为地点地域限定，不是另一个出入口、组成景点或摄影机位。增加精确别名并纳入5876；保留鼓浪屿本体、菽庄花园等独立身份。海拔仅作为原文定位线索，不新增或核验海拔事实。",
+              "mentionIds": [
+                5424,
+                5484,
+                5602,
+                5620,
+                5657,
+                5884,
+                5942,
+                6046,
+                6123,
+                6196,
+                6373,
+                6393,
+                6562,
+                6617,
+                6649,
+                6893,
+                5876
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "日光岩（鼓浪屿）— 92.7 米",
+                  "noteId": 1569
+                }
+              ],
+              "admitMentions": [
+                {
+                  "quote": "日光岩（鼓浪屿）— 92.7 米",
+                  "noteId": 1569,
+                  "inputHash": "3bae077cc290d26921f3f56e861e232dabd8d10c8f3e452e5dab763eef35cbfd",
+                  "mentionId": 5876
+                }
+              ],
+              "snapshotSha256": "71f6aca6b8ac60757474bc4c5dab64057eacd47646db5d7c12effbda0948cae3",
+              "sourcePlaceIds": [
+                2702
+              ],
+              "evidenceMentions": [
+                5876
+              ]
+            }
+          ],
+          "rank": 17
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": [
+        {
+          "entityId": "99cafde5d39982daf23019eaa6e82032",
+          "city": "成都",
+          "name": "洛带古镇",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            1868
+          ],
+          "sourceNames": [
+            "洛带古镇"
+          ],
+          "effectiveType": "attraction",
+          "score": 7.5,
+          "downstreamScore": 7.5,
+          "mentionCount": 2,
+          "noteCount": 2,
+          "uncertainMentionIds": [
+            4178
+          ],
+          "allAssignedScore": 10.83,
+          "potentialScore": 12.5,
+          "pendingReviewIds": [],
+          "scopeIds": [],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未确认归属提及"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            3836,
+            4143
+          ],
+          "legacyIds": [
+            "99cafde5d39982daf23019eaa6e82032"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-09.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                3836,
+                4143
+              ],
+              "scoreAfter": 7.5,
+              "scoreBefore": 10.83,
+              "snapshotSha256": "6b7ab9760e3d7a9dc383fc08a9884ff699f3b6144526d0ee4f861b9b5a070acf"
+            }
+          ],
+          "rank": 30
+        }
+      ]
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": [
+        {
+          "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+          "city": "西安",
+          "name": "西安钟楼",
+          "revision": 3,
+          "aliases": [
+            "钟楼"
+          ],
+          "sourceIds": [
+            5507,
+            5558
+          ],
+          "sourceNames": [
+            "西安钟楼",
+            "钟楼"
+          ],
+          "effectiveType": "attraction",
+          "score": 63.79,
+          "downstreamScore": 63.79,
+          "mentionCount": 24,
+          "noteCount": 22,
+          "uncertainMentionIds": [
+            11999,
+            12132,
+            12488
+          ],
+          "allAssignedScore": 71.31,
+          "potentialScore": 71.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            5558
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未确认归属提及"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            11724,
+            11781,
+            11803,
+            11877,
+            11887,
+            11903,
+            12039,
+            12048,
+            12064,
+            12075,
+            12083,
+            12111,
+            12125,
+            12197,
+            12260,
+            12295,
+            12307,
+            12318,
+            12337,
+            12353,
+            12475,
+            12483,
+            12508,
+            12546
+          ],
+          "legacyIds": [
+            "4e4defe90dcdd9dc78c1ef92cc904def",
+            "e2cc5c5e29cf02b2814374835e5c5a2f"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\govern-xian-bell.py",
+              "kind": "reviewed_attraction_identity_and_sources",
+              "conclusion": "全名与简称均指西安城市中轴线的钟楼。11999仅推荐住宿片区，12132是未具名民宿，12488是饭店前广场/茶店机位，三条保持null待审，不建立域外主体。12075身份可指钟楼，但免费登高描述属于开元观景台，排除reason，保留所见塔体原看点。鼓楼、饭店、商场、茶店与广场均不合并；位置继承5558但未新验证。",
+              "mentionIds": [
+                11724,
+                11781,
+                11803,
+                11877,
+                11887,
+                11903,
+                11999,
+                12039,
+                12048,
+                12064,
+                12075,
+                12083,
+                12111,
+                12125,
+                12132,
+                12197,
+                12260,
+                12295,
+                12307,
+                12318,
+                12337,
+                12353,
+                12475,
+                12483,
+                12488,
+                12508,
+                12546
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "简直了！不愧是做了10天攻略选出的民宿",
+                  "noteId": 2694
+                },
+                {
+                  "quote": "P3-5 钟楼饭店门前广场",
+                  "noteId": 2732
+                },
+                {
+                  "quote": "钟楼周围最热闹，美食也多，但是价格偏贵。",
+                  "noteId": 2654
+                },
+                {
+                  "quote": "先登钟楼，站在西安城市中轴线上，俯瞰四条大街全景，拍夜景。",
+                  "noteId": 2739
+                },
+                {
+                  "quote": "德福巷→西安钟楼→西安鼓楼",
+                  "noteId": 2646
+                }
+              ],
+              "snapshotSha256": "7bf17b231d5b6f0e04162056b99e3b9883e484730c750b659685227e20de25fa"
+            }
+          ],
+          "rank": 2
+        },
+        {
+          "entityId": "1e9e752916264f8a32d791edfc0e201f",
+          "city": "西安",
+          "name": "樊川公园",
+          "revision": 1,
+          "aliases": [],
+          "sourceIds": [
+            5812
+          ],
+          "sourceNames": [
+            "樊川公园"
+          ],
+          "effectiveType": "attraction",
+          "score": 10.0,
+          "downstreamScore": 10,
+          "mentionCount": 2,
+          "noteCount": 2,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 10.0,
+          "potentialScore": 10.0,
+          "pendingReviewIds": [],
+          "scopeIds": [],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            12435,
+            12542
+          ],
+          "legacyIds": [
+            "1e9e752916264f8a32d791edfc0e201f"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 30
+        }
+      ]
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-03.json",
+    "count": 206,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

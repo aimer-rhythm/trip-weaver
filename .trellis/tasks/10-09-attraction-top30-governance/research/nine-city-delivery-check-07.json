@@ -1,0 +1,179 @@
+{
+  "task": "10-09-attraction-top30-governance",
+  "kind": "nine_city_delivery_check",
+  "accepted": true,
+  "acceptedAt": "2026-10-10",
+  "acceptedBy": "user",
+  "checks": [
+    {
+      "name": "七城台账210行",
+      "ok": true,
+      "detail": 210
+    },
+    {
+      "name": "七城各城30行",
+      "ok": true,
+      "detail": {
+        "上海": 30,
+        "厦门": 30,
+        "广州": 30,
+        "成都": 30,
+        "杭州": 30,
+        "西安": 30,
+        "重庆": 30
+      }
+    },
+    {
+      "name": "北京济南台账60行",
+      "ok": true,
+      "detail": 60
+    },
+    {
+      "name": "北京济南各城30行",
+      "ok": true,
+      "detail": {
+        "北京": 30,
+        "济南": 30
+      }
+    },
+    {
+      "name": "北京济南每行逐条读原文",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "name": "北京济南每行含实体ID与别名旧记录",
+      "ok": true,
+      "detail": "checked 60 rows"
+    },
+    {
+      "name": "北京济南读账覆盖1029提及",
+      "ok": true,
+      "detail": 1029
+    },
+    {
+      "name": "北京济南已用户验收（每行同步标记）",
+      "ok": true,
+      "detail": "2026-10-10"
+    },
+    {
+      "name": "七城已用户验收（每行同步标记）",
+      "ok": true,
+      "detail": "2026-10-10"
+    },
+    {
+      "name": "名单每行已用户验收（七城＋北京济南）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "快照绑定一致（北京济南）",
+      "ok": true,
+      "detail": "abde1ea23746"
+    },
+    {
+      "name": "快照绑定一致（七城）",
+      "ok": true,
+      "detail": "15d0dead50b4"
+    },
+    {
+      "name": "两套快照不同（不可混用）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "七城名单210数据行",
+      "ok": true,
+      "detail": 210
+    },
+    {
+      "name": "北京济南名单60数据行",
+      "ok": true,
+      "detail": 60
+    },
+    {
+      "name": "九城索引270数据行",
+      "ok": true,
+      "detail": 279
+    },
+    {
+      "name": "七城名单无待本轮原文复核",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "北京济南名单指向九城索引",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "七城名单指向九城索引",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "task.json仍in_progress",
+      "ok": true,
+      "detail": "in_progress"
+    },
+    {
+      "name": "task.json记录九城索引",
+      "ok": true,
+      "detail": "10-09-attraction-top30-governance/九城人工审核名单索引.md"
+    },
+    {
+      "name": "task.json notes含九城收口",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "task.json meta已记录验收",
+      "ok": true,
+      "detail": "2026-10-10"
+    },
+    {
+      "name": "验收范围与未决项声明",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "验收证据含用户答复原文与会话定位",
+      "ok": true,
+      "detail": "2026-10-10T16:02:07.271Z"
+    },
+    {
+      "name": "会话日志文件存在（harness 写入，可第三方核对）",
+      "ok": true,
+      "detail": "C:/Users/Aimer/.pi/agent/sessions/--D--Project-tripweaver--/2026-10-10T15-01-25-746Z_01a12655-4871-7382-9361-089f7d957273.jsonl"
+    },
+    {
+      "name": "五处（八份）口径已记录验收",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "无残留“仍为 false”当前状态行",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "状态行均引用验收证据或用户答覆原文",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "验收台账与历史台账并存",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "failures": [],
+  "summary": {
+    "checks": 30,
+    "failures": 0,
+    "rows": 270,
+    "accepted": true,
+    "acceptedAt": "2026-10-10"
+  },
+  "reportFile": "nine-city-delivery-check-07.json"
+}

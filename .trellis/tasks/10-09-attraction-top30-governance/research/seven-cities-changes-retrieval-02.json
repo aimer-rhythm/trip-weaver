@@ -1,0 +1,34 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "732421d96b73543303d566f315e1e9b965d08297d69a23d567343eb6617d6e31",
+  "rows": [
+    {
+      "city": "重庆",
+      "name": "李子坝轻轨穿楼",
+      "entityId": "28733e45b8ce6bdf8a96ed0a4beaa1d0",
+      "sqlNames": 3,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "重庆",
+      "name": "塔坪",
+      "entityId": "e52c59c501200edd7bb1dc95b5ef117e",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 3,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

@@ -1,0 +1,36 @@
+{
+  "batch": "batch-85",
+  "cities": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "snapshot": "snapshot-20261009T161711168753Z/input.json",
+  "snapshotSha256": "f2a7029127a7deb3c2e80ef193b84aa5f4901214f5a7f4483e775be3d42b55af",
+  "ranking": "seven-cities-ranking-06.json",
+  "rankingSha256": "2f6fc818393d510420e3b82f4a2b299de9fc8ff8d22e206b38977179e9525dfa",
+  "expectedCount": 1,
+  "deferred": [
+    {
+      "entityId": "2fa5249189e48255eab59d0ecbae4c62",
+      "name": "麓湖CPI",
+      "reason": "原有类型问题仍待证，两次公开搜索超时，暂缓评分"
+    }
+  ],
+  "reviewEvidence": {
+    "entityId": "a3c0f200bd1594976809975920f55cc2",
+    "noteIds": [
+      10,
+      13,
+      23,
+      124,
+      273,
+      276
+    ],
+    "conclusion": "已读全部8提及对应6篇原文；23/124明确佛图关公园南门经悬空栈道至鹅岭公园，10/273/276明确徒步及游玩。可作为景点配额，并修复现行已归一主体分数；保留旧review444边界和无坐标状态。798仅机位语境仍不当作导航点或独立时长证明。"
+  }
+}

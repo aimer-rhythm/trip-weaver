@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "step": "ranking14 retrieval reuse",
+      "passed": false,
+      "reason": "田子坊score12.5与实库10不一致；未生成复用报告，后由93批修正。"
+    },
+    {
+      "step": "score plan filename",
+      "passed": false,
+      "reason": "旧seven-cities-score-plan-03已存在，拒绝覆盖；误读旧计划的预演又被旧报告保护拦下，无业务写入，改用batch93-score-plan。"
+    },
+    {
+      "step": "batch94 preview-01",
+      "passed": true,
+      "limit": "复用预演器的导出文件名仍写上海，实际内容为厦门；修正城市文件名后完整重跑preview-02并以02应用。"
+    },
+    {
+      "step": "flow84",
+      "passed": true,
+      "limit": "身份流程基于93批前ranking14，不能代替补位评分验证；最终改用flow85与ranking15。"
+    }
+  ],
+  "noCommitOrArchive": true
+}

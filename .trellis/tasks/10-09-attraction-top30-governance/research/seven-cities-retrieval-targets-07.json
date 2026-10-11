@@ -1,0 +1,285 @@
+{
+  "snapshotSha256": "5dd7a66b15d25f4cd1d779007279ffff3f0d0c6f92f2be41a944b399ec5b4d4d",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": [
+        {
+          "entityId": "081c7742f47eaa80675fc74446ed89e2",
+          "city": "杭州",
+          "name": "九溪十八涧",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            4105
+          ],
+          "sourceNames": [
+            "九溪十八涧"
+          ],
+          "effectiveType": "attraction",
+          "score": 32.05,
+          "downstreamScore": 32.05,
+          "mentionCount": 11,
+          "noteCount": 11,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 32.05,
+          "potentialScore": 32.05,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4105
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            8463,
+            8604,
+            8751,
+            8907,
+            9012,
+            9264,
+            9304,
+            9365,
+            9424,
+            9675,
+            9802
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "杭州",
+              "entityId": "081c7742f47eaa80675fc74446ed89e2",
+              "name": "九溪十八涧",
+              "expectedRevision": 2,
+              "mentionId": 9336,
+              "inputHash": "0bf1dda07fb5612ee94097d4f4259a9b49fc54f890f8eddc81bceb7d51942ccc",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4105
+                ]
+              },
+              "noteId": 2099,
+              "quote": "有泳池、小院和公共茶室，步行能去九溪十八涧、满觉陇",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "明确十八涧名称仅为民宿步行范围；其余九溪泛称不足以确定具体十八涧推荐，不仅凭酒店标题排除。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建域外主体或正式关系，原文与PENDING保持。"
+            }
+          ],
+          "legacyIds": [
+            "081c7742f47eaa80675fc74446ed89e2"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 24
+        }
+      ]
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": [
+        {
+          "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+          "city": "重庆",
+          "name": "来福士",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            55
+          ],
+          "sourceNames": [
+            "来福士"
+          ],
+          "effectiveType": "attraction",
+          "score": 22.5,
+          "downstreamScore": 22.5,
+          "mentionCount": 7,
+          "noteCount": 7,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 22.5,
+          "potentialScore": 22.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            55
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            348,
+            391,
+            677,
+            700,
+            913,
+            1207,
+            1288
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "重庆",
+              "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+              "name": "来福士",
+              "expectedRevision": 2,
+              "mentionId": 550,
+              "inputHash": "a885acacc171f8f3d1b699c5d12bab195b200f2c64b9010e676d2505915c9a07",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  55
+                ]
+              },
+              "noteId": 8,
+              "quote": "轨道小什字站8号出口，步行导航港渝广场",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "定位港渝广场的远观机位，不等同来福士建筑主体，不创建机位实体。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建域外主体或正式关系，原文与PENDING保持。"
+            },
+            {
+              "city": "重庆",
+              "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+              "name": "来福士",
+              "expectedRevision": 2,
+              "mentionId": 1068,
+              "inputHash": "a0e4a8419681996f9431cf8fb68fcbc8a33a4436ffccce85390d6195c5281aa3",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  55
+                ]
+              },
+              "noteId": 176,
+              "quote": "1，来福士就一个商场，没啥亮点。",
+              "relation": "not_same_entity",
+              "subjectType": "component",
+              "conclusion": "原作者评价购物商场组件，不能不加区分计入建筑整体；负评原文及独立商场保持，不改写其评价立场。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建域外主体或正式关系，原文与PENDING保持。"
+            },
+            {
+              "city": "重庆",
+              "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+              "name": "来福士",
+              "expectedRevision": 2,
+              "mentionId": 1173,
+              "inputHash": "56cfb4f767b5547d4024870526dfdf4d095ac7e42bcf8511d1eb05630ab52e7d",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  55
+                ]
+              },
+              "noteId": 8,
+              "quote": "轨道小什字站8号出口，步行导航港渝广场",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "定位港渝广场的远观机位，不等同来福士建筑主体，不创建机位实体。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建域外主体或正式关系，原文与PENDING保持。"
+            },
+            {
+              "city": "重庆",
+              "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+              "name": "来福士",
+              "expectedRevision": 2,
+              "mentionId": 1599,
+              "inputHash": "45665bfffe6b7d18abc30b69028b0b84a204cdc3b2bb4c0672697ffabeeed0a4",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  55
+                ]
+              },
+              "noteId": 8,
+              "quote": "轨道小什字站8号出口，步行导航港渝广场",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "定位港渝广场的远观机位，不等同来福士建筑主体，不创建机位实体。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建域外主体或正式关系，原文与PENDING保持。"
+            },
+            {
+              "city": "重庆",
+              "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+              "name": "来福士",
+              "expectedRevision": 2,
+              "mentionId": 1632,
+              "inputHash": "3eac582d9cd85fdcdc07398a2ab477931fd95b29eeab1e2f912b0565a6e29572",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  55
+                ]
+              },
+              "noteId": 321,
+              "quote": "轨道小什字站8号出口，步行导航港渝广场",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "定位港渝广场的远观机位，不等同来福士建筑主体，不创建机位实体。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建域外主体或正式关系，原文与PENDING保持。"
+            }
+          ],
+          "legacyIds": [
+            "5aab3e5fc03ca61f0d7c56b769184c80"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 30
+        }
+      ]
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-07.json",
+    "count": 208,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

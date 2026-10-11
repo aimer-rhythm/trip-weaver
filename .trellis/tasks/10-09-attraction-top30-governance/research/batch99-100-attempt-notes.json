@@ -1,0 +1,14 @@
+{
+  "batch99Applied": false,
+  "failedPreviews": {
+    "preview-01": "旧scope/分配记录查询次序不同，列表比较误拒；实体全等。",
+    "preview-02": "再次确认实体全等，失败仍来自旧scope/分配列表顺序。",
+    "preview-03": "键集合及每行全等诊断通过，确认仅查询顺序不同。",
+    "preview-04": "按键完整比较后通过旧范围保护；事实摘录未包含田子坊主体，被既有契约拒绝。"
+  },
+  "final": "99-v2/preview-01扩大原文摘录至田子坊路线行，预演、幂等、逆序回滚、实库审计和双同步通过。",
+  "batch100Sync": "初次export/preview入口只接受两位批次号，尚未导出；统一受控批次名验证器支持三位及以上，仍拒绝路径穿越，10测试通过后正常执行。",
+  "typecheck": "新增JS验证器首次缺TS声明，补sync-contract.d.mts后研究typecheck通过。",
+  "oldArtifactsPreserved": true,
+  "businessTablesNotPatched": true
+}

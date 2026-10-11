@@ -1,0 +1,211 @@
+{
+  "snapshotSha256": "1221fd31986d97da6787b673c07a8c0200a4a7e4460636c1aa7fcb8afd6c9b60",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "63ad45b24bf49d9d084da69ed2c08c9f",
+          "city": "上海",
+          "name": "人民广场",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4653
+          ],
+          "sourceNames": [
+            "人民广场"
+          ],
+          "effectiveType": "attraction",
+          "score": 27.5,
+          "downstreamScore": 27.5,
+          "mentionCount": 9,
+          "noteCount": 9,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 27.5,
+          "potentialScore": 27.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4653
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            10009,
+            10180,
+            10259,
+            10288,
+            10311,
+            10887,
+            11045,
+            11255,
+            11301
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "63ad45b24bf49d9d084da69ed2c08c9f",
+              "name": "人民广场",
+              "expectedRevision": 3,
+              "mentionId": 9981,
+              "inputHash": "c7a7fce058d50f6c90b4bd7c712e528744c201bfd57ffd9645f2807446d9957c",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4653
+                ]
+              },
+              "noteId": 2278,
+              "quote": "✅静安寺 人民广场 江苏路地铁口附近 性价比高",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "住宿地铁口片区性价比。",
+              "businessMutation": false,
+              "limit": "原业务待审保持，不新建酒店、商户或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "63ad45b24bf49d9d084da69ed2c08c9f",
+              "name": "人民广场",
+              "expectedRevision": 3,
+              "mentionId": 10017,
+              "inputHash": "a06098106efceac278283a95876fd386fbb3a81adef4edc7013b9f1829cf4fc9",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4653
+                ]
+              },
+              "noteId": 2347,
+              "quote": "1️⃣ 来上海住哪里\n南京东路很方便但又贵又吵，可以考虑人民广场附近（交通枢纽）",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "住宿选择与交通便利性。",
+              "businessMutation": false,
+              "limit": "原业务待审保持，不新建酒店、商户或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "63ad45b24bf49d9d084da69ed2c08c9f",
+              "name": "人民广场",
+              "expectedRevision": 3,
+              "mentionId": 10049,
+              "inputHash": "7a5335d0e8f96cc2fd1e4817fcba5bf2dfd4c0c6c83126cbf1d3a0fe383bbfc0",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4653
+                ]
+              },
+              "noteId": 2345,
+              "quote": "🏠住宿：\n优先住人民广场/南京东路！",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "优先住宿片区参照。",
+              "businessMutation": false,
+              "limit": "原业务待审保持，不新建酒店、商户或正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "63ad45b24bf49d9d084da69ed2c08c9f",
+              "name": "人民广场",
+              "expectedRevision": 3,
+              "mentionId": 10148,
+              "inputHash": "f43334aec6450dee2e548533be2f6b81113a2c4344ae062d6d352212c4f7453d",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4653
+                ]
+              },
+              "noteId": 2319,
+              "quote": "6️⃣人民广场\n📍莱莱小笼\n📍舒蔡记生煎菜饭",
+              "relation": "not_same_entity",
+              "subjectType": "area",
+              "conclusion": "美食清单分区标题，下列是商户。",
+              "businessMutation": false,
+              "limit": "原业务待审保持，不新建酒店、商户或正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "63ad45b24bf49d9d084da69ed2c08c9f"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9981,
+                10009,
+                10017,
+                10049,
+                10148,
+                10180,
+                10259,
+                10288,
+                10311,
+                10887,
+                11045,
+                11255,
+                11301
+              ],
+              "scoreAfter": 37.5,
+              "scoreBefore": 27.5,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 15
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-12.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

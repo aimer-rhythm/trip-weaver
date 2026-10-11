@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "error_type": "",
+  "error": "",
+  "session_id": "3f8f12392aee",
+  "query": "成都 蜀锦博物馆 官塘路1号 蜀锦织绣博物馆 草堂东路18号",
+  "platform": "",
+  "model": "grok-4.7",
+  "primary_api_mode": "chat-completions",
+  "content": "**Chengdu Shu Brocade Museum (蜀锦博物馆)**  \n**Address:** 官塘路1号, Chengdu, Sichuan Province\n\nThis is the dedicated museum for Shu brocade (蜀锦), a traditional Chinese textile and UNESCO Intangible Cultural Heritage. Exhibits cover its history, dyeing techniques (e.g., \"Huamao\" and \"Baotu\" patterns), weaving processes, and cultural significance. The museum also includes interactive displays and occasional demonstrations.\n\n**Typical opening hours:** 09:00–17:00 daily (closed Mondays). Hours can vary slightly by season; confirm closer to your visit.\n\n**At 02:10 on Saturday 10 October 2026:** Closed (standard museum operating hours in China do not extend to early morning).\n\n**Shu Brocade Weaving and Embroidery Museum (蜀锦织绣博物馆)**  \n**Address:** 草堂东路18号, Chengdu, Sichuan Province\n\nThis venue focuses on the production and artistic techniques of Shu brocade, including weaving and embroidery processes. It features historical artifacts, tool demonstrations, and educational programs on traditional craftsmanship.\n\n**Typical opening hours:** 09:00–17:00 daily (closed Mondays). Exact schedule should be verified directly.\n\n**At 02:10 on Saturday 10 October 2026:** Closed (museums in China are not open at this hour).\n\n**Distance & location notes**  \nThe two sites are in different districts of Chengdu (官塘路 area vs. Caotang/Cao Tang area near Jinli). Approximate road distance: 12–15 km. Public transport (subway + bus) or taxi takes 30–60 minutes depending on traffic. No direct metro connection; use Line 3 or 10 for access to the general area.\n\n**Recommendation**  \nBoth venues are major cultural attractions for Shu brocade enthusiasts. For the most accurate 2026 hours, ticket prices, or guided tours, check the official Chengdu Cultural Relics Bureau sites or platforms like Trip.com / Ctrip closer to your travel date, as minor seasonal adjustments can occur.",
+  "sources": [
+    {
+      "url": "https://www.amap.com/place/B001C80EYV",
+      "provider": "tavily",
+      "title": "成都蜀锦织绣博物馆- 成都市青羊区- 科教文化服务",
+      "description": "成都蜀锦织绣博物馆是一家博物馆，地址为成都市青羊区草堂东路18号锦绣工场古玩城3号楼。电话：028-87337990。地理坐标：30.657296,104.037045。"
+    },
+    {
+      "url": "https://www.amap.com/place/B0I13PMG9U",
+      "provider": "tavily",
+      "title": "蜀锦博物馆- 成都市双流区",
+      "description": "蜀锦博物馆是一家博物馆，地址为成都市双流区官塘路1号。地理坐标：30.398464,104.042160。您可以通过Amap查看蜀锦博物馆的精确地图位置、规划到达路线，以及查找周边"
+    }
+  ],
+  "sources_count": 2,
+  "primary_sources": [],
+  "primary_sources_count": 0,
+  "extra_sources": [
+    {
+      "url": "https://www.amap.com/place/B001C80EYV",
+      "provider": "tavily",
+      "title": "成都蜀锦织绣博物馆- 成都市青羊区- 科教文化服务",
+      "description": "成都蜀锦织绣博物馆是一家博物馆，地址为成都市青羊区草堂东路18号锦绣工场古玩城3号楼。电话：028-87337990。地理坐标：30.657296,104.037045。"
+    },
+    {
+      "url": "https://www.amap.com/place/B0I13PMG9U",
+      "provider": "tavily",
+      "title": "蜀锦博物馆- 成都市双流区",
+      "description": "蜀锦博物馆是一家博物馆，地址为成都市双流区官塘路1号。地理坐标：30.398464,104.042160。您可以通过Amap查看蜀锦博物馆的精确地图位置、规划到达路线，以及查找周边"
+    }
+  ],
+  "extra_sources_count": 2,
+  "source_warning": "extra_sources are retrieved in parallel and are not automatically used to verify generated content; use fetch on key URLs for claim-level evidence.",
+  "routing_decision": {
+    "docs_intent": false,
+    "zh_current_intent": false,
+    "web_current_intent": false,
+    "fetch_intent": false,
+    "supplemental_paths": [],
+    "validation_level": "balanced",
+    "fallback_mode": "auto",
+    "providers": "auto",
+    "main_search_chain": [
+      "openai-compatible"
+    ],
+    "openai_compatible_stream": false
+  },
+  "providers_used": [
+    "OpenAI-compatible",
+    "tavily"
+  ],
+  "provider_attempts": [
+    {
+      "capability": "main_search",
+      "provider": "OpenAI-compatible",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 61330.12,
+      "result_count": 1
+    },
+    {
+      "capability": "web_search",
+      "provider": "tavily",
+      "status": "ok",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 69515.83,
+      "result_count": 2
+    }
+  ],
+  "fallback_used": false,
+  "validation_level": "balanced",
+  "minimum_profile_ok": true,
+  "capability_status": {
+    "main_search": {
+      "configured": [
+        "openai-compatible"
+      ],
+      "fallback_chain": [
+        "xai-responses",
+        "openai-compatible"
+      ],
+      "ok": true
+    },
+    "web_search": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "zhipu",
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "docs_search": {
+      "configured": [
+        "context7"
+      ],
+      "fallback_chain": [
+        "exa",
+        "context7"
+      ],
+      "ok": true
+    },
+    "web_fetch": {
+      "configured": [
+        "tavily"
+      ],
+      "fallback_chain": [
+        "tavily",
+        "firecrawl"
+      ],
+      "ok": true
+    },
+    "vertical_search": {
+      "configured": [],
+      "fallback_chain": [
+        "anysearch"
+      ],
+      "experimental": true,
+      "ok": false
+    }
+  },
+  "elapsed_ms": 69515.85
+}

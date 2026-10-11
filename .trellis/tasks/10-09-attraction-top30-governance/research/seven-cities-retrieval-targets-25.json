@@ -1,0 +1,155 @@
+{
+  "snapshotSha256": "708732375978dbe4673d65220e1815de97f5ec681a302afa0231263876e7b3b7",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "10b9c8b67abe7586342c2f769661d7d5",
+          "city": "厦门",
+          "name": "曾厝垵",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            2559
+          ],
+          "sourceNames": [
+            "曾厝垵"
+          ],
+          "effectiveType": "attraction",
+          "score": 53.25,
+          "downstreamScore": 53.25,
+          "mentionCount": 20,
+          "noteCount": 20,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 53.25,
+          "potentialScore": 53.25,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2559
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5329,
+            5360,
+            5546,
+            5654,
+            5667,
+            5732,
+            5769,
+            5897,
+            5959,
+            6009,
+            6065,
+            6078,
+            6100,
+            6127,
+            6203,
+            6228,
+            6433,
+            6708,
+            6795,
+            6849
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "10b9c8b67abe7586342c2f769661d7d5",
+              "name": "曾厝垵",
+              "expectedRevision": 2,
+              "mentionId": 5632,
+              "inputHash": "3f2a03d35ba2798d1fc7c175551c564c545d1f607c8a2074176d52149df74c10",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2559
+                ]
+              },
+              "noteId": 1324,
+              "quote": "性价比党直接住厦门本岛（中山路/曾厝垵）",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "batch-119-v2已按全文正式隔离；该提及为hotel语境，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "10b9c8b67abe7586342c2f769661d7d5",
+              "name": "曾厝垵",
+              "expectedRevision": 2,
+              "mentionId": 6390,
+              "inputHash": "2737c9f0b6de74981ab9d092ecf3e329ff5dc3b12eac36b12225fe1ce5f1012b",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2559
+                ]
+              },
+              "noteId": 1544,
+              "quote": "▪️曾厝垵附近：离海近，喜欢散步、看海可以住这里",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "batch-119-v2已按全文正式隔离；该提及为hotel语境，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            }
+          ],
+          "legacyIds": [
+            "10b9c8b67abe7586342c2f769661d7d5"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 11
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-25.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

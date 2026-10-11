@@ -1,0 +1,4892 @@
+{
+  "kind": "beijing_jinan_semantic_readthrough",
+  "snapshotFile": "snapshot-20261009T134338341037Z/input.json",
+  "snapshotSha256": "abde1ea237465689b36fec2b70eed03927ec18e724d65511efa005d9244dac34",
+  "reviews": [
+    {
+      "city": "北京",
+      "entityId": "264b2e5e67a5886d4e10105ea20dfdbf",
+      "name": "法源寺",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 1930,
+          "inputHash": "78917d4539c9698873037f91ccf10bd852b6f5c389a203f120f006d68422dd8b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4263,
+          "inputHash": "85b61f7d251eb4636ac82fd01411432eaeefe9e30b64a87ce60d1349e6db429a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1960,
+          "inputHash": "b5c064723bf3e1d6966f4b9164fd55990069745665ea751a01b8127fa3523794",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2114,
+          "inputHash": "c21dd927a8c2e931e5160ae1ac71e9d1a65605ad3f170a68f729275255f4348b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2580,
+          "inputHash": "f2845d03935bc62207da9a6496321a3557e9ee2c3d3e08968ced611c60a86173",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2171,
+          "inputHash": "6d0f3beb03e7e906dcaf043ee435fb766355c76c93ab9000eb9cc5feba7b3384",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2750,
+          "inputHash": "3d134fd4b0255547db2eeada8624db6521d0569b5683e03f5e9041391fdd8006",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4489,
+          "inputHash": "df6a0ee98eac6e0e7d7eae321e3b228ac2f9554abbcd376c2c29fcc6fdfab430",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4304,
+          "inputHash": "107cf30ab60f754192c7c094049fc28713d5cdbbc0c215f1c906536d64883cd5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        1930,
+        4263,
+        1960,
+        2114,
+        2580,
+        2171,
+        2750,
+        4489,
+        4304
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 418,
+          "noteDescSha256": "5a1e5b5744c71a5de2c437412bd17983cc732e02ea8fddd6b0fcab1f98c9ffff",
+          "fullFrozenNoteSha256": "dddb2ff96c61a24ed643ea8a34daa0ed58a53030157a7bdda0c66f69a53dfbfc",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 423,
+          "noteDescSha256": "3adf6e16c3114f208f647c1ff2e9e4dd9baf30c316a7175687a85a53275ce680",
+          "fullFrozenNoteSha256": "842b47428eb4cfd2722065127247d2e98da46481246356fab2cd10bb010e6ca4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 462,
+          "noteDescSha256": "cf2aee56c756e00bfbb466907fd0c611750ac97c66bc7f6d590e8ec323a312fb",
+          "fullFrozenNoteSha256": "94fbc2b93ea8c21cc0c053dac15639d374e52e1a2d64a086877d9987b43f2500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 604,
+          "noteDescSha256": "91eb026d1cd4b37faaee784145e414380c20f91f1cced062fb9bce9a464e8e7e",
+          "fullFrozenNoteSha256": "bee52de56c86dc73a116261009387da861b2f2bc664f186d9842824a24f5ec5c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 612,
+          "noteDescSha256": "2e40608953ff056c7cf04c2b47548babc4096e7faa2f0b86abab823a345d767e",
+          "fullFrozenNoteSha256": "54f14e04bad7b0b5b47c083a6c124ae73e5d6831d05081c61000178fcee6151f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1175,
+          "noteDescSha256": "7ee7e200e9ce7e184e364e91f8f08f742536582ca98933a2cc35c382bc180ad0",
+          "fullFrozenNoteSha256": "f20af78e9c04f72e803c906ddc1deebfdf82549bf9966e82b47d27021945c960",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 418,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 423,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 462,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 604,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 612,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1175,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 417,
+          "quote": "千年古寺法源寺安静清幽"
+        },
+        {
+          "noteId": 418,
+          "quote": "在法源寺感受清幽"
+        },
+        {
+          "noteId": 423,
+          "quote": "法源寺春夏秋冬都很美"
+        },
+        {
+          "noteId": 462,
+          "quote": "牛街美食街"
+        },
+        {
+          "noteId": 604,
+          "quote": "法源寺"
+        },
+        {
+          "noteId": 612,
+          "quote": "法源寺也在这里"
+        },
+        {
+          "noteId": 1087,
+          "quote": "青铜级｜谨慎冲！"
+        },
+        {
+          "noteId": 1175,
+          "quote": "感受古刹的宁静"
+        }
+      ],
+      "conclusion": "9条提及/8篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：法源寺是北京西城（牛街—烂缦胡同一带）的寺院，rev=1、主位置758、别名仅「法源寺」。原文稳定事实：定性写「千年古寺法源寺安静清幽」「避开人潮的宝藏路线」「法源寺春夏秋冬都很美」「到了秋天满院的银杏黄叶氛围感更浓」；路线地位写「牛街→法源寺→宣南书店→七井胡同→烂缦胡同→大吉巷」「大吉巷➡️南半截胡同➡️宣南书店➡️烂漫胡同➡️七井胡同➡️法源寺➡️牛街」「牛街美食街➡️烂缦胡同➡️法源寺」「南半截胡同➡️宣南书店➡️烂缦胡同➡️西砖胡同➡️法源寺➡️牛街」；负评/分级写「青铜级｜谨慎冲！——法源寺…适合深度玩家」。边界单列：①牛街、烂缦胡同、七井胡同、西砖胡同、宣南书店、大吉巷、南半截胡同是相邻独立主体或点位，本轮不并入法源寺、不建组成关系、不改坐标；②原文有「烂缦胡同」「烂漫胡同」两种写法，本轮只记录、不新增别名；③「法源寺citywalk」为原文话题标签，不作为主体；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "0e2fce4aa4955b89ceb9c8b6f2dbe734",
+      "name": "香山公园",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 2649,
+          "inputHash": "161b70ef865cb1a7e2de5d058d4c6dd02539a1828d72e536b645b7483291e7cc",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4439,
+          "inputHash": "25725e39c86cb595df22226b667792032f9c987afb16e59db926f971460481b5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3098,
+          "inputHash": "7d775846898a4b5e6238b4b5351b92724ac12a09261062f5444721a88b5892c0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3127,
+          "inputHash": "1e638d007de23ef770f57b131adbb270a908555fce7d677c8000f6f0a2071020",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3228,
+          "inputHash": "f2c60f3670263d9d800a5da4a4785a5ae7d7293c2ea8153b4f4c42b84bd2cb56",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4484,
+          "inputHash": "0846359b67408186d38a6fe00bfcb92f19d6cb6534633a2d6cc3a12814a186d0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4732,
+          "inputHash": "bba3ce43a8c7594880e7b0dc6d61c6d0b5b7a34b9a11ed660ac2d017e001b7d1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5011,
+          "inputHash": "0ebcc67b63a10bf34cf824032a3a8cea34dbfe6900716e2acdeaf41a53d2d2f4",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5072,
+          "inputHash": "aafb94c4f1f1f9697ff0c10bbfb4fcb6150dc81658a03345ad4bdebd2a2a1a12",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5246,
+          "inputHash": "c4701a30284cc0d164719d9112b680cc1e0d2ed474522063332c98befdf23b98",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        2649,
+        4439,
+        3098,
+        3127,
+        3228,
+        4484,
+        4732,
+        5011,
+        5072,
+        5246
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 702,
+          "noteDescSha256": "c4d98ba24f92f13a3caa27b68798658d0ca9d65031ba28e5551f15b69ffa0b32",
+          "fullFrozenNoteSha256": "9175e1f2fc55b2c4f44f5f5f8f03c4704f7f7369996ad3cdf69b9d93fbf477c2",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 705,
+          "noteDescSha256": "3bae53c9008f71f2e0181502ed0b70df20623ed480609efa8ed6d21ac02caefd",
+          "fullFrozenNoteSha256": "9d4466409c0d7d92621da99a39fdc569bd376849aa55a61b8211866fe3a12ab9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 706,
+          "noteDescSha256": "6d4a43e5d74ab81d38d58fd979fce7ea30254727a2e7e9f928f706476ec46395",
+          "fullFrozenNoteSha256": "8fd8f3a6e62771ece0958b494b2799154a6fef3e5d02159fe6363880b145aa6c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 707,
+          "noteDescSha256": "39eac3f091866e78b4b31b343707b322d4fb9c82a3e2bb5068475e721c09441b",
+          "fullFrozenNoteSha256": "0ff13e638d4a2d5a05060f16797390f273c5a3333381a32b1a82ad3eb816e7fa",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1124,
+          "noteDescSha256": "0d9da48457a63ce3fe64c5665cda094b3a00a72c1ec4ffa2f17b355af5631b74",
+          "fullFrozenNoteSha256": "d58461b92f27248614d2b27c05d7b744742c2a57c3c91aed58fe3e90a6a5355c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1125,
+          "noteDescSha256": "6b7b1451dfec34be1cb9d86fdc8a27a7b3df0fe4bb4cc03fc470cc37404ffda5",
+          "fullFrozenNoteSha256": "22942f86fea43d437b3b8bb56287efbebcb5716fc48d079bd839d67896a690b9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1126,
+          "noteDescSha256": "044b22b572bf1be5c4890cc8edab743ce7e9dbe25100f5c25f7ba0e6be9b900c",
+          "fullFrozenNoteSha256": "c6c97a7f5c331cc8346ad4dc5c974ec4d9c3b01a7d8f0b390b40b48ca9d52d2e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1128,
+          "noteDescSha256": "2a4ff96686a8d77a25283b67cc5cbf64d7386aa1190f002bd7aa3c599fca14c8",
+          "fullFrozenNoteSha256": "d11db69604868342d9c5a00ad42cf1e95441248f05b01aa3ad22a5bb15e4c2a1",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 702,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 705,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 706,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 707,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1124,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1125,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1126,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1128,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 702,
+          "quote": "勤政殿拍红叶，香山饭店拍银杏"
+        },
+        {
+          "noteId": 705,
+          "quote": "香山周末别去凑热闹"
+        },
+        {
+          "noteId": 706,
+          "quote": "第一抹红晕染山间"
+        },
+        {
+          "noteId": 707,
+          "quote": "北京最有名的赏红叶胜地"
+        },
+        {
+          "noteId": 1087,
+          "quote": "黄金级｜看季节冲！"
+        },
+        {
+          "noteId": 1124,
+          "quote": "路标清晰明显"
+        },
+        {
+          "noteId": 1125,
+          "quote": "北京赏红叶经典地，漫山红叶很出片"
+        },
+        {
+          "noteId": 1126,
+          "quote": "香山东门居然真有电动自行车充电桩"
+        },
+        {
+          "noteId": 1128,
+          "quote": "香山公园：登高远眺首选"
+        }
+      ],
+      "conclusion": "10条提及/9篇正文已读（note702 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：香山公园是北京海淀的皇家园林式山林公园，rev=2、主位置1484、别名「香山」「香山公园」。原文稳定事实：看点写「勤政殿拍红叶，香山饭店拍银杏，湖边还有人造晨雾」「登上香炉峰俯瞰北京城」；门票与交通写「门票：10元（旺季）」「地铁：10号线巴沟站换乘西郊线香山站下」「东门有电动自行车充电桩」；路线与时长写「东门进→勤政殿→静翠湖→香炉峰（山顶）」「南线上、中线出，全程约7公里3.5小时」「Keep记录全程3小时12分」「东门进-勤政殿-左手边南线上山（双清别墅方向）-香炉峰方向上山-…-中线下山（东门方向）」，提及记录 visit_duration 210 分钟；时节写「最佳时间：10月中旬-11月中旬」「不要多说，但一定要赶在十月中旬看第一抹红晕染山间」；负评/提醒写「香山周末别去凑热闹…去年红叶节 85 万人次…真想去就开园 7 点进，或者下午 3 点以后再进」「现在香山要提前在『香山公园服务号』预约，没约白跑一趟」「人特别多，建议工作日去，或者早上 6 点就到」「别去香山挤」。边界单列：①香炉峰（鬼见愁）、勤政殿、双清别墅、静翠湖、东门、买卖街、西郊线香山站为园内点位或交通节点，本轮不单独建主体；②八大处、坡峰岭、妙峰山、百望山、喇叭沟门、西山森林公园等相邻或同类赏秋目的地是独立主体，不并入香山；③原文同时出现「香山」「香山公园」两种写法，与既有别名一致，本轮不改主名别名；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "00ce68d2675b99bab94be58c313cecd2",
+      "name": "北京环球影城",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 1996,
+          "inputHash": "192b52864301b86c70a7706907b37362fd802d8b04be8f2bb611bcd0d05a21aa",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2028,
+          "inputHash": "5c32b1d61508e17579ab210159cbc7c03b4b483b786a34a36aa0dbeef4e831cd",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2607,
+          "inputHash": "3c58d37e96f10dcc182cb1c673eb6efa6946aaa44e579825407097c0fa07dc6d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2676,
+          "inputHash": "25fd573a97cfd88efd78311b3e52957852b40a502e7e06cafee74143d92f8ca8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2593,
+          "inputHash": "8ddc84e3e5437ac54f452c2bf2b8cf8031d684a0aba75961566b4645f10d9e2a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2997,
+          "inputHash": "a39eb48272eb6e24732162edfe71de0a60cc66d0a16ad8640b2b88f797bc9a0b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3277,
+          "inputHash": "8d0e8aeef2153afd4607481573366457576cbd543e2bf27cb6082d7e39eb8f0b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5062,
+          "inputHash": "ac5994e784618e7913f0d78850ebf37be5e5c5e596620065b340b509d0001a44",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4481,
+          "inputHash": "0046f7b582f24e5f17535692082d1748680b15cb27c8c3e010d38ce196fcaa00",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        1996,
+        2028,
+        2607,
+        2676,
+        2593,
+        2997,
+        3277,
+        5062,
+        4481
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 395,
+          "noteDescSha256": "170b4971350306329113261c7643f3f0c88c1ff99ab59fdc68af51efdd80f49e",
+          "fullFrozenNoteSha256": "b5fb28b36cc0e155126ffbf110727e62dcac1f12b7d9d9dd3397880222b79814",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 509,
+          "noteDescSha256": "4b6ceaf1fec895710998b0c7b5b0e602b8c8e96546bb0da0f9768687b5a69b65",
+          "fullFrozenNoteSha256": "b595b344f2e02ba231ca02e3e21ccd4182456c1d2e4739748668667b88db1a37",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 510,
+          "noteDescSha256": "6135043fff9ac77f10bf9c3a0fd00bbbfbcdfdac4a453e285faee719ec7a55c5",
+          "fullFrozenNoteSha256": "0270571261dbaf18f9e603ec283cf636f79f6e8f0b9e27f7e425f28d92916cde",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 600,
+          "noteDescSha256": "00161361e5c981737e750ca06a5732387b0d615631933411d1f962b7facc9314",
+          "fullFrozenNoteSha256": "2619965951ac3b0a78ebbd768a597d6da76dc0d15809370ada55108e268e6be9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 618,
+          "noteDescSha256": "a5a61715e716d492b79c4bcf2807dba2beddabcfd598d42e2d964fbe20087ef1",
+          "fullFrozenNoteSha256": "7e5ca72f038e632ddc065b4322372065216fc199a0d7d04f1a49085ede083c54",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 635,
+          "noteDescSha256": "ce0e14be18fb2e42511f3aaf9f289eebd9dc82a06968396090a4f8844f73e662",
+          "fullFrozenNoteSha256": "0df2fcfad42f942a570538e18ef1cc15c587895a642f9417041ea71e26de9da2",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 638,
+          "noteDescSha256": "1491543448aa24752e8e044b4d2571ecb6f9967df94cb68f6d2d7caf057c3211",
+          "fullFrozenNoteSha256": "ea8405e8eade2f1614e60b2e59e1c0bb1b5f704c809c413429e3a50ec8934a62",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1052,
+          "noteDescSha256": "2a4ed9a0cf82ce03ee78ca1e35f0dee1b267c4cae627b885df6066d546bdaa30",
+          "fullFrozenNoteSha256": "78d2fc6c75b3a768887258dca23b51e8b0ff0d168c32f17aa1c76051cae1e557",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 395,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 509,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 510,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 600,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 618,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 635,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 638,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1052,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 395,
+          "quote": "每个园区都很有特色"
+        },
+        {
+          "noteId": 509,
+          "quote": "把环球影城和北京的攻略重新梳理了一遍"
+        },
+        {
+          "noteId": 510,
+          "quote": "拒绝瞎逛绕路"
+        },
+        {
+          "noteId": 600,
+          "quote": "哈利波特灯光秀必看"
+        },
+        {
+          "noteId": 618,
+          "quote": "哈利波特魔法世界→变形金刚基地"
+        },
+        {
+          "noteId": 635,
+          "quote": "花车巡游、烟花、飘雪、灯光"
+        },
+        {
+          "noteId": 638,
+          "quote": "冬天20:00就闭园了"
+        },
+        {
+          "noteId": 1052,
+          "quote": "刷项目、看花车巡游、看夜间灯光秀"
+        },
+        {
+          "noteId": 1087,
+          "quote": "铂金级｜看兴趣冲！"
+        }
+      ],
+      "conclusion": "9条提及/9篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：北京环球影城是通州的电影主题乐园，rev=3、主位置820、别名「北京环球影城」「环球影城」。原文稳定事实：园区与项目写「每个园区都很有特色，人最多是哈利波特，其次是小黄人～很多项目都是4d的」「七大电影主题区，哈利波特灯光秀必看，沉浸感直接拉满」；门票与时长写「门票395元，9:00-21:00」（跨年档另有「成人票527r，双人票788r，学生票475r」，如实并存）；路线写「上午：哈利波特魔法世界→变形金刚基地→未来水世界；下午：功夫熊猫盖世之地→侏罗纪世界→小黄人乐园；晚上：巡游➕灯光秀」；交通与季节提醒写「09:45到达」「冬天20:00就闭园了，但是晚上有灯光秀可以下载APP查看具体时间」「环球超级超级冷！！！！忘记带手套了」；分级写「铂金级｜看兴趣冲！——…环球影城…烟火气拉满」。边界单列：①三把扫帚、平先生面馆、东兴顺铜锅涮肉（环球影城店）为园内或邻近餐饮点位，本轮不并入主体、不新建餐饮主体；②石景山游乐园、北京欢乐谷、泡泡玛特城市乐园、古北水镇等为同文提到的其他乐园主体，不并入环球影城；③原文把门票与跨年票价两种口径并存，本轮只登记不合并；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "065e077002130047feaadff4f607b480",
+      "name": "起凤泉",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 12943,
+          "inputHash": "c4f1ed4e7aec3521212a6d7a3ccd0f4ff660fdabcbe165516360a17265994c07",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5988
+            ],
+            "factExclusions": {
+              "visit_duration": {
+                "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+                "reason": "group_duration"
+              }
+            }
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        12943
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2837,
+          "noteDescSha256": "7e4d279b312b2b3ec9514cc591fd42307116085237252a322c39003123de26e7",
+          "fullFrozenNoteSha256": "e6ee26453230b6125ed0eff313750d6ed13540d382fdf94277c1eefa30ba7eac",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2837,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2837,
+          "quote": "这几个地方挨得特别近，都藏在老街里"
+        }
+      ],
+      "conclusion": "1条提及/1篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：起凤泉是济南老城区府学文庙一带的小泉，rev=3、主位置5988、别名仅「起凤泉」。原文稳定事实：走法写「🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖」；点位写「王府池子、腾蛟泉、起凤泉、刘氏泉：🕐游玩0.5h 🆓」「这几个地方挨得特别近，都藏在老街里，走路几分钟就到，串联起了西更道街和芙蓉街」；提及记录 visit_duration 30 分钟。边界单列：①王府池子、腾蛟泉、刘氏泉、曲水亭街、百花洲、西更道街、芙蓉街是同一 citywalk 路线上的相邻独立主体，本轮不并入起凤泉、不建组成关系、不改坐标；②原文把四个泉合并成一段描述，本轮只按主体分别登记，不据此改主名别名；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "7ac1b9fdfb96a01db695da65d8e81830",
+      "name": "四窟万象",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11492,
+          "inputHash": "e26f02da8aa706e38347b3884ef4e5b75248b4a46850d4ec5ab7ba76f5f29dbd",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5480
+            ]
+          }
+        },
+        {
+          "mentionId": 12777,
+          "inputHash": "84d06a33bcd8861eb8c1c59ee79dee3cfde1a94381c3d1ba7efc20a3fc513f59",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5480
+            ]
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11492,
+        12777
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2551,
+          "noteDescSha256": "0b32af8c64eb1b5731c9391b8c145b988da20ae8c7d19235880988185284ab36",
+          "fullFrozenNoteSha256": "5ea2fa19cc42a598ea0ac543a745a0e2a0bf90432f51089e6e0e4f143c526a8b",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2797,
+          "noteDescSha256": "d0396bbcbc27dcd3a3d7538b9822d9680763151d09967600c06b004e0b169a67",
+          "fullFrozenNoteSha256": "8654e6c428cf0f11661e5228f4a1aff41e2fedbd8660f391018024c3461132c8",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2551,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2797,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2551,
+          "quote": "仿制四大名窟，票价略贵"
+        },
+        {
+          "noteId": 2797,
+          "quote": "一处仿制的石窟，内部为四大石窟的仿制品"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：四窟万象是济南（千佛山景区内）的仿制石窟景点，rev=3、主位置5480、别名仅「四窟万象」。原文稳定事实：定性写「一处仿制的石窟，内部为四大石窟的仿制品」；路线地位写「Day2：泉城广场-趵突泉-解放阁-宽厚里-大明湖-超然楼-五龙潭-千佛山（四窟万象）」；负评写「黑榜🖤 2️⃣四窟万象：仿制四大名窟，票价略贵。」（note2551，属负向提醒）；机位清单写「1️⃣7️⃣四窟万象：一处仿制的石窟，内部为四大石窟的仿制品」（note2797，正向登记）。边界单列：①千佛山为母山体主体，四窟万象是其中的仿制石窟点位，本轮不并入千佛山、不建组成关系、不改坐标；②原文对同一主体同时给出负向（票价略贵）与中性/正向（机位可取）两种口径，如实并存，不合并为单一评价；③「仿制」属性来自原文，本轮不外推为文物类主体；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "cd8dfd49f13c9cbbd9d02c9d4c72defb",
+      "name": "西公界街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11567,
+          "inputHash": "40b04c17997dc758095d87c30ae8a38180da68c1a91878eb3e15c59fce52bf25",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12821,
+          "inputHash": "8305ffd50dedbb68443fddc0bebca220475fe9bd8f9247f037e75f5cece252a8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11567,
+        12821
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：西公界街是济南老城区街巷，rev=1、主位置5495、别名仅「西公界街」。原文稳定事实：定性写「没有浓重的商业味儿，在旧旧的巷子里散步，好好感受老舍笔下的这座小城🍃」；路线地位写「🗺️citywalk路线：东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」。边界单列：①东更道、珍池街、曲水亭（街）、双忠祠街是同一条 citywalk 路线上的相邻独立主体，本轮不合并、不建组成关系、不改坐标；②原文路线写「曲水亭」，与既有主体「曲水亭街」的简称关系本轮只记录，待后续统一；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "99ddd31eba85db1d2ed58d7e60507f27",
+      "name": "双忠祠街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11566,
+          "inputHash": "01e2a3b3c380e241a420344c6f8b77edbfec2ef28d5cc5ea06f226092107bf15",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12820,
+          "inputHash": "1aa66f094fab288f24bbe63e5c4caa28c343fa13127fc2c96b24f0d184d2549b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11566,
+        12820
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：双忠祠街是济南老城区街巷，rev=1、主位置5494、别名仅「双忠祠街」。原文稳定事实：与前条同源，定性写「没有浓重的商业味儿，在旧旧的巷子里散步」；路线地位写「东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」。边界单列：①同篇路线上的东更道、珍池街、曲水亭、西公界街为相邻独立主体，不合并；②街名中的「双忠祠」指历史祠堂，原文未把祠堂作为独立主体提及，本轮不新建祠堂主体；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "8618b70ccf17cd1522c5bf27cbe16361",
+      "name": "珍池街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11564,
+          "inputHash": "4ed037b3af602778e9a5dedef789bd1d6a448a1a7e3f61c1eddc567fe4a34d38",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12818,
+          "inputHash": "73c6c34b67ce55c581d17d5cd2b126cb405170e1f840d7740b3ebf872e265639",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11564,
+        12818
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "没有浓重的商业味儿"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：珍池街是济南老城区街巷，rev=1、主位置5492、别名仅「珍池街」。原文稳定事实：定性写「没有浓重的商业味儿，在旧旧的巷子里散步，好好感受老舍笔下的这座小城」；路线地位写「东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」。边界单列：①「珍池」作为泉池名在原文未单独出现，本轮不新建泉池主体；②同路上的东更道、曲水亭、双忠祠街、西公界街为相邻独立主体，不合并；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "5e67e8211c98d3e0e94c08114917c628",
+      "name": "东更道",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11563,
+          "inputHash": "3ef4131ce14886b7d736ea976dec73bc6b86b0eb598637a1565d9e1f2ff0b8d1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12817,
+          "inputHash": "d605d22411a3e1af610738d0714cc0e16641e622d8de5cca42da50e9610a6389",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11563,
+        12817
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2574,
+          "noteDescSha256": "636f7701756b804fa3b581618b8190103970e148e53c239d8d284be537924501",
+          "fullFrozenNoteSha256": "20bab3efb176365719adb1255343e6fd96dea395ed32b3dd73d204d8dffc963b",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2574,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2574,
+          "quote": "好好感受老舍笔下的这座小城"
+        }
+      ],
+      "conclusion": "2条提及/1篇正文已读（同一篇笔记产生两条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：东更道是济南老城区街巷，rev=1、主位置5491、别名仅「东更道」。原文稳定事实：作为该篇 citywalk 路线的起点出现——「🗺️citywalk路线：东更道➡️珍池街➡️曲水亭➡️双忠祠街➡️西公界街」，定性与其余四街共用「没有浓重的商业味儿，在旧旧的巷子里散步」。边界单列：①「东更道」与「东更道街」是否为同一主体的两种写法，原文只用「东更道」，本轮不新增别名、待后续统一；②同路上四街为相邻独立主体，不合并、不改坐标；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "06ecc5ddb78dc622997f9947a414e77c",
+      "name": "腾蛟泉",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 12584,
+          "inputHash": "57761a20a8de972055307fe3bad5668ee39fc60b62450cf4b1810c5ede3ff0d5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5948
+            ]
+          }
+        },
+        {
+          "mentionId": 12942,
+          "inputHash": "264447356c5b9d80c163e64a8384f9eb1cc3d7309a5c4040d748e96d19047c51",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5948
+            ],
+            "factExclusions": {
+              "visit_duration": {
+                "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+                "reason": "group_duration"
+              }
+            }
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        12584,
+        12942
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2813,
+          "noteDescSha256": "be7e2c3fd73a2af31b19b5f9198a1a31349490d61a1476d610f08f3b117d9d06",
+          "fullFrozenNoteSha256": "2764e58abbbe369e18435ecfb1880d23289922b5ecb0e8c851c74e3e95ecff47",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2837,
+          "noteDescSha256": "7e4d279b312b2b3ec9514cc591fd42307116085237252a322c39003123de26e7",
+          "fullFrozenNoteSha256": "e6ee26453230b6125ed0eff313750d6ed13540d382fdf94277c1eefa30ba7eac",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2813,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2837,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2813,
+          "quote": "腾蛟泉（王府池子出来往北走的一个岔路口）"
+        },
+        {
+          "noteId": 2837,
+          "quote": "除了趵突泉，街头巷尾还有很多泉水值得探索"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：腾蛟泉是济南老城区王府池子北侧的小泉，rev=3、主位置5948、别名仅「腾蛟泉」。原文稳定事实：位置写「腾蛟泉（王府池子出来往北走的一个岔路口）」；路线地位写「珍珠泉大院…↓王府池子…↓腾蛟泉…↓起凤桥…↓西更道…↓刘氏泉…↓曲水亭街…↓百花洲」，另写「🗺路线：趵突泉➠五龙潭➠黑虎泉➠珍珠泉➠王府池子➠腾蛟泉➠起凤泉➠刘氏泉➠曲水亭街➠百花洲➠大明湖」；费用写「🆓这些地方都距离不远，而且全都是免费的」；提及记录 visit_duration 30 分钟。边界单列：①王府池子、起凤泉、起凤桥、刘氏泉、西更道、曲水亭街、百花洲是同路上的相邻独立主体，本轮不并入腾蛟泉、不建组成关系、不改坐标；②原文有「西更道」与「西更道街」两种写法，只记录不新增别名；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "95513a0ce9f9a81486fbb865e7bc8466",
+      "name": "刘氏泉",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 12587,
+          "inputHash": "77496d13ce4f16b49d6b77d98b9849cd02ebb60320e53bc71db57f127f5758e4",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5950
+            ]
+          }
+        },
+        {
+          "mentionId": 12944,
+          "inputHash": "305673dcf74b75afe3c0d454c24ffd2bfa38ffe54e0d9b60e24657786677c347",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5950
+            ],
+            "factExclusions": {
+              "visit_duration": {
+                "quote": "5️⃣王府池子、腾蛟泉、起凤泉、刘氏泉（p16）\n🕐游玩0.5h 🆓",
+                "reason": "group_duration"
+              }
+            }
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        12587,
+        12944
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2813,
+          "noteDescSha256": "be7e2c3fd73a2af31b19b5f9198a1a31349490d61a1476d610f08f3b117d9d06",
+          "fullFrozenNoteSha256": "2764e58abbbe369e18435ecfb1880d23289922b5ecb0e8c851c74e3e95ecff47",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2837,
+          "noteDescSha256": "7e4d279b312b2b3ec9514cc591fd42307116085237252a322c39003123de26e7",
+          "fullFrozenNoteSha256": "e6ee26453230b6125ed0eff313750d6ed13540d382fdf94277c1eefa30ba7eac",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2813,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2837,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2813,
+          "quote": "刘氏泉（西更道走到头就能看到一条细长的水流）"
+        },
+        {
+          "noteId": 2837,
+          "quote": "除了趵突泉，街头巷尾还有很多泉水值得探索"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：刘氏泉是济南老城区西更道尽头的小泉，rev=3、主位置5950、别名仅「刘氏泉」。原文稳定事实：位置写「刘氏泉（西更道走到头就能看到一条细长的水流）」；路线地位与腾蛟泉同篇相邻出现；费用写「这些都是免费的」；提及记录 visit_duration 30 分钟。边界单列：①西更道（街）、曲水亭街、王府池子、起凤泉、腾蛟泉为同路上的相邻独立主体，不合并、不改坐标；②原文把四泉合并成一段描述（王府池子、腾蛟泉、起凤泉、刘氏泉），本轮按主体分别登记，不据此改主名别名；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "4dfda3371793b69de15122bb7e330eac",
+      "name": "护城河",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11404,
+          "inputHash": "f6fae9f146d207c1bef563cd6eb1337d2e7c5f6067170823b9f2dc1ccb98d72a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5477
+            ]
+          }
+        },
+        {
+          "mentionId": 12901,
+          "inputHash": "4d2f1aba8523bad18d2c1b2e07d57daf33b731a54e7276f6cda54df65def7a19",
+          "resolution": {
+            "status": "resolved",
+            "reason": "reviewed_assignment",
+            "scopePlaceIds": [
+              5477
+            ]
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11404,
+        12901
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2569,
+          "noteDescSha256": "4c7dbcc6155146441319d3a0203dba5bba5e0c5279063988e043742d11c80293",
+          "fullFrozenNoteSha256": "bb80b5adf34bc0e4a4714f660452f956b4bac4701892c535bf2e16b4cf4eb18f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2856,
+          "noteDescSha256": "d967bf213108a8f0dcb1843cfe7f7e1a4de58b4140e5c8e06ba521aaf6d42879",
+          "fullFrozenNoteSha256": "3e8f08418107ff76b69aa898891963d5870c4670ef8ffdc82823a280a308df10",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2569,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2856,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2569,
+          "quote": "护城河——黑虎泉"
+        },
+        {
+          "noteId": 2856,
+          "quote": "按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的！！"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：护城河是济南环城水系（黑虎泉一带河段），rev=2、主位置5477、别名仅「护城河」。原文稳定事实：路线地位写「五龙潭——趵突泉——泉城广场——恒隆广场——珍珠泉——曲水亭街——大明湖——超然楼——护城河——黑虎泉——恒隆广场——泉城广场喷泉」「按照五龙潭、趵突泉、黑虎泉、解放阁、大明湖、护城河这个顺序游玩的！！」；费用写「以上只有趵突泉需要门票，其他景点都免费」。边界单列：①黑虎泉、五龙潭、趵突泉、泉城广场、大明湖、超然楼、解放阁为相邻独立主体，本轮不并入护城河、不建组成关系、不改坐标；②原文的「护城河」在济南语境下可能指环城公园河段整体，也可能指黑虎泉附近段落，本轮只登记不划定片段边界；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "济南",
+      "entityId": "c11648e477180d1b3f97da06808da5e7",
+      "name": "经三路",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 11529,
+          "inputHash": "58be5c58f7114c030467ca5c9a3b1c93ea90a624c6279d0861b24e8d4b77fba8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 12617,
+          "inputHash": "234288b3e4cdbad838a4321d8a5d34ba187e65274821ee8caaf9ea52244377e2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        11529,
+        12617
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 2573,
+          "noteDescSha256": "a31af36b171d4ed1f694bd722af7fe008e2abad99557867027160da59ca5a15d",
+          "fullFrozenNoteSha256": "740e30b3f3acd81fc9b8da169af502a738be8e49985a8a9a04a94fc260c3f338",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 2793,
+          "noteDescSha256": "40896ba715c452914ad5ec48f45cf021799f8467a563e58b433a4e5e57dfdc74",
+          "fullFrozenNoteSha256": "4bec6d99364d8fa41936040755431a60c1e7da6869d2f162eaf5d4d1ee723868",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 2573,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 2793,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 2573,
+          "quote": "经三路真的是浪漫天花板"
+        },
+        {
+          "noteId": 2793,
+          "quote": "❷经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺"
+        }
+      ],
+      "conclusion": "2条提及/2篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：经三路是济南商埠区街道，rev=2、主位置5394、别名仅「经三路」。原文稳定事实：定性写「经三路真的是浪漫天花板，今年又多了好多咖啡、美食和古着店，还有超多隐藏小店」「经三路&纬三路：洋气又浪漫，藏着不少宝藏店铺，美食、咖啡等，逛起来很舒服！纬三路的心形红绿灯，随手拍都很有氛围感」；路线地位写「🚶‍♀️路线直接抄作业：老商埠→经三路→中山公园→纬四路→万紫巷→淘子外单，一路逛吃不停」「DAY①:经三路➠纬三路➠老商埠➠大观园➠五龙潭➠趵突泉➠洪家楼」；点位写「BLUE DUCK骨董屋是自助式vintage杂货铺」「VILLA SHAKA的墙超好拍」「淘子外单」。边界单列：①老商埠、纬三路、纬四路、万紫巷、中山公园、大观园为相邻独立主体或点位，本轮不并入经三路、不建组成关系、不改坐标；②BLUE DUCK、VILLA SHAKA、淘子外单是店铺点位，不新建主体；③原文把「经三路&纬三路」并写，本轮不据此合并两路；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "7fa4e63e1293630dd5555036283a638c",
+      "name": "慕田峪长城",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 2342,
+          "inputHash": "cedb91af979169cd6c369216518587c998cf4ac0ad088e6a353857de1b2e9b6b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2670,
+          "inputHash": "e7f8bdd9fe302a7bd9e7f0c7d3bb95053d649539714d107c4f565b2bc3b81932",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3086,
+          "inputHash": "ca4250188bd37cf1a0c2198986f036c730ff872cd9cf36a7dd28841936bc5968",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3303,
+          "inputHash": "95fe1162ea638e468a8445f0b6c2e769df554ee47cc4d65e123769b350facecc",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5071,
+          "inputHash": "7137e40a09db8187b6280b94155dd999c1ecfad7ea3b4e381412a3012ded9a18",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3375,
+          "inputHash": "8718942866f3afae5c6af58df4989020b3ac8da3db56a1abf00e7e2d7fb191fb",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3022,
+          "inputHash": "f620c192dce68fcf19f382dbdc5fa0f94efe862a99db167fdd0deebceeffc4da",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3173,
+          "inputHash": "d86db5b78dce579d87d761c69bb885cd5648329ac13c264b0c740a6a37b1009a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2538,
+          "inputHash": "c0951aab2c330f469687fc91541ae23de4c5847e9e5953baca0e222dcd934cce",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4491,
+          "inputHash": "c1149f4b6d87c1bf81c791e42f7228271d5468cfafb3d8230b50902fb4793302",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4883,
+          "inputHash": "5261df5d52670718db5850257f537811293e339702e2dd6810253f583ff53436",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5252,
+          "inputHash": "d338acf745ccecfaee6356d45dc6e887a10792828ccd276c53214814dcc8d59d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4631,
+          "inputHash": "1de72c3d0c0774878d818b259be3907f095986e7f67cee3e23d05eda533ab8df",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5159,
+          "inputHash": "96f534886489edfc1dfda4a645860018a5d485dcb9b173cdf48dff243f274423",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5213,
+          "inputHash": "2074ac73c2759aefd3161492bae465addb748df3cfbafccd37a2c54fa4cf1887",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        2342,
+        2670,
+        3086,
+        3303,
+        5071,
+        3375,
+        3022,
+        3173,
+        2538,
+        4491,
+        4883,
+        5252,
+        4631,
+        5159,
+        5213
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 401,
+          "noteDescSha256": "dd18bfd873cd1cb4b97fa72faeb30bc362d0ff805add339a5001c2b41fac10b2",
+          "fullFrozenNoteSha256": "ea995ca24c71064dec83baf0638aba09ee4e6529e7ad203ab119b9f97c0e2bb5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 441,
+          "noteDescSha256": "09a5e95c12e0df5a380d8b0b93c4373ad27d8b59fbe92d7f7a7c7ceea7cbe108",
+          "fullFrozenNoteSha256": "2a1c3dd7f5589d6801b5322ee49ab4c7286c6781e73fe7fc1e8108bfd47c8ba9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 485,
+          "noteDescSha256": "79104ed0fb72a1703306c5934d414db10040598d37625ad5af4831e22b0c853e",
+          "fullFrozenNoteSha256": "487ea9fa7698ffef761800e6b4e2a3c543489c1bc818ea736382d946accc22da",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 487,
+          "noteDescSha256": "9cd813dc58d3f85fd3cbc51d08b97e6610f81619108a681b791a8c3f9c748484",
+          "fullFrozenNoteSha256": "d5066247fc8268596e7e5d4e4bca5d53d5a9cdb6f69bf25f8ddec79897cab499",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 489,
+          "noteDescSha256": "59f3c740e647eb87266af3648b1ff33fc245bb5d95aa73845141f44460fbafe8",
+          "fullFrozenNoteSha256": "30b77a19aa9be4189079096e480adec093ac11ce17c2655b3633fffd81d7ba0c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 503,
+          "noteDescSha256": "34d857c84c381b084d0fc3b284f6e4b9026d247a09eb04ac3512421b8cd1d77e",
+          "fullFrozenNoteSha256": "f7ebbb835084ba2727b9e329b22bcf64a449a297a69efe69624aee9a1f213a79",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 641,
+          "noteDescSha256": "0495c15032e20e7df79a64d0e9e94256ec365f67135d67f6a9f53d53333c8f7b",
+          "fullFrozenNoteSha256": "cc153c7d81325c9247dca8863cf2bfab20b05510377098a63dd6d457ab9294da",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 703,
+          "noteDescSha256": "1c512f79ca54745f71dc4ff8a7438b29833d16e8dd0693922dcf34161d2e24ca",
+          "fullFrozenNoteSha256": "5a967d712d462414138a6e659cd999908446c30f2be66d12bb9a405fc7ebdeb6",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1122,
+          "noteDescSha256": "55bbc7f7e5b40fb0484e328d6f39092dbdd4d1abbb4b5ff919390b419d1b38ff",
+          "fullFrozenNoteSha256": "43a1153d7fb947298af33c2b8f08b22838a074a8ce6371472f9a3b45c31f1520",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1128,
+          "noteDescSha256": "2a4ff96686a8d77a25283b67cc5cbf64d7386aa1190f002bd7aa3c599fca14c8",
+          "fullFrozenNoteSha256": "d11db69604868342d9c5a00ad42cf1e95441248f05b01aa3ad22a5bb15e4c2a1",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1129,
+          "noteDescSha256": "d8b98a7dafdf0059caf321c7debd6c7192ebbf6bbb4c865270d76dfca67ff88f",
+          "fullFrozenNoteSha256": "7dc14a46091bb43e6a6e7661950f755df859d6396b56c4f45aacada2242c7d3d",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1131,
+          "noteDescSha256": "3f9586a8e58dbd2068c99787eb7528800e499a1126a7b926aff2430e0be6cb70",
+          "fullFrozenNoteSha256": "c7eefa5ba44de3948b477b7944a9693dfe1baf91658d1388fba452df2fef0c2f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1132,
+          "noteDescSha256": "7ae89755bb703e12c87a8934933c06f12479699e6fb54353fe94058bc2e0b99a",
+          "fullFrozenNoteSha256": "8f91fcb107658fd14b5099e503cf0605adfacf3a1da0ceeae782959650f43539",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 401,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 441,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 485,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 487,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 489,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 503,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 641,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 703,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1122,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1128,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1129,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1131,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1132,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 401,
+          "quote": "慕田峪长城也是近郊赏秋好选择"
+        },
+        {
+          "noteId": 441,
+          "quote": "慕田峪长城游客密度很友好，植被茂密，视野开阔"
+        },
+        {
+          "noteId": 485,
+          "quote": "徒步走走停停半小时+就能登顶"
+        },
+        {
+          "noteId": 487,
+          "quote": "青山叠翠，雄关漫道"
+        },
+        {
+          "noteId": 489,
+          "quote": "慕田峪适合老人小孩体验一下"
+        },
+        {
+          "noteId": 503,
+          "quote": "长城二选一：优先慕田峪！游客更少，体验感更好"
+        },
+        {
+          "noteId": 641,
+          "quote": "预约渠道：gzh「慕田峪长城」"
+        },
+        {
+          "noteId": 703,
+          "quote": "8️⃣ 慕田峪长城（2025.11.9）"
+        },
+        {
+          "noteId": 1087,
+          "quote": "我特意整理好一份北京景点分级榜单"
+        },
+        {
+          "noteId": 1122,
+          "quote": "小交通（含慕田峪大巴）：120"
+        },
+        {
+          "noteId": 1128,
+          "quote": "老舍说：“秋天一定要住北平。”"
+        },
+        {
+          "noteId": 1129,
+          "quote": "最大优点是人少。坡度平缓，边走边拍不累。"
+        },
+        {
+          "noteId": 1131,
+          "quote": "承包没人的长城"
+        },
+        {
+          "noteId": 1132,
+          "quote": "96% 超高植被覆盖率"
+        }
+      ],
+      "conclusion": "15条提及/14篇正文已读（note487 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：慕田峪长城是北京怀柔的明长城段，rev=2、主位置1062、别名「慕田峪」「慕田峪长城」。原文稳定事实：定性写「慕田峪是明长城保存最完整的一段，也是明代万里长城的精华所在」「相比于八达岭，慕田峪的风光更秀美」「最大优点是人少。坡度平缓，边走边拍不累。」「慕田峪长城游客密度很友好，植被茂密，视野开阔，外国友人也不少」「96% 超高植被覆盖率」「慕田峪适合老人小孩体验一下」「比起八达岭的人声鼎沸，慕田峪更有山野长城的松弛感」；门票口径多且并存——「门票40元，学生&60岁以上长者半价」「旺季 45 元」「成人40元/人，学生及60岁以上老人20元/人，18岁以下未成年人免费」「摆渡车往返 15」「缆车往返140，单程100」「索道上去滑道下」；交通写「前门站旅游大巴，6:30–11:00流水发车，往返80元，约90分钟高速直达山顶停车场，省摆渡车票和排队」「自驾：导航慕田峪长城 P4 停车场，20 元/天」；时长写「全程4h内可以拿下」（提及记录 240 分钟）、「起码预留3小时」（提及记录 180 分钟）、「2.5 小时／3.5 小时／4.5 小时」三条路线、另有提及记录 210 分钟；路线写「省力路线可以缆车上到14号打卡好汉坡→15号非诚勿扰取景地→20号→14号缆车下」「南线上，北线下」「轻体力者可以从平缓的南登山步道上…爱好徒步者可以从较陡的北登山步道上」；预约写「预约渠道：gzh「慕田峪长城」；放票时间：提前15天（日出票超抢手！）」；负评写「青铜级｜谨慎冲！」「山脚下吃饭也很贵，比较有名的鱼感觉很一般一斤💰98」「缆车旁边水巨贵！！！一瓶20」。边界单列：①八达岭长城是独立既有主体，原文多处写「比起八达岭」「长城二选一：优先慕田峪」，本轮不合并、不改坐标、不改分；②14号／20号／6号敌楼、南线与北线、摆渡车、缆车、索道滑道是园内点位与设施，本轮不单独建主体；③原文门票（40／45 元）与缆车（140 元）口径并存，如实保留不统一；④红螺寺、雁栖湖、瓦厂酒店等为同文其他主体，不并入慕田峪；⑤本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "fde55b90529621c6f3ba9a237046a7ee",
+      "name": "五道营胡同",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 2304,
+          "inputHash": "66a995cf7c2f382355b614774e9dc4e42ab18c6524f2cc8c7f4846881025660e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1888,
+          "inputHash": "57e21b50488df8ef31bbb486585527302280065acded1548ccab45f19fa223fc",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1937,
+          "inputHash": "81bf83c8d877ab123876319ee0e09357b05335b53084355edf58301619875961",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4267,
+          "inputHash": "10e93a0ed65245a13c6169c0c0bdb4c1ea9bc49f70d024b98b021024f81700ad",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1950,
+          "inputHash": "7fbd112a0854d88466e2ce47b62939d1129d4accd3fc70e60bf3441b43c7192f",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2102,
+          "inputHash": "94ed6f7980b2c26bf007f584fed7dd765420aab2b4df4c71cfd316cebe9b0c65",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2558,
+          "inputHash": "c5ebc1b767a42d4c74c5e8e2ab25ad6fadf57332e63430cdc2c07bbbd70bfe0e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2452,
+          "inputHash": "bd039de4fb5ad9b78bf4fbb0b068065ecaf7610c8a1b44800ffda4208016ae63",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2733,
+          "inputHash": "0ec6abe91c12716ef3790e4e2c5ff4f75971018b98e3e4b78088e1f52c17471d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2243,
+          "inputHash": "23ea0be145b29af1ec5a4f245ace6bb170e9ff89baba831cb33ba8bcf2940f02",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2911,
+          "inputHash": "7e36f844f78dd7d6d44eb56becd59bf5560e63d068fd56d3ddf1e78b1a2e3ab8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5055,
+          "inputHash": "e90e4e9982b5425d695c2623646bd74b4f7b02784b0f5c311cd231dd1ad80510",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5185,
+          "inputHash": "55ca1643748ad2c03d2eed523fbabd4bde98fc2cac2aca47219914c8239d32b5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        2304,
+        1888,
+        1937,
+        4267,
+        1950,
+        2102,
+        2558,
+        2452,
+        2733,
+        2243,
+        2911,
+        5055,
+        5185
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 401,
+          "noteDescSha256": "dd18bfd873cd1cb4b97fa72faeb30bc362d0ff805add339a5001c2b41fac10b2",
+          "fullFrozenNoteSha256": "ea995ca24c71064dec83baf0638aba09ee4e6529e7ad203ab119b9f97c0e2bb5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 416,
+          "noteDescSha256": "3d88b8848462e70302fdde2b0a22c0d96b334d18124cd482eb51cda4702e36de",
+          "fullFrozenNoteSha256": "27912af35eeda68cd0bcd96e7acd80c198205480b9d65a0c6bf9ce6e74e3757f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 418,
+          "noteDescSha256": "5a1e5b5744c71a5de2c437412bd17983cc732e02ea8fddd6b0fcab1f98c9ffff",
+          "fullFrozenNoteSha256": "dddb2ff96c61a24ed643ea8a34daa0ed58a53030157a7bdda0c66f69a53dfbfc",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 423,
+          "noteDescSha256": "3adf6e16c3114f208f647c1ff2e9e4dd9baf30c316a7175687a85a53275ce680",
+          "fullFrozenNoteSha256": "842b47428eb4cfd2722065127247d2e98da46481246356fab2cd10bb010e6ca4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 462,
+          "noteDescSha256": "cf2aee56c756e00bfbb466907fd0c611750ac97c66bc7f6d590e8ec323a312fb",
+          "fullFrozenNoteSha256": "94fbc2b93ea8c21cc0c053dac15639d374e52e1a2d64a086877d9987b43f2500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 608,
+          "noteDescSha256": "c8efc5d4d3ecb056a779114e168809d8cfb8bcac3b08d0e35474fc012f7067e1",
+          "fullFrozenNoteSha256": "fff1e5ebc1c93e240e0ba52cd50c4da847b3de9ac2ee7ffe6f014161f77aad1e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 612,
+          "noteDescSha256": "2e40608953ff056c7cf04c2b47548babc4096e7faa2f0b86abab823a345d767e",
+          "fullFrozenNoteSha256": "54f14e04bad7b0b5b47c083a6c124ae73e5d6831d05081c61000178fcee6151f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 614,
+          "noteDescSha256": "18e8393bfac964be2cb52c0e65444c511e78373a959a47246f21eb977e129dd7",
+          "fullFrozenNoteSha256": "92fff9895807a974201f46426a125217a4872d83143e2b12a3b6aae3f04f8d6e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 686,
+          "noteDescSha256": "b813324b5846fd268336b9d37b3ac390c83d194ea035d56f360e51acfa66a3ed",
+          "fullFrozenNoteSha256": "f36b6c266db64b3fb03a361851bbafc3df10c17e397ee1ef88fbf5b4f1977e28",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1052,
+          "noteDescSha256": "2a4ed9a0cf82ce03ee78ca1e35f0dee1b267c4cae627b885df6066d546bdaa30",
+          "fullFrozenNoteSha256": "78d2fc6c75b3a768887258dca23b51e8b0ff0d168c32f17aa1c76051cae1e557",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1073,
+          "noteDescSha256": "6d21c8df743917960eb31c8167da926c7a25228f544c1145593591d4754a9c34",
+          "fullFrozenNoteSha256": "00cf6e37d75a1687af0caa9c54642a2e6da72c0b960a554eb8c81aca411b8062",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 401,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 416,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 418,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 423,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 462,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 608,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 612,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 614,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 686,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1052,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1073,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 401,
+          "quote": "五道营胡同"
+        },
+        {
+          "noteId": 416,
+          "quote": "很有文艺气息的一条胡同"
+        },
+        {
+          "noteId": 417,
+          "quote": "第一次来北京想沉浸式感受地道老城烟火气"
+        },
+        {
+          "noteId": 418,
+          "quote": "北京的春天去哪里？这6条春日宝藏Citywalk路线快收好！"
+        },
+        {
+          "noteId": 423,
+          "quote": "这6条walk路线，既有地地道道的老北京味道也有小众不一样的北京风情"
+        },
+        {
+          "noteId": 462,
+          "quote": "又到了北京金秋的时节"
+        },
+        {
+          "noteId": 608,
+          "quote": "五道营胡同➡️国子监街"
+        },
+        {
+          "noteId": 612,
+          "quote": "北京的年味儿都藏在老胡同里"
+        },
+        {
+          "noteId": 614,
+          "quote": "小经厂胡同➡️方家胡同➡️国子监➡️五道营胡同"
+        },
+        {
+          "noteId": 686,
+          "quote": "方家胡同-五道营胡同-地坛公园"
+        },
+        {
+          "noteId": 1052,
+          "quote": "实打实自己全部玩过的路线，按地理位置分片规划"
+        },
+        {
+          "noteId": 1073,
+          "quote": "超级多好逛的古着店"
+        }
+      ],
+      "conclusion": "13条提及/12篇正文已读（note417 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：五道营胡同是北京东城雍和宫东侧的胡同，rev=2、主位置725、别名「五道营」「五道营胡同」。原文稳定事实：定性写「很有文艺气息的一条胡同，各种创意小店，咖啡店，手艺店，下午在这喝杯咖啡，很惬意」「五道营文艺小店扎堆」「五道营木香花墙」「超级多好逛的古着店，里面的衣服首饰都是中古味…还有设计师开的独立服装店，塔罗水晶饰品」；路线地位写「雍和宫-五道营胡同-国子监-孔庙和国子监博物馆--雍和宫大街-东直门内大街-北新桥地铁口」「地坛庙会➡️雍和宫➡️五道营胡同➡️国子监街」「雍和宫-孔庙-国子监-方家胡同-五道营胡同-地坛公园」「小经厂胡同➡️方家胡同➡️国子监➡️五道营胡同」；提示写「这些点不用预约，不用抢票，在北京超难约的情况下，这条线做备选」「走不动就骑起共享单车」。边界单列：①雍和宫、国子监街、孔庙和国子监博物馆、方家胡同、小经厂胡同、地坛公园是相邻独立主体，本轮不并入五道营胡同、不建组成关系、不改坐标；②school酒吧、观夏、椋木等店铺点位不新建主体；③原文有「五道营」与「五道营胡同」两种写法，与既有别名一致，本轮不改主名别名；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "9ba25c15e2bf6a684e4e981e196bc0d6",
+      "name": "三里河公园",
+      "expectedRevision": 3,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 3430,
+          "inputHash": "7efd0ae1be75310d417c04031461c9288dcaada6a6d0c8ca03a128f902c0717f",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3422,
+          "inputHash": "ce495d63678141dc8edf4588c72b95b3391adbb1c646292a5e41febadc58cfb5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1914,
+          "inputHash": "d787dce480002693c0d2ecf25274370b234badcd8ed2c74d7d4fdea994152cf2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1947,
+          "inputHash": "353f514b389348fb3c0ab8648e5ff08076a6368832b6f48ab7070589ac504618",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2107,
+          "inputHash": "cbe48ed4c032a3b46d88f6fc0b67d5c1808b680772569e533919371b4e23b8a2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2550,
+          "inputHash": "a5cb103567ee6035dbc36c24ab3f5da598dc9cc5925ecce3697014eb14a41c06",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2231,
+          "inputHash": "41c700990850fac6c0704dc3f9f181707f440a888ac2f646919aa205850264d9",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2443,
+          "inputHash": "b83c85fcb3228b9203f26227e0f466c08c83c3c921294ec2ba4b91632bce5c95",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2251,
+          "inputHash": "6696ec9e8c2b4f6d8dc47c63de11cbcbd920f7a12bca7e366b9f4fa7a7e1dd8b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2724,
+          "inputHash": "50578e0ac88a2baac0ef0bdc559a6795152b2a9e8c2ba7066b2f3acea84d9248",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2894,
+          "inputHash": "e1c685f25cd604d09cc36f3a7abf794190074c49ed115b3af09da4895581078f",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4649,
+          "inputHash": "a6f34ab61e4eee20a1219bbb4890998e3971d0b3079f9c215a794c4d9b41c48b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        3430,
+        3422,
+        1914,
+        1947,
+        2107,
+        2550,
+        2231,
+        2443,
+        2251,
+        2724,
+        2894,
+        4649
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 414,
+          "noteDescSha256": "87afb50ef07c02167617ef603e57f180bded47003885c47fa374cac78840b37a",
+          "fullFrozenNoteSha256": "7d6184057412a30ab81f7388b3da026c697dadc2ef880ff6da7d24e8ba5e7ecb",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 415,
+          "noteDescSha256": "d8cc8f21a718f356b682540b759e6ea03b338c8293234554c8d29f95714f29bd",
+          "fullFrozenNoteSha256": "74174da7792d432fa96a59a51a9906518f2e3f0dc8e3bd60fdc20c275b587288",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 418,
+          "noteDescSha256": "5a1e5b5744c71a5de2c437412bd17983cc732e02ea8fddd6b0fcab1f98c9ffff",
+          "fullFrozenNoteSha256": "dddb2ff96c61a24ed643ea8a34daa0ed58a53030157a7bdda0c66f69a53dfbfc",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 423,
+          "noteDescSha256": "3adf6e16c3114f208f647c1ff2e9e4dd9baf30c316a7175687a85a53275ce680",
+          "fullFrozenNoteSha256": "842b47428eb4cfd2722065127247d2e98da46481246356fab2cd10bb010e6ca4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 462,
+          "noteDescSha256": "cf2aee56c756e00bfbb466907fd0c611750ac97c66bc7f6d590e8ec323a312fb",
+          "fullFrozenNoteSha256": "94fbc2b93ea8c21cc0c053dac15639d374e52e1a2d64a086877d9987b43f2500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 479,
+          "noteDescSha256": "bbbcf40a3249e68206c57e1a1275321b655e525bb73299bd56da98b839a272c4",
+          "fullFrozenNoteSha256": "a62934cd40bbb364402253f5005342af941ee3d69b4256e1d8757189bb72fbc5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 608,
+          "noteDescSha256": "c8efc5d4d3ecb056a779114e168809d8cfb8bcac3b08d0e35474fc012f7067e1",
+          "fullFrozenNoteSha256": "fff1e5ebc1c93e240e0ba52cd50c4da847b3de9ac2ee7ffe6f014161f77aad1e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 614,
+          "noteDescSha256": "18e8393bfac964be2cb52c0e65444c511e78373a959a47246f21eb977e129dd7",
+          "fullFrozenNoteSha256": "92fff9895807a974201f46426a125217a4872d83143e2b12a3b6aae3f04f8d6e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 619,
+          "noteDescSha256": "73ac45cc9fd3dbe0080989224d12262ea70a49d4dded757a562d7adb24109bb8",
+          "fullFrozenNoteSha256": "66cf382b70d5cbe5c6ba13d79d75452ba53dde66a4755bf64da2d86af782b73a",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 686,
+          "noteDescSha256": "b813324b5846fd268336b9d37b3ac390c83d194ea035d56f360e51acfa66a3ed",
+          "fullFrozenNoteSha256": "f36b6c266db64b3fb03a361851bbafc3df10c17e397ee1ef88fbf5b4f1977e28",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1209,
+          "noteDescSha256": "0fe6c24876ed7ccfc5f686f3345a7c9e070f28b102da7b2ea05caac85dec0dfa",
+          "fullFrozenNoteSha256": "416cdd54c1f28fbbc0f2b7763c4e3820ee3a1d9f0901aaeddfe933c7cbfa260a",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 414,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 415,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 418,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 423,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 462,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 479,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 608,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 614,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 619,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 686,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1209,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 414,
+          "quote": "闹中取静的“首都小江南”"
+        },
+        {
+          "noteId": 415,
+          "quote": "走在河边会有一种城市突然安静下来的感觉"
+        },
+        {
+          "noteId": 417,
+          "quote": "第一次来北京想沉浸式感受地道老城烟火气"
+        },
+        {
+          "noteId": 418,
+          "quote": "北京的春天去哪里？这6条春日宝藏Citywalk路线快收好！"
+        },
+        {
+          "noteId": 423,
+          "quote": "这6条walk路线，既有地地道道的老北京味道也有小众不一样的北京风情"
+        },
+        {
+          "noteId": 462,
+          "quote": "又到了北京金秋的时节"
+        },
+        {
+          "noteId": 479,
+          "quote": "小桥流水、芦苇荡和黑天鹅"
+        },
+        {
+          "noteId": 608,
+          "quote": "三里河公园➡️西兴隆街"
+        },
+        {
+          "noteId": 614,
+          "quote": "北京的胡同已经进入初夏模式啦"
+        },
+        {
+          "noteId": 619,
+          "quote": "免费！就在前门脚下，芦苇、水巷、石板桥"
+        },
+        {
+          "noteId": 686,
+          "quote": "北京坊-三里河公园-草厂横胡同-中国法院博物馆"
+        },
+        {
+          "noteId": 1209,
+          "quote": "7️⃣三里河公园"
+        }
+      ],
+      "conclusion": "12条提及/12篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：三里河公园是北京东城前门东侧的滨水城市公园（原三里河河道一带），rev=3、主位置743、别名「三里河」「三里河公园」。原文稳定事实：定性写「闹中取静的『首都小江南』」「不敢相信二环里藏着小桥流水、芦苇荡和黑天鹅」「北京本地人都不一定去过的小众秘境」；免费与季节写「完全免费」「这里夏天有荷花，秋天有银杏，四季都好看」「冬天的水面很静，走在河边会有一种城市突然安静下来的感觉」；路线地位写「前门地铁站I口出➡️前门大街➡️北京坊➡️杨梅竹斜街➡️樱桃斜街➡️大栅栏➡️鲜鱼口街➡️三里河公园➡️草厂三条&西兴隆街」；时长与花费写「从咖啡店走3分钟就到，完全免费」「三里河公园 ¥0」。边界单列：①前门大街、北京坊、杨梅竹斜街、樱桃斜街、大栅栏、鲜鱼口、草厂三条、西兴隆街、青云胡同是相邻独立主体或点位，本轮不并入三里河公园、不建组成关系、不改坐标；②春风习习杂志图书馆、福叁咖啡、为水咖啡、PANGEAISM、Jolly Jolly 为沿河店铺点位，不新建主体；③原文「三里河」与「三里河公园」两种写法与既有别名一致，本轮不改主名别名；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "1b4da176d40c3a09cb1cbeb395e23149",
+      "name": "中山公园",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 2647,
+          "inputHash": "7db9e830252cea3f57a4e1e12f307a41970eafaed3855f11ac8056c1d66bb6df",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4437,
+          "inputHash": "da4e7b52ea0191a00a388f94380e26a1a54b4c34b3eeffbb1c0abc7bbf3dd6b2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2534,
+          "inputHash": "9a50323acbc57350b790256cbe9d0d54d8a1edcd3cf22c999d315199633940ce",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3314,
+          "inputHash": "c20717c65ba91b08fe175149ce99c4e96022a7489d7ab3ab07305eee4c893871",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3339,
+          "inputHash": "7a03646f07933b8602d6b4efdf2b5724c73ce2fd39ca847669f5acf88f155db8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4485,
+          "inputHash": "2dde46f37b6bb47f2cbfbe00ec6c5dd4d548f17d74e49f6ea619e7fa81be470e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5220,
+          "inputHash": "574f333e2cecac4b8a7e0a4d9446df30c243c916b74a3a8f7d745b4023d84914",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5227,
+          "inputHash": "35af41c80832a3c5393ebb50fe6e4f586ec0f1d01f15f2f57ec36c6ecc3588ae",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4391,
+          "inputHash": "62902734c28018bf6588f59e3349915d0f64e43843d49af3c6b69d0847c09f7d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4695,
+          "inputHash": "7bc6e39260be892f75a2a23ed4f6793bd00900d4a3ff29f514dfb9ba48f10441",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4865,
+          "inputHash": "526509de56ad193f53a88bf67a4c13fdcb14b424572c4fe99dedfe8c938d3799",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4574,
+          "inputHash": "f34395f91298161de566b9bafae723c6a8909d274b87ed1c1b51699dc6227ad2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        2647,
+        4437,
+        2534,
+        3314,
+        3339,
+        4485,
+        5220,
+        5227,
+        4391,
+        4695,
+        4865,
+        4574
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 702,
+          "noteDescSha256": "c4d98ba24f92f13a3caa27b68798658d0ca9d65031ba28e5551f15b69ffa0b32",
+          "fullFrozenNoteSha256": "9175e1f2fc55b2c4f44f5f5f8f03c4704f7f7369996ad3cdf69b9d93fbf477c2",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 703,
+          "noteDescSha256": "1c512f79ca54745f71dc4ff8a7438b29833d16e8dd0693922dcf34161d2e24ca",
+          "fullFrozenNoteSha256": "5a967d712d462414138a6e659cd999908446c30f2be66d12bb9a405fc7ebdeb6",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 709,
+          "noteDescSha256": "00a178226f21d7476268bde7a5bae88182e900e99bc622c22588e0d83ce25a31",
+          "fullFrozenNoteSha256": "d9d35457a2f9f614030b18a735505295c1ae9b813e8b25b81df24c753642bbe7",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 711,
+          "noteDescSha256": "f31840ee3852d58fc9e9e1c6c40ddfae91926db08df7d976a905c714fbe00476",
+          "fullFrozenNoteSha256": "1b146eff4bbb4871fe1c47a1e0e90bf864a598c8d4b691ab66a03daadf22d921",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1087,
+          "noteDescSha256": "500088d26fc1d451c47eeddccfd5a6ca25d5385558f704740f572402982c1482",
+          "fullFrozenNoteSha256": "6bd572685b1aeb2b0b508d6465353bc8478508c3db9d88a078fc218d3432b7ed",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1102,
+          "noteDescSha256": "67f16856dccf0c8c43614f7bc5189ba7fd370fe17d2cf1226230b8e717d4b123",
+          "fullFrozenNoteSha256": "123f3261c4150e56ef364ddb71c9c135b078664594dfac829bb6f1ec185fd0a5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1128,
+          "noteDescSha256": "2a4ff96686a8d77a25283b67cc5cbf64d7386aa1190f002bd7aa3c599fca14c8",
+          "fullFrozenNoteSha256": "d11db69604868342d9c5a00ad42cf1e95441248f05b01aa3ad22a5bb15e4c2a1",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1203,
+          "noteDescSha256": "2ffcfd64188899b28c852cfd05d75a2fce81058e03b7a8bc4f3198cf218a4e8a",
+          "fullFrozenNoteSha256": "4c42a89fd6993e2f0f852cc0f6e360960f40476315a2fbb3724515aba092f426",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1208,
+          "noteDescSha256": "390314df7fe51cedc4d7d64fb282b1368b481ae7caba2fd83e05335ead76b58a",
+          "fullFrozenNoteSha256": "2b1285554e095b2c371bf0436e6135baddcc713d907a8674920b5a446724aa84",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1211,
+          "noteDescSha256": "6d9d736d3b1a40d684c57f0945a475f359296ec68aea5b308450c610f4836e8d",
+          "fullFrozenNoteSha256": "fad4a63d23e62b22687c7d5dcfae9cacfcbe7e7ca427067cf2c436e8b3f2a294",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1219,
+          "noteDescSha256": "cd79e1e4666173d4b59da615cc40d003bda86b40943f89a786101d2260a2214f",
+          "fullFrozenNoteSha256": "0a54b37fe33fae55305efbae03e36162d63f259bcb0364173c5dced50e16da40",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 702,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 703,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 709,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 711,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1087,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1102,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1128,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1203,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1208,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1211,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1219,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 702,
+          "quote": "“中秋前后是北平最美丽的时候。"
+        },
+        {
+          "noteId": 703,
+          "quote": "普大喜奔，神兽归笼！孩子们开学了"
+        },
+        {
+          "noteId": 709,
+          "quote": "水谢和中山堂前银杏大道"
+        },
+        {
+          "noteId": 711,
+          "quote": "市区内最方便的赏秋地"
+        },
+        {
+          "noteId": 1087,
+          "quote": "我特意整理好一份北京景点分级榜单"
+        },
+        {
+          "noteId": 1102,
+          "quote": "红墙金叶yyds"
+        },
+        {
+          "noteId": 1128,
+          "quote": "老舍说：“秋天一定要住北平。”"
+        },
+        {
+          "noteId": 1203,
+          "quote": "社稷坛红墙古建秋色必拍，银杏大道不长，挤满了人，拍空镜一定早去。"
+        },
+        {
+          "noteId": 1208,
+          "quote": "社稷坛拱门间的银杏大道"
+        },
+        {
+          "noteId": 1211,
+          "quote": "p2 中山公园"
+        },
+        {
+          "noteId": 1219,
+          "quote": "颐和园、北海、中山公园、什刹海、紫竹院、陶然亭等"
+        }
+      ],
+      "conclusion": "12条提及/11篇正文已读（note702 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：中山公园是北京东城天安门西侧的皇家园林（社稷坛所在），rev=1、主位置831、别名仅「中山公园」。原文稳定事实：看点写「水榭那边有很大一片银杏，还经常能看到猫猫在房顶」「水谢和中山堂前银杏大道11月上旬」「社稷坛拱门间的银杏大道，红黄两色拱门」「社稷坛红墙古建秋色必拍，银杏大道不长，挤满了人，拍空镜一定早去」「红墙金叶yyds！皇家园林秋日氛围感直接拿捏」；时节与门票（口径并存）写「社稷坛…门票：3r」「💳：3元」「🎫3r」「中山公园—水谢和中山堂前银杏大道11月上旬」「地坛/中山公园：市区内最方便的赏秋地」；赏雪地位写「2.有山、有水/湖、桥、楼阁等，视野开阔更好：颐和园、北海、中山公园、什刹海、紫竹院、陶然亭等」。边界单列：①社稷坛、中山堂、水榭是园内点位，本轮不单独建主体；②故宫、景山、北海公园、天安门广场为相邻独立主体，不并入；③原文对门票写「3r」「3元」两种口径，属实一致、如实保留；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "1db494f9951cd3680159cdecf99f8223",
+      "name": "银锭桥",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 1910,
+          "inputHash": "ce15e6697674c6afe09364e973999e09a5b03eeedd9c3037c7b4a00554bf0589",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4253,
+          "inputHash": "80358fcab558b1e360494066a2cdd6bedbd1a8e66248cb773f51409110ae48e0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3235,
+          "inputHash": "0bd1ae185a18dfaf40222812e070a3ef5148a3a134be50e99141ff342d2cc4bb",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4655,
+          "inputHash": "58e2a136ee8f86f560a7cd4ad74045c8baa8ef5ab2b572700584079a40aff553",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5139,
+          "inputHash": "eb3b57480ccc0c9f26027c3f6e8128b2a2f965246846ff804a6cf95d433f5fde",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4705,
+          "inputHash": "928299d3ebd9b40de5340af00d547caf3c0dc5782f5b4302fc6729dcd53a90bd",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4735,
+          "inputHash": "b5a83e2c7649a160ef07d7ec73713f55d6c8a934ba4f34d210c559a88c09a4b1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4936,
+          "inputHash": "a21aba3ed23f4355709993f41dcdd1490a4168c545a9dfa64e6b37e200608c65",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5132,
+          "inputHash": "acfefc2f4d6603f77173a078593771435805b9dbdfde705d389e5c26cd9e2363",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5087,
+          "inputHash": "6b336d6839484216e8c426b31b660dd59e9ecfb8d45ab3ca7d5c6149ccae77c8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4759,
+          "inputHash": "150c2751924a77abec378517add73ece72b5c27f0151d8192fef4548c61056dc",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        1910,
+        4253,
+        3235,
+        4655,
+        5139,
+        4705,
+        4735,
+        4936,
+        5132,
+        5087,
+        4759
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 689,
+          "noteDescSha256": "b060dba06b4251a43d5cffaed73937245d49da51341fa6b707e7284bba41265d",
+          "fullFrozenNoteSha256": "34dfb274dc8877707ef94df251b6b49b2121447c28072ea967aa5e1a721e30b4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1075,
+          "noteDescSha256": "266061e2636d250c2048d8cce56321b91670ec36d7928fa6f9b7123b9c08b186",
+          "fullFrozenNoteSha256": "51d36921a1101f9a5213dd5afb9b727a2c9775aa1cc0dbe8f2bd97c79bf015c5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1076,
+          "noteDescSha256": "48a3c78e442b9049f50b1e3cc34c81a9225062b2966d2a35a888f89741028f7b",
+          "fullFrozenNoteSha256": "5017c713051525ea7ae30ec153ebc3ce1944e0eda0b17060764a3ffdf052a566",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1077,
+          "noteDescSha256": "f79c442b1077ce627e6921b6c7de0e1941f017ba4e5c233dcac960ff645b1dfa",
+          "fullFrozenNoteSha256": "984f84a62d0a6f6bf0fc61cedfee342ce31b267336d36eeee223fb66a9e4037d",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1078,
+          "noteDescSha256": "a98424327a337719ef7a0f5d5ca7966b71e9b8afa89f18feb9b0a72486226b27",
+          "fullFrozenNoteSha256": "d45bf39a52bd9d520d3dbd84bda6beee630e437340e271585a79bc0411b4d937",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1080,
+          "noteDescSha256": "2182cf12b45620abfed05953cc961d67f3e236c93251c427c30a536e4967533a",
+          "fullFrozenNoteSha256": "e47aecc9f9a189b82d2efe9cd71e77cc94357f8b5d3871d96f11779c50d78ab8",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1082,
+          "noteDescSha256": "6a2cb4cbd39bae4e00a5f428a2bb915ea8215a63a46adecc83a04f4ab5fbaf54",
+          "fullFrozenNoteSha256": "3d69ee7779eb970a7f2f4fca5b2e501b6217c335ce025ed7804254174d98df8f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1083,
+          "noteDescSha256": "1858c17a101c793c3185dfc4e3580690371f394dfa5859fbb8c500b8eacfe77e",
+          "fullFrozenNoteSha256": "b8b178ed254035a3f311fe6bf3c8ace85f9c245b40333199dd281d04e66beb64",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1093,
+          "noteDescSha256": "6d21a428ca150d3a141d127b9042732ce02046f696d8a83f2bf5ff50c2a16a38",
+          "fullFrozenNoteSha256": "7a8eb319a0536b3f06ddb03c8ef18c8ba8fb60030a604f3125706147cf347a59",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 689,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1075,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1076,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1077,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1078,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1080,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1082,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1083,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1093,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 417,
+          "quote": "第一次来北京想沉浸式感受地道老城烟火气"
+        },
+        {
+          "noteId": 689,
+          "quote": "银锭桥→望海楼"
+        },
+        {
+          "noteId": 1075,
+          "quote": "半日游citywalk路线"
+        },
+        {
+          "noteId": 1076,
+          "quote": "北京最喜欢的日落机位什刹海银锭桥+颐和园"
+        },
+        {
+          "noteId": 1077,
+          "quote": "什刹海的夏天，是橘子汽水味的"
+        },
+        {
+          "noteId": 1078,
+          "quote": "银锭观山看夕阳最佳机位"
+        },
+        {
+          "noteId": 1080,
+          "quote": "站桥上能把前后海尽收眼底"
+        },
+        {
+          "noteId": 1082,
+          "quote": "银锭桥：经典机位，眺望什刹海"
+        },
+        {
+          "noteId": 1083,
+          "quote": "晴天远眺西山"
+        },
+        {
+          "noteId": 1093,
+          "quote": "什刹海超级超级出片！！"
+        }
+      ],
+      "conclusion": "11条提及/10篇正文已读（note417 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：银锭桥是什刹海前海与后海之间的石桥，rev=1、主位置1562、别名「什刹海银锭桥」「金锭桥/银锭桥」「银锭桥」。原文稳定事实：定性写「银锭桥：什刹海的地标，也是看日落的绝佳位置。傍晚时分，湖面波光粼粼，夕阳和鼓楼同框，非常出片」「银锭观山看夕阳最佳机位」「银锭桥：前后海分界，燕京小八景『银锭观山』，晴天远眺西山，日落最佳机位」「站桥上能把前后海尽收眼底。晴天能看到远山，傍晚落日美到失语」；路线地位写「什刹海站🚇➠➠钟鼓楼➠➠烟袋斜街➠➠糖房咖啡➠➠金锭桥/银锭桥」「鼓楼西大街 → 什刹海后海入口 → 后海环湖步道 → 银锭桥 → 烟袋斜街」「地铁8号线什刹海站A口→火神庙→万宁桥→银锭桥→望海楼→宋庆龄故居…」；负评写「什刹海超级超级出片！！尤其是7点左右的蓝调时刻，但人超级超级多」。边界单列：①什刹海为既有主体，银锭桥是其上点位，本轮不建组成关系到什刹海、不改坐标；②金锭桥、万宁桥、望海楼、后海、荷花市场、烟袋斜街、鼓楼为相邻独立主体或点位，不合并；③既有别名含「金锭桥/银锭桥」，与原文「金锭桥/银锭桥」写法一致，本轮不改别名；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "3996a4a8ad647dbd59ebf72045116f7e",
+      "name": "西兴隆街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 3421,
+          "inputHash": "7b56c85990142b0a87cf3840935a50da1be90d18bcf3e56e696ceb0f72fbcead",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1913,
+          "inputHash": "6dddbbc914b6152ec3d83aa1aede1c40e9145a6b44e24fd778bb6bcd851d97b5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4255,
+          "inputHash": "3e9bd2404e2b1ef0ae0a5878ea7c6f11ac2864bac9b61d17c7dd65e7eb4708da",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1946,
+          "inputHash": "bc363238fe05fbcea8f9918e3429b90ad4cec702a8594222ede8b8f36b826918",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2008,
+          "inputHash": "9e7ac2cbbe4afe1de7423b3ac5cf8febf43942edeb42b702fbfb22c4cfcd8489",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2106,
+          "inputHash": "9e5f4a12e73a6e45859ecd4077d3dad0a27a40696a9d123674f3fecd340ad8eb",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2549,
+          "inputHash": "d78e2116491ab4f2521b820be0642b54d66bca4fb34b321115a24222565eb6e4",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2229,
+          "inputHash": "d24651ac8b3739c1803064f2a43b08a15f2dbb3717f685ca0ccdc8c9022718a7",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2178,
+          "inputHash": "d32ee1cd6a8413279007a75e72e130eb143cc3e67015355af3c175396efb81a8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2444,
+          "inputHash": "dc172044062615f6aad72b3497b4f29ae30ea9f83b76710aaf57cd6780deb59b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2250,
+          "inputHash": "7f4127da14852c52c0928edcb28fa37f8587ea89673f4b898429bd50ce834d8a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        3421,
+        1913,
+        4255,
+        1946,
+        2008,
+        2106,
+        2549,
+        2229,
+        2178,
+        2444,
+        2250
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 415,
+          "noteDescSha256": "d8cc8f21a718f356b682540b759e6ea03b338c8293234554c8d29f95714f29bd",
+          "fullFrozenNoteSha256": "74174da7792d432fa96a59a51a9906518f2e3f0dc8e3bd60fdc20c275b587288",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 418,
+          "noteDescSha256": "5a1e5b5744c71a5de2c437412bd17983cc732e02ea8fddd6b0fcab1f98c9ffff",
+          "fullFrozenNoteSha256": "dddb2ff96c61a24ed643ea8a34daa0ed58a53030157a7bdda0c66f69a53dfbfc",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 420,
+          "noteDescSha256": "228f1b593202e5afeb7fa903f12db5bc3d07b9b590b413cab88a6f41be8146ae",
+          "fullFrozenNoteSha256": "3dd7d9e54b2ce525448184f3f1cab4c752d562eed73569de7d5fe7914ef61523",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 423,
+          "noteDescSha256": "3adf6e16c3114f208f647c1ff2e9e4dd9baf30c316a7175687a85a53275ce680",
+          "fullFrozenNoteSha256": "842b47428eb4cfd2722065127247d2e98da46481246356fab2cd10bb010e6ca4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 462,
+          "noteDescSha256": "cf2aee56c756e00bfbb466907fd0c611750ac97c66bc7f6d590e8ec323a312fb",
+          "fullFrozenNoteSha256": "94fbc2b93ea8c21cc0c053dac15639d374e52e1a2d64a086877d9987b43f2500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 479,
+          "noteDescSha256": "bbbcf40a3249e68206c57e1a1275321b655e525bb73299bd56da98b839a272c4",
+          "fullFrozenNoteSha256": "a62934cd40bbb364402253f5005342af941ee3d69b4256e1d8757189bb72fbc5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 604,
+          "noteDescSha256": "91eb026d1cd4b37faaee784145e414380c20f91f1cced062fb9bce9a464e8e7e",
+          "fullFrozenNoteSha256": "bee52de56c86dc73a116261009387da861b2f2bc664f186d9842824a24f5ec5c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 608,
+          "noteDescSha256": "c8efc5d4d3ecb056a779114e168809d8cfb8bcac3b08d0e35474fc012f7067e1",
+          "fullFrozenNoteSha256": "fff1e5ebc1c93e240e0ba52cd50c4da847b3de9ac2ee7ffe6f014161f77aad1e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 614,
+          "noteDescSha256": "18e8393bfac964be2cb52c0e65444c511e78373a959a47246f21eb977e129dd7",
+          "fullFrozenNoteSha256": "92fff9895807a974201f46426a125217a4872d83143e2b12a3b6aae3f04f8d6e",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 415,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 418,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 420,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 423,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 462,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 479,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 604,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 608,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 614,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 415,
+          "quote": "如果你想在北京找一条"
+        },
+        {
+          "noteId": 417,
+          "quote": "第一次来北京想沉浸式感受地道老城烟火气"
+        },
+        {
+          "noteId": 418,
+          "quote": "北京的春天去哪里？这6条春日宝藏Citywalk路线快收好！"
+        },
+        {
+          "noteId": 420,
+          "quote": "PANGEAISM：二层“魔法屋”杂货铺"
+        },
+        {
+          "noteId": 423,
+          "quote": "这6条walk路线，既有地地道道的老北京味道也有小众不一样的北京风情"
+        },
+        {
+          "noteId": 462,
+          "quote": "又到了北京金秋的时节"
+        },
+        {
+          "noteId": 479,
+          "quote": "第三篇了！今天不逛景点"
+        },
+        {
+          "noteId": 604,
+          "quote": "北京的年味儿越来越浓了"
+        },
+        {
+          "noteId": 608,
+          "quote": "马上就要过年啦"
+        },
+        {
+          "noteId": 614,
+          "quote": "北京的胡同已经进入初夏模式啦"
+        }
+      ],
+      "conclusion": "11条提及/10篇正文已读（note417 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：西兴隆街是北京东城前门东侧的老城街巷，rev=1、主位置742、别名仅「西兴隆街」。原文稳定事实：定性写「不吵、不赶、不用攻略也能走完的胡同路线」「西兴隆街是一条你走进来就会自动放慢脚步的街」「这条街有翻新过的灰砖老房，但完全没商业化，早上光影绝美」「漫步到充满老城烟火气的西兴隆街」；看点与店铺写「PANGEAISM：二层『魔法屋』杂货铺，主打中古首饰和瓷器」「JOLLY：25元起的手作小物，门头超好拍」「為水咖啡／福叁咖啡」「平安锅贴／席上喳喳」「西兴隆街的手作文创店也很有特色」；路线地位写「明城墙遗址公园→圣弥额尔天主教堂→法国邮局旧址→中国法院博物馆→西兴隆街→三里河公园」「虎坊桥B口 →杨梅竹斜街→北京坊→前门大街（大栅栏&鲜鱼口）→西兴隆街→东交民巷」「琉璃厂➡️杨梅竹斜街➡️大栅栏➡️前门大街➡️鲜鱼口➡️三里河公园➡️西兴隆街」；提示写「地铁7号线桥湾站B口出发，步行5分钟到西兴隆街」。边界单列：①三里河公园、杨梅竹斜街、草厂横胡同、前门大街、大栅栏、鲜鱼口、北京坊、东交民巷是相邻独立主体，本轮不并入西兴隆街、不建组成关系、不改坐标；②PANGEAISM、Jolly Jolly、福叁、為水、平安锅贴等为店铺点位，不新建主体；③本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "c5250326550bc954a0a07f41679bf87f",
+      "name": "恭王府",
+      "expectedRevision": 2,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 2034,
+          "inputHash": "d1b21fb4fb84eebc0a5a10a844194817e8728d4eba334069aa47dcd783343485",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2821,
+          "inputHash": "285ad0ed45a4dcf88233a7b38075d19fdc7fee83e3bc47653527043bb45ec3e5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2796,
+          "inputHash": "b67ac5244a448765a2c14c0c767e3b794f03b105a5b6376af3c18793c3bcd05b",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3020,
+          "inputHash": "e7ea076b8549b9718c285bf65c07ce04bc88d3489570fdd561c6942888b252de",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3291,
+          "inputHash": "3f163fc196d112322334ff53548adadbddd65c2284705a261c89ab0f7834840a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3382,
+          "inputHash": "7cd5571fc2afb79772b8077a4e21786d1abc702b554631a7864c193606d619d5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3240,
+          "inputHash": "1cbefd573a5d52f48fbd35c87435f82eed81bc20aec3687ffa81d316d70525c1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4740,
+          "inputHash": "1931bc4b87f419f2c0d3e7320230b462de1e88492c3ce2b0c841efef3e3773d3",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5085,
+          "inputHash": "c6f2b0fbacc0d402ae367a3596673eeb54dbba930bcc0c400966941c3effc8c0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4754,
+          "inputHash": "e3abca0e2426754c0cb306e0628bf5c2ead9404201b395f0f1e461cb96131341",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4834,
+          "inputHash": "5608d3997a0068a9d802283d2e0f8a00fe4d8b7e1223af93a235b7a760ff54f2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4886,
+          "inputHash": "29158458145544937aa3a383b47afd1b365a6a4ae01361ee3c0216b8373677bf",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        2034,
+        2821,
+        2796,
+        3020,
+        3291,
+        3382,
+        3240,
+        4740,
+        5085,
+        4754,
+        4834,
+        4886
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 408,
+          "noteDescSha256": "2a609ae0e72300436e977d3b7bae670c595055548b7f4a059e4b2211b1c17ef4",
+          "fullFrozenNoteSha256": "b5e71fdcc3bb645fa28f5e38b808a808a72461e57cd44a2b6104758f6d4bdaef",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 468,
+          "noteDescSha256": "a39c98be4a4fe1eda32509c136264546651d8cd2d5bddf1b0b2119661d40df87",
+          "fullFrozenNoteSha256": "1a2ccdd8143ab4c5a7df3e5f2cec7204eb6a7712d950943e8af50c667c022572",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 501,
+          "noteDescSha256": "41905f08e9740d0d11046374c28a7d842d6d9f7d77b9054d304bec3e0f1cf6c7",
+          "fullFrozenNoteSha256": "c35e2c1dcad4dd3a329a1478e3feb1d16084ed40ad8ce19c6e858e9f8ce7231c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 503,
+          "noteDescSha256": "34d857c84c381b084d0fc3b284f6e4b9026d247a09eb04ac3512421b8cd1d77e",
+          "fullFrozenNoteSha256": "f7ebbb835084ba2727b9e329b22bcf64a449a297a69efe69624aee9a1f213a79",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 506,
+          "noteDescSha256": "0b324bf483d7bdf8157b0bc2e4294219fb5385c51c36726427f3aa42bc310d5d",
+          "fullFrozenNoteSha256": "d26f21e59b5ce78984f1b2af6549585bac59642465e764c51b775c42f73e425e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 508,
+          "noteDescSha256": "91e9b240731144884cf913df9757b1f7b2107b11608090343145c0a2f4409a50",
+          "fullFrozenNoteSha256": "eeb53a75f24652693cce8216e0c2e81bc75ff03dc91c36c847a30d28dd6af945",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 689,
+          "noteDescSha256": "b060dba06b4251a43d5cffaed73937245d49da51341fa6b707e7284bba41265d",
+          "fullFrozenNoteSha256": "34dfb274dc8877707ef94df251b6b49b2121447c28072ea967aa5e1a721e30b4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1078,
+          "noteDescSha256": "a98424327a337719ef7a0f5d5ca7966b71e9b8afa89f18feb9b0a72486226b27",
+          "fullFrozenNoteSha256": "d45bf39a52bd9d520d3dbd84bda6beee630e437340e271585a79bc0411b4d937",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1083,
+          "noteDescSha256": "1858c17a101c793c3185dfc4e3580690371f394dfa5859fbb8c500b8eacfe77e",
+          "fullFrozenNoteSha256": "b8b178ed254035a3f311fe6bf3c8ace85f9c245b40333199dd281d04e66beb64",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1120,
+          "noteDescSha256": "23c6fe12751ab826596a0a61e3b17a9fcc948f67db4b50b192efea15f9f7bf11",
+          "fullFrozenNoteSha256": "ad6c8105314af48a6625ca0429f31e95ac1541a3535028ac1f850f69aebb1788",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1121,
+          "noteDescSha256": "9ba6b945e809669b5b4c13ce219c266fe50156ed1264b3e047721c034c95b97b",
+          "fullFrozenNoteSha256": "9f7c6cddeff436cfe08ba4b3f10d32f0dfdcb4c11e004a8dc4f1cbe7f1cb0011",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1122,
+          "noteDescSha256": "55bbc7f7e5b40fb0484e328d6f39092dbdd4d1abbb4b5ff919390b419d1b38ff",
+          "fullFrozenNoteSha256": "43a1153d7fb947298af33c2b8f08b22838a074a8ce6371472f9a3b45c31f1520",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 408,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 468,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 501,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 503,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 506,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 508,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 689,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1078,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1083,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1120,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1121,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1122,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 408,
+          "quote": "6. 恭王府博物馆"
+        },
+        {
+          "noteId": 468,
+          "quote": "来北京最容易踩坑的就是预约"
+        },
+        {
+          "noteId": 501,
+          "quote": "一座恭王府，半部清代史"
+        },
+        {
+          "noteId": 503,
+          "quote": "重点提醒：故宫、国博、天安门、恭王府、八达岭长城必须提前抢票！"
+        },
+        {
+          "noteId": 506,
+          "quote": "提前10天抢票"
+        },
+        {
+          "noteId": 508,
+          "quote": "在“恭王府博物馆”公众号预约"
+        },
+        {
+          "noteId": 689,
+          "quote": "什刹海的初夏，蓄满了绿意"
+        },
+        {
+          "noteId": 1078,
+          "quote": "什刹海是由西海、后海、前海组成的北京必打卡景区"
+        },
+        {
+          "noteId": 1083,
+          "quote": "1.门票：整片什刹海环湖免费"
+        },
+        {
+          "noteId": 1120,
+          "quote": "一座恭王府，半部清代史。"
+        },
+        {
+          "noteId": 1121,
+          "quote": "带娃游览清朝大贪官和珅住宅"
+        },
+        {
+          "noteId": 1122,
+          "quote": "第一次去北京，第一次solo trip"
+        }
+      ],
+      "conclusion": "12条提及/12篇正文已读（该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：恭王府是北京西城什刹海西侧的清代王府（现恭王府博物馆），rev=2、主位置1299、别名「恭王府」「恭王府博物馆」。原文稳定事实：定性写「清代规模宏大的王府，有『一座恭王府，半部清代史』的说法」「这里曾是和珅和奕䜣的宅邸，是北京保存最完整的清代王府，也是98版《还珠格格》的重要取景地」；看点写「后罩楼（藏宝楼）全长156米，俗称99间半」「西洋门：北京仅存的汉白玉西式拱门」「大戏楼（古戏台）：国内唯一封闭式清代木质戏楼」「天下第一福·福字碑藏在秘云洞内，康熙御笔」；游览路线写「一宫门 → 银安殿 → 嘉乐堂 → 锡晋斋（金丝楠木殿） → 后罩楼（藏宝楼） → 西洋门 → 独乐峰 → 蝠池→ 秘云洞·福字碑 → 大戏楼 → 牡丹园」；票与预约写「恭王府：要提前7‑10天预约，40r」「▪️恭王府｜提前10天抢票」「恭王府｜提前10天，20:00开售，在『恭王府博物馆』公众号预约。当天票需在16:00前买，刷身份证直接进」「恭王府（40r，每周一闭馆）」；提及记录 visit_duration 120 分钟（游览 2h 含古迹路线）。边界单列：①什刹海为既有主体，恭王府与其相邻但不建组成关系、不改坐标；②福字碑、后罩楼、西洋门、大戏楼为园内点位，不单独建主体；③原文「恭王府」与「恭王府博物馆」两种写法与既有别名一致，本轮不改主名别名；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "015e05c8be38ffb42eaf4238904907ce",
+      "name": "人民大会堂",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 1994,
+          "inputHash": "a299ce6618a68c6e2d333ead0e05d158423c5f6fa2dfa84515f55edf7f3e1136",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2488,
+          "inputHash": "e9a06c45b0d316f5a8bd692a6c4e99ef7191bcfca05acdf1d93ecd2da83e2a79",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3416,
+          "inputHash": "a1d58c4f1f9d315c8b6a121f47fa2d3aa313dc1ae09f28bb3061d041b703e007",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2626,
+          "inputHash": "8d3f419f2407d42a815d4edcb9d1971c4be8ad6dba045709a14e3f9e762145d0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4376,
+          "inputHash": "f762619896a68e28efa4b1ee456c4a3b81f427c8189bf1e3721d66c8221f87b1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2661,
+          "inputHash": "3632ef840ffe52bc1233550f8a6c39a2ad5055c64940d05311a9bbf778a2a551",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2820,
+          "inputHash": "5decc541cdc7e5afa1cd296bf062c4725a68bd968f111cf1ef85ed97d3cb51f6",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3121,
+          "inputHash": "fc2d7a9d1e996798bd34c274ae8b1670cf413ca2b1269a0ca9f5782250572d8f",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3381,
+          "inputHash": "49b8e3b127142edbbec3f969a75b8e5bdc42af24a8aca9d4c16051d7568bc20a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3206,
+          "inputHash": "6bda12e8c468749914c255a221c7e6ce54fa5d4f963b7460362192387cc76aa5",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5135,
+          "inputHash": "5a3dac82e7c27468478c0d0c5d6d5f621304f3d326cf06eae12b5f4336ab1f88",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4449,
+          "inputHash": "17dcf87845c7e9b949d554ebdeb6871021fb05367fd22b640b88eb0e385b26ae",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        1994,
+        2488,
+        3416,
+        2626,
+        4376,
+        2661,
+        2820,
+        3121,
+        3381,
+        3206,
+        5135,
+        4449
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 395,
+          "noteDescSha256": "170b4971350306329113261c7643f3f0c88c1ff99ab59fdc68af51efdd80f49e",
+          "fullFrozenNoteSha256": "b5fb28b36cc0e155126ffbf110727e62dcac1f12b7d9d9dd3397880222b79814",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 402,
+          "noteDescSha256": "51f948110dfaae1b89bfeffc0ac34684a68cdaf5c43875701e67617d1e0a6b8e",
+          "fullFrozenNoteSha256": "311b08847b80536f58950c90e225aed0ebfd0c1af212ce5e130bdb46ec0624a6",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 404,
+          "noteDescSha256": "22b25a256ac6f71cd2723a2169a7c9875762c8d32fa6ebcd9af09284cbe64fc6",
+          "fullFrozenNoteSha256": "b9542a8e6fdb70e5f70d6d46e356847f1a6ec63a9a0242c7124fe7241e399a6b",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 442,
+          "noteDescSha256": "5952f0800894121f76246184a8d81bca35b2e0ccaed8e41b9a812333ed190d79",
+          "fullFrozenNoteSha256": "5c19293f19f24f08d6d64b05e42efba1faa148d2a0c61eec9c389cf1a274c500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 467,
+          "noteDescSha256": "7cd641b61273b0f5f0e6c107b4fc81346654658988618c4f72def66b0cd34b86",
+          "fullFrozenNoteSha256": "3165b3cbe54943b964b57ab113537d8cfa01e20d58f645768a5973dbdd134a7d",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 468,
+          "noteDescSha256": "a39c98be4a4fe1eda32509c136264546651d8cd2d5bddf1b0b2119661d40df87",
+          "fullFrozenNoteSha256": "1a2ccdd8143ab4c5a7df3e5f2cec7204eb6a7712d950943e8af50c667c022572",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 469,
+          "noteDescSha256": "650546a35668c2c7c1b7e4c4b8bbbd0c13048001054be97f61d7f1221969b7b7",
+          "fullFrozenNoteSha256": "572a68fe7b4abc9387de5d55979e6a2582995e0c4251ca7958b6df79ed296dbe",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 508,
+          "noteDescSha256": "91e9b240731144884cf913df9757b1f7b2107b11608090343145c0a2f4409a50",
+          "fullFrozenNoteSha256": "eeb53a75f24652693cce8216e0c2e81bc75ff03dc91c36c847a30d28dd6af945",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 640,
+          "noteDescSha256": "8a501c753d26b90ccbc98a4b9d946e11ec0bb987de48910fe008845ed6d7cbb1",
+          "fullFrozenNoteSha256": "894ad06920ab596b7f4d8487a25e404c8f53074568022866b9d1bbb3892988af",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1037,
+          "noteDescSha256": "606c3e6aafe9959513232eb013c7ad1f28c1bf4475011d39bc6fd58325b06eaf",
+          "fullFrozenNoteSha256": "e095042c09ac0a4496aa0dc0ebf46a911a797134e9b72afb9301299e00ac5eff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1041,
+          "noteDescSha256": "3f982e22364fdc9b9ded6c6e1605a32d816bbc1d837863d6725d43a695dba800",
+          "fullFrozenNoteSha256": "5e533de4dc2fdcadf3936ece58e9034fe9476b276036a95744f817dff0c9c686",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 395,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 402,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 404,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 442,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 467,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 468,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 469,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 508,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 640,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1037,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1041,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 395,
+          "quote": "高铁：上海虹桥08:00"
+        },
+        {
+          "noteId": 402,
+          "quote": "图14：人民大会堂"
+        },
+        {
+          "noteId": 404,
+          "quote": "红墙黄瓦锁住了六百年的光阴"
+        },
+        {
+          "noteId": 442,
+          "quote": "姐妹们！刚从北京回来，整理了一份超好用的3天路线"
+        },
+        {
+          "noteId": 467,
+          "quote": "人民大会堂等通通要预约"
+        },
+        {
+          "noteId": 468,
+          "quote": "人民大会堂：提前3天预约"
+        },
+        {
+          "noteId": 469,
+          "quote": "还记得人民大会堂和天安门的排队"
+        },
+        {
+          "noteId": 508,
+          "quote": "仅通过微信小程序“人民大会堂参观预约”购票"
+        },
+        {
+          "noteId": 640,
+          "quote": "我主推人民大会堂"
+        },
+        {
+          "noteId": 1037,
+          "quote": "9：45正式进入人民大会堂"
+        },
+        {
+          "noteId": 1041,
+          "quote": "【人民大会堂外景｜对称高级感】"
+        }
+      ],
+      "conclusion": "12条提及/11篇正文已读（note442 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：人民大会堂是北京天安门广场西侧的国家殿堂建筑，rev=1、主位置799、别名仅「人民大会堂」。原文稳定事实：机位写「图14：人民大会堂」「4️⃣【人民大会堂外景｜对称高级感】广场西侧，长焦拉近，人物和国徽同框。适合拍侧脸，建筑线条干净」；预约写「人民大会堂：提前3天预约」「人民大会堂｜提前3天，仅通过微信小程序『人民大会堂参观预约』购票，从未授权任何第三方。不售当日票，不设现场售票」「抢票难度：天安门城楼＞国家博物馆＞人民大会堂＞毛主席纪念堂＝故宫」；动线写「从南到北依次是人民大会堂--天安门广场-城楼-故宫」「9：45正式进入人民大会堂。大会堂游览+休息大概一个小时多一点」（提及记录 visit_duration 70 分钟、另有一条 30 分钟口径）；活动写「我主推人民大会堂（谁让我前几天没拍到五角星）」「如果预算够，冲人民大会堂，国家大剧院，北京音乐厅等」；负评写「还记得人民大会堂和天安门的排队，不是说无包通道会快吗？一点都没有」。边界单列：①天安门广场、天安门城楼、国家博物馆、毛主席纪念堂为相邻独立主体，本轮不合并、不改坐标；②原文两条时长口径（30 分钟／70 余分钟）并存，如实保留不统一；③人民大会堂的参观入口、安检口为动线节点，不建主体；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "9e2083f1a246703d0827e8962a070f4f",
+      "name": "杨梅竹斜街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 3426,
+          "inputHash": "efcf0597fa69eacfd6a0a57e18b5ac31aa8ae74deded776b96650274f60ab595",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3423,
+          "inputHash": "f1f2a8e890b44090ea3256e5a779c155902610c32c7e6253bb345a9e32dfbd78",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1917,
+          "inputHash": "996031040c12cff395fc0e0aac13b8ab7072937133ae08dc7b5582747f21ff97",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4257,
+          "inputHash": "53a79cecf00efeac69b4ea5d56895757798763242d6a6c6cd0a0cf3034503c46",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2003,
+          "inputHash": "685c0cc4ccae1eb7aa37b5761a98c182e3665e9b77d97b3ed1203b0ab83aaeb6",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2152,
+          "inputHash": "f394155ad4a4eaa97ef5d6ad12cbd144a5eb178e5c1cf13195ea2026381bfd98",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4295,
+          "inputHash": "ffbbfd162b771073559dcd3f31841cb4e3db9757c0fd82164352a14fd8aa5d16",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2111,
+          "inputHash": "ef25b7f690d6560a145f783f8bd99aa1bd9b3ab560a3cf79cfe31d068b75d05d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2553,
+          "inputHash": "37cfcb821c10fc276430073b0dae4e7eaa4632a18c513c4e2b2518381ce3cee8",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2234,
+          "inputHash": "34710e84eac52e7c0196e22eef6d0e29657512e40167f47881fa50a1bfcaebc1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1830,
+          "inputHash": "002704f3c91ac77503e74b2234151ad897c86c7384295432c9731ed0d6723f78",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2175,
+          "inputHash": "8337f4867aabc81292eba9bc40b2eebb737772c3ac4e5c2e1da1fef1ab56f67e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2439,
+          "inputHash": "8cad6f9ba0ebd1610fb97e7eeae99e31f3e9fd2008d5f92fe580f8e782474965",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2755,
+          "inputHash": "73088a31a2c2444802faa51faf8f214296d860b2f64e8cb00ce2a2a0bd4cb5a0",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2253,
+          "inputHash": "854aef08ed125ccf5d7906a7adb3ecc3d7a588b7dcb429cd4f26be3000b95af6",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2727,
+          "inputHash": "4d86f2ca1485fe384ff286c43ff18452c487d4158f27d7026ef855f1a83b9d92",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 5046,
+          "inputHash": "ada96198bf4e5bc07b87d1240a196109a748052f05c78b9442858a2506be7859",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4645,
+          "inputHash": "dbce36541962d3c5e168655a67c1f430eda14b57c7da2e94f0b81ce1110bdc61",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        3426,
+        3423,
+        1917,
+        4257,
+        2003,
+        2152,
+        4295,
+        2111,
+        2553,
+        2234,
+        1830,
+        2175,
+        2439,
+        2755,
+        2253,
+        2727,
+        5046,
+        4645
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 414,
+          "noteDescSha256": "87afb50ef07c02167617ef603e57f180bded47003885c47fa374cac78840b37a",
+          "fullFrozenNoteSha256": "7d6184057412a30ab81f7388b3da026c697dadc2ef880ff6da7d24e8ba5e7ecb",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 415,
+          "noteDescSha256": "d8cc8f21a718f356b682540b759e6ea03b338c8293234554c8d29f95714f29bd",
+          "fullFrozenNoteSha256": "74174da7792d432fa96a59a51a9906518f2e3f0dc8e3bd60fdc20c275b587288",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 420,
+          "noteDescSha256": "228f1b593202e5afeb7fa903f12db5bc3d07b9b590b413cab88a6f41be8146ae",
+          "fullFrozenNoteSha256": "3dd7d9e54b2ce525448184f3f1cab4c752d562eed73569de7d5fe7914ef61523",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 422,
+          "noteDescSha256": "6571400c9c59be3aa2fa6f97dc070da4fa36dd6ba0e1b028e673df82c0ca92fd",
+          "fullFrozenNoteSha256": "3a8b6f9836b3ab38becdb561a9e54f5a11b58f86bb6bc36ddc386a99a62de3d9",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 423,
+          "noteDescSha256": "3adf6e16c3114f208f647c1ff2e9e4dd9baf30c316a7175687a85a53275ce680",
+          "fullFrozenNoteSha256": "842b47428eb4cfd2722065127247d2e98da46481246356fab2cd10bb010e6ca4",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 462,
+          "noteDescSha256": "cf2aee56c756e00bfbb466907fd0c611750ac97c66bc7f6d590e8ec323a312fb",
+          "fullFrozenNoteSha256": "94fbc2b93ea8c21cc0c053dac15639d374e52e1a2d64a086877d9987b43f2500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 479,
+          "noteDescSha256": "bbbcf40a3249e68206c57e1a1275321b655e525bb73299bd56da98b839a272c4",
+          "fullFrozenNoteSha256": "a62934cd40bbb364402253f5005342af941ee3d69b4256e1d8757189bb72fbc5",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 537,
+          "noteDescSha256": "0f02a43899fca30954ad14effb5da9517e28d9cfbf37bba4336d1ee07155aea2",
+          "fullFrozenNoteSha256": "578fd6a74a188a6fb08394fab70b75903c01585f70bdbe726140988a4478f244",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 604,
+          "noteDescSha256": "91eb026d1cd4b37faaee784145e414380c20f91f1cced062fb9bce9a464e8e7e",
+          "fullFrozenNoteSha256": "bee52de56c86dc73a116261009387da861b2f2bc664f186d9842824a24f5ec5c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 608,
+          "noteDescSha256": "c8efc5d4d3ecb056a779114e168809d8cfb8bcac3b08d0e35474fc012f7067e1",
+          "fullFrozenNoteSha256": "fff1e5ebc1c93e240e0ba52cd50c4da847b3de9ac2ee7ffe6f014161f77aad1e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 612,
+          "noteDescSha256": "2e40608953ff056c7cf04c2b47548babc4096e7faa2f0b86abab823a345d767e",
+          "fullFrozenNoteSha256": "54f14e04bad7b0b5b47c083a6c124ae73e5d6831d05081c61000178fcee6151f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 614,
+          "noteDescSha256": "18e8393bfac964be2cb52c0e65444c511e78373a959a47246f21eb977e129dd7",
+          "fullFrozenNoteSha256": "92fff9895807a974201f46426a125217a4872d83143e2b12a3b6aae3f04f8d6e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 619,
+          "noteDescSha256": "73ac45cc9fd3dbe0080989224d12262ea70a49d4dded757a562d7adb24109bb8",
+          "fullFrozenNoteSha256": "66cf382b70d5cbe5c6ba13d79d75452ba53dde66a4755bf64da2d86af782b73a",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1052,
+          "noteDescSha256": "2a4ed9a0cf82ce03ee78ca1e35f0dee1b267c4cae627b885df6066d546bdaa30",
+          "fullFrozenNoteSha256": "78d2fc6c75b3a768887258dca23b51e8b0ff0d168c32f17aa1c76051cae1e557",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1209,
+          "noteDescSha256": "0fe6c24876ed7ccfc5f686f3345a7c9e070f28b102da7b2ea05caac85dec0dfa",
+          "fullFrozenNoteSha256": "416cdd54c1f28fbbc0f2b7763c4e3820ee3a1d9f0901aaeddfe933c7cbfa260a",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 414,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 415,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 420,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 422,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 423,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 462,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 479,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 537,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 604,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 608,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 612,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 614,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 619,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1052,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1209,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 414,
+          "quote": "继续更新北京Citywalk路线系列第"
+        },
+        {
+          "noteId": 415,
+          "quote": "如果你想在北京找一条"
+        },
+        {
+          "noteId": 417,
+          "quote": "第一次来北京想沉浸式感受地道老城烟火气"
+        },
+        {
+          "noteId": 420,
+          "quote": "北京真的太适合Citywalk了！"
+        },
+        {
+          "noteId": 422,
+          "quote": "杨梅竹斜街➡️乾坤空间➡️铃木食堂"
+        },
+        {
+          "noteId": 423,
+          "quote": "这6条walk路线，既有地地道道的老北京味道也有小众不一样的北京风情"
+        },
+        {
+          "noteId": 462,
+          "quote": "又到了北京金秋的时节"
+        },
+        {
+          "noteId": 479,
+          "quote": "第三篇了！今天不逛景点"
+        },
+        {
+          "noteId": 537,
+          "quote": "P7：杨梅竹斜街"
+        },
+        {
+          "noteId": 604,
+          "quote": "北京的年味儿越来越浓了"
+        },
+        {
+          "noteId": 608,
+          "quote": "马上就要过年啦"
+        },
+        {
+          "noteId": 612,
+          "quote": "北京的年味儿都藏在老胡同里"
+        },
+        {
+          "noteId": 614,
+          "quote": "北京的胡同已经进入初夏模式啦"
+        },
+        {
+          "noteId": 619,
+          "quote": "北京土著私藏！5个冷门景点"
+        },
+        {
+          "noteId": 1052,
+          "quote": "实打实自己全部玩过的路线，按地理位置分片规划"
+        },
+        {
+          "noteId": 1209,
+          "quote": "老舍说“秋天一定要住北平"
+        }
+      ],
+      "conclusion": "18条提及/16篇正文已读（note417、422 各含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：杨梅竹斜街是北京西城前门外的老胡同，rev=1、主位置667、别名仅「杨梅竹斜街」。原文稳定事实：定性写「避开人潮的文艺宝藏胡同，没有过度的商业化」「比南锣鼓巷更清静，是我私心蕞喜欢的一段」「比南锣清静10倍！老青砖房+小众书店+手作店+晒太阳的咖啡馆」「杨梅竹斜街不是那种第一眼就很惊艳的地方，但越走越有味道；灯牌亮起后，老胡同的骨架和新店的审美刚好融合」「这条街比五道营短，但更有意思」；看点写「乾坤空间：设计感文创，不太会撞款」「铃木食堂：日式小院，门口就很出片」「京味拾光：六角窗机位（需消费进入）」「模范书局：老教堂改建的书店」「青云阁旧址：蔡锷和小凤仙相识的地方」「voyage coffee(杨梅竹)」「杨梅竹斜街（胡同咖啡馆）」；路线地位写「虎坊桥B口 →杨梅竹斜街→北京坊→前门大街（大栅栏&鲜鱼口）→西兴隆街→东交民巷」「琉璃厂➡️杨梅竹斜街➡️大栅栏➡️前门大街➡️鲜鱼口➡️三里河公园➡️西兴隆街」「西兴隆街→三里河公园→青云胡同→杨梅竹斜街→大栅栏西口」「杨梅竹斜街➡️乾坤空间➡️铃木食堂➡️北京坊➡️jolly jolly➡️为水…」。边界单列：①西兴隆街、北京坊、大栅栏、鲜鱼口、三里河公园、琉璃厂、青云胡同是相邻独立主体，本轮不并入杨梅竹斜街、不建组成关系、不改坐标；②乾坤空间、铃木食堂、京味拾光、模范书局、voyage coffee 等为店铺点位，不新建主体；③原文把「杨梅竹斜街」列入多条年味与赏秋路线，属路线地位，不改变主体身份；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    },
+    {
+      "city": "北京",
+      "entityId": "b79f2141f3360f9b728d3b7777a29016",
+      "name": "前门大街",
+      "expectedRevision": 1,
+      "identityRetained": true,
+      "fullFactsReviewed": false,
+      "scope": "全实体当前提及全文已读；来源/组成/定位边界分别待治理",
+      "mentions": [
+        {
+          "mentionId": 3424,
+          "inputHash": "11c23c689e6960e24ced55ec4a24bf7d7ff5d542cfe72f5f959e804e00984053",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 1916,
+          "inputHash": "22224350ce467c2e1c05ac43800fa33c746f24249851c209b1dd85d51ce02f8f",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2005,
+          "inputHash": "2c8e1730c286942293408a2354301af5ea97234611b57b47633a0c0af84beacb",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2627,
+          "inputHash": "76be7954e387f22d95bfff9e3724ad56de891eade84024ce57f80eac83d0adb1",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4377,
+          "inputHash": "1c33dd3a0f86186c49137cfb83310ff6c6079da2fd866fb348250b2dc6fa2a9d",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2803,
+          "inputHash": "1d9cff2e500cb96c6d9eed5c61aeb5cd5ca35500204b5a9eae4f0c2babe05e8e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2935,
+          "inputHash": "5ef879051a8918020c71b4bc7c8374dafa9e2457ca9c7db75b42e3b800f45eda",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2131,
+          "inputHash": "0604ed0c8cb81e6c1082d8cca790d906636c8100a53b381fc399d9ed26cb7909",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3077,
+          "inputHash": "6e5206d8314436e6889d0007239184c5ba6c8c485b7ee126c1ab76ce20186491",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2177,
+          "inputHash": "207e9eba24dc8bfa5bcf339d6cb649fe8e5d9c29e8ff988b905b1fe3513220af",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2441,
+          "inputHash": "2bfec2ee09bd5559bb5e29cc776de4073312a2cf17d0f434e107450b960a0296",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2706,
+          "inputHash": "3d229540006aa045c194b2a458257d29ab6f57da8a2e948f6e11785b8daa73a2",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2752,
+          "inputHash": "6ca7141aef5a06a4cc6c1881f75e88a483a517e338d9297574eeb4b0d32f722a",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 2252,
+          "inputHash": "6a1e382363d51b189a9fb6733c2d43fbbcefba3cfcecf682788022609f1bd255",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 3345,
+          "inputHash": "b80349261470ef11e299a2b77ce9de8504a1a1dffe84ed3e05801c9e04b2dd1e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        },
+        {
+          "mentionId": 4963,
+          "inputHash": "ac449c36983185af574594bcc299872cc53a9c27940dc40e330feac7bd5d0b1e",
+          "resolution": {
+            "status": "resolved",
+            "reason": "confirmed_name",
+            "scopePlaceIds": []
+          }
+        }
+      ],
+      "reviewedSourceMentionIds": [
+        3424,
+        1916,
+        2005,
+        2627,
+        4377,
+        2803,
+        2935,
+        2131,
+        3077,
+        2177,
+        2441,
+        2706,
+        2752,
+        2252,
+        3345,
+        4963
+      ],
+      "noteEvidence": [
+        {
+          "noteId": 414,
+          "noteDescSha256": "87afb50ef07c02167617ef603e57f180bded47003885c47fa374cac78840b37a",
+          "fullFrozenNoteSha256": "7d6184057412a30ab81f7388b3da026c697dadc2ef880ff6da7d24e8ba5e7ecb",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 417,
+          "noteDescSha256": "ac5c02dfb2a2de075f24329e869db710822b5b5d605113497ede66829b5c2ac5",
+          "fullFrozenNoteSha256": "9d032471b523b8fab8a9acb499b2e374a8d43d255cc721fd10cde79c18660fff",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 420,
+          "noteDescSha256": "228f1b593202e5afeb7fa903f12db5bc3d07b9b590b413cab88a6f41be8146ae",
+          "fullFrozenNoteSha256": "3dd7d9e54b2ce525448184f3f1cab4c752d562eed73569de7d5fe7914ef61523",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 442,
+          "noteDescSha256": "5952f0800894121f76246184a8d81bca35b2e0ccaed8e41b9a812333ed190d79",
+          "fullFrozenNoteSha256": "5c19293f19f24f08d6d64b05e42efba1faa148d2a0c61eec9c389cf1a274c500",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 501,
+          "noteDescSha256": "41905f08e9740d0d11046374c28a7d842d6d9f7d77b9054d304bec3e0f1cf6c7",
+          "fullFrozenNoteSha256": "c35e2c1dcad4dd3a329a1478e3feb1d16084ed40ad8ce19c6e858e9f8ce7231c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 531,
+          "noteDescSha256": "4f3577382ef49b9629da49a219ece1b2d8a37ab3ef0dce1443154671f3d16b44",
+          "fullFrozenNoteSha256": "258b8949462903a22bea23323e2dd571548cbe41e2f9a6c0c90d7ffecf1c21a7",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 550,
+          "noteDescSha256": "cbe108221ae857f0a48f725aa6e1152029fc76f6175809b8217f42d28f006f1c",
+          "fullFrozenNoteSha256": "1f3000a699325f23f4a34339fb1f5d75ccb7089fbb1cefca4f3d5186b8efb994",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 589,
+          "noteDescSha256": "377fe50c304e86aaabe1a543d903ae8fe52ca0c735460aa44a045c6220f60c39",
+          "fullFrozenNoteSha256": "c57e3f8cb4786cae933faa4e840f70f48834356f3af4676beeb07d0bfd0a3a07",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 604,
+          "noteDescSha256": "91eb026d1cd4b37faaee784145e414380c20f91f1cced062fb9bce9a464e8e7e",
+          "fullFrozenNoteSha256": "bee52de56c86dc73a116261009387da861b2f2bc664f186d9842824a24f5ec5c",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 608,
+          "noteDescSha256": "c8efc5d4d3ecb056a779114e168809d8cfb8bcac3b08d0e35474fc012f7067e1",
+          "fullFrozenNoteSha256": "fff1e5ebc1c93e240e0ba52cd50c4da847b3de9ac2ee7ffe6f014161f77aad1e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 610,
+          "noteDescSha256": "6f5303176604c0a71281ee208808b586a5aa55ea2c16a54d52c807298b0f9402",
+          "fullFrozenNoteSha256": "fc4e3f50736b8c4f0d621a8cd27a5c671da951c97d7a85bf42c9c3e1c27fb634",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 612,
+          "noteDescSha256": "2e40608953ff056c7cf04c2b47548babc4096e7faa2f0b86abab823a345d767e",
+          "fullFrozenNoteSha256": "54f14e04bad7b0b5b47c083a6c124ae73e5d6831d05081c61000178fcee6151f",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 614,
+          "noteDescSha256": "18e8393bfac964be2cb52c0e65444c511e78373a959a47246f21eb977e129dd7",
+          "fullFrozenNoteSha256": "92fff9895807a974201f46426a125217a4872d83143e2b12a3b6aae3f04f8d6e",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 681,
+          "noteDescSha256": "9296cf0254e64680827eb2ac60e0496f2653ec7db137fc819ac7bb52b7c656b0",
+          "fullFrozenNoteSha256": "5a80c5f8ec32e20f4c8a92947fda094cf6c60bd75f0eceef3c0728f9a486247a",
+          "rawNoteSha256": null
+        },
+        {
+          "noteId": 1069,
+          "noteDescSha256": "906fdc3f6f7363dbf4573c12a874889afca933a0789bef414a739afa10be8b33",
+          "fullFrozenNoteSha256": "f9e3f5f297f1cac457c2740818dcf941a71d551348f4edfa5c93d86b5d6aa493",
+          "rawNoteSha256": null
+        }
+      ],
+      "existingImageTextEvidence": [
+        {
+          "noteId": 414,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 417,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 420,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 442,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 501,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 531,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 550,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 589,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 604,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 608,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 610,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 612,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 614,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 681,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        },
+        {
+          "noteId": 1069,
+          "rawNoteSha256": null,
+          "textImageIndices": []
+        }
+      ],
+      "rawNoteEvidenceAvailable": false,
+      "readSnapshotFile": "snapshot-20261009T134338341037Z/input.json",
+      "reusedAfterFullEntityMentionsAndNotesComparison": true,
+      "noteQuotes": [
+        {
+          "noteId": 414,
+          "quote": "继续更新北京Citywalk路线系列第"
+        },
+        {
+          "noteId": 417,
+          "quote": "第一次来北京想沉浸式感受地道老城烟火气"
+        },
+        {
+          "noteId": 420,
+          "quote": "北京真的太适合Citywalk了！"
+        },
+        {
+          "noteId": 442,
+          "quote": "姐妹们！刚从北京回来，整理了一份超好用的3天路线"
+        },
+        {
+          "noteId": 501,
+          "quote": "Day1：皇城胡同线"
+        },
+        {
+          "noteId": 531,
+          "quote": "百年老街配鱼灯"
+        },
+        {
+          "noteId": 550,
+          "quote": "#北京美食[话题]#"
+        },
+        {
+          "noteId": 589,
+          "quote": "步行就能到天安门和前门大街"
+        },
+        {
+          "noteId": 604,
+          "quote": "北京的年味儿越来越浓了"
+        },
+        {
+          "noteId": 608,
+          "quote": "马上就要过年啦"
+        },
+        {
+          "noteId": 610,
+          "quote": "前门大街新年装置已上线"
+        },
+        {
+          "noteId": 612,
+          "quote": "北京的年味儿都藏在老胡同里"
+        },
+        {
+          "noteId": 614,
+          "quote": "北京的胡同已经进入初夏模式啦"
+        },
+        {
+          "noteId": 681,
+          "quote": "前门大街随时都能逛"
+        },
+        {
+          "noteId": 1069,
+          "quote": "东西贵得离谱"
+        }
+      ],
+      "conclusion": "16条提及/15篇正文已读（note442 含 2 条提及；该快照不含 governanceState.rawNote，rawNote 指纹与图片文字证据本轮记为不可用，图片文字另核）。主体一致：前门大街是北京东城正阳门外的百年商业步行街，rev=1、主位置745、别名仅「前门大街」。原文稳定事实：定性写「京城百年商街的底蕴拉满✨，两边老字号店铺鳞次栉比。既有瑞蚨祥、内联升这样的百年商号，也有吴裕泰抹茶冰淇淋这样的网红打卡点」「北京老牌商业老街，保留不少复古牌楼建筑，汇集老字号商铺，距离天安门很近」「2/8号线前门站I口，17:30-22:00亮灯。百年老街配鱼灯，还能坐铛铛车」；夜景与年味写「前门大街和鲜鱼口的花灯已上线！晚上超好看」「大吉巷、烂漫胡同、前门会客厅、鲜鱼口、前门大街新年装置已上线」；交通与动线写「可以坐铛铛车50」「步行就能到天安门和前门大街」「出门就是大栅栏，前门大街随时都能逛，步行几分钟到珠市口地铁站，7/8号线换乘出行很方便」；负评写「前门大街就是个商业街，连锁小吃加特产，东西贵得离谱，味道还一般，也就最后一天买点特产带回家用，专门来逛没必要」；另有提及为菜系清单话题标签（note550）与「南锣鼓巷不值得去，很普通的商业街」相邻对比。边界单列：①大栅栏、鲜鱼口、正阳门箭楼、北京坊、珠市口是相邻独立主体或点位，本轮不并入前门大街、不建组成关系、不改坐标；②铛铛车、老字号店铺为街上设施与店铺，不新建主体；③原文同时给出正向（年味花灯、老字号）与负向（商业化、贵）评价，如实并存不合并；④本轮不改来源、分数与坐标。",
+      "pendingMentionIds": [],
+      "businessMutationByThisRecord": false,
+      "userAcceptance": false
+    }
+  ],
+  "limits": "23项/179当前有效提及已读；阅读不等于全来源、同体/组成/定位问题闭合，也不等于各城语义已完成。七城batch-120、北京济南run-79为各自最新完整验证；未验收、不提交、不归档。"
+}

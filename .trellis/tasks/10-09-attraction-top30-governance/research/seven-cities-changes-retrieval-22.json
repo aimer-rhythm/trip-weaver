@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "ed3073055e43ff60891eea5115195eef0f38c3f9175a47895b0bf3d02be94b2a",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "集美学村",
+      "entityId": "766f37a1bb5763653dd7b28d76c9d498",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

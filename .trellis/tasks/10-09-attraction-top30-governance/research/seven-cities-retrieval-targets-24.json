@@ -1,0 +1,176 @@
+{
+  "snapshotSha256": "ed3073055e43ff60891eea5115195eef0f38c3f9175a47895b0bf3d02be94b2a",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "766f37a1bb5763653dd7b28d76c9d498",
+          "city": "厦门",
+          "name": "集美学村",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            2560
+          ],
+          "sourceNames": [
+            "集美学村"
+          ],
+          "effectiveType": "attraction",
+          "score": 52.5,
+          "downstreamScore": 52.5,
+          "mentionCount": 19,
+          "noteCount": 19,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 52.5,
+          "potentialScore": 52.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2560
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5321,
+            5352,
+            5390,
+            5756,
+            5901,
+            5914,
+            6011,
+            6066,
+            6145,
+            6318,
+            6383,
+            6404,
+            6434,
+            6532,
+            6729,
+            6824,
+            6866,
+            6886,
+            6907
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "766f37a1bb5763653dd7b28d76c9d498",
+              "name": "集美学村",
+              "expectedRevision": 2,
+              "mentionId": 5669,
+              "inputHash": "5eebc3a74c60ccdb34760d75b441f4dab4eeced2cdb9ec3d4d1d7cda83a6fc02",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2560
+                ]
+              },
+              "noteId": 1285,
+              "quote": "🚇 坐1号线直达【集美学村】站",
+              "relation": "not_same_entity",
+              "subjectType": "transport",
+              "conclusion": "batch-118已按全文正式隔离；该提及为transport语境，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "766f37a1bb5763653dd7b28d76c9d498",
+              "name": "集美学村",
+              "expectedRevision": 2,
+              "mentionId": 6179,
+              "inputHash": "42a9152bd294f16b76c977eaa2874dd1e8d4b64b30f8a40cd7290e665ea164af",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2560
+                ]
+              },
+              "noteId": 1451,
+              "quote": "🆕集美学村春节集福马打卡🔥",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "batch-118已按全文正式隔离；该提及为activity语境，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "766f37a1bb5763653dd7b28d76c9d498",
+              "name": "集美学村",
+              "expectedRevision": 2,
+              "mentionId": 6243,
+              "inputHash": "be73f4110e8ceecc2d97fe62fb6e8bf15f2d5220f5583d995e786dc5f777f37e",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2560
+                ]
+              },
+              "noteId": 1453,
+              "quote": "·集美学村“集福马”打卡骑行",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "batch-118已按全文正式隔离；该提及为activity语境，不是母景点独立游览推荐。",
+              "businessMutation": false,
+              "limit": "只排除母项潜在加分，不创建酒店、活动或机位新主体。"
+            }
+          ],
+          "legacyIds": [
+            "766f37a1bb5763653dd7b28d76c9d498"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 13
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-24.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

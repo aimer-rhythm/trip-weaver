@@ -1,0 +1,34 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "5dd7a66b15d25f4cd1d779007279ffff3f0d0c6f92f2be41a944b399ec5b4d4d",
+  "rows": [
+    {
+      "city": "杭州",
+      "name": "九溪十八涧",
+      "entityId": "081c7742f47eaa80675fc74446ed89e2",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "city": "重庆",
+      "name": "来福士",
+      "entityId": "5aab3e5fc03ca61f0d7c56b769184c80",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 4,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

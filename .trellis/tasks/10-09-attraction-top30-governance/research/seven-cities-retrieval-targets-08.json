@@ -1,0 +1,249 @@
+{
+  "snapshotSha256": "3da81ec4b726b76e3654ae8c0291d9894aac8a635f6091b82d2b8de0b3b5ea77",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "b886bee90f1d16aedf0768894658d286",
+          "city": "上海",
+          "name": "田子坊",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4739
+          ],
+          "sourceNames": [
+            "田子坊"
+          ],
+          "effectiveType": "attraction",
+          "score": 12.5,
+          "downstreamScore": 12.5,
+          "mentionCount": 3,
+          "noteCount": 3,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 12.5,
+          "potentialScore": 12.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4739
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            10005,
+            10284,
+            11245
+          ],
+          "reviewedNonEquivalentMentions": [],
+          "legacyIds": [
+            "b886bee90f1d16aedf0768894658d286"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-14.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                10005,
+                10284,
+                11245
+              ],
+              "scoreAfter": 12.5,
+              "scoreBefore": 10,
+              "snapshotSha256": "5041d3255b7a24f878f8290d42d5c747b6e9fd95fcc608f0077f803908270ab1"
+            }
+          ],
+          "rank": 30
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": [
+        {
+          "entityId": "f54a5c3ac9f95600f01e2c41b0dc5860",
+          "city": "西安",
+          "name": "兴庆宫公园",
+          "revision": 4,
+          "aliases": [
+            "兴庆宫"
+          ],
+          "sourceIds": [
+            5585,
+            5809
+          ],
+          "sourceNames": [
+            "兴庆宫",
+            "兴庆宫公园"
+          ],
+          "effectiveType": "attraction",
+          "score": 12.5,
+          "downstreamScore": 12.5,
+          "mentionCount": 3,
+          "noteCount": 3,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 12.5,
+          "potentialScore": 12.5,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            5809
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            12041,
+            12317,
+            12536
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "西安",
+              "entityId": "f54a5c3ac9f95600f01e2c41b0dc5860",
+              "name": "兴庆宫公园",
+              "expectedRevision": 4,
+              "mentionId": 12266,
+              "inputHash": "a4806deeb6311e12da6876f2cad08790be4317729f6928efe56ef8c4972e64fb",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  5809
+                ]
+              },
+              "noteId": 2628,
+              "quote": "④兴庆宫爱心树（除了拍照打卡，没啥东西，可以不去）",
+              "relation": "not_same_entity",
+              "subjectType": "component",
+              "conclusion": "明确评价爱心树，不直接外推公园整体；同篇11883原归独立爱心树，原负评与身份保持。",
+              "businessMutation": false,
+              "limit": "不重复分配、不合并独立树，不新增正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "5aeab900f63238edb4b58511b26d43d0",
+            "f54a5c3ac9f95600f01e2c41b0dc5860"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "12317",
+                  "name": "兴庆宫",
+                  "quote": "兴庆宫拍妆造（沉香亭｜迎春桥）",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69f3293d000000002301fa8a"
+                },
+                {
+                  "id": "12041",
+                  "name": "兴庆宫",
+                  "quote": "兴庆宫拍照",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a05a0690000000036003b26"
+                },
+                {
+                  "id": "12536",
+                  "name": "兴庆宫公园",
+                  "quote": "唐代皇家园林，满园桂香",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab24043000000003501228e"
+                },
+                {
+                  "id": "12266",
+                  "name": "兴庆宫公园",
+                  "quote": "除了拍照打卡，没啥东西，可以不去",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a100abe000000000702bf19"
+                }
+              ],
+              "reviewIds": [
+                402
+              ],
+              "conclusion": "兴庆宫源提及明确沉香亭、迎春桥等公园游览项目，保留咸宁西路55号公园，剔除景观工程公司误定位。",
+              "sourcePlaceIds": [
+                "5585",
+                "5809"
+              ]
+            },
+            {
+              "lat": 34.251317,
+              "lng": 108.983783,
+              "kind": "primary_source_geometry",
+              "address": "陕西省西安市碑林区咸宁西路55号",
+              "original": {
+                "lat": 34.251317,
+                "lng": 108.983783,
+                "address": "陕西省西安市碑林区咸宁西路55号",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "5809",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                12041,
+                12266,
+                12317,
+                12536
+              ],
+              "scoreAfter": 13.75,
+              "scoreBefore": 10,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 25
+        }
+      ]
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-08.json",
+    "count": 208,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

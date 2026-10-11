@@ -1,0 +1,27 @@
+{
+  "kind": "nine_city_user_acceptance",
+  "goalId": "mv2hu1px-tuznxa",
+  "acceptedAt": "2026-10-10T16:02:07.271Z",
+  "acceptedBy": "user",
+  "channel": "ask_user_question tool call inside this session; the answer was written by the harness, not by the agent",
+  "question": "九城 270 行名单与全套证据已定稿（自检 22/22 通过），是否验收？",
+  "answer": "验收九城 270 行名单（推荐）",
+  "sessionEvidence": {
+    "sessionId": "01a12655-4871-7382-9361-089f7d957273",
+    "sessionFile": "C:/Users/Aimer/.pi/agent/sessions/--D--Project-tripweaver--/2026-10-10T15-01-25-746Z_01a12655-4871-7382-9361-089f7d957273.jsonl",
+    "lineNumber": 1629,
+    "recordType": "message/toolResult",
+    "toolName": "ask_user_question",
+    "toolCallId": "call_00_TG40RpykmVelFxPiXP2g6027",
+    "rawText": "User has answered your questions: \"九城 270 行名单与全套证据已定稿（自检 22/22 通过），是否验收？\"=\"验收九城 270 行名单（推荐）\". You can now continue with the user's answers in mind.",
+    "howToVerify": "在第 1629 行（timestamp 2026-10-10T16:02:07.271Z）可见 toolResult 记录的原始答复；该行由 harness 写入会话日志，早于 research/mark-nine-city-accepted.py（16:02:18 之后的元数据写入），两者时间顺序可核对。"
+  },
+  "acceptanceScope": "九城各城前30行的原文语义阅读与身份边界记录口径：每行的名次、主名、分数、实体ID、别名与旧记录、组成边界、证据与审核状态。未决项（广州来源隔离门禁、鼓浪屿／集美大社媒体方案、杭州住宿参照、成都永陵疑同址、6处缺坐标、8项算法排名风险、北京济南11项边界待决）仍单列待处置，不因本次验收而关闭。",
+  "notInScope": "不表示全部来源、同体／组成／定位问题已闭合；不表示代码已提交或任务已归档；不表示未决项已处置。",
+  "accepted": true,
+  "rowsCovered": {"sevenCities": 210, "beijingJinan": 60, "total": 270},
+  "ledgersMarked": [
+    "research/seven-cities-review-ledger-72.json",
+    "research/bj-jn-review-ledger-02.json"
+  ]
+}

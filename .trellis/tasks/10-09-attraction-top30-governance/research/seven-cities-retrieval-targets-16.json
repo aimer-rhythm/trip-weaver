@@ -1,0 +1,344 @@
+{
+  "snapshotSha256": "da0af2ad9a39d89171e80d610f0338e8f696de9c01d312224605d8b5c4327cb9",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "9eca880667ffe616ddea0fa7db4b7049",
+          "city": "厦门",
+          "name": "白城沙滩",
+          "revision": 4,
+          "aliases": [
+            "厦大白城",
+            "厦大白城沙滩"
+          ],
+          "sourceIds": [
+            2602,
+            2787,
+            2944
+          ],
+          "sourceNames": [
+            "厦大白城",
+            "厦大白城沙滩",
+            "白城沙滩"
+          ],
+          "effectiveType": "attraction",
+          "score": 87.05,
+          "downstreamScore": 87.05,
+          "mentionCount": 33,
+          "noteCount": 33,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 87.05,
+          "potentialScore": 87.05,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2602
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5319,
+            5345,
+            5358,
+            5371,
+            5382,
+            5487,
+            5556,
+            5579,
+            5596,
+            5655,
+            5668,
+            5679,
+            5750,
+            5763,
+            5777,
+            5799,
+            5895,
+            5936,
+            5978,
+            6063,
+            6086,
+            6120,
+            6227,
+            6236,
+            6316,
+            6482,
+            6502,
+            6534,
+            6588,
+            6772,
+            6821,
+            6861,
+            6882
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "9eca880667ffe616ddea0fa7db4b7049",
+              "name": "白城沙滩",
+              "expectedRevision": 4,
+              "mentionId": 6293,
+              "inputHash": "85af34c49398009f181a15bebe123ef712be63061530abe1c92454e2c7191bb3",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2602
+                ]
+              },
+              "noteId": 1522,
+              "quote": "厦门推荐观赏位置：鼓浪屿／双子塔／鹭江码头／演武大桥观景平台／白城沙滩",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "仅跨年烟花活动的观赏位置，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或观赏机位。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "9eca880667ffe616ddea0fa7db4b7049",
+              "name": "白城沙滩",
+              "expectedRevision": 4,
+              "mentionId": 6548,
+              "inputHash": "3bde3751534be7df82da45c6eeddb85d7f044f9793349eef6f923ca69536b86d",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2602
+                ]
+              },
+              "noteId": 1435,
+              "quote": "离厦门大学、沙坡尾、白城沙滩打车7.8分钟就到了",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "仅酒店周边交通参照，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或观赏机位。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "9eca880667ffe616ddea0fa7db4b7049",
+              "name": "白城沙滩",
+              "expectedRevision": 4,
+              "mentionId": 6594,
+              "inputHash": "3fde38a1098c5ee6d20843f4ee60387b7bdfaa22853072d089119fefaa73af5f",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2602
+                ]
+              },
+              "noteId": 1436,
+              "quote": "打车前往沙坡尾、白城沙滩仅需七八分钟",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "仅酒店周边交通参照，无独立沙滩游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或观赏机位。"
+            }
+          ],
+          "legacyIds": [
+            "00aea3b5aadad4511258c26f4f378f82",
+            "9eca880667ffe616ddea0fa7db4b7049",
+            "c1d6280849024636b2d54c9ad17f8500"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "6882",
+                  "name": "白城沙滩",
+                  "quote": "日落在音乐广场、白城沙滩",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/699ec1d20000000022031ebf"
+                },
+                {
+                  "id": "6861",
+                  "name": "白城沙滩",
+                  "quote": "来看橘子海日落",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+                },
+                {
+                  "id": "6821",
+                  "name": "白城沙滩",
+                  "quote": "从椰风寨到白城沙滩，傍晚看日落",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+                },
+                {
+                  "id": "6772",
+                  "name": "白城沙滩",
+                  "quote": "椰风寨一路晃到白城沙滩",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+                },
+                {
+                  "id": "6086",
+                  "name": "厦大白城沙滩",
+                  "quote": "别去厦大白城沙滩人特别多",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69e5c742000000001d019b90"
+                },
+                {
+                  "id": "5668",
+                  "name": "厦大白城",
+                  "quote": "再往厦大白城走",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69dc76ab00000000220241ca"
+                }
+              ],
+              "reviewIds": [
+                177,
+                213
+              ],
+              "conclusion": "6086直接写厦大白城沙滩，5668在黄厝至曾厝垵沿海骑行路线再往厦大白城走；其他源均说明厦大校门外的沙滩，包含踏浪及日落。三名称指本批白城海滩，不是公交站；舍弃厦大白城公交站点，沿用大学路海滩参考点。",
+              "sourcePlaceIds": [
+                "2602",
+                "2944",
+                "2787"
+              ]
+            },
+            {
+              "lat": 24.432281,
+              "lng": 118.100875,
+              "kind": "primary_source_geometry",
+              "address": "大学路",
+              "original": {
+                "lat": 24.432281,
+                "lng": 118.100875,
+                "address": "大学路",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "2602",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/xiamen-batch15-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "2232284993de4576f1595e6d320ce6068cc39a8549533dca69abf873856ff8e1",
+              "conclusion": "6086直接写厦大白城沙滩，5668在黄厝至曾厝垵沿海骑行路线再往厦大白城走；其他源均说明厦大校门外的沙滩，包含踏浪及日落。三名称指本批白城海滩，不是公交站；舍弃厦大白城公交站点，沿用大学路海滩参考点。",
+              "mentionIds": [
+                5668,
+                5799,
+                5895,
+                5936,
+                5978,
+                6063,
+                6086,
+                6120,
+                6227,
+                6236,
+                6293,
+                6316,
+                6482,
+                6502,
+                6534,
+                6548,
+                6588,
+                6594,
+                6772,
+                6821,
+                6861,
+                6882
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                5319,
+                5345,
+                5358,
+                5371,
+                5382,
+                5487,
+                5556,
+                5579,
+                5596,
+                5655,
+                5668,
+                5679,
+                5750,
+                5763,
+                5777,
+                5799,
+                5895,
+                5936,
+                5978,
+                6063,
+                6086,
+                6120,
+                6227,
+                6236,
+                6293,
+                6316,
+                6482,
+                6502,
+                6534,
+                6548,
+                6588,
+                6594,
+                6772,
+                6821,
+                6861,
+                6882
+              ],
+              "scoreAfter": 94.58,
+              "scoreBefore": 89.71,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 5
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-16.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

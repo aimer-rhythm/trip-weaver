@@ -1,0 +1,30 @@
+{
+  "ok": false,
+  "url": "https://www.shhuangpu.gov.cn/xw/001015/20260125/23abe565-a7f3-4bfb-93d9-afa548fc12e9.html",
+  "provider": "",
+  "content": "",
+  "error_type": "network_error",
+  "error": "所有提取服务均未能获取内容",
+  "provider_attempts": [
+    {
+      "capability": "web_fetch",
+      "provider": "tavily",
+      "status": "empty",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 8616.69,
+      "result_count": 0
+    },
+    {
+      "capability": "web_fetch",
+      "provider": "firecrawl",
+      "status": "empty",
+      "error_type": "",
+      "error": "",
+      "elapsed_ms": 0.21,
+      "result_count": 0
+    }
+  ],
+  "fallback_used": true,
+  "elapsed_ms": 8617.03
+}

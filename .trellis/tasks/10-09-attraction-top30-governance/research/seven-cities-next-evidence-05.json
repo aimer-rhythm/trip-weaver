@@ -1,0 +1,94 @@
+{
+  "snapshotSha256": "4f16e871fb938db9c2a7b247ad40f302848761e4225296a8d8cf0a58192de6c7",
+  "evidence": [
+    {
+      "city": "上海",
+      "mentionId": 10357,
+      "noteId": 2354,
+      "entityId": "73ce6d33d1fb9b6416e2be727f940a76",
+      "inputHash": "0b5771ec355ee5664a832458d475e99c539bcd5cd8b5a551ffd08a46de3af751",
+      "quote": "酒店紧挨着苏州河，傍晚沿河散步巨舒服",
+      "conclusion": "酒店广告位置参照仍计入苏州河；待正式scope隔离，不能仅改排名。其他河岸/路线片段保持review6，不直接同义合并。",
+      "businessMutation": false,
+      "appliedBatch": "batch-95",
+      "currentState": "已通过正式scope隔离为null待审；旧建议保留为历史证据"
+    },
+    {
+      "city": "西安",
+      "mentionId": 12030,
+      "noteId": 2644,
+      "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+      "inputHash": "e81757dff7cc8efa5070f1dce7c1744666388a251ef6572649697215096634f4",
+      "quote": "P8、P9➡️大唐不夜城牡丹亭茶叙门口处",
+      "conclusion": "同篇两提及均为指定商户门口机位，待正式scope；不能当整个景区的独立游览推荐。",
+      "businessMutation": false,
+      "appliedBatch": "batch-96-v2",
+      "currentState": "已通过正式scope隔离为null待审；旧建议保留为历史证据"
+    },
+    {
+      "city": "西安",
+      "mentionId": 12352,
+      "noteId": 2644,
+      "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+      "inputHash": "02da908195e78d49c8b88c7b53cd33fb9c421ac7ce568b4ca13c6b8e6a05c60a",
+      "quote": "P8、P9➡️大唐不夜城牡丹亭茶叙门口处",
+      "conclusion": "同篇两提及均为指定商户门口机位，待正式scope；不能当整个景区的独立游览推荐。",
+      "businessMutation": false,
+      "appliedBatch": "batch-96-v2",
+      "currentState": "已通过正式scope隔离为null待审；旧建议保留为历史证据"
+    },
+    {
+      "city": "西安",
+      "mentionId": 12473,
+      "noteId": 2731,
+      "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+      "inputHash": "04c58bc50e461b215bdea0722501b020ef7168083201a219ed6947fc538abadb",
+      "quote": "看中的摄影师有档期，拍了一套，看到样片的第一秒已经爱上了",
+      "conclusion": "评价摄影服务，地点仅在大唐不夜城/大唐芙蓉园标签中，待scope厘清，不据标签归景区推荐。",
+      "businessMutation": false,
+      "appliedBatch": "batch-96-v2",
+      "currentState": "已通过正式scope隔离为null待审；旧建议保留为历史证据"
+    },
+    {
+      "city": "西安",
+      "mentionId": 12504,
+      "noteId": 2729,
+      "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+      "inputHash": "55ec68e4a5f9d91f349d3220f3ebc9e5fd053ef8de16c5cbbf3e1603ef862d04",
+      "quote": "238=服装任选+精致妆造（不含拍摄）",
+      "conclusion": "未具名商户妆造服务广告，不等同整个景区；待正式scope隔离，不新增域外商户。",
+      "businessMutation": false,
+      "appliedBatch": "batch-96-v2",
+      "currentState": "已通过正式scope隔离为null待审；旧建议保留为历史证据"
+    },
+    {
+      "city": "西安",
+      "mentionId": 12019,
+      "noteId": 2672,
+      "entityId": "331c643cf1bc027f94068e9b97a465c5",
+      "inputHash": "1d5b538f066d24d13ec25f49b5d4cfd2227ea304e97991188084142752d9afb4",
+      "quote": "5.大唐不夜城夜市\n❌ 雷点：价格昂贵，小吃性价比低，多数为连锁店",
+      "conclusion": "已有夜市独立市场根仍只读，负评保留；明确不能并入景区事实，但原文缺具体夜市边界，review382保持。",
+      "businessMutation": false,
+      "currentState": "原市场主体只读、负评和review382保持；范围未确认，未合并"
+    }
+  ],
+  "shujinFetch": {
+    "files": [
+      "shujin-fetch-03.json",
+      "shujin-fetch-04.json"
+    ],
+    "ok": false,
+    "conclusion": "两个地图抓取终态均network_error且无正文；不作同体证据。裸名馆原文无馆址，保持两馆独立与review313。"
+  },
+  "previousEvidence": "seven-cities-next-evidence-04.json",
+  "nextBatch": 97,
+  "nextReview": [
+    "上海城隍庙10128及豫园组合review28",
+    "苏州河/步道/河畔的段落边界review6",
+    "厦门母步道/林海线/天泉段的范围175/176/192及广场207",
+    "成都蜀锦两馆313缺裸名馆址证据",
+    "西安大唐不夜城夜市382范围",
+    "杭州九溪、重庆来福士以及七城其余Top30逐项语义复核"
+  ]
+}

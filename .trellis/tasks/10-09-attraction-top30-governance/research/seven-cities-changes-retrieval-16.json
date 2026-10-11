@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "419a474cf359ff78595c92e200af83f02a0df1c63250f251eecb0830e8d80993",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "厦门园林植物园",
+      "entityId": "410da5dd0d2e2802ead6a313bf030a19",
+      "sqlNames": 5,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

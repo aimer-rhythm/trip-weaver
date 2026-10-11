@@ -1,0 +1,262 @@
+{
+  "snapshotSha256": "3e169784fecf0bf887a237cfdda4d0f1e9d2f362a14c78c71d63330e2846e1c3",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "d0e0f1dff1caee95784a31c71d9ac46f",
+          "city": "厦门",
+          "name": "南普陀寺",
+          "revision": 4,
+          "aliases": [
+            "南普陀"
+          ],
+          "sourceIds": [
+            2534,
+            2814
+          ],
+          "sourceNames": [
+            "南普陀",
+            "南普陀寺"
+          ],
+          "effectiveType": "attraction",
+          "score": 84.44,
+          "downstreamScore": 84.44,
+          "mentionCount": 33,
+          "noteCount": 29,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 84.44,
+          "potentialScore": 84.44,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2534
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5317,
+            5344,
+            5419,
+            5450,
+            5554,
+            5570,
+            5642,
+            5684,
+            5724,
+            5748,
+            5917,
+            5956,
+            6001,
+            6052,
+            6064,
+            6124,
+            6139,
+            6262,
+            6263,
+            6264,
+            6265,
+            6266,
+            6310,
+            6350,
+            6379,
+            6399,
+            6410,
+            6426,
+            6506,
+            6677,
+            6775,
+            6817,
+            6862
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "d0e0f1dff1caee95784a31c71d9ac46f",
+              "name": "南普陀寺",
+              "expectedRevision": 4,
+              "mentionId": 6546,
+              "inputHash": "a1d03b0f03dad889359529bcb9fdb0a50ebae47a462a65564eeae14bc2cabcf1",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2534
+                ]
+              },
+              "noteId": 1435,
+              "quote": "酒店房间面积比较大，可以看到厦大，南普陀寺",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店房间窗景体验，没有独立寺院游览，不作为寺院主体潜在加分。",
+              "businessMutation": false,
+              "limit": "112-v2已正式隔离；仅记录母项边界，不创建酒店或独立机位。"
+            }
+          ],
+          "legacyIds": [
+            "d0e0f1dff1caee95784a31c71d9ac46f",
+            "d47144f2ffddf79bbeb00c87cc6f7acf"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "6862",
+                  "name": "南普陀寺",
+                  "quote": "一年来南普，三年不受苦",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6ab1f2040000000031011e15"
+                },
+                {
+                  "id": "6817",
+                  "name": "南普陀寺",
+                  "quote": "南普陀当天基本都能约上",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69bf52c60000000023025ad4"
+                },
+                {
+                  "id": "6775",
+                  "name": "南普陀寺",
+                  "quote": "南普陀寺…淡季人少随便逛",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69c1fb780000000021039ac8"
+                },
+                {
+                  "id": "6677",
+                  "name": "南普陀寺",
+                  "quote": "在南普陀寺领了春联",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/695a65110000000022033b6b"
+                },
+                {
+                  "id": "5724",
+                  "name": "南普陀",
+                  "quote": "南普陀",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a697f3a000000000301f181"
+                }
+              ],
+              "reviewIds": [
+                162
+              ],
+              "conclusion": "厦门南普陀寺简称，保留思明南路515号寺院主体，替换城市中心占位坐标。",
+              "sourcePlaceIds": [
+                "2534",
+                "2814"
+              ]
+            },
+            {
+              "lat": 24.442641,
+              "lng": 118.097143,
+              "kind": "primary_source_geometry",
+              "address": "思明南路515号",
+              "original": {
+                "lat": 24.442641,
+                "lng": 118.097143,
+                "address": "思明南路515号",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "reviewed_source",
+              "conclusion": "选取已核实主体的现有定位，不平均冲突坐标；原成员坐标保留供追溯。",
+              "sourcePlaceId": "2534",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "url": "https://zh.wikipedia.org/wiki/南普陀寺",
+              "file": "all-cities/xiamen-nanputuo-fetch.json",
+              "kind": "published_source",
+              "sha256": "4013ce8fd34c8469c423706ad7aee3267a045e1e3c2dd1e27732fb20ec0f283c"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                5317,
+                5344,
+                5419,
+                5450,
+                5554,
+                5570,
+                5642,
+                5684,
+                5724,
+                5748,
+                5917,
+                5956,
+                6001,
+                6052,
+                6064,
+                6124,
+                6139,
+                6262,
+                6263,
+                6264,
+                6265,
+                6266,
+                6310,
+                6350,
+                6379,
+                6399,
+                6410,
+                6426,
+                6506,
+                6546,
+                6677,
+                6775,
+                6817,
+                6862
+              ],
+              "scoreAfter": 86.97,
+              "scoreBefore": 84.44,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 5
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-20.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

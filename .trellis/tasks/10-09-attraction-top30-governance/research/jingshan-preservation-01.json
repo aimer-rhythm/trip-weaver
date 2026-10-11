@@ -1,0 +1,50 @@
+{
+  "batch": 78,
+  "readOnly": true,
+  "checks": {
+    "snapshotMatchesRanking": true,
+    "tripsUnchanged": true,
+    "北京.sourcesUnchanged": true,
+    "北京.notesUnchanged": true,
+    "北京.membersUnchanged": true,
+    "北京.reviewsUnchanged": true,
+    "北京.summariesUnchanged": true,
+    "oneCorrectionScope": true,
+    "oneCorrectionAssignment": true,
+    "twoAuditedChangesAdded": true,
+    "北京.expectedEntityChanges": true,
+    "北京.rawMentionInputsUnchanged": true,
+    "北京.mentionOwnersUnchanged": true,
+    "北京.allPlaceRowsPreserved": true,
+    "北京.allMediaFieldsPreserved": true,
+    "correctAliases": true,
+    "unchangedLegacyIds": true,
+    "newVersion": true,
+    "webContentExactlyPreserved": true,
+    "noFactOrMediaContractAdded": true,
+    "济南.sourcesUnchanged": true,
+    "济南.notesUnchanged": true,
+    "济南.membersUnchanged": true,
+    "济南.reviewsUnchanged": true,
+    "济南.summariesUnchanged": true,
+    "jinanScopeAndAuditsUnchanged": true,
+    "济南.expectedEntityChanges": true,
+    "济南.rawMentionInputsUnchanged": true,
+    "济南.mentionOwnersUnchanged": true,
+    "济南.allPlaceRowsPreserved": true,
+    "济南.allMediaFieldsPreserved": true,
+    "noUnexpectedPlaceChanges": false,
+    "all60ScoresMatch": true
+  },
+  "unexpectedChanges": [
+    {
+      "city": "北京",
+      "id": "981bfe8125feb36e052dcfee1e0df8b5",
+      "fields": [
+        "embeddedText"
+      ]
+    }
+  ],
+  "snapshotSha256": "abde1ea237465689b36fec2b70eed03927ec18e724d65511efa005d9244dac34",
+  "passed": false
+}

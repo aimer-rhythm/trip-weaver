@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "d7c04cbb2ae2d2a959a696df819e957f9ce63e06f4c666975ab3656b3c52a96f",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "环岛路",
+      "entityId": "13abadcd531dd9b70a031c9925f096f0",
+      "sqlNames": 2,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

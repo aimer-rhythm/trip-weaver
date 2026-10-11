@@ -1,0 +1,845 @@
+{
+  "snapshotSha256": "886c029c12844de487b62dca4e21f530257366681e79397b652fb4843bbe59d0",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "97930a0a0c32d968eeed64e754e58382",
+          "city": "上海",
+          "name": "外滩",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            4654
+          ],
+          "sourceNames": [
+            "外滩"
+          ],
+          "effectiveType": "attraction",
+          "score": 107.02,
+          "downstreamScore": 107.02,
+          "mentionCount": 42,
+          "noteCount": 37,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 107.02,
+          "potentialScore": 107.02,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4654
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9947,
+            9964,
+            9971,
+            9996,
+            10001,
+            10020,
+            10044,
+            10069,
+            10082,
+            10124,
+            10133,
+            10159,
+            10181,
+            10197,
+            10218,
+            10246,
+            10260,
+            10261,
+            10280,
+            10312,
+            10377,
+            10410,
+            10876,
+            10897,
+            10922,
+            10945,
+            10959,
+            11011,
+            11012,
+            11029,
+            11033,
+            11038,
+            11132,
+            11160,
+            11172,
+            11198,
+            11201,
+            11236,
+            11256,
+            11280,
+            11300,
+            11313
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 10143,
+              "inputHash": "031276aaf07b9dafd41e172ef40e4f552703ef03472879747bcc224b6be96c45",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2319,
+              "quote": "1️⃣外滩\n📍李百蟹・蟹黄面\n📍外滩家宴上海菜",
+              "relation": "not_same_entity",
+              "subjectType": "area",
+              "conclusion": "美食清单片区标题，不是景点推荐。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 10236,
+              "inputHash": "11bb1ff53af0ed23e77d1cf861c281a8770b3635b9f3314914a31c0eb5bff4fe",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2282,
+              "quote": "和平饭店🔜外滩万国建筑群",
+              "relation": "not_same_entity",
+              "subjectType": "component",
+              "conclusion": "明确建筑群，不直接给泛区域加分，不跨scope强行重分配。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 10336,
+              "inputHash": "b1becb613af232f5d02b3593063848b22052d2bcc424f79981d70032f625687e",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2351,
+              "quote": "从酒店出来就是地铁站🚇，去陆家嘴和外滩都很方便",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店交通参照。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 10339,
+              "inputHash": "e291a9d7d3a93ac854102101c35a3bb26343c5b53ef29ebbce5dff2153c0b549",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2352,
+              "quote": "2️⃣位置外滩附近，不管是去外滩还是南京路都超方便",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店位置参照。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 10350,
+              "inputHash": "503386bfac8a2cac3766af92b6a27121899450097bd36a3cb0e9b4f96b39071e",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2354,
+              "quote": "出门就是地铁站，就在外滩旁",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店位置及视野。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 10990,
+              "inputHash": "dcd3179898f90aa237463d18390c8251e27cd9ffb50ba8998404af9b1c95a12b",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2475,
+              "quote": "过个马路就是外滩，坐在店里就能看到东方明珠、黄浦江景",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅位置与窗景，正文餐后清单未列外滩。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 11147,
+              "inputHash": "ca975d07511b4547e800946f5c408f738e21ff16c9671dbfa87c40cb27b9b0a2",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2477,
+              "quote": "靠窗位景观很好…隔壁就是红房子的屋顶",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅窗景，非外滩游览。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "97930a0a0c32d968eeed64e754e58382",
+              "name": "外滩",
+              "expectedRevision": 3,
+              "mentionId": 11328,
+              "inputHash": "08661afa9fdf71b0872ca81b855fa43effb6b715f7570df53fbe83c6a14047c9",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4654
+                ]
+              },
+              "noteId": 2464,
+              "quote": "外滩22号的景观位复古风李百蟹面馆！！\n窗边就是外滩和东方明珠！",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐饮景观位，不将窗景归为景区评价。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "97930a0a0c32d968eeed64e754e58382"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9947,
+                9964,
+                9971,
+                9996,
+                10001,
+                10020,
+                10044,
+                10069,
+                10082,
+                10124,
+                10133,
+                10143,
+                10159,
+                10181,
+                10197,
+                10218,
+                10236,
+                10246,
+                10260,
+                10261,
+                10280,
+                10312,
+                10336,
+                10339,
+                10350,
+                10377,
+                10410,
+                10876,
+                10897,
+                10922,
+                10945,
+                10959,
+                10990,
+                11011,
+                11012,
+                11029,
+                11033,
+                11038,
+                11132,
+                11147,
+                11160,
+                11172,
+                11198,
+                11201,
+                11236,
+                11256,
+                11280,
+                11300,
+                11313,
+                11328
+              ],
+              "scoreAfter": 126.6,
+              "scoreBefore": 71.13,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 1
+        },
+        {
+          "entityId": "2af1d8c8816a1645942015d16738c9fd",
+          "city": "上海",
+          "name": "东方明珠广播电视塔",
+          "revision": 3,
+          "aliases": [
+            "东方明珠",
+            "东方明珠塔"
+          ],
+          "sourceIds": [
+            4650,
+            4666
+          ],
+          "sourceNames": [
+            "东方明珠",
+            "东方明珠广播电视塔"
+          ],
+          "effectiveType": "attraction",
+          "score": 76.83,
+          "downstreamScore": 76.83,
+          "mentionCount": 30,
+          "noteCount": 25,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 76.83,
+          "potentialScore": 76.83,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4666
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9950,
+            9966,
+            9970,
+            9998,
+            10025,
+            10119,
+            10132,
+            10177,
+            10208,
+            10221,
+            10255,
+            10256,
+            10277,
+            10308,
+            10375,
+            10376,
+            10878,
+            10919,
+            10946,
+            10953,
+            11008,
+            11009,
+            11031,
+            11036,
+            11159,
+            11179,
+            11195,
+            11202,
+            11239,
+            11252
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "2af1d8c8816a1645942015d16738c9fd",
+              "name": "东方明珠广播电视塔",
+              "expectedRevision": 3,
+              "mentionId": 10342,
+              "inputHash": "866bc9610bc84edee475de55c15ceaf07852cc244106192bdf4db0373c6c4869",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4666
+                ]
+              },
+              "noteId": 2352,
+              "quote": "7️⃣躺着就能看到东方明珠，拍照超出片的一家",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店房间视野参照。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "2af1d8c8816a1645942015d16738c9fd",
+              "name": "东方明珠广播电视塔",
+              "expectedRevision": 3,
+              "mentionId": 10351,
+              "inputHash": "59df86fc65b46116fd9d57b6663bf9f573cf0cab0d38f7087672b3e60dc6a0dd",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4666
+                ]
+              },
+              "noteId": 2354,
+              "quote": "房间还能看到东方明珠夜景，真的很漂亮",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店房间视野参照。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "2af1d8c8816a1645942015d16738c9fd",
+              "name": "东方明珠广播电视塔",
+              "expectedRevision": 3,
+              "mentionId": 10991,
+              "inputHash": "7df305685994dd7d7ac4cb8a97a7c546254e9a8e4176dfb6299c80e3ed89d45c",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4666
+                ]
+              },
+              "noteId": 2475,
+              "quote": "坐在店里就能看到东方明珠、黄浦江景",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅窗景，不是塔体游览。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "2af1d8c8816a1645942015d16738c9fd",
+              "name": "东方明珠广播电视塔",
+              "expectedRevision": 3,
+              "mentionId": 11311,
+              "inputHash": "87068534f5f2d4d8c8a4ccf614495d9ed07abf2946b00d37db0b798812c0fc04",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4666
+                ]
+              },
+              "noteId": 2482,
+              "quote": "这个大落地窗！美到失语！！可以看到东方明珠",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅窗景；同篇餐后仅明确去外滩，不把外滩游览泛化成登塔。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "2af1d8c8816a1645942015d16738c9fd",
+              "name": "东方明珠广播电视塔",
+              "expectedRevision": 3,
+              "mentionId": 11329,
+              "inputHash": "70de1590144a153bf85ff1582f6c3beb6fc127e14d53bdc093eb1acb9a056f42",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4666
+                ]
+              },
+              "noteId": 2464,
+              "quote": "外滩22号的景观位复古风李百蟹面馆！！\n窗边就是外滩和东方明珠！",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅窗景。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "2af1d8c8816a1645942015d16738c9fd",
+            "9152d2fb397b73851b9268de7b4685df",
+            "faf8ada7dc85994084b20316828987f7"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": ".trellis\\tasks\\10-09-attraction-top30-governance\\research\\shanghai-identity-plan-01.json",
+              "kind": "reviewed_attraction_alias",
+              "conclusion": "原文的全名、简称和塔名均指陆家嘴同一电视塔，不是桃林路同名店。以现有全名根及主源4666为主，保留世纪大道1号的原位置；简称根与来源4650作为历史成员保留，其桃林路旧点不作为主位置。不同外部拍摄点、陆家嘴片区、三件套、餐厅和酒店不合并。既有机构资料及观点保留，住宿和机位描述不据此视为塔内事实已审完。",
+              "mentionIds": [
+                9950,
+                9966,
+                9970,
+                9998,
+                10025,
+                10119,
+                10132,
+                10177,
+                10208,
+                10221,
+                10255,
+                10256,
+                10277,
+                10308,
+                10342,
+                10351,
+                10375,
+                10376,
+                10878,
+                10919,
+                10946,
+                10953,
+                10991,
+                11008,
+                11009,
+                11031,
+                11036,
+                11159,
+                11179,
+                11195,
+                11202,
+                11239,
+                11252,
+                11311,
+                11329
+              ],
+              "noteQuotes": [
+                {
+                  "quote": "东方明珠塔，陆家嘴三件套，国金中心",
+                  "noteId": 2296
+                },
+                {
+                  "quote": "东方明珠：上海地标高塔，登高俯瞰整座城市",
+                  "noteId": 2278
+                },
+                {
+                  "quote": "上海Z心大厦→东方明珠广播电视塔→上海图书馆东馆",
+                  "noteId": 2474
+                }
+              ],
+              "snapshotSha256": "981d8818902960049da0b49bd51d164296474a4537d68cbfdce1c0ac9980ecc0",
+              "sourcePlaceIds": [
+                4666,
+                4650
+              ],
+              "evidenceMentions": [
+                9950,
+                9970,
+                10119,
+                11195,
+                11239
+              ]
+            }
+          ],
+          "rank": 4
+        },
+        {
+          "entityId": "0700e088ebd6e984525c32fecc476cef",
+          "city": "上海",
+          "name": "外滩万国建筑博览群",
+          "revision": 4,
+          "aliases": [
+            "万国建筑群",
+            "外滩万国建筑",
+            "外滩万国建筑群"
+          ],
+          "sourceIds": [
+            4668,
+            4714,
+            5201,
+            5210
+          ],
+          "sourceNames": [
+            "万国建筑群",
+            "外滩万国建筑",
+            "外滩万国建筑博览群",
+            "外滩万国建筑群"
+          ],
+          "effectiveType": "attraction",
+          "score": 20.0,
+          "downstreamScore": 20,
+          "mentionCount": 6,
+          "noteCount": 6,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 20.0,
+          "potentialScore": 20.0,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            4714
+          ],
+          "hasCoordinates": false,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9946,
+            10904,
+            10923,
+            10960,
+            10976,
+            11189
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "0700e088ebd6e984525c32fecc476cef",
+              "name": "外滩万国建筑博览群",
+              "expectedRevision": 4,
+              "mentionId": 10353,
+              "inputHash": "0d10b31db47d8aeffc35f29e1e4790473c36fc8d86c177607bb7225474f58ca6",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4714
+                ]
+              },
+              "noteId": 2354,
+              "quote": "可以近距离看三件套，东方明珠，黄浦江，还有金碧辉煌的万国建筑群",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "酒店视野参照。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            },
+            {
+              "city": "上海",
+              "entityId": "0700e088ebd6e984525c32fecc476cef",
+              "name": "外滩万国建筑博览群",
+              "expectedRevision": 4,
+              "mentionId": 10993,
+              "inputHash": "118fd74c48cc2dc3d965f47f782023926d6b06d4e79a5cec2c6bc29f93be5d2c",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4714
+                ]
+              },
+              "noteId": 2475,
+              "quote": "晚上万国建筑群亮灯超有氛围，用餐时还有小提琴演奏",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "餐厅窗景与用餐体验。",
+              "businessMutation": false,
+              "limit": "不创建餐厅、酒店或机位，不强行重分配，不新增正式组成关系。"
+            }
+          ],
+          "legacyIds": [
+            "0700e088ebd6e984525c32fecc476cef",
+            "3378b32dc7fddf394da292da3785ab1e",
+            "42c4cb2c07e435e68b71dc7dd5d30779",
+            "7961810e10103fa838190987d044f3ba"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "all-cities/source-snapshot.json",
+              "kind": "reviewed_source_snapshot",
+              "sha256": "9b953fc68b38457e09459067bec85bdba6c5b482d242a2a9ac36eee049d8ef49",
+              "mentions": [
+                {
+                  "id": "10960",
+                  "name": "外滩万国建筑博览群",
+                  "quote": "百年上海的一个影子",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/68aab301000000001b0235b2"
+                },
+                {
+                  "id": "10923",
+                  "name": "外滩万国建筑博览群",
+                  "quote": "万国建筑",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a44ab45000000000800150c"
+                },
+                {
+                  "id": "9946",
+                  "name": "外滩万国建筑博览群",
+                  "quote": "万国建筑博览群",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a3ca49a000000000f01724a"
+                },
+                {
+                  "id": "11189",
+                  "name": "外滩万国建筑群",
+                  "quote": "外滩西侧一排历史老建筑",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/68d28c25000000001101e46c"
+                },
+                {
+                  "id": "10904",
+                  "name": "外滩万国建筑群",
+                  "quote": "背对黄浦江，百年建筑繁华",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69d93eec000000001a0318c7"
+                },
+                {
+                  "id": "10353",
+                  "name": "外滩万国建筑群",
+                  "quote": "金碧辉煌的万国建筑群",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a7981690000000025017afb"
+                },
+                {
+                  "id": "10993",
+                  "name": "万国建筑群",
+                  "quote": "晚上万国建筑群亮灯超有氛围",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/69b8c60c000000001a02aba0"
+                },
+                {
+                  "id": "10976",
+                  "name": "外滩万国建筑",
+                  "quote": "免费又出片",
+                  "sourceUrl": "https://www.xiaohongshu.com/explore/6a1aa571000000003700fb88"
+                }
+              ],
+              "reviewIds": [
+                3,
+                4,
+                5,
+                11
+              ],
+              "conclusion": "四个名称均为外滩沿中山东一路历史建筑群的整体称呼。10960原文明示外滩沿路的租界时期建筑，10993原文描述外滩江景与建筑群亮灯；不并入单体建筑或北外滩。",
+              "sourcePlaceIds": [
+                "4714",
+                "4668",
+                "5210",
+                "5201"
+              ]
+            },
+            {
+              "lat": null,
+              "lng": null,
+              "kind": "primary_source_geometry",
+              "address": "上海市黄浦区中山东一路",
+              "original": {
+                "lat": 31.248724,
+                "lng": 121.496482,
+                "address": "",
+                "geoStatus": "reviewed_source"
+              },
+              "geoStatus": "unresolvable",
+              "conclusion": "原定位31.248724/121.496482落在北外滩，另一成员落在更南部，均不能代表该建筑群；清空错误精确坐标，地址保留到中山东一路。",
+              "sourcePlaceId": "4714",
+              "coordinateSystem": "GCJ-02"
+            },
+            {
+              "file": "all-cities/shanghai-batch02-context.json",
+              "kind": "reviewed_full_note_context",
+              "sha256": "382ff969e5799e7238ab9827e4cdb52c6de0b8b026d0186264997a0816f028d4",
+              "conclusion": "四个名称均为外滩沿中山东一路历史建筑群的整体称呼。10960原文明示外滩沿路的租界时期建筑，10993原文描述外滩江景与建筑群亮灯；不并入单体建筑或北外滩。",
+              "mentionIds": [
+                10960,
+                10993
+              ]
+            },
+            {
+              "file": "D:\\Project\\tripweaver\\.trellis\\tasks\\10-09-attraction-top30-governance\\research\\seven-cities-ranking-04.json",
+              "kind": "resolved_identity_recommendation_score",
+              "conclusion": "仅修复本景点当前已解析提及的分数；未解析、活动和子项不按normalized_name补给母项；不表示来源语义全部审完。",
+              "mentionIds": [
+                9946,
+                10353,
+                10904,
+                10923,
+                10960,
+                10976,
+                10993,
+                11189
+              ],
+              "scoreAfter": 25.0,
+              "scoreBefore": 7.5,
+              "snapshotSha256": "2253756fa39eb972787befe13733e7df614409294adebf16e4c9b9504cb2894c"
+            }
+          ],
+          "rank": 18
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-09.json",
+    "count": 207,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "15d0dead50b4115ca159d3120fae822c43276f189047f324c416021cfae0be88",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "椰风寨",
+      "entityId": "78c1fde81fb990a665712a8547b66f4b",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 2,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

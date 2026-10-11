@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "ea03cd0d2bcf8b8aafc56b5f38689e7eb53a1fb46400af97bbde8b44638d79c4",
+  "rows": [
+    {
+      "city": "厦门",
+      "name": "沙坡尾",
+      "entityId": "2caf5439b2ed55aa131dc8a82281f1b2",
+      "sqlNames": 1,
+      "diagnostics": {
+        "keywordHits": 6,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

@@ -1,0 +1,21 @@
+{
+  "readOnly": true,
+  "snapshotSha256": "4e194a53425fd0410a5941cd2f049f1056726d558703272ddcfe0147f1b2e8e5",
+  "rows": [
+    {
+      "city": "重庆",
+      "name": "鹅岭栈桥",
+      "entityId": "a3c0f200bd1594976809975920f55cc2",
+      "sqlNames": 4,
+      "diagnostics": {
+        "keywordHits": 1,
+        "vector": "used",
+        "vectorHits": 48
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "passed": true,
+  "limits": "真实SQL及启用向量的混合召回，不声称纯向量单独命中、原始来源语义已审完或外部模型/地图端到端验证。"
+}

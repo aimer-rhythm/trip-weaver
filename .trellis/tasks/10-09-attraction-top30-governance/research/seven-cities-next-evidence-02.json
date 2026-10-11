@@ -1,0 +1,119 @@
+{
+  "snapshotSha256": "bf85459c5e9f93f120c0291f6cd57ad091696f413f36041ae3da062a756f7361",
+  "applied": false,
+  "evidence": [
+    {
+      "city": "厦门",
+      "mentionId": 6042,
+      "noteId": 1280,
+      "inputHash": "9ebbc68961c9f6e84a53059728e3199e0d7190d774dccb8355dccfa6c1e4f4ec",
+      "quote": "傍晚走山海步道盼归塔段",
+      "conclusion": "原文为具名路线段；不能作为整个山海步道的全局同义名，也不能把盼归塔段与塔体合并。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    },
+    {
+      "city": "成都",
+      "mentionId": 3459,
+      "noteId": 934,
+      "inputHash": "d93e258843fb303d3e6f73343d1f04d2b2bd70cd99ef0a5a0e2f80d740a27d9b",
+      "quote": "东郊记忆(南大门)",
+      "conclusion": "原文路线终点为南大门；不能给整个园区增加入口别名。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    },
+    {
+      "city": "成都",
+      "mentionId": 4178,
+      "noteId": 1017,
+      "inputHash": "f60673fbe6a41e143d154d060e0e1d2020c4bcb164b5755fa7ed4cb9cf1b2835",
+      "quote": "主街＝逛吃热闹区",
+      "conclusion": "原文明确分出主街、一街七巷、四大会馆；主街是商业片段，当前继续未分配，不能按normalized_name算给古镇整体。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    },
+    {
+      "city": "西安",
+      "mentionId": 12305,
+      "noteId": 2711,
+      "inputHash": "6dec69811f09c287c3919b42163ab98e027d7be5b410f3bfb76e736eddc08b6a",
+      "quote": "兵马俑门票包含骊山园",
+      "conclusion": "原文区分兵马俑和骊山园，本条抽取名带博物院前缀；需逐提及明确与既有兵马俑根的关系，不能归入全博物院。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    },
+    {
+      "city": "重庆",
+      "mentionId": 1147,
+      "noteId": 182,
+      "inputHash": "18c43f561b88e3f71b4e1ea2aac69adbf75409e1f01eb88327d4465fdc84bfa3",
+      "quote": "📍祖父的阳台",
+      "conclusion": "本条为远观洪崖洞的具名机位；不能把机位名称登记为洪崖洞全局别名。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    },
+    {
+      "city": "重庆",
+      "mentionId": 759,
+      "noteId": 59,
+      "inputHash": "c2066739b13488e93e1ef678c1f22e3dddb62ddf61012a673f404bce6df7ebe5",
+      "quote": "[五R]黄葛古道（崇文门段）",
+      "conclusion": "明确路线段，往返2小时仅描述该段；不把分段名或分钟数扩展为全古道。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    },
+    {
+      "city": "重庆",
+      "mentionId": 1295,
+      "noteId": 59,
+      "inputHash": "6b10608985cdf51858ccfb223c57f00b58e01b55c07aa90bf2602eb57c72864a",
+      "quote": "[五R]黄葛古道（崇文门段）",
+      "conclusion": "与759同篇再次抽取，不是第二篇证据；分段范围及交通文字另核。",
+      "businessMutation": false,
+      "resolutionPreserved": {
+        "status": "unresolved",
+        "reason": "unregistered_or_ambiguous",
+        "scopePlaceIds": []
+      }
+    }
+  ],
+  "resolvedPreviousItems": [
+    "钟楼12132/12488及新增11999已由第86批隔离，原历史待审保留；不能计入塔体当前分数",
+    "日光岩5876已由第88批精确别名纳入，不再待审",
+    "麓湖CPI商业类型已由cpi-fetch-01实际正文补证，仅退出景点配额",
+    "成都note759的26条景点错城来源已做配额资格审核，原scope和PENDING保持"
+  ],
+  "nextEntityBoundaries": [
+    "上海城隍庙/豫园组合与苏州河段",
+    "厦门山海步道三组名称及天泉广场/步道",
+    "广州白云山景区/机位、广州塔广场商业体/西广场",
+    "成都蜀锦两馆及洛带组成",
+    "杭州九溪系列与全城别名/组成复核",
+    "西安博物院/兵马俑、夜市范围",
+    "重庆黄葛古道分段/洪崖洞机位"
+  ]
+}

@@ -1,0 +1,560 @@
+[
+  {
+    "city": "厦门",
+    "entityId": "79430af52e86d2c23acffdef3c42fccb",
+    "name": "山海步道",
+    "expectedRevision": 3,
+    "mentionId": 6042,
+    "inputHash": "9ebbc68961c9f6e84a53059728e3199e0d7190d774dccb8355dccfa6c1e4f4ec",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 1280,
+    "quote": "傍晚走山海步道盼归塔段",
+    "relation": "not_same_entity",
+    "subjectType": "route_segment",
+    "conclusion": "原文为具名路线段；不能作为整个山海步道的全局同义名，也不能把盼归塔段与塔体合并。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "成都",
+    "entityId": "e43abd99a49ccca21dbecc07502c01e1",
+    "name": "东郊记忆",
+    "expectedRevision": 2,
+    "mentionId": 3459,
+    "inputHash": "d93e258843fb303d3e6f73343d1f04d2b2bd70cd99ef0a5a0e2f80d740a27d9b",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 934,
+    "quote": "东郊记忆(南大门)",
+    "relation": "not_same_entity",
+    "subjectType": "component",
+    "conclusion": "原文路线终点为南大门；不能给整个园区增加入口别名。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "成都",
+    "entityId": "99cafde5d39982daf23019eaa6e82032",
+    "name": "洛带古镇",
+    "expectedRevision": 2,
+    "mentionId": 4178,
+    "inputHash": "f60673fbe6a41e143d154d060e0e1d2020c4bcb164b5755fa7ed4cb9cf1b2835",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 1017,
+    "quote": "主街＝逛吃热闹区",
+    "relation": "not_same_entity",
+    "subjectType": "component",
+    "conclusion": "原文明确分出主街、一街七巷、四大会馆；主街是商业片段，当前继续未分配，不能按normalized_name算给古镇整体。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "78ee8175d84dfc4a82f83bc6cd922989",
+    "name": "秦始皇帝陵博物院",
+    "expectedRevision": 1,
+    "mentionId": 12305,
+    "inputHash": "6dec69811f09c287c3919b42163ab98e027d7be5b410f3bfb76e736eddc08b6a",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 2711,
+    "quote": "兵马俑门票包含骊山园",
+    "relation": "not_same_entity",
+    "subjectType": "component",
+    "conclusion": "原文区分兵马俑和骊山园，本条抽取名带博物院前缀；需逐提及明确与既有兵马俑根的关系，不能归入全博物院。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "a40646e958a38ba3c0bbbb1aa1ebf8f5",
+    "name": "洪崖洞",
+    "expectedRevision": 3,
+    "mentionId": 1147,
+    "inputHash": "18c43f561b88e3f71b4e1ea2aac69adbf75409e1f01eb88327d4465fdc84bfa3",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 182,
+    "quote": "📍祖父的阳台",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "本条为远观洪崖洞的具名机位；不能把机位名称登记为洪崖洞全局别名。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "198bfbbcd2d4d584af83577d74996c88",
+    "name": "黄葛古道",
+    "expectedRevision": 2,
+    "mentionId": 759,
+    "inputHash": "c2066739b13488e93e1ef678c1f22e3dddb62ddf61012a673f404bce6df7ebe5",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 59,
+    "quote": "[五R]黄葛古道（崇文门段）",
+    "relation": "not_same_entity",
+    "subjectType": "route_segment",
+    "conclusion": "明确路线段，往返2小时仅描述该段；不把分段名或分钟数扩展为全古道。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "198bfbbcd2d4d584af83577d74996c88",
+    "name": "黄葛古道",
+    "expectedRevision": 2,
+    "mentionId": 1295,
+    "inputHash": "6b10608985cdf51858ccfb223c57f00b58e01b55c07aa90bf2602eb57c72864a",
+    "expectedResolution": {
+      "status": "unresolved",
+      "reason": "unregistered_or_ambiguous",
+      "scopePlaceIds": []
+    },
+    "noteId": 59,
+    "quote": "[五R]黄葛古道（崇文门段）",
+    "relation": "not_same_entity",
+    "subjectType": "route_segment",
+    "conclusion": "与759同篇再次抽取，不是第二篇证据；分段范围及交通文字另核。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+    "name": "西安钟楼",
+    "expectedRevision": 3,
+    "mentionId": 11999,
+    "inputHash": "822bd6156ef006b9ff784def04fd9fef10d98d29569a7e732458227a96253dee",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        5558
+      ]
+    },
+    "noteId": 2654,
+    "quote": "钟楼周围最热闹，美食也多，但是价格偏贵。",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "本条主语为周围住宿片区，不等于塔体，不计入塔体排名上界；86批null待审保持。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+    "name": "西安钟楼",
+    "expectedRevision": 3,
+    "mentionId": 12132,
+    "inputHash": "3d005e03c4ff24e175180d0ca66b00dbfb45bc5fd433da0cf5607acbce4bd6f7",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        5558
+      ]
+    },
+    "noteId": 2694,
+    "quote": "干净又便宜！而且就在钟楼旁，步行地铁口十分钟",
+    "relation": "not_same_entity",
+    "subjectType": "hotel",
+    "conclusion": "原文标题和全文推荐未具名民宿，不是钟楼塔体，不计入塔体排名上界；86批null待审保持。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "西安",
+    "entityId": "4e4defe90dcdd9dc78c1ef92cc904def",
+    "name": "西安钟楼",
+    "expectedRevision": 3,
+    "mentionId": 12488,
+    "inputHash": "34c839d2252f53b58d446e7a377f84f3c1691356530a1da26c16d950c45de108",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        5558
+      ]
+    },
+    "noteId": 2732,
+    "quote": "P3-5 钟楼饭店门前广场",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "原文为饭店门前广场机位，不能因含钟楼二字归入塔体；86批null待审保持。",
+    "businessMutation": false,
+    "limit": "仅排除与此母项同义及母项潜在加分，不认定新的具体实体或建立正式part_of关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "99a25cafcf6c44d21f6b2f6f3075d222",
+    "name": "上海迪士尼度假区",
+    "expectedRevision": 2,
+    "mentionId": 10337,
+    "inputHash": "ec740f8e00d519307265ef536a8b0655ec4ef52aea549e1a801d9da8b2451186",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4665
+      ]
+    },
+    "noteId": 2351,
+    "quote": "先来夸夸酒店的位置吧，从酒店出来就是地铁站",
+    "relation": "not_same_entity",
+    "subjectType": "hotel",
+    "conclusion": "未具名酒店的位置广告，迪士尼只是交通参照，不等同度假区。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "99a25cafcf6c44d21f6b2f6f3075d222",
+    "name": "上海迪士尼度假区",
+    "expectedRevision": 2,
+    "mentionId": 10341,
+    "inputHash": "e362838144053b774cdee9ddd3c89de038ac516259fc7ee6219fcf1b913410d0",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4665
+      ]
+    },
+    "noteId": 2352,
+    "quote": "上海迪士尼附近的一家酒店，去迪士尼玩的首选这家，酒店有接驳车",
+    "relation": "not_same_entity",
+    "subjectType": "hotel",
+    "conclusion": "未具名酒店的接驳服务，不等同度假区。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "9974c8d245e9bcfcea7b631e4c4624c9",
+    "name": "上海迪士尼乐园",
+    "expectedRevision": 3,
+    "mentionId": 10407,
+    "inputHash": "3243574ae5f530c8426f0382c5fca6f597eab9618d479e11c12971d4a4fcef9c",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4802
+      ]
+    },
+    "noteId": 2275,
+    "quote": "9️⃣迪士尼门口",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "全文为免费拍照清单，此项明确为门口机位，不等同园内乐园。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 10145,
+    "inputHash": "4323720493d3a9c6deb727d1338590a6b3bc98fe2238dcb442aedac0b25321df",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2319,
+    "quote": "3️⃣城隍庙\n📍松月楼素菜包\n📍宁波汤团店",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "美食分区标题与小吃商户列表，不等同道观主体。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 10354,
+    "inputHash": "b2d055d86aa4a45a400a4ac25fd502d0bdcb81753ec2640dc5b1bb868ea9f61f",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2354,
+    "quote": "离城隍庙，豫园都很近的",
+    "relation": "not_same_entity",
+    "subjectType": "hotel",
+    "conclusion": "整段主语为未具名酒店，邻近参照不是道观推荐。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 10372,
+    "inputHash": "b7b548c98c1571fe2462e2c4809a238d97b81f3bfdcfcc33f6653ffb5e77dbf1",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2276,
+    "quote": "城隍庙小吃多，适量品尝，避免肠胃不适",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "此条警示针对周边小吃消费，不等同道观游览事实；原作者观点保持。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 11000,
+    "inputHash": "20a35d2cceffd95469e2d83ff4363b8a9c3e8e51b5fab2a423e23b571050cfcb",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2509,
+    "quote": "城隍庙里面有各式各样的小吃！其中最出名的就是南翔馒头，绿波廊，沈大成",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "此段主语为小吃商业片区并含九曲桥及楼宇灯光，不等同道观。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 11027,
+    "inputHash": "a9c889ce3b4df1c77e43ab9023dc174f7056813bd84fccfb3d7c748e0d827caa",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2511,
+    "quote": "2. 城隍庙（10:00–11:00）\n• 免费街区\n• 吃：南翔小笼、梨膏糖、海棠糕",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "明确为免费街区吃小吃拍九曲桥，不等同道观及其游览时长。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 11157,
+    "inputHash": "696d37f03a31b4132d1637481e1cfe8236c34370938805239f90524074396cbd",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2513,
+    "quote": "城隍庙小吃别抱太高期望，就是游客价，尝个鲜就行",
+    "relation": "not_same_entity",
+    "subjectType": "area",
+    "conclusion": "负评限定小吃消费，不等同道观；保持原文，不由此认定道观好坏。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "上海",
+    "entityId": "19564ce736eb343b014fc746280bcade",
+    "name": "上海城隍庙",
+    "expectedRevision": 4,
+    "mentionId": 11262,
+    "inputHash": "7e69fcd6a04853f8024fd344d9118c38eab5cd4b989b4fcad07e8be391b8ccad",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        4779
+      ]
+    },
+    "noteId": 2444,
+    "quote": "城隍庙主街灯笼群：成片红灯笼连成街巷",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "打卡机位段的主街灯笼群，不等同道观。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "广州",
+    "entityId": "2495bc375ff6d1a499ff03145ea5cef4",
+    "name": "白云山",
+    "expectedRevision": 3,
+    "mentionId": 7394,
+    "inputHash": "08e21d4626a1e1e466ed349e1cc7ec966fe7d46381b51f91370d01670873a252",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        3329
+      ]
+    },
+    "noteId": 1822,
+    "quote": "白云山——洞穴看广州塔\n很少人知道的隐藏机位",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "原文定位广州碑林洞穴机位，不等同整个白云山。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "广州",
+    "entityId": "2495bc375ff6d1a499ff03145ea5cef4",
+    "name": "白云山",
+    "expectedRevision": 3,
+    "mentionId": 7659,
+    "inputHash": "4c73f79e14420e61f3a2d1014acc8e7bf6296d6bdc9ad9c1c9d80933dbaa9308",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        3329
+      ]
+    },
+    "noteId": 1608,
+    "quote": "导航白云山风景名胜区濂泉门—往碧箫亭方向走15分钟即可到达",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "机位清单中的指定拍摄位置，不等同整座景区或濂泉门本身。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "广州",
+    "entityId": "2495bc375ff6d1a499ff03145ea5cef4",
+    "name": "白云山",
+    "expectedRevision": 3,
+    "mentionId": 8054,
+    "inputHash": "fb5131cdb86c3c487cca2fdcc7878be50f7e889d833ae2613e24dce439f934e1",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        3329
+      ]
+    },
+    "noteId": 1859,
+    "quote": "白云山有非遗雅集、森林康养和音乐市集",
+    "relation": "not_same_entity",
+    "subjectType": "activity",
+    "conclusion": "中秋活动清单中的限时项目，不等同常设景区主体。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "广州",
+    "entityId": "2495bc375ff6d1a499ff03145ea5cef4",
+    "name": "白云山",
+    "expectedRevision": 3,
+    "mentionId": 8140,
+    "inputHash": "2c08d39de5872f142804a40d62dcabfa4369005f2cf9a2cc4b3a26616ae936c1",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        3329
+      ]
+    },
+    "noteId": 1819,
+    "quote": "🌙主题活动：白云山I中秋灯月会·非遗古乐夜",
+    "relation": "not_same_entity",
+    "subjectType": "activity",
+    "conclusion": "明确的节庆主题活动，不等同常设景区主体。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "重庆",
+    "entityId": "28733e45b8ce6bdf8a96ed0a4beaa1d0",
+    "name": "李子坝轻轨穿楼",
+    "expectedRevision": 3,
+    "mentionId": 575,
+    "inputHash": "e2861380c752f4b11d3d8c2f8a99d165aa9def32946a3ea562f0e5d7db3ffa7a",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        34
+      ]
+    },
+    "noteId": 64,
+    "quote": "走到李子坝再换乘其他地铁也很方便",
+    "relation": "not_same_entity",
+    "subjectType": "transport",
+    "conclusion": "终点换乘语境，没有轻轨穿楼观看行为，不计入景观推荐上界。",
+    "businessMutation": false,
+    "limit": "只排除所列母项潜在加分；原始待审、原文和分配保持，不创建新实体或正式组成关系。"
+  },
+  {
+    "city": "厦门",
+    "entityId": "c2f0df60bef3612fec9ed56021ac090f",
+    "name": "天泉步道广场",
+    "expectedRevision": 3,
+    "mentionId": 6876,
+    "inputHash": "fd1015715b6e9bd10e11f42df59cb41df9e99c2dd3a70d7bde27c4d568305607",
+    "expectedResolution": {
+      "status": "review",
+      "reason": "unassigned_target",
+      "scopePlaceIds": [
+        2735
+      ]
+    },
+    "noteId": 1263,
+    "quote": "图❼ ：天泉步道广场上面的步道",
+    "relation": "not_same_entity",
+    "subjectType": "photo_spot",
+    "conclusion": "机位为广场上方步道，不等同广场；第94批null待审保持，不计广场潜在分数。",
+    "businessMutation": false,
+    "limit": "不认定新机位实体或正式part_of关系，不把天泉步道与广场合并。"
+  }
+]

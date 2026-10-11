@@ -1,0 +1,309 @@
+{
+  "snapshotSha256": "4f16e871fb938db9c2a7b247ad40f302848761e4225296a8d8cf0a58192de6c7",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": [
+        {
+          "entityId": "73ce6d33d1fb9b6416e2be727f940a76",
+          "city": "上海",
+          "name": "苏州河",
+          "revision": 2,
+          "aliases": [],
+          "sourceIds": [
+            4670
+          ],
+          "sourceNames": [
+            "苏州河"
+          ],
+          "effectiveType": "attraction",
+          "score": 12.5,
+          "downstreamScore": 12.5,
+          "mentionCount": 3,
+          "noteCount": 3,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 12.5,
+          "potentialScore": 12.5,
+          "pendingReviewIds": [
+            6
+          ],
+          "scopeIds": [
+            4670
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未结实体对审核"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            9925,
+            10031,
+            10383
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "上海",
+              "entityId": "73ce6d33d1fb9b6416e2be727f940a76",
+              "name": "苏州河",
+              "expectedRevision": 2,
+              "mentionId": 10357,
+              "inputHash": "0b5771ec355ee5664a832458d475e99c539bcd5cd8b5a551ffd08a46de3af751",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  4670
+                ]
+              },
+              "noteId": 2354,
+              "quote": "酒店紧挨着苏州河，傍晚沿河散步巨舒服",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "未具名酒店广告的位置参照，不等同河岸景观推荐。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建具体服务/酒店/机位实体或关系，原文与PENDING保持。"
+            }
+          ],
+          "legacyIds": [
+            "73ce6d33d1fb9b6416e2be727f940a76"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            }
+          ],
+          "rank": 29
+        }
+      ]
+    },
+    {
+      "city": "厦门",
+      "top30": []
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": [
+        {
+          "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+          "city": "西安",
+          "name": "大唐不夜城",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            5515
+          ],
+          "sourceNames": [
+            "大唐不夜城"
+          ],
+          "effectiveType": "attraction",
+          "score": 63.5,
+          "downstreamScore": 63.5,
+          "mentionCount": 24,
+          "noteCount": 21,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 63.5,
+          "potentialScore": 63.5,
+          "pendingReviewIds": [
+            382
+          ],
+          "scopeIds": [
+            5515
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [
+            "存在未结实体对审核"
+          ],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            11737,
+            11806,
+            11870,
+            12038,
+            12056,
+            12067,
+            12088,
+            12095,
+            12114,
+            12177,
+            12196,
+            12202,
+            12222,
+            12253,
+            12302,
+            12333,
+            12359,
+            12443,
+            12470,
+            12471,
+            12472,
+            12479,
+            12511,
+            12522
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "西安",
+              "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+              "name": "大唐不夜城",
+              "expectedRevision": 3,
+              "mentionId": 12030,
+              "inputHash": "e81757dff7cc8efa5070f1dce7c1744666388a251ef6572649697215096634f4",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  5515
+                ]
+              },
+              "noteId": 2644,
+              "quote": "P8、P9➡️大唐不夜城牡丹亭茶叙门口处",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "明确商户门口机位，不等同整个景区。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建具体服务/酒店/机位实体或关系，原文与PENDING保持。"
+            },
+            {
+              "city": "西安",
+              "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+              "name": "大唐不夜城",
+              "expectedRevision": 3,
+              "mentionId": 12352,
+              "inputHash": "02da908195e78d49c8b88c7b53cd33fb9c421ac7ce568b4ca13c6b8e6a05c60a",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  5515
+                ]
+              },
+              "noteId": 2644,
+              "quote": "P8、P9➡️大唐不夜城牡丹亭茶叙门口处",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "同篇另一提及仍为商户门口机位，不计景区推荐。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建具体服务/酒店/机位实体或关系，原文与PENDING保持。"
+            },
+            {
+              "city": "西安",
+              "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+              "name": "大唐不夜城",
+              "expectedRevision": 3,
+              "mentionId": 12473,
+              "inputHash": "04c58bc50e461b215bdea0722501b020ef7168083201a219ed6947fc538abadb",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  5515
+                ]
+              },
+              "noteId": 2731,
+              "quote": "看中的摄影师有档期，拍了一套，看到样片的第一秒已经爱上了",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "评价摄影服务，地点仅在大唐不夜城与大唐芙蓉园标签中，不认定景区主体。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建具体服务/酒店/机位实体或关系，原文与PENDING保持。"
+            },
+            {
+              "city": "西安",
+              "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+              "name": "大唐不夜城",
+              "expectedRevision": 3,
+              "mentionId": 12487,
+              "inputHash": "5194737e3fac6b7748ee3910fc6c78529c8fdec0170a15c5f03275eb759c8c1f",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  5515
+                ]
+              },
+              "noteId": 2732,
+              "quote": "P1 大唐不夜城和大雁塔中间交叉的广场\nP2 大唐不夜城（在树的灯带下拍！）",
+              "relation": "not_same_entity",
+              "subjectType": "photo_spot",
+              "conclusion": "跨两处具体拍摄位置的提及，不等同整个步行景区，也不据此创建一个混合机位。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建具体服务/酒店/机位实体或关系，原文与PENDING保持。"
+            },
+            {
+              "city": "西安",
+              "entityId": "553ffb978fc4f1c37370829fb4cc4321",
+              "name": "大唐不夜城",
+              "expectedRevision": 3,
+              "mentionId": 12504,
+              "inputHash": "55ec68e4a5f9d91f349d3220f3ebc9e5fd053ef8de16c5cbbf3e1603ef862d04",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  5515
+                ]
+              },
+              "noteId": 2729,
+              "quote": "238=服装任选+精致妆造（不含拍摄）",
+              "relation": "not_same_entity",
+              "subjectType": "service",
+              "conclusion": "未具名商户妆造服务广告，不等同景区。",
+              "businessMutation": false,
+              "limit": "仅排除母项潜在加分，不创建具体服务/酒店/机位实体或关系，原文与PENDING保持。"
+            }
+          ],
+          "legacyIds": [
+            "553ffb978fc4f1c37370829fb4cc4321"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "file": "xian-scope-03-baseline.json",
+              "kind": "preserve_existing_product_category",
+              "sha256": "789e8fdcfd339369cc3eb8ab19a97cc2400f3c2f2d1e60b57a900d530c27db13",
+              "category": "娱乐",
+              "conclusion": "完整scope停用旧themes时默认分类从娱乐回落文化；本批只隔离来源，通过版本化实体API显式保留原娱乐分类，不恢复混合旧主题，不声称完成新类型审核。"
+            }
+          ],
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-06.json",
+    "count": 208,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "snapshotSha256": "ea03cd0d2bcf8b8aafc56b5f38689e7eb53a1fb46400af97bbde8b44638d79c4",
+  "cities": [
+    {
+      "city": "上海",
+      "top30": []
+    },
+    {
+      "city": "厦门",
+      "top30": [
+        {
+          "entityId": "2caf5439b2ed55aa131dc8a82281f1b2",
+          "city": "厦门",
+          "name": "沙坡尾",
+          "revision": 3,
+          "aliases": [],
+          "sourceIds": [
+            2536
+          ],
+          "sourceNames": [
+            "沙坡尾"
+          ],
+          "effectiveType": "attraction",
+          "score": 94.08,
+          "downstreamScore": 94.08,
+          "mentionCount": 36,
+          "noteCount": 35,
+          "uncertainMentionIds": [],
+          "allAssignedScore": 94.08,
+          "potentialScore": 94.08,
+          "pendingReviewIds": [],
+          "scopeIds": [
+            2536
+          ],
+          "hasCoordinates": true,
+          "hasEmbedding": true,
+          "issues": [],
+          "identityReviewStatus": "pending_semantic_review",
+          "mentionIds": [
+            5314,
+            5342,
+            5356,
+            5383,
+            5421,
+            5449,
+            5532,
+            5542,
+            5558,
+            5641,
+            5683,
+            5728,
+            5751,
+            5775,
+            5957,
+            5958,
+            6002,
+            6039,
+            6070,
+            6081,
+            6119,
+            6137,
+            6200,
+            6226,
+            6313,
+            6381,
+            6412,
+            6428,
+            6535,
+            6607,
+            6760,
+            6771,
+            6794,
+            6820,
+            6848,
+            6863
+          ],
+          "reviewedNonEquivalentMentions": [
+            {
+              "city": "厦门",
+              "entityId": "2caf5439b2ed55aa131dc8a82281f1b2",
+              "name": "沙坡尾",
+              "expectedRevision": 3,
+              "mentionId": 6169,
+              "inputHash": "4356399a612ce784c8b05e016b77b536bff7a3e86420f0f66fb5cb5680f8529a",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2536
+                ]
+              },
+              "noteId": 1451,
+              "quote": "🆕沙坡尾春节疍家渔歌与民俗表演快闪🔥",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "春节快闪活动（6241兼有食店清单）无独立街区游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或店铺。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "2caf5439b2ed55aa131dc8a82281f1b2",
+              "name": "沙坡尾",
+              "expectedRevision": 3,
+              "mentionId": 6241,
+              "inputHash": "969f687da52cc5869e3660b46fcd053f6371d4370c850f44f4c4c933270cda78",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2536
+                ]
+              },
+              "noteId": 1453,
+              "quote": "·沙坡尾疍家歌舞快闪（初三前限定）",
+              "relation": "not_same_entity",
+              "subjectType": "activity",
+              "conclusion": "春节快闪活动（6241兼有食店清单）无独立街区游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或店铺。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "2caf5439b2ed55aa131dc8a82281f1b2",
+              "name": "沙坡尾",
+              "expectedRevision": 3,
+              "mentionId": 6547,
+              "inputHash": "e0be8fd55ea9c6b5ff6c328eb7f1452c0303bc8f9d024c5a37f127c510ec60ca",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2536
+                ]
+              },
+              "noteId": 1435,
+              "quote": "离厦门大学、沙坡尾、白城沙滩打车7.8分钟就到了",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "仅酒店周边交通可达性，无独立沙坡尾游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或店铺。"
+            },
+            {
+              "city": "厦门",
+              "entityId": "2caf5439b2ed55aa131dc8a82281f1b2",
+              "name": "沙坡尾",
+              "expectedRevision": 3,
+              "mentionId": 6593,
+              "inputHash": "528a2a6476e6497179e6a33b8ef27adc578f01bd5774cc8d96a5def2ba6b561c",
+              "expectedResolution": {
+                "status": "review",
+                "reason": "unassigned_target",
+                "scopePlaceIds": [
+                  2536
+                ]
+              },
+              "noteId": 1436,
+              "quote": "打车前往沙坡尾、白城沙滩仅需七八分钟",
+              "relation": "not_same_entity",
+              "subjectType": "hotel",
+              "conclusion": "仅酒店周边交通可达性，无独立沙坡尾游览。",
+              "businessMutation": false,
+              "limit": "原文与PENDING保持，不新建活动、酒店或店铺。"
+            }
+          ],
+          "legacyIds": [
+            "2caf5439b2ed55aa131dc8a82281f1b2"
+          ],
+          "evidence": [
+            {
+              "kind": "bootstrap",
+              "source": "canonical_place + explicit alias configuration"
+            },
+            {
+              "kind": "reviewed_attraction_recommendation_policy",
+              "conclusion": "完整scope隔离四条后显式按36条已解析提及绑定评分，避免继续沿用40条原摘要分；名称位置保持。",
+              "snapshotSha256": "cdf02825765a23b82f38d54bf09d16009468b9eb9bb97a019c4203f6fc84c744"
+            }
+          ],
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "city": "广州",
+      "top30": []
+    },
+    {
+      "city": "成都",
+      "top30": []
+    },
+    {
+      "city": "杭州",
+      "top30": []
+    },
+    {
+      "city": "西安",
+      "top30": []
+    },
+    {
+      "city": "重庆",
+      "top30": []
+    }
+  ],
+  "cityScope": [
+    "上海",
+    "厦门",
+    "广州",
+    "成都",
+    "杭州",
+    "西安",
+    "重庆"
+  ],
+  "reuseEvidence": {
+    "report": "seven-cities-retrieval-15.json",
+    "count": 209,
+    "comparison": "完整下游行逐字段相等，仅忽略content.compiledAt"
+  }
+}

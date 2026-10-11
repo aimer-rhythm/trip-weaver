@@ -1,0 +1,50 @@
+{
+  "snapshotFile": "snapshot-20261009T205339699294Z/input.json",
+  "snapshotSha256": "fb7d0e20f505e4e19700746bef204c7610cf375b63a3eecaebf1e2d44b5e2fa9",
+  "latestAppliedBatches": [
+    "batch-101",
+    "batch-102-v2",
+    "batch-103"
+  ],
+  "pendingSyncBatches": [],
+  "nextBatch": 104,
+  "semanticReadthrough": "seven-cities-semantic-readthrough-03.json",
+  "nextEvidence": [
+    {
+      "city": "成都",
+      "mentionId": 3763,
+      "inputHash": "87ea950212fa945d8bd1d792b15cdd610f0e2188fcd5fde417620dcc2bc1d0b4",
+      "entityId": "1d3663405f53f30f5a4ad0d1bf1891d4",
+      "noteId": 892,
+      "conclusion": "原文明确负评名单，但未写设施偏旧/趣味性一般；保留负评身份，具体reason待按正式事实排除契约审核，尚未应用。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 10132,
+      "inputHash": "071b99ce0697d337d0dd6a29b72b95c643b1d464ee520309b3aeadc33a41d751",
+      "entityId": "2af1d8c8816a1645942015d16738c9fd",
+      "noteId": 2304,
+      "conclusion": "明确东方明珠路线身份保持，天桥reason/evidence_text未修改；原文简称与抽取全名不满足现行事实引文门禁。"
+    },
+    {
+      "city": "上海",
+      "mentionId": 11001,
+      "inputHash": "c14f486941b68bea01ce4631c0a9d8bfb285ee192613689a1fda441266b9b377",
+      "entityId": "c1488c5cbbffc329c51e5fb8ceb0c911",
+      "noteId": 2509,
+      "conclusion": "正文是豫园片区九曲桥，旧来源5213却用青浦朱家角地址；本轮只读，不接收豫园分出的机位描述。"
+    }
+  ],
+  "remainingReview": [
+    "上海下一高分南京路步行街、武康大楼等未完成逐提及复核者；外滩旧主位置另待核。",
+    "七城未逐项读原文的Top30及补位者",
+    "永宁门/城楼/城墙机位review426仅部分阅读",
+    "城隍庙10128及组合review28",
+    "苏州河河岸路线review6",
+    "厦门母步道/林海线/天泉175/176/192/207",
+    "成都蜀锦两馆review313缺裸名馆址",
+    "西安夜市review382域外只读"
+  ],
+  "taskCompleted": false,
+  "userAcceptance": false
+}
