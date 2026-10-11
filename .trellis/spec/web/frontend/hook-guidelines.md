@@ -28,7 +28,7 @@ Choose cache behavior based on what the mutation returns:
 
 Evidence: `apps/web/src/api/hooks.ts`, `apps/web/src/pages/PlannerPage.tsx`, `apps/web/src/pages/TripEditorPage.tsx`.
 
-Respect query-specific freshness and retry policy. `useMe` does not retry 401, auth config is long-lived, and optional source status is disabled until requested and does not retry. Do not copy global defaults blindly when the endpoint has different semantics.
+Respect query-specific freshness and retry policy. `useMe` reads a 200/null guest snapshot instead of a 401, auth config is long-lived, and optional source status is disabled until requested and does not retry. Do not copy global defaults blindly when the endpoint has different semantics.
 
 ## Effects, Timers, and External Subscriptions
 

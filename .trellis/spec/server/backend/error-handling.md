@@ -21,6 +21,11 @@ Routes handle expected HTTP outcomes directly: 401 authentication failures, 403 
 denials, 404 missing/non-owned resources, 409 conflicts, 429 quotas, redirects, and cookie
 changes. Use the same 404 response for missing and non-owned resources.
 
+Reserve 401 for endpoints that require authentication. A public probe whose "not signed in"
+answer is normal returns HTTP 200 with `data: null` instead — see `GET /api/auth/me` and
+`resolveUser` in `apps/server/src/auth/guard.ts`. Browsers log every 401 response to the
+console, so a 401 here only produces noise the frontend cannot suppress.
+
 Representative paths: `apps/server/src/routes/auth.ts`,
 `apps/server/src/routes/trips.ts`, `apps/server/src/routes/generations.ts`.
 

@@ -256,7 +256,7 @@ resolveLlmConfig(userId):
 | `POST /api/auth/register` | 邮箱+密码（`REGISTRATION_MODE=invite` 时另需邀请码，比对 `INVITE_CODE` env） | 密码≥8；3 次/min/IP |
 | `GET /api/auth/config` | 公开：注册模式 + GitHub 登录是否启用（前端据此渲染） | 无需会话 |
 | `GET /api/auth/github` · `GET /api/auth/github/callback` | GitHub OAuth 登录（state 防 CSRF；verified 邮箱自动绑定；token 用完即弃） | 5 次/min/IP；未配置时 404 |
-| `POST /api/auth/login` · `POST /api/auth/logout` · `GET /api/auth/me` | 会话签发/销毁/查询 | 登录 5 次/min/IP；失败不泄露账号存在性 |
+| `POST /api/auth/login` · `POST /api/auth/logout` · `GET /api/auth/me` | 会话签发/销毁/查询（`/me` 无会话返回 200 + `data: null`，访客态不是错误） | 登录 5 次/min/IP；失败不泄露账号存在性 |
 | `GET /api/settings` | 普通字段 + LLM BYOK + 个人高德/搜索配置状态（仅 Key 存在性、尾号、个人搜索 Base URL 与站点回退存在性） | 需会话 |
 | `PUT /api/settings` | 写 LLM BYOK、个人高德 Key 与个人搜索 Key + Base URL；搜索配置用显式 `clearSearchConfig` 同时清除 Key 与 URL（Key 均加密入库） | 需会话 |
 | `GET /api/settings/sources-status` | 调研数据源自检 `{searchProvider, routeProvider, poi, websearch}`（搜索固定天地图、路线链高德优先；`poi`/`websearch` 真实探测，`routeProvider` 只报配置归属；结果按 userId + credential revision 隔离记忆化） | 需会话 |

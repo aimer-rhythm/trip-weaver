@@ -23,7 +23,7 @@ Representative paths: `apps/server/src/env.ts`, `apps/server/src/index.ts`,
 
 `requireAuth` validates the session cookie and attaches `{ id, email }` to the Fastify
 request. Apply it as a route-group `preHandler` for protected modules, or on an individual
-authentication route such as `/logout` and `/me`.
+authentication route such as `/logout`. Public probe endpoints such as `GET /api/auth/me` use `resolveUser` instead: a missing session is normal guest state and returns HTTP 200 with `data: null`, not 401 — a 401 there only adds a browser console error.
 
 Authentication is not authorization. Every protected resource lookup and mutation must also
 filter by the authenticated `userId`. Return 404 for both missing and non-owned resources.
