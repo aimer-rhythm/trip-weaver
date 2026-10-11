@@ -1785,3 +1785,37 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 46: 移除单用户行程数量上限并级联删除版本链
+
+**Date**: 2026-10-11
+**Task**: 移除单用户行程数量上限并级联删除版本链
+**Branch**: `master`
+
+### Summary
+
+对话修订报 409「行程数量已达上限」的根因是 MAX_TRIPS_PER_USER 在版本链上线后按 trips 表行数计数，把历史版本算成新行程。删除该判据与常量；deleteTrip 改为事务内按 rootId 级联删除整条链。新增 tripDeleteHistory.test.ts 锁定超 100 行仍可创建、传历史版本 id 清空整链、越权返回 false。验证：typecheck 通过，新测试 2/2，全量 server 套件 654/654。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `800a30e` | (see git log) |
+| `32968b6` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

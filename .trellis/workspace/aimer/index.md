@@ -8,8 +8,8 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 45
-- **Last Active**: 2026-10-09
+- **Total Sessions**: 46
+- **Last Active**: 2026-10-11
 <!-- @@@/auto:current-status -->
 
 ---
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1787 | Active |
+| `journal-1.md` | ~1821 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 46 | 2026-10-11 | 移除单用户行程数量上限并级联删除版本链 | `800a30e`, `32968b6` | `master` |
 | 45 | 2026-10-09 | 首页登录与偏好任务收尾归档 | `c50e405`, `22475ce` | `master` |
 | 44 | 2026-10-09 | 顶部导航任务收尾与归档 | `8dd0abb`, `5313530`, `1c661b0` | `master` |
 | 43 | 2026-10-09 | 首页移动端布局提交与归档 | `d90e1dd`, `466a3e2` | `master` |
