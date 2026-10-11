@@ -19,3 +19,7 @@ eval/data/
 
 # 小红书地点库导入中间文件（由 xhs-travel-pipeline 的 export_to_tripweaver.py 生成）
 import/
+
+# 本地 agent（pi）运行时目标状态
+.pi/goals/
+.pi/.goals-pool-snapshot.json
