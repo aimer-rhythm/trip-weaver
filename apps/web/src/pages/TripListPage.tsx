@@ -138,7 +138,7 @@ export function TripListPage() {
               <div className={"collection-card-meta [font-size:13px] [color:var(--color-collection-card-meta-color-144)] [margin:14px_0_24px] flex flex-col [gap:12px] [@media_(max-width:_600px)]:[margin-bottom:18px] [&_>_span]:flex [&_>_span]:items-start [&_>_span]:[gap:8px] [&_>_span]:[overflow-wrap:anywhere] [&_svg]:[width:18px] [&_svg]:[height:18px] [&_svg]:flex-none [&_svg]:[color:var(--color-collection-card-meta-color-161)]"}><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M12 22S3 13 3 9a9 9 0 0 1 18 0c0 4-9 13-9 13Z" /><circle cx="12" cy="9" r="3" /></svg>{trip.destination}</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" /><path d="M7 2v6m10-6v6M3 11h18m-14 4h3m4 0h3" /></svg>{trip.activityCount} 个活动</span></div>
               <div className={"collection-card-foot [margin-top:auto] [padding-top:14px] flex items-center justify-between [gap:8px] flex-wrap [&_time]:[font-size:10px] [&_time]:[color:var(--color-collection-card-foot-color-145)]"}>
                 <time dateTime={new Date(trip.updatedAt).toISOString()}>更新于 {dateFormatter.format(trip.updatedAt)}</time>
-                <span className={"collection-open [color:var(--color-brand)] [font-size:11px] whitespace-nowrap inline-flex items-center [gap:8px] [&_>_span]:[font-size:19px]"}>翻开行程 <span aria-hidden="true">→</span></span>
+                <span className={"collection-open [color:var(--color-brand)] [font-size:11px] whitespace-nowrap inline-flex items-center [gap:8px] [&_>_span]:[font-size:19px]"}>翻开行程</span>
               </div>
             </div>
           </Link>
