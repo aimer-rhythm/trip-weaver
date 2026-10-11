@@ -113,4 +113,9 @@ def scoped_facts(entity: dict, rows: list[dict], observed_at: str, known_names: 
             if key not in seen:
                 seen.add(key)
                 evidence.append({'kind': 'xhs_warning', 'content': warning['quote'], 'sourceUrl': warning['sourceUrl']})
+    operations = mention_catalog.operational_facts_for(entity['entity_id'], rows) if mention_catalog is not None else None
+    if operations is not None:
+        retained, retained_evidence = operations
+        payload.update(retained)
+        evidence.extend(retained_evidence)
     return payload, evidence

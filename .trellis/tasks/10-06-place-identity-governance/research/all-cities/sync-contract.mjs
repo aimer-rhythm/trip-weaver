@@ -1,4 +1,30 @@
 import assert from 'node:assert/strict';
+import { isDeepStrictEqual } from 'node:util';
+
+export function assertOldMediaPreserved(oldPayload, newPayload, label) {
+  for (const field of ['coverImage','imageGallery','amapPhoto']) {
+    if (oldPayload[field] === undefined) continue;
+    assert.ok(isDeepStrictEqual(newPayload[field], oldPayload[field]), `旧图片字段变化：${label}/${field}`);
+  }
+}
+
+export function validateStrictMediaPreview(preview, state) {
+  assert.equal(preview?.preview, true, '缺少成功的隔离导入预演');
+  assert.deepEqual(preview.failures, []);
+  for (const key of ['city','libraryHash','placesHash','relationsHash'])
+    assert.equal(preview[key], state[key], `预演与当前冻结不匹配：${key}`);
+  assert.equal(preview.mediaPreservationPolicy, 'all_existing_fields_and_facts', '旧预演未严格验证媒体保全');
+  assert.equal(preview.photosPreserved, true);
+  assert.equal(preview.photoConsumptionPreserved, true);
+  assert.equal(preview.reverseRollback, true);
+  assert.equal(preview.repeatedImport, true);
+}
+
+export function validateBatchName(batch) {
+  assert.equal(typeof batch, 'string', '批次名称不合法');
+  assert.match(batch, /^batch-\d{2,}(?:-v\d+)?$/, '批次名称不合法');
+  return batch;
+}
 
 export function validateImportPreflight(preflight, city, exportedAt) {
   assert.equal(preflight?.mode, 'before', '缺少成功的导入前检查');
@@ -27,7 +53,13 @@ export function validateScopeExpectations(decisions, scopes, expectations) {
     assert.ok(Number.isInteger(e.revision) && e.revision > 0 && typeof e.name === 'string');
     assert.equal(typeof e.verified, 'boolean');
     if (e.mentionIds === undefined) {
-      assert.ok(!affected.has(`${e.city}/${e.id}`), '受控主体必须显式列出提及');
+      if (affected.has(`${e.city}/${e.id}`)) {
+        const matching = scopes.filter(s => s.city === e.city && Object.hasOwn(s.expectedRevisions, e.id));
+        assert.ok(matching.every(s => s.mode === 'name_correction') && e.scopeMode === 'name_correction',
+          '受控主体必须显式列出提及');
+        assert.deepEqual(e.correctionMentionIds, [...new Set(matching.flatMap(s => s.assignments.map(a => a.mentionId)))].sort((a,b) => a-b),
+          '名称纠错须显式冻结完整纠错提及');
+      }
       assert.ok(decisions.some(d => d.city === e.city && d.entityId === e.id), '普通来源预期须对应本批实体决定');
       assert.equal(e.verified, true, '普通来源不能用缺省提及伪装撤回');
     } else assert.ok(Array.isArray(e.mentionIds));
@@ -70,6 +102,13 @@ export function validateBatchExport(data, city, decisions, expectations) {
     if (e.mentionIds === undefined) {
       // 普通来源类别修订可与其他主体的scope同批；受控主体仍须显式mentionIds。
       assert.equal(p.payload.mentionSources, undefined, '普通来源预期不能漏验受控提及');
+      if (e.scopeMode === 'name_correction') {
+        assert.equal(p.payload.imageIdentity, undefined, '仅名称纠错不能切换媒体合同');
+        assert.ok(Array.isArray(e.excludedNames) && e.excludedNames.length, '名称纠错须冻结排除名称');
+        for (const name of e.excludedNames) {
+          assert.ok(!p.payload.aliases?.includes(name) && !p.payload.identity.memberNames.includes(name), '错误全局名称仍在导出');
+        }
+      }
     } else {
       assert.ok(Array.isArray(e.mentionIds) && Array.isArray(p.payload.mentionSources), '受控来源须列出提及');
       assert.deepEqual(p.payload.mentionSources.map(m => m.mentionId).sort((a,b) => a-b), [...e.mentionIds].sort((a,b) => a-b));

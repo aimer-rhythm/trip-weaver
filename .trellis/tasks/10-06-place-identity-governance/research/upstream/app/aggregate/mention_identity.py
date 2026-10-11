@@ -7,6 +7,9 @@ from sqlalchemy.dialects.postgresql import insert
 from app.aggregate.place_identity import (can_claim_id, enqueue_review, load_catalog, lock_city, lock_id_registry, review_state, snapshot)
 from app.aggregate.note_text_warnings import load_warning_notes, snapshot_warning_inputs
 from app.aggregate.profile_scope_preservation import prepare_profile_preservation, bind_preserved_profiles
+from app.aggregate.operational_preservation import (prepare_operational_preservation,
+    bind_operational_preservation, snapshot_operational_inputs)
+from app.clean.legacy_operational_facts import preservation_refs
 from app.clean.note_text_warnings import validate_text_warnings, warning_refs
 from app.clean.entity_creation import creation_names, validate_creations
 from app.clean.identity import name_key
@@ -26,6 +29,10 @@ def scope_state(scope) -> dict:
         state['withdrawal_entity_ids'] = scope.withdrawal_entity_ids
     if scope.text_warnings is not None:
         state['text_warnings'] = scope.text_warnings
+    if scope.operational_facts is not None:
+        state['operational_facts'] = scope.operational_facts
+    if scope.mode is not None:
+        state['mode'] = scope.mode
     return state
 
 
@@ -74,6 +81,8 @@ async def load_mention_catalog(session, city: str, catalog=None, *, allow_source
     for scope in scopes:
         if scope.text_warnings is not None and not isinstance(scope.text_warnings, list):
             raise ValueError('持久化补充警告不是有效列表，须重新审核')
+        if scope.operational_facts is not None and not isinstance(scope.operational_facts, list):
+            raise ValueError('持久化运营保全不是有效列表，须重新审核')
         explicit = [{k: getattr(row, k) for k in SOURCE_FIELDS} for row in members if row.scope_place_id == scope.place_id]
         selected = explicit or [dict(place_id=scope.place_id, scope_place_id=scope.place_id, source_hash=scope.source_hash)]
         if explicit and scope.place_id not in {row['place_id'] for row in selected}:
@@ -93,8 +102,10 @@ async def load_mention_catalog(session, city: str, catalog=None, *, allow_source
             'source_members': selected, 'source_conflicts': conflicts, 'joint': bool(explicit),
             'source_valid': valid and not conflicts, 'name_keys': sorted(keys)})
     refs = warning_refs([v for s in scope_rows for v in (s.get('text_warnings') or [])])
+    operational_refs = preservation_refs([v for s in scope_rows for v in (s.get('operational_facts') or [])])
     return MentionIdentityCatalog(catalog or await load_catalog(session, city), scope_rows,
-        [assignment_state(row) for row in assignments], warning_notes=await load_warning_notes(session, refs))
+        [assignment_state(row) for row in assignments], warning_notes=await load_warning_notes(session, refs),
+        operational_notes=await load_warning_notes(session, operational_refs))
 
 
 async def refresh_mention_reviews(session, city: str) -> None:
@@ -140,7 +151,7 @@ async def validate_name_exclusions(session, catalog, entity_ids: list[str], name
 
 async def scope_snapshot(session, city: str, source_id: int, name_keys: list[str], entity_ids: list[str],
                          joint_source_ids: list[int] | None = None, created_entity_ids: list[str] | None = None,
-                         text_warning_refs: list[dict] | None = None) -> dict:
+                         text_warning_refs: list[dict] | None = None, operational_refs: list[dict] | None = None) -> dict:
     state = await snapshot(session, city, entity_ids)
     scope_sources = (await session.scalars(select(PlaceIdentityScopeSource)
         .where(PlaceIdentityScopeSource.scope_place_id == source_id).order_by(PlaceIdentityScopeSource.place_id))).all()
@@ -189,6 +200,9 @@ async def scope_snapshot(session, city: str, source_id: int, name_keys: list[str
     refs = text_warning_refs if text_warning_refs is not None else (scope.text_warnings or [] if scope else [])
     if refs:
         state['inputs']['textWarnings'] = await snapshot_warning_inputs(session, refs)
+    operation_inputs = operational_refs if operational_refs is not None else preservation_refs(scope.operational_facts or [] if scope else [])
+    if operation_inputs:
+        state['inputs']['operationalSources'] = await snapshot_operational_inputs(session, operation_inputs)
     if joint_source_ids is not None:
         state['scopeSources'] = [{k: getattr(row, k) for k in SOURCE_FIELDS} for row in scope_sources]
         all_sources = (await session.scalars(select(CanonicalPlace).where(CanonicalPlace.city == city)
@@ -234,6 +248,13 @@ async def apply_scope_decision(session, decision: dict) -> dict:
     if source_id in current.source_scopes and current.source_scopes[source_id] != source_id:
         raise ValueError('来源已属于另一治理范围，不能更换锚点或抢占')
     old_scope = current.scopes.get(source_id)
+    mode = decision.get('mode', 'facts')
+    if mode not in ('facts', 'name_correction'):
+        raise ValueError('范围模式必须为facts或name_correction')
+    if old_scope and old_scope.get('mode') == 'name_correction' and 'mode' not in decision:
+        raise ValueError('名称纠错范围升级为事实治理须显式声明模式')
+    if old_scope and old_scope.get('mode') != 'name_correction' and mode == 'name_correction':
+        raise ValueError('已有事实治理范围不能降级为名称纠错')
     if decision.get('expectedScopeRevision') != (old_scope['revision'] if old_scope else 0):
         raise ValueError('提及范围版本过期')
     names = decision.get('guardedNames', [])
@@ -343,9 +364,33 @@ async def apply_scope_decision(session, decision: dict) -> dict:
         raise ValueError('提及已经属于另一受控来源，不能抢占')
     joint_ids = sorted(selected_ids) if selected is not None else None
     created_ids = sorted(new_by_id) if new_entities else None
+    if mode == 'name_correction':
+        forbidden = {'newEntities', 'guardedNames', 'textWarnings', 'preserveWebProfiles', 'preserveOperationalFacts'}
+        evidence = decision['evidence']
+        if (forbidden & set(decision) or selected_ids != {source_id}
+                or source_entity['primary_place_id'] == source_id
+                or set(keys) & {name_key(source_entity['canonical_name'])}
+                or not rows or assigned_target_ids != {source_entity['entity_id']}
+                or source_entity['entity_id'] in current.managed_entity_ids()
+                or any(a['entityId'] != source_entity['entity_id']
+                       or set(a) != {'mentionId', 'inputHash', 'entityId'} for a in supplied)
+                or any((current.resolve(row).get('entity') or {}).get('entity_id') != source_entity['entity_id'] for row in rows)):
+            raise ValueError('名称纠错仅允许已合并错名来源的同根完整提及，不得更改主体、事实或媒体范围')
+        if not isinstance(evidence, list) or not any(isinstance(e, dict)
+                and e.get('kind') == 'mention_name_correction'
+                and isinstance(e.get('file'), str) and e['file'].strip()
+                and isinstance(e.get('conclusion'), str) and e['conclusion'].strip() for e in evidence):
+            raise ValueError('名称纠错须明确逐提及原文审核文件与结论')
     preserved_profiles = await prepare_profile_preservation(session, decision.get('preserveWebProfiles', []),
         city=city, catalog=current.catalog, selected_ids=selected_ids, assigned_ids=assigned_target_ids)
-    before = await scope_snapshot(session, city, source_id, keys, ids, joint_ids, created_ids, warning_inputs)
+    if ('preserveOperationalFacts' in decision and decision['preserveOperationalFacts'] is None
+            or old_scope and old_scope.get('operational_facts') and 'preserveOperationalFacts' not in decision):
+        raise ValueError('旧运营保全须显式列全，移除时必须提供空列表')
+    preserved_operations = await prepare_operational_preservation(session, decision.get('preserveOperationalFacts', []),
+        city=city, catalog=current, selected_ids=selected_ids, assigned_ids=assigned_target_ids,
+        rows=await load_mention_rows(session, city))
+    operation_refs = preservation_refs([*(old_scope.get('operational_facts') or [] if old_scope else []), *preserved_operations])
+    before = await scope_snapshot(session, city, source_id, keys, ids, joint_ids, created_ids, warning_inputs, operation_refs)
     if created_ids and before['createdEntityReviews']:
         raise ValueError('新实体ID已被历史审核引用')
     for entity in new_entities:
@@ -358,6 +403,8 @@ async def apply_scope_decision(session, decision: dict) -> dict:
         withdrawal_entity_ids=sorted(old_owners | (source_entity_ids - old_targets)),
         revision=(old_scope['revision'] + 1) if old_scope else 1, change_key=decision['key'], evidence=decision['evidence'],
         text_warnings=warnings)
+    values['mode'] = 'name_correction' if mode == 'name_correction' else None
+    values['operational_facts'] = preserved_operations or None
     await session.execute(insert(PlaceIdentityScope).values(**values).on_conflict_do_update(
         index_elements=[PlaceIdentityScope.place_id], set_={k: v for k, v in values.items() if k != 'place_id'}))
     if selected is not None:
@@ -380,6 +427,12 @@ async def apply_scope_decision(session, decision: dict) -> dict:
         bind_preserved_profiles(preserved_profiles, await load_mention_catalog(session, city),
                                 await load_mention_rows(session, city))
         await session.flush()
+    if preserved_operations:
+        bind_operational_preservation(preserved_operations, await load_mention_catalog(session, city),
+                                      await load_mention_rows(session, city))
+        await session.execute(update(PlaceIdentityScope).where(PlaceIdentityScope.place_id == source_id)
+                              .values(operational_facts=preserved_operations))
+        await session.flush()
     await refresh_mention_reviews(session, city)
     if new_entities:
         catalog = await load_catalog(session, city)
@@ -389,7 +442,7 @@ async def apply_scope_decision(session, decision: dict) -> dict:
                     pair = sorted([candidate, entity['entity_id']])
                     await enqueue_review(session, city, {'reason': 'similar_name', 'entityIds': pair,
                         'names': [catalog.entities[eid]['canonical_name'] for eid in pair]})
-    after = await scope_snapshot(session, city, source_id, keys, ids, joint_ids, created_ids, warning_inputs)
+    after = await scope_snapshot(session, city, source_id, keys, ids, joint_ids, created_ids, warning_inputs, operation_refs)
     session.add(PlaceEntityChange(change_key=decision['key'], city=city, before=before, after=after,
         evidence=decision['evidence'], request=decision))
     await session.flush()
@@ -404,13 +457,14 @@ async def rollback_scope_decision(session, change: PlaceEntityChange) -> dict:
     if created_ids:
         await lock_id_registry(session)
     current = await scope_snapshot(session, change.city, source_id, keys, ids, created_entity_ids=created_ids,
-        text_warning_refs=change.after['inputs'].get('textWarnings'))
+        text_warning_refs=change.after['inputs'].get('textWarnings'),
+        operational_refs=change.after['inputs'].get('operationalSources'))
     if current != change.after:
         raise ValueError('提及、来源或实体已有后续修改，拒绝过期回滚')
     await session.execute(delete(PlaceMentionAssignment).where(PlaceMentionAssignment.scope_place_id == source_id))
     await session.execute(delete(PlaceIdentityScopeSource).where(PlaceIdentityScopeSource.scope_place_id == source_id))
     if change.before['scopes']:
-        values = {'withdrawal_entity_ids': None, 'text_warnings': None, **change.before['scopes'][0]}
+        values = {'withdrawal_entity_ids': None, 'text_warnings': None, 'mode': None, 'operational_facts': None, **change.before['scopes'][0]}
         await session.execute(update(PlaceIdentityScope).where(PlaceIdentityScope.place_id == source_id).values(**values))
     else:
         await session.execute(delete(PlaceIdentityScope).where(PlaceIdentityScope.place_id == source_id))

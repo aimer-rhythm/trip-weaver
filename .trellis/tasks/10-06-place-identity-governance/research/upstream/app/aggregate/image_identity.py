@@ -75,8 +75,10 @@ async def load_image_rows(session, city: str, *, source_root: Path = SOURCE_ROOT
 async def load_image_catalog(session, city: str, mentions=None) -> ImageIdentityCatalog:
     mentions = mentions or await load_mention_catalog(session, city)
     assignments = (await session.scalars(select(PlaceImageAssignment).where(PlaceImageAssignment.city == city))).all()
+    fact_scopes = {sid for sid, scope in mentions.scopes.items() if scope.get('mode') != 'name_correction'}
     controlled_notes = {row['raw_note_id'] for row in await load_mention_rows(session, city)
-        if row['id'] in mentions.assignments or mentions.matching_scopes(row)}
+        if mentions.assignments.get(row['id'], {}).get('scope_place_id') in fact_scopes
+        or fact_scopes.intersection(mentions.matching_scopes(row))}
     return ImageIdentityCatalog(mentions, [{k: getattr(a, k) for k in IMAGE_ASSIGNMENT_FIELDS} for a in assignments],
                                 controlled_notes)
 

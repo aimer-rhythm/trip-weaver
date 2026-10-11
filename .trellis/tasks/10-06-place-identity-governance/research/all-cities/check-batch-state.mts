@@ -2,14 +2,15 @@
 import assert from 'node:assert/strict';
 import { isDeepStrictEqual } from 'node:util';
 import { createHash } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { Client } from 'pg';
 import { parse } from 'dotenv';
+import { validateBatchName, validateStrictMediaPreview } from './sync-contract.mjs';
 import { currentBoundRelations, validateBoundRelations, validateRelationManifest } from '../../../../../apps/server/src/services/placeRelationIdentity';
 const mode=process.argv[2];assert.ok(mode==='before'||mode==='after');
 const auditBaseline=process.argv.includes('--audit-baseline');
 assert.ok(!auditBaseline||mode==='after','事务审计补证仅用于事后检查');
-const batch=process.argv[3];assert.match(batch??'',/^batch-\d{2}(?:-v\d+)?$/);
+const batch=validateBatchName(process.argv[3]);
 const attempt=process.argv[4]?.startsWith('sync-')?process.argv[4]:'sync-01';assert.match(attempt,/^sync-\d{2}$/);
 const folder=new URL(`./${batch}/${attempt}/`,import.meta.url);
 const read=async(file:URL)=>JSON.parse(await readFile(file,'utf8'));
@@ -36,6 +37,11 @@ try {
     const bytes=await readFile(new URL('library-before.json',fixture));
     assert.equal(createHash('sha256').update(bytes).digest('hex'),state.libraryHash);
     const library=JSON.parse(bytes.toString('utf8'));
+    if(mode==='before') {
+      const reports=(await readdir(fixture)).filter(name=>/^preview-\d+\.json$/.test(name));
+      assert.equal(reports.length,1,'必须有且仅有本次成功预演报告');
+      validateStrictMediaPreview(await read(new URL(reports[0]!,fixture)),state);
+    }
     const tables:Record<string,any[]>={};
     for(const table of ['canonical_places','research_evidence','place_relation','data_import','independent_photo_assignments','place_relation_snapshots']) {
       tables[table]=(await client.query(`SELECT to_jsonb(t) value FROM ${table} t WHERE city=$1 ORDER BY to_jsonb(t)::text`,[city])).rows.map(r=>r.value);

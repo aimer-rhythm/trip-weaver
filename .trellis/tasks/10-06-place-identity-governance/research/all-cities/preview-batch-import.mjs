@@ -5,8 +5,9 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawn } from 'node:child_process';
 import { isDeepStrictEqual } from 'node:util';
+import { validateBatchName } from './sync-contract.mjs';
 const here=path.dirname(fileURLToPath(import.meta.url)),research=path.dirname(here),root=path.resolve(here,'../../../../..');
-const batch=process.argv[2];assert.match(batch??'',/^batch-\d{2}(?:-v\d+)?$/);
+const batch=validateBatchName(process.argv[2]);
 const attempt=process.argv[3]??'sync-01';assert.match(attempt,/^sync-\d{2}$/);
 const folder=path.join(here,batch,attempt);
 const sync=JSON.parse(fs.readFileSync(path.join(folder,'sync-state.json')));
@@ -28,7 +29,7 @@ for(const city of Object.keys(sync.cities)) {
   fs.writeFileSync(path.join(fixture,'state.json'),JSON.stringify({city,phase:'exported',placesImported:false,relationsImported:false}),{flag:'wx'});
   await run(['--import','tsx',path.join(research,'freeze-relation-city.mts'),fixture],path.join(fixture,'freeze.log'));
   await run([path.join(research,'run-tests.mjs'),path.join(research,'verify-relation-city.test.mts')],path.join(fixture,'preview.log'),
-    {RELATION_CITY_FIXTURE:pathToFileURL(fixture+path.sep).href});
+    {RELATION_CITY_FIXTURE:pathToFileURL(fixture+path.sep).href,RELATION_CITY_PRESERVE_MEDIA:'1'});
   const library=JSON.parse(fs.readFileSync(path.join(fixture,'library-before.json')));
   const before=library.tables.place_relation_snapshots[0].relations;
   const after=JSON.parse(fs.readFileSync(path.join(fixture,`xhs-place-relations-${city}.json`))).relations;

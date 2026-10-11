@@ -245,7 +245,33 @@ async def apply_decision(session, decision: dict) -> dict:
     entities = [catalog.entities.get(eid) for eid in ids]
     if any(e is None or e.get('redirect_to') for e in entities):
         raise ValueError('实体不在本城、已经重定向或不存在')
-    if any(pair.issubset(ids) for pair in catalog.distinct_pairs):
+    supersede_keys = decision.get('supersedeReviewKeys', [])
+    if (not isinstance(supersede_keys, list)
+            or any(not isinstance(key, str) or not key.strip() for key in supersede_keys)
+            or len(set(supersede_keys)) != len(supersede_keys)):
+        raise ValueError('替代审核必须明确列出不重复的旧决策 key')
+    conflicting_pairs = [pair for pair in catalog.distinct_pairs if pair.issubset(ids)]
+    superseded_reviews = []
+    user_evidence = [item for item in decision['evidence'] if isinstance(item, dict)
+        and item.get('kind') == 'explicit_user_identity_review'
+        and isinstance(item.get('quote'), str) and item['quote'].strip()
+        and isinstance(item.get('conclusion'), str) and item['conclusion'].strip()]
+    if supersede_keys:
+        if not user_evidence or not conflicting_pairs:
+            raise ValueError('替代独立审核须有用户明确身份决定及当前冲突审核')
+        rejected = (await session.scalars(select(PlaceEntityReview).where(
+            PlaceEntityReview.city == city, PlaceEntityReview.status == 'REJECTED')
+            .order_by(PlaceEntityReview.id).with_for_update())).all()
+        for review in rejected:
+            roots = [catalog.root(eid) for eid in review.detail.get('entityIds', [])]
+            pair = frozenset(root['entity_id'] for root in roots if root)
+            if (len(pair) == 2 and pair.issubset(ids) and all(roots)
+                    and review.detail.get('assessment', {}).get('verdict') in ('distinct', 'part_of')):
+                superseded_reviews.append(review)
+        current_keys = {row.detail.get('assessment', {}).get('key') for row in superseded_reviews}
+        if not superseded_reviews or current_keys != set(supersede_keys):
+            raise ValueError('旧审核 key 已变化或未完整覆盖治理组内冲突，拒绝替代')
+    elif conflicting_pairs:
         raise ValueError('治理组包含已确认的独立或组成地点，拒绝同义归并')
     expected = decision.get('expectedRevisions', {})
     if any(expected.get(e['entity_id']) != e['revision'] for e in entities):
@@ -278,6 +304,16 @@ async def apply_decision(session, decision: dict) -> dict:
         if catalog.names.get(name_key(alias), set()) - set(ids):
             raise ValueError(f'别名已有其他实体归属：{alias}')
     before = await snapshot(session, city, ids)
+    if superseded_reviews:
+        before['reviews'] = [review_state(row) for row in superseded_reviews]
+        for row in superseded_reviews:
+            previous_assessment = row.detail['assessment']
+            row.detail = {**row.detail,
+                'assessmentHistory': [*row.detail.get('assessmentHistory', []), previous_assessment],
+                'assessment': {'key': decision['key'], 'verdict': 'same_entity',
+                    'supersedes': previous_assessment['key'],
+                    'explanation': user_evidence[0]['conclusion'], 'evidence': decision['evidence']}}
+            row.status = 'PENDING'  # 与实体合并同事务完成后刷新为RESOLVED，不单独提交过渡状态。
     root = await session.scalar(select(PlaceEntity).where(PlaceEntity.entity_id == ids[0]))
     root.canonical_name = name
     root.aliases = aliases
@@ -295,11 +331,13 @@ async def apply_decision(session, decision: dict) -> dict:
             .values(redirect_to=ids[0], revision=PlaceEntity.revision + 1))
         await session.execute(update(PlaceEntityMember).where(PlaceEntityMember.entity_id == eid).values(entity_id=ids[0]))
     await session.flush()
+    await refresh_review_statuses(session, city)
     after = await snapshot(session, city, ids)
+    if superseded_reviews:
+        after['reviews'] = [review_state(row) for row in superseded_reviews]
     session.add(PlaceEntityChange(change_key=decision['key'], city=city, before=before, after=after,
                                   evidence=decision['evidence'], request=decision))
     await session.flush()
-    await refresh_review_statuses(session, city)
     return after
 
 

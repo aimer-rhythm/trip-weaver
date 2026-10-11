@@ -1,7 +1,38 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {batchCities, validateScopeExpectations, validateBatchExport, validateImportPreflight} from './sync-contract.mjs';
+import {batchCities, validateScopeExpectations, validateBatchExport, validateImportPreflight, validateBatchName,
+  assertOldMediaPreserved, validateStrictMediaPreview} from './sync-contract.mjs';
+
+test('新增图片身份或撤回标记不能绕过既有封面、图库和高德图片保全', () => {
+  const before={coverImage:'old.webp',imageGallery:[{key:'old.webp'}],amapPhoto:null};
+  assertOldMediaPreserved(before,{...before,imageIdentity:{approved:[]}},'fixture');
+  assertOldMediaPreserved({}, {coverImage:null,imageGallery:[]}, 'empty');
+  for (const patch of [{coverImage:null},{imageGallery:[]},{amapPhoto:'new.webp'}])
+    for (const identity of [{imageIdentity:{approved:[]}},{canonicalRedirectTo:'next'},{}])
+      assert.throws(()=>assertOldMediaPreserved(before,{...before,...patch,...identity},'fixture'),/旧图片字段变化/);
+});
+
+test('正式导入须有绑定当前冻结的严格媒体及实际消费预演，旧跳过检查报告被拒绝', () => {
+  const state={city:'厦门',libraryHash:'library',placesHash:'places',relationsHash:'relations'};
+  const valid={...state,preview:true,failures:[],mediaPreservationPolicy:'all_existing_fields_and_facts',
+    photosPreserved:true,photoConsumptionPreserved:true,reverseRollback:true,repeatedImport:true};
+  validateStrictMediaPreview(valid,state);
+  for(const patch of [{mediaPreservationPolicy:undefined},{photoConsumptionPreserved:undefined},
+    {photosPreserved:false},{reverseRollback:false},{repeatedImport:false},{preview:false},
+    {libraryHash:'old'},{placesHash:'old'},{relationsHash:'old'},{city:'上海'},{failures:['failed']}])
+    assert.throws(()=>validateStrictMediaPreview({...valid,...patch},state));
+});
+
+test('批次跨百兼容历史版本标签，拒绝路径穿越及非完整标签', () => {
+  for (const batch of ['batch-09', 'batch-96-v2', 'batch-100', 'batch-101-v3']) {
+    assert.equal(validateBatchName(batch), batch);
+  }
+  for (const batch of [undefined, null, 100, 'batch-1', '../batch-100', 'batch-100/../../',
+    'batch-100\\file', 'batch-100-v', 'batch-100\n', 'batch-100 ']) {
+    assert.throws(() => validateBatchName(batch));
+  }
+});
 
 test('景点评分策略必须核对重算分数和提及数，拒绝旧缓存分及缺失预期', () => {
   const city='北京', decision={city,entityId:'a',canonicalName:'测试公园',mergeEntityIds:[],
@@ -28,6 +59,21 @@ test('新导入拒绝漏跑、失败、错误城市和过期前置检查，事�
 });
 
 const city = '测试', scopes = [{city, expectedRevisions: {old1: 1, old2: 1}}];
+
+test('仅名称纠错必须冻结逐提及清单，完整scope不得借此省略事实媒体合同', () => {
+  const scope = {city, mode:'name_correction', expectedRevisions:{a:1}, assignments:[{mentionId:7,entityId:'a'}]};
+  const decision = {city, entityId:'a',canonicalName:'甲公园',mergeEntityIds:[],overrides:{}};
+  const expected = {city,id:'a',name:'甲公园',revision:3,verified:true,scopeMode:'name_correction',correctionMentionIds:[7],excludedNames:['错名']};
+  validateScopeExpectations([decision],[scope],[expected]);
+  assert.throws(()=>validateScopeExpectations([decision],[{...scope,mode:'facts'}],[expected]));
+  assert.throws(()=>validateScopeExpectations([decision],[scope],[{...expected,correctionMentionIds:[]}]));
+  const output={city,places:[{id:'a',name:'甲公园',verified:true,payload:{aliases:['甲公园'],identity:{version:2,entityId:'a',revision:3,memberNames:['甲公园']}}}]};
+  validateBatchExport(output,city,[decision],[expected]);
+  for (const mutate of [p=>p.aliases.push('错名'),p=>p.identity.memberNames.push('错名'),p=>p.imageIdentity={},p=>p.mentionSources=[]]) {
+    const bad=structuredClone(output); mutate(bad.places[0].payload);
+    assert.throws(()=>validateBatchExport(bad,city,[decision],[expected]));
+  }
+});
 const expected = ['old1', 'old2'].map(id => ({city, id, name: id, revision: 2, verified: false, mentionIds: [], candidateIds: []}));
 const data = () => ({city, places: expected.map(e => ({id:e.id, name:e.name, verified:false, lat:null, lng:null,
   payload:{identity:{version:2, entityId:e.id, revision:2}, mentionSources:[], imageIdentity:{approved:[]},

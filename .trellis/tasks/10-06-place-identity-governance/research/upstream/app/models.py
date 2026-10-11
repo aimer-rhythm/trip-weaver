@@ -207,6 +207,8 @@ class PlaceIdentityScope(Base):
     entity_ids: Mapped[list] = mapped_column(JSONB(none_as_null=True), nullable=False, default=list)
     withdrawal_entity_ids: Mapped[list | None] = mapped_column(JSONB(none_as_null=True), nullable=True)
     text_warnings: Mapped[list | None] = mapped_column(JSONB(none_as_null=True), nullable=True)
+    mode: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    operational_facts: Mapped[list | None] = mapped_column(JSONB(none_as_null=True), nullable=True)
     source_hash: Mapped[str] = mapped_column(String(64), nullable=False)
     revision: Mapped[int] = mapped_column(Integer, default=1)
     change_key: Mapped[str] = mapped_column(String(128), nullable=False)

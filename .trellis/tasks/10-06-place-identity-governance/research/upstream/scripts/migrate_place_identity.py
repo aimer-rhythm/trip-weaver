@@ -22,6 +22,10 @@ async def migrate(connection, apply: bool) -> dict:
     missing_columns = ['place_identity_scope.withdrawal_entity_ids'] if 'withdrawal_entity_ids' not in columns else []
     if 'text_warnings' not in columns:
         missing_columns.append('place_identity_scope.text_warnings')
+    if 'operational_facts' not in columns:
+        missing_columns.append('place_identity_scope.operational_facts')
+    if 'mode' not in columns:
+        missing_columns.append('place_identity_scope.mode')
     assignment_columns = await connection.run_sync(lambda conn: [c['name'] for c in inspect(conn).get_columns('place_mention_assignment')]) \
         if 'place_mention_assignment' in before else []
     if 'exclusion' not in assignment_columns:
@@ -32,6 +36,8 @@ async def migrate(connection, apply: bool) -> dict:
         await connection.run_sync(lambda conn: Base.metadata.create_all(conn, tables=tables))
         await connection.execute(text('ALTER TABLE place_identity_scope ADD COLUMN IF NOT EXISTS withdrawal_entity_ids JSONB'))
         await connection.execute(text('ALTER TABLE place_identity_scope ADD COLUMN IF NOT EXISTS text_warnings JSONB'))
+        await connection.execute(text('ALTER TABLE place_identity_scope ADD COLUMN IF NOT EXISTS mode VARCHAR(32)'))
+        await connection.execute(text('ALTER TABLE place_identity_scope ADD COLUMN IF NOT EXISTS operational_facts JSONB'))
         await connection.execute(text('ALTER TABLE place_mention_assignment ADD COLUMN IF NOT EXISTS exclusion JSONB'))
         await connection.execute(text('ALTER TABLE place_mention_assignment ADD COLUMN IF NOT EXISTS fact_exclusions JSONB'))
     actual = await connection.run_sync(lambda conn: inspect(conn).get_table_names())

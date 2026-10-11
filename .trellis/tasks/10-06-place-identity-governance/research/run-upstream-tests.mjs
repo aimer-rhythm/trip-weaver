@@ -73,6 +73,7 @@ try {
     process.argv.includes('--preview') ? ['.trellis/tasks/10-06-place-identity-governance/research/preview-upstream-data.py'] :
     ['.trellis/tasks/10-06-place-identity-governance/research/test-upstream-stage.py',
      ...(process.argv.includes('--installed') ? ['--installed'] : []),
+     process.argv.includes('--operational-preservation-test') ? `${testRoot}/test_operational_preservation_db.py` :
      process.argv.includes('--profile-preservation-test') ? `${testRoot}/test_profile_scope_preservation_db.py` :
      process.argv.includes('--planning-test') ? `${testRoot}/test_planning_exclusion_db.py` :
      warningFixture ? `${testRoot}/test_note_text_warnings_db.py` : descriptionFixture ? `${testRoot}/test_mention_description_exclusion_db.py` : factFixture ? `${testRoot}/test_mention_fact_exclusion_db.py` : relationFixture ? `${testRoot}/test_relation_snapshot_db.py` :

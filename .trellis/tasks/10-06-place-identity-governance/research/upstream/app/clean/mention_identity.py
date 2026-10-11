@@ -168,10 +168,13 @@ def effective_mention(row: dict, resolution: dict) -> dict:
 
 
 class MentionIdentityCatalog:
-    def __init__(self, catalog: IdentityCatalog, scopes: list[dict], assignments: list[dict], *, warning_notes=None):
+    def __init__(self, catalog: IdentityCatalog, scopes: list[dict], assignments: list[dict], *, warning_notes=None, operational_notes=None):
         self.catalog = catalog
         self.warning_notes = copy.deepcopy(warning_notes or {})
+        self.operational_notes = copy.deepcopy(operational_notes or {})
         self.scopes = {int(s['place_id']): copy.deepcopy(s) for s in scopes if s['city'] == catalog.city}
+        if any(s.get('mode') not in (None, 'name_correction') for s in self.scopes.values()):
+            raise ValueError('未知持久化范围模式，不能退回普通事实消费')
         self.source_scopes = {}
         for pid, scope in self.scopes.items():
             for source in scope.get('source_members', [{'place_id': pid}]):
@@ -205,18 +208,48 @@ class MentionIdentityCatalog:
                             for v in checked if v['entityId'] == entity_id)
         return warnings
 
+    def operational_facts_for(self, entity_id: str, rows: list[dict]):
+        from app.clean.legacy_operational_facts import preserved_operational
+        from app.clean.scoped_place_export import scoped_binding
+        matches = [(scope, value) for scope in self.scopes.values()
+                   for value in (scope.get('operational_facts') or []) if value.get('entityId') == entity_id]
+        if not matches:
+            return None
+        if len(matches) != 1 or not matches[0][0].get('source_valid', True):
+            raise ValueError('运营保全范围重复或来源已变化')
+        for row in rows:
+            resolution = self.resolve(row)
+            if resolution['status'] != 'resolved' or resolution.get('entity', {}).get('entity_id') != entity_id:
+                raise ValueError('运营保全提及必须当前明确归属本主体')
+        entity = self.catalog.entities[entity_id]
+        return preserved_operational(matches[0][1], entity,
+            [effective_mention(row, self.resolve(row)) for row in rows], self.operational_notes,
+            scoped_binding(entity, rows))
+
     def supplemental_sources(self) -> list[dict]:
         from app.clean.note_text_warnings import warning_input, warning_refs
-        return [{'scopePlaceId': sid, 'assignmentHash': digest(scope['text_warnings']),
+        result = [{'scopePlaceId': sid, 'assignmentHash': digest(scope['text_warnings']),
                  'inputHash': digest([warning_input(v['noteId'], v['imageIndex'], self.warning_notes.get(v['noteId']))
                                       for v in warning_refs(scope['text_warnings'])])}
                 for sid, scope in sorted(self.scopes.items()) if scope.get('text_warnings')]
+        from app.clean.legacy_operational_facts import operational_image_input, preservation_refs
+        for sid, scope in sorted(self.scopes.items()):
+            values = scope.get('operational_facts') or []
+            if values:
+                refs = preservation_refs(values)
+                result.append({'scopePlaceId': sid, 'kind': 'legacy_operational_preservation_v1',
+                    'assignmentHash': digest(values),
+                    'inputHash': digest([operational_image_input(r['noteId'], r['imageIndex'],
+                        self.operational_notes.get(r['noteId'])) for r in refs])})
+        return result
 
     def scope_for_source(self, source_id: int) -> dict | None:
         return self.scopes.get(self.source_scopes.get(source_id))
 
     def withdrawal_owners(self, scope_id: int) -> set[str]:
         scope = self.scopes[scope_id]
+        if scope.get('mode') == 'name_correction':
+            return set()
         ids = scope.get('withdrawal_entity_ids')
         if ids is None:
             ids = [self.catalog.members.get(pid) for pid, sid in self.source_scopes.items() if sid == scope_id]
@@ -259,7 +292,9 @@ class MentionIdentityCatalog:
         return {'status': 'unresolved', 'reason': 'unregistered_or_ambiguous', 'scopePlaceIds': []}
 
     def managed_entity_ids(self) -> set[str]:
-        ids = {self.catalog.members.get(pid) for pid in self.source_scopes}
-        ids.update(a['entity_id'] for a in self.assignments.values())
-        ids.update(eid for scope in self.scopes.values() for eid in scope.get('entity_ids', []))
+        """需要全量事实及逐图治理的实体；仅名称纠错不改变这些消费合同。"""
+        scopes = {sid for sid, s in self.scopes.items() if s.get('mode') != 'name_correction'}
+        ids = {self.catalog.members.get(pid) for pid, sid in self.source_scopes.items() if sid in scopes}
+        ids.update(a['entity_id'] for a in self.assignments.values() if a['scope_place_id'] in scopes)
+        ids.update(eid for sid in scopes for eid in self.scopes[sid].get('entity_ids', []))
         return {entity['entity_id'] for eid in ids if eid and (entity := self.catalog.root(eid))}

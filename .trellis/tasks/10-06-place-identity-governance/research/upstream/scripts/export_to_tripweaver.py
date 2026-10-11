@@ -27,6 +27,8 @@ from app.clean.alias import aliases_for, resolve_alias, canonical_display_name
 from app.clean.place_content import build_place_content, legacy_highlights, reservation_policy, intro_rejection
 from app.clean.place_export import consolidate_places
 from app.aggregate.place_identity import load_catalog
+from app.aggregate.place_export_inputs import place_export_query
+from app.clean.legacy_operational_facts import legacy_operational_payload
 from app.aggregate.relation_snapshot import publish_relation_snapshot, relation_manifest, relation_export_path, relation_document
 from app.aggregate.mention_identity import load_mention_catalog, load_mention_rows
 from app.aggregate.image_identity import load_image_catalog, load_image_rows, PHOTOGRAPHY_ROOT
@@ -80,26 +82,6 @@ def _clip(text: str, limit: int) -> str:
     return (text or "").strip()[:limit]
 
 
-def place_export_query(city, min_score, catalog):
-    """已确认身份可携带未知坐标；原始未治理记录仍需原有坐标与聚合资格。"""
-    governed_ids = [pid for pid, eid in catalog.members.items()
-        if (entity := catalog.root(eid)) and entity['status'] == 'ACTIVE' and entity['revision'] > 1]
-    approved_ids = [pid for pid, eid in catalog.members.items()
-        if (entity := catalog.root(eid)) and entity['status'] == 'ACTIVE'
-        and entity.get('overrides', {}).get('exportApproved') is True]
-    return (select(
-        CanonicalPlace.name, CanonicalPlace.normalized_name, CanonicalPlace.place_type,
-        CanonicalPlace.address, CanonicalPlace.longitude, CanonicalPlace.latitude,
-        CanonicalPlace.adcode, CanonicalPlace.theme_tags, CanonicalPlace.typical_visit_minutes,
-        CanonicalPlace.quality_score, PlaceSummary.mention_count_30d, PlaceSummary.recommend_score,
-        PlaceSummary.top_reasons, CanonicalPlace.content_profile, CanonicalPlace.id,
-    ).outerjoin(PlaceSummary, PlaceSummary.canonical_place_id == CanonicalPlace.id)
-     .where(or_(
-        and_(*export_conditions(city, min_score), PlaceSummary.canonical_place_id.is_not(None)),
-        and_(CanonicalPlace.city == city, CanonicalPlace.quality_score >= min_score,
-             or_(CanonicalPlace.id.in_(approved_ids),
-                 and_(CanonicalPlace.is_active.is_(True), CanonicalPlace.id.in_(governed_ids)))),
-     )).order_by(PlaceSummary.recommend_score.desc().nulls_last(), CanonicalPlace.id))
 
 
 async def main() -> None:
@@ -226,13 +208,6 @@ async def main() -> None:
         # 别名可匹配，但原始库中的明确子项不能借父名包含关系污染主地点。
         child_names = [r[0] for r in rows if r[0] not in fact_names and any(r[0].startswith(alias) for alias in fact_names)]
         facts = [fact for fact in facts if not any(child in fact for child in child_names)]
-        # P3：图片事实值剥掉地名后为空 = 垃圾（如「预约:五道营胡同」）
-        def _fact_value(fact: str) -> str:
-            return fact.split(":", 1)[1].replace(name, "").replace(norm, "").strip(" ：:，,")
-
-        price = next((f.split(":", 1)[1].strip() for f in facts if f.startswith("价格:") and _fact_value(f)), "")
-        reservation_facts = [f.split(':', 1)[1].strip() for f in facts if f.startswith('预约:') and _fact_value(f)]
-        reservation_fact = '；'.join(reservation_facts)
         tips = [
             f.split(":", 1)[1].strip()
             for f in facts
@@ -267,21 +242,14 @@ async def main() -> None:
         }
         if visit_min and visit_min >= 15:  # 下限过滤：防"排队两小时体验五分钟"被当游览时长
             payload["typicalVisitMinutes"] = visit_min
-        if price:
-            payload["price"] = _clip(price, 120)
         hour_records = [*texts_pool.get(norm, []), *(HoursEvidence(name, text, url, source_kind='image')
             for text, url in hours_images if any(alias in text for alias in fact_names))]
-        open_hours = mine_open_hours(hour_records, target=name,
-            aliases=list(dict.fromkeys([norm, *fact_names])), known_names=known_names)
-        # 即使无营业信号也明确记录未知，避免消费端回到旧的无主体 evidence 正则。
-        payload["openHours"] = open_hours or {"version": 2, "subject": name, "scope": "place", "status": "unknown",
-            "text": "", "openTime": None, "closeTime": None, "closedWeekdays": [], "note": "", "evidence": [],
-            "attributions": [], "review": []}
+        operations, operational_evidence = legacy_operational_payload(name, norm, fact_names, known_names, facts, hour_records)
+        payload.update(operations)
         # P1：别名数组（消费端展开用）
         alias_list = aliases_for(city, name)
         if alias_list:
             payload["aliases"] = alias_list
-        payload.update(reservation_policy(reservation_facts))
         if tips:
             payload["tips"] = [_clip(t, 60) for t in tips[:2]]
 
@@ -290,12 +258,7 @@ async def main() -> None:
             evidence.append({"kind": "xhs_reason", "content": _clip(reason, 200), "sourceUrl": url})
         for reason, url in warnings.get(norm, []):
             evidence.append({"kind": "xhs_warning", "content": _clip(reason, 200), "sourceUrl": url})
-        if price:
-            evidence.append({"kind": "xhs_price", "content": _clip(price, 200), "sourceUrl": ""})
-        if reservation_fact:
-            evidence.append(
-                {"kind": "xhs_reservation", "content": _clip(reservation_fact, 200), "sourceUrl": ""}
-            )
+        evidence.extend(operational_evidence)
 
         if entity and entity['entity_id'] in managed_ids:
             for key in ['price', 'tips', 'typicalVisitMinutes']:

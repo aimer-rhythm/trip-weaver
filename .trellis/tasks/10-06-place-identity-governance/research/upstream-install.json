@@ -9,15 +9,15 @@
     },
     {
       "path": "app/aggregate/image_identity.py",
-      "before": "4f3508c8c05d99a324e88b804fa8bc20287a51237c5b756df9d2e1a1a9f806aa",
-      "after": "4f3508c8c05d99a324e88b804fa8bc20287a51237c5b756df9d2e1a1a9f806aa",
+      "before": "4a8cc294a9184d26be99fd034cbc041f965cad9c606ffafa5a5c578527272f46",
+      "after": "4a8cc294a9184d26be99fd034cbc041f965cad9c606ffafa5a5c578527272f46",
       "changed": false
     },
     {
       "path": "app/aggregate/mention_identity.py",
-      "before": "0af9a1cf5507c086d00b0554750b63a9077acb8551d4e9a332e1a1020b19ca63",
-      "after": "0af9a1cf5507c086d00b0554750b63a9077acb8551d4e9a332e1a1020b19ca63",
-      "changed": false
+      "before": "2800a1870ecdac5f08ef41bc1c2c1100bb310e06d063b919ac1ba32de1ac18e9",
+      "after": "4a2c4a1673e58ad21e74125c7d64c7e0c4d699af70eade5ed33db3d189aa5ad0",
+      "changed": true
     },
     {
       "path": "app/aggregate/note_text_warnings.py",
@@ -26,9 +26,21 @@
       "changed": false
     },
     {
+      "path": "app/aggregate/operational_preservation.py",
+      "before": null,
+      "after": "ec632cb8099dab8f6ef5591b05f305a06ce4418a9c7b6be44117134ff13d4071",
+      "changed": true
+    },
+    {
+      "path": "app/aggregate/place_export_inputs.py",
+      "before": null,
+      "after": "f5069e5a2a0ba42d3334af42e50779caf6e80d964d4c09f819e5662a486c6606",
+      "changed": true
+    },
+    {
       "path": "app/aggregate/place_identity.py",
-      "before": "0bd23d628949b33249b6df263b9481f6952d1f9cb366831cf48144a0655ff370",
-      "after": "0bd23d628949b33249b6df263b9481f6952d1f9cb366831cf48144a0655ff370",
+      "before": "84c5bd73ce23e0fd52f69476aa7f10366f06f60ec6b5b1072097cd1c0607ab75",
+      "after": "84c5bd73ce23e0fd52f69476aa7f10366f06f60ec6b5b1072097cd1c0607ab75",
       "changed": false
     },
     {
@@ -74,10 +86,16 @@
       "changed": false
     },
     {
+      "path": "app/clean/legacy_operational_facts.py",
+      "before": null,
+      "after": "4179be4841751d4ff906815be45026407776e877efee6231f00e4ed21adde463",
+      "changed": true
+    },
+    {
       "path": "app/clean/mention_identity.py",
-      "before": "d967022d4f204a0dc2667b1456d0444768e744bf2f7d68b8cd63897cdc8dba3c",
-      "after": "d967022d4f204a0dc2667b1456d0444768e744bf2f7d68b8cd63897cdc8dba3c",
-      "changed": false
+      "before": "e6b714917042fd75b101da09b55c7173035c48424bb14ac60c2af4dfc0533b02",
+      "after": "73615d7a2f0b94b85a85f0e9a98eb73faa06d90245dd4091620d729ab6780e2a",
+      "changed": true
     },
     {
       "path": "app/clean/mention_relations.py",
@@ -93,15 +111,15 @@
     },
     {
       "path": "app/clean/place_export.py",
-      "before": "c5f59fb63e937cfdcc112080d677e102ca43d67e073a8ed272fe5627a47be533",
+      "before": "9c6ad16e61a225fda46bf4dada78d3a7d2df3f7b0e59a0d6d7d7d3d11a82cafb",
       "after": "9c6ad16e61a225fda46bf4dada78d3a7d2df3f7b0e59a0d6d7d7d3d11a82cafb",
-      "changed": true
+      "changed": false
     },
     {
       "path": "app/clean/recommendation.py",
-      "before": "5b03ffca9ab62d5aa8f4c7d48d4e60943d45363a479c4279d5490932c16a0229",
+      "before": "dabf8f1afdf64017a06187f6f7e6ff964af9c1cd9c51e2ff5ea04c98155dbd2d",
       "after": "dabf8f1afdf64017a06187f6f7e6ff964af9c1cd9c51e2ff5ea04c98155dbd2d",
-      "changed": true
+      "changed": false
     },
     {
       "path": "app/clean/relation_snapshot.py",
@@ -118,8 +136,8 @@
     {
       "path": "app/clean/scoped_place_export.py",
       "before": "f3648011417990c4f295e2329601a026c12dce56a2f601247c999cd2bf79cba9",
-      "after": "f3648011417990c4f295e2329601a026c12dce56a2f601247c999cd2bf79cba9",
-      "changed": false
+      "after": "517fe2408fb02182d2aa9ecdabb3890fd6c0885a5f13248f95fd8fd0b960921d",
+      "changed": true
     },
     {
       "path": "app/extract/llm_extract.py",
@@ -135,9 +153,9 @@
     },
     {
       "path": "app/models.py",
-      "before": "2fe52e670a2122672e69352d0e442d17ce9f6732966eed88ecbce269356d4758",
-      "after": "2fe52e670a2122672e69352d0e442d17ce9f6732966eed88ecbce269356d4758",
-      "changed": false
+      "before": "77fbcd7b2afde6e66ce0bda587044ee95577a38739a8465c109728c6abd83525",
+      "after": "83e583206c091e0b6996985df19607170710778a64fcc29f1cd31846382ee81a",
+      "changed": true
     },
     {
       "path": "app/photography/export.py",
@@ -208,8 +226,8 @@
     {
       "path": "scripts/export_to_tripweaver.py",
       "before": "9dd2884d6c7b83dd200380c55959d6ee1d861d585e95bc15d85a14c1cebabcaf",
-      "after": "9dd2884d6c7b83dd200380c55959d6ee1d861d585e95bc15d85a14c1cebabcaf",
-      "changed": false
+      "after": "1dc4a61444f5054522a19df6382662e15bfc58b15129fc0caeaa4e98a8b8ef54",
+      "changed": true
     },
     {
       "path": "scripts/govern_place_identity.py",
@@ -219,9 +237,9 @@
     },
     {
       "path": "scripts/migrate_place_identity.py",
-      "before": "72bb5af90e3a00e00024bdce2818be4ed84f088bcb695da867e6235de3fd4059",
-      "after": "72bb5af90e3a00e00024bdce2818be4ed84f088bcb695da867e6235de3fd4059",
-      "changed": false
+      "before": "3b3c57f73475d1f9159ea2c4e7bc1500a4f3e7564de7d9f36a31f0a19287f064",
+      "after": "2d639f17e213cf0279a6e771ad3730ca5a23f7e1fc3fbcaf59c34dc1e7f9a8f1",
+      "changed": true
     },
     {
       "path": "scripts/mine_place_relations.py",
@@ -326,6 +344,12 @@
       "changed": false
     },
     {
+      "path": "tests/test_name_correction_scope_db.py",
+      "before": "053dff925c3d71ce41eb805a5b36e09bd601b36072619131dfbd8c0fcd695c13",
+      "after": "053dff925c3d71ce41eb805a5b36e09bd601b36072619131dfbd8c0fcd695c13",
+      "changed": false
+    },
+    {
       "path": "tests/test_non_place_exclusion_db.py",
       "before": "ddda8c174e2492539fdac8e1108ac4cfb0ce26dc07a1f873b1172a91b7a7d63c",
       "after": "ddda8c174e2492539fdac8e1108ac4cfb0ce26dc07a1f873b1172a91b7a7d63c",
@@ -344,6 +368,12 @@
       "changed": false
     },
     {
+      "path": "tests/test_operational_preservation_db.py",
+      "before": null,
+      "after": "98ca1e3f2ec1fb0274e75bd36ad7132d84a24ca0603c5d83e0dbecbba16e61c8",
+      "changed": true
+    },
+    {
       "path": "tests/test_place_content.py",
       "before": "b619c347edb4c02436a40501ee0f26781aae28c01d7745211c015e0ea7d5a9a6",
       "after": "b619c347edb4c02436a40501ee0f26781aae28c01d7745211c015e0ea7d5a9a6",
@@ -357,8 +387,8 @@
     },
     {
       "path": "tests/test_place_identity_db.py",
-      "before": "7247042d0f6d13c4047824bf78d6bda4ad0eacc177b5720ada888a5236d943e1",
-      "after": "7247042d0f6d13c4047824bf78d6bda4ad0eacc177b5720ada888a5236d943e1",
+      "before": "0182c7c55cbd9361b29d75baa54ac23f0a82dad6acd639e9a850f71bae6423b0",
+      "after": "0182c7c55cbd9361b29d75baa54ac23f0a82dad6acd639e9a850f71bae6423b0",
       "changed": false
     },
     {
@@ -393,9 +423,9 @@
     },
     {
       "path": "tests/test_recommendation_identity.py",
-      "before": "8520d5e81ca9327ce92dc3be580a9557c3c5d072c7a3f5e5bd24beedb902d3a3",
+      "before": "9b763d0692b4a49fe68b6a594172d360de4da2f2ce491508792b0073340165ee",
       "after": "9b763d0692b4a49fe68b6a594172d360de4da2f2ce491508792b0073340165ee",
-      "changed": true
+      "changed": false
     },
     {
       "path": "tests/test_relation_snapshot_db.py",

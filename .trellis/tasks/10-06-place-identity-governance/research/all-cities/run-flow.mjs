@@ -9,15 +9,20 @@ import {parse} from 'dotenv';
 import assert from 'node:assert/strict';
 const here=path.dirname(fileURLToPath(import.meta.url));
 const root=path.resolve(here,'../../../../..');
-const label=process.argv[2];assert.match(label ?? '',/^run-\d{2}$/);
+const label=process.argv[2];assert.match(label ?? '',/^run-\d{2,}$/);
 const overlayFolder=process.argv[3] ? path.resolve(process.argv[3]) : null;
 const folder=path.join(here,'flow',label);assert.ok(!fs.existsSync(folder),'验收证据不覆盖');
 fs.mkdirSync(folder,{recursive:true});
 if(process.env.IDENTITY_FLOW_TARGETS) {
   const bytes=fs.readFileSync(process.env.IDENTITY_FLOW_TARGETS);
   const ranking=JSON.parse(bytes.toString('utf8'));
-  assert.deepEqual(ranking.cityScope,['北京','济南']);
-  assert.ok(ranking.cities.every(city=>city.top30.length===30));
+  const authorizedCities=new Set(['北京','济南','上海','厦门','广州','成都','杭州','西安','重庆']);
+  assert.ok(Array.isArray(ranking.cityScope)&&ranking.cityScope.length>0);
+  assert.equal(new Set(ranking.cityScope).size,ranking.cityScope.length,'不能重复城市目标');
+  assert.ok(ranking.cityScope.every(city=>authorizedCities.has(city)),'目标城市不在本任务授权范围');
+  assert.deepEqual(ranking.cities.map(city=>city.city),ranking.cityScope,'城市声明必须与目标清单一致');
+  assert.ok(ranking.cities.every(city=>city.top30.length===30
+    &&new Set(city.top30.map(row=>row.entityId)).size===30),'每城须明确30个不同身份目标');
   fs.writeFileSync(path.join(folder,'target-ranking.json'),bytes,{flag:'wx'});
 }
 const settings=parse(fs.readFileSync(path.join(root,'apps/server/.env')));

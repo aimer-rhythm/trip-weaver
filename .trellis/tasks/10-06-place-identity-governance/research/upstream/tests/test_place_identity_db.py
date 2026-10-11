@@ -28,6 +28,77 @@ def run(callback):
     asyncio.run(main())
 
 
+def test_用户明确改判须精确替代旧审核_保留历史并随合并回滚():
+    from app.models import PlaceEntityChange
+    from app.aggregate.place_identity import review_state
+
+    async def check(factory):
+        async with factory() as session:
+            city = '用户改判测试'
+            session.add_all([CanonicalPlace(city=city, name=n, normalized_name=n)
+                             for n in ['测试学府', '测试学府街', '独立孔庙']])
+            await session.flush()
+            await bootstrap(session, city)
+            catalog = await load_catalog(session, city)
+            a, b, c = [catalog.resolve(n) for n in ['测试学府', '测试学府街', '独立孔庙']]
+            await enqueue_review(session, city, {'reason': 'similar_name',
+                'entityIds': [a['entity_id'], b['entity_id']], 'names': ['测试学府', '测试学府街']})
+            review = await session.scalar(select(PlaceEntityReview).where(PlaceEntityReview.city == city))
+            original_decision = dict(key='user-review-original', city=city,
+                reviewFingerprint=review.fingerprint, verdict='distinct',
+                explanation='原判断按建筑与道路分别处理', evidence=[{'source': '历史原文'}],
+                expectedRevisions={a['entity_id']: 1, b['entity_id']: 1})
+            await apply_review_decision(session, original_decision)
+            old_review = review_state(review)
+            historical = await session.scalar(select(PlaceEntityChange).where(
+                PlaceEntityChange.change_key == original_decision['key']))
+            old_audit = (historical.request, historical.before, historical.after, historical.rolled_back)
+            unrelated = PlaceEntityReview(city=city, fingerprint='user-review-unrelated', status='REJECTED',
+                detail={'entityIds': [a['entity_id'], c['entity_id']],
+                    'assessment': {'key': 'keep-independent', 'verdict': 'distinct'}})
+            session.add(unrelated)
+            await session.flush()
+            unrelated_before = review_state(unrelated)
+            decision = dict(key='user-review-merge', city=city, entityId=a['entity_id'],
+                mergeEntityIds=[b['entity_id']], canonicalName='测试学府',
+                expectedRevisions={a['entity_id']: 1, b['entity_id']: 1},
+                evidence=[{'kind': 'explicit_user_identity_review', 'quote': '学府与街道按同一地点',
+                           'conclusion': '用户指定行程粒度，仅合并指定二根'}])
+            with pytest.raises(ValueError, match='已确认的独立'):
+                await apply_decision(session, decision)
+            with pytest.raises(ValueError, match='用户明确'):
+                await apply_decision(session, {**decision, 'supersedeReviewKeys': [original_decision['key']],
+                    'evidence': [{'source': '没有用户决定'}]})
+            with pytest.raises(ValueError, match='旧审核 key'):
+                await apply_decision(session, {**decision, 'supersedeReviewKeys': ['wrong-key']})
+            with pytest.raises(ValueError, match='旧审核 key'):
+                await apply_decision(session, {**decision, 'supersedeReviewKeys': [original_decision['key'], 'keep-independent']})
+            accepted = {**decision, 'supersedeReviewKeys': [original_decision['key']]}
+            with pytest.raises(ValueError, match='版本'):
+                await apply_decision(session, {**accepted, 'expectedRevisions': {a['entity_id']: 2, b['entity_id']: 1}})
+            assert review_state(review) == old_review
+            after = await apply_decision(session, accepted)
+            assert await apply_decision(session, accepted) == after
+            assert review.status == 'RESOLVED'
+            assert review.detail['assessmentHistory'] == [old_review['detail']['assessment']]
+            assert review.detail['assessment']['supersedes'] == original_decision['key']
+            assert review.fingerprint == old_review['fingerprint']
+            assert review_state(unrelated) == unrelated_before
+            current = await load_catalog(session, city)
+            assert current.resolve('测试学府街')['entity_id'] == a['entity_id']
+            assert frozenset([a['entity_id'], c['entity_id']]) in current.distinct_pairs
+            assert (historical.request, historical.before, historical.after, historical.rolled_back) == old_audit
+            await rollback_decision(session, accepted['key'])
+            assert review_state(review) == old_review
+            assert review_state(unrelated) == unrelated_before
+            restored = await load_catalog(session, city)
+            assert restored.entities == catalog.entities
+            assert frozenset([a['entity_id'], b['entity_id']]) in restored.distinct_pairs
+            assert (historical.request, historical.before, historical.after, historical.rolled_back) == old_audit
+            await session.rollback()
+    run(check)
+
+
 def test_注册重跑_改名合并_回滚恢复成员_版本冲突拒绝():
     async def check(factory):
         async with factory() as session:

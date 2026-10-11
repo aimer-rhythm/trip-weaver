@@ -5,13 +5,14 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import assert from 'node:assert/strict';
-import {batchCities, validateScopeExpectations, validateBatchExport, validateImportPreflight} from './sync-contract.mjs';
+import {batchCities, validateScopeExpectations, validateBatchExport, validateImportPreflight, validateBatchName} from './sync-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../../../../..');
 const upstream = path.resolve(root, '../xhs-travel-pipeline');
 const [batch, step, attempt = 'sync-01'] = process.argv.slice(2);
-assert.match(batch ?? '', /^batch-\d{2}(?:-v\d+)?$/);
+validateBatchName(batch);
+assert.ok(!fs.existsSync(path.join(here,`${batch}-rolled-back.json`)), '已撤回批次禁止重新同步，须创建新版本决定并重新预演');
 assert.match(attempt, /^sync-\d{2}$/);
 assert.ok(['export', 'import', 'embed'].includes(step));
 const appliedPath=path.join(here,`${batch}-applied.json`);
