@@ -1,6 +1,7 @@
 // 检索质量的纯函数层：字面层覆盖面与召回指标。
 // 口径与 .trellis/tasks/10-11-retrieval-quality-baseline/research/retrieval-baseline-findings.md 一致。
 // 不连接数据库、不做外部调用：调用方负责取数与执行真实检索，这里只做可单测的统计。
+import { createHash } from 'node:crypto';
 
 export interface PlaceCoverageRow {
   id: string;
@@ -50,6 +51,8 @@ export interface RecallMetrics {
   depth: number;
   at1: number;
   atDepth: number;
+  /** 平均倒数排名：对每条 query 取 1/(排位+1)，未命中或超出 depth 记 0。 */
+  mrr: number;
   byCity: Array<{ city: string; total: number; at1: number; atDepth: number }>;
   misses: Array<{ city: string; query: string; expectName: string; actualNames: string[] }>;
   method: string;
@@ -119,13 +122,14 @@ export function literalCoverage(rows: readonly PlaceCoverageRow[]): LiteralCover
 export function recallMetrics(cases: readonly RecallCase[], depth = 8): RecallMetrics {
   let at1 = 0;
   let atDepth = 0;
+  let reciprocalSum = 0;
   const cities = new Map<string, { city: string; total: number; at1: number; atDepth: number }>();
   const misses: RecallMetrics['misses'] = [];
   for (const item of cases) {
     const rank = item.hitGroups.findIndex((group) => group.includes(item.expectId));
     const hit = rank >= 0 && rank < depth;
     if (rank === 0) at1 += 1;
-    if (hit) atDepth += 1;
+    if (hit) { atDepth += 1; reciprocalSum += 1 / (rank + 1); }
     else misses.push({ city: item.city, query: item.query, expectName: item.expectName, actualNames: [...item.actualNames] });
     const city = cities.get(item.city) ?? { city: item.city, total: 0, at1: 0, atDepth: 0 };
     city.total += 1;
@@ -138,10 +142,12 @@ export function recallMetrics(cases: readonly RecallCase[], depth = 8): RecallMe
     depth,
     at1,
     atDepth,
+    mrr: cases.length ? reciprocalSum / cases.length : 0,
     byCity: [...cities.values()].sort((a, b) => b.total - a.total || a.city.localeCompare(b.city, 'zh-CN')),
     misses,
     method: `命中判定为返回实体的规范实体 ID（canonicalPlaceId，合并实体共享）包含目标规范 ID；排位取实体在 limit=${depth} 结果中的下标。`
-      + '分母是实际执行的 query 数，未参与检索的样本不计入。这是字面层（vector 关闭）结果，不代表语义召回能力。',
+      + '分母是实际执行的 query 数，未参与检索的样本不计入。MRR 对每条 query 取 1/(排位+1) 求均值，未命中或超出 depth 记 0。'
+      + '具体跑了哪些通道由变体标签给出，本指标本身不假定通道组合。',
   };
 }
 
@@ -169,6 +175,128 @@ export function renderRetrievalQuality(report: RetrievalQualityReport, missLimit
     lines.push('', `未命中 ${recall.misses.length} 条${recall.misses.length > missLimit ? `（只列前 ${missLimit} 条）` : ''}`);
     for (const miss of recall.misses.slice(0, missLimit)) {
       lines.push(`  ${miss.city} 「${miss.query}」→ 期望「${miss.expectName}」，实得 ${miss.actualNames.join(' / ') || '(空)'}`);
+    }
+  }
+  return lines.join('\n');
+}
+
+// ---------- 消融矩阵：多变体对比 ----------
+
+export type VectorMode = 'off' | 'auto' | 'force';
+
+export interface VariantSpec {
+  label: string;
+  vector: VectorMode;
+  limit?: number;
+}
+
+export const VARIANT_KEYS = ['label', 'vector', 'limit'] as const;
+export const VECTOR_MODES: readonly VectorMode[] = ['off', 'auto', 'force'];
+
+/**
+ * 解析消融变体定义。未知字段直接报错 —— 静默忽略会让人以为参数生效了，而实际没生效。
+ */
+export function parseVariantSpecs(raw: unknown): VariantSpec[] {
+  if (!Array.isArray(raw) || raw.length === 0) throw new Error('变体定义必须是非空数组');
+  const seen = new Set<string>();
+  return raw.map((item, index) => {
+    if (!item || typeof item !== 'object' || Array.isArray(item)) throw new Error(`第 ${index + 1} 个变体不是对象`);
+    const record = item as Record<string, unknown>;
+    for (const key of Object.keys(record)) {
+      if (!(VARIANT_KEYS as readonly string[]).includes(key)) {
+        throw new Error(`第 ${index + 1} 个变体含未知参数「${key}」；允许：${VARIANT_KEYS.join(' / ')}`);
+      }
+    }
+    const { label, vector = 'off', limit } = record;
+    if (typeof label !== 'string' || !label.trim()) throw new Error(`第 ${index + 1} 个变体缺少 label`);
+    if (seen.has(label)) throw new Error(`变体 label 重复：「${label}」`);
+    seen.add(label);
+    if (typeof vector !== 'string' || !VECTOR_MODES.includes(vector as VectorMode)) {
+      throw new Error(`变体「${label}」的 vector 必须是 ${VECTOR_MODES.join(' / ')}`);
+    }
+    if (limit !== undefined && (typeof limit !== 'number' || !Number.isInteger(limit) || limit < 1 || limit > 48)) {
+      throw new Error(`变体「${label}」的 limit 必须是 1–48 的整数`);
+    }
+    const spec: VariantSpec = { label, vector: vector as VectorMode };
+    if (limit !== undefined) spec.limit = limit;
+    return spec;
+  });
+}
+
+/**
+ * 配置指纹：稳定序列化后取 sha256 前 8 位。用于在报告里确认「以为生效的配置是否真的生效」。
+ * 只支持扁平配置（键值均为标量），嵌套值会被 replacer 丢弃。
+ */
+export function configFingerprint(config: Record<string, unknown>): string {
+  const stable = JSON.stringify(config, Object.keys(config).sort());
+  return createHash('sha256').update(stable).digest('hex').slice(0, 8);
+}
+
+export interface VariantEvaluation {
+  label: string;
+  config: Record<string, unknown>;
+  fingerprint: string;
+  /** 键为子集名，值为该子集在该变体下的召回指标。 */
+  recall: Record<string, RecallMetrics>;
+  /** 键为子集名，值为该子集的通道统计。 */
+  channels: Record<string, ChannelStats>;
+}
+
+export interface ChannelStats {
+  /** 各回关键词命中总数。 */
+  keywordHits: number;
+  vectorHits: number;
+  /**
+   * 向量命中最终进入结果的条数。小于 vectorHits 是正常的（受 limit 与排序共同影响），
+   * 单独看它不能判定排序有问题：跨变体比较同一子集才有意义。
+   */
+  vectorSelected: number;
+  /** 向量外呼失败的 query 数（没配 KEY、超时、钳位等）。 */
+  embedFailures: number;
+  /** 字面已填满 limit、按设计未请求向量的 query 数。 */
+  skippedFilled: number;
+}
+
+export interface VariantReport {
+  coverage: LiteralCoverage;
+  subsets: Array<{ name: string; queries: number; method: string }>;
+  variants: VariantEvaluation[];
+}
+
+const asPercent = (part: number, whole: number): number => (whole ? (part / whole) * 100 : 0);
+
+/** 人读摘要。第一个变体作为基准，后续变体标出 Recall@depth 的百分点差值。 */
+export function renderVariantComparison(report: VariantReport): string {
+  const { coverage, subsets, variants } = report;
+  const lines = [
+    `字面层覆盖（${coverage.total} active verified places）`,
+    `  真别名 ${coverage.withRealAlias}  ${asPercent(coverage.withRealAlias, coverage.total).toFixed(1)}%`
+      + `   主题标签 ${coverage.withThemes}  ${asPercent(coverage.withThemes, coverage.total).toFixed(1)}%`
+      + `   证据覆盖 ${coverage.withEvidence}  ${asPercent(coverage.withEvidence, coverage.total).toFixed(1)}%`,
+    '',
+    `子集：${subsets.map((s) => `${s.name}(n=${s.queries})`).join('  ')}`,
+    '',
+    '变体对比',
+  ];
+  const base = variants[0];
+  for (const variant of variants) {
+    lines.push(`  ${variant.label}  [${JSON.stringify(variant.config)}]  指纹 ${variant.fingerprint}`);
+    for (const subset of subsets) {
+      const metrics = variant.recall[subset.name];
+      if (!metrics) continue;
+      const delta = base && variant !== base && base.recall[subset.name]
+        ? `  ΔRecall@${metrics.depth} ${(asPercent(metrics.atDepth, metrics.total) - asPercent(base.recall[subset.name]!.atDepth, base.recall[subset.name]!.total)).toFixed(1)}pt`
+        : '';
+      lines.push(`    ${subset.name.padEnd(12)} n=${String(metrics.total).padStart(4)}`
+        + `  Recall@1 ${asPercent(metrics.at1, metrics.total).toFixed(1)}%`
+        + `  Recall@${metrics.depth} ${asPercent(metrics.atDepth, metrics.total).toFixed(1)}%`
+        + `  MRR ${metrics.mrr.toFixed(3)}${delta}`);
+      const channels = variant.channels[subset.name];
+      if (channels) {
+        lines.push(`      关键词命中 ${channels.keywordHits}  向量命中 ${channels.vectorHits}`
+          + `  进入结果 ${channels.vectorSelected}`
+          + `  外呼失败 ${channels.embedFailures}  字面已足够 ${channels.skippedFilled}`);
+      }
     }
   }
   return lines.join('\n');

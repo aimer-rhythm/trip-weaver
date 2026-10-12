@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { literalCoverage, realAliases, recallMetrics, renderRetrievalQuality, retrievalQualityReport,
-  type PlaceCoverageRow, type RecallCase } from '../retrievalQuality';
+import { configFingerprint, literalCoverage, parseVariantSpecs, realAliases, recallMetrics,
+  renderRetrievalQuality, renderVariantComparison, retrievalQualityReport,
+  type PlaceCoverageRow, type RecallCase, type VariantReport } from '../retrievalQuality';
 
 const row = (over: Partial<PlaceCoverageRow> & Pick<PlaceCoverageRow, 'id' | 'name'>): PlaceCoverageRow => ({
   city: '北京', category: '文化', source: 'xhs', payload: {}, hasEvidence: false, ...over });
@@ -50,6 +51,8 @@ test('召回分母是实际执行的 query 数，命中按返回实体的规范�
   assert.equal(metrics.depth, 8);
   assert.equal(metrics.at1, 1);
   assert.equal(metrics.atDepth, 2);
+  // MRR = (1/1 + 1/2 + 0 + 0) / 4；超出 depth 与未命中同样记 0。
+  assert.equal(metrics.mrr, 0.375);
   assert.deepEqual(metrics.misses.map((miss) => miss.query), ['西湖', '灵隐寺']);
   assert.deepEqual(metrics.misses[1], { city: '杭州', query: '灵隐寺', expectName: '灵隐寺', actualNames: [] });
   assert.deepEqual(metrics.byCity.find((city) => city.city === '杭州'), { city: '杭州', total: 2, at1: 0, atDepth: 0 });
@@ -77,4 +80,41 @@ test('人读摘要给出覆盖率、召回率与未命中清单', () => {
   assert.match(text, /Recall@8\s+0\.0%/);
   assert.match(text, /未命中 1 条/);
   assert.match(text, /「紫禁城」→ 期望「故宫博物院」，实得 \(空\)/);
+});
+
+test('变体定义拒绝未知参数、重复 label 与非法取值，而不是静默忽略', () => {
+  assert.deepEqual(parseVariantSpecs([{ label: 'off' }]), [{ label: 'off', vector: 'off' }]);
+  assert.deepEqual(parseVariantSpecs([{ label: 'force', vector: 'force', limit: 8 }]),
+    [{ label: 'force', vector: 'force', limit: 8 }]);
+  // 未知 key 必须报错：静默忽略会让人以为参数生效了。
+  assert.throws(() => parseVariantSpecs([{ label: 'a', vector: 'off', reranker: 'ce' }]), /未知参数「reranker」/);
+  assert.throws(() => parseVariantSpecs([]), /非空数组/);
+  assert.throws(() => parseVariantSpecs([{ label: 'a', vector: 'off' }, { label: 'a', vector: 'force' }]), /label 重复/);
+  assert.throws(() => parseVariantSpecs([{ label: 'a', vector: 'hybrid' }]), /vector 必须是/);
+  assert.throws(() => parseVariantSpecs([{ label: 'a', limit: 64 }]), /limit 必须是 1–48/);
+  assert.throws(() => parseVariantSpecs([{ vector: 'off' }]), /缺少 label/);
+});
+
+test('配置指纹只由配置内容决定，与键顺序无关', () => {
+  assert.equal(configFingerprint({ vector: 'auto', limit: 8 }), configFingerprint({ limit: 8, vector: 'auto' }));
+  assert.notEqual(configFingerprint({ vector: 'auto', limit: 8 }), configFingerprint({ vector: 'force', limit: 8 }));
+  assert.match(configFingerprint({ vector: 'off' }), /^[0-9a-f]{8}$/);
+});
+
+test('变体对比以首个变体为基准标出各子集的百分点差值', () => {
+  const metrics = (at1: number, atDepth: number, total = 10) => ({ total, depth: 8, at1, atDepth, mrr: at1 / total,
+    byCity: [], misses: [], method: '' });
+  const report: VariantReport = { coverage: literalCoverage([]), subsets: [{ name: 'literalFail', queries: 10, method: '测试子集' }],
+    variants: [
+      { label: 'off', config: { vector: 'off' }, fingerprint: 'aaaaaaaa', recall: { literalFail: metrics(0, 0) },
+        channels: { literalFail: { keywordHits: 0, vectorHits: 0, vectorSelected: 0, embedFailures: 0, skippedFilled: 0 } } },
+      { label: 'force', config: { vector: 'force' }, fingerprint: 'bbbbbbbb', recall: { literalFail: metrics(2, 3) },
+        channels: { literalFail: { keywordHits: 4, vectorHits: 489, vectorSelected: 120, embedFailures: 2, skippedFilled: 0 } } },
+    ] };
+  const text = renderVariantComparison(report);
+  assert.match(text, /off\s+\[\{"vector":"off"\}\]\s+指纹 aaaaaaaa/);
+  assert.match(text, /literalFail\s+n=\s+10\s+Recall@1 0\.0%\s+Recall@8 0\.0%\s+MRR 0\.000/);
+  assert.match(text, /literalFail\s+n=\s+10\s+Recall@1 20\.0%\s+Recall@8 30\.0%\s+MRR 0\.200\s+ΔRecall@8 30\.0pt/);
+  // 通道统计暴露「召回很多、进入结果很少」的落差；但落差本身不等于排序问题，只在跨变体比较时作参考。
+  assert.match(text, /关键词命中 4\s+向量命中 489\s+进入结果 120\s+外呼失败 2\s+字面已足够 0/);
 });
