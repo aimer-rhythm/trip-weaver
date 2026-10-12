@@ -1854,3 +1854,39 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 48: 检索融合配额与消融评测
+
+**Date**: 2026-10-12
+**Task**: 检索融合配额与消融评测
+**Package**: server
+**Branch**: `master`
+
+### Summary
+
+消融矩阵实测推翻原假设：auto 模式的向量结果不会被字面挤掉，真正的问题是无 exact/prefix 信号时规则分（热度+降权）把语义最近的候选挤出头部。落地窄修复：字面一无所获时改按向量距离排序，literalFail 子集 Recall@1 从 0% 提到 10.2%、Recall@8 提到 28.2%，回归门 378 条仍 100%。诊断新增 vectorSelected 与 skipped:filled。验证：typecheck 通过，eval:test 54/54，新测试 5/5，placeRetrieval 8/8。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `9a36db4` | (see git log) |
+| `35c6ed5` | (see git log) |
+| `f2684d5` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
