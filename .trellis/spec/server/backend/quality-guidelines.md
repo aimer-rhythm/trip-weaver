@@ -33,6 +33,7 @@ There is no standalone server `typecheck`, `test`, or `lint` script in
 | --- | --- | --- |
 | Any TypeScript contract/server change | `npm run typecheck` | Checks shared, server, and web. |
 | Generation logic, prompts, geocoding, and feasibility | `node --import tsx --test apps/server/src/__tests__/*.test.ts` | Includes isolated mock-provider and draft-revision regressions. Requires `MASTER_KEY` (see below). |
+| RAG retrieval / place identity SQL, aliases, vector fallback | `node --import tsx scripts/verify-sql-first.mts [--flow\|--full]` | Disposable PostgreSQL; `--flow` adds chat/geo/scheduling/export suites. `--full` excludes `independentPhotoIdentity.test.ts` — it asserts its own `place_identity_test_<ts>` DB contract and runs via `node --import tsx scripts/verify-place-identity.mts`. |
 | Web production bundle/static serving | `npm run build` | Builds `apps/web/dist`. |
 | Authentication modes/OAuth bootstrap | `node scripts/verify-auth-modes.mjs` | Isolated server scenarios. |
 | Ownership, cookies, SSRF, secrets | `node scripts/verify-security.mjs` | Dev and production instances. |

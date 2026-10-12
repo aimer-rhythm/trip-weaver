@@ -72,6 +72,11 @@ vector calls. This supersedes the historical concatenation-only ranking contract
 - `add_candidate(placeId?, name, ...)` validates an ID against this task's retrieved catalog,
   exact/known alias name, city and category. It reuses coordinates, opening/reservation fields
   and evidence without another XHS lookup. Candidate insertion remains sequential for safe dedup.
+- Library coordinates are authoritative: for a resolved entity `add_candidate` overwrites the
+  same-named search-result entry in `outcome.locations` directly. Do NOT route that write through
+  `rememberResearchLocation` — its ambiguity check reads the mismatch as two same-named search
+  results, deletes the whole key and takes the search coordinates with it, disabling the layer-2
+  distance bypass. `placeLookup.test.ts` locks the override (it fails on the old call).
 - `submit_research(candidates?: {placeId, intro}[], summary?)` is the normal known-place path:
   validate all IDs/city/verified/category, nonblank intros and total capacity before inserting.
   Each known place goes through the same sequential enrichment and candidate SSE path; deduplicate
@@ -116,7 +121,11 @@ candidates, or treating all phase-duration sums as wall clock.
 
 `node --import tsx scripts/verify-sql-first.mts` tests real SQL against a disposable database,
 ranking, alias/city isolation, evidence ordering/reuse, vector fallback/cancellation and title
-termination. `--full` runs all server tests. `benchmark-place-retrieval.mts` is a read-only SQL
+termination. `--full` runs all server tests EXCEPT `independentPhotoIdentity.test.ts`, which asserts
+its own `DATABASE_URL` matches `place_identity_test_<timestamp>`; that file runs alone via
+`node --import tsx scripts/verify-place-identity.mts`. Tests kept in the shared runner must carry
+their own fixtures and hold in an empty database: inject `verifiedPlaces` instead of relying on the
+real application library, and assert open-hours shape with a pattern rather than a hard-coded slot. `benchmark-place-retrieval.mts` is a read-only SQL
 probe with external vectors disabled; never report its vector-requesting cases as full RAG latency.
 `npm run eval:retrieval` is its quality-measuring counterpart — see *Retrieval Quality Baseline* below.
 `researchSubmission.test.ts` verifies batch atomic validation, evidence/photos/seed reuse and
