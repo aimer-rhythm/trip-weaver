@@ -1,6 +1,6 @@
 import type { PoiCategory } from '@tripweaver/shared';
 import type { QueryResultRow } from 'pg';
-import { categoryValues, preferenceCategories, rankPlaces, type PlaceRow, type RankedPlace } from './retrievalRanking';
+import { categoryValues, preferenceCategories, rankPlaces, rankPlacesByDistance, type PlaceRow, type RankedPlace } from './retrievalRanking';
 import { canonicalPlaceId } from '../lib/placeIdentity';
 import { placeNameKey } from '@tripweaver/shared';
 
@@ -30,8 +30,11 @@ export interface RetrieveOptions {
 }
 export interface RetrievalDiagnostics {
   keywordHits: number;
-  vector: 'off' | 'unavailable' | 'used' | 'failed';
+  /** `skipped:filled`：字面结果已满 limit，auto 模式按设计未请求向量。 */
+  vector: 'off' | 'skipped:filled' | 'unavailable' | 'used' | 'failed';
   vectorHits: number;
+  /** 向量命中最终进入结果的条数；远小于 vectorHits 说明召回被排序压掉。 */
+  vectorSelected: number;
 }
 export interface RetrievalDeps {
   query<T extends QueryResultRow>(sql: string, values: unknown[]): Promise<{ rows: T[] }>;
@@ -64,7 +67,7 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
     const limit = Math.max(1, Math.min(48, Math.floor(options.limit ?? 8)));
     const preferences = options.preferences ?? [];
     const categories = categoryValues(options.category);
-    const diagnostics: RetrievalDiagnostics = { keywordHits: 0, vector: 'off', vectorHits: 0 };
+    const diagnostics: RetrievalDiagnostics = { keywordHits: 0, vector: 'off', vectorHits: 0, vectorSelected: 0 };
     try {
       const { rows } = await deps.query<PlaceRow>(
         `SELECT ${COLUMNS} FROM canonical_places
@@ -100,14 +103,23 @@ export function createPlaceRetriever(deps: RetrievalDeps) {
             const unique = new Map([...rows, ...hits.rows].map((row) => [row.id, row]));
             diagnostics.vector = 'used';
             diagnostics.vectorHits = hits.rows.length;
-            const ranked = rankPlaces([...unique.values()], terms, preferences, limit + selected.length);
-            if (options.vector === 'force') selected = ranked.slice(0, limit);
-            else {
-              const seen = new Set(selected.flatMap((place) => place.ids));
-              selected = [...selected, ...ranked.filter((place) => !place.ids.some((id) => seen.has(id)))].slice(0, limit);
+            if (!selected.length) {
+              // 字面一无所获：没有 exact/prefix 信号，规则分只剩热度与降权，直接用向量距离。
+              selected = rankPlacesByDistance([...unique.values()], limit);
+            } else {
+              const ranked = rankPlaces([...unique.values()], terms, preferences, limit + selected.length);
+              if (options.vector === 'force') selected = ranked.slice(0, limit);
+              else {
+                const seen = new Set(selected.flatMap((place) => place.ids));
+                selected = [...selected, ...ranked.filter((place) => !place.ids.some((id) => seen.has(id)))].slice(0, limit);
+              }
             }
+            diagnostics.vectorSelected = selected.filter((place) => place.row.distance !== undefined).length;
           }
         } catch { diagnostics.vector = 'failed'; /* 向量失败时保留关键词结果。 */ }
+      } else if (semanticQuery && options.vector !== 'off') {
+        // 字面结果已填满 limit，auto 模式按设计不请求向量。
+        diagnostics.vector = 'skipped:filled';
       }
       if (options.signal?.aborted) return [];
       options.onDiagnostics?.(diagnostics);

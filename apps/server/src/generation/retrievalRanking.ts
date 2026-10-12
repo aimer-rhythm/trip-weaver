@@ -58,11 +58,8 @@ export interface RankedPlace {
   aliases: string[];
 }
 
-/** 有界 SQL 结果内归并实体与排序，不把任意包含关系当作同一地点。 */
-export function rankPlaces(rows: readonly PlaceRow[], terms: readonly string[], preferences: readonly string[], limit: number): RankedPlace[] {
-  const maxima = scoreMaxima(rows.map(scoreFacts));
-  const exactKeys = new Set(terms.map(placeNameKey));
-  const categories = preferenceCategories([...terms, ...preferences]);
+/** 按持久身份归并同一实体的多行；名称与别名只用于召回，不改变实体身份。 */
+export function groupPlaces(rows: readonly PlaceRow[]): RankedPlace[] {
   const groups: RankedPlace[] = [];
   for (const row of rows) {
     // 只按持久身份归并；名称和别名用来召回，不能临时改变实体身份。
@@ -91,6 +88,26 @@ export function rankPlaces(rows: readonly PlaceRow[], terms: readonly string[], 
       groups.push(next);
     }
   }
+  return groups;
+}
+
+/**
+ * 字面一无所获时的排序：没有 exact/prefix 信号，热度分与子景点降权都是噪声，直接用向量距离。
+ * 无 distance 的候选排在最后，同距离按名称与 ID 稳定排序。
+ */
+export function rankPlacesByDistance(rows: readonly PlaceRow[], limit: number): RankedPlace[] {
+  return groupPlaces(rows)
+    .sort((a, b) => (a.row.distance ?? Number.POSITIVE_INFINITY) - (b.row.distance ?? Number.POSITIVE_INFINITY)
+      || a.row.name.localeCompare(b.row.name, 'zh-CN') || a.row.id.localeCompare(b.row.id))
+    .slice(0, limit);
+}
+
+/** 有界 SQL 结果内归并实体与排序，不把任意包含关系当作同一地点。 */
+export function rankPlaces(rows: readonly PlaceRow[], terms: readonly string[], preferences: readonly string[], limit: number): RankedPlace[] {
+  const maxima = scoreMaxima(rows.map(scoreFacts));
+  const exactKeys = new Set(terms.map(placeNameKey));
+  const categories = preferenceCategories([...terms, ...preferences]);
+  const groups = groupPlaces(rows);
   const candidates = groups.map((group) => {
     const row = group.row;
     // group.aliases 已排除 complex 子项名；组成名称只能召回父项，不能获得同义精确命中奖励。
