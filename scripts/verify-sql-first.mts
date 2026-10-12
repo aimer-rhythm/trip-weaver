@@ -15,7 +15,12 @@ try {
   await admin.query(`CREATE DATABASE "${databaseName}"`);
   created = true;
   const folder = 'apps/server/src/__tests__';
-  const files = process.argv.includes('--full') ? (await readdir(folder)).filter((name) => name.endsWith('.test.ts')).sort()
+  // independentPhotoIdentity.test.ts 要求 DATABASE_URL 指向 place_identity_test_<timestamp>，
+  // 与本脚本建出的库名不兼容；它由 scripts/verify-place-identity.mts 单独跑。
+  // 其余测试都应自带夹具，能在隔离空库里成立（placeLookup.test.ts 的库内身份样本已改为显式注入）。
+  const identityOwned = new Set(['independentPhotoIdentity.test.ts']);
+  const files = process.argv.includes('--full')
+    ? (await readdir(folder)).filter((name) => name.endsWith('.test.ts') && !identityOwned.has(name)).sort()
     : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts',
       ...(process.argv.includes('--flow') ? ['dateRepair.test.ts', 'mealLocality.test.ts', 'longHaul.test.ts', 'longHaulFixer.test.ts', 'openHours.test.ts',
         'placeFacts.test.ts', 'placeRelations.test.ts', 'placeLookup.test.ts', 'geoPipeline.test.ts', 'legs.test.ts',
