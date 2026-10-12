@@ -1890,3 +1890,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 49: place identity 收尾与测试隔离
+
+**Date**: 2026-10-12
+**Task**: place identity 收尾与测试隔离
+**Branch**: `master`
+
+### Summary
+
+工作区遗留的 place identity 收尾改动纳入任务并收口：researchTools 库内坐标直接覆盖同名搜索结果（不走 rememberResearchLocation 的歧义删除），补 0,0 脏值守卫与两条回归测试；verify-sql-first --full 排除固定库名的 independentPhotoIdentity.test.ts，由新增 verify-place-identity.mts 单跑；placeFacts openHours 断言改格式正则。验证：typecheck 通过，placeLookup 20/20，--full 639/639，--flow 267/267，verify-place-identity 22/22，临时库均清理。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `286e818` | (see git log) |
+| `1065859` | (see git log) |
+| `4defff8` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

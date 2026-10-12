@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 48
+- **Total Sessions**: 49
 - **Last Active**: 2026-10-12
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1892 | Active |
+| `journal-1.md` | ~1927 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 49 | 2026-10-12 | place identity 收尾与测试隔离 | `286e818`, `1065859`, `4defff8` | `master` |
 | 48 | 2026-10-12 | 检索融合配额与消融评测 | `9a36db4`, `35c6ed5`, `f2684d5` | `master` |
 | 47 | 2026-10-12 | 检索质量基线评测器 | `bac08c3`, `68efc93` | `master` |
 | 46 | 2026-10-11 | 移除单用户行程数量上限并级联删除版本链 | `800a30e`, `32968b6` | `master` |
