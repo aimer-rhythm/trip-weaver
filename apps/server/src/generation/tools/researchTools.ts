@@ -15,7 +15,7 @@ import type { PoiSource } from '../../integrations/geoContracts';
 import type { SearchSource } from '../../integrations/websearch/searchSource';
 import { matchReservationSeed } from '../../data/reservationSeeds';
 import { findXhsEvidence, findXhsPlace } from '../../services/xhsPlaceService';
-import { rememberResearchLocation, type ResearchLocation } from '../placeLookup';
+import { isUsableResearchLocation, rememberResearchLocation, type ResearchLocation } from '../placeLookup';
 import { retrieveContext, type RetrievedPlace } from '../retrieveContext';
 import { renderRetrievedPlaces } from '../researchContext';
 import { placeCategory } from '../retrievalRanking';
@@ -411,9 +411,16 @@ export function buildResearchTools(deps: ResearchToolDeps): AgentTool[] {
         if (openTime) poi.openTime = openTime;
       }
       if (known && typeof known.lat === 'number' && typeof known.lng === 'number') {
-        rememberResearchLocation(outcome.locations, ambiguousNames, name, {
-          lat: known.lat, lng: known.lng, adcode: typeof known.payload?.adcode === 'string' ? known.payload.adcode : '',
-        });
+        // 库内坐标是权威值，直接覆盖同名的搜索结果坐标。这里不能走 rememberResearchLocation：
+        // 它的歧义检测是给「多个搜索结果撞名」用的，把库内坐标传进去会因坐标不一致而删掉整个 key，
+        // 连搜索结果坐标一起丢，层2 坐标旁路随即失效。有效坐标守卫与旧调用保持一致。
+        const libraryPoint = { lat: known.lat, lng: known.lng,
+          adcode: typeof known.payload?.adcode === 'string' ? known.payload.adcode : '' };
+        const locationKey = name.trim();
+        if (locationKey && isUsableResearchLocation(libraryPoint)) {
+          ambiguousNames.delete(locationKey);
+          outcome.locations.set(locationKey, libraryPoint);
+        }
       }
 
       // 正式生成走人工选图/新版审核图库；旧来源接口仅保留兼容测试和采集用途。

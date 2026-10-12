@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ResearchPoi } from '@tripweaver/shared';
 import { activityPlaceName, createResearchPlaceLookup, rememberResearchLocation, type ResearchLocation } from '../generation/placeLookup';
+import type { RetrievedPlace } from '../generation/placeRetrieval';
 import { buildResearchTools, type ResearchOutcome } from '../generation/tools/researchTools';
 import type { PoiSource, SourcedPoi } from '../integrations/geoContracts';
 import type { CoverLookup } from '../integrations/wikimedia/cover';
@@ -133,6 +134,71 @@ test('add_candidate 自动回填高德营业时间（仅 attraction），模型�
 
 const WIKI_THUMB = '/media/wikimedia/abc123.jpg';
 
+/**
+ * 库内身份样本：这几个封面用例断言「已知实体改用库内正式名」（故宫 → 故宫博物院），
+ * 原先靠真实应用库满足。改为显式注入，测试在隔离空库里也能成立。
+ */
+const identityPlaces: RetrievedPlace[] = [
+  { id: 'forbidden-city', city: '北京', name: '故宫博物院', category: '文化', verified: true, source: 'goldset',
+    lat: 39.9163, lng: 116.3972, payload: { identity: { entityId: 'forbidden-city' } }, aliases: ['故宫'], evidence: [] },
+  { id: 'temple-of-heaven', city: '北京', name: '天坛公园', category: '文化', verified: true, source: 'goldset',
+    lat: 39.8822, lng: 116.4066, payload: { identity: { entityId: 'temple-of-heaven' } }, aliases: ['天坛'], evidence: [] },
+];
+
+test('库内坐标权威覆盖同名搜索结果，key 不被歧义检测删除（层2 坐标旁路）', async () => {
+  // 搜索结果带回的是另一处坐标（同名的地图误配或粗定位）；库内坐标才是权威值。
+  const searched: SourcedPoi = {
+    name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '', opentime: '', photoUrls: [],
+    location: { lat: 39.9, lng: 116.4 }, adcode: '110101',
+  };
+  const source: PoiSource = { kind: 'amap', searchPois: async () => [searched], selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }) };
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  const tools = buildResearchTools({
+    poiSource: source,
+    searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
+    destination: '北京',
+    searchWebMax: 2,
+    outcome,
+    verifiedPlaces: identityPlaces,
+  });
+  const search = tools.find((tool) => tool.name === 'search_pois')!;
+  const add = tools.find((tool) => tool.name === 'add_candidate')!;
+  await search.execute('search', { category: 'attraction', keyword: '故宫' });
+  assert.deepEqual(outcome.locations.get('故宫博物院'), { lat: 39.9, lng: 116.4, adcode: '110101' });
+
+  // placeId 直接指向库内实体，解析结果是 known，坐标分支走库内权威覆盖。
+  await add.execute('add', { name: '故宫博物院', category: 'attraction', intro: '中轴线', placeId: 'forbidden-city' });
+  // 走 rememberResearchLocation 会把「坐标不一致」判成同名歧义并 delete 整个 key，
+  // 连搜索结果坐标一起丢，层2 距离预计算随之失效。这里锁定覆盖语义。
+  assert.deepEqual(outcome.locations.get('故宫博物院'), { lat: 39.9163, lng: 116.3972, adcode: '' },
+    '库内坐标必须覆盖同名搜索结果坐标，而不是删除该 key');
+  assert.equal(outcome.pool.length, 1);
+  assert.equal(outcome.pool[0]!.name, '故宫博物院');
+});
+
+test('库内坐标无效（0,0）时保留搜索结果坐标，不用脏值覆盖层2 旁路', async () => {
+  const searched: SourcedPoi = {
+    name: '坐标异常馆', type: '博物馆', address: '', rating: '', cost: '', opentime: '', photoUrls: [],
+    location: { lat: 39.9, lng: 116.4 }, adcode: '110101',
+  };
+  const source: PoiSource = { kind: 'amap', searchPois: async () => [searched], selfCheck: async () => ({ configured: true, checked: true, ok: true, message: '' }) };
+  const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
+  const places: RetrievedPlace[] = [{ id: 'broken-geo', city: '北京', name: '坐标异常馆', category: '文化', verified: true, source: 'goldset',
+    lat: 0, lng: 0, payload: { identity: { entityId: 'broken-geo' } }, aliases: [], evidence: [] }];
+  const tools = buildResearchTools({
+    poiSource: source,
+    searchSource: { kind: 'null', search: async () => [], selfCheck: source.selfCheck },
+    destination: '北京',
+    searchWebMax: 2,
+    outcome,
+    verifiedPlaces: places,
+  });
+  await tools.find((tool) => tool.name === 'search_pois')!.execute('search', { category: 'attraction', keyword: '坐标' });
+  await tools.find((tool) => tool.name === 'add_candidate')!.execute('add', { name: '坐标异常馆', category: 'attraction', intro: 'x', placeId: 'broken-geo' });
+  assert.deepEqual(outcome.locations.get('坐标异常馆'), { lat: 39.9, lng: 116.4, adcode: '110101' },
+    '库内 0,0 不是有效坐标，不能覆盖搜索结果');
+});
+
 test('精选封面优先并保留署名，精选服务故障继续已有封面路径', async () => {
   const outcome: ResearchOutcome = { summary: '', pool: [], locations: new Map() };
   let storedCalls = 0;
@@ -205,7 +271,7 @@ function recordingCover(url: string | null = WIKI_THUMB): { lookup: CoverLookup;
   };
 }
 
-test('景点封面：库内无图且有坐标时查维基，美食不查，库内有图不再查', async () => {
+test('景点封面：库内无图且有坐标时查维基，非景点不查，已知实体改用正式名', async () => {
   const poi: SourcedPoi = {
     name: '故宫博物院', type: '博物馆', address: '', rating: '', cost: '',
     opentime: '', photoUrls: [], location: point, adcode: point.adcode,
@@ -224,22 +290,27 @@ test('景点封面：库内无图且有坐标时查维基，美食不查，库�
     searchWebMax: 2,
     outcome,
     coverLookup: cover.lookup,
-    storedCover: async (name) => (name === '天坛' ? 'https://example.com/stored.jpg' : null),
+    storedCover: async () => null,
+    verifiedPlaces: identityPlaces,
   });
   const search = tools.find((tool) => tool.name === 'search_pois')!;
   const add = tools.find((tool) => tool.name === 'add_candidate')!;
   await search.execute('search', { category: 'attraction', keyword: '故宫' });
 
   await add.execute('a', { name: '故宫', category: 'attraction', intro: '中轴线' });
+  assert.equal(outcome.pool[0]!.name, '故宫博物院', '已知实体入池时改用库内正式名');
   assert.equal(outcome.pool[0]!.coverUrl, WIKI_THUMB, '归一后「故宫」对上「故宫博物院」的坐标');
 
-  await add.execute('b', { name: '美食街', category: 'food', intro: '吃饭' });
+  // 用真实库里不存在的名字：真实存在的名字会被身份索引拦成「可能涉及已有地点」。
+  await add.execute('b', { name: '封面测试用餐点', category: 'food', intro: '吃饭' });
   assert.equal(outcome.pool[1]!.coverUrl, undefined, '非景点不查');
 
   await add.execute('c', { name: '天坛', category: 'attraction', intro: '祈年殿' });
-  assert.equal(outcome.pool[2]!.coverUrl, 'https://example.com/stored.jpg', '库内有图直接用');
+  // Commons 在库内封面之前：本例命中，所以库内封面路径不会被读到（该优先级由下一用例覆盖）。
+  assert.equal(outcome.pool[2]!.name, '天坛公园', '已知实体同样改用库内正式名');
+  assert.equal(outcome.pool[2]!.coverUrl, WIKI_THUMB);
 
-  assert.deepEqual(cover.queries, ['故宫'], '只有缺图的景点触发了一次检索');
+  assert.deepEqual(cover.queries, ['故宫博物院', '天坛公园'], '缺图的景点各触发一次检索，且用库内正式名');
 });
 
 test('景点封面：外部图源未命中时接受库内相对路径（/media/...）', async () => {
@@ -262,7 +333,8 @@ test('景点封面：外部图源未命中时接受库内相对路径（/media/.
     searchWebMax: 2,
     outcome,
     coverLookup: cover.lookup,
-    storedCover: async (name) => (name === '故宫' ? media : null),
+    storedCover: async (name) => (name === '故宫博物院' ? media : null),
+    verifiedPlaces: identityPlaces,
   });
   const search = tools.find((tool) => tool.name === 'search_pois')!;
   const add = tools.find((tool) => tool.name === 'add_candidate')!;
@@ -270,7 +342,7 @@ test('景点封面：外部图源未命中时接受库内相对路径（/media/.
   await add.execute('a', { name: '故宫', category: 'attraction', intro: '中轴线' });
 
   assert.equal(outcome.pool[0]!.coverUrl, media, '站内相对 URL 必须被接受（库内封面默认就是同源路径）');
-  assert.deepEqual(cover.queries, ['故宫'], '先检索 Commons，未命中时回退小红书图库');
+  assert.deepEqual(cover.queries, ['故宫博物院'], '先检索 Commons，未命中时回退小红书图库');
 });
 
 // ---------- 封面来源顺序：Pexels → Pixabay → Unsplash → Commons → 小红书图库 → 高德 ----------
@@ -314,6 +386,7 @@ function coverTools(deps: {
     saveAmapPhoto: (name, url) => {
       deps.saved?.push(`${name}|${url}`);
     },
+    verifiedPlaces: identityPlaces,
   });
   return { tools, outcome, cover };
 }
@@ -336,7 +409,7 @@ test('封面顺序：外部摄影均无图后才用小红书补充，不查高�
   });
   assert.equal(await addFirst(tools, outcome), '/media/xhs/北京/8f3a/00.webp');
   assert.deepEqual(calls, ['pexels', 'stored'], '已有小红书图不能挡住外部主候选源');
-  assert.deepEqual(cover.queries, ['故宫']);
+  assert.deepEqual(cover.queries, ['故宫博物院']);
 });
 
 test('封面顺序：Pexels 命中即不读小红书也不查高德', async () => {
@@ -367,7 +440,7 @@ test('封面顺序：摄影与小红书都无图时才用高德', async () => {
   });
   assert.equal(await addFirst(tools, outcome), amapUrl);
   assert.deepEqual(calls, ['pexels', 'stored', 'amap']);
-  assert.deepEqual(cover.queries, ['故宫'], 'Commons 先于小红书和高德');
+  assert.deepEqual(cover.queries, ['故宫博物院'], 'Commons 先于小红书和高德');
 });
 
 test('封面顺序：库内已回写的高德图直接复用，不再打高德也不重写', async () => {
@@ -391,7 +464,7 @@ test('封面顺序：高德实时命中后回写库内（fire-and-forget）', as
   const saved: string[] = [];
   const { tools, outcome } = coverTools({ stored: null, pexels: null, amap: amapUrl, saved });
   assert.equal(await addFirst(tools, outcome), amapUrl);
-  assert.deepEqual(saved, [`故宫|${amapUrl}`], '命中后必须回写 payload.amapPhoto');
+  assert.deepEqual(saved, [`故宫博物院|${amapUrl}`], '命中后必须回写 payload.amapPhoto');
 });
 
 test('新图库已保存选择先于所有新搜索；Unsplash只在胜出时执行采用', async () => {
