@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "核对实现是否破坏「Retrieval Is Optional Enrichment, Never a Gate」、是否在 auto 模式擅自引入跨通道分数归一化、以及新 diagnostics 字段是否与既有契约一致"}
+{"file": ".trellis/spec/server/backend/evaluation.md", "reason": "核对报告口径：不得把观测指标说成质量达标、不得凭空设 gate 阈值、不得把机器构造的子集说成真实用户意图"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "项目的质量检查与测试要求"}
+{"file": ".trellis/tasks/10-12-retrieval-fusion-ablation/research/mimirq-findings.md", "reason": "核对消融矩阵是否遵守「未知参数不静默忽略」「retrieval-only」等约定，以及是否误引入了明确不适用的能力"}
+{"file": ".trellis/tasks/archive/2026-10/10-11-retrieval-quality-baseline/research/retrieval-baseline-findings.md", "reason": "核对子集 A 的回归结果是否与已知基线一致，以及是否重蹈「分母算错」的测量陷阱"}

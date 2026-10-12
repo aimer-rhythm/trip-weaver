@@ -1,0 +1,4 @@
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "检索契约主体：createPlaceRetriever 依赖注入、RetrieveOptions.vector 的 auto/off/force 语义、RetrievedPlace 不含 ids（只有 RankedPlace 有）、以及新增的 Retrieval Quality Baseline scenario 与只读探针边界"}
+{"file": ".trellis/spec/server/backend/evaluation.md", "reason": "评测口径：为什么观测维度不进 gate、覆盖率不等于召回轨迹、输入/检查器 hash 变化即不可比、以及 eval:retrieval 与 harness 的边界"}
+{"file": ".trellis/tasks/10-12-retrieval-fusion-ablation/research/mimirq-findings.md", "reason": "本次落地的依据：四通道融合策略（含 budgeted_rrf 配额）、provider capability contract 的 status/reason/outcome 字段、消融矩阵约定（未知参数必须提示）、以及明确不适用清单"}
+{"file": ".trellis/tasks/archive/2026-10/10-11-retrieval-quality-baseline/research/retrieval-baseline-findings.md", "reason": "上一个任务的实测基线与测量陷阱：真别名 5.2%、主题 30.5%、证据 85.9%、378 条 query 的 100% 基线、命中判定表达式、以及「分母算错得出假 8%」的教训"}
