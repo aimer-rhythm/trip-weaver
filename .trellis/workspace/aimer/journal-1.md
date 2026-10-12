@@ -1819,3 +1819,38 @@ R1 按需修订（chat/editOps 三件套纯函数，确定性应用落版本链�
 ### Next Steps
 
 - None - task complete
+
+
+## Session 47: 检索质量基线评测器
+
+**Date**: 2026-10-12
+**Task**: 检索质量基线评测器
+**Package**: server
+**Branch**: `master`
+
+### Summary
+
+新增只读检索质量探针与纯函数统计层：字面层覆盖（真别名 5.2%、主题 30.5%、证据 85.9%）与召回基线（378 条 query，Recall@1/@8 均 100%）。验证：typecheck 通过，eval:test 51/51，同一知识库两次运行报告 SHA256 一致。
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `bac08c3` | (see git log) |
+| `68efc93` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
