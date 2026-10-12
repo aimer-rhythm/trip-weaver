@@ -1,0 +1,4 @@
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "核对实现是否违反「Retrieval Is Optional Enrichment, Never a Gate」以及只读探针边界；确认没有把向量关闭条件下的结果说成完整 RAG 评测"}
+{"file": ".trellis/spec/server/backend/evaluation.md", "reason": "核对报告口径：不得把覆盖率说成召回轨迹、不得凭空设 gate 阈值、不得把观测指标说成质量达标"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "项目的质量检查与测试要求"}
+{"file": ".trellis/tasks/10-11-retrieval-quality-baseline/research/retrieval-baseline-findings.md", "reason": "核对实现是否复现已记录的实测数字（真别名 5.2% / 主题 30.5% / Recall 100%），以及是否重蹈分母算错的测量陷阱"}

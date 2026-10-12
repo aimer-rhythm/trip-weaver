@@ -1,0 +1,4 @@
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "检索契约：createPlaceRetriever 的依赖注入形态、RetrieveOptions 语义（vector: auto/off/force、limit 1-48、city/category 过滤）、以及只读探针的边界（benchmark-place-retrieval.mts 的向量请求不得当作完整 RAG 延迟）"}
+{"file": ".trellis/spec/server/backend/evaluation.md", "reason": "评测契约：解释本评测为什么不接进 eval harness（快照驱动 + 纯函数检查器）、为什么覆盖率不等于召回轨迹、以及「新维度先进报告做观测、不设 gate」的项目口径"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "数据库访问约定：只读连接、不导入迁移型 db/client、参数化 SQL、连接清理"}
+{"file": ".trellis/tasks/10-11-retrieval-quality-baseline/research/retrieval-baseline-findings.md", "reason": "本次探针实测数据与写法参考：真别名 5.2%、主题 30.5%、已登记别名 Recall 100%、命中判定表达式、以及必须避免的「分母算错」测量陷阱"}
