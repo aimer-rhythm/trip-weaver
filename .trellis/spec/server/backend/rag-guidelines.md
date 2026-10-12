@@ -652,16 +652,21 @@ annotation set nor a single assertion existed.
 
 ### 2. Signatures
 
-- `npm run eval:retrieval [--out <dir>]` → `node --import tsx scripts/retrieval-quality-baseline.mts`
+- `npm run eval:retrieval [--out <dir>] [--variants <path.json>]` → `node --import tsx scripts/retrieval-quality-baseline.mts`
 - `realAliases(row: PlaceCoverageRow): string[]`
 - `literalCoverage(rows: readonly PlaceCoverageRow[]): LiteralCoverage`
-- `recallMetrics(cases: readonly RecallCase[], depth = 8): RecallMetrics`
+- `recallMetrics(cases: readonly RecallCase[], depth = 8): RecallMetrics` — includes `mrr`
 - `retrievalQualityReport(rows, cases, depth?)` / `renderRetrievalQuality(report, missLimit = 10)`
+- `parseVariantSpecs(raw): VariantSpec[]` / `configFingerprint(config): string` /
+  `renderVariantComparison(report)`
+- `VariantSpec = { label, vector: 'off' | 'auto' | 'force', limit? }` — unknown keys are rejected
+- `ChannelStats = { keywordHits, vectorHits, vectorSelected, embedFailures, skippedFilled }`
 - `PlaceCoverageRow = { id, city, name, category, source, payload, hasEvidence }` — payload carries
   only `aliases` / `themes`, never `content`
 - `RecallCase = { city, query, expectId, expectName, hitGroups, actualNames }` — `hitGroups` is one
   id set per returned entity, in result order
-- `--out <dir>` writes `<dir>/report.json` = `{ coverage, recall }`
+- `--out <dir>` writes `<dir>/report.json`; default mode = `{ coverage, recall }`, variant mode =
+  `{ coverage, subsets, variants }`
 
 ### 3. Contracts
 
@@ -677,8 +682,22 @@ annotation set nor a single assertion existed.
 - **Hit test uses `canonicalPlaceId`**, never member row ids — see Wrong vs Correct.
 - Reports are deterministic: no timestamp or duration is written, so `report.json` is byte-identical
   across runs on the same knowledge base.
-- Boundary: this is NOT part of the `eval/` harness, gates nothing, and runs with vectors off. It
-  measures the literal layer only and does not prove semantic recall.
+- Boundary: this is NOT part of the `eval/` harness, gates nothing, and its default mode runs with
+  vectors off. It measures the literal layer only and does not prove semantic recall.
+- **`--variants` is the only mode that makes external calls.** A non-`off` variant really calls the
+  site `embedQuery`; the default path imports no embedding client at all. Variant definitions are
+  rejected on unknown keys — silently ignoring one makes a parameter look applied when it is not.
+  The same rule applies to CLI arguments.
+- **Variant mode runs two subsets.** `regression` = goldset names + first real alias (availability
+  gate, already 100% literal). `literalFail` = `research_evidence.content` rows whose text does not
+  contain the place name (`strpos = 0`, length ≥ 25, longest per place) — the only subset where a
+  vector delta can appear, because the regression subset is already saturated.
+- **Method limit:** `literalFail` measures 「笔记描述 → 找到地点」, not 「用户搜索意图 → 找到地点」.
+  Real users do not copy note text, so its recall is neither an upper nor a lower bound; its only job
+  is to be a reproducible「literal must fail, semantic may succeed」contrast.
+- **`vectorSelected` is not a quality metric on its own.** Recalling 48 rows and returning 8 is
+  `limit` truncation, not a ranking failure — the recall SQL caps at 48 and the result caps at
+  `limit`. Only cross-variant comparison on the same subset carries information.
 
 ### 4. Validation & Error Matrix
 
@@ -690,6 +709,10 @@ annotation set nor a single assertion existed.
 | No place has a real alias | `recall.total = 0`; percentages render `—`, never 0% |
 | Place redirected or unverified | excluded by the active filter, same as retrieval |
 | Test-residue city (`金集新增-…`) present in the library | reported as-is; it is real database content |
+| `--variants` file missing or not valid JSON | exit 1 with the parse error; no report written |
+| Variant has an unknown key, duplicate `label`, or bad `vector` / `limit` | exit 1 naming the offending variant; no report written |
+| Unknown CLI argument | exit 1 listing the allowed flags |
+| `MASTER_KEY` missing while a vector variant loads the embedding client | the import throws before any retrieval; set the env or run with `--env-file` |
 
 ### 5. Good / Base / Bad Cases
 
@@ -698,6 +721,9 @@ annotation set nor a single assertion existed.
 - Base: a city with no real aliases contributes coverage rows but no recall queries.
 - Bad: reading `Recall@8 = 100%` as “retrieval is fine”. It only says the 267 registered aliases
   resolve; 94.8% of places have no alias to resolve, and `themes` covers 30.5%.
+- Good (variant mode, 2026-10-12): `literalFail` goes from 0.0% / 0.0% (`off`) to 10.2% / 28.2%
+  (`force`) while `regression` stays 100% in every variant — the report proves the vector channel
+  pays off without regressing the registered aliases.
 
 ### 6. Tests Required
 
@@ -706,6 +732,13 @@ main name yields no real alias; whitespace and non-string entries are dropped; c
 real-alias from field-fill and groups by city and same-city duplicate name; recall ranks by canonical
 id sets and honours `depth`; **the denominator is the executed query count, not the sampled row
 count**; `renderRetrievalQuality` shows coverage, recall and the miss list.
+`apps/server/src/__tests__/placeVectorRanking.test.ts`: literal-empty results rank by vector
+`distance` (not by heat score or the `detail` penalty); literal hits keep their rule-score order
+with vectors appended; `auto` with a full keyword page reports `skipped:filled` and makes no
+embedding call; `vectorHits` may exceed `vectorSelected` when `limit` truncates.
+`eval/tests/retrievalQuality.test.ts` also covers `parseVariantSpecs` rejecting unknown keys /
+duplicate labels / bad values, `configFingerprint` ignoring key order, and the per-subset delta plus
+channel-stat lines in `renderVariantComparison`.
 
 ### 7. Wrong vs Correct
 
@@ -725,4 +758,83 @@ return atDepth / rows.length;
 
 // Correct: the denominator is what actually ran.
 return atDepth / cases.length;
+```
+
+## Scenario: Vector Channel Ordering (2026-10-12)
+
+### 1. Scope / Trigger
+
+Apply when changing how the vector channel's results are ordered or diagnosed in
+`generation/placeRetrieval.ts` / `generation/retrievalRanking.ts`.
+
+Measured on 2026-10-12 with `eval:retrieval --variants` over 489 `literalFail` queries: the vector
+channel recalled the target in the top 8 for 24.0% of them under the rule-score order, but 27.3%
+under a pure distance order — and 2.7% vs 11.3% at rank 1. The channel was working; the ranking was
+discarding its output.
+
+### 2. Signatures
+
+- `groupPlaces(rows: readonly PlaceRow[]): RankedPlace[]` — entity merging, extracted from
+  `rankPlaces` so both rankers share it
+- `rankPlacesByDistance(rows: readonly PlaceRow[], limit: number): RankedPlace[]`
+- `RetrievalDiagnostics.vector` adds `'skipped:filled'` to the existing
+  `'off' | 'unavailable' | 'used' | 'failed'`
+- `RetrievalDiagnostics.vectorSelected: number`
+
+### 3. Contracts
+
+- **When the literal layer returns nothing, do not rank by rule score.** With no `exact` / `prefix`
+  hit there is no evidence signal left: `poiScore` is heat and mention volume (max 108), the
+  `distance` term is inert without `exact`, and `detail` / `parent` subtractions (up to -145) fire
+  on names alone. The observed effect was a target at distance rank 1 landing outside the top 8.
+  `rankPlacesByDistance` sorts by `distance` ascending, `Infinity` last, then name and id.
+- **The rule score stays authoritative whenever the literal layer matched anything.** This is a
+  narrow branch, not a fusion-weight rewrite: no cross-channel normalization, no new weights, and
+  `exact +200` / `prefix +65` are untouched. `auto` still appends; `force` still re-ranks.
+- **`skipped:filled` is not a failure.** `auto` intentionally skips vectors once the deduplicated
+  keyword page fills `limit`; reporting it as `off`/`failed` hides the designed path.
+- Known boundary: only the literal-empty case is repaired. A query where the literal layer returns
+  one weak hit still lets heat and detail penalties decide the rest of the page.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| Literal rows empty, vector available | `rankPlacesByDistance`; `vectorSelected = limit` |
+| Literal rows empty, vector unavailable | `selected` stays empty; no fallback noise |
+| Literal rows present | unchanged `rankPlaces` path in both `auto` and `force` |
+| Keyword page already fills `limit` under `auto` | vectors never requested; `vector='skipped:filled'` |
+| Same-entity members scattered across the vector page | merged by `groupPlaces`, `distance` kept at the minimum |
+| Every candidate lacks `distance` | all sort equal; name/id decide the order |
+
+### 5. Good / Base / Bad Cases
+
+- Good: 「免费开放，鸿恩阁傍晚可拍秋日余晖和夜景，公园较大穿舒适鞋」returns 鸿恩寺森林公园.
+- Base: a query whose literal layer already matched keeps the exact-alias ordering byte-identical.
+- Bad: ranking a literal-empty page by heat score — the hottest POI wins regardless of semantic fit.
+
+### 6. Tests Required
+
+`apps/server/src/__tests__/placeVectorRanking.test.ts` pins all four: distance ordering when literal
+is empty, rule ordering preserved when it is not, `skipped:filled` without an embedding call, and
+`vectorHits > vectorSelected` under a tight `limit`. Assertion points are the returned id order and
+the recorded `RetrievalDiagnostics`.
+
+### 7. Wrong vs Correct
+
+```typescript
+// Wrong: literal found nothing, so every rule-score input is noise — yet it still decides the page.
+const merged = rankPlaces([...unique.values()], terms, preferences, limit);
+
+// Correct: narrow the behaviour change to the case that has no literal signal at all.
+if (!selected.length) selected = rankPlacesByDistance([...unique.values()], limit);
+else { /* unchanged rankPlaces path */ }
+```
+
+```typescript
+// Wrong: collapsing a designed skip into the same bucket as a failure hides both.
+if (selected.length >= limit) diagnostics.vector = 'off';
+
+// Correct: name the three outcomes separately.
+// 'skipped:filled' (design) / 'unavailable' (no client) / 'failed' (error)
 ```
