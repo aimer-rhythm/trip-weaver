@@ -1,13 +1,13 @@
 // 采集端写入新版视觉审核；在线只读、验证和采用，不检索、不调用视觉模型。
-import { createHash, randomUUID } from 'node:crypto';
-import { mkdir, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { Type, type Static } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
 import { PoiPhotoSchema, type PoiPhoto, type ResearchPoi } from '@tripweaver/shared';
-import { PHOTO_DATA, safePhotoUrl, stockPhotoBudget } from './stockPhotoSupport';
-import { photoMime } from './photoReviewIO';
+import { dataStore, mediaObjectKey } from '../lib/dataStore';
 import { safeImageKey } from '../lib/imageGallery';
+import type { MediaStore } from '../lib/mediaStore';
+import { safePhotoUrl, stockPhotoBudget } from './stockPhotoSupport';
+import { photoMime } from './photoReviewIO';
 
 export const PHOTO_REVIEW_VERSION = 'place-preference-v1';
 const text = () => Type.String({ minLength: 1, maxLength: 1500 });
@@ -50,16 +50,12 @@ export function reviewFirstLookup(read: (name: string) => Promise<ReviewedCover 
 }
 export const reviewName = (s: string) => s.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
 export const reviewDigest = (s: string | Buffer) => createHash('sha256').update(s).digest('hex');
-export function reviewedCatalogFile(city: string, name: string, root = PHOTO_DATA): string {
-  return path.join(root, 'photo-store/reviewed', reviewDigest(reviewName(city)), reviewDigest(reviewName(name)) + '.json');
+export function reviewedCatalogKey(city: string, name: string): string {
+  return `photo-store/reviewed/${reviewDigest(reviewName(city))}/${reviewDigest(reviewName(name))}.json`;
 }
-export async function writeReviewedCatalog(catalog: ReviewedCatalog, root = PHOTO_DATA): Promise<void> {
+export async function writeReviewedCatalog(catalog: ReviewedCatalog, store: MediaStore = dataStore): Promise<void> {
   if (!Value.Check(ReviewedCatalogSchema, catalog)) throw new Error('Invalid reviewed photo catalog');
-  const file = reviewedCatalogFile(catalog.city, catalog.name, root);
-  await mkdir(path.dirname(file), { recursive: true });
-  const temporary = `${file}.${randomUUID()}.tmp`;
-  try { await writeFile(temporary, JSON.stringify(catalog, null, 2), { flag: 'wx' }); await rename(temporary, file); }
-  finally { await unlink(temporary).catch(() => {}); }
+  await store.put(reviewedCatalogKey(catalog.city, catalog.name), Buffer.from(JSON.stringify(catalog, null, 2)), { contentType: 'application/json' });
 }
 export function eligibleReview(review: VisualReview): boolean {
   return review.identity === 'match' && review.singlePhoto && review.clear && !review.obstruction &&
@@ -104,21 +100,21 @@ export function validReviewedAttribution(entry: Pick<ReviewedPhoto, 'photo' | 'p
   if (credit.source === 'xhs') return page('www.xiaohongshu.com', '/explore/') && credit.licenseUrl === credit.sourceUrl;
   return false;
 }
-export async function verifiedPhotoBytes(entry: PhotoAsset, root = PHOTO_DATA): Promise<Buffer | null> {
+export async function verifiedPhotoBytes(entry: PhotoAsset, store: MediaStore = dataStore): Promise<Buffer | null> {
   const url = entry.photo.url;
   if (!/^\/media\/(?:remote-photos|wikimedia|photography)\/[a-zA-Z0-9-]+\.(?:jpg|png|webp)$/.test(url) &&
       !(url.startsWith('/media/xhs/') && safeImageKey(url.slice('/media/'.length)))) return null;
   try {
-    const file = path.join(root, url.slice(1));
-    const info = await stat(file);
-    if (!info.isFile() || info.size > 8 * 1024 * 1024) return null;
-    const bytes = await readFile(file);
+    const key = mediaObjectKey(url);
+    if (!key) return null;
+    const bytes = await store.get(key);
+    if (!bytes || bytes.length > 8 * 1024 * 1024) return null;
     return photoMime(bytes) && reviewDigest(bytes) === entry.sha256 ? bytes : null;
   } catch { return null; }
 }
 
 export interface PhotoAdoptionOptions {
-  dataRoot?: string; unsplashKey?: string; mediaBase?: string;
+  store?: MediaStore; unsplashKey?: string; mediaBase?: string;
   adoptUnsplash?: (entry: PhotoAsset) => Promise<boolean>;
 }
 /** 人工选图与模型审图共享字节、署名及采用上报检查；排序由各自目录决定。 */
@@ -136,7 +132,7 @@ export function createPhotoAdopter(options: PhotoAdoptionOptions = {}) {
             await budget.json(entry.downloadLocation!, { Authorization: `Client-ID ${options.unsplashKey}`, 'Accept-Version': 'v1' });
           }
         } catch { continue; }
-      } else if (entry.provider !== 'amap' && !await verifiedPhotoBytes(entry, options.dataRoot)) continue;
+      } else if (entry.provider !== 'amap' && !await verifiedPhotoBytes(entry, options.store)) continue;
       const base = options.mediaBase ?? '/media';
       const photo = entry.photo.url.startsWith('/media/') ? { ...entry.photo, url: `${base.replace(/\/+$/, '')}/${entry.photo.url.slice(7)}` } : entry.photo;
       if (!Value.Check(PoiPhotoSchema, photo)) continue;
@@ -154,16 +150,20 @@ export function createReviewedCoverLookup(city: string, options: PhotoAdoptionOp
   acceptPhoto?: (name: string, entry: ReviewedPhoto) => boolean;
   acceptPlace?: (name: string) => boolean;
 } = {}): (name: string) => Promise<ReviewedCover | null> {
-  const root = options.dataRoot ?? PHOTO_DATA;
+  const store = options.store ?? dataStore;
   const adopt = createPhotoAdopter(options);
   let loaded: Promise<ReviewedCatalog[]> | undefined;
   const load = () => loaded ??= (async () => {
-    const { readdir } = await import('node:fs/promises');
-    const dir = path.dirname(reviewedCatalogFile(city, '_', root));
-    const rows = options.load ? await options.load() : await Promise.all((await readdir(dir)).filter(f => /^[a-f0-9]{64}\.json$/.test(f)).map(async f => {
-      try { const file = path.join(dir, f); if ((await stat(file)).size > 4 * 1024 * 1024) return null; return JSON.parse(await readFile(file, 'utf8')) as unknown; }
-      catch { return null; }
-    }));
+    if (options.load) {
+      const rows = await options.load();
+      return rows.filter((row): row is ReviewedCatalog => Value.Check(ReviewedCatalogSchema, row) && reviewName(row.city) === reviewName(city));
+    }
+    const objects = await store.list(`photo-store/reviewed/${reviewDigest(reviewName(city))}`);
+    const rows = await Promise.all(objects
+      .filter(object => object.size <= 4 * 1024 * 1024 && /^[a-f0-9]{64}\.json$/.test(object.key.slice(object.key.lastIndexOf('/') + 1)))
+      .map(async object => {
+        try { return JSON.parse((await store.get(object.key))?.toString('utf8') ?? '') as unknown; } catch { return null; }
+      }));
     return rows.filter((row): row is ReviewedCatalog => Value.Check(ReviewedCatalogSchema, row) && reviewName(row.city) === reviewName(city));
   })().catch(() => []);
   const pending = new Map<string, Promise<ReviewedCover | null>>();

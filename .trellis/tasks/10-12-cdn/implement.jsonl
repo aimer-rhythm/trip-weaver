@@ -1,0 +1,9 @@
+{"file": ".trellis/spec/server/backend/index.md", "reason": "后端入口清单：模块归属、TypeBox 输入校验、集成出站调用要交代超时/降级/限额、验证命令矩阵"}
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "本次改动的核心契约：stored cover、/media 静态路由、MEDIA_BASE_URL、mediaUrl() 拼前缀，以及「只写相对 key、绝不写绝对 URL」的反例"}
+{"file": ".trellis/spec/server/backend/integration-guidelines.md", "reason": "外部源适配器的既有风格：Null 实现、串行队列、TTL 缓存、任务级与全站限额；封面四源顺序（库内→Pexels→高德→维基）不能改"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "集成失败必须降级不中断生成：本次要把 EROFS/warn+空 的既有降级行为在 S3 模式下保持同等语义"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "/media 的 key 白名单与「不向浏览器暴露内部路径」的口径：photo-store/ 索引对象不得通过 /media 取到"}
+{"file": ".trellis/spec/server/backend/directory-structure.md", "reason": "新增 apps/server/src/lib/mediaStore.ts 要落在正确的模块层级，遵循 route/service/integration 边界"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "真实验证命令矩阵：typecheck、单测、隔离库 runner 的正确入口与适用范围"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "海报下载链路（ExportDialog / shareImageJobs / downloadShareImage）的既有约束，跨域后要改 fetch+blob 下载"}
+{"file": ".trellis/spec/guides/commit-convention.md", "reason": "提交信息格式与 scope 词表（media 改动属 server/web/scripts）"}

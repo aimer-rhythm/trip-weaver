@@ -1,0 +1,8 @@
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "检查阶段必须按真实命令矩阵跑：typecheck + 最小相关验证脚本，不能只看单测"}
+{"file": ".trellis/spec/server/backend/index.md", "reason": "Quality Check Checklist：schema/migrate 同步、集成失败降级、检索降级为空、文档 diff 检查"}
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "核对 MEDIA_BASE_URL 与 /media 路由契约是否被破坏：key 仍是相对值、旧快照路径仍可解析、封面四源顺序不变"}
+{"file": ".trellis/spec/server/backend/security-guidelines.md", "reason": "核对 /media 白名单确实拦住 photo-store/ 对象，且没有把 bucket 凭据或内部路径泄露到响应里"}
+{"file": ".trellis/spec/server/backend/error-handling.md", "reason": "核对 S3 失败（网络/鉴权/超时）的降级行为与本地实现语义一致，不中断生成任务"}
+{"file": ".trellis/spec/server/backend/database-guidelines.md", "reason": "若最终改动触及 trip_share_images 或索引表，schema.ts 与 migrate.ts 必须同步修改（当前 PRD 预期不改表）"}
+{"file": ".trellis/spec/web/frontend/component-guidelines.md", "reason": "海报下载改为跨域 fetch+blob 后，ExportDialog 的状态与失败回显契约不能退化"}
+{"file": ".trellis/spec/guides/commit-convention.md", "reason": "交付前核对提交信息格式与归档节奏"}

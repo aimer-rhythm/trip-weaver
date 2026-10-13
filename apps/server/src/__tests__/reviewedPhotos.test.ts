@@ -7,6 +7,7 @@ import {
   PHOTO_REVIEW_VERSION, createReviewedCoverLookup, eligibleReview, rankReviewedPhotos,
   reviewDigest, writeReviewedCatalog, type ReviewedPhoto, type VisualReview,
 } from '../integrations/reviewedPhotos';
+import { createLocalMediaStore } from '../lib/mediaStore';
 
 const review: VisualReview = {
   identity: 'match', evidence: '目标建筑主体与作品地点一致', singlePhoto: true, clear: true,
@@ -32,23 +33,24 @@ test('地点、代表性先于光线；未知地点、遮挡和人物主角不�
 });
 test('读新版跨源图库，跳过损坏文件与重复视角；旧版和同城近邻不绕过审核', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'reviewed-photos-'));
+  const store = createLocalMediaStore(root);
   try {
     await mkdir(path.join(root, 'media/remote-photos'), { recursive: true });
     const bytes = Buffer.from([255, 216, 255, 1, 2, 3]);
     const first = entry('first'); first.sha256 = reviewDigest(bytes);
     await writeFile(path.join(root, first.photo.url.slice(1)), bytes);
     const broken = entry('broken', { light: 'strong' });
-    await writeReviewedCatalog({ version: PHOTO_REVIEW_VERSION, city: '北京', name: '故宫', aliases: ['故宫博物院'], entries: [broken, first] }, root);
-    const lookup = createReviewedCoverLookup('北京', { dataRoot: root });
+    await writeReviewedCatalog({ version: PHOTO_REVIEW_VERSION, city: '北京', name: '故宫', aliases: ['故宫博物院'], entries: [broken, first] }, store);
+    const lookup = createReviewedCoverLookup('北京', { store });
     assert.equal((await lookup('故宫博物院（午后参观）'))?.coverUrl, first.photo.url);
     assert.equal(await lookup('景山公园'), null);
-    const blocked = createReviewedCoverLookup('北京', { dataRoot: root, acceptPlace: () => false });
+    const blocked = createReviewedCoverLookup('北京', { store, acceptPlace: () => false });
     assert.equal(await blocked('故宫博物院'), null);
     assert.equal(await blocked('故宫博物院（午后参观）'), null, '去括号后仍须校验实际审核目录主体');
-    assert.equal(await createReviewedCoverLookup('南京', { dataRoot: root })('故宫'), null);
-    const old = createReviewedCoverLookup('北京', { dataRoot: root, load: async () => [{ version: 'old', city: '北京', name: '故宫', entries: [first] }] });
+    assert.equal(await createReviewedCoverLookup('南京', { store })('故宫'), null);
+    const old = createReviewedCoverLookup('北京', { store, load: async () => [{ version: 'old', city: '北京', name: '故宫', entries: [first] }] });
     assert.equal(await old('故宫'), null);
-    const ambiguous = createReviewedCoverLookup('北京', { dataRoot: root, load: async () => ['甲', '乙'].map(name => ({ version: PHOTO_REVIEW_VERSION, city: '北京', name, aliases: ['故宫'], entries: [first] })) });
+    const ambiguous = createReviewedCoverLookup('北京', { store, load: async () => ['甲', '乙'].map(name => ({ version: PHOTO_REVIEW_VERSION, city: '北京', name, aliases: ['故宫'], entries: [first] })) });
     assert.equal(await ambiguous('故宫'), null);
   } finally { await rm(root, { recursive: true, force: true }); }
 });

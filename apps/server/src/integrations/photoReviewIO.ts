@@ -1,18 +1,15 @@
-import { randomUUID } from 'node:crypto';
-import { mkdir, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { dataStore } from '../lib/dataStore';
+import type { MediaStore } from '../lib/mediaStore';
 
-export async function readPhotoJson(file: string, maxBytes = 4 * 1024 * 1024): Promise<unknown> {
+export async function readPhotoJson(key: string, maxBytes = 4 * 1024 * 1024, store: MediaStore = dataStore): Promise<unknown> {
   try {
-    if ((await stat(file)).size > maxBytes) return undefined;
-    return JSON.parse(await readFile(file, 'utf8')) as unknown;
+    const raw = await store.get(key);
+    if (raw === null || raw.length > maxBytes) return undefined;
+    return JSON.parse(raw.toString('utf8')) as unknown;
   } catch { return undefined; }
 }
-export async function writePhotoJson(file: string, value: unknown): Promise<void> {
-  await mkdir(path.dirname(file), { recursive: true });
-  const temp = `${file}.${randomUUID()}.tmp`;
-  try { await writeFile(temp, JSON.stringify(value, null, 2), { flag: 'wx' }); await rename(temp, file); }
-  finally { await unlink(temp).catch(() => {}); }
+export async function writePhotoJson(key: string, value: unknown, store: MediaStore = dataStore): Promise<void> {
+  await store.put(key, Buffer.from(JSON.stringify(value, null, 2)), { contentType: 'application/json' });
 }
 export async function photoResponseBytes(response: Response, limit: number): Promise<Buffer> {
   if (response.status !== 200 || Number(response.headers.get('content-length')) > limit || !response.body) {

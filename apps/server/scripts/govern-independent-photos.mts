@@ -4,6 +4,7 @@ import { open, readFile, type FileHandle } from 'node:fs/promises';
 import type { PoolClient } from 'pg';
 import { pool } from '../src/db/client';
 import { loadIndependentPhotoSources, photoIdentityDigest } from '../src/services/independentPhotoSources';
+import { createLocalMediaStore } from '../src/lib/mediaStore';
 import { applyIndependentPhotoDecision, loadIndependentPhotoAssignments, rollbackIndependentPhotoDecision } from '../src/services/independentPhotoIdentity';
 
 let output: FileHandle | undefined;
@@ -17,7 +18,9 @@ try {
     || values.snapshot && (!values.city || values.apply) || values.city && !values.snapshot) throw new Error('须指定--out及--snapshot --city、--decisions或--rollback；快照不可--apply');
   output = await open(values.out, 'wx');
   const library = values.library ? JSON.parse(await readFile(values.library, 'utf8')) as unknown : undefined;
-  const load = (city: string) => loadIndependentPhotoSources(city, { dataRoot: values['data-root'], library });
+  // 未指定 --data-root 时用进程默认存储（本地 data/ 或 MEDIA_STORE 指向的对象存储）。
+  const store = values['data-root'] ? createLocalMediaStore(values['data-root']) : undefined;
+  const load = (city: string) => loadIndependentPhotoSources(city, { store, library });
   client = await pool.connect();
   await client.query('BEGIN');
   let report: unknown;

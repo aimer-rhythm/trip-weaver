@@ -1,13 +1,12 @@
 // 原目录只读；将选图/审图来源转成稳定逐图输入，不复制或改写作品。
 import { createHash } from 'node:crypto';
-import { readFile, readdir, stat } from 'node:fs/promises';
-import path from 'node:path';
 import { Value } from '@sinclair/typebox/value';
 import beijing from '../data/photography/beijing-selected.json';
+import { dataStore } from '../lib/dataStore';
+import type { MediaStore } from '../lib/mediaStore';
 import { SelectedLibrarySchema, isPhotoExcluded, type SelectedLibrary, type SelectedPhoto } from '../integrations/selectedPhotos';
-import { ReviewedCatalogSchema, reviewedCatalogFile, eligibleReview, reviewName, verifiedPhotoBytes,
+import { ReviewedCatalogSchema, reviewedCatalogKey, eligibleReview, reviewName, verifiedPhotoBytes,
   validReviewedAttribution, type ReviewedCatalog, type ReviewedPhoto } from '../integrations/reviewedPhotos';
-import { PHOTO_DATA } from '../integrations/stockPhotoSupport';
 
 export function photoIdentityJson(value: unknown): string {
   const stable = (input: unknown): unknown => Array.isArray(input) ? input.map(stable) :
@@ -25,29 +24,31 @@ export type IndependentPhotoSources = {
   selected?: SelectedLibrary; reviewed: ReviewedCatalog[]; sources: IndependentPhotoSource[]; warnings: string[];
 };
 export interface IndependentPhotoSourceOptions {
-  dataRoot?: string; library?: unknown; reviewed?: readonly unknown[];
+  store?: MediaStore; library?: unknown; reviewed?: readonly unknown[];
   /** 在线候选读取只生成指纹，实际采用仍逐图校验字节；治理冻结默认完整校验。 */
   verifyBytes?: boolean;
 }
 
 export async function loadIndependentPhotoSources(city: string, options: IndependentPhotoSourceOptions = {}): Promise<IndependentPhotoSources> {
-  const root = options.dataRoot ?? PHOTO_DATA;
+  const store = options.store ?? dataStore;
   const warnings: string[] = [];
   const input = options.library ?? beijing;
   const selected = Value.Check(SelectedLibrarySchema, input) && reviewName(input.city) === reviewName(city) ? input : undefined;
   let catalogInputs = options.reviewed;
   if (!catalogInputs) {
-    const dir = path.dirname(reviewedCatalogFile(city, '_', root));
-    let files: string[] = [];
-    try { files = (await readdir(dir)).filter(f => /^[a-f0-9]{64}\.json$/.test(f)).sort(); }
-    catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
-    catalogInputs = await Promise.all(files.map(async file => {
-      try {
-        const target = path.join(dir, file);
-        if ((await stat(target)).size > 4 * 1024 * 1024) throw new Error('oversize');
-        return JSON.parse(await readFile(target, 'utf8')) as unknown;
-      } catch { warnings.push(`unreadable_reviewed_catalog:${file}`); return null; }
-    }));
+    const prefix = reviewedCatalogKey(city, '_').replace(/\/[^/]+$/, '');
+    let objects: { key: string; size: number }[] = [];
+    try { objects = await store.list(prefix); }
+    catch (error) { if ((error as NodeJS.ErrnoException).code !== undefined) warnings.push('unreadable_reviewed_catalog:list'); }
+    catalogInputs = await Promise.all(objects
+      .filter(object => /^[a-f0-9]{64}\.json$/.test(object.key.slice(object.key.lastIndexOf('/') + 1)))
+      .sort((a, b) => a.key.localeCompare(b.key))
+      .map(async object => {
+        try {
+          if (object.size > 4 * 1024 * 1024) throw new Error('oversize');
+          return JSON.parse((await store.get(object.key))?.toString('utf8') ?? '') as unknown;
+        } catch { warnings.push(`unreadable_reviewed_catalog:${object.key}`); return null; }
+      }));
   }
   const reviewed = catalogInputs.filter((row): row is ReviewedCatalog =>
     Value.Check(ReviewedCatalogSchema, row) && reviewName(row.city) === reviewName(city));
@@ -58,7 +59,7 @@ export async function loadIndependentPhotoSources(city: string, options: Indepen
     const assetKey = `${remote ? 'official_url' : 'local_bytes'}:${entry.sha256}`;
     const available = validReviewedAttribution(entry) && (remote
       ? createHash('sha256').update(entry.photo.url).digest('hex') === entry.sha256
-      : options.verifyBytes === false || !!await verifiedPhotoBytes(entry, root));
+      : options.verifyBytes === false || !!await verifiedPhotoBytes(entry, store));
     sources.push({ kind, city, catalogName: name, aliases, entry,
       imageKey: `${kind}:${photoIdentityDigest(key)}`, assetKey, eligible: available && quality,
       inputHash: photoIdentityDigest({ version: 1, kind, city, context, entry, available, quality, assetKey }) });

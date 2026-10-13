@@ -7,6 +7,8 @@ import rateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
 import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import { env } from './env';
+import { dataStore, mediaObjectKey } from './lib/dataStore';
+import { mediaCacheControl, mediaContentType } from './lib/mediaStore';
 import { setAmapLogger } from './integrations/amap/request';
 import { setQWeatherLogger } from './integrations/qweather/client';
 import './lib/proxy';                        // 需在任何出站 fetch 之前接管代理
@@ -65,13 +67,22 @@ async function main() {
     });
   }
 
-  // 库内景点封面（09-27）：上游导出的 webp 落在仓库 data/media（已 gitignore），
-  // 由 /media/ 前缀直接托管。dev 与 prod 都注册 —— 本地开发要能看图。
+  // 库内景点封面（09-27）：本地模式直接托管仓库 data/media（已 gitignore），dev 与 prod 都注册。
+  // 对象存储模式同一前缀改为按 key 从存储读取 —— 存量行程快照里存的 `/media/…` 因此继续可用。
   // decorateReply: false：避免与上面的前端产物注册抢 sendFile 装饰（只有一个 fastify-static 能装饰）。
   const mediaRoot = path.resolve(__dirname, '../../../data/media');
-  fs.mkdirSync(mediaRoot, { recursive: true });
-  if (fs.existsSync(mediaRoot)) {
-    await app.register(fastifyStatic, { root: mediaRoot, prefix: '/media/', decorateReply: false });
+  if (env.mediaStore.mode === 's3') {
+    app.get('/media/*', async (request, reply) => {
+      const key = mediaObjectKey((request.params as Record<string, string>)['*'] ?? '');
+      const bytes = key ? await dataStore.get(key).catch(() => null) : null;
+      if (!key || !bytes) return reply.code(404).send({ error: 'Not Found' });
+      return reply.type(mediaContentType(key)).header('Cache-Control', mediaCacheControl(key)).send(bytes);
+    });
+  } else {
+    fs.mkdirSync(mediaRoot, { recursive: true });
+    if (fs.existsSync(mediaRoot)) {
+      await app.register(fastifyStatic, { root: mediaRoot, prefix: '/media/', decorateReply: false });
+    }
   }
 
   app.addHook('onClose', async () => { await photoReviewQueue.stop(); });

@@ -1,9 +1,8 @@
 // 新图库共享的有限请求、24h查询缓存和地名闸门；不持有API密钥。
-import { createHash, randomUUID } from 'node:crypto';
-import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import type { PoiPhoto } from '@tripweaver/shared';
+import { dataStore } from '../lib/dataStore';
+import type { MediaStore } from '../lib/mediaStore';
 import { normalizePlaceKey } from '../lib/placeKey';
 
 export interface StockPhotoQuery { name: string; city: string }
@@ -11,7 +10,6 @@ export interface StockPhotoLookup {
   cachedPhotosFor(query: StockPhotoQuery): Promise<PoiPhoto[] | null>;
   photosFor(query: StockPhotoQuery): Promise<PoiPhoto[]>;
 }
-export const PHOTO_DATA = fileURLToPath(new URL('../../../../data/', import.meta.url));
 export const DAY = 24 * 60 * 60 * 1000;
 const MAX_JSON = 1024 * 1024;
 type Namespace = 'unsplash-search' | 'unsplash-places' | 'pixabay-search';
@@ -19,25 +17,22 @@ export const object = (value: unknown): Record<string, unknown> => value && type
 export const string = (value: unknown): string => typeof value === 'string' ? value : '';
 const normalize = (value: string) => value.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 export const photoKey = (query: StockPhotoQuery) => JSON.stringify([normalize(query.city), normalize(query.name)]);
-function cacheFile(namespace: Namespace, key: string, root: string) {
-  return path.join(root, 'photo-store', namespace, createHash('sha256').update(key).digest('hex') + '.json');
+function cacheKey(namespace: Namespace, key: string) {
+  return `photo-store/${namespace}/${createHash('sha256').update(key).digest('hex')}.json`;
 }
-export async function readStockCache(namespace: Namespace, key: string, root = PHOTO_DATA, maxAge = DAY): Promise<unknown> {
+export async function readStockCache(namespace: Namespace, key: string, store: MediaStore = dataStore, maxAge = DAY): Promise<unknown> {
   try {
-    const raw = await readFile(cacheFile(namespace, key, root));
-    if (raw.length > MAX_JSON) return undefined;
+    const raw = await store.get(cacheKey(namespace, key));
+    if (raw === null || raw.length > MAX_JSON) return undefined;
     const entry = object(JSON.parse(raw.toString('utf8')));
     if (entry.version === 1 && entry.key === key && typeof entry.savedAt === 'number' && entry.savedAt <= Date.now() && Date.now() - entry.savedAt < maxAge) return entry.data;
   } catch { /* 无缓存或损坏时仅重取对应查询，不暴露原始响应。 */ }
   return undefined;
 }
-export async function writeStockCache(namespace: Namespace, key: string, data: unknown, root = PHOTO_DATA) {
+export async function writeStockCache(namespace: Namespace, key: string, data: unknown, store: MediaStore = dataStore) {
   const raw = JSON.stringify({ version: 1, key, savedAt: Date.now(), data });
   if (Buffer.byteLength(raw) > MAX_JSON) throw new Error('photo cache exceeds size limit');
-  const file = cacheFile(namespace, key, root), temporary = `${file}.${randomUUID()}.tmp`;
-  await mkdir(path.dirname(file), { recursive: true });
-  try { await writeFile(temporary, raw, { flag: 'wx' }); await rename(temporary, file); }
-  finally { await unlink(temporary).catch(() => {}); }
+  await store.put(cacheKey(namespace, key), Buffer.from(raw), { contentType: 'application/json' });
 }
 
 export function safePhotoUrl(value: unknown, hosts: readonly string[], prefix = '/'): string | null {

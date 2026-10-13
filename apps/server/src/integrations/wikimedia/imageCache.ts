@@ -1,11 +1,9 @@
-import { createHash, randomUUID } from 'node:crypto';
-import { mkdir, readdir, readFile, rename, stat, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { dataStore } from '../../lib/dataStore';
+import { mediaCacheControl, type MediaStore } from '../../lib/mediaStore';
 
-const ROOT = fileURLToPath(new URL('../../../../../data/media/wikimedia/', import.meta.url));
+const DIRECTORY = 'media/wikimedia';
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
-const MAX_CACHE_BYTES = 256 * 1024 * 1024;
 const USER_AGENT = 'Tripweaver/0.1 (https://github.com/aimer-rhythm/trip-weaver)';
 
 function extension(bytes: Uint8Array): string | null {
@@ -16,6 +14,10 @@ function extension(bytes: Uint8Array): string | null {
   if (['GIF87a', 'GIF89a'].includes(text.toString('ascii', 0, 6))) return 'gif';
   return null;
 }
+
+const CONTENT_TYPES: Record<string, string> = {
+  jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif',
+};
 
 /** Only API-selected Wikimedia raster images; no arbitrary URL proxy. */
 export async function downloadWikiImage(url: string): Promise<Buffer | null> {
@@ -53,21 +55,21 @@ export async function downloadWikiImage(url: string): Promise<Buffer | null> {
   return extension(bytes) ? bytes : null;
 }
 
-/** Persist bytes before returning a same-origin URL; sidecar retains original provenance. */
-export async function cacheWikiImage(url: string, root = ROOT): Promise<string | null> {
+/**
+ * 内容寻址写入，先落存储再返回同源 URL；`.json` sidecar 保留原图出处。
+ * 不加容量上限：命中同一 sha256 的内容必然相同，重复缓存只会被 exists 短路；
+ * 旧实现按目录总量 256 MiB 上限丢弃新图，线上实际已触顶而无法自愈。
+ */
+export async function cacheWikiImage(url: string, store: MediaStore = dataStore): Promise<string | null> {
   const bytes = await downloadWikiImage(url);
   if (!bytes) return null;
-  const filename = `${createHash('sha256').update(bytes).digest('hex')}.${extension(bytes)}`;
-  await mkdir(root, { recursive: true });
-  const target = path.join(root, filename);
-  try {
-    if ((await readFile(target)).equals(bytes)) return `/media/wikimedia/${filename}`;
-  } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
-  const sizes = await Promise.all((await readdir(root)).map(async name => (await stat(path.join(root, name))).size));
-  if (sizes.reduce((sum, size) => sum + size, 0) + bytes.length > MAX_CACHE_BYTES) return null;
-  const temporary = `${target}.${randomUUID()}.tmp`;
-  await writeFile(temporary, bytes, { flag: 'wx' });
-  await rename(temporary, target);
-  await writeFile(`${target}.json`, JSON.stringify({ source: url, provider: 'Wikimedia', cachedAt: new Date().toISOString() }));
+  const suffix = extension(bytes)!;
+  const filename = `${createHash('sha256').update(bytes).digest('hex')}.${suffix}`;
+  const key = `${DIRECTORY}/${filename}`;
+  if (!await store.exists(key)) {
+    await store.put(key, bytes, { contentType: CONTENT_TYPES[suffix], cacheControl: mediaCacheControl(key) });
+    await store.put(`${key}.json`, Buffer.from(JSON.stringify({ source: url, provider: 'Wikimedia', cachedAt: new Date().toISOString() })),
+      { contentType: 'application/json', cacheControl: 'public, max-age=86400' });
+  }
   return `/media/wikimedia/${filename}`;
 }

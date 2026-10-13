@@ -98,7 +98,7 @@ export function startShareImageJob(trip: Trip, style: TripShareImageStyle, signa
   jobs.set(trip.id, running);
   emit();
   void api.post<unknown>(`/api/trips/${encodeURIComponent(trip.id)}/share-image`, { trip, style, regenerate }, { timeoutMs: 240_000 })
-    .then(image => {
+    .then(async image => {
       if (currentUserId !== userId || jobs.get(trip.id) !== running) return;
       if (!Value.Check(TripShareImageGeneratedResponseSchema, image)) throw new Error('图片响应异常，请重试');
       jobs.set(trip.id, { status: 'done', style, signature, result: { image, style, signature } });
@@ -106,7 +106,7 @@ export function startShareImageJob(trip: Trip, style: TripShareImageStyle, signa
       let downloadStarted = false;
       // 浏览器交付失败不能把已经生成的成品变成失败；通知仍提供手动下载。
       if (!isWeChat()) {
-        try { downloadShareImage(image, trip.title); downloadStarted = true; } catch { /* 手动下载兜底 */ }
+        try { downloadStarted = await downloadShareImage(image, trip.title); } catch { /* 手动下载兜底 */ }
       }
       const notification: GenerationNotification = image.notification ?? {
         id: '', sequence: 0, jobId: '', kind: 'success', tripId: trip.id, shareImageStyle: style,

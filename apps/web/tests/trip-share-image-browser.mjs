@@ -13,7 +13,7 @@ const vite = spawn(process.execPath, ['../../node_modules/vite/bin/vite.js', '--
 let browser;
 try {
   await fs.mkdir(screenshots, { recursive: true });
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 200; i++) {
     if (await fetch(base).then(r => r.ok, () => false)) break;
     await new Promise(r => setTimeout(r, 100));
   }

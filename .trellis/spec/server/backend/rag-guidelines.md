@@ -443,8 +443,10 @@ wiki lookup (overseas/proxied environments only).
 - `mediaUrl(key: string, base = env.mediaBaseUrl): string | null` — same file
 - `PlaceFacts.coverImage?: string` in `generation/scheduling/placeFacts.ts`
 - `env.mediaBaseUrl` ← `MEDIA_BASE_URL` (default `/media`; trailing slashes stripped)
-- Fastify route `/media/` → `path.resolve(__dirname, '../../../data/media')`, registered in dev AND
-  prod, with `decorateReply: false`
+- `/media/` route: local mode serves `data/media` through fastify-static (`decorateReply: false`);
+  `MEDIA_STORE=s3` mode reads the same prefix from the object store by key. Both dev and prod
+  register it, and historical snapshots that already contain `/media/...` keep resolving either way.
+  See *Scenario: Media Object Storage* below.
 
 ### 3. Contracts
 
@@ -847,3 +849,127 @@ if (selected.length >= limit) diagnostics.vector = 'off';
 // Correct: name the three outcomes separately.
 // 'skipped:filled' (design) / 'unavailable' (no client) / 'failed' (error)
 ```
+
+## Scenario: Media Object Storage (MEDIA_STORE=local|s3)
+
+### 1. Scope / Trigger
+
+Apply when changing where image bytes or `data/photo-store` indexes are read/written:
+`lib/mediaStore.ts`, `lib/dataStore.ts`, the `/media` route, image cache/write paths
+(`photoStore`, `wikimedia/imageCache`, `curatedPhotos`, `services/sharePosterStore`), the photo
+review pipeline, or the `MEDIA_STORE` / `MEDIA_S3_*` / `MEDIA_BASE_URL` env pairs.
+
+### 2. Signatures
+
+- `MediaStore` (`lib/mediaStore.ts`): `put(key, bytes, { contentType?, cacheControl? })`,
+  `get(key) → Buffer | null`, `delete(key)`, `exists(key)`, `list(prefix) → { key, size }[]`.
+- `createLocalMediaStore(root)` maps a key to `path.join(root, ...key.split('/'))`;
+  `createS3MediaStore({ endpoint, bucket, accessKeyId, secretAccessKey, region, timeoutMs })`
+  signs with `aws4fetch` and uses the global `fetch`.
+- `normalizeMediaKey(key)` strips a leading slash and rejects empty/`.`/`..` segments or any
+  character outside letters, digits, `_./-`.
+- `mediaCacheControl(key)` and `mediaContentType(key)` derive response metadata from the key.
+- `dataStore` (`lib/dataStore.ts`) is the process instance: local over the repository `data/`
+  when `MEDIA_STORE` is unset, S3 otherwise. `mediaObjectKey(value)` normalizes `xhs/…`,
+  `/media/xhs/…` and a full `MEDIA_BASE_URL` URL to the object key `media/xhs/…`.
+- `env.mediaStore` ← `MEDIA_STORE` (`local` default) plus `MEDIA_S3_ENDPOINT` / `MEDIA_S3_BUCKET` /
+  `MEDIA_S3_ACCESS_KEY_ID` / `MEDIA_S3_SECRET_ACCESS_KEY` / `MEDIA_S3_REGION` (default `auto`).
+  `s3` mode requires all four credentials at startup.
+
+### 3. Contracts
+
+- **The storage root is `data/`.** Media objects are keyed `media/<relative key from the DB>`;
+  index objects keep their original path (e.g. `photo-store/review-jobs/<sha>.json`). The bucket
+  layout therefore mirrors the disk, and migration is `aws s3 sync data/ s3://<bucket>/`.
+- Both stores expose the same semantics, so the object key is the only thing callers pass around —
+  module signatures take a `MediaStore` (default `dataStore`) instead of a `dataRoot` string.
+- Keys stay relative. `MEDIA_BASE_URL` is applied at read time by `mediaUrl()`, so switching
+  between same-origin `/media` and an R2 custom domain never re-imports the database.
+- An R2 custom domain maps the bucket root, so the CDN prefix is `https://<domain>/media`
+  (`/media` is part of the object key, not a route).
+- `/media/*` never reaches `photo-store/`: the route only ever calls `get('media/' + key)`, so
+  index objects are structurally unreachable through HTTP — no key allowlist needed. The R2 custom
+  domain, however, exposes the whole bucket root: `photo-store/…` objects stay non-enumerable
+  (sha256 file names) and hold no secrets, which is the accepted trade-off; do not put credentials
+  or personal data under the storage root.
+- Poster URLs also follow `MEDIA_BASE_URL`: `trip_share_images` stores only `fileName`, and
+  `sharePosterUrl(fileName, base = env.mediaBaseUrl)` builds the URL at read time, so posters are
+  served by the CDN like every other image. The same-origin `/media/share-posters/…` path keeps
+  working (the Node route reads the same object), which is what the download fallback uses.
+- Because posters are now optionally cross-origin, downloads must **fetch bytes and hand the browser a
+  blob URL** — `a[download]` is ignored for cross-origin targets. `downloadShareImage` tries
+  `MEDIA_BASE_URL` first, then the same-origin path, and returns whether a download actually started
+  (the completion notification text depends on it). `<img src>` previews and the WeChat long-press-save
+  guide are unaffected. The bucket needs a CORS rule: `origins: ["*"]`, `methods: ["GET","HEAD"]`
+  (objects are public and the fetch sends no credentials). A response cached *before* CORS was added
+  has no `Access-Control-Allow-Origin`; purge those URLs or let them expire.
+- `SHARE_POSTER_URL_PATTERN` accepts both `^(?:https?://host)?/media/share-posters/<sha256>.<ext>$`
+  forms, because the host is whatever `MEDIA_BASE_URL` points at. Anything else (wrong path, non-hash
+  filename, query string) is rejected by `TripShareImageResponseSchema` on both ends.
+- Only media belongs under the storage root. `data/media` is published by the CDN as-is, so a stray
+  HTML/script file there becomes a public page on the CDN host (one such artifact was migrated and
+  removed from the bucket); keep review/preview artifacts in `data/photo-pilot` or outside `data/`.
+- `createLocalMediaStore` writes through `<file>.<uuid>.tmp` + rename. Concurrent writes to the **same**
+  key do happen (upstream re-exports reuse `xhs/…/00.webp`), and on Windows that rename occasionally
+  fails with a transient `EPERM` while another writer holds the target — retry with backoff, and only
+  treat `EEXIST` as "target exists and was not replaced" (unlink first). Without the retry the local
+  store throws under concurrency and the unit test flakes (~15/40 stress rounds failed before the fix).
+  `MEDIA_STORE=s3` stores do not have this issue (S3 PUT overwrites atomically).
+- Sizing report (no cleanup): `node --import tsx apps/server/scripts/migrate-media-to-s3.mts --report`
+  prints per-prefix object counts and bytes plus the share of the R2 free tier. Nothing expires
+  objects: only replaced posters are deleted, so `media/remote-photos` and the index JSONs grow
+  monotonically.
+- Migration: `node --import tsx apps/server/scripts/migrate-media-to-s3.mts` (dry run) and `--apply`
+  (upload). Idempotent by comparing the object's **ETag (content md5, quoted by S3)** with the local
+  file's md5 — index JSONs are rewritten in place and may keep the same byte length, so a
+  size-only check silently keeps stale indexes. Without an ETag (multipart upload) it falls back to
+  size, prints keys that exist only in the bucket (never deletes), and loads both `.env` files
+  explicitly so it works from any cwd.
+- **Do not use `process.exit()` after network work in Windows scripts**: it trips a libuv assertion
+  (`!(handle->flags & UV_HANDLE_CLOSING)`) while undici keep-alive sockets are still open. Set
+  `process.exitCode` and let the process end naturally; early guards before any I/O may still exit.
+- **Failure semantics follow the integration boundary**: a missing object is `null`/`false`;
+  network, auth and 5xx failures throw so the caller degrades an optional photo source instead of
+  silently reporting "this place has no image".
+- `xhs/…/NN.webp` is not content-addressed and is overwritten by upstream re-imports, so its
+  `Cache-Control` is one day; content-addressed file names (`<sha256>.<ext>`, `xhs/photography/…`)
+  are `immutable` for a year.
+- Per-directory size caps are gone. The old 256 MiB `MAX_CACHE_BYTES` guard silently refused new
+  images once full (production had reached 268,432,913 / 268,435,456 bytes) because content-addressed
+  writes can never duplicate existing objects.
+
+### 4. Validation & Error Matrix
+
+- `MEDIA_STORE=s3` with any of the four credentials missing → startup error listing the variables.
+- `MEDIA_STORE` outside `local|s3` → startup error.
+- Key with a traversal segment, a space, a backslash or a `%` → `normalizeMediaKey` returns `null`;
+  `put` throws and `get`/`mediaObjectKey` return `null` rather than guessing a path.
+- Object missing → `/media/...` 404 → `PoiCard` `onerror` → category placeholder.
+- `data/media` missing at boot in local mode → `/media` route not registered; nothing else changes.
+- S3 404 on `get`/`list` → empty result; 403 is NOT treated as missing (it may be a policy denial).
+- Migration script: a transient network failure while listing a large prefix aborts with
+  `列出桶内 … 失败：fetch failed` after the built-in retries; rerunning is safe because the run is
+  idempotent and read-only until `--apply`.
+
+### 5. Good / Base / Bad Cases
+
+- Good: `MEDIA_STORE=s3` + `MEDIA_BASE_URL=https://media.example.com/media`; new Pexels/Wikimedia
+  picks and posters land in the bucket, new trips render the CDN host, historical snapshots still
+  contain `/media/...` and keep working through the store-backed route.
+- Base: `MEDIA_STORE` unset — byte-for-byte the previous disk behaviour, and the whole photo suite
+  runs in seconds against a temp directory with `createLocalMediaStore(root)` injected.
+- Bad: reading `data/media/wikimedia` back with `path.join(root, 'media', relative)` while writing
+  through the store. That is the removed hedge that made the container's read-only mount look like
+  "the source has no photos".
+
+### 6. Tests Required
+
+- `apps/server/src/__tests__/mediaStore.test.ts` — key normalization, atomic overwrite, concurrent
+  writes, traversal rejection, local store roundtrip.
+- `apps/server/src/__tests__/s3MediaStore.test.ts` — SigV4 request shape (`AWS4-HMAC-SHA256`,
+  `auto/s3/aws4_request`), single percent-encoding of a Chinese key, 404 → null, 5xx → throw,
+  `list` pagination plus ETag parsing, `mediaObjectKey` normalization. Stub `globalThis.fetch`;
+  never call a real bucket.
+- Photo pipeline tests inject `createLocalMediaStore(<temp dir>)`; a test that also asserts on files
+  under `<temp dir>/media` or `<temp dir>/photo-store` keeps working because the local store writes
+  exactly that layout.

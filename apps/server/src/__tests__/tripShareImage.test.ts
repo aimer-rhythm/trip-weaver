@@ -1,14 +1,27 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { test, mock, afterEach } from 'node:test';
-import { makeSampleTrip, type GenerationNotification } from '@tripweaver/shared';
+import { makeSampleTrip, SHARE_POSTER_URL_PATTERN, type GenerationNotification } from '@tripweaver/shared';
 import { buildTripSharePrompt } from '../lib/tripSharePrompt';
 import { encodeShareImage, generateShareImage } from '../integrations/imageGeneration';
 import { readImageProviders } from '../env';
 import { createTripShareImageService } from '../services/tripShareImageService';
-import type { SharePosterStore } from '../services/sharePosterStore';
+import { sharePosterUrl, type SharePosterStore } from '../services/sharePosterStore';
 
 type GeneratedPoster = Awaited<ReturnType<typeof generateShareImage>>;
+
+test('成品 URL 前缀跟随 MEDIA_BASE_URL，两种前缀都通过共享校验', () => {
+  const fileName = `${'a'.repeat(64)}.png`;
+  const sameOrigin = sharePosterUrl(fileName, '/media');
+  const cdn = sharePosterUrl(fileName, 'https://media.sakiiko.com/media');
+  assert.equal(sameOrigin, `/media/share-posters/${fileName}`);
+  assert.equal(cdn, `https://media.sakiiko.com/media/share-posters/${fileName}`);
+  const pattern = new RegExp(SHARE_POSTER_URL_PATTERN);
+  assert.ok(pattern.test(sameOrigin) && pattern.test(cdn), 'CDN 前缀必须仍被 TripShareImageResponseSchema 接受');
+  assert.ok(!pattern.test('/media/share-posters/not-a-hash.png'), '文件名必须是内容 sha256');
+  assert.ok(!pattern.test('/media/xhs/杭州/00.webp'), '其他媒体路径不得冒名为成品');
+  assert.ok(!pattern.test(`${cdn}?v=1`), '不得带查询串（否则与库里的文件名对不上）');
+});
 
 const png = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a7hQAAAAASUVORK5CYII=';
 /** suffix 让每次生成的字节不同，从而得到不同的内容寻址 URL */

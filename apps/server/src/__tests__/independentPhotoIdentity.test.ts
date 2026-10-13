@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { after, test } from 'node:test';
 import { randomUUID } from 'node:crypto';
+import { createLocalMediaStore } from '../lib/mediaStore';
 import { mkdtemp, mkdir, writeFile, rm, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -29,6 +30,7 @@ after(() => pool.end());
 async function fixture() {
   assert.match(process.env.DATABASE_URL ?? '', /place_identity_test_\d+/);
   const client = await pool.connect(), root = await mkdtemp(path.join(tmpdir(), 'independent-photo-'));
+  const store = createLocalMediaStore(root);
   const city = `独立图库-${randomUUID()}`, ids = [randomUUID(), randomUUID(), randomUUID()];
   const names = ['沐咖啡（南街店）', '沐咖啡（北街店）', '沐咖啡'];
   await client.query('BEGIN');
@@ -59,7 +61,7 @@ async function fixture() {
       view: label, reason: '明确建筑主体', evidence: '画面与分店证据匹配',
     } })));
   const reviewed: ReviewedCatalog[] = [{ version: PHOTO_REVIEW_VERSION, city, name: names[2]!, aliases: [], entries: reviewedEntries }];
-  const load = () => loadIndependentPhotoSources(city, { dataRoot: root, library, reviewed });
+  const load = () => loadIndependentPhotoSources(city, { store, library, reviewed });
   const index = async () => createPlaceIdentityIndex((await client.query<RetrievedPlace>(
     `SELECT id,city,name,category,source,verified,payload,lat,lng,'[]'::jsonb aliases,'[]'::jsonb evidence
       FROM canonical_places WHERE city=$1`, [city])).rows);
@@ -69,10 +71,10 @@ async function fixture() {
       entityId: ids[[0, 0, 1, 0, 1][i]!]!, expectedRevision: 0 })) });
   const enqueues: string[] = [];
   const lookup = () => createGenerationPhotoLookup(city, index, { loadSources: load,
-    loadAssignments: () => loadIndependentPhotoAssignments(client, city), adoption: { dataRoot: root, mediaBase: '/media' },
+    loadAssignments: () => loadIndependentPhotoAssignments(client, city), adoption: { store, mediaBase: '/media' },
     enqueue: async (_city, name) => { enqueues.push(name); } });
   const close = async () => { await client.query('ROLLBACK'); client.release(); await rm(root, { recursive: true, force: true }); };
-  return { client, root, city, ids, names, selected, library, reviewed, load, index, makeDecision, lookup, close, asset, enqueues };
+  return { client, root, store, city, ids, names, selected, library, reviewed, load, index, makeDecision, lookup, close, asset, enqueues };
 }
 async function rejected(client: PoolClient, action: () => Promise<unknown>, pattern?: RegExp) {
   await client.query('SAVEPOINT rejected_case');
@@ -285,7 +287,7 @@ test('官方外链按URL指纹绑定，采用时仍上报；无绑定或实体�
     entry.sha256 = reviewDigest(entry.photo.url);
     let adoptions = 0;
     const lookup = () => createGenerationPhotoLookup(f.city, f.index, { loadSources: f.load,
-      loadAssignments: () => loadIndependentPhotoAssignments(f.client, f.city), adoption: { dataRoot: f.root,
+      loadAssignments: () => loadIndependentPhotoAssignments(f.client, f.city), adoption: { store: f.store,
         adoptUnsplash: async () => { adoptions++; return true; } } });
     assert.equal(await lookup()(f.names[0]!), null); assert.equal(adoptions, 0);
     const decision = await f.makeDecision(); decision.images = [decision.images[3]!];

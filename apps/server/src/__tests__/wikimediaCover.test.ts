@@ -4,6 +4,7 @@ import test from 'node:test';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { createLocalMediaStore } from '../lib/mediaStore';
 import { cacheWikiImage, downloadWikiImage } from '../integrations/wikimedia/imageCache';
 import { createWikiCoverLookup, pickCover, verifyWikiImage, wikiTitleMatches, type CoverQuery } from '../integrations/wikimedia/cover';
 
@@ -59,6 +60,7 @@ test('适配器：搜索后按坐标核对，命中返回缩略图且第二次�
   const original = globalThis.fetch;
   const root = await mkdtemp(path.join(tmpdir(), 'wiki-cache-'));
   const mediaRoot = path.join(root, 'media/wikimedia');
+  const store = createLocalMediaStore(root);
   const urls: string[] = [];
   globalThis.fetch = (async (input: string | URL | Request) => {
     const url = String(input);
@@ -80,13 +82,13 @@ test('适配器：搜索后按坐标核对，命中返回缩略图且第二次�
   }) as typeof fetch;
 
   try {
-    const lookup = createWikiCoverLookup(8, 0, url => cacheWikiImage(url, mediaRoot), { dataRoot: root });
+    const lookup = createWikiCoverLookup(8, 0, url => cacheWikiImage(url, store), { store });
     const actual = await lookup.coverFor(query);
     assert.match(actual!, /^\/media\/wikimedia\/[a-f0-9]{64}\.jpg$/);
     assert.deepEqual(await readFile(path.join(mediaRoot, path.basename(actual!))), Buffer.from([0xff, 0xd8, 0xff, 0xe0]));
     assert.equal(JSON.parse(await readFile(path.join(mediaRoot, path.basename(actual!) + '.json'), 'utf8')).source, thumb + '?palace');
     assert.equal(await lookup.coverFor(query), actual);
-    const restored = createWikiCoverLookup(0, 0, async () => { throw new Error('不得访问图源'); }, { dataRoot: root });
+    const restored = createWikiCoverLookup(0, 0, async () => { throw new Error('不得访问图源'); }, { store });
     assert.deepEqual(await restored.cachedPhotosFor?.(query), [{ url: actual }]);
     assert.equal(await restored.cachedPhotosFor?.({ ...query, lng: query.lng + 1 }), null, '只读缓存不能复用同名异地照片');
     assert.equal(await restored.coverFor({ ...query, name: ' 故宫博物院 ' }), actual, '新实例、不同内存缓存键与零请求预算仍复用持久结果');

@@ -76,6 +76,44 @@ npm run dev                        # server:3001 + web:5173
 | `SEARCH_API_BASE_URL` | | 站点搜索端点，默认 `https://api.langsearch.com`；个人新配置留空时也使用该默认值，博查同族接口可改 URL+Key 切换 |
 | `SEARCH_DAILY_BUDGET` | | 全站搜索调用日额度（默认 500，超出自动降级） |
 | `SSRF_ALLOWLIST` | | BYOK baseUrl 私网豁免（站长自有 Ollama 等） |
+| `MEDIA_STORE` | | 图片与图源索引的存储后端：`local`（默认，宿主机 `./data`）或 `s3`（Cloudflare R2 / MinIO / 任意 S3，桶内布局与 `data/` 一致）。改这一个值即切换读写两侧，不用重导数据库 |
+| `MEDIA_S3_ENDPOINT` / `MEDIA_S3_BUCKET` / `MEDIA_S3_ACCESS_KEY_ID` / `MEDIA_S3_SECRET_ACCESS_KEY` / `MEDIA_S3_REGION` | `MEDIA_STORE=s3` 时必填 | endpoint 只到域名层级（R2：`https://<account_id>.r2.cloudflarestorage.com`）；region 留空即 `auto`。缺任一项启动即报错 |
+| `MEDIA_BASE_URL` | | 展示用 URL 前缀，默认 `/media`（同源）。挂 CDN 时填完整前缀，R2 自定义域名映射桶根所以是 `https://media.example.com/media` |
+
+### 图片存储（可选：对象存储 + CDN）
+
+默认图片落在宿主机 `./data/media`，由容器**只读挂载**并在 `/media/` 下托管 —— 图片不随镜像发布，首次部署或上游重导后需自行同步（`rsync -a --delete data/media/ user@host:/path/to/deploy/data/media/`）。
+
+想免掉这一步、并让线上运行时缓存的新图（Pexels / 维基）能真正落盘，可改用 S3 兼容对象存储（以 Cloudflare R2 为例）：
+
+```bash
+# .env
+MEDIA_STORE=s3
+MEDIA_S3_ENDPOINT=https://<account_id>.r2.cloudflarestorage.com
+MEDIA_S3_BUCKET=tripweaver-media
+MEDIA_S3_ACCESS_KEY_ID=...
+MEDIA_S3_SECRET_ACCESS_KEY=...
+MEDIA_BASE_URL=https://media.example.com/media   # R2 自定义域名映射桶根，/media 是 key 的一部分
+```
+
+在有仓库的机器上先迁移再切换（镜像部署的机器没有 `tsx`；预演不写入，`--apply` 才上传）：
+
+```bash
+node --import tsx apps/server/scripts/migrate-media-to-s3.mts
+node --import tsx apps/server/scripts/migrate-media-to-s3.mts --apply
+```
+
+迁移是幂等的（比对象 ETag 与本地文件 md5，一致则跳过），本地与线上各跑一遍即可补齐各自新增的文件。切换后宿主机 `data/` 不再被读写，建议**保留**作为回滚点：把 `MEDIA_STORE` 改回 `local` 并同步回目录即恢复。历史行程快照里的 `/media/...` 路径不需要改写。
+
+`MEDIA_BASE_URL` 同时决定海报成品的域名（海报也是内容寻址，库里只存文件名，换前缀不用动数据库）。海报走 CDN 后，浏览器点「下载」需要读跨域字节，所以桶要配一条 CORS 规则：`origins: ["*"]`、`methods: ["GET","HEAD"]`（图片本来就公开可读、请求不带凭据）。没配 CORS 时前端会自动退回同源 `/media/...`（服务端从同一个桶转发），功能不受影响；微信里「长按保存」走的是 `<img>`，不受影响。
+
+看用量（只读、不清理）：
+
+```bash
+node --import tsx apps/server/scripts/migrate-media-to-s3.mts --report
+```
+
+没有任何自动过期策略：唯一会被删的是「同一行程同一风格被替换掉的旧海报」。`media/remote-photos` 与 `photo-store/**` 只增不减，到接近免费额度时再考虑清理。
 
 ### GitHub 登录（可选）
 

@@ -88,12 +88,18 @@ else
   echo "⚠ pgvector 扩展未启用（不影响当前功能，RAG 接入前需排查）"
 fi
 
-# 库内景点封面（09-27）：数据库只存相对 key，图片本体在宿主机 ./data/media（只读挂载进容器）。
-# 图片不会随镜像发布，首次部署或上游重导后需自行同步：
-#   rsync -a --delete data/media/ user@host:/path/to/deploy/data/media/
+# 库内景点封面（09-27）：数据库只存相对 key，媒体与图源索引的存储由 MEDIA_STORE 决定。
+# local（默认）：图片在宿主机 ./data/media（只读挂载进容器），不随镜像发布，首次部署或
+#   上游重导后需自行同步：rsync -a --delete data/media/ user@host:/path/to/deploy/data/media/
+# s3：读写都走对象存储（先跑 apps/server/scripts/migrate-media-to-s3.mts，宿主机目录不再需要同步）。
 docker compose exec -T db psql -U postgres -d tripweaver -tAc \
   "SELECT count(*) FROM canonical_places WHERE payload ? 'coverImage'" \
-  | { read -r n; echo "✓ 库内景点封面=${n}（0 = 尚未导入；图片目录需同步到宿主机 ./data/media）"; }
+  | { read -r n; echo "✓ 库内景点封面=${n}（0 = 尚未导入）"; }
+if grep -qE '^MEDIA_STORE=s3[[:space:]]*$' .env 2>/dev/null; then
+  echo "✓ 媒体存储=对象存储（MEDIA_STORE=s3；对象是否齐备见 migrate-media-to-s3.mts 预演输出）"
+else
+  echo "  媒体存储=宿主机 ./data/media；新增图片需自行 rsync 到部署目录"
+fi
 
 docker compose exec -T db psql -U postgres -d tripweaver -tAc \
   "SELECT count(*) FROM canonical_places WHERE verified" \

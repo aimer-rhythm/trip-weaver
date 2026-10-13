@@ -7,6 +7,7 @@ import { Value } from '@sinclair/typebox/value';
 import beijing from '../data/photography/beijing-selected.json';
 import { createSelectedPhotoLibrary, selectedFirstLookup, SelectedLibrarySchema, type SelectedLibrary } from '../integrations/selectedPhotos';
 import { createReviewedCoverLookup, PHOTO_REVIEW_VERSION, reviewDigest, type PhotoAsset, type ReviewedPhoto } from '../integrations/reviewedPhotos';
+import { createLocalMediaStore } from '../lib/mediaStore';
 
 function asset(id: string): SelectedLibrary['places'][number]['photos'][number] {
   return { photo: { url: `/media/remote-photos/${id}.jpg`, attribution: {
@@ -20,25 +21,26 @@ function library(photos: ReturnType<typeof asset>[] = []): SelectedLibrary {
 }
 test('人工选图优先，只有一张也不混入模型图；损坏图片补位，别名共用结果', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'selected-photos-'));
+  const store = createLocalMediaStore(root);
   try {
     await mkdir(path.join(root, 'media/remote-photos'), { recursive: true });
     const bytes = Buffer.from([255, 216, 255, 7, 8, 9]);
     const chosen = asset('chosen'); chosen.sha256 = reviewDigest(bytes);
     await writeFile(path.join(root, chosen.photo.url.slice(1)), bytes);
-    const selected = createSelectedPhotoLibrary('北京', { library: library([asset('missing'), chosen]), dataRoot: root });
+    const selected = createSelectedPhotoLibrary('北京', { library: library([asset('missing'), chosen]), store });
     let fallbackCalls = 0, enqueues = 0;
     const lookup = selectedFirstLookup(selected, async () => { fallbackCalls++; return null; }, async () => { enqueues++; });
     assert.equal((await lookup('天坛'))?.coverUrl, chosen.photo.url);
     assert.equal((await lookup('天坛公园（上午）'))?.photos?.length, 1);
     assert.equal(fallbackCalls, 0);
     assert.equal(enqueues, 0);
-    assert.equal(await createSelectedPhotoLibrary('南京', { library: library([chosen]), dataRoot: root }).coverFor('天坛'), null);
+    assert.equal(await createSelectedPhotoLibrary('南京', { library: library([chosen]), store }).coverFor('天坛'), null);
     assert.equal(await selected.coverFor('天坛和故宫'), null);
-    const blocked = createSelectedPhotoLibrary('北京', { library: library([chosen]), dataRoot: root, acceptPlace: () => false });
+    const blocked = createSelectedPhotoLibrary('北京', { library: library([chosen]), store, acceptPlace: () => false });
     assert.equal(await blocked.coverFor('天坛'), null, '命中旧别名也必须校验实际目录主体');
     assert.equal(await blocked.coverFor('天坛公园（上午）'), null, '去括号回退不能绕过主体治理');
     await writeFile(path.join(root, chosen.photo.url.slice(1)), Buffer.from('changed'));
-    const broken = createSelectedPhotoLibrary('北京', { library: library([chosen]), dataRoot: root });
+    const broken = createSelectedPhotoLibrary('北京', { library: library([chosen]), store });
     const seen: string[] = [];
     const missing = selectedFirstLookup(broken, async name => { seen.push(name); return null; }, async name => { seen.push(name); });
     assert.equal(await missing('天坛'), null);

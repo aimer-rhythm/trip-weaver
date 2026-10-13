@@ -302,7 +302,7 @@ resolveLlmConfig(userId):
 
 ## 10. 开源工程与部署（v0.3 新增）
 
-- **Docker Compose**：`app`（多阶段构建：web build → server 托管）+ `db`（`pgvector/pgvector:pg16`）。app 只绑 `127.0.0.1:${APP_PORT:-3001}`，由宿主机前置反代转发（`nginx.host.conf` 含 SSE 关键参数）；容器化内置反代场景见 `docker-compose.release.yml`。数据卷：`pg_data`（PostgreSQL 数据目录）。
+- **Docker Compose**：`app`（多阶段构建：web build → server 托管）+ `db`（`pgvector/pgvector:pg16`）。app 只绑 `127.0.0.1:${APP_PORT:-3001}`，由宿主机前置反代转发（`nginx.host.conf` 含 SSE 关键参数）；容器化内置反代场景见 `docker-compose.release.yml`。数据卷：`pg_data`（PostgreSQL 数据目录）；媒体与图源索引默认在宿主机 `./data`（`data/media` 只读挂载、`data/media/share-posters` 可写子挂载），`MEDIA_STORE=s3` 时不再使用。
 - **环境变量**（`.env.example` 全量注释）：
 
 | 变量 | 说明 |
@@ -318,6 +318,7 @@ resolveLlmConfig(userId):
 | `TIANDITU_KEY` / `TIANDITU_DAILY_BUDGET` | 天地图 Web 服务 Key（`tk`）。**两家互补、无切换开关**：地点搜索固定天地图；路线 + 地理编码高德优先、缺 `AMAP_KEY` 时用它 / 天地图全站日额度（默认 150，与高德分别计数） |
 | `SEARCH_API_KEY` / `SEARCH_API_BASE_URL` / `SEARCH_DAILY_BUDGET` | Web 搜索 Key（可留空=该源降级）/ 端点（默认 LangSearch，博查同族可切）/ 全站日额度（默认 500） |
 | `SSRF_ALLOWLIST` | 逗号分隔的内网豁免地址 |
+| `MEDIA_STORE` / `MEDIA_S3_*` / `MEDIA_BASE_URL` | 图片与图源索引（`data/photo-store`）的存储后端：`local`（默认，宿主机 `data/`，容器只读挂载 `data/media`）或 `s3`（R2 / MinIO / S3，桶内 key 与 `data/` 下的相对路径一一对应）。`MEDIA_S3_ENDPOINT` / `_BUCKET` / `_ACCESS_KEY_ID` / `_SECRET_ACCESS_KEY` 在 `s3` 模式下缺一即启动报错；`MEDIA_BASE_URL` 是封面与海报共用的展示前缀（默认 `/media` 同源，CDN 时填桶的自定义域名 + `/media`），切 CDN 只改它、不动库，但桶需配 `GET/HEAD` 的 CORS 供海报下载。迁移与用量报告：`apps/server/scripts/migrate-media-to-s3.mts`（默认预演，幂等；`--report` 只读看体积） |
 
 - **CI**（GitHub Actions）：push/PR → 三包 `tsc --noEmit` + `npm run build`。
 - **开源卫生**：MIT LICENSE；README（截图 + 三分钟部署指引 + 小红书小号声明 + 安全说明）；语义化版本 + CHANGELOG。

@@ -38,10 +38,8 @@ export const photoReviewQueue = createPhotoReviewQueue({
         const stored = createStoredPlaceLookups(job.city);
         const result: PhotoCandidate[] = [];
         for (const photo of await stored.photosFor(job.name).catch(() => [])) {
-          // MEDIA_BASE_URL可能指向CDN；此处还原本地key，仅后台读取原文件。
-          const base = env.mediaBaseUrl.replace(/\/+$/, '');
-          const url = base && photo.url.startsWith(`${base}/`) ? `/media/${photo.url.slice(base.length + 1)}` : photo.url;
-          result.push({ photo: { ...photo, url }, evidence: `${job.city} ${job.name} 导入图库候选，具体地点需重新核对` });
+          // 字节读取由 mediaObjectKey 统一解析（同源 /media/… 与 MEDIA_BASE_URL 前缀都支持），此处不重写 URL。
+          result.push({ photo, evidence: `${job.city} ${job.name} 导入图库候选，具体地点需重新核对` });
         }
         const amap = await stored.amapPhotoFor(job.name).catch(() => null) ??
           await createAmapPoiPhotoLookup(env.amapKey, 1).coverFor({ city: job.city, name: job.name });

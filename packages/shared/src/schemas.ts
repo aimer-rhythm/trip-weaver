@@ -171,9 +171,9 @@ export const TripShareImageRequestSchema = Type.Object({
   // 仅显式重新生成时绕过成品缓存，仍合并同一张图的进行中请求。
   regenerate: Type.Optional(Type.Boolean()),
 });
-// 成品已落盘并由 /media/ 静态托管，因此返回站内路径而非 base64。
-// 文件名是图片内容的 sha256，浏览器可长期缓存，前端也能直接用 <img src> 与 a[download]。
-export const SHARE_POSTER_URL_PATTERN = '^/media/share-posters/[a-f0-9]{64}\\.(png|jpg|webp)$';
+// 成品已落盘并由 /media/ 托管：默认返回站内路径，`MEDIA_BASE_URL` 指向 CDN 时返回其绝对地址。
+// 文件名是图片内容的 sha256，浏览器可长期缓存，前端也能直接用 <img src>；下载要自己取字节（跨域下 a[download] 会被忽略）。
+export const SHARE_POSTER_URL_PATTERN = '^(?:https?://[A-Za-z0-9.-]+(?::\\d+)?)?/media/share-posters/[a-f0-9]{64}\\.(png|jpg|webp)$';
 export const TripShareImageResponseSchema = Type.Object({
   url: Type.String({ maxLength: 256, pattern: SHARE_POSTER_URL_PATTERN }),
   mimeType: StringEnum(['image/png', 'image/jpeg', 'image/webp'] as const),

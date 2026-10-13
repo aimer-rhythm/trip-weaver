@@ -1,10 +1,10 @@
 // 单实例持久后台队列。入队仅写小文件；串行worker绝不由行程等待。
-import { readdir } from 'node:fs/promises';
-import path from 'node:path';
 import { Type, type Static } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
+import { dataStore } from '../lib/dataStore';
+import type { MediaStore } from '../lib/mediaStore';
 import { createSerialQueue } from '../lib/serialQueue';
-import { PHOTO_DATA, DAY } from './stockPhotoSupport';
+import { DAY } from './stockPhotoSupport';
 import { PHOTO_REVIEW_VERSION, reviewDigest, reviewName } from './reviewedPhotos';
 import { readPhotoJson, writePhotoJson } from './photoReviewIO';
 import { DEFAULT_PHOTO_REVIEW_DAILY_PLACES } from './photoReviewPolicy';
@@ -22,29 +22,31 @@ const JobSchema = Type.Object({
 export type PhotoReviewJob = Static<typeof JobSchema>;
 export function createPhotoReviewQueue(options: {
   run: (job: PhotoReviewJob, signal: AbortSignal) => Promise<void>;
-  dataRoot?: string; dailyLimit?: number; now?: () => number;
+  store?: MediaStore; dailyLimit?: number; now?: () => number;
   warn?: (message: string) => void;
 }) {
-  const root = options.dataRoot ?? PHOTO_DATA, dir = path.join(root, 'photo-store/review-jobs');
+  const store = options.store ?? dataStore, prefix = 'photo-store/review-jobs';
   const now = options.now ?? Date.now, serialize = createSerialQueue(0);
-  const fileFor = (city: string, name: string) => path.join(dir, reviewDigest(JSON.stringify([PHOTO_REVIEW_VERSION, reviewName(city), reviewName(name)])) + '.json');
+  const fileFor = (city: string, name: string) => `${prefix}/${reviewDigest(JSON.stringify([PHOTO_REVIEW_VERSION, reviewName(city), reviewName(name)]))}.json`;
   let active: Promise<void> | undefined, timer: ReturnType<typeof setInterval> | undefined, stopped = false, saturated = false;
   const controller = new AbortController();
   // 额度按“首次启动”计：重试既不占用额度，也不能把24h窗口向后推移。
   const counted = (job: PhotoReviewJob) => job.countedAt ?? job.lastStartedAt;
   async function jobs(): Promise<PhotoReviewJob[]> {
-    let files: string[];
-    try { files = await readdir(dir); } catch { return []; }
-    const rows = await Promise.all(files.filter(f => /^[a-f0-9]{64}\.json$/.test(f)).map(f => readPhotoJson(path.join(dir, f), 8192)));
+    let objects: { key: string; size: number }[];
+    try { objects = await store.list(prefix); } catch { return []; }
+    const rows = await Promise.all(objects
+      .filter(object => /^[a-f0-9]{64}\.json$/.test(object.key.slice(object.key.lastIndexOf('/') + 1)))
+      .map(object => readPhotoJson(object.key, 8192, store)));
     return rows.filter((v): v is PhotoReviewJob => Value.Check(JobSchema, v));
   }
   async function enqueue(city: string, name: string, priority: 'background' | 'trip' = 'background'): Promise<boolean> {
     return serialize(async () => {
-      const file = fileFor(city, name), previous = await readPhotoJson(file, 8192);
+      const file = fileFor(city, name), previous = await readPhotoJson(file, 8192, store);
       if (Value.Check(JobSchema, previous) && (previous.state === 'queued' || previous.state === 'running' || now() - previous.updatedAt < DAY)) {
         // 提升等待任务，不修改退避时间/尝试数/运行租约；旧文件无 priority 按普通任务处理。
         if (priority === 'trip' && previous.priority !== 'trip' && (previous.state === 'queued' || previous.state === 'failed')) {
-          await writePhotoJson(file, { ...previous, priority });
+          await writePhotoJson(file, { ...previous, priority }, store);
         }
         return false;
       }
@@ -52,16 +54,16 @@ export function createPhotoReviewQueue(options: {
       if ((await jobs()).filter(j => j.state === 'queued' || j.state === 'running').length >= 200) return false;
       const job: PhotoReviewJob = { version: PHOTO_REVIEW_VERSION, city: city.trim(), name: name.trim(), priority, state: 'queued', attempts: 0, nextAt: now(), updatedAt: now(), lastStartedAt: 0 };
       if (!Value.Check(JobSchema, job)) return false;
-      await writePhotoJson(file, job);
+      await writePhotoJson(file, job, store);
       return true;
     });
   }
   async function retryNow(city: string, name: string): Promise<boolean> {
     return serialize(async () => {
-      const file = fileFor(city, name), job = await readPhotoJson(file, 8192);
+      const file = fileFor(city, name), job = await readPhotoJson(file, 8192, store);
       if (!Value.Check(JobSchema, job) || job.state !== 'failed' || job.attempts >= 3) return false;
       job.nextAt = now();
-      await writePhotoJson(file, job);
+      await writePhotoJson(file, job, store);
       return true;
     });
   }
@@ -87,7 +89,7 @@ export function createPhotoReviewQueue(options: {
         if (!next) return undefined;
         next.state = 'running'; next.attempts++; next.updatedAt = now(); next.lastStartedAt = now();
         next.countedAt ??= now();
-        await writePhotoJson(fileFor(next.city, next.name), next);
+        await writePhotoJson(fileFor(next.city, next.name), next, store);
         return next;
       });
       if (!job || stopped) return;
@@ -99,7 +101,7 @@ export function createPhotoReviewQueue(options: {
         options.warn?.('[photo-review] 后台补图未完成，已保留重试状态');
       }
       job.updatedAt = now();
-      await serialize(() => writePhotoJson(fileFor(job.city, job.name), job));
+      await serialize(() => writePhotoJson(fileFor(job.city, job.name), job, store));
     })().catch(() => { options.warn?.('[photo-review] 队列读写失败'); }).finally(() => { active = undefined; });
     return active;
   }

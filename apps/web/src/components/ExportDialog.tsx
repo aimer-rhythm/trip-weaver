@@ -55,7 +55,7 @@ export function ExportDialog({ trip, open, onClose }: { trip: Trip; open: boolea
       {showResult ? <div className="grid grid-cols-3 gap-2">
       <Button variant="plain" className={secondaryClass} onClick={() => { setStyle(resultStyle); clearError(); setView('styles'); }}><ShareIcon name="shuffle" />更换风格</Button>
       <Button variant="plain" className={secondaryClass} onClick={() => generate(true)}><ShareIcon name="refresh" />{error ? '重试生成' : '重新生成'}</Button>
-      <Button variant="plain" className={primaryClass} onClick={() => downloadShareImage(currentResult, trip.title)}>下载</Button>
+      <Button variant="plain" className={primaryClass} onClick={() => void downloadShareImage(currentResult, trip.title)}>下载</Button>
     </div> : <div className="px-1.5">
       <Button variant="plain" className={generateClass} onClick={() => generate()}>{error ? '重试生成' : '开始生成'}</Button>
       {currentResult && <Button variant="plain" className="mx-auto mt-2 block min-h-11 border-0 bg-transparent px-4 text-xs text-ink-muted hover:text-brand" onClick={() => { clearError(); setStyle(resultStyle); setView('result'); }}>返回已生成海报</Button>}

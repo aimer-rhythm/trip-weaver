@@ -5,10 +5,12 @@ import test, { after } from 'node:test';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import { createLocalMediaStore } from '../lib/mediaStore';
 import { createPexelsCoverLookup as createLookup, pickCover, pickPhotos, type PexelsPhoto } from '../integrations/pexels/cover';
 
 const dataRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'tripweaver-pexels-'));
-const createPexelsCoverLookup = (key: string, cap = 8, interval = 0) => createLookup(key, cap, interval, { dataRoot });
+const store = createLocalMediaStore(dataRoot);
+const createPexelsCoverLookup = (key: string, cap = 8, interval = 0) => createLookup(key, cap, interval, { store });
 after(async () => {
   assert.ok(path.resolve(dataRoot).startsWith(path.resolve(os.tmpdir()) + path.sep));
   await fs.rm(dataRoot, { recursive: true, force: true });

@@ -1,6 +1,7 @@
 // Unsplash API 选片只持久化元数据；图片必须沿用官方 hotlink，选用必须上报 download_location。
 import { Value } from '@sinclair/typebox/value';
 import { PoiPhotoSchema, type PoiPhoto } from '@tripweaver/shared';
+import type { MediaStore } from '../../lib/mediaStore';
 import {
   matchesStockPlace, object, photoKey, readStockCache, safePhotoUrl, stockPhotoBudget,
   stockPhotoScore, stockPhotoSearch, string, writeStockCache, type StockPhotoLookup, type StockPhotoQuery,
@@ -55,13 +56,13 @@ export function pickUnsplashPhotos(value: unknown, query: StockPhotoQuery): Sele
   return selections(ranked.map(row => row.selection), query);
 }
 
-export function createUnsplashCoverLookup(apiKey: string, requestsLeft = 12, options: { dataRoot?: string } = {}): StockPhotoLookup {
+export function createUnsplashCoverLookup(apiKey: string, requestsLeft = 12, options: { store?: MediaStore } = {}): StockPhotoLookup {
   const budget = stockPhotoBudget('unsplash', requestsLeft);
   const headers = { Authorization: `Client-ID ${apiKey}`, 'Accept-Version': 'v1' };
   // 一个生成任务内的同名采用只上报一次；下一任务复用元数据时重新记一次采用。
   const pending = new Map<string, Promise<PoiPhoto[]>>();
   const savedFor = async (query: StockPhotoQuery): Promise<Selection[] | null> => {
-    const saved = await readStockCache('unsplash-places', photoKey(query), options.dataRoot, Infinity);
+    const saved = await readStockCache('unsplash-places', photoKey(query), options.store, Infinity);
     return saved === undefined ? null : selections(saved, query);
   };
   const cachedPhotosFor = async (query: StockPhotoQuery) => {
@@ -76,13 +77,13 @@ export function createUnsplashCoverLookup(apiKey: string, requestsLeft = 12, opt
       try {
         let chosen = await savedFor(query);
         if (chosen === null) {
-          let cached = await readStockCache('unsplash-search', key, options.dataRoot);
+          let cached = await readStockCache('unsplash-search', key, options.store);
           if (cached === undefined) {
             const params = new URLSearchParams({ query: stockPhotoSearch(query), per_page: '20', content_filter: 'high' });
             const body = object(await budget.json(`https://api.unsplash.com/search/photos?${params}`, headers));
             if (!Array.isArray(body.results)) throw new Error('invalid photo results');
             cached = pickUnsplashPhotos(body.results, query);
-            await writeStockCache('unsplash-search', key, cached, options.dataRoot);
+            await writeStockCache('unsplash-search', key, cached, options.store);
           }
           chosen = selections(cached, query);
         }
@@ -94,7 +95,7 @@ export function createUnsplashCoverLookup(apiKey: string, requestsLeft = 12, opt
           } catch { /* 上报失败的照片不进入本次行程，下一任务可以重试。 */ }
         }
         // 保留稳定顺序和整组选择，避免暂时上报失败永久删掉备选。
-        if (adopted.length) await writeStockCache('unsplash-places', key, chosen, options.dataRoot);
+        if (adopted.length) await writeStockCache('unsplash-places', key, chosen, options.store);
         return adopted.map(row => row.photo);
       } catch {
         console.warn('[unsplash-cover] 图源暂不可用，跳过本次选片');

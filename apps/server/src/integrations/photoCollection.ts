@@ -1,13 +1,13 @@
 // 有界跨源采集及视觉审核；仅后台worker/预热CLI调用。
-import path from 'node:path';
-import { readFile } from 'node:fs/promises';
+import { dataStore, mediaObjectKey } from '../lib/dataStore';
+import type { MediaStore } from '../lib/mediaStore';
 import { Value } from '@sinclair/typebox/value';
 import { Type } from '@sinclair/typebox';
 import type { PoiPhoto } from '@tripweaver/shared';
 import { PoiPhotoSchema, PhotoAttributionSchema } from '@tripweaver/shared';
 import { createCuratedCoverLookup } from './curatedPhotos';
 import { saveRemotePhoto } from './photoStore';
-import { object, string, PHOTO_DATA, safePhotoUrl, stockPhotoBudget, stockPhotoSearch } from './stockPhotoSupport';
+import { object, string, safePhotoUrl, stockPhotoBudget, stockPhotoSearch } from './stockPhotoSupport';
 import { PHOTO_REVIEW_PROMPT, PHOTO_REVIEW_VERSION, VisualReviewSchema, reviewDigest, reviewName,
   validReviewedAttribution, writeReviewedCatalog, type ReviewedPhoto, type VisualReview } from './reviewedPhotos';
 import { photoMime, photoResponseBytes, readPhotoJson, writePhotoJson } from './photoReviewIO';
@@ -57,19 +57,19 @@ export function sourceCandidates(provider: string, raw: unknown): PhotoCandidate
 }
 
 export async function collectPhotoCandidates(city: string, name: string, config: PhotoCollectionConfig, options: {
-  dataRoot?: string; signal: AbortSignal; supplemental?: () => Promise<PhotoCandidate[]>;
+  store?: MediaStore; signal: AbortSignal; supplemental?: () => Promise<PhotoCandidate[]>;
 }): Promise<PhotoCandidate[]> {
-  const root = options.dataRoot ?? PHOTO_DATA, query = stockPhotoSearch({ city, name });
+  const store = options.store ?? dataStore, query = stockPhotoSearch({ city, name });
   const output: PhotoCandidate[] = [];
-  const curated = await createCuratedCoverLookup(city)(name);
+  const curated = await createCuratedCoverLookup(city, { store })(name);
   for (const photo of curated?.photos ?? []) output.push({ photo, evidence: `${city} ${name}；既有图库来源，必须重新核对实际主体；${photo.attribution?.sourceUrl ?? ''}` });
   let successes = 0;
   for (const provider of ['pexels', 'pixabay', 'unsplash', 'commons'] as const) {
     if (options.signal.aborted) throw new Error('photo collection cancelled');
     if (provider === 'pexels' && !config.pexelsKey || provider === 'pixabay' && !config.pixabayKey || provider === 'unsplash' && !config.unsplashKey) continue;
-    const cache = path.join(root, 'photo-store/review-search', reviewDigest(JSON.stringify([PHOTO_REVIEW_VERSION, provider, city, name])) + '.json');
+    const cache = `photo-store/review-search/${reviewDigest(JSON.stringify([PHOTO_REVIEW_VERSION, provider, city, name]))}.json`;
     try {
-      const saved = object(await readPhotoJson(cache));
+      const saved = object(await readPhotoJson(cache, undefined, store));
       let candidates: PhotoCandidate[];
       if (typeof saved.at === 'number' && Date.now() - saved.at < 86400000 && Array.isArray(saved.candidates)) {
         // 缓存仍通过下游完整校验，不能直接进入正式图库。
@@ -92,7 +92,7 @@ export async function collectPhotoCandidates(city: string, name: string, config:
           provider === 'pixabay' && !Array.isArray(data.hits) || provider === 'unsplash' && !Array.isArray(data.results) ||
           provider === 'commons' && !('batchcomplete' in data) && !('query' in data)) throw new Error('invalid photo search response');
         candidates = sourceCandidates(provider, raw);
-        await writePhotoJson(cache, { at: Date.now(), candidates });
+        await writePhotoJson(cache, { at: Date.now(), candidates }, store);
       }
       output.push(...candidates.slice(0, 3)); successes++;
     } catch { /* 来源失败不阻止其他来源；没有任何成功来源时重试。密钥可能在URL中，不能打印原始异常。 */ }
@@ -136,10 +136,10 @@ export async function requestVisualReview(config: PhotoCollectionConfig, city: s
 }
 
 export async function reviewPhotoCandidates(city: string, name: string, candidates: PhotoCandidate[], config: PhotoCollectionConfig, options: {
-  dataRoot?: string; signal: AbortSignal;
+  store?: MediaStore; signal: AbortSignal;
   review?: typeof requestVisualReview;
 }): Promise<{ reviewed: number; failed: number }> {
-  const root = options.dataRoot ?? PHOTO_DATA, entries: ReviewedPhoto[] = [];
+  const store = options.store ?? dataStore, entries: ReviewedPhoto[] = [];
   let failed = 0;
   const failures: { source: string; stage: string }[] = [];
   for (const candidate of candidates.slice(0, 18)) {
@@ -159,36 +159,39 @@ export async function reviewPhotoCandidates(city: string, name: string, candidat
       else {
         if (!photo.url.startsWith('/media/')) {
           stage = 'download';
-          const saved = await saveRemotePhoto(photo, root); if (!saved) throw new Error('photo download unavailable'); photo = saved;
+          const saved = await saveRemotePhoto(photo, store); if (!saved) throw new Error('photo download unavailable'); photo = saved;
         }
         // 下游目录只准固定媒体路径，禁止读取任意本地文件。
         const { safeImageKey } = await import('../lib/imageGallery');
         const relative = photo.url.slice('/media/'.length);
         if (!(safeImageKey(relative) || /^(remote-photos|wikimedia)\/[a-f0-9]{64}\.(jpg|png)$/.test(relative))) continue;
         stage = 'local-image';
-        const bytes = await readFile(path.join(root, 'media', relative));
+        const objectKey = mediaObjectKey(relative);
+        if (!objectKey) continue;
+        const bytes = await store.get(objectKey);
+        if (!bytes) continue;
         const mime = photoMime(bytes); if (!mime || bytes.length > 8 * 1024 * 1024) continue;
         sha256 = reviewDigest(bytes); image = `data:${mime};base64,${bytes.toString('base64')}`;
       }
       const key = reviewDigest(JSON.stringify([PHOTO_REVIEW_VERSION, reviewDigest(PHOTO_REVIEW_PROMPT), config.model, config.baseUrl, reviewName(city), reviewName(name), sha256, candidate.evidence, credit?.sourceUrl]));
-      const file = path.join(root, 'photo-store/visual-reviews', `${key}.json`);
-      let review = await readPhotoJson(file, 16384);
+      const reviewKey = `photo-store/visual-reviews/${key}.json`;
+      let review = await readPhotoJson(reviewKey, 16384, store);
       if (!Value.Check(VisualReviewSchema, review)) {
         stage = 'visual-model';
         review = await (options.review ?? requestVisualReview)(config, city, name, candidate, image, options.signal);
         if (!Value.Check(VisualReviewSchema, review)) throw new Error('invalid review');
         stage = 'cache-write';
-        await writePhotoJson(file, review);
+        await writePhotoJson(reviewKey, review, store);
       }
       entries.push({ ...shell, photo, sha256, review });
     } catch { failed++; failures.push({ source: candidate?.photo?.attribution?.source ?? candidate?.provider ?? 'unknown', stage }); }
   }
-  await writePhotoJson(path.join(root, 'photo-store/review-reports', reviewDigest(JSON.stringify([city, name])) + '.json'), {
+  await writePhotoJson(`photo-store/review-reports/${reviewDigest(JSON.stringify([city, name]))}.json`, {
     version: PHOTO_REVIEW_VERSION, city, name, at: new Date().toISOString(), reviewed: entries.length, failed, failures,
-  });
+  }, store);
   // 全部失败不覆盖已有图库；审核通过/拒绝都保留依据，失败由队列重试。
   if (failed && !entries.length) throw new Error('photo review unavailable');
-  if (entries.length || !candidates.length) await writeReviewedCatalog({ version: PHOTO_REVIEW_VERSION, city, name, aliases: [], entries }, root);
+  if (entries.length || !candidates.length) await writeReviewedCatalog({ version: PHOTO_REVIEW_VERSION, city, name, aliases: [], entries }, store);
   if (failed) throw new Error('photo review partially failed');
   return { reviewed: entries.length, failed };
 }

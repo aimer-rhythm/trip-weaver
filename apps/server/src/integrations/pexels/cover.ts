@@ -6,6 +6,8 @@
 // 条款（API Guidelines）：每次 API 请求都要求展示指向 Pexels 的显眼链接（前端在照片放大弹窗内用 PhotoCredit 署名），
 // 限流 200 次/小时、20000 次/月。这里用进程内小时窗口自我约束，避免把限流打穿。
 import { createSerialQueue } from '../../lib/serialQueue';
+import { storeScope } from '../../lib/dataStore';
+import type { MediaStore } from '../../lib/mediaStore';
 import { TtlCache } from '../../lib/ttlCache';
 import { normalizePlaceKey } from '../../lib/placeKey';
 import type { PoiPhoto } from '@tripweaver/shared';
@@ -151,14 +153,14 @@ export function createPexelsCoverLookup(
   apiKey: string,
   requestsLeft = MAX_PER_TASK,
   minIntervalMs = MIN_INTERVAL_MS,
-  options: { dataRoot?: string } = {},
+  options: { store?: MediaStore } = {},
 ): PexelsCoverLookup {
   const run = createSerialQueue(minIntervalMs);
   let remaining = requestsLeft;
   const pending = new Map<string, Promise<PoiPhoto[]>>();
-  const cachedPhotosFor = (query: PexelsCoverQuery) => readPhotoSelection(query.city, query.name, options.dataRoot);
+  const cachedPhotosFor = (query: PexelsCoverQuery) => readPhotoSelection(query.city, query.name, options.store);
   const photosFor = async (query: PexelsCoverQuery): Promise<PoiPhoto[]> => {
-    const cacheKey = JSON.stringify([options.dataRoot ?? '', query.city.trim().toLowerCase(), query.name.trim().toLowerCase()]);
+    const cacheKey = JSON.stringify([storeScope(options.store), query.city.trim().toLowerCase(), query.name.trim().toLowerCase()]);
     let task = pending.get(cacheKey);
     if (!task) {
       task = (async () => {
@@ -175,11 +177,11 @@ export function createPexelsCoverLookup(
           const candidates = await run(() => lookup(query.name, apiKey));
           const photos: PoiPhoto[] = [];
           for (const candidate of candidates) {
-            const photo = await saveRemotePhoto(candidate, options.dataRoot);
+            const photo = await saveRemotePhoto(candidate, options.store);
             if (photo && !photos.some(p => p.url === photo.url)) photos.push(photo);
             if (photos.length === 3) break;
           }
-          if (photos.length) await writePhotoSelection(query.city, query.name, photos, options.dataRoot);
+          if (photos.length) await writePhotoSelection(query.city, query.name, photos, options.store);
           // 确认没有候选才负缓存；图片下载失败不固化为空。
           if (photos.length || !candidates.length) cache.set(cacheKey, photos);
           return photos;

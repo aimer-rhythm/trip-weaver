@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { Value } from '@sinclair/typebox/value';
+import { createLocalMediaStore, type MediaStore } from '../lib/mediaStore';
 import { PoiPhotoSchema } from '@tripweaver/shared';
 import { createUnsplashCoverLookup, pickUnsplashPhotos } from '../integrations/unsplash/cover';
 import { createPixabayCoverLookup, pickPixabayPhotos } from '../integrations/pixabay/cover';
@@ -19,10 +20,11 @@ const unsplash = (id = 'one') => ({ id, width: 1600, height: 900, description: '
 const pixabay = (id = 1) => ({ id, type: 'photo', tags: 'Forbidden City, Beijing, sunset', user: 'Bob', imageWidth: 1600, imageHeight: 900,
   pageURL: `https://pixabay.com/photos/forbidden-city-beijing-${id}/`, largeImageURL: `https://pixabay.com/get/${id}.jpg` });
 const json = (value: unknown) => new Response(JSON.stringify(value), { headers: { 'content-type': 'application/json' } });
-async function fixture(run: (root: string) => Promise<void>) {
+async function fixture(run: (root: string, store: MediaStore) => Promise<void>) {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'tripweaver-stock-'));
+  const store = createLocalMediaStore(root);
   const previous = globalThis.fetch;
-  try { await run(root); }
+  try { await run(root, store); }
   finally {
     globalThis.fetch = previous;
     assert.ok(path.resolve(root).startsWith(path.resolve(os.tmpdir()) + path.sep));
@@ -82,7 +84,7 @@ test('英文查询词命中英文元数据；同城不得互相顶替，异城�
   assert.equal(matchesStockPlace('Chen Clan Ancestral Hall Foshan', { city: '广州', name: '陈家祠' }), false, '同城证据不符不得通过');
 });
 
-test('Unsplash保留原始hotlink与ixid，只在采用时上报；跨实例复用元数据但重新计采用', async () => fixture(async root => {
+test('Unsplash保留原始hotlink与ixid，只在采用时上报；跨实例复用元数据但重新计采用', async () => fixture(async (root, store) => {
   const calls: string[] = [];
   globalThis.fetch = async (input, init) => {
     const url = new URL(String(input)); calls.push(url.pathname);
@@ -91,7 +93,7 @@ test('Unsplash保留原始hotlink与ixid，只在采用时上报；跨实例复�
     assert.equal(url.hostname, 'api.unsplash.com', '不得请求或保存Unsplash图片字节');
     return url.pathname === '/search/photos' ? json({ results: [unsplash()] }) : json({ url: 'https://images.unsplash.com/unused' });
   };
-  const lookup = createUnsplashCoverLookup('test-key', 8, { dataRoot: root });
+  const lookup = createUnsplashCoverLookup('test-key', 8, { store });
   assert.equal(await lookup.cachedPhotosFor(query), null);
   assert.deepEqual(calls, []);
   const [first, same] = await Promise.all([lookup.photosFor(query), lookup.photosFor(query)]);
@@ -102,32 +104,32 @@ test('Unsplash保留原始hotlink与ixid，只在采用时上报；跨实例复�
   assert.match(first[0]!.attribution!.sourceUrl, /utm_source=tripweaver&utm_medium=referral/);
   assert.match(first[0]!.attribution!.licenseUrl, /utm_source=tripweaver&utm_medium=referral/);
   assert.deepEqual(calls, ['/search/photos', '/photos/one/download']);
-  const reused = createUnsplashCoverLookup('test-key', 4, { dataRoot: root });
+  const reused = createUnsplashCoverLookup('test-key', 4, { store });
   assert.deepEqual(await reused.cachedPhotosFor(query), first);
   assert.equal(calls.length, 2, '只读缓存不增加采用事件');
   assert.deepEqual(await reused.photosFor(query), first);
   assert.deepEqual(calls, ['/search/photos', '/photos/one/download', '/photos/one/download']);
   assert.equal(await fs.stat(path.join(root, 'media')).catch(() => null), null);
-  const disabled = createUnsplashCoverLookup('', 0, { dataRoot: root });
+  const disabled = createUnsplashCoverLookup('', 0, { store });
   assert.equal(await disabled.cachedPhotosFor(query), null);
   assert.deepEqual(await disabled.photosFor(query), []);
   assert.equal(calls.length, 3);
 }));
 
-test('Unsplash采用失败不输出该图片；后续任务从查询缓存重试，不重新搜索', async () => fixture(async root => {
+test('Unsplash采用失败不输出该图片；后续任务从查询缓存重试，不重新搜索', async () => fixture(async (root, store) => {
   let searches = 0, reports = 0, fail = true;
   globalThis.fetch = async input => {
     if (String(input).includes('/search/photos')) { searches++; return json({ results: [unsplash()] }); }
     reports++;
     return fail ? new Response('', { status: 503 }) : json({ url: 'unused' });
   };
-  assert.deepEqual(await createUnsplashCoverLookup('key', 4, { dataRoot: root }).photosFor(query), []);
+  assert.deepEqual(await createUnsplashCoverLookup('key', 4, { store }).photosFor(query), []);
   fail = false;
-  assert.equal((await createUnsplashCoverLookup('key', 4, { dataRoot: root }).photosFor(query)).length, 1);
+  assert.equal((await createUnsplashCoverLookup('key', 4, { store }).photosFor(query)).length, 1);
   assert.equal(searches, 1); assert.equal(reports, 2);
 }));
 
-test('Unsplash过滤恶意下载地址/错误身份/超长hotlink，优先横版且最多三张', async () => fixture(async root => {
+test('Unsplash过滤恶意下载地址/错误身份/超长hotlink，优先横版且最多三张', async () => fixture(async (root, store) => {
   const malicious = unsplash('evil'); malicious.links.download_location = 'https://127.0.0.1/photos/evil/download';
   const wrong = unsplash('wrong'); wrong.links.download_location = 'https://api.unsplash.com/photos/another/download';
   const huge = unsplash('huge'); huge.urls.regular += 'x'.repeat(300);
@@ -135,11 +137,11 @@ test('Unsplash过滤恶意下载地址/错误身份/超长hotlink，优先横版
   const picked = pickUnsplashPhotos([malicious, wrong, huge, portrait, unsplash('landscape'), unsplash('two'), unsplash('three')], query);
   assert.deepEqual(picked.map(row => row.id), ['landscape', 'two', 'three']);
   let calls = 0; globalThis.fetch = async () => { calls++; return json({}); };
-  assert.equal(await saveRemotePhoto({ url: unsplash().urls.regular }, root), null);
+  assert.equal(await saveRemotePhoto({ url: unsplash().urls.regular }, store), null);
   assert.equal(calls, 0, '通用图片存储器也拒绝Unsplash下载');
 }));
 
-test('Pixabay入选下载本地，跨实例/缺密钥/零预算复用；下载失败补位且最终最多三张', async () => fixture(async root => {
+test('Pixabay入选下载本地，跨实例/缺密钥/零预算复用；下载失败补位且最终最多三张', async () => fixture(async (root, store) => {
   let searches = 0, downloads = 0;
   globalThis.fetch = async (input, init) => {
     const url = new URL(String(input));
@@ -154,10 +156,10 @@ test('Pixabay入选下载本地，跨实例/缺密钥/零预算复用；下载�
     if (url.pathname === '/get/1.jpg') return new Response('', { status: 503 });
     return new Response(Buffer.concat([png, Buffer.from(url.pathname)]), { headers: { 'content-type': 'image/png' } });
   };
-  const first = await createPixabayCoverLookup('secret', 3, { dataRoot: root }).photosFor(query);
+  const first = await createPixabayCoverLookup('secret', 3, { store }).photosFor(query);
   assert.equal(first.length, 3); assert.equal(searches, 1); assert.equal(downloads, 4);
   assert.ok(first.every(photo => photo.url.startsWith('/media/remote-photos/') && Value.Check(PoiPhotoSchema, photo)));
-  const reused = createPixabayCoverLookup('', 0, { dataRoot: root });
+  const reused = createPixabayCoverLookup('', 0, { store });
   assert.deepEqual(await reused.cachedPhotosFor(query), first);
   assert.deepEqual(await reused.photosFor(query), first);
   assert.equal(searches, 1); assert.equal(downloads, 4);
@@ -166,32 +168,32 @@ test('Pixabay入选下载本地，跨实例/缺密钥/零预算复用；下载�
   assert.ok(!cached.includes('secret') && !cached.includes('key='));
 }));
 
-test('Pixabay空结果也缓存24h；到期后允许一次新搜索', async () => fixture(async root => {
+test('Pixabay空结果也缓存24h；到期后允许一次新搜索', async () => fixture(async (root, store) => {
   let calls = 0;
   globalThis.fetch = async () => { calls++; return json({ hits: [] }); };
-  for (let i = 0; i < 2; i++) assert.deepEqual(await createPixabayCoverLookup('key', 1, { dataRoot: root }).photosFor(query), []);
+  for (let i = 0; i < 2; i++) assert.deepEqual(await createPixabayCoverLookup('key', 1, { store }).photosFor(query), []);
   assert.equal(calls, 1);
   const dir = path.join(root, 'photo-store/pixabay-search'), file = path.join(dir, (await fs.readdir(dir))[0]!);
   const cached = JSON.parse(await fs.readFile(file, 'utf8'));
   cached.savedAt = Date.now() - DAY - 1; await fs.writeFile(file, JSON.stringify(cached));
-  await createPixabayCoverLookup('key', 1, { dataRoot: root }).photosFor(query);
+  await createPixabayCoverLookup('key', 1, { store }).photosFor(query);
   assert.equal(calls, 2);
 }));
 
-test('Pixabay图片失败重试复用24h结果；拒绝错误图源和插画', async () => fixture(async root => {
+test('Pixabay图片失败重试复用24h结果；拒绝错误图源和插画', async () => fixture(async (root, store) => {
   let searches = 0, fail = true;
   globalThis.fetch = async input => {
     if (String(input).includes('/api/')) { searches++; return json({ hits: [pixabay()] }); }
     return fail ? new Response('', { status: 503 }) : new Response(png, { headers: { 'content-type': 'image/png' } });
   };
-  assert.deepEqual(await createPixabayCoverLookup('key', 1, { dataRoot: root }).photosFor(query), []);
+  assert.deepEqual(await createPixabayCoverLookup('key', 1, { store }).photosFor(query), []);
   fail = false;
-  assert.equal((await createPixabayCoverLookup('key', 0, { dataRoot: root }).photosFor(query)).length, 1);
+  assert.equal((await createPixabayCoverLookup('key', 0, { store }).photosFor(query)).length, 1);
   assert.equal(searches, 1);
   assert.deepEqual(pickPixabayPhotos([{ ...pixabay(), type: 'illustration' }, { ...pixabay(), largeImageURL: 'https://evil.test/a.jpg' }], query), []);
 }));
 
-test('请求预算、响应字节上限及错误脱敏；缓存不含请求密钥', async () => fixture(async root => {
+test('请求预算、响应字节上限及错误脱敏；缓存不含请求密钥', async () => fixture(async (root, store) => {
   let calls = 0;
   globalThis.fetch = async input => { calls++; throw new Error(`failure ${String(input)}`); };
   const budget = stockPhotoBudget('pixabay', 1);
@@ -200,19 +202,19 @@ test('请求预算、响应字节上限及错误脱敏；缓存不含请求密�
   assert.equal(calls, 1);
   globalThis.fetch = async () => new Response('x'.repeat(1024 * 1024 + 1), { headers: { 'content-type': 'application/json' } });
   await assert.rejects(stockPhotoBudget('pixabay', 1).json('https://pixabay.com/api/'), /unavailable/);
-  await writeStockCache('pixabay-search', photoKey(query), [], root);
-  assert.deepEqual(await readStockCache('pixabay-search', photoKey(query), root), []);
-  assert.equal(await readStockCache('pixabay-search', photoKey({ ...query, city: '杭州' }), root), undefined);
+  await writeStockCache('pixabay-search', photoKey(query), [], store);
+  assert.deepEqual(await readStockCache('pixabay-search', photoKey(query), store), []);
+  assert.equal(await readStockCache('pixabay-search', photoKey({ ...query, city: '杭州' }), store), undefined);
 }));
 
-test('Pixabay并发查询合并；畸形响应不进入24h成功缓存', async () => fixture(async root => {
+test('Pixabay并发查询合并；畸形响应不进入24h成功缓存', async () => fixture(async (root, store) => {
   let calls = 0;
   globalThis.fetch = async () => { calls++; return json({ error: 'invalid result' }); };
-  const a = createPixabayCoverLookup('key', 2, { dataRoot: root });
-  const b = createPixabayCoverLookup('key', 2, { dataRoot: root });
+  const a = createPixabayCoverLookup('key', 2, { store });
+  const b = createPixabayCoverLookup('key', 2, { store });
   assert.deepEqual(await Promise.all([a.photosFor(query), b.photosFor(query)]), [[], []]);
   assert.equal(calls, 1);
-  assert.equal(await readStockCache('pixabay-search', photoKey(query), root), undefined);
+  assert.equal(await readStockCache('pixabay-search', photoKey(query), store), undefined);
   globalThis.fetch = async () => { calls++; return json({ hits: [] }); };
   await b.photosFor(query);
   assert.equal(calls, 2);

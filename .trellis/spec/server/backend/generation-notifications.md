@@ -126,5 +126,6 @@ Toast 保留现有桌面右上角/手机底部样式。原生 dialog 打开时�
 if (delivered.has(`${trip.id}:${style}`)) return;
 // 正确：成功 POST 按本次任务交付，GET 回显不产生交付事件。
 if (currentUserId !== userId || jobs.get(trip.id) !== running) return;
-try { downloadShareImage(image, trip.title); } catch { /* 保留成功成品与手动入口 */ }
+// 下载是异步取字节（可能是 CDN 地址）：等它返回再决定通知文案，别把没发起的下载写成已发起。
+try { downloadStarted = await downloadShareImage(image, trip.title); } catch { /* 保留成功成品与手动入口 */ }
 ```

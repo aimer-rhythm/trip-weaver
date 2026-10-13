@@ -1,11 +1,10 @@
 // 离线精选图库优先于自动召回：审核、身份、许可和本地文件均成立才提供封面。
 import { Type, type Static } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
-import { readFile, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { PhotoAttributionSchema, type ResearchPoi } from '@tripweaver/shared';
+import { dataStore, mediaObjectKey } from '../lib/dataStore';
+import type { MediaStore } from '../lib/mediaStore';
 import hangzhou from '../data/photography/hangzhou-curated.json';
 import beijing from '../data/photography/beijing-curated.json';
 
@@ -33,7 +32,6 @@ const LibrarySchema = Type.Object({
 export type CuratedPhoto = Static<typeof PhotoSchema>;
 export type CuratedLibrary = Static<typeof LibrarySchema>;
 export type CuratedCover = Required<Pick<ResearchPoi, 'coverUrl' | 'coverAttribution' | 'photos'>>;
-const mediaRoot = fileURLToPath(new URL('../../../../data/media/', import.meta.url));
 
 function allowedAttribution(photo: CuratedPhoto): boolean {
   const { source, sourceUrl, license, licenseUrl } = photo.attribution;
@@ -67,15 +65,16 @@ export function findCuratedPhotos(library: unknown, city: string, name: string):
 
 export function createCuratedCoverLookup(
   city: string,
-  options: { library?: unknown; mediaBase?: string; verify?: (photo: CuratedPhoto) => Promise<boolean> } = {},
+  options: { library?: unknown; mediaBase?: string; verify?: (photo: CuratedPhoto) => Promise<boolean>; store?: MediaStore } = {},
 ): (name: string) => Promise<CuratedCover | null> {
   const library = options.library ?? (key(city) === '北京' ? beijing : hangzhou);
   const base = (options.mediaBase ?? '/media').replace(/\/+$/, '');
+  const store = options.store ?? dataStore;
   const verify = options.verify ?? (async (photo: CuratedPhoto) => {
-    const file = path.join(mediaRoot, photo.key);
-    const info = await stat(file);
-    if (!info.isFile() || info.size > 4 * 1024 * 1024) return false;
-    const bytes = await readFile(file);
+    const objectKey = mediaObjectKey(photo.key);
+    if (!objectKey) return false;
+    const bytes = await store.get(objectKey);
+    if (!bytes || bytes.length > 4 * 1024 * 1024) return false;
     return bytes.toString('ascii', 0, 4) === 'RIFF' && bytes.toString('ascii', 8, 12) === 'WEBP' &&
       createHash('sha256').update(bytes).digest('hex') === photo.sha256;
   });

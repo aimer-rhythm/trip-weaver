@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { readMediaStoreConfig, type MediaStoreConfig, type MediaStoreMode } from './lib/mediaStore';
 import { DEFAULT_PHOTO_REVIEW_DAILY_PLACES } from './integrations/photoReviewPolicy';
 import { readAmapServiceBudgets } from './integrations/amap/services';
 import type { ImageGenerationConfig } from './integrations/imageGeneration';
@@ -141,6 +142,8 @@ export const env = {
   // 媒体静态资源 URL 前缀（09-27）：库内景点封面只存相对 key，由这里拼成可展示 URL。
   // 缺省 /media 即同源相对路径（images.ts 已挂载该前缀）；换对象存储只改这一个变量。
   mediaBaseUrl: str('MEDIA_BASE_URL', '/media').replace(/\/+$/, ''),
+  // 媒体与图源索引的存储后端（10-12）：默认本地 data/；填 s3 时读写都走对象存储
+  mediaStore: readMediaStoreConfig(process.env),
   masterKey,
   registrationMode,
   inviteCode,                                           // 仅 invite 模式使用

@@ -140,7 +140,7 @@ export function NotificationCenter({ userId }: { userId: string }) {
         if (!mounted.current) return;
         if (!Value.Check(TripShareImageResponseSchema, image)) throw new Error('图片暂时无法下载，请重试');
         if (isWeChat()) setPreview(image);
-        else downloadShareImage(image, item.title.replace(/ · 图片已生成$/, ''));
+        else if (!await downloadShareImage(image, item.title.replace(/ · 图片已生成$/, ''))) throw new Error('图片暂时无法下载，请重试');
       } else if (item.kind === 'success' && item.tripId) {
         let result: unknown;
         try { result = await api.get<unknown>(`/api/trips/${encodeURIComponent(item.tripId)}`); }

@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import { mkdtemp, rm, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
+import { createLocalMediaStore } from '../lib/mediaStore';
 import { createPhotoReviewQueue } from '../integrations/photoReviewQueue';
 import { reviewFirstLookup } from '../integrations/reviewedPhotos';
 
@@ -10,7 +11,7 @@ test('额度上限内允许全部地点，第上限+1个等待窗口释放', asy
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-budget-'));
   let at = 1_800_000_000_000, calls = 0;
   // 注入固定额度，避免边界用例耦合 DEFAULT_PHOTO_REVIEW_DAILY_PLACES 的数值。
-  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 50, now: () => at, run: async () => { calls++; } });
+  const queue = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 50, now: () => at, run: async () => { calls++; } });
   try {
     for (let i = 0; i < 51; i++) await queue.enqueue('杭州', `景点${i}`);
     for (let i = 0; i < 51; i++) await queue.tick();
@@ -24,7 +25,7 @@ test('额度上限内允许全部地点，第上限+1个等待窗口释放', asy
 test('旧队列任务提升行程优先级并跨重启保留，不改变退避与尝试数', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-priority-'));
   const at = 1_800_000_000_000, seen: string[] = [];
-  const first = createPhotoReviewQueue({ dataRoot: root, now: () => at, run: async () => {} });
+  const first = createPhotoReviewQueue({ store: createLocalMediaStore(root), now: () => at, run: async () => {} });
   try {
     await first.enqueue('北京', '预热');
     await first.enqueue('杭州', '西湖');
@@ -38,7 +39,7 @@ test('旧队列任务提升行程优先级并跨重启保留，不改变退避�
     assert.equal(await first.enqueue('杭州', '西湖', 'trip'), false);
     assert.deepEqual((await first.jobs()).find(j => j.name === '西湖'), { ...before, priority: 'trip' });
     await first.stop();
-    const restarted = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at,
+    const restarted = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 1, now: () => at,
       run: async job => { seen.push(job.name); throw new Error('失败'); } });
     try {
       await restarted.tick();
@@ -56,7 +57,7 @@ test('额度耗尽的窗口不被重试刷新，新地点等窗口滑出即可�
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-retry-window-'));
   let at = 1_800_000_000_000;
   const seen: string[] = [];
-  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at,
+  const queue = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 1, now: () => at,
     run: async job => { seen.push(job.name); if (job.name === '甲') throw new Error('源不可用'); } });
   try {
     await queue.enqueue('杭州', '甲');
@@ -76,7 +77,7 @@ test('重试不占用额度，也不刷新额度计数时间', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-retry-count-'));
   let at = 1_800_000_000_000;
   const start = at;
-  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at, run: async () => { throw new Error('源不可用'); } });
+  const queue = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 1, now: () => at, run: async () => { throw new Error('源不可用'); } });
   try {
     await queue.enqueue('杭州', '甲');
     await queue.tick();
@@ -95,7 +96,7 @@ test('额度耗尽只提醒一次，容量恢复后再次耗尽重新提醒', as
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-warn-'));
   let at = 1_800_000_000_000;
   const warnings: string[] = [];
-  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at,
+  const queue = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 1, now: () => at,
     run: async () => {}, warn: message => warnings.push(message) });
   const saturated = () => warnings.filter(m => m.includes('额度已满'));
   try {
@@ -127,11 +128,11 @@ test('跨请求去重、队列重建恢复、串行执行与每日有界处理',
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-queue-'));
   let at = 1_800_000_000_000, calls = 0;
   try {
-    const first = createPhotoReviewQueue({ dataRoot: root, now: () => at, run: async () => {} });
+    const first = createPhotoReviewQueue({ store: createLocalMediaStore(root), now: () => at, run: async () => {} });
     const queued = await Promise.all([first.enqueue('北京', '故宫'), first.enqueue('北京', '故宫')]);
     assert.deepEqual(queued, [true, false]);
     await first.stop();
-    const restarted = createPhotoReviewQueue({ dataRoot: root, now: () => at, dailyLimit: 1, run: async () => { calls++; } });
+    const restarted = createPhotoReviewQueue({ store: createLocalMediaStore(root), now: () => at, dailyLimit: 1, run: async () => { calls++; } });
     await Promise.all([restarted.tick(), restarted.tick()]);
     assert.equal(calls, 1);
     assert.equal((await restarted.jobs())[0]?.state, 'done');
@@ -146,7 +147,7 @@ test('跨请求去重、队列重建恢复、串行执行与每日有界处理',
 test('失败有退避，最多三次；不会因同地连续生成绕过退避', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-queue-fail-'));
   let at = 1_800_000_000_000, calls = 0;
-  const queue = createPhotoReviewQueue({ dataRoot: root, dailyLimit: 1, now: () => at, run: async () => { calls++; throw new Error('model unavailable'); } });
+  const queue = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 1, now: () => at, run: async () => { calls++; throw new Error('model unavailable'); } });
   try {
     await queue.enqueue('北京', '故宫'); await queue.tick();
     assert.equal(await queue.enqueue('北京', '故宫'), false);

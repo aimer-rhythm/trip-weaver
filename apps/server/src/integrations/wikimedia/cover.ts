@@ -10,6 +10,8 @@ import { TtlCache } from '../../lib/ttlCache';
 import { normalizePlaceKey } from '../../lib/placeKey';
 import { cacheWikiImage, downloadWikiImage } from './imageCache';
 import { readPhotoSelection, writePhotoSelection } from '../photoStore';
+import { storeScope } from '../../lib/dataStore';
+import type { MediaStore } from '../../lib/mediaStore';
 
 const API = 'https://zh.wikipedia.org/w/api.php';
 const USER_AGENT = 'Tripweaver/0.1 (open-source trip planner; https://github.com/aimer-rhythm/trip-weaver)';
@@ -98,10 +100,10 @@ export async function verifyWikiImage(url: string): Promise<boolean> {
   return (await downloadWikiImage(url)) !== null;
 }
 
-async function lookup(query: CoverQuery, deliver: typeof cacheWikiImage): Promise<string | null> {
+async function lookup(query: CoverQuery, deliver: typeof cacheWikiImage, store?: MediaStore): Promise<string | null> {
   // 搜索索引会漏掉同名词条。先直接查询原名与城市消歧名，身份和距离闸门不变。
   const direct = await lookupTitles([query.name, `${query.name} (${query.city})`], query);
-  if (direct) return deliver(direct);
+  if (direct) return deliver(direct, store);
   const search = new URLSearchParams({
     action: 'query',
     list: 'search',
@@ -115,7 +117,7 @@ async function lookup(query: CoverQuery, deliver: typeof cacheWikiImage): Promis
   if (!titles.length) return null;
 
   const selected = await lookupTitles(titles, query);
-  return selected ? deliver(selected) : null;
+  return selected ? deliver(selected, store) : null;
 }
 
 async function lookupTitles(titles: string[], query: CoverQuery): Promise<string | null> {
@@ -164,18 +166,18 @@ export interface CoverLookup {
 }
 
 /** 进程级缓存 + 队列；requestsLeft 由单次生成持有，跨任务不共享。minIntervalMs 仅供测试缩短等待。 */
-export function createWikiCoverLookup(requestsLeft = MAX_PER_TASK, minIntervalMs = MIN_INTERVAL_MS, deliver = cacheWikiImage, options: { dataRoot?: string } = {}): CoverLookup {
+export function createWikiCoverLookup(requestsLeft = MAX_PER_TASK, minIntervalMs = MIN_INTERVAL_MS, deliver = cacheWikiImage, options: { store?: MediaStore } = {}): CoverLookup {
   const run = createSerialQueue(minIntervalMs);
   let remaining = requestsLeft;
   const cachedPhotosFor = (query: CoverQuery) => readPhotoSelection(
-    query.city, JSON.stringify([query.name, query.lat, query.lng]), options.dataRoot, 'wikimedia',
+    query.city, JSON.stringify([query.name, query.lat, query.lng]), options.store, 'wikimedia',
   );
   return {
     cachedPhotosFor,
     async coverFor(query) {
       // 坐标也是身份校验的一部分，不能给同名但不同坐标的地点复用旧结论。
       const identity = JSON.stringify([query.name, query.lat, query.lng]);
-      const key = JSON.stringify([options.dataRoot ?? '', query.city, identity]);
+      const key = JSON.stringify([storeScope(options.store), query.city, identity]);
       const saved = await cachedPhotosFor(query);
       if (saved !== null) return saved[0]?.url ?? null;
       const cached = cache.get(key);
@@ -183,9 +185,9 @@ export function createWikiCoverLookup(requestsLeft = MAX_PER_TASK, minIntervalMs
       if (remaining <= 0) return null;
       remaining -= 1;
       try {
-        const url = await run(() => lookup(query, deliver));
+        const url = await run(() => lookup(query, deliver, options.store));
         if (url && /^\/media\/wikimedia\/[a-f0-9]{64}\.(jpg|png|webp|gif)$/.test(url)) {
-          await writePhotoSelection(query.city, identity, [{ url }], options.dataRoot, 'wikimedia');
+          await writePhotoSelection(query.city, identity, [{ url }], options.store, 'wikimedia');
         }
         cache.set(key, url);   // 含 null：没图的地点 24h 内不再打
         return url;
