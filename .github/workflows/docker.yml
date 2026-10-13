@@ -40,11 +40,11 @@ jobs:
         run: |
           {
             echo "tags<<EOF"
-            echo "type=raw,value=sha-${{ steps.meta.outputs.short_sha }}"
+            echo "${IMAGE}:sha-${{ steps.meta.outputs.short_sha }}"
             if [ "${{ github.ref_type }}" = "tag" ]; then
-              echo "type=ref,event=tag"
+              echo "${IMAGE}:${{ github.ref_name }}"
             else
-              echo "type=raw,value=latest"
+              echo "${IMAGE}:latest"
             fi
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
