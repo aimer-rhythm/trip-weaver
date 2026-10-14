@@ -266,7 +266,10 @@ export function createS3MediaStore(config: S3MediaStoreConfig): MediaStore {
 
   return {
     async put(key, bytes, options = {}) {
-      const headers: Record<string, string> = { 'Content-Length': String(bytes.length) };
+      // Content-Length 交给 aws4fetch 自行管理：它在 UNSIGNABLE_HEADERS 里，且签名前会把 body
+      // 换成 `input.clone().arrayBuffer()` 再重建 Request，手写的长度头会与之不一致，
+      // 线上表现为 PUT 全部抛 UND_ERR_INVALID_ARG「invalid content-length header」。
+      const headers: Record<string, string> = {};
       if (options.contentType) headers['Content-Type'] = options.contentType;
       if (options.cacheControl) headers['Cache-Control'] = options.cacheControl;
       const response = await request(key, 'PUT', { body: new Uint8Array(bytes), headers });
