@@ -144,6 +144,33 @@ test('跨请求去重、队列重建恢复、串行执行与每日有界处理',
     await restarted.stop();
   } finally { await rm(root, { recursive: true, force: true }); }
 });
+test('进程中断遗留的 running 被回收：次数未满回队列重试，已满落 failed 终态', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'photo-stale-'));
+  let at = 1_800_000_000_000;
+  const seen: string[] = [];
+  const queue = createPhotoReviewQueue({ store: createLocalMediaStore(root), dailyLimit: 50, now: () => at,
+    run: async job => { seen.push(job.name); } });
+  try {
+    await queue.enqueue('北京', '甲');
+    await queue.enqueue('北京', '乙');
+    // 手工把两个任务改成「进程中断」形态：running + 租约过期，attempts 一个未满一个已满。
+    // 已满的那个原先会被 `attempts < 3` 永久排除，卡死在 running 不再重试。
+    const dir = path.join(root, 'photo-store/review-jobs');
+    for (const f of await readdir(dir)) {
+      const file = path.join(dir, f), job = JSON.parse(await readFile(file, 'utf8'));
+      job.state = 'running';
+      job.attempts = job.name === '甲' ? 1 : 3;
+      job.updatedAt = at - 16 * 60_000;
+      await writeFile(file, JSON.stringify(job));
+    }
+    await queue.tick();
+    const after = await queue.jobs();
+    assert.deepEqual(seen, ['甲'], '未满三次的中断任务被重新执行');
+    assert.equal(after.find(j => j.name === '甲')!.attempts, 2);
+    assert.equal(after.find(j => j.name === '乙')!.state, 'failed', '已满三次的中断任务落 failed 终态');
+  } finally { await queue.stop(); await rm(root, { recursive: true, force: true }); }
+});
+
 test('失败有退避，最多三次；不会因同地连续生成绕过退避', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'photo-queue-fail-'));
   let at = 1_800_000_000_000, calls = 0;

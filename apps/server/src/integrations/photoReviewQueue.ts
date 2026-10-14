@@ -73,6 +73,18 @@ export function createPhotoReviewQueue(options: {
     active = (async () => {
       const job = await serialize(async () => {
         const all = await jobs();
+        // 回收进程中断遗留的 running：租约超时即视为本次尝试失败。
+        // 不回收的话，attempts 已满的任务会被下面的 `attempts < 3` 永久排除，卡死在 running 不再重试。
+        let recovered = 0;
+        for (const stale of all) {
+          if (stale.state !== 'running' || now() - stale.updatedAt <= 15 * 60_000) continue;
+          stale.state = stale.attempts >= 3 ? 'failed' : 'queued';
+          stale.nextAt = stale.state === 'failed' ? now() + 30 * 60_000 * stale.attempts : now();
+          stale.updatedAt = now();
+          await writePhotoJson(fileFor(stale.city, stale.name), stale, store);
+          recovered += 1;
+        }
+        if (recovered > 0) options.warn?.(`[photo-review] 回收 ${recovered} 个进程中断的任务`);
         const limit = options.dailyLimit ?? DEFAULT_PHOTO_REVIEW_DAILY_PLACES;
         const used = all.filter(j => counted(j) > now() - DAY).length;
         const capacity = used < limit;
