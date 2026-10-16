@@ -7,9 +7,9 @@
 ## Current Status
 
 <!-- @@@auto:current-status -->
-- **Active File**: `journal-1.md`
-- **Total Sessions**: 49
-- **Last Active**: 2026-10-12
+- **Active File**: `journal-2.md`
+- **Total Sessions**: 50
+- **Last Active**: 2026-10-16
 <!-- @@@/auto:current-status -->
 
 ---
@@ -19,7 +19,8 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~1927 | Active |
+| `journal-2.md` | ~114 | Active |
+| `journal-1.md` | ~1927 | Archived |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +30,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 50 | 2026-10-16 | 遗留代码、本地产物与文档口径清理 | `6fed00d`, `a77818c`, `be00848`, `e9c5242`, `b3146ce`, `3effae2` | `master` |
 | 49 | 2026-10-12 | place identity 收尾与测试隔离 | `286e818`, `1065859`, `4defff8` | `master` |
 | 48 | 2026-10-12 | 检索融合配额与消融评测 | `9a36db4`, `35c6ed5`, `f2684d5` | `master` |
 | 47 | 2026-10-12 | 检索质量基线评测器 | `bac08c3`, `68efc93` | `master` |
