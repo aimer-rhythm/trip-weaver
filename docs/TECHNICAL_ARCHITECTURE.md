@@ -58,10 +58,10 @@
 │   GenerationJobManager(内存任务表+事件环形缓冲→SSE 重放)      │
 ├──────────────────────────────────────────────────────────┤
 │  Agent 模型层（pi-agent-core / pi-ai）                      │
-│   Orchestrator（代码级流水线）                               │
-│     ①调研 Agent ─▶ PoiSource(高德) / SearchSource(Web搜索)   │
-│     ②编排 Agent ─▶ Nominatim / DraftTrip                    │
-│     ③审校 Agent ─▶ DraftTrip / 预算聚合                      │
+│   Orchestrator（代码级流水线 research → plan → review）  │
+│     ①调研 Agent ─▶ 地点搜索(天地图) / Web 搜索源         │
+│     ②确定性排程 ─▶ 纯代码选点/排日/通勤（不走模型）      │
+│     ③审校+撰写  ─▶ DraftTrip / 知识库证据 / 专属建议     │
 │     ④检索层 retrieveContext ─▶ pgvector 混合召回（09-19）      │
 │   （Key 双轨解析：用户 BYOK → 站点 Key）                      │
 ├──────────────────────────────────────────────────────────┤
@@ -307,7 +307,7 @@ resolveLlmConfig(userId):
 
 | 变量 | 说明 |
 |---|---|
-| `PORT` / `DATABASE_URL` / `POSTGRES_PASSWORD` | 服务端口 / PostgreSQL 连接串（09-18 起唯一运行态数据库）/ compose 内 `db` 服务密码。`DATABASE_PATH` 现仅被一次性迁移脚本读取 |
+| `PORT` / `DATABASE_URL` / `POSTGRES_PASSWORD` | 服务端口 / PostgreSQL 连接串（09-18 起唯一运行态数据库）/ compose 内 `db` 服务密码 |
 | `MASTER_KEY` | 32 字节 hex，Key 加密主钥 |
 | `REGISTRATION_MODE` / `INVITE_CODE` | 注册三态 open/invite/closed（未设置时按 INVITE_CODE 推断）/ 邀请码（invite 模式必填） |
 | `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` / `APP_BASE_URL` | GitHub OAuth 登录（可留空=隐藏该入口）/ 站点对外地址（启用 GitHub 时必填） |
