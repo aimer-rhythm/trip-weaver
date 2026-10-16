@@ -116,14 +116,6 @@ export type DataSourceKind = (typeof DATA_SOURCE_KINDS)[number];
 export type TransportMode = (typeof TRANSPORT_MODES)[number];
 
 // 派生数据（useMemo/服务端即时计算，不持久化）
-// ST3 预算区间化：cost 为粗估档位值 → 只给「人均约 ¥min–max/天」区间（门票餐饮等，不含大交通与住宿），不再有精确总额与超支判定
-export interface BudgetSummary {
-  perPersonPerDayMin: number;
-  perPersonPerDayMax: number;
-  /** 有费用数据（任一活动带 cost）的天数；0 = 无任何费用数据 */
-  coveredDays: number;
-}
-
 // 行程列表条目（服务端冗余列）
 export interface TripListItem {
   id: string;

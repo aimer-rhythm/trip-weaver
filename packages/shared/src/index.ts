@@ -8,7 +8,6 @@ export * from './foodPosition';
 export * from './editOps';
 export * from './schemas';
 export * from './types';
-export * from './budget';
 export * from './feasibility';
 export * from './geo';
 export * from './holidays';
