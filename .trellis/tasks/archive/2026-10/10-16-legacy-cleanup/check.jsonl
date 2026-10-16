@@ -1,0 +1,5 @@
+{"file": ".trellis/tasks/10-16-legacy-cleanup/prd.md", "reason": "验收标准逐条核对：四批删除是否完成、三处误判项是否被误删、media/photo-store 是否仍在"}
+{"file": ".trellis/spec/guides/workspace-cleanup.md", "reason": "复核批次 A：删除后用 git status --porcelain 确认零新增改动（产物本就 gitignore），并核对未误删已跟踪文件"}
+{"file": ".trellis/spec/guides/commit-convention.md", "reason": "交付后提交信息格式与 scope 选择，以及归档任务的三段式节奏"}
+{"file": ".trellis/spec/shared/backend/quality-guidelines.md", "reason": "批次 E 复核：删 budget.ts 后 shared 仍类型检查通过、无悬浮导出"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "全量复核：npm run typecheck 四包通过、verify-sql-first 回归未因删文件失败"}

@@ -1,0 +1,9 @@
+{"file": ".trellis/tasks/10-16-legacy-cleanup/prd.md", "reason": "本任务范围、用户四项决策与三处误判修正——清理的唯一边界"}
+{"file": ".trellis/spec/guides/workspace-cleanup.md", "reason": "批次 A 删除本地产物的硬约束：-z + 字节级 UTF-8 解码枚举、与 git ls-files 求交集为空才可删、禁止整索引提交"}
+{"file": ".trellis/spec/guides/commit-convention.md", "reason": "批次 B/C/D/E/F 的提交粒度与 scope 词表（一次提交一件事，三段式节奏）"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "批次 E 判定 computeBudgetSummary 是否为孤儿的依据：先确认是否真有下游消费者"}
+{"file": ".trellis/spec/shared/backend/directory-structure.md", "reason": "packages/shared 的模块归属约定——确认 budget.ts 删除后 index.ts 导出该如何收敛"}
+{"file": ".trellis/spec/shared/backend/quality-guidelines.md", "reason": "shared 包的改动验收口径（类型检查为主）"}
+{"file": ".trellis/spec/server/backend/directory-structure.md", "reason": "批次 B/C/D 判定依据：scripts 下哪些属于长期运维工具（migrate-media-to-s3 保留）、一次性脚本与探针该不该在根目录"}
+{"file": ".trellis/spec/server/backend/quality-guidelines.md", "reason": "批次 B/C 删除后 server 侧类型检查与回归脚本的验收口径"}
+{"file": ".trellis/spec/web/frontend/directory-structure.md", "reason": "apps/web 根目录 test-*.mts 与 editor 组件的归属规则——同时佐证 LeafletCanvas 属既定降级路径不可删"}
