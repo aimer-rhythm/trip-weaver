@@ -112,3 +112,110 @@
 ### Next Steps
 
 - None - task complete
+
+
+## Session 51: place_identity_imports 归档与截断
+
+**Date**: 2026-10-17
+**Task**: place_identity_imports 归档与截断
+**Branch**: `master`
+
+### Summary
+
+本机 WSL dev 库该表 2636MB / 300 行已归档到 data/db-archive（1.03GB，恢复校验行数与 content_hash 全量一致）后 TRUNCATE，库 2791MB→155MB、表 24kB；线上库实测 0 行无需处理。verify-place-identity 22/22 通过。
+
+### Main Changes
+
+### Main Changes
+
+**前提纠正**
+
+原始诉求是「线上库 `place_identity_imports` 300 行占 2.6GB」。实测两边：
+
+| | 库总大小 | 该表 |
+| --- | --- | --- |
+| 线上库（VPS `trip-weaver-db-1`） | 78 MB | **0 行** |
+| 本机 WSL（`tripweaver-pg`） | 2791 MB | **2636 MB（占 94%）** |
+
+线上库没有可清理内容，2.6GB 全在本机开发库。原判断把两侧混为一谈，已同步修正 memory。
+
+**目标表构成**（截断前实测）
+
+- 300 行，2026-10-06 ~ 10-12
+- 111 行 payload > 10MB，最大 27MB，平均 8.6MB
+- 14 行已回滚（payload 仅 24MB），286 行未回滚（2516MB）
+- 城市：北京 26/641MB、厦门 44/524MB、济南 87/368MB、成都 32/230MB、重庆 20/221MB
+- 日期：**10-09 一天 114 行 / 1213MB** 是大头
+
+写入方 `goldsetPlaceImport.ts` / `seed-xhs-places.ts` / `seed-xhs-relations.ts`；
+读取方只有 `rollback-place-identity.ts` 与测试，Web 运行时不碰。
+
+**归档 → 校验 → 截断**
+
+| | db 大小 | 表大小 | 行数 |
+| --- | --- | --- | --- |
+| 前 | 2791 MB | 2636 MB | 300 |
+| 后 | **155 MB** | **24 kB** | **0** |
+
+归档 `data/db-archive/place-identity-imports-20261016.dump`（1.03GB，`sha256 40f4001c…`），
+在 `.gitignore` 的 `data/` 内不进版本库。恢复命令已写进 PRD。
+
+### 踩坑记录
+
+**1. 直接 dump 到 /mnt/d 会失败**
+
+首次把 `pg_dump -Z9` 输出重定向到 D 盘，900 秒只写 784MB —— WSL `/mnt/d` 是 9p 挂载，
+实测写入速率约 **0.9MB/s**。且 PowerShell 调用超时中断后，容器内 `pg_dump` 变成孤儿进程
+（宿主 `pkill` 因命名空间隔离报 Operation not permitted，须 `docker exec` 进容器终止）。
+
+改为两步后正常：先 dump 到 WSL 本地盘 `/tmp`，再整文件 `cp` 到 `/mnt/d`。
+压缩参数从 `-Z9` 换成 `--compress=zstd:3`：**53 秒**完成（gzip -9 十几分钟仍未完）。
+
+**2. `pg_restore --list` 不能验证 dump 完整性**
+
+custom 格式的 TOC 写在文件头部，数据被截断时 `--list` 依然成功。必须实际恢复到临时库比对。
+
+本次校验两条断言同时成立才继续：行数 300 = 300，`md5(string_agg(content_hash,…))`
+源库与恢复库同为 `600c5290cb48c4113f95c84bde82da3a`。
+
+### Testing
+
+- 恢复校验：300 行 + content_hash 全量 md5 一致
+- 结构校验：`\d place_identity_imports` 7 列齐全，`place_identity_imports_pkey` 与
+  `idx_place_identity_imports_city` 两个索引都在
+- 回归：`node --import tsx scripts/verify-place-identity.mts` → **22/22 pass**
+  （自建 `place_identity_test_*` 库，覆盖审计写入 / 事务预演 / 幂等 / 回滚全链路）
+- 临时库无残留（`tw_restore%` 匹配 0 行）
+- WSL `df`：24G → 20G used
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- **Windows 侧空间未回收**：`ext4.vhdx` 仍是 28.02GB，而 WSL 内 `df` 只报 20G，差值是 vhdx 内部空洞。
+  要在 Windows 看到回收需 `wsl --manage Ubuntu --set-sparse true`（或 `Optimize-VHD`），
+  **要求先关闭 WSL**，而当前 WSL 内跑着 `tripweaver-pg`、`dataease`、`mysql-det` 三个容器。未执行。
+- **会再长回来**：每次城市导入都写整城 JSONB 前后快照（北京 26 行就 641MB）。本轮只清存量，未改写入侧。
+- **VPS 磁盘占比真因不是数据库**：`/` 29G 用 23G（80%），但 DB 只 78MB；真因是 docker
+  images 6.271GB（4.861GB 可回收）与 build cache 681.4MB。用户决定本轮不处理。
+
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `2b76ec2` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
