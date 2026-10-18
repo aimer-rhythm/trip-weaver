@@ -23,7 +23,7 @@ export function LoginDialogProvider({ children }: { children: ReactNode }) {
   };
   return <Context.Provider value={(destination = '/') => { setMode('login'); setTarget(destination); }}>
     {children}
-    {(target !== null || routeLogin) && <Modal title={activeMode === 'register' ? '注册织程' : activeMode === 'reset' ? '找回密码' : '登录织程'} size="auth" onClose={close}>
+    {(target !== null || routeLogin) && <Modal title={activeMode === 'register' ? '注册织程' : activeMode === 'reset' ? '找回密码' : '登录织程'} size="auth" closeOnBackdrop={false} onClose={close}>
       {activeMode === 'register'
         ? <RegisterPage embedded from={target ?? from} onSuccess={close} onLogin={() => setMode('login')} />
         : activeMode === 'reset'
