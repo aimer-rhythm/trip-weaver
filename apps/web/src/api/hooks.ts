@@ -3,11 +3,13 @@ import type {
   Conversation,
   ConversationDetail,
   CoveredCitiesView,
+  EmailCodeBody,
   GenerateForm,
   GenerationJobView,
   GenerationJobStatus,
   NotificationPage,
   LoginBody,
+  PasswordResetBody,
   PlanningBriefPatch,
   PlanningBriefView,
   RegisterBody,
@@ -33,6 +35,7 @@ export interface MeView {
 export interface AuthConfigView {
   registrationMode: 'open' | 'invite' | 'closed';
   githubEnabled: boolean;
+  emailCodeEnabled: boolean;   // 10-18：Resend 通道是否就绪，open 模式注册依赖它
 }
 
 export interface SettingsView {
@@ -97,6 +100,22 @@ export function useRegister() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (body: RegisterBody) => api.post<MeView>('/api/auth/register', body, { auth: 'public' }),
+    onSuccess: () => { resetAuthState(); return qc.invalidateQueries(); },
+  });
+}
+
+/** 发送邮箱验证码（10-18）：注册与找回密码共用 */
+export function useSendEmailCode() {
+  return useMutation({
+    mutationFn: (body: EmailCodeBody) => api.post<{ ok: boolean }>('/api/auth/email-code', body, { auth: 'public' }),
+  });
+}
+
+/** 凭邮箱验证码重置密码；成功后该用户全部会话作废 */
+export function usePasswordReset() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (body: PasswordResetBody) => api.post<{ ok: boolean }>('/api/auth/password-reset', body, { auth: 'public' }),
     onSuccess: () => { resetAuthState(); return qc.invalidateQueries(); },
   });
 }

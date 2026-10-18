@@ -8,6 +8,9 @@ import type {
   LodgingSchema,
   LoginBodySchema,
   RegisterBodySchema,
+  EmailCodeBodySchema,
+  PasswordResetBodySchema,
+  EMAIL_CODE_PURPOSES,
   ResearchPoiSchema,
   PoiPhotoSchema,
   SettingsPutSchema,
@@ -78,6 +81,9 @@ export type TripExport = Static<typeof TripExportSchema>;
 export type GenerateForm = Static<typeof GenerateFormSchema>;
 export type RegisterBody = Static<typeof RegisterBodySchema>;
 export type LoginBody = Static<typeof LoginBodySchema>;
+export type EmailCodeBody = Static<typeof EmailCodeBodySchema>;
+export type PasswordResetBody = Static<typeof PasswordResetBodySchema>;
+export type EmailCodePurpose = (typeof EMAIL_CODE_PURPOSES)[number];
 export type SettingsPut = Static<typeof SettingsPutSchema>;
 
 // ---------- 问答式行程生成入口（09-23） ----------

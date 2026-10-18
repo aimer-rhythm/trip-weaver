@@ -1,5 +1,6 @@
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Field';
+import { EmailCodeField } from '../components/EmailCodeField';
 import { useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthConfig, useRegister } from '../api/hooks';
@@ -16,9 +17,13 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [inviteCode, setInviteCode] = useState('');
+  const [code, setCode] = useState('');
   const [error, setError] = useState('');
 
   const inviteRequired = config?.registrationMode === 'invite';
+  // open 模式没有邀请码门槛，改用邮箱验证码证明邮箱归属（10-18）
+  const codeRequired = config?.registrationMode === 'open';
+  const mailMissing = codeRequired && config?.emailCodeEnabled === false;
   const closed = config?.registrationMode === 'closed';
 
   const submit = (e: FormEvent) => {
@@ -27,9 +32,13 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
       setError('两次输入的密码不一致');
       return;
     }
+    if (codeRequired && code.length !== 6) {
+      setError('请输入 6 位邮箱验证码');
+      return;
+    }
     setError('');
     register.mutate(
-      { email, password, ...(inviteRequired ? { inviteCode } : {}) },
+      { email, password, ...(inviteRequired ? { inviteCode } : {}), ...(codeRequired ? { code } : {}) },
       {
         onSuccess: () => { onSuccess?.(); void navigate(from, { replace: true, state: null }); },
         onError: (err) => setError(err.message),
@@ -63,8 +72,14 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
                   <Input required value={inviteCode} onChange={(e) => setInviteCode(e.target.value)} placeholder="向站长索取" />
                 </label>
               )}
+              {codeRequired && !mailMissing && (
+                <EmailCodeField email={email} purpose="register" value={code} onChange={setCode} disabled={register.isPending} />
+              )}
+              {mailMissing && (
+                <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>邮件服务尚未配置，暂时无法注册，请联系站长</p>
+              )}
               {error && <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
-              <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={register.isPending}>
+              <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={register.isPending} disabled={mailMissing}>
                 {register.isPending ? '注册中…' : '注册并登录'}
               </Button>
             </form>

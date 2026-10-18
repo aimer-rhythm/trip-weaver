@@ -85,6 +85,19 @@ const STATEMENTS = [
     created_at TIMESTAMPTZ NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id)`,
+  // 邮箱验证码（10-18）：只存 bcrypt 哈希；同一 (email, purpose) 只认最新一条未消费记录
+  `CREATE TABLE IF NOT EXISTS email_verification_codes (
+    id TEXT PRIMARY KEY,
+    email TEXT NOT NULL,
+    purpose TEXT NOT NULL,
+    code_hash TEXT NOT NULL,
+    expires_at TIMESTAMPTZ NOT NULL,
+    consumed_at TIMESTAMPTZ,
+    attempts INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_email_codes_lookup ON email_verification_codes(email, purpose, created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS idx_email_codes_created ON email_verification_codes(created_at)`,
   `CREATE TABLE IF NOT EXISTS user_settings (
     user_id TEXT PRIMARY KEY,
     byok_enabled BOOLEAN NOT NULL DEFAULT FALSE,

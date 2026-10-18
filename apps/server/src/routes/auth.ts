@@ -2,10 +2,11 @@ import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { randomBytes } from 'node:crypto';
 import { Type } from '@sinclair/typebox';
 import { eq } from 'drizzle-orm';
-import { LoginBodySchema, RegisterBodySchema, uid } from '@tripweaver/shared';
+import { EmailCodeBodySchema, LoginBodySchema, PasswordResetBodySchema, RegisterBodySchema, uid } from '@tripweaver/shared';
 import { db } from '../db/client';
-import { users } from '../db/schema';
+import { sessions, users } from '../db/schema';
 import { hashPassword, verifyPassword } from '../auth/password';
+import { consumeEmailCode, issueEmailCode, EmailCodeError } from '../auth/emailCode';
 import { checkInviteCode } from '../auth/invite';
 import {
   GithubOauthError,
@@ -17,7 +18,7 @@ import {
 } from '../auth/github';
 import { SESSION_COOKIE, createSession, destroySession } from '../auth/session';
 import { requireAuth, resolveUser } from '../auth/guard';
-import { env, hasGithubOauth } from '../env';
+import { env, hasEmailDelivery, hasGithubOauth } from '../env';
 
 const COOKIE_OPTS = {
   httpOnly: true,
@@ -38,7 +39,41 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
   app.get('/config', async () => ({
     registrationMode: env.registrationMode,
     githubEnabled: hasGithubOauth(),
+    // 发信通道是否就绪（10-18）：前端据此决定开放按钮还是提示「注册暂不可用」
+    emailCodeEnabled: hasEmailDelivery(),
   }));
+
+  // 发送邮箱验证码（10-18）：open 模式注册 + 找回密码共用。
+  // IP 限流 10 次/小时；同邮箱的 60 秒与 5 次/小时频控在 emailCode.ts。
+  app.post(
+    '/email-code',
+    {
+      config: { rateLimit: { max: 10, timeWindow: '1 hour' } },
+      schema: { body: EmailCodeBodySchema },
+    },
+    async (request, reply) => {
+      const { email, purpose } = request.body;
+      const normalized = email.trim().toLowerCase();
+      if (!hasEmailDelivery()) return reply.code(503).send({ error: '邮件服务未配置，暂时无法发送验证码' });
+      if (purpose === 'register' && env.registrationMode !== 'open') {
+        return reply.code(403).send({ error: '当前注册方式不需要邮箱验证' });
+      }
+      // 注册码：邮箱已存在则静默成功；重置码：邮箱不存在或为 OAuth-only 账号也静默成功。
+      // 两者都是为了不泄露账号是否存在，代价是这种情况下用户收不到信。
+      const [existing] = await db.select({ id: users.id, passwordHash: users.passwordHash }).from(users).where(eq(users.email, normalized));
+      if (purpose === 'register' ? Boolean(existing) : !existing || !existing.passwordHash) {
+        return reply.send({ ok: true });
+      }
+      try {
+        await issueEmailCode(normalized, purpose);
+      } catch (err) {
+        if (err instanceof EmailCodeError) return reply.code(err.status).send({ error: err.message });
+        request.log.warn({ err, purpose }, 'email code delivery failed');
+        return reply.code(502).send({ error: '验证码邮件发送失败，请稍后重试' });
+      }
+      return reply.send({ ok: true });
+    },
+  );
 
   app.post(
     '/register',
@@ -47,7 +82,7 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
       schema: { body: RegisterBodySchema },
     },
     async (request, reply) => {
-      const { email, password, inviteCode } = request.body;
+      const { email, password, inviteCode, code } = request.body;
       if (env.registrationMode === 'closed') {
         return reply.code(403).send({ error: '注册暂未开放，请联系站长' });
       }
@@ -58,6 +93,15 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
       const exists = await db.select({ id: users.id }).from(users).where(eq(users.email, normalized));
       if (exists.length) {
         return reply.code(409).send({ error: '该邮箱已注册' });
+      }
+      // open 模式无邀请码门槛，改用邮箱验证码证明邮箱归属（10-18）；invite 模式沿用邀请码，不叠加。
+      // 查重放在验证码之前：已注册邮箱不必消耗一个验证码
+      if (env.registrationMode === 'open') {
+        if (!hasEmailDelivery()) return reply.code(503).send({ error: '邮件服务未配置，暂时无法注册' });
+        if (!code) return reply.code(400).send({ error: '请输入邮箱验证码' });
+        if (!(await consumeEmailCode(normalized, 'register', code))) {
+          return reply.code(400).send({ error: '验证码不正确或已过期' });
+        }
       }
       const user = { id: uid(), email: normalized, passwordHash: await hashPassword(password), createdAt: new Date() };
       await db.insert(users).values(user);
@@ -81,6 +125,28 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
       }
       const { token } = await createSession(row.id);
       return reply.setCookie(SESSION_COOKIE, token, COOKIE_OPTS).send({ id: row.id, email: row.email });
+    },
+  );
+
+  // 凭邮箱验证码重置密码（10-18）：重置成功后该用户全部会话作废，必须重新登录
+  app.post(
+    '/password-reset',
+    {
+      config: { rateLimit: { max: 5, timeWindow: '1 hour' } },
+      schema: { body: PasswordResetBodySchema },
+    },
+    async (request, reply) => {
+      const { email, code, password } = request.body;
+      if (!hasEmailDelivery()) return reply.code(503).send({ error: '邮件服务未配置，暂时无法重置密码' });
+      const normalized = email.trim().toLowerCase();
+      const [row] = await db.select().from(users).where(eq(users.email, normalized));
+      // OAuth-only 账号（空 hash）不走密码重置：保持「GitHub 注册的账号没有密码」这一既有语义
+      if (!row || !row.passwordHash || !(await consumeEmailCode(normalized, 'reset', code))) {
+        return reply.code(400).send({ error: '验证码不正确或已过期' });
+      }
+      await db.update(users).set({ passwordHash: await hashPassword(password) }).where(eq(users.id, row.id));
+      await db.delete(sessions).where(eq(sessions.userId, row.id));
+      return reply.send({ ok: true });
     },
   );
 

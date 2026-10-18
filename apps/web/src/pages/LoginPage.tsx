@@ -13,7 +13,7 @@ const OAUTH_ERRORS: Record<string, string> = {
   signup_closed: '注册暂未开放，无法通过 GitHub 创建新账号',
 };
 
-export function LoginPage({ embedded = false, from: destination, onSuccess, onRegister }: { embedded?: boolean; from?: string; onSuccess?: () => void; onRegister?: () => void }) {
+export function LoginPage({ embedded = false, from: destination, onSuccess, onRegister, onForgotPassword }: { embedded?: boolean; from?: string; onSuccess?: () => void; onRegister?: () => void; onForgotPassword?: () => void }) {
   const login = useLogin();
   const navigate = useNavigate();
   const location = useLocation();
@@ -53,6 +53,9 @@ export function LoginPage({ embedded = false, from: destination, onSuccess, onRe
             <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
           </label>
           {error && <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
+          {onForgotPassword && (
+            <button type="button" className="cursor-pointer self-end border-0 bg-transparent p-0 [font-size:0.82rem] text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" disabled={login.isPending} onClick={onForgotPassword}>忘记密码？</button>
+          )}
           <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={login.isPending}>
             {login.isPending ? '登录中…' : '登录'}
           </Button>

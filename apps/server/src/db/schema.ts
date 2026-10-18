@@ -29,6 +29,18 @@ export const sessions = pgTable('sessions', {
   createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
 });
 
+// 邮箱验证码（10-18）：注册与找回密码共用；purpose 区分用途，验证码互不通用
+export const emailVerificationCodes = pgTable('email_verification_codes', {
+  id: text('id').primaryKey(),
+  email: text('email').notNull(),
+  purpose: text('purpose').notNull(),
+  codeHash: text('code_hash').notNull(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  consumedAt: timestamp('consumed_at', { withTimezone: true }),
+  attempts: integer('attempts').notNull().default(0),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull(),
+});
+
 export const userSettings = pgTable('user_settings', {
   userId: text('user_id').primaryKey(),
   byokEnabled: boolean('byok_enabled').notNull().default(false),

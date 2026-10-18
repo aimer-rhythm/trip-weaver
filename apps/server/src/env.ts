@@ -147,6 +147,12 @@ export const env = {
   inviteCode,                                           // 仅 invite 模式使用
   appBaseUrl,
   github: { clientId: githubClientId, clientSecret: githubClientSecret },
+  // 邮箱验证码发信（10-18）：Resend API。API Key 缺失时 open 模式注册与找回密码直接 503，
+  // 其余功能不受影响；MAIL_FROM 的域名必须在 Resend 后台验证过，否则发信会被拒。
+  email: {
+    resendApiKey: str('RESEND_API_KEY'),
+    from: str('MAIL_FROM', 'noreply@notify.sakiiko.com'),
+  },
   siteLlm: {
     baseUrl: str('SITE_LLM_BASE_URL'),
     apiKey: str('SITE_LLM_API_KEY'),
@@ -206,6 +212,11 @@ export function hasEmbedding(): boolean {
 
 export function hasGithubOauth(): boolean {
   return Boolean(env.github.clientId && env.github.clientSecret && env.appBaseUrl);
+}
+
+/** 邮箱验证码发信是否可用（Resend API Key 已配置） */
+export function hasEmailDelivery(): boolean {
+  return Boolean(env.email.resendApiKey);
 }
 
 /** 和风凭据双轨：四项 JWT（私钥现签，推荐）优先 → QWEATHER_KEY（API Key，或自动识别的静态 JWT）→ null。

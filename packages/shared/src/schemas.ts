@@ -218,11 +218,28 @@ export const RegisterBodySchema = Type.Object({
   email: EmailSchema,
   password: Type.String({ minLength: 8, maxLength: 72 }),
   inviteCode: Type.Optional(Type.String({ maxLength: 64 })),   // 仅 REGISTRATION_MODE=invite 时服务端校验
+  code: Type.Optional(Type.String({ pattern: '^\\d{6}$' })),     // 仅 REGISTRATION_MODE=open 时必填（邮箱验证码）
 });
 
 export const LoginBodySchema = Type.Object({
   email: EmailSchema,
   password: Type.String({ minLength: 1, maxLength: 72 }),
+});
+
+/** 邮箱验证码用途：注册 / 重置密码。两种用途的验证码互不通用。 */
+export const EMAIL_CODE_PURPOSES = ['register', 'reset'] as const;
+
+/** 发送邮箱验证码（10-18）：open 模式注册与找回密码共用 */
+export const EmailCodeBodySchema = Type.Object({
+  email: EmailSchema,
+  purpose: StringEnum(EMAIL_CODE_PURPOSES),
+});
+
+/** 凭验证码重置密码；成功后该用户全部会话作废 */
+export const PasswordResetBodySchema = Type.Object({
+  email: EmailSchema,
+  code: Type.String({ pattern: '^\\d{6}$' }),
+  password: Type.String({ minLength: 8, maxLength: 72 }),
 });
 
 export const SettingsPutSchema = Type.Object({
