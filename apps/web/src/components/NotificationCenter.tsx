@@ -178,7 +178,7 @@ export function NotificationCenter({ userId }: { userId: string }) {
 
   return <>
     <details ref={ref} className="notification-disclosure relative" {...disclosure}>
-      <summary className="relative grid h-11 w-11 list-none place-items-center rounded-full text-ink transition-colors hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 [&::-webkit-details-marker]:hidden" aria-label={hasUnread ? '通知，有未读消息' : '通知，无未读消息'} title="通知" onClick={(event) => {
+      <summary className="relative grid h-11 w-11 cursor-pointer list-none place-items-center rounded-full text-ink transition-colors hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 [&::-webkit-details-marker]:hidden" aria-label={hasUnread ? '通知，有未读消息' : '通知，无未读消息'} title="通知" onClick={(event) => {
         if (window.matchMedia('(max-width: 600px)').matches) { event.preventDefault(); setMobileOpen(true); }
       }}>
         <NavigationIcon name="bell" />
