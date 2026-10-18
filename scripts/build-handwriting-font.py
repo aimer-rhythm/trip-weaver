@@ -16,18 +16,23 @@ CSS = ROOT / 'apps/web/src/styles/tailwind.css'
 SOURCE_SHA256 = '10a92c32d388f119db8a975fe6f0507ec48d15e3050e7ff2971c3784ad878580'
 # Put common UI/travel characters together so a short title does not fetch most of the font.
 # All remaining source glyphs are still shipped in smaller, on-demand subsets.
-CORE_TEXT = (
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ·，。！？、：；（）—'
+# Each block becomes one subset, so characters that co-occur in a title stay in the same file.
+CORE_BLOCKS = (
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ·，。！？、：；（）—',
+    # 城市名与景点词放最前优先占位：目的地、地点名几乎每个页面都出现，
+    # 让它们落在同一片，一次标题只拉一片。
+    '北京杭州上海成都重庆广州深圳南京苏州厦门西安武汉长沙昆明贵阳哈尔滨呼和浩特大理',
+    '沿轴走宫故博院楼黄昏南鼓巷坛殿园湖胡同咖啡馆街烟火秋寻味京城最后收集安排程',
+    '做必战先回则任取据处理世车象步景风光旅慢漫游泉塔听溪谷苑麓雍颐榭锣祈簋罍',
     '的一是在不了有和人这中大为上个国我以要他时来用们生到作地于出就分对成会可主发年'
-    '动同工也能下过子说产种面而方后多定行学法所民得经之进着等部度家电力里如水化高自'
+    '动同工也能下过子说产种面而方后多定行学法所民得经之进着等部度家电力里如水化高自',
     '理起小物现实加量都两体制机当使点从业本去把性好应开它合还因由其些然前外天政日社'
-    '相全表间样与关各重新线内数正心反你明看原又么利比或但质气第向道命此变条只没结解'
+    '相全表间样与关各重新线内数正心反你明看原又么利比或但质气第向道命此变条只没结解',
     '问意建月公无系情者最立代想已通并提直题程展果料象员位入常文总次品式活设及管特件'
-    '长求老头基资边流路级少图山统接知较将组见别她手角期根论运农指几九区强放决西被干'
-    '做必战先回则任取据处理世车象步景风光旅慢漫游泉塔听溪谷苑麓雍颐榭锣祈簋罍'
-    '北京杭州上海成都重庆广州深圳南京苏州厦门西安武汉长沙昆明贵阳哈尔滨呼和浩特大理'
-    '沿轴走宫故博院楼黄昏南鼓巷坛殿园湖胡同咖啡馆街烟火秋寻味京城最后收集安排程'
+    '长求老头基资边流路级少图山统接知较将组见别她手角期根论运农指几九区强放决西被干',
 )
+# 剩余字形按码位分组的每片字数；手写体每字约 1KB，96 字 ≈ 96KB。
+CHUNK = 96
 
 
 def codepoints(font):
@@ -56,9 +61,14 @@ if __name__ == '__main__':
         raise SystemExit('Source differs from the reviewed Youran font; review before updating the pinned hash.')
     with TTFont(args.source) as font:
         original = codepoints(font)
-    core = sorted(original.intersection(map(ord, CORE_TEXT)))
+    core_blocks, core = [], set()
+    for text in CORE_BLOCKS:
+        block = sorted({cp for cp in map(ord, text) if cp in original and cp not in core})
+        core.update(block)
+        if block:
+            core_blocks.append(block)
     remaining = sorted(original.difference(core))
-    groups = [core] + [remaining[start:start + 256] for start in range(0, len(remaining), 256)]
+    groups = core_blocks + [remaining[start:start + CHUNK] for start in range(0, len(remaining), CHUNK)]
     faces, paths, shipped = [], set(), set()
     for index, selected in enumerate(groups):
         with TTFont(args.source, recalcTimestamp=False) as font:
