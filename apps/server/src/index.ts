@@ -58,7 +58,23 @@ async function main() {
   // 生产模式：托管前端构建产物 + SPA fallback
   const webDist = path.resolve(__dirname, '../../web/dist');
   if (env.isProd && fs.existsSync(webDist)) {
-    await app.register(fastifyStatic, { root: webDist });
+    // 无 maxAge 时连 Vite 带 hash 的产物也返回 max-age=0，Cloudflare 边缘随之不缓存（实测 cf-cache-status: DYNAMIC）。
+    // assets 文件名带内容 hash → 一年 immutable；无 hash 的品牌图/分享图 7 天；index.html 保持不缓存，发布即可生效。
+    await app.register(fastifyStatic, {
+      root: webDist,
+      // cacheControl: false 是必需的：@fastify/send 在 setHeaders 之后才回写自己生成的 Cache-Control，
+      // 开着就会把下面设的头覆盖回 max-age=0（实测过）。
+      cacheControl: false,
+      setHeaders: (res, filePath) => {
+        const normalized = filePath.replace(/\\/g, '/');
+        if (normalized.includes('/assets/') || normalized.includes('/fonts/')) {
+          // Vite 产物与手写体/标题字体分片文件名都带内容 hash
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else if (/\/(brand|share-styles)\//.test(normalized) || /\/home-bg\.(webp|png)$/.test(normalized)) {
+          res.setHeader('Cache-Control', 'public, max-age=604800');
+        } else res.setHeader('Cache-Control', 'public, max-age=0');
+      },
+    });
     app.setNotFoundHandler(async (request, reply) => {
       if (request.raw.url?.startsWith('/api/')) {
         return reply.code(404).send({ error: 'Not Found' });
