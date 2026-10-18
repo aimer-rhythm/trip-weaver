@@ -219,3 +219,85 @@ custom 格式的 TOC 写在文件头部，数据被截断时 `--list` 依然成�
 ### Next Steps
 
 - None - task complete
+
+## Session 52: 注册邮箱验证码与三处 UI 修正
+
+**Date**: 2026-10-18
+**Task**: 注册邮箱验证码校验（`10-18-email-verification-register`）
+**Branch**: `master`
+
+### Summary
+
+open 模式注册改为邮箱验证码校验，新增 `/api/auth/email-code` 与 `/api/auth/password-reset`，前端补验证码输入与「忘记密码？」入口；Resend 子域 `notify.sakiiko.com` 验证通过并已上线。顺带修三处 UI：通知图标手型光标、登录弹窗点遮罩不关闭、网页标题只保留中文。typecheck 四包通过，真实发信端到端验收通过。
+
+### Main Changes
+
+**验证码设施**
+
+- `apps/server/src/auth/emailCode.ts`：生成 / 频控 / 校验 / 消费。只存 bcrypt 哈希，同一 `(email, purpose)` 只认最新未消费记录，用途隔离（注册码不能拿去重置密码）
+- `apps/server/src/integrations/resend.ts`：Resend API 发信，`AbortSignal.timeout` 控制超时
+- 新表 `email_verification_codes`（`migrate.ts` + `schema.ts`）
+- 频控三道：同邮箱 60 秒重发间隔、同邮箱 5 次/小时、路由层 IP 10 次/小时
+- 防枚举：注册码请求遇已注册邮箱、重置码请求遇不存在或 OAuth-only 账号，一律静默成功
+
+**注册与找回密码**
+
+- `routes/auth.ts`：`/register` 在 open 模式强制 `code`（查重放在验证码之前，已注册邮箱不白耗一个码）；新增 `/email-code` 与 `/password-reset`
+- `/password-reset` 成功后删除该用户全部 `sessions`，旧会话立即失效
+- `/config` 增加 `emailCodeEnabled`，前端据此禁用注册按钮并提示「邮件服务尚未配置」
+
+**前端**
+
+- `EmailCodeField.tsx`：验证码输入 + 60 秒倒计时按钮，注册与重置共用
+- `ResetPasswordPage.tsx` + 登录弹窗新增「忘记密码？」入口（`LoginDialogProvider` 增加 `reset` 态）
+- `RegisterPage`：open 模式显示验证码字段，invite 模式显示邀请码字段，二者互斥
+
+**发信域名**
+
+`mail.sakiiko.com` 已被临时邮箱服务占用（AAAA 100:: 走代理），改用 `notify.sakiiko.com`。Cloudflare 加 4 条记录后 Resend 验证通过：
+
+| 类型 | 名称 | 值 |
+|---|---|---|
+| TXT | `resend._domainkey.notify.sakiiko.com` | DKIM 公钥 |
+| MX (10) | `send.notify.sakiiko.com` | `feedback-smtp.ap-northeast-1.amazonses.com` |
+| TXT | `send.notify.sakiiko.com` | `v=spf1 include:amazonses.com ~all` |
+| CNAME | `rsend.notify.sakiiko.com` | `send.forge.rmta.net` |
+
+**UI 修正**
+
+- `NotificationCenter.tsx`：`<summary>` 补 `cursor-pointer`
+- `Modal.tsx` 新增 `closeOnBackdrop`（默认 true），登录/注册/重置弹窗传 false；ESC 与 ✕ 仍可关闭
+- `index.html`：标题 `织程 TripWeaver` → `织程`
+
+**并发改动隔离**
+
+`routes/auth.ts`、`db/schema.ts`、`shared/src/types.ts`、`api/hooks.ts` 工作区混有并发会话的未提交改动（10-17 注释任务、聊天改造）。用 `git apply --cached` 把本次的 hunk 单独写进索引后提交，他人改动原样留在工作区。
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `6a8976b` | feat(server): 注册接入邮箱验证码并补找回密码 |
+| `1e2cb15` | chore(task): 归档注册邮箱验证码任务 |
+| `54fb6ef` | style(web): 登录注册弹窗点遮罩不关闭 |
+| `54b84ba` | style(web): 网页标题只保留中文 |
+| `e39ddda` | style(web): 通知图标显示手型光标 |
+
+### Testing
+
+- typecheck 四包全绿（提交前后各跑一次）
+- 验证码消费语义单测 10/10：正确码消费、同码不可重用、错码失败、错码不占位、用途隔离双向、过期码、试错用尽、只认最新一条
+- 真实 Resend 端到端：收到码 → 注册 201 → 新密码登录 200 → 重置 200 → 旧密码 401 → 新密码 200 → 重置码复用 400 → 会话数 2 降到 1
+- invite 模式回归：临时端口起 `REGISTRATION_MODE=invite` 实例，无邀请码/错邀请码 403、正确邀请码 201 且不需验证码、注册码请求 403；前端注册卡片只有邀请码字段
+- 线上验证：CI 构建成功 → 容器重建 → `/api/auth/config` 返回 `emailCodeEnabled: true` → 线上发信 Resend 记录 `delivered`
+- Modal 遮罩：点边缘、点 backdrop 均不关闭，ESC 与 ✕ 正常关闭
+- 标题：`/login` 与 `/` 的 `document.title` 均为 `织程`
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- 线上仍为 `REGISTRATION_MODE=open`；若以后切 invite，需再跑一次注册回归
+- 本地工作区仍有三个文件残留并发会话的改动（`schema.ts` 的 intake 注释、`auth.ts` 的注释补全、`types.ts` 删 `BriefInputSchema`/`BriefIntake`），不归本会话处理
