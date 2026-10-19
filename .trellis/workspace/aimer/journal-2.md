@@ -405,4 +405,59 @@ open 模式注册改为邮箱验证码校验，新增 `/api/auth/email-code` 与
 - 字体分片的码位一致性与短标题命中片数未重跑（需 python 字体工具，证据留在任务目录 `research/`）
 - 剩余：`10-17-annotate-core-pipeline`（需切分）、`10-11-401`（六条 AC 未跑）、`10-12-cdn`（卡 R2）、`10-09-server-side-pdf-export`（无 prd）
 
+---
+
+## Session 55: 未登录探测接口验收与两个漂移测试
+
+**Date**: 2026-10-18
+**Task**: 未登录探测接口 401 控制台噪音治理（`10-11-401`）
+**Branch**: `master`
+
+### Summary
+
+`/api/auth/me` 改「未登录返 200 + data:null」的代码早在 `fac7f34` / `5001116` 入库，本次补跑六条 AC 并归档。验收中发现两个浏览器测试已长期漂移（登录改弹窗、注册加验证码两次产品变更都没同步测试），修完 5 个测试全 PASS。
+
+### 验收结果
+
+| AC | 结果 |
+|---|---|
+| 无 cookie `/api/auth/me` | `200` + `{"code":0,"message":"成功","data":null}` |
+| 带有效会话 | `200` + `data:{id,email}` |
+| 未登录 `/`、`/login`、`/trips` | 三页 `console error = 0`，`/api` 4xx+ = 0 |
+| 未登录 `/trips` | 落地 `/` + 登录弹窗打开 |
+| R5 四个浏览器测试 | 全 PASS |
+| typecheck | 四包零错误 |
+
+注意：`/login` 现在不是独立页，是「Layout 上的登录弹窗 + 路由重定向到 `/`」。验证「未登录会不会跳登录」不能只看 URL，要同时断言 `dialog[open]`。
+
+### 修复的两个漂移测试
+
+**`shared-ui-browser.mjs`**
+
+1. 页头与弹窗各有一个「登录」按钮，`exact` 命中 2 个 → 全部限定在 `dialog[open]` / `getByRole('dialog', { name })` 内；弹窗里切注册是 `button` 不是 `link`
+2. 注册表单新增 required 的邮箱验证码，留空时原生校验拦住 submit → 提交前先填验证码；`getByLabel('邮箱')` 非 exact 会同时命中「邮箱验证码」→ 加 `exact: true`
+3. 删掉「设置」弹窗那段过期断言：`SettingsDialog` 全仓只有定义、无引用（死代码），弹窗根本打不开；Modal 的 aria-labelledby / 宽度 / ESC / 焦点恢复已由 `login-dialog-browser.mjs` 覆盖，移动端不溢出断言保留
+
+**`login-dialog-browser.mjs`**：密码不一致路径与注册成功路径都补填验证码。
+
+根因都属于 `10-18-email-verification-register` 加验证码时没同步测试，与 `/me` 改造无关。
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `c290698` | fix(web): 同步登录弹窗后的浏览器测试 |
+| `b8631b7` | chore(task): 归档未登录探测接口任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- `SettingsDialog.tsx` 仍是死代码（无引用），本次只记录未删除
+- 浏览器测试必须用 `node --import tsx` 跑：直接 `node xxx.mjs` 无法解析 `packages/shared/src/*.ts`，会报 `file:///…/packages/shared/src/utils` 解析失败，容易误判成产品问题
+- 剩余：`10-17-annotate-core-pipeline`（需切分）、`10-12-cdn`（卡 R2）、`10-09-server-side-pdf-export`（无 prd）
+
+
 
