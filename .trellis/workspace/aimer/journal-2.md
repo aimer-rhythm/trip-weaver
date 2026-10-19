@@ -362,3 +362,47 @@ open 模式注册改为邮箱验证码校验，新增 `/api/auth/email-code` 与
 - 工作区仍有 43 项未提交：`10-17-annotate-core-pipeline` 的注释改动混着另一条聊天改造线（`chat/`、`shared/chat.ts`、`chatDerive.ts`、删 `IntakeControls.tsx`），提交前必须切分
 - 待办：`10-18-web-static-cache` 待验收；`10-11-401` 六条 AC 未跑；`10-12-cdn` 剩 5 条卡在 R2 桶与域名未配；`10-09-server-side-pdf-export` 连 prd 都没有
 
+---
+
+## Session 54: 静态缓存与首页背景任务复核归档
+
+**Date**: 2026-10-18
+**Task**: 线上静态资源缓存与首页背景图优化（`10-18-web-static-cache-and-home-bg`）
+**Branch**: `master`
+
+### Summary
+
+任务代码早已分三次入库（`68914ba`、`475bbfe`、`96cf69a`），打开始时工作区已无对应改动，只剩归档。归档前按验收标准重跑了一遍可验证项：背景图体积、引用、web 构建、七类路径的 Cache-Control。
+
+### Main Changes
+
+无代码改动。仅补齐 prd 的复核记录并归档任务目录。
+
+### 一个坑
+
+静态资源托管被 `env.isProd` 包着，dev 实例请求 `/assets/*`、`/fonts/*` 会落到 SPA fallback，返回 `index.html` 内容 + `Cache-Control: public, max-age=0`。看起来像「缓存头没生效」，实际是根本没走到 fastifyStatic。复核缓存头必须用 `NODE_ENV=production` 起实例。
+
+另：`/fonts/` 下是 `handwriting/` 与 `kinghwa/` 两个子目录，拼 URL 时不能直接用 `-Recurse` 后的裸文件名。
+
+### 复核证据
+
+- `home-bg.webp` 8.7KB（原 PNG 987.4KB）；`AppLayout.tsx:41`、`Modal.tsx:34` 均引用 `/home-bg.webp`
+- `npm run build -w apps/web` 通过（5.10s）
+- `NODE_ENV=production` 临时实例（:8799）实测：`/assets/*` 与 `/fonts/**` → `max-age=31536000, immutable`；`/brand/*`、`/share-styles/*`、`/home-bg.webp` → `max-age=604800`；`/index.html` → `max-age=0`
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `41d3e84` | chore(task): 归档静态缓存与首页背景任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- 字体分片的码位一致性与短标题命中片数未重跑（需 python 字体工具，证据留在任务目录 `research/`）
+- 剩余：`10-17-annotate-core-pipeline`（需切分）、`10-11-401`（六条 AC 未跑）、`10-12-cdn`（卡 R2）、`10-09-server-side-pdf-export`（无 prd）
+
+
