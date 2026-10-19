@@ -301,3 +301,64 @@ open 模式注册改为邮箱验证码校验，新增 `/api/auth/email-code` 与
 
 - 线上仍为 `REGISTRATION_MODE=open`；若以后切 invite，需再跑一次注册回归
 - 本地工作区仍有三个文件残留并发会话的改动（`schema.ts` 的 intake 注释、`auth.ts` 的注释补全、`types.ts` 删 `BriefInputSchema`/`BriefIntake`），不归本会话处理
+
+---
+
+## Session 53: 通知改 SSE 推送与 Key 密文 500 修复
+
+**Date**: 2026-10-18
+**Task**: 通知推送改为 SSE 通道（`10-18-notifications-sse-stream`）
+**Branch**: `master`
+
+### Summary
+
+通知中心原来 15 秒轮询，任务完成后红点最多晚 15 秒。改成服务端 SSE 主动推「有新通知」提示，前端收到只 invalidate 重查列表，轮询降为 60 秒兜底；事件允许丢失，DB 保持单一真相源。验收过程中顺带查出并修掉一个会把生成打成 500 的坑：LLM Key 密文解不开时异常没人接。typecheck 四包通过，verify-sql-first 93/93，真实生成端到端验过。
+
+### Main Changes
+
+**SSE 通道**
+
+- `services/notificationStream.ts`：进程内 `userId → Set<listener>` 订阅表，`subscribeNotifications` / `publishNotification` / `notificationSubscriberCount`；单个监听器抛错不影响其他监听器与写入方
+- `routes/notifications.ts` 新增 `GET /stream`（`requireAuth`）：`reply.hijack()` 后直写原始响应，`X-Accel-Buffering: no` 禁反代缓冲，15 秒 heartbeat，`res.on('close')` 里 `clearInterval` + `unsubscribe`
+- publish 放在 service 层而非路由层，保证所有写入路径覆盖；`recordGenerationNotification` 增加 `options.publish`——事务内写入传 `false`，由调用方在 commit 之后自己 publish，否则前端会回查到空列表
+
+**前端**
+
+- `hooks/useNotificationStream.ts`：EventSource 订阅 `notification` 事件，收到后 invalidate `keys.notifications`；`kind === 'success'` 时同时失效行程列表与对应行程
+- `NotificationCenter.tsx` 挂载时建立连接，卸载时 `close()`
+- `useNotifications` 的 `refetchInterval` 15s → 60s（兜底），保留 `refetchOnWindowFocus`
+
+**顺带修复：Key 密文损坏不再是 500**
+
+`resolveLlmConfig` 里 `decryptSecret` 没有 try/catch，换成过 `MASTER_KEY` 或跨环境导库后密文解不开，异常一路抛到全局 errorHandler，用户侧看到「服务器内部错误」。实测 `a@test.dev` 复现：它的密文是 2026-07-06 写入的，对照 9-20 写入的账号解密正常，确认中途换过 `MASTER_KEY`。
+
+修法与同文件里 `resolveAmapCredential` / `resolveSearchCredential` 已有的兜底对齐：解密失败打 warn + 按未配置个人 Key 处理，继续走站点 Key。补 3 条单测并加入 verify-sql-first 默认清单。
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `4029f67` | fix(server): Key 密文损坏不再打成 500 |
+| `ff2597d` | feat(server): 通知改为 SSE 实时推送 |
+| `fe86051` | chore(task): 归档通知 SSE 推送任务 |
+
+### Testing
+
+- `npm run typecheck` 四包零错误；`verify-sql-first` 93/93（原 90 + 新增 3 条 settingsResolve）
+- SSE 连接：库内造会话 + 节点 fetch 读流 → `200 text/event-stream`，`: connected` @1ms、`: heartbeat` @15.0s、@30.0s
+- 真实生成端到端（`b@test.dev`，杭州 2 天）：`POST /api/generations` 202 → 43.4s 后完成，SSE 同一秒收到 `event: notification`；DB `created_at` 与事件到达差 <1s
+- 关掉重开：断开 SSE 后新建会话 `GET /api/notifications` → 200，1 条（`readAt: null`），首屏兜底成立
+- 500 修复：临时实例 8799（未动 8787）上 `a@test.dev` POST → 202（修复前 500），stderr 输出 `[settings] … 密文无法解密，已按未配置个人 Key 处理`；随后 `/cancel` 202 收尾
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- AC 第 4 条（关标签页后订阅表不残留）以单测替代真机：`notificationStream.test.ts` 覆盖退订语义，未验的只剩 `res.on('close')` 两行胶水
+- 多副本部署会失效（进程内订阅表），届时需换 `pg_notify`，本期刻意不做
+- 本地 8787 进程是 `tsx src/index.ts`（非 watch），两处修复要重启 dev server 才生效
+- 工作区仍有 43 项未提交：`10-17-annotate-core-pipeline` 的注释改动混着另一条聊天改造线（`chat/`、`shared/chat.ts`、`chatDerive.ts`、删 `IntakeControls.tsx`），提交前必须切分
+- 待办：`10-18-web-static-cache` 待验收；`10-11-401` 六条 AC 未跑；`10-12-cdn` 剩 5 条卡在 R2 桶与域名未配；`10-09-server-side-pdf-export` 连 prd 都没有
+
