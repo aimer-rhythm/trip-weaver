@@ -457,6 +457,71 @@ open 模式注册改为邮箱验证码校验，新增 `/api/auth/email-code` 与
 
 - `SettingsDialog.tsx` 仍是死代码（无引用），本次只记录未删除
 - 浏览器测试必须用 `node --import tsx` 跑：直接 `node xxx.mjs` 无法解析 `packages/shared/src/*.ts`，会报 `file:///…/packages/shared/src/utils` 解析失败，容易误判成产品问题
+
+---
+
+## Session 56: 对话入口收敛与工作区切分
+
+**Date**: 2026-10-18
+**Task**: 对话入口收敛：追问控件下线与首页参数代收（`10-19-chat-intake-retire`）
+**Branch**: `master`
+
+### Summary
+
+工作区积了 40+ 项未提交改动，表面看是「注释任务，代码早已写完后没提交」，实际拆开是 4 件独立的事：追问控件下线、生成孤儿任务误认领、通知两个行为修正、行程列表分页 12。先给 `10-17` 提交纯注释部分，再为剩下的功能线新建 `10-19` 任务，按主题拆 4 个提交。
+
+### Main Changes
+
+| 主题 | 提交 | 规模 |
+|---|---|---|
+| 行程列表分页 20 → 12 | `8179814` | +3/-2 |
+| 生成孤儿任务不再被旧快照夺回 | `31a1c5d` | +22/-5 |
+| 追问控件与 `/conversations/:id/messages` 下线 | `b5e7f7c` | 13 files, +67/-742 |
+| 通知弹窗不再因跳转被抑制 + 滚动分页 | `88dd0a2` | +10/-3 |
+
+### 策略：用 checkout + edit 代替手写 partial patch
+
+两个文件同时含两个主题（`constants.ts` 的分页与 `INTAKE_ENUM_KINDS`、`hooks.ts` 的 `useCurrentGeneration` 与 intake 删除）。
+
+**手写 partial patch 不可靠**：用了 `git apply --cached --unidiff-zero` 只带行号不带上下文，结果 hunk 插到了错误位置（`let doneNotification` 落进了 return 对象里，语法错误）。
+
+可行做法：备份工作区版本 → `git checkout HEAD -- <file>` → 用 edit 工具只应用前一个主题的改动 → 提交 → 把备份写回。第二个主题提交时整文件 add 就行，因为此时 `git diff` 自然只剩后者的改动。
+
+另一个坑：`git commit -- <paths>` 提交的是**工作区**内容，不是索引。所以用 partial patch 暂存部分 hunk 再带 pathspec 提交，会把整文件改动全带进去。切分过的文件要不用 pathspec 的 `git commit`，事前必须确认索引里只有预期文件。
+
+### 一个踩到的错误
+
+`709fb0b` 用 `git commit -- apps/server/src/routes`（目录）把 `routes/conversations.ts` 的 300 行删除一并带进了「只加注释」的提交。用 `git checkout 709fb0b~1 -- <file>` + 重新提交旧版（`088107f`）还原，改造内容退回工作区。教训：目录路径提交会把该目录下所有改动全带上，提交前先 `git diff -- <dir> --stat` 确认范围。
+
+### 验收
+
+- `npm run typecheck` 四包 EXIT=0
+- `node --import tsx scripts/verify-sql-first.mts` 93/93
+- `POST /api/conversations/:id/messages` → `404 Route … not found`；`GET /api/conversations` 也 404
+- 5 个浏览器测试全 PASS
+- 全仓 grep 无 `IntakeControls` / `BriefIntake` / `INTAKE_ENUM_KINDS` / `useConversations` 引用（只剩两处注释说明）
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `709fb0b` | docs(server): 补主链路关键注释 |
+| `088107f` | fix(server): 还原误并入注释提交的会话路由改动 |
+| `8179814` | chore(shared): 行程列表分页改为 12 条 |
+| `31a1c5d` | fix(web): 新生成不再被旧任务快照夺回 |
+| `b5e7f7c` | refactor(shared): 追问控件下线 |
+| `88dd0a2` | fix(web): 通知弹窗不再因跳转被抑制 |
+| `c70a318` | chore(task): 归档对话入口收敛任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- `apps/web/src/components/SettingsDialog.tsx` 仍是死代码（全仓仅剩定义），未删
+- `chat_messages.intake` 列保留，注释里标的任务号写的是 10-17，实际归 10-19
+- 剩余：`10-17-annotate-core-pipeline`（注释已提交，考察题未做）、`10-12-cdn`（卡 R2 桶与域名）、`10-09-server-side-pdf-export`（无 prd）
 - 剩余：`10-17-annotate-core-pipeline`（需切分）、`10-12-cdn`（卡 R2）、`10-09-server-side-pdf-export`（无 prd）
 
 
