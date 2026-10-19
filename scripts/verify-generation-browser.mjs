@@ -71,7 +71,8 @@ try {
   await page.getByLabel('确认密码').fill('password123');
   await page.getByLabel('邀请码').fill('GENFLOW');
   await page.getByRole('button', { name: '注册并登录' }).click();
-  await page.waitForURL('**/trips');
+  // /register 会重定向到首页并在 auth Modal 里渲染注册表单；URL 早就是 /，得等 Modal 真正卸载才算登录完成。
+  await page.locator('dialog[open]').waitFor({ state: 'detached' });
 
   const json = (path) => page.evaluate(async (path) => {
     const response = await fetch(path);

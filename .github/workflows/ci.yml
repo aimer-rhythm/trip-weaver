@@ -68,7 +68,7 @@ jobs:
 
           cleanup() {
             docker compose down -v || true
-            rm -f data/restart-marker
+            rm -f data/media/share-posters/restart-marker
           }
           trap cleanup EXIT
 
@@ -88,9 +88,9 @@ jobs:
           wait_for_health
 
           docker compose exec -T app sh -c \
-            "printf release-smoke > /app/apps/server/data/restart-marker"
+            "printf release-smoke > /app/data/media/share-posters/restart-marker"
           docker compose restart app
           wait_for_health
 
-          test "$(docker compose exec -T app cat /app/apps/server/data/restart-marker)" = \
+          test "$(docker compose exec -T app cat /app/data/media/share-posters/restart-marker)" = \
             "release-smoke"

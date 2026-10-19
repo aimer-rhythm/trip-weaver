@@ -156,6 +156,14 @@ try {
     const res = await fetch(`${base}${path}`, { method, headers, ...(body ? { body: JSON.stringify(body) } : {}) });
     return { status: res.status, data: await readApiResponse(res) as any };
   };
+  // 行程内对话只有 SSE 通道（POST /messages 已随首页改地图选城下线），一轮对话读到最后一条 done 拿结果。
+  const streamTurn = async (conversationId: string, trip: { id: string; updatedAt: number }, text: string) => {
+    const body = { requestId: uid(), tripId: trip.id, updatedAt: trip.updatedAt, text };
+    const response = await fetch(`${base}/api/conversations/${conversationId}/messages/stream`, { method: 'POST', headers, body: JSON.stringify(body) });
+    const status = response.status;
+    const frames = (await response.text()).split('\n\n').filter((frame) => frame.startsWith('data:')).map((frame) => JSON.parse(frame.slice(5)));
+    return { status, frames, data: frames.at(-1)?.result ?? {} };
+  };
   const input = { requestId: uid(), tripId: initial.id, updatedAt: initial.updatedAt, dayId: initial.days[0]!.id, text: '推荐第 1 天路线附近的美食', suggestion: 'food' };
   const res = await fetch(`${base}/api/conversations/${conversationId}/messages/stream`, { method: 'POST', headers, body: JSON.stringify(input) });
   assert.equal(res.status, 200);
@@ -361,15 +369,15 @@ try {
   const legacyConversation = (await ensureTripConversation('detail-user', legacySource.id)).conversationId;
   decision = { intent: 'modify_itinerary', reply: '新增日期', editOps: [appendDays(3, 1)] };
   const legacyCalls = researchRequests;
-  const legacyResult = await call(`/api/conversations/${legacyConversation}/messages`, { text: '再加一天行程' });
-  assert.equal(legacyResult.status, 200, JSON.stringify(legacyResult));
+  const legacyResult = await streamTurn(legacyConversation, legacySource, '再加一天行程');
+  assert.equal(legacyResult.status, 200, JSON.stringify(legacyResult.frames));
   assert.equal(researchRequests, legacyCalls + 1);
   const legacyTrip = (await getTrip('detail-user', legacyResult.data.editResult.tripId))!;
   assert.deepEqual(legacyTrip.days.slice(0, 2), legacySource.days);
   decision = { intent: 'modify_itinerary', reply: '增加休息日', editOps: [{ kind: 'add_days', dayIndex: 4, days: [{ title: '自由休息', activities: [] }] }] };
   const beforeRestResearch = researchRequests;
-  const restResult = await call(`/api/conversations/${legacyConversation}/messages`, { text: '再加一天空白休息日，不安排活动' });
-  assert.equal(restResult.status, 200, JSON.stringify(restResult));
+  const restResult = await streamTurn(legacyConversation, legacyTrip, '再加一天空白休息日，不安排活动');
+  assert.equal(restResult.status, 200, JSON.stringify(restResult.frames));
   assert.equal(researchRequests, beforeRestResearch, '明确空白日不需要调研');
   const restTrip = (await getTrip('detail-user', restResult.data.editResult.tripId))!;
   assert.equal(restTrip.days.length, 4); assert.equal(restTrip.days[3]!.activities.length, 0);
