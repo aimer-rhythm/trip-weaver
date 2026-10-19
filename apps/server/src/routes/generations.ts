@@ -1,4 +1,15 @@
-// 生成任务路由：POST（配额闸门）/ SSE 进度（Last-Event-ID 重放）/ 取消 / 快照
+/**
+ * 生成任务路由（`/api/generations`）。
+ *
+ * 任务模型：POST 只做闸门校验 + 建 job + 后台跑，立即 202 返回 jobId；
+ * 前端拿 jobId 开 SSE 追进度。配额在**任务结束时**扣（取消/失败不计）。
+ *
+ * 闸门顺序（改之前想清楚）：会话/行程归属 → LLM 配置 → 配额 → 并发；
+ * 并发只能一个（`getRunningJobId`），否则同一用户的两份草稿会抢同一份 Brief。
+ *
+ * SSE 重放：每条事件带递增 id，客户端断线重连时用 `Last-Event-ID`（或 query 参数）回补；
+ * 已终止的任务也能回放终态，避免前端卡在「进行中」。
+ */
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
 import { GenerateFormSchema, type GenerationEvent } from '@tripweaver/shared';
@@ -93,6 +104,7 @@ export const generationRoutes: FastifyPluginAsyncTypebox = async (app) => {
     return jobView(job);
   });
 
+  // SSE 进度流：先 hijack 再写头，否则 Fastify 会尝试序列化并加上信封
   app.get('/:jobId/events', async (request, reply) => {
     const { jobId } = request.params as { jobId: string };
     const job = getJob(jobId, request.user!.id);

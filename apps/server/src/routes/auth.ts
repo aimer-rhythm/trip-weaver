@@ -1,3 +1,13 @@
+/**
+ * 认证路由（`/api/auth`）：邮箱密码注册/登录、GitHub OAuth、登出、当前用户。
+ *
+ * 三条账号可能的状态：
+ * - 密码账号：`passwordHash` 非空
+ * - OAuth-only 账号：`passwordHash` 为空串 —— 登录分支靠「空 hash 直接判失败」阻挡密码登录
+ * - 同邮箱既有账号被 OAuth 首次登录时自动绑定 `githubId`（仅限 verified 邮箱）
+ *
+ * 会话一律是服务端发的 256bit 随机 token（见 `auth/session.ts`），前端只持有 httpOnly cookie。
+ */
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { randomBytes } from 'node:crypto';
 import { Type } from '@sinclair/typebox';
@@ -21,9 +31,9 @@ import { requireAuth, resolveUser } from '../auth/guard';
 import { env, hasEmailDelivery, hasGithubOauth } from '../env';
 
 const COOKIE_OPTS = {
-  httpOnly: true,
-  sameSite: 'lax',
-  secure: env.isProd,
+  httpOnly: true,        // 前端 JS 读不到 token，杜绝 XSS 直接窃取会话
+  sameSite: 'lax',       // 挡住跨站 POST；OAuth 回跳是顶层 GET 导航，不受影响
+  secure: env.isProd,    // 本地 http 开发需关闭，否则 cookie 根本不会发送
   path: '/',
   maxAge: 30 * 24 * 60 * 60,
 } as const;
@@ -75,6 +85,7 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
     },
   );
 
+  // 注册：三档模式（open / invite / closed） + 限流 3 次/分，防止被扫邀请码
   app.post(
     '/register',
     {
@@ -89,7 +100,7 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
       if (env.registrationMode === 'invite' && !checkInviteCode(inviteCode ?? '')) {
         return reply.code(403).send({ error: '邀请码不正确' });
       }
-      const normalized = email.trim().toLowerCase();
+      const normalized = email.trim().toLowerCase();     // 大小写归一：否则 Foo@x 与 foo@x 能注两个号
       const exists = await db.select({ id: users.id }).from(users).where(eq(users.email, normalized));
       if (exists.length) {
         return reply.code(409).send({ error: '该邮箱已注册' });
@@ -213,6 +224,7 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
     },
   );
 
+  // 登出：先删库里的会话行（token 立即作废，不依赖 cookie 清除），再清 cookie
   app.post('/logout', { preHandler: requireAuth }, async (request, reply) => {
     const token = request.cookies[SESSION_COOKIE];
     if (token) await destroySession(token);

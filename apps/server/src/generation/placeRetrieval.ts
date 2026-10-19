@@ -1,3 +1,21 @@
+// 地点检索：关键词 SQL 召回 + 可选的 pgvector 向量召回，两路合并后用规则重新排序。
+//
+// ┌─ 为什么是「混合」而不是只靠向量 ───────────────────────────┐
+// │ 纯向量检索对专有名词不友好：「故宫」和「故宫博物院」在向量空间很近，   │
+// │ 但「景山公园」和「香山公园」也很近，同城一堆带「公园」的点会互相干扰。│
+// │ 关键词能保留「字面完全匹配优先」这个强信号，向量负责补语义相近的漏网。 │
+// └────────────────────────────────────────────────────────┘
+//
+// ┌─ 检索流程（对应下面的代码）─────────────────────────────────────┐
+// │ 1. 关键词 SQL 一次拉 256 候选：name / aliases / memberNames /      │
+// │    nameKeys / themes 多字段 OR 匹配，再用 rankPlaces 规则打分。       │
+// │ 2. 向量只在「字面结果不足 limit」时才调（vector=auto）——            │
+// │    embedding 是要花钱的外部调用，字面已够用就不浪费。           │
+// │ 3. 向量用 `embedding <=> $1`（pgvector 余弦距离）取 48 条，        │
+// │    两路按 row.id 合并去重后重新排序。                              │
+// │ 4. 降级：embedding 服务挂了就只保留关键词结果，不让检索失败拖垮生成。│
+// │ 5. evidence（小红书告警/预约/价格等）最后附加，按 kind+strength 排序。│
+// └────────────────────────────────────────────────────────┘
 import type { PoiCategory } from '@tripweaver/shared';
 import type { QueryResultRow } from 'pg';
 import { categoryValues, preferenceCategories, rankPlaces, rankPlacesByDistance, type PlaceRow, type RankedPlace } from './retrievalRanking';

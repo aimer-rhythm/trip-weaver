@@ -1,3 +1,10 @@
+/**
+ * 正文回答完成后的「后续追问按钮」生成。
+ *
+ * 定位：纯装饰性的第二次小模型调用（8s 硬超时），失败就退回通用追问模板，
+ * **绝不因它失败而丢掉已经产出的回答**，也不隐藏整组追问入口。
+ * 输入里的用户问题/行程/候选都当数据处理，不当指令（防注入）。
+ */
 import { Type } from 'typebox';
 import { CHAT_SUGGESTION_KINDS, completeFollowUpSuggestions, type ChatFollowUp, type FoodCandidate, type Trip } from '@tripweaver/shared';
 export { completeFollowUpSuggestions, readFollowUpSuggestions } from '@tripweaver/shared';
@@ -35,6 +42,7 @@ export async function generateFollowUpSuggestions(input: Input): Promise<ChatFol
     },
   });
   try {
+    // 关闭 DeepSeek 推理模式：这一调用只要 2～3 条短句，思考只会把 8s 超时吃完
     const model = await buildModel(input.cfg, { disableDeepSeekThinking: true });
     const result = await runPhaseAgent({
       model, apiKey: input.cfg.apiKey, tools: [tool], maxTurns: 1, signal,

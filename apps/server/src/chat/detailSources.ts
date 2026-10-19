@@ -1,3 +1,12 @@
+/**
+ * 详情对话的外部数据源包装：带预算账本、去重缓存与调用次数上限。
+ *
+ * 一轮问答、美食推荐与追加调研共享同一份 `DetailSources`，所以计数、缓存、额度都是
+ * 单轮级别的（而非单次调用）：同一关键词查两次只发一次请求，也只算一次额度。
+ *
+ * 关键约定：额度/账本错误必须**冒泡**（assertHealthy），不能吞成「无资料」——
+ * 把预算耗尽伪装成「没查到」会让用户以为没结果，而不是额度用完了。
+ */
 import type { PoiSource } from '../integrations/geoContracts';
 import type { SearchSource, WebSearchHit } from '../integrations/websearch/searchSource';
 
@@ -15,6 +24,7 @@ export function createDetailSources(deps: SourceDeps, signal: AbortSignal, allow
   let ledgerFailure: unknown;
   const assertHealthy = () => { if (ledgerFailure) throw ledgerFailure; };
   const cache = new Map<string, Promise<unknown[]>>();
+  // 统一的调用入口：缓存 → 禁网/未配置 → 轮内次数上限 → 预扣额度 → 执行 → 按实际是否发起结算
   async function call<T>(kind: 'poi' | 'search', key: string, configured: boolean, action: () => Promise<T[]>): Promise<T[]> {
     signal.throwIfAborted();
     const cacheKey = `${kind}:${key.trim().toLowerCase()}`;
@@ -62,6 +72,8 @@ export function createDetailSources(deps: SourceDeps, signal: AbortSignal, allow
   return { poi, search, notes, calls, web, assertHealthy };
 }
 export type DetailSources = ReturnType<typeof createDetailSources>;
+
+/** 按当前用户解析数据源（动态 import：未配置时不为该用户加载网络栈） */
 
 export async function resolveDetailSources(userId: string, signal: AbortSignal, allowWeb = true) {
   const { resolvePoiSourceForUser } = await import('../integrations/geoProvider');

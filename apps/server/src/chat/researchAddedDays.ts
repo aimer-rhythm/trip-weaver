@@ -1,3 +1,14 @@
+/**
+ * 「再加两天」背后的真实调研：新增日期不是填空，而要跑一遍与新建相同的链路。
+ *
+ * 步骤：复用 Brief 拼出只含新增天数的 GenerateForm → 排除旧行程已有景点（名字+别名+实体 id）
+ * → 库内检索 + 调研 agent 产出候选 → 场所事实/关系/长途判定 → 分段排程。
+ *
+ * 三个不显眼但重要的点：
+ * - 休息日单独成段：夹着休息日连续排程会让闭馆判断偏一天，所以按连续非休息日分段。
+ * - 每天至少一个真实候选：纯占位不能冒充「已调研」，否则报 422 让用户减天数。
+ * - 调研失败/轮次超限/候选空一律 502 且**不落库**，原行程不变。
+ */
 import { briefToGenerateForm, dateForDayIndex, placeNameKey, type PlanningBriefData, type Trip } from '@tripweaver/shared';
 import type { LlmConfig } from '../services/settingsService';
 import { buildModel } from '../generation/model';
@@ -23,6 +34,7 @@ export async function researchAddedDays(input: {
 }) {
   const { trip, op, signal, progress, sources } = input;
   const requested = op.days!;
+  // 「加两天休息日」：全部新增日都被明确要求留白时，不调调研，直接返回空计划
   const rest = requested.map((day) => !day.activities.length && /休息|留白|空白|不安排|自由活动/.test(input.question));
   if (rest.every(Boolean)) { progress('按要求保留新增日期为空白休息日。'); return { overview: [], notes: [] }; }
   const base = briefToGenerateForm(input.brief);

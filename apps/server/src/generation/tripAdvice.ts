@@ -1,3 +1,19 @@
+// 第三个 Agent：在最终行程定稿后写「旅行建议 + 注意事项」。
+// 与另两个 Agent 的区别：它不碰结构（不改活动、不改顺序），只写文字，
+// 且必须经过 submit_trip_advice 工具提交 —— 只输出正文一律视为没完成。
+//
+// ┌─ 三个防幻觉机制（这个文件最值得看的部分）──────────────────────┐
+// │ 1. 只能用证据说话：模型必须填 evidenceIds，而 evidenceIds 必须存在   │
+// │    且与它引用的 activityId 真正关联，否则工具直接拒收并叫它重交。      │
+// │ 2. 来源由系统填：模型只能填 evidenceId，最终展示的链接是系统从证据里   │
+// │    取的 —— 模型根本无法编造 URL。                              │
+// │ 3. 分级可信度：证据带 strength，direct / risk_only / weak 各自对应   │
+// │    不同的措辞强度，提示词里明确禁止把「网友反馈」写成确定事实。          │
+// └───────────────────────────────────────────────────────┘
+//
+// 证据从哪来（prepareTripAdviceEvidence）：
+//   知识库地点资料 → evidence 表（小红书告警/预约/价格）→ 分项政策 → 调研候选快照 → 活动 openTime
+//   按每批 8 个名称分次检索（retrieveContext 单次名称上限就是 8，不分批会静默丢掉后半程）。
 import { Type, type Static } from 'typebox';
 import {
   tripAdviceInputSnapshot,

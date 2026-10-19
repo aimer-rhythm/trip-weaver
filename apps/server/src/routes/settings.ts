@@ -1,3 +1,9 @@
+/**
+ * 设置路由（`/api/settings`）：LLM 配置、旅行偏好、数据源自检、前端运行时配置。
+ *
+ * 这里的「config」回应的是前端 MapView 需要的只读信息（高德 JS Key），
+ * 与 `auth/config`（注册模式、GitHub 开关）是两个不同的东西。
+ */
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Value } from '@sinclair/typebox/value';
 import { SettingsPutSchema, TravelPreferencesSchema } from '@tripweaver/shared';
@@ -30,6 +36,12 @@ export interface SourcesStatusView {
   websearch: SourceStatus;
 }
 
+/**
+ * 调研数据源自检：真实打一次外部接口（POI 搜索源 + 搜索源），结果按用户缓存 60s。
+ *
+ * 缓存键不只靠 userId：还比当前凭据 revision（settings 改动后 revision 变化 → 立即重新探测），
+ * 并且缓存里只存探测结论，不存凭据本身或数据源实例。
+ */
 export async function probeSourcesForUser(userId: string): Promise<SourcesStatusView> {
   const resolvedPoiSource = resolvePoiSourceForUser();
   const resolvedSearchSource = await resolveSearchSourceForUser(userId);

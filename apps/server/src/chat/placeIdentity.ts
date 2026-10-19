@@ -1,3 +1,13 @@
+/**
+ * 编辑副本的「地点身份」绑定：把名字解析回库内实体（canonicalPlaceId）。
+ *
+ * 只在本次编辑的副本上做，历史快照保持原样（否则旧版本会因新别名规则而变动）。
+ * 三种失败都是用户可修正的输入问题，直接 422 让对话层追问，而不是静默降级：
+ * - ambiguous：同名多实体 → 要具体地址/分店
+ * - withdrawn：实体已下架/待核实
+ * - 未解析：留给后续 geocode 链，不在这里报错
+ * `allowRevisit` 只在用户明确表达「再去」且没有被否定时才开。
+ */
 import { ACTIVITY_CATEGORIES, type Activity, type Trip } from '@tripweaver/shared';
 import type { loadPlaceIdentityIndex } from '../services/placeIdentityService';
 import type { ResolvedNewActivity } from './editOps';

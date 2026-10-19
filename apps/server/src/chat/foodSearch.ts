@@ -1,3 +1,13 @@
+/**
+ * 美食候选的筛选与排序（「推荐餐厅？」类提问的落地部分）。
+ *
+ * 硬约束，不靠模型自由发挥：
+ * - 只收具名店铺（库内名字带「店/餐/馆」等，或天地图 POI 类型命中餐饮）；书店/博物馆/商场不算
+ * - 饮食要求（清淡/素食/清真）必须有文本证据，不能从「附近」推断
+ * - 必须在某个未估算坐标的行程锚点 5km 内，否则不知道该排到哪天
+ * - 同一店铺不重复（poiKey 哈希 + 80m 内同名合并）
+ * 输出按到最近锚点的直线距离排序，只取 3 条。
+ */
 import { createHash } from 'node:crypto';
 import { FoodCandidateSchema, haversineMeters, recommendedFoodPosition, uid, wgs84ToGcj02, type FoodCandidate, type Trip } from '@tripweaver/shared';
 import { Value } from '@sinclair/typebox/value';
@@ -43,6 +53,7 @@ export async function searchFood(knowledge: DetailKnowledge, sources: DetailSour
     add(row.name, { lat: row.lat, lng: row.lng }, '', sources.length ? sources : [{ title: '已验证地点资料', url: '' }], undefined, renderOpenHours(asRecord(place.payload).openHours), place.evidence.map((e) => e.content).join(' '));
   }
   signal.throwIfAborted();
+  // 库内候选不足 3 条时，退到天地图 POI 搜索补位（类型命中餐饮才收）
   if (candidates.length < 3) {
     const keyword = /清淡/.test(query) ? '清淡 餐厅' : '餐厅';
     const hits = await sources.poi.searchPois('food', `${anchors[0]?.activity.name ?? ''} ${keyword}`, trip.destination);
@@ -53,6 +64,7 @@ export async function searchFood(knowledge: DetailKnowledge, sources: DetailSour
   }
   signal.throwIfAborted();
   // 网页只补充参考依据，不能凭网页标题推断可直接添加的店铺坐标。
+  // 已经花过搜索额度时直接复用本轮结果，不再重复查。
   const web = candidates.length < 3 && !sources.calls.search
     ? await sources.search.search(`${trip.destination} ${query} ${anchors[0]?.activity.name ?? ''}`.slice(0, 100)) : knowledge.web;
   signal.throwIfAborted();

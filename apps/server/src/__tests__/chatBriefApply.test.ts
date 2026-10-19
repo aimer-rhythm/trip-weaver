@@ -217,7 +217,7 @@ test('readClarification：有 question 就返回；选项去空去重并限量�
     question: '大概什么时候出发？',
     options: [],
   });
-  // 只负责「去空白 + 丢非字符串」；去重与限量属于 briefIntakeWithOptions 的职责
+  // 只负责「去空白 + 丢非字符串」；去重与限量由调用方（若还有）负责
   assert.deepEqual(readClarification({ clarification: { question: 'q', options: [' a ', 1, null, 'b'] } })?.options, ['a', 'b']);
   assert.equal(readClarification({ clarification: { options: ['成都'] } }), null);
   assert.equal(readClarification({}), null);

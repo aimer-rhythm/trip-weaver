@@ -1,5 +1,17 @@
 // 公共 Agent 运行器：pi-agent-core Agent 装配 + 事件转发 + 轮次上限 + 外部取消
-// 三个阶段 Agent（调研/编排/审校）共用；上下文互相隔离（每阶段全新 Agent，架构 §5）
+// 三个 LLM Agent（调研 / 文案 / 建议）共用；上下文互相隔离（每次调用都是全新 Agent）
+// 注意：plan（确定性排程）不经过本文件 —— 它不调模型，请去 scheduling/ 看。
+//
+// ┌─ Agent 控制的 4 个机制（本文件全部职责）───────────────────┐
+// │ 1. 轮次上限（turn_start）：每次 turn_start 计数 +1，超 maxTurns 就 agent.abort()；│
+// │    调研 16 轮、文案 3 轮、建议 3 轮。防止模型无限循环调工具。          │
+// │ 2. completion 强提交（runPhaseAgent 尾部）：正文停了但没调 submit_* 工具  │
+// │    时，补一句 reminder 让它重新提交，不重跑检索。正文里的 JSON 不算提交。  │
+// │ 3. 上游重试（streamWithRetry）：只重试「尚未产生任何工具调用」的失败，   │
+// │    因为重放会重复执行有副作用的工具（search_pois 是要计费的）。           │
+// │ 4. 事件转发（agent.subscribe）：把 pi-agent-core 的事件翻译成 sink 回调， │
+// │    再由 orchestrator 的 sinkFor 转成 SSE。本文件不碰数据库也不碰 HTTP。 │
+// └───────────────────────────────────────────────────────────────┘
 import { Agent, type AgentTool, type StreamFn } from '@mariozechner/pi-agent-core';
 import {
   createAssistantMessageEventStream,

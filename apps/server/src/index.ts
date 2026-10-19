@@ -24,6 +24,15 @@ import { generationRoutes } from './routes/generations';
 import { notificationRoutes } from './routes/notifications';
 import { photoReviewConfigured, photoReviewQueue } from './integrations/photoEnrichment';
 
+/**
+ * TripWeaver 服务端进程入口。
+ *
+ * 启动顺序有依赖关系，改动前先看清：
+ * 1. `./lib/proxy`、`./db/client` 是**副作用导入**，必须在读取 env / 出站 fetch 之前完成
+ *    （前者装全局代理 dispatcher，后者建库并跑迁移）。
+ * 2. 先装 `installApiResponses`（onSend 包装 + 错误处理），再注册路由 —— 它作用于所有 /api 响应。
+ * 3. 生产模式下前端产物与 `/media` 静态托管注册在路由之后，靠 setNotFoundHandler 做 SPA 回退。
+ */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function main() {
@@ -36,8 +45,10 @@ async function main() {
   await app.register(cookie);
   await app.register(rateLimit, { global: false });
 
+  // 统一响应信封 + 全局错误处理：必须在业务路由注册前装上
   installApiResponses(app);
 
+  // 健康检查带 commit/buildDate：容器里 `docker inspect` 之外也能确认跑的是哪个镜像
   app.get('/api/health', async () => ({
     ok: true,
     name: 'tripweaver',

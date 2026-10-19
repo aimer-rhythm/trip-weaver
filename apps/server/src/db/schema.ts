@@ -233,7 +233,7 @@ export const chatMessages = pgTable(
     role: text('role').notNull(),                   // user | assistant
     content: text('content').notNull(),
     sequence: integer('sequence').notNull(),        // 会话内自增，前端据此稳定排序
-    intake: jsonb('intake'),                        // assistant 消息携带的追问控件（可为 null）
+    intake: jsonb('intake'),                        // 遗留列：追问控件已下线（10-17），历史消息仍可能带值
     relatedTripId: text('related_trip_id'),         // 该轮产出的行程（修订/生成结果卡片用）
     attachment: jsonb('attachment'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull(),

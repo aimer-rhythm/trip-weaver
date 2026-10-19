@@ -1,3 +1,12 @@
+/**
+ * 行程资源路由（`/api/trips`）：列表/详情/重命名/删除/版本链/天气/路线方案/分享海报/恢复。
+ *
+ * 约定：
+ * - 所有 handler 都以 `userId` 作为查询谓词，**没有单独的权限校验层** —— 拿别人的 id 进来
+ *   只会得到 404，靠这一点隔离越权，新加接口必须沿用。
+ * - 读取类接口会给景点补图（`enrichTripPhotos`），**不写库**，只在响应里补。
+ * - 分享海报与路线方案限流单独收紧：前者是重活（生成图片），后者打外部 API（高德配额）。
+ */
 import type { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { Type } from '@sinclair/typebox';
 import { RenameTripSchema, RouteOptionsRequestSchema, RouteOptionsResponseSchema, TripExportSchema, TripSchema, TRIP_LIST_PAGE_SIZE, TRIP_LIST_PAGE_SIZE_MAX } from '@tripweaver/shared';

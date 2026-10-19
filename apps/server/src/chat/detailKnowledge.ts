@@ -1,3 +1,13 @@
+/**
+ * 行程内问答的「资料收集」阶段：一次提问要拿哪些证据。
+ *
+ * 三个输入来源：
+ * 1. 库内地点知识（向量 + 关键词混合，`vector: 'force'` 失败时降级为关键词）
+ * 2. 联网搜索（只在问题涉及时效/实时信息，或库内结果太少时）
+ * 3. 行程自身的上下文（当前天、被点名的地点、近期问题、偏好）
+ *
+ * 这里的输出只是「素材」，不得直接当成结论 —— 回答阶段由模型基于这些素材组织。
+ */
 import type { SourceNote, Trip } from '@tripweaver/shared';
 import type { RetrievedPlace, RetrieveOptions, RetrievalDiagnostics } from '../generation/placeRetrieval';
 import type { WebSearchHit } from '../integrations/websearch/searchSource';
@@ -5,9 +15,12 @@ import type { DetailSources } from './detailSources';
 import { purifiedIntroSources } from '../generation/researchQuality';
 
 export type DetailRetrieve = (names: string[], options?: RetrieveOptions) => Promise<RetrievedPlace[]>;
+/** 用户明确表态不想联网（“不用联网/只用知识库”）→ 全程禁网，不再看 needsCurrentSources */
 export const allowsWebSearch = (question: string) => !/不要联网|不用联网|无需联网|禁止联网|只[用查看].{0,6}(知识库|本地)|仅.{0,4}(知识库|本地)/.test(question);
+/** 问题本身涉及时效信息（营业/门票/天气/末班）→ 必须联网核对，不能只靠库内资料 */
 export const needsCurrentSources = (question: string) => /联网|网上|搜索网页|上网|最新|现在|今天|明天|营业|开放|开门|闭馆|预约|门票|票价|天气|停运|末班|时刻表|政策/.test(question);
 
+/** 引用去重与消毒：只留 http(s)、不带凭据、不过长、同一 URL 只出现一次，最多 8 条 */
 export function collectReferences(items: readonly SourceNote[]): SourceNote[] {
   const urls = new Set<string>();
   return items.filter((item) => {

@@ -2,7 +2,18 @@ import type { FastifyInstance } from 'fastify';
 import { isApiResponse, type ApiResponse } from '@tripweaver/shared';
 import { SsrfError } from '../integrations/ssrfGuard';
 
-/** 在路由 schema 序列化之后包装：业务字段仍由原 schema 过滤。 */
+/**
+ * 统一 API 信封（`{ code, message, data }`）与全局错误处理。
+ *
+ * 为什么用 onSend 钩子而不是改每个 handler：
+ * - onSend 在 Fastify 完成 schema 序列化**之后**执行，所以业务字段仍由路由声明的
+ *   TypeBox response schema 过滤，信封只加外层皮，不会让 schema 之外的字段漏出去。
+ * - 跳过非 /api 路径、204/304/3xx、非 JSON 载荷 —— 静态文件、SSE（handler 内 hijack）、
+ *   重定向都不该被包。
+ * - 错误分支把 handler 返回的 `{ error, code, ...extra }` 重排为 `{ code, message, data }`：
+ *   `code` 优先用业务字符串码（Fastify 内部的 `FST_*` 码要丢弃，否则前端拿到无语义的错误码），
+ *   没给就用 HTTP 状态码；`message` 取 `message` 再退到 `error`。
+ */
 export function installApiResponses(app: FastifyInstance): void {
   app.addHook('onSend', async (request, reply, payload) => {
     const path = request.url.split('?')[0] ?? '';
@@ -28,6 +39,8 @@ export function installApiResponses(app: FastifyInstance): void {
     return JSON.stringify(response);
   });
 
+  // 全局错误出口：SSRF 拦截转成 400（用户输入问题，不是 500）；参数校验失败统一 400 且不回显 schema 细节；
+  // 5xx 只在服务端打日志，对外一律「服务器内部错误」，不外泄堆栈或数据库报错。
   app.setErrorHandler((error: unknown, _request, reply) => {
     if (error instanceof SsrfError) return reply.code(400).send({ error: error.message });
     const err = error as { statusCode?: number; validation?: unknown; message?: string };
