@@ -106,6 +106,9 @@ export async function startLive(options: {
     }
     await import('../apps/server/src/lib/proxy');
     ({ pool } = await import('../apps/server/src/db/client'));
+    // 收尾时要 DROP 评估库，会强制断开 pool 里的残留连接；pg 把该断连抛成未捕获的 'error' 事件，
+    // 不挂监听会让评估进程以 exit 1 退出（报告已 PASS 也会被判失败）。
+    pool.on('error', () => {});
     await seedKnowledge(pool, knowledge);
     await pool.query(`INSERT INTO users (id,email,password_hash,created_at) VALUES ('eval-user','eval@invalid.local','disabled',NOW())`);
     const { runGeneration } = await import('../apps/server/src/generation/orchestrator');
