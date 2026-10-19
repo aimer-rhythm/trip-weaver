@@ -1,0 +1,8 @@
+{"file": ".trellis/spec/guides/commit-convention.md", "reason": "本次改动的提交范围与 scope 词表（README 属 docs/spec 范畴，需确认用词）"}
+{"file": ".trellis/spec/server/backend/chat-guidelines.md", "reason": "对话入口现状：首页选城 + 编辑器内嵌 ChatPanel，覆盖城市 ≥100 的 UI 级限制——README 功能条目的依据"}
+{"file": ".trellis/spec/server/backend/detail-chat-history.md", "reason": "详情对话流、真实美食候选与历史版本恢复的契约签名与事件名——README「行程内对话/历史版本」条目的依据"}
+{"file": ".trellis/spec/server/backend/trip-weather.md", "reason": "和风天气取代高德天气、凭据双轨与 15 天预报——README 天气条目与 QWEATHER_* 环境变量行的依据"}
+{"file": ".trellis/spec/server/backend/trip-advice.md", "reason": "行程专属建议的生成时机、有效性判断与来源回填——README 建议条目的依据"}
+{"file": ".trellis/spec/server/backend/rag-guidelines.md", "reason": "检索是可选的静默降级增强，未配 EMBEDDING_* 时退化纯关键词——README 检索条目与降级措辞的依据"}
+{"file": ".trellis/spec/server/backend/evaluation.md", "reason": "eval/ 命令矩阵与 eval:flow 环节数——README「评测与验证」章节的依据"}
+{"file": ".trellis/tasks/10-14-readme/prd.md", "reason": "本任务需求、验收标准与「不重构结构」的边界"}
