@@ -67,8 +67,10 @@ jobs:
           sed -i "s/^MASTER_KEY=.*/MASTER_KEY=${master_key}/" .env
 
           cleanup() {
+            # marker 是容器内进程写的，宿主机用户无权删除；先让容器自己删，down 之后再兜底一次
+            docker compose exec -T app rm -f /app/data/media/share-posters/restart-marker 2>/dev/null || true
             docker compose down -v || true
-            rm -f data/media/share-posters/restart-marker
+            rm -f data/media/share-posters/restart-marker 2>/dev/null || true
           }
           trap cleanup EXIT
 
