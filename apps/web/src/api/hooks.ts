@@ -344,7 +344,7 @@ export async function fetchJobSnapshot(jobId: string): Promise<GenerationJobView
   return data;
 }
 
-export function useCurrentGeneration(userId: string) {
+export function useCurrentGeneration(userId: string, enabled = true) {
   return useQuery({
     queryKey: keys.currentGeneration(userId),
     queryFn: async ({ signal }) => {
@@ -353,7 +353,14 @@ export function useCurrentGeneration(userId: string) {
       if (!Value.Check(GenerationJobViewSchema, data)) throw new Error('生成进度暂时无法读取');
       return data;
     },
-    enabled: Boolean(userId), refetchInterval: 15_000, refetchOnWindowFocus: true,
+    // 本查询的唯一用途是「首次发现并认领孤儿任务」；一旦已在跟踪某个任务（run.jobId 有值），
+    // 它的数据不再被读取（消费条件要求 jobId 不一致），关掉可免去生成全程的无谓请求。
+    enabled: Boolean(userId) && enabled,
+    staleTime: 30_000,
+    // 60 秒低频轮询作兜底：手动清缓存漏了也能在一个周期内自愈。有任务在跟踪时查询被禁用，
+    // 轮询不生效，生成全程零请求。
+    refetchInterval: 60_000,
+    refetchOnWindowFocus: true,
   });
 }
 
