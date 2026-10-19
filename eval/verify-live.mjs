@@ -31,7 +31,8 @@ const server = createServer(async (req, res) => {
     for await (const data of req) raw += data;
     const body = JSON.parse(raw);
     const isWriter = body.tools?.some((tool) => tool.function?.name === 'update_titles');
-    if (!isWriter) researchRequests++;
+    // 只统计调研阶段的请求：review 阶段也会发不含 update_titles 的请求，不能拿「不是 writer」当调研判据。
+    if (body.tools?.some((tool) => tool.function?.name === 'submit_research')) researchRequests++;
     const ids = [...new Set([...JSON.stringify(body.messages).matchAll(/id=([a-zA-Z0-9_-]+)/g)].map((m) => m[1]))].slice(0, 4);
     const call = isWriter
       ? { name: 'update_titles', arguments: JSON.stringify({ title: '广州一日漫游', dayTitles: ['广州老城漫步'] }) }

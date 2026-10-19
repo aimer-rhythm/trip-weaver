@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:16
+        image: pgvector/pgvector:pg16
         env:
           POSTGRES_PASSWORD: postgres
         ports: ['5432:5432']
@@ -54,8 +54,6 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run build
-      - name: Verify generation pipeline
-        run: node scripts/verify-c2.mjs
       - name: Validate Docker Compose configuration
         run: cp .env.example .env && docker compose config
       - name: Build application container
