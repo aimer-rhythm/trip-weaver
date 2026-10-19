@@ -1,5 +1,29 @@
 // 生成主流程：调研 → 确定性排程 → 地理增强、标题与专属建议 → 原子落库。
 // 唯一入口 runGeneration —— 路由只见任务号与 SSE，Agent 细节全部封装在此（架构 §2 单入口隔离）
+//
+// ┌─ 阅读顺序（建议从这里开始）────────────────────────────────┐
+// │ 1. 先看 runGeneration 里 try 块的主干，按「阶段 N」注释往下走，          │
+// │    走完一遍就是一次完整生成的全过程。                                     │
+// │ 2. 三个辅助设施先扫一眼，后面到处在用：                                   │
+// │      sinkFor()       把 Agent 内部事件翻译成 SSE 事件，推给前端时间线      │
+// │      runSystemTask() 把「非 Agent 的确定性步骤」（排程/地理/修复）也包装   │
+// │                      成时间线上的一次工具调用，前端看起来和 Agent 工具一样 │
+// │      assertAlive()   每个 await 之后的取消/超时检查点                     │
+// │ 3. 三个阶段：                                                            │
+// │      阶段 1 调研     = 唯一的「有 LLM 且决定行程内容」的阶段               │
+// │      阶段 2 排程     = 零 LLM，纯算法（本文件最值钱的设计）                │
+// │      阶段 3 文案/建议 = 有 LLM 但不改结构，只填文字                        │
+// │ 4. 三条贯穿全文的原则，看到 catch 先想这个：                              │
+// │      · 增强路径失败不改写任务成败（地理/文案/远郊修复，降级继续）           │
+// │      · 核心路径失败必须终止（排程排不出来就没有行程，不能降级）             │
+// │      · 取消/超时永远向外抛，不能被 catch 吞掉                              │
+// └──────────────────────────────────────────────────────────────────────┘
+//
+// 几个反复出现的术语：
+//   层2 编排预防 = 排程前的确定性预处理，用坐标和通勤时长给远郊点标级（classifyLongHaulPois）
+//   层3 兜底修复 = 排程后如果仍出现「远郊日混排」，代码级把市区活动挪到别的天（repairLongHaulMixedDays）
+//   hard / soft 违规 = feasibility() 的两档结果；hard 是「排了但物理上做不到」（如闭馆日去了）
+//   旁路坐标 = 调研 Agent 调检索工具时顺带捕获的坐标，优先于知识库坐标
 import {
   feasibilityReviewNotes,
   GENERATION_TIMEOUT_MINUTES,
@@ -17,6 +41,7 @@ import type { LlmConfig } from '../services/settingsService';
 import { searchBudgetRemaining } from '../services/quotaService';
 import { createTrip } from '../services/tripService';
 import { recordGenerationNotification } from '../services/notificationService';
+import { publishNotification, type NotificationEvent } from '../services/notificationStream';
 import { poiBudgetRemaining, resolvePoiSourceForUser } from '../integrations/geoProvider';
 import { getNullPoiSource } from '../integrations/nullPoiSource';
 import { POI_MAX_PER_TASK, createTaskPoiSource } from '../integrations/poiTaskSource';
@@ -82,6 +107,8 @@ export async function runGeneration(
   const foodFocused = isFoodFocused(form.preferences);
   const timing = new GenerationPerformance(job.createdAt);
   let terminalStatus: GenerationJobStatus = 'error';
+  // 成功通知的推送事件：事务提交后再发，避免前端回查到未提交的行
+  let doneNotification: NotificationEvent | undefined;
   let systemTaskSeq = 0;
   const timeout = setTimeout(() => {
     if (signal.aborted) return;
@@ -108,6 +135,9 @@ export async function runGeneration(
     };
   };
 
+  // sinkFor 产出的 sink 被三层复用：调研 Agent、文案 Agent、以及各处 runSystemTask。
+  // 它只做一件事：把 Agent 内部回调 → SSE 事件。前端时间线看到的「思考中」「调用了某工具」
+  // 「工具返回了什么」全部来自这里，所以每个 emit 的字段要和前端 GenerationRunPanel 对得上。
   const sinkFor = (phase: GenerationPhase): PhaseEventSink => ({
     onThought: (text) => emit(job, { type: 'thought', phase, text }),
     onToolStart: (toolCallId, tool, label, args) => {
@@ -293,8 +323,10 @@ export async function runGeneration(
     };
 
     // ---------- 阶段 2：确定性排程（零 LLM） ----------
-    // 入选点、分天与顺序由知识库和空间算法决定，不产出具体起止时刻。
-    // 排程是结构唯一来源 —— 排不出来就没有行程可言，不做「降级继续」。
+    // 这是整个项目最重要的设计决策：入选点、分天与顺序由知识库和空间算法决定，模型完全不参与。
+    // 为什么不用模型排？模型算不准距离和通勤时长，一定会编出「上午故宫下午八达岭」这种行程。
+    // 注意排程不产出具体起止时刻（09-22 D5 之后取消时间轴），只产出「哪天去哪些点、什么顺序」。
+    // 失败处理与增强路径相反：排不出来就没有行程可言，不做「降级继续」，直接抛错终止。
     startPhase('plan', 1, '确定性排程');
     const scheduleOutcome = await runSystemTask('plan', 'schedule_itinerary', '排定每日行程', () =>
       applyDeterministicSchedule({
@@ -353,6 +385,8 @@ export async function runGeneration(
 
     // 层3 兜底：确定性修复器 —— 排程层若仍产出「远郊日混排」且 feasibility 报出 hard 违规，
     // 代码级把混排市区活动挪到别的天并重验证（hard 严格递减才采纳，否则回滚）。
+    // 所谓「远郊日混排」= 同一天既去了市区景点又去了 60km 外的郊区景点，通勤时间吃掉半天。
+    // 「hard 严格递减才采纳」是防止修复器越修越差：只有违规数真的变少才保留改动。
     // 修复器属增强路径：任何异常按「未修复」继续走文案（生成不失败原则，取消除外）；
     // legs 重算复用 geoSession 定向重算（额度控制与 amap memo 内置）。
     try {
@@ -497,16 +531,18 @@ export async function runGeneration(
       );
       assertAlive(signal);
       await record('done', saved.id, tx);
-      await recordGenerationNotification({
+      // publish: false —— 事务未提交时推送会让前端回查到空列表；提交后再发
+      doneNotification = await recordGenerationNotification({
         userId: job.userId, jobId: job.id, kind: 'success', tripId: saved.id,
         destination: form.destination, days: form.days, title: `${form.destination} ${form.days} 天行程已生成`,
         message: '路线与每日安排已准备好。', jobCreatedAt: new Date(job.createdAt),
-      }, tx);
+      }, tx, { publish: false });
       assertAlive(signal);
       return saved;
     });
     // COMMIT 是成功边界：事务内取消会回滚；提交成功后不再把已保存结果宣告取消。
     completeJob(job, trip.id, dataSources, reviewNotes);
+    publishNotification(job.userId, doneNotification!);
     terminalStatus = 'done';
   } catch (err) {
     if (signal.aborted) {
