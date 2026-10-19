@@ -105,6 +105,8 @@ try {
   await page.getByLabel('邮箱', { exact: true }).fill('fixture@example.test');
   await page.getByLabel('密码（至少 8 位）', { exact: true }).fill('fixture-password');
   await page.getByLabel('确认密码', { exact: true }).fill('different-password');
+  // 验证码字段带 required：留空时原生校验会拦住 submit，应用层的密码一致性提示不会出现
+  await page.getByLabel('邮箱验证码').fill('123456');
   await dialog.getByRole('button', { name: '注册并登录', exact: true }).click();
   await page.getByRole('alert').filter({ hasText: '两次输入的密码不一致' }).waitFor();
   assert.equal(registrationBody, undefined);
@@ -132,6 +134,8 @@ try {
   await page.getByLabel('邮箱', { exact: true }).fill('fixture@example.test');
   await page.getByLabel('密码（至少 8 位）', { exact: true }).fill('fixture-password');
   await page.getByLabel('确认密码', { exact: true }).fill('fixture-password');
+  // 验证码字段带 required：留空时原生校验会拦住 submit，注册请求根本发不出去
+  await page.getByLabel('邮箱验证码').fill('123456');
   await dialog.getByRole('button', { name: '注册并登录', exact: true }).click();
   await page.waitForURL(`${base}/trips?filter=all#top`);
   assert.equal(registrationBody.email, 'fixture@example.test');

@@ -28,37 +28,47 @@ try {
     return route.fulfill({ json: apiSuccess(fixtures[pathname] ?? {}) });
   });
   await page.goto('http://127.0.0.1:5173/login');
-  await page.getByLabel('邮箱').fill('fixture@example.test');
-  await page.getByLabel('密码', { exact: true }).fill('fixture-password');
-  const login = page.getByRole('button', { name: '登录', exact: true });
+  // 登录已改为弹窗：页头也有同名「登录」按钮，弹窗内操作必须限定 scope，否则 exact 命中 2 个
+  const authDialog = page.locator('dialog[open]').first();
+  await authDialog.waitFor();
+  await authDialog.getByLabel('邮箱').fill('fixture@example.test');
+  await authDialog.getByLabel('密码', { exact: true }).fill('fixture-password');
+  const login = authDialog.getByRole('button', { name: '登录', exact: true });
   const loginStyle = await login.evaluate(el => ({ background: getComputedStyle(el).backgroundColor, color: getComputedStyle(el).color, height: el.getBoundingClientRect().height }));
   assert.equal(loginStyle.color, 'rgb(255, 255, 255)');
   assert.notEqual(loginStyle.background, 'rgba(0, 0, 0, 0)');
   assert.ok(loginStyle.height >= 35);
   await page.screenshot({ path: path.join(out, 'login.png') });
-  await page.getByRole('link', { name: '注册', exact: true }).click();
-  await page.getByLabel('邮箱').fill('fixture@example.test');
-  await page.getByLabel('密码（至少 8 位）', { exact: true }).fill('fixture-password');
-  await page.getByLabel('确认密码').fill('different-password');
-  await page.getByRole('button', { name: '注册并登录', exact: true }).click();
-  await page.getByText('两次输入的密码不一致').waitFor();
+  // 弹窗里切换注册是 button（只有 RegisterPage 独立页才是 link）
+  await authDialog.getByRole('button', { name: '注册', exact: true }).click();
+  // 切换后会重建弹窗，用带标题的可访问名重新定位
+  const regDialog = page.getByRole('dialog', { name: '注册织程', exact: true });
+  await regDialog.waitFor();
+  await regDialog.getByLabel('邮箱', { exact: true }).fill('fixture@example.test');
+  await regDialog.getByLabel('密码（至少 8 位）', { exact: true }).fill('fixture-password');
+  await regDialog.getByLabel('确认密码').fill('different-password');
+  // 验证码字段带 required：留空时浏览器原生校验会拦住 submit，应用层提示永远不会出现
+  await regDialog.getByLabel('邮箱验证码').fill('123456');
+  await regDialog.getByRole('button', { name: '注册并登录', exact: true }).click();
+  await regDialog.getByText('两次输入的密码不一致').waitFor();
   await page.setViewportSize({ width: 375, height: 812 });
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({ path: path.join(out, 'register-mobile.png') });
   await page.goto('http://127.0.0.1:5173/login');
-  await page.getByLabel('邮箱').fill('fixture@example.test');
-  await page.getByLabel('密码', { exact: true }).fill('fixture-password');
-  await page.getByRole('button', { name: '登录', exact: true }).click();
+  const loginDialog = page.locator('dialog[open]').first();
+  await loginDialog.waitFor();
+  await loginDialog.getByLabel('邮箱').fill('fixture@example.test');
+  await loginDialog.getByLabel('密码', { exact: true }).fill('fixture-password');
+  await loginDialog.getByRole('button', { name: '登录', exact: true }).click();
+  // 弹窗登录成功后回原页（无 from 时是首页），再走顶部导航进行程列表
+  await page.locator('.home-page-root').waitFor();
+  await page.getByRole('link', { name: '我的行程', exact: true }).click();
   await page.locator('.trip-collection').waitFor();
-  await page.getByRole('button', { name: '设置', exact: true }).click();
-  const dialog = page.getByRole('dialog');
-  await dialog.waitFor();
-  assert.equal(await dialog.getAttribute('aria-labelledby') !== null, true);
-  assert.ok(await dialog.evaluate(el => el.getBoundingClientRect().width <= innerWidth));
-  await page.screenshot({ path: path.join(out, 'settings-mobile.png') });
-  await page.keyboard.press('Escape');
-  await dialog.waitFor({ state: 'hidden' });
-  assert.equal(await page.getByRole('button', { name: '设置', exact: true }).evaluate(el => el === document.activeElement), true, 'modal restores trigger focus');
+  // 原「设置」弹窗段落已删：SettingsDialog 当前无任何入口（全仓仅剩定义），
+  // Modal 的 aria-labelledby / 宽度 / ESC 关闭 / 焦点恢复由 login-dialog-browser.mjs 覆盖
+  await page.setViewportSize({ width: 375, height: 812 });
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: path.join(out, 'trips-mobile.png') });
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto('http://127.0.0.1:5173/');
   await page.locator('.home-page-root').waitFor();
