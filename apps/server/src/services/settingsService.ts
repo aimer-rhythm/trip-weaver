@@ -165,7 +165,13 @@ export async function upsertSettings(userId: string, body: SettingsPut): Promise
 export async function resolveLlmConfig(userId: string): Promise<LlmConfig | null> {
   const row = await getRow(userId);
   if (row?.byokEnabled && row.baseUrl && row.model && row.apiKeyCiphertext) {
-    return { baseUrl: row.baseUrl, apiKey: decryptSecret(row.apiKeyCiphertext), model: row.model, byok: true };
+    try {
+      return { baseUrl: row.baseUrl, apiKey: decryptSecret(row.apiKeyCiphertext), model: row.model, byok: true };
+    } catch {
+      // 密文解不开（典型：换过 MASTER_KEY、或从别的环境导过库）不能把整次生成打成 500；
+      // 按「未配置 BYOK」继续走站点 Key，两者都没有时调用方会给出「没有可用的 AI 配置」文案。
+      console.warn(`[settings] 用户 ${userId} 的 LLM Key 密文无法解密，已按未配置个人 Key 处理`);
+    }
   }
   if (hasSiteLlm()) {
     return { baseUrl: env.siteLlm.baseUrl, apiKey: env.siteLlm.apiKey, model: env.siteLlm.model, byok: false };

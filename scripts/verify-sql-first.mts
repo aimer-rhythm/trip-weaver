@@ -21,7 +21,7 @@ try {
   const identityOwned = new Set(['independentPhotoIdentity.test.ts']);
   const files = process.argv.includes('--full')
     ? (await readdir(folder)).filter((name) => name.endsWith('.test.ts') && !identityOwned.has(name)).sort()
-    : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts',
+    : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts', 'settingsResolve.test.ts',
       ...(process.argv.includes('--flow') ? ['dateRepair.test.ts', 'mealLocality.test.ts', 'longHaul.test.ts', 'longHaulFixer.test.ts', 'openHours.test.ts',
         'placeFacts.test.ts', 'placeRelations.test.ts', 'placeLookup.test.ts', 'geoPipeline.test.ts', 'legs.test.ts',
         'agentCompletion.test.ts', 'llmRetry.test.ts', 'draftRevision.test.ts', 'chatBrief.test.ts', 'chatBriefApply.test.ts',
