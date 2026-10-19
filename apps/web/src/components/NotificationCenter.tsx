@@ -99,7 +99,9 @@ export function NotificationCenter({ userId }: { userId: string }) {
       if (document.visibilityState !== 'visible' || !document.hasFocus()) return;
       const item = rows.find((row) => row.sequence > (lastSequence.current ?? 0) && row.readAt === null && !shownToasts.current.has(row.id));
       lastSequence.current = Math.max(lastSequence.current ?? 0, first.readThrough);
-      if (item && (item.shareImageStyle || (location.pathname !== `/generations/${item.jobId}` && location.pathname !== `/trips/${item.tripId}`))) {
+      // 只在「正在看这一轮的生成进度页」时抑制：生成完成会自动跳到 /trips/:id，
+      // 那是系统跳转而非用户主动查看结果，完成提醒应该照弹（否则红点先亮、弹窗晚到）。
+      if (item && (item.shareImageStyle || location.pathname !== `/generations/${item.jobId}`)) {
         shownToasts.current.add(item.id); setPaused(false); setOpenError(null); setToast(item);
       }
     };
@@ -167,14 +169,19 @@ export function NotificationCenter({ userId }: { userId: string }) {
     {query.isPending && <p role="status" className="m-0 px-4 py-8 text-center text-sm text-ink-muted">正在读取通知…</p>}
     {query.isError && <div role="alert" className="px-4 py-5 text-center text-sm text-ink-muted"><p>通知暂时无法加载</p><Button variant="ghost" onClick={() => void query.refetch()}>重新加载</Button></div>}
     {!query.isPending && !query.isError && rows.length === 0 && <div className="px-4 py-9 text-center"><p className="m-0 font-medium text-ink">暂无通知</p><p className="mb-0 mt-2 text-[13px] leading-relaxed text-ink-muted">行程或图片生成完成后会出现在这里。</p></div>}
-    <div className="notification-list flex max-h-[min(440px,60dvh)] flex-col gap-1 overflow-y-auto overscroll-contain">
+    <div className="notification-list flex max-h-[min(440px,60dvh)] flex-col gap-1 overflow-y-auto overscroll-contain" onScroll={(event) => {
+      // 滚到底部附近就取下页；距底 120px 开始预取，避免看到空白
+      const el = event.currentTarget;
+      if (el.scrollHeight - el.scrollTop - el.clientHeight > 120) return;
+      if (query.hasNextPage && !query.isFetchingNextPage) void query.fetchNextPage();
+    }}>
       {rows.map((item) => <div key={item.id} className={`notification-item flex w-full items-center gap-4 rounded-xl px-3 py-[11px] text-left transition-colors ${item.readAt === null ? 'bg-brand/[0.06]' : 'bg-transparent'}`}>
         <span aria-hidden="true" className={`mt-0.5 h-2.5 w-2.5 shrink-0 self-start translate-y-1 ${item.readAt === null ? 'bg-brand' : 'bg-ink-muted/45'} rounded-full`} />
         <span className="min-w-0 flex-1"><span className="block break-words text-sm font-semibold leading-6 text-ink">{item.title}</span><time dateTime={new Date(item.createdAt).toISOString()} className="mt-0.5 block text-xs text-ink-muted">{notificationTime(item.createdAt)}</time></span>
         <Button variant="plain" className="flex min-h-11 shrink-0 items-center rounded-lg px-2 text-xs font-medium text-brand transition-colors hover:bg-hairline disabled:opacity-60" disabled={opening !== null || navigation.pending} onClick={() => void open(item)} aria-label={`${actionLabel(item)}：${item.title}${item.readAt === null ? '（未读）' : ''}`}>{opening === item.id ? '正在打开…' : actionLabel(item)}</Button>
       </div>)}
     </div>
-    {query.hasNextPage && <Button variant="plain" className="min-h-11 w-full text-sm text-brand" disabled={query.isFetchingNextPage} onClick={() => void query.fetchNextPage()}>{query.isFetchingNextPage ? '正在加载…' : '查看更多'}</Button>}
+    {query.isFetchingNextPage && <p role="status" className="m-0 px-4 py-3 text-center text-xs text-ink-muted">正在加载…</p>}
     {(read.isError || openError) && <p role="alert" className="mx-3 mb-2 text-xs leading-relaxed text-[var(--color-danger)]">{read.isError ? '已读状态保存失败，请重试。' : openError}</p>}
   </>;
 
