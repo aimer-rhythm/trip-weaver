@@ -1,8 +1,8 @@
-// 问答式行程生成入口契约（09-23）：对话消息 / Planning Brief / 追问控件
+// 规划 Brief 契约（09-23）：对话消息 / Planning Brief。追问控件（intake）已在 10-17 下线 ——
+// 首页“地图选城 + 胶囊”一次收完参数，不再有服务端追问的轮次，
+// 但 Brief 本身仍是生成输入与行程内对话上下文的载体。
 //
-// 设计边界（借鉴 FloatTrip，见 tasks/09-23-qa-trip-generation/research/floattrip-conversational-flow.md）：
-//   对话 → DialogueDecision（reply + briefPatch）→ Planning Brief → 用户确认 → 正式生成任务。
-// 对话永远不直接生成行程；Brief 是「已确认的事实快照」，生成只在快照上跑。
+// 设计边界：对话永远不直接生成行程；Brief 是「已确认的事实快照」，生成只在快照上跑。
 import { Type, type Static } from '@sinclair/typebox';
 import {
   BRIEF_MISSING_FIELDS,
@@ -13,10 +13,8 @@ import {
   CONSTRAINT_CATEGORY_LABELS,
   CONSTRAINT_POLARITIES,
   CONVERSATION_STATUSES,
-  INTAKE_ENUM_KINDS,
   MAX_TRIP_CONSTRAINTS,
   MAX_TRIP_DAYS,
-  PACE_LABELS,
   PACE_OPTIONS,
   PREFERENCE_OPTIONS,
   TRANSPORT_MODES,
@@ -24,7 +22,7 @@ import {
 import { StringEnum } from './typebox';
 import { EditOpOutcomeSchema } from './editOps';
 import { ChatAttachmentSchema } from './detailChat';
-import type { BriefIntake, BriefMissingField, GenerateForm, PlanningBriefData, TripConstraint } from './types';
+import type { BriefMissingField, GenerateForm, PlanningBriefData, TripConstraint } from './types';
 
 // ---------- 约束模型 ----------
 
@@ -65,22 +63,9 @@ export const PlanningBriefDataSchema = Type.Object({
   constraints: Type.Array(TripConstraintSchema, { maxItems: MAX_TRIP_CONSTRAINTS }),
 });
 
-/** 追问控件契约：前端据此选控件（enum → 按钮组，format=date-range → 日期范围，其余 → 文本框） */
-export const BriefInputSchemaSchema = Type.Object({
-  type: Type.String({ maxLength: 20 }),
-  format: Type.Optional(Type.String({ maxLength: 20 })),
-  enum: Type.Optional(Type.Array(Type.String({ maxLength: 40 }), { maxItems: 8 })),
-  // 与 enum 等长的展示文案（服务端/模型拥有文案，前端只负责渲染）
-  enumLabels: Type.Optional(Type.Array(Type.String({ maxLength: 40 }), { maxItems: 8 })),
-  // canonical：点击直接 PATCH 该字段；natural：点击后当消息发给模型解析（模型给的选项是自然语言）
-  enumKind: Type.Optional(StringEnum(INTAKE_ENUM_KINDS)),
-});
-
-export const BriefIntakeSchema = Type.Object({
-  question: Type.String({ minLength: 1, maxLength: 200 }),
-  missingFields: Type.Array(StringEnum(BRIEF_MISSING_FIELDS), { maxItems: 5 }),
-  inputSchema: BriefInputSchemaSchema,
-});
+// 注：原 `BriefInputSchemaSchema` / `BriefIntakeSchema`（追问控件的下发契约）已在 10-17
+// 随「对话式收集 Brief」一起删除。历史消息可能仍带 intake 数据（DB 列保留），
+// 不再有 schema 校验或渲染。
 
 export const PlanningBriefViewSchema = Type.Object({
   status: StringEnum(BRIEF_STATUSES),
@@ -97,7 +82,6 @@ export const ChatMessageSchema = Type.Object({
   role: StringEnum(CHAT_MESSAGE_ROLES),
   content: Type.String({ maxLength: 4000 }),
   sequence: Type.Integer({ minimum: 0 }),
-  intake: Type.Optional(BriefIntakeSchema),   // 仅 assistant 消息可能携带追问控件
   relatedTripId: Type.Optional(Type.String()),
   attachment: Type.Optional(ChatAttachmentSchema),
   createdAt: Type.Number(),
@@ -128,10 +112,8 @@ export const ConversationDetailSchema = Type.Object({
 
 // ---------- 请求 / 响应 ----------
 
-export const SendMessageSchema = Type.Object({
-  text: Type.String({ minLength: 1, maxLength: 1000 }),
-});
-
+// 注：原 `SendMessageSchema`（POST /:id/messages 的 body）随该路由下线一并删除，
+// 对话入口现在只有行程内的 DetailChatRequestSchema。
 export const SendMessageResultSchema = Type.Object({
   userMessage: ChatMessageSchema,
   replyMessage: ChatMessageSchema,
@@ -222,69 +204,9 @@ export function isBriefReady(data: PlanningBriefData): boolean {
   return requiredBriefFields(data).length === 0;
 }
 
-const MISSING_FIELD_QUESTIONS: Record<BriefMissingField, string> = {
-  destination: '这次想去哪里？',
-  startDate: '大概什么时候出发？',
-  endDate: '玩几天，或者哪天回来？',
-  pace: '这趟想轻松点、适中充实，还是特种兵式打卡？',
-  dateRange: '结束日期不能早于开始日期，帮我确认一下日期范围？',
-};
-
-const DATE_FIELDS: ReadonlySet<BriefMissingField> = new Set(['startDate', 'endDate', 'dateRange']);
-
-/** 只缺一项时的精准控件；无法枚举的字段只能给文本框 */
-function singleFieldIntake(field: BriefMissingField): BriefIntake {
-  if (field === 'pace') {
-    return {
-      question: MISSING_FIELD_QUESTIONS.pace,
-      missingFields: [field],
-      inputSchema: {
-        type: 'string',
-        enum: [...PACE_OPTIONS],
-        enumLabels: PACE_OPTIONS.map((option) => PACE_LABELS[option]),
-        enumKind: 'canonical',
-      },
-    };
-  }
-  if (DATE_FIELDS.has(field)) {
-    return {
-      question: MISSING_FIELD_QUESTIONS[field],
-      missingFields: [field],
-      inputSchema: { type: 'string', format: 'date-range' },
-    };
-  }
-  return {
-    question: MISSING_FIELD_QUESTIONS[field],
-    missingFields: [field],
-    inputSchema: { type: 'string' },
-  };
-}
-
-/**
- * 缺失字段 → 追问控件。
- * 关键：**一次只问一项**。缺多项时若合成一句「还需要：A、B」再把用户丢进文本框，
- * 就退化成「让用户自己写需求」——宁可连问几轮，也要让每一轮都能靠点击完成。
- * 能枚举的（节奏）给按钮，日期给日期控件，其余才给文本框。
- */
-export function briefIntake(missingFields: BriefMissingField[]): BriefIntake {
-  const missing = [...new Set(missingFields)];
-  const first = missing[0];
-  if (!first) return { question: '还需要补充一些信息。', missingFields: [], inputSchema: { type: 'string' } };
-  return singleFieldIntake(first);
-}
-
-/**
- * 模型给了选项时优先用模型的（自然语言，点击后当消息发回去让它解析）。
- * 模型最懂上下文（能报出「成都 / 重庆 / 西安」这样的候选），服务端只负责兜底。
- */
-export function briefIntakeWithOptions(missingFields: BriefMissingField[], question: string, options: string[]): BriefIntake {
-  const values = [...new Set(options.map((o) => o.trim()).filter(Boolean))].slice(0, 6);
-  return {
-    question: question.trim().slice(0, 200),
-    missingFields: [...new Set(missingFields)].slice(0, 5),
-    inputSchema: { type: 'string', enum: values, enumLabels: values, enumKind: 'natural' },
-  };
-}
+/** 只缺一项时的追问控件；无法枚举的字段只能给文本框 */
+// 注：singleFieldIntake / briefIntake / briefIntakeWithOptions 已随 intake 链路一起删除（10-17）。
+// requiredBriefFields 保留 —— 首页判断「能不能开始生成」仍靠它。
 
 // ---------- 纯函数：Brief → 生成表单 ----------
 // 确认卡「开始生成」的唯一映射，前后端共用（前端构造请求体，服务端不再重复推导）。

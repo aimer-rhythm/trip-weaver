@@ -3,11 +3,10 @@
 // 为什么不建 chatStore：对话的消息与 Brief 都是服务端状态，React Query 已经是唯一持有者。
 // 再复制一份到 zustand 会踩 state-management.md 里明确列出的反模式；
 // 这里只保留「由服务端数据推导展示形态」的纯函数。
-import {
-  type BriefIntake,
-  type ChatMessage,
-  type TransportMode,
-} from '@tripweaver/shared';
+//
+// 注：追问控件相关的 isIntakeLive / activeIntake / intakeShape 已在 10-17
+// 随「对话式收集 Brief」一起删除。
+import type { TransportMode } from '@tripweaver/shared';
 import { ApiError } from '../api/client';
 
 export const TRANSPORT_LABELS: Record<TransportMode, string> = {
@@ -15,31 +14,6 @@ export const TRANSPORT_LABELS: Record<TransportMode, string> = {
   drive: '自驾',
   walk: '步行优先',
 };
-
-/** 追问控件在什么时候还该展示：只有它之后没有新的用户消息时才「活着」 */
-export function isIntakeLive(messages: ChatMessage[], message: ChatMessage): boolean {
-  if (!message.intake) return false;
-  return !messages.some((m) => m.role === 'user' && m.sequence > message.sequence);
-}
-
-/** 当前生效的追问控件（取最后一条仍然活着的）——回答过就收起，避免重复点击 */
-export function activeIntake(messages: ChatMessage[]): BriefIntake | null {
-  for (let i = messages.length - 1; i >= 0; i -= 1) {
-    const message = messages[i];
-    if (!message || message.role !== 'assistant' || !message.intake) continue;
-    if (isIntakeLive(messages, message)) return message.intake;
-  }
-  return null;
-}
-
-/** 三种追问控件的形态：枚举给按钮、日期给日期输入、其余给文本框 */
-export type IntakeShape = 'buttons' | 'date-range' | 'text';
-
-export function intakeShape(intake: BriefIntake): IntakeShape {
-  if (intake.inputSchema.format === 'date-range') return 'date-range';
-  if (intake.inputSchema.enum?.length) return 'buttons';
-  return 'text';
-}
 
 /** 发送/编辑失败 → 可操作提示（沿用既有 4xx 分流风格：给下一步，而不是死胡同） */
 export function chatErrorMessage(error: unknown): string {

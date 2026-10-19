@@ -112,7 +112,7 @@ export function ChatPanel({ conversationId, trip, dayId, readOnly, busy, begin, 
         <p className="mb-0 mt-5 text-[16px] leading-[1.8] text-ink-muted">我为你整理了 {trip.days.length} 天的行程安排，已包含主要景点与交通安排，你可以根据需要进一步调整。</p>
         {messages.length === 0 && !pending && renderSuggestions(initialSuggestions, dayId, true)}</div>}
       {messages.map((message) => <div key={message.id} className="min-w-0">
-        <MessageBubble message={message} intakeLive={false} disabled={busy || readOnly} onPatch={() => {}} onText={(text) => void send(text)} />
+        <MessageBubble message={message} />
         {message.attachment?.notice && <p className="mb-0 mt-3 rounded-2xl bg-[var(--color-editor-page-background-97)] px-4 py-3 text-[14px] text-ink-muted">{message.attachment.notice}</p>}
         {message.attachment?.candidates.map((candidate) => <FoodCard key={candidate.id} candidate={candidate} trip={trip} conversationId={conversationId} disabled={busy || readOnly} readOnly={readOnly} begin={begin} end={end} onTrip={onTrip} />)}
         {message.role === 'assistant' && message.attachment && (message.attachment.clarification ? <div className="chat-answer-options mt-4 flex flex-wrap gap-2" role="group" aria-label={message.attachment.clarification.question}>

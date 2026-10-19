@@ -119,9 +119,6 @@ export const CHAT_MESSAGE_ROLES = ['user', 'assistant'] as const;
 /** 对话理解意图白名单（模型只有这几个动作可做）；前端据 confirm 决定是否自动开始生成 */
 export const CHAT_INTENTS = ['update_brief', 'travel_qa', 'confirm', 'modify_itinerary', 'unclear'] as const;
 
-/** 追问控件选项的来源：canonical = 服务端给的字段值（点击→PATCH）；natural = 模型给的自然语言（点击→当作消息发给模型解析） */
-export const INTAKE_ENUM_KINDS = ['canonical', 'natural'] as const;
-
 /** 单次生成的类型：全新生成 vs 基于已有行程的修订 */
 export const GENERATION_KINDS = ['generation', 'revision'] as const;
 

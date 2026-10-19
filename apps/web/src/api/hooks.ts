@@ -13,7 +13,6 @@ import type {
   PlanningBriefPatch,
   PlanningBriefView,
   RegisterBody,
-  SendMessageResult,
   SettingsPut,
   Trip,
   TripExport,
@@ -65,7 +64,6 @@ export const keys = {
   coveredCities: ['covered-cities'] as const,
   trips: ['trips'] as const,
   trip: (id: string) => ['trips', id] as const,
-  conversations: ['conversations'] as const,
   conversation: (id: string) => ['conversations', id] as const,
   tripVersions: (id: string) => ['trips', id, 'versions'] as const,
 };
@@ -388,18 +386,9 @@ export function useReadNotifications(userId: string) {
   });
 }
 
-// ---------- 问答式入口（09-23） ----------
+// ---------- 会话（首页胶囊 / 编辑器内嵌对话） ----------
 
-/** Conversation 列表响应（服务端与 chatUsage 一起返回，省一次请求） */
-export interface ConversationListView {
-  conversations: Conversation[];
-  chatUsage: UsageView;
-}
-
-export function useConversations() {
-  return useQuery({ queryKey: keys.conversations, queryFn: () => api.get<ConversationListView>('/api/conversations') });
-}
-
+/** 会话详情（ChatPanel 读历史消息）：只读，写入走 detailChat 的流式接口 */
 export function useConversation(id: string | null) {
   return useQuery({
     queryKey: keys.conversation(id ?? ''),
@@ -419,50 +408,8 @@ export function useTripConversation(tripId: string | null) {
 
 /** 惰性建会话：只在真正要发第一条消息/发起表单生成时创建，不在页面挂载时就留下空会话行 */
 export function useCreateConversation() {
-  const qc = useQueryClient();
   return useMutation({
     mutationFn: (title?: string) => api.post<Conversation>('/api/conversations', title ? { title } : {}),
-    onSuccess: () => qc.invalidateQueries({ queryKey: keys.conversations }),
-  });
-}
-
-export function useDeleteConversation() {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: (id: string) => api.del<{ ok: true }>(`/api/conversations/${id}`),
-    onSuccess: (_data, id) => {
-      qc.removeQueries({ queryKey: keys.conversation(id) });
-      qc.invalidateQueries({ queryKey: keys.conversations });
-    },
-  });
-}
-
-/**
- * 一轮往返后让详情失效重取，而不是把服务端对象拼进缓存：
- * 会话刚创建时详情请求可能在途，拼缓存会与之竞态；一次重取的代价远小于脏读。
- * 乐观气泡（pendingText）负责观感上的即时性。
- */
-function refreshAfterTurn(qc: ReturnType<typeof useQueryClient>, id: string): void {
-  qc.invalidateQueries({ queryKey: keys.conversation(id) });
-  qc.invalidateQueries({ queryKey: keys.conversations });
-}
-
-export function useSendMessage() {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: ({ id, text }: { id: string; text: string }) =>
-      api.post<SendMessageResult>(`/api/conversations/${id}/messages`, { text }, { timeoutMs: 180_000 }),
-    onSuccess: (_result, { id }) => refreshAfterTurn(qc, id),
-  });
-}
-
-/** 确认卡上的字段编辑：服务端补 id / 来源序号，返回与发消息同形状的结果 */
-export function usePatchBrief() {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: ({ id, patch }: { id: string; patch: PlanningBriefPatch }) =>
-      api.patch<SendMessageResult>(`/api/conversations/${id}/brief`, patch),
-    onSuccess: (_result, { id }) => refreshAfterTurn(qc, id),
   });
 }
 

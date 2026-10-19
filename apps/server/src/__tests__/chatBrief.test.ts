@@ -1,13 +1,11 @@
-// 单测：问答式入口的 Brief 就绪判定与追问控件构造（纯函数，服务端与前端共用同一规则）
+// 单测：Brief 就绪判定与约束 schema（纯函数，服务端与前端共用同一规则）
+// 注：追问控件（briefIntake / briefIntakeWithOptions）已在 10-17 下线，相应用例删除。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { Value } from '@sinclair/typebox/value';
 import {
-  BriefIntakeSchema,
   PlanningBriefDataSchema,
   TripConstraintSchema,
-  briefIntake,
-  briefIntakeWithOptions,
   isBriefReady,
   requiredBriefFields,
   type PlanningBriefData,
@@ -40,56 +38,6 @@ test('结束早于开始 → 合成项 dateRange；相等不报错', () => {
 test('齐备时 isBriefReady 为真，缺任一必填为假', () => {
   assert.equal(isBriefReady(base), true);
   assert.equal(isBriefReady({ ...base, pace: undefined }), false);
-});
-
-test('缺「旅行节奏」单项时给三选一按钮，enum 用 canonical 值而非中文标签', () => {
-  const intake = briefIntake(['pace']);
-  assert.deepEqual(intake.inputSchema.enum, ['relaxed', 'moderate', 'tight']);
-  assert.deepEqual(intake.missingFields, ['pace']);
-  assert.equal(intake.inputSchema.enumKind, 'canonical');
-});
-
-test('缺日期单项时给日期范围控件', () => {
-  assert.equal(briefIntake(['startDate']).inputSchema.format, 'date-range');
-  assert.equal(briefIntake(['dateRange']).inputSchema.format, 'date-range');
-});
-
-test('缺多项时只问第一项，不再把多个字段汇总成一句丢给文本框', () => {
-  const intake = briefIntake(['startDate', 'destination', 'pace']);
-  assert.deepEqual(intake.missingFields, ['startDate']);
-  assert.equal(intake.inputSchema.format, 'date-range');
-});
-
-test('缺多项且第一项是节奏 → 仍然是 canonical 按钮', () => {
-  const intake = briefIntake(['pace', 'destination']);
-  assert.deepEqual(intake.inputSchema.enum, ['relaxed', 'moderate', 'tight']);
-  assert.equal(intake.inputSchema.enumKind, 'canonical');
-});
-
-test('缺多项且第一项无法枚举 → 只问该字段的文本框（宁再三轮，不把需求丢给用户写）', () => {
-  const intake = briefIntake(['destination', 'pace']);
-  assert.deepEqual(intake.missingFields, ['destination']);
-  assert.equal(intake.question, '这次想去哪里？');
-  assert.equal(intake.inputSchema.enum, undefined);
-});
-
-test('模型给了选项 → 直接用模型文案与候选，并标记为自然语言（点击走消息而非 PATCH）', () => {
-  const intake = briefIntakeWithOptions(['destination', 'startDate'], '这次想去哪里？', ['成都', '重庆', '西安']);
-  assert.deepEqual(intake.inputSchema.enum, ['成都', '重庆', '西安']);
-  assert.equal(intake.inputSchema.enumKind, 'natural');
-  assert.equal(intake.question, '这次想去哪里？');
-  assert.ok(Value.Check(BriefIntakeSchema, intake));
-});
-
-test('模型选项去空、去重、限量 6 个', () => {
-  const intake = briefIntakeWithOptions(['destination'], 'q', ['a', ' a ', '', 'b', 'c', 'd', 'e', 'f']);
-  assert.deepEqual(intake.inputSchema.enum, ['a', 'b', 'c', 'd', 'e', 'f']);
-});
-
-test('briefIntake 产出符合 BriefIntakeSchema', () => {
-  for (const missing of [['pace'], ['startDate'], ['destination', 'endDate', 'pace']] as const) {
-    assert.ok(Value.Check(BriefIntakeSchema, briefIntake([...missing])));
-  }
 });
 
 test('约束 schema：接受 4 种 polarity，拒绝未知分类与未知极性', () => {

@@ -26,8 +26,6 @@ import type {
   TransitLegSchema,
 } from './schemas';
 import type {
-  BriefInputSchemaSchema,
-  BriefIntakeSchema,
   ChatMessageSchema,
   ConversationDetailSchema,
   ConversationSchema,
@@ -92,8 +90,6 @@ export type TripConstraintDraft = Static<typeof TripConstraintDraftSchema>;
 export type PlanningBriefData = Static<typeof PlanningBriefDataSchema>;
 export type PlanningBriefView = Static<typeof PlanningBriefViewSchema>;
 export type PlanningBriefPatch = Static<typeof PlanningBriefPatchSchema>;
-export type BriefInputSchema = Static<typeof BriefInputSchemaSchema>;
-export type BriefIntake = Static<typeof BriefIntakeSchema>;
 export type ChatMessage = Static<typeof ChatMessageSchema>;
 export type Conversation = Static<typeof ConversationSchema>;
 export type ConversationDetail = Static<typeof ConversationDetailSchema>;

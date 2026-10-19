@@ -7,7 +7,6 @@ import {
   CONVERSATION_STATUSES,
   requiredBriefFields,
   uid,
-  type BriefIntake,
   type BriefStatus,
   type ChatMessage,
   type Conversation,
@@ -65,7 +64,6 @@ function toChatMessage(row: MessageRow): ChatMessage {
     role: oneOf(CHAT_MESSAGE_ROLES, row.role, 'assistant'),
     content: row.content,
     sequence: row.sequence,
-    ...(row.intake ? { intake: row.intake as BriefIntake } : {}),
     ...(row.relatedTripId ? { relatedTripId: row.relatedTripId } : {}),
     ...(Value.Check(ChatAttachmentSchema, row.attachment) ? { attachment: row.attachment } : {}),
     createdAt: row.createdAt.getTime(),
@@ -84,10 +82,6 @@ async function selectConversations(userId: string, id?: string): Promise<Convers
     .where(where)
     .orderBy(desc(conversations.updatedAt));
   return rows.map((r) => toConversation(r.conversation, r.brief));
-}
-
-export function listConversations(userId: string): Promise<Conversation[]> {
-  return selectConversations(userId);
 }
 
 export async function getConversation(userId: string, id: string): Promise<Conversation | null> {
@@ -198,23 +192,9 @@ export async function createConversation(userId: string, title?: string, writer?
   return { id, title: title?.trim().slice(0, TITLE_MAX) || DEFAULT_CONVERSATION_TITLE, status: 'active', createdAt: now.getTime(), updatedAt: now.getTime(), brief: { data, status: 'collecting', missingFields: requiredBriefFields(data), updatedAt: now.getTime() } };
 }
 
-export async function deleteConversation(userId: string, id: string): Promise<boolean> {
-  return db.transaction(async (tx) => {
-    const rows = await tx
-      .delete(conversations)
-      .where(and(eq(conversations.id, id), eq(conversations.userId, userId)))
-      .returning({ id: conversations.id });
-    if (rows.length === 0) return false;
-    await tx.delete(chatMessages).where(and(eq(chatMessages.conversationId, id), eq(chatMessages.userId, userId)));
-    await tx.delete(planningBriefs).where(and(eq(planningBriefs.conversationId, id), eq(planningBriefs.userId, userId)));
-    return true;
-  });
-}
-
 export interface AppendMessageInput {
   role: 'user' | 'assistant';
   content: string;
-  intake?: BriefIntake;
   relatedTripId?: string;
   attachment?: ChatAttachment;
 }
@@ -263,7 +243,6 @@ export async function appendMessages(input: AppendMessagesInput, writer?: TripWr
         sequence,
         createdAt: now,
       };
-      if (message.intake) values.intake = message.intake;
       if (message.relatedTripId) values.relatedTripId = message.relatedTripId;
       if (message.attachment) values.attachment = message.attachment;
       await tx.insert(chatMessages).values(values);
@@ -273,7 +252,6 @@ export async function appendMessages(input: AppendMessagesInput, writer?: TripWr
         role: message.role,
         content: message.content,
         sequence,
-        ...(message.intake ? { intake: message.intake } : {}),
         ...(message.relatedTripId ? { relatedTripId: message.relatedTripId } : {}),
         ...(message.attachment ? { attachment: message.attachment } : {}),
         createdAt: now.getTime(),

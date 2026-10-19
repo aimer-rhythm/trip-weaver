@@ -1,19 +1,15 @@
-// 单条消息气泡：用户右侧 / AI 左侧。AI 消息若带有「仍然生效」的追问控件，就地渲染控件。
-import type { ChatMessage, PlanningBriefPatch } from '@tripweaver/shared';
-import { IntakeControls } from './IntakeControls';
+// 单条消息气泡：用户右侧 / AI 左侧。
+// 注：追问控件（IntakeControls）已随「对话式收集 Brief」在 10-17 下线，
+// 历史消息里可能残留 intake 数据，但不再渲染。
+import type { ChatMessage } from '@tripweaver/shared';
 import { ChatText } from './ChatText';
 import { ChatProgress } from './ChatProgress';
 
 interface Props {
   message: ChatMessage;
-  /** 该消息的 intake 是否仍然生效（回答过就收起，避免重复点击） */
-  intakeLive: boolean;
-  disabled: boolean;
-  onPatch: (patch: PlanningBriefPatch) => void;
-  onText: (text: string) => void;
 }
 
-export function MessageBubble({ message, intakeLive, disabled, onPatch, onText }: Props) {
+export function MessageBubble({ message }: Props) {
   const isUser = message.role === 'user';
   return (
     <div className={`chat-msg flex min-w-0 flex-col gap-2 ${isUser ? 'chat-msg-user ml-auto max-w-[88%] items-end' : 'chat-msg-assistant w-full items-start'}`}>
@@ -28,9 +24,6 @@ export function MessageBubble({ message, intakeLive, disabled, onPatch, onText }
             ))}
           </ul>
         </details>
-      )}
-      {!isUser && intakeLive && message.intake && (
-        <IntakeControls intake={message.intake} disabled={disabled} onPatch={onPatch} onText={onText} />
       )}
     </div>
   );

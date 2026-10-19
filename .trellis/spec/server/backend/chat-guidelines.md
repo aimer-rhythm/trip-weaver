@@ -77,21 +77,22 @@ the chat quota, or the conversation-to-generation link.
   (counted from `chat_messages` where `role='user'`) therefore never charges a failed turn. This mirrors
   the generation rule that failed and cancelled runs do not consume quota.
 - **Chat quota is independent of generation quota.** `CHAT_DAILY_LIMIT` counts user turns; the
-  generation quota counts `generations.status='done'`. Card edits (`PATCH /brief`) also record a user
-  message and so do consume a chat turn. The one exception is the home-page snapshot write
-  (`PATCH /brief?snapshot=1`), which only persists the brief the user already assembled in the capsule:
-  it appends no messages, so the editor's chat opens on the welcome copy instead of a machine-written
-  「已更新：…」 pair, and it consumes no chat turn. Keep the two paths distinct — the flag is the only
-  difference, and `useSaveBriefSnapshot` / `usePatchBrief` are the respective front doors.
-- **Intake controls are click-first, one field at a time.** Never summarise several missing fields into
-  one sentence and drop the user into a text box — that degenerates into "write your own requirements".
-  `briefIntake` asks for the *first* missing field only: enumerable fields get buttons, dates get a date
-  control, and only otherwise-unenumerable fields (destination with no model options) fall back to text.
-  When the model supplies `clarification.options`, those win: `briefIntakeWithOptions` renders them as
-  buttons with `enumKind: 'natural'`, so a click is sent back as a message for the model to interpret.
-  `enumKind: 'canonical'` options (server-provided field values) are `PATCH`ed directly instead, which is
-  exact and costs no chat turn. `inputSchema.enum` carries values, `enumLabels` display copy — the backend
-  or model owns the wording and the client only renders it.
+  generation quota counts `generations.status='done'`. `PATCH /api/conversations/:id/brief` now has one
+  meaning only: the home-page snapshot write, which persists the brief the user already assembled in the
+  capsule. It appends no messages, so the editor's chat opens on the welcome copy instead of a
+  machine-written 「已更新：…」 pair, and it consumes no chat turn. The confirm-card edit branch (which
+  did append a user message and consume a turn) was removed on 10-17 together with
+  `POST /api/conversations/:id/messages`, when the home page moved to map city picking + the capsule
+  intake; `useSaveBriefSnapshot` is the only front door left.
+- **Brief intake happens on the home page, not in chat (10-17).** The `briefIntake` /
+  `briefIntakeWithOptions` contract, `BriefIntakeSchema`, `ChatMessage.intake`, `IntakeControls` and
+  `chatDerive.activeIntake` were removed together with `POST /api/conversations/:id/messages`: the home
+  page now collects destination / dates / pace in the map + capsule flow and writes the whole brief in one
+  snapshot (`PATCH /brief`). Do not reintroduce multi-turn intake without a product decision — the
+  `chat_messages.intake` column stays only for historical rows.
+- **`requiredBriefFields` is still the single readiness rule.** The home page (`NewTripPage`), the brief
+  status derivation (`briefStatus`) and the auto-regeneration check in `detailChatService` all call it;
+  it is the only remaining consumer of `BRIEF_MISSING_FIELDS`.
 - **Revision is a targeted edit, not a re-run (09-24 R1).** The model emits `editOps`
   (replace / delete / add activity — the only three supported operations) against the current trip
   rendered into the prompt with activity ids (`renderCurrentTrip`). The route normalises them
