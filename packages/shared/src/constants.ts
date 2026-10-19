@@ -12,8 +12,9 @@ export const MAX_TRIP_DAYS = 15;
 // 单用户行程数量不设上限：原 MAX_TRIPS_PER_USER = 100 的判据在版本链（09-23）之后按表行数计数，
 // 把历史版本算成新行程，会在对话修订时误报上限并让整轮事务回滚（已于 10-11 移除）。
 
-// 行程列表分页（10-03）：默认每批 20 条，服务端 limit 上限防滥用
-export const TRIP_LIST_PAGE_SIZE = 20;
+// 行程列表分页（10-03）：默认每批 12 条 —— 首页网格 3 列，12 是 3 和 2 的公倍数，
+// 每次追加后底部都是整行（20 条在 3 列布局下会缺 1 张）。服务端 limit 上限防滥用。
+export const TRIP_LIST_PAGE_SIZE = 12;
 export const TRIP_LIST_PAGE_SIZE_MAX = 50;
 export const MAX_SOURCE_NOTES = 3;
 // 单次生成兜底超时（服务端中断 + 前端超时文案同源；32k 输出预算下单轮可达数分钟）
