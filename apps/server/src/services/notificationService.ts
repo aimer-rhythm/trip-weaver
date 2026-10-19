@@ -2,6 +2,7 @@ import { and, desc, eq, isNull, lt, lte } from 'drizzle-orm';
 import { uid, type GenerationJobView, type GenerationNotification, type NotificationPage, type Trip, type TripShareImageStyle } from '@tripweaver/shared';
 import { db } from '../db/client';
 import { generationNotifications as notifications } from '../db/schema';
+import { publishNotification, type NotificationEvent } from './notificationStream';
 
 type NewNotification = Omit<typeof notifications.$inferInsert, 'id' | 'sequence' | 'createdAt' | 'readAt'>;
 function notificationView(row: typeof notifications.$inferSelect): GenerationNotification {
@@ -21,11 +22,25 @@ export async function recordShareImageNotification(userId: string, trip: Trip, s
     jobCreatedAt: now, createdAt: now,
   }).returning();
   if (!row) throw new Error('海报通知保存失败');
+  publishNotification(userId, { kind: 'success', title: row.title, tripId: trip.id });
   return notificationView(row);
 }
-export async function recordGenerationNotification(input: NewNotification, writer: Pick<typeof db, 'insert'> = db): Promise<void> {
+
+/**
+ * 返回本次写入对应的推送事件，由调用方决定何时 publish。
+ * `publish: false` 用于**事务内**写入：事务未提交时推送会让前端回查到空列表，
+ * 调用方必须在 commit 之后自己调 publishNotification。
+ */
+export async function recordGenerationNotification(
+  input: NewNotification,
+  writer: Pick<typeof db, 'insert'> = db,
+  options: { publish?: boolean } = {},
+): Promise<NotificationEvent> {
   await writer.insert(notifications).values({ ...input, id: uid(), createdAt: new Date() })
     .onConflictDoNothing({ target: [notifications.userId, notifications.jobId] });
+  const event: NotificationEvent = { kind: input.kind, title: input.title, tripId: input.tripId };
+  if (options.publish !== false) publishNotification(input.userId, event);
+  return event;
 }
 
 export async function listNotifications(userId: string, before?: number, limit = 20): Promise<NotificationPage> {

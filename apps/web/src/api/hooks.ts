@@ -367,7 +367,7 @@ export function useNotifications(userId: string) {
       return data;
     },
     getNextPageParam: (page) => page.nextCursor ?? undefined,
-    enabled: Boolean(userId), refetchInterval: 15_000, refetchOnWindowFocus: true,
+    enabled: Boolean(userId), refetchInterval: 60_000, refetchOnWindowFocus: true,
   });
 }
 

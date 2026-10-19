@@ -6,6 +6,7 @@ import { Value } from '@sinclair/typebox/value';
 import { TripSchema, TripShareImageResponseSchema, type GenerationNotification, type Trip, type TripShareImageResponse } from '@tripweaver/shared';
 import { api, ApiError } from '../api/client';
 import { keys, useNotifications, useReadNotifications } from '../api/hooks';
+import { useNotificationStream } from '../hooks/useNotificationStream';
 import { useDismissibleDisclosure } from './ui/Dropdown';
 import { Button, IconButton } from './ui/Button';
 import { Modal } from './Modal';
@@ -29,6 +30,7 @@ function notificationTime(timestamp: number): string {
 
 export function NotificationCenter({ userId }: { userId: string }) {
   const query = useNotifications(userId);
+  useNotificationStream(userId);        // 实时提示；列表本身仍由 query 负责
   const read = useReadNotifications(userId);
   const navigation = useAppNavigation();
   const navigate = useNavigate();
