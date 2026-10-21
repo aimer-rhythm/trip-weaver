@@ -524,5 +524,78 @@ open 模式注册改为邮箱验证码校验，新增 `/api/auth/email-code` 与
 - 剩余：`10-17-annotate-core-pipeline`（注释已提交，考察题未做）、`10-12-cdn`（卡 R2 桶与域名）、`10-09-server-side-pdf-export`（无 prd）
 - 剩余：`10-17-annotate-core-pipeline`（需切分）、`10-12-cdn`（卡 R2）、`10-09-server-side-pdf-export`（无 prd）
 
+---
+
+## Session 57: 分享海报品牌带与生图错误可见性
+
+**Date**: 2026-10-21
+**Task**: 分享海报加品牌带与二维码（`10-20-share-poster-brand`）
+**Branch**: `master`
+
+### Summary
+
+AI 生成的海报是唯一会被转发出去的产物，但图上只有模型画的「AI 创作 · 织程」角标（中文长文本模型经常画错），没有域名、没有二维码。在落盘前合成一条 144px 品牌带：左侧域名与产品标识，右侧 112px 二维码指向站点首页。
+
+验收过程中用户报「生图报错服务器内部错误」，顺带查出两个既有缺陷：全局错误处理把所有 5xx 的 message 吞成通用文案；降级链路只记录最后一站错误，三站同时故障时分不清是「降级没跑」还是「都挂了」。
+
+### Main Changes
+
+| 主题 | 提交 | 要点 |
+|---|---|---|
+| 品牌带合成 | `1339cd1` | `sharePosterBrand.ts` + 预渲染素材 + 生成脚本 + 6 条单测；新增 sharp / qrcode |
+| 服务接入 | `8cb0096` | 合成放在 `store.save` 之前；`SHARE_BRAND_ENABLED` 开关 |
+| 错误透出 | `b4f7a58` | `imageError` 带 `expose`，errorHandler 对带标记的 5xx 保留 message |
+| 降级日志 | `6b79e8b` | 逐站记录序号、域名、耗时、原因 |
+| 测试漂移 | `8b8a8d4` | 轮询 15s→60s 后的断言更新 |
+
+### 关键决策：品牌带为什么是预渲染 PNG
+
+生产镜像是 `node:22-alpine`，没有中文字体，运行时用 SVG 渲染中文会出方框。做法是在开发机用 `scripts/generate-share-brand-band.mts` 画好 1024×144 PNG 提交入库，运行时只贴图 + 贴二维码，不渲染任何文字。素材 9.7KB，可重复重建。
+
+尺寸踩了一轮：初版 96px 带高 / 72px 二维码，在手机上缩到 26px 扫不出来；改为 144px / 112px（占宽度 11%）。
+
+### 两个既有缺陷的定位过程
+
+用户报「服务器内部错误」，实际是上游 504。定位靠：① 日志里的 `err.statusCode: 502` + `err.message`；② 逐站 curl：`xjbh.lol` 返回 `503 no_available_account`（账号池空），`draw.songbey.com` 返回 `504`（网关超时）；③ 三站耗时 1.4+12.7+11.4 ≈ 25.5s，与响应时间吻合，证明降级链真的跑完了。
+
+站 2 与站 3 同域（只换 key），实际只有两家上游。
+
+### 验证
+
+- `npm run typecheck` 四包 EXIT=0
+- `verify-sql-first` 99/99（新增 `sharePosterBrand.test.ts` 进默认清单）
+- `tripShareImage.test.ts` 18/18
+- `apiResponse.test.ts` 3/3（新增 `/api/exposed` 用例）
+- `trip-share-image-browser.mjs` PASS
+- `node:22-alpine` 容器内 sharp + qrcode 合成实测 `200x240 1758B`
+- 真实海报（848×1264 JPEG，10-11 产出）合成后 848×1383，journal / ink 都过
+
+### 坑
+
+- `node --import tsx --test apps/server/src/__tests__/xxx.test.ts` 报 `MASTER_KEY 缺失`：import 链拉到 `env.ts`，需要先 `$env:MASTER_KEY = 'a'*64`
+- `console.warn` 走 stderr，`console.info` 走 stdout：查逐站日志要去 err 流
+- 纯 PowerShell 内联 `curl -d '{...}'` 会被引号转义破坏，用 `--data-binary @file`
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `1339cd1` | feat(server): 分享海报合成品牌带与二维码 |
+| `8cb0096` | feat(server): 海报生成接入品牌带开关 |
+| `b4f7a58` | fix(server): 生图失败不再吞成服务器内部错误 |
+| `6b79e8b` | chore(server): 生图降级逐站写日志 |
+| `8b8a8d4` | fix(web): 分享海报浏览器测试跟上轮询改动 |
+| `cda6945` | chore(task): 归档分享海报品牌带任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- 生图上游当前三家都不可用（xjbh 账号池空、songbey 网关超时），海报生成会被阻塞至上游恢复；建议找第三家不同域名做 `IMAGE_API_BASE_URL_3`
+- 二维码指向站点首页，**公开行程分享页 / OG 卡片仍未做**（需分享 token + 公开只读页 + 隐私设计）
+- 剩余：`10-17-annotate-core-pipeline`（注释已提交）、`10-12-cdn`（卡 R2）、`10-09-server-side-pdf-export`（无 prd）
+
 
 
