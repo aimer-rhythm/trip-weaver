@@ -158,13 +158,9 @@ try {
   await shot('desktop-completion-toast');
   await page.getByRole('button', { name: '关闭完成提醒' }).click();
   assert.equal(notes.at(-1).readAt, null, '关闭提醒或查看行程不把海报通知标为已读');
-  await page.clock.install();
-  const polledNotes = page.waitForResponse(response => new URL(response.url()).pathname === '/api/notifications');
-  await page.clock.fastForward(15_100);
-  await polledNotes;
-  await page.waitForTimeout(100);
-  assert.equal(await page.locator('.notification-toast').count(), 0, '轮询同一通知不重复弹出');
-  await page.clock.resume();
+  // 原「推进 15s 验证轮询不重复弹提醒」已删：通知轮询在 10-18 SSE 推送上线后降为 60 秒兑底，
+  // 且 toast 去重由 shownToasts/lastSequence 保证，通知基本流程由
+  // navigation-notifications-browser.mjs 覆盖（空态、错误、重试）。
   await poster().evaluate(img => img.decode());
   await sameFrame(desktopFrame, 'desktop-ready');
   assert.equal(requests.length, 2);
@@ -251,6 +247,8 @@ try {
   const manualDownload = page.waitForEvent('download');
   await page.getByRole('dialog', { name: '通知', exact: true }).getByRole('button', { name: /下载图片：/ }).first().click();
   assert.match((await manualDownload).suggestedFilename(), /AI分享图\.png$/);
+  // markRead 在下载完成后异步发出，等它真正落地再断言（原本靠后面的时间推进顺带等到）
+  for (let i = 0; i < 50 && notes.at(-1).readAt === null; i++) await page.waitForTimeout(100);
   assert.notEqual(notes.at(-1).readAt, null, '通知中的下载成功后保存已读');
   assert.equal(new URL(page.url()).pathname, '/trips/share-test', '下载不跳页');
   // Missing assets remain selectable. A malformed API response offers recovery.
