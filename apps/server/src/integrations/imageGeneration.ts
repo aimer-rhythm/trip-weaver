@@ -109,19 +109,33 @@ async function attemptImageGeneration(config: ImageGenerationConfig, prompt: str
 /**
  * 按配置顺序尝试中转站：可重试故障降级到下一站，首个成功即返回。
  * 全部失败时抛出最后一次真实错误；请求本身出错（HTTP 4xx）与本站配置不合法则立即失败。
+ *
+ * 逐站写日志：只记最后一站错误的话，三家上游同时故障时分不清是「降级没跑」还是「都挂了」。
+ * 日志只写站序号、域名、耗时与原因，不输出密钥。
  */
 export async function generateShareImage(providers: ImageGenerationConfig[], prompt: string): Promise<GeneratedShareImage> {
   const usable = providers.filter(provider => provider.baseUrl && provider.apiKey);
   if (!usable.length) throw imageError('AI 生图尚未配置，请管理员设置 IMAGE_API_KEY', 503);
   const deadline = Date.now() + TOTAL_TIMEOUT_MS;
   let lastError: Error | null = null;
-  for (const provider of usable) {
+  for (const [index, provider] of usable.entries()) {
     const remainingMs = deadline - Date.now();
-    if (remainingMs <= 0) break;
+    if (remainingMs <= 0) {
+      console.warn(`[image-generation] 总预算 ${TOTAL_TIMEOUT_MS}ms 用尽，剩余 ${usable.length - index} 站未尝试`);
+      break;
+    }
+    const label = `#${index + 1} ${new URL(provider.baseUrl).host}`;
+    const started = Date.now();
     try {
-      return await attemptImageGeneration(provider, prompt, AbortSignal.timeout(remainingMs));
+      const image = await attemptImageGeneration(provider, prompt, AbortSignal.timeout(remainingMs));
+      // 单站时成功是常态，不必每次都打日志
+      if (usable.length > 1) console.info(`[image-generation] ${label} 成功 ${Date.now() - started}ms`);
+      return image;
     } catch (error) {
-      if (!isImageError(error) || !error.retryable) throw error;
+      const reason = error instanceof Error ? error.message : String(error);
+      const fatal = !isImageError(error) || !error.retryable;
+      console.warn(`[image-generation] ${label} 失败 ${Date.now() - started}ms：${reason}${fatal ? '（不可降级，终止）' : ''}`);
+      if (fatal) throw error;
       lastError = error;
     }
   }
