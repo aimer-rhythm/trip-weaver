@@ -599,3 +599,68 @@ AI 生成的海报是唯一会被转发出去的产物，但图上只有模型�
 
 
 
+
+## Session 58: 手写体分片按真实文案重排
+
+**Date**: 2026-10-21
+**Task**: 手写体分片按真实文案重排（`10-21-handwriting-chunk-layout`）
+**Branch**: `master`
+
+### Summary
+
+用户截图发现生成页拍立得卡片标题出现「一半手写体、一半系统黑体」的混杂帧。根因不是字体缺字，而是分片布局：`build-handwriting-font.py` 只把几十个城市/景点字手工塞进 `CORE_BLOCKS`，其余按码位每 96 字一片。5 个标题共 20 个汉字要拉 16 片、约 1.1 MB，每片都是独立的 `font-display: swap` 请求，先到的字先换字体，于是逐字跳动。
+
+### Main Changes
+
+| 主题 | 提交 | 要点 |
+|---|---|---|
+| 语料导出与聚类 | `8ba4804` | 新增 `scripts/extract-handwriting-corpus.mts`：只读连库取地点名/目的地/日标题，按共现建图做凝聚聚类 |
+| 分片计划 | `8ba4804` | 新增 `scripts/handwriting-chunks.json`，只存字符不落原文不落凭据 |
+| 构建脚本 | `8ba4804` | `build-handwriting-font.py` 优先读分片计划，无计划时回退 `CORE_BLOCKS` |
+| 产物 | `8ba4804` | 76 片 → 90 片，woff2 与 `tailwind.css` 全部重生成，覆盖率清单同步 |
+
+### 关键结论：为什么到不了「1 片」
+
+「公园」「博物馆」这类字只能落在一个片里，任何含它们的标题至少 2 片。把同一字形复制进多片无效——`unicode-range` 重叠时浏览器只用第一个匹配的 face。所以目标是 2~3 片而非 1 片。第一版用「公共字单独成片 + 整条文案贪心装箱」效果很差（平均 3.62 片），换成共现图凝聚聚类 + 局部搬字优化后才降到 3.03。
+
+### 实测
+
+| 标题 | 改造前 | 改造后 |
+|---|---|---|
+| 紫竹院 | 3 片 / 198 KB | 2 片 / 128 KB |
+| 奥林匹克公园 | 6 片 / 366 KB | 2 片 / 126 KB |
+| 首钢园 | 3 片 / 203 KB | 3 片 / 134 KB |
+| 古北水镇 | 4 片 / 232 KB | 2 片 / 123 KB |
+| 鲁迅博物馆 | 4 片 / 251 KB | 3 片 / 203 KB |
+| 五张卡去重 | 16 片 / 1101 KB | 7 片 / 428 KB |
+
+代价：`tailwind.css` 字体块 50 KB → 64 KB（gzip +5 KB），字体总量 5.62 MB → 5.97 MB（多出的是每片 woff2 表头开销）。
+
+### 坑
+
+- 语料里混进了测试遗留的合成名字（`金集并发-<uuid>`），会把 uuid 的十六进制字符一起拉进聚类；导出时要按 `[0-9a-f]{8}-...` 过滤
+- 局部搬字优化第一版没有快照回滚，跑完比聚类还差（3.03 → 3.59）；必须每轮取最优快照，退步就回滚
+- `git add .trellis/tasks/` 会把并发会话的未跟踪任务文件一起吞进去，归档提交只能显式指定任务目录
+
+### 另案：Cloudflare 边缘缓存
+
+用户问行程封面简笔画为什么没有缓存。定位结果：源站响应头是对的（`Cache-Control: public, max-age=31536000, immutable`），浏览器侧一年内不会重拉；但 CF 边缘 `cf-cache-status` 恒为 `DYNAMIC`。通过 Cloudflare MCP 建了 Cache Rule（`/assets/` + `/fonts/` → Eligible for cache，ruleset version 6），Rule Trace 确认规则**匹配**，GraphQL 分析却显示规则生效后 `/assets/*.js` 23 次仍全 dynamic。对照组：同 zone 的 `mail.sakiiko.com` 有 cache hit，说明 zone 缓存本身正常，唯一变量是 `sakiiko.com` 走了 Origin Rule 把回源端口改写成 8443。
+
+用户选择先不动 CF 拓扑。规则保留（无害，端口拓扑改了会自动生效），`development_mode`、`cache_level`、Page Rules、Origin Rule 均未改动。
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `8ba4804` | perf(web): 手写体分片按真实文案重排 |
+| `0049fa4` | chore(task): 归档手写体分片重排任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- 首屏还可再压：`<link rel="preload">` 公共字片（`youran-00-*.woff2`，53 KB），或让卡片标题等 `document.fonts.load()` 就绪再切手写体，彻底消除逐片 swap 的粗细混排
+- 语料变化后要重跑 `extract-handwriting-corpus.mts` → `build-handwriting-font.py` → `generate-title-font-coverage.py`，否则新地名会落到碎片片
+- CF 边缘缓存仍待解：需要验证 Origin Rule 的 8443 端口改写是否阻断缓存，代价是要动 xray/nginx 端口分配
