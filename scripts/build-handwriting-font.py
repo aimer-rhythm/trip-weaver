@@ -1,9 +1,13 @@
 """Build the selected Youran font as complete, cache-versioned WOFF2 subsets.
 
 Requires fonttools[woff]. Source and permission: apps/web/public/fonts/handwriting/NOTICE.md.
+
+分片顺序：先读 scripts/handwriting-chunks.json（由 scripts/extract-handwriting-corpus.mts
+按真实文案共现聚类生成：公共字片在前，文案聚类片其次），剩下的字形再按码位每 CHUNK 字一片。
 """
 import argparse
 import hashlib
+import json
 import re
 from pathlib import Path
 
@@ -13,10 +17,9 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parent.parent
 FONT_DIR = ROOT / 'apps/web/public/fonts/handwriting'
 CSS = ROOT / 'apps/web/src/styles/tailwind.css'
+PLAN = ROOT / 'scripts/handwriting-chunks.json'
 SOURCE_SHA256 = '10a92c32d388f119db8a975fe6f0507ec48d15e3050e7ff2971c3784ad878580'
-# Put common UI/travel characters together so a short title does not fetch most of the font.
-# All remaining source glyphs are still shipped in smaller, on-demand subsets.
-# Each block becomes one subset, so characters that co-occur in a title stay in the same file.
+# CORE_BLOCKS 只在没有 scripts/handwriting-chunks.json 时作为回退使用。
 CORE_BLOCKS = (
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ·，。！？、：；（）—',
     # 城市名与景点词放最前优先占位：目的地、地点名几乎每个页面都出现，
@@ -61,14 +64,27 @@ if __name__ == '__main__':
         raise SystemExit('Source differs from the reviewed Youran font; review before updating the pinned hash.')
     with TTFont(args.source) as font:
         original = codepoints(font)
-    core_blocks, core = [], set()
-    for text in CORE_BLOCKS:
-        block = sorted({cp for cp in map(ord, text) if cp in original and cp not in core})
-        core.update(block)
-        if block:
-            core_blocks.append(block)
-    remaining = sorted(original.difference(core))
-    groups = core_blocks + [remaining[start:start + CHUNK] for start in range(0, len(remaining), CHUNK)]
+    groups = []
+    if PLAN.exists():
+        plan = json.loads(PLAN.read_text(encoding='utf-8'))
+        covered = set()
+        for text in plan['chunks']:
+            block = sorted({ord(character) for character in text
+                            if ord(character) in original and ord(character) not in covered})
+            covered.update(block)
+            if block:
+                groups.append(block)
+        remaining = sorted(original.difference(covered))
+    else:
+        # 回退：没有语料分片计划时按手工核心字块 + 码位切分。
+        core = set()
+        for text in CORE_BLOCKS:
+            block = sorted({cp for cp in map(ord, text) if cp in original and cp not in core})
+            core.update(block)
+            if block:
+                groups.append(block)
+        remaining = sorted(original.difference(core))
+    groups += [remaining[start:start + CHUNK] for start in range(0, len(remaining), CHUNK)]
     faces, paths, shipped = [], set(), set()
     for index, selected in enumerate(groups):
         with TTFont(args.source, recalcTimestamp=False) as font:
