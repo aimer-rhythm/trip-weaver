@@ -21,6 +21,9 @@ export function generationCardCaption(poi: ResearchPoi): string {
 export function advanceGenerationCards(current: ResearchPoi[], target: ResearchPoi[]): ResearchPoi[] {
   const incoming = target.find(poi => !current.some(shown => shown.id === poi.id && shown.coverUrl === poi.coverUrl));
   const staleIndex = current.findIndex(poi => !target.some(wanted => wanted.id === poi.id && wanted.coverUrl === poi.coverUrl));
+  // 候选池按“最近 5 张”滚动，已展示的卡片会随时掉出 target；未填满前只追加，
+  // 否则每来一个新候选就把唯一那张换掉，画面永远只有第一张。
+  if (incoming && current.length < target.length) return [...current, incoming];
   if (incoming) {
     if (staleIndex >= 0) return current.map((poi, i) => i === staleIndex ? incoming : poi);
     return [...current, incoming];
