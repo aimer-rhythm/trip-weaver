@@ -168,6 +168,8 @@ export const env = {
   // AI 分享图多个中转站（10-06）：第 1 站无后缀，第 2/3 站加 _2 / _3 后缀，书写顺序即优先级；
   // 中转站故障时按序降级（见 integrations/imageGeneration.ts），未配置时为 503 空数组。
   imageProviders: readImageProviders(process.env),
+  // 海报品牌带（10-20）：生图落盘前在底部补域名与二维码，关闭后行为回到只出 AI 原图
+  shareBrandEnabled: str('SHARE_BRAND_ENABLED', 'true') !== 'false',
   // Embedding（RAG 向量召回，可选）：缺省回落到站点 LLM 的 baseUrl/apiKey（OpenAI 兼容端点普遍同址提供 /embeddings）
   embedding: {
     baseUrl: str('EMBEDDING_BASE_URL') || str('SITE_LLM_BASE_URL'),

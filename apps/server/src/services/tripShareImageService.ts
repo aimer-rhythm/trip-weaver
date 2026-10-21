@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import type { GenerationNotification, Trip, TripShareImageGeneratedResponse, TripShareImageResponse } from '@tripweaver/shared';
 import { env } from '../env';
 import { generateShareImage, imageError, type GeneratedShareImage } from '../integrations/imageGeneration';
+import { applyShareBrand } from '../lib/sharePosterBrand';
 import { buildTripSharePrompt, type TripShareStyle } from '../lib/tripSharePrompt';
 import type { SharePosterStore } from './sharePosterStore';
 
@@ -40,6 +41,8 @@ export function createTripShareImageService(store: SharePosterStore, generate: S
     if (activeUsers.has(userId) || pending.size >= 2) throw imageError('正在生成分享图，请稍后再试', 429);
     activeUsers.add(userId);
     const job = Promise.resolve().then(() => generate(prompt))
+      // 落盘前补品牌带：下载、通知、GET /share-image 三个出口拿到的都是带品牌版本
+      .then(async image => (env.shareBrandEnabled ? { ...image, bytes: (await applyShareBrand(image.bytes, style)).bytes } : image))
       .then(image => store.save({ userId, tripId: trip.id, style, promptHash: promptHash(prompt), bytes: image.bytes, mimeType: image.mimeType }))
       // 放在合并中的任务内：重复 POST 共享一条通知，读取已有成品不发通知。
       .then(async saved => ({ ...saved.image, notification: await notify(userId, trip, style) }))
