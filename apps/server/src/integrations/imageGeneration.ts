@@ -11,9 +11,11 @@ export type GeneratedShareImage = { bytes: Buffer; mimeType: TripShareImageRespo
 
 export interface ImageGenerationConfig { baseUrl: string; apiKey: string; model: string }
 
-/** retryable=false 表示换站也不会成功（请求本身错了），调用方应直接失败而不是降级 */
+/** retryable=false 表示换站也不会成功（请求本身错了），调用方应直接失败而不是降级。
+ * expose 标记：message 是我们自己写的（不含密钥或上游原始错误），可以透给前端；
+ * 否则用户看到「服务器内部错误」无法分辨是自己配置错了还是上游挂了。 */
 export function imageError(message: string, statusCode = 502, retryable = true) {
-  return Object.assign(new Error(message), { statusCode, retryable });
+  return Object.assign(new Error(message), { statusCode, retryable, expose: true });
 }
 
 function isImageError(error: unknown): error is Error & { statusCode: number; retryable: boolean } {

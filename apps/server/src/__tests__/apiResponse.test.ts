@@ -40,6 +40,8 @@ test('鉴权、校验、业务冲突、限流、404 与内部异常均返回同�
   app.get('/api/quota', async (_req, reply) => reply.code(429).send({ code: 'quota_exhausted', error: '今日次数已用完', resetAt: 123 }));
   app.get('/api/limit', { config: { rateLimit: { max: 1, timeWindow: '1 minute' } } }, async () => ({}));
   app.get('/api/failure', async () => { throw new Error('secret-token database detail'); });
+  // 带 expose 标记的业务 5xx（如生图服务 504）：保留真实原因，否则用户无法分辨上游挂了还是代码炸了
+  app.get('/api/exposed', async () => { throw Object.assign(new Error('生图服务暂不可用（HTTP 504）'), { statusCode: 502, expose: true }); });
   assert.deepEqual((await app.inject('/api/private')).json(), { code: 401, message: '请登录', data: null });
   const invalid = await app.inject({ method: 'POST', url: '/api/validate', payload: { count: 'secret' } });
   assert.equal(invalid.statusCode, 400);
@@ -58,6 +60,9 @@ test('鉴权、校验、业务冲突、限流、404 与内部异常均返回同�
     assert.equal(response.body.includes('secret-token'), false);
   }
   assert.equal((await app.inject('/api/failure')).json().message, '服务器内部错误');
+  const exposed = await app.inject('/api/exposed');
+  assert.equal(exposed.statusCode, 502);
+  assert.deepEqual(exposed.json(), { code: 502, message: '生图服务暂不可用（HTTP 504）', data: null });
 });
 
 test('SSE、重定向、静态资源及无实体响应保持协议，API fallback 可以由应用安装', async (t) => {

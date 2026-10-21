@@ -40,13 +40,16 @@ export function installApiResponses(app: FastifyInstance): void {
   });
 
   // 全局错误出口：SSRF 拦截转成 400（用户输入问题，不是 500）；参数校验失败统一 400 且不回显 schema 细节；
-  // 5xx 只在服务端打日志，对外一律「服务器内部错误」，不外泄堆栈或数据库报错。
+  // 5xx 只在服务端打日志，对外默认「服务器内部错误」不外泄堆栈或数据库报错；
+  // 例外：带 expose 标记的业务错误（如生图服务 502/504）保留原 message，
+  // 否则用户无法区分「上游挂了」「配额用完」与「代码炸了」。
   app.setErrorHandler((error: unknown, _request, reply) => {
     if (error instanceof SsrfError) return reply.code(400).send({ error: error.message });
-    const err = error as { statusCode?: number; validation?: unknown; message?: string };
+    const err = error as { statusCode?: number; validation?: unknown; message?: string; expose?: boolean };
     if (err.validation) return reply.code(400).send({ error: '请求参数不正确' });
     const status = err.statusCode ?? 500;
     if (status >= 500) app.log.error(error);
-    return reply.code(status).send({ error: status >= 500 ? '服务器内部错误' : (err.message ?? '请求失败') });
+    const message = status >= 500 ? (err.expose ? err.message ?? '服务器内部错误' : '服务器内部错误') : (err.message ?? '请求失败');
+    return reply.code(status).send({ error: message });
   });
 }
