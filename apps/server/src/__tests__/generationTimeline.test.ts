@@ -20,6 +20,8 @@ test('buildTimeline keeps server durations stable across replay', () => {
   const tool = model.phases[0]?.items.find((item) => item.kind === 'tool');
   assert.equal(tool?.durationMs, 500);
   assert.equal(tool?.running, false);
+  // 10-22：进度文案按稳定工具名查表，label 只作兜底展示
+  assert.equal(tool?.tool, 'search_web');
 });
 
 test('buildTimeline tolerates legacy events without timing fields', () => {

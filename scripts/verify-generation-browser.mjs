@@ -12,6 +12,12 @@ import { chromium } from 'playwright';
 import { startMockLlm } from './lib/mock-llm.mjs';
 
 const require = createRequire(new URL('../apps/server/package.json', import.meta.url));
+// 服务端内部操作名（tool label）：只允许出现在日志里，绝不能出现在用户可见的进度文案中
+const INTERNAL_LABELS = ['查已验证地点库', '搜索地点', '搜索攻略', '写入候选池', '提交调研结果', '提交调研摘要',
+  '查询地点坐标', '建立行程骨架', '添加活动', '修改活动', '删除活动', '查看草稿', '调整活动日期', '建议住宿区域',
+  '可行性自查', '改写活动说明', '撰写行程标题', '提交行程草稿', '提交文案', '撰写旅行建议与注意事项',
+  '筛选行程地点', '解析活动坐标', '调整顺路顺序', '估算通勤路线', '检查时空可行性', '排定每日行程',
+  '优化远郊行程', '解析改动地点坐标', '复核最终通勤路线', '优化跨天路线', '复核顺路通勤', '整理行程相关资料'];
 const { Client } = require('pg');
 const adminUrl = process.env.VERIFY_GENERATION_ADMIN_URL ?? 'postgres://postgres@127.0.0.1:18797/postgres';
 const databaseName = `generation_browser_verify_${Date.now()}`;
@@ -39,12 +45,12 @@ try {
   });
   for (const output of [server.stdout, server.stderr]) output.on('data', (data) => { serverOutput += data; });
   let healthy = false;
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 300; i++) {
     healthy = await fetch(`${base}/api/health`).then((r) => r.ok).catch(() => false);
     if (healthy) break;
     await sleep(200);
   }
-  assert.ok(healthy, '服务端启动超时');
+  assert.ok(healthy, `服务端启动超时\n${serverOutput.slice(-2000)}`);
   const seed = new Client({ connectionString: databaseUrl.toString() });
   await seed.connect();
   try {
@@ -104,6 +110,20 @@ try {
   await page.locator('figcaption.gen-polaroid-caption').first().waitFor();
   assert.equal(await page.locator('.gen-step-title').count(), 3);
   assert.match(await page.locator('.gen-title').innerText(), /北京.*3 天/);
+  // 10-22：进度文案只能来自 lib/generationToolCopy 的工具名映射表，不得泄露服务端内部 label。
+  const liveLines = new Set();
+  for (let i = 0; i < 15; i++) {
+    for (const text of await page.locator('.gen-step-hint-live').allInnerTexts()) liveLines.add(text.replace(/\s+/g, ''));
+    await sleep(200);
+  }
+  assert.ok(liveLines.size > 0, '未采样到进度文案');
+  console.log('进度文案采样：', [...liveLines].join(' | '));
+  for (const line of liveLines) {
+    assert.match(line, /^正在/, `进度文案格式异常：${line}`);
+    // 精确比对：fallback 到 label 时会变成「正在<label>…」，而 thought 行带括号进度（12/16）不算泄露
+    const core = line.replace(/^正在/, '').replace(/[…\.]+$/, '');
+    assert.ok(!INTERNAL_LABELS.includes(core), `进度文案直接显示了内部 label：${line}`);
+  }
   const firstTripId = await editor();
   assert.equal(generationPosts.length, 1, '首页单次操作只发起一次任务');
   assert.equal(generationPosts[0].pace, 'tight');

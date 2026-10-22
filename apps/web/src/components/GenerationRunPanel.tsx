@@ -1,7 +1,7 @@
 import { handwritingFallback } from '../lib/handwriting';
 import { Button } from './ui/Button';
 // 生成进度视图（09-27 改版）：旅行手账氛围 —— 左侧旅程里程碑小径 + 右侧拍立得候选卡片扇形散开。
-// 只呈现用户向信息：三阶段进度、友好状态文案（tool label 直译）、候选卡片、耗时；
+// 只呈现用户向信息：三阶段进度、友好状态文案（按稳定工具名查表，见 lib/generationToolCopy）、候选卡片、耗时；
 // token/LLM 请求/system prompt 等开发者信息不再展示（见任务 PRD）。
 // 配色只用 tailwind.css @theme 里的语义 token（bg-brand / text-ink-* 等），不硬编码色值。
 import { useEffect, useId, useMemo, useState } from 'react';
@@ -12,6 +12,7 @@ import {
   type GenerationPhase,
 } from '@tripweaver/shared';
 import { buildTimeline, formatDuration, type TimelineModel } from '../lib/generationTimeline';
+import { toolCopy } from '../lib/generationToolCopy';
 import { DATA_SOURCE_LABEL } from '../lib/poi';
 import { PoiCover } from './PoiCard';
 import { generationCardCaption, selectGenerationCards } from '../lib/generationCards';
@@ -122,7 +123,7 @@ function milestoneState(model: TimelineModel, phase: GenerationPhase): Milestone
   return last.done ? 'done' : 'active';
 }
 
-/** 最新 SSE 正文/进度短预览；工具事件继续使用用户可读 label。 */
+/** 最新 SSE 正文/进度短预览；工具事件用用户可读文案（未知工具名走通用 fallback，不显示内部 label）。 */
 function activeStatusLine(model: TimelineModel, phase: GenerationPhase, fallback: string): { key: string; text: string } {
   const block = model.phases.filter((b) => b.phase === phase).at(-1);
   if (!block) return { key: `${phase}:preparing`, text: '正在准备你的旅程…' };
@@ -132,33 +133,8 @@ function activeStatusLine(model: TimelineModel, phase: GenerationPhase, fallback
     const text = item.text.trim();
     return { key, text: text ? Array.from(text).slice(0, 90).join('') + (Array.from(text).length > 90 ? '…' : '') : fallback };
   }
-  return { key, text: item?.kind === 'tool' ? `正在${TOOL_COPY[item.label] ?? item.label}…` : fallback };
+  return { key, text: item?.kind === 'tool' ? `正在${toolCopy(item.tool)}…` : fallback };
 }
-
-/** Translate internal operation labels into short, truthful progress messages. */
-const TOOL_COPY: Record<string, string> = {
-  '查已验证地点库': '查找可靠的地点信息',
-  '搜索地点': '寻找适合你的好去处',
-  '搜索攻略': '参考当地游玩攻略',
-  '写入候选池': '收集心仪的好去处',
-  '提交调研摘要': '整理旅行灵感',
-  '查询地点坐标': '确认景点位置',
-  '建立行程骨架': '安排每日行程',
-  '添加活动': '安排游玩活动',
-  '修改活动': '调整游玩安排',
-  '删除活动': '精简行程安排',
-  '查看草稿': '检查行程安排',
-  '调整活动日期': '调整游玩日期',
-  '建议住宿区域': '寻找方便落脚的区域',
-  '可行性自查': '检查路线是否顺畅',
-  '改写活动说明': '补充游玩提示',
-  '撰写行程标题': '为旅程起个名字',
-  '提交行程草稿': '整理每日路线',
-  '提交文案': '整理旅行手账',
-  '解析改动地点坐标': '确认最终景点位置',
-  '复核最终通勤路线': '检查景点之间的交通',
-  '优化跨天路线': '优化每日游玩顺序',
-};
 
 function TypedStatus({ text }: { text: string }) {
   const characters = Array.from(text);

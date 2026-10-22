@@ -3,7 +3,8 @@ import type { DataSourceKind, GenerationEvent, GenerationPhase, ResearchPoi } fr
 export interface ToolItem {
   kind: 'tool';
   key: string;
-  label: string;
+  /** 稳定工具名（tool_start.tool）：文案映射只认它，label 会随服务端改文案而变，不进前端模型 */
+  tool: string;
   summary: string;
   isError: boolean;
   running: boolean;
@@ -111,7 +112,7 @@ export function buildTimeline(events: GenerationEvent[]): TimelineModel {
         block?.items.push({
           kind: 'tool',
           key: ev.toolCallId,
-          label: ev.label,
+          tool: ev.tool,
           summary: '',
           isError: false,
           running: true,

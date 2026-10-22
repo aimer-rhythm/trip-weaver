@@ -30,7 +30,7 @@ try {
         { type: 'phase_start', phase: 'research', round: 1 },
         { type: 'phase_end', phase: 'research', round: 1 },
         { type: 'phase_start', phase: 'plan', round: 1 },
-        { type: 'tool_start', phase: 'plan', toolCallId: eventId, label: status },
+        { type: 'tool_start', phase: 'plan', toolCallId: eventId, tool: 'geo_geocode_all', label: status },
         ...['故宫', '南锣鼓巷', '天坛', '颐和园', '北京奥林匹克森林公园南园', '景山公园'].slice(0, count).map((name, i) => ({
           type: 'candidate', poi: { id: String(i), name, intro: '这里是一段很长的景点介绍，不应拼接在拍立得名称后面。', category: 'attraction', coverUrl: cover },
         })),
@@ -39,7 +39,7 @@ try {
         { type: 'phase_end', phase: 'plan', round: 1 },
         { type: 'phase_start', phase: 'review', round: 1 },
         { type: 'phase_end', phase: 'review', round: 1 },
-        { type: 'tool_start', phase: 'review', toolCallId: 'final-route', label: '复核最终通勤路线' },
+        { type: 'tool_start', phase: 'review', toolCallId: 'final-route', tool: 'geo_recompute_final_legs', label: '复核最终通勤路线' },
       );
       if (stage === 'queue') events.splice(1);
       root.render(h('div', { className: "app-layout [min-height:100vh] flex flex-col [background:var(--color-canvas)_url('/home-bg.png')_center_/_cover_no-repeat] [&:has(.home-page-root)_.app-main]:p-0 [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar]:[padding-top:12px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.brand-en]:hidden [@media_(max-width:_600px)]:[&:has(.editor-page)_.quota-chip]:hidden [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-capsule]:[padding-left:12px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions]:[gap:0] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions_.btn]:[padding:8px] [@media_(max-width:_600px)]:[&:has(.editor-page)_.topbar-actions_.btn]:[font-size:12px] [@media_screen]:[&:has(.editor-page)]:[height:100dvh] [@media_screen]:[&:has(.editor-page)]:min-h-0 [@media_screen]:[&:has(.editor-page)]:overflow-hidden [@media_screen]:[&:has(.editor-page)_.topbar]:shrink-0 [@media_screen]:[&:has(.editor-page)_.app-main]:overflow-hidden [@media_screen]:[&_.editor-page]:flex-1 [@media_screen]:[&_.editor-page]:[height:auto] [@media_screen]:[&_.editor-page]:[max-height:none] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.brand-en]:hidden [@media_(max-width:_600px)]:[&:has(.trip-collection)_.quota-chip]:hidden [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-capsule]:[padding-left:12px] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions]:[gap:0] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions_.btn]:[padding:8px] [@media_(max-width:_600px)]:[&:has(.trip-collection)_.topbar-actions_.btn]:[font-size:12px]" },
