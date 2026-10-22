@@ -1,0 +1,31 @@
+{
+  "id": "tool-copy-exhaustive",
+  "name": "tool-copy-exhaustive",
+  "title": "工具文案映射表改用稳定工具名 + 穷尽性校验",
+  "description": "生成进度文案现在用服务端的中文 label 当 key，已有一处失效（服务端 submit_research 的 label 是「提交调研结果」，前端 key 写的是「提交调研摘要」），fallback 会把内部术语直接暴露给用户。改为用事件里已有的 tool 字段做 key + satisfies 穷尽校验 + 通用 fallback。约 60 行纯前端改动。",
+  "status": "completed",
+  "dev_type": null,
+  "scope": null,
+  "package": "web",
+  "priority": "P2",
+  "creator": "aimer",
+  "assignee": "aimer",
+  "createdAt": "2026-10-22",
+  "completedAt": "2026-10-22",
+  "branch": null,
+  "base_branch": "master",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "apps/web/src/lib/generationTimeline.ts",
+    "apps/web/src/components/GenerationRunPanel.tsx",
+    "packages/shared/src/types.ts",
+    "apps/server/src/generation/orchestrator.ts"
+  ],
+  "notes": "服务端不用改：tool_start/tool_end 事件已同时携带 tool（稳定 id）与 label（中文），是前端 buildTimeline 把 tool 丢了。",
+  "meta": {}
+}
