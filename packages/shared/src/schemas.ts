@@ -209,9 +209,13 @@ export const TravelPreferencesSchema = Type.Object({
   extraNotes: Type.String({ maxLength: 200 }),
 }, { additionalProperties: false });
 
+/** 邮箱格式：后端 schema 与前端表单共用一个正则，避免两处写法漂移。
+ * 只做基本形状校验（本地部分@域名.后缀），不验证可达性。 */
+export const EMAIL_PATTERN = '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$';
+export const EMAIL_MAX_LENGTH = 100;
 const EmailSchema = Type.String({
-  pattern: '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$',
-  maxLength: 100,
+  pattern: EMAIL_PATTERN,
+  maxLength: EMAIL_MAX_LENGTH,
 });
 
 export const RegisterBodySchema = Type.Object({

@@ -1,9 +1,10 @@
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Field';
-import { EmailCodeField } from '../components/EmailCodeField';
+import { EmailCodeField, checkEmail } from '../components/EmailCodeField';
 import { useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthConfig, useRegister } from '../api/hooks';
+import { ApiError } from '../api/client';
 
 export function RegisterPage({ embedded = false, from: destination, onSuccess, onLogin }: { embedded?: boolean; from?: string; onSuccess?: () => void; onLogin?: () => void }) {
   const register = useRegister();
@@ -19,6 +20,7 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
   const [inviteCode, setInviteCode] = useState('');
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
+  const [emailTaken, setEmailTaken] = useState(false);
 
   const inviteRequired = config?.registrationMode === 'invite';
   // open 模式没有邀请码门槛，改用邮箱验证码证明邮箱归属（10-18）
@@ -28,6 +30,13 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
+    setEmailTaken(false);
+    // 应用层格式校验：浏览器 type=email 会放行 a@b，后端正则才拦，报错只剩「请求参数不正确」
+    const invalid = checkEmail(email);
+    if (invalid) {
+      setError(invalid);
+      return;
+    }
     if (password !== confirm) {
       setError('两次输入的密码不一致');
       return;
@@ -41,7 +50,10 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
       { email, password, ...(inviteRequired ? { inviteCode } : {}), ...(codeRequired ? { code } : {}) },
       {
         onSuccess: () => { onSuccess?.(); void navigate(from, { replace: true, state: null }); },
-        onError: (err) => setError(err.message),
+        onError: (err) => {
+          setError(err.message);
+          if (err instanceof ApiError && err.status === 409) setEmailTaken(true);
+        },
       },
     );
   };
@@ -73,12 +85,24 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
                 </label>
               )}
               {codeRequired && !mailMissing && (
-                <EmailCodeField email={email} purpose="register" value={code} onChange={setCode} disabled={register.isPending} />
+                <EmailCodeField email={email} purpose="register" value={code} onChange={setCode} disabled={register.isPending} onNeedLogin={onLogin ?? (() => void navigate('/login', { state: { from } }))} />
               )}
               {mailMissing && (
                 <p className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>邮件服务尚未配置，暂时无法注册，请联系站长</p>
               )}
-              {error && <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
+              {error && (
+                <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>
+                  {error}
+                  {emailTaken && (
+                    <>
+                      {' '}
+                      {onLogin
+                        ? <button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" onClick={onLogin}>去登录</button>
+                        : <Link className="text-brand hover:underline" to="/login" state={{ from }}>去登录</Link>}
+                    </>
+                  )}
+                </p>
+              )}
               <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={register.isPending} disabled={mailMissing}>
                 {register.isPending ? '注册中…' : '注册并登录'}
               </Button>

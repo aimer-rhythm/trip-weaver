@@ -21,7 +21,7 @@ try {
   const identityOwned = new Set(['independentPhotoIdentity.test.ts']);
   const files = process.argv.includes('--full')
     ? (await readdir(folder)).filter((name) => name.endsWith('.test.ts') && !identityOwned.has(name)).sort()
-    : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts', 'settingsResolve.test.ts', 'sharePosterBrand.test.ts',
+    : ['placeRetrieval.test.ts', 'placeImportIdentity.test.ts', 'queryEmbedding.test.ts', 'researchSubmission.test.ts', 'researchQuality.test.ts', 'routeOrder.test.ts', 'routeCoherence.test.ts', 'scheduling.test.ts', 'generationModel.test.ts', 'titleFont.test.ts', 'prompts.test.ts', 'generationPerformance.test.ts', 'settingsResolve.test.ts', 'sharePosterBrand.test.ts', 'emailRegisterGuard.test.ts',
       ...(process.argv.includes('--flow') ? ['dateRepair.test.ts', 'mealLocality.test.ts', 'longHaul.test.ts', 'longHaulFixer.test.ts', 'openHours.test.ts',
         'placeFacts.test.ts', 'placeRelations.test.ts', 'placeLookup.test.ts', 'geoPipeline.test.ts', 'legs.test.ts',
         'agentCompletion.test.ts', 'llmRetry.test.ts', 'draftRevision.test.ts', 'chatBrief.test.ts', 'chatBriefApply.test.ts',
@@ -29,6 +29,7 @@ try {
   const env = { ...process.env, DATABASE_URL: url.toString(), MASTER_KEY: 'a'.repeat(64),
     DOTENV_CONFIG_PATH: './data/absent-verification.env',
     SITE_LLM_BASE_URL: '', SITE_LLM_API_KEY: '', SITE_LLM_MODEL: '', EMBEDDING_BASE_URL: '', EMBEDDING_API_KEY: '',
+    RESEND_API_KEY: 're_verify_fixture',
     AMAP_KEY: '', TIANDITU_KEY: '', SEARCH_API_KEY: '', PEXELS_API_KEY: '', PIXABAY_API_KEY: '', UNSPLASH_ACCESS_KEY: '',
     PHOTO_REVIEW_ENABLED: 'false', GITHUB_CLIENT_ID: '', GITHUB_CLIENT_SECRET: '', REGISTRATION_MODE: 'open' };
   const code = await new Promise<number>((resolve, reject) => {

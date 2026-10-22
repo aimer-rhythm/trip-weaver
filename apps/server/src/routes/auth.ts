@@ -68,10 +68,15 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
       if (purpose === 'register' && env.registrationMode !== 'open') {
         return reply.code(403).send({ error: '当前注册方式不需要邮箱验证' });
       }
-      // 注册码：邮箱已存在则静默成功；重置码：邮箱不存在或为 OAuth-only 账号也静默成功。
-      // 两者都是为了不泄露账号是否存在，代价是这种情况下用户收不到信。
+      // 注册码：邮箱已存在时明确拒绝（10-21 改了旧行为）—— 原先是静默返回 ok 但不发信，
+      // 用户永远收不到码也没提示，只能困在「验证码已发送」里。代价是能枚举出哪些邮箱注册过，
+      // 业内普遍如此；真正的枚举风险由 IP 限流（10 次/小时）与同邮箱频控兑底。
+      // 重置码：邮箱不存在或为 OAuth-only 账号仍静默成功，不把找回密码变成探测器。
       const [existing] = await db.select({ id: users.id, passwordHash: users.passwordHash }).from(users).where(eq(users.email, normalized));
-      if (purpose === 'register' ? Boolean(existing) : !existing || !existing.passwordHash) {
+      if (purpose === 'register' && existing) {
+        return reply.code(409).send({ error: '该邮箱已注册，请直接登录' });
+      }
+      if (purpose === 'reset' && (!existing || !existing.passwordHash)) {
         return reply.send({ ok: true });
       }
       try {
@@ -103,7 +108,7 @@ export const authRoutes: FastifyPluginAsyncTypebox = async (app) => {
       const normalized = email.trim().toLowerCase();     // 大小写归一：否则 Foo@x 与 foo@x 能注两个号
       const exists = await db.select({ id: users.id }).from(users).where(eq(users.email, normalized));
       if (exists.length) {
-        return reply.code(409).send({ error: '该邮箱已注册' });
+        return reply.code(409).send({ error: '该邮箱已注册，请直接登录' });
       }
       // open 模式无邀请码门槛，改用邮箱验证码证明邮箱归属（10-18）；invite 模式沿用邀请码，不叠加。
       // 查重放在验证码之前：已注册邮箱不必消耗一个验证码

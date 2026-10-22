@@ -15,6 +15,8 @@ try {
   let expireTrips = false;
   let registrationMode = 'open';
   let registrationBody;
+  let emailTaken = false;
+  const emailCodeRequests = [];
   let generationBody;
   const guestPrivateRequests = [];
   await context.route(`${base}/api/**`, async route => {
@@ -32,6 +34,12 @@ try {
       if (request.postDataJSON().password === 'wrong') return route.fulfill({ status: 401, json: apiFailure(401, '邮箱或密码错误') });
       authenticated = true;
       return route.fulfill({ json: apiSuccess({ id: 'login-test', email: 'fixture@example.test' }) });
+    }
+    if (p === '/api/auth/email-code') {
+      const body = request.postDataJSON();
+      emailCodeRequests.push(body);
+      if (emailTaken && body.purpose === 'register') return route.fulfill({ status: 409, json: apiFailure(409, '该邮箱已注册，请直接登录') });
+      return route.fulfill({ json: apiSuccess({ ok: true }) });
     }
     if (p === '/api/auth/register') {
       registrationBody = request.postDataJSON();
@@ -110,6 +118,24 @@ try {
   await dialog.getByRole('button', { name: '注册并登录', exact: true }).click();
   await page.getByRole('alert').filter({ hasText: '两次输入的密码不一致' }).waitFor();
   assert.equal(registrationBody, undefined);
+
+  // 10-21：发码前先做应用层格式校验（浏览器 type=email 会放行 a@b）
+  await page.getByLabel('邮箱', { exact: true }).fill('bad-email');
+  await dialog.getByRole('button', { name: '获取验证码', exact: true }).click();
+  await page.getByRole('alert').filter({ hasText: '邮箱格式不正确' }).waitFor();
+  assert.equal(emailCodeRequests.length, 0, '格式非法不该发起发码请求');
+
+  // 10-21：已注册邮箱不再静默成功，而是明确提示 + 可一键切登录
+  await page.getByLabel('邮箱', { exact: true }).fill('fixture@example.test');
+  emailTaken = true;
+  await dialog.getByRole('button', { name: '获取验证码', exact: true }).click();
+  await page.getByRole('alert').filter({ hasText: '该邮箱已注册，请直接登录' }).waitFor();
+  await dialog.getByRole('button', { name: '去登录', exact: true }).click();
+  await page.getByRole('dialog', { name: '登录织程', exact: true }).waitFor();
+  // 回到注册态，后续断言仍走「密码不一致 → 直接登录」原路径
+  await dialog.getByRole('button', { name: '注册', exact: true }).click();
+  await page.getByRole('dialog', { name: '注册织程', exact: true }).waitFor();
+  emailTaken = false;
   await dialog.getByRole('button', { name: '直接登录', exact: true }).click();
   await page.getByRole('dialog', { name: '登录织程', exact: true }).waitFor();
   assert.equal(page.url(), homeUrl);
