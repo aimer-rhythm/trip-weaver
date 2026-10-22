@@ -664,3 +664,66 @@ AI 生成的海报是唯一会被转发出去的产物，但图上只有模型�
 - 首屏还可再压：`<link rel="preload">` 公共字片（`youran-00-*.woff2`，53 KB），或让卡片标题等 `document.fonts.load()` 就绪再切手写体，彻底消除逐片 swap 的粗细混排
 - 语料变化后要重跑 `extract-handwriting-corpus.mts` → `build-handwriting-font.py` → `generate-title-font-coverage.py`，否则新地名会落到碎片片
 - CF 边缘缓存仍待解：需要验证 Origin Rule 的 8443 端口改写是否阻断缓存，代价是要动 xray/nginx 端口分配
+
+---
+
+## Session 59: 生成进度文案改按稳定工具名映射
+
+**Date**: 2026-10-22
+**Task**: 工具文案映射表改用稳定工具名 + 穷尽性校验（`10-22-tool-copy-exhaustive`）
+**Branch**: `master`
+
+### Summary
+
+生成进度里「正在…」的文案原来拿服务端的中文 label 当 key。任何人改一次服务端 label，查表就静默 miss，fallback 直接把内部操作名翻给用户看。这个缺陷已经在线上发生过一次：`researchTools.ts` 的 label 改成「提交调研结果」，前端 key 还是「提交调研摘要」，用户看到「正在提交调研结果…」。
+
+改成用事件里已有的 `tool` 字段（稳定工具名）做 key，并用 `satisfies Record<ToolName, string>` 把「新增工具忘配文案」变成编译错误；未知名统一落到通用文案，永不显示 label。
+
+### Main Changes
+
+| 主题 | 提交 | 要点 |
+|---|---|---|
+| 文案表 | `e776c99` | 新增 `apps/web/src/lib/generationToolCopy.ts`：`TOOL_NAMES` 28 个工具名 + `TOOL_COPY`（satisfies）+ `FALLBACK_TOOL_COPY`；放在 lib 因为 Node 测试不能 import `src` 之外的浏览器编译单元 |
+| 时间线 | `e776c99` | `ToolItem` 加 `tool`，删掉已无消费者的 `label` |
+| 组件 | `e776c99` | `GenerationRunPanel` 取值改 `toolCopy(item.tool)`，旧 21 条中文 label 表整体删除（净 -22 行） |
+| 测试 | `e776c99` | 新增 `apps/web/tests/generationToolCopy.test.ts`；`generationTimeline.test.ts` 补 `tool` 字段断言 |
+| 浏览器验收 | `e776c99` | `verify-generation-browser.mjs` 采样真实生成的进度行，断言不出现任何内部 label |
+
+### 工具清单实况
+
+源码里实际是 **28 个**稳定 tool 名（PRD 原表凭记忆写成 22 个，还带了不存在的 `submit_draft` / `submit_copy`）：调研 Agent 5、草稿工具 11、其他 Agent 工具 3（`geocode_place` / `submit_review` / `submit_trip_advice`）、系统任务 12。已在 PRD 补「实施核对结果」。
+
+### 验证
+
+| 项 | 结果 |
+|---|---|
+| `npm run typecheck` | exit 0 |
+| `npm run build -w apps/web` | ✓ |
+| 单测（3 文件） | 17/17 |
+| 反证：删掉一条文案 | TS1360 + TS7053 报错；恢复后 exit 0 |
+| `verify-generation-browser.mjs`（mock LLM + 临时库） | 5 项 PASS |
+
+真实生成采样到的进度行：`正在确认各个景点的位置…`、`正在为旅程起个名字…`、`正在准备出行提示…`、`正在整理旅行灵感…`（最后一条即修复前的「正在提交调研结果…」）。
+
+### 坑
+
+- 未跟踪文件不能直接出现在 `git commit -- <pathspec>` 里（`error: pathspec ... did not match`），必须先 `git add -- <该路径>` 再按时显式 pathspec 提交；全程不用裸 `git commit` 就不会带上并发会话的改动
+- 浏览器验收脚本里第一版断言用了 `includes(label)`，把 thought 行「解析活动坐标(12/16)」误判成泄露；改成去掉「正在」前缀与尾部省略号后精确比对
+- `verify-generation-browser.mjs` 第二次 `begin()` 偶发超时（首页城市 chips 动画导致元素不 stable / detached），与本改动无关，重跑即过
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `e776c99` | refactor(web): 进度文案改按稳定工具名映射 |
+| `921e88d` | chore(task): 归档工具文案映射任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- 文案表可搬到 `packages/shared`，让 server 的工具定义与前端文案共用同一份名字清单，彻底消掉「手写联合类型与源码同步」这条隐患
+- `done` 态文案（「已找到 12 个去处」）需要结构化 `tool_end.summary`，目前是自由文本，另开任务
+- 参数化文案（「正在查找上海的好去处」）需要前端解析 `args`，收益不抵耦合，暂不做
