@@ -727,3 +727,39 @@ AI 生成的海报是唯一会被转发出去的产物，但图上只有模型�
 - 文案表可搬到 `packages/shared`，让 server 的工具定义与前端文案共用同一份名字清单，彻底消掉「手写联合类型与源码同步」这条隐患
 - `done` 态文案（「已找到 12 个去处」）需要结构化 `tool_end.summary`，目前是自由文本，另开任务
 - 参数化文案（「正在查找上海的好去处」）需要前端解析 `args`，收益不抵耦合，暂不做
+
+---
+
+## Session 60: 提交工作区遗留改动与注册守卫归档
+
+**Date**: 2026-10-22
+**Task**: 无（清理工作区）
+**Branch**: `master`
+
+### Summary
+
+本体缓存里积了另一会话的完整改动与几个未入库的任务文档。先复跑验证确认不是半成品，再按主题拆成三项提交。
+
+### 验证与提交
+
+| 项 | 结果 |
+|---|---|
+| `npm run typecheck` | exit 0 |
+| `node --import tsx scripts/verify-sql-first.mts` | 104/104（含新增 `emailRegisterGuard.test.ts`）| 91.8s |
+| `node apps/web/tests/login-dialog-browser.mjs` | PASS（dev server 已在 5173）| |
+
+| Hash | Message |
+|---|---|
+| `30258f9` | fix(server): 注册发码拒绝已注册邮箱并补前端校验 |
+| `17b7c58` | chore(task): 归档注册邮箱守卫任务 |
+| `606d8e1` | chore(tasks): 补录三个进行中的任务文档 |
+| `768bccf`（前） | chore: 记录工具文案映射改按工具名查表 |
+
+### 坑
+
+- PowerShell 把中文弯引号（`“”`）当成字符串定界符，写进 `git commit -m` 正文会把参数提前截断，报 `pathspec ... did not match any file(s)`；提交信息里改用直角引号或不用引号
+- `.trellis/tasks/10-05-*/` 下残留 7 张截图，archive 里已有任务当时（10-09）的旧版；它们是后续复跑脚本落盘的新版（login 4 张 10-22、nav 3 张 10-19），目录里连 prd/task.json 都没有，属于归档旧路径残留。用户选择删除，`workspace-cleanup.md` 的「先与 `git ls-files` 比对再删」流程可直接用
+
+### Status
+
+[OK] **Completed**（工作区干净）
