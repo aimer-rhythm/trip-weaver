@@ -1,0 +1,33 @@
+{
+  "id": "generation-recovery-simplify",
+  "name": "generation-recovery-simplify",
+  "title": "生成任务恢复路径合并（去掉 sessionStorage 双轨）",
+  "description": "把刷新/关窗恢复从「前端 sessionStorage + 服务端 current」双轨收敛为服务端单轨：current 接口返回 30 分钟内最近一条任务（含终态），终态跳转只在生成页消费，删除 ACTIVE_JOB_KEY 及其 13 处读写与相关浏览器测试断言。约 200 行，涉及 4 个核心文件。",
+  "relatedFiles": [
+    "apps/web/src/hooks/useGenerationRun.ts",
+    "apps/web/src/components/GenerationProvider.tsx",
+    "apps/web/src/pages/NewTripPage.tsx",
+    "apps/server/src/routes/generations.ts",
+    "apps/server/src/generation/jobManager.ts",
+    "apps/web/tests/generation-recovery-browser.mjs"
+  ],
+  "status": "planning",
+  "dev_type": null,
+  "scope": null,
+  "package": null,
+  "priority": "P2",
+  "creator": "aimer",
+  "assignee": "aimer",
+  "createdAt": "2026-10-21",
+  "completedAt": null,
+  "branch": null,
+  "base_branch": "master",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "notes": "",
+  "meta": {}
+}
