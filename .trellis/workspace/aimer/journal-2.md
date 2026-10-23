@@ -763,3 +763,74 @@ AI 生成的海报是唯一会被转发出去的产物，但图上只有模型�
 ### Status
 
 [OK] **Completed**（工作区干净）
+
+---
+
+## Session 61: 路由级分包与地图按需加载
+
+**Date**: 2026-10-23
+**Task**: 路由级代码分割（`10-23-route-code-splitting`）
+**Branch**: `master`
+
+### Summary
+
+实测 `npm run build -w apps/web` 发现全站零代码分割：唯一 JS chunk 949.69 kB / gzip 301.08 kB，Vite 直接警告超 500 kB。`router.tsx` 静态 import 全部 5 个页面，`TripEditorPage` 拖着 `MapView` → `LeafletCanvas` → `leaflet` 一起进首屏（实测 chunk 内含 `leaflet`、`L.Map`）。
+
+先做路由级懒加载，随后按用户要求把地图渲染优先级反转（原来默认渲染 Leaflet、探测高德成功才切；改为高德优先、Leaflet 降级时按需加载）。
+
+### Main Changes
+
+| 主题 | 提交 | 要点 |
+|---|---|---|
+| 路由分包 | `1aa2f79` | 4 个私有页改 `React.lazy` + `<Suspense>`，`HomePage` 保持静态；`withSuspense` 包在 `<Outlet />` 子元素上，auth 检查先于 chunk 加载 |
+| Leaflet 样式归位 | `1aa2f79` | `main.tsx` 的 `import 'leaflet/dist/leaflet.css'` 移到 `LeafletCanvas.tsx`，否则地图样式仍在首屏 |
+| 渲染优先级反转 | `1aa2f79` | `MapView` 的 `amap \| null` 二值改成 `probing \| amap \| leaflet` 三态；`LeafletCanvas` 改 `lazy()` 动态引入；二次进入直读 `window.AMap` 跳过探测 |
+
+### 关键数字
+
+| 指标 | 改前 | 改后 |
+|---|---|---|
+| 首屏 JS gzip（单 chunk） | 301.08 kB | 162.37 + 39.90 = **202.27 kB** |
+| 首屏合计 gzip | 455.87 kB | **346.80 kB**（-23.9%）|
+| 编辑器 chunk gzip | 77.86 kB | **30.82 kB**（主路径）|
+| Leaflet 独立 chunk | — | 44.45 kB JS + 6.21 kB CSS（**仅降级时下载**）|
+| JS/CSS 产物数 | 2 | 12 |
+
+**口径要说准**：首屏降 23.9% 全部来自路由分包；Leaflet 那次拆分对首屏**零影响**（它本来只随第 4 个懒加载页进入）。它真正省的是编辑器页——走高德主路径的用户少付 47 kB gzip（-60%）。
+
+### 验证
+
+| 项 | 结果 |
+|---|---|
+| `npm run typecheck`（四包） | exit 0 |
+| `npm run build -w apps/web` | ✓ 8.23s，>500 kB 警告仅剩 index.js |
+| 首屏 chunk 含 `leaflet` / `MapContainer` / `TileLayer` | 全部无命中 |
+| 未登录手测 `/trips`、`/trips/x`、`/generations/x` | 均跳回首页、无卡死、`RequireAuth` 先于 lazy 执行 |
+| 登录后编辑器地图（主路径 + 降级） | **未验证**，本机无登录态 |
+
+### 坑
+
+- 只改路由是半成品：`leaflet.css` 在 `main.tsx` 全局 import，JS 拆走了样式还留在首屏 CSS 里。必须同时把 CSS import 下移到 `LeafletCanvas.tsx`
+- 改完 chunk 拆分策略会变：上一轮的 `hooks-*.js`（234.57 kB）这一轮变成 `index.js` + `src-*.js`，chunk 名字和体积都会变，**只看 Vite 日志里的单个文件会算错首屏**，必须用 `index.html` 的引用列表逐个算 gzip
+- 未跟踪文件不能直接 `git commit -- <pathspec>`，会报 `nothing added to commit`；需要先 `git add -- <该路径>` 再带 pathspec 提交（与 Session 59 同一条）
+- chrome-devtools MCP 的 navigate 60s 超时不可用，改用 playwright MCP；`browser_evaluate` 的参数是 `function`（`() => ...`）不是 `expression`
+- 新任务目录如果从未被 git 跟踪，`task.py archive` 移目录后旧路径不会产生删除记录，只提交新路径即可
+
+### Git Commits
+
+| Hash | Message |
+|---|---|
+| `1aa2f79` | refactor(web): 路由级分包并按需加载地图库 |
+| `19676d0` | chore(task): 归档路由分包与地图按需加载任务 |
+
+### Status
+
+[OK] **Completed**（工作区干净）
+
+### Next Steps
+
+- 待用户验证：登录后 `/trips/:id` 主路径高德正常渲染；临时清 `AMAP_JS_KEY` 后降级 Leaflet 能按需加载
+- CSS 仍是大头：2629 条规则 / 144.53 kB gzip（正常同类项目 20–40 kB），根因是 1112 个 Tailwind 任意值无法复用 + 162 个逐元素提取的颜色 token（命名如 `--color-activity-card-background-6`）
+- 图片 16.2 MB 是比 JS 更大的问题：单张城市 PNG 268–504 kB，未做 webp / srcset
+- `index.js` 原始 508.88 kB 仍超 500 kB 阈值，进一步拆分要动 vendor 分层（`manualChunks`）
+
