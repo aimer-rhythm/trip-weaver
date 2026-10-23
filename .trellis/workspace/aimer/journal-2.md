@@ -834,3 +834,69 @@ AI 生成的海报是唯一会被转发出去的产物，但图上只有模型�
 - 图片 16.2 MB 是比 JS 更大的问题：单张城市 PNG 268–504 kB，未做 webp / srcset
 - `index.js` 原始 508.88 kB 仍超 500 kB 阈值，进一步拆分要动 vendor 分层（`manualChunks`）
 
+
+---
+
+## Session 62: 对话面板流式渲染优化（第一步）
+
+**Date**: 2026-10-23
+**Task**: chat-panel-streaming-render（已归档）
+**Branch**: `master`
+
+### Summary
+
+长对话卡顿的根因不是 DOM 多，而是 `ChatPanel` 顶层的 `pending` state：每次 `answer_delta` 都 `setPending`，整个面板函数重跑，`messages.map` 里的全部历史消息都重新执行（`MessageBubble` 没有 memo）。一次回答约 2000 个 delta × 200 条历史，等于几十万次组件调用。
+
+修法是两步：`MessageBubble` 加 `memo`（props 只有 `message`），流式回答块抽成 `PendingAnswer`。delta 现在只重渲染这一块。
+
+### Main Changes
+
+| 主题 | 提交 | 要点 |
+|---|---|---|
+| 渲染优化 | `1a0d287` | `MessageBubble` 加 `memo`；新增 `chat/PendingAnswer.tsx`；`ChatPanel` 删掉迁走的 22 行与两个孤儿 import（净 −16 行） |
+| 共享控件 | `90fc8f4` | 认证相关 4 个文件的 6 处原生 `<button>` 换成 `Button variant="plain"` |
+
+### 顺带修掉的既有回归
+
+`styles.test.mjs` 自 6a8976b（2026-10-18，注册接入邮箱验证码）起就是红的：规则禁止 `src` 下非 `ui/` 文件出现原生 `<button|input|select|textarea>`，而那次提交在 `LoginPage`（2 处）、`RegisterPage`、`ResetPasswordPage` 各放了一个行内链接样式的原生 button。上一轮我提交的 `30258f9` 又加了 2 处（`EmailCodeField`、`RegisterPage` 的去登录入口），当时只跑了 typecheck / verify-sql-first / login-dialog-browser，漏了这个测试。
+
+教训：改动 `apps/web/src` 下的 tsx 后，`node --import tsx --test apps/web/tests/styles.test.mjs` 必须一起跑 —— 它是唯一会扫全量源码的静态规范测试。
+
+### 验证
+
+| 项 | 结果 |
+|---|---|
+| `npm run typecheck` | exit 0 |
+| `npm run build -w apps/web` | ✓ |
+| `detail-chat.test.ts` | 4/4 |
+| `styles.test.mjs` | 1/1（修完 6 处原生 button 后转绿） |
+| `editor-browser.mjs` | PASS |
+| `login-dialog-browser.mjs` | PASS |
+
+memo 的结构性断言：临时脚本 import 组件后确认 `MessageBubble.$$typeof === Symbol.for('react.memo')`。
+
+### 坑
+
+- `@vitejs/plugin-react` 用 automatic JSX runtime，`node --import tsx` 直接渲染 tsx 组件会抛 `React is not defined` —— 临时脚本只能做模块级断言，不能做 SSR 渲染
+- `editor-browser.mjs` 会把 `archive/2026-10/09-29-ui-consistency/research/editor-verification/results.json` 写回（saves 计数 +1）；`login-dialog-browser.mjs` 会在 `.trellis/tasks/10-05-home-login-dialog/research/` 重新生成 4 张截图。两者都是测试副产物，跑完要 `git restore` 该 json、删掉截图目录，别提交
+- 并发会话持 `.git/index.lock` 时 `git restore` 也会失败（`fatal: Unable to create ... index.lock`），等几秒重试即可
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `1a0d287` | refactor(web): 对话流式渲染只重渲染当前回答 |
+| `90fc8f4` | fix(web): 认证表单内联按钮改用共享控件 |
+| `b65ed5a` | chore(task): 归档对话流式渲染任务 |
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+后续三步（按我给出的方案排序，都还没做）：
+
+- 历史分页：`getConversationDetail` 当前无 limit 全量返回，要加 `before/limit` 游标；前端用 `useInfiniteQuery` + 上滚加载 + `scrollHeight` 差值补偿滚动位置
+- 展示层：历史消息的工具步骤默认折叠、长回答「展开全文」、按天/时间插话题分隔、未读分隔线
+- 虚拟滚动（>60 条才启用，`@tanstack/react-virtual` + `measureElement` 实测高度），代价是 Ctrl+F 与「跳到某条」要自己做
