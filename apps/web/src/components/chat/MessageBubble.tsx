@@ -1,6 +1,7 @@
 // 单条消息气泡：用户右侧 / AI 左侧。
 // 注：追问控件（IntakeControls）已随「对话式收集 Brief」在 10-17 下线，
 // 历史消息里可能残留 intake 数据，但不再渲染。
+import { memo } from 'react';
 import type { ChatMessage } from '@tripweaver/shared';
 import { ChatText } from './ChatText';
 import { ChatProgress } from './ChatProgress';
@@ -9,7 +10,8 @@ interface Props {
   message: ChatMessage;
 }
 
-export function MessageBubble({ message }: Props) {
+// memo：流式回答每个 delta 都会 setState，面板顶层重渲染时历史消息不应重跑（10-23）。
+export const MessageBubble = memo(function MessageBubble({ message }: Props) {
   const isUser = message.role === 'user';
   return (
     <div className={`chat-msg flex min-w-0 flex-col gap-2 ${isUser ? 'chat-msg-user ml-auto max-w-[88%] items-end' : 'chat-msg-assistant w-full items-start'}`}>
@@ -27,4 +29,4 @@ export function MessageBubble({ message }: Props) {
       )}
     </div>
   );
-}
+});

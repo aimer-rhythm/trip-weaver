@@ -8,10 +8,9 @@ import { recoverChat, stopChat, streamChat } from '../../api/detailChat';
 import { chatErrorMessage } from '../../lib/chatDerive';
 import { ChatInput } from './ChatInput';
 import { MessageBubble } from './MessageBubble';
+import { PendingAnswer, type PendingExchange } from './PendingAnswer';
 import { FoodCard } from './FoodCard';
 import { Button } from '../ui/Button';
-import { ChatText } from './ChatText';
-import { ChatProgress } from './ChatProgress';
 import { EditorIcon } from '../editor/EditorIcon';
 
 interface Props {
@@ -26,7 +25,7 @@ export function ChatPanel({ conversationId, trip, dayId, readOnly, busy, begin, 
   const qc = useQueryClient();
   const navigate = useNavigate();
   const detail = useConversation(conversationId);
-  const [pending, setPending] = useState<{ input: DetailChatRequest; text: string; summary: string[]; state: 'running' | 'stopped' | 'error' } | null>(null);
+  const [pending, setPending] = useState<PendingExchange | null>(null);
   const [error, setError] = useState('');
   const [restoreDraft, setRestoreDraft] = useState<{ text: string; key: number }>();
   const [stopping, setStopping] = useState(false);
@@ -119,14 +118,9 @@ export function ChatPanel({ conversationId, trip, dayId, readOnly, busy, begin, 
           {message.attachment.clarification.options.map((option) => <Button key={option} variant="plain" className="min-h-11 rounded-full border border-solid border-white bg-[var(--color-editor-page-background-95)] px-4 py-2 text-left text-[16px] text-brand hover:bg-[var(--color-editor-page-background-97)]" disabled={busy || readOnly || running || message.id !== messages.at(-1)?.id} onClick={() => void send(option, undefined, undefined, message.attachment?.dayId ?? null)}>{option}</Button>)}
         </div> : message.id === latestMessage?.id && latestSuggestions.length > 0 ? <div><p className="mb-0 mt-4 text-[14px] text-ink-muted">你可能还想要：</p>{renderSuggestions(latestSuggestions, message.attachment.dayId)}</div> : null)}
       </div>)}
-      {pending && <>
-        <div className="chat-bubble self-end max-w-[88%] whitespace-pre-wrap break-words rounded-[18px] bg-[var(--color-editor-page-background-97)] px-4 py-3 text-[16px] text-[var(--color-editor-page-color-96)]">{pending.input.text}</div>
-        <div className="min-w-0">
-          <ChatProgress key={`${pending.input.requestId}:${pending.state}`} steps={pending.summary} state={pending.state} />
-          <div className="chat-bubble whitespace-pre-wrap break-words rounded-[18px] bg-[var(--color-editor-page-background-95)] px-4 py-3 text-[16px] leading-[1.6] text-[var(--color-editor-page-color-96)]"><ChatText text={pending.text || (running ? '正在准备回答…' : '')} /></div>
-          {!running && <div className="mt-2 flex flex-wrap items-center gap-2"><span className="text-ink-muted">{pending.state === 'stopped' ? '已停止' : '回答中断'}</span><Button variant="ghost" className="text-[16px]" disabled={busy || readOnly} onClick={() => void send(pending.input.text, pending.input.suggestion, pending.input)}>重试</Button><Button variant="ghost" className="text-[16px]" onClick={() => setRestoreDraft({ text: pending.input.text, key: Date.now() })}>恢复编辑</Button></div>}
-        </div>
-      </>}
+      {pending && <PendingAnswer pending={pending} busy={busy} readOnly={readOnly}
+        onRetry={() => void send(pending.input.text, pending.input.suggestion, pending.input)}
+        onRestore={() => setRestoreDraft({ text: pending.input.text, key: Date.now() })} />}
     </div>
     {!atBottom && <Button variant="ghost" className="min-h-11 self-center rounded-full text-[16px] text-brand" onClick={() => { following.current = true; setAtBottom(true); scroll.current?.scrollTo({ top: scroll.current.scrollHeight }); }}>回到最新 ↓</Button>}
     {error && <p className="m-0 text-[16px] text-[var(--color-danger)]" role="alert">{error}</p>}
