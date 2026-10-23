@@ -3,14 +3,17 @@
 //   · 降级 LeafletCanvas（高德栅格瓦片）—— 未配 JS Key、或 SDK 加载失败 / 超时
 // 选择逻辑只在本文件；两个 canvas 只负责把数据画出来（数据层见 lib/mapData）。
 // 地图上不带天数筛选：按天淡化只由左栏天数页签（editor-day-tabs）驱动同一个 dayFilter。
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { api } from '../../api/client';
 import { loadAmapSdk } from '../../lib/amapLoader';
 import { collectDayLines, collectPoints } from '../../lib/mapData';
 import type { AmapNamespace } from '../../lib/amapTypes';
 import { useEditorStore } from '../../store/editorStore';
 import { AmapCanvas } from './AmapCanvas';
-import { LeafletCanvas } from './LeafletCanvas';
+
+// Leaflet 只在真的降级时才下载（含 leaflet 本体与地图样式，约 78 kB gzip）：
+// 走高德主路径的用户不必付这份体积。
+const LeafletCanvas = lazy(() => import('./LeafletCanvas').then((m) => ({ default: m.LeafletCanvas })));
 
 interface AmapJsConfig {
   amapJsKey: string;
@@ -30,39 +33,53 @@ function useIsDesktop(): boolean {
 }
 
 /**
- * 高德 JS API 的可用性探测：**默认走 Leaflet，只有确认可用才切过去**。
- * 地图是编辑器主视图，不能为了等增强而空着 —— 所以探测/加载期间渲染的就是降级路径。
- * 未配置 Key、接口失败（含未登录 401）、SDK 加载失败与 8 秒超时，全部静默保持 Leaflet，
- * 只留一行 console.warn 供排查（底图变化肉眼可见，不需要额外的界面提示）。
+ * 渲染器选择：**高德优先**，Leaflet 只在不可用时作为降级路径按需加载。
+ * probing 阶段（配置查询 + SDK 加载，正常为百毫秒级，最坏 8 秒超时）显示占位而不是先画 Leaflet ——
+ * 先画降级路径再切主路径会让底图闪一次、点位跳动一次。
+ * 未配 Key 是正常配置状态，直接降级且不告警；只有接口失败、SDK 加载失败/超时、命名空间缺失才打 warn。
  */
-function useAmapNamespace(): AmapNamespace | null {
-  const [amap, setAmap] = useState<AmapNamespace | null>(null);
+type MapRenderer = { kind: 'probing' } | { kind: 'amap'; namespace: AmapNamespace } | { kind: 'leaflet' };
+
+function useMapRenderer(): MapRenderer {
+  // 同一页面内 SDK 只注入一次；二次进编辑器直接用已挂好的命名空间，不再多一次配置请求与占位帧。
+  const [renderer, setRenderer] = useState<MapRenderer>(() =>
+    window.AMap ? { kind: 'amap', namespace: window.AMap } : { kind: 'probing' });
   useEffect(() => {
+    if (window.AMap) return;
     let cancelled = false;
     void (async () => {
       try {
         const cfg = await api.get<AmapJsConfig>('/api/settings/config');
-        if (!cfg.amapJsKey || !cfg.amapJsSecurityCode) return; // 未配置：保持 Leaflet
+        if (!cfg.amapJsKey || !cfg.amapJsSecurityCode) {
+          if (!cancelled) setRenderer({ kind: 'leaflet' }); // 未配置：正常降级，不告警
+          return;
+        }
         await loadAmapSdk({ key: cfg.amapJsKey, securityJsCode: cfg.amapJsSecurityCode });
         const namespace = window.AMap;
         if (!namespace) throw new Error('SDK 已加载但未挂到 window.AMap');
-        if (!cancelled) setAmap(namespace);
+        if (!cancelled) setRenderer({ kind: 'amap', namespace });
       } catch (err) {
-        console.warn('[map] 高德 JS API 不可用，回落 Leaflet：', err instanceof Error ? err.message : err);
+        console.warn('[map] 高德 JS API 不可用，降级 Leaflet：', err instanceof Error ? err.message : err);
+        if (!cancelled) setRenderer({ kind: 'leaflet' });
       }
     })();
     return () => {
       cancelled = true;
     };
   }, []);
-  return amap;
+  return renderer;
+}
+
+/** 探测与 Leaflet chunk 下载期间的占位：不渲染任何地图，也不报错。 */
+function MapPlaceholder() {
+  return <div className={"grid h-full w-full place-items-center text-sm [color:var(--color-muted)]"} aria-hidden="true">地图加载中…</div>;
 }
 
 export function MapView({ visible, onSelectActivity }: { visible: boolean; onSelectActivity: (dayIndex: number, activityId: string) => void }) {
   const trip = useEditorStore((s) => s.trip);
   const dayFilter = useEditorStore((s) => s.dayFilter);
   const isDesktop = useIsDesktop();
-  const amap = useAmapNamespace();
+  const renderer = useMapRenderer();
 
   // 按天筛选不再把其他天从数据里删掉 —— 它们仍然画出来，只是被标成 dimmed 由画布淡化
   const allDays = useMemo(() => trip?.days ?? [], [trip]);
@@ -72,7 +89,13 @@ export function MapView({ visible, onSelectActivity }: { visible: boolean; onSel
 
   return (
     <div className={"map-pane absolute [inset:0]"}>
-      <div className={"editor-map-canvas relative flex-1 min-h-0 [border-radius:18px] overflow-hidden [isolation:isolate]"}>{amap ? <AmapCanvas amap={amap} {...canvasProps} /> : <LeafletCanvas {...canvasProps} />}</div>
+      <div className={"editor-map-canvas relative flex-1 min-h-0 [border-radius:18px] overflow-hidden [isolation:isolate]"}>
+        {renderer.kind === 'amap'
+          ? <AmapCanvas amap={renderer.namespace} {...canvasProps} />
+          : renderer.kind === 'leaflet'
+            ? <Suspense fallback={<MapPlaceholder />}><LeafletCanvas {...canvasProps} /></Suspense>
+            : <MapPlaceholder />}
+      </div>
       {points.length === 0 && <div className={"map-empty absolute [z-index:1000] [top:50%] [left:50%] [transform:translate(-50%,_-50%)] [background:rgba(255,_255,_255,_0.92)] [border-radius:10px] [padding:10px_16px] muted [color:var(--color-muted)] [font-size:0.88rem]"}>暂无可标注的活动坐标</div>}
     </div>
   );

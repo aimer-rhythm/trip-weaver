@@ -9,6 +9,7 @@ import { MapControls } from './MapControls';
 import { useEffect } from 'react';
 import L from 'leaflet';
 import { MapContainer, Marker, Polyline, TileLayer, useMap } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';   // 随本模块进编辑器分包，不进首屏 CSS
 import { dimColor } from '../../lib/colors';
 import { resolveLabelCollisions } from '../../lib/labelCollision';
 import { markerHtml } from '../../lib/markerHtml';
