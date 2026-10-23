@@ -1,0 +1,32 @@
+{
+  "id": "route-code-splitting",
+  "name": "route-code-splitting",
+  "title": "路由级代码分割（首屏 JS 949kB → ≤700kB）",
+  "description": "实测首屏唯一 JS chunk 949.69kB / gzip 301.08kB，Vite 警告超 500kB。router.tsx 静态 import 全部 5 个页面，TripEditorPage → MapView → LeafletCanvas 把地图库拖进首屏。改用 React Router 7 的 route lazy 拆 4 个私有页，预期首屏 gzip ≤220kB、chunk ≥4 个。",
+  "status": "completed",
+  "dev_type": null,
+  "scope": null,
+  "package": "web",
+  "priority": "P2",
+  "creator": "aimer",
+  "assignee": "aimer",
+  "createdAt": "2026-10-23",
+  "completedAt": "2026-10-23",
+  "branch": null,
+  "base_branch": "master",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "apps/web/src/router.tsx",
+    "apps/web/src/pages/TripEditorPage.tsx",
+    "apps/web/src/components/editor/MapView.tsx",
+    "apps/web/src/components/editor/LeafletCanvas.tsx",
+    "apps/web/src/components/AppLayout.tsx"
+  ],
+  "notes": "已完成。改前：首屏单 chunk 949.69kB / gzip 301.08kB；改后：index.js 121.48 + hooks.js 83.17 = 204.65kB gzip（-32%），首屏 gzip 合计 455.87 → 349.18kB（-23.4%）。产物 2 → 10 个，首屏不含 leaflet。关键发现：leaflet.css 原在 main.tsx:4 全局 import，必须一并移到 LeafletCanvas.tsx。R2（Leaflet 组件级动态加载）判定不做。改动的 3 个文件：router.tsx、main.tsx、LeafletCanvas.tsx。待用户验证登录后的 /trips/:id 与生成中刷新。",
+  "meta": {}
+}

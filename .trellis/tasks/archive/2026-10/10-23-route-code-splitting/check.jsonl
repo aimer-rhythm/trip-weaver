@@ -1,0 +1,2 @@
+{"file": ".trellis/spec/web/frontend/quality-guidelines.md", "reason": "验收时必须逐条核对的 web 质量门"}
+{"file": ".trellis/spec/web/frontend/state-management.md", "reason": "代码分割不能影响 state 归属：GenerationProvider 在 AppLayout 内必须保持静态，编辑器 store 的加载/清理时序不能被 lazy 打乱"}
