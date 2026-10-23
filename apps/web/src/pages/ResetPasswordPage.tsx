@@ -82,7 +82,7 @@ export function ResetPasswordPage({ embedded = false, onBack }: {
           </Button>
         </form>
         <p className={'auth-switch [margin:16px_0_0] [font-size:0.88rem] [color:var(--color-muted)]'}>
-          想起密码了？<button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-sm text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" onClick={back}>返回登录</button>
+          想起密码了？<Button variant="plain" className="text-sm text-brand hover:underline" onClick={back}>返回登录</Button>
         </p>
       </div>
     </div>

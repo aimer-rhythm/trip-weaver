@@ -102,13 +102,13 @@ export function EmailCodeField({ email, purpose, value, onChange, disabled, onNe
           {taken && onNeedLogin && (
             <>
               {' '}
-              <button
-                type="button"
-                className="cursor-pointer border-0 bg-transparent p-0 [font-size:0.82rem] text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand"
+              <Button
+                variant="plain"
+                className="[font-size:0.82rem] text-brand hover:underline"
                 onClick={onNeedLogin}
               >
                 去登录
-              </button>
+              </Button>
             </>
           )}
         </p>

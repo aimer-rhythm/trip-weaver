@@ -97,7 +97,7 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
                     <>
                       {' '}
                       {onLogin
-                        ? <button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" onClick={onLogin}>去登录</button>
+                        ? <Button variant="plain" className="text-brand hover:underline" onClick={onLogin}>去登录</Button>
                         : <Link className="text-brand hover:underline" to="/login" state={{ from }}>去登录</Link>}
                     </>
                   )}
@@ -117,7 +117,7 @@ export function RegisterPage({ embedded = false, from: destination, onSuccess, o
         )}
         <p className={"auth-switch [margin:16px_0_0] [font-size:0.88rem] [color:var(--color-muted)]"}>
           已有账号？{onLogin
-            ? <button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-sm text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" disabled={register.isPending} onClick={onLogin}>直接登录</button>
+            ? <Button variant="plain" className="text-sm text-brand hover:underline" disabled={register.isPending} onClick={onLogin}>直接登录</Button>
             : <Link to="/login" state={{ from }}>直接登录</Link>}
         </p>
       </div>

@@ -54,7 +54,7 @@ export function LoginPage({ embedded = false, from: destination, onSuccess, onRe
           </label>
           {error && <p role="alert" className={"form-error [color:var(--color-danger)] [font-size:0.85rem] m-0"}>{error}</p>}
           {onForgotPassword && (
-            <button type="button" className="cursor-pointer self-end border-0 bg-transparent p-0 [font-size:0.82rem] text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" disabled={login.isPending} onClick={onForgotPassword}>忘记密码？</button>
+            <Button variant="plain" className="self-end [font-size:0.82rem] text-brand hover:underline" disabled={login.isPending} onClick={onForgotPassword}>忘记密码？</Button>
           )}
           <Button variant="primary" type="submit" className={"btn-block w-full justify-center"} loading={login.isPending}>
             {login.isPending ? '登录中…' : '登录'}
@@ -68,7 +68,7 @@ export function LoginPage({ embedded = false, from: destination, onSuccess, onRe
         )}
         <p className={"auth-switch [margin:16px_0_0] [font-size:0.88rem] [color:var(--color-muted)]"}>
           还没有账号？{onRegister
-            ? <button type="button" className="cursor-pointer border-0 bg-transparent p-0 text-sm text-brand hover:underline focus-visible:outline-2 focus-visible:outline-brand" disabled={login.isPending} onClick={onRegister}>{config?.registrationMode === 'invite' ? '用邀请码注册' : '注册'}</button>
+            ? <Button variant="plain" className="text-sm text-brand hover:underline" disabled={login.isPending} onClick={onRegister}>{config?.registrationMode === 'invite' ? '用邀请码注册' : '注册'}</Button>
             : <Link to="/register" state={{ from }}>{config?.registrationMode === 'invite' ? '用邀请码注册' : '注册'}</Link>}
         </p>
       </div>
